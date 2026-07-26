@@ -40,7 +40,9 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          # one NIM key serves every model on the platform; the long name is
+          # the secret the owner created for it
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
           AEROAPI_KEY: ${{ secrets.AEROAPI_KEY }} # optional
           # optional repo variables
           AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }}
