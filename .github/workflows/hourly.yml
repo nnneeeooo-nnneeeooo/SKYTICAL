@@ -39,8 +39,14 @@ jobs:
       - name: Run pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           AEROAPI_KEY: ${{ secrets.AEROAPI_KEY }} # optional
-          AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }} # optional repo variable
+          # optional repo variables
+          AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }}
+          AVWIRE_GEMINI_MODEL: ${{ vars.AVWIRE_GEMINI_MODEL }}
+          AVWIRE_NVIDIA_MODEL: ${{ vars.AVWIRE_NVIDIA_MODEL }}
+          AVWIRE_PROVIDER_ORDER: ${{ vars.AVWIRE_PROVIDER_ORDER }}
         run: |
           python pipeline/fetch.py
           python pipeline/dedupe.py

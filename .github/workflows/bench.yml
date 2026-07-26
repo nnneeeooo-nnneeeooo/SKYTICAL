@@ -1,0 +1,107 @@
+name: provider-bench
+
+# Manual benchmark: run the write stage once per configured provider on the
+# SAME copy of the current pending groups, then upload every provider's
+# articles as an artifact for side-by-side quality comparison. Nothing is
+# committed and nothing is deployed — data/ in the repo stays untouched.
+
+on:
+  workflow_dispatch:
+    inputs:
+      gemini_model:
+        description: "Override AVWIRE_GEMINI_MODEL for this bench"
+        required: false
+      nvidia_model:
+        description: "Override AVWIRE_NVIDIA_MODEL for this bench"
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: List models available to each key
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          if [ -n "$NVIDIA_API_KEY" ]; then
+            echo "== NVIDIA models (deepseek/qwen/llama) =="
+            curl -sf https://integrate.api.nvidia.com/v1/models \
+              -H "Authorization: Bearer $NVIDIA_API_KEY" \
+              | python -c 'import json,sys; [print(m["id"]) for m in json.load(sys.stdin).get("data",[])]' \
+              | grep -Ei "deepseek|qwen|llama-3" || echo "(model list unavailable)"
+          fi
+          if [ -n "$GEMINI_API_KEY" ]; then
+            echo "== Gemini generateContent models =="
+            curl -sf https://generativelanguage.googleapis.com/v1beta/models \
+              -H "x-goog-api-key: $GEMINI_API_KEY" \
+              | python -c 'import json,sys; [print(m["name"]) for m in json.load(sys.stdin).get("models",[]) if "generateContent" in m.get("supportedGenerationMethods",[])]' \
+              || echo "(model list unavailable)"
+          fi
+
+      - name: Bench each provider on identical pending groups
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }}
+          AVWIRE_GEMINI_MODEL: ${{ inputs.gemini_model || vars.AVWIRE_GEMINI_MODEL }}
+          AVWIRE_NVIDIA_MODEL: ${{ inputs.nvidia_model || vars.AVWIRE_NVIDIA_MODEL }}
+        run: |
+          ok=""
+          failed=""
+          for p in gemini nvidia anthropic; do
+            case "$p" in
+              gemini)    key="$GEMINI_API_KEY" ;;
+              nvidia)    key="$NVIDIA_API_KEY" ;;
+              anthropic) key="$ANTHROPIC_API_KEY" ;;
+            esac
+            if [ -z "$key" ]; then
+              echo "bench: $p skipped (no key)"
+              continue
+            fi
+            echo "== bench: $p =="
+            # Copy only the write-stage inputs, so bench-out/$p/articles/
+            # contains exclusively this provider's fresh output (not the
+            # whole committed article archive).
+            mkdir -p "bench-out/$p/raw"
+            for f in pending.json seen.json flashes.json incidents.json; do
+              if [ -f "data/$f" ]; then cp "data/$f" "bench-out/$p/"; fi
+            done
+            if [ -f data/raw/flightaware.json ]; then
+              cp data/raw/flightaware.json "bench-out/$p/raw/"
+            fi
+            if AVWIRE_DATA_DIR="bench-out/$p" AVWIRE_PROVIDER_ORDER="$p" \
+                python pipeline/write.py; then
+              ok="$ok $p"
+            else
+              echo "::warning::bench: $p failed (bad key or quota?)"
+              failed="$failed $p"
+            fi
+          done
+          if [ -z "$ok" ]; then
+            echo "::error::no provider produced a bench run (missing keys, or every configured provider failed:$failed)"
+            exit 1
+          fi
+          echo "bench: ok:$ok failed:${failed:-none}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bench-articles
+          path: |
+            bench-out/*/articles/
+            bench-out/*/flashes.json
+            bench-out/*/incidents.json
+          retention-days: 7

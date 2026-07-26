@@ -108,11 +108,50 @@ absent when nothing new that hour)
       "image": null,                       // og:image URL or null
       "zh": {"title": "...", "summary": "<=80字", "body": ["段落1", "段落2"]},
       "en": {"title": "...", "summary": "...", "body": ["para1", "para2"]},
-      "sources": [{"name": "FAA — Statement", "url": "https://..."}]  // >=1, REQUIRED
+      "sources": [{"name": "FAA — Statement", "url": "https://..."}],  // >=1, REQUIRED
+      "writer": "gemini:gemini-2.5-flash",  // OPTIONAL provenance "provider:model";
+                                            // absent on pre-multi-provider articles
+      "facts": [                            // OPTIONAL machine-verified evidence:
+        {"factId": "F1", "claim": "...",    // each sourceQuote passed the verbatim
+         "sourceQuote": "..."}              // substring check in write.verify_facts
+      ],
+      "riskFlags": ["investigation"],       // OPTIONAL editorial risk flags
+                                            // (subset of write.RISK_FLAGS; non-empty
+                                            // only on human-approved articles)
+      "eventStatus": "under_investigation", // OPTIONAL write.EVENT_STATUSES value
+      "entities": {"airlines": ["..."]}     // OPTIONAL source-grounded entities
+                                            // (subset of write.ENTITY_KEYS arrays)
     }
   ]
 }
 ```
+
+## data/review.json  (written AND consumed by write.py; hand-edited by a human)
+
+Human-review queue. Drafts whose editorial status is "manual_review" (all
+aviation safety events, plus other high-risk topics) are parked here instead
+of publishing. A human sets `"approve": true` on GitHub; the next write.py
+run publishes that entry exactly as drafted and removes it. Entries expire
+unreviewed after 14 days; the queue keeps at most 40 rows, newest first.
+
+```jsonc
+[
+  {
+    "id": "g-20260726-0503-1",        // pending-group id
+    "queuedUtc": "2026-07-27T09:03Z",
+    "approve": false,                  // flip to true to publish next run
+    "writer": "gemini:gemini-2.5-flash",
+    "decisionReason": "航空安全事件，調查進行中",
+    "riskFlags": ["accident_or_serious_incident"],
+    "facts": [ {"factId": "F1", "claim": "...", "sourceQuote": "..."} ],
+    "draft": { /* full DRAFT_SCHEMA object */ },
+    "group": { /* pending group snapshot (sources for the article) */ }
+  }
+]
+```
+
+Queued groups are recorded in seen.json immediately (they must not re-emit
+from dedupe while awaiting review).
 
 ## data/flashes.json  (written by write.py, read by build.py)
 
