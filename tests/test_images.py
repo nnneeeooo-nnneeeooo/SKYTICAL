@@ -151,8 +151,18 @@ check("ICAO type code A359 maps to its display name",
           "a", "DAL flight, type A359, arrived")) == "Airbus A350-900")
 check("no visual entity -> resolve_image returns None without HTTP",
       (fake.calls.clear() is None
-       and images.resolve_image(make_article("a", "FAA policy update"))
-       is None and fake.calls == []))
+       and images.resolve_image(make_article(
+           "a", "Global travel demand keeps rising")) is None
+       and fake.calls == []))
+check("island wording maps to the airport photo query",
+      images.find_airport(make_article("a", "澎湖離島航線加班"))
+      == ("Magong Airport Penghu", ["Magong"]))
+check("agency stories fall back to an official-agency photo query",
+      images.find_org(make_article("a", "FAA announces new drone rule"))
+      == ("Federal Aviation Administration headquarters",
+          ["Federal Aviation"]))
+check("substring 'faa' inside a word never triggers the org match",
+      images.find_org(make_article("a", "shortfaall of capacity")) is None)
 
 # ── tier 1: planespotters by registration ────────────────────────────────────
 
@@ -185,6 +195,29 @@ check("artist HTML stripped in credit",
 check("non-free and token-mismatched files rejected",
       "nonfree" not in json.dumps(art["image"])
       and "Random building" not in json.dumps(art["image"]))
+
+# org fallback end-to-end, with the logo/map title filter
+reset()
+fake.commons = FakeResp(200, {"query": {"pages": {
+    "1": {"index": 0, "title": "File:FAA logo.svg", "imageinfo": [{
+        "thumburl": "https://upload.wikimedia.org/logo.png",
+        "extmetadata": {"LicenseShortName": {"value": "Public domain"},
+                        "Artist": {"value": "FAA"}}}]},
+    "2": {"index": 1,
+          "title": "File:Federal Aviation Administration headquarters.jpg",
+          "imageinfo": [{
+              "thumburl": "https://upload.wikimedia.org/faa-hq.jpg",
+              "descriptionshorturl": "https://commons.wikimedia.org/w/9",
+              "extmetadata": {
+                  "LicenseShortName": {"value": "CC BY-SA 3.0"},
+                  "Artist": {"value": "Photographer"}}}]},
+}}})
+p = write_batch([make_article("a-org", "FAA announces enforcement action")])
+images.main()
+art = read_batch(p)[0]
+check("agency fallback attaches the building photo, never the logo",
+      art["image"]["url"] == "https://upload.wikimedia.org/faa-hq.jpg"
+      and "logo" not in art["image"]["url"])
 
 # ── cache behaviour ──────────────────────────────────────────────────────────
 

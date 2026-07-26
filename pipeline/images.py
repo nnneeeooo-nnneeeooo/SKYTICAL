@@ -55,6 +55,10 @@ PLANESPOTTERS_URL = "https://api.planespotters.net/pub/photos/reg/{reg}"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 
 _FREE_LICENSE_RE = re.compile(r"\b(cc[ -]|cc0|public domain|pd-)", re.I)
+# never attach maps, logos, seals etc. as a news photo
+_BAD_TITLE_RE = re.compile(
+    r"map|logo|diagram|seal|icon|flag|emblem|coat of arms|chart|plan\b",
+    re.I)
 _TAG_RE = re.compile(r"<[^>]+>")
 # Registrations, kept deliberately conservative to avoid false hits in
 # prose (e.g. plain "N95" is NOT matched): TW B-#####, US N-regs with a
@@ -62,6 +66,44 @@ _TAG_RE = re.compile(r"<[^>]+>")
 _REG_RE = re.compile(
     r"\b(B-\d{4,5}|N\d{2,4}[A-Z]{1,2}|N\d{4,5}|JA\d{3,4}[A-Z]?"
     r"|(?:HL|VH|HS|9V|9M|D|F|G|PH|EI|OE|VT|A6|A7|TC)-[A-Z]{3,4})\b")
+
+# Location wording -> Taiwan airport photo query. Articles about island
+# routes say 澎湖/金門/馬祖, never the airport's registry name, so the
+# config-name match below rarely fires on its own.
+_AIRPORT_ALIASES = (
+    ("桃園機場", "Taoyuan International Airport", ("Taoyuan",)),
+    ("桃園國際機場", "Taoyuan International Airport", ("Taoyuan",)),
+    ("松山機場", "Taipei Songshan Airport", ("Songshan",)),
+    ("小港機場", "Kaohsiung International Airport", ("Kaohsiung",)),
+    ("高雄國際機場", "Kaohsiung International Airport", ("Kaohsiung",)),
+    ("澎湖", "Magong Airport Penghu", ("Magong",)),
+    ("馬公", "Magong Airport Penghu", ("Magong",)),
+    ("金門", "Kinmen Airport", ("Kinmen",)),
+    ("馬祖", "Matsu Nangan Airport", ("Nangan", "Matsu")),
+    ("南竿", "Matsu Nangan Airport", ("Nangan", "Matsu")),
+    ("北竿", "Matsu Beigan Airport", ("Beigan", "Matsu")),
+    ("花蓮機場", "Hualien Airport", ("Hualien",)),
+    ("臺東機場", "Taitung Airport", ("Taitung",)),
+    ("台東機場", "Taitung Airport", ("Taitung",)),
+)
+
+# Official-agency fallback: a story about a regulator with no aircraft/
+# airport entity gets an honest agency file photo. ASCII keys match on
+# word boundaries; CJK keys as substrings.
+_ORG_QUERIES = (
+    ("faa", "Federal Aviation Administration headquarters",
+     ("Federal Aviation",)),
+    ("ntsb", "National Transportation Safety Board",
+     ("NTSB", "National Transportation Safety")),
+    ("icao", "International Civil Aviation Organization headquarters",
+     ("ICAO", "International Civil Aviation")),
+    ("iata", "International Air Transport Association",
+     ("IATA",)),
+    ("easa", "European Union Aviation Safety Agency",
+     ("EASA",)),
+    ("eurocontrol", "Eurocontrol headquarters", ("Eurocontrol",)),
+    ("民用航空局", "交通部民用航空局", ("民用航空局", "Civil Aeronautics")),
+)
 
 _airlines = [
     a for a in (load_json(ROOT / "config" / "airline_icao_codes.json", {})
@@ -140,14 +182,33 @@ def find_aircraft_type(article: dict) -> str | None:
     return None
 
 
-def find_airport(article: dict) -> str | None:
+def find_airport(article: dict):
+    """(commons_query, required_title_tokens) for a mentioned airport."""
     text = _article_text(article)
     low = text.casefold()
+    for marker, query, tokens in _AIRPORT_ALIASES:
+        if marker in text:
+            return query, list(tokens)
     for ap in _tw_airports:
         for key in ("name_zh", "name_en"):
             val = str(ap.get(key) or "")
             if val and (val in text or val.casefold() in low):
-                return str(ap.get("name_en") or val)
+                name = str(ap.get("name_en") or val)
+                return name, [name.split()[0]]
+    return None
+
+
+def find_org(article: dict):
+    """(commons_query, required_title_tokens) for an official agency."""
+    text = _article_text(article)
+    low = text.casefold()
+    for marker, query, tokens in _ORG_QUERIES:
+        if re.search(r"[一-鿿]", marker):
+            hit = marker in text
+        else:
+            hit = re.search(rf"\b{re.escape(marker)}\b", low) is not None
+        if hit:
+            return query, list(tokens)
     return None
 
 
@@ -204,6 +265,8 @@ def lookup_commons(query: str, require_tokens: list[str]) -> dict | None:
     tokens = [t.casefold() for t in require_tokens if t]
     for page in sorted(pages.values(), key=lambda p: p.get("index", 99)):
         title = str(page.get("title") or "")
+        if _BAD_TITLE_RE.search(title):
+            continue
         if tokens and not any(t in title.casefold() for t in tokens):
             continue
         for info in page.get("imageinfo") or []:
@@ -250,7 +313,12 @@ def resolve_image(article: dict) -> dict | None:
     if airline:
         return lookup_commons(f'{airline} aircraft', [airline])
     if airport:
-        return lookup_commons(f'{airport}', [airport])
+        query, tokens = airport
+        return lookup_commons(query, tokens)
+    org = find_org(article)
+    if org:
+        query, tokens = org
+        return lookup_commons(query, tokens)
     return None  # nothing visual verified in this article -> no image
 
 
