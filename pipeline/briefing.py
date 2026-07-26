@@ -171,20 +171,21 @@ _TAIWAN_MARKERS = (
     "澎湖", "金門", "馬祖", "中華航空", "華航", "長榮航空", "星宇航空",
     "台灣虎航", "臺灣虎航", "立榮航空", "華信航空", "taiwan", "taoyuan",
     "caa taiwan", "china airlines", "eva air", "starlux", "tigerair taiwan",
-    "uni air", "mandarin airlines",
+    "uni air", "mandarin airlines", "國防部", "臺海", "台海", "國軍",
 )
 _GROUND_MARKERS = (
     "台鐵", "臺鐵", "高鐵", "捷運", "輕軌", "鐵路", "國道客運", "公路重大",
-    "railway", "high-speed rail", "metro line", "light rail", "train derail",
+    "出軌", "railway", "high-speed rail", "metro line", "light rail",
+    "train derail",
 )
 _MARITIME_MARKERS = (
     "港務", "航港", "海運", "商港", "貨輪", "客輪", "渡輪", "船舶",
-    "maritime", "ferry", "cargo ship", "container ship", "port authority",
-    "vessel",
+    "小三通", "船班", "maritime", "ferry", "cargo ship", "container ship",
+    "port authority", "vessel",
 )
 _MILITARY_MARKERS = (
-    "軍機", "國軍", "空軍", "軍用機", "military aircraft", "air force",
-    "fighter jet",
+    "軍機", "國軍", "空軍", "軍用機", "共機", "中共軍機", "中共機艦",
+    "解放軍", "戰機", "military aircraft", "air force", "fighter jet",
 )
 _FATAL_MARKERS = (
     "罹難", "死亡", "喪生", "身亡", "fatal", "killed", "fatalities", "died",

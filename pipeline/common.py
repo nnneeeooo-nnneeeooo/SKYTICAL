@@ -264,6 +264,76 @@ SOURCES: dict[str, dict] = {
             "en": "Taiwan CAA notices",
         },
     },
+    "simpleflying": {
+        "name": "Simple Flying",
+        "kind": "media",
+        "fmt": "RSS",
+        "url": "https://simpleflying.com",
+        "endpoint": "https://simpleflying.com/feed/",
+        "type": "rss",
+        "cover": {
+            "zh": "全球航空新聞與產業分析",
+            "en": "Global aviation news & analysis",
+        },
+    },
+    "cnataiwan": {
+        "name": "中央社 CNA",
+        "kind": "media",
+        "fmt": "RSS",
+        "url": "https://www.cna.com.tw",
+        # official CNA feed (broad politics wire); the keyword filter below
+        # keeps only aviation / military-aviation / transport items so the
+        # editorial stage never burns model calls on unrelated politics
+        "endpoint": "https://feeds.feedburner.com/rsscna/politics",
+        "type": "rss",
+        "keywords": [
+            "航空", "民航", "航班", "機場", "航線", "華航", "中華航空",
+            "長榮航", "星宇", "台灣虎航", "臺灣虎航", "立榮", "華信",
+            "空軍", "軍機", "共機", "中共機艦", "國軍", "國防部",
+            "無人機", "直升機", "戰機", "台鐵", "臺鐵", "高鐵", "捷運",
+            "航港", "港務", "小三通", "船班",
+        ],
+        "cover": {
+            "zh": "中央社 — 航空、軍航與交通相關報導",
+            "en": "CNA Taiwan — aviation, military air & transport",
+        },
+    },
+    "mndnews": {
+        "name": "國防部・軍聞社",
+        "kind": "official",
+        "fmt": "RSS",
+        "url": "https://www.mnd.gov.tw",
+        # MND blocks direct RSS pulls (403); Google News headlines proxy the
+        # official releases (共機動態 etc.); CNA items usually join the same
+        # story group and provide the quotable material
+        "endpoint": (
+            "https://news.google.com/rss/search?"
+            "q=site:mna.mnd.gov.tw%20OR%20site:mnd.gov.tw%20when:2d"
+            "&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+        ),
+        "type": "rss",
+        "cover": {
+            "zh": "國防部/軍聞社 — 共機動態與軍事新聞",
+            "en": "Taiwan MND — PLA activity & military news",
+        },
+    },
+    "twtransport": {
+        "name": "臺灣交通要聞",
+        "kind": "media",
+        "fmt": "RSS",
+        "url": "https://news.google.com",
+        "endpoint": (
+            "https://news.google.com/rss/search?"
+            "q=(台鐵%20OR%20高鐵%20OR%20捷運%20OR%20航港局%20OR%20小三通)"
+            "%20(事故%20OR%20停駛%20OR%20停航%20OR%20出軌%20OR%20恢復)"
+            "%20when:1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+        ),
+        "type": "rss",
+        "cover": {
+            "zh": "台鐵/高鐵/捷運/海運重大營運與事故報導",
+            "en": "Taiwan rail / metro / maritime major events",
+        },
+    },
 }
 
 CATEGORIES = ("safety", "reg", "biz", "ops")

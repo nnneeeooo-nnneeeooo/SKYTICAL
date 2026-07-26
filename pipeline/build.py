@@ -93,10 +93,12 @@ L = {
         "brGenerated": "系統整理完成", "brTo": "至",
         "brEmpty": "截至本期資料截止時間，系統在本次查核的指定來源中，未發現符合收錄門檻的新事件。",
         "brPartial": "本期部分來源資料未能完整取得，內容可能不完整；來源擷取失敗不代表沒有新事件。",
-        "brChecked": "本期查核來源", "brWarnings": "資料覆蓋提示",
-        "brUpdate": "更新", "brItems": "則", "brNoItems": "本分類本期無收錄項目",
+        "brChecked": "📡 本期查核來源", "brWarnings": "資料覆蓋提示",
+        "brUpdate": "更新", "brItems": "則",
+        "brNoItems": "本期查核來源中，此分類無新增符合收錄門檻的事件通報",
         "brModeDet": "程式化組裝（未使用模型）", "brModeLlm": "模型輔助導言",
-        "brSecs": ["航空事故與事件", "臺灣航空", "國際航空", "陸運與海運"],
+        "brSecs": ["🚨 飛安事件與緊急狀況", "🇹🇼 台灣航空動態（民航＋軍航）",
+                   "🌐 國際航空產業動態", "🚄 地面與海運交通"],
         "brSevs": {"fatal": "致命", "serious": "嚴重",
                    "significant": "重要", "routine": "一般"},
         "sevs": ["全部", "事故", "嚴重事件", "事件"],
@@ -148,13 +150,16 @@ L = {
         "brCutoff": "Data cutoff", "brGenerated": "Compiled", "brTo": "to",
         "brEmpty": "As of this edition's data cutoff, no new events meeting the inclusion bar were found in the sources checked for this edition.",
         "brPartial": "Some sources could not be fetched in full for this edition; coverage may be incomplete. A fetch failure does not mean no events occurred.",
-        "brChecked": "Sources checked", "brWarnings": "Coverage notes",
+        "brChecked": "📡 Sources checked", "brWarnings": "Coverage notes",
         "brUpdate": "UPDATE", "brItems": "items",
-        "brNoItems": "No items in this section this edition",
+        "brNoItems": "No new events met the inclusion bar in this section "
+                     "among the sources checked",
         "brModeDet": "Deterministic assembly (no model used)",
         "brModeLlm": "Model-assisted intro",
-        "brSecs": ["Aviation incidents", "Taiwan aviation",
-                   "International aviation", "Ground & maritime"],
+        "brSecs": ["🚨 Safety events & emergencies",
+                   "🇹🇼 Taiwan aviation (civil + military)",
+                   "🌐 International industry news",
+                   "🚄 Ground & maritime transport"],
         "brSevs": {"fatal": "Fatal", "serious": "Serious",
                    "significant": "Significant", "routine": "Routine"},
         "sevs": ["All", "Accident", "Serious", "Incident"],
@@ -1093,7 +1098,18 @@ def brief_item_view(item, lang: str, published_ids):
     art_id = item.get("article_id")
     url = (page_url(lang, f"news/{art_id}/")
            if art_id in published_ids else None)
+    severity = str(item.get("severity") or "routine")
+    marks = ""
+    if severity == "fatal":
+        marks += "⚠️🔴"
+    elif severity in ("serious", "significant"):
+        marks += "⚠️"
+    if item.get("taiwan_priority"):
+        marks += "🇹🇼"
+    if item.get("military"):
+        marks += "⚔️"
     return {
+        "marks": marks,
         "headline": head, "summary": summary,
         "time": _fmt_tpe(item.get("source_published_at"), lang,
                          time_only=True),

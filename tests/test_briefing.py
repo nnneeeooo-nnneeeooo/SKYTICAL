@@ -492,6 +492,44 @@ check("requirements.txt adds no paid news/search dependency",
       all(m not in _req for m in ("newsapi", "bing", "serpapi", "tavily",
                                   "exa", "perplexity")))
 
+# ── section classification for the expanded source mix ──────────────────────
+
+def _art_text(text):
+    a = make_article("a-cls", text, tpe(2026, 7, 27, 6))
+    a["entities"]["locations"] = []
+    a["zh"]["summary"] = text
+    return a
+
+
+check("小三通/船班 stories classify as ground_and_maritime",
+      briefing.classify_section(_art_text("小三通航線多航次停航")) ==
+      "ground_and_maritime")
+check("台鐵 stories classify as ground_and_maritime",
+      briefing.classify_section(_art_text("台鐵區間車出軌無人受傷")) ==
+      "ground_and_maritime")
+check("共機動態 stories are taiwan_aviation with the military flag",
+      briefing.classify_section(_art_text("國防部公布中共軍機臺海周邊動態"))
+      == "taiwan_aviation"
+      and briefing._has_marker(
+          briefing._text_blob(_art_text("中共軍機臺海周邊動態")),
+          briefing._MILITARY_MARKERS))
+
+import build as _b  # noqa: E402
+
+_mil_item = {"headline": "共機動態", "summary": "s", "severity": "routine",
+             "taiwan_priority": True, "military": True, "item_type": "new",
+             "sources": [], "article_id": None,
+             "source_published_at": "2026-07-27T00:00:00+08:00"}
+_marks_mil = _b.brief_item_view(_mil_item, "zh", set())["marks"]
+check("briefing item view renders taiwan+military marks",
+      "⚔" in _marks_mil and "\U0001f1f9\U0001f1fc" in _marks_mil
+      and "⚠" not in _marks_mil)
+_fatal_item = dict(_mil_item, severity="fatal", taiwan_priority=False,
+                   military=False)
+_marks_fatal = _b.brief_item_view(_fatal_item, "zh", set())["marks"]
+check("fatal items render warning+red marks",
+      "⚠" in _marks_fatal and "\U0001f534" in _marks_fatal)
+
 # ── caps ─────────────────────────────────────────────────────────────────────
 
 reset()

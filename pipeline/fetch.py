@@ -38,6 +38,13 @@ from common import (
 )
 
 TIMEOUT = 20  # seconds per request
+
+
+def _matches_keywords(item: dict, keywords) -> bool:
+    """True when any source keyword appears in the item's title+summary."""
+    blob = (f"{item.get('title') or ''} "
+            f"{item.get('summary') or ''}").casefold()
+    return any(str(k).casefold() in blob for k in keywords)
 RETRY_DELAY = 2  # seconds between the two attempts
 RESOLVE_TIMEOUT = 6  # seconds for google-news link resolution
 MAX_RESOLVE_FAILURES = 3  # stop resolving after this many misses in a row
@@ -497,6 +504,16 @@ def _fetch_source(session: requests.Session, key: str, spec: dict,
         raw_items = parser(BeautifulSoup(resp.content, "lxml"), resp.url or endpoint)
         if not raw_items:
             raise FetchError("page parsed to 0 items (layout changed?)")
+
+    keywords = spec.get("keywords")
+    if keywords:
+        # Broad feeds (e.g. the CNA politics wire) keep only on-topic items,
+        # so unrelated stories never reach the paid editorial stage.
+        before = len(raw_items)
+        raw_items = [it for it in raw_items if _matches_keywords(it, keywords)]
+        if before != len(raw_items):
+            print(f"[fetch] {key}: keyword filter kept "
+                  f"{len(raw_items)}/{before} items")
 
     items = _finalize(raw_items, fetched_iso, load_json(raw_path, None))
     save_json(raw_path, {"source": key, "fetchedUtc": fetched_iso,

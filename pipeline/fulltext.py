@@ -58,6 +58,11 @@ ALLOWED_HOSTS = {
     "www.icao.int", "icao.int",
     "www.iata.org", "iata.org",
     "www.eurocontrol.int", "eurocontrol.int",
+    # official Taiwan defense releases (共機動態 etc.)
+    "www.mnd.gov.tw", "mnd.gov.tw", "mna.mnd.gov.tw",
+    # CNA articles arrive via CNA's own official feed with direct links;
+    # robots.txt is still honored per fetch
+    "www.cna.com.tw", "cna.com.tw",
 }
 
 # Text shown to the model AND used for quote verification is capped at

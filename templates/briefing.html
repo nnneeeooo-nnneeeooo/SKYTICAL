@@ -3,7 +3,7 @@
   <div style="max-width:860px;margin:0 auto;padding:28px 20px 64px;">
     <a href="{{ base }}/{% if lang == 'en' %}en/{% endif %}briefings/" class="btn btn-ghost" style="margin-bottom:18px;">← {{ t.brIndexTitle }}</a>
     <span class="card-kicker">{{ t.brKicker }}</span>
-    <h1 style="font-size:32px;line-height:1.2;margin:10px 0 6px;">{{ b.title }}</h1>
+    <h1 style="font-size:32px;line-height:1.2;margin:10px 0 6px;">✈️ {{ b.title }}</h1>
     <div style="font-size:17px;font-weight:700;margin-bottom:14px;">{{ b.date_label }}</div>
     <div class="text-muted" style="font-size:13px;line-height:2;border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider);padding:10px 0;margin-bottom:6px;">
       <div><span style="font-weight:800;">{{ t.brWindow }}</span>：{{ b.window_start }} {{ t.brTo }} {{ b.window_end }}（UTC+8）</div>
@@ -26,12 +26,12 @@
       <p class="text-muted" style="font-size:14.5px;line-height:1.9;margin:0;">{{ t.brEmpty }}</p>
     </div>
     {% endif %}
-    {% for sec in b.sections %}
-    {% if sec['items'] %}
+    {% for sec in (b.sections if b.total > 0 else []) %}
     <h4 style="margin:26px 0 4px;">{{ sec.label }}</h4>
     {% for it in sec['items'] %}
     <div style="padding:14px 0;border-bottom:1px solid var(--color-divider);">
       <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;">
+        {% if it.marks %}<span style="font-size:14px;">{{ it.marks }}</span>{% endif %}
         <span class="tag {{ it.sev_cls }}">{{ t.brSevs[it.severity] }}</span>
         {% if it.update %}<span class="tag tag-outline">{{ t.brUpdate }}</span>{% endif %}
         <span class="text-muted" style="font-size:12px;font-weight:800;">{{ it.time }}</span>
@@ -48,8 +48,9 @@
         {% endfor %}
       </div>
     </div>
+    {% else %}
+    <p class="text-muted" style="font-size:13px;line-height:1.8;margin:6px 0 0;">{{ t.brNoItems }}</p>
     {% endfor %}
-    {% endif %}
     {% endfor %}
     <div style="border:2px solid var(--color-divider);padding:16px 20px 12px;margin-top:32px;">
       <h6 style="margin:0 0 10px;">{{ t.brChecked }}</h6>
