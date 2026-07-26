@@ -812,17 +812,22 @@ def main() -> None:
         print("write: provider order: "
               + " -> ".join(p.label for p in providers))
         alive = list(providers)  # priority order; shrinks on auth/quota death
-        for group in groups[:MAX_GROUPS_PER_RUN]:
+        drafted = 0  # only API-consuming groups count toward the run cap
+        for group in groups:
             if not alive:
                 break  # every provider is dead; the rest stays pending
             if not has_material(group):
                 # Title-only material can never satisfy the evidence rules:
-                # consume it here without spending an API call.
+                # consume it here without spending an API call - and without
+                # letting it crowd summary-bearing groups out of the cap.
                 print(f"write: group {group.get('id')} has no usable summary"
                       " text; consumed by the completeness check")
                 rejected_groups.append(group)
                 rejected_ids.add(group.get("id"))
                 continue
+            if drafted >= MAX_GROUPS_PER_RUN:
+                break  # LLM budget for this run is spent; the rest waits
+            drafted += 1
             draft, writer, verified, queued_this = None, None, None, False
             for provider in list(alive):
                 if provider not in alive:
