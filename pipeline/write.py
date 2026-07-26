@@ -469,6 +469,38 @@ def validate_draft(draft):
     return None
 
 
+class DraftInvalid(Exception):
+    """Draft failed validation or quote verification on every allowed try."""
+
+
+def _validated_draft(provider, group: dict, tries: int):
+    """Call `provider` up to `tries` times until a draft survives validation
+    and quote verification.
+
+    Returns (candidate, facts). A genuine refusal returns (None, None); an
+    editorial reject returns (candidate, []). Raises DraftInvalid after the
+    last failed try. Provider errors propagate immediately - the routing
+    policy retries validation failures, never transport failures.
+    """
+    for attempt in range(tries):
+        candidate = draft_group(provider, group)
+        if candidate is None:
+            return None, None
+        problem = validate_draft(candidate)
+        if problem is None:
+            if candidate.get("status") == "reject":
+                return candidate, []
+            facts = verify_facts(candidate, group, provider.label)
+            if facts:
+                return candidate, facts
+            problem = "no machine-verifiable sourceQuote"
+        retrying = attempt + 1 < tries
+        print(f"write: {provider.label} draft for group {group.get('id')} "
+              f"unusable ({problem})"
+              + ("; retrying once" if retrying else ""))
+    raise DraftInvalid
+
+
 _WS_RE = re.compile(r"\s+")
 
 
@@ -769,20 +801,33 @@ def main() -> None:
                 break  # every provider is dead; the rest stays pending
             draft, writer, verified, queued_this = None, None, None, False
             for provider in list(alive):
+                if provider not in alive:
+                    # Removed mid-group by a platform-level auth/quota
+                    # death earlier in this same iteration.
+                    continue
+                # Routing policy: the primary model gets one retry on
+                # validation failures; every fallback gets a single try.
+                tries = 2 if provider is providers[0] else 1
                 try:
-                    candidate = draft_group(provider, group)
+                    candidate, facts = _validated_draft(provider, group,
+                                                        tries)
+                except DraftInvalid:
+                    continue  # try the next provider in the chain
                 except ProviderAuthError as exc:
-                    # Persistent config error: every later call on this
-                    # provider is doomed. Disable it and fall through.
+                    # Account-level failure: every model on this platform
+                    # shares the key, so skip same-platform fallbacks and
+                    # go straight to the next platform.
                     print(f"write: FATAL {provider.label} auth error ({exc});"
-                          " disabling provider")
-                    alive.remove(provider)
+                          f" disabling all '{provider.name}' providers")
+                    alive[:] = [p for p in alive if p.name != provider.name]
                     dead_auth.add(provider.name)
                     continue
                 except ProviderQuotaError as exc:
+                    # Quota/credits are account-level too.
                     print(f"write: {provider.label} quota exhausted ({exc}); "
-                          "disabling provider for this run")
-                    alive.remove(provider)
+                          f"disabling all '{provider.name}' providers "
+                          "for this run")
+                    alive[:] = [p for p in alive if p.name != provider.name]
                     continue
                 except ProviderError as exc:
                     print(f"write: {provider.label} error on group "
@@ -797,12 +842,6 @@ def main() -> None:
                     # Genuine refusal / safety block: content-based, so
                     # don't shop the group around to a laxer provider.
                     break
-                problem = validate_draft(candidate)
-                if problem:
-                    print(f"write: {provider.label} draft for group "
-                          f"{group.get('id')} failed validation ({problem}); "
-                          "trying next provider")
-                    continue
                 if candidate.get("status") == "reject":
                     # Editorial rejection (insufficient evidence): also
                     # content-based - trying another model would just
@@ -811,12 +850,6 @@ def main() -> None:
                           f"{group.get('id')}: "
                           f"{str(candidate.get('decisionReason') or '?')[:200]}")
                     break
-                facts = verify_facts(candidate, group, provider.label)
-                if not facts:
-                    print(f"write: {provider.label} draft for group "
-                          f"{group.get('id')} has no machine-verifiable "
-                          "sourceQuote; trying next provider")
-                    continue
                 status = candidate.get("status")
                 flags = candidate.get("riskFlags") or []
                 if status == "publish" and (
@@ -883,8 +916,8 @@ def main() -> None:
           f"({len(approvals)} human-approved), queued "
           f"{len(queued_entries)} for review, skipped {skipped}, "
           f"pending {remaining_count}")
-    if providers and dead_auth and len(dead_auth) == len(providers):
-        # Every configured provider failed authentication: turn the Actions
+    if providers and dead_auth and dead_auth == {p.name for p in providers}:
+        # Every configured platform failed authentication: turn the Actions
         # run red instead of silently green.
         raise SystemExit(1)
 

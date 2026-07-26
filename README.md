@@ -75,7 +75,7 @@ python -m http.server -d site 8000
 | `ANTHROPIC_API_KEY` | — | Anthropic 撰稿（選用） |
 | `GEMINI_API_KEY` | — | Google Gemini 撰稿（選用，免費層） |
 | `NVIDIA_API_KEY` | — | NVIDIA NIM 撰稿（選用，免費額度） |
-| `AVWIRE_PROVIDER_ORDER` | `anthropic,gemini,nvidia` | 撰稿供應商優先順序（主力在前） |
+| `AVWIRE_PROVIDER_ORDER` | `anthropic,gemini,nvidia` | 撰稿優先鏈，主力在前；token 可用 `平台:模型` 指定模型，同平台可重複出現（例：`nvidia:nvidia/nemotron-3-ultra-550b-a55b,nvidia:nvidia/nemotron-3-super-120b-a12b,gemini`）。主力模型驗證失敗自動重試一次；帳號／額度失效會跳過同平台所有備援模型 |
 | `AVWIRE_MODEL` | `claude-opus-5` | Anthropic 模型 |
 | `AVWIRE_GEMINI_MODEL` | `gemini-2.5-flash` | Gemini 模型 |
 | `AVWIRE_NVIDIA_MODEL` | `deepseek-ai/deepseek-v3.1` | NVIDIA NIM 模型 |

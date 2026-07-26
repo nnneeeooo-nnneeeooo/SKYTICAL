@@ -22,6 +22,15 @@ Each provider exposes:
 
 The write stage tries providers in AVWIRE_PROVIDER_ORDER (default
 "anthropic,gemini,nvidia") and falls through to the next on failure.
+An order token may pin a model with "name:model", and the same platform
+may appear multiple times with different models, e.g.:
+
+    nvidia:nvidia/nemotron-3-ultra-550b-a55b,
+    nvidia:nvidia/nemotron-3-super-120b-a12b,
+    gemini,
+    nvidia:qwen/qwen3.5-397b-a17b
+
+A bare name uses the platform's AVWIRE_*_MODEL env var / default.
 """
 from __future__ import annotations
 
@@ -85,9 +94,9 @@ def _body_snippet(response) -> str:
 class AnthropicProvider:
     name = "anthropic"
 
-    def __init__(self) -> None:
+    def __init__(self, model=None) -> None:
         # `or` (not a get() default) so an empty env var still falls back.
-        self.model = os.environ.get("AVWIRE_MODEL") or "claude-opus-5"
+        self.model = model or os.environ.get("AVWIRE_MODEL") or "claude-opus-5"
         self.label = f"{self.name}:{self.model}"
         self._client = None
 
@@ -145,8 +154,9 @@ class AnthropicProvider:
 class GeminiProvider:
     name = "gemini"
 
-    def __init__(self) -> None:
-        self.model = os.environ.get("AVWIRE_GEMINI_MODEL") or "gemini-2.5-flash"
+    def __init__(self, model=None) -> None:
+        self.model = (model or os.environ.get("AVWIRE_GEMINI_MODEL")
+                      or "gemini-2.5-flash")
         self.label = f"{self.name}:{self.model}"
 
     def available(self) -> bool:
@@ -219,8 +229,8 @@ class GeminiProvider:
 class NvidiaProvider:
     name = "nvidia"
 
-    def __init__(self) -> None:
-        self.model = (os.environ.get("AVWIRE_NVIDIA_MODEL")
+    def __init__(self, model=None) -> None:
+        self.model = (model or os.environ.get("AVWIRE_NVIDIA_MODEL")
                       or "deepseek-ai/deepseek-v3.1")
         self.label = f"{self.name}:{self.model}"
 
@@ -299,20 +309,27 @@ _REGISTRY = {
 
 
 def build_providers() -> list:
-    """Instantiate available providers in AVWIRE_PROVIDER_ORDER order."""
+    """Instantiate available providers in AVWIRE_PROVIDER_ORDER order.
+
+    A token is either a platform name ("nvidia") or a pinned model
+    ("nvidia:nvidia/nemotron-3-ultra-550b-a55b"); the same platform may
+    appear multiple times with different models.
+    """
     order = os.environ.get("AVWIRE_PROVIDER_ORDER") or DEFAULT_ORDER
     providers, seen = [], set()
     for token in order.split(","):
-        key = token.strip().lower()
-        if not key or key in seen:
+        name, _, model = token.strip().partition(":")
+        key = name.strip().lower()
+        model = model.strip() or None
+        if not key or (key, model) in seen:
             continue
-        seen.add(key)
+        seen.add((key, model))
         cls = _REGISTRY.get(key)
         if cls is None:
             print(f"write: unknown provider '{key}' in AVWIRE_PROVIDER_ORDER; "
                   "ignoring")
             continue
-        provider = cls()
+        provider = cls(model)
         if provider.available():
             providers.append(provider)
     return providers

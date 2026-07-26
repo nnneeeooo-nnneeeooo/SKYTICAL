@@ -41,7 +41,7 @@ jobs:
             curl -sf https://integrate.api.nvidia.com/v1/models \
               -H "Authorization: Bearer $NVIDIA_API_KEY" \
               | python -c 'import json,sys; [print(m["id"]) for m in json.load(sys.stdin).get("data",[])]' \
-              | grep -Ei "deepseek|qwen|llama-3" || echo "(model list unavailable)"
+              | grep -Ei "nemotron|deepseek|qwen|glm|mistral|kimi|llama" || echo "(model list unavailable)"
           fi
           if [ -n "$GEMINI_API_KEY" ]; then
             echo "== Gemini generateContent models =="

@@ -538,6 +538,77 @@ def test_provider_failover():
     print("test_provider_failover: done")
 
 
+def test_model_chain_and_routing_policy():
+    """name:model order tokens; platform-level death; primary retry-once."""
+    # --- order tokens: same platform may appear with different models -----
+    saved = {k: os.environ.get(k) for k in (
+        "AVWIRE_PROVIDER_ORDER", "NVIDIA_API_KEY", "GEMINI_API_KEY",
+        "ANTHROPIC_API_KEY")}
+    os.environ["AVWIRE_PROVIDER_ORDER"] = (
+        "nvidia:nvidia/nemotron-3-ultra-550b-a55b, "
+        "nvidia:nvidia/nemotron-3-super-120b-a12b, "
+        "gemini:gemini-3-flash-preview, bogus, nvidia")
+    os.environ["NVIDIA_API_KEY"] = "test-key-not-real"
+    os.environ["GEMINI_API_KEY"] = "test-key-not-real"
+    os.environ.pop("ANTHROPIC_API_KEY", None)
+    try:
+        labels = [p.label for p in providers.build_providers()]
+    finally:
+        for key, value in saved.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+    check(labels == ["nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+                     "nvidia:nvidia/nemotron-3-super-120b-a12b",
+                     "gemini:gemini-3-flash-preview",
+                     "nvidia:deepseek-ai/deepseek-v3.1"],
+          f"order tokens honored in order, got {labels}")
+
+    # --- platform auth death skips same-platform fallback models ----------
+    reset_data_dir()
+    ultra = FakeProvider("nvidia", [providers.ProviderAuthError("HTTP 401")])
+    superp = FakeProvider("nvidia", [DRAFT_BIZ])
+    gem = FakeProvider("gemini", [DRAFT_BIZ])
+
+    original = write.build_providers
+    write.build_providers = lambda: [ultra, superp, gem]
+    try:
+        write.main()
+    finally:
+        write.build_providers = original
+
+    check(ultra.calls == 1 and superp.calls == 0,
+          f"account failure skips same-platform models "
+          f"(ultra {ultra.calls}, super {superp.calls})")
+    articles = all_articles()
+    check(len(articles) == 1 and articles[0]["writer"] == "gemini:fake",
+          "cross-platform fallback wrote the publishable article")
+
+    # --- primary model retries ONCE on a validation failure ----------------
+    reset_data_dir()
+    pending_fixture = load(FIXTURES / "pending.json")
+    only_biz = {**pending_fixture, "groups": [pending_fixture["groups"][1]]}
+    (DATA / "pending.json").write_text(
+        json.dumps(only_biz, ensure_ascii=False), encoding="utf-8")
+    bad = json.loads(json.dumps(DRAFT_BIZ))
+    bad["cat"] = "not-a-cat"
+    prim = FakeProvider("gemini", [bad, DRAFT_BIZ])
+
+    original = write.build_providers
+    write.build_providers = lambda: [prim]
+    try:
+        write.main()
+    finally:
+        write.build_providers = original
+
+    check(prim.calls == 2, f"primary retried exactly once, got {prim.calls}")
+    articles = all_articles()
+    check(len(articles) == 1 and articles[0]["writer"] == "gemini:fake",
+          "retry produced the published article")
+    print("test_model_chain_and_routing_policy: done")
+
+
 def test_editorial_gate():
     """Model reject skips the group; fabricated quotes are dropped/blocking."""
     reset_data_dir()
@@ -566,7 +637,8 @@ def test_editorial_gate():
     articles = all_articles()
     check(len(articles) == 1,
           f"only the quote-backed group publishes, got {len(articles)}")
-    check(solo.calls == 3, f"one call per group, got {solo.calls}")
+    # 4 calls: g1 reject, g2 fabricated + one primary retry, g3 publish.
+    check(solo.calls == 4, f"expected 4 calls incl. retry, got {solo.calls}")
     facts = articles[0].get("facts", [])
     check(len(facts) == 1 and "unruly passengers" in facts[0]["sourceQuote"],
           f"fabricated fact dropped, verified fact kept: {facts}")
@@ -611,8 +683,8 @@ def test_all_providers_auth_dead():
 def main():
     tests = [test_publish_flow, test_group_cap_and_unique_ids,
              test_extract_json_and_validate_draft, test_provider_failover,
-             test_editorial_gate, test_all_providers_auth_dead,
-             test_no_api_key_end_to_end]
+             test_model_chain_and_routing_policy, test_editorial_gate,
+             test_all_providers_auth_dead, test_no_api_key_end_to_end]
     crashed = False
     for test in tests:
         try:
