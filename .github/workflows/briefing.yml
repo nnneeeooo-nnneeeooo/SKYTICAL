@@ -81,6 +81,8 @@ jobs:
           BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}
           BRIEFING_MAX_ITEMS_PER_SECTION: ${{ vars.BRIEFING_MAX_ITEMS_PER_SECTION }}
           BRIEFING_EXTRA_LLM_CALLS_MAX: ${{ vars.BRIEFING_EXTRA_LLM_CALLS_MAX }}
+          # private usage-dashboard URL token (page skipped when unset)
+          AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
         run: |
           if [ -n "${{ steps.ed.outputs.date }}" ]; then
             python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}" --date "${{ steps.ed.outputs.date }}"
@@ -119,6 +121,7 @@ jobs:
           git config user.name "avwire-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/briefings
+          git add data/usage.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "no changes to commit"
             exit 0

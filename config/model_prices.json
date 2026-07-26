@@ -1,0 +1,15 @@
+{
+  "_comment": "理論價值試算用的參考牌價,單位 USD / 100萬 tokens。kind: reference=公開牌價或市場加權價, estimate=估計值(該模型無明確公開牌價)。本站全部走免費額度,實際支出為 $0;此表僅供『若按牌價計費值多少錢』的參考,可自行修改。鍵是模型 id 的子字串比對。",
+  "usdToTwd": 31.5,
+  "models": {
+    "nemotron-3-ultra": {"in": 0.423, "out": 2.61, "kind": "reference", "note": "OpenRouter weighted avg, 2026-06"},
+    "nemotron-3-super": {"in": 0.2, "out": 0.8, "kind": "estimate", "note": "Nemotron family <= $0.40 input; estimated"},
+    "deepseek-v4-pro": {"in": 0.5, "out": 2.0, "kind": "estimate", "note": "estimated; not in the NIM catalog yet"},
+    "gemini-3.6-flash": {"in": 1.5, "out": 7.5, "kind": "reference", "note": "Google paid tier, 2026-07"},
+    "gemini-3.5-flash": {"in": 1.5, "out": 9.0, "kind": "reference", "note": "Google paid tier, 2026-07"},
+    "qwen3.5-397b": {"in": 0.39, "out": 0.9, "kind": "reference", "note": "Qwen official, 2026-07"},
+    "glm-5.2": {"in": 0.447, "out": 3.31, "kind": "reference", "note": "OpenRouter weighted avg, 2026-06"},
+    "mistral-medium-3.5": {"in": 0.4, "out": 2.0, "kind": "estimate", "note": "Mistral Medium 3 class; estimated"},
+    "claude": {"in": null, "out": null, "kind": "unknown", "note": "not in the provider chain; fill in if used"}
+  }
+}

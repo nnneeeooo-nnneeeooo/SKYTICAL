@@ -9,6 +9,7 @@ one-line log to stdout and the script exits 0.
 """
 from __future__ import annotations
 
+import os
 import re
 import shutil
 import sys
@@ -1203,6 +1204,82 @@ def stats_views(stats, lang: str):
     return {"tiles": tiles, "otp": otp, "fleet": fleet, "delays": delays}
 
 
+# ── private usage dashboard (URL token from AVWIRE_USAGE_TOKEN secret) ──────
+
+_USAGE_TOKEN_RE = re.compile(r"[A-Za-z0-9_-]{16,128}\Z")
+
+
+def _usage_price_for(label: str, prices: dict):
+    for needle, p in (prices.get("models") or {}).items():
+        if isinstance(p, dict) and needle in label:
+            return p
+    return None
+
+
+def usage_rows(ledger: dict, prices: dict):
+    """Per-model rows + totals with theoretical USD value at list prices."""
+    rows = []
+    totals = {"calls": 0, "in": 0, "out": 0, "usd": 0.0,
+              "unknown": 0, "all_priced": True}
+    for label, m in sorted((ledger.get("models") or {}).items()):
+        if not isinstance(m, dict):
+            continue
+        calls = int(m.get("calls") or 0)
+        tokens_in = int(m.get("inputTokens") or 0)
+        tokens_out = int(m.get("outputTokens") or 0)
+        unknown = int(m.get("unknownCalls") or 0)
+        price = _usage_price_for(label, prices)
+        usd, kind = None, ""
+        if (price and isinstance(price.get("in"), (int, float))
+                and isinstance(price.get("out"), (int, float))):
+            usd = (tokens_in / 1e6 * price["in"]
+                   + tokens_out / 1e6 * price["out"])
+            kind = str(price.get("kind") or "")
+        elif tokens_in or tokens_out:
+            totals["all_priced"] = False
+        rows.append({"label": label, "calls": calls, "in": tokens_in,
+                     "out": tokens_out, "unknown": unknown,
+                     "usd": usd, "kind": kind})
+        totals["calls"] += calls
+        totals["in"] += tokens_in
+        totals["out"] += tokens_out
+        totals["unknown"] += unknown
+        totals["usd"] += usd or 0.0
+    return rows, totals
+
+
+def render_usage_dashboard(env, build) -> int:
+    """Private dashboard at /u/<token>/ - only when the secret is set."""
+    token = os.environ.get("AVWIRE_USAGE_TOKEN", "").strip()
+    if not token:
+        return 0
+    if not _USAGE_TOKEN_RE.fullmatch(token):
+        print("build: AVWIRE_USAGE_TOKEN ignored "
+              "(want 16-128 chars of A-Za-z0-9_-)")
+        return 0
+    ledger = load_json(DATA_DIR / "usage.json", {})
+    prices = load_json(Path(__file__).resolve().parent.parent
+                       / "config" / "model_prices.json", {})
+    rows, totals = usage_rows(ledger, prices)
+    try:
+        rate = float(prices.get("usdToTwd") or 31.5)
+    except (TypeError, ValueError):
+        rate = 31.5
+    daily = [{"day": d, **v}
+             for d, v in sorted((ledger.get("daily") or {}).items(),
+                                reverse=True)[:14]
+             if isinstance(v, dict)]
+    ctx = {
+        "base": BASE_PATH, "favicon": FAVICON, "build": build,
+        "rows": rows, "totals": totals, "daily": daily,
+        "twd": totals["usd"] * rate, "rate": rate,
+        "updated": ledger.get("updatedUtc") or "尚無紀錄",
+        "tracking_since": ledger.get("trackingSinceUtc") or "尚未開始",
+    }
+    render(env, "usage.html", f"u/{token}/index.html", ctx)
+    return 1
+
+
 # ── rendering ────────────────────────────────────────────────────────────────
 
 def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=True):
@@ -1387,6 +1464,8 @@ def main() -> int:
         ctx.update(about=ABOUT[lang])
         render(env, "about.html", rel_path(lang, "about/index.html"), ctx)
         pages += 1
+
+    pages += render_usage_dashboard(env, build)
 
     # 404 (zh chrome, bilingual body), served by GitHub Pages from the root
     ctx = base_ctx("zh", "none", "", title=f"{L['zh']['siteName']} — 404",

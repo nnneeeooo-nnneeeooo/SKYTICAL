@@ -1156,6 +1156,14 @@ def main() -> None:
           f"{len(queued_entries)} for review, rejected "
           f"{len(rejected_groups)}, skipped {skipped}, "
           f"pending {remaining_count}")
+    try:
+        # Flush this run's per-provider token spend into data/usage.json
+        # (exactly once - the counters live on the provider objects).
+        import usage as usage_ledger
+
+        usage_ledger.record_providers(providers)
+    except Exception as exc:
+        print(f"write: usage ledger update failed ({exc})")
     calls_note = " ".join(f"{label}={n}" for label, n in ai_calls.items()) \
         or "none"
     # http_calls includes internal format-repair calls, so it is the true

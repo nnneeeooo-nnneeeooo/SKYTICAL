@@ -606,32 +606,41 @@ def maybe_llm_intro(briefing: dict, sections: dict,
         warnings.append(f"intro skipped: providers unavailable ({exc})")
         return
     calls = 0
-    for provider in providers:
-        if calls >= EXTRA_LLM_CALLS_MAX:
-            break
-        calls += 1
+    try:
+        for provider in providers:
+            if calls >= EXTRA_LLM_CALLS_MAX:
+                break
+            calls += 1
+            try:
+                draft = provider.draft(INTRO_SYSTEM_PROMPT,
+                                       _intro_digest(sections), INTRO_SCHEMA)
+            except Exception as exc:
+                warnings.append(f"intro call failed on {provider.name}: "
+                                f"{type(exc).__name__}")
+                continue
+            if not isinstance(draft, dict):
+                warnings.append(f"intro refused/empty on {provider.name}")
+                continue
+            intro_zh = str(draft.get("introZh") or "").strip()
+            intro_en = str(draft.get("introEn") or "").strip()
+            if not (10 <= len(intro_zh) <= 300
+                    and 10 <= len(intro_en) <= 400):
+                warnings.append("intro discarded: length outside bounds")
+                continue
+            briefing["intro_zh"] = intro_zh
+            briefing["intro_en"] = intro_en
+            briefing["generation_mode"] = "llm_assisted"
+            briefing["generation_model"] = {"provider": provider.name,
+                                            "model": provider.model}
+            return
+        # all attempts failed → deterministic output stands
+    finally:
         try:
-            draft = provider.draft(INTRO_SYSTEM_PROMPT,
-                                   _intro_digest(sections), INTRO_SCHEMA)
-        except Exception as exc:
-            warnings.append(f"intro call failed on {provider.name}: "
-                            f"{type(exc).__name__}")
-            continue
-        if not isinstance(draft, dict):
-            warnings.append(f"intro refused/empty on {provider.name}")
-            continue
-        intro_zh = str(draft.get("introZh") or "").strip()
-        intro_en = str(draft.get("introEn") or "").strip()
-        if not (10 <= len(intro_zh) <= 300 and 10 <= len(intro_en) <= 400):
-            warnings.append("intro discarded: length outside bounds")
-            continue
-        briefing["intro_zh"] = intro_zh
-        briefing["intro_en"] = intro_en
-        briefing["generation_mode"] = "llm_assisted"
-        briefing["generation_model"] = {"provider": provider.name,
-                                        "model": provider.model}
-        return
-    # all attempts failed → deterministic output stands
+            import usage as usage_ledger
+
+            usage_ledger.record_providers(providers)
+        except Exception:
+            pass
 
 
 # ── assembly, persistence ────────────────────────────────────────────────────

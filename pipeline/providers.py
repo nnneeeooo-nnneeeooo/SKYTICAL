@@ -174,6 +174,14 @@ def _body_snippet(response) -> str:
     return response.text[:200].replace("\n", " ")
 
 
+def _blank_usage() -> dict:
+    """Per-provider token ledger, flushed to data/usage.json by usage.py.
+
+    usageEvents counts responses that actually carried usage metadata;
+    http_calls - usageEvents = calls whose token spend is unknown."""
+    return {"inputTokens": 0, "outputTokens": 0, "usageEvents": 0}
+
+
 class AnthropicProvider:
     name = "anthropic"
 
@@ -182,6 +190,7 @@ class AnthropicProvider:
         self.model = model or os.environ.get("AVWIRE_MODEL") or "claude-opus-5"
         self.label = f"{self.name}:{self.model}"
         self.http_calls = 0
+        self.usage = _blank_usage()
         self._client = None
 
     def available(self) -> bool:
@@ -216,6 +225,13 @@ class AnthropicProvider:
             raise ProviderError(type(exc).__name__) from exc
         except anthropic.APIConnectionError as exc:
             raise ProviderError(type(exc).__name__) from exc
+        usage = getattr(response, "usage", None)
+        if usage is not None:
+            self.usage["inputTokens"] += int(
+                getattr(usage, "input_tokens", 0) or 0)
+            self.usage["outputTokens"] += int(
+                getattr(usage, "output_tokens", 0) or 0)
+            self.usage["usageEvents"] += 1
         if response.stop_reason == "refusal":
             print(f"write: {self.label} refused")
             return None
@@ -244,6 +260,7 @@ class GeminiProvider:
                       or GEMINI_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
         self.http_calls = 0  # real API spend incl. format-repair calls
+        self.usage = _blank_usage()
 
     def available(self) -> bool:
         return bool(os.environ.get("GEMINI_API_KEY"))
@@ -312,6 +329,15 @@ class GeminiProvider:
         reasoning trace) are excluded and never reach the JSON parser, the
         published data or the logs."""
         data = response.json()
+        meta = data.get("usageMetadata") or {}
+        if meta:
+            self.usage["inputTokens"] += int(
+                meta.get("promptTokenCount") or 0)
+            # thinking tokens are billed output tokens too
+            self.usage["outputTokens"] += (
+                int(meta.get("candidatesTokenCount") or 0)
+                + int(meta.get("thoughtsTokenCount") or 0))
+            self.usage["usageEvents"] += 1
         feedback = data.get("promptFeedback") or {}
         if feedback.get("blockReason"):
             print(f"write: {self.label} blocked ({feedback['blockReason']})")
@@ -373,6 +399,7 @@ class NvidiaProvider:
                       or NVIDIA_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
         self.http_calls = 0  # real API spend incl. format-repair calls
+        self.usage = _blank_usage()
 
     def available(self) -> bool:
         return bool(os.environ.get("NVIDIA_API_KEY"))
@@ -416,6 +443,12 @@ class NvidiaProvider:
         trace some NIM models emit) is never read, parsed, published or
         logged. Returns None for content blocks; raises on failures."""
         data = response.json()
+        usage = data.get("usage") or {}
+        if usage:
+            self.usage["inputTokens"] += int(usage.get("prompt_tokens") or 0)
+            self.usage["outputTokens"] += int(
+                usage.get("completion_tokens") or 0)
+            self.usage["usageEvents"] += 1
         choices = data.get("choices") or []
         if not choices:
             raise ProviderError("no choices in response")

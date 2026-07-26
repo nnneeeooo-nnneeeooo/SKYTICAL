@@ -49,6 +49,8 @@ jobs:
           AVWIRE_PROVIDER_ORDER: ${{ vars.AVWIRE_PROVIDER_ORDER }}
           # freshness window (hours); code default 120, validated 24-336
           NEWS_MAX_AGE_HOURS: ${{ vars.NEWS_MAX_AGE_HOURS }}
+          # private usage-dashboard URL token (page skipped when unset)
+          AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
         run: |
           python pipeline/fetch.py
           python pipeline/dedupe.py
