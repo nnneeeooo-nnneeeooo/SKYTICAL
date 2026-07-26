@@ -64,6 +64,9 @@ ALLOWED_HOSTS = {
     # robots.txt is still honored per fetch
     "www.cna.com.tw", "cna.com.tw",
 }
+# NEVER add simpleflying.com or other Valnet properties: their robots.txt
+# terms explicitly prohibit automated text/data mining and AI use of page
+# content (checked 2026-07-27). Their RSS excerpt is all we may use.
 
 # Text shown to the model AND used for quote verification is capped at
 # exactly this many characters - write.py imports it so the two sides can

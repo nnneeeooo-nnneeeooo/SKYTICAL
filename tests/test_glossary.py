@@ -99,6 +99,38 @@ unrelated = draft("民航局公布中秋加班機", "CAA Taiwan announces extra 
 check("names absent from the draft's en text are not enforced",
       write.glossary_problem(unrelated, GROUP) is None)
 
+# ── fabrication tripwire (the Delta-pay body invention, 2026-07-27) ─────────
+
+THIN_GROUP = {"id": "g2", "items": [{
+    "title": "How Much A Delta Flight Attendant Earns Before Door Close",
+    "summary": "The first airline to solve a long term grievance.",
+    "source": "Simple Flying", "url": "https://example.com/b"}]}
+
+fab = draft("Simple Flying 發布達美航空空服員薪資報導",
+            "Simple Flying publishes Delta Air Lines pay report")
+fab["zh"]["body"] = ["文章詳細分析薪資結構，並引述公司內部文件說明實施細節。"]
+check("thin material + body describing unseen article contents rejected",
+      write.fabrication_problem(fab, THIN_GROUP) is not None)
+
+ok = draft("Simple Flying 發布達美航空空服員薪資報導",
+           "Simple Flying publishes Delta Air Lines pay report")
+ok["zh"]["body"] = ["該報導摘要指出，達美航空成為首家解決此一長期薪資糾紛的航空公司。"]
+check("supported-only body passes the tripwire",
+      write.fabrication_problem(ok, THIN_GROUP) is None)
+
+rich_group = {"id": "g3", "items": [dict(THIN_GROUP["items"][0],
+                                         fulltext="long official text " * 30)]}
+check("groups with full text are exempt (long bodies may describe quotes)",
+      write.fabrication_problem(fab, rich_group) is None)
+
+zh_material_group = {"id": "g4", "items": [{
+    "title": "民航局引述調查報告說明事件經過", "summary": "官方說明。",
+    "source": "CNA", "url": "https://example.com/c"}]}
+quoted = draft("民航局引述調查報告", "CAA cites the investigation report")
+quoted["zh"]["body"] = ["民航局引述調查報告說明事件經過。"]
+check("phrases present in the material itself stay allowed",
+      write.fabrication_problem(quoted, zh_material_group) is None)
+
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
       f"{FAILED} FAILED")

@@ -230,6 +230,14 @@ EVIDENCE RULES:
 - Never invent or add: airline/IATA/ICAO codes, flight numbers,
   registrations, aircraft sub-variants, engine types, seat counts, casualty
   figures, monetary amounts, dates, times, locations or causes.
+- Derivative items (the material is another outlet's headline plus a short
+  blurb about THEIR article): you may state only who published, when, the
+  title, and what the shown excerpt itself says. NEVER describe the unseen
+  article's contents, structure, methodology, comparisons or quoted
+  documents (no "詳細分析…", "引述內部文件", "比較新舊…", "強調…影響"
+  claims about text you were not shown - this is fabrication and is
+  machine-checked). If that leaves too little for the minimum lengths,
+  reject instead of padding.
 - Never merge different events, flights, dates, airports or operators into
   one story.
 - Preserve the certainty level of the material. reportedly / according to /
@@ -361,7 +369,9 @@ aircraft type, place or cause not in the material? (3) any hedge silently
 upgraded to certainty? (4) is each sourceQuote copied verbatim? (5)
 publication date confused with event date? (6) riskFlags complete, and if
 non-empty is status manual_review or reject? (7) are status,
-requiresHumanReview and decisionReason mutually consistent? If a check
+requiresHumanReview and decisionReason mutually consistent? (8) does any
+body/summary sentence describe contents of a source article that the shown
+material does not contain? If a check
 fails and you cannot fix the draft, downgrade: manual_review when evidence
 suffices but risk remains, reject when evidence is insufficient.
 """
@@ -445,6 +455,33 @@ def glossary_problem(draft: dict, group: dict):
         if name.casefold() not in zh_low:
             return (f'"{name}" has no established Chinese name and must '
                     "appear verbatim in the zh text")
+    return None
+
+
+# Fabrication tripwire (owner-reported 2026-07-27: a thin derivative item
+# grew a body claiming the unseen article "詳細分析…引述內部文件…" - none of
+# it in the material). When a group has NO fulltext, drafts may not use
+# these tell-tale sourcing verbs unless the phrase itself appears in the
+# material; with fulltext present the gate is off (long bodies legitimately
+# describe actually-shown quotes).
+_FABRICATION_PHRASES = ("內部文件", "詳細分析", "深入分析", "引述", "訪談",
+                        "知情人士", "消息人士", "據了解", "據悉")
+
+
+def fabrication_problem(draft: dict, group: dict):
+    items = group.get("items") or []
+    if any(str(item.get("fulltext") or "").strip() for item in items):
+        return None
+    zh_block = draft.get("zh") or {}
+    zh_text = " ".join([str(zh_block.get("summary") or ""),
+                        " ".join(str(p) for p in zh_block.get("body") or [])])
+    material = _squash(" ".join(
+        f"{item.get('title') or ''} {item.get('summary') or ''}"
+        for item in items))
+    for phrase in _FABRICATION_PHRASES:
+        if phrase in zh_text and _squash(phrase) not in material:
+            return (f"body/summary uses 「{phrase}」 about unseen source "
+                    f"content (thin material, no full text)")
     return None
 
 
@@ -643,7 +680,8 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None):
                 return candidate, []
             facts = verify_facts(candidate, group, provider.label)
             if facts:
-                problem = glossary_problem(candidate, group)
+                problem = (glossary_problem(candidate, group)
+                           or fabrication_problem(candidate, group))
                 if problem is None:
                     return candidate, facts
             else:
@@ -1030,10 +1068,12 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                 print(f"write: {provider.label} flight draft has no "
                       "machine-verifiable sourceQuote; trying next provider")
                 continue
-            g_problem = glossary_problem(candidate, group)
+            g_problem = (glossary_problem(candidate, group)
+                         or fabrication_problem(candidate, group))
             if g_problem:
                 print(f"write: {provider.label} flight draft violates the "
-                      f"name glossary ({g_problem}); trying next provider")
+                      f"name/fabrication rules ({g_problem}); trying next "
+                      "provider")
                 continue
             review_reason = _flight_review_reason(event, candidate)
             if review_reason is None:

@@ -105,6 +105,10 @@ check("news.google.com redirects are not allowlisted",
       fulltext.fetch_fulltext(
           "https://news.google.com/rss/articles/x") is None
       and fake.calls == [])
+check("Valnet properties stay off the allowlist (terms ban AI mining)",
+      not any("simpleflying" in h for h in fulltext.ALLOWED_HOSTS)
+      and fulltext.fetch_fulltext("https://simpleflying.com/x") is None
+      and fake.calls == [])
 
 reset()
 fake.routes["https://www.faa.gov/robots.txt"] = ROBOTS_DENY
