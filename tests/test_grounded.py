@@ -182,6 +182,20 @@ check("owner-tuned sampling: temperature 0.2 + high thinking",
 check("usage shim carries thinking-inclusive token counts",
       shim.usage["inputTokens"] == 100 and shim.http_calls == 1)
 check("no key -> no call", grounded.call_grounded(window) == (None, None))
+check("grounded call targets a real model id in the URL",
+      f"models/{grounded.GROUNDED_MODEL}:generateContent"
+      in captured["url"] and grounded.GROUNDED_MODEL)
+
+# the empty-string env CI passes when the repo var is unset must not
+# blank the model id (this exact bug produced HTTP 404 in production)
+import importlib  # noqa: E402
+
+os.environ["BRIEFING_GROUNDED_MODEL"] = ""
+importlib.reload(grounded)
+check("empty BRIEFING_GROUNDED_MODEL env falls back to the default",
+      grounded.GROUNDED_MODEL == "gemini-3.6-flash")
+del os.environ["BRIEFING_GROUNDED_MODEL"]
+importlib.reload(grounded)
 
 del os.environ["BRIEFING_GROUNDED"]
 

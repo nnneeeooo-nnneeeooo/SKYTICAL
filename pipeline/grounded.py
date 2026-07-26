@@ -36,8 +36,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import squash_text  # noqa: E402
 from providers import extract_json  # noqa: E402
 
-GROUNDED_MODEL = os.environ.get("BRIEFING_GROUNDED_MODEL",
-                                "gemini-3.6-flash")
+# `or` (not a get() default) so the empty env var CI passes when the repo
+# variable is unset still falls back to the real model id.
+GROUNDED_MODEL = (os.environ.get("BRIEFING_GROUNDED_MODEL")
+                  or "gemini-3.6-flash")
 TIMEOUT = (10, 180)
 MAX_PER_SECTION = 4
 SEEN_TTL_HOURS = 72
