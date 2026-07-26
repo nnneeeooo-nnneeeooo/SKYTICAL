@@ -434,17 +434,25 @@ def _finalize(raw_items: list[dict], fetched_iso: str,
     items = []
     for item in raw_items[:MAX_ITEMS_PER_SOURCE]:
         published = item.get("published")
+        inferred = False
         if published:
             published_iso = iso_minute(published)
         else:
+            # No source-provided date: stamp first-seen time, stable across
+            # fetches, and FLAG it so downstream never presents the stamp
+            # as a real publication time.
             published_iso = prev_published.get(norm_url(item["url"]), fetched_iso)
-        items.append({
+            inferred = True
+        row = {
             "title": _clip(item["title"], TITLE_MAX),
             "url": item["url"],
             "publishedUtc": published_iso,
             "summary": _clip(_collapse(item.get("summary"))),
             "image": item.get("image"),
-        })
+        }
+        if inferred:
+            row["dateInferred"] = True
+        items.append(row)
     return items
 
 

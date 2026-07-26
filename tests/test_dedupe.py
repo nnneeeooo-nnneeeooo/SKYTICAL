@@ -5,9 +5,10 @@ No pytest required — run from the repo root with:
     py tests\\test_dedupe.py
 
 Fixtures under tests/fixtures/dedupe/ use {{H-n}} / {{D-n}} placeholders
-(n hours / days before now) so the 48-hour and 21-day windows never go
-stale. Each test materializes the fixtures into a temp AVWIRE_DATA_DIR
-and runs dedupe.py as a subprocess, never touching the real data/ dir.
+(n hours / days before now) so the freshness (default 120 h) and 21-day
+windows never go stale. Each test materializes the fixtures into a temp
+AVWIRE_DATA_DIR and runs dedupe.py as a subprocess, never touching the
+real data/ dir.
 """
 from __future__ import annotations
 
@@ -51,8 +52,12 @@ def _materialize_fixtures(data_dir: Path) -> None:
         dst.write_text(_render(src.read_text(encoding="utf-8")), encoding="utf-8")
 
 
-def _run_dedupe(data_dir: Path) -> str:
+def _run_dedupe(data_dir: Path, extra_env: dict | None = None) -> str:
     env = dict(os.environ, AVWIRE_DATA_DIR=str(data_dir))
+    env.pop("NEWS_MAX_AGE_HOURS", None)
+    env.pop("AVWIRE_MAX_AGE_HOURS", None)
+    if extra_env:
+        env.update(extra_env)
     proc = subprocess.run(
         [sys.executable, str(DEDUPE_SCRIPT)],
         cwd=REPO,
@@ -64,6 +69,15 @@ def _run_dedupe(data_dir: Path) -> str:
     )
     assert proc.returncode == 0, f"dedupe exited {proc.returncode}: {proc.stderr}"
     return proc.stdout.strip()
+
+
+def _summary_line(stdout: str) -> str:
+    """First stdout line: 'dedupe: N raw items -> N fresh -> N groups'.
+    (Config warnings may precede it; the stats line follows it.)"""
+    for line in stdout.splitlines():
+        if line.startswith("dedupe:"):
+            return line
+    return stdout
 
 
 def _load_pending(data_dir: Path) -> dict:
@@ -95,7 +109,13 @@ def test_filtering_grouping_and_ranking() -> None:
         # 15 raw (easa ok=false items are carried forward, not skipped)
         # -> 11 fresh (dropped: seen URL, seen title, stale, empty title)
         # -> 5 groups.
-        assert stdout == "dedupe: 15 raw items -> 11 fresh -> 5 groups", stdout
+        assert _summary_line(stdout) == \
+            "dedupe: 15 raw items -> 11 fresh -> 5 groups", stdout
+        assert "skipped_too_old=1" in stdout, stdout
+        assert "skipped_seen_url=1" in stdout, stdout
+        assert "skipped_seen_title=1" in stdout, stdout
+        assert "skipped_untitled=1" in stdout, stdout
+        assert "window=120h" in stdout, stdout
 
         # dedupe must never write seen.json.
         assert (data_dir / "seen.json").read_bytes() == seen_before
@@ -114,7 +134,7 @@ def test_filtering_grouping_and_ranking() -> None:
         all_titles = [i["title"] for g in groups for i in g["items"]]
         for gone in (
             "FAA statement on winter operations",      # seen URL
-            "FAA archives old advisory circular",      # stale (72 h)
+            "FAA archives old advisory circular",      # stale (130 h)
             "Boeing delivers 100th 787 to Emirates!",  # seen title, 2 days ago
             "   ",                                     # empty title
         ):
@@ -207,7 +227,8 @@ def test_group_cap_and_recency_order() -> None:
         )
         # No seen.json at all: dedupe must cope with it missing.
         stdout = _run_dedupe(data_dir)
-        assert stdout == "dedupe: 15 raw items -> 15 fresh -> 12 groups", stdout
+        assert _summary_line(stdout) == \
+            "dedupe: 15 raw items -> 15 fresh -> 12 groups", stdout
 
         groups = _load_pending(data_dir)["groups"]
         assert len(groups) == dedupe.MAX_GROUPS == 12
@@ -221,9 +242,90 @@ def test_empty_data_dir() -> None:
     with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
         data_dir = Path(tmp)
         stdout = _run_dedupe(data_dir)
-        assert stdout == "dedupe: 0 raw items -> 0 fresh -> 0 groups", stdout
+        assert _summary_line(stdout) == \
+            "dedupe: 0 raw items -> 0 fresh -> 0 groups", stdout
         pending = _load_pending(data_dir)
         assert pending["groups"] == []
+
+
+def _write_snapshot(data_dir: Path, key: str, items: list) -> None:
+    raw_dir = data_dir / "raw"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    (raw_dir / f"{key}.json").write_text(
+        json.dumps({"source": key, "fetchedUtc": _stamp(hours=0), "ok": True,
+                    "error": None, "items": items}, ensure_ascii=False),
+        encoding="utf-8")
+
+
+def _mk_item(title: str, url: str, hours_ago: float, summary: str) -> dict:
+    dt = datetime.now(timezone.utc) - timedelta(hours=hours_ago)
+    return {"title": title, "url": url,
+            "publishedUtc": dt.strftime("%Y-%m-%dT%H:%MZ"),
+            "summary": summary, "image": None}
+
+
+def test_freshness_window_and_future_guard() -> None:
+    """120h default window (env-tunable, validated) + future-date guard."""
+    body = "A perfectly usable summary sentence with plenty of real text."
+    items = [
+        _mk_item("Future item within clock skew", "https://www.faa.gov/n/f2",
+                 -2, body),            # +2h -> tolerated
+        _mk_item("Future item beyond clock skew", "https://www.faa.gov/n/f8",
+                 -8, body),            # +8h -> source clock error, dropped
+        _mk_item("Hundred hour old official notice", "https://www.faa.gov/n/o1",
+                 100, body),           # kept by the 120h default
+        _mk_item("Ancient item far outside window", "https://www.faa.gov/n/o2",
+                 130, body),           # dropped
+    ]
+    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+        data_dir = Path(tmp)
+        _write_snapshot(data_dir, "faa", items)
+
+        stdout = _run_dedupe(data_dir)
+        assert _summary_line(stdout) == \
+            "dedupe: 4 raw items -> 2 fresh -> 2 groups", stdout
+        assert "skipped_future_date=1" in stdout, stdout
+        assert "skipped_too_old=1" in stdout, stdout
+        titles = [g["items"][0]["title"]
+                  for g in _load_pending(data_dir)["groups"]]
+        assert "Future item within clock skew" in titles
+        assert "Hundred hour old official notice" in titles
+
+        # Narrower window via env: the 100h item now falls out too.
+        stdout = _run_dedupe(data_dir, {"NEWS_MAX_AGE_HOURS": "72"})
+        assert _summary_line(stdout) == \
+            "dedupe: 4 raw items -> 1 fresh -> 1 groups", stdout
+        assert "window=72h" in stdout, stdout
+
+        # Invalid values fall back to the safe default with a warning.
+        for bad in ("abc", "12", "999"):
+            stdout = _run_dedupe(data_dir, {"NEWS_MAX_AGE_HOURS": bad})
+            assert "config: NEWS_MAX_AGE_HOURS" in stdout, (bad, stdout)
+            assert "window=120h" in stdout, (bad, stdout)
+
+
+def test_material_groups_rank_first() -> None:
+    """Title-only groups must not crowd real stories out of the cap."""
+    body = "A real summary carrying enough evidence text for the model."
+    items = [
+        _mk_item("Newest but title only headline item",
+                 "https://www.faa.gov/n/thin", 1, ""),
+        _mk_item("Older official notice with a full summary",
+                 "https://www.faa.gov/n/full", 30, body),
+        _mk_item("Summary that just repeats its own headline",
+                 "https://www.faa.gov/n/echo", 2,
+                 "Summary that just repeats its own headline"),
+    ]
+    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+        data_dir = Path(tmp)
+        _write_snapshot(data_dir, "faa", items)
+        stdout = _run_dedupe(data_dir)
+        assert _summary_line(stdout) == \
+            "dedupe: 3 raw items -> 3 fresh -> 3 groups", stdout
+        groups = _load_pending(data_dir)["groups"]
+        assert groups[0]["items"][0]["title"] == \
+            "Older official notice with a full summary", groups
+        assert "groups_with_material=1/3" in stdout, stdout
 
 
 def main() -> None:
@@ -232,6 +334,8 @@ def main() -> None:
         test_filtering_grouping_and_ranking,
         test_group_cap_and_recency_order,
         test_empty_data_dir,
+        test_freshness_window_and_future_guard,
+        test_material_groups_rank_first,
     ]
     for test in tests:
         test()

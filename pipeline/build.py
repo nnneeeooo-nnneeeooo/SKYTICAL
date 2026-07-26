@@ -309,7 +309,19 @@ def prep_article(raw):
     image = str(raw["image"]) if raw.get("image") else None
     if image and not _safe_web_url(image):
         image = None
-    tpe = dt.astimezone(TPE)
+    # Display the SOURCE's newest publication time when the write stage
+    # recorded one; the generation time (dt) is used for ordering only, so
+    # a days-old official release is never presented as breaking news.
+    display_dt = dt
+    if raw.get("sourcePublishedUtc"):
+        try:
+            display_dt = parse_iso(str(raw["sourcePublishedUtc"]))
+        except (ValueError, TypeError):
+            pass
+    tpe = display_dt.astimezone(TPE)
+    today_tpe = now_utc().astimezone(TPE).date()
+    time_label = (tpe.strftime("%H:%M") if tpe.date() == today_tpe
+                  else tpe.strftime("%m/%d"))
     return {
         "id": art_id,
         "dt": dt,
@@ -317,7 +329,7 @@ def prep_article(raw):
         "tag_class": TAGCLS.get(cat, "tag-neutral"),
         "image": image,
         "source": str(raw.get("primarySource") or (sources[0]["name"] if sources else "—")),
-        "time": tpe.strftime("%H:%M"),
+        "time": time_label,
         "meta_ts": tpe.strftime("%Y-%m-%d %H:%M") + " UTC+8",
         "zh": side(zh, en),
         "en": side(en, zh),

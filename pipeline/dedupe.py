@@ -9,15 +9,17 @@ data/seen.json is READ-ONLY here — write.py owns it (see CONTRACTS.md).
 """
 from __future__ import annotations
 
-import os
 import re
 from datetime import datetime, timedelta, timezone
 from difflib import SequenceMatcher
 
 from common import (
     DATA_DIR,
+    FUTURE_SKEW_HOURS,
+    NEWS_MAX_AGE_HOURS,
     RAW_DIR,
     SOURCES,
+    group_has_material,
     iso_minute,
     load_json,
     norm_url,
@@ -28,13 +30,9 @@ from common import (
 
 MAX_GROUPS = 12          # emitted per run; bounds LLM cost in write.py
 MAX_ITEMS_PER_GROUP = 5
-# Freshness window. Official sources go quiet on weekends, so the repo
-# variable AVWIRE_MAX_AGE_HOURS can widen it (e.g. 120) without a deploy;
-# the 21-day seen.json memory still prevents any story from running twice.
-try:
-    MAX_ITEM_AGE_HOURS = int(os.environ.get("AVWIRE_MAX_AGE_HOURS") or 48)
-except ValueError:
-    MAX_ITEM_AGE_HOURS = 48
+# Freshness window: single source of truth in common.NEWS_MAX_AGE_HOURS
+# (env NEWS_MAX_AGE_HOURS, validated, default 120).
+MAX_ITEM_AGE_HOURS = NEWS_MAX_AGE_HOURS
 SEEN_TITLE_DAYS = 21     # only seen.json titles this recent are compared
 SEEN_TITLE_SIM = 0.75    # vs seen.json titles -> drop as already covered
 GROUP_TITLE_SIM = 0.60   # between fresh items -> same story group
@@ -111,23 +109,31 @@ def _load_seen(now: datetime) -> tuple[set[str], list[str]]:
 
 
 def _is_fresh(
-    item: dict, now: datetime, seen_urls: set[str], seen_titles: list[str]
+    item: dict, now: datetime, seen_urls: set[str], seen_titles: list[str],
+    stats: dict,
 ) -> bool:
     title = str(item.get("title") or "").strip()
     if not title:
+        stats["skipped_untitled"] += 1
         return False
     url = str(item.get("url") or "").strip()
     if url and norm_url(url) in seen_urls:
+        stats["skipped_seen_url"] += 1
         return False
     published = _published(item)
-    if published is not None and now - published > timedelta(
-        hours=MAX_ITEM_AGE_HOURS
-    ):
-        return False
+    if published is not None:
+        if now - published > timedelta(hours=MAX_ITEM_AGE_HOURS):
+            stats["skipped_too_old"] += 1
+            return False
+        if published - now > timedelta(hours=FUTURE_SKEW_HOURS):
+            # Beyond timezone/parse skew: a source clock error, not news.
+            stats["skipped_future_date"] += 1
+            return False
     normalized = norm_title(title)
     if normalized:
         for seen_title in seen_titles:
             if _similar(normalized, seen_title) >= SEEN_TITLE_SIM:
+                stats["skipped_seen_title"] += 1
                 return False
     return True
 
@@ -188,19 +194,28 @@ def main() -> None:
     now = now_utc()
     raw_items = _load_raw_items()
     seen_urls, seen_titles = _load_seen(now)
+    stats = {key: 0 for key in (
+        "skipped_untitled", "skipped_seen_url", "skipped_too_old",
+        "skipped_future_date", "skipped_seen_title")}
     fresh = [
         item
         for item in raw_items
-        if _is_fresh(item, now, seen_urls, seen_titles)
+        if _is_fresh(item, now, seen_urls, seen_titles, stats)
     ]
 
-    ranked: list[tuple[bool, datetime, list[dict]]] = []
+    # Rank: cross-source coverage first, then groups that actually carry
+    # summary material (title-only groups cannot survive the evidence rules,
+    # so they must never crowd real stories out of the MAX_GROUPS cap),
+    # then recency.
+    ranked: list[tuple[bool, bool, datetime, list[dict]]] = []
     for members in _group(fresh):
         members = _best_first(members)[:MAX_ITEMS_PER_GROUP]
         newest = max((_published(m) or _EPOCH for m in members), default=_EPOCH)
         multi = len({m["sourceKey"] for m in members}) > 1
-        ranked.append((multi, newest, members))
-    ranked.sort(key=lambda entry: (entry[0], entry[1]), reverse=True)
+        material = group_has_material({"items": members})
+        ranked.append((multi, material, newest, members))
+    ranked.sort(key=lambda entry: (entry[0], entry[1], entry[2]), reverse=True)
+    material_groups = sum(1 for entry in ranked if entry[1])
 
     stamp = now.strftime("%Y%m%d-%H%M")
     payload = {
@@ -211,7 +226,7 @@ def main() -> None:
                 "primarySource": members[0]["source"],
                 "items": members,
             }
-            for n, (_multi, _newest, members) in enumerate(
+            for n, (_multi, _material, _newest, members) in enumerate(
                 ranked[:MAX_GROUPS], start=1
             )
         ],
@@ -220,6 +235,14 @@ def main() -> None:
     print(
         f"dedupe: {len(raw_items)} raw items -> {len(fresh)} fresh "
         f"-> {len(payload['groups'])} groups"
+    )
+    print(
+        "dedupe stats: window={}h sources={} {} "
+        "groups_with_material={}/{}".format(
+            MAX_ITEM_AGE_HOURS, len(SOURCES),
+            " ".join(f"{k}={v}" for k, v in stats.items()),
+            min(material_groups, MAX_GROUPS), len(payload["groups"]),
+        )
     )
 
 

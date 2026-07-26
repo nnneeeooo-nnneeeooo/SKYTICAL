@@ -218,6 +218,8 @@ def test_publish_flow():
     check(biz.get("eventStatus") == "confirmed", "eventStatus stored")
     check(biz.get("entities", {}).get("organizations")
           == ["International Air Transport Association"], "entities stored")
+    check(biz.get("sourcePublishedUtc") == "2026-07-24T09:00Z",
+          f"source publish time recorded, got {biz.get('sourcePublishedUtc')}")
 
     # --- the safety story sits in the review queue, not on the site --------
     review = load(DATA / "review.json")
@@ -309,6 +311,9 @@ def test_publish_flow():
                                       "investigation"],
           "risk flags carried onto the published article")
     check(len(safety.get("facts", [])) == 2, "verified facts carried over")
+    check(safety.get("sourcePublishedUtc") == "2026-07-25T23:40Z",
+          f"newest source publish time kept through approval, "
+          f"got {safety.get('sourcePublishedUtc')}")
     check(load(DATA / "review.json") == [], "review queue emptied after approval")
     flashes = load(DATA / "flashes.json")
     check(flashes[0]["articleId"] == safety["id"] and flashes[0]["hot"] is True,
@@ -483,6 +488,17 @@ def test_extract_json_and_validate_draft():
     broken["eventStatus"] = "finalized"
     check("eventStatus" in (write.validate_draft(broken) or ""),
           "unknown eventStatus rejected")
+
+    ihm = common.item_has_material
+    check(ihm({"title": "T", "summary": "A real sentence with plenty of "
+                                        "actual evidence text."}),
+          "real summary counts as material")
+    check(not ihm({"title": "FAA issues new rule on flight time limits",
+                   "summary": "FAA issues new rule on flight time limits"}),
+          "summary that merely repeats the headline is NOT material")
+    check(not ihm({"title": "T", "summary": ""}), "empty summary rejected")
+    check(not ihm({"title": "T", "summary": "too short"}),
+          "sub-threshold summary rejected")
     broken = json.loads(json.dumps(DRAFT_BIZ))
     broken["cat"] = "sports"
     check("cat" in (write.validate_draft(broken) or ""), "bad cat rejected")
@@ -563,7 +579,7 @@ def test_model_chain_and_routing_policy():
     check(labels == ["nvidia:nvidia/nemotron-3-ultra-550b-a55b",
                      "nvidia:nvidia/nemotron-3-super-120b-a12b",
                      "gemini:gemini-3-flash-preview",
-                     "nvidia:deepseek-ai/deepseek-v3.1"],
+                     f"nvidia:{providers.NVIDIA_DEFAULT_MODEL}"],
           f"order tokens honored in order, got {labels}")
 
     # --- platform auth death skips same-platform fallback models ----------

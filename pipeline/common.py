@@ -42,6 +42,75 @@ MAX_FLASHES = 10
 # Articles shown on the home page feed.
 HOME_FEED_LIMIT = 30
 
+
+def _parse_max_age(value, default: int = 120,
+                   low: int = 24, high: int = 336) -> int:
+    """Validate the freshness-window setting (hours).
+
+    Non-integers fall back to the default with a warning; values outside
+    [low, high] are treated as configuration errors and also fall back, so
+    a bad setting can never admit unbounded-age news.
+    """
+    if value in (None, ""):
+        return default
+    try:
+        hours = int(str(value).strip())
+    except (TypeError, ValueError):
+        print(f"config: NEWS_MAX_AGE_HOURS={value!r} is not an integer; "
+              f"using {default}")
+        return default
+    if not low <= hours <= high:
+        print(f"config: NEWS_MAX_AGE_HOURS={hours} outside [{low}, {high}]; "
+              f"using {default}")
+        return default
+    return hours
+
+
+# Freshness window for the dedupe stage. Official sources go quiet on
+# weekends, so the default reaches back 5 days; seen.json's 21-day memory
+# still prevents any story from running twice. Single source of truth -
+# do not read the env var anywhere else. (AVWIRE_MAX_AGE_HOURS is the
+# deprecated alias.)
+NEWS_MAX_AGE_HOURS = _parse_max_age(
+    os.environ.get("NEWS_MAX_AGE_HOURS")
+    or os.environ.get("AVWIRE_MAX_AGE_HOURS"))
+
+# Items stamped this far in the future are treated as source clock/parse
+# errors and dropped before any AI call; smaller offsets are tolerated as
+# timezone skew.
+FUTURE_SKEW_HOURS = 6
+
+# --- source-material completeness (editorial spec section 2) -------------
+# An item contributes usable evidence only when its summary adds real text
+# beyond the headline; a group needs at least one such item to be worth an
+# LLM call. Single source of truth for dedupe.py and write.py.
+MIN_EFFECTIVE_SUMMARY_CHARS = 25
+
+_SQUASH_RE = re.compile(r"\s+")
+
+
+def squash_text(text) -> str:
+    """Whitespace-collapsed, case-folded text for verbatim comparisons."""
+    return _SQUASH_RE.sub(" ", str(text or "")).strip().casefold()
+
+
+def item_has_material(item: dict) -> bool:
+    if not isinstance(item, dict):
+        return False
+    summary = squash_text(item.get("summary"))
+    if not summary:
+        return False
+    title = squash_text(item.get("title"))
+    if title and title in summary:
+        # A summary that merely repeats the headline is not evidence.
+        summary = summary.replace(title, "", 1)
+    return len(summary.strip()) >= MIN_EFFECTIVE_SUMMARY_CHARS
+
+
+def group_has_material(group: dict) -> bool:
+    return any(item_has_material(item)
+               for item in (group.get("items") or []))
+
 # Master source registry. `key` is the stable identifier used for
 # data/raw/<key>.json. `fmt` is what we display on the sources page.
 # `endpoint` is what fetch.py actually requests; `kind`:

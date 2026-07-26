@@ -109,6 +109,10 @@ absent when nothing new that hour)
       "zh": {"title": "...", "summary": "<=80字", "body": ["段落1", "段落2"]},
       "en": {"title": "...", "summary": "...", "body": ["para1", "para2"]},
       "sources": [{"name": "FAA — Statement", "url": "https://..."}],  // >=1, REQUIRED
+      "sourcePublishedUtc": "2026-07-23T04:00Z", // OPTIONAL newest source-provided
+                                            // publish time (never an inferred
+                                            // stamp); the site displays this,
+                                            // publishedUtc orders the archive
       "writer": "gemini:gemini-2.5-flash",  // OPTIONAL provenance "provider:model";
                                             // absent on pre-multi-provider articles
       "facts": [                            // OPTIONAL machine-verified evidence:

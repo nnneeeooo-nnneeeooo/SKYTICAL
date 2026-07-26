@@ -79,7 +79,7 @@ python -m http.server -d site 8000
 | `AVWIRE_MODEL` | `claude-opus-5` | Anthropic 模型 |
 | `AVWIRE_GEMINI_MODEL` | `gemini-2.5-flash` | Gemini 模型 |
 | `AVWIRE_NVIDIA_MODEL` | `deepseek-ai/deepseek-v3.1` | NVIDIA NIM 模型 |
-| `AVWIRE_MAX_AGE_HOURS` | `48` | 新聞新鮮度窗口（小時）；週末官方來源停更時可放寬 |
+| `NEWS_MAX_AGE_HOURS` | `120` | 新聞新鮮度窗口（小時），驗證範圍 24–336，非法值回退預設並警告 |
 | `AEROAPI_KEY` | — | FlightAware AeroAPI（選用統計） |
 | `AVWIRE_BASE_PATH` | `/avwire` | 站台子路徑（Pages 專案站台） |
 

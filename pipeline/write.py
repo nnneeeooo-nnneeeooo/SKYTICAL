@@ -35,6 +35,7 @@ from common import (
     DATA_DIR,
     MAX_FLASHES,
     RAW_DIR,
+    group_has_material,
     iso_minute,
     load_json,
     norm_url,
@@ -42,6 +43,7 @@ from common import (
     parse_iso,
     save_json,
     slugify,
+    squash_text,
 )
 from providers import (
     ProviderAuthError,
@@ -362,7 +364,12 @@ def group_prompt(group: dict) -> str:
     for idx, item in enumerate(group.get("items", []), 1):
         title = str(item.get("title") or "")[:300]  # defensive prompt-cost cap
         lines.append(f"{idx}. [{item.get('source', '?')}] {title}")
-        lines.append(f"   published: {item.get('publishedUtc', '?')}")
+        if item.get("dateInferred"):
+            # Never present our first-seen stamp as a publication time.
+            lines.append(f"   first seen: {item.get('publishedUtc', '?')} "
+                         "(the source provides no publish date)")
+        else:
+            lines.append(f"   published: {item.get('publishedUtc', '?')}")
         summary = str(item.get("summary") or "").strip()
         if summary:
             lines.append(f"   summary: {summary}")
@@ -469,26 +476,17 @@ def validate_draft(draft):
     return None
 
 
-MIN_SUMMARY_CHARS = 30
-
-
-def has_material(group: dict) -> bool:
-    """Code-level source-completeness check (editorial spec section 2).
-
-    A group whose items carry no real summary text (title-only RSS rows)
-    cannot survive the evidence rules, so it is consumed without spending
-    an API call.
-    """
-    return any(
-        len(_squash(item.get("summary") or "")) >= MIN_SUMMARY_CHARS
-        for item in group.get("items", []) if isinstance(item, dict))
+# Code-level source-completeness check (editorial spec section 2): groups
+# without real summary text are consumed without spending an API call.
+# Single source of truth lives in common.group_has_material.
+has_material = group_has_material
 
 
 class DraftInvalid(Exception):
     """Draft failed validation or quote verification on every allowed try."""
 
 
-def _validated_draft(provider, group: dict, tries: int):
+def _validated_draft(provider, group: dict, tries: int, ai_calls=None):
     """Call `provider` up to `tries` times until a draft survives validation
     and quote verification.
 
@@ -498,6 +496,8 @@ def _validated_draft(provider, group: dict, tries: int):
     policy retries validation failures, never transport failures.
     """
     for attempt in range(tries):
+        if ai_calls is not None:
+            ai_calls[provider.label] = ai_calls.get(provider.label, 0) + 1
         candidate = draft_group(provider, group)
         if candidate is None:
             return None, None
@@ -516,11 +516,7 @@ def _validated_draft(provider, group: dict, tries: int):
     raise DraftInvalid
 
 
-_WS_RE = re.compile(r"\s+")
-
-
-def _squash(text) -> str:
-    return _WS_RE.sub(" ", str(text)).strip().casefold()
+_squash = squash_text  # shared with common.item_has_material
 
 
 def verify_facts(draft: dict, group: dict, label: str) -> list:
@@ -594,6 +590,19 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         "en": draft.get("en", {}),
         "sources": sources,
     }
+    source_dates = []
+    for item in items:
+        if item.get("dateInferred"):
+            continue
+        try:
+            source_dates.append(parse_iso(str(item.get("publishedUtc"))))
+        except (TypeError, ValueError):
+            continue
+    if source_dates:
+        # The source's own newest publication time - the site displays this,
+        # never the generation time, so multi-day-old releases are not
+        # presented as breaking news.
+        article["sourcePublishedUtc"] = iso_minute(max(source_dates))
     if writer:
         article["writer"] = writer  # provenance: "provider:model"
     if facts is not None:
@@ -776,6 +785,7 @@ def main() -> None:
     queued_entries, queued_groups, queued_ids = [], [], set()
     rejected_groups, rejected_ids = [], set()
     dead_auth: set = set()
+    ai_calls: dict = {}
     skipped = 0
 
     # --- 1. publish entries a human approved in data/review.json ---------
@@ -839,7 +849,7 @@ def main() -> None:
                 tries = 2 if provider is providers[0] else 1
                 try:
                     candidate, facts = _validated_draft(provider, group,
-                                                        tries)
+                                                        tries, ai_calls)
                 except DraftInvalid:
                     continue  # try the next provider in the chain
                 except ProviderAuthError as exc:
@@ -948,6 +958,9 @@ def main() -> None:
           f"{len(queued_entries)} for review, rejected "
           f"{len(rejected_groups)}, skipped {skipped}, "
           f"pending {remaining_count}")
+    calls_note = " ".join(f"{label}={n}" for label, n in ai_calls.items()) \
+        or "none"
+    print(f"write stats: ai_calls {calls_note}")
     if providers and dead_auth and dead_auth == {p.name for p in providers}:
         # Every configured platform failed authentication: turn the Actions
         # run red instead of silently green.

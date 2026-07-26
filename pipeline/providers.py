@@ -46,7 +46,86 @@ except ImportError:  # pragma: no cover - anthropic is in requirements.txt
     anthropic = None
 
 DEFAULT_ORDER = "anthropic,gemini,nvidia"
-HTTP_TIMEOUT = (10, 120)  # (connect, read) seconds
+# 550B-class NIM models regularly need >120s on the free tier.
+HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
+
+# --------------------------------------------------------------------------
+# Centralized per-model configuration - the single source of truth for
+# model ids, reasoning controls and sampling. Do NOT scatter these fields
+# into request builders. Each profile has:
+#   payload / generationConfig  extras merged into normal verification calls
+#   repair  reasoning overrides for the no-thinking "format repair" call
+#           (JSON syntax only - content failures NEVER take this path)
+# Only fields the respective endpoint documents are sent; models without a
+# profile fall back to conservative generic settings.
+NVIDIA_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b"
+GEMINI_DEFAULT_MODEL = "gemini-2.5-flash"
+
+MODEL_PROFILES: dict = {
+    "nvidia/nemotron-3-ultra-550b-a55b": {
+        # Medium thinking via the official Nemotron chat-template kwargs.
+        "payload": {"temperature": 1.0, "top_p": 0.95,
+                    "chat_template_kwargs": {"enable_thinking": True,
+                                             "medium_effort": True}},
+        "repair": {"chat_template_kwargs": {"enable_thinking": False}},
+    },
+    "nvidia/nemotron-3-super-120b-a12b": {
+        # Low effort via the official top-level field: the default full
+        # reasoning ate the whole 8192-token budget in live runs.
+        "payload": {"temperature": 1.0, "top_p": 0.95,
+                    "reasoning_effort": "low"},
+        "repair": {"reasoning_effort": "none"},
+    },
+    "deepseek-ai/deepseek-v4-pro": {
+        "payload": {"temperature": 1.0, "top_p": 0.95,
+                    "reasoning_effort": "high"},
+        "repair": {"reasoning_effort": "none"},
+    },
+    "qwen/qwen3.5-397b-a17b": {
+        # NIM exposes thinking on/off only for Qwen; thinking-mode sampling
+        # per the model card.
+        "payload": {"temperature": 0.6, "top_p": 0.95, "top_k": 20,
+                    "presence_penalty": 0.0,
+                    "chat_template_kwargs": {"enable_thinking": True}},
+        "repair": {"chat_template_kwargs": {"enable_thinking": False}},
+    },
+    "z-ai/glm-5.2": {
+        # The public NIM schema for GLM exposes no reasoning control;
+        # provider-default reasoning is used deliberately. The marker below
+        # is internal documentation and is never sent on the wire.
+        "reasoningMode": "provider_default",
+        "payload": {"temperature": 0.1},
+        "repair": {},
+    },
+    "mistralai/mistral-medium-3.5-128b": {
+        # Last fallback: rarely called, quality over latency -> high.
+        # NIM offers none|high only for this model.
+        "payload": {"temperature": 0.7, "reasoning_effort": "high"},
+        "repair": {"reasoning_effort": "none"},
+    },
+    "gemini-3.6-flash": {
+        "generationConfig": {"temperature": 0.1, "maxOutputTokens": 8192,
+                             "thinkingConfig": {"thinkingLevel": "medium"}},
+        "repairGenerationConfig": {
+            "temperature": 0.1, "maxOutputTokens": 8192,
+            "thinkingConfig": {"thinkingLevel": "minimal"}},
+    },
+    "gemini-3.5-flash": {
+        "generationConfig": {"temperature": 0.1, "maxOutputTokens": 8192,
+                             "thinkingConfig": {"thinkingLevel": "medium"}},
+        "repairGenerationConfig": {
+            "temperature": 0.1, "maxOutputTokens": 8192,
+            "thinkingConfig": {"thinkingLevel": "minimal"}},
+    },
+}
+
+REPAIR_SYSTEM_PROMPT = (
+    "You are a JSON syntax fixer. The user message is a single JSON object "
+    "with broken syntax (quoting, escaping, commas, brackets or field "
+    "arrangement). Return ONLY the corrected JSON object. Do not add, "
+    "remove, reorder facts or change ANY content, field name or value - "
+    "repair the syntax only."
+)
 
 _THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL)
 _FENCE_RE = re.compile(r"^\s*```(?:json)?\s*|\s*```\s*$")
@@ -156,30 +235,38 @@ class GeminiProvider:
 
     def __init__(self, model=None) -> None:
         self.model = (model or os.environ.get("AVWIRE_GEMINI_MODEL")
-                      or "gemini-2.5-flash")
+                      or GEMINI_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
 
     def available(self) -> bool:
         return bool(os.environ.get("GEMINI_API_KEY"))
 
-    def draft(self, system_prompt: str, user_prompt: str, schema: dict):
+    def _generation_config(self, schema: dict, repair: bool) -> dict:
+        profile = MODEL_PROFILES.get(self.model, {})
+        key = "repairGenerationConfig" if repair else "generationConfig"
+        config = dict(profile.get(key) or {})
+        config["responseMimeType"] = "application/json"
+        config["responseJsonSchema"] = schema
+        return config
+
+    def _post(self, payload: dict):
         url = ("https://generativelanguage.googleapis.com/v1beta/models/"
                f"{self.model}:generateContent")
-        payload = {
-            "systemInstruction": {"parts": [{"text": system_prompt}]},
-            "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
-            "generationConfig": {
-                "responseMimeType": "application/json",
-                "responseJsonSchema": schema,
-            },
-        }
         try:
-            response = requests.post(
+            return requests.post(
                 url, json=payload, timeout=HTTP_TIMEOUT,
                 headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
             )
         except requests.RequestException as exc:
             raise ProviderError(type(exc).__name__) from exc
+
+    def draft(self, system_prompt: str, user_prompt: str, schema: dict):
+        payload = {
+            "systemInstruction": {"parts": [{"text": system_prompt}]},
+            "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
+            "generationConfig": self._generation_config(schema, repair=False),
+        }
+        response = self._post(payload)
         if response.status_code in (401, 403):
             raise ProviderAuthError(f"HTTP {response.status_code}")
         if response.status_code == 400 and (
@@ -197,6 +284,19 @@ class GeminiProvider:
         if response.status_code >= 400:
             raise ProviderError(
                 f"HTTP {response.status_code}: {_body_snippet(response)}")
+        text = self._final_text(response)
+        if text is None:
+            return None
+        try:
+            return extract_json(text)
+        except ValueError as exc:
+            return self._repair(text, schema, exc)
+
+    def _final_text(self, response):
+        """Final-answer text only. Returns None for genuine content blocks;
+        raises ProviderError on technical failures. Thought parts (the
+        reasoning trace) are excluded and never reach the JSON parser, the
+        published data or the logs."""
         data = response.json()
         feedback = data.get("promptFeedback") or {}
         if feedback.get("blockReason"):
@@ -217,13 +317,40 @@ class GeminiProvider:
             # the failover loop try the next provider.
             raise ProviderError(f"finishReason {finish}")
         parts = (candidate.get("content") or {}).get("parts") or []
-        text = "".join(p.get("text", "") for p in parts)
+        text = "".join(
+            p.get("text", "") for p in parts
+            if isinstance(p, dict) and not p.get("thought"))
         if not text.strip():
             raise ProviderError("empty response text")
+        return text
+
+    def _repair(self, broken: str, schema: dict, exc) -> dict:
+        """One minimal-thinking retry that fixes JSON SYNTAX only.
+
+        Content problems (missing quotes, unsupported claims) never take
+        this path - they surface after parsing and are handled by the
+        failover policy in write.py.
+        """
+        print(f"write: {self.label} returned malformed JSON ({exc}); "
+              "attempting format repair")
+        payload = {
+            "systemInstruction": {"parts": [{"text": REPAIR_SYSTEM_PROMPT}]},
+            "contents": [{"role": "user", "parts": [{"text": broken}]}],
+            "generationConfig": self._generation_config(schema, repair=True),
+        }
+        response = self._post(payload)
+        if response.status_code >= 400:
+            raise ProviderError(
+                f"format repair HTTP {response.status_code}")
+        text = self._final_text(response)
+        if not text:
+            raise ProviderError("format repair returned no text")
         try:
             return extract_json(text)
-        except ValueError as exc:
-            raise ProviderError(f"bad JSON from model: {exc}") from exc
+        except ValueError as repair_exc:
+            raise ProviderError(
+                f"bad JSON even after format repair: {repair_exc}"
+            ) from repair_exc
 
 
 class NvidiaProvider:
@@ -231,32 +358,31 @@ class NvidiaProvider:
 
     def __init__(self, model=None) -> None:
         self.model = (model or os.environ.get("AVWIRE_NVIDIA_MODEL")
-                      or "deepseek-ai/deepseek-v3.1")
+                      or NVIDIA_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
 
     def available(self) -> bool:
         return bool(os.environ.get("NVIDIA_API_KEY"))
 
-    def draft(self, system_prompt: str, user_prompt: str, schema: dict):
-        # No guided decoding on NIM across all models: enforce JSON by prompt
-        # and recover it with extract_json; the caller validates the shape.
-        instruction = (
-            "\n\nReturn ONLY one JSON object (no markdown fences, no prose) "
-            "conforming exactly to this JSON Schema:\n"
-            + json.dumps(schema, ensure_ascii=False)
-        )
+    def _payload_extras(self, repair: bool) -> dict:
+        profile = MODEL_PROFILES.get(self.model, {})
+        extras = dict(profile.get("payload") or {"temperature": 0.2})
+        if repair:
+            # Repair overrides replace the reasoning control wholesale;
+            # sampling stays as configured for the model.
+            extras.update(profile.get("repair") or {})
+        return extras
+
+    def _post(self, messages: list, repair: bool):
         payload = {
             "model": self.model,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt + instruction},
-            ],
-            "temperature": 0.2,
+            "messages": messages,
             "max_tokens": 8192,
             "stream": False,
+            **self._payload_extras(repair),
         }
         try:
-            response = requests.post(
+            return requests.post(
                 "https://integrate.api.nvidia.com/v1/chat/completions",
                 json=payload, timeout=HTTP_TIMEOUT,
                 headers={
@@ -267,18 +393,11 @@ class NvidiaProvider:
             )
         except requests.RequestException as exc:
             raise ProviderError(type(exc).__name__) from exc
-        if response.status_code in (401, 403):
-            raise ProviderAuthError(f"HTTP {response.status_code}")
-        if response.status_code in (402, 429):
-            raise ProviderQuotaError(
-                f"HTTP {response.status_code} (credits exhausted?)")
-        if response.status_code == 404:
-            raise ProviderError(
-                f"model not found: {self.model} "
-                "(set repo variable AVWIRE_NVIDIA_MODEL)")
-        if response.status_code >= 400:
-            raise ProviderError(
-                f"HTTP {response.status_code}: {_body_snippet(response)}")
+
+    def _final_text(self, response):
+        """Final-answer text only; message.reasoning_content (the reasoning
+        trace some NIM models emit) is never read, parsed, published or
+        logged. Returns None for content blocks; raises on failures."""
         data = response.json()
         choices = data.get("choices") or []
         if not choices:
@@ -295,10 +414,64 @@ class NvidiaProvider:
         text = (choice.get("message") or {}).get("content") or ""
         if not text.strip():
             raise ProviderError("empty response content")
+        return text
+
+    def _check_status(self, response) -> None:
+        if response.status_code in (401, 403):
+            raise ProviderAuthError(f"HTTP {response.status_code}")
+        if response.status_code in (402, 429):
+            raise ProviderQuotaError(
+                f"HTTP {response.status_code} (credits exhausted?)")
+        if response.status_code == 404:
+            raise ProviderError(
+                f"model not found: {self.model} "
+                "(not in this key's catalog yet?)")
+        if response.status_code >= 400:
+            raise ProviderError(
+                f"HTTP {response.status_code}: {_body_snippet(response)}")
+
+    def draft(self, system_prompt: str, user_prompt: str, schema: dict):
+        # No guided decoding on NIM across all models: enforce JSON by prompt
+        # and recover it with extract_json; the caller validates the shape.
+        instruction = (
+            "\n\nReturn ONLY one JSON object (no markdown fences, no prose) "
+            "conforming exactly to this JSON Schema:\n"
+            + json.dumps(schema, ensure_ascii=False)
+        )
+        response = self._post(
+            [{"role": "system", "content": system_prompt},
+             {"role": "user", "content": user_prompt + instruction}],
+            repair=False,
+        )
+        self._check_status(response)
+        text = self._final_text(response)
+        if text is None:
+            return None
         try:
             return extract_json(text)
         except ValueError as exc:
-            raise ProviderError(f"bad JSON from model: {exc}") from exc
+            return self._repair(text, exc)
+
+    def _repair(self, broken: str, exc) -> dict:
+        """One no-thinking retry that fixes JSON SYNTAX only; content
+        failures never take this path (see GeminiProvider._repair)."""
+        print(f"write: {self.label} returned malformed JSON ({exc}); "
+              "attempting format repair")
+        response = self._post(
+            [{"role": "system", "content": REPAIR_SYSTEM_PROMPT},
+             {"role": "user", "content": broken}],
+            repair=True,
+        )
+        self._check_status(response)
+        text = self._final_text(response)
+        if not text:
+            raise ProviderError("format repair returned no text")
+        try:
+            return extract_json(text)
+        except ValueError as repair_exc:
+            raise ProviderError(
+                f"bad JSON even after format repair: {repair_exc}"
+            ) from repair_exc
 
 
 _REGISTRY = {
