@@ -2,7 +2,8 @@
    plus classes replacing the design's inline styles where JS needs hooks. */
 
 /* — from the design's helmet <style> block — */
-html, body { margin: 0; background: var(--color-bg); }
+/* boxed layout: the page sheet is centered, the body shows a darker gutter */
+html, body { margin: 0; background: color-mix(in srgb, var(--color-text) 12%, var(--color-bg)); }
 body, h1, h2, h3, h4, h5, h6, .btn, .card-title, .nav-brand {
   font-family: "Archivo", "Noto Sans TC", system-ui, sans-serif;
 }
@@ -32,7 +33,13 @@ a:hover { color: var(--color-accent-600); }
 @keyframes avwire-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
 
 /* — chrome — */
-.page { min-height: 100vh; background: var(--color-bg); color: var(--color-text); }
+.page {
+  min-height: 100vh; max-width: 1280px; margin: 0 auto;
+  background: var(--color-bg); color: var(--color-text);
+  border-left: 1px solid var(--color-divider);
+  border-right: 1px solid var(--color-divider);
+  box-shadow: 0 0 32px rgba(0, 0, 0, .08);
+}
 .pulse-dot { width: 8px; height: 8px; background: var(--color-accent); animation: avwire-pulse 2s infinite; }
 .marquee-track { display: flex; width: max-content; animation: avwire-marquee 80s linear infinite; white-space: nowrap; }
 
@@ -65,8 +72,8 @@ a.seg-btn.active:hover { color: var(--color-bg); }
 
 /* — home grid — */
 .home-grid {
-  max-width: 1440px; margin: 0 auto; display: grid;
-  grid-template-columns: 280px minmax(0, 1fr) 320px; align-items: stretch;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 300px; align-items: stretch;
 }
 .rail-left { border-right: 2px solid var(--color-divider); padding: 20px; }
 .center-col { padding: 20px 24px; min-width: 0; }
@@ -107,13 +114,14 @@ a.flash-row:hover { color: inherit; }
 
 /* — footer — */
 .footer-grid {
-  max-width: 1440px; margin: 0 auto; padding: 24px 20px 32px;
+  padding: 24px 20px 32px;
   display: grid; grid-template-columns: 1fr 1.3fr; gap: 32px;
 }
 
 /* — responsive fallback: the design is desktop-first; below 1100px the
      three-column home grid simply stacks. — */
 @media (max-width: 1100px) {
+  .page { border-left: 0; border-right: 0; box-shadow: none; }
   .home-grid { grid-template-columns: minmax(0, 1fr); }
   .rail-left { border-right: 0; border-bottom: 2px solid var(--color-divider); }
   .rail-right { border-left: 0; border-top: 2px solid var(--color-divider); }
