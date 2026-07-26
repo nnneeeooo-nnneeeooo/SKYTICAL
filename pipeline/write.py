@@ -30,6 +30,7 @@ from __future__ import annotations
 import os
 import re
 from datetime import timedelta
+from pathlib import Path
 
 from common import (
     ARTICLES_DIR,
@@ -318,7 +319,9 @@ OUTPUT RULES (for publish and manual_review):
   信息/數據/網絡/軟件/視頻/質量. Neutral, precise wire register; no
   commentary, analysis, predictions or invented background. Proper nouns
   without an established Chinese name stay in English; never coin
-  translations, abbreviations or codes.
+  translations, abbreviations or codes. When a MANDATORY NAME GLOSSARY
+  block follows the source material, its renderings are absolute - they
+  are machine-checked and a coined name invalidates the draft.
 - zh.title: 18 to 38 Chinese characters (punctuation/spaces not counted),
   describing only the evidenced core event.
 - zh.summary: 80 to 140 Chinese characters (punctuation/spaces not
@@ -368,6 +371,81 @@ def _norm_title(title: str) -> str:
     """Normalize a title for dedupe memory: lowercase alphanumeric words."""
     text = re.sub(r"[^0-9a-zA-Z一-鿿]+", " ", title.lower())
     return " ".join(text.split())
+
+
+# ── proper-noun glossary (Taiwan usage), machine-enforced ───────────────────
+# The prompt alone could not stop coined names ("南威航空" for Southwest,
+# "簡單飛行" for Simple Flying - owner feedback 2026-07-27). The glossary is
+# injected into the prompt AND checked in code after drafting.
+_GLOSSARY = load_json(
+    Path(__file__).resolve().parent.parent / "config" / "zh_glossary.json",
+    {})
+GLOSSARY_TRANSLATE = {str(k): str(v) for k, v in
+                      (_GLOSSARY.get("translate") or {}).items()}
+# soft entries guide the prompt but are never draft-rejecting: zh style
+# routinely elides them (波音737 -> 737, 路透社報導 -> 路透報導)
+GLOSSARY_SOFT = {str(k): str(v) for k, v in
+                 (_GLOSSARY.get("translate_soft") or {}).items()}
+GLOSSARY_KEEP = [str(k) for k in _GLOSSARY.get("keep_english") or []]
+
+
+def glossary_matches(text: str, include_soft: bool = False):
+    """(translate_pairs, keep_names) whose EN term appears in `text`."""
+    low = str(text or "").casefold()
+    table = ({**GLOSSARY_TRANSLATE, **GLOSSARY_SOFT} if include_soft
+             else GLOSSARY_TRANSLATE)
+    pairs = [(en, zh) for en, zh in table.items() if en.casefold() in low]
+    keeps = [name for name in GLOSSARY_KEEP if name.casefold() in low]
+    return pairs, keeps
+
+
+def glossary_prompt_block(group: dict) -> str:
+    material = " ".join(
+        f"{item.get('title') or ''} {item.get('summary') or ''} "
+        f"{item.get('fulltext') or ''} {item.get('source') or ''}"
+        for item in group.get("items", []))
+    pairs, keeps = glossary_matches(material, include_soft=True)
+    if not pairs and not keeps:
+        return ""
+    lines = ["", "MANDATORY NAME GLOSSARY (Taiwan usage; these renderings",
+             "override any other choice in the zh text):"]
+    for en, zh in pairs:
+        lines.append(f'- "{en}" -> {zh} (or keep the English name verbatim)')
+    for name in keeps:
+        lines.append(f'- "{name}" has NO established Chinese name: keep it '
+                     "exactly as-is in the zh text; never invent a "
+                     "translation")
+    return "\n".join(lines)
+
+
+def glossary_problem(draft: dict, group: dict):
+    """None, or why the draft's zh text violates the name glossary.
+
+    Enforced only for names the draft's OWN en text uses, so a story that
+    legitimately omits an entity is never punished.
+    """
+    en_block = draft.get("en") or {}
+    zh_block = draft.get("zh") or {}
+    flash = draft.get("flash") or {}
+    en_text = " ".join([str(en_block.get("title") or ""),
+                        str(en_block.get("summary") or ""),
+                        " ".join(str(p) for p in en_block.get("body") or []),
+                        str(flash.get("en") or "")])
+    zh_text = " ".join([str(zh_block.get("title") or ""),
+                        str(zh_block.get("summary") or ""),
+                        " ".join(str(p) for p in zh_block.get("body") or []),
+                        str(flash.get("zh") or "")])
+    zh_low = zh_text.casefold()
+    pairs, keeps = glossary_matches(en_text)
+    for en, zh in pairs:
+        if zh not in zh_text and en.casefold() not in zh_low:
+            return (f'zh text must render "{en}" as 「{zh}」 '
+                    f"(or keep the English name)")
+    for name in keeps:
+        if name.casefold() not in zh_low:
+            return (f'"{name}" has no established Chinese name and must '
+                    "appear verbatim in the zh text")
+    return None
 
 
 # Untrusted material must not be able to close the <SOURCE> envelope.
@@ -424,6 +502,9 @@ def group_prompt(group: dict) -> str:
             lines.append(fulltext[:FULLTEXT_PROMPT_CHARS])
         lines.append(f"   url: {_clean_source_text(item.get('url'))[:300]}")
     lines.append("</SOURCE>")
+    glossary = glossary_prompt_block(group)
+    if glossary:
+        lines.append(glossary)
     lines.append("")
     lines.append("Write the bilingual wire story now, following the rules strictly.")
     return "\n".join(lines)
@@ -562,8 +643,11 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None):
                 return candidate, []
             facts = verify_facts(candidate, group, provider.label)
             if facts:
-                return candidate, facts
-            problem = "no machine-verifiable sourceQuote"
+                problem = glossary_problem(candidate, group)
+                if problem is None:
+                    return candidate, facts
+            else:
+                problem = "no machine-verifiable sourceQuote"
         retrying = attempt + 1 < tries
         print(f"write: {provider.label} draft for group {group.get('id')} "
               f"unusable ({problem})"
@@ -945,6 +1029,11 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
             if not facts:
                 print(f"write: {provider.label} flight draft has no "
                       "machine-verifiable sourceQuote; trying next provider")
+                continue
+            g_problem = glossary_problem(candidate, group)
+            if g_problem:
+                print(f"write: {provider.label} flight draft violates the "
+                      f"name glossary ({g_problem}); trying next provider")
                 continue
             review_reason = _flight_review_reason(event, candidate)
             if review_reason is None:
