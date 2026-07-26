@@ -30,9 +30,12 @@ OUTPUT (same schema and language rules as the main pipeline):
   body 2-4 short factual paragraphs built only from quoted facts.
 - cat MUST be "ops". incident MUST be null (an arrival is not an ICAO
   Annex 13 occurrence). flash: one line per language, hot=false.
-- status MUST be "manual_review" with requiresHumanReview=true and
-  decisionReason explaining this is an automated ADS-B observation awaiting
-  editor confirmation. riskFlags MUST include "unconfirmed_or_developing".
+- status: "manual_review" with requiresHumanReview=true (publication policy
+  is decided by pipeline code, never by you; it may release routine
+  observation items automatically). Never mention any review process,
+  pending confirmation or publication workflow inside titles, summaries or
+  body text - write the observation itself only. riskFlags MUST include
+  "unconfirmed_or_developing".
 - facts: 1-6 atomic claims, each quoting one <SOURCE> line verbatim.
 - entities: only values literally present in <SOURCE>.
 - eventStatus: "confirmed" refers ONLY to the observed arrival itself.

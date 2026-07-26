@@ -27,6 +27,7 @@ runs where every configured provider failed authentication.
 """
 from __future__ import annotations
 
+import os
 import re
 from datetime import timedelta
 
@@ -839,13 +840,47 @@ def _review_entry(candidate: dict, group: dict, writer: str, facts: list,
     }
 
 
+# Machine gate for rare-aircraft auto-publish (owner's 2026-07-27 policy:
+# routine observation items publish without a human). Anything that smells
+# of a safety event, a source conflict or an incident still goes to the
+# human queue - the public methodology page promises that.
+_FLIGHT_BLOCKING_FLAGS = {
+    "accident_or_serious_incident", "casualties_or_injuries",
+    "investigation", "conflicting_information",
+}
+
+
+def _flight_auto_publish_enabled() -> bool:
+    # default ON per the owner; repo var FLIGHT_AUTO_PUBLISH=false restores
+    # the review-everything behaviour
+    return (os.environ.get("FLIGHT_AUTO_PUBLISH", "true").strip().lower()
+            not in ("0", "false", "no"))
+
+
+def _flight_review_reason(event, candidate):
+    """None when the observation may auto-publish, else the zh reason."""
+    if not _flight_auto_publish_enabled():
+        return "自動發布已停用（FLIGHT_AUTO_PUBLISH=false），須人工確認後發布"
+    if event.get("crossCheck") == "conflicting_sources":
+        return "兩個 ADS-B 來源觀測結果不一致，須人工確認後發布"
+    if candidate.get("cat") == "safety" or candidate.get("incident"):
+        return "涉及飛安事件，依編輯規範一律人工覆核"
+    flags = candidate.get("riskFlags")
+    flags = set(flags) if isinstance(flags, list) else set()
+    if flags & _FLIGHT_BLOCKING_FLAGS:
+        return "模型標記高風險旗標，須人工確認後發布"
+    return None
+
+
 def _process_flight_events(queue, providers, dead_platforms, dead_auth,
-                           ai_calls, queued_entries, now):
+                           ai_calls, queued_entries, now,
+                           new_articles, new_flashes, used_ids):
     """Draft queued flight-observation events with the dedicated prompt.
 
-    Outcomes per event: queued into the human-review file (the ONLY path to
-    publication), rejected by the model (dropped for good), or left in the
-    queue when providers fail (retried next hour). Never auto-published.
+    Outcomes per event: auto-published (routine observation that clears
+    the machine gate above), queued into the human-review file (gate
+    failed), rejected by the model (dropped for good), or left in the
+    queue when providers fail (retried next hour).
     """
     remaining = []
     prompt = flightnews.flight_prompt()
@@ -911,8 +946,28 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                 print(f"write: {provider.label} flight draft has no "
                       "machine-verifiable sourceQuote; trying next provider")
                 continue
-            # v1 hard rule: rare-aircraft items are ALWAYS human-gated,
-            # regardless of what the model claimed.
+            review_reason = _flight_review_reason(event, candidate)
+            if review_reason is None:
+                # Machine gate cleared: routine, non-safety observation with
+                # consistent sources - publish without a human.
+                candidate["status"] = "publish"
+                candidate["requiresHumanReview"] = False
+                candidate["riskFlags"] = []
+                candidate["decisionReason"] = ""
+                article = build_article(candidate, group, now, used_ids,
+                                        provider.label, facts)
+                if article is None:
+                    print(f"write: flight event {event.get('eventId')} has "
+                          "no usable sources; dropping")
+                    outcome = "rejected"
+                    break
+                new_articles.append(article)
+                new_flashes.append(build_flash(candidate, article["id"], now))
+                print(f"write: flight event {event.get('eventId')} "
+                      f"auto-published as {article['id']} "
+                      f"(crossCheck={event.get('crossCheck')})")
+                outcome = "published"
+                break
             candidate["status"] = "manual_review"
             candidate["requiresHumanReview"] = True
             flags = candidate.get("riskFlags")
@@ -921,9 +976,7 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
             if "unconfirmed_or_developing" not in flags:
                 flags.append("unconfirmed_or_developing")
             candidate["riskFlags"] = flags
-            if not candidate.get("decisionReason"):
-                candidate["decisionReason"] = \
-                    "自動 ADS-B 觀測事件，須人工確認後發布"
+            candidate["decisionReason"] = review_reason
             entry = _review_entry(candidate, group, provider.label, facts,
                                   now)
             entry["flight"] = {
@@ -935,7 +988,7 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
             }
             queued_entries.append(entry)
             print(f"write: flight event {event.get('eventId')} queued for "
-                  "human review")
+                  f"human review ({review_reason})")
             outcome = "queued"
             break
         if outcome is None:
@@ -1117,13 +1170,14 @@ def main() -> None:
 
     # --- 2b. rare-aircraft flight-observation candidates -------------------
     # (queued by pipeline/flightwatch.py; zero AI calls when the queue is
-    # empty, and EVERY drafted event is forced into manual review - v1
-    # rare-aircraft items never auto-publish.)
+    # empty. Routine observations that clear the machine gate publish
+    # automatically; safety-flavoured or conflicting events still go to
+    # human review.)
     flight_queue = flightnews.load_queue()
     if flight_queue and providers:
         remaining_flight = _process_flight_events(
             flight_queue, providers, dead_platforms, dead_auth, ai_calls,
-            queued_entries, now)
+            queued_entries, now, new_articles, new_flashes, used_ids)
         if remaining_flight != flight_queue:
             flightnews.save_queue(remaining_flight)
 

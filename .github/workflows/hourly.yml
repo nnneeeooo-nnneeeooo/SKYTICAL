@@ -51,6 +51,8 @@ jobs:
           NEWS_MAX_AGE_HOURS: ${{ vars.NEWS_MAX_AGE_HOURS }}
           # private usage-dashboard URL token (page skipped when unset)
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
+          # rare-aircraft auto-publish kill switch (code default: on)
+          FLIGHT_AUTO_PUBLISH: ${{ vars.FLIGHT_AUTO_PUBLISH }}
         run: |
           python pipeline/fetch.py
           python pipeline/dedupe.py

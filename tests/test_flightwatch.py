@@ -334,7 +334,17 @@ def _run_write_with(providers_list):
         write.build_providers = original
 
 
-def test_flight_events_into_review_queue():
+def _published_articles():
+    articles_dir = Path(os.environ["AVWIRE_DATA_DIR"]) / "articles"
+    out = []
+    for f in articles_dir.glob("*.json"):
+        out.extend(json.loads(f.read_text(encoding="utf-8"))["articles"])
+    return out
+
+
+def test_flight_events_auto_publish():
+    """Owner policy 2026-07-27: routine observations clear the machine
+    gate and publish without a human."""
     _reset_data()
     flightnews.save_queue([json.loads(json.dumps(FLIGHT_EVENT))])
     solo = FakeProvider("gemini", [_flight_draft(status="publish")])
@@ -343,25 +353,66 @@ def test_flight_events_into_review_queue():
     check(solo.calls == 1, f"one AI call for one event, got {solo.calls}")
     review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
                               / "review.json", [])
-    check(len(review) == 1, "flight event landed in the review queue")
-    entry = review[0]
-    check(entry["draft"]["status"] == "manual_review"
-          and entry["draft"]["requiresHumanReview"] is True,
-          "publish output was FORCED down to manual_review")
-    check("unconfirmed_or_developing" in entry["draft"]["riskFlags"],
-          "risk flag enforced on flight events")
-    check(entry["flight"]["eventId"] == FLIGHT_EVENT["eventId"]
-          and entry["flight"]["crossCheck"] == "confirmed_by_two_sources",
-          "flight metadata stored with the review entry")
-    check(entry["group"]["items"][0]["url"] == "https://airplanes.live/"
-          and entry["group"]["items"][1]["url"] == "https://www.adsb.lol/",
+    check(review == [], "clean observation skips the review queue")
+    arts = _published_articles()
+    check(len(arts) == 1, "observation auto-published as one article")
+    art = arts[0]
+    check(art["riskFlags"] == [] and art["cat"] == "ops",
+          "published observation carries no risk flags, cat=ops")
+    check({s["url"] for s in art["sources"]}
+          == {"https://airplanes.live/", "https://www.adsb.lol/"},
           "attribution links become the article's sources")
-    check(flightnews.load_queue() == [], "queue emptied after queuing")
-    # No articles were published (manual_review only).
-    articles_dir = Path(os.environ["AVWIRE_DATA_DIR"]) / "articles"
-    check(not list(articles_dir.glob("*.json")),
-          "nothing auto-published for a rare-aircraft event")
-    print("test_flight_events_into_review_queue: done")
+    check(flightnews.load_queue() == [], "queue emptied after publishing")
+    print("test_flight_events_auto_publish: done")
+
+
+def test_flight_gate_blocks_conflicts_safety_and_kill_switch():
+    # conflicting ADS-B sources -> human review, never published
+    _reset_data()
+    event = json.loads(json.dumps(FLIGHT_EVENT))
+    event["crossCheck"] = "conflicting_sources"
+    flightnews.save_queue([event])
+    solo = FakeProvider("gemini", [_flight_draft(status="publish")])
+    _run_write_with([solo])
+    review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
+                              / "review.json", [])
+    check(len(review) == 1 and not _published_articles(),
+          "conflicting sources -> review queue, nothing published")
+    check(review[0]["draft"]["status"] == "manual_review"
+          and "unconfirmed_or_developing" in review[0]["draft"]["riskFlags"]
+          and "不一致" in review[0]["draft"]["decisionReason"],
+          "conflict entry forced to manual_review with reason")
+    check(review[0]["flight"]["eventId"] == FLIGHT_EVENT["eventId"],
+          "flight metadata stored with the review entry")
+
+    # a safety-flavoured draft -> human review even with clean sources
+    _reset_data()
+    flightnews.save_queue([json.loads(json.dumps(FLIGHT_EVENT))])
+    safety_draft = _flight_draft(status="manual_review")
+    safety_draft["riskFlags"] = ["investigation"]
+    safety_draft["requiresHumanReview"] = True
+    safety_draft["decisionReason"] = "involves an investigation"
+    solo = FakeProvider("gemini", [safety_draft])
+    _run_write_with([solo])
+    review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
+                              / "review.json", [])
+    check(len(review) == 1 and not _published_articles(),
+          "safety risk flag -> review queue, nothing published")
+
+    # kill switch restores review-everything behaviour
+    _reset_data()
+    flightnews.save_queue([json.loads(json.dumps(FLIGHT_EVENT))])
+    os.environ["FLIGHT_AUTO_PUBLISH"] = "false"
+    try:
+        solo = FakeProvider("gemini", [_flight_draft(status="publish")])
+        _run_write_with([solo])
+    finally:
+        del os.environ["FLIGHT_AUTO_PUBLISH"]
+    review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
+                              / "review.json", [])
+    check(len(review) == 1 and not _published_articles(),
+          "FLIGHT_AUTO_PUBLISH=false -> review queue, nothing published")
+    print("test_flight_gate_blocks_conflicts_safety_and_kill_switch: done")
 
 
 def test_flight_no_candidates_no_ai():
@@ -411,7 +462,8 @@ def main():
         test_rarity_and_bootstrap,
         test_event_identity_and_config,
         test_source_assembly_privacy,
-        test_flight_events_into_review_queue,
+        test_flight_events_auto_publish,
+        test_flight_gate_blocks_conflicts_safety_and_kill_switch,
         test_flight_no_candidates_no_ai,
         test_flight_bad_quote_and_reject,
     ]
