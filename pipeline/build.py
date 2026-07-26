@@ -77,26 +77,13 @@ L = {
         "srcNote": "* 所有來源皆標註於各篇文末；轉載內容僅做事實彙整，原文著作權屬原單位。",
         "thName": "來源", "thKind": "類型", "thCover": "涵蓋範圍", "thFmt": "格式",
         "thFreq": "頻率", "thLast": "最近抓取", "thState": "狀態",
-        "aboutKicker": "Methodology", "aboutTitle": "方法論", "aboutPipeTitle": "自動化資料管線",
-        "aboutAttrTitle": "撰稿與來源歸屬", "aboutSchedTitle": "更新排程",
-        "aboutRepoTitle": "開放原始碼", "aboutDiscTitle": "免責聲明",
-        "aboutWhat": "AVWIRE 是全自動航空新聞聚合站：程式每小時抓取 FAA、ICAO、IATA、路透社等可信來源，自動撰寫新聞稿，並在每篇文末完整標註原始出處。無人工編輯介入，原始來源永遠優先。",
-        "aboutAttr": "每篇報導由語言模型根據多個原始來源撰寫：僅彙整來源中的事實，不加入未經來源支持的推論；同一事件的多來源會先去重合併。文末「資料來源」列出所有引用連結。",
-        "aboutSched": "GitHub Actions 於每小時整點觸發（cron: 0 * * * *），透過各來源的公開介面（RSS、公開 API 與官方網頁）取得資料，全程可溯源。單次更新流程約 3–5 分鐘，完成後發布至 GitHub Pages。",
-        "aboutRepo": "全站程式碼開源，repo 結構如下。歡迎檢視程式碼、回報問題或自行部署一份。",
-        "aboutDisc": "本站內容為自動生成，可能存在錯誤或遺漏，不構成飛安、法遵或投資建議。任何權威資訊請以官方原始來源為準。",
+        "aboutKicker": "Methodology", "aboutTitle": "方法論",
         "footerAbout": "全自動航空新聞聚合站。GitHub Actions 每小時抓取各可信來源，自動撰寫並發布，每篇文末標註原始出處。本頁為設計原型，內容為示意樣本。",
         "footerSources": "資料來源 Data Sources",
         "nav": ["最新", "事故資料庫", "來源", "方法論"],
         "cats": ["全部", "事故", "法規", "商業", "營運"],
         "sevs": ["全部", "事故", "嚴重事件", "事件"],
         "themeOpts": ["亮", "暗"],
-        "pipeSteps": [
-            "GitHub Actions 每小時整點觸發工作流程",
-            "抓取 FAA / ICAO / IATA / Reuters 等 RSS 與公開 API",
-            "相似度去重、跨來源合併，語言模型撰寫新聞稿",
-            "發布至 GitHub Pages，文末自動附上原始來源連結",
-        ],
         # production-only keys (not in the design dictionary)
         "siteName": "AVWIRE 航空快訊",
         "siteDesc": "全自動航空新聞聚合站：每小時抓取 FAA、ICAO、IATA、Reuters 等可信來源，自動撰寫雙語新聞並於文末標註原始出處。",
@@ -129,26 +116,13 @@ L = {
         "srcNote": "* Every article credits its sources; content is factual aggregation and copyright stays with the originators.",
         "thName": "Source", "thKind": "Kind", "thCover": "Coverage", "thFmt": "Format",
         "thFreq": "Interval", "thLast": "Last fetch", "thState": "Status",
-        "aboutKicker": "Methodology", "aboutTitle": "Methodology", "aboutPipeTitle": "Automated pipeline",
-        "aboutAttrTitle": "Writing & attribution", "aboutSchedTitle": "Schedule",
-        "aboutRepoTitle": "Open source", "aboutDiscTitle": "Disclaimer",
-        "aboutWhat": "AVWIRE is a fully automated aviation news aggregator: every hour it fetches trusted sources such as FAA, ICAO, IATA and Reuters, writes the stories automatically, and credits every original source at the end of each article. No human editing; sources always prevail.",
-        "aboutAttr": "Each story is written by a language model from multiple original sources: it aggregates facts only, adds no unsupported inference, and merges duplicate coverage of the same event. The Sources box lists every reference used.",
-        "aboutSched": "GitHub Actions triggers at the top of every hour (cron: 0 * * * *), pulling each source's public interface (RSS, open APIs and official pages) with full traceability. A full run takes 3–5 minutes and publishes to GitHub Pages.",
-        "aboutRepo": "The whole site is open source; the repo layout is below. Inspect the code, file issues, or deploy your own copy.",
-        "aboutDisc": "Content is machine-generated and may contain errors or omissions. It is not flight-safety, compliance or investment advice; defer to official sources.",
+        "aboutKicker": "Methodology", "aboutTitle": "Methodology",
         "footerAbout": "A fully automated aviation news aggregator. GitHub Actions fetches trusted sources hourly, writes and publishes automatically, and credits originals at the end of every article. Design prototype; sample content.",
         "footerSources": "Data Sources",
         "nav": ["Latest", "Incident DB", "Sources", "Methodology"],
         "cats": ["All", "Safety", "Regulation", "Business", "Operations"],
         "sevs": ["All", "Accident", "Serious", "Incident"],
         "themeOpts": ["Light", "Dark"],
-        "pipeSteps": [
-            "GitHub Actions triggers the workflow at the top of every hour",
-            "Fetch RSS and open APIs from FAA / ICAO / IATA / Reuters and more",
-            "De-duplicate, merge across sources, and draft stories with a language model",
-            "Publish to GitHub Pages with original source links appended to every article",
-        ],
         # production-only keys (not in the design dictionary)
         "siteName": "AVWIRE Aviation Wire",
         "siteDesc": "A fully automated aviation news aggregator: trusted sources fetched hourly, bilingual stories written automatically, every original source credited.",
@@ -181,6 +155,360 @@ KIND = {
     "data": {"zh": "數據平台", "en": "Data platform"},
 }
 TAGCLS = {"safety": "tag-accent", "reg": "tag-neutral", "biz": "tag-neutral", "ops": "tag-neutral"}
+
+
+# ── methodology page (user-authored copy, 2026-07-27) ────────────────────────
+# Block types rendered by templates/about.html: p / sub / step / list / pre.
+
+def _p(x):
+    return {"t": "p", "x": x}
+
+
+def _sub(x):
+    return {"t": "sub", "x": x}
+
+
+def _step(n, x):
+    return {"t": "step", "n": n, "x": x}
+
+
+def _list(*items):
+    return {"t": "list", "items": list(items)}
+
+
+def _pre(x):
+    return {"t": "pre", "x": x}
+
+
+_REPO_TREE_ZH = """avwire/
+├─ .github/workflows/       # 排程與自動化工作流程
+├─ pipeline/
+│  ├─ fetch.py              # RSS、API 與來源擷取
+│  ├─ dedupe.py             # 去重與事件合併
+│  ├─ providers.py          # 多模型備援與呼叫
+│  ├─ write.py              # 模型整理、引文與資料驗證
+│  └─ build.py              # 網站資料產生與發布
+├─ data/                    # 處理狀態與公開資料
+└─ site/                    # GitHub Pages 網站"""
+
+_REPO_TREE_EN = """avwire/
+├─ .github/workflows/       # schedules & automation
+├─ pipeline/
+│  ├─ fetch.py              # RSS / API source fetching
+│  ├─ dedupe.py             # dedup & event merging
+│  ├─ providers.py          # multi-model failover & calls
+│  ├─ write.py              # model compilation, quote & data checks
+│  └─ build.py              # site generation & publishing
+├─ data/                    # pipeline state & public data
+└─ site/                    # GitHub Pages site"""
+
+ABOUT = {
+    "zh": {
+        "heading": "內容產製與驗證",
+        "intro": [
+            "AVWIRE 是一個以可信來源、快速更新與完整溯源為核心的航空資訊平台。",
+            "系統持續追蹤航空主管機關、國際組織、航空公司及可信新聞機構所發布的公開資訊，"
+            "透過自動化資料管線整理事件，再由 Google Gemini、NVIDIA Nemotron 等企業級語言模型"
+            "協助產生繁體中文報導。",
+            "模型不是新聞來源，也不會自行憑空補充資訊。每篇內容都必須建立在系統實際取得的"
+            "來源資料上，並於文末保留原始出處，方便讀者直接查證。",
+        ],
+        "sections": [
+            {"heading": "我們的核心原則", "blocks": [
+                _sub("來源先於模型"),
+                _p("AVWIRE 的報導從可信來源開始，而不是從語言模型開始。"),
+                _p("系統先取得官方公告、新聞稿、RSS、公開 API 或可信媒體報導，之後才將已取得的"
+                   "資料交由模型整理。模型只能使用提供給它的來源內容，不得自行加入外部知識或"
+                   "未經支持的推論。"),
+                _sub("每項重要資訊皆可追溯"),
+                _p("報導中的核心事實必須對應到原始資料。系統會保存來源網址、發布時間及支持"
+                   "相關敘述的原文內容。"),
+                _p("每篇報導文末均附有「資料來源」，讀者可直接開啟原始公告或報導進行核對。"),
+                _sub("自動化不等於無限制生成"),
+                _p("內容必須通過格式、來源、日期、引文及風險檢查，才能進入發布流程。"),
+                _p("資料不足、來源衝突、無法驗證或涉及事故、飛安、法律及其他高風險議題的內容，"
+                   "將被拒絕發布或標記為人工覆核，不會為了維持更新數量而勉強產生報導。"),
+            ]},
+            {"heading": "自動化資料管線", "blocks": [
+                _step("01", "來源監測"),
+                _p("GitHub Actions 依排程啟動資料管線，檢查 FAA、ICAO、IATA、航空公司、"
+                   "事故調查機構及其他可信來源的 RSS、公開 API 與官方網頁。"),
+                _step("02", "資料清理"),
+                _p("系統移除網站導覽、廣告、重複文字及無效頁面，並檢查發布時間、正文完整性與"
+                   "來源有效性。"),
+                _p("只有具備足夠內容且能夠追溯來源的資料，才會進入後續處理。"),
+                _step("03", "去重與事件整合"),
+                _p("系統透過網址正規化與標題文字相似度，避免同一篇內容被重複處理。"),
+                _p("若多個來源報導同一事件，系統會先辨識共同資訊與差異，再建立單一新聞事件。"),
+                _step("04", "多模型整理"),
+                _p("合格資料會交由多模型備援系統處理，包括 Google Gemini、NVIDIA Nemotron "
+                   "及其他相容模型。"),
+                _p("模型負責："),
+                _list("提取來源中的核心事實",
+                      "整理事件時間與發展狀態",
+                      "將外語資訊轉為繁體中文",
+                      "產生標題與新聞摘要",
+                      "為重要敘述標記支持來源"),
+                _p("若主要模型發生技術問題，系統才會切換至備援模型。模型給出的保守判定不會被"
+                   "視為失敗，也不會為了取得更積極的答案而反覆詢問其他模型。"),
+                _step("05", "程式化驗證"),
+                _p("模型回傳的內容必須通過程式檢查，包括："),
+                _list("JSON 與資料結構驗證",
+                      "日期與時間一致性",
+                      "原文引文逐字比對",
+                      "敘述與支持來源的對應關係",
+                      "重複事件檢查",
+                      "風險標記與發布資格判斷"),
+                _p("只有符合發布條件的內容才會進入網站。"),
+                _step("06", "發布與溯源"),
+                _p("通過驗證的報導會發布至 GitHub Pages，並保留："),
+                _list("原始來源名稱",
+                      "原始文章或公告連結",
+                      "來源發布時間",
+                      "本站整理時間",
+                      "自動化產製標示"),
+                _p("原始來源永遠優先於 AVWIRE 的整理內容。"),
+            ]},
+            {"heading": "模型如何參與報導", "blocks": [
+                _p("AVWIRE 使用語言模型作為資訊整理與文字生成工具，而不是將模型視為事實來源。"),
+                _p("模型只能根據系統提供的來源資料工作，不得自行搜尋網路，也不得使用未出現在"
+                   "來源中的背景知識補足內容。"),
+                _p("例如，來源只寫明某架飛機抵達某座機場，模型不得自行推測其屬於："),
+                _list("包機任務", "備降", "調機", "維修飛行", "貨運任務", "外交活動",
+                      "特殊旅客運輸"),
+                _p("除非來源資料明確支持該項描述。"),
+                _p("報導中使用的「證實」、「已核准」、「已交付」、「已投入營運」等字詞，"
+                   "也必須與原始來源所表達的確定程度一致。"),
+            ]},
+            {"heading": "多模型備援架構", "blocks": [
+                _p("AVWIRE 採用多模型架構，以降低單一模型或單一供應商故障造成的影響。"),
+                _p("主要使用的模型服務包括："),
+                _list("NVIDIA Nemotron",
+                      "Google Gemini",
+                      "其他通過相同輸出與來源驗證流程的備援模型"),
+                _p("不同模型均受到相同規則約束，也必須通過相同的引文與資料驗證。更換模型不會"
+                   "降低發布標準。"),
+                _p("模型名稱及實際順序可能依可用性、品質測試與服務條件調整，但來源驗證規則"
+                   "保持一致。"),
+            ]},
+            {"heading": "來源選擇", "blocks": [
+                _p("AVWIRE 優先採用第一手或具有明確編輯責任的來源，例如："),
+                _list("民航主管機關",
+                      "航空事故調查機構",
+                      "國際航空組織",
+                      "機場與航空公司正式公告",
+                      "飛機製造商及發動機製造商",
+                      "可信新聞機構",
+                      "具明確授權條件的公開資料服務"),
+                _p("社群媒體貼文、轉載內容或無法確認原始出處的資訊，不會單獨作為自動發布的"
+                   "重要事實依據。"),
+            ]},
+            {"heading": "更新頻率", "blocks": [
+                _p("主要新聞資料管線原則上每小時執行一次。"),
+                _p("實際發布時間可能受到以下因素影響："),
+                _list("原始來源更新時間",
+                      "網站或 API 暫時無法存取",
+                      "資料完整性檢查",
+                      "多來源去重",
+                      "模型服務可用性",
+                      "高風險內容覆核"),
+                _p("因此，排程啟動時間不等於每小時一定會產生新文章。沒有足夠且可驗證的新資料時，"
+                   "系統不會為了填補版面而生成內容。"),
+            ]},
+            {"heading": "透明度與開放原始碼", "blocks": [
+                _p("AVWIRE 的核心程式碼公開於 GitHub，讀者可以檢視資料擷取、去重、模型呼叫、"
+                   "驗證及發布流程。"),
+                _pre(_REPO_TREE_ZH),
+                _p("實際目錄可能隨系統持續開發而調整，GitHub Repository 中的版本為準。"),
+                _p("為保護服務安全，API 金鑰、管理員憑證及其他機密資訊不會公開於原始碼或"
+                   "網站前端。"),
+            ]},
+            {"heading": "更正與限制", "blocks": [
+                _p("自動化系統能提高更新速度與處理範圍，但無法保證完全沒有錯誤。"),
+                _p("可能影響結果的因素包括："),
+                _list("原始來源本身發生更正",
+                      "RSS 或公開 API 資料不完整",
+                      "發布時間或時區標示不一致",
+                      "語言模型對內容理解有誤",
+                      "多來源對同一事件的描述不同",
+                      "即時資料受到覆蓋率或更新延遲影響"),
+                _p("發現問題時，AVWIRE 可更新、撤回或標記相關內容。具有權威效力的資訊，"
+                   "仍應以主管機關、航空公司、機場或其他原始發布單位為準。"),
+            ]},
+        ],
+        "disc_title": "免責聲明",
+        "disclaimer": "本站提供的是航空資訊整理服務，不構成飛安操作、法律、法規遵循或投資建議。",
+    },
+    "en": {
+        "heading": "Content production & verification",
+        "intro": [
+            "AVWIRE is an aviation information platform built around trusted sources, "
+            "fast updates and full traceability.",
+            "The system continuously tracks public information released by civil aviation "
+            "authorities, international organizations, airlines and trusted news outlets, "
+            "organizes events through an automated data pipeline, and then uses "
+            "enterprise-grade language models such as Google Gemini and NVIDIA Nemotron "
+            "to help produce the Traditional Chinese and English reports.",
+            "The models are not a news source and never invent information. Every article "
+            "must be built on source material the system actually obtained, with the "
+            "original references kept at the end so readers can verify directly.",
+        ],
+        "sections": [
+            {"heading": "Our core principles", "blocks": [
+                _sub("Sources before models"),
+                _p("AVWIRE reporting starts from trusted sources, not from a language model."),
+                _p("The system first obtains official announcements, press releases, RSS "
+                   "feeds, open APIs or trusted media reports, and only then hands the "
+                   "collected material to a model. The model may use only the source "
+                   "content given to it — no outside knowledge, no unsupported inference."),
+                _sub("Every key fact is traceable"),
+                _p("Core facts in a story must map back to the original material. The "
+                   "system keeps the source URL, the publication time, and the original "
+                   "wording that supports the key statements."),
+                _p("Every article ends with a Sources box, so readers can open the "
+                   "original announcement or report and check for themselves."),
+                _sub("Automation is not unlimited generation"),
+                _p("Content must pass format, source, date, quotation and risk checks "
+                   "before it can enter the publishing flow."),
+                _p("Content that is insufficient, conflicting or unverifiable, or that "
+                   "involves accidents, flight safety, legal matters or other high-risk "
+                   "topics, is rejected or flagged for human review. The system never "
+                   "forces out a story just to keep the update count up."),
+            ]},
+            {"heading": "Automated data pipeline", "blocks": [
+                _step("01", "Source monitoring"),
+                _p("GitHub Actions starts the pipeline on schedule, checking RSS feeds, "
+                   "open APIs and official pages of the FAA, ICAO, IATA, airlines, "
+                   "accident investigators and other trusted sources."),
+                _step("02", "Cleaning"),
+                _p("The system strips navigation, ads, duplicated text and dead pages, "
+                   "and checks publication time, body completeness and source validity."),
+                _p("Only material with enough substance and a traceable source moves on."),
+                _step("03", "Dedup & event merging"),
+                _p("URL normalization and title-text similarity keep the same piece from "
+                   "being processed twice."),
+                _p("When several sources cover one event, the system identifies what they "
+                   "share and where they differ, then builds a single news event."),
+                _step("04", "Multi-model compilation"),
+                _p("Qualified material goes to a multi-model failover system, including "
+                   "Google Gemini, NVIDIA Nemotron and other compatible models."),
+                _p("The models are responsible for:"),
+                _list("Extracting the core facts from the sources",
+                      "Organizing event timelines and development status",
+                      "Rendering source information into Traditional Chinese and English",
+                      "Producing the headline and summary",
+                      "Tagging the supporting source for each key statement"),
+                _p("The system switches to a backup model only when the primary has a "
+                   "technical problem. A conservative call from a model is not treated as "
+                   "a failure, and the system never re-asks other models to get a more "
+                   "aggressive answer."),
+                _step("05", "Programmatic validation"),
+                _p("Everything a model returns must pass code-level checks, including:"),
+                _list("JSON and data-structure validation",
+                      "Date and time consistency",
+                      "Verbatim quote matching against the source",
+                      "Statement-to-source mapping",
+                      "Duplicate-event checks",
+                      "Risk flags and publish-eligibility rules"),
+                _p("Only content that meets the publishing bar reaches the site."),
+                _step("06", "Publishing & traceability"),
+                _p("Validated stories are published to GitHub Pages, keeping:"),
+                _list("The original source names",
+                      "Links to the original articles or announcements",
+                      "The source publication time",
+                      "The time this site compiled the story",
+                      "An automated-production label"),
+                _p("The original sources always prevail over AVWIRE's compilation."),
+            ]},
+            {"heading": "How models take part", "blocks": [
+                _p("AVWIRE uses language models as tools for organizing information and "
+                   "generating text — never as a source of facts."),
+                _p("Models work only from the source material the system provides. They "
+                   "may not search the web, and may not fill gaps with background "
+                   "knowledge that does not appear in the sources."),
+                _p("For example, if a source only says an aircraft arrived at an airport, "
+                   "the model may not speculate that the flight was:"),
+                _list("A charter mission", "A diversion", "A repositioning flight",
+                      "A maintenance flight", "A cargo mission", "A diplomatic movement",
+                      "Special passenger transport"),
+                _p("unless the sources explicitly support that description."),
+                _p("Words like “confirmed”, “approved”, “delivered” or “entered service” "
+                   "must match the level of certainty expressed by the original source."),
+            ]},
+            {"heading": "Multi-model failover", "blocks": [
+                _p("AVWIRE runs a multi-model architecture to limit the impact of any "
+                   "single model or vendor failing."),
+                _p("The main model services include:"),
+                _list("NVIDIA Nemotron",
+                      "Google Gemini",
+                      "Other backup models that pass the same output and source "
+                      "validation"),
+                _p("Every model is bound by the same rules and must pass the same "
+                   "quotation and data checks. Switching models never lowers the "
+                   "publishing bar."),
+                _p("Model names and the actual order may change with availability, "
+                   "quality testing and service terms, but the source-verification rules "
+                   "stay the same."),
+            ]},
+            {"heading": "Source selection", "blocks": [
+                _p("AVWIRE prefers first-hand sources, or sources with clear editorial "
+                   "accountability, such as:"),
+                _list("Civil aviation authorities",
+                      "Accident investigation agencies",
+                      "International aviation organizations",
+                      "Official airport and airline announcements",
+                      "Airframe and engine manufacturers",
+                      "Trusted news organizations",
+                      "Open data services with clear licensing terms"),
+                _p("Social media posts, reposts, or material whose original source cannot "
+                   "be confirmed are never the sole basis for a key fact in an "
+                   "automatically published story."),
+            ]},
+            {"heading": "Update cadence", "blocks": [
+                _p("As a rule, the main news pipeline runs once every hour."),
+                _p("Actual publication timing can be affected by:"),
+                _list("When the original sources update",
+                      "Temporary site or API outages",
+                      "Data completeness checks",
+                      "Cross-source deduplication",
+                      "Model service availability",
+                      "Human review of high-risk content"),
+                _p("A scheduled run therefore does not guarantee a new article every "
+                   "hour. When there is no sufficient, verifiable new material, the "
+                   "system does not generate content to fill space."),
+            ]},
+            {"heading": "Transparency & open source", "blocks": [
+                _p("AVWIRE's core code is public on GitHub; readers can inspect the "
+                   "fetching, deduplication, model calls, validation and publishing "
+                   "flow."),
+                _pre(_REPO_TREE_EN),
+                _p("The actual layout may evolve as the system develops; the GitHub "
+                   "repository is authoritative."),
+                _p("To protect the service, API keys, administrative credentials and "
+                   "other secrets are never published in the source code or the site "
+                   "frontend."),
+            ]},
+            {"heading": "Corrections & limitations", "blocks": [
+                _p("Automation increases speed and coverage, but cannot guarantee zero "
+                   "errors."),
+                _p("Factors that can affect the output include:"),
+                _list("The original source issuing a correction",
+                      "Incomplete RSS or open-API data",
+                      "Inconsistent publication-time or timezone labeling",
+                      "A language model misreading the content",
+                      "Sources describing the same event differently",
+                      "Coverage or update-latency limits in live data"),
+                _p("When a problem is found, AVWIRE may update, retract or flag the "
+                   "content. For anything authoritative, defer to the regulator, "
+                   "airline, airport or other original publisher."),
+            ]},
+        ],
+        "disc_title": "Disclaimer",
+        "disclaimer": "AVWIRE is an aviation information compilation service. Nothing on "
+                      "this site is flight-operations, legal, regulatory-compliance or "
+                      "investment advice.",
+    },
+}
 
 TICKER_SEP = "　▪　"  # 「　▪　」 per the design
 
@@ -261,37 +589,36 @@ def page_url(lang: str, sub: str) -> str:
 # ── data loading / preparation ───────────────────────────────────────────────
 
 # Article-footer model credit: writer id -> vendor mark + short model name.
-# The square monogram uses the vendor's brand color (site style is square
-# tags, radius 0) - official logo artwork can replace it later if licensed.
+# The mark is a ◈ on a square in the vendor's brand color (site style is
+# square tags, radius 0) - official logo artwork can replace it if licensed.
 _WRITER_BADGES = (
-    ("nemotron-3-ultra", "NVIDIA", "N", "#76b900", "Nemotron 3 Ultra"),
-    ("nemotron-3-super", "NVIDIA", "N", "#76b900", "Nemotron 3 Super"),
-    ("nemotron", "NVIDIA", "N", "#76b900", "Nemotron"),
-    ("deepseek-v4-pro", "DeepSeek", "D", "#4d6bfe", "DeepSeek V4 Pro"),
-    ("deepseek", "DeepSeek", "D", "#4d6bfe", "DeepSeek"),
-    ("gemini-3.6-flash", "Google", "G", "#4285f4", "Gemini 3.6 Flash"),
-    ("gemini-3.5-flash", "Google", "G", "#4285f4", "Gemini 3.5 Flash"),
-    ("gemini", "Google", "G", "#4285f4", "Gemini"),
-    ("qwen3.5", "Qwen", "Q", "#615ced", "Qwen 3.5"),
-    ("qwen", "Qwen", "Q", "#615ced", "Qwen"),
-    ("glm-5.2", "Z.ai", "Z", "#141414", "GLM-5.2"),
-    ("glm", "Z.ai", "Z", "#141414", "GLM"),
-    ("mistral-medium-3.5", "Mistral AI", "M", "#fa500f", "Mistral Medium 3.5"),
-    ("mistral", "Mistral AI", "M", "#fa500f", "Mistral"),
-    ("claude-opus-5", "Anthropic", "A", "#d97757", "Claude Opus 5"),
-    ("claude", "Anthropic", "A", "#d97757", "Claude"),
+    ("nemotron-3-ultra", "NVIDIA", "#76b900", "Nemotron 3 Ultra"),
+    ("nemotron-3-super", "NVIDIA", "#76b900", "Nemotron 3 Super"),
+    ("nemotron", "NVIDIA", "#76b900", "Nemotron"),
+    ("deepseek-v4-pro", "DeepSeek", "#4d6bfe", "DeepSeek V4 Pro"),
+    ("deepseek", "DeepSeek", "#4d6bfe", "DeepSeek"),
+    ("gemini-3.6-flash", "Google", "#4285f4", "Gemini 3.6 Flash"),
+    ("gemini-3.5-flash", "Google", "#4285f4", "Gemini 3.5 Flash"),
+    ("gemini", "Google", "#4285f4", "Gemini"),
+    ("qwen3.5", "Qwen", "#615ced", "Qwen 3.5"),
+    ("qwen", "Qwen", "#615ced", "Qwen"),
+    ("glm-5.2", "Z.ai", "#141414", "GLM-5.2"),
+    ("glm", "Z.ai", "#141414", "GLM"),
+    ("mistral-medium-3.5", "Mistral AI", "#fa500f", "Mistral Medium 3.5"),
+    ("mistral", "Mistral AI", "#fa500f", "Mistral"),
+    ("claude-opus-5", "Anthropic", "#d97757", "Claude Opus 5"),
+    ("claude", "Anthropic", "#d97757", "Claude"),
 )
 
 
 def writer_badge(writer):
-    """{"vendor", "initial", "color", "model"} for a writer id, or None."""
+    """{"vendor", "color", "model"} for a writer id, or None."""
     if not isinstance(writer, str) or ":" not in writer:
         return None
     model_id = writer.split(":", 1)[1].lower()
-    for needle, vendor, initial, color, model in _WRITER_BADGES:
+    for needle, vendor, color, model in _WRITER_BADGES:
         if needle in model_id:
-            return {"vendor": vendor, "initial": initial,
-                    "color": color, "model": model}
+            return {"vendor": vendor, "color": color, "model": model}
     return None
 
 
@@ -805,9 +1132,8 @@ def main() -> int:
 
         ctx = base_ctx(lang, "about", "about/",
                        title=f"{t['siteName']} — {t['aboutTitle']}",
-                       description=t["aboutWhat"], ticker=ticker, build=build)
-        ctx.update(pipe_steps=[{"n": f"0{i + 1}", "text": s}
-                               for i, s in enumerate(t["pipeSteps"])])
+                       description=ABOUT[lang]["intro"][0], ticker=ticker, build=build)
+        ctx.update(about=ABOUT[lang])
         render(env, "about.html", rel_path(lang, "about/index.html"), ctx)
         pages += 1
 
