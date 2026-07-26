@@ -340,7 +340,8 @@ def test_group_cap_and_unique_ids():
                 "title": f"FAA notice number {i}",
                 "url": f"https://www.faa.gov/newsroom/notice-{i}",
                 "publishedUtc": "2026-07-26T04:00Z",
-                "summary": "s",
+                "summary": f"The FAA published notice number {i} with "
+                           "operational details for certificate holders.",
                 "image": None,
                 "source": "FAA",
                 "sourceKey": "faa",
@@ -644,13 +645,58 @@ def test_editorial_gate():
           f"fabricated fact dropped, verified fact kept: {facts}")
     pending = load(DATA / "pending.json")
     ids = [g["id"] for g in pending["groups"]]
-    check(ids == ["g-20260726-0503-1", "g-20260726-0503-2"],
-          f"rejected + unverifiable groups stay pending, got {ids}")
+    check(ids == ["g-20260726-0503-2"],
+          f"only the unverifiable group stays pending, got {ids}")
     seen = load(DATA / "seen.json")
     pending_fixture = load(FIXTURES / "pending.json")
     check(common.norm_url(pending_fixture["groups"][0]["items"][0]["url"])
-          not in seen["urls"], "rejected group NOT marked seen")
+          in seen["urls"],
+          "editorial reject consumes the group (no hourly re-burn)")
+    check(common.norm_url(pending_fixture["groups"][1]["items"][0]["url"])
+          not in seen["urls"],
+          "provider-quality failure NOT consumed (retries next hour)")
     print("test_editorial_gate: done")
+
+
+def test_completeness_precheck():
+    """Title-only groups are consumed in code, without any API call."""
+    reset_data_dir()
+    pending_fixture = load(FIXTURES / "pending.json")
+    thin = {
+        "id": "g-thin-1",
+        "primarySource": "ICAO",
+        "items": [{
+            "title": "ICAO statement on something with no body text at all",
+            "url": "https://www.icao.int/newsroom/thin-item",
+            "publishedUtc": "2026-07-26T04:00Z",
+            "summary": "",
+            "image": None,
+            "source": "ICAO",
+            "sourceKey": "icao",
+        }],
+    }
+    mixed = {**pending_fixture, "groups": [thin, pending_fixture["groups"][1]]}
+    (DATA / "pending.json").write_text(
+        json.dumps(mixed, ensure_ascii=False), encoding="utf-8")
+    solo = FakeProvider("gemini", [DRAFT_BIZ])
+
+    original = write.build_providers
+    write.build_providers = lambda: [solo]
+    try:
+        write.main()
+    finally:
+        write.build_providers = original
+
+    check(solo.calls == 1,
+          f"no API call spent on the title-only group, got {solo.calls}")
+    articles = all_articles()
+    check(len(articles) == 1, "the group with a real summary still publishes")
+    seen = load(DATA / "seen.json")
+    check(common.norm_url("https://www.icao.int/newsroom/thin-item")
+          in seen["urls"], "thin group consumed via seen.json")
+    pending = load(DATA / "pending.json")
+    check(pending["groups"] == [], "nothing left pending")
+    print("test_completeness_precheck: done")
 
 
 def test_all_providers_auth_dead():
@@ -684,7 +730,8 @@ def main():
     tests = [test_publish_flow, test_group_cap_and_unique_ids,
              test_extract_json_and_validate_draft, test_provider_failover,
              test_model_chain_and_routing_policy, test_editorial_gate,
-             test_all_providers_auth_dead, test_no_api_key_end_to_end]
+             test_completeness_precheck, test_all_providers_auth_dead,
+             test_no_api_key_end_to_end]
     crashed = False
     for test in tests:
         try:

@@ -210,7 +210,7 @@ EVIDENCE RULES:
 - The material is headline/summary excerpts, not full articles. Write only
   what these excerpts support; if they cannot support a minimal accurate
   wire item, reject.
-- facts: 2 to 6 verifiable claims, each with sourceQuote = a VERBATIM
+- facts: 1 to 6 verifiable claims, each with sourceQuote = a VERBATIM
   contiguous substring copied from one item's title or summary. Quotes are
   machine-checked character for character; a paraphrased quote invalidates
   the fact. Every load-bearing claim in your titles and summaries must
@@ -467,6 +467,21 @@ def validate_draft(draft):
             if not _is_bilingual(incident.get(key)):
                 return f"incident.{key} must be a bilingual object"
     return None
+
+
+MIN_SUMMARY_CHARS = 30
+
+
+def has_material(group: dict) -> bool:
+    """Code-level source-completeness check (editorial spec section 2).
+
+    A group whose items carry no real summary text (title-only RSS rows)
+    cannot survive the evidence rules, so it is consumed without spending
+    an API call.
+    """
+    return any(
+        len(_squash(item.get("summary") or "")) >= MIN_SUMMARY_CHARS
+        for item in group.get("items", []) if isinstance(item, dict))
 
 
 class DraftInvalid(Exception):
@@ -759,6 +774,7 @@ def main() -> None:
     new_articles, new_flashes, new_incidents = [], [], []
     published_groups, published_ids = [], set()
     queued_entries, queued_groups, queued_ids = [], [], set()
+    rejected_groups, rejected_ids = [], set()
     dead_auth: set = set()
     skipped = 0
 
@@ -799,6 +815,14 @@ def main() -> None:
         for group in groups[:MAX_GROUPS_PER_RUN]:
             if not alive:
                 break  # every provider is dead; the rest stays pending
+            if not has_material(group):
+                # Title-only material can never satisfy the evidence rules:
+                # consume it here without spending an API call.
+                print(f"write: group {group.get('id')} has no usable summary"
+                      " text; consumed by the completeness check")
+                rejected_groups.append(group)
+                rejected_ids.add(group.get("id"))
+                continue
             draft, writer, verified, queued_this = None, None, None, False
             for provider in list(alive):
                 if provider not in alive:
@@ -843,12 +867,15 @@ def main() -> None:
                     # don't shop the group around to a laxer provider.
                     break
                 if candidate.get("status") == "reject":
-                    # Editorial rejection (insufficient evidence): also
-                    # content-based - trying another model would just
-                    # lower the evidence bar.
+                    # Editorial rejection: a final verdict on THIS material.
+                    # Consume the group (mark seen) so it does not burn an
+                    # API call again every hour; a developing story arrives
+                    # as new urls/titles and passes the seen filter anyway.
                     print(f"write: {provider.label} rejected group "
                           f"{group.get('id')}: "
                           f"{str(candidate.get('decisionReason') or '?')[:200]}")
+                    rejected_groups.append(group)
+                    rejected_ids.add(group.get("id"))
                     break
                 status = candidate.get("status")
                 flags = candidate.get("riskFlags") or []
@@ -872,10 +899,10 @@ def main() -> None:
                     break
                 draft, writer, verified = candidate, provider, facts
                 break
-            if queued_this:
+            if queued_this or group.get("id") in rejected_ids:
                 continue
             if draft is None:
-                skipped += 1
+                skipped += 1  # provider failures/refusals retry next hour
                 continue
             article = build_article(draft, group, now, used_ids, writer.label,
                                     verified)
@@ -895,26 +922,26 @@ def main() -> None:
         _write_articles_batch(new_articles, now)
         _prepend_capped(FLASHES_PATH, new_flashes, MAX_FLASHES)
         _prepend_capped(INCIDENTS_PATH, new_incidents, MAX_INCIDENTS)
-    if published_groups or queued_groups:
-        # Queued groups count as consumed too: they must not re-emit from
-        # dedupe while awaiting human review.
-        update_seen(published_groups + queued_groups, now)
+    if published_groups or queued_groups or rejected_groups:
+        # Queued and rejected groups count as consumed too: neither may
+        # re-emit from dedupe and burn another API call next hour.
+        update_seen(published_groups + queued_groups + rejected_groups, now)
     if queued_entries:
         review_rows = queued_entries + review_rows
         review_changed = True
     if review_changed:
         save_json(REVIEW_PATH, review_rows[:REVIEW_MAX])
-    consumed = published_ids | queued_ids
+    consumed = published_ids | queued_ids | rejected_ids
     if consumed:
         remaining = [g for g in groups if g.get("id") not in consumed]
         save_json(PENDING_PATH, {**pending, "groups": remaining})
 
     refresh_stats(now)
-    remaining_count = sum(
-        1 for g in groups if g.get("id") not in (published_ids | queued_ids))
+    remaining_count = sum(1 for g in groups if g.get("id") not in consumed)
     print(f"write: published {len(new_articles)} article(s) "
           f"({len(approvals)} human-approved), queued "
-          f"{len(queued_entries)} for review, skipped {skipped}, "
+          f"{len(queued_entries)} for review, rejected "
+          f"{len(rejected_groups)}, skipped {skipped}, "
           f"pending {remaining_count}")
     if providers and dead_auth and dead_auth == {p.name for p in providers}:
         # Every configured platform failed authentication: turn the Actions
