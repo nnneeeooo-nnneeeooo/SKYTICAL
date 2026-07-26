@@ -6,9 +6,10 @@
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
 {% if hreflang %}
-<link rel="alternate" hreflang="zh-Hant" href="{{ zh_url }}">
-<link rel="alternate" hreflang="en" href="{{ en_url }}">
-<link rel="alternate" hreflang="x-default" href="{{ zh_url }}">
+<link rel="canonical" href="{{ self_abs_url }}">
+<link rel="alternate" hreflang="zh-Hant" href="{{ zh_abs_url }}">
+<link rel="alternate" hreflang="en" href="{{ en_abs_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ zh_abs_url }}">
 {% endif %}
 <link rel="icon" type="image/svg+xml" href="{{ favicon }}">
 <script>try{var t=localStorage.getItem("avwire-theme");if(t){document.documentElement.dataset.theme=t;}}catch(e){}</script>
@@ -22,7 +23,7 @@
 <body>
 <div class="page">
   <div style="border-bottom:1px solid var(--color-divider);">
-    <div style="max-width:1440px;margin:0 auto;padding:6px 20px;display:flex;align-items:center;gap:16px;font-size:12px;">
+    <div style="max-width:1440px;margin:0 auto;padding:6px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;font-size:12px;">
       <span class="text-muted" style="letter-spacing:.06em;">{{ build.date }}</span>
       <span id="clock-utc" style="font-weight:600;letter-spacing:.06em;">UTC {{ build.utc_hm }}</span>
       <span id="clock-tpe" class="text-muted" style="letter-spacing:.06em;">TPE {{ build.tpe_hm }}</span>

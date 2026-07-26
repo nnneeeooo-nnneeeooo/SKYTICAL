@@ -5,10 +5,10 @@
   "error": "HTTP 503",
   "items": [
     {
-      "title": "EASA phantom item that must be ignored",
-      "url": "https://www.easa.europa.eu/phantom",
+      "title": "EASA carried-forward item survives source flap",
+      "url": "https://www.easa.europa.eu/carried-forward",
       "publishedUtc": "{{H-1}}",
-      "summary": "Must never appear because ok=false.",
+      "summary": "fetch.py keeps the previous items on failure; dedupe must still consider them.",
       "image": null
     }
   ]

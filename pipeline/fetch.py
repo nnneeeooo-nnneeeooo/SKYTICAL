@@ -31,6 +31,7 @@ from common import (
     USER_AGENT,
     iso_minute,
     load_json,
+    norm_url,
     now_utc,
     parse_iso,
     save_json,
@@ -413,14 +414,34 @@ def _fetch_flightaware(session: requests.Session, spec: dict) -> dict:
 # --------------------------------------------------------------------------
 # main loop
 
-def _finalize(raw_items: list[dict], fetched_iso: str) -> list[dict]:
+TITLE_MAX = 300
+
+
+def _finalize(raw_items: list[dict], fetched_iso: str,
+              previous: dict | None) -> list[dict]:
+    # For items whose page/feed carries no date, keep the publishedUtc we
+    # stamped when we FIRST saw the URL (from the previous snapshot) instead
+    # of re-stamping every fetch — otherwise long-lived undated listings look
+    # perpetually fresh and get republished once seen.json prunes them.
+    prev_published: dict[str, str] = {}
+    if isinstance(previous, dict):
+        for prev_item in previous.get("items") or []:
+            if isinstance(prev_item, dict) and prev_item.get("url"):
+                stamp = prev_item.get("publishedUtc")
+                if stamp:
+                    prev_published[norm_url(str(prev_item["url"]))] = str(stamp)
+
     items = []
     for item in raw_items[:MAX_ITEMS_PER_SOURCE]:
         published = item.get("published")
+        if published:
+            published_iso = iso_minute(published)
+        else:
+            published_iso = prev_published.get(norm_url(item["url"]), fetched_iso)
         items.append({
-            "title": item["title"],
+            "title": _clip(item["title"], TITLE_MAX),
             "url": item["url"],
-            "publishedUtc": iso_minute(published) if published else fetched_iso,
+            "publishedUtc": published_iso,
             "summary": _clip(_collapse(item.get("summary"))),
             "image": item.get("image"),
         })
@@ -469,7 +490,7 @@ def _fetch_source(session: requests.Session, key: str, spec: dict,
         if not raw_items:
             raise FetchError("page parsed to 0 items (layout changed?)")
 
-    items = _finalize(raw_items, fetched_iso)
+    items = _finalize(raw_items, fetched_iso, load_json(raw_path, None))
     save_json(raw_path, {"source": key, "fetchedUtc": fetched_iso,
                          "ok": True, "error": None, "items": items})
     print(f"[fetch] {key}: ok, {len(items)} items")
@@ -519,8 +540,19 @@ def main() -> None:
             success = _fetch_source(session, key, spec, cache, raw_path, fetched_iso)
         except Exception as exc:  # noqa: BLE001 — one source must never kill the run
             error = _collapse(str(exc))[:300] or type(exc).__name__
-            save_json(raw_path, {"source": key, "fetchedUtc": fetched_iso,
-                                 "ok": False, "error": error, "items": []})
+            # Carry the previous snapshot's items (and stats) forward so a
+            # flapping source cannot destroy the only copy of stories that
+            # write.py has not published yet (see CONTRACTS.md retry path).
+            previous = load_json(raw_path, None)
+            payload = {"source": key, "fetchedUtc": fetched_iso,
+                       "ok": False, "error": error, "items": []}
+            if isinstance(previous, dict):
+                prev_items = previous.get("items")
+                if isinstance(prev_items, list) and prev_items:
+                    payload["items"] = prev_items
+                if isinstance(previous.get("stats"), dict):
+                    payload["stats"] = previous["stats"]
+            save_json(raw_path, payload)
             cache.pop(key, None)  # do not 304 our way past a failure next run
             print(f"[fetch] {key}: FAILED - {error}")
             success = False

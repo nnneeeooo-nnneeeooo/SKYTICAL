@@ -26,6 +26,11 @@ STATIC_DIR = ROOT / "static"
 # user/organization pages or local preview (set AVWIRE_BASE_PATH="").
 BASE_PATH = os.environ.get("AVWIRE_BASE_PATH", "/avwire").rstrip("/")
 
+# Absolute origin for hreflang/canonical links (search engines require
+# fully-qualified URLs there).
+SITE_ORIGIN = (os.environ.get("AVWIRE_SITE_ORIGIN")
+               or "https://nnneeeooo-nnneeeooo.github.io").rstrip("/")
+
 USER_AGENT = (
     "AVWIREBot/1.0 (automated aviation news aggregator; "
     "+https://github.com/avwire) requests"

@@ -61,12 +61,14 @@ def _published(item: dict) -> datetime | None:
 
 
 def _load_raw_items() -> list[dict]:
-    """All items from data/raw/<key>.json snapshots with ok=true, each
-    annotated with the source display name and key."""
+    """All items from data/raw/<key>.json snapshots, each annotated with the
+    source display name and key. ok=false snapshots are NOT skipped: fetch.py
+    carries the previous items forward on failure so unpublished stories
+    survive a flapping source (staleness is bounded by the 48h age filter)."""
     items: list[dict] = []
     for key, source in SOURCES.items():
         snapshot = load_json(RAW_DIR / f"{key}.json", None)
-        if not isinstance(snapshot, dict) or not snapshot.get("ok"):
+        if not isinstance(snapshot, dict):
             continue
         raw_items = snapshot.get("items")
         if not isinstance(raw_items, list):

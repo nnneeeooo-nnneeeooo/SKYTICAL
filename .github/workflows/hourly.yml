@@ -40,28 +40,47 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           AEROAPI_KEY: ${{ secrets.AEROAPI_KEY }} # optional
+          AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }} # optional repo variable
         run: |
           python pipeline/fetch.py
           python pipeline/dedupe.py
           python pipeline/write.py
           python pipeline/build.py
 
-      - name: Commit data
-        run: |
-          git config user.name "avwire-bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add data site
-          if git diff --cached --quiet; then
-            echo "no changes to commit"
-          else
-            git commit -m "hourly update $(date -u +%FT%H:%M)"
-            git pull --rebase origin "${GITHUB_REF_NAME}" || true
-            git push
-          fi
-
+      # Upload BEFORE the data commit so the deploy never depends on git push.
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
+
+      - name: Commit data
+        continue-on-error: true # a push race must not fail the run or block deploy
+        run: |
+          git config user.name "avwire-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          git commit -m "hourly update $(date -u +%FT%H:%M)"
+          pushed=""
+          for i in 1 2 3; do
+            # -X theirs keeps the bot's replayed commit (data/ is bot-owned)
+            if ! git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"; then
+              git rebase --abort || true
+              sleep 5
+              continue
+            fi
+            if git push; then
+              pushed=yes
+              break
+            fi
+            sleep 5
+          done
+          if [ -z "$pushed" ]; then
+            echo "::warning::data commit could not be pushed after 3 attempts"
+            exit 1
+          fi
 
   deploy:
     needs: update

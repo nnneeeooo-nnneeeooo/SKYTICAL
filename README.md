@@ -24,8 +24,11 @@ avwire/
 ├─ templates/       # Jinja2 模板（Modernist 設計系統）
 ├─ static/          # modernist.css / site.css / app.js
 ├─ data/            # 原始快照與文章 JSON（commit 進 repo 當作資料庫）
-└─ site/            # 輸出，部署到 GitHub Pages
+└─ site/            # 建置輸出（gitignored；由 Actions artifact 部署到 Pages）
 ```
+
+沒有文章時（未設 `ANTHROPIC_API_KEY`），首頁自動切換為**純聚合模式**：
+直接顯示各來源的原文標題，點擊前往原始報導，完全免費。
 
 ## 上線設定
 

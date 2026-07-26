@@ -57,6 +57,11 @@ a.seg-btn.active:hover { color: var(--color-bg); }
 .seg-lang .seg-btn { padding: 4px 11px; font-size: 12px; }
 .seg-cat .seg-btn { padding: 5px 12px; font-size: 12px; }
 .seg-sev .seg-btn { padding: 6px 14px; font-size: 12.5px; }
+/* keep the segmented controls intact on narrow screens: wrap, don't clip */
+.seg-lang { flex-shrink: 0; }
+/* visible focus ring on segmented controls (mirrors modernist.css .seg-opt) */
+.seg-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+.seg-btn.active:focus-visible { outline-color: var(--color-bg); }
 
 /* — home grid — */
 .home-grid {

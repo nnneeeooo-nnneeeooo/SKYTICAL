@@ -26,6 +26,11 @@ reserved for programming errors.
   "fetchedUtc": "2026-07-26T05:02Z",
   "ok": true,                       // false when the fetch failed
   "error": null,                    // string when ok=false
+  // On failure fetch.py CARRIES the previous snapshot's items (and stats)
+  // forward, so ok=false files may still hold usable items; dedupe.py reads
+  // them regardless of ok (staleness is bounded by its 48h age filter).
+  // For items without a source-provided date, publishedUtc keeps the stamp
+  // from the FIRST fetch that saw the URL (stable across refetches).
   "items": [
     {
       "title": "FAA Statement on ...",     // plain text, no HTML

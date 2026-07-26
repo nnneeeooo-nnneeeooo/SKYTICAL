@@ -37,7 +37,8 @@ try:
 except ImportError:  # pragma: no cover - anthropic is in requirements.txt
     anthropic = None
 
-MODEL = os.environ.get("AVWIRE_MODEL", "claude-opus-5")
+# `or` (not a get() default) so an empty env var still falls back.
+MODEL = os.environ.get("AVWIRE_MODEL") or "claude-opus-5"
 MAX_GROUPS_PER_RUN = 10
 MAX_INCIDENTS = 60
 SEEN_MAX_AGE_DAYS = 21
@@ -72,7 +73,7 @@ _LANG_SCHEMA = {
 _INCIDENT_SCHEMA = {
     "type": "object",
     "properties": {
-        "date": {"type": "string"},
+        "date": {"type": "string", "format": "date"},
         "sev": {"type": "string", "enum": ["acc", "ser", "inc"]},
         "aircraft": {"type": "string"},
         "operator": {"type": "string"},
@@ -161,7 +162,8 @@ def group_prompt(group: dict) -> str:
         "Source items:",
     ]
     for idx, item in enumerate(group.get("items", []), 1):
-        lines.append(f"{idx}. [{item.get('source', '?')}] {item.get('title', '')}")
+        title = str(item.get("title") or "")[:300]  # defensive prompt-cost cap
+        lines.append(f"{idx}. [{item.get('source', '?')}] {title}")
         lines.append(f"   published: {item.get('publishedUtc', '?')}")
         summary = str(item.get("summary") or "").strip()
         if summary:
@@ -183,7 +185,10 @@ def draft_group(client, group: dict):
         max_tokens=16000,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": group_prompt(group)}],
-        output_config={"format": {"type": "json_schema", "schema": DRAFT_SCHEMA}},
+        # "medium" effort bounds adaptive-thinking spend so thinking cannot
+        # eat the 16000-token cap on this bounded drafting task.
+        output_config={"effort": "medium",
+                       "format": {"type": "json_schema", "schema": DRAFT_SCHEMA}},
     )
     if response.stop_reason == "refusal":
         print(f"write: model refused group {group.get('id')}; skipping")
@@ -326,7 +331,8 @@ def refresh_stats(now) -> None:
     raw = load_json(FLIGHTAWARE_RAW_PATH, {})
     fa_stats = raw.get("stats") if isinstance(raw, dict) else None
     if isinstance(fa_stats, dict):
-        for key in ("flightsTracked", "delayRate", "notams"):
+        for key in ("flightsTracked", "delayRate", "notams",
+                    "delaysWorldwide", "cancellationsWorldwide"):
             value = fa_stats.get(key)
             if isinstance(value, (int, float)) and not isinstance(value, bool):
                 stats[key] = value
@@ -374,9 +380,18 @@ def main() -> None:
     published_groups, published_ids = [], set()
     skipped = 0
 
+    auth_failed = False
     for group in groups[:MAX_GROUPS_PER_RUN]:
         try:
             draft = draft_group(client, group)
+        except (anthropic.AuthenticationError,
+                anthropic.PermissionDeniedError) as exc:
+            # Persistent config error: every remaining call is doomed. Abort
+            # loudly so the Actions run turns red instead of silently green.
+            print("write: FATAL persistent auth error "
+                  f"({type(exc).__name__}); aborting remaining groups")
+            auth_failed = True
+            break
         except (anthropic.APIStatusError, anthropic.APIConnectionError) as exc:
             print(f"write: API error on group {group.get('id')}: "
                   f"{type(exc).__name__}; skipping")
@@ -413,6 +428,8 @@ def main() -> None:
     refresh_stats(now)
     print(f"write: published {len(new_articles)} article(s), "
           f"skipped {skipped}, pending {max(len(groups) - len(new_articles), 0)}")
+    if auth_failed:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

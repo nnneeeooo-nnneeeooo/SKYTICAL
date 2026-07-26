@@ -26,11 +26,14 @@ from common import (
     DATA_DIR,
     HOME_FEED_LIMIT,
     MAX_FLASHES,
+    RAW_DIR,
     SITE_DIR,
+    SITE_ORIGIN,
     SOURCES,
     STATIC_DIR,
     TEMPLATES_DIR,
     load_json,
+    norm_url,
     now_utc,
     parse_iso,
 )
@@ -98,6 +101,7 @@ L = {
         "siteDesc": "全自動航空新聞聚合站：每小時抓取 FAA、ICAO、IATA、Reuters 等可信來源，自動撰寫雙語新聞並於文末標註原始出處。",
         "awaiting": "等待首次管線執行",
         "lastBuild": "最後建置",
+        "aggNote": "純聚合模式：顯示來源原文標題，點擊前往原始報導",
     },
     "en": {
         "brandZh": "Aviation Wire", "live": "LIVE WIRE", "updateBadge": "Auto-updates hourly",
@@ -148,6 +152,7 @@ L = {
         "siteDesc": "A fully automated aviation news aggregator: trusted sources fetched hourly, bilingual stories written automatically, every original source credited.",
         "awaiting": "Awaiting first pipeline run",
         "lastBuild": "Last build",
+        "aggNote": "Aggregation mode: original source headlines, linking to the original stories",
     },
 }
 
@@ -234,6 +239,14 @@ def ago(last_utc, now) -> str:
     return f"{mins // (24 * 60)} d"
 
 
+def _safe_web_url(url: str) -> bool:
+    """Only http(s) URLs may reach href/src attributes (feeds are untrusted)."""
+    try:
+        return urlsplit(url).scheme.lower() in ("http", "https")
+    except ValueError:
+        return False
+
+
 def rel_path(lang: str, sub: str) -> str:
     return ("en/" + sub) if lang == "en" else sub
 
@@ -279,6 +292,8 @@ def prep_article(raw):
     for s in raw.get("sources") or []:
         if isinstance(s, dict) and s.get("url"):
             url = str(s["url"])
+            if not _safe_web_url(url):  # feed-derived: block javascript: etc.
+                continue
             try:
                 host = urlsplit(url).netloc
             except ValueError:
@@ -286,15 +301,21 @@ def prep_article(raw):
             sources.append({"n": f"{len(sources) + 1}.",
                             "name": str(s.get("name") or host or url),
                             "url": url, "host": host})
+    if not sources:
+        # Hard site rule: every published article must credit >=1 source.
+        return None
 
     cat = raw.get("cat") if isinstance(raw.get("cat"), str) else "ops"
+    image = str(raw["image"]) if raw.get("image") else None
+    if image and not _safe_web_url(image):
+        image = None
     tpe = dt.astimezone(TPE)
     return {
         "id": art_id,
         "dt": dt,
         "cat": cat,
         "tag_class": TAGCLS.get(cat, "tag-neutral"),
-        "image": str(raw["image"]) if raw.get("image") else None,
+        "image": image,
         "source": str(raw.get("primarySource") or (sources[0]["name"] if sources else "—")),
         "time": tpe.strftime("%H:%M"),
         "meta_ts": tpe.strftime("%Y-%m-%d %H:%M") + " UTC+8",
@@ -334,8 +355,76 @@ def art_view(a, lang: str):
         cat_label=_bi(CATS.get(a["cat"]), lang, a["cat"]),
         source=a["source"], time=a["time"], meta_ts=a["meta_ts"],
         sources=a["sources"], url=page_url(lang, f"news/{a['id']}/"),
+        external=False,
     )
     return v
+
+
+def collect_agg_items(now):
+    """Aggregation fallback: when no LLM-written articles exist yet, surface
+    the newest raw source headlines directly (free, no-API mode)."""
+    items, seen = [], set()
+    cutoff = now - timedelta(hours=48)
+    for key, reg in SOURCES.items():
+        raw = load_json(RAW_DIR / f"{key}.json", None)
+        if not isinstance(raw, dict) or not raw.get("ok"):
+            continue
+        for it in raw.get("items") or []:
+            if not isinstance(it, dict):
+                continue
+            title = str(it.get("title") or "").strip()
+            url = str(it.get("url") or "").strip()
+            if not title or not url.startswith(("http://", "https://")):
+                continue
+            try:
+                dt = parse_iso(str(it.get("publishedUtc")))
+            except (ValueError, TypeError):
+                continue
+            if dt < cutoff or dt > now + timedelta(hours=2):
+                continue
+            k = norm_url(url)
+            if k in seen:
+                continue
+            seen.add(k)
+            image = str(it["image"]) if it.get("image") else None
+            if image and not _safe_web_url(image):
+                image = None
+            items.append({
+                "dt": dt, "title": title, "url": url,
+                "summary": str(it.get("summary") or "").strip(),
+                "image": image,
+                "source": reg["name"], "kind": reg["kind"],
+            })
+    items.sort(key=lambda i: i["dt"], reverse=True)
+    return items[: HOME_FEED_LIMIT + 1]  # +1: first item becomes the hero
+
+
+def agg_view(items, lang: str):
+    out = []
+    for it in items:
+        summary = it["summary"]
+        if len(summary) > 200:
+            summary = summary[:200].rstrip() + "…"
+        out.append({
+            "cat": "agg", "tag_class": "tag-neutral",
+            "cat_label": _bi(KIND.get(it["kind"]), lang, it["kind"]),
+            "title": it["title"], "summary": summary,
+            "source": it["source"],
+            "time": it["dt"].astimezone(TPE).strftime("%H:%M"),
+            "url": it["url"], "external": True, "image": it["image"],
+        })
+    return out
+
+
+def agg_flashes(views):
+    out = []
+    for v in views[:MAX_FLASHES]:
+        text = v["title"]
+        if len(text) > 68:
+            text = text[:68].rstrip() + "…"
+        out.append({"time": v["time"], "hot": False, "text": text,
+                    "url": v["url"], "external": True})
+    return out
 
 
 def prep_flashes(raw, known_ids):
@@ -369,6 +458,7 @@ def flash_view(flashes, lang: str):
     return [{
         "time": f["time"], "hot": f["hot"], "text": f[lang],
         "url": page_url(lang, f"news/{f['articleId']}/") if f["articleId"] else None,
+        "external": False,
     } for f in flashes]
 
 
@@ -515,6 +605,9 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=Tru
         "html_lang": "zh-Hant" if lang == "zh" else "en",
         "title": title, "description": description,
         "zh_url": page_url("zh", sub), "en_url": page_url("en", sub),
+        "zh_abs_url": SITE_ORIGIN + page_url("zh", sub),
+        "en_abs_url": SITE_ORIGIN + page_url("en", sub),
+        "self_abs_url": SITE_ORIGIN + page_url(lang, sub),
         "hreflang": hreflang,
         "home_url": page_url(lang, ""),
         "nav": [{"label": t["nav"][i], "url": page_url(lang, s), "active": page == p}
@@ -572,18 +665,34 @@ def main() -> int:
     pages = 0
     failed = 0
 
+    # Free no-API fallback: with no articles published yet, surface raw
+    # source headlines instead of an empty page.
+    agg_items = [] if articles else collect_agg_items(now)
+
     for lang in ("zh", "en"):
         t = L[lang]
-        fl = flash_view(flashes, lang)
-        ticker = TICKER_SEP.join(f"{f['time']}  {f['text']}" for f in fl)
+        agg = False
         views = [art_view(a, lang) for a in articles]
-        hero = views[0] if views else None
-        feed = views[1:1 + HOME_FEED_LIMIT]
+        if views:
+            fl = flash_view(flashes, lang)
+            hero = views[0]
+            feed = views[1:1 + HOME_FEED_LIMIT]
+        elif agg_items:
+            agg = True
+            av = agg_view(agg_items, lang)
+            fl = agg_flashes(av)
+            hero = av[0]
+            feed = av[1:1 + HOME_FEED_LIMIT]
+        else:
+            fl = flash_view(flashes, lang)
+            hero = None
+            feed = []
+        ticker = TICKER_SEP.join(f"{f['time']}  {f['text']}" for f in fl)
         sv = stats_views(stats_raw, lang)
 
         ctx = base_ctx(lang, "home", "", title=t["siteName"],
                        description=t["siteDesc"], ticker=ticker, build=build)
-        ctx.update(hero=hero, feed=feed, flashes=fl,
+        ctx.update(hero=hero, feed=feed, flashes=fl, agg=agg,
                    source_status=source_status_view(sources, now),
                    stats=sv["tiles"], otp=sv["otp"], fleet=sv["fleet"],
                    delays=sv["delays"],
