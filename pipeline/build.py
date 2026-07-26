@@ -65,6 +65,7 @@ L = {
         "delays": "今日延誤熱點機場", "autoCompiled": "自動彙整",
         "refreshNote": "本文隨來源每小時更新", "sourcesBox": "資料來源 Sources",
         "genNote": "本文由自動化系統彙整生成，內容以原始來源為準。",
+        "aiModel": "AI 撰稿模型",
         "incKicker": "Incident Database", "incTitle": "事故資料庫",
         "incSub": "自動彙整全球民航事故與事件，資料來自各國調查機關與專業追報來源，每小時更新。",
         "incCountLabel": "筆紀錄",
@@ -116,6 +117,7 @@ L = {
         "delays": "Delay hotspots today", "autoCompiled": "Auto-compiled",
         "refreshNote": "Refreshes hourly with sources", "sourcesBox": "Sources",
         "genNote": "This article was compiled automatically; the original sources prevail.",
+        "aiModel": "Drafted by",
         "incKicker": "Incident Database", "incTitle": "Incident database",
         "incSub": "Automatically aggregated civil-aviation accidents and incidents, from state investigators and specialist trackers. Updated hourly.",
         "incCountLabel": "records",
@@ -258,6 +260,41 @@ def page_url(lang: str, sub: str) -> str:
 
 # ── data loading / preparation ───────────────────────────────────────────────
 
+# Article-footer model credit: writer id -> vendor mark + short model name.
+# The square monogram uses the vendor's brand color (site style is square
+# tags, radius 0) - official logo artwork can replace it later if licensed.
+_WRITER_BADGES = (
+    ("nemotron-3-ultra", "NVIDIA", "N", "#76b900", "Nemotron 3 Ultra"),
+    ("nemotron-3-super", "NVIDIA", "N", "#76b900", "Nemotron 3 Super"),
+    ("nemotron", "NVIDIA", "N", "#76b900", "Nemotron"),
+    ("deepseek-v4-pro", "DeepSeek", "D", "#4d6bfe", "DeepSeek V4 Pro"),
+    ("deepseek", "DeepSeek", "D", "#4d6bfe", "DeepSeek"),
+    ("gemini-3.6-flash", "Google", "G", "#4285f4", "Gemini 3.6 Flash"),
+    ("gemini-3.5-flash", "Google", "G", "#4285f4", "Gemini 3.5 Flash"),
+    ("gemini", "Google", "G", "#4285f4", "Gemini"),
+    ("qwen3.5", "Qwen", "Q", "#615ced", "Qwen 3.5"),
+    ("qwen", "Qwen", "Q", "#615ced", "Qwen"),
+    ("glm-5.2", "Z.ai", "Z", "#141414", "GLM-5.2"),
+    ("glm", "Z.ai", "Z", "#141414", "GLM"),
+    ("mistral-medium-3.5", "Mistral AI", "M", "#fa500f", "Mistral Medium 3.5"),
+    ("mistral", "Mistral AI", "M", "#fa500f", "Mistral"),
+    ("claude-opus-5", "Anthropic", "A", "#d97757", "Claude Opus 5"),
+    ("claude", "Anthropic", "A", "#d97757", "Claude"),
+)
+
+
+def writer_badge(writer):
+    """{"vendor", "initial", "color", "model"} for a writer id, or None."""
+    if not isinstance(writer, str) or ":" not in writer:
+        return None
+    model_id = writer.split(":", 1)[1].lower()
+    for needle, vendor, initial, color, model in _WRITER_BADGES:
+        if needle in model_id:
+            return {"vendor": vendor, "initial": initial,
+                    "color": color, "model": model}
+    return None
+
+
 def prep_article(raw):
     if not isinstance(raw, dict):
         return None
@@ -343,6 +380,7 @@ def prep_article(raw):
         "zh": side(zh, en),
         "en": side(en, zh),
         "sources": sources,
+        "writer_badge": writer_badge(raw.get("writer")),
     }
 
 
@@ -376,6 +414,7 @@ def art_view(a, lang: str):
         cat_label=_bi(CATS.get(a["cat"]), lang, a["cat"]),
         source=a["source"], time=a["time"], meta_ts=a["meta_ts"],
         sources=a["sources"], url=page_url(lang, f"news/{a['id']}/"),
+        writer_badge=a["writer_badge"],
         external=False,
     )
     return v
