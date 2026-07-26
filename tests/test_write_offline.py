@@ -182,7 +182,11 @@ def test_publish_flow():
 
     def fake_draft(client, group):
         if group["id"] == "g-20260726-0503-1":
-            return DRAFT_SAFETY
+            # A prompt-JSON model can smuggle extra top-level keys past the
+            # schema; the review queue must whitelist them away.
+            dirty = json.loads(json.dumps(DRAFT_SAFETY))
+            dirty["reasoning"] = "SECRET REASONING TRACE"
+            return dirty
         if group["id"] == "g-20260726-0503-2":
             return DRAFT_BIZ
         return None  # refusal path: group stays pending + unseen
@@ -233,6 +237,8 @@ def test_publish_flow():
           f"risk flags on queue entry, got {entry['riskFlags']}")
     check(entry["draft"]["zh"]["title"] == DRAFT_SAFETY["zh"]["title"],
           "full draft preserved for the human editor")
+    check("reasoning" not in entry["draft"],
+          "non-schema keys stripped before the draft hits the public repo")
 
     # --- flashes: only the biz flash prepended -----------------------------
     flashes = load(DATA / "flashes.json")

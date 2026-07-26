@@ -753,6 +753,12 @@ def _load_review(now) -> tuple:
 
 def _review_entry(candidate: dict, group: dict, writer: str, facts: list,
                   now) -> dict:
+    # Whitelist the stored draft to schema-known keys: review.json is
+    # committed to the PUBLIC repo, and a prompt-JSON model could legally
+    # smuggle extra top-level keys (reasoning, analysis, ...) past
+    # validate_draft.
+    candidate = {key: candidate[key]
+                 for key in DRAFT_SCHEMA["properties"] if key in candidate}
     flags = candidate.get("riskFlags")
     return {
         "id": group.get("id"),
@@ -960,7 +966,12 @@ def main() -> None:
           f"pending {remaining_count}")
     calls_note = " ".join(f"{label}={n}" for label, n in ai_calls.items()) \
         or "none"
-    print(f"write stats: ai_calls {calls_note}")
+    # http_calls includes internal format-repair calls, so it is the true
+    # spend figure; ai_calls counts drafting attempts.
+    http_note = " ".join(
+        f"{p.label}={p.http_calls}" for p in providers
+        if getattr(p, "http_calls", 0)) or "none"
+    print(f"write stats: ai_calls {calls_note} | http_calls {http_note}")
     if providers and dead_auth and dead_auth == {p.name for p in providers}:
         # Every configured platform failed authentication: turn the Actions
         # run red instead of silently green.

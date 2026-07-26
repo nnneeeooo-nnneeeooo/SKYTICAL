@@ -320,8 +320,17 @@ def prep_article(raw):
             pass
     tpe = display_dt.astimezone(TPE)
     today_tpe = now_utc().astimezone(TPE).date()
-    time_label = (tpe.strftime("%H:%M") if tpe.date() == today_tpe
-                  else tpe.strftime("%m/%d"))
+    # Date-only source stamps (FAA/CAA give no clock time -> 00:00Z) must
+    # not render as a precise-looking "08:00" TPE: show the date instead.
+    date_only = (raw.get("sourcePublishedUtc")
+                 and display_dt.hour == 0 and display_dt.minute == 0)
+    if date_only:
+        time_label = tpe.strftime("%m/%d")
+        meta_ts = tpe.strftime("%Y-%m-%d")
+    else:
+        time_label = (tpe.strftime("%H:%M") if tpe.date() == today_tpe
+                      else tpe.strftime("%m/%d"))
+        meta_ts = tpe.strftime("%Y-%m-%d %H:%M") + " UTC+8"
     return {
         "id": art_id,
         "dt": dt,
@@ -330,7 +339,7 @@ def prep_article(raw):
         "image": image,
         "source": str(raw.get("primarySource") or (sources[0]["name"] if sources else "—")),
         "time": time_label,
-        "meta_ts": tpe.strftime("%Y-%m-%d %H:%M") + " UTC+8",
+        "meta_ts": meta_ts,
         "zh": side(zh, en),
         "en": side(en, zh),
         "sources": sources,
@@ -406,9 +415,22 @@ def collect_agg_items(now):
                 "summary": str(it.get("summary") or "").strip(),
                 "image": image,
                 "source": reg["name"], "kind": reg["kind"],
+                # first-seen stamps must never be shown as publish times
+                "date_inferred": bool(it.get("dateInferred")),
             })
     items.sort(key=lambda i: i["dt"], reverse=True)
     return items[: HOME_FEED_LIMIT + 1]  # +1: first item becomes the hero
+
+
+def _honest_time_label(dt, inferred: bool) -> str:
+    """HH:MM only for today's real timestamps; m/d for older ones; a dash
+    when the source never provided a publish time (inferred stamp)."""
+    if inferred:
+        return "—"
+    tpe = dt.astimezone(TPE)
+    if tpe.date() == now_utc().astimezone(TPE).date():
+        return tpe.strftime("%H:%M")
+    return tpe.strftime("%m/%d")
 
 
 def agg_view(items, lang: str):
@@ -422,7 +444,7 @@ def agg_view(items, lang: str):
             "cat_label": _bi(KIND.get(it["kind"]), lang, it["kind"]),
             "title": it["title"], "summary": summary,
             "source": it["source"],
-            "time": it["dt"].astimezone(TPE).strftime("%H:%M"),
+            "time": _honest_time_label(it["dt"], it.get("date_inferred", False)),
             "url": it["url"], "external": True, "image": it["image"],
         })
     return out

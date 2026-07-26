@@ -85,8 +85,13 @@ FUTURE_SKEW_HOURS = 6
 # beyond the headline; a group needs at least one such item to be worth an
 # LLM call. Single source of truth for dedupe.py and write.py.
 MIN_EFFECTIVE_SUMMARY_CHARS = 25
+# CJK text is roughly twice as information-dense: a 15-character Chinese
+# sentence is a complete evidential statement.
+MIN_EFFECTIVE_SUMMARY_CHARS_CJK = 12
 
 _SQUASH_RE = re.compile(r"\s+")
+_PUNCT_RE = re.compile(r"[^\w\s]|_")
+_CJK_RE = re.compile(r"[぀-ヿ一-鿿]")
 
 
 def squash_text(text) -> str:
@@ -94,17 +99,27 @@ def squash_text(text) -> str:
     return _SQUASH_RE.sub(" ", str(text or "")).strip().casefold()
 
 
+def _comparable(text: str) -> str:
+    """Squashed text with punctuation removed, so a summary that re-quotes
+    the headline with CJK punctuation variants still counts as an echo."""
+    return _SQUASH_RE.sub(" ", _PUNCT_RE.sub(" ", text)).strip()
+
+
 def item_has_material(item: dict) -> bool:
     if not isinstance(item, dict):
         return False
-    summary = squash_text(item.get("summary"))
+    summary = _comparable(squash_text(item.get("summary")))
     if not summary:
         return False
-    title = squash_text(item.get("title"))
+    title = _comparable(squash_text(item.get("title")))
     if title and title in summary:
         # A summary that merely repeats the headline is not evidence.
         summary = summary.replace(title, "", 1)
-    return len(summary.strip()) >= MIN_EFFECTIVE_SUMMARY_CHARS
+    effective = summary.strip()
+    threshold = (MIN_EFFECTIVE_SUMMARY_CHARS_CJK
+                 if _CJK_RE.search(effective)
+                 else MIN_EFFECTIVE_SUMMARY_CHARS)
+    return len(effective) >= threshold
 
 
 def group_has_material(group: dict) -> bool:

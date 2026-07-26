@@ -103,18 +103,20 @@ MODEL_PROFILES: dict = {
         "payload": {"temperature": 0.7, "reasoning_effort": "high"},
         "repair": {"reasoning_effort": "none"},
     },
+    # No temperature on Gemini 3.x: Google's docs recommend keeping the
+    # tuned defaults (the field is deprecated on newer 3.6-flash builds).
     "gemini-3.6-flash": {
-        "generationConfig": {"temperature": 0.1, "maxOutputTokens": 8192,
+        "generationConfig": {"maxOutputTokens": 8192,
                              "thinkingConfig": {"thinkingLevel": "medium"}},
         "repairGenerationConfig": {
-            "temperature": 0.1, "maxOutputTokens": 8192,
+            "maxOutputTokens": 8192,
             "thinkingConfig": {"thinkingLevel": "minimal"}},
     },
     "gemini-3.5-flash": {
-        "generationConfig": {"temperature": 0.1, "maxOutputTokens": 8192,
+        "generationConfig": {"maxOutputTokens": 8192,
                              "thinkingConfig": {"thinkingLevel": "medium"}},
         "repairGenerationConfig": {
-            "temperature": 0.1, "maxOutputTokens": 8192,
+            "maxOutputTokens": 8192,
             "thinkingConfig": {"thinkingLevel": "minimal"}},
     },
 }
@@ -177,6 +179,7 @@ class AnthropicProvider:
         # `or` (not a get() default) so an empty env var still falls back.
         self.model = model or os.environ.get("AVWIRE_MODEL") or "claude-opus-5"
         self.label = f"{self.name}:{self.model}"
+        self.http_calls = 0
         self._client = None
 
     def available(self) -> bool:
@@ -185,6 +188,7 @@ class AnthropicProvider:
     def draft(self, system_prompt: str, user_prompt: str, schema: dict):
         if self._client is None:
             self._client = anthropic.Anthropic()
+        self.http_calls += 1
         try:
             response = self._client.messages.create(
                 model=self.model,
@@ -237,36 +241,15 @@ class GeminiProvider:
         self.model = (model or os.environ.get("AVWIRE_GEMINI_MODEL")
                       or GEMINI_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
+        self.http_calls = 0  # real API spend incl. format-repair calls
 
     def available(self) -> bool:
         return bool(os.environ.get("GEMINI_API_KEY"))
 
-    def _generation_config(self, schema: dict, repair: bool) -> dict:
-        profile = MODEL_PROFILES.get(self.model, {})
-        key = "repairGenerationConfig" if repair else "generationConfig"
-        config = dict(profile.get(key) or {})
-        config["responseMimeType"] = "application/json"
-        config["responseJsonSchema"] = schema
-        return config
-
-    def _post(self, payload: dict):
-        url = ("https://generativelanguage.googleapis.com/v1beta/models/"
-               f"{self.model}:generateContent")
-        try:
-            return requests.post(
-                url, json=payload, timeout=HTTP_TIMEOUT,
-                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
-            )
-        except requests.RequestException as exc:
-            raise ProviderError(type(exc).__name__) from exc
-
-    def draft(self, system_prompt: str, user_prompt: str, schema: dict):
-        payload = {
-            "systemInstruction": {"parts": [{"text": system_prompt}]},
-            "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
-            "generationConfig": self._generation_config(schema, repair=False),
-        }
-        response = self._post(payload)
+    def _check_status(self, response) -> None:
+        """Shared auth/quota classification - the repair path must classify
+        failures exactly like the draft path, or a dead key survives one
+        extra doomed call per group."""
         if response.status_code in (401, 403):
             raise ProviderAuthError(f"HTTP {response.status_code}")
         if response.status_code == 400 and (
@@ -284,6 +267,35 @@ class GeminiProvider:
         if response.status_code >= 400:
             raise ProviderError(
                 f"HTTP {response.status_code}: {_body_snippet(response)}")
+
+    def _generation_config(self, schema: dict, repair: bool) -> dict:
+        profile = MODEL_PROFILES.get(self.model, {})
+        key = "repairGenerationConfig" if repair else "generationConfig"
+        config = dict(profile.get(key) or {})
+        config["responseMimeType"] = "application/json"
+        config["responseJsonSchema"] = schema
+        return config
+
+    def _post(self, payload: dict):
+        url = ("https://generativelanguage.googleapis.com/v1beta/models/"
+               f"{self.model}:generateContent")
+        self.http_calls += 1
+        try:
+            return requests.post(
+                url, json=payload, timeout=HTTP_TIMEOUT,
+                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
+            )
+        except requests.RequestException as exc:
+            raise ProviderError(type(exc).__name__) from exc
+
+    def draft(self, system_prompt: str, user_prompt: str, schema: dict):
+        payload = {
+            "systemInstruction": {"parts": [{"text": system_prompt}]},
+            "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
+            "generationConfig": self._generation_config(schema, repair=False),
+        }
+        response = self._post(payload)
+        self._check_status(response)
         text = self._final_text(response)
         if text is None:
             return None
@@ -339,9 +351,7 @@ class GeminiProvider:
             "generationConfig": self._generation_config(schema, repair=True),
         }
         response = self._post(payload)
-        if response.status_code >= 400:
-            raise ProviderError(
-                f"format repair HTTP {response.status_code}")
+        self._check_status(response)
         text = self._final_text(response)
         if not text:
             raise ProviderError("format repair returned no text")
@@ -360,6 +370,7 @@ class NvidiaProvider:
         self.model = (model or os.environ.get("AVWIRE_NVIDIA_MODEL")
                       or NVIDIA_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
+        self.http_calls = 0  # real API spend incl. format-repair calls
 
     def available(self) -> bool:
         return bool(os.environ.get("NVIDIA_API_KEY"))
@@ -381,6 +392,7 @@ class NvidiaProvider:
             "stream": False,
             **self._payload_extras(repair),
         }
+        self.http_calls += 1
         try:
             return requests.post(
                 "https://integrate.api.nvidia.com/v1/chat/completions",

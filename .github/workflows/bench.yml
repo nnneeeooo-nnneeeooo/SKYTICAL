@@ -102,6 +102,7 @@ jobs:
           name: bench-articles
           path: |
             bench-out/*/articles/
+            bench-out/*/review.json
             bench-out/*/flashes.json
             bench-out/*/incidents.json
           retention-days: 7

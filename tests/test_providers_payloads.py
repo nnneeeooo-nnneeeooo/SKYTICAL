@@ -192,9 +192,9 @@ def test_gemini_model_profiles():
         config = captured[0]["generationConfig"]
         check(config.get("thinkingConfig") == {"thinkingLevel": "medium"},
               f"{model}: thinkingLevel medium")
-        check(config.get("temperature") == 0.1
+        check("temperature" not in config
               and config.get("maxOutputTokens") == 8192,
-              f"{model}: sampling per profile")
+              f"{model}: no temperature on Gemini 3.x (tuned defaults)")
         check(config.get("responseMimeType") == "application/json"
               and config.get("responseJsonSchema") == SCHEMA,
               f"{model}: structured output config kept")

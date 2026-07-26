@@ -305,9 +305,10 @@ def test_freshness_window_and_future_guard() -> None:
 
 
 def test_material_groups_rank_first() -> None:
-    """Title-only groups must not crowd real stories out of the cap."""
+    """Title-only groups - even multi-source ones - must not crowd real
+    stories out of the cap."""
     body = "A real summary carrying enough evidence text for the model."
-    items = [
+    faa_items = [
         _mk_item("Newest but title only headline item",
                  "https://www.faa.gov/n/thin", 1, ""),
         _mk_item("Older official notice with a full summary",
@@ -316,15 +317,25 @@ def test_material_groups_rank_first() -> None:
                  "https://www.faa.gov/n/echo", 2,
                  "Summary that just repeats its own headline"),
     ]
+    # Same headline via a Google-News-fed source: forms a MULTI-source
+    # group that still has zero summary material (their summaries are
+    # blanked at fetch time).
+    reuters_items = [
+        _mk_item("Newest but title only headline item",
+                 "https://www.reuters.com/n/thin", 1, ""),
+    ]
     with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
         data_dir = Path(tmp)
-        _write_snapshot(data_dir, "faa", items)
+        _write_snapshot(data_dir, "faa", faa_items)
+        _write_snapshot(data_dir, "reuters", reuters_items)
         stdout = _run_dedupe(data_dir)
         assert _summary_line(stdout) == \
-            "dedupe: 3 raw items -> 3 fresh -> 3 groups", stdout
+            "dedupe: 4 raw items -> 4 fresh -> 3 groups", stdout
         groups = _load_pending(data_dir)["groups"]
         assert groups[0]["items"][0]["title"] == \
             "Older official notice with a full summary", groups
+        assert len(groups[1]["items"]) == 2, \
+            "multi-source thin group ranks below the material story"
         assert "groups_with_material=1/3" in stdout, stdout
 
 

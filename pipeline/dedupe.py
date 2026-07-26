@@ -203,19 +203,20 @@ def main() -> None:
         if _is_fresh(item, now, seen_urls, seen_titles, stats)
     ]
 
-    # Rank: cross-source coverage first, then groups that actually carry
-    # summary material (title-only groups cannot survive the evidence rules,
-    # so they must never crowd real stories out of the MAX_GROUPS cap),
-    # then recency.
+    # Rank: groups that actually carry summary material FIRST (title-only
+    # groups cannot survive the evidence rules, so they must never crowd
+    # real stories out of the MAX_GROUPS cap - and the Google-News-fed
+    # sources produce title-only MULTI-source groups all the time), then
+    # cross-source coverage, then recency.
     ranked: list[tuple[bool, bool, datetime, list[dict]]] = []
     for members in _group(fresh):
         members = _best_first(members)[:MAX_ITEMS_PER_GROUP]
         newest = max((_published(m) or _EPOCH for m in members), default=_EPOCH)
         multi = len({m["sourceKey"] for m in members}) > 1
         material = group_has_material({"items": members})
-        ranked.append((multi, material, newest, members))
+        ranked.append((material, multi, newest, members))
     ranked.sort(key=lambda entry: (entry[0], entry[1], entry[2]), reverse=True)
-    material_groups = sum(1 for entry in ranked if entry[1])
+    material_groups = sum(1 for entry in ranked if entry[0])
 
     stamp = now.strftime("%Y%m%d-%H%M")
     payload = {
@@ -226,7 +227,7 @@ def main() -> None:
                 "primarySource": members[0]["source"],
                 "items": members,
             }
-            for n, (_multi, _material, _newest, members) in enumerate(
+            for n, (_material, _multi, _newest, members) in enumerate(
                 ranked[:MAX_GROUPS], start=1
             )
         ],

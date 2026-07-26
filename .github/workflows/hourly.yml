@@ -9,11 +9,6 @@ on:
     paths-ignore:
       - "data/**" # bot data commits must not retrigger the workflow
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
 concurrency:
   group: hourly
   cancel-in-progress: false
@@ -21,6 +16,9 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # commits data/ back to the repo
+      pages: write # configure-pages enablement
     steps:
       - uses: actions/checkout@v4
 
@@ -57,17 +55,24 @@ jobs:
           python pipeline/write.py
           python pipeline/build.py
 
-      - name: Scan build output for secrets and reasoning traces
+      - name: Scan build output and committed data for secrets/reasoning
         run: |
-          if grep -rInE "nvapi-[A-Za-z0-9_-]{16,}|AIza[0-9A-Za-z_-]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|Bearer [A-Za-z0-9_./+-]{20,}" site/ ; then
-            echo "::error::secret-like string found in build output"
-            exit 1
-          fi
-          if grep -rIl "reasoning_content\|<think>" site/ ; then
-            echo "::error::reasoning trace found in build output"
-            exit 1
-          fi
-          echo "scan: build output clean"
+          scan() {
+            set +e
+            grep -rInE "$1" site/ data/
+            rc=$?
+            set -e
+            if [ "$rc" -eq 0 ]; then
+              echo "::error::$2 found in publishable output"
+              exit 1
+            elif [ "$rc" -ge 2 ]; then
+              echo "::error::scan failed (grep rc=$rc)"  # fail closed
+              exit 1
+            fi
+          }
+          scan "nvapi-[A-Za-z0-9_-]{16,}|AIza[0-9A-Za-z_-]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|Bearer [A-Za-z0-9_./+-]{20,}" "secret-like string"
+          scan "reasoning_content|<think>" "reasoning trace"
+          echo "scan: site/ and data/ clean"
 
       # Upload BEFORE the data commit so the deploy never depends on git push.
       - uses: actions/upload-pages-artifact@v3
@@ -107,6 +112,9 @@ jobs:
   deploy:
     needs: update
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
