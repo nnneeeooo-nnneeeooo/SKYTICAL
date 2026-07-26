@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+  <div style="max-width:860px;margin:0 auto;padding:28px 20px 64px;">
+    <a href="{{ base }}/{% if lang == 'en' %}en/{% endif %}briefings/" class="btn btn-ghost" style="margin-bottom:18px;">← {{ t.brIndexTitle }}</a>
+    <span class="card-kicker">{{ t.brKicker }}</span>
+    <h1 style="font-size:32px;line-height:1.2;margin:10px 0 6px;">{{ b.title }}</h1>
+    <div style="font-size:17px;font-weight:700;margin-bottom:14px;">{{ b.date_label }}</div>
+    <div class="text-muted" style="font-size:13px;line-height:2;border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider);padding:10px 0;margin-bottom:6px;">
+      <div><span style="font-weight:800;">{{ t.brWindow }}</span>：{{ b.window_start }} {{ t.brTo }} {{ b.window_end }}（UTC+8）</div>
+      <div><span style="font-weight:800;">{{ t.brCutoff }}</span>：{{ b.cutoff }}</div>
+    </div>
+    <div class="text-muted" style="font-size:12px;margin-bottom:20px;display:flex;gap:14px;flex-wrap:wrap;">
+      <span>{{ t.brGenerated }}：{{ b.generated }}</span>
+      <span>{{ b.mode_label }}{% if b.model_label %} · {{ b.model_label }}{% endif %}</span>
+    </div>
+    {% if b.partial %}
+    <div style="border:2px solid var(--color-divider);border-left:6px solid var(--color-accent);padding:12px 16px;margin-bottom:20px;">
+      <p class="text-muted" style="font-size:13px;line-height:1.8;margin:0;">{{ t.brPartial }}</p>
+    </div>
+    {% endif %}
+    {% if b.intro %}
+    <p style="font-size:15.5px;line-height:1.9;margin:0 0 20px;">{{ b.intro }}</p>
+    {% endif %}
+    {% if b.total == 0 %}
+    <div style="border:2px solid var(--color-divider);padding:18px 20px;margin:8px 0 20px;">
+      <p class="text-muted" style="font-size:14.5px;line-height:1.9;margin:0;">{{ t.brEmpty }}</p>
+    </div>
+    {% endif %}
+    {% for sec in b.sections %}
+    {% if sec['items'] %}
+    <h4 style="margin:26px 0 4px;">{{ sec.label }}</h4>
+    {% for it in sec['items'] %}
+    <div style="padding:14px 0;border-bottom:1px solid var(--color-divider);">
+      <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;">
+        <span class="tag {{ it.sev_cls }}">{{ t.brSevs[it.severity] }}</span>
+        {% if it.update %}<span class="tag tag-outline">{{ t.brUpdate }}</span>{% endif %}
+        <span class="text-muted" style="font-size:12px;font-weight:800;">{{ it.time }}</span>
+      </div>
+      {% if it.url %}
+      <a href="{{ it.url }}" style="display:block;font-size:16.5px;font-weight:700;line-height:1.5;margin:8px 0 6px;">{{ it.headline }}</a>
+      {% else %}
+      <div style="font-size:16.5px;font-weight:700;line-height:1.5;margin:8px 0 6px;">{{ it.headline }}</div>
+      {% endif %}
+      <p class="text-muted" style="font-size:14px;line-height:1.85;margin:0 0 8px;">{{ it.summary }}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:12px;">
+        {% for s in it.sources %}
+        <a href="{{ s.url }}" target="_blank" rel="noopener" class="text-muted">{{ s.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+    <div style="border:2px solid var(--color-divider);padding:16px 20px 12px;margin-top:32px;">
+      <h6 style="margin:0 0 10px;">{{ t.brChecked }}</h6>
+      <div style="display:flex;gap:10px 18px;flex-wrap:wrap;font-size:12.5px;">
+        {% for c in b.checked %}
+        <span style="display:inline-flex;align-items:center;gap:6px;">
+          <span class="dot{% if not c.ok %} err{% endif %}"></span>{{ c.name }}
+        </span>
+        {% endfor %}
+      </div>
+      {% if b.warnings %}
+      <h6 style="margin:14px 0 6px;">{{ t.brWarnings }}</h6>
+      {% for w in b.warnings %}
+      <p class="text-muted" style="font-size:12px;line-height:1.7;margin:0 0 4px;">· {{ w }}</p>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

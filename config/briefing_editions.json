@@ -1,0 +1,44 @@
+{
+  "morning": {
+    "label_zh_tw": "晨間快報",
+    "label_en": "Morning Briefing",
+    "title_zh_tw": "AVWIRE 晨間航空與交通快報",
+    "title_en": "AVWIRE Morning Air & Transport Briefing",
+    "window_start_hour": 23,
+    "window_end_hour": 7,
+    "window_start_day_offset": -1,
+    "cutoff_hour": 7,
+    "scheduled_hour": 7,
+    "scheduled_minute": 15,
+    "route_suffix": "morning",
+    "cron_utc": "15 23 * * *"
+  },
+  "afternoon": {
+    "label_zh_tw": "午後快報",
+    "label_en": "Afternoon Briefing",
+    "title_zh_tw": "AVWIRE 午後航空與交通快報",
+    "title_en": "AVWIRE Afternoon Air & Transport Briefing",
+    "window_start_hour": 7,
+    "window_end_hour": 15,
+    "window_start_day_offset": 0,
+    "cutoff_hour": 15,
+    "scheduled_hour": 15,
+    "scheduled_minute": 15,
+    "route_suffix": "afternoon",
+    "cron_utc": "15 7 * * *"
+  },
+  "evening": {
+    "label_zh_tw": "晚間快報",
+    "label_en": "Evening Briefing",
+    "title_zh_tw": "AVWIRE 晚間航空與交通快報",
+    "title_en": "AVWIRE Evening Air & Transport Briefing",
+    "window_start_hour": 15,
+    "window_end_hour": 23,
+    "window_start_day_offset": 0,
+    "cutoff_hour": 23,
+    "scheduled_hour": 23,
+    "scheduled_minute": 15,
+    "route_suffix": "evening",
+    "cron_utc": "15 15 * * *"
+  }
+}

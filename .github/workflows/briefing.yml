@@ -1,0 +1,156 @@
+name: daily-briefing
+
+# Thrice-daily air & transport briefing (Asia/Taipei editions).
+# UTC crons map to fixed Taipei editions — the mapping below must match
+# CRON_TO_EDITION in pipeline/briefing.py (tests cross-check both):
+#   15 23 * * *  ->  morning    (07:15 Taipei)
+#   15 7  * * *  ->  afternoon  (15:15 Taipei)
+#   15 15 * * *  ->  evening    (23:15 Taipei)
+# A delayed run never changes the data window: the window is derived from
+# the edition + Taipei date only (see pipeline/briefing.py).
+
+on:
+  schedule:
+    - cron: "15 23 * * *"
+    - cron: "15 7 * * *"
+    - cron: "15 15 * * *"
+  workflow_dispatch:
+    inputs:
+      edition:
+        description: "Briefing edition"
+        required: true
+        type: choice
+        options:
+          - morning
+          - afternoon
+          - evening
+      date:
+        description: "Taipei date YYYY-MM-DD (default: today in Taipei)"
+        required: false
+        type: string
+
+concurrency:
+  group: briefing
+  cancel-in-progress: false
+
+jobs:
+  briefing:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # commits data/briefings back to the repo
+      pages: write # configure-pages enablement
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enable GitHub Pages (build_type=workflow)
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Resolve edition (explicit cron mapping, never guessed from the clock)
+        id: ed
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "edition=${{ inputs.edition }}" >> "$GITHUB_OUTPUT"
+            echo "date=${{ inputs.date }}" >> "$GITHUB_OUTPUT"
+          else
+            case "${{ github.event.schedule }}" in
+              "15 23 * * *") echo "edition=morning" >> "$GITHUB_OUTPUT" ;;
+              "15 7 * * *")  echo "edition=afternoon" >> "$GITHUB_OUTPUT" ;;
+              "15 15 * * *") echo "edition=evening" >> "$GITHUB_OUTPUT" ;;
+              *) echo "::error::unmapped schedule '${{ github.event.schedule }}'"; exit 1 ;;
+            esac
+            echo "date=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Assemble briefing and build site
+        env:
+          # Existing free model keys, used ONLY for the optional single
+          # batch intro call (BRIEFING_LLM_INTRO=true). Default: no call.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
+          AVWIRE_PROVIDER_ORDER: ${{ vars.AVWIRE_PROVIDER_ORDER }}
+          BRIEFING_LLM_INTRO: ${{ vars.BRIEFING_LLM_INTRO }}
+          BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}
+          BRIEFING_MAX_ITEMS_PER_SECTION: ${{ vars.BRIEFING_MAX_ITEMS_PER_SECTION }}
+          BRIEFING_EXTRA_LLM_CALLS_MAX: ${{ vars.BRIEFING_EXTRA_LLM_CALLS_MAX }}
+        run: |
+          if [ -n "${{ steps.ed.outputs.date }}" ]; then
+            python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}" --date "${{ steps.ed.outputs.date }}"
+          else
+            python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}"
+          fi
+          python pipeline/build.py
+
+      - name: Scan build output and committed data for secrets/reasoning
+        run: |
+          scan() {
+            set +e
+            grep -rInE "$1" site/ data/
+            rc=$?
+            set -e
+            if [ "$rc" -eq 0 ]; then
+              echo "::error::$2 found in publishable output"
+              exit 1
+            elif [ "$rc" -ge 2 ]; then
+              echo "::error::scan failed (grep rc=$rc)"  # fail closed
+              exit 1
+            fi
+          }
+          scan "nvapi-[A-Za-z0-9_-]{16,}|AIza[0-9A-Za-z_-]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|Bearer [A-Za-z0-9_./+-]{20,}" "secret-like string"
+          scan "reasoning_content|<think>" "reasoning trace"
+          echo "scan: site/ and data/ clean"
+
+      # Upload BEFORE the data commit so the deploy never depends on git push.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Commit briefing data (only when changed)
+        continue-on-error: true # a push race must not fail the run or block deploy
+        run: |
+          git config user.name "avwire-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/briefings
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          git commit -m "briefing ${{ steps.ed.outputs.edition }} $(date -u +%FT%H:%M)"
+          pushed=""
+          for i in 1 2 3; do
+            if ! git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"; then
+              git rebase --abort || true
+              sleep 5
+              continue
+            fi
+            if git push; then
+              pushed=yes
+              break
+            fi
+            sleep 5
+          done
+          if [ -z "$pushed" ]; then
+            echo "::warning::briefing data could not be pushed after 3 attempts"
+            exit 1
+          fi
+
+  deploy:
+    needs: briefing
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

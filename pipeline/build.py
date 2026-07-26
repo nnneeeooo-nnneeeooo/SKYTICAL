@@ -80,8 +80,21 @@ L = {
         "aboutKicker": "Methodology", "aboutTitle": "方法論",
         "footerAbout": "全自動航空新聞聚合站。GitHub Actions 每小時抓取各可信來源，自動撰寫並發布，每篇文末標註原始出處。本頁為設計原型，內容為示意樣本。",
         "footerSources": "資料來源 Data Sources",
-        "nav": ["最新", "事故資料庫", "來源", "方法論"],
+        "nav": ["最新", "快報", "事故資料庫", "來源", "方法論"],
         "cats": ["全部", "事故", "法規", "商業", "營運"],
+        # daily briefings
+        "brKicker": "Daily Briefing", "brIndexTitle": "快報",
+        "brIndexSub": "每日三次（臺北時間 07:15／15:15／23:15）自動彙整固定八小時窗口內、已通過驗證發布的航空與交通事件。",
+        "brLatest": "最新快報", "brWindow": "資料範圍", "brCutoff": "資料截止",
+        "brGenerated": "系統整理完成", "brTo": "至",
+        "brEmpty": "截至本期資料截止時間，系統在本次查核的指定來源中，未發現符合收錄門檻的新事件。",
+        "brPartial": "本期部分來源資料未能完整取得，內容可能不完整；來源擷取失敗不代表沒有新事件。",
+        "brChecked": "本期查核來源", "brWarnings": "資料覆蓋提示",
+        "brUpdate": "更新", "brItems": "則", "brNoItems": "本分類本期無收錄項目",
+        "brModeDet": "程式化組裝（未使用模型）", "brModeLlm": "模型輔助導言",
+        "brSecs": ["航空事故與事件", "臺灣航空", "國際航空", "陸運與海運"],
+        "brSevs": {"fatal": "致命", "serious": "嚴重",
+                   "significant": "重要", "routine": "一般"},
         "sevs": ["全部", "事故", "嚴重事件", "事件"],
         "themeOpts": ["亮", "暗"],
         # production-only keys (not in the design dictionary)
@@ -119,8 +132,24 @@ L = {
         "aboutKicker": "Methodology", "aboutTitle": "Methodology",
         "footerAbout": "A fully automated aviation news aggregator. GitHub Actions fetches trusted sources hourly, writes and publishes automatically, and credits originals at the end of every article. Design prototype; sample content.",
         "footerSources": "Data Sources",
-        "nav": ["Latest", "Incident DB", "Sources", "Methodology"],
+        "nav": ["Latest", "Briefings", "Incident DB", "Sources", "Methodology"],
         "cats": ["All", "Safety", "Regulation", "Business", "Operations"],
+        # daily briefings
+        "brKicker": "Daily Briefing", "brIndexTitle": "Briefings",
+        "brIndexSub": "Three times daily (07:15 / 15:15 / 23:15 Taipei time): verified aviation and transport events from a fixed eight-hour window.",
+        "brLatest": "Latest briefing", "brWindow": "Data window",
+        "brCutoff": "Data cutoff", "brGenerated": "Compiled", "brTo": "to",
+        "brEmpty": "As of this edition's data cutoff, no new events meeting the inclusion bar were found in the sources checked for this edition.",
+        "brPartial": "Some sources could not be fetched in full for this edition; coverage may be incomplete. A fetch failure does not mean no events occurred.",
+        "brChecked": "Sources checked", "brWarnings": "Coverage notes",
+        "brUpdate": "UPDATE", "brItems": "items",
+        "brNoItems": "No items in this section this edition",
+        "brModeDet": "Deterministic assembly (no model used)",
+        "brModeLlm": "Model-assisted intro",
+        "brSecs": ["Aviation incidents", "Taiwan aviation",
+                   "International aviation", "Ground & maritime"],
+        "brSevs": {"fatal": "Fatal", "serious": "Serious",
+                   "significant": "Significant", "routine": "Routine"},
         "sevs": ["All", "Accident", "Serious", "Incident"],
         "themeOpts": ["Light", "Dark"],
         # production-only keys (not in the design dictionary)
@@ -931,6 +960,152 @@ def sources_rows_view(sources, lang: str, now):
     } for s in sources]
 
 
+# ── daily briefings ──────────────────────────────────────────────────────────
+
+BRIEFING_SECTIONS = ("aviation_incidents", "taiwan_aviation",
+                     "international_aviation", "ground_and_maritime")
+_BRIEF_EDITIONS = load_json(
+    Path(__file__).resolve().parent.parent / "config"
+    / "briefing_editions.json", {})
+_EN_MONTHS = ("Jan", "Feb", "Mar", "Apr", "May", "Jun",
+              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+_BRIEF_SEV_CLS = {"fatal": "tag-accent", "serious": "tag-accent",
+                  "significant": "tag-outline", "routine": "tag-neutral"}
+
+
+def _tpe_dt(iso):
+    try:
+        return parse_iso(str(iso)).astimezone(TPE)
+    except (ValueError, TypeError):
+        return None
+
+
+def _fmt_tpe_date(dt, lang: str) -> str:
+    if lang == "zh":
+        return f"{dt.year} 年 {dt.month} 月 {dt.day} 日"
+    return f"{_EN_MONTHS[dt.month - 1]} {dt.day}, {dt.year}"
+
+
+def _fmt_tpe(iso, lang: str, time_only=False) -> str:
+    dt = _tpe_dt(iso)
+    if dt is None:
+        return "—"
+    if time_only:
+        return dt.strftime("%H:%M")
+    return f"{_fmt_tpe_date(dt, lang)} {dt:%H:%M}"
+
+
+def latest_briefing(rows):
+    """Newest usable briefing by cutoff_time (never generated_at).
+
+    failed rows are ignored, so a failed run leaves the previous
+    successful edition in place.
+    """
+    best = None
+    for r in rows or []:
+        if not isinstance(r, dict):
+            continue
+        if r.get("status") not in ("published", "partial"):
+            continue
+        cut = _tpe_dt(r.get("cutoff_time"))
+        if cut is None:
+            continue
+        if best is None or cut > best[0]:
+            best = (cut, r)
+    return best[1] if best else None
+
+
+def collect_briefings():
+    """Readable published/partial briefings, newest cutoff first."""
+    index = load_json(DATA_DIR / "briefings" / "index.json", {})
+    briefs = []
+    for row in index.get("briefings") or []:
+        if not isinstance(row, dict):
+            continue
+        if row.get("status") not in ("published", "partial"):
+            continue
+        bid = str(row.get("briefing_id") or "")
+        if not bid or not _ID_RE.match(bid):
+            continue
+        data = load_json(DATA_DIR / "briefings" / f"{bid}.json", None)
+        if (isinstance(data, dict)
+                and data.get("status") in ("published", "partial")):
+            briefs.append(data)
+    briefs.sort(key=lambda b: str(b.get("cutoff_time") or ""), reverse=True)
+    return briefs
+
+
+def _brief_title(b, lang: str) -> str:
+    cfg = _BRIEF_EDITIONS.get(b.get("edition")) or {}
+    key = "title_zh_tw" if lang == "zh" else "title_en"
+    return str(cfg.get(key) or b.get("edition_label") or "AVWIRE Briefing")
+
+
+def _brief_label(b, lang: str) -> str:
+    cfg = _BRIEF_EDITIONS.get(b.get("edition")) or {}
+    key = "label_zh_tw" if lang == "zh" else "label_en"
+    return str(cfg.get(key) or b.get("edition_label") or "")
+
+
+def brief_item_view(item, lang: str, published_ids):
+    zh_head = str(item.get("headline") or "").strip()
+    zh_sum = str(item.get("summary") or "").strip()
+    head = zh_head if lang == "zh" else (
+        str(item.get("headline_en") or "").strip() or zh_head)
+    summary = zh_sum if lang == "zh" else (
+        str(item.get("summary_en") or "").strip() or zh_sum)
+    art_id = item.get("article_id")
+    url = (page_url(lang, f"news/{art_id}/")
+           if art_id in published_ids else None)
+    return {
+        "headline": head, "summary": summary,
+        "time": _fmt_tpe(item.get("source_published_at"), lang,
+                         time_only=True),
+        "severity": str(item.get("severity") or "routine"),
+        "sev_cls": _BRIEF_SEV_CLS.get(item.get("severity"), "tag-neutral"),
+        "update": item.get("item_type") == "update",
+        "url": url,
+        "sources": [s for s in item.get("sources") or []
+                    if isinstance(s, dict) and s.get("url")],
+    }
+
+
+def brief_view(b, lang: str, t, published_ids):
+    sections = []
+    raw_sections = b.get("sections") or {}
+    for i, name in enumerate(BRIEFING_SECTIONS):
+        items = [brief_item_view(it, lang, published_ids)
+                 for it in raw_sections.get(name) or []
+                 if isinstance(it, dict)]
+        sections.append({"label": t["brSecs"][i], "items": items})
+    gen_model = b.get("generation_model") or {}
+    date_dt = _tpe_dt(b.get("cutoff_time"))
+    return {
+        "id": b.get("briefing_id"),
+        "title": _brief_title(b, lang),
+        "label": _brief_label(b, lang),
+        "date_label": _fmt_tpe_date(date_dt, lang) if date_dt else "—",
+        "window_start": _fmt_tpe(b.get("window_start"), lang),
+        "window_end": _fmt_tpe(b.get("window_end"), lang),
+        "cutoff": _fmt_tpe(b.get("cutoff_time"), lang),
+        "generated": _fmt_tpe(b.get("generated_at"), lang, time_only=True),
+        "partial": b.get("status") == "partial",
+        "total": sum(len(s["items"]) for s in sections),
+        "sections": sections,
+        "intro": str(b.get("intro_zh" if lang == "zh" else "intro_en")
+                     or "").strip(),
+        "mode_label": (t["brModeLlm"] if b.get("generation_mode")
+                       == "llm_assisted" else t["brModeDet"]),
+        "model_label": (f"{gen_model.get('provider')}:{gen_model.get('model')}"
+                        if gen_model else ""),
+        "checked": [c for c in b.get("checked_sources") or []
+                    if isinstance(c, dict)],
+        "warnings": [str(w) for w in b.get("warnings") or []],
+        "url": page_url(lang, f"briefings/{b.get('briefing_id')}/"),
+        "cutoff_iso": str(b.get("cutoff_time") or ""),
+    }
+
+
 def stats_views(stats, lang: str):
     if not isinstance(stats, dict):
         stats = {}
@@ -998,7 +1173,8 @@ def stats_views(stats, lang: str):
 
 def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=True):
     t = L[lang]
-    nav_defs = [("home", ""), ("incidents", "incidents/"),
+    nav_defs = [("home", ""), ("briefings", "briefings/"),
+                ("incidents", "incidents/"),
                 ("sources", "sources/"), ("about", "about/")]
     return {
         "lang": lang, "t": t, "base": BASE_PATH, "favicon": FAVICON,
@@ -1029,11 +1205,17 @@ def main() -> int:
     now = now_utc()
 
     articles = collect_articles()
+    published_ids = {a["id"] for a in articles}
     flashes = prep_flashes(load_json(DATA_DIR / "flashes.json", None),
-                           {a["id"] for a in articles})
+                           published_ids)
     incidents = prep_incidents(load_json(DATA_DIR / "incidents.json", None))
     sources = merged_sources(load_json(DATA_DIR / "sources.json", []))
     stats_raw = load_json(DATA_DIR / "stats.json", {})
+    briefings = collect_briefings()
+    brief_rows = [r for r in (load_json(
+        DATA_DIR / "briefings" / "index.json", {}).get("briefings") or [])
+        if isinstance(r, dict)]
+    latest_row = latest_briefing(brief_rows)
 
     # clean output tree
     if SITE_DIR.exists():
@@ -1090,14 +1272,49 @@ def main() -> int:
         ticker = TICKER_SEP.join(f"{f['time']}  {f['text']}" for f in fl)
         sv = stats_views(stats_raw, lang)
 
+        bviews = [brief_view(b, lang, t, published_ids) for b in briefings]
+        latest_brief = None
+        if latest_row:
+            latest_brief = next(
+                (bv for bv in bviews
+                 if bv["id"] == latest_row.get("briefing_id")), None)
+
         ctx = base_ctx(lang, "home", "", title=t["siteName"],
                        description=t["siteDesc"], ticker=ticker, build=build)
         ctx.update(hero=hero, feed=feed, flashes=fl, agg=agg,
                    source_status=source_status_view(sources, now),
                    stats=sv["tiles"], otp=sv["otp"], fleet=sv["fleet"],
                    delays=sv["delays"],
-                   cat_seg=list(zip(cat_keys, t["cats"])))
+                   cat_seg=list(zip(cat_keys, t["cats"])),
+                   latest_brief=latest_brief)
         render(env, "home.html", rel_path(lang, "index.html"), ctx)
+        pages += 1
+
+        for bv in bviews:
+            try:
+                ctx = base_ctx(lang, "briefings", f"briefings/{bv['id']}/",
+                               title=f"{t['siteName']} — {bv['title']}",
+                               description=f"{bv['title']} · {bv['date_label']}",
+                               ticker=ticker, build=build)
+                ctx["b"] = bv
+                render(env, "briefing.html",
+                       rel_path(lang, f"briefings/{bv['id']}/index.html"), ctx)
+                pages += 1
+            except Exception as exc:  # one bad briefing must not kill the build
+                failed += 1
+                print(f"build: briefing {bv['id']} ({lang}) failed: {exc}")
+
+        groups: dict[str, list] = {}
+        for bv in bviews:  # bviews sorted newest cutoff first -> dates desc
+            groups.setdefault(bv["date_label"], []).append(bv)
+        ctx = base_ctx(lang, "briefings", "briefings/",
+                       title=f"{t['siteName']} — {t['brIndexTitle']}",
+                       description=t["brIndexSub"], ticker=ticker, build=build)
+        ctx.update(groups=[
+            {"date": d, "rows": sorted(rows, key=lambda r: r["cutoff_iso"])}
+            for d, rows in groups.items()])
+        render(env, "briefings.html",
+               rel_path(lang, "briefings/index.html"), ctx)
         pages += 1
 
         for a, v in zip(articles, views):

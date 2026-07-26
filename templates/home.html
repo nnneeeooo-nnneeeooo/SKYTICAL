@@ -2,6 +2,13 @@
 {% block content %}
   <div class="home-grid">
     <div class="rail-left">
+      {% if latest_brief %}
+      <a href="{{ latest_brief.url }}" style="display:block;border:2px solid var(--color-divider);border-left:6px solid var(--color-accent);padding:12px 14px;margin-bottom:20px;color:inherit;text-decoration:none;">
+        <span class="card-kicker" style="font-size:10px;">{{ t.brLatest }}</span>
+        <div style="font-weight:800;font-size:15px;margin:6px 0 2px;">{{ latest_brief.label }}</div>
+        <div class="text-muted" style="font-size:12px;">{{ latest_brief.date_label }} · {{ latest_brief.total }} {{ t.brItems }}</div>
+      </a>
+      {% endif %}
       <h6 style="display:flex;justify-content:space-between;align-items:baseline;margin:0 0 12px;">{{ t.flash }} <span style="color:var(--color-accent);font-size:10px;">● LIVE</span></h6>
       {% for f in flashes %}
       {% if f.url %}

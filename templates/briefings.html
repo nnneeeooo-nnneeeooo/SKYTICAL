@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <div style="max-width:860px;margin:0 auto;padding:28px 20px 64px;">
+    <span class="card-kicker">{{ t.brKicker }}</span>
+    <h2 style="margin:8px 0 10px;">{{ t.brIndexTitle }}</h2>
+    <p class="text-muted" style="font-size:14px;line-height:1.9;margin:0 0 8px;">{{ t.brIndexSub }}</p>
+    {% for g in groups %}
+    <h4 style="margin:28px 0 6px;">{{ g.date }}</h4>
+    {% for r in g.rows %}
+    <a href="{{ r.url }}" style="display:flex;gap:14px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--color-divider);color:inherit;text-decoration:none;flex-wrap:wrap;">
+      <span style="font-weight:800;">{{ r.label }}</span>
+      <span class="text-muted" style="font-size:12.5px;">{{ t.brCutoff }} {{ r.cutoff }}</span>
+      {% if r.partial %}<span class="tag tag-outline">partial</span>{% endif %}
+      <span class="text-muted" style="margin-left:auto;font-size:12.5px;">{{ r.total }} {{ t.brItems }}</span>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p class="text-muted" style="font-size:14px;margin-top:20px;">{{ t.awaiting }}</p>
+    {% endfor %}
+  </div>
+{% endblock %}
