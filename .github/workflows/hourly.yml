@@ -53,6 +53,7 @@ jobs:
           python pipeline/fetch.py
           python pipeline/dedupe.py
           python pipeline/write.py
+          python pipeline/images.py
           python pipeline/build.py
 
       - name: Scan build output and committed data for secrets/reasoning

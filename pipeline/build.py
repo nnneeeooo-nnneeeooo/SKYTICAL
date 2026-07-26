@@ -66,6 +66,9 @@ L = {
         "refreshNote": "本文隨來源每小時更新", "sourcesBox": "資料來源 Sources",
         "genNote": "本文由自動化系統彙整生成，內容以原始來源為準。",
         "aiModel": "AI 撰稿模型",
+        "photoKind": {"airframe_photo": "同機資料照片",
+                      "file_photo": "資料照片（非事件現場照片）"},
+        "photoSource": "照片來源",
         "incKicker": "Incident Database", "incTitle": "事故資料庫",
         "incSub": "自動彙整全球民航事故與事件，資料來自各國調查機關與專業追報來源，每小時更新。",
         "incCountLabel": "筆紀錄",
@@ -118,6 +121,9 @@ L = {
         "refreshNote": "Refreshes hourly with sources", "sourcesBox": "Sources",
         "genNote": "This article was compiled automatically; the original sources prevail.",
         "aiModel": "Drafted by",
+        "photoKind": {"airframe_photo": "File photo of this airframe",
+                      "file_photo": "File photo (not from this event)"},
+        "photoSource": "Photo source",
         "incKicker": "Incident Database", "incTitle": "Incident database",
         "incSub": "Automatically aggregated civil-aviation accidents and incidents, from state investigators and specialist trackers. Updated hourly.",
         "incCountLabel": "records",
@@ -606,6 +612,38 @@ def _safe_web_url(url: str) -> bool:
         return False
 
 
+def normalize_image(raw_img):
+    """Article image -> {url, link, credit, license, provider, kind} or None.
+
+    Accepts the images.py match dict or a plain URL string (legacy).
+    Only http(s) URLs survive; a credited external embed keeps its
+    attribution and backlink so CC/photographer terms are honored.
+    """
+    if isinstance(raw_img, dict):
+        url = str(raw_img.get("url") or "")
+        if not url or not _safe_web_url(url):
+            return None
+        link = str(raw_img.get("link") or "")
+        return {
+            "url": url,
+            "link": link if link and _safe_web_url(link) else None,
+            "credit": str(raw_img.get("credit") or "") or None,
+            "license": str(raw_img.get("license") or "") or None,
+            "provider": str(raw_img.get("provider") or "") or None,
+            "kind": (raw_img.get("kind")
+                     if raw_img.get("kind") in ("airframe_photo",
+                                                "file_photo")
+                     else "file_photo"),
+        }
+    if raw_img:
+        url = str(raw_img)
+        if not _safe_web_url(url):
+            return None
+        return {"url": url, "link": None, "credit": None, "license": None,
+                "provider": None, "kind": "file_photo"}
+    return None
+
+
 def rel_path(lang: str, sub: str) -> str:
     return ("en/" + sub) if lang == "en" else sub
 
@@ -699,9 +737,7 @@ def prep_article(raw):
         return None
 
     cat = raw.get("cat") if isinstance(raw.get("cat"), str) else "ops"
-    image = str(raw["image"]) if raw.get("image") else None
-    if image and not _safe_web_url(image):
-        image = None
+    image = normalize_image(raw.get("image"))
     # Display the SOURCE's newest publication time when the write stage
     # recorded one; the generation time (dt) is used for ordering only, so
     # a days-old official release is never presented as breaking news.
@@ -802,9 +838,7 @@ def collect_agg_items(now):
             if k in seen:
                 continue
             seen.add(k)
-            image = str(it["image"]) if it.get("image") else None
-            if image and not _safe_web_url(image):
-                image = None
+            image = normalize_image(it.get("image"))
             items.append({
                 "dt": dt, "title": title, "url": url,
                 "summary": str(it.get("summary") or "").strip(),

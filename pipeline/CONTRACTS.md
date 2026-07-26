@@ -245,3 +245,32 @@ site/
 ```
 
 All internal links are prefixed with `common.BASE_PATH` (default `/avwire`).
+
+## data/briefings/  (written by briefing.py, read by build.py)
+
+```
+data/briefings/
+├─ index.json            {"briefings": [{briefing_id, date, edition,
+│                          status published|partial|failed, cutoff_time,
+│                          generated_at, item_count}]}
+├─ <date>-<edition>.json one briefing per edition (schema in briefing.py:
+│                          fixed half-open Asia/Taipei window, sections,
+│                          checked_sources, warnings, generation_mode)
+└─ event_index.json      cross-edition dedup: {"events": {event_id:
+                           {fingerprint, urls, fact_keys, updates, ...}}}
+```
+
+Briefings select only from data/articles/ (already verified/published);
+failed runs never modify briefing files and never downgrade a
+published/partial index row. build.py renders /briefings/ and
+/briefings/<id>/ for published|partial only.
+
+## data/images.json + article "image"  (written by images.py)
+
+images.py (after write.py) may set article.image =
+{url, link, credit, license, provider,
+ kind airframe_photo|file_photo, matched} — an external embed from
+Planespotters.net (same airframe, by registration) or Wikimedia Commons
+(free-licensed file photo), never a claimed event photo. images.json
+caches per-article match/none results. build.normalize_image() is the
+only reader; templates always show kind + credit + license + backlink.
