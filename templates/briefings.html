@@ -2,8 +2,9 @@
 {% block content %}
   <div style="max-width:860px;margin:0 auto;padding:28px 20px 64px;">
     <span class="card-kicker">{{ t.brKicker }}</span>
-    <h2 style="margin:8px 0 10px;">{{ t.brIndexTitle }}</h2>
-    <p class="text-muted" style="font-size:14px;line-height:1.9;margin:0 0 8px;">{{ t.brIndexSub }}</p>
+    <h2 style="margin:8px 0 10px;">{{ t.brIndexTitle }}<sup style="font-size:10px;font-weight:800;color:var(--color-bg);background:var(--color-accent);padding:2px 5px;margin-left:6px;vertical-align:super;letter-spacing:.05em;">{{ t.brBeta }}</sup></h2>
+    <p class="text-muted" style="font-size:14px;line-height:1.9;margin:0 0 4px;">{{ t.brIndexSub }}</p>
+    <p class="text-muted" style="font-size:11.5px;line-height:1.7;margin:0 0 8px;">{{ t.brBetaNote }}</p>
     {% for g in groups %}
     <h4 style="margin:28px 0 6px;">{{ g.date }}</h4>
     {% for r in g.rows %}

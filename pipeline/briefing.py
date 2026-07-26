@@ -334,7 +334,10 @@ def event_fingerprint(article: dict, section: str) -> str:
 def load_event_index() -> dict:
     data = load_json(EVENT_INDEX_PATH, {})
     events = data.get("events")
-    return {"events": events if isinstance(events, dict) else {}}
+    grounded_seen = data.get("grounded_seen")
+    return {"events": events if isinstance(events, dict) else {},
+            "grounded_seen": (grounded_seen
+                              if isinstance(grounded_seen, dict) else {})}
 
 
 def prune_event_index(index: dict, now: datetime) -> None:
@@ -668,7 +671,8 @@ def checked_sources_snapshot() -> tuple[list[dict], list[str]]:
 
 def assemble_briefing(window: BriefingWindow, sections: dict,
                       checked_sources: list[dict], warnings: list[str],
-                      generated_at: datetime, partial: bool) -> dict:
+                      generated_at: datetime, partial: bool,
+                      grounded_info: dict | None = None) -> dict:
     cfg = load_editions()[window.edition]
     total = sum(len(v) for v in sections.values())
     return {
@@ -690,6 +694,7 @@ def assemble_briefing(window: BriefingWindow, sections: dict,
         "warnings": warnings,
         "generation_mode": "deterministic",
         "generation_model": None,
+        "grounded_beta": grounded_info or {"used": False, "items": 0},
     }
 
 
@@ -730,10 +735,49 @@ def run_edition(edition: str, taipei_date: date) -> int:
     picked = select_items(articles, window, event_index, now, warnings)
     sections = arrange_sections(picked, warnings)
 
+    # BETA: owner-approved model-assisted search sweep (grounded.py).
+    # Only Google-retrieved sources can be cited; any failure degrades to
+    # the deterministic briefing with a warning.
+    grounded_info = {"used": False, "items": 0}
+    try:
+        import grounded
+
+        if grounded.enabled():
+            g_seen = grounded.prune_seen(
+                event_index.get("grounded_seen"), now)
+            existing_titles = [str(it.get("headline") or "")
+                               for sec in sections.values() for it in sec]
+            data, shim = grounded.call_grounded(window)
+            if data is None:
+                warnings.append("grounded sweep skipped: no GEMINI_API_KEY")
+            else:
+                g_items, g_warnings = grounded.sanitize_items(
+                    data, existing_titles, g_seen, now)
+                warnings.extend(g_warnings)
+                added = 0
+                for name in SECTIONS:
+                    extra = g_items.get(name) or []
+                    sections[name].extend(extra)
+                    added += len(extra)
+                grounded_info = {"used": True,
+                                 "model": grounded.GROUNDED_MODEL,
+                                 "items": added}
+                event_index["grounded_seen"] = g_seen
+                if shim is not None:
+                    try:
+                        import usage as usage_ledger
+
+                        usage_ledger.record_providers([shim])
+                    except Exception:
+                        pass
+    except Exception as exc:
+        warnings.append(f"grounded sweep failed: "
+                        f"{type(exc).__name__}: {exc}")
+
     # partial = our own inputs were degraded, never "no events".
     partial = bool(load_warnings or source_warnings)
     briefing = assemble_briefing(window, sections, checked_sources,
-                                 warnings, now, partial)
+                                 warnings, now, partial, grounded_info)
     maybe_llm_intro(briefing, sections, warnings)
 
     path = BRIEFINGS_DIR / f"{window.briefing_id}.json"

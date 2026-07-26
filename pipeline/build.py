@@ -97,6 +97,10 @@ L = {
         "brUpdate": "更新", "brItems": "則",
         "brNoItems": "本期查核來源中，此分類無新增符合收錄門檻的事件通報",
         "brModeDet": "程式化組裝（未使用模型）", "brModeLlm": "模型輔助導言",
+        "brBeta": "BETA", "brAiTag": "AI 搜尋",
+        "brBetaNote": "Beta 功能：本快報部分條目由具搜尋能力的模型輔助彙整"
+                      "（標示「AI 搜尋」者），引用連結僅取自檢索實際回傳的來源；"
+                      "功能持續最佳化中，內容以各條目之原始來源為準。",
         "brSecs": ["🚨 飛安事件與緊急狀況", "🇹🇼 台灣航空動態（民航＋軍航）",
                    "🌐 國際航空產業動態", "🚄 地面與海運交通"],
         "brSevs": {"fatal": "致命", "serious": "嚴重",
@@ -156,6 +160,12 @@ L = {
                      "among the sources checked",
         "brModeDet": "Deterministic assembly (no model used)",
         "brModeLlm": "Model-assisted intro",
+        "brBeta": "BETA", "brAiTag": "AI search",
+        "brBetaNote": "Beta: some briefing entries (tagged \"AI search\") "
+                      "are compiled with a search-capable model; cited "
+                      "links come only from actually retrieved results. "
+                      "The feature is still being optimized - the original "
+                      "sources prevail.",
         "brSecs": ["🚨 Safety events & emergencies",
                    "🇹🇼 Taiwan aviation (civil + military)",
                    "🌐 International industry news",
@@ -320,6 +330,11 @@ ABOUT = {
                 _p("除非來源資料明確支持該項描述。"),
                 _p("報導中使用的「證實」、「已核准」、「已交付」、「已投入營運」等字詞，"
                    "也必須與原始來源所表達的確定程度一致。"),
+                _p("Beta 例外：每日三次的「快報」頁部分條目由具搜尋能力的模型"
+                   "輔助彙整，此為唯一允許模型檢索的功能，並有硬性限制——"
+                   "引用連結僅能來自檢索實際回傳的來源、社群與影音平台不列入、"
+                   "論壇來源必須搭配其他來源。相關條目在頁面上標示「AI 搜尋」，"
+                   "快報標題亦標示 BETA；一般新聞文章完全不適用此例外。"),
             ]},
             {"heading": "多模型備援架構", "blocks": [
                 _p("AVWIRE 採用多模型架構，以降低單一模型或單一供應商故障造成的影響。"),
@@ -475,6 +490,15 @@ ABOUT = {
                 _p("unless the sources explicitly support that description."),
                 _p("Words like “confirmed”, “approved”, “delivered” or “entered service” "
                    "must match the level of certainty expressed by the original source."),
+                _p("Beta exception: some entries on the thrice-daily "
+                   "briefing pages are compiled with a search-capable "
+                   "model - the only place model retrieval is allowed, "
+                   "under hard limits: cited links must come from actually "
+                   "retrieved results, social/video platforms are excluded, "
+                   "and forum sources need a companion source. Such entries "
+                   "are tagged \"AI search\" and the briefing carries a "
+                   "BETA mark; regular articles are never covered by this "
+                   "exception."),
             ]},
             {"heading": "Multi-model failover", "blocks": [
                 _p("AVWIRE runs a multi-model architecture to limit the impact of any "
@@ -1110,6 +1134,7 @@ def brief_item_view(item, lang: str, published_ids):
         marks += "⚔️"
     return {
         "marks": marks,
+        "grounded": item.get("origin") == "grounded",
         "headline": head, "summary": summary,
         "time": _fmt_tpe(item.get("source_published_at"), lang,
                          time_only=True),

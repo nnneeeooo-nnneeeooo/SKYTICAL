@@ -3,16 +3,17 @@
   <div style="max-width:860px;margin:0 auto;padding:28px 20px 64px;">
     <a href="{{ base }}/{% if lang == 'en' %}en/{% endif %}briefings/" class="btn btn-ghost" style="margin-bottom:18px;">← {{ t.brIndexTitle }}</a>
     <span class="card-kicker">{{ t.brKicker }}</span>
-    <h1 style="font-size:32px;line-height:1.2;margin:10px 0 6px;">✈️ {{ b.title }}</h1>
+    <h1 style="font-size:32px;line-height:1.2;margin:10px 0 6px;">✈️ {{ b.title }}<sup style="font-size:10px;font-weight:800;color:var(--color-bg);background:var(--color-accent);padding:2px 5px;margin-left:6px;vertical-align:super;letter-spacing:.05em;">{{ t.brBeta }}</sup></h1>
     <div style="font-size:17px;font-weight:700;margin-bottom:14px;">{{ b.date_label }}</div>
     <div class="text-muted" style="font-size:13px;line-height:2;border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider);padding:10px 0;margin-bottom:6px;">
       <div><span style="font-weight:800;">{{ t.brWindow }}</span>：{{ b.window_start }} {{ t.brTo }} {{ b.window_end }}（UTC+8）</div>
       <div><span style="font-weight:800;">{{ t.brCutoff }}</span>：{{ b.cutoff }}</div>
     </div>
-    <div class="text-muted" style="font-size:12px;margin-bottom:20px;display:flex;gap:14px;flex-wrap:wrap;">
+    <div class="text-muted" style="font-size:12px;margin-bottom:10px;display:flex;gap:14px;flex-wrap:wrap;">
       <span>{{ t.brGenerated }}：{{ b.generated }}</span>
       <span>{{ b.mode_label }}{% if b.model_label %} · {{ b.model_label }}{% endif %}</span>
     </div>
+    <p class="text-muted" style="font-size:11.5px;line-height:1.7;margin:0 0 20px;">{{ t.brBetaNote }}</p>
     {% if b.partial %}
     <div style="border:2px solid var(--color-divider);border-left:6px solid var(--color-accent);padding:12px 16px;margin-bottom:20px;">
       <p class="text-muted" style="font-size:13px;line-height:1.8;margin:0;">{{ t.brPartial }}</p>
@@ -34,6 +35,7 @@
         {% if it.marks %}<span style="font-size:14px;">{{ it.marks }}</span>{% endif %}
         <span class="tag {{ it.sev_cls }}">{{ t.brSevs[it.severity] }}</span>
         {% if it.update %}<span class="tag tag-outline">{{ t.brUpdate }}</span>{% endif %}
+        {% if it.grounded %}<span class="tag tag-outline" title="{{ t.brBetaNote }}">{{ t.brAiTag }}</span>{% endif %}
         <span class="text-muted" style="font-size:12px;font-weight:800;">{{ it.time }}</span>
       </div>
       {% if it.url %}

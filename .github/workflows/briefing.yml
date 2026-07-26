@@ -83,6 +83,9 @@ jobs:
           BRIEFING_EXTRA_LLM_CALLS_MAX: ${{ vars.BRIEFING_EXTRA_LLM_CALLS_MAX }}
           # private usage-dashboard URL token (page skipped when unset)
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
+          # BETA grounded search sweep (owner-approved; off unless var set)
+          BRIEFING_GROUNDED: ${{ vars.BRIEFING_GROUNDED }}
+          BRIEFING_GROUNDED_MODEL: ${{ vars.BRIEFING_GROUNDED_MODEL }}
         run: |
           if [ -n "${{ steps.ed.outputs.date }}" ]; then
             python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}" --date "${{ steps.ed.outputs.date }}"
