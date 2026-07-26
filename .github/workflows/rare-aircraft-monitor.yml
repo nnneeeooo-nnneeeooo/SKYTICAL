@@ -1,0 +1,70 @@
+name: rare-aircraft-monitor
+
+# Taiwan rare-aircraft arrival monitor: ONE Airplanes.live wide-area query
+# per run, code-side detection only (never calls any AI model - candidates
+# are queued for the hourly news pipeline, which forces manual review).
+# Actions cron is best-effort, not radar: delays are expected and fine.
+# OFF by default: set repo variable FLIGHT_TRACKING_ENABLED=true to start.
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write # commits data/flightwatch/ state (only when changed)
+
+concurrency:
+  group: flightwatch
+  cancel-in-progress: false # never run two monitors at once
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    if: vars.FLIGHT_TRACKING_ENABLED == 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Run monitor
+        env:
+          FLIGHT_TRACKING_ENABLED: "true"
+          AIRPLANES_LIVE_ENABLED: ${{ vars.AIRPLANES_LIVE_ENABLED }}
+          ADSBLOL_ENABLED: ${{ vars.ADSBLOL_ENABLED }}
+          TW_ADSB_CENTER_LAT: ${{ vars.TW_ADSB_CENTER_LAT }}
+          TW_ADSB_CENTER_LON: ${{ vars.TW_ADSB_CENTER_LON }}
+          TW_ADSB_RADIUS_NM: ${{ vars.TW_ADSB_RADIUS_NM }}
+          RARE_AIRCRAFT_SCORE_THRESHOLD: ${{ vars.RARE_AIRCRAFT_SCORE_THRESHOLD }}
+          FLIGHT_TRACKING_PUBLICATION_DELAY_MINUTES: ${{ vars.FLIGHT_TRACKING_PUBLICATION_DELAY_MINUTES }}
+          # optional future keys (never exposed to the frontend)
+          AIRPLANES_LIVE_API_KEY: ${{ secrets.AIRPLANES_LIVE_API_KEY }}
+          ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }}
+        run: python pipeline/flightwatch.py
+
+      - name: Commit state (only when changed)
+        run: |
+          git config user.name "avwire-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/flightwatch
+          if git diff --cached --quiet; then
+            echo "no state change; no commit (no pointless 5-minute noise)"
+            exit 0
+          fi
+          git commit -m "flightwatch state $(date -u +%FT%H:%M)"
+          for i in 1 2 3; do
+            if ! git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"; then
+              git rebase --abort || true
+              sleep 5
+              continue
+            fi
+            if git push; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::warning::flightwatch state could not be pushed"

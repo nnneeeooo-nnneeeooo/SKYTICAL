@@ -45,6 +45,7 @@ from common import (
     slugify,
     squash_text,
 )
+import flightnews
 from providers import (
     ProviderAuthError,
     ProviderError,
@@ -776,6 +777,110 @@ def _review_entry(candidate: dict, group: dict, writer: str, facts: list,
     }
 
 
+def _process_flight_events(queue, providers, dead_platforms, dead_auth,
+                           ai_calls, queued_entries, now):
+    """Draft queued flight-observation events with the dedicated prompt.
+
+    Outcomes per event: queued into the human-review file (the ONLY path to
+    publication), rejected by the model (dropped for good), or left in the
+    queue when providers fail (retried next hour). Never auto-published.
+    """
+    remaining = []
+    prompt = flightnews.flight_prompt()
+    processed = 0
+    for event in queue:
+        if processed >= flightnews.MAX_EVENTS_PER_RUN:
+            remaining.append(event)
+            continue
+        not_before = event.get("notBeforeUtc")
+        try:
+            if not_before and parse_iso(str(not_before)) > now:
+                remaining.append(event)  # publication delay not yet over
+                continue
+        except ValueError:
+            pass
+        processed += 1
+        group = flightnews.pseudo_group(event)
+        user_prompt = (flightnews.assemble_source(event)
+                       + "\n\nWrite the bilingual observation item now, "
+                         "following the rules strictly.")
+        outcome = None
+        for provider in providers:
+            if provider.name in dead_platforms:
+                continue
+            ai_calls[provider.label] = ai_calls.get(provider.label, 0) + 1
+            try:
+                candidate = provider.draft(prompt, user_prompt, DRAFT_SCHEMA)
+            except ProviderAuthError as exc:
+                print(f"write: FATAL {provider.label} auth error ({exc}); "
+                      f"disabling all '{provider.name}' providers")
+                dead_platforms.add(provider.name)
+                dead_auth.add(provider.name)
+                continue
+            except ProviderQuotaError as exc:
+                print(f"write: {provider.label} quota exhausted ({exc}); "
+                      f"disabling all '{provider.name}' providers")
+                dead_platforms.add(provider.name)
+                continue
+            except ProviderError as exc:
+                print(f"write: {provider.label} error on flight event "
+                      f"{event.get('eventId')}: {exc}; trying next provider")
+                continue
+            except Exception as exc:  # noqa: BLE001
+                print(f"write: unexpected {provider.label} error on flight "
+                      f"event {event.get('eventId')}: "
+                      f"{type(exc).__name__}: {exc}; trying next provider")
+                continue
+            if candidate is None or (isinstance(candidate, dict)
+                                     and candidate.get("status") == "reject"):
+                reason = "refusal" if candidate is None else \
+                    str(candidate.get("decisionReason") or "?")[:200]
+                print(f"write: flight event {event.get('eventId')} "
+                      f"rejected ({reason}); dropping")
+                outcome = "rejected"
+                break
+            problem = validate_draft(candidate)
+            if problem:
+                print(f"write: {provider.label} flight draft invalid "
+                      f"({problem}); trying next provider")
+                continue
+            facts = verify_facts(candidate, group, provider.label)
+            if not facts:
+                print(f"write: {provider.label} flight draft has no "
+                      "machine-verifiable sourceQuote; trying next provider")
+                continue
+            # v1 hard rule: rare-aircraft items are ALWAYS human-gated,
+            # regardless of what the model claimed.
+            candidate["status"] = "manual_review"
+            candidate["requiresHumanReview"] = True
+            flags = candidate.get("riskFlags")
+            flags = [f for f in flags if f in RISK_FLAGS] \
+                if isinstance(flags, list) else []
+            if "unconfirmed_or_developing" not in flags:
+                flags.append("unconfirmed_or_developing")
+            candidate["riskFlags"] = flags
+            if not candidate.get("decisionReason"):
+                candidate["decisionReason"] = \
+                    "自動 ADS-B 觀測事件，須人工確認後發布"
+            entry = _review_entry(candidate, group, provider.label, facts,
+                                  now)
+            entry["flight"] = {
+                "eventId": event.get("eventId"),
+                "airport": (event.get("airport") or {}).get("icao"),
+                "crossCheck": event.get("crossCheck"),
+                "rarityScore": (event.get("rarity") or {}).get("score"),
+                "bootstrap": bool(event.get("bootstrap")),
+            }
+            queued_entries.append(entry)
+            print(f"write: flight event {event.get('eventId')} queued for "
+                  "human review")
+            outcome = "queued"
+            break
+        if outcome is None:
+            remaining.append(event)  # provider trouble: retry next hour
+    return remaining
+
+
 def main() -> None:
     now = now_utc()
     pending = load_json(PENDING_PATH, {})
@@ -791,6 +896,7 @@ def main() -> None:
     queued_entries, queued_groups, queued_ids = [], [], set()
     rejected_groups, rejected_ids = [], set()
     dead_auth: set = set()
+    dead_platforms: set = set()
     ai_calls: dict = {}
     skipped = 0
 
@@ -866,6 +972,7 @@ def main() -> None:
                           f" disabling all '{provider.name}' providers")
                     alive[:] = [p for p in alive if p.name != provider.name]
                     dead_auth.add(provider.name)
+                    dead_platforms.add(provider.name)
                     continue
                 except ProviderQuotaError as exc:
                     # Quota/credits are account-level too.
@@ -873,6 +980,7 @@ def main() -> None:
                           f"disabling all '{provider.name}' providers "
                           "for this run")
                     alive[:] = [p for p in alive if p.name != provider.name]
+                    dead_platforms.add(provider.name)
                     continue
                 except ProviderError as exc:
                     print(f"write: {provider.label} error on group "
@@ -937,6 +1045,18 @@ def main() -> None:
                 new_incidents.append(incident)
             published_groups.append(group)
             published_ids.add(group.get("id"))
+
+    # --- 2b. rare-aircraft flight-observation candidates -------------------
+    # (queued by pipeline/flightwatch.py; zero AI calls when the queue is
+    # empty, and EVERY drafted event is forced into manual review - v1
+    # rare-aircraft items never auto-publish.)
+    flight_queue = flightnews.load_queue()
+    if flight_queue and providers:
+        remaining_flight = _process_flight_events(
+            flight_queue, providers, dead_platforms, dead_auth, ai_calls,
+            queued_entries, now)
+        if remaining_flight != flight_queue:
+            flightnews.save_queue(remaining_flight)
 
     # --- 3. flush outputs -------------------------------------------------
     if new_articles:

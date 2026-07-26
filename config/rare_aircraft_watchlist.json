@@ -1,0 +1,6 @@
+{
+  "_comment": "人工關注清單:符合的組合以 minimum_score_override 取代計分門檻(仍須通過抵達確認/敏感排除/去重)。欄位可留 null 表示不限。範例列 DAL+A359+RCKH 僅作測試規則用,不代表任何實際航班。",
+  "watchlist": [
+    {"operator_icao": "DAL", "aircraft_type": "A359", "registration": null, "airport_icao": "RCKH", "minimum_score_override": 0, "note": "測試情境:達美 A350-900 抵達高雄(規則範例)", "enabled": true}
+  ]
+}

@@ -83,6 +83,21 @@ python -m http.server -d site 8000
 | `AEROAPI_KEY` | — | FlightAware AeroAPI（選用統計） |
 | `AVWIRE_BASE_PATH` | `/avwire` | 站台子路徑（Pages 專案站台） |
 
+## 稀有民航機偵測（預設關閉）
+
+`rare-aircraft-monitor` workflow 每 5 分鐘用 **一次** Airplanes.live 廣域查詢
+（臺灣中心 250 海浬）監測 `config/tw_civil_airports.json` 裡的民用機場，
+純程式端判定抵達（多筆觀測狀態機，絕不用單一快照）、計算可解釋的稀有度
+（0–100，常態業者/機型與歷史統計扣加分，`config/rare_aircraft_watchlist.json`
+可人工加註），候選事件才查 ADSB.lol 交叉確認。軍機、政府專機、LADD/PIA、
+緊急代碼與非 ICAO 位址一律排除且不留軌跡；公開資料絕不含即時座標。
+確認的事件排入 `data/flightwatch/queue.json`，由每小時撰稿階段以專用
+prompt 撰寫並**一律進入 `data/review.json` 人工覆核**，不自動發布。
+
+啟用方式：Repo Variables 設 `FLIGHT_TRACKING_ENABLED=true`。
+資料來源授權：Airplanes.live 社群資料（非商業用途；本站無廣告無營利）、
+ADSB.lol 開放資料（ODbL，本站僅擷取事件摘要並保留出處標註，不鏡像資料庫）。
+
 ## 免責聲明
 
 本站內容為自動生成，可能存在錯誤或遺漏，不構成飛安、法遵或投資建議。

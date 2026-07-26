@@ -157,6 +157,29 @@ unreviewed after 14 days; the queue keeps at most 40 rows, newest first.
 Queued groups are recorded in seen.json immediately (they must not re-emit
 from dedupe while awaiting review).
 
+Review entries created from rare-aircraft events additionally carry a
+`"flight"` object (eventId / airport / crossCheck / rarityScore /
+bootstrap); their `"group"` is a pseudo-group whose items are the ADS-B
+attribution links, so approval publishes with proper source credits.
+
+## data/flightwatch/  (written by flightwatch.py; queue.json consumed by write.py)
+
+Rare-aircraft monitor state, committed only when changed:
+
+- `state.json`    per-aircraft/airport tracks, pruned to 60 min - NO
+                  sensitive aircraft are ever tracked, positions are
+                  rounded and never published
+- `history.json`  arrival statistics for rarity scoring (operator/type/
+                  registration windows; firstRunUtc drives bootstrap mode)
+- `events.json`   event registry keyed by stable id
+                  fw-sha256(hex|airport|arrival|date)[:16] - the duplicate
+                  gate across 5-minute reruns
+- `queue.json`    confirmed rare-arrival candidates awaiting the hourly
+                  news stage; entries hold identities/times/counts ONLY
+                  (never live coordinates). write.py drafts them with
+                  prompts/rare-aircraft-news-zh.txt and ALWAYS forces
+                  status=manual_review into data/review.json.
+
 ## data/flashes.json  (written by write.py, read by build.py)
 
 Most recent first, max 10 kept:
