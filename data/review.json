@@ -1,5 +1,114 @@
 [
   {
+    "id": "g-20260726-2246-4",
+    "queuedUtc": "2026-07-26T22:46Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Story involves a reported potential merger between major airlines, a large financial claim, based on a single secondary source; requires editorial verification.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A new report reveals United CEO Scott Kirby approached Delta about a merger.",
+        "sourceQuote": "A new report reveals United CEO Scott Kirby approached Delta about a merger"
+      },
+      {
+        "factId": "F2",
+        "claim": "The approach highlights Kirby's bold ambitions despite major antitrust hurdles.",
+        "sourceQuote": "highlighting his bold ambitions despite major antitrust hurdles"
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Story involves a reported potential merger between major airlines, a large financial claim, based on a single secondary source; requires editorial verification.",
+      "cat": "biz",
+      "zh": {
+        "title": "聯合航空執行長柯比據報接觸達美商討合併",
+        "summary": "新報導顯示聯合航空執行長柯比曾主動接觸達美航空，探討合併可能性，但面臨重大反壟斷障礙。據報導，柯比的舉動顯示其積極擴張雄心，但分析師指出反壟斷審查將是關鍵阻力。預計若交易推進將引發監管機構深入調查",
+        "body": [
+          "新報導指出，聯合航空執行長柯比曾主動接觸達美航空，探討合併可能性。",
+          "報導同時指出，此舉凸顯柯比的擴張雄心，但面臨重大反壟斷障礙。"
+        ]
+      },
+      "en": {
+        "title": "United CEO Kirby reportedly approached Delta for merger",
+        "summary": "A new report says United Airlines CEO Scott Kirby approached Delta Air Lines about a possible merger, underscoring his aggressive expansion ambitions while facing significant antitrust hurdles that could block any deal. The report, cited by Simple Flying, indicates Kirby’s outreach reflects a strategic push to create a larger network, but analysts warn that regulatory scrutiny from the Department of Justice and other authorities would likely be intense, making any combination uncertain and potentially prolonged.",
+        "body": [
+          "A new report says United Airlines CEO Scott Kirby approached Delta Air Lines about a possible merger.",
+          "The report also notes that the move highlights Kirby’s bold ambitions despite major antitrust hurdles."
+        ]
+      },
+      "flash": {
+        "zh": "聯合航空柯比據報接觸達美商討合併",
+        "en": "United CEO Kirby reportedly approached Delta for merger",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A new report reveals United CEO Scott Kirby approached Delta about a merger.",
+          "sourceQuote": "A new report reveals United CEO Scott Kirby approached Delta about a merger"
+        },
+        {
+          "factId": "F2",
+          "claim": "The approach highlights Kirby's bold ambitions despite major antitrust hurdles.",
+          "sourceQuote": "highlighting his bold ambitions despite major antitrust hurdles"
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "United Airlines",
+          "Delta"
+        ],
+        "airlines": [
+          "United Airlines",
+          "Delta"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-26"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260726-2246-4",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "United Airlines’ Scott Kirby Also Approached Delta In Hopes Of A Megadeal, New Report Unveils",
+          "url": "https://simpleflying.com/united-airlines-scott-kirby-approach-delta-megadeal/",
+          "publishedUtc": "2026-07-26T21:25Z",
+          "summary": "A new report reveals United CEO Scott Kirby approached Delta about a merger, highlighting his bold ambitions despite major antitrust hurdles.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/01/vs-2.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
+    }
+  },
+  {
     "id": "g-20260726-1748-10",
     "queuedUtc": "2026-07-26T17:48Z",
     "approve": false,
