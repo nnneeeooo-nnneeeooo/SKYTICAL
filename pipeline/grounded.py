@@ -153,7 +153,9 @@ def call_grounded(window) -> tuple[dict | None, SimpleNamespace | None]:
         json=payload, timeout=TIMEOUT,
         headers={"x-goog-api-key": key})
     if resp.status_code != 200:
-        raise RuntimeError(f"grounded call HTTP {resp.status_code}")
+        snippet = str(getattr(resp, "text", ""))[:160].replace("\n", " ")
+        raise RuntimeError(
+            f"grounded call HTTP {resp.status_code}: {snippet}")
     data = resp.json()
     meta = data.get("usageMetadata") or {}
     shim = SimpleNamespace(
