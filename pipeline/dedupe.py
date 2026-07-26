@@ -2,13 +2,14 @@
 
 Reads every raw source snapshot, drops items that are already known
 (URL match or fuzzy title match against data/seen.json), stale (older
-than 48 h) or untitled, then merges cross-source coverage of the same
-story into ranked groups for write.py.
+than the freshness window, 48 h by default) or untitled, then merges
+cross-source coverage of the same story into ranked groups for write.py.
 
 data/seen.json is READ-ONLY here — write.py owns it (see CONTRACTS.md).
 """
 from __future__ import annotations
 
+import os
 import re
 from datetime import datetime, timedelta, timezone
 from difflib import SequenceMatcher
@@ -27,7 +28,13 @@ from common import (
 
 MAX_GROUPS = 12          # emitted per run; bounds LLM cost in write.py
 MAX_ITEMS_PER_GROUP = 5
-MAX_ITEM_AGE_HOURS = 48
+# Freshness window. Official sources go quiet on weekends, so the repo
+# variable AVWIRE_MAX_AGE_HOURS can widen it (e.g. 120) without a deploy;
+# the 21-day seen.json memory still prevents any story from running twice.
+try:
+    MAX_ITEM_AGE_HOURS = int(os.environ.get("AVWIRE_MAX_AGE_HOURS") or 48)
+except ValueError:
+    MAX_ITEM_AGE_HOURS = 48
 SEEN_TITLE_DAYS = 21     # only seen.json titles this recent are compared
 SEEN_TITLE_SIM = 0.75    # vs seen.json titles -> drop as already covered
 GROUP_TITLE_SIM = 0.60   # between fresh items -> same story group

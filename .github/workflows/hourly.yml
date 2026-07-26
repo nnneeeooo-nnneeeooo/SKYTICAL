@@ -49,6 +49,7 @@ jobs:
           AVWIRE_GEMINI_MODEL: ${{ vars.AVWIRE_GEMINI_MODEL }}
           AVWIRE_NVIDIA_MODEL: ${{ vars.AVWIRE_NVIDIA_MODEL }}
           AVWIRE_PROVIDER_ORDER: ${{ vars.AVWIRE_PROVIDER_ORDER }}
+          AVWIRE_MAX_AGE_HOURS: ${{ vars.AVWIRE_MAX_AGE_HOURS }}
         run: |
           python pipeline/fetch.py
           python pipeline/dedupe.py
