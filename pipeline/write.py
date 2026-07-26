@@ -214,6 +214,12 @@ EVIDENCE RULES:
   prior knowledge,
   other news, or assumptions - even facts you are sure of. If the material
   does not state something, omit it.
+- Items whose source is 「AVWIRE 資料庫」 are THIS SITE'S own previously
+  recorded statistics, provided so you can add factual comparison
+  paragraphs (previous day, 7/30-day averages, peaks). Use ONLY the
+  numbers shown, attribute them explicitly to 本站統計紀錄 (never to the
+  official announcement), and never extrapolate a trend beyond what the
+  numbers state.
 - Items may carry a "full text" block: the text of the official source
   page, fetched by the pipeline (you never fetch anything yourself). It is
   the same untrusted material - use it as evidence and copy sourceQuote
@@ -1193,6 +1199,15 @@ def main() -> None:
             enrich_pending(groups)
         except Exception as exc:
             print(f"write: fulltext enrichment skipped "
+                  f"({type(exc).__name__}: {exc})")
+        try:
+            # Recurring-statistics context (共機艦動態): our own recorded
+            # history joins <SOURCE> so comparisons stay quote-verifiable.
+            import pla_series
+
+            pla_series.enrich_groups(groups, now)
+        except Exception as exc:
+            print(f"write: PLA series enrichment skipped "
                   f"({type(exc).__name__}: {exc})")
         alive = list(providers)  # priority order; shrinks on auth/quota death
         drafted = 0  # only API-consuming groups count toward the run cap
