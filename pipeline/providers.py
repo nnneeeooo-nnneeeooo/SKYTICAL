@@ -105,15 +105,17 @@ MODEL_PROFILES: dict = {
     },
     # No temperature on Gemini 3.x: Google's docs recommend keeping the
     # tuned defaults (the field is deprecated on newer 3.6-flash builds).
+    # 16384 out: fulltext-enriched groups produce long bilingual bodies,
+    # and thinking tokens count against maxOutputTokens on Gemini.
     "gemini-3.6-flash": {
-        "generationConfig": {"maxOutputTokens": 8192,
+        "generationConfig": {"maxOutputTokens": 16384,
                              "thinkingConfig": {"thinkingLevel": "medium"}},
         "repairGenerationConfig": {
             "maxOutputTokens": 8192,
             "thinkingConfig": {"thinkingLevel": "minimal"}},
     },
     "gemini-3.5-flash": {
-        "generationConfig": {"maxOutputTokens": 8192,
+        "generationConfig": {"maxOutputTokens": 16384,
                              "thinkingConfig": {"thinkingLevel": "medium"}},
         "repairGenerationConfig": {
             "maxOutputTokens": 8192,
@@ -388,7 +390,10 @@ class NvidiaProvider:
         payload = {
             "model": self.model,
             "messages": messages,
-            "max_tokens": 8192,
+            # 16384 for drafts: NIM reasoning tokens count against
+            # max_tokens, and fulltext-enriched groups need a long
+            # bilingual answer on top (Super truncated at 8192 before).
+            "max_tokens": 8192 if repair else 16384,
             "stream": False,
             **self._payload_extras(repair),
         }

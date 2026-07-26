@@ -104,7 +104,9 @@ def test_nvidia_model_profiles():
                            lambda: provider.draft("sys", "user", SCHEMA))
         check(result == {"ok": 1}, f"{model}: draft parsed")
         p = captured[0]
-        check(p["model"] == model and p["max_tokens"] == 8192
+        # drafts get 16384 out (NIM reasoning counts against max_tokens
+        # and fulltext groups need long bilingual answers); repair stays 8192
+        check(p["model"] == model and p["max_tokens"] == 16384
               and p["stream"] is False, f"{model}: base payload")
         check(p.get("temperature") == want["temperature"],
               f"{model}: temperature {p.get('temperature')}")
@@ -193,7 +195,7 @@ def test_gemini_model_profiles():
         check(config.get("thinkingConfig") == {"thinkingLevel": "medium"},
               f"{model}: thinkingLevel medium")
         check("temperature" not in config
-              and config.get("maxOutputTokens") == 8192,
+              and config.get("maxOutputTokens") == 16384,
               f"{model}: no temperature on Gemini 3.x (tuned defaults)")
         check(config.get("responseMimeType") == "application/json"
               and config.get("responseJsonSchema") == SCHEMA,
