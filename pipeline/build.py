@@ -575,7 +575,7 @@ ABOUT = {
     },
 }
 
-TICKER_SEP = "　▪　"  # 「　▪　」 per the design
+# (the design's 「　▪　」 ticker separator now lives in base.html/.ticker-sep)
 
 # Footer source-tag order, exactly as in the design footer.
 FOOTER_ORDER = ["faa", "icao", "iata", "ntsb", "easa", "eurocontrol",
@@ -1341,7 +1341,7 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=Tru
         "home_url": page_url(lang, ""),
         "nav": [{"label": t["nav"][i], "url": page_url(lang, s), "active": page == p}
                 for i, (p, s) in enumerate(nav_defs)],
-        "ticker_line": ticker, "build": build,
+        "ticker_items": ticker or [], "build": build,
         "footer_sources": FOOTER_SOURCES,
     }
 
@@ -1422,7 +1422,11 @@ def main() -> int:
             fl = flash_view(flashes, lang)
             hero = None
             feed = []
-        ticker = TICKER_SEP.join(f"{f['time']}  {f['text']}" for f in fl)
+        # ticker items stay structured so the marquee can link each flash
+        # to its story (owner request: clickable, no underline)
+        ticker = [{"time": f.get("time"), "text": f.get("text"),
+                   "url": f.get("url"), "hot": bool(f.get("hot")),
+                   "external": bool(f.get("external"))} for f in fl]
         sv = stats_views(stats_raw, lang)
 
         bviews = [brief_view(b, lang, t, published_ids) for b in briefings]

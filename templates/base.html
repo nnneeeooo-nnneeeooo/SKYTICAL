@@ -57,13 +57,23 @@
       </nav>
     </div>
   </div>
-  {% if ticker_line %}
+  {% if ticker_items %}
   <div style="border-bottom:2px solid var(--color-divider);display:flex;align-items:stretch;">
     <div style="background:var(--color-accent);color:var(--color-bg);font-weight:800;font-size:12px;letter-spacing:.14em;display:flex;align-items:center;padding:7px 16px;flex-shrink:0;text-transform:uppercase;">{{ t.live }}</div>
     <div style="overflow:hidden;flex:1;display:flex;align-items:center;">
       <div class="marquee-track">
-        <span style="padding-right:70px;font-size:13px;">{{ ticker_line }}</span>
-        <span style="padding-right:70px;font-size:13px;">{{ ticker_line }}</span>
+        {% for pass in range(2) %}
+        <span style="padding-right:70px;font-size:13px;white-space:nowrap;">
+          {%- for it in ticker_items -%}
+          {%- if it.url -%}
+          <a class="ticker-item" href="{{ it.url }}"{% if it.external %} target="_blank" rel="noopener"{% endif %}><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>&#8195;{{ it.text }}<span class="ticker-go">↗</span></a>
+          {%- else -%}
+          <span class="ticker-item"><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>&#8195;{{ it.text }}</span>
+          {%- endif -%}
+          {%- if not loop.last %}<span class="ticker-sep">▪</span>{% endif -%}
+          {%- endfor -%}
+        </span>
+        {% endfor %}
       </div>
     </div>
   </div>

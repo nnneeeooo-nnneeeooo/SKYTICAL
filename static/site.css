@@ -30,6 +30,21 @@ a:hover { color: var(--color-accent-600); }
 }
 
 @keyframes avwire-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* — LIVE ticker: each flash links to its story. Affordance is the accent
+     ↗ mark + hover color (owner: clickable-looking but NO underline);
+     the track pauses on hover so items can actually be clicked. — */
+.marquee-track:hover { animation-play-state: paused; }
+.ticker-item { color: inherit; text-decoration: none; }
+a.ticker-item:hover { color: var(--color-accent); }
+a.ticker-item:hover .ticker-time { color: var(--color-accent); }
+.ticker-time { font-weight: 800; }
+.ticker-time.hot { color: var(--color-accent); }
+.ticker-go {
+  font-size: 10px; font-weight: 800; color: var(--color-accent);
+  margin-left: 4px; vertical-align: 2px;
+}
+.ticker-sep { padding: 0 18px; color: color-mix(in srgb, var(--color-text) 35%, transparent); }
 @keyframes avwire-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
 
 /* — chrome — */
