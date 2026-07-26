@@ -1178,6 +1178,16 @@ def main() -> None:
         print("write: provider order: "
               + " -> ".join(p.label for p in providers))
         try:
+            # Thin-story companion retrieval: excerpt-only items (e.g.
+            # Simple Flying) act as a discovery index and the pipeline
+            # merges same-topic coverage from reliable outlets.
+            from companion import enrich_thin_groups
+
+            enrich_thin_groups(groups)
+        except Exception as exc:
+            print(f"write: companion retrieval skipped "
+                  f"({type(exc).__name__}: {exc})")
+        try:
             # Pipeline-side enrichment: full text of official pages joins
             # the verifiable material. Failures just leave items thin.
             enrich_pending(groups)
