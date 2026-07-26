@@ -1,0 +1,74 @@
+name: hourly-update
+
+on:
+  schedule:
+    - cron: "0 * * * *" # every hour on the hour (UTC)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "data/**" # bot data commits must not retrigger the workflow
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: hourly
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enable GitHub Pages (build_type=workflow)
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Run pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AEROAPI_KEY: ${{ secrets.AEROAPI_KEY }} # optional
+        run: |
+          python pipeline/fetch.py
+          python pipeline/dedupe.py
+          python pipeline/write.py
+          python pipeline/build.py
+
+      - name: Commit data
+        run: |
+          git config user.name "avwire-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data site
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "hourly update $(date -u +%FT%H:%M)"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || true
+            git push
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

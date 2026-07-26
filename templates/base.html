@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="{{ html_lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+{% if hreflang %}
+<link rel="alternate" hreflang="zh-Hant" href="{{ zh_url }}">
+<link rel="alternate" hreflang="en" href="{{ en_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ zh_url }}">
+{% endif %}
+<link rel="icon" type="image/svg+xml" href="{{ favicon }}">
+<script>try{var t=localStorage.getItem("avwire-theme");if(t){document.documentElement.dataset.theme=t;}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ base }}/assets/modernist.css">
+<link rel="stylesheet" href="{{ base }}/assets/site.css">
+<script src="{{ base }}/assets/app.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <div style="border-bottom:1px solid var(--color-divider);">
+    <div style="max-width:1440px;margin:0 auto;padding:6px 20px;display:flex;align-items:center;gap:16px;font-size:12px;">
+      <span class="text-muted" style="letter-spacing:.06em;">{{ build.date }}</span>
+      <span id="clock-utc" style="font-weight:600;letter-spacing:.06em;">UTC {{ build.utc_hm }}</span>
+      <span id="clock-tpe" class="text-muted" style="letter-spacing:.06em;">TPE {{ build.tpe_hm }}</span>
+      <span style="margin-left:auto;display:flex;align-items:center;gap:7px;">
+        <span class="pulse-dot"></span>
+        <span style="letter-spacing:.04em;">{{ t.updateBadge }}</span>
+      </span>
+      <span class="seg seg-lang">
+        <a class="seg-btn{% if lang == 'zh' %} active{% endif %}" href="{{ zh_url }}">中文</a>
+        <a class="seg-btn{% if lang == 'en' %} active{% endif %}" href="{{ en_url }}">EN</a>
+      </span>
+      <span class="seg seg-lang">
+        <button type="button" class="seg-btn active" data-set-theme="light">{{ t.themeOpts[0] }}</button>
+        <button type="button" class="seg-btn" data-set-theme="dark">{{ t.themeOpts[1] }}</button>
+      </span>
+    </div>
+  </div>
+  <div style="border-bottom:2px solid var(--color-divider);">
+    <div style="max-width:1440px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:28px;">
+      <a href="{{ home_url }}" style="display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;">
+        <div style="width:34px;height:34px;background:var(--color-accent);color:var(--color-bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;">AW</div>
+        <div>
+          <div style="font-weight:800;font-size:20px;line-height:1.05;letter-spacing:-.015em;">AVWIRE <span style="color:var(--color-accent);">{{ t.brandZh }}</span></div>
+          <div class="text-muted" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;">Aviation News · Automated Hourly</div>
+        </div>
+      </a>
+      <nav style="display:flex;gap:2px;margin-left:auto;">
+        {% for n in nav %}
+        <a class="nav-link{% if n.active %} active{% endif %}" href="{{ n.url }}">{{ n.label }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+  {% if ticker_line %}
+  <div style="border-bottom:2px solid var(--color-divider);display:flex;align-items:stretch;">
+    <div style="background:var(--color-accent);color:var(--color-bg);font-weight:800;font-size:12px;letter-spacing:.14em;display:flex;align-items:center;padding:7px 16px;flex-shrink:0;text-transform:uppercase;">{{ t.live }}</div>
+    <div style="overflow:hidden;flex:1;display:flex;align-items:center;">
+      <div class="marquee-track">
+        <span style="padding-right:70px;font-size:13px;">{{ ticker_line }}</span>
+        <span style="padding-right:70px;font-size:13px;">{{ ticker_line }}</span>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% block content %}{% endblock %}
+  <div style="border-top:2px solid var(--color-divider);">
+    <div class="footer-grid">
+      <div>
+        <div style="font-weight:800;font-size:16px;">AVWIRE <span style="color:var(--color-accent);">{{ t.brandZh }}</span></div>
+        <p class="text-muted" style="font-size:12.5px;line-height:1.8;margin-top:8px;">{{ t.footerAbout }}</p>
+        <p class="text-muted" style="font-size:11.5px;letter-spacing:.04em;margin:8px 0 0;">{{ t.lastBuild }} {{ build.stamp }} UTC</p>
+      </div>
+      <div>
+        <h6 style="margin:0 0 10px;">{{ t.footerSources }}</h6>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          {% for s in footer_sources %}
+          <a href="{{ s.url }}" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">{{ s.name }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

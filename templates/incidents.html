@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+  <div style="max-width:1440px;margin:0 auto;padding:28px 20px 64px;">
+    <span class="card-kicker">{{ t.incKicker }}</span>
+    <h2 style="margin:8px 0 6px;">{{ t.incTitle }}</h2>
+    <p class="text-muted" style="font-size:14px;max-width:640px;">{{ t.incSub }}</p>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 0;flex-wrap:wrap;gap:10px;">
+      <span class="seg seg-sev">
+        {% for key, label in sev_seg %}
+        <button type="button" class="seg-btn{% if key == 'all' %} active{% endif %}" data-filter-sev="{{ key }}">{{ label }}</button>
+        {% endfor %}
+      </span>
+      <span class="text-muted" style="font-size:12.5px;"><span id="inc-count">{{ count }}</span> {{ t.incCountLabel }}</span>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="table" style="margin-top:14px;">
+        <thead><tr>
+          <th>{{ t.thDate }}</th><th>{{ t.thSev }}</th><th>{{ t.thType }}</th><th>{{ t.thOp }}</th><th>{{ t.thPhase }}</th><th>{{ t.thLoc }}</th><th>{{ t.thDesc }}</th><th>{{ t.thStatus }}</th><th>{{ t.thSrc }}</th>
+        </tr></thead>
+        <tbody>
+          {% for i in rows %}
+          <tr data-sev="{{ i.sev_key }}">
+            <td style="font-weight:700;white-space:nowrap;">{{ i.d }}</td>
+            <td><span class="tag {{ i.sev_class }}">{{ i.sev_label }}</span></td>
+            <td style="white-space:nowrap;">{{ i.ac }}</td>
+            <td>{{ i.op }}</td>
+            <td>{{ i.ph }}</td>
+            <td>{{ i.loc }}</td>
+            <td class="text-muted">{{ i.desc }}</td>
+            <td style="white-space:nowrap;">{{ i.st }}</td>
+            <td class="text-muted" style="font-size:12px;white-space:nowrap;">{{ i.src }}</td>
+          </tr>
+          {% else %}
+          <tr><td colspan="9" class="text-muted">{{ t.awaiting }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-muted" style="font-size:12px;margin-top:14px;">{{ t.incNote }}</p>
+  </div>
+{% endblock %}

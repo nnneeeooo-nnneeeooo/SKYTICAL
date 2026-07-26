@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="home-grid">
+    <div class="rail-left">
+      <h6 style="display:flex;justify-content:space-between;align-items:baseline;margin:0 0 12px;">{{ t.flash }} <span style="color:var(--color-accent);font-size:10px;">● LIVE</span></h6>
+      {% for f in flashes %}
+      {% if f.url %}
+      <a class="flash-row" href="{{ f.url }}">
+        <span class="flash-time{% if f.hot %} hot{% endif %}">{{ f.time }}</span>
+        <span style="font-size:12.5px;line-height:1.6;">{{ f.text }}</span>
+      </a>
+      {% else %}
+      <div class="flash-row">
+        <span class="flash-time{% if f.hot %} hot{% endif %}">{{ f.time }}</span>
+        <span style="font-size:12.5px;line-height:1.6;">{{ f.text }}</span>
+      </div>
+      {% endif %}
+      {% else %}
+      <div class="flash-row"><span class="text-muted" style="font-size:12.5px;line-height:1.6;">{{ t.awaiting }}</span></div>
+      {% endfor %}
+      <h6 style="margin:28px 0 12px;">{{ t.sourceStatus }}</h6>
+      {% for s in source_status %}
+      <div style="padding:7px 0;border-bottom:1px solid var(--color-divider);display:flex;align-items:center;gap:8px;font-size:12.5px;">
+        <span class="dot{% if not s.ok %} err{% endif %}"></span>
+        <span{% if not s.ok %} class="text-muted"{% endif %}>{{ s.name }}</span>
+        <span class="text-muted" style="margin-left:auto;font-size:11.5px;">{{ s.ago }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="center-col">
+      {% if hero %}
+      <a href="{{ hero.url }}" style="display:block;color:inherit;text-decoration:none;cursor:pointer;">
+        {% if hero.image %}
+        <img class="grayscale hero-img" src="{{ hero.image }}" alt="">
+        {% else %}
+        <div class="grayscale hero-ph">
+          <span class="text-muted" style="font-family:monospace;font-size:11px;">{{ t.heroImg }}</span>
+        </div>
+        {% endif %}
+        <div style="margin-top:16px;">
+          <span class="card-kicker" style="font-size:11px;">{{ hero.cat_label }} — {{ t.topStory }}</span>
+          <h2 style="font-size:34px;line-height:1.15;margin:8px 0 10px;">{{ hero.title }}</h2>
+          <p class="text-muted" style="font-size:14.5px;line-height:1.75;margin:0;">{{ hero.summary }}</p>
+          <div style="display:flex;gap:16px;align-items:baseline;margin-top:10px;font-size:12px;">
+            <span style="font-weight:800;color:var(--color-accent);">{{ hero.time }}</span>
+            <span class="text-muted">{{ t.mainSource }}: {{ hero.source }}</span>
+            <span style="margin-left:auto;font-weight:600;">{{ t.readMore }}</span>
+          </div>
+        </div>
+      </a>
+      {% else %}
+      <div class="grayscale hero-ph">
+        <span class="text-muted" style="font-family:monospace;font-size:11px;">{{ t.awaiting }}</span>
+      </div>
+      {% endif %}
+      <hr class="hr" style="margin:20px 0 0;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;flex-wrap:wrap;gap:10px;">
+        <h6 style="margin:0;">{{ t.latest }}</h6>
+        <span class="seg seg-cat">
+          {% for key, label in cat_seg %}
+          <button type="button" class="seg-btn{% if key == 'all' %} active{% endif %}" data-filter-cat="{{ key }}">{{ label }}</button>
+          {% endfor %}
+        </span>
+      </div>
+      {% for item in feed %}
+      <a class="feed-row" data-cat="{{ item.cat }}" href="{{ item.url }}">
+        <span style="font-size:13px;font-weight:800;">{{ item.time }}</span>
+        <span class="tag {{ item.tag_class }}" style="justify-content:flex-start;">{{ item.cat_label }}</span>
+        <span style="min-width:0;">
+          <span style="display:block;font-size:15.5px;font-weight:700;line-height:1.4;letter-spacing:-.01em;">{{ item.title }}</span>
+          <span class="text-muted" style="display:block;font-size:12.5px;line-height:1.65;margin-top:3px;">{{ item.summary }}</span>
+        </span>
+        <span class="text-muted" style="font-size:11px;border:1px solid var(--color-divider);padding:3px 9px;white-space:nowrap;">{{ item.source }}</span>
+      </a>
+      {% else %}
+      <div class="text-muted" style="padding:13px 0;border-top:1px solid var(--color-divider);font-size:12.5px;">{{ t.awaiting }}</div>
+      {% endfor %}
+    </div>
+    <div class="rail-right">
+      <h6 style="margin:0 0 12px;">{{ t.today }}</h6>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-divider);">
+        <div style="padding:12px;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);">
+          <div style="font-size:24px;font-weight:800;color:var(--color-accent);letter-spacing:-.02em;">{{ stats.flights }}</div>
+          <div class="text-muted" style="font-size:11px;">{{ t.statFlights }}</div>
+        </div>
+        <div style="padding:12px;border-bottom:1px solid var(--color-divider);">
+          <div style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.delay }}</div>
+          <div class="text-muted" style="font-size:11px;">{{ t.statDelay }}</div>
+        </div>
+        <div style="padding:12px;border-right:1px solid var(--color-divider);">
+          <div style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.serious }}</div>
+          <div class="text-muted" style="font-size:11px;">{{ t.statSerious }}</div>
+        </div>
+        <div style="padding:12px;">
+          <div style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.notams }}</div>
+          <div class="text-muted" style="font-size:11px;">{{ t.statNotam }}</div>
+        </div>
+      </div>
+      {% if otp %}
+      <h6 style="margin:28px 0 12px;">{{ t.otp }}</h6>
+      {% for r in otp %}
+      <div style="padding:8px 0;border-bottom:1px solid var(--color-divider);">
+        <div style="display:flex;justify-content:space-between;font-size:13px;align-items:baseline;">
+          <span><span class="text-muted" style="font-weight:800;font-size:11px;">{{ r.rank }}</span>&nbsp; {{ r.airline }} <span class="text-muted" style="font-size:11px;">{{ r.code }}</span></span>
+          <span style="font-weight:800;">{{ r.pct }}%</span>
+        </div>
+        <div style="height:3px;background:color-mix(in srgb,var(--color-text) 10%,transparent);margin-top:5px;"><div style="height:3px;background:var(--color-accent);width:{{ r.barw }};"></div></div>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% if fleet %}
+      <h6 style="margin:28px 0 12px;">{{ t.fleet }}</h6>
+      <div style="font-size:12.5px;">
+        <div class="text-muted" style="font-size:11px;margin-bottom:6px;">{{ t.fleetDeliv }}</div>
+        {% for fb in fleet.bars %}
+        <div style="display:flex;align-items:center;gap:8px;padding:4px 0;">
+          <span style="width:52px;font-weight:700;">{{ fb.maker }}</span>
+          <div style="flex:1;height:14px;background:color-mix(in srgb,var(--color-text) 8%,transparent);"><div style="height:14px;background:{{ fb.color }};width:{{ fb.w }};"></div></div>
+          <span style="font-weight:800;width:32px;text-align:right;">{{ fb.n }}</span>
+        </div>
+        {% endfor %}
+        <div style="display:flex;justify-content:space-between;border-top:1px solid var(--color-divider);margin-top:8px;padding-top:8px;">
+          <span class="text-muted">{{ t.fleetBacklog }}</span><span style="font-weight:700;">{{ fleet.backlog }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding-top:4px;">
+          <span class="text-muted">{{ t.fleetOrders }}</span><span style="font-weight:700;">{{ fleet.orders }}</span>
+        </div>
+      </div>
+      {% endif %}
+      {% if delays %}
+      <h6 style="margin:28px 0 12px;">{{ t.delays }}</h6>
+      {% for d in delays %}
+      <div style="padding:7px 0;border-bottom:1px solid var(--color-divider);display:flex;align-items:center;gap:10px;font-size:12.5px;">
+        <span style="font-weight:800;width:36px;">{{ d.code }}</span>
+        <span class="text-muted" style="flex:1;min-width:0;">{{ d.name }}</span>
+        <span style="font-weight:700;">{{ d.pct }}%</span>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

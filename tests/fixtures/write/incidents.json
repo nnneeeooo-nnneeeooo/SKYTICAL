@@ -1,0 +1,38 @@
+[
+  {
+    "date": "__RECENT_DATE__",
+    "sev": "acc",
+    "aircraft": "A320",
+    "operator": "Example Air",
+    "phase": {"zh": "起飛", "en": "Takeoff"},
+    "location": {"zh": "測試場", "en": "Testville"},
+    "desc": {"zh": "既有事故一", "en": "Pre-existing accident one"},
+    "status": "open",
+    "sources": ["FAA"],
+    "articleId": null
+  },
+  {
+    "date": "__OLD_DATE__",
+    "sev": "ser",
+    "aircraft": "B777",
+    "operator": "Sample Airways",
+    "phase": {"zh": "巡航", "en": "Cruise"},
+    "location": {"zh": "太平洋", "en": "Pacific"},
+    "desc": {"zh": "既有嚴重事件", "en": "Pre-existing serious incident"},
+    "status": "closed",
+    "sources": ["NTSB"],
+    "articleId": null
+  },
+  {
+    "date": "__RECENT_DATE__",
+    "sev": "inc",
+    "aircraft": "AT76",
+    "operator": "Demo Air",
+    "phase": {"zh": "滑行", "en": "Taxi"},
+    "location": {"zh": "示範機場", "en": "Demo Field"},
+    "desc": {"zh": "既有事件", "en": "Pre-existing minor incident"},
+    "status": "prelim",
+    "sources": ["EASA"],
+    "articleId": null
+  }
+]

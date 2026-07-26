@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+  <div style="max-width:860px;margin:0 auto;padding:28px 20px 64px;">
+    <span class="card-kicker">{{ t.aboutKicker }}</span>
+    <h2 style="margin:8px 0 18px;">{{ t.aboutTitle }}</h2>
+    <p style="font-size:16px;line-height:1.9;">{{ t.aboutWhat }}</p>
+    <hr class="hr" style="margin:24px 0;">
+    <h4 style="margin-bottom:14px;">{{ t.aboutPipeTitle }}</h4>
+    {% for ps in pipe_steps %}
+    <div style="display:flex;gap:14px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--color-divider);">
+      <span style="font-weight:800;color:var(--color-accent);font-size:15px;">{{ ps.n }}</span>
+      <span style="font-size:14.5px;line-height:1.7;">{{ ps.text }}</span>
+    </div>
+    {% endfor %}
+    <hr class="hr" style="margin:24px 0;">
+    <h4 style="margin-bottom:10px;">{{ t.aboutAttrTitle }}</h4>
+    <p style="font-size:14.5px;line-height:1.9;" class="text-muted">{{ t.aboutAttr }}</p>
+    <h4 style="margin:24px 0 10px;">{{ t.aboutSchedTitle }}</h4>
+    <p style="font-size:14.5px;line-height:1.9;" class="text-muted">{{ t.aboutSched }}</p>
+    <h4 style="margin:24px 0 10px;">{{ t.aboutRepoTitle }}</h4>
+    <p style="font-size:14.5px;line-height:1.9;" class="text-muted">{{ t.aboutRepo }}</p>
+    <pre style="background:var(--color-surface);border:1px solid var(--color-divider);padding:16px 20px;font-size:12.5px;line-height:1.8;overflow-x:auto;margin:14px 0 0;">avwire/
+├─ .github/workflows/hourly.yml   # cron: 0 * * * *
+├─ pipeline/
+│  ├─ fetch.py      # RSS / API
+│  ├─ dedupe.py
+│  ├─ write.py      # LLM + sources
+│  └─ publish.py    # static site
+├─ data/            # raw snapshots (JSON)
+└─ site/            # GitHub Pages</pre>
+    <div style="border:2px solid var(--color-divider);border-left:6px solid var(--color-accent);padding:14px 18px;margin-top:24px;">
+      <h6 style="margin:0 0 6px;">{{ t.aboutDiscTitle }}</h6>
+      <p class="text-muted" style="font-size:13px;line-height:1.8;margin:0;">{{ t.aboutDisc }}</p>
+    </div>
+  </div>
+{% endblock %}
