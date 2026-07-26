@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AVWIRE 航空快訊 — 資料來源</title>
+<meta name="description" content="全站僅使用免費公開來源。每小時整點抓取一次，抓取狀態即時顯示於首頁側欄。">
+<link rel="alternate" hreflang="zh-Hant" href="/avwire/sources/">
+<link rel="alternate" hreflang="en" href="/avwire/en/sources/">
+<link rel="alternate" hreflang="x-default" href="/avwire/sources/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20fill%3D%22%23ec3013%22/%3E%3Ctext%20x%3D%2260%22%20y%3D%2272%22%20font-family%3D%22Archivo%2Csans-serif%22%20font-weight%3D%22800%22%20font-size%3D%2234%22%20fill%3D%22%23f3f2f2%22%20text-anchor%3D%22middle%22%3EAW%3C/text%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem("avwire-theme");if(t){document.documentElement.dataset.theme=t;}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/avwire/assets/modernist.css">
+<link rel="stylesheet" href="/avwire/assets/site.css">
+<script src="/avwire/assets/app.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <div style="border-bottom:1px solid var(--color-divider);">
+    <div style="max-width:1440px;margin:0 auto;padding:6px 20px;display:flex;align-items:center;gap:16px;font-size:12px;">
+      <span class="text-muted" style="letter-spacing:.06em;">2026-07-26 SUN</span>
+      <span id="clock-utc" style="font-weight:600;letter-spacing:.06em;">UTC 12:22</span>
+      <span id="clock-tpe" class="text-muted" style="letter-spacing:.06em;">TPE 20:22</span>
+      <span style="margin-left:auto;display:flex;align-items:center;gap:7px;">
+        <span class="pulse-dot"></span>
+        <span style="letter-spacing:.04em;">每小時自動更新</span>
+      </span>
+      <span class="seg seg-lang">
+        <a class="seg-btn active" href="/avwire/sources/">中文</a>
+        <a class="seg-btn" href="/avwire/en/sources/">EN</a>
+      </span>
+      <span class="seg seg-lang">
+        <button type="button" class="seg-btn active" data-set-theme="light">亮</button>
+        <button type="button" class="seg-btn" data-set-theme="dark">暗</button>
+      </span>
+    </div>
+  </div>
+  <div style="border-bottom:2px solid var(--color-divider);">
+    <div style="max-width:1440px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:28px;">
+      <a href="/avwire/" style="display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;">
+        <div style="width:34px;height:34px;background:var(--color-accent);color:var(--color-bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;">AW</div>
+        <div>
+          <div style="font-weight:800;font-size:20px;line-height:1.05;letter-spacing:-.015em;">AVWIRE <span style="color:var(--color-accent);">航空快訊</span></div>
+          <div class="text-muted" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;">Aviation News · Automated Hourly</div>
+        </div>
+      </a>
+      <nav style="display:flex;gap:2px;margin-left:auto;">
+        <a class="nav-link" href="/avwire/">最新</a>
+        <a class="nav-link" href="/avwire/incidents/">事故資料庫</a>
+        <a class="nav-link active" href="/avwire/sources/">來源</a>
+        <a class="nav-link" href="/avwire/about/">方法論</a>
+      </nav>
+    </div>
+  </div>
+  <div style="max-width:1440px;margin:0 auto;padding:28px 20px 64px;">
+    <span class="card-kicker">Data Sources</span>
+    <h2 style="margin:8px 0 6px;">資料來源</h2>
+    <p class="text-muted" style="font-size:14px;max-width:640px;">全站僅使用免費公開來源。每小時整點抓取一次，抓取狀態即時顯示於首頁側欄。</p>
+    <div style="overflow-x:auto;">
+      <table class="table" style="margin-top:20px;">
+        <thead><tr>
+          <th>來源</th><th>類型</th><th>涵蓋範圍</th><th>格式</th><th>頻率</th><th>最近抓取</th><th>狀態</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700;white-space:nowrap;"><a href="https://www.faa.gov" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">FAA</a></td>
+            <td><span class="tag tag-neutral">官方機構</span></td>
+            <td class="text-muted">美國聯邦航空總署 — 新聞、AD、法規</td>
+            <td style="white-space:nowrap;">HTML</td>
+            <td>60 min</td>
+            <td class="text-muted" style="white-space:nowrap;">13 min</td>
+            <td>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot"></span>OK</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;white-space:nowrap;"><a href="https://www.ntsb.gov" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">NTSB</a></td>
+            <td><span class="tag tag-neutral">官方機構</span></td>
+            <td class="text-muted">美國運輸安全委員會 — 事故調查</td>
+            <td style="white-space:nowrap;">RSS</td>
+            <td>60 min</td>
+            <td class="text-muted" style="white-space:nowrap;">13 min</td>
+            <td>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot"></span>OK</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;white-space:nowrap;"><a href="https://www.icao.int" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">ICAO</a></td>
+            <td><span class="tag tag-neutral">官方機構</span></td>
+            <td class="text-muted">國際民航組織 — 標準與環境</td>
+            <td style="white-space:nowrap;">HTML</td>
+            <td>60 min</td>
+            <td class="text-muted" style="white-space:nowrap;">13 min</td>
+            <td>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot"></span>OK</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;white-space:nowrap;"><a href="https://www.iata.org" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">IATA</a></td>
+            <td><span class="tag tag-neutral">產業組織</span></td>
+            <td class="text-muted">產業數據與政策</td>
+            <td style="white-space:nowrap;">RSS</td>
+            <td>60 min</td>
+            <td class="text-muted" style="white-space:nowrap;">13 min</td>
+            <td>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot"></span>OK</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;white-space:nowrap;"><a href="https://www.easa.europa.eu" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">EASA</a></td>
+            <td><span class="tag tag-neutral">官方機構</span></td>
+            <td class="text-muted">歐盟航空安全局 — AD 與安全公告</td>
+            <td style="white-space:nowrap;">RSS</td>
+            <td>60 min</td>
+            <td class="text-muted" style="white-space:nowrap;">13 min</td>
+            <td>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot"></span>OK</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;white-space:nowrap;"><a href="https://www.eurocontrol.int" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Eurocontrol</a></td>
+            <td><span class="tag tag-neutral">官方機構</span></td>
+            <td class="text-muted">歐洲空管網路狀態</td>
+            <td style="white-space:nowrap;">HTML</td>
+            <td>60 min</td>
+            <td class="text-muted" style="white-space:nowrap;">13 min</td>
+            <td>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot"></span>OK</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;white-space:nowrap;"><a href="https://www.reuters.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Reuters</a></td>
+            <td><span class="tag tag-neutral">新聞媒體</span></td>
+            <td class="text-muted">路透社航太與國防版</td>
+            <td style="white-space:nowrap;">RSS</td>
+            <td>60 min</td>
+            <td class="text-muted" style="white-space:nowrap;">13 min</td>
+            <td>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot"></span>OK</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;white-space:nowrap;"><a href="https://avherald.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">The Aviation Herald</a></td>
+            <td><span class="tag tag-neutral">新聞媒體</span></td>
+            <td class="text-muted">全球事故事件專業追報</td>
+            <td style="white-space:nowrap;">RSS</td>
+            <td>60 min</td>
+            <td class="text-muted" style="white-space:nowrap;">13 min</td>
+            <td>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot"></span>OK</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;white-space:nowrap;"><a href="https://flightaware.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">FlightAware</a></td>
+            <td><span class="tag tag-neutral">數據平台</span></td>
+            <td class="text-muted">航班追蹤與延誤數據</td>
+            <td style="white-space:nowrap;">API</td>
+            <td>60 min</td>
+            <td class="text-muted" style="white-space:nowrap;">—</td>
+            <td>
+              <span class="text-muted" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot err"></span>ERR</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;white-space:nowrap;"><a href="https://www.caa.gov.tw" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">CAA Taiwan</a></td>
+            <td><span class="tag tag-neutral">官方機構</span></td>
+            <td class="text-muted">交通部民航局 — 航班異動與公告</td>
+            <td style="white-space:nowrap;">RSS</td>
+            <td>60 min</td>
+            <td class="text-muted" style="white-space:nowrap;">13 min</td>
+            <td>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot"></span>OK</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-muted" style="font-size:12px;margin-top:14px;">* 所有來源皆標註於各篇文末；轉載內容僅做事實彙整，原文著作權屬原單位。</p>
+  </div>
+  <div style="border-top:2px solid var(--color-divider);">
+    <div class="footer-grid">
+      <div>
+        <div style="font-weight:800;font-size:16px;">AVWIRE <span style="color:var(--color-accent);">航空快訊</span></div>
+        <p class="text-muted" style="font-size:12.5px;line-height:1.8;margin-top:8px;">全自動航空新聞聚合站。GitHub Actions 每小時抓取各可信來源，自動撰寫並發布，每篇文末標註原始出處。本頁為設計原型，內容為示意樣本。</p>
+        <p class="text-muted" style="font-size:11.5px;letter-spacing:.04em;margin:8px 0 0;">最後建置 2026-07-26 12:22 UTC</p>
+      </div>
+      <div>
+        <h6 style="margin:0 0 10px;">資料來源 Data Sources</h6>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <a href="https://www.faa.gov" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">FAA</a>
+          <a href="https://www.icao.int" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">ICAO</a>
+          <a href="https://www.iata.org" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">IATA</a>
+          <a href="https://www.ntsb.gov" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">NTSB</a>
+          <a href="https://www.easa.europa.eu" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">EASA</a>
+          <a href="https://www.eurocontrol.int" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">Eurocontrol</a>
+          <a href="https://www.reuters.com" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">Reuters</a>
+          <a href="https://avherald.com" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">The Aviation Herald</a>
+          <a href="https://flightaware.com" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">FlightAware</a>
+          <a href="https://www.caa.gov.tw" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">CAA Taiwan</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
