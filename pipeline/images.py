@@ -71,20 +71,20 @@ _REG_RE = re.compile(
 # routes say 澎湖/金門/馬祖, never the airport's registry name, so the
 # config-name match below rarely fires on its own.
 _AIRPORT_ALIASES = (
-    ("桃園機場", "Taoyuan International Airport", ("Taoyuan",)),
-    ("桃園國際機場", "Taoyuan International Airport", ("Taoyuan",)),
-    ("松山機場", "Taipei Songshan Airport", ("Songshan",)),
-    ("小港機場", "Kaohsiung International Airport", ("Kaohsiung",)),
-    ("高雄國際機場", "Kaohsiung International Airport", ("Kaohsiung",)),
-    ("澎湖", "Magong Airport Penghu", ("Magong",)),
-    ("馬公", "Magong Airport Penghu", ("Magong",)),
-    ("金門", "Kinmen Airport", ("Kinmen",)),
-    ("馬祖", "Matsu Nangan Airport", ("Nangan", "Matsu")),
-    ("南竿", "Matsu Nangan Airport", ("Nangan", "Matsu")),
-    ("北竿", "Matsu Beigan Airport", ("Beigan", "Matsu")),
-    ("花蓮機場", "Hualien Airport", ("Hualien",)),
-    ("臺東機場", "Taitung Airport", ("Taitung",)),
-    ("台東機場", "Taitung Airport", ("Taitung",)),
+    ("桃園機場", "Taoyuan International Airport", ("Taoyuan",), "桃園國際機場"),
+    ("桃園國際機場", "Taoyuan International Airport", ("Taoyuan",), "桃園國際機場"),
+    ("松山機場", "Taipei Songshan Airport", ("Songshan",), "臺北松山機場"),
+    ("小港機場", "Kaohsiung International Airport", ("Kaohsiung",), "高雄國際機場"),
+    ("高雄國際機場", "Kaohsiung International Airport", ("Kaohsiung",), "高雄國際機場"),
+    ("澎湖", "Magong Airport Penghu", ("Magong",), "澎湖馬公機場"),
+    ("馬公", "Magong Airport Penghu", ("Magong",), "澎湖馬公機場"),
+    ("金門", "Kinmen Airport", ("Kinmen",), "金門機場"),
+    ("馬祖", "Matsu Nangan Airport", ("Nangan", "Matsu"), "馬祖南竿機場"),
+    ("南竿", "Matsu Nangan Airport", ("Nangan", "Matsu"), "馬祖南竿機場"),
+    ("北竿", "Matsu Beigan Airport", ("Beigan", "Matsu"), "馬祖北竿機場"),
+    ("花蓮機場", "Hualien Airport", ("Hualien",), "花蓮機場"),
+    ("臺東機場", "Taitung Airport", ("Taitung",), "臺東機場"),
+    ("台東機場", "Taitung Airport", ("Taitung",), "臺東機場"),
 )
 
 # Official-agency fallback: a story about a regulator with no aircraft/
@@ -92,17 +92,19 @@ _AIRPORT_ALIASES = (
 # word boundaries; CJK keys as substrings.
 _ORG_QUERIES = (
     ("faa", "Federal Aviation Administration headquarters",
-     ("Federal Aviation",)),
+     ("Federal Aviation",), "美國聯邦航空總署（FAA）總部"),
     ("ntsb", "National Transportation Safety Board",
-     ("NTSB", "National Transportation Safety")),
+     ("NTSB", "National Transportation Safety"), "美國國家運輸安全委員會（NTSB）"),
     ("icao", "International Civil Aviation Organization headquarters",
-     ("ICAO", "International Civil Aviation")),
+     ("ICAO", "International Civil Aviation"), "國際民航組織（ICAO）總部"),
     ("iata", "International Air Transport Association",
-     ("IATA",)),
+     ("IATA",), "國際航空運輸協會（IATA）"),
     ("easa", "European Union Aviation Safety Agency",
-     ("EASA",)),
-    ("eurocontrol", "Eurocontrol headquarters", ("Eurocontrol",)),
-    ("民用航空局", "交通部民用航空局", ("民用航空局", "Civil Aeronautics")),
+     ("EASA",), "歐盟航空安全局（EASA）"),
+    ("eurocontrol", "Eurocontrol headquarters", ("Eurocontrol",),
+     "歐洲空管組織（Eurocontrol）總部"),
+    ("民用航空局", "交通部民用航空局", ("民用航空局", "Civil Aeronautics"),
+     "交通部民用航空局"),
 )
 
 _airlines = [
@@ -183,32 +185,32 @@ def find_aircraft_type(article: dict) -> str | None:
 
 
 def find_airport(article: dict):
-    """(commons_query, required_title_tokens) for a mentioned airport."""
+    """(commons_query, required_title_tokens, subject_zh) for an airport."""
     text = _article_text(article)
     low = text.casefold()
-    for marker, query, tokens in _AIRPORT_ALIASES:
+    for marker, query, tokens, subject in _AIRPORT_ALIASES:
         if marker in text:
-            return query, list(tokens)
+            return query, list(tokens), subject
     for ap in _tw_airports:
         for key in ("name_zh", "name_en"):
             val = str(ap.get(key) or "")
             if val and (val in text or val.casefold() in low):
                 name = str(ap.get("name_en") or val)
-                return name, [name.split()[0]]
+                return name, [name.split()[0]], str(ap.get("name_zh") or name)
     return None
 
 
 def find_org(article: dict):
-    """(commons_query, required_title_tokens) for an official agency."""
+    """(commons_query, required_title_tokens, subject_zh) for an agency."""
     text = _article_text(article)
     low = text.casefold()
-    for marker, query, tokens in _ORG_QUERIES:
+    for marker, query, tokens, subject in _ORG_QUERIES:
         if re.search(r"[一-鿿]", marker):
             hit = marker in text
         else:
             hit = re.search(rf"\b{re.escape(marker)}\b", low) is not None
         if hit:
-            return query, list(tokens)
+            return query, list(tokens), subject
     return None
 
 
@@ -239,11 +241,13 @@ def lookup_planespotters(reg: str) -> dict | None:
             "provider": "Planespotters.net",
             "kind": "airframe_photo",
             "matched": reg,
+            "subject": f"註冊號 {reg}",
         }
     return None
 
 
-def lookup_commons(query: str, require_tokens: list[str]) -> dict | None:
+def lookup_commons(query: str, require_tokens: list[str],
+                   subject: str | None = None) -> dict | None:
     """First freely-licensed Commons bitmap matching the query.
 
     require_tokens: at least one must appear in the file title, so a
@@ -289,6 +293,7 @@ def lookup_commons(query: str, require_tokens: list[str]) -> dict | None:
                 "provider": "Wikimedia Commons",
                 "kind": "file_photo",
                 "matched": query,
+                "subject": subject or None,
             }
     return None
 
@@ -306,19 +311,22 @@ def resolve_image(article: dict) -> dict | None:
     if airline and actype:
         # family token ("A350") so Commons titles with any sub-variant match
         type_token = actype.split()[-1].split("-")[0]
-        return lookup_commons(f'{airline} {actype}', [type_token, airline])
+        return lookup_commons(f'{airline} {actype}', [type_token, airline],
+                              subject=f"{airline} {actype}")
     if actype:
         type_token = actype.split()[-1].split("-")[0]
-        return lookup_commons(f'{actype} aircraft', [type_token])
+        return lookup_commons(f'{actype} aircraft', [type_token],
+                              subject=actype)
     if airline:
-        return lookup_commons(f'{airline} aircraft', [airline])
+        return lookup_commons(f'{airline} aircraft', [airline],
+                              subject=airline)
     if airport:
-        query, tokens = airport
-        return lookup_commons(query, tokens)
+        query, tokens, subject = airport
+        return lookup_commons(query, tokens, subject=subject)
     org = find_org(article)
     if org:
-        query, tokens = org
-        return lookup_commons(query, tokens)
+        query, tokens, subject = org
+        return lookup_commons(query, tokens, subject=subject)
     return None  # nothing visual verified in this article -> no image
 
 

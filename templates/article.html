@@ -13,8 +13,9 @@
     </div>
     {% if a.image %}
     <figure style="margin:0 0 22px;">
-      <img class="grayscale" src="{{ a.image.url }}" alt="{{ a.title }}" loading="lazy" style="width:100%;max-height:420px;object-fit:cover;border:1px solid var(--color-divider);">
+      <img src="{{ a.image.url }}" alt="{{ a.image.subject or a.title }}" loading="lazy" style="width:100%;height:auto;max-height:560px;object-fit:contain;background:color-mix(in srgb,var(--color-text) 6%,var(--color-surface));border:1px solid var(--color-divider);">
       <figcaption class="text-muted" style="font-size:11.5px;margin-top:6px;display:flex;gap:10px;flex-wrap:wrap;">
+        {% if a.image.subject %}<span style="font-weight:800;color:var(--color-text);">{{ a.image.subject }}</span>{% endif %}
         <span>{{ t.photoKind[a.image.kind] }}</span>
         {% if a.image.credit %}<span>© {{ a.image.credit }}</span>{% endif %}
         {% if a.image.license %}<span>{{ a.image.license }}</span>{% endif %}

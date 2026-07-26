@@ -38,8 +38,8 @@
       {% if hero %}
       <a href="{{ hero.url }}"{% if hero.external %} target="_blank" rel="noopener"{% endif %} style="display:block;color:inherit;text-decoration:none;cursor:pointer;">
         {% if hero.image %}
-        <img class="grayscale hero-img" src="{{ hero.image.url }}" alt="">
-        <div class="text-muted" style="font-size:10.5px;margin-top:4px;">{{ t.photoKind[hero.image.kind] }}{% if hero.image.credit %} · © {{ hero.image.credit }}{% endif %}{% if hero.image.license %} · {{ hero.image.license }}{% endif %}{% if hero.image.provider %} · {{ hero.image.provider }}{% endif %}</div>
+        <img class="hero-img" src="{{ hero.image.url }}" alt="{{ hero.image.subject or '' }}">
+        <div class="text-muted" style="font-size:10.5px;margin-top:4px;">{% if hero.image.subject %}<b style="color:var(--color-text);">{{ hero.image.subject }}</b> · {% endif %}{{ t.photoKind[hero.image.kind] }}{% if hero.image.credit %} · © {{ hero.image.credit }}{% endif %}{% if hero.image.license %} · {{ hero.image.license }}{% endif %}{% if hero.image.provider %} · {{ hero.image.provider }}{% endif %}</div>
         {% else %}
         <div class="grayscale hero-ph">
           <span class="text-muted" style="font-family:monospace;font-size:11px;">{{ t.heroImg }}</span>

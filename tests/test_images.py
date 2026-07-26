@@ -154,13 +154,13 @@ check("no visual entity -> resolve_image returns None without HTTP",
        and images.resolve_image(make_article(
            "a", "Global travel demand keeps rising")) is None
        and fake.calls == []))
-check("island wording maps to the airport photo query",
+check("island wording maps to the airport photo query with zh subject",
       images.find_airport(make_article("a", "澎湖離島航線加班"))
-      == ("Magong Airport Penghu", ["Magong"]))
+      == ("Magong Airport Penghu", ["Magong"], "澎湖馬公機場"))
 check("agency stories fall back to an official-agency photo query",
       images.find_org(make_article("a", "FAA announces new drone rule"))
       == ("Federal Aviation Administration headquarters",
-          ["Federal Aviation"]))
+          ["Federal Aviation"], "美國聯邦航空總署（FAA）總部"))
 check("substring 'faa' inside a word never triggers the org match",
       images.find_org(make_article("a", "shortfaall of capacity")) is None)
 
@@ -218,6 +218,8 @@ art = read_batch(p)[0]
 check("agency fallback attaches the building photo, never the logo",
       art["image"]["url"] == "https://upload.wikimedia.org/faa-hq.jpg"
       and "logo" not in art["image"]["url"])
+check("photo carries its zh subject caption",
+      art["image"]["subject"] == "美國聯邦航空總署（FAA）總部")
 
 # ── cache behaviour ──────────────────────────────────────────────────────────
 

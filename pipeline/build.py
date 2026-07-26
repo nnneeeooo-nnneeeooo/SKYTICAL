@@ -631,6 +631,7 @@ def normalize_image(raw_img):
             "credit": str(raw_img.get("credit") or "") or None,
             "license": str(raw_img.get("license") or "") or None,
             "provider": str(raw_img.get("provider") or "") or None,
+            "subject": str(raw_img.get("subject") or "") or None,
             "kind": (raw_img.get("kind")
                      if raw_img.get("kind") in ("airframe_photo",
                                                 "file_photo")
@@ -641,7 +642,7 @@ def normalize_image(raw_img):
         if not _safe_web_url(url):
             return None
         return {"url": url, "link": None, "credit": None, "license": None,
-                "provider": None, "kind": "file_photo"}
+                "provider": None, "subject": None, "kind": "file_photo"}
     return None
 
 
