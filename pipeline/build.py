@@ -88,7 +88,7 @@ L = {
         "cats": ["全部", "事故", "法規", "商業", "營運"],
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "快報",
-        "brIndexSub": "每日三次（臺北時間 07:15／15:15／23:15）自動彙整固定八小時窗口內、已通過驗證發布的航空與交通事件。",
+        "brIndexSub": "每日三次（臺北時間 07:15／15:15／23:15）的條列式全球航空與交通要聞快報，由具搜尋能力的模型彙整（Beta）；本站正式新聞請見「最新」。",
         "brLatest": "最新快報", "brWindow": "資料範圍", "brCutoff": "資料截止",
         "brGenerated": "系統整理完成", "brTo": "至",
         "brEmpty": "截至本期資料截止時間，系統在本次查核的指定來源中，未發現符合收錄門檻的新事件。",
@@ -149,7 +149,7 @@ L = {
         "cats": ["All", "Safety", "Regulation", "Business", "Operations"],
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "Briefings",
-        "brIndexSub": "Three times daily (07:15 / 15:15 / 23:15 Taipei time): verified aviation and transport events from a fixed eight-hour window.",
+        "brIndexSub": "A bulleted global air & transport bulletin three times daily (07:15 / 15:15 / 23:15 Taipei time), compiled by a search-capable model (Beta); the site's formal articles live under Latest.",
         "brLatest": "Latest briefing", "brWindow": "Data window",
         "brCutoff": "Data cutoff", "brGenerated": "Compiled", "brTo": "to",
         "brEmpty": "As of this edition's data cutoff, no new events meeting the inclusion bar were found in the sources checked for this edition.",

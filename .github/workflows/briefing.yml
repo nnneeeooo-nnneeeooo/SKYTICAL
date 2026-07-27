@@ -86,6 +86,8 @@ jobs:
           # BETA grounded search sweep (owner-approved; off unless var set)
           BRIEFING_GROUNDED: ${{ vars.BRIEFING_GROUNDED }}
           BRIEFING_GROUNDED_MODEL: ${{ vars.BRIEFING_GROUNDED_MODEL }}
+          # bulletin-only by default; true restores merged site articles
+          BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
         run: |
           if [ -n "${{ steps.ed.outputs.date }}" ]; then
             python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}" --date "${{ steps.ed.outputs.date }}"

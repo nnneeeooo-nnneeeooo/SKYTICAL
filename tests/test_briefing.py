@@ -23,6 +23,9 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 TMP = Path(tempfile.mkdtemp(prefix="avwire-briefing-"))
 os.environ["AVWIRE_DATA_DIR"] = str(TMP)
+# The selection/dedup/update machinery below is exercised with the merged
+# mode on; production default is the pure bulletin (owner 2026-07-27).
+os.environ["BRIEFING_INCLUDE_ARTICLES"] = "true"
 
 sys.path.insert(0, str(REPO / "pipeline"))
 import briefing  # noqa: E402
@@ -529,6 +532,20 @@ _fatal_item = dict(_mil_item, severity="fatal", taiwan_priority=False,
 _marks_fatal = _b.brief_item_view(_fatal_item, "zh", set())["marks"]
 check("fatal items render warning+red marks",
       "⚠" in _marks_fatal and "\U0001f534" in _marks_fatal)
+
+# ── bulletin-only production default ─────────────────────────────────────────
+
+reset()
+write_sources(ok=True)
+write_articles([make_article("a-bul", "正式新聞不入快報",
+                             tpe(2026, 7, 27, 6))])
+del os.environ["BRIEFING_INCLUDE_ARTICLES"]
+briefing.main(["--edition", "morning", "--date", "2026-07-27"])
+os.environ["BRIEFING_INCLUDE_ARTICLES"] = "true"
+bm = load_brief("2026-07-27-morning")
+check("default mode keeps formal site articles OUT of the bulletin",
+      bm["item_count"] == 0
+      and all(v == [] for v in bm["sections"].values()))
 
 # ── caps ─────────────────────────────────────────────────────────────────────
 

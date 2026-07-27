@@ -105,6 +105,15 @@ def _llm_intro_enabled() -> bool:
             in ("1", "true", "yes"))
 
 
+def _include_articles() -> bool:
+    """Owner decision 2026-07-27: the briefing page is a pure bulletin
+    (grounded sweep items only) - formal site articles live on 最新 and
+    are NOT mirrored here. Repo var BRIEFING_INCLUDE_ARTICLES=true
+    restores the old merged behaviour."""
+    return (os.environ.get("BRIEFING_INCLUDE_ARTICLES", "").strip().lower()
+            in ("1", "true", "yes"))
+
+
 def load_editions() -> dict:
     editions = load_json(EDITIONS_PATH, None)
     if not isinstance(editions, dict) or set(editions) != {
@@ -725,15 +734,20 @@ def run_edition(edition: str, taipei_date: date) -> int:
     window = get_briefing_window(edition, taipei_date)
     warnings: list[str] = []
 
-    articles, load_warnings = load_published_articles()
-    warnings.extend(load_warnings)
     checked_sources, source_warnings = checked_sources_snapshot()
     warnings.extend(source_warnings)
 
     event_index = load_event_index()
     prune_event_index(event_index, now)
-    picked = select_items(articles, window, event_index, now, warnings)
-    sections = arrange_sections(picked, warnings)
+    load_warnings: list[str] = []
+    if _include_articles():
+        articles, load_warnings = load_published_articles()
+        warnings.extend(load_warnings)
+        picked = select_items(articles, window, event_index, now, warnings)
+        sections = arrange_sections(picked, warnings)
+    else:
+        # pure bulletin mode: sections are filled by the grounded sweep
+        sections = {name: [] for name in SECTIONS}
 
     # BETA: owner-approved model-assisted search sweep (grounded.py).
     # Only Google-retrieved sources can be cited; any failure degrades to
@@ -749,7 +763,7 @@ def run_edition(edition: str, taipei_date: date) -> int:
                                for sec in sections.values() for it in sec]
             data, shim = grounded.call_grounded(window)
             if data is None:
-                warnings.append("grounded sweep skipped: no GEMINI_API_KEY")
+                warnings.append("AI 搜尋所需的模型金鑰未設定，本期未產生條列內容")
             else:
                 g_items, g_warnings = grounded.sanitize_items(
                     data, existing_titles, g_seen, now)
@@ -771,8 +785,12 @@ def run_edition(edition: str, taipei_date: date) -> int:
                     except Exception:
                         pass
     except Exception as exc:
-        warnings.append(f"grounded sweep failed: "
-                        f"{type(exc).__name__}: {exc}")
+        if "429" in str(exc):
+            warnings.append("AI 搜尋暫時受免費額度限制（配額不足），本期未能"
+                            "產生條列內容；下一期將自動重試")
+        else:
+            warnings.append(f"AI 搜尋本期失敗（{type(exc).__name__}: "
+                            f"{str(exc)[:120]}），已略過")
 
     # partial = our own inputs were degraded, never "no events".
     partial = bool(load_warnings or source_warnings)
