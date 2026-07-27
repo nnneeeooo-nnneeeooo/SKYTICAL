@@ -53,6 +53,9 @@ jobs:
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
           # rare-aircraft auto-publish kill switch (code default: on)
           FLIGHT_AUTO_PUBLISH: ${{ vars.FLIGHT_AUTO_PUBLISH }}
+          # bulletin-only briefing pages by default; build.py applies the
+          # same gate at render time, so hourly rebuilds need the var too
+          BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
         run: |
           python pipeline/fetch.py
           python pipeline/dedupe.py

@@ -547,6 +547,35 @@ check("default mode keeps formal site articles OUT of the bulletin",
       bm["item_count"] == 0
       and all(v == [] for v in bm["sections"].values()))
 
+# render-time gate: hourly builds race briefing builds on Pages deploys, so
+# build.py must enforce bulletin-only even over a stale pre-bulletin JSON
+_stale_item = {"headline": "殘留的正式新聞", "summary": "s",
+               "severity": "routine", "item_type": "new", "sources": [],
+               "article_id": None,
+               "source_published_at": "2026-07-27T00:00:00+08:00"}
+_stale = {
+    "briefing_id": "2026-07-27-morning", "edition": "morning",
+    "status": "published", "cutoff_time": "2026-07-27T07:00:00+08:00",
+    "sections": {
+        "aviation_incidents": [_stale_item,
+                               dict(_stale_item, headline="AI搜尋條目",
+                                    origin="grounded")],
+        "taiwan_aviation": [dict(_stale_item, headline="另一則殘留")],
+    },
+    "intro_zh": "為合併版寫的導言",
+}
+del os.environ["BRIEFING_INCLUDE_ARTICLES"]
+_bv = _b.brief_view(_stale, "zh", _b.L["zh"], set())
+os.environ["BRIEFING_INCLUDE_ARTICLES"] = "true"
+check("render gate: stale merged JSON still renders bulletin-only",
+      _bv["total"] == 1
+      and all(it["grounded"]
+              for s in _bv["sections"] for it in s["items"])
+      and _bv["intro"] == "")
+_bv2 = _b.brief_view(_stale, "zh", _b.L["zh"], set())
+check("render gate: BRIEFING_INCLUDE_ARTICLES=true restores merged render",
+      _bv2["total"] == 3 and _bv2["intro"] == "為合併版寫的導言")
+
 # ── caps ─────────────────────────────────────────────────────────────────────
 
 reset()

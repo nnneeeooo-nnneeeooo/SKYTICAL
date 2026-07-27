@@ -1147,16 +1147,35 @@ def brief_item_view(item, lang: str, published_ids):
     }
 
 
+def _render_include_articles() -> bool:
+    """Render-time twin of briefing._include_articles(): hourly and briefing
+    workflows race on Pages deploys (last deploy wins), so a build from a
+    stale pre-bulletin JSON must not put formal articles back on the page."""
+    return (os.environ.get("BRIEFING_INCLUDE_ARTICLES", "").strip().lower()
+            in ("1", "true", "yes"))
+
+
 def brief_view(b, lang: str, t, published_ids):
     sections = []
     raw_sections = b.get("sections") or {}
+    include_articles = _render_include_articles()
+    dropped = 0
     for i, name in enumerate(BRIEFING_SECTIONS):
-        items = [brief_item_view(it, lang, published_ids)
-                 for it in raw_sections.get(name) or []
-                 if isinstance(it, dict)]
+        raw = [it for it in raw_sections.get(name) or []
+               if isinstance(it, dict)]
+        if not include_articles:
+            kept = [it for it in raw if it.get("origin") == "grounded"]
+            dropped += len(raw) - len(kept)
+            raw = kept
+        items = [brief_item_view(it, lang, published_ids) for it in raw]
         sections.append({"label": t["brSecs"][i], "items": items})
     gen_model = b.get("generation_model") or {}
     date_dt = _tpe_dt(b.get("cutoff_time"))
+    # an intro written over the merged item set is stale once items are cut
+    intro = str(b.get("intro_zh" if lang == "zh" else "intro_en")
+                or "").strip()
+    if dropped:
+        intro = ""
     return {
         "id": b.get("briefing_id"),
         "title": _brief_title(b, lang),
@@ -1169,8 +1188,7 @@ def brief_view(b, lang: str, t, published_ids):
         "partial": b.get("status") == "partial",
         "total": sum(len(s["items"]) for s in sections),
         "sections": sections,
-        "intro": str(b.get("intro_zh" if lang == "zh" else "intro_en")
-                     or "").strip(),
+        "intro": intro,
         "mode_label": (t["brModeLlm"] if b.get("generation_mode")
                        == "llm_assisted" else t["brModeDet"]),
         "model_label": (f"{gen_model.get('provider')}:{gen_model.get('model')}"
