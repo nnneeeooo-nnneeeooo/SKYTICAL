@@ -39,6 +39,7 @@ from common import (
     MAX_FLASHES,
     RAW_DIR,
     group_has_material,
+    is_transport_story,
     iso_minute,
     load_json,
     norm_url,
@@ -267,6 +268,19 @@ EVIDENCE RULES:
 - No superlatives or strong conclusions (first-ever, largest, historic,
   confirmed, caused by, 首度, 史上, 證實, 導致) unless the material uses
   equally strong wording.
+
+EDITORIAL SCOPE GATE:
+- AVWIRE publishes only aviation and transport news: civil or military
+  aircraft, airlines, airports, flights, airspace/ATC, aviation industry and
+  safety, maritime transport/vessels/ports, rail, metro or road transport.
+- A defence ministry, armed forces, exercise, president, budget, weapon or
+  military label is NOT sufficient. Military stories qualify only when the
+  evidenced core event directly concerns aircraft, airspace, aviation,
+  vessels/ports or a concrete transport operation.
+- General politics, political rebuttals, speeches, elections, defence-policy
+  positioning, land exercises and presidential inspection protocol are
+  OUT-OF-SCOPE. Return status="reject"; never stretch them into aviation or
+  transport stories.
 
 AVIATION SAFETY RULES (strictest standard):
 - For accidents, serious incidents, emergency landings, diversions, runway
@@ -832,6 +846,10 @@ def build_sources(items: list) -> list:
 def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
                   facts=None):
     """Assemble one article dict, or None when it cannot credit any source."""
+    if not is_transport_story(group):
+        print(f"write: group {group.get('id')} failed aviation/transport "
+              "scope gate; skipping")
+        return None
     items = group.get("items", [])
     sources = build_sources(items)
     if not sources:
@@ -1224,6 +1242,22 @@ def main() -> None:
     dead_platforms: set = set()
     ai_calls: dict = {}
     skipped = 0
+
+    # Scope is checked in code before enrichment or an API call.  This also
+    # consumes out-of-scope groups so a broad feed cannot spend tokens on the
+    # same political/defence item every hour.
+    scoped_groups = []
+    for group in groups:
+        if isinstance(group, dict) and is_transport_story(group):
+            scoped_groups.append(group)
+            continue
+        group_id = group.get("id") if isinstance(group, dict) else None
+        print(f"write: group {group_id} is outside aviation/transport scope; "
+              "consumed before drafting")
+        if isinstance(group, dict):
+            rejected_groups.append(group)
+            rejected_ids.add(group_id)
+    groups = scoped_groups
 
     # --- 1. publish entries a human approved in data/review.json ---------
     # (needs no API key, so it runs even in aggregation mode)

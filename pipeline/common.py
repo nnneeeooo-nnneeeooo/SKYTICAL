@@ -287,12 +287,15 @@ SOURCES: dict[str, dict] = {
         "endpoint": "https://feeds.feedburner.com/rsscna/politics",
         "type": "rss",
         "keywords": [
-            "航空", "民航", "航班", "機場", "航線", "華航", "中華航空",
+            "航空", "民航", "飛安", "航班", "航機", "飛機", "客機",
+            "貨機", "小型機", "機場", "航線", "空域", "空管", "跑道",
+            "墜機", "迫降", "轉降", "起飛", "降落", "華航", "中華航空",
             "長榮航", "星宇", "台灣虎航", "臺灣虎航", "立榮", "華信",
-            "空軍", "軍機", "共機", "中共機艦", "國軍", "國防部",
-            "無人機", "直升機", "戰機", "台鐵", "臺鐵", "高鐵", "捷運",
-            "航港", "港務", "小三通", "船班",
+            "空軍", "軍機", "共機", "中共機艦", "共艦", "軍艦", "軍港",
+            "無人機", "直升機", "戰機", "轟炸機", "台鐵", "臺鐵",
+            "高鐵", "捷運", "航港", "港務", "小三通", "船班",
         ],
+        "scope_filter": True,
         "cover": {
             "zh": "中央社 — 航空、軍航與交通相關報導",
             "en": "CNA Taiwan — aviation, military air & transport",
@@ -312,9 +315,10 @@ SOURCES: dict[str, dict] = {
             "&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
         ),
         "type": "rss",
+        "scope_filter": True,
         "cover": {
-            "zh": "國防部/軍聞社 — 共機動態與軍事新聞",
-            "en": "Taiwan MND — PLA activity & military news",
+            "zh": "國防部/軍聞社 — 軍事航空、機艦與運輸動態",
+            "en": "Taiwan MND — military aviation, vessels & transport",
         },
     },
     "twtransport": {
@@ -337,6 +341,71 @@ SOURCES: dict[str, dict] = {
 }
 
 CATEGORIES = ("safety", "reg", "biz", "ops", "mil")
+
+# Site-wide subject gate.  A military label does not by itself make a story
+# relevant to an aviation and transport publication: the material must still
+# contain a concrete aviation, airspace, maritime, rail or road-transport
+# subject.  Keep these terms specific enough that generic politics/defence
+# stories (budgets, speeches, presidential inspections, land exercises) fail.
+_TRANSPORT_ZH_TERMS = (
+    # civil and military aviation
+    "航空", "民航", "飛安", "航班", "航機", "飛機", "小型機", "客機",
+    "貨機", "機場", "航線", "飛航", "空域", "空管", "航管", "塔台",
+    "跑道", "起飛", "降落", "墜機", "空難", "迫降", "轉降", "客艙",
+    "空服員", "機師", "飛行員", "直升機", "無人機", "戰機", "軍機",
+    "共機", "轟炸機",
+    "機艦", "航太", "波音", "空中巴士", "華航", "中華航空", "長榮航",
+    "星宇", "台灣虎航", "臺灣虎航", "立榮", "華信",
+    # maritime transport and military vessels
+    "共艦", "軍艦", "軍港", "航空母艦", "航母", "艦艇", "船班", "船舶",
+    "客輪", "貨輪", "渡輪", "郵輪", "海運", "航運", "航港", "港務",
+    "港口", "碼頭", "小三通", "停航", "擱淺", "沉船",
+    # rail and road transport
+    "台鐵", "臺鐵", "高鐵", "捷運", "鐵路", "列車", "火車", "軌道",
+    "出軌", "停駛", "客運", "公車", "巴士", "高速公路", "道路運輸",
+    "交通事故",
+)
+_TRANSPORT_EN_RE = re.compile(
+    r"\b(?:"
+    r"aviation|aerospace|airlines?|airports?|aircraft|airplanes?|aeroplanes?|"
+    r"faa|ntsb|icao|iata|easa|eurocontrol|"
+    r"air\s+cargo|airspace|air\s+traffic|flights?|runways?|pilots?|"
+    r"cabin\s+crew|flight\s+attendants?|boeing|airbus|e-?vtol|ads-?b|"
+    r"drones?|helicopters?|fighter\s+(?:jets?|aircraft)|bombers?|"
+    r"warships?|naval\s+(?:vessels?|base|port)|aircraft\s+carriers?|"
+    r"shipping|maritime|ports?|harbou?rs?|ferr(?:y|ies)|cruise\s+ships?|"
+    r"cargo\s+ships?|passenger\s+ships?|vessels?|"
+    r"railways?|railroads?|trains?|metros?|subways?|high-?speed\s+rail|"
+    r"buses?|coaches|highways?|road\s+transport|transportation"
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def _string_values(value):
+    """Yield JSON-shaped string values without field names.
+
+    Ignoring dictionary keys matters here: an empty ``aircraft_models`` field
+    must not make an otherwise political article look aviation-related.
+    """
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, dict):
+        for child in value.values():
+            yield from _string_values(child)
+    elif isinstance(value, (list, tuple, set)):
+        for child in value:
+            yield from _string_values(child)
+
+
+def is_transport_story(*records) -> bool:
+    """True only for concrete aviation or transport subject matter."""
+    text = " ".join(
+        part for record in records for part in _string_values(record)
+    )
+    return (any(term in text for term in _TRANSPORT_ZH_TERMS)
+            or _TRANSPORT_EN_RE.search(text) is not None)
+
 
 # Military takes precedence over the other editorial categories.  Keep the
 # terms deliberately specific: generic aviation-security language such as
