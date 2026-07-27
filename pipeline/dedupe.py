@@ -190,6 +190,27 @@ def _best_first(members: list[dict]) -> list[dict]:
     )
 
 
+def _rank_groups(
+    items: list[dict],
+) -> list[tuple[bool, bool, datetime, list[dict]]]:
+    """Group and rank fresh items without changing their public payload.
+
+    The tuple fields intentionally mirror the historical sort key:
+    material evidence first, then cross-source coverage, then recency.
+    """
+    ranked: list[tuple[bool, bool, datetime, list[dict]]] = []
+    for grouped_items in _group(items):
+        members = _best_first(grouped_items)[:MAX_ITEMS_PER_GROUP]
+        newest = max((_published(item) or _EPOCH for item in members),
+                     default=_EPOCH)
+        multi_source = len({item["sourceKey"] for item in members}) > 1
+        has_material = group_has_material({"items": members})
+        ranked.append((has_material, multi_source, newest, members))
+    ranked.sort(key=lambda entry: (entry[0], entry[1], entry[2]),
+                reverse=True)
+    return ranked
+
+
 def main() -> None:
     now = now_utc()
     raw_items = _load_raw_items()
@@ -208,14 +229,7 @@ def main() -> None:
     # real stories out of the MAX_GROUPS cap - and the Google-News-fed
     # sources produce title-only MULTI-source groups all the time), then
     # cross-source coverage, then recency.
-    ranked: list[tuple[bool, bool, datetime, list[dict]]] = []
-    for members in _group(fresh):
-        members = _best_first(members)[:MAX_ITEMS_PER_GROUP]
-        newest = max((_published(m) or _EPOCH for m in members), default=_EPOCH)
-        multi = len({m["sourceKey"] for m in members}) > 1
-        material = group_has_material({"items": members})
-        ranked.append((material, multi, newest, members))
-    ranked.sort(key=lambda entry: (entry[0], entry[1], entry[2]), reverse=True)
+    ranked = _rank_groups(fresh)
     material_groups = sum(1 for entry in ranked if entry[0])
 
     stamp = now.strftime("%Y%m%d-%H%M")
