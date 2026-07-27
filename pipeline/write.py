@@ -34,6 +34,7 @@ from pathlib import Path
 
 from common import (
     ARTICLES_DIR,
+    CATEGORIES,
     DATA_DIR,
     MAX_FLASHES,
     RAW_DIR,
@@ -46,6 +47,7 @@ from common import (
     save_json,
     slugify,
     squash_text,
+    story_category,
 )
 import flightnews
 from fulltext import FULLTEXT_PROMPT_CHARS, enrich_pending
@@ -160,7 +162,7 @@ DRAFT_SCHEMA = {
         "status": {"type": "string",
                    "enum": ["publish", "manual_review", "reject"]},
         "decisionReason": {"type": "string"},
-        "cat": {"type": "string", "enum": ["safety", "reg", "biz", "ops"]},
+        "cat": {"type": "string", "enum": list(CATEGORIES)},
         "zh": _LANG_SCHEMA,
         "en": _LANG_SCHEMA,
         "flash": {
@@ -355,7 +357,11 @@ OUTPUT RULES (for publish and manual_review):
   correct. Never pad, repeat, editorialize or add background the material
   does not state to reach a length.
 - cat: classify the story as exactly one of:
-  safety (事故/飛安), reg (法規/監理), biz (商業/財務), ops (營運/航網).
+  safety (事故/飛安), reg (法規/監理), biz (商業/財務), ops (營運/航網),
+  mil (軍事/國防/軍用航空). Military takes priority: use mil whenever the
+  story concerns armed forces, military aircraft or vessels, exercises,
+  defence ministries or military activity, even if it also concerns safety,
+  regulation, business or operations.
 - flash: a one-line news flash in both languages; the zh flash is at most
   40 characters. Set hot=true ONLY for breaking safety events.
 - incident: fill this object ONLY when cat="safety" AND the story describes
@@ -584,7 +590,7 @@ def validate_draft(draft):
         return f"bad status {status!r}"
     if status == "reject":
         return None
-    if draft.get("cat") not in ("safety", "reg", "biz", "ops"):
+    if draft.get("cat") not in CATEGORIES:
         return f"bad cat {draft.get('cat')!r}"
     for lang in ("zh", "en"):
         block = draft.get(lang)
@@ -773,7 +779,7 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
     article = {
         "id": article_id,
         "publishedUtc": iso_minute(now),
-        "cat": draft.get("cat", "ops"),
+        "cat": story_category(draft.get("cat", "ops"), group, draft),
         "primarySource": group.get("primarySource", ""),
         "image": image,
         "zh": draft.get("zh", {}),

@@ -336,7 +336,67 @@ SOURCES: dict[str, dict] = {
     },
 }
 
-CATEGORIES = ("safety", "reg", "biz", "ops")
+CATEGORIES = ("safety", "reg", "biz", "ops", "mil")
+
+# Military takes precedence over the other editorial categories.  Keep the
+# terms deliberately specific: generic aviation-security language such as
+# "counter-drone" or "defence against interference" must not turn a civil FAA
+# story into military news.
+_MILITARY_ZH_TERMS = (
+    "國防部",
+    "國軍",
+    "共軍",
+    "共機",
+    "共艦",
+    "解放軍",
+    "軍聞社",
+    "漢光",
+    "軍事",
+    "軍機",
+    "軍艦",
+    "戰機",
+    "轟炸機",
+    "空軍",
+    "海軍",
+    "陸軍",
+    "國防預算",
+    "中科院",
+    "聯合防禦操演",
+    "戰略預備隊",
+)
+_MILITARY_EN_RE = re.compile(
+    r"\b(?:"
+    r"military|armed forces|people(?:'|’)?s liberation army|pla|"
+    r"air force|navy|warships?|fighter jets?|fighter aircraft|bombers?|"
+    r"taiwan mnd|mndnews|mnd\.gov\.tw|"
+    r"(?:ministry|department) of (?:national )?defen[cs]e|"
+    r"defen[cs]e (?:ministry|minister|budget)|pentagon|"
+    r"han kuang|joint defen[cs]e exercise|strategic reserve|ncsist"
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def is_military_story(*records) -> bool:
+    """Return True when article/draft/group material is explicitly military.
+
+    The accepted records are JSON-shaped pipeline objects.  Serialising them
+    keeps this guard compatible with published articles, pending groups and
+    review drafts without maintaining three subtly different field walkers.
+    """
+    try:
+        text = json.dumps(records, ensure_ascii=False, default=str)
+    except (TypeError, ValueError):
+        text = " ".join(str(record) for record in records)
+    return (any(term in text for term in _MILITARY_ZH_TERMS)
+            or _MILITARY_EN_RE.search(text) is not None)
+
+
+def story_category(category, *records) -> str:
+    """Return the canonical category, with explicit military material first."""
+    if is_military_story(*records):
+        return "mil"
+    return category if category in CATEGORIES else "ops"
 
 
 def now_utc() -> datetime:
