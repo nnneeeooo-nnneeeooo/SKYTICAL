@@ -1,5 +1,358 @@
 [
   {
+    "id": "g-20260727-0443-3",
+    "queuedUtc": "2026-07-27T04:43Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Regulatory action (legislative review of drone bills) and developing procurement updates require human review.",
+    "riskFlags": [
+      "regulatory_action",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Audit report finds the fixed UAV defense system lacks coverage of China's 5.1 GHz band, parts of BeiDou‑3 frequencies, and has almost no countermeasures against fiber‑optic and AI‑autonomous UAVs, with deployment lagging.",
+        "sourceQuote": "該系統偵測、干擾頻段未涵蓋中國近年推出5.1GHz新機型，干擾衛星導航範圍也漏掉中國北斗3號部分頻段，且對光纖式無人機、AI自主導航無人機幾無反制手段，建置進度持續落後。"
+      },
+      {
+        "factId": "F2",
+        "claim": "MOD spokesperson says the 5.1 GHz band is not a legal band in Taiwan but NCSIST will incorporate it via system updates.",
+        "sourceQuote": "中國後來在112年提出的5.1GHz頻段在台灣並非合法使用頻段，但中科院會透過系統更新方式，納入偵蒐及反制無人機設備中。"
+      },
+      {
+        "factId": "F3",
+        "claim": "For fiber‑optic and AI‑guided UAV countermeasures, the MOD will seek mature foreign sources through the Defense Innovation Unit or develop domestically.",
+        "sourceQuote": "這確實是新的發展，也非110年的建案中，但國防部會透過國防創新小組（DIU）尋找國外成熟商源，或透過自行研發等方式去籌獲反制系統。"
+      },
+      {
+        "factId": "F4",
+        "claim": "Legislative Yuan joint committee is reviewing draft UAV bills from the Executive Yuan, KMT, and TPP.",
+        "sourceQuote": "立法院經濟、外交及國防、財政委員會上午第2次聯席會議，針對行政院版、國民黨及民眾黨版無人機條例草案進行逐條審查。"
+      },
+      {
+        "factId": "F5",
+        "claim": "The NCSIST UAV countermeasure system was originally planned in 2021 targeting four frequency bands (2.4, 5.8, 1.2, 1.5 GHz).",
+        "sourceQuote": "中科院所建置的無人機反制系統於110年建案，是針對2.4GHz、5.8GHz、1.2GHz、1.5GHz，共4個一、二類無人機頻段建置"
+      },
+      {
+        "factId": "F6",
+        "claim": "The audit findings come from the 114th‑year central government final audit report.",
+        "sourceQuote": "根據審計部公布的民國114年度中央政府總決算審核報告指出"
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Regulatory action (legislative review of drone bills) and developing procurement updates require human review.",
+      "cat": "reg",
+      "zh": {
+        "title": "審計部指無人機防禦系統漏頻段 國防部承諾更新",
+        "summary": "審計部年度決算報告指出空軍委託中科院建置的固定式無人機防禦系統未涵蓋中國5.1GHz頻段及北斗部分頻段，對光纖與AI自主無人機幾無反制，進度嚴重落後；國防部發言人孫立方表示將透過系統更新納入新頻段，並由國防創新小組尋求或自研光纖、AI反制能力。",
+        "body": [
+          "審計部公布的民國114年度中央政府總決算審核報告指出，空軍統籌委託國家中山科學研究院建置固定式「遙控無人機防禦系統」，但該系統偵測、干擾頻段未涵蓋中國近年推出5.1GHz新機型，干擾衛星導航範圍也漏掉中國北斗3號部分頻段，且對光纖式無人機、AI自主導航無人機幾無反制手段，建置進度持續落後。",
+          "國防部發言人孫立方中將表示，中國後來在112年提出的5.1GHz頻段在台灣並非合法使用頻段，但中科院會透過系統更新方式，納入偵蒐及反制無人機設備中。",
+          "至於反制光纖、AI導控無人機方式，孫立方指出這確實是新的發展，也非110年的建案中，但國防部會透過國防創新小組（DIU）尋找國外成熟商源，或透過自行研發等方式去籌獲反制系統。",
+          "立法院經濟、外交及國防、財政委員會上午第2次聯席會議，針對行政院版、國民黨及民眾黨版無人機條例草案進行逐條審查。",
+          "中科院所建置的無人機反制系統於110年建案，是針對2.4GHz、5.8GHz、1.2GHz、1.5GHz，共4個一、二類無人機頻段建置。"
+        ]
+      },
+      "en": {
+        "title": "Audit Finds UAV Defense System Misses New Chinese Frequencies; MOD Pledges Updates",
+        "summary": "The Audit Department's 2025 final audit report says the Air Force‑commissioned fixed UAV defense system built by NCSIST does not cover China's new 5.1 GHz band nor parts of the BeiDou‑3 navigation frequencies, and lacks countermeasures against fiber‑optic and AI‑guided drones, with deployment seriously behind schedule. The Ministry of Defense spokesperson said the 5.1 GHz band is not legal in Taiwan but NCSIST will add it via a system update, and the MOD will seek mature foreign solutions through the Defense Innovation Unit or develop domestic capabilities for fiber‑optic and AI drone threats.",
+        "body": [
+          "The Audit Department's 114th‑year central government final audit report states that the Air Force tasked the National Chung‑Shan Institute of Science and Technology (NCSIST) to build a fixed “remote‑controlled UAV defense system,” but its detection and jamming bands do not cover China's recent 5.1 GHz models, miss parts of the BeiDou‑3 frequencies, and have almost no countermeasures against fiber‑optic or AI‑autonomous UAVs, with deployment progress continuing to lag.",
+          "MOD spokesperson Lieutenant General Sun Li‑fang said the 5.1 GHz band introduced by China in 2023 is not a legal band in Taiwan, but NCSIST will incorporate it into detection and counter‑UAV equipment through a system update.",
+          "Regarding fiber‑optic and AI‑guided UAV countermeasures, Sun noted this is a new development not covered in the original 2021 plan, and the MOD will pursue mature foreign sources via the Defense Innovation Unit (DIU) or develop indigenous solutions to acquire such capabilities.",
+          "The Legislative Yuan’s joint committee of the Economic, Foreign Affairs, National Defense, and Finance committees held its second meeting to conduct a clause‑by‑clause review of the Executive Yuan, KMT, and TPP draft UAV regulations.",
+          "The NCSIST‑built UAV countermeasure system was originally planned in 2021 targeting four frequency bands: 2.4 GHz, 5.8 GHz, 1.2 GHz, and 1.5 GHz."
+        ]
+      },
+      "flash": {
+        "zh": "審計部揭無人機防禦漏頻段 國防部將更新",
+        "en": "Audit reveals UAV defense gaps; MOD to update",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Audit report finds the fixed UAV defense system lacks coverage of China's 5.1 GHz band, parts of BeiDou‑3 frequencies, and has almost no countermeasures against fiber‑optic and AI‑autonomous UAVs, with deployment lagging.",
+          "sourceQuote": "該系統偵測、干擾頻段未涵蓋中國近年推出5.1GHz新機型，干擾衛星導航範圍也漏掉中國北斗3號部分頻段，且對光纖式無人機、AI自主導航無人機幾無反制手段，建置進度持續落後。"
+        },
+        {
+          "factId": "F2",
+          "claim": "MOD spokesperson says the 5.1 GHz band is not a legal band in Taiwan but NCSIST will incorporate it via system updates.",
+          "sourceQuote": "中國後來在112年提出的5.1GHz頻段在台灣並非合法使用頻段，但中科院會透過系統更新方式，納入偵蒐及反制無人機設備中。"
+        },
+        {
+          "factId": "F3",
+          "claim": "For fiber‑optic and AI‑guided UAV countermeasures, the MOD will seek mature foreign sources through the Defense Innovation Unit or develop domestically.",
+          "sourceQuote": "這確實是新的發展，也非110年的建案中，但國防部會透過國防創新小組（DIU）尋找國外成熟商源，或透過自行研發等方式去籌獲反制系統。"
+        },
+        {
+          "factId": "F4",
+          "claim": "Legislative Yuan joint committee is reviewing draft UAV bills from the Executive Yuan, KMT, and TPP.",
+          "sourceQuote": "立法院經濟、外交及國防、財政委員會上午第2次聯席會議，針對行政院版、國民黨及民眾黨版無人機條例草案進行逐條審查。"
+        },
+        {
+          "factId": "F5",
+          "claim": "The NCSIST UAV countermeasure system was originally planned in 2021 targeting four frequency bands (2.4, 5.8, 1.2, 1.5 GHz).",
+          "sourceQuote": "中科院所建置的無人機反制系統於110年建案，是針對2.4GHz、5.8GHz、1.2GHz、1.5GHz，共4個一、二類無人機頻段建置"
+        },
+        {
+          "factId": "F6",
+          "claim": "The audit findings come from the 114th‑year central government final audit report.",
+          "sourceQuote": "根據審計部公布的民國114年度中央政府總決算審核報告指出"
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "審計部",
+          "空軍",
+          "國家中山科學研究院",
+          "中科院",
+          "國防部",
+          "立法院",
+          "經濟委員會",
+          "外交委員會",
+          "國防委員會",
+          "財政委員會",
+          "行政院",
+          "國民黨",
+          "民眾黨",
+          "國防創新小組",
+          "DIU"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "台北"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-27",
+          "110年",
+          "112年",
+          "114年度"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "regulatory_action",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260727-0443-3",
+      "primarySource": "中央社 CNA",
+      "items": [
+        {
+          "title": "審計部指無人機防禦漏中國新頻段 國防部：更新系統",
+          "url": "https://www.cna.com.tw/news/aipl/202607270054.aspx",
+          "publishedUtc": "2026-07-27T02:53Z",
+          "summary": "（中央社記者游凱翔台北27日電）審計部指出，空軍委託國家中山科學研究院建置「遙控無人機防禦系統」未涵蓋中國新頻段。國防部發言人孫立方中將今天表示，中國新頻段非台灣合法頻段，中科院將透過系統更新納入反制及偵蒐系統，同時透過國防創新小組、自行研製，籌獲AI或光纖無人機反制系統。",
+          "image": null,
+          "source": "中央社 CNA",
+          "sourceKey": "cnataiwan"
+        },
+        {
+          "title": "審計部指無人機防禦漏中國新頻段　國防部：更新系統",
+          "summary": "審計部指無人機防禦漏中國新頻段 國防部：更新系統 &nbsp;&nbsp; 經濟日報",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9EWjVmbXVkRWdnenZpcVRsWV9peFd4S3RFMlhQaDdKZFJJaTJiSUgzU29JbHBHQnZlRXQ2eGFSWVM3RnBXQTFZaW1GMlVjN2ZoM3FFYlFMVmRoQdIBX0FVX3lxTFBuYVN1aktkWFRxdnZQdjdpMHNfdGN1OTZCcnV0Nmt6SUluSzNhX3BnZUh3U0NVY2M1VjZBOVdaNVBjYWthTXlQa1BpMVV0M3FxQXYwbHlGbVJkNmpWT3k4?oc=5",
+          "source": "經濟日報",
+          "companion": true,
+          "publishedUtc": "2026-07-27T03:01Z"
+        }
+      ]
+    }
+  },
+  {
+    "id": "g-20260727-0443-7",
+    "queuedUtc": "2026-07-27T04:43Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Regulatory directive issued by CAA regarding typhoon impact; developing weather situation.",
+    "riskFlags": [
+      "regulatory_action",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "CAA press release dated 24 July 2026",
+        "sourceQuote": "發布日期：115年7月24日"
+      },
+      {
+        "factId": "F2",
+        "claim": "Tomorrow international flights expected 22 cancellations",
+        "sourceQuote": "明日國際線預計有22架次航班取消"
+      },
+      {
+        "factId": "F3",
+        "claim": "As of 23:00 today domestic cancellations 20, delays 3; international cancellations 2",
+        "sourceQuote": "今日截至晚間11點，國內線取消20架次、延誤3架次，國際線取消2架次。"
+      },
+      {
+        "factId": "F4",
+        "claim": "22 flights at Taoyuan diverted to Songshan, Taichung, Kaohsiung, Hong Kong, Macau due to gusts and wind shear",
+        "sourceQuote": "今晚間截至11點，桃園機場共有22班航班因強陣風與風切影響，轉降松山、台中、高雄等機場，亦有航機轉降香港、澳門等地。"
+      },
+      {
+        "factId": "F5",
+        "claim": "CAA requires conservative dispatch, sufficient fuel, and preparation of alternate airports",
+        "sourceQuote": "民航局同時要求業者應保守派遣，航班應帶足油料，並備妥備降機場。"
+      },
+      {
+        "factId": "F6",
+        "claim": "Airlines have notified passengers via SMS, email, website, app and CAA requires assistance with rebooking or refunds",
+        "sourceQuote": "航空公司已以簡訊、電子郵件、官網、APP等管道主動通知旅客航班異動資訊，民航局也要求航空公司，應依據天候狀況盡力協助旅客辦理改票、退票或改搭其他適當航班等事宜"
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Regulatory directive issued by CAA regarding typhoon impact; developing weather situation.",
+      "cat": "ops",
+      "zh": {
+        "title": "民航局因紅霞颱風要求保守派遣備降並取消22國際班",
+        "summary": "民航局發布新聞稿，因紅霞颱風預計明日國際線取消22架次，要求航空公司保守派遣、帶足油料並備妥兩處以上備降機場，且已通知旅客辦理改退票；截至晚間11點國內線取消20架次、延誤3架次，國際線取消2架次，桃園機場22班因強陣風轉降松山、台中、高雄、香港、澳門",
+        "body": [
+          "交通部民用航空局於115年7月24日發布新聞稿，指出受紅霞颱風影響，明日國際線預計有22架次航班取消。",
+          "民航局指出，今日截至晚間11點，國內線取消20架次、延誤3架次，國際線取消2架次。",
+          "今晚間截至11點，桃園機場共有22班航班因強陣風與風切影響，轉降松山、台中、高雄等機場，亦有航機轉降香港、澳門等地。",
+          "民航局同時要求業者應保守派遣，航班應帶足油料，並備妥備降機場。",
+          "航空公司已以簡訊、電子郵件、官網、APP等管道主動通知旅客航班異動資訊，民航局也要求航空公司應依據天候狀況盡力協助旅客辦理改票、退票或改搭其他適當航班等事宜。"
+        ]
+      },
+      "en": {
+        "title": "CAA orders conservative dispatch and alternates as Typhoon Hongxia forces 22 international cancellations",
+        "summary": "The Civil Aeronautics Administration issued a press release on 24 July 2026 stating that Typhoon Hongxia is expected to cause 22 international flight cancellations tomorrow. Airlines are ordered to operate conservatively, carry sufficient fuel, and prepare at least two alternate airports, one outside the typhoon’s impact zone. Carriers have notified passengers via SMS, email, website and app and must assist with rebooking or refunds. As of 23:00 today, 20 domestic flights were cancelled and three delayed, with two international cancellations; 22 flights at Taoyuan were diverted to Songshan, Taichung, Kaohsiung, Hong Kong and Macau due to gusts and wind shear.",
+        "body": [
+          "The Civil Aeronautics Administration released a statement on 24 July 2026 saying Typhoon Hongxia will likely force 22 international flight cancellations tomorrow.",
+          "As of 23:00 today, 20 domestic flights were cancelled and three delayed, while two international flights were cancelled.",
+          "At 23:00, 22 flights at Taoyuan Airport were diverted to Songshan, Taichung, Kaohsiung, Hong Kong and Macau because of strong gusts and wind shear.",
+          "The CAA requires airlines to operate conservatively, carry sufficient fuel, and have alternate airports ready.",
+          "Airlines have notified passengers via SMS, email, website and app and must assist with rebooking or refunds according to weather conditions."
+        ]
+      },
+      "flash": {
+        "zh": "紅霞颱風致22國際班取消，民航局令保守派遣備降",
+        "en": "Typhoon Hongxia forces 22 international cancellations; CAA orders conservative dispatch and alternates",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "CAA press release dated 24 July 2026",
+          "sourceQuote": "發布日期：115年7月24日"
+        },
+        {
+          "factId": "F2",
+          "claim": "Tomorrow international flights expected 22 cancellations",
+          "sourceQuote": "明日國際線預計有22架次航班取消"
+        },
+        {
+          "factId": "F3",
+          "claim": "As of 23:00 today domestic cancellations 20, delays 3; international cancellations 2",
+          "sourceQuote": "今日截至晚間11點，國內線取消20架次、延誤3架次，國際線取消2架次。"
+        },
+        {
+          "factId": "F4",
+          "claim": "22 flights at Taoyuan diverted to Songshan, Taichung, Kaohsiung, Hong Kong, Macau due to gusts and wind shear",
+          "sourceQuote": "今晚間截至11點，桃園機場共有22班航班因強陣風與風切影響，轉降松山、台中、高雄等機場，亦有航機轉降香港、澳門等地。"
+        },
+        {
+          "factId": "F5",
+          "claim": "CAA requires conservative dispatch, sufficient fuel, and preparation of alternate airports",
+          "sourceQuote": "民航局同時要求業者應保守派遣，航班應帶足油料，並備妥備降機場。"
+        },
+        {
+          "factId": "F6",
+          "claim": "Airlines have notified passengers via SMS, email, website, app and CAA requires assistance with rebooking or refunds",
+          "sourceQuote": "航空公司已以簡訊、電子郵件、官網、APP等管道主動通知旅客航班異動資訊，民航局也要求航空公司，應依據天候狀況盡力協助旅客辦理改票、退票或改搭其他適當航班等事宜"
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F5",
+        "F6"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6"
+      ],
+      "entities": {
+        "organizations": [
+          "交通部民用航空局"
+        ],
+        "airlines": [
+          "華信",
+          "立榮",
+          "德安"
+        ],
+        "aircraft_models": [],
+        "airports": [
+          "桃園機場",
+          "松山機場",
+          "台中機場",
+          "高雄機場",
+          "香港機場",
+          "澳門機場"
+        ],
+        "locations": [
+          "台灣",
+          "香港",
+          "澳門"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "115年7月24日",
+          "明日"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "regulatory_action",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260727-0443-7",
+      "primarySource": "CAA Taiwan",
+      "items": [
+        {
+          "title": "紅霞逼近，交通部、民航局要求保守派遣、帶足油料",
+          "url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2568&lang=1",
+          "publishedUtc": "2026-07-27T00:00Z",
+          "summary": "交通部民用航空局新聞稿 發布日期：115年7月24日 聯絡電話：2349-6038 聯絡人：王志青組長 受紅霞颱風影響，明日國際線預計有22架次航班取消，民航局要求航空公司落實通知旅客異動資訊，並妥善維護旅客權益，協助辦理改票、退票或改搭其他適當航班等事宜。民航局同時要求業者應保守派遣，航班應帶足油料，並備妥備降機場。 民航局指出，今日截至晚間11點，國內線取消20架次、延誤3架次，國際線取消2架次。而今晚間截至11點，桃園機場共有22班航班因強陣風與風切影響，轉降松山、台中、高雄等機場，亦有航機轉降香港、澳門等地。 因颱風影響持續，明日國際線航班預計取消22架次，包括桃園10架次、台中4架次、高雄8架次；國內線部分，華信、立榮與德安等業者初步規劃正常營運，但將視天氣情況調整。 民航局表示，針對異動的航班，航空公司已以簡訊、電子郵件、官網、APP等管道主動通知旅客航班異動資訊，民航局也要求航空公司，應依據天候狀況盡力協助旅客辦理改票、退票或改搭其他適當航班等事宜。 對於正常營運的航班，民航局已要求業者，應落實保守派遣及風險管理，同時應備妥兩處以上備降機場，其中一處必須在颱風影響範圍外…",
+          "image": null,
+          "source": "CAA Taiwan",
+          "sourceKey": "caataiwan"
+        }
+      ]
+    }
+  },
+  {
     "id": "g-20260726-2303-1",
     "queuedUtc": "2026-07-26T23:03Z",
     "approve": false,
