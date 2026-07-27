@@ -91,10 +91,10 @@
     <div class="rail-right">
       <h6 style="margin:0 0 12px;">{{ t.today }}</h6>
       <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-divider);">
-        <div style="padding:12px;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);">
+        <a class="radar-stat-link" href="{{ radar_url }}" style="padding:12px;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);">
           <div style="font-size:24px;font-weight:800;color:var(--color-accent);letter-spacing:-.02em;">{{ stats.flights }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statFlights }}</div>
-        </div>
+        </a>
         <div style="padding:12px;border-bottom:1px solid var(--color-divider);">
           <div style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.delay }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statDelay }}</div>

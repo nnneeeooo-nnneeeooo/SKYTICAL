@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ base }}/assets/modernist.css">
 <link rel="stylesheet" href="{{ base }}/assets/site.css">
+{% block head_extra %}{% endblock %}
 <script src="{{ base }}/assets/app.js" defer></script>
 </head>
 <body>
@@ -42,7 +43,7 @@
     </div>
   </div>
   <div style="border-bottom:2px solid var(--color-divider);">
-    <div style="padding:14px 20px;display:flex;align-items:center;gap:28px;">
+    <div class="brand-row" style="padding:14px 20px;display:flex;align-items:center;gap:28px;">
       <a href="{{ home_url }}" style="display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;">
         <div style="width:34px;height:34px;background:var(--color-accent);color:var(--color-bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;">AW</div>
         <div>
@@ -50,7 +51,7 @@
           <div class="text-muted" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;">Aviation News · Automated Hourly</div>
         </div>
       </a>
-      <nav style="display:flex;gap:2px;margin-left:auto;">
+      <nav class="site-nav">
         {% for n in nav %}
         <a class="nav-link{% if n.active %} active{% endif %}" href="{{ n.url }}">{{ n.label }}</a>
         {% endfor %}
@@ -97,5 +98,6 @@
     </div>
   </div>
 </div>
+{% block body_scripts %}{% endblock %}
 </body>
 </html>

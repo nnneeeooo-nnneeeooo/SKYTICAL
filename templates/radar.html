@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="">
+{% endblock %}
+{% block content %}
+<main class="radar-page">
+  <header class="radar-header">
+    <div>
+      <div class="card-kicker">{{ t.radarKicker }}</div>
+      <h1>{{ t.radarTitle }}</h1>
+      <p class="text-muted">{{ t.radarSub }}</p>
+    </div>
+    <div class="radar-live-badge"><span class="pulse-dot"></span> LIVE ADS-B</div>
+  </header>
+
+  <section id="flight-radar"
+           class="radar-shell"
+           data-lang="{{ lang }}"
+           data-api-url="https://api.airplanes.live/v2/point/23.7000/120.9000/250"
+           data-refresh-ms="300000">
+    <div class="radar-toolbar">
+      <label class="radar-search">
+        <span class="sr-only">{{ t.radarSearch }}</span>
+        <input id="radar-search" type="search" autocomplete="off"
+               placeholder="{{ t.radarSearch }}">
+      </label>
+      <label class="radar-check">
+        <input id="radar-airborne" type="checkbox" checked>
+        <span>{{ t.radarAirborne }}</span>
+      </label>
+      <button id="radar-refresh" class="btn btn-primary" type="button">
+        {{ t.radarRefresh }}
+      </button>
+    </div>
+
+    <div class="radar-status-row" aria-live="polite">
+      <span id="radar-state" class="radar-state loading">{{ t.radarLoading }}</span>
+      <span id="radar-count" class="text-muted"></span>
+      <span id="radar-updated" class="text-muted"></span>
+      <span id="radar-countdown" class="text-muted"></span>
+    </div>
+
+    <div class="radar-layout">
+      <div id="radar-map" class="radar-map" role="application"
+           aria-label="{{ t.radarMapLabel }}"></div>
+      <aside class="radar-list-panel">
+        <h2>{{ t.radarList }}</h2>
+        <div id="radar-list" class="radar-list"></div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="radar-notes">
+    <p><b>{{ t.radarNotice }}</b></p>
+    <p>{{ t.radarPrivacy }}</p>
+    <p>{{ t.radarSource }}
+      <a href="https://airplanes.live/api-guide/" target="_blank" rel="noopener">API</a>
+      · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">ODbL</a>
+    </p>
+  </div>
+
+  <script id="radar-airlines" type="application/json">{{ airline_names|tojson }}</script>
+  <script id="radar-types" type="application/json">{{ aircraft_types|tojson }}</script>
+  <script id="radar-airports" type="application/json">{{ radar_airports|tojson }}</script>
+</main>
+{% endblock %}
+{% block body_scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin="" defer></script>
+<script src="{{ base }}/assets/radar.js" defer></script>
+{% endblock %}
