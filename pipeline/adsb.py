@@ -52,7 +52,7 @@ def _enabled(name: str, default: str = "true") -> bool:
     return (os.environ.get(name) or default).strip().lower() == "true"
 
 
-def _get_json(url: str, key_env: str):
+def _get_json(url: str, key_env: str) -> object:
     headers = {"User-Agent": USER_AGENT}
     api_key = os.environ.get(key_env)
     if api_key:  # optional, for future authenticated tiers
@@ -87,6 +87,12 @@ def _get_json(url: str, key_env: str):
     raise ProviderDown(last)
 
 
+def _aircraft_rows(data: object) -> list:
+    """Return provider aircraft rows, or an empty list for bad envelopes."""
+    aircraft = data.get("ac") if isinstance(data, dict) else None
+    return aircraft if isinstance(aircraft, list) else []
+
+
 def airplanes_live_point(lat: float, lon: float, radius_nm: float) -> list:
     if not _enabled("AIRPLANES_LIVE_ENABLED"):
         raise ProviderDown("disabled by AIRPLANES_LIVE_ENABLED")
@@ -94,8 +100,7 @@ def airplanes_live_point(lat: float, lon: float, radius_nm: float) -> list:
     data = _get_json(
         f"https://api.airplanes.live/v2/point/{lat:.4f}/{lon:.4f}/{radius:g}",
         "AIRPLANES_LIVE_API_KEY")
-    aircraft = data.get("ac") if isinstance(data, dict) else None
-    return aircraft if isinstance(aircraft, list) else []
+    return _aircraft_rows(data)
 
 
 def adsb_lol_point(lat: float, lon: float, radius_nm: float) -> list:
@@ -105,8 +110,7 @@ def adsb_lol_point(lat: float, lon: float, radius_nm: float) -> list:
     data = _get_json(
         f"https://api.adsb.lol/v2/point/{lat:.4f}/{lon:.4f}/{radius:g}",
         "ADSBLOL_API_KEY")
-    aircraft = data.get("ac") if isinstance(data, dict) else None
-    return aircraft if isinstance(aircraft, list) else []
+    return _aircraft_rows(data)
 
 
 def adsb_lol_icao(icao_hex: str) -> list:
@@ -114,8 +118,7 @@ def adsb_lol_icao(icao_hex: str) -> list:
         raise ProviderDown("disabled by ADSBLOL_ENABLED")
     data = _get_json(f"https://api.adsb.lol/v2/icao/{icao_hex.lower()}",
                      "ADSBLOL_API_KEY")
-    aircraft = data.get("ac") if isinstance(data, dict) else None
-    return aircraft if isinstance(aircraft, list) else []
+    return _aircraft_rows(data)
 
 
 # --------------------------------------------------------------------------
@@ -137,14 +140,24 @@ MAX_SEEN_POS_S = 30.0   # older positions are not evidence for THIS pass
 MAX_SEEN_S = 60.0       # aircraft not heard for this long are stale
 
 
-def _float(value):
+def _float(value) -> float | None:
     try:
         return float(value)
     except (TypeError, ValueError):
         return None
 
 
-def parse_aircraft(raw: dict):
+def _db_flags(value) -> int | None:
+    """Parse readsb flags; malformed flags make the whole row unusable."""
+    if not value:
+        return 0
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def parse_aircraft(raw: object) -> dict | None:
     """Normalize one v2 aircraft entry. Returns None for unusable rows.
 
     Field notes (per Airplanes.live/ADSB.lol v2):
@@ -158,6 +171,9 @@ def parse_aircraft(raw: dict):
         return None
     icao_hex = str(raw.get("hex") or "").strip().lower()
     if not icao_hex:
+        return None
+    db_flags = _db_flags(raw.get("dbFlags"))
+    if db_flags is None:
         return None
     alt_baro = raw.get("alt_baro")
     if isinstance(alt_baro, str):
@@ -182,13 +198,13 @@ def parse_aircraft(raw: dict):
         "seen": _float(raw.get("seen")),
         "seen_pos": _float(raw.get("seen_pos")),
         "source_type": source_type,
-        "db_flags": int(raw.get("dbFlags") or 0),
+        "db_flags": db_flags,
         "emergency": str(raw.get("emergency") or "").strip().lower() or None,
         "squawk": str(raw.get("squawk") or "").strip() or None,
     }
 
 
-def sensitive_reason(ac: dict):
+def sensitive_reason(ac: dict) -> str | None:
     """Non-empty reason string when this aircraft must NEVER enter the
     public news flow (spec section 7). The reason is log-safe (no position).
     """
