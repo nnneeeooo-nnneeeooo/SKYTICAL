@@ -63,6 +63,9 @@ MAX_INCIDENTS = 60
 SEEN_MAX_AGE_DAYS = 21
 SERIOUS_WINDOW_DAYS = 7
 SOURCE_TITLE_MAX = 60
+MIN_BODY_PARAGRAPHS = 4
+ZH_BODY_MIN_CHARS = 500
+EN_BODY_MIN_WORDS = 250
 
 REVIEW_MAX = 40
 REVIEW_MAX_AGE_DAYS = 14
@@ -87,7 +90,11 @@ _LANG_SCHEMA = {
     "properties": {
         "title": {"type": "string"},
         "summary": {"type": "string"},
-        "body": {"type": "array", "items": {"type": "string"}},
+        "body": {
+            "type": "array",
+            "items": {"type": "string"},
+            "minItems": MIN_BODY_PARAGRAPHS,
+        },
     },
     "required": ["title", "summary", "body"],
     "additionalProperties": False,
@@ -352,14 +359,15 @@ OUTPUT RULES (for publish and manual_review):
   reached without adding information, reject instead.
 - body: wire-service register, plain text, no markdown, built strictly
   from the shown material with every load-bearing claim traceable to the
-  quoted facts. Scale length to the evidence, never to a quota: when an
-  item carries full text, write a complete story - 4 to 7 substantive
-  paragraphs (zh body roughly 400 to 800 Chinese characters in total, en
-  body equally complete), covering the who/what/when/where, stated
-  figures, quoted official statements and stated context. When only
-  headline/summary excerpts are available, 2 short paragraphs are
-  correct. Never pad, repeat, editorialize or add background the material
-  does not state to reach a length.
+  quoted facts. Every publish/manual_review body MUST contain 4 to 7
+  substantive paragraphs in each language. The zh body MUST contain at
+  least 500 Chinese/alphanumeric content characters in total (spaces and
+  punctuation do not count); the en body MUST contain at least 250 words.
+  These minimums are machine-checked. Cover the evidenced who/what/when/
+  where, stated figures, attributed statements and stated context. Never
+  pad, repeat, editorialize or add background the material does not state
+  to reach a length. If the shown evidence cannot support both minimums,
+  return status="reject" instead of a short or padded story.
 - cat: classify the story as exactly one of:
   safety (事故/飛安), reg (法規/監理), biz (商業/財務), ops (營運/航網),
   mil (軍事/國防/軍用航空). Military takes priority: use mil whenever the
@@ -604,6 +612,24 @@ def _is_bilingual(obj) -> bool:
             and isinstance(obj.get("en"), str) and bool(obj["en"].strip()))
 
 
+def zh_body_character_count(body: list[str]) -> int:
+    """Count substantive Chinese/alphanumeric body characters.
+
+    Whitespace, punctuation, emoji and symbols do not help a draft clear the
+    publication floor. ``str.isalnum`` covers CJK characters as well as
+    Latin letters and digits without making the count locale-dependent.
+    """
+    return sum(char.isalnum() for paragraph in body for char in paragraph)
+
+
+def en_body_word_count(body: list[str]) -> int:
+    """Count English words, keeping ordinary apostrophes/hyphens internal."""
+    return len(re.findall(
+        r"[A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*",
+        " ".join(body),
+    ))
+
+
 def validate_draft(draft):
     """Return None when the draft matches DRAFT_SCHEMA's essentials, else a
     short description of the first problem.
@@ -634,6 +660,19 @@ def validate_draft(draft):
         if (not isinstance(body, list) or not body
                 or not all(isinstance(p, str) and p.strip() for p in body)):
             return f"{lang}.body must be a non-empty list of strings"
+        if len(body) < MIN_BODY_PARAGRAPHS:
+            return (f"{lang}.body has {len(body)} paragraphs; minimum is "
+                    f"{MIN_BODY_PARAGRAPHS}")
+        if lang == "zh":
+            length = zh_body_character_count(body)
+            if length < ZH_BODY_MIN_CHARS:
+                return (f"zh.body has {length} content characters; minimum "
+                        f"is {ZH_BODY_MIN_CHARS}")
+        else:
+            length = en_body_word_count(body)
+            if length < EN_BODY_MIN_WORDS:
+                return (f"en.body has {length} words; minimum is "
+                        f"{EN_BODY_MIN_WORDS}")
     flash = draft.get("flash")
     if (not isinstance(flash, dict)
             or not isinstance(flash.get("zh"), str)
