@@ -732,6 +732,8 @@ def writer_badge(writer):
 def prep_article(raw):
     if not isinstance(raw, dict):
         return None
+    if raw.get("archived") is True:
+        return None
     art_id = raw.get("id")
     if not isinstance(art_id, str) or not _ID_RE.match(art_id.strip()):
         return None
@@ -828,7 +830,11 @@ def collect_articles():
             for raw in rows:
                 art = prep_article(raw)
                 if art is None:
-                    print(f"build: {path.name}: bad article entry skipped")
+                    reason = ("archived article skipped"
+                              if isinstance(raw, dict)
+                              and raw.get("archived") is True
+                              else "bad article entry skipped")
+                    print(f"build: {path.name}: {reason}")
                 else:
                     arts.append(art)
     by_id = {}
@@ -936,8 +942,10 @@ def prep_flashes(raw, known_ids):
         if raw is not None:
             print("build: flashes.json malformed — ignored")
         return out
-    for f in raw[:MAX_FLASHES]:
+    for f in raw:
         if not isinstance(f, dict):
+            continue
+        if f.get("archived") is True:
             continue
         try:
             dt = parse_iso(str(f.get("timeUtc")))
@@ -954,6 +962,8 @@ def prep_flashes(raw, known_ids):
             "zh": zh, "en": en,
             "articleId": aid if isinstance(aid, str) and aid in known_ids else None,
         })
+        if len(out) >= MAX_FLASHES:
+            break
     return out
 
 
