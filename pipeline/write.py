@@ -281,6 +281,10 @@ EDITORIAL SCOPE GATE:
   positioning, land exercises and presidential inspection protocol are
   OUT-OF-SCOPE. Return status="reject"; never stretch them into aviation or
   transport stories.
+- Military replicas, scale models and training mock-ups are OUT-OF-SCOPE when
+  the core event is the replica or a political/defence-budget statement. An
+  incidental reference to warships, fighter jets, a naval base or a port does
+  not make such material an aviation or transport event.
 
 AVIATION SAFETY RULES (strictest standard):
 - For accidents, serious incidents, emergency landings, diversions, runway
