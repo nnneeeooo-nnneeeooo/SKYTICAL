@@ -85,8 +85,20 @@ L = {
         "aboutKicker": "Methodology", "aboutTitle": "方法論",
         "footerAbout": "全自動航空新聞聚合站。GitHub Actions 每小時抓取各可信來源，自動撰寫並發布，每篇文末標註原始出處。本頁為設計原型，內容為示意樣本。",
         "footerSources": "資料來源 Data Sources",
-        "nav": ["最新", "快報", "事故資料庫", "來源", "方法論"],
+        "nav": ["最新", "快報", "航班雷達", "事故資料庫", "來源", "方法論"],
         "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
+        "radarKicker": "Taiwan Flight Radar",
+        "radarTitle": "台灣民航雷達",
+        "radarSub": "公開 ADS-B 即時觀測圖，顯示台灣周邊民航機的航班呼號、機型、高度、速度與航向。",
+        "radarSearch": "搜尋航班呼號、航空公司或機型",
+        "radarAirborne": "僅顯示飛行中",
+        "radarRefresh": "立即更新",
+        "radarLoading": "正在取得最新 ADS-B 觀測資料…",
+        "radarMapLabel": "台灣周邊民航即時觀測地圖",
+        "radarList": "目前航機",
+        "radarNotice": "本頁不是航管雷達，資料可能延遲、缺漏或錯誤，不得用於導航、飛航操作或緊急判斷。航班呼號不一定等同旅客票面班號。",
+        "radarPrivacy": "為保障安全與隱私，來源標記為軍事、PIA、LADD、緊急狀態及位置過期的資料不會顯示。",
+        "radarSource": "航機資料：Airplanes.live 公開社群 ADS-B；地圖：OpenStreetMap。",
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "快報",
         "brIndexSub": "每日三次（臺北時間 07:15／15:15／23:15）的條列式全球航空與交通要聞快報，由具搜尋能力的模型彙整（Beta）；本站正式新聞請見「最新」。",
@@ -146,9 +158,22 @@ L = {
         "aboutKicker": "Methodology", "aboutTitle": "Methodology",
         "footerAbout": "A fully automated aviation news aggregator. GitHub Actions fetches trusted sources hourly, writes and publishes automatically, and credits originals at the end of every article. Design prototype; sample content.",
         "footerSources": "Data Sources",
-        "nav": ["Latest", "Briefings", "Incident DB", "Sources", "Methodology"],
+        "nav": ["Latest", "Briefings", "Flight Radar", "Incident DB", "Sources",
+                "Methodology"],
         "cats": ["All", "Safety", "Regulation", "Business", "Operations",
                  "Military"],
+        "radarKicker": "Taiwan Flight Radar",
+        "radarTitle": "Taiwan civil flight radar",
+        "radarSub": "A live public ADS-B view of civil aircraft around Taiwan, with callsign, type, altitude, speed and heading.",
+        "radarSearch": "Search callsign, airline or aircraft type",
+        "radarAirborne": "Airborne only",
+        "radarRefresh": "Refresh now",
+        "radarLoading": "Loading the latest ADS-B observations…",
+        "radarMapLabel": "Live civil-aircraft observations around Taiwan",
+        "radarList": "Aircraft now",
+        "radarNotice": "This is not air traffic control radar. Data may be delayed, incomplete or wrong and must not be used for navigation, flight operations or emergencies. A callsign may differ from a passenger flight number.",
+        "radarPrivacy": "For safety and privacy, source-tagged military, PIA, LADD, emergency-state and stale-position records are not shown.",
+        "radarSource": "Aircraft data: Airplanes.live public community ADS-B; map: OpenStreetMap.",
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "Briefings",
         "brIndexSub": "A bulleted global air & transport bulletin three times daily (07:15 / 15:15 / 23:15 Taipei time), compiled by a search-capable model (Beta); the site's formal articles live under Latest.",
@@ -1364,6 +1389,7 @@ def render_usage_dashboard(env, build) -> int:
 def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=True):
     t = L[lang]
     nav_defs = [("home", ""), ("briefings", "briefings/"),
+                ("radar", "radar/"),
                 ("incidents", "incidents/"),
                 ("sources", "sources/"), ("about", "about/")]
     return {
@@ -1376,6 +1402,7 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=Tru
         "self_abs_url": SITE_ORIGIN + page_url(lang, sub),
         "hreflang": hreflang,
         "home_url": page_url(lang, ""),
+        "radar_url": page_url(lang, "radar/"),
         "nav": [{"label": t["nav"][i], "url": page_url(lang, s), "active": page == p}
                 for i, (p, s) in enumerate(nav_defs)],
         "ticker_items": ticker or [], "build": build,
@@ -1509,6 +1536,48 @@ def main() -> int:
             for d, rows in groups.items()])
         render(env, "briefings.html",
                rel_path(lang, "briefings/index.html"), ctx)
+        pages += 1
+
+        airline_cfg = load_json(
+            Path(__file__).resolve().parent.parent
+            / "config" / "airline_icao_codes.json", {})
+        airline_names = {
+            str(row.get("icao_code") or "").upper():
+                (row.get("airline_name_zh_tw") if lang == "zh"
+                 else row.get("airline_name_en"))
+            for row in (airline_cfg.get("airlines") or [])
+            if isinstance(row, dict) and row.get("active", True)
+               and row.get("icao_code")
+        }
+        type_cfg = load_json(
+            Path(__file__).resolve().parent.parent
+            / "config" / "aircraft_types.json", {})
+        aircraft_types = type_cfg.get("types") or {}
+        airport_cfg = load_json(
+            Path(__file__).resolve().parent.parent
+            / "config" / "tw_civil_airports.json", {})
+        radar_airports = [
+            {
+                "icao": row.get("icao"), "iata": row.get("iata"),
+                "name": (row.get("name_zh") if lang == "zh"
+                         else row.get("name_en")),
+                "lat": row.get("lat"), "lon": row.get("lon"),
+            }
+            for row in (airport_cfg.get("airports") or [])
+            if isinstance(row, dict) and row.get("enabled", True)
+               and isinstance(row.get("lat"), (int, float))
+               and isinstance(row.get("lon"), (int, float))
+        ]
+        ctx = base_ctx(
+            lang, "radar", "radar/",
+            title=f"{t['siteName']} — {t['radarTitle']}",
+            description=t["radarSub"], ticker=ticker, build=build)
+        ctx.update(
+            airline_names=airline_names,
+            aircraft_types=aircraft_types,
+            radar_airports=radar_airports,
+        )
+        render(env, "radar.html", rel_path(lang, "radar/index.html"), ctx)
         pages += 1
 
         for a, v in zip(articles, views):
