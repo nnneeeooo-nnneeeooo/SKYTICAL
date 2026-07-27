@@ -37,6 +37,7 @@ from common import (
     norm_url,
     now_utc,
     parse_iso,
+    story_category,
 )
 
 # Asia/Taipei via zoneinfo where tz data exists (Linux CI); the zone has had a
@@ -85,7 +86,7 @@ L = {
         "footerAbout": "全自動航空新聞聚合站。GitHub Actions 每小時抓取各可信來源，自動撰寫並發布，每篇文末標註原始出處。本頁為設計原型，內容為示意樣本。",
         "footerSources": "資料來源 Data Sources",
         "nav": ["最新", "快報", "事故資料庫", "來源", "方法論"],
-        "cats": ["全部", "事故", "法規", "商業", "營運"],
+        "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "快報",
         "brIndexSub": "每日三次（臺北時間 07:15／15:15／23:15）的條列式全球航空與交通要聞快報，由具搜尋能力的模型彙整（Beta）；本站正式新聞請見「最新」。",
@@ -146,7 +147,8 @@ L = {
         "footerAbout": "A fully automated aviation news aggregator. GitHub Actions fetches trusted sources hourly, writes and publishes automatically, and credits originals at the end of every article. Design prototype; sample content.",
         "footerSources": "Data Sources",
         "nav": ["Latest", "Briefings", "Incident DB", "Sources", "Methodology"],
-        "cats": ["All", "Safety", "Regulation", "Business", "Operations"],
+        "cats": ["All", "Safety", "Regulation", "Business", "Operations",
+                 "Military"],
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "Briefings",
         "brIndexSub": "A bulleted global air & transport bulletin three times daily (07:15 / 15:15 / 23:15 Taipei time), compiled by a search-capable model (Beta); the site's formal articles live under Latest.",
@@ -188,6 +190,7 @@ CATS = {
     "reg": {"zh": "法規", "en": "Regulation"},
     "biz": {"zh": "商業", "en": "Business"},
     "ops": {"zh": "營運", "en": "Operations"},
+    "mil": {"zh": "軍事", "en": "Military"},
 }
 SEV = {
     "acc": {"zh": "事故", "en": "Accident", "cls": "tag-accent"},
@@ -205,7 +208,13 @@ KIND = {
     "media": {"zh": "新聞媒體", "en": "News media"},
     "data": {"zh": "數據平台", "en": "Data platform"},
 }
-TAGCLS = {"safety": "tag-accent", "reg": "tag-neutral", "biz": "tag-neutral", "ops": "tag-neutral"}
+TAGCLS = {
+    "safety": "tag-accent",
+    "reg": "tag-neutral",
+    "biz": "tag-neutral",
+    "ops": "tag-neutral",
+    "mil": "tag-accent-2",
+}
 
 
 # ── methodology page (user-authored copy, 2026-07-27) ────────────────────────
@@ -767,7 +776,7 @@ def prep_article(raw):
         # Hard site rule: every published article must credit >=1 source.
         return None
 
-    cat = raw.get("cat") if isinstance(raw.get("cat"), str) else "ops"
+    cat = story_category(raw.get("cat"), raw)
     image = normalize_image(raw.get("image"))
     # Display the SOURCE's newest publication time when the write stage
     # recorded one; the generation time (dt) is used for ordering only, so
@@ -1413,7 +1422,7 @@ def main() -> int:
         "tpe_hm": tpe_now.strftime("%H:%M"),
         "stamp": now.strftime("%Y-%m-%d %H:%M"),
     }
-    cat_keys = ["all", "safety", "reg", "biz", "ops"]
+    cat_keys = ["all", "safety", "reg", "biz", "ops", "mil"]
     sev_keys = ["all", "acc", "ser", "inc"]
     pages = 0
     failed = 0
