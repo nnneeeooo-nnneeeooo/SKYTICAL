@@ -95,6 +95,13 @@ nv2 = providers.NvidiaProvider("nvidia/nemotron-3-super-120b-a12b")
 nv2.draft("sys", "user", {"type": "object"})
 check("missing usage metadata leaves tokens at 0 but counts the call",
       nv2.usage["usageEvents"] == 0 and nv2.http_calls == 1)
+check("provider counters normalize into one immutable ledger row",
+      usage._provider_usage_rows([nv2]) == [(
+          "nvidia:nvidia/nemotron-3-super-120b-a12b", 1, 0, 0, 0)])
+check("idle providers are omitted before any ledger write",
+      usage._provider_usage_rows([
+          types.SimpleNamespace(label="idle:test", http_calls=0, usage={})
+      ]) == [])
 
 # ── ledger merge ─────────────────────────────────────────────────────────────
 

@@ -42,23 +42,35 @@ def load_ledger() -> dict:
     }
 
 
+def _provider_usage_rows(
+    providers,
+) -> list[tuple[str, int, int, int, int]]:
+    """Snapshot non-idle provider counters for one ledger flush."""
+    rows: list[tuple[str, int, int, int, int]] = []
+    for provider in providers or []:
+        calls = int(getattr(provider, "http_calls", 0) or 0)
+        if calls <= 0:
+            continue
+        counters = getattr(provider, "usage", None) or {}
+        rows.append((
+            str(getattr(provider, "label", "?")),
+            calls,
+            int(counters.get("inputTokens") or 0),
+            int(counters.get("outputTokens") or 0),
+            int(counters.get("usageEvents") or 0),
+        ))
+    return rows
+
+
 def record_providers(providers) -> None:
     """Merge this run's provider spend into the ledger. Call ONCE per run
     per provider set - the counters live on the provider objects."""
-    rows = []
-    for p in providers or []:
-        calls = int(getattr(p, "http_calls", 0) or 0)
-        if calls <= 0:
-            continue
-        u = getattr(p, "usage", None) or {}
-        rows.append((str(getattr(p, "label", "?")), calls,
-                     int(u.get("inputTokens") or 0),
-                     int(u.get("outputTokens") or 0),
-                     int(u.get("usageEvents") or 0)))
+    rows = _provider_usage_rows(providers)
     if not rows:
         return
     ledger = load_ledger()
     now = now_utc()
+    stamp = iso_minute(now)
     day = now.strftime("%Y-%m-%d")
     for label, calls, tokens_in, tokens_out, events in rows:
         m = ledger["models"].setdefault(label, {
@@ -77,10 +89,8 @@ def record_providers(providers) -> None:
     cutoff = (now - timedelta(days=DAILY_KEEP_DAYS)).strftime("%Y-%m-%d")
     ledger["daily"] = {k: v for k, v in sorted(ledger["daily"].items())
                        if k >= cutoff}
-    ledger["updatedUtc"] = iso_minute(now)
-    ledger.setdefault("trackingSinceUtc", iso_minute(now))
-    if not ledger["trackingSinceUtc"]:
-        ledger["trackingSinceUtc"] = iso_minute(now)
+    ledger["updatedUtc"] = stamp
+    ledger["trackingSinceUtc"] = ledger.get("trackingSinceUtc") or stamp
     save_json(USAGE_PATH, ledger)
     total_calls = sum(r[1] for r in rows)
     print(f"usage: recorded {total_calls} call(s) across {len(rows)} "
