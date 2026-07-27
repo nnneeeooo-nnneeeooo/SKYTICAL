@@ -61,6 +61,11 @@ jobs:
           python pipeline/dedupe.py
           python pipeline/write.py
           python pipeline/images.py
+          # a briefing run may have committed newer briefing JSONs since this
+          # job checked out; deploys race (last wins), so refresh them before
+          # building or this deploy can put a stale briefing page back live
+          git fetch origin "${GITHUB_REF_NAME}"
+          git checkout "origin/${GITHUB_REF_NAME}" -- data/briefings || true
           python pipeline/build.py
 
       - name: Scan build output and committed data for secrets/reasoning
