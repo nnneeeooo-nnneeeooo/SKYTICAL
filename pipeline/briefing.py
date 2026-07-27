@@ -763,7 +763,9 @@ def run_edition(edition: str, taipei_date: date) -> int:
                                for sec in sections.values() for it in sec]
             data, shim = grounded.call_grounded(window)
             if data is None:
-                warnings.append("AI 搜尋所需的模型金鑰未設定，本期未產生條列內容")
+                # reader-facing copy stays non-technical; details go to CI log
+                print("briefing: grounded sweep skipped (no API key)")
+                warnings.append("AI 搜尋服務暫時未啟用，本期未產生條列內容")
             else:
                 g_items, g_warnings = grounded.sanitize_items(
                     data, existing_titles, g_seen, now)
@@ -785,12 +787,11 @@ def run_edition(edition: str, taipei_date: date) -> int:
                     except Exception:
                         pass
     except Exception as exc:
-        if "429" in str(exc):
-            warnings.append("AI 搜尋暫時受免費額度限制（配額不足），本期未能"
-                            "產生條列內容；下一期將自動重試")
-        else:
-            warnings.append(f"AI 搜尋本期失敗（{type(exc).__name__}: "
-                            f"{str(exc)[:120]}），已略過")
+        # reader-facing copy stays non-technical; details go to CI log
+        print(f"briefing: grounded sweep failed "
+              f"({type(exc).__name__}: {str(exc)[:300]})")
+        warnings.append("AI 搜尋服務暫時不穩定，本期未能產生條列內容；"
+                        "我們正努力恢復服務，系統將於下一期自動重試")
 
     # partial = our own inputs were degraded, never "no events".
     partial = bool(load_warnings or source_warnings)
