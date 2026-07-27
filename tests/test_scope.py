@@ -15,7 +15,14 @@ import fetch  # noqa: E402
 import write  # noqa: E402
 
 
-TARGET_ID = "a-20260727-0838-presidential-office-rejects-show-claim-s"
+TARGET_IDS = {
+    "a-20260727-0838-presidential-office-rejects-show-claim-s":
+        "2026-07-27T08.json",
+    "a-20260727-0443-pla-builds-models-of-taiwan-presidential":
+        "2026-07-27T04.json",
+    "a-20260727-0443-defense-minister-clarifies-no-live-fire":
+        "2026-07-27T04.json",
+}
 
 
 def story(title: str, summary: str = "", source_key: str = "cnataiwan") -> dict:
@@ -75,12 +82,22 @@ def main() -> None:
         "高速公路客運事故造成回堵"))
     assert not common.is_transport_story(story(
         "國防預算攻防延燒 朝野公布最新主張"))
+    assert not common.is_transport_story(story(
+        "共軍建總統府模型 國防部：掌握情報籲支持國防預算",
+        "外媒稱共軍打造戰機、軍艦與蘇澳海軍基地模型。"))
+    assert not common.is_transport_story(story(
+        "國防部長澄清漢光無本島實彈 總統視導不影響演訓",
+        "演訓科目與驗證項目不受總統視導行程影響。"))
+    assert common.is_transport_story(story(
+        "空軍接收新型戰機投入飛行訓練",
+        "戰機完成交付並在基地起飛執行首次訓練任務。"))
 
     cna_keywords = common.SOURCES["cnataiwan"]["keywords"]
     assert "國軍" not in cna_keywords
     assert "國防部" not in cna_keywords
     assert common.SOURCES["mndnews"]["scope_filter"] is True
     assert "OUT-OF-SCOPE" in write.SYSTEM_PROMPT
+    assert "Military replicas" in write.SYSTEM_PROMPT
 
     assert write.build_article(
         draft(), political, datetime.now(timezone.utc), set()) is None
@@ -89,22 +106,25 @@ def main() -> None:
     assert write.build_article(
         draft(), on_topic, datetime.now(timezone.utc), set()) is not None
 
-    article_data = json.loads(
-        (ROOT / "data" / "articles" / "2026-07-27T08.json")
-        .read_text(encoding="utf-8"))
-    archived = next(row for row in article_data["articles"]
-                    if row["id"] == TARGET_ID)
-    assert archived["archived"] is True
-    assert archived["archiveReason"]
-    assert build.prep_article(archived) is None
+    for target_id, filename in TARGET_IDS.items():
+        article_data = json.loads(
+            (ROOT / "data" / "articles" / filename)
+            .read_text(encoding="utf-8"))
+        archived = next(row for row in article_data["articles"]
+                        if row["id"] == target_id)
+        assert archived["archived"] is True
+        assert archived["archiveReason"]
+        assert build.prep_article(archived) is None
 
     flash_data = json.loads(
         (ROOT / "data" / "flashes.json").read_text(encoding="utf-8"))
-    archived_flash = next(row for row in flash_data
-                          if row.get("articleId") == TARGET_ID)
-    assert archived_flash["archived"] is True
-    visible_flashes = build.prep_flashes(flash_data, {TARGET_ID})
-    assert all(row.get("articleId") != TARGET_ID for row in visible_flashes)
+    for target_id in TARGET_IDS:
+        archived_flash = next(row for row in flash_data
+                              if row.get("articleId") == target_id)
+        assert archived_flash["archived"] is True
+    visible_flashes = build.prep_flashes(flash_data, set(TARGET_IDS))
+    assert all(row.get("articleId") not in TARGET_IDS
+               for row in visible_flashes)
 
     print("test_scope: OK")
 

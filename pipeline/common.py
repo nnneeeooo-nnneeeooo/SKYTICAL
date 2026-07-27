@@ -380,6 +380,16 @@ _TRANSPORT_EN_RE = re.compile(
     r")\b",
     re.IGNORECASE,
 )
+_MILITARY_REPLICA_ZH_RE = re.compile(
+    r"(?:建造|打造|興建|搭建|建).{0,24}(?:模型|複製品)"
+    r"|(?:模型|複製品).{0,32}(?:國防預算|敵情|威脅|情報)"
+)
+_MILITARY_REPLICA_EN_RE = re.compile(
+    r"\b(?:scale models?|replicas?|mock-?ups?)\b.{0,100}\b(?:"
+    r"presidential|government|military|warships?|fighter jets?|"
+    r"naval base|defen[cs]e budget)\b",
+    re.IGNORECASE,
+)
 
 
 def _string_values(value):
@@ -403,6 +413,12 @@ def is_transport_story(*records) -> bool:
     text = " ".join(
         part for record in records for part in _string_values(record)
     )
+    # Replicas and training mock-ups are not real aircraft/vessel/transport
+    # operations.  Without this veto, incidental mentions such as "fighter
+    # jet models" or "naval-base model" can defeat the subject gate.
+    if (_MILITARY_REPLICA_ZH_RE.search(text)
+            or _MILITARY_REPLICA_EN_RE.search(text)):
+        return False
     return (any(term in text for term in _TRANSPORT_ZH_TERMS)
             or _TRANSPORT_EN_RE.search(text) is not None)
 
