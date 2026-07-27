@@ -42,6 +42,11 @@ GROUP = {"id": "g1", "items": [{
     "summary": "Simple Flying reports the final certification steps.",
     "source": "Simple Flying", "url": "https://example.com/a"}]}
 
+GATWICK_GROUP = {"id": "gatwick", "items": [{
+    "title": "London Gatwick Airport Loses All Running Water",
+    "summary": "Gatwick Airport terminal services were affected.",
+    "source": "Simple Flying", "url": "https://example.com/gatwick"}]}
+
 # ── matching + prompt injection ──────────────────────────────────────────────
 
 pairs, keeps = write.glossary_matches(
@@ -59,9 +64,17 @@ check("prompt block lists the mandatory renderings",
       and "MANDATORY NAME GLOSSARY" in block)
 check("prompt block appears inside the group prompt",
       "MANDATORY NAME GLOSSARY" in write.group_prompt(GROUP))
+check("system prompt bans guessed and non-Taiwan proper-name renderings",
+      "Never invent a phonetic rendering" in write.SYSTEM_PROMPT
+      and "Hong Kong / mainland China rendering" in write.SYSTEM_PROMPT
+      and "keep the complete English proper name" in write.SYSTEM_PROMPT)
 check("no matches -> no glossary block",
       write.glossary_prompt_block(
           {"items": [{"title": "民航局公告離島加班機", "summary": ""}]}) == "")
+gatwick_block = write.glossary_prompt_block(GATWICK_GROUP)
+check("Gatwick prompt requires Taiwan rendering and bans the wrong one",
+      "蓋特威克機場" in gatwick_block and "格域機場" in gatwick_block
+      and "NEVER" in gatwick_block)
 
 # ── the machine gate (the two real failures from 2026-07-27) ────────────────
 
@@ -98,6 +111,32 @@ check("non-Taiwan rendering 德爾塔航空 is rejected",
 unrelated = draft("民航局公布中秋加班機", "CAA Taiwan announces extra flights")
 check("names absent from the draft's en text are not enforced",
       write.glossary_problem(unrelated, GROUP) is None)
+
+bad_gatwick = draft("倫敦格域機場停水影響旅客服務",
+                    "Gatwick Airport loses its running water")
+check("Hong Kong rendering 格域機場 is rejected",
+      "forbidden rendering" in
+      write.glossary_problem(bad_gatwick, GATWICK_GROUP))
+
+mixed_gatwick = draft("蓋特威克機場停水，格域機場旅客受影響",
+                      "Gatwick Airport loses its running water")
+check("a correct occurrence cannot hide another forbidden rendering",
+      write.glossary_problem(mixed_gatwick, GATWICK_GROUP) is not None)
+
+good_gatwick = draft("倫敦蓋特威克機場停水影響旅客服務",
+                     "Gatwick Airport loses its running water")
+check("Taiwan rendering 蓋特威克機場 passes",
+      write.glossary_problem(good_gatwick, GATWICK_GROUP) is None)
+
+english_gatwick = draft("倫敦 Gatwick Airport 停水影響旅客服務",
+                        "Gatwick Airport loses its running water")
+check("keeping Gatwick Airport in English passes",
+      write.glossary_problem(english_gatwick, GATWICK_GROUP) is None)
+
+omitted_en_gatwick = draft("格域機場停水影響旅客服務",
+                           "London airport loses its running water")
+check("source material still activates the forbidden rendering gate",
+      write.glossary_problem(omitted_en_gatwick, GATWICK_GROUP) is not None)
 
 # ── fabrication tripwire (the Delta-pay body invention, 2026-07-27) ─────────
 
