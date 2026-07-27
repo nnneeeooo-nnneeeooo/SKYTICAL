@@ -105,6 +105,7 @@ absent when nothing new that hour)
       "publishedUtc": "2026-07-26T05:47Z",
       "cat": "safety",                     // safety | reg | biz | ops | mil
       "primarySource": "Reuters",
+      "articleFormat": "full",             // full | brief
       "image": null,                       // og:image URL or null
       "archived": false,                   // OPTIONAL true = retained in data,
                                             // excluded from every public page
@@ -120,9 +121,18 @@ absent when nothing new that hour)
       "writer": "gemini:gemini-2.5-flash",  // OPTIONAL provenance "provider:model";
                                             // absent on pre-multi-provider articles
       "facts": [                            // OPTIONAL machine-verified evidence:
-        {"factId": "F1", "claim": "...",    // each sourceQuote passed the verbatim
-         "sourceQuote": "..."}              // substring check in write.verify_facts
+        {"factId": "F1", "claim": "...",    // each quote + URL is code-verified
+         "sourceQuote": "...",
+         "sourceUrl": "https://...",
+         "evidenceScope": "source",         // source | archive
+         "archiveEventId": null,
+         "archiveContext": false}
       ],
+      "archiveContext": {                   // OPTIONAL; only when archive facts used
+        "archive_context_version": 1,
+        "context_id": "deterministic-audit-id",
+        "selected_events": [ /* max 3; facts only, no archive full text */ ]
+      },
       "riskFlags": ["investigation"],       // OPTIONAL editorial risk flags
                                             // (subset of write.RISK_FLAGS; non-empty
                                             // only on human-approved articles)
@@ -151,7 +161,9 @@ unreviewed after 14 days; the queue keeps at most 40 rows, newest first.
     "writer": "gemini:gemini-2.5-flash",
     "decisionReason": "航空安全事件，調查進行中",
     "riskFlags": ["accident_or_serious_incident"],
-    "facts": [ {"factId": "F1", "claim": "...", "sourceQuote": "..."} ],
+    "facts": [ {"factId": "F1", "claim": "...", "sourceQuote": "...",
+                "sourceUrl": "https://...", "evidenceScope": "source",
+                "archiveEventId": null, "archiveContext": false} ],
     "draft": { /* full DRAFT_SCHEMA object */ },
     "group": { /* pending group snapshot (sources for the article) */ }
   }
@@ -160,6 +172,13 @@ unreviewed after 14 days; the queue keeps at most 40 rows, newest first.
 
 Queued groups are recorded in seen.json immediately (they must not re-emit
 from dedupe while awaiting review).
+
+`DRAFT_SCHEMA.status` accepts `publish`, `publish_brief`, `manual_review` and
+`reject`. Published article files do not persist the editorial status; they
+persist `articleFormat` (`full` or `brief`) so old readers remain compatible.
+Old article facts without the new evidence metadata remain readable. For
+archive retrieval, an old fact is eligible only when it already has
+`sourceUrl` or its article has exactly one unambiguous source.
 
 Review entries created from rare-aircraft events additionally carry a
 `"flight"` object (eventId / airport / crossCheck / rarityScore /

@@ -1,0 +1,296 @@
+{
+  "archives": [
+    {
+      "case": "same_aircraft",
+      "id": "a-20260720-project-sunrise-outbound",
+      "date": "2026-07-20T09:00Z",
+      "title": "Qantas Project Sunrise A350ULR VH-XLR flies TLS-MEL test sector",
+      "quote": "Project Sunrise A350ULR VH-XLR flew the TLS-MEL test sector.",
+      "url": "https://example.com/project-sunrise-outbound",
+      "cat": "ops",
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": ["Qantas", "Project Sunrise"],
+        "airlines": ["Qantas"],
+        "aircraft_models": ["A350ULR"],
+        "airports": ["TLS", "MEL"],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": ["VH-XLR"],
+        "event_dates": ["2026-07-20"]
+      }
+    },
+    {
+      "case": "route_announcement",
+      "id": "a-20260301-skyways-route-announcement",
+      "date": "2026-03-01T08:00Z",
+      "title": "SkyWays announces planned TPE-LAX aviation route",
+      "quote": "SkyWays announced that it planned to launch the TPE-LAX route.",
+      "url": "https://example.com/skyways-tpe-lax-announcement",
+      "cat": "ops",
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": ["SkyWays"],
+        "airlines": ["SkyWays"],
+        "aircraft_models": [],
+        "airports": ["TPE", "LAX"],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": ["2026-03-01"]
+      }
+    },
+    {
+      "case": "aircraft_order",
+      "id": "a-20260210-example-air-order",
+      "date": "2026-02-10T10:00Z",
+      "title": "AeroMaker records Example Air order for A350-1000 aircraft",
+      "quote": "Example Air placed an order for AeroMaker A350-1000 aircraft.",
+      "url": "https://example.com/example-air-a350-order",
+      "cat": "biz",
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": ["AeroMaker", "Example Air"],
+        "airlines": ["Example Air"],
+        "aircraft_models": ["A350-1000"],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": ["2026-02-10"]
+      }
+    },
+    {
+      "case": "regulatory_draft",
+      "id": "a-20260105-faa-draft-rule",
+      "date": "2026-01-05T12:00Z",
+      "title": "FAA opens consultation on aviation Docket FAA-2026-1234",
+      "quote": "FAA opened consultation on draft Docket FAA-2026-1234.",
+      "url": "https://example.com/faa-docket-draft",
+      "cat": "reg",
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": ["FAA"],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": ["2026-01-05"]
+      }
+    },
+    {
+      "case": "safety_occurrence",
+      "id": "a-20260403-ntsb-occurrence",
+      "date": "2026-04-03T06:00Z",
+      "title": "NTSB opens aviation investigation NTSB-2026-77 involving N123AB",
+      "quote": "NTSB opened investigation NTSB-2026-77 involving aircraft N123AB.",
+      "url": "https://example.com/ntsb-2026-77-opening",
+      "cat": "safety",
+      "eventStatus": "under_investigation",
+      "entities": {
+        "organizations": ["NTSB"],
+        "airlines": [],
+        "aircraft_models": ["Boeing 737"],
+        "airports": [],
+        "locations": ["Denver"],
+        "flight_numbers": [],
+        "registration_numbers": ["N123AB"],
+        "event_dates": ["2026-04-03"]
+      }
+    },
+    {
+      "case": "military_deployment",
+      "id": "a-20260601-12th-wing-deployment",
+      "date": "2026-06-01T04:00Z",
+      "title": "12th Wing deploys F-35 aviation unit to Alpha Base",
+      "quote": "The 12th Wing deployed its F-35 unit to Alpha Base.",
+      "url": "https://example.com/12th-wing-alpha",
+      "cat": "mil",
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": ["12th Wing", "Example Air Force"],
+        "airlines": [],
+        "aircraft_models": ["F-35"],
+        "airports": [],
+        "locations": ["Alpha Base"],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": ["2026-06-01"]
+      }
+    },
+    {
+      "case": "unrelated_airline",
+      "id": "a-20260501-example-air-catering",
+      "date": "2026-05-01T02:00Z",
+      "title": "Example Air changes inflight catering on aviation services",
+      "quote": "Example Air changed its inflight catering menu.",
+      "url": "https://example.com/example-air-catering",
+      "cat": "ops",
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": ["Example Air"],
+        "airlines": ["Example Air"],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": ["2026-05-01"]
+      }
+    },
+    {
+      "case": "unrelated_model",
+      "id": "a-20260502-other-a350",
+      "date": "2026-05-02T02:00Z",
+      "title": "Other Carrier performs A350ULR cabin maintenance",
+      "quote": "Other Carrier performed cabin maintenance on an A350ULR.",
+      "url": "https://example.com/other-a350-maintenance",
+      "cat": "ops",
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": ["Other Carrier"],
+        "airlines": ["Other Carrier"],
+        "aircraft_models": ["A350ULR"],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": ["2026-05-02"]
+      }
+    },
+    {
+      "case": "unrelated_project",
+      "id": "a-20260503-project-sunrise-marketing",
+      "date": "2026-05-03T02:00Z",
+      "title": "Project Sunrise name appears in unrelated airport marketing",
+      "quote": "An airport marketing display used the words Project Sunrise.",
+      "url": "https://example.com/project-sunrise-marketing",
+      "cat": "ops",
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": ["Project Sunrise"],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": ["2026-05-03"]
+      }
+    },
+    {
+      "case": "conflicting_route",
+      "id": "a-20260727-qf9-conflict",
+      "date": "2026-07-27T01:00Z",
+      "title": "Qantas flight QF9 operates SYD-LHR aviation service",
+      "quote": "Qantas flight QF9 operated the SYD-LHR route on 2026-07-27.",
+      "url": "https://example.com/qf9-syd-lhr",
+      "cat": "ops",
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": ["Qantas"],
+        "airlines": ["Qantas"],
+        "aircraft_models": [],
+        "airports": ["SYD", "LHR"],
+        "locations": [],
+        "flight_numbers": ["QF9"],
+        "registration_numbers": [],
+        "event_dates": ["2026-07-27"]
+      }
+    }
+  ],
+  "groups": [
+    {
+      "case": "same_aircraft",
+      "id": "g-same-aircraft",
+      "primarySource": "Flight Test News",
+      "title": "Qantas Project Sunrise A350ULR VH-XLR returns MEL-TLS",
+      "summary": "Project Sunrise A350ULR VH-XLR returned from MEL to TLS after an aviation test visit.",
+      "date": "2026-07-27T05:00Z",
+      "url": "https://current.example.com/project-sunrise-return"
+    },
+    {
+      "case": "route_progression",
+      "id": "g-route",
+      "primarySource": "SkyWays",
+      "title": "SkyWays launches TPE-LAX aviation route",
+      "summary": "SkyWays launched its TPE-LAX service on 2026-07-01.",
+      "date": "2026-07-01T04:00Z",
+      "url": "https://current.example.com/skyways-tpe-lax-launch"
+    },
+    {
+      "case": "order_progression",
+      "id": "g-order",
+      "primarySource": "AeroMaker",
+      "title": "AeroMaker delivers first A350-1000 aircraft to Example Air",
+      "summary": "AeroMaker delivered an A350-1000 aircraft to Example Air on 2026-07-10.",
+      "date": "2026-07-10T10:00Z",
+      "url": "https://current.example.com/example-air-a350-delivery"
+    },
+    {
+      "case": "regulatory_progression",
+      "id": "g-regulation",
+      "primarySource": "FAA",
+      "title": "FAA issues final aviation rule for Docket FAA-2026-1234",
+      "summary": "FAA issued the final rule for Docket FAA-2026-1234 on 2026-07-15.",
+      "date": "2026-07-15T12:00Z",
+      "url": "https://current.example.com/faa-docket-final"
+    },
+    {
+      "case": "investigation_progression",
+      "id": "g-investigation",
+      "primarySource": "NTSB",
+      "title": "NTSB releases preliminary report for investigation NTSB-2026-77",
+      "summary": "NTSB released a preliminary aviation report for NTSB-2026-77 involving N123AB.",
+      "date": "2026-07-20T12:00Z",
+      "url": "https://current.example.com/ntsb-2026-77-preliminary"
+    },
+    {
+      "case": "military_progression",
+      "id": "g-military",
+      "primarySource": "Defence Ministry",
+      "title": "12th Wing begins F-35 aviation training at Alpha Base",
+      "summary": "The 12th Wing began an F-35 training deployment at Alpha Base on 2026-06-15.",
+      "date": "2026-06-15T05:00Z",
+      "url": "https://current.example.com/12th-wing-training"
+    },
+    {
+      "case": "weak_topic",
+      "id": "g-weak",
+      "primarySource": "Example Air",
+      "title": "Example Air changes baggage policy for regional flights",
+      "summary": "Example Air announced a baggage policy change for regional aviation services.",
+      "date": "2026-07-20T05:00Z",
+      "url": "https://current.example.com/example-air-baggage"
+    },
+    {
+      "case": "conflict",
+      "id": "g-conflict",
+      "primarySource": "Qantas",
+      "title": "Qantas flight QF9 operates MEL-LAX aviation service",
+      "summary": "Qantas flight QF9 operated the MEL-LAX route on 2026-07-27.",
+      "date": "2026-07-27T05:00Z",
+      "url": "https://current.example.com/qf9-mel-lax"
+    },
+    {
+      "case": "brief",
+      "id": "g-brief",
+      "primarySource": "Airport Authority",
+      "title": "Airport Authority opens Runway 3 for aviation operations",
+      "summary": "The Airport Authority opened Runway 3 on 2026-07-27.",
+      "date": "2026-07-27T05:00Z",
+      "url": "https://current.example.com/runway-3-open"
+    },
+    {
+      "case": "no_new_event",
+      "id": "g-no-event",
+      "primarySource": "Commentary",
+      "title": "Thoughts about the future of aviation",
+      "summary": "",
+      "date": "2026-07-27T05:00Z",
+      "url": "https://current.example.com/aviation-opinion"
+    }
+  ]
+}

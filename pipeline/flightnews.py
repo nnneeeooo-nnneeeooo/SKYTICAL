@@ -21,7 +21,8 @@ _PROMPT_PATH = ROOT / "prompts" / "rare-aircraft-news-zh.txt"
 _FALLBACK_PROMPT = (
     "You write a bilingual wire item as JSON (same DRAFT_SCHEMA as the main "
     "pipeline) from ONE <SOURCE type=\"flight_observation\"> block. Use only "
-    "its lines; quote them verbatim in facts. status MUST be manual_review, "
+    "its lines; quote them verbatim in facts. Facts use evidenceScope source, "
+    "archiveContext false and archiveEventId null. status MUST be manual_review, "
     "cat ops, incident null, riskFlags include unconfirmed_or_developing. "
     "Never guess routes, purposes or flight numbers; never claim firsts.")
 
