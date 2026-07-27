@@ -106,8 +106,8 @@ absent when nothing new that hour)
       "cat": "safety",                     // safety | reg | biz | ops | mil
       "primarySource": "Reuters",
       "image": null,                       // og:image URL or null
-      "zh": {"title": "...", "summary": "<=80字", "body": ["段落1", "段落2"]},
-      "en": {"title": "...", "summary": "...", "body": ["para1", "para2"]},
+      "zh": {"title": "...", "summary": "...", "body": ["至少4段；合計>=500實質字元"]},
+      "en": {"title": "...", "summary": "...", "body": ["at least 4 paragraphs; >=250 words"]},
       "sources": [{"name": "FAA — Statement", "url": "https://..."}],  // >=1, REQUIRED
       "sourcePublishedUtc": "2026-07-23T04:00Z", // OPTIONAL newest source-provided
                                             // publish time (never an inferred

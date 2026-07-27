@@ -289,13 +289,15 @@ class FakeProvider:
 
 def _flight_draft(quote="機場 ICAO：RCKH", status="publish"):
     empty_entities = {k: [] for k in write.ENTITY_KEYS}
+    zh_body = ["測" * 125 for _ in range(write.MIN_BODY_PARAGRAPHS)]
+    en_body = ["word " * 63 for _ in range(write.MIN_BODY_PARAGRAPHS)]
     return {
         "status": status, "decisionReason": "",
         "cat": "ops",
         "zh": {"title": "達美航空 A350-900 現身高雄機場之公開觀測紀錄",
                "summary": "公開 ADS-B 觀測資料顯示一架 A350-900 抵達高雄國際機場，"
                           "本站監測系統已確認其落地狀態，詳細背景仍待人工確認後發布。",
-               "body": ["第一段。", "第二段。"]},
+               "body": zh_body},
         "en": {"title": "Public ADS-B data shows Delta A350-900 arrival at "
                         "Kaohsiung",
                "summary": "Public ADS-B observation data indicates an Airbus "
@@ -304,7 +306,7 @@ def _flight_draft(quote="機場 ICAO：RCKH", status="publish"):
                           "ground by the site's monitoring system and "
                           "awaits human editorial review before any "
                           "publication of further detail.",
-               "body": ["Para one.", "Para two."]},
+               "body": en_body},
         "flash": {"zh": "ADS-B 觀測：A350 抵達高雄", "en": "ADS-B: A350 at KHH",
                   "hot": False},
         "incident": None,
