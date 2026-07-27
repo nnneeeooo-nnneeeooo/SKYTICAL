@@ -1,17 +1,29 @@
 {
-  "updatedUtc": "2026-07-27T23:13Z",
+  "updatedUtc": "2026-07-27T23:44Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 49,
-      "inputTokens": 187861,
-      "outputTokens": 100369,
+      "calls": 51,
+      "inputTokens": 196505,
+      "outputTokens": 106333,
       "unknownCalls": 5
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
-      "calls": 5,
-      "inputTokens": 21479,
-      "outputTokens": 7194,
+      "calls": 6,
+      "inputTokens": 25801,
+      "outputTokens": 8846,
+      "unknownCalls": 0
+    },
+    "nvidia:deepseek-ai/deepseek-v4-pro": {
+      "calls": 1,
+      "inputTokens": 4201,
+      "outputTokens": 949,
+      "unknownCalls": 0
+    },
+    "gemini:gemini-3.6-flash": {
+      "calls": 1,
+      "inputTokens": 3136,
+      "outputTokens": 2470,
       "unknownCalls": 0
     }
   },
@@ -22,9 +34,9 @@
       "outputTokens": 34193
     },
     "2026-07-27": {
-      "calls": 39,
-      "inputTokens": 158833,
-      "outputTokens": 73370
+      "calls": 44,
+      "inputTokens": 179136,
+      "outputTokens": 84405
     }
   }
 }
