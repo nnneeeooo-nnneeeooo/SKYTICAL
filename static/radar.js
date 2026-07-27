@@ -22,6 +22,7 @@
       next: (seconds) => `下次更新 ${seconds} 秒`,
       cooldown: (seconds) => `請於 ${seconds} 秒後再手動更新`,
       callsign: "航班呼號", airline: "航空公司", type: "機型",
+      route: "起迄點",
       altitude: "高度", speed: "地速", heading: "航向",
       vertical: "垂直速率", freshness: "位置新鮮度",
       ground: "地面", unknown: "未提供", feet: "呎", knots: "節",
@@ -37,6 +38,7 @@
       next: (seconds) => `Next refresh ${seconds}s`,
       cooldown: (seconds) => `Manual refresh available in ${seconds}s`,
       callsign: "Callsign", airline: "Airline", type: "Aircraft",
+      route: "Route",
       altitude: "Altitude", speed: "Ground speed", heading: "Heading",
       vertical: "Vertical rate", freshness: "Position age",
       ground: "Ground", unknown: "Not reported", feet: "ft", knots: "kt",
@@ -56,6 +58,13 @@
   const airports = parseJson("radar-airports", []);
   const refreshMs = Math.max(Number(root.dataset.refreshMs) || 300000, 300000);
   const manualCooldownMs = 30000;
+  const routeApiBase = String(root.dataset.routeApiUrl || "").replace(/\/+$/, "");
+  const routeCacheKey = "avwire-radar-routes-v1";
+  const callsignModeKey = "avwire-radar-callsign-mode";
+  const routePositiveTtlMs = 24 * 60 * 60 * 1000;
+  const routeNegativeTtlMs = 6 * 60 * 60 * 1000;
+  const routeConcurrency = 4;
+  const routeCacheLimit = 400;
 
   const stateEl = document.getElementById("radar-state");
   const countEl = document.getElementById("radar-count");
@@ -65,6 +74,8 @@
   const searchEl = document.getElementById("radar-search");
   const airborneEl = document.getElementById("radar-airborne");
   const refreshEl = document.getElementById("radar-refresh");
+  const callsignModeEls = Array.from(
+    document.querySelectorAll("[data-callsign-mode]"));
 
   let map;
   let aircraftLayer;
@@ -74,6 +85,9 @@
   let nextRefreshAt = Date.now() + refreshMs;
   let lastRequestAt = 0;
   let inFlight = false;
+  let loadGeneration = 0;
+  let callsignMode = readStorage(callsignModeKey) === "iata" ? "iata" : "icao";
+  let routeCache = loadRouteCache();
 
   const numberOrNull = (value) => {
     const n = Number(value);
@@ -82,6 +96,42 @@
 
   const clean = (value, maxLength) =>
     String(value == null ? "" : value).trim().slice(0, maxLength);
+
+  function readStorage(key) {
+    try {
+      return window.localStorage.getItem(key);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function writeStorage(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_) {
+      // Storage can be disabled; the live view must continue without caching.
+    }
+  }
+
+  function loadRouteCache() {
+    try {
+      const parsed = JSON.parse(readStorage(routeCacheKey) || "{}");
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ?
+        parsed : {};
+    } catch (_) {
+      return {};
+    }
+  }
+
+  function saveRouteCache() {
+    const now = Date.now();
+    const entries = Object.entries(routeCache)
+      .filter(([, value]) => value && Number(value.expiresAt) > now)
+      .sort((a, b) => Number(b[1].savedAt) - Number(a[1].savedAt))
+      .slice(0, routeCacheLimit);
+    routeCache = Object.fromEntries(entries);
+    writeStorage(routeCacheKey, JSON.stringify(routeCache));
+  }
 
   function isSensitiveOrStale(ac) {
     if (!ac || typeof ac !== "object") return true;
@@ -121,7 +171,152 @@
       heading: numberOrNull(ac.track),
       verticalRate: numberOrNull(ac.baro_rate != null ? ac.baro_rate : ac.geom_rate),
       seenPos: numberOrNull(ac.seen_pos),
+      route: null,
     };
+  }
+
+  function displayCallsign(row) {
+    if (callsignMode === "iata" && row.route && row.route.callsignIata) {
+      return row.route.callsignIata;
+    }
+    return row.callsign;
+  }
+
+  function airportCode(airport) {
+    if (!airport) return "";
+    return airport.iata || airport.icao || "";
+  }
+
+  function formatRoute(row) {
+    if (!row.route) return "";
+    const origin = airportCode(row.route.origin);
+    const destination = airportCode(row.route.destination);
+    return origin && destination ? `${origin}–${destination}` : "";
+  }
+
+  function normalizeAirport(value) {
+    if (!value || typeof value !== "object") return null;
+    const iata = clean(value.iata_code, 4).toUpperCase();
+    const icao = clean(value.icao_code, 5).toUpperCase();
+    if (!iata && !icao) return null;
+    return {
+      iata,
+      icao,
+      name: clean(value.name, 100),
+    };
+  }
+
+  function normalizeRoutePayload(payload) {
+    const flightroute = payload && payload.response &&
+      payload.response.flightroute;
+    if (!flightroute || typeof flightroute !== "object") return null;
+    const origin = normalizeAirport(flightroute.origin);
+    const destination = normalizeAirport(flightroute.destination);
+    if (!origin || !destination) return null;
+    return {
+      callsignIcao: clean(flightroute.callsign_icao, 16).toUpperCase(),
+      callsignIata: clean(flightroute.callsign_iata, 16).toUpperCase(),
+      origin,
+      destination,
+    };
+  }
+
+  function cachedRoute(callsign) {
+    const entry = routeCache[callsign];
+    if (!entry || Number(entry.expiresAt) <= Date.now()) {
+      delete routeCache[callsign];
+      return { hit: false, route: null };
+    }
+    return { hit: true, route: entry.route || null };
+  }
+
+  function rememberRoute(callsign, route) {
+    const now = Date.now();
+    routeCache[callsign] = {
+      route,
+      savedAt: now,
+      expiresAt: now + (route ? routePositiveTtlMs : routeNegativeTtlMs),
+    };
+  }
+
+  async function fetchRoute(callsign) {
+    if (!routeApiBase || !/^[A-Z0-9]{3,12}$/.test(callsign)) {
+      return { cacheable: true, route: null };
+    }
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 8000);
+    try {
+      const response = await fetch(
+        `${routeApiBase}/${encodeURIComponent(callsign)}`, {
+          method: "GET",
+          mode: "cors",
+          credentials: "omit",
+          cache: "default",
+          signal: controller.signal,
+        });
+      if (response.status === 404) return { cacheable: true, route: null };
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return {
+        cacheable: true,
+        route: normalizeRoutePayload(await response.json()),
+      };
+    } catch (_) {
+      return { cacheable: false, route: null };
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
+
+  async function hydrateRoutes(rows, generation) {
+    const byCallsign = new Map();
+    rows.forEach((row) => {
+      if (/^[A-Z]{3}[A-Z0-9]{1,9}$/.test(row.callsign)) {
+        if (!byCallsign.has(row.callsign)) byCallsign.set(row.callsign, []);
+        byCallsign.get(row.callsign).push(row);
+      }
+    });
+
+    const pending = [];
+    let changed = false;
+    byCallsign.forEach((matchingRows, callsign) => {
+      const cached = cachedRoute(callsign);
+      if (!cached.hit) {
+        pending.push(callsign);
+        return;
+      }
+      matchingRows.forEach((row) => { row.route = cached.route; });
+      changed = changed || Boolean(cached.route);
+    });
+    if (changed && generation === loadGeneration) render();
+
+    let cursor = 0;
+    async function worker() {
+      while (cursor < pending.length) {
+        const callsign = pending[cursor++];
+        const result = await fetchRoute(callsign);
+        if (!result.cacheable) continue;
+        rememberRoute(callsign, result.route);
+        (byCallsign.get(callsign) || []).forEach((row) => {
+          row.route = result.route;
+        });
+        changed = changed || Boolean(result.route);
+      }
+    }
+    const workerCount = Math.min(routeConcurrency, pending.length);
+    await Promise.all(Array.from({ length: workerCount }, () => worker()));
+    if (pending.length) saveRouteCache();
+    if (changed && generation === loadGeneration) render();
+  }
+
+  function setCallsignMode(mode, persist) {
+    callsignMode = mode === "iata" ? "iata" : "icao";
+    callsignModeEls.forEach((button) => {
+      const active = button.dataset.callsignMode === callsignMode;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    if (persist) writeStorage(callsignModeKey, callsignMode);
+    if (aircraftLayer) render();
   }
 
   function formatAltitude(row) {
@@ -152,8 +347,10 @@
     box.className = "radar-popup";
     const title = document.createElement("strong");
     title.className = "radar-popup-title";
-    title.textContent = row.callsign || copy.noCallsign;
+    title.textContent = displayCallsign(row) || copy.noCallsign;
     box.appendChild(title);
+    const route = formatRoute(row);
+    addDetail(box, copy.route, route || copy.unknown);
     addDetail(box, copy.airline, row.airline || copy.unknown);
     addDetail(box, copy.type,
       [row.typeCode, row.typeName].filter(Boolean).join(" · ") || copy.unknown);
@@ -183,7 +380,8 @@
     if (airborneOnly && row.altitude === "ground") return false;
     if (!query) return true;
     return [
-      row.callsign, row.operator, row.airline, row.typeCode, row.typeName,
+      row.callsign, displayCallsign(row), formatRoute(row), row.operator,
+      row.airline, row.typeCode, row.typeName,
     ].some((value) => value.toUpperCase().includes(query));
   }
 
@@ -195,16 +393,18 @@
     listEl.replaceChildren();
 
     rows.sort((a, b) =>
-      (a.callsign || "ZZZ").localeCompare(b.callsign || "ZZZ"));
+      (displayCallsign(a) || "ZZZ").localeCompare(
+        displayCallsign(b) || "ZZZ"));
     rows.forEach((row) => {
+      const visibleCallsign = displayCallsign(row);
       const marker = L.marker([row.lat, row.lon], {
         icon: planeIcon(row),
         keyboard: true,
-        title: row.callsign || copy.noCallsign,
-        alt: row.callsign || row.typeCode || copy.noCallsign,
+        title: visibleCallsign || copy.noCallsign,
+        alt: visibleCallsign || row.typeCode || copy.noCallsign,
       }).addTo(aircraftLayer);
       const tooltip = document.createElement("span");
-      tooltip.textContent = row.callsign || row.typeCode || copy.noCallsign;
+      tooltip.textContent = visibleCallsign || row.typeCode || copy.noCallsign;
       marker.bindTooltip(tooltip, { direction: "top", offset: [0, -10] });
       marker.bindPopup(popupFor(row), { minWidth: 230 });
 
@@ -212,11 +412,11 @@
       item.type = "button";
       item.className = "radar-list-item";
       const name = document.createElement("strong");
-      name.textContent = row.callsign || copy.noCallsign;
+      name.textContent = visibleCallsign || copy.noCallsign;
       const meta = document.createElement("span");
       meta.className = "text-muted";
       meta.textContent = [
-        row.airline, row.typeCode, formatAltitude(row),
+        formatRoute(row), row.airline, row.typeCode, formatAltitude(row),
       ].filter(Boolean).join(" · ");
       item.append(name, meta);
       item.addEventListener("click", () => {
@@ -269,7 +469,9 @@
       sourceRows = raw.length;
       currentRows = raw.filter((ac) => !isSensitiveOrStale(ac)).map(normalize);
       hiddenRows = sourceRows - currentRows.length;
+      const generation = ++loadGeneration;
       render();
+      void hydrateRoutes(currentRows, generation);
 
       const sourceTime = numberOrNull(payload.now);
       const dataTime = sourceTime === null ? new Date() :
@@ -339,6 +541,10 @@
   searchEl.addEventListener("input", render);
   airborneEl.addEventListener("change", render);
   refreshEl.addEventListener("click", () => loadAircraft(true));
+  callsignModeEls.forEach((button) => {
+    button.addEventListener("click", () =>
+      setCallsignMode(button.dataset.callsignMode, true));
+  });
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden && Date.now() >= nextRefreshAt) loadAircraft(false);
   });
@@ -348,5 +554,6 @@
     if (!document.hidden && seconds === 0) loadAircraft(false);
   }, 1000);
 
+  setCallsignMode(callsignMode, false);
   if (initMap()) loadAircraft(false);
 })();

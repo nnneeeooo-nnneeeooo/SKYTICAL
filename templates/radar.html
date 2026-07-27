@@ -19,6 +19,7 @@
            class="radar-shell"
            data-lang="{{ lang }}"
            data-api-url="https://api.airplanes.live/v2/point/23.7000/120.9000/250"
+           data-route-api-url="https://api.adsbdb.com/v0/callsign"
            data-refresh-ms="300000">
     <div class="radar-toolbar">
       <label class="radar-search">
@@ -26,6 +27,14 @@
         <input id="radar-search" type="search" autocomplete="off"
                placeholder="{{ t.radarSearch }}">
       </label>
+      <div class="radar-callsign-toggle" role="group"
+           aria-label="{{ t.radarCallsignFormat }}">
+        <span class="radar-callsign-label">{{ t.radarCallsignFormat }}</span>
+        <button id="radar-callsign-icao" class="seg-btn active" type="button"
+                data-callsign-mode="icao" aria-pressed="true">ICAO</button>
+        <button id="radar-callsign-iata" class="seg-btn" type="button"
+                data-callsign-mode="iata" aria-pressed="false">IATA</button>
+      </div>
       <label class="radar-check">
         <input id="radar-airborne" type="checkbox" checked>
         <span>{{ t.radarAirborne }}</span>
@@ -57,6 +66,7 @@
     <p>{{ t.radarPrivacy }}</p>
     <p>{{ t.radarSource }}
       <a href="https://airplanes.live/api-guide/" target="_blank" rel="noopener">API</a>
+      · <a href="https://www.adsbdb.com/" target="_blank" rel="noopener">ADSBdb</a>
       · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">ODbL</a>
     </p>
   </div>
