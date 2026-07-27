@@ -167,6 +167,19 @@ a.flash-row:hover { color: inherit; }
   font: inherit;
 }
 .radar-search input:focus { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+.radar-callsign-toggle {
+  display: inline-flex; align-items: stretch; flex-shrink: 0;
+  min-height: 38px; border: 1px solid var(--color-divider);
+}
+.radar-callsign-label {
+  display: inline-flex; align-items: center; padding: 0 9px;
+  border-right: 1px solid var(--color-divider);
+  color: color-mix(in srgb, var(--color-text) 65%, transparent);
+  font-size: 11px; font-weight: 700; white-space: nowrap;
+}
+.radar-callsign-toggle .seg-btn {
+  min-width: 48px; justify-content: center; padding: 6px 9px; font-size: 11px;
+}
 .radar-check { display: flex; align-items: center; gap: 7px; font-size: 13px; white-space: nowrap; }
 .radar-check input { accent-color: var(--color-accent); }
 .radar-status-row {
@@ -255,6 +268,7 @@ a.flash-row:hover { color: inherit; }
   .radar-header { align-items: flex-start; flex-direction: column; gap: 12px; }
   .radar-toolbar { align-items: stretch; flex-wrap: wrap; }
   .radar-search { flex-basis: 100%; }
+  .radar-callsign-toggle { order: 2; }
   .radar-check { flex: 1; }
   .radar-layout { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .radar-map { min-height: 520px; }
