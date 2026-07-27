@@ -1,5 +1,115 @@
 [
   {
+    "id": "g-20260727-0838-1",
+    "queuedUtc": "2026-07-27T08:38Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "Investigation flag present due to police questioning of a minor following hoax bomb threat; requires human review per policy.",
+    "riskFlags": [
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Qatar Airways Boeing 777 was intercepted by RAF Typhoons after a hoax bomb threat.",
+        "sourceQuote": "Qatar Airways Boeing 777 Intercepted By RAF Typhoons After Hoax Bomb Threat"
+      },
+      {
+        "factId": "F2",
+        "claim": "A 14-year-old boy has been questioned by police after reports of a bomb threat.",
+        "sourceQuote": "A 14-year-old boy has been questioned by police after reports of a bomb threat."
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Investigation flag present due to police questioning of a minor following hoax bomb threat; requires human review per policy.",
+      "cat": "ops",
+      "zh": {
+        "title": "卡達航空波音777疑似受虛假炸彈威脅遭皇家空軍颱風戰機攔截",
+        "summary": "根據Simple Flying報導，一架卡達航空波音777飛機因收到虛假炸彈威脅而被英國皇家空軍的颱風戰機攔截。事件發生後，警方已將一名14歲男孩帶進警局協助調查。目前尚未有人員受傷或飛機損壞的報導。",
+        "body": [
+          "Simple Flying於2026年7月27日08:32 UTC發布報導，指出一架卡達航空波音777因收到炸彈威脅而被皇家空軍 Typhoon 戰機攔截。報導中未提及航班號或具體航線。",
+          "報導說明，威脅後來被證實為虛假，警方隨後對一名14歲男孩進行訊問，以調查假警報的來源。",
+          "至今未有任何官方聲明提及乘客或機組人員受傷，亦未有飛機結構損壞的紀錄。事件仍在調查中，具體處置結果尚未公布。"
+        ]
+      },
+      "en": {
+        "title": "Qatar Airways Boeing 777 Intercepted by RAF Typhoons Following Hoax Bomb Threat Report",
+        "summary": "According to Simple Flying, a Qatar Airways Boeing 777 was intercepted by Royal Air Force Typhoon fighters after a reported bomb threat. Police have questioned a 14-year-old boy in connection with the hoax alert. No injuries or aircraft damage have been reported.",
+        "body": [
+          "Simple Flying published the story on 2026-07-27 at 08:32 UTC, stating that a Qatar Airways Boeing 777 was intercepted by RAF Typhoon jets after a bomb threat was reported. The article did not disclose the flight number or route.",
+          "The threat was later determined to be a hoax, prompting police to question a 14-year-old boy regarding the false alarm. Investigations into who made the threat are ongoing.",
+          "To date, no official statements have indicated any passenger or crew injuries, nor any damage to the aircraft. The incident remains under investigation, with further details pending release."
+        ]
+      },
+      "flash": {
+        "zh": "卡達航空波音777被皇家空軍颱風戰機攔截",
+        "en": "Qatar Airways Boeing 777 intercepted by RAF Typhoons",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Qatar Airways Boeing 777 was intercepted by RAF Typhoons after a hoax bomb threat.",
+          "sourceQuote": "Qatar Airways Boeing 777 Intercepted By RAF Typhoons After Hoax Bomb Threat"
+        },
+        {
+          "factId": "F2",
+          "claim": "A 14-year-old boy has been questioned by police after reports of a bomb threat.",
+          "sourceQuote": "A 14-year-old boy has been questioned by police after reports of a bomb threat."
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Qatar Airways",
+          "RAF",
+          "Simple Flying"
+        ],
+        "airlines": [
+          "Qatar Airways"
+        ],
+        "aircraft_models": [
+          "Boeing 777"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-27"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260727-0838-1",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Qatar Airways Boeing 777 Intercepted By RAF Typhoons After Hoax Bomb Threat",
+          "url": "https://simpleflying.com/qatar-airways-777-raf-typhoon-intercept-manchester/",
+          "publishedUtc": "2026-07-27T08:32Z",
+          "summary": "A 14-year-old boy has been questioned by police after reports of a bomb threat.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/220-qatar-airways-boeing-777-300-kittikun-yoksap-_-shutterstock.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
+    }
+  },
+  {
     "id": "g-20260727-0443-3",
     "queuedUtc": "2026-07-27T04:43Z",
     "approve": false,
