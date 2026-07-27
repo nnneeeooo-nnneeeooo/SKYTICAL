@@ -27,7 +27,12 @@ ABSOLUTE EVIDENCE RULES:
 OUTPUT (same schema and language rules as the main pipeline):
 - Traditional Chinese (Taiwan usage) zh + English en; zh.title 18-38 chars;
   zh.summary 80-140 chars; en.title 45-100 chars; en.summary 70-130 words;
-  body 2-4 short factual paragraphs built only from quoted facts.
+  each language body MUST contain 4-7 substantive factual paragraphs built
+  only from quoted facts. The zh body MUST have at least 500 Chinese/
+  alphanumeric content characters in total (spaces and punctuation do not
+  count); the en body MUST have at least 250 words. These floors are checked
+  by code. If the observation evidence cannot support them without repetition
+  or invented background, return status="reject".
 - cat MUST be "ops". incident MUST be null (an arrival is not an ICAO
   Annex 13 occurrence). flash: one line per language, hot=false.
 - status: "manual_review" with requiresHumanReview=true (publication policy

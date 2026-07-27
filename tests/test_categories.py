@@ -29,14 +29,16 @@ def article(title: str, category: str = "ops") -> dict:
 
 
 def valid_draft(category: str) -> dict:
+    zh_body = ["測" * 125 for _ in range(write.MIN_BODY_PARAGRAPHS)]
+    en_body = ["word " * 63 for _ in range(write.MIN_BODY_PARAGRAPHS)]
     return {
         "status": "publish",
         "decisionReason": "",
         "cat": category,
         "zh": {"title": "測試標題", "summary": "測試摘要",
-               "body": ["測試內文。"]},
+               "body": zh_body},
         "en": {"title": "Test title", "summary": "Test summary.",
-               "body": ["Test body."]},
+               "body": en_body},
         "flash": {"zh": "測試快訊", "en": "Test flash", "hot": False},
         "incident": None,
         "facts": [{"factId": "F1", "claim": "Test claim",

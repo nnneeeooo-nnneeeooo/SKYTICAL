@@ -40,6 +40,22 @@ RECENT_DATE = (NOW - timedelta(days=2)).strftime("%Y-%m-%d")
 
 _EMPTY_ENTITIES = {key: [] for key in write.ENTITY_KEYS}
 
+_ZH_TEST_BODY = [
+    ("本段測試稿只用來驗證文章資料結構與發布流程，內容清楚交代事件主體、"
+     "已知時間、發生地點、公開數據、來源說法與目前狀態，不加入未經來源"
+     "支持的推測、因果、評論或背景資料。") * 2
+    for _ in range(write.MIN_BODY_PARAGRAPHS)
+]
+_EN_TEST_BODY = [
+    ("This test paragraph validates the article structure and publishing "
+     "flow while covering the documented subject, timing, location, figures, "
+     "attributed statement, and current status without adding speculation, "
+     "causation, commentary, or background unsupported by the supplied source. "
+     "Every sentence remains deliberately factual and traceable to the test "
+     "material. ") * 2
+    for _ in range(write.MIN_BODY_PARAGRAPHS)
+]
+
 DRAFT_SAFETY = {
     # v2 editorial rules: aviation safety events are NEVER auto-published;
     # they go to data/review.json for human approval.
@@ -67,12 +83,12 @@ DRAFT_SAFETY = {
     "zh": {
         "title": "聯合航空737丹佛衝出跑道",
         "summary": "聯合航空一架737-8於丹佛降落時衝出跑道，無人受傷，NTSB已展開調查。",
-        "body": ["第一段。", "第二段。"],
+        "body": _ZH_TEST_BODY,
     },
     "en": {
         "title": "United 737 slides off Denver runway",
         "summary": "A United Airlines 737-8 slid off the runway while landing at Denver; no injuries were reported and the NTSB is investigating.",
-        "body": ["First paragraph.", "Second paragraph."],
+        "body": _EN_TEST_BODY,
     },
     "flash": {
         "zh": "聯航737丹佛衝出跑道 無人受傷",
@@ -110,12 +126,12 @@ DRAFT_BIZ = {
     "zh": {
         "title": "IATA：六月全球航空貨運需求年增8.2%",
         "summary": "IATA公布六月全球航空貨運需求較去年同期成長8.2%。",
-        "body": ["第一段。", "第二段。"],
+        "body": _ZH_TEST_BODY,
     },
     "en": {
         "title": "IATA: global air cargo demand up 8.2% in June",
         "summary": "IATA reported global air cargo demand rose 8.2% in June 2026 year on year.",
-        "body": ["First paragraph.", "Second paragraph."],
+        "body": _EN_TEST_BODY,
     },
     "flash": {
         "zh": "IATA：六月航空貨運年增8.2%",
@@ -463,6 +479,44 @@ def test_extract_json_and_validate_draft():
 
     check(write.validate_draft(DRAFT_SAFETY) is None, "safety draft validates")
     check(write.validate_draft(DRAFT_BIZ) is None, "biz draft validates")
+    check(write.zh_body_character_count(DRAFT_BIZ["zh"]["body"])
+          >= write.ZH_BODY_MIN_CHARS, "zh test fixture clears body floor")
+    check(write.en_body_word_count(DRAFT_BIZ["en"]["body"])
+          >= write.EN_BODY_MIN_WORDS, "en test fixture clears body floor")
+    broken = json.loads(json.dumps(DRAFT_BIZ))
+    broken["zh"]["body"] = ["航" * 125, "空" * 125,
+                            "新" * 125, "聞" * 124]
+    check("499 content characters" in (write.validate_draft(broken) or ""),
+          "zh body below 500 content characters rejected")
+    broken["zh"]["body"][-1] += "稿"
+    check(write.validate_draft(broken) is None,
+          "zh body at exactly 500 content characters accepted")
+    broken = json.loads(json.dumps(DRAFT_BIZ))
+    broken["en"]["body"] = [
+        "word " * 63, "word " * 62, "word " * 62, "word " * 62]
+    check("249 words" in (write.validate_draft(broken) or ""),
+          "en body below 250 words rejected")
+    broken["en"]["body"][-1] += "word"
+    check(write.validate_draft(broken) is None,
+          "en body at exactly 250 words accepted")
+    broken = json.loads(json.dumps(DRAFT_BIZ))
+    broken["zh"]["body"] = ["航" * 200, "空" * 200, "聞" * 200]
+    check("3 paragraphs" in (write.validate_draft(broken) or ""),
+          "body with fewer than four paragraphs rejected")
+    check(write.zh_body_character_count(["航 空，新聞！"]) == 4,
+          "zh counter excludes whitespace and punctuation")
+    pending = load(FIXTURES / "pending.json")
+    cargo_group = next(g for g in pending["groups"]
+                       if g["id"] == "g-20260726-0503-2")
+    short = json.loads(json.dumps(DRAFT_BIZ))
+    short["zh"]["body"] = ["短文。"] * write.MIN_BODY_PARAGRAPHS
+    retrying_provider = FakeProvider("gemini", [short, DRAFT_BIZ])
+    candidate, facts = write._validated_draft(
+        retrying_provider, cargo_group, tries=2)
+    check(retrying_provider.calls == 2,
+          "short body automatically triggers the allowed retry")
+    check(candidate == DRAFT_BIZ and facts,
+          "length-compliant retry survives validation and quote checks")
     check(write.validate_draft("nope") is not None, "non-dict rejected")
     broken = json.loads(json.dumps(DRAFT_BIZ))
     del broken["status"]
