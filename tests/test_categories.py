@@ -73,8 +73,8 @@ def main() -> None:
         "items": [{
             "sourceKey": "cnataiwan",
             "source": "中央社 CNA",
-            "title": "漢光演習驗證國軍聯合作戰能力",
-            "summary": "國防部說明演習規劃。",
+            "title": "漢光演習驗證軍機聯合作戰能力",
+            "summary": "國防部說明軍機演習規劃。",
             "url": "https://www.cna.com.tw/news/test.aspx",
             "publishedUtc": "2026-07-27T11:00Z",
         }],
