@@ -334,10 +334,14 @@ OUTPUT RULES (for publish and manual_review):
   Taiwan terminology: 訊息/資料/網路/軟體/影片/品質, never
   信息/數據/網絡/軟件/視頻/質量. Neutral, precise wire register; no
   commentary, analysis, predictions or invented background. Proper nouns
-  without an established Chinese name stay in English; never coin
-  translations, abbreviations or codes. When a MANDATORY NAME GLOSSARY
-  block follows the source material, its renderings are absolute - they
-  are machine-checked and a coined name invalidates the draft.
+  must use established Taiwan renderings. Never invent a phonetic rendering
+  or borrow a Hong Kong / mainland China rendering.
+  When unsure, keep the complete English proper name instead of translating
+  it. Never coin translations, abbreviations or codes. When a MANDATORY NAME
+  GLOSSARY
+  block follows the source material, its required and forbidden renderings
+  are absolute - they are machine-checked and any violation invalidates the
+  entire draft.
 - zh.title: 18 to 38 Chinese characters (punctuation/spaces not counted),
   describing only the evidenced core event.
 - zh.summary: 80 to 140 Chinese characters (punctuation/spaces not
@@ -409,6 +413,11 @@ GLOSSARY_TRANSLATE = {str(k): str(v) for k, v in
 GLOSSARY_SOFT = {str(k): str(v) for k, v in
                  (_GLOSSARY.get("translate_soft") or {}).items()}
 GLOSSARY_KEEP = [str(k) for k in _GLOSSARY.get("keep_english") or []]
+GLOSSARY_FORBIDDEN = {
+    str(en): [str(value) for value in values if str(value)]
+    for en, values in (_GLOSSARY.get("forbidden_zh") or {}).items()
+    if isinstance(values, list)
+}
 
 
 def glossary_matches(text: str, include_soft: bool = False):
@@ -421,18 +430,29 @@ def glossary_matches(text: str, include_soft: bool = False):
     return pairs, keeps
 
 
+def glossary_forbidden_matches(text: str):
+    """(English name, forbidden zh renderings) present in source/en text."""
+    low = str(text or "").casefold()
+    return [(en, values) for en, values in GLOSSARY_FORBIDDEN.items()
+            if en.casefold() in low]
+
+
 def glossary_prompt_block(group: dict) -> str:
     material = " ".join(
         f"{item.get('title') or ''} {item.get('summary') or ''} "
         f"{item.get('fulltext') or ''} {item.get('source') or ''}"
         for item in group.get("items", []))
     pairs, keeps = glossary_matches(material, include_soft=True)
-    if not pairs and not keeps:
+    forbidden_matches = glossary_forbidden_matches(material)
+    if not pairs and not keeps and not forbidden_matches:
         return ""
     lines = ["", "MANDATORY NAME GLOSSARY (Taiwan usage; these renderings",
              "override any other choice in the zh text):"]
     for en, zh in pairs:
         lines.append(f'- "{en}" -> {zh} (or keep the English name verbatim)')
+    for en, forbidden in forbidden_matches:
+        lines.append(f'- NEVER render "{en}" as: '
+                     + ", ".join(f"「{value}」" for value in forbidden))
     for name in keeps:
         lines.append(f'- "{name}" has NO established Chinese name: keep it '
                      "exactly as-is in the zh text; never invent a "
@@ -458,6 +478,16 @@ def glossary_problem(draft: dict, group: dict):
                         " ".join(str(p) for p in zh_block.get("body") or []),
                         str(flash.get("zh") or "")])
     zh_low = zh_text.casefold()
+    source_text = " ".join(
+        f"{item.get('title') or ''} {item.get('summary') or ''} "
+        f"{item.get('fulltext') or ''} {item.get('source') or ''}"
+        for item in group.get("items", []))
+    for en, forbidden in glossary_forbidden_matches(
+            f"{en_text} {source_text}"):
+        for wrong in forbidden:
+            if wrong.casefold() in zh_low:
+                return (f'zh text uses forbidden rendering 「{wrong}」 for '
+                        f'"{en}"')
     pairs, keeps = glossary_matches(en_text)
     for en, zh in pairs:
         if zh not in zh_text and en.casefold() not in zh_low:

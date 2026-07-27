@@ -1,6 +1,7 @@
 {
-  "_comment": "專有名詞台灣慣用譯名對照表(write.py 強制執行):translate = 硬性,中文稿必須用此譯名(或保留英文原文),違者退稿重寫;translate_soft = 僅注入提示詞供參考,不擋稿(中文慣例可省略,如機型前的製造商名);keep_english = 無公認中文名,中文稿必須原文保留、不得自創翻譯(硬性)。比對不分大小寫。",
+  "_comment": "專有名詞台灣慣用譯名對照表(write.py 強制執行):translate = 硬性,中文稿必須用此譯名(或保留英文原文),違者退稿重寫;translate_soft = 僅注入提示詞供參考,不擋稿(中文慣例可省略,如機型前的製造商名);keep_english = 無公認中文名,中文稿必須原文保留、不得自創翻譯(硬性);forbidden_zh = 已知非台灣慣用或錯誤譯名,只要出現即退稿。比對不分大小寫。",
   "translate": {
+    "Gatwick Airport": "蓋特威克機場",
     "Southwest Airlines": "西南航空",
     "Delta Air Lines": "達美航空",
     "United Airlines": "聯合航空",
@@ -31,6 +32,12 @@
     "Philippine Airlines": "菲律賓航空",
     "Garuda Indonesia": "印尼鷹航",
     "Thai Airways": "泰國航空"
+  },
+  "forbidden_zh": {
+    "Gatwick Airport": [
+      "格域機場",
+      "格域"
+    ]
   },
   "translate_soft": {
     "Boeing": "波音",
