@@ -214,12 +214,15 @@ draft = {"facts": [
      "sourceQuote": "UNIQUE-TAIL-MARKER beyond the cap"},
 ]}
 item2 = {"title": "t", "summary": "s",
+         "url": "https://www.faa.gov/newsroom/inside-cap",
          "fulltext": ("Results of counter drone operations during the "
                       "tournament were announced by the agency today.")}
 ok = write.verify_facts(draft, {"items": [item2]}, "test")
 check("quote from full text verifies verbatim",
       any(f["sourceQuote"] == quote_in for f in ok))
-item3 = {"title": "t", "summary": "s", "fulltext": item["fulltext"]}
+item3 = {"title": "t", "summary": "s",
+         "url": "https://www.faa.gov/newsroom/outside-cap",
+         "fulltext": item["fulltext"]}
 ok3 = write.verify_facts(draft, {"items": [item3]}, "test")
 check("quote beyond the prompt cap is dropped (model never saw it)",
       not any("UNIQUE-TAIL-MARKER" in f["sourceQuote"] for f in ok3))
@@ -228,6 +231,7 @@ check("quote beyond the prompt cap is dropped (model never saw it)",
 straddle = {"facts": [{"factId": "F1", "claim": "x",
                        "sourceQuote": "tail of summary head of fulltext"}]}
 item4 = {"title": "t", "summary": "something tail of summary",
+         "url": "https://www.faa.gov/newsroom/straddle",
          "fulltext": "head of fulltext continues here with more text"}
 check("field-straddling quotes are rejected",
       write.verify_facts(straddle, {"items": [item4]}, "test") == [])

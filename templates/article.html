@@ -4,6 +4,9 @@
     <a href="{{ home_url }}" class="btn btn-ghost" style="margin-bottom:18px;">{{ t.back }}</a>
     <div>
       <span class="tag {{ a.tag_class }}">{{ a.cat_label }}</span>
+      {% if a.article_format == "brief" %}
+      <span class="tag tag-neutral">{{ t.briefLabel }}</span>
+      {% endif %}
       <h1 style="font-size:38px;line-height:1.18;margin:14px 0 12px;">{{ a.title }}</h1>
       <div class="text-muted" style="display:flex;gap:16px;align-items:baseline;font-size:12.5px;padding-bottom:16px;border-bottom:2px solid var(--color-divider);margin-bottom:24px;flex-wrap:wrap;">
         <span style="font-weight:800;color:var(--color-accent);">{{ a.meta_ts }}</span>

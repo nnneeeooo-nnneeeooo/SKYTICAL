@@ -9,8 +9,10 @@ ABSOLUTE EVIDENCE RULES:
 - The ONLY facts you may use are the lines inside <SOURCE>. No model
   knowledge, no web search, no route databases, no airline schedules.
 - Every fact needs a sourceQuote copied VERBATIM from one <SOURCE> line
-  (machine-checked). Titles/summaries bind to facts via the supported-by
-  arrays exactly as in the main pipeline.
+  (machine-checked). Set sourceUrl to the matching current attribution URL,
+  evidenceScope="source", archiveEventId=null and archiveContext=false.
+  Titles/summaries bind to facts via the supported-by arrays exactly as in
+  the main pipeline.
 - NEVER add or guess: origin, destination, route, flight number, purpose
   (charter/diversion/ferry/cargo/passengers/maintenance/weather/diplomatic),
   parking time, departure time, passenger counts, or any airline plan.

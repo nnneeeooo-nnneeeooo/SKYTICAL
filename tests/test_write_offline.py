@@ -29,8 +29,14 @@ os.environ["AVWIRE_DATA_DIR"] = str(DATA)
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 import common  # noqa: E402
+import companion  # noqa: E402
 import providers  # noqa: E402
 import write  # noqa: E402
+
+# This suite is explicitly offline.  Production enrichment is tested in its
+# own modules; prevent fixture domains from ever reaching requests here.
+write.enrich_pending = lambda groups: None
+companion.enrich_thin_groups = lambda groups: 0
 
 NOW = common.now_utc()
 OLD_STAMP = common.iso_minute(NOW - timedelta(days=30))
@@ -114,9 +120,12 @@ DRAFT_BIZ = {
         {"factId": "F1",
          "claim": "六月全球航空貨運需求年增 8.2%",
          "sourceQuote": "rose 8.2% in June 2026"},
+        {"factId": "F2",
+         "claim": "需求以貨運噸公里計算並與 2025 年六月比較",
+         "sourceQuote": "measured in cargo tonne-kilometers"},
     ],
     "headlineSupportedBy": ["F1"],
-    "summarySupportedBy": ["F1"],
+    "summarySupportedBy": ["F1", "F2"],
     "entities": {**_EMPTY_ENTITIES,
                  "organizations": ["International Air Transport Association"]},
     "eventStatus": "confirmed",
@@ -233,7 +242,7 @@ def test_publish_flow():
     check(biz["image"] is None, "biz article image is null")
     check(biz.get("writer", "").startswith("anthropic:"),
           "writer provenance recorded")
-    check(len(biz.get("facts", [])) == 1, "verified fact stored on article")
+    check(len(biz.get("facts", [])) == 2, "verified facts stored on article")
     check(biz.get("riskFlags") == [], "publish requires empty risk flags")
     check(biz.get("eventStatus") == "confirmed", "eventStatus stored")
     check(biz.get("entities", {}).get("organizations")
@@ -383,8 +392,13 @@ def test_group_cap_and_unique_ids():
     os.environ["ANTHROPIC_API_KEY"] = "test-key-not-real"
     # Same en title every time; the quote must match THESE groups' titles.
     cap_draft = json.loads(json.dumps(DRAFT_BIZ))
-    cap_draft["facts"] = [{"factId": "F1", "claim": "FAA 發布多則通知",
-                           "sourceQuote": "FAA notice number"}]
+    cap_draft["facts"] = [
+        {"factId": "F1", "claim": "FAA 發布多則通知",
+         "sourceQuote": "FAA notice number"},
+        {"factId": "F2", "claim": "通知包含憑證持有人營運細節",
+         "sourceQuote": "operational details for certificate holders"},
+    ]
+    cap_draft["summarySupportedBy"] = ["F1", "F2"]
     original = write.draft_group
     write.draft_group = lambda client, group: cap_draft
     try:
@@ -486,7 +500,7 @@ def test_extract_json_and_validate_draft():
     broken = json.loads(json.dumps(DRAFT_BIZ))
     broken["zh"]["body"] = ["航" * 125, "空" * 125,
                             "新" * 125, "聞" * 124]
-    check("499 content characters" in (write.validate_draft(broken) or ""),
+    check("zh=499 content characters" in (write.validate_draft(broken) or ""),
           "zh body below 500 content characters rejected")
     broken["zh"]["body"][-1] += "稿"
     check(write.validate_draft(broken) is None,
@@ -494,14 +508,14 @@ def test_extract_json_and_validate_draft():
     broken = json.loads(json.dumps(DRAFT_BIZ))
     broken["en"]["body"] = [
         "word " * 63, "word " * 62, "word " * 62, "word " * 62]
-    check("249 words" in (write.validate_draft(broken) or ""),
+    check("en=249 words" in (write.validate_draft(broken) or ""),
           "en body below 250 words rejected")
     broken["en"]["body"][-1] += "word"
     check(write.validate_draft(broken) is None,
           "en body at exactly 250 words accepted")
     broken = json.loads(json.dumps(DRAFT_BIZ))
     broken["zh"]["body"] = ["航" * 200, "空" * 200, "聞" * 200]
-    check("3 paragraphs" in (write.validate_draft(broken) or ""),
+    check("paragraphs=3/4" in (write.validate_draft(broken) or ""),
           "body with fewer than four paragraphs rejected")
     check(write.zh_body_character_count(["航 空，新聞！"]) == 4,
           "zh counter excludes whitespace and punctuation")
@@ -696,11 +710,15 @@ def test_editorial_gate():
                             "sourceQuote": "this text appears nowhere"}]
     partial = json.loads(json.dumps(DRAFT_BIZ))
     partial["facts"] = [
-        {"factId": "F1", "claim": "FAA 就鬧事乘客執法發布聲明",
+        {"factId": "F1", "claim": "FAA 發布鬧事乘客執法聲明",
+         "sourceQuote": "FAA statement on unruly passenger enforcement"},
+        {"factId": "F2", "claim": "FAA 就鬧事乘客採取執法行動",
          "sourceQuote": "enforcement actions against unruly passengers"},
-        {"factId": "F2", "claim": "捏造的引文會被丟棄",
+        {"factId": "F3", "claim": "捏造的引文會被丟棄",
          "sourceQuote": "quote fabricated by the model"},
     ]
+    partial["headlineSupportedBy"] = ["F1"]
+    partial["summarySupportedBy"] = ["F1", "F2"]
     # g1 -> editorial reject; g2 -> all quotes fabricated; g3 -> one good.
     solo = FakeProvider("gemini", [reject_draft, fabricated, partial])
 
@@ -717,8 +735,10 @@ def test_editorial_gate():
     # 4 calls: g1 reject, g2 fabricated + one primary retry, g3 publish.
     check(solo.calls == 4, f"expected 4 calls incl. retry, got {solo.calls}")
     facts = articles[0].get("facts", [])
-    check(len(facts) == 1 and "unruly passengers" in facts[0]["sourceQuote"],
-          f"fabricated fact dropped, verified fact kept: {facts}")
+    check(len(facts) == 2
+          and any("unruly passengers" in fact["sourceQuote"]
+                  for fact in facts),
+          f"fabricated fact dropped, verified facts kept: {facts}")
     pending = load(DATA / "pending.json")
     ids = [g["id"] for g in pending["groups"]]
     check(ids == ["g-20260726-0503-2"],

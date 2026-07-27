@@ -58,6 +58,7 @@ L = {
         "brandZh": "航空快訊", "live": "LIVE 快訊", "updateBadge": "每小時自動更新",
         "flash": "即時快訊", "sourceStatus": "來源狀態",
         "latest": "最新新聞", "topStory": "頭條", "mainSource": "主要來源",
+        "briefLabel": "短訊",
         "readMore": "閱讀全文 →", "back": "← 返回首頁",
         "heroImg": "[ 頭條照片 — 由來源圖庫自動帶入，灰階顯示 ]",
         "today": "今日全球數據", "statFlights": "目前追蹤航班", "statDelay": "全球延誤率",
@@ -132,6 +133,7 @@ L = {
         "brandZh": "Aviation Wire", "live": "LIVE WIRE", "updateBadge": "Auto-updates hourly",
         "flash": "Live flash", "sourceStatus": "Source status",
         "latest": "Latest news", "topStory": "Top story", "mainSource": "Primary source",
+        "briefLabel": "Brief",
         "readMore": "Read more →", "back": "← Back to front page",
         "heroImg": "[ Lead photo — pulled from source library, grayscale ]",
         "today": "Global today", "statFlights": "Flights tracked now", "statDelay": "Global delay rate",
@@ -842,6 +844,8 @@ def prep_article(raw):
         "en": side(en, zh),
         "sources": sources,
         "writer_badge": writer_badge(raw.get("writer")),
+        "article_format": (
+            "brief" if raw.get("articleFormat") == "brief" else "full"),
     }
 
 
@@ -880,6 +884,7 @@ def art_view(a, lang: str):
         source=a["source"], time=a["time"], meta_ts=a["meta_ts"],
         sources=a["sources"], url=page_url(lang, f"news/{a['id']}/"),
         writer_badge=a["writer_badge"],
+        article_format=a["article_format"],
         external=False,
     )
     return v
