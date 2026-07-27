@@ -1,7 +1,8 @@
 # AVWIRE 航空快訊
 
 全自動航空新聞聚合站。GitHub Actions 每小時整點抓取 FAA / NTSB / ICAO / IATA /
-EASA / Eurocontrol / Reuters / The Aviation Herald / 交通部民航局等免費可信來源，
+EASA / Eurocontrol / Reuters / The Aviation Herald / Flightradar24 官網與官方
+Facebook / 交通部民航局等免費可信來源，
 去重合併後由 LLM 自動撰寫雙語（繁中 + EN）新聞稿，產出靜態頁面並部署到
 GitHub Pages。每篇文章文末列出所有原始來源連結。
 
@@ -59,6 +60,10 @@ avwire/
 - 新稿內文每種語言至少 4 段；繁中至少 500 個實質字元（不計空白與標點），
   英文至少 250 詞。程式會實際計數，未達標自動重試或改用備援模型；證據不足
   時必須退稿，不得重複、灌水或虛構背景湊長度。
+- Flightradar24 官網使用官方 RSS；Facebook 官方頁沒有公開 RSS，因此以
+  Google News 的頁面限定 RSS 讀取公開貼文，不直接爬取 Facebook，也不需要
+  Facebook access token。長貼文保留完整 caption 作為可核驗材料，短表情貼文
+  與非航空內容會在撰稿前由完整性及運輸範圍檢查剔除。
 - 文章 JSON 保存 riskFlags、事件狀態、實體與通過驗證的引文供追溯。
 - 已發布資料可用 `"archived": true` 封存：原始 JSON、來源與核驗紀錄完整
   保留，但建站時不產生文章頁，也不出現在首頁、分類、搜尋、摘要或快訊。

@@ -53,6 +53,9 @@ MAX_RESOLVE_FAILURES = 3  # stop resolving after this many misses in a row
 SUMMARY_MAX = 500
 GOOGLE_NEWS_HOST = "news.google.com"
 CACHE_PATH = RAW_DIR / "_http_cache.json"
+SOCIAL_CAPTION_SOURCE_KEYS = frozenset({"flightradar24facebook"})
+SOCIAL_CAPTION_MIN_CHARS = 140
+SOCIAL_HEADLINE_MAX_CHARS = 96
 
 _MONTHS = {
     name: num
@@ -91,6 +94,25 @@ def _clip(text: str, limit: int = SUMMARY_MAX) -> str:
     if len(text) <= limit:
         return text
     return text[: limit - 1].rstrip() + "…"
+
+
+def _social_caption_fields(title: str) -> tuple[str, str]:
+    """Turn a long indexed social caption into headline + source material.
+
+    Google News exposes public Facebook post text in the RSS title and often
+    supplies no independent description. Keep a short exact prefix as the
+    headline and the complete caption as the summary. This leaves substantive
+    text beyond the headline for the evidence gate without inventing copy.
+    Short captions remain title-only and are rejected by the normal
+    completeness check.
+    """
+    if len(title) < SOCIAL_CAPTION_MIN_CHARS:
+        return title, ""
+    cut = title.rfind(" ", 60, SOCIAL_HEADLINE_MAX_CHARS + 1)
+    if cut < 60:
+        cut = min(len(title), SOCIAL_HEADLINE_MAX_CHARS)
+    headline = title[:cut].rstrip(" ,;:-")
+    return headline, title
 
 
 def _date_from_text(text: str) -> datetime | None:
@@ -289,7 +311,11 @@ def _rss_items(session: requests.Session, key: str, entries: list,
                 else:
                     resolve_failures += 1
         summary = _strip_html(entry.get("summary") or entry.get("description"))
-        if is_google and len(summary) <= len(title) + 40:
+        if key in SOCIAL_CAPTION_SOURCE_KEYS:
+            title, caption = _social_caption_fields(title)
+            if caption:
+                summary = caption
+        elif is_google and len(summary) <= len(title) + 40:
             summary = ""  # google news descriptions just repeat the headline
         items.append({
             "title": title,

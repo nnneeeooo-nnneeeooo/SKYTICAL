@@ -96,6 +96,27 @@ def main() -> None:
     assert "國軍" not in cna_keywords
     assert "國防部" not in cna_keywords
     assert common.SOURCES["mndnews"]["scope_filter"] is True
+    fr24 = common.SOURCES["flightradar24"]
+    assert fr24["endpoint"] == "https://www.flightradar24.com/blog/feed/"
+    assert fr24["type"] == "rss"
+    fr24_fb = common.SOURCES["flightradar24facebook"]
+    assert fr24_fb["url"] == "https://www.facebook.com/flightradar24"
+    assert "site:facebook.com/flightradar24" in fr24_fb["endpoint"]
+    assert fr24_fb["scope_filter"] is True
+    caption = (
+        "The first non-stop flight from Toulouse to Melbourne is in the air. "
+        "The nearly 17,000 km flight is part of the Airbus A350-1000ULR flight "
+        "test campaign for Qantas Project Sunrise, with the aircraft due to "
+        "continue certification testing after it returns to Toulouse."
+    )
+    social_title, social_summary = fetch._social_caption_fields(caption)
+    assert len(social_title) <= fetch.SOCIAL_HEADLINE_MAX_CHARS
+    assert social_summary == caption
+    assert common.item_has_material({
+        "title": social_title,
+        "summary": social_summary,
+    })
+    assert fetch._social_caption_fields("❤️") == ("❤️", "")
     assert "OUT-OF-SCOPE" in write.SYSTEM_PROMPT
     assert "Military replicas" in write.SYSTEM_PROMPT
 

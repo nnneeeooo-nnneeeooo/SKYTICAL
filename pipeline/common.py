@@ -252,6 +252,38 @@ SOURCES: dict[str, dict] = {
             "en": "Flight tracking & delay data",
         },
     },
+    "flightradar24": {
+        "name": "Flightradar24",
+        "kind": "data",
+        "fmt": "RSS",
+        "url": "https://www.flightradar24.com/blog/",
+        "endpoint": "https://www.flightradar24.com/blog/feed/",
+        "type": "rss",
+        "cover": {
+            "zh": "官方航班追蹤新聞、特殊航班與航空事件",
+            "en": "Official flight-tracking news, special flights & events",
+        },
+    },
+    "flightradar24facebook": {
+        "name": "Flightradar24 Facebook",
+        "kind": "data",
+        "fmt": "Google News RSS",
+        "url": "https://www.facebook.com/flightradar24",
+        # Facebook does not offer a public page RSS feed. Google News indexes
+        # the official page's public captions, so use its read-only RSS
+        # results instead of scraping Facebook or requiring an access token.
+        "endpoint": (
+            "https://news.google.com/rss/search?"
+            "q=site:facebook.com/flightradar24%20when:7d"
+            "&hl=en-US&gl=US&ceid=US:en"
+        ),
+        "type": "rss",
+        "scope_filter": True,
+        "cover": {
+            "zh": "官方 Facebook 公開貼文與即時特殊航班動態",
+            "en": "Official Facebook posts and live special-flight updates",
+        },
+    },
     "caataiwan": {
         "name": "CAA Taiwan",
         "kind": "official",
