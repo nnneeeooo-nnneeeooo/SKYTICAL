@@ -9,85 +9,199 @@
   "window_end": "2026-07-27T15:00:00+08:00",
   "cutoff_time": "2026-07-27T15:00:00+08:00",
   "scheduled_time": "2026-07-27T15:15:00+08:00",
-  "generated_at": "2026-07-27T18:50:51.680202+08:00",
+  "generated_at": "2026-07-29T02:10:25.827583+08:00",
   "status": "published",
-  "item_count": 0,
+  "item_count": 3,
   "sections": {
     "aviation_incidents": [],
-    "taiwan_aviation": [],
-    "international_aviation": [],
+    "taiwan_aviation": [
+      {
+        "event_id": "ev-ab53f79cee24e246",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "taiwan_aviation",
+        "headline": "國防部長澄清漢光無本島實彈 總統視導不影響演訓",
+        "summary": "國防部長顧立雄澄清漢光42號演習期間台灣本島無實彈射擊計畫，總統賴清德視導行程不會干擾部隊正常演訓",
+        "headline_en": "Defense Minister Clarifies No Live-Fire on Taiwan During Han Kuang; Presidential Visit Won’t Affect Exercise",
+        "summary_en": "Defense Minister Gu Li-xiong said the Han Kuang 42 live‑troop exercise starting August 5 will not include any live‑fire on Taiwan proper, and that President Lai Ching‑te’s observation visit will not disrupt regular training. He added that the president, as commander‑in‑chief, is expected to observe and encourage troops, but exercise subjects and verification items will remain unchanged.",
+        "event_time": null,
+        "source_published_at": "2026-07-27T01:41:00+00:00",
+        "source_updated_at": null,
+        "location": "台灣本島",
+        "entities": [
+          "國防部",
+          "立法院",
+          "聯合報",
+          "台灣本島",
+          "2026-07-27",
+          "2026-08-05"
+        ],
+        "severity": "routine",
+        "taiwan_priority": true,
+        "military": false,
+        "sources": [
+          {
+            "name": "中央社 CNA — 顧立雄：總統視導漢光不影響演訓 本島無規劃實彈射擊",
+            "url": "https://www.cna.com.tw/news/aipl/202607270026.aspx"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260727-0443-defense-minister-clarifies-no-live-fire"
+      },
+      {
+        "event_id": "ev-2c889ceaa98203c8",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "taiwan_aviation",
+        "headline": "共軍建總統府模型 國防部：掌握情報籲支持國防預算",
+        "summary": "外媒報導共軍建造台灣總統府及蘇澳軍港模型，國防部發言人孫立方中將表示國軍已完整掌握情報並研擬敵可能行動應變措施，並強調此事凸顯台灣面臨嚴峻敵情威脅，呼籲全民支持國防預算以獲取建軍備戰資源。",
+        "headline_en": "PLA builds models of Taiwan presidential office, Su'ao base; MOA urges defense budget",
+        "summary_en": "The People's Liberation Army has constructed scale models of Taiwan's Presidential Office and the Su'ao naval base, according to foreign media reports cited by Business Insider and The Telegraph. Taiwan's Ministry of National Defense spokesperson Sun Li-fang confirmed that the armed forces have complete intelligence on the matter and have prepared appropriate response measures. Sun emphasized that the development underscores the severe security threat facing Taiwan and called on the public to back the defense budget so the military can secure the resources needed for training and readiness.",
+        "event_time": null,
+        "source_published_at": "2026-07-27T03:00:00+00:00",
+        "source_updated_at": null,
+        "location": "總統府",
+        "entities": [
+          "國防部",
+          "共軍",
+          "美國「財經內幕」",
+          "英國「每日電訊報」",
+          "戰機",
+          "總統府",
+          "蘇澳軍港",
+          "蘇澳海軍基地",
+          "2026-07-27"
+        ],
+        "severity": "routine",
+        "taiwan_priority": true,
+        "military": true,
+        "sources": [
+          {
+            "name": "中央社 CNA — 共軍建總統府模型 國軍：凸顯敵情嚴峻籲挺國防預算",
+            "url": "https://www.cna.com.tw/news/aipl/202607270058.aspx"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260727-0443-pla-builds-models-of-taiwan-presidential"
+      }
+    ],
+    "international_aviation": [
+      {
+        "event_id": "ev-13d1aef9d83b620d",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "aviation_industry",
+        "headline": "倫敦蓋特威克機場夏季高峰停水 旅客設施受影響",
+        "summary": "根據 Simple Flying 與 BBC 的報導，倫敦蓋特威克機場於2026年7月26日（星期日）遭遇全園區自來水中斷，導致旅客廁所、餐飲及清潔服務無法正常運作。機場人員已派發瓶裝水、臨時廁所並啟動修復工程，盡快恢復供水。",
+        "headline_en": "Gatwick Airport Experiences Water Outage During Peak Summer Travel",
+        "summary_en": "According to reports from Simple Flying and the BBC, London Gatwick Airport suffered a complete loss of running water on Sunday, July 26, 2026, during the peak of the summer holiday season. The outage affected terminal restrooms, food outlets and cleaning services, leaving passengers without basic amenities. Airport officials said they have deployed bottled water distribution and are working with contractors to restore the water supply as quickly as possible.",
+        "event_time": null,
+        "source_published_at": "2026-07-27T06:25:00+00:00",
+        "source_updated_at": null,
+        "location": null,
+        "entities": [
+          "Simple Flying",
+          "BBC",
+          "London Gatwick Airport",
+          "2026-07-26"
+        ],
+        "severity": "routine",
+        "taiwan_priority": false,
+        "military": false,
+        "sources": [
+          {
+            "name": "Simple Flying — London Gatwick Airport Loses All Running Water At Height Of…",
+            "url": "https://simpleflying.com/london-gatwick-airport-no-running-water-summer-2026/"
+          },
+          {
+            "name": "BBC — Gatwick Airport hit by running water outage",
+            "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBpamNZYzZOWmdPQm1BTzJQV0xIaHdqaVBqMHc5VFZzc1JHYnhvWmFPVHNhalphTnMyUzN5UGQ4a0FuaWdOSkhpRC1lMEJ3RXhDajBNYmxfUklNUQ?oc=5"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260727-0708-gatwick-airport-experiences-water-outage"
+      }
+    ],
     "ground_and_maritime": []
   },
   "checked_sources": [
     {
       "name": "FAA",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "NTSB",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "ICAO",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "IATA",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "EASA",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "Eurocontrol",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "Reuters",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "The Aviation Herald",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "CAA Taiwan",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "Simple Flying",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "中央社 CNA",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "國防部・軍聞社",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "臺灣交通要聞",
       "ok": true,
-      "last_fetch_utc": "2026-07-27T09:51Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
+    },
+    {
+      "name": "Airbus",
+      "ok": true,
+      "last_fetch_utc": "2026-07-28T17:53Z"
+    },
+    {
+      "name": "Boeing",
+      "ok": true,
+      "last_fetch_utc": "2026-07-28T17:53Z"
     }
   ],
-  "warnings": [
-    "AI 搜尋服務暫時不穩定，本期未能產生條列內容；我們正努力恢復服務，系統將於下一期自動重試"
-  ],
+  "warnings": [],
   "generation_mode": "deterministic",
   "generation_model": null,
   "grounded_beta": {
