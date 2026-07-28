@@ -143,6 +143,19 @@ ultra = next(r for r in rows if "ultra" in r["label"])
 expect_usd = (ultra["in"] / 1e6 * 0.423) + (ultra["out"] / 1e6 * 2.61)
 check("theoretical USD uses the reference price table",
       abs(ultra["usd"] - expect_usd) < 1e-9 and ultra["kind"] == "reference")
+gpt_rows = build.non_api_reference_rows(prices)
+check("GPT-5.6 Sol non-API pricing separates drafting and site editing",
+      [r["purpose"] for r in gpt_rows]
+      == ["新聞撰稿（手動補稿）", "網站修改（Codex）"]
+      and all(r["in"] == 5.0 and r["cached_in"] == 0.5
+              and r["out"] == 30.0 for r in gpt_rows))
+gpt_api_rows, _ = build.usage_rows(
+    {"models": {"openai:gpt-5.6-sol":
+                {"calls": 1, "inputTokens": 1_000_000,
+                 "outputTokens": 1_000_000, "unknownCalls": 0}}}, prices)
+check("GPT-5.6 Sol API usage would use the official $5/$30 rates",
+      gpt_api_rows[0]["usd"] == 35.0
+      and gpt_api_rows[0]["kind"] == "reference")
 check("totals aggregate across models",
       totals["calls"] == 8 and totals["usd"] > 0)
 rows2, _ = build.usage_rows(
@@ -182,6 +195,12 @@ page = (TMP / "site" / "u" / "testtoken-1234567890abc"
         / "index.html").read_text(encoding="utf-8")
 check("page is noindex and shows totals",
       "noindex" in page and "API 用量" in page and "$0" in page)
+check("page shows separate GPT-5.6 Sol non-API reference rows",
+      "GPT-5.6 Sol 非 API 理論牌價" in page
+      and "新聞撰稿（手動補稿）" in page
+      and "網站修改（Codex）" in page
+      and page.count("$30.00") == 2
+      and "不計入上方呼叫次數" in page)
 check("page never contains key-shaped strings",
       "test-not-a-real-key" not in page and "nvapi-" not in page)
 del os.environ["AVWIRE_USAGE_TOKEN"]

@@ -67,7 +67,8 @@ L = {
         "fleetBacklog": "積壓訂單", "fleetOrders": "本月新訂單",
         "delays": "今日延誤熱點機場", "autoCompiled": "自動彙整",
         "refreshNote": "本文隨來源每小時更新", "sourcesBox": "資料來源 Sources",
-        "genNote": "本文由自動化系統彙整生成，內容以原始來源為準。",
+        "genNote": "本文由自動化系統彙整生成，內容以原始來源為準",
+        "genNotePunct": "。",
         "photoKind": {"airframe_photo": "同機資料照片",
                       "file_photo": "資料照片（非事件現場照片）"},
         "photoSource": "照片來源",
@@ -141,7 +142,8 @@ L = {
         "fleetBacklog": "Backlog", "fleetOrders": "New orders this month",
         "delays": "Delay hotspots today", "autoCompiled": "Auto-compiled",
         "refreshNote": "Refreshes hourly with sources", "sourcesBox": "Sources",
-        "genNote": "This article was compiled automatically; the original sources prevail.",
+        "genNote": "This article was compiled automatically; the original sources prevail",
+        "genNotePunct": ".",
         "photoKind": {"airframe_photo": "File photo of this airframe",
                       "file_photo": "File photo (not from this event)"},
         "photoSource": "Photo source",
@@ -1356,6 +1358,35 @@ def usage_rows(ledger: dict, prices: dict):
     return rows, totals
 
 
+def non_api_reference_rows(prices: dict):
+    """Validated non-API list-price rows; never included in usage totals."""
+    rows = []
+    for raw in prices.get("nonApiReference") or []:
+        if not isinstance(raw, dict):
+            continue
+        model = str(raw.get("model") or "").strip()
+        purpose = str(raw.get("purpose") or "").strip()
+        price_in = raw.get("in")
+        cached_in = raw.get("cachedIn")
+        price_out = raw.get("out")
+        if (not model or not purpose
+                or not isinstance(price_in, (int, float))
+                or not isinstance(cached_in, (int, float))
+                or not isinstance(price_out, (int, float))):
+            continue
+        rows.append({
+            "model": model,
+            "purpose": purpose,
+            "in": float(price_in),
+            "cached_in": float(cached_in),
+            "out": float(price_out),
+            "access": str(raw.get("access") or "").strip(),
+            "note": str(raw.get("note") or "").strip(),
+            "source": str(raw.get("source") or "").strip(),
+        })
+    return rows
+
+
 def render_usage_dashboard(env, build) -> int:
     """Private dashboard at /u/<token>/ - only when the secret is set."""
     token = os.environ.get("AVWIRE_USAGE_TOKEN", "").strip()
@@ -1380,6 +1411,7 @@ def render_usage_dashboard(env, build) -> int:
     ctx = {
         "base": BASE_PATH, "favicon": FAVICON, "build": build,
         "rows": rows, "totals": totals, "daily": daily,
+        "non_api_rows": non_api_reference_rows(prices),
         "twd": totals["usd"] * rate, "rate": rate,
         "updated": ledger.get("updatedUtc") or "尚無紀錄",
         "tracking_since": ledger.get("trackingSinceUtc") or "尚未開始",
