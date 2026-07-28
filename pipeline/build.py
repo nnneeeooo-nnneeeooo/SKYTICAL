@@ -115,7 +115,7 @@ L = {
         "radarSource": "航機位置：Airplanes.live 公開社群 ADS-B；航班代碼與航線：ADSBdb；地圖：OpenStreetMap。",
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "快報",
-        "brIndexSub": "每日三次（臺北時間 07:15／15:15／23:15）的條列式全球航空與交通要聞快報，由具搜尋能力的模型彙整（Beta）；本站正式新聞請見「最新」。",
+        "brIndexSub": "每日三次（臺北時間 07:15／15:15／23:15）的條列式全球航空與交通要聞快報，以本站已查證新聞為基礎，並由具搜尋能力的模型補充彙整（Beta）。",
         "brLatest": "最新快報", "brWindow": "資料範圍", "brCutoff": "資料截止",
         "brGenerated": "系統整理完成", "brTo": "至",
         "brEmpty": "截至本期資料截止時間，系統在本次查核的指定來源中，未發現符合收錄門檻的新事件。",
@@ -204,7 +204,7 @@ L = {
         "radarSource": "Aircraft positions: Airplanes.live public community ADS-B; flight codes and routes: ADSBdb; map: OpenStreetMap.",
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "Briefings",
-        "brIndexSub": "A bulleted global air & transport bulletin three times daily (07:15 / 15:15 / 23:15 Taipei time), compiled by a search-capable model (Beta); the site's formal articles live under Latest.",
+        "brIndexSub": "A bulleted global air and transport briefing three times daily (07:15 / 15:15 / 23:15 Taipei time), based on the site's verified articles and supplemented by a search-capable model (Beta).",
         "brLatest": "Latest briefing", "brWindow": "Data window",
         "brCutoff": "Data cutoff", "brGenerated": "Compiled", "brTo": "to",
         "brEmpty": "As of this edition's data cutoff, no new events meeting the inclusion bar were found in the sources checked for this edition.",
@@ -1154,6 +1154,8 @@ def latest_briefing(rows):
         cut = _tpe_dt(r.get("cutoff_time"))
         if cut is None:
             continue
+        if cut > now_utc().astimezone(TPE):
+            continue
         if best is None or cut > best[0]:
             best = (cut, r)
     return best[1] if best else None
@@ -1172,8 +1174,11 @@ def collect_briefings():
         if not bid or not _ID_RE.match(bid):
             continue
         data = load_json(DATA_DIR / "briefings" / f"{bid}.json", None)
+        cutoff = _tpe_dt((data or {}).get("cutoff_time"))
         if (isinstance(data, dict)
-                and data.get("status") in ("published", "partial")):
+                and data.get("status") in ("published", "partial")
+                and cutoff is not None
+                and cutoff <= now_utc().astimezone(TPE)):
             briefs.append(data)
     briefs.sort(key=lambda b: str(b.get("cutoff_time") or ""), reverse=True)
     return briefs
@@ -1228,10 +1233,10 @@ def brief_item_view(item, lang: str, published_ids):
 
 def _render_include_articles() -> bool:
     """Render-time twin of briefing._include_articles(): hourly and briefing
-    workflows race on Pages deploys (last deploy wins), so a build from a
-    stale pre-bulletin JSON must not put formal articles back on the page."""
+    workflows race on Pages deploys (last deploy wins), so both must use the
+    same default.  Set BRIEFING_INCLUDE_ARTICLES=false for search-only mode."""
     return (os.environ.get("BRIEFING_INCLUDE_ARTICLES", "").strip().lower()
-            in ("1", "true", "yes"))
+            not in ("0", "false", "no"))
 
 
 def brief_view(b, lang: str, t, published_ids):
