@@ -99,6 +99,39 @@ def main() -> None:
         "title": "Daily activity report",
     }) == "mil"
 
+    mixed_company_results = article(
+        "波音第二季營收246億美元 交付171架民航機",
+        category="mil",
+    )
+    mixed_company_results["zh"]["summary"] = (
+        "波音公布第二季財報與民航機交付量。")
+    mixed_company_results["en"]["title"] = (
+        "Boeing Reports Q2 Revenue and Commercial Deliveries")
+    mixed_company_results["en"]["summary"] = (
+        "The company reported quarterly results and commercial deliveries.")
+    mixed_company_results["zh"]["body"] = [
+        "正文次要段落提及國防部門與美國海軍計畫。"]
+    mixed_company_results["en"]["body"] = [
+        "A secondary paragraph mentions the U.S. Navy and defense segment."]
+    mixed_company_results["entities"] = {
+        "organizations": ["U.S. Navy", "U.S. Space Force"],
+        "aircraft_models": ["VC-25B", "MQ-25A"],
+    }
+    assert not common.is_military_story(mixed_company_results)
+    assert common.story_category("mil", mixed_company_results) == "biz"
+    assert build.prep_article(mixed_company_results)["cat"] == "biz"
+
+    military_order = {
+        "title": "美國海軍向製造商下單採購新型軍機",
+        "summary": "採購案直接涉及海軍航空兵力。",
+    }
+    assert common.story_category("biz", military_order) == "mil"
+
+    prompt_words = " ".join(write.SYSTEM_PROMPT.split())
+    assert "secondary part of the report" in prompt_words
+    assert "body paragraphs do not by themselves make the story mil" \
+        in prompt_words
+
     print("test_categories: OK")
 
 
