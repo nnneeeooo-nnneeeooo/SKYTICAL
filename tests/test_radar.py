@@ -11,6 +11,17 @@ import build  # noqa: E402
 
 
 def main() -> None:
+    assert build.writer_model(
+        "nvidia:nvidia/nemotron-3-super-120b-a12b"
+    ) == "Nemotron 3 Super"
+    assert build.writer_model(
+        "gemini:gemini-3.6-flash"
+    ) == "Gemini 3.6 Flash"
+    assert build.writer_model(
+        "anthropic:claude-opus-5"
+    ) == "Claude Opus 5"
+    assert build.writer_model("unknown:model") is None
+
     assert build.main() == 0
 
     zh = (ROOT / "site" / "radar" / "index.html").read_text(encoding="utf-8")
@@ -18,6 +29,14 @@ def main() -> None:
         encoding="utf-8")
     home = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
     js = (ROOT / "static" / "radar.js").read_text(encoding="utf-8")
+    zh_articles = [
+        path.read_text(encoding="utf-8")
+        for path in (ROOT / "site" / "news").glob("*/index.html")
+    ]
+    en_articles = [
+        path.read_text(encoding="utf-8")
+        for path in (ROOT / "site" / "en" / "news").glob("*/index.html")
+    ]
 
     for page in (zh, en):
         assert 'id="radar-map"' in page
@@ -45,6 +64,25 @@ def main() -> None:
     assert "routeCacheKey" in js
     assert "https://tile.openstreetmap.org/{z}/{x}/{y}.png" in js
     assert "textContent" in js
+
+    assert any(
+        "本文由自動化系統彙整生成，內容以原始來源為準。 • "
+        "Nemotron 3 Super" in page
+        for page in zh_articles
+    )
+    assert any(
+        "本文由自動化系統彙整生成，內容以原始來源為準。 • "
+        "Nemotron 3 Ultra" in page
+        for page in zh_articles
+    )
+    assert any(
+        "This article was compiled automatically; the original sources "
+        "prevail. • Nemotron 3 Super" in page
+        for page in en_articles
+    )
+    assert all("AI 撰稿模型" not in page for page in zh_articles)
+    assert all("Drafted by" not in page for page in en_articles)
+    assert all("model-mark" not in page for page in zh_articles + en_articles)
     print("test_radar: OK")
 
 
