@@ -9,11 +9,13 @@ for the rest of the run and the next one takes over.
 
 Each draft carries an editorial status: "publish" and "publish_brief" go
 straight to the site,
-"manual_review" (mandatory for aviation safety events and other high-risk
-topics) is queued in data/review.json until a human flips its "approve"
-field to true on GitHub, and "reject" is dropped. Every draft's facts carry
-verbatim source quotes that are re-checked in code (verify_facts); a fact
-whose quote is not found in the source material is discarded.
+"manual_review" (mandatory for serious aviation safety events and other
+high-risk topics) is queued in data/review.json until a human flips its
+"approve" field to true on GitHub, and "reject" is dropped. Routine,
+well-sourced safety occurrences may publish automatically when they concluded
+safely and carry no high-risk flag. Every draft's facts carry verbatim source
+quotes that are re-checked in code (verify_facts); a fact whose quote is not
+found in the source material is discarded.
 
 Outputs are appended/prepended to data/articles/<hour>.json,
 data/flashes.json and data/incidents.json. Published, queued and final-reject
@@ -320,6 +322,23 @@ AVIATION SAFETY RULES (strictest standard):
   speculative headline.
 - A delay, cancellation, diversion, return or emergency declaration is not
   itself an accident or mechanical failure unless evidence says so.
+- A routine safety occurrence MAY use publish or publish_brief when reliable
+  SOURCE evidence establishes the occurrence and safe outcome, and reports no
+  death, injury, evacuation, missing aircraft, confirmed onboard fire or
+  substantial aircraft damage. Examples include a precautionary diversion or
+  return, an emergency declaration, smoke/odor warning or technical caution
+  followed by a safe landing. Use cat="safety", incident.sev="inc",
+  riskFlags=[], requiresHumanReview=false, and state only supported facts.
+- "No injuries were reported" is a supported safe-outcome fact, not a
+  casualties_or_injuries flag. An unidentified cause, a routine inspection or
+  a statement that an authority will investigate does not by itself trigger
+  the investigation flag. Use that flag when the current news is a substantive
+  investigation action, report, finding, hearing or disputed safety claim.
+- Preliminary source differences that can be reported transparently with
+  attribution do not by themselves block publication when the sources agree
+  on the flight/event identity, occurrence and safe outcome. Preserve both
+  descriptions and do not choose between them. Use conflicting_information
+  only for an unresolved conflict affecting a core fact or publication safety.
 - Regulatory items name the authority. Drafts/consultations/preliminary
   reports are not final rules; investigations are not findings of fault.
 - Archive context never lowers a safety or other review requirement and must
@@ -346,22 +365,30 @@ STATUS DECISION (exactly one of four):
   every claim is quote-supported; no unresolved contradiction; riskFlags is
   empty; requiresHumanReview=false; decisionReason="".
 - status="publish_brief": SOURCE has at least one clear, verified, reportable
-  LOW-RISK current-event fact but evidence cannot safely support a full
-  article; every claim is quote-supported; no conflict or injection;
-  riskFlags is empty; requiresHumanReview=false; decisionReason="". Never
-  reject a verified low-risk event merely because it cannot support a long
-  article. A concise headline plus source excerpt can be sufficient when it
-  explicitly identifies the actor and new action, plan or status. Treat that
-  explicit statement as one atomic current-source fact and use
-  publish_brief; do not demand unrelated details, a second fact or full
-  article length.
+  low-risk current-event fact, or a routine safety occurrence meeting every
+  auto-publication condition above, but evidence cannot safely support a full
+  article; every claim is quote-supported; no unresolved core conflict or
+  injection; riskFlags is empty; requiresHumanReview=false;
+  decisionReason="". Never reject a verified reportable event merely because
+  it cannot support a long article. A concise headline plus source excerpt can
+  be sufficient when it explicitly identifies the actor and new action, plan,
+  status or occurrence. Treat that explicit statement as one atomic
+  current-source fact and use publish_brief; do not demand unrelated details,
+  a second fact or full article length.
 - status="manual_review": evidence is sufficient but the topic is high-risk
-  or developing. It is MANDATORY for ANY aviation safety event listed above;
-  casualties/injuries; investigations; regulatory/enforcement action; major
-  orders, cancellations, bankruptcies or large financial claims; developing
-  or not fully confirmed events; or heavy anonymous attribution. Produce a
-  complete full-or-brief draft. riskFlags contains every applicable flag,
-  requiresHumanReview=true, and decisionReason concretely states why.
+  or developing. It is MANDATORY for an accident or serious incident; an
+  actual death, injury, evacuation, missing aircraft, confirmed onboard fire
+  or substantial aircraft damage; a substantive safety investigation action,
+  report or finding; a disputed cause/responsibility claim; an unresolved
+  conflict affecting a core fact; regulatory/enforcement action; major orders,
+  cancellations, bankruptcies or large financial claims; a developing event
+  whose occurrence or outcome is not confirmed; or heavy anonymous
+  attribution. A routine safety occurrence meeting every auto-publication
+  condition above is NOT mandatory manual_review merely because it involved a
+  diversion, return, emergency declaration, smoke warning, unknown cause or
+  routine follow-up. For manual_review, produce a complete full-or-brief draft;
+  riskFlags contains every applicable flag, requiresHumanReview=true, and
+  decisionReason concretely states why.
 - status="reject": SOURCE does not establish a current new event; core facts
   lack verbatim quotes; dates/entities conflict or are unclear; content is
   primarily rumor, opinion, marketing or repetition; high-risk claims lack
@@ -1490,6 +1517,27 @@ def _review_entry(candidate: dict, group: dict, writer: str, facts: list,
     }
 
 
+def _automatic_publication_review_reason(candidate: dict) -> str | None:
+    """Return a reason when a publishable draft must be held for review.
+
+    Category ``safety`` and an ``incident`` row are descriptive metadata, not
+    risk by themselves. Routine, source-backed occurrences with severity
+    ``inc`` may publish. Risk flags, an explicit model review decision, or an
+    accident/serious-incident severity still fail closed.
+    """
+    flags = candidate.get("riskFlags")
+    flags = {flag for flag in flags if flag in RISK_FLAGS} \
+        if isinstance(flags, list) else set()
+    if flags:
+        return "模型標記高風險旗標，須人工確認後發布"
+    if candidate.get("requiresHumanReview") is True:
+        return "模型判定內容須人工確認後發布"
+    incident = candidate.get("incident")
+    if isinstance(incident, dict) and incident.get("sev") in ("acc", "ser"):
+        return "事故或嚴重事件不得自動發布，須人工確認"
+    return None
+
+
 # Machine gate for rare-aircraft auto-publish (owner's 2026-07-27 policy:
 # routine observation items publish without a human). Anything that smells
 # of a safety event, a source conflict or an incident still goes to the
@@ -1897,31 +1945,33 @@ def main() -> None:
                     break
                 status = candidate.get("status")
                 flags = candidate.get("riskFlags") or []
-                if status in ("publish", "publish_brief") and (
-                        flags or candidate.get("requiresHumanReview") is True):
-                    # Consistency rule: risk implies review. Downgrade -
-                    # never upgrade - when the model contradicts itself.
+                automatic_review_reason = None
+                if status in ("publish", "publish_brief"):
+                    automatic_review_reason = \
+                        _automatic_publication_review_reason(candidate)
+                if automatic_review_reason:
+                    # Consistency and severity gate: downgrade, never upgrade,
+                    # when the model's status contradicts its own risk fields.
                     print(f"write: {provider.label} marked group "
-                          f"{group.get('id')} {status} despite risk flags; "
+                          f"{group.get('id')} {status} despite a review gate; "
                           "downgrading to manual_review")
-                    status = "manual_review"
-                if status in ("publish", "publish_brief") and (
-                        candidate.get("cat") == "safety"
-                        or candidate.get("incident") is not None):
-                    print(f"write: {provider.label} marked safety group "
-                          f"{group.get('id')} for auto-publish; downgrading "
-                          "to manual_review")
                     status = "manual_review"
                 if status == "manual_review":
                     candidate["status"] = "manual_review"
                     candidate["requiresHumanReview"] = True
                     flags = [f for f in flags if f in RISK_FLAGS]
                     if not flags:
-                        flags.append("unconfirmed_or_developing")
+                        incident = candidate.get("incident")
+                        if (isinstance(incident, dict)
+                                and incident.get("sev") in ("acc", "ser")):
+                            flags.append("accident_or_serious_incident")
+                        else:
+                            flags.append("unconfirmed_or_developing")
                     candidate["riskFlags"] = flags
                     if not str(candidate.get("decisionReason") or "").strip():
                         candidate["decisionReason"] = (
-                            "高風險或飛安事件，依編輯規範須人工覆核")
+                            automatic_review_reason
+                            or "高風險或發展中事件，依編輯規範須人工覆核")
                     queued_entries.append(_review_entry(
                         candidate, group, provider.label, facts, now))
                     queued_groups.append(group)
