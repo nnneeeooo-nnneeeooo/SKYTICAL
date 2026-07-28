@@ -34,6 +34,7 @@ from briefing import (  # noqa: E402
     TPE,
     event_fingerprint,
     get_briefing_window,
+    scheduled_taipei_date,
 )
 
 CHECKS = 0
@@ -195,6 +196,10 @@ check("23:15 UTC previous day maps to Taipei morning date",
 check("07:15 UTC maps to Taipei afternoon date",
       datetime(2026, 7, 27, 7, 15, tzinfo=timezone.utc)
       .astimezone(TPE).date() == D)
+check("delayed evening cron after Taipei midnight keeps previous date",
+      scheduled_taipei_date(
+          "evening", datetime(2026, 7, 28, 16, 51,
+                              tzinfo=timezone.utc)) == date(2026, 7, 28))
 
 # 9: cron -> edition mapping, cross-checked against config and workflow.
 check("cron mapping matches spec",
@@ -218,6 +223,9 @@ check("workflow maps each schedule string explicitly",
 check("workflow supports dispatch edition+date inputs",
       "workflow_dispatch" in _wf and "edition:" in _wf and "date:" in _wf
       and "concurrency" in _wf)
+check("scheduled workflow passes cron so delayed date is resolved centrally",
+      'python pipeline/briefing.py --cron "${{ steps.ed.outputs.cron }}"'
+      in _wf)
 
 # 11: no now-minus-24h briefing logic anywhere in the module.
 _src = (REPO / "pipeline" / "briefing.py").read_text(encoding="utf-8")
@@ -533,22 +541,20 @@ _marks_fatal = _b.brief_item_view(_fatal_item, "zh", set())["marks"]
 check("fatal items render warning+red marks",
       "⚠" in _marks_fatal and "\U0001f534" in _marks_fatal)
 
-# ── bulletin-only production default ─────────────────────────────────────────
+# ── verified-article fallback production default ─────────────────────────────
 
 reset()
 write_sources(ok=True)
-write_articles([make_article("a-bul", "正式新聞不入快報",
+write_articles([make_article("a-bul", "正式新聞作為快報回退",
                              tpe(2026, 7, 27, 6))])
 del os.environ["BRIEFING_INCLUDE_ARTICLES"]
 briefing.main(["--edition", "morning", "--date", "2026-07-27"])
-os.environ["BRIEFING_INCLUDE_ARTICLES"] = "true"
 bm = load_brief("2026-07-27-morning")
-check("default mode keeps formal site articles OUT of the bulletin",
-      bm["item_count"] == 0
-      and all(v == [] for v in bm["sections"].values()))
+check("default mode includes verified site articles as fallback",
+      bm["item_count"] == 1)
 
 # render-time gate: hourly builds race briefing builds on Pages deploys, so
-# build.py must enforce bulletin-only even over a stale pre-bulletin JSON
+# build.py must use the same include-by-default policy.
 _stale_item = {"headline": "殘留的正式新聞", "summary": "s",
                "severity": "routine", "item_type": "new", "sources": [],
                "article_id": None,
@@ -564,17 +570,63 @@ _stale = {
     },
     "intro_zh": "為合併版寫的導言",
 }
-del os.environ["BRIEFING_INCLUDE_ARTICLES"]
+os.environ.pop("BRIEFING_INCLUDE_ARTICLES", None)
 _bv = _b.brief_view(_stale, "zh", _b.L["zh"], set())
-os.environ["BRIEFING_INCLUDE_ARTICLES"] = "true"
-check("render gate: stale merged JSON still renders bulletin-only",
-      _bv["total"] == 1
-      and all(it["grounded"]
-              for s in _bv["sections"] for it in s["items"])
-      and _bv["intro"] == "")
+check("render gate includes verified articles by default",
+      _bv["total"] == 3 and _bv["intro"] == "為合併版寫的導言")
+os.environ["BRIEFING_INCLUDE_ARTICLES"] = "false"
 _bv2 = _b.brief_view(_stale, "zh", _b.L["zh"], set())
-check("render gate: BRIEFING_INCLUDE_ARTICLES=true restores merged render",
-      _bv2["total"] == 3 and _bv2["intro"] == "為合併版寫的導言")
+os.environ["BRIEFING_INCLUDE_ARTICLES"] = "true"
+check("render gate: explicit false restores search-only mode",
+      _bv2["total"] == 1
+      and all(it["grounded"]
+              for s in _bv2["sections"] for it in s["items"])
+      and _bv2["intro"] == "")
+
+# ── delayed cron, future-window guard and grounded fallback ──────────────────
+
+reset()
+write_sources(ok=True)
+write_articles([make_article("a-delay", "跨午夜仍屬前日晚報",
+                             tpe(2026, 7, 27, 20))])
+_real_now_utc = briefing.now_utc
+briefing.now_utc = lambda: datetime(2026, 7, 27, 16, 51,
+                                   tzinfo=timezone.utc)
+briefing.main(["--cron", "15 15 * * *"])
+briefing.now_utc = _real_now_utc
+check("delayed evening cron writes previous Taipei date",
+      load_brief("2026-07-27-evening")["item_count"] == 1
+      and not (TMP / "briefings" / "2026-07-28-evening.json").exists())
+
+reset()
+write_sources(ok=True)
+briefing.now_utc = lambda: datetime(2026, 7, 27, 9, 0,
+                                   tzinfo=timezone.utc)
+briefing.main(["--edition", "evening", "--date", "2026-07-27"])
+briefing.now_utc = _real_now_utc
+check("future/incomplete window is failed without a published JSON",
+      not (TMP / "briefings" / "2026-07-27-evening.json").exists()
+      and [r["status"] for r in load_index()["briefings"]
+           if r["briefing_id"] == "2026-07-27-evening"] == ["failed"])
+
+reset()
+write_sources(ok=True)
+write_articles([make_article("a-fallback", "搜尋失敗仍有正式新聞",
+                             tpe(2026, 7, 27, 6))])
+import grounded as _grounded  # noqa: E402
+_real_enabled = _grounded.enabled
+_real_call_grounded = _grounded.call_grounded
+_grounded.enabled = lambda: True
+_grounded.call_grounded = lambda window: (_ for _ in ()).throw(
+    RuntimeError("simulated search outage"))
+briefing.main(["--edition", "morning", "--date", "2026-07-27"])
+_grounded.enabled = _real_enabled
+_grounded.call_grounded = _real_call_grounded
+bm = load_brief("2026-07-27-morning")
+check("grounded outage keeps article fallback and marks edition partial",
+      bm["status"] == "partial"
+      and bm["item_count"] == 1
+      and any("AI 搜尋服務暫時不穩定" in w for w in bm["warnings"]))
 
 # ── caps ─────────────────────────────────────────────────────────────────────
 
