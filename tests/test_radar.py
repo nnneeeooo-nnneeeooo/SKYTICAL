@@ -45,8 +45,17 @@ def main() -> None:
         assert 'id="radar-map"' in page
         assert "https://api.airplanes.live/v2/point/23.7000/120.9000/250" in page
         assert "https://api.adsbdb.com/v0/callsign" in page
+        assert 'data-default-callsign-mode="iata"' in page
         assert 'id="radar-callsign-icao"' in page
         assert 'id="radar-callsign-iata"' in page
+        assert (
+            'id="radar-callsign-icao" class="seg-btn" type="button"\n'
+            '                data-callsign-mode="icao" aria-pressed="false"'
+        ) in page
+        assert (
+            'id="radar-callsign-iata" class="seg-btn active" type="button"\n'
+            '                data-callsign-mode="iata" aria-pressed="true"'
+        ) in page
         assert "ADSBdb" in page
         assert "https://tile.openstreetmap.org" not in page  # lives in JS
         assert "leaflet@1.9.4" in page
@@ -61,6 +70,8 @@ def main() -> None:
     assert "seenPos > 30" in js
     assert "refreshMs" in js and "300000" in js
     assert "callsign_iata" in js
+    assert 'root.dataset.defaultCallsignMode === "icao" ? "icao" : "iata"' in js
+    assert '["icao", "iata"].includes(savedCallsignMode)' in js
     assert "flightroute.origin" in js
     assert "flightroute.destination" in js
     assert "routeConcurrency = 4" in js
