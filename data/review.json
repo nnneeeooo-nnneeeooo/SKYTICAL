@@ -1,5 +1,241 @@
 [
   {
+    "id": "g-20260728-1401-2",
+    "queuedUtc": "2026-07-28T14:01Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Financial and order backlog claim of $715 billion requires human review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Boeing reported a backlog reaching $715 billion in the second quarter.",
+        "sourceQuote": "Boeing Backlog Hits Massive $715 Billion Record In Q2 Surge",
+        "sourceUrl": "https://simpleflying.com/boeing-q2-2026-results-record-backlog/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Boeing's aircraft deliveries increased year-on-year in the second quarter.",
+        "sourceQuote": "deliveries are also up year-on-year.",
+        "sourceUrl": "https://simpleflying.com/boeing-q2-2026-results-record-backlog/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Financial and order backlog claim of $715 billion requires human review.",
+      "cat": "biz",
+      "zh": {
+        "title": "波音第二季訂單積壓達7150億美元 交付量亦同比成長",
+        "summary": "根據外媒Simple Flying報導，美國航空製造商波音公司在第二季的訂單積壓總額攀升至7150億美元。與此同時，該公司的飛機交付數量也比去年同期有所成長，展現出營運回升的趨勢。",
+        "body": [
+          "根據新聞媒體Simple Flying報導，美國飛機製造商波音公司在第二季度的財務與營運資料顯示，該公司的訂單積壓總額攀升至7150億美元，創下歷史新高紀錄。",
+          "在飛機交付業務方面，報導內容進一步指出，波音公司在第二季度的飛機交付量表現同樣獲得突破，交付數字較去年同期呈現成長趨勢。",
+          "根據上述第二季度的相關報導，波音公司在訂單積壓總額達7150億美元的同時，飛機交付數量亦同步高於去年同期水準，顯示該公司在該季度的業務進展狀況。"
+        ]
+      },
+      "en": {
+        "title": "Boeing Backlog Reaches Record $715 Billion in Q2 as Deliveries Increase",
+        "summary": "US aircraft manufacturer Boeing experienced a surge in the second quarter, pushing its order backlog to a record $715 billion, according to a report by Simple Flying. The American planemaker also recorded an increase in its aircraft deliveries compared to the same period in the previous year. The results highlight both a growing backlog figure and higher delivery numbers for Boeing during the second quarter, as reported by the aviation news outlet.",
+        "body": [
+          "According to a report published by aviation news outlet Simple Flying, US aircraft manufacturer Boeing recorded a massive surge during the second quarter, bringing its total order backlog to a record figure of $715 billion.",
+          "The report further stated that the American planemaker saw an increase in its commercial aircraft deliveries during the same second-quarter timeframe, with total deliveries rising on a year-on-year basis compared to the corresponding period last year.",
+          "Overall, the figures reported for the second quarter reflect both a record-high $715 billion backlog and an upward trend in year-on-year aircraft delivery performance for Boeing."
+        ]
+      },
+      "flash": {
+        "zh": "波音第二季訂單積壓達7150億美元 交付量同步成長",
+        "en": "Boeing reports record $715 billion backlog in Q2 with increased deliveries.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Boeing reported a backlog reaching $715 billion in the second quarter.",
+          "sourceQuote": "Boeing Backlog Hits Massive $715 Billion Record In Q2 Surge",
+          "sourceUrl": "https://simpleflying.com/boeing-q2-2026-results-record-backlog/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Boeing's aircraft deliveries increased year-on-year in the second quarter.",
+          "sourceQuote": "deliveries are also up year-on-year.",
+          "sourceUrl": "https://simpleflying.com/boeing-q2-2026-results-record-backlog/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Boeing"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "Q2"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260728-1401-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Boeing Backlog Hits Massive $715 Billion Record In Q2 Surge",
+          "url": "https://simpleflying.com/boeing-q2-2026-results-record-backlog/",
+          "publishedUtc": "2026-07-28T12:48Z",
+          "summary": "The US planemaker's deliveries are also up year-on-year.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/shutterstock_2427066121_cropped.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260728-1401-4",
+    "queuedUtc": "2026-07-28T14:01Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The news item reports a commercial engine selection order claim by AerCap for 15 Boeing 787 aircraft, triggering the financial and order claim risk flag under editorial guidelines.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "GE Aerospace announced that AerCap selected GEnx engines to power 15 additional Boeing 787 Dreamliner aircraft.",
+        "sourceQuote": "GE Aerospace Announces AerCap Selects GEnx Engines to Power 15 Additional Boeing 787 Dreamliners",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRVA0Vlg1czVfcE84MGR1cWVHSUJvUlZUR2tSU0ZEelRscWVyVG0yeHltd3Nwa0xHVEctcWdTanRCVHp2blVrM1RaczU3Rm9KeC05VW5nNXdueWNJek9zX1g4UUo4VmU5bnF0enZ4cjdtUUk5NjRIZGQzaGx3Qk4xRElyYlJuOTRPbVEzX2puc3JtcVRncW9CYVNzVUhiUm1ZakNkdmZxMEtzd3N1REVENXhRYkgwVmdJbDJXazJnOUViS3RDNjFTag?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The news item reports a commercial engine selection order claim by AerCap for 15 Boeing 787 aircraft, triggering the financial and order claim risk flag under editorial guidelines.",
+      "cat": "biz",
+      "zh": {
+        "title": "GE航太獲得AerCap選用GEnx發動機裝備15架波音787",
+        "summary": "根據GE Aerospace發布的官方新聞資訊，飛機租賃公司AerCap已選擇GEnx發動機，為額外15架波音787夢幻客機提供飛行動力。這項選擇將為旗下訂購的波音機隊配備發動機，顯示出廣體客機動力市場的持續業務拓展，並強化在機隊資產上的動力配置。",
+        "body": [
+          "GE Aerospace發布官方聲明宣布，航空租賃巨頭AerCap已選擇選購GEnx發動機，為其額外15架波音787夢幻客機（Boeing 787 Dreamliner）提供飛行動力。",
+          "根據這項動力選擇公告，AerCap選擇將GEnx發動機安裝於其最新增購的15架波音787廣體客機上，持續擴展其與發動機製造商GE Aerospace的合作關係。",
+          "這項消息於2026年7月25日由GE Aerospace官方新聞室發布，公告中確認了該批15架波音787客機的發動機選型決定。"
+        ]
+      },
+      "en": {
+        "title": "AerCap Selects GEnx Engines for 15 Boeing 787s, GE Aerospace Says",
+        "summary": "GE Aerospace has announced that aircraft leasing company AerCap has selected GEnx engines to power an additional 15 Boeing 787 Dreamliner aircraft. The decision specifies GE Aerospace's GEnx powerplant for AerCap's expanding fleet of Boeing widebody jets, continuing the aircraft lessor's selection of the engine type for its Dreamliner portfolio. The official corporate announcement regarding the engine selection covering these 15 additional Boeing 787 Dreamliners was released by GE Aerospace on July 25, 2026.",
+        "body": [
+          "GE Aerospace announced on July 25, 2026, that aircraft lessor AerCap has selected GEnx engines to power 15 additional Boeing 787 Dreamliner aircraft.",
+          "The engine selection agreement designates the GEnx powerplant for 15 additional Boeing 787 widebody jets in AerCap's aircraft portfolio, expanding the lessor's fleet powered by GE Aerospace engines.",
+          "The official update was released through the GE Aerospace newsroom, confirming the selection of GEnx engines for the additional 15 Boeing 787 Dreamliners ordered or managed by the leasing firm.",
+          "No further commercial terms or detailed delivery schedules were disclosed in the initial announcement."
+        ]
+      },
+      "flash": {
+        "zh": "GE Aerospace宣布AerCap選擇GEnx發動機配備15架波音787",
+        "en": "GE Aerospace announces AerCap selection of GEnx engines for 15 Boeing 787s",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "GE Aerospace announced that AerCap selected GEnx engines to power 15 additional Boeing 787 Dreamliner aircraft.",
+          "sourceQuote": "GE Aerospace Announces AerCap Selects GEnx Engines to Power 15 Additional Boeing 787 Dreamliners",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRVA0Vlg1czVfcE84MGR1cWVHSUJvUlZUR2tSU0ZEelRscWVyVG0yeHltd3Nwa0xHVEctcWdTanRCVHp2blVrM1RaczU3Rm9KeC05VW5nNXdueWNJek9zX1g4UUo4VmU5bnF0enZ4cjdtUUk5NjRIZGQzaGx3Qk4xRElyYlJuOTRPbVEzX2puc3JtcVRncW9CYVNzVUhiUm1ZakNkdmZxMEtzd3N1REVENXhRYkgwVmdJbDJXazJnOUV",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "GE Aerospace",
+          "AerCap"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Boeing 787 Dreamliner"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-25"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260728-1401-4",
+      "primarySource": "GE Aerospace 官方新聞室",
+      "items": [
+        {
+          "title": "GE Aerospace Announces AerCap Selects GEnx Engines to Power 15 Additional Boeing 787 Dreamliners",
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRVA0Vlg1czVfcE84MGR1cWVHSUJvUlZUR2tSU0ZEelRscWVyVG0yeHltd3Nwa0xHVEctcWdTanRCVHp2blVrM1RaczU3Rm9KeC05VW5nNXdueWNJek9zX1g4UUo4VmU5bnF0enZ4cjdtUUk5NjRIZGQzaGx3Qk4xRElyYlJuOTRPbVEzX2puc3JtcVRncW9CYVNzVUhiUm1ZakNkdmZxMEtzd3N1REVENXhRYkgwVmdJbDJXazJnOUViS3RDNjFTag?oc=5",
+          "publishedUtc": "2026-07-25T18:40Z",
+          "summary": "",
+          "image": null,
+          "source": "GE Aerospace 官方新聞室",
+          "sourceKey": "geaerospace"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260728-1327-3",
     "queuedUtc": "2026-07-28T13:28Z",
     "approve": false,
