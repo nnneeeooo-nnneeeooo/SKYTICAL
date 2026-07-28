@@ -9,85 +9,124 @@
   "window_end": "2026-07-28T15:00:00+08:00",
   "cutoff_time": "2026-07-28T15:00:00+08:00",
   "scheduled_time": "2026-07-28T15:15:00+08:00",
-  "generated_at": "2026-07-28T17:47:22.077294+08:00",
+  "generated_at": "2026-07-29T02:10:27.387473+08:00",
   "status": "published",
-  "item_count": 0,
+  "item_count": 1,
   "sections": {
     "aviation_incidents": [],
     "taiwan_aviation": [],
-    "international_aviation": [],
+    "international_aviation": [
+      {
+        "event_id": "ev-b89f96f45a6d4466",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "aviation_industry",
+        "headline": "波音787-9居2026年廣體機交付首位 加速三款舊機型退役",
+        "summary": "根據報導，波音787-9於2026年成為全球交付量最高的廣體客機。隨著波音787-9機型持續引進與交付，該機型的到來正進一步加速四家航空公司旗下共三款舊型客機的退役歷程。",
+        "headline_en": "Boeing 787-9 Leads 2026 Widebody Deliveries, Accelerating Older Aircraft Retirements",
+        "summary_en": "According to a report by Simple Flying, the Boeing 787-9 has emerged as the most-delivered widebody aircraft globally in 2026. The steady arrival and introduction of these new Boeing 787-9 aircraft are currently accelerating the retirement phase of three older legacy aircraft models across four commercial airlines. As new deliveries proceed throughout the year, these fleet adjustments reflect broader airline operational transitions and ongoing efforts by multiple international carriers to replace aging legacy twin-aisle equipment with modern widebody passenger jets.",
+        "event_time": null,
+        "source_published_at": "2026-07-28T01:00:00+00:00",
+        "source_updated_at": null,
+        "location": null,
+        "entities": [
+          "Boeing",
+          "Boeing 787-9",
+          "2026"
+        ],
+        "severity": "routine",
+        "taiwan_priority": false,
+        "military": false,
+        "sources": [
+          {
+            "name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly…",
+            "url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+      }
+    ],
     "ground_and_maritime": []
   },
   "checked_sources": [
     {
       "name": "FAA",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "NTSB",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "ICAO",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "IATA",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "EASA",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "Eurocontrol",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "Reuters",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "The Aviation Herald",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "CAA Taiwan",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "Simple Flying",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "中央社 CNA",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "國防部・軍聞社",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
     },
     {
       "name": "臺灣交通要聞",
       "ok": true,
-      "last_fetch_utc": "2026-07-28T09:40Z"
+      "last_fetch_utc": "2026-07-28T17:53Z"
+    },
+    {
+      "name": "Airbus",
+      "ok": true,
+      "last_fetch_utc": "2026-07-28T17:53Z"
+    },
+    {
+      "name": "Boeing",
+      "ok": true,
+      "last_fetch_utc": "2026-07-28T17:53Z"
     }
   ],
-  "warnings": [
-    "AI 搜尋服務暫時不穩定，本期未能產生條列內容；我們正努力恢復服務，系統將於下一期自動重試"
-  ],
+  "warnings": [],
   "generation_mode": "deterministic",
   "generation_model": null,
   "grounded_beta": {
