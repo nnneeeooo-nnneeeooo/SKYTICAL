@@ -164,6 +164,36 @@ check("GPT-5 family reference catalogue covers official text models",
 check("GPT Pro catalogue rows show no nonexistent cached-input discount",
       all(r["cached_in"] is None for r in family_rows
           if r["model"].endswith(" Pro")))
+codex_rows, codex_totals = build.codex_usage_rows({
+    "actualAdditionalApiSpendUsd": 0,
+    "entries": [{
+        "model": "GPT-5.6 Sol",
+        "inputTokens": 1_000_000,
+        "cachedInputTokens": 800_000,
+        "outputTokens": 100_000,
+        "reasoningOutputTokens": 25_000,
+    }],
+}, prices)
+check("Codex snapshot prices uncached, cached and output tokens separately",
+      len(codex_rows) == 1
+      and codex_rows[0]["uncached_in"] == 200_000
+      and abs(codex_totals["usd"] - 4.4) < 1e-9)
+check("Codex total tokens do not double-count cache or reasoning",
+      codex_totals["tokens"] == 1_100_000
+      and codex_totals["reasoning"] == 25_000
+      and codex_totals["actual_usd"] == 0)
+bad_codex_rows, _ = build.codex_usage_rows({
+    "entries": [
+        {"model": "GPT-5.6 Sol", "inputTokens": 10,
+         "cachedInputTokens": 11, "outputTokens": 1,
+         "reasoningOutputTokens": 0},
+        {"model": "GPT-5.6 Sol", "inputTokens": 10,
+         "cachedInputTokens": 5, "outputTokens": 1,
+         "reasoningOutputTokens": 2},
+    ],
+}, prices)
+check("Codex snapshot rejects impossible token subsets",
+      bad_codex_rows == [])
 unsafe_prices = {
     "gptFamilyReference": [
         {"model": "bad host", "in": 1, "cachedIn": 0.1, "out": 2,
@@ -225,21 +255,34 @@ check("valid token renders the private page",
            / "index.html").exists())
 page = (TMP / "site" / "u" / "testtoken-1234567890abc"
         / "index.html").read_text(encoding="utf-8")
+codex_snapshot = json.loads(
+    (REPO / "config" / "codex_usage.json").read_text(encoding="utf-8"))
+snapshot_entry = codex_snapshot["entries"][0]
+snapshot_total = (snapshot_entry["inputTokens"]
+                  + snapshot_entry["outputTokens"])
 check("page is noindex and shows totals",
       "noindex" in page and "API 用量" in page and "$0" in page)
+check("page shows exact Codex GPT-5 task totals and cost semantics",
+      "GPT-5 網站製作累計（Codex）" in page
+      and f"{snapshot_total:,}" in page
+      and f"{snapshot_entry['cachedInputTokens']:,}" in page
+      and "推理 tokens 已包含在輸出 tokens 內，不重複加總" in page
+      and "實際新增 API 支出" in page)
 check("page shows separate GPT-5.6 Sol non-API reference rows",
-      "方案內 GPT-5.6 Sol 工作對照" in page
+      "方案內 GPT-5.6 Sol 用途與單價" in page
       and "新聞撰稿（手動補稿）" in page
       and "網站修改（Codex）" in page
-      and page.count("$30.00") == 2
-      and "不計入上方呼叫次數" in page)
+      and page.count("<td>$30.00</td>") == 2
+      and "不重複計入任何總額" in page)
 check("page shows GPT-5 family official rates without adding them to totals",
       "GPT-5 系列 API 理論牌價" in page
       and "GPT-5.6 Terra" in page
       and "GPT-5.4 Pro" in page
       and "GPT-5 nano" in page
+      and "$0.500" in page
+      and "$0.025" in page
       and "不計入上方實際用量與理論總值" in page
-      and page.count("官方牌價") == 18)
+      and page.count("官方牌價") == 19)
 check("page never contains key-shaped strings",
       "test-not-a-real-key" not in page and "nvapi-" not in page)
 del os.environ["AVWIRE_USAGE_TOKEN"]
