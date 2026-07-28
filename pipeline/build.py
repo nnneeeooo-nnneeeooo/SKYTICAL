@@ -1162,7 +1162,11 @@ def latest_briefing(rows):
 
 
 def collect_briefings():
-    """Readable published/partial briefings, newest cutoff first."""
+    """Readable, already-closed briefings, newest cutoff first.
+
+    The cutoff guard also keeps a stale future-dated data file from becoming
+    public while a delayed scheduled run is being corrected.
+    """
     index = load_json(DATA_DIR / "briefings" / "index.json", {})
     briefs = []
     for row in index.get("briefings") or []:
