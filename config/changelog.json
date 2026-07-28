@@ -6,9 +6,16 @@
   "entries": [
     {
       "date": "2026-07-28",
-      "kind": "system",
+      "kind": "editorial",
       "commit": null,
-      "zh": "API 用量頁補上 GPT-5 系列官方理論牌價",
+      "zh": "全面調整網站更新紀錄，採用中性、精確且一致的技術用語",
+      "en": "Revised the site changelog with neutral, precise and consistent technical language"
+    },
+    {
+      "date": "2026-07-28",
+      "kind": "system",
+      "commit": "1bc62b6c9eee0719ce326ccfd5ecce1cc9544482",
+      "zh": "API 用量頁新增 GPT-5 系列官方參考牌價",
       "en": "Added official GPT-5 family reference pricing to the API usage dashboard"
     },
     {
@@ -22,8 +29,8 @@
       "date": "2026-07-28",
       "kind": "fix",
       "commit": "3d06ac0de74de8ac9f4b7fea8e8952fed695ad72",
-      "zh": "修正民航財報因次要國防內容而誤分類為軍事新聞",
-      "en": "Fixed civil-company results being misclassified as military because of secondary defence content"
+      "zh": "修正民航企業財報因附帶提及國防業務而誤分類為軍事新聞",
+      "en": "Prevented civil-company results from being classified as military solely because they mention secondary defence operations"
     },
     {
       "date": "2026-07-28",
@@ -36,8 +43,8 @@
       "date": "2026-07-28",
       "kind": "system",
       "commit": "616fa8c191dd31db313c4fc24f380b22f565db17",
-      "zh": "調整撰稿模型署名並在用量頁分列 GPT-5.6 Sol 理論成本",
-      "en": "Refined writer credits and separated GPT-5.6 Sol reference costs on the usage page"
+      "zh": "調整撰稿模型署名，並在用量頁分列 GPT-5.6 Sol 參考成本",
+      "en": "Refined writer credits and separated GPT-5.6 Sol reference costs on the usage dashboard"
     },
     {
       "date": "2026-07-28",
@@ -85,8 +92,8 @@
       "date": "2026-07-27",
       "kind": "editorial",
       "commit": "9883b8bb937428b9254c729d6fa6bdbc08eb4753",
-      "zh": "加強離題新聞過濾並支援文章封存",
-      "en": "Strengthened off-topic filtering and added article archiving"
+      "zh": "加強非相關新聞篩選並支援文章封存",
+      "en": "Strengthened relevance filtering and added article archiving"
     },
     {
       "date": "2026-07-27",
@@ -121,7 +128,7 @@
       "kind": "design",
       "commit": "ffe2f63113f1697931e685bcae93781d2d6c66a0",
       "zh": "快報來源異常改用讀者可理解的中性說明",
-      "en": "Replaced quota-oriented briefing errors with neutral reader-facing outage copy"
+      "en": "Replaced internal service-limit details with neutral reader-facing source-availability notices"
     },
     {
       "date": "2026-07-27",
@@ -141,15 +148,15 @@
       "date": "2026-07-27",
       "kind": "feature",
       "commit": "bd65912044d9c89e91884b2033896a093e5f3dfd",
-      "zh": "共機艦系列加入本站已驗證統計作為比較脈絡",
-      "en": "Added verified AVWIRE statistics as comparison context for PLA activity reports"
+      "zh": "中國人民解放軍機艦動態報導加入本站已驗證統計作為比較脈絡",
+      "en": "Added verified AVWIRE statistics as comparison context for PLA aircraft and vessel activity reports"
     },
     {
       "date": "2026-07-27",
       "kind": "design",
       "commit": "8fb37161b09fbe42fa5b76e725593b68173cb344",
-      "zh": "首頁 LIVE 快訊跑馬燈可直接開啟對應新聞",
-      "en": "Made every LIVE ticker item link directly to its story"
+      "zh": "首頁即時快訊列可直接開啟對應新聞",
+      "en": "Linked each homepage live-update item directly to its corresponding story"
     },
     {
       "date": "2026-07-27",
@@ -162,71 +169,71 @@
       "date": "2026-07-27",
       "kind": "editorial",
       "commit": "ca02039bd967e5f171183f38a1bfda588224b44b",
-      "zh": "新增杜撰偵測防線並誠實處理資訊不足的衍生報導",
-      "en": "Added a fabrication tripwire and safer handling of thin derivative reports"
+      "zh": "新增內容完整性檢查，並對證據不足的衍生報導採取保守處理",
+      "en": "Added content-integrity checks and conservative handling for derivative reports with insufficient evidence"
     },
     {
       "date": "2026-07-27",
       "kind": "editorial",
       "commit": "c89ebbe19866e0acbbe653bf96f177bbbf213ab4",
-      "zh": "加入機器強制的專有名詞台灣譯名表",
-      "en": "Added a machine-enforced glossary for Taiwan proper-name renderings"
+      "zh": "加入程式化驗證的專有名詞台灣慣用譯名表",
+      "en": "Added a programmatically validated glossary for Taiwan-standard proper-name renderings"
     },
     {
       "date": "2026-07-27",
       "kind": "fix",
       "commit": "1440c88c94e3d3fd7084fedd03dd78084a5cf286",
-      "zh": "搜尋型快報失敗紀錄保留回應內容以利除錯",
-      "en": "Included response bodies in grounded-briefing failure diagnostics"
+      "zh": "檢索增強快報的失敗紀錄保留回應內容，以支援診斷",
+      "en": "Included response bodies in retrieval-augmented briefing failure diagnostics"
     },
     {
       "date": "2026-07-27",
       "kind": "fix",
       "commit": "2d31eaf309de8a3726fe96030646554d1f074069",
-      "zh": "避免空白搜尋模型環境變數清除預設模型名稱",
-      "en": "Prevented an empty grounded-model setting from erasing the default model ID"
+      "zh": "避免空白的檢索模型環境變數覆寫預設模型名稱",
+      "en": "Prevented an empty retrieval-model setting from overriding the default model ID"
     },
     {
       "date": "2026-07-27",
       "kind": "feature",
       "commit": "3c569d96f84dd2b35e8486c13f6f967e3e0dc25d",
-      "zh": "快報 Beta 加入經核准的搜尋型資料掃描",
-      "en": "Added the approved grounded-search sweep to briefing Beta"
+      "zh": "快報測試版加入經核准的檢索增強資料掃描",
+      "en": "Added the approved retrieval-augmented source scan to the briefing preview"
     },
     {
       "date": "2026-07-27",
       "kind": "feature",
       "commit": "9e13218902589b08ad93116d8dca2fc261bf4580",
-      "zh": "快報升級為指定版型並納入台灣軍航與交通來源",
-      "en": "Upgraded briefings to the requested format with Taiwan military-air and transport sources"
+      "zh": "快報採用標準化版型，並納入台灣軍事航空與交通來源",
+      "en": "Standardised the briefing format and added Taiwan military aviation and transport sources"
     },
     {
       "date": "2026-07-27",
       "kind": "feature",
       "commit": "7f4234edf5a42e6e85b6180a29cb007c4075b698",
-      "zh": "稀有航機觀測可通過機器審核後自動發布",
-      "en": "Allowed rare-aircraft observations to auto-publish through a machine gate"
+      "zh": "特殊航機觀測經自動化規則驗證後可直接發布",
+      "en": "Enabled direct publication of special-aircraft observations after automated rule-based verification"
     },
     {
       "date": "2026-07-27",
       "kind": "design",
       "commit": "a7e8d762dff5ad4d64996183307e17dd5734b019",
-      "zh": "新聞照片改為完整比例、全彩顯示並標示主體",
-      "en": "Changed news photos to full-frame colour display with subject labels"
+      "zh": "新聞影像改為完整比例、全彩顯示並標示影像主體",
+      "en": "Changed news imagery to full-frame colour display with subject labels"
     },
     {
       "date": "2026-07-27",
       "kind": "feature",
       "commit": "c207832fa560f119bcaa45a3e0040917f5d97315",
-      "zh": "照片配對加入機場別名與主管機關備援",
-      "en": "Added airport aliases and agency fallback to photo matching"
+      "zh": "影像配對加入機場別名與主管機關來源備援",
+      "en": "Added airport aliases and official-agency source fallback to image matching"
     },
     {
       "date": "2026-07-27",
       "kind": "feature",
       "commit": "7969b78c9ec99a472e62c21785cbbca56b490b06",
-      "zh": "新增不公開連結的 API 用量與理論成本儀表板",
-      "en": "Added a private API-usage and theoretical-cost dashboard"
+      "zh": "新增未設公開導覽入口的模型服務用量與參考成本儀表板",
+      "en": "Added an unlisted model-service usage and reference-cost dashboard"
     },
     {
       "date": "2026-07-27",
@@ -239,8 +246,8 @@
       "date": "2026-07-27",
       "kind": "feature",
       "commit": "e817e0b43b3fdf43d1ce5fad41023e52e1440213",
-      "zh": "以免費無金鑰來源自動配對可授權新聞照片",
-      "en": "Added free keyless matching of reusable news photos"
+      "zh": "透過無須第三方 API 憑證的公開資料來源，自動配對具再利用授權的新聞影像",
+      "en": "Added automated matching of reusable news imagery through public sources that require no third-party API credentials"
     },
     {
       "date": "2026-07-27",
@@ -253,8 +260,8 @@
       "date": "2026-07-27",
       "kind": "editorial",
       "commit": "6dc975bce396593d514966c5fd21e0c90191b5b7",
-      "zh": "以完整編輯原則重寫方法論頁",
-      "en": "Rewrote the methodology page with the full editorial charter"
+      "zh": "依完整編輯準則重寫方法論頁",
+      "en": "Rewrote the methodology page to reflect the complete editorial standards"
     },
     {
       "date": "2026-07-27",
@@ -267,57 +274,57 @@
       "date": "2026-07-27",
       "kind": "feature",
       "commit": "f2a0da18d7de53380a2715f194289c86a077019b",
-      "zh": "加入台灣稀有航機抵達偵測與來源文字修正",
-      "en": "Added Taiwan rare-aircraft arrival detection and source-copy correction"
+      "zh": "加入台灣特殊航機抵達偵測與來源文字正規化",
+      "en": "Added Taiwan special-aircraft arrival detection and source-text normalisation"
     },
     {
       "date": "2026-07-27",
       "kind": "fix",
       "commit": "467952288fff0c71ffd70b3cadcb3214e22b8b17",
-      "zh": "修正模型推理設定批次的 12 項對抗審查問題",
-      "en": "Fixed all 12 adversarial-review findings in the reasoning-profile batch"
+      "zh": "完成模型推理設定的 12 項對抗式審查修正",
+      "en": "Resolved all 12 adversarial-review findings in the model reasoning profiles"
     },
     {
       "date": "2026-07-27",
       "kind": "system",
       "commit": "09ee870a83354273e10b4bdf2f4ad02f5e98a715",
       "zh": "加入模型分級推理設定、DeepSeek V4 Pro 備援與可觀測性",
-      "en": "Added per-model reasoning profiles, a DeepSeek V4 Pro slot and improved observability"
+      "en": "Added per-model reasoning profiles, a DeepSeek V4 Pro fallback route and improved observability"
     },
     {
       "date": "2026-07-27",
       "kind": "fix",
       "commit": "68142fffc729e4b98fbc6a6e5e4ec3f37b45238f",
-      "zh": "完整性檢查淘汰的內容不再占用每輪撰稿上限",
-      "en": "Stopped completeness-check rejections from consuming the per-run drafting cap"
+      "zh": "完整性檢查排除的內容不再計入每輪撰稿上限",
+      "en": "Excluded completeness-check rejections from the per-run drafting cap"
     },
     {
       "date": "2026-07-27",
       "kind": "system",
       "commit": "7251de3c986e1b501af2dc66caa19b2073d2f62a",
-      "zh": "新聞新鮮度時間窗改為可調整設定",
-      "en": "Made the news freshness window configurable"
+      "zh": "新聞時效性時間窗改為可調整設定",
+      "en": "Made the news recency window configurable"
     },
     {
       "date": "2026-07-27",
       "kind": "editorial",
       "commit": "8984f056b3da29b59dc31ac7990b7aafbd4a29f9",
-      "zh": "撰稿流程開始消化編輯拒絕結果並預先檢查資料完整性",
-      "en": "Added editorial-rejection consumption and a code-level completeness pre-check"
+      "zh": "撰稿流程可處理編輯拒絕結果，並預先檢查資料完整性",
+      "en": "Added editorial-rejection handling and a code-level completeness pre-check"
     },
     {
       "date": "2026-07-27",
       "kind": "system",
       "commit": "af752fc79dcaa64c8f79c5176ade3723e937ef75",
-      "zh": "在 CI 中對應既有 NVIDIA NIM 金鑰名稱",
-      "en": "Mapped the owner-named NVIDIA NIM secret in CI"
+      "zh": "在 CI 中對應既有 NVIDIA NIM 憑證環境變數",
+      "en": "Mapped the configured NVIDIA NIM credential environment variable in CI"
     },
     {
       "date": "2026-07-27",
       "kind": "system",
       "commit": "56059538a166460009ff9d32aa7bfc8dd21ce8b2",
-      "zh": "依 API 政策建立模型層級備援路由",
-      "en": "Added model-level failover routing under the configured API policy"
+      "zh": "依模型服務政策建立模型層級備援路由",
+      "en": "Added model-level failover routing under the configured model-service policy"
     },
     {
       "date": "2026-07-27",
@@ -337,15 +344,15 @@
       "date": "2026-07-26",
       "kind": "system",
       "commit": "c6907c960518d5980fc0340b01ce4f1968ff49da",
-      "zh": "加入免費無 API 標題聚合模式並完成 18 項審查修正",
-      "en": "Added free no-API headline aggregation and resolved 18 review findings"
+      "zh": "加入以公開來源為基礎、無模型 API 相依性的標題聚合模式，並完成 18 項審查修正",
+      "en": "Added public-source headline aggregation without model API dependencies and resolved 18 review findings"
     },
     {
       "date": "2026-07-26",
       "kind": "system",
       "commit": "75ce323e9e3c05054599e9e710b8e515c2e04774",
-      "zh": "匯入首批真實抓取資料並完成空狀態網站建置",
-      "en": "Seeded the first real fetched data and completed the empty-state site build"
+      "zh": "匯入首批正式擷取資料並完成空狀態網站建置",
+      "en": "Imported the first production source data and completed the empty-state site build"
     },
     {
       "date": "2026-07-26",
