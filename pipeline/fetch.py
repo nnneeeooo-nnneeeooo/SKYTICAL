@@ -386,10 +386,49 @@ def _parse_eurocontrol(soup: BeautifulSoup, base: str) -> list[dict]:
     return items
 
 
+def _parse_airbus(soup: BeautifulSoup, base: str) -> list[dict]:
+    """Airbus newsroom cards: official stories and press releases.
+
+    Events and evergreen navigation cards share much of the same markup, so
+    require both a newsroom story/release URL and a source-provided <time>.
+    """
+    items, seen = [], set()
+    path_re = re.compile(
+        r"^/en/newsroom/(?:press-releases|stories)/[a-z0-9][a-z0-9-]+$")
+    for card in soup.select("article.awx-card"):
+        anchor = card.find("a", href=path_re)
+        time_tag = card.find("time")
+        if anchor is None or time_tag is None:
+            continue
+        url = urljoin(base, anchor["href"])
+        if url in seen:
+            continue
+        title_el = card.select_one(".awx-card__title")
+        title = _collapse(
+            title_el.get_text(" ", strip=True) if title_el else
+            anchor.get("title") or anchor.get_text(" ", strip=True)
+        )
+        if len(title) < 8:
+            continue
+        seen.add(url)
+        summary_el = card.select_one(".awx-card__summary")
+        image = card.find("img", src=True)
+        items.append({
+            "title": title,
+            "url": url,
+            "published": _time_tag_datetime(time_tag),
+            "summary": (summary_el.get_text(" ", strip=True)
+                        if summary_el else ""),
+            "image": urljoin(base, image["src"]) if image else None,
+        })
+    return items
+
+
 HTML_PARSERS = {
     "faa": _parse_faa,
     "icao": _parse_icao,
     "eurocontrol": _parse_eurocontrol,
+    "airbus": _parse_airbus,
 }
 
 
@@ -552,6 +591,7 @@ def _write_sources(last_success: dict[str, str | None]) -> None:
             "fmt": spec["fmt"],
             "url": spec["url"],
             "cover": spec["cover"],
+            "public": bool(spec.get("public", True)),
             "lastFetchUtc": fetched or carried,
             "ok": bool(fetched),
         })

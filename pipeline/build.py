@@ -1039,7 +1039,7 @@ def inc_view(incidents, lang: str):
 
 
 def merged_sources(raw):
-    """Overlay data/sources.json onto the registry so all sources always show."""
+    """Overlay persisted status onto sources intended for public display."""
     by_key = {}
     if isinstance(raw, list):
         for s in raw:
@@ -1048,6 +1048,11 @@ def merged_sources(raw):
     out = []
     for key, reg in SOURCES.items():
         s = by_key.get(key, {})
+        # Manufacturer feeds marked private still supply candidate stories
+        # to write.py.  They are deliberately absent from the homepage and
+        # public Sources page; Airbus and Boeing opt in via public=true.
+        if not bool(s.get("public", reg.get("public", True))):
+            continue
         out.append({
             "key": key,
             "name": str(s.get("name") or reg["name"]),
