@@ -472,10 +472,10 @@ def is_transport_story(*records) -> bool:
             or _TRANSPORT_EN_RE.search(text) is not None)
 
 
-# Military takes precedence over the other editorial categories.  Keep the
-# terms deliberately specific: generic aviation-security language such as
-# "counter-drone" or "defence against interference" must not turn a civil FAA
-# story into military news.
+# Military takes precedence over the other editorial categories when it is
+# part of the story's editorial focus.  Keep the terms deliberately specific:
+# generic aviation-security language such as "counter-drone" or "defence
+# against interference" must not turn a civil FAA story into military news.
 _MILITARY_ZH_TERMS = (
     "國防部",
     "國軍",
@@ -510,27 +510,95 @@ _MILITARY_EN_RE = re.compile(
     re.IGNORECASE,
 )
 
+_BUSINESS_FOCUS_RE = re.compile(
+    r"(?:"
+    r"財報|季報|業績|營收|收入|淨利|獲利|虧損|每股|現金流|"
+    r"積壓訂單|交付量|民航機交付|商用飛機交付|"
+    r"\b(?:financial results?|quarterly results?|earnings|revenue|"
+    r"net income|profit|loss per share|cash flow|commercial deliveries|"
+    r"commercial aircraft deliveries|commercial airplanes? deliveries|"
+    r"backlog)\b"
+    r")",
+    re.IGNORECASE,
+)
 
-def is_military_story(*records) -> bool:
-    """Return True when article/draft/group material is explicitly military.
+_CLASSIFICATION_TEXT_FIELDS = (
+    "title",
+    "summary",
+    "flash",
+    "primarySource",
+    "sourceKey",
+)
 
-    The accepted records are JSON-shaped pipeline objects.  Serialising them
-    keeps this guard compatible with published articles, pending groups and
-    review drafts without maintaining three subtly different field walkers.
+
+def _classification_values(value, fields=_CLASSIFICATION_TEXT_FIELDS):
+    """Yield only fields that describe a story's primary editorial focus.
+
+    Body paragraphs, facts, source quotes and entity lists deliberately do
+    not participate.  They commonly contain secondary business segments or
+    contextual organisations and previously caused mixed civil/defence
+    company reports to be forced into the military category.
     """
-    try:
-        text = json.dumps(records, ensure_ascii=False, default=str)
-    except (TypeError, ValueError):
-        text = " ".join(str(record) for record in records)
+    if isinstance(value, str):
+        yield value
+        return
+    if isinstance(value, dict):
+        for field in fields:
+            child = value.get(field)
+            if isinstance(child, str):
+                yield child
+            elif isinstance(child, dict):
+                yield from _classification_values(child, fields)
+        for locale in ("zh", "en"):
+            child = value.get(locale)
+            if isinstance(child, str):
+                yield child
+            elif isinstance(child, dict):
+                yield from _classification_values(child, fields)
+        for item in value.get("items") or []:
+            yield from _classification_values(item, fields)
+        return
+    if isinstance(value, (list, tuple, set)):
+        for child in value:
+            yield from _classification_values(child, fields)
+
+
+def _classification_text(records, fields=_CLASSIFICATION_TEXT_FIELDS) -> str:
+    return " ".join(
+        text for record in records
+        for text in _classification_values(record, fields)
+        if text
+    )
+
+
+def _matches_military(text: str) -> bool:
     return (any(term in text for term in _MILITARY_ZH_TERMS)
             or _MILITARY_EN_RE.search(text) is not None)
 
 
+def is_military_story(*records) -> bool:
+    """Return True when the headline-level editorial focus is military."""
+    return _matches_military(_classification_text(records))
+
+
 def story_category(category, *records) -> str:
-    """Return the canonical category, with explicit military material first."""
+    """Return the canonical category after checking the editorial focus.
+
+    A model-selected military category is corrected to business when the
+    headline is unambiguously a financial/commercial-results story and the
+    headline itself has no military subject.  This narrow correction avoids
+    treating a diversified manufacturer's secondary defence segment as the
+    primary topic while preserving genuine military procurement reporting.
+    """
+    normalized = category if category in CATEGORIES else "ops"
+    title_text = _classification_text(records, ("title",))
+    if (normalized == "mil"
+            and _BUSINESS_FOCUS_RE.search(title_text)
+            and not _matches_military(title_text)):
+        return "biz"
     if is_military_story(*records):
         return "mil"
-    return category if category in CATEGORIES else "ops"
+    return normalized
 
 
 def now_utc() -> datetime:
