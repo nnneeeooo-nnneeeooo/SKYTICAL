@@ -1,7 +1,8 @@
 {
-  "_comment": "理論價值試算用的參考牌價,單位 USD / 100萬 tokens。kind: reference=公開牌價或市場加權價, estimate=估計值(該模型無明確公開牌價)。本站全部走免費額度,實際支出為 $0;此表僅供『若按牌價計費值多少錢』的參考,可自行修改。鍵是模型 id 的子字串比對。",
+  "_comment": "理論價值試算用的參考牌價,單位 USD / 100萬 tokens。kind: reference=公開牌價或市場加權價, estimate=估計值(該模型無明確公開牌價)。本站全部走免費額度,實際支出為 $0;此表僅供『若按牌價計費值多少錢』的參考,可自行修改。鍵是模型 id 的子字串比對。nonApiReference 只列方案內模型工作的官方 API 對照單價,不計入 API 用量或理論總額。",
   "usdToTwd": 31.5,
   "models": {
+    "gpt-5.6-sol": {"in": 5.0, "out": 30.0, "kind": "reference", "note": "OpenAI standard API list price, 2026-07; cached input $0.50/M"},
     "nemotron-3-ultra": {"in": 0.423, "out": 2.61, "kind": "reference", "note": "OpenRouter weighted avg, 2026-06"},
     "nemotron-3-super": {"in": 0.2, "out": 0.8, "kind": "estimate", "note": "Nemotron family <= $0.40 input; estimated"},
     "deepseek-v4-pro": {"in": 0.5, "out": 2.0, "kind": "estimate", "note": "estimated; not in the NIM catalog yet"},
@@ -11,5 +12,27 @@
     "glm-5.2": {"in": 0.447, "out": 3.31, "kind": "reference", "note": "OpenRouter weighted avg, 2026-06"},
     "mistral-medium-3.5": {"in": 0.4, "out": 2.0, "kind": "estimate", "note": "Mistral Medium 3 class; estimated"},
     "claude": {"in": null, "out": null, "kind": "unknown", "note": "not in the provider chain; fill in if used"}
-  }
+  },
+  "nonApiReference": [
+    {
+      "model": "GPT-5.6 Sol",
+      "purpose": "新聞撰稿（手動補稿）",
+      "in": 5.0,
+      "cachedIn": 0.5,
+      "out": 30.0,
+      "access": "ChatGPT Work 方案內使用，非本站 API",
+      "note": "工作階段未提供精確 token 明細，因此只列官方 API 對照單價，不計入上方理論總值。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
+    },
+    {
+      "model": "GPT-5.6 Sol",
+      "purpose": "網站修改（Codex）",
+      "in": 5.0,
+      "cachedIn": 0.5,
+      "out": 30.0,
+      "access": "ChatGPT Work／Codex 方案內使用，非本站 API",
+      "note": "工作階段未提供精確 token 明細，因此只列官方 API 對照單價，不計入上方理論總值。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
+    }
+  ]
 }
