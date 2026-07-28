@@ -1,5 +1,288 @@
 [
   {
+    "id": "g-20260728-1812-2",
+    "queuedUtc": "2026-07-28T18:12Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Proposed regulatory changes by the FAA concerning commercial space licensing waiver of environmental rules require human review under the regulatory_action risk flag.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "U.S. Transportation Secretary Sean P. Duffy announced that the FAA is launching a new initiative to streamline commercial space licensing.",
+        "sourceQuote": "U.S. Transportation Secretary Sean P. Duffy today announced that the Federal Aviation Administration (FAA) is launching a new initiative to streamline commercial space licensing",
+        "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The FAA's proposed rule would allow the agency to waive requirements from 13 federal environmental laws for certain commercial space licenses and permits.",
+        "sourceQuote": "The FAA’s proposed rule would allow the agency to waive requirements from 13 federal laws for certain commercial space licenses and permits.",
+        "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Requirements needed to protect public health and safety, property, national security, or U.S. foreign policy interests would not be impacted.",
+        "sourceQuote": "Requirements that are needed to protect public health and safety, property, national security, or U.S. foreign policy interests would not be impacted.",
+        "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The proposed rule includes a 30-day public comment period before issuing a final rule.",
+        "sourceQuote": "The proposed rule includes a 30-day public comment period.",
+        "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Proposed regulatory changes by the FAA concerning commercial space licensing waiver of environmental rules require human review under the regulatory_action risk flag.",
+      "cat": "reg",
+      "zh": {
+        "title": "美國FAA擬簡化商業航太許可 提議可豁免13項聯邦環境法規",
+        "summary": "美國運輸部長 Sean P. Duffy 宣布，聯邦航空管理局（FAA）已提出新法規草案，旨在簡化商業航太執照與許可申請。該草案擬允許 FAA 在特定條件下豁免 13 項聯邦環境法規的相關要求，同時強調不會影響公眾健康與安全、財產、國家安全或外交政策權益。該提案開放為期 30 天的公眾預告與意見徵詢期。",
+        "body": [
+          "美國運輸部長 Sean P. Duffy 於 2026 年 7 月 28 日宣布，美國聯邦航空管理局（FAA）正在推動一項新計畫與法規草案，以簡化商業航太執照審查程序，加速火箭發射、太空船重返大氣層及營運發射場地的審批作業。",
+          "根據 FAA 提出的新草案，該機構將獲准豁免特定商業航太執照與許可所涉的 13 項聯邦環境法規要求，包括國家環境政策法（NEPA）、瀕危物種法、清潔水法與清潔空氣法等相關條款。",
+          "FAA 強調，涉及保護公眾健康與安全、財產、國家安全或美國外交政策利益的法定要求將不受影響。該提案包含為期 30 天的公眾意見徵詢期，主管機關將在評估各界意見後發布最終法規。"
+        ]
+      },
+      "en": {
+        "title": "FAA Proposes New Rule to Streamline Commercial Space Licensing by Waiving 13 Environmental Laws",
+        "summary": "U.S. Transportation Secretary Sean P. Duffy announced a new initiative by the Federal Aviation Administration (FAA) to streamline commercial space licensing, making approvals faster for rocket launches, spacecraft reentries, and launch site operations. The proposed rule would allow the FAA to waive requirements from 13 federal environmental laws for certain commercial space licenses and permits. The agency emphasized that requirements necessary to protect public health, safety, property, national security, and foreign policy interests will remain unchanged. The proposal includes a 30-day public comment period before issuing a final rule.",
+        "body": [
+          "U.S. Transportation Secretary Sean P. Duffy announced on July 28, 2026, that the Federal Aviation Administration (FAA) is launching a new initiative to streamline commercial space licensing. The effort aims to expedite approvals for rocket launches, spacecraft reentries, and launch site operations.",
+          "Under the proposed rule, the FAA would be permitted to waive requirements stemming from 13 federal environmental and natural resource laws for certain commercial space licenses and permits. These regulations include the National Environmental Policy Act, Endangered Species Act, Clean Water Act, and Clean Air Act.",
+          "The agency stated that requirements designed to protect public health and safety, property, national security, or U.S. foreign policy interests will not be affected. The proposal is subject to a 30-day public comment period prior to a final decision."
+        ]
+      },
+      "flash": {
+        "zh": "FAA提出草案擬豁免13項環境法規以簡化商業航太許可程序",
+        "en": "FAA Proposes Rule to Streamline Commercial Space Licensing",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "U.S. Transportation Secretary Sean P. Duffy announced that the FAA is launching a new initiative to streamline commercial space licensing.",
+          "sourceQuote": "U.S. Transportation Secretary Sean P. Duffy today announced that the Federal Aviation Administration (FAA) is launching a new initiative to streamline commercial space licensing",
+          "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The FAA's proposed rule would allow the agency to waive requirements from 13 federal environmental laws for certain commercial space licenses and permits.",
+          "sourceQuote": "The FAA’s proposed rule would allow the agency to waive requirements from 13 federal laws for certain commercial space licenses and permits.",
+          "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Requirements needed to protect public health and safety, property, national security, or U.S. foreign policy interests would not be impacted.",
+          "sourceQuote": "Requirements that are needed to protect public health and safety, property, national security, or U.S. foreign policy interests would not be impacted.",
+          "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The proposed rule includes a 30-day public comment period before issuing a final rule.",
+          "sourceQuote": "The proposed rule includes a 30-day public comment period.",
+          "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "FAA",
+          "Federal Aviation Administration"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "WASHINGTON, D.C.",
+          "U.S."
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-28"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260728-1812-2",
+      "primarySource": "FAA",
+      "items": [
+        {
+          "title": "LIFTOFF: Trump’s Transportation Secretary Sean P. Duffy Announces Major Move to Streamline Commercial Space Licensing",
+          "url": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+          "publishedUtc": "2026-07-28T00:00Z",
+          "summary": "WASHINGTON, D.C. - U.S. Transportation Secretary Sean P. Duffy today announced that the Federal Aviation Administration (FAA) is launching a new initiative to streamline commercial space licensing, making it faster and easier for innovators to secure approvals to launch rockets, reenter spacecraft, and operate launch and reentry sites.",
+          "image": null,
+          "source": "FAA",
+          "sourceKey": "faa"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-1805-faa-announces-successful-counter-drone-e",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 6 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
+            "event_date": "2026-07-22",
+            "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa...",
+            "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+            "facts": [
+              {
+                "claim": "FAA announced successful counter-drone efforts during FIFA World Cup 2026 with more than 700 drones seized.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026, With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "Transportation Secretary Sean P. Duffy announced federal, state, and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_quote": "Department of Transportation Secretary Sean P. Duffy announced that federal, state and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "The effort helped keep millions of fans safe.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "More than 700 drones were seized.",
+                "source_quote": "With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 0 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260728-1401-2",
     "queuedUtc": "2026-07-28T14:01Z",
     "approve": false,
