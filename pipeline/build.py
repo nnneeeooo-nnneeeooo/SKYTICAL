@@ -3,7 +3,8 @@
 Reads (all optional, degrades gracefully): data/articles/*.json, flashes.json,
 incidents.json, sources.json, stats.json. Writes the site/ tree per
 CONTRACTS.md: zh at /, en under /en/, one page per article ever published,
-incidents / sources / about pages, copied assets, 404.html and .nojekyll.
+incidents / sources / methodology / changelog pages, copied assets, 404.html
+and .nojekyll.
 A single bad input never crashes the build: bad entries are skipped with a
 one-line log to stdout and the script exits 0.
 """
@@ -84,8 +85,19 @@ L = {
         "thName": "來源", "thKind": "類型", "thCover": "涵蓋範圍", "thFmt": "格式",
         "thFreq": "頻率", "thLast": "最近抓取", "thState": "狀態",
         "aboutKicker": "Methodology", "aboutTitle": "方法論",
+        "changeKicker": "Site Changelog", "changeTitle": "網站更新紀錄",
+        "changeSub": "依 GitHub 主分支提交紀錄整理，涵蓋 AVWIRE 建站至最近一次網站功能變更。",
+        "changeNotice": "每小時新聞、每日快報與航機狀態等自動資料更新不列入，避免機器提交淹沒真正的網站變更。",
+        "changeCount": "筆網站變更", "changeStart": "紀錄起點",
+        "changeLatest": "更新至", "changeSource": "查看完整 GitHub 提交紀錄",
+        "changeCommit": "提交",
+        "changeKinds": {
+            "feature": "功能", "fix": "修正", "system": "系統",
+            "editorial": "編輯", "design": "介面",
+        },
         "footerAbout": "全自動航空新聞聚合站。GitHub Actions 每小時抓取各可信來源，自動撰寫並發布，每篇文末標註原始出處。本頁為設計原型，內容為示意樣本。",
         "footerSources": "資料來源 Data Sources",
+        "footerChangelog": "網站更新紀錄",
         "nav": ["最新", "快報", "航班雷達", "事故資料庫", "來源", "方法論"],
         "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
         "radarKicker": "Taiwan Flight Radar",
@@ -159,8 +171,20 @@ L = {
         "thName": "Source", "thKind": "Kind", "thCover": "Coverage", "thFmt": "Format",
         "thFreq": "Interval", "thLast": "Last fetch", "thState": "Status",
         "aboutKicker": "Methodology", "aboutTitle": "Methodology",
+        "changeKicker": "Site Changelog", "changeTitle": "Site changelog",
+        "changeSub": "Compiled from the GitHub main-branch history, covering AVWIRE from its creation through the latest site change.",
+        "changeNotice": "Automated hourly news, daily briefing and flight-state data commits are omitted so operational refreshes do not bury real site changes.",
+        "changeCount": "site changes", "changeStart": "History starts",
+        "changeLatest": "Updated through",
+        "changeSource": "View the complete GitHub commit history",
+        "changeCommit": "commit",
+        "changeKinds": {
+            "feature": "Feature", "fix": "Fix", "system": "System",
+            "editorial": "Editorial", "design": "Design",
+        },
         "footerAbout": "A fully automated aviation news aggregator. GitHub Actions fetches trusted sources hourly, writes and publishes automatically, and credits originals at the end of every article. Design prototype; sample content.",
         "footerSources": "Data Sources",
+        "footerChangelog": "Site changelog",
         "nav": ["Latest", "Briefings", "Flight Radar", "Incident DB", "Sources",
                 "Methodology"],
         "cats": ["All", "Safety", "Regulation", "Business", "Operations",
@@ -1392,6 +1416,70 @@ def non_api_reference_rows(prices: dict):
     return rows
 
 
+_CHANGELOG_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}\Z")
+_CHANGELOG_COMMIT_RE = re.compile(r"[0-9a-f]{40}\Z")
+_CHANGELOG_KINDS = {"feature", "fix", "system", "editorial", "design"}
+_CHANGELOG_REPOSITORY = "https://github.com/nnneeeooo-nnneeeooo/avwire"
+
+
+def changelog_view(raw, lang: str, labels: dict) -> dict:
+    """Validate checked-in changelog data and prepare date-grouped rows.
+
+    URLs are derived from validated full commit SHAs instead of accepting
+    arbitrary href values from the data file.
+    """
+    if not isinstance(raw, dict):
+        raw = {}
+    rows = []
+    seen_commits = set()
+    for order, item in enumerate(raw.get("entries") or []):
+        if not isinstance(item, dict):
+            continue
+        date = str(item.get("date") or "")
+        kind = str(item.get("kind") or "")
+        title = str(item.get(lang) or "").strip()
+        commit = item.get("commit")
+        if (not _CHANGELOG_DATE_RE.fullmatch(date)
+                or kind not in _CHANGELOG_KINDS or not title):
+            continue
+        if commit is not None:
+            commit = str(commit).lower()
+            if (not _CHANGELOG_COMMIT_RE.fullmatch(commit)
+                    or commit in seen_commits):
+                continue
+            seen_commits.add(commit)
+        rows.append({
+            "date": date,
+            "kind": kind,
+            "kind_label": str(labels.get(kind) or kind),
+            "title": title,
+            "commit": commit,
+            "short_commit": commit[:7] if commit else "",
+            "url": (f"{_CHANGELOG_REPOSITORY}/commit/{commit}"
+                    if commit else ""),
+            "order": order,
+        })
+    rows.sort(key=lambda row: (row["date"], -row["order"]), reverse=True)
+    groups = []
+    for row in rows:
+        if not groups or groups[-1]["date"] != row["date"]:
+            groups.append({"date": row["date"], "entries": []})
+        groups[-1]["entries"].append(row)
+    history_start = str(raw.get("historyStart") or "")
+    updated_through = str(raw.get("updatedThrough") or "")
+    if not _CHANGELOG_DATE_RE.fullmatch(history_start):
+        history_start = groups[-1]["date"] if groups else "—"
+    if not _CHANGELOG_DATE_RE.fullmatch(updated_through):
+        updated_through = groups[0]["date"] if groups else "—"
+    return {
+        "groups": groups,
+        "count": len(rows),
+        "history_start": history_start,
+        "updated_through": updated_through,
+        "repository_url": f"{_CHANGELOG_REPOSITORY}/commits/main/",
+    }
+
+
 def render_usage_dashboard(env, build) -> int:
     """Private dashboard at /u/<token>/ - only when the secret is set."""
     token = os.environ.get("AVWIRE_USAGE_TOKEN", "").strip()
@@ -1444,6 +1532,7 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=Tru
         "hreflang": hreflang,
         "home_url": page_url(lang, ""),
         "radar_url": page_url(lang, "radar/"),
+        "changelog_url": page_url(lang, "changelog/"),
         "nav": [{"label": t["nav"][i], "url": page_url(lang, s), "active": page == p}
                 for i, (p, s) in enumerate(nav_defs)],
         "ticker_items": ticker or [], "build": build,
@@ -1474,6 +1563,9 @@ def main() -> int:
         DATA_DIR / "briefings" / "index.json", {}).get("briefings") or [])
         if isinstance(r, dict)]
     latest_row = latest_briefing(brief_rows)
+    changelog_raw = load_json(
+        Path(__file__).resolve().parent.parent
+        / "config" / "changelog.json", {})
 
     # clean output tree
     if SITE_DIR.exists():
@@ -1656,6 +1748,16 @@ def main() -> int:
                        description=ABOUT[lang]["intro"][0], ticker=ticker, build=build)
         ctx.update(about=ABOUT[lang])
         render(env, "about.html", rel_path(lang, "about/index.html"), ctx)
+        pages += 1
+
+        ctx = base_ctx(
+            lang, "changelog", "changelog/",
+            title=f"{t['siteName']} — {t['changeTitle']}",
+            description=t["changeSub"], ticker=ticker, build=build)
+        ctx.update(changelog=changelog_view(
+            changelog_raw, lang, t["changeKinds"]))
+        render(env, "changelog.html",
+               rel_path(lang, "changelog/index.html"), ctx)
         pages += 1
 
     pages += render_usage_dashboard(env, build)

@@ -237,6 +237,54 @@ a.flash-row:hover { color: inherit; }
   padding: 24px 20px 32px;
   display: grid; grid-template-columns: 1fr 1.3fr; gap: 32px;
 }
+.footer-changelog-button { margin-top: 14px; font-size: 12px; }
+
+/* — site changelog — */
+.changelog-page {
+  max-width: 960px; margin: 0 auto; padding: 32px 20px 72px;
+}
+.changelog-page > h1 {
+  margin: 7px 0 10px; font-size: clamp(32px, 5vw, 52px);
+}
+.changelog-sub { max-width: 720px; font-size: 15px; line-height: 1.75; }
+.changelog-summary {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 2px solid var(--color-divider); margin: 24px 0 16px;
+}
+.changelog-summary > div { padding: 16px 18px; }
+.changelog-summary > div + div { border-left: 1px solid var(--color-divider); }
+.changelog-summary strong { display: block; font-size: 20px; }
+.changelog-summary span {
+  display: block; margin-top: 3px; color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+}
+.changelog-notice {
+  border-left: 5px solid var(--color-accent); background: var(--color-surface);
+  padding: 13px 16px; font-size: 12.5px; line-height: 1.7;
+}
+.changelog-notice p { margin: 0 0 3px; }
+.changelog-history { margin-top: 34px; }
+.changelog-group {
+  display: grid; grid-template-columns: 112px minmax(0, 1fr);
+  gap: 22px; padding: 24px 0; border-top: 2px solid var(--color-divider);
+}
+.changelog-group > time {
+  font-weight: 800; font-size: 14px; letter-spacing: .04em;
+}
+.changelog-entry {
+  display: flex; justify-content: space-between; gap: 20px;
+  padding: 0 0 17px; margin: 0 0 17px;
+  border-bottom: 1px solid var(--color-divider);
+}
+.changelog-entry:last-child { margin-bottom: 0; }
+.changelog-entry-copy { min-width: 0; }
+.changelog-entry h2 {
+  margin: 7px 0 0; font-size: 16px; line-height: 1.45;
+}
+.changelog-commit {
+  flex-shrink: 0; align-self: center; font-size: 11px; font-weight: 800;
+  letter-spacing: .04em; text-decoration: none;
+}
 
 /* — responsive fallback: the design is desktop-first; below 1100px the
      three-column home grid simply stacks. — */
@@ -253,6 +301,7 @@ a.flash-row:hover { color: inherit; }
   }
   .radar-layout { grid-template-columns: minmax(0, 1fr) 280px; }
   .radar-notes { grid-template-columns: 1fr; gap: 8px; }
+  .changelog-group { grid-template-columns: 96px minmax(0, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -276,4 +325,11 @@ a.flash-row:hover { color: inherit; }
   .seg-cat .seg-btn:nth-child(n + 4) {
     border-top: 1px solid var(--color-divider);
   }
+  .changelog-page { padding: 24px 14px 48px; }
+  .changelog-summary { grid-template-columns: 1fr; }
+  .changelog-summary > div + div {
+    border-left: 0; border-top: 1px solid var(--color-divider);
+  }
+  .changelog-group { grid-template-columns: 1fr; gap: 14px; }
+  .changelog-entry { align-items: flex-start; }
 }
