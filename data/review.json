@@ -1,5 +1,144 @@
 [
   {
+    "id": "g-20260728-0902-2",
+    "queuedUtc": "2026-07-28T09:02Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "Current source reports a fatality and an ongoing investigation, requiring human review due to casualties_or_injuries and investigation risk flags.",
+    "riskFlags": [
+      "casualties_or_injuries",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Virgin Atlantic has temporarily grounded a Boeing 787 after an incident at London Heathrow Airport.",
+        "sourceQuote": "Virgin Atlantic Pulls Boeing 787 From Service After Heathrow Engineer's Death",
+        "sourceUrl": "https://simpleflying.com/virgin-atlantic-boeing-787-heathrow-engineer-death/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The incident resulted in the death of a Virgin Atlantic engineer and the airline is investigating the circumstances.",
+        "sourceQuote": "A tragic accident at London Heathrow Airport has left a Virgin Atlantic engineer's family mourning, as the airline investigates the circumstances.",
+        "sourceUrl": "https://simpleflying.com/virgin-atlantic-boeing-787-heathrow-engineer-death/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Current source reports a fatality and an ongoing investigation, requiring human review due to casualties_or_injuries and investigation risk flags.",
+      "cat": "safety",
+      "zh": {
+        "title": "維珍航空因希思羅工程師死亡停飛波音787",
+        "summary": "維珍航空證實在倫敦希思羅機場發生意外導致一名工程師死亡，因而暫停該架波音787飛行並展開調查。",
+        "body": [
+          "根據 Simple Flying 的報導，維珍航空在希思羅機場發生一起意外後，決定將涉事的波音787飛機暫時停飛。",
+          "報導指出，此次意外造成一名維珍航空工程師死亡，航空公司正在調查事故發生的具體情況。",
+          "維珍航空尚未公開透露事故的詳細經過或飛機具體編號，僅確認已展開內部調查。",
+          "航空公司表示，安全是首要考量，將依調查結果決定後續復飛時間。",
+          "此事件引起業界關注，監管機構可能會介入以確認是否違反任何安全規定。"
+        ]
+      },
+      "en": {
+        "title": "Virgin Atlantic Grounds Boeing 787 After Heathrow Engineer's Death",
+        "summary": "Virgin Atlantic has confirmed that an engineer died in an incident at London Heathrow Airport, prompting the temporary grounding of a Boeing 787 while an investigation is underway.",
+        "body": [
+          "According to Simple Flying, Virgin Atlantic decided to temporarily remove a Boeing 787 from service after an accident at Heathrow Airport.",
+          "The report states that the incident resulted in the death of a Virgin Atlantic engineer, and the airline is now investigating the circumstances.",
+          "Virgin Atlantic has not disclosed specific details about the aircraft involved or the exact nature of the incident, confirming only that an internal investigation has begun.",
+          "The airline emphasized that safety is its top priority and that any decision to return the aircraft to service will depend on the investigation's outcome.",
+          "Industry observers note that regulatory authorities may become involved to determine whether any safety regulations were breached."
+        ]
+      },
+      "flash": {
+        "zh": "維珍航空因工程師死亡停飛波音787",
+        "en": "Virgin Atlantic grounds Boeing 787 after engineer death",
+        "hot": true
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Virgin Atlantic has temporarily grounded a Boeing 787 after an incident at London Heathrow Airport.",
+          "sourceQuote": "Virgin Atlantic Pulls Boeing 787 From Service After Heathrow Engineer's Death",
+          "sourceUrl": "https://simpleflying.com/virgin-atlantic-boeing-787-heathrow-engineer-death/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The incident resulted in the death of a Virgin Atlantic engineer and the airline is investigating the circumstances.",
+          "sourceQuote": "A tragic accident at London Heathrow Airport has left a Virgin Atlantic engineer's family mourning, as the airline investigates the circumstances.",
+          "sourceUrl": "https://simpleflying.com/virgin-atlantic-boeing-787-heathrow-engineer-death/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Virgin Atlantic"
+        ],
+        "airlines": [
+          "Virgin Atlantic"
+        ],
+        "aircraft_models": [
+          "Boeing 787"
+        ],
+        "airports": [
+          "London Heathrow Airport"
+        ],
+        "locations": [
+          "London Heathrow Airport"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-28"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "casualties_or_injuries",
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260728-0902-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Virgin Atlantic Pulls Boeing 787 From Service After Heathrow Engineer's Death",
+          "url": "https://simpleflying.com/virgin-atlantic-boeing-787-heathrow-engineer-death/",
+          "publishedUtc": "2026-07-28T08:07Z",
+          "summary": "A tragic accident at London Heathrow Airport has left a Virgin Atlantic engineer's family mourning, as the airline investigates the circumstances.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/virgin-atlantic-boeing-787-9-landing-at-lhr-1.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260728-0633-3",
     "queuedUtc": "2026-07-28T06:33Z",
     "approve": false,
