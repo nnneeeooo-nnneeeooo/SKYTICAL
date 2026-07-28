@@ -531,6 +531,33 @@ def test_extract_json_and_validate_draft():
           "short body automatically triggers the allowed retry")
     check(candidate == DRAFT_BIZ and facts,
           "length-compliant retry survives validation and quote checks")
+    brief = json.loads(json.dumps(DRAFT_BIZ))
+    brief["status"] = "publish_brief"
+    brief["zh"]["body"] = ["航空貨運需求測試內容" * 10,
+                            "國際航空運輸協會測試內容" * 10]
+    brief["en"]["body"] = [
+        "IATA reported the documented air cargo demand result in the "
+        "supplied source material without adding any external detail. " * 3,
+        "The concise item attributes the stated result to IATA and keeps "
+        "the report within the evidence supplied for this test. " * 3,
+    ]
+    thin_reject = {
+        "status": "reject",
+        "decisionReason": (
+            "The headline and brief summary are insufficient for a "
+            "full-length article."),
+    }
+    brief_provider = FakeProvider("gemini", [thin_reject, brief])
+    candidate, facts = write._validated_draft(
+        brief_provider, cargo_group, tries=2)
+    check(brief_provider.calls == 2,
+          "length-only rejection gets one publish_brief retry")
+    check(candidate["status"] == "publish_brief" and facts,
+          "concise verified event survives the targeted brief retry")
+    retry_prompt = write.group_prompt(cargo_group, prefer_brief=True)
+    check("Re-evaluate specifically for the publish_brief contract"
+          in retry_prompt,
+          "targeted retry prompt explicitly routes concise evidence")
     check(write.validate_draft("nope") is not None, "non-dict rejected")
     broken = json.loads(json.dumps(DRAFT_BIZ))
     del broken["status"]
@@ -703,8 +730,11 @@ def test_model_chain_and_routing_policy():
 def test_editorial_gate():
     """Model reject skips the group; fabricated quotes are dropped/blocking."""
     reset_data_dir()
-    reject_draft = {"status": "reject",
-                    "decisionReason": "insufficient verifiable evidence"}
+    reject_draft = {
+        "status": "reject",
+        "decisionReason": (
+            "The current SOURCE is marketing content and not a new event."),
+    }
     fabricated = json.loads(json.dumps(DRAFT_BIZ))
     fabricated["facts"] = [{"factId": "F1", "claim": "完全捏造的主張",
                             "sourceQuote": "this text appears nowhere"}]
@@ -755,7 +785,7 @@ def test_editorial_gate():
 
 
 def test_completeness_precheck():
-    """Title-only groups are consumed in code, without any API call."""
+    """Title-only groups defer for 24h, then expire without an API call."""
     reset_data_dir()
     pending_fixture = load(FIXTURES / "pending.json")
     thin = {
@@ -764,7 +794,7 @@ def test_completeness_precheck():
         "items": [{
             "title": "ICAO statement on something with no body text at all",
             "url": "https://www.icao.int/newsroom/thin-item",
-            "publishedUtc": "2026-07-26T04:00Z",
+            "publishedUtc": common.iso_minute(NOW),
             "summary": "",
             "image": None,
             "source": "ICAO",
@@ -789,10 +819,93 @@ def test_completeness_precheck():
     check(len(articles) == 1, "the group with a real summary still publishes")
     seen = load(DATA / "seen.json")
     check(common.norm_url("https://www.icao.int/newsroom/thin-item")
-          in seen["urls"], "thin group consumed via seen.json")
+          not in seen["urls"], "fresh thin group does not poison seen.json")
     pending = load(DATA / "pending.json")
-    check(pending["groups"] == [], "nothing left pending")
+    check([g["id"] for g in pending["groups"]] == ["g-thin-1"],
+          "fresh thin group remains pending")
+    deferred = load(DATA / "deferred.json")
+    check(len(deferred["items"]) == 1
+          and next(iter(deferred["items"].values()))["status"]
+          == "deferred_thin",
+          "fresh thin group is tracked as deferred_thin")
+
+    # Age the ledger past the bounded retry window while keeping last-seen
+    # recent enough that ledger pruning does not erase the expiry evidence.
+    row = next(iter(deferred["items"].values()))
+    row["firstDeferredUtc"] = common.iso_minute(
+        NOW - timedelta(hours=write.THIN_RETRY_HOURS + 1))
+    row["lastDeferredUtc"] = common.iso_minute(NOW)
+    row["retryUntilUtc"] = common.iso_minute(NOW - timedelta(hours=1))
+    (DATA / "deferred.json").write_text(
+        json.dumps(deferred, ensure_ascii=False), encoding="utf-8")
+    solo2 = FakeProvider("gemini", [DRAFT_BIZ])
+    original = write.build_providers
+    write.build_providers = lambda: [solo2]
+    try:
+        write.main()
+    finally:
+        write.build_providers = original
+
+    check(solo2.calls == 0, "expired title-only group still costs no API call")
+    seen = load(DATA / "seen.json")
+    check(common.norm_url("https://www.icao.int/newsroom/thin-item")
+          in seen["urls"], "thin group is consumed only after 24h")
+    pending = load(DATA / "pending.json")
+    check(pending["groups"] == [], "expired thin group leaves pending")
+    deferred = load(DATA / "deferred.json")
+    check(deferred["items"] == {}, "expired thin ledger entry is cleared")
     print("test_completeness_precheck: done")
+
+
+def test_length_only_model_reject_defers():
+    """A concise event rejected only for length stays unseen and retryable."""
+    reset_data_dir()
+    pending_fixture = load(FIXTURES / "pending.json")
+    cargo = pending_fixture["groups"][1]
+    (DATA / "pending.json").write_text(
+        json.dumps({**pending_fixture, "groups": [cargo]},
+                   ensure_ascii=False),
+        encoding="utf-8")
+    thin_reject = {
+        "status": "reject",
+        "decisionReason": (
+            "The headline and brief summary are insufficient for a "
+            "full-length article."),
+    }
+    solo = FakeProvider("gemini", [thin_reject, thin_reject])
+    original = write.build_providers
+    write.build_providers = lambda: [solo]
+    try:
+        write.main()
+    finally:
+        write.build_providers = original
+
+    check(solo.calls == 2,
+          "concise length reject gets exactly one targeted retry")
+    check(all_articles() == [], "length-only reject does not publish")
+    seen = load(DATA / "seen.json")
+    url = common.norm_url(cargo["items"][0]["url"])
+    check(url not in seen["urls"],
+          "length-only model reject does not enter seen.json")
+    pending = load(DATA / "pending.json")
+    check([g["id"] for g in pending["groups"]] == [cargo["id"]],
+          "length-only model reject remains pending")
+    deferred = load(DATA / "deferred.json")
+    check(len(deferred["items"]) == 1,
+          "length-only model reject enters deferred_thin ledger")
+
+    unchanged = FakeProvider("gemini", [DRAFT_BIZ])
+    original = write.build_providers
+    write.build_providers = lambda: [unchanged]
+    try:
+        write.main()
+    finally:
+        write.build_providers = original
+    check(unchanged.calls == 0,
+          "unchanged deferred evidence does not burn another AI call")
+    check(all_articles() == [],
+          "unchanged deferred evidence remains unpublished")
+    print("test_length_only_model_reject_defers: done")
 
 
 def test_all_providers_auth_dead():
@@ -826,7 +939,9 @@ def main():
     tests = [test_publish_flow, test_group_cap_and_unique_ids,
              test_extract_json_and_validate_draft, test_provider_failover,
              test_model_chain_and_routing_policy, test_editorial_gate,
-             test_completeness_precheck, test_all_providers_auth_dead,
+             test_completeness_precheck,
+             test_length_only_model_reject_defers,
+             test_all_providers_auth_dead,
              test_no_api_key_end_to_end]
     crashed = False
     for test in tests:
