@@ -1416,6 +1416,40 @@ def non_api_reference_rows(prices: dict):
     return rows
 
 
+def gpt_family_reference_rows(prices: dict):
+    """Validated official GPT-family rates; never included in usage totals."""
+    rows = []
+    seen = set()
+    for raw in prices.get("gptFamilyReference") or []:
+        if not isinstance(raw, dict):
+            continue
+        model = str(raw.get("model") or "").strip()
+        price_in = raw.get("in")
+        cached_in = raw.get("cachedIn")
+        price_out = raw.get("out")
+        source = str(raw.get("source") or "").strip()
+        parsed = urlsplit(source)
+        if (not model or model in seen
+                or not isinstance(price_in, (int, float))
+                or (cached_in is not None
+                    and not isinstance(cached_in, (int, float)))
+                or not isinstance(price_out, (int, float))
+                or parsed.scheme != "https"
+                or parsed.hostname != "developers.openai.com"
+                or not parsed.path.startswith("/api/docs/models/")):
+            continue
+        seen.add(model)
+        rows.append({
+            "model": model,
+            "in": float(price_in),
+            "cached_in": (float(cached_in)
+                          if isinstance(cached_in, (int, float)) else None),
+            "out": float(price_out),
+            "source": source,
+        })
+    return rows
+
+
 _CHANGELOG_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}\Z")
 _CHANGELOG_COMMIT_RE = re.compile(r"[0-9a-f]{40}\Z")
 _CHANGELOG_KINDS = {"feature", "fix", "system", "editorial", "design"}
@@ -1505,6 +1539,7 @@ def render_usage_dashboard(env, build) -> int:
         "base": BASE_PATH, "favicon": FAVICON, "build": build,
         "rows": rows, "totals": totals, "daily": daily,
         "non_api_rows": non_api_reference_rows(prices),
+        "gpt_family_rows": gpt_family_reference_rows(prices),
         "twd": totals["usd"] * rate, "rate": rate,
         "updated": ledger.get("updatedUtc") or "尚無紀錄",
         "tracking_since": ledger.get("trackingSinceUtc") or "尚未開始",

@@ -64,7 +64,7 @@
   </div>
 
   {% if non_api_rows %}
-  <h2>GPT-5.6 Sol 非 API 理論牌價</h2>
+  <h2>方案內 GPT-5.6 Sol 工作對照</h2>
   <div class="section-note">
     下列工作透過 ChatGPT Work／Codex 方案完成，沒有由 AVWIRE 呼叫 OpenAI API；
     因工作階段未提供精確 token 明細，僅分項列出官方 API 對照單價，不計入上方呼叫次數、tokens 或理論總值。
@@ -80,6 +80,29 @@
       <td>${{ "%.2f"|format(r.cached_in) }}</td>
       <td>${{ "%.2f"|format(r.out) }}</td>
       <td class="wrap-cell">{{ r.access }}{% if r.note %}<br><span class="est">{{ r.note }}</span>{% endif %}{% if r.source %}<br><a href="{{ r.source }}" rel="noopener" target="_blank">官方牌價</a>{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  {% endif %}
+
+  {% if gpt_family_rows %}
+  <h2>GPT-5 系列 API 理論牌價</h2>
+  <div class="section-note">
+    OpenAI 官方標準 API 文字 token 牌價，單位為美元／100 萬 tokens。
+    本表僅供理論成本對照，不代表 AVWIRE 已呼叫這些模型，也不計入上方實際用量與理論總值；
+    Pro 型號目前沒有快取輸入折扣，以「—」表示。
+  </div>
+  <div class="scroll">
+  <table>
+    <tr><th>模型</th><th>輸入／1M</th><th>快取輸入／1M</th><th>輸出／1M</th><th>資料來源</th></tr>
+    {% for r in gpt_family_rows %}
+    <tr>
+      <td class="model">{{ r.model }}</td>
+      <td>${{ "%.3f"|format(r["in"])|trim("0")|trim(".") }}</td>
+      <td>{% if r.cached_in is not none %}${{ "%.3f"|format(r.cached_in)|trim("0")|trim(".") }}{% else %}—{% endif %}</td>
+      <td>${{ "%.3f"|format(r.out)|trim("0")|trim(".") }}</td>
+      <td><a href="{{ r.source }}" rel="noopener" target="_blank">官方牌價</a></td>
     </tr>
     {% endfor %}
   </table>
