@@ -1,5 +1,414 @@
 [
   {
+    "id": "g-20260728-1130-2",
+    "queuedUtc": "2026-07-28T11:30Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves potential major aircraft export deals and a financial claim ($1.5 billion deal) for the KF-21 fighter jet, requiring human editorial review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "KF-21 戰鬥機目前已在南韓服役。",
+        "sourceQuote": "With the KF-21 now entering service in South Korea",
+        "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "KAI 正在為其新型戰鬥機爭取四家具潛力的出口客戶。",
+        "sourceQuote": "KAI is lining up four very promising export customers for its new fighter jet.",
+        "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "報導涉及一筆價值 15 億美元的交易案，旨在推動 KF-21 成為全球戰鬥機。",
+        "sourceQuote": "Inside The $1.5 Billion Deal That Would Make The KF-21 A Global Fighter",
+        "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report involves potential major aircraft export deals and a financial claim ($1.5 billion deal) for the KF-21 fighter jet, requiring human editorial review.",
+      "cat": "mil",
+      "zh": {
+        "title": "KAI爭取KF-21戰鬥機出口客戶 並已於南韓服役",
+        "summary": "根據 Simple Flying 報導，南韓航空宇宙產業（KAI）正在為其新型 KF-21 戰鬥機爭取四家具潛力的出口客戶。與此同時，KF-21 戰鬥機目前已在南韓正式投入服役，相關討論包含一項價值 15 億美元的潛在交易。",
+        "body": [
+          "根據 Simple Flying 報導，南韓航空宇宙產業（KAI）正在為旗下新型 KF-21 戰鬥機積極爭取四家極具外銷前景的潛在客戶。媒體報導提及，相關討論圍繞著一筆價值高達 15 億美元的潛在交易案，此一交易預計將有助於讓 KF-21 成為具備全球競爭力的戰鬥機。",
+          "在出口談判推進的同時，KF-21 戰鬥機目前已經在南韓正式投入服役。隨著該型機在南韓本國開始服役營運，製造商 KAI 正在全面展開對外推廣計畫，期盼進一步擴展這款新型戰術戰鬥機的海外市場與客戶陣容。"
+        ]
+      },
+      "en": {
+        "title": "KAI Targets Four Export Customers for KF-21 Fighter Jet as Service Begins",
+        "summary": "According to Simple Flying, Korea Aerospace Industries (KAI) is lining up four promising export customers for its new KF-21 fighter jet as the aircraft enters service in South Korea, alongside discussions of a potential $1.5 billion deal.",
+        "body": [
+          "According to Simple Flying, Korea Aerospace Industries (KAI) is actively pursuing export opportunities for its new KF-21 fighter jet, lining up four promising prospective customers. The company's international marketing push highlights a potential $1.5 billion deal that would establish the KF-21 as a global fighter aircraft.",
+          "The export drive comes as the KF-21 fighter jet is now entering service in South Korea. With the new aircraft reaching operational status domestically, KAI is seeking to leverage its service entry to attract international defense clients and expand the aircraft's presence across the global military market."
+        ]
+      },
+      "flash": {
+        "zh": "KAI為KF-21爭取四家出口客戶 該型戰機已於南韓服役",
+        "en": "KAI Pursues Four Export Customers for KF-21 Fighter as South Korea Service Begins",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "KF-21 戰鬥機目前已在南韓服役。",
+          "sourceQuote": "With the KF-21 now entering service in South Korea",
+          "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "KAI 正在為其新型戰鬥機爭取四家具潛力的出口客戶。",
+          "sourceQuote": "KAI is lining up four very promising export customers for its new fighter jet.",
+          "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "報導涉及一筆價值 15 億美元的交易案，旨在推動 KF-21 成為全球戰鬥機。",
+          "sourceQuote": "Inside The $1.5 Billion Deal That Would Make The KF-21 A Global Fighter",
+          "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Simple Flying",
+          "KAI"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "KF-21"
+        ],
+        "airports": [],
+        "locations": [
+          "South Korea"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260728-1130-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Inside The $1.5 Billion Deal That Would Make The KF-21 A Global Fighter",
+          "url": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
+          "publishedUtc": "2026-07-28T11:00Z",
+          "summary": "With the KF-21 now entering service in South Korea, KAI is lining up four very promising export customers for its new fighter jet.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/kai-kf-21-korean-fighter-jet.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260728-1130-4",
+    "queuedUtc": "2026-07-28T11:30Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Topic involves an aviation accident investigation report (Voepass Flight 2283) and requires mandatory human review under aviation safety rules.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "ATR 於 2026 年 7 月 24 日表示，確認獲悉 Voepass 2283 號班機最終調查報告之公布。",
+        "sourceQuote": "ATR acknowledges the publication of the final investigation report into Voepass Flight 2283.",
+        "sourceUrl": "https://www.atr-aircraft.com/presspost/atr-statement-5/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "ATR 表示飛航安全是商業航空體系及所有利害關係人的首要責任，事故顯示遵守維護、營運程序與訓練對預防再次發生至關重要。",
+        "sourceQuote": "Flight safety is the primary responsibility of the commercial aviation system and all its stakeholders. This accident further demonstrates that adherence to maintenance, operational procedures and training are essential to prevent re-occurrence.",
+        "sourceUrl": "https://www.atr-aircraft.com/presspost/atr-statement-5/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "ATR 表示致力於與所有利害關係人密切合作，以推動安全且永續的航空體系。",
+        "sourceQuote": "ATR is committed to working closely with all stakeholders to drive a safe and sustainable aviation system.",
+        "sourceUrl": "https://www.atr-aircraft.com/presspost/atr-statement-5/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Topic involves an aviation accident investigation report (Voepass Flight 2283) and requires mandatory human review under aviation safety rules.",
+      "cat": "safety",
+      "zh": {
+        "title": "ATR確認獲悉Voepass2283號班機最終調查報告公布",
+        "summary": "飛機製造商 ATR 於 2026 年 7 月 24 日發表聲明，確認獲悉 Voepass 2283 號班機最終調查報告之公布。ATR 強調，飛航安全是商業航空體系及所有利害關係人的首要責任，該起事故進一步顯示遵循維護、營運程序與訓練對防止再次發生至關重要，並表示將持續推動安全航空體系。",
+        "body": [
+          "飛機製造商 ATR 於 2026 年 7 月 24 日發布官方聲明，確認已獲悉關於 Voepass 2283 號班機最終調查報告之公布訊息。",
+          "ATR 於聲明中特別強調，飛航安全是商業航空體系以及所有利害關係人的首要責任。該製造商指出，該起事故進一步顯示，恪遵維修保養規範、作業營運程序與相關訓練，對防止此類事件再次發生而言至關重要。",
+          "ATR 亦表示，該公司持續致力於與廣大航空業界之所有利害關係人密切合作，以共同推動安全且永續發展的航空體系。"
+        ]
+      },
+      "en": {
+        "title": "ATR Acknowledges Publication of Final Investigation Report into Voepass Flight 2283",
+        "summary": "Aircraft manufacturer ATR issued a statement on July 24, 2026, acknowledging the publication of the final investigation report into Voepass Flight 2283. ATR emphasized that flight safety is the primary responsibility of the commercial aviation system and all its stakeholders. The manufacturer noted that the accident demonstrates how adherence to maintenance, operational procedures, and training is essential to prevent re-occurrence, adding that it remains committed to working with stakeholders to drive a safe and sustainable aviation system.",
+        "body": [
+          "Aircraft manufacturer ATR issued an official statement on July 24, 2026, acknowledging the recent publication of the final investigation report concerning Voepass Flight 2283.",
+          "In its statement, ATR emphasized that flight safety represents the primary responsibility of the entire commercial aviation system and all of its stakeholders. ATR noted that this accident further demonstrates that adherence to maintenance, operational procedures, and training are essential elements to prevent re-occurrence.",
+          "Furthermore, ATR stated that it remains committed to working closely with all key stakeholders across the sector to drive a safe and sustainable commercial aviation system."
+        ]
+      },
+      "flash": {
+        "zh": "ATR發布聲明回應Voepass班機調查報告",
+        "en": "ATR issues statement on Voepass Flight 2283 final investigation report",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "ATR 於 2026 年 7 月 24 日表示，確認獲悉 Voepass 2283 號班機最終調查報告之公布。",
+          "sourceQuote": "ATR acknowledges the publication of the final investigation report into Voepass Flight 2283.",
+          "sourceUrl": "https://www.atr-aircraft.com/presspost/atr-statement-5/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "ATR 表示飛航安全是商業航空體系及所有利害關係人的首要責任，事故顯示遵守維護、營運程序與訓練對預防再次發生至關重要。",
+          "sourceQuote": "Flight safety is the primary responsibility of the commercial aviation system and all its stakeholders. This accident further demonstrates that adherence to maintenance, operational procedures and training are essential to prevent re-occurrence.",
+          "sourceUrl": "https://www.atr-aircraft.com/presspost/atr-statement-5/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "ATR 表示致力於與所有利害關係人密切合作，以推動安全且永續的航空體系。",
+          "sourceQuote": "ATR is committed to working closely with all stakeholders to drive a safe and sustainable aviation system.",
+          "sourceUrl": "https://www.atr-aircraft.com/presspost/atr-statement-5/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "ATR"
+        ],
+        "airlines": [
+          "Voepass"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Toulouse"
+        ],
+        "flight_numbers": [
+          "Voepass Flight 2283"
+        ],
+        "registration_numbers": [],
+        "event_dates": [
+          "24 July 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260728-1130-4",
+      "primarySource": "ATR 官方新聞室",
+      "items": [
+        {
+          "title": "ATR Statement",
+          "url": "https://www.atr-aircraft.com/presspost/atr-statement-5/",
+          "publishedUtc": "2026-07-24T08:01Z",
+          "summary": "Toulouse, 24 July 2026 – ATR acknowledges the publication of the final investigation report into Voepass Flight 2283.",
+          "image": "https://www.atr-aircraft.com/wp-content/uploads/2024/08/Option-4-600x275.png",
+          "source": "ATR 官方新聞室",
+          "sourceKey": "atr"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260728-1130-12",
+    "queuedUtc": "2026-07-28T11:30Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "This article involves a major engine selection and aircraft equipment order claim by AerCap, requiring human review under financial and order claim policies.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "GE Aerospace announced that AerCap selected GEnx engines to power 15 additional Boeing 787 Dreamliner aircraft.",
+        "sourceQuote": "GE Aerospace Announces AerCap Selects GEnx Engines to Power 15 Additional Boeing 787 Dreamliners",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRVA0Vlg1czVfcE84MGR1cWVHSUJvUlZUR2tSU0ZEelRscWVyVG0yeHltd3Nwa0xHVEctcWdTanRCVHp2blVrM1RaczU3Rm9KeC05VW5nNXdueWNJek9zX1g4UUo4VmU5bnF0enZ4cjdtUUk5NjRIZGQzaGx3Qk4xRElyYlJuOTRPbVEzX2puc3JtcVRncW9CYVNzVUhiUm1ZakNkdmZxMEtzd3N1REVENXhRYkgwVmdJbDJXazJnOUViS3RDNjFTag?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "This article involves a major engine selection and aircraft equipment order claim by AerCap, requiring human review under financial and order claim policies.",
+      "cat": "biz",
+      "zh": {
+        "title": "GE航太宣布AerCap選擇GEnx發動機用於15架波音787",
+        "summary": "GE航太於2026年7月25日發布聲明宣布，飛機租賃巨擘AerCap已選擇該公司的GEnx發動機，為額外15架波音787夢幻客機提供動力。這項選擇案擴大了AerCap為其波音787廣體客機機隊配備GEnx發動機的規模。",
+        "body": [
+          "GE航太（GE Aerospace）於2026年7月25日發布官方聲明宣布，航空租賃巨擘AerCap已選擇GEnx發動機，用以支援其額外15架波音787夢幻客機（Boeing 787 Dreamliner）的動力需求。",
+          "這項最新宣布顯示，AerCap針對其未來營運與交機規劃的額外15架波音787廣體客機，再次選用了GE航太所生產的GEnx發動機作為發動機動力選項。",
+          "根據GE航太發布的資訊，該項採購決策將使AerCap旗下波音787機隊中，搭載GEnx發動機的客機數量增加15架。"
+        ]
+      },
+      "en": {
+        "title": "GE Aerospace Announces AerCap Selects GEnx Engines for 15 Boeing 787s",
+        "summary": "GE Aerospace announced on July 25, 2026, that aircraft lessor AerCap has selected GEnx engines to power an additional 15 Boeing 787 Dreamliners. The decision expands AerCap's commitment to GE Aerospace's GEnx engine family for its Boeing 787 Dreamliner fleet. According to GE Aerospace, the agreement specifies GEnx engines for the 15 additional Boeing widebody aircraft, continuing the company's engine supply partnership with the major aviation leasing firm for its ongoing 787 Dreamliner fleet requirements.",
+        "body": [
+          "GE Aerospace announced on July 25, 2026, that aviation leasing company AerCap has selected GEnx engines to power 15 additional Boeing 787 Dreamliners.",
+          "According to official details provided in the statement released by GE Aerospace, the choice covers GEnx engines selected to provide power for 15 additional Boeing 787 Dreamliner aircraft.",
+          "The transaction adds 15 additional GEnx-powered Boeing 787 Dreamliner aircraft to AerCap's fleet portfolio, confirming the engine selection for the leasing company's additional Boeing widebody aircraft.",
+          "This official announcement by GE Aerospace confirms the agreement with AerCap regarding the engine selection for these 15 additional 787 Dreamliners."
+        ]
+      },
+      "flash": {
+        "zh": "GE航太宣布AerCap選擇GEnx發動機用於額外15架波音787",
+        "en": "GE Aerospace announces AerCap selects GEnx engines for 15 additional Boeing 787s",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "GE Aerospace announced that AerCap selected GEnx engines to power 15 additional Boeing 787 Dreamliner aircraft.",
+          "sourceQuote": "GE Aerospace Announces AerCap Selects GEnx Engines to Power 15 Additional Boeing 787 Dreamliners",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRVA0Vlg1czVfcE84MGR1cWVHSUJvUlZUR2tSU0ZEelRscWVyVG0yeHltd3Nwa0xHVEctcWdTanRCVHp2blVrM1RaczU3Rm9KeC05VW5nNXdueWNJek9zX1g4UUo4VmU5bnF0enZ4cjdtUUk5NjRIZGQzaGx3Qk4xRElyYlJuOTRPbVEzX2puc3JtcVRncW9CYVNzVUhiUm1ZakNkdmZxMEtzd3N1REVENXhRYkgwVmdJbDJXazJnOUV",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "GE Aerospace",
+          "AerCap"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Boeing 787 Dreamliners"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-25"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260728-1130-12",
+      "primarySource": "GE Aerospace 官方新聞室",
+      "items": [
+        {
+          "title": "GE Aerospace Announces AerCap Selects GEnx Engines to Power 15 Additional Boeing 787 Dreamliners",
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRVA0Vlg1czVfcE84MGR1cWVHSUJvUlZUR2tSU0ZEelRscWVyVG0yeHltd3Nwa0xHVEctcWdTanRCVHp2blVrM1RaczU3Rm9KeC05VW5nNXdueWNJek9zX1g4UUo4VmU5bnF0enZ4cjdtUUk5NjRIZGQzaGx3Qk4xRElyYlJuOTRPbVEzX2puc3JtcVRncW9CYVNzVUhiUm1ZakNkdmZxMEtzd3N1REVENXhRYkgwVmdJbDJXazJnOUViS3RDNjFTag?oc=5",
+          "publishedUtc": "2026-07-25T18:40Z",
+          "summary": "",
+          "image": null,
+          "source": "GE Aerospace 官方新聞室",
+          "sourceKey": "geaerospace"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260728-0902-2",
     "queuedUtc": "2026-07-28T09:02Z",
     "approve": false,
