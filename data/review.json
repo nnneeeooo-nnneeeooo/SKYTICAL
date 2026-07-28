@@ -1,17 +1,17 @@
 [
   {
-    "id": "g-20260728-1812-2",
-    "queuedUtc": "2026-07-28T18:12Z",
+    "id": "g-20260728-1820-2",
+    "queuedUtc": "2026-07-28T18:20Z",
     "approve": false,
     "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Proposed regulatory changes by the FAA concerning commercial space licensing waiver of environmental rules require human review under the regulatory_action risk flag.",
+    "decisionReason": "Mandatory human review required for regulatory action concerning proposed FAA commercial space licensing rules.",
     "riskFlags": [
       "regulatory_action"
     ],
     "facts": [
       {
         "factId": "F1",
-        "claim": "U.S. Transportation Secretary Sean P. Duffy announced that the FAA is launching a new initiative to streamline commercial space licensing.",
+        "claim": "U.S. Transportation Secretary Sean P. Duffy announced that the Federal Aviation Administration is launching a new initiative to streamline commercial space licensing.",
         "sourceQuote": "U.S. Transportation Secretary Sean P. Duffy today announced that the Federal Aviation Administration (FAA) is launching a new initiative to streamline commercial space licensing",
         "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
         "evidenceScope": "source",
@@ -20,7 +20,7 @@
       },
       {
         "factId": "F2",
-        "claim": "The FAA's proposed rule would allow the agency to waive requirements from 13 federal environmental laws for certain commercial space licenses and permits.",
+        "claim": "The proposed rule would allow the FAA to waive requirements from 13 federal laws for certain commercial space licenses and permits.",
         "sourceQuote": "The FAA’s proposed rule would allow the agency to waive requirements from 13 federal laws for certain commercial space licenses and permits.",
         "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
         "evidenceScope": "source",
@@ -44,40 +44,47 @@
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The FAA commercial space forecast projects up to 4,288 operations over the next decade.",
+        "sourceQuote": "The agency’s commercial space forecast projects up to 4,288 operations over the next decade",
+        "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
       }
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "Proposed regulatory changes by the FAA concerning commercial space licensing waiver of environmental rules require human review under the regulatory_action risk flag.",
+      "decisionReason": "Mandatory human review required for regulatory action concerning proposed FAA commercial space licensing rules.",
       "cat": "reg",
       "zh": {
-        "title": "美國FAA擬簡化商業航太許可 提議可豁免13項聯邦環境法規",
-        "summary": "美國運輸部長 Sean P. Duffy 宣布，聯邦航空管理局（FAA）已提出新法規草案，旨在簡化商業航太執照與許可申請。該草案擬允許 FAA 在特定條件下豁免 13 項聯邦環境法規的相關要求，同時強調不會影響公眾健康與安全、財產、國家安全或外交政策權益。該提案開放為期 30 天的公眾預告與意見徵詢期。",
+        "title": "美國運輸部與FAA提出新規 擬精簡商業太空許可流程",
+        "summary": "美國運輸部長Sean P. Duffy宣布，聯邦航空管理局正在推動一項新計畫，擬透過允許豁免13項聯邦法律之相關規定，簡化商業太空許可流程。該提案強調，攸關公眾健康與安全、財產、國家安全或美國外交利益的保護要求將不受影響。新規草案包含為期30天的公眾意見徵詢期。",
         "body": [
-          "美國運輸部長 Sean P. Duffy 於 2026 年 7 月 28 日宣布，美國聯邦航空管理局（FAA）正在推動一項新計畫與法規草案，以簡化商業航太執照審查程序，加速火箭發射、太空船重返大氣層及營運發射場地的審批作業。",
-          "根據 FAA 提出的新草案，該機構將獲准豁免特定商業航太執照與許可所涉的 13 項聯邦環境法規要求，包括國家環境政策法（NEPA）、瀕危物種法、清潔水法與清潔空氣法等相關條款。",
-          "FAA 強調，涉及保護公眾健康與安全、財產、國家安全或美國外交政策利益的法定要求將不受影響。該提案包含為期 30 天的公眾意見徵詢期，主管機關將在評估各界意見後發布最終法規。"
+          "美國運輸部長Sean P. Duffy表示，美國聯邦航空管理局（FAA）正在推動一項新計畫，旨在精簡商業太空許可審查流程，加速火箭發射、太空船重返大氣層及營運場地的核准作業。根據FAA提出的新規定草案，該機構將被允許針對特定商業太空許可與執照，豁免13項聯邦法律的相關要求。",
+          "FAA指出，攸關保護公眾健康與安全、財產、國家安全或美國外交政策利益的既有規範將不受影響。此外，該法規草案預計包含為期30天的公眾意見徵詢期，FAA將在綜合評估各界意見後，進一步研擬並發布最終法規版本。"
         ]
       },
       "en": {
-        "title": "FAA Proposes New Rule to Streamline Commercial Space Licensing by Waiving 13 Environmental Laws",
-        "summary": "U.S. Transportation Secretary Sean P. Duffy announced a new initiative by the Federal Aviation Administration (FAA) to streamline commercial space licensing, making approvals faster for rocket launches, spacecraft reentries, and launch site operations. The proposed rule would allow the FAA to waive requirements from 13 federal environmental laws for certain commercial space licenses and permits. The agency emphasized that requirements necessary to protect public health, safety, property, national security, and foreign policy interests will remain unchanged. The proposal includes a 30-day public comment period before issuing a final rule.",
+        "title": "US DOT and FAA Propose New Rule to Streamline Commercial Space Licensing",
+        "summary": "U.S. Transportation Secretary Sean P. Duffy announced a new Federal Aviation Administration initiative aimed at streamlining commercial space licensing for rocket launches, spacecraft reentries, and site operations. Under the proposed rule, the FAA would be authorized to waive requirements under 13 federal laws for certain commercial space licenses and permits. The agency emphasized that mandatory requirements protecting public health, safety, property, national security, or foreign policy interests will remain unaffected. The proposed rule includes a 30-day public comment period, during which the agency will gather and review feedback before finalizing the regulation.",
         "body": [
-          "U.S. Transportation Secretary Sean P. Duffy announced on July 28, 2026, that the Federal Aviation Administration (FAA) is launching a new initiative to streamline commercial space licensing. The effort aims to expedite approvals for rocket launches, spacecraft reentries, and launch site operations.",
-          "Under the proposed rule, the FAA would be permitted to waive requirements stemming from 13 federal environmental and natural resource laws for certain commercial space licenses and permits. These regulations include the National Environmental Policy Act, Endangered Species Act, Clean Water Act, and Clean Air Act.",
-          "The agency stated that requirements designed to protect public health and safety, property, national security, or U.S. foreign policy interests will not be affected. The proposal is subject to a 30-day public comment period prior to a final decision."
+          "U.S. Transportation Secretary Sean P. Duffy announced that the Federal Aviation Administration (FAA) is introducing a new initiative designed to streamline commercial space licensing. The proposed rule would allow the agency to waive requirements from 13 federal laws for certain commercial space licenses and permits, aiming to accelerate approvals for rocket launches, spacecraft reentries, and launch site operations.",
+          "The FAA specified that regulatory requirements necessary to safeguard public health and safety, property, national security, or U.S. foreign policy interests will not be affected by the waivers. The rulemaking proposal opens a 30-day public comment period, during which the FAA will collect and review submissions before issuing a final rule."
         ]
       },
       "flash": {
-        "zh": "FAA提出草案擬豁免13項環境法規以簡化商業航太許可程序",
-        "en": "FAA Proposes Rule to Streamline Commercial Space Licensing",
+        "zh": "美國運輸部與FAA提出草案，擬簡化商業太空許可流程並豁免部分法規要求。",
+        "en": "US DOT and FAA propose rule to streamline commercial space licensing and waive select regulations.",
         "hot": false
       },
       "incident": null,
       "facts": [
         {
           "factId": "F1",
-          "claim": "U.S. Transportation Secretary Sean P. Duffy announced that the FAA is launching a new initiative to streamline commercial space licensing.",
+          "claim": "U.S. Transportation Secretary Sean P. Duffy announced that the Federal Aviation Administration is launching a new initiative to streamline commercial space licensing.",
           "sourceQuote": "U.S. Transportation Secretary Sean P. Duffy today announced that the Federal Aviation Administration (FAA) is launching a new initiative to streamline commercial space licensing",
           "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
           "evidenceScope": "source",
@@ -86,7 +93,7 @@
         },
         {
           "factId": "F2",
-          "claim": "The FAA's proposed rule would allow the agency to waive requirements from 13 federal environmental laws for certain commercial space licenses and permits.",
+          "claim": "The proposed rule would allow the FAA to waive requirements from 13 federal laws for certain commercial space licenses and permits.",
           "sourceQuote": "The FAA’s proposed rule would allow the agency to waive requirements from 13 federal laws for certain commercial space licenses and permits.",
           "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
           "evidenceScope": "source",
@@ -110,6 +117,15 @@
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The FAA commercial space forecast projects up to 4,288 operations over the next decade.",
+          "sourceQuote": "The agency’s commercial space forecast projects up to 4,288 operations over the next decade",
+          "sourceUrl": "https://www.faa.gov/newsroom/liftoff-trumps-transportation-secretary-sean-p-duffy-announces-major-move-streamline",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
         }
       ],
       "headlineSupportedBy": [
@@ -125,14 +141,17 @@
       "entities": {
         "organizations": [
           "FAA",
-          "Federal Aviation Administration"
+          "Federal Aviation Administration",
+          "USDOT"
         ],
         "airlines": [],
         "aircraft_models": [],
         "airports": [],
         "locations": [
           "WASHINGTON, D.C.",
-          "U.S."
+          "U.S.",
+          "United States",
+          "America"
         ],
         "flight_numbers": [],
         "registration_numbers": [],
@@ -147,7 +166,7 @@
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260728-1812-2",
+      "id": "g-20260728-1820-2",
       "primarySource": "FAA",
       "items": [
         {
