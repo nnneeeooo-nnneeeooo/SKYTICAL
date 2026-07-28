@@ -1,0 +1,358 @@
+{
+  "_comment": "製造商官方新聞來源。feeds 會進入新聞管線；public=false 仍供 AI 撰稿使用，但不顯示於首頁、來源頁或每日簡報的來源狀態。socialAccounts 只保存官方帳號供日後整合，不直接抓取或作為新聞證據。",
+  "schemaVersion": 1,
+  "feeds": [
+    {
+      "key": "airbus",
+      "name": "Airbus",
+      "kind": "official",
+      "fmt": "HTML",
+      "url": "https://www.airbus.com/en/newsroom",
+      "endpoint": "https://www.airbus.com/en/newsroom",
+      "type": "html",
+      "public": true,
+      "cover": {
+        "zh": "Airbus 官方新聞、新聞稿與產品動態",
+        "en": "Official Airbus news, releases and product updates"
+      }
+    },
+    {
+      "key": "boeing",
+      "name": "Boeing",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://www.boeing.com/",
+      "endpoint": "https://boeing.mediaroom.com/news-releases-statements?pagetemplate=rss",
+      "type": "rss",
+      "public": true,
+      "cover": {
+        "zh": "Boeing 官方新聞稿與公司動態",
+        "en": "Official Boeing releases and company updates"
+      }
+    },
+    {
+      "key": "embraer",
+      "name": "Embraer 官方新聞室",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://www.embraer.com/media-center/en",
+      "endpoint": "https://news.google.com/rss/search?q=site%3Aembraer.com%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "type": "rss",
+      "public": false,
+      "cover": {
+        "zh": "Embraer 官方新聞與產品動態",
+        "en": "Official Embraer news and product updates"
+      }
+    },
+    {
+      "key": "rollsroyce",
+      "name": "Rolls-Royce 官方新聞室",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://www.rolls-royce.com/media/press-releases.aspx",
+      "endpoint": "https://news.google.com/rss/search?q=site%3Arolls-royce.com%2Fmedia%2Fpress-releases%20%28aerospace%20OR%20aircraft%20OR%20aviation%20OR%20engine%20OR%20Trent%20OR%20Pearl%20OR%20UltraFan%29%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "type": "rss",
+      "public": false,
+      "cover": {
+        "zh": "Rolls-Royce 航太與飛機發動機官方新聞",
+        "en": "Official Rolls-Royce aerospace and aircraft-engine news"
+      }
+    },
+    {
+      "key": "geaerospace",
+      "name": "GE Aerospace 官方新聞室",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://www.geaerospace.com/news/",
+      "endpoint": "https://news.google.com/rss/search?q=site%3Ageaerospace.com%2Fnews%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "type": "rss",
+      "public": false,
+      "cover": {
+        "zh": "GE Aerospace 官方新聞與發動機動態",
+        "en": "Official GE Aerospace news and engine updates"
+      }
+    },
+    {
+      "key": "prattwhitney",
+      "name": "Pratt & Whitney 官方新聞室",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://www.prattwhitney.com/en/newsroom",
+      "endpoint": "https://news.google.com/rss/search?q=site%3Aprattwhitney.com%2Fen%2Fnewsroom%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "type": "rss",
+      "public": false,
+      "cover": {
+        "zh": "Pratt & Whitney 官方新聞與發動機動態",
+        "en": "Official Pratt & Whitney news and engine updates"
+      }
+    },
+    {
+      "key": "iae",
+      "name": "International Aero Engines 官方資訊",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://links.prattwhitney.com/i-a-e/",
+      "endpoint": "https://news.google.com/rss/search?q=%22International%20Aero%20Engines%22%20site%3Aprattwhitney.com%20when%3A14d&hl=en-US&gl=US&ceid=US%3Aen",
+      "type": "rss",
+      "public": false,
+      "cover": {
+        "zh": "IAE／V2500 官方資訊與合作夥伴公告",
+        "en": "Official IAE/V2500 information and partner announcements"
+      }
+    },
+    {
+      "key": "cfm",
+      "name": "CFM International 官方新聞室",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://www.cfmaeroengines.com/news",
+      "endpoint": "https://news.google.com/rss/search?q=site%3Acfmaeroengines.com%2Fnews%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "type": "rss",
+      "public": false,
+      "cover": {
+        "zh": "CFM International 官方新聞與發動機動態",
+        "en": "Official CFM International news and engine updates"
+      }
+    },
+    {
+      "key": "atr",
+      "name": "ATR 官方新聞室",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://www.atr-aircraft.com/pressroom/",
+      "endpoint": "https://www.atr-aircraft.com/presspost/feed/",
+      "type": "rss",
+      "public": false,
+      "cover": {
+        "zh": "ATR 官方新聞稿與渦槳機產品動態",
+        "en": "Official ATR releases and turboprop product updates"
+      }
+    },
+    {
+      "key": "safran",
+      "name": "Safran 官方新聞室",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://www.safran-group.com/pressroom",
+      "endpoint": "https://news.google.com/rss/search?q=site%3Asafran-group.com%2Fpressroom%20%28aircraft%20OR%20aviation%20OR%20aerospace%20OR%20engine%20OR%20propulsion%20OR%20CFM%20OR%20LEAP%29%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "type": "rss",
+      "public": false,
+      "cover": {
+        "zh": "Safran 航太、推進與飛機設備官方新聞",
+        "en": "Official Safran aerospace, propulsion and aircraft-equipment news"
+      }
+    },
+    {
+      "key": "bombardier",
+      "name": "Bombardier 官方新聞室",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://bombardier.com/en/media/news",
+      "endpoint": "https://news.google.com/rss/search?q=site%3Abombardier.com%2Fen%2Fmedia%2Fnews%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "type": "rss",
+      "public": false,
+      "cover": {
+        "zh": "Bombardier 官方新聞與商務機動態",
+        "en": "Official Bombardier news and business-aircraft updates"
+      }
+    },
+    {
+      "key": "comac",
+      "name": "COMAC 官方新聞",
+      "kind": "official",
+      "fmt": "RSS",
+      "url": "https://english.comac.cc/news/",
+      "endpoint": "https://news.google.com/rss/search?q=site%3Acomac.cc%20%28aircraft%20OR%20C919%20OR%20C909%20OR%20C929%29%20when%3A14d&hl=en-US&gl=US&ceid=US%3Aen",
+      "type": "rss",
+      "public": false,
+      "cover": {
+        "zh": "中國商飛官方新聞與產品動態",
+        "en": "Official COMAC news and product updates"
+      }
+    }
+  ],
+  "socialAccounts": [
+    {
+      "manufacturer": "Airbus",
+      "platform": "facebook",
+      "url": "https://www.facebook.com/airbus",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Airbus",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/airbus",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Airbus",
+      "platform": "x",
+      "url": "https://x.com/airbus",
+      "crawl": false,
+      "reason": "robots_disallow"
+    },
+    {
+      "manufacturer": "Boeing",
+      "platform": "facebook",
+      "url": "https://www.facebook.com/Boeing",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Boeing",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/boeing",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Boeing",
+      "platform": "x",
+      "url": "https://x.com/Boeing",
+      "crawl": false,
+      "reason": "robots_disallow"
+    },
+    {
+      "manufacturer": "Embraer",
+      "platform": "facebook",
+      "url": "https://www.facebook.com/Embraer",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Embraer",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/embraer",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Embraer",
+      "platform": "x",
+      "url": "https://x.com/embraer",
+      "crawl": false,
+      "reason": "robots_disallow"
+    },
+    {
+      "manufacturer": "Rolls-Royce",
+      "platform": "facebook",
+      "url": "https://www.facebook.com/RollsRoyceGroup",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Rolls-Royce",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/rollsroycegroup",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Rolls-Royce",
+      "platform": "x",
+      "url": "https://x.com/RollsRoyce",
+      "crawl": false,
+      "reason": "robots_disallow"
+    },
+    {
+      "manufacturer": "GE Aerospace",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/ge_aerospace",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "GE Aerospace",
+      "platform": "x",
+      "url": "https://x.com/ge_aerospace",
+      "crawl": false,
+      "reason": "robots_disallow"
+    },
+    {
+      "manufacturer": "Pratt & Whitney",
+      "platform": "facebook",
+      "url": "https://www.facebook.com/prattandwhitney",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Pratt & Whitney",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/dependableengines",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Pratt & Whitney",
+      "platform": "x",
+      "url": "https://x.com/prattandwhitney",
+      "crawl": false,
+      "reason": "robots_disallow"
+    },
+    {
+      "manufacturer": "CFM International",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/CFMengines",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "CFM International",
+      "platform": "x",
+      "url": "https://x.com/cfm_engines",
+      "crawl": false,
+      "reason": "robots_disallow"
+    },
+    {
+      "manufacturer": "ATR",
+      "platform": "facebook",
+      "url": "https://www.facebook.com/atraircraft",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "ATR",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/atraircraft",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "ATR",
+      "platform": "x",
+      "url": "https://x.com/ATRaircraft",
+      "crawl": false,
+      "reason": "robots_disallow"
+    },
+    {
+      "manufacturer": "Safran",
+      "platform": "facebook",
+      "url": "https://www.facebook.com/GroupeSafran",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Safran",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/safran_group",
+      "crawl": false,
+      "reason": "platform_restricted"
+    },
+    {
+      "manufacturer": "Safran",
+      "platform": "x",
+      "url": "https://x.com/SAFRAN",
+      "crawl": false,
+      "reason": "robots_disallow"
+    },
+    {
+      "manufacturer": "Bombardier",
+      "platform": "x",
+      "url": "https://x.com/Bombardier",
+      "crawl": false,
+      "reason": "robots_disallow"
+    }
+  ]
+}
