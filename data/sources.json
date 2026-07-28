@@ -9,7 +9,8 @@
       "zh": "美國聯邦航空總署 — 新聞、AD、法規",
       "en": "US regulator — news, ADs, rules"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -22,7 +23,8 @@
       "zh": "美國運輸安全委員會 — 事故調查",
       "en": "US accident investigator"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -35,7 +37,8 @@
       "zh": "國際民航組織 — 標準與環境",
       "en": "UN body — standards & environment"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -48,7 +51,8 @@
       "zh": "產業數據與政策",
       "en": "Industry data & policy"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -61,7 +65,8 @@
       "zh": "歐盟航空安全局 — AD 與安全公告",
       "en": "EU safety agency — ADs & bulletins"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -74,7 +79,8 @@
       "zh": "歐洲空管網路狀態",
       "en": "European network operations"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -87,7 +93,8 @@
       "zh": "路透社航太與國防版",
       "en": "Reuters aerospace & defense"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -100,7 +107,8 @@
       "zh": "全球事故事件專業追報",
       "en": "Global incident tracking"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -113,6 +121,7 @@
       "zh": "航班追蹤與延誤數據",
       "en": "Flight tracking & delay data"
     },
+    "public": true,
     "lastFetchUtc": null,
     "ok": false
   },
@@ -126,7 +135,8 @@
       "zh": "交通部民航局 — 航班異動與公告",
       "en": "Taiwan CAA notices"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -139,7 +149,8 @@
       "zh": "全球航空新聞與產業分析",
       "en": "Global aviation news & analysis"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -152,7 +163,8 @@
       "zh": "中央社 — 航空、軍航與交通相關報導",
       "en": "CNA Taiwan — aviation, military air & transport"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -165,7 +177,8 @@
       "zh": "國防部/軍聞社 — 軍事航空、機艦與運輸動態",
       "en": "Taiwan MND — military aviation, vessels & transport"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   },
   {
@@ -178,7 +191,176 @@
       "zh": "台鐵/高鐵/捷運/海運重大營運與事故報導",
       "en": "Taiwan rail / metro / maritime major events"
     },
-    "lastFetchUtc": "2026-07-28T10:55Z",
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "airbus",
+    "name": "Airbus",
+    "kind": "official",
+    "fmt": "HTML",
+    "url": "https://www.airbus.com/en/newsroom",
+    "cover": {
+      "zh": "Airbus 官方新聞、新聞稿與產品動態",
+      "en": "Official Airbus news, releases and product updates"
+    },
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "boeing",
+    "name": "Boeing",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://www.boeing.com/",
+    "cover": {
+      "zh": "Boeing 官方新聞稿與公司動態",
+      "en": "Official Boeing releases and company updates"
+    },
+    "public": true,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "embraer",
+    "name": "Embraer 官方新聞室",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://www.embraer.com/media-center/en",
+    "cover": {
+      "zh": "Embraer 官方新聞與產品動態",
+      "en": "Official Embraer news and product updates"
+    },
+    "public": false,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "rollsroyce",
+    "name": "Rolls-Royce 官方新聞室",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://www.rolls-royce.com/media/press-releases.aspx",
+    "cover": {
+      "zh": "Rolls-Royce 航太與飛機發動機官方新聞",
+      "en": "Official Rolls-Royce aerospace and aircraft-engine news"
+    },
+    "public": false,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "geaerospace",
+    "name": "GE Aerospace 官方新聞室",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://www.geaerospace.com/news/",
+    "cover": {
+      "zh": "GE Aerospace 官方新聞與發動機動態",
+      "en": "Official GE Aerospace news and engine updates"
+    },
+    "public": false,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "prattwhitney",
+    "name": "Pratt & Whitney 官方新聞室",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://www.prattwhitney.com/en/newsroom",
+    "cover": {
+      "zh": "Pratt & Whitney 官方新聞與發動機動態",
+      "en": "Official Pratt & Whitney news and engine updates"
+    },
+    "public": false,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "iae",
+    "name": "International Aero Engines 官方資訊",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://links.prattwhitney.com/i-a-e/",
+    "cover": {
+      "zh": "IAE／V2500 官方資訊與合作夥伴公告",
+      "en": "Official IAE/V2500 information and partner announcements"
+    },
+    "public": false,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "cfm",
+    "name": "CFM International 官方新聞室",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://www.cfmaeroengines.com/news",
+    "cover": {
+      "zh": "CFM International 官方新聞與發動機動態",
+      "en": "Official CFM International news and engine updates"
+    },
+    "public": false,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "atr",
+    "name": "ATR 官方新聞室",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://www.atr-aircraft.com/pressroom/",
+    "cover": {
+      "zh": "ATR 官方新聞稿與渦槳機產品動態",
+      "en": "Official ATR releases and turboprop product updates"
+    },
+    "public": false,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "safran",
+    "name": "Safran 官方新聞室",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://www.safran-group.com/pressroom",
+    "cover": {
+      "zh": "Safran 航太、推進與飛機設備官方新聞",
+      "en": "Official Safran aerospace, propulsion and aircraft-equipment news"
+    },
+    "public": false,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "bombardier",
+    "name": "Bombardier 官方新聞室",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://bombardier.com/en/media/news",
+    "cover": {
+      "zh": "Bombardier 官方新聞與商務機動態",
+      "en": "Official Bombardier news and business-aircraft updates"
+    },
+    "public": false,
+    "lastFetchUtc": "2026-07-28T11:30Z",
+    "ok": true
+  },
+  {
+    "key": "comac",
+    "name": "COMAC 官方新聞",
+    "kind": "official",
+    "fmt": "RSS",
+    "url": "https://english.comac.cc/news/",
+    "cover": {
+      "zh": "中國商飛官方新聞與產品動態",
+      "en": "Official COMAC news and product updates"
+    },
+    "public": false,
+    "lastFetchUtc": "2026-07-28T11:30Z",
     "ok": true
   }
 ]
