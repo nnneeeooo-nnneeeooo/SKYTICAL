@@ -1450,6 +1450,75 @@ def gpt_family_reference_rows(prices: dict):
     return rows
 
 
+def codex_usage_rows(snapshot: dict, prices: dict):
+    """Validate and price a checked-in Codex task usage snapshot.
+
+    This dataset is separate from the site's API ledger. Cached input is a
+    subset of input, and reasoning output is a subset of output, so neither is
+    added a second time when calculating total tokens.
+    """
+    references = {
+        row["model"]: row for row in gpt_family_reference_rows(prices)
+    }
+    rows = []
+    totals = {
+        "in": 0, "cached_in": 0, "uncached_in": 0, "out": 0,
+        "reasoning": 0, "tokens": 0, "usd": 0.0,
+    }
+    raw_entries = snapshot.get("entries") if isinstance(snapshot, dict) else []
+    for raw in raw_entries or []:
+        if not isinstance(raw, dict):
+            continue
+        model = str(raw.get("model") or "").strip()
+        reference = references.get(model)
+        values = (
+            raw.get("inputTokens"),
+            raw.get("cachedInputTokens"),
+            raw.get("outputTokens"),
+            raw.get("reasoningOutputTokens"),
+        )
+        if (not reference
+                or any(isinstance(value, bool) or not isinstance(value, int)
+                       or value < 0 for value in values)):
+            continue
+        input_tokens, cached_tokens, output_tokens, reasoning_tokens = values
+        if cached_tokens > input_tokens or reasoning_tokens > output_tokens:
+            continue
+        uncached_tokens = input_tokens - cached_tokens
+        cached_rate = (reference["cached_in"]
+                       if reference["cached_in"] is not None
+                       else reference["in"])
+        usd = (
+            uncached_tokens / 1_000_000 * reference["in"]
+            + cached_tokens / 1_000_000 * cached_rate
+            + output_tokens / 1_000_000 * reference["out"]
+        )
+        row = {
+            "model": model,
+            "in": input_tokens,
+            "cached_in": cached_tokens,
+            "uncached_in": uncached_tokens,
+            "out": output_tokens,
+            "reasoning": reasoning_tokens,
+            "tokens": input_tokens + output_tokens,
+            "usd": usd,
+            "source": reference["source"],
+        }
+        rows.append(row)
+        for key in ("in", "cached_in", "uncached_in", "out",
+                    "reasoning", "tokens"):
+            totals[key] += row[key]
+        totals["usd"] += usd
+    actual = (snapshot.get("actualAdditionalApiSpendUsd")
+              if isinstance(snapshot, dict) else 0)
+    totals["actual_usd"] = (
+        float(actual)
+        if isinstance(actual, (int, float)) and not isinstance(actual, bool)
+        and actual >= 0 else 0.0
+    )
+    return rows, totals
+
+
 _CHANGELOG_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}\Z")
 _CHANGELOG_COMMIT_RE = re.compile(r"[0-9a-f]{40}\Z")
 _CHANGELOG_KINDS = {"feature", "fix", "system", "editorial", "design"}
@@ -1526,7 +1595,10 @@ def render_usage_dashboard(env, build) -> int:
     ledger = load_json(DATA_DIR / "usage.json", {})
     prices = load_json(Path(__file__).resolve().parent.parent
                        / "config" / "model_prices.json", {})
+    codex_snapshot = load_json(Path(__file__).resolve().parent.parent
+                               / "config" / "codex_usage.json", {})
     rows, totals = usage_rows(ledger, prices)
+    codex_rows, codex_totals = codex_usage_rows(codex_snapshot, prices)
     try:
         rate = float(prices.get("usdToTwd") or 31.5)
     except (TypeError, ValueError):
@@ -1538,6 +1610,12 @@ def render_usage_dashboard(env, build) -> int:
     ctx = {
         "base": BASE_PATH, "favicon": FAVICON, "build": build,
         "rows": rows, "totals": totals, "daily": daily,
+        "codex_rows": codex_rows, "codex_totals": codex_totals,
+        "codex_twd": codex_totals["usd"] * rate,
+        "codex_scope": str(codex_snapshot.get("scope") or "").strip(),
+        "codex_updated": codex_snapshot.get("updatedUtc") or "尚無紀錄",
+        "codex_tracking_since":
+            codex_snapshot.get("trackingSinceUtc") or "尚未開始",
         "non_api_rows": non_api_reference_rows(prices),
         "gpt_family_rows": gpt_family_reference_rows(prices),
         "twd": totals["usd"] * rate, "rate": rate,

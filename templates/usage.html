@@ -37,9 +37,10 @@
   <h1>AVWIRE <span class="accent">API 用量</span></h1>
   <div class="sub">私人頁面(noindex,無任何站內連結)· 最後更新 {{ updated }} UTC · token 追蹤自 {{ tracking_since }} UTC</div>
 
+  <h2>AVWIRE 自動化 API</h2>
   <div class="tiles">
     <div class="tile"><span>總呼叫次數</span><b>{{ "{:,}".format(totals.calls) }}</b></div>
-    <div class="tile"><span>理論價值(牌價)</span><b>${{ "%.4f"|format(totals.usd) }}<span style="font-size:11px;"> ≈ NT${{ "%.2f"|format(twd) }}</span></b></div>
+    <div class="tile"><span>理論價值(牌價)</span><b>${{ "%.4f"|format(totals.usd) }}<span style="font-size:11px;"> ≈ NT${{ "{:,.2f}".format(twd) }}</span></b></div>
     <div class="tile"><span>輸入 tokens</span><b>{{ "{:,}".format(totals["in"]) }}</b></div>
     <div class="tile"><span>輸出 tokens(含推理)</span><b>{{ "{:,}".format(totals.out) }}</b></div>
   </div>
@@ -63,11 +64,45 @@
   </table>
   </div>
 
+  {% if codex_rows %}
+  <h2>GPT-5 網站製作累計（Codex）</h2>
+  <div class="section-note">
+    {{ codex_scope }}。快照截至 {{ codex_updated }} UTC，追蹤自 {{ codex_tracking_since }} UTC。
+    這是 Codex 回報的 task 累計 token，依 OpenAI 官方標準 API 牌價換算；不屬於 AVWIRE 自動化 API 用量，也不計入上方總額。
+  </div>
+  <div class="tiles">
+    <div class="tile"><span>累計 tokens</span><b>{{ "{:,}".format(codex_totals.tokens) }}</b></div>
+    <div class="tile"><span>理論 API 等值</span><b>${{ "%.4f"|format(codex_totals.usd) }}<span style="font-size:11px;"> ≈ NT${{ "{:,.2f}".format(codex_twd) }}</span></b></div>
+    <div class="tile"><span>輸入 tokens</span><b>{{ "{:,}".format(codex_totals["in"]) }}</b></div>
+    <div class="tile"><span>實際新增 API 支出</span><b>${{ "%.2f"|format(codex_totals.actual_usd) }}</b></div>
+  </div>
+  <div class="scroll">
+  <table>
+    <tr><th>模型</th><th>一般輸入</th><th>快取輸入</th><th>輸出</th><th>其中推理</th><th>總 tokens</th><th>理論 USD</th></tr>
+    {% for r in codex_rows %}
+    <tr>
+      <td class="model">{{ r.model }}</td>
+      <td>{{ "{:,}".format(r.uncached_in) }}</td>
+      <td>{{ "{:,}".format(r.cached_in) }}</td>
+      <td>{{ "{:,}".format(r.out) }}</td>
+      <td>{{ "{:,}".format(r.reasoning) }}</td>
+      <td>{{ "{:,}".format(r.tokens) }}</td>
+      <td>${{ "%.4f"|format(r.usd) }}<br><a href="{{ r.source }}" rel="noopener" target="_blank">官方牌價</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  <div class="section-note">
+    快取輸入已包含在輸入 tokens 內，按 GPT-5.6 Sol 快取單價計算；推理 tokens 已包含在輸出 tokens 內，不重複加總。
+    實際新增 API 支出為 $0，因本項工作透過 ChatGPT Work／Codex 方案完成。這是靜態快照，後續 task 活動須重新匯出才會增加。
+  </div>
+  {% endif %}
+
   {% if non_api_rows %}
-  <h2>方案內 GPT-5.6 Sol 工作對照</h2>
+  <h2>方案內 GPT-5.6 Sol 用途與單價</h2>
   <div class="section-note">
     下列工作透過 ChatGPT Work／Codex 方案完成，沒有由 AVWIRE 呼叫 OpenAI API；
-    因工作階段未提供精確 token 明細，僅分項列出官方 API 對照單價，不計入上方呼叫次數、tokens 或理論總值。
+    上方累計涵蓋目前 AVWIRE Codex task，本表僅分項說明用途與換算單價，不重複計入任何總額。
   </div>
   <div class="scroll">
   <table>
@@ -99,9 +134,9 @@
     {% for r in gpt_family_rows %}
     <tr>
       <td class="model">{{ r.model }}</td>
-      <td>${{ "%.3f"|format(r["in"])|trim("0")|trim(".") }}</td>
-      <td>{% if r.cached_in is not none %}${{ "%.3f"|format(r.cached_in)|trim("0")|trim(".") }}{% else %}—{% endif %}</td>
-      <td>${{ "%.3f"|format(r.out)|trim("0")|trim(".") }}</td>
+      <td>${{ "%.3f"|format(r["in"]) }}</td>
+      <td>{% if r.cached_in is not none %}${{ "%.3f"|format(r.cached_in) }}{% else %}—{% endif %}</td>
+      <td>${{ "%.3f"|format(r.out) }}</td>
       <td><a href="{{ r.source }}" rel="noopener" target="_blank">官方牌價</a></td>
     </tr>
     {% endfor %}
