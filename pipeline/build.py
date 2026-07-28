@@ -724,6 +724,7 @@ def page_url(lang: str, sub: str) -> str:
 
 # Article-footer model credit: writer id -> short public model name.
 _WRITER_MODELS = (
+    ("gpt-5.6-sol", "GPT-5.6 Sol"),
     ("nemotron-3-ultra", "Nemotron 3 Ultra"),
     ("nemotron-3-super", "Nemotron 3 Super"),
     ("nemotron", "Nemotron"),
