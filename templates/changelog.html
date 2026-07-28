@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+  <main class="changelog-page">
+    <span class="card-kicker">{{ t.changeKicker }}</span>
+    <h1>{{ t.changeTitle }}</h1>
+    <p class="text-muted changelog-sub">{{ t.changeSub }}</p>
+
+    <div class="changelog-summary" aria-label="{{ t.changeTitle }}">
+      <div>
+        <strong>{{ changelog.count }}</strong>
+        <span>{{ t.changeCount }}</span>
+      </div>
+      <div>
+        <strong>{{ changelog.history_start }}</strong>
+        <span>{{ t.changeStart }}</span>
+      </div>
+      <div>
+        <strong>{{ changelog.updated_through }}</strong>
+        <span>{{ t.changeLatest }}</span>
+      </div>
+    </div>
+
+    <div class="changelog-notice">
+      <p>{{ t.changeNotice }}</p>
+      <a href="{{ changelog.repository_url }}" target="_blank" rel="noopener">{{ t.changeSource }} ↗</a>
+    </div>
+
+    <div class="changelog-history">
+      {% for group in changelog.groups %}
+      <section class="changelog-group" aria-labelledby="changelog-{{ group.date }}">
+        <time id="changelog-{{ group.date }}" datetime="{{ group.date }}">{{ group.date }}</time>
+        <div class="changelog-entries">
+          {% for entry in group.entries %}
+          <article class="changelog-entry">
+            <div class="changelog-entry-copy">
+              <span class="tag tag-neutral">{{ entry.kind_label }}</span>
+              <h2>{{ entry.title }}</h2>
+            </div>
+            {% if entry.url %}
+            <a class="changelog-commit" href="{{ entry.url }}" target="_blank" rel="noopener"
+               aria-label="{{ t.changeCommit }} {{ entry.short_commit }}">
+              {{ entry.short_commit }} ↗
+            </a>
+            {% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}
