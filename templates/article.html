@@ -41,7 +41,7 @@
       </div>
       {% endfor %}
       <div class="text-muted" style="font-size:12px;margin-top:10px;border-top:1px solid var(--color-divider);padding-top:10px;">
-        <span>{{ t.genNote }}{% if a.writer_model %} • {{ a.writer_model }}{% endif %}</span>
+        <span>{{ t.genNote }}{% if a.writer_model %} • {{ a.writer_model }}{% else %}{{ t.genNotePunct }}{% endif %}</span>
       </div>
     </div>
   </div>
