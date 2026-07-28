@@ -82,16 +82,46 @@ coverage of one event is merged into a single group.
 
 ## data/seen.json  (written by write.py ONLY, read by dedupe.py)
 
-Dedupe memory. `urls` maps normalized URL -> ISO date first seen. Only
-write.py updates this file, and only for groups it actually published — so if
-write.py is skipped (no API key) or fails on a group, the story remains
-"unseen" and is re-emitted by dedupe.py on the next run. Entries older than
-21 days are pruned by write.py.
+Dedupe memory. `urls` maps normalized URL -> ISO date first consumed.
+write.py records published stories, manual-review stories and final editorial
+rejects. Provider failures and `deferred_thin` stories remain unseen and are
+re-emitted by dedupe.py on the next run. Entries older than 21 days are
+pruned by write.py.
 
 ```jsonc
 { "urls": {"https://www.faa.gov/newsroom/x": "2026-07-26T05:03Z"},
   "titles": [["faa statement denver 737", "2026-07-26T05:03Z"]] }
 ```
+
+## data/deferred.json  (written by write.py)
+
+Bounded retry ledger for a source that currently has only a headline, or for
+a concise source rejected solely because it cannot support full length.
+Entries have stable URL/title-derived keys and the status `deferred_thin`.
+They are not added to `seen.json`; the source may be retried for 24 hours so a
+later excerpt, full text or verified companion source can make it publishable.
+After 24 hours the group is consumed as a final reject, preventing an
+indefinite hourly loop.
+
+```jsonc
+{
+  "version": 1,
+  "items": {
+    "<stable-key>": {
+      "status": "deferred_thin",
+      "firstDeferredUtc": "2026-07-28T01:00Z",
+      "lastDeferredUtc": "2026-07-28T02:00Z",
+      "retryUntilUtc": "2026-07-29T01:00Z",
+      "materialFingerprint": "<sha256>",
+      "reason": "current source lacks enough quotable summary/full text"
+    }
+  }
+}
+```
+
+An unchanged `materialFingerprint` suppresses repeated model calls. A changed
+summary, full text, companion source or selected archive context changes the
+fingerprint and permits a new drafting attempt within the retry window.
 
 ## data/articles/<UTC-hour>.json  e.g. data/articles/2026-07-26T05.json
 (written by write.py, read by build.py; one batch file per pipeline hour,
