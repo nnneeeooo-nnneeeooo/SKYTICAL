@@ -149,6 +149,38 @@ check("GPT-5.6 Sol non-API pricing separates drafting and site editing",
       == ["新聞撰稿（手動補稿）", "網站修改（Codex）"]
       and all(r["in"] == 5.0 and r["cached_in"] == 0.5
               and r["out"] == 30.0 for r in gpt_rows))
+family_rows = build.gpt_family_reference_rows(prices)
+check("GPT-5 family reference catalogue covers official text models",
+      len(family_rows) == 16
+      and family_rows[0] == {
+          "model": "GPT-5.6 Sol", "in": 5.0, "cached_in": 0.5,
+          "out": 30.0,
+          "source":
+              "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      }
+      and family_rows[-1]["model"] == "GPT-5 nano"
+      and family_rows[-1]["in"] == 0.05
+      and family_rows[-1]["out"] == 0.4)
+check("GPT Pro catalogue rows show no nonexistent cached-input discount",
+      all(r["cached_in"] is None for r in family_rows
+          if r["model"].endswith(" Pro")))
+unsafe_prices = {
+    "gptFamilyReference": [
+        {"model": "bad host", "in": 1, "cachedIn": 0.1, "out": 2,
+         "source": "https://example.com/api/docs/models/gpt"},
+        {"model": "bad type", "in": "1", "cachedIn": 0.1, "out": 2,
+         "source": "https://developers.openai.com/api/docs/models/gpt"},
+        {"model": "good", "in": 1, "cachedIn": None, "out": 2,
+         "source": "https://developers.openai.com/api/docs/models/good"},
+        {"model": "good", "in": 9, "cachedIn": 9, "out": 9,
+         "source": "https://developers.openai.com/api/docs/models/duplicate"},
+    ]
+}
+check("GPT reference catalogue rejects unsafe, malformed and duplicate rows",
+      build.gpt_family_reference_rows(unsafe_prices)
+      == [{"model": "good", "in": 1.0, "cached_in": None, "out": 2.0,
+           "source":
+               "https://developers.openai.com/api/docs/models/good"}])
 gpt_api_rows, _ = build.usage_rows(
     {"models": {"openai:gpt-5.6-sol":
                 {"calls": 1, "inputTokens": 1_000_000,
@@ -196,11 +228,18 @@ page = (TMP / "site" / "u" / "testtoken-1234567890abc"
 check("page is noindex and shows totals",
       "noindex" in page and "API 用量" in page and "$0" in page)
 check("page shows separate GPT-5.6 Sol non-API reference rows",
-      "GPT-5.6 Sol 非 API 理論牌價" in page
+      "方案內 GPT-5.6 Sol 工作對照" in page
       and "新聞撰稿（手動補稿）" in page
       and "網站修改（Codex）" in page
       and page.count("$30.00") == 2
       and "不計入上方呼叫次數" in page)
+check("page shows GPT-5 family official rates without adding them to totals",
+      "GPT-5 系列 API 理論牌價" in page
+      and "GPT-5.6 Terra" in page
+      and "GPT-5.4 Pro" in page
+      and "GPT-5 nano" in page
+      and "不計入上方實際用量與理論總值" in page
+      and page.count("官方牌價") == 18)
 check("page never contains key-shaped strings",
       "test-not-a-real-key" not in page and "nvapi-" not in page)
 del os.environ["AVWIRE_USAGE_TOKEN"]
