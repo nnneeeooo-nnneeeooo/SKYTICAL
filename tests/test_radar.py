@@ -20,6 +20,9 @@ def main() -> None:
     assert build.writer_model(
         "anthropic:claude-opus-5"
     ) == "Claude Opus 5"
+    assert build.writer_model(
+        "openai:gpt-5.6-sol"
+    ) == "GPT-5.6 Sol"
     assert build.writer_model("unknown:model") is None
 
     assert build.main() == 0
