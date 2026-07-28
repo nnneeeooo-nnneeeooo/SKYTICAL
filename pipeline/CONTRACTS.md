@@ -18,6 +18,14 @@ A stage must NEVER crash the pipeline because one input is missing or one
 source failed: degrade gracefully, log to stdout, exit 0. Non-zero exit is
 reserved for programming errors.
 
+`config/changelog.json` is a checked-in, bilingual history of meaningful
+site changes. It is curated from the GitHub `main` history and deliberately
+omits automated `hourly update`, briefing and flight-state data commits.
+Every historical row carries a full 40-character commit SHA; build.py derives
+the public GitHub URL from that validated SHA rather than accepting arbitrary
+links from the file. The one current changelog-page row may use `null` until
+it has a stable historical commit.
+
 ## data/raw/<source_key>.json  (written by fetch.py, read by dedupe.py)
 
 ```jsonc
@@ -268,6 +276,7 @@ site/
 ├─ incidents/index.html        + en/incidents/
 ├─ sources/index.html          + en/sources/
 ├─ about/index.html            + en/about/
+├─ changelog/index.html        + en/changelog/
 ├─ assets/modernist.css        copied from static/
 ├─ assets/site.css
 ├─ assets/app.js
@@ -276,6 +285,8 @@ site/
 ```
 
 All internal links are prefixed with `common.BASE_PATH` (default `/avwire`).
+Every page rendered through `base.html` includes a language-correct footer
+button linking to its changelog page.
 
 ## data/briefings/  (written by briefing.py, read by build.py)
 
