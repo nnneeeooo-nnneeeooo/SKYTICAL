@@ -401,9 +401,15 @@ OUTPUT RULES:
   background. These limits are machine-checked; never pad, repeat, editorialize or add unstated material. Use publish_brief for a verified
   low-risk event that cannot
   support full length; reject if even a safe brief is impossible.
-- cat is exactly safety, reg, biz, ops or mil. Military takes priority for
-  armed forces, military aircraft/vessels, exercises, defence ministries or
-  military activity.
+- cat is exactly safety, reg, biz, ops or mil. Classify the main new
+  development expressed by the title and summary, not every secondary detail
+  present in the source. Military takes priority only when the main editorial
+  focus is armed forces, military aircraft/vessels, exercises, defence
+  ministries or military activity. A diversified manufacturer's consolidated
+  earnings, commercial deliveries or company-wide financial results remain
+  biz when a military/defence segment is merely a secondary part of the
+  report. Incidental military organisations, programmes, facts, entities or
+  body paragraphs do not by themselves make the story mil.
 - flash is one line in each language; zh at most 40 characters. hot=true only
   for breaking safety events.
 - incident is non-null only when cat="safety" and the story is an actual ICAO
