@@ -68,6 +68,7 @@ jobs:
               *) echo "::error::unmapped schedule '${{ github.event.schedule }}'"; exit 1 ;;
             esac
             echo "date=" >> "$GITHUB_OUTPUT"
+            echo "cron=${{ github.event.schedule }}" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Assemble briefing and build site
@@ -86,11 +87,13 @@ jobs:
           # BETA grounded search sweep (owner-approved; off unless var set)
           BRIEFING_GROUNDED: ${{ vars.BRIEFING_GROUNDED }}
           BRIEFING_GROUNDED_MODEL: ${{ vars.BRIEFING_GROUNDED_MODEL }}
-          # bulletin-only by default; true restores merged site articles
+          # verified site articles are the reliable fallback; false opts out
           BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
         run: |
           if [ -n "${{ steps.ed.outputs.date }}" ]; then
             python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}" --date "${{ steps.ed.outputs.date }}"
+          elif [ "${{ github.event_name }}" = "schedule" ]; then
+            python pipeline/briefing.py --cron "${{ steps.ed.outputs.cron }}"
           else
             python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}"
           fi
