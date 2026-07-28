@@ -56,11 +56,19 @@ Array, one entry per key in `common.SOURCES`, in registry order:
     "fmt": "RSS",
     "url": "https://www.faa.gov",
     "cover": {"zh": "...", "en": "..."},
+    "public": true,                      // false = editorial input only; hidden from public source-status UI
     "lastFetchUtc": "2026-07-26T05:02Z",  // last SUCCESSFUL fetch (persisted across runs)
     "ok": true
   }
 ]
 ```
+
+Aircraft/engine manufacturer feeds are maintained in
+`config/manufacturer_sources.json` and merged into `common.SOURCES` at
+startup.  Their official social-account URLs are metadata only and are never
+fetched or passed to the model as evidence.  A hidden (`public=false`) feed
+still produces `data/raw/<key>.json` and can supply a story group to
+`write.py`; only its source-status row is suppressed.
 
 ## data/pending.json  (written by dedupe.py, read + consumed by write.py)
 

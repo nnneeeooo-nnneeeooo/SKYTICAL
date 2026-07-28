@@ -63,6 +63,20 @@ ALLOWED_HOSTS = {
     # CNA articles arrive via CNA's own official feed with direct links;
     # robots.txt is still honored per fetch
     "www.cna.com.tw", "cna.com.tw",
+    # aircraft and engine manufacturers.  Their newsroom listings are in
+    # common.SOURCES; every article request still passes robots.txt and the
+    # final redirect-host check below.
+    "www.airbus.com", "airbus.com",
+    "www.boeing.com", "boeing.com", "boeing.mediaroom.com",
+    "www.embraer.com", "embraer.com",
+    "www.rolls-royce.com", "rolls-royce.com",
+    "www.geaerospace.com", "geaerospace.com",
+    "www.prattwhitney.com", "prattwhitney.com", "links.prattwhitney.com",
+    "www.cfmaeroengines.com", "cfmaeroengines.com",
+    "www.atr-aircraft.com", "atr-aircraft.com",
+    "www.safran-group.com", "safran-group.com",
+    "www.bombardier.com", "bombardier.com",
+    "english.comac.cc", "www.comac.cc", "comac.cc",
 }
 # NEVER add simpleflying.com or other Valnet properties: their robots.txt
 # terms explicitly prohibit automated text/data mining and AI use of page

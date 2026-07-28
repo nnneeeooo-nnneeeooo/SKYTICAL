@@ -130,6 +130,9 @@ def group_has_material(group: dict) -> bool:
 # data/raw/<key>.json. `fmt` is what we display on the sources page.
 # `endpoint` is what fetch.py actually requests; `kind`:
 #   official | industry | media | data
+# `public` defaults to true.  Hidden manufacturer feeds still enter the
+# editorial pipeline, but build.py and briefing.py omit them from public
+# source-status displays.
 SOURCES: dict[str, dict] = {
     "faa": {
         "name": "FAA",
@@ -339,6 +342,52 @@ SOURCES: dict[str, dict] = {
         },
     },
 }
+
+
+def _load_manufacturer_source_catalog() -> dict:
+    """Load the checked-in, no-secret manufacturer discovery registry.
+
+    Malformed entries fail closed: a broken optional feed must not prevent
+    the established source registry from loading or make an arbitrary URL
+    reachable by fetch.py.
+    """
+    path = ROOT / "config" / "manufacturer_sources.json"
+    try:
+        with open(path, encoding="utf-8") as fh:
+            catalog = json.load(fh)
+    except (FileNotFoundError, json.JSONDecodeError, OSError) as exc:
+        print(f"config: manufacturer sources unavailable ({exc})")
+        return {"schemaVersion": 1, "feeds": [], "socialAccounts": []}
+    if not isinstance(catalog, dict):
+        print("config: manufacturer sources must be an object")
+        return {"schemaVersion": 1, "feeds": [], "socialAccounts": []}
+    return catalog
+
+
+MANUFACTURER_SOURCE_CATALOG = _load_manufacturer_source_catalog()
+_SOURCE_REQUIRED = {"key", "name", "kind", "fmt", "url", "endpoint",
+                    "type", "cover"}
+for _manufacturer_source in MANUFACTURER_SOURCE_CATALOG.get("feeds") or []:
+    if not isinstance(_manufacturer_source, dict):
+        print("config: ignored non-object manufacturer feed")
+        continue
+    _manufacturer_key = str(_manufacturer_source.get("key") or "").strip()
+    _manufacturer_urls = (
+        str(_manufacturer_source.get("url") or ""),
+        str(_manufacturer_source.get("endpoint") or ""),
+    )
+    if (not _manufacturer_key
+            or not _SOURCE_REQUIRED.issubset(_manufacturer_source)
+            or _manufacturer_source.get("type") not in {"rss", "html"}
+            or any(urlsplit(url).scheme != "https"
+                   or not urlsplit(url).netloc
+                   for url in _manufacturer_urls)
+            or _manufacturer_key in SOURCES):
+        print(f"config: ignored invalid/duplicate manufacturer feed "
+              f"{_manufacturer_key!r}")
+        continue
+    SOURCES[_manufacturer_key] = _manufacturer_source
+
 
 CATEGORIES = ("safety", "reg", "biz", "ops", "mil")
 
