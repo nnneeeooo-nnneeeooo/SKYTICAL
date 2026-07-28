@@ -86,7 +86,11 @@
   let lastRequestAt = 0;
   let inFlight = false;
   let loadGeneration = 0;
-  let callsignMode = readStorage(callsignModeKey) === "iata" ? "iata" : "icao";
+  const defaultCallsignMode =
+    root.dataset.defaultCallsignMode === "icao" ? "icao" : "iata";
+  const savedCallsignMode = readStorage(callsignModeKey);
+  let callsignMode = ["icao", "iata"].includes(savedCallsignMode) ?
+    savedCallsignMode : defaultCallsignMode;
   let routeCache = loadRouteCache();
 
   const numberOrNull = (value) => {
