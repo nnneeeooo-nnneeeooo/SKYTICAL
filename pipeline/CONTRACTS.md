@@ -307,3 +307,7 @@ per run via usage.record_providers(). build.py renders it on a PRIVATE
 dashboard at site/u/<AVWIRE_USAGE_TOKEN>/ (noindex, linked from
 nowhere) only when that secret is set. Reference list prices live in
 config/model_prices.json - theoretical value only; free-tier spend is 0.
+`nonApiReference` contains purpose-separated official API comparison rates
+for work completed through ChatGPT Work/Codex rather than the site's API
+pipeline. These rows never contribute calls, tokens, or dollars to the API
+ledger totals when exact session token usage is unavailable.
