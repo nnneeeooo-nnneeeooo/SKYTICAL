@@ -1,5 +1,5 @@
 {
-  "_comment": "理論價值試算用的參考牌價,單位 USD / 100萬 tokens。kind: reference=公開牌價或市場加權價, estimate=估計值(該模型無明確公開牌價)。本站全部走免費額度,實際支出為 $0;此表僅供『若按牌價計費值多少錢』的參考,可自行修改。鍵是模型 id 的子字串比對。nonApiReference 只列方案內模型工作的官方 API 對照單價,不計入 API 用量或理論總額。",
+  "_comment": "理論價值試算用的參考牌價,單位 USD / 100萬 tokens。kind: reference=公開牌價或市場加權價, estimate=估計值(該模型無明確公開牌價)。本站全部走免費額度,實際支出為 $0;此表僅供『若按牌價計費值多少錢』的參考,可自行修改。鍵是模型 id 的子字串比對。nonApiReference 只列方案內模型工作的官方 API 對照單價；gptFamilyReference 是 GPT-5 系列官方標準 API 牌價目錄；兩者都不計入 API 用量或理論總額。",
   "usdToTwd": 31.5,
   "models": {
     "gpt-5.6-sol": {"in": 5.0, "out": 30.0, "kind": "reference", "note": "OpenAI standard API list price, 2026-07; cached input $0.50/M"},
@@ -33,6 +33,120 @@
       "access": "ChatGPT Work／Codex 方案內使用，非本站 API",
       "note": "工作階段未提供精確 token 明細，因此只列官方 API 對照單價，不計入上方理論總值。",
       "source": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
+    }
+  ],
+  "gptFamilyReference": [
+    {
+      "model": "GPT-5.6 Sol",
+      "in": 5.0,
+      "cachedIn": 0.5,
+      "out": 30.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
+    },
+    {
+      "model": "GPT-5.6 Terra",
+      "in": 2.5,
+      "cachedIn": 0.25,
+      "out": 15.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+    },
+    {
+      "model": "GPT-5.6 Luna",
+      "in": 1.0,
+      "cachedIn": 0.1,
+      "out": 6.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-luna"
+    },
+    {
+      "model": "GPT-5.5",
+      "in": 5.0,
+      "cachedIn": 0.5,
+      "out": 30.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.5"
+    },
+    {
+      "model": "GPT-5.5 Pro",
+      "in": 30.0,
+      "cachedIn": null,
+      "out": 180.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.5-pro"
+    },
+    {
+      "model": "GPT-5.4",
+      "in": 2.5,
+      "cachedIn": 0.25,
+      "out": 15.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.4"
+    },
+    {
+      "model": "GPT-5.4 Pro",
+      "in": 30.0,
+      "cachedIn": null,
+      "out": 180.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.4-pro"
+    },
+    {
+      "model": "GPT-5.4 mini",
+      "in": 0.75,
+      "cachedIn": 0.075,
+      "out": 4.5,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.4-mini"
+    },
+    {
+      "model": "GPT-5.4 nano",
+      "in": 0.2,
+      "cachedIn": 0.02,
+      "out": 1.25,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.4-nano"
+    },
+    {
+      "model": "GPT-5.2",
+      "in": 1.75,
+      "cachedIn": 0.175,
+      "out": 14.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.2"
+    },
+    {
+      "model": "GPT-5.2 Pro",
+      "in": 21.0,
+      "cachedIn": null,
+      "out": 168.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.2-pro"
+    },
+    {
+      "model": "GPT-5.1",
+      "in": 1.25,
+      "cachedIn": 0.125,
+      "out": 10.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.1"
+    },
+    {
+      "model": "GPT-5",
+      "in": 1.25,
+      "cachedIn": 0.125,
+      "out": 10.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5"
+    },
+    {
+      "model": "GPT-5 Pro",
+      "in": 15.0,
+      "cachedIn": null,
+      "out": 120.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5-pro"
+    },
+    {
+      "model": "GPT-5 mini",
+      "in": 0.25,
+      "cachedIn": 0.025,
+      "out": 2.0,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5-mini"
+    },
+    {
+      "model": "GPT-5 nano",
+      "in": 0.05,
+      "cachedIn": 0.005,
+      "out": 0.4,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5-nano"
     }
   ]
 }
