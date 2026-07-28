@@ -1,5 +1,139 @@
 [
   {
+    "id": "g-20260728-1327-3",
+    "queuedUtc": "2026-07-28T13:28Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Boeing reported a larger-than-expected Q2 loss, which constitutes a major financial claim requiring human review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Boeing reported a larger-than-expected loss for the second quarter.",
+        "sourceQuote": "Boeing posts larger-than-expected Q2 loss",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPQlJVSV9pckh4Q3pkZVdLaHRYZ1JDZENsSmV6UjVTOGpMeGNEUVNrTnNBSzczZjgtakpIZHJTekNHR0lpODVfMy1ZeHg2aWg5Q2M3TVBUaWdBSV8yVVowQmNoN2lLNEI5T0NZQm5TN0gyV1pKNjFhUEF1ZWNDaFh1N1M1OUFmNTRnVGFmNEhlaERpTFVBMjhBUHlzSk83d1NXdW14X0tsMVQ0Q250ZHVNMWNGWXNPQkl4TmpVRmxwdWY1NEF0c2xYTg?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Rising costs associated with Air Force One weighed on Boeing's financial results.",
+        "sourceQuote": "Air Force One costs weigh on results",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1JMW5uRGo2LUE3NnViemtQLTQyUXAtaG9mNmdncHQ0NGNiVHBhN24tSFNsclpCRC1qeUZlejQtQkdZX0haUmZIX2p0anR6MTF2TTRaNUhjMU9sR3VJSGhRd20tVTVmZDBTTmhqTHNGa0XSAXZBVV95cUxOYlItR3Zqd2YtaVJ2aHkwcnpxb0hrRk80Si1UTzZZMWpWcVNMaTRqUUMzWXBFVzYwLUhsQnZxazZpUElNRTQ0N0R5VXRaZnZtVEtHVnF4Ukd0a3RqdVA5blNZMjdTd01rR0luRGtHbDdrOHRLMWtB?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Boeing reported a larger-than-expected Q2 loss, which constitutes a major financial claim requiring human review.",
+      "cat": "biz",
+      "zh": {
+        "title": "波音公布第二季虧損高於預期 空軍一號成本增加拖累營運",
+        "summary": "波音公司於2026年7月28日公布最新第二季財務報告，顯示公司在該季度的虧損幅度高於外界原先預期。相關報導指出，空軍一號專案相關成本的不斷增加，對波音整體營運與財務結果造成了明顯的沉重負擔與拖累。",
+        "body": [
+          "波音公司於2026年7月28日對外公布最新的第二季度財務狀況與營運成果。根據相關媒體新聞報導的內容指出，波音在該季度所記錄到的虧損規模高於先前市場與分析師的普遍預期。",
+          "報導中提到，空軍一號計畫相關費用的持續上漲是影響業績的主要原因之一。專案成本的不斷攀升，直接對波音第二季度的整體營運表現與財務數據造成了沉重的壓力與負擔。",
+          "包括路透社與CNBC在內的媒體報導均指出，空軍一號計畫增加的支出費用，正持續對波音的季度營運結果產生沉重負擔。"
+        ]
+      },
+      "en": {
+        "title": "Boeing Posts Larger-Than-Expected Q2 Loss as Air Force One Costs Rise",
+        "summary": "Boeing reported a larger-than-expected loss for the second quarter on July 28, 2026, as rising expenses associated with the Air Force One program weighed heavily on the aircraft manufacturer's overall financial performance. According to media reports from Reuters and CNBC, the increased costs linked to the presidential aircraft project contributed significantly to the wider-than-anticipated quarterly loss. The financial results highlight the ongoing cost pressures facing Boeing in its defense and government contract segments during the second quarter of the year.",
+        "body": [
+          "Boeing reported a larger-than-expected financial loss for the second quarter on July 28, 2026, according to recent media reports. The quarterly financial results showed that the aircraft manufacturer faced a wider loss than analysts had originally anticipated.",
+          "The reports indicated that rising expenses connected to the Air Force One program significantly weighed on Boeing's overall financial results during the quarter. Increased cost burdens in the specialized presidential aircraft program continued to impact the company's financial trajectory.",
+          "Both Reuters and CNBC reported on the second-quarter figures, pointing to the cost pressures from the Air Force One program as a primary factor contributing to the wider quarterly deficit reported by the aerospace manufacturer."
+        ]
+      },
+      "flash": {
+        "zh": "波音第二季虧損高於預期 空軍一號成本增加拖累營運",
+        "en": "Boeing posts wider Q2 loss as Air Force One costs rise",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Boeing reported a larger-than-expected loss for the second quarter.",
+          "sourceQuote": "Boeing posts larger-than-expected Q2 loss",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPQlJVSV9pckh4Q3pkZVdLaHRYZ1JDZENsSmV6UjVTOGpMeGNEUVNrTnNBSzczZjgtakpIZHJTekNHR0lpODVfMy1ZeHg2aWg5Q2M3TVBUaWdBSV8yVVowQmNoN2lLNEI5T0NZQm5TN0gyV1pKNjFhUEF1ZWNDaFh1N1M1OUFmNTRnVGFmNEhlaERpTFVBMjhBUHlzSk83d1NXdW14X0tsMVQ0Q250ZHVNMWNGWXNPQkl4TmpVRmxwdWY",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Rising costs associated with Air Force One weighed on Boeing's financial results.",
+          "sourceQuote": "Air Force One costs weigh on results",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1JMW5uRGo2LUE3NnViemtQLTQyUXAtaG9mNmdncHQ0NGNiVHBhN24tSFNsclpCRC1qeUZlejQtQkdZX0haUmZIX2p0anR6MTF2TTRaNUhjMU9sR3VJSGhRd20tVTVmZDBTTmhqTHNGa0XSAXZBVV95cUxOYlItR3Zqd2YtaVJ2aHkwcnpxb0hrRk80Si1UTzZZMWpWcVNMaTRqUUMzWXBFVzYwLUhsQnZxazZpUElNRTQ0N0R5VXRaZnZ",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Boeing"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-28"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260728-1327-3",
+      "primarySource": "Reuters",
+      "items": [
+        {
+          "title": "Boeing posts larger-than-expected Q2 loss as Air Force One costs rise",
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPQlJVSV9pckh4Q3pkZVdLaHRYZ1JDZENsSmV6UjVTOGpMeGNEUVNrTnNBSzczZjgtakpIZHJTekNHR0lpODVfMy1ZeHg2aWg5Q2M3TVBUaWdBSV8yVVowQmNoN2lLNEI5T0NZQm5TN0gyV1pKNjFhUEF1ZWNDaFh1N1M1OUFmNTRnVGFmNEhlaERpTFVBMjhBUHlzSk83d1NXdW14X0tsMVQ0Q250ZHVNMWNGWXNPQkl4TmpVRmxwdWY1NEF0c2xYTg?oc=5",
+          "publishedUtc": "2026-07-28T12:07Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "Boeing posts wider loss than expected as Air Force One costs weigh on results",
+          "summary": "Boeing posts wider loss than expected as Air Force One costs weigh on results &nbsp;&nbsp; CNBC",
+          "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1JMW5uRGo2LUE3NnViemtQLTQyUXAtaG9mNmdncHQ0NGNiVHBhN24tSFNsclpCRC1qeUZlejQtQkdZX0haUmZIX2p0anR6MTF2TTRaNUhjMU9sR3VJSGhRd20tVTVmZDBTTmhqTHNGa0XSAXZBVV95cUxOYlItR3Zqd2YtaVJ2aHkwcnpxb0hrRk80Si1UTzZZMWpWcVNMaTRqUUMzWXBFVzYwLUhsQnZxazZpUElNRTQ0N0R5VXRaZnZtVEtHVnF4Ukd0a3RqdVA5blNZMjdTd01rR0luRGtHbDdrOHRLMWtB?oc=5",
+          "source": "CNBC",
+          "companion": true,
+          "publishedUtc": "2026-07-28T11:33Z"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260728-1208-2",
     "queuedUtc": "2026-07-28T12:08Z",
     "approve": false,
