@@ -106,12 +106,14 @@ def _llm_intro_enabled() -> bool:
 
 
 def _include_articles() -> bool:
-    """Owner decision 2026-07-27: the briefing page is a pure bulletin
-    (grounded sweep items only) - formal site articles live on 最新 and
-    are NOT mirrored here. Repo var BRIEFING_INCLUDE_ARTICLES=true
-    restores the old merged behaviour."""
+    """Include verified site articles unless explicitly opted out.
+
+    Grounded search widens coverage, but it must not be a single point of
+    failure for the briefing.  BRIEFING_INCLUDE_ARTICLES=false restores the
+    search-only bulletin when that behaviour is deliberately wanted.
+    """
     return (os.environ.get("BRIEFING_INCLUDE_ARTICLES", "").strip().lower()
-            in ("1", "true", "yes"))
+            not in ("0", "false", "no"))
 
 
 def load_editions() -> dict:
@@ -171,6 +173,21 @@ def get_briefing_window(edition: str, taipei_date: date) -> BriefingWindow:
             time(int(cfg["scheduled_hour"]), int(cfg["scheduled_minute"])),
             tzinfo=TPE),
     )
+
+
+def scheduled_taipei_date(edition: str, generated_at: datetime) -> date:
+    """Resolve the Taipei edition date for a possibly delayed cron run.
+
+    GitHub scheduled jobs can start after the intended local calendar day
+    has rolled over.  A run that starts before today's configured scheduled
+    time therefore still belongs to the previous Taipei date.  Manual runs
+    keep their existing explicit/today behaviour; this helper is used only
+    for ``--cron`` invocations.
+    """
+    local = generated_at.astimezone(TPE)
+    today = local.date()
+    scheduled_today = get_briefing_window(edition, today).scheduled_time
+    return today if local >= scheduled_today else today - timedelta(days=1)
 
 
 # ── article classification (deterministic, from existing metadata) ──────────
@@ -736,6 +753,10 @@ def upsert_index_row(row: dict) -> None:
 def run_edition(edition: str, taipei_date: date) -> int:
     now = now_utc()
     window = get_briefing_window(edition, taipei_date)
+    if now < window.window_end.astimezone(timezone.utc):
+        raise RuntimeError(
+            f"briefing window has not closed: {window.briefing_id} "
+            f"ends {window.window_end.isoformat()}")
     warnings: list[str] = []
 
     checked_sources, source_warnings = checked_sources_snapshot()
@@ -757,6 +778,7 @@ def run_edition(edition: str, taipei_date: date) -> int:
     # Only Google-retrieved sources can be cited; any failure degrades to
     # the deterministic briefing with a warning.
     grounded_info = {"used": False, "items": 0}
+    grounded_degraded = False
     try:
         import grounded
 
@@ -770,10 +792,12 @@ def run_edition(edition: str, taipei_date: date) -> int:
                 # reader-facing copy stays non-technical; details go to CI log
                 print("briefing: grounded sweep skipped (no API key)")
                 warnings.append("AI 搜尋服務暫時未啟用，本期未產生條列內容")
+                grounded_degraded = True
             else:
                 g_items, g_warnings = grounded.sanitize_items(
                     data, existing_titles, g_seen, now)
                 warnings.extend(g_warnings)
+                grounded_degraded = bool(g_warnings)
                 added = 0
                 for name in SECTIONS:
                     extra = g_items.get(name) or []
@@ -796,9 +820,10 @@ def run_edition(edition: str, taipei_date: date) -> int:
               f"({type(exc).__name__}: {str(exc)[:300]})")
         warnings.append("AI 搜尋服務暫時不穩定，本期未能產生條列內容；"
                         "我們正努力恢復服務，系統將於下一期自動重試")
+        grounded_degraded = True
 
     # partial = our own inputs were degraded, never "no events".
-    partial = bool(load_warnings or source_warnings)
+    partial = bool(load_warnings or source_warnings or grounded_degraded)
     briefing = assemble_briefing(window, sections, checked_sources,
                                  warnings, now, partial, grounded_info)
     maybe_llm_intro(briefing, sections, warnings)
@@ -875,6 +900,8 @@ def main(argv=None) -> int:
         except ValueError:
             print(f"briefing: bad --date {args.date!r} (want YYYY-MM-DD)")
             return 1
+    elif args.cron:
+        taipei_date = scheduled_taipei_date(edition, now_utc())
     else:
         taipei_date = now_utc().astimezone(TPE).date()
 
