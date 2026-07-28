@@ -5,11 +5,21 @@
 （同日 PDF「Aviation News Verification Engine」/「航空新聞核驗與摘要規範」，
 現行整合基準）。v2 相對 v1 的主要變化，均已進入 `pipeline/write.py`：
 
-- 四態 `publish / publish_brief / manual_review / reject`；**航空安全事件一律
-  manual_review、不得自動發布** → 落地為 `data/review.json` 人工覆核佇列
-  （GitHub 上把 `"approve"` 改 true 即發布，14 天過期，上限 40 筆）。
+- 四態 `publish / publish_brief / manual_review / reject`。已確認安全落地、
+  無傷亡、無疏散、無失聯、無確認機上火災及無重大機體損壞的例行飛安事件，
+  可在所有事實都有逐字來源證據且 `incident.sev="inc"` 時直接發布；例如
+  預防性改降、返航、緊急狀態、煙霧／異味警示或技術預防措施。事故、嚴重
+  事件、實際傷亡、確認火災、重大損壞、實質調查進展、責任／原因爭議及核心
+  事實衝突仍進入 `data/review.json` 人工覆核佇列（GitHub 上把 `"approve"`
+  改 true 即發布，14 天過期，上限 40 筆）。
 - `publish` 要求 riskFlags 為空；風險旗標非空只能 manual_review/reject。
   模型自相矛盾時程式一律「向下修正」為 manual_review，絕不反向。
+- `cat="safety"` 與 `incident` 本身只是分類／事件資料，不再單獨觸發人工
+  覆核；程式仍會把 `incident.sev="acc"` 或 `"ser"` 強制降級為
+  `manual_review`，即使模型漏加 riskFlags。
+- 「無人受傷」不是傷亡風險旗標；單純原因尚待確認、例行檢查或主管機關表示
+  將調查，也不單獨觸發 investigation。只有實質調查行動、報告、發現、聽證
+  或具爭議的安全主張才套用該旗標。
 - 廢除 `"none"` 旗標，改用空陣列。
 - facts 為 1–6 項且必須原子化；除 `factId`、`sourceQuote` 外，新增
   `sourceUrl`、`evidenceScope`、`archiveEventId`、`archiveContext`。

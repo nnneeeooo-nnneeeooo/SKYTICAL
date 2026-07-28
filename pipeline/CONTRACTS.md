@@ -176,11 +176,15 @@ absent when nothing new that hour)
 
 ## data/review.json  (written AND consumed by write.py; hand-edited by a human)
 
-Human-review queue. Drafts whose editorial status is "manual_review" (all
-aviation safety events, plus other high-risk topics) are parked here instead
-of publishing. A human sets `"approve": true` on GitHub; the next write.py
-run publishes that entry exactly as drafted and removes it. Entries expire
-unreviewed after 14 days; the queue keeps at most 40 rows, newest first.
+Human-review queue. Drafts whose editorial status is "manual_review"
+(accidents/serious incidents, casualties, confirmed onboard fire, substantial
+damage, substantive investigations, unresolved core conflicts and other
+high-risk topics) are parked here instead of publishing. A routine,
+well-sourced safety occurrence may publish when it concluded safely, has none
+of those high-risk conditions and uses `incident.sev="inc"`. A human sets
+`"approve": true` on GitHub; the next write.py run publishes that entry
+exactly as drafted and removes it. Entries expire unreviewed after 14 days;
+the queue keeps at most 40 rows, newest first.
 
 ```jsonc
 [

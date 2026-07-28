@@ -63,8 +63,8 @@ _EN_TEST_BODY = [
 ]
 
 DRAFT_SAFETY = {
-    # v2 editorial rules: aviation safety events are NEVER auto-published;
-    # they go to data/review.json for human approval.
+    # A runway excursion classified as serious and under active NTSB
+    # investigation remains mandatory manual review.
     "status": "manual_review",
     "decisionReason": "航空安全事件，調查進行中，須人工覆核",
     "facts": [
@@ -110,6 +110,66 @@ DRAFT_SAFETY = {
         "location": {"zh": "丹佛", "en": "Denver"},
         "desc": {"zh": "降落時衝出跑道", "en": "Runway excursion on landing"},
         "status": "open",
+    },
+}
+
+DRAFT_ROUTINE_SAFETY = {
+    "status": "publish",
+    "decisionReason": "",
+    "facts": [
+        {"factId": "F1",
+         "claim": "瑞航 LX16 因商務艙出現煙霧改降班戈",
+         "sourceQuote": (
+             "SWISS flight LX16 diverted to Bangor after smoke was detected "
+             "in the business-class cabin.")},
+        {"factId": "F2",
+         "claim": "航機安全降落且無人受傷",
+         "sourceQuote": (
+             "The aircraft landed safely and no injuries were reported.")},
+    ],
+    "headlineSupportedBy": ["F1"],
+    "summarySupportedBy": ["F1", "F2"],
+    "entities": {**_EMPTY_ENTITIES,
+                 "airlines": ["SWISS"],
+                 "aircraft_models": ["Airbus A330"],
+                 "airports": ["Bangor International Airport"],
+                 "flight_numbers": ["LX16"]},
+    "eventStatus": "confirmed",
+    "riskFlags": [],
+    "requiresHumanReview": False,
+    "cat": "safety",
+    "zh": {
+        "title": "瑞航A330因客艙煙霧改降班戈並安全落地",
+        "summary": (
+            "瑞航LX16因商務艙出現煙霧改降班戈國際機場，航機安全落地，"
+            "來源並未通報人員受傷。"),
+        "body": _ZH_TEST_BODY,
+    },
+    "en": {
+        "title": "SWISS A330 diverts to Bangor after cabin smoke",
+        "summary": (
+            "SWISS flight LX16 diverted to Bangor after smoke was detected "
+            "in business class; the aircraft landed safely with no injuries "
+            "reported."),
+        "body": _EN_TEST_BODY,
+    },
+    "flash": {
+        "zh": "瑞航A330因客艙煙霧改降班戈並安全落地",
+        "en": "SWISS A330 lands safely at Bangor after cabin smoke",
+        "hot": True,
+    },
+    "incident": {
+        "date": (NOW - timedelta(days=1)).strftime("%Y-%m-%d"),
+        "sev": "inc",
+        "aircraft": "Airbus A330",
+        "operator": "SWISS",
+        "phase": {"zh": "巡航", "en": "Cruise"},
+        "location": {"zh": "班戈", "en": "Bangor"},
+        "desc": {
+            "zh": "因商務艙煙霧改降並安全落地",
+            "en": "Diversion after cabin smoke and safe landing",
+        },
+        "status": "prelim",
     },
 }
 
@@ -361,6 +421,73 @@ def test_publish_flow():
     check(stats["seriousThisWeek"] == 2,
           f"approved ser incident counted, got {stats['seriousThisWeek']}")
     print("test_publish_flow: done")
+
+
+def test_routine_safety_auto_publish_and_serious_gate():
+    """A safe smoke diversion publishes; serious severity still fails closed."""
+    group = {
+        "id": "g-routine-safety",
+        "primarySource": "SWISS",
+        "items": [{
+            "title": "SWISS LX16 diverts to Bangor after cabin smoke",
+            "url": "https://example.com/swiss-lx16-bangor",
+            "publishedUtc": common.iso_minute(NOW),
+            "summary": (
+                "SWISS flight LX16 diverted to Bangor after smoke was detected "
+                "in the business-class cabin. The aircraft landed safely and "
+                "no injuries were reported."),
+            "image": None,
+            "source": "SWISS",
+            "sourceKey": "swiss",
+        }],
+    }
+    pending = {"generatedUtc": common.iso_minute(NOW), "groups": [group]}
+    os.environ["ANTHROPIC_API_KEY"] = "test-key-not-real"
+
+    reset_data_dir()
+    (DATA / "pending.json").write_text(
+        json.dumps(pending, ensure_ascii=False), encoding="utf-8")
+    original = write.draft_group
+    write.draft_group = lambda client, story_group: DRAFT_ROUTINE_SAFETY
+    try:
+        write.main()
+    finally:
+        write.draft_group = original
+
+    articles = all_articles()
+    check(len(articles) == 1 and articles[0]["cat"] == "safety",
+          "routine smoke diversion auto-publishes as safety news")
+    check(articles[0].get("riskFlags") == [],
+          "routine safety article publishes without a high-risk flag")
+    review_path = DATA / "review.json"
+    check((load(review_path) if review_path.exists() else []) == [],
+          "routine safe occurrence does not enter human review")
+    incidents = load(DATA / "incidents.json")
+    check(len(incidents) == 4 and incidents[0]["sev"] == "inc",
+          "routine published occurrence is retained in incident data")
+
+    # Machine failsafe: even if a model incorrectly requests publish with no
+    # flags, accident/serious severity must still be held for review.
+    reset_data_dir()
+    (DATA / "pending.json").write_text(
+        json.dumps(pending, ensure_ascii=False), encoding="utf-8")
+    serious = json.loads(json.dumps(DRAFT_ROUTINE_SAFETY))
+    serious["incident"]["sev"] = "ser"
+    original = write.draft_group
+    write.draft_group = lambda client, story_group: serious
+    try:
+        write.main()
+    finally:
+        write.draft_group = original
+
+    check(all_articles() == [],
+          "serious incident cannot auto-publish even if model omits flags")
+    review = load(DATA / "review.json")
+    check(len(review) == 1,
+          "serious incident is programmatically queued for review")
+    check(review[0]["riskFlags"] == ["accident_or_serious_incident"],
+          "serious incident receives deterministic blocking risk flag")
+    print("test_routine_safety_auto_publish_and_serious_gate: done")
 
 
 def test_group_cap_and_unique_ids():
@@ -936,7 +1063,9 @@ def test_all_providers_auth_dead():
 
 
 def main():
-    tests = [test_publish_flow, test_group_cap_and_unique_ids,
+    tests = [test_publish_flow,
+             test_routine_safety_auto_publish_and_serious_gate,
+             test_group_cap_and_unique_ids,
              test_extract_json_and_validate_draft, test_provider_failover,
              test_model_chain_and_routing_policy, test_editorial_gate,
              test_completeness_precheck,
