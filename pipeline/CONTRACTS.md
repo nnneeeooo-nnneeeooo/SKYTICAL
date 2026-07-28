@@ -330,3 +330,6 @@ config/model_prices.json - theoretical value only; free-tier spend is 0.
 for work completed through ChatGPT Work/Codex rather than the site's API
 pipeline. These rows never contribute calls, tokens, or dollars to the API
 ledger totals when exact session token usage is unavailable.
+`gptFamilyReference` contains the official standard API text-token rates for
+the GPT-5 family. It is a read-only comparison catalogue on the same private
+dashboard and likewise never contributes to the usage ledger or totals.
