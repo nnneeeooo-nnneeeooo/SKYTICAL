@@ -329,7 +329,17 @@ config/model_prices.json - theoretical value only; free-tier spend is 0.
 `nonApiReference` contains purpose-separated official API comparison rates
 for work completed through ChatGPT Work/Codex rather than the site's API
 pipeline. These rows never contribute calls, tokens, or dollars to the API
-ledger totals when exact session token usage is unavailable.
+ledger totals.
 `gptFamilyReference` contains the official standard API text-token rates for
 the GPT-5 family. It is a read-only comparison catalogue on the same private
 dashboard and likewise never contributes to the usage ledger or totals.
+
+## config/codex_usage.json  (manually refreshed task snapshot)
+
+Checked-in token totals exported from Codex task usage metadata for AVWIRE
+website development. It contains no conversation content, local paths, task
+identifiers, credentials or private dashboard URL. `build.py` validates each
+row, matches it to `gptFamilyReference`, and calculates a separate theoretical
+API-equivalent cost. Cached input is a subset of input and reasoning output is
+a subset of output, so neither is counted twice. This snapshot is displayed on
+the private dashboard but never merged into `data/usage.json` or its totals.
