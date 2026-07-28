@@ -68,7 +68,6 @@ L = {
         "delays": "今日延誤熱點機場", "autoCompiled": "自動彙整",
         "refreshNote": "本文隨來源每小時更新", "sourcesBox": "資料來源 Sources",
         "genNote": "本文由自動化系統彙整生成，內容以原始來源為準。",
-        "aiModel": "AI 撰稿模型",
         "photoKind": {"airframe_photo": "同機資料照片",
                       "file_photo": "資料照片（非事件現場照片）"},
         "photoSource": "照片來源",
@@ -143,7 +142,6 @@ L = {
         "delays": "Delay hotspots today", "autoCompiled": "Auto-compiled",
         "refreshNote": "Refreshes hourly with sources", "sourcesBox": "Sources",
         "genNote": "This article was compiled automatically; the original sources prevail.",
-        "aiModel": "Drafted by",
         "photoKind": {"airframe_photo": "File photo of this airframe",
                       "file_photo": "File photo (not from this event)"},
         "photoSource": "Photo source",
@@ -724,37 +722,35 @@ def page_url(lang: str, sub: str) -> str:
 
 # ── data loading / preparation ───────────────────────────────────────────────
 
-# Article-footer model credit: writer id -> vendor mark + short model name.
-# The mark is a ◈ on a square in the vendor's brand color (site style is
-# square tags, radius 0) - official logo artwork can replace it if licensed.
-_WRITER_BADGES = (
-    ("nemotron-3-ultra", "NVIDIA", "#76b900", "Nemotron 3 Ultra"),
-    ("nemotron-3-super", "NVIDIA", "#76b900", "Nemotron 3 Super"),
-    ("nemotron", "NVIDIA", "#76b900", "Nemotron"),
-    ("deepseek-v4-pro", "DeepSeek", "#4d6bfe", "DeepSeek V4 Pro"),
-    ("deepseek", "DeepSeek", "#4d6bfe", "DeepSeek"),
-    ("gemini-3.6-flash", "Google", "#4285f4", "Gemini 3.6 Flash"),
-    ("gemini-3.5-flash", "Google", "#4285f4", "Gemini 3.5 Flash"),
-    ("gemini", "Google", "#4285f4", "Gemini"),
-    ("qwen3.5", "Qwen", "#615ced", "Qwen 3.5"),
-    ("qwen", "Qwen", "#615ced", "Qwen"),
-    ("glm-5.2", "Z.ai", "#141414", "GLM-5.2"),
-    ("glm", "Z.ai", "#141414", "GLM"),
-    ("mistral-medium-3.5", "Mistral AI", "#fa500f", "Mistral Medium 3.5"),
-    ("mistral", "Mistral AI", "#fa500f", "Mistral"),
-    ("claude-opus-5", "Anthropic", "#d97757", "Claude Opus 5"),
-    ("claude", "Anthropic", "#d97757", "Claude"),
+# Article-footer model credit: writer id -> short public model name.
+_WRITER_MODELS = (
+    ("nemotron-3-ultra", "Nemotron 3 Ultra"),
+    ("nemotron-3-super", "Nemotron 3 Super"),
+    ("nemotron", "Nemotron"),
+    ("deepseek-v4-pro", "DeepSeek V4 Pro"),
+    ("deepseek", "DeepSeek"),
+    ("gemini-3.6-flash", "Gemini 3.6 Flash"),
+    ("gemini-3.5-flash", "Gemini 3.5 Flash"),
+    ("gemini", "Gemini"),
+    ("qwen3.5", "Qwen 3.5"),
+    ("qwen", "Qwen"),
+    ("glm-5.2", "GLM-5.2"),
+    ("glm", "GLM"),
+    ("mistral-medium-3.5", "Mistral Medium 3.5"),
+    ("mistral", "Mistral"),
+    ("claude-opus-5", "Claude Opus 5"),
+    ("claude", "Claude"),
 )
 
 
-def writer_badge(writer):
-    """{"vendor", "color", "model"} for a writer id, or None."""
+def writer_model(writer):
+    """Short public model name for a writer id, or None."""
     if not isinstance(writer, str) or ":" not in writer:
         return None
     model_id = writer.split(":", 1)[1].lower()
-    for needle, vendor, color, model in _WRITER_BADGES:
+    for needle, model in _WRITER_MODELS:
         if needle in model_id:
-            return {"vendor": vendor, "color": color, "model": model}
+            return model
     return None
 
 
@@ -843,7 +839,7 @@ def prep_article(raw):
         "zh": side(zh, en),
         "en": side(en, zh),
         "sources": sources,
-        "writer_badge": writer_badge(raw.get("writer")),
+        "writer_model": writer_model(raw.get("writer")),
         "article_format": (
             "brief" if raw.get("articleFormat") == "brief" else "full"),
     }
@@ -883,7 +879,7 @@ def art_view(a, lang: str):
         cat_label=_bi(CATS.get(a["cat"]), lang, a["cat"]),
         source=a["source"], time=a["time"], meta_ts=a["meta_ts"],
         sources=a["sources"], url=page_url(lang, f"news/{a['id']}/"),
-        writer_badge=a["writer_badge"],
+        writer_model=a["writer_model"],
         article_format=a["article_format"],
         external=False,
     )
