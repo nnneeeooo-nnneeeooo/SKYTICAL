@@ -663,6 +663,10 @@ def checked_sources_snapshot() -> tuple[list[dict], list[str]]:
     for src in load_json(DATA_DIR / "sources.json", []) or []:
         if not isinstance(src, dict):
             continue
+        if src.get("public") is False:
+            # Hidden manufacturer discovery feeds can contribute articles,
+            # but are not part of the public source-status inventory.
+            continue
         if src.get("kind") == "data":
             # Data platforms (e.g. the optional FlightAware stats API)
             # never feed news candidates; their status is not briefing
