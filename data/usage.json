@@ -1,35 +1,35 @@
 {
-  "updatedUtc": "2026-07-29T07:06Z",
+  "updatedUtc": "2026-07-29T09:49Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 125,
-      "inputTokens": 479421,
-      "outputTokens": 284461,
+      "calls": 127,
+      "inputTokens": 488379,
+      "outputTokens": 288084,
       "unknownCalls": 20
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
-      "calls": 45,
-      "inputTokens": 211733,
-      "outputTokens": 93987,
+      "calls": 46,
+      "inputTokens": 216212,
+      "outputTokens": 95482,
       "unknownCalls": 0
     },
     "nvidia:deepseek-ai/deepseek-v4-pro": {
-      "calls": 31,
+      "calls": 32,
       "inputTokens": 70192,
       "outputTokens": 13939,
-      "unknownCalls": 16
+      "unknownCalls": 17
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 21,
+      "calls": 22,
       "inputTokens": 80958,
       "outputTokens": 136646,
-      "unknownCalls": 0
+      "unknownCalls": 1
     },
     "gemini:gemini-3.5-flash": {
-      "calls": 1,
-      "inputTokens": 0,
-      "outputTokens": 0,
+      "calls": 2,
+      "inputTokens": 3294,
+      "outputTokens": 2168,
       "unknownCalls": 1
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
@@ -62,9 +62,9 @@
       "outputTokens": 345993
     },
     "2026-07-29": {
-      "calls": 25,
-      "inputTokens": 118996,
-      "outputTokens": 66845
+      "calls": 31,
+      "inputTokens": 135727,
+      "outputTokens": 74131
     }
   }
 }
