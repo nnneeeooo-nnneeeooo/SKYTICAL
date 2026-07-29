@@ -1,5 +1,256 @@
 [
   {
+    "id": "g-20260729-1640-3",
+    "queuedUtc": "2026-07-29T16:40Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story contains major financial earnings, operational delivery numbers, and commercial order claims from Airbus' H1 2026 report, requiring human review under financial_or_order_claim guidelines.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Airbus SE reported consolidated financial results for the half-year ended June 30, 2026, generating revenues of €33.2 billion.",
+        "sourceQuote": "Airbus SE (stock exchange symbol: AIR) reported consolidated financial results for the Half-Year (H1) ended 30 June 2026.",
+        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Consolidated Adjusted EBIT for H1 2026 reached €2,727 million, up from €2,204 million in H1 2025.",
+        "sourceQuote": "totalled € 2,727 million (H1 2025: € 2,204 million).",
+        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Airbus recorded gross commercial aircraft orders of 886 units and net orders of 821 units in H1 2026, bringing its backlog to 9,222 commercial aircraft at the end of June 2026.",
+        "sourceQuote": "Gross commercial aircraft orders totalled 886 (H1 2025: 494 aircraft) with net orders of 821 aircraft after cancellations (H1 2025: 402 aircraft).",
+        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Airbus delivered 351 commercial aircraft in H1 2026, comprising 44 A220s, 271 A320 Family, 10 A330s, and 26 A350s.",
+        "sourceQuote": "A total of 351 commercial aircraft were delivered (H1 2025: 306 aircraft), comprising 44 A220s, 271 A320 Family, 10 A330s and 26 A350s.",
+        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Airbus target rates include reaching between 70 and 75 A320 Family aircraft per month by the end of 2027, rate 75 thereafter, rate 13 for the A220 in 2028, rate 5 for the A330 in 2029, and rate 12 for the A350 in 2028.",
+        "sourceQuote": "On the A320 Family, the Company continues to expect to reach a rate of between 70 and 75 aircraft a month by the end of 2027, stabilising at rate 75 thereafter.",
+        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story contains major financial earnings, operational delivery numbers, and commercial order claims from Airbus' H1 2026 report, requiring human review under financial_or_order_claim guidelines.",
+      "cat": "biz",
+      "zh": {
+        "title": "空中巴士公布2026上半年財報 交付351架民航機營收增至332億歐元",
+        "summary": "空中巴士公布截至2026年6月30日止的上半年財務業績，期間共交付351架商用飛機，綜合營收成長至332億歐元，調整後息稅前利潤達27.27億歐元。此外，上半年淨訂單達821架，商用飛機積壓訂單累計達9,222架，公司並維持多款機型的月產能提升目標。",
+        "body": [
+          "空中巴士（Airbus SE）公布截至2026年6月30日止的2026上半年綜合財務業績。受到商用飛機交付量提升等因素推動，空中巴士上半年綜合營收較去年同期的296億歐元成長12%，達到332億歐元。在盈利表現方面，綜合調整後息稅前利潤（EBIT Adjusted）達到27.27億歐元，高於2025年上半年的22.04億歐元。",
+          "在飛機交付表現方面，空中巴士於2026上半年共計交付351架商用飛機，高於2025年同期的306架。交付的飛機機型包含44架A220系列客機、271架A320系列客機、10架A330系列客機，以及26架A350系列客機。民航機業務產生的營收隨之增加15%，達到239億歐元。",
+          "在商業訂單與積壓量方面，空中巴士上半年共獲得886架商用飛機總訂單，扣除取消訂單後的淨訂單量達到821架，高於2025年同期的402架淨訂單。截至2026年6月底，空中巴士累積的商用飛機積壓訂單總數達到9,222架。",
+          "關於產能提升與未來目標，空中巴士表示正持續推動各機型產線的產能提升。其中A320系列客機預計於2027年底前達到每月產出70至75架的目標，隨後穩定在每月75架的產能；A220系列持續朝2028年達到每月13架推進；A350系列目標為2028年達每月12架；A330系列則維持2029年達到每月5架的既定計畫。"
+        ]
+      },
+      "en": {
+        "title": "Airbus Reports H1 2026 Results with 351 Commercial Deliveries and €33.2B Revenue",
+        "summary": "Airbus SE reported its consolidated financial results for the half-year ended June 30, 2026, delivering 351 commercial aircraft and generating revenues of €33.2 billion. Consolidated Adjusted EBIT rose to €2,727 million, supported by higher commercial deliveries. During the six-month period, Airbus recorded 886 gross orders and 821 net orders, bringing its commercial aircraft backlog to 9,222 units at the end of June. The manufacturer also confirmed its ongoing monthly production rate targets across its commercial aircraft programs, including reaching 70 to 75 A320 Family aircraft per month by late 2027.",
+        "body": [
+          "Airbus SE reported its consolidated financial results for the half-year (H1) ended 30 June 2026. Consolidated revenues for the company increased 12% year-on-year to €33.2 billion, up from €29.6 billion recorded in the first half of 2025. Consolidated Adjusted EBIT for the six-month period totalled €2,727 million, compared with €2,204 million reported in H1 2025, mainly reflecting the higher level of commercial aircraft deliveries.",
+          "Airbus delivered a total of 351 commercial aircraft during the first six months of 2026, an increase from 306 aircraft delivered during the same period in H1 2025. The delivery breakdown for H1 2026 comprised 44 A220s, 271 A320 Family aircraft, 10 A330s, and 26 A350s. Revenues generated by commercial aircraft activities increased 15% year-on-year to €23.9 billion, supported by the higher commercial deliveries.",
+          "Regarding order activity, Airbus recorded gross commercial aircraft orders of 886 aircraft and net orders of 821 aircraft after deducting cancellations, compared to 402 net orders in H1 2025. Consequently, the company's commercial aircraft order backlog stood at 9,222 aircraft at the end of June 2026.",
+          "The manufacturer also re-confirmed its production ramp-up targets across all commercial aircraft programmes. For the A320 Family, Airbus continues to expect reaching a rate of between 70 and 75 aircraft a month by the end of 2027, before stabilising at rate 75 thereafter. Airbus is targeting a monthly production rate of 13 for the A220 in 2028, rate 12 for the A350 in 2028, and rate 5 for the A330 programme in 2029."
+        ]
+      },
+      "flash": {
+        "zh": "空中巴士公布2026上半年財報，營收成長至332億歐元。",
+        "en": "Airbus reports H1 2026 results with revenues reaching €33.2B.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Airbus SE reported consolidated financial results for the half-year ended June 30, 2026, generating revenues of €33.2 billion.",
+          "sourceQuote": "Airbus SE (stock exchange symbol: AIR) reported consolidated financial results for the Half-Year (H1) ended 30 June 2026.",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Consolidated Adjusted EBIT for H1 2026 reached €2,727 million, up from €2,204 million in H1 2025.",
+          "sourceQuote": "totalled € 2,727 million (H1 2025: € 2,204 million).",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Airbus recorded gross commercial aircraft orders of 886 units and net orders of 821 units in H1 2026, bringing its backlog to 9,222 commercial aircraft at the end of June 2026.",
+          "sourceQuote": "Gross commercial aircraft orders totalled 886 (H1 2025: 494 aircraft) with net orders of 821 aircraft after cancellations (H1 2025: 402 aircraft).",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Airbus delivered 351 commercial aircraft in H1 2026, comprising 44 A220s, 271 A320 Family, 10 A330s, and 26 A350s.",
+          "sourceQuote": "A total of 351 commercial aircraft were delivered (H1 2025: 306 aircraft), comprising 44 A220s, 271 A320 Family, 10 A330s and 26 A350s.",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Airbus target rates include reaching between 70 and 75 A320 Family aircraft per month by the end of 2027, rate 75 thereafter, rate 13 for the A220 in 2028, rate 5 for the A330 in 2029, and rate 12 for the A350 in 2028.",
+          "sourceQuote": "On the A320 Family, the Company continues to expect to reach a rate of between 70 and 75 aircraft a month by the end of 2027, stabilising at rate 75 thereafter.",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F4"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Airbus",
+          "Airbus SE"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "A220",
+          "A320",
+          "A330",
+          "A350"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-06-30",
+          "2026-07-29"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260729-1640-3",
+      "primarySource": "Airbus",
+      "items": [
+        {
+          "title": "Airbus reports Half-Year (H1) 2026 results",
+          "url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+          "publishedUtc": "2026-07-29T15:45Z",
+          "summary": "Airbus SE (stock exchange symbol: AIR) reported consolidated financial results for the Half-Year (H1) ended 30 June 2026.",
+          "image": "https://www.airbus.com/sites/g/files/jlcbta136/files/styles/w345h345/public/2023-04/Airbus-flag.jpeg?itok=GKdjK96F",
+          "source": "Airbus",
+          "sourceKey": "airbus"
+        },
+        {
+          "title": "Airbus reports Half-Year (H1) 2026 results",
+          "summary": "Airbus reports Half-Year (H1) 2026 results &nbsp;&nbsp; Airbus",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPTVBLVU5hS2wxaHhxd2MwUzgwOGtmUldlN3VQM1I2bkNsZGt0V0dldDBkY1JtRXJCdGJvN3VjcVZOeW1jQzBZbFlmZTJXazFqWVA0Ukc1TkRmQ0Jwbi1RQVRvWEx4ZGowNkpfVjU3X1hGZVhTNEdWU25Mclh0SWhVRU5lMXZPNkFSZ2tZXzB0QkZNbmxSN0RBM2V2WUMyYjg?oc=5",
+          "source": "Airbus",
+          "companion": true,
+          "publishedUtc": "2026-07-29T15:45Z"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1532-iata-global-air-cargo-demand-rose-8-5-ye",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: ON-YEAR"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%",
+            "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+            "facts": [
+              {
+                "claim": "IATA released June 2026 global air cargo market data showing total demand (CTK) increased 8.5% year-on-year, with international operations up 9.6%.",
+                "source_quote": "Total demand, measured in cargo tonne-kilometers (CTK), increased by 8.5% compared to June 2025 (9.6% for international operations).",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "Capacity (ACTK) increased 4.4% year-on-year, or 4.9% for international operations.",
+                "source_quote": "Capacity, measured in available cargo tonne-kilometers (ACTK), increased by 4.4% compared to June 2025 (4.9% for international operations).",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "Willie Walsh said North America was the strongest contributor to growth, all regions were in positive territory, and risks remain from Middle East hostilities and US tariff focus.",
+                "source_quote": "While North America was the strongest contributor to growth, demand in all regions was in positive territory compared to last year.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "North American carriers saw 13.1% year-on-year demand growth, the strongest of all regions; Latin American and Caribbean carriers saw 3.5%, the weakest.",
+                "source_quote": "North American carriers saw a 13.1% year-on-year increase in air cargo demand in June, the strongest performance of all regions.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "Middle East carriers saw 5.6% demand growth, skewed positive because June 2025 was particularly weak due to military conflict disruptions.",
+                "source_quote": "they are skewed to the positive as the comparison is to June 2025 which was particularly weak for carriers in the Middle East as a result of disruptions due to military conflict.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "Global trade increased 5.2% year-on-year; jet fuel prices fell 20% month-on-month but remained 45.8% above year-earlier levels; the New Export Orders Index stayed below 50 at 49.4 for a fourth consecutive month.",
+                "source_quote": "Global trade increased by 5.2% year-on-year. Jet fuel prices fell by 20% month-on-month in June but remained 45.8% above year-earlier levels.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260729-0638-1",
     "queuedUtc": "2026-07-29T06:38Z",
     "approve": false,
