@@ -279,6 +279,18 @@ SOURCES: dict[str, dict] = {
             "en": "Global aviation news & analysis",
         },
     },
+    "aerotime": {
+        "name": "AeroTime",
+        "kind": "media",
+        "fmt": "RSS",
+        "url": "https://www.aerotime.aero",
+        "endpoint": "https://www.aerotime.aero/feed",
+        "type": "rss",
+        "cover": {
+            "zh": "全球航空新聞、產業動態與分析",
+            "en": "Global aviation news, industry updates & analysis",
+        },
+    },
     "cnataiwan": {
         "name": "中央社 CNA",
         "kind": "media",
