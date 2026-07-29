@@ -77,6 +77,17 @@ def test_parse_and_sanitize():
     check(not adsb.position_ok(sparse), "row without lat/lon skipped")
     check(adsb.parse_aircraft({"r": "B-12345"}) is None,
           "row without hex is unusable")
+    check(adsb.parse_aircraft(dict(raw, dbFlags="not-an-integer")) is None,
+          "malformed dbFlags conservatively discard the entire row")
+    string_flags = adsb.parse_aircraft(dict(raw, dbFlags="4"))
+    check(string_flags is not None and adsb.sensitive_reason(string_flags),
+          "numeric-string dbFlags retain the sensitive-aircraft gate")
+    provider_rows = [{"hex": "abc123"}]
+    check(adsb._aircraft_rows({"ac": provider_rows}) is provider_rows,
+          "provider envelope returns its aircraft rows without a copy")
+    check(adsb._aircraft_rows({"ac": {}}) == []
+          and adsb._aircraft_rows(None) == [],
+          "malformed provider envelopes degrade to an empty row list")
 
     stale = adsb.parse_aircraft(dict(raw, seen_pos=45.0))
     check(not adsb.position_ok(stale), "seen_pos > 30s excluded")

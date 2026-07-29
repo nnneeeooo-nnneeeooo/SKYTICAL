@@ -99,6 +99,57 @@ def test_norm_title_and_tiebreak() -> None:
     assert dedupe._best_first(tie)[0]["sourceKey"] == "faa"
 
 
+def test_grouping_transitivity_and_rank_helper() -> None:
+    """URL and title edges compose, and ranking keeps material first."""
+    old = "2026-07-26T00:00Z"
+    new = "2026-07-27T00:00Z"
+    material = "A complete evidential summary with enough distinct text."
+    linked = [
+        {
+            "title": "Unrelated discovery headline",
+            "url": "https://example.com/shared",
+            "publishedUtc": old,
+            "summary": material,
+            "source": "FAA",
+            "sourceKey": "faa",
+        },
+        {
+            "title": "Airline announces a carefully worded route plan",
+            "url": "https://example.com/shared",
+            "publishedUtc": old,
+            "summary": "",
+            "source": "Reuters",
+            "sourceKey": "reuters",
+        },
+        {
+            "title": "Airline announces a carefully worded route plan",
+            "url": "https://example.com/other",
+            "publishedUtc": old,
+            "summary": "",
+            "source": "EASA",
+            "sourceKey": "easa",
+        },
+    ]
+    groups = dedupe._group(linked)
+    assert len(groups) == 1 and len(groups[0]) == 3
+
+    thin_newer = {
+        "title": "Newest title only item",
+        "url": "https://example.com/new",
+        "publishedUtc": new,
+        "summary": "",
+        "source": "FAA",
+        "sourceKey": "faa",
+    }
+    ranked = dedupe._rank_groups([thin_newer, *linked])
+    assert ranked[0][0] is True
+    assert {item["url"] for item in ranked[0][3]} == {
+        "https://example.com/shared",
+        "https://example.com/other",
+    }
+    assert ranked[1][0] is False
+
+
 def test_filtering_grouping_and_ranking() -> None:
     with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
         data_dir = Path(tmp)
@@ -342,6 +393,7 @@ def test_material_groups_rank_first() -> None:
 def main() -> None:
     tests = [
         test_norm_title_and_tiebreak,
+        test_grouping_transitivity_and_rank_helper,
         test_filtering_grouping_and_ranking,
         test_group_cap_and_recency_order,
         test_empty_data_dir,
