@@ -1,54 +1,54 @@
 {
-  "updatedUtc": "2026-07-29T16:51Z",
+  "updatedUtc": "2026-07-29T17:42Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 148,
-      "inputTokens": 554927,
-      "outputTokens": 325512,
-      "unknownCalls": 28
+      "calls": 167,
+      "inputTokens": 647632,
+      "outputTokens": 378678,
+      "unknownCalls": 29
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
-      "calls": 58,
-      "inputTokens": 279599,
-      "outputTokens": 123360,
+      "calls": 67,
+      "inputTokens": 316866,
+      "outputTokens": 141492,
       "unknownCalls": 0
     },
     "nvidia:deepseek-ai/deepseek-v4-pro": {
-      "calls": 43,
-      "inputTokens": 92919,
-      "outputTokens": 17001,
-      "unknownCalls": 24
+      "calls": 50,
+      "inputTokens": 117262,
+      "outputTokens": 22349,
+      "unknownCalls": 25
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 30,
-      "inputTokens": 109251,
-      "outputTokens": 181286,
-      "unknownCalls": 2
+      "calls": 35,
+      "inputTokens": 121590,
+      "outputTokens": 217780,
+      "unknownCalls": 3
     },
     "gemini:gemini-3.5-flash": {
-      "calls": 5,
+      "calls": 8,
       "inputTokens": 3294,
       "outputTokens": 2168,
-      "unknownCalls": 4
+      "unknownCalls": 7
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
-      "calls": 4,
+      "calls": 7,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 4
+      "unknownCalls": 7
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 4,
-      "inputTokens": 19698,
-      "outputTokens": 7283,
+      "calls": 7,
+      "inputTokens": 33070,
+      "outputTokens": 10475,
       "unknownCalls": 0
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
-      "calls": 2,
+      "calls": 5,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 2
+      "unknownCalls": 5
     }
   },
   "daily": {
@@ -68,9 +68,9 @@
       "outputTokens": 345993
     },
     "2026-07-29": {
-      "calls": 90,
-      "inputTokens": 326012,
-      "outputTokens": 190886
+      "calls": 146,
+      "inputTokens": 510251,
+      "outputTokens": 308351
     }
   }
 }
