@@ -1,0 +1,141 @@
+{
+  "content_type": "daily_transport_briefing",
+  "briefing_id": "2026-07-29-afternoon",
+  "date": "2026-07-29",
+  "edition": "afternoon",
+  "edition_label": "午後快報",
+  "timezone": "Asia/Taipei",
+  "window_start": "2026-07-29T07:00:00+08:00",
+  "window_end": "2026-07-29T15:00:00+08:00",
+  "cutoff_time": "2026-07-29T15:00:00+08:00",
+  "scheduled_time": "2026-07-29T15:15:00+08:00",
+  "generated_at": "2026-07-29T17:49:08.292315+08:00",
+  "status": "partial",
+  "item_count": 1,
+  "sections": {
+    "aviation_incidents": [],
+    "taiwan_aviation": [],
+    "international_aviation": [],
+    "ground_and_maritime": [
+      {
+        "event_id": "ev-777ca7e412194901",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "maritime",
+        "headline": "國防部偵獲8架次共機與7艘共艦侵擾台海 6架次踰越中線",
+        "summary": "國防部表示，自2026年7月28日上午6時至29日上午6時止，國軍共偵獲7艘共艦、1艘中國公務船及8架次共機在台海周邊活動。其中有6架次共機逾越台海中線，侵擾北部及東部空域。國軍已運用任務機艦及岸置飛彈系統實施嚴密監控與應處。",
+        "headline_en": "Taiwan Tracks 8 PLA Aircraft and 7 Naval Vessels Around Island",
+        "summary_en": "Taiwan's Ministry of National Defense detected eight Chinese military aircraft, seven naval vessels, and one official ship operating around the island between 6:00 a.m. on July 28 and 6:00 a.m. on July 29, 2026. According to official figures, six of the detected aircraft crossed the median line of the Taiwan Strait, entering northern and eastern airspace. In response, Taiwan's armed forces deployed mission aircraft, naval vessels, and shore-based missile systems to closely monitor and respond to the military activity.",
+        "event_time": null,
+        "source_published_at": "2026-07-29T01:36:00+00:00",
+        "source_updated_at": null,
+        "location": "台海中線",
+        "entities": [
+          "國防部",
+          "台海中線",
+          "北部",
+          "東部",
+          "台海",
+          "2026/07/29"
+        ],
+        "severity": "routine",
+        "taiwan_priority": true,
+        "military": true,
+        "sources": [
+          {
+            "name": "中央社 CNA — 7艘共艦6架次共機擾台 國軍監控",
+            "url": "https://www.cna.com.tw/news/aipl/202607290035.aspx"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260729-0638-taiwan-tracks-8-pla-aircraft-and-7-naval"
+      }
+    ]
+  },
+  "checked_sources": [
+    {
+      "name": "FAA",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "NTSB",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "ICAO",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "IATA",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "EASA",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "Eurocontrol",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "Reuters",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "The Aviation Herald",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "CAA Taiwan",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "Simple Flying",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "中央社 CNA",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "國防部・軍聞社",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "臺灣交通要聞",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "Airbus",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    },
+    {
+      "name": "Boeing",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T06:38Z"
+    }
+  ],
+  "warnings": [
+    "AI 搜尋服務暫時不穩定，本期未能產生條列內容；我們正努力恢復服務，系統將於下一期自動重試"
+  ],
+  "generation_mode": "deterministic",
+  "generation_model": null,
+  "grounded_beta": {
+    "used": false,
+    "items": 0
+  }
+}
