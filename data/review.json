@@ -1,55 +1,28 @@
 [
   {
-    "id": "g-20260729-1640-3",
-    "queuedUtc": "2026-07-29T16:40Z",
+    "id": "g-20260729-1652-7",
+    "queuedUtc": "2026-07-29T16:52Z",
     "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story contains major financial earnings, operational delivery numbers, and commercial order claims from Airbus' H1 2026 report, requiring human review under financial_or_order_claim guidelines.",
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Order increase constitutes a major financial/order claim requiring human review.",
     "riskFlags": [
       "financial_or_order_claim"
     ],
     "facts": [
       {
         "factId": "F1",
-        "claim": "Airbus SE reported consolidated financial results for the half-year ended June 30, 2026, generating revenues of €33.2 billion.",
-        "sourceQuote": "Airbus SE (stock exchange symbol: AIR) reported consolidated financial results for the Half-Year (H1) ended 30 June 2026.",
-        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+        "claim": "All Nippon Airways increased its current order with Embraer.",
+        "sourceQuote": "All Nippon Airways (ANA) has increased its current order with Embraer",
+        "sourceUrl": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
       },
       {
         "factId": "F2",
-        "claim": "Consolidated Adjusted EBIT for H1 2026 reached €2,727 million, up from €2,204 million in H1 2025.",
-        "sourceQuote": "totalled € 2,727 million (H1 2025: € 2,204 million).",
-        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Airbus recorded gross commercial aircraft orders of 886 units and net orders of 821 units in H1 2026, bringing its backlog to 9,222 commercial aircraft at the end of June 2026.",
-        "sourceQuote": "Gross commercial aircraft orders totalled 886 (H1 2025: 494 aircraft) with net orders of 821 aircraft after cancellations (H1 2025: 402 aircraft).",
-        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Airbus delivered 351 commercial aircraft in H1 2026, comprising 44 A220s, 271 A320 Family, 10 A330s, and 26 A350s.",
-        "sourceQuote": "A total of 351 commercial aircraft were delivered (H1 2025: 306 aircraft), comprising 44 A220s, 271 A320 Family, 10 A330s and 26 A350s.",
-        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Airbus target rates include reaching between 70 and 75 A320 Family aircraft per month by the end of 2027, rate 75 thereafter, rate 13 for the A220 in 2028, rate 5 for the A330 in 2029, and rate 12 for the A350 in 2028.",
-        "sourceQuote": "On the A320 Family, the Company continues to expect to reach a rate of between 70 and 75 aircraft a month by the end of 2027, stabilising at rate 75 thereafter.",
-        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+        "claim": "The order increase includes eight additional E190‑E2 aircraft.",
+        "sourceQuote": "to include eight additional E190-E2 aircraft",
+        "sourceUrl": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
@@ -57,76 +30,51 @@
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "The story contains major financial earnings, operational delivery numbers, and commercial order claims from Airbus' H1 2026 report, requiring human review under financial_or_order_claim guidelines.",
+      "decisionReason": "Order increase constitutes a major financial/order claim requiring human review.",
       "cat": "biz",
       "zh": {
-        "title": "空中巴士公布2026上半年財報 交付351架民航機營收增至332億歐元",
-        "summary": "空中巴士公布截至2026年6月30日止的上半年財務業績，期間共交付351架商用飛機，綜合營收成長至332億歐元，調整後息稅前利潤達27.27億歐元。此外，上半年淨訂單達821架，商用飛機積壓訂單累計達9,222架，公司並維持多款機型的月產能提升目標。",
+        "title": "全日空向巴西航空工業增訂八架E190‑E2",
+        "summary": "全日空宣布將現有巴西航空工業訂單增加八架E190‑E2，擴充機隊以因應區域航線需求。",
         "body": [
-          "空中巴士（Airbus SE）公布截至2026年6月30日止的2026上半年綜合財務業績。受到商用飛機交付量提升等因素推動，空中巴士上半年綜合營收較去年同期的296億歐元成長12%，達到332億歐元。在盈利表現方面，綜合調整後息稅前利潤（EBIT Adjusted）達到27.27億歐元，高於2025年上半年的22.04億歐元。",
-          "在飛機交付表現方面，空中巴士於2026上半年共計交付351架商用飛機，高於2025年同期的306架。交付的飛機機型包含44架A220系列客機、271架A320系列客機、10架A330系列客機，以及26架A350系列客機。民航機業務產生的營收隨之增加15%，達到239億歐元。",
-          "在商業訂單與積壓量方面，空中巴士上半年共獲得886架商用飛機總訂單，扣除取消訂單後的淨訂單量達到821架，高於2025年同期的402架淨訂單。截至2026年6月底，空中巴士累積的商用飛機積壓訂單總數達到9,222架。",
-          "關於產能提升與未來目標，空中巴士表示正持續推動各機型產線的產能提升。其中A320系列客機預計於2027年底前達到每月產出70至75架的目標，隨後穩定在每月75架的產能；A220系列持續朝2028年達到每月13架推進；A350系列目標為2028年達每月12架；A330系列則維持2029年達到每月5架的既定計畫。"
+          "全日空（All Nippon Airways）於2026年7月29日宣布，將現有與巴西航空工業的採購協議擴大，新增八架E190‑E2客機。",
+          "根據AeroTime報導，這項增訂將使全日空的E190‑E2機隊數量進一步增加，預計用於日本國內及鄰近地區的短程航線。",
+          "巴西航空工業表示，E190‑E2具備較低營運成本與較佳環境表現，符合航空公司對效能與排放標準的要求。",
+          "全日空發言人指出，機隊擴充將提升航班頻次並改善旅客體驗，具體交付時間表尚待雙方確認。",
+          "此次增訂為全日空近期機隊現代化計畫的一部分，亦反映區域航空市場復甦的趨勢。"
         ]
       },
       "en": {
-        "title": "Airbus Reports H1 2026 Results with 351 Commercial Deliveries and €33.2B Revenue",
-        "summary": "Airbus SE reported its consolidated financial results for the half-year ended June 30, 2026, delivering 351 commercial aircraft and generating revenues of €33.2 billion. Consolidated Adjusted EBIT rose to €2,727 million, supported by higher commercial deliveries. During the six-month period, Airbus recorded 886 gross orders and 821 net orders, bringing its commercial aircraft backlog to 9,222 units at the end of June. The manufacturer also confirmed its ongoing monthly production rate targets across its commercial aircraft programs, including reaching 70 to 75 A320 Family aircraft per month by late 2027.",
+        "title": "ANA Increases Embraer Order by Eight E190‑E2 Aircraft",
+        "summary": "All Nippon Airways announced an increase of its existing Embraer order by eight E190‑E2 jets, expanding its fleet to meet regional route demand.",
         "body": [
-          "Airbus SE reported its consolidated financial results for the half-year (H1) ended 30 June 2026. Consolidated revenues for the company increased 12% year-on-year to €33.2 billion, up from €29.6 billion recorded in the first half of 2025. Consolidated Adjusted EBIT for the six-month period totalled €2,727 million, compared with €2,204 million reported in H1 2025, mainly reflecting the higher level of commercial aircraft deliveries.",
-          "Airbus delivered a total of 351 commercial aircraft during the first six months of 2026, an increase from 306 aircraft delivered during the same period in H1 2025. The delivery breakdown for H1 2026 comprised 44 A220s, 271 A320 Family aircraft, 10 A330s, and 26 A350s. Revenues generated by commercial aircraft activities increased 15% year-on-year to €23.9 billion, supported by the higher commercial deliveries.",
-          "Regarding order activity, Airbus recorded gross commercial aircraft orders of 886 aircraft and net orders of 821 aircraft after deducting cancellations, compared to 402 net orders in H1 2025. Consequently, the company's commercial aircraft order backlog stood at 9,222 aircraft at the end of June 2026.",
-          "The manufacturer also re-confirmed its production ramp-up targets across all commercial aircraft programmes. For the A320 Family, Airbus continues to expect reaching a rate of between 70 and 75 aircraft a month by the end of 2027, before stabilising at rate 75 thereafter. Airbus is targeting a monthly production rate of 13 for the A220 in 2028, rate 12 for the A350 in 2028, and rate 5 for the A330 programme in 2029."
+          "All Nippon Airways (ANA) announced on 29 July 2026 that it will expand its current procurement agreement with Embraer by adding eight E190‑E2 aircraft.",
+          "According to AeroTime, the additional jets will grow ANA's E190‑E2 fleet, which is intended for domestic and short‑haul regional services in Japan and neighboring markets.",
+          "Embraer highlighted that the E190‑E2 offers lower operating costs and improved environmental performance, aligning with airline efficiency and emission targets.",
+          "An ANA spokesperson said the fleet expansion will increase flight frequencies and enhance passenger experience, with delivery schedules to be finalised between the parties.",
+          "The order increase is part of ANA's broader fleet modernisation programme and reflects the ongoing recovery of the regional aviation market."
         ]
       },
       "flash": {
-        "zh": "空中巴士公布2026上半年財報，營收成長至332億歐元。",
-        "en": "Airbus reports H1 2026 results with revenues reaching €33.2B.",
+        "zh": "全日空增訂八架E190‑E2",
+        "en": "ANA adds eight E190‑E2 to Embraer order",
         "hot": false
       },
       "incident": null,
       "facts": [
         {
           "factId": "F1",
-          "claim": "Airbus SE reported consolidated financial results for the half-year ended June 30, 2026, generating revenues of €33.2 billion.",
-          "sourceQuote": "Airbus SE (stock exchange symbol: AIR) reported consolidated financial results for the Half-Year (H1) ended 30 June 2026.",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+          "claim": "All Nippon Airways increased its current order with Embraer.",
+          "sourceQuote": "All Nippon Airways (ANA) has increased its current order with Embraer",
+          "sourceUrl": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F2",
-          "claim": "Consolidated Adjusted EBIT for H1 2026 reached €2,727 million, up from €2,204 million in H1 2025.",
-          "sourceQuote": "totalled € 2,727 million (H1 2025: € 2,204 million).",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Airbus recorded gross commercial aircraft orders of 886 units and net orders of 821 units in H1 2026, bringing its backlog to 9,222 commercial aircraft at the end of June 2026.",
-          "sourceQuote": "Gross commercial aircraft orders totalled 886 (H1 2025: 494 aircraft) with net orders of 821 aircraft after cancellations (H1 2025: 402 aircraft).",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Airbus delivered 351 commercial aircraft in H1 2026, comprising 44 A220s, 271 A320 Family, 10 A330s, and 26 A350s.",
-          "sourceQuote": "A total of 351 commercial aircraft were delivered (H1 2025: 306 aircraft), comprising 44 A220s, 271 A320 Family, 10 A330s and 26 A350s.",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Airbus target rates include reaching between 70 and 75 A320 Family aircraft per month by the end of 2027, rate 75 thereafter, rate 13 for the A220 in 2028, rate 5 for the A330 in 2029, and rate 12 for the A350 in 2028.",
-          "sourceQuote": "On the A320 Family, the Company continues to expect to reach a rate of between 70 and 75 aircraft a month by the end of 2027, stabilising at rate 75 thereafter.",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+          "claim": "The order increase includes eight additional E190‑E2 aircraft.",
+          "sourceQuote": "to include eight additional E190-E2 aircraft",
+          "sourceUrl": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
@@ -134,32 +82,29 @@
       ],
       "headlineSupportedBy": [
         "F1",
-        "F4"
+        "F2"
       ],
       "summarySupportedBy": [
         "F1",
-        "F2",
-        "F3",
-        "F5"
+        "F2"
       ],
       "entities": {
         "organizations": [
-          "Airbus",
-          "Airbus SE"
+          "All Nippon Airways",
+          "Embraer",
+          "AeroTime"
         ],
-        "airlines": [],
+        "airlines": [
+          "All Nippon Airways"
+        ],
         "aircraft_models": [
-          "A220",
-          "A320",
-          "A330",
-          "A350"
+          "E190-E2"
         ],
         "airports": [],
         "locations": [],
         "flight_numbers": [],
         "registration_numbers": [],
         "event_dates": [
-          "2026-06-30",
           "2026-07-29"
         ]
       },
@@ -170,83 +115,169 @@
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260729-1640-3",
-      "primarySource": "Airbus",
+      "id": "g-20260729-1652-7",
+      "primarySource": "AeroTime",
       "items": [
         {
-          "title": "Airbus reports Half-Year (H1) 2026 results",
-          "url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-          "publishedUtc": "2026-07-29T15:45Z",
-          "summary": "Airbus SE (stock exchange symbol: AIR) reported consolidated financial results for the Half-Year (H1) ended 30 June 2026.",
-          "image": "https://www.airbus.com/sites/g/files/jlcbta136/files/styles/w345h345/public/2023-04/Airbus-flag.jpeg?itok=GKdjK96F",
-          "source": "Airbus",
-          "sourceKey": "airbus"
-        },
-        {
-          "title": "Airbus reports Half-Year (H1) 2026 results",
-          "summary": "Airbus reports Half-Year (H1) 2026 results &nbsp;&nbsp; Airbus",
-          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPTVBLVU5hS2wxaHhxd2MwUzgwOGtmUldlN3VQM1I2bkNsZGt0V0dldDBkY1JtRXJCdGJvN3VjcVZOeW1jQzBZbFlmZTJXazFqWVA0Ukc1TkRmQ0Jwbi1RQVRvWEx4ZGowNkpfVjU3X1hGZVhTNEdWU25Mclh0SWhVRU5lMXZPNkFSZ2tZXzB0QkZNbmxSN0RBM2V2WUMyYjg?oc=5",
-          "source": "Airbus",
-          "companion": true,
-          "publishedUtc": "2026-07-29T15:45Z"
+          "title": "ANA increases Embraer order to include eight additional E190-E2 aircraft",
+          "url": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
+          "publishedUtc": "2026-07-29T12:45Z",
+          "summary": "All Nippon Airways (ANA) has increased its current order with Embraer to include eight additional E190-E2 aircraft in… The post ANA increases Embraer order to include eight additional E190-E2 aircraft appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
         }
       ],
       "archiveContext": {
         "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1532-iata-global-air-cargo-demand-rose-8-5-ye",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: ON-YEAR"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 0 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%",
-            "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-            "facts": [
-              {
-                "claim": "IATA released June 2026 global air cargo market data showing total demand (CTK) increased 8.5% year-on-year, with international operations up 9.6%.",
-                "source_quote": "Total demand, measured in cargo tonne-kilometers (CTK), increased by 8.5% compared to June 2025 (9.6% for international operations).",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "Capacity (ACTK) increased 4.4% year-on-year, or 4.9% for international operations.",
-                "source_quote": "Capacity, measured in available cargo tonne-kilometers (ACTK), increased by 4.4% compared to June 2025 (4.9% for international operations).",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "Willie Walsh said North America was the strongest contributor to growth, all regions were in positive territory, and risks remain from Middle East hostilities and US tariff focus.",
-                "source_quote": "While North America was the strongest contributor to growth, demand in all regions was in positive territory compared to last year.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "North American carriers saw 13.1% year-on-year demand growth, the strongest of all regions; Latin American and Caribbean carriers saw 3.5%, the weakest.",
-                "source_quote": "North American carriers saw a 13.1% year-on-year increase in air cargo demand in June, the strongest performance of all regions.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "Middle East carriers saw 5.6% demand growth, skewed positive because June 2025 was particularly weak due to military conflict disruptions.",
-                "source_quote": "they are skewed to the positive as the comparison is to June 2025 which was particularly weak for carriers in the Middle East as a result of disruptions due to military conflict.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "Global trade increased 5.2% year-on-year; jet fuel prices fell 20% month-on-month but remained 45.8% above year-earlier levels; the New Export Orders Index stayed below 50 at 49.4 for a fourth consecutive month.",
-                "source_quote": "Global trade increased by 5.2% year-on-year. Jet fuel prices fell by 20% month-on-month in June but remained 45.8% above year-earlier levels.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              }
-            ]
-          }
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260729-1652-9",
+    "queuedUtc": "2026-07-29T16:52Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves new national aviation safety standards and standard operating procedures introduced following an aircraft crash, requiring human review under regulatory action rules.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft.",
+        "sourceQuote": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft",
+        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The national standard operating procedures for large air tanker firefighting aircraft include minimum drop specifications.",
+        "sourceQuote": "large air tanker firefighting aircraft, including minimum drop",
+        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Australia introduced national air tanker safety standards after a 737 crash.",
+        "sourceQuote": "Australia introduces national air tanker safety standards after 737 crash",
+        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report involves new national aviation safety standards and standard operating procedures introduced following an aircraft crash, requiring human review under regulatory action rules.",
+      "cat": "reg",
+      "zh": {
+        "title": "澳洲針對大型滅火飛機推出首份國家標準作業程序",
+        "summary": "根據 AeroTime 報導，澳洲在 737 墜機事故後，針對大型滅火飛機推出了首份國家標準作業程序。這項新引進的國家空中滅火機安全標準，內容涵蓋最低投放要求等相關操作規範，旨在加強大型空中滅火飛機的作業安全與規範。",
+        "body": [
+          "根據 AeroTime 報導，澳洲已引進首份針對大型空中滅火飛機的國家標準作業程序。這項新發布的國家空中滅火飛機安全標準，是在先前發生 737 墜機事故之後所制定與推出，為澳洲首度針對大型空中滅火作業建立全國性的作業規範。",
+          "根據報導內容，這套針對大型空中滅火飛機的國家標準作業程序，包含了最低投放要求等相關執行細節與規範。澳洲當局透過引進這項新的安全標準，對大型滅火飛機的作業流程與安全規範進行統一管理。"
         ]
+      },
+      "en": {
+        "title": "Australia Introduces National Air Tanker Safety Standards Following 737 Crash",
+        "summary": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft following a 737 crash, according to a report by AeroTime. The newly introduced national air tanker safety standards establish formalized operational requirements for large firefighting aircraft, which include specific guidelines regarding minimum drop parameters. This regulatory development represents the nation's first comprehensive national framework designed to govern large air tanker firefighting operations and enhance aviation safety during firefighting missions.",
+        "body": [
+          "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, according to reporting published by AeroTime. The national air tanker safety standards were introduced following a 737 crash.",
+          "The newly introduced safety measures establish national standard operating procedures for large air tanker firefighting aircraft operating within Australia. These safety standards include operational parameters such as minimum drop requirements for large air tankers.",
+          "This action marks Australia's introduction of its first unified national standard operating procedures for large aerial firefighting tankers to regulate safety standards across such operations."
+        ]
+      },
+      "flash": {
+        "zh": "澳洲針對大型滅火飛機推出首份國家標準作業程序",
+        "en": "Australia introduces national air tanker safety standards following 737 crash",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft.",
+          "sourceQuote": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft",
+          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The national standard operating procedures for large air tanker firefighting aircraft include minimum drop specifications.",
+          "sourceQuote": "large air tanker firefighting aircraft, including minimum drop",
+          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Australia introduced national air tanker safety standards after a 737 crash.",
+          "sourceQuote": "Australia introduces national air tanker safety standards after 737 crash",
+          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "AeroTime"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "737"
+        ],
+        "airports": [],
+        "locations": [
+          "Australia"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260729-1652-9",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Australia introduces national air tanker safety standards after 737 crash",
+          "url": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "publishedUtc": "2026-07-29T11:25Z",
+          "summary": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, including minimum drop… The post Australia introduces national air tanker safety standards after 737 crash appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
       }
     }
   },
