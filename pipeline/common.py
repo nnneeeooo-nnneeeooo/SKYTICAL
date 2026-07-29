@@ -243,6 +243,18 @@ SOURCES: dict[str, dict] = {
             "en": "Global incident tracking",
         },
     },
+    "aerospaceglobalnews": {
+        "name": "Aerospace Global News",
+        "kind": "media",
+        "fmt": "HTML",
+        "url": "https://aerospaceglobalnews.com/",
+        "endpoint": "https://aerospaceglobalnews.com/latest-news/",
+        "type": "html",
+        "cover": {
+            "zh": "全球航太、民航、國防、太空與技術新聞",
+            "en": "Global aerospace, air transport, defence, space & technology news",
+        },
+    },
     "flightaware": {
         "name": "FlightAware",
         "kind": "data",
