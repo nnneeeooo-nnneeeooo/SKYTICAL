@@ -1,5 +1,9 @@
 # AVWIRE 航空快訊
 
+> **AI／新對話快速接手：**先讀 [`AGENTS.md`](AGENTS.md)，不要重新盤點整個
+> repository。最短指令：`@GitHub 依 AGENTS.md 快速模式處理：先確認【事項】，
+> 再修改【內容】；測試通過後直接 commit、合併 main，並確認網站上線。`
+
 全自動航空新聞聚合站。GitHub Actions 每小時整點抓取 FAA / NTSB / ICAO / IATA /
 EASA / Eurocontrol / Reuters / The Aviation Herald / 交通部民航局等免費可信來源，
 去重合併後由 LLM 自動撰寫雙語（繁中 + EN）新聞稿，產出靜態頁面並部署到
