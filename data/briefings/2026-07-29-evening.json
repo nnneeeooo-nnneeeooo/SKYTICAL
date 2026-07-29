@@ -1,0 +1,140 @@
+{
+  "content_type": "daily_transport_briefing",
+  "briefing_id": "2026-07-29-evening",
+  "date": "2026-07-29",
+  "edition": "evening",
+  "edition_label": "晚間快報",
+  "timezone": "Asia/Taipei",
+  "window_start": "2026-07-29T15:00:00+08:00",
+  "window_end": "2026-07-29T23:00:00+08:00",
+  "cutoff_time": "2026-07-29T23:00:00+08:00",
+  "scheduled_time": "2026-07-29T23:15:00+08:00",
+  "generated_at": "2026-07-30T00:39:01.058966+08:00",
+  "status": "partial",
+  "item_count": 1,
+  "sections": {
+    "aviation_incidents": [],
+    "taiwan_aviation": [],
+    "international_aviation": [
+      {
+        "event_id": "ev-2513f1a81c094782",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "aviation_industry",
+        "headline": "蓋特威克機場迎新航線 辛巴威航空開通哈拉雷直飛服務",
+        "summary": "根據 Simple Flying 報導，辛巴威航空已開通由倫敦蓋特威克機場直飛哈拉雷的長途航線，該直飛航程營運時間約為十一小時。這項新服務的營運，進一步拓展了倫敦蓋特威克機場的非洲航線網路，為旅客提供最新的跨洲直飛選擇。",
+        "headline_en": "Air Zimbabwe Launches New Nonstop Long-Haul Flight Between London Gatwick and Harare",
+        "summary_en": "According to media coverage by Simple Flying, Air Zimbabwe has launched new nonstop long-haul flights connecting London Gatwick Airport with Harare. The newly launched service operates direct long-distance flights between the two airports, establishing a regular transport link. The new route features an 11-hour flight duration, representing a significant addition to London Gatwick Airport's expanding African destination network. The introduction of these direct flights expands air connectivity options for travelers flying on the long-haul route between London Gatwick Airport and Harare.",
+        "event_time": null,
+        "source_published_at": "2026-07-29T10:09:00+00:00",
+        "source_updated_at": null,
+        "location": "Harare",
+        "entities": [
+          "Simple Flying",
+          "Air Zimbabwe",
+          "London Gatwick Airport",
+          "Harare",
+          "London"
+        ],
+        "severity": "routine",
+        "taiwan_priority": false,
+        "military": false,
+        "sources": [
+          {
+            "name": "Simple Flying — London Nonstop: This Tiny Airline Launches New 11-Hour Long…",
+            "url": "https://simpleflying.com/london-nonstop-tiny-airline-launches-new-11-hour-flights/"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260729-1207-air-zimbabwe-launches-new-nonstop-long-h"
+      }
+    ],
+    "ground_and_maritime": []
+  },
+  "checked_sources": [
+    {
+      "name": "FAA",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:31Z"
+    },
+    {
+      "name": "NTSB",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:31Z"
+    },
+    {
+      "name": "ICAO",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:31Z"
+    },
+    {
+      "name": "IATA",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:31Z"
+    },
+    {
+      "name": "EASA",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:31Z"
+    },
+    {
+      "name": "Eurocontrol",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:31Z"
+    },
+    {
+      "name": "Reuters",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:31Z"
+    },
+    {
+      "name": "The Aviation Herald",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:32Z"
+    },
+    {
+      "name": "CAA Taiwan",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:32Z"
+    },
+    {
+      "name": "Simple Flying",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:32Z"
+    },
+    {
+      "name": "中央社 CNA",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:32Z"
+    },
+    {
+      "name": "國防部・軍聞社",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:32Z"
+    },
+    {
+      "name": "臺灣交通要聞",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:32Z"
+    },
+    {
+      "name": "Airbus",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:32Z"
+    },
+    {
+      "name": "Boeing",
+      "ok": true,
+      "last_fetch_utc": "2026-07-29T15:32Z"
+    }
+  ],
+  "warnings": [
+    "AI 搜尋服務暫時不穩定，本期未能產生條列內容；我們正努力恢復服務，系統將於下一期自動重試"
+  ],
+  "generation_mode": "deterministic",
+  "generation_model": null,
+  "grounded_beta": {
+    "used": false,
+    "items": 0
+  }
+}
