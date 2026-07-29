@@ -1,5 +1,426 @@
 [
   {
+    "id": "g-20260729-0638-1",
+    "queuedUtc": "2026-07-29T06:38Z",
+    "approve": false,
+    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
+    "decisionReason": "涉及美國航空全美營運中斷的發展中事件，雖無傷亡但屬重大運安事件，需人工審查確認事件等級與後續影響。",
+    "riskFlags": [
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "美國航空在7月28日晚間因IT問題導致全美航班短暫停飛。",
+        "sourceQuote": "The entire fleet was grounded as a technology failure hit during the peak evening rush hour.",
+        "sourceUrl": "https://simpleflying.com/american-airlines-nationwide-ground-stop-it-outage/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "美國航空在IT問題迫使短暫的全國性停飛後恢復航班。",
+        "sourceQuote": "American Airlines resumes flights after IT issue forced brief nationwide halt",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQS3BxLXZmR09KZlFlRWxlZDZJakZPZ0JQTXJrS2RSZzZxT09GVVd6czJzcEQteXNQVW5LLVdPbkFWMGZzU0xwejBHZ0E2T2lsbklwVFFxUERTSkt4czVkd18zSzQwdC1xa3ZOdnQxakdsRDVpeVNJOF9JNWI4WnVxdEJPWGp5bk1oUmRwbW1LbG1LTjBBSTVWb2lVcC16M25aT3R4MGliNHA0Q1lJ?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "涉及美國航空全美營運中斷的發展中事件，雖無傷亡但屬重大運安事件，需人工審查確認事件等級與後續影響。",
+      "cat": "ops",
+      "zh": {
+        "title": "美國航空因IT系統故障一度全面停飛後恢復營運",
+        "summary": "美國航空於7月28日晚間因技術故障短暫全面暫停所有航班，影響傍晚尖峰時段，隨後已恢復運作。",
+        "body": [
+          "美國航空（American Airlines）於美東時間週二（7月28日）晚間因資訊科技系統故障，一度在美國全境發布地面停飛指令，所有航班均受影響。",
+          "據Simple Flying報導，此技術故障發生於晚間高峰時段，導致整個機隊短暫停飛，隨後營運已恢復。",
+          "路透社則報導指出，美國航空在發生資訊科技問題迫使短暫的全國性停飛後，航班已恢復運作。",
+          "此次事件涉及美國主要航空公司的全國性系統中斷，但報導中未提及相關航班起降機場、受影響的飛航數量或具體機型。",
+          "目前尚未有官方機構宣布對本事件展開正式調查或提出相關傷亡、損失報告。"
+        ]
+      },
+      "en": {
+        "title": "American Airlines Briefly Grounds All Flights After Nationwide IT Outage Before Resuming Operations",
+        "summary": "American Airlines experienced a technology failure during peak evening hours on July 28, prompting a brief nationwide ground stop for the entire fleet before flights resumed.",
+        "body": [
+          "American Airlines briefly grounded all its flights on the evening of Tuesday, July 28, after experiencing a technology issue that prompted a nationwide halt to operations.",
+          "According to Simple Flying, the entire fleet was grounded as a technology failure hit during the peak evening rush hour.",
+          "Reuters separately reported that American Airlines resumed flights after an IT issue forced a brief nationwide halt.",
+          "The incident involved a system-wide operational disruption at a major U.S. carrier, though no specific details on the exact number of flights, airports, or aircraft models affected were immediately detailed in the early reports.",
+          "There has been no immediate official word of any injuries, accidents, or the launch of a formal investigation related to this operational event."
+        ]
+      },
+      "flash": {
+        "zh": "美國航空全線航班短暫停飛後已恢復",
+        "en": "American Airlines flights resume after brief nationwide ground stop",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "美國航空在7月28日晚間因IT問題導致全美航班短暫停飛。",
+          "sourceQuote": "The entire fleet was grounded as a technology failure hit during the peak evening rush hour.",
+          "sourceUrl": "https://simpleflying.com/american-airlines-nationwide-ground-stop-it-outage/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "美國航空在IT問題迫使短暫的全國性停飛後恢復航班。",
+          "sourceQuote": "American Airlines resumes flights after IT issue forced brief nationwide halt",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQS3BxLXZmR09KZlFlRWxlZDZJakZPZ0JQTXJrS2RSZzZxT09GVVd6czJzcEQteXNQVW5LLVdPbkFWMGZzU0xwejBHZ0E2T2lsbklwVFFxUERTSkt4czVkd18zSzQwdC1xa3ZOdnQxakdsRDVpeVNJOF9JNWI4WnVxdEJPWGp5bk1oUmRwbW1LbG1LTjBBSTVWb2lVcC16M25aT3R4MGliNHA0Q1lJ?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Simple Flying",
+          "Reuters"
+        ],
+        "airlines": [
+          "American Airlines"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-29",
+          "2026-07-28"
+        ]
+      },
+      "eventStatus": "unknown",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260729-0638-1",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "American Airlines Briefly Grounds Every Flight After Nationwide IT Outage",
+          "url": "https://simpleflying.com/american-airlines-nationwide-ground-stop-it-outage/",
+          "publishedUtc": "2026-07-29T06:30Z",
+          "summary": "The entire fleet was grounded as a technology failure hit during the peak evening rush hour.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/816-american-airlines-boeing-777-200-austin-deppe-_-shutterstock.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        },
+        {
+          "title": "American Airlines resumes flights after IT issue forced brief nationwide halt",
+          "summary": "American Airlines resumes flights after IT issue forced brief nationwide halt &nbsp;&nbsp; Reuters",
+          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQS3BxLXZmR09KZlFlRWxlZDZJakZPZ0JQTXJrS2RSZzZxT09GVVd6czJzcEQteXNQVW5LLVdPbkFWMGZzU0xwejBHZ0E2T2lsbklwVFFxUERTSkt4czVkd18zSzQwdC1xa3ZOdnQxakdsRDVpeVNJOF9JNWI4WnVxdEJPWGp5bk1oUmRwbW1LbG1LTjBBSTVWb2lVcC16M25aT3R4MGliNHA0Q1lJ?oc=5",
+          "source": "Reuters",
+          "companion": true,
+          "publishedUtc": "2026-07-28T23:46Z"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260729-0638-3",
+    "queuedUtc": "2026-07-29T06:38Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Contains major infrastructure project budget expenditure claims of NT$352.1 billion regarding the High Speed Rail Yilan extension.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Taiwan Forward Front stated that the High Speed Rail extension to Yilan relieves only 3.1% of weekday and 6.8% of holiday traffic on Freeway 5.",
+        "sourceQuote": "只能舒緩國道5號平日3.1%、假日6.8%的交通量，無法完全解決交通瓶頸問題",
+        "sourceUrl": "https://www.cna.com.tw/news/aipl/202607290101.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Executive Yuan Premier Cho Jung-tai approved the 60.6-kilometer High Speed Rail Yilan extension with a total budget of NT$352.1 billion.",
+        "sourceQuote": "行政院長卓榮泰23日拍板高鐵延伸宜蘭，全長60.6公里，總經費3521億元",
+        "sourceUrl": "https://www.cna.com.tw/news/aipl/202607290101.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Taiwan Forward Front submitted a petition requesting the Executive Yuan disclose project reports, cost-benefit analyses, and comparison data with alternative options.",
+        "sourceQuote": "台灣前進陣線上午舉行記者會，並遞交陳情書，要求行政院說明高鐵延伸宜蘭的相關細節",
+        "sourceUrl": "https://www.cna.com.tw/news/aipl/202607290101.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "NPP Chairperson Wang Wan-yu cited earlier budget estimates of NT$66.8 billion and NT$132.1 billion for the North Yilan Direct Rail alternative.",
+        "sourceQuote": "政府15年前曾評估「北宜直鐵」方案，預算僅668億元，台北到宜蘭車程為37分鐘，還能夠緩解國5的壅塞。去年環評報告書也提及，若興建直鐵預算為1321億元",
+        "sourceUrl": "https://www.cna.com.tw/news/aipl/202607290101.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Contains major infrastructure project budget expenditure claims of NT$352.1 billion regarding the High Speed Rail Yilan extension.",
+      "cat": "ops",
+      "zh": {
+        "title": "民間團體質疑高鐵延伸宜蘭效益與3521億預算",
+        "summary": "台灣前進陣線於29日舉行記者會，質疑行政院核定總經費新台幣3521億元的高鐵延伸宜蘭計畫。團體指出，環評報告顯示該計畫僅能舒緩國道5號平日3.1%與假日6.8%的交通量，無法解決塞車瓶頸，要求行政院公開選擇及替代方案成本效益分析與相關細節。",
+        "body": [
+          "台灣前進陣線於29日上午舉行記者會並遞交陳情書，表達對行政院核定高鐵延伸宜蘭計畫的疑慮。團體指出，根據環評報告，高鐵延伸宜蘭只能舒緩國道5號平日3.1%、假日6.8%的交通量，無法完全解決交通瓶頸問題，換算改善比率與經費後，反對在效益與規劃尚不清晰的情況下支出新台幣3521億元。",
+          "行政院長卓榮泰於23日拍板核定高鐵延伸宜蘭計畫，規劃路線全長60.6公里，總經費為新台幣3521億元，預計南港至宜蘭車程為28分鐘，估算核定後11年完工。未來台鐵將於高鐵宜蘭站共構設站，方便民眾無縫轉乘。",
+          "時代力量、小民參政歐巴桑聯盟、台灣基進及台灣綠黨組成的台灣前進陣線要求行政院公開計畫細節。遞交的陳情書提出，行政院應說明核定函、國發會審議意見、可行性研究修正報告與綜合規劃報告，並提供高鐵、直鐵、台鐵提速等替代方案的比較資料，同時登載完整的中長程計畫要點。",
+          "陳情書亦要求公開此案是否依預算法第34條完成選擇及替代方案成本效益分析並載明財源說明。若未完成，不得列入預算送立法院備查或編列工程經費。行政院交通環境資源處代表於現場收下陳情，並強調將督促相關部會依規定對外說明。",
+          "時代力量黨主席王婉諭表示，政府15年前曾評估「北宜直鐵」方案，預算為668億元，台北到宜蘭車程為37分鐘；去年環評報告書亦提及興建直鐵預算為1321億元。相較之下，高鐵延伸宜蘭預算大幅暴增，詳細規劃與實際效益亟需向外界釐清。"
+        ]
+      },
+      "en": {
+        "title": "Civic Groups Question Cost and Benefits of NT$352B Yilan High Speed Rail Extension",
+        "summary": "The Taiwan Forward Front held a press conference on July 29 to question the Executive Yuan's approval of the NT$352.1 billion High Speed Rail Yilan extension project. Citing the environmental impact assessment report, the coalition highlighted that the extension would only relieve 3.1% of weekday traffic and 6.8% of holiday traffic on Freeway 5, failing to resolve the corridor's congestion bottleneck. The civic group submitted a petition requesting the Cabinet release detailed project evaluations, including mandatory cost-benefit analyses and comparisons with alternative transportation proposals.",
+        "body": [
+          "The Taiwan Forward Front held a press conference on July 29 to express concerns over the Executive Yuan's approval of the High Speed Rail Yilan extension project. Citing figures from the project's environmental impact assessment report, the civic coalition pointed out that the extension would relieve only 3.1% of weekday traffic and 6.8% of holiday traffic on Freeway 5, failing to resolve the regional congestion bottleneck.",
+          "Premier Cho Jung-tai approved the High Speed Rail Yilan extension project on July 23. The planned 60.6-kilometer route carries a total budget of NT$352.1 billion, with an expected travel time of 28 minutes between Nangang and Yilan. Construction is estimated to take 11 years following official approval, and Taiwan Railway plans to co-locate a station at the Yilan HSR terminus to facilitate transfers.",
+          "Composed of the New Power Party, Taiwan Small People's Party, Taiwan Statebuilding Party, and Taiwan Green Party, the coalition submitted a petition to the Cabinet. The group called for full public disclosure of project documentation, including the official approval letter, National Development Council review opinions, revised feasibility studies, and direct comparisons with alternative options such as direct conventional rail or speed upgrades.",
+          "The petition further demanded clarification on whether the government has completed the mandatory cost-benefit analysis of alternative options under Article 34 of the Budget Act. The coalition argued that funding should not be submitted to the Legislative Yuan for review prior to completing these legal requirements. A representative from the Executive Yuan's Department of Transportation, Environmental and Resources accepted the petition and promised to urge relevant agencies to make public explanations.",
+          "New Power Party Chairperson Wang Wan-yu noted that a previous North Yilan Direct Rail proposal evaluated 15 years ago carried a budget of NT$66.8 billion, while last year's environmental report cited an estimated cost of NT$132.1 billion for the direct rail option. The coalition questioned the substantial budget increase for the high-speed rail extension compared to earlier alternatives."
+        ]
+      },
+      "flash": {
+        "zh": "民間團體質疑高鐵延伸宜蘭計畫效益與預算",
+        "en": "Civic groups question cost and benefits of Yilan High Speed Rail extension",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Taiwan Forward Front stated that the High Speed Rail extension to Yilan relieves only 3.1% of weekday and 6.8% of holiday traffic on Freeway 5.",
+          "sourceQuote": "只能舒緩國道5號平日3.1%、假日6.8%的交通量，無法完全解決交通瓶頸問題",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202607290101.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Executive Yuan Premier Cho Jung-tai approved the 60.6-kilometer High Speed Rail Yilan extension with a total budget of NT$352.1 billion.",
+          "sourceQuote": "行政院長卓榮泰23日拍板高鐵延伸宜蘭，全長60.6公里，總經費3521億元",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202607290101.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Taiwan Forward Front submitted a petition requesting the Executive Yuan disclose project reports, cost-benefit analyses, and comparison data with alternative options.",
+          "sourceQuote": "台灣前進陣線上午舉行記者會，並遞交陳情書，要求行政院說明高鐵延伸宜蘭的相關細節",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202607290101.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "NPP Chairperson Wang Wan-yu cited earlier budget estimates of NT$66.8 billion and NT$132.1 billion for the North Yilan Direct Rail alternative.",
+          "sourceQuote": "政府15年前曾評估「北宜直鐵」方案，預算僅668億元，台北到宜蘭車程為37分鐘，還能夠緩解國5的壅塞。去年環評報告書也提及，若興建直鐵預算為1321億元",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202607290101.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "台灣前進陣線",
+          "行政院",
+          "國發會",
+          "時代力量",
+          "小民參政歐巴桑聯盟",
+          "台灣基進",
+          "台灣綠黨",
+          "立法院",
+          "行政院交通環境資源處"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "台北",
+          "宜蘭",
+          "南港"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "29日",
+          "23日"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260729-0638-3",
+      "primarySource": "中央社 CNA",
+      "items": [
+        {
+          "title": "台灣前進：高鐵延伸宜蘭無助國道瓶頸 堪稱最貴解方",
+          "url": "https://www.cna.com.tw/news/aipl/202607290101.aspx",
+          "publishedUtc": "2026-07-29T04:04Z",
+          "summary": "（中央社記者賴于榛台北29日電）台灣前進陣線今天說，行政院核定高鐵延伸宜蘭計畫，根據環評報告，只能舒緩國道5號平日3.1%、假日6.8%的交通量，無法完全解決交通瓶頸問題。換算改善比率與經費，堪稱全世界最貴的塞車解決方案，反對閉著眼睛就這樣花新台幣3521億元。",
+          "image": null,
+          "source": "中央社 CNA",
+          "sourceKey": "cnataiwan"
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260727-0443-defense-minister-clarifies-no-live-fire",
+            "relationship_type": "regulatory_progression",
+            "relationship_evidence": [
+              "same named core entity: 立法院",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "中央社 CNA — 顧立雄:總統視導漢光不影響演訓 本島無規劃實彈射擊",
+            "source_url": "https://www.cna.com.tw/news/aipl/202607270026.aspx",
+            "facts": [
+              {
+                "claim": "Han Kuang 42 live‐troop exercise starts August 5 for ten days and nine nights.",
+                "source_quote": "漢光42號實兵演習將於8月5日起一連10天9夜實施",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270026.aspx",
+                "source_name": "中央社 CNA — 顧立雄:總統視導漢光不影響演訓 本島無規劃實彈射擊"
+              },
+              {
+                "claim": "United Daily News reported the exercise arranged for President Lai to observe live‐fire, criticized as a show.",
+                "source_quote": "聯合報報導，「漢光演習安排總統賴清德視導實彈，挨批作秀」",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270026.aspx",
+                "source_name": "中央社 CNA — 顧立雄:總統視導漢光不影響演訓 本島無規劃實彈射擊"
+              },
+              {
+                "claim": "Minister Gu said the report is false because the military has no plan for live‐fire on Taiwan during Han Kuang.",
+                "source_quote": "媒體報導內容並非屬實，因為軍方沒有規劃漢光期間於台灣本島實施實彈射擊",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270026.aspx",
+                "source_name": "中央社 CNA — 顧立雄:總統視導漢光不影響演訓 本島無規劃實彈射擊"
+              },
+              {
+                "claim": "Minister Gu said the president’s other observation itineraries will not affect normal unit training.",
+                "source_quote": "有關賴總統的其餘視導行程並不會影響部隊正常演訓",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270026.aspx",
+                "source_name": "中央社 CNA — 顧立雄:總統視導漢光不影響演訓 本島無規劃實彈射擊"
+              },
+              {
+                "claim": "Minister Gu said the president as commander‐in‐chief should understand training and comfort troops, but exercise subjects and verification items will not be affected by the visit.",
+                "source_quote": "賴總統身為三軍統帥，本來就要了解部隊演訓並慰勞官兵，「但演訓科目、驗證項目不會受到視導行程有所影響」",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270026.aspx",
+                "source_name": "中央社 CNA — 顧立雄:總統視導漢光不影響演訓 本島無規劃實彈射擊"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260727-0838-presidential-office-rejects-show-claim-s",
+            "relationship_type": "regulatory_progression",
+            "relationship_evidence": [
+              "same named core entity: 中央社",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍",
+            "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+            "facts": [
+              {
+                "claim": "Media reported that President Lai’s inspection during the Han Kuang exercise was a \"show\".",
+                "source_quote": "有媒體報導稱總統賴清德在漢光演習期間安排視導是「作秀」",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The Presidential Office stated that, as commander‐in‐chief, the President’s inspection of a major drill is a responsibility and an obligation.",
+                "source_quote": "作為三軍統帥，總統在國軍重要演訓期間參與視導，是責任也是義務",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The spokesperson called the \"show\" accusation speculation, a distortion of views, and a defamation of the military and national defence.",
+                "source_quote": "所謂「作秀」之說，內容多屬臆測、觀點扭曲，更污名化國軍與國防，令人遺憾",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Heads of state attending major military exercises is standard practice in Europe, the US, Japan and South Korea.",
+                "source_quote": "國家元首參與國家重大軍事演訓，無論歐、美、日、韓等國，國際皆然",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Since Han Kuang 40 the drills have been unscripted and realistic; the President’s visit was scheduled by the Ministry of National Defense according to the exercise progress, with no arranged \"firepower show\".",
+                "source_quote": "自漢光40號演習起，即採取「無劇本、實戰化」演練。總統參與視導，亦由國防部依照演習進程適時規劃，不存在所謂安排「火力秀」的問題",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Accusations of shifting opposition attacks or staging a performance for voters are baseless and unfair to personnel strengthening defence.",
+                "source_quote": "至於所謂「轉移在野攻擊」、「作秀給選民看」等無端指控，對此刻正為強化國防、守護國家而努力的所有人員極不公平",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260728-1820-2",
     "queuedUtc": "2026-07-28T18:20Z",
     "approve": false,
