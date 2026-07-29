@@ -386,6 +386,59 @@ def _parse_eurocontrol(soup: BeautifulSoup, base: str) -> list[dict]:
     return items
 
 
+def _agn_date_after(anchor, base: str) -> datetime | None:
+    """Find the date following an AGN listing link without crossing cards."""
+    current_url = urljoin(base, str(anchor.get("href") or ""))
+    for index, node in enumerate(anchor.next_elements):
+        if index >= 60:
+            break
+        if getattr(node, "name", None) == "a":
+            href = str(node.get("href") or "")
+            next_url = urljoin(base, href)
+            if (re.fullmatch(r"/news/[a-z0-9][a-z0-9-]+/?",
+                             urlsplit(next_url).path)
+                    and next_url != current_url):
+                break
+        if isinstance(node, str):
+            published = _date_from_text(node)
+            if published is not None:
+                return published
+    return None
+
+
+def _parse_aerospaceglobalnews(soup: BeautifulSoup, base: str) -> list[dict]:
+    """Aerospace Global News latest-news listing.
+
+    The page repeats some article links for the image and headline.  Keep one
+    dated /news/<slug>/ entry per URL and ignore navigation, topic and
+    undated recommendation links.
+    """
+    items, seen = [], set()
+    path_re = re.compile(r"^/news/[a-z0-9][a-z0-9-]+/?$")
+    base_host = urlsplit(base).netloc.lower()
+    for anchor in soup.find_all("a", href=True):
+        url = urljoin(base, str(anchor["href"]))
+        parts = urlsplit(url)
+        if parts.netloc.lower() != base_host or not path_re.fullmatch(parts.path):
+            continue
+        title = _collapse(anchor.get("title") or anchor.get_text(" ", strip=True))
+        if url in seen or len(title) < 12 or title.lower() == "news":
+            continue
+        published = _agn_date_after(anchor, base)
+        if published is None:
+            continue
+        seen.add(url)
+        image = anchor.find("img", src=True)
+        items.append({
+            "title": title,
+            "url": url,
+            "published": published,
+            "summary": "",
+            "image": urljoin(base, image["src"]) if image else None,
+        })
+    return items
+
+
 def _parse_airbus(soup: BeautifulSoup, base: str) -> list[dict]:
     """Airbus newsroom cards: official stories and press releases.
 
@@ -428,6 +481,7 @@ HTML_PARSERS = {
     "faa": _parse_faa,
     "icao": _parse_icao,
     "eurocontrol": _parse_eurocontrol,
+    "aerospaceglobalnews": _parse_aerospaceglobalnews,
     "airbus": _parse_airbus,
 }
 
