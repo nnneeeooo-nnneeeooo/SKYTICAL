@@ -35,6 +35,7 @@ from model_config import (  # noqa: E402
 from providers import (  # noqa: E402
     GeminiProvider,
     NvidiaProvider,
+    OpenRouterProvider,
     ProviderAuthError,
     ProviderError,
     ProviderQuotaError,
@@ -321,7 +322,13 @@ def _providers_for(payload: dict) -> list:
     providers = []
     for token in order:
         platform, model = token.split(":", 1)
-        cls = GeminiProvider if platform == "gemini" else NvidiaProvider
+        cls = {
+            "gemini": GeminiProvider,
+            "nvidia": NvidiaProvider,
+            "openrouter": OpenRouterProvider,
+        }.get(platform)
+        if cls is None:
+            continue
         provider = cls(model, reasoning_tier=payload["reasoningTier"])
         if provider.available():
             providers.append(provider)
@@ -460,7 +467,8 @@ def generate(job_id: str, payload: dict) -> dict:
     group = _build_group(job_id, payload, log)
     providers = _providers_for(payload)
     if not providers:
-        raise RuntimeError("no configured Gemini or NVIDIA API key")
+        raise RuntimeError(
+            "no configured Gemini, NVIDIA or OpenRouter API key")
     attempts, draft, final = [], None, None
     dead_platforms = set()
     for provider in providers:
