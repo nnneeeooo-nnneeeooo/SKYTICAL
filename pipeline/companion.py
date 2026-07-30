@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from urllib.parse import quote, urljoin, urlsplit
 
@@ -50,8 +51,11 @@ THIN_MATERIAL_CHARS = int(_CFG.get("thin_material_chars") or 400)
 TARGET_MATERIAL_CHARS = int(_CFG.get("target_material_chars") or 1600)
 TARGET_SOURCE_COUNT = int(_CFG.get("target_source_count") or 4)
 
-TIMEOUT = (10, 30)
+TIMEOUT = (5, 12)
 HEADERS = {"User-Agent": USER_AGENT}
+SEARCH_WORKERS = 5
+RESOLVE_WORKERS = 4
+MAX_RESOLVE_CANDIDATES = max(MAX_ITEMS_PER_GROUP * 2, 4)
 
 _STOPWORDS = {
     "the", "a", "an", "of", "to", "in", "on", "for", "and", "or", "is",
@@ -190,35 +194,71 @@ def search_candidates(query: str, seed_tokens: list[str],
         out.append({
             "title": title,
             "summary": summary,
-            "url": _resolve(urljoin(url, str(entry.get("link") or ""))),
+            "_googleUrl": urljoin(url, str(entry.get("link") or "")),
             "source": source_title or urlsplit(source_href).netloc,
             "publishedUtc": iso_minute(published) if published else None,
             "score": len(overlap),
         })
     out.sort(key=lambda c: c["score"], reverse=True)
+    # Resolve only the strongest candidates, in parallel. The previous
+    # implementation resolved every accepted result serially and could spend
+    # nearly an hour waiting on Google redirect links that would never be used.
+    out = out[:MAX_RESOLVE_CANDIDATES]
+    with ThreadPoolExecutor(max_workers=RESOLVE_WORKERS) as executor:
+        futures = {
+            executor.submit(_resolve, candidate["_googleUrl"]): candidate
+            for candidate in out
+        }
+        for future in as_completed(futures):
+            candidate = futures[future]
+            try:
+                candidate["url"] = future.result()
+            except Exception:
+                candidate["url"] = candidate["_googleUrl"]
+    for candidate in out:
+        candidate.pop("_googleUrl", None)
     return out
 
 
 def enrich_thin_groups(groups: list) -> int:
     """Merge same-topic reliable coverage into thin groups. Returns the
     number of companion items added."""
-    searches = added_total = 0
+    targets = []
     for group in groups or []:
-        if searches >= MAX_SEARCHES_PER_RUN:
+        if len(targets) >= MAX_SEARCHES_PER_RUN:
             break
         if not is_thin(group):
             continue
         query, seed_tokens = build_query(group)
         if len(seed_tokens) < 3:
             continue
-        searches += 1
         lang_zh = bool(re.search(r"[一-鿿]", query))
-        try:
-            candidates = search_candidates(query, seed_tokens, lang_zh)
-        except Exception as exc:
-            print(f"companion: search failed for group "
-                  f"{group.get('id')}: {type(exc).__name__}: {exc}")
-            continue
+        targets.append((group, query, seed_tokens, lang_zh))
+
+    # Search independent event groups concurrently but merge results back in
+    # ranked order. This keeps the 10-group coverage target without turning
+    # network latency into a serial 10x multiplier.
+    results = {}
+    with ThreadPoolExecutor(max_workers=SEARCH_WORKERS) as executor:
+        futures = {
+            executor.submit(search_candidates, query, seed_tokens, lang_zh):
+                index
+            for index, (_group, query, seed_tokens, lang_zh)
+            in enumerate(targets)
+        }
+        for future in as_completed(futures):
+            index = futures[future]
+            try:
+                results[index] = future.result()
+            except Exception as exc:
+                group = targets[index][0]
+                print(f"companion: search failed for group "
+                      f"{group.get('id')}: {type(exc).__name__}: {exc}")
+                results[index] = []
+
+    added_total = 0
+    for index, (group, query, _seed_tokens, _lang_zh) in enumerate(targets):
+        candidates = results.get(index, [])
         existing = {norm_url(str(item.get("url") or ""))
                     for item in group.get("items") or []}
         existing_sources = {

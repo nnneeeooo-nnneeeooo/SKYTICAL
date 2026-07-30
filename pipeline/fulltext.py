@@ -45,7 +45,7 @@ from common import (  # noqa: E402
 )
 
 CACHE_PATH = DATA_DIR / "fulltext.json"
-TIMEOUT = (10, 30)
+TIMEOUT = (5, 12)
 HEADERS = {"User-Agent": USER_AGENT}
 
 # Approved publishers only - organizations and selected editorial sources
@@ -93,7 +93,7 @@ ALLOWED_HOSTS = {
 # never drift apart.
 FULLTEXT_PROMPT_CHARS = 4000
 MAX_STORED_CHARS = 6000
-MAX_FETCHES_PER_RUN = 20
+MAX_FETCHES_PER_RUN = 12
 MAX_ITEMS_PER_GROUP = 4
 CACHE_TTL_HOURS = 21 * 24
 MISS_TTL_HOURS = 24
