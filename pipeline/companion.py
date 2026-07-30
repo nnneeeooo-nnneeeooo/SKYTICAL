@@ -1,11 +1,13 @@
-"""companion.py — same-topic retrieval for thin story groups.
+"""companion.py — same-topic retrieval for every under-sourced story group.
 
 Owner direction (2026-07-27): keep Simple Flying (and similar excerpt-only
 feeds) as a DISCOVERY INDEX - when their item flags a story but carries
 almost no text, the PIPELINE (never the model) searches Google News for
-the same topic and merges matching coverage from an allowlist of reliable
-outlets (config/companion_sources.json) into the story group before
-drafting. The model then writes from several real summaries - and, where
+the same topic.  The same retrieval now also runs for otherwise substantial
+single-source groups, because a long article from one publisher is not
+cross-source reporting. Matching coverage from an allowlist of reliable
+outlets (config/companion_sources.json) joins the group before drafting.
+The model then writes from several real summaries - and, where
 a companion comes from a fulltext-allowlisted official host, from the
 full page - instead of inventing detail around one sentence.
 
@@ -15,8 +17,8 @@ Guard rails:
   news.google.com when possible.
 - A candidate must share enough significant title tokens with the seed
   headline to count as the same topic.
-- Caps: MAX_ITEMS_PER_GROUP companions, MAX_SEARCHES_PER_RUN searches per
-  run; a group is searched once (the companion flag persists with it).
+- Caps: MAX_ITEMS_PER_GROUP companions and MAX_SEARCHES_PER_RUN searches per
+  run. Search priority follows the ranked pending groups that can be drafted.
 - Companions become ordinary group items: shown in <SOURCE>, quotable and
   machine-verified like everything else, credited in the article footer.
 """
@@ -45,6 +47,8 @@ DOMAINS = tuple(str(d).casefold() for d in _CFG.get("domains") or [])
 MAX_ITEMS_PER_GROUP = int(_CFG.get("max_items_per_group") or 3)
 MAX_SEARCHES_PER_RUN = int(_CFG.get("max_searches_per_run") or 2)
 THIN_MATERIAL_CHARS = int(_CFG.get("thin_material_chars") or 400)
+TARGET_MATERIAL_CHARS = int(_CFG.get("target_material_chars") or 1600)
+TARGET_SOURCE_COUNT = int(_CFG.get("target_source_count") or 4)
 
 TIMEOUT = (10, 30)
 HEADERS = {"User-Agent": USER_AGENT}
@@ -73,24 +77,42 @@ def significant_tokens(title: str) -> list[str]:
 
 
 def is_thin(group: dict) -> bool:
-    """Single-perspective group with barely any text and no full page."""
+    """Whether a group still needs current-event source enrichment.
+
+    Kept under its original public name so existing callers and offline tests
+    remain compatible; the decision now measures both evidence volume and
+    source diversity.
+    """
     items = group.get("items") or []
-    if not items or len(items) > 2:
+    if not items:
         return False
-    if any(str(item.get("fulltext") or "").strip() for item in items):
-        return False
-    if any(item.get("companion") for item in items):
-        return False  # already enriched in an earlier run
+    sources = {
+        str(item.get("source") or item.get("sourceKey") or "").casefold()
+        for item in items
+        if str(item.get("source") or item.get("sourceKey") or "").strip()
+    }
     material = squash_text(" ".join(
-        f"{item.get('title') or ''} {item.get('summary') or ''}"
+        f"{item.get('title') or ''} {item.get('summary') or ''} "
+        f"{item.get('fulltext') or ''}"
         for item in items))
-    return len(material) < THIN_MATERIAL_CHARS
+    return (
+        len(sources) < TARGET_SOURCE_COUNT
+        or len(material) < TARGET_MATERIAL_CHARS
+    )
 
 
 def build_query(group: dict) -> tuple[str, list[str]]:
     """(google-news query, seed tokens) from the group's headline."""
-    title = str((group.get("items") or [{}])[0].get("title") or "")
-    tokens = significant_tokens(title)[:10]
+    items = group.get("items") or [{}]
+    title = str(items[0].get("title") or "")
+    tokens = significant_tokens(title)
+    # Add anchors from alternate headlines when deterministic dedupe already
+    # joined more than one current source.
+    for item in items[1:]:
+        for token in significant_tokens(str(item.get("title") or "")):
+            if token not in tokens:
+                tokens.append(token)
+    tokens = tokens[:12]
     return " ".join(tokens), tokens
 
 
@@ -199,14 +221,21 @@ def enrich_thin_groups(groups: list) -> int:
             continue
         existing = {norm_url(str(item.get("url") or ""))
                     for item in group.get("items") or []}
+        existing_sources = {
+            str(item.get("source") or "").strip().casefold()
+            for item in group.get("items") or []
+            if str(item.get("source") or "").strip()
+        }
         added = 0
         for cand in candidates:
             if added >= MAX_ITEMS_PER_GROUP:
                 break
             key = norm_url(cand["url"])
-            if key in existing:
+            source_key = str(cand.get("source") or "").strip().casefold()
+            if key in existing or source_key in existing_sources:
                 continue
             existing.add(key)
+            existing_sources.add(source_key)
             item = {
                 "title": cand["title"],
                 "summary": cand["summary"],

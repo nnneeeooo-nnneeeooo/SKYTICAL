@@ -1,16 +1,17 @@
-"""fulltext.py — fetch the full text of OFFICIAL source pages for write.py.
+"""fulltext.py — fetch full text from approved source pages for write.py.
 
 The RSS/listing fetch stage only yields headlines and short summaries, so
 articles written from them are necessarily thin. This stage lets the
 PIPELINE (never the model) fetch the complete text of the underlying page
-for a small allowlist of official publishers we already crawl, and attach
+for a small allowlist of official and editorial publishers we already crawl,
+and attach
 it to the pending group item as `fulltext`. write.py shows it inside
 <SOURCE> and verifies fact quotes against the exact same capped text, so
 every extra sentence stays machine-traceable to the original page.
 
 Guard rails:
-- Allowlisted official hosts only (regulators/organizations whose listing
-  pages fetch.py already requests). News aggregator/redirect hosts
+- Allowlisted hosts only (regulators, manufacturers and selected editorial
+  sources whose listing pages fetch.py already requests). News redirects
   (news.google.com) and robots-restricted media (avherald) are never
   fetched here.
 - robots.txt is honored per host (unreachable robots -> skip, fail closed;
@@ -47,9 +48,9 @@ CACHE_PATH = DATA_DIR / "fulltext.json"
 TIMEOUT = (10, 30)
 HEADERS = {"User-Agent": USER_AGENT}
 
-# Official publishers only - the same organizations fetch.py already
-# crawls for listings. Never add aggregators, social platforms or sites
-# whose robots policy we would be working around.
+# Approved publishers only - organizations and selected editorial sources
+# that fetch.py/companion.py already use. Never add aggregators, social
+# platforms or sites whose robots policy we would be working around.
 ALLOWED_HOSTS = {
     "www.faa.gov", "faa.gov",
     "www.ntsb.gov", "ntsb.gov",
@@ -77,6 +78,11 @@ ALLOWED_HOSTS = {
     "www.safran-group.com", "safran-group.com",
     "www.bombardier.com", "bombardier.com",
     "english.comac.cc", "www.comac.cc", "comac.cc",
+    # Editorial sources with direct article URLs. robots.txt is still checked
+    # on every host and any unreachable/denied policy fails closed.
+    "www.aerotime.aero", "aerotime.aero",
+    "www.aerospaceglobalnews.com", "aerospaceglobalnews.com",
+    "www.flightglobal.com", "flightglobal.com",
 }
 # NEVER add simpleflying.com or other Valnet properties: their robots.txt
 # terms explicitly prohibit automated text/data mining and AI use of page
@@ -87,8 +93,8 @@ ALLOWED_HOSTS = {
 # never drift apart.
 FULLTEXT_PROMPT_CHARS = 4000
 MAX_STORED_CHARS = 6000
-MAX_FETCHES_PER_RUN = 8
-MAX_ITEMS_PER_GROUP = 2
+MAX_FETCHES_PER_RUN = 20
+MAX_ITEMS_PER_GROUP = 4
 CACHE_TTL_HOURS = 21 * 24
 MISS_TTL_HOURS = 24
 

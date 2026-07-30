@@ -74,15 +74,20 @@ companion.requests = types.SimpleNamespace(
 # ── thinness + query ─────────────────────────────────────────────────────────
 
 check("one-liner group is thin", companion.is_thin(THIN_GROUP))
-check("group with fulltext is not thin",
-      not companion.is_thin({"items": [dict(THIN_GROUP["items"][0],
-                                            fulltext="x" * 500)]}))
-check("group with substantial text is not thin",
-      not companion.is_thin({"items": [dict(THIN_GROUP["items"][0],
-                                            summary="長" * 500)]}))
-check("already-enriched group is not searched again",
-      not companion.is_thin({"items": [THIN_GROUP["items"][0],
-                                       {"title": "t", "companion": True}]}))
+check("single-source fulltext still needs independent coverage",
+      companion.is_thin({"items": [dict(THIN_GROUP["items"][0],
+                                        fulltext="x" * 2000)]}))
+check("substantial single-source text still needs independent coverage",
+      companion.is_thin({"items": [dict(THIN_GROUP["items"][0],
+                                        summary="長" * 2000)]}))
+diverse = {"items": [
+    {"title": f"ANA E190-E2 order update {i}",
+     "summary": "Independent source material. " * 20,
+     "source": f"Outlet {i}"}
+    for i in range(companion.TARGET_SOURCE_COUNT)
+]}
+check("diverse substantial group needs no companion search",
+      not companion.is_thin(diverse))
 
 query, tokens = companion.build_query(THIN_GROUP)
 check("query keeps anchors and drops stopwords",
@@ -119,13 +124,12 @@ check("companion merged into the group as an ordinary item",
       added == 1 and len(group["items"]) == 2
       and group["items"][1]["companion"] is True
       and group["items"][1]["source"] == "Reuters")
-check("re-running never re-searches the same group",
-      companion.enrich_thin_groups([group]) == 0)
+check("re-running never duplicates an existing outlet or URL",
+      companion.enrich_thin_groups([group]) == 0 and len(group["items"]) == 2)
 
-rich = {"id": "g10", "items": [{"title": "T", "summary": "長" * 500,
-                                "url": "https://example.com"}]}
+rich = {"id": "g10", **diverse}
 fake.calls.clear()
-check("non-thin groups perform zero searches",
+check("source-diverse groups perform zero searches",
       companion.enrich_thin_groups([rich]) == 0 and fake.calls == [])
 
 # per-run search budget

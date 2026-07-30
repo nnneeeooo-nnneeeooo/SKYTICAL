@@ -107,13 +107,14 @@ def test_filtering_grouping_and_ranking() -> None:
 
         stdout = _run_dedupe(data_dir)
         # 15 raw (easa ok=false items are carried forward, not skipped)
-        # -> 11 fresh (dropped: seen URL, seen title, stale, empty title)
-        # -> 5 groups.
+        # -> 12 active items. An exact seen URL is dropped, while a new URL
+        # whose headline matches a seen event remains as an update candidate.
+        # -> 6 groups.
         assert _summary_line(stdout) == \
-            "dedupe: 15 raw items -> 11 fresh -> 5 groups", stdout
+            "dedupe: 15 raw items -> 12 fresh -> 6 groups", stdout
         assert "skipped_too_old=1" in stdout, stdout
         assert "skipped_seen_url=1" in stdout, stdout
-        assert "skipped_seen_title=1" in stdout, stdout
+        assert "skipped_seen_title=0" in stdout, stdout
         assert "skipped_untitled=1" in stdout, stdout
         assert "window=120h" in stdout, stdout
 
@@ -123,7 +124,7 @@ def test_filtering_grouping_and_ranking() -> None:
         pending = _load_pending(data_dir)
         assert re.match(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}Z$", pending["generatedUtc"])
         groups = pending["groups"]
-        assert len(groups) == 5
+        assert len(groups) == 6
 
         for n, group in enumerate(groups, start=1):
             match = GROUP_ID_RE.match(group["id"])
@@ -135,7 +136,6 @@ def test_filtering_grouping_and_ranking() -> None:
         for gone in (
             "FAA statement on winter operations",      # seen URL
             "FAA archives old advisory circular",      # stale (130 h)
-            "Boeing delivers 100th 787 to Emirates!",  # seen title, 2 days ago
             "   ",                                     # empty title
         ):
             assert gone not in all_titles, gone
@@ -155,22 +155,42 @@ def test_filtering_grouping_and_ranking() -> None:
         }
         assert denver["items"][0]["image"] == "https://www.reuters.com/img/denver.jpg"
 
-        # Remaining single-source groups ranked by newest publishedUtc:
-        # EASA carried-forward (H-1), Airbus (H-5), NTSB (H-6), balloons (H-7).
+        # Remaining single-source groups ranked by newest publishedUtc. The
+        # Boeing URL is new, so its seen-title match becomes an article update.
         assert groups[1]["items"][0]["sourceKey"] == "easa"
-        assert groups[2]["items"][0]["title"] == (
+        assert groups[2]["items"][0]["title"] == \
+            "Boeing delivers 100th 787 to Emirates!"
+        assert groups[2]["updateCandidate"] is True
+        assert groups[3]["items"][0]["title"] == (
             "Airbus opens new A320 production line in Toulouse"
         )  # seen-title match is 30 days old -> outside the 21-day window
-        assert groups[3]["items"][0]["title"].startswith("NTSB opens investigation")
+        assert groups[4]["items"][0]["title"].startswith("NTSB opens investigation")
 
-        # Balloon group capped at 5, keeping the longest summaries.
-        balloons = groups[4]
+        # Balloon group fits the six-item current-source cap.
+        balloons = groups[5]
         assert balloons["primarySource"] == "The Aviation Herald"
         titles = [i["title"] for i in balloons["items"]]
-        assert len(titles) == 5
-        assert "Emergency balloon landing drill unit six" not in titles
+        assert len(titles) == 6
         lengths = [len(i["summary"]) for i in balloons["items"]]
         assert lengths == sorted(lengths, reverse=True)
+
+
+def test_structured_event_matching() -> None:
+    """Different editorial wording still joins on entity/model/action anchors."""
+    aerotime = {
+        "title": "ANA orders eight additional Embraer E190-E2 aircraft",
+        "summary": "ANA expanded its E190-E2 commitment by eight aircraft.",
+    }
+    agn = {
+        "title": "ANA boosts E190-E2 order with eight more aircraft",
+        "summary": "Embraer and ANA announced the expanded aircraft order.",
+    }
+    unrelated = {
+        "title": "ANA introduces a new cabin on Boeing 787 aircraft",
+        "summary": "The airline unveiled redesigned cabin interiors.",
+    }
+    assert dedupe.same_event(aerotime, agn)
+    assert not dedupe.same_event(aerotime, unrelated)
 
 
 def test_group_cap_and_recency_order() -> None:
@@ -342,6 +362,7 @@ def test_material_groups_rank_first() -> None:
 def main() -> None:
     tests = [
         test_norm_title_and_tiebreak,
+        test_structured_event_matching,
         test_filtering_grouping_and_ranking,
         test_group_cap_and_recency_order,
         test_empty_data_dir,
