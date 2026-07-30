@@ -190,6 +190,9 @@ def test_nvidia_format_repair():
                        lambda: provider.draft("sys", "user", SCHEMA))
     check(result == {"ok": 1}, "repair produced a parseable draft")
     check(len(calls) == 2, f"exactly one repair call, got {len(calls)}")
+    check(provider.http_calls == 2 and provider.repair_calls == 1
+          and provider.http_duration_ms >= provider.repair_duration_ms >= 0,
+          "NVIDIA counters separate total HTTP and repair calls")
     repair = calls[1]
     check(repair["messages"][0]["content"] == providers.REPAIR_SYSTEM_PROMPT,
           "repair uses the syntax-only system prompt")
@@ -276,6 +279,9 @@ def test_gemini_format_repair():
                        lambda: provider.draft("sys", "user", SCHEMA))
     check(result == {"ok": 1}, "gemini repair produced a parseable draft")
     check(len(calls) == 2, f"exactly one repair call, got {len(calls)}")
+    check(provider.http_calls == 2 and provider.repair_calls == 1
+          and provider.http_duration_ms >= provider.repair_duration_ms >= 0,
+          "Gemini counters separate total HTTP and repair calls")
     repair_config = calls[1]["generationConfig"]
     check(repair_config.get("thinkingConfig") == {"thinkingLevel": "minimal"},
           "repair drops to minimal thinking")

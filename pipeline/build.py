@@ -15,6 +15,7 @@ import re
 import shutil
 import sys
 import time
+import math
 from datetime import timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote, urlsplit
@@ -1356,6 +1357,58 @@ def stats_views(stats, lang: str):
 # ── private usage dashboard (URL token from AVWIRE_USAGE_TOKEN secret) ──────
 
 _USAGE_TOKEN_RE = re.compile(r"[A-Za-z0-9_-]{16,128}\Z")
+_RECENT_RUN_KEEP_DAYS = 30
+_RUN_TEXT_RE = re.compile(r"[\x00-\x1f\x7f]+")
+
+_RUN_RESULT_ZH = {
+    "published": "已發布",
+    "manual_review": "人工審核",
+    "rejected": "已拒絕",
+    "refused": "已拒絕",
+    "retry_pending": "待下次重試",
+    "no_provider": "沒有可用 Provider",
+    "skipped_no_material": "素材不足，未呼叫模型",
+    "skipped_prompt_injection": "偵測到提示詞注入，未呼叫模型",
+}
+_ATTEMPT_OUTCOME_ZH = {
+    "success": "成功", "failed": "失敗", "refused": "已拒絕",
+}
+_FAILURE_ZH = {
+    "auth": "驗證失敗",
+    "quota": "配額耗盡",
+    "rate_limit": "速率限制",
+    "timeout": "逾時",
+    "connection": "連線失敗",
+    "http_error": "HTTP 錯誤",
+    "refusal": "模型拒絕",
+    "truncated": "回應遭截斷",
+    "invalid_json": "JSON 格式錯誤",
+    "invalid_schema": "資料格式驗證失敗",
+    "validation_failed": "內容驗證失敗",
+    "fact_verification_failed": "事實驗證失敗",
+    "evidence_binding_failed": "證據綁定失敗",
+    "fabrication_check_failed": "杜撰檢查失敗",
+    "glossary_check_failed": "詞彙檢查失敗",
+    "prompt_injection": "提示詞注入",
+    "no_material": "素材不足",
+    "no_provider": "沒有可用 Provider",
+    "unexpected": "未預期錯誤",
+}
+_STAGE_ZH = {
+    "companionRetrieval": "Companion retrieval",
+    "fulltextEnrichment": "Fulltext enrichment",
+    "plaEnrichment": "本地脈絡補強",
+    "archiveRetrieval": "Archive Context retrieval",
+    "promptAssembly": "Prompt 組裝",
+    "drafting": "模型撰稿",
+    "validation": "Draft schema validation",
+    "factVerification": "事實驗證",
+    "evidenceBinding": "證據綁定",
+    "glossaryCheck": "詞彙檢查",
+    "fabricationCheck": "杜撰檢查",
+    "articleBuild": "文章建置",
+    "total": "全工作總耗時",
+}
 
 
 def _usage_price_for(label: str, prices: dict):
@@ -1405,6 +1458,233 @@ def usage_rows(ledger: dict, prices: dict):
         totals["unknown"] += unknown
         totals["usd"] += usd or 0.0
     return rows, totals
+
+
+def _run_text(value, limit=160) -> str:
+    if not isinstance(value, (str, int)):
+        return ""
+    text = _RUN_TEXT_RE.sub(" ", str(value))
+    text = re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"https?://\S+", "[網址已隱藏]", text,
+                  flags=re.IGNORECASE)
+    text = re.sub(
+        r"(?i)\bauthorization\b\s*[:=]?\s*(?:bearer\s+)?\S+",
+        "Authorization [已隱藏]",
+        text,
+    )
+    text = re.sub(
+        r"(?i)\b(api[-_ ]?key|token|bearer)\b"
+        r"\s*[:=]?\s*\S*",
+        r"\1 [已隱藏]",
+        text,
+    )
+    return text[:max(1, min(int(limit or 160), 300))]
+
+
+def _nonnegative_number(value, maximum=86_400_000):
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None
+    number = float(value)
+    if not math.isfinite(number) or number < 0:
+        return None
+    return min(number, maximum)
+
+
+def _nonnegative_int(value, maximum=1_000_000) -> int:
+    number = _nonnegative_number(value, maximum)
+    return int(number) if number is not None else 0
+
+
+def _duration_text(value) -> str:
+    ms = _nonnegative_number(value)
+    if ms is None:
+        return "未量測"
+    if ms < 1000:
+        return f"{int(round(ms))} 毫秒"
+    return f"{ms / 1000:.1f} 秒"
+
+
+def _model_name(label: str) -> str:
+    text = _run_text(label, 160)
+    model = text.split(":", 1)[-1].split("/")[-1]
+    return model.replace("-", " ").title() if model else "未知模型"
+
+
+def recent_run_view(ledger: dict, now=None) -> dict:
+    """Validate untrusted recentRuns and build all dashboard statistics."""
+    now = now or now_utc()
+    cutoff = (now - timedelta(days=_RECENT_RUN_KEEP_DAYS)).replace(
+        second=0, microsecond=0)
+    runs = []
+    raw_rows = ledger.get("recentRuns") if isinstance(ledger, dict) else []
+    for raw in raw_rows if isinstance(raw_rows, list) else []:
+        if not isinstance(raw, dict):
+            continue
+        stamp_value = raw.get("startedUtc") or raw.get("finishedUtc")
+        if not isinstance(stamp_value, str):
+            continue
+        try:
+            stamp = parse_iso(stamp_value)
+        except (TypeError, ValueError):
+            continue
+        if stamp < cutoff:
+            continue
+        result = _run_text(raw.get("result"), 40)
+        if result not in _RUN_RESULT_ZH:
+            continue
+        attempts = []
+        raw_attempts = raw.get("attempts")
+        for pos, item in enumerate(
+                raw_attempts if isinstance(raw_attempts, list) else [], 1):
+            if not isinstance(item, dict):
+                continue
+            label = _run_text(item.get("label"), 160)
+            outcome = _run_text(item.get("outcome"), 24)
+            if not label or outcome not in _ATTEMPT_OUTCOME_ZH:
+                continue
+            failure = _run_text(item.get("failureClass"), 48)
+            duration = _nonnegative_number(item.get("durationMs"))
+            attempt = {
+                "sequence": pos,
+                "label": label,
+                "model_name": _model_name(label),
+                "outcome": outcome,
+                "outcome_zh": _ATTEMPT_OUTCOME_ZH[outcome],
+                "failure_class": failure,
+                "failure_zh": _FAILURE_ZH.get(failure, "未預期錯誤")
+                    if failure else "",
+                "failure_stage": _run_text(
+                    item.get("failureStage"), 48),
+                "message": _run_text(item.get("failureMessage"), 180),
+                "duration_ms": duration,
+                "duration": _duration_text(duration),
+                "http_calls": _nonnegative_int(item.get("httpCalls"), 100),
+                "repair_calls":
+                    _nonnegative_int(item.get("repairCalls"), 100),
+                "http_duration": _duration_text(
+                    _nonnegative_number(item.get("httpDurationMs"))),
+                "repair_duration": _duration_text(
+                    _nonnegative_number(item.get("repairDurationMs"))),
+                "http_duration_measured":
+                    _nonnegative_number(item.get("httpDurationMs")) is not None,
+                "repair_duration_measured":
+                    _nonnegative_number(
+                        item.get("repairDurationMs")) is not None,
+                "retry_planned": item.get("retryPlanned") is True,
+                "disabled": item.get("disabledForRun") is True,
+                "started_utc": _run_text(item.get("startedUtc"), 40),
+            }
+            attempts.append(attempt)
+        for index, attempt in enumerate(attempts):
+            attempt["next_model"] = (
+                attempts[index + 1]["model_name"]
+                if index + 1 < len(attempts) else "")
+        durations_raw = raw.get("durationsMs")
+        durations_raw = durations_raw if isinstance(durations_raw, dict) else {}
+        stages = []
+        clean_durations = {}
+        for key, label in _STAGE_ZH.items():
+            value = _nonnegative_number(durations_raw.get(key))
+            clean_durations[key] = value
+            stages.append({
+                "key": key, "label": label,
+                "value": value, "duration": _duration_text(value),
+            })
+        fallback = len({a["label"] for a in attempts}) > 1
+        final_model = _run_text(raw.get("finalModel"), 160)
+        tpe = stamp.astimezone(TPE)
+        run = {
+            "stamp": stamp,
+            "time_tpe": tpe.strftime("%Y-%m-%d %H:%M TPE"),
+            "time_utc": stamp.strftime("%Y-%m-%d %H:%M UTC"),
+            "workflow": _run_text(raw.get("workflow"), 32) or "unknown",
+            "task_type": _run_text(raw.get("taskType"), 32) or "unknown",
+            "group_id": _run_text(raw.get("groupId"), 160),
+            "event_id": _run_text(raw.get("eventId"), 160),
+            "source_count": _nonnegative_int(raw.get("sourceCount"), 10_000),
+            "primary_source": _run_text(raw.get("primarySource"), 160),
+            "result": result,
+            "result_zh": _RUN_RESULT_ZH[result],
+            "article_id": _run_text(raw.get("articleId"), 180),
+            "final_status": _run_text(raw.get("finalStatus"), 48),
+            "final_model": final_model,
+            "final_model_name": _model_name(final_model)
+                if final_model else "未呼叫模型",
+            "fallback": fallback,
+            "attempt_count": len(attempts),
+            "http_calls": sum(a["http_calls"] for a in attempts),
+            "repair_calls": sum(a["repair_calls"] for a in attempts),
+            "durations": clean_durations,
+            "stages": stages,
+            "total_duration": _duration_text(clean_durations["total"]),
+            "drafting_duration":
+                _duration_text(clean_durations["drafting"]),
+            "attempts": attempts,
+        }
+        runs.append(run)
+    runs.sort(key=lambda row: row["stamp"], reverse=True)
+    opened = False
+    for run in runs:
+        notable = run["fallback"] or run["result"] in {
+            "retry_pending", "no_provider", "refused"}
+        run["open"] = notable and not opened
+        opened = opened or run["open"]
+
+    model_map = {}
+    for run in runs:
+        first_label = run["attempts"][0]["label"] if run["attempts"] else ""
+        for attempt in run["attempts"]:
+            row = model_map.setdefault(attempt["label"], {
+                "label": attempt["label"],
+                "model_name": attempt["model_name"],
+                "attempts": 0, "success": 0, "failed": 0,
+                "fallback": 0, "duration_total": 0.0,
+                "duration_count": 0,
+            })
+            row["attempts"] += 1
+            row["success"] += attempt["outcome"] == "success"
+            row["failed"] += attempt["outcome"] == "failed"
+            row["fallback"] += attempt["label"] != first_label
+            if attempt["duration_ms"] is not None:
+                row["duration_total"] += attempt["duration_ms"]
+                row["duration_count"] += 1
+    model_rows = []
+    for row in model_map.values():
+        row["success_rate"] = (
+            row["success"] / row["attempts"] * 100 if row["attempts"] else 0)
+        average = (row["duration_total"] / row["duration_count"]
+                   if row["duration_count"] else None)
+        row["average_duration"] = _duration_text(average)
+        model_rows.append(row)
+    model_rows.sort(key=lambda row: (-row["attempts"], row["label"]))
+
+    totals = [run["durations"]["total"] for run in runs
+              if run["durations"]["total"] is not None]
+    drafting = [run["durations"]["drafting"] for run in runs
+                if run["durations"]["drafting"] is not None]
+    attempt_rows = [attempt for run in runs for attempt in run["attempts"]]
+    failed_results = {"retry_pending", "no_provider", "refused"}
+    summary = {
+        "jobs": len(runs),
+        "success": sum(run["result"] in {"published", "manual_review"}
+                       for run in runs),
+        "failed": sum(run["result"] in failed_results for run in runs),
+        "fallback": sum(run["fallback"] for run in runs),
+        "fallback_rate": (
+            sum(run["fallback"] for run in runs) / len(runs) * 100
+            if runs else 0),
+        "attempts": len(attempt_rows),
+        "attempt_failures":
+            sum(a["outcome"] == "failed" for a in attempt_rows),
+        "average_total": _duration_text(
+            sum(totals) / len(totals) if totals else None),
+        "average_drafting": _duration_text(
+            sum(drafting) / len(drafting) if drafting else None),
+        "repairs": sum(a["repair_calls"] for a in attempt_rows),
+        "timeouts": sum(a["failure_class"] == "timeout"
+                        for a in attempt_rows),
+    }
+    return {"runs": runs, "models": model_rows, "summary": summary}
 
 
 def non_api_reference_rows(prices: dict):
@@ -1618,6 +1898,7 @@ def render_usage_dashboard(env, build) -> int:
     codex_snapshot = load_json(Path(__file__).resolve().parent.parent
                                / "config" / "codex_usage.json", {})
     rows, totals = usage_rows(ledger, prices)
+    recent = recent_run_view(ledger)
     codex_rows, codex_totals = codex_usage_rows(codex_snapshot, prices)
     try:
         rate = float(prices.get("usdToTwd") or 31.5)
@@ -1630,6 +1911,9 @@ def render_usage_dashboard(env, build) -> int:
     ctx = {
         "base": BASE_PATH, "favicon": FAVICON, "build": build,
         "rows": rows, "totals": totals, "daily": daily,
+        "recent_runs": recent["runs"],
+        "recent_models": recent["models"],
+        "recent_summary": recent["summary"],
         "codex_rows": codex_rows, "codex_totals": codex_totals,
         "codex_twd": codex_totals["usd"] * rate,
         "codex_scope": str(codex_snapshot.get("scope") or "").strip(),

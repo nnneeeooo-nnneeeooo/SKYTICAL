@@ -30,6 +30,49 @@
   .accent { color:#ec3013; }
   h2 { font-size:14px; margin:24px 0 4px; }
   .scroll { overflow-x:auto; }
+  .history-tiles { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .history { margin-top:10px; }
+  .run { border:1px solid #444141; margin:8px 0; background:#1d1b1a; }
+  .run summary { cursor:pointer; list-style:none; padding:12px 14px; }
+  .run summary::-webkit-details-marker { display:none; }
+  .run summary::after { content:"＋"; float:right; color:#9b9694; }
+  .run[open] summary::after { content:"－"; }
+  .run-head { display:grid; grid-template-columns:1.3fr 1fr; gap:5px 14px;
+              padding-right:22px; }
+  .run-title { font-size:13px; font-weight:800; overflow-wrap:anywhere; }
+  .run-meta { color:#9b9694; font-size:11px; }
+  .run-result { text-align:right; font-weight:800; }
+  .run-body { border-top:1px solid #353232; padding:12px 14px 15px; }
+  .facts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+           gap:7px 14px; font-size:11.5px; margin-bottom:12px; }
+  .facts span { color:#9b9694; display:block; font-size:10px; }
+  .attempt { position:relative; border-left:3px solid #555; padding:8px 10px;
+             margin:7px 0; background:#171514; overflow-wrap:anywhere; }
+  .attempt.ok { border-color:#49a56a; }
+  .attempt.fail { border-color:#ec3013; }
+  .attempt-title { font-weight:800; font-size:12.5px; }
+  .attempt-meta { color:#b8b3b1; font-size:11px; line-height:1.65; }
+  .error { color:#ff8e78; }
+  .chain-arrow { color:#9b9694; font-size:11px; margin:2px 0 2px 12px; }
+  .badge { display:inline-block; border:1px solid #5c5754; padding:2px 6px;
+           font-size:10px; margin-left:5px; }
+  .badge.fallback { border-color:#ec3013; color:#ff8e78; }
+  .empty { border:1px dashed #444141; color:#9b9694; padding:18px 14px;
+           margin-top:10px; font-size:12px; line-height:1.7; }
+  @media (min-width:640px) {
+    .history-tiles { grid-template-columns:repeat(5,minmax(0,1fr)); }
+    .history-tiles .tile { padding:10px; }
+    .history-tiles .tile b { font-size:18px; }
+  }
+  @media (max-width:520px) {
+    body { padding-left:10px; padding-right:10px; }
+    .run-head { grid-template-columns:1fr; }
+    .run-result { text-align:left; }
+    .facts { grid-template-columns:1fr; }
+    .model-stats th:nth-child(5), .model-stats td:nth-child(5),
+    .model-stats th:nth-child(6), .model-stats td:nth-child(6) { display:none; }
+    .model-stats td.model { white-space:normal; min-width:120px; }
+  }
 </style>
 </head>
 <body>
@@ -62,6 +105,98 @@
     <tr><td colspan="5" style="text-align:left;color:#9b9694;">尚無紀錄 — 下一次管線呼叫模型後開始累計</td></tr>
     {% endif %}
   </table>
+  </div>
+
+  <h2>最近 30 天模型執行與失敗紀錄</h2>
+  <div class="section-note">
+    每個新聞工作獨立記錄模型嘗試、備援切換、格式修復與可精確量測的階段耗時；超過 30 天的詳細紀錄不會顯示。
+  </div>
+  <div class="tiles history-tiles">
+    <div class="tile"><span>總執行工作數</span><b>{{ recent_summary.jobs }}</b></div>
+    <div class="tile"><span>成功工作數</span><b>{{ recent_summary.success }}</b></div>
+    <div class="tile"><span>失敗／待重試</span><b>{{ recent_summary.failed }}</b></div>
+    <div class="tile"><span>使用備援工作數</span><b>{{ recent_summary.fallback }}</b></div>
+    <div class="tile"><span>Fallback 比率</span><b>{{ "%.1f"|format(recent_summary.fallback_rate) }}%</b></div>
+    <div class="tile"><span>模型嘗試總數</span><b>{{ recent_summary.attempts }}</b></div>
+    <div class="tile"><span>模型失敗總數</span><b>{{ recent_summary.attempt_failures }}</b></div>
+    <div class="tile"><span>平均總耗時</span><b>{{ recent_summary.average_total }}</b></div>
+    <div class="tile"><span>平均撰稿耗時</span><b>{{ recent_summary.average_drafting }}</b></div>
+    <div class="tile"><span>Repair／Timeout</span><b>{{ recent_summary.repairs }}／{{ recent_summary.timeouts }}</b></div>
+  </div>
+
+  {% if recent_models %}
+  <div class="scroll">
+  <table class="model-stats">
+    <tr><th>模型</th><th>嘗試</th><th>成功</th><th>失敗</th><th>成功率</th><th>作為備援</th><th>平均耗時</th></tr>
+    {% for model in recent_models %}
+    <tr>
+      <td class="model" title="{{ model.label }}">{{ model.model_name }}</td>
+      <td>{{ model.attempts }}</td>
+      <td>{{ model.success }}</td>
+      <td>{{ model.failed }}</td>
+      <td>{{ "%.1f"|format(model.success_rate) }}%</td>
+      <td>{{ model.fallback }}</td>
+      <td>{{ model.average_duration }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  {% endif %}
+
+  <div class="history">
+  {% for run in recent_runs %}
+    <details class="run"{% if run.open %} open{% endif %}>
+      <summary>
+        <div class="run-head">
+          <div>
+            <div class="run-title">{{ run.task_type }}：{{ run.group_id or run.event_id or "未命名工作" }}</div>
+            <div class="run-meta" title="{{ run.time_utc }}">{{ run.time_tpe }} · {{ run.workflow }}</div>
+          </div>
+          <div class="run-result">
+            {{ run.result_zh }}
+            {% if run.fallback %}<span class="badge fallback">使用備援</span>{% endif %}
+            <div class="run-meta">最終模型：{{ run.final_model_name }} · {{ run.total_duration }}</div>
+          </div>
+        </div>
+      </summary>
+      <div class="run-body">
+        <div class="facts">
+          <div><span>來源數／主要來源</span>{{ run.source_count }}／{{ run.primary_source or "未提供" }}</div>
+          <div><span>articleId</span>{{ run.article_id or "未產生" }}</div>
+          <div><span>最終 status</span>{{ run.final_status or run.result_zh }}</div>
+          <div><span>HTTP／Repair 呼叫</span>{{ run.http_calls }}／{{ run.repair_calls }}</div>
+        </div>
+        <div class="scroll">
+        <table>
+          <tr><th>階段</th><th>耗時</th></tr>
+          {% for stage in run.stages %}
+          <tr><td>{{ stage.label }}</td><td>{{ stage.duration }}</td></tr>
+          {% endfor %}
+        </table>
+        </div>
+        {% for attempt in run.attempts %}
+          <div class="attempt {{ 'ok' if attempt.outcome == 'success' else 'fail' }}">
+            <div class="attempt-title">{{ attempt.sequence }}. {{ attempt.model_name }} — {{ attempt.outcome_zh }}
+              {% if attempt.retry_planned %}<span class="badge">同模型重試</span>{% endif %}
+              {% if attempt.disabled %}<span class="badge fallback">停用 Provider</span>{% endif %}
+            </div>
+            <div class="attempt-meta">
+              耗時 {{ attempt.duration }} · HTTP {{ attempt.http_calls }} · Repair {{ attempt.repair_calls }}
+              {% if attempt.http_duration_measured or attempt.repair_duration_measured %}<br>HTTP 請求耗時 {{ attempt.http_duration }} · Repair 請求耗時 {{ attempt.repair_duration }}{% endif %}
+              {% if attempt.failure_class %}<br><span class="error">{{ attempt.failure_zh }}{% if attempt.failure_stage %}（{{ attempt.failure_stage }}）{% endif %}{% if attempt.message %}：{{ attempt.message }}{% endif %}</span>{% endif %}
+            </div>
+          </div>
+          {% if attempt.next_model %}<div class="chain-arrow">→ 改用 {{ attempt.next_model }}</div>{% endif %}
+        {% endfor %}
+        {% if not run.attempts %}
+          <div class="empty">未呼叫模型。這筆工作在素材或 Provider 前置檢查階段結束。</div>
+        {% endif %}
+      </div>
+    </details>
+  {% endfor %}
+  {% if not recent_runs %}
+    <div class="empty">最近 30 天尚無模型執行紀錄。新的 hourly article、flightwatch 或 briefing 模型工作完成後會顯示在這裡。</div>
+  {% endif %}
   </div>
 
   {% if codex_rows %}
