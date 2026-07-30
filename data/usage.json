@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-07-30T18:54Z",
+  "updatedUtc": "2026-07-30T18:55Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -100,9 +100,9 @@
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "actualite.cd",
-      "result": "manual_review",
-      "articleId": null,
-      "finalStatus": "manual_review",
+      "result": "published",
+      "articleId": "a-20260726-1606-tracep-congo-aviation-cargo-plane-crashe-0f40c5",
+      "finalStatus": "publish",
       "finalModel": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
       "fallbackUsed": true,
       "attemptCount": 9,
@@ -276,18 +276,12 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
             "inputTokens": 1152,
             "outputTokens": 731,
-            "estimated": false
-          },
-          {
-            "label": "gemini:gemini-3.5-flash",
-            "inputTokens": 0,
-            "outputTokens": 0,
             "estimated": false
           },
           {
@@ -336,72 +330,6 @@
             "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
             "inputTokens": 6431,
             "outputTokens": 10558,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:google/gemma-4-31b-it:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:inclusionai/ling-3.0-flash:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:google/gemma-4-26b-a4b-it:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:openai/gpt-oss-20b:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:poolside/laguna-s-2.1:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:cohere/north-mini-code:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "estimated": false
-          },
-          {
-            "label": "openrouter:poolside/laguna-xs-2.1:free",
-            "inputTokens": 0,
-            "outputTokens": 0,
             "estimated": false
           }
         ]
@@ -502,7 +430,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -540,7 +468,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -597,7 +525,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -762,7 +690,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -819,7 +747,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -966,7 +894,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -1113,7 +1041,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -1260,7 +1188,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -1407,7 +1335,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -1554,7 +1482,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -1592,7 +1520,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -1757,7 +1685,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -1904,7 +1832,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -2051,7 +1979,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -2198,7 +2126,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -2345,7 +2273,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -2474,7 +2402,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -2531,7 +2459,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -2588,7 +2516,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -2735,7 +2663,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -2882,7 +2810,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -2945,7 +2873,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -3002,7 +2930,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -3059,7 +2987,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -3116,7 +3044,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -3173,7 +3101,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -3230,7 +3158,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -3413,7 +3341,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -3451,7 +3379,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -3489,7 +3417,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     },
@@ -3527,7 +3455,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0.0,
+        "actualUsd": 0,
         "models": []
       }
     }
