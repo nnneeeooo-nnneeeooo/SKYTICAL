@@ -254,7 +254,7 @@ def test_manual_translation_bundle():
             "body": ["第一段內容。", "第二段內容。"],
         },
     })
-    draft = manual_draft._translation_draft(payload, {
+    draft = manual_draft._operator_draft(payload, {
         "title": "Airline publishes operational update",
         "summary": "The airline published its latest operational update.",
         "body": ["First paragraph.", "Second paragraph."],
@@ -266,11 +266,12 @@ def test_manual_translation_bundle():
             "url": "https://example.com/source",
         }],
     }
-    bundle = manual_draft._translation_publication_bundle(
+    bundle = manual_draft._operator_publication_bundle(
         "0123456789abcdef0123456789abcdef",
         payload,
         group,
         draft,
+        "",
         datetime(2026, 7, 31, 1, 2, tzinfo=timezone.utc),
     )
     check(
@@ -282,6 +283,52 @@ def test_manual_translation_bundle():
         and bundle["article"]["sortUtc"] == "2026-07-29T12:00:00Z"
         and bundle["flash"]["timeUtc"] == "2026-07-29T12:00:00Z",
         "background translation preserves Chinese and publication metadata")
+
+
+def test_operator_authored_auto_source_time():
+    source_article = {
+        "title": "航空公司公布營運更新",
+        "summary": "航空公司公布最新營運消息。",
+        "body": ["第一段內容。", "第二段內容。"],
+    }
+    payload = manual_draft.validate_payload({
+        **sample_payload(),
+        "operatorAuthored": True,
+        "translationOnly": False,
+        "articleType": "airline",
+        "language": "zh",
+        "publicationMode": "auto",
+        "publicationTimeUtc": "",
+        "writerModels": ["GPT 5.6 Sol"],
+        "manualArticle": source_article,
+    })
+    group = {
+        "primarySource": "example.com",
+        "items": [{
+            "source": "example.com",
+            "url": "https://example.com/source",
+            "publishedUtc": "2026-07-30T13:45:00Z",
+            "dateInferred": False,
+        }],
+    }
+    draft = manual_draft._operator_draft(payload, {})
+    bundle = manual_draft._operator_publication_bundle(
+        "0123456789abcdef0123456789abcdef",
+        payload,
+        group,
+        draft,
+        "",
+        datetime(2026, 7, 31, 1, 2, tzinfo=timezone.utc),
+    )
+    check(
+        bundle["publicationTimeUtc"] == "2026-07-30T13:45:00Z"
+        and bundle["publicationTimeSource"] == "source_metadata"
+        and bundle["article"]["publishedUtc"]
+        == bundle["article"]["sortUtc"]
+        and bundle["article"]["zh"] == source_article
+        and bundle["article"]["en"]["body"] == []
+        and bundle["article"]["availableLanguages"] == ["zh"],
+        "manual article auto-detects source metadata without rewriting copy")
 
 
 def test_reasoning_tiers():
@@ -406,14 +453,17 @@ def test_translation_generate_path():
         "title": "Airline publishes operational update",
         "summary": "The airline published an operational update.",
         "body": ["First paragraph.", "Second paragraph."],
+        "detectedPublishedUtc": "2026-07-30T08:15:00Z",
+        "timeEvidenceQuote": "Published July 30, 2026 at 8:15 UTC.",
+        "timeEvidenceUrl": "https://example.com/source",
     })
     payload = manual_draft.validate_payload({
         **sample_payload(),
         "translationOnly": True,
         "articleType": "airline",
         "language": "bilingual",
-        "publicationMode": "manual",
-        "publicationTimeUtc": "2026-07-30T12:00:00Z",
+        "publicationMode": "auto",
+        "publicationTimeUtc": "",
         "writerModels": ["GPT 5.6 Sol", "Gemini 3.6 Flash"],
         "manualArticle": {
             "title": "航空公司公布營運更新",
@@ -433,6 +483,7 @@ def test_translation_generate_path():
         "items": [{
             "source": "example.com",
             "url": "https://example.com/source",
+            "fulltext": "Published July 30, 2026 at 8:15 UTC.",
         }],
     }
     manual_draft.usage_ledger.record_providers = lambda rows: None
@@ -448,11 +499,86 @@ def test_translation_generate_path():
     check(
         result["status"] == "success"
         and result["translationOnly"] is True
+        and result["operatorAuthored"] is True
+        and result["publicationTimeUtc"] == "2026-07-30T08:15:00Z"
+        and result["publicationTimeSource"] == "model_source_text"
         and result["publication"]["article"]["zh"]["title"]
         == "航空公司公布營運更新"
         and result["publication"]["article"]["en"]["title"]
         == "Airline publishes operational update",
         "translation job uses provider fallback and returns publishable bundle")
+
+
+def test_manual_time_detection_generate_path():
+    provider = FakeProvider("gemini:gemini-3.6-flash", {
+        "detectedPublishedUtc": "2026-07-29T04:30:00Z",
+        "timeEvidenceQuote": (
+            "The notice was published on July 29, 2026."),
+        "timeEvidenceUrl": "https://example.com/source",
+    })
+    source_article = {
+        "title": "Airport operational notice",
+        "summary": "The airport published an operational notice.",
+        "body": ["Operator-authored English copy."],
+    }
+    payload = manual_draft.validate_payload({
+        **sample_payload(),
+        "operatorAuthored": True,
+        "articleType": "airport",
+        "language": "en",
+        "publicationMode": "auto",
+        "manualArticle": source_article,
+        "writerModels": ["GPT 5.6 Sol"],
+    })
+    originals = (
+        manual_draft._providers_for,
+        manual_draft._build_group,
+        manual_draft.usage_ledger.record_providers,
+        manual_draft.usage_ledger.record_run,
+    )
+    manual_draft._providers_for = lambda request: [provider]
+    manual_draft._build_group = lambda job, request, log: {
+        "primarySource": "example.com",
+        "items": [{
+            "source": "example.com",
+            "url": "https://example.com/source",
+            "fulltext": "The notice was published on July 29, 2026.",
+            "publishedUtc": "",
+            "dateInferred": True,
+        }],
+    }
+    manual_draft.usage_ledger.record_providers = lambda rows: None
+    manual_draft.usage_ledger.record_run = lambda row: None
+    try:
+        result = manual_draft.generate(
+            "0123456789abcdef0123456789abcdef", payload)
+    finally:
+        (manual_draft._providers_for,
+         manual_draft._build_group,
+         manual_draft.usage_ledger.record_providers,
+         manual_draft.usage_ledger.record_run) = originals
+    check(
+        result["status"] == "success"
+        and result["operatorAuthored"] is True
+        and result["translationOnly"] is False
+        and result["publicationTimeUtc"] == "2026-07-29T04:30:00Z"
+        and result["publication"]["article"]["en"] == source_article
+        and result["publication"]["article"]["zh"]["body"] == [],
+        "manual English copy uses source-time model without rewriting content")
+    forged = {
+        "detectedPublishedUtc": "2026-07-28T00:00:00Z",
+        "timeEvidenceQuote": "This sentence is not in the source.",
+        "timeEvidenceUrl": "https://example.com/source",
+    }
+    check(
+        manual_draft._verified_detected_time(
+            forged,
+            {"items": [{
+                "url": "https://example.com/source",
+                "fulltext": "The notice was published on July 29, 2026.",
+            }]},
+        ) == "",
+        "model time is rejected when its verbatim evidence is absent")
 
 
 def test_private_page_render_contract():
@@ -562,6 +688,9 @@ def test_static_security_contract():
         and 'id="publication-hour"' in html
         and 'id="publication-minute"' in html
         and 'id="publication-period"' in html
+        and '<label>文章時間' in html
+        and '<option value="auto" selected>自動偵測來源時間</option>'
+        in html
         and 'id="manual-order-panel"' in html
         and 'id="sort-follow-publication"' in html
         and 'id="sort-date"' in html
@@ -608,8 +737,10 @@ def test_static_security_contract():
         and '由後台模型忠實翻譯（預設）' in html
         and 'id="writer-model-{{ slot }}"' in html
         and "range(1, 6)" in html
-        and "translateAndPublishManualArticle" in js,
-        "manual mode supports background English translation and five credits")
+        and "prepareAndPublishManualArticle" in js
+        and "manualNeedsPreparation" in js
+        and "operatorAuthored: true" in js,
+        "manual mode supports source-time detection, translation and credits")
     check(
         'id="activity-indicator"' in html
         and 'id="pipeline-steps"' in html
@@ -672,10 +803,12 @@ def main():
         test_payload_limits_and_ssrf,
         test_publication_detection_prompt_and_bundle,
         test_manual_translation_bundle,
+        test_operator_authored_auto_source_time,
         test_reasoning_tiers,
         test_openrouter_manual_provider_order,
         test_fallback_and_telemetry,
         test_translation_generate_path,
+        test_manual_time_detection_generate_path,
         test_private_page_render_contract,
         test_manual_article_render_contract,
         test_static_security_contract,
