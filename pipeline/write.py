@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import os
 import re
+import time
 from datetime import timedelta
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -63,6 +64,8 @@ from providers import (
     ProviderError,
     ProviderQuotaError,
     build_providers,
+    classify_failure,
+    safe_failure_message,
 )
 
 MAX_GROUPS_PER_RUN = 10
@@ -697,6 +700,9 @@ def draft_group(provider, group: dict):
     return provider.draft(SYSTEM_PROMPT, group_prompt(group), DRAFT_SCHEMA)
 
 
+_DEFAULT_DRAFT_GROUP = draft_group
+
+
 def _is_bilingual(obj) -> bool:
     return (isinstance(obj, dict)
             and isinstance(obj.get("zh"), str) and bool(obj["zh"].strip())
@@ -879,6 +885,149 @@ class DraftInvalid(Exception):
     """Draft failed validation or quote verification on every allowed try."""
 
 
+def _counter(provider, name: str) -> int:
+    try:
+        return max(0, int(getattr(provider, name, 0) or 0))
+    except (TypeError, ValueError):
+        return 0
+
+
+class _RunTrace:
+    """Small per-work recorder; it never stores prompts or source bodies."""
+
+    def __init__(self, workflow: str, task_type: str, group: dict,
+                 event_id=None) -> None:
+        self._started_perf = time.perf_counter()
+        self.data = {
+            "startedUtc": iso_minute(now_utc()),
+            "finishedUtc": None,
+            "workflow": workflow,
+            "taskType": task_type,
+            "groupId": str(group.get("id") or "")[:160] or None,
+            "eventId": str(event_id or "")[:160] or None,
+            "sourceCount": sum(
+                isinstance(item, dict) for item in group.get("items") or []),
+            "primarySource":
+                str(group.get("primarySource") or "")[:160] or None,
+            "result": "retry_pending",
+            "articleId": None,
+            "finalStatus": "retry_pending",
+            "finalModel": None,
+            "fallbackUsed": False,
+            "attemptCount": 0,
+            "httpCallCount": 0,
+            "repairCallCount": 0,
+            "durationsMs": {
+                # Batch enrichments cannot be attributed per group safely.
+                "companionRetrieval": None,
+                "fulltextEnrichment": None,
+                "plaEnrichment": None,
+                "archiveRetrieval": None,
+                "promptAssembly": None,
+                "drafting": None,
+                "validation": None,
+                "factVerification": None,
+                "evidenceBinding": None,
+                "glossaryCheck": None,
+                "fabricationCheck": None,
+                "articleBuild": None,
+                "total": None,
+            },
+            "attempts": [],
+        }
+
+    def add_duration(self, stage: str, started: float) -> None:
+        elapsed = max(0, round((time.perf_counter() - started) * 1000))
+        current = self.data["durationsMs"].get(stage)
+        self.data["durationsMs"][stage] = elapsed + (
+            current if isinstance(current, int) else 0)
+
+    def add_attempt(self, provider, started_perf: float, started_utc: str,
+                    before: dict, outcome: str,
+                    failure_class=None, failure_stage=None,
+                    failure_message=None, retry_planned=False) -> None:
+        after = {
+            "http": _counter(provider, "http_calls"),
+            "repair": _counter(provider, "repair_calls"),
+            "http_ms": _counter(provider, "http_duration_ms"),
+            "repair_ms": _counter(provider, "repair_duration_ms"),
+        }
+        label = str(getattr(provider, "label", "?"))[:160]
+        self.data["attempts"].append({
+            "sequence": len(self.data["attempts"]) + 1,
+            "provider": str(getattr(provider, "name", "unknown"))[:40],
+            "model": str(getattr(provider, "model", ""))[:160] or None,
+            "label": label,
+            "startedUtc": started_utc,
+            "durationMs": max(
+                0, round((time.perf_counter() - started_perf) * 1000)),
+            "httpCalls": max(0, after["http"] - before["http"]),
+            "repairCalls": max(0, after["repair"] - before["repair"]),
+            "httpDurationMs": max(0, after["http_ms"] - before["http_ms"]),
+            "repairDurationMs":
+                max(0, after["repair_ms"] - before["repair_ms"]),
+            "outcome": outcome,
+            "failureClass": failure_class,
+            "failureStage": failure_stage,
+            "failureMessage": safe_failure_message(failure_message)
+                if failure_message else None,
+            "retryPlanned": bool(retry_planned),
+            "disabledForRun": False,
+        })
+
+    def disable_last_provider(self) -> None:
+        if self.data["attempts"]:
+            self.data["attempts"][-1]["disabledForRun"] = True
+
+    def finish(self, result: str, final_status: str, final_model=None,
+               article_id=None) -> None:
+        attempts = self.data["attempts"]
+        labels = {row["label"] for row in attempts}
+        self.data.update({
+            "finishedUtc": iso_minute(now_utc()),
+            "result": result,
+            "articleId": str(article_id or "")[:180] or None,
+            "finalStatus": str(final_status or result)[:48],
+            "finalModel": str(final_model or "")[:160] or None,
+            "fallbackUsed": len(labels) > 1,
+            "attemptCount": len(attempts),
+            "httpCallCount": sum(row["httpCalls"] for row in attempts),
+            "repairCallCount": sum(row["repairCalls"] for row in attempts),
+        })
+        self.data["durationsMs"]["total"] = max(
+            0, round((time.perf_counter() - self._started_perf) * 1000))
+        try:
+            import usage as usage_ledger
+
+            usage_ledger.record_run(self.data)
+        except Exception as exc:
+            print(f"write: recent run ledger update failed "
+                  f"({type(exc).__name__})")
+
+
+def _snapshot_provider(provider) -> dict:
+    return {
+        "http": _counter(provider, "http_calls"),
+        "repair": _counter(provider, "repair_calls"),
+        "http_ms": _counter(provider, "http_duration_ms"),
+        "repair_ms": _counter(provider, "repair_duration_ms"),
+    }
+
+
+def _problem_class(stage: str, problem: str) -> str:
+    if stage == "validation":
+        return "invalid_schema"
+    if stage == "factVerification":
+        return "fact_verification_failed"
+    if stage == "evidenceBinding":
+        return "evidence_binding_failed"
+    if stage == "glossaryCheck":
+        return "glossary_check_failed"
+    if stage == "fabricationCheck":
+        return "fabrication_check_failed"
+    return "validation_failed"
+
+
 def _normalize_reject_reason(candidate: dict) -> None:
     """Keep archive completeness from becoming the stated rejection cause."""
     reason = str(candidate.get("decisionReason") or "").strip()
@@ -897,7 +1046,8 @@ def _normalize_reject_reason(candidate: dict) -> None:
             f"to establish a new event. Model detail: {reason}")
 
 
-def _validated_draft(provider, group: dict, tries: int, ai_calls=None):
+def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
+                     run_trace: _RunTrace | None = None):
     """Call `provider` up to `tries` times until a draft survives validation
     and quote verification.
 
@@ -906,31 +1056,94 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None):
     last failed try. Provider errors propagate immediately - the routing
     policy retries validation failures, never transport failures.
     """
+    last_problem = "draft validation failed"
     for attempt in range(tries):
         if ai_calls is not None:
             ai_calls[provider.label] = ai_calls.get(provider.label, 0) + 1
-        candidate = draft_group(provider, group)
+        started_perf = time.perf_counter()
+        started_utc = iso_minute(now_utc())
+        before = _snapshot_provider(provider)
+        try:
+            drafting_started = time.perf_counter()
+            if run_trace is not None and draft_group is _DEFAULT_DRAFT_GROUP:
+                prompt_started = time.perf_counter()
+                user_prompt = group_prompt(group)
+                run_trace.add_duration("promptAssembly", prompt_started)
+                candidate = provider.draft(
+                    SYSTEM_PROMPT, user_prompt, DRAFT_SCHEMA)
+            else:
+                candidate = draft_group(provider, group)
+            if run_trace is not None:
+                run_trace.add_duration("drafting", drafting_started)
+        except Exception as exc:
+            if run_trace is not None:
+                run_trace.add_duration("drafting", drafting_started)
+                run_trace.add_attempt(
+                    provider, started_perf, started_utc, before, "failed",
+                    classify_failure(exc), "draft", exc)
+            raise
         if candidate is None:
+            if run_trace is not None:
+                run_trace.add_attempt(
+                    provider, started_perf, started_utc, before, "refused",
+                    "refusal", "draft", "model refusal")
             return None, None
+        validation_started = time.perf_counter()
         problem = validate_draft(candidate)
+        if run_trace is not None:
+            run_trace.add_duration("validation", validation_started)
+        problem_stage = "validation"
         if problem is None:
             if candidate.get("status") == "reject":
                 _normalize_reject_reason(candidate)
+                if run_trace is not None:
+                    run_trace.add_attempt(
+                        provider, started_perf, started_utc, before, "success")
                 return candidate, []
+            verify_started = time.perf_counter()
             facts = verify_facts(candidate, group, provider.label)
+            if run_trace is not None:
+                run_trace.add_duration("factVerification", verify_started)
             if facts:
-                problem = (_evidence_binding_problem(candidate, facts)
-                           or glossary_problem(candidate, group)
-                           or fabrication_problem(candidate, group))
+                evidence_started = time.perf_counter()
+                problem = _evidence_binding_problem(candidate, facts)
+                if run_trace is not None:
+                    run_trace.add_duration("evidenceBinding", evidence_started)
+                problem_stage = "evidenceBinding"
                 if problem is None:
+                    glossary_started = time.perf_counter()
+                    problem = glossary_problem(candidate, group)
+                    if run_trace is not None:
+                        run_trace.add_duration(
+                            "glossaryCheck", glossary_started)
+                    problem_stage = "glossaryCheck"
+                if problem is None:
+                    fabrication_started = time.perf_counter()
+                    problem = fabrication_problem(candidate, group)
+                    if run_trace is not None:
+                        run_trace.add_duration(
+                            "fabricationCheck", fabrication_started)
+                    problem_stage = "fabricationCheck"
+                if problem is None:
+                    if run_trace is not None:
+                        run_trace.add_attempt(
+                            provider, started_perf, started_utc, before,
+                            "success")
                     return candidate, facts
             else:
                 problem = "no machine-verifiable sourceQuote"
+                problem_stage = "factVerification"
         retrying = attempt + 1 < tries
+        last_problem = str(problem or "draft validation failed")
+        if run_trace is not None:
+            run_trace.add_attempt(
+                provider, started_perf, started_utc, before, "failed",
+                _problem_class(problem_stage, last_problem),
+                problem_stage, last_problem, retry_planned=retrying)
         print(f"write: {provider.label} draft for group {group.get('id')} "
               f"unusable ({problem})"
               + ("; retrying once" if retrying else ""))
-    raise DraftInvalid
+    raise DraftInvalid(last_problem)
 
 
 _squash = squash_text  # shared with common.item_has_material
@@ -1493,32 +1706,59 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
             pass
         processed += 1
         group = flightnews.pseudo_group(event)
+        run_trace = _RunTrace(
+            "flightwatch", "flight_event", group, event.get("eventId"))
+        prompt_started = time.perf_counter()
         user_prompt = (flightnews.assemble_source(event)
                        + "\n\nWrite the bilingual observation item now, "
                          "following the rules strictly.")
+        run_trace.add_duration("promptAssembly", prompt_started)
         outcome = None
         for provider in providers:
             if provider.name in dead_platforms:
                 continue
             ai_calls[provider.label] = ai_calls.get(provider.label, 0) + 1
+            attempt_started = time.perf_counter()
+            attempt_utc = iso_minute(now_utc())
+            before = _snapshot_provider(provider)
             try:
+                drafting_started = time.perf_counter()
                 candidate = provider.draft(prompt, user_prompt, DRAFT_SCHEMA)
+                run_trace.add_duration("drafting", drafting_started)
             except ProviderAuthError as exc:
+                run_trace.add_duration("drafting", drafting_started)
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before, "failed",
+                    "auth", "draft", exc)
+                run_trace.disable_last_provider()
                 print(f"write: FATAL {provider.label} auth error ({exc}); "
                       f"disabling all '{provider.name}' providers")
                 dead_platforms.add(provider.name)
                 dead_auth.add(provider.name)
                 continue
             except ProviderQuotaError as exc:
+                run_trace.add_duration("drafting", drafting_started)
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before, "failed",
+                    "quota", "draft", exc)
+                run_trace.disable_last_provider()
                 print(f"write: {provider.label} quota exhausted ({exc}); "
                       f"disabling all '{provider.name}' providers")
                 dead_platforms.add(provider.name)
                 continue
             except ProviderError as exc:
+                run_trace.add_duration("drafting", drafting_started)
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before, "failed",
+                    classify_failure(exc), "draft", exc)
                 print(f"write: {provider.label} error on flight event "
                       f"{event.get('eventId')}: {exc}; trying next provider")
                 continue
             except Exception as exc:  # noqa: BLE001
+                run_trace.add_duration("drafting", drafting_started)
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before, "failed",
+                    classify_failure(exc), "draft", exc)
                 print(f"write: unexpected {provider.label} error on flight "
                       f"event {event.get('eventId')}: "
                       f"{type(exc).__name__}: {exc}; trying next provider")
@@ -1527,23 +1767,56 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                                      and candidate.get("status") == "reject"):
                 reason = "refusal" if candidate is None else \
                     str(candidate.get("decisionReason") or "?")[:200]
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before,
+                    "refused" if candidate is None else "success",
+                    "refusal" if candidate is None else None,
+                    "draft" if candidate is None else None,
+                    "model refusal" if candidate is None else None)
                 print(f"write: flight event {event.get('eventId')} "
                       f"rejected ({reason}); dropping")
                 outcome = "rejected"
+                run_trace.finish(
+                    "refused" if candidate is None else "rejected",
+                    "refusal" if candidate is None else "reject",
+                    provider.label)
                 break
+            validation_started = time.perf_counter()
             problem = validate_draft(candidate)
+            run_trace.add_duration("validation", validation_started)
             if problem:
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before, "failed",
+                    "invalid_schema", "validation", problem)
                 print(f"write: {provider.label} flight draft invalid "
                       f"({problem}); trying next provider")
                 continue
+            fact_started = time.perf_counter()
             facts = verify_facts(candidate, group, provider.label)
+            run_trace.add_duration("factVerification", fact_started)
             if not facts:
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before, "failed",
+                    "fact_verification_failed", "factVerification",
+                    "no machine-verifiable sourceQuote")
                 print(f"write: {provider.label} flight draft has no "
                       "machine-verifiable sourceQuote; trying next provider")
                 continue
-            g_problem = (glossary_problem(candidate, group)
-                         or fabrication_problem(candidate, group))
+            glossary_started = time.perf_counter()
+            g_problem = glossary_problem(candidate, group)
+            run_trace.add_duration("glossaryCheck", glossary_started)
+            failure_stage = "glossaryCheck"
+            if not g_problem:
+                fabrication_started = time.perf_counter()
+                g_problem = fabrication_problem(candidate, group)
+                run_trace.add_duration(
+                    "fabricationCheck", fabrication_started)
+                failure_stage = "fabricationCheck"
             if g_problem:
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before, "failed",
+                    _problem_class(failure_stage, g_problem),
+                    failure_stage, g_problem)
                 print(f"write: {provider.label} flight draft violates the "
                       f"name/fabrication rules ({g_problem}); trying next "
                       "provider")
@@ -1556,12 +1829,19 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                 candidate["requiresHumanReview"] = False
                 candidate["riskFlags"] = []
                 candidate["decisionReason"] = ""
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before, "success")
+                article_started = time.perf_counter()
                 article = build_article(candidate, group, now, used_ids,
                                         provider.label, facts)
+                run_trace.add_duration("articleBuild", article_started)
                 if article is None:
                     print(f"write: flight event {event.get('eventId')} has "
                           "no usable sources; dropping")
                     outcome = "rejected"
+                    run_trace.finish(
+                        "retry_pending", "article_build_failed",
+                        provider.label)
                     break
                 new_articles.append(article)
                 new_flashes.append(build_flash(candidate, article["id"], now))
@@ -1569,6 +1849,8 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                       f"auto-published as {article['id']} "
                       f"(crossCheck={event.get('crossCheck')})")
                 outcome = "published"
+                run_trace.finish(
+                    "published", "publish", provider.label, article["id"])
                 break
             candidate["status"] = "manual_review"
             candidate["requiresHumanReview"] = True
@@ -1589,12 +1871,20 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                 "bootstrap": bool(event.get("bootstrap")),
             }
             queued_entries.append(entry)
+            run_trace.add_attempt(
+                provider, attempt_started, attempt_utc, before, "success")
             print(f"write: flight event {event.get('eventId')} queued for "
                   f"human review ({review_reason})")
             outcome = "queued"
+            run_trace.finish(
+                "manual_review", "manual_review", provider.label)
             break
         if outcome is None:
             remaining.append(event)  # provider trouble: retry next hour
+            run_trace.finish(
+                "retry_pending" if run_trace.data["attempts"]
+                else "no_provider",
+                "retry_pending")
     return remaining
 
 
@@ -1628,6 +1918,8 @@ def main() -> None:
             group_id = group.get("id")
             print(f"write: group {group_id} contains prompt injection; "
                   "consumed before drafting")
+            _RunTrace("hourly", "article", group).finish(
+                "skipped_prompt_injection", "prompt_injection")
             rejected_groups.append(group)
             rejected_ids.add(group_id)
             continue
@@ -1670,6 +1962,9 @@ def main() -> None:
     if not providers:
         print("write: no LLM API key set (ANTHROPIC_API_KEY / GEMINI_API_KEY "
               "/ NVIDIA_API_KEY); skipping article generation")
+        for group in groups:
+            _RunTrace("hourly", "article", group).finish(
+                "no_provider", "retry_pending")
     elif not groups:
         print("write: no pending groups")
     else:
@@ -1705,7 +2000,9 @@ def main() -> None:
         # archive once, then retrieve at most three events per current group.
         archive_articles = archive_context.load_archive_articles()
         safe_groups = []
+        run_traces = {}
         for group in groups:
+            run_trace = _RunTrace("hourly", "article", group)
             # Enrichment adds new untrusted fields after the first scope
             # check.  Re-run the injection gate so a fetched full text or
             # companion excerpt cannot reach the drafting model as evidence.
@@ -1713,11 +2010,15 @@ def main() -> None:
                 group_id = group.get("id")
                 print(f"write: group {group_id} contains prompt injection "
                       "after enrichment; consumed before drafting")
+                run_trace.finish(
+                    "skipped_prompt_injection", "prompt_injection")
                 rejected_groups.append(group)
                 rejected_ids.add(group_id)
                 continue
+            archive_started = time.perf_counter()
             retrieval = archive_context.retrieve_archive_context(
                 group, articles=archive_articles)
+            run_trace.add_duration("archiveRetrieval", archive_started)
             group["archiveContext"] = {
                 "archive_context_version":
                     retrieval["archive_context_version"],
@@ -1730,13 +2031,16 @@ def main() -> None:
                       f"selected {len(retrieval['selected_events'])} "
                       "event(s)")
             safe_groups.append(group)
+            run_traces[id(group)] = run_trace
         groups = safe_groups
         existing_articles = _load_existing_articles()
         alive = list(providers)  # priority order; shrinks on auth/quota death
         drafted = 0  # only API-consuming groups count toward the run cap
         for group in groups:
+            run_trace = run_traces[id(group)]
             if not alive:
-                break  # every provider is dead; the rest stays pending
+                run_trace.finish("no_provider", "retry_pending")
+                continue
             if not has_material(group):
                 # Title-only material can never satisfy the evidence rules:
                 # consume it here without spending an API call - and without
@@ -1745,11 +2049,15 @@ def main() -> None:
                       " text; consumed by the completeness check")
                 rejected_groups.append(group)
                 rejected_ids.add(group.get("id"))
+                run_trace.finish(
+                    "skipped_no_material", "skipped_no_material")
                 continue
             if drafted >= MAX_GROUPS_PER_RUN:
                 break  # LLM budget for this run is spent; the rest waits
             drafted += 1
             draft, writer, verified, queued_this = None, None, None, False
+            final_model = None
+            stopped_by_refusal = False
             for provider in list(alive):
                 if provider not in alive:
                     # Removed mid-group by a platform-level auth/quota
@@ -1760,7 +2068,8 @@ def main() -> None:
                 tries = 2 if provider is providers[0] else 1
                 try:
                     candidate, facts = _validated_draft(provider, group,
-                                                        tries, ai_calls)
+                                                        tries, ai_calls,
+                                                        run_trace)
                 except DraftInvalid:
                     continue  # try the next provider in the chain
                 except ProviderAuthError as exc:
@@ -1772,6 +2081,7 @@ def main() -> None:
                     alive[:] = [p for p in alive if p.name != provider.name]
                     dead_auth.add(provider.name)
                     dead_platforms.add(provider.name)
+                    run_trace.disable_last_provider()
                     continue
                 except ProviderQuotaError as exc:
                     # Quota/credits are account-level too.
@@ -1780,6 +2090,7 @@ def main() -> None:
                           "for this run")
                     alive[:] = [p for p in alive if p.name != provider.name]
                     dead_platforms.add(provider.name)
+                    run_trace.disable_last_provider()
                     continue
                 except ProviderError as exc:
                     print(f"write: {provider.label} error on group "
@@ -1793,7 +2104,10 @@ def main() -> None:
                 if candidate is None:
                     # Genuine refusal / safety block: content-based, so
                     # don't shop the group around to a laxer provider.
+                    stopped_by_refusal = True
+                    final_model = provider.label
                     break
+                final_model = provider.label
                 if candidate.get("status") == "reject":
                     # Editorial rejection: a final verdict on THIS material.
                     # Consume the group (mark seen) so it does not burn an
@@ -1804,6 +2118,8 @@ def main() -> None:
                           f"{str(candidate.get('decisionReason') or '?')[:200]}")
                     rejected_groups.append(group)
                     rejected_ids.add(group.get("id"))
+                    run_trace.finish(
+                        "rejected", "reject", provider.label)
                     break
                 status = candidate.get("status")
                 flags = candidate.get("riskFlags") or []
@@ -1840,6 +2156,8 @@ def main() -> None:
                     print(f"write: group {group.get('id')} queued for human "
                           "review: "
                           f"{str(candidate.get('decisionReason') or '?')[:150]}")
+                    run_trace.finish(
+                        "manual_review", "manual_review", provider.label)
                     break
                 draft, writer, verified = candidate, provider, facts
                 break
@@ -1847,14 +2165,22 @@ def main() -> None:
                 continue
             if draft is None:
                 skipped += 1  # provider failures/refusals retry next hour
+                run_trace.finish(
+                    "refused" if stopped_by_refusal else "retry_pending",
+                    "refusal" if stopped_by_refusal else "retry_pending",
+                    final_model)
                 continue
             existing = _match_existing_article(group, existing_articles)
+            article_started = time.perf_counter()
             article = build_article(
                 draft, group, now, used_ids, writer.label, verified,
                 existing_article=existing["article"] if existing else None,
             )
+            run_trace.add_duration("articleBuild", article_started)
             if article is None:
                 skipped += 1
+                run_trace.finish(
+                    "retry_pending", "article_build_failed", writer.label)
                 continue
             if existing:
                 updated_articles.append((existing["path"], article))
@@ -1875,6 +2201,8 @@ def main() -> None:
                 new_incidents.append(incident)
             published_groups.append(group)
             published_ids.add(group.get("id"))
+            run_trace.finish(
+                "published", "publish", writer.label, article["id"])
 
     # --- 2b. rare-aircraft flight-observation candidates -------------------
     # (queued by pipeline/flightwatch.py; zero AI calls when the queue is
@@ -1888,6 +2216,12 @@ def main() -> None:
             queued_entries, now, new_articles, new_flashes, used_ids)
         if remaining_flight != flight_queue:
             flightnews.save_queue(remaining_flight)
+    elif flight_queue:
+        for event in flight_queue[:flightnews.MAX_EVENTS_PER_RUN]:
+            group = flightnews.pseudo_group(event)
+            _RunTrace(
+                "flightwatch", "flight_event", group,
+                event.get("eventId")).finish("no_provider", "retry_pending")
 
     # --- 3. flush outputs -------------------------------------------------
     if updated_articles:
