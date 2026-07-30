@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
 os.environ.setdefault("NVIDIA_API_KEY", "test-key-not-real")
 os.environ.setdefault("GEMINI_API_KEY", "test-key-not-real")
+os.environ.setdefault("OPENROUTER_API_KEY", "test-openrouter-key-not-real")
 
 import providers  # noqa: E402
 
@@ -38,10 +39,11 @@ def check(cond, label):
 
 
 class FakeResponse:
-    def __init__(self, payload, status=200):
+    def __init__(self, payload, status=200, headers=None):
         self.status_code = status
         self._payload = payload
         self.text = json.dumps(payload)
+        self.headers = headers or {}
 
     def json(self):
         return self._payload
@@ -140,6 +142,19 @@ def test_model_priority_defaults():
         "nvidia:qwen/qwen3.5-397b-a17b",
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
         "nvidia:mistralai/mistral-medium-3.5-128b",
+        "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+        "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+        "openrouter:google/gemma-4-31b-it:free",
+        "openrouter:inclusionai/ling-3.0-flash:free",
+        "openrouter:google/gemma-4-26b-a4b-it:free",
+        "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+        "openrouter:openai/gpt-oss-20b:free",
+        "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+        "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+        "openrouter:nvidia/nemotron-nano-9b-v2:free",
+        "openrouter:poolside/laguna-s-2.1:free",
+        "openrouter:cohere/north-mini-code:free",
+        "openrouter:poolside/laguna-xs-2.1:free",
     )
     check(providers.MODEL_ORDER == expected,
           "model priority order matches the configured product order")
@@ -149,7 +164,116 @@ def test_model_priority_defaults():
           "Gemini 3.6 Flash is the default model")
     check(providers.NVIDIA_DEFAULT_MODEL == "z-ai/glm-5.2",
           "GLM 5.2 is the highest-priority NVIDIA default")
+    check(providers.OPENROUTER_DEFAULT_MODEL
+          == "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "Nemotron Ultra is the highest-priority OpenRouter default")
     print("test_model_priority_defaults: done")
+
+
+def test_openrouter_models_and_payloads():
+    models = [
+        token.split(":", 1)[1]
+        for token in providers.MODEL_ORDER
+        if token.startswith("openrouter:")
+    ]
+    check(len(models) == 13, "all 13 OpenRouter models are configured")
+    for model in models:
+        captured = []
+
+        def fake_post(url, json=None, timeout=None, headers=None):
+            captured.append((url, json, headers))
+            return FakeResponse({
+                "choices": [{
+                    "finish_reason": "stop",
+                    "message": {
+                        "content": GOOD,
+                        "reasoning": "PRIVATE-TRACE",
+                    },
+                }],
+                "usage": {"prompt_tokens": 11, "completion_tokens": 7},
+            }, headers={
+                "x-ratelimit-remaining": "4",
+                "authorization": "must-not-be-captured",
+            })
+
+        provider = providers.OpenRouterProvider(model)
+        result = with_post(
+            fake_post, lambda: provider.draft("sys", "user", SCHEMA))
+        url, payload, headers = captured[0]
+        check(result == {"ok": 1}, f"{model}: OpenRouter draft parsed")
+        check(url == "https://openrouter.ai/api/v1/chat/completions"
+              and payload["model"] == model
+              and payload["max_tokens"] == 16384,
+              f"{model}: OpenRouter endpoint and model")
+        check((payload.get("reasoning") or {}).get("exclude") is True,
+              f"{model}: reasoning trace excluded")
+        check(headers.get("X-Title") == "AVWIRE"
+              and headers.get("HTTP-Referer", "").endswith("/avwire/"),
+              f"{model}: optional attribution headers")
+        check(provider.usage["inputTokens"] == 11
+              and provider.usage["outputTokens"] == 7
+              and provider.request_log[0]["headers"]
+              == {"x-ratelimit-remaining": "4"},
+              f"{model}: usage and safe rate-limit telemetry")
+
+    calls = []
+
+    def fake_repair(url, json=None, timeout=None, headers=None):
+        calls.append(json)
+        return nvidia_ok('{"ok": 1,,}' if len(calls) == 1 else GOOD)
+
+    provider = providers.OpenRouterProvider(models[0])
+    result = with_post(
+        fake_repair, lambda: provider.draft("sys", "user", SCHEMA))
+    check(result == {"ok": 1} and len(calls) == 2,
+          "OpenRouter malformed JSON gets one syntax repair")
+    check(calls[1].get("reasoning")
+          == {"effort": "low", "exclude": True},
+          "OpenRouter repair uses low hidden reasoning")
+
+    try:
+        provider._check_status(FakeResponse({}, status=429))
+        check(False, "OpenRouter 429 must trigger model fallback")
+    except providers.ProviderQuotaError:
+        check(False, "OpenRouter 429 must not disable every model")
+    except providers.ProviderError:
+        check(True, "OpenRouter 429 keeps the shared key for next model")
+    check("sk-or-v1-SECRET" not in providers.safe_failure_message(
+        "failed key=sk-or-v1-SECRET"),
+        "OpenRouter key is redacted from diagnostics")
+
+    saved = {
+        key: os.environ.get(key)
+        for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY",
+                    "NVIDIA_API_KEY", "OPENROUTER_API_KEY",
+                    "AVWIRE_PROVIDER_ORDER")
+    }
+    for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY",
+                "AVWIRE_PROVIDER_ORDER"):
+        os.environ.pop(key, None)
+    os.environ["OPENROUTER_API_KEY"] = "test-key-not-real"
+    try:
+        automatic = [
+            row.label for row in providers.build_providers()
+            if row.name == "openrouter"
+        ]
+    finally:
+        for key, value in saved.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+    check(automatic == [
+        token for token in providers.MODEL_ORDER
+        if token.startswith("openrouter:")
+    ], "automatic writer exposes all OpenRouter fallbacks in owner order")
+
+    try:
+        provider._final_text(FakeResponse({"error": {"code": 401}}))
+        check(False, "embedded OpenRouter 401 must disable the bad key")
+    except providers.ProviderAuthError:
+        check(True, "embedded OpenRouter auth error is classified safely")
+    print("test_openrouter_models_and_payloads: done")
 
 
 def test_nvidia_reasoning_trace_never_parsed():
@@ -294,6 +418,7 @@ def test_gemini_format_repair():
 def main():
     tests = [
         test_model_priority_defaults,
+        test_openrouter_models_and_payloads,
         test_nvidia_model_profiles,
         test_nvidia_reasoning_trace_never_parsed,
         test_nvidia_format_repair,
