@@ -147,6 +147,19 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 .image-card { position: relative; min-height: 72px; border-radius: 7px; background-size: cover; background-position: center; overflow: hidden; }
 .image-card button { position: absolute; right: 4px; top: 4px; width: 24px; height: 24px; background: #000b; color: white; }
 .controls-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 14px; }
+.manual-time-panel {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 14px;
+}
+.manual-time-panel[hidden] { display: none; }
+.clock-selects {
+  display: grid;
+  grid-template-columns: minmax(70px, 1fr) auto minmax(70px, 1fr) minmax(78px, 1fr);
+  align-items: center;
+  gap: 7px;
+}
 .manual-editor {
   margin-top: 18px;
   padding: 17px;
@@ -304,7 +317,7 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 @media (max-width: 560px) {
   .shell { width: min(100% - 18px, 1480px); padding-top: 20px; }
   .composer, .telemetry, .output-panel, .review-panel { padding: 16px; }
-  .mode-switch, .controls-grid, .metrics, .review-meta, .confirm-model { grid-template-columns: 1fr; }
+  .mode-switch, .controls-grid, .manual-time-panel, .metrics, .review-meta, .confirm-model { grid-template-columns: 1fr; }
   .review-actions { flex-direction: column; }
   .notice, .masthead { flex-direction: column; }
   .security-badge { align-self: flex-start; }

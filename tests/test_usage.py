@@ -403,8 +403,8 @@ env = Environment(loader=FileSystemLoader(str(REPO / "templates")),
                   autoescape=True, undefined=StrictUndefined,
                   trim_blocks=True, lstrip_blocks=True)
 build.SITE_DIR = TMP / "site"
-fake_build = {"date": "2026-07-27 MON", "utc_hm": "00:00",
-              "tpe_hm": "08:00", "stamp": "2026-07-27 00:00"}
+fake_build = {"date": "2026-07-27 MON", "utc_hm": "12:00 AM",
+              "tpe_hm": "8:00 AM", "stamp": "2026-07-27 12:00 AM"}
 
 os.environ.pop("AVWIRE_USAGE_TOKEN", None)
 check("no token -> no dashboard page",
@@ -426,7 +426,7 @@ snapshot_total = (snapshot_entry["inputTokens"]
                   + snapshot_entry["outputTokens"])
 check("page shows thirty-day history, fallback chain and final model",
       "最近 30 天模型執行與失敗紀錄" in page
-      and "2026-07-30 18:20 TPE" in page
+      and "2026-07-30 6:20 PM TPE" in page
       and "Nemotron 3 Ultra 550B A55B" in page
       and "JSON 格式錯誤" in page
       and "Gemini 3.6 Flash" in page

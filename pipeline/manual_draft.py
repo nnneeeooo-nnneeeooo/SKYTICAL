@@ -393,6 +393,7 @@ def validate_payload(payload: dict) -> dict:
         parsed_time = _safe_publication_time(payload.get("publicationTimeUtc"))
         if parsed_time is None:
             raise ValueError("invalid manual publication time")
+        parsed_time = parsed_time.replace(second=0, microsecond=0)
         publication_time = _iso_second(parsed_time)
     urls = []
     for value in payload.get("sourceUrls") or []:

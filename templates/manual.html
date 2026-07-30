@@ -146,9 +146,30 @@
               <option value="manual">手動指定臺北時間</option>
             </select>
           </label>
-          <label id="manual-time-panel" class="ai-only" hidden>臺北時間（UTC+8）
-            <input id="publication-time" type="datetime-local" step="1">
-          </label>
+          <div id="manual-time-panel" class="ai-only manual-time-panel" hidden>
+            <label>臺北日期（UTC+8）
+              <input id="publication-date" type="date">
+            </label>
+            <label>臺北時間（UTC+8）
+              <span class="clock-selects" role="group" aria-label="臺北時間">
+                <select id="publication-hour" aria-label="小時">
+                  {% for hour in range(1, 13) %}
+                  <option value="{{ hour }}">{{ hour }}</option>
+                  {% endfor %}
+                </select>
+                <span>:</span>
+                <select id="publication-minute" aria-label="分鐘">
+                  {% for minute in range(0, 60) %}
+                  <option value="{{ '%02d'|format(minute) }}">{{ '%02d'|format(minute) }}</option>
+                  {% endfor %}
+                </select>
+                <select id="publication-period" aria-label="上午或下午">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </span>
+            </label>
+          </div>
           <label id="manual-model-panel" class="manual-only" hidden>使用模型／撰稿署名
             <select id="manual-model">
               <option value="custom" selected>自訂輸入</option>
