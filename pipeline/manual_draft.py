@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import copy
 import hashlib
 import ipaddress
 import json
@@ -16,7 +17,7 @@ import re
 import socket
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from types import SimpleNamespace
 from urllib.parse import urljoin, urlsplit
@@ -26,7 +27,13 @@ from bs4 import BeautifulSoup
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import DATA_DIR, iso_minute, now_utc, save_json  # noqa: E402
+from common import (  # noqa: E402
+    DATA_DIR,
+    iso_minute,
+    now_utc,
+    parse_iso,
+    save_json,
+)
 from model_config import (  # noqa: E402
     MODEL_DISPLAY_NAMES,
     MODEL_ORDER,
@@ -46,6 +53,9 @@ from write import (  # noqa: E402
     DRAFT_SCHEMA,
     SYSTEM_PROMPT,
     _evidence_binding_problem,
+    build_article,
+    build_flash,
+    build_incident,
     fabrication_problem,
     glossary_problem,
     group_prompt,
@@ -63,6 +73,7 @@ MAX_FETCH_BYTES = 2_000_000
 MAX_IMAGES = 4
 MAX_IMAGE_BYTES = 2_500_000
 ARTICLE_TYPES = {
+    "auto": "自動偵測",
     "flash": "快訊",
     "press_release": "新聞稿",
     "incident": "事故／事件",
@@ -73,6 +84,37 @@ ARTICLE_TYPES = {
     "financial": "財報",
 }
 LANGUAGES = {"zh": "繁中", "en": "英文", "bilingual": "雙語"}
+PUBLICATION_MODES = {"auto", "manual"}
+CUSTOM_MODEL_RE = re.compile(
+    r"(?:gemini|nvidia|openrouter):[A-Za-z0-9._/+:-]{2,180}\Z")
+MANUAL_DRAFT_SCHEMA = copy.deepcopy(DRAFT_SCHEMA)
+MANUAL_DRAFT_SCHEMA["properties"].update({
+    "detectedArticleType": {
+        "type": "string",
+        "enum": [key for key in ARTICLE_TYPES if key != "auto"],
+    },
+    "detectedPublishedUtc": {"type": "string"},
+})
+MANUAL_DRAFT_SCHEMA["required"].extend(
+    ["detectedArticleType", "detectedPublishedUtc"])
+
+
+def _iso_second(value: datetime) -> str:
+    return (
+        value.astimezone(timezone.utc)
+        .isoformat(timespec="seconds")
+        .replace("+00:00", "Z")
+    )
+
+
+def _safe_publication_time(value) -> datetime | None:
+    try:
+        parsed = parse_iso(str(value or "").strip())
+    except (TypeError, ValueError):
+        return None
+    if parsed.year < 1990 or parsed > now_utc() + timedelta(days=1):
+        return None
+    return parsed.astimezone(timezone.utc)
 
 
 def _key(token: str) -> bytes:
@@ -137,6 +179,57 @@ def _public_url(value: str) -> str:
     return value
 
 
+def _jsonld_publication_values(value, found: list[str], budget: list[int]):
+    if budget[0] <= 0 or len(found) >= 12:
+        return
+    budget[0] -= 1
+    if isinstance(value, dict):
+        for key, child in value.items():
+            if str(key).lower() in (
+                    "datepublished", "datecreated", "uploaddate"):
+                found.append(str(child))
+            else:
+                _jsonld_publication_values(child, found, budget)
+    elif isinstance(value, list):
+        for child in value:
+            _jsonld_publication_values(child, found, budget)
+
+
+def _html_publication_time(soup: BeautifulSoup) -> str:
+    candidates = []
+    wanted = {
+        "article:published_time",
+        "datepublished",
+        "date",
+        "pubdate",
+        "publishdate",
+        "publication_date",
+        "dc.date",
+        "dcterms.created",
+    }
+    for node in soup.find_all("meta"):
+        key = str(
+            node.get("property") or node.get("name") or
+            node.get("itemprop") or ""
+        ).strip().lower()
+        if key in wanted and node.get("content"):
+            candidates.append(str(node["content"]))
+    for node in soup.find_all("time"):
+        if node.get("datetime"):
+            candidates.append(str(node["datetime"]))
+    for node in soup.find_all("script", attrs={"type": "application/ld+json"}):
+        try:
+            parsed = json.loads(node.string or node.get_text() or "")
+        except (TypeError, ValueError):
+            continue
+        _jsonld_publication_values(parsed, candidates, [2_000])
+    for candidate in candidates:
+        parsed = _safe_publication_time(candidate)
+        if parsed is not None:
+            return _iso_second(parsed)
+    return ""
+
+
 def fetch_source(url: str) -> dict:
     """Fetch public text with redirect, type and size limits."""
     session = requests.Session()
@@ -171,17 +264,20 @@ def fetch_source(url: str) -> dict:
             encoding, errors="replace")
         if "html" in media or "<html" in raw[:500].lower():
             soup = BeautifulSoup(raw, "lxml")
+            published = _html_publication_time(soup)
             for node in soup(["script", "style", "noscript", "svg"]):
                 node.decompose()
             title = soup.title.get_text(" ", strip=True) if soup.title else ""
             text = soup.get_text("\n", strip=True)
         else:
-            title, text = "", raw
+            title, text, published = "", raw, ""
         text = re.sub(r"\n{3,}", "\n\n", text).strip()
         return {
             "url": current,
             "title": title[:300] or urlsplit(current).hostname,
             "text": text[:MAX_SOURCE_CHARS],
+            "publishedUtc": published or "source date not supplied",
+            "dateInferred": not bool(published),
         }
     raise ValueError("source exceeded the redirect limit")
 
@@ -276,14 +372,28 @@ def validate_payload(payload: dict) -> dict:
     language = str(payload.get("language") or "")
     tier = str(payload.get("reasoningTier") or "")
     requested = str(payload.get("model") or "auto")
+    custom_model = str(payload.get("customModel") or "").strip()
+    publication_mode = str(payload.get("publicationMode") or "auto")
     if article_type not in ARTICLE_TYPES:
         raise ValueError("invalid article type")
     if language not in LANGUAGES:
         raise ValueError("invalid output language")
     if tier not in REASONING_TIERS:
         raise ValueError("invalid reasoning tier")
-    if requested != "auto" and requested not in MODEL_ORDER:
+    if requested == "custom":
+        if not CUSTOM_MODEL_RE.fullmatch(custom_model):
+            raise ValueError("invalid custom model")
+        requested = custom_model
+    elif requested != "auto" and requested not in MODEL_ORDER:
         raise ValueError("invalid model")
+    if publication_mode not in PUBLICATION_MODES:
+        raise ValueError("invalid publication time mode")
+    publication_time = ""
+    if publication_mode == "manual":
+        parsed_time = _safe_publication_time(payload.get("publicationTimeUtc"))
+        if parsed_time is None:
+            raise ValueError("invalid manual publication time")
+        publication_time = _iso_second(parsed_time)
     urls = []
     for value in payload.get("sourceUrls") or []:
         url = str(value or "").strip()
@@ -292,6 +402,7 @@ def validate_payload(payload: dict) -> dict:
     if not 1 <= len(urls) <= 10:
         raise ValueError("provide 1 to 10 source URLs")
     original = str(payload.get("sourceText") or "")[:MAX_SOURCE_CHARS]
+    article_summary = str(payload.get("articleSummary") or "")[:8_000]
     instruction = str(payload.get("instruction") or "")[:8_000]
     conversation = []
     for row in payload.get("conversation") or []:
@@ -300,6 +411,14 @@ def validate_payload(payload: dict) -> dict:
                 "role": row["role"],
                 "text": str(row.get("text") or "")[:4_000],
             })
+    previous_draft = payload.get("previousDraft")
+    if previous_draft is not None:
+        if not isinstance(previous_draft, dict) \
+                or validate_draft(previous_draft) is not None:
+            raise ValueError("invalid previous draft")
+        if len(json.dumps(
+                previous_draft, ensure_ascii=False)) > 120_000:
+            raise ValueError("previous draft is too large")
     return {
         "articleType": article_type,
         "language": language,
@@ -307,8 +426,12 @@ def validate_payload(payload: dict) -> dict:
         "model": requested,
         "sourceUrls": urls,
         "sourceText": original,
+        "articleSummary": article_summary,
+        "publicationMode": publication_mode,
+        "publicationTimeUtc": publication_time,
         "instruction": instruction,
         "conversation": conversation[-12:],
+        "previousDraft": previous_draft,
         "images": _decode_images(payload.get("images")),
     }
 
@@ -317,8 +440,7 @@ def _providers_for(payload: dict) -> list:
     order = list(MODEL_ORDER)
     selected = payload["model"]
     if selected != "auto":
-        order.remove(selected)
-        order.insert(0, selected)
+        order = [selected] + [item for item in order if item != selected]
     providers = []
     for token in order:
         platform, model = token.split(":", 1)
@@ -338,13 +460,29 @@ def _providers_for(payload: dict) -> list:
 def _manual_prompt(payload: dict, group: dict) -> str:
     conversation = "\n".join(
         f"{row['role']}: {row['text']}" for row in payload["conversation"])
+    previous = (
+        json.dumps(payload["previousDraft"], ensure_ascii=False)
+        if payload.get("previousDraft") else "(none)"
+    )
     rules = f"""
 MANUAL DESK REQUEST (trusted operator preferences, not evidence):
 - Editorial type: {ARTICLE_TYPES[payload['articleType']]}.
+- When Editorial type is 自動偵測, set detectedArticleType to the most
+  specific supported type established by SOURCE. Otherwise copy the requested
+  type into detectedArticleType.
+- Set detectedPublishedUtc to an ISO-8601 timestamp only when SOURCE explicitly
+  establishes the article/event publication time. Preserve an explicit
+  timezone; when SOURCE gives only a date, use 00:00:00Z. Use an empty string
+  when no defensible time exists.
 - Requested presentation language: {LANGUAGES[payload['language']]}.
 - AVWIRE standard JSON always requires complete zh AND en blocks. Generate
   both even when one language was selected; that selection controls editorial
   emphasis and the workbench preview only.
+- The operator summary is an outline and coverage guide for expansion, NEVER
+  evidence. Do not repeat a claim from it unless SOURCE independently supports
+  that claim.
+- The previous draft may guide rewriting, structure and tone, but is NEVER
+  evidence. Re-check every factual claim against SOURCE.
 - The operator instruction and conversation below may control style or focus
   but are NEVER evidence. Every factual claim still needs a verbatim quote
   from SOURCE.
@@ -353,6 +491,12 @@ MANUAL DESK REQUEST (trusted operator preferences, not evidence):
 
 OPERATOR INSTRUCTION:
 {payload['instruction'] or '(none)'}
+
+OPERATOR SUMMARY / EXPANSION OUTLINE:
+{payload['articleSummary'] or '(none)'}
+
+PREVIOUS DRAFT TO REVISE:
+{previous}
 
 PRIOR WORKBENCH CONVERSATION:
 {conversation or '(none)'}
@@ -372,8 +516,8 @@ def _build_group(job_id: str, payload: dict, log: list) -> dict:
                 "summary": source["text"][:2_000],
                 "fulltext": source["text"],
                 "url": source["url"],
-                "publishedUtc": "source date not supplied",
-                "dateInferred": True,
+                "publishedUtc": source["publishedUtc"],
+                "dateInferred": source["dateInferred"],
             })
             log.append({
                 "stage": "source",
@@ -399,6 +543,10 @@ def _build_group(job_id: str, payload: dict, log: list) -> dict:
                 "durationMs":
                     round((time.perf_counter() - started) * 1000),
             })
+    if payload["publicationMode"] == "manual":
+        for item in items:
+            item["publishedUtc"] = payload["publicationTimeUtc"]
+            item["dateInferred"] = False
     if payload["sourceText"]:
         items[0]["fulltext"] = (
             payload["sourceText"] + "\n\n" + items[0]["fulltext"]
@@ -460,6 +608,91 @@ def _attempt_row(provider, started, outcome, exc=None) -> dict:
     }
 
 
+def _resolved_article_type(payload: dict, draft: dict,
+                           detected: str) -> str:
+    requested = payload["articleType"]
+    if requested != "auto":
+        return requested
+    if detected in ARTICLE_TYPES and detected != "auto":
+        return detected
+    return {
+        "safety": "incident",
+        "reg": "regulation",
+        "biz": "financial",
+        "ops": "airline",
+        "mil": "press_release",
+    }.get(str(draft.get("cat") or ""), "press_release")
+
+
+def _resolved_publication_time(payload: dict, group: dict,
+                               detected: str,
+                               fallback: datetime) -> tuple[datetime, str]:
+    if payload["publicationMode"] == "manual":
+        return (
+            _safe_publication_time(payload["publicationTimeUtc"]) or fallback,
+            "manual",
+        )
+    source_times = []
+    for item in group.get("items") or []:
+        if item.get("dateInferred"):
+            continue
+        parsed = _safe_publication_time(item.get("publishedUtc"))
+        if parsed is not None:
+            source_times.append(parsed)
+    if source_times:
+        return max(source_times), "source_metadata"
+    model_time = _safe_publication_time(detected)
+    if model_time is not None:
+        return model_time, "model_source_text"
+    return fallback, "generation_fallback"
+
+
+def _publication_bundle(job_id: str, payload: dict, group: dict,
+                        draft: dict, provider, detected_type: str,
+                        detected_time: str,
+                        fallback_time: datetime) -> dict:
+    article_type = _resolved_article_type(
+        payload, draft, detected_type)
+    publication_time, time_source = _resolved_publication_time(
+        payload, group, detected_time, fallback_time)
+    bundle = {
+        "articleType": article_type,
+        "publicationTimeUtc": _iso_second(publication_time),
+        "publicationTimeSource": time_source,
+        "articlePath": None,
+        "article": None,
+        "flash": None,
+        "incident": None,
+    }
+    if draft.get("status") == "reject":
+        return bundle
+    article = build_article(
+        draft,
+        group,
+        publication_time,
+        set(),
+        provider.label,
+        draft.get("facts") or [],
+    )
+    if article is None:
+        return bundle
+    article["id"] = f"{article['id']}-{job_id[:6]}"
+    stamp = _iso_second(publication_time)
+    article["publishedUtc"] = stamp
+    if time_source != "generation_fallback":
+        article["sourcePublishedUtc"] = stamp
+    flash = build_flash(draft, article["id"], publication_time)
+    flash["timeUtc"] = stamp
+    incident = build_incident(draft, group, article["id"])
+    bundle.update({
+        "articlePath": f"data/articles/manual-{job_id}.json",
+        "article": article,
+        "flash": flash,
+        "incident": incident,
+    })
+    return bundle
+
+
 def generate(job_id: str, payload: dict) -> dict:
     started_at = now_utc()
     started_perf = time.perf_counter()
@@ -470,6 +703,7 @@ def generate(job_id: str, payload: dict) -> dict:
         raise RuntimeError(
             "no configured Gemini, NVIDIA or OpenRouter API key")
     attempts, draft, final = [], None, None
+    detected_type, detected_time = "", ""
     dead_platforms = set()
     for provider in providers:
         if provider.name in dead_platforms:
@@ -479,12 +713,16 @@ def generate(job_id: str, payload: dict) -> dict:
             candidate = provider.draft(
                 SYSTEM_PROMPT,
                 _manual_prompt(payload, group),
-                DRAFT_SCHEMA,
+                MANUAL_DRAFT_SCHEMA,
             )
             if candidate is None:
                 attempts.append(
                     _attempt_row(provider, attempt_started, "refused"))
                 continue
+            candidate_type = str(
+                candidate.pop("detectedArticleType", "") or "")
+            candidate_time = str(
+                candidate.pop("detectedPublishedUtc", "") or "")
             problem = validate_draft(candidate)
             if problem:
                 raise ProviderError(f"validation failed: {problem}")
@@ -499,6 +737,7 @@ def generate(job_id: str, payload: dict) -> dict:
                 if problem:
                     raise ProviderError(f"verification failed: {problem}")
             draft, final = candidate, provider
+            detected_type, detected_time = candidate_type, candidate_time
             attempts.append(
                 _attempt_row(provider, attempt_started, "success"))
             break
@@ -575,6 +814,16 @@ def generate(job_id: str, payload: dict) -> dict:
             "requestLog": log,
             "completedUtc": iso_minute(finished_at),
         }
+    publication = _publication_bundle(
+        job_id,
+        payload,
+        group,
+        draft,
+        final,
+        detected_type,
+        detected_time,
+        started_at,
+    )
     return {
         "version": 1,
         "id": job_id,
@@ -585,11 +834,15 @@ def generate(job_id: str, payload: dict) -> dict:
         "reasoningTier": payload["reasoningTier"],
         "reasoningEffective": final.reasoning_effective,
         "articleType": payload["articleType"],
+        "detectedArticleType": publication["articleType"],
+        "publicationTimeUtc": publication["publicationTimeUtc"],
+        "publicationTimeSource": publication["publicationTimeSource"],
         "language": payload["language"],
         "fallbackUsed": attempts[0]["model"] != final.label,
         "attempts": attempts,
         "requestLog": log,
         "draft": draft,
+        "publication": publication,
         "completedUtc": iso_minute(finished_at),
     }
 
