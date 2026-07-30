@@ -1,5 +1,601 @@
 [
   {
+    "id": "g-20260730-0841-1",
+    "queuedUtc": "2026-07-30T08:41Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Requires human review due to major commercial aircraft fleet acquisition and $1.5 billion financial claim.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "US-Bangla Airlines announced a fleet expansion on July 29, 2026, to acquire 21 new Boeing aircraft.",
+        "sourceQuote": "Bangladesh’s US-Bangla Airlines will acquire 21 new Boeing aircraft as part of a major fleet expansion unveiled at a special ceremony in Dhaka.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "According to local media, the acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s valued at $1.5 billion.",
+        "sourceQuote": "the acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s and is thought to be worth $1.5 billion.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The aircraft are being acquired from up to five different lessors, with specific companies not yet confirmed.",
+        "sourceQuote": "The aircraft have been acquired from as many as five different lessors, although the details of the exact companies have not yet been confirmed.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The event took place at the Sheraton Hotel in Banani and was attended by State Minister Rashiduzzaman Millat and US Ambassador Brent T. Christensen.",
+        "sourceQuote": "The ‘Beyond with Boeing’ event was held at the Sheraton Hotel in Banani, attended by State Minister for Civil Aviation and Tourism, Rashiduzzaman Millat, and the US Ambassador to Bangladesh, Brent T. Christensen.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Requires human review due to major commercial aircraft fleet acquisition and $1.5 billion financial claim.",
+      "cat": "biz",
+      "zh": {
+        "title": "孟加拉優斯邦雅航空擬租賃21架波音客機",
+        "summary": "孟加拉優斯邦雅航空於2026年7月29日宣布大規模機隊擴張計畫，將引進21架波音客機。據當地媒體報導，該交易涉及租賃15架波音737-8與6架737-800客機，總價值估計約達15億美元，客機預計來自多達五家不同的出租公司。",
+        "body": [
+          "孟加拉優斯邦雅航空於2026年7月29日在達卡舉行的活動中宣布，作為機隊擴張計畫的一環，該公司將引進21架新波音客機。據當地媒體報導，該筆採購包含租賃15架波音737-8客機與6架737-800客機，估計價值達15億美元。",
+          "相關客機預計向多達五家不同的租賃公司引進，不過具體出租公司名稱尚未獲得確認。這場名為「Beyond with Boeing」的發表會於巴納尼的喜來登酒店舉行，孟加拉民航與旅遊部政務部長Rashiduzzaman Millat以及美國駐孟加拉大使Brent T. Christensen等官員均出席活動。"
+        ]
+      },
+      "en": {
+        "title": "US-Bangla Airlines to Acquire 21 Boeing Aircraft in Fleet Expansion",
+        "summary": "Bangladesh's US-Bangla Airlines announced a fleet expansion plan in Dhaka on July 29, 2026, aimed at acquiring 21 new Boeing aircraft. According to local media reports, the acquisition includes lease agreements for 15 Boeing 737-8 aircraft and six 737-800 aircraft, with a total estimated value of $1.5 billion. The aircraft are expected to be obtained from up to five separate aircraft leasing companies, though the exact lessor identities have not yet been confirmed by the airline.",
+        "body": [
+          "Bangladesh's US-Bangla Airlines unveiled a fleet expansion program at an event in Dhaka on July 29, 2026, announcing the addition of 21 new Boeing aircraft. Local media reported that the transaction involves lease agreements for 15 Boeing 737-8 aircraft and six Boeing 737-800 aircraft, with an estimated total value of $1.5 billion.",
+          "The aircraft are being sourced from as many as five different lessor firms, although the specific leasing entities have not yet been finalized or confirmed. The announcement took place during the \"Beyond with Boeing\" event held at the Sheraton Hotel in Banani, with official attendees including Civil Aviation and Tourism State Minister Rashiduzzaman Millat and US Ambassador to Bangladesh Brent T. Christensen."
+        ]
+      },
+      "flash": {
+        "zh": "孟加拉優斯邦雅航空宣布引進21架波音客機",
+        "en": "US-Bangla Airlines to acquire 21 Boeing aircraft in fleet expansion",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "US-Bangla Airlines announced a fleet expansion on July 29, 2026, to acquire 21 new Boeing aircraft.",
+          "sourceQuote": "Bangladesh’s US-Bangla Airlines will acquire 21 new Boeing aircraft as part of a major fleet expansion unveiled at a special ceremony in Dhaka.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "According to local media, the acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s valued at $1.5 billion.",
+          "sourceQuote": "the acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s and is thought to be worth $1.5 billion.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The aircraft are being acquired from up to five different lessors, with specific companies not yet confirmed.",
+          "sourceQuote": "The aircraft have been acquired from as many as five different lessors, although the details of the exact companies have not yet been confirmed.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The event took place at the Sheraton Hotel in Banani and was attended by State Minister Rashiduzzaman Millat and US Ambassador Brent T. Christensen.",
+          "sourceQuote": "The ‘Beyond with Boeing’ event was held at the Sheraton Hotel in Banani, attended by State Minister for Civil Aviation and Tourism, Rashiduzzaman Millat, and the US Ambassador to Bangladesh, Brent T. Christensen.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "US-Bangla Airlines",
+          "Boeing"
+        ],
+        "airlines": [
+          "US-Bangla Airlines"
+        ],
+        "aircraft_models": [
+          "737-8",
+          "737-800"
+        ],
+        "airports": [],
+        "locations": [
+          "Bangladesh",
+          "Dhaka",
+          "Banani"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-29"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260730-0841-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "US-Bangla Airlines’ fleet set to surge with addition of 21 new Boeing aircraft",
+          "url": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+          "publishedUtc": "2026-07-29T14:12Z",
+          "summary": "Bangladesh’s US-Bangla Airlines will acquire 21 new Boeing aircraft as part of a major fleet expansion unveiled at… The post US-Bangla Airlines’ fleet set to surge with addition of 21 new Boeing aircraft appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Bangladesh's US-Bangla to buy 21 Boeing aircraft in $1.5 billion expansion",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMXZiSW92RjNGd2lBYi1LNVBtWmpCZFpCOGFxc3FOY1pWSXhieTYxb2RKTWFJdUZfcTFyWWtPR2U2WDNjREl3MTgzZzFTTlJNX21NaDJ0Y2tHU2F2ZUhKT1pnaHY0QWd6N0p3NmFQWktZaER5cG9odzJ3cWtLbEFvcjFlbXRFVlk0MTdYZzNQU0ZXMkhTa1dYVjhMYmhtLWhHbnZaWFE4ZGdGUUdmWkl3U2ZjaVdxRHl2cVpNdw?oc=5",
+          "publishedUtc": "2026-07-29T12:48Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ],
+      "updateCandidate": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
+            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+            "facts": [
+              {
+                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
+                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: aerotime, boeing",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260730-0841-10",
+    "queuedUtc": "2026-07-30T08:41Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Non-binding $3B financing interest and large factory investment represent major financial and developing project claims requiring review.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The US Export-Import Bank signed a letter of interest to explore providing up to $3 billion in financing support for JetZero's planned aircraft factory in Greensboro, North Carolina.",
+        "sourceQuote": "The US Export-Import Bank has signed a letter of interest to explore providing as much as $3 billion in financing support for the factory",
+        "sourceUrl": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The preliminary agreement could support construction and equipment costs for the Z4 facility but does not constitute a binding financing commitment or loan approval.",
+        "sourceQuote": "The preliminary agreement could support construction of manufacturing facilities, production systems, equipment and other eligible project costs",
+        "sourceUrl": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "JetZero expects to invest more than $4.7 billion and create about 14,500 direct jobs over the next decade at the complex.",
+        "sourceQuote": "The company expects to invest more than $4.7 billion and create about 14,500 direct jobs over the next decade.",
+        "sourceUrl": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "JetZero and EXIM signed the letter during the Farnborough International Airshow in late July 2026.",
+        "sourceQuote": "JetZero and EXIM signed the letter during the Farnborough International Airshow in late July 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "JetZero is targeting the middle of the commercial market with a Z4 passenger version designed to carry about 250 passengers up to 5,000 nautical miles.",
+        "sourceQuote": "JetZero is targeting the middle of the commercial aircraft market with a passenger version designed to carry about 250 people over distances of up to 5,000 nautical miles.",
+        "sourceUrl": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Non-binding $3B financing interest and large factory investment represent major financial and developing project claims requiring review.",
+      "cat": "biz",
+      "zh": {
+        "title": "JetZero獲美國進出口銀行意向書 探索30億美元工廠融資",
+        "summary": "飛機製造商JetZero於2026年7月下旬的范保羅國際航空展期間，與美國進出口銀行簽署意向書，探索為其位於北卡羅來納州格林斯伯勒的Z4翼身融合飛機製造廠提供最多30億美元的融資支持。該初步協議不構成最終貸款承諾，JetZero預計總投資額將超過47億美元。",
+        "body": [
+          "飛機製造商JetZero於2026年7月下旬的范保羅國際航空展期間，與美國進出口銀行（EXIM）簽署意向書，探討為其位於北卡羅來納州格林斯伯勒皮德蒙特特里亞德國際機場的Z4翼身融合飛機製造廠提供最高達30億美元的融資支持。",
+          "這項初步協議隸屬於該銀行的「美國製造」計畫，可用於支援製造設施、生產系統及設備等相關成本。然而，該意向書並不構成法律上的融資承諾或貸款批准，最終協議仍須通過審查、盡職調查、環境與法律評估，以及銀行董事會的正式批准。",
+          "JetZero預計將在該佔地超過600英畝的廠區投資超過47億美元，建造面積達800萬平方呎的製造與總裝中心，並計畫在未來十年內創造約14,500個直接工作機會。此外，該公司正針對民航市場開發載客量約250人、航程可達5,000海浬的Z4混合翼飛機。"
+        ]
+      },
+      "en": {
+        "title": "JetZero Signs $3B Financing Letter of Interest with US EXIM Bank for Z4 Plant",
+        "summary": "Aircraft developer JetZero has signed a letter of interest with the US Export-Import Bank to explore up to $3 billion in potential financing support for its planned Z4 aircraft factory in Greensboro, North Carolina. Signed during the Farnborough International Airshow in late July 2026, the preliminary agreement could assist with facility construction and equipment costs under EXIM's Make More in America Initiative. JetZero expects the overall campus investment to exceed $4.7 billion, though EXIM emphasized that the letter does not constitute a formal loan commitment or federal financial obligation.",
+        "body": [
+          "Aircraft manufacturer JetZero has signed a letter of interest with the US Export-Import Bank (EXIM) during the Farnborough International Airshow in late July 2026. The preliminary agreement explores providing up to $3 billion in financing support for a planned Z4 blended-wing aircraft factory at Piedmont Triad International Airport in Greensboro, North Carolina.",
+          "The potential financing, framed under EXIM's Make More in America Initiative, could support construction, equipment, and production systems. However, the letter does not constitute a formal financing commitment or loan approval, remaining subject to underwriting, due diligence, environmental reviews, and board approval.",
+          "JetZero expects to invest more than $4.7 billion in the 8 million-square-foot complex, targeting the creation of approximately 14,500 direct jobs over the next decade while developing its 250-passenger Z4 commercial aircraft."
+        ]
+      },
+      "flash": {
+        "zh": "JetZero與美國進出口銀行簽署意向書 探索30億美元飛機工廠融資",
+        "en": "JetZero signs LOI with US EXIM Bank for potential $3B Z4 factory financing",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The US Export-Import Bank signed a letter of interest to explore providing up to $3 billion in financing support for JetZero's planned aircraft factory in Greensboro, North Carolina.",
+          "sourceQuote": "The US Export-Import Bank has signed a letter of interest to explore providing as much as $3 billion in financing support for the factory",
+          "sourceUrl": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The preliminary agreement could support construction and equipment costs for the Z4 facility but does not constitute a binding financing commitment or loan approval.",
+          "sourceQuote": "The preliminary agreement could support construction of manufacturing facilities, production systems, equipment and other eligible project costs",
+          "sourceUrl": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "JetZero expects to invest more than $4.7 billion and create about 14,500 direct jobs over the next decade at the complex.",
+          "sourceQuote": "The company expects to invest more than $4.7 billion and create about 14,500 direct jobs over the next decade.",
+          "sourceUrl": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "JetZero and EXIM signed the letter during the Farnborough International Airshow in late July 2026.",
+          "sourceQuote": "JetZero and EXIM signed the letter during the Farnborough International Airshow in late July 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "JetZero is targeting the middle of the commercial market with a Z4 passenger version designed to carry about 250 passengers up to 5,000 nautical miles.",
+          "sourceQuote": "JetZero is targeting the middle of the commercial aircraft market with a passenger version designed to carry about 250 people over distances of up to 5,000 nautical miles.",
+          "sourceUrl": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "JetZero",
+          "US Export-Import Bank",
+          "EXIM Bank",
+          "EXIM"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Z4"
+        ],
+        "airports": [
+          "Piedmont Triad International Airport"
+        ],
+        "locations": [
+          "Greensboro",
+          "North Carolina"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "late July 2026"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260730-0841-10",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "JetZero lines up potential $3B in US financing for Z4 factory",
+          "url": "https://www.aerotime.aero/articles/jetzero-3-billion-us-financing-z4-aircraft-factory",
+          "publishedUtc": "2026-07-29T20:51Z",
+          "summary": "JetZero has identified a potential source for nearly two-thirds of the money it needs to build a planned… The post JetZero lines up potential $3B in US financing for Z4 factory appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-ana-adds-eight-new-e190-e2-jets-to-embra",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 0 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — ANA increases Embraer order to include eight additional E19...",
+            "source_url": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
+            "facts": [
+              {
+                "claim": "ANA increased its Embraer order to include eight additional E190-E2 aircraft.",
+                "source_quote": "ANA increases Embraer order to include eight additional E190-E2 aircraft",
+                "source_url": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
+                "source_name": "AeroTime — ANA increases Embraer order to include eight additional E19..."
+              },
+              {
+                "claim": "All Nippon Airways (ANA) has increased its current order with Embraer to include eight additional E190-E2 aircraft.",
+                "source_quote": "All Nippon Airways (ANA) has increased its current order with Embraer to include eight additional E190-E2 aircraft",
+                "source_url": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
+                "source_name": "AeroTime — ANA increases Embraer order to include eight additional E19..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260730-0314-2",
     "queuedUtc": "2026-07-30T03:14Z",
     "approve": false,
