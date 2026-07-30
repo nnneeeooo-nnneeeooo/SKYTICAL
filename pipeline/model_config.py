@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.3 seconds
-Output:
 """Shared AVWIRE model priority configuration.
 
 The first entry is the default writer. The same order drives provider
@@ -90,4 +87,3 @@ def manual_reasoning_profile(provider: str, model: str, tier: str) -> dict:
             "effective": f"reasoning_effort={effort}",
         }
     return {"wire": {}, "effective": "provider_default"}
-
