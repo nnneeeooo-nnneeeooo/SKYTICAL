@@ -1,9 +1,10 @@
 """Dedupe stage: data/raw/*.json -> data/pending.json.
 
-Reads every raw source snapshot, drops items that are already known
-(URL match or fuzzy title match against data/seen.json), stale (older
-than the freshness window, 48 h by default) or untitled, then merges
-cross-source coverage of the same story into ranked groups for write.py.
+Reads every raw source snapshot, drops stale/untitled items, merges
+cross-source coverage into event groups, then suppresses only groups that
+contain no new source URL or headline.  Previously published items stay in
+an active group as evidence when a later source covers the same event, so
+write.py can revise the existing article instead of losing the new material.
 
 data/seen.json is READ-ONLY here — write.py owns it (see CONTRACTS.md).
 """
@@ -29,18 +30,39 @@ from common import (
 )
 
 MAX_GROUPS = 12          # emitted per run; bounds LLM cost in write.py
-MAX_ITEMS_PER_GROUP = 5
+MAX_ITEMS_PER_GROUP = 6
 # Freshness window: single source of truth in common.NEWS_MAX_AGE_HOURS
 # (env NEWS_MAX_AGE_HOURS, validated, default 120).
 MAX_ITEM_AGE_HOURS = NEWS_MAX_AGE_HOURS
 SEEN_TITLE_DAYS = 21     # only seen.json titles this recent are compared
 SEEN_TITLE_SIM = 0.75    # vs seen.json titles -> drop as already covered
 GROUP_TITLE_SIM = 0.60   # between fresh items -> same story group
+GROUP_TOKEN_COVERAGE = 0.55
+GROUP_TOKEN_JACCARD = 0.38
 
 _PUNCT_RE = re.compile(r"[^\w\s]|_")
 _WS_RE = re.compile(r"\s+")
 _EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
 _SOURCE_ORDER = {key: i for i, key in enumerate(SOURCES)}
+_TOKEN_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9+'-]*|[\u3400-\u9fff]{2,}")
+_EVENT_STOPWORDS = {
+    "the", "a", "an", "of", "to", "in", "on", "for", "and", "or", "is",
+    "are", "was", "were", "its", "with", "as", "at", "by", "from", "after",
+    "before", "new", "latest", "report", "reports", "says", "said", "set",
+    "about", "more", "will", "could", "would", "into", "over", "amid",
+    "航空", "飛機", "客機", "宣布", "表示", "報導", "最新",
+}
+_EVENT_ACTIONS = {
+    "order", "orders", "ordered", "purchase", "buys", "delivery",
+    "deliveries", "delivers", "delivered", "certification", "certified",
+    "approval", "approved", "launch", "launches", "launched", "flight",
+    "flights", "route", "routes", "service", "base", "profit", "loss",
+    "revenue", "results", "crash", "incident", "emergency", "diversion",
+    "investigation", "inspection", "contract", "agreement", "lease",
+    "upgrade", "expands", "expansion", "adds", "additional", "test",
+    "testing", "first", "maiden", "訂單", "增購", "交付", "認證", "核准",
+    "航線", "首航", "事故", "調查", "合約", "協議", "測試", "財報",
+}
 
 
 def norm_title(title: str) -> str:
@@ -56,6 +78,70 @@ def norm_title(title: str) -> str:
 
 def _similar(a: str, b: str) -> float:
     return SequenceMatcher(None, a, b).ratio()
+
+
+def _event_tokens(item: dict) -> set[str]:
+    """Significant headline tokens plus a short excerpt.
+
+    The excerpt helps when two publishers lead with different actors, while
+    the stopword/action gates below keep generic same-company stories apart.
+    """
+    text = (
+        f"{item.get('title') or ''} "
+        f"{str(item.get('summary') or '')[:280]}"
+    )
+    return {
+        token.casefold()
+        for token in _TOKEN_RE.findall(text)
+        if token.casefold() not in _EVENT_STOPWORDS
+        and (len(token) >= 3 or any(ch.isdigit() for ch in token))
+    }
+
+
+def _identifier_tokens(tokens: set[str]) -> set[str]:
+    """Model, flight, registration and other digit-bearing event anchors."""
+    return {token for token in tokens if any(ch.isdigit() for ch in token)}
+
+
+def same_event(a: dict, b: dict) -> bool:
+    """Conservative deterministic event match beyond headline edit distance."""
+    title_a = norm_title(str(a.get("title") or ""))
+    title_b = norm_title(str(b.get("title") or ""))
+    tokens_a, tokens_b = _event_tokens(a), _event_tokens(b)
+    overlap = tokens_a & tokens_b
+    title_similarity = (
+        _similar(title_a, title_b) if title_a and title_b else 0.0
+    )
+    if title_similarity >= 0.75:
+        return True
+    if len(overlap) < 3:
+        return False
+    smaller = min(len(tokens_a), len(tokens_b))
+    union = len(tokens_a | tokens_b)
+    if not smaller or not union:
+        return False
+    coverage = len(overlap) / smaller
+    jaccard = len(overlap) / union
+    shared_identifier = bool(
+        _identifier_tokens(tokens_a) & _identifier_tokens(tokens_b)
+    )
+    shared_action = bool(overlap & _EVENT_ACTIONS)
+    return (
+        (
+            title_similarity >= GROUP_TITLE_SIM
+            and (shared_identifier or shared_action)
+        )
+        or
+        (shared_identifier and len(overlap) >= 3 and coverage >= 0.45)
+        or (
+            shared_action
+            and len(overlap) >= 4
+            and (
+                coverage >= GROUP_TOKEN_COVERAGE
+                or jaccard >= GROUP_TOKEN_JACCARD
+            )
+        )
+    )
 
 
 def _published(item: dict) -> datetime | None:
@@ -108,17 +194,10 @@ def _load_seen(now: datetime) -> tuple[set[str], list[str]]:
     return urls, titles
 
 
-def _is_fresh(
-    item: dict, now: datetime, seen_urls: set[str], seen_titles: list[str],
-    stats: dict,
-) -> bool:
+def _is_fresh(item: dict, now: datetime, stats: dict) -> bool:
     title = str(item.get("title") or "").strip()
     if not title:
         stats["skipped_untitled"] += 1
-        return False
-    url = str(item.get("url") or "").strip()
-    if url and norm_url(url) in seen_urls:
-        stats["skipped_seen_url"] += 1
         return False
     published = _published(item)
     if published is not None:
@@ -129,18 +208,40 @@ def _is_fresh(
             # Beyond timezone/parse skew: a source clock error, not news.
             stats["skipped_future_date"] += 1
             return False
-    normalized = norm_title(title)
-    if normalized:
-        for seen_title in seen_titles:
-            if _similar(normalized, seen_title) >= SEEN_TITLE_SIM:
-                stats["skipped_seen_title"] += 1
-                return False
     return True
 
 
+def _is_unseen(
+    item: dict, seen_urls: set[str], seen_titles: list[str],
+) -> tuple[bool, bool]:
+    """Return (is_new_evidence, title_matches_seen).
+
+    A new URL remains useful even when its headline resembles an existing
+    article: that is exactly how later cross-source coverage is discovered.
+    """
+    url = str(item.get("url") or "").strip()
+    if url and norm_url(url) not in seen_urls:
+        normalized = norm_title(str(item.get("title") or ""))
+        return True, bool(
+            normalized and any(
+                _similar(normalized, title) >= SEEN_TITLE_SIM
+                for title in seen_titles
+            )
+        )
+    if url:
+        return False, False
+    normalized = norm_title(str(item.get("title") or ""))
+    if not normalized:
+        return False, False
+    matched = any(
+        _similar(normalized, title) >= SEEN_TITLE_SIM
+        for title in seen_titles
+    )
+    return not matched, matched
+
+
 def _group(items: list[dict]) -> list[list[dict]]:
-    """Union-find: same normalized URL or title similarity >= GROUP_TITLE_SIM
-    puts two items in the same group."""
+    """Union-find: same normalized URL or deterministic event match."""
     parent = list(range(len(items)))
 
     def find(i: int) -> int:
@@ -170,7 +271,7 @@ def _group(items: list[dict]) -> list[list[dict]]:
         if not titles[i]:
             continue
         for j in range(i + 1, len(items)):
-            if titles[j] and _similar(titles[i], titles[j]) >= GROUP_TITLE_SIM:
+            if titles[j] and same_event(items[i], items[j]):
                 union(i, j)
 
     grouped: dict[int, list[dict]] = {}
@@ -197,10 +298,10 @@ def main() -> None:
     stats = {key: 0 for key in (
         "skipped_untitled", "skipped_seen_url", "skipped_too_old",
         "skipped_future_date", "skipped_seen_title")}
-    fresh = [
+    eligible = [
         item
         for item in raw_items
-        if _is_fresh(item, now, seen_urls, seen_titles, stats)
+        if _is_fresh(item, now, stats)
     ]
 
     # Rank: groups that actually carry summary material FIRST (title-only
@@ -208,13 +309,31 @@ def main() -> None:
     # real stories out of the MAX_GROUPS cap - and the Google-News-fed
     # sources produce title-only MULTI-source groups all the time), then
     # cross-source coverage, then recency.
-    ranked: list[tuple[bool, bool, datetime, list[dict]]] = []
-    for members in _group(fresh):
+    ranked: list[tuple[bool, bool, datetime, list[dict], bool]] = []
+    active_items = 0
+    for members in _group(eligible):
+        novelty = [_is_unseen(item, seen_urls, seen_titles) for item in members]
+        if not any(is_new for is_new, _matched in novelty):
+            stats["skipped_seen_url"] += sum(
+                1 for item in members
+                if str(item.get("url") or "").strip()
+            )
+            stats["skipped_seen_title"] += sum(
+                1 for item, (_is_new, matched) in zip(members, novelty)
+                if not str(item.get("url") or "").strip() and matched
+            )
+            continue
+        update_candidate = any(
+            norm_url(str(item.get("url") or "")) in seen_urls
+            for item in members
+            if str(item.get("url") or "").strip()
+        ) or any(matched for _is_new, matched in novelty)
         members = _best_first(members)[:MAX_ITEMS_PER_GROUP]
+        active_items += len(members)
         newest = max((_published(m) or _EPOCH for m in members), default=_EPOCH)
         multi = len({m["sourceKey"] for m in members}) > 1
         material = group_has_material({"items": members})
-        ranked.append((material, multi, newest, members))
+        ranked.append((material, multi, newest, members, update_candidate))
     ranked.sort(key=lambda entry: (entry[0], entry[1], entry[2]), reverse=True)
     material_groups = sum(1 for entry in ranked if entry[0])
 
@@ -226,15 +345,18 @@ def main() -> None:
                 "id": f"g-{stamp}-{n}",
                 "primarySource": members[0]["source"],
                 "items": members,
+                "updateCandidate": update_candidate,
             }
-            for n, (_material, _multi, _newest, members) in enumerate(
+            for n, (
+                _material, _multi, _newest, members, update_candidate
+            ) in enumerate(
                 ranked[:MAX_GROUPS], start=1
             )
         ],
     }
     save_json(DATA_DIR / "pending.json", payload)
     print(
-        f"dedupe: {len(raw_items)} raw items -> {len(fresh)} fresh "
+        f"dedupe: {len(raw_items)} raw items -> {active_items} fresh "
         f"-> {len(payload['groups'])} groups"
     )
     print(

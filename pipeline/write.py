@@ -15,11 +15,12 @@ field to true on GitHub, and "reject" is dropped. Every draft's facts carry
 verbatim source quotes that are re-checked in code (verify_facts); a fact
 whose quote is not found in the source material is discarded.
 
-Outputs are appended/prepended to data/articles/<hour>.json,
+New outputs are appended/prepended to data/articles/<hour>.json,
 data/flashes.json and data/incidents.json; data/seen.json is updated only for
 groups that were actually published or queued for review, so failed groups
 stay "unseen" and are re-emitted by dedupe.py next run. data/stats.json is
-always rewritten.
+always rewritten. When a later source joins a previously published event,
+the existing article is revised in place with the same stable article ID.
 
 Without any API key the stage prints a notice, leaves pending.json
 untouched and still refreshes stats.json. Exit code 0 in all data-driven
@@ -31,6 +32,7 @@ from __future__ import annotations
 import os
 import re
 from datetime import timedelta
+from difflib import SequenceMatcher
 from pathlib import Path
 
 from common import (
@@ -1057,7 +1059,7 @@ def build_sources(items: list) -> list:
 
 
 def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
-                  facts=None):
+                  facts=None, existing_article: dict | None = None):
     """Assemble one article dict, or None when it cannot credit any source."""
     if not is_transport_story(group):
         print(f"write: group {group.get('id')} failed aviation/transport "
@@ -1086,20 +1088,43 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
                      f"{event_id}")[:160],
             "url": url,
         })
+    if existing_article:
+        source_urls = {norm_url(source["url"]) for source in sources}
+        for source in existing_article.get("sources") or []:
+            if not isinstance(source, dict):
+                continue
+            url = str(source.get("url") or "").strip()
+            if not url or norm_url(url) in source_urls:
+                continue
+            source_urls.add(norm_url(url))
+            sources.append({
+                "name": str(source.get("name") or "?")[:160],
+                "url": url,
+            })
     if not sources:
         print(f"write: group {group.get('id')} has no usable sources; skipping")
         return None
-    slug = slugify(str(draft.get("en", {}).get("title") or ""))
-    base_id = f"a-{now.strftime('%Y%m%d-%H%M')}-{slug}"
-    article_id, n = base_id, 2
-    while article_id in used_ids:
-        article_id = f"{base_id}-{n}"
-        n += 1
+    existing_id = str((existing_article or {}).get("id") or "").strip()
+    if existing_id:
+        article_id = existing_id
+    else:
+        slug = slugify(str(draft.get("en", {}).get("title") or ""))
+        base_id = f"a-{now.strftime('%Y%m%d-%H%M')}-{slug}"
+        article_id, n = base_id, 2
+        while article_id in used_ids:
+            article_id = f"{base_id}-{n}"
+            n += 1
     used_ids.add(article_id)
     image = next((item.get("image") for item in items if item.get("image")), None)
+    if not image and existing_article:
+        image = existing_article.get("image")
     article = {
         "id": article_id,
-        "publishedUtc": iso_minute(now),
+        "publishedUtc": (
+            str(existing_article.get("publishedUtc"))
+            if existing_article and existing_article.get("publishedUtc")
+            else iso_minute(now)
+        ),
         "cat": story_category(draft.get("cat", "ops"), group, draft),
         "primarySource": group.get("primarySource", ""),
         "image": image,
@@ -1108,6 +1133,9 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         "sources": sources,
         "articleFormat": draft_article_format(draft) or "full",
     }
+    if existing_article:
+        article["updatedUtc"] = iso_minute(now)
+        article["revision"] = int(existing_article.get("revision") or 1) + 1
     source_dates = []
     for item in items:
         if item.get("dateInferred"):
@@ -1121,6 +1149,8 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         # never the generation time, so multi-day-old releases are not
         # presented as breaking news.
         article["sourcePublishedUtc"] = iso_minute(max(source_dates))
+    elif existing_article and existing_article.get("sourcePublishedUtc"):
+        article["sourcePublishedUtc"] = existing_article["sourcePublishedUtc"]
     if writer:
         article["writer"] = writer  # provenance: "provider:model"
     if facts is not None:
@@ -1255,6 +1285,102 @@ def _write_articles_batch(articles: list, now) -> None:
     if not isinstance(merged, list):
         merged = []
     save_json(path, {"articles": merged + articles})
+
+
+def _article_titles(article: dict) -> list[str]:
+    titles = [
+        str((article.get("zh") or {}).get("title") or ""),
+        str((article.get("en") or {}).get("title") or ""),
+    ]
+    for source in article.get("sources") or []:
+        if not isinstance(source, dict):
+            continue
+        name = str(source.get("name") or "")
+        if name.startswith("Archive:"):
+            continue
+        if " — " in name:
+            titles.append(name.split(" — ", 1)[1])
+    return [_norm_title(title) for title in titles if _norm_title(title)]
+
+
+def _load_existing_articles() -> list[dict]:
+    """Load article locations once for same-event revision matching."""
+    records = []
+    for path in sorted(ARTICLES_DIR.glob("*.json"), reverse=True):
+        payload = load_json(path, {})
+        rows = payload.get("articles") if isinstance(payload, dict) else None
+        if not isinstance(rows, list):
+            continue
+        for article in rows:
+            if not isinstance(article, dict) or not article.get("id"):
+                continue
+            urls = {
+                norm_url(str(source.get("url") or ""))
+                for source in article.get("sources") or []
+                if isinstance(source, dict) and source.get("url")
+            }
+            records.append({
+                "path": path,
+                "article": article,
+                "urls": urls,
+                "titles": _article_titles(article),
+            })
+    return records
+
+
+def _match_existing_article(group: dict, records: list[dict]):
+    """Resolve a dedupe update candidate to one existing event article."""
+    if not group.get("updateCandidate"):
+        return None
+    urls = {
+        norm_url(str(item.get("url") or ""))
+        for item in group.get("items") or []
+        if str(item.get("url") or "").strip()
+    }
+    for record in records:
+        if urls & record["urls"]:
+            return record
+
+    group_titles = [
+        _norm_title(str(item.get("title") or ""))
+        for item in group.get("items") or []
+        if _norm_title(str(item.get("title") or ""))
+    ]
+    best = None
+    best_score = 0.0
+    for record in records:
+        score = max(
+            (
+                SequenceMatcher(None, current, previous).ratio()
+                for current in group_titles
+                for previous in record["titles"]
+            ),
+            default=0.0,
+        )
+        if score >= 0.75 and score > best_score:
+            best, best_score = record, score
+    return best
+
+
+def _write_article_updates(updates: list[tuple[Path, dict]]) -> None:
+    """Replace existing articles in place, preserving their stable IDs/URLs."""
+    by_path: dict[Path, dict[str, dict]] = {}
+    for path, article in updates:
+        by_path.setdefault(path, {})[str(article.get("id"))] = article
+    for path, replacements in by_path.items():
+        payload = load_json(path, {})
+        rows = payload.get("articles") if isinstance(payload, dict) else None
+        if not isinstance(rows, list):
+            continue
+        changed = False
+        for index, current in enumerate(rows):
+            article_id = str(current.get("id") or "") \
+                if isinstance(current, dict) else ""
+            if article_id in replacements:
+                rows[index] = replacements[article_id]
+                changed = True
+        if changed:
+            save_json(path, {"articles": rows})
 
 
 def _prepend_capped(path, new_rows: list, cap: int) -> None:
@@ -1482,7 +1608,8 @@ def main() -> None:
         groups = []
 
     used_ids: set = set()
-    new_articles, new_flashes, new_incidents = [], [], []
+    new_articles, updated_articles = [], []
+    new_flashes, new_incidents = [], []
     published_groups, published_ids = [], set()
     queued_entries, queued_groups, queued_ids = [], [], set()
     rejected_groups, rejected_ids = [], set()
@@ -1604,6 +1731,7 @@ def main() -> None:
                       "event(s)")
             safe_groups.append(group)
         groups = safe_groups
+        existing_articles = _load_existing_articles()
         alive = list(providers)  # priority order; shrinks on auth/quota death
         drafted = 0  # only API-consuming groups count toward the run cap
         for group in groups:
@@ -1720,12 +1848,27 @@ def main() -> None:
             if draft is None:
                 skipped += 1  # provider failures/refusals retry next hour
                 continue
-            article = build_article(draft, group, now, used_ids, writer.label,
-                                    verified)
+            existing = _match_existing_article(group, existing_articles)
+            article = build_article(
+                draft, group, now, used_ids, writer.label, verified,
+                existing_article=existing["article"] if existing else None,
+            )
             if article is None:
                 skipped += 1
                 continue
-            new_articles.append(article)
+            if existing:
+                updated_articles.append((existing["path"], article))
+                existing["article"] = article
+                existing["urls"] = {
+                    norm_url(str(source.get("url") or ""))
+                    for source in article.get("sources") or []
+                    if isinstance(source, dict) and source.get("url")
+                }
+                existing["titles"] = _article_titles(article)
+                print(f"write: revised existing article {article['id']} "
+                      "with later same-event source coverage")
+            else:
+                new_articles.append(article)
             new_flashes.append(build_flash(draft, article["id"], now))
             incident = build_incident(draft, group, article["id"])
             if incident is not None:
@@ -1747,8 +1890,11 @@ def main() -> None:
             flightnews.save_queue(remaining_flight)
 
     # --- 3. flush outputs -------------------------------------------------
+    if updated_articles:
+        _write_article_updates(updated_articles)
     if new_articles:
         _write_articles_batch(new_articles, now)
+    if new_articles or updated_articles:
         _prepend_capped(FLASHES_PATH, new_flashes, MAX_FLASHES)
         _prepend_capped(INCIDENTS_PATH, new_incidents, MAX_INCIDENTS)
     if published_groups or queued_groups or rejected_groups:
@@ -1770,7 +1916,8 @@ def main() -> None:
 
     refresh_stats(now)
     remaining_count = sum(1 for g in groups if g.get("id") not in consumed)
-    print(f"write: published {len(new_articles)} article(s) "
+    print(f"write: published {len(new_articles)} new article(s), revised "
+          f"{len(updated_articles)} existing article(s) "
           f"({len(approvals)} human-approved), queued "
           f"{len(queued_entries)} for review, rejected "
           f"{len(rejected_groups)}, skipped {skipped}, "
