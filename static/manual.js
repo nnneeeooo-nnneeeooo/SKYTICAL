@@ -614,7 +614,7 @@
     });
     els["manual-editor"].hidden = !manual;
     els["manual-time-panel"].hidden =
-      !manual && els["publication-mode"].value !== "manual";
+      els["publication-mode"].value !== "manual";
     els["manual-order-panel"].hidden = false;
     els["review-panel"].hidden = true;
     if (manual) {
@@ -690,11 +690,9 @@
       } catch (error) {
         return error.message;
       }
-      if (!manualPublicationUtc()) {
+      if (els["publication-mode"].value === "manual"
+          && !manualPublicationUtc()) {
         return "請指定有效的文章日期與時間";
-      }
-      if (!manualSortUtc()) {
-        return "請指定有效的網站排序日期與時間";
       }
     }
     if (workbenchMode === "ai"
@@ -1241,7 +1239,23 @@
     );
   }
 
-  async function translateAndPublishManualArticle() {
+  function manualNeedsPreparation() {
+    return (
+      manualNeedsTranslation()
+      || els["publication-mode"].value === "auto"
+    );
+  }
+
+  function manualArticleBlock(titleId, contentId) {
+    const body = splitParagraphs(els[contentId].value);
+    return {
+      title: els[titleId].value.trim(),
+      summary: (body[0] || "").slice(0, 180),
+      body,
+    };
+  }
+
+  async function prepareAndPublishManualArticle() {
     text(els["form-error"], "");
     const problem = validateForm();
     if (problem) {
@@ -1249,21 +1263,30 @@
       return;
     }
     operationStartedAt = Date.now();
-    const body = splitParagraphs(els["manual-content-primary"].value);
     const jobId = makeJobId();
+    const translationOnly = manualNeedsTranslation();
+    const secondary = (
+      els.language.value === "bilingual"
+      && els["manual-english-mode"].value === "manual"
+    ) ? manualArticleBlock(
+        "manual-title-secondary", "manual-content-secondary") : null;
     const payload = {
       version: 1,
-      translationOnly: true,
+      operatorAuthored: true,
+      translationOnly,
       articleType: els["article-type"].value,
-      language: "bilingual",
+      language: els.language.value,
       model: els.model.value,
       customModel: "",
       reasoningTier: els["reasoning-tier"].value,
       sourceUrls: sourceUrls(),
       sourceText: "",
       articleSummary: "",
-      publicationMode: "manual",
-      publicationTimeUtc: manualPublicationUtc(),
+      publicationMode: els["publication-mode"].value,
+      publicationTimeUtc: (
+        els["publication-mode"].value === "manual"
+          ? manualPublicationUtc() : ""
+      ),
       sortMode: (
         els["sort-follow-publication"].checked ? "publication" : "manual"
       ),
@@ -1271,11 +1294,9 @@
         els["sort-follow-publication"].checked ? "" : manualSortUtc()
       ),
       writerModels: writerModelLabels(),
-      manualArticle: {
-        title: els["manual-title-primary"].value.trim(),
-        summary: (body[0] || "").slice(0, 180),
-        body,
-      },
+      manualArticle: manualArticleBlock(
+        "manual-title-primary", "manual-content-primary"),
+      manualEnglishArticle: secondary,
       images: [],
       instruction: "",
       conversation: [],
@@ -1290,9 +1311,11 @@
     els["request-log"].replaceChildren();
     setWorkflow([
       "檢查手動稿與來源",
-      "提交加密翻譯工作",
-      "模型翻譯與 fallback",
-      "驗證雙語內容",
+      "提交加密背景工作",
+      translationOnly
+        ? "模型翻譯、來源時間辨識與 fallback"
+        : "來源時間辨識與 fallback",
+      "驗證手動文章",
       "發布並確認網站可讀取",
     ]);
     setWorkflowStep(0, "active");
@@ -1303,22 +1326,24 @@
       setWorkflowStep(0, "done");
       setWorkflowStep(1, "active");
       await submitJob(payload, jobId);
-      addLog("手動中文稿已加密提交，repository 只保存密文");
+      addLog("手動稿已加密提交，repository 只保存密文");
       setWorkflowStep(1, "done");
       setWorkflowStep(2, "active");
-      setState("後台翻譯中", "working");
+      setState(
+        translationOnly ? "等待翻譯與時間辨識" : "辨識來源時間中",
+        "working");
       const result = await pollResult(jobId);
       displayResult(result);
       setWorkflowStep(2, "done");
       setWorkflowStep(3, "active");
-      setState("驗證雙語內容", "working");
+      setState("驗證手動文章", "working");
       if (!result.publication?.article) {
-        throw new Error("英文翻譯未通過驗證，未寫入網站");
+        throw new Error("手動稿未通過驗證，未寫入網站");
       }
       await publishArticle();
     } catch (error) {
-      text(els["form-error"], error.message || "翻譯與發布失敗");
-      addLog(`翻譯或發布中斷：${error.message || "未知錯誤"}`);
+      text(els["form-error"], error.message || "時間辨識、翻譯或發布失敗");
+      addLog(`手動稿處理中斷：${error.message || "未知錯誤"}`);
       failActiveWorkflow();
       setState("流程中斷", "error");
     } finally {
@@ -1449,7 +1474,7 @@
     text(els["publish-state"], "正在上傳文章 JSON 與更新網站資料…");
     try {
       let latestCommit = "";
-      if (lastResult.translationOnly && images.length) {
+      if (lastResult.operatorAuthored && images.length) {
         const imageUrls = imageUrlsForArticle(article.id);
         latestCommit = await uploadManualImages(article.id);
         article.image = {
@@ -1554,8 +1579,7 @@
     "change", updateManualLanguageFields);
   els["publication-mode"].addEventListener("change", () => {
     const manual = els["publication-mode"].value === "manual";
-    els["manual-time-panel"].hidden =
-      workbenchMode === "manual" ? false : !manual;
+    els["manual-time-panel"].hidden = !manual;
     if (manual && !els["publication-date"].value) {
       setTaipeiInputs();
     }
@@ -1578,8 +1602,8 @@
   });
   els.generate.addEventListener("click", () => {
     if (workbenchMode === "manual") {
-      if (manualNeedsTranslation()) {
-        translateAndPublishManualArticle();
+      if (manualNeedsPreparation()) {
+        prepareAndPublishManualArticle();
       } else {
         publishManualArticle();
       }
