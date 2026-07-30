@@ -1,11 +1,11 @@
 {
-  "updatedUtc": "2026-07-30T17:31Z",
+  "updatedUtc": "2026-07-30T17:43Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 289,
-      "inputTokens": 1247193,
-      "outputTokens": 792238,
+      "calls": 290,
+      "inputTokens": 1253139,
+      "outputTokens": 795834,
       "unknownCalls": 43
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
@@ -15,16 +15,16 @@
       "unknownCalls": 3
     },
     "nvidia:deepseek-ai/deepseek-v4-pro": {
-      "calls": 118,
+      "calls": 119,
       "inputTokens": 312114,
       "outputTokens": 60621,
-      "unknownCalls": 54
+      "unknownCalls": 55
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 69,
-      "inputTokens": 231793,
-      "outputTokens": 419612,
-      "unknownCalls": 13
+      "calls": 71,
+      "inputTokens": 232945,
+      "outputTokens": 420753,
+      "unknownCalls": 14
     },
     "gemini:gemini-3.5-flash": {
       "calls": 17,
@@ -39,9 +39,9 @@
       "unknownCalls": 48
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 54,
-      "inputTokens": 288225,
-      "outputTokens": 87816,
+      "calls": 55,
+      "inputTokens": 294129,
+      "outputTokens": 90388,
       "unknownCalls": 0
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
@@ -73,12 +73,107 @@
       "outputTokens": 561449
     },
     "2026-07-30": {
-      "calls": 268,
-      "inputTokens": 995138,
-      "outputTokens": 663879
+      "calls": 273,
+      "inputTokens": 1008140,
+      "outputTokens": 671188
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-07-30T17:37Z",
+      "finishedUtc": "2026-07-30T17:43Z",
+      "workflow": "manual",
+      "taskType": "manual_article",
+      "groupId": "manual-5133b42778333b7b463408ef264b664b",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "actualite.cd",
+      "result": "manual_review",
+      "articleId": null,
+      "finalStatus": "manual_review",
+      "finalModel": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+      "fallbackUsed": true,
+      "attemptCount": 4,
+      "httpCallCount": 4,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "total": 364130
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": null,
+          "durationMs": 178,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "quota",
+          "failureStage": "drafting",
+          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "nvidia",
+          "model": "z-ai/glm-5.2",
+          "label": "nvidia:z-ai/glm-5.2",
+          "startedUtc": null,
+          "durationMs": 114364,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "unexpected",
+          "failureStage": "drafting",
+          "failureMessage": "validation failed: manual_review body meets neither full nor brief contract",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 3,
+          "provider": "nvidia",
+          "model": "deepseek-ai/deepseek-v4-pro",
+          "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+          "startedUtc": null,
+          "durationMs": 180196,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "timeout",
+          "failureStage": "drafting",
+          "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 4,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+          "startedUtc": null,
+          "durationMs": 57530,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": "drafting",
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ]
+    },
     {
       "startedUtc": "2026-07-30T16:32Z",
       "finishedUtc": "2026-07-30T17:31Z",
@@ -1128,65 +1223,6 @@
         "total": 3570174
       },
       "attempts": []
-    },
-    {
-      "startedUtc": "2026-07-30T14:22Z",
-      "finishedUtc": "2026-07-30T14:23Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260730-1422-1",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "www.faa.gov",
-      "result": "manual_review",
-      "articleId": null,
-      "finalStatus": "manual_review",
-      "finalModel": "gemini:gemini-3.6-flash",
-      "fallbackUsed": true,
-      "attemptCount": 2,
-      "httpCallCount": 2,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "total": 172688
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": null,
-          "durationMs": 126224,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": null,
-          "repairDurationMs": null,
-          "outcome": "failed",
-          "failureClass": "unexpected",
-          "failureStage": "drafting",
-          "failureMessage": "validation failed: publish body does not meet full contract (zh=384 content characters, en=271 words, paragraphs=4/4)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": null,
-          "durationMs": 46344,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": null,
-          "repairDurationMs": null,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": "drafting",
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ]
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -2433,6 +2469,65 @@
           "failureClass": "timeout",
           "failureStage": "draft",
           "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ]
+    },
+    {
+      "startedUtc": "2026-07-30T14:22Z",
+      "finishedUtc": "2026-07-30T14:23Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260730-1422-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "www.faa.gov",
+      "result": "manual_review",
+      "articleId": null,
+      "finalStatus": "manual_review",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "total": 172688
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+          "startedUtc": null,
+          "durationMs": 126224,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "unexpected",
+          "failureStage": "drafting",
+          "failureMessage": "validation failed: publish body does not meet full contract (zh=384 content characters, en=271 words, paragraphs=4/4)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": null,
+          "durationMs": 46344,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": "drafting",
+          "failureMessage": null,
           "retryPlanned": false,
           "disabledForRun": false
         }
