@@ -1,7 +1,357 @@
 [
   {
-    "id": "g-20260730-1117-8",
-    "queuedUtc": "2026-07-30T11:17Z",
+    "id": "g-20260730-1148-4",
+    "queuedUtc": "2026-07-30T11:49Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Includes major self-funding financial commitment (£400 million) and forward-looking development timeline for an uncrewed combat aircraft prototype.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "GKN Aerospace completed engineering, manufacture, and prototype integration of wings, fins, and control surfaces for BAE Systems' Brontanax Collaborative Combat Aircraft.",
+        "sourceQuote": "GKN Aerospace has completed the engineering, manufacture and full prototype integration of the wings, fins and control surfaces of Brontanax, the uncrewed Collaborative Combat Aircraft (CCA) unveiled by BAE Systems at the Farnborough International Airshow on July 22, 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "BAE Systems unveiled the Brontanax uncrewed combat aircraft prototype at the Farnborough International Airshow on July 22, 2026.",
+        "sourceQuote": "unveiled by BAE Systems at the Farnborough International Airshow on July 22, 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The flight-ready components were produced at GKN Aerospace's facility in Cowes on the Isle of Wight.",
+        "sourceQuote": "The components were produced at GKN Aerospace’s composite design and assembly facility at Cowes, on the Isle of Wight",
+        "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "BAE Systems committed over £400 million ($535 million) of its own funding since concept work began in 2022 for the Brontanax prototype.",
+        "sourceQuote": "The manufacturer has committed more than £400 million ($535 million) of its own funding since concept work began in 2022",
+        "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The Brontanax prototype has a maximum take-off weight above five metric tons and currently flies with a Williams International engine.",
+        "sourceQuote": "with a maximum take-off weight above five metric tons. The prototype flies with a Williams International engine",
+        "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "BAE Systems expects to transition to a Rolls-Royce Orpheus engine, with power-on scheduled for Q3 2026, ground trials in H1 2027, and first flight later in 2027.",
+        "sourceQuote": "although BAE Systems expects to transition to a powerplant from Rolls-Royce’s Orpheus family. Power-on is scheduled for the end of the third quarter of 2026, followed by ground trials in the first half of 2027 and a first flight later that year.",
+        "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Includes major self-funding financial commitment (£400 million) and forward-looking development timeline for an uncrewed combat aircraft prototype.",
+      "cat": "mil",
+      "zh": {
+        "title": "GKN承製BAE Systems的Brontanax戰用無人機翼面組件",
+        "summary": "GKN Aerospace透露已完成BAE Systems的Brontanax協同戰鬥飛機機翼與控制面整合。該無人機原型最大起飛重量超過5公噸，由BAE Systems自籌逾4億英鎊開發，預計2026年第三季通電、2027年進行地面測試與首飛，並預計換裝勞斯萊斯發動機。",
+        "body": [
+          "GKN Aerospace宣布已完成BAE Systems最新款Brontanax協同戰鬥飛機（Collaborative Combat Aircraft, CCA）的機翼、尾翼與控制面工程設計、製造及原型機整合。這項機體結構組件已具備飛行準備狀態，由GKN Aerospace位於英國懷特島考斯（Cowes）的複合材料設計與組裝設施生產，並協同集團多個據點進行研發製造。",
+          "Brontanax無人戰鬥機原型機係由BAE Systems於2026年7月22日舉行的范保羅國際航展（Farnborough International Airshow）上正式公開發表。該專案主要由BAE Systems位於蘭開夏郡沃頓（Warton）的團隊秘藏開發，並由其旗下FalconWorks快速開發單位主導設計。自2022年啟動概念研究以來，BAE Systems已投入超過4億英鎊（約5.35億美元）的自籌資金，並動用逾500名員工與約75家英國供應商。",
+          "在規格與時程方面，Brontanax尺寸約與鷹式（Hawk）教練機相當，最大起飛重量超過5公噸。原型機目前配備Williams International發動機，但BAE Systems預計未來將過渡至勞斯萊斯（Rolls-Royce）Orpheus系列發動機。該專案預計於2026年第三季末完成通電，並計劃於2027年上半年開展地面測試，隨後於2027年晚些時候進行首次飛行測試。",
+          "Brontanax為BAE Systems針對英國皇家空軍（Royal Air Force）「風暴戰鬥機」（Storm Fighter）需求所研製的方案。根據英國最新國防投資計畫，政府已撥款3億英鎊（約4億美元）用於忠誠伴飛無人機（loyal wingman）的開發作業。這項發展亦進一步擴展了GKN Aerospace在英國自主無人機領域的合作佈局。"
+        ]
+      },
+      "en": {
+        "title": "GKN Aerospace Reveals Role in BAE Systems Brontanax Drone Development",
+        "summary": "GKN Aerospace has revealed its role in manufacturing and integrating the wings, fins, and control surfaces for BAE Systems' Brontanax Collaborative Combat Aircraft (CCA) prototype, which was unveiled at the Farnborough International Airshow in July 2026. BAE Systems has invested more than £400 million ($535 million) in self-funding into the uncrewed fighter program since 2022. The aircraft has a maximum takeoff weight exceeding five metric tons and is currently powered by a Williams International engine, with plans to transition to a Rolls-Royce Orpheus engine ahead of initial flight tests targeted for 2027.",
+        "body": [
+          "GKN Aerospace has announced the completion of the engineering, manufacturing, and full prototype integration of the wings, fins, and control surfaces for BAE Systems' Brontanax Collaborative Combat Aircraft (CCA). The flight-ready structures were produced at GKN Aerospace's composite design and assembly facility at Cowes on the Isle of Wight, utilizing capabilities coordinated across several of the group's manufacturing sites following an accelerated development process from a clean-sheet design.",
+          "BAE Systems officially unveiled the Brontanax uncrewed combat aircraft prototype at the Farnborough International Airshow on July 22, 2026. Positioned as a pre-series, pre-production prototype, the aircraft was developed largely in secret at BAE Systems' Warton site in Lancashire under the leadership of its FalconWorks rapid development unit. BAE Systems has committed over £400 million ($535 million) of its own funds to the program since concept work initiated in 2022, drawing on more than 500 employees and approximately 75 UK suppliers.",
+          "The aircraft is roughly equivalent in size to a Hawk trainer, featuring a maximum take-off weight exceeding five metric tons. While the prototype is currently fitted with a Williams International engine, BAE Systems expects to transition to a powerplant from the Rolls-Royce Orpheus engine family. According to the development schedule, system power-on is slated for the end of the third quarter of 2026, with ground trials planned for the first half of 2027 and the maiden flight anticipated later that year.",
+          "Brontanax represents BAE Systems' submission to meet the Royal Air Force's Storm Fighter requirement, under which the latest Defence Investment Plan allocates £300 million ($400 million) to loyal wingman development. The project adds to GKN Aerospace's expanding portfolio in British uncrewed defense aviation, complementing its ongoing involvement in other defense technology partnerships and propulsion programs."
+        ]
+      },
+      "flash": {
+        "zh": "GKN Aerospace透露為BAE無人戰鬥機Brontanax製造翼面組件",
+        "en": "GKN Aerospace reveals component manufacturing role for BAE Systems Brontanax combat drone",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "GKN Aerospace completed engineering, manufacture, and prototype integration of wings, fins, and control surfaces for BAE Systems' Brontanax Collaborative Combat Aircraft.",
+          "sourceQuote": "GKN Aerospace has completed the engineering, manufacture and full prototype integration of the wings, fins and control surfaces of Brontanax, the uncrewed Collaborative Combat Aircraft (CCA) unveiled by BAE Systems at the Farnborough International Airshow on July 22, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "BAE Systems unveiled the Brontanax uncrewed combat aircraft prototype at the Farnborough International Airshow on July 22, 2026.",
+          "sourceQuote": "unveiled by BAE Systems at the Farnborough International Airshow on July 22, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The flight-ready components were produced at GKN Aerospace's facility in Cowes on the Isle of Wight.",
+          "sourceQuote": "The components were produced at GKN Aerospace’s composite design and assembly facility at Cowes, on the Isle of Wight",
+          "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "BAE Systems committed over £400 million ($535 million) of its own funding since concept work began in 2022 for the Brontanax prototype.",
+          "sourceQuote": "The manufacturer has committed more than £400 million ($535 million) of its own funding since concept work began in 2022",
+          "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The Brontanax prototype has a maximum take-off weight above five metric tons and currently flies with a Williams International engine.",
+          "sourceQuote": "with a maximum take-off weight above five metric tons. The prototype flies with a Williams International engine",
+          "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "BAE Systems expects to transition to a Rolls-Royce Orpheus engine, with power-on scheduled for Q3 2026, ground trials in H1 2027, and first flight later in 2027.",
+          "sourceQuote": "although BAE Systems expects to transition to a powerplant from Rolls-Royce’s Orpheus family. Power-on is scheduled for the end of the third quarter of 2026, followed by ground trials in the first half of 2027 and a first flight later that year.",
+          "sourceUrl": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F4",
+        "F5",
+        "F6"
+      ],
+      "entities": {
+        "organizations": [
+          "GKN Aerospace",
+          "BAE Systems",
+          "FalconWorks",
+          "Royal Air Force",
+          "Anduril UK",
+          "British Army"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Brontanax",
+          "Hawk",
+          "Gripen C/D",
+          "Apache"
+        ],
+        "airports": [],
+        "locations": [
+          "Cowes",
+          "Isle of Wight",
+          "Warton",
+          "Lancashire",
+          "Farnborough"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "July 22, 2026",
+          "2022",
+          "December 9, 2025",
+          "May 2026",
+          "May 15, 2026",
+          "2026",
+          "2027"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260730-1148-4",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "GKN Aerospace reveals role in BAE Systems secret Brontanax combat drone",
+          "url": "https://www.aerotime.aero/articles/gkn-aerospace-reveals-role-in-bae-systems-secret-brontanax-combat-drone",
+          "publishedUtc": "2026-07-30T10:49Z",
+          "summary": "GKN Aerospace has completed the engineering, manufacture and full prototype integration of the wings, fins and control surfaces of Brontanax, the… The post GKN Aerospace reveals role in BAE Systems secret Brontanax combat drone appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "GKN Aerospace reveals role in BAE Systems secret Brontanax combat drone",
+          "summary": "GKN Aerospace reveals role in BAE Systems secret Brontanax combat drone &nbsp;&nbsp; aerotime.aero",
+          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQcjY0aXJoZ0FEbDJ1b1hXZGJHcXJEWUZQMDRXYlNXcFZLNVVNOFYxRjBySkdBUTkwZWV3NG1wRDFzZTdNSE5pM181dzNieGcxV2RxSS1fSTJ5WVJhYUl2YTloRFdGTXRJQUdmMW1BTjBWbndYTjV6U2dHbFFsaElibEJUN19WdWNieTNWOU85TW90cWp2amVQWF9xYVNVWjBha2l5OFpWT2Vrd9IBrwFBVV95cUxPOTB4emIxZ1B4UDV6TmViem1INmdPNjlkLTBiaXRTR0dYa3Z4Vkg4UEU4bnJ4S3dsWlV6SWs0QXVNRjR3T2tyQWJXdll4bTFSdWJTcUZkOF9paE9IRjhielozcnJWLVNPQk5iSE4zbzlpQjVBMkVxX2dfWDI1Ujc2cHZzVjExeGI2cElVUlJUcmg3cFl6UWpicjh4UGl1bWVOdi1OcHdnVkMxZmtFSjIw?oc=5",
+          "source": "aerotime.aero",
+          "companion": true,
+          "publishedUtc": "2026-07-30T10:49Z"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
+            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+            "facts": [
+              {
+                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
+                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
+                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
+                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
+                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
+                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260730-1035-4",
+    "queuedUtc": "2026-07-30T10:35Z",
     "approve": false,
     "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
     "decisionReason": "Aviation safety event involving PAN PAN/MAYDAY declaration and possible near-hull loss during approach; requires human review.",
