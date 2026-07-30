@@ -15,6 +15,7 @@ import manual_draft  # noqa: E402
 from model_config import (  # noqa: E402
     MODEL_DISPLAY_NAMES,
     MODEL_ORDER,
+    OPENROUTER_MODEL_ORDER,
     manual_reasoning_profile,
 )
 from providers import ProviderError  # noqa: E402
@@ -104,6 +105,34 @@ def test_reasoning_tiers():
         "nvidia", "qwen/qwen3.5-397b-a17b", "fast")["wire"]
         == {"chat_template_kwargs": {"enable_thinking": False}},
         "Qwen fast disables thinking")
+    check(manual_reasoning_profile(
+        "openrouter", "openai/gpt-oss-20b:free", "deep")["wire"]
+        == {"reasoning": {"effort": "high", "exclude": True}},
+        "OpenRouter deep uses high reasoning without returning its trace")
+
+
+def test_openrouter_manual_provider_order():
+    saved = {
+        key: os.environ.get(key)
+        for key in ("GEMINI_API_KEY", "NVIDIA_API_KEY",
+                    "OPENROUTER_API_KEY")
+    }
+    os.environ.pop("GEMINI_API_KEY", None)
+    os.environ.pop("NVIDIA_API_KEY", None)
+    os.environ["OPENROUTER_API_KEY"] = "test-not-a-real-key"
+    try:
+        rows = manual_draft._providers_for(
+            manual_draft.validate_payload(sample_payload()))
+    finally:
+        for key, value in saved.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+    check([row.label for row in rows] == list(OPENROUTER_MODEL_ORDER),
+          "manual fallback exposes all OpenRouter models in owner order")
+    check(all(row.reasoning_tier == "deep" for row in rows),
+          "manual reasoning tier reaches every OpenRouter model")
 
 
 class FakeProvider:
@@ -203,6 +232,10 @@ def test_static_security_contract():
     js = (ROOT / "static" / "manual.js").read_text(encoding="utf-8")
     workflow = (ROOT / ".github" / "workflows"
                 / "manual-draft.yml").read_text(encoding="utf-8")
+    hourly = (ROOT / ".github" / "workflows"
+              / "hourly.yml").read_text(encoding="utf-8")
+    briefing = (ROOT / ".github" / "workflows"
+                / "briefing.yml").read_text(encoding="utf-8")
     check("noindex,nofollow,noarchive,nosnippet" in html
           and "Content-Security-Policy" in html,
           "private page is noindex and has a restrictive CSP")
@@ -214,9 +247,17 @@ def test_static_security_contract():
     check("AES-GCM" in js and "data/manual-jobs/inbox/" in js,
           "browser encrypts before writing a job")
     check("secrets.AVWIRE_MANUAL_TOKEN" in workflow
+          and "secrets.OPENROUTER_API_KEY" in workflow
           and "encrypted envelopes only" in workflow
           and "data/manual-jobs/outbox 2>/dev/null || true" in workflow,
           "Actions uses Secrets, checks ciphertext and tolerates empty queues")
+    configured_order = f"AVWIRE_PROVIDER_ORDER: {','.join(MODEL_ORDER)}"
+    check(configured_order in hourly and configured_order in briefing,
+          "automatic workflows use the complete shared fallback order")
+    check("secrets.OPENROUTER_API_KEY" in hourly
+          and "secrets.OPENROUTER_API_KEY" in briefing
+          and "sk-or-v1-" in hourly and "sk-or-v1-" in briefing,
+          "automatic workflows receive and scan for the OpenRouter secret")
 
 
 def main():
@@ -224,6 +265,7 @@ def main():
         test_encryption_round_trip,
         test_payload_limits_and_ssrf,
         test_reasoning_tiers,
+        test_openrouter_manual_provider_order,
         test_fallback_and_telemetry,
         test_private_page_render_contract,
         test_static_security_contract,
