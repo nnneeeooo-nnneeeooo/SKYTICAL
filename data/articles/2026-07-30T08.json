@@ -110,7 +110,8 @@
         "body": [
           "根據Simple Flying報導，波音777-9型客機測試機隊的測試飛行總時間已正式達到4800小時。相關測試數據記錄了該型雙引擎客機在認證過程中的持續飛行進展。",
           "報導指出，一架剛出廠的全新飛機正加入這支持續擴大中的測試機隊。作為該計畫中的第7架機體，該架飛機後續將負責執行雙發延程飛行（ETOPS）認證相關任務。",
-          "隨著第7架機體的投入，該測試機隊將執行專門的ETOPS認證測試，以在先前累積的4800小時飛行測試基礎上，繼續完成波音777-9的後續認證程序。"
+          "隨著第7架機體的投入，該測試機隊將執行專門的ETOPS認證測試，以在先前累積的4800小時飛行測試基礎上，繼續完成波音777-9的後續認證程序。",
+          "作為這項進度的背景，波音於7月28日表示，777X計畫已獲美國聯邦航空總署（FAA）批准，在型別檢驗授權（Type Inspection Authorization）4B下展開認證試飛，並持續預期於2027年首次交付。"
         ]
       },
       "en": {
@@ -119,13 +120,18 @@
         "body": [
           "According to Simple Flying, the Boeing 777-9 test flight fleet has reached a cumulative total of 4,800 test hours during its evaluation program. The milestone reflects ongoing flight test activities conducted across the existing fleet of the twinjet aircraft model.",
           "Furthermore, a factory-fresh airplane is joining the growing fleet of twinjets. As the seventh airframe in the test lineup, this newly completed aircraft will be tasked with conducting Extended-range Twin-engine Operational Performance Standards (ETOPS) certification procedures.",
-          "The introduction of the seventh airframe specifically for ETOPS certification marks a further step in the flight testing phase, adding to the 4,800 test hours already logged by the Boeing 777-9 test fleet."
+          "The introduction of the seventh airframe specifically for ETOPS certification marks a further step in the flight testing phase, adding to the 4,800 test hours already logged by the Boeing 777-9 test fleet.",
+          "As programme background, Boeing said on July 28 that the 777X had received FAA approval to begin certification flight testing under Type Inspection Authorization 4B, while the company continued to anticipate first delivery in 2027."
         ]
       },
       "sources": [
         {
           "name": "Simple Flying — Boeing 777-9 Fleet Reaches 4,800 Test Hours As 7th Airframe…",
           "url": "https://simpleflying.com/boeing-777-9-test-fleet-4800-test-hours-7th-airframe-etops-certification/"
+        },
+        {
+          "name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+          "url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results"
         }
       ],
       "articleFormat": "brief",
@@ -158,10 +164,48 @@
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B, with first delivery anticipated in 2027.",
+          "sourceQuote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+          "archiveContext": true
         }
       ],
       "riskFlags": [],
       "eventStatus": "confirmed",
+      "archiveContext": {
+        "archive_context_version": 1,
+        "context_id": "7d3d8c935560b664",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 777X FAMILY",
+              "same named core entity: boeing",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      },
       "entities": {
         "organizations": [
           "Boeing",
