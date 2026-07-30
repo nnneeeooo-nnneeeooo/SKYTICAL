@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.3 seconds
-Output:
 """LLM provider adapters for the write stage.
 
 Three interchangeable writers behind one interface:
@@ -700,4 +697,3 @@ def build_providers() -> list:
         if provider.available():
             providers.append(provider)
     return providers
-
