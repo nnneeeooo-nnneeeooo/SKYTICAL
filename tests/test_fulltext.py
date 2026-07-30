@@ -112,6 +112,8 @@ check("Valnet properties stay off the allowlist (terms ban AI mining)",
 check("approved aviation publishers can supply full article material",
       {"www.aerotime.aero", "aerospaceglobalnews.com",
        "www.flightglobal.com"}.issubset(fulltext.ALLOWED_HOSTS))
+check("fulltext network work has a bounded runtime",
+      fulltext.TIMEOUT[1] <= 12 and fulltext.MAX_FETCHES_PER_RUN <= 12)
 
 reset()
 fake.routes["https://www.faa.gov/robots.txt"] = ROBOTS_DENY
