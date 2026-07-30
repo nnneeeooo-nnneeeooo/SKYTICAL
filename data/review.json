@@ -1,5 +1,1043 @@
 [
   {
+    "id": "g-20260730-1422-2",
+    "queuedUtc": "2026-07-30T14:22Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves a major commercial aircraft lease and fleet expansion agreement valued at $1.5 billion, triggering the financial_or_order_claim risk flag which requires human review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "US-Bangla Airlines announced plans to acquire 21 new Boeing aircraft as part of a fleet expansion.",
+        "sourceQuote": "US-Bangla Airlines will acquire 21 new Boeing aircraft as part of a major fleet expansion unveiled at a special ceremony in Dhaka.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s valued at approximately $1.5 billion.",
+        "sourceQuote": "the acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s and is thought to be worth $1.5 billion.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "All 21 aircraft are scheduled to join the fleet by the end of 2027.",
+        "sourceQuote": "includes 15 Boeing 737-8 aircraft and six Boeing 737-800 s, with all 21 aircraft scheduled to join the fleet by the end of 2027.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/us-bangla-airlines-boeing-fleet-expansion/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The aircraft have been acquired from up to five different lessors.",
+        "sourceQuote": "The aircraft have been acquired from as many as five different lessors, although the details of the exact companies have not yet been confirmed.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "US-Bangla Airlines plans to expand service across South Asia, Southeast Asia, East Asia, and the Middle East.",
+        "sourceQuote": "US-Bangla said the additional aircraft will allow it to increase frequencies on existing routes while launching new services across South Asia, Southeast Asia, East Asia and the Middle East.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/us-bangla-airlines-boeing-fleet-expansion/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves a major commercial aircraft lease and fleet expansion agreement valued at $1.5 billion, triggering the financial_or_order_claim risk flag which requires human review.",
+      "cat": "biz",
+      "zh": {
+        "title": "優適航空推動15億美元機隊擴張 計畫引進21架波音客機",
+        "summary": "孟加拉優適航空於2026年7月29日宣布大規模機隊擴張計畫，將透過租賃方式引進21架波音新客機，總價值約15億美元。該批飛機包含15架波音737-8與6架波音737-800，預計於2027年底前陸續交付，分別來自多達5家租賃公司，用以拓展國際航線網路。",
+        "body": [
+          "孟加拉優適航空（US-Bangla Airlines）於2026年7月29日在達卡舉行的活動中宣布，將透過租賃方式引進21架波音新客機，作為重大機隊擴張計畫的一部分。根據相關報導，該項租賃協議總價值約15億美元。",
+          "該批擴張機隊包含15架波音737-8與6架波音737-800客機，預計在2027年底前全部加入機隊。飛機係向多達5家不同的租賃公司引進，相關業者的具體細節目前尚未公布。",
+          "優適航空指出，新引進的波音客機將用於增加現有航線班次，並計畫在取得監管及雙邊批准後，開航涵蓋南亞、東南亞、東亞與中東等地區的新國際航線。"
+        ]
+      },
+      "en": {
+        "title": "US-Bangla Airlines to Add 21 Boeing Jets in $1.5B Fleet Expansion",
+        "summary": "Bangladesh's US-Bangla Airlines has announced plans to acquire 21 Boeing aircraft under leasing arrangements valued at approximately $1.5 billion as part of a fleet expansion initiative unveiled on July 29, 2026. The transaction involves 15 Boeing 737-8 jets and six Boeing 737-800 aircraft, with all 21 airplanes scheduled for delivery by the end of 2027. The carrier is sourcing the aircraft from up to five lessors. The additional capacity is intended to support US-Bangla Airlines in increasing frequencies on existing routes and expanding its international network across South Asia, Southeast Asia, East Asia, and the Middle East, subject to necessary regulatory and bilateral approvals.",
+        "body": [
+          "US-Bangla Airlines announced on July 29, 2026, plans to acquire 21 Boeing aircraft under lease agreements estimated to be worth $1.5 billion. The announcement was made during a special event held in Dhaka.",
+          "The fleet expansion comprises 15 Boeing 737-8 aircraft and six Boeing 737-800s. All 21 aircraft are expected to join the carrier's fleet by the end of 2027, with the aircraft being sourced from up to five different lessors.",
+          "The carrier indicated that the additional aircraft will be used to boost frequencies on existing routes and support network expansion across South Asia, Southeast Asia, East Asia, and the Middle East, subject to regulatory approvals."
+        ]
+      },
+      "flash": {
+        "zh": "孟加拉優適航空計畫租賃21架波音客機，推動15億美元機隊擴張。",
+        "en": "US-Bangla Airlines to acquire 21 Boeing aircraft in $1.5B lease deal.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "US-Bangla Airlines announced plans to acquire 21 new Boeing aircraft as part of a fleet expansion.",
+          "sourceQuote": "US-Bangla Airlines will acquire 21 new Boeing aircraft as part of a major fleet expansion unveiled at a special ceremony in Dhaka.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s valued at approximately $1.5 billion.",
+          "sourceQuote": "the acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s and is thought to be worth $1.5 billion.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "All 21 aircraft are scheduled to join the fleet by the end of 2027.",
+          "sourceQuote": "includes 15 Boeing 737-8 aircraft and six Boeing 737-800 s, with all 21 aircraft scheduled to join the fleet by the end of 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/us-bangla-airlines-boeing-fleet-expansion/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The aircraft have been acquired from up to five different lessors.",
+          "sourceQuote": "The aircraft have been acquired from as many as five different lessors, although the details of the exact companies have not yet been confirmed.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "US-Bangla Airlines plans to expand service across South Asia, Southeast Asia, East Asia, and the Middle East.",
+          "sourceQuote": "US-Bangla said the additional aircraft will allow it to increase frequencies on existing routes while launching new services across South Asia, Southeast Asia, East Asia and the Middle East.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/us-bangla-airlines-boeing-fleet-expansion/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Boeing"
+        ],
+        "airlines": [
+          "US-Bangla Airlines"
+        ],
+        "aircraft_models": [
+          "Boeing 737-8",
+          "Boeing 737-800"
+        ],
+        "airports": [],
+        "locations": [
+          "Dhaka",
+          "Bangladesh",
+          "Banani",
+          "South Asia",
+          "Southeast Asia",
+          "East Asia",
+          "Middle East"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "July 29, 2026",
+          "29 July 2026",
+          "2027"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260730-1422-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "US-Bangla Airlines’ fleet set to surge with addition of 21 new Boeing aircraft",
+          "url": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
+          "publishedUtc": "2026-07-29T14:12Z",
+          "summary": "Bangladesh’s US-Bangla Airlines will acquire 21 new Boeing aircraft as part of a major fleet expansion unveiled at… The post US-Bangla Airlines’ fleet set to surge with addition of 21 new Boeing aircraft appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Bangladesh's US-Bangla to buy 21 Boeing aircraft in $1.5 billion expansion",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMXZiSW92RjNGd2lBYi1LNVBtWmpCZFpCOGFxc3FOY1pWSXhieTYxb2RKTWFJdUZfcTFyWWtPR2U2WDNjREl3MTgzZzFTTlJNX21NaDJ0Y2tHU2F2ZUhKT1pnaHY0QWd6N0p3NmFQWktZaER5cG9odzJ3cWtLbEFvcjFlbXRFVlk0MTdYZzNQU0ZXMkhTa1dYVjhMYmhtLWhHbnZaWFE4ZGdGUUdmWkl3U2ZjaVdxRHl2cVpNdw?oc=5",
+          "publishedUtc": "2026-07-29T12:48Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "US-Bangla launches $1.5 bn Boeing fleet expansion to challenge foreign carriers on international routes",
+          "url": "https://aerospaceglobalnews.com/news/us-bangla-airlines-boeing-fleet-expansion/",
+          "publishedUtc": "2026-07-30T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/737-800ng-gallery-5.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing",
+              "archive predates source by 4 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 4 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
+            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+            "facts": [
+              {
+                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
+                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260730-1422-3",
+    "queuedUtc": "2026-07-30T14:22Z",
+    "approve": false,
+    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
+    "decisionReason": "報導涉及航空安全事故調查後的法規制定，雖非事故本身，但核心事件（2023年737消防飛機墜毀）存在傷亡（兩名飛行員輕傷）與事故調查報告，觸發安全風險標記；澳洲發布國家標準為後續監管行動，因此設定為手動審查。",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "casualties_or_injuries",
+      "investigation",
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, including minimum drop heights.",
+        "sourceQuote": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, including minimum drop heights, following an investigation into a 2023 Boeing 737 firebomber accident in Western Australia.",
+        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The Australian Transport Safety Bureau (ATSB) announced the new procedures on July 29, 2026.",
+        "sourceQuote": "The Australian Transport Safety Bureau (ATSB) announced the new procedures on July 29, 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The standards were developed by Australia’s fire agencies through the National Aerial Firefighting Centre, the document published on the center’s website on June 30, 2026.",
+        "sourceQuote": "The standards were developed by Australia’s fire agencies through the National Aerial Firefighting Centre, the document published on the center’s website on June 30, 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "ATSB Chief Commissioner Angus Mitchell said the document sets a new national benchmark for large air tanker operations, laying out clear requirements for aerial supervision, task profiles, and communication protocols.",
+        "sourceQuote": "ATSB Chief Commissioner Angus Mitchell said the document sets a new national benchmark for large air tanker operations, laying out clear requirements for aerial supervision, task profiles, and communication protocols.",
+        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "A key finding in the report was that Australian states and territories had each developed their own separate procedures for large air tanker operations, unlike counterparts in the United States where standards were found to be consistent across agencies.",
+        "sourceQuote": "A key finding in the report was that Australian states and territories had each developed their own separate procedures for large air tanker operations, unlike counterparts in the United States, where standards were found to be consistent across agencies.",
+        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The 2023 accident that prompted the change traces back to February 6, 2023, when a Coulson Aviation Boeing 737-300 large air tanker, registered N619SW, crashed into a ridgeline in Western Australia’s Fitzgerald River National Park.",
+        "sourceQuote": "The push for national standards traces back to February 6, 2023, when a Coulson Aviation Boeing 737-300 large air tanker, registered N619SW, crashed into a ridgeline in Western Australia’s Fitzgerald River National Park while fighting a bushfire.",
+        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "報導涉及航空安全事故調查後的法規制定，雖非事故本身，但核心事件（2023年737消防飛機墜毀）存在傷亡（兩名飛行員輕傷）與事故調查報告，觸發安全風險標記；澳洲發布國家標準為後續監管行動，因此設定為手動審查。",
+      "cat": "safety",
+      "zh": {
+        "title": "澳洲發布大型空中水庫國家標準作業程序，回應2023年波音737消防機事故",
+        "summary": "澳洲發布首部大型空中水庫國家標準作業程序，納入最低投擲高度等規定。此舉直接回應2023年一架波音737消防機在Western Australia撞山事故的調查結果，該事故暴露各州作業規範不一致可能導致安全要求遺漏。ATSB主委稱這標誌著澳洲航空消防安全體系的重要里程碑。",
+        "body": [
+          "澳洲運輸安全局（ATSB）於2026年7月29日宣布，澳洲已導入首套適用於大型空中水庫（Large Air Tanker）的國家標準作業程序（SOP），內容包含最低投擲高度、空中監督、任務剖面與通訊協定等明確要求。該文件由國家空中消防中心（National Aerial Firefighting Centre）於2026年6月30日發布，獲得各地消防機構採納。",
+          "ATSB主委Angus Mitchell指出，此文件為澳洲大型空中水庫作業設立了全新國家標竿。他表示，大型空中水庫因可迅速跨州應援，在澳洲叢林火災管理與壓制中角色日益吃重，「這份文件為澳洲空中消防安全體系的持續成熟，立下重要里程碑。」",
+          "推動全國一致規範的關鍵，源於2023年2月6日的一起事故。當天，Coulson Aviation一架註冊編號N619SW的波音737-300大型空中水庫在Western Australia費茲傑羅河國家公園執行灌木火任務，剛完成部分阻燃劑投放並爬升時，撞上約222英尺高的稜線。兩名飛行員輕傷生還，飛機全毀。",
+          "ATSB於2024年11月公布最終報告，發現飛機投擲時高度與空速過低，加上引擎延遲達到重飛推力，導致無法爬升越過前方地形。調查也指出，操作者與任務機構均未公布最低投擲高度，導致副駕駛未能察覺風險而未曾發出警告呼叫。",
+          "報告中的一項關鍵發現是，澳洲各州與領地原先各自制定大型空中水庫程序，與美國各單位規範一致的作法有別。Mitchell表示，這類差異可能導致如最低投擲高度等安全要求被忽略或誤解。為此，澳大拉西亞消防與緊急服務當局理事會承諾發展單一國家標準，終結成果即為本次採納的新作業程序。",
+          "Mitchell補充，ATSB樂見新標準的推出，並肯定各防火機關及相關利害關係人在制定過程中的合作。"
+        ]
+      },
+      "en": {
+        "title": "Australia introduces national air tanker safety standards after 2023 Boeing 737 firebomber crash",
+        "summary": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, the Australian Transport Safety Bureau (ATSB) announced on July 29, 2026. The new standards include minimum drop heights and follow an investigation into a 2023 crash of a Coulson Aviation Boeing 737-300 firebomber in Western Australia. ATSB Chief Commissioner Angus Mitchell said the document sets a new national benchmark, addressing safety gaps that the investigation had found across differing state procedures.",
+        "body": [
+          "The Australian Transport Safety Bureau (ATSB) announced on July 29, 2026, that Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, including minimum drop heights. The document was developed by Australia's fire agencies through the National Aerial Firefighting Centre and published on the centre’s website on June 30, 2026.",
+          "ATSB Chief Commissioner Angus Mitchell said the procedures establish a new national benchmark for large air tanker operations, with clear requirements for aerial supervision, task profiles, and communication protocols. He noted that large air tankers, which can quickly move around the country in response to operational need, play an increasingly critical role in the management and suppression of bushfires in Australia.",
+          "The push for national standards stems from a February 6, 2023, accident in which a Coulson Aviation Boeing 737-300 large air tanker, registered N619SW, crashed into a ridgeline in Western Australia’s Fitzgerald River National Park while fighting a bushfire. The aircraft struck rising terrain at about 222 feet after completing a partial retardant drop; both pilots survived with minor injuries, though the aircraft was destroyed.",
+          "The ATSB’s final report, released in November 2024, found that the aircraft’s low height and airspeed during the drop, combined with a delay in engines reaching go-around thrust, left it without enough energy to climb clear of the terrain. Investigators also found that no minimum drop height had been published by the operator or the tasking agency, which meant the co-pilot did not recognize the developing risk and made no warning calls before the collision.",
+          "A key finding in the report was that Australian states and territories had each developed their own separate procedures for large air tanker operations. Mitchell said those differences could lead to safety requirements, such as minimum drop heights, being left out or misunderstood by different tasking agencies. The newly adopted national standard addresses that gap.",
+          "Mitchell said the ATSB welcomes the new standards and credited the collaboration among fire agencies and other stakeholders involved in developing them."
+        ]
+      },
+      "flash": {
+        "zh": "澳洲因應2023年737消防機事故，發布大型空中水庫國家安全標準",
+        "en": "Australia issues national air tanker safety standards after 2023 737 firebomber crash",
+        "hot": false
+      },
+      "incident": {
+        "date": "2023-02-06",
+        "sev": "acc",
+        "aircraft": "Boeing 737-300",
+        "operator": "Coulson Aviation",
+        "phase": {
+          "zh": "滅火投擲後爬升階段",
+          "en": "climb after retardant drop"
+        },
+        "location": {
+          "zh": "西澳洲斐茲傑羅河國家公園",
+          "en": "Fitzgerald River National Park, Western Australia"
+        },
+        "desc": {
+          "zh": "執行野火任務時完成部分投擲後撞擊約222英尺高的稜線，飛機全毀，兩名飛行員輕傷。",
+          "en": "Aircraft struck a ridgeline at about 222 feet after a partial retardant drop while fighting a bushfire; destroyed, both pilots suffered minor injuries."
+        },
+        "status": "closed"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, including minimum drop heights.",
+          "sourceQuote": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, including minimum drop heights, following an investigation into a 2023 Boeing 737 firebomber accident in Western Australia.",
+          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The Australian Transport Safety Bureau (ATSB) announced the new procedures on July 29, 2026.",
+          "sourceQuote": "The Australian Transport Safety Bureau (ATSB) announced the new procedures on July 29, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The standards were developed by Australia’s fire agencies through the National Aerial Firefighting Centre, the document published on the center’s website on June 30, 2026.",
+          "sourceQuote": "The standards were developed by Australia’s fire agencies through the National Aerial Firefighting Centre, the document published on the center’s website on June 30, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "ATSB Chief Commissioner Angus Mitchell said the document sets a new national benchmark for large air tanker operations, laying out clear requirements for aerial supervision, task profiles, and communication protocols.",
+          "sourceQuote": "ATSB Chief Commissioner Angus Mitchell said the document sets a new national benchmark for large air tanker operations, laying out clear requirements for aerial supervision, task profiles, and communication protocols.",
+          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "A key finding in the report was that Australian states and territories had each developed their own separate procedures for large air tanker operations, unlike counterparts in the United States where standards were found to be consistent across agencies.",
+          "sourceQuote": "A key finding in the report was that Australian states and territories had each developed their own separate procedures for large air tanker operations, unlike counterparts in the United States, where standards were found to be consistent across agencies.",
+          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The 2023 accident that prompted the change traces back to February 6, 2023, when a Coulson Aviation Boeing 737-300 large air tanker, registered N619SW, crashed into a ridgeline in Western Australia’s Fitzgerald River National Park.",
+          "sourceQuote": "The push for national standards traces back to February 6, 2023, when a Coulson Aviation Boeing 737-300 large air tanker, registered N619SW, crashed into a ridgeline in Western Australia’s Fitzgerald River National Park while fighting a bushfire.",
+          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F6"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F6"
+      ],
+      "entities": {
+        "organizations": [
+          "Australian Transport Safety Bureau",
+          "ATSB",
+          "National Aerial Firefighting Centre",
+          "Australasian Fire and Emergency Services Authorities Council",
+          "Coulson Aviation"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Boeing 737",
+          "Boeing 737-300"
+        ],
+        "airports": [],
+        "locations": [
+          "Australia",
+          "Western Australia",
+          "Fitzgerald River National Park"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [
+          "N619SW"
+        ],
+        "event_dates": [
+          "2026-07-29",
+          "2023-02-06",
+          "2026-06-30"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "casualties_or_injuries",
+        "investigation",
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260730-1422-3",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Australia introduces national air tanker safety standards after 737 crash",
+          "url": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
+          "publishedUtc": "2026-07-29T11:25Z",
+          "summary": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, including minimum drop… The post Australia introduces national air tanker safety standards after 737 crash appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Australia draws national air tanker rules after Boeing 737 firebomber crash exposed critical safety gaps News",
+          "url": "https://aerospaceglobalnews.com/news/australia-large-air-tanker-safety-overhaul-boeing-737-crash/",
+          "publishedUtc": "2026-07-30T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/12/Coulson-aviation.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing",
+              "archive predates source by 4 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 4 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
+            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+            "facts": [
+              {
+                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
+                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260730-1422-6",
+    "queuedUtc": "2026-07-30T14:22Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Regulatory action: FAA proposed rule published in Federal Register with public comment period open; draft rule not yet final, requiring human review under regulatory_action and unconfirmed_or_developing risk flags.",
+    "riskFlags": [
+      "regulatory_action",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The FAA published a proposed rule in the Federal Register on July 30, 2026, that would allow the agency to waive requirements under 13 federal environmental and natural-resource laws when reviewing certain commercial space licenses and permits.",
+        "sourceQuote": "The FAA published the proposal in the Federal Register on July 30, 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The proposal would apply to licenses for space launch and reentry vehicles, launch and reentry sites, and experimental flight permits.",
+        "sourceQuote": "The proposal would apply to licenses for space launch and reentry vehicles, launch and reentry sites and experimental flight permits.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The proposed rule would allow waivers only when the Transportation Secretary, after consulting the appropriate federal agency, determines that a legal requirement is not needed to protect public health and safety, property, national security or US foreign policy interests.",
+        "sourceQuote": "The proposed rule would allow waivers only when the Transportation Secretary, after consulting the appropriate federal agency, determines that a legal requirement is not needed to protect public health and safety, property, national security or US foreign policy interests.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The public comment period runs through August 31.",
+        "sourceQuote": "The public comment period runs through August 31.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "FAA Administrator Bryan Bedford said commercial space activity is surging and the agency will not keep pace with rapid growth unless it streamlines, modernizes, and strengthens its regulatory approach.",
+        "sourceQuote": "Commercial space activity is surging, and we must do everything safely possible to support this vital sector",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The proposal follows an August 2025 executive order directing federal agencies to speed approvals for commercial launches, spacecraft reentries and spaceport projects.",
+        "sourceQuote": "The proposal follows an August 2025 executive order directing federal agencies to speed approvals for commercial launches, spacecraft reentries and spaceport projects.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Regulatory action: FAA proposed rule published in Federal Register with public comment period open; draft rule not yet final, requiring human review under regulatory_action and unconfirmed_or_developing risk flags.",
+      "cat": "reg",
+      "zh": {
+        "title": "FAA 提案豁免環境法規以加速商業太空發射審批",
+        "summary": "美國聯邦航空總署（FAA）於 2026 年 7 月 30 日在《聯邦公報》發布提案，擬允許在審查特定商業太空發射與重返許可證及實驗飛行許可時，豁免 13 項聯邦環境與自然資源法律的要求。公共意見徵詢期至 8 月 31 日截止。FAA 表示此舉可縮短審批時間，但豁免須經運輸部長認定相關法規非保護公共健康安全所必需。",
+        "body": [
+          "美國聯邦航空總署（FAA）於 2026 年 7 月 30 日在《聯邦公報》發布一項提案，擬允許該機構在審查特定商業太空許可證與許可時，豁免 13 項聯邦環境與自然資源法律的要求。提案適用於太空發射與重返載具的許可證、發射與重返場址許可，以及實驗飛行許可。",
+          "FAA 表示，此項變更可藉由消除其認為不必要或重複的環境審查來縮短審批時間。提案允許豁免的條件為：運輸部長在諮詢適當聯邦機構後，認定某項法律要求並非保護公共健康與安全、財產、國家安全或美國外交政策利益所必需。",
+          "提案涵蓋的法律包括《國家環境政策法》、《瀕危物種法》、《清潔水法》、《清潔空氣法》、《國家歷史保護法》及《海洋哺乳動物保護法》等 13 項聯邦法規。公共意見徵詢期自 7 月 30 日起至 8 月 31 日截止。",
+          "FAA 署長 Bryan Bedford 表示，商業太空活動正在快速成長，除非精簡並現代化監管方式，否則將無法跟上此一成長步調。FAA 指出，現行程序可能涉及多項法律與多個聯邦機構，導致審查重疊與延遲。",
+          "該提案源於 2025 年 8 月一項行政命令，該命令指示聯邦機構加速商業發射、太空船重返及太空港專案的審批。FAA 引用《商業太空發射法》的授權，允許運輸部長在特定條件下豁免聯邦法律要求。",
+          "FAA 承認，在某些情況下，豁免其審查可能將責任轉移至另一聯邦機構，而非完全消除審查。使用聯邦財產（包括 NASA 或美國軍方發射場）的商業營運商，可能仍需獲得控制土地機構的批准或協議。提案將適用於最終規則生效後核發或修改的許可證與許可。"
+        ]
+      },
+      "en": {
+        "title": "FAA proposes waiving environmental rules to speed commercial space launch approvals",
+        "summary": "The US FAA published a proposed rule in the Federal Register on July 30, 2026, that would allow the agency to waive requirements under 13 federal environmental and natural-resource laws when reviewing certain commercial space licenses and permits. The proposal covers launch and reentry vehicle licenses, launch and reentry site licenses, and experimental flight permits. The public comment period runs through August 31. FAA said the change could shorten approval times by eliminating reviews it considers unnecessary or duplicative, but waivers would require a determination by the Transportation Secretary.",
+        "body": [
+          "The US Federal Aviation Administration (FAA) published a proposed rule in the Federal Register on July 30, 2026, that would allow the agency to waive requirements under 13 federal environmental and natural-resource laws when reviewing certain commercial space licenses and permits. The proposal would apply to licenses for space launch and reentry vehicles, launch and reentry sites, and experimental flight permits.",
+          "The FAA said the change could shorten approval times by eliminating environmental reviews it considers unnecessary or duplicative. The proposed rule would allow waivers only when the Transportation Secretary, after consulting the appropriate federal agency, determines that a legal requirement is not needed to protect public health and safety, property, national security, or US foreign policy interests.",
+          "The laws covered by the proposal include the National Environmental Policy Act, the Endangered Species Act, the Clean Water Act, the Clean Air Act, the National Historic Preservation Act, and the Marine Mammal Protection Act, among others. The public comment period runs through August 31.",
+          "FAA Administrator Bryan Bedford said that commercial space activity is surging and that the agency will not keep pace with rapid growth unless it streamlines, modernizes, and strengthens its regulatory approach. The FAA said the current process can involve several laws and federal agencies, leading to overlapping reviews and delays.",
+          "The proposal follows an August 2025 executive order directing federal agencies to speed approvals for commercial launches, spacecraft reentries, and spaceport projects. The FAA cited authority under the Commercial Space Launch Act that allows the Transportation Secretary to waive a federal legal requirement for a license or permit under certain conditions.",
+          "The FAA acknowledged that waiving its review could shift responsibility to another federal agency rather than eliminate the review entirely. Commercial operators using federal property, including NASA or US military launch sites, may still require approvals or agreements from the agency that controls the land. The proposed rule would apply to licenses and permits issued or modified after a final rule takes effect."
+        ]
+      },
+      "flash": {
+        "zh": "FAA 提案豁免 13 項環境法規以加速商業太空發射審批",
+        "en": "FAA proposes waiving 13 environmental laws to speed commercial space launch approvals",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The FAA published a proposed rule in the Federal Register on July 30, 2026, that would allow the agency to waive requirements under 13 federal environmental and natural-resource laws when reviewing certain commercial space licenses and permits.",
+          "sourceQuote": "The FAA published the proposal in the Federal Register on July 30, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The proposal would apply to licenses for space launch and reentry vehicles, launch and reentry sites, and experimental flight permits.",
+          "sourceQuote": "The proposal would apply to licenses for space launch and reentry vehicles, launch and reentry sites and experimental flight permits.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The proposed rule would allow waivers only when the Transportation Secretary, after consulting the appropriate federal agency, determines that a legal requirement is not needed to protect public health and safety, property, national security or US foreign policy interests.",
+          "sourceQuote": "The proposed rule would allow waivers only when the Transportation Secretary, after consulting the appropriate federal agency, determines that a legal requirement is not needed to protect public health and safety, property, national security or US foreign policy interests.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The public comment period runs through August 31.",
+          "sourceQuote": "The public comment period runs through August 31.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "FAA Administrator Bryan Bedford said commercial space activity is surging and the agency will not keep pace with rapid growth unless it streamlines, modernizes, and strengthens its regulatory approach.",
+          "sourceQuote": "Commercial space activity is surging, and we must do everything safely possible to support this vital sector",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The proposal follows an August 2025 executive order directing federal agencies to speed approvals for commercial launches, spacecraft reentries and spaceport projects.",
+          "sourceQuote": "The proposal follows an August 2025 executive order directing federal agencies to speed approvals for commercial launches, spacecraft reentries and spaceport projects.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "FAA",
+          "Transportation Secretary",
+          "NASA"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-30",
+          "2025-08"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "regulatory_action",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260730-1422-6",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "FAA proposes waiving environmental rules to speed commercial space launches",
+          "url": "https://www.aerotime.aero/articles/faa-proposes-waiving-environmental-rules-to-speed-commercial-space-launches",
+          "publishedUtc": "2026-07-30T13:30Z",
+          "summary": "The US Federal Aviation Administration (FAA) has proposed allowing the agency to waive requirements under 13 federal environmental… The post FAA proposes waiving environmental rules to speed commercial space launches appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "SpaceX, Blue Origin could get quicker launch approval under FAA move to waive environmental rules",
+          "summary": "SpaceX, Blue Origin could get quicker launch approval under FAA move to waive environmental rules &nbsp;&nbsp; CNBC",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPUkQ3eVhmaHJJVVhYcXhCbnZOay1iemJ3MkM3TFRQWUYwMG1tUVktQWcybHdDR2lFR0F2WXd2WEVhSzdLUU8zUDhtVW1KMUFaSDE0WHVEamxpdHRyTEoxRmEyY1dZSkhfWWZXY3NXNmhPV0Y5YUtPbmRmVk80eF9nSGR2U2c1ckdjeDhBY2liXzBTdTdaNTkxazFuWlhBNm420gGmAUFVX3lxTE1vTzFkYmFlQ2cwZnBLdFlzcndKSkJQcHl6SVZWb2hMenVuVk1Va3RNc2xBVnNDdFF0RnBXNmY0V29FbDlQX0ZWTXpnaFphQ2dCYUh4cHlvbDczd2xZMHF4cGFzOEtQTUd4UDVuMEdDYzA2MXpUUVlhN0JpS0hCN3JKaFI4WUViNlNuZXIyeF9pb3VoQkMzelBOWHBNb0RnMWlXeTJtM2c?oc=5",
+          "source": "CNBC",
+          "companion": true,
+          "publishedUtc": "2026-07-28T20:57Z"
+        },
+        {
+          "title": "US agency proposes accelerated approval for commercial space missions",
+          "summary": "US agency proposes accelerated approval for commercial space missions &nbsp;&nbsp; Reuters",
+          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNcEVZcFc3ZjZwM3IxSGpUN3hldENaOWFNYlJiUnUzZXgzX0RBd1RidldWRnBEV0NSaFJ0d2FTakVENXgwaFp6enFUeGtaQXJaM1lGWW1ZQUp3UnQwSlNwYjVUQ3dudllIZ3F4TlM1ampralFoS1RxTjUyTVZnY0E0R0xZdWZWYVlqdzZMWElTMko0WFA2ZmNSYk01NnB6Szg0cUdia1ln?oc=5",
+          "source": "Reuters",
+          "companion": true,
+          "publishedUtc": "2026-07-28T19:42Z"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-1805-faa-announces-successful-counter-drone-e",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: department of transportation, faa",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-22",
+            "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa...",
+            "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+            "facts": [
+              {
+                "claim": "FAA announced successful counter-drone efforts during FIFA World Cup 2026 with more than 700 drones seized.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026, With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "Transportation Secretary Sean P. Duffy announced federal, state, and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_quote": "Department of Transportation Secretary Sean P. Duffy announced that federal, state and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "The effort helped keep millions of fans safe.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "More than 700 drones were seized.",
+                "source_quote": "With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 4 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 4 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260730-1148-4",
     "queuedUtc": "2026-07-30T11:49Z",
     "approve": false,
