@@ -139,11 +139,11 @@ def test_model_priority_defaults():
         "nvidia:z-ai/glm-5.2",
         "nvidia:deepseek-ai/deepseek-v4-pro",
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+        "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
         "nvidia:qwen/qwen3.5-397b-a17b",
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
-        "nvidia:mistralai/mistral-medium-3.5-128b",
-        "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
         "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+        "nvidia:mistralai/mistral-medium-3.5-128b",
         "openrouter:google/gemma-4-31b-it:free",
         "openrouter:inclusionai/ling-3.0-flash:free",
         "openrouter:google/gemma-4-26b-a4b-it:free",
@@ -167,6 +167,13 @@ def test_model_priority_defaults():
     check(providers.OPENROUTER_DEFAULT_MODEL
           == "nvidia/nemotron-3-ultra-550b-a55b:free",
           "Nemotron Ultra is the highest-priority OpenRouter default")
+    check(expected[4:6] == (
+        "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+        "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+    ) and expected[7:9] == (
+        "nvidia:nvidia/nemotron-3-super-120b-a12b",
+        "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+    ), "equivalent Nemotron models are adjacent with native NVIDIA first")
     print("test_model_priority_defaults: done")
 
 

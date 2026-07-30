@@ -686,6 +686,22 @@ def fmt_pct(v) -> str:
     return f"{v:g}%"
 
 
+def clock_12(dt) -> str:
+    """User-facing clock time without seconds or a leading zero."""
+    return dt.strftime("%I:%M %p").lstrip("0")
+
+
+def timestamp_12(value, empty: str) -> str:
+    """Format a stored UTC timestamp for display without leaking seconds."""
+    if not value:
+        return empty
+    try:
+        stamp = parse_iso(str(value)).astimezone(timezone.utc)
+    except (TypeError, ValueError):
+        return empty
+    return f"{stamp:%Y-%m-%d} {clock_12(stamp)}"
+
+
 def ago(last_utc, now) -> str:
     """Relative 'ago' string vs build time: '12 min' / '3 hr' / '2 d' / '—'."""
     if not last_utc:
@@ -869,9 +885,9 @@ def prep_article(raw):
         time_label = tpe.strftime("%m/%d")
         meta_ts = tpe.strftime("%Y-%m-%d")
     else:
-        time_label = (tpe.strftime("%H:%M") if tpe.date() == today_tpe
+        time_label = (clock_12(tpe) if tpe.date() == today_tpe
                       else tpe.strftime("%m/%d"))
-        meta_ts = tpe.strftime("%Y-%m-%d %H:%M") + " UTC+8"
+        meta_ts = f"{tpe:%Y-%m-%d} {clock_12(tpe)} UTC+8"
     return {
         "id": art_id,
         "dt": dt,
@@ -978,7 +994,7 @@ def _honest_time_label(dt, inferred: bool) -> str:
         return "—"
     tpe = dt.astimezone(TPE)
     if tpe.date() == now_utc().astimezone(TPE).date():
-        return tpe.strftime("%H:%M")
+        return clock_12(tpe)
     return tpe.strftime("%m/%d")
 
 
@@ -1031,7 +1047,7 @@ def prep_flashes(raw, known_ids):
             continue
         aid = f.get("articleId")
         out.append({
-            "time": dt.astimezone(TPE).strftime("%H:%M"),
+            "time": clock_12(dt.astimezone(TPE)),
             "hot": bool(f.get("hot")),
             "zh": zh, "en": en,
             "articleId": aid if isinstance(aid, str) and aid in known_ids else None,
@@ -1159,8 +1175,8 @@ def _fmt_tpe(iso, lang: str, time_only=False) -> str:
     if dt is None:
         return "—"
     if time_only:
-        return dt.strftime("%H:%M")
-    return f"{_fmt_tpe_date(dt, lang)} {dt:%H:%M}"
+        return clock_12(dt)
+    return f"{_fmt_tpe_date(dt, lang)} {clock_12(dt)}"
 
 
 def latest_briefing(rows):
@@ -1643,8 +1659,8 @@ def recent_run_view(ledger: dict, now=None) -> dict:
         tpe = stamp.astimezone(TPE)
         run = {
             "stamp": stamp,
-            "time_tpe": tpe.strftime("%Y-%m-%d %H:%M TPE"),
-            "time_utc": stamp.strftime("%Y-%m-%d %H:%M UTC"),
+            "time_tpe": f"{tpe:%Y-%m-%d} {clock_12(tpe)} TPE",
+            "time_utc": f"{stamp:%Y-%m-%d} {clock_12(stamp)} UTC",
             "workflow": _run_text(raw.get("workflow"), 32) or "unknown",
             "task_type": _run_text(raw.get("taskType"), 32) or "unknown",
             "group_id": _run_text(raw.get("groupId"), 160),
@@ -2055,14 +2071,18 @@ def render_usage_dashboard(env, build) -> int:
         "codex_rows": codex_rows, "codex_totals": codex_totals,
         "codex_twd": codex_totals["usd"] * rate,
         "codex_scope": str(codex_snapshot.get("scope") or "").strip(),
-        "codex_updated": codex_snapshot.get("updatedUtc") or "尚無紀錄",
+        "codex_updated": timestamp_12(
+            codex_snapshot.get("updatedUtc"), "尚無紀錄"),
         "codex_tracking_since":
-            codex_snapshot.get("trackingSinceUtc") or "尚未開始",
+            timestamp_12(
+                codex_snapshot.get("trackingSinceUtc"), "尚未開始"),
         "non_api_rows": non_api_reference_rows(prices),
         "gpt_family_rows": gpt_family_reference_rows(prices),
         "twd": totals["usd"] * rate, "rate": rate,
-        "updated": ledger.get("updatedUtc") or "尚無紀錄",
-        "tracking_since": ledger.get("trackingSinceUtc") or "尚未開始",
+        "updated": timestamp_12(
+            ledger.get("updatedUtc"), "尚無紀錄"),
+        "tracking_since": timestamp_12(
+            ledger.get("trackingSinceUtc"), "尚未開始"),
     }
     render(env, "usage.html", f"u/{token}/index.html", ctx)
     return 1
@@ -2165,9 +2185,9 @@ def main() -> int:
     tpe_now = now.astimezone(TPE)
     build = {
         "date": tpe_now.strftime("%Y-%m-%d %a").upper(),
-        "utc_hm": now.strftime("%H:%M"),
-        "tpe_hm": tpe_now.strftime("%H:%M"),
-        "stamp": now.strftime("%Y-%m-%d %H:%M"),
+        "utc_hm": clock_12(now),
+        "tpe_hm": clock_12(tpe_now),
+        "stamp": f"{now:%Y-%m-%d} {clock_12(now)}",
     }
     cat_keys = ["all", "safety", "reg", "biz", "ops", "mil"]
     sev_keys = ["all", "acc", "ser", "inc"]
