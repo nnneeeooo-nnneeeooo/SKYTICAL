@@ -154,6 +154,53 @@ button:disabled { opacity: .45; cursor: not-allowed; }
   gap: 0 14px;
 }
 .manual-time-panel[hidden] { display: none; }
+.manual-order-panel {
+  grid-column: 1 / -1;
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid #51483d;
+  border-radius: 11px;
+  background: #15130f;
+}
+.toggle-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0;
+}
+.toggle-field input {
+  width: auto;
+  margin: 0;
+  accent-color: var(--accent-2);
+}
+.field-help {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.55;
+}
+.manual-order-panel .manual-time-panel { margin-top: 2px; }
+.writer-models-panel {
+  grid-column: 1 / -1;
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid #3c3934;
+  border-radius: 11px;
+  background: #121210;
+}
+.writer-models-title {
+  margin: 0;
+  color: #d8d3c8;
+  font-size: .85rem;
+  font-weight: 800;
+}
+.writer-model-inputs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+}
+.writer-model-inputs label { margin-top: 11px; font-size: .76rem; }
+.writer-model-inputs input { margin-top: 5px; padding: 9px; }
 .clock-selects {
   display: grid;
   grid-template-columns: minmax(70px, 1fr) auto minmax(70px, 1fr) minmax(78px, 1fr);
@@ -311,6 +358,7 @@ button:disabled { opacity: .45; cursor: not-allowed; }
   .workspace { grid-template-columns: 1fr; }
   .article-preview { grid-template-columns: 1fr; }
   .review-meta { grid-template-columns: repeat(2, 1fr); }
+  .writer-model-inputs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .masthead { align-items: flex-start; }
 }
 
@@ -318,6 +366,7 @@ button:disabled { opacity: .45; cursor: not-allowed; }
   .shell { width: min(100% - 18px, 1480px); padding-top: 20px; }
   .composer, .telemetry, .output-panel, .review-panel { padding: 16px; }
   .mode-switch, .controls-grid, .manual-time-panel, .metrics, .review-meta, .confirm-model { grid-template-columns: 1fr; }
+  .writer-model-inputs { grid-template-columns: 1fr; }
   .review-actions { flex-direction: column; }
   .notice, .masthead { flex-direction: column; }
   .security-badge { align-self: flex-start; }

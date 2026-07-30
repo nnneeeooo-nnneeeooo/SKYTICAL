@@ -792,8 +792,17 @@ _WRITER_MODELS = (
 )
 
 
-def writer_model(writer):
-    """Short public model name for a writer id, or None."""
+def writer_model(writer, writer_models=None):
+    """Public model credit, including up to five owner-supplied labels."""
+    if isinstance(writer_models, list):
+        labels = []
+        for value in writer_models[:5]:
+            clean = re.sub(r"[\x00-\x1f\x7f<>]+", " ", str(value))
+            clean = re.sub(r"\s+", " ", clean).strip()[:80]
+            if clean and clean not in labels:
+                labels.append(clean)
+        if labels:
+            return "、".join(labels)
     if not isinstance(writer, str) or ":" not in writer:
         return None
     provider, model_value = writer.split(":", 1)
@@ -818,9 +827,16 @@ def prep_article(raw):
         return None
     art_id = art_id.strip()
     try:
-        dt = parse_iso(str(raw.get("publishedUtc")))
+        publication_dt = parse_iso(str(raw.get("publishedUtc")))
     except (ValueError, TypeError):
         return None
+    dt = publication_dt
+    if raw.get("sortUtc"):
+        try:
+            dt = parse_iso(str(raw["sortUtc"]))
+        except (ValueError, TypeError):
+            # Optional manual-placement metadata must not hide a valid article.
+            dt = publication_dt
     zh = raw.get("zh") if isinstance(raw.get("zh"), dict) else {}
     en = raw.get("en") if isinstance(raw.get("en"), dict) else {}
     if not (zh.get("title") or en.get("title")):
@@ -869,7 +885,7 @@ def prep_article(raw):
     # Display the SOURCE's newest publication time when the write stage
     # recorded one; the generation time (dt) is used for ordering only, so
     # a days-old official release is never presented as breaking news.
-    display_dt = dt
+    display_dt = publication_dt
     if raw.get("sourcePublishedUtc"):
         try:
             display_dt = parse_iso(str(raw["sourcePublishedUtc"]))
@@ -900,7 +916,8 @@ def prep_article(raw):
         "zh": side(zh, en),
         "en": side(en, zh),
         "sources": sources,
-        "writer_model": writer_model(raw.get("writer")),
+        "writer_model": writer_model(
+            raw.get("writer"), raw.get("writerModels")),
         "available_languages": available_languages,
         "article_format": (
             "brief" if raw.get("articleFormat") == "brief" else "full"),
