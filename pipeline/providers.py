@@ -37,6 +37,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 
 import requests
 
@@ -147,6 +148,71 @@ class ProviderQuotaError(ProviderError):
     """Rate/credit quota exhausted; stop using this provider this run."""
 
 
+def classify_failure(exc) -> str:
+    """Stable, response-free failure class for run-history diagnostics."""
+    chain = []
+    current = exc
+    while current is not None and current not in chain:
+        chain.append(current)
+        current = getattr(current, "__cause__", None)
+    if any(isinstance(item, ProviderAuthError) for item in chain):
+        return "auth"
+    if any(isinstance(item, ProviderQuotaError) for item in chain):
+        return "quota"
+    timeout_types = tuple(
+        cls for cls in (
+            getattr(requests, "Timeout", None),
+            getattr(getattr(requests, "exceptions", None), "Timeout", None),
+        ) if isinstance(cls, type))
+    connection_types = tuple(
+        cls for cls in (
+            getattr(requests, "ConnectionError", None),
+            getattr(getattr(requests, "exceptions", None),
+                    "ConnectionError", None),
+        ) if isinstance(cls, type))
+    if timeout_types and any(isinstance(item, timeout_types) for item in chain):
+        return "timeout"
+    if connection_types and any(
+            isinstance(item, connection_types) for item in chain):
+        return "connection"
+    text = " ".join(
+        f"{type(item).__name__} {item}" for item in chain).casefold()
+    if "timeout" in text or "timed out" in text:
+        return "timeout"
+    if "connection" in text or "connecterror" in text:
+        return "connection"
+    if "429" in text and ("per-minute" in text or "rate limit" in text):
+        return "rate_limit"
+    if "truncated" in text or "max_tokens" in text:
+        return "truncated"
+    if "bad json" in text or "jsondecodeerror" in text:
+        return "invalid_json"
+    if re.search(r"\bhttp\s+[45]\d\d\b", text):
+        return "http_error"
+    return "unexpected"
+
+
+def safe_failure_message(value, limit: int = 180) -> str:
+    """Short diagnostic that cannot preserve bodies, headers or secret URLs."""
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    text = re.sub(r"https?://\S+", "[URL removed]", text,
+                  flags=re.IGNORECASE)
+    text = re.sub(
+        r"(?i)\bauthorization\b\s*[:=]?\s*(?:bearer\s+)?\S+",
+        "Authorization [redacted]",
+        text,
+    )
+    text = re.sub(
+        r"(?i)\b(api[-_ ]?key|token|bearer)\b"
+        r"\s*[:=]?\s*\S*",
+        r"\1 [redacted]",
+        text,
+    )
+    text = re.sub(r"(?i)\b(nvapi-[A-Za-z0-9_-]+|AIza[A-Za-z0-9_-]+)\b",
+                  "[redacted]", text)
+    return text[:max(1, min(int(limit or 180), 300))]
+
+
 def extract_json(text: str) -> dict:
     """Parse a JSON object out of possibly-decorated model output.
 
@@ -170,10 +236,6 @@ def extract_json(text: str) -> dict:
     return parsed
 
 
-def _body_snippet(response) -> str:
-    return response.text[:200].replace("\n", " ")
-
-
 def _blank_usage() -> dict:
     """Per-provider token ledger, flushed to data/usage.json by usage.py.
 
@@ -190,6 +252,9 @@ class AnthropicProvider:
         self.model = model or os.environ.get("AVWIRE_MODEL") or "claude-opus-5"
         self.label = f"{self.name}:{self.model}"
         self.http_calls = 0
+        self.repair_calls = 0
+        self.http_duration_ms = 0
+        self.repair_duration_ms = 0
         self.usage = _blank_usage()
         self._client = None
 
@@ -200,6 +265,7 @@ class AnthropicProvider:
         if self._client is None:
             self._client = anthropic.Anthropic()
         self.http_calls += 1
+        started = time.perf_counter()
         try:
             response = self._client.messages.create(
                 model=self.model,
@@ -225,6 +291,9 @@ class AnthropicProvider:
             raise ProviderError(type(exc).__name__) from exc
         except anthropic.APIConnectionError as exc:
             raise ProviderError(type(exc).__name__) from exc
+        finally:
+            self.http_duration_ms += max(
+                0, round((time.perf_counter() - started) * 1000))
         usage = getattr(response, "usage", None)
         if usage is not None:
             self.usage["inputTokens"] += int(
@@ -260,6 +329,9 @@ class GeminiProvider:
                       or GEMINI_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
         self.http_calls = 0  # real API spend incl. format-repair calls
+        self.repair_calls = 0
+        self.http_duration_ms = 0
+        self.repair_duration_ms = 0
         self.usage = _blank_usage()
 
     def available(self) -> bool:
@@ -284,8 +356,7 @@ class GeminiProvider:
                 raise ProviderError("HTTP 429 (per-minute rate limit)")
             raise ProviderQuotaError("HTTP 429 (free-tier quota exhausted?)")
         if response.status_code >= 400:
-            raise ProviderError(
-                f"HTTP {response.status_code}: {_body_snippet(response)}")
+            raise ProviderError(f"HTTP {response.status_code}")
 
     def _generation_config(self, schema: dict, repair: bool) -> dict:
         profile = MODEL_PROFILES.get(self.model, {})
@@ -295,10 +366,13 @@ class GeminiProvider:
         config["responseJsonSchema"] = schema
         return config
 
-    def _post(self, payload: dict):
+    def _post(self, payload: dict, repair: bool = False):
         url = ("https://generativelanguage.googleapis.com/v1beta/models/"
                f"{self.model}:generateContent")
         self.http_calls += 1
+        if repair:
+            self.repair_calls += 1
+        started = time.perf_counter()
         try:
             return requests.post(
                 url, json=payload, timeout=HTTP_TIMEOUT,
@@ -306,6 +380,11 @@ class GeminiProvider:
             )
         except requests.RequestException as exc:
             raise ProviderError(type(exc).__name__) from exc
+        finally:
+            elapsed = max(0, round((time.perf_counter() - started) * 1000))
+            self.http_duration_ms += elapsed
+            if repair:
+                self.repair_duration_ms += elapsed
 
     def draft(self, system_prompt: str, user_prompt: str, schema: dict):
         payload = {
@@ -313,7 +392,7 @@ class GeminiProvider:
             "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
             "generationConfig": self._generation_config(schema, repair=False),
         }
-        response = self._post(payload)
+        response = self._post(payload, repair=False)
         self._check_status(response)
         text = self._final_text(response)
         if text is None:
@@ -378,7 +457,7 @@ class GeminiProvider:
             "contents": [{"role": "user", "parts": [{"text": broken}]}],
             "generationConfig": self._generation_config(schema, repair=True),
         }
-        response = self._post(payload)
+        response = self._post(payload, repair=True)
         self._check_status(response)
         text = self._final_text(response)
         if not text:
@@ -399,6 +478,9 @@ class NvidiaProvider:
                       or NVIDIA_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
         self.http_calls = 0  # real API spend incl. format-repair calls
+        self.repair_calls = 0
+        self.http_duration_ms = 0
+        self.repair_duration_ms = 0
         self.usage = _blank_usage()
 
     def available(self) -> bool:
@@ -425,6 +507,9 @@ class NvidiaProvider:
             **self._payload_extras(repair),
         }
         self.http_calls += 1
+        if repair:
+            self.repair_calls += 1
+        started = time.perf_counter()
         try:
             return requests.post(
                 "https://integrate.api.nvidia.com/v1/chat/completions",
@@ -437,6 +522,11 @@ class NvidiaProvider:
             )
         except requests.RequestException as exc:
             raise ProviderError(type(exc).__name__) from exc
+        finally:
+            elapsed = max(0, round((time.perf_counter() - started) * 1000))
+            self.http_duration_ms += elapsed
+            if repair:
+                self.repair_duration_ms += elapsed
 
     def _final_text(self, response):
         """Final-answer text only; message.reasoning_content (the reasoning
@@ -477,8 +567,7 @@ class NvidiaProvider:
                 f"model not found: {self.model} "
                 "(not in this key's catalog yet?)")
         if response.status_code >= 400:
-            raise ProviderError(
-                f"HTTP {response.status_code}: {_body_snippet(response)}")
+            raise ProviderError(f"HTTP {response.status_code}")
 
     def draft(self, system_prompt: str, user_prompt: str, schema: dict):
         # No guided decoding on NIM across all models: enforce JSON by prompt

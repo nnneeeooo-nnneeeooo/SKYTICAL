@@ -626,6 +626,25 @@ def test_provider_failover():
     ids = [g["id"] for g in pending["groups"]]
     check(ids == ["g-20260726-0503-3"],
           f"refused group stays pending, got {ids}")
+    runs = load(DATA / "usage.json").get("recentRuns") or []
+    published_run = next(row for row in runs
+                         if row.get("result") == "published")
+    review_run = next(row for row in runs
+                      if row.get("result") == "manual_review")
+    refused_run = next(row for row in runs
+                       if row.get("result") == "refused")
+    check(published_run["finalModel"] == "anthropic:fake"
+          and published_run["fallbackUsed"] is True,
+          "published run records fallback and final successful model")
+    check(review_run["finalStatus"] == "manual_review",
+          "manual review is a successful model result, not an API failure")
+    check(refused_run["attempts"][-1]["outcome"] == "refused",
+          "refusal is recorded and stops provider shopping")
+    quota_attempt = next(
+        attempt for row in runs for attempt in row["attempts"]
+        if attempt.get("failureClass") == "quota")
+    check(quota_attempt["disabledForRun"] is True,
+          "quota failure records whole-provider disablement")
     print("test_provider_failover: done")
 
 
@@ -739,6 +758,11 @@ def test_editorial_gate():
           and any("unruly passengers" in fact["sourceQuote"]
                   for fact in facts),
           f"fabricated fact dropped, verified facts kept: {facts}")
+    runs = load(DATA / "usage.json").get("recentRuns") or []
+    rejected_run = next(row for row in runs
+                        if row.get("result") == "rejected")
+    check(rejected_run["attempts"][0]["outcome"] == "success",
+          "editorial reject is not counted as a provider API failure")
     pending = load(DATA / "pending.json")
     ids = [g["id"] for g in pending["groups"]]
     check(ids == ["g-20260726-0503-2"],
@@ -817,6 +841,13 @@ def test_all_providers_auth_dead():
           "no articles when every provider is auth-dead")
     check((DATA / "pending.json").read_bytes() == pending_before,
           "pending.json untouched when nothing published")
+    runs = load(DATA / "usage.json").get("recentRuns") or []
+    pending_runs = [row for row in runs
+                    if row.get("result") in ("retry_pending", "no_provider")]
+    check(bool(pending_runs)
+          and any(attempt.get("failureClass") == "auth"
+                  for row in pending_runs for attempt in row["attempts"]),
+          "all-model auth failure is recorded as pending retry")
     stats = load(DATA / "stats.json")
     check("updatedUtc" in stats, "stats refreshed even on auth failure")
     print("test_all_providers_auth_dead: done")
