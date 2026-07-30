@@ -242,6 +242,10 @@ def test_static_security_contract():
     check('<option value="deep" selected>' in html
           and '<option value="standard" selected>' not in html,
           "private page defaults to the highest reasoning tier")
+    check(
+        '<option value="{{ model.id }}"{% if loop.first %} selected{% endif %}>'
+        in html and '<option value="auto" selected>' not in html,
+        "private page selects the first configured model by default")
     check("localStorage" not in js and "sessionStorage" in js,
           "PAT is session-only, never persistent local storage")
     check("AES-GCM" in js and "data/manual-jobs/inbox/" in js,
