@@ -246,8 +246,17 @@ def test_static_security_contract():
         '<option value="{{ model.id }}"{% if loop.first %} selected{% endif %}>'
         in html and '<option value="auto" selected>' not in html,
         "private page selects the first configured model by default")
-    check("localStorage" not in js and "sessionStorage" in js,
-          "PAT is session-only, never persistent local storage")
+    check(
+        "PAT_VAULT_CONTEXT" in js
+        and "encryptPat" in js and "decryptPat" in js
+        and "localStorage.setItem(PAT_STORAGE_KEY, JSON.stringify(envelope))"
+        in js
+        and "sessionStorage" not in js,
+        "PAT is stored only as URL-token-bound AES-GCM ciphertext")
+    check(
+        "await restorePat()" in js
+        and "localStorage.removeItem(PAT_STORAGE_KEY)" in js,
+        "encrypted PAT is automatically restored and can be cleared")
     check("AES-GCM" in js and "data/manual-jobs/inbox/" in js,
           "browser encrypts before writing a job")
     check("secrets.AVWIRE_MANUAL_TOKEN" in workflow
