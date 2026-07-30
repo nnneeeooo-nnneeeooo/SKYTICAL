@@ -1,3 +1,6 @@
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
 """LLM provider adapters for the write stage.
 
 Three interchangeable writers behind one interface:
@@ -40,7 +43,11 @@ import re
 import time
 
 import requests
-from model_config import DEFAULT_PROVIDER_ORDER, MODEL_ORDER
+from model_config import (
+    DEFAULT_PROVIDER_ORDER,
+    MODEL_ORDER,
+    manual_reasoning_profile,
+)
 
 try:
     import anthropic
@@ -320,10 +327,31 @@ class AnthropicProvider:
             raise ProviderError(f"bad JSON from model: {exc}") from exc
 
 
+_RATE_HEADER_RE = re.compile(
+    r"^(?:retry-after|ratelimit-|x-ratelimit-|x-request-id|"
+    r"x-goog-request-id)",
+    re.IGNORECASE,
+)
+
+
+def _safe_response_meta(response, duration_ms: int) -> dict:
+    """Whitelist operational headers; never retain bodies or credentials."""
+    headers = getattr(response, "headers", {}) or {}
+    return {
+        "status": int(getattr(response, "status_code", 0) or 0),
+        "durationMs": max(0, int(duration_ms or 0)),
+        "headers": {
+            str(key).lower(): str(value)[:240]
+            for key, value in headers.items()
+            if _RATE_HEADER_RE.match(str(key))
+        },
+    }
+
+
 class GeminiProvider:
     name = "gemini"
 
-    def __init__(self, model=None) -> None:
+    def __init__(self, model=None, reasoning_tier=None) -> None:
         self.model = (model or os.environ.get("AVWIRE_GEMINI_MODEL")
                       or GEMINI_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
@@ -332,6 +360,9 @@ class GeminiProvider:
         self.http_duration_ms = 0
         self.repair_duration_ms = 0
         self.usage = _blank_usage()
+        self.reasoning_tier = reasoning_tier
+        self.request_log = []
+        self.reasoning_effective = "automatic profile"
 
     def available(self) -> bool:
         return bool(os.environ.get("GEMINI_API_KEY"))
@@ -361,6 +392,11 @@ class GeminiProvider:
         profile = MODEL_PROFILES.get(self.model, {})
         key = "repairGenerationConfig" if repair else "generationConfig"
         config = dict(profile.get(key) or {})
+        if not repair and self.reasoning_tier:
+            manual = manual_reasoning_profile(
+                self.name, self.model, self.reasoning_tier)
+            config.update(manual["wire"])
+            self.reasoning_effective = manual["effective"]
         config["responseMimeType"] = "application/json"
         config["responseJsonSchema"] = schema
         return config
@@ -372,11 +408,13 @@ class GeminiProvider:
         if repair:
             self.repair_calls += 1
         started = time.perf_counter()
+        response = None
         try:
-            return requests.post(
+            response = requests.post(
                 url, json=payload, timeout=HTTP_TIMEOUT,
                 headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
             )
+            return response
         except requests.RequestException as exc:
             raise ProviderError(type(exc).__name__) from exc
         finally:
@@ -384,6 +422,8 @@ class GeminiProvider:
             self.http_duration_ms += elapsed
             if repair:
                 self.repair_duration_ms += elapsed
+            if response is not None:
+                self.request_log.append(_safe_response_meta(response, elapsed))
 
     def draft(self, system_prompt: str, user_prompt: str, schema: dict):
         payload = {
@@ -472,7 +512,7 @@ class GeminiProvider:
 class NvidiaProvider:
     name = "nvidia"
 
-    def __init__(self, model=None) -> None:
+    def __init__(self, model=None, reasoning_tier=None) -> None:
         self.model = (model or os.environ.get("AVWIRE_NVIDIA_MODEL")
                       or NVIDIA_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
@@ -481,6 +521,9 @@ class NvidiaProvider:
         self.http_duration_ms = 0
         self.repair_duration_ms = 0
         self.usage = _blank_usage()
+        self.reasoning_tier = reasoning_tier
+        self.request_log = []
+        self.reasoning_effective = "automatic profile"
 
     def available(self) -> bool:
         return bool(os.environ.get("NVIDIA_API_KEY"))
@@ -488,6 +531,15 @@ class NvidiaProvider:
     def _payload_extras(self, repair: bool) -> dict:
         profile = MODEL_PROFILES.get(self.model, {})
         extras = dict(profile.get("payload") or {"temperature": 0.2})
+        if not repair and self.reasoning_tier:
+            manual = manual_reasoning_profile(
+                self.name, self.model, self.reasoning_tier)
+            for key in (
+                    "reasoning_effort", "chat_template_kwargs",
+                    "thinking", "enable_thinking"):
+                extras.pop(key, None)
+            extras.update(manual["wire"])
+            self.reasoning_effective = manual["effective"]
         if repair:
             # Repair overrides replace the reasoning control wholesale;
             # sampling stays as configured for the model.
@@ -509,8 +561,9 @@ class NvidiaProvider:
         if repair:
             self.repair_calls += 1
         started = time.perf_counter()
+        response = None
         try:
-            return requests.post(
+            response = requests.post(
                 "https://integrate.api.nvidia.com/v1/chat/completions",
                 json=payload, timeout=HTTP_TIMEOUT,
                 headers={
@@ -519,6 +572,7 @@ class NvidiaProvider:
                     "Accept": "application/json",
                 },
             )
+            return response
         except requests.RequestException as exc:
             raise ProviderError(type(exc).__name__) from exc
         finally:
@@ -526,6 +580,8 @@ class NvidiaProvider:
             self.http_duration_ms += elapsed
             if repair:
                 self.repair_duration_ms += elapsed
+            if response is not None:
+                self.request_log.append(_safe_response_meta(response, elapsed))
 
     def _final_text(self, response):
         """Final-answer text only; message.reasoning_content (the reasoning
@@ -644,3 +700,4 @@ def build_providers() -> list:
         if provider.available():
             providers.append(provider)
     return providers
+
