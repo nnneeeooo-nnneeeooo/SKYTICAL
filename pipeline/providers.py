@@ -1,10 +1,12 @@
 """LLM provider adapters for the write stage.
 
-Three interchangeable writers behind one interface:
+Four interchangeable writers behind one interface:
 
     anthropic  Anthropic Messages API with native structured outputs
     gemini     Google Gemini API (REST) with responseJsonSchema
     nvidia     NVIDIA NIM (integrate.api.nvidia.com, OpenAI-compatible REST),
+               JSON enforced by prompt + local extraction
+    openrouter OpenRouter Chat Completions (OpenAI-compatible REST),
                JSON enforced by prompt + local extraction
 
 Each provider exposes:
@@ -66,6 +68,7 @@ HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
 # profile fall back to conservative generic settings.
 NVIDIA_DEFAULT_MODEL = "z-ai/glm-5.2"
 GEMINI_DEFAULT_MODEL = "gemini-3.6-flash"
+OPENROUTER_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 
 MODEL_PROFILES: dict = {
     # Gemini thinking is high for fact-sensitive bilingual drafting. Format
@@ -124,6 +127,105 @@ MODEL_PROFILES: dict = {
         # NIM offers none|high only; keep high for the final fallback.
         "payload": {"temperature": 0.7, "reasoning_effort": "high"},
         "repair": {"reasoning_effort": "none"},
+    },
+    "nvidia/nemotron-3-ultra-550b-a55b:free": {
+        "payload": {
+            "temperature": 1.0,
+            "top_p": 0.95,
+            "reasoning": {"effort": "high", "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "nvidia/nemotron-3-super-120b-a12b:free": {
+        "payload": {
+            "temperature": 1.0,
+            "top_p": 0.95,
+            # The model catalog exposes medium as this model's top effort.
+            "reasoning": {"effort": "medium", "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "google/gemma-4-31b-it:free": {
+        "payload": {
+            "temperature": 0.2,
+            "top_p": 0.95,
+            "reasoning": {"enabled": True, "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "inclusionai/ling-3.0-flash:free": {
+        "payload": {
+            "temperature": 0.2,
+            "top_p": 0.95,
+            "reasoning": {"enabled": True, "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "google/gemma-4-26b-a4b-it:free": {
+        "payload": {
+            "temperature": 0.2,
+            "top_p": 0.95,
+            "reasoning": {"enabled": True, "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
+        "payload": {
+            "temperature": 0.6,
+            "top_p": 0.95,
+            "reasoning": {"enabled": True, "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "openai/gpt-oss-20b:free": {
+        "payload": {
+            "reasoning": {"effort": "high", "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "nvidia/nemotron-3-nano-30b-a3b:free": {
+        "payload": {
+            "temperature": 0.2,
+            "reasoning": {"enabled": True, "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "nvidia/nemotron-nano-12b-v2-vl:free": {
+        "payload": {
+            "temperature": 0.2,
+            "reasoning": {"enabled": True, "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "nvidia/nemotron-nano-9b-v2:free": {
+        "payload": {
+            "temperature": 0.2,
+            "reasoning": {"enabled": True, "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "poolside/laguna-s-2.1:free": {
+        "payload": {
+            "temperature": 0.2,
+            "top_p": 0.9,
+            "reasoning": {"enabled": True, "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "cohere/north-mini-code:free": {
+        "payload": {
+            "temperature": 0.2,
+            "reasoning": {"enabled": True, "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
+    },
+    "poolside/laguna-xs-2.1:free": {
+        "payload": {
+            "temperature": 0.2,
+            "top_p": 0.9,
+            "reasoning": {"enabled": True, "exclude": True},
+        },
+        "repair": {"reasoning": {"effort": "low", "exclude": True}},
     },
 }
 
@@ -211,8 +313,12 @@ def safe_failure_message(value, limit: int = 180) -> str:
         r"\1 [redacted]",
         text,
     )
-    text = re.sub(r"(?i)\b(nvapi-[A-Za-z0-9_-]+|AIza[A-Za-z0-9_-]+)\b",
-                  "[redacted]", text)
+    text = re.sub(
+        r"(?i)\b(nvapi-[A-Za-z0-9_-]+|AIza[A-Za-z0-9_-]+|"
+        r"sk-or-v1-[A-Za-z0-9_-]+)\b",
+        "[redacted]",
+        text,
+    )
     return text[:max(1, min(int(limit or 180), 300))]
 
 
@@ -326,7 +432,7 @@ class AnthropicProvider:
 
 _RATE_HEADER_RE = re.compile(
     r"^(?:retry-after|ratelimit-|x-ratelimit-|x-request-id|"
-    r"x-goog-request-id)",
+    r"x-goog-request-id|x-openrouter-)",
     re.IGNORECASE,
 )
 
@@ -665,10 +771,133 @@ class NvidiaProvider:
             ) from repair_exc
 
 
+class OpenRouterProvider(NvidiaProvider):
+    """OpenRouter's OpenAI-compatible endpoint with explicit model fallback."""
+
+    name = "openrouter"
+
+    def __init__(self, model=None, reasoning_tier=None) -> None:
+        self.model = (
+            model or os.environ.get("AVWIRE_OPENROUTER_MODEL")
+            or OPENROUTER_DEFAULT_MODEL
+        )
+        self.label = f"{self.name}:{self.model}"
+        self.http_calls = 0
+        self.repair_calls = 0
+        self.http_duration_ms = 0
+        self.repair_duration_ms = 0
+        self.usage = _blank_usage()
+        self.reasoning_tier = reasoning_tier
+        self.request_log = []
+        self.reasoning_effective = "automatic profile"
+
+    def available(self) -> bool:
+        return bool(os.environ.get("OPENROUTER_API_KEY"))
+
+    def _payload_extras(self, repair: bool) -> dict:
+        profile = MODEL_PROFILES.get(self.model, {})
+        extras = dict(profile.get("payload") or {"temperature": 0.2})
+        if not repair and self.reasoning_tier:
+            manual = manual_reasoning_profile(
+                self.name, self.model, self.reasoning_tier)
+            extras.pop("reasoning", None)
+            extras.pop("reasoning_effort", None)
+            extras.update(manual["wire"])
+            self.reasoning_effective = manual["effective"]
+        if repair:
+            extras.update(profile.get("repair") or {
+                "reasoning": {"effort": "low", "exclude": True},
+            })
+        return extras
+
+    def _post(self, messages: list, repair: bool):
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "max_tokens": 8192 if repair else 16384,
+            "stream": False,
+            **self._payload_extras(repair),
+        }
+        self.http_calls += 1
+        if repair:
+            self.repair_calls += 1
+        started = time.perf_counter()
+        response = None
+        try:
+            response = requests.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                json=payload, timeout=HTTP_TIMEOUT,
+                headers={
+                    "Authorization":
+                        f"Bearer {os.environ['OPENROUTER_API_KEY']}",
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer":
+                        "https://nnneeeooo-nnneeeooo.github.io/avwire/",
+                    "X-Title": "AVWIRE",
+                },
+            )
+            return response
+        except requests.RequestException as exc:
+            raise ProviderError(type(exc).__name__) from exc
+        finally:
+            elapsed = max(0, round((time.perf_counter() - started) * 1000))
+            self.http_duration_ms += elapsed
+            if repair:
+                self.repair_duration_ms += elapsed
+            if response is not None:
+                self.request_log.append(_safe_response_meta(response, elapsed))
+
+    def _check_status(self, response) -> None:
+        if response.status_code in (401, 403):
+            raise ProviderAuthError(f"HTTP {response.status_code}")
+        if response.status_code == 402:
+            raise ProviderQuotaError("HTTP 402 (credits exhausted?)")
+        if response.status_code == 429:
+            # Free-model limits can be model-specific. Keep trying the next
+            # OpenRouter model instead of disabling the shared key.
+            raise ProviderError("HTTP 429 rate limit")
+        if response.status_code == 404:
+            raise ProviderError(
+                f"model not found: {self.model} "
+                "(not in this key's catalog yet?)")
+        if response.status_code >= 400:
+            raise ProviderError(f"HTTP {response.status_code}")
+
+    @staticmethod
+    def _raise_embedded_error(error, stage: str) -> None:
+        code = error.get("code") if isinstance(error, dict) else "unknown"
+        try:
+            numeric = int(code)
+        except (TypeError, ValueError):
+            numeric = None
+        if numeric in (401, 403):
+            raise ProviderAuthError(
+                f"OpenRouter {stage} error {numeric}")
+        if numeric == 402:
+            raise ProviderQuotaError(
+                f"OpenRouter {stage} error 402 (credits exhausted?)")
+        # 429 remains model-local so the next free model is still attempted.
+        raise ProviderError(f"OpenRouter {stage} error {code}")
+
+    def _final_text(self, response):
+        data = response.json()
+        error = data.get("error")
+        if error:
+            self._raise_embedded_error(error, "response")
+        choices = data.get("choices") or []
+        if choices and isinstance(choices[0], dict) and choices[0].get("error"):
+            self._raise_embedded_error(choices[0]["error"], "choice")
+        # NvidiaProvider parses the same OpenAI-compatible final-answer and
+        # usage fields while deliberately ignoring reasoning content.
+        return super()._final_text(response)
+
+
 _REGISTRY = {
     AnthropicProvider.name: AnthropicProvider,
     GeminiProvider.name: GeminiProvider,
     NvidiaProvider.name: NvidiaProvider,
+    OpenRouterProvider.name: OpenRouterProvider,
 }
 
 
