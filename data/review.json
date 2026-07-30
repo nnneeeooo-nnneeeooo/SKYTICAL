@@ -1,46 +1,29 @@
 [
   {
-    "id": "g-20260730-1035-4",
-    "queuedUtc": "2026-07-30T10:35Z",
+    "id": "g-20260730-1117-8",
+    "queuedUtc": "2026-07-30T11:17Z",
     "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves a major capital investment program exceeding $20 billion for airport infrastructure modernization.",
+    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
+    "decisionReason": "Aviation safety event involving PAN PAN/MAYDAY declaration and possible near-hull loss during approach; requires human review.",
     "riskFlags": [
-      "financial_or_order_claim"
+      "accident_or_serious_incident",
+      "unconfirmed_or_developing"
     ],
     "facts": [
       {
         "factId": "F1",
-        "claim": "United Airlines announced a partnership with the Metropolitan Washington Airports Authority and the US Department of Transportation on a capital investment program of more than $20 billion to transform Washington Dulles International Airport over the next decade.",
-        "sourceQuote": "United Airlines announced that it is partnering with the Metropolitan Washington Airports Authority and the US Department of Transportation (DOT) on a more than $20 billion capital investment program aimed at transforming Washington Dulles International Airport (IAD) over the next decade.",
-        "sourceUrl": "https://www.aerotime.aero/articles/united-dulles-airport-unveil-20-billion-overhaul-including-new-concourses",
+        "claim": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach.",
+        "sourceQuote": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach.",
+        "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
       },
       {
         "factId": "F2",
-        "claim": "The transformation plan announced on July 29, 2026, calls for over five million square feet of new or renovated space while preserving architect Eero Saarinen's original terminal design.",
-        "sourceQuote": "Announced July 29, 2026, the plan calls for more than five million square feet of new or renovated space, including modernized concourses, upgraded ticketing areas, and a renovated Main Terminal, while preserving architect Eero Saarinen’s original terminal design.",
-        "sourceUrl": "https://www.aerotime.aero/articles/united-dulles-airport-unveil-20-billion-overhaul-including-new-concourses",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The overhaul includes replacing the C/D Concourse and installing a new AeroTrain system and walking tunnel to replace the airport's mobile lounge vehicles.",
-        "sourceQuote": "A new AeroTrain system and a central walking tunnel are intended to improve movement between the terminal, concourses, and gates, eventually replacing the airport’s mobile lounge vehicles altogether.",
-        "sourceUrl": "https://www.aerotime.aero/articles/united-dulles-airport-unveil-20-billion-overhaul-including-new-concourses",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "A new Concourse E featuring 14 additional United gates is expected to open in late 2026 to expand international capacity.",
-        "sourceQuote": "A new Concourse E, featuring 14 additional United gates, is expected to open in late 2026, giving the airline more capacity for international routes",
-        "sourceUrl": "https://www.aerotime.aero/articles/united-dulles-airport-unveil-20-billion-overhaul-including-new-concourses",
+        "claim": "The incident involved a near 'Hull Loss' event averted by the captain's intervention after a first officer's error.",
+        "sourceQuote": "Near 'Hull Loss': British Airways Captain Intervened After First Officer's 3,000ft Blunder",
+        "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
@@ -48,68 +31,68 @@
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "The story involves a major capital investment program exceeding $20 billion for airport infrastructure modernization.",
-      "cat": "ops",
+      "decisionReason": "Aviation safety event involving PAN PAN/MAYDAY declaration and possible near-hull loss during approach; requires human review.",
+      "cat": "safety",
       "zh": {
-        "title": "聯合航空與華盛頓杜勒斯機場公布逾200億美元升級計畫",
-        "summary": "聯合航空與華盛頓首都機場管理局及美國運輸部合作，於2026年7月29日公布一項超過200億美元的資本投資計畫，預計在未來十年全面升級華盛頓杜勒斯國際機場。該計畫涵蓋超過500萬平方英呎的新建或翻新空間，包括替換現有的C/D候機廊，並引入新系統取代行動休憩車。",
+        "title": "英國航空航班進場遇資料故障 機長介入避免近失事",
+        "summary": "一架英國航空航班在進場過程中，因遭遇大氣數據參考故障，先宣告PAN PAN後升級為MAYDAY，機長介入阻止可能的近機身全損事故。",
         "body": [
-          "聯合航空表示，將與華盛頓首都機場管理局（Metropolitan Washington Airports Authority）及美國運輸部（DOT）合作，於未來十年在華盛頓杜勒斯國際機場（IAD）推動一項超過200億美元的資本投資計畫。該項改造計畫於2026年7月29日正式公布，旨在升級該機場的航廈與各項營運設施。",
-          "根據公布的計畫內容，工程將涉及超過500萬平方英呎的新建或翻新空間。項目包括現代化的候機廊、升級的票務區域以及主航廈的翻修工程，同時計畫中將保留由建築師Eero Saarinen設計的原航廈經典建築風貌。此外，華盛頓首都機場管理局此前已為該機場撥款70億美元用於現代化工程。",
-          "在航廈設施升級方面，該計畫將全面替換現有的C/D候機廊，以適應更多及更大型的客機運作。計畫同時涵蓋停車場與報到櫃檯升級、更高效率的安全檢查流程，以及全新的AeroTrain系統與中央步行隧道。這些新設施預計將逐步完全取代機場現有的行動休憩車（mobile lounge）接駁系統。",
-          "計畫還包括建設與新海關設施相連的步行通道、升級行李處理系統，並擴建商業及貴賓室空間，其中包括規劃中的聯合航空Polaris貴賓室。此外，部分現代化工程已在進行中，擁有14個聯合航空登機門的新E候機廊預計於2026年底啟用，將增強該航空公司的國際航線容量。"
+          "一架英國航空（British Airways）航班在進場階段發生大氣數據參考故障，機組員先宣告PAN PAN後升級為MAYDAY，後由機長介入接管操作。",
+          "根據航空媒體Simple Flying報導，該航班遭遇「Air Data Reference failure」並面臨「Near 'Hull Loss'」的危險情況。",
+          "事件涉及正駕駛即時反應避免第一副駕駛操作失誤可能導致的近失事後果，目前尚無明確的人員傷亡或機身受損報告。",
+          "報導指該事件最終由機長緊急介入後解除危機，實際航班編號、具體發生日期、機場及航機型號等細節尚未在該報導中揭露。",
+          "本社將此事件列為需要人工審核的重大安全事件，後續將視官方調查或進一步資訊更新報導。"
         ]
       },
       "en": {
-        "title": "United Airlines and Dulles Airport Unveil $20 Billion Modernization Plan",
-        "summary": "United Airlines, in partnership with the Metropolitan Washington Airports Authority and the US Department of Transportation, announced a capital investment program of more than $20 billion to transform Washington Dulles International Airport over the next decade. Announced on July 29, 2026, the plan involves over five million square feet of new or renovated space, including modernized concourses, upgraded ticketing facilities, and a renovated Main Terminal. Modernization plans also call for replacing the C/D Concourse and phasing out the airport's mobile lounge system in favor of an expanded AeroTrain system and central walking tunnel.",
+        "title": "British Airways Captain Intervened After First Officer's 3,000ft Blunder During Approach",
+        "summary": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach, with the captain intervening to avert a near hull-loss event.",
         "body": [
-          "United Airlines announced a partnership with the Metropolitan Washington Airports Authority and the US Department of Transportation on a capital investment program exceeding $20 billion aimed at transforming Washington Dulles International Airport over the next decade. Officially announced on July 29, 2026, the long-term initiative represents a major infrastructure upgrade for the key international gateway serving the United States capital region.",
-          "The comprehensive overhaul plan calls for developing or renovating more than five million square feet of airport infrastructure. Modernization projects include upgraded ticketing areas, streamlined security checkpoint facilities, and a renovated Main Terminal. The project design specifically incorporates measures to preserve the architectural framework of architect Eero Saarinen’s original terminal structure. Before this investment program was unveiled, the Airports Authority had previously allocated $7 billion toward modernization efforts at the facility.",
-          "Under the newly detailed facility plans, the current C/D Concourse will be fully replaced with a modern concourse designed to accommodate larger aircraft and support expanded international flight schedules. Passengers can expect additional gates with enlarged seating areas, dedicated workspaces, and expanded commercial amenities. The modernization also features enhanced baggage handling systems and direct walkable access to a new, expanded US Customs facility.",
-          "To enhance mobility across the airport complex, an expanded AeroTrain system and a central walking tunnel will be constructed to move passengers between the terminal, concourses, and gate areas. This transportation infrastructure upgrade is intended to eventually replace the airport’s long-standing mobile lounge vehicle fleet entirely. Furthermore, the overhaul encompasses expanded retail options and lounge space, including plans for one of the largest United Polaris lounges in the airline's network.",
-          "Some components of the broader Dulles modernization program are already underway ahead of the multiyear plan. A new Concourse E featuring 14 dedicated United Airlines gates is scheduled to open in late 2026. The new facility will provide the carrier with increased operational capacity for international routes, direct access to the airport's AeroTrain network, and new passenger lounge amenities."
+          "A British Airways flight declared a PAN PAN and subsequently upgraded to a MAYDAY after encountering an Air Data Reference failure during its approach.",
+          "According to a Simple Flying report, the captain intervened after a first officer's error, preventing what was described as a near 'Hull Loss' incident.",
+          "The report indicates that the event involved the captain taking over to resolve the situation, though specific details such as the flight number, date, airport, and aircraft type were not disclosed.",
+          "The incident has been flagged for manual review due to its serious safety nature and the developing status of the available information."
         ]
       },
       "flash": {
-        "zh": "聯合航空與華盛頓杜勒斯機場公布逾200億美元改造計畫",
-        "en": "United Airlines and Dulles Airport unveil $20B modernization plan",
-        "hot": false
+        "zh": "英航航班進近發生資料故障宣告MAYDAY",
+        "en": "BA flight declares MAYDAY after Air Data failure on approach",
+        "hot": true
       },
-      "incident": null,
+      "incident": {
+        "date": "2026-07-30",
+        "sev": "ser",
+        "aircraft": "unknown",
+        "operator": "British Airways",
+        "phase": {
+          "zh": "進場",
+          "en": "Approach"
+        },
+        "location": {
+          "zh": "不明",
+          "en": "Unknown"
+        },
+        "desc": {
+          "zh": "航班進場期間發生大氣資料參考故障，機組先宣告PAN PAN後升級MAYDAY，機長介入。",
+          "en": "Flight experienced Air Data Reference failure during approach, declaring PAN then MAYDAY, with captain intervening."
+        },
+        "status": "prelim"
+      },
       "facts": [
         {
           "factId": "F1",
-          "claim": "United Airlines announced a partnership with the Metropolitan Washington Airports Authority and the US Department of Transportation on a capital investment program of more than $20 billion to transform Washington Dulles International Airport over the next decade.",
-          "sourceQuote": "United Airlines announced that it is partnering with the Metropolitan Washington Airports Authority and the US Department of Transportation (DOT) on a more than $20 billion capital investment program aimed at transforming Washington Dulles International Airport (IAD) over the next decade.",
-          "sourceUrl": "https://www.aerotime.aero/articles/united-dulles-airport-unveil-20-billion-overhaul-including-new-concourses",
+          "claim": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach.",
+          "sourceQuote": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach.",
+          "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F2",
-          "claim": "The transformation plan announced on July 29, 2026, calls for over five million square feet of new or renovated space while preserving architect Eero Saarinen's original terminal design.",
-          "sourceQuote": "Announced July 29, 2026, the plan calls for more than five million square feet of new or renovated space, including modernized concourses, upgraded ticketing areas, and a renovated Main Terminal, while preserving architect Eero Saarinen’s original terminal design.",
-          "sourceUrl": "https://www.aerotime.aero/articles/united-dulles-airport-unveil-20-billion-overhaul-including-new-concourses",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The overhaul includes replacing the C/D Concourse and installing a new AeroTrain system and walking tunnel to replace the airport's mobile lounge vehicles.",
-          "sourceQuote": "A new AeroTrain system and a central walking tunnel are intended to improve movement between the terminal, concourses, and gates, eventually replacing the airport’s mobile lounge vehicles altogether.",
-          "sourceUrl": "https://www.aerotime.aero/articles/united-dulles-airport-unveil-20-billion-overhaul-including-new-concourses",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "A new Concourse E featuring 14 additional United gates is expected to open in late 2026 to expand international capacity.",
-          "sourceQuote": "A new Concourse E, featuring 14 additional United gates, is expected to open in late 2026, giving the airline more capacity for international routes",
-          "sourceUrl": "https://www.aerotime.aero/articles/united-dulles-airport-unveil-20-billion-overhaul-including-new-concourses",
+          "claim": "The incident involved a near 'Hull Loss' event averted by the captain's intervention after a first officer's error.",
+          "sourceQuote": "Near 'Hull Loss': British Airways Captain Intervened After First Officer's 3,000ft Blunder",
+          "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
@@ -121,68 +104,43 @@
       ],
       "summarySupportedBy": [
         "F1",
-        "F2",
-        "F3"
+        "F2"
       ],
       "entities": {
         "organizations": [
-          "United Airlines",
-          "Metropolitan Washington Airports Authority",
-          "US Department of Transportation",
-          "DOT"
+          "Simple Flying"
         ],
         "airlines": [
-          "United Airlines",
-          "United"
+          "British Airways"
         ],
         "aircraft_models": [],
-        "airports": [
-          "Washington Dulles International Airport",
-          "IAD",
-          "Dulles International"
-        ],
+        "airports": [],
         "locations": [],
         "flight_numbers": [],
         "registration_numbers": [],
         "event_dates": [
-          "July 29, 2026",
-          "late 2026"
+          "2026-07-30"
         ]
       },
-      "eventStatus": "confirmed",
+      "eventStatus": "under_investigation",
       "riskFlags": [
-        "financial_or_order_claim"
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
       ],
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260730-1035-4",
-      "primarySource": "AeroTime",
+      "id": "g-20260730-1117-8",
+      "primarySource": "Simple Flying",
       "items": [
         {
-          "title": "United, Dulles Airport unveil $20 billion overhaul including new concourses",
-          "url": "https://www.aerotime.aero/articles/united-dulles-airport-unveil-20-billion-overhaul-including-new-concourses",
-          "publishedUtc": "2026-07-30T08:50Z",
-          "summary": "United Airlines announced that it is partnering with the Metropolitan Washington Airports Authority and the US Department of… The post United, Dulles Airport unveil $20 billion overhaul including new concourses appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Trump unveils $22 billion plan to remake Washington Dulles airport",
-          "summary": "Trump unveils $22 billion plan to remake Washington Dulles airport &nbsp;&nbsp; Reuters",
-          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZXhHaHYtMVE2OUdfRHZTUlhoTnpFNHZ6TXBKdV9IVjRYVklkNHJZYVpsWUJEdHpfeFpZNkZNX3plYmFWaVU1a3haQmEwcWV5Vjh4NGlvcEVnTEhqdTl4VkdsZnI2NXpMaFQzLUJSaUNpX2RmY0t5dzNjZ2VXeEhKZUZMcmJ4dmxvU3NOUGRnc2JYdFJFMTVaSXNrWHM0Y0ZFWlBXNkVuVzNrdw?oc=5",
-          "source": "Reuters",
-          "companion": true,
-          "publishedUtc": "2026-07-29T22:57Z"
-        },
-        {
-          "title": "Washington Dulles Details US$20 Billion-Plus Overhaul to Retire Mobile Lounges",
-          "summary": "Washington Dulles Details US$20 Billion-Plus Overhaul to Retire Mobile Lounges &nbsp;&nbsp; Airways Magazine",
-          "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPMHFvZFA3MkROVmtTVElJZkhrb1hYZm9RM0xSaWZwZV9wTHo4UjdNY1N2ejRaM1hJdHRpZXVvX2hBSGlKWmljRHFSMFhrYVpZYmtSYTl0Q1JqNFZBcU9fbFdIWmpYeWdTRDlDWjZ0UkQtTXFwRlRsNmhCblBOdHNkbzlLSQ?oc=5",
-          "source": "Airways Magazine",
-          "companion": true,
-          "publishedUtc": "2026-07-29T21:41Z"
+          "title": "Near 'Hull Loss': British Airways Captain Intervened After First Officer's 3,000ft Blunder",
+          "url": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
+          "publishedUtc": "2026-07-30T08:48Z",
+          "summary": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/101-british-airways-airbus-a320-airlinephoto-_-shutterstock.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
         }
       ],
       "updateCandidate": false,
