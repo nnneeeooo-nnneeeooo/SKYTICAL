@@ -6,12 +6,20 @@
   const branch = app.dataset.branch;
   const els = Object.fromEntries([
     "github-token", "clear-token", "source-urls", "source-text",
+    "article-summary", "publication-mode", "manual-time-panel",
+    "publication-time",
     "image-input", "image-list", "upload-zone", "article-type", "language",
     "model", "reasoning-tier", "chat-history", "instruction", "clear-chat",
     "generate", "form-error", "security-state", "job-state", "metric-model",
     "metric-reasoning", "metric-fallback", "metric-duration",
     "metric-tokens", "metric-rate", "attempts", "request-log",
     "json-output", "copy-json", "download-json",
+    "review-panel", "review-status", "review-type", "review-time",
+    "review-time-source", "review-draft-status", "preview-zh-title",
+    "preview-zh-summary", "preview-zh-body", "preview-en-title",
+    "preview-en-summary", "preview-en-body", "confirm-model",
+    "custom-model-panel", "custom-model", "regenerate", "publish",
+    "publish-state",
   ].map(id => [id, document.getElementById(id)]));
 
   const pathParts = location.pathname.split("/").filter(Boolean);
@@ -23,7 +31,25 @@
   const images = [];
   const conversation = [];
   let patInputRevision = 0;
-  let lastDraft = null;
+  let lastResult = null;
+
+  const ARTICLE_TYPE_LABELS = {
+    auto: "自動偵測",
+    flash: "快訊",
+    press_release: "新聞稿",
+    incident: "事故／事件",
+    airline: "航司",
+    airport: "機場",
+    fleet_order: "機隊／訂單",
+    regulation: "監管",
+    financial: "財報",
+  };
+  const TIME_SOURCE_LABELS = {
+    manual: "手動指定（臺北時間）",
+    source_metadata: "來源網頁結構化時間",
+    model_source_text: "模型從來源明文辨識",
+    generation_fallback: "無法辨識，使用生成時間",
+  };
 
   const text = (element, value) => { element.textContent = value; };
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -215,6 +241,85 @@
     return response;
   }
 
+  function encodeUtf8(value) {
+    return bytesToBase64(new TextEncoder().encode(value));
+  }
+
+  function decodeUtf8(value) {
+    return new TextDecoder().decode(base64ToBytes(value));
+  }
+
+  async function readRepoFile(path) {
+    const response = await github(
+      `${path}?ref=${encodeURIComponent(branch)}`);
+    if (response.status === 404) return {sha: null, content: null};
+    if (!response.ok) {
+      throw new Error(`讀取 ${path} 失敗（HTTP ${response.status}）`);
+    }
+    const file = await response.json();
+    return {sha: file.sha, content: decodeUtf8(file.content)};
+  }
+
+  async function writeRepoFile(path, content, message, sha = null) {
+    const body = {message, content: encodeUtf8(content), branch};
+    if (sha) body.sha = sha;
+    const response = await github(
+      path, {method: "PUT", body: JSON.stringify(body)});
+    if (!response.ok) {
+      const problem = await response.json().catch(() => ({}));
+      throw new Error(
+        problem.message || `寫入 ${path} 失敗（HTTP ${response.status}）`);
+    }
+    return response.json();
+  }
+
+  async function writeRepoJson(path, value, message) {
+    const current = await readRepoFile(path);
+    return writeRepoFile(
+      path, `${JSON.stringify(value, null, 2)}\n`, message, current.sha);
+  }
+
+  async function updateCappedList(path, item, limit) {
+    const current = await readRepoFile(path);
+    let rows = [];
+    if (current.content) {
+      try {
+        const parsed = JSON.parse(current.content);
+        if (Array.isArray(parsed)) rows = parsed;
+      } catch (error) {
+        throw new Error(`${path} 不是有效 JSON，已停止發布`);
+      }
+    }
+    const articleId = item.articleId;
+    rows = [
+      item,
+      ...rows.filter(row => row?.articleId !== articleId),
+    ].slice(0, limit);
+    return writeRepoFile(
+      path,
+      `${JSON.stringify(rows, null, 2)}\n`,
+      `publish manual article ${articleId}`,
+      current.sha,
+    );
+  }
+
+  async function triggerDeployment(articleId, articleCommit) {
+    const path = ".github/deploy-trigger";
+    const current = await readRepoFile(path);
+    const content = [
+      "# Manual article deployment trigger",
+      "",
+      "This file intentionally triggers the manual-article-deploy workflow.",
+      "",
+      `article_commit=${articleCommit}`,
+      `manual_article_id=${articleId}`,
+      `triggered_at=${new Date().toISOString()}`,
+      "",
+    ].join("\n");
+    return writeRepoFile(
+      path, content, `deploy manual article ${articleId}`, current.sha);
+  }
+
   function makeJobId() {
     return [...crypto.getRandomValues(new Uint8Array(16))]
       .map(value => value.toString(16).padStart(2, "0")).join("");
@@ -303,6 +408,39 @@
       .map(value => value.trim()).filter(Boolean))];
   }
 
+  function taipeiInputValue(date = new Date()) {
+    return new Date(date.getTime() + 8 * 60 * 60 * 1000)
+      .toISOString().slice(0, 19);
+  }
+
+  function manualPublicationUtc() {
+    const value = els["publication-time"].value;
+    if (!value) return "";
+    const parsed = new Date(`${value}+08:00`);
+    return Number.isNaN(parsed.getTime()) ? "" : parsed.toISOString();
+  }
+
+  function validCustomModel(value) {
+    return /^(gemini|nvidia|openrouter):[A-Za-z0-9._/+:-]{2,180}$/
+      .test(value);
+  }
+
+  function confirmationModel() {
+    const selected = els["confirm-model"].value;
+    if (selected === "same") {
+      return {model: lastResult?.finalModel || "auto", customModel: ""};
+    }
+    if (selected === "custom") {
+      const customModel = els["custom-model"].value.trim();
+      if (!validCustomModel(customModel)) {
+        throw new Error(
+          "自訂模型格式須為 gemini:模型、nvidia:模型或 openrouter:模型");
+      }
+      return {model: "custom", customModel};
+    }
+    return {model: selected, customModel: ""};
+  }
+
   function validateForm() {
     if (!validToken) return "私人網址權杖無效";
     if (!validPat(els["github-token"].value.trim())) {
@@ -312,6 +450,10 @@
     if (!urls.length || urls.length > 10) return "請提供 1 至 10 個來源網址";
     if (!urls.every(url => /^https?:\/\//i.test(url))) {
       return "來源網址只能使用 http:// 或 https://";
+    }
+    if (els["publication-mode"].value === "manual"
+        && !manualPublicationUtc()) {
+      return "請指定有效的臺北文章日期與時間";
     }
     const encodedImages = images.reduce(
       (sum, image) => sum + image.data.length, 0);
@@ -380,6 +522,62 @@
     return values.length ? values.join(" ｜ ") : "供應商未回傳 rate-limit 標頭";
   }
 
+  function renderPreviewBody(element, paragraphs) {
+    element.replaceChildren();
+    for (const paragraph of paragraphs || []) {
+      const node = document.createElement("p");
+      node.textContent = paragraph;
+      element.append(node);
+    }
+  }
+
+  function publicationTimeLabel(value) {
+    const parsed = new Date(value);
+    if (Number.isNaN(parsed.getTime())) return value || "—";
+    return parsed.toLocaleString("zh-TW", {
+      timeZone: "Asia/Taipei",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }) + "（UTC+8）";
+  }
+
+  function renderReview(result) {
+    const draft = result.draft || {};
+    const publication = result.publication || {};
+    const zh = draft.zh || {};
+    const en = draft.en || {};
+    text(els["review-type"],
+      ARTICLE_TYPE_LABELS[result.detectedArticleType] ||
+      result.detectedArticleType || "—");
+    text(els["review-time"],
+      publicationTimeLabel(result.publicationTimeUtc));
+    text(els["review-time-source"],
+      TIME_SOURCE_LABELS[result.publicationTimeSource] ||
+      result.publicationTimeSource || "—");
+    text(els["review-draft-status"], draft.status || "—");
+    text(els["preview-zh-title"], zh.title || "—");
+    text(els["preview-zh-summary"], zh.summary || "");
+    renderPreviewBody(els["preview-zh-body"], zh.body);
+    text(els["preview-en-title"], en.title || "—");
+    text(els["preview-en-summary"], en.summary || "");
+    renderPreviewBody(els["preview-en-body"], en.body);
+    els["review-panel"].hidden = false;
+    els["regenerate"].disabled = false;
+    els.publish.disabled = !publication.article;
+    text(els["review-status"],
+      publication.article ? "等待確認" : "不可發布");
+    els["review-status"].className = publication.article
+      ? "job-state working" : "job-state error";
+    text(els["publish-state"], publication.article
+      ? "確認內容後可直接發布；JSON 與部署由系統自動處理。"
+      : "此草稿未通過發布組裝，請更換模型或調整資料後重新生成。");
+  }
+
   function displayResult(result) {
     text(els["metric-model"],
       result.finalModelName || result.finalModel || "全部模型失敗");
@@ -425,19 +623,23 @@
     if (result.status !== "success") {
       throw new Error(result.error || "生成失敗");
     }
-    lastDraft = result.draft;
-    els["json-output"].value = JSON.stringify(result.draft, null, 2);
+    lastResult = result;
+    const publicationJson = result.publication?.article
+      ? {articles: [result.publication.article]}
+      : result.draft;
+    els["json-output"].value = JSON.stringify(publicationJson, null, 2);
     els["copy-json"].disabled = false;
     els["download-json"].disabled = false;
+    renderReview(result);
     addLog(`生成完成：${result.finalModelName}`);
     conversation.push({
       role: "assistant",
-      text: `${result.finalModelName} 已產出 ${result.draft.status} JSON。`,
+      text: `${result.finalModelName} 已產出 ${result.draft.status} 草稿，等待確認。`,
     });
     renderConversation();
   }
 
-  async function generate() {
+  async function generate(selection = null, previousDraft = null) {
     text(els["form-error"], "");
     const problem = validateForm();
     if (problem) {
@@ -445,7 +647,9 @@
       return;
     }
     els.generate.disabled = true;
-    lastDraft = null;
+    els.regenerate.disabled = true;
+    els.publish.disabled = true;
+    lastResult = null;
     els["json-output"].value = "";
     els["copy-json"].disabled = true;
     els["download-json"].disabled = true;
@@ -453,22 +657,34 @@
     els["request-log"].dataset.empty = "true";
     els["request-log"].replaceChildren();
     const instruction = els.instruction.value.trim();
-    if (instruction) {
+    if (instruction && !previousDraft) {
       conversation.push({role: "user", text: instruction});
       renderConversation();
     }
     const jobId = makeJobId();
+    const requested = selection || {
+      model: els.model.value,
+      customModel: "",
+    };
     const payload = {
       version: 1,
       articleType: els["article-type"].value,
       language: els.language.value,
-      model: els.model.value,
+      model: requested.model,
+      customModel: requested.customModel,
       reasoningTier: els["reasoning-tier"].value,
       sourceUrls: sourceUrls(),
       sourceText: els["source-text"].value,
+      articleSummary: els["article-summary"].value,
+      publicationMode: els["publication-mode"].value,
+      publicationTimeUtc: (
+        els["publication-mode"].value === "manual"
+          ? manualPublicationUtc() : ""
+      ),
       images: images.map(({mime, data}) => ({mime, data})),
       instruction,
       conversation: conversation.slice(-12),
+      previousDraft,
       submittedUtc: new Date().toISOString(),
     };
     try {
@@ -486,6 +702,84 @@
       text(els["form-error"], error.message || "工作失敗");
       addLog(`失敗：${error.message || "未知錯誤"}`);
       setState("失敗", "error");
+    } finally {
+      els.generate.disabled = false;
+      if (lastResult) {
+        els.regenerate.disabled = false;
+        els.publish.disabled = !lastResult.publication?.article;
+      }
+    }
+  }
+
+  async function regenerateDraft() {
+    if (!lastResult?.draft) return;
+    try {
+      const selected = confirmationModel();
+      conversation.push({
+        role: "user",
+        text: `確認階段改用 ${selected.customModel || selected.model} 重新生成。`,
+      });
+      renderConversation();
+      await generate(selected, lastResult.draft);
+    } catch (error) {
+      text(els["form-error"], error.message || "無法重新生成");
+    }
+  }
+
+  async function publishArticle() {
+    const publication = lastResult?.publication;
+    const article = publication?.article;
+    if (!article || !publication.articlePath) {
+      text(els["publish-state"], "目前沒有可發布的文章資料。");
+      return;
+    }
+    if (!/^data\/articles\/manual-[0-9a-f]{32}\.json$/
+      .test(publication.articlePath)) {
+      text(els["publish-state"], "文章路徑驗證失敗，已停止發布。");
+      return;
+    }
+    els.publish.disabled = true;
+    els.regenerate.disabled = true;
+    els.generate.disabled = true;
+    setState("發布至 GitHub", "working");
+    text(els["review-status"], "發布中");
+    els["review-status"].className = "job-state working";
+    text(els["publish-state"], "正在上傳文章 JSON 與更新網站資料…");
+    try {
+      const articleResult = await writeRepoJson(
+        publication.articlePath,
+        {articles: [article]},
+        `publish manual article ${article.id}`,
+      );
+      addLog(`文章 JSON 已寫入 ${publication.articlePath}`);
+      let latestCommit = articleResult.commit?.sha || "";
+      if (publication.flash) {
+        const result = await updateCappedList(
+          "data/flashes.json", publication.flash, 10);
+        latestCommit = result.commit?.sha || latestCommit;
+        addLog("首頁快訊資料已同步");
+      }
+      if (publication.incident) {
+        const result = await updateCappedList(
+          "data/incidents.json", publication.incident, 60);
+        latestCommit = result.commit?.sha || latestCommit;
+        addLog("事故／事件資料已同步");
+      }
+      await triggerDeployment(article.id, latestCommit);
+      addLog("Pages 部署已觸發");
+      text(els["publish-state"],
+        `已提交發布：${article.id}。GitHub Pages 正在重新建置。`);
+      text(els["review-status"], "已提交發布");
+      els["review-status"].className = "job-state success";
+      setState("已提交發布", "success");
+    } catch (error) {
+      text(els["publish-state"], error.message || "發布失敗");
+      text(els["review-status"], "發布失敗");
+      els["review-status"].className = "job-state error";
+      addLog(`發布失敗：${error.message || "未知錯誤"}`);
+      setState("發布失敗", "error");
+      els.publish.disabled = false;
+      els.regenerate.disabled = false;
     } finally {
       els.generate.disabled = false;
     }
@@ -528,23 +822,39 @@
     conversation.splice(0);
     renderConversation();
   });
-  els.generate.addEventListener("click", generate);
+  els["publication-mode"].addEventListener("change", () => {
+    const manual = els["publication-mode"].value === "manual";
+    els["manual-time-panel"].hidden = !manual;
+    if (manual && !els["publication-time"].value) {
+      els["publication-time"].value = taipeiInputValue();
+    }
+  });
+  els["confirm-model"].addEventListener("change", () => {
+    els["custom-model-panel"].hidden =
+      els["confirm-model"].value !== "custom";
+  });
+  els.generate.addEventListener("click", () => generate());
+  els.regenerate.addEventListener("click", regenerateDraft);
+  els.publish.addEventListener("click", publishArticle);
   els["copy-json"].addEventListener("click", async () => {
     await navigator.clipboard.writeText(els["json-output"].value);
     text(els["copy-json"], "已複製");
     setTimeout(() => text(els["copy-json"], "複製"), 1300);
   });
   els["download-json"].addEventListener("click", () => {
-    if (!lastDraft) return;
+    if (!els["json-output"].value) return;
     const link = document.createElement("a");
     link.href = URL.createObjectURL(new Blob(
-      [JSON.stringify(lastDraft, null, 2)], {type: "application/json"}));
-    link.download = `avwire-manual-${Date.now()}.json`;
+      [els["json-output"].value], {type: "application/json"}));
+    link.download = lastResult?.publication?.article?.id
+      ? `${lastResult.publication.article.id}.json`
+      : `avwire-manual-${Date.now()}.json`;
     link.click();
     setTimeout(() => URL.revokeObjectURL(link.href), 1000);
   });
 
   els["request-log"].dataset.empty = "true";
+  els["publication-time"].value = taipeiInputValue();
   const restoredPat = validToken && await restorePat();
   if (validToken) {
     text(els["security-state"], restoredPat

@@ -5,13 +5,16 @@ import json
 import os
 import sys
 import tempfile
+from datetime import datetime, timezone
 from pathlib import Path
+from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 import build  # noqa: E402
 import manual_draft  # noqa: E402
+import write  # noqa: E402
 from model_config import (  # noqa: E402
     MODEL_DISPLAY_NAMES,
     MODEL_ORDER,
@@ -41,8 +44,12 @@ def sample_payload():
         "model": "auto",
         "sourceUrls": ["https://8.8.8.8/source"],
         "sourceText": "Official source text with enough evidence.",
+        "articleSummary": "Use this as the expansion outline.",
         "instruction": "Keep the authority name in English.",
         "conversation": [{"role": "user", "text": "Focus on chronology."}],
+        "publicationMode": "auto",
+        "publicationTimeUtc": "",
+        "previousDraft": None,
         "images": [],
     }
 
@@ -69,8 +76,27 @@ def test_encryption_round_trip():
 def test_payload_limits_and_ssrf():
     payload = manual_draft.validate_payload(sample_payload())
     check(payload["articleType"] == "incident"
-          and payload["reasoningTier"] == "deep",
+          and payload["reasoningTier"] == "deep"
+          and payload["articleSummary"]
+          == "Use this as the expansion outline.",
           "manual selection contract validates")
+    automatic = sample_payload()
+    automatic["articleType"] = "auto"
+    check(manual_draft.validate_payload(automatic)["articleType"] == "auto",
+          "article type can be detected automatically")
+    manual_time = sample_payload()
+    manual_time["publicationMode"] = "manual"
+    manual_time["publicationTimeUtc"] = "2026-07-30T12:34:56Z"
+    check(
+        manual_draft.validate_payload(manual_time)["publicationTimeUtc"]
+        == "2026-07-30T12:34:56Z",
+        "manual publication time keeps second precision")
+    custom = sample_payload()
+    custom["model"] = "custom"
+    custom["customModel"] = "openrouter:example/model:free"
+    custom_payload = manual_draft.validate_payload(custom)
+    check(custom_payload["model"] == "openrouter:example/model:free",
+          "confirmation stage accepts a provider-prefixed custom model")
     try:
         manual_draft._public_url("http://127.0.0.1/private")
         check(False, "loopback URL must be blocked")
@@ -86,6 +112,109 @@ def test_payload_limits_and_ssrf():
         check(False, "unknown model must be rejected")
     except ValueError:
         check(True, "unknown model is rejected")
+
+
+def test_publication_detection_prompt_and_bundle():
+    soup = manual_draft.BeautifulSoup(
+        '<html><head><meta property="article:published_time" '
+        'content="2026-07-30T10:11:12+08:00"></head></html>',
+        "html.parser",
+    )
+    check(
+        manual_draft._html_publication_time(soup)
+        == "2026-07-30T02:11:12Z",
+        "source metadata publication time is normalized to UTC seconds")
+
+    payload = manual_draft.validate_payload({
+        **sample_payload(),
+        "articleType": "auto",
+    })
+    group = {
+        "id": "manual-test",
+        "primarySource": "Official aviation authority",
+        "items": [{
+            "source": "Official aviation authority",
+            "title": "Airport and airline operational update",
+            "summary": "Aircraft operations continue at the airport.",
+            "fulltext": (
+                "The aviation authority said the airline and airport "
+                "continued aircraft operations."
+            ),
+            "url": "https://8.8.8.8/source",
+            "publishedUtc": "2026-07-30T02:11:12Z",
+            "dateInferred": False,
+        }],
+    }
+    prompt = manual_draft._manual_prompt(payload, group)
+    check(
+        "Use this as the expansion outline." in prompt
+        and "NEVER evidence" in prompt,
+        "operator summary is supplied as an outline but prohibited as evidence")
+
+    draft = {
+        "status": "publish",
+        "decisionReason": "",
+        "cat": "ops",
+        "zh": {
+            "title": "機場與航空公司營運更新",
+            "summary": "主管機關說明航空公司與機場的最新營運狀況。",
+            "body": ["航空主管機關公布最新營運說明。" * 12
+                     for _ in range(write.MIN_BODY_PARAGRAPHS)],
+        },
+        "en": {
+            "title": "Airport and airline operations update",
+            "summary": (
+                "The authority provided an update on airline and airport "
+                "operations."
+            ),
+            "body": [
+                ("The aviation authority said airline and airport operations "
+                 "continued while aircraft movements remained under regular "
+                 "monitoring and established operational procedures. " * 4)
+                for _ in range(write.MIN_BODY_PARAGRAPHS)
+            ],
+        },
+        "flash": {
+            "zh": "主管機關公布航空營運更新。",
+            "en": "The authority published an aviation operations update.",
+            "hot": False,
+        },
+        "incident": None,
+        "facts": [{
+            "factId": "F1",
+            "claim": "Operations continued.",
+            "sourceQuote": "continued aircraft operations",
+        }],
+        "headlineSupportedBy": ["F1"],
+        "summarySupportedBy": ["F1"],
+        "entities": {key: [] for key in write.ENTITY_KEYS},
+        "eventStatus": "confirmed",
+        "riskFlags": [],
+        "requiresHumanReview": False,
+    }
+    check(write.validate_draft(draft) is None,
+          "publication fixture satisfies the editorial draft contract")
+    bundle = manual_draft._publication_bundle(
+        "0123456789abcdef0123456789abcdef",
+        payload,
+        group,
+        draft,
+        SimpleNamespace(label="gemini:gemini-3.6-flash"),
+        "airport",
+        "",
+        datetime(2026, 7, 31, 1, 2, 3, tzinfo=timezone.utc),
+    )
+    check(
+        bundle["articleType"] == "airport"
+        and bundle["publicationTimeUtc"] == "2026-07-30T02:11:12Z"
+        and bundle["publicationTimeSource"] == "source_metadata",
+        "auto type and source publication time reach the publish bundle")
+    check(
+        bundle["articlePath"]
+        == "data/articles/manual-0123456789abcdef0123456789abcdef.json"
+        and bundle["article"]["publishedUtc"] == "2026-07-30T02:11:12Z"
+        and bundle["flash"]["articleId"] == bundle["article"]["id"],
+        "publish bundle links article JSON and flash to one article ID")
 
 
 def test_reasoning_tiers():
@@ -242,10 +371,25 @@ def test_static_security_contract():
     check('<option value="deep" selected>' in html
           and '<option value="standard" selected>' not in html,
           "private page defaults to the highest reasoning tier")
+    model_select = html.split('<select id="model">', 1)[1].split(
+        "</select>", 1)[0]
     check(
         '<option value="{{ model.id }}"{% if loop.first %} selected{% endif %}>'
-        in html and '<option value="auto" selected>' not in html,
+        in model_select and '<option value="auto" selected>' not in model_select,
         "private page selects the first configured model by default")
+    check(
+        '<option value="auto" selected>自動偵測</option>' in html
+        and 'id="article-summary"' in html
+        and 'id="publication-time"' in html
+        and 'type="datetime-local"' in html
+        and 'step="1"' in html,
+        "workbench exposes auto type, summary and second-precision time controls")
+    check(
+        'id="review-panel"' in html
+        and 'id="confirm-model"' in html
+        and 'id="custom-model"' in html
+        and 'id="publish"' in html,
+        "review stage supports built-in and custom model selection plus publish")
     check(
         "PAT_VAULT_CONTEXT" in js
         and "encryptPat" in js and "decryptPat" in js
@@ -264,6 +408,15 @@ def test_static_security_contract():
         "a pasted PAT is saved immediately without waiting for generation")
     check("AES-GCM" in js and "data/manual-jobs/inbox/" in js,
           "browser encrypts before writing a job")
+    check(
+        "async function publishArticle()" in js
+        and "writeRepoJson(" in js
+        and "data\\/articles\\/manual-" in js
+        and "data/flashes.json" in js
+        and "data/incidents.json" in js
+        and ".github/deploy-trigger" in js
+        and "previousDraft" in js,
+        "confirmed drafts update article data and trigger GitHub Pages")
     check("secrets.AVWIRE_MANUAL_TOKEN" in workflow
           and "secrets.OPENROUTER_API_KEY" in workflow
           and "encrypted envelopes only" in workflow
@@ -282,6 +435,7 @@ def main():
     for test in (
         test_encryption_round_trip,
         test_payload_limits_and_ssrf,
+        test_publication_detection_prompt_and_bundle,
         test_reasoning_tiers,
         test_openrouter_manual_provider_order,
         test_fallback_and_telemetry,

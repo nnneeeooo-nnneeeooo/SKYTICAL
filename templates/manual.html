@@ -58,6 +58,11 @@
                     placeholder="貼上完整原文；若網站擋住自動擷取，這裡的內容會成為主要證據。"></textarea>
         </label>
 
+        <label>文章摘要／擴寫大綱
+          <textarea id="article-summary" rows="5"
+                    placeholder="輸入希望文章涵蓋的重點、段落順序或摘要。模型會以此作為擴寫大綱，但所有事實仍必須由來源支持。"></textarea>
+        </label>
+
         <div class="upload-zone" id="upload-zone" tabindex="0">
           <input id="image-input" type="file" accept="image/png,image/jpeg,image/webp" multiple>
           <strong>截圖／圖片</strong>
@@ -68,6 +73,7 @@
         <div class="controls-grid">
           <label>文章類型
             <select id="article-type">
+              <option value="auto" selected>自動偵測</option>
               <option value="flash">快訊</option>
               <option value="press_release">新聞稿</option>
               <option value="incident">事故／事件</option>
@@ -100,6 +106,15 @@
               <option value="deep" selected>深度</option>
             </select>
           </label>
+          <label>文章時間
+            <select id="publication-mode">
+              <option value="auto" selected>自動偵測來源時間</option>
+              <option value="manual">手動指定臺北時間</option>
+            </select>
+          </label>
+          <label id="manual-time-panel" hidden>臺北時間（UTC+8）
+            <input id="publication-time" type="datetime-local" step="1">
+          </label>
         </div>
 
         <div class="conversation">
@@ -116,7 +131,7 @@
         </div>
 
         <button id="generate" class="primary" type="button">
-          生成 AVWIRE 標準 JSON
+          生成新聞草稿
         </button>
         <p id="form-error" class="error" role="alert"></p>
       </section>
@@ -149,11 +164,71 @@
       </aside>
     </div>
 
-    <section class="panel output-panel">
+    <section id="review-panel" class="panel review-panel" hidden>
+      <div class="section-head">
+        <div>
+          <p class="kicker">EDITORIAL REVIEW</p>
+          <h2>確認文章後發布</h2>
+        </div>
+        <span id="review-status" class="job-state idle">等待草稿</span>
+      </div>
+
+      <dl class="review-meta">
+        <div><dt>偵測類型</dt><dd id="review-type">—</dd></div>
+        <div><dt>文章時間</dt><dd id="review-time">—</dd></div>
+        <div><dt>時間來源</dt><dd id="review-time-source">—</dd></div>
+        <div><dt>草稿狀態</dt><dd id="review-draft-status">—</dd></div>
+      </dl>
+
+      <article id="article-preview" class="article-preview">
+        <div>
+          <p class="preview-lang">繁體中文</p>
+          <h3 id="preview-zh-title">—</h3>
+          <p id="preview-zh-summary" class="preview-summary"></p>
+          <div id="preview-zh-body" class="preview-body"></div>
+        </div>
+        <div>
+          <p class="preview-lang">ENGLISH</p>
+          <h3 id="preview-en-title">—</h3>
+          <p id="preview-en-summary" class="preview-summary"></p>
+          <div id="preview-en-body" class="preview-body"></div>
+        </div>
+      </article>
+
+      <div class="confirm-model">
+        <label>確認／重寫使用的模型
+          <select id="confirm-model">
+            <option value="same" selected>沿用本次實際模型</option>
+            <option value="auto">自動（依優先順序 fallback）</option>
+            {% for model in models %}
+            <option value="{{ model.id }}">{{ loop.index }}. {{ model.name }}</option>
+            {% endfor %}
+            <option value="custom">自訂模型 ID</option>
+          </select>
+        </label>
+        <label id="custom-model-panel" hidden>自訂模型 ID
+          <input id="custom-model" type="text" spellcheck="false"
+                 placeholder="openrouter:provider/model:free">
+        </label>
+      </div>
+
+      <div class="review-actions">
+        <button id="regenerate" class="quiet" type="button" disabled>
+          以確認模型重新生成
+        </button>
+        <button id="publish" class="primary" type="button" disabled>
+          確認並發布到 AVWIRE
+        </button>
+      </div>
+      <p id="publish-state" class="publish-state" role="status"></p>
+    </section>
+
+    <details class="panel output-panel">
+      <summary>進階：AVWIRE 發布 JSON（系統會自動上傳）</summary>
       <div class="section-head">
         <div>
           <p class="kicker">AVWIRE CONTRACT</p>
-          <h2>標準 JSON</h2>
+          <h2>發布資料</h2>
         </div>
         <div class="output-actions">
           <button id="copy-json" class="quiet" type="button" disabled>複製</button>
@@ -161,8 +236,8 @@
         </div>
       </div>
       <textarea id="json-output" rows="28" readonly
-                placeholder="生成完成後，通過 schema、逐字引文及證據綁定檢查的 JSON 會顯示在這裡。"></textarea>
-    </section>
+                placeholder="生成完成後，通過 schema、逐字引文及證據綁定檢查的發布 JSON 會顯示在這裡；不需要手動上傳。"></textarea>
+    </details>
   </main>
   <script src="{{ base }}/assets/manual.js" defer></script>
 </body>
