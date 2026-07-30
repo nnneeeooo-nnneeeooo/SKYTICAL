@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   "use strict";
 
   const app = document.querySelector("#app");
@@ -18,6 +18,8 @@
   const marker = pathParts.lastIndexOf("m");
   const manualToken = marker >= 0 ? pathParts[marker + 1] || "" : "";
   const validToken = /^[A-Za-z0-9_-]{32,128}$/.test(manualToken);
+  const PAT_STORAGE_KEY = "avwire-manual-github-pat-v1";
+  const PAT_VAULT_CONTEXT = `avwire-pat-v1:${repository}`;
   const images = [];
   const conversation = [];
   let lastDraft = null;
@@ -90,6 +92,78 @@
       base64ToBytes(envelope.ciphertext),
     );
     return JSON.parse(new TextDecoder().decode(clear));
+  }
+
+  const validPat = value => /^github_pat_[A-Za-z0-9_]+$/.test(value);
+
+  async function patCryptoKey() {
+    const material = new TextEncoder().encode(
+      `${manualToken}\u0000${PAT_VAULT_CONTEXT}`);
+    const digest = await crypto.subtle.digest("SHA-256", material);
+    return crypto.subtle.importKey(
+      "raw", digest, {name: "AES-GCM"}, false, ["encrypt", "decrypt"]);
+  }
+
+  async function encryptPat(token) {
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const ciphertext = await crypto.subtle.encrypt(
+      {
+        name: "AES-GCM",
+        iv,
+        additionalData: new TextEncoder().encode(PAT_VAULT_CONTEXT),
+      },
+      await patCryptoKey(),
+      new TextEncoder().encode(token),
+    );
+    return {
+      version: 1,
+      alg: "A256GCM",
+      iv: bytesToBase64(iv),
+      ciphertext: bytesToBase64(new Uint8Array(ciphertext)),
+    };
+  }
+
+  async function decryptPat(envelope) {
+    if (envelope.version !== 1 || envelope.alg !== "A256GCM") {
+      throw new Error("不支援的 PAT 加密格式");
+    }
+    const clear = await crypto.subtle.decrypt(
+      {
+        name: "AES-GCM",
+        iv: base64ToBytes(envelope.iv),
+        additionalData: new TextEncoder().encode(PAT_VAULT_CONTEXT),
+      },
+      await patCryptoKey(),
+      base64ToBytes(envelope.ciphertext),
+    );
+    const token = new TextDecoder().decode(clear);
+    if (!validPat(token)) throw new Error("解密後的 PAT 格式無效");
+    return token;
+  }
+
+  async function rememberPat() {
+    try {
+      const envelope = await encryptPat(els["github-token"].value.trim());
+      localStorage.setItem(PAT_STORAGE_KEY, JSON.stringify(envelope));
+    } catch (error) {
+      addLog("瀏覽器拒絕保存 PAT；本次工作仍會繼續");
+    }
+  }
+
+  async function restorePat() {
+    try {
+      const stored = localStorage.getItem(PAT_STORAGE_KEY);
+      if (!stored) return false;
+      els["github-token"].value = await decryptPat(JSON.parse(stored));
+      return true;
+    } catch (error) {
+      try {
+        localStorage.removeItem(PAT_STORAGE_KEY);
+      } catch (storageError) {
+        // A browser that blocks storage needs no further cleanup.
+      }
+      return false;
+    }
   }
 
   function githubPath(path) {
@@ -212,7 +286,7 @@
 
   function validateForm() {
     if (!validToken) return "私人網址權杖無效";
-    if (!/^github_pat_[A-Za-z0-9_]+$/.test(els["github-token"].value.trim())) {
+    if (!validPat(els["github-token"].value.trim())) {
       return "請輸入 fine-grained GitHub PAT";
     }
     const urls = sourceUrls();
@@ -364,8 +438,6 @@
       conversation.push({role: "user", text: instruction});
       renderConversation();
     }
-    sessionStorage.setItem("avwire-manual-github-token",
-                           els["github-token"].value.trim());
     const jobId = makeJobId();
     const payload = {
       version: 1,
@@ -381,6 +453,7 @@
       submittedUtc: new Date().toISOString(),
     };
     try {
+      await rememberPat();
       addLog("在瀏覽器內以 AES-256-GCM 加密來源與圖片");
       await submitJob(payload, jobId);
       addLog("加密工作已提交；repository 內只保存密文");
@@ -398,11 +471,14 @@
     }
   }
 
-  els["github-token"].value =
-    sessionStorage.getItem("avwire-manual-github-token") || "";
   els["clear-token"].addEventListener("click", () => {
     els["github-token"].value = "";
-    sessionStorage.removeItem("avwire-manual-github-token");
+    try {
+      localStorage.removeItem(PAT_STORAGE_KEY);
+    } catch (error) {
+      // The input is still cleared when browser storage is unavailable.
+    }
+    text(els["security-state"], "網址權杖有效 · PAT 已清除");
   });
   els["image-input"].addEventListener(
     "change", event => acceptFiles(event.target.files));
@@ -447,8 +523,11 @@
   });
 
   els["request-log"].dataset.empty = "true";
+  const restoredPat = validToken && await restorePat();
   if (validToken) {
-    text(els["security-state"], "網址權杖有效 · AES-256-GCM");
+    text(els["security-state"], restoredPat
+      ? "網址權杖有效 · PAT 已自動解鎖"
+      : "網址權杖有效 · AES-256-GCM");
   } else {
     text(els["security-state"], "私人網址無效");
     text(els["form-error"], "此頁缺少有效的私人網址權杖");
