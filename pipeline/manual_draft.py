@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.3 seconds
-Output:
 """Process encrypted manual-drafting jobs committed by the private workbench.
 
 Only AES-GCM ciphertext is stored in the repository.  The URL token and API
@@ -638,4 +635,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
