@@ -1,30 +1,30 @@
 {
-  "updatedUtc": "2026-07-29T23:52Z",
+  "updatedUtc": "2026-07-30T03:13Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 217,
-      "inputTokens": 855480,
-      "outputTokens": 526188,
-      "unknownCalls": 34
+      "calls": 236,
+      "inputTokens": 973202,
+      "outputTokens": 604589,
+      "unknownCalls": 36
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
-      "calls": 91,
-      "inputTokens": 437293,
-      "outputTokens": 199171,
+      "calls": 101,
+      "inputTokens": 503646,
+      "outputTokens": 226503,
       "unknownCalls": 0
     },
     "nvidia:deepseek-ai/deepseek-v4-pro": {
-      "calls": 75,
+      "calls": 84,
       "inputTokens": 240890,
       "outputTokens": 41704,
-      "unknownCalls": 24
+      "unknownCalls": 33
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 41,
-      "inputTokens": 129507,
-      "outputTokens": 228574,
-      "unknownCalls": 7
+      "calls": 43,
+      "inputTokens": 136059,
+      "outputTokens": 239567,
+      "unknownCalls": 8
     },
     "gemini:gemini-3.5-flash": {
       "calls": 11,
@@ -33,22 +33,22 @@
       "unknownCalls": 9
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
-      "calls": 23,
+      "calls": 31,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 23
+      "unknownCalls": 31
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 23,
-      "inputTokens": 107332,
-      "outputTokens": 26078,
+      "calls": 31,
+      "inputTokens": 158305,
+      "outputTokens": 45508,
       "unknownCalls": 0
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
-      "calls": 21,
+      "calls": 27,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 21
+      "unknownCalls": 27
     }
   },
   "daily": {
@@ -71,6 +71,11 @@
       "calls": 286,
       "inputTokens": 1030022,
       "outputTokens": 561449
+    },
+    "2026-07-30": {
+      "calls": 62,
+      "inputTokens": 241600,
+      "outputTokens": 136156
     }
   }
 }
