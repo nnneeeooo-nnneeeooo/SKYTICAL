@@ -27,7 +27,7 @@
 
     <section class="notice">
       <strong>安全說明</strong>
-      <span>請使用只限本 repository、僅有 Contents 讀寫權限的 fine-grained GitHub PAT。PAT 只保存在本分頁的 sessionStorage，不會送進模型或寫入 repository。</span>
+      <span>首次輸入只限本 repository、僅有 Contents 讀寫權限的 fine-grained GitHub PAT 後，系統會以私人網址權杖加密保存在此瀏覽器，往後自動連線。PAT 不會送進模型、repository 或部署檔。</span>
     </section>
 
     <div class="workspace">
@@ -40,7 +40,7 @@
           <span class="required">至少 1 個來源網址</span>
         </div>
 
-        <label>GitHub PAT
+        <label>GitHub PAT（此瀏覽器加密記憶）
           <div class="inline-field">
             <input id="github-token" type="password" autocomplete="off"
                    spellcheck="false" placeholder="github_pat_…">
