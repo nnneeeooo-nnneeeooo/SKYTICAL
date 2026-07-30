@@ -1,3 +1,6 @@
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
 name: daily-briefing
 
 # Thrice-daily air & transport briefing (Asia/Taipei editions).
@@ -84,6 +87,8 @@ jobs:
           BRIEFING_EXTRA_LLM_CALLS_MAX: ${{ vars.BRIEFING_EXTRA_LLM_CALLS_MAX }}
           # private usage-dashboard URL token (page skipped when unset)
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
+          # private manual-drafting URL/encryption token
+          AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           # BETA grounded search sweep (owner-approved; off unless var set)
           BRIEFING_GROUNDED: ${{ vars.BRIEFING_GROUNDED }}
           BRIEFING_GROUNDED_MODEL: ${{ vars.BRIEFING_GROUNDED_MODEL }}
@@ -165,3 +170,4 @@ jobs:
     steps:
       - uses: actions/deploy-pages@v4
         id: deployment
+
