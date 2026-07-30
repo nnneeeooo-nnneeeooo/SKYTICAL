@@ -89,7 +89,7 @@
             <select id="model">
               <option value="auto">自動（依優先順序 fallback）</option>
               {% for model in models %}
-              <option value="{{ model.id }}">{{ loop.index }}. {{ model.name }}</option>
+              <option value="{{ model.id }}"{% if loop.first %} selected{% endif %}>{{ loop.index }}. {{ model.name }}</option>
               {% endfor %}
             </select>
           </label>
