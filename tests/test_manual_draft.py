@@ -211,8 +211,9 @@ def test_static_security_contract():
     check("AES-GCM" in js and "data/manual-jobs/inbox/" in js,
           "browser encrypts before writing a job")
     check("secrets.AVWIRE_MANUAL_TOKEN" in workflow
-          and "encrypted envelopes only" in workflow,
-          "Actions reads the token only from Secrets and checks ciphertext")
+          and "encrypted envelopes only" in workflow
+          and "data/manual-jobs/outbox 2>/dev/null || true" in workflow,
+          "Actions uses Secrets, checks ciphertext and tolerates empty queues")
 
 
 def main():
