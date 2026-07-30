@@ -69,7 +69,7 @@ _FLIGHT_MARKED_RE = re.compile(
 _FLIGHT_COMPACT_RE = re.compile(r"\b([A-Z]{2,3}\d{1,4}[A-Z]?)\b")
 _MODEL_RE = re.compile(
     r"\b(?:Airbus\s+|Boeing\s+|Embraer\s+|Bombardier\s+|COMAC\s+|ATR\s+)?"
-    r"(?:A3\d{2}(?:-\d{3,4})?(?:ULR)?|B?7[2378]7(?:-\d{1,3})?|"
+    r"(?:A3\d{2}(?:-\d{3,4})?(?:ULR)?|B?7[2378]7(?:-\d{1,3})?|777X|"
     r"7[34]7(?:-\d{1,3})?|E1[789]5-E2|E\d{3}|C9(?:09|19)|"
     r"ARJ21|ATR\s?\d{2}(?:-\d{3})?|F-\d{1,2}[A-Z]?|C-\d{1,3})\b",
     re.IGNORECASE,
@@ -234,6 +234,23 @@ def _matches(pattern: re.Pattern, text: str) -> set[str]:
     return out
 
 
+def _aircraft_model_keys(text: str) -> set[str]:
+    """Return literal models plus safe, explicit programme-family aliases.
+
+    A published source can call the 777X programme ``777X`` while a current
+    certification update names a specific 777-8 or 777-9 variant.  They are
+    not interchangeable aircraft facts, but they are a deterministic
+    relationship anchor for retrieving programme background.  Keep the
+    literal values too: the drafting prompt still receives only source quotes.
+    """
+    models = _matches(_MODEL_RE, text)
+    for model in tuple(models):
+        compact = re.sub(r"^BOEING\s+", "", model)
+        if compact == "777X" or re.fullmatch(r"777-(?:8|9)", compact):
+            models.add("BOEING 777X FAMILY")
+    return models
+
+
 def _routes(text: str) -> set[tuple[str, str]]:
     values = set()
     for pattern in (_ROUTE_DASH_RE, _ROUTE_WORD_RE):
@@ -327,7 +344,7 @@ def extract_entity_keys(record: dict) -> dict[str, object]:
             value for value in _matches(_OFFICIAL_ID_RE, text)
             if any(char.isdigit() for char in value)
         },
-        "aircraft_models": _matches(_MODEL_RE, text),
+        "aircraft_models": _aircraft_model_keys(text),
         "programmes": _programmes(text),
         "airport_codes": airports,
         "routes": routes,
