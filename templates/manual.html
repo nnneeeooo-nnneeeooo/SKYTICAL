@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data: blob:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+        content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data: blob:; connect-src 'self' https://api.github.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
   <title>AVWIRE 私人補稿台</title>
   <link rel="icon" href="{{ favicon }}">
   <link rel="stylesheet" href="{{ base }}/assets/manual.css">
@@ -30,6 +30,19 @@
       <span>首次輸入只限本 repository、僅有 Contents 讀寫權限的 fine-grained GitHub PAT 後，系統會以私人網址權杖加密保存在此瀏覽器，往後自動連線。PAT 不會送進模型、repository 或部署檔。</span>
     </section>
 
+    <nav class="mode-switch" aria-label="補稿模式">
+      <button id="mode-ai" class="mode-button active" type="button"
+              aria-pressed="true">
+        <span>AI 補稿</span>
+        <small>來源擷取、模型撰稿、確認後發布</small>
+      </button>
+      <button id="mode-manual" class="mode-button" type="button"
+              aria-pressed="false">
+        <span>完全手動撰稿</span>
+        <small>自行寫稿，一鍵備份並發布</small>
+      </button>
+    </nav>
+
     <div class="workspace">
       <section class="panel composer">
         <div class="section-head">
@@ -48,17 +61,38 @@
           </div>
         </label>
 
+        <div id="manual-editor" class="manual-editor" hidden>
+          <label id="manual-primary-title-label">文章標題（繁體中文）
+            <input id="manual-title-primary" type="text" maxlength="300"
+                   placeholder="輸入要發布的文章標題">
+          </label>
+          <label id="manual-primary-content-label">文章內容（繁體中文）
+            <textarea id="manual-content-primary" rows="15"
+                      placeholder="輸入完整文章；空行會切分為網站段落。"></textarea>
+          </label>
+          <div id="manual-secondary-language" hidden>
+            <label>Article title (English)
+              <input id="manual-title-secondary" type="text" maxlength="300"
+                     placeholder="Enter the English article title">
+            </label>
+            <label>Article content (English)
+              <textarea id="manual-content-secondary" rows="15"
+                        placeholder="Enter the complete English article. Blank lines become paragraphs."></textarea>
+            </label>
+          </div>
+        </div>
+
         <label>來源網址（一行一個）
           <textarea id="source-urls" rows="3" required
                     placeholder="https://example.com/official-release"></textarea>
         </label>
 
-        <label>來源原文
+        <label class="ai-only">來源原文
           <textarea id="source-text" rows="9"
                     placeholder="貼上完整原文；若網站擋住自動擷取，這裡的內容會成為主要證據。"></textarea>
         </label>
 
-        <label>文章摘要／擴寫大綱
+        <label class="ai-only">文章摘要／擴寫大綱
           <textarea id="article-summary" rows="5"
                     placeholder="輸入希望文章涵蓋的重點、段落順序或摘要。模型會以此作為擴寫大綱，但所有事實仍必須由來源支持。"></textarea>
         </label>
@@ -91,7 +125,7 @@
               <option value="en">英文優先</option>
             </select>
           </label>
-          <label>模型
+          <label class="ai-only">模型
             <select id="model">
               <option value="auto">自動（依優先順序 fallback）</option>
               {% for model in models %}
@@ -99,25 +133,37 @@
               {% endfor %}
             </select>
           </label>
-          <label>推理檔位
+          <label class="ai-only">推理檔位
             <select id="reasoning-tier">
               <option value="fast">快速</option>
               <option value="standard">標準</option>
               <option value="deep" selected>深度</option>
             </select>
           </label>
-          <label>文章時間
+          <label class="ai-only">文章時間
             <select id="publication-mode">
               <option value="auto" selected>自動偵測來源時間</option>
               <option value="manual">手動指定臺北時間</option>
             </select>
           </label>
-          <label id="manual-time-panel" hidden>臺北時間（UTC+8）
+          <label id="manual-time-panel" class="ai-only" hidden>臺北時間（UTC+8）
             <input id="publication-time" type="datetime-local" step="1">
+          </label>
+          <label id="manual-model-panel" class="manual-only" hidden>使用模型／撰稿署名
+            <select id="manual-model">
+              <option value="custom" selected>自訂輸入</option>
+              {% for model in models %}
+              <option value="{{ model.id }}" data-name="{{ model.name }}">{{ loop.index }}. {{ model.name }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label id="manual-model-custom-panel" class="manual-only" hidden>自訂模型名稱
+            <input id="manual-model-custom" type="text" maxlength="80"
+                   placeholder="例如：GPT 5.6 Sol">
           </label>
         </div>
 
-        <div class="conversation">
+        <div class="conversation ai-only">
           <div class="conversation-head">
             <h3>編輯指令與對話</h3>
             <button id="clear-chat" class="quiet" type="button">清空對話</button>
@@ -142,7 +188,11 @@
             <p class="kicker">LIVE TELEMETRY</p>
             <h2>工作狀態</h2>
           </div>
-          <span id="job-state" class="job-state idle">待命</span>
+          <div class="state-cluster">
+            <span id="activity-indicator" class="activity-indicator idle"
+                  aria-hidden="true"><i></i><i></i><i></i></span>
+            <span id="job-state" class="job-state idle">待命</span>
+          </div>
         </div>
 
         <dl class="metrics">
@@ -154,6 +204,11 @@
           <div><dt>Rate limit</dt><dd id="metric-rate">尚無回應標頭</dd></div>
         </dl>
 
+        <h3>流程進度</h3>
+        <ol id="pipeline-steps" class="pipeline-steps" aria-live="polite">
+          <li class="waiting"><span></span>等待開始</li>
+        </ol>
+
         <h3>模型嘗試</h3>
         <div id="attempts" class="attempts"><p class="muted">尚無資料</p></div>
 
@@ -164,7 +219,7 @@
       </aside>
     </div>
 
-    <section id="review-panel" class="panel review-panel" hidden>
+    <section id="review-panel" class="panel review-panel ai-only" hidden>
       <div class="section-head">
         <div>
           <p class="kicker">EDITORIAL REVIEW</p>
@@ -223,7 +278,7 @@
       <p id="publish-state" class="publish-state" role="status"></p>
     </section>
 
-    <details class="panel output-panel">
+    <details id="output-panel" class="panel output-panel ai-only">
       <summary>進階：AVWIRE 發布 JSON（系統會自動上傳）</summary>
       <div class="section-head">
         <div>

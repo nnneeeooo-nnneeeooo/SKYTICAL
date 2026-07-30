@@ -83,6 +83,32 @@ def _safe_duration(value):
     return min(round(number), 86_400_000)
 
 
+def _sanitize_resource_usage(value) -> dict:
+    """Keep only token accounting metadata for one private workbench job."""
+    value = value if isinstance(value, dict) else {}
+    models = []
+    for raw in value.get("models") or []:
+        if not isinstance(raw, dict):
+            continue
+        label = _short_text(raw.get("label"), 160)
+        if not label:
+            continue
+        models.append({
+            "label": label,
+            "inputTokens": _safe_count(
+                raw.get("inputTokens"), 100_000_000),
+            "outputTokens": _safe_count(
+                raw.get("outputTokens"), 100_000_000),
+            "estimated": raw.get("estimated") is True,
+        })
+        if len(models) >= 50:
+            break
+    return {
+        "actualUsd": 0.0,
+        "models": models,
+    }
+
+
 def _sanitize_recent_run(row: dict) -> dict | None:
     """Whitelist the detail schema so content/secrets cannot be persisted."""
     if not isinstance(row, dict):
@@ -146,6 +172,8 @@ def _sanitize_recent_run(row: dict) -> dict | None:
         "repairCallCount": sum(item["repairCalls"] for item in attempts),
         "durationsMs": durations,
         "attempts": attempts,
+        "resourceUsage": _sanitize_resource_usage(
+            row.get("resourceUsage")),
     }
 
 
