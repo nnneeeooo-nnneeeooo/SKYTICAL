@@ -13,6 +13,7 @@ their token spend is unrecoverable).
 """
 from __future__ import annotations
 
+import re
 import sys
 from datetime import timedelta
 from pathlib import Path
@@ -23,15 +24,164 @@ from common import (  # noqa: E402
     iso_minute,
     load_json,
     now_utc,
+    parse_iso,
     save_json,
 )
 
 USAGE_PATH = DATA_DIR / "usage.json"
 DAILY_KEEP_DAYS = 120
+RECENT_RUN_KEEP_DAYS = 30
+RECENT_RUN_MAX = 1000
+_RUN_STAGES = (
+    "companionRetrieval", "fulltextEnrichment", "plaEnrichment",
+    "archiveRetrieval", "promptAssembly", "drafting", "validation",
+    "factVerification", "evidenceBinding", "glossaryCheck",
+    "fabricationCheck", "articleBuild", "total",
+)
+
+
+def _short_text(value, limit: int) -> str | None:
+    if not isinstance(value, (str, int)):
+        return None
+    text = re.sub(r"[\x00-\x1f\x7f]+", " ", str(value))
+    text = re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"https?://\S+", "[URL removed]", text,
+                  flags=re.IGNORECASE)
+    text = re.sub(
+        r"(?i)\bauthorization\b\s*[:=]?\s*(?:bearer\s+)?\S+",
+        "Authorization [redacted]",
+        text,
+    )
+    text = re.sub(
+        r"(?i)\b(api[-_ ]?key|token|bearer)\b\s*[:=]?\s*\S*",
+        r"\1 [redacted]",
+        text,
+    )
+    return text[:limit] or None
+
+
+def _safe_count(value, maximum=1_000_000) -> int:
+    if isinstance(value, bool):
+        return 0
+    try:
+        return max(0, min(int(value or 0), maximum))
+    except (TypeError, ValueError, OverflowError):
+        return 0
+
+
+def _safe_duration(value):
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        return None
+    try:
+        number = float(value)
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if number < 0 or number != number or number == float("inf"):
+        return None
+    return min(round(number), 86_400_000)
+
+
+def _sanitize_recent_run(row: dict) -> dict | None:
+    """Whitelist the detail schema so content/secrets cannot be persisted."""
+    if not isinstance(row, dict):
+        return None
+    started = _short_text(row.get("startedUtc"), 40)
+    finished = _short_text(row.get("finishedUtc"), 40)
+    if _recent_run_time({"startedUtc": started, "finishedUtc": finished}) \
+            is None:
+        return None
+    raw_durations = row.get("durationsMs")
+    raw_durations = raw_durations if isinstance(raw_durations, dict) else {}
+    durations = {
+        key: _safe_duration(raw_durations.get(key))
+        for key in _RUN_STAGES
+        if key in raw_durations
+    }
+    attempts = []
+    raw_attempts = row.get("attempts")
+    for item in (raw_attempts if isinstance(raw_attempts, list) else [])[:50]:
+        if not isinstance(item, dict):
+            continue
+        label = _short_text(item.get("label"), 160)
+        outcome = _short_text(item.get("outcome"), 24)
+        if not label or outcome not in ("success", "failed", "refused"):
+            continue
+        attempts.append({
+            "sequence": len(attempts) + 1,
+            "provider": _short_text(item.get("provider"), 40),
+            "model": _short_text(item.get("model"), 160),
+            "label": label,
+            "startedUtc": _short_text(item.get("startedUtc"), 40),
+            "durationMs": _safe_duration(item.get("durationMs")),
+            "httpCalls": _safe_count(item.get("httpCalls"), 100),
+            "repairCalls": _safe_count(item.get("repairCalls"), 100),
+            "httpDurationMs": _safe_duration(item.get("httpDurationMs")),
+            "repairDurationMs":
+                _safe_duration(item.get("repairDurationMs")),
+            "outcome": outcome,
+            "failureClass": _short_text(item.get("failureClass"), 48),
+            "failureStage": _short_text(item.get("failureStage"), 48),
+            "failureMessage": _short_text(item.get("failureMessage"), 180),
+            "retryPlanned": item.get("retryPlanned") is True,
+            "disabledForRun": item.get("disabledForRun") is True,
+        })
+    return {
+        "startedUtc": started,
+        "finishedUtc": finished,
+        "workflow": _short_text(row.get("workflow"), 32) or "unknown",
+        "taskType": _short_text(row.get("taskType"), 32) or "unknown",
+        "groupId": _short_text(row.get("groupId"), 160),
+        "eventId": _short_text(row.get("eventId"), 160),
+        "sourceCount": _safe_count(row.get("sourceCount"), 10_000),
+        "primarySource": _short_text(row.get("primarySource"), 160),
+        "result": _short_text(row.get("result"), 40),
+        "articleId": _short_text(row.get("articleId"), 180),
+        "finalStatus": _short_text(row.get("finalStatus"), 48),
+        "finalModel": _short_text(row.get("finalModel"), 160),
+        "fallbackUsed": row.get("fallbackUsed") is True,
+        "attemptCount": len(attempts),
+        "httpCallCount": sum(item["httpCalls"] for item in attempts),
+        "repairCallCount": sum(item["repairCalls"] for item in attempts),
+        "durationsMs": durations,
+        "attempts": attempts,
+    }
+
+
+def _recent_run_time(row: dict):
+    """Return the retention timestamp for a minimally valid run row."""
+    if not isinstance(row, dict):
+        return None
+    value = row.get("startedUtc") or row.get("finishedUtc")
+    if not isinstance(value, str):
+        return None
+    try:
+        return parse_iso(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _prune_recent_runs(rows, now=None) -> list[dict]:
+    """Keep valid run dictionaries inside the inclusive 30-day window."""
+    now = now or now_utc()
+    cutoff = (now - timedelta(days=RECENT_RUN_KEEP_DAYS)).replace(
+        second=0, microsecond=0)
+    kept = []
+    for row in rows if isinstance(rows, list) else []:
+        sanitized = _sanitize_recent_run(row)
+        stamp = _recent_run_time(sanitized) if sanitized else None
+        if stamp is None or stamp < cutoff:
+            continue
+        kept.append((stamp, sanitized))
+    kept.sort(key=lambda item: item[0], reverse=True)
+    return [row for _, row in kept[:RECENT_RUN_MAX]]
 
 
 def load_ledger() -> dict:
     raw = load_json(USAGE_PATH, {})
+    if not isinstance(raw, dict):
+        raw = {}
     models = raw.get("models")
     daily = raw.get("daily")
     return {
@@ -39,7 +189,33 @@ def load_ledger() -> dict:
         "trackingSinceUtc": raw.get("trackingSinceUtc"),
         "models": models if isinstance(models, dict) else {},
         "daily": daily if isinstance(daily, dict) else {},
+        "recentRuns": _prune_recent_runs(raw.get("recentRuns")),
     }
+
+
+def _stamp_ledger(ledger: dict, now) -> None:
+    ledger["recentRuns"] = _prune_recent_runs(
+        ledger.get("recentRuns"), now)
+    ledger["updatedUtc"] = iso_minute(now)
+    ledger.setdefault("trackingSinceUtc", iso_minute(now))
+    if not ledger["trackingSinceUtc"]:
+        ledger["trackingSinceUtc"] = iso_minute(now)
+
+
+def record_run(run: dict) -> None:
+    """Append one model-work record without ever failing the news pipeline."""
+    try:
+        sanitized = _sanitize_recent_run(run)
+        if sanitized is None:
+            print("usage: recent run ignored (missing valid timestamp)")
+            return
+        ledger = load_ledger()
+        ledger["recentRuns"].append(sanitized)
+        _stamp_ledger(ledger, now_utc())
+        save_json(USAGE_PATH, ledger)
+        print("usage: recorded recent model run")
+    except Exception as exc:  # ledger diagnostics must not stop publishing
+        print(f"usage: recent run update failed ({type(exc).__name__})")
 
 
 def record_providers(providers) -> None:
@@ -77,10 +253,7 @@ def record_providers(providers) -> None:
     cutoff = (now - timedelta(days=DAILY_KEEP_DAYS)).strftime("%Y-%m-%d")
     ledger["daily"] = {k: v for k, v in sorted(ledger["daily"].items())
                        if k >= cutoff}
-    ledger["updatedUtc"] = iso_minute(now)
-    ledger.setdefault("trackingSinceUtc", iso_minute(now))
-    if not ledger["trackingSinceUtc"]:
-        ledger["trackingSinceUtc"] = iso_minute(now)
+    _stamp_ledger(ledger, now)
     save_json(USAGE_PATH, ledger)
     total_calls = sum(r[1] for r in rows)
     print(f"usage: recorded {total_calls} call(s) across {len(rows)} "

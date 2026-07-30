@@ -326,6 +326,16 @@ per run via usage.record_providers(). build.py renders it on a PRIVATE
 dashboard at site/u/<AVWIRE_USAGE_TOKEN>/ (noindex, linked from
 nowhere) only when that secret is set. Reference list prices live in
 config/model_prices.json - theoretical value only; free-tier spend is 0.
+
+`recentRuns` contains sanitized per-work execution diagnostics for hourly
+articles, flightwatch events and optional model-assisted briefings. Each row
+may contain provider attempts, stable failure classes, fallback order, actual
+HTTP/JSON-repair call counts and precisely measured stage durations. It never
+contains prompts, source/fulltext bodies, article bodies, headers, keys,
+tokens or private dashboard URLs. `usage.record_run()` prunes rows older than
+30 days (inclusive boundary) and caps the collection at 1,000 newest rows;
+the private renderer validates and applies the same 30-day filter again.
+The existing `daily` series remains independent at 120 days.
 `nonApiReference` contains purpose-separated official API comparison rates
 for work completed through ChatGPT Work/Codex rather than the site's API
 pipeline. These rows never contribute calls, tokens, or dollars to the API

@@ -27,6 +27,7 @@ import json
 import os
 import re
 import sys
+import time as monotonic_time
 import traceback
 from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta, timezone
@@ -36,6 +37,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import (  # noqa: E402
     ARTICLES_DIR,
     DATA_DIR,
+    iso_minute,
     load_json,
     norm_url,
     now_utc,
@@ -636,27 +638,135 @@ def maybe_llm_intro(briefing: dict, sections: dict,
         warnings.append(f"intro skipped: providers unavailable ({exc})")
         return
     calls = 0
+    trace_started = monotonic_time.perf_counter()
+    attempts = []
+    final_model = None
     try:
         for provider in providers:
             if calls >= EXTRA_LLM_CALLS_MAX:
                 break
             calls += 1
+            attempt_started = monotonic_time.perf_counter()
+            attempt_utc = iso_minute(now_utc())
+            before_http = int(getattr(provider, "http_calls", 0) or 0)
+            before_repair = int(getattr(provider, "repair_calls", 0) or 0)
             try:
                 draft = provider.draft(INTRO_SYSTEM_PROMPT,
                                        _intro_digest(sections), INTRO_SCHEMA)
             except Exception as exc:
+                try:
+                    from providers import (
+                        classify_failure,
+                        safe_failure_message,
+                    )
+                    failure_class = classify_failure(exc)
+                    failure_message = safe_failure_message(exc)
+                except (ImportError, AttributeError):
+                    failure_class = (
+                        "timeout" if "timeout" in type(exc).__name__.lower()
+                        else "unexpected")
+                    failure_message = type(exc).__name__[:80]
+
+                attempts.append({
+                    "sequence": len(attempts) + 1,
+                    "provider": str(provider.name)[:40],
+                    "model": str(provider.model)[:160],
+                    "label": str(provider.label)[:160],
+                    "startedUtc": attempt_utc,
+                    "durationMs": max(0, round(
+                        (monotonic_time.perf_counter() - attempt_started)
+                        * 1000)),
+                    "httpCalls": max(
+                        0, int(getattr(provider, "http_calls", 0) or 0)
+                        - before_http),
+                    "repairCalls": max(
+                        0, int(getattr(provider, "repair_calls", 0) or 0)
+                        - before_repair),
+                    "outcome": "failed",
+                    "failureClass": failure_class,
+                    "failureStage": "draft",
+                    "failureMessage": failure_message,
+                    "retryPlanned": False,
+                    "disabledForRun": False,
+                })
                 warnings.append(f"intro call failed on {provider.name}: "
                                 f"{type(exc).__name__}")
                 continue
             if not isinstance(draft, dict):
+                attempts.append({
+                    "sequence": len(attempts) + 1,
+                    "provider": str(provider.name)[:40],
+                    "model": str(provider.model)[:160],
+                    "label": str(provider.label)[:160],
+                    "startedUtc": attempt_utc,
+                    "durationMs": max(0, round(
+                        (monotonic_time.perf_counter() - attempt_started)
+                        * 1000)),
+                    "httpCalls": max(
+                        0, int(getattr(provider, "http_calls", 0) or 0)
+                        - before_http),
+                    "repairCalls": max(
+                        0, int(getattr(provider, "repair_calls", 0) or 0)
+                        - before_repair),
+                    "outcome": "refused",
+                    "failureClass": "refusal",
+                    "failureStage": "draft",
+                    "failureMessage": "model refusal",
+                    "retryPlanned": False,
+                    "disabledForRun": False,
+                })
                 warnings.append(f"intro refused/empty on {provider.name}")
                 continue
             intro_zh = str(draft.get("introZh") or "").strip()
             intro_en = str(draft.get("introEn") or "").strip()
             if not (10 <= len(intro_zh) <= 300
                     and 10 <= len(intro_en) <= 400):
+                attempts.append({
+                    "sequence": len(attempts) + 1,
+                    "provider": str(provider.name)[:40],
+                    "model": str(provider.model)[:160],
+                    "label": str(provider.label)[:160],
+                    "startedUtc": attempt_utc,
+                    "durationMs": max(0, round(
+                        (monotonic_time.perf_counter() - attempt_started)
+                        * 1000)),
+                    "httpCalls": max(
+                        0, int(getattr(provider, "http_calls", 0) or 0)
+                        - before_http),
+                    "repairCalls": max(
+                        0, int(getattr(provider, "repair_calls", 0) or 0)
+                        - before_repair),
+                    "outcome": "failed",
+                    "failureClass": "validation_failed",
+                    "failureStage": "validation",
+                    "failureMessage": "intro length outside bounds",
+                    "retryPlanned": False,
+                    "disabledForRun": False,
+                })
                 warnings.append("intro discarded: length outside bounds")
                 continue
+            attempts.append({
+                "sequence": len(attempts) + 1,
+                "provider": str(provider.name)[:40],
+                "model": str(provider.model)[:160],
+                "label": str(provider.label)[:160],
+                "startedUtc": attempt_utc,
+                "durationMs": max(0, round(
+                    (monotonic_time.perf_counter() - attempt_started) * 1000)),
+                "httpCalls": max(
+                    0, int(getattr(provider, "http_calls", 0) or 0)
+                    - before_http),
+                "repairCalls": max(
+                    0, int(getattr(provider, "repair_calls", 0) or 0)
+                    - before_repair),
+                "outcome": "success",
+                "failureClass": None,
+                "failureStage": None,
+                "failureMessage": None,
+                "retryPlanned": False,
+                "disabledForRun": False,
+            })
+            final_model = provider.label
             briefing["intro_zh"] = intro_zh
             briefing["intro_en"] = intro_en
             briefing["generation_mode"] = "llm_assisted"
@@ -669,6 +779,38 @@ def maybe_llm_intro(briefing: dict, sections: dict,
             import usage as usage_ledger
 
             usage_ledger.record_providers(providers)
+            if attempts:
+                total_ms = max(0, round(
+                    (monotonic_time.perf_counter() - trace_started) * 1000))
+                usage_ledger.record_run({
+                    "startedUtc": attempts[0]["startedUtc"],
+                    "finishedUtc": iso_minute(now_utc()),
+                    "workflow": "briefing",
+                    "taskType": "briefing",
+                    "groupId": str(briefing.get("briefing_id") or "")[:160],
+                    "eventId": None,
+                    "sourceCount": total,
+                    "primarySource": "AVWIRE verified articles",
+                    "result": "published",
+                    "articleId": None,
+                    "finalStatus": (
+                        "published_with_llm_intro" if final_model
+                        else "published_without_llm_intro"),
+                    "finalModel": final_model,
+                    "fallbackUsed":
+                        len({row["label"] for row in attempts}) > 1,
+                    "attemptCount": len(attempts),
+                    "httpCallCount":
+                        sum(row["httpCalls"] for row in attempts),
+                    "repairCallCount":
+                        sum(row["repairCalls"] for row in attempts),
+                    "durationsMs": {
+                        "drafting": sum(
+                            row["durationMs"] for row in attempts),
+                        "total": total_ms,
+                    },
+                    "attempts": attempts,
+                })
         except Exception:
             pass
 
