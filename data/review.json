@@ -1,17 +1,17 @@
 [
   {
-    "id": "g-20260730-0144-2",
-    "queuedUtc": "2026-07-30T01:44Z",
+    "id": "g-20260730-0314-2",
+    "queuedUtc": "2026-07-30T03:14Z",
     "approve": false,
     "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "Major financial loss claim with large monetary figures requires human review. The story reports a significant quarterly net loss, fuel cost surge, and network disruptions tied to geopolitical conflict — all substantial financial and operational claims that warrant editorial oversight before publication.",
+    "decisionReason": "Major quarterly financial loss claim with large monetary figures requires human review under financial_or_order_claim rules. Evidence is sufficient from two independent fetched sources with consistent figures, but the topic is a significant financial result warranting editorial oversight.",
     "riskFlags": [
       "financial_or_order_claim"
     ],
     "facts": [
       {
         "factId": "F1",
-        "claim": "SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, reversing from a S$186 million (US$143 million) profit a year earlier.",
+        "claim": "SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, a reversal from S$186 million (US$143 million) profit a year earlier.",
         "sourceQuote": "The SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter, a sharp reversal from the S$186 million (US$143 million) profit it posted a year earlier",
         "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
         "evidenceScope": "source",
@@ -20,7 +20,7 @@
       },
       {
         "factId": "F2",
-        "claim": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year, a record high for the group.",
+        "claim": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year, a new high for the group.",
         "sourceQuote": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year and a new high for the group.",
         "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
         "evidenceScope": "source",
@@ -29,8 +29,8 @@
       },
       {
         "factId": "F3",
-        "claim": "Net fuel costs increased by S$991 million (US$763 million), or 78.5%, tied to the Middle East conflict that began on February 28, 2026, with fuel costs before hedging more than doubling.",
-        "sourceQuote": "a S$991 million (US$763 million), or 78.5%, increase in net fuel costs",
+        "claim": "Net fuel costs increased by S$991 million (US$763 million), or 78.5%, almost entirely driving total group expenditure up 27.9% to S$5.61 billion (US$4.32 billion).",
+        "sourceQuote": "Total group expenditure jumped 27.9% to S$5.61 billion (US$4.32 billion), almost entirely because of a S$991 million (US$763 million), or 78.5%, increase in net fuel costs.",
         "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -39,7 +39,7 @@
       {
         "factId": "F4",
         "claim": "Operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier.",
-        "sourceQuote": "operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier",
+        "sourceQuote": "operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier.",
         "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -47,8 +47,8 @@
       },
       {
         "factId": "F5",
-        "claim": "SIA and Scoot carried a combined 10.9 million passengers, up 6.3% from the previous year, with passenger yields rising 12% and passenger revenue climbing 18.6% to S$4.58 billion.",
-        "sourceQuote": "SIA and budget carrier Scoot carrying a combined 10.9 million passengers, up 6.3% from the previous year, along with a 12% rise in passenger yields",
+        "claim": "SIA and Scoot carried a combined 10.9 million passengers, up 6.3% from the previous year, with passenger revenue climbing 18.6% to S$4.58 billion (US$3.53 billion) and yields rising 12%.",
+        "sourceQuote": "Passenger revenue climbed 18.6% to S$4.58 billion (US$3.53 billion), helped by SIA and budget carrier Scoot carrying a combined 10.9 million passengers, up 6.3% from the previous year, along with a 12% rise in passenger yields.",
         "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -57,42 +57,42 @@
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "Major financial loss claim with large monetary figures requires human review. The story reports a significant quarterly net loss, fuel cost surge, and network disruptions tied to geopolitical conflict — all substantial financial and operational claims that warrant editorial oversight before publication.",
+      "decisionReason": "Major quarterly financial loss claim with large monetary figures requires human review under financial_or_order_claim rules. Evidence is sufficient from two independent fetched sources with consistent figures, but the topic is a significant financial result warranting editorial oversight.",
       "cat": "biz",
       "zh": {
-        "title": "新加坡航空集團公布7600萬星元淨虧損，燃油成本創新高",
-        "summary": "新加坡航空集團截至2026年6月30日止第一季錄得7600萬星元淨虧損，較上年同期1.86億星元獲利大幅逆轉。儘管營收創下57.1億星元新高，燃油成本飆升78.5%侵蝕獲利，中東衝突推升油價為主因。",
+        "title": "新加坡航空集團公布第一季淨虧損7600萬星元，燃料成本飆升抵銷創紀錄營收",
+        "summary": "新加坡航空集團截至2026年6月30日止第一季錄得7600萬星元淨虧損，較上年同期1.86億星元淨利大幅逆轉。儘管營收創下57.1億星元歷史新高，燃料成本暴增78.5%侵蝕獲利，集團將此歸因於中東衝突推高噴射燃料價格。",
         "body": [
-          "新加坡航空集團公布截至2026年6月30日止第一季財報，錄得7600萬星元（約5900萬美元）淨虧損，與上年同期1.86億星元（約1.43億美元）獲利相比大幅逆轉。集團將虧損主因歸於中東衝突引發的燃油成本飆升。",
-          "第一季營收達57.1億星元（約44億美元），年增19.3%，創集團歷史新高。客運收入成長18.6%至45.8億星元（約35.3億美元），新加坡航空與酷航合計載客1090萬人次，年增6.3%，客運收益率上升12%。貨運收入亦成長33.5%至7.08億星元（約5.45億美元）。",
-          "然而總支出跳增27.9%至56.1億星元（約43.2億美元），主因淨燃油成本增加9.91億星元（約7.63億美元），增幅達78.5%。新加坡航空表示，中東衝突於2026年2月28日爆發後，噴射燃油價格大漲，避險前燃油成本較上年同期增加一倍以上。雖然燃油避險帶來3.76億星元收益，仍不足以抵銷整體燃油成本增幅。",
-          "營業利益降至1.06億星元（約8200萬美元），較上年同期4.05億星元下滑73.8%。計入印度航空25.1%持股的較大虧損份額及較低稅負後，集團最終錄得7600萬星元淨虧損。",
-          "儘管虧損，集團財務狀況維持穩健。季末現金及銀行存款達91億星元（約70.1億美元），較上季增加11.7億星元，另有13.8億星元長期定期存款及32.4億星元未動用信貸額度。股東權益為165.9億星元（約127.8億美元），負債對權益比自0.62微升至0.65。",
-          "網路方面，酷航於本季開通新加坡至印尼勿里洞及坤甸新航線，新加坡航空開通杭州每日航班。歐洲方面，倫敦蓋威克及曼徹斯特班次已增加，並計畫10月開闢馬德里航線。中東衝突亦影響網路營運，酷航6月恢復吉達航班後於7月中旬再度暫停，杜拜航線維持暫停，利雅德航線延至12月開航。"
+          "新加坡航空集團公布截至2026年6月30日止第一季財報，錄得7600萬星元（約5900萬美元）淨虧損，與上年同期1.86億星元（約1.43億美元）淨利相比出現大幅逆轉。AeroTime報導指出，此一虧損「幾乎完全由與中東衝突相關的燃料成本飆升所驅動」。",
+          "第一季營收達57.1億星元（約44億美元），較上年同期成長19.3%，創下集團歷史新高。客運營收成長18.6%至45.8億星元（約35.3億美元），新加坡航空與低成本子公司Scoot合計載運1090萬人次旅客，較上年成長6.3%，客運收益率亦上升12%。",
+          "貨運營收同樣成長33.5%至7.08億星元（約5.45億美元），受惠於更強的貨運費率與較高的飛機使用率。然而，集團總支出跳增27.9%至56.1億星元（約43.2億美元），主因為淨燃料成本增加9.91億星元（約7.63億美元），增幅達78.5%。",
+          "營業利益因此降至1.06億星元（約8200萬美元），較上年同期的4.05億星元（約3.12億美元）下滑73.8%。在計入持有25.1%股權的印度航空較大份額虧損及較小稅額後，集團最終錄得7600萬星元淨虧損。",
+          "儘管面臨虧損，集團財務狀況維持穩健，季末持有91億星元現金及銀行存款，較上季增加11.7億星元。集團同時持續擴張航網，Scoot開通新加坡至印尼Belitung及Pontianak航線，新加坡航空則開通每日飛往杭州的航班。",
+          "中東衝突亦影響集團部分航網運作。Scoot於6月恢飛沙烏地阿拉伯吉達航班，但於7月中旬再度暫停。新加坡航空飛往杜拜的航班維持暫停，原訂開通的利雅德航班則延至12月。"
         ]
       },
       "en": {
-        "title": "SIA Group reports S$76 million net loss as fuel costs surge on record revenue",
-        "summary": "Singapore Airlines Group posted a net loss of S$76 million for the quarter ended June 30, 2026, reversing from a S$186 million profit a year earlier. Record revenue of S$5.71 billion was offset by a 78.5% surge in net fuel costs tied to the Middle East conflict that began on February 28, 2026.",
+        "title": "Singapore Airlines Group posts S$76 million Q1 net loss as fuel costs surge despite record revenue",
+        "summary": "Singapore Airlines Group reported a net loss of S$76 million for the quarter ended June 30, 2026, a sharp reversal from S$186 million profit a year earlier. Record revenue of S$5.71 billion was outweighed by a 78.5% surge in fuel costs, which the group attributed to Middle East conflict driving up jet fuel prices.",
         "body": [
-          "Singapore Airlines Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, a sharp reversal from the S$186 million (US$143 million) profit posted a year earlier. The group attributed the loss almost entirely to a spike in fuel costs tied to the conflict in the Middle East.",
-          "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year and a new high for the group. Passenger revenue climbed 18.6% to S$4.58 billion (US$3.53 billion), as Singapore Airlines and Scoot carried a combined 10.9 million passengers, up 6.3% from the previous year, with passenger yields rising 12%. Cargo revenue grew 33.5% to S$708 million (US$545 million).",
-          "Total group expenditure jumped 27.9% to S$5.61 billion (US$4.32 billion), driven by a S$991 million (US$763 million) increase in net fuel costs, or 78.5%. SIA said the Middle East conflict that began on February 28, 2026 pushed jet fuel prices sharply higher, with fuel costs before hedging more than doubling. Although fuel hedging generated a gain, it was insufficient to offset the overall increase.",
+          "Singapore Airlines Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, a sharp reversal from the S$186 million (US$143 million) profit posted a year earlier. AeroTime reported the loss was driven almost entirely by a spike in fuel costs tied to the conflict in the Middle East.",
+          "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year and a new high for the group. Passenger revenue climbed 18.6% to S$4.58 billion (US$3.53 billion), with Singapore Airlines and budget carrier Scoot carrying a combined 10.9 million passengers, up 6.3% from the previous year, alongside a 12% rise in passenger yields.",
+          "Cargo revenue also grew 33.5% to S$708 million (US$545 million), supported by stronger cargo rates and improved aircraft utilisation. However, total group expenditure jumped 27.9% to S$5.61 billion (US$4.32 billion), almost entirely because of a S$991 million (US$763 million), or 78.5%, increase in net fuel costs.",
           "Operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier. After accounting for a larger share of losses from Air India, in which SIA holds a 25.1% stake, and a smaller tax bill, the group ended the quarter S$76 million in the red.",
-          "Despite the loss, the group's finances remained solid. Cash and bank balances stood at S$9.10 billion (US$7.01 billion) at quarter-end, up S$1.17 billion from the previous quarter, along with S$1.38 billion in longer-term fixed deposits and S$3.24 billion in undrawn credit lines. Shareholders' equity was S$16.59 billion (US$12.78 billion), with the debt-to-equity ratio rising to 0.65 from 0.62.",
-          "SIA continued expanding its network during the quarter. Scoot launched new routes to Belitung and Pontianak in Indonesia, while SIA began daily service to Hangzhou. European frequencies to London Gatwick and Manchester were boosted, with a new Madrid route planned for October. The Middle East conflict disrupted parts of the network: Scoot resumed Jeddah flights in June only to suspend them in mid-July, Dubai services remain suspended, and the Riyadh launch was pushed back to December."
+          "Despite the loss, the group's finances remain solid, closing the quarter with S$9.10 billion in cash and bank balances, up S$1.17 billion from the previous quarter. The group continued expanding its network, with Scoot launching new routes to Belitung and Pontianak in Indonesia and SIA beginning daily service to Hangzhou.",
+          "The Middle East conflict also disrupted parts of the network. Scoot resumed flights to Jeddah in June only to suspend them again in mid-July. SIA's services to Dubai remain suspended, and the planned launch of flights to Riyadh has been pushed back to December."
         ]
       },
       "flash": {
-        "zh": "新加坡航空集團第一季淨虧7600萬星元，燃油成本飆升78.5%",
-        "en": "SIA Group posts S$76M Q1 net loss as fuel costs surge 78.5%",
+        "zh": "新加坡航空集團第一季淨虧損7600萬星元，燃料成本飆升抵銷創紀錄營收",
+        "en": "SIA Group posts S$76 million Q1 net loss as fuel costs surge despite record revenue",
         "hot": false
       },
       "incident": null,
       "facts": [
         {
           "factId": "F1",
-          "claim": "SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, reversing from a S$186 million (US$143 million) profit a year earlier.",
+          "claim": "SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, a reversal from S$186 million (US$143 million) profit a year earlier.",
           "sourceQuote": "The SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter, a sharp reversal from the S$186 million (US$143 million) profit it posted a year earlier",
           "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
           "evidenceScope": "source",
@@ -101,7 +101,7 @@
         },
         {
           "factId": "F2",
-          "claim": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year, a record high for the group.",
+          "claim": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year, a new high for the group.",
           "sourceQuote": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year and a new high for the group.",
           "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
           "evidenceScope": "source",
@@ -110,8 +110,8 @@
         },
         {
           "factId": "F3",
-          "claim": "Net fuel costs increased by S$991 million (US$763 million), or 78.5%, tied to the Middle East conflict that began on February 28, 2026, with fuel costs before hedging more than doubling.",
-          "sourceQuote": "a S$991 million (US$763 million), or 78.5%, increase in net fuel costs",
+          "claim": "Net fuel costs increased by S$991 million (US$763 million), or 78.5%, almost entirely driving total group expenditure up 27.9% to S$5.61 billion (US$4.32 billion).",
+          "sourceQuote": "Total group expenditure jumped 27.9% to S$5.61 billion (US$4.32 billion), almost entirely because of a S$991 million (US$763 million), or 78.5%, increase in net fuel costs.",
           "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -120,7 +120,7 @@
         {
           "factId": "F4",
           "claim": "Operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier.",
-          "sourceQuote": "operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier",
+          "sourceQuote": "operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier.",
           "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -128,8 +128,8 @@
         },
         {
           "factId": "F5",
-          "claim": "SIA and Scoot carried a combined 10.9 million passengers, up 6.3% from the previous year, with passenger yields rising 12% and passenger revenue climbing 18.6% to S$4.58 billion.",
-          "sourceQuote": "SIA and budget carrier Scoot carrying a combined 10.9 million passengers, up 6.3% from the previous year, along with a 12% rise in passenger yields",
+          "claim": "SIA and Scoot carried a combined 10.9 million passengers, up 6.3% from the previous year, with passenger revenue climbing 18.6% to S$4.58 billion (US$3.53 billion) and yields rising 12%.",
+          "sourceQuote": "Passenger revenue climbed 18.6% to S$4.58 billion (US$3.53 billion), helped by SIA and budget carrier Scoot carrying a combined 10.9 million passengers, up 6.3% from the previous year, along with a 12% rise in passenger yields.",
           "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -137,7 +137,7 @@
         },
         {
           "factId": "F6",
-          "claim": "Scoot resumed Jeddah flights in June only to suspend them in mid-July; Dubai services remain suspended and the Riyadh launch was pushed back to December due to the Middle East conflict.",
+          "claim": "Scoot resumed flights to Jeddah in June only to suspend them again in mid-July; SIA's Dubai services remain suspended and the planned Riyadh launch was pushed back to December.",
           "sourceQuote": "Scoot resumed flights to Jeddah in Saudi Arabia in June, only to suspend them again in mid-July as the conflict escalated. SIA's services to Dubai remain suspended, and the planned launch of flights to Riyadh has been pushed back to December.",
           "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
           "evidenceScope": "source",
@@ -147,12 +147,14 @@
       ],
       "headlineSupportedBy": [
         "F1",
+        "F2",
         "F3"
       ],
       "summarySupportedBy": [
         "F1",
         "F2",
-        "F3"
+        "F3",
+        "F5"
       ],
       "entities": {
         "organizations": [
@@ -169,31 +171,28 @@
         "aircraft_models": [],
         "airports": [
           "Hangzhou",
-          "London Gatwick",
-          "Manchester",
-          "Madrid",
-          "Western Sydney International Airport",
-          "Adelaide",
+          "Belitung",
+          "Pontianak",
           "Jeddah",
           "Dubai",
           "Riyadh",
-          "Belitung",
-          "Pontianak"
+          "London Gatwick",
+          "Manchester",
+          "Madrid",
+          "Adelaide",
+          "Western Sydney International Airport"
         ],
         "locations": [
           "Singapore",
           "Indonesia",
-          "mainland China",
-          "Europe",
-          "Australia",
           "Saudi Arabia",
+          "Dubai",
           "Middle East"
         ],
         "flight_numbers": [],
         "registration_numbers": [],
         "event_dates": [
-          "2026-06-30",
-          "2026-02-28"
+          "2026-06-30"
         ]
       },
       "eventStatus": "confirmed",
@@ -203,7 +202,7 @@
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260730-0144-2",
+      "id": "g-20260730-0314-2",
       "primarySource": "AeroTime",
       "items": [
         {
@@ -363,13 +362,14 @@
     }
   },
   {
-    "id": "g-20260730-0144-8",
-    "queuedUtc": "2026-07-30T01:44Z",
+    "id": "g-20260730-0314-9",
+    "queuedUtc": "2026-07-30T03:14Z",
     "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "Large financial claim ($300M contract) involving military helicopter upgrades requires human review per financial_or_order_claim policy. Evidence is sufficient for a full article but the monetary value is explicitly described as an estimate, and the contract includes options that may not be fully exercised.",
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Major contract award with estimated value and options; financial/order claim requires human verification.",
     "riskFlags": [
-      "financial_or_order_claim"
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
     ],
     "facts": [
       {
@@ -383,7 +383,7 @@
       },
       {
         "factId": "F2",
-        "claim": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the SPINE program.",
+        "claim": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
         "sourceQuote": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
         "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
         "evidenceScope": "source",
@@ -401,8 +401,8 @@
       },
       {
         "factId": "F4",
-        "claim": "Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
-        "sourceQuote": "Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
+        "claim": "The contract includes an initial period with options to extend work for another three years, uses several payment structures, and Bell describes the total value as an estimate.",
+        "sourceQuote": "The contract covers an initial period and includes options that could extend the work for another three years. It uses several payment structures depending on the type of work involved. Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
         "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -410,7 +410,7 @@
       },
       {
         "factId": "F5",
-        "claim": "SPINE will give the helicopters more electrical power and a new digital architecture to accommodate additional weapons, sensors and defensive equipment, and supports Link 16.",
+        "claim": "SPINE will give the helicopters more electrical power and a new digital architecture to accommodate additional weapons, sensors and defensive equipment, and supports Link 16, an advanced databus and long‑range network‑enabled weapons.",
         "sourceQuote": "SPINE will give the helicopters more electrical power and a new digital architecture designed to accommodate additional weapons, sensors and defensive equipment. The upgrade also supports Link 16, an advanced databus and long-range network-enabled weapons.",
         "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
         "evidenceScope": "source",
@@ -419,8 +419,8 @@
       },
       {
         "factId": "F6",
-        "claim": "Bell completed SPINE modifications on the first AH-1Z and UH-1Y aircraft in the fall of 2025 and sent both to Naval Air Station Patuxent River for flight testing; the new contract known as Phase 3.0 moves the program into fleet modifications.",
-        "sourceQuote": "Bell completed SPINE modifications on the first AH-1Z and UH-1Y aircraft in the fall of 2025. The company sent both helicopters to Naval Air Station Patuxent River in Maryland for flight testing. The new contract, known as Phase 3.0, moves the program from the initial aircraft into fleet modifications.",
+        "claim": "Marine Corps officials expect the upgrades to help keep the Viper and Venom relevant into the 2040s.",
+        "sourceQuote": "Marine Corps officials expect the upgrades to help keep the Viper and Venom relevant into the 2040s.",
         "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -429,35 +429,33 @@
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "Large financial claim ($300M contract) involving military helicopter upgrades requires human review per financial_or_order_claim policy. Evidence is sufficient for a full article but the monetary value is explicitly described as an estimate, and the contract includes options that may not be fully exercised.",
+      "decisionReason": "Major contract award with estimated value and options; financial/order claim requires human verification.",
       "cat": "mil",
       "zh": {
-        "title": "Bell獲3億美元合約升級49架美國海軍陸戰隊直升機",
-        "summary": "Bell取得美國海軍估計約3億美元合約，將在SPINE計畫下升級多達49架美國海軍陸戰隊AH-1Z Viper與UH-1Y Venom直升機，涵蓋28架攻擊直升機與21架通用直升機，預計2027年中展開改裝、2028年交付首架升級機。",
+        "title": "Bell獲3億美元合約升級49架美軍直升機",
+        "summary": "Bell獲得美國海軍估值約3億美元合約，將為海軍陸戰隊升級最多49架AH-1Z與UH-1Y直升機，納入SPINE計劃，預計2027年中啟動改裝、2028年交付首批機型，目標讓機隊服役至2040年代。",
         "body": [
-          "Bell取得美國海軍一項估計約3億美元的合約，將升級多達49架美國海軍陸戰隊AH-1Z Viper與UH-1Y Venom直升機。該合約涵蓋28架AH-1Z攻擊直升機與21架UH-1Y通用直升機，屬於「Structural and Power Improvements for NextGen Effects」計畫，簡稱SPINE。",
-          "Bell表示將於2027年中在德州Amarillo Assembly Center展開改裝作業，預計2028年交付首架升級直升機。合約涵蓋初始期並包含選項，可能將工作再延長三年。Bell將總值描述為估計金額，意味海軍未必已承諾全額3億美元。",
-          "SPINE將為直升機提供更多電力與新的數位架構，以容納額外的武器、感測器與防禦裝備。升級亦支援Link 16、先進資料匯流排與長程網路化武器，使H-1機組人員能從其他飛機接收目標資訊，並作為美國與盟軍更大網路的一部分運作。",
-          "Bell專案經理Danielle Markham表示，SPINE將使H-1操作與維護人員能導入所需裝備與技術，讓飛機在H-1機隊壽命期內持續成為現代聯合部隊中完全互通的一員。UH-1Y也將獲得快速繩降、絞車與擔架裝備的改良，支援偏遠或嚴苛環境下的人員救援任務。",
-          "海軍陸戰隊將新構型稱為Series A，除更大電力容量外，還包含改良的防禦系統與數位連接能力。海軍H-1專案辦公室專案經理Col. Jason Duke表示，SPINE計畫將大幅提升H-1整體電力能力，確保H-1機隊持續保持 relevance 至2040年代。",
-          "Bell於2025年秋季完成首架AH-1Z與UH-1Y的SPINE改裝，並將兩架直升機送往馬里蘭州Naval Air Station Patuxent River進行飛行測試。新合約稱為Phase 3.0，將計畫從初始機推進至機隊改裝階段。AH-1Z與UH-1Y約有85%的零組件共用，包括發動機、旋翼系統、變速箱與航電。"
+          "Bell宣布獲得美國海軍一份估值約3億美元的合約，將為海軍陸戰隊升級最多49架AH-1Z Viper攻擊直升機與UH-1Y Venom多用途直升機。",
+          "合約涵蓋28架AH-1Z與21架UH-1Y，納入稱為SPINE的結構與動力改進計劃，旨在提升電力供應並引入新數位架構。",
+          "Bell表示將於2027年中期在德克薩斯州阿馬里洛組裝中心啟動改裝工作，並預計2028年交付首批升級後的直升機。",
+          "合約包含初始期並可選擇延長三年，採用多種付款結構；Bell強調總價為估算值，海軍未必承諾全額3億美元。",
+          "海軍陸戰隊官員預期升級後的Viper與Venom可持續服役至2040年代，並支援Link 16等網絡化武器系統。"
         ]
       },
       "en": {
-        "title": "Bell Wins Estimated $300M Contract to Upgrade 49 US Marine Corps Helicopters",
-        "summary": "Bell has secured an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters under the SPINE program, covering 28 attack and 21 utility helicopters, with modifications starting in mid-2027 and first delivery expected in 2028.",
+        "title": "Bell wins estimated $300M US Navy contract to upgrade 49 Marine Corps AH-1Z and UH-1Y helicopters",
+        "summary": "Bell has secured an estimated $300 million U.S. Navy contract to upgrade up to 49 Marine Corps AH-1Z Viper and UH-1Y Venom helicopters under the SPINE program. The work covers 28 AH-1Z and 21 UH-1Y airframes, begins at Bell’s Amarillo Assembly Center in mid‑2027, with first upgraded deliveries expected in 2028. The contract includes options to extend for three more years and uses several payment structures; Bell notes the total value is an estimate. Marine Corps officials say the upgrades will keep the fleet relevant into the 2040s and add Link 16 network‑enabled weapons capability.",
         "body": [
-          "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters. The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
-          "Bell said it will begin the modification work at its Amarillo Assembly Center in Texas in mid-2027. The company expects to deliver the first upgraded helicopters in 2028. The contract covers an initial period and includes options that could extend the work for another three years. Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
-          "SPINE will give the helicopters more electrical power and a new digital architecture designed to accommodate additional weapons, sensors and defensive equipment. The upgrade also supports Link 16, an advanced databus and long-range network-enabled weapons, allowing H-1 crews to receive targeting information from other aircraft and operate as part of a larger network of US and allied forces.",
-          "Bell Program Manager Danielle Markham said SPINE will enable H-1 operators and maintainers to implement the equipment and technology needed to keep the aircraft as a fully interoperable member of the modern joint force throughout the lifetime of the H-1 fleet. The UH-1Y will also receive improvements to its fast-rope, hoist and litter equipment, supporting personnel recovery missions in remote or austere locations.",
-          "The Marine Corps refers to the new configuration as Series A, which includes greater electrical capacity, improved defensive systems and digital connectivity. Col. Jason Duke, Program Manager for the Navy's H-1 program office, said the SPINE program will provide a significant increase to overall H-1 electrical capability to optimize advanced battlefield technology and ensure the H-1 fleet will continue to be relevant into the 2040s.",
-          "Bell completed SPINE modifications on the first AH-1Z and UH-1Y aircraft in the fall of 2025 and sent both helicopters to Naval Air Station Patuxent River in Maryland for flight testing. The new contract, known as Phase 3.0, moves the program from the initial aircraft into fleet modifications. The AH-1Z and UH-1Y share about 85% of their components, including engines, rotor systems, transmissions and avionics."
+          "Bell announced it has landed an estimated $300 million U.S. Navy contract to upgrade as many as 49 Marine Corps AH‑1Z Viper attack helicopters and UH‑1Y Venom utility helicopters.",
+          "The contract covers 28 AH‑1Z and 21 UH‑1Y aircraft under the Structural and Power Improvements for NextGen Effects (SPINE) program, which adds electrical capacity and a new digital architecture.",
+          "Bell said modification work will start at its Amarillo Assembly Center in Texas in mid‑2027, with the first upgraded helicopters slated for delivery in 2028.",
+          "The agreement includes an initial period plus options that could extend the work for another three years and employs several payment structures; Bell stressed the $300 million figure is an estimate, not a firm commitment.",
+          "Marine Corps officials expect the SPINE upgrades, including Link 16 support, to keep the Viper and Venom fleets operationally relevant into the 2040s."
         ]
       },
       "flash": {
-        "zh": "Bell獲3億美元合約升級49架美海軍陸戰隊直升機",
-        "en": "Bell wins estimated $300M contract to upgrade 49 USMC helicopters",
+        "zh": "Bell獲3億美元合約升級美軍直升機",
+        "en": "Bell wins $300M contract to upgrade Marine Corps helicopters",
         "hot": false
       },
       "incident": null,
@@ -473,7 +471,7 @@
         },
         {
           "factId": "F2",
-          "claim": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the SPINE program.",
+          "claim": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
           "sourceQuote": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
           "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
           "evidenceScope": "source",
@@ -491,8 +489,8 @@
         },
         {
           "factId": "F4",
-          "claim": "Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
-          "sourceQuote": "Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
+          "claim": "The contract includes an initial period with options to extend work for another three years, uses several payment structures, and Bell describes the total value as an estimate.",
+          "sourceQuote": "The contract covers an initial period and includes options that could extend the work for another three years. It uses several payment structures depending on the type of work involved. Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
           "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -500,7 +498,7 @@
         },
         {
           "factId": "F5",
-          "claim": "SPINE will give the helicopters more electrical power and a new digital architecture to accommodate additional weapons, sensors and defensive equipment, and supports Link 16.",
+          "claim": "SPINE will give the helicopters more electrical power and a new digital architecture to accommodate additional weapons, sensors and defensive equipment, and supports Link 16, an advanced databus and long‑range network‑enabled weapons.",
           "sourceQuote": "SPINE will give the helicopters more electrical power and a new digital architecture designed to accommodate additional weapons, sensors and defensive equipment. The upgrade also supports Link 16, an advanced databus and long-range network-enabled weapons.",
           "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
           "evidenceScope": "source",
@@ -509,8 +507,8 @@
         },
         {
           "factId": "F6",
-          "claim": "Bell completed SPINE modifications on the first AH-1Z and UH-1Y aircraft in the fall of 2025 and sent both to Naval Air Station Patuxent River for flight testing; the new contract known as Phase 3.0 moves the program into fleet modifications.",
-          "sourceQuote": "Bell completed SPINE modifications on the first AH-1Z and UH-1Y aircraft in the fall of 2025. The company sent both helicopters to Naval Air Station Patuxent River in Maryland for flight testing. The new contract, known as Phase 3.0, moves the program from the initial aircraft into fleet modifications.",
+          "claim": "Marine Corps officials expect the upgrades to help keep the Viper and Venom relevant into the 2040s.",
+          "sourceQuote": "Marine Corps officials expect the upgrades to help keep the Viper and Venom relevant into the 2040s.",
           "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -537,26 +535,29 @@
           "AH-1Z Viper",
           "UH-1Y Venom"
         ],
-        "airports": [
-          "Naval Air Station Patuxent River"
-        ],
+        "airports": [],
         "locations": [
-          "Amarillo Assembly Center",
-          "Texas",
-          "Maryland"
+          "Amarillo Assembly Center, Texas",
+          "Naval Air Station Patuxent River, Maryland"
         ],
         "flight_numbers": [],
         "registration_numbers": [],
-        "event_dates": []
+        "event_dates": [
+          "2026-07-28",
+          "mid-2027",
+          "2028",
+          "2040s"
+        ]
       },
       "eventStatus": "confirmed",
       "riskFlags": [
-        "financial_or_order_claim"
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
       ],
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260730-0144-8",
+      "id": "g-20260730-0314-9",
       "primarySource": "AeroTime",
       "items": [
         {
