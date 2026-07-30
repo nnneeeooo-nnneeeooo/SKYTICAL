@@ -1,5 +1,652 @@
 [
   {
+    "id": "g-20260730-0144-2",
+    "queuedUtc": "2026-07-30T01:44Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Major financial loss claim with large monetary figures requires human review. The story reports a significant quarterly net loss, fuel cost surge, and network disruptions tied to geopolitical conflict — all substantial financial and operational claims that warrant editorial oversight before publication.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, reversing from a S$186 million (US$143 million) profit a year earlier.",
+        "sourceQuote": "The SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter, a sharp reversal from the S$186 million (US$143 million) profit it posted a year earlier",
+        "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year, a record high for the group.",
+        "sourceQuote": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year and a new high for the group.",
+        "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Net fuel costs increased by S$991 million (US$763 million), or 78.5%, tied to the Middle East conflict that began on February 28, 2026, with fuel costs before hedging more than doubling.",
+        "sourceQuote": "a S$991 million (US$763 million), or 78.5%, increase in net fuel costs",
+        "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier.",
+        "sourceQuote": "operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier",
+        "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "SIA and Scoot carried a combined 10.9 million passengers, up 6.3% from the previous year, with passenger yields rising 12% and passenger revenue climbing 18.6% to S$4.58 billion.",
+        "sourceQuote": "SIA and budget carrier Scoot carrying a combined 10.9 million passengers, up 6.3% from the previous year, along with a 12% rise in passenger yields",
+        "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Major financial loss claim with large monetary figures requires human review. The story reports a significant quarterly net loss, fuel cost surge, and network disruptions tied to geopolitical conflict — all substantial financial and operational claims that warrant editorial oversight before publication.",
+      "cat": "biz",
+      "zh": {
+        "title": "新加坡航空集團公布7600萬星元淨虧損，燃油成本創新高",
+        "summary": "新加坡航空集團截至2026年6月30日止第一季錄得7600萬星元淨虧損，較上年同期1.86億星元獲利大幅逆轉。儘管營收創下57.1億星元新高，燃油成本飆升78.5%侵蝕獲利，中東衝突推升油價為主因。",
+        "body": [
+          "新加坡航空集團公布截至2026年6月30日止第一季財報，錄得7600萬星元（約5900萬美元）淨虧損，與上年同期1.86億星元（約1.43億美元）獲利相比大幅逆轉。集團將虧損主因歸於中東衝突引發的燃油成本飆升。",
+          "第一季營收達57.1億星元（約44億美元），年增19.3%，創集團歷史新高。客運收入成長18.6%至45.8億星元（約35.3億美元），新加坡航空與酷航合計載客1090萬人次，年增6.3%，客運收益率上升12%。貨運收入亦成長33.5%至7.08億星元（約5.45億美元）。",
+          "然而總支出跳增27.9%至56.1億星元（約43.2億美元），主因淨燃油成本增加9.91億星元（約7.63億美元），增幅達78.5%。新加坡航空表示，中東衝突於2026年2月28日爆發後，噴射燃油價格大漲，避險前燃油成本較上年同期增加一倍以上。雖然燃油避險帶來3.76億星元收益，仍不足以抵銷整體燃油成本增幅。",
+          "營業利益降至1.06億星元（約8200萬美元），較上年同期4.05億星元下滑73.8%。計入印度航空25.1%持股的較大虧損份額及較低稅負後，集團最終錄得7600萬星元淨虧損。",
+          "儘管虧損，集團財務狀況維持穩健。季末現金及銀行存款達91億星元（約70.1億美元），較上季增加11.7億星元，另有13.8億星元長期定期存款及32.4億星元未動用信貸額度。股東權益為165.9億星元（約127.8億美元），負債對權益比自0.62微升至0.65。",
+          "網路方面，酷航於本季開通新加坡至印尼勿里洞及坤甸新航線，新加坡航空開通杭州每日航班。歐洲方面，倫敦蓋威克及曼徹斯特班次已增加，並計畫10月開闢馬德里航線。中東衝突亦影響網路營運，酷航6月恢復吉達航班後於7月中旬再度暫停，杜拜航線維持暫停，利雅德航線延至12月開航。"
+        ]
+      },
+      "en": {
+        "title": "SIA Group reports S$76 million net loss as fuel costs surge on record revenue",
+        "summary": "Singapore Airlines Group posted a net loss of S$76 million for the quarter ended June 30, 2026, reversing from a S$186 million profit a year earlier. Record revenue of S$5.71 billion was offset by a 78.5% surge in net fuel costs tied to the Middle East conflict that began on February 28, 2026.",
+        "body": [
+          "Singapore Airlines Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, a sharp reversal from the S$186 million (US$143 million) profit posted a year earlier. The group attributed the loss almost entirely to a spike in fuel costs tied to the conflict in the Middle East.",
+          "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year and a new high for the group. Passenger revenue climbed 18.6% to S$4.58 billion (US$3.53 billion), as Singapore Airlines and Scoot carried a combined 10.9 million passengers, up 6.3% from the previous year, with passenger yields rising 12%. Cargo revenue grew 33.5% to S$708 million (US$545 million).",
+          "Total group expenditure jumped 27.9% to S$5.61 billion (US$4.32 billion), driven by a S$991 million (US$763 million) increase in net fuel costs, or 78.5%. SIA said the Middle East conflict that began on February 28, 2026 pushed jet fuel prices sharply higher, with fuel costs before hedging more than doubling. Although fuel hedging generated a gain, it was insufficient to offset the overall increase.",
+          "Operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier. After accounting for a larger share of losses from Air India, in which SIA holds a 25.1% stake, and a smaller tax bill, the group ended the quarter S$76 million in the red.",
+          "Despite the loss, the group's finances remained solid. Cash and bank balances stood at S$9.10 billion (US$7.01 billion) at quarter-end, up S$1.17 billion from the previous quarter, along with S$1.38 billion in longer-term fixed deposits and S$3.24 billion in undrawn credit lines. Shareholders' equity was S$16.59 billion (US$12.78 billion), with the debt-to-equity ratio rising to 0.65 from 0.62.",
+          "SIA continued expanding its network during the quarter. Scoot launched new routes to Belitung and Pontianak in Indonesia, while SIA began daily service to Hangzhou. European frequencies to London Gatwick and Manchester were boosted, with a new Madrid route planned for October. The Middle East conflict disrupted parts of the network: Scoot resumed Jeddah flights in June only to suspend them in mid-July, Dubai services remain suspended, and the Riyadh launch was pushed back to December."
+        ]
+      },
+      "flash": {
+        "zh": "新加坡航空集團第一季淨虧7600萬星元，燃油成本飆升78.5%",
+        "en": "SIA Group posts S$76M Q1 net loss as fuel costs surge 78.5%",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, reversing from a S$186 million (US$143 million) profit a year earlier.",
+          "sourceQuote": "The SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter, a sharp reversal from the S$186 million (US$143 million) profit it posted a year earlier",
+          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year, a record high for the group.",
+          "sourceQuote": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year and a new high for the group.",
+          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Net fuel costs increased by S$991 million (US$763 million), or 78.5%, tied to the Middle East conflict that began on February 28, 2026, with fuel costs before hedging more than doubling.",
+          "sourceQuote": "a S$991 million (US$763 million), or 78.5%, increase in net fuel costs",
+          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier.",
+          "sourceQuote": "operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier",
+          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "SIA and Scoot carried a combined 10.9 million passengers, up 6.3% from the previous year, with passenger yields rising 12% and passenger revenue climbing 18.6% to S$4.58 billion.",
+          "sourceQuote": "SIA and budget carrier Scoot carrying a combined 10.9 million passengers, up 6.3% from the previous year, along with a 12% rise in passenger yields",
+          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Scoot resumed Jeddah flights in June only to suspend them in mid-July; Dubai services remain suspended and the Riyadh launch was pushed back to December due to the Middle East conflict.",
+          "sourceQuote": "Scoot resumed flights to Jeddah in Saudi Arabia in June, only to suspend them again in mid-July as the conflict escalated. SIA's services to Dubai remain suspended, and the planned launch of flights to Riyadh has been pushed back to December.",
+          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "SIA Group",
+          "Singapore Airlines",
+          "Scoot",
+          "Air India"
+        ],
+        "airlines": [
+          "Singapore Airlines",
+          "Scoot",
+          "Air India"
+        ],
+        "aircraft_models": [],
+        "airports": [
+          "Hangzhou",
+          "London Gatwick",
+          "Manchester",
+          "Madrid",
+          "Western Sydney International Airport",
+          "Adelaide",
+          "Jeddah",
+          "Dubai",
+          "Riyadh",
+          "Belitung",
+          "Pontianak"
+        ],
+        "locations": [
+          "Singapore",
+          "Indonesia",
+          "mainland China",
+          "Europe",
+          "Australia",
+          "Saudi Arabia",
+          "Middle East"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-06-30",
+          "2026-02-28"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260730-0144-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "SIA Group posts S$76 million net loss as fuel costs surge on record revenue",
+          "url": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
+          "publishedUtc": "2026-07-28T13:34Z",
+          "summary": "Singapore Airlines’ parent company posted a rare loss for the quarter ended June 30, 2026, even as the… The post SIA Group posts S$76 million net loss as fuel costs surge on record revenue appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Singapore Airlines posts first quarterly loss since 2022",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNYWt2S1VpNUg0LXlONTVKZWRRVG9LcjNhRnNPYkZySGtlYXVaWFAzOGJTcVQ0RGNUVTFlSHFJY3hXdWNHdzE5cmlUMFE5OGFhLVRlWnhuNUxUbTNST0FUZ2kzdHFva2Jmd2J3ejZWQ0oyQ2Foa2x1eGpmY1g2WjVLT1NiYTZ4dlVIcnRrNWpTX3VNU3hyZHB4ZlhvMzl0MENUd1EyV0R1OUlBVnFnenFfZmxoU2FYZ25hakI2bERVY0U2SzRLbVYtUEFJNy0?oc=5",
+          "publishedUtc": "2026-07-28T11:16Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "Singapore Airlines posts first-quarter loss despite strong passenger demand",
+          "url": "https://aerospaceglobalnews.com/news/singapore-airlines-scoot-loss-financial-results/",
+          "publishedUtc": "2026-07-29T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/03/AdobeStock_574683894_Editorial_Use_Only-scaled.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1532-iata-global-air-cargo-demand-rose-8-5-ye",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: ON-YEAR"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%",
+            "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+            "facts": [
+              {
+                "claim": "IATA released June 2026 global air cargo market data showing total demand (CTK) increased 8.5% year-on-year, with international operations up 9.6%.",
+                "source_quote": "Total demand, measured in cargo tonne-kilometers (CTK), increased by 8.5% compared to June 2025 (9.6% for international operations).",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "Capacity (ACTK) increased 4.4% year-on-year, or 4.9% for international operations.",
+                "source_quote": "Capacity, measured in available cargo tonne-kilometers (ACTK), increased by 4.4% compared to June 2025 (4.9% for international operations).",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "Willie Walsh said North America was the strongest contributor to growth, all regions were in positive territory, and risks remain from Middle East hostilities and US tariff focus.",
+                "source_quote": "While North America was the strongest contributor to growth, demand in all regions was in positive territory compared to last year.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "North American carriers saw 13.1% year-on-year demand growth, the strongest of all regions; Latin American and Caribbean carriers saw 3.5%, the weakest.",
+                "source_quote": "North American carriers saw a 13.1% year-on-year increase in air cargo demand in June, the strongest performance of all regions.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "Middle East carriers saw 5.6% demand growth, skewed positive because June 2025 was particularly weak due to military conflict disruptions.",
+                "source_quote": "they are skewed to the positive as the comparison is to June 2025 which was particularly weak for carriers in the Middle East as a result of disruptions due to military conflict.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "Global trade increased 5.2% year-on-year; jet fuel prices fell 20% month-on-month but remained 45.8% above year-earlier levels; the New Export Orders Index stayed below 50 at 49.4 for a fourth consecutive month.",
+                "source_quote": "Global trade increased by 5.2% year-on-year. Jet fuel prices fell by 20% month-on-month in June but remained 45.8% above year-earlier levels.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260730-0144-8",
+    "queuedUtc": "2026-07-30T01:44Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Large financial claim ($300M contract) involving military helicopter upgrades requires human review per financial_or_order_claim policy. Evidence is sufficient for a full article but the monetary value is explicitly described as an estimate, and the contract includes options that may not be fully exercised.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters.",
+        "sourceQuote": "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters.",
+        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the SPINE program.",
+        "sourceQuote": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
+        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Bell will begin modification work at its Amarillo Assembly Center in Texas in mid-2027 and expects to deliver the first upgraded helicopters in 2028.",
+        "sourceQuote": "Bell said it will begin the modification work at its Amarillo Assembly Center in Texas in mid-2027. The company expects to deliver the first upgraded helicopters in 2028.",
+        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
+        "sourceQuote": "Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
+        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "SPINE will give the helicopters more electrical power and a new digital architecture to accommodate additional weapons, sensors and defensive equipment, and supports Link 16.",
+        "sourceQuote": "SPINE will give the helicopters more electrical power and a new digital architecture designed to accommodate additional weapons, sensors and defensive equipment. The upgrade also supports Link 16, an advanced databus and long-range network-enabled weapons.",
+        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Bell completed SPINE modifications on the first AH-1Z and UH-1Y aircraft in the fall of 2025 and sent both to Naval Air Station Patuxent River for flight testing; the new contract known as Phase 3.0 moves the program into fleet modifications.",
+        "sourceQuote": "Bell completed SPINE modifications on the first AH-1Z and UH-1Y aircraft in the fall of 2025. The company sent both helicopters to Naval Air Station Patuxent River in Maryland for flight testing. The new contract, known as Phase 3.0, moves the program from the initial aircraft into fleet modifications.",
+        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Large financial claim ($300M contract) involving military helicopter upgrades requires human review per financial_or_order_claim policy. Evidence is sufficient for a full article but the monetary value is explicitly described as an estimate, and the contract includes options that may not be fully exercised.",
+      "cat": "mil",
+      "zh": {
+        "title": "Bell獲3億美元合約升級49架美國海軍陸戰隊直升機",
+        "summary": "Bell取得美國海軍估計約3億美元合約，將在SPINE計畫下升級多達49架美國海軍陸戰隊AH-1Z Viper與UH-1Y Venom直升機，涵蓋28架攻擊直升機與21架通用直升機，預計2027年中展開改裝、2028年交付首架升級機。",
+        "body": [
+          "Bell取得美國海軍一項估計約3億美元的合約，將升級多達49架美國海軍陸戰隊AH-1Z Viper與UH-1Y Venom直升機。該合約涵蓋28架AH-1Z攻擊直升機與21架UH-1Y通用直升機，屬於「Structural and Power Improvements for NextGen Effects」計畫，簡稱SPINE。",
+          "Bell表示將於2027年中在德州Amarillo Assembly Center展開改裝作業，預計2028年交付首架升級直升機。合約涵蓋初始期並包含選項，可能將工作再延長三年。Bell將總值描述為估計金額，意味海軍未必已承諾全額3億美元。",
+          "SPINE將為直升機提供更多電力與新的數位架構，以容納額外的武器、感測器與防禦裝備。升級亦支援Link 16、先進資料匯流排與長程網路化武器，使H-1機組人員能從其他飛機接收目標資訊，並作為美國與盟軍更大網路的一部分運作。",
+          "Bell專案經理Danielle Markham表示，SPINE將使H-1操作與維護人員能導入所需裝備與技術，讓飛機在H-1機隊壽命期內持續成為現代聯合部隊中完全互通的一員。UH-1Y也將獲得快速繩降、絞車與擔架裝備的改良，支援偏遠或嚴苛環境下的人員救援任務。",
+          "海軍陸戰隊將新構型稱為Series A，除更大電力容量外，還包含改良的防禦系統與數位連接能力。海軍H-1專案辦公室專案經理Col. Jason Duke表示，SPINE計畫將大幅提升H-1整體電力能力，確保H-1機隊持續保持 relevance 至2040年代。",
+          "Bell於2025年秋季完成首架AH-1Z與UH-1Y的SPINE改裝，並將兩架直升機送往馬里蘭州Naval Air Station Patuxent River進行飛行測試。新合約稱為Phase 3.0，將計畫從初始機推進至機隊改裝階段。AH-1Z與UH-1Y約有85%的零組件共用，包括發動機、旋翼系統、變速箱與航電。"
+        ]
+      },
+      "en": {
+        "title": "Bell Wins Estimated $300M Contract to Upgrade 49 US Marine Corps Helicopters",
+        "summary": "Bell has secured an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters under the SPINE program, covering 28 attack and 21 utility helicopters, with modifications starting in mid-2027 and first delivery expected in 2028.",
+        "body": [
+          "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters. The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
+          "Bell said it will begin the modification work at its Amarillo Assembly Center in Texas in mid-2027. The company expects to deliver the first upgraded helicopters in 2028. The contract covers an initial period and includes options that could extend the work for another three years. Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
+          "SPINE will give the helicopters more electrical power and a new digital architecture designed to accommodate additional weapons, sensors and defensive equipment. The upgrade also supports Link 16, an advanced databus and long-range network-enabled weapons, allowing H-1 crews to receive targeting information from other aircraft and operate as part of a larger network of US and allied forces.",
+          "Bell Program Manager Danielle Markham said SPINE will enable H-1 operators and maintainers to implement the equipment and technology needed to keep the aircraft as a fully interoperable member of the modern joint force throughout the lifetime of the H-1 fleet. The UH-1Y will also receive improvements to its fast-rope, hoist and litter equipment, supporting personnel recovery missions in remote or austere locations.",
+          "The Marine Corps refers to the new configuration as Series A, which includes greater electrical capacity, improved defensive systems and digital connectivity. Col. Jason Duke, Program Manager for the Navy's H-1 program office, said the SPINE program will provide a significant increase to overall H-1 electrical capability to optimize advanced battlefield technology and ensure the H-1 fleet will continue to be relevant into the 2040s.",
+          "Bell completed SPINE modifications on the first AH-1Z and UH-1Y aircraft in the fall of 2025 and sent both helicopters to Naval Air Station Patuxent River in Maryland for flight testing. The new contract, known as Phase 3.0, moves the program from the initial aircraft into fleet modifications. The AH-1Z and UH-1Y share about 85% of their components, including engines, rotor systems, transmissions and avionics."
+        ]
+      },
+      "flash": {
+        "zh": "Bell獲3億美元合約升級49架美海軍陸戰隊直升機",
+        "en": "Bell wins estimated $300M contract to upgrade 49 USMC helicopters",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters.",
+          "sourceQuote": "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters.",
+          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the SPINE program.",
+          "sourceQuote": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
+          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Bell will begin modification work at its Amarillo Assembly Center in Texas in mid-2027 and expects to deliver the first upgraded helicopters in 2028.",
+          "sourceQuote": "Bell said it will begin the modification work at its Amarillo Assembly Center in Texas in mid-2027. The company expects to deliver the first upgraded helicopters in 2028.",
+          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
+          "sourceQuote": "Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
+          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "SPINE will give the helicopters more electrical power and a new digital architecture to accommodate additional weapons, sensors and defensive equipment, and supports Link 16.",
+          "sourceQuote": "SPINE will give the helicopters more electrical power and a new digital architecture designed to accommodate additional weapons, sensors and defensive equipment. The upgrade also supports Link 16, an advanced databus and long-range network-enabled weapons.",
+          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Bell completed SPINE modifications on the first AH-1Z and UH-1Y aircraft in the fall of 2025 and sent both to Naval Air Station Patuxent River for flight testing; the new contract known as Phase 3.0 moves the program into fleet modifications.",
+          "sourceQuote": "Bell completed SPINE modifications on the first AH-1Z and UH-1Y aircraft in the fall of 2025. The company sent both helicopters to Naval Air Station Patuxent River in Maryland for flight testing. The new contract, known as Phase 3.0, moves the program from the initial aircraft into fleet modifications.",
+          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Bell",
+          "US Navy",
+          "US Marine Corps"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "AH-1Z Viper",
+          "UH-1Y Venom"
+        ],
+        "airports": [
+          "Naval Air Station Patuxent River"
+        ],
+        "locations": [
+          "Amarillo Assembly Center",
+          "Texas",
+          "Maryland"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260730-0144-8",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Bell wins $300M contract to upgrade 49 US Marine Corps helicopters",
+          "url": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
+          "publishedUtc": "2026-07-28T15:06Z",
+          "summary": "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine… The post Bell wins $300M contract to upgrade 49 US Marine Corps helicopters appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 0 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 0 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260729-1742-4",
     "queuedUtc": "2026-07-29T17:42Z",
     "approve": false,
