@@ -1,11 +1,11 @@
 {
-  "updatedUtc": "2026-07-30T18:56Z",
+  "updatedUtc": "2026-07-30T20:17Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 291,
-      "inputTokens": 1259570,
-      "outputTokens": 800232,
+      "calls": 292,
+      "inputTokens": 1263906,
+      "outputTokens": 804005,
       "unknownCalls": 43
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
@@ -15,22 +15,22 @@
       "unknownCalls": 3
     },
     "nvidia:deepseek-ai/deepseek-v4-pro": {
-      "calls": 120,
-      "inputTokens": 318544,
-      "outputTokens": 63271,
+      "calls": 121,
+      "inputTokens": 322188,
+      "outputTokens": 63867,
       "unknownCalls": 55
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 73,
-      "inputTokens": 234097,
-      "outputTokens": 421484,
+      "calls": 74,
+      "inputTokens": 238046,
+      "outputTokens": 424707,
       "unknownCalls": 15
     },
     "gemini:gemini-3.5-flash": {
-      "calls": 17,
+      "calls": 18,
       "inputTokens": 16218,
       "outputTokens": 29873,
-      "unknownCalls": 13
+      "unknownCalls": 14
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "calls": 49,
@@ -39,9 +39,9 @@
       "unknownCalls": 49
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 56,
-      "inputTokens": 300476,
-      "outputTokens": 92754,
+      "calls": 57,
+      "inputTokens": 304267,
+      "outputTokens": 93249,
       "unknownCalls": 0
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
@@ -85,18 +85,263 @@
       "outputTokens": 561449
     },
     "2026-07-30": {
-      "calls": 283,
-      "inputTokens": 1047793,
-      "outputTokens": 715571
+      "calls": 288,
+      "inputTokens": 1063513,
+      "outputTokens": 723658
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-07-30T20:13Z",
+      "finishedUtc": "2026-07-30T20:17Z",
+      "workflow": "manual",
+      "taskType": "manual_article",
+      "groupId": "manual-729bf947eabeed9e9aaa35ca15e4eb47",
+      "eventId": null,
+      "sourceCount": 4,
+      "primarySource": "www.youtube.com",
+      "result": "publish",
+      "articleId": null,
+      "finalStatus": "publish",
+      "finalModel": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+      "fallbackUsed": true,
+      "attemptCount": 5,
+      "httpCallCount": 5,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "total": 268585
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": null,
+          "durationMs": 24425,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "unexpected",
+          "failureStage": "drafting",
+          "failureMessage": "translation paragraph count changed",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "gemini",
+          "model": "gemini-3.5-flash",
+          "label": "gemini:gemini-3.5-flash",
+          "startedUtc": null,
+          "durationMs": 18766,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "drafting",
+          "failureMessage": "HTTP 503",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 3,
+          "provider": "nvidia",
+          "model": "z-ai/glm-5.2",
+          "label": "nvidia:z-ai/glm-5.2",
+          "startedUtc": null,
+          "durationMs": 70286,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "unexpected",
+          "failureStage": "drafting",
+          "failureMessage": "translation paragraph count changed",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 4,
+          "provider": "nvidia",
+          "model": "deepseek-ai/deepseek-v4-pro",
+          "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+          "startedUtc": null,
+          "durationMs": 15539,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "unexpected",
+          "failureStage": "drafting",
+          "failureMessage": "translation paragraph count changed",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 5,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+          "startedUtc": null,
+          "durationMs": 135336,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": "drafting",
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": [
+          {
+            "label": "gemini:gemini-3.6-flash",
+            "inputTokens": 3949,
+            "outputTokens": 3223,
+            "estimated": false
+          },
+          {
+            "label": "gemini:gemini-3.5-flash",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:z-ai/glm-5.2",
+            "inputTokens": 3791,
+            "outputTokens": 495,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+            "inputTokens": 3644,
+            "outputTokens": 596,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+            "inputTokens": 4336,
+            "outputTokens": 3773,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:qwen/qwen3.5-397b-a17b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-31b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:inclusionai/ling-3.0-flash:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:openai/gpt-oss-20b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-s-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:cohere/north-mini-code:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-xs-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          }
+        ]
+      }
+    },
     {
       "startedUtc": "2026-07-30T18:56:28.601Z",
       "finishedUtc": "2026-07-30T18:56:38.860Z",
       "workflow": "manual_workbench",
       "taskType": "manual_article",
       "groupId": "a-20260730-1856-manual-45737a",
+      "eventId": null,
       "sourceCount": 5,
       "primarySource": "cna.com.tw",
       "result": "published",
@@ -104,12 +349,15 @@
       "finalStatus": "publish",
       "finalModel": "manual:GPT 5.6 Terra Thinking",
       "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
       "durationsMs": {
         "total": 10260
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "GPT 5.6 Terra Thinking",
@@ -305,7 +553,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -459,7 +707,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -497,7 +745,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -554,7 +802,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -719,7 +967,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -776,7 +1024,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -923,7 +1171,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1070,7 +1318,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1217,7 +1465,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1364,7 +1612,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1511,7 +1759,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1549,7 +1797,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1714,7 +1962,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1861,7 +2109,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2008,7 +2256,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2155,7 +2403,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2302,7 +2550,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2431,7 +2679,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2488,7 +2736,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2545,7 +2793,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2692,7 +2940,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2839,7 +3087,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2902,7 +3150,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2959,7 +3207,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3016,7 +3264,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3073,7 +3321,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3130,7 +3378,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3187,7 +3435,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3370,7 +3618,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3408,7 +3656,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3446,7 +3694,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3484,7 +3732,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     }
