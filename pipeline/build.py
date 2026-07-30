@@ -1418,18 +1418,22 @@ def _usage_price_for(label: str, prices: dict):
     return None
 
 
+def _configured_model_priority() -> dict:
+    configured = (os.environ.get("AVWIRE_PROVIDER_ORDER")
+                  or DEFAULT_PROVIDER_ORDER)
+    return {
+        token.strip(): index
+        for index, token in enumerate(configured.split(","))
+        if token.strip()
+    }
+
+
 def usage_rows(ledger: dict, prices: dict):
     """Per-model rows + totals with theoretical USD value at list prices."""
     rows = []
     totals = {"calls": 0, "in": 0, "out": 0, "usd": 0.0,
               "unknown": 0, "all_priced": True}
-    configured = (os.environ.get("AVWIRE_PROVIDER_ORDER")
-                  or DEFAULT_PROVIDER_ORDER)
-    priority = {
-        token.strip(): index
-        for index, token in enumerate(configured.split(","))
-        if token.strip()
-    }
+    priority = _configured_model_priority()
     models = (ledger.get("models") or {}).items()
     for label, m in sorted(
             models,
@@ -1656,7 +1660,10 @@ def recent_run_view(ledger: dict, now=None) -> dict:
                    if row["duration_count"] else None)
         row["average_duration"] = _duration_text(average)
         model_rows.append(row)
-    model_rows.sort(key=lambda row: (-row["attempts"], row["label"]))
+    priority = _configured_model_priority()
+    model_rows.sort(
+        key=lambda row: (
+            priority.get(row["label"], len(priority)), row["label"]))
 
     totals = [run["durations"]["total"] for run in runs
               if run["durations"]["total"] is not None]

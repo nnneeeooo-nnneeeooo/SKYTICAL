@@ -411,6 +411,11 @@ check("dashboard skips old/malformed rows without crashing on NaN",
       [row["group_id"] for row in view_with_old["runs"]]
       == ["boeing-777-9-test-hours", "nan"]
       and view_with_old["runs"][1]["durations"]["total"] is None)
+check("recent model statistics follow configured model priority",
+      [row["label"] for row in view_with_old["models"]]
+      == ["gemini:gemini-3.6-flash",
+          "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+          "nvidia:nvidia/nemotron-3-super-120b-a12b"])
 check("page is noindex and shows totals",
       "noindex" in page and "API 用量" in page and "$0" in page)
 check("page shows exact Codex GPT-5 task totals and cost semantics",
