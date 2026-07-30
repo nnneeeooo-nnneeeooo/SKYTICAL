@@ -22,6 +22,7 @@
   const PAT_VAULT_CONTEXT = `avwire-pat-v1:${repository}`;
   const images = [];
   const conversation = [];
+  let patInputRevision = 0;
   let lastDraft = null;
 
   const text = (element, value) => { element.textContent = value; };
@@ -141,12 +142,30 @@
     return token;
   }
 
-  async function rememberPat() {
+  async function rememberPat(
+    token = els["github-token"].value.trim(),
+    expectedRevision = null,
+  ) {
     try {
-      const envelope = await encryptPat(els["github-token"].value.trim());
+      const envelope = await encryptPat(token);
+      if (expectedRevision !== null && (
+        expectedRevision !== patInputRevision
+        || els["github-token"].value.trim() !== token
+      )) return false;
       localStorage.setItem(PAT_STORAGE_KEY, JSON.stringify(envelope));
+      return true;
     } catch (error) {
       addLog("瀏覽器拒絕保存 PAT；本次工作仍會繼續");
+      return false;
+    }
+  }
+
+  async function savePatOnInput() {
+    const token = els["github-token"].value.trim();
+    const revision = ++patInputRevision;
+    if (!validToken || !validPat(token)) return;
+    if (await rememberPat(token, revision)) {
+      text(els["security-state"], "網址權杖有效 · PAT 已加密記憶");
     }
   }
 
@@ -453,7 +472,8 @@
       submittedUtc: new Date().toISOString(),
     };
     try {
-      await rememberPat();
+      await rememberPat(
+        els["github-token"].value.trim(), patInputRevision);
       addLog("在瀏覽器內以 AES-256-GCM 加密來源與圖片");
       await submitJob(payload, jobId);
       addLog("加密工作已提交；repository 內只保存密文");
@@ -471,7 +491,9 @@
     }
   }
 
+  els["github-token"].addEventListener("input", savePatOnInput);
   els["clear-token"].addEventListener("click", () => {
+    patInputRevision += 1;
     els["github-token"].value = "";
     try {
       localStorage.removeItem(PAT_STORAGE_KEY);

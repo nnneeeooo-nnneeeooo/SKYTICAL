@@ -257,6 +257,11 @@ def test_static_security_contract():
         "await restorePat()" in js
         and "localStorage.removeItem(PAT_STORAGE_KEY)" in js,
         "encrypted PAT is automatically restored and can be cleared")
+    check(
+        'els["github-token"].addEventListener("input", savePatOnInput)' in js
+        and "expectedRevision !== patInputRevision" in js
+        and "PAT 已加密記憶" in js,
+        "a pasted PAT is saved immediately without waiting for generation")
     check("AES-GCM" in js and "data/manual-jobs/inbox/" in js,
           "browser encrypts before writing a job")
     check("secrets.AVWIRE_MANUAL_TOKEN" in workflow
