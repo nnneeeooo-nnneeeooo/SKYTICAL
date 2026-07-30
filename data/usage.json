@@ -1,30 +1,30 @@
 {
-  "updatedUtc": "2026-07-30T04:34Z",
+  "updatedUtc": "2026-07-30T06:02Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 235,
-      "inputTokens": 967909,
-      "outputTokens": 600952,
-      "unknownCalls": 35
+      "calls": 256,
+      "inputTokens": 1082002,
+      "outputTokens": 677725,
+      "unknownCalls": 39
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
-      "calls": 100,
-      "inputTokens": 484984,
-      "outputTokens": 216653,
-      "unknownCalls": 2
+      "calls": 110,
+      "inputTokens": 561569,
+      "outputTokens": 248968,
+      "unknownCalls": 0
     },
     "nvidia:deepseek-ai/deepseek-v4-pro": {
-      "calls": 84,
-      "inputTokens": 246736,
-      "outputTokens": 43917,
-      "unknownCalls": 32
+      "calls": 93,
+      "inputTokens": 252583,
+      "outputTokens": 45095,
+      "unknownCalls": 40
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 43,
-      "inputTokens": 136059,
-      "outputTokens": 237198,
-      "unknownCalls": 8
+      "calls": 45,
+      "inputTokens": 140350,
+      "outputTokens": 241304,
+      "unknownCalls": 9
     },
     "gemini:gemini-3.5-flash": {
       "calls": 11,
@@ -33,22 +33,22 @@
       "unknownCalls": 9
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
-      "calls": 31,
+      "calls": 39,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 31
+      "unknownCalls": 39
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 31,
-      "inputTokens": 155322,
-      "outputTokens": 42370,
+      "calls": 39,
+      "inputTokens": 207288,
+      "outputTokens": 63520,
       "unknownCalls": 0
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
-      "calls": 26,
+      "calls": 34,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 26
+      "unknownCalls": 34
     }
   },
   "daily": {
@@ -73,9 +73,9 @@
       "outputTokens": 561449
     },
     "2026-07-30": {
-      "calls": 59,
-      "inputTokens": 220508,
-      "outputTokens": 119375
+      "calls": 125,
+      "inputTokens": 473290,
+      "outputTokens": 254897
     }
   }
 }
