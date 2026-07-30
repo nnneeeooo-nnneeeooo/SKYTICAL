@@ -192,6 +192,50 @@ def test_weak_topic_is_not_selected() -> None:
     assert programme_result["selected_events"] == []
 
 
+def test_boeing_777x_family_alias_retrieves_programme_background() -> None:
+    """777X and 777-8/-9 are one programme, not unrelated model strings."""
+    old = archive("same_aircraft")
+    old.update({
+        "id": "a-20260728-boeing-777x-certification",
+        "publishedUtc": "2026-07-28T11:30Z",
+        "sourcePublishedUtc": "2026-07-28T11:30Z",
+        "zh": {"title": "波音777X獲FAA核准展開認證試飛",
+               "summary": "波音表示777X首架交付預計於2027年。",
+               "body": ["波音777X認證進度。"]},
+        "en": {"title": "Boeing 777X receives FAA approval for certification flight testing",
+               "summary": "Boeing expects first 777X delivery in 2027.",
+               "body": ["Boeing 777X certification progress."]},
+        "facts": [{
+            "factId": "F1",
+            "claim": "The 777X received FAA approval to begin certification flight testing, with first delivery anticipated in 2027.",
+            "sourceQuote": "The 777X received FAA approval to begin certification flight testing. The company continues to anticipate first delivery in 2027.",
+            "sourceUrl": "https://example.com/boeing-777x-q2",
+        }],
+        "sources": [{"name": "Boeing", "url": "https://example.com/boeing-777x-q2"}],
+        "entities": {**old["entities"], "organizations": ["Boeing"],
+                     "aircraft_models": ["777X"],
+                     "event_dates": ["2026-07-28"]},
+    })
+    current = {
+        "id": "g-777-9-etops",
+        "primarySource": "Test News",
+        "items": [{
+            "source": "Test News", "sourceKey": "fixture",
+            "title": "Boeing 777-9 test fleet reaches 4,800 hours",
+            "summary": "Boeing said the seventh 777-9 airframe will conduct ETOPS certification testing.",
+            "publishedUtc": "2026-07-30T06:51Z",
+            "url": "https://current.example.com/777-9-etops", "image": None,
+        }],
+    }
+    result = archive_context.retrieve_archive_context(current, articles=[old])
+    assert result["retrieval_status"] == "found", result
+    selected = result["selected_events"]
+    assert len(selected) == 1
+    assert selected[0]["relationship_type"] == "programme_background"
+    assert "BOEING 777X FAMILY" in archive_context.extract_entity_keys(
+        current)["aircraft_models"]
+
+
 def test_archive_qualification_exclusions() -> None:
     base = archive("same_aircraft")
     archived_but_verified = copy.deepcopy(base)
