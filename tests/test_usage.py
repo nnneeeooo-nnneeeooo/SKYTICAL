@@ -14,7 +14,7 @@ import os
 import sys
 import tempfile
 import types
-from datetime import timedelta, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
@@ -116,6 +116,99 @@ check("daily bucket accumulates across providers",
       led["daily"][day]["calls"] == 4
       and led["daily"][day]["inputTokens"] == 3300)
 check("tracking start stamped once", bool(led["trackingSinceUtc"]))
+check("old ledger without recentRuns loads compatibly",
+      led["recentRuns"] == [])
+
+fixed_now = datetime(2026, 7, 30, 10, 20, tzinfo=timezone.utc)
+sample_run = {
+    "startedUtc": usage.iso_minute(fixed_now),
+    "finishedUtc": usage.iso_minute(fixed_now),
+    "workflow": "hourly",
+    "taskType": "article",
+    "groupId": "boeing-777-9-test-hours",
+    "eventId": None,
+    "sourceCount": 4,
+    "primarySource": "Boeing <script>alert(1)</script>",
+    "result": "published",
+    "articleId": "a-boeing-777-9-test-hours",
+    "finalStatus": "publish",
+    "finalModel": "gemini:gemini-3.6-flash",
+    "fallbackUsed": True,
+    "prompt": "PROMPT MUST NEVER BE STORED",
+    "durationsMs": {
+        "archiveRetrieval": 80,
+        "promptAssembly": 10,
+        "drafting": 223400,
+        "validation": 22,
+        "factVerification": 15,
+        "articleBuild": 8,
+        "total": 223400,
+    },
+    "attempts": [
+        {
+            "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+            "outcome": "failed",
+            "durationMs": 180100,
+            "httpCalls": 1,
+            "repairCalls": 0,
+            "failureClass": "timeout",
+            "failureStage": "draft",
+            "failureMessage":
+                "ReadTimeout\nAuthorization: Bearer secret-value",
+            "retryPlanned": False,
+            "disabledForRun": False,
+        },
+        {
+            "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+            "outcome": "failed",
+            "durationMs": 28300,
+            "httpCalls": 2,
+            "repairCalls": 1,
+            "failureClass": "invalid_json",
+            "failureStage": "validation",
+            "failureMessage": "bad JSON from model",
+            "retryPlanned": False,
+            "disabledForRun": False,
+        },
+        {
+            "label": "gemini:gemini-3.6-flash",
+            "outcome": "success",
+            "durationMs": 15000,
+            "httpCalls": 1,
+            "repairCalls": 0,
+            "failureClass": None,
+            "failureStage": None,
+            "failureMessage": None,
+            "retryPlanned": False,
+            "disabledForRun": False,
+        },
+    ],
+}
+usage.record_run(sample_run)
+check("record_run appends one detailed run",
+      usage.load_ledger()["recentRuns"][0]["groupId"]
+      == "boeing-777-9-test-hours"
+      and "prompt" not in usage.load_ledger()["recentRuns"][0])
+boundary = {**sample_run,
+            "groupId": "boundary",
+            "startedUtc": usage.iso_minute(
+                fixed_now - timedelta(days=usage.RECENT_RUN_KEEP_DAYS))}
+expired = {**sample_run,
+           "groupId": "expired",
+           "startedUtc": usage.iso_minute(
+               fixed_now - timedelta(days=usage.RECENT_RUN_KEEP_DAYS,
+                                     minutes=1))}
+pruned = usage._prune_recent_runs(
+    [sample_run, boundary, expired, "bad", {"startedUtc": "bad"}],
+    fixed_now)
+check("30-day boundary is inclusive and older/malformed rows are pruned",
+      {row["groupId"] for row in pruned}
+      == {"boeing-777-9-test-hours", "boundary"})
+many = [{**sample_run, "groupId": f"g-{i}"}
+        for i in range(usage.RECENT_RUN_MAX + 5)]
+check("recent run hard cap prevents unbounded growth",
+      len(usage._prune_recent_runs(many, fixed_now))
+      == usage.RECENT_RUN_MAX)
 
 usage.record_providers([nv])  # second run with the same totals object
 led2 = usage.load_ledger()
@@ -133,6 +226,23 @@ check("daily series pruned to the retention window",
 
 check("idle providers write nothing",
       usage.record_providers([]) is None)
+
+check("provider failures have stable classes",
+      providers.classify_failure(
+          providers.ProviderAuthError("HTTP 401")) == "auth"
+      and providers.classify_failure(
+          providers.ProviderQuotaError("HTTP 429")) == "quota"
+      and providers.classify_failure(
+          providers.ProviderError("HTTP 429 per-minute rate limit"))
+      == "rate_limit"
+      and providers.classify_failure(
+          providers.ProviderError("ReadTimeout")) == "timeout")
+cleaned = providers.safe_failure_message(
+    "line one\nAuthorization: Bearer very-secret "
+    "https://example.com/?key=secret", 80)
+check("failure messages are flattened, redacted and truncated",
+      "\n" not in cleaned and "very-secret" not in cleaned
+      and "key=secret" not in cleaned and len(cleaned) <= 80)
 
 # ── pricing math + dashboard gating ─────────────────────────────────────────
 
@@ -260,6 +370,36 @@ codex_snapshot = json.loads(
 snapshot_entry = codex_snapshot["entries"][0]
 snapshot_total = (snapshot_entry["inputTokens"]
                   + snapshot_entry["outputTokens"])
+check("page shows thirty-day history, fallback chain and final model",
+      "最近 30 天模型執行與失敗紀錄" in page
+      and "2026-07-30 18:20 TPE" in page
+      and "Nemotron 3 Ultra 550B A55B" in page
+      and "JSON 格式錯誤" in page
+      and "Gemini 3.6 Flash" in page
+      and "→ 改用" in page)
+check("page shows stage duration and repair count",
+      "Archive Context retrieval" in page
+      and "223.4 秒" in page
+      and "HTTP 2 · Repair 1" in page)
+check("dashboard sanitizes secrets and escapes HTML",
+      "very-secret" not in page
+      and "secret-value" not in page
+      and "<script>alert(1)</script>" not in page
+      and "&lt;script&gt;alert(1)&lt;/script&gt;" in page)
+view_with_old = build.recent_run_view({
+    "recentRuns": [
+        sample_run,
+        {**sample_run, "groupId": "old-hidden",
+         "startedUtc": "2020-01-01T00:00Z"},
+        {"startedUtc": "bad", "result": "published"},
+        {**sample_run, "groupId": "nan",
+         "durationsMs": {"total": float("nan")}},
+    ]
+}, fixed_now)
+check("dashboard skips old/malformed rows without crashing on NaN",
+      [row["group_id"] for row in view_with_old["runs"]]
+      == ["boeing-777-9-test-hours", "nan"]
+      and view_with_old["runs"][1]["durations"]["total"] is None)
 check("page is noindex and shows totals",
       "noindex" in page and "API 用量" in page and "$0" in page)
 check("page shows exact Codex GPT-5 task totals and cost semantics",

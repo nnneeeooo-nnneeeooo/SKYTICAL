@@ -368,6 +368,36 @@ def test_flight_events_auto_publish():
     print("test_flight_events_auto_publish: done")
 
 
+def test_flight_fallback_history():
+    _reset_data()
+    flightnews.save_queue([json.loads(json.dumps(FLIGHT_EVENT))])
+    primary = FakeProvider(
+        "nvidia", [providers.ProviderError("ReadTimeout")])
+    backup = FakeProvider("gemini", [_flight_draft(status="publish")])
+    _run_write_with([primary, backup])
+    ledger = common.load_json(
+        Path(os.environ["AVWIRE_DATA_DIR"]) / "usage.json", {})
+    runs = ledger.get("recentRuns") or []
+    run = next(row for row in runs
+               if row.get("workflow") == "flightwatch")
+    check(run["result"] == "published"
+          and run["finalModel"] == "gemini:fake"
+          and run["fallbackUsed"] is True,
+          "flight event records fallback and final successful model")
+    check([row["failureClass"] for row in run["attempts"]]
+          == ["timeout", None],
+          "flight event records timeout then successful fallback")
+
+    _reset_data()
+    flightnews.save_queue([json.loads(json.dumps(FLIGHT_EVENT))])
+    refusing = FakeProvider("gemini", [None])
+    unused = FakeProvider("nvidia", [_flight_draft()])
+    _run_write_with([refusing, unused])
+    check(refusing.calls == 1 and unused.calls == 0,
+          "flight refusal does not switch to another model")
+    print("test_flight_fallback_history: done")
+
+
 def test_flight_gate_blocks_conflicts_safety_and_kill_switch():
     # conflicting ADS-B sources -> human review, never published
     _reset_data()
@@ -465,6 +495,7 @@ def main():
         test_event_identity_and_config,
         test_source_assembly_privacy,
         test_flight_events_auto_publish,
+        test_flight_fallback_history,
         test_flight_gate_blocks_conflicts_safety_and_kill_switch,
         test_flight_no_candidates_no_ai,
         test_flight_bad_quote_and_reject,
