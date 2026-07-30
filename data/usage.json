@@ -1,30 +1,30 @@
 {
-  "updatedUtc": "2026-07-30T17:43Z",
+  "updatedUtc": "2026-07-30T18:54Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 290,
-      "inputTokens": 1253139,
-      "outputTokens": 795834,
+      "calls": 291,
+      "inputTokens": 1259570,
+      "outputTokens": 800232,
       "unknownCalls": 43
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
-      "calls": 135,
-      "inputTokens": 676665,
-      "outputTokens": 304084,
+      "calls": 136,
+      "inputTokens": 683096,
+      "outputTokens": 320468,
       "unknownCalls": 3
     },
     "nvidia:deepseek-ai/deepseek-v4-pro": {
-      "calls": 119,
-      "inputTokens": 312114,
-      "outputTokens": 60621,
+      "calls": 120,
+      "inputTokens": 318544,
+      "outputTokens": 63271,
       "unknownCalls": 55
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 71,
-      "inputTokens": 232945,
-      "outputTokens": 420753,
-      "unknownCalls": 14
+      "calls": 73,
+      "inputTokens": 234097,
+      "outputTokens": 421484,
+      "unknownCalls": 15
     },
     "gemini:gemini-3.5-flash": {
       "calls": 17,
@@ -33,22 +33,34 @@
       "unknownCalls": 13
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
-      "calls": 48,
+      "calls": 49,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 48
+      "unknownCalls": 49
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 55,
-      "inputTokens": 294129,
-      "outputTokens": 90388,
+      "calls": 56,
+      "inputTokens": 300476,
+      "outputTokens": 92754,
       "unknownCalls": 0
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
-      "calls": 41,
+      "calls": 42,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 41
+      "unknownCalls": 42
+    },
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
+      "calls": 1,
+      "inputTokens": 6431,
+      "outputTokens": 7296,
+      "unknownCalls": 0
+    },
+    "openrouter:nvidia/nemotron-3-super-120b-a12b:free": {
+      "calls": 1,
+      "inputTokens": 6431,
+      "outputTokens": 10558,
+      "unknownCalls": 0
     }
   },
   "daily": {
@@ -73,12 +85,328 @@
       "outputTokens": 561449
     },
     "2026-07-30": {
-      "calls": 273,
-      "inputTokens": 1008140,
-      "outputTokens": 671188
+      "calls": 283,
+      "inputTokens": 1047793,
+      "outputTokens": 715571
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-07-30T18:37Z",
+      "finishedUtc": "2026-07-30T18:54Z",
+      "workflow": "manual",
+      "taskType": "manual_article",
+      "groupId": "manual-0f40c5074053925d8942724e42f2e37e",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "actualite.cd",
+      "result": "manual_review",
+      "articleId": null,
+      "finalStatus": "manual_review",
+      "finalModel": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+      "fallbackUsed": true,
+      "attemptCount": 9,
+      "httpCallCount": 9,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "total": 1009961
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": null,
+          "durationMs": 168,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "quota",
+          "failureStage": "drafting",
+          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "nvidia",
+          "model": "z-ai/glm-5.2",
+          "label": "nvidia:z-ai/glm-5.2",
+          "startedUtc": null,
+          "durationMs": 103046,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "unexpected",
+          "failureStage": "drafting",
+          "failureMessage": "validation failed: manual_review body meets neither full nor brief contract",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 3,
+          "provider": "nvidia",
+          "model": "deepseek-ai/deepseek-v4-pro",
+          "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+          "startedUtc": null,
+          "durationMs": 104078,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "unexpected",
+          "failureStage": "drafting",
+          "failureMessage": "validation failed: manual_review body meets neither full nor brief contract",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 4,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+          "startedUtc": null,
+          "durationMs": 123857,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "unexpected",
+          "failureStage": "drafting",
+          "failureMessage": "validation failed: manual_review body meets neither full nor brief contract",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 5,
+          "provider": "nvidia",
+          "model": "qwen/qwen3.5-397b-a17b",
+          "label": "nvidia:qwen/qwen3.5-397b-a17b",
+          "startedUtc": null,
+          "durationMs": 66,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "drafting",
+          "failureMessage": "HTTP 410",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 6,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+          "startedUtc": null,
+          "durationMs": 141580,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "truncated",
+          "failureStage": "drafting",
+          "failureMessage": "response truncated (length)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 7,
+          "provider": "nvidia",
+          "model": "mistralai/mistral-medium-3.5-128b",
+          "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+          "startedUtc": null,
+          "durationMs": 180118,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "timeout",
+          "failureStage": "drafting",
+          "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 8,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+          "startedUtc": null,
+          "durationMs": 246832,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "unexpected",
+          "failureStage": "drafting",
+          "failureMessage": "validation failed: manual_review body meets neither full nor brief contract",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 9,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-super-120b-a12b:free",
+          "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+          "startedUtc": null,
+          "durationMs": 102349,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": "drafting",
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": [
+          {
+            "label": "gemini:gemini-3.6-flash",
+            "inputTokens": 1152,
+            "outputTokens": 731,
+            "estimated": false
+          },
+          {
+            "label": "gemini:gemini-3.5-flash",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:z-ai/glm-5.2",
+            "inputTokens": 6347,
+            "outputTokens": 2366,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+            "inputTokens": 6430,
+            "outputTokens": 2650,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+            "inputTokens": 6431,
+            "outputTokens": 4398,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:qwen/qwen3.5-397b-a17b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+            "inputTokens": 6431,
+            "outputTokens": 16384,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+            "inputTokens": 6431,
+            "outputTokens": 7296,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+            "inputTokens": 6431,
+            "outputTokens": 10558,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-31b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:inclusionai/ling-3.0-flash:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:openai/gpt-oss-20b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-s-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:cohere/north-mini-code:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-xs-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          }
+        ]
+      }
+    },
     {
       "startedUtc": "2026-07-30T17:37Z",
       "finishedUtc": "2026-07-30T17:43Z",
@@ -172,7 +500,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T16:32Z",
@@ -206,7 +538,11 @@
         "articleBuild": null,
         "total": 3569980
       },
-      "attempts": []
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T16:31Z",
@@ -259,7 +595,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T16:31Z",
@@ -420,7 +760,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T16:31Z",
@@ -473,7 +817,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T16:31Z",
@@ -616,7 +964,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T16:31Z",
@@ -759,7 +1111,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T16:31Z",
@@ -902,7 +1258,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T16:31Z",
@@ -1045,7 +1405,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T16:31Z",
@@ -1188,7 +1552,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T16:31Z",
@@ -1222,7 +1590,11 @@
         "articleBuild": null,
         "total": 3570174
       },
-      "attempts": []
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -1383,7 +1755,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -1526,7 +1902,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -1669,7 +2049,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -1812,7 +2196,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -1955,7 +2343,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -2080,7 +2472,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -2133,7 +2529,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -2186,7 +2586,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -2329,7 +2733,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T15:06Z",
@@ -2472,7 +2880,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T14:22Z",
@@ -2531,7 +2943,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T11:49Z",
@@ -2584,7 +3000,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T11:49Z",
@@ -2637,7 +3057,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T11:49Z",
@@ -2690,7 +3114,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T11:49Z",
@@ -2743,7 +3171,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T11:49Z",
@@ -2796,7 +3228,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T11:49Z",
@@ -2975,7 +3411,11 @@
           "retryPlanned": false,
           "disabledForRun": false
         }
-      ]
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T11:49Z",
@@ -3009,7 +3449,11 @@
         "articleBuild": null,
         "total": 626288
       },
-      "attempts": []
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T11:49Z",
@@ -3043,7 +3487,11 @@
         "articleBuild": null,
         "total": 626103
       },
-      "attempts": []
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     },
     {
       "startedUtc": "2026-07-30T11:49Z",
@@ -3077,7 +3525,11 @@
         "articleBuild": null,
         "total": 625926
       },
-      "attempts": []
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
     }
   ]
 }
