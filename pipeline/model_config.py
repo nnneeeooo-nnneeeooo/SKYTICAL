@@ -4,7 +4,7 @@ The first entry is the default writer. The same order drives provider
 fallback and model ordering on the private usage dashboard.
 """
 
-MODEL_ORDER = (
+DIRECT_MODEL_ORDER = (
     "gemini:gemini-3.6-flash",
     "gemini:gemini-3.5-flash",
     "nvidia:z-ai/glm-5.2",
@@ -14,6 +14,24 @@ MODEL_ORDER = (
     "nvidia:nvidia/nemotron-3-super-120b-a12b",
     "nvidia:mistralai/mistral-medium-3.5-128b",
 )
+
+OPENROUTER_MODEL_ORDER = (
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+    "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+    "openrouter:google/gemma-4-31b-it:free",
+    "openrouter:inclusionai/ling-3.0-flash:free",
+    "openrouter:google/gemma-4-26b-a4b-it:free",
+    "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+    "openrouter:openai/gpt-oss-20b:free",
+    "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+    "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+    "openrouter:nvidia/nemotron-nano-9b-v2:free",
+    "openrouter:poolside/laguna-s-2.1:free",
+    "openrouter:cohere/north-mini-code:free",
+    "openrouter:poolside/laguna-xs-2.1:free",
+)
+
+MODEL_ORDER = DIRECT_MODEL_ORDER + OPENROUTER_MODEL_ORDER
 
 DEFAULT_PROVIDER_ORDER = ",".join(MODEL_ORDER)
 
@@ -29,6 +47,32 @@ MODEL_DISPLAY_NAMES = {
         "NVIDIA Nemotron 3 Super 120B",
     "nvidia:mistralai/mistral-medium-3.5-128b":
         "NVIDIA Mistral Medium 3.5 128B",
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free":
+        "OpenRouter · NVIDIA Nemotron 3 Ultra 550B",
+    "openrouter:nvidia/nemotron-3-super-120b-a12b:free":
+        "OpenRouter · NVIDIA Nemotron 3 Super 120B",
+    "openrouter:google/gemma-4-31b-it:free":
+        "OpenRouter · Google Gemma 4 31B",
+    "openrouter:inclusionai/ling-3.0-flash:free":
+        "OpenRouter · InclusionAI Ling 3.0 Flash",
+    "openrouter:google/gemma-4-26b-a4b-it:free":
+        "OpenRouter · Google Gemma 4 26B A4B",
+    "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free":
+        "OpenRouter · NVIDIA Nemotron 3 Nano Omni 30B",
+    "openrouter:openai/gpt-oss-20b:free":
+        "OpenRouter · OpenAI gpt-oss-20b",
+    "openrouter:nvidia/nemotron-3-nano-30b-a3b:free":
+        "OpenRouter · NVIDIA Nemotron 3 Nano 30B",
+    "openrouter:nvidia/nemotron-nano-12b-v2-vl:free":
+        "OpenRouter · NVIDIA Nemotron Nano 12B VL",
+    "openrouter:nvidia/nemotron-nano-9b-v2:free":
+        "OpenRouter · NVIDIA Nemotron Nano 9B V2",
+    "openrouter:poolside/laguna-s-2.1:free":
+        "OpenRouter · Poolside Laguna S 2.1",
+    "openrouter:cohere/north-mini-code:free":
+        "OpenRouter · Cohere North Mini Code",
+    "openrouter:poolside/laguna-xs-2.1:free":
+        "OpenRouter · Poolside Laguna XS 2.1",
 }
 
 REASONING_TIERS = ("fast", "standard", "deep")
@@ -43,6 +87,15 @@ def manual_reasoning_profile(provider: str, model: str, tier: str) -> dict:
     """
     if tier not in REASONING_TIERS:
         tier = "standard"
+    if provider == "openrouter":
+        effort = {"fast": "low", "standard": "medium",
+                  "deep": "high"}[tier]
+        return {
+            "wire": {
+                "reasoning": {"effort": effort, "exclude": True},
+            },
+            "effective": f"reasoning.effort={effort}",
+        }
     if provider == "gemini":
         level = {"fast": "minimal", "standard": "medium",
                  "deep": "high"}[tier]
