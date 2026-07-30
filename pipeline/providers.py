@@ -20,8 +20,8 @@ Each provider exposes:
         raises ProviderError      failure of this one call (truncation,
                bad JSON, transient HTTP) -> try the next provider
 
-The write stage tries providers in AVWIRE_PROVIDER_ORDER (default
-"anthropic,gemini,nvidia") and falls through to the next on failure.
+The write stage tries providers in AVWIRE_PROVIDER_ORDER (defaulting to the
+configured MODEL_ORDER below) and falls through to the next on failure.
 An order token may pin a model with "name:model", and the same platform
 may appear multiple times with different models, e.g.:
 
@@ -40,13 +40,14 @@ import re
 import time
 
 import requests
+from model_config import DEFAULT_PROVIDER_ORDER, MODEL_ORDER
 
 try:
     import anthropic
 except ImportError:  # pragma: no cover - anthropic is in requirements.txt
     anthropic = None
 
-DEFAULT_ORDER = "anthropic,gemini,nvidia"
+DEFAULT_ORDER = DEFAULT_PROVIDER_ORDER
 # 550B-class NIM models regularly need >120s on the free tier.
 HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
 
@@ -59,28 +60,46 @@ HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
 #           (JSON syntax only - content failures NEVER take this path)
 # Only fields the respective endpoint documents are sent; models without a
 # profile fall back to conservative generic settings.
-NVIDIA_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b"
-GEMINI_DEFAULT_MODEL = "gemini-2.5-flash"
+NVIDIA_DEFAULT_MODEL = "z-ai/glm-5.2"
+GEMINI_DEFAULT_MODEL = "gemini-3.6-flash"
 
 MODEL_PROFILES: dict = {
+    # Gemini thinking is high for fact-sensitive bilingual drafting. Format
+    # repair remains minimal because that call may only fix JSON syntax.
+    # Temperature is intentionally omitted: Gemini 3.x uses its tuned default.
+    "gemini-3.6-flash": {
+        "generationConfig": {"maxOutputTokens": 16384,
+                             "thinkingConfig": {"thinkingLevel": "high"}},
+        "repairGenerationConfig": {
+            "maxOutputTokens": 8192,
+            "thinkingConfig": {"thinkingLevel": "minimal"}},
+    },
+    "gemini-3.5-flash": {
+        "generationConfig": {"maxOutputTokens": 16384,
+                             "thinkingConfig": {"thinkingLevel": "high"}},
+        "repairGenerationConfig": {
+            "maxOutputTokens": 8192,
+            "thinkingConfig": {"thinkingLevel": "minimal"}},
+    },
+    "z-ai/glm-5.2": {
+        # The public NIM schema for GLM exposes no reasoning control.
+        # Low temperature improves factual consistency and JSON stability.
+        "reasoningMode": "provider_default",
+        "payload": {"temperature": 0.1},
+        "repair": {},
+    },
+    "deepseek-ai/deepseek-v4-pro": {
+        # High reasoning is retained for evidence-heavy verification work.
+        "payload": {"temperature": 1.0, "top_p": 0.95,
+                    "reasoning_effort": "high"},
+        "repair": {"reasoning_effort": "none"},
+    },
     "nvidia/nemotron-3-ultra-550b-a55b": {
-        # Medium thinking via the official Nemotron chat-template kwargs.
+        # Medium thinking balances verification quality with usable output.
         "payload": {"temperature": 1.0, "top_p": 0.95,
                     "chat_template_kwargs": {"enable_thinking": True,
                                              "medium_effort": True}},
         "repair": {"chat_template_kwargs": {"enable_thinking": False}},
-    },
-    "nvidia/nemotron-3-super-120b-a12b": {
-        # Low effort via the official top-level field: the default full
-        # reasoning ate the whole 8192-token budget in live runs.
-        "payload": {"temperature": 1.0, "top_p": 0.95,
-                    "reasoning_effort": "low"},
-        "repair": {"reasoning_effort": "none"},
-    },
-    "deepseek-ai/deepseek-v4-pro": {
-        "payload": {"temperature": 1.0, "top_p": 0.95,
-                    "reasoning_effort": "high"},
-        "repair": {"reasoning_effort": "none"},
     },
     "qwen/qwen3.5-397b-a17b": {
         # NIM exposes thinking on/off only for Qwen; thinking-mode sampling
@@ -90,37 +109,17 @@ MODEL_PROFILES: dict = {
                     "chat_template_kwargs": {"enable_thinking": True}},
         "repair": {"chat_template_kwargs": {"enable_thinking": False}},
     },
-    "z-ai/glm-5.2": {
-        # The public NIM schema for GLM exposes no reasoning control;
-        # provider-default reasoning is used deliberately. The marker below
-        # is internal documentation and is never sent on the wire.
-        "reasoningMode": "provider_default",
-        "payload": {"temperature": 0.1},
-        "repair": {},
-    },
-    "mistralai/mistral-medium-3.5-128b": {
-        # Last fallback: rarely called, quality over latency -> high.
-        # NIM offers none|high only for this model.
-        "payload": {"temperature": 0.7, "reasoning_effort": "high"},
+    "nvidia/nemotron-3-super-120b-a12b": {
+        # Low effort avoids consuming the full output budget before the
+        # bilingual JSON answer, a failure observed with full reasoning.
+        "payload": {"temperature": 1.0, "top_p": 0.95,
+                    "reasoning_effort": "low"},
         "repair": {"reasoning_effort": "none"},
     },
-    # No temperature on Gemini 3.x: Google's docs recommend keeping the
-    # tuned defaults (the field is deprecated on newer 3.6-flash builds).
-    # 16384 out: fulltext-enriched groups produce long bilingual bodies,
-    # and thinking tokens count against maxOutputTokens on Gemini.
-    "gemini-3.6-flash": {
-        "generationConfig": {"maxOutputTokens": 16384,
-                             "thinkingConfig": {"thinkingLevel": "medium"}},
-        "repairGenerationConfig": {
-            "maxOutputTokens": 8192,
-            "thinkingConfig": {"thinkingLevel": "minimal"}},
-    },
-    "gemini-3.5-flash": {
-        "generationConfig": {"maxOutputTokens": 16384,
-                             "thinkingConfig": {"thinkingLevel": "medium"}},
-        "repairGenerationConfig": {
-            "maxOutputTokens": 8192,
-            "thinkingConfig": {"thinkingLevel": "minimal"}},
+    "mistralai/mistral-medium-3.5-128b": {
+        # NIM offers none|high only; keep high for the final fallback.
+        "payload": {"temperature": 0.7, "reasoning_effort": "high"},
+        "repair": {"reasoning_effort": "none"},
     },
 }
 
