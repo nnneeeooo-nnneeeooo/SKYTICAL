@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-07-30T16:27Z",
+  "updatedUtc": "2026-07-30T16:47Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,15 +21,9 @@
       "unknownCalls": 53
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 65,
-      "inputTokens": 217006,
-      "outputTokens": 393643,
-      "unknownCalls": 12
-    },
-    "gemini:gemini-3.5-flash": {
-      "calls": 16,
-      "inputTokens": 16218,
-      "outputTokens": 29873,
+      "calls": 66,
+      "inputTokens": 221470,
+      "outputTokens": 404282,
       "unknownCalls": 12
     },
     "gemini:gemini-3.5-flash": {
@@ -55,6 +49,12 @@
       "inputTokens": 0,
       "outputTokens": 0,
       "unknownCalls": 39
+    },
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
+      "calls": 1,
+      "inputTokens": 5730,
+      "outputTokens": 6770,
+      "unknownCalls": 0
     }
   },
   "daily": {
@@ -79,12 +79,71 @@
       "outputTokens": 561449
     },
     "2026-07-30": {
-      "calls": 251,
-      "inputTokens": 929308,
-      "outputTokens": 626056
+      "calls": 253,
+      "inputTokens": 939502,
+      "outputTokens": 643465
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-07-30T16:44Z",
+      "finishedUtc": "2026-07-30T16:47Z",
+      "workflow": "manual",
+      "taskType": "manual_article",
+      "groupId": "manual-dcdc2b777025d822e22a63f15aa72655",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "www.faa.gov",
+      "result": "manual_review",
+      "articleId": null,
+      "finalStatus": "manual_review",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "total": 172688
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+          "startedUtc": null,
+          "durationMs": 126224,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "unexpected",
+          "failureStage": "drafting",
+          "failureMessage": "validation failed: publish body does not meet full contract (zh=384 content characters, en=271 words, paragraphs=4/4)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": null,
+          "durationMs": 46344,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": "drafting",
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ]
+    },
     {
       "startedUtc": "2026-07-30T15:06Z",
       "finishedUtc": "2026-07-30T15:14Z",
