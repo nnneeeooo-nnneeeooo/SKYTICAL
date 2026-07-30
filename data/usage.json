@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-07-30T18:55Z",
+  "updatedUtc": "2026-07-30T18:56Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -91,6 +91,35 @@
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-07-30T18:56:28.601Z",
+      "finishedUtc": "2026-07-30T18:56:38.860Z",
+      "workflow": "manual_workbench",
+      "taskType": "manual_article",
+      "groupId": "a-20260730-1856-manual-45737a",
+      "sourceCount": 5,
+      "primarySource": "cna.com.tw",
+      "result": "published",
+      "articleId": "a-20260730-1856-manual-45737a",
+      "finalStatus": "publish",
+      "finalModel": "manual:GPT 5.6 Terra Thinking",
+      "fallbackUsed": false,
+      "durationsMs": {
+        "total": 10260
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0,
+        "models": [
+          {
+            "label": "GPT 5.6 Terra Thinking",
+            "inputTokens": 0,
+            "outputTokens": 363,
+            "estimated": true
+          }
+        ]
+      }
+    },
     {
       "startedUtc": "2026-07-30T18:37Z",
       "finishedUtc": "2026-07-30T18:54Z",
