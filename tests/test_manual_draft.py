@@ -89,8 +89,8 @@ def test_payload_limits_and_ssrf():
     manual_time["publicationTimeUtc"] = "2026-07-30T12:34:56Z"
     check(
         manual_draft.validate_payload(manual_time)["publicationTimeUtc"]
-        == "2026-07-30T12:34:56Z",
-        "manual publication time keeps second precision")
+        == "2026-07-30T12:34:00Z",
+        "manual publication time is normalized to minute precision")
     custom = sample_payload()
     custom["model"] = "custom"
     custom["customModel"] = "openrouter:example/model:free"
@@ -402,6 +402,8 @@ def test_static_security_contract():
     html = (ROOT / "templates" / "manual.html").read_text(encoding="utf-8")
     js = (ROOT / "static" / "manual.js").read_text(encoding="utf-8")
     css = (ROOT / "static" / "manual.css").read_text(encoding="utf-8")
+    app_js = (ROOT / "static" / "app.js").read_text(encoding="utf-8")
+    radar_js = (ROOT / "static" / "radar.js").read_text(encoding="utf-8")
     workflow = (ROOT / ".github" / "workflows"
                 / "manual-draft.yml").read_text(encoding="utf-8")
     hourly = (ROOT / ".github" / "workflows"
@@ -423,10 +425,22 @@ def test_static_security_contract():
     check(
         '<option value="auto" selected>自動偵測</option>' in html
         and 'id="article-summary"' in html
-        and 'id="publication-time"' in html
-        and 'type="datetime-local"' in html
-        and 'step="1"' in html,
-        "workbench exposes auto type, summary and second-precision time controls")
+        and 'id="publication-date"' in html
+        and 'id="publication-hour"' in html
+        and 'id="publication-minute"' in html
+        and 'id="publication-period"' in html
+        and 'type="date"' in html
+        and 'type="datetime-local"' not in html
+        and 'second: "2-digit"' not in js
+        and 'hour12: true' in js,
+        "workbench exposes auto type, summary and 12-hour minute controls")
+    check(
+        build.clock_12(datetime(2026, 7, 31, 21, 0, tzinfo=timezone.utc))
+        == "9:00 PM"
+        and 'hour12: true' in app_js
+        and 'hour12: true' in radar_js
+        and 'second: "2-digit"' not in radar_js,
+        "site clocks use 12-hour time without seconds")
     check(
         'id="review-panel"' in html
         and 'id="confirm-model"' in html
