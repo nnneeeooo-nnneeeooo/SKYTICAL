@@ -4,7 +4,14 @@
   const app = document.querySelector("#app");
   const repository = app.dataset.repository;
   const branch = app.dataset.branch;
+  const basePath = app.dataset.base;
   const els = Object.fromEntries([
+    "mode-ai", "mode-manual", "manual-editor",
+    "manual-title-primary", "manual-content-primary",
+    "manual-secondary-language", "manual-title-secondary",
+    "manual-content-secondary", "manual-primary-title-label",
+    "manual-primary-content-label", "manual-model-panel", "manual-model",
+    "manual-model-custom-panel", "manual-model-custom",
     "github-token", "clear-token", "source-urls", "source-text",
     "article-summary", "publication-mode", "manual-time-panel",
     "publication-time",
@@ -13,7 +20,8 @@
     "generate", "form-error", "security-state", "job-state", "metric-model",
     "metric-reasoning", "metric-fallback", "metric-duration",
     "metric-tokens", "metric-rate", "attempts", "request-log",
-    "json-output", "copy-json", "download-json",
+    "json-output", "copy-json", "download-json", "output-panel",
+    "activity-indicator", "pipeline-steps",
     "review-panel", "review-status", "review-type", "review-time",
     "review-time-source", "review-draft-status", "preview-zh-title",
     "preview-zh-summary", "preview-zh-body", "preview-en-title",
@@ -32,6 +40,10 @@
   const conversation = [];
   let patInputRevision = 0;
   let lastResult = null;
+  let workbenchMode = "ai";
+  let operationStartedAt = null;
+  let aiArticleType = "auto";
+  let aiLanguage = "bilingual";
 
   const ARTICLE_TYPE_LABELS = {
     auto: "自動偵測",
@@ -57,6 +69,28 @@
   function setState(label, kind = "idle") {
     text(els["job-state"], label);
     els["job-state"].className = `job-state ${kind}`;
+    els["activity-indicator"].className = `activity-indicator ${kind}`;
+  }
+
+  function setWorkflow(labels) {
+    els["pipeline-steps"].replaceChildren();
+    labels.forEach(label => {
+      const item = document.createElement("li");
+      item.className = "waiting";
+      item.append(document.createElement("span"), label);
+      els["pipeline-steps"].append(item);
+    });
+  }
+
+  function setWorkflowStep(index, status) {
+    const rows = [...els["pipeline-steps"].children];
+    if (!rows[index]) return;
+    rows[index].className = status;
+  }
+
+  function failActiveWorkflow() {
+    const active = els["pipeline-steps"].querySelector(".active");
+    if (active) active.className = "failed";
   }
 
   function addLog(message) {
@@ -273,6 +307,20 @@
     return response.json();
   }
 
+  async function writeRepoBinary(path, base64Content, message) {
+    const current = await readRepoFile(path);
+    const body = {message, content: base64Content, branch};
+    if (current.sha) body.sha = current.sha;
+    const response = await github(
+      path, {method: "PUT", body: JSON.stringify(body)});
+    if (!response.ok) {
+      const problem = await response.json().catch(() => ({}));
+      throw new Error(
+        problem.message || `寫入圖片 ${path} 失敗（HTTP ${response.status}）`);
+    }
+    return response.json();
+  }
+
   async function writeRepoJson(path, value, message) {
     const current = await readRepoFile(path);
     return writeRepoFile(
@@ -441,6 +489,114 @@
     return {model: selected, customModel: ""};
   }
 
+  function splitParagraphs(value) {
+    return value.split(/\r?\n\s*\r?\n/)
+      .map(row => row.replace(/\r?\n/g, " ").trim())
+      .filter(Boolean);
+  }
+
+  function estimateTokens(value) {
+    const textValue = String(value || "");
+    const cjk = (textValue.match(/[\u3400-\u9fff\u3040-\u30ff\uac00-\ud7af]/g)
+      || []).length;
+    const latinWords = (textValue.match(/[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*/g)
+      || []).length;
+    const other = Math.max(
+      0, textValue.replace(/\s/g, "").length - cjk);
+    return Math.max(1, Math.ceil(cjk + latinWords * 1.33 + other / 6));
+  }
+
+  function manualModelLabel() {
+    if (els["manual-model"].value === "custom") {
+      const custom = els["manual-model-custom"].value.trim();
+      if (!/^[^<>\u0000-\u001f]{2,80}$/.test(custom)) {
+        throw new Error("請輸入 2 至 80 字元的撰稿模型名稱");
+      }
+      return custom;
+    }
+    const selected = els["manual-model"].selectedOptions[0];
+    return selected?.dataset.name || selected?.textContent.trim() || "";
+  }
+
+  function manualLanguages() {
+    const selected = els.language.value;
+    return selected === "bilingual" ? ["zh", "en"] : [selected];
+  }
+
+  function updateManualLanguageFields() {
+    if (workbenchMode !== "manual") return;
+    const language = els.language.value;
+    const englishOnly = language === "en";
+    text(els["manual-primary-title-label"],
+      englishOnly ? "Article title (English)" : "文章標題（繁體中文）");
+    els["manual-primary-title-label"].append(
+      els["manual-title-primary"]);
+    text(els["manual-primary-content-label"],
+      englishOnly ? "Article content (English)" : "文章內容（繁體中文）");
+    els["manual-primary-content-label"].append(
+      els["manual-content-primary"]);
+    els["manual-secondary-language"].hidden = language !== "bilingual";
+  }
+
+  function setMode(mode) {
+    workbenchMode = mode;
+    const manual = mode === "manual";
+    els["mode-ai"].classList.toggle("active", !manual);
+    els["mode-manual"].classList.toggle("active", manual);
+    els["mode-ai"].setAttribute("aria-pressed", String(!manual));
+    els["mode-manual"].setAttribute("aria-pressed", String(manual));
+    document.querySelectorAll(".ai-only").forEach(node => {
+      node.hidden = manual;
+    });
+    document.querySelectorAll(".manual-only").forEach(node => {
+      node.hidden = !manual;
+    });
+    els["manual-editor"].hidden = !manual;
+    els["manual-model-custom-panel"].hidden =
+      !manual || els["manual-model"].value !== "custom";
+    els["review-panel"].hidden = true;
+    if (manual) {
+      aiArticleType = els["article-type"].value;
+      aiLanguage = els.language.value;
+      els["article-type"].value = "press_release";
+      els.language.value = "zh";
+      els["article-type"].querySelector('option[value="auto"]').disabled = true;
+      text(els.generate, "一鍵送出並發布到網站");
+      setWorkflow([
+        "檢查手動稿與來源",
+        "備份圖片",
+        "寫入文章 JSON 與用量紀錄",
+        "更新網站資料",
+        "部署並確認網站可讀取",
+      ]);
+    } else {
+      els["article-type"].querySelector('option[value="auto"]').disabled = false;
+      els["article-type"].value = aiArticleType;
+      els.language.value = aiLanguage;
+      els["manual-time-panel"].hidden =
+        els["publication-mode"].value !== "manual";
+      text(els.generate, "生成新聞草稿");
+      setWorkflow([
+        "檢查來源與加密",
+        "提交 GitHub Actions",
+        "模型生成與 fallback",
+        "等待人工確認",
+        "發布並確認網站可讀取",
+      ]);
+    }
+    updateManualLanguageFields();
+    lastResult = null;
+    els["output-panel"].hidden = manual;
+    setState("待命", "idle");
+    text(els["metric-model"], "—");
+    text(els["metric-reasoning"], "—");
+    text(els["metric-fallback"], "—");
+    text(els["metric-duration"], "—");
+    text(els["metric-tokens"], "—");
+    text(els["metric-rate"], manual ? "不適用（未呼叫模型）" : "尚無回應標頭");
+    els.attempts.innerHTML = '<p class="muted">尚無資料</p>';
+  }
+
   function validateForm() {
     if (!validToken) return "私人網址權杖無效";
     if (!validPat(els["github-token"].value.trim())) {
@@ -451,7 +607,27 @@
     if (!urls.every(url => /^https?:\/\//i.test(url))) {
       return "來源網址只能使用 http:// 或 https://";
     }
-    if (els["publication-mode"].value === "manual"
+    if (workbenchMode === "manual") {
+      if (!els["manual-title-primary"].value.trim()) {
+        return "請輸入文章標題";
+      }
+      if (!splitParagraphs(els["manual-content-primary"].value).length) {
+        return "請輸入文章內容";
+      }
+      if (els.language.value === "bilingual"
+          && (!els["manual-title-secondary"].value.trim()
+              || !splitParagraphs(
+                els["manual-content-secondary"].value).length)) {
+        return "雙語模式必須同時填寫繁中與英文標題及內容";
+      }
+      try {
+        manualModelLabel();
+      } catch (error) {
+        return error.message;
+      }
+    }
+    if (workbenchMode === "ai"
+        && els["publication-mode"].value === "manual"
         && !manualPublicationUtc()) {
       return "請指定有效的臺北文章日期與時間";
     }
@@ -459,6 +635,228 @@
       (sum, image) => sum + image.data.length, 0);
     if (encodedImages > 12_000_000) return "圖片總量過大，請移除部分圖片";
     return "";
+  }
+
+  function manualArticle(jobId, imageUrls, fixedArticleId = "") {
+    const language = els.language.value;
+    const languages = manualLanguages();
+    const primaryTitle = els["manual-title-primary"].value.trim();
+    const primaryBody = splitParagraphs(els["manual-content-primary"].value);
+    const secondaryTitle = els["manual-title-secondary"].value.trim();
+    const secondaryBody = splitParagraphs(
+      els["manual-content-secondary"].value);
+    const empty = {title: "", summary: "", body: []};
+    const block = (title, body) => ({
+      title,
+      summary: (body[0] || title).slice(0, 180),
+      body,
+    });
+    const zh = language === "en"
+      ? empty : block(primaryTitle, primaryBody);
+    const en = language === "en"
+      ? block(primaryTitle, primaryBody)
+      : (language === "bilingual"
+        ? block(secondaryTitle, secondaryBody) : empty);
+    const now = new Date();
+    const compact = now.toISOString()
+      .replace(/[-:]/g, "").slice(0, 13).replace("T", "-");
+    const articleId = fixedArticleId
+      || `a-${compact}-manual-${jobId.slice(0, 6)}`;
+    const sources = sourceUrls().map(url => {
+      let name = url;
+      try {
+        name = new URL(url).hostname.replace(/^www\./, "");
+      } catch (error) {
+        // URL validation already ran; retain the URL as a safe fallback name.
+      }
+      return {name, url};
+    });
+    const category = {
+      incident: "safety",
+      regulation: "reg",
+      fleet_order: "biz",
+      financial: "biz",
+    }[els["article-type"].value] || "ops";
+    const attachments = imageUrls.map((url, index) => ({
+      url,
+      kind: index === 0 ? "article_image" : "attachment",
+    }));
+    return {
+      id: articleId,
+      publishedUtc: now.toISOString(),
+      cat: category,
+      primarySource: sources[0]?.name || "Manual source",
+      image: imageUrls[0] ? {
+        url: imageUrls[0],
+        provider: "AVWIRE manual upload",
+        subject: zh.title || en.title,
+        kind: "file_photo",
+      } : null,
+      zh,
+      en,
+      sources,
+      writer: `manual:${manualModelLabel()}`,
+      articleFormat: "full",
+      availableLanguages: languages,
+      manualArticleType: els["article-type"].value,
+      attachments,
+    };
+  }
+
+  function imageUrlsForArticle(articleId) {
+    return images.map((image, index) =>
+      `${location.origin}${basePath}/assets/${articleId}-image-${index + 1}.jpg`);
+  }
+
+  async function uploadManualImages(articleId) {
+    let latestCommit = "";
+    for (const [index, image] of images.entries()) {
+      const path = `static/${articleId}-image-${index + 1}.jpg`;
+      const result = await writeRepoBinary(
+        path, image.data, `upload manual article image ${articleId}`);
+      latestCommit = result.commit?.sha || latestCommit;
+      addLog(`圖片 ${index + 1}/${images.length} 已備份`);
+    }
+    return latestCommit;
+  }
+
+  function usageModelsFromResult(result) {
+    const grouped = new Map();
+    const add = (label, tokens, estimated = false) => {
+      if (!label) return;
+      const row = grouped.get(label) || {
+        label, inputTokens: 0, outputTokens: 0, estimated,
+      };
+      row.inputTokens += Number(tokens?.input || 0);
+      row.outputTokens += Number(tokens?.output || 0);
+      row.estimated ||= estimated;
+      grouped.set(label, row);
+    };
+    for (const attempt of result?.attempts || []) {
+      add(attempt.model, attempt.tokens);
+    }
+    for (const row of result?.requestLog || []) {
+      if (row.tokens) add("gemini:gemini-3.6-flash", row.tokens);
+    }
+    return [...grouped.values()];
+  }
+
+  function manualUsageModels(article) {
+    const allText = [
+      article.zh.title, ...article.zh.body,
+      article.en.title, ...article.en.body,
+    ].join("\n");
+    return [{
+      label: article.writer.replace(/^manual:/, ""),
+      inputTokens: 0,
+      outputTokens: estimateTokens(allText),
+      estimated: true,
+    }];
+  }
+
+  async function recordPublicationUsage(article, mode, result = null) {
+    const current = await readRepoFile("data/usage.json");
+    let ledger = {};
+    try {
+      ledger = current.content ? JSON.parse(current.content) : {};
+    } catch (error) {
+      throw new Error("data/usage.json 不是有效 JSON，已停止發布");
+    }
+    ledger.models = typeof ledger.models === "object" && ledger.models
+      ? ledger.models : {};
+    ledger.daily = typeof ledger.daily === "object" && ledger.daily
+      ? ledger.daily : {};
+    ledger.recentRuns = Array.isArray(ledger.recentRuns)
+      ? ledger.recentRuns : [];
+    const stamp = new Date().toISOString();
+    const resourceUsage = {
+      actualUsd: 0,
+      models: mode === "manual"
+        ? manualUsageModels(article) : usageModelsFromResult(result),
+    };
+    if (mode === "ai") {
+      const groupId = `manual-${result.id}`;
+      const existing = ledger.recentRuns.find(
+        row => row && row.groupId === groupId);
+      if (existing) {
+        existing.articleId = article.id;
+        existing.result = "published";
+        existing.finalStatus = "publish";
+        existing.resourceUsage = resourceUsage;
+      } else {
+        ledger.recentRuns.unshift({
+          startedUtc: result.completedUtc || stamp,
+          finishedUtc: stamp,
+          workflow: "manual",
+          taskType: "manual_article",
+          groupId,
+          sourceCount: sourceUrls().length,
+          primarySource: article.primarySource,
+          result: "published",
+          articleId: article.id,
+          finalStatus: "publish",
+          finalModel: result.finalModel,
+          fallbackUsed: result.fallbackUsed === true,
+          durationsMs: {},
+          attempts: [],
+          resourceUsage,
+        });
+      }
+    } else {
+      ledger.recentRuns = ledger.recentRuns.filter(
+        row => row?.articleId !== article.id);
+      ledger.recentRuns.unshift({
+        startedUtc: operationStartedAt
+          ? new Date(operationStartedAt).toISOString() : stamp,
+        finishedUtc: stamp,
+        workflow: "manual_workbench",
+        taskType: "manual_article",
+        groupId: article.id,
+        sourceCount: sourceUrls().length,
+        primarySource: article.primarySource,
+        result: "published",
+        articleId: article.id,
+        finalStatus: "publish",
+        finalModel: article.writer,
+        fallbackUsed: false,
+        durationsMs: {
+          total: operationStartedAt ? Date.now() - operationStartedAt : 0,
+        },
+        attempts: [],
+        resourceUsage,
+      });
+    }
+    const cutoff = Date.now() - 30 * 24 * 60 * 60 * 1000;
+    ledger.recentRuns = ledger.recentRuns.filter(row => {
+      const parsed = Date.parse(row?.startedUtc || row?.finishedUtc || "");
+      return Number.isFinite(parsed) && parsed >= cutoff;
+    }).slice(0, 1000);
+    ledger.updatedUtc = stamp.replace(/:\d{2}\.\d{3}Z$/, "Z");
+    ledger.trackingSinceUtc ||= ledger.updatedUtc;
+    return writeRepoFile(
+      "data/usage.json",
+      `${JSON.stringify(ledger, null, 2)}\n`,
+      `record private manual usage ${article.id}`,
+      current.sha,
+    );
+  }
+
+  async function waitForPublishedArticle(article) {
+    const available = Array.isArray(article.availableLanguages)
+      ? article.availableLanguages : ["zh", "en"];
+    const lang = available.includes("zh") ? "zh" : "en";
+    const langPath = lang === "en" ? "en/" : "";
+    const url = `${basePath}/${langPath}news/${article.id}/`;
+    const deadline = Date.now() + 10 * 60 * 1000;
+    while (Date.now() < deadline) {
+      const response = await fetch(`${url}?check=${Date.now()}`, {
+        cache: "no-store",
+      }).catch(() => null);
+      if (response?.ok) return url;
+      await sleep(10000);
+    }
+    throw new Error(
+      "GitHub 已接受發布，但 10 分鐘內尚未確認 Pages 上線");
   }
 
   async function submitJob(payload, jobId) {
@@ -653,6 +1051,14 @@
     els["json-output"].value = "";
     els["copy-json"].disabled = true;
     els["download-json"].disabled = true;
+    setWorkflow([
+      "檢查來源與加密",
+      "提交 GitHub Actions",
+      "模型生成與 fallback",
+      "等待人工確認",
+      "發布並確認網站可讀取",
+    ]);
+    setWorkflowStep(0, "active");
     setState("加密提交中", "working");
     els["request-log"].dataset.empty = "true";
     els["request-log"].replaceChildren();
@@ -691,16 +1097,23 @@
       await rememberPat(
         els["github-token"].value.trim(), patInputRevision);
       addLog("在瀏覽器內以 AES-256-GCM 加密來源與圖片");
+      setWorkflowStep(0, "done");
+      setWorkflowStep(1, "active");
       await submitJob(payload, jobId);
       addLog("加密工作已提交；repository 內只保存密文");
+      setWorkflowStep(1, "done");
+      setWorkflowStep(2, "active");
       setState("模型生成中", "working");
       const result = await pollResult(jobId);
       displayResult(result);
-      setState("完成", "success");
+      setWorkflowStep(2, "done");
+      setWorkflowStep(3, "active");
+      setState("等待確認", "idle");
       els.instruction.value = "";
     } catch (error) {
       text(els["form-error"], error.message || "工作失敗");
       addLog(`失敗：${error.message || "未知錯誤"}`);
+      failActiveWorkflow();
       setState("失敗", "error");
     } finally {
       els.generate.disabled = false;
@@ -726,6 +1139,102 @@
     }
   }
 
+  async function publishManualArticle() {
+    text(els["form-error"], "");
+    const problem = validateForm();
+    if (problem) {
+      text(els["form-error"], problem);
+      return;
+    }
+    operationStartedAt = Date.now();
+    const jobId = makeJobId();
+    const previewId = `a-${new Date().toISOString()
+      .replace(/[-:]/g, "").slice(0, 13).replace("T", "-")}`
+      + `-manual-${jobId.slice(0, 6)}`;
+    const imageUrls = imageUrlsForArticle(previewId);
+    const article = manualArticle(jobId, imageUrls, previewId);
+    const articlePath = `data/articles/manual-${jobId}.json`;
+    const modelLabel = manualModelLabel();
+    const outputTokens = manualUsageModels(article)[0].outputTokens;
+    els.generate.disabled = true;
+    els["request-log"].dataset.empty = "true";
+    els["request-log"].replaceChildren();
+    els.attempts.innerHTML =
+      '<p class="muted">完全手動模式沒有模型 API 呼叫。</p>';
+    text(els["metric-model"], modelLabel);
+    text(els["metric-reasoning"], "手動撰稿／不呼叫 API");
+    text(els["metric-fallback"], "不適用");
+    text(els["metric-tokens"],
+      `0 in / 約 ${outputTokens.toLocaleString()} out`);
+    text(els["metric-rate"], "不適用（未呼叫模型）");
+    setWorkflow([
+      "檢查手動稿與來源",
+      "備份圖片",
+      "寫入文章 JSON 與用量紀錄",
+      "更新網站資料",
+      "部署並確認網站可讀取",
+    ]);
+    setWorkflowStep(0, "active");
+    setState("檢查手動稿", "working");
+    try {
+      await rememberPat(
+        els["github-token"].value.trim(), patInputRevision);
+      setWorkflowStep(0, "done");
+      setWorkflowStep(1, "active");
+      setState("備份圖片", "working");
+      let latestCommit = await uploadManualImages(article.id);
+      setWorkflowStep(1, "done");
+      setWorkflowStep(2, "active");
+      setState("備份文章與用量", "working");
+      const articleResult = await writeRepoJson(
+        articlePath,
+        {articles: [article]},
+        `publish manual article ${article.id}`,
+      );
+      latestCommit = articleResult.commit?.sha || latestCommit;
+      addLog(`文章 JSON 已自動備份：${articlePath}`);
+      const usageResult = await recordPublicationUsage(
+        article, "manual");
+      latestCommit = usageResult.commit?.sha || latestCommit;
+      addLog("私人補稿用量已加入 30 天逐篇紀錄");
+      setWorkflowStep(2, "done");
+      setWorkflowStep(3, "active");
+      setState("更新網站資料", "working");
+      const available = article.availableLanguages;
+      const flash = {
+        timeUtc: article.publishedUtc,
+        hot: els["article-type"].value === "flash",
+        zh: article.zh.title || article.en.title,
+        en: article.en.title || article.zh.title,
+        articleId: article.id,
+        availableLanguages: available,
+      };
+      const flashResult = await updateCappedList(
+        "data/flashes.json", flash, 10);
+      latestCommit = flashResult.commit?.sha || latestCommit;
+      addLog("首頁快訊與文章索引已同步");
+      setWorkflowStep(3, "done");
+      setWorkflowStep(4, "active");
+      setState("Pages 建置中", "working");
+      await triggerDeployment(article.id, latestCommit);
+      addLog("GitHub Pages 部署已觸發，正在確認正式文章網址");
+      const publishedUrl = await waitForPublishedArticle(article);
+      setWorkflowStep(4, "done");
+      setState("發布完成", "success");
+      const elapsed = Date.now() - operationStartedAt;
+      text(els["metric-duration"], `${(elapsed / 1000).toFixed(1)} 秒`);
+      addLog(`正式文章已上線：${publishedUrl}`);
+      text(els.generate, "已發布；可修改內容後送出下一篇");
+    } catch (error) {
+      failActiveWorkflow();
+      text(els["form-error"], error.message || "手動發布失敗");
+      addLog(`發布中斷：${error.message || "未知錯誤"}`);
+      setState("流程中斷", "error");
+    } finally {
+      els.generate.disabled = false;
+    }
+  }
+
   async function publishArticle() {
     const publication = lastResult?.publication;
     const article = publication?.article;
@@ -741,6 +1250,8 @@
     els.publish.disabled = true;
     els.regenerate.disabled = true;
     els.generate.disabled = true;
+    setWorkflowStep(3, "done");
+    setWorkflowStep(4, "active");
     setState("發布至 GitHub", "working");
     text(els["review-status"], "發布中");
     els["review-status"].className = "job-state working";
@@ -765,18 +1276,26 @@
         latestCommit = result.commit?.sha || latestCommit;
         addLog("事故／事件資料已同步");
       }
+      const usageResult = await recordPublicationUsage(
+        article, "ai", lastResult);
+      latestCommit = usageResult.commit?.sha || latestCommit;
+      addLog("私人補稿 token 與理論花費資料已逐篇記錄");
       await triggerDeployment(article.id, latestCommit);
-      addLog("Pages 部署已觸發");
+      addLog("Pages 部署已觸發，正在確認正式文章網址");
+      const publishedUrl = await waitForPublishedArticle(article);
+      addLog(`正式文章已上線：${publishedUrl}`);
       text(els["publish-state"],
-        `已提交發布：${article.id}。GitHub Pages 正在重新建置。`);
-      text(els["review-status"], "已提交發布");
+        `發布完成：${article.id}`);
+      text(els["review-status"], "發布完成");
       els["review-status"].className = "job-state success";
-      setState("已提交發布", "success");
+      setWorkflowStep(4, "done");
+      setState("發布完成", "success");
     } catch (error) {
       text(els["publish-state"], error.message || "發布失敗");
       text(els["review-status"], "發布失敗");
       els["review-status"].className = "job-state error";
       addLog(`發布失敗：${error.message || "未知錯誤"}`);
+      failActiveWorkflow();
       setState("發布失敗", "error");
       els.publish.disabled = false;
       els.regenerate.disabled = false;
@@ -822,6 +1341,13 @@
     conversation.splice(0);
     renderConversation();
   });
+  els["mode-ai"].addEventListener("click", () => setMode("ai"));
+  els["mode-manual"].addEventListener("click", () => setMode("manual"));
+  els.language.addEventListener("change", updateManualLanguageFields);
+  els["manual-model"].addEventListener("change", () => {
+    els["manual-model-custom-panel"].hidden =
+      workbenchMode !== "manual" || els["manual-model"].value !== "custom";
+  });
   els["publication-mode"].addEventListener("change", () => {
     const manual = els["publication-mode"].value === "manual";
     els["manual-time-panel"].hidden = !manual;
@@ -833,7 +1359,13 @@
     els["custom-model-panel"].hidden =
       els["confirm-model"].value !== "custom";
   });
-  els.generate.addEventListener("click", () => generate());
+  els.generate.addEventListener("click", () => {
+    if (workbenchMode === "manual") {
+      publishManualArticle();
+    } else {
+      generate();
+    }
+  });
   els.regenerate.addEventListener("click", regenerateDraft);
   els.publish.addEventListener("click", publishArticle);
   els["copy-json"].addEventListener("click", async () => {
@@ -855,6 +1387,7 @@
 
   els["request-log"].dataset.empty = "true";
   els["publication-time"].value = taipeiInputValue();
+  setMode("ai");
   const restoredPat = validToken && await restorePat();
   if (validToken) {
     text(els["security-state"], restoredPat

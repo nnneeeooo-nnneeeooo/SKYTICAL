@@ -780,7 +780,12 @@ def writer_model(writer):
     """Short public model name for a writer id, or None."""
     if not isinstance(writer, str) or ":" not in writer:
         return None
-    model_id = writer.split(":", 1)[1].lower()
+    provider, model_value = writer.split(":", 1)
+    if provider == "manual":
+        exact = re.sub(r"[\x00-\x1f\x7f<>]+", " ", model_value)
+        exact = re.sub(r"\s+", " ", exact).strip()
+        return exact[:80] or None
+    model_id = model_value.lower()
     for needle, model in _WRITER_MODELS:
         if needle in model_id:
             return model
@@ -837,6 +842,13 @@ def prep_article(raw):
         return None
 
     cat = story_category(raw.get("cat"), raw)
+    raw_languages = raw.get("availableLanguages")
+    available_languages = [
+        lang for lang in ("zh", "en")
+        if isinstance(raw_languages, list) and lang in raw_languages
+    ]
+    if not available_languages:
+        available_languages = ["zh", "en"]
     image = normalize_image(raw.get("image"))
     # Display the SOURCE's newest publication time when the write stage
     # recorded one; the generation time (dt) is used for ordering only, so
@@ -873,6 +885,7 @@ def prep_article(raw):
         "en": side(en, zh),
         "sources": sources,
         "writer_model": writer_model(raw.get("writer")),
+        "available_languages": available_languages,
         "article_format": (
             "brief" if raw.get("articleFormat") == "brief" else "full"),
     }
@@ -1022,6 +1035,11 @@ def prep_flashes(raw, known_ids):
             "hot": bool(f.get("hot")),
             "zh": zh, "en": en,
             "articleId": aid if isinstance(aid, str) and aid in known_ids else None,
+            "available_languages": [
+                lang for lang in ("zh", "en")
+                if not isinstance(f.get("availableLanguages"), list)
+                or lang in f["availableLanguages"]
+            ],
         })
         if len(out) >= MAX_FLASHES:
             break
@@ -1033,7 +1051,7 @@ def flash_view(flashes, lang: str):
         "time": f["time"], "hot": f["hot"], "text": f[lang],
         "url": page_url(lang, f"news/{f['articleId']}/") if f["articleId"] else None,
         "external": False,
-    } for f in flashes]
+    } for f in flashes if lang in f["available_languages"]]
 
 
 def prep_incidents(raw):
@@ -1514,6 +1532,8 @@ def _duration_text(value) -> str:
 
 def _model_name(label: str) -> str:
     text = _run_text(label, 160)
+    if text.startswith("manual:"):
+        return text.split(":", 1)[1] or "未提供模型"
     model = text.split(":", 1)[-1].split("/")[-1]
     return model.replace("-", " ").title() if model else "未知模型"
 
@@ -1600,6 +1620,26 @@ def recent_run_view(ledger: dict, now=None) -> dict:
             })
         fallback = len({a["label"] for a in attempts}) > 1
         final_model = _run_text(raw.get("finalModel"), 160)
+        resource_raw = raw.get("resourceUsage")
+        resource_raw = resource_raw if isinstance(resource_raw, dict) else {}
+        resource_models = []
+        for item in resource_raw.get("models") or []:
+            if not isinstance(item, dict):
+                continue
+            label = _run_text(item.get("label"), 160)
+            if not label:
+                continue
+            resource_models.append({
+                "label": label,
+                "model_name": _model_name(label),
+                "input_tokens": _nonnegative_int(
+                    item.get("inputTokens"), 100_000_000),
+                "output_tokens": _nonnegative_int(
+                    item.get("outputTokens"), 100_000_000),
+                "estimated": item.get("estimated") is True,
+            })
+            if len(resource_models) >= 50:
+                break
         tpe = stamp.astimezone(TPE)
         run = {
             "stamp": stamp,
@@ -1628,6 +1668,7 @@ def recent_run_view(ledger: dict, now=None) -> dict:
             "drafting_duration":
                 _duration_text(clean_durations["drafting"]),
             "attempts": attempts,
+            "resource_models": resource_models,
         }
         runs.append(run)
     runs.sort(key=lambda row: row["stamp"], reverse=True)
@@ -1696,6 +1737,88 @@ def recent_run_view(ledger: dict, now=None) -> dict:
                         for a in attempt_rows),
     }
     return {"runs": runs, "models": model_rows, "summary": summary}
+
+
+def _manual_usage_price(label: str, prices: dict):
+    """Find a list-price row for provider IDs or owner-entered model names."""
+    normalized = re.sub(r"[^a-z0-9]+", "", label.lower())
+    if normalized.startswith("manual"):
+        normalized = normalized[len("manual"):]
+    candidates = []
+    for key, value in (prices.get("models") or {}).items():
+        if isinstance(value, dict):
+            candidates.append((str(key), value))
+    for value in prices.get("gptFamilyReference") or []:
+        if isinstance(value, dict):
+            candidates.append((str(value.get("model") or ""), value))
+    for candidate, value in candidates:
+        needle = re.sub(r"[^a-z0-9]+", "", candidate.lower())
+        if needle and (needle in normalized or normalized in needle):
+            if (isinstance(value.get("in"), (int, float))
+                    and isinstance(value.get("out"), (int, float))):
+                return {
+                    "in": float(value["in"]),
+                    "out": float(value["out"]),
+                    "kind": str(value.get("kind") or "reference"),
+                }
+    return None
+
+
+def private_manual_usage_view(recent: dict, prices: dict) -> dict:
+    """Thirty-day, per-job resource accounting for the private workbench."""
+    rows = []
+    totals = {
+        "jobs": 0, "published": 0, "in": 0, "out": 0,
+        "tokens": 0, "usd": 0.0, "unpriced": 0,
+    }
+    for run in recent.get("runs") or []:
+        if run["workflow"] not in {"manual", "manual_workbench"}:
+            continue
+        priced = True
+        usd = 0.0
+        input_tokens = 0
+        output_tokens = 0
+        model_names = []
+        estimated = False
+        for model in run["resource_models"]:
+            input_tokens += model["input_tokens"]
+            output_tokens += model["output_tokens"]
+            estimated = estimated or model["estimated"]
+            if model["model_name"] not in model_names:
+                model_names.append(model["model_name"])
+            price = _manual_usage_price(model["label"], prices)
+            if price:
+                usd += (
+                    model["input_tokens"] / 1_000_000 * price["in"]
+                    + model["output_tokens"] / 1_000_000 * price["out"]
+                )
+            elif model["input_tokens"] or model["output_tokens"]:
+                priced = False
+        row = {
+            "time_tpe": run["time_tpe"],
+            "mode": (
+                "完全手動撰稿"
+                if run["workflow"] == "manual_workbench" else "AI 補稿"),
+            "article_id": run["article_id"],
+            "group_id": run["group_id"],
+            "result": run["result_zh"],
+            "models": model_names or [run["final_model_name"]],
+            "in": input_tokens,
+            "out": output_tokens,
+            "tokens": input_tokens + output_tokens,
+            "estimated": estimated,
+            "usd": usd if priced else None,
+            "actual_usd": 0.0,
+        }
+        rows.append(row)
+        totals["jobs"] += 1
+        totals["published"] += bool(run["article_id"])
+        totals["in"] += input_tokens
+        totals["out"] += output_tokens
+        totals["tokens"] += input_tokens + output_tokens
+        totals["usd"] += usd
+        totals["unpriced"] += not priced
+    return {"rows": rows, "totals": totals}
 
 
 def non_api_reference_rows(prices: dict):
@@ -1910,6 +2033,7 @@ def render_usage_dashboard(env, build) -> int:
                                / "config" / "codex_usage.json", {})
     rows, totals = usage_rows(ledger, prices)
     recent = recent_run_view(ledger)
+    private_manual = private_manual_usage_view(recent, prices)
     codex_rows, codex_totals = codex_usage_rows(codex_snapshot, prices)
     try:
         rate = float(prices.get("usdToTwd") or 31.5)
@@ -1925,6 +2049,9 @@ def render_usage_dashboard(env, build) -> int:
         "recent_runs": recent["runs"],
         "recent_models": recent["models"],
         "recent_summary": recent["summary"],
+        "private_manual_rows": private_manual["rows"],
+        "private_manual_totals": private_manual["totals"],
+        "private_manual_twd": private_manual["totals"]["usd"] * rate,
         "codex_rows": codex_rows, "codex_totals": codex_totals,
         "codex_twd": codex_totals["usd"] * rate,
         "codex_scope": str(codex_snapshot.get("scope") or "").strip(),
@@ -2054,7 +2181,9 @@ def main() -> int:
     for lang in ("zh", "en"):
         t = L[lang]
         agg = False
-        views = [art_view(a, lang) for a in articles]
+        lang_articles = [
+            a for a in articles if lang in a["available_languages"]]
+        views = [art_view(a, lang) for a in lang_articles]
         if views:
             fl = flash_view(flashes, lang)
             hero = views[0]
@@ -2163,7 +2292,7 @@ def main() -> int:
         render(env, "radar.html", rel_path(lang, "radar/index.html"), ctx)
         pages += 1
 
-        for a, v in zip(articles, views):
+        for a, v in zip(lang_articles, views):
             try:
                 ctx = base_ctx(lang, "home", f"news/{a['id']}/",
                                title=f"{t['siteName']} — {v['title']}",
