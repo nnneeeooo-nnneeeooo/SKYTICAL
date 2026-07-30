@@ -1,18 +1,21 @@
 {
-  "_comment": "薄素材補強搜尋(companion.py)的可靠來源網域白名單:只有這些網域的同主題報導會被併入故事組。管線抓取、非模型搜尋;來源一律列於文末。",
+  "_comment": "同事件跨來源補強搜尋(companion.py)的可靠來源網域白名單：每個來源不足的候選事件都會搜尋，只有這些網域的同主題報導會被併入故事組；來源一律列於文末。",
   "domains": [
     "reuters.com", "apnews.com", "bloomberg.com", "bbc.com", "bbc.co.uk",
     "cnbc.com", "wsj.com", "ft.com", "nytimes.com", "washingtonpost.com",
     "theguardian.com", "cnn.com", "npr.org", "seattletimes.com",
     "aviationweek.com", "flightglobal.com", "ch-aviation.com",
-    "aerotime.aero", "airwaysmag.com", "thepointsguy.com",
+    "aerotime.aero", "aerospaceglobalnews.com", "airwaysmag.com",
+    "thepointsguy.com",
     "faa.gov", "ntsb.gov", "boeing.com", "boeing.mediaroom.com",
     "airbus.com", "embraer.com", "rolls-royce.com", "geaerospace.com",
     "prattwhitney.com", "cfmaeroengines.com", "atr-aircraft.com",
     "safran-group.com", "bombardier.com", "comac.cc", "easa.europa.eu",
     "cna.com.tw", "focustaiwan.tw", "udn.com", "ltn.com.tw", "ettoday.net"
   ],
-  "max_items_per_group": 3,
-  "max_searches_per_run": 2,
-  "thin_material_chars": 400
+  "max_items_per_group": 4,
+  "max_searches_per_run": 10,
+  "thin_material_chars": 400,
+  "target_material_chars": 1600,
+  "target_source_count": 4
 }
