@@ -58,7 +58,7 @@ jobs:
               exit 1
             fi
           }
-          scan "nvapi-[A-Za-z0-9_-]{16,}|AIza[0-9A-Za-z_-]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|Bearer [A-Za-z0-9_./+-]{20,}" "secret-like string"
+          scan "nvapi-[A-Za-z0-9_-]{16,}|AIza[0-9A-Za-z_-]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|sk-or-v1-[A-Za-z0-9_-]{16,}|Bearer [A-Za-z0-9_./+-]{20,}" "secret-like string"
           scan "reasoning_content|<think>" "reasoning trace"
           echo "scan: site/ and data/ clean"
 
