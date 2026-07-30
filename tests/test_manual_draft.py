@@ -49,6 +49,8 @@ def sample_payload():
         "conversation": [{"role": "user", "text": "Focus on chronology."}],
         "publicationMode": "auto",
         "publicationTimeUtc": "",
+        "sortMode": "publication",
+        "sortTimeUtc": "",
         "previousDraft": None,
         "images": [],
     }
@@ -91,6 +93,20 @@ def test_payload_limits_and_ssrf():
         manual_draft.validate_payload(manual_time)["publicationTimeUtc"]
         == "2026-07-30T12:34:00Z",
         "manual publication time is normalized to minute precision")
+    manual_sort = sample_payload()
+    manual_sort["sortMode"] = "manual"
+    manual_sort["sortTimeUtc"] = "2026-07-29T09:45:59Z"
+    check(
+        manual_draft.validate_payload(manual_sort)["sortTimeUtc"]
+        == "2026-07-29T09:45:00Z",
+        "manual website-order time is normalized to minute precision")
+    credits = sample_payload()
+    credits["writerModels"] = [
+        "GPT 5.6 Sol", "Gemini 3.6 Flash", "Nemotron 3 Ultra"]
+    check(
+        manual_draft.validate_payload(credits)["writerModels"]
+        == credits["writerModels"],
+        "up to five owner-supplied writer model labels are preserved")
     custom = sample_payload()
     custom["model"] = "custom"
     custom["customModel"] = "openrouter:example/model:free"
@@ -128,6 +144,8 @@ def test_publication_detection_prompt_and_bundle():
     payload = manual_draft.validate_payload({
         **sample_payload(),
         "articleType": "auto",
+        "sortMode": "manual",
+        "sortTimeUtc": "2026-07-29T12:00:00Z",
     })
     group = {
         "id": "manual-test",
@@ -213,8 +231,57 @@ def test_publication_detection_prompt_and_bundle():
         bundle["articlePath"]
         == "data/articles/manual-0123456789abcdef0123456789abcdef.json"
         and bundle["article"]["publishedUtc"] == "2026-07-30T02:11:12Z"
+        and bundle["article"]["sortUtc"] == "2026-07-29T12:00:00Z"
+        and bundle["flash"]["timeUtc"] == "2026-07-29T12:00:00Z"
         and bundle["flash"]["articleId"] == bundle["article"]["id"],
-        "publish bundle links article JSON and flash to one article ID")
+        "publish bundle links article and flash with independent sort time")
+
+
+def test_manual_translation_bundle():
+    payload = manual_draft.validate_payload({
+        **sample_payload(),
+        "translationOnly": True,
+        "articleType": "airline",
+        "language": "bilingual",
+        "publicationMode": "manual",
+        "publicationTimeUtc": "2026-07-30T12:00:00Z",
+        "sortMode": "manual",
+        "sortTimeUtc": "2026-07-29T12:00:00Z",
+        "writerModels": ["GPT 5.6 Sol", "Gemini 3.6 Flash"],
+        "manualArticle": {
+            "title": "航空公司公布營運更新",
+            "summary": "航空公司公布最新營運消息。",
+            "body": ["第一段內容。", "第二段內容。"],
+        },
+    })
+    draft = manual_draft._translation_draft(payload, {
+        "title": "Airline publishes operational update",
+        "summary": "The airline published its latest operational update.",
+        "body": ["First paragraph.", "Second paragraph."],
+    })
+    group = {
+        "primarySource": "example.com",
+        "items": [{
+            "source": "example.com",
+            "url": "https://example.com/source",
+        }],
+    }
+    bundle = manual_draft._translation_publication_bundle(
+        "0123456789abcdef0123456789abcdef",
+        payload,
+        group,
+        draft,
+        datetime(2026, 7, 31, 1, 2, tzinfo=timezone.utc),
+    )
+    check(
+        draft["zh"] == payload["manualArticle"]
+        and bundle["article"]["en"]["body"]
+        == ["First paragraph.", "Second paragraph."]
+        and bundle["article"]["writerModels"]
+        == ["GPT 5.6 Sol", "Gemini 3.6 Flash"]
+        and bundle["article"]["sortUtc"] == "2026-07-29T12:00:00Z"
+        and bundle["flash"]["timeUtc"] == "2026-07-29T12:00:00Z",
+        "background translation preserves Chinese and publication metadata")
 
 
 def test_reasoning_tiers():
@@ -334,6 +401,60 @@ def test_fallback_and_telemetry():
         "private AI drafting records per-model token resources")
 
 
+def test_translation_generate_path():
+    provider = FakeProvider("gemini:gemini-3.6-flash", {
+        "title": "Airline publishes operational update",
+        "summary": "The airline published an operational update.",
+        "body": ["First paragraph.", "Second paragraph."],
+    })
+    payload = manual_draft.validate_payload({
+        **sample_payload(),
+        "translationOnly": True,
+        "articleType": "airline",
+        "language": "bilingual",
+        "publicationMode": "manual",
+        "publicationTimeUtc": "2026-07-30T12:00:00Z",
+        "writerModels": ["GPT 5.6 Sol", "Gemini 3.6 Flash"],
+        "manualArticle": {
+            "title": "航空公司公布營運更新",
+            "summary": "航空公司公布營運更新。",
+            "body": ["第一段內容。", "第二段內容。"],
+        },
+    })
+    originals = (
+        manual_draft._providers_for,
+        manual_draft._build_group,
+        manual_draft.usage_ledger.record_providers,
+        manual_draft.usage_ledger.record_run,
+    )
+    manual_draft._providers_for = lambda request: [provider]
+    manual_draft._build_group = lambda job, request, log: {
+        "primarySource": "example.com",
+        "items": [{
+            "source": "example.com",
+            "url": "https://example.com/source",
+        }],
+    }
+    manual_draft.usage_ledger.record_providers = lambda rows: None
+    manual_draft.usage_ledger.record_run = lambda row: None
+    try:
+        result = manual_draft.generate(
+            "0123456789abcdef0123456789abcdef", payload)
+    finally:
+        (manual_draft._providers_for,
+         manual_draft._build_group,
+         manual_draft.usage_ledger.record_providers,
+         manual_draft.usage_ledger.record_run) = originals
+    check(
+        result["status"] == "success"
+        and result["translationOnly"] is True
+        and result["publication"]["article"]["zh"]["title"]
+        == "航空公司公布營運更新"
+        and result["publication"]["article"]["en"]["title"]
+        == "Airline publishes operational update",
+        "translation job uses provider fallback and returns publishable bundle")
+
+
 def test_private_page_render_contract():
     captured = []
     original_render = build.render
@@ -366,6 +487,7 @@ def test_manual_article_render_contract():
     raw = {
         "id": "a-20260731-1200-manual-test",
         "publishedUtc": "2026-07-31T12:00:00Z",
+        "sortUtc": "2026-07-29T12:00:00Z",
         "cat": "ops",
         "primarySource": "example.com",
         "zh": {
@@ -379,13 +501,24 @@ def test_manual_article_render_contract():
             "url": "https://example.com/source",
         }],
         "writer": "manual:GPT 5.6 Sol",
+        "writerModels": ["GPT 5.6 Sol", "Gemini 3.6 Flash"],
         "availableLanguages": ["zh"],
     }
     article = build.prep_article(raw)
     check(article is not None
           and article["available_languages"] == ["zh"]
-          and article["writer_model"] == "GPT 5.6 Sol",
-          "single-language manual article preserves visibility and exact credit")
+          and article["writer_model"] == "GPT 5.6 Sol、Gemini 3.6 Flash"
+          and article["dt"]
+          == datetime(2026, 7, 29, 12, 0, tzinfo=timezone.utc)
+          and article["meta_ts"] == "2026-07-31 8:00 PM UTC+8",
+          "manual sort time controls placement without changing display time")
+    legacy = dict(raw)
+    legacy.pop("sortUtc")
+    legacy_article = build.prep_article(legacy)
+    check(
+        legacy_article["dt"]
+        == datetime(2026, 7, 31, 12, 0, tzinfo=timezone.utc),
+        "articles without sortUtc retain published-time ordering")
     flashes = build.prep_flashes([{
         "timeUtc": "2026-07-31T12:00:00Z",
         "zh": "繁中快訊",
@@ -429,11 +562,31 @@ def test_static_security_contract():
         and 'id="publication-hour"' in html
         and 'id="publication-minute"' in html
         and 'id="publication-period"' in html
+        and 'id="manual-order-panel"' in html
+        and 'id="sort-follow-publication"' in html
+        and 'id="sort-date"' in html
+        and 'id="sort-hour"' in html
+        and 'id="sort-minute"' in html
+        and 'id="sort-period"' in html
+        and 'id="manual-time-panel" class="manual-time-panel"' in html
         and 'type="date"' in html
         and 'type="datetime-local"' not in html
         and 'second: "2-digit"' not in js
         and 'hour12: true' in js,
         "workbench exposes auto type, summary and 12-hour minute controls")
+    check(
+        "publishedUtc: publicationTime" in js
+        and "sortUtc: sortTime" in js
+        and "function manualSortUtc()" in js
+        and "網站排序時間跟隨文章時間" in html,
+        "true manual mode saves independent article and website-order times")
+    check(
+        html.count("一鍵送出並發布到網站") == 1
+        and "await publishArticle();" in js
+        and 'sortMode: (' in js
+        and 'sortTimeUtc: (' in js
+        and "等待人工確認" not in js,
+        "AI mode generates, validates and publishes from one action")
     check(
         build.clock_12(datetime(2026, 7, 31, 21, 0, tzinfo=timezone.utc))
         == "9:00 PM"
@@ -451,9 +604,12 @@ def test_static_security_contract():
         'id="mode-ai"' in html and 'id="mode-manual"' in html
         and 'id="manual-title-primary"' in html
         and 'id="manual-content-primary"' in html
-        and '<option value="custom" selected>自訂輸入</option>' in html
-        and 'id="manual-model-custom"' in html,
-        "true manual mode exposes only authored content and model credit inputs")
+        and 'id="manual-english-mode"' in html
+        and '由後台模型忠實翻譯（預設）' in html
+        and 'id="writer-model-{{ slot }}"' in html
+        and "range(1, 6)" in html
+        and "translateAndPublishManualArticle" in js,
+        "manual mode supports background English translation and five credits")
     check(
         'id="activity-indicator"' in html
         and 'id="pipeline-steps"' in html
@@ -515,9 +671,11 @@ def main():
         test_encryption_round_trip,
         test_payload_limits_and_ssrf,
         test_publication_detection_prompt_and_bundle,
+        test_manual_translation_bundle,
         test_reasoning_tiers,
         test_openrouter_manual_provider_order,
         test_fallback_and_telemetry,
+        test_translation_generate_path,
         test_private_page_render_contract,
         test_manual_article_render_contract,
         test_static_security_contract,

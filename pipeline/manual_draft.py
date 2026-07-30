@@ -85,6 +85,7 @@ ARTICLE_TYPES = {
 }
 LANGUAGES = {"zh": "繁中", "en": "英文", "bilingual": "雙語"}
 PUBLICATION_MODES = {"auto", "manual"}
+SORT_MODES = {"publication", "manual"}
 CUSTOM_MODEL_RE = re.compile(
     r"(?:gemini|nvidia|openrouter):[A-Za-z0-9._/+:-]{2,180}\Z")
 MANUAL_DRAFT_SCHEMA = copy.deepcopy(DRAFT_SCHEMA)
@@ -97,6 +98,26 @@ MANUAL_DRAFT_SCHEMA["properties"].update({
 })
 MANUAL_DRAFT_SCHEMA["required"].extend(
     ["detectedArticleType", "detectedPublishedUtc"])
+TRANSLATION_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "title": {"type": "string"},
+        "summary": {"type": "string"},
+        "body": {
+            "type": "array",
+            "items": {"type": "string"},
+            "minItems": 1,
+        },
+    },
+    "required": ["title", "summary", "body"],
+}
+TRANSLATION_SYSTEM_PROMPT = """You are AVWIRE's faithful translation stage.
+Translate the supplied Traditional Chinese aviation article into natural
+professional English. Preserve every name, number, date, qualification and
+level of certainty. Do not add, remove, infer, summarize away or fact-check
+claims. Return one English body paragraph for each Chinese body paragraph,
+in the same order, using only the requested JSON schema."""
 
 
 def _iso_second(value: datetime) -> str:
@@ -374,6 +395,8 @@ def validate_payload(payload: dict) -> dict:
     requested = str(payload.get("model") or "auto")
     custom_model = str(payload.get("customModel") or "").strip()
     publication_mode = str(payload.get("publicationMode") or "auto")
+    sort_mode = str(payload.get("sortMode") or "publication")
+    translation_only = payload.get("translationOnly") is True
     if article_type not in ARTICLE_TYPES:
         raise ValueError("invalid article type")
     if language not in LANGUAGES:
@@ -388,6 +411,8 @@ def validate_payload(payload: dict) -> dict:
         raise ValueError("invalid model")
     if publication_mode not in PUBLICATION_MODES:
         raise ValueError("invalid publication time mode")
+    if sort_mode not in SORT_MODES:
+        raise ValueError("invalid sort time mode")
     publication_time = ""
     if publication_mode == "manual":
         parsed_time = _safe_publication_time(payload.get("publicationTimeUtc"))
@@ -395,6 +420,45 @@ def validate_payload(payload: dict) -> dict:
             raise ValueError("invalid manual publication time")
         parsed_time = parsed_time.replace(second=0, microsecond=0)
         publication_time = _iso_second(parsed_time)
+    sort_time = ""
+    if sort_mode == "manual":
+        parsed_sort_time = _safe_publication_time(payload.get("sortTimeUtc"))
+        if parsed_sort_time is None:
+            raise ValueError("invalid manual sort time")
+        parsed_sort_time = parsed_sort_time.replace(second=0, microsecond=0)
+        sort_time = _iso_second(parsed_sort_time)
+    writer_models = []
+    for value in payload.get("writerModels") or []:
+        clean = re.sub(r"[\x00-\x1f\x7f<>]+", " ", str(value))
+        clean = re.sub(r"\s+", " ", clean).strip()
+        if not 2 <= len(clean) <= 80:
+            raise ValueError("invalid writer model label")
+        if clean not in writer_models:
+            writer_models.append(clean)
+    if len(writer_models) > 5:
+        raise ValueError("too many writer model labels")
+    manual_article = None
+    if translation_only:
+        if (language != "bilingual" or publication_mode != "manual"
+                or article_type == "auto"):
+            raise ValueError("invalid manual translation request")
+        raw_article = payload.get("manualArticle")
+        if not isinstance(raw_article, dict):
+            raise ValueError("manual article is required for translation")
+        title = str(raw_article.get("title") or "").strip()[:300]
+        summary = str(raw_article.get("summary") or "").strip()[:1_000]
+        body = [
+            str(value).strip()[:12_000]
+            for value in raw_article.get("body") or []
+            if str(value).strip()
+        ]
+        if not title or not body or len(body) > 80:
+            raise ValueError("invalid manual article for translation")
+        manual_article = {
+            "title": title,
+            "summary": summary or body[0][:180],
+            "body": body,
+        }
     urls = []
     for value in payload.get("sourceUrls") or []:
         url = str(value or "").strip()
@@ -430,6 +494,11 @@ def validate_payload(payload: dict) -> dict:
         "articleSummary": article_summary,
         "publicationMode": publication_mode,
         "publicationTimeUtc": publication_time,
+        "sortMode": sort_mode,
+        "sortTimeUtc": sort_time,
+        "writerModels": writer_models,
+        "translationOnly": translation_only,
+        "manualArticle": manual_article,
         "instruction": instruction,
         "conversation": conversation[-12:],
         "previousDraft": previous_draft,
@@ -648,6 +717,109 @@ def _resolved_publication_time(payload: dict, group: dict,
     return fallback, "generation_fallback"
 
 
+def _translation_prompt(payload: dict) -> str:
+    source = payload["manualArticle"]
+    return (
+        "Translate this operator-authored AVWIRE article. The JSON body array "
+        "must contain exactly the same number of paragraphs as the source.\n\n"
+        + json.dumps(source, ensure_ascii=False)
+    )
+
+
+def _translation_draft(payload: dict, candidate: dict) -> dict:
+    if not isinstance(candidate, dict):
+        raise ProviderError("translation is not an object")
+    title = str(candidate.get("title") or "").strip()
+    summary = str(candidate.get("summary") or "").strip()
+    body = candidate.get("body")
+    if not title or not summary or not isinstance(body, list):
+        raise ProviderError("translation is incomplete")
+    body = [str(value).strip() for value in body if str(value).strip()]
+    source = payload["manualArticle"]
+    if len(body) != len(source["body"]):
+        raise ProviderError("translation paragraph count changed")
+    cat = {
+        "incident": "safety",
+        "regulation": "reg",
+        "fleet_order": "biz",
+        "financial": "biz",
+    }.get(payload["articleType"], "ops")
+    return {
+        "status": "publish",
+        "decisionReason": "",
+        "cat": cat,
+        "zh": source,
+        "en": {"title": title, "summary": summary, "body": body},
+        "flash": {"zh": source["title"], "en": title,
+                  "hot": payload["articleType"] == "flash"},
+        "incident": None,
+    }
+
+
+def _translation_publication_bundle(job_id: str, payload: dict,
+                                    group: dict, draft: dict,
+                                    fallback_time: datetime) -> dict:
+    publication_time = (
+        _safe_publication_time(payload["publicationTimeUtc"])
+        or fallback_time
+    )
+    sort_time = publication_time
+    if payload["sortMode"] == "manual":
+        sort_time = (
+            _safe_publication_time(payload["sortTimeUtc"])
+            or publication_time
+        )
+    stamp = _iso_second(publication_time)
+    sort_stamp = _iso_second(sort_time)
+    sources = []
+    for item in group.get("items") or []:
+        url = str(item.get("url") or "")
+        if not url.startswith(("http://", "https://")):
+            continue
+        source = str(item.get("source") or urlsplit(url).hostname or url)
+        if not any(row["url"] == url for row in sources):
+            sources.append({"name": source, "url": url})
+    article_id = (
+        f"a-{fallback_time:%Y%m%d-%H%M}-manual-{job_id[:6]}"
+    )
+    writer_models = payload["writerModels"]
+    article = {
+        "id": article_id,
+        "publishedUtc": stamp,
+        "sortUtc": sort_stamp,
+        "cat": draft["cat"],
+        "primarySource": (
+            sources[0]["name"] if sources else group["primarySource"]),
+        "image": None,
+        "zh": draft["zh"],
+        "en": draft["en"],
+        "sources": sources,
+        "writer": f"manual:{'、'.join(writer_models)}",
+        "writerModels": writer_models,
+        "articleFormat": "full",
+        "availableLanguages": ["zh", "en"],
+        "manualArticleType": payload["articleType"],
+        "attachments": [],
+    }
+    flash = {
+        "timeUtc": sort_stamp,
+        "hot": payload["articleType"] == "flash",
+        "zh": draft["zh"]["title"],
+        "en": draft["en"]["title"],
+        "articleId": article_id,
+        "availableLanguages": ["zh", "en"],
+    }
+    return {
+        "articleType": payload["articleType"],
+        "publicationTimeUtc": stamp,
+        "publicationTimeSource": "manual",
+        "articlePath": f"data/articles/manual-{job_id}.json",
+        "article": article,
+        "flash": flash,
+        "incident": None,
+    }
+
+
 def _publication_bundle(job_id: str, payload: dict, group: dict,
                         draft: dict, provider, detected_type: str,
                         detected_time: str,
@@ -679,11 +851,21 @@ def _publication_bundle(job_id: str, payload: dict, group: dict,
         return bundle
     article["id"] = f"{article['id']}-{job_id[:6]}"
     stamp = _iso_second(publication_time)
+    sort_time = publication_time
+    if payload["sortMode"] == "manual":
+        sort_time = (
+            _safe_publication_time(payload["sortTimeUtc"])
+            or publication_time
+        )
+    sort_stamp = _iso_second(sort_time)
     article["publishedUtc"] = stamp
+    article["sortUtc"] = sort_stamp
+    if payload["writerModels"]:
+        article["writerModels"] = payload["writerModels"]
     if time_source != "generation_fallback":
         article["sourcePublishedUtc"] = stamp
     flash = build_flash(draft, article["id"], publication_time)
-    flash["timeUtc"] = stamp
+    flash["timeUtc"] = sort_stamp
     incident = build_incident(draft, group, article["id"])
     bundle.update({
         "articlePath": f"data/articles/manual-{job_id}.json",
@@ -711,15 +893,30 @@ def generate(job_id: str, payload: dict) -> dict:
             continue
         attempt_started = time.perf_counter()
         try:
-            candidate = provider.draft(
-                SYSTEM_PROMPT,
-                _manual_prompt(payload, group),
-                MANUAL_DRAFT_SCHEMA,
-            )
+            if payload["translationOnly"]:
+                candidate = provider.draft(
+                    TRANSLATION_SYSTEM_PROMPT,
+                    _translation_prompt(payload),
+                    TRANSLATION_SCHEMA,
+                )
+            else:
+                candidate = provider.draft(
+                    SYSTEM_PROMPT,
+                    _manual_prompt(payload, group),
+                    MANUAL_DRAFT_SCHEMA,
+                )
             if candidate is None:
                 attempts.append(
                     _attempt_row(provider, attempt_started, "refused"))
                 continue
+            if payload["translationOnly"]:
+                draft = _translation_draft(payload, candidate)
+                final = provider
+                detected_type = payload["articleType"]
+                detected_time = payload["publicationTimeUtc"]
+                attempts.append(
+                    _attempt_row(provider, attempt_started, "success"))
+                break
             candidate_type = str(
                 candidate.pop("detectedArticleType", "") or "")
             candidate_time = str(
@@ -828,21 +1025,26 @@ def generate(job_id: str, payload: dict) -> dict:
             "reasoningTier": payload["reasoningTier"],
             "articleType": payload["articleType"],
             "language": payload["language"],
+            "translationOnly": payload["translationOnly"],
             "fallbackUsed": len(attempts) > 1,
             "attempts": attempts,
             "requestLog": log,
             "completedUtc": iso_minute(finished_at),
         }
-    publication = _publication_bundle(
-        job_id,
-        payload,
-        group,
-        draft,
-        final,
-        detected_type,
-        detected_time,
-        started_at,
-    )
+    if payload["translationOnly"]:
+        publication = _translation_publication_bundle(
+            job_id, payload, group, draft, started_at)
+    else:
+        publication = _publication_bundle(
+            job_id,
+            payload,
+            group,
+            draft,
+            final,
+            detected_type,
+            detected_time,
+            started_at,
+        )
     return {
         "version": 1,
         "id": job_id,
@@ -857,6 +1059,7 @@ def generate(job_id: str, payload: dict) -> dict:
         "publicationTimeUtc": publication["publicationTimeUtc"],
         "publicationTimeSource": publication["publicationTimeSource"],
         "language": payload["language"],
+        "translationOnly": payload["translationOnly"],
         "fallbackUsed": attempts[0]["model"] != final.label,
         "attempts": attempts,
         "requestLog": log,
