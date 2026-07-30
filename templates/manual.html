@@ -34,7 +34,7 @@
       <button id="mode-ai" class="mode-button active" type="button"
               aria-pressed="true">
         <span>AI 補稿</span>
-        <small>來源擷取、模型撰稿、確認後發布</small>
+        <small>來源擷取、模型撰稿、一鍵發布</small>
       </button>
       <button id="mode-manual" class="mode-button" type="button"
               aria-pressed="false">
@@ -121,8 +121,8 @@
           <label>產出語言
             <select id="language">
               <option value="bilingual">雙語</option>
-              <option value="zh">繁中優先</option>
-              <option value="en">英文優先</option>
+              <option value="zh">繁中</option>
+              <option value="en">英文</option>
             </select>
           </label>
           <label class="ai-only">模型
@@ -146,12 +146,12 @@
               <option value="manual">手動指定臺北時間</option>
             </select>
           </label>
-          <div id="manual-time-panel" class="ai-only manual-time-panel" hidden>
-            <label>臺北日期（UTC+8）
+          <div id="manual-time-panel" class="manual-time-panel" hidden>
+            <label>文章日期（UTC+8）
               <input id="publication-date" type="date">
             </label>
-            <label>臺北時間（UTC+8）
-              <span class="clock-selects" role="group" aria-label="臺北時間">
+            <label>文章時間（UTC+8）
+              <span class="clock-selects" role="group" aria-label="文章時間">
                 <select id="publication-hour" aria-label="小時">
                   {% for hour in range(1, 13) %}
                   <option value="{{ hour }}">{{ hour }}</option>
@@ -170,18 +170,61 @@
               </span>
             </label>
           </div>
-          <label id="manual-model-panel" class="manual-only" hidden>使用模型／撰稿署名
-            <select id="manual-model">
-              <option value="custom" selected>自訂輸入</option>
-              {% for model in models %}
-              <option value="{{ model.id }}" data-name="{{ model.name }}">{{ loop.index }}. {{ model.name }}</option>
-              {% endfor %}
+          <div id="manual-order-panel" class="manual-order-panel" hidden>
+            <label class="toggle-field">
+              <input id="sort-follow-publication" type="checkbox" checked>
+              <span>網站排序時間跟隨文章時間</span>
+            </label>
+            <p class="field-help">取消勾選後，可讓較晚完成的稿件依事件脈絡排回指定日期與位置；不會改變文章本身顯示的時間。</p>
+            <div id="sort-time-fields" class="manual-time-panel" hidden>
+              <label>排序日期（UTC+8）
+                <input id="sort-date" type="date">
+              </label>
+              <label>排序時間（UTC+8）
+                <span class="clock-selects" role="group" aria-label="網站排序時間">
+                  <select id="sort-hour" aria-label="排序小時">
+                    {% for hour in range(1, 13) %}
+                    <option value="{{ hour }}">{{ hour }}</option>
+                    {% endfor %}
+                  </select>
+                  <span>:</span>
+                  <select id="sort-minute" aria-label="排序分鐘">
+                    {% for minute in range(0, 60) %}
+                    <option value="{{ '%02d'|format(minute) }}">{{ '%02d'|format(minute) }}</option>
+                    {% endfor %}
+                  </select>
+                  <select id="sort-period" aria-label="排序時間上午或下午">
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                  </select>
+                </span>
+              </label>
+            </div>
+          </div>
+          <label id="manual-english-mode-panel" class="manual-only" hidden>英文版本
+            <select id="manual-english-mode">
+              <option value="auto" selected>由後台模型忠實翻譯（預設）</option>
+              <option value="manual">自行填寫英文標題與內容</option>
             </select>
           </label>
-          <label id="manual-model-custom-panel" class="manual-only" hidden>自訂模型名稱
-            <input id="manual-model-custom" type="text" maxlength="80"
-                   placeholder="例如：GPT 5.6 Sol">
-          </label>
+          <div id="writer-models-panel" class="writer-models-panel">
+            <p class="writer-models-title">撰稿模型署名（最多 5 個）</p>
+            <p class="field-help">可從現有模型名稱選取，也可直接輸入 GPT 5.6 Sol 等自訂名稱；AI 模式留白時會使用實際完成撰稿的模型。</p>
+            <div class="writer-model-inputs">
+              {% for slot in range(1, 6) %}
+              <label>模型 {{ slot }}
+                <input id="writer-model-{{ slot }}" list="writer-model-options"
+                       type="text" maxlength="80"
+                       placeholder="{% if loop.first %}輸入或選擇模型名稱{% else %}選填{% endif %}">
+              </label>
+              {% endfor %}
+            </div>
+            <datalist id="writer-model-options">
+              {% for model in models %}
+              <option value="{{ model.name }}"></option>
+              {% endfor %}
+            </datalist>
+          </div>
         </div>
 
         <div class="conversation ai-only">
@@ -198,7 +241,7 @@
         </div>
 
         <button id="generate" class="primary" type="button">
-          生成新聞草稿
+          一鍵送出並發布到網站
         </button>
         <p id="form-error" class="error" role="alert"></p>
       </section>

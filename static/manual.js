@@ -10,12 +10,16 @@
     "manual-title-primary", "manual-content-primary",
     "manual-secondary-language", "manual-title-secondary",
     "manual-content-secondary", "manual-primary-title-label",
-    "manual-primary-content-label", "manual-model-panel", "manual-model",
-    "manual-model-custom-panel", "manual-model-custom",
+    "manual-primary-content-label", "manual-english-mode-panel",
+    "manual-english-mode", "writer-models-panel",
+    "writer-model-1", "writer-model-2", "writer-model-3",
+    "writer-model-4", "writer-model-5",
     "github-token", "clear-token", "source-urls", "source-text",
     "article-summary", "publication-mode", "manual-time-panel",
     "publication-date", "publication-hour", "publication-minute",
-    "publication-period",
+    "publication-period", "manual-order-panel", "sort-follow-publication",
+    "sort-time-fields", "sort-date", "sort-hour", "sort-minute",
+    "sort-period",
     "image-input", "image-list", "upload-zone", "article-type", "language",
     "model", "reasoning-tier", "chat-history", "instruction", "clear-chat",
     "generate", "form-error", "security-state", "job-state", "metric-model",
@@ -466,21 +470,26 @@
     });
   }
 
-  function setTaipeiInputs(date = new Date()) {
+  function setClockInputs(prefix, date = new Date()) {
     const local = new Date(date.getTime() + 8 * 60 * 60 * 1000)
       .toISOString();
     const hour24 = Number(local.slice(11, 13));
-    els["publication-date"].value = local.slice(0, 10);
-    els["publication-hour"].value = String(hour24 % 12 || 12);
-    els["publication-minute"].value = local.slice(14, 16);
-    els["publication-period"].value = hour24 >= 12 ? "PM" : "AM";
+    els[`${prefix}-date`].value = local.slice(0, 10);
+    els[`${prefix}-hour`].value = String(hour24 % 12 || 12);
+    els[`${prefix}-minute`].value = local.slice(14, 16);
+    els[`${prefix}-period`].value = hour24 >= 12 ? "PM" : "AM";
   }
 
-  function manualPublicationUtc() {
-    const date = els["publication-date"].value;
-    const hour12 = Number(els["publication-hour"].value);
-    const minute = els["publication-minute"].value;
-    const period = els["publication-period"].value;
+  function setTaipeiInputs(date = new Date()) {
+    setClockInputs("publication", date);
+    setClockInputs("sort", date);
+  }
+
+  function taipeiInputUtc(prefix) {
+    const date = els[`${prefix}-date`].value;
+    const hour12 = Number(els[`${prefix}-hour`].value);
+    const minute = els[`${prefix}-minute`].value;
+    const period = els[`${prefix}-period`].value;
     if (!date || !Number.isInteger(hour12)
         || hour12 < 1 || hour12 > 12
         || !/^\d{2}$/.test(minute)
@@ -490,6 +499,29 @@
     const parsed = new Date(
       `${date}T${String(hour24).padStart(2, "0")}:${minute}:00+08:00`);
     return Number.isNaN(parsed.getTime()) ? "" : parsed.toISOString();
+  }
+
+  function manualPublicationUtc() {
+    return taipeiInputUtc("publication");
+  }
+
+  function copyPublicationToSort() {
+    ["date", "hour", "minute", "period"].forEach(part => {
+      els[`sort-${part}`].value = els[`publication-${part}`].value;
+    });
+  }
+
+  function updateSortControls() {
+    const follows = els["sort-follow-publication"].checked;
+    if (follows) copyPublicationToSort();
+    els["sort-time-fields"].hidden = follows;
+  }
+
+  function manualSortUtc() {
+    if (els["sort-follow-publication"].checked) {
+      return manualPublicationUtc();
+    }
+    return taipeiInputUtc("sort");
   }
 
   function validCustomModel(value) {
@@ -530,16 +562,18 @@
     return Math.max(1, Math.ceil(cjk + latinWords * 1.33 + other / 6));
   }
 
-  function manualModelLabel() {
-    if (els["manual-model"].value === "custom") {
-      const custom = els["manual-model-custom"].value.trim();
-      if (!/^[^<>\u0000-\u001f]{2,80}$/.test(custom)) {
-        throw new Error("請輸入 2 至 80 字元的撰稿模型名稱");
+  function writerModelLabels() {
+    const labels = [];
+    for (let slot = 1; slot <= 5; slot += 1) {
+      const value = els[`writer-model-${slot}`].value.trim();
+      if (!value) continue;
+      if (!/^[^<>\u0000-\u001f]{2,80}$/.test(value)) {
+        throw new Error(
+          `撰稿模型 ${slot} 必須為 2 至 80 字且不含控制字元`);
       }
-      return custom;
+      if (!labels.includes(value)) labels.push(value);
     }
-    const selected = els["manual-model"].selectedOptions[0];
-    return selected?.dataset.name || selected?.textContent.trim() || "";
+    return labels;
   }
 
   function manualLanguages() {
@@ -559,7 +593,10 @@
       englishOnly ? "Article content (English)" : "文章內容（繁體中文）");
     els["manual-primary-content-label"].append(
       els["manual-content-primary"]);
-    els["manual-secondary-language"].hidden = language !== "bilingual";
+    const bilingual = language === "bilingual";
+    els["manual-english-mode-panel"].hidden = !bilingual;
+    els["manual-secondary-language"].hidden = !bilingual
+      || els["manual-english-mode"].value !== "manual";
   }
 
   function setMode(mode) {
@@ -576,14 +613,17 @@
       node.hidden = !manual;
     });
     els["manual-editor"].hidden = !manual;
-    els["manual-model-custom-panel"].hidden =
-      !manual || els["manual-model"].value !== "custom";
+    els["manual-time-panel"].hidden =
+      !manual && els["publication-mode"].value !== "manual";
+    els["manual-order-panel"].hidden = false;
     els["review-panel"].hidden = true;
     if (manual) {
+      if (!els["publication-date"].value) setTaipeiInputs();
+      updateSortControls();
       aiArticleType = els["article-type"].value;
       aiLanguage = els.language.value;
       els["article-type"].value = "press_release";
-      els.language.value = "zh";
+      els.language.value = "bilingual";
       els["article-type"].querySelector('option[value="auto"]').disabled = true;
       text(els.generate, "一鍵送出並發布到網站");
       setWorkflow([
@@ -597,14 +637,12 @@
       els["article-type"].querySelector('option[value="auto"]').disabled = false;
       els["article-type"].value = aiArticleType;
       els.language.value = aiLanguage;
-      els["manual-time-panel"].hidden =
-        els["publication-mode"].value !== "manual";
-      text(els.generate, "生成新聞草稿");
+      text(els.generate, "一鍵送出並發布到網站");
       setWorkflow([
         "檢查來源與加密",
         "提交 GitHub Actions",
         "模型生成與 fallback",
-        "等待人工確認",
+        "驗證並組裝文章",
         "發布並確認網站可讀取",
       ]);
     }
@@ -639,21 +677,38 @@
         return "請輸入文章內容";
       }
       if (els.language.value === "bilingual"
+          && els["manual-english-mode"].value === "manual"
           && (!els["manual-title-secondary"].value.trim()
               || !splitParagraphs(
                 els["manual-content-secondary"].value).length)) {
         return "雙語模式必須同時填寫繁中與英文標題及內容";
       }
       try {
-        manualModelLabel();
+        if (!writerModelLabels().length) {
+          return "完全手動模式請至少填寫一個撰稿模型署名";
+        }
       } catch (error) {
         return error.message;
+      }
+      if (!manualPublicationUtc()) {
+        return "請指定有效的文章日期與時間";
+      }
+      if (!manualSortUtc()) {
+        return "請指定有效的網站排序日期與時間";
       }
     }
     if (workbenchMode === "ai"
         && els["publication-mode"].value === "manual"
         && !manualPublicationUtc()) {
       return "請指定有效的臺北文章日期與時間";
+    }
+    if (!els["sort-follow-publication"].checked && !manualSortUtc()) {
+      return "請指定有效的網站排序日期與時間";
+    }
+    try {
+      writerModelLabels();
+    } catch (error) {
+      return error.message;
     }
     const encodedImages = images.reduce(
       (sum, image) => sum + image.data.length, 0);
@@ -682,6 +737,9 @@
       : (language === "bilingual"
         ? block(secondaryTitle, secondaryBody) : empty);
     const now = new Date();
+    const publicationTime = manualPublicationUtc();
+    const sortTime = manualSortUtc();
+    const writerModels = writerModelLabels();
     const compact = now.toISOString()
       .replace(/[-:]/g, "").slice(0, 13).replace("T", "-");
     const articleId = fixedArticleId
@@ -707,7 +765,8 @@
     }));
     return {
       id: articleId,
-      publishedUtc: now.toISOString(),
+      publishedUtc: publicationTime,
+      sortUtc: sortTime,
       cat: category,
       primarySource: sources[0]?.name || "Manual source",
       image: imageUrls[0] ? {
@@ -719,7 +778,8 @@
       zh,
       en,
       sources,
-      writer: `manual:${manualModelLabel()}`,
+      writer: `manual:${writerModels.join("、")}`,
+      writerModels,
       articleFormat: "full",
       availableLanguages: languages,
       manualArticleType: els["article-type"].value,
@@ -770,12 +830,15 @@
       article.zh.title, ...article.zh.body,
       article.en.title, ...article.en.body,
     ].join("\n");
-    return [{
-      label: article.writer.replace(/^manual:/, ""),
+    const labels = article.writerModels?.length
+      ? article.writerModels
+      : [article.writer.replace(/^manual:/, "")];
+    return labels.map(label => ({
+      label,
       inputTokens: 0,
       outputTokens: estimateTokens(allText),
       estimated: true,
-    }];
+    }));
   }
 
   async function recordPublicationUsage(article, mode, result = null) {
@@ -989,11 +1052,11 @@
     els["regenerate"].disabled = false;
     els.publish.disabled = !publication.article;
     text(els["review-status"],
-      publication.article ? "等待確認" : "不可發布");
+      publication.article ? "驗證完成" : "不可發布");
     els["review-status"].className = publication.article
       ? "job-state working" : "job-state error";
     text(els["publish-state"], publication.article
-      ? "確認內容後可直接發布；JSON 與部署由系統自動處理。"
+      ? "驗證完成，系統將自動寫入 JSON 並部署。"
       : "此草稿未通過發布組裝，請更換模型或調整資料後重新生成。");
   }
 
@@ -1050,10 +1113,10 @@
     els["copy-json"].disabled = false;
     els["download-json"].disabled = false;
     renderReview(result);
-    addLog(`生成完成：${result.finalModelName}`);
+    addLog(`生成與驗證完成：${result.finalModelName}`);
     conversation.push({
       role: "assistant",
-      text: `${result.finalModelName} 已產出 ${result.draft.status} 草稿，等待確認。`,
+      text: `${result.finalModelName} 已產出 ${result.draft.status} 內容，準備自動發布。`,
     });
     renderConversation();
   }
@@ -1076,7 +1139,7 @@
       "檢查來源與加密",
       "提交 GitHub Actions",
       "模型生成與 fallback",
-      "等待人工確認",
+      "驗證並組裝文章",
       "發布並確認網站可讀取",
     ]);
     setWorkflowStep(0, "active");
@@ -1108,6 +1171,13 @@
         els["publication-mode"].value === "manual"
           ? manualPublicationUtc() : ""
       ),
+      sortMode: (
+        els["sort-follow-publication"].checked ? "publication" : "manual"
+      ),
+      sortTimeUtc: (
+        els["sort-follow-publication"].checked ? "" : manualSortUtc()
+      ),
+      writerModels: writerModelLabels(),
       images: images.map(({mime, data}) => ({mime, data})),
       instruction,
       conversation: conversation.slice(-12),
@@ -1129,7 +1199,11 @@
       displayResult(result);
       setWorkflowStep(2, "done");
       setWorkflowStep(3, "active");
-      setState("等待確認", "idle");
+      setState("驗證文章", "working");
+      if (!result.publication?.article) {
+        throw new Error("內容未通過發布驗證，未寫入網站");
+      }
+      await publishArticle();
       els.instruction.value = "";
     } catch (error) {
       text(els["form-error"], error.message || "工作失敗");
@@ -1160,6 +1234,102 @@
     }
   }
 
+  function manualNeedsTranslation() {
+    return (
+      els.language.value === "bilingual"
+      && els["manual-english-mode"].value === "auto"
+    );
+  }
+
+  async function translateAndPublishManualArticle() {
+    text(els["form-error"], "");
+    const problem = validateForm();
+    if (problem) {
+      text(els["form-error"], problem);
+      return;
+    }
+    operationStartedAt = Date.now();
+    const body = splitParagraphs(els["manual-content-primary"].value);
+    const jobId = makeJobId();
+    const payload = {
+      version: 1,
+      translationOnly: true,
+      articleType: els["article-type"].value,
+      language: "bilingual",
+      model: els.model.value,
+      customModel: "",
+      reasoningTier: els["reasoning-tier"].value,
+      sourceUrls: sourceUrls(),
+      sourceText: "",
+      articleSummary: "",
+      publicationMode: "manual",
+      publicationTimeUtc: manualPublicationUtc(),
+      sortMode: (
+        els["sort-follow-publication"].checked ? "publication" : "manual"
+      ),
+      sortTimeUtc: (
+        els["sort-follow-publication"].checked ? "" : manualSortUtc()
+      ),
+      writerModels: writerModelLabels(),
+      manualArticle: {
+        title: els["manual-title-primary"].value.trim(),
+        summary: (body[0] || "").slice(0, 180),
+        body,
+      },
+      images: [],
+      instruction: "",
+      conversation: [],
+      previousDraft: null,
+      submittedUtc: new Date().toISOString(),
+    };
+    els.generate.disabled = true;
+    els.regenerate.disabled = true;
+    els.publish.disabled = true;
+    lastResult = null;
+    els["request-log"].dataset.empty = "true";
+    els["request-log"].replaceChildren();
+    setWorkflow([
+      "檢查手動稿與來源",
+      "提交加密翻譯工作",
+      "模型翻譯與 fallback",
+      "驗證雙語內容",
+      "發布並確認網站可讀取",
+    ]);
+    setWorkflowStep(0, "active");
+    setState("加密提交中", "working");
+    try {
+      await rememberPat(
+        els["github-token"].value.trim(), patInputRevision);
+      setWorkflowStep(0, "done");
+      setWorkflowStep(1, "active");
+      await submitJob(payload, jobId);
+      addLog("手動中文稿已加密提交，repository 只保存密文");
+      setWorkflowStep(1, "done");
+      setWorkflowStep(2, "active");
+      setState("後台翻譯中", "working");
+      const result = await pollResult(jobId);
+      displayResult(result);
+      setWorkflowStep(2, "done");
+      setWorkflowStep(3, "active");
+      setState("驗證雙語內容", "working");
+      if (!result.publication?.article) {
+        throw new Error("英文翻譯未通過驗證，未寫入網站");
+      }
+      await publishArticle();
+    } catch (error) {
+      text(els["form-error"], error.message || "翻譯與發布失敗");
+      addLog(`翻譯或發布中斷：${error.message || "未知錯誤"}`);
+      failActiveWorkflow();
+      setState("流程中斷", "error");
+    } finally {
+      els.generate.disabled = false;
+      if (lastResult) {
+        els.regenerate.disabled = false;
+        els.publish.disabled = !lastResult.publication?.article;
+      }
+    }
+  }
+
   async function publishManualArticle() {
     text(els["form-error"], "");
     const problem = validateForm();
@@ -1175,7 +1345,7 @@
     const imageUrls = imageUrlsForArticle(previewId);
     const article = manualArticle(jobId, imageUrls, previewId);
     const articlePath = `data/articles/manual-${jobId}.json`;
-    const modelLabel = manualModelLabel();
+    const modelLabel = writerModelLabels().join("、");
     const outputTokens = manualUsageModels(article)[0].outputTokens;
     els.generate.disabled = true;
     els["request-log"].dataset.empty = "true";
@@ -1223,7 +1393,7 @@
       setState("更新網站資料", "working");
       const available = article.availableLanguages;
       const flash = {
-        timeUtc: article.publishedUtc,
+        timeUtc: article.sortUtc || article.publishedUtc,
         hot: els["article-type"].value === "flash",
         zh: article.zh.title || article.en.title,
         en: article.en.title || article.zh.title,
@@ -1278,13 +1448,28 @@
     els["review-status"].className = "job-state working";
     text(els["publish-state"], "正在上傳文章 JSON 與更新網站資料…");
     try {
+      let latestCommit = "";
+      if (lastResult.translationOnly && images.length) {
+        const imageUrls = imageUrlsForArticle(article.id);
+        latestCommit = await uploadManualImages(article.id);
+        article.image = {
+          url: imageUrls[0],
+          provider: "AVWIRE manual upload",
+          subject: article.zh.title || article.en.title,
+          kind: "file_photo",
+        };
+        article.attachments = imageUrls.map((url, index) => ({
+          url,
+          kind: index === 0 ? "article_image" : "attachment",
+        }));
+      }
       const articleResult = await writeRepoJson(
         publication.articlePath,
         {articles: [article]},
         `publish manual article ${article.id}`,
       );
       addLog(`文章 JSON 已寫入 ${publication.articlePath}`);
-      let latestCommit = articleResult.commit?.sha || "";
+      latestCommit = articleResult.commit?.sha || latestCommit;
       if (publication.flash) {
         const result = await updateCappedList(
           "data/flashes.json", publication.flash, 10);
@@ -1365,16 +1550,27 @@
   els["mode-ai"].addEventListener("click", () => setMode("ai"));
   els["mode-manual"].addEventListener("click", () => setMode("manual"));
   els.language.addEventListener("change", updateManualLanguageFields);
-  els["manual-model"].addEventListener("change", () => {
-    els["manual-model-custom-panel"].hidden =
-      workbenchMode !== "manual" || els["manual-model"].value !== "custom";
-  });
+  els["manual-english-mode"].addEventListener(
+    "change", updateManualLanguageFields);
   els["publication-mode"].addEventListener("change", () => {
     const manual = els["publication-mode"].value === "manual";
-    els["manual-time-panel"].hidden = !manual;
+    els["manual-time-panel"].hidden =
+      workbenchMode === "manual" ? false : !manual;
     if (manual && !els["publication-date"].value) {
       setTaipeiInputs();
     }
+  });
+  els["sort-follow-publication"].addEventListener(
+    "change", updateSortControls);
+  [
+    "publication-date", "publication-hour",
+    "publication-minute", "publication-period",
+  ].forEach(id => {
+    els[id].addEventListener("change", () => {
+      if (els["sort-follow-publication"].checked) {
+        copyPublicationToSort();
+      }
+    });
   });
   els["confirm-model"].addEventListener("change", () => {
     els["custom-model-panel"].hidden =
@@ -1382,7 +1578,11 @@
   });
   els.generate.addEventListener("click", () => {
     if (workbenchMode === "manual") {
-      publishManualArticle();
+      if (manualNeedsTranslation()) {
+        translateAndPublishManualArticle();
+      } else {
+        publishManualArticle();
+      }
     } else {
       generate();
     }
