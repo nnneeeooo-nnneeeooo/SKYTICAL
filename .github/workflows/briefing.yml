@@ -77,7 +77,7 @@ jobs:
           # batch intro call (BRIEFING_LLM_INTRO=true). Default: no call.
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
-          AVWIRE_PROVIDER_ORDER: ${{ vars.AVWIRE_PROVIDER_ORDER }}
+          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:z-ai/glm-5.2,nvidia:deepseek-ai/deepseek-v4-pro,nvidia:nvidia/nemotron-3-ultra-550b-a55b,nvidia:qwen/qwen3.5-397b-a17b,nvidia:nvidia/nemotron-3-super-120b-a12b,nvidia:mistralai/mistral-medium-3.5-128b
           BRIEFING_LLM_INTRO: ${{ vars.BRIEFING_LLM_INTRO }}
           BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}
           BRIEFING_MAX_ITEMS_PER_SECTION: ${{ vars.BRIEFING_MAX_ITEMS_PER_SECTION }}
