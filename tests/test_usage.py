@@ -183,12 +183,23 @@ sample_run = {
             "disabledForRun": False,
         },
     ],
+    "resourceUsage": {
+        "actualUsd": 0,
+        "models": [{
+            "label": "gemini:gemini-3.6-flash",
+            "inputTokens": 1200,
+            "outputTokens": 800,
+            "estimated": False,
+        }],
+    },
 }
 usage.record_run(sample_run)
 check("record_run appends one detailed run",
       usage.load_ledger()["recentRuns"][0]["groupId"]
       == "boeing-777-9-test-hours"
-      and "prompt" not in usage.load_ledger()["recentRuns"][0])
+      and "prompt" not in usage.load_ledger()["recentRuns"][0]
+      and usage.load_ledger()["recentRuns"][0]["resourceUsage"]["models"][0]
+      ["outputTokens"] == 800)
 boundary = {**sample_run,
             "groupId": "boundary",
             "startedUtc": usage.iso_minute(
@@ -248,6 +259,38 @@ check("failure messages are flattened, redacted and truncated",
 
 prices = json.loads((REPO / "config" / "model_prices.json")
                     .read_text(encoding="utf-8"))
+manual_run = {
+    **sample_run,
+    "workflow": "manual_workbench",
+    "groupId": "a-20260730-1020-manual-test",
+    "articleId": "a-20260730-1020-manual-test",
+    "finalModel": "manual:GPT 5.6 Sol",
+    "fallbackUsed": False,
+    "attempts": [],
+    "resourceUsage": {
+        "actualUsd": 0,
+        "models": [{
+            "label": "GPT 5.6 Sol",
+            "inputTokens": 0,
+            "outputTokens": 1000,
+            "estimated": True,
+        }],
+    },
+}
+manual_view = build.private_manual_usage_view(
+    build.recent_run_view({"recentRuns": [sample_run, manual_run]},
+                          fixed_now),
+    prices,
+)
+check("private workbench usage is separated and priced per article",
+      manual_view["totals"]["jobs"] == 1
+      and manual_view["totals"]["published"] == 1
+      and manual_view["rows"][0]["article_id"]
+      == "a-20260730-1020-manual-test"
+      and manual_view["rows"][0]["estimated"] is True
+      and abs(manual_view["rows"][0]["usd"] - 0.03) < 1e-9)
+check("manual writer credit keeps the owner-entered model name exactly",
+      build.writer_model("manual:GPT 5.6 Sol") == "GPT 5.6 Sol")
 rows, totals = build.usage_rows(usage.load_ledger(), prices)
 priority_ledger = {
     "models": {
@@ -388,6 +431,10 @@ check("page shows thirty-day history, fallback chain and final model",
       and "JSON 格式錯誤" in page
       and "Gemini 3.6 Flash" in page
       and "→ 改用" in page)
+check("page independently shows private workbench theoretical spend",
+      "私人補稿功能用的理論花費（最近 30 天）" in page
+      and "完全手動撰稿" in page
+      and "實際新增 API 支出" in page)
 check("page shows stage duration and repair count",
       "Archive Context retrieval" in page
       and "223.4 秒" in page

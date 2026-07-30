@@ -764,6 +764,20 @@ def generate(job_id: str, payload: dict) -> dict:
                 "usageEvents": 1 if tokens.get("known") else 0,
             },
         ))
+    resource_by_model = {}
+    for row in usage_rows:
+        label = str(getattr(row, "label", "") or "")
+        tokens = getattr(row, "usage", None) or {}
+        if not label:
+            continue
+        resource = resource_by_model.setdefault(label, {
+            "label": label,
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": False,
+        })
+        resource["inputTokens"] += int(tokens.get("inputTokens") or 0)
+        resource["outputTokens"] += int(tokens.get("outputTokens") or 0)
     usage_ledger.record_providers(usage_rows)
     finished_at = now_utc()
     usage_ledger.record_run({
@@ -793,6 +807,10 @@ def generate(job_id: str, payload: dict) -> dict:
             "failureStage": "drafting",
             "failureMessage": row["failureMessage"],
         } for row in attempts],
+        "resourceUsage": {
+            "actualUsd": 0,
+            "models": list(resource_by_model.values()),
+        },
     })
     if draft is None:
         return {

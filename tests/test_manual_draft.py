@@ -296,6 +296,7 @@ def test_fallback_and_telemetry():
         manual_draft.usage_ledger.record_providers,
         manual_draft.usage_ledger.record_run,
     )
+    recorded_runs = []
     manual_draft._providers_for = lambda payload: [first, second]
     manual_draft._build_group = lambda job, payload, log: {
         "id": f"manual-{job}",
@@ -309,7 +310,7 @@ def test_fallback_and_telemetry():
         }],
     }
     manual_draft.usage_ledger.record_providers = lambda rows: None
-    manual_draft.usage_ledger.record_run = lambda row: None
+    manual_draft.usage_ledger.record_run = recorded_runs.append
     try:
         result = manual_draft.generate(
             "0123456789abcdef0123456789abcdef",
@@ -326,6 +327,11 @@ def test_fallback_and_telemetry():
           and result["attempts"][0]["requests"][0]["headers"]
           ["x-ratelimit-remaining"] == "0",
           "safe rate-limit and failure telemetry reach encrypted result")
+    check(
+        len(recorded_runs[0]["resourceUsage"]["models"]) == 2
+        and sum(row["outputTokens"] for row in
+                recorded_runs[0]["resourceUsage"]["models"]) == 40,
+        "private AI drafting records per-model token resources")
 
 
 def test_private_page_render_contract():
@@ -356,9 +362,46 @@ def test_private_page_render_contract():
           "UI exposes every model in exact fallback order")
 
 
+def test_manual_article_render_contract():
+    raw = {
+        "id": "a-20260731-1200-manual-test",
+        "publishedUtc": "2026-07-31T12:00:00Z",
+        "cat": "ops",
+        "primarySource": "example.com",
+        "zh": {
+            "title": "手動撰寫的航空新聞",
+            "summary": "手動摘要",
+            "body": ["手動文章內容。"],
+        },
+        "en": {"title": "", "summary": "", "body": []},
+        "sources": [{
+            "name": "example.com",
+            "url": "https://example.com/source",
+        }],
+        "writer": "manual:GPT 5.6 Sol",
+        "availableLanguages": ["zh"],
+    }
+    article = build.prep_article(raw)
+    check(article is not None
+          and article["available_languages"] == ["zh"]
+          and article["writer_model"] == "GPT 5.6 Sol",
+          "single-language manual article preserves visibility and exact credit")
+    flashes = build.prep_flashes([{
+        "timeUtc": "2026-07-31T12:00:00Z",
+        "zh": "繁中快訊",
+        "en": "English fallback",
+        "articleId": raw["id"],
+        "availableLanguages": ["zh"],
+    }], {raw["id"]})
+    check(len(build.flash_view(flashes, "zh")) == 1
+          and build.flash_view(flashes, "en") == [],
+          "single-language manual flash never links to a missing language page")
+
+
 def test_static_security_contract():
     html = (ROOT / "templates" / "manual.html").read_text(encoding="utf-8")
     js = (ROOT / "static" / "manual.js").read_text(encoding="utf-8")
+    css = (ROOT / "static" / "manual.css").read_text(encoding="utf-8")
     workflow = (ROOT / ".github" / "workflows"
                 / "manual-draft.yml").read_text(encoding="utf-8")
     hourly = (ROOT / ".github" / "workflows"
@@ -391,6 +434,19 @@ def test_static_security_contract():
         and 'id="publish"' in html,
         "review stage supports built-in and custom model selection plus publish")
     check(
+        'id="mode-ai"' in html and 'id="mode-manual"' in html
+        and 'id="manual-title-primary"' in html
+        and 'id="manual-content-primary"' in html
+        and '<option value="custom" selected>自訂輸入</option>' in html
+        and 'id="manual-model-custom"' in html,
+        "true manual mode exposes only authored content and model credit inputs")
+    check(
+        'id="activity-indicator"' in html
+        and 'id="pipeline-steps"' in html
+        and "@keyframes activity-bounce" in css
+        and "@keyframes step-pulse" in css,
+        "both modes expose animated live workflow telemetry")
+    check(
         "PAT_VAULT_CONTEXT" in js
         and "encryptPat" in js and "decryptPat" in js
         and "localStorage.setItem(PAT_STORAGE_KEY, JSON.stringify(envelope))"
@@ -410,13 +466,22 @@ def test_static_security_contract():
           "browser encrypts before writing a job")
     check(
         "async function publishArticle()" in js
+        and "async function publishManualArticle()" in js
         and "writeRepoJson(" in js
         and "data\\/articles\\/manual-" in js
         and "data/flashes.json" in js
         and "data/incidents.json" in js
         and ".github/deploy-trigger" in js
+        and "data/usage.json" in js
+        and "waitForPublishedArticle" in js
         and "previousDraft" in js,
-        "confirmed drafts update article data and trigger GitHub Pages")
+        "AI and true-manual drafts back up data, usage and verify Pages")
+    check(
+        "manualUsageModels" in js
+        and "estimated: true" in js
+        and "manual_workbench" in js
+        and "actualUsd: 0" in js,
+        "true manual mode records estimated tokens with zero actual API spend")
     check("secrets.AVWIRE_MANUAL_TOKEN" in workflow
           and "secrets.OPENROUTER_API_KEY" in workflow
           and "encrypted envelopes only" in workflow
@@ -440,6 +505,7 @@ def main():
         test_openrouter_manual_provider_order,
         test_fallback_and_telemetry,
         test_private_page_render_contract,
+        test_manual_article_render_contract,
         test_static_security_contract,
     ):
         test()
