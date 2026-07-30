@@ -431,7 +431,8 @@ def test_no_api_key_end_to_end():
     pending_before = (tmp2 / "pending.json").read_bytes()
 
     env = dict(os.environ)
-    for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY"):
+    for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY",
+                "OPENROUTER_API_KEY"):
         env.pop(key, None)
     env["AVWIRE_DATA_DIR"] = str(tmp2)
     env["PYTHONIOENCODING"] = "utf-8"
@@ -653,13 +654,15 @@ def test_model_chain_and_routing_policy():
     # --- order tokens: same platform may appear with different models -----
     saved = {k: os.environ.get(k) for k in (
         "AVWIRE_PROVIDER_ORDER", "NVIDIA_API_KEY", "GEMINI_API_KEY",
-        "ANTHROPIC_API_KEY")}
+        "OPENROUTER_API_KEY", "ANTHROPIC_API_KEY")}
     os.environ["AVWIRE_PROVIDER_ORDER"] = (
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b, "
         "nvidia:nvidia/nemotron-3-super-120b-a12b, "
-        "gemini:gemini-3-flash-preview, bogus, nvidia")
+        "gemini:gemini-3-flash-preview, "
+        "openrouter:google/gemma-4-31b-it:free, bogus, nvidia")
     os.environ["NVIDIA_API_KEY"] = "test-key-not-real"
     os.environ["GEMINI_API_KEY"] = "test-key-not-real"
+    os.environ["OPENROUTER_API_KEY"] = "test-key-not-real"
     os.environ.pop("ANTHROPIC_API_KEY", None)
     try:
         labels = [p.label for p in providers.build_providers()]
@@ -672,6 +675,7 @@ def test_model_chain_and_routing_policy():
     check(labels == ["nvidia:nvidia/nemotron-3-ultra-550b-a55b",
                      "nvidia:nvidia/nemotron-3-super-120b-a12b",
                      "gemini:gemini-3-flash-preview",
+                     "openrouter:google/gemma-4-31b-it:free",
                      f"nvidia:{providers.NVIDIA_DEFAULT_MODEL}"],
           f"order tokens honored in order, got {labels}")
 
