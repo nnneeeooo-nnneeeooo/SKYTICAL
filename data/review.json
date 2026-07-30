@@ -1,5 +1,236 @@
 [
   {
+    "id": "g-20260730-1732-1",
+    "queuedUtc": "2026-07-30T17:32Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Developing labour dispute with potential major operational disruption; 72-hour strike/lockout notices issued but work stoppage not yet confirmed; requires human review before publication.",
+    "riskFlags": [
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "WestJet issued a 72-hour lockout notice on July 30, 2026, after CUPE 8125 announced a 72-hour strike notice.",
+        "sourceQuote": "On July 30, 2026, WestJet said it was issuing a lockout notice after members of the Canadian Union of Public Employees (CUPE) 8125 announced a 72-hour strike notice.",
+        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "CUPE 8125 represents approximately 4,400 WestJet cabin crew members.",
+        "sourceQuote": "WestJet has issued a 72-hour lockout notice after the Canadian Union of Public Employees (CUPE), representing approximately 4,400 cabin crew, served the airline with a 72-hour strike notice.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/westjet-lockout-strike-notice-cabin-crew-july-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "A work stoppage could occur on August 2, 2026, at 12:01 a.m. Mountain Time if no agreement is reached.",
+        "sourceQuote": "a work stoppage could occur on August 2, 2026, just after midnight, local time",
+        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "WestJet CEO Alexis von Hoensbroech said the lockout notice decision was not made lightly and the airline's commitment remains at the bargaining table.",
+        "sourceQuote": "The decision to issue a lockout notice, in response to the actions taken by the union, was not one that was made lightly. We sincerely regret the inconvenience and uncertainty this continues to cause for our guests",
+        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "CUPE 8125 stated its strike notice does not mean flight attendants want to commence industrial action and that there is still time to avoid a strike.",
+        "sourceQuote": "CUPE 8125 has stated that its strike notice does not mean flight attendants want to commence industrial action.",
+        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "WestJet is offering flexible change and cancellation policies for passengers travelling between July 30 and August 4, 2026, and said the notices do not immediately impact operations.",
+        "sourceQuote": "Continue to offer flexible change/cancel policies for those guests with travel bookings between July 30, 2026, and August 4, 2026, who wish to make alternate arrangements.",
+        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Developing labour dispute with potential major operational disruption; 72-hour strike/lockout notices issued but work stoppage not yet confirmed; requires human review before publication.",
+      "cat": "ops",
+      "zh": {
+        "title": "WestJet對CUPE 8125空服員罷工警告發布72小時鎖場通知",
+        "summary": "加拿大第二大航空公司WestJet於2026年7月30日對代表約4,400名客艙機組員的CUPE 8125工會發布72小時鎖場通知，回應工會先前的72小時罷工通知。若雙方未能達成協議，罷工或鎖場可能於8月2日凌晨生效。WestJet表示目前營運未立即受影響，並為7月30日至8月4日期間出行的旅客提供彈性更改與取消政策。",
+        "body": [
+          "加拿大航空公司WestJet於2026年7月30日表示，在加拿大公共僱員工會（CUPE）8125分會宣布72小時罷工通知後，WestJet已發布鎖場通知作為回應。CUPE 8125代表約4,400名WestJet客艙機組員。",
+          "若雙方未能達成協議，罷工或鎖場可能於2026年8月2日凌晨12時01分（山區時間）生效。鎖場通知將阻止工會員工上班。",
+          "WestJet集團執行長Alexis von Hoensbroech表示：「發布鎖場通知的決定，是對工會所採取行動的回應，並非輕率做出。我們對此持續為旅客造成的不便與不確定性深表遺憾。」他補充說，WestJet的「承諾仍在談判桌上」，將24小時全天候努力達成協議。",
+          "CUPE 8125主席Alia Hussain表示，工會的罷工通知並不意味著空服員希望展開工業行動，工會的「目標是在不干擾旅客或出行大眾的情況下達成公平協議」。她補充：「還有時間避免罷工」，工會將繼續徹夜談判。",
+          "CUPE 8125聲稱WestJet空服員每月有多達35小時的無薪工作。工會先前表示，薪酬與飛機推出時間密切相關，登機、安全檢查、協助旅客及地面延誤均未獲報酬。",
+          "WestJet表示，相關通知不會立即影響營運，也不意味著必然發生勞資糾紛。WestJet為2026年7月30日至8月4日期間出行的旅客提供彈性更改與取消政策，若發生航班延誤或取消，受影響旅客將獲退款或重新安排行程。"
+        ]
+      },
+      "en": {
+        "title": "WestJet issues 72-hour lockout notice in response to CUPE 8125 cabin crew strike threat",
+        "summary": "Canadian carrier WestJet issued a 72-hour lockout notice on July 30, 2026, after CUPE Local 8125, representing approximately 4,400 cabin crew members, served the airline with a 72-hour strike notice. If no agreement is reached, a strike or lockout could take effect from 12:01 a.m. Mountain Time on August 2. WestJet said the notices do not immediately impact operations and is offering flexible change and cancellation policies for passengers travelling between July 30 and August 4.",
+        "body": [
+          "Canadian carrier WestJet said on July 30, 2026, that it was issuing a lockout notice after members of the Canadian Union of Public Employees (CUPE) 8125 announced a 72-hour strike notice. CUPE 8125 represents approximately 4,400 WestJet cabin crew members.",
+          "If an agreement is not reached, a work stoppage could occur on August 2, 2026, at 12:01 a.m. Mountain Time. The lockout notice would prevent unionized employees from working.",
+          "Alexis von Hoensbroech, CEO of the WestJet Group, said: \"The decision to issue a lockout notice, in response to the actions taken by the union, was not one that was made lightly. We sincerely regret the inconvenience and uncertainty this continues to cause for our guests.\" He added that the airline's \"commitment remains at the bargaining table\" where it will work around the clock to find a deal.",
+          "CUPE 8125 President Alia Hussain said the union's strike notice does not mean flight attendants want to commence industrial action. \"There's still time to avoid a strike,\" Hussain added. \"We will continue to bargain around the clock until this is resolved.\"",
+          "The union claims that WestJet flight attendants carry out unpaid work up to 35 hours every month, with pay heavily tied to when the aircraft pushes back. Boarding, safety sweeps, assisting passengers, and ground delays are uncompensated, according to the union.",
+          "WestJet said that the notices do not immediately impact operations or mean that a labor disruption will occur. The airline is offering flexible change and cancellation policies for guests with travel bookings between July 30, 2026, and August 4, 2026. Should flight delays or cancellations occur, impacted guests will be refunded or reaccommodated as applicable."
+        ]
+      },
+      "flash": {
+        "zh": "WestJet發布72小時鎖場通知，回應CUPE 8125罷工警告",
+        "en": "WestJet issues 72-hour lockout notice amid CUPE 8125 strike threat",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "WestJet issued a 72-hour lockout notice on July 30, 2026, after CUPE 8125 announced a 72-hour strike notice.",
+          "sourceQuote": "On July 30, 2026, WestJet said it was issuing a lockout notice after members of the Canadian Union of Public Employees (CUPE) 8125 announced a 72-hour strike notice.",
+          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "CUPE 8125 represents approximately 4,400 WestJet cabin crew members.",
+          "sourceQuote": "WestJet has issued a 72-hour lockout notice after the Canadian Union of Public Employees (CUPE), representing approximately 4,400 cabin crew, served the airline with a 72-hour strike notice.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/westjet-lockout-strike-notice-cabin-crew-july-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "A work stoppage could occur on August 2, 2026, at 12:01 a.m. Mountain Time if no agreement is reached.",
+          "sourceQuote": "a work stoppage could occur on August 2, 2026, just after midnight, local time",
+          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "WestJet CEO Alexis von Hoensbroech said the lockout notice decision was not made lightly and the airline's commitment remains at the bargaining table.",
+          "sourceQuote": "The decision to issue a lockout notice, in response to the actions taken by the union, was not one that was made lightly. We sincerely regret the inconvenience and uncertainty this continues to cause for our guests",
+          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "CUPE 8125 stated its strike notice does not mean flight attendants want to commence industrial action and that there is still time to avoid a strike.",
+          "sourceQuote": "CUPE 8125 has stated that its strike notice does not mean flight attendants want to commence industrial action.",
+          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "WestJet is offering flexible change and cancellation policies for passengers travelling between July 30 and August 4, 2026, and said the notices do not immediately impact operations.",
+          "sourceQuote": "Continue to offer flexible change/cancel policies for those guests with travel bookings between July 30, 2026, and August 4, 2026, who wish to make alternate arrangements.",
+          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F6"
+      ],
+      "entities": {
+        "organizations": [
+          "Canadian Union of Public Employees",
+          "CUPE 8125",
+          "WestJet Group"
+        ],
+        "airlines": [
+          "WestJet"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Canada"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-30",
+          "2026-08-02"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260730-1732-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "WestJet responds to 72-hour cabin crew strike threat with own deadline",
+          "url": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
+          "publishedUtc": "2026-07-30T11:17Z",
+          "summary": "Canadian carrier WestJet has responded to threats of a possible flight attendant strike by issuing its own 72-hour… The post WestJet responds to 72-hour cabin crew strike threat with own deadline appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "WestJet responds to crew union 72-hour strike notice with lockout News",
+          "url": "https://aerospaceglobalnews.com/news/westjet-lockout-strike-notice-cabin-crew-july-2026/",
+          "publishedUtc": "2026-07-30T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/09/230502-WestJet-MAX8-Rockies-1600x900-1.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        },
+        {
+          "title": "WestJet responds to 72-hour cabin crew strike threat with own deadline",
+          "summary": "WestJet responds to 72-hour cabin crew strike threat with own deadline &nbsp;&nbsp; aerotime.aero",
+          "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQQ2htZFFIZGQ1V2pMbVpwVGhMVVpYaDRFUXlWLTUzZTFhLW12UUE5UkpsM3paaDhzOG9GcDVNS01XZUNIOVRiTkJnSnQzaC1lcU04YkhmbHdONmVZQ19ER0xrQnRCUFpiaVItSU0tZjhILWdMVnZTcHJyQzNQSHp4SXpnd9IBiAFBVV95cUxNQUV2VzM1QzZJZUhwRlBvaTFCOHZkeFY1cmEyd0ZKelJ2anNJLWpBc3h1akt5S3ltekl1U1ZDajNCUlFFTHhRUXo1T3Q5MnZoblY2YURoaHM0NVNyYlJHT2JlTVJUekFxZFpsdnJnMnRRQ1dpdFMyejBta2NBX2NJU0QwY0EtRjNH?oc=5",
+          "source": "aerotime.aero",
+          "companion": true,
+          "publishedUtc": "2026-07-30T11:17Z"
+        }
+      ],
+      "updateCandidate": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260730-1506-8",
     "queuedUtc": "2026-07-30T15:06Z",
     "approve": false,
