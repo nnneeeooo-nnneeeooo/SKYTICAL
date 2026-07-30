@@ -40,6 +40,7 @@ from common import (
     parse_iso,
     story_category,
 )
+from model_config import DEFAULT_PROVIDER_ORDER
 
 # Asia/Taipei via zoneinfo where tz data exists (Linux CI); the zone has had a
 # fixed +08:00 offset with no DST since 1980, so a static fallback is exact.
@@ -1369,7 +1370,17 @@ def usage_rows(ledger: dict, prices: dict):
     rows = []
     totals = {"calls": 0, "in": 0, "out": 0, "usd": 0.0,
               "unknown": 0, "all_priced": True}
-    for label, m in sorted((ledger.get("models") or {}).items()):
+    configured = (os.environ.get("AVWIRE_PROVIDER_ORDER")
+                  or DEFAULT_PROVIDER_ORDER)
+    priority = {
+        token.strip(): index
+        for index, token in enumerate(configured.split(","))
+        if token.strip()
+    }
+    models = (ledger.get("models") or {}).items()
+    for label, m in sorted(
+            models,
+            key=lambda item: (priority.get(item[0], len(priority)), item[0])):
         if not isinstance(m, dict):
             continue
         calls = int(m.get("calls") or 0)
