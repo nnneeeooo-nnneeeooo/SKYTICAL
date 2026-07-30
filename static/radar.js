@@ -481,8 +481,8 @@
       const dataTime = sourceTime === null ? new Date() :
         new Date(sourceTime > 1e12 ? sourceTime : sourceTime * 1000);
       updatedEl.textContent = copy.updated(new Intl.DateTimeFormat(
-        lang === "zh" ? "zh-TW" : "en-GB",
-        { hour: "2-digit", minute: "2-digit", second: "2-digit" }
+        "en-US",
+        { hour: "numeric", minute: "2-digit", hour12: true }
       ).format(dataTime));
       setStatus("live", copy.live);
       nextRefreshAt = Date.now() + refreshMs;

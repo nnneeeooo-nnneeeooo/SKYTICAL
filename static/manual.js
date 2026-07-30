@@ -14,7 +14,8 @@
     "manual-model-custom-panel", "manual-model-custom",
     "github-token", "clear-token", "source-urls", "source-text",
     "article-summary", "publication-mode", "manual-time-panel",
-    "publication-time",
+    "publication-date", "publication-hour", "publication-minute",
+    "publication-period",
     "image-input", "image-list", "upload-zone", "article-type", "language",
     "model", "reasoning-tier", "chat-history", "instruction", "clear-chat",
     "generate", "form-error", "security-state", "job-state", "metric-model",
@@ -99,7 +100,7 @@
       els["request-log"].dataset.empty = "false";
     }
     const item = document.createElement("li");
-    item.textContent = `${new Date().toLocaleTimeString("zh-TW")}　${message}`;
+    item.textContent = `${clock12(new Date())}　${message}`;
     els["request-log"].append(item);
     els["request-log"].scrollTop = els["request-log"].scrollHeight;
   }
@@ -456,15 +457,38 @@
       .map(value => value.trim()).filter(Boolean))];
   }
 
-  function taipeiInputValue(date = new Date()) {
-    return new Date(date.getTime() + 8 * 60 * 60 * 1000)
-      .toISOString().slice(0, 19);
+  function clock12(date, timeZone = "Asia/Taipei") {
+    return date.toLocaleTimeString("en-US", {
+      timeZone,
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+  }
+
+  function setTaipeiInputs(date = new Date()) {
+    const local = new Date(date.getTime() + 8 * 60 * 60 * 1000)
+      .toISOString();
+    const hour24 = Number(local.slice(11, 13));
+    els["publication-date"].value = local.slice(0, 10);
+    els["publication-hour"].value = String(hour24 % 12 || 12);
+    els["publication-minute"].value = local.slice(14, 16);
+    els["publication-period"].value = hour24 >= 12 ? "PM" : "AM";
   }
 
   function manualPublicationUtc() {
-    const value = els["publication-time"].value;
-    if (!value) return "";
-    const parsed = new Date(`${value}+08:00`);
+    const date = els["publication-date"].value;
+    const hour12 = Number(els["publication-hour"].value);
+    const minute = els["publication-minute"].value;
+    const period = els["publication-period"].value;
+    if (!date || !Number.isInteger(hour12)
+        || hour12 < 1 || hour12 > 12
+        || !/^\d{2}$/.test(minute)
+        || !["AM", "PM"].includes(period)) return "";
+    let hour24 = hour12 % 12;
+    if (period === "PM") hour24 += 12;
+    const parsed = new Date(
+      `${date}T${String(hour24).padStart(2, "0")}:${minute}:00+08:00`);
     return Number.isNaN(parsed.getTime()) ? "" : parsed.toISOString();
   }
 
@@ -932,16 +956,13 @@
   function publicationTimeLabel(value) {
     const parsed = new Date(value);
     if (Number.isNaN(parsed.getTime())) return value || "—";
-    return parsed.toLocaleString("zh-TW", {
+    const date = parsed.toLocaleDateString("zh-TW", {
       timeZone: "Asia/Taipei",
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-    }) + "（UTC+8）";
+    });
+    return `${date} ${clock12(parsed)}（UTC+8）`;
   }
 
   function renderReview(result) {
@@ -1351,8 +1372,8 @@
   els["publication-mode"].addEventListener("change", () => {
     const manual = els["publication-mode"].value === "manual";
     els["manual-time-panel"].hidden = !manual;
-    if (manual && !els["publication-time"].value) {
-      els["publication-time"].value = taipeiInputValue();
+    if (manual && !els["publication-date"].value) {
+      setTaipeiInputs();
     }
   });
   els["confirm-model"].addEventListener("change", () => {
@@ -1386,7 +1407,7 @@
   });
 
   els["request-log"].dataset.empty = "true";
-  els["publication-time"].value = taipeiInputValue();
+  setTaipeiInputs();
   setMode("ai");
   const restoredPat = validToken && await restorePat();
   if (validToken) {

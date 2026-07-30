@@ -31,7 +31,18 @@ OPENROUTER_MODEL_ORDER = (
     "openrouter:poolside/laguna-xs-2.1:free",
 )
 
-MODEL_ORDER = DIRECT_MODEL_ORDER + OPENROUTER_MODEL_ORDER
+# Rank by model capability first, then by provider for equivalent models.
+# The native NVIDIA route remains the first attempt and its OpenRouter
+# equivalent follows immediately, instead of collecting every OpenRouter
+# model at the end of the chain.
+MODEL_ORDER = (
+    *DIRECT_MODEL_ORDER[:5],
+    OPENROUTER_MODEL_ORDER[0],
+    *DIRECT_MODEL_ORDER[5:7],
+    OPENROUTER_MODEL_ORDER[1],
+    DIRECT_MODEL_ORDER[7],
+    *OPENROUTER_MODEL_ORDER[2:],
+)
 
 DEFAULT_PROVIDER_ORDER = ",".join(MODEL_ORDER)
 

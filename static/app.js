@@ -6,13 +6,19 @@
   /* — UTC + TPE clocks, updated every 10 s (per the design) — */
   var utcEl = document.getElementById("clock-utc");
   var tpeEl = document.getElementById("clock-tpe");
+  function clock12(date, timeZone) {
+    return date.toLocaleTimeString("en-US", {
+      timeZone: timeZone,
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true
+    });
+  }
   function tick() {
     var now = new Date();
-    if (utcEl) utcEl.textContent = "UTC " + now.toISOString().slice(11, 16);
+    if (utcEl) utcEl.textContent = "UTC " + clock12(now, "UTC");
     if (tpeEl) {
-      tpeEl.textContent = "TPE " + now.toLocaleTimeString("en-GB", {
-        timeZone: "Asia/Taipei", hour: "2-digit", minute: "2-digit"
-      });
+      tpeEl.textContent = "TPE " + clock12(now, "Asia/Taipei");
     }
   }
   tick();
