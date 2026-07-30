@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.3 seconds
-Output:
 (() => {
   "use strict";
 
@@ -458,4 +455,3 @@ Output:
     els.generate.disabled = true;
   }
 })();
-
