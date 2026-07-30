@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.3 seconds
-Output:
 """Offline contract tests for the encrypted private manual-drafting desk."""
 from __future__ import annotations
 
@@ -236,4 +233,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
