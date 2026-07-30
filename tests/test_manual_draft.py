@@ -206,6 +206,9 @@ def test_static_security_contract():
     check("noindex,nofollow,noarchive,nosnippet" in html
           and "Content-Security-Policy" in html,
           "private page is noindex and has a restrictive CSP")
+    check('<option value="deep" selected>' in html
+          and '<option value="standard" selected>' not in html,
+          "private page defaults to the highest reasoning tier")
     check("localStorage" not in js and "sessionStorage" in js,
           "PAT is session-only, never persistent local storage")
     check("AES-GCM" in js and "data/manual-jobs/inbox/" in js,
