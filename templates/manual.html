@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data: blob:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+  <title>AVWIRE 私人補稿台</title>
+  <link rel="icon" href="{{ favicon }}">
+  <link rel="stylesheet" href="{{ base }}/assets/manual.css">
+</head>
+<body>
+  <main class="shell" id="app"
+        data-repository="nnneeeooo-nnneeeooo/avwire"
+        data-branch="main"
+        data-base="{{ base }}">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">AVWIRE OWNER WORKBENCH</p>
+        <h1>私人補稿台</h1>
+        <p class="lede">來源與產出全程加密；GitHub 只保存密文。</p>
+      </div>
+      <div class="security-badge" id="security-state">本機待命</div>
+    </header>
+
+    <section class="notice">
+      <strong>安全說明</strong>
+      <span>請使用只限本 repository、僅有 Contents 讀寫權限的 fine-grained GitHub PAT。PAT 只保存在本分頁的 sessionStorage，不會送進模型或寫入 repository。</span>
+    </section>
+
+    <div class="workspace">
+      <section class="panel composer">
+        <div class="section-head">
+          <div>
+            <p class="kicker">SOURCE DESK</p>
+            <h2>補稿輸入</h2>
+          </div>
+          <span class="required">至少 1 個來源網址</span>
+        </div>
+
+        <label>GitHub PAT
+          <div class="inline-field">
+            <input id="github-token" type="password" autocomplete="off"
+                   spellcheck="false" placeholder="github_pat_…">
+            <button id="clear-token" class="quiet" type="button">清除</button>
+          </div>
+        </label>
+
+        <label>來源網址（一行一個）
+          <textarea id="source-urls" rows="3" required
+                    placeholder="https://example.com/official-release"></textarea>
+        </label>
+
+        <label>來源原文
+          <textarea id="source-text" rows="9"
+                    placeholder="貼上完整原文；若網站擋住自動擷取，這裡的內容會成為主要證據。"></textarea>
+        </label>
+
+        <div class="upload-zone" id="upload-zone" tabindex="0">
+          <input id="image-input" type="file" accept="image/png,image/jpeg,image/webp" multiple>
+          <strong>截圖／圖片</strong>
+          <span>點選、拖入，或直接 Ctrl+V 貼上；最多 4 張。</span>
+          <div id="image-list" class="image-list"></div>
+        </div>
+
+        <div class="controls-grid">
+          <label>文章類型
+            <select id="article-type">
+              <option value="flash">快訊</option>
+              <option value="press_release">新聞稿</option>
+              <option value="incident">事故／事件</option>
+              <option value="airline">航司</option>
+              <option value="airport">機場</option>
+              <option value="fleet_order">機隊／訂單</option>
+              <option value="regulation">監管</option>
+              <option value="financial">財報</option>
+            </select>
+          </label>
+          <label>產出語言
+            <select id="language">
+              <option value="bilingual">雙語</option>
+              <option value="zh">繁中優先</option>
+              <option value="en">英文優先</option>
+            </select>
+          </label>
+          <label>模型
+            <select id="model">
+              <option value="auto">自動（依優先順序 fallback）</option>
+              {% for model in models %}
+              <option value="{{ model.id }}">{{ loop.index }}. {{ model.name }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>推理檔位
+            <select id="reasoning-tier">
+              <option value="fast">快速</option>
+              <option value="standard" selected>標準</option>
+              <option value="deep">深度</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="conversation">
+          <div class="conversation-head">
+            <h3>編輯指令與對話</h3>
+            <button id="clear-chat" class="quiet" type="button">清空對話</button>
+          </div>
+          <div id="chat-history" class="chat-history" aria-live="polite">
+            <p class="empty-chat">尚無對話。可直接輸入角度、禁語、需保留的名稱或修稿要求。</p>
+          </div>
+          <label class="sr-only" for="instruction">編輯指令</label>
+          <textarea id="instruction" rows="3"
+                    placeholder="例如：以監管措施本身為主，不延伸評論；保留公司英文全名。"></textarea>
+        </div>
+
+        <button id="generate" class="primary" type="button">
+          生成 AVWIRE 標準 JSON
+        </button>
+        <p id="form-error" class="error" role="alert"></p>
+      </section>
+
+      <aside class="panel telemetry">
+        <div class="section-head">
+          <div>
+            <p class="kicker">LIVE TELEMETRY</p>
+            <h2>工作狀態</h2>
+          </div>
+          <span id="job-state" class="job-state idle">待命</span>
+        </div>
+
+        <dl class="metrics">
+          <div><dt>實際模型</dt><dd id="metric-model">—</dd></div>
+          <div><dt>推理設定</dt><dd id="metric-reasoning">—</dd></div>
+          <div><dt>Fallback</dt><dd id="metric-fallback">—</dd></div>
+          <div><dt>總耗時</dt><dd id="metric-duration">—</dd></div>
+          <div><dt>Token</dt><dd id="metric-tokens">—</dd></div>
+          <div><dt>Rate limit</dt><dd id="metric-rate">尚無回應標頭</dd></div>
+        </dl>
+
+        <h3>模型嘗試</h3>
+        <div id="attempts" class="attempts"><p class="muted">尚無資料</p></div>
+
+        <h3>Request log</h3>
+        <ol id="request-log" class="request-log">
+          <li><span>等待提交</span></li>
+        </ol>
+      </aside>
+    </div>
+
+    <section class="panel output-panel">
+      <div class="section-head">
+        <div>
+          <p class="kicker">AVWIRE CONTRACT</p>
+          <h2>標準 JSON</h2>
+        </div>
+        <div class="output-actions">
+          <button id="copy-json" class="quiet" type="button" disabled>複製</button>
+          <button id="download-json" class="quiet" type="button" disabled>下載</button>
+        </div>
+      </div>
+      <textarea id="json-output" rows="28" readonly
+                placeholder="生成完成後，通過 schema、逐字引文及證據綁定檢查的 JSON 會顯示在這裡。"></textarea>
+    </section>
+  </main>
+  <script src="{{ base }}/assets/manual.js" defer></script>
+</body>
+</html>

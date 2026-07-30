@@ -41,7 +41,11 @@ from common import (
     parse_iso,
     story_category,
 )
-from model_config import DEFAULT_PROVIDER_ORDER
+from model_config import (
+    DEFAULT_PROVIDER_ORDER,
+    MODEL_DISPLAY_NAMES,
+    MODEL_ORDER,
+)
 
 # Asia/Taipei via zoneinfo where tz data exists (Linux CI); the zone has had a
 # fixed +08:00 offset with no DST since 1980, so a static fallback is exact.
@@ -1937,6 +1941,28 @@ def render_usage_dashboard(env, build) -> int:
     return 1
 
 
+def render_manual_workbench(env, build) -> int:
+    """Private drafting page at /m/<token>/; omitted when unset/invalid."""
+    token = os.environ.get("AVWIRE_MANUAL_TOKEN", "").strip()
+    if not token:
+        return 0
+    if not re.fullmatch(r"[A-Za-z0-9_-]{32,128}\Z", token):
+        print("build: AVWIRE_MANUAL_TOKEN ignored "
+              "(want 32-128 chars of A-Za-z0-9_-)")
+        return 0
+    models = [{
+        "id": token_id,
+        "name": MODEL_DISPLAY_NAMES.get(token_id, token_id),
+    } for token_id in MODEL_ORDER]
+    render(env, "manual.html", f"m/{token}/index.html", {
+        "base": BASE_PATH,
+        "favicon": FAVICON,
+        "build": build,
+        "models": models,
+    })
+    return 1
+
+
 # ── rendering ────────────────────────────────────────────────────────────────
 
 def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=True):
@@ -2185,6 +2211,7 @@ def main() -> int:
         pages += 1
 
     pages += render_usage_dashboard(env, build)
+    pages += render_manual_workbench(env, build)
 
     # 404 (zh chrome, bilingual body), served by GitHub Pages from the root
     ctx = base_ctx("zh", "none", "", title=f"{L['zh']['siteName']} — 404",
