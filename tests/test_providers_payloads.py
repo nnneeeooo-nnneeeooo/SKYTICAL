@@ -130,6 +130,28 @@ def test_nvidia_model_profiles():
     print("test_nvidia_model_profiles: done")
 
 
+def test_model_priority_defaults():
+    expected = (
+        "gemini:gemini-3.6-flash",
+        "gemini:gemini-3.5-flash",
+        "nvidia:z-ai/glm-5.2",
+        "nvidia:deepseek-ai/deepseek-v4-pro",
+        "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+        "nvidia:qwen/qwen3.5-397b-a17b",
+        "nvidia:nvidia/nemotron-3-super-120b-a12b",
+        "nvidia:mistralai/mistral-medium-3.5-128b",
+    )
+    check(providers.MODEL_ORDER == expected,
+          "model priority order matches the configured product order")
+    check(providers.DEFAULT_ORDER == ",".join(expected),
+          "fallback default derives from model priority order")
+    check(providers.GEMINI_DEFAULT_MODEL == "gemini-3.6-flash",
+          "Gemini 3.6 Flash is the default model")
+    check(providers.NVIDIA_DEFAULT_MODEL == "z-ai/glm-5.2",
+          "GLM 5.2 is the highest-priority NVIDIA default")
+    print("test_model_priority_defaults: done")
+
+
 def test_nvidia_reasoning_trace_never_parsed():
     """reasoning_content is ignored; empty final content is a failure."""
     def fake_post(url, json=None, timeout=None, headers=None):
@@ -179,7 +201,7 @@ def test_nvidia_format_repair():
 
 
 def test_gemini_model_profiles():
-    """Gemini 3.6/3.5 send thinkingLevel medium; unknown models send none."""
+    """Gemini 3.6/3.5 send thinkingLevel high; unknown models send none."""
     for model in ("gemini-3.6-flash", "gemini-3.5-flash"):
         captured = []
 
@@ -192,8 +214,8 @@ def test_gemini_model_profiles():
                            lambda: provider.draft("sys", "user", SCHEMA))
         check(result == {"ok": 1}, f"{model}: draft parsed")
         config = captured[0]["generationConfig"]
-        check(config.get("thinkingConfig") == {"thinkingLevel": "medium"},
-              f"{model}: thinkingLevel medium")
+        check(config.get("thinkingConfig") == {"thinkingLevel": "high"},
+              f"{model}: thinkingLevel high")
         check("temperature" not in config
               and config.get("maxOutputTokens") == 16384,
               f"{model}: no temperature on Gemini 3.x (tuned defaults)")
@@ -265,6 +287,7 @@ def test_gemini_format_repair():
 
 def main():
     tests = [
+        test_model_priority_defaults,
         test_nvidia_model_profiles,
         test_nvidia_reasoning_trace_never_parsed,
         test_nvidia_format_repair,

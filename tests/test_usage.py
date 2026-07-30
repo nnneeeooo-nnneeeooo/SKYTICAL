@@ -139,6 +139,17 @@ check("idle providers write nothing",
 prices = json.loads((REPO / "config" / "model_prices.json")
                     .read_text(encoding="utf-8"))
 rows, totals = build.usage_rows(usage.load_ledger(), prices)
+priority_ledger = {
+    "models": {
+        label: {"calls": 1, "inputTokens": 0, "outputTokens": 0,
+                "unknownCalls": 0}
+        for label in reversed(providers.MODEL_ORDER)
+    }
+}
+priority_rows, _ = build.usage_rows(priority_ledger, prices)
+check("usage dashboard follows the configured model priority",
+      [row["label"] for row in priority_rows]
+      == list(providers.MODEL_ORDER))
 ultra = next(r for r in rows if "ultra" in r["label"])
 expect_usd = (ultra["in"] / 1e6 * 0.423) + (ultra["out"] / 1e6 * 2.61)
 check("theoretical USD uses the reference price table",
