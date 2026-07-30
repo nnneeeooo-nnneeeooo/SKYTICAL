@@ -249,6 +249,17 @@ check("failure messages are flattened, redacted and truncated",
 prices = json.loads((REPO / "config" / "model_prices.json")
                     .read_text(encoding="utf-8"))
 rows, totals = build.usage_rows(usage.load_ledger(), prices)
+priority_ledger = {
+    "models": {
+        label: {"calls": 1, "inputTokens": 0, "outputTokens": 0,
+                "unknownCalls": 0}
+        for label in reversed(providers.MODEL_ORDER)
+    }
+}
+priority_rows, _ = build.usage_rows(priority_ledger, prices)
+check("usage dashboard follows the configured model priority",
+      [row["label"] for row in priority_rows]
+      == list(providers.MODEL_ORDER))
 ultra = next(r for r in rows if "ultra" in r["label"])
 expect_usd = (ultra["in"] / 1e6 * 0.423) + (ultra["out"] / 1e6 * 2.61)
 check("theoretical USD uses the reference price table",
@@ -400,6 +411,11 @@ check("dashboard skips old/malformed rows without crashing on NaN",
       [row["group_id"] for row in view_with_old["runs"]]
       == ["boeing-777-9-test-hours", "nan"]
       and view_with_old["runs"][1]["durations"]["total"] is None)
+check("recent model statistics follow configured model priority",
+      [row["label"] for row in view_with_old["models"]]
+      == ["gemini:gemini-3.6-flash",
+          "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+          "nvidia:nvidia/nemotron-3-super-120b-a12b"])
 check("page is noindex and shows totals",
       "noindex" in page and "API 用量" in page and "$0" in page)
 check("page shows exact Codex GPT-5 task totals and cost semantics",

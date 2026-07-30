@@ -203,7 +203,7 @@ def test_publish_flow():
                            "zh": {}, "en": {}, "sources": [{"name": "x", "url": "y"}]}]}
     hour_path.write_text(json.dumps(dummy), encoding="utf-8")
 
-    os.environ["ANTHROPIC_API_KEY"] = "test-key-not-real"
+    os.environ["GEMINI_API_KEY"] = "test-key-not-real"
 
     def fake_draft(client, group):
         if group["id"] == "g-20260726-0503-1":
@@ -240,7 +240,7 @@ def test_publish_flow():
     check(isinstance(biz["zh"]["body"], list) and isinstance(biz["en"]["body"], list),
           "zh/en bodies are paragraph lists")
     check(biz["image"] is None, "biz article image is null")
-    check(biz.get("writer", "").startswith("anthropic:"),
+    check(biz.get("writer", "").startswith("gemini:"),
           "writer provenance recorded")
     check(len(biz.get("facts", [])) == 2, "verified facts stored on article")
     check(biz.get("riskFlags") == [], "publish requires empty risk flags")
@@ -256,7 +256,7 @@ def test_publish_flow():
     entry = review[0]
     check(entry["id"] == "g-20260726-0503-1", f"queued group id: {entry['id']}")
     check(entry["approve"] is False, "queued entries await human approval")
-    check(entry["writer"].startswith("anthropic:"), "queue records the writer")
+    check(entry["writer"].startswith("gemini:"), "queue records the writer")
     check(len(entry["facts"]) == 2, "verified facts stored with the entry")
     check(entry["riskFlags"] == ["accident_or_serious_incident", "investigation"],
           f"risk flags on queue entry, got {entry['riskFlags']}")
@@ -389,7 +389,7 @@ def test_group_cap_and_unique_ids():
         json.dumps({"generatedUtc": "2026-07-26T05:03Z", "groups": groups}),
         encoding="utf-8")
 
-    os.environ["ANTHROPIC_API_KEY"] = "test-key-not-real"
+    os.environ["GEMINI_API_KEY"] = "test-key-not-real"
     # Same en title every time; the quote must match THESE groups' titles.
     cap_draft = json.loads(json.dumps(DRAFT_BIZ))
     cap_draft["facts"] = [
