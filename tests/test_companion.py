@@ -88,6 +88,12 @@ diverse = {"items": [
 ]}
 check("diverse substantial group needs no companion search",
       not companion.is_thin(diverse))
+check("network work is bounded and parallel",
+      companion.TIMEOUT[1] <= 12
+      and companion.SEARCH_WORKERS > 1
+      and companion.RESOLVE_WORKERS > 1
+      and companion.MAX_RESOLVE_CANDIDATES
+      == companion.MAX_ITEMS_PER_GROUP * 2)
 
 query, tokens = companion.build_query(THIN_GROUP)
 check("query keeps anchors and drops stopwords",
