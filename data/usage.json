@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-07-30T11:59Z",
+  "updatedUtc": "2026-07-30T15:04Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,16 +21,16 @@
       "unknownCalls": 48
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 64,
+      "calls": 65,
       "inputTokens": 217006,
       "outputTokens": 393643,
-      "unknownCalls": 11
+      "unknownCalls": 12
     },
     "gemini:gemini-3.5-flash": {
-      "calls": 16,
+      "calls": 17,
       "inputTokens": 16218,
       "outputTokens": 29873,
-      "unknownCalls": 12
+      "unknownCalls": 13
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "calls": 39,
@@ -39,9 +39,9 @@
       "unknownCalls": 39
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 39,
-      "inputTokens": 200406,
-      "outputTokens": 58924,
+      "calls": 40,
+      "inputTokens": 204791,
+      "outputTokens": 59580,
       "unknownCalls": 0
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
@@ -73,12 +73,89 @@
       "outputTokens": 561449
     },
     "2026-07-30": {
-      "calls": 199,
-      "inputTokens": 758315,
-      "outputTokens": 546138
+      "calls": 202,
+      "inputTokens": 762700,
+      "outputTokens": 546794
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-07-30T15:02Z",
+      "finishedUtc": "2026-07-30T15:04Z",
+      "workflow": "manual",
+      "taskType": "manual_article",
+      "groupId": "manual-8b49796b147c2c224576cb8227d91438",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "example.com",
+      "result": "reject",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "nvidia:z-ai/glm-5.2",
+      "fallbackUsed": true,
+      "attemptCount": 3,
+      "httpCallCount": 3,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "total": 157023
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": null,
+          "durationMs": 1736,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "drafting",
+          "failureMessage": "HTTP 503",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "gemini",
+          "model": "gemini-3.5-flash",
+          "label": "gemini:gemini-3.5-flash",
+          "startedUtc": null,
+          "durationMs": 3453,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "drafting",
+          "failureMessage": "HTTP 503",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 3,
+          "provider": "nvidia",
+          "model": "z-ai/glm-5.2",
+          "label": "nvidia:z-ai/glm-5.2",
+          "startedUtc": null,
+          "durationMs": 151785,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": "drafting",
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ]
+    },
     {
       "startedUtc": "2026-07-30T11:49Z",
       "finishedUtc": "2026-07-30T11:50Z",
