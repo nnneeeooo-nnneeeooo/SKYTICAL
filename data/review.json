@@ -1,5 +1,330 @@
 [
   {
+    "id": "g-20260731-0756-3",
+    "queuedUtc": "2026-07-31T07:56Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story concerns military aircraft procurement and order claims for French and Spanish armed forces.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "空中巴士直升機公司向法國裝備總署交付首架專為特種作戰設計的NH90 Standard 2直升機。",
+        "sourceQuote": "Airbus Helicopters has officially delivered the first NH90 Standard 2 to the French Armament General Directorate (DGA).",
+        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "法國共訂購18架NH90 Standard 2直升機，預計於2029年中期前完成交付，並由波城的陸軍航空隊特種部隊中隊操作。",
+        "sourceQuote": "France has ordered a total of 18 NH90 Standard 2 helicopters that will be delivered by mid 2029. They will be operated by the French Army Aviation’s special forces squadron in Pau.",
+        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "西班牙於2025年12月加入該計畫並訂購31架同型直升機。",
+        "sourceQuote": "In December 2025, Spain joined the programme ordering 31 NH90s in a similar standard.",
+        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Standard 2構型整合Safran Euroflir 410 D光電系統、新型數位地圖產生器與加大後側滑門。",
+        "sourceQuote": "The Standard 2 configuration includes the integration of the Safran Euroflir 410 D electro-optical system (EOS), a new digital map generator, installation for a third crew member and new enlarged rear sliding windows able to accommodate self-protection guns.",
+        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "NH90 Standard 2計畫於2020年由北約直升機管理機構下訂。",
+        "sourceQuote": "The NH90 Standard 2 programme was ordered in 2020 by the NATO Helicopter Management Agency (NAHEMA) to NHIndustries (NHI) and its partner companies",
+        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story concerns military aircraft procurement and order claims for French and Spanish armed forces.",
+      "cat": "mil",
+      "zh": {
+        "title": "空中巴士向法國交付首架特種作戰型NH90直升機",
+        "summary": "空中巴士直升機公司於2026年7月30日向法國裝備總署正式交付首架專為特種作戰設計的NH90 Standard 2直升機。法國共訂購18架該型直升機，預計於2029年中期前完成交付，並由波城的陸軍航空隊特種部隊中隊操作。西班牙亦於2025年12月訂購31架同型直升機。",
+        "body": [
+          "空中巴士直升機公司於2026年7月30日向法國裝備總署交付首架NH90 Standard 2直升機。該機種專為特種作戰設計，建立於NH90 TTH平台基礎之上。",
+          "法國共訂購18架NH90 Standard 2直升機，預計於2029年中期前完成交付，並由波城的陸軍航空隊特種部隊中隊操作。西班牙則於2025年12月訂購31架同型直升機。",
+          "Standard 2構型整合Safran Euroflir 410 D光電系統、新型數位地圖產生器與加大後側滑門。該計畫於2020年由北約直升機管理機構下訂。"
+        ]
+      },
+      "en": {
+        "title": "Airbus Delivers First Special Operations NH90 Standard 2 Helicopter to France",
+        "summary": "Airbus Helicopters has officially delivered the first NH90 Standard 2 helicopter to the French Armament General Directorate (DGA). Designed specifically for special operations, this new variant builds upon the NH90 TTH platform. France has ordered a total of 18 NH90 Standard 2 units scheduled for delivery by mid-2029, to be operated by the French Army Aviation's special forces squadron based in Pau. Additionally, Spain joined the development programme in December 2025 by ordering 31 NH90 helicopters in a similar configuration.",
+        "body": [
+          "Airbus Helicopters has officially delivered the first NH90 Standard 2 helicopter to the French Armament General Directorate (DGA). Designed specifically for special operations, the new variant builds upon the capabilities of the proven NH90 TTH platform.",
+          "France has ordered a total of 18 NH90 Standard 2 helicopters scheduled for full delivery by mid-2029. They will be operated by the French Army Aviation's special forces squadron in Pau. Additionally, Spain joined the programme in December 2025 with an order for 31 NH90 helicopters in a similar standard.",
+          "The Standard 2 configuration integrates the Safran Euroflir 410 D electro-optical system, a new digital map generator, and enlarged rear sliding windows for self-protection weapons. The programme was originally ordered in 2020 by the NATO Helicopter Management Agency."
+        ]
+      },
+      "flash": {
+        "zh": "空中巴士向法國交付首架特種作戰型NH90 Standard 2直升機。",
+        "en": "Airbus Helicopters delivers first special operations NH90 Standard 2 to France.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "空中巴士直升機公司向法國裝備總署交付首架專為特種作戰設計的NH90 Standard 2直升機。",
+          "sourceQuote": "Airbus Helicopters has officially delivered the first NH90 Standard 2 to the French Armament General Directorate (DGA).",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "法國共訂購18架NH90 Standard 2直升機，預計於2029年中期前完成交付，並由波城的陸軍航空隊特種部隊中隊操作。",
+          "sourceQuote": "France has ordered a total of 18 NH90 Standard 2 helicopters that will be delivered by mid 2029. They will be operated by the French Army Aviation’s special forces squadron in Pau.",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "西班牙於2025年12月加入該計畫並訂購31架同型直升機。",
+          "sourceQuote": "In December 2025, Spain joined the programme ordering 31 NH90s in a similar standard.",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Standard 2構型整合Safran Euroflir 410 D光電系統、新型數位地圖產生器與加大後側滑門。",
+          "sourceQuote": "The Standard 2 configuration includes the integration of the Safran Euroflir 410 D electro-optical system (EOS), a new digital map generator, installation for a third crew member and new enlarged rear sliding windows able to accommodate self-protection guns.",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "NH90 Standard 2計畫於2020年由北約直升機管理機構下訂。",
+          "sourceQuote": "The NH90 Standard 2 programme was ordered in 2020 by the NATO Helicopter Management Agency (NAHEMA) to NHIndustries (NHI) and its partner companies",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Airbus Helicopters",
+          "French Armament General Directorate",
+          "DGA",
+          "French Army Aviation",
+          "NATO Helicopter Management Agency",
+          "NAHEMA",
+          "NHIndustries",
+          "Safran"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "NH90",
+          "NH90 Standard 2",
+          "NH90 TTH"
+        ],
+        "airports": [],
+        "locations": [
+          "France",
+          "Pau",
+          "Spain",
+          "Marignane"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "30 July 2026",
+          "mid 2029",
+          "December 2025",
+          "2020"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260731-0756-3",
+      "primarySource": "Airbus",
+      "items": [
+        {
+          "title": "Airbus delivers first NH90 designed for special operations to France",
+          "url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
+          "publishedUtc": "2026-07-30T12:00Z",
+          "summary": "Airbus Helicopters has officially delivered the first NH90 Standard 2 to the French Armament General Directorate (DGA).",
+          "image": null,
+          "source": "Airbus",
+          "sourceKey": "airbus"
+        },
+        {
+          "title": "Airbus delivers first NH90 designed for special operations to France",
+          "summary": "Airbus delivers first NH90 designed for special operations to France &nbsp;&nbsp; airbus.com",
+          "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQdm0tT0VNNVNCT293cEhvb0MxYy1IUkVPVzVaT3pmTGFDdGFCczdjX25pMHh6bDZobW16Q0FZYl9Fck9ZQ3NLcGxwYnNVOUhaZ0M0UzlVdl9FNk1tUC1IOV9uVU5uTEpSRXFFSHc0UmdLLWxCU1Q1aU9nMXhuM2ZqTlBmRWY1OVJaWVJmQ3lEeUNKSWJ2ZE9mMXRoVWh0RV8wTDU0YnVDS280a0VYV0txU2VILTJFd2dLdUZsc2J2TGNkZnAx?oc=5",
+          "source": "airbus.com",
+          "companion": true,
+          "publishedUtc": "2026-07-30T12:00Z"
+        },
+        {
+          "title": "Airbus Helicopters delivers first Standard 2 NH90 for French army special forces use",
+          "summary": "Airbus Helicopters delivers first Standard 2 NH90 for French army special forces use &nbsp;&nbsp; FlightGlobal",
+          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQNWd6M2pFY2tiSjZZTHJXVW1UcFFkU0VPNjZqemh4WEVCXzdJU1dTZU90THpQbXh4R0JfczR6Y25KTlZYWWtIeVM2aUlVV0h0eDAxR3U4ZTgxcmdRaVRmTktUOFRxRXVTdmExVWhwOW5ZdkV4YXJnRkZWTUw0T0lZX1M2dk8tRF9VdTEyVzBfYUpueTVEWkU4bmNzaTZ4R1pOZ1o0RnNvUVlEZVJfbEFJY2FxaDhmWDN2aVV3TkhmNlg4RzNaeXh3NGtn?oc=5",
+          "source": "FlightGlobal",
+          "companion": true,
+          "publishedUtc": "2026-07-30T13:38Z"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: airbus",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
+            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+            "facts": [
+              {
+                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
+                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              },
+              {
+                "claim": "Qantas is opting to utilize the Boeing 787-9 instead.",
+                "source_quote": "as the airline opts for Boeing 787-9.",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              },
+              {
+                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
+                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+              },
+              {
+                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
+                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1934-airbus-delivers-237-aircraft-in-q2-maint",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: airbus",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar...",
+            "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+            "facts": [
+              {
+                "claim": "空中巴士在第二季交付237架飛機。",
+                "source_quote": "Airbus Achieves 237 Deliveries In 2nd Quarter",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              },
+              {
+                "claim": "空中巴士維持全年交付870架飛機的目標。",
+                "source_quote": "Keeps 870 Target For Full Year",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              },
+              {
+                "claim": "Simple Flying報導指出維持永續的產能提升對空中巴士達成全年870架交付目標至關重要。",
+                "source_quote": "Airbus' ability to maintain a sustainable production ramp-up will be crucial in achieving its 870-aircraft delivery target for the full year.",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0603-philippine-airlines-receives-third-a350",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: airbus",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft",
+            "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
+            "facts": [
+              {
+                "claim": "Philippine Airlines took delivery of its third Airbus A350-1000 (registration RP-C3512) on 29 July 2026, arriving in Manila from Toulouse.",
+                "source_quote": "The aircraft, with registration RP-C3512, arrived in Manila from Airbus’ delivery center in Toulouse, France, on July 29, 2026",
+                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
+                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
+              },
+              {
+                "claim": "The newly delivered A350-1000 will debut on the Manila–San Francisco route on 5 August 2026, initially three weekly flights (Tue, Fri, Sun) before daily service in September 2026.",
+                "source_quote": "The newly delivered aircraft is set to make its debut on PAL’s Manila-San Francisco route starting August 5, 2026, initially flying three times a week, on Tuesdays, Fridays, and Sundays, before shifting to daily service in September 2026",
+                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
+                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
+              },
+              {
+                "claim": "Philippine Airlines is the first and only airline in Southeast Asia operating the Airbus A350-1000.",
+                "source_quote": "Philippine Airlines is the first, and so far only, airline in Southeast Asia flying the A350-1000",
+                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
+                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260730-2213-1",
     "queuedUtc": "2026-07-30T22:13Z",
     "approve": false,
