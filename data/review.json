@@ -1,5 +1,331 @@
 [
   {
+    "id": "g-20260731-1048-2",
+    "queuedUtc": "2026-07-31T10:48Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Item involves government financial allocations, production funding claims, and airline delivery order figures for Russian aircraft programs.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Russian Prime Minister Mikhail Mishustin signaled government commitment on July 30, 2026, securing funding for commercial aircraft production.",
+        "sourceQuote": "On July 30, 2026, Russian Prime Minister Mikhail Mishustin signaled the government’s commitment to building commercial aircraft free from foreign production.",
+        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "There are currently 18 MC-21-310 aircraft at Yakovlev's Irkutsk Aircraft Plant in various stages of production.",
+        "sourceQuote": "there are 18 MC-21-310 aircraft at Yakovlev’s Irkutsk Aircraft Plant currently at various stages of production.",
+        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "According to ch-aviation data, Aeroflot is awaiting delivery of 198 MC-21-310 aircraft.",
+        "sourceQuote": "According to ch-aviation data, Aeroflot is awaiting 198 MC-21-310 aircraft to be delivered.",
+        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Russia allocated $32.8 million (RUB 2.6 billion) to complete the first three production IL-114-300 passenger aircraft.",
+        "sourceQuote": "The company will receive $32.8 million (RUB 2.6 billion) to complete the three domestically produced passenger aircraft.",
+        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The first three IL-114-300 aircraft will be delivered to Arkhangelsk Aviation Enterprise following type certification in June 2026.",
+        "sourceQuote": "The first three aircraft will be delivered to Arkhangelsk Aviation Enterprise. The IL-114-300 received type certification in June 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Certification for the MC-21-310 is expected to be completed in June 2027.",
+        "sourceQuote": "The certification process for the MC-21-310 is expected to be completed in June 2027.",
+        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Item involves government financial allocations, production funding claims, and airline delivery order figures for Russian aircraft programs.",
+      "cat": "biz",
+      "zh": {
+        "title": "俄羅斯增撥資金推進MC-21量產 並資助首三架IL-114-300客機",
+        "summary": "俄羅斯政府於2026年7月30日宣布加碼投資國產客機生產。雅克列夫公司伊爾庫茨克廠現有18架MC-21-310客機處於各生產階段，據ch-aviation資料，啟始客戶俄羅斯航空正等待交付198架。同時當局撥款3280萬美元資助完成首三架IL-114-300客機，交付阿爾漢格爾斯克航空企業。",
+        "body": [
+          "俄羅斯總理米舒斯京於2026年7月30日表示，政府已確定資金以推進商業客機量產，並向啟始客戶俄羅斯航空交付客機。目前位於雅克列夫旗下伊爾庫茨克飛機製造廠內，共有18架MC-21-310客機處於不同的生產階段。",
+          "根據ch-aviation資料顯示，俄羅斯航空目前等待接收198架MC-21-310客機。該機型預計於2027年6月完成認證程序，俄方並計畫在2032年前實現每年生產36架MC-21客機的目標。",
+          "在區域客機方面，俄羅斯政府撥款3280萬美元（約26億盧布），用於完成俄羅斯國家技術集團旗下聯合航空製造公司（UAC）子公司伊留申開發的首三架IL-114-300渦輪螺旋槳客機。該機型已於2026年6月取得型別認證，首三架將交付給阿爾漢格爾斯克航空企業。"
+        ]
+      },
+      "en": {
+        "title": "Russia Increases Funding for MC-21 Production and IL-114-300 Turboprops",
+        "summary": "Russian Prime Minister Mikhail Mishustin announced on July 30, 2026, enhanced government funding for commercial aircraft production. The funding supports 18 MC-21-310 aircraft currently at various production stages at Yakovlev’s Irkutsk Aircraft Plant, aiming to supply launch customer Aeroflot, which according to ch-aviation data is awaiting 198 aircraft. Additionally, Russia allocated $32.8 million (RUB 2.6 billion) to complete the first three IL-114-300 turboprop passenger aircraft developed by Ilyushin, which received type certification in June 2026 and are slated for delivery to Arkhangelsk Aviation Enterprise.",
+        "body": [
+          "Russian Prime Minister Mikhail Mishustin confirmed on July 30, 2026, that government funding has been secured to advance domestic commercial aircraft production. At Yakovlev's Irkutsk Aircraft Plant, 18 MC-21-310 passenger aircraft are currently at various stages of production to serve launch customer Aeroflot.",
+          "According to ch-aviation data, Aeroflot is awaiting delivery of 198 MC-21-310 aircraft. The certification process for the MC-21-310 is expected to be completed in June 2027, with long-term plans targeting an annual production rate of 36 MS-21 aircraft by 2032.",
+          "The government also announced funding totaling $32.8 million (RUB 2.6 billion) for the first three production IL-114-300 turboprop aircraft developed by Ilyushin. Following type certification in June 2026, these three aircraft will be delivered to Arkhangelsk Aviation Enterprise."
+        ]
+      },
+      "flash": {
+        "zh": "俄羅斯加碼資助MC-21與IL-114-300客機量產",
+        "en": "Russia increases funding for MC-21 and IL-114-300 passenger aircraft production",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Russian Prime Minister Mikhail Mishustin signaled government commitment on July 30, 2026, securing funding for commercial aircraft production.",
+          "sourceQuote": "On July 30, 2026, Russian Prime Minister Mikhail Mishustin signaled the government’s commitment to building commercial aircraft free from foreign production.",
+          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "There are currently 18 MC-21-310 aircraft at Yakovlev's Irkutsk Aircraft Plant in various stages of production.",
+          "sourceQuote": "there are 18 MC-21-310 aircraft at Yakovlev’s Irkutsk Aircraft Plant currently at various stages of production.",
+          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "According to ch-aviation data, Aeroflot is awaiting delivery of 198 MC-21-310 aircraft.",
+          "sourceQuote": "According to ch-aviation data, Aeroflot is awaiting 198 MC-21-310 aircraft to be delivered.",
+          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Russia allocated $32.8 million (RUB 2.6 billion) to complete the first three production IL-114-300 passenger aircraft.",
+          "sourceQuote": "The company will receive $32.8 million (RUB 2.6 billion) to complete the three domestically produced passenger aircraft.",
+          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The first three IL-114-300 aircraft will be delivered to Arkhangelsk Aviation Enterprise following type certification in June 2026.",
+          "sourceQuote": "The first three aircraft will be delivered to Arkhangelsk Aviation Enterprise. The IL-114-300 received type certification in June 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Certification for the MC-21-310 is expected to be completed in June 2027.",
+          "sourceQuote": "The certification process for the MC-21-310 is expected to be completed in June 2027.",
+          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F4"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Yakovlev",
+          "Rostec",
+          "United Aircraft Corporation",
+          "UAC",
+          "Ilyushin",
+          "Arkhangelsk Aviation Enterprise"
+        ],
+        "airlines": [
+          "Aeroflot"
+        ],
+        "aircraft_models": [
+          "MC-21",
+          "IL-114-300",
+          "MC-21-310",
+          "MS-21-210",
+          "MS-21",
+          "Il-114"
+        ],
+        "airports": [],
+        "locations": [
+          "Russia"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "July 30, 2026",
+          "July 2026",
+          "2035",
+          "June 2027",
+          "2032",
+          "June 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260731-1048-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Russia steps up funding for MC-21 production, support also for first IL-114-300s",
+          "url": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
+          "publishedUtc": "2026-07-31T09:27Z",
+          "summary": "Russia is to increase investment in the continued production of the MC-21 aircraft and has allocated more funds… The post Russia steps up funding for MC-21 production, support also for first IL-114-300s appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 5 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 3 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
+            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+            "facts": [
+              {
+                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
+                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
+              },
+              {
+                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
+                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 3 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260731-0756-3",
     "queuedUtc": "2026-07-31T07:56Z",
     "approve": false,
