@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-07-31T20:34Z",
+  "updatedUtc": "2026-07-31T21:05Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,9 +21,9 @@
       "unknownCalls": 60
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 112,
-      "inputTokens": 367417,
-      "outputTokens": 665662,
+      "calls": 113,
+      "inputTokens": 381225,
+      "outputTokens": 669557,
       "unknownCalls": 25
     },
     "gemini:gemini-3.5-flash": {
@@ -156,12 +156,184 @@
       "outputTokens": 809001
     },
     "2026-07-31": {
-      "calls": 197,
-      "inputTokens": 729407,
-      "outputTokens": 804100
+      "calls": 198,
+      "inputTokens": 743215,
+      "outputTokens": 807995
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-07-31T21:05Z",
+      "finishedUtc": "2026-07-31T21:05Z",
+      "workflow": "manual",
+      "taskType": "manual_article",
+      "groupId": "manual-b831ff973fc2e7e71ee6d2f4c9e9ffe9",
+      "eventId": null,
+      "sourceCount": 4,
+      "primarySource": "www.cna.com.tw",
+      "result": "publish",
+      "articleId": null,
+      "finalStatus": "publish",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "total": 21118
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": null,
+          "durationMs": 16850,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": "drafting",
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": [
+          {
+            "label": "gemini:gemini-3.6-flash",
+            "inputTokens": 13808,
+            "outputTokens": 3895,
+            "estimated": false
+          },
+          {
+            "label": "gemini:gemini-3.5-flash",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:z-ai/glm-5.2",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:qwen/qwen3.5-397b-a17b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-31b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:inclusionai/ling-3.0-flash:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:openai/gpt-oss-20b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-s-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:cohere/north-mini-code:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-xs-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          }
+        ]
+      }
+    },
     {
       "startedUtc": "2026-07-31T20:24Z",
       "finishedUtc": "2026-07-31T20:24Z",
