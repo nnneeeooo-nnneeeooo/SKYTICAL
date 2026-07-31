@@ -1,5 +1,187 @@
 [
   {
+    "id": "g-20260731-2211-9",
+    "queuedUtc": "2026-07-31T22:11Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "Risk flag unconfirmed_or_developing applies because the source describes early-stage proposals and concepts without confirmed implementation; therefore manual review is required despite sufficient source evidence.",
+    "riskFlags": [
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Israel is laying the foundations for an indigenous airpower strategy that could eventually include a stealth combat drone, a homegrown fighter aircraft and long-range missiles as it prepares for a future with less reliance on US military support.",
+        "sourceQuote": "Israel is laying the foundations for an indigenous airpower strategy that could eventually include a stealth combat drone, a homegrown fighter aircraft and long-range missiles as it prepares for a future with less reliance on US military support.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/israel-indigenous-stealth-drone-fighter-aircraft-strategy/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "According to Bloomberg, citing a senior Israeli official, the aircraft is being examined as part of a wider plan to strengthen Israel’s domestic defence industry, reduce long-term reliance on US military assistance and expand future weapons development through international partnerships.",
+        "sourceQuote": "According to Bloomberg , citing a senior Israeli official, the aircraft is being examined as part of a wider plan to strengthen Israel’s domestic defence industry, reduce long-term reliance on US military assistance and expand future weapons development through international partnerships.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/israel-indigenous-stealth-drone-fighter-aircraft-strategy/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Risk flag unconfirmed_or_developing applies because the source describes early-stage proposals and concepts without confirmed implementation; therefore manual review is required despite sufficient source evidence.",
+      "cat": "mil",
+      "zh": {
+        "title": "以色列探索隱形無人機與國產戰機以減少對美依賴",
+        "summary": "以色列正規劃一項自主空中力量策略，可能包括隱形戰鬥無人機、國產戰機及遠端飛彈，旨在降低長期依賴美國軍事援助並透過國際合作發展武器系統。",
+        "body": [
+          "以色列政府正在為一項可能包含隱形戰鬥無人機、國產戰機及遠端飛彈的土生空中力量奠基，以為未來對美軍援助較少的情況作準備。",
+          "根據彭博引用的一位高級以色列官員，該無人機概念正被檢視為加強本國防衛產業、減少長期依賴美援及透過夥伴關係擴大武器發展的一部分。",
+          "該構想仍處於早期階段，尚未選定承包商、未公布開發時間表，亦未由以色列國防部正式啟動計畫。",
+          "以色列空軍長期依賴美國製造的F‑15、F‑16及F‑35I \"Adir\"戰機，任何向國產戰機轉變將代表對其空軍構成的深遠改變。"
+        ]
+      },
+      "en": {
+        "title": "Israel Explores Stealth Drone, Indigenous Fighter to Cut US Reliance",
+        "summary": "Israel is laying the groundwork for an indigenous airpower strategy that could involve a stealth combat drone, a homegrown fighter jet and long-range missiles, aiming to reduce long-term dependence on US military assistance and expand defence production through international partnerships.",
+        "body": [
+          "The Israeli government is laying foundations for an indigenous airpower strategy that could eventually include a stealth combat drone, a homegrown fighter aircraft and long-range missiles as it prepares for a future with less reliance on US military support.",
+          "According to Bloomberg, citing a senior Israeli official, the aircraft concept is being examined as part of a wider plan to strengthen Israel's domestic defence industry, reduce long-term reliance on US military assistance and expand future weapons development through international partnerships.",
+          "The proposal remains at an early stage: no contractor has been selected, no development timetable announced, and Israel's Ministry of Defence has not formally launched such a programme.",
+          "Since the late 1980s the Israeli Air Force has relied almost exclusively on American-built fighters, including successive F-15s, F-16s and the F-35I \"Adir\", so any shift toward indigenous combat aircraft would represent a profound change for the service."
+        ]
+      },
+      "flash": {
+        "zh": "以色列討論隱形無人機與國產戰機",
+        "en": "Israel discusses stealth drone, indigenous fighter",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Israel is laying the foundations for an indigenous airpower strategy that could eventually include a stealth combat drone, a homegrown fighter aircraft and long-range missiles as it prepares for a future with less reliance on US military support.",
+          "sourceQuote": "Israel is laying the foundations for an indigenous airpower strategy that could eventually include a stealth combat drone, a homegrown fighter aircraft and long-range missiles as it prepares for a future with less reliance on US military support.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/israel-indigenous-stealth-drone-fighter-aircraft-strategy/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "According to Bloomberg, citing a senior Israeli official, the aircraft is being examined as part of a wider plan to strengthen Israel’s domestic defence industry, reduce long-term reliance on US military assistance and expand future weapons development through international partnerships.",
+          "sourceQuote": "According to Bloomberg , citing a senior Israeli official, the aircraft is being examined as part of a wider plan to strengthen Israel’s domestic defence industry, reduce long-term reliance on US military assistance and expand future weapons development through international partnerships.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/israel-indigenous-stealth-drone-fighter-aircraft-strategy/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Israel",
+          "Israeli government",
+          "Israeli Ministry of Defence",
+          "Prime Minister Benjamin Netanyahu",
+          "Israeli Air Force",
+          "Lockheed Martin",
+          "Bloomberg",
+          "Axios"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "F-35 Lightning II",
+          "F-35I Adir",
+          "F-15",
+          "F-16"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-31"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260731-2211-9",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "From Lavi to stealth drones: Israel reshapes its future airpower strategy News",
+          "url": "https://aerospaceglobalnews.com/news/israel-indigenous-stealth-drone-fighter-aircraft-strategy/",
+          "publishedUtc": "2026-07-31T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/whatsapp-image-2026-03-06-at-021102.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260731-0429-israeli-air-force-reactivates-squadron-1",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: israeli air force",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-30",
+            "source_name": "AeroTime — Israeli Air Force reopens Squadron 193 with new Sikorsky Se...",
+            "source_url": "https://www.aerotime.aero/articles/israeli-air-force-reopens-squadron-193-with-new-sikorsky-seahawk-helicopters",
+            "facts": [
+              {
+                "claim": "以色列空軍於2026年7月28日在帕爾馬希姆空軍基地舉行儀式,重新啟用第193中隊。",
+                "source_quote": "A ceremony marking the squadron’s reactivation was held at Palmachim Airbase on July 28, 2026.",
+                "source_url": "https://www.aerotime.aero/articles/israeli-air-force-reopens-squadron-193-with-new-sikorsky-seahawk-helicopters",
+                "source_name": "AeroTime — Israeli Air Force reopens Squadron 193 with new Sikorsky Se..."
+              },
+              {
+                "claim": "第193中隊代表以色列海軍操作海上直升機,此次重啟是因應新型西科斯基SH-60F海鷹直升機的抵達。",
+                "source_quote": "The Israeli Air Force has reopened Squadron 193, which operates maritime helicopters on behalf of the Israeli Navy, following the arrival of new Sikorsky SH-60F Seahawk helicopters.",
+                "source_url": "https://www.aerotime.aero/articles/israeli-air-force-reopens-squadron-193-with-new-sikorsky-seahawk-helicopters",
+                "source_name": "AeroTime — Israeli Air Force reopens Squadron 193 with new Sikorsky Se..."
+              },
+              {
+                "claim": "目前已有三架希伯來語稱為「Shalach」的海鷹直升機運抵以色列,年底前預計將再接收兩架。",
+                "source_quote": "Three Seahawks, designated “Shalach” in Hebrew, have arrived in Israel so far, with two more expected by the end of the year.",
+                "source_url": "https://www.aerotime.aero/articles/israeli-air-force-reopens-squadron-193-with-new-sikorsky-seahawk-helicopters",
+                "source_name": "AeroTime — Israeli Air Force reopens Squadron 193 with new Sikorsky Se..."
+              },
+              {
+                "claim": "該中隊先前在AS565豹式直升機(以色列稱為「Atalef」)退役後,於2025年8月關閉。",
+                "source_quote": "The squadron had been shut down in August 2025 after the retirement of its AS565 Panther helicopters, known in Israeli service as “Atalef.”",
+                "source_url": "https://www.aerotime.aero/articles/israeli-air-force-reopens-squadron-193-with-new-sikorsky-seahawk-helicopters",
+                "source_name": "AeroTime — Israeli Air Force reopens Squadron 193 with new Sikorsky Se..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260731-1605-2",
     "queuedUtc": "2026-07-31T16:05Z",
     "approve": false,
