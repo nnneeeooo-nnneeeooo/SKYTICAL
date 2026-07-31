@@ -1,5 +1,477 @@
 [
   {
+    "id": "g-20260731-1605-2",
+    "queuedUtc": "2026-07-31T16:05Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story covers FAA regulatory action and transition timeline for phasing out leaded aviation fuel, requiring manual review under regulatory policy rules.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The FAA released a 72-page final plan to phase out 100LL leaded aviation gasoline in the U.S., setting a deadline of December 31, 2030, outside Alaska and the end of 2032 for Alaska.",
+        "sourceQuote": "The 72-page plan lays out a four-phase transition from 100LL to unleaded avgas. It calls for leaded fuel use to end outside Alaska by December 31, 2030. Alaska would have until the end of 2032",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Phase 1 compares three high-octane unleaded fuels (G100UL, 100R, and UL100), with testing expected to complete in spring 2027.",
+        "sourceQuote": "Phase 1 will compare three high-octane unleaded fuels: General Aviation Modifications Inc.’s G100UL, Swift Fuels’ 100R and LyondellBasell and VP Racing Fuels’ UL100.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Phase 2 will run through mid to late 2028 to expand operating experience and initiate FAA rulemaking for unleaded avgas standards.",
+        "sourceQuote": "Phase 2, scheduled to run through mid to late 2028, would expand use of approved fuels and allow aircraft owners, airports, flight schools and fuel suppliers to gain operating experience.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "FAA Deputy Administrator Chris Rocheleau called the 2030 deadline aggressive during a forum at EAA AirVenture 2026.",
+        "sourceQuote": "FAA Deputy Administrator Chris Rocheleau called the 2030 deadline “aggressive” during a forum at EAA AirVenture 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story covers FAA regulatory action and transition timeline for phasing out leaded aviation fuel, requiring manual review under regulatory policy rules.",
+      "cat": "reg",
+      "zh": {
+        "title": "美國FAA公布有鉛航空汽油淘汰計劃 擬於2030年前完成轉型",
+        "summary": "美國聯邦航空管理局發布最終計劃，預計於2030年12月31日前在阿拉斯加以外地區停止使用100LL有鉛航空汽油，阿拉斯加則延至2032年底。此四階段轉型計劃將先評估無鉛燃料，並於第二階段展開相關法規制定作業，推動通用航空向無鉛汽油過渡。",
+        "body": [
+          "美國聯邦航空管理局（FAA）發布長達72頁的最終計劃，預計淘汰全美100LL有鉛航空汽油。阿拉斯加以外地區將於2030年12月31日前停止使用，阿拉斯加則因補給挑戰延至2032年底。",
+          "轉型分為四階段，第一階段測試G100UL、100R與UL100三款無鉛燃料，預計2027年春季完成。第二階段預計進行至2028年中後期，將擴大使用經驗並開始制定無鉛燃料法規標準。",
+          "FAA副局長Chris Rocheleau於EAA AirVenture 2026論壇表示，2030年截止期限相當緊湊，當局將持續進行評估與監管作業。"
+        ]
+      },
+      "en": {
+        "title": "FAA Finalizes 100LL Leaded Avgas Phaseout Plan With 2030 Deadline",
+        "summary": "The Federal Aviation Administration has released its final 72-page plan to eliminate leaded 100LL aviation gasoline across the United States. The plan establishes a four-phase transition strategy, setting a deadline of December 31, 2030, for ending leaded avgas use outside Alaska, while granting Alaska until the end of 2032 due to logistical challenges. The initial phase focuses on evaluating high-octane unleaded fuel alternatives, with testing scheduled for completion in spring 2027. Phase 2 will run through mid-to-late 2028 to expand operational experience and initiate FAA rulemaking for unleaded avgas standards.",
+        "body": [
+          "The Federal Aviation Administration (FAA) has released a 72-page final plan to phase out 100LL leaded aviation gasoline across the United States. The plan sets a deadline of December 31, 2030, to end leaded fuel use outside Alaska, while giving Alaska until the end of 2032 due to local distribution and storage challenges.",
+          "The transition consists of four phases. Phase 1 evaluates three high-octane unleaded fuel candidates—G100UL, 100R, and UL100—with testing scheduled to conclude in spring 2027. Phase 2, running through mid-to-late 2028, will expand operating experience and initiate FAA rulemaking to establish regulatory standards for unleaded avgas.",
+          "Speaking at a forum during EAA AirVenture 2026, FAA Deputy Administrator Chris Rocheleau referred to the 2030 phaseout deadline as aggressive while reiterating the agency's commitment to ensuring a structured regulatory transition."
+        ]
+      },
+      "flash": {
+        "zh": "美國FAA公布有鉛航空汽油淘汰計劃，擬於2030年底前停止使用。",
+        "en": "FAA releases final plan to phase out leaded aviation gasoline by 2030.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The FAA released a 72-page final plan to phase out 100LL leaded aviation gasoline in the U.S., setting a deadline of December 31, 2030, outside Alaska and the end of 2032 for Alaska.",
+          "sourceQuote": "The 72-page plan lays out a four-phase transition from 100LL to unleaded avgas. It calls for leaded fuel use to end outside Alaska by December 31, 2030. Alaska would have until the end of 2032",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Phase 1 compares three high-octane unleaded fuels (G100UL, 100R, and UL100), with testing expected to complete in spring 2027.",
+          "sourceQuote": "Phase 1 will compare three high-octane unleaded fuels: General Aviation Modifications Inc.’s G100UL, Swift Fuels’ 100R and LyondellBasell and VP Racing Fuels’ UL100.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Phase 2 will run through mid to late 2028 to expand operating experience and initiate FAA rulemaking for unleaded avgas standards.",
+          "sourceQuote": "Phase 2, scheduled to run through mid to late 2028, would expand use of approved fuels and allow aircraft owners, airports, flight schools and fuel suppliers to gain operating experience.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "FAA Deputy Administrator Chris Rocheleau called the 2030 deadline aggressive during a forum at EAA AirVenture 2026.",
+          "sourceQuote": "FAA Deputy Administrator Chris Rocheleau called the 2030 deadline “aggressive” during a forum at EAA AirVenture 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Federal Aviation Administration",
+          "FAA"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "US",
+          "Alaska"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "December 31, 2030",
+          "end of 2032",
+          "spring 2027",
+          "mid to late 2028"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260731-1605-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "FAA finalizes 100LL phaseout plan but leaves key details unresolved",
+          "url": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
+          "publishedUtc": "2026-07-31T14:50Z",
+          "summary": "The Federal Aviation Administration (FAA) has released its final plan for eliminating leaded aviation gasoline across the US,… The post FAA finalizes 100LL phaseout plan but leaves key details unresolved appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-1805-faa-announces-successful-counter-drone-e",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-22",
+            "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa...",
+            "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+            "facts": [
+              {
+                "claim": "FAA announced successful counter-drone efforts during FIFA World Cup 2026 with more than 700 drones seized.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026, With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "Transportation Secretary Sean P. Duffy announced federal, state, and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_quote": "Department of Transportation Secretary Sean P. Duffy announced that federal, state and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "The effort helped keep millions of fans safe.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "More than 700 drones were seized.",
+                "source_quote": "With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 5 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 3 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260731-1605-4",
+    "queuedUtc": "2026-07-31T16:05Z",
+    "approve": false,
+    "writer": "openrouter:google/gemma-4-26b-a4b-it:free",
+    "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
+    "riskFlags": [
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Sling Aircraft is developing a new twin-engine piston aircraft with plans for four-seat LSA and six-seat EA-B configurations.",
+        "sourceQuote": "Sling Aircraft has revealed the first technical details of a new twin-engine piston aircraft now under development, with plans for both four-seat light-sport (LSA) and six-seat Experimental Amateur-Built (EA-B) configurations.",
+        "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The aircraft will use two turbocharged Rotax 916 iS engines and Garmin AXIS 11.6-inch displays.",
+        "sourceQuote": "The South African manufacturer confirmed that the aircraft will use two turbocharged Rotax 916 iS engines driving constant-speed propellers. The cockpit will feature Garmin AXIS 11.6-inch displays",
+        "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The aircraft design will incorporate a whole-airplane parachute.",
+        "sourceQuote": "while a whole-airplane parachute will be incorporated into the design from the outset.",
+        "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The aircraft targets the FAA's MOSAIC rule, allowing LSA aircraft to have multiple engines and up to four occupants.",
+        "sourceQuote": "The company plans to offer the aircraft with four seats when manufactured in the LSA category under the FAA’s Modernization of Special Airworthiness Certification rule, better known as MOSAIC.",
+        "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Sling Aircraft has not disclosed performance targets, dimensions, pricing, first-flight timing, or delivery dates.",
+        "sourceQuote": "Sling has not yet disclosed performance targets, dimensions, projected pricing, first-flight timing or a planned date for customer deliveries for the twin.",
+        "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
+      "cat": "biz",
+      "zh": {
+        "title": "Sling Aircraft 揭露開發中雙引擎飛機細節以瞄準 MOSAIC 市場",
+        "summary": "南非製造商 Sling Aircraft 已公布其開發中雙引擎活塞飛機的首批技術細節。該機型計畫提供四座輕型運動飛機 (LSA) 與六座實驗性自建 (EA-B) 兩種配置，並將搭載兩具 Rotax 916 iS 渦輪增壓引擎及 Garmin AXIS 顯示器。",
+        "body": [
+          "南非製造商 Sling Aircraft 已公布其正在開發中的新型雙引擎活塞飛機的首批技術細節。根據該公司計畫，此機型將提供四座輕型運動飛機 (LSA) 與六座實驗性自建 (EA-B) 兩種配置。",
+          "該機型預計將搭載兩具 Rotax 916 iS 渦輪增壓引擎，並驅動定速螺旋槳。座艙將配備 Garmin AXIS 11.6 吋顯示器，且設計之初便整合了全機降落傘系統。",
+          "此開發計畫旨在瞄準美國聯邦航空局 (FAA) 的「現代化特殊適航認證」規則，即 MOSAIC。根據該規則，輕型運動飛機可搭載多個引擎，並允許載客量增加至四人。",
+          "目前 Sling Aircraft 尚未公布該機型的性能目標、尺寸、預計售價、首飛時間或客戶交付日期。目前的設計圖像僅為概念性渲染圖，包含低翼設計與可收縮的三輪起落架。"
+        ]
+      },
+      "en": {
+        "title": "Sling Aircraft reveals details of planned twin-engine aircraft targeting MOSAIC market",
+        "summary": "South African manufacturer Sling Aircraft has revealed technical details for a new twin-engine piston aircraft under development. The aircraft is planned for both four-seat light-sport (LSA) and six-seat Experimental Amateur-Built (EA-B) configurations, featuring twin Rotax 916 iS engines.",
+        "body": [
+          "Sling Aircraft has disclosed the first technical details of a new twin-engine piston aircraft currently under development. The South African manufacturer plans to offer the aircraft in both four-seat light-sport (LSA) and six-seat Experimental Amateur-Built (EA-B) configurations.",
+          "The aircraft will utilize two turbocharged Rotax 916 iS engines driving constant-speed propellers. The cockpit is expected to feature Garmin AXIS 11.6-inch displays, and a whole-airplane parachute will be incorporated into the design from the outset.",
+          "The development targets the FAA's Modernization of Special Airworthiness Certification (MOSAIC) rule. Under MOSAIC, light-sport aircraft may be configured with multiple engines and carry up to four occupants.",
+          "Sling Aircraft has not yet disclosed performance targets, dimensions, projected pricing, first-flight timing, or a planned date for customer deliveries. Current renderings show a low-wing design with retractable tricycle landing gear."
+        ]
+      },
+      "flash": {
+        "zh": "Sling Aircraft 揭露開發中雙引擎飛機細節以瞄準 MOSAIC 市場",
+        "en": "Sling Aircraft reveals details of planned twin-engine aircraft targeting MOSAIC market",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Sling Aircraft is developing a new twin-engine piston aircraft with plans for four-seat LSA and six-seat EA-B configurations.",
+          "sourceQuote": "Sling Aircraft has revealed the first technical details of a new twin-engine piston aircraft now under development, with plans for both four-seat light-sport (LSA) and six-seat Experimental Amateur-Built (EA-B) configurations.",
+          "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The aircraft will use two turbocharged Rotax 916 iS engines and Garmin AXIS 11.6-inch displays.",
+          "sourceQuote": "The South African manufacturer confirmed that the aircraft will use two turbocharged Rotax 916 iS engines driving constant-speed propellers. The cockpit will feature Garmin AXIS 11.6-inch displays",
+          "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The aircraft design will incorporate a whole-airplane parachute.",
+          "sourceQuote": "while a whole-airplane parachute will be incorporated into the design from the outset.",
+          "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The aircraft targets the FAA's MOSAIC rule, allowing LSA aircraft to have multiple engines and up to four occupants.",
+          "sourceQuote": "The company plans to offer the aircraft with four seats when manufactured in the LSA category under the FAA’s Modernization of Special Airworthiness Certification rule, better known as MOSAIC.",
+          "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Sling Aircraft has not disclosed performance targets, dimensions, pricing, first-flight timing, or delivery dates.",
+          "sourceQuote": "Sling has not yet disclosed performance targets, dimensions, projected pricing, first-flight timing or a planned date for customer deliveries for the twin.",
+          "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Sling Aircraft",
+          "Rotax",
+          "Garmin",
+          "AeroTime"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "South Africa"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-31"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260731-1605-4",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Sling reveals details of planned twin-engine aircraft targeting MOSAIC market",
+          "url": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
+          "publishedUtc": "2026-07-31T13:37Z",
+          "summary": "Sling Aircraft has revealed the first technical details of a new twin-engine piston aircraft now under development, with… The post Sling reveals details of planned twin-engine aircraft targeting MOSAIC market appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260731-1301-10",
     "queuedUtc": "2026-07-31T13:01Z",
     "approve": false,
