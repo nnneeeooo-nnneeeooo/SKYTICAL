@@ -1,29 +1,29 @@
 {
-  "updatedUtc": "2026-08-01T15:59Z",
+  "updatedUtc": "2026-08-01T16:52Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 331,
-      "inputTokens": 1464651,
-      "outputTokens": 936341,
+      "calls": 329,
+      "inputTokens": 1452343,
+      "outputTokens": 928359,
       "unknownCalls": 49
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
-      "calls": 172,
-      "inputTokens": 901820,
-      "outputTokens": 412873,
+      "calls": 171,
+      "inputTokens": 896705,
+      "outputTokens": 408500,
       "unknownCalls": 4
     },
     "nvidia:deepseek-ai/deepseek-v4-pro": {
-      "calls": 162,
-      "inputTokens": 528944,
-      "outputTokens": 132653,
-      "unknownCalls": 61
+      "calls": 160,
+      "inputTokens": 508223,
+      "outputTokens": 125272,
+      "unknownCalls": 63
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 146,
-      "inputTokens": 485264,
-      "outputTokens": 863202,
+      "calls": 149,
+      "inputTokens": 498646,
+      "outputTokens": 884398,
       "unknownCalls": 34
     },
     "gemini:gemini-3.5-flash": {
@@ -33,15 +33,15 @@
       "unknownCalls": 15
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
-      "calls": 85,
+      "calls": 84,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 85
+      "unknownCalls": 84
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 127,
-      "inputTokens": 680855,
-      "outputTokens": 213190,
+      "calls": 124,
+      "inputTokens": 666396,
+      "outputTokens": 206569,
       "unknownCalls": 1
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
@@ -51,10 +51,46 @@
       "unknownCalls": 74
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
-      "calls": 37,
+      "calls": 36,
       "inputTokens": 72056,
       "outputTokens": 78852,
-      "unknownCalls": 26
+      "unknownCalls": 25
+    },
+    "openrouter:nvidia/nemotron-3-super-120b-a12b:free": {
+      "calls": 34,
+      "inputTokens": 85365,
+      "outputTokens": 151136,
+      "unknownCalls": 21
+    },
+    "openrouter:google/gemma-4-31b-it:free": {
+      "calls": 32,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "unknownCalls": 32
+    },
+    "openrouter:inclusionai/ling-3.0-flash:free": {
+      "calls": 32,
+      "inputTokens": 67402,
+      "outputTokens": 116739,
+      "unknownCalls": 22
+    },
+    "openrouter:google/gemma-4-26b-a4b-it:free": {
+      "calls": 32,
+      "inputTokens": 61220,
+      "outputTokens": 16384,
+      "unknownCalls": 23
+    },
+    "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
+      "calls": 34,
+      "inputTokens": 71937,
+      "outputTokens": 210852,
+      "unknownCalls": 22
+    },
+    "openrouter:openai/gpt-oss-20b:free": {
+      "calls": 31,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "unknownCalls": 31
     },
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free": {
       "calls": 34,
@@ -161,18 +197,75 @@
       "outputTokens": 938286
     },
     "2026-08-01": {
-      "calls": 265,
-      "inputTokens": 770507,
-      "outputTokens": 830009
+      "calls": 258,
+      "inputTokens": 731286,
+      "outputTokens": 824848
     }
   },
   "recentRuns": [
     {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T14:55Z",
+      "startedUtc": "2026-08-01T16:00Z",
+      "finishedUtc": "2026-08-01T16:00Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260801-1455-1",
+      "groupId": "g-20260801-1559-2",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 356,
+        "promptAssembly": 0,
+        "drafting": 9071,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 12775
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-01T16:00Z",
+          "durationMs": 9072,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 9070,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-01T16:00Z",
+      "finishedUtc": "2026-08-01T16:00Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260801-1559-3",
       "eventId": null,
       "sourceCount": 6,
       "primarySource": "NTSB",
@@ -188,7 +281,7 @@
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 252,
+        "archiveRetrieval": 356,
         "promptAssembly": null,
         "drafting": null,
         "validation": null,
@@ -197,7 +290,7 @@
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 2864
+        "total": 12539
       },
       "attempts": [],
       "resourceUsage": {
@@ -206,493 +299,18 @@
       }
     },
     {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T15:03Z",
+      "startedUtc": "2026-08-01T16:00Z",
+      "finishedUtc": "2026-08-01T16:00Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260801-1455-3",
+      "groupId": "g-20260801-1559-5",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "Aerospace Global News",
-      "result": "retry_pending",
+      "result": "manual_review",
       "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": null,
-      "fallbackUsed": true,
-      "attemptCount": 20,
-      "httpCallCount": 20,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 262,
-        "promptAssembly": 0,
-        "drafting": 465822,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 468537
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-08-01T14:55Z",
-          "durationMs": 146,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 146,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "quota",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
-          "retryPlanned": false,
-          "disabledForRun": true
-        },
-        {
-          "sequence": 2,
-          "provider": "nvidia",
-          "model": "z-ai/glm-5.2",
-          "label": "nvidia:z-ai/glm-5.2",
-          "startedUtc": "2026-08-01T14:55Z",
-          "durationMs": 91833,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 91831,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "manual_review body meets neither full nor brief contract",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 3,
-          "provider": "nvidia",
-          "model": "deepseek-ai/deepseek-v4-pro",
-          "label": "nvidia:deepseek-ai/deepseek-v4-pro",
-          "startedUtc": "2026-08-01T14:56Z",
-          "durationMs": 87394,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 87392,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "manual_review body meets neither full nor brief contract",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 4,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-08-01T14:58Z",
-          "durationMs": 74933,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 74932,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "manual_review body meets neither full nor brief contract",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 5,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": "2026-08-01T14:59Z",
-          "durationMs": 189,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 189,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 6,
-          "provider": "nvidia",
-          "model": "qwen/qwen3.5-397b-a17b",
-          "label": "nvidia:qwen/qwen3.5-397b-a17b",
-          "startedUtc": "2026-08-01T14:59Z",
-          "durationMs": 173,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 172,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "http_error",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 410",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 7,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-super-120b-a12b",
-          "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-          "startedUtc": "2026-08-01T14:59Z",
-          "durationMs": 29327,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 29325,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish_brief body does not meet brief contract (zh=316 content characters, en=208 words, paragraphs=7/7)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 8,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-super-120b-a12b:free",
-          "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-          "startedUtc": "2026-08-01T15:00Z",
-          "durationMs": 136,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 135,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 9,
-          "provider": "nvidia",
-          "model": "mistralai/mistral-medium-3.5-128b",
-          "label": "nvidia:mistralai/mistral-medium-3.5-128b",
-          "startedUtc": "2026-08-01T15:00Z",
-          "durationMs": 180211,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 180210,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "timeout",
-          "failureStage": "draft",
-          "failureMessage": "ReadTimeout",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 10,
-          "provider": "openrouter",
-          "model": "google/gemma-4-31b-it:free",
-          "label": "openrouter:google/gemma-4-31b-it:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 262,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 262,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 11,
-          "provider": "openrouter",
-          "model": "inclusionai/ling-3.0-flash:free",
-          "label": "openrouter:inclusionai/ling-3.0-flash:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 110,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 110,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 12,
-          "provider": "openrouter",
-          "model": "google/gemma-4-26b-a4b-it:free",
-          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 102,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 102,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 13,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-          "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 250,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 249,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 14,
-          "provider": "openrouter",
-          "model": "openai/gpt-oss-20b:free",
-          "label": "openrouter:openai/gpt-oss-20b:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 89,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 89,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 15,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-nano-30b-a3b:free",
-          "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 146,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 145,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 16,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-nano-12b-v2-vl:free",
-          "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 83,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 83,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 17,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-nano-9b-v2:free",
-          "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 85,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 85,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 18,
-          "provider": "openrouter",
-          "model": "poolside/laguna-s-2.1:free",
-          "label": "openrouter:poolside/laguna-s-2.1:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 125,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 125,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 19,
-          "provider": "openrouter",
-          "model": "cohere/north-mini-code:free",
-          "label": "openrouter:cohere/north-mini-code:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 98,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 98,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 20,
-          "provider": "openrouter",
-          "model": "poolside/laguna-xs-2.1:free",
-          "label": "openrouter:poolside/laguna-xs-2.1:free",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 133,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 133,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T15:03Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260801-1455-4",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "NTSB",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 243,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 468363
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T15:03Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260801-1455-5",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "NTSB",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 243,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 468207
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T15:04Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260801-1455-6",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "NTSB",
-      "result": "rejected",
-      "articleId": null,
-      "finalStatus": "reject",
-      "finalModel": "nvidia:z-ai/glm-5.2",
+      "finalStatus": "manual_review",
+      "finalModel": "gemini:gemini-3.6-flash",
       "fallbackUsed": false,
       "attemptCount": 1,
       "httpCallCount": 1,
@@ -701,28 +319,28 @@
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 255,
+        "archiveRetrieval": 376,
         "promptAssembly": 0,
-        "drafting": 84771,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
+        "drafting": 27408,
+        "validation": 1,
+        "factVerification": 0,
+        "evidenceBinding": 0,
+        "glossaryCheck": 0,
+        "fabricationCheck": 0,
         "articleBuild": null,
-        "total": 552823
+        "total": 39707
       },
       "attempts": [
         {
           "sequence": 1,
-          "provider": "nvidia",
-          "model": "z-ai/glm-5.2",
-          "label": "nvidia:z-ai/glm-5.2",
-          "startedUtc": "2026-08-01T15:03Z",
-          "durationMs": 84771,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-01T16:00Z",
+          "durationMs": 27409,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 84769,
+          "httpDurationMs": 27406,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,
@@ -738,392 +356,87 @@
       }
     },
     {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T15:16Z",
+      "startedUtc": "2026-08-01T16:00Z",
+      "finishedUtc": "2026-08-01T16:00Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260801-1455-7",
+      "groupId": "g-20260801-1559-6",
       "eventId": null,
       "sourceCount": 1,
-      "primarySource": "Aerospace Global News",
-      "result": "retry_pending",
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
       "articleId": null,
-      "finalStatus": "retry_pending",
+      "finalStatus": "skipped_no_material",
       "finalModel": null,
-      "fallbackUsed": true,
-      "attemptCount": 19,
-      "httpCallCount": 19,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
       "repairCallCount": 0,
       "durationsMs": {
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 260,
-        "promptAssembly": 0,
-        "drafting": 708336,
-        "validation": 0,
-        "factVerification": 0,
-        "evidenceBinding": 0,
+        "archiveRetrieval": 356,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 1261017
+        "total": 39446
       },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "nvidia",
-          "model": "z-ai/glm-5.2",
-          "label": "nvidia:z-ai/glm-5.2",
-          "startedUtc": "2026-08-01T15:04Z",
-          "durationMs": 136130,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 136128,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "evidence_binding_failed",
-          "failureStage": "evidenceBinding",
-          "failureMessage": "verified factId values must be sequential F1..Fn",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "nvidia",
-          "model": "deepseek-ai/deepseek-v4-pro",
-          "label": "nvidia:deepseek-ai/deepseek-v4-pro",
-          "startedUtc": "2026-08-01T15:06Z",
-          "durationMs": 179620,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 179618,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=498 content characters, en=265 words, paragraphs=6/6)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 3,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-08-01T15:09Z",
-          "durationMs": 166339,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 166337,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=294 content characters, en=179 words, paragraphs=5/5)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 4,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": "2026-08-01T15:12Z",
-          "durationMs": 198,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 198,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 5,
-          "provider": "nvidia",
-          "model": "qwen/qwen3.5-397b-a17b",
-          "label": "nvidia:qwen/qwen3.5-397b-a17b",
-          "startedUtc": "2026-08-01T15:12Z",
-          "durationMs": 175,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 174,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "http_error",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 410",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 6,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-super-120b-a12b",
-          "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-          "startedUtc": "2026-08-01T15:12Z",
-          "durationMs": 43672,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 43671,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "en.body has 8 paragraphs; maximum is 7",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 7,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-super-120b-a12b:free",
-          "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-          "startedUtc": "2026-08-01T15:13Z",
-          "durationMs": 524,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 523,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 8,
-          "provider": "nvidia",
-          "model": "mistralai/mistral-medium-3.5-128b",
-          "label": "nvidia:mistralai/mistral-medium-3.5-128b",
-          "startedUtc": "2026-08-01T15:13Z",
-          "durationMs": 180175,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 180174,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "timeout",
-          "failureStage": "draft",
-          "failureMessage": "ReadTimeout",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 9,
-          "provider": "openrouter",
-          "model": "google/gemma-4-31b-it:free",
-          "label": "openrouter:google/gemma-4-31b-it:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 251,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 251,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 10,
-          "provider": "openrouter",
-          "model": "inclusionai/ling-3.0-flash:free",
-          "label": "openrouter:inclusionai/ling-3.0-flash:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 111,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 110,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 11,
-          "provider": "openrouter",
-          "model": "google/gemma-4-26b-a4b-it:free",
-          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 108,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 108,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 12,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-          "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 111,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 110,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 13,
-          "provider": "openrouter",
-          "model": "openai/gpt-oss-20b:free",
-          "label": "openrouter:openai/gpt-oss-20b:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 247,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 247,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 14,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-nano-30b-a3b:free",
-          "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 165,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 164,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 15,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-nano-12b-v2-vl:free",
-          "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 85,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 85,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 16,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-nano-9b-v2:free",
-          "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 93,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 93,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 17,
-          "provider": "openrouter",
-          "model": "poolside/laguna-s-2.1:free",
-          "label": "openrouter:poolside/laguna-s-2.1:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 95,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 94,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 18,
-          "provider": "openrouter",
-          "model": "cohere/north-mini-code:free",
-          "label": "openrouter:cohere/north-mini-code:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 128,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 127,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 19,
-          "provider": "openrouter",
-          "model": "poolside/laguna-xs-2.1:free",
-          "label": "openrouter:poolside/laguna-xs-2.1:free",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 111,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 110,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
+      "attempts": [],
       "resourceUsage": {
         "actualUsd": 0.0,
         "models": []
       }
     },
     {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T15:25Z",
+      "startedUtc": "2026-08-01T16:00Z",
+      "finishedUtc": "2026-08-01T16:00Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260801-1455-8",
+      "groupId": "g-20260801-1559-7",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 351,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 39207
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-01T16:00Z",
+      "finishedUtc": "2026-08-01T16:12Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260801-1559-8",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "Aerospace Global News",
@@ -1132,542 +445,107 @@
       "finalStatus": "retry_pending",
       "finalModel": null,
       "fallbackUsed": true,
-      "attemptCount": 19,
-      "httpCallCount": 19,
+      "attemptCount": 21,
+      "httpCallCount": 21,
       "repairCallCount": 0,
       "durationsMs": {
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 264,
+        "archiveRetrieval": 378,
         "promptAssembly": 0,
-        "drafting": 527277,
+        "drafting": 718383,
         "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
+        "factVerification": 0,
+        "evidenceBinding": 0,
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 1788140
+        "total": 757378
       },
       "attempts": [
         {
           "sequence": 1,
-          "provider": "nvidia",
-          "model": "z-ai/glm-5.2",
-          "label": "nvidia:z-ai/glm-5.2",
-          "startedUtc": "2026-08-01T15:16Z",
-          "durationMs": 57842,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-01T16:00Z",
+          "durationMs": 47036,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 57840,
+          "httpDurationMs": 47034,
           "repairDurationMs": 0,
           "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=400 content characters, en=184 words, paragraphs=4/4)",
-          "retryPlanned": false,
+          "failureClass": "evidence_binding_failed",
+          "failureStage": "evidenceBinding",
+          "failureMessage": "verified factId values must be sequential F1..Fn",
+          "retryPlanned": true,
           "disabledForRun": false
         },
         {
           "sequence": 2,
-          "provider": "nvidia",
-          "model": "deepseek-ai/deepseek-v4-pro",
-          "label": "nvidia:deepseek-ai/deepseek-v4-pro",
-          "startedUtc": "2026-08-01T15:17Z",
-          "durationMs": 164035,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 164033,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=512 content characters, en=214 words, paragraphs=5/5)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 3,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-08-01T15:20Z",
-          "durationMs": 90905,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 90903,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=260 content characters, en=134 words, paragraphs=5/5)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 4,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": "2026-08-01T15:21Z",
-          "durationMs": 190,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 189,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 5,
-          "provider": "nvidia",
-          "model": "qwen/qwen3.5-397b-a17b",
-          "label": "nvidia:qwen/qwen3.5-397b-a17b",
-          "startedUtc": "2026-08-01T15:21Z",
-          "durationMs": 139,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 138,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "http_error",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 410",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 6,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-super-120b-a12b",
-          "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-          "startedUtc": "2026-08-01T15:21Z",
-          "durationMs": 31936,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 31934,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=168 content characters, en=86 words, paragraphs=4/4)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 7,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-super-120b-a12b:free",
-          "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-          "startedUtc": "2026-08-01T15:22Z",
-          "durationMs": 139,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 138,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 8,
-          "provider": "nvidia",
-          "model": "mistralai/mistral-medium-3.5-128b",
-          "label": "nvidia:mistralai/mistral-medium-3.5-128b",
-          "startedUtc": "2026-08-01T15:22Z",
-          "durationMs": 180134,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 180133,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "timeout",
-          "failureStage": "draft",
-          "failureMessage": "ReadTimeout",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 9,
-          "provider": "openrouter",
-          "model": "google/gemma-4-31b-it:free",
-          "label": "openrouter:google/gemma-4-31b-it:free",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 778,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 778,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 10,
-          "provider": "openrouter",
-          "model": "inclusionai/ling-3.0-flash:free",
-          "label": "openrouter:inclusionai/ling-3.0-flash:free",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 156,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 155,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 11,
-          "provider": "openrouter",
-          "model": "google/gemma-4-26b-a4b-it:free",
-          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
-          "startedUtc": "2026-08-01T15:25Z",
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-01T16:01Z",
           "durationMs": 155,
           "httpCalls": 1,
           "repairCalls": 0,
           "httpDurationMs": 155,
           "repairDurationMs": 0,
           "outcome": "failed",
-          "failureClass": "rate_limit",
+          "failureClass": "quota",
           "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
+          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
           "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 12,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-          "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 88,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 88,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 13,
-          "provider": "openrouter",
-          "model": "openai/gpt-oss-20b:free",
-          "label": "openrouter:openai/gpt-oss-20b:free",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 107,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 106,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 14,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-nano-30b-a3b:free",
-          "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 92,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 92,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 15,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-nano-12b-v2-vl:free",
-          "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 101,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 100,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 16,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-nano-9b-v2:free",
-          "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 93,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 93,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 17,
-          "provider": "openrouter",
-          "model": "poolside/laguna-s-2.1:free",
-          "label": "openrouter:poolside/laguna-s-2.1:free",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 129,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 129,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 18,
-          "provider": "openrouter",
-          "model": "cohere/north-mini-code:free",
-          "label": "openrouter:cohere/north-mini-code:free",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 152,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 151,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 19,
-          "provider": "openrouter",
-          "model": "poolside/laguna-xs-2.1:free",
-          "label": "openrouter:poolside/laguna-xs-2.1:free",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 110,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 110,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T15:35Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260801-1455-9",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Aerospace Global News",
-      "result": "retry_pending",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": null,
-      "fallbackUsed": true,
-      "attemptCount": 19,
-      "httpCallCount": 19,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 279,
-        "promptAssembly": 0,
-        "drafting": 591693,
-        "validation": 0,
-        "factVerification": 0,
-        "evidenceBinding": 0,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 2379681
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "nvidia",
-          "model": "z-ai/glm-5.2",
-          "label": "nvidia:z-ai/glm-5.2",
-          "startedUtc": "2026-08-01T15:25Z",
-          "durationMs": 143461,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 143458,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "evidence_binding_failed",
-          "failureStage": "evidenceBinding",
-          "failureMessage": "verified factId values must be sequential F1..Fn",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "nvidia",
-          "model": "deepseek-ai/deepseek-v4-pro",
-          "label": "nvidia:deepseek-ai/deepseek-v4-pro",
-          "startedUtc": "2026-08-01T15:27Z",
-          "durationMs": 133929,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 133927,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "evidence_binding_failed",
-          "failureStage": "evidenceBinding",
-          "failureMessage": "verified factId values must be sequential F1..Fn",
-          "retryPlanned": false,
-          "disabledForRun": false
+          "disabledForRun": true
         },
         {
           "sequence": 3,
           "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-08-01T15:29Z",
-          "durationMs": 98815,
+          "model": "z-ai/glm-5.2",
+          "label": "nvidia:z-ai/glm-5.2",
+          "startedUtc": "2026-08-01T16:01Z",
+          "durationMs": 104186,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 98813,
+          "httpDurationMs": 104184,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "invalid_schema",
           "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=310 content characters, en=176 words, paragraphs=6/6)",
+          "failureMessage": "publish body does not meet full contract (zh=436 content characters, en=296 words, paragraphs=6/6)",
           "retryPlanned": false,
           "disabledForRun": false
         },
         {
           "sequence": 4,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": "2026-08-01T15:31Z",
-          "durationMs": 247,
+          "provider": "nvidia",
+          "model": "deepseek-ai/deepseek-v4-pro",
+          "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+          "startedUtc": "2026-08-01T16:03Z",
+          "durationMs": 177078,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 247,
+          "httpDurationMs": 177076,
           "repairDurationMs": 0,
           "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
+          "failureClass": "evidence_binding_failed",
+          "failureStage": "evidenceBinding",
+          "failureMessage": "verified factId values must be sequential F1..Fn",
           "retryPlanned": false,
           "disabledForRun": false
         },
         {
           "sequence": 5,
           "provider": "nvidia",
-          "model": "qwen/qwen3.5-397b-a17b",
-          "label": "nvidia:qwen/qwen3.5-397b-a17b",
-          "startedUtc": "2026-08-01T15:31Z",
-          "durationMs": 149,
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+          "startedUtc": "2026-08-01T16:06Z",
+          "durationMs": 180176,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 148,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "http_error",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 410",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 6,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-super-120b-a12b",
-          "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-          "startedUtc": "2026-08-01T15:31Z",
-          "durationMs": 32646,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 32644,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "zh.body has 8 paragraphs; maximum is 7",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 7,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-super-120b-a12b:free",
-          "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-          "startedUtc": "2026-08-01T15:31Z",
-          "durationMs": 170,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 169,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 8,
-          "provider": "nvidia",
-          "model": "mistralai/mistral-medium-3.5-128b",
-          "label": "nvidia:mistralai/mistral-medium-3.5-128b",
-          "startedUtc": "2026-08-01T15:31Z",
-          "durationMs": 180204,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 180204,
+          "httpDurationMs": 180176,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "timeout",
@@ -1677,47 +555,11 @@
           "disabledForRun": false
         },
         {
-          "sequence": 9,
+          "sequence": 6,
           "provider": "openrouter",
-          "model": "google/gemma-4-31b-it:free",
-          "label": "openrouter:google/gemma-4-31b-it:free",
-          "startedUtc": "2026-08-01T15:34Z",
-          "durationMs": 182,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 181,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 10,
-          "provider": "openrouter",
-          "model": "inclusionai/ling-3.0-flash:free",
-          "label": "openrouter:inclusionai/ling-3.0-flash:free",
-          "startedUtc": "2026-08-01T15:35Z",
-          "durationMs": 431,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 430,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "rate_limit",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 11,
-          "provider": "openrouter",
-          "model": "google/gemma-4-26b-a4b-it:free",
-          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
-          "startedUtc": "2026-08-01T15:35Z",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+          "startedUtc": "2026-08-01T16:09Z",
           "durationMs": 157,
           "httpCalls": 1,
           "repairCalls": 0,
@@ -1731,15 +573,105 @@
           "disabledForRun": false
         },
         {
-          "sequence": 12,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-          "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-          "startedUtc": "2026-08-01T15:35Z",
-          "durationMs": 94,
+          "sequence": 7,
+          "provider": "nvidia",
+          "model": "qwen/qwen3.5-397b-a17b",
+          "label": "nvidia:qwen/qwen3.5-397b-a17b",
+          "startedUtc": "2026-08-01T16:09Z",
+          "durationMs": 84,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 94,
+          "httpDurationMs": 83,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 410",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 8,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+          "startedUtc": "2026-08-01T16:09Z",
+          "durationMs": 27707,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 27705,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "publish body does not meet full contract (zh=143 content characters, en=77 words, paragraphs=5/5)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 9,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-super-120b-a12b:free",
+          "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+          "startedUtc": "2026-08-01T16:09Z",
+          "durationMs": 120,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 120,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 10,
+          "provider": "nvidia",
+          "model": "mistralai/mistral-medium-3.5-128b",
+          "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+          "startedUtc": "2026-08-01T16:09Z",
+          "durationMs": 180127,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 180127,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "timeout",
+          "failureStage": "draft",
+          "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 11,
+          "provider": "openrouter",
+          "model": "google/gemma-4-31b-it:free",
+          "label": "openrouter:google/gemma-4-31b-it:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 149,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 149,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 12,
+          "provider": "openrouter",
+          "model": "inclusionai/ling-3.0-flash:free",
+          "label": "openrouter:inclusionai/ling-3.0-flash:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 67,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 66,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -1751,13 +683,13 @@
         {
           "sequence": 13,
           "provider": "openrouter",
-          "model": "openai/gpt-oss-20b:free",
-          "label": "openrouter:openai/gpt-oss-20b:free",
-          "startedUtc": "2026-08-01T15:35Z",
-          "durationMs": 140,
+          "model": "google/gemma-4-26b-a4b-it:free",
+          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 125,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 139,
+          "httpDurationMs": 125,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -1769,13 +701,13 @@
         {
           "sequence": 14,
           "provider": "openrouter",
-          "model": "nvidia/nemotron-3-nano-30b-a3b:free",
-          "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
-          "startedUtc": "2026-08-01T15:35Z",
-          "durationMs": 124,
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 69,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 123,
+          "httpDurationMs": 68,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -1787,13 +719,13 @@
         {
           "sequence": 15,
           "provider": "openrouter",
-          "model": "nvidia/nemotron-nano-12b-v2-vl:free",
-          "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
-          "startedUtc": "2026-08-01T15:35Z",
-          "durationMs": 223,
+          "model": "openai/gpt-oss-20b:free",
+          "label": "openrouter:openai/gpt-oss-20b:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 86,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 222,
+          "httpDurationMs": 85,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -1805,13 +737,13 @@
         {
           "sequence": 16,
           "provider": "openrouter",
-          "model": "nvidia/nemotron-nano-9b-v2:free",
-          "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
-          "startedUtc": "2026-08-01T15:35Z",
-          "durationMs": 122,
+          "model": "nvidia/nemotron-3-nano-30b-a3b:free",
+          "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 595,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 122,
+          "httpDurationMs": 594,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -1823,13 +755,13 @@
         {
           "sequence": 17,
           "provider": "openrouter",
-          "model": "poolside/laguna-s-2.1:free",
-          "label": "openrouter:poolside/laguna-s-2.1:free",
-          "startedUtc": "2026-08-01T15:35Z",
-          "durationMs": 101,
+          "model": "nvidia/nemotron-nano-12b-v2-vl:free",
+          "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 66,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 100,
+          "httpDurationMs": 65,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -1841,13 +773,13 @@
         {
           "sequence": 18,
           "provider": "openrouter",
-          "model": "cohere/north-mini-code:free",
-          "label": "openrouter:cohere/north-mini-code:free",
-          "startedUtc": "2026-08-01T15:35Z",
-          "durationMs": 367,
+          "model": "nvidia/nemotron-nano-9b-v2:free",
+          "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 75,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 367,
+          "httpDurationMs": 74,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -1859,13 +791,49 @@
         {
           "sequence": 19,
           "provider": "openrouter",
-          "model": "poolside/laguna-xs-2.1:free",
-          "label": "openrouter:poolside/laguna-xs-2.1:free",
-          "startedUtc": "2026-08-01T15:35Z",
-          "durationMs": 133,
+          "model": "poolside/laguna-s-2.1:free",
+          "label": "openrouter:poolside/laguna-s-2.1:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 142,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 133,
+          "httpDurationMs": 141,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 20,
+          "provider": "openrouter",
+          "model": "cohere/north-mini-code:free",
+          "label": "openrouter:cohere/north-mini-code:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 81,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 80,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 21,
+          "provider": "openrouter",
+          "model": "poolside/laguna-xs-2.1:free",
+          "label": "openrouter:poolside/laguna-xs-2.1:free",
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 110,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 110,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -1881,11 +849,11 @@
       }
     },
     {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T15:45Z",
+      "startedUtc": "2026-08-01T16:00Z",
+      "finishedUtc": "2026-08-01T16:21Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260801-1455-10",
+      "groupId": "g-20260801-1559-9",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "Aerospace Global News",
@@ -1901,16 +869,16 @@
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 260,
+        "archiveRetrieval": 370,
         "promptAssembly": 0,
-        "drafting": 615244,
+        "drafting": 507675,
         "validation": 0,
         "factVerification": null,
         "evidenceBinding": null,
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 2994755
+        "total": 1264812
       },
       "attempts": [
         {
@@ -1918,16 +886,16 @@
           "provider": "nvidia",
           "model": "z-ai/glm-5.2",
           "label": "nvidia:z-ai/glm-5.2",
-          "startedUtc": "2026-08-01T15:35Z",
-          "durationMs": 59080,
+          "startedUtc": "2026-08-01T16:12Z",
+          "durationMs": 45525,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 59078,
+          "httpDurationMs": 45522,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "invalid_schema",
           "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=283 content characters, en=145 words, paragraphs=6/6)",
+          "failureMessage": "publish body does not meet full contract (zh=396 content characters, en=205 words, paragraphs=5/5)",
           "retryPlanned": false,
           "disabledForRun": false
         },
@@ -1936,29 +904,11 @@
           "provider": "nvidia",
           "model": "deepseek-ai/deepseek-v4-pro",
           "label": "nvidia:deepseek-ai/deepseek-v4-pro",
-          "startedUtc": "2026-08-01T15:36Z",
-          "durationMs": 177929,
+          "startedUtc": "2026-08-01T16:13Z",
+          "durationMs": 180173,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 177928,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=444 content characters, en=209 words, paragraphs=5/6)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 3,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-08-01T15:38Z",
-          "durationMs": 180188,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 180187,
+          "httpDurationMs": 180173,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "timeout",
@@ -1968,15 +918,33 @@
           "disabledForRun": false
         },
         {
+          "sequence": 3,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+          "startedUtc": "2026-08-01T16:16Z",
+          "durationMs": 83034,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 83032,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "publish body does not meet full contract (zh=370 content characters, en=159 words, paragraphs=4/4)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
           "sequence": 4,
           "provider": "openrouter",
           "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
           "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": "2026-08-01T15:41Z",
-          "durationMs": 237,
+          "startedUtc": "2026-08-01T16:17Z",
+          "durationMs": 258,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 236,
+          "httpDurationMs": 257,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -1990,11 +958,11 @@
           "provider": "nvidia",
           "model": "qwen/qwen3.5-397b-a17b",
           "label": "nvidia:qwen/qwen3.5-397b-a17b",
-          "startedUtc": "2026-08-01T15:41Z",
-          "durationMs": 145,
+          "startedUtc": "2026-08-01T16:17Z",
+          "durationMs": 97,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 145,
+          "httpDurationMs": 97,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "http_error",
@@ -2008,16 +976,16 @@
           "provider": "nvidia",
           "model": "nvidia/nemotron-3-super-120b-a12b",
           "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-          "startedUtc": "2026-08-01T15:41Z",
-          "durationMs": 15789,
+          "startedUtc": "2026-08-01T16:17Z",
+          "durationMs": 17342,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 15787,
+          "httpDurationMs": 17340,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "invalid_schema",
           "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=358 content characters, en=159 words, paragraphs=7/7)",
+          "failureMessage": "publish body does not meet full contract (zh=415 content characters, en=192 words, paragraphs=4/4)",
           "retryPlanned": false,
           "disabledForRun": false
         },
@@ -2026,11 +994,11 @@
           "provider": "openrouter",
           "model": "nvidia/nemotron-3-super-120b-a12b:free",
           "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-          "startedUtc": "2026-08-01T15:42Z",
-          "durationMs": 146,
+          "startedUtc": "2026-08-01T16:18Z",
+          "durationMs": 84,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 146,
+          "httpDurationMs": 84,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2044,11 +1012,11 @@
           "provider": "nvidia",
           "model": "mistralai/mistral-medium-3.5-128b",
           "label": "nvidia:mistralai/mistral-medium-3.5-128b",
-          "startedUtc": "2026-08-01T15:42Z",
-          "durationMs": 180184,
+          "startedUtc": "2026-08-01T16:18Z",
+          "durationMs": 180214,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 180184,
+          "httpDurationMs": 180214,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "timeout",
@@ -2062,11 +1030,11 @@
           "provider": "openrouter",
           "model": "google/gemma-4-31b-it:free",
           "label": "openrouter:google/gemma-4-31b-it:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 218,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 143,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 218,
+          "httpDurationMs": 143,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2080,11 +1048,11 @@
           "provider": "openrouter",
           "model": "inclusionai/ling-3.0-flash:free",
           "label": "openrouter:inclusionai/ling-3.0-flash:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 128,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 71,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 127,
+          "httpDurationMs": 70,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2098,11 +1066,11 @@
           "provider": "openrouter",
           "model": "google/gemma-4-26b-a4b-it:free",
           "label": "openrouter:google/gemma-4-26b-a4b-it:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 183,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 77,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 183,
+          "httpDurationMs": 76,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2116,11 +1084,11 @@
           "provider": "openrouter",
           "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
           "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 147,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 82,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 147,
+          "httpDurationMs": 82,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2134,11 +1102,11 @@
           "provider": "openrouter",
           "model": "openai/gpt-oss-20b:free",
           "label": "openrouter:openai/gpt-oss-20b:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 89,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 85,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 89,
+          "httpDurationMs": 84,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2152,11 +1120,11 @@
           "provider": "openrouter",
           "model": "nvidia/nemotron-3-nano-30b-a3b:free",
           "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 128,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 77,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 128,
+          "httpDurationMs": 77,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2170,11 +1138,11 @@
           "provider": "openrouter",
           "model": "nvidia/nemotron-nano-12b-v2-vl:free",
           "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 90,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 106,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 90,
+          "httpDurationMs": 106,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2188,11 +1156,11 @@
           "provider": "openrouter",
           "model": "nvidia/nemotron-nano-9b-v2:free",
           "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 148,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 82,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 148,
+          "httpDurationMs": 82,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2206,11 +1174,11 @@
           "provider": "openrouter",
           "model": "poolside/laguna-s-2.1:free",
           "label": "openrouter:poolside/laguna-s-2.1:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 106,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 82,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 105,
+          "httpDurationMs": 81,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2224,11 +1192,11 @@
           "provider": "openrouter",
           "model": "cohere/north-mini-code:free",
           "label": "openrouter:cohere/north-mini-code:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 134,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 74,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 133,
+          "httpDurationMs": 74,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2242,11 +1210,11 @@
           "provider": "openrouter",
           "model": "poolside/laguna-xs-2.1:free",
           "label": "openrouter:poolside/laguna-xs-2.1:free",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 176,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 73,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 176,
+          "httpDurationMs": 73,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2262,36 +1230,36 @@
       }
     },
     {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T15:50Z",
+      "startedUtc": "2026-08-01T16:00Z",
+      "finishedUtc": "2026-08-01T16:32Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260801-1455-11",
+      "groupId": "g-20260801-1559-10",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "Aerospace Global News",
-      "result": "published",
-      "articleId": "a-20260801-1455-porter-airlines-upgrades-dash-8-fleet-wi",
-      "finalStatus": "publish",
-      "finalModel": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+      "result": "retry_pending",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": null,
       "fallbackUsed": true,
-      "attemptCount": 6,
-      "httpCallCount": 6,
+      "attemptCount": 19,
+      "httpCallCount": 19,
       "repairCallCount": 0,
       "durationsMs": {
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 261,
+        "archiveRetrieval": 396,
         "promptAssembly": 0,
-        "drafting": 330576,
+        "drafting": 669691,
         "validation": 0,
         "factVerification": 0,
         "evidenceBinding": 0,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": 1,
-        "total": 3325173
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 1934276
       },
       "attempts": [
         {
@@ -2299,11 +1267,11 @@
           "provider": "nvidia",
           "model": "z-ai/glm-5.2",
           "label": "nvidia:z-ai/glm-5.2",
-          "startedUtc": "2026-08-01T15:45Z",
-          "durationMs": 102343,
+          "startedUtc": "2026-08-01T16:21Z",
+          "durationMs": 109373,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 102341,
+          "httpDurationMs": 109370,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "evidence_binding_failed",
@@ -2317,16 +1285,16 @@
           "provider": "nvidia",
           "model": "deepseek-ai/deepseek-v4-pro",
           "label": "nvidia:deepseek-ai/deepseek-v4-pro",
-          "startedUtc": "2026-08-01T15:46Z",
-          "durationMs": 104082,
+          "startedUtc": "2026-08-01T16:23Z",
+          "durationMs": 168499,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 104080,
+          "httpDurationMs": 168496,
           "repairDurationMs": 0,
           "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "en.summary missing",
+          "failureClass": "evidence_binding_failed",
+          "failureStage": "evidenceBinding",
+          "failureMessage": "verified factId values must be sequential F1..Fn",
           "retryPlanned": false,
           "disabledForRun": false
         },
@@ -2335,16 +1303,16 @@
           "provider": "nvidia",
           "model": "nvidia/nemotron-3-ultra-550b-a55b",
           "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-08-01T15:48Z",
-          "durationMs": 101797,
+          "startedUtc": "2026-08-01T16:25Z",
+          "durationMs": 176874,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 101796,
+          "httpDurationMs": 176872,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "invalid_schema",
           "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=396 content characters, en=235 words, paragraphs=6/6)",
+          "failureMessage": "publish body does not meet full contract (zh=337 content characters, en=197 words, paragraphs=5/5)",
           "retryPlanned": false,
           "disabledForRun": false
         },
@@ -2353,11 +1321,11 @@
           "provider": "openrouter",
           "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
           "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": "2026-08-01T15:50Z",
-          "durationMs": 372,
+          "startedUtc": "2026-08-01T16:28Z",
+          "durationMs": 173,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 371,
+          "httpDurationMs": 172,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "rate_limit",
@@ -2371,11 +1339,11 @@
           "provider": "nvidia",
           "model": "qwen/qwen3.5-397b-a17b",
           "label": "nvidia:qwen/qwen3.5-397b-a17b",
-          "startedUtc": "2026-08-01T15:50Z",
-          "durationMs": 171,
+          "startedUtc": "2026-08-01T16:28Z",
+          "durationMs": 78,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 171,
+          "httpDurationMs": 78,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "http_error",
@@ -2389,16 +1357,250 @@
           "provider": "nvidia",
           "model": "nvidia/nemotron-3-super-120b-a12b",
           "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-          "startedUtc": "2026-08-01T15:50Z",
-          "durationMs": 21814,
+          "startedUtc": "2026-08-01T16:28Z",
+          "durationMs": 31819,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 21812,
+          "httpDurationMs": 31816,
           "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
+          "outcome": "failed",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "publish body does not meet full contract (zh=317 content characters, en=158 words, paragraphs=5/5)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 7,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-super-120b-a12b:free",
+          "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+          "startedUtc": "2026-08-01T16:29Z",
+          "durationMs": 86,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 86,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 8,
+          "provider": "nvidia",
+          "model": "mistralai/mistral-medium-3.5-128b",
+          "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+          "startedUtc": "2026-08-01T16:29Z",
+          "durationMs": 180113,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 180113,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "timeout",
+          "failureStage": "draft",
+          "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 9,
+          "provider": "openrouter",
+          "model": "google/gemma-4-31b-it:free",
+          "label": "openrouter:google/gemma-4-31b-it:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 183,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 182,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 10,
+          "provider": "openrouter",
+          "model": "inclusionai/ling-3.0-flash:free",
+          "label": "openrouter:inclusionai/ling-3.0-flash:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 68,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 68,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 11,
+          "provider": "openrouter",
+          "model": "google/gemma-4-26b-a4b-it:free",
+          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 84,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 83,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 12,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 560,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 560,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 13,
+          "provider": "openrouter",
+          "model": "openai/gpt-oss-20b:free",
+          "label": "openrouter:openai/gpt-oss-20b:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 1257,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 1257,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 14,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-nano-30b-a3b:free",
+          "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 69,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 68,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 15,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-nano-12b-v2-vl:free",
+          "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 122,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 122,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 16,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-nano-9b-v2:free",
+          "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 71,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 70,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 17,
+          "provider": "openrouter",
+          "model": "poolside/laguna-s-2.1:free",
+          "label": "openrouter:poolside/laguna-s-2.1:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 94,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 93,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 18,
+          "provider": "openrouter",
+          "model": "cohere/north-mini-code:free",
+          "label": "openrouter:cohere/north-mini-code:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 64,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 64,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 19,
+          "provider": "openrouter",
+          "model": "poolside/laguna-xs-2.1:free",
+          "label": "openrouter:poolside/laguna-xs-2.1:free",
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 108,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 108,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
           "retryPlanned": false,
           "disabledForRun": false
         }
@@ -2409,36 +1611,36 @@
       }
     },
     {
-      "startedUtc": "2026-08-01T14:55Z",
-      "finishedUtc": "2026-08-01T15:59Z",
+      "startedUtc": "2026-08-01T16:00Z",
+      "finishedUtc": "2026-08-01T16:41Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260801-1455-12",
+      "groupId": "g-20260801-1559-11",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "Aerospace Global News",
-      "result": "manual_review",
+      "result": "retry_pending",
       "articleId": null,
-      "finalStatus": "manual_review",
-      "finalModel": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+      "finalStatus": "retry_pending",
+      "finalModel": null,
       "fallbackUsed": true,
-      "attemptCount": 3,
-      "httpCallCount": 3,
+      "attemptCount": 19,
+      "httpCallCount": 19,
       "repairCallCount": 0,
       "durationsMs": {
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 270,
+        "archiveRetrieval": 370,
         "promptAssembly": 0,
-        "drafting": 496296,
+        "drafting": 562561,
         "validation": 0,
-        "factVerification": 0,
-        "evidenceBinding": 0,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
         "articleBuild": null,
-        "total": 3821308
+        "total": 2496577
       },
       "attempts": [
         {
@@ -2446,16 +1648,16 @@
           "provider": "nvidia",
           "model": "z-ai/glm-5.2",
           "label": "nvidia:z-ai/glm-5.2",
-          "startedUtc": "2026-08-01T15:50Z",
-          "durationMs": 149602,
+          "startedUtc": "2026-08-01T16:32Z",
+          "durationMs": 70830,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 149600,
+          "httpDurationMs": 70828,
           "repairDurationMs": 0,
           "outcome": "failed",
-          "failureClass": "evidence_binding_failed",
-          "failureStage": "evidenceBinding",
-          "failureMessage": "verified factId values must be sequential F1..Fn",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "manual_review body meets neither full nor brief contract",
           "retryPlanned": false,
           "disabledForRun": false
         },
@@ -2464,11 +1666,11 @@
           "provider": "nvidia",
           "model": "deepseek-ai/deepseek-v4-pro",
           "label": "nvidia:deepseek-ai/deepseek-v4-pro",
-          "startedUtc": "2026-08-01T15:53Z",
-          "durationMs": 180133,
+          "startedUtc": "2026-08-01T16:33Z",
+          "durationMs": 180091,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 180132,
+          "httpDurationMs": 180091,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "timeout",
@@ -2482,16 +1684,685 @@
           "provider": "nvidia",
           "model": "nvidia/nemotron-3-ultra-550b-a55b",
           "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-08-01T15:56Z",
-          "durationMs": 166561,
+          "startedUtc": "2026-08-01T16:36Z",
+          "durationMs": 113027,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 166559,
+          "httpDurationMs": 113025,
           "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
+          "outcome": "failed",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "publish body does not meet full contract (zh=465 content characters, en=256 words, paragraphs=5/5)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 4,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+          "startedUtc": "2026-08-01T16:38Z",
+          "durationMs": 421,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 420,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 5,
+          "provider": "nvidia",
+          "model": "qwen/qwen3.5-397b-a17b",
+          "label": "nvidia:qwen/qwen3.5-397b-a17b",
+          "startedUtc": "2026-08-01T16:38Z",
+          "durationMs": 74,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 74,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 410",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 6,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+          "startedUtc": "2026-08-01T16:38Z",
+          "durationMs": 16122,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 16120,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "publish body does not meet full contract (zh=345 content characters, en=163 words, paragraphs=7/7)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 7,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-super-120b-a12b:free",
+          "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+          "startedUtc": "2026-08-01T16:38Z",
+          "durationMs": 120,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 120,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 8,
+          "provider": "nvidia",
+          "model": "mistralai/mistral-medium-3.5-128b",
+          "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+          "startedUtc": "2026-08-01T16:38Z",
+          "durationMs": 180126,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 180125,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "timeout",
+          "failureStage": "draft",
+          "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 9,
+          "provider": "openrouter",
+          "model": "google/gemma-4-31b-it:free",
+          "label": "openrouter:google/gemma-4-31b-it:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 155,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 155,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 10,
+          "provider": "openrouter",
+          "model": "inclusionai/ling-3.0-flash:free",
+          "label": "openrouter:inclusionai/ling-3.0-flash:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 75,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 74,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 11,
+          "provider": "openrouter",
+          "model": "google/gemma-4-26b-a4b-it:free",
+          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 531,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 531,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 12,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 409,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 408,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 13,
+          "provider": "openrouter",
+          "model": "openai/gpt-oss-20b:free",
+          "label": "openrouter:openai/gpt-oss-20b:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 84,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 84,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 14,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-nano-30b-a3b:free",
+          "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 83,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 82,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 15,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-nano-12b-v2-vl:free",
+          "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 71,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 70,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 16,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-nano-9b-v2:free",
+          "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 72,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 72,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 17,
+          "provider": "openrouter",
+          "model": "poolside/laguna-s-2.1:free",
+          "label": "openrouter:poolside/laguna-s-2.1:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 99,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 99,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 18,
+          "provider": "openrouter",
+          "model": "cohere/north-mini-code:free",
+          "label": "openrouter:cohere/north-mini-code:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 74,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 73,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 19,
+          "provider": "openrouter",
+          "model": "poolside/laguna-xs-2.1:free",
+          "label": "openrouter:poolside/laguna-xs-2.1:free",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 98,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 97,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-01T16:00Z",
+      "finishedUtc": "2026-08-01T16:52Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260801-1559-12",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Aerospace Global News",
+      "result": "retry_pending",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": null,
+      "fallbackUsed": true,
+      "attemptCount": 19,
+      "httpCallCount": 19,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 375,
+        "promptAssembly": 0,
+        "drafting": 619082,
+        "validation": 0,
+        "factVerification": 0,
+        "evidenceBinding": 0,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 3115433
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "nvidia",
+          "model": "z-ai/glm-5.2",
+          "label": "nvidia:z-ai/glm-5.2",
+          "startedUtc": "2026-08-01T16:41Z",
+          "durationMs": 69488,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 69486,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "evidence_binding_failed",
+          "failureStage": "evidenceBinding",
+          "failureMessage": "verified factId values must be sequential F1..Fn",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "nvidia",
+          "model": "deepseek-ai/deepseek-v4-pro",
+          "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+          "startedUtc": "2026-08-01T16:42Z",
+          "durationMs": 180146,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 180146,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "timeout",
+          "failureStage": "draft",
+          "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 3,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+          "startedUtc": "2026-08-01T16:45Z",
+          "durationMs": 134113,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 134111,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "publish body does not meet full contract (zh=291 content characters, en=147 words, paragraphs=5/5)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 4,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+          "startedUtc": "2026-08-01T16:48Z",
+          "durationMs": 245,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 244,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 5,
+          "provider": "nvidia",
+          "model": "qwen/qwen3.5-397b-a17b",
+          "label": "nvidia:qwen/qwen3.5-397b-a17b",
+          "startedUtc": "2026-08-01T16:48Z",
+          "durationMs": 152,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 151,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 410",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 6,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-super-120b-a12b",
+          "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+          "startedUtc": "2026-08-01T16:48Z",
+          "durationMs": 53682,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 53680,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "invalid_schema",
+          "failureStage": "validation",
+          "failureMessage": "publish body does not meet full contract (zh=307 content characters, en=123 words, paragraphs=5/5)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 7,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-super-120b-a12b:free",
+          "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+          "startedUtc": "2026-08-01T16:49Z",
+          "durationMs": 85,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 85,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 8,
+          "provider": "nvidia",
+          "model": "mistralai/mistral-medium-3.5-128b",
+          "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+          "startedUtc": "2026-08-01T16:49Z",
+          "durationMs": 180162,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 180162,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "timeout",
+          "failureStage": "draft",
+          "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 9,
+          "provider": "openrouter",
+          "model": "google/gemma-4-31b-it:free",
+          "label": "openrouter:google/gemma-4-31b-it:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 190,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 190,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 10,
+          "provider": "openrouter",
+          "model": "inclusionai/ling-3.0-flash:free",
+          "label": "openrouter:inclusionai/ling-3.0-flash:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 77,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 76,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 11,
+          "provider": "openrouter",
+          "model": "google/gemma-4-26b-a4b-it:free",
+          "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 86,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 85,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 12,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 67,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 67,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 13,
+          "provider": "openrouter",
+          "model": "openai/gpt-oss-20b:free",
+          "label": "openrouter:openai/gpt-oss-20b:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 67,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 67,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 14,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-3-nano-30b-a3b:free",
+          "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 73,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 72,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 15,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-nano-12b-v2-vl:free",
+          "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 77,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 77,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 16,
+          "provider": "openrouter",
+          "model": "nvidia/nemotron-nano-9b-v2:free",
+          "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 71,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 71,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 17,
+          "provider": "openrouter",
+          "model": "poolside/laguna-s-2.1:free",
+          "label": "openrouter:poolside/laguna-s-2.1:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 73,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 72,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 18,
+          "provider": "openrouter",
+          "model": "cohere/north-mini-code:free",
+          "label": "openrouter:cohere/north-mini-code:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 93,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 93,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 19,
+          "provider": "openrouter",
+          "model": "poolside/laguna-xs-2.1:free",
+          "label": "openrouter:poolside/laguna-xs-2.1:free",
+          "startedUtc": "2026-08-01T16:52Z",
+          "durationMs": 137,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 136,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "rate_limit",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 rate limit",
           "retryPlanned": false,
           "disabledForRun": false
         }
@@ -2560,7 +2431,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -2648,7 +2519,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2705,7 +2576,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2762,7 +2633,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2819,7 +2690,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2876,7 +2747,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2933,7 +2804,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3008,7 +2879,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3046,7 +2917,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3084,7 +2955,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3465,7 +3336,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3522,7 +3393,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3579,7 +3450,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3617,7 +3488,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3655,7 +3526,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3693,7 +3564,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3768,7 +3639,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3825,7 +3696,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3900,7 +3771,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3957,7 +3828,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3995,7 +3866,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4033,7 +3904,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4071,7 +3942,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4128,7 +3999,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4166,7 +4037,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4223,7 +4094,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4280,7 +4151,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4355,7 +4226,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4393,7 +4264,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4450,7 +4321,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4507,7 +4378,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4564,7 +4435,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4602,7 +4473,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4640,7 +4511,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4678,7 +4549,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4735,7 +4606,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4792,7 +4663,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4885,7 +4756,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5266,7 +5137,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5304,7 +5175,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5342,7 +5213,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5380,7 +5251,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5418,7 +5289,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5799,7 +5670,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5856,7 +5727,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5931,7 +5802,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6312,7 +6183,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6350,7 +6221,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6388,7 +6259,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6426,7 +6297,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6807,7 +6678,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6972,7 +6843,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -7353,7 +7224,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -7410,7 +7281,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -7827,7 +7698,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -7884,7 +7755,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -8265,7 +8136,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -8303,7 +8174,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -8684,7 +8555,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9065,7 +8936,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9212,7 +9083,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9287,7 +9158,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9668,7 +9539,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10049,7 +9920,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10466,7 +10337,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10504,7 +10375,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10542,7 +10413,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10689,7 +10560,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10734,7 +10605,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -10798,7 +10669,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10855,7 +10726,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10930,7 +10801,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10987,7 +10858,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11062,7 +10933,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11119,7 +10990,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11176,7 +11047,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11557,7 +11428,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11595,7 +11466,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11633,7 +11504,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11690,7 +11561,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11747,7 +11618,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11822,7 +11693,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11879,7 +11750,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11936,7 +11807,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12317,7 +12188,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12355,7 +12226,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12393,7 +12264,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12431,7 +12302,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12866,7 +12737,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12923,7 +12794,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12980,7 +12851,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13235,7 +13106,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13292,7 +13163,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13349,7 +13220,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13730,7 +13601,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13787,7 +13658,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13844,7 +13715,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13901,7 +13772,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13939,7 +13810,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13996,7 +13867,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14053,7 +13924,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14110,7 +13981,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14167,7 +14038,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14224,7 +14095,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14281,7 +14152,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14338,7 +14209,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14413,7 +14284,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14470,7 +14341,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14527,7 +14398,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14584,7 +14455,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14622,7 +14493,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14660,7 +14531,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14698,7 +14569,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14755,7 +14626,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14793,7 +14664,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14831,7 +14702,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14888,7 +14759,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14945,7 +14816,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15002,7 +14873,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15040,7 +14911,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15078,7 +14949,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15116,7 +14987,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15191,7 +15062,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15266,7 +15137,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15665,7 +15536,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15703,7 +15574,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15741,7 +15612,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15779,7 +15650,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15836,7 +15707,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15893,7 +15764,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15968,7 +15839,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16367,7 +16238,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16748,7 +16619,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16786,7 +16657,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16824,7 +16695,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16862,7 +16733,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16900,7 +16771,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16938,7 +16809,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16995,7 +16866,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17070,7 +16941,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17451,7 +17322,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17508,7 +17379,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17565,7 +17436,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17946,7 +17817,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18327,7 +18198,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18708,7 +18579,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18765,7 +18636,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18858,7 +18729,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18896,7 +18767,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18971,7 +18842,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19352,7 +19223,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19409,7 +19280,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19466,7 +19337,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19523,7 +19394,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19580,7 +19451,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19637,7 +19508,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19694,7 +19565,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20075,7 +19946,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20120,7 +19991,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -20244,7 +20115,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -20301,7 +20172,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "GPT 5.6 Terra Thinking",
@@ -20497,7 +20368,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -20651,7 +20522,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20689,7 +20560,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20746,7 +20617,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20911,7 +20782,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20968,7 +20839,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21115,7 +20986,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21262,7 +21133,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21409,7 +21280,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21556,7 +21427,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21703,7 +21574,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21741,7 +21612,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21906,7 +21777,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22053,7 +21924,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22200,7 +22071,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22347,7 +22218,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22494,7 +22365,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22623,7 +22494,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22680,7 +22551,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22737,7 +22608,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22884,7 +22755,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23031,7 +22902,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23094,7 +22965,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23151,7 +23022,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23208,7 +23079,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23265,7 +23136,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23322,7 +23193,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23379,7 +23250,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23562,7 +23433,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23600,7 +23471,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23638,7 +23509,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23676,7 +23547,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     }
