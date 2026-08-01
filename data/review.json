@@ -1,7 +1,306 @@
 [
   {
-    "id": "g-20260801-1559-5",
-    "queuedUtc": "2026-08-01T16:00Z",
+    "id": "g-20260801-1653-2",
+    "queuedUtc": "2026-08-01T16:53Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves strategic military bomber deployments and active operational missions over Iran, which constitutes a developing military situation requiring human editorial review.",
+    "riskFlags": [
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The US Air Force deployed one-third of its B-1B fleet to RAF Fairford in England.",
+        "sourceQuote": "Why The US Air Force Just Sent A Third Of Its B-1B Fleet To 1 British Airbase",
+        "sourceUrl": "https://simpleflying.com/why-usaf-sent-third-b-1b-fleet-1-british-airbase/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "RAF Fairford in England has been used as the primary strategic bomber air base for missions over Iran in 2026.",
+        "sourceQuote": "England's RAF Fairford has been the primary strategic bomber air base used to conduct missions over Iran in 2026.",
+        "sourceUrl": "https://simpleflying.com/why-usaf-sent-third-b-1b-fleet-1-british-airbase/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves strategic military bomber deployments and active operational missions over Iran, which constitutes a developing military situation requiring human editorial review.",
+      "cat": "mil",
+      "zh": {
+        "title": "美國空軍部署三分之一B1B轟炸機機隊至英國基地",
+        "summary": "根據 Simple Flying 報導，美國空軍已將其 B-1B 轟炸機機隊的三分之一部署至英格蘭的費爾福德皇家空軍基地。相關消息指出，該基地位於英國，並於2026年被作為執行針對伊朗相關任務的主要戰略轟炸機基地。",
+        "body": [
+          "根據 Simple Flying 報導，美國空軍近期將其 B-1B 戰略轟炸機機隊約三分之一的兵力，部署至位於英格蘭的費爾福德皇家空軍基地（RAF Fairford）。這項兵力調動顯示美軍在英國該座前線基地的顯著戰略部署。",
+          "報導指出，英格蘭的費爾福德皇家空軍基地在2026年期間，已成為美軍執行針對伊朗相關戰略轟炸機任務的主要基地。相關動態反映出美軍遠程戰略航空兵力在歐洲與中東方向的最新運作模式與前緣基地運用狀況。"
+        ]
+      },
+      "en": {
+        "title": "US Air Force Deploys One-Third of B-1B Fleet to RAF Fairford",
+        "summary": "According to news reported by Simple Flying, the United States Air Force has deployed one-third of its B-1B bomber fleet to a single airbase in England, identified as RAF Fairford. RAF Fairford in England has served as the primary strategic bomber air base utilized to carry out missions over Iran during 2026. The deployment underscores the ongoing operational focus and usage of the strategic British airbase for military flight missions.",
+        "body": [
+          "According to a report by Simple Flying, the United States Air Force has dispatched one-third of its total B-1B strategic bomber fleet to a single military location at RAF Fairford in England. The deployment concentrates a substantial portion of the strategic bomber fleet at the British airbase.",
+          "The publication notes that England's RAF Fairford has functioned as the primary strategic bomber air base utilized to conduct military flight missions over Iran in 2026. The development emphasizes the role of the airbase in supporting long-range military aviation activities.",
+          "The deployment represents a major strategic repositioning of military aircraft assets to the European station."
+        ]
+      },
+      "flash": {
+        "zh": "美國空軍將三分之一B-1B機隊部署至英國費爾福德基地",
+        "en": "US Air Force deploys a third of B-1B fleet to RAF Fairford",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The US Air Force deployed one-third of its B-1B fleet to RAF Fairford in England.",
+          "sourceQuote": "Why The US Air Force Just Sent A Third Of Its B-1B Fleet To 1 British Airbase",
+          "sourceUrl": "https://simpleflying.com/why-usaf-sent-third-b-1b-fleet-1-british-airbase/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "RAF Fairford in England has been used as the primary strategic bomber air base for missions over Iran in 2026.",
+          "sourceQuote": "England's RAF Fairford has been the primary strategic bomber air base used to conduct missions over Iran in 2026.",
+          "sourceUrl": "https://simpleflying.com/why-usaf-sent-third-b-1b-fleet-1-british-airbase/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "US Air Force"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "B-1B"
+        ],
+        "airports": [
+          "RAF Fairford"
+        ],
+        "locations": [
+          "England",
+          "Iran"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-1653-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Why The US Air Force Just Sent A Third Of Its B-1B Fleet To 1 British Airbase",
+          "url": "https://simpleflying.com/why-usaf-sent-third-b-1b-fleet-1-british-airbase/",
+          "publishedUtc": "2026-08-01T16:00Z",
+          "summary": "England's RAF Fairford has been the primary strategic bomber air base used to conduct missions over Iran in 2026.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/why-the-us-air-force-just-sent-a-third-of-its-b-1b-fleet-to-1-british-airbase.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260801-1653-10",
+    "queuedUtc": "2026-08-01T16:53Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Two aviation safety incidents (rejected takeoff due to bird strike and lightning strike) require human review under mandatory safety-event rules. Both events are confirmed as occurring but involve abnormal flight operations; full articles cannot be safely produced from headline-only source items without body text, so brief format is used.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A Japan Transocean Air Boeing 737-800 rejected takeoff at Komatsu on July 30, 2026, due to a bird strike.",
+        "sourceQuote": "Incident: Japan Transocean B738 at Komatsu on Jul 30th 2026, rejected takeoff due to bird strike",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "A Eurowings Malta Airbus A320 was struck by lightning at Stuttgart on July 30, 2026.",
+        "sourceQuote": "Incident: Eurowings Malta A320 at Stuttgart on Jul 30th 2026, lightning strike",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1mdXI0clBwTVBlMTZrVUNMV1lhbm9WeS1tU0dEb00xSGxaaUxpYWNRX0c1Wk9fWVFnNFFKcVhKSU5uNnBmc0RuRXg3LW5rZzRHUU56UHpEOU8?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Two aviation safety incidents (rejected takeoff due to bird strike and lightning strike) require human review under mandatory safety-event rules. Both events are confirmed as occurring but involve abnormal flight operations; full articles cannot be safely produced from headline-only source items without body text, so brief format is used.",
+      "cat": "safety",
+      "zh": {
+        "title": "日本跨洋航空小松機場中斷起飛 歐洲之翼馬耳他航空閃電擊中",
+        "summary": "The Aviation Herald 報導兩起航空事件。日本跨洋航空一架波音737-800於2026年7月30日在小松機場因鳥擊中斷起飛。同日歐洲之翼馬耳他航空一架A320在斯圖加特遭遇閃電擊中。兩起事件均屬初步報導階段。",
+        "body": [
+          "The Aviation Herald 報導，日本跨洋航空一架波音737-800客機於2026年7月30日在小松機場因遭遇鳥擊而中斷起飛。該事件發生於當日，屬於初步報導階段。",
+          "另據 The Aviation Herald 同日報導，歐洲之翼馬耳他航空一架空中巴士A320客機於2026年7月30日在斯圖加特遭遇閃電擊中。此事件同樣處於初步報導階段。",
+          "兩起事件均涉及航空安全範疇，目前僅有標題與摘要層級的資料，尚無進一步細節。鳥擊與閃電擊中均為影響航班運作的已知航空風險因素。",
+          "本報導僅依據 The Aviation Herald 所提供的標題資訊撰寫，未對事件原因、損害程度或後續影響作出任何推斷。"
+        ]
+      },
+      "en": {
+        "title": "Japan Transocean B738 Rejected Takeoff at Komatsu; Eurowings Malta A320 Lightning Strike at Stuttgart",
+        "summary": "The Aviation Herald reports two aviation incidents on July 30, 2026. A Japan Transocean Air Boeing 737-800 rejected takeoff at Komatsu Airport due to a bird strike. Separately, a Eurowings Malta Airbus A320 was struck by lightning at Stuttgart. Both incidents are at a preliminary reporting stage.",
+        "body": [
+          "The Aviation Herald reports that a Japan Transocean Air Boeing 737-800 rejected takeoff at Komatsu Airport on July 30, 2026, due to a bird strike. The event is at a preliminary reporting stage.",
+          "Separately, The Aviation Herald reports on the same date that a Eurowings Malta Airbus A320 was struck by lightning at Stuttgart on July 30, 2026. This event is also at a preliminary reporting stage.",
+          "Both incidents fall within the aviation safety category. Only headline-level information is available for each event, and no further details have been provided.",
+          "This report is based solely on headline information from The Aviation Herald. No inference is made regarding cause, extent of damage, or subsequent operational impact."
+        ]
+      },
+      "flash": {
+        "zh": "日本跨洋航空小松機場鳥擊中斷起飛；歐洲之翼馬耳他航空斯圖加特閃電擊中",
+        "en": "Japan Transocean B738 rejected takeoff at Komatsu; Eurowings Malta A320 lightning strike at Stuttgart",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-07-30",
+        "sev": "inc",
+        "aircraft": "B738",
+        "operator": "Japan Transocean Air",
+        "phase": {
+          "zh": "起飛",
+          "en": "takeoff"
+        },
+        "location": {
+          "zh": "小松機場",
+          "en": "Komatsu Airport"
+        },
+        "desc": {
+          "zh": "因鳥擊中斷起飛",
+          "en": "rejected takeoff due to bird strike"
+        },
+        "status": "prelim"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A Japan Transocean Air Boeing 737-800 rejected takeoff at Komatsu on July 30, 2026, due to a bird strike.",
+          "sourceQuote": "Incident: Japan Transocean B738 at Komatsu on Jul 30th 2026, rejected takeoff due to bird strike",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "A Eurowings Malta Airbus A320 was struck by lightning at Stuttgart on July 30, 2026.",
+          "sourceQuote": "Incident: Eurowings Malta A320 at Stuttgart on Jul 30th 2026, lightning strike",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1mdXI0clBwTVBlMTZrVUNMV1lhbm9WeS1tU0dEb00xSGxaaUxpYWNRX0c1Wk9fWVFnNFFKcVhKSU5uNnBmc0RuRXg3LW5rZzRHUU56UHpEOU8?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "The Aviation Herald"
+        ],
+        "airlines": [
+          "Japan Transocean Air",
+          "Eurowings Malta"
+        ],
+        "aircraft_models": [
+          "B738",
+          "A320"
+        ],
+        "airports": [
+          "Komatsu",
+          "Stuttgart"
+        ],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-30"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-1653-10",
+      "primarySource": "The Aviation Herald",
+      "items": [
+        {
+          "title": "Incident: Japan Transocean B738 at Komatsu on Jul 30th 2026, rejected takeoff due to bird strike",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
+          "publishedUtc": "2026-07-30T19:24Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        },
+        {
+          "title": "Incident: Eurowings Malta A320 at Stuttgart on Jul 30th 2026, lightning strike",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1mdXI0clBwTVBlMTZrVUNMV1lhbm9WeS1tU0dEb00xSGxaaUxpYWNRX0c1Wk9fWVFnNFFKcVhKSU5uNnBmc0RuRXg3LW5rZzRHUU56UHpEOU8?oc=5",
+          "publishedUtc": "2026-07-30T07:00Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        }
+      ],
+      "updateCandidate": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260801-1455-12",
+    "queuedUtc": "2026-08-01T14:55Z",
     "approve": false,
     "writer": "gemini:gemini-3.6-flash",
     "decisionReason": "The report is based on exploratory, unconfirmed discussions attributed to an unnamed source regarding Singapore's potential involvement in the GCAP fighter jet programme.",
@@ -8397,296 +8696,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "id": "g-20260727-0838-1",
-    "queuedUtc": "2026-07-27T08:38Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "Investigation flag present due to police questioning of a minor following hoax bomb threat; requires human review per policy.",
-    "riskFlags": [
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Qatar Airways Boeing 777 was intercepted by RAF Typhoons after a hoax bomb threat.",
-        "sourceQuote": "Qatar Airways Boeing 777 Intercepted By RAF Typhoons After Hoax Bomb Threat"
-      },
-      {
-        "factId": "F2",
-        "claim": "A 14-year-old boy has been questioned by police after reports of a bomb threat.",
-        "sourceQuote": "A 14-year-old boy has been questioned by police after reports of a bomb threat."
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Investigation flag present due to police questioning of a minor following hoax bomb threat; requires human review per policy.",
-      "cat": "ops",
-      "zh": {
-        "title": "卡達航空波音777疑似受虛假炸彈威脅遭皇家空軍颱風戰機攔截",
-        "summary": "根據Simple Flying報導，一架卡達航空波音777飛機因收到虛假炸彈威脅而被英國皇家空軍的颱風戰機攔截。事件發生後，警方已將一名14歲男孩帶進警局協助調查。目前尚未有人員受傷或飛機損壞的報導。",
-        "body": [
-          "Simple Flying於2026年7月27日08:32 UTC發布報導，指出一架卡達航空波音777因收到炸彈威脅而被皇家空軍 Typhoon 戰機攔截。報導中未提及航班號或具體航線。",
-          "報導說明，威脅後來被證實為虛假，警方隨後對一名14歲男孩進行訊問，以調查假警報的來源。",
-          "至今未有任何官方聲明提及乘客或機組人員受傷，亦未有飛機結構損壞的紀錄。事件仍在調查中，具體處置結果尚未公布。"
-        ]
-      },
-      "en": {
-        "title": "Qatar Airways Boeing 777 Intercepted by RAF Typhoons Following Hoax Bomb Threat Report",
-        "summary": "According to Simple Flying, a Qatar Airways Boeing 777 was intercepted by Royal Air Force Typhoon fighters after a reported bomb threat. Police have questioned a 14-year-old boy in connection with the hoax alert. No injuries or aircraft damage have been reported.",
-        "body": [
-          "Simple Flying published the story on 2026-07-27 at 08:32 UTC, stating that a Qatar Airways Boeing 777 was intercepted by RAF Typhoon jets after a bomb threat was reported. The article did not disclose the flight number or route.",
-          "The threat was later determined to be a hoax, prompting police to question a 14-year-old boy regarding the false alarm. Investigations into who made the threat are ongoing.",
-          "To date, no official statements have indicated any passenger or crew injuries, nor any damage to the aircraft. The incident remains under investigation, with further details pending release."
-        ]
-      },
-      "flash": {
-        "zh": "卡達航空波音777被皇家空軍颱風戰機攔截",
-        "en": "Qatar Airways Boeing 777 intercepted by RAF Typhoons",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Qatar Airways Boeing 777 was intercepted by RAF Typhoons after a hoax bomb threat.",
-          "sourceQuote": "Qatar Airways Boeing 777 Intercepted By RAF Typhoons After Hoax Bomb Threat"
-        },
-        {
-          "factId": "F2",
-          "claim": "A 14-year-old boy has been questioned by police after reports of a bomb threat.",
-          "sourceQuote": "A 14-year-old boy has been questioned by police after reports of a bomb threat."
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Qatar Airways",
-          "RAF",
-          "Simple Flying"
-        ],
-        "airlines": [
-          "Qatar Airways"
-        ],
-        "aircraft_models": [
-          "Boeing 777"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-27"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260727-0838-1",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Qatar Airways Boeing 777 Intercepted By RAF Typhoons After Hoax Bomb Threat",
-          "url": "https://simpleflying.com/qatar-airways-777-raf-typhoon-intercept-manchester/",
-          "publishedUtc": "2026-07-27T08:32Z",
-          "summary": "A 14-year-old boy has been questioned by police after reports of a bomb threat.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/220-qatar-airways-boeing-777-300-kittikun-yoksap-_-shutterstock.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ]
-    }
-  },
-  {
-    "id": "g-20260727-0443-3",
-    "queuedUtc": "2026-07-27T04:43Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Regulatory action (legislative review of drone bills) and developing procurement updates require human review.",
-    "riskFlags": [
-      "regulatory_action",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Audit report finds the fixed UAV defense system lacks coverage of China's 5.1 GHz band, parts of BeiDou‑3 frequencies, and has almost no countermeasures against fiber‑optic and AI‑autonomous UAVs, with deployment lagging.",
-        "sourceQuote": "該系統偵測、干擾頻段未涵蓋中國近年推出5.1GHz新機型，干擾衛星導航範圍也漏掉中國北斗3號部分頻段，且對光纖式無人機、AI自主導航無人機幾無反制手段，建置進度持續落後。"
-      },
-      {
-        "factId": "F2",
-        "claim": "MOD spokesperson says the 5.1 GHz band is not a legal band in Taiwan but NCSIST will incorporate it via system updates.",
-        "sourceQuote": "中國後來在112年提出的5.1GHz頻段在台灣並非合法使用頻段，但中科院會透過系統更新方式，納入偵蒐及反制無人機設備中。"
-      },
-      {
-        "factId": "F3",
-        "claim": "For fiber‑optic and AI‑guided UAV countermeasures, the MOD will seek mature foreign sources through the Defense Innovation Unit or develop domestically.",
-        "sourceQuote": "這確實是新的發展，也非110年的建案中，但國防部會透過國防創新小組（DIU）尋找國外成熟商源，或透過自行研發等方式去籌獲反制系統。"
-      },
-      {
-        "factId": "F4",
-        "claim": "Legislative Yuan joint committee is reviewing draft UAV bills from the Executive Yuan, KMT, and TPP.",
-        "sourceQuote": "立法院經濟、外交及國防、財政委員會上午第2次聯席會議，針對行政院版、國民黨及民眾黨版無人機條例草案進行逐條審查。"
-      },
-      {
-        "factId": "F5",
-        "claim": "The NCSIST UAV countermeasure system was originally planned in 2021 targeting four frequency bands (2.4, 5.8, 1.2, 1.5 GHz).",
-        "sourceQuote": "中科院所建置的無人機反制系統於110年建案，是針對2.4GHz、5.8GHz、1.2GHz、1.5GHz，共4個一、二類無人機頻段建置"
-      },
-      {
-        "factId": "F6",
-        "claim": "The audit findings come from the 114th‑year central government final audit report.",
-        "sourceQuote": "根據審計部公布的民國114年度中央政府總決算審核報告指出"
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Regulatory action (legislative review of drone bills) and developing procurement updates require human review.",
-      "cat": "reg",
-      "zh": {
-        "title": "審計部指無人機防禦系統漏頻段 國防部承諾更新",
-        "summary": "審計部年度決算報告指出空軍委託中科院建置的固定式無人機防禦系統未涵蓋中國5.1GHz頻段及北斗部分頻段，對光纖與AI自主無人機幾無反制，進度嚴重落後；國防部發言人孫立方表示將透過系統更新納入新頻段，並由國防創新小組尋求或自研光纖、AI反制能力。",
-        "body": [
-          "審計部公布的民國114年度中央政府總決算審核報告指出，空軍統籌委託國家中山科學研究院建置固定式「遙控無人機防禦系統」，但該系統偵測、干擾頻段未涵蓋中國近年推出5.1GHz新機型，干擾衛星導航範圍也漏掉中國北斗3號部分頻段，且對光纖式無人機、AI自主導航無人機幾無反制手段，建置進度持續落後。",
-          "國防部發言人孫立方中將表示，中國後來在112年提出的5.1GHz頻段在台灣並非合法使用頻段，但中科院會透過系統更新方式，納入偵蒐及反制無人機設備中。",
-          "至於反制光纖、AI導控無人機方式，孫立方指出這確實是新的發展，也非110年的建案中，但國防部會透過國防創新小組（DIU）尋找國外成熟商源，或透過自行研發等方式去籌獲反制系統。",
-          "立法院經濟、外交及國防、財政委員會上午第2次聯席會議，針對行政院版、國民黨及民眾黨版無人機條例草案進行逐條審查。",
-          "中科院所建置的無人機反制系統於110年建案，是針對2.4GHz、5.8GHz、1.2GHz、1.5GHz，共4個一、二類無人機頻段建置。"
-        ]
-      },
-      "en": {
-        "title": "Audit Finds UAV Defense System Misses New Chinese Frequencies; MOD Pledges Updates",
-        "summary": "The Audit Department's 2025 final audit report says the Air Force‑commissioned fixed UAV defense system built by NCSIST does not cover China's new 5.1 GHz band nor parts of the BeiDou‑3 navigation frequencies, and lacks countermeasures against fiber‑optic and AI‑guided drones, with deployment seriously behind schedule. The Ministry of Defense spokesperson said the 5.1 GHz band is not legal in Taiwan but NCSIST will add it via a system update, and the MOD will seek mature foreign solutions through the Defense Innovation Unit or develop domestic capabilities for fiber‑optic and AI drone threats.",
-        "body": [
-          "The Audit Department's 114th‑year central government final audit report states that the Air Force tasked the National Chung‑Shan Institute of Science and Technology (NCSIST) to build a fixed “remote‑controlled UAV defense system,” but its detection and jamming bands do not cover China's recent 5.1 GHz models, miss parts of the BeiDou‑3 frequencies, and have almost no countermeasures against fiber‑optic or AI‑autonomous UAVs, with deployment progress continuing to lag.",
-          "MOD spokesperson Lieutenant General Sun Li‑fang said the 5.1 GHz band introduced by China in 2023 is not a legal band in Taiwan, but NCSIST will incorporate it into detection and counter‑UAV equipment through a system update.",
-          "Regarding fiber‑optic and AI‑guided UAV countermeasures, Sun noted this is a new development not covered in the original 2021 plan, and the MOD will pursue mature foreign sources via the Defense Innovation Unit (DIU) or develop indigenous solutions to acquire such capabilities.",
-          "The Legislative Yuan’s joint committee of the Economic, Foreign Affairs, National Defense, and Finance committees held its second meeting to conduct a clause‑by‑clause review of the Executive Yuan, KMT, and TPP draft UAV regulations.",
-          "The NCSIST‑built UAV countermeasure system was originally planned in 2021 targeting four frequency bands: 2.4 GHz, 5.8 GHz, 1.2 GHz, and 1.5 GHz."
-        ]
-      },
-      "flash": {
-        "zh": "審計部揭無人機防禦漏頻段 國防部將更新",
-        "en": "Audit reveals UAV defense gaps; MOD to update",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Audit report finds the fixed UAV defense system lacks coverage of China's 5.1 GHz band, parts of BeiDou‑3 frequencies, and has almost no countermeasures against fiber‑optic and AI‑autonomous UAVs, with deployment lagging.",
-          "sourceQuote": "該系統偵測、干擾頻段未涵蓋中國近年推出5.1GHz新機型，干擾衛星導航範圍也漏掉中國北斗3號部分頻段，且對光纖式無人機、AI自主導航無人機幾無反制手段，建置進度持續落後。"
-        },
-        {
-          "factId": "F2",
-          "claim": "MOD spokesperson says the 5.1 GHz band is not a legal band in Taiwan but NCSIST will incorporate it via system updates.",
-          "sourceQuote": "中國後來在112年提出的5.1GHz頻段在台灣並非合法使用頻段，但中科院會透過系統更新方式，納入偵蒐及反制無人機設備中。"
-        },
-        {
-          "factId": "F3",
-          "claim": "For fiber‑optic and AI‑guided UAV countermeasures, the MOD will seek mature foreign sources through the Defense Innovation Unit or develop domestically.",
-          "sourceQuote": "這確實是新的發展，也非110年的建案中，但國防部會透過國防創新小組（DIU）尋找國外成熟商源，或透過自行研發等方式去籌獲反制系統。"
-        },
-        {
-          "factId": "F4",
-          "claim": "Legislative Yuan joint committee is reviewing draft UAV bills from the Executive Yuan, KMT, and TPP.",
-          "sourceQuote": "立法院經濟、外交及國防、財政委員會上午第2次聯席會議，針對行政院版、國民黨及民眾黨版無人機條例草案進行逐條審查。"
-        },
-        {
-          "factId": "F5",
-          "claim": "The NCSIST UAV countermeasure system was originally planned in 2021 targeting four frequency bands (2.4, 5.8, 1.2, 1.5 GHz).",
-          "sourceQuote": "中科院所建置的無人機反制系統於110年建案，是針對2.4GHz、5.8GHz、1.2GHz、1.5GHz，共4個一、二類無人機頻段建置"
-        },
-        {
-          "factId": "F6",
-          "claim": "The audit findings come from the 114th‑year central government final audit report.",
-          "sourceQuote": "根據審計部公布的民國114年度中央政府總決算審核報告指出"
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "審計部",
-          "空軍",
-          "國家中山科學研究院",
-          "中科院",
-          "國防部",
-          "立法院",
-          "經濟委員會",
-          "外交委員會",
-          "國防委員會",
-          "財政委員會",
-          "行政院",
-          "國民黨",
-          "民眾黨",
-          "國防創新小組",
-          "DIU"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "台北"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-27",
-          "110年",
-          "112年",
-          "114年度"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "regulatory_action",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260727-0443-3",
-      "primarySource": "中央社 CNA",
-      "items": [
-        {
-          "title": "審計部指無人機防禦漏中國新頻段 國防部：更新系統",
-          "url": "https://www.cna.com.tw/news/aipl/202607270054.aspx",
-          "publishedUtc": "2026-07-27T02:53Z",
-          "summary": "（中央社記者游凱翔台北27日電）審計部指出，空軍委託國家中山科學研究院建置「遙控無人機防禦系統」未涵蓋中國新頻段。國防部發言人孫立方中將今天表示，中國新頻段非台灣合法頻段，中科院將透過系統更新納入反制及偵蒐系統，同時透過國防創新小組、自行研製，籌獲AI或光纖無人機反制系統。",
-          "image": null,
-          "source": "中央社 CNA",
-          "sourceKey": "cnataiwan"
-        },
-        {
-          "title": "審計部指無人機防禦漏中國新頻段　國防部：更新系統",
-          "summary": "審計部指無人機防禦漏中國新頻段 國防部：更新系統 &nbsp;&nbsp; 經濟日報",
-          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9EWjVmbXVkRWdnenZpcVRsWV9peFd4S3RFMlhQaDdKZFJJaTJiSUgzU29JbHBHQnZlRXQ2eGFSWVM3RnBXQTFZaW1GMlVjN2ZoM3FFYlFMVmRoQdIBX0FVX3lxTFBuYVN1aktkWFRxdnZQdjdpMHNfdGN1OTZCcnV0Nmt6SUluSzNhX3BnZUh3U0NVY2M1VjZBOVdaNVBjYWthTXlQa1BpMVV0M3FxQXYwbHlGbVJkNmpWT3k4?oc=5",
-          "source": "經濟日報",
-          "companion": true,
-          "publishedUtc": "2026-07-27T03:01Z"
-        }
-      ]
     }
   }
 ]
