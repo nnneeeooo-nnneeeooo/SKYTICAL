@@ -1,5 +1,250 @@
 [
   {
+    "id": "g-20260801-2202-3",
+    "queuedUtc": "2026-08-01T22:02Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves an FAA regulatory proposal to establish a prohibited airspace over Trump Tower, requiring human review for regulatory action.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The FAA has proposed adding a regulation to Title 14 of the Code of Federal Regulations to create a prohibited area necessary for the president.",
+        "sourceQuote": "The FAA has proposed adding a regulation to Title 14 of the Code of Federal Regulations, creating a prohibited area necessary for the president.",
+        "sourceUrl": "https://simpleflying.com/trump-tower-no-fly-zone/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "A permanent no-fly zone is established over Trump Tower, remaining effective even after leaving office.",
+        "sourceQuote": "Permanent No-Fly Zone Established Over Trump Tower, Effective Even After Leaving Office",
+        "sourceUrl": "https://simpleflying.com/trump-tower-no-fly-zone/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report involves an FAA regulatory proposal to establish a prohibited airspace over Trump Tower, requiring human review for regulatory action.",
+      "cat": "reg",
+      "zh": {
+        "title": "美國FAA擬新增法規條款 設立川普大樓總統禁飛區",
+        "summary": "根據Simple Flying報導，美國聯邦航空管理局已提議對《美國聯邦法規》第14卷新增一項法規，旨在設立總統所需的禁飛區。報導指出，相關措施涉及在川普大樓上空設立永久禁飛區，且即使在卸任後依然保持有效。",
+        "body": [
+          "根據航空媒體Simple Flying報導，美國聯邦航空管理局已正式提議針對《美國聯邦法規》第14卷進行修訂並新增相關法規條款。該項提案的核心內容旨在建立維護總統安全所必要的管制禁飛區域。",
+          "相關報導指出，該項擬議中的規定包含於川普大樓上空設立永久性禁飛區。根據相關消息，該禁飛區管制即使在卸任總統職務之後仍將繼續維持有效。",
+          "依據Simple Flying公布之訊息，主管機關劃設此一特定禁飛區域乃基於總統安全防護需求，目前已正式進入法規增訂之擬議程序。"
+        ]
+      },
+      "en": {
+        "title": "FAA Proposes New Regulation to Establish Prohibited Airspace Over Trump Tower",
+        "summary": "According to a report by Simple Flying, the Federal Aviation Administration has proposed adding a regulation to Title 14 of the Code of Federal Regulations, creating a designated prohibited area necessary for the president. The coverage states that a permanent no-fly zone has been established over Trump Tower, remaining in effect even after leaving office. The FAA regulatory proposal outlines these airspace restrictions to satisfy presidential protection requirements under federal aviation rules.",
+        "body": [
+          "According to a report by Simple Flying, the U.S. Federal Aviation Administration has proposed adding a new regulation to Title 14 of the Code of Federal Regulations. The regulatory proposal aims to establish a designated prohibited area deemed necessary for the president.",
+          "The report states that the measures involve establishing a permanent no-fly zone over Trump Tower. Under the proposed framework, this prohibited airspace restriction is designed to remain in effect even after leaving office.",
+          "The FAA proposal sets forth the specific regulatory basis for creating prohibited airspace to satisfy presidential security requirements as reported."
+        ]
+      },
+      "flash": {
+        "zh": "FAA擬修訂法規設立川普大樓禁飛區",
+        "en": "FAA proposes regulation establishing no-fly zone over Trump Tower",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The FAA has proposed adding a regulation to Title 14 of the Code of Federal Regulations to create a prohibited area necessary for the president.",
+          "sourceQuote": "The FAA has proposed adding a regulation to Title 14 of the Code of Federal Regulations, creating a prohibited area necessary for the president.",
+          "sourceUrl": "https://simpleflying.com/trump-tower-no-fly-zone/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "A permanent no-fly zone is established over Trump Tower, remaining effective even after leaving office.",
+          "sourceQuote": "Permanent No-Fly Zone Established Over Trump Tower, Effective Even After Leaving Office",
+          "sourceUrl": "https://simpleflying.com/trump-tower-no-fly-zone/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "FAA",
+          "Simple Flying"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Trump Tower"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-01"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-2202-3",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Permanent No-Fly Zone Established Over Trump Tower, Effective Even After Leaving Office",
+          "url": "https://simpleflying.com/trump-tower-no-fly-zone/",
+          "publishedUtc": "2026-08-01T21:18Z",
+          "summary": "The FAA has proposed adding a regulation to Title 14 of the Code of Federal Regulations, creating a prohibited area necessary for the president.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/plane-landing-at-laguardia-1.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-1805-faa-announces-successful-counter-drone-e",
+            "relationship_type": "regulatory_progression",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 10 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
+            "event_date": "2026-07-22",
+            "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa...",
+            "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+            "facts": [
+              {
+                "claim": "FAA announced successful counter-drone efforts during FIFA World Cup 2026 with more than 700 drones seized.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026, With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "Transportation Secretary Sean P. Duffy announced federal, state, and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_quote": "Department of Transportation Secretary Sean P. Duffy announced that federal, state and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "The effort helped keep millions of fans safe.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "More than 700 drones were seized.",
+                "source_quote": "With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 6 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 4 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 4 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260801-2012-7",
     "queuedUtc": "2026-08-01T20:13Z",
     "approve": false,
@@ -8482,199 +8727,6 @@
           "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/kai-kf-21-korean-fighter-jet.jpg",
           "source": "Simple Flying",
           "sourceKey": "simpleflying"
-        }
-      ],
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260728-1208-3",
-    "queuedUtc": "2026-07-28T12:08Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "IATA, CANSO, and ACI launched a joint initiative on July 28, 2026, to reduce the risk of runway incursions.",
-        "sourceQuote": "The International Air Transport Association (IATA), the Civil Air Navigation Services Organisation (CANSO) , and Airports Council International (ACI) have launched a joint initiative to reduce the risk of runway incursions.",
-        "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The initiative focuses on improving safety reporting and data capture, strengthening local runway safety teams, and sharing progress and lessons learned.",
-        "sourceQuote": "Improving safety reporting and data capture , including incidents, near misses, precursor events, and observations from frontline personnel.",
-        "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "IATA's Nick Careen stated that the initiative brings airlines, airports, and air navigation service providers together to identify runway risks earlier.",
-        "sourceQuote": "This initiative brings airlines, airports, and air navigation service providers together to identify runway risks earlier and take coordinated action,” said Nick Careen, IATA’s Senior Vice President Operations, Safety, and Security.",
-        "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The initiative builds on existing efforts including the Global Action Plan for the Prevention of Runway Incursions (GAPPRI) and the ICAO Global Runway Safety Action Plan.",
-        "sourceQuote": "The initiative builds on existing efforts, including the Global Action Plan for the Prevention of Runway Incursions (GAPPRI) – a collaboration of ICAO, Eurocontrol, and the Flight Safety Foundation endorsed by IATA, ACI, and CANSO—as well as the ICAO Global Runway Safety Action Plan.",
-        "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "CANSO's Andrea Sack and ACI World's Darryl Dowd emphasized clear communication, local teams, and local knowledge in reducing runway risks.",
-        "sourceQuote": "Runway safety depends on clear communication and coordinated decisions across the airport environment.",
-        "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
-      "cat": "safety",
-      "zh": {
-        "title": "國際航空運輸協會與CANSO及ACI推出跑道安全倡議",
-        "summary": "國際航空運輸協會（IATA）、民航空航服務組織（CANSO）以及國際機場協會（ACI）於2026年7月28日宣布推出「聯合跑道安全倡議」，旨在降低跑道入侵風險。該倡議將聚焦於改善安全報告與資料擷取、強化地方跑道安全小組，以及跨機場分享經驗教訓三大核心領域。",
-        "body": [
-          "國際航空運輸協會（IATA）、民航空航服務組織（CANSO）與國際機場協會（ACI）於2026年7月28日聯合宣布，正式推出「聯合跑道安全倡議」（Joint Runway Safety Initiative），以降低航空營運中的跑道入侵風險。跑道入侵被定義為航空器、車輛或人員錯誤地位於跑道或其保護區域內。鑑於跑道入侵對航空安全構成重大風險，三大組織強調預防此類事件需要航空公司、機場、空航服務提供者、主管機關及一線人員之間的緊密協調。",
-          "此項聯合倡議聚焦於三大核心領域：第一，改善安全報告與資料擷取，涵蓋事故、近距離錯失事件、前兆事件以及一線人員的觀察紀錄；第二，強化地方跑道安全小組，使其成為航空公司、機場與空航服務提供者評估在地風險並達成協調行動的主要平台；第三，促進經驗教訓與進展的分享，以便營運環境相似的機場與機構能更廣泛地採用有效做法。",
-          "IATA營運、安全暨安保資深副總裁Nick Careen指出，保持最高安全紀錄需要持續改進，此倡議將航空公司、機場與空航服務提供者凝聚在一起，有助於提早識別跑道風險並採取協調行動。CANSO全球營運資深副總裁Andrea Sack亦表示，跑道安全仰賴跨機場環境的清晰溝通與協調決策，強大的地方跑道安全小組能將各方營運夥伴結合在一起。ACI World安全、安保暨營運副總裁Darryl Dowd則強調，地方知識與持續合作能將安全指引轉化為實質風險降低。",
-          "該倡議建立在現有的全球安全機制之上，包括由ICAO、Eurocontrol及飛行安全基金會（Flight Safety Foundation）合作並獲IATA、ACI與CANSO認可的「全球預防跑道入侵行動計劃」（GAPPRI），以及ICAO「全球跑道安全行動計劃」。三大組織將運用包含風險評估資源、跑道安全檢核表、ACI在APEX安全計畫下的跑道安全小組實施套件、IATA跑道入侵安全風險評估工具，以及透過IOSA計畫進行的航空公司風險評估評估等工具，進一步推進全球跑道安全目標。"
-        ]
-      },
-      "en": {
-        "title": "IATA CANSO and ACI Launch Joint Initiative to Reduce Runway Incursions",
-        "summary": "The International Air Transport Association (IATA), the Civil Air Navigation Services Organisation (CANSO), and Airports Council International (ACI) have launched a joint initiative on July 28, 2026, aimed at reducing the risk of runway incursions across global aviation operations. The Joint Runway Safety Initiative focuses on improving safety reporting and data capture, strengthening local runway safety teams, and sharing progress and lessons learned among industry stakeholders to enhance airport safety standards.",
-        "body": [
-          "The International Air Transport Association (IATA), the Civil Air Navigation Services Organisation (CANSO), and Airports Council International (ACI) officially launched the Joint Runway Safety Initiative on July 28, 2026. The collaborative program is designed to mitigate the risk of runway incursions, defined as any incorrect presence of an aircraft, vehicle, or person on a runway or within its designated protected area. The organizations emphasized that preventing incursions requires synchronized coordination among airlines, airport operators, air navigation service providers, regulators, and frontline operational personnel.",
-          "The joint initiative focuses its efforts on three core operational pillars. First, it aims to improve safety reporting and data collection, capturing detailed records of incidents, near misses, precursor events, and frontline observations. Second, it seeks to strengthen Local Runway Safety Teams, establishing them as the primary collaborative forum for local stakeholders to assess specific risks and agree on aligned operational actions. Third, the initiative will facilitate the widespread sharing of progress and lessons learned, allowing airports with similar operational environments to adopt proven safety practices.",
-          "Industry leadership highlighted the crucial role of multi-stakeholder collaboration in maintaining safety standards. Nick Careen, IATA Senior Vice President of Operations, Safety, and Security, stated that bringing airlines, airports, and navigation service providers together enables earlier identification of runway risks and coordinated action. Andrea Sack, Senior Vice President of Global Operations at CANSO, noted that runway safety relies on clear communication and joint decisions across airport environments. Darryl Dowd, Vice President of Safety, Security, and Operations at ACI World, added that local knowledge and sustained cooperation are key to translating guidance into tangible risk reductions.",
-          "The Joint Runway Safety Initiative builds upon existing global frameworks, including the Global Action Plan for the Prevention of Runway Incursions (GAPPRI)—developed by ICAO, Eurocontrol, and the Flight Safety Foundation—as well as the ICAO Global Runway Safety Action Plan. To further these goals, the partner organizations are deploying tools such as ACI's APEX in Safety implementation packages, CANSO and ACI co-developed safety checklists, IATA's Runway Incursion Safety Risk Assessment, and airline evaluations through the IOSA program."
-        ]
-      },
-      "flash": {
-        "zh": "IATA、CANSO與ACI聯合推出跑道安全倡議以降低跑道入侵風險",
-        "en": "IATA, CANSO, and ACI launch joint initiative to reduce runway incursions",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "IATA, CANSO, and ACI launched a joint initiative on July 28, 2026, to reduce the risk of runway incursions.",
-          "sourceQuote": "The International Air Transport Association (IATA), the Civil Air Navigation Services Organisation (CANSO) , and Airports Council International (ACI) have launched a joint initiative to reduce the risk of runway incursions.",
-          "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The initiative focuses on improving safety reporting and data capture, strengthening local runway safety teams, and sharing progress and lessons learned.",
-          "sourceQuote": "Improving safety reporting and data capture , including incidents, near misses, precursor events, and observations from frontline personnel.",
-          "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "IATA's Nick Careen stated that the initiative brings airlines, airports, and air navigation service providers together to identify runway risks earlier.",
-          "sourceQuote": "This initiative brings airlines, airports, and air navigation service providers together to identify runway risks earlier and take coordinated action,” said Nick Careen, IATA’s Senior Vice President Operations, Safety, and Security.",
-          "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The initiative builds on existing efforts including the Global Action Plan for the Prevention of Runway Incursions (GAPPRI) and the ICAO Global Runway Safety Action Plan.",
-          "sourceQuote": "The initiative builds on existing efforts, including the Global Action Plan for the Prevention of Runway Incursions (GAPPRI) – a collaboration of ICAO, Eurocontrol, and the Flight Safety Foundation endorsed by IATA, ACI, and CANSO—as well as the ICAO Global Runway Safety Action Plan.",
-          "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "CANSO's Andrea Sack and ACI World's Darryl Dowd emphasized clear communication, local teams, and local knowledge in reducing runway risks.",
-          "sourceQuote": "Runway safety depends on clear communication and coordinated decisions across the airport environment.",
-          "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "IATA",
-          "CANSO",
-          "ACI",
-          "International Air Transport Association",
-          "Civil Air Navigation Services Organisation",
-          "Airports Council International",
-          "ICAO",
-          "Eurocontrol",
-          "Flight Safety Foundation",
-          "ACI World"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Geneva",
-          "Montreal"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-28"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260728-1208-3",
-      "primarySource": "IATA",
-      "items": [
-        {
-          "title": "IATA, CANSO, and ACI Launch Joint Runway Safety Initiative",
-          "url": "https://www.iata.org/en/pressroom/2026-releases/iata-canso-aci-launch-joint-runway-safety-initiative/",
-          "publishedUtc": "2026-07-28T02:00Z",
-          "summary": "IATA, the Civil Air Navigation Services Organisation (CANSO), and Airports Council International (ACI) have launched a joint initiative to reduce the risk of runway incursions.",
-          "image": null,
-          "source": "IATA",
-          "sourceKey": "iata"
         }
       ],
       "archiveContext": {
