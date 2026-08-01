@@ -1,5 +1,224 @@
 [
   {
+    "id": "g-20260801-0426-2",
+    "queuedUtc": "2026-08-01T04:26Z",
+    "approve": false,
+    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
+    "decisionReason": "Aviation safety event involving a near-collision between two aircraft at Washington Reagan (DCA). Potential serious incident, under investigation, no official findings yet.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Simple Flying報導，美國航空一架波音737與一架E175在華盛頓雷根機場幾乎發生碰撞。",
+        "sourceQuote": "American Airlines 737 & E175 Nearly Collide At Washington Reagan",
+        "sourceUrl": "https://simpleflying.com/american-airlines-737-e175-near-collision-washington-reagan/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "兩架飛機一度僅相距800英尺。",
+        "sourceQuote": "800 Feet Apart",
+        "sourceUrl": "https://simpleflying.com/american-airlines-737-e175-near-collision-washington-reagan/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "事件起因為一架美國航空支線噴射機的機組人員，誤聽並接受了本該發給另一架飛機的跑道許可。",
+        "sourceQuote": "An American Airlines regional jet's mistaken acceptance of runway clearance meant for another aircraft led to a near-miss at DCA.",
+        "sourceUrl": "https://simpleflying.com/american-airlines-737-e175-near-collision-washington-reagan/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety event involving a near-collision between two aircraft at Washington Reagan (DCA). Potential serious incident, under investigation, no official findings yet.",
+      "cat": "safety",
+      "zh": {
+        "title": "美航737與E175華盛頓雷根機場險撞 僅距800英尺",
+        "summary": "美國航空一架波音737與一架E175支線客機在華盛頓雷根國家機場（DCA）因誤聽跑道許可，一度僅相距約800英尺，險些發生碰撞。事件正在調查中。",
+        "body": [
+          "美國航空一架波音737與一架E175支線客機在華盛頓雷根國家機場（DCA）發生一起近距離接近事件。根據Simple Flying報導，兩架飛機一度僅相距約800英尺。",
+          "事件起因是該架E175支線客機的機組員誤聽並接受了一份原本發給另一架飛機的跑道起飛許可，隨後開始準備起飛，而該跑道當時已有另一架飛機正在使用。",
+          "據報導，塔台管制員發現情況後立即介入，指示雙方飛機停止動作，避免了可能發生的碰撞。",
+          "目前相關單位已就此事件展開調查。Simple Flying的報導提供了事件的初步細節，但未透露確切日期、航班編號與飛機註冊編號。",
+          "本站將持續關注調查進展，並在獲得更多官方資訊後更新報導。"
+        ]
+      },
+      "en": {
+        "title": "American Airlines 737 and E175 Nearly Collide at Washington Reagan, Only 800 Feet Apart",
+        "summary": "An American Airlines Boeing 737 and an E175 regional jet came within 800 feet of each other at Washington Reagan National Airport (DCA) after the regional jet mistakenly accepted a runway clearance meant for another aircraft. An investigation is underway.",
+        "body": [
+          "An American Airlines Boeing 737 and an E175 regional jet were involved in a close-call incident at Washington Reagan National Airport (DCA). According to Simple Flying, the two aircraft came within approximately 800 feet of each other.",
+          "The event occurred after the E175 crew mistakenly accepted a takeoff clearance intended for a different aircraft, leading them to prepare to enter a runway already in use.",
+          "Air traffic controllers intervened, instructing both aircraft to halt, thereby averting a potential collision.",
+          "Authorities have launched an investigation into the incident. Simple Flying's report provided initial details but did not disclose the exact date, flight numbers, or aircraft registration numbers.",
+          "AVWIRE will follow the investigation and provide updates as more official information becomes available."
+        ]
+      },
+      "flash": {
+        "zh": "華盛頓雷根機場兩機相距800英尺 正調查",
+        "en": "DCA near-miss: AA 737 and E175 800 ft apart, under investigation",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-07-31",
+        "sev": "ser",
+        "aircraft": "Boeing 737, E175",
+        "operator": "American Airlines",
+        "phase": {
+          "zh": "地面滑行/跑道",
+          "en": "Taxi/Runway"
+        },
+        "location": {
+          "zh": "華盛頓雷根國家機場（DCA）",
+          "en": "Washington Reagan National Airport (DCA)"
+        },
+        "desc": {
+          "zh": "一架E175誤聽跑道起飛許可並準備進入跑道，而另一架737正在該跑道上，兩機一度僅相距約800英尺。管制員即時介入制止。",
+          "en": "An E175 mistakenly accepted a takeoff clearance for another aircraft and prepared to enter a runway where a 737 was operating, closing to within roughly 800 feet. ATC intervened to halt both."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Simple Flying報導，美國航空一架波音737與一架E175在華盛頓雷根機場幾乎發生碰撞。",
+          "sourceQuote": "American Airlines 737 & E175 Nearly Collide At Washington Reagan",
+          "sourceUrl": "https://simpleflying.com/american-airlines-737-e175-near-collision-washington-reagan/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "兩架飛機一度僅相距800英尺。",
+          "sourceQuote": "800 Feet Apart",
+          "sourceUrl": "https://simpleflying.com/american-airlines-737-e175-near-collision-washington-reagan/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "事件起因為一架美國航空支線噴射機的機組人員，誤聽並接受了本該發給另一架飛機的跑道許可。",
+          "sourceQuote": "An American Airlines regional jet's mistaken acceptance of runway clearance meant for another aircraft led to a near-miss at DCA.",
+          "sourceUrl": "https://simpleflying.com/american-airlines-737-e175-near-collision-washington-reagan/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "American Airlines",
+          "Simple Flying"
+        ],
+        "airlines": [
+          "American Airlines"
+        ],
+        "aircraft_models": [
+          "737",
+          "E175"
+        ],
+        "airports": [
+          "Washington Reagan (DCA)"
+        ],
+        "locations": [
+          "Washington Reagan",
+          "DCA"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-01"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-0426-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "800 Feet Apart: American Airlines 737 & E175 Nearly Collide At Washington Reagan",
+          "url": "https://simpleflying.com/american-airlines-737-e175-near-collision-washington-reagan/",
+          "publishedUtc": "2026-08-01T00:36Z",
+          "summary": "An American Airlines regional jet's mistaken acceptance of runway clearance meant for another aircraft led to a near-miss at DCA.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/american-eagle-e175-takeoff-1.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: simple flying",
+              "archive predates source by 4 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 4 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
+            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+            "facts": [
+              {
+                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
+                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260801-0006-3",
     "queuedUtc": "2026-08-01T00:06Z",
     "approve": false,
