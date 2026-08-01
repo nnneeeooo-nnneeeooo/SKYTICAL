@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-01T14:52Z",
+  "updatedUtc": "2026-08-01T14:54Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,10 +21,10 @@
       "unknownCalls": 60
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 144,
+      "calls": 145,
       "inputTokens": 485264,
       "outputTokens": 863202,
-      "unknownCalls": 32
+      "unknownCalls": 33
     },
     "gemini:gemini-3.5-flash": {
       "calls": 24,
@@ -39,9 +39,9 @@
       "unknownCalls": 79
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 118,
-      "inputTokens": 624412,
-      "outputTokens": 195149,
+      "calls": 119,
+      "inputTokens": 637205,
+      "outputTokens": 195707,
       "unknownCalls": 1
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
@@ -161,12 +161,202 @@
       "outputTokens": 938286
     },
     "2026-08-01": {
-      "calls": 157,
-      "inputTokens": 607585,
-      "outputTokens": 754641
+      "calls": 159,
+      "inputTokens": 620378,
+      "outputTokens": 755199
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-01T14:53Z",
+      "finishedUtc": "2026-08-01T14:54Z",
+      "workflow": "manual",
+      "taskType": "manual_article",
+      "groupId": "manual-59719801d31ac27076a08777a27fdac5",
+      "eventId": null,
+      "sourceCount": 5,
+      "primarySource": "m.facebook.com",
+      "result": "publish",
+      "articleId": null,
+      "finalStatus": "publish",
+      "finalModel": "nvidia:z-ai/glm-5.2",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "total": 31888
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": null,
+          "durationMs": 306,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "quota",
+          "failureStage": "drafting",
+          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "nvidia",
+          "model": "z-ai/glm-5.2",
+          "label": "nvidia:z-ai/glm-5.2",
+          "startedUtc": null,
+          "durationMs": 28639,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": "drafting",
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": [
+          {
+            "label": "gemini:gemini-3.6-flash",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "gemini:gemini-3.5-flash",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:z-ai/glm-5.2",
+            "inputTokens": 12793,
+            "outputTokens": 558,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:qwen/qwen3.5-397b-a17b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-31b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:inclusionai/ling-3.0-flash:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:openai/gpt-oss-20b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-s-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:cohere/north-mini-code:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-xs-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          }
+        ]
+      }
+    },
     {
       "startedUtc": "2026-08-01T14:38Z",
       "finishedUtc": "2026-08-01T14:39Z",
