@@ -1,5 +1,259 @@
 [
   {
+    "id": "g-20260801-1455-12",
+    "queuedUtc": "2026-08-01T14:55Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Story contains a major financial claim ($300 million contract) for a military helicopter upgrade; per policy requires manual review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Bell Textron secured an estimated $300 million contract to begin the next phase of upgrades for the US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters.",
+        "sourceQuote": "Bell Textron has secured an estimated $300 million contract to begin the next phase of upgrades for the US Marine Corps ’ AH-1Z Viper and UH-1Y Venom helicopters.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The SPINE programme will provide upgraded electrical power and digital systems for the H-1 fleet through the 2040s.",
+        "sourceQuote": "Under the Structural and Power Improvements for NextGen Effects (SPINE) programme, the H-1 fleet will receive upgraded electrical power and digital systems to support future weapons, sensors, and battlefield networks through the 2040s.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Bell will upgrade 49 aircraft, 28 AH-1Z Vipers and 21 UH-1Y Venoms, at its Amarillo Assembly Center in Texas.",
+        "sourceQuote": "Under the contract, Bell will upgrade 49 aircraft—28 AH-1Z Vipers and 21 UH-1Y Venoms—at its Amarillo Assembly Center in Texas.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Work is scheduled to begin in mid-2027 with first upgraded helicopters delivered in 2028.",
+        "sourceQuote": "Work is scheduled to begin in mid-2027, with the first upgraded helicopters expected to be delivered to the Marine Corps in 2028.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Upgrades include improved defensive systems, Link 16 tactical data links, modern digital communications, and the ability to operate future network-enabled weapons.",
+        "sourceQuote": "That includes improved defensive systems, Link 16 tactical data links, modern digital communications, and the ability to operate future network-enabled weapons.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "UH-1Y mission equipment upgrades cover fast-rope, rescue hoist, and medical evacuation kits.",
+        "sourceQuote": "The programme also introduces improvements to the UH-1Y’s mission equipment, including upgrades to fast-rope, rescue hoist, and medical evacuation kits, strengthening its ability to support personnel recovery and special operations missions in demanding environments.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F7",
+        "claim": "US Marine Corps received its 359th and final Bell Boeing MV-22B Osprey on 2026-07-29.",
+        "sourceQuote": "The US Marine Corps has received its 359th and final Bell Boeing MV-22B Osprey, completing the tiltrotor’s program",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-marine-corps-final-mv-22b-osprey-delivery",
+        "evidenceScope": "archive",
+        "archiveEventId": "a-20260729-1742-us-marine-corps-receives-359th-and-final",
+        "archiveContext": true
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Story contains a major financial claim ($300 million contract) for a military helicopter upgrade; per policy requires manual review.",
+      "cat": "mil",
+      "zh": {
+        "title": "美國海軍陸戰隊AH-1Z與UH-1Y啟動SPINE升級計畫",
+        "summary": "美軍陸戰隊授予貝爾直升機約3億美元合約，啟動SPINE計畫為AH-1Z與UH-1Y升級電力與數位架構，共49架直升機將於德州阿馬里洛組裝中心改裝，預計2027年中開工、2028年首架交付。",
+        "body": [
+          "貝爾德州阿馬里洛組裝中心將負責改裝28架AH-1Z Viper與21架UH-1Y Venom，合約金額估計約3億美元。",
+          "SPINE（Structural and Power Improvements for NextGen Effects）計畫旨在為H-1機隊提供更強電力輸出與現代化數位架構，以支援未來武器、感測器與戰場網路至2040年代。",
+          "改裝工作預計於2027年中期啟動，首批升級後直升機將於2028年交付海軍陸戰隊。",
+          "升級內容包含改良防禦系統、Link 16戰術資料鏈、現代數位通訊以及操作未來網絡化武器的能力，提升生存力與聯合作戰互通性。",
+          "UH-1Y另將獲得快繩、救生絞盤與醫療後送套件升級，強化人員救援與特種任務支援能力。"
+        ]
+      },
+      "en": {
+        "title": "US Marine Corps Launches SPINE Upgrade for AH-1Z Viper and UH-1Y Venom Helicopters",
+        "summary": "The US Marine Corps awarded Bell Textron an estimated $300 million contract to begin the SPINE programme, upgrading electrical power and digital architecture on 49 H-1 helicopters — 28 AH-1Z Vipers and 21 UH-1Y Venoms — at the Amarillo Assembly Center in Texas, with work starting mid-2027 and first deliveries in 2028.",
+        "body": [
+          "Bell Textron secured an estimated $300 million contract to begin the next phase of upgrades for the US Marine Corps’ AH-1Z Viper and UH-1Y Venom helicopters.",
+          "Under the Structural and Power Improvements for NextGen Effects (SPINE) programme, the H-1 fleet will receive upgraded electrical power and digital systems to support future weapons, sensors, and battlefield networks through the 2040s.",
+          "The contract calls for upgrading 49 aircraft — 28 AH-1Z Vipers and 21 UH-1Y Venoms — at Bell’s Amarillo Assembly Center in Texas.",
+          "Work is scheduled to begin in mid-2027, with the first upgraded helicopters expected to be delivered to the Marine Corps in 2028.",
+          "Upgrades include improved defensive systems, Link 16 tactical data links, modern digital communications, and the ability to operate future network-enabled weapons, while the UH-1Y will also receive fast-rope, rescue hoist, and medical evacuation kit improvements."
+        ]
+      },
+      "flash": {
+        "zh": "美陸戰隊啟動AH-1Z/UH-1Y SPINE升級",
+        "en": "USMC starts AH-1Z/UH-1Y SPINE upgrade",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Bell Textron secured an estimated $300 million contract to begin the next phase of upgrades for the US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters.",
+          "sourceQuote": "Bell Textron has secured an estimated $300 million contract to begin the next phase of upgrades for the US Marine Corps ’ AH-1Z Viper and UH-1Y Venom helicopters.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The SPINE programme will provide upgraded electrical power and digital systems for the H-1 fleet through the 2040s.",
+          "sourceQuote": "Under the Structural and Power Improvements for NextGen Effects (SPINE) programme, the H-1 fleet will receive upgraded electrical power and digital systems to support future weapons, sensors, and battlefield networks through the 2040s.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Bell will upgrade 49 aircraft, 28 AH-1Z Vipers and 21 UH-1Y Venoms, at its Amarillo Assembly Center in Texas.",
+          "sourceQuote": "Under the contract, Bell will upgrade 49 aircraft—28 AH-1Z Vipers and 21 UH-1Y Venoms—at its Amarillo Assembly Center in Texas.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Work is scheduled to begin in mid-2027 with first upgraded helicopters delivered in 2028.",
+          "sourceQuote": "Work is scheduled to begin in mid-2027, with the first upgraded helicopters expected to be delivered to the Marine Corps in 2028.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Upgrades include improved defensive systems, Link 16 tactical data links, modern digital communications, and the ability to operate future network-enabled weapons.",
+          "sourceQuote": "That includes improved defensive systems, Link 16 tactical data links, modern digital communications, and the ability to operate future network-enabled weapons.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "UH-1Y mission equipment upgrades cover fast-rope, rescue hoist, and medical evacuation kits.",
+          "sourceQuote": "The programme also introduces improvements to the UH-1Y’s mission equipment, including upgrades to fast-rope, rescue hoist, and medical evacuation kits, strengthening its ability to support personnel recovery and special operations missions in demanding environments.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F7",
+          "claim": "US Marine Corps received its 359th and final Bell Boeing MV-22B Osprey on 2026-07-29.",
+          "sourceQuote": "The US Marine Corps has received its 359th and final Bell Boeing MV-22B Osprey, completing the tiltrotor’s program",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-marine-corps-final-mv-22b-osprey-delivery",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260729-1742-us-marine-corps-receives-359th-and-final",
+          "archiveContext": true
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "US Marine Corps",
+          "Bell Textron"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "AH-1Z Viper",
+          "UH-1Y Venom"
+        ],
+        "airports": [],
+        "locations": [
+          "Amarillo Assembly Center, Texas"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "mid-2027",
+          "2028",
+          "2026-07-29"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-1455-12",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "US Marine Corps begins major AH-1Z Viper and UH-1Y Venom upgrade to prepare H-1 fleet for future battlefield News",
+          "url": "https://aerospaceglobalnews.com/news/bell-textron-usmc-h1-helicopter-spine-upgrade-contract/",
+          "publishedUtc": "2026-07-29T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/Featured-Image.avif",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1742-us-marine-corps-receives-359th-and-final",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: us marine corps",
+              "archive predates source by 0 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — Bell Boeing delivers final MV-22 Osprey to US Marine Corps",
+            "source_url": "https://www.aerotime.aero/articles/us-marine-corps-final-mv-22b-osprey-delivery",
+            "facts": [
+              {
+                "claim": "The US Marine Corps received its 359th and final Bell Boeing MV-22B Osprey, completing the tiltrotor program.",
+                "source_quote": "The US Marine Corps has received its 359th and final Bell Boeing MV-22B Osprey, completing the tiltrotor’s program",
+                "source_url": "https://www.aerotime.aero/articles/us-marine-corps-final-mv-22b-osprey-delivery",
+                "source_name": "AeroTime — Bell Boeing delivers final MV-22 Osprey to US Marine Corps"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260801-1438-3",
     "queuedUtc": "2026-08-01T14:38Z",
     "approve": false,
@@ -8511,179 +8765,6 @@
           "source": "經濟日報",
           "companion": true,
           "publishedUtc": "2026-07-27T03:01Z"
-        }
-      ]
-    }
-  },
-  {
-    "id": "g-20260727-0443-7",
-    "queuedUtc": "2026-07-27T04:43Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Regulatory directive issued by CAA regarding typhoon impact; developing weather situation.",
-    "riskFlags": [
-      "regulatory_action",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "CAA press release dated 24 July 2026",
-        "sourceQuote": "發布日期：115年7月24日"
-      },
-      {
-        "factId": "F2",
-        "claim": "Tomorrow international flights expected 22 cancellations",
-        "sourceQuote": "明日國際線預計有22架次航班取消"
-      },
-      {
-        "factId": "F3",
-        "claim": "As of 23:00 today domestic cancellations 20, delays 3; international cancellations 2",
-        "sourceQuote": "今日截至晚間11點，國內線取消20架次、延誤3架次，國際線取消2架次。"
-      },
-      {
-        "factId": "F4",
-        "claim": "22 flights at Taoyuan diverted to Songshan, Taichung, Kaohsiung, Hong Kong, Macau due to gusts and wind shear",
-        "sourceQuote": "今晚間截至11點，桃園機場共有22班航班因強陣風與風切影響，轉降松山、台中、高雄等機場，亦有航機轉降香港、澳門等地。"
-      },
-      {
-        "factId": "F5",
-        "claim": "CAA requires conservative dispatch, sufficient fuel, and preparation of alternate airports",
-        "sourceQuote": "民航局同時要求業者應保守派遣，航班應帶足油料，並備妥備降機場。"
-      },
-      {
-        "factId": "F6",
-        "claim": "Airlines have notified passengers via SMS, email, website, app and CAA requires assistance with rebooking or refunds",
-        "sourceQuote": "航空公司已以簡訊、電子郵件、官網、APP等管道主動通知旅客航班異動資訊，民航局也要求航空公司，應依據天候狀況盡力協助旅客辦理改票、退票或改搭其他適當航班等事宜"
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Regulatory directive issued by CAA regarding typhoon impact; developing weather situation.",
-      "cat": "ops",
-      "zh": {
-        "title": "民航局因紅霞颱風要求保守派遣備降並取消22國際班",
-        "summary": "民航局發布新聞稿，因紅霞颱風預計明日國際線取消22架次，要求航空公司保守派遣、帶足油料並備妥兩處以上備降機場，且已通知旅客辦理改退票；截至晚間11點國內線取消20架次、延誤3架次，國際線取消2架次，桃園機場22班因強陣風轉降松山、台中、高雄、香港、澳門",
-        "body": [
-          "交通部民用航空局於115年7月24日發布新聞稿，指出受紅霞颱風影響，明日國際線預計有22架次航班取消。",
-          "民航局指出，今日截至晚間11點，國內線取消20架次、延誤3架次，國際線取消2架次。",
-          "今晚間截至11點，桃園機場共有22班航班因強陣風與風切影響，轉降松山、台中、高雄等機場，亦有航機轉降香港、澳門等地。",
-          "民航局同時要求業者應保守派遣，航班應帶足油料，並備妥備降機場。",
-          "航空公司已以簡訊、電子郵件、官網、APP等管道主動通知旅客航班異動資訊，民航局也要求航空公司應依據天候狀況盡力協助旅客辦理改票、退票或改搭其他適當航班等事宜。"
-        ]
-      },
-      "en": {
-        "title": "CAA orders conservative dispatch and alternates as Typhoon Hongxia forces 22 international cancellations",
-        "summary": "The Civil Aeronautics Administration issued a press release on 24 July 2026 stating that Typhoon Hongxia is expected to cause 22 international flight cancellations tomorrow. Airlines are ordered to operate conservatively, carry sufficient fuel, and prepare at least two alternate airports, one outside the typhoon’s impact zone. Carriers have notified passengers via SMS, email, website and app and must assist with rebooking or refunds. As of 23:00 today, 20 domestic flights were cancelled and three delayed, with two international cancellations; 22 flights at Taoyuan were diverted to Songshan, Taichung, Kaohsiung, Hong Kong and Macau due to gusts and wind shear.",
-        "body": [
-          "The Civil Aeronautics Administration released a statement on 24 July 2026 saying Typhoon Hongxia will likely force 22 international flight cancellations tomorrow.",
-          "As of 23:00 today, 20 domestic flights were cancelled and three delayed, while two international flights were cancelled.",
-          "At 23:00, 22 flights at Taoyuan Airport were diverted to Songshan, Taichung, Kaohsiung, Hong Kong and Macau because of strong gusts and wind shear.",
-          "The CAA requires airlines to operate conservatively, carry sufficient fuel, and have alternate airports ready.",
-          "Airlines have notified passengers via SMS, email, website and app and must assist with rebooking or refunds according to weather conditions."
-        ]
-      },
-      "flash": {
-        "zh": "紅霞颱風致22國際班取消，民航局令保守派遣備降",
-        "en": "Typhoon Hongxia forces 22 international cancellations; CAA orders conservative dispatch and alternates",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "CAA press release dated 24 July 2026",
-          "sourceQuote": "發布日期：115年7月24日"
-        },
-        {
-          "factId": "F2",
-          "claim": "Tomorrow international flights expected 22 cancellations",
-          "sourceQuote": "明日國際線預計有22架次航班取消"
-        },
-        {
-          "factId": "F3",
-          "claim": "As of 23:00 today domestic cancellations 20, delays 3; international cancellations 2",
-          "sourceQuote": "今日截至晚間11點，國內線取消20架次、延誤3架次，國際線取消2架次。"
-        },
-        {
-          "factId": "F4",
-          "claim": "22 flights at Taoyuan diverted to Songshan, Taichung, Kaohsiung, Hong Kong, Macau due to gusts and wind shear",
-          "sourceQuote": "今晚間截至11點，桃園機場共有22班航班因強陣風與風切影響，轉降松山、台中、高雄等機場，亦有航機轉降香港、澳門等地。"
-        },
-        {
-          "factId": "F5",
-          "claim": "CAA requires conservative dispatch, sufficient fuel, and preparation of alternate airports",
-          "sourceQuote": "民航局同時要求業者應保守派遣，航班應帶足油料，並備妥備降機場。"
-        },
-        {
-          "factId": "F6",
-          "claim": "Airlines have notified passengers via SMS, email, website, app and CAA requires assistance with rebooking or refunds",
-          "sourceQuote": "航空公司已以簡訊、電子郵件、官網、APP等管道主動通知旅客航班異動資訊，民航局也要求航空公司，應依據天候狀況盡力協助旅客辦理改票、退票或改搭其他適當航班等事宜"
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F5",
-        "F6"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "交通部民用航空局"
-        ],
-        "airlines": [
-          "華信",
-          "立榮",
-          "德安"
-        ],
-        "aircraft_models": [],
-        "airports": [
-          "桃園機場",
-          "松山機場",
-          "台中機場",
-          "高雄機場",
-          "香港機場",
-          "澳門機場"
-        ],
-        "locations": [
-          "台灣",
-          "香港",
-          "澳門"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "115年7月24日",
-          "明日"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "regulatory_action",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260727-0443-7",
-      "primarySource": "CAA Taiwan",
-      "items": [
-        {
-          "title": "紅霞逼近，交通部、民航局要求保守派遣、帶足油料",
-          "url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2568&lang=1",
-          "publishedUtc": "2026-07-27T00:00Z",
-          "summary": "交通部民用航空局新聞稿 發布日期：115年7月24日 聯絡電話：2349-6038 聯絡人：王志青組長 受紅霞颱風影響，明日國際線預計有22架次航班取消，民航局要求航空公司落實通知旅客異動資訊，並妥善維護旅客權益，協助辦理改票、退票或改搭其他適當航班等事宜。民航局同時要求業者應保守派遣，航班應帶足油料，並備妥備降機場。 民航局指出，今日截至晚間11點，國內線取消20架次、延誤3架次，國際線取消2架次。而今晚間截至11點，桃園機場共有22班航班因強陣風與風切影響，轉降松山、台中、高雄等機場，亦有航機轉降香港、澳門等地。 因颱風影響持續，明日國際線航班預計取消22架次，包括桃園10架次、台中4架次、高雄8架次；國內線部分，華信、立榮與德安等業者初步規劃正常營運，但將視天氣情況調整。 民航局表示，針對異動的航班，航空公司已以簡訊、電子郵件、官網、APP等管道主動通知旅客航班異動資訊，民航局也要求航空公司，應依據天候狀況盡力協助旅客辦理改票、退票或改搭其他適當航班等事宜。 對於正常營運的航班，民航局已要求業者，應落實保守派遣及風險管理，同時應備妥兩處以上備降機場，其中一處必須在颱風影響範圍外…",
-          "image": null,
-          "source": "CAA Taiwan",
-          "sourceKey": "caataiwan"
         }
       ]
     }
