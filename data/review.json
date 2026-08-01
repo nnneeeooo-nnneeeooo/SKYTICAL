@@ -1,5 +1,522 @@
 [
   {
+    "id": "g-20260801-1206-7",
+    "queuedUtc": "2026-08-01T12:06Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "IATA estimates $4.3 billion in airline costs for 2026 SAF purchases, requiring human review for financial projections.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "IATA expects global SAF production to reach approximately 2.4 million tonnes in 2026, covering around 0.8% of global jet fuel consumption.",
+        "sourceQuote": "expects global SAF production to reach approximately 2.4 million tonnes in 2026. That would cover only around 0.8% of global jet fuel consumption.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "IATA estimates SAF will cost airlines approximately $4.3 billion in 2026.",
+        "sourceQuote": "IATA estimates the fuel will cost airlines approximately $4.3 billion during the year.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "ICAO calculates eligible fuel emissions according to lifecycle carbon intensity.",
+        "sourceQuote": "ICAO calculates eligible fuel emissions according to lifecycle carbon intensity rather than treating all SAF as identical.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Most SAF currently available is produced from waste oils and fats using the HEFA process.",
+        "sourceQuote": "Most SAF currently available is produced from waste oils and fats, including used cooking oil, animal fats and residues from vegetable oil processing.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "IATA estimates $4.3 billion in airline costs for 2026 SAF purchases, requiring human review for financial projections.",
+      "cat": "biz",
+      "zh": {
+        "title": "IATA預估2026年永續航空燃料產量達240萬噸 僅佔全球用量0.8%",
+        "summary": "根據國際航空運輸協會（IATA）預測，2026年全球永續航空燃料（SAF）產量預計達約240萬噸，僅能供應全球航空燃油消耗量的0.8%，且將耗費航空公司約43億美元。國際民航組織（ICAO）則依據生命週期碳強度計算合格燃料排放，而非將所有永續燃油視為相同。",
+        "body": [
+          "根據國際航空運輸協會（IATA）預測，2026年全球永續航空燃料（SAF）產量預計達約240萬噸。該產量僅能滿足全球航空燃油消耗量的約0.8%，但IATA估計航空公司當年度購買SAF的支出將達到約43億美元。",
+          "在碳排放採計方面，國際民航組織（ICAO）依據生命週期碳強度來計算合格燃料的減排效益，而非將所有SAF視為相同效益。目前市場上大多數可用之永續航空燃料，主要由廢棄油酯與脂肪經由氫化酯類與脂肪酸（HEFA）製程加工而成。"
+        ]
+      },
+      "en": {
+        "title": "IATA Projects 2026 SAF Output at 2.4 Million Tonnes, Meeting 0.8% of Demand",
+        "summary": "The International Air Transport Association (IATA) expects global sustainable aviation fuel (SAF) production to reach approximately 2.4 million tonnes in 2026, covering only around 0.8% of global jet fuel consumption. Despite this limited supply volume, IATA estimates the fuel will cost airlines approximately $4.3 billion during the year. Furthermore, ICAO calculates eligible fuel emissions based on lifecycle carbon intensity rather than treating all SAF as identical. Currently, most available SAF is produced from waste oils and fats using the hydroprocessed esters and fatty acids process.",
+        "body": [
+          "According to the International Air Transport Association (IATA), global sustainable aviation fuel (SAF) production is expected to reach approximately 2.4 million tonnes in 2026. This output would cover only around 0.8% of global jet fuel consumption, yet IATA estimates that purchasing this fuel will cost airlines approximately $4.3 billion during the year.",
+          "Regarding climate impact, ICAO calculates eligible fuel emissions according to lifecycle carbon intensity rather than treating all SAF as identical. Currently, most SAF available on the market is produced from waste oils and fats through the hydroprocessed esters and fatty acids (HEFA) process."
+        ]
+      },
+      "flash": {
+        "zh": "IATA預估2026年永續航空燃料產量達240萬噸",
+        "en": "IATA projects global 2026 SAF production to reach 2.4 million tonnes.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "IATA expects global SAF production to reach approximately 2.4 million tonnes in 2026, covering around 0.8% of global jet fuel consumption.",
+          "sourceQuote": "expects global SAF production to reach approximately 2.4 million tonnes in 2026. That would cover only around 0.8% of global jet fuel consumption.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "IATA estimates SAF will cost airlines approximately $4.3 billion in 2026.",
+          "sourceQuote": "IATA estimates the fuel will cost airlines approximately $4.3 billion during the year.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "ICAO calculates eligible fuel emissions according to lifecycle carbon intensity.",
+          "sourceQuote": "ICAO calculates eligible fuel emissions according to lifecycle carbon intensity rather than treating all SAF as identical.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Most SAF currently available is produced from waste oils and fats using the HEFA process.",
+          "sourceQuote": "Most SAF currently available is produced from waste oils and fats, including used cooking oil, animal fats and residues from vegetable oil processing.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "International Air Transport Association",
+          "IATA",
+          "ICAO"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-1206-7",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Why is sustainable aviation fuel so scarce and expensive? News",
+          "url": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
+          "publishedUtc": "2026-08-01T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/04/AdobeStock_1096288298_Editorial_Use_Only-scaled.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1207-taiwan-caa-to-raise-airport-firefighter",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: icao",
+              "archive predates source by 3 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給",
+            "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
+            "facts": [
+              {
+                "claim": "CAA Taiwan announced that Executive Yuan approved raising hazardous duty allowance for airport firefighters starting August 1, 2026.",
+                "source_quote": "為反映機場消防人員勤務的專業性與危險繁重現況，行政院核定調高危險職務加給",
+                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
+                "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給"
+              },
+              {
+                "claim": "The CAA stated that its 16 airports will be divided into two tiers, with monthly allowances of NT$9,700 for Tier 1 and NT$7,760 for Tier 2.",
+                "source_quote": "所屬16處機場將分為2級，第一級每月支領9,700元，第二級每月支領7,760元",
+                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
+                "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給"
+              },
+              {
+                "claim": "CAA noted that dedicated airport firefighting personnel are deployed at airports according to ICAO standards.",
+                "source_quote": "必須依據國際民航組織（ICAO）標準，配置專責機場消防人力",
+                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
+                "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260801-1206-12",
+    "queuedUtc": "2026-08-01T12:06Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Frontier Airlines reported second-quarter financial results including record revenue and fleet lease adjustments, involving financial and order/lease claims.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Frontier Group Holdings 2026年第二季營收達12.79億美元，較去年同期成長38%。",
+        "sourceQuote": "Parent company Frontier Group Holdings generated second-quarter revenue of $1.279 billion for the three months ending 30 June, a 38% increase compared with the same period last year.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Frontier Airlines 第二季淨虧損9000萬美元，扣除提前退租飛機相關一次性費用後調整後虧損為2200萬美元。",
+        "sourceQuote": "Frontier still reported a net loss of $90 million for the quarter, the figure improved to an adjusted loss of US$22 million once one-off costs associated with returning leased aircraft were excluded.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Frontier Airlines 第二季每可用座位哩程營收（RASM）年增28%至11.52美分。",
+        "sourceQuote": "Frontier’s revenue per available seat mile (RASM), a key measure of an airline’s financial health, increased by 28% year on year to 11.52 cents.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Frontier Airlines 第二季接收6架空中巴士新機，並依早期退租計畫歸還24架A320neo飛機。",
+        "sourceQuote": "During the quarter, it accepted delivery of six new Airbus aircraft while returning the 24 A320neos under the early lease termination programme.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "截至6月底，Frontier Airlines 共營運165架空中巴士單通道飛機。",
+        "sourceQuote": "The airline finished June operating a fleet of 165 Airbus single-aisle aircraft comprising A320ceos, A320neos, A321ceos and A321neos.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Frontier Airlines reported second-quarter financial results including record revenue and fleet lease adjustments, involving financial and order/lease claims.",
+      "cat": "biz",
+      "zh": {
+        "title": "Frontier Airlines第二季營收達12.79億美元 淨虧損9000萬美元",
+        "summary": "Frontier Group Holdings公布2026年第二季財報，營收年增38%至12.79億美元。該季淨虧損9000萬美元，扣除退租飛機費用後調整後虧損為2200萬美元。每可用座位哩程營收年增28%至11.52美分。期內公司接收6架空中巴士新機，並依約歸還24架A320neo飛機。",
+        "body": [
+          "母公司Frontier Group Holdings公布截至6月30日止的三個月財報，第二季營收達12.79億美元，較去年同期成長38%。該公司第二季淨虧損9000萬美元，但在剔除退租租賃飛機相關的一次性費用後，調整後虧損縮減至2200萬美元。",
+          "營運數據方面，Frontier Airlines 第二季每可用座位哩程營收（RASM）年增28%至11.52美分。",
+          "機隊調整方面，Frontier Airlines 在第二季接收了6架空中巴士新機，並依修訂後的租約提前歸還24架空中巴士A320neo飛機。截至6月底，該公司共營運165架空中巴士單通道飛機。"
+        ]
+      },
+      "en": {
+        "title": "Frontier Airlines Reports Q2 Revenue of $1.279 Billion and $90 Million Net Loss",
+        "summary": "Frontier Group Holdings reported second-quarter revenue of $1.279 billion for the period ending June 30, representing a 38% increase compared with the same period last year. Despite posting a net loss of $90 million for the quarter, the carrier's adjusted loss stood at $22 million when excluding one-off costs linked to returning leased aircraft. Revenue per available seat mile rose 28% year-on-year to 11.52 cents. During the quarter, Frontier accepted delivery of six new Airbus aircraft and returned 24 Airbus A320neo jets under an early lease termination program, leaving it with 165 Airbus single-aisle aircraft at the end of June.",
+        "body": [
+          "Parent company Frontier Group Holdings generated second-quarter revenue of $1.279 billion for the three months ending June 30, marking a 38% increase compared with the same period last year. Frontier reported a net loss of $90 million for the quarter, though the result improved to an adjusted loss of $22 million once one-off costs linked to returning leased aircraft were excluded.",
+          "The carrier's revenue per available seat mile (RASM) rose by 28% year-on-year to 11.52 cents during the second quarter.",
+          "During the quarter, Frontier accepted delivery of six new Airbus aircraft while returning 24 Airbus A320neo aircraft under an early lease termination programme. The airline finished June operating a fleet of 165 Airbus single-aisle aircraft."
+        ]
+      },
+      "flash": {
+        "zh": "Frontier Group Holdings公布第二季財報，營收年增38%至12.79億美元。",
+        "en": "Frontier Group Holdings reports Q2 revenue of $1.279 billion, up 38% year-on-year.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Frontier Group Holdings 2026年第二季營收達12.79億美元，較去年同期成長38%。",
+          "sourceQuote": "Parent company Frontier Group Holdings generated second-quarter revenue of $1.279 billion for the three months ending 30 June, a 38% increase compared with the same period last year.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Frontier Airlines 第二季淨虧損9000萬美元，扣除提前退租飛機相關一次性費用後調整後虧損為2200萬美元。",
+          "sourceQuote": "Frontier still reported a net loss of $90 million for the quarter, the figure improved to an adjusted loss of US$22 million once one-off costs associated with returning leased aircraft were excluded.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Frontier Airlines 第二季每可用座位哩程營收（RASM）年增28%至11.52美分。",
+          "sourceQuote": "Frontier’s revenue per available seat mile (RASM), a key measure of an airline’s financial health, increased by 28% year on year to 11.52 cents.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Frontier Airlines 第二季接收6架空中巴士新機，並依早期退租計畫歸還24架A320neo飛機。",
+          "sourceQuote": "During the quarter, it accepted delivery of six new Airbus aircraft while returning the 24 A320neos under the early lease termination programme.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "截至6月底，Frontier Airlines 共營運165架空中巴士單通道飛機。",
+          "sourceQuote": "The airline finished June operating a fleet of 165 Airbus single-aisle aircraft comprising A320ceos, A320neos, A321ceos and A321neos.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Frontier Group Holdings",
+          "Airbus"
+        ],
+        "airlines": [
+          "Frontier Airlines"
+        ],
+        "aircraft_models": [
+          "A320neo",
+          "A320ceos",
+          "A320neos",
+          "A321ceos",
+          "A321neos"
+        ],
+        "airports": [],
+        "locations": [
+          "Denver"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "30 June",
+          "June"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-1206-12",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Frontier Airlines posts record quarterly revenue as turnaround gathers momentum News",
+          "url": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
+          "publishedUtc": "2026-07-30T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/05/AdobeStock_1879198672_Editorial_Use_Only-scaled.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: A320",
+              "same named core entity: airbus",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se...",
+            "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+            "facts": [
+              {
+                "claim": "空中巴士第二季淨利從去年同期的8.42億美元增至16.6億美元,增幅126%。",
+                "source_quote": "Net income increased from $842 million (€732 million) to $1.66 billion (€1.65 billion) in Q2 2026",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "空中巴士第二季營收年增28%。",
+                "source_quote": "revenue rose 28% over the same period.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "2026年4至6月,空中巴士交付237架商用飛機。",
+                "source_quote": "Between April and June 2026, Airbus delivered 237 commercial aircraft",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "空中巴士2026年上半年合計交付351架商用飛機。",
+                "source_quote": "The total for 2026 first half stands at 351.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "空中巴士全年交付約870架商用飛機的目標維持不變。",
+                "source_quote": "The company said its ambition to deliver around 870 commercial aircraft in 2026 remains the same.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "空中巴士執行長Faury表示,良好的半年業績主要反映商用飛機交付量提升,以及國防與太空部門的強勁表現。",
+                "source_quote": "“Our good H1 results mainly reflect the higher level of commercial aircraft deliveries and strong performance in Defense and Space, against the backdrop of a complex and fast-changing environment,” Faury said.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: airbus",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
+            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+            "facts": [
+              {
+                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
+                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              },
+              {
+                "claim": "Qantas is opting to utilize the Boeing 787-9 instead.",
+                "source_quote": "as the airline opts for Boeing 787-9.",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              },
+              {
+                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
+                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+              },
+              {
+                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
+                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1934-airbus-delivers-237-aircraft-in-q2-maint",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: airbus",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar...",
+            "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+            "facts": [
+              {
+                "claim": "空中巴士在第二季交付237架飛機。",
+                "source_quote": "Airbus Achieves 237 Deliveries In 2nd Quarter",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              },
+              {
+                "claim": "空中巴士維持全年交付870架飛機的目標。",
+                "source_quote": "Keeps 870 Target For Full Year",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260801-1005-9",
     "queuedUtc": "2026-08-01T10:06Z",
     "approve": false,
@@ -8154,292 +8671,6 @@
           "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/01/vs-2.jpg",
           "source": "Simple Flying",
           "sourceKey": "simpleflying"
-        }
-      ]
-    }
-  },
-  {
-    "id": "g-20260726-1748-10",
-    "queuedUtc": "2026-07-26T17:48Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Regulatory enforcement actions (proposed fines) against Southern Airways Express; high-risk topic requiring human review.",
-    "riskFlags": [
-      "regulatory_action",
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "FAA proposes a $263,750 civil penalty against Southern Airways Express of Addison, Texas.",
-        "sourceQuote": "The Federal Aviation Administration (FAA) proposes a $263,750 civil penalty against Southern Airways Express of Addison, Texas"
-      },
-      {
-        "factId": "F2",
-        "claim": "The penalty is for allegedly operating an aircraft with inoperative required equipment.",
-        "sourceQuote": "for allegedly operating an aircraft with inoperative required equipment"
-      },
-      {
-        "factId": "F3",
-        "claim": "The FAA alleges that in April 2025 the company operated 29 commercial flights using a Cessna Caravan with a malfunctioning autopilot in violation of its Operations Specifications.",
-        "sourceQuote": "The FAA alleges that in April 2025 the company operated 29 commercial flights using a Cessna Caravan with a malfunctioning autopilot in violation of its Operations Specifications"
-      },
-      {
-        "factId": "F4",
-        "claim": "Southern Airways Express has 30 days after receiving the FAA’s notice to respond to the agency.",
-        "sourceQuote": "Southern Airways Express has 30 days after receiving the FAA’s notice to respond to the agency"
-      },
-      {
-        "factId": "F5",
-        "claim": "FAA proposes a $50,000 civil penalty against Southern Airways Express, LCC of Addison, Texas.",
-        "sourceQuote": "The Federal Aviation Administration (FAA) proposes a $50,000 civil penalty against Southern Airways Express, LCC of Addison, Texas"
-      },
-      {
-        "factId": "F6",
-        "claim": "The penalty is for allegedly violating weight-and-balance regulations which caused an incident when an airplane pushed back from the gate.",
-        "sourceQuote": "for allegedly violating weight-and-balance regulations which caused an incident when an airplane pushed back from the gate"
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Regulatory enforcement actions (proposed fines) against Southern Airways Express; high-risk topic requiring human review.",
-      "cat": "reg",
-      "zh": {
-        "title": "FAA 擬罰 Southern Airways Express 兩項違規",
-        "summary": "美國聯邦航空總署 (FAA) 擬對 Southern Airways Express 處以 263,750 美元民事罰款，指控其 2025 年 4 月以故障自動駕駛的 Cessna Caravan 執行 29 趟商業飛行；另擬處 50,000 美元罰款，指控違反重量平衡規定導致推回閘口事故。該公司有 30 天回應。",
-        "body": [
-          "美國聯邦航空總署 (FAA) 擬對 Southern Airways Express 處以 263,750 美元民事罰款，指控其 2025 年 4 月以故障自動駕駛的 Cessna Caravan 執行 29 趟商業飛行，違反營運規範。",
-          "FAA 另擬處 50,000 美元罰款，指控該公司違反重量平衡規定導致推回閘口事故。Southern Airways Express 有 30 天回應通知。"
-        ]
-      },
-      "en": {
-        "title": "FAA Proposes $263,750 and $50,000 Fines Against Southern Airways Express for Alleged Violations",
-        "summary": "The Federal Aviation Administration proposed a $263,750 civil penalty against Southern Airways Express of Addison, Texas, for allegedly operating a Cessna Caravan with a malfunctioning autopilot on 29 commercial flights in April 2025. The agency also proposed a $50,000 penalty against the carrier for allegedly violating weight-and-balance regulations that caused an incident when an airplane pushed back from the gate. Southern Airways Express has 30 days to respond to the notices.",
-        "body": [
-          "The Federal Aviation Administration proposed a $263,750 civil penalty against Southern Airways Express of Addison, Texas, for allegedly operating a Cessna Caravan with a malfunctioning autopilot on 29 commercial flights in April 2025. The agency alleges the autopilot was inoperative required equipment, violating the carrier's Operations Specifications.",
-          "The FAA also proposed a $50,000 civil penalty against Southern Airways Express, LCC of Addison, Texas, for allegedly violating weight-and-balance regulations that caused an incident when an airplane pushed back from the gate. Southern Airways Express has 30 days after receiving the notices to respond."
-        ]
-      },
-      "flash": {
-        "zh": "FAA 擬罰 Southern Airways Express 兩項違規",
-        "en": "FAA proposes two fines against Southern Airways Express",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "FAA proposes a $263,750 civil penalty against Southern Airways Express of Addison, Texas.",
-          "sourceQuote": "The Federal Aviation Administration (FAA) proposes a $263,750 civil penalty against Southern Airways Express of Addison, Texas"
-        },
-        {
-          "factId": "F2",
-          "claim": "The penalty is for allegedly operating an aircraft with inoperative required equipment.",
-          "sourceQuote": "for allegedly operating an aircraft with inoperative required equipment"
-        },
-        {
-          "factId": "F3",
-          "claim": "The FAA alleges that in April 2025 the company operated 29 commercial flights using a Cessna Caravan with a malfunctioning autopilot in violation of its Operations Specifications.",
-          "sourceQuote": "The FAA alleges that in April 2025 the company operated 29 commercial flights using a Cessna Caravan with a malfunctioning autopilot in violation of its Operations Specifications"
-        },
-        {
-          "factId": "F4",
-          "claim": "Southern Airways Express has 30 days after receiving the FAA’s notice to respond to the agency.",
-          "sourceQuote": "Southern Airways Express has 30 days after receiving the FAA’s notice to respond to the agency"
-        },
-        {
-          "factId": "F5",
-          "claim": "FAA proposes a $50,000 civil penalty against Southern Airways Express, LCC of Addison, Texas.",
-          "sourceQuote": "The Federal Aviation Administration (FAA) proposes a $50,000 civil penalty against Southern Airways Express, LCC of Addison, Texas"
-        },
-        {
-          "factId": "F6",
-          "claim": "The penalty is for allegedly violating weight-and-balance regulations which caused an incident when an airplane pushed back from the gate.",
-          "sourceQuote": "for allegedly violating weight-and-balance regulations which caused an incident when an airplane pushed back from the gate"
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5",
-        "F6"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "Federal Aviation Administration",
-          "Southern Airways Express",
-          "Southern Airways Express, LCC"
-        ],
-        "airlines": [
-          "Southern Airways Express"
-        ],
-        "aircraft_models": [
-          "Cessna Caravan"
-        ],
-        "airports": [],
-        "locations": [
-          "Addison, Texas"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "April 2025",
-          "2026-07-22"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "regulatory_action",
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260726-1748-10",
-      "primarySource": "FAA",
-      "items": [
-        {
-          "title": "FAA Proposes $263,750 Fine Against Southern Airways Express for Alleged Operations of an Unairworthy Aircraft",
-          "url": "https://www.faa.gov/newsroom/faa-proposes-263750-fine-against-southern-airways-express-alleged-operations-unairworthy",
-          "publishedUtc": "2026-07-22T00:00Z",
-          "summary": "WASHINGTON — The Federal Aviation Administration (FAA) proposes a $263,750 civil penalty against Southern Airways Express of Addison, Texas, for allegedly operating an aircraft with inoperative required equipment. The FAA alleges that in April 2025 the company operated 29 commercial flights using a Cessna Caravan with a malfunctioning autopilot in violation of its Operations Specifications. Southern Airways Express has 30 days after receiving the FAA’s notice to respond to the agency.",
-          "image": null,
-          "source": "FAA",
-          "sourceKey": "faa"
-        },
-        {
-          "title": "FAA Proposes $50,000 Fine Against Southern Airways Express for Aircraft Weight and Balance Violations",
-          "url": "https://www.faa.gov/newsroom/faa-proposes-50000-fine-against-southern-airways-express-aircraft-weight-and-balance",
-          "publishedUtc": "2026-07-22T00:00Z",
-          "summary": "The Federal Aviation Administration (FAA) proposes a $50,000 civil penalty against Southern Airways Express, LCC of Addison, Texas, for allegedly violating weight-and-balance regulations which caused an incident when an airplane pushed back from the gate.",
-          "image": null,
-          "source": "FAA",
-          "sourceKey": "faa"
-        }
-      ]
-    }
-  },
-  {
-    "id": "g-20260726-1748-11",
-    "queuedUtc": "2026-07-26T17:48Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Regulatory action (FAA final rule issuance) requires human review per policy.",
-    "riskFlags": [
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "FAA will issue a final rule on July 24, 2026",
-        "sourceQuote": "The FAA will issue a final rule on July 24, 2026"
-      },
-      {
-        "factId": "F2",
-        "claim": "Rule ensures aircraft radio altimeters can withstand interference from 5G wireless signals in neighboring spectrum bands",
-        "sourceQuote": "to ensure aircraft radio altimeters can withstand interference from 5G wireless signals in neighboring spectrum bands"
-      },
-      {
-        "factId": "F3",
-        "claim": "Rule will require altimeters to meet next-generation performance requirements when aircraft equipped with them operate in the U.S.",
-        "sourceQuote": "It will require altimeters to meet next-generation performance requirements when aircraft equipped with them operate in the U.S."
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Regulatory action (FAA final rule issuance) requires human review per policy.",
-      "cat": "reg",
-      "zh": {
-        "title": "FAA 將於 7 月 24 日發布 5G 干擾無線電高度計最終規則",
-        "summary": "美國聯邦航空總署（FAA）今日發布聲明，確認將於 2026 年 7 月 24 日頒布最終規則，強制要求在美國領空運作的飛機無線電高度計必須符合新一代性能要求，確保能夠承受鄰近頻段 5G 無線通訊訊號的干擾，以保障飛行安全。",
-        "body": [
-          "美國聯邦航空總署（FAA）宣布將於 2026 年 7 月 24 日發布最終規則，針對飛機無線電高度計在鄰近頻段 5G 無線訊號干擾下的抗擾能力訂定新標準。",
-          "新規將要求所有在美國運作、裝備無線電高度計的飛機必須符合新一代性能要求，以確保高度計能承受 5G 訊號干擾並正常運作。"
-        ]
-      },
-      "en": {
-        "title": "FAA to Issue Final Rule on 5G Interference with Radio Altimeters July 24",
-        "summary": "The Federal Aviation Administration (FAA) announced on July 22 that it will issue a final rule on July 24, 2026, requiring all aircraft radio altimeters operating in the United States to meet next-generation performance requirements to ensure they can withstand interference from 5G wireless signals in neighboring spectrum bands. The rule aims to address longstanding concerns about potential interference between 5G networks and aircraft altimeters, which are critical for low-visibility landings and terrain awareness.",
-        "body": [
-          "The Federal Aviation Administration (FAA) announced it will issue a final rule on July 24, 2026, addressing aircraft radio altimeter performance in the presence of 5G wireless signals in adjacent spectrum bands.",
-          "The rule will require all radio altimeters equipped on aircraft operating in the United States to meet next-generation performance standards to ensure they can withstand interference from 5G signals."
-        ]
-      },
-      "flash": {
-        "zh": "FAA 7/24 發布 5G 高度計新規",
-        "en": "FAA to issue final 5G altimeter rule July 24",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "FAA will issue a final rule on July 24, 2026",
-          "sourceQuote": "The FAA will issue a final rule on July 24, 2026"
-        },
-        {
-          "factId": "F2",
-          "claim": "Rule ensures aircraft radio altimeters can withstand interference from 5G wireless signals in neighboring spectrum bands",
-          "sourceQuote": "to ensure aircraft radio altimeters can withstand interference from 5G wireless signals in neighboring spectrum bands"
-        },
-        {
-          "factId": "F3",
-          "claim": "Rule will require altimeters to meet next-generation performance requirements when aircraft equipped with them operate in the U.S.",
-          "sourceQuote": "It will require altimeters to meet next-generation performance requirements when aircraft equipped with them operate in the U.S."
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "FAA"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "July 24, 2026"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260726-1748-11",
-      "primarySource": "FAA",
-      "items": [
-        {
-          "title": "FAA Statement on 5G",
-          "url": "https://www.faa.gov/newsroom/faa-statement-5g",
-          "publishedUtc": "2026-07-22T00:00Z",
-          "summary": "The FAA will issue a final rule on July 24, 2026, to ensure aircraft radio altimeters can withstand interference from 5G wireless signals in neighboring spectrum bands. It will require altimeters to meet next-generation performance requirements when aircraft equipped with them operate in the U.S.",
-          "image": null,
-          "source": "FAA",
-          "sourceKey": "faa"
         }
       ]
     }
