@@ -1,5 +1,272 @@
 [
   {
+    "id": "g-20260801-1005-9",
+    "queuedUtc": "2026-08-01T10:06Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Contains half-year financial results, revised full-year profit and cash flow guidance, and engine selection claims requiring human review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Rolls-Royce reported that its underlying operating profit rose 46% year-on-year to £2.5 billion for the half-year, with an underlying operating margin of 22.5%.",
+        "sourceQuote": "underlying operating profit had risen by 46% to £2.5 billion year-on-year. The underlying operating margin stood at 22.5%",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Rolls-Royce raised its full-year 2026 guidance, expecting £4.7 billion to £4.9 billion in underlying operating profit and £3.8 billion to £4.0 billion in free cash flow.",
+        "sourceQuote": "We now expect £4.7bn-£4.9bn underlying operating profit and £3.8bn-£4.0bn free cash flow.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Rolls-Royce CEO Tufan Erginbilgic stated that in Civil Aerospace, the company improved aftermarket profitability and effectively eliminated aircraft on the ground.",
+        "sourceQuote": "He noted that in Civil Aerospace, RR has continued to improve its aftermarket profitability and “effectively eliminated aircraft on the ground.”",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Three airlines, including LATAM Airlines, selected Rolls-Royce's Trent 1000 XE engine for their Boeing 787 Dreamliner aircraft in 2026.",
+        "sourceQuote": "2026 has seen three airlines, including LATAM Airlines, select Rolls-Royce’s new Trent 1000 XE engine for their Boeing 787 Dreamliners.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Contains half-year financial results, revised full-year profit and cash flow guidance, and engine selection claims requiring human review.",
+      "cat": "biz",
+      "zh": {
+        "title": "勞斯萊斯半年營業利潤增長46% 上調2026全年財測",
+        "summary": "勞斯萊斯公布半年報，基礎營業利潤同比成長46%至25億英鎊，基礎營業利潤率達22.5%。公司同步上調2026年全年財測，預計基礎營業利潤將達47億至49億英鎊。執行長表示民航業務已有效消除停飛機隊，並有三家航空公司為波音787選用Trent 1000 XE引擎。",
+        "body": [
+          "英國引擎製造商勞斯萊斯公布最新半年度財務報告，顯示其基礎營業利潤同比成長46%，達到25億英鎊。同時，公司整體基礎營業利潤率提升至22.5%，各業務部門獲利能力均有所改善。",
+          "基於上半年優於預期的業績表現，勞斯萊斯宣布上調2026年全年財務預測。公司目前預計全年基礎營業利潤將介於47億至49億英鎊之間，自由現金流預計將達到38億至40億英鎊。",
+          "在民航業務方面，執行長Tufan Erginbilgic指出，公司持續改善售後市場獲利能力，並已有效消除停飛機隊狀況。此外，2026年已有包括LATAM Airlines在內的三家航空公司選用Trent 1000 XE引擎，配備於其波音787客機。"
+        ]
+      },
+      "en": {
+        "title": "Rolls-Royce Operating Profit Rises 46% and Raises 2026 Full-Year Guidance",
+        "summary": "Rolls-Royce reported a 46% year-on-year increase in underlying operating profit to 2.5 billion pounds for the half-year, achieving an underlying operating margin of 22.5%. The engine manufacturer raised its full-year 2026 financial guidance, now forecasting underlying operating profit between 4.7 billion and 4.9 billion pounds, alongside free cash flow of 3.8 billion to 4.0 billion pounds. Chief Executive Tufan Erginbilgic noted that the Civil Aerospace division has improved aftermarket profitability and effectively eliminated aircraft on the ground. Additionally, three airlines, including LATAM Airlines, selected the new Trent 1000 XE engine for their Boeing 787 Dreamliner fleets in 2026.",
+        "body": [
+          "Rolls-Royce reported half-year financial results showing a 46% year-on-year increase in underlying operating profit to 2.5 billion pounds. The company achieved an underlying operating margin of 22.5%, driven by higher profitability across all divisions.",
+          "Following the strong first-half performance, Rolls-Royce raised its full-year 2026 financial guidance. The manufacturer now expects underlying operating profit between 4.7 billion and 4.9 billion pounds, with free cash flow projected at 3.8 billion to 4.0 billion pounds.",
+          "Chief Executive Tufan Erginbilgic stated that the Civil Aerospace unit improved aftermarket profitability and effectively eliminated aircraft on the ground. In 2026, three airlines, including LATAM Airlines, selected the new Trent 1000 XE engine for Boeing 787 Dreamliners."
+        ]
+      },
+      "flash": {
+        "zh": "勞斯萊斯半年獲利大增46% 並上調2026全年財測",
+        "en": "Rolls-Royce boosts half-year profit by 46% and raises 2026 guidance",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Rolls-Royce reported that its underlying operating profit rose 46% year-on-year to £2.5 billion for the half-year, with an underlying operating margin of 22.5%.",
+          "sourceQuote": "underlying operating profit had risen by 46% to £2.5 billion year-on-year. The underlying operating margin stood at 22.5%",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Rolls-Royce raised its full-year 2026 guidance, expecting £4.7 billion to £4.9 billion in underlying operating profit and £3.8 billion to £4.0 billion in free cash flow.",
+          "sourceQuote": "We now expect £4.7bn-£4.9bn underlying operating profit and £3.8bn-£4.0bn free cash flow.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Rolls-Royce CEO Tufan Erginbilgic stated that in Civil Aerospace, the company improved aftermarket profitability and effectively eliminated aircraft on the ground.",
+          "sourceQuote": "He noted that in Civil Aerospace, RR has continued to improve its aftermarket profitability and “effectively eliminated aircraft on the ground.”",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Three airlines, including LATAM Airlines, selected Rolls-Royce's Trent 1000 XE engine for their Boeing 787 Dreamliner aircraft in 2026.",
+          "sourceQuote": "2026 has seen three airlines, including LATAM Airlines, select Rolls-Royce’s new Trent 1000 XE engine for their Boeing 787 Dreamliners.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Rolls-Royce"
+        ],
+        "airlines": [
+          "LATAM Airlines"
+        ],
+        "aircraft_models": [
+          "Boeing 787 Dreamliners"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-31",
+          "2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-1005-9",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Rolls-Royce boosts forecasts as aerospace, defence and AI markets accelerate",
+          "url": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+          "publishedUtc": "2026-07-31T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/03/Rendering-of-Rolls-Royce-Orpheus-engine.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260801-0732-african-domestic-aviation-shows-resilien",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: ON-YEAR"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere...",
+            "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+            "facts": [
+              {
+                "claim": "Global airline capacity increased by 1% year-on-year for the summer season, below the 3% forecast due to capacity reallocations.",
+                "source_quote": "Global capacity is up just 1% year-on-year this summer season, according to data from aviation analysts OAG and Midas Aviation.",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "African domestic aviation market has shown resilience to global shocks despite price increases and pockets of slowed growth.",
+                "source_quote": "Prices have gone up, and there have been pockets of slowed growth, but no real shrinking. The market is showing resilience to those global shocks",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "Nigeria's domestic aviation capacity grew 36% year-on-year, driven in part by its domestication of the Cape Town Convention.",
+                "source_quote": "Pointing to Nigeria’s 36% year-on-year capacity growth in its domestic market, Grant said this is in part driven by the country’s domestication of the Cape Town Convention",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "Major aircraft lessors including AirCap have begun placing dry-leased airframes in Nigeria.",
+                "source_quote": "Major lessors, including AirCap, have begun placing airframes in the country – a shift from previous years when Nigerian operators leaned on seasonal wet leases",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "Passenger booking curves in Africa remain compressed, with many bookings made one day before travel.",
+                "source_quote": "The booking curve remains very tight. We’re still seeing a large number of bookings made as late as one day before travel.",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1532-iata-global-air-cargo-demand-rose-8-5-ye",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: ON-YEAR"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-30",
+            "source_name": "IATA — Air Passenger Demand Falls 1.7% in June",
+            "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
+            "facts": [
+              {
+                "claim": "IATA reported total air passenger demand (RPK) was down 1.7% in June 2026 compared to June 2025, with capacity (ASK) down 1.3% and load factor at 84.2%.",
+                "source_quote": "Total demand, measured in revenue passenger kilometers (RPK), was down 1.7% compared to June 2025. Excluding the Middle East, demand declined by 0.6%. Total capacity, measured in available seat kilometers (ASK), decreased 1.3% year-on-year. The load factor was 84.2% (-0.4 ppt compared to June 2025).",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
+                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
+              },
+              {
+                "claim": "IATA Director General Willie Walsh attributed the decline largely to domestic market declines in China, the US, and Japan, and weak but improving international demand for Middle East carriers.",
+                "source_quote": "This is largely due to domestic market declines in China, the US, and Japan, and weak but improving international demand for Middle East carriers.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
+                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
+              },
+              {
+                "claim": "Middle Eastern carriers saw a 14% year-on-year decrease in demand in June 2026, with capacity down 11% and load factor at 76.3%; the rate of decline halved month-to-month since April.",
+                "source_quote": "Middle Eastern carriers saw a 14% year-on-year decrease in demand. Capacity fell 11% year-on-year, and the load factor was 76.3% (-2.6 ppt compared to June 2025). The impacts of the Iran war continue to cause a highly negative year-on-year traffic comparison, but the rate of decline halved month-to-month since April.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
+                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
+              },
+              {
+                "claim": "Domestic demand contracted 3.0% in June 2026, with the steepest falls in China (-5.2%) and Japan (-3.8%); Brazil domestic traffic was up 0.9% and Australia was flat.",
+                "source_quote": "Domestic RPK fell (-3.0%) in June 2026 compared to the same month last year. Domestic Brazil traffic was up 0.9%, but all other major markets declined apart from Australia which was flat. The steepest falls were in China (-5.2%) and Japan (-3.8%), with higher fuel prices the likely reason.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
+                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
+              },
+              {
+                "claim": "IATA reported global air cargo demand (CTK) increased 8.5% year-on-year in June 2026, with capacity (ACTK) up 4.4%; North American carriers saw the strongest growth at 13.1%.",
+                "source_quote": "Total demand, measured in cargo tonne-kilometers (CTK), increased by 8.5% compared to June 2025 (9.6% for international operations). Capacity, measured in available cargo tonne-kilometers (ACTK), increased by 4.4% compared to June 2025 (4.9% for international operations).",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "Willie Walsh said air cargo demand growth outpaced global trade, supported by high-value technology products and urgent shipments, with risks from continuing Middle East hostilities and renewed US tariff focus.",
+                "source_quote": "Demand growth outpaced capacity at the global level and in all regions except Latin America and the Caribbean. Demand also grew faster than global trade, supported by high-value technology products, and urgent shipments. While this all gives strong reasons for optimism in the second half of 2026, risks remain—continuing hostilities in the Middle East and a renewed focus on tariffs by the US among them",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260801-0426-2",
     "queuedUtc": "2026-08-01T04:26Z",
     "approve": false,
@@ -8170,125 +8437,6 @@
           "url": "https://www.faa.gov/newsroom/faa-statement-5g",
           "publishedUtc": "2026-07-22T00:00Z",
           "summary": "The FAA will issue a final rule on July 24, 2026, to ensure aircraft radio altimeters can withstand interference from 5G wireless signals in neighboring spectrum bands. It will require altimeters to meet next-generation performance requirements when aircraft equipped with them operate in the U.S.",
-          "image": null,
-          "source": "FAA",
-          "sourceKey": "faa"
-        }
-      ]
-    }
-  },
-  {
-    "id": "g-20260726-1748-12",
-    "queuedUtc": "2026-07-26T17:48Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Proposed civil penalty by FAA involves regulatory enforcement action.",
-    "riskFlags": [
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The FAA proposed a $306,000 civil penalty against Simulator Center LLC of Sanford, Florida.",
-        "sourceQuote": "The Federal Aviation Administration (FAA) proposes a $306,000 civil penalty against Simulator Center LLC of Sanford, Florida"
-      },
-      {
-        "factId": "F2",
-        "claim": "The FAA alleged Simulator Center LLC allowed unqualified instructors to provide flight training.",
-        "sourceQuote": "alleging the pilot training center allowed unqualified instructors to provide flight training"
-      },
-      {
-        "factId": "F3",
-        "claim": "The FAA alleged Simulator Center LLC failed to ensure several students completed required training.",
-        "sourceQuote": "and failed to ensure several students completed required training."
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Proposed civil penalty by FAA involves regulatory enforcement action.",
-      "cat": "reg",
-      "zh": {
-        "title": "美國聯邦航空總署涉培訓違規 擬對 Simulator Center 處以民事罰款",
-        "summary": "美國聯邦航空總署（FAA）提議對位於佛羅里達州桑福德的 Simulator Center LLC 處以 306,000 美元的民事罰款。據 FAA 指控，該飛行培訓中心涉嫌允許不符合資格的教練提供飛行訓練，並且未能確保數名學生完成所規定的必要培訓項目。",
-        "body": [
-          "美國聯邦航空總署（FAA）宣布，擬對位於佛羅里達州桑福德（Sanford）的 Simulator Center LLC 處以 306,000 美元的民事罰款。",
-          "根據 FAA 的指控，該飛行培訓中心允許不具備資格的教練提供飛行訓練，同時未能確保數名學生完成所規定的必要培訓。"
-        ]
-      },
-      "en": {
-        "title": "FAA Proposes $306,000 Penalty Against Simulator Center LLC",
-        "summary": "The Federal Aviation Administration (FAA) has proposed a $306,000 civil penalty against Simulator Center LLC, a pilot training center based in Sanford, Florida. According to the Federal Aviation Administration, the civil penalty is being proposed due to alleged training violations. Specifically, the regulator alleged that Simulator Center LLC allowed unqualified instructors to provide flight training and failed to ensure that several students completed required flight training before concluding their instruction.",
-        "body": [
-          "The Federal Aviation Administration (FAA) has proposed a $306,000 civil penalty against Simulator Center LLC, located in Sanford, Florida.",
-          "According to the agency, the pilot training center allegedly allowed unqualified instructors to provide flight training and failed to ensure several students completed required training."
-        ]
-      },
-      "flash": {
-        "zh": "美國FAA擬對Simulator Center處以306,000美元罰款",
-        "en": "FAA proposes $306,000 penalty against Simulator Center LLC",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The FAA proposed a $306,000 civil penalty against Simulator Center LLC of Sanford, Florida.",
-          "sourceQuote": "The Federal Aviation Administration (FAA) proposes a $306,000 civil penalty against Simulator Center LLC of Sanford, Florida"
-        },
-        {
-          "factId": "F2",
-          "claim": "The FAA alleged Simulator Center LLC allowed unqualified instructors to provide flight training.",
-          "sourceQuote": "alleging the pilot training center allowed unqualified instructors to provide flight training"
-        },
-        {
-          "factId": "F3",
-          "claim": "The FAA alleged Simulator Center LLC failed to ensure several students completed required training.",
-          "sourceQuote": "and failed to ensure several students completed required training."
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "FAA",
-          "Federal Aviation Administration",
-          "Simulator Center LLC"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Florida",
-          "Sanford"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-22"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260726-1748-12",
-      "primarySource": "FAA",
-      "items": [
-        {
-          "title": "FAA Proposes $306,000 Civil Penalty Against Simulator Center LLC for Alleged Training Violations",
-          "url": "https://www.faa.gov/newsroom/faa-proposes-306000-civil-penalty-against-simulator-center-llc-alleged-training-violations",
-          "publishedUtc": "2026-07-22T00:00Z",
-          "summary": "The Federal Aviation Administration (FAA) proposes a $306,000 civil penalty against Simulator Center LLC of Sanford, Florida, alleging the pilot training center allowed unqualified instructors to provide flight training and failed to ensure several students completed required training.",
           "image": null,
           "source": "FAA",
           "sourceKey": "faa"
