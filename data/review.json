@@ -1,5 +1,219 @@
 [
   {
+    "id": "g-20260801-0006-3",
+    "queuedUtc": "2026-08-01T00:06Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Aviation safety event (military aircraft crash with ejection) requires mandatory human review. Evidence from multiple sources confirms the crash and safe ejection, but cause is unknown and investigation status is not yet established.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A US Marine Corps F-35B stealth fighter crashed in San Diego, and the pilot ejected safely.",
+        "sourceQuote": "US Marine Corps F-35B Stealth Fighter Crashes In San Diego, Pilot Ejects Safely",
+        "sourceUrl": "https://simpleflying.com/us-f35-b-stealth-fighter-crashes-pilot-ejects/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "A Marine pilot survived after ejecting from an F-35B that crashed near Miramar.",
+        "sourceQuote": "A Marine pilot survived after ejecting from an F-35B that crashed near Miramar.",
+        "sourceUrl": "https://simpleflying.com/us-f35-b-stealth-fighter-crashes-pilot-ejects/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "An F-35B jet crashed near the Marine Corps in San Diego and the pilot ejected safely, confirmed by officials.",
+        "sourceQuote": "F-35B jet crashed near Marine Corps in San Diego, pilot ejected safely – officials",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1qWk9uSzN4OWNQMDJrT1YzZTNSUk1Ua2poSUZXYUVPSE9WbWdfWXhSSFJDMTBPXzJ0LW9xOElsemlfSjNQS09SNXQzYlVZUjVkUkhMbG5CWjBrdXoxczF3SkdKcGRyYnFmTnprUmZENUJmWDAxUU9IZFEtSG9GUQ?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The Marine Corps said an F-35B stealth fighter crashed in California and the pilot ejected safely.",
+        "sourceQuote": "Marine Corps says F-35B stealth fighter crashed in California, pilot ejected safely",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPS1JrclNxT3JPWkxwamV1Q1FDUHdwVGtZNHRSSUNxZXF2Yzk1YkotZXpWczliM1RDdWUwb2pUN2x2NlVfcXpiRExubklNU3NPNTdsei1TV3NnM0VNZi14Skx2ZXNTNkFOc3I3SER2SlJ6VC1oZWRrV3RTMFl3bm9Hbmp0akFBRWlPb242bXh3dkRWbVlfSHpEWQ?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety event (military aircraft crash with ejection) requires mandatory human review. Evidence from multiple sources confirms the crash and safe ejection, but cause is unknown and investigation status is not yet established.",
+      "cat": "safety",
+      "zh": {
+        "title": "美國海軍陸戰隊F-35B於聖地牙哥墜毀 飛行員安全彈射",
+        "summary": "美國海軍陸戰隊一架F-35B隱形戰機於加州聖地牙哥附近墜毀，飛行員彈射逃生。美國海軍陸戰隊證實此事，目前墜毀原因尚不明朗。",
+        "body": [
+          "美國海軍陸戰隊一架F-35B隱形戰機於加州聖地牙哥附近墜毀，飛行員彈射逃生。多家媒體報導此一事件。",
+          "Simple Flying報導指出，一架美國海軍陸戰隊F-35B隱形戰機於聖地牙哥墜毀，飛行員安全彈射。",
+          "The Guardian報導，一架F-35B戰機於聖地牙哥海軍陸戰隊基地附近墜毀，飛行員安全彈射，官員證實此一訊息。",
+          "AP News報導，美國海軍陸戰隊表示一架F-35B隱形戰機於加州墜毀，飛行員安全彈射。",
+          "目前報導均未說明墜毀原因，亦未提及地面人員傷亡或財物損失。本事件屬航空安全事件，相關調查訊息尚待官方進一步公布。"
+        ]
+      },
+      "en": {
+        "title": "US Marine Corps F-35B Crashes Near San Diego, Pilot Ejects Safely",
+        "summary": "A US Marine Corps F-35B stealth fighter crashed near San Diego, California, and the pilot ejected safely. The Marine Corps confirmed the incident. The cause of the crash has not been disclosed.",
+        "body": [
+          "A US Marine Corps F-35B stealth fighter crashed near San Diego, California, with the pilot ejecting safely. Multiple news outlets reported the incident.",
+          "Simple Flying reported that a Marine pilot survived after ejecting from an F-35B that crashed near Miramar.",
+          "The Guardian reported that an F-35B jet crashed near the Marine Corps in San Diego and the pilot ejected safely, with officials confirming the information.",
+          "AP News reported that the Marine Corps said an F-35B stealth fighter crashed in California and the pilot ejected safely.",
+          "None of the reports specified the cause of the crash, nor did they mention any ground casualties or property damage. As an aviation safety event, further official investigation details are pending."
+        ]
+      },
+      "flash": {
+        "zh": "美海軍陸戰隊F-35B聖地牙哥墜毀，飛行員安全彈射",
+        "en": "USMC F-35B crashes near San Diego, pilot ejects safely",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-07-31",
+        "sev": "acc",
+        "aircraft": "F-35B",
+        "operator": "US Marine Corps",
+        "phase": {
+          "zh": "不明",
+          "en": "Unknown"
+        },
+        "location": {
+          "zh": "加州聖地牙哥附近",
+          "en": "Near San Diego, California"
+        },
+        "desc": {
+          "zh": "F-35B隱形戰機墜毀，飛行員安全彈射",
+          "en": "F-35B stealth fighter crashed, pilot ejected safely"
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A US Marine Corps F-35B stealth fighter crashed in San Diego, and the pilot ejected safely.",
+          "sourceQuote": "US Marine Corps F-35B Stealth Fighter Crashes In San Diego, Pilot Ejects Safely",
+          "sourceUrl": "https://simpleflying.com/us-f35-b-stealth-fighter-crashes-pilot-ejects/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "A Marine pilot survived after ejecting from an F-35B that crashed near Miramar.",
+          "sourceQuote": "A Marine pilot survived after ejecting from an F-35B that crashed near Miramar.",
+          "sourceUrl": "https://simpleflying.com/us-f35-b-stealth-fighter-crashes-pilot-ejects/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "An F-35B jet crashed near the Marine Corps in San Diego and the pilot ejected safely, confirmed by officials.",
+          "sourceQuote": "F-35B jet crashed near Marine Corps in San Diego, pilot ejected safely – officials",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1qWk9uSzN4OWNQMDJrT1YzZTNSUk1Ua2poSUZXYUVPSE9WbWdfWXhSSFJDMTBPXzJ0LW9xOElsemlfSjNQS09SNXQzYlVZUjVkUkhMbG5CWjBrdXoxczF3SkdKcGRyYnFmTnprUmZENUJmWDAxUU9IZFEtSG9GUQ?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The Marine Corps said an F-35B stealth fighter crashed in California and the pilot ejected safely.",
+          "sourceQuote": "Marine Corps says F-35B stealth fighter crashed in California, pilot ejected safely",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPS1JrclNxT3JPWkxwamV1Q1FDUHdwVGtZNHRSSUNxZXF2Yzk1YkotZXpWczliM1RDdWUwb2pUN2x2NlVfcXpiRExubklNU3NPNTdsei1TV3NnM0VNZi14Skx2ZXNTNkFOc3I3SER2SlJ6VC1oZWRrV3RTMFl3bm9Hbmp0akFBRWlPb242bXh3dkRWbVlfSHpEWQ?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3",
+        "F4"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "US Marine Corps",
+          "Marine Corps"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "F-35B"
+        ],
+        "airports": [],
+        "locations": [
+          "San Diego",
+          "California",
+          "Miramar"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-31"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-0006-3",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "US Marine Corps F-35B Stealth Fighter Crashes In San Diego, Pilot Ejects Safely",
+          "url": "https://simpleflying.com/us-f35-b-stealth-fighter-crashes-pilot-ejects/",
+          "publishedUtc": "2026-07-31T21:47Z",
+          "summary": "A Marine pilot survived after ejecting from an F-35B that crashed near Miramar.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/us-marine-corps-f-35s-1.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        },
+        {
+          "title": "F-35B jet crashed near Marine Corps in San Diego, pilot ejected safely – officials",
+          "summary": "F-35B jet crashed near Marine Corps in San Diego, pilot ejected safely – officials &nbsp;&nbsp; The Guardian",
+          "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1qWk9uSzN4OWNQMDJrT1YzZTNSUk1Ua2poSUZXYUVPSE9WbWdfWXhSSFJDMTBPXzJ0LW9xOElsemlfSjNQS09SNXQzYlVZUjVkUkhMbG5CWjBrdXoxczF3SkdKcGRyYnFmTnprUmZENUJmWDAxUU9IZFEtSG9GUQ?oc=5",
+          "source": "The Guardian",
+          "companion": true,
+          "publishedUtc": "2026-07-31T22:13Z"
+        },
+        {
+          "title": "Marine Corps says F-35B stealth fighter crashed in California, pilot ejected safely",
+          "summary": "Marine Corps says F-35B stealth fighter crashed in California, pilot ejected safely &nbsp;&nbsp; AP News",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPS1JrclNxT3JPWkxwamV1Q1FDUHdwVGtZNHRSSUNxZXF2Yzk1YkotZXpWczliM1RDdWUwb2pUN2x2NlVfcXpiRExubklNU3NPNTdsei1TV3NnM0VNZi14Skx2ZXNTNkFOc3I3SER2SlJ6VC1oZWRrV3RTMFl3bm9Hbmp0akFBRWlPb242bXh3dkRWbVlfSHpEWQ?oc=5",
+          "source": "AP News",
+          "companion": true,
+          "publishedUtc": "2026-07-31T22:52Z"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260731-2211-9",
     "queuedUtc": "2026-07-31T22:11Z",
     "approve": false,
