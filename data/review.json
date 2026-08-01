@@ -1,5 +1,291 @@
 [
   {
+    "id": "g-20260801-1438-3",
+    "queuedUtc": "2026-08-01T14:38Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Aviation safety event involving a stall warning scare and captain intervention; requires human review per safety guidelines.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A British Airways passenger described a stall warning scare and a very violent manoeuvre on an A320 aircraft.",
+        "sourceQuote": "'Very Violent Manoeuvre': British Airways Passenger Describes A320 Stall Warning Scare",
+        "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The captain reportedly intervened while the aircraft was on approach to London Heathrow.",
+        "sourceQuote": "The captain reportedly intervened while on approach to London Heathrow.",
+        "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "A passenger on a British Airways mayday flight described experiencing fear during the event.",
+        "sourceQuote": "Passenger on British Airways mayday flight describes fear and shout of 'I don't want to die'",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9iMU5kWmU5cmFCMUU0bWt3a1JkNk5uQ0p1NldEZW53QnFsa2xudnZ0N3k1bHpTQWE1STRDXzFyR21RbktSZnExY1lxY09pQkdNeEVyUmtPVkY0ZkQt?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety event involving a stall warning scare and captain intervention; requires human review per safety guidelines.",
+      "cat": "safety",
+      "zh": {
+        "title": "英國航空A320客機據報發生失速警告事件 機長在降落倫敦希斯洛期間介入",
+        "summary": "根據 Simple Flying 與 BBC 報導，英國航空一架空中巴士A320客機在進場倫敦希斯洛機場期間，據報發生失速警告情況，機長隨後進行介入處置。機上乘客描述當時經歷了劇烈操作，並在發出求救訊號的航班上表達恐懼感受。",
+        "body": [
+          "根據 Simple Flying 報導，英國航空一架空中巴士 A320 客機在進場倫敦希斯洛機場期間發生失速警告事件。據報導，該班機機長在進場過程中進行了介入處置。",
+          "受訪乘客將當時的飛行過程形容為經歷了極為劇烈的操作動作。 BBC 報導亦指出，這起發出求救訊號的英國航空航班上，有乘客表達了當時心中的恐懼。",
+          "有關此起空中巴士 A320 客機失速警告與機長介入處置事件的詳細過程，目前仍有待進一步資訊確認。"
+        ]
+      },
+      "en": {
+        "title": "British Airways Captain Intervenes During A320 Stall Warning Scare on Approach to Heathrow",
+        "summary": "According to media reports, a British Airways Airbus A320 aircraft experienced a stall warning scare while on approach to London Heathrow Airport. The flight's captain reportedly intervened during the incident, which passengers described as involving a very violent manoeuvre. Passengers on the flight, which declared a mayday, described experiencing intense fear during the occurrence. The details were reported by Simple Flying and the BBC following passenger accounts of the events during the approach into London.",
+        "body": [
+          "According to a report by Simple Flying, a British Airways Airbus A320 aircraft encountered a stall warning scare while on approach to London Heathrow Airport. The captain on board reportedly intervened during the final approach phase of the flight.",
+          "A passenger on board the aircraft described the incident as involving a very violent manoeuvre. Further reporting by the BBC noted that passengers on the British Airways mayday flight expressed significant fear during the scare.",
+          "Further details regarding the aircraft handling and the captain's intervention during the approach to Heathrow remain subject to ongoing reporting and verification."
+        ]
+      },
+      "flash": {
+        "zh": "英國航空A320客機進場希斯洛據報發生失速警告 機長介入處置",
+        "en": "British Airways A320 experiences stall warning on approach to Heathrow",
+        "hot": true
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A British Airways passenger described a stall warning scare and a very violent manoeuvre on an A320 aircraft.",
+          "sourceQuote": "'Very Violent Manoeuvre': British Airways Passenger Describes A320 Stall Warning Scare",
+          "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The captain reportedly intervened while the aircraft was on approach to London Heathrow.",
+          "sourceQuote": "The captain reportedly intervened while on approach to London Heathrow.",
+          "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "A passenger on a British Airways mayday flight described experiencing fear during the event.",
+          "sourceQuote": "Passenger on British Airways mayday flight describes fear and shout of 'I don't want to die'",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9iMU5kWmU5cmFCMUU0bWt3a1JkNk5uQ0p1NldEZW53QnFsa2xudnZ0N3k1bHpTQWE1STRDXzFyR21RbktSZnExY1lxY09pQkdNeEVyUmtPVkY0ZkQt?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [],
+        "airlines": [
+          "British Airways"
+        ],
+        "aircraft_models": [
+          "A320"
+        ],
+        "airports": [
+          "London Heathrow"
+        ],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-1438-3",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "'Very Violent Manoeuvre': British Airways Passenger Describes A320 Stall Warning Scare",
+          "url": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
+          "publishedUtc": "2026-08-01T13:19Z",
+          "summary": "The captain reportedly intervened while on approach to London Heathrow.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/101-british-airways-airbus-a320-airlinephoto-_-shutterstock.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        },
+        {
+          "title": "Passenger on British Airways mayday flight describes fear and shout of 'I don't want to die'",
+          "summary": "Passenger on British Airways mayday flight describes fear and shout of 'I don't want to die' &nbsp;&nbsp; BBC",
+          "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9iMU5kWmU5cmFCMUU0bWt3a1JkNk5uQ0p1NldEZW53QnFsa2xudnZ0N3k1bHpTQWE1STRDXzFyR21RbktSZnExY1lxY09pQkdNeEVyUmtPVkY0ZkQt?oc=5",
+          "source": "BBC",
+          "companion": true,
+          "publishedUtc": "2026-07-31T12:19Z"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260801-1438-6",
+    "queuedUtc": "2026-08-01T14:38Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Financial claim regarding a multi-billion-dollar profitability gap and corporate strategy based solely on headline/excerpt; manual review required.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "American Airlines CEO Robert Isom outlined a strategy to close a multi-billion-dollar profit gap with key national rivals United and Delta.",
+        "sourceQuote": "American Airlines CEO Robert Isom has outlined an ambitious strategy to close the carrier's multi-billion-dollar profitability gap with key national rivals United and Delta.",
+        "sourceUrl": "https://simpleflying.com/video/american-airlines-plan-to-close-a-3-billion-profit-gap-with-united-delta/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The strategy aligns with industry trends followed by observers.",
+        "sourceQuote": "His strategy shouldn’t come as any surprise to anyone who’s been following industry trends.",
+        "sourceUrl": "https://simpleflying.com/video/american-airlines-plan-to-close-a-3-billion-profit-gap-with-united-delta/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Financial claim regarding a multi-billion-dollar profitability gap and corporate strategy based solely on headline/excerpt; manual review required.",
+      "cat": "biz",
+      "zh": {
+        "title": "美國航空執行長 Robert Isom 提出策略 擬縮小與競業獲利差距",
+        "summary": "美國航空執行長 Robert Isom 已提出一項營運策略，旨在縮小該公司與主要競爭對手聯合航空及達美航空之間達數十億美元的獲利差距。根據 Simple Flying 報導，這項新提出的策略計畫與近期民航產業的整體發展趨勢一致。",
+        "body": [
+          "根據 Simple Flying 報導，美國航空（American Airlines）執行長 Robert Isom 已提出一項策略計畫，旨在縮小該航空公司與主要競爭對手聯合航空以及達美航空之間高達數十億美元的獲利差距。",
+          "報導指出，這項由美國航空高層說明的營運策略調整，旨在提升公司在整體航空市場中的競爭實力與獲利表現。",
+          "相關報導並提到，該公司執行長所提出的策略方向，與關注近年民航產業發展趨勢的觀察者所預期之市場走向一致。"
+        ]
+      },
+      "en": {
+        "title": "American Airlines CEO Outlines Strategy To Close Profit Gap With Rivals",
+        "summary": "American Airlines Chief Executive Officer Robert Isom has outlined an ambitious strategic plan intended to close the airline's multi-billion-dollar profitability gap with its key national competitors, United Airlines and Delta Air Lines. According to a news report published by Simple Flying, the overall corporate strategy outlined by the airline chief executive shouldn't come as any surprise to anyone who has been actively following current commercial aviation industry trends and market developments.",
+        "body": [
+          "According to a report published by Simple Flying, American Airlines Chief Executive Officer Robert Isom has outlined a new corporate strategy aimed at closing the carrier's multi-billion-dollar profitability gap with key national rivals United Airlines and Delta Air Lines.",
+          "The strategic outline presented by the executive leadership reflects American Airlines' efforts to address its performance margin relative to major domestic competitors in the US airline industry.",
+          "As noted in the media report, the strategic plan shouldn't come as any surprise to industry observers and analysts who have been following current trends across the commercial aviation sector."
+        ]
+      },
+      "flash": {
+        "zh": "美國航空執行長 Robert Isom 提出策略擬縮小與聯航及達美之獲利差距",
+        "en": "American Airlines CEO Robert Isom outlines strategy to close profitability gap with United and Delta",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "American Airlines CEO Robert Isom outlined a strategy to close a multi-billion-dollar profit gap with key national rivals United and Delta.",
+          "sourceQuote": "American Airlines CEO Robert Isom has outlined an ambitious strategy to close the carrier's multi-billion-dollar profitability gap with key national rivals United and Delta.",
+          "sourceUrl": "https://simpleflying.com/video/american-airlines-plan-to-close-a-3-billion-profit-gap-with-united-delta/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The strategy aligns with industry trends followed by observers.",
+          "sourceQuote": "His strategy shouldn’t come as any surprise to anyone who’s been following industry trends.",
+          "sourceUrl": "https://simpleflying.com/video/american-airlines-plan-to-close-a-3-billion-profit-gap-with-united-delta/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Simple Flying"
+        ],
+        "airlines": [
+          "American Airlines",
+          "United",
+          "Delta"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-1438-6",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "American Airlines' Plan To Close A $3 Billion Profit Gap With United & Delta",
+          "url": "https://simpleflying.com/video/american-airlines-plan-to-close-a-3-billion-profit-gap-with-united-delta/",
+          "publishedUtc": "2026-08-01T12:27Z",
+          "summary": "American Airlines CEO Robert Isom has outlined an ambitious strategy to close the carrier's multi-billion-dollar profitability gap with key national rivals United and Delta. His strategy shouldn’t come as any surprise to anyone who’s been following industry trends.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/american-catchup.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260801-1206-7",
     "queuedUtc": "2026-08-01T12:06Z",
     "approve": false,
@@ -8398,279 +8684,6 @@
           "image": null,
           "source": "CAA Taiwan",
           "sourceKey": "caataiwan"
-        }
-      ]
-    }
-  },
-  {
-    "id": "g-20260726-2303-1",
-    "queuedUtc": "2026-07-26T23:03Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "The report relies on an unnamed informed source (知情人士) and a scholar’s speculative assessment (學者推測) for key claims about the strategic reserve’s composition and future role, which constitutes heavy reliance on anonymous attribution and forward‑looking speculation. Although the exercise itself is confirmed, the interpretive elements warrant human editorial review.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The joint defense exercise was held from July 13 to July 17.",
-        "sourceQuote": "在7月13日至17日舉行的聯合防禦操演"
-      },
-      {
-        "factId": "F2",
-        "claim": "Informed sources said the exercise verified the response capability of the strategic reserve directly under the General Staff.",
-        "sourceQuote": "此次操演已驗證直屬參謀本部的戰略預備隊應變能量"
-      },
-      {
-        "factId": "F3",
-        "claim": "Scholar Su Tzu‑yun described the strategic reserve as a core organisational structure kept as a tactical reserve.",
-        "sourceQuote": "戰略預備隊是軍事作戰上的核心組織結構"
-      },
-      {
-        "factId": "F4",
-        "claim": "The Army Aviation 601st Brigade equipped with AH‑64E Apache helicopters has elements directly subordinate to the General Staff.",
-        "sourceQuote": "配備AH-64E阿帕契攻擊直升機的陸航601旅，部分單位即直屬參謀本部"
-      },
-      {
-        "factId": "F5",
-        "claim": "Su Tzu‑yun speculated that under Han Kuang scenarios the strategic reserve would cover joint land, sea and air forces.",
-        "sourceQuote": "在漢光實兵等聯合作戰想定下，戰略預備隊已不再局限於單一陸上打擊，而是涵蓋陸海空軍戰力"
-      },
-      {
-        "factId": "F6",
-        "claim": "Su Tzu‑yun said the reserve would at critical moments secure political‑economic cores and key infrastructure.",
-        "sourceQuote": "屆時將於關鍵時刻鞏固並確保政經核心、關鍵基礎設施的安全"
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report relies on an unnamed informed source (知情人士) and a scholar’s speculative assessment (學者推測) for key claims about the strategic reserve’s composition and future role, which constitutes heavy reliance on anonymous attribution and forward‑looking speculation. Although the exercise itself is confirmed, the interpretive elements warrant human editorial review.",
-      "cat": "ops",
-      "zh": {
-        "title": "聯合防禦操演驗證直屬參謀本部戰略預備隊應變能量",
-        "summary": "國軍於7月13至17日舉行聯合防禦操演，知情人士稱已驗證直屬參謀本部戰略預備隊應變能量；學者蘇紫雲指出戰略預備隊為核心編制，涵蓋陸航601旅阿帕契直升機及跨域機動部隊，將在漢光實兵想定中保障核心設施安全，並預計在關鍵時刻鞏固政經核心與關鍵基礎設施安全。",
-        "body": [
-          "國軍於7月13日至17日舉行聯合防禦操演，知情人士指出此次操演已驗證直屬參謀本部的戰略預備隊應變能量。",
-          "國防部智庫國防安全研究院學者蘇紫雲接受訪問時說明，戰略預備隊是軍事作戰上的核心組織結構，指揮官通常保留一個營作為戰術活棋，並在第一線遭突破時快速反應、填補缺口。",
-          "蘇紫雲指出，戰略預備隊不受單一戰區轄制；配備AH-64E阿帕契攻擊直升機的陸航601旅部分單位即直屬參謀本部，具備高速機動、跨越水陸空界面的部隊以及空軍聯隊、部分海軍兵力均可在戰略預備隊想定中扮演重要角色。",
-          "學者推測，在漢光實兵等聯合作戰想定下，戰略預備隊已不再局限於單一陸上打擊，而是涵蓋陸海空軍戰力，屆時將於關鍵時刻鞏固並確保政經核心、關鍵基礎設施的安全。",
-          "此次操演結束後，國防部持續強化訓練力度及制度改革，以因應共軍近年持續的文攻武嚇與周邊海空域侵擾。"
-        ]
-      },
-      "en": {
-        "title": "Joint defense exercise verifies strategic reserve under General Staff",
-        "summary": "The ROC armed forces conducted a joint defense exercise from July 13 to 17. Informed sources said the drill verified the response capability of the strategic reserve directly subordinate to the General Staff. Scholar Su Tzu‑yun of the Institute for National Defense and Security Research explained that the strategic reserve is a core organisational element, kept as a tactical reserve for rapid reinforcement. He noted that units such as the Army Aviation 601st Brigade equipped with AH‑64E Apache helicopters, high‑speed cross‑domain forces, Air Force wings and Navy assets can all serve in the strategic reserve. Su speculated that under Han Kuang live‑force scenarios the reserve would encompass joint land, sea and air power to protect political‑economic centres and critical infrastructure at decisive moments.",
-        "body": [
-          "The ROC armed forces held a joint defense exercise from July 13 to 17, and informed sources said the drill verified the response capability of the strategic reserve directly subordinate to the General Staff.",
-          "Su Tzu‑yun, a scholar at the Institute for National Defense and Security Research, explained that the strategic reserve is a core organisational element, typically retained as a tactical reserve for rapid reinforcement when front‑line units are breached.",
-          "Su noted that the strategic reserve is not confined to a single theater; the Army Aviation 601st Brigade, which operates AH‑64E Apache attack helicopters, has elements directly under the General Staff, and high‑speed cross‑domain units, Air Force wings and Navy forces can all be assigned to the reserve.",
-          "He speculated that under Han Kuang live‑force scenarios the strategic reserve would no longer be limited to land strike but would integrate land, sea and air power to secure political‑economic centres and critical infrastructure at critical moments.",
-          "The Ministry of National Defense continues to intensify training and institutional reforms to counter the PLA’s ongoing gray‑zone pressure and frequent incursions around Taiwan."
-        ]
-      },
-      "flash": {
-        "zh": "聯合防禦操演驗證戰略預備隊能量",
-        "en": "Joint defense exercise verifies strategic reserve capability",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The joint defense exercise was held from July 13 to July 17.",
-          "sourceQuote": "在7月13日至17日舉行的聯合防禦操演"
-        },
-        {
-          "factId": "F2",
-          "claim": "Informed sources said the exercise verified the response capability of the strategic reserve directly under the General Staff.",
-          "sourceQuote": "此次操演已驗證直屬參謀本部的戰略預備隊應變能量"
-        },
-        {
-          "factId": "F3",
-          "claim": "Scholar Su Tzu‑yun described the strategic reserve as a core organisational structure kept as a tactical reserve.",
-          "sourceQuote": "戰略預備隊是軍事作戰上的核心組織結構"
-        },
-        {
-          "factId": "F4",
-          "claim": "The Army Aviation 601st Brigade equipped with AH‑64E Apache helicopters has elements directly subordinate to the General Staff.",
-          "sourceQuote": "配備AH-64E阿帕契攻擊直升機的陸航601旅，部分單位即直屬參謀本部"
-        },
-        {
-          "factId": "F5",
-          "claim": "Su Tzu‑yun speculated that under Han Kuang scenarios the strategic reserve would cover joint land, sea and air forces.",
-          "sourceQuote": "在漢光實兵等聯合作戰想定下，戰略預備隊已不再局限於單一陸上打擊，而是涵蓋陸海空軍戰力"
-        },
-        {
-          "factId": "F6",
-          "claim": "Su Tzu‑yun said the reserve would at critical moments secure political‑economic cores and key infrastructure.",
-          "sourceQuote": "屆時將於關鍵時刻鞏固並確保政經核心、關鍵基礎設施的安全"
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "參謀本部",
-          "國防部",
-          "國防安全研究院",
-          "陸航601旅",
-          "空軍",
-          "海軍",
-          "中央社"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "AH-64E阿帕契攻擊直升機"
-        ],
-        "airports": [],
-        "locations": [
-          "台灣",
-          "台海"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "7月13日至17日"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260726-2303-1",
-      "primarySource": "中央社 CNA",
-      "items": [
-        {
-          "title": "聯合防禦操演 驗證直屬參謀本部戰略預備隊應變能量",
-          "url": "https://www.cna.com.tw/news/aipl/202607260100.aspx",
-          "publishedUtc": "2026-07-26T06:56Z",
-          "summary": "（中央社記者游凱翔台北26日電）國軍聯合防禦操演日前結束，知情人士指出，此次操演已驗證直屬參謀本部的戰略預備隊應變能量；學者推測，在漢光實兵等聯合作戰想定下，由具備跨海陸空機動能力的部隊擔任戰略預備隊，成為關鍵打擊戰力。",
-          "image": null,
-          "source": "中央社 CNA",
-          "sourceKey": "cnataiwan"
-        }
-      ]
-    }
-  },
-  {
-    "id": "g-20260726-2246-4",
-    "queuedUtc": "2026-07-26T22:46Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Story involves a reported potential merger between major airlines, a large financial claim, based on a single secondary source; requires editorial verification.",
-    "riskFlags": [
-      "financial_or_order_claim",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A new report reveals United CEO Scott Kirby approached Delta about a merger.",
-        "sourceQuote": "A new report reveals United CEO Scott Kirby approached Delta about a merger"
-      },
-      {
-        "factId": "F2",
-        "claim": "The approach highlights Kirby's bold ambitions despite major antitrust hurdles.",
-        "sourceQuote": "highlighting his bold ambitions despite major antitrust hurdles"
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Story involves a reported potential merger between major airlines, a large financial claim, based on a single secondary source; requires editorial verification.",
-      "cat": "biz",
-      "zh": {
-        "title": "聯合航空執行長柯比據報接觸達美商討合併",
-        "summary": "新報導顯示聯合航空執行長柯比曾主動接觸達美航空，探討合併可能性，但面臨重大反壟斷障礙。據報導，柯比的舉動顯示其積極擴張雄心，但分析師指出反壟斷審查將是關鍵阻力。預計若交易推進將引發監管機構深入調查",
-        "body": [
-          "新報導指出，聯合航空執行長柯比曾主動接觸達美航空，探討合併可能性。",
-          "報導同時指出，此舉凸顯柯比的擴張雄心，但面臨重大反壟斷障礙。"
-        ]
-      },
-      "en": {
-        "title": "United CEO Kirby reportedly approached Delta for merger",
-        "summary": "A new report says United Airlines CEO Scott Kirby approached Delta Air Lines about a possible merger, underscoring his aggressive expansion ambitions while facing significant antitrust hurdles that could block any deal. The report, cited by Simple Flying, indicates Kirby’s outreach reflects a strategic push to create a larger network, but analysts warn that regulatory scrutiny from the Department of Justice and other authorities would likely be intense, making any combination uncertain and potentially prolonged.",
-        "body": [
-          "A new report says United Airlines CEO Scott Kirby approached Delta Air Lines about a possible merger.",
-          "The report also notes that the move highlights Kirby’s bold ambitions despite major antitrust hurdles."
-        ]
-      },
-      "flash": {
-        "zh": "聯合航空柯比據報接觸達美商討合併",
-        "en": "United CEO Kirby reportedly approached Delta for merger",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A new report reveals United CEO Scott Kirby approached Delta about a merger.",
-          "sourceQuote": "A new report reveals United CEO Scott Kirby approached Delta about a merger"
-        },
-        {
-          "factId": "F2",
-          "claim": "The approach highlights Kirby's bold ambitions despite major antitrust hurdles.",
-          "sourceQuote": "highlighting his bold ambitions despite major antitrust hurdles"
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "United Airlines",
-          "Delta"
-        ],
-        "airlines": [
-          "United Airlines",
-          "Delta"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-26"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "financial_or_order_claim",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260726-2246-4",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "United Airlines’ Scott Kirby Also Approached Delta In Hopes Of A Megadeal, New Report Unveils",
-          "url": "https://simpleflying.com/united-airlines-scott-kirby-approach-delta-megadeal/",
-          "publishedUtc": "2026-07-26T21:25Z",
-          "summary": "A new report reveals United CEO Scott Kirby approached Delta about a merger, highlighting his bold ambitions despite major antitrust hurdles.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/01/vs-2.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
         }
       ]
     }
