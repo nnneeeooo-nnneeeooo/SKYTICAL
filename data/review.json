@@ -1,5 +1,227 @@
 [
   {
+    "id": "g-20260802-2014-7",
+    "queuedUtc": "2026-08-02T20:14Z",
+    "approve": false,
+    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
+    "decisionReason": "Fatal firefighting helicopter crash with casualties and mid-air collision is a high-risk aviation safety event requiring human review.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "casualties_or_injuries",
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Two people died in a firefighting helicopter crash in Greece.",
+        "sourceQuote": "Two dead in firefighting helicopter crash in Greece, Fire Service says",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMingFBVV95cUxNSGhDR0RqTHVKV24tazZCX3BDVFFjNmFSQm1UTy1jX2czb2FaTE5EcXlqRF8yRFpBREJmN0l2MmYwWkFzaWZmWlNtSTNUUURCLUNrdUhFdi03a2lGeHFFY3RncWIzVGtOR1UySG5yWGJKWWFWSUFHOE9qTVhFaWdEaGtBclJuNVVkMEdtckZIdTdFUEhLT0NKS2JsRlpQQQ?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The crash involved firefighting helicopters.",
+        "sourceQuote": "Two dead in firefighting helicopter crash in Greece",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMingFBVV95cUxNSGhDR0RqTHVKV24tazZCX3BDVFFjNmFSQm1UTy1jX2czb2FaTE5EcXlqRF8yRFpBREJmN0l2MmYwWkFzaWZmWlNtSTNUUURCLUNrdUhFdi03a2lGeHFFY3RncWIzVGtOR1UySG5yWGJKWWFWSUFHOE9qTVhFaWdEaGtBclJuNVVkMEdtckZIdTdFUEhLT0NKS2JsRlpQQQ?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "A British pilot survived after the firefighting helicopters collided.",
+        "sourceQuote": "Two crew killed as British pilot survives after firefighting helicopters collide in Greece",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5kUnFxTXdNTjQwQllpRElDT051a1VwckJtSS12NnBFeEJHVzBNdjdzd0xxQ3pwR1R1aWxQUzYtUzRvZGUycEVmM09FLVpKZEZYejNpVmNjM3N6Zw?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Two crew members were killed in the collision.",
+        "sourceQuote": "Two crew killed",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5kUnFxTXdNTjQwQllpRElDT051a1VwckJtSS12NnBFeEJHVzBNdjdzd0xxQ3pwR1R1aWxQUzYtUzRvZGUycEVmM09FLVpKZEZYejNpVmNjM3N6Zw?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The information was provided by the Greek Fire Service.",
+        "sourceQuote": "Two dead in firefighting helicopter crash in Greece, Fire Service says",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMingFBVV95cUxNSGhDR0RqTHVKV24tazZCX3BDVFFjNmFSQm1UTy1jX2czb2FaTE5EcXlqRF8yRFpBREJmN0l2MmYwWkFzaWZmWlNtSTNUUURCLUNrdUhFdi03a2lGeHFFY3RncWIzVGtOR1UySG5yWGJKWWFWSUFHOE9qTVhFaWdEaGtBclJuNVVkMEdtckZIdTdFUEhLT0NKS2JsRlpQQQ?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Fatal firefighting helicopter crash with casualties and mid-air collision is a high-risk aviation safety event requiring human review.",
+      "cat": "safety",
+      "zh": {
+        "title": "希臘消防直升機相撞 2人死亡英籍機師倖存",
+        "summary": "希臘消防部門表示，兩架參與野火滅火任務的消防直升機發生碰撞事故，造成兩名機組人員死亡，一名英國籍機師倖存。事故原因仍在調查中。",
+        "body": [
+          "路透社報導，希臘消防部門於8月2日證實，一起涉及消防直升機的事故導致兩人不幸罹難。",
+          "英國廣播公司（BBC）隨後報導補充，兩架空中消防滅火直升機在希臘執勤時發生碰撞，事故中有一名英國籍機師生還。",
+          "目前，當局尚未公布事故發生的具體地點、時間細節以及涉事直升機的機型與所屬單位。相關調查工作正在進行中。",
+          "路透社指出，該消息來源為希臘消防服務官方，明確指出有「兩人死亡」。英國廣播公司則具體說明了兩架直升機相撞的性質，並確認生還者包含一名英國籍飛行員。"
+        ]
+      },
+      "en": {
+        "title": "Two dead, British pilot survives after firefighting helicopters collide in Greece",
+        "summary": "Greece's fire service said two crew members died in a firefighting helicopter crash, while BBC reports a British pilot survived a collision between two firefighting helicopters.",
+        "body": [
+          "Greece's fire service confirmed that two people died in a crash involving a firefighting helicopter, Reuters reported on August 2.",
+          "Further details from the BBC stated that a British pilot survived after two firefighting helicopters collided during operations in Greece.",
+          "The specific location, exact time of the incident, aircraft types, and operating agencies have not been disclosed by authorities at this stage. An investigation is expected.",
+          "The report from Reuters cited the official fire service announcement confirming the fatalities, while the BBC report highlighted the nature of the collision and the nationality of the surviving pilot."
+        ]
+      },
+      "flash": {
+        "zh": "希臘消防直升機相撞墜毀，2人死亡",
+        "en": "Two dead in firefighting helicopter crash in Greece",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-02",
+        "sev": "acc",
+        "aircraft": "firefighting helicopters",
+        "operator": "Greece Fire Service",
+        "phase": {
+          "zh": "空中滅火任務（碰撞）",
+          "en": "Aerial firefighting (collision)"
+        },
+        "location": {
+          "zh": "希臘",
+          "en": "Greece"
+        },
+        "desc": {
+          "zh": "兩架空中消防直升機在執行滅火任務時發生碰撞，導致兩人死亡，一名英國籍飛行員生還。",
+          "en": "Two firefighting helicopters collided during a wildfire mission, resulting in two fatalities; a British pilot survived."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Two people died in a firefighting helicopter crash in Greece.",
+          "sourceQuote": "Two dead in firefighting helicopter crash in Greece, Fire Service says",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMingFBVV95cUxNSGhDR0RqTHVKV24tazZCX3BDVFFjNmFSQm1UTy1jX2czb2FaTE5EcXlqRF8yRFpBREJmN0l2MmYwWkFzaWZmWlNtSTNUUURCLUNrdUhFdi03a2lGeHFFY3RncWIzVGtOR1UySG5yWGJKWWFWSUFHOE9qTVhFaWdEaGtBclJuNVVkMEdtckZIdTdFUEhLT0NKS2JsRlpQQQ?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The crash involved firefighting helicopters.",
+          "sourceQuote": "Two dead in firefighting helicopter crash in Greece",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMingFBVV95cUxNSGhDR0RqTHVKV24tazZCX3BDVFFjNmFSQm1UTy1jX3gzb2FaTE5EcXlqRF8yRFpBREJmN0l2MmYwWkZzaWZmWlNtSTNUUURCLUNrdUhFdi03a2lGeHFFY3RncWIzVGtOR1UySG5yWGJKWWFWSUFHOE9qTVhFaWdEaGtBclJuNVVkMEdtckZIdTdFUEhLT0NKS2JsRlpQQQ?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "A British pilot survived after the firefighting helicopters collided.",
+          "sourceQuote": "Two crew killed as British pilot survives after firefighting helicopters collide in Greece",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5kUnFxTXdNTjQwQllpRElDT051a1VwckJtSS12NnBFeEJHVzBNdjdzd0xxQ3pwR1R1aWxQUzYtUzRvZGUycEVmM09FLVpKZFBYejNpVmNjM3N6Zw?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Two crew members were killed in the collision.",
+          "sourceQuote": "Two crew killed",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5kUnFxTXdNTjQwQllpRElDT051a1VwckJtSS12NnBFeEJHVzBNdjdzd0xxQ3pwR1R1aWxQUzYtUzRvZGUycEVmM09FLVpKZKFBYejNpVmNjM3N6Zw?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The information was provided by the Greek Fire Service.",
+          "sourceQuote": "Two dead in firefighting helicopter crash in Greece, Fire Service says",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMingFBVV95cUxNSGhDR0RqTHVKV24tazZCX3BDVFFjNmFSQm1UTy1jX3czb2FaTE5EcXlqRF8yRFpBREJmN0l2MmYwWkZsaWZmWlNtSTNUUURCLUNrdUhFdi02a1lGeHFFY3RncWIzVGtOR1UySG5yWGJKWWFWSUFHOE9qTVhFaWdEaGtBclJuNVVkMEdtckZIdTdFdEhLT0NKS2JsRlpQQQ?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Fire Service",
+          "BBC"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Greece"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-02"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "casualties_or_injuries",
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260802-2014-7",
+      "primarySource": "Reuters",
+      "items": [
+        {
+          "title": "Two dead in firefighting helicopter crash in Greece, Fire Service says",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNSGhDR0RqTHVKV24tazZCX3BDVFFjNmFSQm1UTy1jX2czb2FaTE5EcXlqRF8yRFpBREJmN0l2MmYwWkFzaWZmWlNtSTNUUURCLUNrdUhFdi03a2lGeHFFY3RncWIzVGtOR1UySG5yWGJKWWFWSUFHOE9qTVhFaWdEaGtBclJuNVVkMEdtckZIdTdFUEhLT0NKS2JsRlpQQQ?oc=5",
+          "publishedUtc": "2026-08-02T15:59Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "Two crew killed as British pilot survives after firefighting helicopters collide in Greece",
+          "summary": "Two crew killed as British pilot survives after firefighting helicopters collide in Greece &nbsp;&nbsp; BBC",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5kUnFxTXdNTjQwQllpRElDT051a1VwckJtSS12NnBFeEJHVzBNdjdzd0xxQ3pwR1R1aWxQUzYtUzRvZGUycEVmM09FLVpKZEZYejNpVmNjM3N6Zw?oc=5",
+          "source": "BBC",
+          "companion": true,
+          "publishedUtc": "2026-08-02T18:04Z"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260802-1808-1",
     "queuedUtc": "2026-08-02T18:08Z",
     "approve": false,
@@ -9197,152 +9419,6 @@
           "url": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
           "publishedUtc": "2026-07-29T12:45Z",
           "summary": "All Nippon Airways (ANA) has increased its current order with Embraer to include eight additional E190-E2 aircraft in… The post ANA increases Embraer order to include eight additional E190-E2 aircraft appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260729-1652-9",
-    "queuedUtc": "2026-07-29T16:52Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves new national aviation safety standards and standard operating procedures introduced following an aircraft crash, requiring human review under regulatory action rules.",
-    "riskFlags": [
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft.",
-        "sourceQuote": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft",
-        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The national standard operating procedures for large air tanker firefighting aircraft include minimum drop specifications.",
-        "sourceQuote": "large air tanker firefighting aircraft, including minimum drop",
-        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Australia introduced national air tanker safety standards after a 737 crash.",
-        "sourceQuote": "Australia introduces national air tanker safety standards after 737 crash",
-        "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves new national aviation safety standards and standard operating procedures introduced following an aircraft crash, requiring human review under regulatory action rules.",
-      "cat": "reg",
-      "zh": {
-        "title": "澳洲針對大型滅火飛機推出首份國家標準作業程序",
-        "summary": "根據 AeroTime 報導，澳洲在 737 墜機事故後，針對大型滅火飛機推出了首份國家標準作業程序。這項新引進的國家空中滅火機安全標準，內容涵蓋最低投放要求等相關操作規範，旨在加強大型空中滅火飛機的作業安全與規範。",
-        "body": [
-          "根據 AeroTime 報導，澳洲已引進首份針對大型空中滅火飛機的國家標準作業程序。這項新發布的國家空中滅火飛機安全標準，是在先前發生 737 墜機事故之後所制定與推出，為澳洲首度針對大型空中滅火作業建立全國性的作業規範。",
-          "根據報導內容，這套針對大型空中滅火飛機的國家標準作業程序，包含了最低投放要求等相關執行細節與規範。澳洲當局透過引進這項新的安全標準，對大型滅火飛機的作業流程與安全規範進行統一管理。"
-        ]
-      },
-      "en": {
-        "title": "Australia Introduces National Air Tanker Safety Standards Following 737 Crash",
-        "summary": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft following a 737 crash, according to a report by AeroTime. The newly introduced national air tanker safety standards establish formalized operational requirements for large firefighting aircraft, which include specific guidelines regarding minimum drop parameters. This regulatory development represents the nation's first comprehensive national framework designed to govern large air tanker firefighting operations and enhance aviation safety during firefighting missions.",
-        "body": [
-          "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, according to reporting published by AeroTime. The national air tanker safety standards were introduced following a 737 crash.",
-          "The newly introduced safety measures establish national standard operating procedures for large air tanker firefighting aircraft operating within Australia. These safety standards include operational parameters such as minimum drop requirements for large air tankers.",
-          "This action marks Australia's introduction of its first unified national standard operating procedures for large aerial firefighting tankers to regulate safety standards across such operations."
-        ]
-      },
-      "flash": {
-        "zh": "澳洲針對大型滅火飛機推出首份國家標準作業程序",
-        "en": "Australia introduces national air tanker safety standards following 737 crash",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft.",
-          "sourceQuote": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft",
-          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The national standard operating procedures for large air tanker firefighting aircraft include minimum drop specifications.",
-          "sourceQuote": "large air tanker firefighting aircraft, including minimum drop",
-          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Australia introduced national air tanker safety standards after a 737 crash.",
-          "sourceQuote": "Australia introduces national air tanker safety standards after 737 crash",
-          "sourceUrl": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "AeroTime"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "737"
-        ],
-        "airports": [],
-        "locations": [
-          "Australia"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260729-1652-9",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Australia introduces national air tanker safety standards after 737 crash",
-          "url": "https://www.aerotime.aero/articles/australia-introduces-national-air-tanker-safety-standards-after-737-crash",
-          "publishedUtc": "2026-07-29T11:25Z",
-          "summary": "Australia has introduced its first national standard operating procedures for large air tanker firefighting aircraft, including minimum drop… The post Australia introduces national air tanker safety standards after 737 crash appeared first on AeroTime .",
           "image": null,
           "source": "AeroTime",
           "sourceKey": "aerotime"
