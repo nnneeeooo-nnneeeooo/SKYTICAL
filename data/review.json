@@ -1,5 +1,152 @@
 [
   {
+    "id": "g-20260802-1808-1",
+    "queuedUtc": "2026-08-02T18:08Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves a major engine selection and fleet procurement order claim by British Airways, requiring manual review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "British Airways selected Pratt & Whitney GTF engines for over 60 Airbus aircraft.",
+        "sourceQuote": "Put Pratt & Whitney GTFs On Over 60 Airbus Jets",
+        "sourceUrl": "https://simpleflying.com/british-airways-broke-decades-cfm-loyalty-pratt-whitney-gtf-over-60-airbus-jets/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The decision introduces Pratt & Whitney's geared turbofan engine into British Airways' Airbus A320neo fleet.",
+        "sourceQuote": "introduce Pratt & Whitney's geared turbofan engine into its Airbus A320neo fleet",
+        "sourceUrl": "https://simpleflying.com/british-airways-broke-decades-cfm-loyalty-pratt-whitney-gtf-over-60-airbus-jets/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The move breaks decades of CFM engine loyalty for British Airways.",
+        "sourceQuote": "British Airways Just Broke Decades Of CFM Loyalty",
+        "sourceUrl": "https://simpleflying.com/british-airways-broke-decades-cfm-loyalty-pratt-whitney-gtf-over-60-airbus-jets/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves a major engine selection and fleet procurement order claim by British Airways, requiring manual review.",
+      "cat": "biz",
+      "zh": {
+        "title": "英國航空為逾60架空中巴士A320neo選用普惠GTF發動機",
+        "summary": "英國航空決定在其空中巴士A320neo機隊中引進普惠齒輪傳動渦輪風扇發動機，裝備超過60架客機。此舉打破了該航空公司過去數十年來長期選用CFM發動機的傳統，標誌著其機隊發動機策略的顯著轉變。",
+        "body": [
+          "根據 Simple Flying 報導，英國航空已決定為旗下超過60架空中巴士客機選用普惠（Pratt & Whitney）發動機。這項配備決策將普惠的齒輪傳動渦輪風扇（GTF）發動機正式引進至英國航空的空中巴士A320neo機隊中。",
+          "此項採購選擇打破了該航空公司數十年來長期選用 CFM 發動機的傳統合作模式。這次將普惠發動機引進至客機機隊的決定，標誌著英國航空在機隊設備供應與營運規劃上的顯著策略轉變。"
+        ]
+      },
+      "en": {
+        "title": "British Airways Selects Pratt & Whitney GTF Engines for Over 60 Airbus Jets",
+        "summary": "According to reports, British Airways has decided to select Pratt & Whitney geared turbofan (GTF) engines to power more than 60 Airbus aircraft, marking a notable change in its fleet procurement strategy. The decision introduces Pratt & Whitney GTF engines to the carrier's Airbus A320neo fleet. This move breaks decades of loyalty to CFM for its narrowbody engine supplies, representing a significant strategic shift in the airline's long-term fleet equipment management and operational planning.",
+        "body": [
+          "According to a report published by Simple Flying, British Airways has made a strategic decision to equip more than 60 Airbus aircraft with Pratt & Whitney engines. The choice introduces Pratt & Whitney's geared turbofan (GTF) engine option directly into the airline's Airbus A320neo fleet operations.",
+          "The equipment decision marks a notable departure for British Airways, breaking decades of long-standing loyalty to CFM International for its narrowbody aircraft engine supplies. Introducing Pratt & Whitney GTF engines to the Airbus A320neo fleet represents a significant strategic shift in the carrier's long-term propulsion sourcing strategy."
+        ]
+      },
+      "flash": {
+        "zh": "英國航空為超過60架空中巴士A320neo客機選用普惠GTF發動機",
+        "en": "British Airways selects Pratt & Whitney GTF engines for over 60 Airbus A320neo jets",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "British Airways selected Pratt & Whitney GTF engines for over 60 Airbus aircraft.",
+          "sourceQuote": "Put Pratt & Whitney GTFs On Over 60 Airbus Jets",
+          "sourceUrl": "https://simpleflying.com/british-airways-broke-decades-cfm-loyalty-pratt-whitney-gtf-over-60-airbus-jets/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The decision introduces Pratt & Whitney's geared turbofan engine into British Airways' Airbus A320neo fleet.",
+          "sourceQuote": "introduce Pratt & Whitney's geared turbofan engine into its Airbus A320neo fleet",
+          "sourceUrl": "https://simpleflying.com/british-airways-broke-decades-cfm-loyalty-pratt-whitney-gtf-over-60-airbus-jets/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The move breaks decades of CFM engine loyalty for British Airways.",
+          "sourceQuote": "British Airways Just Broke Decades Of CFM Loyalty",
+          "sourceUrl": "https://simpleflying.com/british-airways-broke-decades-cfm-loyalty-pratt-whitney-gtf-over-60-airbus-jets/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Pratt & Whitney",
+          "CFM"
+        ],
+        "airlines": [
+          "British Airways"
+        ],
+        "aircraft_models": [
+          "Airbus A320neo"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260802-1808-1",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "British Airways Just Broke Decades Of CFM Loyalty To Put Pratt & Whitney GTFs On Over 60 Airbus Jets",
+          "url": "https://simpleflying.com/british-airways-broke-decades-cfm-loyalty-pratt-whitney-gtf-over-60-airbus-jets/",
+          "publishedUtc": "2026-08-02T18:00Z",
+          "summary": "The airline's decision to introduce Pratt & Whitney's geared turbofan engine into its Airbus A320neo fleet marks a significant strategic shift.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/whitney-gtf.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260802-1440-2",
     "queuedUtc": "2026-08-02T14:40Z",
     "approve": false,
@@ -9199,148 +9346,6 @@
           "image": null,
           "source": "AeroTime",
           "sourceKey": "aerotime"
-        }
-      ],
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260729-0638-1",
-    "queuedUtc": "2026-07-29T06:38Z",
-    "approve": false,
-    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
-    "decisionReason": "涉及美國航空全美營運中斷的發展中事件，雖無傷亡但屬重大運安事件，需人工審查確認事件等級與後續影響。",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "美國航空在7月28日晚間因IT問題導致全美航班短暫停飛。",
-        "sourceQuote": "The entire fleet was grounded as a technology failure hit during the peak evening rush hour.",
-        "sourceUrl": "https://simpleflying.com/american-airlines-nationwide-ground-stop-it-outage/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "美國航空在IT問題迫使短暫的全國性停飛後恢復航班。",
-        "sourceQuote": "American Airlines resumes flights after IT issue forced brief nationwide halt",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQS3BxLXZmR09KZlFlRWxlZDZJakZPZ0JQTXJrS2RSZzZxT09GVVd6czJzcEQteXNQVW5LLVdPbkFWMGZzU0xwejBHZ0E2T2lsbklwVFFxUERTSkt4czVkd18zSzQwdC1xa3ZOdnQxakdsRDVpeVNJOF9JNWI4WnVxdEJPWGp5bk1oUmRwbW1LbG1LTjBBSTVWb2lVcC16M25aT3R4MGliNHA0Q1lJ?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "涉及美國航空全美營運中斷的發展中事件，雖無傷亡但屬重大運安事件，需人工審查確認事件等級與後續影響。",
-      "cat": "ops",
-      "zh": {
-        "title": "美國航空因IT系統故障一度全面停飛後恢復營運",
-        "summary": "美國航空於7月28日晚間因技術故障短暫全面暫停所有航班，影響傍晚尖峰時段，隨後已恢復運作。",
-        "body": [
-          "美國航空（American Airlines）於美東時間週二（7月28日）晚間因資訊科技系統故障，一度在美國全境發布地面停飛指令，所有航班均受影響。",
-          "據Simple Flying報導，此技術故障發生於晚間高峰時段，導致整個機隊短暫停飛，隨後營運已恢復。",
-          "路透社則報導指出，美國航空在發生資訊科技問題迫使短暫的全國性停飛後，航班已恢復運作。",
-          "此次事件涉及美國主要航空公司的全國性系統中斷，但報導中未提及相關航班起降機場、受影響的飛航數量或具體機型。",
-          "目前尚未有官方機構宣布對本事件展開正式調查或提出相關傷亡、損失報告。"
-        ]
-      },
-      "en": {
-        "title": "American Airlines Briefly Grounds All Flights After Nationwide IT Outage Before Resuming Operations",
-        "summary": "American Airlines experienced a technology failure during peak evening hours on July 28, prompting a brief nationwide ground stop for the entire fleet before flights resumed.",
-        "body": [
-          "American Airlines briefly grounded all its flights on the evening of Tuesday, July 28, after experiencing a technology issue that prompted a nationwide halt to operations.",
-          "According to Simple Flying, the entire fleet was grounded as a technology failure hit during the peak evening rush hour.",
-          "Reuters separately reported that American Airlines resumed flights after an IT issue forced a brief nationwide halt.",
-          "The incident involved a system-wide operational disruption at a major U.S. carrier, though no specific details on the exact number of flights, airports, or aircraft models affected were immediately detailed in the early reports.",
-          "There has been no immediate official word of any injuries, accidents, or the launch of a formal investigation related to this operational event."
-        ]
-      },
-      "flash": {
-        "zh": "美國航空全線航班短暫停飛後已恢復",
-        "en": "American Airlines flights resume after brief nationwide ground stop",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "美國航空在7月28日晚間因IT問題導致全美航班短暫停飛。",
-          "sourceQuote": "The entire fleet was grounded as a technology failure hit during the peak evening rush hour.",
-          "sourceUrl": "https://simpleflying.com/american-airlines-nationwide-ground-stop-it-outage/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "美國航空在IT問題迫使短暫的全國性停飛後恢復航班。",
-          "sourceQuote": "American Airlines resumes flights after IT issue forced brief nationwide halt",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQS3BxLXZmR09KZlFlRWxlZDZJakZPZ0JQTXJrS2RSZzZxT09GVVd6czJzcEQteXNQVW5LLVdPbkFWMGZzU0xwejBHZ0E2T2lsbklwVFFxUERTSkt4czVkd18zSzQwdC1xa3ZOdnQxakdsRDVpeVNJOF9JNWI4WnVxdEJPWGp5bk1oUmRwbW1LbG1LTjBBSTVWb2lVcC16M25aT3R4MGliNHA0Q1lJ?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Simple Flying",
-          "Reuters"
-        ],
-        "airlines": [
-          "American Airlines"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-29",
-          "2026-07-28"
-        ]
-      },
-      "eventStatus": "unknown",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260729-0638-1",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "American Airlines Briefly Grounds Every Flight After Nationwide IT Outage",
-          "url": "https://simpleflying.com/american-airlines-nationwide-ground-stop-it-outage/",
-          "publishedUtc": "2026-07-29T06:30Z",
-          "summary": "The entire fleet was grounded as a technology failure hit during the peak evening rush hour.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/816-american-airlines-boeing-777-200-austin-deppe-_-shutterstock.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "title": "American Airlines resumes flights after IT issue forced brief nationwide halt",
-          "summary": "American Airlines resumes flights after IT issue forced brief nationwide halt &nbsp;&nbsp; Reuters",
-          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQS3BxLXZmR09KZlFlRWxlZDZJakZPZ0JQTXJrS2RSZzZxT09GVVd6czJzcEQteXNQVW5LLVdPbkFWMGZzU0xwejBHZ0E2T2lsbklwVFFxUERTSkt4czVkd18zSzQwdC1xa3ZOdnQxakdsRDVpeVNJOF9JNWI4WnVxdEJPWGp5bk1oUmRwbW1LbG1LTjBBSTVWb2lVcC16M25aT3R4MGliNHA0Q1lJ?oc=5",
-          "source": "Reuters",
-          "companion": true,
-          "publishedUtc": "2026-07-28T23:46Z"
         }
       ],
       "archiveContext": {
