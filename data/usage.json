@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-02T09:39Z",
+  "updatedUtc": "2026-08-02T09:41Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -23,13 +23,13 @@
     "gemini:gemini-3.6-flash": {
       "calls": 170,
       "inputTokens": 562128,
-      "outputTokens": 992884,
+      "outputTokens": 993195,
       "unknownCalls": 40
     },
     "gemini:gemini-3.5-flash": {
       "calls": 25,
       "inputTokens": 47983,
-      "outputTokens": 94082,
+      "outputTokens": 93838,
       "unknownCalls": 15
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
@@ -168,16 +168,16 @@
     "2026-08-02": {
       "calls": 38,
       "inputTokens": 173138,
-      "outputTokens": 202467
+      "outputTokens": 202534
     }
   },
   "recentRuns": [
     {
-      "startedUtc": "2026-08-02T09:39Z",
-      "finishedUtc": "2026-08-02T09:39Z",
+      "startedUtc": "2026-08-02T09:40Z",
+      "finishedUtc": "2026-08-02T09:40Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260802-0939-1",
+      "groupId": "g-20260802-0940-1",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "Simple Flying",
@@ -193,16 +193,16 @@
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 220,
+        "archiveRetrieval": 364,
         "promptAssembly": 0,
-        "drafting": 18739,
+        "drafting": 13304,
         "validation": 0,
         "factVerification": null,
         "evidenceBinding": null,
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 20296
+        "total": 15502
       },
       "attempts": [
         {
@@ -210,11 +210,11 @@
           "provider": "gemini",
           "model": "gemini-3.6-flash",
           "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-08-02T09:39Z",
-          "durationMs": 8454,
+          "startedUtc": "2026-08-02T09:40Z",
+          "durationMs": 4087,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 8453,
+          "httpDurationMs": 4087,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "http_error",
@@ -228,11 +228,11 @@
           "provider": "gemini",
           "model": "gemini-3.5-flash",
           "label": "gemini:gemini-3.5-flash",
-          "startedUtc": "2026-08-02T09:39Z",
-          "durationMs": 10286,
+          "startedUtc": "2026-08-02T09:40Z",
+          "durationMs": 9217,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 10285,
+          "httpDurationMs": 9216,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,
@@ -248,49 +248,11 @@
       }
     },
     {
-      "startedUtc": "2026-08-02T09:39Z",
-      "finishedUtc": "2026-08-02T09:39Z",
+      "startedUtc": "2026-08-02T09:40Z",
+      "finishedUtc": "2026-08-02T09:40Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260802-0939-3",
-      "eventId": null,
-      "sourceCount": 6,
-      "primarySource": "NTSB",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 217,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 20181
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-02T09:39Z",
-      "finishedUtc": "2026-08-02T09:39Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260802-0939-4",
+      "groupId": "g-20260802-0940-3",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "Reuters",
@@ -306,7 +268,7 @@
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 216,
+        "archiveRetrieval": 358,
         "promptAssembly": null,
         "drafting": null,
         "validation": null,
@@ -315,7 +277,7 @@
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 20064
+        "total": 15313
       },
       "attempts": [],
       "resourceUsage": {
@@ -324,11 +286,49 @@
       }
     },
     {
-      "startedUtc": "2026-08-02T09:39Z",
-      "finishedUtc": "2026-08-02T09:39Z",
+      "startedUtc": "2026-08-02T09:40Z",
+      "finishedUtc": "2026-08-02T09:40Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260802-0939-5",
+      "groupId": "g-20260802-0940-4",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 355,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 15123
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-02T09:40Z",
+      "finishedUtc": "2026-08-02T09:40Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260802-0940-5",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "臺灣交通要聞",
@@ -344,7 +344,7 @@
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 216,
+        "archiveRetrieval": 352,
         "promptAssembly": null,
         "drafting": null,
         "validation": null,
@@ -353,7 +353,7 @@
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 19948
+        "total": 14936
       },
       "attempts": [],
       "resourceUsage": {
@@ -362,11 +362,11 @@
       }
     },
     {
-      "startedUtc": "2026-08-02T09:39Z",
-      "finishedUtc": "2026-08-02T09:39Z",
+      "startedUtc": "2026-08-02T09:40Z",
+      "finishedUtc": "2026-08-02T09:41Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260802-0939-6",
+      "groupId": "g-20260802-0940-6",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "Aerospace Global News",
@@ -382,16 +382,16 @@
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 246,
+        "archiveRetrieval": 400,
         "promptAssembly": 0,
-        "drafting": 16248,
+        "drafting": 18316,
         "validation": 0,
         "factVerification": null,
         "evidenceBinding": null,
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 36082
+        "total": 33071
       },
       "attempts": [
         {
@@ -399,11 +399,11 @@
           "provider": "gemini",
           "model": "gemini-3.6-flash",
           "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-08-02T09:39Z",
-          "durationMs": 16249,
+          "startedUtc": "2026-08-02T09:40Z",
+          "durationMs": 18317,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 16247,
+          "httpDurationMs": 18315,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,
@@ -419,49 +419,11 @@
       }
     },
     {
-      "startedUtc": "2026-08-02T09:39Z",
-      "finishedUtc": "2026-08-02T09:39Z",
+      "startedUtc": "2026-08-02T09:40Z",
+      "finishedUtc": "2026-08-02T09:41Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260802-0939-8",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "臺灣交通要聞",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 216,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 35935
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-02T09:39Z",
-      "finishedUtc": "2026-08-02T09:39Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260802-0939-11",
+      "groupId": "g-20260802-0940-10",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "NTSB",
@@ -477,7 +439,7 @@
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 216,
+        "archiveRetrieval": 353,
         "promptAssembly": null,
         "drafting": null,
         "validation": null,
@@ -486,7 +448,7 @@
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 35818
+        "total": 32839
       },
       "attempts": [],
       "resourceUsage": {
@@ -535,7 +497,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -599,7 +561,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -637,7 +599,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -675,7 +637,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -713,7 +675,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -751,7 +713,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -789,7 +751,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -846,7 +808,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -903,7 +865,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -960,7 +922,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -998,7 +960,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1036,7 +998,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1074,7 +1036,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1112,7 +1074,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1169,7 +1131,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1226,7 +1188,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1264,7 +1226,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1302,7 +1264,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1359,7 +1321,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1542,7 +1504,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1923,7 +1885,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1961,7 +1923,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -1999,7 +1961,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2056,7 +2018,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2113,7 +2075,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2170,7 +2132,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2227,7 +2189,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2265,7 +2227,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -2664,7 +2626,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3045,7 +3007,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3426,7 +3388,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3464,7 +3426,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3521,7 +3483,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3559,7 +3521,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3597,7 +3559,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -3654,7 +3616,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4053,7 +4015,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4434,7 +4396,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4815,7 +4777,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4890,7 +4852,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4928,7 +4890,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -4985,7 +4947,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5060,7 +5022,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5098,7 +5060,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5479,7 +5441,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5860,7 +5822,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5917,7 +5879,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -5974,7 +5936,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6049,7 +6011,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6087,7 +6049,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6125,7 +6087,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6163,7 +6125,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6201,7 +6163,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6258,7 +6220,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6333,7 +6295,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6714,7 +6676,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6752,7 +6714,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6809,7 +6771,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6847,7 +6809,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -6885,7 +6847,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -7302,7 +7264,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -7683,7 +7645,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -8064,7 +8026,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -8445,7 +8407,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -8826,7 +8788,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -8883,7 +8845,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -8946,7 +8908,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -9034,7 +8996,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9091,7 +9053,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9148,7 +9110,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9205,7 +9167,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9262,7 +9224,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9319,7 +9281,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9394,7 +9356,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9432,7 +9394,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9470,7 +9432,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9851,7 +9813,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9908,7 +9870,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -9965,7 +9927,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10003,7 +9965,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10041,7 +10003,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10079,7 +10041,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10154,7 +10116,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10211,7 +10173,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10286,7 +10248,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10343,7 +10305,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10381,7 +10343,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10419,7 +10381,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10457,7 +10419,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10514,7 +10476,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10552,7 +10514,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10609,7 +10571,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10666,7 +10628,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10741,7 +10703,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10779,7 +10741,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10836,7 +10798,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10893,7 +10855,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10950,7 +10912,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -10988,7 +10950,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11026,7 +10988,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11064,7 +11026,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11121,7 +11083,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11178,7 +11140,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11271,7 +11233,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11652,7 +11614,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11690,7 +11652,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11728,7 +11690,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11766,7 +11728,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -11804,7 +11766,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12185,7 +12147,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12242,7 +12204,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12317,7 +12279,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12698,7 +12660,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12736,7 +12698,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12774,7 +12736,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -12812,7 +12774,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13193,7 +13155,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13358,7 +13320,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13739,7 +13701,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -13796,7 +13758,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14213,7 +14175,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14270,7 +14232,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14651,7 +14613,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -14689,7 +14651,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15070,7 +15032,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15451,7 +15413,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15598,7 +15560,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -15673,7 +15635,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16054,7 +16016,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16435,7 +16397,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16852,7 +16814,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16890,7 +16852,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -16928,7 +16890,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17075,7 +17037,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17120,7 +17082,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -17184,7 +17146,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17241,7 +17203,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17316,7 +17278,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17373,7 +17335,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17448,7 +17410,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17505,7 +17467,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17562,7 +17524,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17943,7 +17905,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -17981,7 +17943,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18019,7 +17981,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18076,7 +18038,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18133,7 +18095,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18208,7 +18170,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18265,7 +18227,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18322,7 +18284,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18703,7 +18665,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18741,7 +18703,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18779,7 +18741,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -18817,7 +18779,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19252,7 +19214,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19309,7 +19271,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19366,7 +19328,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19621,7 +19583,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19678,7 +19640,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -19735,7 +19697,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20116,7 +20078,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20173,7 +20135,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20230,7 +20192,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20287,7 +20249,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20325,7 +20287,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20382,7 +20344,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20439,7 +20401,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20496,7 +20458,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20553,7 +20515,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20610,7 +20572,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20667,7 +20629,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20724,7 +20686,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20799,7 +20761,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20856,7 +20818,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20913,7 +20875,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -20970,7 +20932,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21008,7 +20970,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21046,7 +21008,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21084,7 +21046,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21141,7 +21103,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21179,7 +21141,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21217,7 +21179,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21274,7 +21236,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21331,7 +21293,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21388,7 +21350,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21426,7 +21388,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21464,7 +21426,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21502,7 +21464,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21577,7 +21539,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -21652,7 +21614,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22051,7 +22013,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22089,7 +22051,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22127,7 +22089,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22165,7 +22127,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22222,7 +22184,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22279,7 +22241,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22354,7 +22316,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -22753,7 +22715,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23134,7 +23096,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23172,7 +23134,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23210,7 +23172,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23248,7 +23210,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23286,7 +23248,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23324,7 +23286,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23381,7 +23343,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23456,7 +23418,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23837,7 +23799,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23894,7 +23856,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -23951,7 +23913,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -24332,7 +24294,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -24713,7 +24675,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -25094,7 +25056,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -25151,7 +25113,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -25244,7 +25206,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -25282,7 +25244,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -25357,7 +25319,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -25738,7 +25700,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -25795,7 +25757,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -25852,7 +25814,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -25909,7 +25871,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -25966,7 +25928,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -26023,7 +25985,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -26080,7 +26042,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -26461,7 +26423,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -26506,7 +26468,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -26630,7 +26592,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -26687,7 +26649,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "GPT 5.6 Terra Thinking",
@@ -26883,7 +26845,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "gemini:gemini-3.6-flash",
@@ -27037,7 +26999,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -27075,7 +27037,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -27132,7 +27094,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -27297,7 +27259,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -27354,7 +27316,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -27501,7 +27463,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -27648,7 +27610,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -27795,7 +27757,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -27942,7 +27904,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -28089,7 +28051,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -28127,7 +28089,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -28292,7 +28254,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -28439,7 +28401,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -28586,7 +28548,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -28733,7 +28695,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -28880,7 +28842,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29009,7 +28971,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29066,7 +29028,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29123,7 +29085,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29270,7 +29232,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29417,7 +29379,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29480,7 +29442,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29537,7 +29499,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29594,7 +29556,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29651,7 +29613,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29708,7 +29670,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29765,7 +29727,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29948,7 +29910,7 @@
         }
       ],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -29986,7 +29948,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -30024,7 +29986,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     },
@@ -30062,7 +30024,7 @@
       },
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": []
       }
     }
