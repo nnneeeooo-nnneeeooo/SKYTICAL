@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-02T14:48Z",
+  "updatedUtc": "2026-08-02T16:07Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,9 +21,9 @@
       "unknownCalls": 62
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 183,
-      "inputTokens": 615896,
-      "outputTokens": 1100895,
+      "calls": 185,
+      "inputTokens": 622372,
+      "outputTokens": 1106472,
       "unknownCalls": 41
     },
     "gemini:gemini-3.5-flash": {
@@ -166,12 +166,164 @@
       "outputTokens": 1004294
     },
     "2026-08-02": {
-      "calls": 52,
-      "inputTokens": 230576,
-      "outputTokens": 315504
+      "calls": 54,
+      "inputTokens": 237052,
+      "outputTokens": 321081
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-02T16:06Z",
+      "finishedUtc": "2026-08-02T16:07Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260802-1606-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 300,
+        "promptAssembly": 0,
+        "drafting": 13419,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 14318
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-02T16:06Z",
+          "durationMs": 13419,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 13418,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-02T16:06Z",
+      "finishedUtc": "2026-08-02T16:07Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260802-1606-2",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 292,
+        "promptAssembly": 0,
+        "drafting": 19458,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 33609
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-02T16:07Z",
+          "durationMs": 19458,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 19457,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-02T16:06Z",
+      "finishedUtc": "2026-08-02T16:07Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260802-1606-7",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 295,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 33446
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-02T14:40Z",
       "finishedUtc": "2026-08-02T14:40Z",
