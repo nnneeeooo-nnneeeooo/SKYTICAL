@@ -1,5 +1,335 @@
 [
   {
+    "id": "g-20260802-0003-6",
+    "queuedUtc": "2026-08-02T00:03Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Financial results, profit reporting, and aircraft order claims require editorial review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Airbus reported 351 commercial aircraft deliveries in H1 2026, driving revenues up 12% year-on-year to €33.2 billion and net income to €2.24 billion.",
+        "sourceQuote": "delivered 351 commercial aircraft during the first six months of 2026, up from 306 in the same period last year, helping revenues climb 12% year-on-year to €33.2 billion.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Commercial aircraft division revenue rose 15% to €23.9 billion, with deliveries including 44 A220s, 271 A320-family, 10 A330s, and 26 A350s.",
+        "sourceQuote": "delivered 44 A220 s, 271 A320 -family aircraft, 10 A330 s, and 26 A350 s between January and June.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Airbus recorded 886 gross commercial orders and 821 net orders in H1 2026, bringing its order backlog to 9,222 aircraft at the end of June.",
+        "sourceQuote": "net orders stood at 821 aircraft, more than double the 402 aircraft recorded in H1 2025.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Airbus Defence and Space revenue grew 9% to €6.3 billion with adjusted EBIT rising to €487 million, while Airbus Helicopters recorded €3.7 billion in revenue and 144 deliveries.",
+        "sourceQuote": "Airbus Defence and Space recorded a significant improvement, with revenue increasing 9% to €6.3 billion.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Airbus maintained its full-year 2026 targets of delivering around 870 commercial aircraft and achieving an adjusted EBIT of approximately €7.5 billion.",
+        "sourceQuote": "continues to target around 870 commercial aircraft deliveries in 2026 and an adjusted EBIT of approximately €7.5 billion.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Airbus reaffirmed production rate targets including 70 to 75 per month for the A320 family by end of 2027, 13 per month for the A220 by 2028, 12 for the A350 in 2028, and 5 for the A330 in 2029.",
+        "sourceQuote": "continuing to target a production rate of between 70 and 75 aircraft per month by the end of 2027, before stabilising at a rate of 75.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Financial results, profit reporting, and aircraft order claims require editorial review.",
+      "cat": "biz",
+      "zh": {
+        "title": "空中巴士上半年營收達332億歐元 淨利升至22.4億歐元",
+        "summary": "空中巴士公布2026年上半年財務業績，受商用飛機交付量增加與國防業務成長推動，總營收年增12%至332億歐元，淨利達22.4億歐元。期間共交付351架商用飛機，新接淨訂單達821架，截至6月底手握訂單達9,222架。空中巴士維持全年交付約870架飛機及調整後EBIT約75億歐元的目標。",
+        "body": [
+          "空中巴士公布2026年上半年財務業績，受惠於商用飛機交付量增加與國防業務需求強勁，整體營運表現明顯提升。在2026年前六個月中，空中巴士共交付351架商用飛機，高於2025年同期的306架。這推動集團總營收年增12%達到332億歐元，調整後息稅前利潤（EBIT）成長24%至27億歐元，淨利則由去年同期的15.3億歐元增至22.4億歐元。",
+          "商用飛機部門仍是空中巴士主要的業績支柱，上半年實現營收239億歐元，較去年同期成長15%。在交付機型方面，空中巴士於1月至6月期間共交付44架A220飛機、271架A320系列飛機、10架A330飛機以及26架A350飛機。商用飛機部門調整後EBIT由去年同期的17億歐元升至20億歐元，不過公司指出，交付量增加帶來的效益部分被貨幣避險的影響所抵銷。",
+          "新機市場需求持續保持強勁。空中巴士在上半年錄得886架商用飛機總訂單，扣除取消訂單後，淨訂單數達821架，較2025年上半年的402架增加一倍以上。截至6月底，空中巴士手握的商用飛機積壓訂單總量已達9,222架。此外，公司重申各機型的產能提升目標，包括計劃在2027年底前將A320系列飛機月產量提升至70至75架，並持續推動A220、A330及A350的增產進度。",
+          "除了民用航空業務外，空中巴士國防與航太部門上半年營收成長9%至63億歐元，調整後EBIT達4.87億歐元，新接訂單金額達93億歐元。直升機部門營收則維持在37億歐元，交付144架。儘管面臨地緣政治不確定性及供應鏈風險，空中巴士仍維持全年度財務指引，預計2026年將交付約870架商用飛機，並實現約75億歐元的調整後EBIT。"
+        ]
+      },
+      "en": {
+        "title": "Airbus Reports €33.2B H1 2026 Revenue as Deliveries and Defence Demand Rise",
+        "summary": "Airbus reported an improved financial performance for the first half of 2026, generated by higher commercial aircraft deliveries and strong defence demand. Consolidated revenue increased 12% year-on-year to €33.2 billion, while net income rose to €2.24 billion. The planemaker delivered 351 commercial aircraft during the six-month period, up from 306 in H1 2025, and recorded 821 net orders, taking its backlog to 9,222 aircraft. Airbus Defence and Space revenue grew 9% to €6.3 billion. The European manufacturer reiterated its full-year guidance to deliver approximately 870 commercial aircraft and achieve an adjusted EBIT of around €7.5 billion in 2026.",
+        "body": [
+          "Airbus reported an improvement in its financial performance for the second quarter and first half of 2026, boosted by higher commercial aircraft deliveries and robust activity in its defence sector. During the first six months of 2026, the European aircraft manufacturer delivered 351 commercial aircraft, compared with 306 units delivered during the same period in 2025. This delivery growth helped consolidated revenues increase by 12% year-on-year to €33.2 billion. Consolidated adjusted EBIT rose 24% to €2.7 billion, while net income reached €2.24 billion, up from €1.53 billion recorded in the first half of 2025.",
+          "The commercial aircraft business remained the core driver of the planemaker's overall performance, generating €23.9 billion in revenue during the first half of the year, representing a 15% increase compared to H1 2025. Between January and June 2026, Airbus delivered 44 A220s, 271 A320-family aircraft, 10 A330s, and 26 A350s. Adjusted EBIT for the commercial aircraft division rose from €1.7 billion to €2.0 billion, although the manufacturer noted that the positive financial impact of higher aircraft deliveries was partially offset by currency hedging effects.",
+          "Demand for new commercial aircraft remained strong throughout the period. Airbus recorded 886 gross commercial orders during the first half of 2026, up from 494 gross orders in H1 2025. Net orders after cancellations reached 821 aircraft, more than double the 402 net orders recorded in the previous year's first half. As a result, the manufacturer's total commercial aircraft backlog stood at 9,222 aircraft at the end of June 2026. Airbus also confirmed its ongoing production ramp-up targets across its programmes, including reaching a monthly production rate of between 70 and 75 aircraft for the A320 family by late 2027.",
+          "In non-commercial sectors, Airbus Defence and Space reported a revenue increase of 9% to €6.3 billion, with adjusted EBIT rising to €487 million compared with €265 million a year earlier. Order intake for the defence unit reached €9.3 billion during the first half. Airbus Helicopters generated stable revenue of €3.7 billion with 144 deliveries. Despite persistent global trade uncertainties and supply chain challenges, Airbus maintained its full-year 2026 targets, aiming to deliver approximately 870 commercial aircraft and achieve an adjusted EBIT of around €7.5 billion."
+        ]
+      },
+      "flash": {
+        "zh": "空中巴士公布2026上半年財報，營收增至332億歐元，淨利達22.4億歐元。",
+        "en": "Airbus posts €33.2B revenue and €2.24B net profit for H1 2026 on higher deliveries.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Airbus reported 351 commercial aircraft deliveries in H1 2026, driving revenues up 12% year-on-year to €33.2 billion and net income to €2.24 billion.",
+          "sourceQuote": "delivered 351 commercial aircraft during the first six months of 2026, up from 306 in the same period last year, helping revenues climb 12% year-on-year to €33.2 billion.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Commercial aircraft division revenue rose 15% to €23.9 billion, with deliveries including 44 A220s, 271 A320-family, 10 A330s, and 26 A350s.",
+          "sourceQuote": "delivered 44 A220 s, 271 A320 -family aircraft, 10 A330 s, and 26 A350 s between January and June.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Airbus recorded 886 gross commercial orders and 821 net orders in H1 2026, bringing its order backlog to 9,222 aircraft at the end of June.",
+          "sourceQuote": "net orders stood at 821 aircraft, more than double the 402 aircraft recorded in H1 2025.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Airbus Defence and Space revenue grew 9% to €6.3 billion with adjusted EBIT rising to €487 million, while Airbus Helicopters recorded €3.7 billion in revenue and 144 deliveries.",
+          "sourceQuote": "Airbus Defence and Space recorded a significant improvement, with revenue increasing 9% to €6.3 billion.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Airbus maintained its full-year 2026 targets of delivering around 870 commercial aircraft and achieving an adjusted EBIT of approximately €7.5 billion.",
+          "sourceQuote": "continues to target around 870 commercial aircraft deliveries in 2026 and an adjusted EBIT of approximately €7.5 billion.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Airbus reaffirmed production rate targets including 70 to 75 per month for the A320 family by end of 2027, 13 per month for the A220 by 2028, 12 for the A350 in 2028, and 5 for the A330 in 2029.",
+          "sourceQuote": "continuing to target a production rate of between 70 and 75 aircraft per month by the end of 2027, before stabilising at a rate of 75.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Airbus",
+          "Airbus Defence and Space",
+          "Airbus Helicopters"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "A220",
+          "A320",
+          "A330",
+          "A350"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "first six months of 2026",
+          "2026",
+          "2025",
+          "end of June"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260802-0003-6",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Airbus profit rises as higher deliveries and defence demand boost first-half results News",
+          "url": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
+          "publishedUtc": "2026-07-29T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/A350-1000ULR-for-Qantas.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: ON-YEAR"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se...",
+            "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+            "facts": [
+              {
+                "claim": "Q2 2026 Airbus net income rose 126% to $1.66 billion (€1.65 billion) from $842 million (€732 million) in the same period last year, alongside a 28% increase in Q2 revenue.",
+                "source_quote": "Net income increased from $842 million (€732 million) to $1.66 billion (€1.65 billion) in Q2 2026 while revenue rose 28% over the same period.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "In the first half of 2026, Airbus delivered 351 commercial aircraft, up from 306 in H1 2025, including 237 delivered in the second quarter compared to 114 in the first quarter.",
+                "source_quote": "Between April and June 2026, Airbus delivered 237 commercial aircraft to customers while between January and March 2026, just 114 were delivered. The total for 2026 first half stands at 351.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "Airbus reported consolidated revenues of €33.2 billion ($38.2 billion) for H1 2026, a 12% increase year-on-year, with a consolidated EBIT Adjusted of €2.77 billion (€2,727 million).",
+                "source_quote": "Consolidated revenues increased 12% year-on-year to € 33.2 billion (H1 2025: € 29.6 billion).",
+                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
+              },
+              {
+                "claim": "Commercial aircraft gross orders reached 886 units (821 net orders) in the first half of 2026, bringing the total order backlog to 9,222 commercial aircraft at the end of June 2026.",
+                "source_quote": "Gross commercial aircraft orders totalled 886 (H1 2025: 494 aircraft) with net orders of 821 aircraft after cancellations (H1 2025: 402 aircraft). The order backlog amounted to 9,222",
+                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
+              },
+              {
+                "claim": "The company maintained its guidance to deliver approximately 870 commercial aircraft in 2026, and expects a full-year EBIT Adjusted of €7.5 billion ($8.6 billion).",
+                "source_quote": "The company said its ambition to deliver around 870 commercial aircraft in 2026 remains the same. While EBIT adjusted currently stands at $3.1 billion (€2.7 billion), Airbus’ outlook is $8.6 billion (€7.5 billion) by year end.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "Airbus is continuing its production ramp-up, targeting a monthly rate of 13 for the A220 in 2028, between 70 and 75 for the A320 family by late 2027, 5 for the A330 in 2029, and 12 for the A350 in 2028.",
+                "source_quote": "The A220 ramp-up is ongoing and the Company continues to target a monthly production rate of 13 aircraft in 2028. On the A320 Family, the Company continues to expect to reach a rate of between 70 and 75 aircraft a month",
+                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260801-0732-african-domestic-aviation-shows-resilien",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: ON-YEAR"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere...",
+            "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+            "facts": [
+              {
+                "claim": "Global airline capacity increased by 1% year-on-year for the summer season, below the 3% forecast due to capacity reallocations.",
+                "source_quote": "Global capacity is up just 1% year-on-year this summer season, according to data from aviation analysts OAG and Midas Aviation.",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "African domestic aviation market has shown resilience to global shocks despite price increases and pockets of slowed growth.",
+                "source_quote": "Prices have gone up, and there have been pockets of slowed growth, but no real shrinking. The market is showing resilience to those global shocks",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "Nigeria's domestic aviation capacity grew 36% year-on-year, driven in part by its domestication of the Cape Town Convention.",
+                "source_quote": "Pointing to Nigeria’s 36% year-on-year capacity growth in its domestic market, Grant said this is in part driven by the country’s domestication of the Cape Town Convention",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "Major aircraft lessors including AirCap have begun placing dry-leased airframes in Nigeria.",
+                "source_quote": "Major lessors, including AirCap, have begun placing airframes in the country – a shift from previous years when Nigerian operators leaned on seasonal wet leases",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "Passenger booking curves in Africa remain compressed, with many bookings made one day before travel.",
+                "source_quote": "The booking curve remains very tight. We’re still seeing a large number of bookings made as late as one day before travel.",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: airbus",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
+            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+            "facts": [
+              {
+                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
+                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260801-2202-3",
     "queuedUtc": "2026-08-01T22:02Z",
     "approve": false,
@@ -8580,153 +8910,6 @@
           "source": "CNBC",
           "companion": true,
           "publishedUtc": "2026-07-28T11:33Z"
-        }
-      ],
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260728-1208-2",
-    "queuedUtc": "2026-07-28T12:08Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves a major financial or order claim ($1.5 billion export deal) for the KF-21 fighter jet, requiring editorial verification.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "KF-21戰鬥機目前已於韓國投入服役。",
-        "sourceQuote": "With the KF-21 now entering service in South Korea",
-        "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "韓國航空宇宙產業（KAI）正為其新型戰鬥機爭取四家潛在出口客戶。",
-        "sourceQuote": "KAI is lining up four very promising export customers for its new fighter jet.",
-        "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "此項出口推廣計畫涉及一項價值15億美元的交易案。",
-        "sourceQuote": "Inside The $1.5 Billion Deal That Would Make The KF-21 A Global Fighter",
-        "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves a major financial or order claim ($1.5 billion export deal) for the KF-21 fighter jet, requiring editorial verification.",
-      "cat": "mil",
-      "zh": {
-        "title": "韓國KAI爭取KF-21戰機四家出口客戶 涉15億美元計畫",
-        "summary": "根據 Simple Flying 報導，隨著 KF-21 戰鬥機於韓國正式服役，韓國航空宇宙產業（KAI）正積極爭取四家潛在出口客戶。報導指出，相關推廣計畫涉及一項價值 15 億美元的交易案，旨在推動 KF-21 戰鬥機邁向國際市場。",
-        "body": [
-          "根據 Simple Flying 發布的最新報導，韓國航太製造商韓國航空宇宙產業（KAI）目前正在積極爭取四家極具潛力的海外出口客戶，期盼為旗下新型 KF-21 戰鬥機拓展國際市場。這項海外推廣作業，適逢 KF-21 戰鬥機正式於韓國投入服役。",
-          "報導特別指出，這項潛在的海外出口計畫主要圍繞著一項總價值高達 15 億美元的交易案展開。若相關交易案未來能夠順利推進，將有助於推動 KF-21 戰鬥機躍升為具備全球市場競爭力的戰鬥機平台。"
-        ]
-      },
-      "en": {
-        "title": "KAI Pursues Four Export Customers for KF-21 Fighter Jet in $1.5 Billion Deal",
-        "summary": "According to recent news coverage published by Simple Flying, manufacturer Korea Aerospace Industries (KAI) is currently working to secure four export customers for its new KF-21 fighter jet, following the aircraft's entry into service in South Korea. The export initiative involves a $1.5 billion deal aimed at promoting the KF-21 as a global fighter jet platform, as KAI seeks to advance its international marketing efforts for the aircraft.",
-        "body": [
-          "According to recent news coverage published by Simple Flying, South Korean defense manufacturer Korea Aerospace Industries (KAI) is actively seeking to line up four very promising export customers for its new KF-21 fighter jet. The international sales effort comes as the KF-21 aircraft officially enters active military service in South Korea.",
-          "The prospective export plan highlights a deal valued at $1.5 billion. According to Simple Flying, the execution of this potential transaction would mark a key advancement in establishing the KF-21 as a global fighter jet platform in the international defense market."
-        ]
-      },
-      "flash": {
-        "zh": "韓國KAI爭取KF-21戰鬥機四家出口客戶 涉及15億美元交易案",
-        "en": "KAI lines up four export customers for KF-21 fighter in $1.5 billion deal",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "KF-21戰鬥機目前已於韓國投入服役。",
-          "sourceQuote": "With the KF-21 now entering service in South Korea",
-          "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "韓國航空宇宙產業（KAI）正為其新型戰鬥機爭取四家潛在出口客戶。",
-          "sourceQuote": "KAI is lining up four very promising export customers for its new fighter jet.",
-          "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "此項出口推廣計畫涉及一項價值15億美元的交易案。",
-          "sourceQuote": "Inside The $1.5 Billion Deal That Would Make The KF-21 A Global Fighter",
-          "sourceUrl": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "KAI",
-          "Korea Aerospace Industries",
-          "Simple Flying"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "KF-21"
-        ],
-        "airports": [],
-        "locations": [
-          "South Korea"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260728-1208-2",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Inside The $1.5 Billion Deal That Would Make The KF-21 A Global Fighter",
-          "url": "https://simpleflying.com/inside-1-5-billion-deal-make-kf-21-global-fighter/",
-          "publishedUtc": "2026-07-28T11:00Z",
-          "summary": "With the KF-21 now entering service in South Korea, KAI is lining up four very promising export customers for its new fighter jet.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/kai-kf-21-korean-fighter-jet.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
         }
       ],
       "archiveContext": {
