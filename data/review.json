@@ -1,5 +1,465 @@
 [
   {
+    "id": "g-20260803-1232-1",
+    "queuedUtc": "2026-08-03T12:32Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "FAA announcement regarding potential seat installation inspections on hundreds of Boeing 737 MAX aircraft constitutes regulatory action requiring human review.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The U.S. Federal Aviation Administration stated on July 27 that seats on hundreds of U.S.-registered Boeing 737 MAX aircraft may require inspections on suspicion of incorrect installation and must be fixed.",
+        "sourceQuote": "On Monday, July 27th, the U.S. Federal Aviation Administration (FAA) said that seats on hundreds of Boeing 737 MAX jets, registered in the U.S., may require inspections on suspicion that they were incorrectly installed and must be fixed.",
+        "sourceUrl": "https://simpleflying.com/video/hundreds-of-boeing-737-maxs-may-have-had-seats-incorrectly-installed/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "FAA announcement regarding potential seat installation inspections on hundreds of Boeing 737 MAX aircraft constitutes regulatory action requiring human review.",
+      "cat": "reg",
+      "zh": {
+        "title": "美國FAA表示數百架波音737 MAX座椅可能安裝錯誤須檢查",
+        "summary": "美國聯邦航空總署（FAA）於7月27日表示，在美國註冊的數百架波音737 MAX客機，其座椅因涉嫌安裝不當而可能需要接受檢查。主管機關指出，這些客機座椅在發現疑慮後必須進行修正。",
+        "body": [
+          "根據美國聯邦航空總署（FAA）於7月27日說明的內容，在美國註冊的數百架波音737 MAX客機，其內部座椅可能面臨必要的檢查要求。美方主管機關指出，這些客機座椅因涉嫌未被正確安裝，相關單位需進行相應的檢視程序。",
+          "主管機關進一步表示，相關檢查是在懷疑座椅安裝過程不符規範後所提出的處置措施。針對這些可能存在安裝瑕疵的波音737 MAX客機座椅，相關單位必須執行相應的修正與維修作業，以確保符合相關規定。"
+        ]
+      },
+      "en": {
+        "title": "FAA Says Seats on Hundreds of Boeing 737 MAX Jets May Require Inspections",
+        "summary": "The U.S. Federal Aviation Administration (FAA) announced on Monday, July 27, that seats installed on hundreds of Boeing 737 MAX aircraft registered in the United States may require formal inspections due to suspicions of improper installation. According to the aviation authority, the affected seats must be repaired and properly fixed after concerns were raised regarding their installation process. This announcement impacts numerous Boeing 737 MAX aircraft operating under United States registry as regulators move to address the potential installation issue.",
+        "body": [
+          "On Monday, July 27, the U.S. Federal Aviation Administration (FAA) announced that seats installed on hundreds of Boeing 737 MAX aircraft registered in the United States may need to undergo formal inspections.",
+          "The regulatory agency stated that the potential inspection requirement stems from suspicions that the seats were incorrectly installed. The concern applies specifically to hundreds of Boeing 737 MAX jets on the U.S. civil aircraft registry.",
+          "According to the official FAA statement, any seats suspected of having been incorrectly installed on these Boeing 737 MAX aircraft must be properly fixed."
+        ]
+      },
+      "flash": {
+        "zh": "FAA表示數百架波音737 MAX座椅可能安裝錯誤須檢查",
+        "en": "FAA says seats on hundreds of Boeing 737 MAX jets may require inspections over incorrect installation.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The U.S. Federal Aviation Administration stated on July 27 that seats on hundreds of U.S.-registered Boeing 737 MAX aircraft may require inspections on suspicion of incorrect installation and must be fixed.",
+          "sourceQuote": "On Monday, July 27th, the U.S. Federal Aviation Administration (FAA) said that seats on hundreds of Boeing 737 MAX jets, registered in the U.S., may require inspections on suspicion that they were incorrectly installed and must be fixed.",
+          "sourceUrl": "https://simpleflying.com/video/hundreds-of-boeing-737-maxs-may-have-had-seats-incorrectly-installed/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "Federal Aviation Administration",
+          "FAA",
+          "Boeing"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Boeing 737 MAX"
+        ],
+        "airports": [],
+        "locations": [
+          "U.S."
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "July 27th"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260803-1232-1",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Hundreds Of Boeing 737 MAXs May Have Had Seats Incorrectly Installed",
+          "url": "https://simpleflying.com/video/hundreds-of-boeing-737-maxs-may-have-had-seats-incorrectly-installed/",
+          "publishedUtc": "2026-08-03T12:28Z",
+          "summary": "On Monday, July 27th, the U.S. Federal Aviation Administration (FAA) said that seats on hundreds of Boeing 737 MAX jets, registered in the U.S., may require inspections on suspicion that they were incorrectly installed and must be fixed.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/737-seat-install.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing, faa",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1934-boeing-wraps-up-certification-flight-tes",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing, faa, federal aviation administration (faa)",
+              "archive predates source by 3 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 3 day(s) apart",
+            "event_date": "2026-07-31",
+            "source_name": "AeroTime — Boeing 737 MAX 10 completes final test flight as certificat...",
+            "source_url": "https://www.aerotime.aero/articles/boeing-737-max-10-completes-final-test-flight",
+            "facts": [
+              {
+                "claim": "Boeing has completed planned certification flight testing of the 737 MAX 10.",
+                "source_quote": "Boeing has completed planned certification flight testing of the 737 MAX 10",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-10-completes-final-test-flight",
+                "source_name": "AeroTime — Boeing 737 MAX 10 completes final test flight as certificat..."
+              },
+              {
+                "claim": "The final test flight took off from and landed at Boeing Field in Seattle and checked audibility of the lavatory smoke detector and cabin speaker system.",
+                "source_quote": "The final test flight took off from and landed at Boeing Field in Seattle. It evaluated whether crews could clearly hear the lavatory smoke detector and cabin speaker system.",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-10-completes-final-test-flight",
+                "source_name": "AeroTime — Boeing 737 MAX 10 completes final test flight as certificat..."
+              },
+              {
+                "claim": "The MAX 10 test fleet completed 976 flights totaling more than 2,060 flight hours and logged about 1,040 hours of ground testing.",
+                "source_quote": "Boeing said the MAX 10 test fleet completed 976 flights totaling more than 2,060 flight hours. The program also logged about 1,040 hours of ground testing.",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-10-completes-final-test-flight",
+                "source_name": "AeroTime — Boeing 737 MAX 10 completes final test flight as certificat..."
+              },
+              {
+                "claim": "Boeing continues to target MAX 10 certification in 2026, followed by first customer deliveries in 2027.",
+                "source_quote": "Boeing continues to target MAX 10 certification in 2026, followed by the first customer deliveries in 2027.",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-10-completes-final-test-flight",
+                "source_name": "AeroTime — Boeing 737 MAX 10 completes final test flight as certificat..."
+              },
+              {
+                "claim": "The third development assurance review is complete, the fourth is 60% finished, and system safety assessments are 32% complete.",
+                "source_quote": "The company said its third development assurance review is complete, while the fourth is 60% finished. System safety assessments are 32% complete.",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-10-completes-final-test-flight",
+                "source_name": "AeroTime — Boeing 737 MAX 10 completes final test flight as certificat..."
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: simple flying",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260803-1232-8",
+    "queuedUtc": "2026-08-03T12:32Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Fatal firefighting helicopter accident with two casualties, active investigation, and grounding of Bell helicopters requires human review.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "casualties_or_injuries",
+      "investigation",
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Two crew members were killed when two firefighting helicopters collided mid-air in Greece on August 3, 2026.",
+        "sourceQuote": "Two crew members were killed after two firefighting helicopters collided mid-air in Greece on August 3, 2026, while",
+        "sourceUrl": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The victims were identified as a Danish pilot and a Greek fire service liaison officer, while a British pilot and a Greek coordinator on the second aircraft survived with minor injuries.",
+        "sourceQuote": "The victims were identified as a Danish pilot and a Greek fire service liaison officer. A British pilot and a Greek coordinator aboard the second helicopter survived with minor injuries.",
+        "sourceUrl": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The two Bell helicopters involved were owned by Australian company McDermott Aviation.",
+        "sourceQuote": "The two Bell helicopters involved were owned by McDermott Aviation, an Australian company based on the Sunshine Coast",
+        "sourceUrl": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "All Bell helicopters operating in Greece were grounded as a precautionary measure following the crash.",
+        "sourceQuote": "Following the crash, all Bell helicopters operating in Greece were grounded as a precaution, according to a source from the country’s civil protection ministry.",
+        "sourceUrl": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "McDermott Aviation confirmed the deaths and stated it is cooperating closely with Greek authorities investigating the collision.",
+        "sourceQuote": "McDermott said the company was cooperating closely with Greek authorities as they investigate the cause of the collision.",
+        "sourceUrl": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Fatal firefighting helicopter accident with two casualties, active investigation, and grounding of Bell helicopters requires human review.",
+      "cat": "safety",
+      "zh": {
+        "title": "希臘滅火直升機相撞釀2死 官方暫停同型機作業並展開調查",
+        "summary": "希臘於2026年8月3日發生滅火直升機空中相撞事故，兩架由麥克德莫特航空擁有的貝爾直升機在阿提卡大區執行滅火任務時碰撞，造成兩名機組人員身亡、兩人輕傷。希臘民防部門已預防性暫停境內所有貝爾直升機作業，相關單位正著手調查事故原因。",
+        "body": [
+          "希臘阿提卡大區於2026年8月3日發生一起空中相撞事故。兩架執行滅火任務的貝爾直升機在雅典以西約65公里的普薩薩附近相撞，導致其中一架直升機墜毀起火，另一架則緊急降落。事故造成一名丹麥籍飛行員與一名希臘消防連絡官不幸身亡，另一架直升機上的英國飛行員與希臘協調員則受輕傷。",
+          "涉事直升機屬澳洲麥克德莫特航空（McDermott Aviation）所有，出租用於海外滅火作業。事故發生後，希臘民防部門已預防性暫停境內所有貝爾直升機的作業。麥克德莫特航空證實有人員殉職，並表示正密切配合希臘當局調查事故原因。"
+        ]
+      },
+      "en": {
+        "title": "Two Killed in Mid-Air Collision of Firefighting Helicopters in Greece",
+        "summary": "Two crew members were killed and two others sustained minor injuries on August 3, 2026, after two Bell firefighting helicopters collided mid-air near Psatha in Greece's Attica region. The aircraft were owned by Australian firm McDermott Aviation and leased for wildfire operations. Following the collision, Greek civil protection authorities grounded all Bell helicopters in the country as a precautionary measure, while McDermott Aviation confirmed it is cooperating with ongoing investigations into the cause of the accident.",
+        "body": [
+          "Two firefighting helicopters collided mid-air in Greece's Attica region on August 3, 2026, while battling wildfires approximately 65 kilometers west of Athens. The collision resulted in the deaths of a Danish pilot and a Greek fire service liaison officer aboard one aircraft, while a British pilot and a Greek coordinator on the second helicopter survived with minor injuries.",
+          "Both Bell helicopters were owned by Australian company McDermott Aviation, which leases firefighting aircraft internationally. Following the accident, Greek civil protection authorities grounded all Bell helicopters operating in the country as a precaution. McDermott Aviation expressed condolences and confirmed it is cooperating fully with Greek investigators to determine the cause of the crash."
+        ]
+      },
+      "flash": {
+        "zh": "希臘兩架滅火直升機相撞致2死2傷 當局暫停同型機作業",
+        "en": "Two killed after firefighting helicopters collide mid-air in Greece",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-03",
+        "sev": "acc",
+        "aircraft": "Bell helicopter",
+        "operator": "McDermott Aviation",
+        "phase": {
+          "zh": "滅火作業",
+          "en": "firefighting operations"
+        },
+        "location": {
+          "zh": "希臘阿提卡大區普薩薩",
+          "en": "Psatha, Attica region, Greece"
+        },
+        "desc": {
+          "zh": "兩架直升機在滅火作業期間發生空中相撞，導致一架墜毀起火，另一架緊急降落。",
+          "en": "Two helicopters collided mid-air during firefighting operations, causing one to crash and catch fire while the other made an emergency landing."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Two crew members were killed when two firefighting helicopters collided mid-air in Greece on August 3, 2026.",
+          "sourceQuote": "Two crew members were killed after two firefighting helicopters collided mid-air in Greece on August 3, 2026, while",
+          "sourceUrl": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The victims were identified as a Danish pilot and a Greek fire service liaison officer, while a British pilot and a Greek coordinator on the second aircraft survived with minor injuries.",
+          "sourceQuote": "The victims were identified as a Danish pilot and a Greek fire service liaison officer. A British pilot and a Greek coordinator aboard the second helicopter survived with minor injuries.",
+          "sourceUrl": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The two Bell helicopters involved were owned by Australian company McDermott Aviation.",
+          "sourceQuote": "The two Bell helicopters involved were owned by McDermott Aviation, an Australian company based on the Sunshine Coast",
+          "sourceUrl": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "All Bell helicopters operating in Greece were grounded as a precautionary measure following the crash.",
+          "sourceQuote": "Following the crash, all Bell helicopters operating in Greece were grounded as a precaution, according to a source from the country’s civil protection ministry.",
+          "sourceUrl": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "McDermott Aviation confirmed the deaths and stated it is cooperating closely with Greek authorities investigating the collision.",
+          "sourceQuote": "McDermott said the company was cooperating closely with Greek authorities as they investigate the cause of the collision.",
+          "sourceUrl": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F4"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "McDermott Aviation",
+          "Greek Fire Service",
+          "civil protection ministry"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Bell"
+        ],
+        "airports": [],
+        "locations": [
+          "Greece",
+          "Athens",
+          "Psatha",
+          "Attica"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-03",
+          "August 3, 2026"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "casualties_or_injuries",
+        "investigation",
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260803-1232-8",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Two firefighting crew killed after helicopters collide in Greece wildfires",
+          "url": "https://www.aerotime.aero/articles/two-firefighting-crew-killed-after-helicopters-collide-in-greece-wildfires",
+          "publishedUtc": "2026-08-03T10:15Z",
+          "summary": "Two crew members were killed after two firefighting helicopters collided mid-air in Greece on August 3, 2026, while… The post Two firefighting crew killed after helicopters collide in Greece wildfires appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Two dead after helicopters collide in Greece",
+          "summary": "Two dead after helicopters collide in Greece &nbsp;&nbsp; CNN",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPY3FfMy1EdXNJaWN0QUgwVlRoUUx6MVR5dGFSLU9HbTdDeUVNRjJOZGFNTjNVeWdPUW50U2VuZzZYWG81cHNuUEk1TUFTZndlLTVmTTZES1FZa28yOTZ1aV9uR19Kdm4xLV9qaUd3SFhNeTljR0RfN2JhRjJNci1iSFpLMk1rOWlxWWhZV29Ib1R5N2stSTNF?oc=5",
+          "source": "CNN",
+          "companion": true,
+          "publishedUtc": "2026-08-02T19:22Z"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260803-0835-8",
     "queuedUtc": "2026-08-03T08:35Z",
     "approve": false,
@@ -9037,654 +9497,6 @@
                 "source_quote": "All Nippon Airways (ANA) has increased its current order with Embraer to include eight additional E190-E2 aircraft",
                 "source_url": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
                 "source_name": "AeroTime — ANA increases Embraer order to include eight additional E19..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260730-0314-2",
-    "queuedUtc": "2026-07-30T03:14Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "Major quarterly financial loss claim with large monetary figures requires human review under financial_or_order_claim rules. Evidence is sufficient from two independent fetched sources with consistent figures, but the topic is a significant financial result warranting editorial oversight.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, a reversal from S$186 million (US$143 million) profit a year earlier.",
-        "sourceQuote": "The SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter, a sharp reversal from the S$186 million (US$143 million) profit it posted a year earlier",
-        "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year, a new high for the group.",
-        "sourceQuote": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year and a new high for the group.",
-        "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Net fuel costs increased by S$991 million (US$763 million), or 78.5%, almost entirely driving total group expenditure up 27.9% to S$5.61 billion (US$4.32 billion).",
-        "sourceQuote": "Total group expenditure jumped 27.9% to S$5.61 billion (US$4.32 billion), almost entirely because of a S$991 million (US$763 million), or 78.5%, increase in net fuel costs.",
-        "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier.",
-        "sourceQuote": "operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier.",
-        "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "SIA and Scoot carried a combined 10.9 million passengers, up 6.3% from the previous year, with passenger revenue climbing 18.6% to S$4.58 billion (US$3.53 billion) and yields rising 12%.",
-        "sourceQuote": "Passenger revenue climbed 18.6% to S$4.58 billion (US$3.53 billion), helped by SIA and budget carrier Scoot carrying a combined 10.9 million passengers, up 6.3% from the previous year, along with a 12% rise in passenger yields.",
-        "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Major quarterly financial loss claim with large monetary figures requires human review under financial_or_order_claim rules. Evidence is sufficient from two independent fetched sources with consistent figures, but the topic is a significant financial result warranting editorial oversight.",
-      "cat": "biz",
-      "zh": {
-        "title": "新加坡航空集團公布第一季淨虧損7600萬星元，燃料成本飆升抵銷創紀錄營收",
-        "summary": "新加坡航空集團截至2026年6月30日止第一季錄得7600萬星元淨虧損，較上年同期1.86億星元淨利大幅逆轉。儘管營收創下57.1億星元歷史新高，燃料成本暴增78.5%侵蝕獲利，集團將此歸因於中東衝突推高噴射燃料價格。",
-        "body": [
-          "新加坡航空集團公布截至2026年6月30日止第一季財報，錄得7600萬星元（約5900萬美元）淨虧損，與上年同期1.86億星元（約1.43億美元）淨利相比出現大幅逆轉。AeroTime報導指出，此一虧損「幾乎完全由與中東衝突相關的燃料成本飆升所驅動」。",
-          "第一季營收達57.1億星元（約44億美元），較上年同期成長19.3%，創下集團歷史新高。客運營收成長18.6%至45.8億星元（約35.3億美元），新加坡航空與低成本子公司Scoot合計載運1090萬人次旅客，較上年成長6.3%，客運收益率亦上升12%。",
-          "貨運營收同樣成長33.5%至7.08億星元（約5.45億美元），受惠於更強的貨運費率與較高的飛機使用率。然而，集團總支出跳增27.9%至56.1億星元（約43.2億美元），主因為淨燃料成本增加9.91億星元（約7.63億美元），增幅達78.5%。",
-          "營業利益因此降至1.06億星元（約8200萬美元），較上年同期的4.05億星元（約3.12億美元）下滑73.8%。在計入持有25.1%股權的印度航空較大份額虧損及較小稅額後，集團最終錄得7600萬星元淨虧損。",
-          "儘管面臨虧損，集團財務狀況維持穩健，季末持有91億星元現金及銀行存款，較上季增加11.7億星元。集團同時持續擴張航網，Scoot開通新加坡至印尼Belitung及Pontianak航線，新加坡航空則開通每日飛往杭州的航班。",
-          "中東衝突亦影響集團部分航網運作。Scoot於6月恢飛沙烏地阿拉伯吉達航班，但於7月中旬再度暫停。新加坡航空飛往杜拜的航班維持暫停，原訂開通的利雅德航班則延至12月。"
-        ]
-      },
-      "en": {
-        "title": "Singapore Airlines Group posts S$76 million Q1 net loss as fuel costs surge despite record revenue",
-        "summary": "Singapore Airlines Group reported a net loss of S$76 million for the quarter ended June 30, 2026, a sharp reversal from S$186 million profit a year earlier. Record revenue of S$5.71 billion was outweighed by a 78.5% surge in fuel costs, which the group attributed to Middle East conflict driving up jet fuel prices.",
-        "body": [
-          "Singapore Airlines Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, a sharp reversal from the S$186 million (US$143 million) profit posted a year earlier. AeroTime reported the loss was driven almost entirely by a spike in fuel costs tied to the conflict in the Middle East.",
-          "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year and a new high for the group. Passenger revenue climbed 18.6% to S$4.58 billion (US$3.53 billion), with Singapore Airlines and budget carrier Scoot carrying a combined 10.9 million passengers, up 6.3% from the previous year, alongside a 12% rise in passenger yields.",
-          "Cargo revenue also grew 33.5% to S$708 million (US$545 million), supported by stronger cargo rates and improved aircraft utilisation. However, total group expenditure jumped 27.9% to S$5.61 billion (US$4.32 billion), almost entirely because of a S$991 million (US$763 million), or 78.5%, increase in net fuel costs.",
-          "Operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier. After accounting for a larger share of losses from Air India, in which SIA holds a 25.1% stake, and a smaller tax bill, the group ended the quarter S$76 million in the red.",
-          "Despite the loss, the group's finances remain solid, closing the quarter with S$9.10 billion in cash and bank balances, up S$1.17 billion from the previous quarter. The group continued expanding its network, with Scoot launching new routes to Belitung and Pontianak in Indonesia and SIA beginning daily service to Hangzhou.",
-          "The Middle East conflict also disrupted parts of the network. Scoot resumed flights to Jeddah in June only to suspend them again in mid-July. SIA's services to Dubai remain suspended, and the planned launch of flights to Riyadh has been pushed back to December."
-        ]
-      },
-      "flash": {
-        "zh": "新加坡航空集團第一季淨虧損7600萬星元，燃料成本飆升抵銷創紀錄營收",
-        "en": "SIA Group posts S$76 million Q1 net loss as fuel costs surge despite record revenue",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter ended June 30, 2026, a reversal from S$186 million (US$143 million) profit a year earlier.",
-          "sourceQuote": "The SIA Group reported a net loss of S$76 million (US$59 million) for its first fiscal quarter, a sharp reversal from the S$186 million (US$143 million) profit it posted a year earlier",
-          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year, a new high for the group.",
-          "sourceQuote": "Revenue for the quarter reached S$5.71 billion (US$4.40 billion), up 19.3% year-on-year and a new high for the group.",
-          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Net fuel costs increased by S$991 million (US$763 million), or 78.5%, almost entirely driving total group expenditure up 27.9% to S$5.61 billion (US$4.32 billion).",
-          "sourceQuote": "Total group expenditure jumped 27.9% to S$5.61 billion (US$4.32 billion), almost entirely because of a S$991 million (US$763 million), or 78.5%, increase in net fuel costs.",
-          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier.",
-          "sourceQuote": "operating profit fell to S$106 million (US$82 million), down 73.8% from S$405 million (US$312 million) a year earlier.",
-          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "SIA and Scoot carried a combined 10.9 million passengers, up 6.3% from the previous year, with passenger revenue climbing 18.6% to S$4.58 billion (US$3.53 billion) and yields rising 12%.",
-          "sourceQuote": "Passenger revenue climbed 18.6% to S$4.58 billion (US$3.53 billion), helped by SIA and budget carrier Scoot carrying a combined 10.9 million passengers, up 6.3% from the previous year, along with a 12% rise in passenger yields.",
-          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Scoot resumed flights to Jeddah in June only to suspend them again in mid-July; SIA's Dubai services remain suspended and the planned Riyadh launch was pushed back to December.",
-          "sourceQuote": "Scoot resumed flights to Jeddah in Saudi Arabia in June, only to suspend them again in mid-July as the conflict escalated. SIA's services to Dubai remain suspended, and the planned launch of flights to Riyadh has been pushed back to December.",
-          "sourceUrl": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "SIA Group",
-          "Singapore Airlines",
-          "Scoot",
-          "Air India"
-        ],
-        "airlines": [
-          "Singapore Airlines",
-          "Scoot",
-          "Air India"
-        ],
-        "aircraft_models": [],
-        "airports": [
-          "Hangzhou",
-          "Belitung",
-          "Pontianak",
-          "Jeddah",
-          "Dubai",
-          "Riyadh",
-          "London Gatwick",
-          "Manchester",
-          "Madrid",
-          "Adelaide",
-          "Western Sydney International Airport"
-        ],
-        "locations": [
-          "Singapore",
-          "Indonesia",
-          "Saudi Arabia",
-          "Dubai",
-          "Middle East"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-06-30"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260730-0314-2",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "SIA Group posts S$76 million net loss as fuel costs surge on record revenue",
-          "url": "https://www.aerotime.aero/articles/sia-group-posts-s76-million-net-loss-as-fuel-costs-surge-on-record-revenue",
-          "publishedUtc": "2026-07-28T13:34Z",
-          "summary": "Singapore Airlines’ parent company posted a rare loss for the quarter ended June 30, 2026, even as the… The post SIA Group posts S$76 million net loss as fuel costs surge on record revenue appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Singapore Airlines posts first quarterly loss since 2022",
-          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNYWt2S1VpNUg0LXlONTVKZWRRVG9LcjNhRnNPYkZySGtlYXVaWFAzOGJTcVQ0RGNUVTFlSHFJY3hXdWNHdzE5cmlUMFE5OGFhLVRlWnhuNUxUbTNST0FUZ2kzdHFva2Jmd2J3ejZWQ0oyQ2Foa2x1eGpmY1g2WjVLT1NiYTZ4dlVIcnRrNWpTX3VNU3hyZHB4ZlhvMzl0MENUd1EyV0R1OUlBVnFnenFfZmxoU2FYZ25hakI2bERVY0U2SzRLbVYtUEFJNy0?oc=5",
-          "publishedUtc": "2026-07-28T11:16Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "Singapore Airlines posts first-quarter loss despite strong passenger demand",
-          "url": "https://aerospaceglobalnews.com/news/singapore-airlines-scoot-loss-financial-results/",
-          "publishedUtc": "2026-07-29T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/03/AdobeStock_574683894_Editorial_Use_Only-scaled.jpeg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1532-iata-global-air-cargo-demand-rose-8-5-ye",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: ON-YEAR"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 0 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%",
-            "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-            "facts": [
-              {
-                "claim": "IATA released June 2026 global air cargo market data showing total demand (CTK) increased 8.5% year-on-year, with international operations up 9.6%.",
-                "source_quote": "Total demand, measured in cargo tonne-kilometers (CTK), increased by 8.5% compared to June 2025 (9.6% for international operations).",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "Capacity (ACTK) increased 4.4% year-on-year, or 4.9% for international operations.",
-                "source_quote": "Capacity, measured in available cargo tonne-kilometers (ACTK), increased by 4.4% compared to June 2025 (4.9% for international operations).",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "Willie Walsh said North America was the strongest contributor to growth, all regions were in positive territory, and risks remain from Middle East hostilities and US tariff focus.",
-                "source_quote": "While North America was the strongest contributor to growth, demand in all regions was in positive territory compared to last year.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "North American carriers saw 13.1% year-on-year demand growth, the strongest of all regions; Latin American and Caribbean carriers saw 3.5%, the weakest.",
-                "source_quote": "North American carriers saw a 13.1% year-on-year increase in air cargo demand in June, the strongest performance of all regions.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "Middle East carriers saw 5.6% demand growth, skewed positive because June 2025 was particularly weak due to military conflict disruptions.",
-                "source_quote": "they are skewed to the positive as the comparison is to June 2025 which was particularly weak for carriers in the Middle East as a result of disruptions due to military conflict.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "Global trade increased 5.2% year-on-year; jet fuel prices fell 20% month-on-month but remained 45.8% above year-earlier levels; the New Export Orders Index stayed below 50 at 49.4 for a fourth consecutive month.",
-                "source_quote": "Global trade increased by 5.2% year-on-year. Jet fuel prices fell by 20% month-on-month in June but remained 45.8% above year-earlier levels.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
-            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-            "facts": [
-              {
-                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
-                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
-                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260730-0314-9",
-    "queuedUtc": "2026-07-30T03:14Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Major contract award with estimated value and options; financial/order claim requires human verification.",
-    "riskFlags": [
-      "financial_or_order_claim",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters.",
-        "sourceQuote": "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters.",
-        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
-        "sourceQuote": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
-        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Bell will begin modification work at its Amarillo Assembly Center in Texas in mid-2027 and expects to deliver the first upgraded helicopters in 2028.",
-        "sourceQuote": "Bell said it will begin the modification work at its Amarillo Assembly Center in Texas in mid-2027. The company expects to deliver the first upgraded helicopters in 2028.",
-        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The contract includes an initial period with options to extend work for another three years, uses several payment structures, and Bell describes the total value as an estimate.",
-        "sourceQuote": "The contract covers an initial period and includes options that could extend the work for another three years. It uses several payment structures depending on the type of work involved. Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
-        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "SPINE will give the helicopters more electrical power and a new digital architecture to accommodate additional weapons, sensors and defensive equipment, and supports Link 16, an advanced databus and long‑range network‑enabled weapons.",
-        "sourceQuote": "SPINE will give the helicopters more electrical power and a new digital architecture designed to accommodate additional weapons, sensors and defensive equipment. The upgrade also supports Link 16, an advanced databus and long-range network-enabled weapons.",
-        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Marine Corps officials expect the upgrades to help keep the Viper and Venom relevant into the 2040s.",
-        "sourceQuote": "Marine Corps officials expect the upgrades to help keep the Viper and Venom relevant into the 2040s.",
-        "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Major contract award with estimated value and options; financial/order claim requires human verification.",
-      "cat": "mil",
-      "zh": {
-        "title": "Bell獲3億美元合約升級49架美軍直升機",
-        "summary": "Bell獲得美國海軍估值約3億美元合約，將為海軍陸戰隊升級最多49架AH-1Z與UH-1Y直升機，納入SPINE計劃，預計2027年中啟動改裝、2028年交付首批機型，目標讓機隊服役至2040年代。",
-        "body": [
-          "Bell宣布獲得美國海軍一份估值約3億美元的合約，將為海軍陸戰隊升級最多49架AH-1Z Viper攻擊直升機與UH-1Y Venom多用途直升機。",
-          "合約涵蓋28架AH-1Z與21架UH-1Y，納入稱為SPINE的結構與動力改進計劃，旨在提升電力供應並引入新數位架構。",
-          "Bell表示將於2027年中期在德克薩斯州阿馬里洛組裝中心啟動改裝工作，並預計2028年交付首批升級後的直升機。",
-          "合約包含初始期並可選擇延長三年，採用多種付款結構；Bell強調總價為估算值，海軍未必承諾全額3億美元。",
-          "海軍陸戰隊官員預期升級後的Viper與Venom可持續服役至2040年代，並支援Link 16等網絡化武器系統。"
-        ]
-      },
-      "en": {
-        "title": "Bell wins estimated $300M US Navy contract to upgrade 49 Marine Corps AH-1Z and UH-1Y helicopters",
-        "summary": "Bell has secured an estimated $300 million U.S. Navy contract to upgrade up to 49 Marine Corps AH-1Z Viper and UH-1Y Venom helicopters under the SPINE program. The work covers 28 AH-1Z and 21 UH-1Y airframes, begins at Bell’s Amarillo Assembly Center in mid‑2027, with first upgraded deliveries expected in 2028. The contract includes options to extend for three more years and uses several payment structures; Bell notes the total value is an estimate. Marine Corps officials say the upgrades will keep the fleet relevant into the 2040s and add Link 16 network‑enabled weapons capability.",
-        "body": [
-          "Bell announced it has landed an estimated $300 million U.S. Navy contract to upgrade as many as 49 Marine Corps AH‑1Z Viper attack helicopters and UH‑1Y Venom utility helicopters.",
-          "The contract covers 28 AH‑1Z and 21 UH‑1Y aircraft under the Structural and Power Improvements for NextGen Effects (SPINE) program, which adds electrical capacity and a new digital architecture.",
-          "Bell said modification work will start at its Amarillo Assembly Center in Texas in mid‑2027, with the first upgraded helicopters slated for delivery in 2028.",
-          "The agreement includes an initial period plus options that could extend the work for another three years and employs several payment structures; Bell stressed the $300 million figure is an estimate, not a firm commitment.",
-          "Marine Corps officials expect the SPINE upgrades, including Link 16 support, to keep the Viper and Venom fleets operationally relevant into the 2040s."
-        ]
-      },
-      "flash": {
-        "zh": "Bell獲3億美元合約升級美軍直升機",
-        "en": "Bell wins $300M contract to upgrade Marine Corps helicopters",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters.",
-          "sourceQuote": "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine Corps AH-1Z Viper and UH-1Y Venom helicopters.",
-          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
-          "sourceQuote": "The contract covers 28 AH-1Z attack helicopters and 21 UH-1Y utility helicopters under the Structural and Power Improvements for NextGen Effects program, known as SPINE.",
-          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Bell will begin modification work at its Amarillo Assembly Center in Texas in mid-2027 and expects to deliver the first upgraded helicopters in 2028.",
-          "sourceQuote": "Bell said it will begin the modification work at its Amarillo Assembly Center in Texas in mid-2027. The company expects to deliver the first upgraded helicopters in 2028.",
-          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The contract includes an initial period with options to extend work for another three years, uses several payment structures, and Bell describes the total value as an estimate.",
-          "sourceQuote": "The contract covers an initial period and includes options that could extend the work for another three years. It uses several payment structures depending on the type of work involved. Bell described the total value as an estimate, meaning the Navy has not necessarily committed the full $300 million.",
-          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "SPINE will give the helicopters more electrical power and a new digital architecture to accommodate additional weapons, sensors and defensive equipment, and supports Link 16, an advanced databus and long‑range network‑enabled weapons.",
-          "sourceQuote": "SPINE will give the helicopters more electrical power and a new digital architecture designed to accommodate additional weapons, sensors and defensive equipment. The upgrade also supports Link 16, an advanced databus and long-range network-enabled weapons.",
-          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Marine Corps officials expect the upgrades to help keep the Viper and Venom relevant into the 2040s.",
-          "sourceQuote": "Marine Corps officials expect the upgrades to help keep the Viper and Venom relevant into the 2040s.",
-          "sourceUrl": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Bell",
-          "US Navy",
-          "US Marine Corps"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "AH-1Z Viper",
-          "UH-1Y Venom"
-        ],
-        "airports": [],
-        "locations": [
-          "Amarillo Assembly Center, Texas",
-          "Naval Air Station Patuxent River, Maryland"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-28",
-          "mid-2027",
-          "2028",
-          "2040s"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260730-0314-9",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Bell wins $300M contract to upgrade 49 US Marine Corps helicopters",
-          "url": "https://www.aerotime.aero/articles/bell-300m-contract-upgrade-marine-corps-h-1-helicopters",
-          "publishedUtc": "2026-07-28T15:06Z",
-          "summary": "Bell has landed an estimated $300 million US Navy contract to upgrade as many as 49 US Marine… The post Bell wins $300M contract to upgrade 49 US Marine Corps helicopters appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 0 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 0 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
-            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-            "facts": [
-              {
-                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
-                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
-                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
               }
             ]
           }
