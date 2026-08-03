@@ -1,5 +1,134 @@
 [
   {
+    "id": "g-20260803-0835-8",
+    "queuedUtc": "2026-08-03T08:35Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves unconfirmed allegations ('allegedly', 'reportedly') concerning British Airways canceling a ticket over a seat fee chargeback and charging $3,200 for a replacement at Paris check-in.",
+    "riskFlags": [
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "British Airways allegedly canceled a family's ticket following a seat fee chargeback and charged $3,200 for a new one.",
+        "sourceQuote": "British Airways Allegedly Cancels Ticket Over Seat Fee Chargeback, Charges Family $3,200 For New One",
+        "sourceUrl": "https://simpleflying.com/british-airways-cancels-ticket-seat-fee-chargeback/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The family was reportedly forced to pay for a new ticket at a check-in counter in Paris.",
+        "sourceQuote": "The family was reportedly forced to shell out at the check-in counter in Paris.",
+        "sourceUrl": "https://simpleflying.com/british-airways-cancels-ticket-seat-fee-chargeback/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report involves unconfirmed allegations ('allegedly', 'reportedly') concerning British Airways canceling a ticket over a seat fee chargeback and charging $3,200 for a replacement at Paris check-in.",
+      "cat": "ops",
+      "zh": {
+        "title": "據報英國航空因座位費退款爭議取消機票並收取3200美元",
+        "summary": "根據媒體Simple Flying報導，一個旅客家庭據稱因座位費用發生退款申訴爭議，導致預訂機票遭英國航空取消。該家庭隨後據報在巴黎的報到櫃檯，被要求額外支付3200美元以購買新機票，目前相關細節與處置情況仍有待進一步確認。",
+        "body": [
+          "根據 Simple Flying 報導，一個旅客家庭據稱因座位選擇費用的信用卡退款申請 dispute，導致預訂的航線機票遭英國航空（British Airways）取消。相關訊息指出，該糾紛涉及先前針對座位費用進行的信用卡退款處理。",
+          "報導進一步指出，該家庭隨後在法國巴黎機場的報到櫃檯辦理手續時，被告知機票失效，並據報被要求現場支付 3,200 美元重新購買新機票。目前關於該起票務處置的具體細節與後續釐清情況仍有待進一步確認。"
+        ]
+      },
+      "en": {
+        "title": "British Airways Allegedly Cancels Ticket Over Seat Fee Chargeback",
+        "summary": "According to a report from Simple Flying, British Airways allegedly canceled a family's flight reservation following a chargeback dispute related to a seat fee. The family was reportedly forced to pay $3,200 for a replacement ticket at a check-in counter in Paris after discovering their original booking had been invalidated. The circumstances surrounding the fee chargeback and the subsequent ticketing action at the airport remain under review as further operational details emerge.",
+        "body": [
+          "According to a news report published by Simple Flying, British Airways allegedly canceled a family's flight booking following a dispute involving a seat fee chargeback. The ticketing dispute reportedly stems from a financial chargeback action taken regarding the fee previously paid for seat selection on the flight.",
+          "The affected family was reportedly forced to shell out $3,200 for a new ticket at an airport check-in counter in Paris after learning that their initial booking was canceled by the carrier. Further operational circumstances and official clarification concerning the airline's ticketing action remain unconfirmed at this time."
+        ]
+      },
+      "flash": {
+        "zh": "據報英航因座位費申退取消機票並要價3200美元",
+        "en": "British Airways allegedly cancels ticket over seat fee chargeback, family charged $3,200 in Paris.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "British Airways allegedly canceled a family's ticket following a seat fee chargeback and charged $3,200 for a new one.",
+          "sourceQuote": "British Airways Allegedly Cancels Ticket Over Seat Fee Chargeback, Charges Family $3,200 For New One",
+          "sourceUrl": "https://simpleflying.com/british-airways-cancels-ticket-seat-fee-chargeback/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The family was reportedly forced to pay for a new ticket at a check-in counter in Paris.",
+          "sourceQuote": "The family was reportedly forced to shell out at the check-in counter in Paris.",
+          "sourceUrl": "https://simpleflying.com/british-airways-cancels-ticket-seat-fee-chargeback/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "British Airways",
+          "Simple Flying"
+        ],
+        "airlines": [
+          "British Airways"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Paris"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-03"
+        ]
+      },
+      "eventStatus": "unknown",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260803-0835-8",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "British Airways Allegedly Cancels Ticket Over Seat Fee Chargeback, Charges Family $3,200 For New One",
+          "url": "https://simpleflying.com/british-airways-cancels-ticket-seat-fee-chargeback/",
+          "publishedUtc": "2026-08-03T06:26Z",
+          "summary": "The family was reportedly forced to shell out at the check-in counter in Paris.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/british-airways-boeing-777-300.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260803-0435-2",
     "queuedUtc": "2026-08-03T04:36Z",
     "approve": false,
@@ -9560,135 +9689,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260729-1742-4",
-    "queuedUtc": "2026-07-29T17:42Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Quarterly financial results and aerospace revenue claims require human review under financial claim risk rules.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "General Dynamics reported second-quarter 2026 revenue of $14.09 billion on July 29, 2026.",
-        "sourceQuote": "General Dynamics reported second-quarter 2026 revenue of $14.09 billion on July 29, 2026",
-        "sourceUrl": "https://www.aerotime.aero/articles/gulfstream-general-dynamics-q2-2026-results",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "General Dynamics' Aerospace segment recorded revenue growth driven by Gulfstream.",
-        "sourceQuote": "Gulfstream drives General Dynamics beat as Aerospace revenue jumps 15%",
-        "sourceUrl": "https://www.aerotime.aero/articles/gulfstream-general-dynamics-q2-2026-results",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Quarterly financial results and aerospace revenue claims require human review under financial claim risk rules.",
-      "cat": "biz",
-      "zh": {
-        "title": "General Dynamics第二季營收140.9億美元 航空航太增長15%",
-        "summary": "General Dynamics於2026年7月29日公布2026年第二季財務結果，季度總營收達到140.9億美元。新聞報導指出，在灣流（Gulfstream）業務推動下，該公司旗下航空航太（Aerospace）部門營收增長了15%。",
-        "body": [
-          "根據媒體AeroTime於2026年7月29日的報導，General Dynamics正式公布了2026年第二季度的財務業績，顯示該公司在該季度內實現了總計140.9億美元的季度總營收。",
-          "在General Dynamics的各項主要營收結構中，航空航太（Aerospace）業務部門展現了強勁的季度表現。相關數據顯示，該部門在第二季度的營收較先前增長了15%。",
-          "報導進一步指出，航空航太部門在該季度實現15%營收增長的主要驅動力，來自於旗下商務噴射機製造商灣流（Gulfstream）的業務表現。"
-        ]
-      },
-      "en": {
-        "title": "General Dynamics Reports Q2 2026 Revenue of $14.09B as Aerospace Rises 15%",
-        "summary": "Aerospace and defense group General Dynamics official reports show the company recorded second-quarter 2026 revenue of $14.09 billion on July 29, 2026. Based on reports from AeroTime, the company's Aerospace segment posted a notable 15% jump in revenue during this second-quarter reporting period. The revenue expansion within the Aerospace business segment was driven by performance at Gulfstream, contributing directly to the quarterly financial results reported by General Dynamics on July 29, 2026.",
-        "body": [
-          "Defense and aviation corporate group General Dynamics officially reported its second-quarter financial performance for 2026 on July 29, 2026. During this reporting period, the company recorded total quarterly revenue of $14.09 billion across its business operations.",
-          "According to reporting by aviation news publication AeroTime, the financial results were highlighted by strong quarterly growth within the company's dedicated Aerospace segment. General Dynamics reported that revenue for the Aerospace division jumped by 15% during the second quarter of 2026.",
-          "The 15% revenue expansion within the Aerospace segment was driven by operational and sales performance at Gulfstream, contributing directly to the quarterly revenue results achieved by General Dynamics."
-        ]
-      },
-      "flash": {
-        "zh": "General Dynamics發布2026年第二季財報，航空航太部門營收成長15%",
-        "en": "General Dynamics reports Q2 2026 revenue of $14.09B with 15% Aerospace segment growth",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "General Dynamics reported second-quarter 2026 revenue of $14.09 billion on July 29, 2026.",
-          "sourceQuote": "General Dynamics reported second-quarter 2026 revenue of $14.09 billion on July 29, 2026",
-          "sourceUrl": "https://www.aerotime.aero/articles/gulfstream-general-dynamics-q2-2026-results",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "General Dynamics' Aerospace segment recorded revenue growth driven by Gulfstream.",
-          "sourceQuote": "Gulfstream drives General Dynamics beat as Aerospace revenue jumps 15%",
-          "sourceUrl": "https://www.aerotime.aero/articles/gulfstream-general-dynamics-q2-2026-results",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "General Dynamics",
-          "Gulfstream",
-          "AeroTime"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "July 29, 2026",
-          "second-quarter 2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260729-1742-4",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Gulfstream drives General Dynamics beat as Aerospace revenue jumps 15%",
-          "url": "https://www.aerotime.aero/articles/gulfstream-general-dynamics-q2-2026-results",
-          "publishedUtc": "2026-07-29T15:03Z",
-          "summary": "General Dynamics reported second-quarter 2026 revenue of $14.09 billion on July 29, 2026, with its Aerospace segment posting the fastest… The post Gulfstream drives General Dynamics beat as Aerospace revenue jumps 15% appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
