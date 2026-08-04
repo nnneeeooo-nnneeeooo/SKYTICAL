@@ -55,6 +55,7 @@
   };
   const airlines = parseJson("radar-airlines", {});
   const airlineIataCodes = parseJson("radar-airline-codes", {});
+  const airlineIataNames = parseJson("radar-airline-iata-names", {});
   const aircraftTypes = parseJson("radar-types", {});
   const airports = parseJson("radar-airports", []);
   const refreshMs = Math.max(Number(root.dataset.refreshMs) || 300000, 300000);
@@ -189,6 +190,17 @@
       }
     }
     return row.callsign;
+  }
+
+  function displayAirline(row) {
+    if (row.airline) return row.airline;
+    const routeCallsign = row.route && row.route.callsignIata || "";
+    const configuredIata = clean(airlineIataCodes[row.operator], 3).toUpperCase();
+    const rawIata = /^[A-Z0-9]{2}[0-9]/.test(row.callsign) ?
+      row.callsign.slice(0, 2) : "";
+    const iataPrefix = clean(routeCallsign, 16).slice(0, 2) ||
+      configuredIata || rawIata;
+    return airlineIataNames[iataPrefix] || "";
   }
 
   function airportCode(airport) {
@@ -360,7 +372,7 @@
     box.appendChild(title);
     const route = formatRoute(row);
     addDetail(box, copy.route, route || copy.unknown);
-    addDetail(box, copy.airline, row.airline || copy.unknown);
+    addDetail(box, copy.airline, displayAirline(row) || copy.unknown);
     addDetail(box, copy.type,
       [row.typeCode, row.typeName].filter(Boolean).join(" · ") || copy.unknown);
     addDetail(box, copy.altitude, formatAltitude(row));
@@ -390,7 +402,7 @@
     if (!query) return true;
     return [
       row.callsign, displayCallsign(row), formatRoute(row), row.operator,
-      row.airline, row.typeCode, row.typeName,
+      displayAirline(row), row.typeCode, row.typeName,
     ].some((value) => value.toUpperCase().includes(query));
   }
 
@@ -425,7 +437,7 @@
       const meta = document.createElement("span");
       meta.className = "text-muted";
       meta.textContent = [
-        formatRoute(row), row.airline, row.typeCode, formatAltitude(row),
+        formatRoute(row), displayAirline(row), row.typeCode, formatAltitude(row),
       ].filter(Boolean).join(" · ");
       item.append(name, meta);
       item.addEventListener("click", () => {
