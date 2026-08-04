@@ -143,6 +143,20 @@ check("plain N95 is never treated as a registration",
 check("airline dictionary match (Delta Air Lines)",
       images.find_airline(make_article(
           "a", "A Delta Air Lines flight arrived")) == "Delta Air Lines")
+starlux_story = make_article(
+    "a", "STARLUX Airlines opens Prague route after China Airlines")
+starlux_story["entities"]["airlines"] = [
+    "Starlux Airlines", "China Airlines"]
+check("primary airline entity outranks a comparison carrier",
+      images.find_airline(starlux_story) == "STARLUX Airlines")
+starlux_story["entities"]["airlines"] = []
+check("earlier lead airline wins when entity ordering is unavailable",
+      images.find_airline(starlux_story) == "STARLUX Airlines")
+indigo_story = make_article(
+    "a", "IndiGo appoints an executive formerly at British Airways")
+indigo_story["entities"]["airlines"] = ["IndiGo", "British Airways"]
+check("primary IndiGo entity outranks an executive's former airline",
+      images.find_airline(indigo_story) == "IndiGo")
 check("aircraft family match never over-claims a sub-variant",
       images.find_aircraft_type(make_article(
           "a", "The Airbus A350 landed")) == "Airbus A350")
@@ -195,6 +209,32 @@ check("artist HTML stripped in credit",
 check("non-free and token-mismatched files rejected",
       "nonfree" not in json.dumps(art["image"])
       and "Random building" not in json.dumps(art["image"]))
+
+reset()
+fake.commons = FakeResp(200, {"query": {"pages": {
+    "1": {"index": 0,
+          "title": "File:China Airlines Airbus A350-900.jpg",
+          "imageinfo": [{
+              "thumburl": "https://upload.wikimedia.org/china-a350.jpg",
+              "extmetadata": {
+                  "LicenseShortName": {"value": "CC BY-SA 4.0"},
+                  "Artist": {"value": "Wrong Carrier"}}}]},
+    "2": {"index": 1,
+          "title": "File:STARLUX Airlines Airbus A350-900.jpg",
+          "imageinfo": [{
+              "thumburl": "https://upload.wikimedia.org/starlux-a350.jpg",
+              "extmetadata": {
+                  "LicenseShortName": {"value": "CC BY 4.0"},
+                  "Artist": {"value": "Correct Carrier"}}}]},
+}}})
+strict_match = images.lookup_commons(
+    "STARLUX Airlines Airbus A350-900",
+    ["A350", "STARLUX Airlines"],
+    require_all=True,
+)
+check("airline and aircraft must both match the Commons title",
+      strict_match["url"]
+      == "https://upload.wikimedia.org/starlux-a350.jpg")
 
 # org fallback end-to-end, with the logo/map title filter
 reset()
@@ -300,6 +340,26 @@ check("images.py needs no API key and calls no paid endpoint",
           .read_text(encoding="utf-8")
           for m in ("API_KEY", "apikey", "newsapi", "bing", "serpapi",
                     "perplexity")))
+
+published = json.loads(
+    (REPO / "data" / "articles" / "2026-08-03T12.json")
+    .read_text(encoding="utf-8"))["articles"]
+by_id = {article["id"]: article for article in published}
+starlux_published = by_id[
+    "a-20260803-1232-starlux-airlines-launches-first-european"]
+indigo_published = by_id[
+    "a-20260803-1232-willie-walsh-begins-first-day-as-indigo"]
+check("published STARLUX article uses official brand and matching aircraft",
+      "星宇航空" in starlux_published["zh"]["title"]
+      and "星達航空" not in json.dumps(starlux_published, ensure_ascii=False)
+      and "Starlux_Airlines_Airbus_A350-900" in
+      starlux_published["image"]["url"]
+      and "China_Airlines" not in starlux_published["image"]["url"])
+check("published IndiGo article uses owner-approved name and aircraft",
+      "IndiGo（印度靛藍航空）" in indigo_published["zh"]["title"]
+      and "印地高" not in json.dumps(indigo_published, ensure_ascii=False)
+      and "IndiGo_VT-IJB_A320neo" in indigo_published["image"]["url"]
+      and "British_Airways" not in indigo_published["image"]["url"])
 
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
