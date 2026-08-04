@@ -108,15 +108,15 @@ L = {
         "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
         "radarKicker": "Taiwan Flight Radar",
         "radarTitle": "台灣民航雷達",
-        "radarSub": "公開 ADS-B 即時觀測圖，顯示台灣周邊民航機的 ICAO／IATA 航班呼號、航線、機型、高度、速度與航向。",
-        "radarSearch": "搜尋 ICAO／IATA 呼號、航線、航空公司或機型",
-        "radarCallsignFormat": "呼號顯示",
+        "radarSub": "公開 ADS-B 即時觀測圖，顯示台灣周邊民航機的 ICAO／IATA 航班代碼、航線、機型、高度、速度與航向。",
+        "radarSearch": "搜尋 ICAO／IATA 航班代碼、航線、航空公司或機型",
+        "radarCallsignFormat": "代碼顯示",
         "radarAirborne": "僅顯示飛行中",
         "radarRefresh": "立即更新",
         "radarLoading": "正在取得最新 ADS-B 觀測資料…",
         "radarMapLabel": "台灣周邊民航即時觀測地圖",
         "radarList": "目前航機",
-        "radarNotice": "本頁不是航管雷達，資料可能延遲、缺漏或錯誤，不得用於導航、飛航操作或緊急判斷。航班呼號不一定等同旅客票面班號。",
+        "radarNotice": "本頁不是航管雷達，資料可能延遲、缺漏或錯誤，不得用於導航、飛航操作或緊急判斷。ICAO／IATA 航班代碼不一定等同旅客票面班號。",
         "radarPrivacy": "為保障安全與隱私，來源標記為軍事、PIA、LADD、緊急狀態及位置過期的資料不會顯示。",
         "radarSource": "航機位置：Airplanes.live 公開社群 ADS-B；航班代碼與航線：ADSBdb；地圖：OpenStreetMap。",
         # daily briefings
@@ -197,15 +197,15 @@ L = {
                  "Military"],
         "radarKicker": "Taiwan Flight Radar",
         "radarTitle": "Taiwan civil flight radar",
-        "radarSub": "A live public ADS-B view of civil aircraft around Taiwan, with ICAO/IATA callsigns, routes, type, altitude, speed and heading.",
-        "radarSearch": "Search ICAO/IATA callsign, route, airline or aircraft type",
-        "radarCallsignFormat": "Callsign format",
+        "radarSub": "A live public ADS-B view of civil aircraft around Taiwan, with ICAO/IATA flight codes, routes, type, altitude, speed and heading.",
+        "radarSearch": "Search ICAO/IATA flight code, route, airline or aircraft type",
+        "radarCallsignFormat": "Code format",
         "radarAirborne": "Airborne only",
         "radarRefresh": "Refresh now",
         "radarLoading": "Loading the latest ADS-B observations…",
         "radarMapLabel": "Live civil-aircraft observations around Taiwan",
         "radarList": "Aircraft now",
-        "radarNotice": "This is not air traffic control radar. Data may be delayed, incomplete or wrong and must not be used for navigation, flight operations or emergencies. A callsign may differ from a passenger flight number.",
+        "radarNotice": "This is not air traffic control radar. Data may be delayed, incomplete or wrong and must not be used for navigation, flight operations or emergencies. ICAO/IATA flight codes may differ from a passenger flight number.",
         "radarPrivacy": "For safety and privacy, source-tagged military, PIA, LADD, emergency-state and stale-position records are not shown.",
         "radarSource": "Aircraft positions: Airplanes.live public community ADS-B; flight codes and routes: ADSBdb; map: OpenStreetMap.",
         # daily briefings
@@ -2298,6 +2298,13 @@ def main() -> int:
             if isinstance(row, dict) and row.get("active", True)
                and row.get("icao_code")
         }
+        airline_iata_codes = {
+            str(row.get("icao_code") or "").upper():
+                str(row.get("iata_code") or "").upper()
+            for row in (airline_cfg.get("airlines") or [])
+            if isinstance(row, dict) and row.get("active", True)
+               and row.get("icao_code") and row.get("iata_code")
+        }
         type_cfg = load_json(
             Path(__file__).resolve().parent.parent
             / "config" / "aircraft_types.json", {})
@@ -2323,6 +2330,7 @@ def main() -> int:
             description=t["radarSub"], ticker=ticker, build=build)
         ctx.update(
             airline_names=airline_names,
+            airline_iata_codes=airline_iata_codes,
             aircraft_types=aircraft_types,
             radar_airports=radar_airports,
         )
