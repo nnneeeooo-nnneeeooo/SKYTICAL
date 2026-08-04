@@ -1,6 +1,8 @@
 """Offline build regression checks for the public Taiwan flight-radar page."""
 from __future__ import annotations
 
+import json
+import re
 import sys
 from pathlib import Path
 
@@ -48,6 +50,20 @@ def main() -> None:
         assert 'data-default-callsign-mode="iata"' in page
         assert 'id="radar-callsign-icao"' in page
         assert 'id="radar-callsign-iata"' in page
+        assert page.index('id="radar-callsign-icao"') < page.index(
+            'id="radar-callsign-iata"')
+        code_match = re.search(
+            r'<script id="radar-airline-codes" type="application/json">'
+            r'(.*?)</script>', page, re.DOTALL)
+        assert code_match
+        airline_codes = json.loads(code_match.group(1))
+        assert {
+            code: airline_codes[code]
+            for code in ("CAL", "EVA", "SJX", "TTW", "MDA", "UIA", "DAC")
+        } == {
+            "CAL": "CI", "EVA": "BR", "SJX": "JX", "TTW": "IT",
+            "MDA": "AE", "UIA": "B7", "DAC": "DA",
+        }
         assert (
             'id="radar-callsign-icao" class="seg-btn" type="button"\n'
             '                data-callsign-mode="icao" aria-pressed="false"'
@@ -61,6 +77,10 @@ def main() -> None:
         assert "leaflet@1.9.4" in page
         assert "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" in page
         assert "API_KEY" not in page
+    assert "代碼顯示" in zh
+    assert "航班呼號" not in zh
+    assert "Code format" in en
+    assert "Callsign format" not in en
     assert "台灣民航雷達" in zh
     assert "Taiwan civil flight radar" in en
     assert 'href="/avwire/radar/"' in home
@@ -70,6 +90,9 @@ def main() -> None:
     assert "seenPos > 30" in js
     assert "refreshMs" in js and "300000" in js
     assert "callsign_iata" in js
+    assert 'const airlineIataCodes = parseJson("radar-airline-codes", {})' in js
+    assert "row.callsign.startsWith(row.operator)" in js
+    assert "row.callsign.slice(row.operator.length)" in js
     assert 'root.dataset.defaultCallsignMode === "icao" ? "icao" : "iata"' in js
     assert '["icao", "iata"].includes(savedCallsignMode)' in js
     assert "flightroute.origin" in js
