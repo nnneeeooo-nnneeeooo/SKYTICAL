@@ -64,7 +64,16 @@ def main() -> None:
             "CAL": "CI", "EVA": "BR", "SJX": "JX", "TTW": "IT",
             "MDA": "AE", "UIA": "B7", "DAC": "DA",
         }
-        assert airline_codes["ABL"] == "BX"
+        added_airline_codes = {
+            "ABL": "BX",
+            "AHK": "LD",
+            "CYZ": "CF",
+            "ESR": "ZE",
+            "TVJ": "VZ",
+        }
+        assert {
+            code: airline_codes[code] for code in added_airline_codes
+        } == added_airline_codes
         icao_name_match = re.search(
             r'<script id="radar-airlines" type="application/json">'
             r'(.*?)</script>', page, re.DOTALL)
@@ -72,9 +81,19 @@ def main() -> None:
             r'<script id="radar-airline-iata-names" '
             r'type="application/json">(.*?)</script>', page, re.DOTALL)
         assert icao_name_match and iata_name_match
-        expected_air_busan = "釜山航空" if page == zh else "Air Busan"
-        assert json.loads(icao_name_match.group(1))["ABL"] == expected_air_busan
-        assert json.loads(iata_name_match.group(1))["BX"] == expected_air_busan
+        icao_names = json.loads(icao_name_match.group(1))
+        iata_names = json.loads(iata_name_match.group(1))
+        expected_names = {
+            "ABL": ("BX", "釜山航空", "Air Busan"),
+            "AHK": ("LD", "香港華民航空", "Air Hong Kong"),
+            "CYZ": ("CF", "中國郵政航空", "China Postal Airlines"),
+            "ESR": ("ZE", "易斯達航空", "Eastar Jet"),
+            "TVJ": ("VZ", "泰國越捷航空", "Thai Vietjet Air"),
+        }
+        for icao_code, (iata_code, zh_name, en_name) in expected_names.items():
+            expected_name = zh_name if page == zh else en_name
+            assert icao_names[icao_code] == expected_name
+            assert iata_names[iata_code] == expected_name
         assert (
             'id="radar-callsign-icao" class="seg-btn" type="button"\n'
             '                data-callsign-mode="icao" aria-pressed="false"'
