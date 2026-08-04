@@ -70,6 +70,8 @@ def main() -> None:
             "AHK": "LD",
             "CYZ": "CF",
             "ESR": "ZE",
+            "JJP": "GK",
+            "MXD": "OD",
             "TVJ": "VZ",
         }
         assert {
@@ -89,6 +91,8 @@ def main() -> None:
             "AHK": ("LD", "香港華民航空", "Air Hong Kong"),
             "CYZ": ("CF", "中國郵政航空", "China Postal Airlines"),
             "ESR": ("ZE", "易斯達航空", "Eastar Jet"),
+            "JJP": ("GK", "捷星日本航空", "Jetstar Japan"),
+            "MXD": ("OD", "馬來西亞峇迪航空", "Batik Air Malaysia"),
             "TVJ": ("VZ", "泰國越捷航空", "Thai Vietjet Air"),
         }
         for icao_code, (iata_code, zh_name, en_name) in expected_names.items():
