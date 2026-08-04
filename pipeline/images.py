@@ -149,14 +149,57 @@ def find_registration(article: dict) -> str | None:
 
 
 def find_airline(article: dict) -> str | None:
+    """Return the article's primary airline, never a background mention.
+
+    The drafting contract orders ``entities.airlines`` by relevance.  Use
+    that order before scanning prose so a route story about STARLUX does not
+    select China Airlines merely because the comparison carrier appears in
+    the body, and an IndiGo executive story does not select a former employer.
+    """
     text = _article_text(article)
     low = text.casefold()
-    for a in _airlines:
-        en = str(a.get("airline_name_en") or "")
-        zh = str(a.get("airline_name_zh_tw") or "")
-        if (en and en.casefold() in low) or (zh and zh in text):
-            return en or zh
-    return None
+    entities = article.get("entities") or {}
+    entity_airlines = (
+        entities.get("airlines") if isinstance(entities, dict) else []) or []
+    for entity in entity_airlines:
+        entity_low = str(entity or "").casefold()
+        for airline in _airlines:
+            en = str(airline.get("airline_name_en") or "")
+            zh = str(airline.get("airline_name_zh_tw") or "")
+            if entity_low and entity_low in (en.casefold(), zh.casefold()):
+                return en or zh
+    lead_parts = []
+    for lang in ("zh", "en"):
+        block = article.get(lang) or {}
+        lead_parts.extend([
+            str(block.get("title") or ""),
+            str(block.get("summary") or ""),
+            str((block.get("body") or [""])[0]),
+        ])
+    lead = " ".join(lead_parts)
+    lead_low = lead.casefold()
+    ranked = []
+    for index, airline in enumerate(_airlines):
+        en = str(airline.get("airline_name_en") or "")
+        zh = str(airline.get("airline_name_zh_tw") or "")
+        score = 0
+        positions = []
+        if en:
+            score += lead_low.count(en.casefold()) * 10
+            score += low.count(en.casefold())
+            position = lead_low.find(en.casefold())
+            if position >= 0:
+                positions.append(position)
+        if zh:
+            score += lead.count(zh) * 10
+            score += text.count(zh)
+            position = lead.find(zh)
+            if position >= 0:
+                positions.append(position)
+        if score:
+            first_position = min(positions) if positions else len(lead)
+            ranked.append((score, -first_position, -index, en or zh))
+    return max(ranked)[3] if ranked else None
 
 
 def find_aircraft_type(article: dict) -> str | None:
@@ -247,11 +290,14 @@ def lookup_planespotters(reg: str) -> dict | None:
 
 
 def lookup_commons(query: str, require_tokens: list[str],
-                   subject: str | None = None) -> dict | None:
+                   subject: str | None = None,
+                   require_all: bool = False) -> dict | None:
     """First freely-licensed Commons bitmap matching the query.
 
-    require_tokens: at least one must appear in the file title, so a
-    generic search can never attach an unrelated photo.
+    require_tokens: title tokens used to reject unrelated search results.
+    When require_all is true, every token must appear; airline-and-aircraft
+    queries use this stricter mode so matching only ``A350`` can never attach
+    another carrier's aircraft.
     """
     resp = requests.get(COMMONS_API, headers=HEADERS, timeout=TIMEOUT,
                         params={
@@ -271,7 +317,9 @@ def lookup_commons(query: str, require_tokens: list[str],
         title = str(page.get("title") or "")
         if _BAD_TITLE_RE.search(title):
             continue
-        if tokens and not any(t in title.casefold() for t in tokens):
+        token_hits = [t in title.casefold() for t in tokens]
+        if tokens and (not all(token_hits) if require_all
+                       else not any(token_hits)):
             continue
         for info in page.get("imageinfo") or []:
             meta = info.get("extmetadata") or {}
@@ -311,8 +359,9 @@ def resolve_image(article: dict) -> dict | None:
     if airline and actype:
         # family token ("A350") so Commons titles with any sub-variant match
         type_token = actype.split()[-1].split("-")[0]
-        return lookup_commons(f'{airline} {actype}', [type_token, airline],
-                              subject=f"{airline} {actype}")
+        return lookup_commons(
+            f'{airline} {actype}', [type_token, airline],
+            subject=f"{airline} {actype}", require_all=True)
     if actype:
         type_token = actype.split()[-1].split("-")[0]
         return lookup_commons(f'{actype} aircraft', [type_token],
