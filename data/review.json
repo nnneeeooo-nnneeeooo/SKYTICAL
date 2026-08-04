@@ -1,5 +1,282 @@
 [
   {
+    "id": "g-20260804-0323-2",
+    "queuedUtc": "2026-08-04T03:23Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Requires human review due to aircraft order claim and backlog figures.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "MSC Air Cargo placed an unexpected order for five Boeing 777-8 Freighters.",
+        "sourceQuote": "MSC Air Cargo's unexpected order for five Boeing 777-8 Freighters",
+        "sourceUrl": "https://simpleflying.com/boeing-777-8f-backlog-crossed-8-jets-newest-buyer-isnt-even-airline/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Boeing's backlog for the 777-8F freighter has crossed 80 aircraft.",
+        "sourceQuote": "Boeing's 777-8F Backlog Just Crossed 80 Jets",
+        "sourceUrl": "https://simpleflying.com/boeing-777-8f-backlog-crossed-8-jets-newest-buyer-isnt-even-airline/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "In the second quarter of 2026, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B, with first delivery anticipated in 2027.",
+        "sourceQuote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+        "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+        "evidenceScope": "archive",
+        "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+        "archiveContext": true
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Requires human review due to aircraft order claim and backlog figures.",
+      "cat": "biz",
+      "zh": {
+        "title": "MSC Air Cargo訂購5架波音777-8F貨機 累積訂單突破80架",
+        "summary": "根據Simple Flying報導，MSC Air Cargo已簽署訂單購買5架波音777-8F貨機，使波音該型號貨機的累積訂單總數正式突破80架。在相關計畫背景方面，波音先前於第二季財務報告中指出，其777X系列計畫已獲得美國聯邦航空管理局批准，得以展開認證飛行測試，並維持預計於2027年進行首次交付的既定目標。",
+        "body": [
+          "根據Simple Flying報導，MSC Air Cargo已下單訂購5架波音777-8F貨機。隨著這筆最新採購訂單的加入，波音777-8F貨機的累積訂單總數量已正式突破80架。",
+          "在歷史計畫背景方面，根據波音公司於2026年7月發布的第二季財務成果報告，波音777X系列計畫已獲得美國聯邦航空管理局（FAA）批准，在TIA 4B型態檢驗授權下開始展開認證飛行測試，波音公司並維持預計於2027年進行首次交付的既定目標。"
+        ]
+      },
+      "en": {
+        "title": "MSC Air Cargo Orders Five Boeing 777-8Fs as Backlog Exceeds 80",
+        "summary": "According to Simple Flying, MSC Air Cargo has placed an order for five Boeing 777-8 Freighters, bringing the total order backlog for the freighter model past 80 aircraft. In historical program context, Boeing previously noted in its second-quarter earnings report that the 777X program received Federal Aviation Administration approval to begin certification flight testing under Type Inspection Authorization 4B. Boeing maintains its expectation for the first 777X delivery to take place in 2027.",
+        "body": [
+          "According to a report by Simple Flying, MSC Air Cargo has placed an unexpected order for five Boeing 777-8 Freighters. With the addition of this new order, the total accumulated order backlog for Boeing's 777-8F freighter model has officially crossed the threshold of 80 aircraft.",
+          "Regarding historical program background, Boeing previously reported in its second-quarter 2026 financial results that the 777X program received Federal Aviation Administration (FAA) approval to begin certification flight testing under Type Inspection Authorization 4B. Boeing continues to anticipate that the first delivery for the program will occur in 2027."
+        ]
+      },
+      "flash": {
+        "zh": "MSC Air Cargo訂購5架波音777-8F貨機 累積訂單突破80架",
+        "en": "MSC Air Cargo orders five Boeing 777-8 Freighters as backlog exceeds 80",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "MSC Air Cargo placed an unexpected order for five Boeing 777-8 Freighters.",
+          "sourceQuote": "MSC Air Cargo's unexpected order for five Boeing 777-8 Freighters",
+          "sourceUrl": "https://simpleflying.com/boeing-777-8f-backlog-crossed-8-jets-newest-buyer-isnt-even-airline/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Boeing's backlog for the 777-8F freighter has crossed 80 aircraft.",
+          "sourceQuote": "Boeing's 777-8F Backlog Just Crossed 80 Jets",
+          "sourceUrl": "https://simpleflying.com/boeing-777-8f-backlog-crossed-8-jets-newest-buyer-isnt-even-airline/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "In the second quarter of 2026, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B, with first delivery anticipated in 2027.",
+          "sourceQuote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+          "archiveContext": true
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Boeing",
+          "FAA",
+          "Simple Flying"
+        ],
+        "airlines": [
+          "MSC Air Cargo"
+        ],
+        "aircraft_models": [
+          "777-8F",
+          "777-8 Freighters",
+          "777X"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-04",
+          "2026-07-28"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260804-0323-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Boeing's 777-8F Backlog Just Crossed 80 Jets & The Newest Buyer Isn't Even An Airline",
+          "url": "https://simpleflying.com/boeing-777-8f-backlog-crossed-8-jets-newest-buyer-isnt-even-airline/",
+          "publishedUtc": "2026-08-04T00:00Z",
+          "summary": "MSC Air Cargo's unexpected order for five Boeing 777-8 Freighters reveals a mystery customer and signals strong demand for the yet-to-fly aircraft.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/boeing-s-777-8f-backlog.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 777X FAMILY",
+              "same named core entity: boeing",
+              "archive predates source by 7 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 777X FAMILY",
+              "same named core entity: boeing",
+              "archive predates source by 7 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-boeing-777-9-test-fleet-reaches-4-800-ho",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 777X FAMILY",
+              "same named core entity: boeing, simple flying",
+              "archive predates source by 5 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 5 day(s) apart",
+            "event_date": "2026-07-30",
+            "source_name": "Simple Flying — Boeing 777-9 Fleet Reaches 4,800 Test Hours As 7th Airframe...",
+            "source_url": "https://simpleflying.com/boeing-777-9-test-fleet-4800-test-hours-7th-airframe-etops-certification/",
+            "facts": [
+              {
+                "claim": "The Boeing 777-9 test fleet has reached 4,800 test hours.",
+                "source_quote": "Boeing 777-9 Fleet Reaches 4,800 Test Hours",
+                "source_url": "https://simpleflying.com/boeing-777-9-test-fleet-4800-test-hours-7th-airframe-etops-certification/",
+                "source_name": "Simple Flying — Boeing 777-9 Fleet Reaches 4,800 Test Hours As 7th Airframe..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260803-1950-1",
     "queuedUtc": "2026-08-03T19:50Z",
     "approve": false,
@@ -9256,311 +9533,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260730-0841-1",
-    "queuedUtc": "2026-07-30T08:41Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Requires human review due to major commercial aircraft fleet acquisition and $1.5 billion financial claim.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "US-Bangla Airlines announced a fleet expansion on July 29, 2026, to acquire 21 new Boeing aircraft.",
-        "sourceQuote": "Bangladesh’s US-Bangla Airlines will acquire 21 new Boeing aircraft as part of a major fleet expansion unveiled at a special ceremony in Dhaka.",
-        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "According to local media, the acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s valued at $1.5 billion.",
-        "sourceQuote": "the acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s and is thought to be worth $1.5 billion.",
-        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The aircraft are being acquired from up to five different lessors, with specific companies not yet confirmed.",
-        "sourceQuote": "The aircraft have been acquired from as many as five different lessors, although the details of the exact companies have not yet been confirmed.",
-        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The event took place at the Sheraton Hotel in Banani and was attended by State Minister Rashiduzzaman Millat and US Ambassador Brent T. Christensen.",
-        "sourceQuote": "The ‘Beyond with Boeing’ event was held at the Sheraton Hotel in Banani, attended by State Minister for Civil Aviation and Tourism, Rashiduzzaman Millat, and the US Ambassador to Bangladesh, Brent T. Christensen.",
-        "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Requires human review due to major commercial aircraft fleet acquisition and $1.5 billion financial claim.",
-      "cat": "biz",
-      "zh": {
-        "title": "孟加拉優斯邦雅航空擬租賃21架波音客機",
-        "summary": "孟加拉優斯邦雅航空於2026年7月29日宣布大規模機隊擴張計畫，將引進21架波音客機。據當地媒體報導，該交易涉及租賃15架波音737-8與6架737-800客機，總價值估計約達15億美元，客機預計來自多達五家不同的出租公司。",
-        "body": [
-          "孟加拉優斯邦雅航空於2026年7月29日在達卡舉行的活動中宣布，作為機隊擴張計畫的一環，該公司將引進21架新波音客機。據當地媒體報導，該筆採購包含租賃15架波音737-8客機與6架737-800客機，估計價值達15億美元。",
-          "相關客機預計向多達五家不同的租賃公司引進，不過具體出租公司名稱尚未獲得確認。這場名為「Beyond with Boeing」的發表會於巴納尼的喜來登酒店舉行，孟加拉民航與旅遊部政務部長Rashiduzzaman Millat以及美國駐孟加拉大使Brent T. Christensen等官員均出席活動。"
-        ]
-      },
-      "en": {
-        "title": "US-Bangla Airlines to Acquire 21 Boeing Aircraft in Fleet Expansion",
-        "summary": "Bangladesh's US-Bangla Airlines announced a fleet expansion plan in Dhaka on July 29, 2026, aimed at acquiring 21 new Boeing aircraft. According to local media reports, the acquisition includes lease agreements for 15 Boeing 737-8 aircraft and six 737-800 aircraft, with a total estimated value of $1.5 billion. The aircraft are expected to be obtained from up to five separate aircraft leasing companies, though the exact lessor identities have not yet been confirmed by the airline.",
-        "body": [
-          "Bangladesh's US-Bangla Airlines unveiled a fleet expansion program at an event in Dhaka on July 29, 2026, announcing the addition of 21 new Boeing aircraft. Local media reported that the transaction involves lease agreements for 15 Boeing 737-8 aircraft and six Boeing 737-800 aircraft, with an estimated total value of $1.5 billion.",
-          "The aircraft are being sourced from as many as five different lessor firms, although the specific leasing entities have not yet been finalized or confirmed. The announcement took place during the \"Beyond with Boeing\" event held at the Sheraton Hotel in Banani, with official attendees including Civil Aviation and Tourism State Minister Rashiduzzaman Millat and US Ambassador to Bangladesh Brent T. Christensen."
-        ]
-      },
-      "flash": {
-        "zh": "孟加拉優斯邦雅航空宣布引進21架波音客機",
-        "en": "US-Bangla Airlines to acquire 21 Boeing aircraft in fleet expansion",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "US-Bangla Airlines announced a fleet expansion on July 29, 2026, to acquire 21 new Boeing aircraft.",
-          "sourceQuote": "Bangladesh’s US-Bangla Airlines will acquire 21 new Boeing aircraft as part of a major fleet expansion unveiled at a special ceremony in Dhaka.",
-          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "According to local media, the acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s valued at $1.5 billion.",
-          "sourceQuote": "the acquisition is part of a lease agreement for 15 Boeing 737-8 aircraft and six 737-800s and is thought to be worth $1.5 billion.",
-          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The aircraft are being acquired from up to five different lessors, with specific companies not yet confirmed.",
-          "sourceQuote": "The aircraft have been acquired from as many as five different lessors, although the details of the exact companies have not yet been confirmed.",
-          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The event took place at the Sheraton Hotel in Banani and was attended by State Minister Rashiduzzaman Millat and US Ambassador Brent T. Christensen.",
-          "sourceQuote": "The ‘Beyond with Boeing’ event was held at the Sheraton Hotel in Banani, attended by State Minister for Civil Aviation and Tourism, Rashiduzzaman Millat, and the US Ambassador to Bangladesh, Brent T. Christensen.",
-          "sourceUrl": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "US-Bangla Airlines",
-          "Boeing"
-        ],
-        "airlines": [
-          "US-Bangla Airlines"
-        ],
-        "aircraft_models": [
-          "737-8",
-          "737-800"
-        ],
-        "airports": [],
-        "locations": [
-          "Bangladesh",
-          "Dhaka",
-          "Banani"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-29"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260730-0841-1",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "US-Bangla Airlines’ fleet set to surge with addition of 21 new Boeing aircraft",
-          "url": "https://www.aerotime.aero/articles/us-bangla-airlines-fleet-lease-boeing-aircraft",
-          "publishedUtc": "2026-07-29T14:12Z",
-          "summary": "Bangladesh’s US-Bangla Airlines will acquire 21 new Boeing aircraft as part of a major fleet expansion unveiled at… The post US-Bangla Airlines’ fleet set to surge with addition of 21 new Boeing aircraft appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Bangladesh's US-Bangla to buy 21 Boeing aircraft in $1.5 billion expansion",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMXZiSW92RjNGd2lBYi1LNVBtWmpCZFpCOGFxc3FOY1pWSXhieTYxb2RKTWFJdUZfcTFyWWtPR2U2WDNjREl3MTgzZzFTTlJNX21NaDJ0Y2tHU2F2ZUhKT1pnaHY0QWd6N0p3NmFQWktZaER5cG9odzJ3cWtLbEFvcjFlbXRFVlk0MTdYZzNQU0ZXMkhTa1dYVjhMYmhtLWhHbnZaWFE4ZGdGUUdmWkl3U2ZjaVdxRHl2cVpNdw?oc=5",
-          "publishedUtc": "2026-07-29T12:48Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        }
-      ],
-      "updateCandidate": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: 737",
-              "same named core entity: boeing",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: 737",
-              "same named core entity: boeing",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
-            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-            "facts": [
-              {
-                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
-                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
-              },
-              {
-                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: 737",
-              "same named core entity: aerotime, boeing",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              }
-            ]
-          }
-        ]
       }
     }
   }
