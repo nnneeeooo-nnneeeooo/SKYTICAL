@@ -1,10 +1,10 @@
 [
   {
-    "id": "g-20260804-1637-1",
-    "queuedUtc": "2026-08-04T16:37Z",
+    "id": "g-20260804-1806-1",
+    "queuedUtc": "2026-08-04T18:06Z",
     "approve": false,
     "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story details the US FAA issuing an amended type certificate and Production Limitation Record for the Boeing 737 MAX 7 aircraft, which constitutes a regulatory action requiring human review.",
+    "decisionReason": "The story covers a formal regulatory certification action by the US Federal Aviation Administration (FAA).",
     "riskFlags": [
       "regulatory_action"
     ],
@@ -12,7 +12,7 @@
       {
         "factId": "F1",
         "claim": "The US Federal Aviation Administration issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026.",
-        "sourceQuote": "Following almost a decade of extensive review, the FAA has issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX-7.",
+        "sourceQuote": "the FAA has issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX-7.",
         "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -20,8 +20,8 @@
       },
       {
         "factId": "F2",
-        "claim": "The FAA required Boeing to incorporate updates to flight-control software, the flightcrew alerting system, and a redesigned engine anti-ice system prior to certification.",
-        "sourceQuote": "Before granting approval, the FAA required the MAX-7 to incorporate key improvements that address requirements in the Aircraft Certification, Safety, and Accountability Act and NTSB recommendations , including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system.",
+        "claim": "The FAA required key improvements prior to certification, including flight-control software updates, flightcrew alerting system updates, and a redesigned engine anti-ice system.",
+        "sourceQuote": "including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system.",
         "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -29,46 +29,48 @@
       },
       {
         "factId": "F3",
-        "claim": "The updated Production Limitation Record authorizes Boeing to begin production of the 737 MAX 7.",
-        "sourceQuote": "The amended type certificate confirms the aircraft complies with all applicable design and safety requirements, and the updated Production Limitation Record authorizes Boeing to begin production of the aircraft.",
-        "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
+        "claim": "Southwest Airlines has ordered over 300 Boeing 737 MAX 7 aircraft, making it the largest customer for the variant.",
+        "sourceQuote": "has more than 300 MAX 7s on order, making it by far the largest customer for the type.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/boeing-737-max-7-faa-certification/",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
       },
       {
         "factId": "F4",
-        "claim": "Boeing Commercial Airplanes CEO Stephanie Pope stated that the certification validates the airplane's design rigor and recognizes the development team's determination.",
-        "sourceQuote": "“This important certification validates the rigor of our airplane’s design and recognizes the determination and resilience of our 737 MAX development team,” Stephanie Pope, President and CEO of Boeing Commercial Airplanes, said.",
-        "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-7-gains-faa-certification-which-airlines-placed-orders",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
+        "claim": "As of July 2026, Boeing completed certification flight testing for both the 737-7 and 737-10.",
+        "sourceQuote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10.",
+        "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+        "evidenceScope": "archive",
+        "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+        "archiveContext": true
       }
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "The story details the US FAA issuing an amended type certificate and Production Limitation Record for the Boeing 737 MAX 7 aircraft, which constitutes a regulatory action requiring human review.",
+      "decisionReason": "The story covers a formal regulatory certification action by the US Federal Aviation Administration (FAA).",
       "cat": "reg",
       "zh": {
-        "title": "美國FAA核發波音737 MAX 7修改型別合格證",
-        "summary": "美國聯邦航空總署於2026年8月3日宣布，經過長期審查後，已向波音公司頒發737 MAX 7的修改型別合格證與更新版生產限制記錄。波音在獲得核准前，依規定完成飛行控制軟體、機組員警示系統與引擎防冰系統的改進。該項核准同時授權波音開始量產這款機型。",
+        "title": "美國FAA核發波音737 MAX 7型別檢定證",
+        "summary": "美國聯邦航空總署於2026年8月3日正式對波音737 MAX 7核發修改後的型別檢定證與生產限制紀錄。該認證要求更新飛行控制軟體、機組警報系統及重新設計引擎防冰系統。最大客戶西南航空已訂購超過300架該型客機。",
         "body": [
-          "美國聯邦航空總署於2026年8月3日宣布，已正式向波音公司頒發737 MAX 7的修改型別合格證與更新版生產限制記錄。波音公司在審查期間依規定進行多項技術改善，包含更新飛行控制軟體、機組員警示系統，以及重新設計的引擎防冰系統，以確保系統安全性與符合相關法規要求。",
-          "聯邦航空總署指出，更新後的生產限制記錄已授權波音開始生產737 MAX 7客機。波音商用飛機總裁兼執行長Stephanie Pope表示，這項認證驗證了飛機設計的嚴謹性，並肯定了研發團隊的努力與韌性。"
+          "美國聯邦航空總署（FAA）於2026年8月3日正式對波音737 MAX 7核發修改後的型別檢定證與更新的生產限制紀錄，完成對該機型多年的審查程序。",
+          "在頒發核准之前，FAA要求波音737 MAX 7納入多項關鍵改進項目，其中包括更新飛行控制軟體、機組警報系統，以及重新設計引擎防冰系統。",
+          "根據相關紀錄，西南航空為波音737 MAX 7的最大客戶，目前已訂購超過300架該型客機。此外，波音公司截至2026年7月已完成737-7與737-10機型的認證飛行測試。"
         ]
       },
       "en": {
-        "title": "FAA Grants Type Certification for Boeing 737 MAX 7",
-        "summary": "The US Federal Aviation Administration granted Boeing an amended type certificate and an updated Production Limitation Record for the 737 MAX 7 on August 3, 2026, following extensive regulatory reviews. Before granting approval, the agency required Boeing to incorporate several design improvements, including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system. The issued certification confirms compliance with safety requirements and formally authorizes Boeing to begin production of the aircraft.",
+        "title": "US FAA Grants Type Certification for Boeing 737 MAX 7",
+        "summary": "The US Federal Aviation Administration issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026. The approval follows years of technical evaluation and requires key aircraft improvements, including updates to the flight-control software, the flightcrew alerting system, and a redesigned engine anti-ice system. Southwest Airlines remains the largest customer for the narrowbody variant, with more than 300 aircraft on order. Earlier in July 2026, Boeing completed certification flight testing on both the 737-7 and 737-10 variants.",
         "body": [
-          "The US Federal Aviation Administration announced on August 3, 2026, that it has issued an amended type certificate and an updated Production Limitation Record for the Boeing 737 MAX 7. Prior to the approval, the FAA required Boeing to incorporate key system improvements, including updates to flight-control software, the flightcrew alerting system, and a redesigned engine anti-ice system.",
-          "The updated Production Limitation Record officially authorizes Boeing to commence production of the aircraft type. Stephanie Pope, President and CEO of Boeing Commercial Airplanes, noted that the certification validates the rigor of the aircraft design and reflects the dedication of the development team."
+          "The US Federal Aviation Administration (FAA) issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026, marking the completion of an extensive regulatory review process.",
+          "Prior to granting certification, the FAA required Boeing to incorporate key safety improvements into the aircraft. These technical updates include modifications to the flight-control software, the flightcrew alerting system, and a redesigned engine anti-ice system.",
+          "Southwest Airlines is the largest customer for the variant, with an order book exceeding 300 Boeing 737 MAX 7 aircraft. In historical records, Boeing confirmed that certification flight testing for both the 737-7 and 737-10 variants was completed as of July 2026."
         ]
       },
       "flash": {
-        "zh": "美國FAA發放波音737 MAX 7型別合格證",
-        "en": "FAA issues type certificate for Boeing 737 MAX 7",
+        "zh": "美國FAA宣布核發波音737 MAX 7型別檢定證",
+        "en": "US FAA certifies Boeing 737 MAX 7 airplane",
         "hot": false
       },
       "incident": null,
@@ -76,7 +78,7 @@
         {
           "factId": "F1",
           "claim": "The US Federal Aviation Administration issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026.",
-          "sourceQuote": "Following almost a decade of extensive review, the FAA has issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX-7.",
+          "sourceQuote": "the FAA has issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX-7.",
           "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -84,8 +86,8 @@
         },
         {
           "factId": "F2",
-          "claim": "The FAA required Boeing to incorporate updates to flight-control software, the flightcrew alerting system, and a redesigned engine anti-ice system prior to certification.",
-          "sourceQuote": "Before granting approval, the FAA required the MAX-7 to incorporate key improvements that address requirements in the Aircraft Certification, Safety, and Accountability Act and NTSB recommendations , including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system.",
+          "claim": "The FAA required key improvements prior to certification, including flight-control software updates, flightcrew alerting system updates, and a redesigned engine anti-ice system.",
+          "sourceQuote": "including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system.",
           "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -93,21 +95,21 @@
         },
         {
           "factId": "F3",
-          "claim": "The updated Production Limitation Record authorizes Boeing to begin production of the 737 MAX 7.",
-          "sourceQuote": "The amended type certificate confirms the aircraft complies with all applicable design and safety requirements, and the updated Production Limitation Record authorizes Boeing to begin production of the aircraft.",
-          "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
+          "claim": "Southwest Airlines has ordered over 300 Boeing 737 MAX 7 aircraft, making it the largest customer for the variant.",
+          "sourceQuote": "has more than 300 MAX 7s on order, making it by far the largest customer for the type.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/boeing-737-max-7-faa-certification/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F4",
-          "claim": "Boeing Commercial Airplanes CEO Stephanie Pope stated that the certification validates the airplane's design rigor and recognizes the development team's determination.",
-          "sourceQuote": "“This important certification validates the rigor of our airplane’s design and recognizes the determination and resilience of our 737 MAX development team,” Stephanie Pope, President and CEO of Boeing Commercial Airplanes, said.",
-          "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-7-gains-faa-certification-which-airlines-placed-orders",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
+          "claim": "As of July 2026, Boeing completed certification flight testing for both the 737-7 and 737-10.",
+          "sourceQuote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10.",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+          "archiveContext": true
         }
       ],
       "headlineSupportedBy": [
@@ -116,27 +118,32 @@
       "summarySupportedBy": [
         "F1",
         "F2",
-        "F3"
+        "F3",
+        "F4"
       ],
       "entities": {
         "organizations": [
           "FAA",
           "Federal Aviation Administration",
           "Boeing",
-          "Boeing Commercial Airplanes",
-          "NTSB"
+          "Southwest Airlines"
         ],
-        "airlines": [],
+        "airlines": [
+          "Southwest Airlines"
+        ],
         "aircraft_models": [
+          "Boeing 737 MAX 7",
           "737 MAX 7",
-          "737 MAX-7"
+          "737-7",
+          "737-10"
         ],
         "airports": [],
         "locations": [],
         "flight_numbers": [],
         "registration_numbers": [],
         "event_dates": [
-          "2026-08-03"
+          "2026-08-03",
+          "2026-07-28"
         ]
       },
       "eventStatus": "confirmed",
@@ -146,18 +153,9 @@
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260804-1637-1",
-      "primarySource": "Simple Flying",
+      "id": "g-20260804-1806-1",
+      "primarySource": "AeroTime",
       "items": [
-        {
-          "title": "It’s Official: Boeing 737 MAX 7 Secures FAA Type Certification",
-          "url": "https://simpleflying.com/video/it-s-official-boeing-737-max-7-secures-faa-type-certification/",
-          "publishedUtc": "2026-08-04T09:50Z",
-          "summary": "The Boeing 737 MAX 7 has finally been cleared for commercial service, more than eight years after the smallest member of the 737 MAX family first took to the skies. The Federal Aviation Administration (FAA) granted Boeing an amended type certificate for the aircraft on Monday, August 3rd, bringing one of the manufacturer’s longest-running certification programs to an end.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/max-7-certified.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
         {
           "title": "Somon Air receives its first Boeing 737 MAX jet, a first for Tajikistan",
           "url": "https://www.aerotime.aero/articles/somon-air-receives-its-first-boeing-737-max-jet-a-first-for-tajikistan",
@@ -202,6 +200,15 @@
           "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/737-7-max-ID-fb3c1b364a1c-scaled.jpg",
           "source": "Aerospace Global News",
           "sourceKey": "aerospaceglobalnews"
+        },
+        {
+          "title": "U.S. FAA certifies new Boeing 737-7 airplane",
+          "url": "https://boeing.mediaroom.com/2026-08-03-U-S-FAA-certifies-new-Boeing-737-7-airplane",
+          "publishedUtc": "2026-08-03T17:25Z",
+          "summary": "",
+          "image": "https://mmx.prnewswire.com/media/MS1963091/737-7-max-ID-fb3c1b364a1c.jpg?id=OA2822308&p=thumbnail",
+          "source": "Boeing",
+          "sourceKey": "boeing"
         }
       ],
       "updateCandidate": true,
@@ -209,60 +216,6 @@
         "archive_context_version": 1,
         "retrieval_status": "found",
         "selected_events": [
-          {
-            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: 787, BOEING 737",
-              "same named core entity: aerotime, reuters, simple flying, westjet",
-              "same airport code(s): THE",
-              "archive predates source by 2 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 93,
-            "confidence_reason": "tier 2; 4 deterministic evidence item(s); 2 day(s) apart",
-            "event_date": "2026-08-02",
-            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
-            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-            "facts": [
-              {
-                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
-                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
-                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
-                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
-                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
-                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
-                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              }
-            ]
-          },
           {
             "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
             "relationship_type": "delivery_followup",
@@ -330,6 +283,383 @@
                 "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
                 "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
                 "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737, 737-7",
+              "same named core entity: boeing",
+              "archive predates source by 7 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
+            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+            "facts": [
+              {
+                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
+                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260804-1806-9",
+    "queuedUtc": "2026-08-04T18:06Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "The story involves a major financial transaction (JPY 8.2 billion / US$55 million share buyback) and significant corporate restructuring including a full exit by Qantas Group from Jetstar Japan and a planned rebranding. The deal is binding but still pending regulatory approval, making it a developing financial/ownership event. Per rules, major financial claims and unconfirmed/developing events require human review.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Qantas Group and Japan Airlines signed a binding agreement announced August 4, 2026 to change Jetstar Japan's ownership through a share buyback, moving forward with a plan first floated in February 2026.",
+        "sourceQuote": "The Qantas Group and Japan Airlines (JAL) have signed a binding agreement to change who owns Jetstar Japan, moving forward with a plan first floated back in February 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The deal still needs regulatory approval before it can be completed.",
+        "sourceQuote": "though the deal still needs regulatory approval before it can be completed",
+        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Development Bank of Japan will join as a new shareholder in Jetstar Japan, while Tokyo Century Corporation and JAL keep their existing stakes.",
+        "sourceQuote": "Development Bank of Japan will come in as a new shareholder in Jetstar Japan, while Tokyo Century Corporation and JAL keep their existing stakes in the airline.",
+        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Qantas Group will exit entirely, selling its 33.32% minority stake through a buyback carried out by Jetstar Japan itself, with the transition expected to wrap up by June 2027.",
+        "sourceQuote": "The Qantas Group, meanwhile, will exit entirely, selling off its 33.32% minority stake through a buyback carried out by Jetstar Japan itself. The whole transition is expected to wrap up by June 2027.",
+        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Once Qantas exits, Jetstar Japan plans to move away from the Jetstar name and rebrand under a new identity while continuing as a low-cost carrier in Japan.",
+        "sourceQuote": "Jetstar Japan plans to move away from the “Jetstar” name altogether, rebranding under a new identity as it continues operating as a low-cost carrier in Japan.",
+        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The share buyback transaction is valued at JPY 8.2 billion (US$55 million), and Qantas Group expects a gain of roughly AU$115 million (US$75 million) outside its underlying financial results, mostly in its FY27 accounts.",
+        "sourceQuote": "The share buyback transaction is valued at JPY 8.2 billion (US$55 million).",
+        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves a major financial transaction (JPY 8.2 billion / US$55 million share buyback) and significant corporate restructuring including a full exit by Qantas Group from Jetstar Japan and a planned rebranding. The deal is binding but still pending regulatory approval, making it a developing financial/ownership event. Per rules, major financial claims and unconfirmed/developing events require human review.",
+      "cat": "biz",
+      "zh": {
+        "title": "澳洲航空與日本航空簽署協議重組捷星日本股權",
+        "summary": "澳洲航空集團與日本航空於2026年8月4日宣布簽署具約束力協議，透過由捷星日本自身執行的股份回購交易改變股權結構。Development Bank of Japan將成為新股東，東京世紀與日本航空保留現有持股，澳洲航空將完全出脫其33.32%少數股權。交易金額約84億日圓，預計2027年6月前完成，仍待監管機關核准。",
+        "body": [
+          "澳洲航空集團與日本航空於2026年8月4日宣布，雙方已簽署一項具約束力的協議，將改變捷星日本的股權結構。此計畫最早於2026年2月提出，目前確認將透過由捷星日本自身執行的股份回購交易來進行，但交易仍需取得監管機關核准後方能完成。",
+          "在新架構下，Development Bank of Japan將成為捷星日本的新股東，而Tokyo Century Corporation與日本航空將保留其現有持股。澳洲航空集團則將完全退出，透過由捷星日本自身執行的回購出售其持有的33.32%少數股權。整項轉換預計於2027年6月前完成。",
+          "對澳洲航空集團而言，此舉可釋出資金，計畫用於重新投入其在澳洲的國內與國際航線營運，而非繼續持有日本航空公司的少數股權。此交易也使捷星日本轉向以日資為主的股權結構，由日本企業持有該航空公司股份。",
+          "澳洲航空退出後，捷星日本計畫不再使用「Jetstar」名稱，將以全新品牌身分繼續以低成本航空公司身分在日本營運。雙方表示，此交易不影響旅客現有航班的正常營運，澳洲航空與捷星往返澳洲與日本的國際航班將照常運作，與日本航空的共用班號安排也維持不變。",
+          "股份回購交易金額為84億日圓（約5,500萬美元）。對澳洲航空集團而言，預計將產生約1.15億澳幣（約7,500萬美元）的帳外收益，主要反映於其2027會計年度帳目中。在交易完成前，澳洲航空將繼續將捷星日本的損益份額計入其基礎稅前盈餘。"
+        ]
+      },
+      "en": {
+        "title": "Qantas Group and Japan Airlines Sign Binding Deal to Reshape Jetstar Japan Ownership",
+        "summary": "Qantas Group and Japan Airlines announced on August 4, 2026 that they have signed a binding agreement to restructure Jetstar Japan's ownership through a share buyback. Development Bank of Japan will join as a new shareholder, while Tokyo Century Corporation and JAL retain their existing stakes. Qantas Group will fully exit its 33.32% minority stake. The transaction is valued at JPY 8.2 billion (US$55 million) and is expected to be completed by June 2027, pending regulatory approval.",
+        "body": [
+          "Qantas Group and Japan Airlines announced on August 4, 2026 that they have signed a binding agreement to change the ownership structure of Jetstar Japan, moving forward with a plan first floated in February 2026. The deal confirms a share buyback transaction, though it still requires regulatory approval before completion.",
+          "Under the new structure, Development Bank of Japan will come in as a new shareholder in Jetstar Japan, while Tokyo Century Corporation and JAL will keep their existing stakes. Qantas Group will exit entirely, selling its 33.32% minority stake through a buyback carried out by Jetstar Japan itself. The transition is expected to wrap up by June 2027.",
+          "For Qantas Group, the move frees up capital that it plans to redirect toward its own domestic and international operations in Australia. The deal also shifts Jetstar Japan toward a more Japan-based ownership structure, with Japanese companies holding the airline's shares.",
+          "Once Qantas exits, Jetstar Japan plans to move away from the Jetstar name altogether, rebranding under a new identity while continuing to operate as a low-cost carrier in Japan. The airlines stated that existing operations for travelers remain unaffected, with Qantas and Jetstar international flights between Australia and Japan continuing as normal and codeshare arrangements with JAL unchanged.",
+          "The share buyback transaction is valued at JPY 8.2 billion (US$55 million). For Qantas Group, the deal is expected to result in a gain of roughly AU$115 million (US$75 million) in items outside its underlying financial results, with most of the impact showing up in its FY27 accounts. Until the deal is finalized, Qantas will continue to include its share of Jetstar Japan's profits or losses in its underlying pre-tax earnings."
+        ]
+      },
+      "flash": {
+        "zh": "澳洲航空將退出捷星日本股權，交易金額約84億日圓",
+        "en": "Qantas Group to exit Jetstar Japan in JPY 8.2B ownership restructuring deal",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Qantas Group and Japan Airlines signed a binding agreement announced August 4, 2026 to change Jetstar Japan's ownership through a share buyback, moving forward with a plan first floated in February 2026.",
+          "sourceQuote": "The Qantas Group and Japan Airlines (JAL) have signed a binding agreement to change who owns Jetstar Japan, moving forward with a plan first floated back in February 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The deal still needs regulatory approval before it can be completed.",
+          "sourceQuote": "though the deal still needs regulatory approval before it can be completed",
+          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Development Bank of Japan will join as a new shareholder in Jetstar Japan, while Tokyo Century Corporation and JAL keep their existing stakes.",
+          "sourceQuote": "Development Bank of Japan will come in as a new shareholder in Jetstar Japan, while Tokyo Century Corporation and JAL keep their existing stakes in the airline.",
+          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Qantas Group will exit entirely, selling its 33.32% minority stake through a buyback carried out by Jetstar Japan itself, with the transition expected to wrap up by June 2027.",
+          "sourceQuote": "The Qantas Group, meanwhile, will exit entirely, selling off its 33.32% minority stake through a buyback carried out by Jetstar Japan itself. The whole transition is expected to wrap up by June 2027.",
+          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Once Qantas exits, Jetstar Japan plans to move away from the Jetstar name and rebrand under a new identity while continuing as a low-cost carrier in Japan.",
+          "sourceQuote": "Jetstar Japan plans to move away from the “Jetstar” name altogether, rebranding under a new identity as it continues operating as a low-cost carrier in Japan.",
+          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The share buyback transaction is valued at JPY 8.2 billion (US$55 million), and Qantas Group expects a gain of roughly AU$115 million (US$75 million) outside its underlying financial results, mostly in its FY27 accounts.",
+          "sourceQuote": "The share buyback transaction is valued at JPY 8.2 billion (US$55 million).",
+          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F4"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F6"
+      ],
+      "entities": {
+        "organizations": [
+          "Qantas Group",
+          "Japan Airlines",
+          "Development Bank of Japan",
+          "Tokyo Century Corporation",
+          "Jetstar Japan"
+        ],
+        "airlines": [
+          "Qantas",
+          "Japan Airlines",
+          "Jetstar Japan"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Japan",
+          "Australia"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-04",
+          "2026-02",
+          "2027-06"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260804-1806-9",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Qantas Group, Japan Airlines sign deal to reshape Jetstar Japan ownership",
+          "url": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
+          "publishedUtc": "2026-08-04T12:07Z",
+          "summary": "The Qantas Group and Japan Airlines (JAL) have signed a binding agreement to change who owns Jetstar Japan,… The post Qantas Group, Japan Airlines sign deal to reshape Jetstar Japan ownership appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 7 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 7 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
+            "relationship_type": "other",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 7 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
+            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+            "facts": [
+              {
+                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
+                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
+                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
+                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
+                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
+                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
               }
             ]
           }
@@ -9231,247 +9561,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260730-2107-1",
-    "queuedUtc": "2026-07-30T21:07Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "Developing labour dispute with potential work stoppage on August 2, 2026; multiple sources confirm 72-hour strike/lockout notices but situation is unresolved and evolving. Sufficient evidence for a full draft, but unconfirmed_or_developing flag requires human review.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "WestJet issued a 72-hour lockout notice on July 30, 2026, after CUPE 8125 announced a 72-hour strike notice.",
-        "sourceQuote": "On July 30, 2026, WestJet said it was issuing a lockout notice after members of the Canadian Union of Public Employees (CUPE) 8125 announced a 72-hour strike notice.",
-        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "CUPE 8125 represents approximately 4,400 WestJet cabin crew.",
-        "sourceQuote": "WestJet has issued a 72-hour lockout notice after the Canadian Union of Public Employees (CUPE), representing approximately 4,400 cabin crew, served the airline with a 72-hour strike notice.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/westjet-lockout-strike-notice-cabin-crew-july-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "A work stoppage could begin at 12:01 a.m. Mountain Time on August 2, 2026, if negotiations fail.",
-        "sourceQuote": "they set the stage for potential industrial action from 12:01 a.m. Mountain Time on August 2 if negotiations fail to produce a new collective agreement.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/westjet-lockout-strike-notice-cabin-crew-july-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "WestJet CEO Alexis von Hoensbroech said the lockout notice decision was not made lightly and the airline's commitment remains at the bargaining table.",
-        "sourceQuote": "The decision to issue a lockout notice, in response to the actions taken by the union, was not one that was made lightly. We sincerely regret the inconvenience and uncertainty this continues to cause for our guests",
-        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "CUPE 8125 President Alia Hussain said the strike notice does not mean flight attendants want to commence industrial action and the union's goal is to reach a fair agreement without disrupting passengers.",
-        "sourceQuote": "CUPE 8125 has stated that its strike notice does not mean flight attendants want to commence industrial action.",
-        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "WestJet is offering flexible change and cancellation policies for guests with travel bookings between July 30 and August 4, 2026, and says the notices do not immediately impact operations.",
-        "sourceQuote": "Continue to offer flexible change/cancel policies for those guests with travel bookings between July 30, 2026, and August 4, 2026, who wish to make alternate arrangements.",
-        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Developing labour dispute with potential work stoppage on August 2, 2026; multiple sources confirm 72-hour strike/lockout notices but situation is unresolved and evolving. Sufficient evidence for a full draft, but unconfirmed_or_developing flag requires human review.",
-      "cat": "ops",
-      "zh": {
-        "title": "WestJet 發布鎖場通知回應空服員72小時罷工預告",
-        "summary": "加拿大第二大航空公司 WestJet 於2026年7月30日發布72小時鎖場通知，回應工會 CUPE 8125 代表約4400名空服員提出的罷工預告。若雙方未能達成協議，工作停頓可能於8月2日凌晨起發生。WestJet 表示目前營運未受立即影響，並為7月30日至8月4日期間的旅客提供彈性改簽與取消政策。",
-        "body": [
-          "加拿大航空公司 WestJet 於2026年7月30日表示，在加拿大公共僱員工會（CUPE）8125分會宣布72小時罷工預告後，已發布自身的72小時鎖場通知。CUPE 8125 代表約4400名 WestJet 機艙組員。",
-          "若雙方未能達成協議，工作停頓可能於2026年8月2日凌晨12時01分（山嶽時間）起發生。鎖場通知將阻止工會成員工作。",
-          "WestJet Group 執行長 Alexis von Hoensbroech 表示，發布鎖場通知的決定並非輕率做出，並對旅客造成的不便與不確定性表達誠摯遺憾。他說，WestJet 的承諾仍在談判桌上，將24小時不間斷努力達成協議。",
-          "CUPE 8125 主席 Alia Hussain 表示，罷工預告並不意味空服員希望展開工業行動，工會的目標是在不影響旅客的情況下達成公平協議。她說：「還有時間避免罷工」，工會將持續徹夜談判。",
-          "工會主張 WestJet 空服員每月從事多達35小時的無償工作，包括登機、安全檢查、協助旅客及地面延誤期間。工會表示薪酬與飛機推出時間密切相關，要求為所有工作時數支付報酬。",
-          "WestJet 表示，相關通知不會立即影響營運，也不意味必然發生勞資中斷。航空公司為2026年7月30日至8月4日期間訂位的旅客提供彈性更改與取消政策，若發生航班延誤或取消，受影響旅客將獲得退款或重新安排航班。"
-        ]
-      },
-      "en": {
-        "title": "WestJet Issues Lockout Notice in Response to 72-Hour Cabin Crew Strike Threat",
-        "summary": "WestJet, Canada's second-largest airline, issued a 72-hour lockout notice on July 30, 2026, after CUPE 8125, representing approximately 4,400 cabin crew, served a strike notice. If no agreement is reached, a work stoppage could begin at 12:01 a.m. Mountain Time on August 2. WestJet says operations are not immediately affected and is offering flexible change and cancellation policies for passengers travelling between July 30 and August 4.",
-        "body": [
-          "Canadian carrier WestJet said on July 30, 2026, that it was issuing a lockout notice after members of the Canadian Union of Public Employees (CUPE) 8125 announced a 72-hour strike notice. CUPE 8125 represents approximately 4,400 WestJet cabin crew.",
-          "If an agreement is not reached, a work stoppage could occur on August 2, 2026, at 12:01 a.m. Mountain Time. The lockout notice would prevent unionized employees from working.",
-          "Alexis von Hoensbroech, CEO of the WestJet Group, said the decision to issue a lockout notice was not made lightly and expressed sincere regret for the inconvenience and uncertainty caused. He said the airline's commitment remains at the bargaining table, where it will work 24 hours a day to reach a deal.",
-          "CUPE 8125 President Alia Hussain said the strike notice does not mean flight attendants want to commence industrial action, and the union's goal is to reach a fair agreement without disrupting passengers. She added there is still time to avoid a strike and the union will continue to bargain around the clock.",
-          "The union claims WestJet flight attendants carry out unpaid work up to 35 hours every month, including boarding, safety sweeps, assisting passengers, and ground delays. CUPE 8125 says pay is heavily tied to when the aircraft pushes back and is seeking compensation for all hours worked.",
-          "WestJet said the notices do not immediately impact operations or mean that a labor disruption will occur. The airline is offering flexible change and cancellation policies for guests with travel bookings between July 30, 2026, and August 4, 2026, and said impacted guests will be refunded or reaccommodated as applicable."
-        ]
-      },
-      "flash": {
-        "zh": "WestJet 發布鎖場通知，8月2日可能停工",
-        "en": "WestJet issues lockout notice; work stoppage possible August 2",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "WestJet issued a 72-hour lockout notice on July 30, 2026, after CUPE 8125 announced a 72-hour strike notice.",
-          "sourceQuote": "On July 30, 2026, WestJet said it was issuing a lockout notice after members of the Canadian Union of Public Employees (CUPE) 8125 announced a 72-hour strike notice.",
-          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "CUPE 8125 represents approximately 4,400 WestJet cabin crew.",
-          "sourceQuote": "WestJet has issued a 72-hour lockout notice after the Canadian Union of Public Employees (CUPE), representing approximately 4,400 cabin crew, served the airline with a 72-hour strike notice.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/westjet-lockout-strike-notice-cabin-crew-july-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "A work stoppage could begin at 12:01 a.m. Mountain Time on August 2, 2026, if negotiations fail.",
-          "sourceQuote": "they set the stage for potential industrial action from 12:01 a.m. Mountain Time on August 2 if negotiations fail to produce a new collective agreement.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/westjet-lockout-strike-notice-cabin-crew-july-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "WestJet CEO Alexis von Hoensbroech said the lockout notice decision was not made lightly and the airline's commitment remains at the bargaining table.",
-          "sourceQuote": "The decision to issue a lockout notice, in response to the actions taken by the union, was not one that was made lightly. We sincerely regret the inconvenience and uncertainty this continues to cause for our guests",
-          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "CUPE 8125 President Alia Hussain said the strike notice does not mean flight attendants want to commence industrial action and the union's goal is to reach a fair agreement without disrupting passengers.",
-          "sourceQuote": "CUPE 8125 has stated that its strike notice does not mean flight attendants want to commence industrial action.",
-          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "WestJet is offering flexible change and cancellation policies for guests with travel bookings between July 30 and August 4, 2026, and says the notices do not immediately impact operations.",
-          "sourceQuote": "Continue to offer flexible change/cancel policies for those guests with travel bookings between July 30, 2026, and August 4, 2026, who wish to make alternate arrangements.",
-          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "Canadian Union of Public Employees",
-          "CUPE 8125",
-          "WestJet Group"
-        ],
-        "airlines": [
-          "WestJet"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Canada"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-30",
-          "2026-08-02"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260730-2107-1",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "WestJet responds to 72-hour cabin crew strike threat with own deadline",
-          "url": "https://www.aerotime.aero/articles/westjet-cabin-crew-strike-threatcupe-union",
-          "publishedUtc": "2026-07-30T11:17Z",
-          "summary": "Canadian carrier WestJet has responded to threats of a possible flight attendant strike by issuing its own 72-hour… The post WestJet responds to 72-hour cabin crew strike threat with own deadline appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Less Than 72 Hours: 4,400 WestJet Flight Attendants On Verge Of August 2nd Strike",
-          "url": "https://simpleflying.com/westjet-4400-flight-attendants-strike/",
-          "publishedUtc": "2026-07-30T21:04Z",
-          "summary": "A potential strike at WestJet looms, with 72-hour notice given, as the airline and its cabin crew remain deadlocked over unpaid work and compensation.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/647-westjet-boeing-737-800-robin-guess-_-shutterstock.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "title": "WestJet flight attendants issue 72-hour strike notice over unpaid work",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQbzZtMTFib2hzOFRpRWNpbnhxRDB2UW5HTVIxM2hCaDNzMVNONVdtVmlXb2s1aVdKd3JMMTQzdXFTNUlmcXVDcWJJeXdkTzVDX0hIaWtvOWY4ckd4REF1eVo3REo3SUZqc1ZXNTlubVFkS1JQcTU0bmIxdlBxMUtDbUhZV0VYbEhzT1pUNkVETW1NWl85SlNGVnp1djVlTGlOSHpBMGstcU1SVW05MmVOZEZkMGNBWFczeVpJRg?oc=5",
-          "publishedUtc": "2026-07-30T06:26Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "WestJet responds to crew union 72-hour strike notice with lockout News",
-          "url": "https://aerospaceglobalnews.com/news/westjet-lockout-strike-notice-cabin-crew-july-2026/",
-          "publishedUtc": "2026-07-30T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/09/230502-WestJet-MAX8-Rockies-1600x900-1.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
