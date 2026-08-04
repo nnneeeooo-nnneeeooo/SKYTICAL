@@ -64,6 +64,17 @@ def main() -> None:
             "CAL": "CI", "EVA": "BR", "SJX": "JX", "TTW": "IT",
             "MDA": "AE", "UIA": "B7", "DAC": "DA",
         }
+        assert airline_codes["ABL"] == "BX"
+        icao_name_match = re.search(
+            r'<script id="radar-airlines" type="application/json">'
+            r'(.*?)</script>', page, re.DOTALL)
+        iata_name_match = re.search(
+            r'<script id="radar-airline-iata-names" '
+            r'type="application/json">(.*?)</script>', page, re.DOTALL)
+        assert icao_name_match and iata_name_match
+        expected_air_busan = "釜山航空" if page == zh else "Air Busan"
+        assert json.loads(icao_name_match.group(1))["ABL"] == expected_air_busan
+        assert json.loads(iata_name_match.group(1))["BX"] == expected_air_busan
         assert (
             'id="radar-callsign-icao" class="seg-btn" type="button"\n'
             '                data-callsign-mode="icao" aria-pressed="false"'
@@ -91,6 +102,13 @@ def main() -> None:
     assert "refreshMs" in js and "300000" in js
     assert "callsign_iata" in js
     assert 'const airlineIataCodes = parseJson("radar-airline-codes", {})' in js
+    assert (
+        'const airlineIataNames = parseJson("radar-airline-iata-names", {})'
+        in js
+    )
+    assert "function displayAirline(row)" in js
+    assert "airlineIataNames[iataPrefix]" in js
+    assert "displayAirline(row)" in js
     assert "row.callsign.startsWith(row.operator)" in js
     assert "row.callsign.slice(row.operator.length)" in js
     assert 'root.dataset.defaultCallsignMode === "icao" ? "icao" : "iata"' in js
