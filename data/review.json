@@ -1,5 +1,181 @@
 [
   {
+    "id": "g-20260804-1947-3",
+    "queuedUtc": "2026-08-04T19:48Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.5-flash",
+    "decisionReason": "The event involves a military aircraft crash and pilot ejection with injuries, which is a major safety event requiring manual verification.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "casualties_or_injuries"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A US Marine Corps F-35B fighter jet crashed near the runway at Marine Corps Air Station Miramar in San Diego on July 31, 2026.",
+        "sourceQuote": "A US Marine Corps pilot survived an ejection moments before an F-35B crashed and caught fire near the runway at Marine Corps Air Station Miramar in San Diego.",
+        "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The pilot was the sole person on board and was taken to a local medical facility in stable condition with non-life-threatening injuries.",
+        "sourceQuote": "The pilot, the only person aboard, was taken to a local medical facility in stable condition with non-life-threatening injuries.",
+        "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The Marine Corps has classified the crash as a Class A mishap, which is its most serious category.",
+        "sourceQuote": "The Marine Corps classified the accident as a Class A mishap, its most serious category.",
+        "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "A witness estimated that the pilot ejected at an altitude of about 100 feet before the aircraft crashed and exploded.",
+        "sourceQuote": "The witness estimated that the pilot ejected at about 100 feet above the ground. The parachute deployed before the aircraft struck the ground and exploded",
+        "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The event involves a military aircraft crash and pilot ejection with injuries, which is a major safety event requiring manual verification.",
+      "cat": "mil",
+      "zh": {
+        "title": "美軍F-35B戰機於米拉瑪基地墜毀飛行員彈射生還",
+        "summary": "美國海軍陸戰隊一架F-35B戰機於2026年7月31日在聖地牙哥米拉瑪航空基地附近墜毀。軍方表示，機上僅有的飛行員成功彈射生還，送醫後情況穩定無生命危險。海軍陸戰隊已將此事件歸類為最嚴重的A級事故。有目擊者稱彈射高度約為100英尺，但官方尚未證實詳細飛行細節。",
+        "body": [
+          "美國海軍陸戰隊一架F-35B戰鬥機於2026年7月31日在加州聖地牙哥的米拉瑪航空基地跑道附近墜毀。根據軍方說明，這架戰機隸屬於第三海軍陸戰航空聯隊第11航空大隊，事發時間大約在當地時間上午10時左右，緊急救援人員隨即抵達現場處置。",
+          "機上僅有的一名飛行員在墜機前成功進行低空彈射，隨後被送往當地醫療機構接受治療。軍方指出，該飛行員目前傷勢穩定且無生命危險。海軍陸戰隊已將此事件列為最嚴重的「A級事故」，該級別代表事故涉及飛機全毀、人員死亡或造成超過200萬美元的損失。",
+          "根據美聯社引述目擊者說法，飛行員在約100英尺的高度彈射。然而，海軍陸戰隊尚未證實該戰機當時的確切飛行高度、飛行剖面，或是否正在進行短距起飛與垂直降落操縱。"
+        ]
+      },
+      "en": {
+        "title": "US Marine Corps F-35B Crashes at MCAS Miramar, Pilot Survives Ejection",
+        "summary": "A US Marine Corps F-35B fighter jet crashed near the runway at Marine Corps Air Station Miramar in San Diego on July 31, 2026. According to military officials, the pilot was the only person on board and survived after ejecting from the aircraft. The pilot was transported to a local medical facility in stable condition with non-life-threatening injuries. The Marine Corps has classified the crash as a Class A mishap, which is its most serious accident category. While witnesses reported the pilot ejected at approximately 100 feet, officials have not confirmed the aircraft's altitude, flight profile, or whether a vertical landing was being conducted.",
+        "body": [
+          "A US Marine Corps F-35B fighter jet crashed near the runway at Marine Corps Air Station Miramar in San Diego on July 31, 2026. The aircraft was assigned to Marine Aircraft Group 11 of the 3rd Marine Aircraft Wing. Emergency crews responded at approximately 10:00 local time.",
+          "The pilot, the only occupant, survived a low-altitude ejection and was taken to a local hospital in stable condition with non-life-threatening injuries. The Marine Corps has classified the crash as a Class A mishap, which represents its most serious accident category.",
+          "A witness told the Associated Press that the pilot ejected at about 100 feet. The Marine Corps has not confirmed the aircraft's altitude or flight profile."
+        ]
+      },
+      "flash": {
+        "zh": "美軍一架F-35B戰機於米拉瑪基地附近墜毀飛行員彈射生還",
+        "en": "US Marine Corps F-35B Crashes at MCAS Miramar, Pilot Ejects Safely",
+        "hot": true
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A US Marine Corps F-35B fighter jet crashed near the runway at Marine Corps Air Station Miramar in San Diego on July 31, 2026.",
+          "sourceQuote": "A US Marine Corps pilot survived an ejection moments before an F-35B crashed and caught fire near the runway at Marine Corps Air Station Miramar in San Diego.",
+          "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The pilot was the sole person on board and was taken to a local medical facility in stable condition with non-life-threatening injuries.",
+          "sourceQuote": "The pilot, the only person aboard, was taken to a local medical facility in stable condition with non-life-threatening injuries.",
+          "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The Marine Corps has classified the crash as a Class A mishap, which is its most serious category.",
+          "sourceQuote": "The Marine Corps classified the accident as a Class A mishap, its most serious category.",
+          "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "A witness estimated that the pilot ejected at an altitude of about 100 feet before the aircraft crashed and exploded.",
+          "sourceQuote": "The witness estimated that the pilot ejected at about 100 feet above the ground. The parachute deployed before the aircraft struck the ground and exploded",
+          "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Marine Corps",
+          "Marine Aircraft Group 11",
+          "3rd Marine Aircraft Wing",
+          "Associated Press"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "F-35B"
+        ],
+        "airports": [
+          "Marine Corps Air Station Miramar"
+        ],
+        "locations": [
+          "San Diego"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "July 31, 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "casualties_or_injuries"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260804-1947-3",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Marine pilot survives low-altitude ejection before F-35B crashes at Miramar",
+          "url": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
+          "publishedUtc": "2026-08-04T18:12Z",
+          "summary": "A US Marine Corps pilot survived an ejection moments before an F-35B crashed and caught fire near the… The post Marine pilot survives low-altitude ejection before F-35B crashes at Miramar appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260804-1806-1",
     "queuedUtc": "2026-08-04T18:06Z",
     "approve": false,
@@ -9262,305 +9438,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260730-2213-5",
-    "queuedUtc": "2026-07-30T22:13Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "Aviation safety event (medical diversion of an Emirates A380) requires human review. SOURCE provides only headline and excerpt without full article text, limiting verifiable facts to the diversion, aircraft type, operator, approximate diversion distance, and reason. No cause, casualty, or investigation detail is stated. Mandatory review applies to all diversion/safety events.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "An Emirates Airbus A380 diverted to London after a medical emergency over Russia.",
-        "sourceQuote": "Emirates A380 Diverts 2,000+ Miles To London After Medical Emergency Over Russia",
-        "sourceUrl": "https://simpleflying.com/emirates-a380-diverts-2000-london-medical-emergency-russia/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The diversion occurred midway across Russia and turned a 16-hour journey into a 24-hour odyssey.",
-        "sourceQuote": "Midway across Russia, an Emirates Airbus A380 faced an urgent diversion, turning a 16-hour journey into a 24-hour odyssey with a landing in London.",
-        "sourceUrl": "https://simpleflying.com/emirates-a380-diverts-2000-london-medical-emergency-russia/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "An Emirates A380 experienced a late-night diversion on 2026-07-28, with passengers spending the night on the aircraft on the ramp before eventually reaching Shanghai.",
-        "sourceQuote": "After spending the night on the aircraft on the ramp, passengers eventually reached Shanghai.",
-        "sourceUrl": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-        "evidenceScope": "archive",
-        "archiveEventId": "a-20260728-2307-emirates-a380-diverts-overnight-passenge",
-        "archiveContext": true
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Aviation safety event (medical diversion of an Emirates A380) requires human review. SOURCE provides only headline and excerpt without full article text, limiting verifiable facts to the diversion, aircraft type, operator, approximate diversion distance, and reason. No cause, casualty, or investigation detail is stated. Mandatory review applies to all diversion/safety events.",
-      "cat": "safety",
-      "zh": {
-        "title": "阿聯酋航空A380因醫療緊急情況備降倫敦",
-        "summary": "一架阿聯酋航空空中巴士A380在飛越俄羅斯途中因醫療緊急情況備降倫敦，航程由原訂約16小時延長至約24小時。備降距離超過2,000英里。",
-        "body": [
-          "Simple Flying 報導，一架阿聯酋航空空中巴士A380在飛越俄羅斯途中因醫療緊急情況實施備降，最終降落於倫敦。",
-          "報導指出，該航班原訂航程約16小時，因備降而延長至約24小時。",
-          "備降距離超過2,000英里。報導將事件描述為一趟漫長旅程，但未說明醫療狀況的具體性質或後續處置細節。",
-          "本站先前紀錄顯示，阿聯酋航空A380機隊近期曾發生另一起夜間備降事件，乘客曾在停機坪上過夜後續抵達上海。該紀錄為歷史背景，與本次事件無直接關聯。"
-        ]
-      },
-      "en": {
-        "title": "Emirates A380 Diverts Over 2,000 Miles to London After Medical Emergency Over Russia",
-        "summary": "An Emirates Airbus A380 diverted to London following a medical emergency over Russia, extending a planned 16-hour journey to approximately 24 hours. The diversion covered more than 2,000 miles.",
-        "body": [
-          "Simple Flying reported that an Emirates Airbus A380 diverted to London after a medical emergency occurred over Russia.",
-          "The publication stated that the originally planned 16-hour journey turned into an approximately 24-hour odyssey as a result of the diversion.",
-          "The diversion distance was reported at more than 2,000 miles. The article described the event as a lengthy journey but did not specify the nature of the medical condition or subsequent handling details.",
-          "A prior AVWIRE record shows that an Emirates A380 experienced a separate late-night diversion on 2026-07-28, with passengers spending the night on the aircraft on the ramp before eventually reaching Shanghai. That record is historical context and is not directly related to the current event."
-        ]
-      },
-      "flash": {
-        "zh": "阿聯酋航空A380因醫療緊急情況備降倫敦",
-        "en": "Emirates A380 diverts to London after medical emergency over Russia",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-07-30",
-        "sev": "inc",
-        "aircraft": "Airbus A380",
-        "operator": "Emirates",
-        "phase": {
-          "zh": "巡航",
-          "en": "En route"
-        },
-        "location": {
-          "zh": "俄羅斯上空",
-          "en": "Over Russia"
-        },
-        "desc": {
-          "zh": "因醫療緊急情況備降倫敦，備降距離超過2,000英里",
-          "en": "Medical emergency diversion to London covering more than 2,000 miles"
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "An Emirates Airbus A380 diverted to London after a medical emergency over Russia.",
-          "sourceQuote": "Emirates A380 Diverts 2,000+ Miles To London After Medical Emergency Over Russia",
-          "sourceUrl": "https://simpleflying.com/emirates-a380-diverts-2000-london-medical-emergency-russia/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The diversion occurred midway across Russia and turned a 16-hour journey into a 24-hour odyssey.",
-          "sourceQuote": "Midway across Russia, an Emirates Airbus A380 faced an urgent diversion, turning a 16-hour journey into a 24-hour odyssey with a landing in London.",
-          "sourceUrl": "https://simpleflying.com/emirates-a380-diverts-2000-london-medical-emergency-russia/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "An Emirates A380 experienced a late-night diversion on 2026-07-28, with passengers spending the night on the aircraft on the ramp before eventually reaching Shanghai.",
-          "sourceQuote": "After spending the night on the aircraft on the ramp, passengers eventually reached Shanghai.",
-          "sourceUrl": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-          "evidenceScope": "archive",
-          "archiveEventId": "a-20260728-2307-emirates-a380-diverts-overnight-passenge",
-          "archiveContext": true
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Simple Flying"
-        ],
-        "airlines": [
-          "Emirates"
-        ],
-        "aircraft_models": [
-          "A380",
-          "Airbus A380"
-        ],
-        "airports": [
-          "London"
-        ],
-        "locations": [
-          "Russia"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-30",
-          "2026-07-28"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260730-2213-5",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Emirates A380 Diverts 2,000+ Miles To London After Medical Emergency Over Russia",
-          "url": "https://simpleflying.com/emirates-a380-diverts-2000-london-medical-emergency-russia/",
-          "publishedUtc": "2026-07-30T20:38Z",
-          "summary": "Midway across Russia, an Emirates Airbus A380 faced an urgent diversion, turning a 16-hour journey into a 24-hour odyssey with a landing in London.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/285-emirates-airbus-a380-miguel-lagoa-_-shutterstock.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260728-2307-emirates-a380-diverts-overnight-passenge",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: A380",
-              "same named core entity: emirates, simple flying",
-              "archive predates source by 2 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — 373 Passengers Stranded For 10+ Without AC On Emirates A380...",
-            "source_url": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-            "facts": [
-              {
-                "claim": "Emirates A380 experienced a late-night diversion.",
-                "source_quote": "Late-Night Diversion",
-                "source_url": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-                "source_name": "Simple Flying — 373 Passengers Stranded For 10+ Without AC On Emirates A380..."
-              },
-              {
-                "claim": "Passengers spent the night on the aircraft on the ramp and eventually reached Shanghai.",
-                "source_quote": "After spending the night on the aircraft on the ramp, passengers eventually reached Shanghai.",
-                "source_url": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-                "source_name": "Simple Flying — 373 Passengers Stranded For 10+ Without AC On Emirates A380..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-1631-emirates-engineering-launches-material-f",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: AIRBUS A380",
-              "same named core entity: emirates",
-              "archive predates source by 0 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 0 day(s) apart",
-            "event_date": "2026-07-30",
-            "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u...",
-            "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-            "facts": [
-              {
-                "claim": "Emirates Engineering launched Material Futures Studio, a six-week program challenging university students to reimagine retired aircraft materials and turn them into new products.",
-                "source_quote": "Emirates Engineering has launched Material Futures Studio, a six-week program challenging university students to reimagine retired aircraft materials and turn them into new products.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "The program is led by the Upcycling department within Emirates Engineering and pairs students with aviation professionals to tackle real-world industry challenges.",
-                "source_quote": "Led by the Upcycling department within Emirates Engineering, the initiative pairs students with aviation professionals to tackle real-world industry challenges",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "The first edition brought together 23 students from Khalifa University, Emirates Aviation University, and the University of Sharjah.",
-                "source_quote": "The first edition brought together 23 students from Khalifa University, Emirates Aviation University, and the University of Sharjah.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "The program opened with an orientation and tour where students saw A-checks and C-checks on the Emirates fleet and the upcycling shop where materials are being repurposed.",
-                "source_quote": "students met with senior leaders and got a firsthand look at maintenance operations, including A-checks and C-checks performed on the Emirates fleet, along with the upcycling shop where materials are currently being repurposed.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "Material Futures Studio connects to a broader retrofit program at Emirates, a multi-billion-dollar investment to fully refurbish 219 Airbus A380 and Boeing 777 aircraft.",
-                "source_quote": "Material Futures Studio connects to a broader retrofit program at Emirates, a multi-billion-dollar investment to fully refurbish 219 Airbus A380 and Boeing 777 aircraft aimed at improving the customer experience across its fleet.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "The Aircrafted KIDS initiative has resulted in more than 4,000 backpacks donated to children across 11 countries.",
-                "source_quote": "To date, that effort has resulted in more than 4,000 backpacks donated to children across 11 countries.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-1732-emirates-engineering-launches-material-f",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: AIRBUS A380",
-              "same named core entity: emirates",
-              "archive predates source by 0 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 0 day(s) apart",
-            "event_date": "2026-07-30",
-            "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u...",
-            "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-            "facts": [
-              {
-                "claim": "Emirates Engineering launched Material Futures Studio, a six-week program challenging university students to reimagine retired aircraft materials and turn them into new products.",
-                "source_quote": "Emirates Engineering has launched Material Futures Studio, a six-week program challenging university students to reimagine retired aircraft materials and turn them into new products.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "The first edition brought together 23 students from Khalifa University, Emirates Aviation University, and the University of Sharjah.",
-                "source_quote": "The first edition brought together 23 students from Khalifa University, Emirates Aviation University, and the University of Sharjah.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "Material Futures Studio connects to a broader retrofit program at Emirates to fully refurbish 219 Airbus A380 and Boeing 777 aircraft.",
-                "source_quote": "Material Futures Studio connects to a broader retrofit program at Emirates, a multi-billion-dollar investment to fully refurbish 219 Airbus A380 and Boeing 777 aircraft aimed at improving the customer experience across its fleet.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "Materials removed from retrofitted aircraft are being repurposed through upcycling work led by Emirates Engineering in Dubai.",
-                "source_quote": "As part of that project, materials removed from retrofitted aircraft are being repurposed through upcycling work led entirely in-house by Emirates Engineering in Dubai, with a dedicated team turning retired aircraft materials into handcrafted products meant to cut down on waste.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
