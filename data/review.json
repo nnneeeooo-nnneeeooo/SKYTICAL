@@ -1,5 +1,260 @@
 [
   {
+    "id": "g-20260804-0634-2",
+    "queuedUtc": "2026-08-04T06:34Z",
+    "approve": false,
+    "writer": "openrouter:inclusionai/ling-3.0-flash:free",
+    "decisionReason": "Aviation safety event involving a 70-foot near-miss between an ANA 767-300ER and a Japan Aviation Bureau CJ4 at Tokyo Haneda; classified as a serious incident requiring human review per safety event rules.",
+    "riskFlags": [
+      "accident_or_serious_incident"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "An ANA 767-300ER on final approach to Tokyo Haneda came within 70 feet of a Japan Aviation Bureau CJ4.",
+        "sourceQuote": "ANA 767 & Japan Aviation Bureau CJ4 Come Within 70 Feet, Nearly Collide At Tokyo Haneda",
+        "sourceUrl": "https://simpleflying.com/ana-767-japan-aviation-bureau-cj4-70-feet-tokyo/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The near-miss was described as an 'extreme near-miss' for the ANA 767-300ER on final approach to Haneda.",
+        "sourceQuote": "An extreme near-miss for an ANA 767-300ER on final approach to Haneda.",
+        "sourceUrl": "https://simpleflying.com/ana-767-japan-aviation-bureau-cj4-70-feet-tokyo/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety event involving a 70-foot near-miss between an ANA 767-300ER and a Japan Aviation Bureau CJ4 at Tokyo Haneda; classified as a serious incident requiring human review per safety event rules.",
+      "cat": "safety",
+      "zh": {
+        "title": "ANA 767與日本航空局CJ4在東京羽田機場距離僅70英尺險相撞",
+        "summary": "ANA 767-300ER在羽田機場最終進近時與日本航空局CJ4商務機相距僅約70英尺，險些發生碰撞。事件被描述為極端接近碰撞，目前尚無官方調查結果。",
+        "body": [
+          "根據Simple Flying於2026年8月4日發布的報導，一架ANA 767-300ER在東京羽田機場進行最終進近時，與一架日本航空局CJ4商務機之間的距離僅剩約70英尺，險些發生空中碰撞。該險情被描述為極端接近碰撞事件（extreme near-miss）。",
+          "目前此事件尚無官方調查機關發表聲明，事件的具體發生時間、詳細經過、責任歸屬及安全結論均未確定。Simple Flying的報導僅基於公開資訊，未提及是否已有正式調查程序啟動，需等待進一步官方資訊才能確認事件全貌。"
+        ]
+      },
+      "en": {
+        "title": "ANA 767-300ER and Japan Aviation Bureau CJ4 Come Within 70 Feet, Nearly Collide at Tokyo Haneda",
+        "summary": "An ANA 767-300ER on final approach to Tokyo Haneda came within approximately 70 feet of a Japan Aviation Bureau CJ4 business jet, in what was described as an extreme near-miss. No official investigation details have been confirmed.",
+        "body": [
+          "According to Simple Flying, an ANA 767-300ER on final approach to Tokyo Haneda came within approximately 70 feet of a Japan Aviation Bureau CJ4 business jet, narrowly avoiding a collision. The event was described as an 'extreme near-miss,' raising concerns about safety during the critical approach phase at one of the world's busiest airports.",
+          "No official authority has yet confirmed details, cause, or responsibility for the incident. The report is based solely on the Simple Flying article and has not been verified by an official source or investigation. The current status of any formal inquiry remains unclear, and further information from relevant authorities is awaited."
+        ]
+      },
+      "flash": {
+        "zh": "ANA 767與日本航空局CJ4在羽田機場險相撞",
+        "en": "ANA 767 and Japan Aviation Bureau CJ4 nearly collide at Haneda",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-04",
+        "sev": "ser",
+        "aircraft": "767-300ER",
+        "operator": "ANA",
+        "phase": {
+          "zh": "最終進近",
+          "en": "final approach"
+        },
+        "location": {
+          "zh": "東京羽田機場",
+          "en": "Tokyo Haneda"
+        },
+        "desc": {
+          "zh": "ANA 767-300ER在最終進近過程中與一架日本航空局CJ4商務機相距僅約70英尺，險些發生碰撞。",
+          "en": "An ANA 767-300ER on final approach came within approximately 70 feet of a Japan Aviation Bureau CJ4 business jet, narrowly avoiding a collision."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "An ANA 767-300ER on final approach to Tokyo Haneda came within 70 feet of a Japan Aviation Bureau CJ4.",
+          "sourceQuote": "ANA 767 & Japan Aviation Bureau CJ4 Come Within 70 Feet, Nearly Collide At Tokyo Haneda",
+          "sourceUrl": "https://simpleflying.com/ana-767-japan-aviation-bureau-cj4-70-feet-tokyo/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The near-miss was described as an 'extreme near-miss' for the ANA 767-300ER on final approach to Haneda.",
+          "sourceQuote": "An extreme near-miss for an ANA 767-300ER on final approach to Haneda.",
+          "sourceUrl": "https://simpleflying.com/ana-767-japan-aviation-bureau-cj4-70-feet-tokyo/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Japan Aviation Bureau"
+        ],
+        "airlines": [
+          "ANA"
+        ],
+        "aircraft_models": [
+          "767-300ER",
+          "CJ4"
+        ],
+        "airports": [
+          "Tokyo Haneda"
+        ],
+        "locations": [
+          "Tokyo Haneda"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-04"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260804-0634-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "ANA 767 & Japan Aviation Bureau CJ4 Come Within 70 Feet, Nearly Collide At Tokyo Haneda",
+          "url": "https://simpleflying.com/ana-767-japan-aviation-bureau-cj4-70-feet-tokyo/",
+          "publishedUtc": "2026-08-04T03:43Z",
+          "summary": "An extreme near-miss for an ANA 767-300ER on final approach to Haneda.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2025/12/031-all-nippon-airways-boeing-767-_-wikipedia-jpg.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260730-0314-cessna-citation-cj3-gen3-completes-first",
+            "relationship_type": "other",
+            "relationship_evidence": [
+              "same flight number/test callsign: CJ4"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 6 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita",
+            "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+            "facts": [
+              {
+                "claim": "Textron Aviation flew the first Cessna Citation CJ3 Gen3 prototype on July 29, 2026, from Wichita Dwight D. Eisenhower National Airport, with the flight lasting nearly two hours.",
+                "source_quote": "The company announced the milestone on July 29, 2026, saying the CJ3 Gen3 took off from Wichita Dwight D. Eisenhower National Airport in Kansas for a flight lasting nearly two hours.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              },
+              {
+                "claim": "Test pilots Steve Helmer and Dave Welbrock focused primarily on evaluating cockpit software; the aircraft reached a maximum altitude of 41,000 feet and a top indicated airspeed of 278 knots.",
+                "source_quote": "Test pilots Steve Helmer and Dave Welbrock focused primarily on evaluating cockpit software. The aircraft reached a maximum altitude of 41,000 feet and a top indicated airspeed of 278 knots.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              },
+              {
+                "claim": "Textron will begin a broader flight-test campaign working toward FAA certification and entry into service.",
+                "source_quote": "Textron will now begin a broader flight-test campaign as it works toward Federal Aviation Administration (FAA) certification and entry into service.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              },
+              {
+                "claim": "The CJ3 Gen3 retains the Garmin G3000 avionics platform while adding Garmin autothrottles and Emergency Autoland.",
+                "source_quote": "The CJ3 Gen3 retains the Garmin G3000 avionics platform while adding Garmin autothrottles and Emergency Autoland.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              },
+              {
+                "claim": "The Citation CJ4 Gen3 prototype first flew in October 2024 and the Citation M2 Gen3 completed its first flight earlier in 2026, meaning all three next-generation Citation light jets are now undergoing flight testing.",
+                "source_quote": "The Citation CJ4 Gen3 prototype flew for the first time in October 2024, while the Citation M2 Gen3 completed its first flight earlier in 2026.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              },
+              {
+                "claim": "Textron introduced the CJ3 Gen3 at the 2024 NBAA Business Aviation Convention and Exhibition in Las Vegas and said the CJ3 Gen3 and M2 Gen3 are expected to enter service in 2027.",
+                "source_quote": "The company has said the CJ3 Gen3 and M2 Gen3 are expected to enter service in 2027.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0435-cessna-citation-cj3-gen3-prototype-compl",
+            "relationship_type": "other",
+            "relationship_evidence": [
+              "same flight number/test callsign: CJ4"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 6 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita",
+            "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+            "facts": [
+              {
+                "claim": "Textron Aviation flew the first Cessna Citation CJ3 Gen3 prototype on July 29, 2026, from Wichita Dwight D. Eisenhower National Airport, with the flight lasting nearly two hours.",
+                "source_quote": "The company announced the milestone on July 29, 2026, saying the CJ3 Gen3 took off from Wichita Dwight D. Eisenhower National Airport in Kansas for a flight lasting nearly two hours.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              },
+              {
+                "claim": "Test pilots Steve Helmer and Dave Welbrock focused primarily on evaluating cockpit software; the aircraft reached a maximum altitude of 41,000 feet and a top indicated airspeed of 278 knots.",
+                "source_quote": "Test pilots Steve Helmer and Dave Welbrock focused primarily on evaluating cockpit software. The aircraft reached a maximum altitude of 41,000 feet and a top indicated airspeed of 278 knots.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              },
+              {
+                "claim": "Textron will begin a broader flight-test campaign working toward FAA certification and entry into service.",
+                "source_quote": "Textron will now begin a broader flight-test campaign as it works toward Federal Aviation Administration (FAA) certification and entry into service.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              },
+              {
+                "claim": "The CJ4 Gen3 prototype first flew in October 2024 and the M2 Gen3 completed its first flight earlier in 2026, meaning all three next-generation Citation light jets are now undergoing flight testing.",
+                "source_quote": "The Citation CJ4 Gen3 prototype flew for the first time in October 2024, while the Citation M2 Gen3 completed its first flight earlier in 2026.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              },
+              {
+                "claim": "The CJ3 Gen3 retains the Garmin G3000 avionics platform while adding Garmin autothrottles and Emergency Autoland, which can take control if the pilot becomes incapacitated, select a suitable airport, communicate with ATC and land without pilot input.",
+                "source_quote": "The CJ3 Gen3 retains the Garmin G3000 avionics platform while adding Garmin autothrottles and Emergency Autoland. Emergency Autoland can take control of the aircraft if the pilot becomes incapacitated, select a suitable airport, communicate with air traffic control and land without pilot input.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              },
+              {
+                "claim": "Textron has said the CJ3 Gen3 and M2 Gen3 are expected to enter service in 2027; the aircraft seats up to 10 occupants, with maximum range of 2,040 nautical miles and maximum payload of 2,135 pounds.",
+                "source_quote": "The company has said the CJ3 Gen3 and M2 Gen3 are expected to enter service in 2027.",
+                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
+                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260804-0323-2",
     "queuedUtc": "2026-08-04T03:23Z",
     "approve": false,
@@ -9381,158 +9636,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260730-1035-4",
-    "queuedUtc": "2026-07-30T10:35Z",
-    "approve": false,
-    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
-    "decisionReason": "Aviation safety event involving PAN PAN/MAYDAY declaration and possible near-hull loss during approach; requires human review.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach.",
-        "sourceQuote": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach.",
-        "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The incident involved a near 'Hull Loss' event averted by the captain's intervention after a first officer's error.",
-        "sourceQuote": "Near 'Hull Loss': British Airways Captain Intervened After First Officer's 3,000ft Blunder",
-        "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Aviation safety event involving PAN PAN/MAYDAY declaration and possible near-hull loss during approach; requires human review.",
-      "cat": "safety",
-      "zh": {
-        "title": "英國航空航班進場遇資料故障 機長介入避免近失事",
-        "summary": "一架英國航空航班在進場過程中，因遭遇大氣數據參考故障，先宣告PAN PAN後升級為MAYDAY，機長介入阻止可能的近機身全損事故。",
-        "body": [
-          "一架英國航空（British Airways）航班在進場階段發生大氣數據參考故障，機組員先宣告PAN PAN後升級為MAYDAY，後由機長介入接管操作。",
-          "根據航空媒體Simple Flying報導，該航班遭遇「Air Data Reference failure」並面臨「Near 'Hull Loss'」的危險情況。",
-          "事件涉及正駕駛即時反應避免第一副駕駛操作失誤可能導致的近失事後果，目前尚無明確的人員傷亡或機身受損報告。",
-          "報導指該事件最終由機長緊急介入後解除危機，實際航班編號、具體發生日期、機場及航機型號等細節尚未在該報導中揭露。",
-          "本社將此事件列為需要人工審核的重大安全事件，後續將視官方調查或進一步資訊更新報導。"
-        ]
-      },
-      "en": {
-        "title": "British Airways Captain Intervened After First Officer's 3,000ft Blunder During Approach",
-        "summary": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach, with the captain intervening to avert a near hull-loss event.",
-        "body": [
-          "A British Airways flight declared a PAN PAN and subsequently upgraded to a MAYDAY after encountering an Air Data Reference failure during its approach.",
-          "According to a Simple Flying report, the captain intervened after a first officer's error, preventing what was described as a near 'Hull Loss' incident.",
-          "The report indicates that the event involved the captain taking over to resolve the situation, though specific details such as the flight number, date, airport, and aircraft type were not disclosed.",
-          "The incident has been flagged for manual review due to its serious safety nature and the developing status of the available information."
-        ]
-      },
-      "flash": {
-        "zh": "英航航班進近發生資料故障宣告MAYDAY",
-        "en": "BA flight declares MAYDAY after Air Data failure on approach",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-07-30",
-        "sev": "ser",
-        "aircraft": "unknown",
-        "operator": "British Airways",
-        "phase": {
-          "zh": "進場",
-          "en": "Approach"
-        },
-        "location": {
-          "zh": "不明",
-          "en": "Unknown"
-        },
-        "desc": {
-          "zh": "航班進場期間發生大氣資料參考故障，機組先宣告PAN PAN後升級MAYDAY，機長介入。",
-          "en": "Flight experienced Air Data Reference failure during approach, declaring PAN then MAYDAY, with captain intervening."
-        },
-        "status": "prelim"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach.",
-          "sourceQuote": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach.",
-          "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The incident involved a near 'Hull Loss' event averted by the captain's intervention after a first officer's error.",
-          "sourceQuote": "Near 'Hull Loss': British Airways Captain Intervened After First Officer's 3,000ft Blunder",
-          "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Simple Flying"
-        ],
-        "airlines": [
-          "British Airways"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-30"
-        ]
-      },
-      "eventStatus": "under_investigation",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260730-1117-8",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Near 'Hull Loss': British Airways Captain Intervened After First Officer's 3,000ft Blunder",
-          "url": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
-          "publishedUtc": "2026-07-30T08:48Z",
-          "summary": "A British Airways flight declared a PAN PAN before upgrading to a MAYDAY after experiencing an Air Data Reference failure during its approach.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/101-british-airways-airbus-a320-airlinephoto-_-shutterstock.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
