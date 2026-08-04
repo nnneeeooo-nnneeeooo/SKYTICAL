@@ -47,6 +47,11 @@ GATWICK_GROUP = {"id": "gatwick", "items": [{
     "summary": "Gatwick Airport terminal services were affected.",
     "source": "Simple Flying", "url": "https://example.com/gatwick"}]}
 
+AIRLINE_BRAND_GROUP = {"id": "brands", "items": [{
+    "title": "STARLUX Airlines expands while IndiGo names a CEO",
+    "summary": "STARLUX Airlines and IndiGo announced company updates.",
+    "source": "AeroTime", "url": "https://example.com/brands"}]}
+
 # ── matching + prompt injection ──────────────────────────────────────────────
 
 pairs, keeps = write.glossary_matches(
@@ -127,6 +132,30 @@ good_gatwick = draft("倫敦蓋特威克機場停水影響旅客服務",
                      "Gatwick Airport loses its running water")
 check("Taiwan rendering 蓋特威克機場 passes",
       write.glossary_problem(good_gatwick, GATWICK_GROUP) is None)
+
+bad_starlux = draft(
+    "星達航空開通首條歐洲航線",
+    "STARLUX Airlines launches its first European route")
+check("coined 星達航空 is rejected",
+      write.glossary_problem(bad_starlux, AIRLINE_BRAND_GROUP) is not None)
+
+good_starlux = draft(
+    "星宇航空開通首條歐洲航線",
+    "STARLUX Airlines launches its first European route")
+check("official 星宇航空 brand passes",
+      write.glossary_problem(good_starlux, AIRLINE_BRAND_GROUP) is None)
+
+bad_indigo = draft(
+    "印地高宣布新任執行長",
+    "IndiGo announces its new chief executive")
+check("coined 印地高 is rejected",
+      write.glossary_problem(bad_indigo, AIRLINE_BRAND_GROUP) is not None)
+
+good_indigo = draft(
+    "IndiGo（印度靛藍航空）宣布新任執行長",
+    "IndiGo announces its new chief executive")
+check("IndiGo with Taiwan explanatory name passes",
+      write.glossary_problem(good_indigo, AIRLINE_BRAND_GROUP) is None)
 
 english_gatwick = draft("倫敦 Gatwick Airport 停水影響旅客服務",
                         "Gatwick Airport loses its running water")
