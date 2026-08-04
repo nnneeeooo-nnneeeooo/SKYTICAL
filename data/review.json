@@ -1,5 +1,160 @@
 [
   {
+    "id": "g-20260804-2310-1",
+    "queuedUtc": "2026-08-04T23:10Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The event involves an inflight fuel emergency declaration and diversion, requiring human editorial review under aviation safety rules.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Silk Way West 747-8 flew to Dallas instead of its intended destination of Houston.",
+        "sourceQuote": "Silk Way West 747-8 Flies To Dallas Instead Of Houston",
+        "sourceUrl": "https://simpleflying.com/silk-way-747-8-emergency-low-fuel/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The aircraft declared an emergency with 30 minutes of fuel remaining.",
+        "sourceQuote": "Then Declares Emergency With 30 Minutes Of Fuel Left",
+        "sourceUrl": "https://simpleflying.com/silk-way-747-8-emergency-low-fuel/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The event involves an inflight fuel emergency declaration and diversion, requiring human editorial review under aviation safety rules.",
+      "cat": "safety",
+      "zh": {
+        "title": "絲路西方航空747-8改飛達拉斯並宣告燃料緊急狀態",
+        "summary": "根據 Simple Flying 報導，絲路西方航空一架波音 747-8 航機未依原計畫前往預定目的地休士頓，而是越過目的地飛往達拉斯。根據相關訊息，該航機在到達達拉斯時機上僅剩餘 30 分鐘的燃料，並在燃料狀況緊迫的情況下向航空管制單位宣告緊急狀態。",
+        "body": [
+          "根據 Simple Flying 於 2026 年 8 月 4 日發布的報導，絲路西方航空一架波音 747-8 貨運航機在飛行過程中未飛往預定目的地休士頓，而是飛越該地並改飛往達拉斯。",
+          "報導指出，該架 747-8 航機抵達達拉斯時機上僅剩餘 30 分鐘的燃料。在燃料狀態顯著低落的情況下，該航機隨後向航空管制單位發出緊急狀態宣告。",
+          "目前尚無官方機構針對此起低燃料宣告緊急狀態事件發布進一步調查結果，相關詳細原因仍有待後續相關單位公開說明與確認。"
+        ]
+      },
+      "en": {
+        "title": "Silk Way West 747-8 Diverts to Dallas and Declares Fuel Emergency",
+        "summary": "According to news coverage published by Simple Flying, a Silk Way West Boeing 747-8 flight did not land at its intended destination of Houston and instead continued on to Dallas. The aircraft reached Dallas with approximately 30 minutes of fuel remaining in its tanks. Due to the limited fuel endurance remaining upon arrival in Dallas, an emergency declaration was made for the 747-8 flight. The situation involved a diversion from Houston to Dallas.",
+        "body": [
+          "According to news reporting published by Simple Flying on August 4, 2026, a Silk Way West Boeing 747-8 aircraft flew past its original intended destination of Houston and instead continued its flight path to Dallas.",
+          "The 747-8 flight reached Dallas with only 30 minutes of fuel remaining in its tanks. Due to the critical low-fuel condition upon arrival in the Dallas airspace, an emergency was subsequently declared for the aircraft.",
+          "As of publication, official authorities have not released detailed findings or investigation reports regarding the circumstances behind the route change and the low-fuel emergency declaration."
+        ]
+      },
+      "flash": {
+        "zh": "絲路西方航空747-8航機飛往達拉斯並宣告燃料緊急狀態。",
+        "en": "Silk Way West 747-8 flies to Dallas and declares a fuel emergency.",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-04",
+        "sev": "ser",
+        "aircraft": "747-8",
+        "operator": "Silk Way West",
+        "phase": {
+          "zh": "巡航與降落階段",
+          "en": "En route and approach"
+        },
+        "location": {
+          "zh": "美國德克薩斯州達拉斯",
+          "en": "Dallas, Texas, United States"
+        },
+        "desc": {
+          "zh": "絲路西方航空波音747-8貨機未降落目的地休士頓，轉飛達拉斯並在剩餘30分鐘燃料時宣告緊急狀態。",
+          "en": "A Silk Way West Boeing 747-8 aircraft flew to Dallas instead of Houston and declared an emergency with 30 minutes of fuel remaining."
+        },
+        "status": "prelim"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Silk Way West 747-8 flew to Dallas instead of its intended destination of Houston.",
+          "sourceQuote": "Silk Way West 747-8 Flies To Dallas Instead Of Houston",
+          "sourceUrl": "https://simpleflying.com/silk-way-747-8-emergency-low-fuel/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The aircraft declared an emergency with 30 minutes of fuel remaining.",
+          "sourceQuote": "Then Declares Emergency With 30 Minutes Of Fuel Left",
+          "sourceUrl": "https://simpleflying.com/silk-way-747-8-emergency-low-fuel/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Silk Way West",
+          "Simple Flying"
+        ],
+        "airlines": [
+          "Silk Way West",
+          "Silk Way"
+        ],
+        "aircraft_models": [
+          "747-8",
+          "747"
+        ],
+        "airports": [],
+        "locations": [
+          "Dallas",
+          "Houston"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260804-2310-1",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Silk Way West 747-8 Flies To Dallas Instead Of Houston, Then Declares Emergency With 30 Minutes Of Fuel Left",
+          "url": "https://simpleflying.com/silk-way-747-8-emergency-low-fuel/",
+          "publishedUtc": "2026-08-04T23:06Z",
+          "summary": "A Silk Way 747 flew past its intended destination of Houston, reaching Dallas with just 30 minutes of fuel remaining.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/silk-way-west-boeing-747-8f.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260804-1947-3",
     "queuedUtc": "2026-08-04T19:48Z",
     "approve": false,
@@ -9307,137 +9462,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260730-2213-1",
-    "queuedUtc": "2026-07-30T22:13Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report concerns aircraft damage following a collision at JFK, which constitutes an aviation safety occurrence requiring manual editorial review.",
-    "riskFlags": [
-      "accident_or_serious_incident"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A damaged Japan Airlines A350-1000 aircraft flew for the first time in over seven months after being grounded at JFK.",
-        "sourceQuote": "A damaged Japan Airlines A350-1000 has flown again after seven months grounded at JFK.",
-        "sourceUrl": "https://simpleflying.com/japan-airlines-a350-1000-1st-flight-7-months-jfk/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The Japan Airlines A350-1000 aircraft was grounded following a collision at JFK.",
-        "sourceQuote": "Damaged Japan Airlines A350-1000 Flies For 1st Time In 7+ Months After JFK Collision",
-        "sourceUrl": "https://simpleflying.com/japan-airlines-a350-1000-1st-flight-7-months-jfk/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report concerns aircraft damage following a collision at JFK, which constitutes an aviation safety occurrence requiring manual editorial review.",
-      "cat": "safety",
-      "zh": {
-        "title": "日本航空受損A350-1000客機於JFK碰撞停飛逾七個月後首度飛行",
-        "summary": "據 Simple Flying 報導，日本航空一架於 JFK 發生碰撞事故而受損的 A350-1000 客機，在該處停飛超過七個月後已重新升空飛行。該架客機因先前在 JFK 碰撞受損而持續停飛，這是該機停飛逾七個月以來的首次飛行紀錄。",
-        "body": [
-          "根據 Simple Flying 報導，日本航空（Japan Airlines）一架先前遭受損壞的 A350-1000 型號客機，在 JFK 停飛超過七個月時間之後，已於近期重新升空並進行了首度飛行。",
-          "該報導指出，這架日本航空 A350-1000 客機先前是在 JFK 發生碰撞事故並導致機身受損。事故發生後，該架客機便一直停留在 JFK 機場，地面停飛時間累積已超過七個月。",
-          "這次升空是該架客機在 JFK 發生碰撞受損並經歷超過七個月地面停飛之後，首度再次進行飛行。目前有關該次飛行的詳細技術細節與後續安排，仍以報導資訊為準。"
-        ]
-      },
-      "en": {
-        "title": "Damaged Japan Airlines A350-1000 Flies for First Time After JFK Collision Grounding",
-        "summary": "According to Simple Flying, a damaged Japan Airlines Airbus A350-1000 has flown for the first time after being grounded for over seven months at JFK. The aircraft was grounded following a collision at JFK that resulted in damage to the airframe. This flight marks the first time the aircraft has taken to the air since the incident occurred more than seven months ago, following its period of extended grounding at JFK.",
-        "body": [
-          "According to a report by Simple Flying, a damaged Japan Airlines Airbus A350-1000 aircraft has taken to the air for the first time after remaining grounded for over seven months at JFK.",
-          "The Japan Airlines aircraft had been grounded at JFK following a collision at the airport that caused damage to the A350-1000 plane. Since the incident occurred, the damaged aircraft remained on the ground at JFK for more than seven months.",
-          "This recent flight marks the very first time the Japan Airlines A350-1000 has flown again following its collision damage and subsequent extended seven-month grounding period at JFK."
-        ]
-      },
-      "flash": {
-        "zh": "日本航空受損A350-1000客機於JFK碰撞停飛逾7個月後首度升空飛行",
-        "en": "Damaged Japan Airlines A350-1000 flies for first time in over seven months after JFK collision grounding.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A damaged Japan Airlines A350-1000 aircraft flew for the first time in over seven months after being grounded at JFK.",
-          "sourceQuote": "A damaged Japan Airlines A350-1000 has flown again after seven months grounded at JFK.",
-          "sourceUrl": "https://simpleflying.com/japan-airlines-a350-1000-1st-flight-7-months-jfk/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The Japan Airlines A350-1000 aircraft was grounded following a collision at JFK.",
-          "sourceQuote": "Damaged Japan Airlines A350-1000 Flies For 1st Time In 7+ Months After JFK Collision",
-          "sourceUrl": "https://simpleflying.com/japan-airlines-a350-1000-1st-flight-7-months-jfk/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Simple Flying"
-        ],
-        "airlines": [
-          "Japan Airlines"
-        ],
-        "aircraft_models": [
-          "A350-1000"
-        ],
-        "airports": [
-          "JFK"
-        ],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260730-2213-1",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Damaged Japan Airlines A350-1000 Flies For 1st Time In 7+ Months After JFK Collision",
-          "url": "https://simpleflying.com/japan-airlines-a350-1000-1st-flight-7-months-jfk/",
-          "publishedUtc": "2026-07-30T22:05Z",
-          "summary": "A damaged Japan Airlines A350-1000 has flown again after seven months grounded at JFK.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/japan-airlines-a350-1000-1.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
