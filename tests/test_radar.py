@@ -34,6 +34,7 @@ def main() -> None:
         encoding="utf-8")
     home = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
     js = (ROOT / "static" / "radar.js").read_text(encoding="utf-8")
+    css = (ROOT / "static" / "site.css").read_text(encoding="utf-8")
     zh_articles = [
         path.read_text(encoding="utf-8")
         for path in (ROOT / "site" / "news").glob("*/index.html")
@@ -128,6 +129,12 @@ def main() -> None:
     assert "function displayAirline(row)" in js
     assert "airlineIataNames[iataPrefix]" in js
     assert "displayAirline(row)" in js
+    assert "function renderCallsign(target, callsign)" in js
+    assert 'carrier.className = "radar-callsign-carrier"' in js
+    assert 'flight.className = "radar-callsign-flight"' in js
+    assert 'target.append(carrier, flight)' in js
+    assert "gap: .12em" in css
+    assert ".radar-list-item .radar-callsign-flight" in css
     assert "row.callsign.startsWith(row.operator)" in js
     assert "row.callsign.slice(row.operator.length)" in js
     assert 'root.dataset.defaultCallsignMode === "icao" ? "icao" : "iata"' in js
