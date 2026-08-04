@@ -212,7 +212,16 @@ a.flash-row:hover { color: inherit; }
   background: color-mix(in srgb, var(--color-accent) 8%, transparent);
 }
 .radar-list-item strong { color: var(--color-accent); letter-spacing: .04em; }
-.radar-list-item span { font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.radar-list-item > span { font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.radar-list-item > strong.radar-callsign-split,
+.radar-popup-title.radar-callsign-split {
+  display: inline-flex; align-items: baseline; gap: .12em; width: max-content;
+}
+.radar-list-item .radar-callsign-carrier { color: var(--color-accent); font-weight: 800; }
+.radar-list-item .radar-callsign-flight {
+  color: color-mix(in srgb, var(--color-accent) 52%, var(--color-text));
+  font-weight: 700; font-variant-numeric: tabular-nums;
+}
 .radar-empty { padding: 16px; font-size: 12px; }
 .radar-notes {
   display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 20px;
@@ -229,6 +238,10 @@ a.flash-row:hover { color: inherit; }
 .radar-plane.ground { color: #555; font-size: 15px; }
 .radar-popup { min-width: 220px; color: #171514; font-family: "Archivo", "Noto Sans TC", sans-serif; }
 .radar-popup-title { display: block; color: #ec3013; font-size: 16px; margin-bottom: 7px; }
+.radar-popup-title .radar-callsign-carrier { color: #ec3013; }
+.radar-popup-title .radar-callsign-flight {
+  color: #655e5a; font-variant-numeric: tabular-nums;
+}
 .radar-popup-row { display: flex; justify-content: space-between; gap: 16px; padding: 3px 0; font-size: 12px; }
 .radar-popup-row b { text-align: right; }
 

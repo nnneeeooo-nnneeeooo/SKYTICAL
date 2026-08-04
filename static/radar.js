@@ -192,6 +192,23 @@
     return row.callsign;
   }
 
+  function renderCallsign(target, callsign) {
+    const match = callsignMode === "iata" &&
+      /^([A-Z0-9]{2})([0-9][A-Z0-9]*)$/.exec(callsign);
+    if (!match) {
+      target.textContent = callsign;
+      return;
+    }
+    const carrier = document.createElement("span");
+    carrier.className = "radar-callsign-carrier";
+    carrier.textContent = match[1];
+    const flight = document.createElement("span");
+    flight.className = "radar-callsign-flight";
+    flight.textContent = match[2];
+    target.classList.add("radar-callsign-split");
+    target.append(carrier, flight);
+  }
+
   function displayAirline(row) {
     if (row.airline) return row.airline;
     const routeCallsign = row.route && row.route.callsignIata || "";
@@ -368,7 +385,7 @@
     box.className = "radar-popup";
     const title = document.createElement("strong");
     title.className = "radar-popup-title";
-    title.textContent = displayCallsign(row) || copy.noCallsign;
+    renderCallsign(title, displayCallsign(row) || copy.noCallsign);
     box.appendChild(title);
     const route = formatRoute(row);
     addDetail(box, copy.route, route || copy.unknown);
@@ -433,7 +450,7 @@
       item.type = "button";
       item.className = "radar-list-item";
       const name = document.createElement("strong");
-      name.textContent = visibleCallsign || copy.noCallsign;
+      renderCallsign(name, visibleCallsign || copy.noCallsign);
       const meta = document.createElement("span");
       meta.className = "text-muted";
       meta.textContent = [
