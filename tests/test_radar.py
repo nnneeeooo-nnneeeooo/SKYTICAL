@@ -50,8 +50,8 @@ def main() -> None:
         assert 'data-default-callsign-mode="iata"' in page
         assert 'id="radar-callsign-icao"' in page
         assert 'id="radar-callsign-iata"' in page
-        assert page.index('id="radar-callsign-icao"') < page.index(
-            'id="radar-callsign-iata"')
+        assert page.index('id="radar-callsign-iata"') < page.index(
+            'id="radar-callsign-icao"')
         code_match = re.search(
             r'<script id="radar-airline-codes" type="application/json">'
             r'(.*?)</script>', page, re.DOTALL)
