@@ -21,12 +21,12 @@
       updated: (time) => `資料時間 ${time}`,
       next: (seconds) => `下次更新 ${seconds} 秒`,
       cooldown: (seconds) => `請於 ${seconds} 秒後再手動更新`,
-      callsign: "航班呼號", airline: "航空公司", type: "機型",
+      callsign: "航班代碼", airline: "航空公司", type: "機型",
       route: "起迄點",
       altitude: "高度", speed: "地速", heading: "航向",
       vertical: "垂直速率", freshness: "位置新鮮度",
       ground: "地面", unknown: "未提供", feet: "呎", knots: "節",
-      fpm: "呎／分", seconds: "秒前", noCallsign: "無呼號",
+      fpm: "呎／分", seconds: "秒前", noCallsign: "無航班代碼",
     },
     en: {
       live: "Data live", loading: "Loading the latest ADS-B observations…",
@@ -37,12 +37,12 @@
       updated: (time) => `Data time ${time}`,
       next: (seconds) => `Next refresh ${seconds}s`,
       cooldown: (seconds) => `Manual refresh available in ${seconds}s`,
-      callsign: "Callsign", airline: "Airline", type: "Aircraft",
+      callsign: "Flight code", airline: "Airline", type: "Aircraft",
       route: "Route",
       altitude: "Altitude", speed: "Ground speed", heading: "Heading",
       vertical: "Vertical rate", freshness: "Position age",
       ground: "Ground", unknown: "Not reported", feet: "ft", knots: "kt",
-      fpm: "ft/min", seconds: "s ago", noCallsign: "No callsign",
+      fpm: "ft/min", seconds: "s ago", noCallsign: "No flight code",
     },
   }[lang];
 
@@ -54,6 +54,7 @@
     }
   };
   const airlines = parseJson("radar-airlines", {});
+  const airlineIataCodes = parseJson("radar-airline-codes", {});
   const aircraftTypes = parseJson("radar-types", {});
   const airports = parseJson("radar-airports", []);
   const refreshMs = Math.max(Number(root.dataset.refreshMs) || 300000, 300000);
@@ -180,8 +181,12 @@
   }
 
   function displayCallsign(row) {
-    if (callsignMode === "iata" && row.route && row.route.callsignIata) {
-      return row.route.callsignIata;
+    if (callsignMode === "iata") {
+      if (row.route && row.route.callsignIata) return row.route.callsignIata;
+      const iataPrefix = clean(airlineIataCodes[row.operator], 3).toUpperCase();
+      if (iataPrefix && row.callsign.startsWith(row.operator)) {
+        return `${iataPrefix}${row.callsign.slice(row.operator.length)}`;
+      }
     }
     return row.callsign;
   }
