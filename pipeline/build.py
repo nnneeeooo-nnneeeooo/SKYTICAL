@@ -2305,6 +2305,14 @@ def main() -> int:
             if isinstance(row, dict) and row.get("active", True)
                and row.get("icao_code") and row.get("iata_code")
         }
+        airline_iata_names = {
+            str(row.get("iata_code") or "").upper():
+                (row.get("airline_name_zh_tw") if lang == "zh"
+                 else row.get("airline_name_en"))
+            for row in (airline_cfg.get("airlines") or [])
+            if isinstance(row, dict) and row.get("active", True)
+               and row.get("iata_code")
+        }
         type_cfg = load_json(
             Path(__file__).resolve().parent.parent
             / "config" / "aircraft_types.json", {})
@@ -2331,6 +2339,7 @@ def main() -> int:
         ctx.update(
             airline_names=airline_names,
             airline_iata_codes=airline_iata_codes,
+            airline_iata_names=airline_iata_names,
             aircraft_types=aircraft_types,
             radar_airports=radar_airports,
         )
