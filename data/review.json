@@ -1,10 +1,10 @@
 [
   {
-    "id": "g-20260805-1748-2",
-    "queuedUtc": "2026-08-05T17:48Z",
+    "id": "g-20260805-1948-6",
+    "queuedUtc": "2026-08-05T19:48Z",
     "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "This is an aviation safety event involving an emergency landing on a highway and an ongoing FAA investigation, requiring human review.",
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "Risk flags present (accident_or_serious_incident, investigation) require human review despite sufficient current evidence.",
     "riskFlags": [
       "accident_or_serious_incident",
       "investigation"
@@ -12,8 +12,8 @@
     "facts": [
       {
         "factId": "F1",
-        "claim": "2026年8月3日，一架派珀PA-28-151輕型飛機於美國佛羅里達州彭薩科拉附近的10號州際公路進行緊急降落。",
-        "sourceQuote": "shows the aircraft descending toward the eastbound lanes near Pensacola on August 3, 2026.",
+        "claim": "The Piper PA-28 performed an emergency landing on Interstate 10 near Pensacola, Florida on August 3, 2026.",
+        "sourceQuote": "guiding their Piper PA-28 beneath an overhead highway sign and between moving vehicles during an emergency landing on Interstate 10 in Florida.",
         "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -21,7 +21,7 @@
       },
       {
         "factId": "F2",
-        "claim": "機上載有飛行教練 Emily Shelton 與一名學生共兩人，事件中沒有人員受傷。",
+        "claim": "Two people were aboard the aircraft and no injuries were reported.",
         "sourceQuote": "Two people were aboard, and no injuries were reported.",
         "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
         "evidenceScope": "source",
@@ -30,7 +30,7 @@
       },
       {
         "factId": "F3",
-        "claim": "飛行教練向空中交通管制員回報引擎機油壓力下降且機艙內出現煙霧，隨後宣告緊急狀況。",
+        "claim": "The pilot reported falling engine oil pressure and fumes from burning oil entering the cockpit.",
         "sourceQuote": "She informed air traffic controllers that the aircraft’s engine oil pressure was falling into the red and that fumes from burning oil were entering the cockpit.",
         "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
         "evidenceScope": "source",
@@ -39,8 +39,8 @@
       },
       {
         "factId": "F4",
-        "claim": "美國聯邦航空管理局證實機師曾回報機油壓力問題，目前正對該起事件展開調查。",
-        "sourceQuote": "The FAA has confirmed that the pilot reported an oil-pressure problem but has not released further details about the mechanical failure.",
+        "claim": "The FAA is investigating the incident.",
+        "sourceQuote": "The agency is investigating.",
         "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -49,55 +49,55 @@
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "This is an aviation safety event involving an emergency landing on a highway and an ongoing FAA investigation, requiring human review.",
+      "decisionReason": "Risk flags present (accident_or_serious_incident, investigation) require human review despite sufficient current evidence.",
       "cat": "safety",
       "zh": {
-        "title": "派珀輕型飛機因機油問題於佛州公路緊急降落",
-        "summary": "2026年8月3日，一架派珀PA-28輕型飛機因引擎機油壓力下降及機艙出現煙霧，於美國佛羅里達州10號州際公路緊急降落。機上載有飛行教練與學生共兩人，所幸無人受傷。美國聯邦航空管理局已證實駕駛曾報稱機油問題並展開調查。",
+        "title": "飛教練帶學生緊急降落佛州州際10號高速",
+        "summary": "2026年8月3日，一架飛教練與學生乘坐的Piper PA-28-151 Cherokee Warrior因引擎油壓降至紅色區域而在佛州彭薩科拉州際10號高速公路上緊急迫降。飛機在高速公路上安全停止，未撞擊任何車輛，兩人無傷。FAA已確認飛員回報油壓問題並展開調查。",
         "body": [
-          "一架隸屬於彭薩科拉飛行學校的1974年產派珀PA-28-151型輕型飛機（國籍標誌及登記號碼：N41622），於2026年8月3日當地時間上午10時55分左右，在美國佛羅里達州彭薩科拉附近的10號州際公路東向車道進行緊急降落。",
-          "飛行教練 Emily Shelton 表示，事發時飛機引擎機油壓力下降至紅線區，且燃燒機油的煙霧進入機艙。在確認無法返回彭薩科拉國際機場後，教練向空中交通管制員宣告緊急狀況並將飛機引導至公路降落。機上載有教練與一名學生共兩人，事件中無人受傷，地面車輛亦未受波及。",
-          "美國聯邦航空管理局（FAA）證實機師曾於降落前回報機油壓力故障問題。該機構目前已針對該起緊急降落事件展開調查，尚未公布故障機制的詳細資訊。"
+          "根據AeroTime報導，飛教練Emily Shelton在學生的第一堂飛行課中發現引擎油壓急速下降，隨即向空中交通管制宣布緊急狀況。",
+          "她最初嘗試返回彭薩科拉國際機場，但判斷無法抵達，因而將飛機引導至州際10號高速公路上，並在卡車司機Eric Jordan的行車記錄器畫面中穿過車輛與 overhead 高速標誌之間的縫隙後著陸。",
+          "飛機在高速公路上中心附近觸地，保持控制並平緩滑行停止，未碰到任何車輛。Shelton稱她曾訓練過類似情況，並在事故前已累積約1300飛行時數。FAA證實飛員回報油壓問題，但未公開具體機械故障細節，調查仍在進行中。"
         ]
       },
       "en": {
-        "title": "Piper PA-28 Makes Emergency Landing on Florida Highway Following Engine Issue",
-        "summary": "On August 3, 2026, a Piper PA-28-151 aircraft executed an emergency landing on Interstate 10 near Pensacola, Florida, after experiencing falling engine oil pressure and fumes in the cockpit. Flight instructor Emily Shelton declared an emergency after realizing the aircraft could not reach Pensacola International Airport. Two people were on board, and no injuries were reported. The Federal Aviation Administration confirmed the pilot reported an oil-pressure issue and is investigating the incident.",
+        "title": "Flight instructor guides student Piper to emergency landing on Florida Interstate 10",
+        "summary": "On August 3, 2026, a flight instructor and her student made an emergency landing of a Piper PA-28-151 Cherokee Warrior on Interstate 10 near Pensacola, Florida after the engine oil pressure dropped into the red. The aircraft landed safely on the highway, avoided vehicles, and came to a stop without injuries to the two occupants. The FAA has confirmed the oil-pressure report and opened an investigation.",
         "body": [
-          "A 1974 Piper PA-28-151 Cherokee Warrior, registered as N41622 and operated by Pensacola Air Flight School, made an emergency landing on Interstate 10 near Pensacola, Florida, at approximately 10:55 local time on August 3, 2026.",
-          "Flight instructor Emily Shelton declared an emergency with air traffic control after observing falling engine oil pressure and burning oil fumes in the cockpit. Upon determining that the aircraft could not reach Pensacola International Airport, she guided the single-engine aircraft onto the highway. The plane touched down safely between moving vehicles without striking any cars, and neither occupant reported injuries.",
-          "The Federal Aviation Administration confirmed that the pilot reported an engine oil-pressure issue prior to landing. The agency has launched an investigation into the incident and has not released further technical details regarding the mechanical failure."
+          "According to AeroTime, flight instructor Emily Shelton was conducting a student's first lesson when she observed the oil pressure falling into the red zone and fumes from burning oil entering the cockpit.",
+          "She initially tried to return to Pensacola International Airport but determined the aircraft would not reach the airport, so she guided the Piper onto the highway, steering between moving vehicles and under an overhead sign as captured in a truck driver's dashcam video.",
+          "The aircraft touched down near the center of the highway, remained under control, rolled to a stop without striking any vehicles, and both occupants were uninjured. Shelton said her training had prepared her for such an emergency and she had logged about 1,300 flight hours prior to the incident. The FAA confirmed the oil-pressure announcement but has not released further mechanical details while the investigation continues."
         ]
       },
       "flash": {
-        "zh": "派珀輕型飛機於佛州10號州際公路緊急降落，無人受傷。",
-        "en": "Piper light aircraft makes emergency landing on Florida highway without injuries.",
-        "hot": true
+        "zh": "佛州高速緊急迫降，二人無傷",
+        "en": "Florida highway emergency landing, no injuries",
+        "hot": false
       },
       "incident": {
         "date": "2026-08-03",
-        "sev": "inc",
+        "sev": "ser",
         "aircraft": "Piper PA-28-151 Cherokee Warrior",
         "operator": "Pensacola Air Flight School",
         "phase": {
-          "zh": "巡航/迫降",
-          "en": "En route / Emergency landing"
+          "zh": "緊急迫降",
+          "en": "emergency landing"
         },
         "location": {
-          "zh": "美國佛羅里達州彭薩科拉10號州際公路",
-          "en": "Interstate 10 near Pensacola, Florida, United States"
+          "zh": "佛州彭薩科拉州際10號高速公路",
+          "en": "Interstate 10 near Pensacola, Florida"
         },
         "desc": {
-          "zh": "派珀 PA-28 輕型飛機因機載引擎機油壓力下降及機艙出現煙霧，於10號州際公路進行緊急降落，機上兩人均未受傷。",
-          "en": "A Piper PA-28 light aircraft executed an emergency landing on Interstate 10 due to falling engine oil pressure and cockpit fumes; neither occupant was injured."
+          "zh": "飛機因引擎油壓降至紅色區域而在高速公路上緊急著陸，未撞擊車輛，兩人無傷。",
+          "en": "Aircraft made an emergency landing on the highway after engine oil pressure dropped into the red, avoiding vehicles; both occupants uninjured."
         },
         "status": "open"
       },
       "facts": [
         {
           "factId": "F1",
-          "claim": "2026年8月3日，一架派珀PA-28-151輕型飛機於美國佛羅里達州彭薩科拉附近的10號州際公路進行緊急降落。",
-          "sourceQuote": "shows the aircraft descending toward the eastbound lanes near Pensacola on August 3, 2026.",
+          "claim": "The Piper PA-28 performed an emergency landing on Interstate 10 near Pensacola, Florida on August 3, 2026.",
+          "sourceQuote": "guiding their Piper PA-28 beneath an overhead highway sign and between moving vehicles during an emergency landing on Interstate 10 in Florida.",
           "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -105,7 +105,7 @@
         },
         {
           "factId": "F2",
-          "claim": "機上載有飛行教練 Emily Shelton 與一名學生共兩人，事件中沒有人員受傷。",
+          "claim": "Two people were aboard the aircraft and no injuries were reported.",
           "sourceQuote": "Two people were aboard, and no injuries were reported.",
           "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
           "evidenceScope": "source",
@@ -114,7 +114,7 @@
         },
         {
           "factId": "F3",
-          "claim": "飛行教練向空中交通管制員回報引擎機油壓力下降且機艙內出現煙霧，隨後宣告緊急狀況。",
+          "claim": "The pilot reported falling engine oil pressure and fumes from burning oil entering the cockpit.",
           "sourceQuote": "She informed air traffic controllers that the aircraft’s engine oil pressure was falling into the red and that fumes from burning oil were entering the cockpit.",
           "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
           "evidenceScope": "source",
@@ -123,8 +123,8 @@
         },
         {
           "factId": "F4",
-          "claim": "美國聯邦航空管理局證實機師曾回報機油壓力問題，目前正對該起事件展開調查。",
-          "sourceQuote": "The FAA has confirmed that the pilot reported an oil-pressure problem but has not released further details about the mechanical failure.",
+          "claim": "The FAA is investigating the incident.",
+          "sourceQuote": "The agency is investigating.",
           "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -133,7 +133,7 @@
       ],
       "headlineSupportedBy": [
         "F1",
-        "F3"
+        "F2"
       ],
       "summarySupportedBy": [
         "F1",
@@ -143,20 +143,16 @@
       ],
       "entities": {
         "organizations": [
-          "Pensacola Air Flight School",
-          "FAA"
+          "FAA",
+          "Pensacola Air Flight School"
         ],
         "airlines": [],
         "aircraft_models": [
-          "Piper PA-28",
-          "1974 Piper PA-28-151 Cherokee Warrior"
+          "Piper PA-28-151 Cherokee Warrior"
         ],
-        "airports": [
-          "Pensacola International Airport"
-        ],
+        "airports": [],
         "locations": [
-          "Florida",
-          "Interstate 10",
+          "Interstate 10 near Pensacola, Florida",
           "Pensacola"
         ],
         "flight_numbers": [],
@@ -164,10 +160,10 @@
           "N41622"
         ],
         "event_dates": [
-          "August 3, 2026"
+          "2026-08-03"
         ]
       },
-      "eventStatus": "under_investigation",
+      "eventStatus": "confirmed",
       "riskFlags": [
         "accident_or_serious_incident",
         "investigation"
@@ -175,7 +171,7 @@
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260805-1748-2",
+      "id": "g-20260805-1948-6",
       "primarySource": "AeroTime",
       "items": [
         {
@@ -186,239 +182,6 @@
           "image": null,
           "source": "AeroTime",
           "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260805-1748-4",
-    "queuedUtc": "2026-08-05T17:48Z",
-    "approve": false,
-    "writer": "openrouter:inclusionai/ling-3.0-flash:free",
-    "decisionReason": "Runway excursion during military night training is a mandatory manual-review safety event; investigation is ongoing per Air Force statement.",
-    "riskFlags": [
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "F-16V（block20）單座機於嘉義基地例行夜航訓練落地期間偏離跑道",
-        "sourceQuote": "嘉義基地1架F-16V（block20）單座機，於例行夜航訓練落地期間，因降雨跑道溼滑，飛機減速效能降低，導致偏離跑道",
-        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "偏離跑道原因为降雨導致跑道濕滑、飛機減速效能降低",
-        "sourceQuote": "因降雨跑道溼滑，飛機減速效能降低，導致偏離跑道",
-        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "人員安全、飛機輕損，未影響民航班機起降",
-        "sourceQuote": "人安、飛機輕損，未影響民航班機起降",
-        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "空軍已責派專案小組前往調查以釐清肇因",
-        "sourceQuote": "已責派專案小組前往調查，以釐清肇因",
-        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "事件發生於漢光42號演習期間，演習自8月5日至14日共10天9夜",
-        "sourceQuote": "漢光42號演習今天起至14日一連10天9夜實施",
-        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "空軍司令部晚間發布新聞稿說明事件",
-        "sourceQuote": "空軍司令部晚間發布新聞稿表示",
-        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Runway excursion during military night training is a mandatory manual-review safety event; investigation is ongoing per Air Force statement.",
-      "cat": "safety",
-      "zh": {
-        "title": "F-16V夜航訓練偏離跑道 空軍派專案小組調查",
-        "summary": "空軍今天表示，嘉義基地一架F-16V（block20）單座機在漢光42號演習期間進行例行夜航訓練落地時，因降雨導致跑道濕滑、飛機減速效能降低而偏離跑道，人員安全、飛機輕損，未影響民航班機起降，已派專案小組調查釐清肇因。",
-        "body": [
-          "空軍今天表示，嘉義基地1架F-16V（block20）單座機，於例行夜航訓練落地期間，因降雨跑道溼滑，飛機減速效能降低，導致偏離跑道，人安、飛機輕損。",
-          "該事件未影響民航班機起降，空軍已責派專案小組前往調查，以釐清肇因。",
-          "涉事飛機參與的是漢光42號實兵演習，該演習今天起至14日一連10天9夜實施。",
-          "這起跑道偏離事件正在調查中，詳細肇因尚待釐清，空軍將持續跟進後續處理。",
-          "空軍強調，目前人員安全、飛機輕損，後續將依調查結果採取相應措施。"
-        ]
-      },
-      "en": {
-        "title": "F-16V Night Training Runway Deviation at Chiayi Air Base; Air Force Dispatches Investigation Team",
-        "summary": "The Air Force reported that an F-16V (block20) single-seat aircraft at Chiayi Air Base deviated from the runway during a routine night training landing as part of the Han Kuang 42nd exercise. Rainfall made the runway slippery, reducing deceleration effectiveness and causing the deviation. Personnel were reported safe with minor aircraft damage; civilian flights were unaffected. A special investigation team has been dispatched to determine the cause.",
-        "body": [
-          "The Air Force reported that an F-16V (block20) single-seat aircraft at Chiayi Air Base deviated from the runway during a routine night training landing on Tuesday.",
-          "The deviation was attributed to a wet runway caused by rainfall, which reduced the aircraft's deceleration effectiveness, according to an Air Force Command press release.",
-          "Personnel were reported safe and the aircraft sustained only minor damage; civilian flight operations were not affected.",
-          "The Air Force has dispatched a special investigation team to determine the cause of the incident.",
-          "The aircraft was participating in the Han Kuang 42nd live-fire exercise, which began on August 5 and runs through August 14 over 10 days and 9 nights.",
-          "The investigation into the runway excursion remains ongoing."
-        ]
-      },
-      "flash": {
-        "zh": "F-16V夜航訓練偏離跑道 空軍派專案小組調查",
-        "en": "F-16V runway excursion during night training at Chiayi Air Base; investigation launched",
-        "hot": false
-      },
-      "incident": {
-        "date": "2026-08-05",
-        "sev": "inc",
-        "aircraft": "F-16V",
-        "operator": "空軍",
-        "phase": {
-          "zh": "落地期間",
-          "en": "during landing"
-        },
-        "location": {
-          "zh": "嘉義基地",
-          "en": "Chiayi Air Base"
-        },
-        "desc": {
-          "zh": "F-16V單座機因降雨跑道濕滑導致偏離跑道，人員安全、飛機輕損",
-          "en": "F-16V single-seat aircraft deviated from runway due to wet conditions during landing; personnel safe, aircraft sustained minor damage"
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "F-16V（block20）單座機於嘉義基地例行夜航訓練落地期間偏離跑道",
-          "sourceQuote": "嘉義基地1架F-16V（block20）單座機，於例行夜航訓練落地期間，因降雨跑道溼滑，飛機減速效能降低，導致偏離跑道",
-          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "偏離跑道原因为降雨導致跑道濕滑、飛機減速效能降低",
-          "sourceQuote": "因降雨跑道溼滑，飛機減速效能降低，導致偏離跑道",
-          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "人員安全、飛機輕損，未影響民航班機起降",
-          "sourceQuote": "人安、飛機輕損，未影響民航班機起降",
-          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "空軍已責派專案小組前往調查以釐清肇因",
-          "sourceQuote": "已責派專案小組前往調查，以釐清肇因",
-          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "事件發生於漢光42號演習期間，演習自8月5日至14日共10天9夜",
-          "sourceQuote": "漢光42號演習今天起至14日一連10天9夜實施",
-          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "空軍司令部晚間發布新聞稿說明事件",
-          "sourceQuote": "空軍司令部晚間發布新聞稿表示",
-          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F4"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "空軍",
-          "空軍司令部"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "F-16V"
-        ],
-        "airports": [
-          "嘉義基地"
-        ],
-        "locations": [
-          "嘉義基地"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-05"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260805-1748-4",
-      "primarySource": "中央社 CNA",
-      "items": [
-        {
-          "title": "F-16V夜航因降雨偏離跑道 空軍：人員安全飛機輕損",
-          "url": "https://www.cna.com.tw/news/aipl/202608050338.aspx",
-          "publishedUtc": "2026-08-05T13:27Z",
-          "summary": "（中央社記者游凱翔台北5日電）空軍今天表示，嘉義基地1架F-16V單座機，進行例行夜航訓練落地期間，因降雨跑道濕滑導致偏離跑道，人員安全、飛機輕損，已責派專案小組調查，釐清肇因。",
-          "image": null,
-          "source": "中央社 CNA",
-          "sourceKey": "cnataiwan"
         }
       ],
       "updateCandidate": false,
@@ -9587,6 +9350,273 @@
                 "source_quote": "Keeps 870 Target For Full Year",
                 "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
                 "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260801-1005-9",
+    "queuedUtc": "2026-08-01T10:06Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Contains half-year financial results, revised full-year profit and cash flow guidance, and engine selection claims requiring human review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Rolls-Royce reported that its underlying operating profit rose 46% year-on-year to £2.5 billion for the half-year, with an underlying operating margin of 22.5%.",
+        "sourceQuote": "underlying operating profit had risen by 46% to £2.5 billion year-on-year. The underlying operating margin stood at 22.5%",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Rolls-Royce raised its full-year 2026 guidance, expecting £4.7 billion to £4.9 billion in underlying operating profit and £3.8 billion to £4.0 billion in free cash flow.",
+        "sourceQuote": "We now expect £4.7bn-£4.9bn underlying operating profit and £3.8bn-£4.0bn free cash flow.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Rolls-Royce CEO Tufan Erginbilgic stated that in Civil Aerospace, the company improved aftermarket profitability and effectively eliminated aircraft on the ground.",
+        "sourceQuote": "He noted that in Civil Aerospace, RR has continued to improve its aftermarket profitability and “effectively eliminated aircraft on the ground.”",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Three airlines, including LATAM Airlines, selected Rolls-Royce's Trent 1000 XE engine for their Boeing 787 Dreamliner aircraft in 2026.",
+        "sourceQuote": "2026 has seen three airlines, including LATAM Airlines, select Rolls-Royce’s new Trent 1000 XE engine for their Boeing 787 Dreamliners.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Contains half-year financial results, revised full-year profit and cash flow guidance, and engine selection claims requiring human review.",
+      "cat": "biz",
+      "zh": {
+        "title": "勞斯萊斯半年營業利潤增長46% 上調2026全年財測",
+        "summary": "勞斯萊斯公布半年報，基礎營業利潤同比成長46%至25億英鎊，基礎營業利潤率達22.5%。公司同步上調2026年全年財測，預計基礎營業利潤將達47億至49億英鎊。執行長表示民航業務已有效消除停飛機隊，並有三家航空公司為波音787選用Trent 1000 XE引擎。",
+        "body": [
+          "英國引擎製造商勞斯萊斯公布最新半年度財務報告，顯示其基礎營業利潤同比成長46%，達到25億英鎊。同時，公司整體基礎營業利潤率提升至22.5%，各業務部門獲利能力均有所改善。",
+          "基於上半年優於預期的業績表現，勞斯萊斯宣布上調2026年全年財務預測。公司目前預計全年基礎營業利潤將介於47億至49億英鎊之間，自由現金流預計將達到38億至40億英鎊。",
+          "在民航業務方面，執行長Tufan Erginbilgic指出，公司持續改善售後市場獲利能力，並已有效消除停飛機隊狀況。此外，2026年已有包括LATAM Airlines在內的三家航空公司選用Trent 1000 XE引擎，配備於其波音787客機。"
+        ]
+      },
+      "en": {
+        "title": "Rolls-Royce Operating Profit Rises 46% and Raises 2026 Full-Year Guidance",
+        "summary": "Rolls-Royce reported a 46% year-on-year increase in underlying operating profit to 2.5 billion pounds for the half-year, achieving an underlying operating margin of 22.5%. The engine manufacturer raised its full-year 2026 financial guidance, now forecasting underlying operating profit between 4.7 billion and 4.9 billion pounds, alongside free cash flow of 3.8 billion to 4.0 billion pounds. Chief Executive Tufan Erginbilgic noted that the Civil Aerospace division has improved aftermarket profitability and effectively eliminated aircraft on the ground. Additionally, three airlines, including LATAM Airlines, selected the new Trent 1000 XE engine for their Boeing 787 Dreamliner fleets in 2026.",
+        "body": [
+          "Rolls-Royce reported half-year financial results showing a 46% year-on-year increase in underlying operating profit to 2.5 billion pounds. The company achieved an underlying operating margin of 22.5%, driven by higher profitability across all divisions.",
+          "Following the strong first-half performance, Rolls-Royce raised its full-year 2026 financial guidance. The manufacturer now expects underlying operating profit between 4.7 billion and 4.9 billion pounds, with free cash flow projected at 3.8 billion to 4.0 billion pounds.",
+          "Chief Executive Tufan Erginbilgic stated that the Civil Aerospace unit improved aftermarket profitability and effectively eliminated aircraft on the ground. In 2026, three airlines, including LATAM Airlines, selected the new Trent 1000 XE engine for Boeing 787 Dreamliners."
+        ]
+      },
+      "flash": {
+        "zh": "勞斯萊斯半年獲利大增46% 並上調2026全年財測",
+        "en": "Rolls-Royce boosts half-year profit by 46% and raises 2026 guidance",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Rolls-Royce reported that its underlying operating profit rose 46% year-on-year to £2.5 billion for the half-year, with an underlying operating margin of 22.5%.",
+          "sourceQuote": "underlying operating profit had risen by 46% to £2.5 billion year-on-year. The underlying operating margin stood at 22.5%",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Rolls-Royce raised its full-year 2026 guidance, expecting £4.7 billion to £4.9 billion in underlying operating profit and £3.8 billion to £4.0 billion in free cash flow.",
+          "sourceQuote": "We now expect £4.7bn-£4.9bn underlying operating profit and £3.8bn-£4.0bn free cash flow.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Rolls-Royce CEO Tufan Erginbilgic stated that in Civil Aerospace, the company improved aftermarket profitability and effectively eliminated aircraft on the ground.",
+          "sourceQuote": "He noted that in Civil Aerospace, RR has continued to improve its aftermarket profitability and “effectively eliminated aircraft on the ground.”",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Three airlines, including LATAM Airlines, selected Rolls-Royce's Trent 1000 XE engine for their Boeing 787 Dreamliner aircraft in 2026.",
+          "sourceQuote": "2026 has seen three airlines, including LATAM Airlines, select Rolls-Royce’s new Trent 1000 XE engine for their Boeing 787 Dreamliners.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Rolls-Royce"
+        ],
+        "airlines": [
+          "LATAM Airlines"
+        ],
+        "aircraft_models": [
+          "Boeing 787 Dreamliners"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-31",
+          "2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260801-1005-9",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Rolls-Royce boosts forecasts as aerospace, defence and AI markets accelerate",
+          "url": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
+          "publishedUtc": "2026-07-31T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/03/Rendering-of-Rolls-Royce-Orpheus-engine.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260801-0732-african-domestic-aviation-shows-resilien",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: ON-YEAR"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere...",
+            "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+            "facts": [
+              {
+                "claim": "Global airline capacity increased by 1% year-on-year for the summer season, below the 3% forecast due to capacity reallocations.",
+                "source_quote": "Global capacity is up just 1% year-on-year this summer season, according to data from aviation analysts OAG and Midas Aviation.",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "African domestic aviation market has shown resilience to global shocks despite price increases and pockets of slowed growth.",
+                "source_quote": "Prices have gone up, and there have been pockets of slowed growth, but no real shrinking. The market is showing resilience to those global shocks",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "Nigeria's domestic aviation capacity grew 36% year-on-year, driven in part by its domestication of the Cape Town Convention.",
+                "source_quote": "Pointing to Nigeria’s 36% year-on-year capacity growth in its domestic market, Grant said this is in part driven by the country’s domestication of the Cape Town Convention",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "Major aircraft lessors including AirCap have begun placing dry-leased airframes in Nigeria.",
+                "source_quote": "Major lessors, including AirCap, have begun placing airframes in the country – a shift from previous years when Nigerian operators leaned on seasonal wet leases",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              },
+              {
+                "claim": "Passenger booking curves in Africa remain compressed, with many bookings made one day before travel.",
+                "source_quote": "The booking curve remains very tight. We’re still seeing a large number of bookings made as late as one day before travel.",
+                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
+                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1532-iata-global-air-cargo-demand-rose-8-5-ye",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: ON-YEAR"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-07-30",
+            "source_name": "IATA — Air Passenger Demand Falls 1.7% in June",
+            "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
+            "facts": [
+              {
+                "claim": "IATA reported total air passenger demand (RPK) was down 1.7% in June 2026 compared to June 2025, with capacity (ASK) down 1.3% and load factor at 84.2%.",
+                "source_quote": "Total demand, measured in revenue passenger kilometers (RPK), was down 1.7% compared to June 2025. Excluding the Middle East, demand declined by 0.6%. Total capacity, measured in available seat kilometers (ASK), decreased 1.3% year-on-year. The load factor was 84.2% (-0.4 ppt compared to June 2025).",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
+                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
+              },
+              {
+                "claim": "IATA Director General Willie Walsh attributed the decline largely to domestic market declines in China, the US, and Japan, and weak but improving international demand for Middle East carriers.",
+                "source_quote": "This is largely due to domestic market declines in China, the US, and Japan, and weak but improving international demand for Middle East carriers.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
+                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
+              },
+              {
+                "claim": "Middle Eastern carriers saw a 14% year-on-year decrease in demand in June 2026, with capacity down 11% and load factor at 76.3%; the rate of decline halved month-to-month since April.",
+                "source_quote": "Middle Eastern carriers saw a 14% year-on-year decrease in demand. Capacity fell 11% year-on-year, and the load factor was 76.3% (-2.6 ppt compared to June 2025). The impacts of the Iran war continue to cause a highly negative year-on-year traffic comparison, but the rate of decline halved month-to-month since April.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
+                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
+              },
+              {
+                "claim": "Domestic demand contracted 3.0% in June 2026, with the steepest falls in China (-5.2%) and Japan (-3.8%); Brazil domestic traffic was up 0.9% and Australia was flat.",
+                "source_quote": "Domestic RPK fell (-3.0%) in June 2026 compared to the same month last year. Domestic Brazil traffic was up 0.9%, but all other major markets declined apart from Australia which was flat. The steepest falls were in China (-5.2%) and Japan (-3.8%), with higher fuel prices the likely reason.",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
+                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
+              },
+              {
+                "claim": "IATA reported global air cargo demand (CTK) increased 8.5% year-on-year in June 2026, with capacity (ACTK) up 4.4%; North American carriers saw the strongest growth at 13.1%.",
+                "source_quote": "Total demand, measured in cargo tonne-kilometers (CTK), increased by 8.5% compared to June 2025 (9.6% for international operations). Capacity, measured in available cargo tonne-kilometers (ACTK), increased by 4.4% compared to June 2025 (4.9% for international operations).",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
+              },
+              {
+                "claim": "Willie Walsh said air cargo demand growth outpaced global trade, supported by high-value technology products and urgent shipments, with risks from continuing Middle East hostilities and renewed US tariff focus.",
+                "source_quote": "Demand growth outpaced capacity at the global level and in all regions except Latin America and the Caribbean. Demand also grew faster than global trade, supported by high-value technology products, and urgent shipments. While this all gives strong reasons for optimism in the second half of 2026, risks remain—continuing hostilities in the Middle East and a renewed focus on tariffs by the US among them",
+                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
+                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
               }
             ]
           }
