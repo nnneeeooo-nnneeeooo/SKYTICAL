@@ -1,5 +1,727 @@
 [
   {
+    "id": "g-20260805-1205-1",
+    "queuedUtc": "2026-08-05T12:05Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves an active FAA aviation safety investigation into a reported loss of separation incident involving Marine One and a commercial flight near Washington.",
+    "riskFlags": [
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "FAA證實正在調查8月4日涉及海軍陸戰隊一號直升機的安全事件，但表示並非危險近距離接近且航空器未趨於對向。",
+        "sourceQuote": "The FAA is investigating a safety incident involving Marine One, but it didn’t appear to be a dangerous close call, and the aircraft weren’t apparently converging,",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-examines-marine-one-safety-incident-involving-trump-take-off-wsj",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "路透社消息指出該起隔離距離不足事件涉及由Envoy Air代表美國航空營運的Embraer E175客機與海軍陸戰隊一號。",
+        "sourceQuote": "A source that spoke to Reuters said the apparent loss of separation involved an Embraer E175, operated by Envoy Air on behalf of American Airlines",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-examines-marine-one-safety-incident-involving-trump-take-off-wsj",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "FAA規定在隆納·雷根國家機場等B類空域中，航空器之間須保持至少1.5海浬或500呎的隔離距離。",
+        "sourceQuote": "FAA rules require at least 1.5 nautical miles or 500 feet of separation between aircraft in Class B airspace like Reagan National’s.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-examines-marine-one-safety-incident-involving-trump-take-off-wsj",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "華爾街日報引述消息人士指出，航管人員當時並未依規定攔截民航機。",
+        "sourceQuote": "The newspaper was told by sources that air traffic controllers did not hold commercial flights as is required under protocols",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-examines-marine-one-safety-incident-involving-trump-take-off-wsj",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves an active FAA aviation safety investigation into a reported loss of separation incident involving Marine One and a commercial flight near Washington.",
+      "cat": "safety",
+      "zh": {
+        "title": "FAA調查川普搭乘海軍陸戰隊一號間距不足事件",
+        "summary": "美國聯邦航空管理局正在調查8月4日涉及搭載美國總統川普的海軍陸戰隊一號直升機安全事件。消息指出該直升機與一架由Envoy Air營運的Embraer E175客機未保持法定隔離距離，但官方表示並非危險近距離接近且航空器未趨於對向。",
+        "body": [
+          "美國聯邦航空管理局（FAA）正在調查一起於2026年8月4日發生的安全事件。該事件涉及搭載美國總統川普的海軍陸戰隊一號直升機，地點位於華盛頓隆納·雷根國家機場附近空域。",
+          "據路透社報導引述的消息指出，涉事的另一架航空器為 Envoy Air 代表美國航空營運的 Embraer E175 客機。兩機在隆納·雷根國家機場周邊的 B 類空域中，未遵循保持至少 1.5 海浬或 500 呎隔離距離的規定。",
+          "華爾街日報報導亦引述消息稱，航管人員當時並未依規定攔截民航機。不過 FAA 向路透社表示，該起事件並非危險近距離接近，且兩架航空器當時並未趨於對向。"
+        ]
+      },
+      "en": {
+        "title": "FAA Investigates Marine One Safety Incident Involving Trump Flight",
+        "summary": "The Federal Aviation Administration (FAA) is investigating an August 4 safety incident involving a Marine One helicopter carrying US President Donald Trump near Ronald Reagan Washington National Airport. According to sources, the helicopter and an Embraer E175 operated by Envoy Air on behalf of American Airlines did not maintain the required Class B airspace separation of at least 1.5 nautical miles or 500 feet. However, the FAA stated that the situation did not appear to be a dangerous close call and the aircraft were not converging.",
+        "body": [
+          "The Federal Aviation Administration (FAA) is investigating an August 4, 2026, safety incident involving a Marine One helicopter carrying US President Donald Trump near Ronald Reagan Washington National Airport.",
+          "According to sources cited by Reuters, the incident involved an Embraer E175 operated by Envoy Air on behalf of American Airlines. The aircraft and Marine One reportedly failed to maintain the required separation of at least 1.5 nautical miles or 500 feet in Class B airspace.",
+          "The Wall Street Journal reported that air traffic controllers did not hold commercial flights as required under protocols. However, the FAA stated that the event did not appear to be a dangerous close call and that the aircraft were not converging."
+        ]
+      },
+      "flash": {
+        "zh": "FAA調查海軍陸戰隊一號與客機隔離不足事件",
+        "en": "FAA investigating Marine One separation incident in Washington",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-04",
+        "sev": "inc",
+        "aircraft": "Marine One helicopter, Embraer E175",
+        "operator": "US Marine Corps / Envoy Air (American Airlines)",
+        "phase": {
+          "zh": "離場與巡航階段",
+          "en": "Departure and en route phase"
+        },
+        "location": {
+          "zh": "華盛頓隆納·雷根國家機場附近空域",
+          "en": "Airspace near Ronald Reagan Washington National Airport"
+        },
+        "desc": {
+          "zh": "海軍陸戰隊一號與Embraer E175客機據報未保持法定1.5海浬或500呎隔離距離，FAA已展開調查",
+          "en": "FAA investigating reported loss of required separation (1.5 nautical miles or 500 feet) between Marine One and an Embraer E175"
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "FAA證實正在調查8月4日涉及海軍陸戰隊一號直升機的安全事件，但表示並非危險近距離接近且航空器未趨於對向。",
+          "sourceQuote": "The FAA is investigating a safety incident involving Marine One, but it didn’t appear to be a dangerous close call, and the aircraft weren’t apparently converging,",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-examines-marine-one-safety-incident-involving-trump-take-off-wsj",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "路透社消息指出該起隔離距離不足事件涉及由Envoy Air代表美國航空營運的Embraer E175客機與海軍陸戰隊一號。",
+          "sourceQuote": "A source that spoke to Reuters said the apparent loss of separation involved an Embraer E175, operated by Envoy Air on behalf of American Airlines",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-examines-marine-one-safety-incident-involving-trump-take-off-wsj",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "FAA規定在隆納·雷根國家機場等B類空域中，航空器之間須保持至少1.5海浬或500呎的隔離距離。",
+          "sourceQuote": "FAA rules require at least 1.5 nautical miles or 500 feet of separation between aircraft in Class B airspace like Reagan National’s.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-examines-marine-one-safety-incident-involving-trump-take-off-wsj",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "華爾街日報引述消息人士指出，航管人員當時並未依規定攔截民航機。",
+          "sourceQuote": "The newspaper was told by sources that air traffic controllers did not hold commercial flights as is required under protocols",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-examines-marine-one-safety-incident-involving-trump-take-off-wsj",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "FAA",
+          "Federal Aviation Administration",
+          "The Wall Street Journal",
+          "Reuters"
+        ],
+        "airlines": [
+          "American Airlines",
+          "Envoy Air"
+        ],
+        "aircraft_models": [
+          "Marine One",
+          "Embraer E175",
+          "Embraer E175LR"
+        ],
+        "airports": [
+          "Ronald Reagan Washington National Airport",
+          "DCA"
+        ],
+        "locations": [
+          "Ellipse",
+          "White House"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "August 4, 2026"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260805-1205-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "FAA examines Marine One safety incident involving Trump take off: WSJ",
+          "url": "https://www.aerotime.aero/articles/faa-examines-marine-one-safety-incident-involving-trump-take-off-wsj",
+          "publishedUtc": "2026-08-05T10:40Z",
+          "summary": "The Federal Aviation Administration (FAA) is investigating a safety incident involving a Marine One helicopter carrying US President… The post FAA examines Marine One safety incident involving Trump take off: WSJ appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "FAA says it is investigating Trump helicopter safety incident in Washington",
+          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPbUJ4a1paOGkzcGJyaEM5U2dKaXF1Skx3NHBRN1JQbURxYTBXc2hUTHNfWXFaaW5scjZpbEtRbFYyMzRwTkY5bHhndGljclp2RFJOTm5fZzRaZkRvc29wZmZCUTdDMEJTaE5xS01BUTV6dXJuRnAzUW00QnhpcndwaGpQUFJJUlA1Nk8xV1hRWHhNUjBrcDF3d0VFUjJoTmZHNTNYNVVSbFdBd2d6NXN0Qg?oc=5",
+          "publishedUtc": "2026-08-05T01:31Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "Exclusive | FAA Investigates Marine One Safety Incident in Washington",
+          "summary": "Exclusive | FAA Investigates Marine One Safety Incident in Washington &nbsp;&nbsp; WSJ",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNMXp6aGVCUkNpR3BxcEFNcHVTR0xPQVZFLXhLcWNhWkxZWW5JUDAyZjVwc01QVDhtWWNSY0M5WVNVRHVMM3JHRlJ6VW5helJGU1lTQUh3WEhBQjJ1OHN6SlpfM25JYlZGdnNxRnRKRHlSTU5td29mRzNKUXZ1Yi0xVnU2NGVVNTdGN0g2WUVOd0gxcndtMFVuUkd1MnBpenZWQzNLMHZpR2NCZW8xWlZSaFdPUQ?oc=5",
+          "source": "WSJ",
+          "companion": true,
+          "publishedUtc": "2026-08-05T02:19Z"
+        }
+      ],
+      "updateCandidate": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-0855-swiss-lx16-diverts-bangor-after-smoke",
+            "relationship_type": "investigation_progression",
+            "relationship_evidence": [
+              "same named core entity: federal aviation administration",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin",
+            "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+            "facts": [
+              {
+                "claim": "LX16於班戈當地時間7月27日12時14分安全落地。",
+                "source_quote": "has landed safely at 12:14 local. The emergency was resolved.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "SWISS表示機組員因商務艙出現煙霧而改降班戈。",
+                "source_quote": "crew on board Swiss International Air Lines flight LX16 on Monday decided to divert to Bangor due to smoke in the business class section of the flight.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "消防人員檢查後未發現火源或異常熱度。",
+                "source_quote": "Firefighters inspected the aircraft and found no signs of fire or heat.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "SWISS表示208名乘客及機組員均平安。",
+                "source_quote": "All 208 passengers and crew were safe",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "FAA初步聲明記載機組員曾通報駕駛艙起火,並表示將調查。",
+                "source_quote": "Swiss International Air Lines Flight 16F safely landed at Bangor International Airport in Maine around noon on Monday, July 27, after the crew reported a cockpit fire.",
+                "source_url": "https://www.faa.gov/newsroom/statements/accident_incidents",
+                "source_name": "Federal Aviation Administration — Statements on Aviation Accidents and Incidents"
+              },
+              {
+                "claim": "SWISS尚未確定煙霧原因,將檢查航空器且不會在調查完成前推測。",
+                "source_quote": "The airline has not been able to identify for certain what caused the smoke.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260803-1758-u-s-faa-grants-boeing-amended-type-certi",
+            "relationship_type": "regulatory_progression",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-08-03",
+            "source_name": "Boeing — U.S. FAA certifies new Boeing 737-7 airplane",
+            "source_url": "https://boeing.mediaroom.com/2026-08-03-U-S-FAA-certifies-new-Boeing-737-7-airplane",
+            "facts": [
+              {
+                "claim": "The U.S. FAA has granted Boeing an amended type certificate for the 737-7 airplane, clearing it for commercial service.",
+                "source_quote": "The U.S. Federal Aviation Administration has granted Boeing [NYSE: BA] an amended type certificate for the new 737-7 airplane, clearing it for commercial service.",
+                "source_url": "https://boeing.mediaroom.com/2026-08-03-U-S-FAA-certifies-new-Boeing-737-7-airplane",
+                "source_name": "Boeing — U.S. FAA certifies new Boeing 737-7 airplane"
+              },
+              {
+                "claim": "Boeing and Southwest Airlines, the 737-7 launch customer, are preparing for delivery of the first airplane.",
+                "source_quote": "Boeing and Southwest Airlines, the 737-7 launch customer, are preparing for delivery of the first airplane.",
+                "source_url": "https://boeing.mediaroom.com/2026-08-03-U-S-FAA-certifies-new-Boeing-737-7-airplane",
+                "source_name": "Boeing — U.S. FAA certifies new Boeing 737-7 airplane"
+              },
+              {
+                "claim": "The 737-7 seats 135-160 passengers in a two-class configuration and offers a range of up to 3,800 nautical miles (7,040 km).",
+                "source_quote": "The 737-7 typically seats 135-160 passengers in a two-class configuration and offers a range of up to 3,800 nautical miles (7,040 km).",
+                "source_url": "https://boeing.mediaroom.com/2026-08-03-U-S-FAA-certifies-new-Boeing-737-7-airplane",
+                "source_name": "Boeing — U.S. FAA certifies new Boeing 737-7 airplane"
+              },
+              {
+                "claim": "The certification test program began in 2018 and included more than 1,000 hours of flight and ground testing, extensive system safety analysis and human factors reviews, and an updated engine anti-ice system.",
+                "source_quote": "The test program, which began in 2018, included:",
+                "source_url": "https://boeing.mediaroom.com/2026-08-03-U-S-FAA-certifies-new-Boeing-737-7-airplane",
+                "source_name": "Boeing — U.S. FAA certifies new Boeing 737-7 airplane"
+              },
+              {
+                "claim": "The FAA also updated Boeing Production Certificate No. 700 (PC 700) to include the 737-7.",
+                "source_quote": "The FAA also updated Boeing Production Certificate No. 700 (PC 700) to include the 737-7.",
+                "source_url": "https://boeing.mediaroom.com/2026-08-03-U-S-FAA-certifies-new-Boeing-737-7-airplane",
+                "source_name": "Boeing — U.S. FAA certifies new Boeing 737-7 airplane"
+              },
+              {
+                "claim": "As of July, Boeing anticipated certification of the 737-7 in 2026 and first delivery in 2027.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260805-1205-3",
+    "queuedUtc": "2026-08-05T12:05Z",
+    "approve": false,
+    "writer": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+    "decisionReason": "Multiple aviation safety events (suspected explosive device, mid-air collision) with ongoing police investigations, unconfirmed details from multiple sources (police, Reuters, Bild, Flightradar24), and potential sabotage classification require human review.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation",
+      "unconfirmed_or_developing",
+      "conflicting_information"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Leipzig/Halle Airport partially suspended flight operations overnight from August 4 to August 5, 2026 after police responded to reports of an unidentified flying object and a suspicious item near the south runway.",
+        "sourceQuote": "Leipzig/Halle Airport (LEJ) partially suspended flight operations overnight from August 4 to August 5, 2026, after police responded to reports of an unidentified flying object and a suspicious item found near the airport’s south runway",
+        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Police reported the flying object was first sighted around 23:40 local time on August 4, prompting several aircraft including Marabu Airlines flight DI6777 to divert to Nuremberg.",
+        "sourceQuote": "Police said the flying object was first sighted around 23:40 local time on August 4, prompting several aircraft, including one passenger flight, to divert to other airports. Marabu Airlines flight DI6777, an Airbus A320neo arriving from Palma de Mallorca (PMI), was diverted to Nuremberg Airport (NUE).",
+        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Officers found an object near the south runway which federal police examined using a bomb disposal robot.",
+        "sourceQuote": "Officers later found an object near the south runway, which federal police (Bundespolizei) examined using a bomb disposal robot.",
+        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Flight operations resumed on the north runway at 01:55 on August 5 while the south runway remained closed.",
+        "sourceQuote": "Flight operations resumed on the north runway at 01:55 on August 5, though the south runway remained closed as investigations continued.",
+        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "A DHL-operated cargo aircraft collided with an unidentified object near Leipzig airport and diverted to Hanover for an emergency landing.",
+        "sourceQuote": "A DHL-operated cargo aircraft collided with an unidentified object near Leipzig airport and diverted for an emergency landing in Hanover, Reuters reported, citing a source familiar with the incident.",
+        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Flightradar24 data indicates the damaged aircraft may have been an EAT Leipzig Airbus A300 freighter registered D-AZML operating flight BCS7JG from Madrid.",
+        "sourceQuote": "Although authorities have not identified the aircraft publicly, flight-tracking data from Flightradar24 indicate that the damaged aircraft may have been EAT Leipzig Airbus A300 freighter D-AZML, operating fight BCS7JG from Madrid (MAD).",
+        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Multiple aviation safety events (suspected explosive device, mid-air collision) with ongoing police investigations, unconfirmed details from multiple sources (police, Reuters, Bild, Flightradar24), and potential sabotage classification require human review.",
+      "cat": "safety",
+      "zh": {
+        "title": "萊比錫機場因疑似爆裂物與空中相撞暫停運作",
+        "summary": "萊比錫/哈勒機場因不明飛行物與南跑道可疑物品，於8月4日晚至5日凌晨暫停部分運作；馬拉布航空客機轉降紐倫堡；DHL貨機疑與無人機相撞轉降漢諾威，警方調查中。",
+        "body": [
+          "萊比錫/哈勒機場（LEJ）於2026年8月4日晚至5日凌晨因不明飛行物與南跑道可疑物品，部分暫停飛行作業。萊比錫警方表示，接獲通報後採取行動，導致多架航班轉降，包括馬拉布航空DI6777班機（空中巴士A320neo，自馬洛卡島馬爾馬）轉往紐倫堡機場。",
+          "警方於當地時間23時40分左右首次發現不明飛行物，稍後在南跑道尋獲一物品，聯邦警察以排爆機械人檢查。北跑道於8月5日01時55分恢復運作，南跑道因調查持續關閉。",
+          "另據路透社引述消息人士，一架DHL營運的貨機在萊比錫機場附近與不明物體相撞，緊急轉降漢諾威。DHL集團執行長托比亞斯·梅耶爾在8月5日的Q2投資人電話會議中表示，公司有應變計劃，將儘量減少對客戶影響。",
+          "飛行追蹤數據Flightradar24顯示，受損機體可能為EAT萊比錫營運的空中巴士A300貨機（註冊D-AZML），執行BCS7JG班機自馬德里起飛。德媒報導碰撞發生於機場約6公里、高度400公尺處，機鼻輕微受損。",
+          "下薩克森警方將事件列為國家安全罪行，未排除破壞行為。《圖片報》引述安全消息稱，物品為攜帶引爆裝置包裹的無人機，發現於停放的安托諾夫航空An-124貨機附近。調查人員視為可能爆裂裝置，截至8月5日下午尚不清楚是否已進行受控引爆。安托諾夫航空因2022年霍斯托梅爾機場戰損，將大部分An-124機隊遷至萊比錫。此事件加入近期歐洲軍事設施、能源終端、海港及物流樞紐遭未授權無人機干擾的系列案件，多國警方疑涉俄羅斯代理人，莫斯科否認。國際戰略研究所（IISS）評估，俄羅斯關聯無人機活動過去18個月迫使慕尼黑、哥本哈根、維爾紐斯等主要樞紐關閉。萊比錫作為德國第二大貨運機場及DHL樞紐，2024年曾發生陰謀在過境包裹置放燃燒裝置，目前仍在德刑事審理中。"
+        ]
+      },
+      "en": {
+        "title": "Leipzig airport operations disrupted by suspected explosive device and mid-air collision",
+        "summary": "Leipzig/Halle Airport partially suspended flight operations overnight August 4-5 after police responded to an unidentified flying object and a suspicious item near the south runway. A Marabu Airlines A320neo diverted to Nuremberg. Separately, a DHL-operated cargo aircraft collided with an unidentified object near Leipzig and diverted to Hanover for an emergency landing. Flightradar24 data suggests the aircraft may be an EAT Leipzig Airbus A300 freighter. Police in Lower Saxony classified the incident as a state security offense and have not ruled out sabotage. Investigations are ongoing.",
+        "body": [
+          "Leipzig/Halle Airport (LEJ) partially suspended flight operations overnight from August 4 to August 5, 2026, after police responded to reports of an unidentified flying object and a suspicious item near the south runway. The Leipzig police directorate said the flying object was first sighted around 23:40 local time on August 4, prompting several aircraft to divert, including Marabu Airlines flight DI6777, an Airbus A320neo arriving from Palma de Mallorca, which was diverted to Nuremberg Airport.",
+          "Officers later found an object near the south runway, which federal police examined using a bomb disposal robot. Flight operations resumed on the north runway at 01:55 on August 5, though the south runway remained closed as investigations continued.",
+          "Separately, a DHL-operated cargo aircraft collided with an unidentified object near Leipzig airport and diverted for an emergency landing in Hanover, Reuters reported citing a source familiar with the incident. DHL Group CEO Tobias Meyer stated during the company's Q2 2026 investor call on August 5 that the company has plans for such cases and will try to minimize customer impact.",
+          "Flightradar24 data indicates the damaged aircraft may have been an EAT Leipzig Airbus A300 freighter registered D-AZML operating flight BCS7JG from Madrid. German media reported the collision occurred roughly six kilometers from the airport at an altitude of about 400 meters, with the aircraft sustaining minor damage to its nose section.",
+          "Police in Lower Saxony classified the incident as a state security offense and have not ruled out sabotage. Bild, citing security sources, reported the object was a drone carrying a package fitted with a detonator, found close to a parked Antonov Airlines An-124 freighter. Investigators were treating the find as a possible explosive device, though it remained unclear by the afternoon of August 5 whether a controlled detonation had been carried out. Antonov Airlines relocated most of its An-124 fleet to Leipzig/Halle after fighting at Hostomel Airport near Kyiv in 2022 devastated its home base. The incident adds to a string of unauthorized drone sightings disrupting European military sites, energy terminals, seaports, and logistics hubs, which several police forces have said could involve Russian agents, an allegation Moscow denies. A recent IISS assessment found Russian-linked drone activity forced closures at major European hubs including Munich, Copenhagen, and Vilnius over the past 18 months. Leipzig/Halle, Germany's second-largest cargo airport and a major DHL hub, has featured in security investigations before: a 2024 plot to plant incendiary devices in packages transiting through the airport remains the subject of an ongoing criminal trial in Germany."
+        ]
+      },
+      "flash": {
+        "zh": "萊比錫機場因爆裂物疑慮與貨機相撞暫停運作",
+        "en": "Leipzig airport halted by explosive scare, cargo jet collision",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-04",
+        "sev": "inc",
+        "aircraft": "Airbus A300 freighter",
+        "operator": "DHL-operated (EAT Leipzig)",
+        "phase": {
+          "zh": "巡航/進場階段",
+          "en": "en route/approach phase"
+        },
+        "location": {
+          "zh": "萊比錫/哈勒機場附近6公里、高度約400公尺",
+          "en": "6 km from Leipzig/Halle Airport at about 400 m altitude"
+        },
+        "desc": {
+          "zh": "貨機與不明物體相撞，機鼻輕微受損，轉降漢諾威",
+          "en": "Cargo aircraft collided with unidentified object, sustained minor nose damage, diverted to Hanover"
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Leipzig/Halle Airport partially suspended flight operations overnight from August 4 to August 5, 2026 after police responded to reports of an unidentified flying object and a suspicious item near the south runway.",
+          "sourceQuote": "Leipzig/Halle Airport (LEJ) partially suspended flight operations overnight from August 4 to August 5, 2026, after police responded to reports of an unidentified flying object and a suspicious item found near the airport’s south runway",
+          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Police reported the flying object was first sighted around 23:40 local time on August 4, prompting several aircraft including Marabu Airlines flight DI6777 to divert to Nuremberg.",
+          "sourceQuote": "Police said the flying object was first sighted around 23:40 local time on August 4, prompting several aircraft, including one passenger flight, to divert to other airports. Marabu Airlines flight DI6777, an Airbus A320neo arriving from Palma de Mallorca (PMI), was diverted to Nuremberg Airport (NUE).",
+          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Officers found an object near the south runway which federal police examined using a bomb disposal robot.",
+          "sourceQuote": "Officers later found an object near the south runway, which federal police (Bundespolizei) examined using a bomb disposal robot.",
+          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Flight operations resumed on the north runway at 01:55 on August 5 while the south runway remained closed.",
+          "sourceQuote": "Flight operations resumed on the north runway at 01:55 on August 5, though the south runway remained closed as investigations continued.",
+          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "A DHL-operated cargo aircraft collided with an unidentified object near Leipzig airport and diverted to Hanover for an emergency landing.",
+          "sourceQuote": "A DHL-operated cargo aircraft collided with an unidentified object near Leipzig airport and diverted for an emergency landing in Hanover, Reuters reported, citing a source familiar with the incident.",
+          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Flightradar24 data indicates the damaged aircraft may have been an EAT Leipzig Airbus A300 freighter registered D-AZML operating flight BCS7JG from Madrid.",
+          "sourceQuote": "Although authorities have not identified the aircraft publicly, flight-tracking data from Flightradar24 indicate that the damaged aircraft may have been EAT Leipzig Airbus A300 freighter D-AZML, operating fight BCS7JG from Madrid (MAD).",
+          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3",
+        "F5",
+        "F6"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6"
+      ],
+      "entities": {
+        "organizations": [
+          "Leipzig police directorate (Polizeidirektion Leipzig)",
+          "Bundespolizei",
+          "DHL Group",
+          "EAT Leipzig",
+          "Antonov Airlines",
+          "Marabu Airlines",
+          "Flightradar24",
+          "Reuters",
+          "Bild",
+          "IISS",
+          "Lower Saxony police",
+          "Saxony authorities"
+        ],
+        "airlines": [
+          "Marabu Airlines",
+          "DHL",
+          "EAT Leipzig",
+          "Antonov Airlines"
+        ],
+        "aircraft_models": [
+          "Airbus A320neo",
+          "Airbus A300 freighter",
+          "Antonov An-124",
+          "Antonov An-225 Mriya"
+        ],
+        "airports": [
+          "Leipzig/Halle Airport (LEJ)",
+          "Nuremberg Airport (NUE)",
+          "Hanover Airport",
+          "Palma de Mallorca (PMI)",
+          "Madrid (MAD)",
+          "Hostomel Airport"
+        ],
+        "locations": [
+          "Leipzig, Germany",
+          "Nuremberg, Germany",
+          "Hanover, Germany",
+          "Palma de Mallorca, Spain",
+          "Madrid, Spain",
+          "Kyiv, Ukraine",
+          "Munich, Germany",
+          "Copenhagen, Denmark",
+          "Vilnius, Lithuania"
+        ],
+        "flight_numbers": [
+          "DI6777",
+          "BCS7JG"
+        ],
+        "registration_numbers": [
+          "D-AZML"
+        ],
+        "event_dates": [
+          "2026-08-04",
+          "2026-08-05"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation",
+        "unconfirmed_or_developing",
+        "conflicting_information"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260805-1205-3",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Suspected explosive device and mid-air collision disrupt Leipzig airport",
+          "url": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
+          "publishedUtc": "2026-08-05T11:13Z",
+          "summary": "Leipzig/Halle Airport (LEJ) partially suspended flight operations overnight from August 4 to August 5, 2026, after police responded… The post Suspected explosive device and mid-air collision disrupt Leipzig airport appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260730-0603-philippine-airlines-receives-third-a350",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: airbus",
+              "same airport code(s): MAKE",
+              "archive predates source by 7 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft",
+            "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
+            "facts": [
+              {
+                "claim": "Philippine Airlines took delivery of its third Airbus A350-1000 (registration RP-C3512) on 29 July 2026, arriving in Manila from Toulouse.",
+                "source_quote": "The aircraft, with registration RP-C3512, arrived in Manila from Airbus’ delivery center in Toulouse, France, on July 29, 2026",
+                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
+                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
+              },
+              {
+                "claim": "The newly delivered A350-1000 will debut on the Manila–San Francisco route on 5 August 2026, initially three weekly flights (Tue, Fri, Sun) before daily service in September 2026.",
+                "source_quote": "The newly delivered aircraft is set to make its debut on PAL’s Manila-San Francisco route starting August 5, 2026, initially flying three times a week, on Tuesdays, Fridays, and Sundays, before shifting to daily service in September 2026",
+                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
+                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
+              },
+              {
+                "claim": "Philippine Airlines is the first and only airline in Southeast Asia operating the Airbus A350-1000.",
+                "source_quote": "Philippine Airlines is the first, and so far only, airline in Southeast Asia flying the A350-1000",
+                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
+                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260801-0732-lot-polish-airlines-to-launch-direct-war",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: lot",
+              "same airport code(s): AND",
+              "archive predates source by 5 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 5 day(s) apart",
+            "event_date": "2026-07-31",
+            "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with...",
+            "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
+            "facts": [
+              {
+                "claim": "LOT Polish Airlines has announced a direct route between Warsaw Chopin Airport and Hanoi Noi Bai International Airport, with the inaugural flight scheduled for March 31, 2027.",
+                "source_quote": "LOT Polish Airlines has launched a new direct route between Warsaw Chopin Airport (WAW) and Noi Bai International Airport (HAN) in Hanoi, Vietnam, marking the airline’s fifth long-haul destination in Asia. Tickets are now on sale, with the inaugural flight scheduled for March 31, 2027.",
+                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
+                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
+              },
+              {
+                "claim": "The Warsaw-Hanoi service will operate three times per week year-round using Boeing 787 Dreamliner aircraft, with departures from Warsaw on Mondays, Wednesdays, and Fridays, and return flights from Hanoi on Tuesdays, Thursdays, and Saturdays.",
+                "source_quote": "The Warsaw-Hanoi route will operate year-round, with three flights each way per week. Departures from Warsaw Chopin Airport are set for Mondays, Wednesdays, and Fridays at 15:15 local time, while return flights from Hanoi will depart Tuesdays, Thursdays, and Saturdays at 08:35 local time.",
+                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
+                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
+              },
+              {
+                "claim": "Hanoi is LOT Polish Airlines' fifth long-haul destination in Asia, joining Tokyo, Seoul, New Delhi, and Bangkok.",
+                "source_quote": "Hanoi joins Tokyo, Seoul, New Delhi, and Bangkok as LOT’s fifth long-haul destination in Asia",
+                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
+                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
+              },
+              {
+                "claim": "LOT Board Member and CCO Robert Ludera stated that the new route reflects the airline's ambition to expand in Asia and develop Warsaw as a connecting hub.",
+                "source_quote": "Robert Ludera, Board Member and Chief Commercial Officer at LOT Polish Airlines, noted that the new route reflects the airline’s ambition to expand its presence in Asia, while further developing Warsaw as a connecting hub between Central and Eastern Europe and some of the world’s fastest-growing destinations.",
+                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
+                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260805-0942-1",
     "queuedUtc": "2026-08-05T09:42Z",
     "approve": false,
@@ -8989,473 +9711,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260731-2211-9",
-    "queuedUtc": "2026-07-31T22:11Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "Risk flag unconfirmed_or_developing applies because the source describes early-stage proposals and concepts without confirmed implementation; therefore manual review is required despite sufficient source evidence.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Israel is laying the foundations for an indigenous airpower strategy that could eventually include a stealth combat drone, a homegrown fighter aircraft and long-range missiles as it prepares for a future with less reliance on US military support.",
-        "sourceQuote": "Israel is laying the foundations for an indigenous airpower strategy that could eventually include a stealth combat drone, a homegrown fighter aircraft and long-range missiles as it prepares for a future with less reliance on US military support.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/israel-indigenous-stealth-drone-fighter-aircraft-strategy/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "According to Bloomberg, citing a senior Israeli official, the aircraft is being examined as part of a wider plan to strengthen Israel’s domestic defence industry, reduce long-term reliance on US military assistance and expand future weapons development through international partnerships.",
-        "sourceQuote": "According to Bloomberg , citing a senior Israeli official, the aircraft is being examined as part of a wider plan to strengthen Israel’s domestic defence industry, reduce long-term reliance on US military assistance and expand future weapons development through international partnerships.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/israel-indigenous-stealth-drone-fighter-aircraft-strategy/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Risk flag unconfirmed_or_developing applies because the source describes early-stage proposals and concepts without confirmed implementation; therefore manual review is required despite sufficient source evidence.",
-      "cat": "mil",
-      "zh": {
-        "title": "以色列探索隱形無人機與國產戰機以減少對美依賴",
-        "summary": "以色列正規劃一項自主空中力量策略，可能包括隱形戰鬥無人機、國產戰機及遠端飛彈，旨在降低長期依賴美國軍事援助並透過國際合作發展武器系統。",
-        "body": [
-          "以色列政府正在為一項可能包含隱形戰鬥無人機、國產戰機及遠端飛彈的土生空中力量奠基，以為未來對美軍援助較少的情況作準備。",
-          "根據彭博引用的一位高級以色列官員，該無人機概念正被檢視為加強本國防衛產業、減少長期依賴美援及透過夥伴關係擴大武器發展的一部分。",
-          "該構想仍處於早期階段，尚未選定承包商、未公布開發時間表，亦未由以色列國防部正式啟動計畫。",
-          "以色列空軍長期依賴美國製造的F‑15、F‑16及F‑35I \"Adir\"戰機，任何向國產戰機轉變將代表對其空軍構成的深遠改變。"
-        ]
-      },
-      "en": {
-        "title": "Israel Explores Stealth Drone, Indigenous Fighter to Cut US Reliance",
-        "summary": "Israel is laying the groundwork for an indigenous airpower strategy that could involve a stealth combat drone, a homegrown fighter jet and long-range missiles, aiming to reduce long-term dependence on US military assistance and expand defence production through international partnerships.",
-        "body": [
-          "The Israeli government is laying foundations for an indigenous airpower strategy that could eventually include a stealth combat drone, a homegrown fighter aircraft and long-range missiles as it prepares for a future with less reliance on US military support.",
-          "According to Bloomberg, citing a senior Israeli official, the aircraft concept is being examined as part of a wider plan to strengthen Israel's domestic defence industry, reduce long-term reliance on US military assistance and expand future weapons development through international partnerships.",
-          "The proposal remains at an early stage: no contractor has been selected, no development timetable announced, and Israel's Ministry of Defence has not formally launched such a programme.",
-          "Since the late 1980s the Israeli Air Force has relied almost exclusively on American-built fighters, including successive F-15s, F-16s and the F-35I \"Adir\", so any shift toward indigenous combat aircraft would represent a profound change for the service."
-        ]
-      },
-      "flash": {
-        "zh": "以色列討論隱形無人機與國產戰機",
-        "en": "Israel discusses stealth drone, indigenous fighter",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Israel is laying the foundations for an indigenous airpower strategy that could eventually include a stealth combat drone, a homegrown fighter aircraft and long-range missiles as it prepares for a future with less reliance on US military support.",
-          "sourceQuote": "Israel is laying the foundations for an indigenous airpower strategy that could eventually include a stealth combat drone, a homegrown fighter aircraft and long-range missiles as it prepares for a future with less reliance on US military support.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/israel-indigenous-stealth-drone-fighter-aircraft-strategy/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "According to Bloomberg, citing a senior Israeli official, the aircraft is being examined as part of a wider plan to strengthen Israel’s domestic defence industry, reduce long-term reliance on US military assistance and expand future weapons development through international partnerships.",
-          "sourceQuote": "According to Bloomberg , citing a senior Israeli official, the aircraft is being examined as part of a wider plan to strengthen Israel’s domestic defence industry, reduce long-term reliance on US military assistance and expand future weapons development through international partnerships.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/israel-indigenous-stealth-drone-fighter-aircraft-strategy/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Israel",
-          "Israeli government",
-          "Israeli Ministry of Defence",
-          "Prime Minister Benjamin Netanyahu",
-          "Israeli Air Force",
-          "Lockheed Martin",
-          "Bloomberg",
-          "Axios"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "F-35 Lightning II",
-          "F-35I Adir",
-          "F-15",
-          "F-16"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-31"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260731-2211-9",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "From Lavi to stealth drones: Israel reshapes its future airpower strategy News",
-          "url": "https://aerospaceglobalnews.com/news/israel-indigenous-stealth-drone-fighter-aircraft-strategy/",
-          "publishedUtc": "2026-07-31T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/whatsapp-image-2026-03-06-at-021102.jpeg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260731-0429-israeli-air-force-reactivates-squadron-1",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: israeli air force",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-30",
-            "source_name": "AeroTime — Israeli Air Force reopens Squadron 193 with new Sikorsky Se...",
-            "source_url": "https://www.aerotime.aero/articles/israeli-air-force-reopens-squadron-193-with-new-sikorsky-seahawk-helicopters",
-            "facts": [
-              {
-                "claim": "以色列空軍於2026年7月28日在帕爾馬希姆空軍基地舉行儀式,重新啟用第193中隊。",
-                "source_quote": "A ceremony marking the squadron’s reactivation was held at Palmachim Airbase on July 28, 2026.",
-                "source_url": "https://www.aerotime.aero/articles/israeli-air-force-reopens-squadron-193-with-new-sikorsky-seahawk-helicopters",
-                "source_name": "AeroTime — Israeli Air Force reopens Squadron 193 with new Sikorsky Se..."
-              },
-              {
-                "claim": "第193中隊代表以色列海軍操作海上直升機,此次重啟是因應新型西科斯基SH-60F海鷹直升機的抵達。",
-                "source_quote": "The Israeli Air Force has reopened Squadron 193, which operates maritime helicopters on behalf of the Israeli Navy, following the arrival of new Sikorsky SH-60F Seahawk helicopters.",
-                "source_url": "https://www.aerotime.aero/articles/israeli-air-force-reopens-squadron-193-with-new-sikorsky-seahawk-helicopters",
-                "source_name": "AeroTime — Israeli Air Force reopens Squadron 193 with new Sikorsky Se..."
-              },
-              {
-                "claim": "目前已有三架希伯來語稱為「Shalach」的海鷹直升機運抵以色列,年底前預計將再接收兩架。",
-                "source_quote": "Three Seahawks, designated “Shalach” in Hebrew, have arrived in Israel so far, with two more expected by the end of the year.",
-                "source_url": "https://www.aerotime.aero/articles/israeli-air-force-reopens-squadron-193-with-new-sikorsky-seahawk-helicopters",
-                "source_name": "AeroTime — Israeli Air Force reopens Squadron 193 with new Sikorsky Se..."
-              },
-              {
-                "claim": "該中隊先前在AS565豹式直升機(以色列稱為「Atalef」)退役後,於2025年8月關閉。",
-                "source_quote": "The squadron had been shut down in August 2025 after the retirement of its AS565 Panther helicopters, known in Israeli service as “Atalef.”",
-                "source_url": "https://www.aerotime.aero/articles/israeli-air-force-reopens-squadron-193-with-new-sikorsky-seahawk-helicopters",
-                "source_name": "AeroTime — Israeli Air Force reopens Squadron 193 with new Sikorsky Se..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260731-1605-2",
-    "queuedUtc": "2026-07-31T16:05Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story covers FAA regulatory action and transition timeline for phasing out leaded aviation fuel, requiring manual review under regulatory policy rules.",
-    "riskFlags": [
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The FAA released a 72-page final plan to phase out 100LL leaded aviation gasoline in the U.S., setting a deadline of December 31, 2030, outside Alaska and the end of 2032 for Alaska.",
-        "sourceQuote": "The 72-page plan lays out a four-phase transition from 100LL to unleaded avgas. It calls for leaded fuel use to end outside Alaska by December 31, 2030. Alaska would have until the end of 2032",
-        "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Phase 1 compares three high-octane unleaded fuels (G100UL, 100R, and UL100), with testing expected to complete in spring 2027.",
-        "sourceQuote": "Phase 1 will compare three high-octane unleaded fuels: General Aviation Modifications Inc.’s G100UL, Swift Fuels’ 100R and LyondellBasell and VP Racing Fuels’ UL100.",
-        "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Phase 2 will run through mid to late 2028 to expand operating experience and initiate FAA rulemaking for unleaded avgas standards.",
-        "sourceQuote": "Phase 2, scheduled to run through mid to late 2028, would expand use of approved fuels and allow aircraft owners, airports, flight schools and fuel suppliers to gain operating experience.",
-        "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "FAA Deputy Administrator Chris Rocheleau called the 2030 deadline aggressive during a forum at EAA AirVenture 2026.",
-        "sourceQuote": "FAA Deputy Administrator Chris Rocheleau called the 2030 deadline “aggressive” during a forum at EAA AirVenture 2026.",
-        "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story covers FAA regulatory action and transition timeline for phasing out leaded aviation fuel, requiring manual review under regulatory policy rules.",
-      "cat": "reg",
-      "zh": {
-        "title": "美國FAA公布有鉛航空汽油淘汰計劃 擬於2030年前完成轉型",
-        "summary": "美國聯邦航空管理局發布最終計劃，預計於2030年12月31日前在阿拉斯加以外地區停止使用100LL有鉛航空汽油，阿拉斯加則延至2032年底。此四階段轉型計劃將先評估無鉛燃料，並於第二階段展開相關法規制定作業，推動通用航空向無鉛汽油過渡。",
-        "body": [
-          "美國聯邦航空管理局（FAA）發布長達72頁的最終計劃，預計淘汰全美100LL有鉛航空汽油。阿拉斯加以外地區將於2030年12月31日前停止使用，阿拉斯加則因補給挑戰延至2032年底。",
-          "轉型分為四階段，第一階段測試G100UL、100R與UL100三款無鉛燃料，預計2027年春季完成。第二階段預計進行至2028年中後期，將擴大使用經驗並開始制定無鉛燃料法規標準。",
-          "FAA副局長Chris Rocheleau於EAA AirVenture 2026論壇表示，2030年截止期限相當緊湊，當局將持續進行評估與監管作業。"
-        ]
-      },
-      "en": {
-        "title": "FAA Finalizes 100LL Leaded Avgas Phaseout Plan With 2030 Deadline",
-        "summary": "The Federal Aviation Administration has released its final 72-page plan to eliminate leaded 100LL aviation gasoline across the United States. The plan establishes a four-phase transition strategy, setting a deadline of December 31, 2030, for ending leaded avgas use outside Alaska, while granting Alaska until the end of 2032 due to logistical challenges. The initial phase focuses on evaluating high-octane unleaded fuel alternatives, with testing scheduled for completion in spring 2027. Phase 2 will run through mid-to-late 2028 to expand operational experience and initiate FAA rulemaking for unleaded avgas standards.",
-        "body": [
-          "The Federal Aviation Administration (FAA) has released a 72-page final plan to phase out 100LL leaded aviation gasoline across the United States. The plan sets a deadline of December 31, 2030, to end leaded fuel use outside Alaska, while giving Alaska until the end of 2032 due to local distribution and storage challenges.",
-          "The transition consists of four phases. Phase 1 evaluates three high-octane unleaded fuel candidates—G100UL, 100R, and UL100—with testing scheduled to conclude in spring 2027. Phase 2, running through mid-to-late 2028, will expand operating experience and initiate FAA rulemaking to establish regulatory standards for unleaded avgas.",
-          "Speaking at a forum during EAA AirVenture 2026, FAA Deputy Administrator Chris Rocheleau referred to the 2030 phaseout deadline as aggressive while reiterating the agency's commitment to ensuring a structured regulatory transition."
-        ]
-      },
-      "flash": {
-        "zh": "美國FAA公布有鉛航空汽油淘汰計劃，擬於2030年底前停止使用。",
-        "en": "FAA releases final plan to phase out leaded aviation gasoline by 2030.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The FAA released a 72-page final plan to phase out 100LL leaded aviation gasoline in the U.S., setting a deadline of December 31, 2030, outside Alaska and the end of 2032 for Alaska.",
-          "sourceQuote": "The 72-page plan lays out a four-phase transition from 100LL to unleaded avgas. It calls for leaded fuel use to end outside Alaska by December 31, 2030. Alaska would have until the end of 2032",
-          "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Phase 1 compares three high-octane unleaded fuels (G100UL, 100R, and UL100), with testing expected to complete in spring 2027.",
-          "sourceQuote": "Phase 1 will compare three high-octane unleaded fuels: General Aviation Modifications Inc.’s G100UL, Swift Fuels’ 100R and LyondellBasell and VP Racing Fuels’ UL100.",
-          "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Phase 2 will run through mid to late 2028 to expand operating experience and initiate FAA rulemaking for unleaded avgas standards.",
-          "sourceQuote": "Phase 2, scheduled to run through mid to late 2028, would expand use of approved fuels and allow aircraft owners, airports, flight schools and fuel suppliers to gain operating experience.",
-          "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "FAA Deputy Administrator Chris Rocheleau called the 2030 deadline aggressive during a forum at EAA AirVenture 2026.",
-          "sourceQuote": "FAA Deputy Administrator Chris Rocheleau called the 2030 deadline “aggressive” during a forum at EAA AirVenture 2026.",
-          "sourceUrl": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Federal Aviation Administration",
-          "FAA"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "US",
-          "Alaska"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "December 31, 2030",
-          "end of 2032",
-          "spring 2027",
-          "mid to late 2028"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260731-1605-2",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "FAA finalizes 100LL phaseout plan but leaves key details unresolved",
-          "url": "https://www.aerotime.aero/articles/faa-finalizes-100ll-phaseout-plan-but-leaves-key-details-unresolved",
-          "publishedUtc": "2026-07-31T14:50Z",
-          "summary": "The Federal Aviation Administration (FAA) has released its final plan for eliminating leaded aviation gasoline across the US,… The post FAA finalizes 100LL phaseout plan but leaves key details unresolved appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-1805-faa-announces-successful-counter-drone-e",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-22",
-            "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa...",
-            "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-            "facts": [
-              {
-                "claim": "FAA announced successful counter-drone efforts during FIFA World Cup 2026 with more than 700 drones seized.",
-                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026, With More Than 700 Drones Seized",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "Transportation Secretary Sean P. Duffy announced federal, state, and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
-                "source_quote": "Department of Transportation Secretary Sean P. Duffy announced that federal, state and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "The effort helped keep millions of fans safe.",
-                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "More than 700 drones were seized.",
-                "source_quote": "With More Than 700 Drones Seized",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "archive predates source by 5 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          }
-        ]
       }
     }
   }
