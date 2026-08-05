@@ -1,5 +1,357 @@
 [
   {
+    "id": "g-20260805-0318-3",
+    "queuedUtc": "2026-08-05T03:18Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Large acquisition deal subject to regulatory approval; financial_or_order_claim and unconfirmed_or_developing flags require manual review.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Itochu plans to pay $1.95 billion for a 50 % stake in Aviation Capital Group.",
+        "sourceQuote": "Japanese trading company Itochu plans to pay $1.95 billion for a 50% stake in Aviation Capital Group, one of the world’s largest aircraft leasing companies.",
+        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Itochu will acquire half of TC Skyward Aviation US, the Tokyo Century‑owned company that controls ACG.",
+        "sourceQuote": "Itochu will acquire half of TC Skyward Aviation US, the Tokyo Century-owned company that controls California-based Aviation Capital Group, or ACG.",
+        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Tokyo Century will retain the other 50 %, placing ACG under joint ownership and management.",
+        "sourceQuote": "Tokyo Century will retain the other 50%, placing ACG under joint ownership and management by the two Japanese companies.",
+        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The deal remains subject to final agreements, regulatory approval and other closing conditions.",
+        "sourceQuote": "The deal remains subject to final agreements, regulatory approval and other closing conditions.",
+        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Itochu and Tokyo Century signed the initial agreement on 3 August 2026, expect a final agreement later in August and completion in November.",
+        "sourceQuote": "Itochu and Tokyo Century signed the initial agreement on August 3, 2026. They expect to sign a final agreement later in August and complete the transfer in November.",
+        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "ACG had 446 owned, managed and committed aircraft at end‑2025, including 278 owned, 33 managed and 135 commitments.",
+        "sourceQuote": "ACG had 446 owned, managed and committed aircraft at the end of 2025, including 278 aircraft it owned outright, 33 managed aircraft and commitments for another 135.",
+        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Large acquisition deal subject to regulatory approval; financial_or_order_claim and unconfirmed_or_developing flags require manual review.",
+      "cat": "biz",
+      "zh": {
+        "title": "伊藤忠擬以19.5億美元收購ACG 50%股權",
+        "summary": "伊藤忠計劃斥資19.5億美元收購東京世紀旗下ACG 50%股權，雙方將共同管理；交易尚待最終協議、監管批准及其他條件，預計8月簽署最終協議、11月完成過户。ACG擁有446架自有、管理及承諾飛機，機隊以窄體為主。",
+        "body": [
+          "日本商社伊藤忠計劃以19.5億美元收購航空租賃公司Aviation Capital Group（ACG）50%股權，並將取得東京世紀旗下TC Skyward Aviation US的一半股權，該公司控制位於加州的ACG。",
+          "東京世紀將保留其餘50%股權，使ACG置於兩家日本企業的共同擁有與管理之下。",
+          "交易仍需最終協議、監管批准及其他結束條件；雙方於2026年8月3日簽署初步協議，預計8月稍晚簽署最終協議，並於11月完成股權轉移。",
+          "截至2025年底，ACG擁有、管理及承諾共446架飛機，其中自有278架、管理33架、承諾135架，機隊以窄體機型為主。"
+        ]
+      },
+      "en": {
+        "title": "Itochu to acquire 50% stake in aircraft lessor ACG for $1.95 billion",
+        "summary": "Itochu plans to pay $1.95 billion for a 50 % stake in Aviation Capital Group (ACG), acquiring half of Tokyo Century’s TC Skyward Aviation US holding that controls the California‑based lessor. Tokyo Century will retain the other half, placing ACG under joint ownership. The agreement, signed on 3 August 2026, remains subject to final contracts, regulatory approval and other closing conditions; the parties expect a final agreement later in August and completion in November. ACG held 446 owned, managed and committed aircraft at end‑2025, with a fleet dominated by narrow‑body Airbus A320neo and Boeing 737 MAX aircraft.",
+        "body": [
+          "Japanese trading house Itochu plans to pay $1.95 billion for a 50 % stake in Aviation Capital Group (ACG), acquiring half of Tokyo Century’s TC Skyward Aviation US holding that controls the California‑based lessor.",
+          "Tokyo Century will retain the other 50 %, placing ACG under joint ownership and management by the two Japanese companies.",
+          "The deal remains subject to final agreements, regulatory approval and other closing conditions. Itochu and Tokyo Century signed the initial agreement on 3 August 2026, expect to sign a final agreement later in August and complete the transfer in November.",
+          "At the end of 2025 ACG had 446 owned, managed and committed aircraft, including 278 owned outright, 33 managed and commitments for another 135, with a fleet heavily weighted toward narrow‑body Airbus A320neo and Boeing 737 MAX aircraft."
+        ]
+      },
+      "flash": {
+        "zh": "伊藤忠擬收購ACG 50%股權",
+        "en": "Itochu to buy 50% of ACG for $1.95B",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Itochu plans to pay $1.95 billion for a 50 % stake in Aviation Capital Group.",
+          "sourceQuote": "Japanese trading company Itochu plans to pay $1.95 billion for a 50% stake in Aviation Capital Group, one of the world’s largest aircraft leasing companies.",
+          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Itochu will acquire half of TC Skyward Aviation US, the Tokyo Century‑owned company that controls ACG.",
+          "sourceQuote": "Itochu will acquire half of TC Skyward Aviation US, the Tokyo Century-owned company that controls California-based Aviation Capital Group, or ACG.",
+          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Tokyo Century will retain the other 50 %, placing ACG under joint ownership and management.",
+          "sourceQuote": "Tokyo Century will retain the other 50%, placing ACG under joint ownership and management by the two Japanese companies.",
+          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The deal remains subject to final agreements, regulatory approval and other closing conditions.",
+          "sourceQuote": "The deal remains subject to final agreements, regulatory approval and other closing conditions.",
+          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Itochu and Tokyo Century signed the initial agreement on 3 August 2026, expect a final agreement later in August and completion in November.",
+          "sourceQuote": "Itochu and Tokyo Century signed the initial agreement on August 3, 2026. They expect to sign a final agreement later in August and complete the transfer in November.",
+          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "ACG had 446 owned, managed and committed aircraft at end‑2025, including 278 owned, 33 managed and 135 commitments.",
+          "sourceQuote": "ACG had 446 owned, managed and committed aircraft at the end of 2025, including 278 aircraft it owned outright, 33 managed aircraft and commitments for another 135.",
+          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3",
+        "F4",
+        "F5",
+        "F6"
+      ],
+      "entities": {
+        "organizations": [
+          "Itochu",
+          "Tokyo Century",
+          "Aviation Capital Group",
+          "TC Skyward Aviation US"
+        ],
+        "airlines": [
+          "United Airlines",
+          "Air France",
+          "WestJet",
+          "Wizz Air",
+          "Air India Express",
+          "LOT Polish Airlines",
+          "ITA Airways",
+          "Royal Air Maroc",
+          "T’way Air"
+        ],
+        "aircraft_models": [
+          "Airbus A320neo",
+          "Boeing 737 MAX"
+        ],
+        "airports": [],
+        "locations": [
+          "California, United States",
+          "Japan"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-03",
+          "2026-08",
+          "2026-11",
+          "2025-12-31"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260805-0318-3",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Itochu to acquire 50% of aircraft lessor ACG in $1.95B deal",
+          "url": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
+          "publishedUtc": "2026-08-04T20:59Z",
+          "summary": "Japanese trading company Itochu plans to pay $1.95 billion for a 50% stake in Aviation Capital Group, one of the… The post Itochu to acquire 50% of aircraft lessor ACG in $1.95B deal appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: aerotime, westjet",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260804-1529-japan-airlines-unveils-tokyo-disneysea-2",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: aerotime",
+              "archive predates source by 61 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 61 day(s) apart",
+            "event_date": "2026-06-04",
+            "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the...",
+            "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+            "facts": [
+              {
+                "claim": "Japan Airlines launched domestic flight operations with the JAL Jubilee Express, a themed aircraft celebrating Tokyo DisneySea's 25th anniversary, from June 4, 2026 through April 2027.",
+                "source_quote": "Japan Airlines has unveiled a specially themed aircraft celebrating Tokyo DisneySea’s 25th anniversary, with domestic flights that began on June 4, 2026, and continue through April 2027.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
+              },
+              {
+                "claim": "The JAL Jubilee Express is a Boeing 737-800 aircraft with registration JA339J, measuring 39.5 meters long and 12.5 meters high.",
+                "source_quote": "The JAL Jubilee Express is a Boeing 737-800 registered JA339J, measuring 39.5 meters in length and 12.5 meters in height, with a wingspan of 35.8 meters.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
+              },
+              {
+                "claim": "Japan Airlines and Oriental Land Co. first announced the custom-themed aircraft on April 16, 2026.",
+                "source_quote": "JAL and Oriental Land Co., the operator of Tokyo Disney Resort, first announced the aircraft on April 16, 2026, ahead of its debut.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
+              },
+              {
+                "claim": "The exterior of the aircraft is painted in Jubilee Blue and incorporates ocean-themed visuals alongside Tokyo DisneySea landmarks.",
+                "source_quote": "The aircraft’s exterior is painted in “Jubilee Blue,” the signature color of the anniversary celebration, drawing on the ocean theme that defines Tokyo DisneySea.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
+              },
+              {
+                "claim": "In-flight cabin features include special anniversary headrest covers and paper cups distributed to passengers.",
+                "source_quote": "Passengers flying on the aircraft will find special anniversary-designed headrest covers and paper cups, with three different cup designs distributed at random.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260804-2310-1",
     "queuedUtc": "2026-08-04T23:10Z",
     "approve": false,
@@ -9133,331 +9485,6 @@
                 "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
                 "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
                 "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260731-0756-3",
-    "queuedUtc": "2026-07-31T07:56Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story concerns military aircraft procurement and order claims for French and Spanish armed forces.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "空中巴士直升機公司向法國裝備總署交付首架專為特種作戰設計的NH90 Standard 2直升機。",
-        "sourceQuote": "Airbus Helicopters has officially delivered the first NH90 Standard 2 to the French Armament General Directorate (DGA).",
-        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "法國共訂購18架NH90 Standard 2直升機，預計於2029年中期前完成交付，並由波城的陸軍航空隊特種部隊中隊操作。",
-        "sourceQuote": "France has ordered a total of 18 NH90 Standard 2 helicopters that will be delivered by mid 2029. They will be operated by the French Army Aviation’s special forces squadron in Pau.",
-        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "西班牙於2025年12月加入該計畫並訂購31架同型直升機。",
-        "sourceQuote": "In December 2025, Spain joined the programme ordering 31 NH90s in a similar standard.",
-        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Standard 2構型整合Safran Euroflir 410 D光電系統、新型數位地圖產生器與加大後側滑門。",
-        "sourceQuote": "The Standard 2 configuration includes the integration of the Safran Euroflir 410 D electro-optical system (EOS), a new digital map generator, installation for a third crew member and new enlarged rear sliding windows able to accommodate self-protection guns.",
-        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "NH90 Standard 2計畫於2020年由北約直升機管理機構下訂。",
-        "sourceQuote": "The NH90 Standard 2 programme was ordered in 2020 by the NATO Helicopter Management Agency (NAHEMA) to NHIndustries (NHI) and its partner companies",
-        "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story concerns military aircraft procurement and order claims for French and Spanish armed forces.",
-      "cat": "mil",
-      "zh": {
-        "title": "空中巴士向法國交付首架特種作戰型NH90直升機",
-        "summary": "空中巴士直升機公司於2026年7月30日向法國裝備總署正式交付首架專為特種作戰設計的NH90 Standard 2直升機。法國共訂購18架該型直升機，預計於2029年中期前完成交付，並由波城的陸軍航空隊特種部隊中隊操作。西班牙亦於2025年12月訂購31架同型直升機。",
-        "body": [
-          "空中巴士直升機公司於2026年7月30日向法國裝備總署交付首架NH90 Standard 2直升機。該機種專為特種作戰設計，建立於NH90 TTH平台基礎之上。",
-          "法國共訂購18架NH90 Standard 2直升機，預計於2029年中期前完成交付，並由波城的陸軍航空隊特種部隊中隊操作。西班牙則於2025年12月訂購31架同型直升機。",
-          "Standard 2構型整合Safran Euroflir 410 D光電系統、新型數位地圖產生器與加大後側滑門。該計畫於2020年由北約直升機管理機構下訂。"
-        ]
-      },
-      "en": {
-        "title": "Airbus Delivers First Special Operations NH90 Standard 2 Helicopter to France",
-        "summary": "Airbus Helicopters has officially delivered the first NH90 Standard 2 helicopter to the French Armament General Directorate (DGA). Designed specifically for special operations, this new variant builds upon the NH90 TTH platform. France has ordered a total of 18 NH90 Standard 2 units scheduled for delivery by mid-2029, to be operated by the French Army Aviation's special forces squadron based in Pau. Additionally, Spain joined the development programme in December 2025 by ordering 31 NH90 helicopters in a similar configuration.",
-        "body": [
-          "Airbus Helicopters has officially delivered the first NH90 Standard 2 helicopter to the French Armament General Directorate (DGA). Designed specifically for special operations, the new variant builds upon the capabilities of the proven NH90 TTH platform.",
-          "France has ordered a total of 18 NH90 Standard 2 helicopters scheduled for full delivery by mid-2029. They will be operated by the French Army Aviation's special forces squadron in Pau. Additionally, Spain joined the programme in December 2025 with an order for 31 NH90 helicopters in a similar standard.",
-          "The Standard 2 configuration integrates the Safran Euroflir 410 D electro-optical system, a new digital map generator, and enlarged rear sliding windows for self-protection weapons. The programme was originally ordered in 2020 by the NATO Helicopter Management Agency."
-        ]
-      },
-      "flash": {
-        "zh": "空中巴士向法國交付首架特種作戰型NH90 Standard 2直升機。",
-        "en": "Airbus Helicopters delivers first special operations NH90 Standard 2 to France.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "空中巴士直升機公司向法國裝備總署交付首架專為特種作戰設計的NH90 Standard 2直升機。",
-          "sourceQuote": "Airbus Helicopters has officially delivered the first NH90 Standard 2 to the French Armament General Directorate (DGA).",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "法國共訂購18架NH90 Standard 2直升機，預計於2029年中期前完成交付，並由波城的陸軍航空隊特種部隊中隊操作。",
-          "sourceQuote": "France has ordered a total of 18 NH90 Standard 2 helicopters that will be delivered by mid 2029. They will be operated by the French Army Aviation’s special forces squadron in Pau.",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "西班牙於2025年12月加入該計畫並訂購31架同型直升機。",
-          "sourceQuote": "In December 2025, Spain joined the programme ordering 31 NH90s in a similar standard.",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Standard 2構型整合Safran Euroflir 410 D光電系統、新型數位地圖產生器與加大後側滑門。",
-          "sourceQuote": "The Standard 2 configuration includes the integration of the Safran Euroflir 410 D electro-optical system (EOS), a new digital map generator, installation for a third crew member and new enlarged rear sliding windows able to accommodate self-protection guns.",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "NH90 Standard 2計畫於2020年由北約直升機管理機構下訂。",
-          "sourceQuote": "The NH90 Standard 2 programme was ordered in 2020 by the NATO Helicopter Management Agency (NAHEMA) to NHIndustries (NHI) and its partner companies",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Airbus Helicopters",
-          "French Armament General Directorate",
-          "DGA",
-          "French Army Aviation",
-          "NATO Helicopter Management Agency",
-          "NAHEMA",
-          "NHIndustries",
-          "Safran"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "NH90",
-          "NH90 Standard 2",
-          "NH90 TTH"
-        ],
-        "airports": [],
-        "locations": [
-          "France",
-          "Pau",
-          "Spain",
-          "Marignane"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "30 July 2026",
-          "mid 2029",
-          "December 2025",
-          "2020"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260731-0756-3",
-      "primarySource": "Airbus",
-      "items": [
-        {
-          "title": "Airbus delivers first NH90 designed for special operations to France",
-          "url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france",
-          "publishedUtc": "2026-07-30T12:00Z",
-          "summary": "Airbus Helicopters has officially delivered the first NH90 Standard 2 to the French Armament General Directorate (DGA).",
-          "image": null,
-          "source": "Airbus",
-          "sourceKey": "airbus"
-        },
-        {
-          "title": "Airbus delivers first NH90 designed for special operations to France",
-          "summary": "Airbus delivers first NH90 designed for special operations to France &nbsp;&nbsp; airbus.com",
-          "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQdm0tT0VNNVNCT293cEhvb0MxYy1IUkVPVzVaT3pmTGFDdGFCczdjX25pMHh6bDZobW16Q0FZYl9Fck9ZQ3NLcGxwYnNVOUhaZ0M0UzlVdl9FNk1tUC1IOV9uVU5uTEpSRXFFSHc0UmdLLWxCU1Q1aU9nMXhuM2ZqTlBmRWY1OVJaWVJmQ3lEeUNKSWJ2ZE9mMXRoVWh0RV8wTDU0YnVDS280a0VYV0txU2VILTJFd2dLdUZsc2J2TGNkZnAx?oc=5",
-          "source": "airbus.com",
-          "companion": true,
-          "publishedUtc": "2026-07-30T12:00Z"
-        },
-        {
-          "title": "Airbus Helicopters delivers first Standard 2 NH90 for French army special forces use",
-          "summary": "Airbus Helicopters delivers first Standard 2 NH90 for French army special forces use &nbsp;&nbsp; FlightGlobal",
-          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQNWd6M2pFY2tiSjZZTHJXVW1UcFFkU0VPNjZqemh4WEVCXzdJU1dTZU90THpQbXh4R0JfczR6Y25KTlZYWWtIeVM2aUlVV0h0eDAxR3U4ZTgxcmdRaVRmTktUOFRxRXVTdmExVWhwOW5ZdkV4YXJnRkZWTUw0T0lZX1M2dk8tRF9VdTEyVzBfYUpueTVEWkU4bmNzaTZ4R1pOZ1o0RnNvUVlEZVJfbEFJY2FxaDhmWDN2aVV3TkhmNlg4RzNaeXh3NGtn?oc=5",
-          "source": "FlightGlobal",
-          "companion": true,
-          "publishedUtc": "2026-07-30T13:38Z"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: airbus",
-              "archive predates source by 2 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
-            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-            "facts": [
-              {
-                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
-                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              },
-              {
-                "claim": "Qantas is opting to utilize the Boeing 787-9 instead.",
-                "source_quote": "as the airline opts for Boeing 787-9.",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              },
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1934-airbus-delivers-237-aircraft-in-q2-maint",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: airbus",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar...",
-            "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-            "facts": [
-              {
-                "claim": "空中巴士在第二季交付237架飛機。",
-                "source_quote": "Airbus Achieves 237 Deliveries In 2nd Quarter",
-                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
-              },
-              {
-                "claim": "空中巴士維持全年交付870架飛機的目標。",
-                "source_quote": "Keeps 870 Target For Full Year",
-                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
-              },
-              {
-                "claim": "Simple Flying報導指出維持永續的產能提升對空中巴士達成全年870架交付目標至關重要。",
-                "source_quote": "Airbus' ability to maintain a sustainable production ramp-up will be crucial in achieving its 870-aircraft delivery target for the full year.",
-                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0603-philippine-airlines-receives-third-a350",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: airbus",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft",
-            "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
-            "facts": [
-              {
-                "claim": "Philippine Airlines took delivery of its third Airbus A350-1000 (registration RP-C3512) on 29 July 2026, arriving in Manila from Toulouse.",
-                "source_quote": "The aircraft, with registration RP-C3512, arrived in Manila from Airbus’ delivery center in Toulouse, France, on July 29, 2026",
-                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
-                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
-              },
-              {
-                "claim": "The newly delivered A350-1000 will debut on the Manila–San Francisco route on 5 August 2026, initially three weekly flights (Tue, Fri, Sun) before daily service in September 2026.",
-                "source_quote": "The newly delivered aircraft is set to make its debut on PAL’s Manila-San Francisco route starting August 5, 2026, initially flying three times a week, on Tuesdays, Fridays, and Sundays, before shifting to daily service in September 2026",
-                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
-                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
-              },
-              {
-                "claim": "Philippine Airlines is the first and only airline in Southeast Asia operating the Airbus A350-1000.",
-                "source_quote": "Philippine Airlines is the first, and so far only, airline in Southeast Asia flying the A350-1000",
-                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
-                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
               }
             ]
           }
