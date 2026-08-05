@@ -1,5 +1,827 @@
 [
   {
+    "id": "g-20260805-0942-1",
+    "queuedUtc": "2026-08-05T09:42Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The Federal Aviation Administration (FAA) issued an amended type certificate certifying the Boeing 737 MAX 7, which constitutes a regulatory action requiring human review.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The Federal Aviation Administration (FAA) issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026.",
+        "sourceQuote": "Following almost a decade of extensive review, the FAA has issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX-7.",
+        "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The FAA required Boeing to incorporate key improvements including updates to flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system before granting approval.",
+        "sourceQuote": "Before granting approval, the FAA required the MAX-7 to incorporate key improvements that address requirements in the Aircraft Certification, Safety, and Accountability Act and NTSB recommendations , including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system.",
+        "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Boeing Commercial Airplanes President and CEO Stephanie Pope stated that the certification validates the airplane's design and recognizes the 737 MAX development team.",
+        "sourceQuote": "This important certification validates the rigor of our airplane’s design and recognizes the determination and resilience of our 737 MAX development team",
+        "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-7-gains-faa-certification-which-airlines-placed-orders",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The FAA stated that safety inspectors will remain on site at Boeing production facilities to closely monitor the manufacturing process.",
+        "sourceQuote": "FAA safety inspectors will remain on site at Boeing production facilities across the country to closely monitor the manufacturing process",
+        "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "As of July 2026, Boeing completed certification flight testing on both the 737-7 and 737-10, anticipating certification in 2026 and first delivery in 2027.",
+        "sourceQuote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+        "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+        "evidenceScope": "archive",
+        "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+        "archiveContext": true
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The Federal Aviation Administration (FAA) issued an amended type certificate certifying the Boeing 737 MAX 7, which constitutes a regulatory action requiring human review.",
+      "cat": "reg",
+      "zh": {
+        "title": "美國FAA核發波音737 MAX 7修改型別檢定證",
+        "summary": "美國聯邦航空總署核發波音737 MAX 7的修改型別檢定證與生產限制紀錄。波音依規定完成飛行控制軟體、機組員警報系統及引擎防冰系統改善。FAA安全檢查員將持續駐廠監控製造過程。",
+        "body": [
+          "美國聯邦航空總署（FAA）於2026年8月3日宣布，已核發波音737 MAX 7的修改型別檢定證與更新的生產限制紀錄。該項認證確認該型客機符合所有適用之設計與安全法規，並授權波音開始生產該機型。",
+          "在核準前，FAA要求波音進行多項關鍵改進，包括更新飛行控制軟體、機組員警報系統，以及重新設計引擎防冰系統，以防止引擎進氣口過熱並強化相關結構。波音民用飛機集團總裁兼執行長 Stephanie Pope 表示，此認證驗證了飛機設計的嚴謹性。",
+          "FAA補充說明，安全檢查員將持續駐紮於全美各地的波音生產設施，以密切監控製造過程與安全管理系統。歷史資料顯示，截至2026年7月，波音已完成737-7的認證飛行測試。"
+        ]
+      },
+      "en": {
+        "title": "FAA Grants Certification for Boeing 737 MAX 7 Commercial Service",
+        "summary": "The US Federal Aviation Administration has issued an amended type certificate and Production Limitation Record for the Boeing 737 MAX 7. Before granting approval, the regulatory agency required Boeing to incorporate key safety improvements, including updates to flight-control software, flightcrew alerting systems, and a redesigned engine anti-ice system. Boeing Commercial Airplanes leadership stated that the certification validates the aircraft's design. Federal Aviation Administration safety inspectors will remain on site at Boeing manufacturing facilities to monitor ongoing production processes.",
+        "body": [
+          "The US Federal Aviation Administration (FAA) issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026. The approval authorizes Boeing to begin production of the commercial aircraft model following regulatory review.",
+          "Prior to granting certification, the FAA required Boeing to incorporate key safety improvements, including updates to flight-control software, flightcrew alerting systems, and a redesigned engine anti-ice system. Boeing Commercial Airplanes President and CEO Stephanie Pope stated that the certification validates the rigor of the airplane's design.",
+          "The FAA stated that its safety inspectors will remain present at Boeing manufacturing facilities across the country to closely monitor production processes. Historical records indicate that Boeing had completed certification flight testing on the 737-7 variant by July 2026."
+        ]
+      },
+      "flash": {
+        "zh": "FAA發放波音737 MAX 7修改型別檢定證",
+        "en": "FAA issues amended type certificate for Boeing 737 MAX 7",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The Federal Aviation Administration (FAA) issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026.",
+          "sourceQuote": "Following almost a decade of extensive review, the FAA has issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX-7.",
+          "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The FAA required Boeing to incorporate key improvements including updates to flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system before granting approval.",
+          "sourceQuote": "Before granting approval, the FAA required the MAX-7 to incorporate key improvements that address requirements in the Aircraft Certification, Safety, and Accountability Act and NTSB recommendations , including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system.",
+          "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Boeing Commercial Airplanes President and CEO Stephanie Pope stated that the certification validates the airplane's design and recognizes the 737 MAX development team.",
+          "sourceQuote": "This important certification validates the rigor of our airplane’s design and recognizes the determination and resilience of our 737 MAX development team",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-7-gains-faa-certification-which-airlines-placed-orders",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The FAA stated that safety inspectors will remain on site at Boeing production facilities to closely monitor the manufacturing process.",
+          "sourceQuote": "FAA safety inspectors will remain on site at Boeing production facilities across the country to closely monitor the manufacturing process",
+          "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "As of July 2026, Boeing completed certification flight testing on both the 737-7 and 737-10, anticipating certification in 2026 and first delivery in 2027.",
+          "sourceQuote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+          "archiveContext": true
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "FAA",
+          "Federal Aviation Administration",
+          "Boeing",
+          "Boeing Commercial Airplanes",
+          "NTSB"
+        ],
+        "airlines": [
+          "Southwest Airlines"
+        ],
+        "aircraft_models": [
+          "737 MAX 7",
+          "737 MAX-7",
+          "737-7",
+          "737 MAX"
+        ],
+        "airports": [],
+        "locations": [
+          "US"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-03",
+          "2026-07"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260805-0942-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Somon Air receives its first Boeing 737 MAX jet, a first for Tajikistan",
+          "url": "https://www.aerotime.aero/articles/somon-air-receives-its-first-boeing-737-max-jet-a-first-for-tajikistan",
+          "publishedUtc": "2026-08-03T14:12Z",
+          "summary": "Somon Air has received its first Boeing 737 MAX, marking the first appearance of the aircraft type in… The post Somon Air receives its first Boeing 737 MAX jet, a first for Tajikistan appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Boeing 737 MAX 7 gains FAA certification – which airlines placed orders?",
+          "url": "https://www.aerotime.aero/articles/boeing-737-max-7-gains-faa-certification-which-airlines-placed-orders",
+          "publishedUtc": "2026-08-04T09:47Z",
+          "summary": "Just over 13 years ago, Boeing and Southwest Airlines came together to launch the 737 MAX 7, the… The post Boeing 737 MAX 7 gains FAA certification – which airlines placed orders? appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Why Airlines Keep Choosing The Airbus A321XLR Over The Boeing 737 MAX 10",
+          "url": "https://simpleflying.com/why-airlines-keep-choosing-airbus-a321xlr-over-boeing-737-max-10/",
+          "publishedUtc": "2026-08-05T08:00Z",
+          "summary": "While the MAX 10 awaits certification, airlines are already seeing success with the A321XLR",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/the-airbus-a321xlr.png",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        },
+        {
+          "title": "FAA Statement on Certification of the Boeing 737 MAX-7",
+          "url": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
+          "publishedUtc": "2026-08-03T00:00Z",
+          "summary": "Statement",
+          "image": null,
+          "source": "FAA",
+          "sourceKey": "faa"
+        },
+        {
+          "title": "US FAA certifies Boeing 737 MAX 7 in win for planemaker",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObm5abmxuWVVCMWR2ZDdDaTFWSnJ5SEYxZnc5MFg0Qko5RkJWMGZpTndzclotOVAza0ZYRHJoTmpUZk1yclB4MnZxUFlYanVwbnlGd3JaNk5sZ2YxbjliM3EyVk55bUtEZU9mQWNRR214WTlQRVdTRXAwbVdGRzdYdE1CY0hrOXlIWjRlV0V0VGg2d05qLUJzT05iQ0oyaS13UFM4azRFMXF2T2ZOUEhPT2hJblN1bUozNlc1SkNn?oc=5",
+          "publishedUtc": "2026-08-03T22:26Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "Boeing 737 MAX 7 finally cleared for service following FAA certification",
+          "url": "https://aerospaceglobalnews.com/news/boeing-737-max-7-faa-certification/",
+          "publishedUtc": "2026-08-04T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/737-7-max-ID-fb3c1b364a1c-scaled.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing, faa, southwest airlines",
+              "archive predates source by 10 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737, 737-7",
+              "same named core entity: boeing, faa",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737, 737-7",
+              "same named core entity: boeing, simple flying",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
+            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+            "facts": [
+              {
+                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
+                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260805-0942-2",
+    "queuedUtc": "2026-08-05T09:42Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Major order claim ($366.4M contract) requires human review per policy.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Embraer announced on August 4, 2026 that the Fuerza Aeroespacial Colombiana (FAC) signed a contract for two KC-390 Millennium multi-mission aircraft.",
+        "sourceQuote": "Embraer announced on August 4, 2026, that the Fuerza Aeroespacial Colombiana (FAC) has signed a contract for two KC-390 Millennium multi-mission aircraft",
+        "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The contract value is $366.4 million at fixed prices over four years.",
+        "sourceQuote": "The FAC put the value of the contract at $366.4 million at fixed prices, with execution spread over four years.",
+        "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Deliveries are scheduled for 2029 and 2030, with the first aircraft ferried from Embraer’s Gavião Peixoto plant to CATAM air base in Bogotá.",
+        "sourceQuote": "Deliveries are scheduled for 2029 and 2030, with the first aircraft to be ferried from Embraer’s Gavião Peixoto plant to CATAM air base in Bogotá.",
+        "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The purchase is part of the FAC’s heavy tactical military transport requirement linked to its Air and Space Development Strategy 2042.",
+        "sourceQuote": "The purchase falls under the FAC’s heavy tactical military transport requirement, part of a modernization plan the force ties to its Air and Space Development Strategy 2042 (EDAES 2042), formulated in 2019.",
+        "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The KC-390 will be delivered with connectivity to operate alongside the 17 Gripen E/F fighters ordered from Saab in November 2025.",
+        "sourceQuote": "Embraer said the aircraft will be delivered with connectivity allowing them to operate alongside the 17 Gripen E/F fighters Colombia ordered from Saab in November 2025 under a €3.1 billion contract.",
+        "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The KC-390 can be fitted with removable air-to-air refueling equipment to serve as tanker or receiver.",
+        "sourceQuote": "The KC-390 can be fitted with removable air-to-air refueling equipment, allowing it to serve as either tanker or receiver.",
+        "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Major order claim ($366.4M contract) requires human review per policy.",
+      "cat": "mil",
+      "zh": {
+        "title": "哥倫比亞簽約採購兩架巴西航空工業 KC-390",
+        "summary": "巴西航空工業於8月4日宣布，哥倫比亞太空軍簽署合約購買兩架KC-390多任務運輸機，合約金額3.664億美元，預計2029及2030年交付，首架將飛抵波哥大CATAM基地。",
+        "body": [
+          "巴西航空工業於2026年8月4日宣布，哥倫比亞太空軍（Fuerza Aeroespacial Colombiana，FAC）已簽署合約，採購兩架KC-390 Millennium多任務運輸機。",
+          "合約價值為3.664億美元（固定價格），執行期四年，涵蓋飛機、任務裝備、初始訓練、地面支援設備及24個月綜合後勤支援。",
+          "交付時程訂於2029年與2030年，首架機將從巴西Gavião Peixoto廠區飛往波哥大CATAM空軍基地。",
+          "此採購屬FAC重型戰術軍事運輸需求，配合其2042年航空暨太空發展策略（EDAES 2042）。",
+          "新機將具備與17架Saab Gripen E/F戰機互操作的連通能力，並可裝配可拆卸空中加油設備，擔任加油機或受油機角色。"
+        ]
+      },
+      "en": {
+        "title": "Colombia signs contract for two Embraer KC-390 Millennium airlifters",
+        "summary": "Embraer announced on 4 August 2026 that the Colombian Aerospace Force has signed a $366.4 million fixed‑price contract for two KC-390 Millennium multi‑mission aircraft. Deliveries are scheduled for 2029 and 2030, with the first aircraft ferried from Embraer’s Gavião Peixoto plant to CATAM air base in Bogotá. The purchase supports the force’s heavy tactical transport requirement under its 2042 Air and Space Development Strategy and the jets will be equipped to operate alongside the 17 Gripen E/F fighters ordered from Saab.",
+        "body": [
+          "Embraer announced on 4 August 2026 that the Colombian Aerospace Force (FAC) has signed a contract for two KC-390 Millennium multi‑mission aircraft.",
+          "The contract is valued at $366.4 million at fixed prices, spread over four years, covering the aircraft, mission equipment, initial training, ground support equipment and 24 months of integrated logistics support.",
+          "Deliveries are planned for 2029 and 2030, with the first aircraft to be ferried from Embraer’s Gavião Peixoto plant to CATAM air base in Bogotá.",
+          "The acquisition falls under the FAC’s heavy tactical military transport requirement, part of its Air and Space Development Strategy 2042 (EDAES 2042) formulated in 2019.",
+          "The KC-390s will be delivered with connectivity to operate alongside the 17 Gripen E/F fighters Colombia ordered from Saab in November 2025, and can be fitted with removable air‑to‑air refuelling equipment to serve as tanker or receiver."
+        ]
+      },
+      "flash": {
+        "zh": "哥倫比亞簽約購兩架KC-390",
+        "en": "Colombia orders two KC-390",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Embraer announced on August 4, 2026 that the Fuerza Aeroespacial Colombiana (FAC) signed a contract for two KC-390 Millennium multi-mission aircraft.",
+          "sourceQuote": "Embraer announced on August 4, 2026, that the Fuerza Aeroespacial Colombiana (FAC) has signed a contract for two KC-390 Millennium multi-mission aircraft",
+          "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The contract value is $366.4 million at fixed prices over four years.",
+          "sourceQuote": "The FAC put the value of the contract at $366.4 million at fixed prices, with execution spread over four years.",
+          "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Deliveries are scheduled for 2029 and 2030, with the first aircraft ferried from Embraer’s Gavião Peixoto plant to CATAM air base in Bogotá.",
+          "sourceQuote": "Deliveries are scheduled for 2029 and 2030, with the first aircraft to be ferried from Embraer’s Gavião Peixoto plant to CATAM air base in Bogotá.",
+          "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The purchase is part of the FAC’s heavy tactical military transport requirement linked to its Air and Space Development Strategy 2042.",
+          "sourceQuote": "The purchase falls under the FAC’s heavy tactical military transport requirement, part of a modernization plan the force ties to its Air and Space Development Strategy 2042 (EDAES 2042), formulated in 2019.",
+          "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The KC-390 will be delivered with connectivity to operate alongside the 17 Gripen E/F fighters ordered from Saab in November 2025.",
+          "sourceQuote": "Embraer said the aircraft will be delivered with connectivity allowing them to operate alongside the 17 Gripen E/F fighters Colombia ordered from Saab in November 2025 under a €3.1 billion contract.",
+          "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The KC-390 can be fitted with removable air-to-air refueling equipment to serve as tanker or receiver.",
+          "sourceQuote": "The KC-390 can be fitted with removable air-to-air refueling equipment, allowing it to serve as either tanker or receiver.",
+          "sourceUrl": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Embraer",
+          "Fuerza Aeroespacial Colombiana",
+          "Saab"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "KC-390 Millennium",
+          "C-130 Hercules",
+          "Gripen E/F"
+        ],
+        "airports": [
+          "CATAM air base"
+        ],
+        "locations": [
+          "Colombia",
+          "Bogotá",
+          "Brazil",
+          "Gavião Peixoto"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-04",
+          "2029",
+          "2030"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260805-0942-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Colombia orders two Embraer KC-390 Millennium airlifters",
+          "url": "https://www.aerotime.aero/articles/colombia-orders-two-embraer-kc-390-millennium",
+          "publishedUtc": "2026-08-05T07:40Z",
+          "summary": "Embraer announced on August 4, 2026, that the Fuerza Aeroespacial Colombiana (FAC) has signed a contract for two KC-390 Millennium multi-mission aircraft,… The post Colombia orders two Embraer KC-390 Millennium airlifters appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Colombia orders two Embraer KC-390 Millennium aircraft as airlift modernisation gathers pace News",
+          "url": "https://aerospaceglobalnews.com/news/colombia-orders-two-embraer-kc-390-millennium-transport-aircraft/",
+          "publishedUtc": "2026-08-05T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/06/Embraer-KC-390-Millennium.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "same airport code(s): THE",
+              "archive predates source by 3 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 3 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260805-0942-7",
+    "queuedUtc": "2026-08-05T09:42Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The news involves a regulatory proposal by the FAA, triggering the regulatory_action risk flag.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The FAA has proposed removing a 64-item medical kit checklist and allowing airlines to cover nine emergencies.",
+        "sourceQuote": "FAA Proposes Ditching 64-Item Medical Kit Checklist, Letting Airlines Cover 9 Emergencies",
+        "sourceUrl": "https://simpleflying.com/faa-proposes-ditching-64-item-medical-kit-checklist-airlines/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The regulatory proposal represents a major change coming to airline medical policy.",
+        "sourceQuote": "A closer look at a major change coming to airline medical policy.",
+        "sourceUrl": "https://simpleflying.com/faa-proposes-ditching-64-item-medical-kit-checklist-airlines/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The news involves a regulatory proposal by the FAA, triggering the regulatory_action risk flag.",
+      "cat": "reg",
+      "zh": {
+        "title": "美國FAA擬廢除64項醫療箱清單改由航空公司涵蓋9種急症",
+        "summary": "美國聯邦航空管理局提議取消現行包含64個項目的航空公司急救醫療箱清單，並擬改為許可航空公司針對9種特定緊急醫療狀況進行應對配置。這項提議代表著航空醫療政策預期迎來的重大變更。",
+        "body": [
+          "根據 Simple Flying 報導，美國聯邦航空管理局（FAA）已提出一項新規範建議，擬取消現有涵蓋64個項目的急救醫療箱檢查清單。根據該項提議，未來將改由航空公司針對9種緊急醫療狀況進行相應的醫療裝備與應對處置。",
+          "這項政策提案標誌著航空公司醫療政策預期迎來的重大改變。相關醫療箱清單調整與防範急症範圍之變更，目前屬於監管機構提出之政策建議階段，後續執行細節與過渡措施仍有待相關單位實施與確認。"
+        ]
+      },
+      "en": {
+        "title": "FAA Proposes Replacing 64-Item Medical Checklist with 9-Emergency Rule",
+        "summary": "The Federal Aviation Administration has proposed a regulatory change to remove the mandatory 64-item medical kit checklist currently required onboard commercial aircraft. Under the new proposed framework, airlines would instead be expected to cover nine specific in-flight medical emergencies. According to industry reports, this regulatory proposal highlights an upcoming shift in airline medical policy standards. The proposed guidelines remain subject to official administrative procedures and review prior to any final implementation across commercial air carriers.",
+        "body": [
+          "The Federal Aviation Administration (FAA) has proposed eliminating its existing 64-item medical kit checklist, according to a report by Simple Flying. Under the proposed regulatory framework, airlines would be permitted to cover nine designated medical emergencies rather than adhering to the current checklist requirements.",
+          "The proposal marks a notable regulatory adjustment coming to broader airline medical policy and onboard emergency protocols. Because the measure is currently a proposed regulatory change, the updated standards remain subject to further administrative review and industry feedback prior to any final implementation across commercial air carriers."
+        ]
+      },
+      "flash": {
+        "zh": "FAA擬廢除64項醫療箱清單改為涵蓋9種急症",
+        "en": "FAA proposes ditching 64-item medical checklist for 9-emergency rule.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The FAA has proposed removing a 64-item medical kit checklist and allowing airlines to cover nine emergencies.",
+          "sourceQuote": "FAA Proposes Ditching 64-Item Medical Kit Checklist, Letting Airlines Cover 9 Emergencies",
+          "sourceUrl": "https://simpleflying.com/faa-proposes-ditching-64-item-medical-kit-checklist-airlines/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The regulatory proposal represents a major change coming to airline medical policy.",
+          "sourceQuote": "A closer look at a major change coming to airline medical policy.",
+          "sourceUrl": "https://simpleflying.com/faa-proposes-ditching-64-item-medical-kit-checklist-airlines/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "FAA"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260805-0942-7",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "FAA Proposes Ditching 64-Item Medical Kit Checklist, Letting Airlines Cover 9 Emergencies",
+          "url": "https://simpleflying.com/faa-proposes-ditching-64-item-medical-kit-checklist-airlines/",
+          "publishedUtc": "2026-08-05T07:05Z",
+          "summary": "A closer look at a major change coming to airline medical policy.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/frontier-airlines-airbus-a320neo-n440fr-arrival-into-runway-18r-at-dfw-international.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260805-0318-3",
     "queuedUtc": "2026-08-05T03:18Z",
     "approve": false,
@@ -8586,861 +9408,6 @@
             "relationship_type": "delivery_followup",
             "relationship_evidence": [
               "same named core entity: faa",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260731-1605-4",
-    "queuedUtc": "2026-07-31T16:05Z",
-    "approve": false,
-    "writer": "openrouter:google/gemma-4-26b-a4b-it:free",
-    "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Sling Aircraft is developing a new twin-engine piston aircraft with plans for four-seat LSA and six-seat EA-B configurations.",
-        "sourceQuote": "Sling Aircraft has revealed the first technical details of a new twin-engine piston aircraft now under development, with plans for both four-seat light-sport (LSA) and six-seat Experimental Amateur-Built (EA-B) configurations.",
-        "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The aircraft will use two turbocharged Rotax 916 iS engines and Garmin AXIS 11.6-inch displays.",
-        "sourceQuote": "The South African manufacturer confirmed that the aircraft will use two turbocharged Rotax 916 iS engines driving constant-speed propellers. The cockpit will feature Garmin AXIS 11.6-inch displays",
-        "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The aircraft design will incorporate a whole-airplane parachute.",
-        "sourceQuote": "while a whole-airplane parachute will be incorporated into the design from the outset.",
-        "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The aircraft targets the FAA's MOSAIC rule, allowing LSA aircraft to have multiple engines and up to four occupants.",
-        "sourceQuote": "The company plans to offer the aircraft with four seats when manufactured in the LSA category under the FAA’s Modernization of Special Airworthiness Certification rule, better known as MOSAIC.",
-        "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Sling Aircraft has not disclosed performance targets, dimensions, pricing, first-flight timing, or delivery dates.",
-        "sourceQuote": "Sling has not yet disclosed performance targets, dimensions, projected pricing, first-flight timing or a planned date for customer deliveries for the twin.",
-        "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
-      "cat": "biz",
-      "zh": {
-        "title": "Sling Aircraft 揭露開發中雙引擎飛機細節以瞄準 MOSAIC 市場",
-        "summary": "南非製造商 Sling Aircraft 已公布其開發中雙引擎活塞飛機的首批技術細節。該機型計畫提供四座輕型運動飛機 (LSA) 與六座實驗性自建 (EA-B) 兩種配置，並將搭載兩具 Rotax 916 iS 渦輪增壓引擎及 Garmin AXIS 顯示器。",
-        "body": [
-          "南非製造商 Sling Aircraft 已公布其正在開發中的新型雙引擎活塞飛機的首批技術細節。根據該公司計畫，此機型將提供四座輕型運動飛機 (LSA) 與六座實驗性自建 (EA-B) 兩種配置。",
-          "該機型預計將搭載兩具 Rotax 916 iS 渦輪增壓引擎，並驅動定速螺旋槳。座艙將配備 Garmin AXIS 11.6 吋顯示器，且設計之初便整合了全機降落傘系統。",
-          "此開發計畫旨在瞄準美國聯邦航空局 (FAA) 的「現代化特殊適航認證」規則，即 MOSAIC。根據該規則，輕型運動飛機可搭載多個引擎，並允許載客量增加至四人。",
-          "目前 Sling Aircraft 尚未公布該機型的性能目標、尺寸、預計售價、首飛時間或客戶交付日期。目前的設計圖像僅為概念性渲染圖，包含低翼設計與可收縮的三輪起落架。"
-        ]
-      },
-      "en": {
-        "title": "Sling Aircraft reveals details of planned twin-engine aircraft targeting MOSAIC market",
-        "summary": "South African manufacturer Sling Aircraft has revealed technical details for a new twin-engine piston aircraft under development. The aircraft is planned for both four-seat light-sport (LSA) and six-seat Experimental Amateur-Built (EA-B) configurations, featuring twin Rotax 916 iS engines.",
-        "body": [
-          "Sling Aircraft has disclosed the first technical details of a new twin-engine piston aircraft currently under development. The South African manufacturer plans to offer the aircraft in both four-seat light-sport (LSA) and six-seat Experimental Amateur-Built (EA-B) configurations.",
-          "The aircraft will utilize two turbocharged Rotax 916 iS engines driving constant-speed propellers. The cockpit is expected to feature Garmin AXIS 11.6-inch displays, and a whole-airplane parachute will be incorporated into the design from the outset.",
-          "The development targets the FAA's Modernization of Special Airworthiness Certification (MOSAIC) rule. Under MOSAIC, light-sport aircraft may be configured with multiple engines and carry up to four occupants.",
-          "Sling Aircraft has not yet disclosed performance targets, dimensions, projected pricing, first-flight timing, or a planned date for customer deliveries. Current renderings show a low-wing design with retractable tricycle landing gear."
-        ]
-      },
-      "flash": {
-        "zh": "Sling Aircraft 揭露開發中雙引擎飛機細節以瞄準 MOSAIC 市場",
-        "en": "Sling Aircraft reveals details of planned twin-engine aircraft targeting MOSAIC market",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Sling Aircraft is developing a new twin-engine piston aircraft with plans for four-seat LSA and six-seat EA-B configurations.",
-          "sourceQuote": "Sling Aircraft has revealed the first technical details of a new twin-engine piston aircraft now under development, with plans for both four-seat light-sport (LSA) and six-seat Experimental Amateur-Built (EA-B) configurations.",
-          "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The aircraft will use two turbocharged Rotax 916 iS engines and Garmin AXIS 11.6-inch displays.",
-          "sourceQuote": "The South African manufacturer confirmed that the aircraft will use two turbocharged Rotax 916 iS engines driving constant-speed propellers. The cockpit will feature Garmin AXIS 11.6-inch displays",
-          "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The aircraft design will incorporate a whole-airplane parachute.",
-          "sourceQuote": "while a whole-airplane parachute will be incorporated into the design from the outset.",
-          "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The aircraft targets the FAA's MOSAIC rule, allowing LSA aircraft to have multiple engines and up to four occupants.",
-          "sourceQuote": "The company plans to offer the aircraft with four seats when manufactured in the LSA category under the FAA’s Modernization of Special Airworthiness Certification rule, better known as MOSAIC.",
-          "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Sling Aircraft has not disclosed performance targets, dimensions, pricing, first-flight timing, or delivery dates.",
-          "sourceQuote": "Sling has not yet disclosed performance targets, dimensions, projected pricing, first-flight timing or a planned date for customer deliveries for the twin.",
-          "sourceUrl": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Sling Aircraft",
-          "Rotax",
-          "Garmin",
-          "AeroTime"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "South Africa"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-31"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260731-1605-4",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Sling reveals details of planned twin-engine aircraft targeting MOSAIC market",
-          "url": "https://www.aerotime.aero/articles/sling-reveals-details-planned-twin-engine-mosaic-aircraft",
-          "publishedUtc": "2026-07-31T13:37Z",
-          "summary": "Sling Aircraft has revealed the first technical details of a new twin-engine piston aircraft now under development, with… The post Sling reveals details of planned twin-engine aircraft targeting MOSAIC market appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260731-1301-10",
-    "queuedUtc": "2026-07-31T13:01Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Article involves major defense procurement and financial claims regarding missile acquisition costs and ship modification funding.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Japan's Ministry of Defense announced on July 30, 2026, that Japan fired a Tomahawk cruise missile from a warship for the first time.",
-        "sourceQuote": "Japan has fired a Tomahawk cruise missile from a warship for the first time, the country’s Ministry of Defense announced on July 30, 2026.",
-        "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The JMSDF destroyer JS Chokai carried out the live-fire test in the Pacific Ocean on July 29, 2026.",
-        "sourceQuote": "The Japan Maritime Self-Defense Force destroyer JS Chokai (DDG-176) carried out the live-fire test in the Pacific Ocean on July 29, 2026.",
-        "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "JS Chokai has been deployed to the United States since October 2025 for modification and crew training.",
-        "sourceQuote": "Chokai, a Kongo-class Aegis destroyer, has been deployed to the United States since October 2025 for modification and crew training.",
-        "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Funding approved through fiscal year 2026 covers about ¥113.6 billion ($694 million) to add Tomahawk capability to five JMSDF Aegis destroyers.",
-        "sourceQuote": "Funding approved through fiscal year 2026 covers about ¥113.6 billion ($694 million) to add the capability to five of the eight JMSDF Aegis destroyers",
-        "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Japan is purchasing up to 400 Tomahawk missiles through the US Foreign Military Sales program at roughly ¥169.4 billion ($1.03 billion).",
-        "sourceQuote": "Japan is buying up to 400 Tomahawks through the US Foreign Military Sales program at a cost of roughly ¥169.4 billion ($1.03 billion)",
-        "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "The launch makes Japan the third country outside the United States to fire a Tomahawk from a surface combatant, after Australia and the Netherlands.",
-        "sourceQuote": "The launch makes Japan the third country outside the United States to fire a Tomahawk from a surface combatant, after Australia and the Netherlands.",
-        "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Article involves major defense procurement and financial claims regarding missile acquisition costs and ship modification funding.",
-      "cat": "mil",
-      "zh": {
-        "title": "日本防衛省宣布神盾驅逐艦鳥海號首度試射戰斧巡弋飛彈",
-        "summary": "日本防衛省於2026年7月30日宣布，海上自衛隊神盾驅逐艦鳥海號（DDG-176）於7月29日在太平洋成功進行戰斧巡弋飛彈實彈射擊測試，為日本軍艦首次發射該型飛彈。日本透過美國軍售管道採購多達400枚戰斧飛彈，並編列約1136億日圓預算改裝五艘神盾艦。",
-        "body": [
-          "日本防衛省於2026年7月30日宣布，海上自衛隊神盾驅逐艦鳥海號（DDG-176）於7月29日在太平洋成功進行戰斧巡弋飛彈實彈射擊測試。這是日本軍艦首次發射該型飛彈，相關測試在美國海軍支援下進行，確認鳥海號具備實際發射戰斧飛彈的能力，並驗證了官兵進行發射程序的熟練度。",
-          "金剛級神盾驅逐艦鳥海號自2025年10月起部署至美國進行艦體改裝與官兵訓練。防衛省先前於2026年3月27日宣布該艦已取得戰斧飛彈發射能力，使其成為首艘完成相關配置的日本軍艦。鳥海號預計於2026年9月左右返回日本，並以佐世保為母港。",
-          "日本防衛省指出，本次試射展現了戰斧飛彈計畫的穩健進展，未來將繼續致力於儘早建立防衛戰略所規劃的反擊能力。美國海軍在測試期間提供試射場地並監控週邊海空域，而實際發射作業則由日本官兵執行。防衛省表示，由於Mk 41垂直發射系統與戰斧飛彈在美國海軍已擁有廣泛服役紀錄，因此暫無計畫在其他改裝中的神盾艦上進行類似實彈測試。",
-          "根據日本防衛省統計，截至2026年度已批准約1136億日圓預算，用於為五艘海上自衛隊神盾驅逐艦新增戰斧飛彈發射能力，包含鳥海號、霧島號、羽黑號、妙高號與愛宕號。此外，日本正透過美國對外軍售（FMS）管道採購最多400枚戰斧飛彈，總費用約為169.4億日圓。本次試射也使日本成為繼澳洲與荷蘭之後，全球第三個由水面艦艇發射戰斧飛彈的美國盟邦。"
-        ]
-      },
-      "en": {
-        "title": "Japan JMSDF Destroyer JS Chokai Conducts First Tomahawk Live-Fire Test",
-        "summary": "Japan's Ministry of Defense announced on July 30, 2026, that the Japan Maritime Self-Defense Force destroyer JS Chokai (DDG-176) successfully executed a live-fire test of a Tomahawk cruise missile in the Pacific Ocean on July 29, 2026. The test, conducted with assistance from the US Navy, marks the first time a Japanese warship has fired a Tomahawk missile. Japan is acquiring up to 400 Tomahawk missiles through the US Foreign Military Sales program for approximately 169.4 billion yen ($1.03 billion) and has approved 113.6 billion yen to equip five Aegis destroyers with launch capabilities.",
-        "body": [
-          "Japan's Ministry of Defense announced on July 30, 2026, that the Japan Maritime Self-Defense Force Aegis destroyer JS Chokai (DDG-176) carried out a live-fire test of a Tomahawk cruise missile in the Pacific Ocean on July 29, 2026. The test, conducted with assistance from the US Navy, marks the first time a Japanese warship has launched a Tomahawk missile. The ministry confirmed that the firing sequence verified the crew's proficiency and demonstrated the ship's practical capability to launch the weapon system.",
-          "JS Chokai, a Kongo-class Aegis destroyer, has been deployed to the United States since October 2025 for modification work and crew training. The Ministry of Defense previously announced on March 27, 2026, that the warship had successfully acquired Tomahawk launch capability, becoming the first Japanese surface vessel configured for such missions. The ship is scheduled to return to Japan around September 2026, where it will be homeported at Sasebo.",
-          "The ministry described the successful launch as evidence of steady progress in its standoff defense program initiated under Japan's 2022 National Security Strategy. While the US Navy provided the test range and monitored surrounding maritime and airspace safety, the actual launch sequence was executed entirely by the Japanese crew. Defense officials noted that no additional live-fire tests are planned for other modifying Aegis destroyers, as the Mk 41 vertical launching system and Tomahawk missile already possess extensive operational service records with the US Navy.",
-          "Approved defense funding through fiscal year 2026 covers approximately 113.6 billion yen ($694 million) to integrate Tomahawk capabilities across five of Japan's eight Aegis destroyers, including Chokai, Kirishima, Haguro, Myoko, and Atago. Japan is purchasing up to 400 Tomahawk missiles through the US Foreign Military Sales program at an estimated cost of 169.4 billion yen ($1.03 billion). With this test, Japan becomes the third nation outside the United States to launch a Tomahawk missile from a surface warship, following Australia and the Netherlands."
-        ]
-      },
-      "flash": {
-        "zh": "日海上自衛隊驅逐艦鳥海號於太平洋首度完成戰斧巡弋飛彈實彈射擊測試",
-        "en": "JMSDF destroyer JS Chokai completes Japan's first Tomahawk missile live-fire test in the Pacific",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Japan's Ministry of Defense announced on July 30, 2026, that Japan fired a Tomahawk cruise missile from a warship for the first time.",
-          "sourceQuote": "Japan has fired a Tomahawk cruise missile from a warship for the first time, the country’s Ministry of Defense announced on July 30, 2026.",
-          "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The JMSDF destroyer JS Chokai carried out the live-fire test in the Pacific Ocean on July 29, 2026.",
-          "sourceQuote": "The Japan Maritime Self-Defense Force destroyer JS Chokai (DDG-176) carried out the live-fire test in the Pacific Ocean on July 29, 2026.",
-          "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "JS Chokai has been deployed to the United States since October 2025 for modification and crew training.",
-          "sourceQuote": "Chokai, a Kongo-class Aegis destroyer, has been deployed to the United States since October 2025 for modification and crew training.",
-          "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Funding approved through fiscal year 2026 covers about ¥113.6 billion ($694 million) to add Tomahawk capability to five JMSDF Aegis destroyers.",
-          "sourceQuote": "Funding approved through fiscal year 2026 covers about ¥113.6 billion ($694 million) to add the capability to five of the eight JMSDF Aegis destroyers",
-          "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Japan is purchasing up to 400 Tomahawk missiles through the US Foreign Military Sales program at roughly ¥169.4 billion ($1.03 billion).",
-          "sourceQuote": "Japan is buying up to 400 Tomahawks through the US Foreign Military Sales program at a cost of roughly ¥169.4 billion ($1.03 billion)",
-          "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "The launch makes Japan the third country outside the United States to fire a Tomahawk from a surface combatant, after Australia and the Netherlands.",
-          "sourceQuote": "The launch makes Japan the third country outside the United States to fire a Tomahawk from a surface combatant, after Australia and the Netherlands.",
-          "sourceUrl": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F4",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "Ministry of Defense",
-          "Japan Maritime Self-Defense Force",
-          "US Navy",
-          "ATLA"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Pacific Ocean",
-          "United States",
-          "Japan",
-          "Sasebo",
-          "Australia",
-          "Netherlands"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [
-          "DDG-176"
-        ],
-        "event_dates": [
-          "July 30, 2026",
-          "July 29, 2026",
-          "October 2025",
-          "March 27, 2026",
-          "September 2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260731-1301-10",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Japan fires Tomahawk cruise missile from warship for first time",
-          "url": "https://www.aerotime.aero/articles/japan-first-tomahawk-cruise-missile-warship-launch",
-          "publishedUtc": "2026-07-31T10:36Z",
-          "summary": "Japan has fired a Tomahawk cruise missile from a warship for the first time, the country’s Ministry of… The post Japan fires Tomahawk cruise missile from warship for first time appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Japan fires Tomahawk cruise missile from warship for first time",
-          "summary": "Japan fires Tomahawk cruise missile from warship for first time &nbsp;&nbsp; aerotime.aero",
-          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPT0ljSWk0LUJEX205emtTTHhTUHJwMjVVYVVfR1V2ei1ma25HNHJZMkQ4anc1UFZTRUhScFJ2QVZQSGtwYzJKWUhDSjM4UDZzNjJoY0F5LWNEWG8xanRRXzV1ZG45ZHZBM1ZWdUd0ZURYdE5WeDNhZFNZSGw5UzdKZF84WWNIWHgzSE5rZlln0gGTAUFVX3lxTE40Y0FlVy1nSEJpdjk4aHRQdzItMnFTYmhnZXk4WFpENkZWb1RLbU04anlTbDdCTnhpaGxtV29SQVh6cGRVT1Q4V0F5QmNhWkgwR05PQVUtZHczNmhMUk04TWlzWmo0VWQtWkh1VXprWDRrRTVGMV9pUExtMXNtOUxkR0tIYzdCU1A4cGd6SUlRVl9iTQ?oc=5",
-          "source": "aerotime.aero",
-          "companion": true,
-          "publishedUtc": "2026-07-31T10:36Z"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
-            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-            "facts": [
-              {
-                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
-                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
-                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
-            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-            "facts": [
-              {
-                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
-                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
-                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
-                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
-                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
-                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260731-1048-2",
-    "queuedUtc": "2026-07-31T10:48Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Item involves government financial allocations, production funding claims, and airline delivery order figures for Russian aircraft programs.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Russian Prime Minister Mikhail Mishustin signaled government commitment on July 30, 2026, securing funding for commercial aircraft production.",
-        "sourceQuote": "On July 30, 2026, Russian Prime Minister Mikhail Mishustin signaled the government’s commitment to building commercial aircraft free from foreign production.",
-        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "There are currently 18 MC-21-310 aircraft at Yakovlev's Irkutsk Aircraft Plant in various stages of production.",
-        "sourceQuote": "there are 18 MC-21-310 aircraft at Yakovlev’s Irkutsk Aircraft Plant currently at various stages of production.",
-        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "According to ch-aviation data, Aeroflot is awaiting delivery of 198 MC-21-310 aircraft.",
-        "sourceQuote": "According to ch-aviation data, Aeroflot is awaiting 198 MC-21-310 aircraft to be delivered.",
-        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Russia allocated $32.8 million (RUB 2.6 billion) to complete the first three production IL-114-300 passenger aircraft.",
-        "sourceQuote": "The company will receive $32.8 million (RUB 2.6 billion) to complete the three domestically produced passenger aircraft.",
-        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "The first three IL-114-300 aircraft will be delivered to Arkhangelsk Aviation Enterprise following type certification in June 2026.",
-        "sourceQuote": "The first three aircraft will be delivered to Arkhangelsk Aviation Enterprise. The IL-114-300 received type certification in June 2026.",
-        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Certification for the MC-21-310 is expected to be completed in June 2027.",
-        "sourceQuote": "The certification process for the MC-21-310 is expected to be completed in June 2027.",
-        "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Item involves government financial allocations, production funding claims, and airline delivery order figures for Russian aircraft programs.",
-      "cat": "biz",
-      "zh": {
-        "title": "俄羅斯增撥資金推進MC-21量產 並資助首三架IL-114-300客機",
-        "summary": "俄羅斯政府於2026年7月30日宣布加碼投資國產客機生產。雅克列夫公司伊爾庫茨克廠現有18架MC-21-310客機處於各生產階段，據ch-aviation資料，啟始客戶俄羅斯航空正等待交付198架。同時當局撥款3280萬美元資助完成首三架IL-114-300客機，交付阿爾漢格爾斯克航空企業。",
-        "body": [
-          "俄羅斯總理米舒斯京於2026年7月30日表示，政府已確定資金以推進商業客機量產，並向啟始客戶俄羅斯航空交付客機。目前位於雅克列夫旗下伊爾庫茨克飛機製造廠內，共有18架MC-21-310客機處於不同的生產階段。",
-          "根據ch-aviation資料顯示，俄羅斯航空目前等待接收198架MC-21-310客機。該機型預計於2027年6月完成認證程序，俄方並計畫在2032年前實現每年生產36架MC-21客機的目標。",
-          "在區域客機方面，俄羅斯政府撥款3280萬美元（約26億盧布），用於完成俄羅斯國家技術集團旗下聯合航空製造公司（UAC）子公司伊留申開發的首三架IL-114-300渦輪螺旋槳客機。該機型已於2026年6月取得型別認證，首三架將交付給阿爾漢格爾斯克航空企業。"
-        ]
-      },
-      "en": {
-        "title": "Russia Increases Funding for MC-21 Production and IL-114-300 Turboprops",
-        "summary": "Russian Prime Minister Mikhail Mishustin announced on July 30, 2026, enhanced government funding for commercial aircraft production. The funding supports 18 MC-21-310 aircraft currently at various production stages at Yakovlev’s Irkutsk Aircraft Plant, aiming to supply launch customer Aeroflot, which according to ch-aviation data is awaiting 198 aircraft. Additionally, Russia allocated $32.8 million (RUB 2.6 billion) to complete the first three IL-114-300 turboprop passenger aircraft developed by Ilyushin, which received type certification in June 2026 and are slated for delivery to Arkhangelsk Aviation Enterprise.",
-        "body": [
-          "Russian Prime Minister Mikhail Mishustin confirmed on July 30, 2026, that government funding has been secured to advance domestic commercial aircraft production. At Yakovlev's Irkutsk Aircraft Plant, 18 MC-21-310 passenger aircraft are currently at various stages of production to serve launch customer Aeroflot.",
-          "According to ch-aviation data, Aeroflot is awaiting delivery of 198 MC-21-310 aircraft. The certification process for the MC-21-310 is expected to be completed in June 2027, with long-term plans targeting an annual production rate of 36 MS-21 aircraft by 2032.",
-          "The government also announced funding totaling $32.8 million (RUB 2.6 billion) for the first three production IL-114-300 turboprop aircraft developed by Ilyushin. Following type certification in June 2026, these three aircraft will be delivered to Arkhangelsk Aviation Enterprise."
-        ]
-      },
-      "flash": {
-        "zh": "俄羅斯加碼資助MC-21與IL-114-300客機量產",
-        "en": "Russia increases funding for MC-21 and IL-114-300 passenger aircraft production",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Russian Prime Minister Mikhail Mishustin signaled government commitment on July 30, 2026, securing funding for commercial aircraft production.",
-          "sourceQuote": "On July 30, 2026, Russian Prime Minister Mikhail Mishustin signaled the government’s commitment to building commercial aircraft free from foreign production.",
-          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "There are currently 18 MC-21-310 aircraft at Yakovlev's Irkutsk Aircraft Plant in various stages of production.",
-          "sourceQuote": "there are 18 MC-21-310 aircraft at Yakovlev’s Irkutsk Aircraft Plant currently at various stages of production.",
-          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "According to ch-aviation data, Aeroflot is awaiting delivery of 198 MC-21-310 aircraft.",
-          "sourceQuote": "According to ch-aviation data, Aeroflot is awaiting 198 MC-21-310 aircraft to be delivered.",
-          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Russia allocated $32.8 million (RUB 2.6 billion) to complete the first three production IL-114-300 passenger aircraft.",
-          "sourceQuote": "The company will receive $32.8 million (RUB 2.6 billion) to complete the three domestically produced passenger aircraft.",
-          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "The first three IL-114-300 aircraft will be delivered to Arkhangelsk Aviation Enterprise following type certification in June 2026.",
-          "sourceQuote": "The first three aircraft will be delivered to Arkhangelsk Aviation Enterprise. The IL-114-300 received type certification in June 2026.",
-          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Certification for the MC-21-310 is expected to be completed in June 2027.",
-          "sourceQuote": "The certification process for the MC-21-310 is expected to be completed in June 2027.",
-          "sourceUrl": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F4"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "Yakovlev",
-          "Rostec",
-          "United Aircraft Corporation",
-          "UAC",
-          "Ilyushin",
-          "Arkhangelsk Aviation Enterprise"
-        ],
-        "airlines": [
-          "Aeroflot"
-        ],
-        "aircraft_models": [
-          "MC-21",
-          "IL-114-300",
-          "MC-21-310",
-          "MS-21-210",
-          "MS-21",
-          "Il-114"
-        ],
-        "airports": [],
-        "locations": [
-          "Russia"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "July 30, 2026",
-          "July 2026",
-          "2035",
-          "June 2027",
-          "2032",
-          "June 2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260731-1048-2",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Russia steps up funding for MC-21 production, support also for first IL-114-300s",
-          "url": "https://www.aerotime.aero/articles/russia-funding-mc-21-production-il-114-300s",
-          "publishedUtc": "2026-07-31T09:27Z",
-          "summary": "Russia is to increase investment in the continued production of the MC-21 aircraft and has allocated more funds… The post Russia steps up funding for MC-21 production, support also for first IL-114-300s appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 5 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
-            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-            "facts": [
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
               "archive predates source by 3 day(s)"
             ],
             "relationship_tier": 2,
