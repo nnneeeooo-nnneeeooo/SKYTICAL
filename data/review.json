@@ -1,5 +1,360 @@
 [
   {
+    "id": "g-20260805-2308-4",
+    "queuedUtc": "2026-08-05T23:08Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "The story involves a formal sale/merger/partnership process and significant financial claims ($110M rights issue, $70M bridge loan, $50M cost-cutting target) that are high-risk and developing. The sale process outcome is unconfirmed. Manual review is mandatory for major financial claims and developing events.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "IndiGo will discontinue widebody operations on October 25, 2026 and conclude its lease agreement with Norse on October 31.",
+        "sourceQuote": "IndiGo said it will discontinue its widebody operations on October 25, 2026, and conclude its lease agreement with Norse on October 31.",
+        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Norse is looking for new work for six Boeing 787-9s and is speaking with several airlines about placing up to five aircraft under new ACMI agreements.",
+        "sourceQuote": "Norse said it is already speaking with several airlines about placing up to five aircraft under new aircraft, crew, maintenance and insurance agreements.",
+        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Norse's board has begun a formal process that may result in a sale, merger or partnership; no potential buyer or partner has been identified.",
+        "sourceQuote": "That process may result in a sale, merger or partnership. Norse has not identified any potential buyer or partner or said when the process might end.",
+        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Norse CEO Eivind Roald said elevated fuel prices, airspace disruptions and longer routes from the Middle East conflict affected the commercial viability of the IndiGo arrangement.",
+        "sourceQuote": "There is no doubt that the elevated fuel prices, airspace disruptions and longer flight routes resulting from the Middle East conflict have affected the commercial viability of the arrangement for both parties",
+        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "In April, Norse announced plans to raise $110 million through a rights issue and arranged a $70 million bridge loan; its Project Falcon cost-cutting program targets annual savings of up to $50 million.",
+        "sourceQuote": "In April, Norse announced plans to raise $110 million through a rights issue and arranged a $70 million bridge loan. Its Project Falcon cost-cutting program is targeting annual savings of up to $50 million.",
+        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Norse operates a total of 12 Boeing 787-9s and plans to use some returning capacity on its own winter network including flights from Europe to Orlando and New York.",
+        "sourceQuote": "The carrier also plans to use some of the returning capacity on its own network during the winter, including additional flights from Europe to Orlando and New York.",
+        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves a formal sale/merger/partnership process and significant financial claims ($110M rights issue, $70M bridge loan, $50M cost-cutting target) that are high-risk and developing. The sale process outcome is unconfirmed. Manual review is mandatory for major financial claims and developing events.",
+      "cat": "biz",
+      "zh": {
+        "title": "Norse Atlantic啟動正式出售程序 IndiGo提前歸還六架787",
+        "summary": "IndiGo（印度靛藍航空）將於2026年10月31日結束與Norse Atlantic Airways的六架波音787-9租賃協議，雙方援引中東衝突導致燃油成本上升與空域中斷為由。Norse同時啟動可能導致出售、合併或合作的正式程序，並已與多家航空公司洽談新租賃安排。",
+        "body": [
+          "Norse Atlantic Airways 正在為六架波音 787-9 尋找新的營運安排，此前 IndiGo（印度靛藍航空）同意提前歸還這些客機。IndiGo 表示將於 2026 年 10 月 25 日停止寬體機營運，並於 10 月 31 日結束與 Norse 的租賃協議。",
+          "IndiGo 將孟買至阿姆斯特丹航線於 10 月 25 日改用空中巴士 A321XLR，倫敦希思路航線則暫停，直至該航空開始接收空中巴士 A350-900。IndiGo 自 2025 年起向 Norse 接收六架 787，作為未來 A350 機隊到達前的過渡安排。",
+          "Norse 執行長 Eivind Roald 表示，中東衝突導致的燃油價格上漲、空域中斷及更長的飛行路線，已影響該安排的商業可行性。雙方共同得出結論，認為飛機的替代部署對雙方在商業上更為有利。",
+          "Norse 表示已在與數家航空公司洽談，以機組、維護與保險協議方式安置最多五架飛機，並計劃將部分運力用於自身冬季航線，包括從歐洲飛往奧蘭多與紐約的額外航班。Norse 營運共 12 架波音 787-9。",
+          "Norse 的董事會已啟動正式程序，可能導致出售、合併或合作。該航空未透露任何潛在買家或合作對象，也未說明程序何時結束。此前媒體報導，Norse 曾聘請 JPMorgan 進行策略性評估。",
+          "Norse 同時在削減成本與籌集資金。2026 年 4 月，Norse 宣布透過配股籌集 1.1 億美元，並安排了 7,000 萬美元的過橋貸款。其 Project Falcon 成本削減計畫目標為每年節省最多 5,000 萬美元。"
+        ]
+      },
+      "en": {
+        "title": "Norse Atlantic begins formal sale process as IndiGo returns six Boeing 787s early",
+        "summary": "IndiGo will discontinue widebody operations on October 25, 2026 and end its lease of six Boeing 787-9s from Norse Atlantic Airways on October 31, citing geopolitical tensions. Norse has begun a formal process that may result in a sale, merger or partnership, and is in talks with several airlines about new ACMI placements.",
+        "body": [
+          "Norse Atlantic Airways is seeking new work for six Boeing 787-9s after IndiGo agreed to return the aircraft early. IndiGo said it will discontinue its widebody operations on October 25, 2026, and conclude its lease agreement with Norse on October 31.",
+          "IndiGo's Mumbai-Amsterdam route will switch to the Airbus A321XLR on October 25, while service to London Heathrow will be suspended until the airline begins receiving its Airbus A350-900s. IndiGo began taking the six Dreamliners from Norse in 2025 as a bridge to its future A350 fleet.",
+          "Norse CEO Eivind Roald said elevated fuel prices, airspace disruptions and longer flight routes resulting from the Middle East conflict had affected the commercial viability of the arrangement. The two parties jointly concluded that alternative deployment would be more commercially beneficial.",
+          "Norse said it is already speaking with several airlines about placing up to five aircraft under new aircraft, crew, maintenance and insurance agreements. The carrier also plans to use some returning capacity on its own network during winter, including additional flights from Europe to Orlando and New York. Norse operates a total of 12 Boeing 787-9s.",
+          "Norse's board has begun a formal process that may result in a sale, merger or partnership. The airline has not identified any potential buyer or partner or said when the process might end. Norse previously hired JPMorgan to conduct a strategic review after receiving interest from potential partners, according to media reports.",
+          "The airline has also been cutting costs and raising money. In April, Norse announced plans to raise $110 million through a rights issue and arranged a $70 million bridge loan. Its Project Falcon cost-cutting program is targeting annual savings of up to $50 million."
+        ]
+      },
+      "flash": {
+        "zh": "Norse啟動正式出售程序，IndiGo提前歸還六架787",
+        "en": "Norse begins formal sale process; IndiGo to return six 787s early",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "IndiGo will discontinue widebody operations on October 25, 2026 and conclude its lease agreement with Norse on October 31.",
+          "sourceQuote": "IndiGo said it will discontinue its widebody operations on October 25, 2026, and conclude its lease agreement with Norse on October 31.",
+          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Norse is looking for new work for six Boeing 787-9s and is speaking with several airlines about placing up to five aircraft under new ACMI agreements.",
+          "sourceQuote": "Norse said it is already speaking with several airlines about placing up to five aircraft under new aircraft, crew, maintenance and insurance agreements.",
+          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Norse's board has begun a formal process that may result in a sale, merger or partnership; no potential buyer or partner has been identified.",
+          "sourceQuote": "That process may result in a sale, merger or partnership. Norse has not identified any potential buyer or partner or said when the process might end.",
+          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Norse CEO Eivind Roald said elevated fuel prices, airspace disruptions and longer routes from the Middle East conflict affected the commercial viability of the IndiGo arrangement.",
+          "sourceQuote": "There is no doubt that the elevated fuel prices, airspace disruptions and longer flight routes resulting from the Middle East conflict have affected the commercial viability of the arrangement for both parties",
+          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "In April, Norse announced plans to raise $110 million through a rights issue and arranged a $70 million bridge loan; its Project Falcon cost-cutting program targets annual savings of up to $50 million.",
+          "sourceQuote": "In April, Norse announced plans to raise $110 million through a rights issue and arranged a $70 million bridge loan. Its Project Falcon cost-cutting program is targeting annual savings of up to $50 million.",
+          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Norse operates a total of 12 Boeing 787-9s and plans to use some returning capacity on its own winter network including flights from Europe to Orlando and New York.",
+          "sourceQuote": "The carrier also plans to use some of the returning capacity on its own network during the winter, including additional flights from Europe to Orlando and New York.",
+          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Norse Atlantic Airways",
+          "JPMorgan"
+        ],
+        "airlines": [
+          "Norse Atlantic Airways",
+          "IndiGo"
+        ],
+        "aircraft_models": [
+          "Boeing 787-9",
+          "Airbus A321XLR",
+          "Airbus A350-900"
+        ],
+        "airports": [
+          "Amsterdam",
+          "London Heathrow",
+          "Mumbai",
+          "Orlando",
+          "New York"
+        ],
+        "locations": [
+          "Middle East",
+          "Europe",
+          "India"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-10-25",
+          "2026-10-31",
+          "2025",
+          "2026-04"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260805-2308-4",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Norse seeks new home for six Boeing 787s as formal airline sale process begins",
+          "url": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
+          "publishedUtc": "2026-08-05T21:26Z",
+          "summary": "Norse Atlantic Airways is looking for new work for six Boeing 787-9s after Indian carrier IndiGo agreed to… The post Norse seeks new home for six Boeing 787s as formal airline sale process begins appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: A350",
+              "same named core entity: airbus",
+              "archive predates source by 7 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se...",
+            "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+            "facts": [
+              {
+                "claim": "Q2 2026 Airbus net income rose 126% to $1.66 billion (€1.65 billion) from $842 million (€732 million) in the same period last year, alongside a 28% increase in Q2 revenue.",
+                "source_quote": "Net income increased from $842 million (€732 million) to $1.66 billion (€1.65 billion) in Q2 2026 while revenue rose 28% over the same period.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "In the first half of 2026, Airbus delivered 351 commercial aircraft, up from 306 in H1 2025, including 237 delivered in the second quarter compared to 114 in the first quarter.",
+                "source_quote": "Between April and June 2026, Airbus delivered 237 commercial aircraft to customers while between January and March 2026, just 114 were delivered. The total for 2026 first half stands at 351.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "Airbus reported consolidated revenues of €33.2 billion ($38.2 billion) for H1 2026, a 12% increase year-on-year, with a consolidated EBIT Adjusted of €2.77 billion (€2,727 million).",
+                "source_quote": "Consolidated revenues increased 12% year-on-year to € 33.2 billion (H1 2025: € 29.6 billion).",
+                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
+              },
+              {
+                "claim": "Commercial aircraft gross orders reached 886 units (821 net orders) in the first half of 2026, bringing the total order backlog to 9,222 commercial aircraft at the end of June 2026.",
+                "source_quote": "Gross commercial aircraft orders totalled 886 (H1 2025: 494 aircraft) with net orders of 821 aircraft after cancellations (H1 2025: 402 aircraft). The order backlog amounted to 9,222",
+                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
+              },
+              {
+                "claim": "The company maintained its guidance to deliver approximately 870 commercial aircraft in 2026, and expects a full-year EBIT Adjusted of €7.5 billion ($8.6 billion).",
+                "source_quote": "The company said its ambition to deliver around 870 commercial aircraft in 2026 remains the same. While EBIT adjusted currently stands at $3.1 billion (€2.7 billion), Airbus’ outlook is $8.6 billion (€7.5 billion) by year end.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              },
+              {
+                "claim": "Airbus is continuing its production ramp-up, targeting a monthly rate of 13 for the A220 in 2028, between 70 and 75 for the A320 family by late 2027, 5 for the A330 in 2029, and 12 for the A350 in 2028.",
+                "source_quote": "The A220 ramp-up is ongoing and the Company continues to target a monthly production rate of 13 aircraft in 2028. On the A320 Family, the Company continues to expect to reach a rate of between 70 and 75 aircraft a month",
+                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260731-1301-klm-shows-off-first-fully-painted-airbus",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: A350",
+              "same named core entity: airbus",
+              "archive predates source by 5 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 5 day(s) apart",
+            "event_date": "2026-07-31",
+            "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900",
+            "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
+            "facts": [
+              {
+                "claim": "荷蘭皇家航空在網路貼文中展示了其首架完成塗裝的空中巴士 A350-900 客機。",
+                "source_quote": "KLM showed off its fully-painted first A350 in a few online posts",
+                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
+                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
+              },
+              {
+                "claim": "荷蘭皇家航空於6月中旬發布貼文公布該客機名稱,並於7月中旬發布影片展示組裝過程。",
+                "source_quote": "one in mid-June which announced the jet’s name, and another in mid-July, with a video showing the assembly process.",
+                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
+                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
+              },
+              {
+                "claim": "荷蘭皇家航空選擇以荷蘭具代表性的藝術作品為飛機命名,包括林布蘭的著名畫作《夜巡》。",
+                "source_quote": "KLM has chosen to name its aircraft after iconic Dutch artworks, and so The Night Watch by Rembrandt is one of the Netherlands’ most celebrated paintings",
+                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
+                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 787",
+              "same named core entity: aerotime",
+              "archive predates source by 3 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 3 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260805-1948-6",
     "queuedUtc": "2026-08-05T19:48Z",
     "approve": false,
@@ -9350,273 +9705,6 @@
                 "source_quote": "Keeps 870 Target For Full Year",
                 "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
                 "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260801-1005-9",
-    "queuedUtc": "2026-08-01T10:06Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Contains half-year financial results, revised full-year profit and cash flow guidance, and engine selection claims requiring human review.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Rolls-Royce reported that its underlying operating profit rose 46% year-on-year to £2.5 billion for the half-year, with an underlying operating margin of 22.5%.",
-        "sourceQuote": "underlying operating profit had risen by 46% to £2.5 billion year-on-year. The underlying operating margin stood at 22.5%",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Rolls-Royce raised its full-year 2026 guidance, expecting £4.7 billion to £4.9 billion in underlying operating profit and £3.8 billion to £4.0 billion in free cash flow.",
-        "sourceQuote": "We now expect £4.7bn-£4.9bn underlying operating profit and £3.8bn-£4.0bn free cash flow.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Rolls-Royce CEO Tufan Erginbilgic stated that in Civil Aerospace, the company improved aftermarket profitability and effectively eliminated aircraft on the ground.",
-        "sourceQuote": "He noted that in Civil Aerospace, RR has continued to improve its aftermarket profitability and “effectively eliminated aircraft on the ground.”",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Three airlines, including LATAM Airlines, selected Rolls-Royce's Trent 1000 XE engine for their Boeing 787 Dreamliner aircraft in 2026.",
-        "sourceQuote": "2026 has seen three airlines, including LATAM Airlines, select Rolls-Royce’s new Trent 1000 XE engine for their Boeing 787 Dreamliners.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Contains half-year financial results, revised full-year profit and cash flow guidance, and engine selection claims requiring human review.",
-      "cat": "biz",
-      "zh": {
-        "title": "勞斯萊斯半年營業利潤增長46% 上調2026全年財測",
-        "summary": "勞斯萊斯公布半年報，基礎營業利潤同比成長46%至25億英鎊，基礎營業利潤率達22.5%。公司同步上調2026年全年財測，預計基礎營業利潤將達47億至49億英鎊。執行長表示民航業務已有效消除停飛機隊，並有三家航空公司為波音787選用Trent 1000 XE引擎。",
-        "body": [
-          "英國引擎製造商勞斯萊斯公布最新半年度財務報告，顯示其基礎營業利潤同比成長46%，達到25億英鎊。同時，公司整體基礎營業利潤率提升至22.5%，各業務部門獲利能力均有所改善。",
-          "基於上半年優於預期的業績表現，勞斯萊斯宣布上調2026年全年財務預測。公司目前預計全年基礎營業利潤將介於47億至49億英鎊之間，自由現金流預計將達到38億至40億英鎊。",
-          "在民航業務方面，執行長Tufan Erginbilgic指出，公司持續改善售後市場獲利能力，並已有效消除停飛機隊狀況。此外，2026年已有包括LATAM Airlines在內的三家航空公司選用Trent 1000 XE引擎，配備於其波音787客機。"
-        ]
-      },
-      "en": {
-        "title": "Rolls-Royce Operating Profit Rises 46% and Raises 2026 Full-Year Guidance",
-        "summary": "Rolls-Royce reported a 46% year-on-year increase in underlying operating profit to 2.5 billion pounds for the half-year, achieving an underlying operating margin of 22.5%. The engine manufacturer raised its full-year 2026 financial guidance, now forecasting underlying operating profit between 4.7 billion and 4.9 billion pounds, alongside free cash flow of 3.8 billion to 4.0 billion pounds. Chief Executive Tufan Erginbilgic noted that the Civil Aerospace division has improved aftermarket profitability and effectively eliminated aircraft on the ground. Additionally, three airlines, including LATAM Airlines, selected the new Trent 1000 XE engine for their Boeing 787 Dreamliner fleets in 2026.",
-        "body": [
-          "Rolls-Royce reported half-year financial results showing a 46% year-on-year increase in underlying operating profit to 2.5 billion pounds. The company achieved an underlying operating margin of 22.5%, driven by higher profitability across all divisions.",
-          "Following the strong first-half performance, Rolls-Royce raised its full-year 2026 financial guidance. The manufacturer now expects underlying operating profit between 4.7 billion and 4.9 billion pounds, with free cash flow projected at 3.8 billion to 4.0 billion pounds.",
-          "Chief Executive Tufan Erginbilgic stated that the Civil Aerospace unit improved aftermarket profitability and effectively eliminated aircraft on the ground. In 2026, three airlines, including LATAM Airlines, selected the new Trent 1000 XE engine for Boeing 787 Dreamliners."
-        ]
-      },
-      "flash": {
-        "zh": "勞斯萊斯半年獲利大增46% 並上調2026全年財測",
-        "en": "Rolls-Royce boosts half-year profit by 46% and raises 2026 guidance",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Rolls-Royce reported that its underlying operating profit rose 46% year-on-year to £2.5 billion for the half-year, with an underlying operating margin of 22.5%.",
-          "sourceQuote": "underlying operating profit had risen by 46% to £2.5 billion year-on-year. The underlying operating margin stood at 22.5%",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Rolls-Royce raised its full-year 2026 guidance, expecting £4.7 billion to £4.9 billion in underlying operating profit and £3.8 billion to £4.0 billion in free cash flow.",
-          "sourceQuote": "We now expect £4.7bn-£4.9bn underlying operating profit and £3.8bn-£4.0bn free cash flow.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Rolls-Royce CEO Tufan Erginbilgic stated that in Civil Aerospace, the company improved aftermarket profitability and effectively eliminated aircraft on the ground.",
-          "sourceQuote": "He noted that in Civil Aerospace, RR has continued to improve its aftermarket profitability and “effectively eliminated aircraft on the ground.”",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Three airlines, including LATAM Airlines, selected Rolls-Royce's Trent 1000 XE engine for their Boeing 787 Dreamliner aircraft in 2026.",
-          "sourceQuote": "2026 has seen three airlines, including LATAM Airlines, select Rolls-Royce’s new Trent 1000 XE engine for their Boeing 787 Dreamliners.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Rolls-Royce"
-        ],
-        "airlines": [
-          "LATAM Airlines"
-        ],
-        "aircraft_models": [
-          "Boeing 787 Dreamliners"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-31",
-          "2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-1005-9",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Rolls-Royce boosts forecasts as aerospace, defence and AI markets accelerate",
-          "url": "https://aerospaceglobalnews.com/news/rolls-royce-half-year-results-2026/",
-          "publishedUtc": "2026-07-31T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/03/Rendering-of-Rolls-Royce-Orpheus-engine.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260801-0732-african-domestic-aviation-shows-resilien",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: ON-YEAR"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 2 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere...",
-            "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-            "facts": [
-              {
-                "claim": "Global airline capacity increased by 1% year-on-year for the summer season, below the 3% forecast due to capacity reallocations.",
-                "source_quote": "Global capacity is up just 1% year-on-year this summer season, according to data from aviation analysts OAG and Midas Aviation.",
-                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
-              },
-              {
-                "claim": "African domestic aviation market has shown resilience to global shocks despite price increases and pockets of slowed growth.",
-                "source_quote": "Prices have gone up, and there have been pockets of slowed growth, but no real shrinking. The market is showing resilience to those global shocks",
-                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
-              },
-              {
-                "claim": "Nigeria's domestic aviation capacity grew 36% year-on-year, driven in part by its domestication of the Cape Town Convention.",
-                "source_quote": "Pointing to Nigeria’s 36% year-on-year capacity growth in its domestic market, Grant said this is in part driven by the country’s domestication of the Cape Town Convention",
-                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
-              },
-              {
-                "claim": "Major aircraft lessors including AirCap have begun placing dry-leased airframes in Nigeria.",
-                "source_quote": "Major lessors, including AirCap, have begun placing airframes in the country – a shift from previous years when Nigerian operators leaned on seasonal wet leases",
-                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
-              },
-              {
-                "claim": "Passenger booking curves in Africa remain compressed, with many bookings made one day before travel.",
-                "source_quote": "The booking curve remains very tight. We’re still seeing a large number of bookings made as late as one day before travel.",
-                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1532-iata-global-air-cargo-demand-rose-8-5-ye",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: ON-YEAR"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-30",
-            "source_name": "IATA — Air Passenger Demand Falls 1.7% in June",
-            "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
-            "facts": [
-              {
-                "claim": "IATA reported total air passenger demand (RPK) was down 1.7% in June 2026 compared to June 2025, with capacity (ASK) down 1.3% and load factor at 84.2%.",
-                "source_quote": "Total demand, measured in revenue passenger kilometers (RPK), was down 1.7% compared to June 2025. Excluding the Middle East, demand declined by 0.6%. Total capacity, measured in available seat kilometers (ASK), decreased 1.3% year-on-year. The load factor was 84.2% (-0.4 ppt compared to June 2025).",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
-                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
-              },
-              {
-                "claim": "IATA Director General Willie Walsh attributed the decline largely to domestic market declines in China, the US, and Japan, and weak but improving international demand for Middle East carriers.",
-                "source_quote": "This is largely due to domestic market declines in China, the US, and Japan, and weak but improving international demand for Middle East carriers.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
-                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
-              },
-              {
-                "claim": "Middle Eastern carriers saw a 14% year-on-year decrease in demand in June 2026, with capacity down 11% and load factor at 76.3%; the rate of decline halved month-to-month since April.",
-                "source_quote": "Middle Eastern carriers saw a 14% year-on-year decrease in demand. Capacity fell 11% year-on-year, and the load factor was 76.3% (-2.6 ppt compared to June 2025). The impacts of the Iran war continue to cause a highly negative year-on-year traffic comparison, but the rate of decline halved month-to-month since April.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
-                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
-              },
-              {
-                "claim": "Domestic demand contracted 3.0% in June 2026, with the steepest falls in China (-5.2%) and Japan (-3.8%); Brazil domestic traffic was up 0.9% and Australia was flat.",
-                "source_quote": "Domestic RPK fell (-3.0%) in June 2026 compared to the same month last year. Domestic Brazil traffic was up 0.9%, but all other major markets declined apart from Australia which was flat. The steepest falls were in China (-5.2%) and Japan (-3.8%), with higher fuel prices the likely reason.",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-30-air-passenger-demand-falls-june/",
-                "source_name": "IATA — Air Passenger Demand Falls 1.7% in June"
-              },
-              {
-                "claim": "IATA reported global air cargo demand (CTK) increased 8.5% year-on-year in June 2026, with capacity (ACTK) up 4.4%; North American carriers saw the strongest growth at 13.1%.",
-                "source_quote": "Total demand, measured in cargo tonne-kilometers (CTK), increased by 8.5% compared to June 2025 (9.6% for international operations). Capacity, measured in available cargo tonne-kilometers (ACTK), increased by 4.4% compared to June 2025 (4.9% for international operations).",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
-              },
-              {
-                "claim": "Willie Walsh said air cargo demand growth outpaced global trade, supported by high-value technology products and urgent shipments, with risks from continuing Middle East hostilities and renewed US tariff focus.",
-                "source_quote": "Demand growth outpaced capacity at the global level and in all regions except Latin America and the Caribbean. Demand also grew faster than global trade, supported by high-value technology products, and urgent shipments. While this all gives strong reasons for optimism in the second half of 2026, risks remain—continuing hostilities in the Middle East and a renewed focus on tariffs by the US among them",
-                "source_url": "https://www.iata.org/en/pressroom/2026-releases/07-29-air-cargo-demand-strengthens-june/",
-                "source_name": "IATA — Air Cargo Demand Strengthens in June, Up 8.5%"
               }
             ]
           }
