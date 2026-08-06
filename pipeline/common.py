@@ -139,6 +139,12 @@ TAIWAN_TRANSPORT_KEYWORDS = (
     "高鐵", "捷運", "航港", "港務", "小三通", "船班",
 )
 
+TAIWAN_AIRLINE_KEYWORDS = (
+    "國籍航空", "中華航空", "華航", "長榮航空", "長榮航",
+    "星宇航空", "星宇", "台灣虎航", "臺灣虎航", "立榮航空", "立榮",
+    "華信航空", "華信",
+)
+
 # Master source registry. `key` is the stable identifier used for
 # data/raw/<key>.json. `fmt` is what we display on the sources page.
 # `endpoint` is what fetch.py actually requests; `kind`:
@@ -366,6 +372,26 @@ SOURCES: dict[str, dict] = {
             "en": "CNA business — Taiwan airlines, aerospace & transport",
         },
     },
+    "cnataiwanairlines": {
+        "name": "中央社 CNA 國籍航空",
+        "kind": "media",
+        "fmt": "XML",
+        "url": "https://www.cna.com.tw",
+        # CNA's category feeds expose only their latest entries, while this
+        # publisher-declared Google News sitemap retains the recent article
+        # URLs, titles and dates. CNA explicitly advertises the sitemap in
+        # robots.txt; article full text still follows the existing robots and
+        # allowlist policy.
+        "endpoint": "https://www.cna.com.tw/GoogleNewsSitemap_fromRemote_cfp.xml",
+        "type": "html",
+        "parser": "xml",
+        "keywords": list(TAIWAN_AIRLINE_KEYWORDS),
+        "scope_filter": True,
+        "cover": {
+            "zh": "中央社七日國籍航空索引 — 航線、機隊與營運動態",
+            "en": "CNA seven-day Taiwan-airline index — network, fleet & operations",
+        },
+    },
     "mndnews": {
         "name": "國防部・軍聞社",
         "kind": "official",
@@ -534,11 +560,7 @@ def is_transport_story(*records) -> bool:
             or _TRANSPORT_EN_RE.search(text) is not None)
 
 
-_TAIWAN_AIRLINE_ZH_TERMS = (
-    "國籍航空", "中華航空", "華航", "長榮航空", "長榮航",
-    "星宇航空", "星宇", "台灣虎航", "臺灣虎航", "立榮航空", "立榮",
-    "華信航空", "華信",
-)
+_TAIWAN_AIRLINE_ZH_TERMS = TAIWAN_AIRLINE_KEYWORDS
 _TAIWAN_AIRLINE_EN_RE = re.compile(
     r"\b(?:china airlines|eva air|starlux(?: airlines?)?|"
     r"tigerair taiwan|uni air|mandarin airlines)\b",
