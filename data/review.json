@@ -1,5 +1,192 @@
 [
   {
+    "id": "g-20260806-0638-3",
+    "queuedUtc": "2026-08-06T06:38Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves an aviation safety incident, drone collision threat, and ongoing police investigation.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Police stated that a drone carrying explosives was found at a German airport.",
+        "sourceQuote": "Drone carrying explosives found at German airport, police say",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5tRnlVVHAtTjQyLUlpd0stck83MWdDR3RLYXVpUWVXUFM5LXJKTnhwZF9nRFpyOXM5M0xJbTRkRUlJOWRWUFZmRXdOeTVBYVlvbzFDdHllQkNBdw?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Simple Flying reported that an explosive-laden drone forced a DHL freighter into a go-around and mid-air collision.",
+        "sourceQuote": "An explosive-laden drone forced a DHL freighter into a go-around and mid-air collision.",
+        "sourceUrl": "https://simpleflying.com/dhl-cargo-jet-collides-unidentified-object-bomb-drone/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The interior minister stated that a drone carrying explosives at a German airport marks a new level of danger.",
+        "sourceQuote": "Drone carrying explosives at German airport marks ‘new level of danger’, says interior minister",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxObFcyenlkNTJ4OVBuc0traTZWb3RYMTRWenBZNl9SNlNFc0J2OTBodWlUdWZWU2x0OGhSa3c1WUxxOEJ0bllCVThiN3J3ZDRWMExGY2V0LUhmZ21VOEs0dE02RGJnMG1RTGp2Z05zdkoxSXVxUTEzcTNiS3ZmVmZKcHRCZGNBUVFfTTNnYU9qN1hYc3c2RmdxRzFXSWNteC00S3NTaFIxT1diUQ?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report involves an aviation safety incident, drone collision threat, and ongoing police investigation.",
+      "cat": "safety",
+      "zh": {
+        "title": "德國機場發現載有炸藥無人機 據報致DHL貨機重飛並發生碰撞",
+        "summary": "德國警方表示，在德國一處機場發現一架載有炸藥的無人機。據Simple Flying報導，該架載有炸藥的無人機迫使一架DHL貨機進行重飛，並在空中發生碰撞。德國內政部長對此表示，在德國機場發現載有炸藥的無人機標誌著新型態的危險等級。",
+        "body": [
+          "根據德國警方發布之官方訊息，相關執法單位在德國一處機場發現了一架載有炸藥的無人機。針對此一事件，德國內政部長發布聲明指出，在機場範圍內發現載有炸藥的無人機，標誌著防護與安全領域面臨了新型態的危險等級。",
+          "另據新聞媒體Simple Flying報導，在一架載有炸藥的無人機發布相關警報之後，一架DHL貨運飛機被迫實施重飛程序，並於空中與不明物體發生碰撞。",
+          "目前警方正針對發現載有炸藥無人機之案情進行調查與釐清，相關主管機關亦持續關注此起事件的後續狀況與調查進展。"
+        ]
+      },
+      "en": {
+        "title": "Bomb Drone Found at German Airport Triggers Alert and DHL Cargo Jet Collision",
+        "summary": "Police reported that a drone carrying explosives was found at a German airport, prompting an investigation into the security threat. According to Simple Flying, an explosive-laden drone forced a DHL cargo jet into a go-around, after which the freighter collided with an unidentified object in mid-air. Germany's interior minister stated that the presence of an explosive-carrying drone at a German airport represents a new level of danger for aviation security. Authorities and police are investigating the circumstance surrounding the incident.",
+        "body": [
+          "German police confirmed that a drone carrying explosives was found at a German airport. In response to the discovery, Germany's interior minister stated that a drone carrying explosives at a German airport marks a new level of danger for public and aviation safety.",
+          "According to a report by Simple Flying, an explosive-laden drone forced a DHL freighter aircraft into a go-around, after which the jet collided with an unidentified object in mid-air during the incident.",
+          "Police officers and official authorities are conducting an investigation to clarify the circumstances of the drone alert and the subsequent mid-air collision at the airport."
+        ]
+      },
+      "flash": {
+        "zh": "德國機場發現載有炸藥無人機，引發DHL貨機重飛與碰撞警報。",
+        "en": "A drone carrying explosives at a German airport triggered an alert and DHL cargo jet collision.",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-05",
+        "sev": "inc",
+        "aircraft": "DHL freighter",
+        "operator": "DHL",
+        "phase": {
+          "zh": "重飛階段",
+          "en": "Go-around"
+        },
+        "location": {
+          "zh": "德國機場",
+          "en": "German airport"
+        },
+        "desc": {
+          "zh": "載有炸藥無人機引發警報，DHL貨機重飛並與不明物體發生碰撞",
+          "en": "An explosive-laden drone forced a DHL cargo jet into a go-around and collision with an unidentified object."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Police stated that a drone carrying explosives was found at a German airport.",
+          "sourceQuote": "Drone carrying explosives found at German airport, police say",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5tRnlVVHAtTjQyLUlpd0stck83MWdDR3RLYXVpUWVXUFM5LXJKTnhwZF9nRFpyOXM5M0xJbTRkRUlJOWRWUFZmRXdOeTVBYVlvbzFDdHllQkNBdw?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Simple Flying reported that an explosive-laden drone forced a DHL freighter into a go-around and mid-air collision.",
+          "sourceQuote": "An explosive-laden drone forced a DHL freighter into a go-around and mid-air collision.",
+          "sourceUrl": "https://simpleflying.com/dhl-cargo-jet-collides-unidentified-object-bomb-drone/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The interior minister stated that a drone carrying explosives at a German airport marks a new level of danger.",
+          "sourceQuote": "Drone carrying explosives at German airport marks ‘new level of danger’, says interior minister",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxObFcyenlkNTJ4OVBuc0kraTZWb3RYMTRWenBZNl9SNlNFc0J2OTBodWlUdWZWU2x0OGhSa3c1WUxxOEJ0bllCVThiN3J3ZDRWMExGY2V0LUhmZ21VOEs0tM6RGJnMG1RTGp2Z05zdkoxSXVxUTEzcTNiS3ZmVmZKcHRCZGNBUVFfTTNnYU9qN1hYc3c2RmdxRzFXSWNteC00S3NTaFIxT1diUQ?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "DHL"
+        ],
+        "airlines": [
+          "DHL"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-05",
+          "2026-08-06"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260806-0638-3",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "DHL Cargo Jet Collides With Unidentified Object After Bomb Drone Alert At German Airport",
+          "url": "https://simpleflying.com/dhl-cargo-jet-collides-unidentified-object-bomb-drone/",
+          "publishedUtc": "2026-08-06T04:19Z",
+          "summary": "An explosive-laden drone forced a DHL freighter into a go-around and mid-air collision.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/357vbqo5bv8wgky4qj-1.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        },
+        {
+          "title": "Drone carrying explosives found at German airport, police say",
+          "summary": "Drone carrying explosives found at German airport, police say &nbsp;&nbsp; BBC",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5tRnlVVHAtTjQyLUlpd0stck83MWdDR3RLYXVpUWVXUFM5LXJKTnhwZF9nRFpyOXM5M0xJbTRkRUlJOWRWUFZmRXdOeTVBYVlvbzFDdHllQkNBdw?oc=5",
+          "source": "BBC",
+          "companion": true,
+          "publishedUtc": "2026-08-05T20:01Z"
+        },
+        {
+          "title": "Drone carrying explosives at German airport marks ‘new level of danger’, says interior minister",
+          "summary": "Drone carrying explosives at German airport marks ‘new level of danger’, says interior minister &nbsp;&nbsp; The Guardian",
+          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxObFcyenlkNTJ4OVBuc0traTZWb3RYMTRWenBZNl9SNlNFc0J2OTBodWlUdWZWU2x0OGhSa3c1WUxxOEJ0bllCVThiN3J3ZDRWMExGY2V0LUhmZ21VOEs0dE02RGJnMG1RTGp2Z05zdkoxSXVxUTEzcTNiS3ZmVmZKcHRCZGNBUVFfTTNnYU9qN1hYc3c2RmdxRzFXSWNteC00S3NTaFIxT1diUQ?oc=5",
+          "source": "The Guardian",
+          "companion": true,
+          "publishedUtc": "2026-08-05T11:37Z"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260806-0321-3",
     "queuedUtc": "2026-08-06T03:21Z",
     "approve": false,
@@ -9415,134 +9602,6 @@
           "source": "BBC",
           "companion": true,
           "publishedUtc": "2026-07-31T12:19Z"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260801-1438-6",
-    "queuedUtc": "2026-08-01T14:38Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Financial claim regarding a multi-billion-dollar profitability gap and corporate strategy based solely on headline/excerpt; manual review required.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "American Airlines CEO Robert Isom outlined a strategy to close a multi-billion-dollar profit gap with key national rivals United and Delta.",
-        "sourceQuote": "American Airlines CEO Robert Isom has outlined an ambitious strategy to close the carrier's multi-billion-dollar profitability gap with key national rivals United and Delta.",
-        "sourceUrl": "https://simpleflying.com/video/american-airlines-plan-to-close-a-3-billion-profit-gap-with-united-delta/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The strategy aligns with industry trends followed by observers.",
-        "sourceQuote": "His strategy shouldn’t come as any surprise to anyone who’s been following industry trends.",
-        "sourceUrl": "https://simpleflying.com/video/american-airlines-plan-to-close-a-3-billion-profit-gap-with-united-delta/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Financial claim regarding a multi-billion-dollar profitability gap and corporate strategy based solely on headline/excerpt; manual review required.",
-      "cat": "biz",
-      "zh": {
-        "title": "美國航空執行長 Robert Isom 提出策略 擬縮小與競業獲利差距",
-        "summary": "美國航空執行長 Robert Isom 已提出一項營運策略，旨在縮小該公司與主要競爭對手聯合航空及達美航空之間達數十億美元的獲利差距。根據 Simple Flying 報導，這項新提出的策略計畫與近期民航產業的整體發展趨勢一致。",
-        "body": [
-          "根據 Simple Flying 報導，美國航空（American Airlines）執行長 Robert Isom 已提出一項策略計畫，旨在縮小該航空公司與主要競爭對手聯合航空以及達美航空之間高達數十億美元的獲利差距。",
-          "報導指出，這項由美國航空高層說明的營運策略調整，旨在提升公司在整體航空市場中的競爭實力與獲利表現。",
-          "相關報導並提到，該公司執行長所提出的策略方向，與關注近年民航產業發展趨勢的觀察者所預期之市場走向一致。"
-        ]
-      },
-      "en": {
-        "title": "American Airlines CEO Outlines Strategy To Close Profit Gap With Rivals",
-        "summary": "American Airlines Chief Executive Officer Robert Isom has outlined an ambitious strategic plan intended to close the airline's multi-billion-dollar profitability gap with its key national competitors, United Airlines and Delta Air Lines. According to a news report published by Simple Flying, the overall corporate strategy outlined by the airline chief executive shouldn't come as any surprise to anyone who has been actively following current commercial aviation industry trends and market developments.",
-        "body": [
-          "According to a report published by Simple Flying, American Airlines Chief Executive Officer Robert Isom has outlined a new corporate strategy aimed at closing the carrier's multi-billion-dollar profitability gap with key national rivals United Airlines and Delta Air Lines.",
-          "The strategic outline presented by the executive leadership reflects American Airlines' efforts to address its performance margin relative to major domestic competitors in the US airline industry.",
-          "As noted in the media report, the strategic plan shouldn't come as any surprise to industry observers and analysts who have been following current trends across the commercial aviation sector."
-        ]
-      },
-      "flash": {
-        "zh": "美國航空執行長 Robert Isom 提出策略擬縮小與聯航及達美之獲利差距",
-        "en": "American Airlines CEO Robert Isom outlines strategy to close profitability gap with United and Delta",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "American Airlines CEO Robert Isom outlined a strategy to close a multi-billion-dollar profit gap with key national rivals United and Delta.",
-          "sourceQuote": "American Airlines CEO Robert Isom has outlined an ambitious strategy to close the carrier's multi-billion-dollar profitability gap with key national rivals United and Delta.",
-          "sourceUrl": "https://simpleflying.com/video/american-airlines-plan-to-close-a-3-billion-profit-gap-with-united-delta/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The strategy aligns with industry trends followed by observers.",
-          "sourceQuote": "His strategy shouldn’t come as any surprise to anyone who’s been following industry trends.",
-          "sourceUrl": "https://simpleflying.com/video/american-airlines-plan-to-close-a-3-billion-profit-gap-with-united-delta/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Simple Flying"
-        ],
-        "airlines": [
-          "American Airlines",
-          "United",
-          "Delta"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-1438-6",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "American Airlines' Plan To Close A $3 Billion Profit Gap With United & Delta",
-          "url": "https://simpleflying.com/video/american-airlines-plan-to-close-a-3-billion-profit-gap-with-united-delta/",
-          "publishedUtc": "2026-08-01T12:27Z",
-          "summary": "American Airlines CEO Robert Isom has outlined an ambitious strategy to close the carrier's multi-billion-dollar profitability gap with key national rivals United and Delta. His strategy shouldn’t come as any surprise to anyone who’s been following industry trends.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/american-catchup.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
         }
       ],
       "updateCandidate": false,
