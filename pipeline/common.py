@@ -295,16 +295,20 @@ SOURCES: dict[str, dict] = {
     "evaair": {
         "name": "長榮航空 EVA Air",
         "kind": "official",
-        "fmt": "HTML",
+        "fmt": "RSS",
         "url": "https://www.evaair.com/zh-tw/about-eva-air/news/",
         "endpoint": (
-            "https://www.evaair.com/zh-tw/about-eva-air/news/"
-            "news-releases/"
+            "https://news.google.com/rss/search?"
+            "q=(site:evaair.com%2Fzh-tw%2Fabout-eva-air%2Fnews%2Fnews-releases"
+            "%20OR%20site:evaair.com%2Fen-global%2Fabout-eva-air%2Fnews%2F"
+            "news-releases)%20when:7d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
         ),
-        "type": "html",
+        # EVA Air returns HTTP 403 to GitHub Actions. Google News is used only
+        # as a headline/link index for pages on EVA Air's official domain.
+        "type": "rss",
         "cover": {
-            "zh": "長榮航空官方新聞稿 — 航線、機隊與營運動態",
-            "en": "EVA Air official releases — network, fleet & operations",
+            "zh": "長榮航空官方新聞稿索引 — 航線、機隊與營運動態",
+            "en": "EVA Air official release index — network, fleet & operations",
         },
     },
     "simpleflying": {
