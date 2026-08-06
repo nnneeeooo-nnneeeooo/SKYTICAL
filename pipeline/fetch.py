@@ -440,6 +440,37 @@ def _parse_aerospaceglobalnews(soup: BeautifulSoup, base: str) -> list[dict]:
     return items
 
 
+def _parse_cna_news_sitemap(soup: BeautifulSoup, base: str) -> list[dict]:
+    """CNA's publisher-declared Google News sitemap with direct URLs."""
+    items = []
+    for node in soup.find_all("url"):
+        loc = node.find("loc")
+        title_el = node.find("news:title") or node.find("title")
+        if loc is None or title_el is None:
+            continue
+        url = urljoin(base, loc.get_text(strip=True))
+        split = urlsplit(url)
+        if split.scheme != "https" or split.netloc.lower() not in {
+                "www.cna.com.tw", "cna.com.tw"}:
+            continue
+        title = _collapse(title_el.get_text(" ", strip=True))
+        if not title:
+            continue
+        date_el = (node.find("news:publication_date")
+                   or node.find("publication_date"))
+        keywords_el = node.find("news:keywords") or node.find("keywords")
+        items.append({
+            "title": title,
+            "url": url,
+            "published": (_time_tag_datetime(date_el)
+                          if date_el is not None else None),
+            "summary": (keywords_el.get_text(" ", strip=True)
+                        if keywords_el is not None else ""),
+            "image": None,
+        })
+    return items
+
+
 def _parse_airbus(soup: BeautifulSoup, base: str) -> list[dict]:
     """Airbus newsroom cards: official stories and press releases.
 
@@ -484,6 +515,7 @@ HTML_PARSERS = {
     "eurocontrol": _parse_eurocontrol,
     "aerospaceglobalnews": _parse_aerospaceglobalnews,
     "airbus": _parse_airbus,
+    "cnataiwanairlines": _parse_cna_news_sitemap,
 }
 
 
@@ -600,7 +632,9 @@ def _fetch_source(session: requests.Session, key: str, spec: dict,
         parser = HTML_PARSERS.get(key)
         if parser is None:
             raise FetchError("no HTML parser registered for this source")
-        raw_items = parser(BeautifulSoup(resp.content, "lxml"), resp.url or endpoint)
+        parser_mode = "xml" if spec.get("parser") == "xml" else "lxml"
+        raw_items = parser(BeautifulSoup(resp.content, parser_mode),
+                           resp.url or endpoint)
         if not raw_items:
             raise FetchError("page parsed to 0 items (layout changed?)")
 
