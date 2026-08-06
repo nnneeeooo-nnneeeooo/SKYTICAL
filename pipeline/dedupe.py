@@ -21,6 +21,7 @@ from common import (
     RAW_DIR,
     SOURCES,
     group_has_material,
+    is_taiwan_airline_story,
     iso_minute,
     load_json,
     norm_url,
@@ -304,12 +305,11 @@ def main() -> None:
         if _is_fresh(item, now, stats)
     ]
 
-    # Rank: groups that actually carry summary material FIRST (title-only
-    # groups cannot survive the evidence rules, so they must never crowd
-    # real stories out of the MAX_GROUPS cap - and the Google-News-fed
-    # sources produce title-only MULTI-source groups all the time), then
-    # cross-source coverage, then recency.
-    ranked: list[tuple[bool, bool, datetime, list[dict], bool]] = []
+    # Rank Taiwan national-carrier coverage first so it cannot be crowded out
+    # of the MAX_GROUPS cap. Within each priority tier, groups that actually
+    # carry summary material come before title-only groups (which cannot
+    # survive the evidence rules), then cross-source coverage and recency.
+    ranked: list[tuple[bool, bool, bool, datetime, list[dict], bool]] = []
     active_items = 0
     for members in _group(eligible):
         novelty = [_is_unseen(item, seen_urls, seen_titles) for item in members]
@@ -333,9 +333,14 @@ def main() -> None:
         newest = max((_published(m) or _EPOCH for m in members), default=_EPOCH)
         multi = len({m["sourceKey"] for m in members}) > 1
         material = group_has_material({"items": members})
-        ranked.append((material, multi, newest, members, update_candidate))
-    ranked.sort(key=lambda entry: (entry[0], entry[1], entry[2]), reverse=True)
-    material_groups = sum(1 for entry in ranked if entry[0])
+        must_report = is_taiwan_airline_story({"items": members})
+        ranked.append((must_report, material, multi, newest, members,
+                       update_candidate))
+    ranked.sort(
+        key=lambda entry: (entry[0], entry[1], entry[2], entry[3]),
+        reverse=True,
+    )
+    material_groups = sum(1 for entry in ranked if entry[1])
 
     stamp = now.strftime("%Y%m%d-%H%M")
     payload = {
@@ -346,9 +351,11 @@ def main() -> None:
                 "primarySource": members[0]["source"],
                 "items": members,
                 "updateCandidate": update_candidate,
+                "mustReport": must_report,
             }
             for n, (
-                _material, _multi, _newest, members, update_candidate
+                must_report, _material, _multi, _newest, members,
+                update_candidate
             ) in enumerate(
                 ranked[:MAX_GROUPS], start=1
             )

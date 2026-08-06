@@ -258,6 +258,48 @@ def test_group_cap_and_recency_order() -> None:
         assert [g["items"][0]["title"] for g in groups] == titles[:12]
 
 
+def test_taiwan_airline_story_is_reserved_ahead_of_general_cap() -> None:
+    """A national-carrier story cannot be crowded out by newer world news."""
+    body = "A real summary carrying enough evidence text for the model."
+    titles = [
+        "Airport opens a remote terminal for regional flights",
+        "Engine maker completes a high altitude certification campaign",
+        "Cargo operator adds a cold chain handling facility",
+        "Regulator adopts revised runway inspection guidance",
+        "Helicopter manufacturer delivers a coastal rescue aircraft",
+        "Air traffic agency activates an oceanic control sector",
+        "Leasing company places an order for freighter conversions",
+        "Maintenance provider expands a composite repair hangar",
+        "Regional airline introduces a redesigned business cabin",
+        "Airport authority awards a terminal rail contract",
+        "Aircraft supplier opens a new landing gear factory",
+        "Cargo carrier signs a sustainable fuel agreement",
+        "Navigation provider validates satellite approach procedures",
+    ]
+    general = [
+        _mk_item(title,
+                 f"https://www.faa.gov/n/general-{i}", i + 1, body)
+        for i, title in enumerate(titles)
+    ]
+    taiwan = _mk_item(
+        "長榮航空宣布台北直飛德里新航線",
+        "https://www.cna.com.tw/news/afe/202608050172.aspx",
+        dedupe.MAX_GROUPS + 10,
+        "長榮航空宣布十二月開航台北至德里航線，每週提供五班直飛服務。",
+    )
+    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+        data_dir = Path(tmp)
+        _write_snapshot(data_dir, "faa", general)
+        _write_snapshot(data_dir, "cnataiwanfinance", [taiwan])
+        _run_dedupe(data_dir)
+        groups = _load_pending(data_dir)["groups"]
+
+        assert len(groups) == dedupe.MAX_GROUPS
+        assert groups[0]["items"][0]["title"] == taiwan["title"]
+        assert groups[0]["mustReport"] is True
+        assert all(group["mustReport"] is False for group in groups[1:])
+
+
 def test_empty_data_dir() -> None:
     with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
         data_dir = Path(tmp)
@@ -365,6 +407,7 @@ def main() -> None:
         test_structured_event_matching,
         test_filtering_grouping_and_ranking,
         test_group_cap_and_recency_order,
+        test_taiwan_airline_story_is_reserved_ahead_of_general_cap,
         test_empty_data_dir,
         test_freshness_window_and_future_guard,
         test_material_groups_rank_first,
