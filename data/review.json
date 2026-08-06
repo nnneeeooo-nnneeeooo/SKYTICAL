@@ -1,5 +1,363 @@
 [
   {
+    "id": "g-20260806-0321-3",
+    "queuedUtc": "2026-08-06T03:21Z",
+    "approve": false,
+    "writer": "openrouter:google/gemma-4-26b-a4b-it:free",
+    "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The Bahamas Air Navigation Services Authority (BANSA) has begun collecting retroactive navigation fees from operators of piston twins, turboprops and jets that flew to, from, within or over the country since May 1, 2021.",
+        "sourceQuote": "The Bahamas Air Navigation Services Authority, known as BANSA, has begun collecting retroactive navigation fees from operators that flew to, from, within or over the country in piston twins, turboprops and jets since May 1, 2021.",
+        "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The NBAA reports that fee increases range from nearly 300% to almost 700%, depending on the aircraft's maximum takeoff weight.",
+        "sourceQuote": "NBAA said the increases range from nearly 300% to almost 700%, depending on the aircraft’s maximum takeoff weight.",
+        "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Exemptions from the fees include single-engine piston aircraft, search-and-rescue missions, emergency medical flights, certain emergency landings, and government or military aircraft.",
+        "sourceQuote": "Private flights in single-engine piston aircraft are exempt, along with search-and-rescue missions, emergency medical flights, certain emergency landings and government or military aircraft.",
+        "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The NBAA is launching an advocacy effort with other stakeholders and the US government regarding the economic impact of the fees.",
+        "sourceQuote": "NBAA is launching an advocacy effort with other impacted stakeholders and the US government to highlight the negative economic impact such onerous fees will have on FBOs, airports, the travel industry and surrounding businesses",
+        "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
+      "cat": "biz",
+      "zh": {
+        "title": "巴哈馬追溯徵收自2021年起之航行費",
+        "summary": "巴哈馬空中航行服務局（BANSA）已開始向自2021年5月1日起在該國領空內或其境內進行飛行之雙引擎活塞式、渦輪螺旋槳及噴射機營運商，追溯徵收航行費。根據美國國家通用航空協會（NBAA）指出，部分費用漲幅達300%至700%。",
+        "body": [
+          "巴哈馬空中航行服務局（BANSA）已開始向自2021年5月1日起，在巴哈馬境內、境內或其領空內進行飛行之雙引擎活塞式、渦輪螺旋槳及噴射機營運商，追溯徵收航行費。",
+          "根據美國國家通用航空協會（NBAA）指出，這些費用的漲幅視飛機最大起飛重量而定，漲幅介於近300%至近700%之間。",
+          "此項追溯徵收政策適用於私人及商業飛行，但單引擎活塞式飛機、搜救任務、緊急醫療飛行、特定緊急著陸以及政府或軍用飛機則獲得豁免。",
+          "NBAA 表示，該協會正與其他受影響的利害關係人及美國政府合作，針對此項費用可能對 FBO、機場、旅遊業及相關企業造成的負面經濟影響展開倡議工作。"
+        ]
+      },
+      "en": {
+        "title": "The Bahamas imposes retroactive navigation fees dating back to 2021",
+        "summary": "The Bahamas Air Navigation Services Authority (BANSA) has begun collecting retroactive navigation fees from operators of twin-engine piston, turboprop, and jet aircraft that flew to, from, within, or over the country since May 1, 2021. According to the NBAA, fee increases range from nearly 300% to almost 700%.",
+        "body": [
+          "The Bahamas Air Navigation Services Authority (BANSA) has begun collecting retroactive navigation fees from operators that flew to, from, within or over the country in piston twins, turboprops and jets since May 1, 2021.",
+          "The National Business Aviation Association (NBAA) stated that the increases range from nearly 300% to almost 700%, depending on the aircraft’s maximum takeoff weight.",
+          "The charges apply to both private and commercial flights, though exemptions are provided for single-engine piston aircraft, search-and-rescue missions, emergency medical flights, certain emergency landings, and government or military aircraft.",
+          "The NBAA is launching an advocacy effort with other impacted stakeholders and the US government to highlight the negative economic impact such fees may have on FBOs, airports, the travel industry, and surrounding businesses."
+        ]
+      },
+      "flash": {
+        "zh": "巴哈馬追溯徵收自2021年起之航行費",
+        "en": "The Bahamas imposes retroactive navigation fees dating back to 2021",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The Bahamas Air Navigation Services Authority (BANSA) has begun collecting retroactive navigation fees from operators of piston twins, turboprops and jets that flew to, from, within or over the country since May 1, 2021.",
+          "sourceQuote": "The Bahamas Air Navigation Services Authority, known as BANSA, has begun collecting retroactive navigation fees from operators that flew to, from, within or over the country in piston twins, turboprops and jets since May 1, 2021.",
+          "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The NBAA reports that fee increases range from nearly 300% to almost 700%, depending on the aircraft's maximum takeoff weight.",
+          "sourceQuote": "NBAA said the increases range from nearly 300% to almost 700%, depending on the aircraft’s maximum takeoff weight.",
+          "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Exemptions from the fees include single-engine piston aircraft, search-and-rescue missions, emergency medical flights, certain emergency landings, and government or military aircraft.",
+          "sourceQuote": "Private flights in single-engine piston aircraft are exempt, along with search-and-rescue missions, emergency medical flights, certain emergency landings and government or military aircraft.",
+          "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The NBAA is launching an advocacy effort with other stakeholders and the US government regarding the economic impact of the fees.",
+          "sourceQuote": "NBAA is launching an advocacy effort with other impacted stakeholders and the US government to highlight the negative economic impact such onerous fees will have on FBOs, airports, the travel industry and surrounding businesses",
+          "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "The Bahamas Air Navigation Services Authority",
+          "BANSA",
+          "National Business Aviation Association",
+          "NBAA",
+          "CST Flight Services",
+          "International Air Transport Association",
+          "Ministry of Tourism and Aviation",
+          "AOPA"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "The Bahamas",
+          "Florida",
+          "US",
+          "Grand Bahama"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2021-05-01"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260806-0321-3",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "The Bahamas hits aircraft operators with retroactive bills dating to 2021",
+          "url": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
+          "publishedUtc": "2026-08-05T20:57Z",
+          "summary": "For years, The Bahamas worked hard to persuade private pilots to visit, promoting its airports, organizing fly-ins and… The post The Bahamas hits aircraft operators with retroactive bills dating to 2021 appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260806-0321-9",
+    "queuedUtc": "2026-08-06T03:21Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "This is an aviation safety event involving loss of separation between Marine One and a commercial passenger aircraft, as reported by the FAA. Per the strictest safety standard, any loss of separation / ATC event requires human review. The source material provides only headlines without full article text, so details are limited; however, the core event is clearly established by two independent sources. Manual review is mandatory for all aviation safety occurrences.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The FAA stated that Marine One was briefly too close to a passenger airplane.",
+        "sourceQuote": "FAA says Marine One was briefly too close to passenger airplane",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWGVVekl4bEJ3UlhoSEc3U3J1Z0lBZk1KVFRmdWg3UHVjOW5tM010QUVNeUdZbzlmUkx1X2lhM3gxN0EydFo1UnhBanVkUU12YnlKUXV6NHJTeS1ROXNlRU5ucHUwcndQQXo0Y3RqeVJ4MkZ1SEhIRmQ5c0Z6Yy15VkpTbUFDSVdVTUhJakJmOF9BVjdZckNobUVvcHhHa0FaS3V6RG90bzMwd3N5X0hKczEwQWRTMVBsbVFtTkNDc0I?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Reuters reported the event on August 5, 2026.",
+        "sourceQuote": "FAA says Marine One was briefly too close to passenger airplane",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWGVVekl4bEJ3UlhoSEc3U3J1Z0lBZk1KVFRmdWg3UHVjOW5tM010QUVNeUdZbzlmUkx1X2lhM3gxN0EydFo1UnhBanVkUU12YnlKUXV6NHJTeS1ROXNlRU5ucHUwcndQQXo0Y3RqeVJ4MkZ1SEhIRmQ5c0Z6Yy15VkpTbUFDSVdVTUhJakJmOF9BVjdZckNobUVvcHhHa0FaS3V6RG90bzMwd3N5X0hKczEwQWRTMVBsbVFtTkNDc0I?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "CNBC also reported the same event.",
+        "sourceQuote": "FAA says Marine One was briefly too close to passenger airplane",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWGVVekl4bEJ3UlhoSEc3U3J1Z0lBZk1KVFRmdWg3UHVjOW5tM010QUVNeUdZbzlmUkx1X2lhM3gxN0EydFo1UnhBanVkUU12YnlKUXV6NHJTeS1ROXNlRU5ucHUwcndQQXo0Y3RqeVJ4MkZ1SEhIRmQ5c0Z6Yy15VkpTbUFDSVdVTUhJakJmOF9BVjdZckNobUVvcHhHa0FaS3V6RG90bzMwd3N5X0hKczEwQWRTMVBsbVFtTkNDc0I?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "This is an aviation safety event involving loss of separation between Marine One and a commercial passenger aircraft, as reported by the FAA. Per the strictest safety standard, any loss of separation / ATC event requires human review. The source material provides only headlines without full article text, so details are limited; however, the core event is clearly established by two independent sources. Manual review is mandatory for all aviation safety occurrences.",
+      "cat": "safety",
+      "zh": {
+        "title": "FAA：Marine One與民航客機一度距離過近",
+        "summary": "美國聯邦航空總署（FAA）表示，總統專用直升機Marine One與一架民航客機曾一度距離過近。路透社與CNBC均報導此一事件，目前細節有限。",
+        "body": [
+          "美國聯邦航空總署（FAA）表示，Marine One與一架民航客機曾一度距離過近。路透社於2026年8月5日報導此一消息，CNBC亦作相同報導。",
+          "根據兩家媒體的標題，FAA就這起間距過近事件作出說明，但報導中未提供進一步的事發日期、地點、涉及航機型號或航空公司等細節。",
+          "Marine One為美國總統專用直升機的無線電呼號。本起事件涉及軍用航空器與民航客機之間的空中間距問題，屬於航空安全範疇。",
+          "目前消息來源僅提供標題層級的資訊，尚無完整文章內文可供查證更多細節。FAA的進一步說明及調查狀態仍有待確認。"
+        ]
+      },
+      "en": {
+        "title": "FAA: Marine One Was Briefly Too Close to Passenger Airplane",
+        "summary": "The U.S. Federal Aviation Administration (FAA) stated that Marine One was briefly too close to a passenger airplane. Both Reuters and CNBC reported the event on August 5, 2026, though detailed information remains limited.",
+        "body": [
+          "The U.S. Federal Aviation Administration (FAA) stated that Marine One was briefly too close to a passenger airplane. Reuters reported the event on August 5, 2026, and CNBC carried the same report.",
+          "According to the headlines from both outlets, the FAA addressed the proximity event, but no further details such as the date of occurrence, location, aircraft types, or airline involved were provided in the available source material.",
+          "Marine One is the radio call sign for the U.S. presidential helicopter. The event involves a loss of separation between a military aircraft and a commercial passenger airplane, placing it within the aviation safety domain.",
+          "The available sources provide only headline-level information without full article text, limiting the ability to verify further details. Additional FAA statements and any investigation status remain to be confirmed."
+        ]
+      },
+      "flash": {
+        "zh": "FAA：Marine One與民航客機一度距離過近",
+        "en": "FAA: Marine One was briefly too close to a passenger airplane",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-05",
+        "sev": "inc",
+        "aircraft": "Marine One; passenger airplane",
+        "operator": "U.S. Marine Corps (Marine One); unknown (passenger airplane)",
+        "phase": {
+          "zh": "未知",
+          "en": "Unknown"
+        },
+        "location": {
+          "zh": "未載明",
+          "en": "Not specified"
+        },
+        "desc": {
+          "zh": "FAA表示Marine One與一架民航客機一度距離過近。",
+          "en": "FAA stated Marine One was briefly too close to a passenger airplane."
+        },
+        "status": "prelim"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The FAA stated that Marine One was briefly too close to a passenger airplane.",
+          "sourceQuote": "FAA says Marine One was briefly too close to passenger airplane",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWGVVekl4bEJ3UlhoSEc3U3J1Z0lBZk1KVFRmdWg3UHVjOW5tM010QUVNeUdZbzlmUkx1X2lhM3gxN0EydFo1UnhBanVkUU12YnlKUXV6NHJTeS1ROXNlRU5ucHUwcndQQXo0Y3RqeVJ4MkZ1SEhIRmQ5c0Z6Yy15VkpTbUFDSVdVTUhJakJmOF9BVjdZckNobUVvcHhHa0FaS3V6RG90bzMwd3N5X0hKczEwQWRTMVBsbVFtTkNDc0I",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Reuters reported the event on August 5, 2026.",
+          "sourceQuote": "FAA says Marine One was briefly too close to passenger airplane",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWGVVekl4bEJ3UlhoSEc3U3J1Z0lBZk1KVFRmdWg3UHVjOW5tM010QUVNeUdZbzlmUkx1X2lhM3gxN0EydFo1UnhBanVkUU12YnlKUXV6NHJTeS1ROXNlRU5ucHUwcndQQXo0Y3RqeVJ4MkZ1SEhIRmQ5c0Z6Yy15VkpTbUFDSVdVTUhJakJmOF9BVjdZckNobUVvcHhHa0FaS3V6RG90bzMwd3N5X0hKczEwQWRTMVBsbVFtTkNDc0I",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "CNBC also reported the same event.",
+          "sourceQuote": "FAA says Marine One was briefly too close to passenger airplane",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQM0FHcUVWSVBZelhqMW1GMXc1dmNGV2ZDRWJUcC1wcW1OS0xhZFNOR1BjX3ZQVHBLZXUyaGhaWDZpMnJFZ0d1LTdNUnptRHR5blF3Sy1ucnRiNzVtSGlXV3YwTWcxbzhwYzVaTlJoTFFjTEZ1S2NqSUhuMGdCWFpqcHFzcDgzRVFBLUI3MFhJNmhGbkZONFBLMDVLM2NWUXlIZ1NsZEtlUdIBpwFBVV95cUxQM0FHcUVWSVBZelhqMW1",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "FAA",
+          "Reuters",
+          "CNBC"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Marine One"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-05"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260806-0321-9",
+      "primarySource": "Reuters",
+      "items": [
+        {
+          "title": "FAA says Marine One was briefly too close to passenger airplane",
+          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWGVVekl4bEJ3UlhoSEc3U3J1Z0lBZk1KVFRmdWg3UHVjOW5tM010QUVNeUdZbzlmUkx1X2lhM3gxN0EydFo1UnhBanVkUU12YnlKUXV6NHJTeS1ROXNlRU5ucHUwcndQQXo0Y3RqeVJ4MkZ1SEhIRmQ5c0Z6Yy15VkpTbUFDSVdVTUhJakJmOF9BVjdZckNobUVvcHhHa0FaS3V6RG90bzMwd3N5X0hKczEwQWRTMVBsbVFtTkNDc0I?oc=5",
+          "publishedUtc": "2026-08-05T22:13Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "FAA says Marine One was briefly too close to passenger airplane",
+          "summary": "FAA says Marine One was briefly too close to passenger airplane &nbsp;&nbsp; CNBC",
+          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQM0FHcUVWSVBZelhqMW1GMXc1dmNGV2ZDRWJUcC1wcW1OS0xhZFNOR1BjX3ZQVHBLZXUyaGhaWDZpMnJFZ0d1LTdNUnptRHR5blF3Sy1ucnRiNzVtSGlXV3YwTWcxbzhwYzVaTlJoTFFjTEZ1S2NqSUhuMGdCWFpqcHFzcDgzRVFBLUI3MFhJNmhGbkZONFBLMDVLM2NWUXlIZ1NsZEtlUdIBpwFBVV95cUxQM0FHcUVWSVBZelhqMW1GMXc1dmNGV2ZDRWJUcC1wcW1OS0xhZFNOR1BjX3ZQVHBLZXUyaGhaWDZpMnJFZ0d1LTdNUnptRHR5blF3Sy1ucnRiNzVtSGlXV3YwTWcxbzhwYzVaTlJoTFFjTEZ1S2NqSUhuMGdCWFpqcHFzcDgzRVFBLUI3MFhJNmhGbkZONFBLMDVLM2NWUXlIZ1NsZEtlUQ?oc=5",
+          "source": "CNBC",
+          "companion": true,
+          "publishedUtc": "2026-08-05T18:24Z"
+        }
+      ],
+      "updateCandidate": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260805-2308-4",
     "queuedUtc": "2026-08-05T23:08Z",
     "approve": false,
@@ -9192,523 +9550,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260801-1206-7",
-    "queuedUtc": "2026-08-01T12:06Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "IATA estimates $4.3 billion in airline costs for 2026 SAF purchases, requiring human review for financial projections.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "IATA expects global SAF production to reach approximately 2.4 million tonnes in 2026, covering around 0.8% of global jet fuel consumption.",
-        "sourceQuote": "expects global SAF production to reach approximately 2.4 million tonnes in 2026. That would cover only around 0.8% of global jet fuel consumption.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "IATA estimates SAF will cost airlines approximately $4.3 billion in 2026.",
-        "sourceQuote": "IATA estimates the fuel will cost airlines approximately $4.3 billion during the year.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "ICAO calculates eligible fuel emissions according to lifecycle carbon intensity.",
-        "sourceQuote": "ICAO calculates eligible fuel emissions according to lifecycle carbon intensity rather than treating all SAF as identical.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Most SAF currently available is produced from waste oils and fats using the HEFA process.",
-        "sourceQuote": "Most SAF currently available is produced from waste oils and fats, including used cooking oil, animal fats and residues from vegetable oil processing.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "IATA estimates $4.3 billion in airline costs for 2026 SAF purchases, requiring human review for financial projections.",
-      "cat": "biz",
-      "zh": {
-        "title": "IATA預估2026年永續航空燃料產量達240萬噸 僅佔全球用量0.8%",
-        "summary": "根據國際航空運輸協會（IATA）預測，2026年全球永續航空燃料（SAF）產量預計達約240萬噸，僅能供應全球航空燃油消耗量的0.8%，且將耗費航空公司約43億美元。國際民航組織（ICAO）則依據生命週期碳強度計算合格燃料排放，而非將所有永續燃油視為相同。",
-        "body": [
-          "根據國際航空運輸協會（IATA）預測，2026年全球永續航空燃料（SAF）產量預計達約240萬噸。該產量僅能滿足全球航空燃油消耗量的約0.8%，但IATA估計航空公司當年度購買SAF的支出將達到約43億美元。",
-          "在碳排放採計方面，國際民航組織（ICAO）依據生命週期碳強度來計算合格燃料的減排效益，而非將所有SAF視為相同效益。目前市場上大多數可用之永續航空燃料，主要由廢棄油酯與脂肪經由氫化酯類與脂肪酸（HEFA）製程加工而成。"
-        ]
-      },
-      "en": {
-        "title": "IATA Projects 2026 SAF Output at 2.4 Million Tonnes, Meeting 0.8% of Demand",
-        "summary": "The International Air Transport Association (IATA) expects global sustainable aviation fuel (SAF) production to reach approximately 2.4 million tonnes in 2026, covering only around 0.8% of global jet fuel consumption. Despite this limited supply volume, IATA estimates the fuel will cost airlines approximately $4.3 billion during the year. Furthermore, ICAO calculates eligible fuel emissions based on lifecycle carbon intensity rather than treating all SAF as identical. Currently, most available SAF is produced from waste oils and fats using the hydroprocessed esters and fatty acids process.",
-        "body": [
-          "According to the International Air Transport Association (IATA), global sustainable aviation fuel (SAF) production is expected to reach approximately 2.4 million tonnes in 2026. This output would cover only around 0.8% of global jet fuel consumption, yet IATA estimates that purchasing this fuel will cost airlines approximately $4.3 billion during the year.",
-          "Regarding climate impact, ICAO calculates eligible fuel emissions according to lifecycle carbon intensity rather than treating all SAF as identical. Currently, most SAF available on the market is produced from waste oils and fats through the hydroprocessed esters and fatty acids (HEFA) process."
-        ]
-      },
-      "flash": {
-        "zh": "IATA預估2026年永續航空燃料產量達240萬噸",
-        "en": "IATA projects global 2026 SAF production to reach 2.4 million tonnes.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "IATA expects global SAF production to reach approximately 2.4 million tonnes in 2026, covering around 0.8% of global jet fuel consumption.",
-          "sourceQuote": "expects global SAF production to reach approximately 2.4 million tonnes in 2026. That would cover only around 0.8% of global jet fuel consumption.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "IATA estimates SAF will cost airlines approximately $4.3 billion in 2026.",
-          "sourceQuote": "IATA estimates the fuel will cost airlines approximately $4.3 billion during the year.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "ICAO calculates eligible fuel emissions according to lifecycle carbon intensity.",
-          "sourceQuote": "ICAO calculates eligible fuel emissions according to lifecycle carbon intensity rather than treating all SAF as identical.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Most SAF currently available is produced from waste oils and fats using the HEFA process.",
-          "sourceQuote": "Most SAF currently available is produced from waste oils and fats, including used cooking oil, animal fats and residues from vegetable oil processing.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "International Air Transport Association",
-          "IATA",
-          "ICAO"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-1206-7",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Why is sustainable aviation fuel so scarce and expensive? News",
-          "url": "https://aerospaceglobalnews.com/news/sustainable-aviation-fuel-scarce-expensive-why/",
-          "publishedUtc": "2026-08-01T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/04/AdobeStock_1096288298_Editorial_Use_Only-scaled.jpeg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1207-taiwan-caa-to-raise-airport-firefighter",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: icao",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給",
-            "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
-            "facts": [
-              {
-                "claim": "CAA Taiwan announced that Executive Yuan approved raising hazardous duty allowance for airport firefighters starting August 1, 2026.",
-                "source_quote": "為反映機場消防人員勤務的專業性與危險繁重現況，行政院核定調高危險職務加給",
-                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
-                "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給"
-              },
-              {
-                "claim": "The CAA stated that its 16 airports will be divided into two tiers, with monthly allowances of NT$9,700 for Tier 1 and NT$7,760 for Tier 2.",
-                "source_quote": "所屬16處機場將分為2級，第一級每月支領9,700元，第二級每月支領7,760元",
-                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
-                "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給"
-              },
-              {
-                "claim": "CAA noted that dedicated airport firefighting personnel are deployed at airports according to ICAO standards.",
-                "source_quote": "必須依據國際民航組織（ICAO）標準，配置專責機場消防人力",
-                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
-                "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260801-1206-12",
-    "queuedUtc": "2026-08-01T12:06Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Frontier Airlines reported second-quarter financial results including record revenue and fleet lease adjustments, involving financial and order/lease claims.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Frontier Group Holdings 2026年第二季營收達12.79億美元，較去年同期成長38%。",
-        "sourceQuote": "Parent company Frontier Group Holdings generated second-quarter revenue of $1.279 billion for the three months ending 30 June, a 38% increase compared with the same period last year.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Frontier Airlines 第二季淨虧損9000萬美元，扣除提前退租飛機相關一次性費用後調整後虧損為2200萬美元。",
-        "sourceQuote": "Frontier still reported a net loss of $90 million for the quarter, the figure improved to an adjusted loss of US$22 million once one-off costs associated with returning leased aircraft were excluded.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Frontier Airlines 第二季每可用座位哩程營收（RASM）年增28%至11.52美分。",
-        "sourceQuote": "Frontier’s revenue per available seat mile (RASM), a key measure of an airline’s financial health, increased by 28% year on year to 11.52 cents.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Frontier Airlines 第二季接收6架空中巴士新機，並依早期退租計畫歸還24架A320neo飛機。",
-        "sourceQuote": "During the quarter, it accepted delivery of six new Airbus aircraft while returning the 24 A320neos under the early lease termination programme.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "截至6月底，Frontier Airlines 共營運165架空中巴士單通道飛機。",
-        "sourceQuote": "The airline finished June operating a fleet of 165 Airbus single-aisle aircraft comprising A320ceos, A320neos, A321ceos and A321neos.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Frontier Airlines reported second-quarter financial results including record revenue and fleet lease adjustments, involving financial and order/lease claims.",
-      "cat": "biz",
-      "zh": {
-        "title": "Frontier Airlines第二季營收達12.79億美元 淨虧損9000萬美元",
-        "summary": "Frontier Group Holdings公布2026年第二季財報，營收年增38%至12.79億美元。該季淨虧損9000萬美元，扣除退租飛機費用後調整後虧損為2200萬美元。每可用座位哩程營收年增28%至11.52美分。期內公司接收6架空中巴士新機，並依約歸還24架A320neo飛機。",
-        "body": [
-          "母公司Frontier Group Holdings公布截至6月30日止的三個月財報，第二季營收達12.79億美元，較去年同期成長38%。該公司第二季淨虧損9000萬美元，但在剔除退租租賃飛機相關的一次性費用後，調整後虧損縮減至2200萬美元。",
-          "營運數據方面，Frontier Airlines 第二季每可用座位哩程營收（RASM）年增28%至11.52美分。",
-          "機隊調整方面，Frontier Airlines 在第二季接收了6架空中巴士新機，並依修訂後的租約提前歸還24架空中巴士A320neo飛機。截至6月底，該公司共營運165架空中巴士單通道飛機。"
-        ]
-      },
-      "en": {
-        "title": "Frontier Airlines Reports Q2 Revenue of $1.279 Billion and $90 Million Net Loss",
-        "summary": "Frontier Group Holdings reported second-quarter revenue of $1.279 billion for the period ending June 30, representing a 38% increase compared with the same period last year. Despite posting a net loss of $90 million for the quarter, the carrier's adjusted loss stood at $22 million when excluding one-off costs linked to returning leased aircraft. Revenue per available seat mile rose 28% year-on-year to 11.52 cents. During the quarter, Frontier accepted delivery of six new Airbus aircraft and returned 24 Airbus A320neo jets under an early lease termination program, leaving it with 165 Airbus single-aisle aircraft at the end of June.",
-        "body": [
-          "Parent company Frontier Group Holdings generated second-quarter revenue of $1.279 billion for the three months ending June 30, marking a 38% increase compared with the same period last year. Frontier reported a net loss of $90 million for the quarter, though the result improved to an adjusted loss of $22 million once one-off costs linked to returning leased aircraft were excluded.",
-          "The carrier's revenue per available seat mile (RASM) rose by 28% year-on-year to 11.52 cents during the second quarter.",
-          "During the quarter, Frontier accepted delivery of six new Airbus aircraft while returning 24 Airbus A320neo aircraft under an early lease termination programme. The airline finished June operating a fleet of 165 Airbus single-aisle aircraft."
-        ]
-      },
-      "flash": {
-        "zh": "Frontier Group Holdings公布第二季財報，營收年增38%至12.79億美元。",
-        "en": "Frontier Group Holdings reports Q2 revenue of $1.279 billion, up 38% year-on-year.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Frontier Group Holdings 2026年第二季營收達12.79億美元，較去年同期成長38%。",
-          "sourceQuote": "Parent company Frontier Group Holdings generated second-quarter revenue of $1.279 billion for the three months ending 30 June, a 38% increase compared with the same period last year.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Frontier Airlines 第二季淨虧損9000萬美元，扣除提前退租飛機相關一次性費用後調整後虧損為2200萬美元。",
-          "sourceQuote": "Frontier still reported a net loss of $90 million for the quarter, the figure improved to an adjusted loss of US$22 million once one-off costs associated with returning leased aircraft were excluded.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Frontier Airlines 第二季每可用座位哩程營收（RASM）年增28%至11.52美分。",
-          "sourceQuote": "Frontier’s revenue per available seat mile (RASM), a key measure of an airline’s financial health, increased by 28% year on year to 11.52 cents.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Frontier Airlines 第二季接收6架空中巴士新機，並依早期退租計畫歸還24架A320neo飛機。",
-          "sourceQuote": "During the quarter, it accepted delivery of six new Airbus aircraft while returning the 24 A320neos under the early lease termination programme.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "截至6月底，Frontier Airlines 共營運165架空中巴士單通道飛機。",
-          "sourceQuote": "The airline finished June operating a fleet of 165 Airbus single-aisle aircraft comprising A320ceos, A320neos, A321ceos and A321neos.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Frontier Group Holdings",
-          "Airbus"
-        ],
-        "airlines": [
-          "Frontier Airlines"
-        ],
-        "aircraft_models": [
-          "A320neo",
-          "A320ceos",
-          "A320neos",
-          "A321ceos",
-          "A321neos"
-        ],
-        "airports": [],
-        "locations": [
-          "Denver"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "30 June",
-          "June"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-1206-12",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Frontier Airlines posts record quarterly revenue as turnaround gathers momentum News",
-          "url": "https://aerospaceglobalnews.com/news/frontier-airlines-revenue-turnaround/",
-          "publishedUtc": "2026-07-30T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/05/AdobeStock_1879198672_Editorial_Use_Only-scaled.jpeg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: A320",
-              "same named core entity: airbus",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se...",
-            "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-            "facts": [
-              {
-                "claim": "空中巴士第二季淨利從去年同期的8.42億美元增至16.6億美元,增幅126%。",
-                "source_quote": "Net income increased from $842 million (€732 million) to $1.66 billion (€1.65 billion) in Q2 2026",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "空中巴士第二季營收年增28%。",
-                "source_quote": "revenue rose 28% over the same period.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "2026年4至6月,空中巴士交付237架商用飛機。",
-                "source_quote": "Between April and June 2026, Airbus delivered 237 commercial aircraft",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "空中巴士2026年上半年合計交付351架商用飛機。",
-                "source_quote": "The total for 2026 first half stands at 351.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "空中巴士全年交付約870架商用飛機的目標維持不變。",
-                "source_quote": "The company said its ambition to deliver around 870 commercial aircraft in 2026 remains the same.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "空中巴士執行長Faury表示,良好的半年業績主要反映商用飛機交付量提升,以及國防與太空部門的強勁表現。",
-                "source_quote": "“Our good H1 results mainly reflect the higher level of commercial aircraft deliveries and strong performance in Defense and Space, against the backdrop of a complex and fast-changing environment,” Faury said.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: airbus",
-              "archive predates source by 2 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
-            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-            "facts": [
-              {
-                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
-                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              },
-              {
-                "claim": "Qantas is opting to utilize the Boeing 787-9 instead.",
-                "source_quote": "as the airline opts for Boeing 787-9.",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              },
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1934-airbus-delivers-237-aircraft-in-q2-maint",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: airbus",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar...",
-            "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-            "facts": [
-              {
-                "claim": "空中巴士在第二季交付237架飛機。",
-                "source_quote": "Airbus Achieves 237 Deliveries In 2nd Quarter",
-                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
-              },
-              {
-                "claim": "空中巴士維持全年交付870架飛機的目標。",
-                "source_quote": "Keeps 870 Target For Full Year",
-                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
