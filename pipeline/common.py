@@ -126,6 +126,19 @@ def group_has_material(group: dict) -> bool:
     return any(item_has_material(item)
                for item in (group.get("items") or []))
 
+
+# Broad Taiwan feeds use one shared allowlist so a new category cannot drift
+# away from the established aviation/transport coverage gate.
+TAIWAN_TRANSPORT_KEYWORDS = (
+    "航空", "民航", "飛安", "航班", "航機", "飛機", "客機",
+    "貨機", "小型機", "機場", "航線", "空域", "空管", "跑道",
+    "墜機", "迫降", "轉降", "起飛", "降落", "華航", "中華航空",
+    "長榮航", "星宇", "台灣虎航", "臺灣虎航", "立榮", "華信",
+    "空軍", "軍機", "共機", "中共機艦", "共艦", "軍艦", "軍港",
+    "無人機", "直升機", "戰機", "轟炸機", "台鐵", "臺鐵",
+    "高鐵", "捷運", "航港", "港務", "小三通", "船班",
+)
+
 # Master source registry. `key` is the stable identifier used for
 # data/raw/<key>.json. `fmt` is what we display on the sources page.
 # `endpoint` is what fetch.py actually requests; `kind`:
@@ -279,6 +292,21 @@ SOURCES: dict[str, dict] = {
             "en": "Taiwan CAA notices",
         },
     },
+    "evaair": {
+        "name": "長榮航空 EVA Air",
+        "kind": "official",
+        "fmt": "HTML",
+        "url": "https://www.evaair.com/zh-tw/about-eva-air/news/",
+        "endpoint": (
+            "https://www.evaair.com/zh-tw/about-eva-air/news/"
+            "news-releases/"
+        ),
+        "type": "html",
+        "cover": {
+            "zh": "長榮航空官方新聞稿 — 航線、機隊與營運動態",
+            "en": "EVA Air official releases — network, fleet & operations",
+        },
+    },
     "simpleflying": {
         "name": "Simple Flying",
         "kind": "media",
@@ -313,19 +341,25 @@ SOURCES: dict[str, dict] = {
         # editorial stage never burns model calls on unrelated politics
         "endpoint": "https://feeds.feedburner.com/rsscna/politics",
         "type": "rss",
-        "keywords": [
-            "航空", "民航", "飛安", "航班", "航機", "飛機", "客機",
-            "貨機", "小型機", "機場", "航線", "空域", "空管", "跑道",
-            "墜機", "迫降", "轉降", "起飛", "降落", "華航", "中華航空",
-            "長榮航", "星宇", "台灣虎航", "臺灣虎航", "立榮", "華信",
-            "空軍", "軍機", "共機", "中共機艦", "共艦", "軍艦", "軍港",
-            "無人機", "直升機", "戰機", "轟炸機", "台鐵", "臺鐵",
-            "高鐵", "捷運", "航港", "港務", "小三通", "船班",
-        ],
+        "keywords": list(TAIWAN_TRANSPORT_KEYWORDS),
         "scope_filter": True,
         "cover": {
             "zh": "中央社 — 航空、軍航與交通相關報導",
             "en": "CNA Taiwan — aviation, military air & transport",
+        },
+    },
+    "cnataiwanfinance": {
+        "name": "中央社 CNA 產經證券",
+        "kind": "media",
+        "fmt": "RSS",
+        "url": "https://www.cna.com.tw/list/aie.aspx",
+        "endpoint": "https://feeds.feedburner.com/rsscna/finance",
+        "type": "rss",
+        "keywords": list(TAIWAN_TRANSPORT_KEYWORDS),
+        "scope_filter": True,
+        "cover": {
+            "zh": "中央社產經證券 — 國籍航空、航太與交通產業",
+            "en": "CNA business — Taiwan airlines, aerospace & transport",
         },
     },
     "mndnews": {
@@ -494,6 +528,31 @@ def is_transport_story(*records) -> bool:
         return False
     return (any(term in text for term in _TRANSPORT_ZH_TERMS)
             or _TRANSPORT_EN_RE.search(text) is not None)
+
+
+_TAIWAN_AIRLINE_ZH_TERMS = (
+    "國籍航空", "中華航空", "華航", "長榮航空", "長榮航",
+    "星宇航空", "星宇", "台灣虎航", "臺灣虎航", "立榮航空", "立榮",
+    "華信航空", "華信",
+)
+_TAIWAN_AIRLINE_EN_RE = re.compile(
+    r"\b(?:china airlines|eva air|starlux(?: airlines?)?|"
+    r"tigerair taiwan|uni air|mandarin airlines)\b",
+    re.IGNORECASE,
+)
+
+
+def is_taiwan_airline_story(*records) -> bool:
+    """Whether source material concerns a Taiwan-based national carrier.
+
+    This is an editorial priority signal only. Freshness, deduplication,
+    source completeness and safety review continue to apply downstream.
+    """
+    text = " ".join(
+        part for record in records for part in _string_values(record)
+    )
+    return (any(term in text for term in _TAIWAN_AIRLINE_ZH_TERMS)
+            or _TAIWAN_AIRLINE_EN_RE.search(text) is not None)
 
 
 # Military takes precedence over the other editorial categories when it is
