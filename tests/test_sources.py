@@ -30,8 +30,9 @@ def test_taiwan_airline_sources_cover_business_and_official_releases() -> None:
     assert finance["endpoint"] == "https://feeds.feedburner.com/rsscna/finance"
     assert finance["keywords"] == common.SOURCES["cnataiwan"]["keywords"]
     assert evaair["kind"] == "official"
-    assert evaair["type"] == "html"
-    assert evaair["endpoint"].endswith("/news/news-releases/")
+    assert evaair["type"] == "rss"
+    assert "news.google.com/rss/search" in evaair["endpoint"]
+    assert "site:evaair.com" in evaair["endpoint"]
     assert fetch._matches_keywords({
         "title": "長榮航空12月開航台北直飛德里",
         "summary": "每週五班使用A330-300客機飛航。",

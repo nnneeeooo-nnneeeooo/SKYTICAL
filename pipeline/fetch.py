@@ -50,6 +50,7 @@ def _matches_keywords(item: dict, keywords) -> bool:
 RETRY_DELAY = 2  # seconds between the two attempts
 RESOLVE_TIMEOUT = 6  # seconds for google-news link resolution
 MAX_RESOLVE_FAILURES = 3  # stop resolving after this many misses in a row
+MAX_RSS_SCAN_ITEMS = 200  # broad feeds are filtered after parsing
 SUMMARY_MAX = 500
 GOOGLE_NEWS_HOST = "news.google.com"
 CACHE_PATH = RAW_DIR / "_http_cache.json"
@@ -256,7 +257,7 @@ def _resolve_gnews_link(session: requests.Session, link: str) -> str | None:
 
 
 def _rss_items(session: requests.Session, key: str, entries: list,
-               endpoint: str) -> list[dict]:
+               endpoint: str, max_items: int = MAX_ITEMS_PER_SOURCE) -> list[dict]:
     """Normalize feed entries to raw items (published as datetime or None)."""
     is_google = GOOGLE_NEWS_HOST in urlsplit(endpoint).netloc
     items: list[dict] = []
@@ -298,7 +299,7 @@ def _rss_items(session: requests.Session, key: str, entries: list,
             "summary": summary,
             "image": _entry_image(entry),
         })
-        if len(items) >= MAX_ITEMS_PER_SOURCE:
+        if len(items) >= max_items:
             break
     return items
 
@@ -477,107 +478,12 @@ def _parse_airbus(soup: BeautifulSoup, base: str) -> list[dict]:
     return items
 
 
-_EVA_RELEASE_PATH_RE = re.compile(
-    r"/about-eva-air/news/news-releases/"
-    r"(?P<date>\d{4}-\d{2}-\d{2})-[^/?#]+\.html$",
-    re.IGNORECASE,
-)
-_EVA_DATE_TEXT_RE = re.compile(
-    r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|"
-    r"Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|"
-    r"Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},\s+\d{4}\b",
-    re.IGNORECASE,
-)
-
-
-def _parse_evaair(soup: BeautifulSoup, base: str) -> list[dict]:
-    """EVA Air newsroom cards with direct, date-bearing official links."""
-    anchors_by_url: dict[str, list] = {}
-    dates: dict[str, datetime] = {}
-    for anchor in soup.find_all("a", href=True):
-        url = urljoin(base, anchor["href"])
-        match = _EVA_RELEASE_PATH_RE.search(urlsplit(url).path)
-        if not match:
-            continue
-        try:
-            published = parse_iso(match.group("date") + "T00:00Z")
-        except ValueError:
-            continue
-        anchors_by_url.setdefault(url, []).append(anchor)
-        dates[url] = published
-
-    items = []
-    generic = {"more information", "read more", "詳細資料", "瞭解更多"}
-    for url, anchors in anchors_by_url.items():
-        container = None
-        for anchor in anchors:
-            for parent in anchor.parents:
-                if getattr(parent, "name", None) in ("body", "html", None):
-                    break
-                release_urls = {
-                    urljoin(base, link["href"])
-                    for link in parent.find_all("a", href=True)
-                    if _EVA_RELEASE_PATH_RE.search(
-                        urlsplit(urljoin(base, link["href"])).path)
-                }
-                text = _collapse(parent.get_text(" ", strip=True))
-                if (release_urls == {url}
-                        and (parent.find("p") or _EVA_DATE_TEXT_RE.search(text))):
-                    container = parent
-                    break
-            if container is not None:
-                break
-        container = container or anchors[0].parent
-
-        title_candidates = []
-        for heading in container.find_all(["h2", "h3", "h4"]):
-            title_candidates.append(_collapse(heading.get_text(" ", strip=True)))
-        for anchor in anchors:
-            title_candidates.extend([
-                _collapse(anchor.get("title")),
-                _collapse(anchor.get_text(" ", strip=True)),
-            ])
-            image = anchor.find("img")
-            if image is not None:
-                title_candidates.append(_collapse(image.get("alt")))
-        title_candidates = [
-            candidate for candidate in title_candidates
-            if len(candidate) >= 8 and candidate.casefold() not in generic
-        ]
-        if not title_candidates:
-            continue
-        title = max(title_candidates, key=len)
-
-        paragraphs = []
-        for paragraph in container.find_all("p"):
-            text = _collapse(paragraph.get_text(" ", strip=True))
-            if text and text != title and text.casefold() not in generic:
-                paragraphs.append(text)
-        summary = " ".join(dict.fromkeys(paragraphs))
-        if not summary:
-            summary = _collapse(container.get_text(" ", strip=True))
-            for noise in (title, "News Releases", "More Information"):
-                summary = _collapse(summary.replace(noise, " "))
-            summary = _collapse(_EVA_DATE_TEXT_RE.sub(" ", summary))
-
-        image = container.find("img", src=True)
-        items.append({
-            "title": title,
-            "url": url,
-            "published": dates[url],
-            "summary": summary,
-            "image": urljoin(base, image["src"]) if image else None,
-        })
-    return items
-
-
 HTML_PARSERS = {
     "faa": _parse_faa,
     "icao": _parse_icao,
     "eurocontrol": _parse_eurocontrol,
     "aerospaceglobalnews": _parse_aerospaceglobalnews,
     "airbus": _parse_airbus,
-    "evaair": _parse_evaair,
 }
 
 
@@ -686,7 +592,10 @@ def _fetch_source(session: requests.Session, key: str, spec: dict,
         feed = feedparser.parse(resp.content)
         if not feed.entries and feed.bozo:
             raise FetchError(f"feed parse failed: {getattr(feed, 'bozo_exception', 'bozo')}")
-        raw_items = _rss_items(session, key, feed.entries, endpoint)
+        scan_limit = (MAX_RSS_SCAN_ITEMS if spec.get("keywords")
+                      else MAX_ITEMS_PER_SOURCE)
+        raw_items = _rss_items(
+            session, key, feed.entries, endpoint, max_items=scan_limit)
     else:
         parser = HTML_PARSERS.get(key)
         if parser is None:
