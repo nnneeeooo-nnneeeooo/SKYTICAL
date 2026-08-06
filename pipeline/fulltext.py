@@ -64,6 +64,8 @@ ALLOWED_HOSTS = {
     # CNA articles arrive via CNA's own official feed with direct links;
     # robots.txt is still honored per fetch
     "www.cna.com.tw", "cna.com.tw",
+    # Taiwan flag-carrier newsroom releases
+    "www.evaair.com", "evaair.com",
     # aircraft and engine manufacturers.  Their newsroom listings are in
     # common.SOURCES; every article request still passes robots.txt and the
     # final redirect-host check below.
