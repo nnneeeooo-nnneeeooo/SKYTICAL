@@ -1,7 +1,881 @@
 [
   {
-    "id": "g-20260807-0718-3",
-    "queuedUtc": "2026-08-07T07:18Z",
+    "id": "g-20260807-0728-5",
+    "queuedUtc": "2026-08-07T07:28Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.5-flash",
+    "decisionReason": "The article reports on a major corporate acquisition agreement and fleet expansion plans of a prominent global aircraft lessor, which involves significant financial and fleet size claims.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "DAE's aircraft leasing business represents about 85% of its operations, with the remainder being its engineering business.",
+        "sourceQuote": "The leasing business today is, I would say, about 85% of our business, and the engineering business is the remainder of that.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "DAE's current leasing fleet consists of about 700 aircraft.",
+        "sourceQuote": "On the leasing side, our fleet today is about 700 aircraft",
+        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "When the Macquarie acquisition closes, DAE's fleet will exceed 1,000 aircraft and serve 80 to 85 countries.",
+        "sourceQuote": "So, when that transaction closes, our fleet will be in excess of 1000 aircraft, allowing us to serve customers in like 80-85 countries.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "DAE previously expanded through the acquisitions of Nordic Aviation Capital in 2025 and Macquarie AirFinance in 2026.",
+        "sourceQuote": "particularly after the acquisition of two well-established players, Nordic Aviation Capital (NAC) and Macquarie AirFinance (MAF) in 2025 and 2026, respectively.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "DAE's fleet strategy focuses on narrowbody and one widebody product from Boeing and Airbus, alongside ATR72-600 and Boeing 777 freighters.",
+        "sourceQuote": "In fact, we will focus on narrowbody and one widebody product from Boeing and Airbus each, and then two unique aircraft types,",
+        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The article reports on a major corporate acquisition agreement and fleet expansion plans of a prominent global aircraft lessor, which involves significant financial and fleet size claims.",
+      "cat": "biz",
+      "zh": {
+        "title": "DAE執行長接受AeroTime專訪 表示收購完成後機隊將突破千架",
+        "summary": "杜拜航空企業（DAE）執行長 Firoz Tarapore 接受 AeroTime 專訪指出，該公司目前擁有約 700 架飛機，而在完成對 Macquarie AirFinance 的收購後，其機隊規模將突破 1,000 架。目前飛機租賃業務約佔 DAE 整體業務的 85%，其餘則為機身維修與保養業務。",
+        "body": [
+          "杜拜航空企業（DAE）執行長 Firoz Tarapore 接受 AeroTime 專訪時表示，該公司的飛機租賃業務目前約佔其整體營運的 85%，其餘的業務則為機身重度維修與工程服務。",
+          "Tarapore 指出，DAE 目前管理約 700 架飛機。在完成對 Macquarie AirFinance 的收購後，其託管機隊總數將突破 1,000 架，可服務多達 85 個國家的客戶。此外，該公司的機隊策略聚焦於波音與空中巴士的窄體機、單一寬體機機型，以及 ATR72-600 與波音 777 貨機。"
+        ]
+      },
+      "en": {
+        "title": "DAE Fleet Set to Exceed 1,000 Aircraft After Macquarie Acquisition",
+        "summary": "In an exclusive interview with AeroTime, Dubai Aerospace Enterprise (DAE) Chief Executive Officer Firoz Tarapore discussed the company's growth strategy. DAE currently operates a fleet of approximately 700 aircraft. Upon the closing of its announced agreement to acquire Macquarie AirFinance, DAE's total fleet is expected to exceed 1,000 aircraft. This transaction will expand DAE's global reach to customers in over 80 countries. Currently, aircraft leasing represents about 85% of DAE's business, while airframe maintenance services make up the remainder.",
+        "body": [
+          "Speaking to AeroTime, Dubai Aerospace Enterprise (DAE) CEO Firoz Tarapore stated that aircraft leasing accounts for approximately 85% of the company's business, with airframe maintenance services making up the remainder.",
+          "Tarapore noted that DAE's current fleet comprises about 700 aircraft. Once the recently announced agreement to acquire Macquarie AirFinance officially closes, the lessor's total fleet will exceed 1,000 aircraft, enabling DAE to serve customers across 80 to 85 countries. DAE previously expanded its regional aircraft portfolio through the acquisition of Nordic Aviation Capital. Additionally, the company's fleet strategy focuses on narrowbody and single widebody models from Boeing and Airbus, alongside the ATR72-600 and factory fresh Boeing 777 freighters."
+        ]
+      },
+      "flash": {
+        "zh": "DAE執行長預計收購完成後機隊將突破千架",
+        "en": "DAE Fleet Expected to Exceed 1,000 Aircraft After Macquarie Acquisition",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "DAE's aircraft leasing business represents about 85% of its operations, with the remainder being its engineering business.",
+          "sourceQuote": "The leasing business today is, I would say, about 85% of our business, and the engineering business is the remainder of that.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "DAE's current leasing fleet consists of about 700 aircraft.",
+          "sourceQuote": "On the leasing side, our fleet today is about 700 aircraft",
+          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "When the Macquarie acquisition closes, DAE's fleet will exceed 1,000 aircraft and serve 80 to 85 countries.",
+          "sourceQuote": "So, when that transaction closes, our fleet will be in excess of 1000 aircraft, allowing us to serve customers in like 80-85 countries.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "DAE previously expanded through the acquisitions of Nordic Aviation Capital in 2025 and Macquarie AirFinance in 2026.",
+          "sourceQuote": "particularly after the acquisition of two well-established players, Nordic Aviation Capital (NAC) and Macquarie AirFinance (MAF) in 2025 and 2026, respectively.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "DAE's fleet strategy focuses on narrowbody and one widebody product from Boeing and Airbus, alongside ATR72-600 and Boeing 777 freighters.",
+          "sourceQuote": "In fact, we will focus on narrowbody and one widebody product from Boeing and Airbus each, and then two unique aircraft types,",
+          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Dubai Aerospace Enterprise",
+          "DAE",
+          "Nordic Aviation Capital",
+          "NAC",
+          "Macquarie AirFinance",
+          "MAF",
+          "IATA",
+          "Boeing",
+          "Airbus"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "ATR72-600",
+          "B777"
+        ],
+        "airports": [],
+        "locations": [
+          "Dubai",
+          "Amman",
+          "Jordan",
+          "Rio de Janeiro"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2025",
+          "2026",
+          "June 6-8, 2026",
+          "2026-08-07"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0728-5",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Dubai Aerospace Enterprise CEO on becoming a top-tier global aircraft lessor",
+          "url": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "publishedUtc": "2026-08-07T03:00Z",
+          "summary": "Over the last couple of decades, the Middle East has emerged as the new “center of gravity” for… The post Dubai Aerospace Enterprise CEO on becoming a top-tier global aircraft lessor appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260807-0728-7",
+    "queuedUtc": "2026-08-07T07:28Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.5-flash",
+    "decisionReason": "The program involves significant program losses ($280M Q2 loss and a $3.9B contract) and critical government budget report oversight, requiring manual review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A Pentagon report released on August 3, 2026, states that Boeing's VC-25B cabin design remains behind schedule due to technical and certification issues.",
+        "sourceQuote": "The Pentagon report released on August 3, 2026, said the design for the VC-25B cabin remains behind schedule because of unresolved technical and certification issues.",
+        "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Interior delays have spread to wiring and structural modifications, leading to inefficient engineering and repeated changes on parts Boeing already began modifying.",
+        "sourceQuote": "delays to the cabin have spread into wiring design and fabrication as well as structural modifications to the two aircraft. This has resulted in “inefficient engineering work” and repeated changes",
+        "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The Air Force is targeting deliveries in 2028 and 2029, but the report warned the test schedule will be hard to meet if further unexpected work emerges.",
+        "sourceQuote": "The Air Force is working toward delivery of the first aircraft in 2028 and the second in 2029. The report warned that the planned test schedule will be difficult to meet",
+        "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Boeing expects to deliver the first aircraft in 2028 and recorded a $280 million loss on the program in Q2 2026 after adding resources to protect the schedule.",
+        "sourceQuote": "Boeing said in July that it still expects to deliver the first VC-25B in 2028. The company recorded another $280 million loss on the program during the second quarter",
+        "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "As of April, 95 repairs remained on the structural stringers of the first aircraft and 142 on the second, alongside cockpit windshield shortages and window defect issues.",
+        "sourceQuote": "Repairs are still needed for cracks found in structural stringers on both 747-8s. As of April, 95 repairs or installations remained on the first aircraft and 142 on the second",
+        "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "In the second quarter of 2026, Boeing reported revenue of $24.6 billion, a GAAP loss per share of $0.67, and a core loss per share of $0.76.",
+        "sourceQuote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+        "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+        "evidenceScope": "archive",
+        "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+        "archiveContext": true
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The program involves significant program losses ($280M Q2 loss and a $3.9B contract) and critical government budget report oversight, requiring manual review.",
+      "cat": "mil",
+      "zh": {
+        "title": "五角大廈報告揭露內部設計問題 波音新空軍一號計畫面臨延遲",
+        "summary": "根據美國國防部於2026年8月3日發布的報告，波音為替換現行總統專機而研發的VC-25B新「空軍一號」因內部設計落後與技術認證問題，導致配線及結構修改工作延宕。波音在2026年第二季為此計畫增列2.8億美元虧損，仍預計於2028年交付首架飛機。",
+        "body": [
+          "根據美國國防部於2026年8月3日發布的預算報告，波音（Boeing）公司用以研發兩架全新「空軍一號」總統專機（美軍代號VC-25B，由波音747-8客機改裝）的計畫正遭遇更多延誤。報告指出，該機隊的內部設計因技術與認證問題仍落後於進度，導致配線設計、製造以及結構修改等工作皆受到波及。",
+          "報告顯示，艙內設計進度落後引發了「低效率的工程工作」，逼使波音必須對已開始改裝的部分機體進行重複修改。此外，兩架改裝飛機的結構縱樑（stringers）皆發現裂紋。截至2026年4月，首架飛機仍有95處維修或安裝待處理，第二架則有142處。該計畫同時面臨缺少合格的747-8駕駛艙擋風玻璃，以及客艙窗戶組件存在缺陷等問題。",
+          "儘管面臨多項考驗，波音於2026年7月表示仍預計在2028年交付首架VC-25B，第二架則預計於2029年交付。為了維持此一進度，波音已投入額外的生產與認證資源，並在2026年第二季為此計畫增列了2.8億美元的虧損。波音也與美國空軍達成協議，將該飛機的認證從原本的美國聯邦航空局（FAA）認證轉移為軍事認證程序，以降低試飛與認證階段的風險。",
+          "另外，根據本站統計紀錄，波音在2026年第二季的財務報告中，錄得單季營業收入246億美元，公認會計準則（GAAP）下每股虧損0.67美元，核心（非公認會計準則）每股虧損為0.76美元。美國空軍表示，現行的VC-25A總統專機將繼續維持運作，直到全新VC-25B能夠完全執行總統空運任務為止。"
+        ]
+      },
+      "en": {
+        "title": "Pentagon Report Reveals Interior Design Issues Delaying Boeing's New Air Force One",
+        "summary": "A Pentagon report released on August 3, 2026, reveals that Boeing's VC-25B cabin design is lagging due to technical and certification issues. These interior delays have affected wiring, fabrication, and structural work on the two modified 747-8 aircraft, leading to inefficient engineering. Despite registering an additional $280 million loss on the program in the second quarter, Boeing still expects to deliver the first aircraft in 2028. Additionally, the program is addressing structural stringer cracks, a windshield shortage, and window assembly issues.",
+        "body": [
+          "According to a Pentagon report released on August 3, 2026, Boeing's efforts to develop two new Air Force One aircraft, officially designated as VC-25B, are facing further setbacks. The report, prepared as part of the Pentagon’s fiscal 2027 budget submission, indicates that the interior design for the modified Boeing 747-8 cabin continues to lag behind schedule due to unresolved technical and certification issues.",
+          "These cabin design delays have disrupted subsequent stages of the modification program, affecting wiring fabrication and structural work on both aircraft. This has led to \"inefficient engineering work\" and required Boeing to redo modifications on parts of the planes. Furthermore, structural stringer cracks on both aircraft require repairs; as of April 2026, 95 repairs remained on the first aircraft and 142 on the second. The program is also managing a shortage of certified cockpit windshields and window defect issues.",
+          "Despite these ongoing difficulties, Boeing stated in July 2026 that it still expects to deliver the first VC-25B in 2028, with the second planned for 2029. To protect this schedule, Boeing recorded an additional $280 million loss on the program during the second quarter of 2026. The manufacturer has also agreed with the U.S. Air Force to transition the aircraft from FAA certification to a military certification process to reduce risks during flight testing.",
+          "In addition, historical records from AVWIRE database show that Boeing recorded a total second-quarter revenue of $24.6 billion, with a GAAP loss per share of $0.67 and a core loss per share of $0.76. The U.S. Air Force plans to keep the current VC-25A fleet, which entered service in 1990, operational until the new VC-25B aircraft can fully carry out the presidential airlift mission."
+        ]
+      },
+      "flash": {
+        "zh": "五角大廈報告指波音新空軍一號內部設計落後致工程延誤",
+        "en": "Pentagon report reveals interior design issues delaying Boeing's new Air Force One.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A Pentagon report released on August 3, 2026, states that Boeing's VC-25B cabin design remains behind schedule due to technical and certification issues.",
+          "sourceQuote": "The Pentagon report released on August 3, 2026, said the design for the VC-25B cabin remains behind schedule because of unresolved technical and certification issues.",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Interior delays have spread to wiring and structural modifications, leading to inefficient engineering and repeated changes on parts Boeing already began modifying.",
+          "sourceQuote": "delays to the cabin have spread into wiring design and fabrication as well as structural modifications to the two aircraft. This has resulted in “inefficient engineering work” and repeated changes",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The Air Force is targeting deliveries in 2028 and 2029, but the report warned the test schedule will be hard to meet if further unexpected work emerges.",
+          "sourceQuote": "The Air Force is working toward delivery of the first aircraft in 2028 and the second in 2029. The report warned that the planned test schedule will be difficult to meet",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Boeing expects to deliver the first aircraft in 2028 and recorded a $280 million loss on the program in Q2 2026 after adding resources to protect the schedule.",
+          "sourceQuote": "Boeing said in July that it still expects to deliver the first VC-25B in 2028. The company recorded another $280 million loss on the program during the second quarter",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "As of April, 95 repairs remained on the structural stringers of the first aircraft and 142 on the second, alongside cockpit windshield shortages and window defect issues.",
+          "sourceQuote": "Repairs are still needed for cracks found in structural stringers on both 747-8s. As of April, 95 repairs or installations remained on the first aircraft and 142 on the second",
+          "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "In the second quarter of 2026, Boeing reported revenue of $24.6 billion, a GAAP loss per share of $0.67, and a core loss per share of $0.76.",
+          "sourceQuote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+          "archiveContext": true
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Pentagon",
+          "Air Force",
+          "FAA",
+          "GDC Technics",
+          "PPG",
+          "GKN"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "VC-25B",
+          "747-8",
+          "VC-25A",
+          "747-200"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "August 3, 2026",
+          "July",
+          "April"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0728-7",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Boeing Air Force One delays worsen as report reveals interior design problems",
+          "url": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
+          "publishedUtc": "2026-08-06T15:33Z",
+          "summary": "Boeing’s long-delayed efforts to field two new Air Force One aircraft faces more setbacks as interior design problems… The post Boeing Air Force One delays worsen as report reveals interior design problems appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: VC-25B"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-1805-faa-announces-successful-counter-drone-e",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-22",
+            "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa...",
+            "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+            "facts": [
+              {
+                "claim": "FAA announced successful counter-drone efforts during FIFA World Cup 2026 with more than 700 drones seized.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026, With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "Transportation Secretary Sean P. Duffy announced federal, state, and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_quote": "Department of Transportation Secretary Sean P. Duffy announced that federal, state and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "The effort helped keep millions of fans safe.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "More than 700 drones were seized.",
+                "source_quote": "With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing, faa",
+              "archive predates source by 11 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 11 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260807-0728-12",
+    "queuedUtc": "2026-08-07T07:28Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Regulatory action (foreign investment screening decision) triggers mandatory human review.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Belgium blocked the acquisition of NHV Group by GD Helicopter Finance, an Irish lessor ultimately controlled by Chinese interests.",
+        "sourceQuote": "Belgium has blocked the acquisition of Ostend-based helicopter operator NHV Group by GD Helicopter Finance (GDHF), an Irish lessor ultimately controlled by Chinese interests",
+        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "NHV confirmed on 5 August 2026 that the deal would not proceed after a decision by Belgium’s Interfederal Screening Committee.",
+        "sourceQuote": "NHV confirmed on August 5, 2026, that the deal would not proceed following a decision by Belgium’s Interfederal Screening Committee (ISC)",
+        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "GDHF is a subsidiary of GDAT Group, a Shanghai-based helicopter operator and lessor founded in 2012 and chaired by Peter Jiang.",
+        "sourceQuote": "GDHF is registered in Dublin and led by chief executive Michael York, but it is a subsidiary of GDAT Group, a Shanghai-based helicopter operator and lessor founded in 2012 and chaired by Peter Jiang, who owns GDHF.",
+        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Belgium’s foreign investment screening mechanism, effective since 1 July 2023, covers non‑EU investors acquiring control of firms in sensitive sectors such as energy, defence and critical infrastructure.",
+        "sourceQuote": "Belgium’s foreign investment screening mechanism, in force since July 1, 2023, applies to non-EU investors acquiring control of companies active in sensitive sectors including energy, defense and critical infrastructure.",
+        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "VRT NWS reported on 7 February 2026 that Belgium’s military intelligence service ADIV took over the review, citing concerns over NHV’s bid to maintain the Belgian military helicopter fleet.",
+        "sourceQuote": "VRT NWS reported on February 7, 2026, that Belgium’s military intelligence service, ADIV, had taken over the file.",
+        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "NHV operates about 28 helicopters, employs over 400 people and reported revenue of roughly €155 million in 2025.",
+        "sourceQuote": "Founded in 1997, NHV operates around 28 helicopters with more than 400 employees and reported revenue of about €155 million in 2025.",
+        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Regulatory action (foreign investment screening decision) triggers mandatory human review.",
+      "cat": "reg",
+      "zh": {
+        "title": "比利時阻止中國關聯收購NHV直升機運營商",
+        "summary": "比利時跨部門審查委員會否決愛爾蘭租賃公司GD Helicopter Finance收購奧斯坦德直升機運營商NHV，因其最終由中國GDAT集團控制；NHV確認交易終止，擁有權不變。",
+        "body": [
+          "比利時已阻止愛爾蘭租賃公司GD Helicopter Finance（GDHF）收購位於奧斯坦德的直升機運營商NHV Group，GDHF最終由中國GDAT集團控制。",
+          "NHV於2026年8月5日確認，因比利時跨部門審查委員會（ISC）的決定，交易將不會繼續，公司所有權與控制權維持不變，仍由法國投資公司Ardian持有。",
+          "比利時自2023年7月1日起實施的外資審查機制，適用於非歐盟投資者取得能源、國防及關鍵基礎設施等敏感領域公司的控制權。",
+          "弗拉芒公共廣播機構VRT NWS於2026年2月7日報導，比利時軍事情報機構ADIV已接手審查，因NHV曾競標為比利時軍用直升機艦隊提供維護服務，官方擔憂收購完成後將無法執行該項工作。"
+        ]
+      },
+      "en": {
+        "title": "Belgium blocks Chinese-linked takeover of NHV helicopter operator",
+        "summary": "Belgium's Interfederal Screening Committee vetoed the acquisition of Ostend-based helicopter operator NHV Group by Irish lessor GD Helicopter Finance, which is ultimately controlled by China's GDAT Group; NHV confirmed the deal is terminated and ownership remains unchanged.",
+        "body": [
+          "Belgium has blocked the acquisition of Ostend-based helicopter operator NHV Group by GD Helicopter Finance (GDHF), an Irish lessor ultimately controlled by Chinese interests.",
+          "NHV confirmed on August 5, 2026, that the deal would not proceed following a decision by Belgium’s Interfederal Screening Committee (ISC), and said there would be no change to its ownership or control, which remains with French private investment firm Ardian.",
+          "Belgium’s foreign investment screening mechanism, in force since July 1, 2023, applies to non-EU investors acquiring control of companies active in sensitive sectors including energy, defense and critical infrastructure.",
+          "VRT NWS reported on February 7, 2026, that Belgium’s military intelligence service, ADIV, had taken over the file; officials were concerned by the operator’s bid to maintain the Belgian military helicopter fleet."
+        ]
+      },
+      "flash": {
+        "zh": "比利時阻止中國關聯收購NHV",
+        "en": "Belgium blocks Chinese-linked NHV takeover",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Belgium blocked the acquisition of NHV Group by GD Helicopter Finance, an Irish lessor ultimately controlled by Chinese interests.",
+          "sourceQuote": "Belgium has blocked the acquisition of Ostend-based helicopter operator NHV Group by GD Helicopter Finance (GDHF), an Irish lessor ultimately controlled by Chinese interests",
+          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "NHV confirmed on 5 August 2026 that the deal would not proceed after a decision by Belgium’s Interfederal Screening Committee.",
+          "sourceQuote": "NHV confirmed on August 5, 2026, that the deal would not proceed following a decision by Belgium’s Interfederal Screening Committee (ISC)",
+          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "GDHF is a subsidiary of GDAT Group, a Shanghai-based helicopter operator and lessor founded in 2012 and chaired by Peter Jiang.",
+          "sourceQuote": "GDHF is registered in Dublin and led by chief executive Michael York, but it is a subsidiary of GDAT Group, a Shanghai-based helicopter operator and lessor founded in 2012 and chaired by Peter Jiang, who owns GDHF.",
+          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Belgium’s foreign investment screening mechanism, effective since 1 July 2023, covers non‑EU investors acquiring control of firms in sensitive sectors such as energy, defence and critical infrastructure.",
+          "sourceQuote": "Belgium’s foreign investment screening mechanism, in force since July 1, 2023, applies to non-EU investors acquiring control of companies active in sensitive sectors including energy, defense and critical infrastructure.",
+          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "VRT NWS reported on 7 February 2026 that Belgium’s military intelligence service ADIV took over the review, citing concerns over NHV’s bid to maintain the Belgian military helicopter fleet.",
+          "sourceQuote": "VRT NWS reported on February 7, 2026, that Belgium’s military intelligence service, ADIV, had taken over the file.",
+          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "NHV operates about 28 helicopters, employs over 400 people and reported revenue of roughly €155 million in 2025.",
+          "sourceQuote": "Founded in 1997, NHV operates around 28 helicopters with more than 400 employees and reported revenue of about €155 million in 2025.",
+          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Interfederal Screening Committee (ISC)",
+          "GD Helicopter Finance (GDHF)",
+          "GDAT Group",
+          "NHV Group",
+          "Ardian",
+          "VRT NWS",
+          "ADIV",
+          "NATO Support and Procurement Agency",
+          "Airbus",
+          "Federal Public Service Economy",
+          "Belgian Competition Authority"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Airbus H145M",
+          "Airbus H175",
+          "Airbus H160"
+        ],
+        "airports": [],
+        "locations": [
+          "Ostend",
+          "Belgium",
+          "Den Helder",
+          "Netherlands",
+          "North Sea",
+          "West Africa",
+          "Shanghai",
+          "Dublin"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-05",
+          "2026-02-07",
+          "2026-06-24",
+          "2023-07-01",
+          "2025"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0728-12",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Belgium blocks China-linked takeover of helicopter operator NHV Group",
+          "url": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
+          "publishedUtc": "2026-08-06T10:42Z",
+          "summary": "Belgium has blocked the acquisition of Ostend-based helicopter operator NHV Group by GD Helicopter Finance (GDHF), an Irish… The post Belgium blocks China-linked takeover of helicopter operator NHV Group appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
+            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+            "facts": [
+              {
+                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
+                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
+                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
+                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
+                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
+                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260807-0354-2",
+    "queuedUtc": "2026-08-07T03:55Z",
     "approve": false,
     "writer": "gemini:gemini-3.6-flash",
     "decisionReason": "Major financial takeover transaction valuing easyJet at £5.7 billion requires human review under guidelines for large financial claims and acquisitions.",
@@ -9433,665 +10307,6 @@
                 "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
                 "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
                 "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260802-1440-8",
-    "queuedUtc": "2026-08-02T14:40Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The strike action and resulting flight cancellations represent an ongoing operational disruption.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "WestJet flight attendants officially went on strike on August 2, 2026, following failed collective agreement negotiations with CUPE Local 8125.",
-        "sourceQuote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
-        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The strike involves approximately 4,400 cabin crew members and has forced WestJet to cancel more than 300 flights.",
-        "sourceQuote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
-        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "WestJet began grounding parts of its Boeing 737 fleet prior to the strike to reduce operational disruption.",
-        "sourceQuote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
-        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The labor dispute centers on flight attendant compensation for pre-departure and post-arrival duties.",
-        "sourceQuote": "At the center of the dispute is how flight attendants are compensated for duties performed before departure and after arrival.",
-        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "WestJet stated its Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft continue operating.",
-        "sourceQuote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
-        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "CUPE 8125 President Alia Hussain stated the union tried until the last minute to get a fair deal but WestJet's offer did not go far enough.",
-        "sourceQuote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain.",
-        "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The strike action and resulting flight cancellations represent an ongoing operational disruption.",
-      "cat": "ops",
-      "zh": {
-        "title": "西捷航空客艙組員展開罷工 已導致逾300班次取消",
-        "summary": "西捷航空約4,400名客艙組員於2026年8月2日展開罷工，主因與工會8125分會談判破裂。爭議焦點為起飛前與降落後的勤務薪資。罷工已導致超過300個航班取消，波音737與787航線受影響，但WestJet Encore營運之Dash 8 Q400航班維持正常。",
-        "body": [
-          "西捷航空（WestJet）約4,400名客艙組員於2026年8月2日正式發起罷工行動。在此之前，西捷航空與加拿大公共僱員工會（CUPE）8125分會進行了近11個月的團體協約談判，但最終未能達成新協議。罷工行動隨即展開，並對西捷航空的整體航網營運造成重大影響，已有超過300個航班被迫取消。",
-          "為因應罷工可能帶來的衝擊，西捷航空在罷工正式開始前，已著手停飛部分波音（Boeing）737機隊，以降低營運中斷的程度，並避免旅客與客機滯留於外站。工會8125分會理事長Alia Hussain表示，工會直到最後一刻都在努力爭取一份能體現客艙組員工作價值的合理協議，但西捷航空提出的方案仍顯不足。",
-          "此次勞資爭議的核心，在於空服員在航班起飛前與降落後所執行的勤務報酬計算方式。工會主張，現行體制下這些地面勤務並未獲得相應薪資；西捷航空則表示，現行的薪酬模式已涵蓋該部分工作。航空公司指出，其最新的提議中已包含起飛前與降落後所有勤務的薪資保障，並承諾在協定生效的第一年提供雙位數的調薪幅度。",
-          "西捷航空證實，受到本次罷工影響的航線主要為波音737與波音787機隊執飛的航班。相對地，由WestJet Encore營運、採用De Havilland Dash 8 Q400客機執飛的航班，以及與合作航空公司聯營的代碼共享航班，目前均按照既定時程維持正常營運。"
-        ]
-      },
-      "en": {
-        "title": "WestJet Cabin Crew Launch Strike, Forcing Cancellation of Over 300 Flights",
-        "summary": "Approximately 4,400 WestJet cabin crew members went on strike on August 2, 2026, following the breakdown of collective bargaining negotiations between the airline and CUPE Local 8125. The core of the dispute involves compensation for flight attendant duties performed prior to departure and after arrival. The strike has already forced WestJet to cancel more than 300 flights across its network. WestJet confirmed that flights operated by its Boeing 737 and Boeing 787 aircraft are impacted, while WestJet Encore flights operated with De Havilland Dash 8 Q400 aircraft continue to operate as scheduled.",
-        "body": [
-          "More than 4,400 WestJet cabin crew members officially launched strike action on August 2, 2026, after nearly 11 months of contract negotiations between the Canadian carrier and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement. The strike action has already significantly disrupted WestJet main operational network, forcing the airline to cancel more than 300 flights.",
-          "In anticipation of the strike action, WestJet began grounding parts of its Boeing 737 fleet prior to the deadline in an effort to minimize operational disruption and prevent aircraft and passengers from being stranded. CUPE Local 8125 President Alia Hussain stated that the union attempted until the very last minute to secure a fair agreement recognizing the value of cabin crew work, but maintained that WestJet proposal did not go far enough.",
-          "The core dispute centers on how flight attendants are compensated for duties performed before departure and after arrival. The union contends that ground responsibilities remain unpaid under the current system. In response, WestJet stated that its existing compensation model covers these duties, adding that its latest offer included pay for all pre-flight and post-flight duties alongside a double-digit wage increase during the first year of the agreement.",
-          "According to official statements from the airline, flight operations conducted using Boeing 737 and Boeing 787 aircraft are directly affected by the ongoing strike action. However, regional WestJet Encore services operated with De Havilland Dash 8 Q400 aircraft, as well as codeshare flights operated by international partner airlines, continue to operate as scheduled across the airline network."
-        ]
-      },
-      "flash": {
-        "zh": "西捷航空客艙組員展開罷工，導致超過300個航班取消。",
-        "en": "WestJet cabin crew go on strike, causing over 300 flight cancellations.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "WestJet flight attendants officially went on strike on August 2, 2026, following failed collective agreement negotiations with CUPE Local 8125.",
-          "sourceQuote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
-          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The strike involves approximately 4,400 cabin crew members and has forced WestJet to cancel more than 300 flights.",
-          "sourceQuote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
-          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "WestJet began grounding parts of its Boeing 737 fleet prior to the strike to reduce operational disruption.",
-          "sourceQuote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
-          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The labor dispute centers on flight attendant compensation for pre-departure and post-arrival duties.",
-          "sourceQuote": "At the center of the dispute is how flight attendants are compensated for duties performed before departure and after arrival.",
-          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "WestJet stated its Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft continue operating.",
-          "sourceQuote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
-          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "CUPE 8125 President Alia Hussain stated the union tried until the last minute to get a fair deal but WestJet's offer did not go far enough.",
-          "sourceQuote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain.",
-          "sourceUrl": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F4",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "WestJet",
-          "Canadian Union of Public Employees",
-          "CUPE Local 8125",
-          "CUPE 8125",
-          "WestJet Encore",
-          "De Havilland"
-        ],
-        "airlines": [
-          "WestJet",
-          "WestJet Encore"
-        ],
-        "aircraft_models": [
-          "Boeing 737",
-          "Boeing 787",
-          "De Havilland Dash 8 Q400"
-        ],
-        "airports": [],
-        "locations": [
-          "North America"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "August 2, 2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260802-1440-8",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "WestJet cabin crew go on strike, more than 300 flights canceled",
-          "url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-          "publishedUtc": "2026-08-02T12:08Z",
-          "summary": "More than 4,400 cabin crew members have launched strike action after nearly 11 months of contract negotiations, forcing… The post WestJet cabin crew go on strike, more than 300 flights canceled appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "WestJet cabin crew go on strike, more than 300 flights canceled",
-          "summary": "WestJet cabin crew go on strike, more than 300 flights canceled &nbsp;&nbsp; aerotime.aero",
-          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxObzQ1UG5TSFl0c1JjT0lkLTB6dWJaX0NVOXdfNFlWUFltUVJ0QnIyNlpKbkpmMFNWMUE3Yk41NURDakQ5MzRXZWRlUjRZV1ZMM09JU2dwZVgtVm9KNlBIWFdQZS1zM0V0S0ZSUl92amk0RGVfUzFJa0xxdndsYzg4dTF2MUVERFFTQlg0dE1FYWF0ajVMVm1mamcxX1NqUdIBowFBVV95cUxPRklLblVyM0g2NUx4TzE2Qi0tUXIxbzNUTzVoYllkeThjSUpsakktM0NhbUg5eUZLUTJkSmMzWUkzQ014NmFjclJxeTQ5YnFoaWdIOExTRTltdHptQVZzaFdxdEZWM2JKLWtZbW5LbjFFTl9DR1JtYmhFWGRrVHZWNkc4Nkhxakt5eTZwc2M3bW82bmVXc1l2SEJ2dGdDOGRTdURv?oc=5",
-          "source": "aerotime.aero",
-          "companion": true,
-          "publishedUtc": "2026-08-02T12:08Z"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: BOEING 737",
-              "same named core entity: boeing",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 5 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
-            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-            "facts": [
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 5 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260802-0003-6",
-    "queuedUtc": "2026-08-02T00:03Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Financial results, profit reporting, and aircraft order claims require editorial review.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Airbus reported 351 commercial aircraft deliveries in H1 2026, driving revenues up 12% year-on-year to €33.2 billion and net income to €2.24 billion.",
-        "sourceQuote": "delivered 351 commercial aircraft during the first six months of 2026, up from 306 in the same period last year, helping revenues climb 12% year-on-year to €33.2 billion.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Commercial aircraft division revenue rose 15% to €23.9 billion, with deliveries including 44 A220s, 271 A320-family, 10 A330s, and 26 A350s.",
-        "sourceQuote": "delivered 44 A220 s, 271 A320 -family aircraft, 10 A330 s, and 26 A350 s between January and June.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Airbus recorded 886 gross commercial orders and 821 net orders in H1 2026, bringing its order backlog to 9,222 aircraft at the end of June.",
-        "sourceQuote": "net orders stood at 821 aircraft, more than double the 402 aircraft recorded in H1 2025.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Airbus Defence and Space revenue grew 9% to €6.3 billion with adjusted EBIT rising to €487 million, while Airbus Helicopters recorded €3.7 billion in revenue and 144 deliveries.",
-        "sourceQuote": "Airbus Defence and Space recorded a significant improvement, with revenue increasing 9% to €6.3 billion.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Airbus maintained its full-year 2026 targets of delivering around 870 commercial aircraft and achieving an adjusted EBIT of approximately €7.5 billion.",
-        "sourceQuote": "continues to target around 870 commercial aircraft deliveries in 2026 and an adjusted EBIT of approximately €7.5 billion.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Airbus reaffirmed production rate targets including 70 to 75 per month for the A320 family by end of 2027, 13 per month for the A220 by 2028, 12 for the A350 in 2028, and 5 for the A330 in 2029.",
-        "sourceQuote": "continuing to target a production rate of between 70 and 75 aircraft per month by the end of 2027, before stabilising at a rate of 75.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Financial results, profit reporting, and aircraft order claims require editorial review.",
-      "cat": "biz",
-      "zh": {
-        "title": "空中巴士上半年營收達332億歐元 淨利升至22.4億歐元",
-        "summary": "空中巴士公布2026年上半年財務業績，受商用飛機交付量增加與國防業務成長推動，總營收年增12%至332億歐元，淨利達22.4億歐元。期間共交付351架商用飛機，新接淨訂單達821架，截至6月底手握訂單達9,222架。空中巴士維持全年交付約870架飛機及調整後EBIT約75億歐元的目標。",
-        "body": [
-          "空中巴士公布2026年上半年財務業績，受惠於商用飛機交付量增加與國防業務需求強勁，整體營運表現明顯提升。在2026年前六個月中，空中巴士共交付351架商用飛機，高於2025年同期的306架。這推動集團總營收年增12%達到332億歐元，調整後息稅前利潤（EBIT）成長24%至27億歐元，淨利則由去年同期的15.3億歐元增至22.4億歐元。",
-          "商用飛機部門仍是空中巴士主要的業績支柱，上半年實現營收239億歐元，較去年同期成長15%。在交付機型方面，空中巴士於1月至6月期間共交付44架A220飛機、271架A320系列飛機、10架A330飛機以及26架A350飛機。商用飛機部門調整後EBIT由去年同期的17億歐元升至20億歐元，不過公司指出，交付量增加帶來的效益部分被貨幣避險的影響所抵銷。",
-          "新機市場需求持續保持強勁。空中巴士在上半年錄得886架商用飛機總訂單，扣除取消訂單後，淨訂單數達821架，較2025年上半年的402架增加一倍以上。截至6月底，空中巴士手握的商用飛機積壓訂單總量已達9,222架。此外，公司重申各機型的產能提升目標，包括計劃在2027年底前將A320系列飛機月產量提升至70至75架，並持續推動A220、A330及A350的增產進度。",
-          "除了民用航空業務外，空中巴士國防與航太部門上半年營收成長9%至63億歐元，調整後EBIT達4.87億歐元，新接訂單金額達93億歐元。直升機部門營收則維持在37億歐元，交付144架。儘管面臨地緣政治不確定性及供應鏈風險，空中巴士仍維持全年度財務指引，預計2026年將交付約870架商用飛機，並實現約75億歐元的調整後EBIT。"
-        ]
-      },
-      "en": {
-        "title": "Airbus Reports €33.2B H1 2026 Revenue as Deliveries and Defence Demand Rise",
-        "summary": "Airbus reported an improved financial performance for the first half of 2026, generated by higher commercial aircraft deliveries and strong defence demand. Consolidated revenue increased 12% year-on-year to €33.2 billion, while net income rose to €2.24 billion. The planemaker delivered 351 commercial aircraft during the six-month period, up from 306 in H1 2025, and recorded 821 net orders, taking its backlog to 9,222 aircraft. Airbus Defence and Space revenue grew 9% to €6.3 billion. The European manufacturer reiterated its full-year guidance to deliver approximately 870 commercial aircraft and achieve an adjusted EBIT of around €7.5 billion in 2026.",
-        "body": [
-          "Airbus reported an improvement in its financial performance for the second quarter and first half of 2026, boosted by higher commercial aircraft deliveries and robust activity in its defence sector. During the first six months of 2026, the European aircraft manufacturer delivered 351 commercial aircraft, compared with 306 units delivered during the same period in 2025. This delivery growth helped consolidated revenues increase by 12% year-on-year to €33.2 billion. Consolidated adjusted EBIT rose 24% to €2.7 billion, while net income reached €2.24 billion, up from €1.53 billion recorded in the first half of 2025.",
-          "The commercial aircraft business remained the core driver of the planemaker's overall performance, generating €23.9 billion in revenue during the first half of the year, representing a 15% increase compared to H1 2025. Between January and June 2026, Airbus delivered 44 A220s, 271 A320-family aircraft, 10 A330s, and 26 A350s. Adjusted EBIT for the commercial aircraft division rose from €1.7 billion to €2.0 billion, although the manufacturer noted that the positive financial impact of higher aircraft deliveries was partially offset by currency hedging effects.",
-          "Demand for new commercial aircraft remained strong throughout the period. Airbus recorded 886 gross commercial orders during the first half of 2026, up from 494 gross orders in H1 2025. Net orders after cancellations reached 821 aircraft, more than double the 402 net orders recorded in the previous year's first half. As a result, the manufacturer's total commercial aircraft backlog stood at 9,222 aircraft at the end of June 2026. Airbus also confirmed its ongoing production ramp-up targets across its programmes, including reaching a monthly production rate of between 70 and 75 aircraft for the A320 family by late 2027.",
-          "In non-commercial sectors, Airbus Defence and Space reported a revenue increase of 9% to €6.3 billion, with adjusted EBIT rising to €487 million compared with €265 million a year earlier. Order intake for the defence unit reached €9.3 billion during the first half. Airbus Helicopters generated stable revenue of €3.7 billion with 144 deliveries. Despite persistent global trade uncertainties and supply chain challenges, Airbus maintained its full-year 2026 targets, aiming to deliver approximately 870 commercial aircraft and achieve an adjusted EBIT of around €7.5 billion."
-        ]
-      },
-      "flash": {
-        "zh": "空中巴士公布2026上半年財報，營收增至332億歐元，淨利達22.4億歐元。",
-        "en": "Airbus posts €33.2B revenue and €2.24B net profit for H1 2026 on higher deliveries.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Airbus reported 351 commercial aircraft deliveries in H1 2026, driving revenues up 12% year-on-year to €33.2 billion and net income to €2.24 billion.",
-          "sourceQuote": "delivered 351 commercial aircraft during the first six months of 2026, up from 306 in the same period last year, helping revenues climb 12% year-on-year to €33.2 billion.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Commercial aircraft division revenue rose 15% to €23.9 billion, with deliveries including 44 A220s, 271 A320-family, 10 A330s, and 26 A350s.",
-          "sourceQuote": "delivered 44 A220 s, 271 A320 -family aircraft, 10 A330 s, and 26 A350 s between January and June.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Airbus recorded 886 gross commercial orders and 821 net orders in H1 2026, bringing its order backlog to 9,222 aircraft at the end of June.",
-          "sourceQuote": "net orders stood at 821 aircraft, more than double the 402 aircraft recorded in H1 2025.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Airbus Defence and Space revenue grew 9% to €6.3 billion with adjusted EBIT rising to €487 million, while Airbus Helicopters recorded €3.7 billion in revenue and 144 deliveries.",
-          "sourceQuote": "Airbus Defence and Space recorded a significant improvement, with revenue increasing 9% to €6.3 billion.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Airbus maintained its full-year 2026 targets of delivering around 870 commercial aircraft and achieving an adjusted EBIT of approximately €7.5 billion.",
-          "sourceQuote": "continues to target around 870 commercial aircraft deliveries in 2026 and an adjusted EBIT of approximately €7.5 billion.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Airbus reaffirmed production rate targets including 70 to 75 per month for the A320 family by end of 2027, 13 per month for the A220 by 2028, 12 for the A350 in 2028, and 5 for the A330 in 2029.",
-          "sourceQuote": "continuing to target a production rate of between 70 and 75 aircraft per month by the end of 2027, before stabilising at a rate of 75.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F3",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "Airbus",
-          "Airbus Defence and Space",
-          "Airbus Helicopters"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "A220",
-          "A320",
-          "A330",
-          "A350"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "first six months of 2026",
-          "2026",
-          "2025",
-          "end of June"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260802-0003-6",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Airbus profit rises as higher deliveries and defence demand boost first-half results News",
-          "url": "https://aerospaceglobalnews.com/news/airbus-profit-deliveries-defence-demand-financial-results/",
-          "publishedUtc": "2026-07-29T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/A350-1000ULR-for-Qantas.jpeg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: ON-YEAR"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 0 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se...",
-            "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-            "facts": [
-              {
-                "claim": "Q2 2026 Airbus net income rose 126% to $1.66 billion (€1.65 billion) from $842 million (€732 million) in the same period last year, alongside a 28% increase in Q2 revenue.",
-                "source_quote": "Net income increased from $842 million (€732 million) to $1.66 billion (€1.65 billion) in Q2 2026 while revenue rose 28% over the same period.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "In the first half of 2026, Airbus delivered 351 commercial aircraft, up from 306 in H1 2025, including 237 delivered in the second quarter compared to 114 in the first quarter.",
-                "source_quote": "Between April and June 2026, Airbus delivered 237 commercial aircraft to customers while between January and March 2026, just 114 were delivered. The total for 2026 first half stands at 351.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "Airbus reported consolidated revenues of €33.2 billion ($38.2 billion) for H1 2026, a 12% increase year-on-year, with a consolidated EBIT Adjusted of €2.77 billion (€2,727 million).",
-                "source_quote": "Consolidated revenues increased 12% year-on-year to € 33.2 billion (H1 2025: € 29.6 billion).",
-                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
-              },
-              {
-                "claim": "Commercial aircraft gross orders reached 886 units (821 net orders) in the first half of 2026, bringing the total order backlog to 9,222 commercial aircraft at the end of June 2026.",
-                "source_quote": "Gross commercial aircraft orders totalled 886 (H1 2025: 494 aircraft) with net orders of 821 aircraft after cancellations (H1 2025: 402 aircraft). The order backlog amounted to 9,222",
-                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
-              },
-              {
-                "claim": "The company maintained its guidance to deliver approximately 870 commercial aircraft in 2026, and expects a full-year EBIT Adjusted of €7.5 billion ($8.6 billion).",
-                "source_quote": "The company said its ambition to deliver around 870 commercial aircraft in 2026 remains the same. While EBIT adjusted currently stands at $3.1 billion (€2.7 billion), Airbus’ outlook is $8.6 billion (€7.5 billion) by year end.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "Airbus is continuing its production ramp-up, targeting a monthly rate of 13 for the A220 in 2028, between 70 and 75 for the A320 family by late 2027, 5 for the A330 in 2029, and 12 for the A350 in 2028.",
-                "source_quote": "The A220 ramp-up is ongoing and the Company continues to target a monthly production rate of 13 aircraft in 2028. On the A320 Family, the Company continues to expect to reach a rate of between 70 and 75 aircraft a month",
-                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260801-0732-african-domestic-aviation-shows-resilien",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: ON-YEAR"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 0 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere...",
-            "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-            "facts": [
-              {
-                "claim": "Global airline capacity increased by 1% year-on-year for the summer season, below the 3% forecast due to capacity reallocations.",
-                "source_quote": "Global capacity is up just 1% year-on-year this summer season, according to data from aviation analysts OAG and Midas Aviation.",
-                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
-              },
-              {
-                "claim": "African domestic aviation market has shown resilience to global shocks despite price increases and pockets of slowed growth.",
-                "source_quote": "Prices have gone up, and there have been pockets of slowed growth, but no real shrinking. The market is showing resilience to those global shocks",
-                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
-              },
-              {
-                "claim": "Nigeria's domestic aviation capacity grew 36% year-on-year, driven in part by its domestication of the Cape Town Convention.",
-                "source_quote": "Pointing to Nigeria’s 36% year-on-year capacity growth in its domestic market, Grant said this is in part driven by the country’s domestication of the Cape Town Convention",
-                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
-              },
-              {
-                "claim": "Major aircraft lessors including AirCap have begun placing dry-leased airframes in Nigeria.",
-                "source_quote": "Major lessors, including AirCap, have begun placing airframes in the country – a shift from previous years when Nigerian operators leaned on seasonal wet leases",
-                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
-              },
-              {
-                "claim": "Passenger booking curves in Africa remain compressed, with many bookings made one day before travel.",
-                "source_quote": "The booking curve remains very tight. We’re still seeing a large number of bookings made as late as one day before travel.",
-                "source_url": "https://aerospaceglobalnews.com/news/africa-aviation-domestic-growth-resilient-market/",
-                "source_name": "Aerospace Global News — Africa’s domestic aviation market outpaces growth elsewhere..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: airbus",
-              "archive predates source by 1 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
-            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-            "facts": [
-              {
-                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
-                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
               }
             ]
           }
