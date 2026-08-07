@@ -1,5 +1,261 @@
 [
   {
+    "id": "g-20260807-2050-2",
+    "queuedUtc": "2026-08-07T20:50Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves a large financial claim regarding $15 billion in 777X program delay costs.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Simple Flying報導指出波音777X延誤成本達150億美元，大致相當於空中巴士開發A350的費用。",
+        "sourceQuote": "Boeing's 777X delays have now cost $15 billion—roughly matching Airbus' entire A350 development bill after seven years of certification setbacks.",
+        "sourceUrl": "https://simpleflying.com/boeing-777x-delays-cost-much-airbus-spent-building-entire-a350/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "波音公司先前表示777X計畫已獲FAA核准開始認證飛行測試，並預計於2027年進行首次交付。",
+        "sourceQuote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+        "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+        "evidenceScope": "archive",
+        "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+        "archiveContext": true
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report involves a large financial claim regarding $15 billion in 777X program delay costs.",
+      "cat": "biz",
+      "zh": {
+        "title": "根據Simple Flying報導波音777X延誤成本達150億美元",
+        "summary": "根據Simple Flying報導，波音777X客機經過七年的認證挫折後，其延誤成本已達150億美元，此金額大致相當於空中巴士開發整架A350客機的總費用。波音在此前的財報中表示，該計畫已獲准展開認證飛行測試，預計於2027年開始交付。",
+        "body": [
+          "根據Simple Flying報導，波音公司旗下的777X客機計畫在經歷長達七年的認證挫折後，其累計延誤成本已高達150億美元。這筆龐大的金額，大致相當於競爭對手空中巴士開發整架A350客機所花費的總研發費用。",
+          "此外，根據波音先前公布的官方財務報告資料，777X計畫已取得美國聯邦航空總署的核准，依據4B型別檢查授權展開認證飛行測試。波音方面當時維持計畫時程預測，持續以2027年實現首次交付為目標。"
+        ]
+      },
+      "en": {
+        "title": "Boeing 777X Delay Costs Reach $15 Billion, Matching Airbus A350 Development Bill",
+        "summary": "According to a report published by Simple Flying, Boeing's 777X aircraft program has accumulated approximately $15 billion in total delay costs after facing seven years of certification setbacks. This financial figure roughly matches the entire development bill incurred by Airbus for its A350 jetliner. Historical company records show that Boeing previously received Federal Aviation Administration approval to commence certification flight testing under Type Inspection Authorization 4B, while continuing to anticipate initial deliveries in 2027.",
+        "body": [
+          "According to a report by Simple Flying, Boeing's 777X program has accumulated $15 billion in total delay costs following seven years of certification setbacks. The cost of these delays roughly matches the entire development expense incurred by rival manufacturer Airbus to build the complete A350 aircraft program.",
+          "In previous financial disclosures, Boeing reported that the 777X program received approval from the Federal Aviation Administration to begin certification flight testing under Type Inspection Authorization 4B. Boeing maintained its operational outlook at the time, continuing to anticipate the first delivery of the aircraft in 2027."
+        ]
+      },
+      "flash": {
+        "zh": "Simple Flying報導波音777X延誤成本達150億美元，約與空巴A350開發費相當。",
+        "en": "Simple Flying reports Boeing 777X delay costs reached $15 billion, matching Airbus A350 development costs.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Simple Flying報導指出波音777X延誤成本達150億美元，大致相當於空中巴士開發A350的費用。",
+          "sourceQuote": "Boeing's 777X delays have now cost $15 billion—roughly matching Airbus' entire A350 development bill after seven years of certification setbacks.",
+          "sourceUrl": "https://simpleflying.com/boeing-777x-delays-cost-much-airbus-spent-building-entire-a350/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "波音公司先前表示777X計畫已獲FAA核准開始認證飛行測試，並預計於2027年進行首次交付。",
+          "sourceQuote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+          "archiveContext": true
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Simple Flying",
+          "Boeing",
+          "Airbus",
+          "FAA"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "777X",
+          "A350"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-07",
+          "2026-07-28"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-2050-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Boeing's 777X Has Now Cost As Much In Delays As Airbus Spent Building The Entire A350",
+          "url": "https://simpleflying.com/boeing-777x-delays-cost-much-airbus-spent-building-entire-a350/",
+          "publishedUtc": "2026-08-07T20:00Z",
+          "summary": "Boeing's 777X delays have now cost $15 billion—roughly matching Airbus' entire A350 development bill after seven years of certification setbacks.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/boeing-s-777x.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: 777X, BOEING 777X FAMILY",
+              "same named core entity: boeing",
+              "archive predates source by 10 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: 777X, BOEING 777X FAMILY",
+              "same named core entity: boeing",
+              "archive predates source by 10 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: A350",
+              "same named core entity: airbus",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se...",
+            "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+            "facts": [
+              {
+                "claim": "Q2 2026 Airbus net income rose 126% to $1.66 billion (€1.65 billion) from $842 million (€732 million) in the same period last year, alongside a 28% increase in Q2 revenue.",
+                "source_quote": "Net income increased from $842 million (€732 million) to $1.66 billion (€1.65 billion) in Q2 2026 while revenue rose 28% over the same period.",
+                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
+                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260807-1908-3",
     "queuedUtc": "2026-08-07T19:08Z",
     "approve": false,
@@ -9981,348 +10237,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260803-0435-2",
-    "queuedUtc": "2026-08-03T04:36Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Malaysia's CAAM and police opened investigations into airport security screening following the arrest of a Malaysia Airlines pilot on drug smuggling charges.",
-    "riskFlags": [
-      "investigation",
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "馬來西亞民航局於2026年8月2日宣布對吉隆坡國際機場的機場安全程序展開監管調查。",
-        "sourceQuote": "The regulator announced the probe on August 2, saying it will examine whether all aviation security requirements were fully complied with before the pilot departed Kuala Lumpur International Airport",
-        "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "印尼海關人員於2026年7月28日在雅加達蘇凱諾-哈達國際機場扣留一名執飛MH727航班的馬來西亞航空機師。",
-        "sourceQuote": "Indonesian customs officers detained a Malaysia Airlines pilot after the arrival of flight MH727 from Kuala Lumpur (KUL) at Jakarta’s Soekarno-Hatta International Airport (CGK).",
-        "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "印尼當局指控在該機師行李中搜出約25公斤的搖頭丸與冰毒，估計街頭價值約1050萬美元。",
-        "sourceQuote": "Authorities allege they discovered approximately 25 kilograms of ecstasy pills and methamphetamine, equivalent to more than 70,000 capsules, concealed in the pilot’s luggage.",
-        "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "馬來西亞警方於8月1日證實已展開平行刑事調查，調閱監視器畫面與安檢紀錄，並與印尼當局合作。",
-        "sourceQuote": "On August 1, Malaysian police confirmed they had launched a parallel criminal investigation, reviewing CCTV footage and baggage screening records at KLIA while cooperating with Indonesian authorities.",
-        "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "馬來西亞民航局執行長Norazman Mahmud表示，機組人員並未豁免於機場安全檢查，必須接受與其他進入管制區人員相同的安檢。",
-        "sourceQuote": "CAAM Chief Executive Datuk Captain Norazman Mahmud said the regulator’s review will determine whether all applicable security measures were followed before the aircraft’s departure.",
-        "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "馬來西亞航空表示將全力配合印尼方面的調查，同時進行內部審查。",
-        "sourceQuote": "Malaysia Airlines has said it is fully cooperating with the Indonesian investigation while conducting its own internal review.",
-        "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Malaysia's CAAM and police opened investigations into airport security screening following the arrest of a Malaysia Airlines pilot on drug smuggling charges.",
-      "cat": "reg",
-      "zh": {
-        "title": "馬來西亞民航局針對馬航機師涉毒案展開安檢程序調查",
-        "summary": "馬來西亞民航局於8月2日宣布，針對吉隆坡國際機場的安檢程序展開監管調查。此調查起因於馬來西亞航空一名執飛MH727航班的機師，於7月28日在印尼雅加達因涉嫌走私約25公斤毒品遭扣留。馬來西亞警方亦於8月1日證實展開平行刑事調查，調閱安檢紀錄與監視器畫面。",
-        "body": [
-          "馬來西亞民航局（CAAM）於2026年8月2日宣布，已對吉隆坡國際機場的航空安全程序啟動監管調查。這項審查將評估航空公司是否完全符合航空安全法規，並檢視班機從馬來西亞起飛之前所執行的機場安全檢查程序，以確認機師離境前是否切實遵守所有安全要求。",
-          "該起事件始於2026年7月28日，印尼海關人員在由吉隆坡飛抵雅加達蘇凱諾-哈達國際機場的馬來西亞航空MH727航班降落後，扣留了一名馬來西亞航空機師。印尼當局指控，在該名機師的隨身行李中查獲隱藏的約25公斤搖頭丸與冰毒，數量相當於超過7萬粒膠囊，估算街頭價值約為1050萬美元。",
-          "馬來西亞警方於8月1日證實已展開平行的刑事調查，正調閱吉隆坡國際機場的監視器畫面與行李安檢紀錄，並與印尼當局密切合作。調查人員同時正在排查該起案件是否與更廣泛的跨國販毒集團有關，以及航空航線是否遭到走私運作利用。",
-          "馬來西亞民航局執行長Norazman Mahmud表示，監管單位的審查旨在確定飛機起飛前是否遵循了所有適用的安全措施。他強調機組人員並未獲得機場安全檢查的豁免權，進入安全管制區域時，必須依據2019年馬來西亞民航安全法規與國家民航安全計畫，與其他人一樣接受手提行李及個人物品的X光檢查等安檢程序。",
-          "馬來西亞民航局補充說明，目前正在收集相關證據，若確認有任何違反航空法規或安全要求的行為，將在其管轄權範圍內採取適當的執法行動。馬來西亞航空則表示，公司正全力配合印尼當局的調查，同時正同步進行內部審查程序。"
-        ]
-      },
-      "en": {
-        "title": "Malaysia CAAM Probes Airport Security After Pilot Arrested for Drug Smuggling",
-        "summary": "Malaysia's Civil Aviation Authority (CAAM) launched a regulatory investigation on August 2 into airport security procedures at Kuala Lumpur International Airport following the arrest of a Malaysia Airlines pilot in Indonesia. The pilot was detained by Indonesian customs officers on July 28 after flight MH727 arrived at Jakarta’s Soekarno-Hatta International Airport, where authorities allegedly found approximately 25 kilograms of ecstasy and methamphetamine hidden in luggage. Malaysian police confirmed on August 1 that they have opened a parallel criminal probe, reviewing CCTV footage and airport screening records.",
-        "body": [
-          "Malaysia’s Civil Aviation Authority (CAAM) announced on August 2 that it has opened a regulatory investigation into airport security procedures following the arrest of a Malaysia Airlines pilot in Indonesia on alleged drug smuggling charges. The regulator said the probe will examine whether all aviation security requirements were fully complied with before the pilot departed Kuala Lumpur International Airport (KLIA), assessing airline compliance as well as airport screening procedures.",
-          "The investigation follows an incident on July 28, 2026, when Indonesian customs officers detained the Malaysia Airlines pilot after the arrival of flight MH727 from Kuala Lumpur (KUL) at Jakarta’s Soekarno-Hatta International Airport (CGK). Indonesian authorities allege they discovered approximately 25 kilograms of ecstasy pills and methamphetamine, equivalent to more than 70,000 capsules, concealed in the pilot’s luggage, with an estimated street value of around $10.5 million.",
-          "On August 1, Malaysian police confirmed that they had launched a parallel criminal investigation. Investigators are reviewing CCTV footage and baggage screening records at KLIA while cooperating with Indonesian authorities. Police are also examining whether the case is connected to a wider cross-border drug trafficking syndicate and if commercial aviation routes were exploited for illicit smuggling operations.",
-          "CAAM Chief Executive Datuk Captain Norazman Mahmud stated that the regulatory review will determine whether all applicable security measures were followed prior to the aircraft’s departure. He emphasized that flight crew members are not exempt from airport security screening and must undergo the same security screening as all other individuals entering security-restricted areas, including X-ray inspections of cabin baggage and personal items under Malaysia's Civil Aviation Security Regulations 2019 and the National Civil Aviation Security Program.",
-          "The aviation regulator added that it is gathering evidence and will take enforcement action within its jurisdiction if any violations of aviation regulations or security requirements are identified. Malaysia Airlines stated that it is fully cooperating with the Indonesian investigation while conducting its own internal review into the incident."
-        ]
-      },
-      "flash": {
-        "zh": "馬來西亞民航局針對馬航機師涉毒案展開安檢程序調查",
-        "en": "Malaysia's CAAM investigates airport screening after pilot arrested for drug smuggling",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "馬來西亞民航局於2026年8月2日宣布對吉隆坡國際機場的機場安全程序展開監管調查。",
-          "sourceQuote": "The regulator announced the probe on August 2, saying it will examine whether all aviation security requirements were fully complied with before the pilot departed Kuala Lumpur International Airport",
-          "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "印尼海關人員於2026年7月28日在雅加達蘇凱諾-哈達國際機場扣留一名執飛MH727航班的馬來西亞航空機師。",
-          "sourceQuote": "Indonesian customs officers detained a Malaysia Airlines pilot after the arrival of flight MH727 from Kuala Lumpur (KUL) at Jakarta’s Soekarno-Hatta International Airport (CGK).",
-          "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "印尼當局指控在該機師行李中搜出約25公斤的搖頭丸與冰毒，估計街頭價值約1050萬美元。",
-          "sourceQuote": "Authorities allege they discovered approximately 25 kilograms of ecstasy pills and methamphetamine, equivalent to more than 70,000 capsules, concealed in the pilot’s luggage.",
-          "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "馬來西亞警方於8月1日證實已展開平行刑事調查，調閱監視器畫面與安檢紀錄，並與印尼當局合作。",
-          "sourceQuote": "On August 1, Malaysian police confirmed they had launched a parallel criminal investigation, reviewing CCTV footage and baggage screening records at KLIA while cooperating with Indonesian authorities.",
-          "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "馬來西亞民航局執行長Norazman Mahmud表示，機組人員並未豁免於機場安全檢查，必須接受與其他進入管制區人員相同的安檢。",
-          "sourceQuote": "CAAM Chief Executive Datuk Captain Norazman Mahmud said the regulator’s review will determine whether all applicable security measures were followed before the aircraft’s departure.",
-          "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "馬來西亞航空表示將全力配合印尼方面的調查，同時進行內部審查。",
-          "sourceQuote": "Malaysia Airlines has said it is fully cooperating with the Indonesian investigation while conducting its own internal review.",
-          "sourceUrl": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Civil Aviation Authority",
-          "CAAM",
-          "Indonesian customs",
-          "Malaysian police"
-        ],
-        "airlines": [
-          "Malaysia Airlines"
-        ],
-        "aircraft_models": [],
-        "airports": [
-          "Kuala Lumpur International Airport",
-          "KLIA",
-          "Soekarno-Hatta International Airport",
-          "CGK",
-          "KUL"
-        ],
-        "locations": [
-          "Malaysia",
-          "Indonesia",
-          "Kuala Lumpur",
-          "Jakarta"
-        ],
-        "flight_numbers": [
-          "MH727"
-        ],
-        "registration_numbers": [],
-        "event_dates": [
-          "August 2",
-          "July 28, 2026",
-          "August 1"
-        ]
-      },
-      "eventStatus": "under_investigation",
-      "riskFlags": [
-        "investigation",
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260803-0435-2",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Authorities probe screening after Malaysia Airlines pilot’s alleged drug smuggling",
-          "url": "https://www.aerotime.aero/articles/authorities-probe-screening-after-malaysia-airlines-pilots-alleged-drug-smuggling",
-          "publishedUtc": "2026-08-03T03:00Z",
-          "summary": "Malaysia’s Civil Aviation Authority (CAAM) has opened a regulatory investigation into airport security procedures following the arrest of… The post Authorities probe screening after Malaysia Airlines pilot’s alleged drug smuggling appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 6 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 6 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
-            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-            "facts": [
-              {
-                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
-                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
-                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 6 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
-            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-            "facts": [
-              {
-                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
-                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
-                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
-                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
-                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
-                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
