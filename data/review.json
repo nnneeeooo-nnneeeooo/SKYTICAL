@@ -1,5 +1,1218 @@
 [
   {
+    "id": "g-20260807-0354-2",
+    "queuedUtc": "2026-08-07T03:55Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Major corporate takeover transaction and financial claim requiring editorial review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Apollo Global Management agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion.",
+        "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Eagle Bidco Ltd will acquire each easyJet share for £7.15 in cash.",
+        "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The Haji-Ioannou family concert party irrevocably committed to vote for the scheme across about 15.31% of issued capital.",
+        "sourceQuote": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Apollo committed to no changes to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland.",
+        "sourceQuote": "Apollo has committed to no change to the location or functions of easyJet’s UK headquarters or its air operator certificates in the UK, Austria and Switzerland.",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Major corporate takeover transaction and financial claim requiring editorial review.",
+      "cat": "biz",
+      "zh": {
+        "title": "阿波羅全球管理同意以57億英鎊收購易捷航空",
+        "summary": "阿波羅全球管理已同意對易捷航空進行推薦現金收購，該航空公司估值約為57億英鎊。每股易捷航空股份將由Eagle Bidco Ltd以7.15英鎊現金收購。創辦人家族表示將投票贊成該方案，阿波羅亦承諾不變更其英國總部或相關航空營運人許可證。",
+        "body": [
+          "阿波羅全球管理（Apollo Global Management）已同意對易捷航空（easyJet）進行推薦現金收購，該收購案對該航空公司的估值約為57億英鎊。依據交易條款，每股易捷航空股份將由Eagle Bidco Ltd以7.15英鎊現金收購。",
+          "由Stelios、Clelia與Polys Haji-Ioannou等人組成的創辦人家族集團已不可撤銷地承諾，就其持有的約15.31%已發行股本投票贊成該方案。此外，阿波羅承諾不會變更易捷航空位於英國的總部位置或功能，亦不變更其在英國、奧地利與瑞士的航空營運人許可證。"
+        ]
+      },
+      "en": {
+        "title": "Apollo Agrees £5.7 Billion Cash Acquisition of easyJet",
+        "summary": "Apollo Global Management has agreed to a recommended cash acquisition of easyJet that values the airline at approximately £5.7 billion ($7.6 billion). Under the terms of the deal, Eagle Bidco Ltd will acquire each easyJet share for £7.15 in cash. The Haji-Ioannou family concert party, holding about 15.31% of the issued share capital, has irrevocably committed to vote in favor of the scheme. Additionally, Apollo has committed to making no changes to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland.",
+        "body": [
+          "Apollo Global Management has agreed to a recommended cash acquisition of easyJet, valuing the European airline at approximately £5.7 billion. Under the agreed terms of the transaction, each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd.",
+          "The Haji-Ioannou family concert party, holding approximately 15.31% of easyJet's issued share capital, has irrevocably undertaken to vote in favor of the scheme. In addition, Apollo has committed to making no changes to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland."
+        ]
+      },
+      "flash": {
+        "zh": "阿波羅全球管理同意以57億英鎊收購易捷航空。",
+        "en": "Apollo agrees to £5.7 billion cash acquisition of easyJet.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Apollo Global Management agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion.",
+          "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Eagle Bidco Ltd will acquire each easyJet share for £7.15 in cash.",
+          "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The Haji-Ioannou family concert party irrevocably committed to vote for the scheme across about 15.31% of issued capital.",
+          "sourceQuote": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Apollo committed to no changes to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland.",
+          "sourceQuote": "Apollo has committed to no change to the location or functions of easyJet’s UK headquarters or its air operator certificates in the UK, Austria and Switzerland.",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Apollo Global Management",
+          "Eagle Bidco Ltd",
+          "Apollo Capital Management",
+          "easyGroup Holdings",
+          "easyGroup Ltd",
+          "Evercore"
+        ],
+        "airlines": [
+          "easyJet"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "UK",
+          "Austria",
+          "Switzerland",
+          "Jersey",
+          "Egypt",
+          "Germany",
+          "France",
+          "Italy",
+          "Malta",
+          "Spain"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-06",
+          "2026-08-07"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0354-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Apollo agrees £5.7 billion takeover of easyJet as Castlelake walks away",
+          "url": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "publishedUtc": "2026-08-06T13:50Z",
+          "summary": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion… The post Apollo agrees £5.7 billion takeover of easyJet as Castlelake walks away appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "No Job Cuts For 12 Months: US Private Equity Firm Plans Out easyJet’s £5.7 Billion Takeover",
+          "url": "https://simpleflying.com/us-private-equity-firm-plans-out-easyjet-takeover/",
+          "publishedUtc": "2026-08-07T03:54Z",
+          "summary": "Apollo’s £5.7 billion takeover will reshape easyJet’s ownership, workforce and commercial strategy.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/04/132-easyjet-airbus-a320neo-lukas-wunderlich-_-shutterstock.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        },
+        {
+          "title": "EasyJet agrees $7.7 billion takeover by Apollo as Castlelake walks away",
+          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOMEk2SWRNS0JWWHJfRFduLXRBY1dkVV9PRU9XLWo2WkM4Z1hBM0R2RmtFLXNoN01jZmVNX2NuYVdWYWh6ZnNQX2FySGI2MkFmQkJOTTVqRVNDWDZwQ2ZqZE9lc2d2RVA3bnNtUHpJelJGckh0QjEtSmlKUzZ1aEwyaHExS3ZYcFpobnc?oc=5",
+          "publishedUtc": "2026-08-06T16:41Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "Apollo to take easyJet private in $7.7 billion deal",
+          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPQ1ZRZVR2aUpCeVY0clcyYXY3Rk8wa3hPNFpLOFBSS3FCOGJxWlo5Qjg4ZllJSjB1S0dZTTZtVGc0UzBQVmV3MG8xOWlRZ3JWTzVMVnZLbVVTc0xONmVSV0lqUGduTlY1LWhuUW5qbjVEMkNKN3p4VDFfNUZad0MwbERrQUx6TURnM3hrTXlzaHFkdw?oc=5",
+          "publishedUtc": "2026-08-06T14:06Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260807-0354-7",
+    "queuedUtc": "2026-08-07T03:55Z",
+    "approve": false,
+    "writer": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+    "decisionReason": "Safety event with a fatal crash, ongoing NTSB/FAA investigation, and multiple agencies involved, requiring human review.",
+    "riskFlags": [
+      "casualties_or_injuries",
+      "investigation",
+      "accident_or_serious_incident"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending more than five hours circling west of the city of Bend.",
+        "sourceQuote": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending more than five hours circling west of the city of Bend.",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Steven Nicholas Charlton took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026.",
+        "sourceQuote": "Steven Nicholas Charlton, 48, took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Steven Nicholas Charlton had been indicted earlier that day on five felony counts of first-degree invasion of personal privacy.",
+        "sourceQuote": "Charlton had been indicted earlier that day on five felony counts of first-degree invasion of personal privacy",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The aircraft was a 2025 Cirrus SR22T, registration N625LK.",
+        "sourceQuote": "The aircraft was a 2025 Cirrus SR22T, registration N625LK.",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The aircraft remained airborne for just over five hours before crashing at 18:46.",
+        "sourceQuote": "The aircraft remained airborne for just over five hours before crashing at 18:46.",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Steven Nicholas Charlton was the only person aboard and died in the crash.",
+        "sourceQuote": "Charlton was the only person aboard and died in the crash.",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Safety event with a fatal crash, ongoing NTSB/FAA investigation, and multiple agencies involved, requiring human review.",
+      "cat": "safety",
+      "zh": {
+        "title": "俄勒岡駕駛故意墜機五小時空中後死亡於事",
+        "summary": "俄勒岡駕駛於8月4日13:30從本德機場起飛飛行超過五小時後於18:46在偏遠林間迫降僅一人在機上死亡無其他傷亡與財產損失當局認定為故意行為正在調查根據俄勒岡州警長辦公室說法此事發生在本德附近的密林中警方與聯邦機構聯合行動",
+        "body": [
+          "8月4日當地時間13:30，俄勒岡州本德機場起飛的Cirrus SR22T在起飛後約五小時空中飛行，隨後於18:46在偏遠林間迫降，導致駕駛Steven Nicholas Charlton死亡，機上僅一人在案。",
+          "當局表示，駕駛故意將飛機迫降，相關機構包括德斯楚特斯縣警長辦公室、聯邦法務部、聯邦航空管理局（FAA）以及多個地方救援組織，展開大規模應急響應。",
+          "NTSB與FAA正在調查航空事故的細節，調查人員呼籲目擊者及在本德機場與駕駛交談的人士與機構聯繫，以獲取更多資訊。",
+          "法院記錄顯示，駕駛早在當天上午已因五項第一級侵犯隱私罪名被起訴，這表明其可能具有惡意行為的先前背景。",
+          "目前尚未公布駕駛與家人或執法人員之間的通訊細節，調查仍在進行中，相關機構尚未公佈最終結論。"
+        ]
+      },
+      "en": {
+        "title": "Oregon pilot deliberately crashed Cirrus SR22T after five-hour flight",
+        "summary": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending more than five hours circling west of the city of Bend. Steven Nicholas Charlton, 48, took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026. He was the only person aboard and died in the crash, with no other injuries or property damage reported. The aircraft, registration N625LK, was operated by So Fly Aviation LLC. The FAA and NTSB are investigating the incident. No details have been released about his communications with family or law enforcement during the flight. The investigation is still ongoing.",
+        "body": [
+          "On August 4, 2026, at approximately 13:30 local time, a Cirrus SR22T took off from Bend Municipal Airport in Oregon and remained airborne for just over five hours.",
+          "The aircraft, registration N625LK, was operated by So Fly Aviation LLC and was piloted by 48‑year‑old Steven Nicholas Charlton, who was the sole occupant.",
+          "At 18:46 the plane crashed in a remote wooded area west of Bend, resulting in the pilot’s death, with no injuries to others and no property damage reported on the ground.",
+          "The National Transportation Safety Board and the FAA have launched an investigation into the incident, while investigators are seeking anyone who witnessed the flight or spoke with the pilot at the airport to come forward.",
+          "No details have been released about his communications with family or law enforcement during the flight, and the investigation is still ongoing."
+        ]
+      },
+      "flash": {
+        "zh": "俄勒岡駕駛墜機致死",
+        "en": "Oregon pilot crashes Cirrus, dies",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-04",
+        "sev": "acc",
+        "aircraft": "Cirrus SR22T",
+        "operator": "Steven Nicholas Charlton",
+        "phase": {
+          "zh": "調查中",
+          "en": "open"
+        },
+        "location": {
+          "zh": "俄勒岡本德附近的密林地區",
+          "en": "remote wooded area west of Bend"
+        },
+        "desc": {
+          "zh": "駕駛故意迫降導致死亡",
+          "en": "pilot deliberately crashed aircraft resulting in death"
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending more than five hours circling west of the city of Bend.",
+          "sourceQuote": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending more than five hours circling west of the city of Bend.",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Steven Nicholas Charlton took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026.",
+          "sourceQuote": "Steven Nicholas Charlton, 48, took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Steven Nicholas Charlton had been indicted earlier that day on five felony counts of first-degree invasion of personal privacy.",
+          "sourceQuote": "Charlton had been indicted earlier that day on five felony counts of first-degree invasion of personal privacy",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The aircraft was a 2025 Cirrus SR22T, registration N625LK.",
+          "sourceQuote": "The aircraft was a 2025 Cirrus SR22T, registration N625LK.",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The aircraft remained airborne for just over five hours before crashing at 18:46.",
+          "sourceQuote": "The aircraft remained airborne for just over five hours before crashing at 18:46.",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Steven Nicholas Charlton was the only person aboard and died in the crash.",
+          "sourceQuote": "Charlton was the only person aboard and died in the crash.",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "Deschutes County Sheriff’s Office",
+          "federal law enforcement",
+          "Federal Aviation Administration (FAA)",
+          "Bend Fire & Rescue",
+          "Central Oregon Emergency Response Team",
+          "Central Oregon Irrigation District",
+          "FBI",
+          "Air Force base at Klamath Falls",
+          "So Fly Aviation LLC",
+          "National Transportation Safety Board"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Cirrus SR22T"
+        ],
+        "airports": [
+          "Bend Municipal Airport"
+        ],
+        "locations": [
+          "remote wooded area",
+          "city of Bend",
+          "Bend Municipal Airport",
+          "Bend",
+          "Oregon",
+          "Klamath Falls",
+          "Eugene"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [
+          "N625LK"
+        ],
+        "event_dates": [
+          "2026-08-04"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "casualties_or_injuries",
+        "investigation",
+        "accident_or_serious_incident"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0354-7",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Authorities say Oregon pilot deliberately crashed Cirrus after five-hour flight",
+          "url": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "publishedUtc": "2026-08-06T19:12Z",
+          "summary": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending… The post Authorities say Oregon pilot deliberately crashed Cirrus after five-hour flight appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-0855-swiss-lx16-diverts-bangor-after-smoke",
+            "relationship_type": "investigation_progression",
+            "relationship_evidence": [
+              "same named core entity: federal aviation administration",
+              "archive predates source by 10 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin",
+            "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+            "facts": [
+              {
+                "claim": "LX16於班戈當地時間7月27日12時14分安全落地。",
+                "source_quote": "has landed safely at 12:14 local. The emergency was resolved.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "SWISS表示機組員因商務艙出現煙霧而改降班戈。",
+                "source_quote": "crew on board Swiss International Air Lines flight LX16 on Monday decided to divert to Bangor due to smoke in the business class section of the flight.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "消防人員檢查後未發現火源或異常熱度。",
+                "source_quote": "Firefighters inspected the aircraft and found no signs of fire or heat.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "SWISS表示208名乘客及機組員均平安。",
+                "source_quote": "All 208 passengers and crew were safe",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "FAA初步聲明記載機組員曾通報駕駛艙起火,並表示將調查。",
+                "source_quote": "Swiss International Air Lines Flight 16F safely landed at Bangor International Airport in Maine around noon on Monday, July 27, after the crew reported a cockpit fire.",
+                "source_url": "https://www.faa.gov/newsroom/statements/accident_incidents",
+                "source_name": "Federal Aviation Administration — Statements on Aviation Accidents and Incidents"
+              },
+              {
+                "claim": "SWISS尚未確定煙霧原因,將檢查航空器且不會在調查完成前推測。",
+                "source_quote": "The airline has not been able to identify for certain what caused the smoke.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260807-0354-10",
+    "queuedUtc": "2026-08-07T03:55Z",
+    "approve": false,
+    "writer": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+    "decisionReason": "Large financial transaction involving a major order requires human review for verification and risk assessment.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Apollo has reached an acquisition agreement with EasyJet for 57 billion GBP (approximately 2475 billion TWD).",
+        "sourceQuote": "在競爭對手退出競標後，英國廉價航空公司易捷航空（EasyJet）今天證實，美國私募股權公司阿波羅（Apollo）已以57億英鎊（約新台幣2475億元）達成收購協議。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "EasyJet's board announced that they are happy and have reached agreement on the proposed cash acquisition terms and conditions.",
+        "sourceQuote": "雙方董事會很高興宣布，已就建議之現金收購條款與條件達成協議。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The transaction is expected to be completed by the end of the first quarter of next year.",
+        "sourceQuote": "這筆交易預計將於明年第1季結束前完成。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "EasyJet's headquarters will continue to remain in Luton.",
+        "sourceQuote": "易捷航空的總部將繼續留在盧頓鎮（Luton），此地因鄰近倫敦的機場而聞名。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Castlelake investment group said it has no intention to submit a higher acquisition bid.",
+        "sourceQuote": "今天稍早，美國投資集團Castlelake表示無意提出更高的收購出價；該集團先前曾提出略高於50億英鎊的收購計畫。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "EasyJet CEO Kenton Jarvis said Apollo's experience in the aviation sector makes it a strong partner.",
+        "sourceQuote": "阿波羅「在航空領域的經驗使其成為強大的合作夥伴」。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Large financial transaction involving a major order requires human review for verification and risk assessment.",
+      "cat": "biz",
+      "zh": {
+        "title": "阿波羅以57億英鎊收購易捷航空擊退對手入主",
+        "summary": "美國私募股權公司阿波羅以57億英鎊（約新台幣2475億元）收購英國廉價航空易捷航空，交易預計於明年第一季完成，易捷航空總部仍留在盧頓，Castlelake表示無意提出更高的收購出價，易捷航空因中東戰爭推升燃油價格導致第三季淨利大幅下滑，稅前盈餘跌70%至8500萬英鎊，易捷航空總部仍留在盧頓。",
+        "body": [
+          "阿波羅以57億英鎊（約新台幣2475億元）收購英國廉價航空易捷航空，交易已於2026年8月6日確認。",
+          "易捷航空董事會表示「雙方董事會很高興宣布，已就建議之現金收購條款與條件達成協議」, 顯示交易已獲批准。",
+          "該交易預計於明年第一季完成，符合易捷航空表示的「這筆交易預計將於明年第1季結束前完成」的說法。",
+          "易捷航空的總部將繼續留在盧頓鎮，此地因鄰近倫敦的機場而聞名。",
+          "Castlelake表示無意提出更高的收購出價，而易捷航空因中東戰爭推升燃油價格導致第三季淨利大幅下滑，稅前盈餘跌70%至8500萬英鎊，易捷航空總部仍留在盧頓。"
+        ]
+      },
+      "en": {
+        "title": "Apollo acquires EasyJet, beating rival to take over",
+        "summary": "US private equity firm Apollo has acquired British low-cost airline EasyJet for 57 billion GBP (approximately 247.5 billion TWD), with the deal expected to close in the first quarter of next year; EasyJet's headquarters will remain in Luton, and Castlelake said it has no intention to make a higher bid, while EasyJet's Q3 profit fell sharply due to rising fuel prices from the Middle East war.",
+        "body": [
+          "Apollo has acquired British low-cost airline EasyJet for 57 billion GBP (approximately 247.5 billion TWD), with the deal confirmed on August 6, 2026.",
+          "EasyJet's board announced that they are happy and have reached agreement on the proposed cash acquisition terms and conditions, indicating the deal is approved.",
+          "The transaction is expected to be completed by the end of the first quarter of next year, as stated by EasyJet.",
+          "EasyJet's headquarters will continue to remain in Luton, known for its proximity to London's airports.",
+          "Castlelake said it has no intention to submit a higher acquisition bid, while EasyJet's net profit fell sharply in Q3 due to rising fuel prices from the Middle East war, with pre-tax profit dropping 70% to 85 million GBP."
+        ]
+      },
+      "flash": {
+        "zh": "阿波羅收購易捷航空",
+        "en": "Apollo acquires EasyJet",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Apollo has reached an acquisition agreement with EasyJet for 57 billion GBP (approximately 2475 billion TWD).",
+          "sourceQuote": "在競爭對手退出競標後，英國廉價航空公司易捷航空（EasyJet）今天證實，美國私募股權公司阿波羅（Apollo）已以57億英鎊（約新台幣2475億元）達成收購協議。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "EasyJet's board announced that they are happy and have reached agreement on the proposed cash acquisition terms and conditions.",
+          "sourceQuote": "雙方董事會很高興宣布，已就建議之現金收購條款與條件達成協議。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The transaction is expected to be completed by the end of the first quarter of next year.",
+          "sourceQuote": "這筆交易預計將於明年第1季結束前完成。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "EasyJet's headquarters will continue to remain in Luton.",
+          "sourceQuote": "易捷航空的總部將繼續留在盧頓鎮（Luton），此地因鄰近倫敦的機場而聞名。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Castlelake investment group said it has no intention to submit a higher acquisition bid.",
+          "sourceQuote": "今天稍早，美國投資集團Castlelake表示無意提出更高的收購出價；該集團先前曾提出略高於50億英鎊的收購計畫。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "EasyJet CEO Kenton Jarvis said Apollo's experience in the aviation sector makes it a strong partner.",
+          "sourceQuote": "阿波羅「在航空領域的經驗使其成為強大的合作夥伴」。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "阿波羅",
+          "易捷航空",
+          "Castlelake"
+        ],
+        "airlines": [
+          "易捷航空"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "盧頓鎮",
+          "倫敦",
+          "英國",
+          "中東"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-06"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0354-10",
+      "primarySource": "中央社 CNA 產經證券",
+      "items": [
+        {
+          "title": "阿波羅2475億收購廉航 擊退對手入主易捷航空",
+          "url": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
+          "publishedUtc": "2026-08-06T17:45Z",
+          "summary": "（中央社倫敦6日綜合外電報導）在競爭對手退出競標後，英國廉價航空公司易捷航空（EasyJet）今天證實，美國私募股權公司阿波羅（Apollo）已以57億英鎊（約新台幣2475億元）達成收購協議。",
+          "image": null,
+          "source": "中央社 CNA 產經證券",
+          "sourceKey": "cnataiwanfinance"
+        },
+        {
+          "title": "阿波羅2475億收購廉航　擊退對手入主易捷航空",
+          "summary": "阿波羅2475億收購廉航 擊退對手入主易捷航空 &nbsp;&nbsp; 經濟日報",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE4weGJuNzQ4bU1EclJwNnZ4TnRBOUpfbGdZWE1jZTdTWm42UFNxM1NQMjl3R0s0RXRPdjB5NzZuS2x6bDRPSEV4YWdCa1ItMWJLb3M3RHdTWEpfY1gzZUQ4U0ZicUVmbkVnT0ZFcGlHNjFvbHZ5bkU2UmFQWDfSAV9BVV95cUxPd25CLXVucldrSXN3OE9JVHhwS01HV09uSjlVX2Z1dHhpMU9PNk55VHdKc19SVy0xcFFlMkR4LTBqci1iLVdYenU1QUdtWlh2by1uZVZrTGI1dWVrMnZPbw?oc=5",
+          "source": "經濟日報",
+          "companion": true,
+          "publishedUtc": "2026-08-06T18:21Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260727-0838-presidential-office-rejects-show-claim-s",
+            "relationship_type": "other",
+            "relationship_evidence": [
+              "same named core entity: 中央社",
+              "archive predates source by 10 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍",
+            "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+            "facts": [
+              {
+                "claim": "Media reported that President Lai’s inspection during the Han Kuang exercise was a \"show\".",
+                "source_quote": "有媒體報導稱總統賴清德在漢光演習期間安排視導是「作秀」",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The Presidential Office stated that, as commander‐in‐chief, the President’s inspection of a major drill is a responsibility and an obligation.",
+                "source_quote": "作為三軍統帥，總統在國軍重要演訓期間參與視導，是責任也是義務",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The spokesperson called the \"show\" accusation speculation, a distortion of views, and a defamation of the military and national defence.",
+                "source_quote": "所謂「作秀」之說，內容多屬臆測、觀點扭曲，更污名化國軍與國防，令人遺憾",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Heads of state attending major military exercises is standard practice in Europe, the US, Japan and South Korea.",
+                "source_quote": "國家元首參與國家重大軍事演訓，無論歐、美、日、韓等國，國際皆然",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Since Han Kuang 40 the drills have been unscripted and realistic; the President’s visit was scheduled by the Ministry of National Defense according to the exercise progress, with no arranged \"firepower show\".",
+                "source_quote": "自漢光40號演習起，即採取「無劇本、實戰化」演練。總統參與視導，亦由國防部依照演習進程適時規劃，不存在所謂安排「火力秀」的問題",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Accusations of shifting opposition attacks or staging a performance for voters are baseless and unfair to personnel strengthening defence.",
+                "source_quote": "至於所謂「轉移在野攻擊」、「作秀給選民看」等無端指控，對此刻正為強化國防、守護國家而努力的所有人員極不公平",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260802-0429-royal-schiphol-group-invests-801-million",
+            "relationship_type": "other",
+            "relationship_evidence": [
+              "same named core entity: klm",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals...",
+            "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
+            "facts": [
+              {
+                "claim": "Royal Schiphol Group recorded 37.3 million passengers across its three airports in the first six months of 2026, with Amsterdam Schiphol accounting for 32.7 million.",
+                "source_quote": "The three airports combined saw 37.3 million passengers travel through them between January and June this year. The figure marks a 0.3% year-on-year increase, and Schiphol accounted for a significant chunk of passenger traffic with 32.7 million passengers.",
+                "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
+                "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
+              },
+              {
+                "claim": "Royal Schiphol Group invested €801 million in airport quality during the first half of 2026 as part of a strategy to invest €10 billion by 2035.",
+                "source_quote": "The first six months of the year saw a record €801 million investment in the quality of Royal Schiphol Group’s airports. The investment is aligned with a broader strategy to invest €10 billion in the renewal of Schiphol by 2035.",
+                "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
+                "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
+              },
+              {
+                "claim": "Royal Schiphol Group issued €500 million in bonds to maintain cash flow while funding its airport investment and quality programme.",
+                "source_quote": "To deliver on its investment programme and quality improvements while ensuring a healthy cash flow, Schiphol issued €500 million in bonds.",
+                "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
+                "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
+              },
+              {
+                "claim": "Aircraft belonging to the two quietest categories made up 38% of traffic at Schiphol in the first half of 2026, up from 29% in the same period of 2025.",
+                "source_quote": "This has resulted in 38% of aircraft at the airport being of the two quietest types (compared with 29% in HY2025).",
+                "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
+                "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
+              },
+              {
+                "claim": "As part of the Schiphol Centre Master Plan, the airport paid €317 million to relocate several KLM buildings.",
+                "source_quote": "The airport operator also paid €317 million as part of a wider programme to relocate several KLM buildings under the Schiphol Centre Master Plan.",
+                "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
+                "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260731-1301-klm-shows-off-first-fully-painted-airbus",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: klm",
+              "archive predates source by 6 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
+            "event_date": "2026-07-31",
+            "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900",
+            "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
+            "facts": [
+              {
+                "claim": "荷蘭皇家航空在網路貼文中展示了其首架完成塗裝的空中巴士 A350-900 客機。",
+                "source_quote": "KLM showed off its fully-painted first A350 in a few online posts",
+                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
+                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260807-0354-12",
+    "queuedUtc": "2026-08-07T03:55Z",
+    "approve": false,
+    "writer": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+    "decisionReason": "Story is an unconfirmed intelligence assessment about a potential future false flag drone attack; source states no decision taken and no imminent threat. High-risk developing military/political topic requiring human review.",
+    "riskFlags": [
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Lithuanian military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region in a false flag operation.",
+        "sourceQuote": "Lithuanian military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region in an operation designed to obscure who launched it",
+        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Lithuania has information indicating Moscow is weighing unconventional kinetic attacks against critical infrastructure with Ukrainian-made drones as the likely means.",
+        "sourceQuote": "Lithuania has information indicating Moscow is weighing “unconventional kinetic attacks” against critical infrastructure in the region, and that Ukrainian-made drones would be the likely means",
+        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Defence Minister Kaunas described the scenario as a false flag operation using a false Ukrainian drone to weaken allied support for Kyiv, but stated no decision has been taken and no imminent threat exists.",
+        "sourceQuote": "Kaunas described the scenario as “a false flag operation, using a false Ukrainian drone.” The minister said one objective would be to weaken allied support for Kyiv, and indicated that no decision to carry out such an operation had been taken and that there was no sign of an imminent threat",
+        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Two Russian-designed Gerbera drones crossed from Belarus into Lithuania in July 2025, one overflying Vilnius before crashing in Gaižiūnai training area with an active warhead.",
+        "sourceQuote": "Two Russian-designed Gerbera airframes crossed into Lithuania from Belarus in July 2025, the second overflying Vilnius before crashing inside the Gaižiūnai training area with an active warhead aboard",
+        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "NATO Baltic Air Policing fighters engaged drones: Romanian F-16 shot down one over southern Estonia on May 19, 2026; French Rafale destroyed another over Latvia on June 8, 2026, both operating from Šiauliai Air Base.",
+        "sourceQuote": "a Romanian Air Force F-16 shot down one over southern Estonia on May 19, 2026, and a French Air and Space Force Rafale destroyed another over Latvia on June 8, 2026, both operating from Šiauliai Air Base in Lithuania",
+        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The presidents of Estonia, Latvia and Lithuania jointly called in May 2026 for NATO to move from air policing to a full air defence mission with dedicated counter-drone capabilities.",
+        "sourceQuote": "The warning follows a joint call in May 2026 by the presidents of Estonia, Latvia and Lithuania for NATO to move from air policing to a full air defense mission with dedicated counter-drone capabilities",
+        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Story is an unconfirmed intelligence assessment about a potential future false flag drone attack; source states no decision taken and no imminent threat. High-risk developing military/political topic requiring human review.",
+      "cat": "mil",
+      "zh": {
+        "title": "立陶宛情報指俄可能用烏製無人機發動假旗攻擊",
+        "summary": "立陶宛國防部長考納斯6日證實，軍事情報顯示俄羅斯正考慮利用烏克蘭製無人機對波羅的海地區關鍵基礎設施發動假旗攻擊，以削弱盟國對烏支持，惟強調尚無跡象顯示威脅迫在眉睫。",
+        "body": [
+          "立陶宛國防部長羅伯塔斯·考納斯8月6日向記者證實，立陶宛軍事情報顯示俄羅斯正考慮對波羅的海地區關鍵基礎設施發動「非常規動能攻擊」，並可能使用烏克蘭製無人機作為手段，以製造「假旗行動，使用假烏克蘭無人機」的假象。",
+          "考納斯指出，此類行動的目標之一將是削弱盟國對烏克蘭的支持，但他同時強調，目前尚無跡象表明俄羅斯已決定實施此類行動，也沒有迫在眉睫的威脅跡象，且未透露具體潛在目標或時間框架。",
+          "波羅的海地區近期已多次發生無人機侵入事件。2025年7月，兩架俄羅斯設計的「Gerbera」無人機從白俄羅斯進入立陶宛領空，其中一架飛越維爾紐斯後在蓋久奈訓練場墜落，機上帶有活彈頭；2026年3月，立陶宛南部又發生一起疑似跨境無人機爆炸事件。",
+          "波羅的海官員評估，其他侵入事件涉及烏克蘭長程攻擊無人機因俄羅斯干擾和欺騙而偏離航向。北約波羅的海空中警務戰機已多次攔截：2026年5月19日，羅馬尼亞空軍F-16在愛沙尼亞南部擊落一架；6月8日，法國空天軍「陣風」戰機在拉脫維亞擊落另一架，兩架戰機均從立陶宛希奧利艾空軍基地起飛。",
+          "立陶宛和拉脫維亞曾於5月20日發布空中危險警告，並短暫關閉維爾紐斯機場空域。三國總統5月曾共同呼籲北約從空中警務轉為具備專門反無人機能力的全面防空任務。",
+          "莫斯科否認計劃攻擊北約成員國，克里姆林宮此前曾將立陶宛類似警告斥為重整軍備藉口。俄方另指控波羅的海國家允許其領空被用於烏克蘭打擊，維爾紐斯與基輔均予駁回。"
+        ]
+      },
+      "en": {
+        "title": "Lithuania Warns Russia May Use Ukrainian Drones in False Flag Attack",
+        "summary": "Lithuanian Defence Minister Robertas Kaunas confirmed on August 6 that military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region in a false flag operation aimed at weakening allied support for Kyiv, though he stressed no decision has been taken and no imminent threat exists. The warning follows previous drone incursions including Russian Gerbera drones crossing from Belarus and NATO air policing fighters engaging rogue drones over Estonia and Latvia. Baltic leaders have urged NATO to upgrade its air policing mission to a full air defence mission with dedicated counter-drone capabilities.",
+        "body": [
+          "Lithuanian Defence Minister Robertas Kaunas confirmed to reporters on August 6 that Lithuanian military intelligence indicates Russia is considering \"unconventional kinetic attacks\" against critical infrastructure in the Baltic region, with Ukrainian-made drones as the likely means to stage a \"false flag operation, using a false Ukrainian drone.\"",
+          "Kaunas said one objective would be to weaken allied support for Kyiv, but stressed that no decision to carry out such an operation had been taken, there was no sign of an imminent threat, and he did not identify potential targets or a timeframe.",
+          "The Baltic region has experienced repeated drone incursions. In July 2025, two Russian-designed Gerbera airframes crossed from Belarus into Lithuania, one overflying Vilnius before crashing in the Gaižiūnai training area with an active warhead aboard; a further suspected cross-border drone exploded in southern Lithuania in March 2026.",
+          "Baltic officials have assessed other incursions as Ukrainian long-range strike drones knocked off course by Russian jamming and spoofing. NATO Baltic Air Policing fighters have engaged several: a Romanian Air Force F-16 shot down one over southern Estonia on May 19, 2026, and a French Air and Space Force Rafale destroyed another over Latvia on June 8, 2026, both operating from Šiauliai Air Base in Lithuania.",
+          "Lithuania and Latvia issued air danger alerts and briefly closed airspace over Vilnius Airport on May 20, 2026. In May, the presidents of Estonia, Latvia and Lithuania jointly called for NATO to move from air policing to a full air defence mission with dedicated counter-drone capabilities.",
+          "Moscow denies planning attacks against NATO members, and the Kremlin has previously dismissed similar Lithuanian warnings as a pretext for rearmament. Russia has separately accused the Baltic states of allowing their airspace to be used for Ukrainian strikes, an allegation Vilnius and Kyiv both reject."
+        ]
+      },
+      "flash": {
+        "zh": "立陶宛警告俄可能發動無人機假旗攻擊",
+        "en": "Lithuania Warns of Possible Russian Drone False Flag Attack",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Lithuanian military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region in a false flag operation.",
+          "sourceQuote": "Lithuanian military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region in an operation designed to obscure who launched it",
+          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Lithuania has information indicating Moscow is weighing unconventional kinetic attacks against critical infrastructure with Ukrainian-made drones as the likely means.",
+          "sourceQuote": "Lithuania has information indicating Moscow is weighing “unconventional kinetic attacks” against critical infrastructure in the region, and that Ukrainian-made drones would be the likely means",
+          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Defence Minister Kaunas described the scenario as a false flag operation using a false Ukrainian drone to weaken allied support for Kyiv, but stated no decision has been taken and no imminent threat exists.",
+          "sourceQuote": "Kaunas described the scenario as “a false flag operation, using a false Ukrainian drone.” The minister said one objective would be to weaken allied support for Kyiv, and indicated that no decision to carry out such an operation had been taken and that there was no sign of an imminent threat",
+          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Two Russian-designed Gerbera drones crossed from Belarus into Lithuania in July 2025, one overflying Vilnius before crashing in Gaižiūnai training area with an active warhead.",
+          "sourceQuote": "Two Russian-designed Gerbera airframes crossed into Lithuania from Belarus in July 2025, the second overflying Vilnius before crashing inside the Gaižiūnai training area with an active warhead aboard",
+          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "NATO Baltic Air Policing fighters engaged drones: Romanian F-16 shot down one over southern Estonia on May 19, 2026; French Rafale destroyed another over Latvia on June 8, 2026, both operating from Šiauliai Air Base.",
+          "sourceQuote": "a Romanian Air Force F-16 shot down one over southern Estonia on May 19, 2026, and a French Air and Space Force Rafale destroyed another over Latvia on June 8, 2026, both operating from Šiauliai Air Base in Lithuania",
+          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The presidents of Estonia, Latvia and Lithuania jointly called in May 2026 for NATO to move from air policing to a full air defence mission with dedicated counter-drone capabilities.",
+          "sourceQuote": "The warning follows a joint call in May 2026 by the presidents of Estonia, Latvia and Lithuania for NATO to move from air policing to a full air defense mission with dedicated counter-drone capabilities",
+          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "立陶宛國防部",
+          "北約",
+          "羅馬尼亞空軍",
+          "法國空天軍",
+          "克里姆林宮"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Gerbera",
+          "F-16",
+          "Rafale"
+        ],
+        "airports": [
+          "維爾紐斯機場",
+          "希奧利艾空軍基地"
+        ],
+        "locations": [
+          "立陶宛",
+          "波羅的海地區",
+          "白俄羅斯",
+          "愛沙尼亞",
+          "拉脫維亞",
+          "維爾紐斯",
+          "蓋久奈訓練場",
+          "立陶宛南部"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-06",
+          "2025-07",
+          "2026-03",
+          "2026-05-19",
+          "2026-06-08",
+          "2026-05-20"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0354-12",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Lithuania warns Russia could use Ukrainian drones in false flag attack",
+          "url": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
+          "publishedUtc": "2026-08-06T14:54Z",
+          "summary": "Lithuanian military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region… The post Lithuania warns Russia could use Ukrainian drones in false flag attack appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Lithuania says Russia could use Ukrainian drones against Baltic region",
+          "summary": "Lithuania says Russia could use Ukrainian drones against Baltic region &nbsp;&nbsp; Reuters",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQYTBhY3F3VkkyVnFWVXNjRE5FaURDVWsxVTBidVdlaEttZXBHRnNtdzBsdExYOHJFd3Y1aWJlal9LWXdTT1ZLbGxRRTBjY3BhTUVVRjZ6Y3JNeGJIYVJGQUNsem5XZURodzhNNmQ0NThDMjh5WDZaZ2lJcEZra0lXNVRNai03eVMtM0ZQblUtckxkSE1ocmpfRzVIRzB6dkV0anladGVyb18ybFhSVUlFdE1B?oc=5",
+          "source": "Reuters",
+          "companion": true,
+          "publishedUtc": "2026-08-06T11:02Z"
+        },
+        {
+          "title": "Lithuania Sees Russia Mulling False-Flag Drone Attack on Region",
+          "summary": "Lithuania Sees Russia Mulling False-Flag Drone Attack on Region &nbsp;&nbsp; Bloomberg.com",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQUZ1YW40S1cySEhWeVExSzhBVHcyc2ZpTEJyencyYTlhbk9kWW1QbmQwU05PRUdQa3Z1amg5V3c1OWF6VUZ1Qnc0SEsxaWpNUUx6UzJuMkljdlBORTJQSDFDeF90WXBDMDd6WjQtWURmMXlKejlIaldPYUw2RHJKa1BjWVp1dzNUbmxmZmZiMlFkcFpWTTRBaDl3OXl5akx4SWllMUpZZzlEbFotUi16bXhOdXg?oc=5",
+          "source": "Bloomberg.com",
+          "companion": true,
+          "publishedUtc": "2026-08-06T13:11Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
+            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+            "facts": [
+              {
+                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
+                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
+                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
+                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
+                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
+                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260807-0009-5",
     "queuedUtc": "2026-08-07T00:09Z",
     "approve": false,
@@ -9141,696 +10354,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260801-2012-7",
-    "queuedUtc": "2026-08-01T20:13Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Aviation safety incident involving a rejected takeoff due to a bird strike requires human review.",
-    "riskFlags": [
-      "accident_or_serious_incident"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "According to The Aviation Herald, a Japan Transocean B738 aircraft was involved in an incident at Komatsu on July 30, 2026.",
-        "sourceQuote": "Incident: Japan Transocean B738 at Komatsu on Jul 30th 2026",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The aircraft rejected takeoff due to a bird strike.",
-        "sourceQuote": "rejected takeoff due to bird strike",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Aviation safety incident involving a rejected takeoff due to a bird strike requires human review.",
-      "cat": "safety",
-      "zh": {
-        "title": "Japan Transocean B738於小松遭遇鳥擊中斷起飛",
-        "summary": "根據 The Aviation Herald 報導，Japan Transocean 一架 B738 航機於 2026 年 7 月 30 日在小松發生飛航事件。該架航機在起飛過程中遭遇鳥擊，隨即執行中斷起飛程序。",
-        "body": [
-          "根據 The Aviation Herald 於 2026 年 7 月 30 日發布的報導資訊，Japan Transocean 一架 B738 航機於 2026 年 7 月 30 日在小松發生飛航安全事件。",
-          "根據相關紀錄，該架 Japan Transocean B738 航機當時位於小松，在起飛過程中遭遇鳥擊，因而執行中斷起飛程序。",
-          "這起事件經 The Aviation Herald 記錄為在小松發生的鳥擊中斷起飛事件，涉事機型為 B738，營運航空公司為 Japan Transocean。"
-        ]
-      },
-      "en": {
-        "title": "Japan Transocean B738 Rejects Takeoff Due to Bird Strike at Komatsu",
-        "summary": "According to reports published by aviation news outlet The Aviation Herald, a Japan Transocean B738 aircraft was involved in a flight incident at Komatsu on July 30, 2026. The incident occurred during the aircraft's takeoff run when it sustained a bird strike. Consequently, the aircraft executed a rejected takeoff at Komatsu on July 30, 2026. The publication recorded this occurrence as an incident involving a Japan Transocean B738 aircraft at Komatsu.",
-        "body": [
-          "According to initial reporting from The Aviation Herald published on July 30, 2026, a Japan Transocean B738 aircraft was involved in an aviation incident at Komatsu.",
-          "During its takeoff run at Komatsu on July 30, 2026, the Japan Transocean B738 aircraft encountered a bird strike event. As a direct result of the bird strike, the flight crew executed a rejected takeoff.",
-          "The Aviation Herald documented the event as a flight incident involving a Japan Transocean B738 aircraft at Komatsu, noting that the aircraft rejected its takeoff due to a bird strike on July 30, 2026."
-        ]
-      },
-      "flash": {
-        "zh": "Japan Transocean B738於小松遭遇鳥擊中斷起飛",
-        "en": "Japan Transocean B738 rejects takeoff due to bird strike at Komatsu",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-07-30",
-        "sev": "inc",
-        "aircraft": "B738",
-        "operator": "Japan Transocean",
-        "phase": {
-          "zh": "起飛",
-          "en": "Takeoff"
-        },
-        "location": {
-          "zh": "小松",
-          "en": "Komatsu"
-        },
-        "desc": {
-          "zh": "航機在起飛過程中遭遇鳥擊並中斷起飛。",
-          "en": "The aircraft rejected takeoff following a bird strike."
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "According to The Aviation Herald, a Japan Transocean B738 aircraft was involved in an incident at Komatsu on July 30, 2026.",
-          "sourceQuote": "Incident: Japan Transocean B738 at Komatsu on Jul 30th 2026",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The aircraft rejected takeoff due to a bird strike.",
-          "sourceQuote": "rejected takeoff due to bird strike",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [],
-        "airlines": [
-          "Japan Transocean"
-        ],
-        "aircraft_models": [
-          "B738"
-        ],
-        "airports": [],
-        "locations": [
-          "Komatsu"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "Jul 30th 2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-2012-7",
-      "primarySource": "The Aviation Herald",
-      "items": [
-        {
-          "title": "Incident: Japan Transocean B738 at Komatsu on Jul 30th 2026, rejected takeoff due to bird strike",
-          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
-          "publishedUtc": "2026-07-30T19:24Z",
-          "summary": "",
-          "image": null,
-          "source": "The Aviation Herald",
-          "sourceKey": "avherald"
-        },
-        {
-          "title": "Incident: Eurowings Malta A320 at Stuttgart on Jul 30th 2026, lightning strike",
-          "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBuazhsNFB6MHlCV2k5dmFaeGFNVFFFQ2tzVzlfa1FBZVlVc1FzNHlvb3JfblpzSmcxTnRray1DZmJfbFlsSTQ2cDlmNFdBM1N0?oc=5",
-          "publishedUtc": "2026-07-30T07:00Z",
-          "summary": "",
-          "image": null,
-          "source": "The Aviation Herald",
-          "sourceKey": "avherald"
-        }
-      ],
-      "updateCandidate": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260801-2012-11",
-    "queuedUtc": "2026-08-01T20:13Z",
-    "approve": false,
-    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
-    "decisionReason": "The event involves a major order claim for eight additional E190-E2 aircraft. Although evidence supports the core facts, the financial significance of a firm order expansion warrants human review.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "All Nippon Airways (ANA) has expanded its commitment to Embraer's next-generation regional jet family, with an order for a further eight E190-E2 aircraft.",
-        "sourceQuote": "All Nippon Airways (ANA) has expanded its commitment to Embraer’s next-generation regional jet family, with an order for a further eight E190-E2 aircraft.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "ANA said its board had approved the additional firm order on 29 July, taking its total E190-E2 commitment to 28 aircraft.",
-        "sourceQuote": "ANA said its board had approved the additional firm order on 29 July, taking its total E190-E2 commitment to 28 aircraft.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The new aircraft will be deployed to support an expanded ACMI (Aircraft, Crew, Maintenance, and Insurance) arrangement for ANA-operated domestic services.",
-        "sourceQuote": "The new aircraft will be deployed to support an expanded ACMI (Aircraft, Crew, Maintenance, and Insurance) arrangement for ANA-operated domestic services.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "ANA Holdings president and chief executive Koji Shibata said: 'This additional E190-E2 order accelerates our efforts to build a sustainable regional aviation network in Japan.'",
-        "sourceQuote": "This additional E190-E2 order accelerates our efforts to build a sustainable regional aviation network in Japan.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "ANA's current regional fleet comprises 24 De Havilland Canada D-8-400s, alongside 36 A320 family aircraft and 38 Boeing 737s.",
-        "sourceQuote": "ANA’s current regional fleet comprises 24 De Havilland Canada DHC-8-400s, alongside 36 A320 family aircraft and 38 Boeing 737s.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The event involves a major order claim for eight additional E190-E2 aircraft. Although evidence supports the core facts, the financial significance of a firm order expansion warrants human review.",
-      "cat": "biz",
-      "zh": {
-        "title": "全日空擴大巴西航空工業E190-E2訂單 強化日本區域網絡",
-        "summary": "全日空宣布再向巴西航空工業訂購8架E190-E2客機，使該機型總訂單達到28架。此舉旨在擴充國內區域運力，新機將投入全日空國內航線的ACMI營運安排。",
-        "body": [
-          "全日空（ANA）於7月29日宣布，其董事會已批准再向巴西航空工業（Embraer）訂購8架E190-E2區域客機，使該機型的總訂單數達到28架。",
-          "該航空公司表示，此筆訂單包含在2025年2月宣布的20架承諾（含15架確定訂單與5架採購選擇權）之外新增的8架確定訂單。",
-          "全日空控股社長柴田晃二表示，這筆追加訂單加速了公司在日本建立永續區域航空網路的努力，並期待深化與巴西航空工業的合作，提升區域連結性與旅客體驗。",
-          "這些新機將投入全日空國內航線，支援擴大後的ACMI（飛機、機組員、維修、保險）營運安排。",
-          "根據全日空的資料，該公司現有區域機隊包含24架德哈維蘭加拿大DHC-8-400型、36架A320系列及38架波音737型客機。"
-        ]
-      },
-      "en": {
-        "title": "ANA expands Embraer E190-E2 order with eight more jets to strengthen Japan regional network",
-        "summary": "All Nippon Airways (ANA) has placed an additional firm order for eight Embraer E190-E2 aircraft, taking its total commitment for the next-generation regional jet to 28 aircraft. The new planes will support an expanded ACMI arrangement for the airline’s domestic services.",
-        "body": [
-          "All Nippon Airways (ANA) announced on July 29 that its board approved an order for a further eight Embraer E190-E2 aircraft, deepening its commitment to the Brazilian planemaker.",
-          "The latest order builds on the 20-aircraft commitment announced in February 2025, which comprised 15 firm orders and five purchase options, bringing the total E190-E2 order book to 28 firm aircraft.",
-          "Koji Shibata, president and chief executive of ANA Holdings, stated: 'This additional E190-E2 order accelerates our efforts to build a sustainable regional aviation network in Japan.'",
-          "The new aircraft will be deployed to support an expanded ACMI (Aircraft, Crew, Maintenance, and Insurance) arrangement for ANA-operated domestic services.",
-          "ANA's current regional fleet includes 24 De Havilland Canada DHC-8-400s, 36 A320 family aircraft, and 38 Boeing 737s. The airline sees the fuel-efficient E190-E2 as a key component for reducing operating costs in the booming domestic Japanese travel market."
-        ]
-      },
-      "flash": {
-        "zh": "全日空追加8架E190-E2 訂單翻倍至28架",
-        "en": "ANA adds eight E190-E2s, doubling order to 28",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "All Nippon Airways (ANA) has expanded its commitment to Embraer's next-generation regional jet family, with an order for a further eight E190-E2 aircraft.",
-          "sourceQuote": "All Nippon Airways (ANA) has expanded its commitment to Embraer’s next-generation regional jet family, with an order for a further eight E190-E2 aircraft.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "ANA said its board had approved the additional firm order on 29 July, taking its total E190-E2 commitment to 28 aircraft.",
-          "sourceQuote": "ANA said its board had approved the additional firm order on 29 July, taking its total E190-E2 commitment to 28 aircraft.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The new aircraft will be deployed to support an expanded ACMI (Aircraft, Crew, Maintenance, and Insurance) arrangement for ANA-operated domestic services.",
-          "sourceQuote": "The new aircraft will be deployed to support an expanded ACMI (Aircraft, Crew, Maintenance, and Insurance) arrangement for ANA-operated domestic services.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "ANA Holdings president and chief executive Koji Shibata said: 'This additional E190-E2 order accelerates our efforts to build a sustainable regional aviation network in Japan.'",
-          "sourceQuote": "This additional E190-E2 order accelerates our efforts to build a sustainable regional aviation network in Japan.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "ANA's current regional fleet comprises 24 De Havilland Canada D-8-400s, alongside 36 A320 family aircraft and 38 Boeing 737s.",
-          "sourceQuote": "ANA’s current regional fleet comprises 24 De Havilland Canada DHC-8-400s, alongside 36 A320 family aircraft and 38 Boeing 737s.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "All Nippon Airways",
-          "ANA",
-          "Embraer",
-          "ANA Holdings",
-          "De Havilland Canada",
-          "Boeing"
-        ],
-        "airlines": [
-          "All Nippon Airways",
-          "ANA"
-        ],
-        "aircraft_models": [
-          "E190-E2",
-          "DHC-8-400",
-          "A320 family",
-          "Boeing 737",
-          "E-jets"
-        ],
-        "airports": [],
-        "locations": [
-          "Japan"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-29"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-2012-11",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "ANA expands Embraer E190-E2 order to strengthen its Japan regional network News",
-          "url": "https://aerospaceglobalnews.com/news/ana-embraer-e190-e2-order/",
-          "publishedUtc": "2026-07-29T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/e190-e2_ana_over_fuji_2-scaled.jpeg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1742-ana-adds-eight-new-e190-e2-jets-to-embra",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: E190",
-              "same named core entity: all nippon airways, embraer",
-              "archive predates source by 0 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 0 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — ANA increases Embraer order to include eight additional E19...",
-            "source_url": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
-            "facts": [
-              {
-                "claim": "ANA increased its Embraer order to include eight additional E190-E2 aircraft.",
-                "source_quote": "ANA increases Embraer order to include eight additional E190-E2 aircraft",
-                "source_url": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
-                "source_name": "AeroTime — ANA increases Embraer order to include eight additional E19..."
-              },
-              {
-                "claim": "All Nippon Airways (ANA) has increased its current order with Embraer to include eight additional E190-E2 aircraft.",
-                "source_quote": "All Nippon Airways (ANA) has increased its current order with Embraer to include eight additional E190-E2 aircraft",
-                "source_url": "https://www.aerotime.aero/articles/ana-embraer-order-eight-additional-embraer-e190-e2-aircraft",
-                "source_name": "AeroTime — ANA increases Embraer order to include eight additional E19..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260801-1653-2",
-    "queuedUtc": "2026-08-01T16:53Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves strategic military bomber deployments and active operational missions over Iran, which constitutes a developing military situation requiring human editorial review.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The US Air Force deployed one-third of its B-1B fleet to RAF Fairford in England.",
-        "sourceQuote": "Why The US Air Force Just Sent A Third Of Its B-1B Fleet To 1 British Airbase",
-        "sourceUrl": "https://simpleflying.com/why-usaf-sent-third-b-1b-fleet-1-british-airbase/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "RAF Fairford in England has been used as the primary strategic bomber air base for missions over Iran in 2026.",
-        "sourceQuote": "England's RAF Fairford has been the primary strategic bomber air base used to conduct missions over Iran in 2026.",
-        "sourceUrl": "https://simpleflying.com/why-usaf-sent-third-b-1b-fleet-1-british-airbase/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves strategic military bomber deployments and active operational missions over Iran, which constitutes a developing military situation requiring human editorial review.",
-      "cat": "mil",
-      "zh": {
-        "title": "美國空軍部署三分之一B1B轟炸機機隊至英國基地",
-        "summary": "根據 Simple Flying 報導，美國空軍已將其 B-1B 轟炸機機隊的三分之一部署至英格蘭的費爾福德皇家空軍基地。相關消息指出，該基地位於英國，並於2026年被作為執行針對伊朗相關任務的主要戰略轟炸機基地。",
-        "body": [
-          "根據 Simple Flying 報導，美國空軍近期將其 B-1B 戰略轟炸機機隊約三分之一的兵力，部署至位於英格蘭的費爾福德皇家空軍基地（RAF Fairford）。這項兵力調動顯示美軍在英國該座前線基地的顯著戰略部署。",
-          "報導指出，英格蘭的費爾福德皇家空軍基地在2026年期間，已成為美軍執行針對伊朗相關戰略轟炸機任務的主要基地。相關動態反映出美軍遠程戰略航空兵力在歐洲與中東方向的最新運作模式與前緣基地運用狀況。"
-        ]
-      },
-      "en": {
-        "title": "US Air Force Deploys One-Third of B-1B Fleet to RAF Fairford",
-        "summary": "According to news reported by Simple Flying, the United States Air Force has deployed one-third of its B-1B bomber fleet to a single airbase in England, identified as RAF Fairford. RAF Fairford in England has served as the primary strategic bomber air base utilized to carry out missions over Iran during 2026. The deployment underscores the ongoing operational focus and usage of the strategic British airbase for military flight missions.",
-        "body": [
-          "According to a report by Simple Flying, the United States Air Force has dispatched one-third of its total B-1B strategic bomber fleet to a single military location at RAF Fairford in England. The deployment concentrates a substantial portion of the strategic bomber fleet at the British airbase.",
-          "The publication notes that England's RAF Fairford has functioned as the primary strategic bomber air base utilized to conduct military flight missions over Iran in 2026. The development emphasizes the role of the airbase in supporting long-range military aviation activities.",
-          "The deployment represents a major strategic repositioning of military aircraft assets to the European station."
-        ]
-      },
-      "flash": {
-        "zh": "美國空軍將三分之一B-1B機隊部署至英國費爾福德基地",
-        "en": "US Air Force deploys a third of B-1B fleet to RAF Fairford",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The US Air Force deployed one-third of its B-1B fleet to RAF Fairford in England.",
-          "sourceQuote": "Why The US Air Force Just Sent A Third Of Its B-1B Fleet To 1 British Airbase",
-          "sourceUrl": "https://simpleflying.com/why-usaf-sent-third-b-1b-fleet-1-british-airbase/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "RAF Fairford in England has been used as the primary strategic bomber air base for missions over Iran in 2026.",
-          "sourceQuote": "England's RAF Fairford has been the primary strategic bomber air base used to conduct missions over Iran in 2026.",
-          "sourceUrl": "https://simpleflying.com/why-usaf-sent-third-b-1b-fleet-1-british-airbase/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "US Air Force"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "B-1B"
-        ],
-        "airports": [
-          "RAF Fairford"
-        ],
-        "locations": [
-          "England",
-          "Iran"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-1653-2",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Why The US Air Force Just Sent A Third Of Its B-1B Fleet To 1 British Airbase",
-          "url": "https://simpleflying.com/why-usaf-sent-third-b-1b-fleet-1-british-airbase/",
-          "publishedUtc": "2026-08-01T16:00Z",
-          "summary": "England's RAF Fairford has been the primary strategic bomber air base used to conduct missions over Iran in 2026.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/why-the-us-air-force-just-sent-a-third-of-its-b-1b-fleet-to-1-british-airbase.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260801-1653-10",
-    "queuedUtc": "2026-08-01T16:53Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "Two aviation safety incidents (rejected takeoff due to bird strike and lightning strike) require human review under mandatory safety-event rules. Both events are confirmed as occurring but involve abnormal flight operations; full articles cannot be safely produced from headline-only source items without body text, so brief format is used.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A Japan Transocean Air Boeing 737-800 rejected takeoff at Komatsu on July 30, 2026, due to a bird strike.",
-        "sourceQuote": "Incident: Japan Transocean B738 at Komatsu on Jul 30th 2026, rejected takeoff due to bird strike",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "A Eurowings Malta Airbus A320 was struck by lightning at Stuttgart on July 30, 2026.",
-        "sourceQuote": "Incident: Eurowings Malta A320 at Stuttgart on Jul 30th 2026, lightning strike",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1mdXI0clBwTVBlMTZrVUNMV1lhbm9WeS1tU0dEb00xSGxaaUxpYWNRX0c1Wk9fWVFnNFFKcVhKSU5uNnBmc0RuRXg3LW5rZzRHUU56UHpEOU8?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Two aviation safety incidents (rejected takeoff due to bird strike and lightning strike) require human review under mandatory safety-event rules. Both events are confirmed as occurring but involve abnormal flight operations; full articles cannot be safely produced from headline-only source items without body text, so brief format is used.",
-      "cat": "safety",
-      "zh": {
-        "title": "日本跨洋航空小松機場中斷起飛 歐洲之翼馬耳他航空閃電擊中",
-        "summary": "The Aviation Herald 報導兩起航空事件。日本跨洋航空一架波音737-800於2026年7月30日在小松機場因鳥擊中斷起飛。同日歐洲之翼馬耳他航空一架A320在斯圖加特遭遇閃電擊中。兩起事件均屬初步報導階段。",
-        "body": [
-          "The Aviation Herald 報導，日本跨洋航空一架波音737-800客機於2026年7月30日在小松機場因遭遇鳥擊而中斷起飛。該事件發生於當日，屬於初步報導階段。",
-          "另據 The Aviation Herald 同日報導，歐洲之翼馬耳他航空一架空中巴士A320客機於2026年7月30日在斯圖加特遭遇閃電擊中。此事件同樣處於初步報導階段。",
-          "兩起事件均涉及航空安全範疇，目前僅有標題與摘要層級的資料，尚無進一步細節。鳥擊與閃電擊中均為影響航班運作的已知航空風險因素。",
-          "本報導僅依據 The Aviation Herald 所提供的標題資訊撰寫，未對事件原因、損害程度或後續影響作出任何推斷。"
-        ]
-      },
-      "en": {
-        "title": "Japan Transocean B738 Rejected Takeoff at Komatsu; Eurowings Malta A320 Lightning Strike at Stuttgart",
-        "summary": "The Aviation Herald reports two aviation incidents on July 30, 2026. A Japan Transocean Air Boeing 737-800 rejected takeoff at Komatsu Airport due to a bird strike. Separately, a Eurowings Malta Airbus A320 was struck by lightning at Stuttgart. Both incidents are at a preliminary reporting stage.",
-        "body": [
-          "The Aviation Herald reports that a Japan Transocean Air Boeing 737-800 rejected takeoff at Komatsu Airport on July 30, 2026, due to a bird strike. The event is at a preliminary reporting stage.",
-          "Separately, The Aviation Herald reports on the same date that a Eurowings Malta Airbus A320 was struck by lightning at Stuttgart on July 30, 2026. This event is also at a preliminary reporting stage.",
-          "Both incidents fall within the aviation safety category. Only headline-level information is available for each event, and no further details have been provided.",
-          "This report is based solely on headline information from The Aviation Herald. No inference is made regarding cause, extent of damage, or subsequent operational impact."
-        ]
-      },
-      "flash": {
-        "zh": "日本跨洋航空小松機場鳥擊中斷起飛；歐洲之翼馬耳他航空斯圖加特閃電擊中",
-        "en": "Japan Transocean B738 rejected takeoff at Komatsu; Eurowings Malta A320 lightning strike at Stuttgart",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-07-30",
-        "sev": "inc",
-        "aircraft": "B738",
-        "operator": "Japan Transocean Air",
-        "phase": {
-          "zh": "起飛",
-          "en": "takeoff"
-        },
-        "location": {
-          "zh": "小松機場",
-          "en": "Komatsu Airport"
-        },
-        "desc": {
-          "zh": "因鳥擊中斷起飛",
-          "en": "rejected takeoff due to bird strike"
-        },
-        "status": "prelim"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A Japan Transocean Air Boeing 737-800 rejected takeoff at Komatsu on July 30, 2026, due to a bird strike.",
-          "sourceQuote": "Incident: Japan Transocean B738 at Komatsu on Jul 30th 2026, rejected takeoff due to bird strike",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "A Eurowings Malta Airbus A320 was struck by lightning at Stuttgart on July 30, 2026.",
-          "sourceQuote": "Incident: Eurowings Malta A320 at Stuttgart on Jul 30th 2026, lightning strike",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1mdXI0clBwTVBlMTZrVUNMV1lhbm9WeS1tU0dEb00xSGxaaUxpYWNRX0c1Wk9fWVFnNFFKcVhKSU5uNnBmc0RuRXg3LW5rZzRHUU56UHpEOU8?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "The Aviation Herald"
-        ],
-        "airlines": [
-          "Japan Transocean Air",
-          "Eurowings Malta"
-        ],
-        "aircraft_models": [
-          "B738",
-          "A320"
-        ],
-        "airports": [
-          "Komatsu",
-          "Stuttgart"
-        ],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-30"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-1653-10",
-      "primarySource": "The Aviation Herald",
-      "items": [
-        {
-          "title": "Incident: Japan Transocean B738 at Komatsu on Jul 30th 2026, rejected takeoff due to bird strike",
-          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8td3BQYmJvTjU1c003QmZRbm9wanF4Qko5cUIwbGlPM2NwdnotdnRCZHU5c0p0aElnNVJ6RHFSdmNyTlVfcUo3VXZzWWFtcnh0RXFRTDNzR0M?oc=5",
-          "publishedUtc": "2026-07-30T19:24Z",
-          "summary": "",
-          "image": null,
-          "source": "The Aviation Herald",
-          "sourceKey": "avherald"
-        },
-        {
-          "title": "Incident: Eurowings Malta A320 at Stuttgart on Jul 30th 2026, lightning strike",
-          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1mdXI0clBwTVBlMTZrVUNMV1lhbm9WeS1tU0dEb00xSGxaaUxpYWNRX0c1Wk9fWVFnNFFKcVhKSU5uNnBmc0RuRXg3LW5rZzRHUU56UHpEOU8?oc=5",
-          "publishedUtc": "2026-07-30T07:00Z",
-          "summary": "",
-          "image": null,
-          "source": "The Aviation Herald",
-          "sourceKey": "avherald"
-        }
-      ],
-      "updateCandidate": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
