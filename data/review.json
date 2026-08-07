@@ -1,5 +1,157 @@
 [
   {
+    "id": "g-20260807-1908-3",
+    "queuedUtc": "2026-08-07T19:08Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves criminal felony charges and an aviation security breach under investigation.",
+    "riskFlags": [
+      "investigation",
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A man faces felony charges after sneaking onto a JetBlue plane.",
+        "sourceQuote": "Man Facing Felony Charges After Sneaking Onto JetBlue Plane",
+        "sourceUrl": "https://simpleflying.com/man-felony-charges-sneaking-jetblue-plane-2400-flight-delay/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The incident caused a $2,400 flight delay.",
+        "sourceQuote": "Causes $2,400 Flight Delay",
+        "sourceUrl": "https://simpleflying.com/man-felony-charges-sneaking-jetblue-plane-2400-flight-delay/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Security footage shows a lone figure roaming service roads before using portable stairs to enter the parked Airbus.",
+        "sourceQuote": "Security footage shows a lone figure roaming service roads before using portable stairs to enter the parked Airbus.",
+        "sourceUrl": "https://simpleflying.com/man-felony-charges-sneaking-jetblue-plane-2400-flight-delay/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves criminal felony charges and an aviation security breach under investigation.",
+      "cat": "reg",
+      "zh": {
+        "title": "男子潛入捷藍航空停放空中巴士客機面臨重罪起訴",
+        "summary": "一名男子因潛入捷藍航空停放的空中巴士客機，目前正面臨重罪起訴。根據監視器畫面顯示，該名單獨人士在服務道路漫遊後，利用移動式梯子進入停放的空中巴士客機。該起擅自登機事件造成了2400美元的航班延誤損失。",
+        "body": [
+          "一名男子因潛入捷藍航空一架停放的空中巴士客機，目前正面臨重罪起訴。根據監視器畫面顯示，一名單獨的人士在機場服務道路上漫遊，隨後利用移動式梯子登上並進入該架停放的客機。",
+          "該起擅自登機事件對航空公司營運造成影響，並導致了2400美元的航班延誤損失。該名男子在擅自進入停放的客機後，隨即面臨相關刑事重罪起訴。",
+          "監視器畫面記錄了該名人士在登上空中巴士客機前，先於服務道路漫遊，並透過移動式梯子進入機艙的過程。"
+        ]
+      },
+      "en": {
+        "title": "Man Faces Felony Charges After Sneaking Onto JetBlue Plane",
+        "summary": "A man is facing felony charges after sneaking onto a parked JetBlue Airbus plane, according to reports. Security footage captured a lone figure roaming airport service roads before using portable stairs to enter the parked aircraft. The unauthorized entry into the JetBlue plane resulted in a $2,400 flight delay. Authorities have filed felony charges against the individual following the security breach involving the parked Airbus passenger jet. The incident caused financial and operational delays.",
+        "body": [
+          "A man is currently facing felony charges after sneaking onto a parked JetBlue Airbus aircraft. Security footage captured a lone figure roaming along airport service roads before using portable stairs to enter the parked passenger airplane without authorization.",
+          "The unauthorized entry into the parked commercial airliner resulted in an estimated $2,400 flight delay. The individual was subsequently charged with felony offenses following the security breach on board the aircraft.",
+          "According to the security video footage, the individual traversed service roads on the airport property before ascending portable stairs to gain access to the parked JetBlue plane."
+        ]
+      },
+      "flash": {
+        "zh": "一名男子因潛入捷藍航空客機面臨重罪起訴",
+        "en": "Man faces felony charges after sneaking onto parked JetBlue plane",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A man faces felony charges after sneaking onto a JetBlue plane.",
+          "sourceQuote": "Man Facing Felony Charges After Sneaking Onto JetBlue Plane",
+          "sourceUrl": "https://simpleflying.com/man-felony-charges-sneaking-jetblue-plane-2400-flight-delay/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The incident caused a $2,400 flight delay.",
+          "sourceQuote": "Causes $2,400 Flight Delay",
+          "sourceUrl": "https://simpleflying.com/man-felony-charges-sneaking-jetblue-plane-2400-flight-delay/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Security footage shows a lone figure roaming service roads before using portable stairs to enter the parked Airbus.",
+          "sourceQuote": "Security footage shows a lone figure roaming service roads before using portable stairs to enter the parked Airbus.",
+          "sourceUrl": "https://simpleflying.com/man-felony-charges-sneaking-jetblue-plane-2400-flight-delay/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "JetBlue",
+          "Airbus"
+        ],
+        "airlines": [
+          "JetBlue"
+        ],
+        "aircraft_models": [
+          "Airbus"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "investigation",
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-1908-3",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Man Facing Felony Charges After Sneaking Onto JetBlue Plane, Causes $2,400 Flight Delay",
+          "url": "https://simpleflying.com/man-felony-charges-sneaking-jetblue-plane-2400-flight-delay/",
+          "publishedUtc": "2026-08-07T18:53Z",
+          "summary": "Security footage shows a lone figure roaming service roads before using portable stairs to enter the parked Airbus.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/jetblue-airbus-a320.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260807-1659-1",
     "queuedUtc": "2026-08-07T16:59Z",
     "approve": false,
@@ -10171,191 +10323,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260803-0435-4",
-    "queuedUtc": "2026-08-03T04:36Z",
-    "approve": false,
-    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
-    "decisionReason": "內容涉及國防部偵獲共機艦動態，屬軍事航空活動，且該區域常有潛在升高風險，雖為國防部例行公布，為謹慎起見轉人工審查。",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "國防部在8月3日發布共機艦動態。",
-        "sourceQuote": "國防部今天發布共機艦動態",
-        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608020027.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "自8月2日上午6時起至8月3日上午6時止，偵獲7艘共艦、3艘公務船。",
-        "sourceQuote": "統計自昨天上午6時起至今天上午6時止，偵獲7艘共艦、3艘公務船",
-        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608030031.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "自8月2日上午6時起至8月3日上午6時止，偵獲1架共機侵擾西南空域。",
-        "sourceQuote": "1架共機侵擾西南空域",
-        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608030031.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "國軍運用任務機艦及岸置飛彈系統嚴密監控與應處。",
-        "sourceQuote": "國軍運用任務機艦及岸置飛彈系統嚴密監控與應處",
-        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608020027.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "內容涉及國防部偵獲共機艦動態，屬軍事航空活動，且該區域常有潛在升高風險，雖為國防部例行公布，為謹慎起見轉人工審查。",
-      "cat": "mil",
-      "zh": {
-        "title": "國防部偵獲7艘共艦3艘公務船1架共機擾台",
-        "summary": "國防部表示，自8月2日上午6時起至8月3日上午6時止，偵獲7艘共艦、3艘公務船及1架共機侵擾西南空域，國軍運用任務機艦及岸置飛彈系統監控應處。",
-        "body": [
-          "國防部於8月3日公布最新的共機艦動態，統計自8月2日上午6時起至8月3日上午6時止，共偵獲7艘共艦、3艘公務船以及1架共機在台灣周邊活動。",
-          "根據國防部資訊，該架共機侵擾西南空域，國軍依照慣例，運用任務機、艦及岸置飛彈系統進行嚴密監控與應處。",
-          "相較於前一日國防部公布的動態，共艦數量由8艘略降為7艘，公務船數量則由2艘增至3艘，共機則由5架次（其中3架次逾越海峽中線）降為1架次。",
-          "國防部強調，國軍持續在台海周邊活動，確保國家安全。"
-        ]
-      },
-      "en": {
-        "title": "Taiwan detects 7 PLAN vessels, 3 official ships, 1 PLA aircraft near its waters",
-        "summary": "Taiwan's Ministry of National Defense reported detecting 7 PLA vessels, 3 official ships, and 1 PLA aircraft operating near Taiwan between 6 a.m. Aug. 2 and 6 a.m. Aug. 3. The military responded with task force ships and coastal missile systems.",
-        "body": [
-          "Taiwan's Ministry of National Defense (MND) released the latest PLA activity report on Aug. 3, detailing movements detected between 6 a.m. on Aug. 2 and 6 a.m. on Aug. 3.",
-          "During this period, the MND detected 7 People's Liberation Army (PLA) vessels, 3 official ships, and 1 PLA aircraft. The aircraft entered Taiwan's southwestern airspace.",
-          "Taiwan's armed forces responded by monitoring the situation and deploying task force ships, aircraft, and coastal missile systems.",
-          "The report follows the previous day's figures of 8 PLA vessels, 2 official ships, and 5 PLA aircraft, 3 of which crossed the median line of the Taiwan Strait."
-        ]
-      },
-      "flash": {
-        "zh": "國防部：7共艦、3公務船、1共機擾台",
-        "en": "Taiwan MND: 7 PLA vessels, 3 official ships, 1 PLA aircraft detected",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "國防部在8月3日發布共機艦動態。",
-          "sourceQuote": "國防部今天發布共機艦動態",
-          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608030031.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "自8月2日上午6時起至8月3日上午6時止，偵獲7艘共艦、3艘公務船。",
-          "sourceQuote": "統計自昨天上午6時起至今天上午6時止，偵獲7艘共艦、3艘公務船",
-          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608030031.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "自8月2日上午6時起至8月3日上午6時止，偵獲1架共機侵擾西南空域。",
-          "sourceQuote": "1架共機侵擾西南空域",
-          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608030031.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "國軍運用任務機艦及岸置飛彈系統嚴密監控與應處。",
-          "sourceQuote": "國軍運用任務機艦及岸置飛彈系統嚴密監控與應處",
-          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608030031.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "國防部"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "西南空域"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-02",
-          "2026-08-03"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260803-0435-4",
-      "primarySource": "中央社 CNA",
-      "items": [
-        {
-          "title": "8艘共艦擾台、3架次共機逾海峽中線 國軍監控",
-          "url": "https://www.cna.com.tw/news/aipl/202608020027.aspx",
-          "publishedUtc": "2026-08-02T01:52Z",
-          "summary": "（中央社記者游凱翔台北2日電）國防部今天發布共機艦動態，統計自昨天上午6時起至今天上午6時止，偵獲8艘共艦、2艘公務船，及3架次共機逾越台海中線侵擾西南空域，國軍運用任務機艦及岸置飛彈系統嚴密監控與應處。",
-          "image": null,
-          "source": "中央社 CNA",
-          "sourceKey": "cnataiwan"
-        },
-        {
-          "title": "7艘共艦1架共機擾台 國軍監控",
-          "url": "https://www.cna.com.tw/news/aipl/202608030031.aspx",
-          "publishedUtc": "2026-08-03T01:32Z",
-          "summary": "（中央社記者游凱翔台北3日電）國防部今天發布共機艦動態，統計自昨天上午6時起至今天上午6時止，偵獲7艘共艦、3艘公務船，及1架共機侵擾西南空域，國軍運用任務機艦及岸置飛彈系統嚴密監控與應處。",
-          "image": null,
-          "source": "中央社 CNA",
-          "sourceKey": "cnataiwan"
-        },
-        {
-          "title": "本站資料庫 — 共機艦動態歷史統計",
-          "summary": "以下為本站資料庫（AVWIRE 依國防部歷日公開統計自行記錄）之歷史數據，僅供比較，引用時請標明為本站統計紀錄：\n前一次紀錄（8 月 1 日）：共機 5 架次、共艦 10 艘、公務船 2 艘\n近 7 日（共 4 筆紀錄）平均：共機 6.2 架次/日、共艦 7.8 艘/日\n近 30 日（共 4 筆紀錄）平均：共機 6.2 架次/日、共艦 7.8 艘/日\n近 30 日單日最高：共機 10 架次（7 月 30 日）",
-          "source": "AVWIRE 資料庫",
-          "dbContext": true
-        }
-      ],
-      "updateCandidate": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
