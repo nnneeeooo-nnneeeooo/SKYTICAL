@@ -1,5 +1,369 @@
 [
   {
+    "id": "g-20260807-1501-1",
+    "queuedUtc": "2026-08-07T15:01Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Mandatory human review required for regulatory action involving an FAA airworthiness directive on Boeing 737 MAX aircraft.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The FAA issued an airworthiness directive requiring inspection of 471 Boeing 737 MAX aircraft to check for cracks.",
+        "sourceQuote": "The US Federal Aviation Administration (FAA) has issued a new airworthiness directive (AD) requiring inspection of 471 Boeing 737 MAX aircraft to check for cracks.",
+        "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The directive applies to 471 US-registered Boeing 737 MAX 8, MAX 9, and 737-8200 aircraft.",
+        "sourceQuote": "The 471 US-registered aircraft include Boeing 737 MAX 8, MAX 9 and high density 737-8200 aircraft",
+        "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The order was prompted by reports of cracks in the bear strap at the forward upper corner of the forward galley door cutout.",
+        "sourceQuote": "prompted by reports of cracks in the bear strap",
+        "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The FAA stated that cracks in the fuselage skin and bear strap could adversely affect the structural integrity of the airplane.",
+        "sourceQuote": "may lead to the inability of the principal structural element to sustain limit loads and adversely affect the structural integrity of the airplane",
+        "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Inspection procedures follow Boeing Alert Requirements Bulletin 737-53A1408 RB, dated December 20, 2024.",
+        "sourceQuote": "Boeing published Alert Requirements Bulletin 737-53A1408 RB, dated December 20, 2024",
+        "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The FAA estimates initial general visual inspection will require one hour at $85 per aircraft, totaling $40,035 for US operators.",
+        "sourceQuote": "The FAA estimates that external general visual inspection for repairs will require one hour’s work and cost $85. The total cost to US operators is estimated to be $40,035.",
+        "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Mandatory human review required for regulatory action involving an FAA airworthiness directive on Boeing 737 MAX aircraft.",
+      "cat": "reg",
+      "zh": {
+        "title": "美國FAA要求檢查471架波音737 MAX客機機身裂痕",
+        "summary": "美國聯邦航空總署發布最新適航指令，要求對471架在美國註冊的波音737 MAX系列客機進行機身檢查。該項指令源於前廚房門開口處的 bear strap 結構發現裂痕報告，監管機構警告此類裂痕可能影響飛機整體結構完整性。指令將於2026年9月10日正式生效。",
+        "body": [
+          "美國聯邦航空總署（FAA）已針對471架在美國註冊的波音737 MAX客機發布適航指令，要求進行機身檢查。受影響機型包含波音737 MAX 8、MAX 9與737-8200，指令將於2026年9月10日生效。",
+          "指令源於前廚房門開口處前上方角落的 bear strap 結構接獲裂痕報告。FAA警告，裂痕可能導致主結構元件無法承受極限載荷，對飛機結構完整性產生不利影響。",
+          "檢查程序依據波音於2024年12月20日發布的 Alert Requirements Bulletin 737-53A1408 RB 執行。FAA估計初步外觀檢查每架耗時1小時且費用為85美元，美國營運商總成本約40,035美元。"
+        ]
+      },
+      "en": {
+        "title": "FAA Directs Inspection of 471 Boeing 737 MAX Aircraft for Fuselage Cracks",
+        "summary": "The US Federal Aviation Administration has issued a new airworthiness directive requiring inspection of 471 Boeing 737 MAX aircraft registered in the United States to check for structural cracks. The order applies to 737 MAX 8, MAX 9, and 737-8200 models following reports of cracking in the bear strap located at the forward upper corner of the forward galley door cutout. The FAA warned that such cracks could adversely affect the structural integrity of the aircraft. The new directive is set to take effect on September 10, 2026.",
+        "body": [
+          "The US Federal Aviation Administration (FAA) has issued an airworthiness directive requiring inspection of 471 US-registered Boeing 737 MAX aircraft to check for cracks. The directive covers Boeing 737 MAX 8, MAX 9, and high-density 737-8200 models, and will take effect on September 10, 2026.",
+          "The order was prompted by reports of cracks in the bear strap located at the forward upper corner of the forward galley door cutout. The FAA warned that cracks in the fuselage skin and bear strap may lead to the inability of the principal structural element to sustain limit loads and adversely affect aircraft structural integrity.",
+          "Inspections follow Boeing Alert Requirements Bulletin 737-53A1408 RB, dated December 20, 2024. The FAA estimates initial visual inspections will take one hour and cost $85 per aircraft, totaling $40,035 for US operators."
+        ]
+      },
+      "flash": {
+        "zh": "美國FAA對471架波音737 MAX客機發布適航指令檢查機身裂痕",
+        "en": "FAA issues airworthiness directive requiring checks on 471 Boeing 737 MAX jets",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The FAA issued an airworthiness directive requiring inspection of 471 Boeing 737 MAX aircraft to check for cracks.",
+          "sourceQuote": "The US Federal Aviation Administration (FAA) has issued a new airworthiness directive (AD) requiring inspection of 471 Boeing 737 MAX aircraft to check for cracks.",
+          "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The directive applies to 471 US-registered Boeing 737 MAX 8, MAX 9, and 737-8200 aircraft.",
+          "sourceQuote": "The 471 US-registered aircraft include Boeing 737 MAX 8, MAX 9 and high density 737-8200 aircraft",
+          "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The order was prompted by reports of cracks in the bear strap at the forward upper corner of the forward galley door cutout.",
+          "sourceQuote": "prompted by reports of cracks in the bear strap",
+          "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The FAA stated that cracks in the fuselage skin and bear strap could adversely affect the structural integrity of the airplane.",
+          "sourceQuote": "may lead to the inability of the principal structural element to sustain limit loads and adversely affect the structural integrity of the airplane",
+          "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Inspection procedures follow Boeing Alert Requirements Bulletin 737-53A1408 RB, dated December 20, 2024.",
+          "sourceQuote": "Boeing published Alert Requirements Bulletin 737-53A1408 RB, dated December 20, 2024",
+          "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The FAA estimates initial general visual inspection will require one hour at $85 per aircraft, totaling $40,035 for US operators.",
+          "sourceQuote": "The FAA estimates that external general visual inspection for repairs will require one hour’s work and cost $85. The total cost to US operators is estimated to be $40,035.",
+          "sourceUrl": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "FAA",
+          "Federal Aviation Administration",
+          "Boeing"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Boeing 737 MAX",
+          "Boeing 737 MAX 8",
+          "MAX 9",
+          "737-8200"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "August 8, 2026",
+          "September 10, 2026",
+          "November 25, 2025",
+          "December 20, 2024"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-1501-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "New FAA directive requires checks on 471 Boeing 737 MAX jets",
+          "url": "https://www.aerotime.aero/articles/new-faa-airworthiness-directive-requires-checks-boeing-737-max-aircraft",
+          "publishedUtc": "2026-08-07T13:40Z",
+          "summary": "The US Federal Aviation Administration (FAA) has issued a new airworthiness directive (AD) requiring inspection of 471 Boeing… The post New FAA directive requires checks on 471 Boeing 737 MAX jets appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "FAA Statement on Certification of the Boeing 737 MAX-7",
+          "url": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
+          "publishedUtc": "2026-08-03T00:00Z",
+          "summary": "Statement",
+          "image": null,
+          "source": "FAA",
+          "sourceKey": "faa"
+        },
+        {
+          "title": "FAA orders inspections of hundreds of Boeing 737 MAX jets after cracks reported in fuselage",
+          "url": "https://aerospaceglobalnews.com/news/faa-boeing-737-max-fuselage-crack-inspections/",
+          "publishedUtc": "2026-08-07T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/737max-gallery-2-737-8-in-flight.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        },
+        {
+          "title": "Somon Air Receives Its First Boeing 737 MAX Jet",
+          "url": "https://boeing.mediaroom.com/2026-08-03-Somon-Air-Receives-Its-First-Boeing-737-MAX-Jet",
+          "publishedUtc": "2026-08-03T07:53Z",
+          "summary": "",
+          "image": "https://mmx.prnewswire.com/media/MS1962747/Somon-Air-first-737MAX-delivery_3.jpg?id=OA2821313&p=thumbnail",
+          "source": "Boeing",
+          "sourceKey": "boeing"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 787, BOEING 737",
+              "same named core entity: aerotime",
+              "same airport code(s): THE",
+              "archive predates source by 5 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 93,
+            "confidence_reason": "tier 2; 4 deterministic evidence item(s); 5 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing, faa",
+              "archive predates source by 12 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 12 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing, faa",
+              "archive predates source by 10 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260807-1319-2",
     "queuedUtc": "2026-08-07T13:19Z",
     "approve": false,
@@ -9856,219 +10220,6 @@
           "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/whitney-gtf.jpg",
           "source": "Simple Flying",
           "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260802-1440-2",
-    "queuedUtc": "2026-08-02T14:40Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves regulatory competition approval and a $100 million equity investment associated with Chapter 11 bankruptcy restructuring, requiring human editorial review.",
-    "riskFlags": [
-      "regulatory_action",
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Brazil's competition authority CADE approved American Airlines' planned $100 million investment in Azul without imposing conditions.",
-        "sourceQuote": "Brazil’s Administrative Council for Economic Defense (CADE) has approved American Airlines’ planned US$100 million investment in Azul without imposing any conditions",
-        "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The approval allows American Airlines to acquire an 8.66% equity stake in Azul as part of Azul's Chapter 11 financial restructuring.",
-        "sourceQuote": "allows American Airlines to acquire an 8.66% equity stake in Azul as part of the Brazilian carrier’s ongoing financial restructuring under Chapter 11 proceedings in the United States.",
-        "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The investment grants American Airlines the right to appoint one board member and one strategic committee representative at Azul.",
-        "sourceQuote": "The investment also gives the US carrier the right to appoint one member to Azul’s board of directors and a representative to one of the airline’s strategic committees.",
-        "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "CADE evaluated commercial cooperation including expanded codeshares, reciprocal frequent flyer benefits, and shared airport lounge access.",
-        "sourceQuote": "CADE also assessed the commercial cooperation planned between the two carriers, which includes expanded codeshare operations, reciprocal frequent flyer program benefits, and access to shared airport lounges.",
-        "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "CADE rejected concerns raised by Abra Group, the parent company of Gol and Avianca.",
-        "sourceQuote": "The competition authority also rejected concerns raised by Abra Group, the parent company of Gol and Avianca",
-        "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Unless appealed or referred for further review, CADE's approval will become final.",
-        "sourceQuote": "Unless the decision is appealed or referred for further review by CADE’s tribunal, the approval will become final",
-        "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves regulatory competition approval and a $100 million equity investment associated with Chapter 11 bankruptcy restructuring, requiring human editorial review.",
-      "cat": "reg",
-      "zh": {
-        "title": "巴西競爭監管機構批准美國航空向藍色航空投資一億美元",
-        "summary": "巴西行政經濟防禦委員會無條件批准美國航空對藍色航空進行1億美元的投資計畫。美國航空將取得藍色航空8.66%的股權，作為該公司在美國進行第11章重組程序的一環。雙方並計畫擴大代碼共享與哩程計畫合作。",
-        "body": [
-          "巴西行政經濟防禦委員會（CADE）已無條件批准美國航空對藍色航空（Azul）進行1億美元的投資計畫，認定該交易不太可能對巴西航空市場的競爭造成損害。",
-          "此項批准允許美國航空取得藍色航空8.66%的股權，作為藍色航空在美國進行第11章重組程序的一環。美國航空並將獲得指定一名董事會成員與戰略委員會代表的權利。",
-          "CADE亦審查了包含擴大代碼共享與哩程計畫合作在內的商業協定，並駁回了Abra Group提出的異議。除非遭到上訴，否則該裁決將成為最終決定。"
-        ]
-      },
-      "en": {
-        "title": "Brazil Approves American Airlines $100 Million Investment in Azul",
-        "summary": "Brazil's competition authority, the Administrative Council for Economic Defense (CADE), has approved American Airlines' planned $100 million investment in Azul without conditions. The approval allows American Airlines to acquire an 8.66% equity stake in Azul as part of the Brazilian carrier's Chapter 11 restructuring in the United States. In addition, the deal grants American Airlines the right to appoint one board member and a strategic committee representative. CADE also evaluated planned commercial cooperation between the carriers, including expanded codeshare agreements and reciprocal frequent flyer program benefits, concluding that the transaction is unlikely to harm market competition.",
-        "body": [
-          "Brazil's competition authority, the Administrative Council for Economic Defense (CADE), has cleared American Airlines' planned $100 million investment in Azul without conditions, finding the deal unlikely to harm market competition.",
-          "The approval permits American Airlines to obtain an 8.66% equity stake in Azul as part of its Chapter 11 restructuring in the United States. The investment grants American Airlines the right to appoint a board member and a strategic committee representative at Azul.",
-          "CADE reviewed proposed commercial cooperation involving expanded codeshare flights, reciprocal frequent flyer benefits, and shared lounges. The competition authority also rejected concerns raised by Abra Group, stating that the transaction will proceed unless appealed."
-        ]
-      },
-      "flash": {
-        "zh": "巴西無條件批准美國航空對藍色航空1億美元投資案",
-        "en": "Brazil approves American Airlines $100M investment in Azul",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Brazil's competition authority CADE approved American Airlines' planned $100 million investment in Azul without imposing conditions.",
-          "sourceQuote": "Brazil’s Administrative Council for Economic Defense (CADE) has approved American Airlines’ planned US$100 million investment in Azul without imposing any conditions",
-          "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The approval allows American Airlines to acquire an 8.66% equity stake in Azul as part of Azul's Chapter 11 financial restructuring.",
-          "sourceQuote": "allows American Airlines to acquire an 8.66% equity stake in Azul as part of the Brazilian carrier’s ongoing financial restructuring under Chapter 11 proceedings in the United States.",
-          "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The investment grants American Airlines the right to appoint one board member and one strategic committee representative at Azul.",
-          "sourceQuote": "The investment also gives the US carrier the right to appoint one member to Azul’s board of directors and a representative to one of the airline’s strategic committees.",
-          "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "CADE evaluated commercial cooperation including expanded codeshares, reciprocal frequent flyer benefits, and shared airport lounge access.",
-          "sourceQuote": "CADE also assessed the commercial cooperation planned between the two carriers, which includes expanded codeshare operations, reciprocal frequent flyer program benefits, and access to shared airport lounges.",
-          "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "CADE rejected concerns raised by Abra Group, the parent company of Gol and Avianca.",
-          "sourceQuote": "The competition authority also rejected concerns raised by Abra Group, the parent company of Gol and Avianca",
-          "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Unless appealed or referred for further review, CADE's approval will become final.",
-          "sourceQuote": "Unless the decision is appealed or referred for further review by CADE’s tribunal, the approval will become final",
-          "sourceUrl": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Administrative Council for Economic Defense",
-          "CADE",
-          "Abra Group"
-        ],
-        "airlines": [
-          "American Airlines",
-          "Azul",
-          "Gol",
-          "Avianca"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Brazil",
-          "United States",
-          "São Paulo",
-          "Rio de Janeiro",
-          "Miami",
-          "Orlando"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "regulatory_action",
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260802-1440-2",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Brazil approves American Airlines’ $100M investment in Azul",
-          "url": "https://www.aerotime.aero/articles/brazil-approves-american-airlines-100m-investment-in-azul",
-          "publishedUtc": "2026-08-02T13:55Z",
-          "summary": "Brazil’s competition authority has cleared American Airlines’ planned investment in Azul, allowing the US carrier to acquire a… The post Brazil approves American Airlines’ $100M investment in Azul appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
         }
       ],
       "updateCandidate": false,
