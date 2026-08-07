@@ -1,0 +1,163 @@
+{
+  "content_type": "daily_transport_briefing",
+  "briefing_id": "2026-08-08-morning",
+  "date": "2026-08-08",
+  "edition": "morning",
+  "edition_label": "晨間快報",
+  "timezone": "Asia/Taipei",
+  "window_start": "2026-08-07T23:00:00+08:00",
+  "window_end": "2026-08-08T07:00:00+08:00",
+  "cutoff_time": "2026-08-08T07:00:00+08:00",
+  "scheduled_time": "2026-08-08T07:15:00+08:00",
+  "generated_at": "2026-08-08T07:48:23.530402+08:00",
+  "status": "partial",
+  "item_count": 1,
+  "sections": {
+    "aviation_incidents": [],
+    "taiwan_aviation": [],
+    "international_aviation": [
+      {
+        "event_id": "ev-e3796bdcdf3afb54",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "aviation_industry",
+        "headline": "美國航空推出無薪假方案 因空服員人力過剩",
+        "summary": "美國航空正向員工提供無薪休假方案，主要原因為該公司目前出現空服員人力過剩的情況。這項獲得工會支持的計劃將提供為期一個月的無薪假，讓參與員工在保留相關福利的同時，也能為資淺空服員釋出更多飛行執勤的機會。",
+        "headline_en": "American Airlines Offers Unpaid Leaves of Absence Due to Excess Flight Attendants",
+        "summary_en": "American Airlines is offering unpaid leaves of absence to cabin crew because the airline currently has too many flight attendants. According to media reports from Simple Flying, the union-backed initiative offers a full month of unpaid leave to participating employees. While taking part in the program, crew members preserve their overall benefits, and the temporary leave program simultaneously serves to open up flight opportunities for junior flight attendants within the airline.",
+        "event_time": null,
+        "source_published_at": "2026-08-07T19:55:00+00:00",
+        "source_updated_at": null,
+        "location": null,
+        "entities": [
+          "Simple Flying",
+          "American Airlines",
+          "2026-08-07T19:55Z"
+        ],
+        "severity": "routine",
+        "taiwan_priority": false,
+        "military": false,
+        "sources": [
+          {
+            "name": "Simple Flying — American Airlines Offering Unpaid Leaves Of Absence Because…",
+            "url": "https://simpleflying.com/american-airlines-unpaid-leaves-absence-too-many-flight-attendants/"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260807-2246-american-airlines-offers-unpaid-leaves-o"
+      }
+    ],
+    "ground_and_maritime": []
+  },
+  "checked_sources": [
+    {
+      "name": "FAA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "NTSB",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "ICAO",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "IATA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "EASA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "Eurocontrol",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "Reuters",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "The Aviation Herald",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "Aerospace Global News",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "CAA Taiwan",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "長榮航空 EVA Air",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "Simple Flying",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "AeroTime",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "中央社 CNA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "中央社 CNA 產經證券",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "中央社 CNA 國籍航空",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "國防部・軍聞社",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "臺灣交通要聞",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "Airbus",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    },
+    {
+      "name": "Boeing",
+      "ok": true,
+      "last_fetch_utc": "2026-08-07T22:45Z"
+    }
+  ],
+  "warnings": [
+    "AI 搜尋服務暫時不穩定，本期未能產生條列內容；我們正努力恢復服務，系統將於下一期自動重試"
+  ],
+  "generation_mode": "deterministic",
+  "generation_model": null,
+  "grounded_beta": {
+    "used": false,
+    "items": 0
+  }
+}
