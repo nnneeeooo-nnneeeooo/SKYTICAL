@@ -1,5 +1,559 @@
 [
   {
+    "id": "g-20260807-0009-5",
+    "queuedUtc": "2026-08-07T00:09Z",
+    "approve": false,
+    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
+    "decisionReason": "Financial takeover claim of approximately £5.7 billion is a major financial transaction. Classified as financial_or_order_claim risk flag.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Apollo Global Management agreed a recommended cash acquisition of easyJet, valuing the airline at approximately £5.7 billion ($7.6 billion).",
+        "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion)",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The announcement was published on August 6, 2026, a day before the deadline both bidders faced and hours after Castlelake confirmed it would not bid.",
+        "sourceQuote": "The announcement was published on August 6, 2026, a day before the deadline both bidders faced and hours after Castlelake confirmed it would not bid.",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management.",
+        "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
+        "sourceQuote": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK, with completion expected by the end of the first quarter of 2027.",
+        "sourceQuote": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK. The scheme document is due within 28 days, with completion expected by the end of the first quarter of 2027.",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Financial takeover claim of approximately £5.7 billion is a major financial transaction. Classified as financial_or_order_claim risk flag.",
+      "cat": "biz",
+      "zh": {
+        "title": "Apollo 同意以 57 億英鎊收購易捷航空 Castlelake 退出競標",
+        "summary": "Apollo Global Management 於2026年8月6日宣布，已就建議以現金收購易捷航空達成協議，對該航空公司估值約57億英鎊。Castlelake 在截止期限前數小時確認放棄競購。收購將透過法院批准的協議安排進行，每股易捷航空股份可獲7.15英鎊現金或選擇轉換為未上市的新控股公司股份。",
+        "body": [
+          "Apollo Global Management 於2026年8月6日宣布，已就建議以現金收購易捷航空達成協議，對該航空公司估值約57億英鎊（約76億美元）。此公告發布於原競購截止日前一天，數小時前 Castlelake 確認不會參與競標。",
+          "根據協議，由 Apollo Capital Management 附屬基金間接擁有的澤西島註冊公司 Eagle Bidco Ltd 將以每股7.15英鎊現金收購 easyJet 股份。此價格與 Apollo 於2026年7月10日提出的指示性價格相符，並將透過2006年公司法第26部規定的法院批准協議安排實施。",
+          "此報價較 easyJet 每股3.94英鎊的未受影響收市價溢價81%，並較中東衝突爆發前的最後一個交易日2026年2月27日收市價4.64英鎊溢價54%。股東可選擇以所持每股 easyJet 股份換取一股未上市 Topco 股份，惟此選擇設有上限，合計不得超過 Topco 已發行普通股本的49.9%。",
+          "Haji-Ioannou 家族一致行動人士已不可撤銷地承諾投票支持該安排並選擇轉換股份，涉及約佔已發行股本15.31%的116,061,871股股份。持有427,767股（約0.06%）的董事亦已作出相同承諾。",
+          "Apollo 預計 Topco 將由選擇轉換股份的股東持有45.1%至49.9%，歐盟信託持有最多5%，而 Apollo 基金則持有不超過49.9%。相關架構設有國籍聲明、加權投票及剝奪投票權等機制，以確保遵守歐盟航空公司所有權與控制權規則。",
+          "該交易須經股東批准、法院認可、航空執照審批、奧地利、埃及、德國及英國的合併控制審查，以及多個國家的外國直接投資審批。協議文件預計於28日內發布，交易可望於2027年第一季底前完成。"
+        ]
+      },
+      "en": {
+        "title": "Apollo agrees £5.7 billion takeover of easyJet as Castlelake walks away",
+        "summary": "Apollo Global Management announced a recommended cash acquisition of easyJet on August 6, 2026, valuing the airline at approximately £5.7 billion. Castlelake confirmed it would not bid earlier the same day. The deal will be implemented via a court-approved scheme, offering £7.15 per easyJet share in cash or an option for unlisted rollover shares.",
+        "body": [
+          "Apollo Global Management announced a recommended cash acquisition of easyJet on August 6, 2026, valuing the airline at approximately £5.7 billion ($7.6 billion). The announcement was published a day before the deadline both bidders faced and hours after Castlelake confirmed it would not bid.",
+          "Under the terms, each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management. The price matches the figure Apollo indicated on July 10, 2026. The deal will be implemented by a court-approved scheme of arrangement under Part 26 of the Companies Act 2006.",
+          "The price represents an 81% premium to the unaffected closing price of £3.94, and a 54% premium to the £4.64 close on February 27, 2026, the last business day before the Middle East conflict began. Shareholders may instead elect unlisted rollover shares in Topco, one per easyJet share, capped at 49.9% of Topco's issued ordinary share capital.",
+          "The Haji-Ioannou family concert party, holding approximately 15.31% of issued capital, has irrevocably undertaken to vote for the scheme and elect the rollover for all 116,061,871 shares. Directors holding 427,767 shares, about 0.06%, have also committed.",
+          "Apollo expects Topco to be held by rollover shareholders at between 45.1% and 49.9%, an EU trust at up to 5%, and the Apollo funds at no more than 49.9%. The structure includes nationality declarations and weighted voting provisions to remain inside EU airline ownership and control rules.",
+          "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals in multiple countries. The scheme document is due within 28 days, with completion expected by the end of the first quarter of 2027."
+        ]
+      },
+      "flash": {
+        "zh": "Apollo 同意以約57億英鎊收購 easyJet",
+        "en": "Apollo agrees £5.7bn easyJet takeover",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Apollo Global Management agreed a recommended cash acquisition of easyJet, valuing the airline at approximately £5.7 billion ($7.6 billion).",
+          "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion)",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The announcement was published on August 6, 2026, a day before the deadline both bidders faced and hours after Castlelake confirmed it would not bid.",
+          "sourceQuote": "The announcement was published on August 6, 2026, a day before the deadline both bidders faced and hours after Castlelake confirmed it would not bid.",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management.",
+          "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
+          "sourceQuote": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK, with completion expected by the end of the first quarter of 2027.",
+          "sourceQuote": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK. The scheme document is due within 28 days, with completion expected by the end of the first quarter of 2027.",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Apollo has committed to no change to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria and Switzerland.",
+          "sourceQuote": "Apollo has committed to no change to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria and Switzerland.",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Apollo Global Management",
+          "Eagle Bidco Ltd",
+          "Apollo Capital Management",
+          "easyGroup Holdings",
+          "easyGroup Ltd",
+          "Topco",
+          "Castlelake",
+          "Evercore"
+        ],
+        "airlines": [
+          "easyJet"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Jersey",
+          "UK",
+          "Austria",
+          "Switzerland",
+          "Egypt",
+          "Germany",
+          "France",
+          "Italy",
+          "Malta",
+          "Spain"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-06",
+          "2026-07-10",
+          "2025-06-10",
+          "2026-02-27"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0009-5",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Apollo agrees £5.7 billion takeover of easyJet as Castlelake walks away",
+          "url": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "publishedUtc": "2026-08-06T13:50Z",
+          "summary": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion… The post Apollo agrees £5.7 billion takeover of easyJet as Castlelake walks away appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "EasyJet agrees $7.7 billion takeover by Apollo as Castlelake walks away",
+          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOMEk2SWRNS0JWWHJfRFduLXRBY1dkVV9PRU9XLWo2WkM4Z1hBM0R2RmtFLXNoN01jZmVNX2NuYVdWYWh6ZnNQX2FySGI2MkFmQkJOTTVqRVNDWDZwQ2ZqZE9lc2d2RVA3bnNtUHpJelJGckh0QjEtSmlKUzZ1aEwyaHExS3ZYcFpobnc?oc=5",
+          "publishedUtc": "2026-08-06T16:41Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "Apollo to take easyJet private in $7.7 billion deal",
+          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPQ1ZRZVR2aUpCeVY0clcyYXY3Rk8wa3hPNFpLOFBSS3FCOGJxWlo5Qjg4ZllJSjB1S0dZTTZtVGc0UzBQVmV3MG8xOWlRZ3JWTzVMVnZLbVVTc0xONmVSV0lqUGduTlY1LWhuUW5qbjVEMkNKN3p4VDFfNUZad0MwbERrQUx6TURnM3hrTXlzaHFkdw?oc=5",
+          "publishedUtc": "2026-08-06T14:06Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "Apollo agrees to buy UK airline EasyJet in $7.7 billion deal as Castlelake withdraws",
+          "summary": "Apollo agrees to buy UK airline EasyJet in $7.7 billion deal as Castlelake withdraws &nbsp;&nbsp; CNBC",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNanBXWEw5alMyMnpncGpTN2RXUmlrY1J3OEI1QWI4RmNTVEQ4X2NfUWZjYWZoekFSbUFibFA5VFRjS05iX3B5REdJcWRON2RpWUlReDhXODNNdVM3SnRNTWRaTWtKLUJLODd5QlA1eGplRlM2cmxwX3ZRSkJRdFVDY1o3NkRlT1VBZW1Sb1Z2RzRwWmxIUGw00gGcAUFVX3lxTE4zUnlHVF9fYTFjakJ5eWZOYVF0emZUVEp5VllBNVBsMUxvS3g1anVGUXVrUWY1V09xc3JkWEFwMnBwTHZJcTI3THhNUFByVE5LQzdiY1VEVVBISy03Ym4xSnJoWVIwWnZUdmx4Y3NiOVRxYWJoM1BkRVhuZ0lxOGhfakZpUWhHbW43N1k1WHFmWVd6cTAxZWZSREc2Vg?oc=5",
+          "source": "CNBC",
+          "companion": true,
+          "publishedUtc": "2026-08-06T14:20Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260807-0009-12",
+    "queuedUtc": "2026-08-07T00:09Z",
+    "approve": false,
+    "writer": "openrouter:google/gemma-4-26b-a4b-it:free",
+    "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Honeywell Aerospace shares plunged 24% on August 6, 2026.",
+        "sourceQuote": "Honeywell Aerospace shares plunged 24% on August 6, 2026",
+        "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Supply-chain problems led to slower sales and prompted the company to cut its outlook for the rest of 2026.",
+        "sourceQuote": "after supply-chain problems led to slower sales and prompted the newly independent company to cut its outlook for the rest of 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Honeywell Aerospace reported second-quarter sales of $4.52 billion, up 5% from a year earlier.",
+        "sourceQuote": "Honeywell Aerospace reported second-quarter sales of $4.52 billion, up 5% from a year earlier.",
+        "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Shortages of mechanical parts limited equipment delivery to aircraft manufacturers, airlines and defense customers.",
+        "sourceQuote": "shortages of mechanical parts limited how much equipment it could deliver to aircraft manufacturers, airlines and defense customers.",
+        "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The company cut its expected sales growth for 2026 to between 4% and 5%, down from the 7% to 9% range.",
+        "sourceQuote": "The company cut its expected sales growth for 2026 to between 4% and 5%, down sharply from the 7% to 9% range it gave investors before becoming an independent company.",
+        "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Honeywell Aerospace recorded about $50 million in charges tied to inventory it no longer expects to sell or use.",
+        "sourceQuote": "Honeywell Aerospace also recorded about $50 million in charges tied to inventory it no longer expects to sell or use.",
+        "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
+      "cat": "biz",
+      "zh": {
+        "title": "Honeywell Aerospace 股價因第二季業績疲軟下跌 24%",
+        "summary": "Honeywell Aerospace 於 2026 年 8 月 6 日股價大跌 24%，主因是供應鏈問題導致銷售放緩，並下調了 2026 年的業績展望。該公司表示，機械零件短缺限制了其對飛機製造商、航空公司及國防客戶的設備交付能力。",
+        "body": [
+          "Honeywell Aerospace 股價於 2026 年 8 月 6 日下跌 24%，該公司表示供應鏈問題導致銷售放緩，並促使這家新成立的獨立公司下調了 2026 年的業績展望。",
+          "該公司第二季銷售額為 45.2 億美元，較去年同期成長 5%。儘管需求強勁，但機械零件短缺限制了其對飛機製造商、航空公司及國防客戶的設備交付能力。",
+          "Honeywell Aerospace 已將 2026 年預期銷售成長率從原先預估的 7% 至 9% 下調至 4% 至 5%。",
+          "該公司目前預計年度調整後每股盈餘為 7.60 至 7.90 美元。此外，該公司也因預期無法銷售或使用的庫存，錄得約 5,000 萬美元的損失。"
+        ]
+      },
+      "en": {
+        "title": "Honeywell Aerospace Shares Plunge 24% Following Weak Second Quarter",
+        "summary": "Honeywell Aerospace shares fell 24% on August 6, 2026, as supply-chain issues slowed sales and led the newly independent company to cut its 2026 outlook. Shortages of mechanical parts have limited equipment deliveries to aircraft manufacturers, airlines, and defense customers.",
+        "body": [
+          "Honeywell Aerospace shares plunged 24% on August 6, 2026, after supply-chain problems led to slower sales and prompted the newly independent company to cut its outlook for the rest of 2026.",
+          "The company reported second-quarter sales of $4.52 billion, up 5% from a year earlier, but noted that shortages of mechanical parts limited equipment deliveries to aircraft manufacturers, airlines, and defense customers.",
+          "Honeywell Aerospace has reduced its expected sales growth for 2026 to between 4% and 5%, down from the 7% to 9% range previously provided to investors.",
+          "The company now expects adjusted earnings of between $7.60 and $7.90 per share for the year. Additionally, Honeywell Aerospace recorded approximately $50 million in charges related to inventory it no longer expects to sell or use."
+        ]
+      },
+      "flash": {
+        "zh": "Honeywell Aerospace 股價因供應鏈問題與業績展望下調下跌 24%。",
+        "en": "Honeywell Aerospace shares plunge 24% amid supply-chain issues and lowered outlook.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Honeywell Aerospace shares plunged 24% on August 6, 2026.",
+          "sourceQuote": "Honeywell Aerospace shares plunged 24% on August 6, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Supply-chain problems led to slower sales and prompted the company to cut its outlook for the rest of 2026.",
+          "sourceQuote": "after supply-chain problems led to slower sales and prompted the newly independent company to cut its outlook for the rest of 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Honeywell Aerospace reported second-quarter sales of $4.52 billion, up 5% from a year earlier.",
+          "sourceQuote": "Honeywell Aerospace reported second-quarter sales of $4.52 billion, up 5% from a year earlier.",
+          "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Shortages of mechanical parts limited equipment delivery to aircraft manufacturers, airlines and defense customers.",
+          "sourceQuote": "shortages of mechanical parts limited how much equipment it could deliver to aircraft manufacturers, airlines and defense customers.",
+          "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The company cut its expected sales growth for 2026 to between 4% and 5%, down from the 7% to 9% range.",
+          "sourceQuote": "The company cut its expected sales growth for 2026 to between 4% and 5%, down sharply from the 7% to 9% range it gave investors before becoming an independent company.",
+          "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Honeywell Aerospace recorded about $50 million in charges tied to inventory it no longer expects to sell or use.",
+          "sourceQuote": "Honeywell Aerospace also recorded about $50 million in charges tied to inventory it no longer expects to sell or use.",
+          "sourceUrl": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Honeywell Aerospace"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-06"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0009-12",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Honeywell Aerospace shares plunge after weak first standalone quarter",
+          "url": "https://www.aerotime.aero/articles/honeywell-aerospace-shares-plunge-weak-first-quarter",
+          "publishedUtc": "2026-08-06T20:54Z",
+          "summary": "Honeywell Aerospace shares plunged 24% on August 6, 2026, after supply-chain problems led to slower sales and prompted… The post Honeywell Aerospace shares plunge after weak first standalone quarter appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 11 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 11 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
+            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+            "facts": [
+              {
+                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
+                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
+              },
+              {
+                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
+                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260806-0638-3",
     "queuedUtc": "2026-08-06T06:38Z",
     "approve": false,
@@ -9273,338 +9827,6 @@
         }
       ],
       "updateCandidate": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260801-1455-12",
-    "queuedUtc": "2026-08-01T14:55Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report is based on exploratory, unconfirmed discussions attributed to an unnamed source regarding Singapore's potential involvement in the GCAP fighter jet programme.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "According to a report by Janes citing an unnamed source, Singapore is in early exploratory discussions regarding potential involvement in the Global Combat Air Programme (GCAP).",
-        "sourceQuote": "According to a new article by the think-tank Janes , Singapore is now in early discussions on possible involvement in the Global Combat Air Programme (GCAP)",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/singapore-gcap-tempest-interest/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Janes emphasized that discussions are at an exploratory stage and no decision has been made for Singapore to commit to the GCAP programme.",
-        "sourceQuote": "Janes stressed that talks are currently at an exploratory stage and that no decisions have been made for Singapore to commit.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/singapore-gcap-tempest-interest/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "BAE is currently assembling the first demonstrator aircraft expected to fly in 2027, while Japan aims for aircraft entry into service by 2035.",
-        "sourceQuote": "BAE is currently assembling the first demonstrator , and it is expected to fly in 2027. Japan is insistent it wants the aircraft in service by 2035.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/singapore-gcap-tempest-interest/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Canada joined the Global Combat Air Programme as its first observer in July 2026.",
-        "sourceQuote": "The news comes after Canada joined the programme as its first observer this month.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/singapore-gcap-tempest-interest/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report is based on exploratory, unconfirmed discussions attributed to an unnamed source regarding Singapore's potential involvement in the GCAP fighter jet programme.",
-      "cat": "mil",
-      "zh": {
-        "title": "新加坡據報就加入GCAP戰機計畫展開初步討論",
-        "summary": "根據國防智庫簡氏（Janes）引述匿名消息來源指出，新加坡目前正就可能參與「全球作戰航空計畫」（GCAP）進行早期探索性討論。報導強調，相關討論仍處於初期階段，新加坡尚未做出任何具體承諾。此外，該計畫的首架示範機預計於2027年首飛，日本則希望該款戰機於2035年投入服役。",
-        "body": [
-          "根據國防智庫簡氏（Janes）引述知情匿名人士消息，新加坡已與相關方展開早期探索性討論，評估參與「全球作戰航空計畫」（GCAP，又稱BAE暴風雨）的可能性。報導指出，這些早期接觸符合新加坡長期以來評估國防採購的謹慎作風，目前仍處於初期階段，新加坡尚未做出任何正式承諾。",
-          "GCAP計畫目前由英國、義大利與日本共同推進。BAE系統公司正在組裝該計畫的首架試驗示範機，並預計於2027年進行首飛。此外，日本政府維持於2035年將該型第六代戰機正式投入服役的目標。加拿大則已於2026年7月以首個觀察員國身份加入該計畫。"
-        ]
-      },
-      "en": {
-        "title": "Singapore Explores Potential Involvement in GCAP Sixth-Generation Fighter Programme",
-        "summary": "Singapore is in early exploratory discussions regarding potential involvement in the Global Combat Air Programme (GCAP), according to a report by defence think-tank Janes citing an unnamed source. The publication stressed that talks remain at a preliminary stage and no commitment has been made by Singapore. The GCAP programme features BAE Systems currently assembling its first demonstrator aircraft, targeted for a first flight in 2027, while Japan aims for service entry by 2035. Additionally, Canada joined GCAP as its first observer nation in July 2026.",
-        "body": [
-          "Singapore is conducting early exploratory discussions regarding possible involvement in the Global Combat Air Programme (GCAP), also known as Tempest, according to a report by defence think-tank Janes citing an unnamed source. Janes emphasized that the talks are at an initial stage and that no decision has been made for Singapore to commit to the sixth-generation fighter jet programme.",
-          "In development milestones for the programme, BAE is assembling the first demonstrator aircraft, which is expected to make its maiden flight in 2027. Japan continues to target bringing the aircraft into service by 2035. Meanwhile, Canada joined the GCAP initiative as its first observer nation in July 2026."
-        ]
-      },
-      "flash": {
-        "zh": "新加坡據報就參與GCAP第六代戰機計畫展開早期探索性討論",
-        "en": "Singapore reportedly in early discussions regarding participation in GCAP fighter programme",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "According to a report by Janes citing an unnamed source, Singapore is in early exploratory discussions regarding potential involvement in the Global Combat Air Programme (GCAP).",
-          "sourceQuote": "According to a new article by the think-tank Janes , Singapore is now in early discussions on possible involvement in the Global Combat Air Programme (GCAP)",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/singapore-gcap-tempest-interest/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Janes emphasized that discussions are at an exploratory stage and no decision has been made for Singapore to commit to the GCAP programme.",
-          "sourceQuote": "Janes stressed that talks are currently at an exploratory stage and that no decisions have been made for Singapore to commit.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/singapore-gcap-tempest-interest/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "BAE is currently assembling the first demonstrator aircraft expected to fly in 2027, while Japan aims for aircraft entry into service by 2035.",
-          "sourceQuote": "BAE is currently assembling the first demonstrator , and it is expected to fly in 2027. Japan is insistent it wants the aircraft in service by 2035.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/singapore-gcap-tempest-interest/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Canada joined the Global Combat Air Programme as its first observer in July 2026.",
-          "sourceQuote": "The news comes after Canada joined the programme as its first observer this month.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/singapore-gcap-tempest-interest/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Janes",
-          "BAE"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "GCAP",
-          "Tempest",
-          "F-35"
-        ],
-        "airports": [],
-        "locations": [
-          "Singapore",
-          "Japan",
-          "Canada"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07",
-          "2027",
-          "2035"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-1559-5",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Singapore explores joining GCAP as global interest in Tempest grows News",
-          "url": "https://aerospaceglobalnews.com/news/singapore-gcap-tempest-interest/",
-          "publishedUtc": "2026-07-30T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/BAE-Systems-GCAP-Tempest-demonstrator-over-London-in-evening.png",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260801-1438-3",
-    "queuedUtc": "2026-08-01T14:38Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Aviation safety event involving a stall warning scare and captain intervention; requires human review per safety guidelines.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A British Airways passenger described a stall warning scare and a very violent manoeuvre on an A320 aircraft.",
-        "sourceQuote": "'Very Violent Manoeuvre': British Airways Passenger Describes A320 Stall Warning Scare",
-        "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The captain reportedly intervened while the aircraft was on approach to London Heathrow.",
-        "sourceQuote": "The captain reportedly intervened while on approach to London Heathrow.",
-        "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "A passenger on a British Airways mayday flight described experiencing fear during the event.",
-        "sourceQuote": "Passenger on British Airways mayday flight describes fear and shout of 'I don't want to die'",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9iMU5kWmU5cmFCMUU0bWt3a1JkNk5uQ0p1NldEZW53QnFsa2xudnZ0N3k1bHpTQWE1STRDXzFyR21RbktSZnExY1lxY09pQkdNeEVyUmtPVkY0ZkQt?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Aviation safety event involving a stall warning scare and captain intervention; requires human review per safety guidelines.",
-      "cat": "safety",
-      "zh": {
-        "title": "英國航空A320客機據報發生失速警告事件 機長在降落倫敦希斯洛期間介入",
-        "summary": "根據 Simple Flying 與 BBC 報導，英國航空一架空中巴士A320客機在進場倫敦希斯洛機場期間，據報發生失速警告情況，機長隨後進行介入處置。機上乘客描述當時經歷了劇烈操作，並在發出求救訊號的航班上表達恐懼感受。",
-        "body": [
-          "根據 Simple Flying 報導，英國航空一架空中巴士 A320 客機在進場倫敦希斯洛機場期間發生失速警告事件。據報導，該班機機長在進場過程中進行了介入處置。",
-          "受訪乘客將當時的飛行過程形容為經歷了極為劇烈的操作動作。 BBC 報導亦指出，這起發出求救訊號的英國航空航班上，有乘客表達了當時心中的恐懼。",
-          "有關此起空中巴士 A320 客機失速警告與機長介入處置事件的詳細過程，目前仍有待進一步資訊確認。"
-        ]
-      },
-      "en": {
-        "title": "British Airways Captain Intervenes During A320 Stall Warning Scare on Approach to Heathrow",
-        "summary": "According to media reports, a British Airways Airbus A320 aircraft experienced a stall warning scare while on approach to London Heathrow Airport. The flight's captain reportedly intervened during the incident, which passengers described as involving a very violent manoeuvre. Passengers on the flight, which declared a mayday, described experiencing intense fear during the occurrence. The details were reported by Simple Flying and the BBC following passenger accounts of the events during the approach into London.",
-        "body": [
-          "According to a report by Simple Flying, a British Airways Airbus A320 aircraft encountered a stall warning scare while on approach to London Heathrow Airport. The captain on board reportedly intervened during the final approach phase of the flight.",
-          "A passenger on board the aircraft described the incident as involving a very violent manoeuvre. Further reporting by the BBC noted that passengers on the British Airways mayday flight expressed significant fear during the scare.",
-          "Further details regarding the aircraft handling and the captain's intervention during the approach to Heathrow remain subject to ongoing reporting and verification."
-        ]
-      },
-      "flash": {
-        "zh": "英國航空A320客機進場希斯洛據報發生失速警告 機長介入處置",
-        "en": "British Airways A320 experiences stall warning on approach to Heathrow",
-        "hot": true
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A British Airways passenger described a stall warning scare and a very violent manoeuvre on an A320 aircraft.",
-          "sourceQuote": "'Very Violent Manoeuvre': British Airways Passenger Describes A320 Stall Warning Scare",
-          "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The captain reportedly intervened while the aircraft was on approach to London Heathrow.",
-          "sourceQuote": "The captain reportedly intervened while on approach to London Heathrow.",
-          "sourceUrl": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "A passenger on a British Airways mayday flight described experiencing fear during the event.",
-          "sourceQuote": "Passenger on British Airways mayday flight describes fear and shout of 'I don't want to die'",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9iMU5kWmU5cmFCMUU0bWt3a1JkNk5uQ0p1NldEZW53QnFsa2xudnZ0N3k1bHpTQWE1STRDXzFyR21RbktSZnExY1lxY09pQkdNeEVyUmtPVkY0ZkQt?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [],
-        "airlines": [
-          "British Airways"
-        ],
-        "aircraft_models": [
-          "A320"
-        ],
-        "airports": [
-          "London Heathrow"
-        ],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-1438-3",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "'Very Violent Manoeuvre': British Airways Passenger Describes A320 Stall Warning Scare",
-          "url": "https://simpleflying.com/british-airways-captain-intervened-first-officer-stall/",
-          "publishedUtc": "2026-08-01T13:19Z",
-          "summary": "The captain reportedly intervened while on approach to London Heathrow.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/101-british-airways-airbus-a320-airlinephoto-_-shutterstock.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "title": "Passenger on British Airways mayday flight describes fear and shout of 'I don't want to die'",
-          "summary": "Passenger on British Airways mayday flight describes fear and shout of 'I don't want to die' &nbsp;&nbsp; BBC",
-          "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9iMU5kWmU5cmFCMUU0bWt3a1JkNk5uQ0p1NldEZW53QnFsa2xudnZ0N3k1bHpTQWE1STRDXzFyR21RbktSZnExY1lxY09pQkdNeEVyUmtPVkY0ZkQt?oc=5",
-          "source": "BBC",
-          "companion": true,
-          "publishedUtc": "2026-07-31T12:19Z"
-        }
-      ],
-      "updateCandidate": false,
       "archiveContext": {
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
