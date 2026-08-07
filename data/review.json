@@ -1,18 +1,18 @@
 [
   {
-    "id": "g-20260807-0354-2",
-    "queuedUtc": "2026-08-07T03:55Z",
+    "id": "g-20260807-0718-3",
+    "queuedUtc": "2026-08-07T07:18Z",
     "approve": false,
     "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Major corporate takeover transaction and financial claim requiring editorial review.",
+    "decisionReason": "Major financial takeover transaction valuing easyJet at £5.7 billion requires human review under guidelines for large financial claims and acquisitions.",
     "riskFlags": [
       "financial_or_order_claim"
     ],
     "facts": [
       {
         "factId": "F1",
-        "claim": "Apollo Global Management agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion.",
-        "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion",
+        "claim": "Apollo Global Management has agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion).",
+        "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion)",
         "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -20,8 +20,8 @@
       },
       {
         "factId": "F2",
-        "claim": "Eagle Bidco Ltd will acquire each easyJet share for £7.15 in cash.",
-        "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd",
+        "claim": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, matching the price Apollo indicated on July 10, 2026.",
+        "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management, matching the price Apollo indicated when it outflanked Castlelake on July 10, 2026 .",
         "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -29,7 +29,7 @@
       },
       {
         "factId": "F3",
-        "claim": "The Haji-Ioannou family concert party irrevocably committed to vote for the scheme across about 15.31% of issued capital.",
+        "claim": "The Haji-Ioannou family concert party has irrevocably undertaken to vote for the scheme across 116,061,871 shares, representing about 15.31% of issued capital.",
         "sourceQuote": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
         "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
         "evidenceScope": "source",
@@ -38,8 +38,26 @@
       },
       {
         "factId": "F4",
-        "claim": "Apollo committed to no changes to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland.",
+        "claim": "Apollo has committed to no change in the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland.",
         "sourceQuote": "Apollo has committed to no change to the location or functions of easyJet’s UK headquarters or its air operator certificates in the UK, Austria and Switzerland.",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Completion of the acquisition requires shareholder approval, court sanction, aviation license clearances, and regulatory approvals, with completion expected by the end of the first quarter of 2027.",
+        "sourceQuote": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK. The scheme document is due within 28 days, with completion expected by the end of the first quarter of 2027.",
+        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Evercore advised the board that the cash terms are fair and reasonable, and easyJet directors intend to recommend the scheme unanimously.",
+        "sourceQuote": "Evercore advised the board that the cash terms are fair and reasonable, and the directors intend to recommend the scheme unanimously.",
         "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -48,35 +66,41 @@
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "Major corporate takeover transaction and financial claim requiring editorial review.",
+      "decisionReason": "Major financial takeover transaction valuing easyJet at £5.7 billion requires human review under guidelines for large financial claims and acquisitions.",
       "cat": "biz",
       "zh": {
-        "title": "阿波羅全球管理同意以57億英鎊收購易捷航空",
-        "summary": "阿波羅全球管理已同意對易捷航空進行推薦現金收購，該航空公司估值約為57億英鎊。每股易捷航空股份將由Eagle Bidco Ltd以7.15英鎊現金收購。創辦人家族表示將投票贊成該方案，阿波羅亦承諾不變更其英國總部或相關航空營運人許可證。",
+        "title": "阿波羅管理同意以57億英鎊收購易捷航空",
+        "summary": "阿波羅全球管理公司已同意以大約57億英鎊收購易捷航空，每股現金價格為7.15英鎊。該交易將透過法院批准的計畫安排進行，易捷航空董事會打算一致推薦此方案。哈吉-約安努家族一致行動方已承諾投票支持，交易預計於2027年第一季末前完成。",
         "body": [
-          "阿波羅全球管理（Apollo Global Management）已同意對易捷航空（easyJet）進行推薦現金收購，該收購案對該航空公司的估值約為57億英鎊。依據交易條款，每股易捷航空股份將由Eagle Bidco Ltd以7.15英鎊現金收購。",
-          "由Stelios、Clelia與Polys Haji-Ioannou等人組成的創辦人家族集團已不可撤銷地承諾，就其持有的約15.31%已發行股本投票贊成該方案。此外，阿波羅承諾不會變更易捷航空位於英國的總部位置或功能，亦不變更其在英國、奧地利與瑞士的航空營運人許可證。"
+          "美國私募股權公司阿波羅全球管理公司（Apollo Global Management）已同意以大約57億英鎊（約合76億美元）的建議現金併購案收購易捷航空（easyJet）。根據公布的交易條款，每股易捷航空股票將由Eagle Bidco Ltd以7.15英鎊現金收購，該公司是由阿波羅資本管理公司旗下基金間接持有的澤西島註冊公司。",
+          "此併購案將透過2006年《公司法》第26條規定的法院批准計畫安排（scheme of arrangement）來實施。易捷航空董事會在接獲財務顧問Evercore的意見後表示，現金收購條款公平合理，董事會成員打算一致推薦股東投票贊成該計畫安排。",
+          "創辦人家族方面，由Sir Stelios、Clelia與Polys Haji-Ioannou以及easyGroup Holdings與easyGroup Ltd組成的哈吉-約安努家族（Haji-Ioannou）一致行動方，已不可撤銷地承諾就其持有的116,061,871股（約占已發行股本的15.31%）投票贊成該計畫安排。此外，持有427,767股（約占0.06%）的易捷航空董事也已做出投票承諾。",
+          "為符合歐盟航空公司所有權與控制權法規，交易設計了特定股權結構。阿波羅預計Topco將由展期股東持有45.1%至49.9%、歐盟信託持有最高5%，阿波羅基金持有不超過49.9%。相關章程亦包含加權投票、喪失表決權以及移除非歐盟籍董事等機制。",
+          "阿波羅已承諾，不會改變易捷航空英國總部的地點或職能，亦不會改變其在英國、奧地利與瑞士的航空營運人許可證（AOC）。該交易仍需取得股東批准、法院裁准、航空許可審查、多國合併控制與外國直接投資批准，預計交易將於2027年第一季末前完成。"
         ]
       },
       "en": {
-        "title": "Apollo Agrees £5.7 Billion Cash Acquisition of easyJet",
-        "summary": "Apollo Global Management has agreed to a recommended cash acquisition of easyJet that values the airline at approximately £5.7 billion ($7.6 billion). Under the terms of the deal, Eagle Bidco Ltd will acquire each easyJet share for £7.15 in cash. The Haji-Ioannou family concert party, holding about 15.31% of the issued share capital, has irrevocably committed to vote in favor of the scheme. Additionally, Apollo has committed to making no changes to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland.",
+        "title": "Apollo Agrees £5.7 Billion Cash Takeover of easyJet",
+        "summary": "Apollo Global Management has agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion). Under the terms of the agreement, shareholders will receive £7.15 per share in cash via a court-approved scheme of arrangement. The board of directors of easyJet intends to unanimously recommend the offer following advice from Evercore that the terms are fair and reasonable. The Haji-Ioannou family concert party, holding approximately 15.31% of issued capital, has irrevocably committed to vote in favor of the scheme. The transaction remains subject to regulatory and shareholder approvals, with completion expected by the end of the first quarter of 2027.",
         "body": [
-          "Apollo Global Management has agreed to a recommended cash acquisition of easyJet, valuing the European airline at approximately £5.7 billion. Under the agreed terms of the transaction, each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd.",
-          "The Haji-Ioannou family concert party, holding approximately 15.31% of easyJet's issued share capital, has irrevocably undertaken to vote in favor of the scheme. In addition, Apollo has committed to making no changes to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland."
+          "Apollo Global Management has agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion). Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management. The acquisition price matches the figure Apollo indicated on July 10, 2026, following the decision by competing bidder Castlelake to refrain from making a bid.",
+          "The transaction will be implemented by a court-approved scheme of arrangement under Part 26 of the Companies Act 2006. Following advice from Evercore stating that the cash terms are fair and reasonable, the board of directors of easyJet intends to recommend the scheme unanimously to the airline’s shareholders.",
+          "The Haji-Ioannou family concert party—comprising Sir Stelios, Clelia, and Polys Haji-Ioannou along with entities including easyGroup Holdings and easyGroup Ltd—has irrevocably undertaken to vote for the scheme across 116,061,871 shares, amounting to approximately 15.31% of easyJet’s issued capital. Company directors holding 427,767 shares, representing about 0.06%, have also committed their shares in support of the transaction.",
+          "To maintain compliance with European Union airline ownership and control rules, the deal includes an ownership framework where Apollo expects Topco to be held by rollover shareholders at between 45.1% and 49.9%, an EU trust at up to 5%, and Apollo funds at no more than 49.9%. Provisions include weighted voting, disenfranchisement, and mechanisms to remove non-EU directors.",
+          "Apollo has committed to making no change to the location or functions of easyJet’s UK headquarters or its air operator certificates in the UK, Austria, and Switzerland. Completion remains subject to shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany, and the UK, and foreign direct investment approvals, with completion targeted by the end of the first quarter of 2027."
         ]
       },
       "flash": {
-        "zh": "阿波羅全球管理同意以57億英鎊收購易捷航空。",
-        "en": "Apollo agrees to £5.7 billion cash acquisition of easyJet.",
+        "zh": "阿波羅全球管理同意以57億英鎊現金收購易捷航空",
+        "en": "Apollo Global Management agrees £5.7 billion takeover of easyJet",
         "hot": false
       },
       "incident": null,
       "facts": [
         {
           "factId": "F1",
-          "claim": "Apollo Global Management agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion.",
-          "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion",
+          "claim": "Apollo Global Management has agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion).",
+          "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion)",
           "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -84,8 +108,8 @@
         },
         {
           "factId": "F2",
-          "claim": "Eagle Bidco Ltd will acquire each easyJet share for £7.15 in cash.",
-          "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd",
+          "claim": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, matching the price Apollo indicated on July 10, 2026.",
+          "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management, matching the price Apollo indicated when it outflanked Castlelake on July 10, 2026 .",
           "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -93,7 +117,7 @@
         },
         {
           "factId": "F3",
-          "claim": "The Haji-Ioannou family concert party irrevocably committed to vote for the scheme across about 15.31% of issued capital.",
+          "claim": "The Haji-Ioannou family concert party has irrevocably undertaken to vote for the scheme across 116,061,871 shares, representing about 15.31% of issued capital.",
           "sourceQuote": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
           "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
           "evidenceScope": "source",
@@ -102,8 +126,26 @@
         },
         {
           "factId": "F4",
-          "claim": "Apollo committed to no changes to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland.",
+          "claim": "Apollo has committed to no change in the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland.",
           "sourceQuote": "Apollo has committed to no change to the location or functions of easyJet’s UK headquarters or its air operator certificates in the UK, Austria and Switzerland.",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Completion of the acquisition requires shareholder approval, court sanction, aviation license clearances, and regulatory approvals, with completion expected by the end of the first quarter of 2027.",
+          "sourceQuote": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK. The scheme document is due within 28 days, with completion expected by the end of the first quarter of 2027.",
+          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Evercore advised the board that the cash terms are fair and reasonable, and easyJet directors intend to recommend the scheme unanimously.",
+          "sourceQuote": "Evercore advised the board that the cash terms are fair and reasonable, and the directors intend to recommend the scheme unanimously.",
           "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -117,16 +159,19 @@
         "F1",
         "F2",
         "F3",
-        "F4"
+        "F5",
+        "F6"
       ],
       "entities": {
         "organizations": [
           "Apollo Global Management",
+          "easyJet",
           "Eagle Bidco Ltd",
           "Apollo Capital Management",
           "easyGroup Holdings",
           "easyGroup Ltd",
-          "Evercore"
+          "Evercore",
+          "Castlelake"
         ],
         "airlines": [
           "easyJet"
@@ -134,10 +179,10 @@
         "aircraft_models": [],
         "airports": [],
         "locations": [
+          "Jersey",
           "UK",
           "Austria",
           "Switzerland",
-          "Jersey",
           "Egypt",
           "Germany",
           "France",
@@ -148,8 +193,11 @@
         "flight_numbers": [],
         "registration_numbers": [],
         "event_dates": [
-          "2026-08-06",
-          "2026-08-07"
+          "August 6, 2026",
+          "July 10, 2026",
+          "June 10, 2025",
+          "February 27, 2026",
+          "first quarter of 2027"
         ]
       },
       "eventStatus": "planned",
@@ -159,7 +207,7 @@
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260807-0354-2",
+      "id": "g-20260807-0718-3",
       "primarySource": "AeroTime",
       "items": [
         {
@@ -209,67 +257,29 @@
     }
   },
   {
-    "id": "g-20260807-0354-7",
-    "queuedUtc": "2026-08-07T03:55Z",
+    "id": "g-20260807-0718-4",
+    "queuedUtc": "2026-08-07T07:18Z",
     "approve": false,
-    "writer": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-    "decisionReason": "Safety event with a fatal crash, ongoing NTSB/FAA investigation, and multiple agencies involved, requiring human review.",
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves an air traffic control (ATC) outage grounding flights across the Midwest, requiring human review under mandatory safety and operational risk protocols.",
     "riskFlags": [
-      "casualties_or_injuries",
-      "investigation",
-      "accident_or_serious_incident"
+      "unconfirmed_or_developing"
     ],
     "facts": [
       {
         "factId": "F1",
-        "claim": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending more than five hours circling west of the city of Bend.",
-        "sourceQuote": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending more than five hours circling west of the city of Bend.",
-        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "claim": "Flight operations at Minneapolis-St. Paul have resumed following an air traffic control outage that grounded flights across the Midwest.",
+        "sourceQuote": "Minneapolis-St. Paul Operations Resume After ATC Outage Grounds Flights Across The Midwest",
+        "sourceUrl": "https://simpleflying.com/minneapolis-st-paul-operations-resume-atc-outage-grounds-flights-midwest/",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
       },
       {
         "factId": "F2",
-        "claim": "Steven Nicholas Charlton took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026.",
-        "sourceQuote": "Steven Nicholas Charlton, 48, took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026",
-        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Steven Nicholas Charlton had been indicted earlier that day on five felony counts of first-degree invasion of personal privacy.",
-        "sourceQuote": "Charlton had been indicted earlier that day on five felony counts of first-degree invasion of personal privacy",
-        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The aircraft was a 2025 Cirrus SR22T, registration N625LK.",
-        "sourceQuote": "The aircraft was a 2025 Cirrus SR22T, registration N625LK.",
-        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "The aircraft remained airborne for just over five hours before crashing at 18:46.",
-        "sourceQuote": "The aircraft remained airborne for just over five hours before crashing at 18:46.",
-        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Steven Nicholas Charlton was the only person aboard and died in the crash.",
-        "sourceQuote": "Charlton was the only person aboard and died in the crash.",
-        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "claim": "Air travel in the Twin Cities is getting back to normal.",
+        "sourceQuote": "Air travel gets back to normal in the Twin Cities.",
+        "sourceUrl": "https://simpleflying.com/minneapolis-st-paul-operations-resume-atc-outage-grounds-flights-midwest/",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
@@ -277,105 +287,45 @@
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "Safety event with a fatal crash, ongoing NTSB/FAA investigation, and multiple agencies involved, requiring human review.",
-      "cat": "safety",
+      "decisionReason": "The report involves an air traffic control (ATC) outage grounding flights across the Midwest, requiring human review under mandatory safety and operational risk protocols.",
+      "cat": "ops",
       "zh": {
-        "title": "俄勒岡駕駛故意墜機五小時空中後死亡於事",
-        "summary": "俄勒岡駕駛於8月4日13:30從本德機場起飛飛行超過五小時後於18:46在偏遠林間迫降僅一人在機上死亡無其他傷亡與財產損失當局認定為故意行為正在調查根據俄勒岡州警長辦公室說法此事發生在本德附近的密林中警方與聯邦機構聯合行動",
+        "title": "明尼阿波利斯聖保羅機場在空管故障停飛後恢復運作",
+        "summary": "根據 Simple Flying 報導，美國中西部區域先前受到航空交通管制故障影響，導致多處航班遭到暫時停飛。目前明尼阿波利斯-聖保羅航空樞紐的地面與空中營運已重新恢復，雙城地區的航空旅運活動也正逐漸回歸正常運作狀態，航班起降已陸續恢復運作。",
         "body": [
-          "8月4日當地時間13:30，俄勒岡州本德機場起飛的Cirrus SR22T在起飛後約五小時空中飛行，隨後於18:46在偏遠林間迫降，導致駕駛Steven Nicholas Charlton死亡，機上僅一人在案。",
-          "當局表示，駕駛故意將飛機迫降，相關機構包括德斯楚特斯縣警長辦公室、聯邦法務部、聯邦航空管理局（FAA）以及多個地方救援組織，展開大規模應急響應。",
-          "NTSB與FAA正在調查航空事故的細節，調查人員呼籲目擊者及在本德機場與駕駛交談的人士與機構聯繫，以獲取更多資訊。",
-          "法院記錄顯示，駕駛早在當天上午已因五項第一級侵犯隱私罪名被起訴，這表明其可能具有惡意行為的先前背景。",
-          "目前尚未公布駕駛與家人或執法人員之間的通訊細節，調查仍在進行中，相關機構尚未公佈最終結論。"
+          "據 Simple Flying 報導，位於美國中西部的明尼阿波利斯-聖保羅地區，航班營運現已全面重新恢復。先前當地因發生航空交通管制系統故障事件，導致整個美中西部區域的航班遭到大量停飛，影響該區域的航班起降與空中交通運輸狀況。",
+          "隨著航空交通管制相關問題獲得改善與排除，雙城地區的空中旅運活動已逐步回歸正常運作狀態。明尼阿波利斯-聖保羅的航空航線營運亦隨著系統修復與航班重新恢復起降，重新回到常態性的營運秩序。"
         ]
       },
       "en": {
-        "title": "Oregon pilot deliberately crashed Cirrus SR22T after five-hour flight",
-        "summary": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending more than five hours circling west of the city of Bend. Steven Nicholas Charlton, 48, took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026. He was the only person aboard and died in the crash, with no other injuries or property damage reported. The aircraft, registration N625LK, was operated by So Fly Aviation LLC. The FAA and NTSB are investigating the incident. No details have been released about his communications with family or law enforcement during the flight. The investigation is still ongoing.",
+        "title": "Minneapolis-St. Paul Flight Operations Resume Following Midwest ATC Outage",
+        "summary": "Flight operations at Minneapolis-St. Paul have resumed following an air traffic control outage that previously grounded flights across the Midwest region. According to reporting from Simple Flying, air travel in the Twin Cities is getting back to normal as regional transport activities recover from the disruption. The resumption of flights at Minneapolis-St. Paul marks a recovery from the air traffic control failure that had affected air travel throughout the Midwest, allowing flight services to return to normal conditions.",
         "body": [
-          "On August 4, 2026, at approximately 13:30 local time, a Cirrus SR22T took off from Bend Municipal Airport in Oregon and remained airborne for just over five hours.",
-          "The aircraft, registration N625LK, was operated by So Fly Aviation LLC and was piloted by 48‑year‑old Steven Nicholas Charlton, who was the sole occupant.",
-          "At 18:46 the plane crashed in a remote wooded area west of Bend, resulting in the pilot’s death, with no injuries to others and no property damage reported on the ground.",
-          "The National Transportation Safety Board and the FAA have launched an investigation into the incident, while investigators are seeking anyone who witnessed the flight or spoke with the pilot at the airport to come forward.",
-          "No details have been released about his communications with family or law enforcement during the flight, and the investigation is still ongoing."
+          "Flight operations at Minneapolis-St. Paul have resumed after an air traffic control outage grounded flights across the Midwest region, according to reporting from Simple Flying. The system outage had impacted regional aviation transport, causing grounded flights and disruptions for air travel throughout the affected Midwest area.",
+          "Following the restoration of flight operations after the air traffic control outage, air travel in the Twin Cities area is getting back to normal. Operational conditions at Minneapolis-St. Paul are progressively stabilizing as flight services resume and air transport across the region returns to standard operating status."
         ]
       },
       "flash": {
-        "zh": "俄勒岡駕駛墜機致死",
-        "en": "Oregon pilot crashes Cirrus, dies",
-        "hot": true
+        "zh": "明尼阿波利斯-聖保羅班機於空管故障後恢復運作",
+        "en": "Minneapolis-St. Paul flights resume following Midwest ATC outage",
+        "hot": false
       },
-      "incident": {
-        "date": "2026-08-04",
-        "sev": "acc",
-        "aircraft": "Cirrus SR22T",
-        "operator": "Steven Nicholas Charlton",
-        "phase": {
-          "zh": "調查中",
-          "en": "open"
-        },
-        "location": {
-          "zh": "俄勒岡本德附近的密林地區",
-          "en": "remote wooded area west of Bend"
-        },
-        "desc": {
-          "zh": "駕駛故意迫降導致死亡",
-          "en": "pilot deliberately crashed aircraft resulting in death"
-        },
-        "status": "open"
-      },
+      "incident": null,
       "facts": [
         {
           "factId": "F1",
-          "claim": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending more than five hours circling west of the city of Bend.",
-          "sourceQuote": "Authorities in Oregon say a pilot deliberately crashed a Cirrus SR22T in a remote wooded area after spending more than five hours circling west of the city of Bend.",
-          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "claim": "Flight operations at Minneapolis-St. Paul have resumed following an air traffic control outage that grounded flights across the Midwest.",
+          "sourceQuote": "Minneapolis-St. Paul Operations Resume After ATC Outage Grounds Flights Across The Midwest",
+          "sourceUrl": "https://simpleflying.com/minneapolis-st-paul-operations-resume-atc-outage-grounds-flights-midwest/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F2",
-          "claim": "Steven Nicholas Charlton took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026.",
-          "sourceQuote": "Steven Nicholas Charlton, 48, took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026",
-          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Steven Nicholas Charlton had been indicted earlier that day on five felony counts of first-degree invasion of personal privacy.",
-          "sourceQuote": "Charlton had been indicted earlier that day on five felony counts of first-degree invasion of personal privacy",
-          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The aircraft was a 2025 Cirrus SR22T, registration N625LK.",
-          "sourceQuote": "The aircraft was a 2025 Cirrus SR22T, registration N625LK.",
-          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "The aircraft remained airborne for just over five hours before crashing at 18:46.",
-          "sourceQuote": "The aircraft remained airborne for just over five hours before crashing at 18:46.",
-          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Steven Nicholas Charlton was the only person aboard and died in the crash.",
-          "sourceQuote": "Charlton was the only person aboard and died in the crash.",
-          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "claim": "Air travel in the Twin Cities is getting back to normal.",
+          "sourceQuote": "Air travel gets back to normal in the Twin Cities.",
+          "sourceUrl": "https://simpleflying.com/minneapolis-st-paul-operations-resume-atc-outage-grounds-flights-midwest/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
@@ -385,20 +335,426 @@
         "F1"
       ],
       "summarySupportedBy": [
-        "F1"
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Simple Flying"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Minneapolis-St. Paul",
+          "Midwest",
+          "Twin Cities"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0718-4",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Minneapolis-St. Paul Operations Resume After ATC Outage Grounds Flights Across The Midwest",
+          "url": "https://simpleflying.com/minneapolis-st-paul-operations-resume-atc-outage-grounds-flights-midwest/",
+          "publishedUtc": "2026-08-07T06:19Z",
+          "summary": "Air travel gets back to normal in the Twin Cities.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/ground-operations-at-minneapolis-saint-paul-international-the-largest-and-busiest-airport-in-the-upper-midwest.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260807-0718-7",
+    "queuedUtc": "2026-08-07T07:18Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves major corporate acquisition claims (Macquarie AirFinance) and fleet expansion projections exceeding 1,000 aircraft, requiring human review under financial/order claim rules.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Dubai Aerospace Enterprise operates two main business lines: aircraft leasing, which accounts for about 85% of its business, and airframe heavy maintenance.",
+        "sourceQuote": "The leasing business today is, I would say, about 85% of our business, and the engineering business is the remainder of that.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Dubai Aerospace Enterprise currently has a fleet of about 700 aircraft and has announced an agreement to acquire Macquarie AirFinance.",
+        "sourceQuote": "On the leasing side, our fleet today is about 700 aircraft and, as you may have seen, we have announced an agreement to acquire Macquarie",
+        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Upon closing the acquisition of Macquarie AirFinance, Dubai Aerospace Enterprise's fleet will exceed 1,000 aircraft, serving customers in 80 to 85 countries.",
+        "sourceQuote": "So, when that transaction closes, our fleet will be in excess of 1000 aircraft, allowing us to serve customers in like 80-85 countries.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Dubai Aerospace Enterprise focuses its fleet on narrowbody models, one widebody product each from Boeing and Airbus, ATR72-600 aircraft, and Boeing 777 freighters.",
+        "sourceQuote": "In fact, we will focus on narrowbody and one widebody product from Boeing and Airbus each, and then two unique aircraft types",
+        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Dubai Aerospace Enterprise acquired Nordic Aviation Capital in 2025 and Macquarie AirFinance in 2026.",
+        "sourceQuote": "acquisition of two well-established players, Nordic Aviation Capital (NAC) and Macquarie AirFinance (MAF) in 2025 and 2026, respectively.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves major corporate acquisition claims (Macquarie AirFinance) and fleet expansion projections exceeding 1,000 aircraft, requiring human review under financial/order claim rules.",
+      "cat": "biz",
+      "zh": {
+        "title": "迪拜航空企業推動收購案機隊規模預計突破千架",
+        "summary": "迪拜航空企業目前擁有約700架飛機，並已宣布收購Macquarie AirFinance。交易完成後，其機隊規模將超過1000架飛機，服務範圍涵蓋約80至85個國家。該公司業務包含飛機租賃與機身重維修，機隊策略聚焦於窄體機、波音與空中巴士各一款廣體機，以及ATR72-600與波音777貨機。",
+        "body": [
+          "根據AeroTime報導，迪拜航空企業（DAE）執行長Firoz Tarapore表示，公司目前營運兩大主要業務，其中飛機租賃約佔整體業務的85%，其餘則為機身重維修工程服務。",
+          "在租賃業務方面，迪拜航空企業目前擁有約700架飛機，並已宣布收購Macquarie AirFinance的協議。待該筆交易正式完成後，其租賃機隊規模將突破1000架飛機，預計能為大約80至85個國家的客戶提供服務。",
+          "在機隊組合策略上，該公司專注於窄體機產品，以及波音與空中巴士各一款廣體機，同時重點佈局ATR72-600客機與波音777全新貨機等特殊機種。迪拜航空企業先前亦於2025年完成收購Nordic Aviation Capital。"
+        ]
+      },
+      "en": {
+        "title": "Dubai Aerospace Enterprise Fleet to Exceed 1,000 Aircraft Following Acquisition",
+        "summary": "Dubai Aerospace Enterprise currently manages a fleet of approximately 700 aircraft and has announced an agreement to acquire Macquarie AirFinance. Once the transaction closes, the lessor expects its total fleet to exceed 1,000 aircraft, enabling it to serve customers across 80 to 85 countries. Dubai Aerospace Enterprise generates around 85% of its business from aircraft leasing, with the remainder coming from airframe heavy maintenance services. The company's fleet strategy concentrates on narrowbody aircraft, one widebody model each from Boeing and Airbus, alongside ATR72-600 regional aircraft and Boeing 777 freighters.",
+        "body": [
+          "According to AeroTime, Dubai Aerospace Enterprise Chief Executive Officer Firoz Tarapore stated that the company operates two primary business lines: aircraft leasing, which accounts for roughly 85% of its business, and airframe heavy maintenance services.",
+          "On the leasing side, Dubai Aerospace Enterprise currently manages a fleet of approximately 700 aircraft and has announced an agreement to acquire Macquarie AirFinance. Upon the closing of the transaction, the lessor's fleet will exceed 1,000 aircraft, expanding its service footprint to 80 to 85 countries.",
+          "Regarding fleet strategy, the firm focuses on narrowbody aircraft and one widebody product each from Boeing and Airbus. It also maintains significant positions in specialized types, including the ATR72-600 regional aircraft and Boeing 777 freighters, following its earlier acquisition of Nordic Aviation Capital in 2025."
+        ]
+      },
+      "flash": {
+        "zh": "迪拜航空企業宣布收購案 機隊預計將突破千架",
+        "en": "Dubai Aerospace Enterprise Fleet to Exceed 1,000 Aircraft After Acquisition",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Dubai Aerospace Enterprise operates two main business lines: aircraft leasing, which accounts for about 85% of its business, and airframe heavy maintenance.",
+          "sourceQuote": "The leasing business today is, I would say, about 85% of our business, and the engineering business is the remainder of that.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Dubai Aerospace Enterprise currently has a fleet of about 700 aircraft and has announced an agreement to acquire Macquarie AirFinance.",
+          "sourceQuote": "On the leasing side, our fleet today is about 700 aircraft and, as you may have seen, we have announced an agreement to acquire Macquarie",
+          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Upon closing the acquisition of Macquarie AirFinance, Dubai Aerospace Enterprise's fleet will exceed 1,000 aircraft, serving customers in 80 to 85 countries.",
+          "sourceQuote": "So, when that transaction closes, our fleet will be in excess of 1000 aircraft, allowing us to serve customers in like 80-85 countries.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Dubai Aerospace Enterprise focuses its fleet on narrowbody models, one widebody product each from Boeing and Airbus, ATR72-600 aircraft, and Boeing 777 freighters.",
+          "sourceQuote": "In fact, we will focus on narrowbody and one widebody product from Boeing and Airbus each, and then two unique aircraft types",
+          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Dubai Aerospace Enterprise acquired Nordic Aviation Capital in 2025 and Macquarie AirFinance in 2026.",
+          "sourceQuote": "acquisition of two well-established players, Nordic Aviation Capital (NAC) and Macquarie AirFinance (MAF) in 2025 and 2026, respectively.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Dubai Aerospace Enterprise",
+          "Investment Corporation of Dubai",
+          "Nordic Aviation Capital",
+          "Macquarie AirFinance",
+          "IATA",
+          "AeroTime"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Boeing",
+          "Airbus",
+          "ATR72-600",
+          "B777 freighter"
+        ],
+        "airports": [],
+        "locations": [
+          "Dubai",
+          "Jordan",
+          "Amman",
+          "Rio de Janeiro"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2025",
+          "2026",
+          "June 6-8, 2026"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260807-0718-7",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Dubai Aerospace Enterprise CEO on becoming a top-tier global aircraft lessor",
+          "url": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
+          "publishedUtc": "2026-08-07T03:00Z",
+          "summary": "Over the last couple of decades, the Middle East has emerged as the new “center of gravity” for… The post Dubai Aerospace Enterprise CEO on becoming a top-tier global aircraft lessor appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260807-0718-11",
+    "queuedUtc": "2026-08-07T07:18Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.5-flash",
+    "decisionReason": "This is a fatal aircraft crash under active investigation by the FAA and NTSB, and local law enforcement has determined it was an intentional act, requiring manual review under safety and investigation risk guidelines.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "casualties_or_injuries",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "奧勒岡州德舒特郡警長辦公室表示，一名飛行員於2026年8月4日蓄意駕駛西銳SR22T飛機墜毀於偏遠林區。",
+        "sourceQuote": "Detectives with the Deschutes County Sheriff’s Office have determined that the pilot of a Cirrus SR22T aircraft intentionally brought the plane down",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "駕駛Steven Nicholas Charlton於當天13時30分從本德市立機場起飛，在盤旋超過五小時後墜毀身亡。",
+        "sourceQuote": "Steven Nicholas Charlton, 48, took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Charlton在起飛當天早些時候，因涉嫌五項一級侵犯個人隱私重罪被起訴。",
+        "sourceQuote": "Charlton had been indicted earlier that day on five felony counts of first-degree invasion of personal privacy",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "飛機在高速撞擊地面時未起火，警長辦公室推測為燃油耗盡。",
+        "sourceQuote": "The sheriff’s office said the Cirrus struck the ground at high speed and did not catch fire, as it presumably had run out of fuel.",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "FAA與NTSB正對這起墜機事件的航空層面展開調查。",
+        "sourceQuote": "The FAA and National Transportation Safety Board are investigating the aviation aspects of the crash.",
+        "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "This is a fatal aircraft crash under active investigation by the FAA and NTSB, and local law enforcement has determined it was an intentional act, requiring manual review under safety and investigation risk guidelines.",
+      "cat": "safety",
+      "zh": {
+        "title": "奧勒岡州飛行員蓄意墜毀西銳飛機身亡",
+        "summary": "美國奧勒岡州德舒特郡警長辦公室表示，一名48歲飛行員於2026年8月4日駕駛西銳SR22T飛機，在空中盤旋超過五小時後，蓄意於偏遠林區墜毀身亡。該名飛行員在起飛當天早些時候，因涉嫌五項一級侵犯個人隱私重罪遭到起訴，FAA與NTSB已介入調查。",
+        "body": [
+          "美國奧勒岡州德舒特郡警長辦公室表示，一名48歲的飛行員於2026年8月4日蓄意將其駕駛的西銳SR22T單引擎飛機墜毀於一處偏遠林區。該名飛行員為唯一乘員並於墜機中身亡，地面無人受傷。",
+          "根據警方調查，該名駕駛Steven Nicholas Charlton於當天13時30分從本德市立機場起飛。在此之前，他因涉嫌五項一級侵犯個人隱私重罪遭到起訴。飛機在空中盤旋超過五小時後，於18時46分高速墜地，由於燃油耗盡並未起火。",
+          "美國聯邦航空總署（FAA）與國家運輸安全委員會（NTSB）目前已針對此起墜機事件展開航空層面的調查，警長辦公室尚未透露Charlton在飛行期間與家屬或執法人員溝通的具體細節。"
+        ]
+      },
+      "en": {
+        "title": "Oregon Pilot Deliberately Crashed Cirrus Plane After Five-Hour Flight, Authorities Say",
+        "summary": "Authorities in Oregon have determined that a 48-year-old pilot intentionally crashed a Cirrus SR22T aircraft in a remote wooded area on August 4, 2026, after flying for over five hours. The pilot, Steven Nicholas Charlton, took off from Bend Municipal Airport and circled the area before crashing at high speed. Earlier that day, Charlton had been indicted on five felony counts of personal privacy invasion. The FAA and NTSB are investigating.",
+        "body": [
+          "According to the Deschutes County Sheriff’s Office in Oregon, a 48-year-old pilot deliberately crashed a Cirrus SR22T aircraft in a remote wooded area on August 4, 2026. The pilot, identified as Steven Nicholas Charlton, was the only person on board and died in the high-speed crash. No ground injuries or property damage were reported.",
+          "Charlton took off from Bend Municipal Airport at approximately 13:30 local time. Earlier that day, he had been indicted on five felony counts of first-degree invasion of personal privacy. The aircraft remained airborne for over five hours, presumably running out of fuel before striking the ground.",
+          "Federal authorities, including the Federal Aviation Administration (FAA) and the National Transportation Safety Board (NTSB), are investigating the aviation aspects of the crash. Investigators are seeking witnesses who observed the flight or spoke with the pilot."
+        ]
+      },
+      "flash": {
+        "zh": "奧勒岡州一架西銳飛機墜毀 警長稱駕駛蓄意墜機身亡",
+        "en": "Oregon pilot deliberately crashed Cirrus aircraft after five-hour flight, sheriff says",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-04",
+        "sev": "acc",
+        "aircraft": "Cirrus SR22T",
+        "operator": "So Fly Aviation LLC",
+        "phase": {
+          "zh": "巡航",
+          "en": "cruise"
+        },
+        "location": {
+          "zh": "美國奧勒岡州德舒特郡",
+          "en": "Deschutes County, Oregon, US"
+        },
+        "desc": {
+          "zh": "駕駛在起飛當天因隱私侵犯重罪被起訴，盤旋五小時後高速墜毀於偏遠林區身亡，警方認定為蓄意墜機。",
+          "en": "The pilot, indicted on felony privacy invasion charges earlier that day, deliberately crashed the aircraft in a remote wooded area after a five-hour flight."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "奧勒岡州德舒特郡警長辦公室表示，一名飛行員於2026年8月4日蓄意駕駛西銳SR22T飛機墜毀於偏遠林區。",
+          "sourceQuote": "Detectives with the Deschutes County Sheriff’s Office have determined that the pilot of a Cirrus SR22T aircraft intentionally brought the plane down",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "駕駛Steven Nicholas Charlton於當天13時30分從本德市立機場起飛，在盤旋超過五小時後墜毀身亡。",
+          "sourceQuote": "Steven Nicholas Charlton, 48, took off from Bend Municipal Airport at about 13:30 local time on August 4, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Charlton在起飛當天早些時候，因涉嫌五項一級侵犯個人隱私重罪被起訴。",
+          "sourceQuote": "Charlton had been indicted earlier that day on five felony counts of first-degree invasion of personal privacy",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "飛機在高速撞擊地面時未起火，警長辦公室推測為燃油耗盡。",
+          "sourceQuote": "The sheriff’s office said the Cirrus struck the ground at high speed and did not catch fire, as it presumably had run out of fuel.",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "FAA與NTSB正對這起墜機事件的航空層面展開調查。",
+          "sourceQuote": "The FAA and National Transportation Safety Board are investigating the aviation aspects of the crash.",
+          "sourceUrl": "https://www.aerotime.aero/articles/oregon-pilot-deliberately-crashes-cirrus-five-hour-flight",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F5"
       ],
       "entities": {
         "organizations": [
           "Deschutes County Sheriff’s Office",
-          "federal law enforcement",
-          "Federal Aviation Administration (FAA)",
+          "Federal Aviation Administration",
+          "National Transportation Safety Board",
+          "So Fly Aviation LLC",
           "Bend Fire & Rescue",
           "Central Oregon Emergency Response Team",
           "Central Oregon Irrigation District",
-          "FBI",
-          "Air Force base at Klamath Falls",
-          "So Fly Aviation LLC",
-          "National Transportation Safety Board"
+          "FBI"
         ],
         "airlines": [],
         "aircraft_models": [
@@ -408,11 +764,9 @@
           "Bend Municipal Airport"
         ],
         "locations": [
-          "remote wooded area",
-          "city of Bend",
-          "Bend Municipal Airport",
-          "Bend",
           "Oregon",
+          "Bend",
+          "Deschutes County",
           "Klamath Falls",
           "Eugene"
         ],
@@ -421,19 +775,19 @@
           "N625LK"
         ],
         "event_dates": [
-          "2026-08-04"
+          "August 4, 2026"
         ]
       },
-      "eventStatus": "confirmed",
+      "eventStatus": "under_investigation",
       "riskFlags": [
+        "accident_or_serious_incident",
         "casualties_or_injuries",
-        "investigation",
-        "accident_or_serious_incident"
+        "investigation"
       ],
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260807-0354-7",
+      "id": "g-20260807-0718-11",
       "primarySource": "AeroTime",
       "items": [
         {
@@ -509,19 +863,19 @@
     }
   },
   {
-    "id": "g-20260807-0354-10",
-    "queuedUtc": "2026-08-07T03:55Z",
+    "id": "g-20260807-0718-12",
+    "queuedUtc": "2026-08-07T07:18Z",
     "approve": false,
-    "writer": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-    "decisionReason": "Large financial transaction involving a major order requires human review for verification and risk assessment.",
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves a major corporate acquisition valued at 5.7 billion pounds for EasyJet, triggering the financial_or_order_claim risk flag.",
     "riskFlags": [
       "financial_or_order_claim"
     ],
     "facts": [
       {
         "factId": "F1",
-        "claim": "Apollo has reached an acquisition agreement with EasyJet for 57 billion GBP (approximately 2475 billion TWD).",
-        "sourceQuote": "在競爭對手退出競標後，英國廉價航空公司易捷航空（EasyJet）今天證實，美國私募股權公司阿波羅（Apollo）已以57億英鎊（約新台幣2475億元）達成收購協議。",
+        "claim": "EasyJet confirmed that Apollo reached an agreement to acquire the airline for £5.7 billion.",
+        "sourceQuote": "英國廉價航空公司易捷航空（EasyJet）今天證實，美國私募股權公司阿波羅（Apollo）已以57億英鎊（約新台幣2475億元）達成收購協議。",
         "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -529,7 +883,7 @@
       },
       {
         "factId": "F2",
-        "claim": "EasyJet's board announced that they are happy and have reached agreement on the proposed cash acquisition terms and conditions.",
+        "claim": "EasyJet stated in an official announcement that both boards agreed to the proposed cash acquisition terms and conditions.",
         "sourceQuote": "雙方董事會很高興宣布，已就建議之現金收購條款與條件達成協議。",
         "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
         "evidenceScope": "source",
@@ -538,7 +892,7 @@
       },
       {
         "factId": "F3",
-        "claim": "The transaction is expected to be completed by the end of the first quarter of next year.",
+        "claim": "The deal is expected to complete before the end of the first quarter of next year, and EasyJet's headquarters will remain in Luton.",
         "sourceQuote": "這筆交易預計將於明年第1季結束前完成。",
         "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
         "evidenceScope": "source",
@@ -547,8 +901,8 @@
       },
       {
         "factId": "F4",
-        "claim": "EasyJet's headquarters will continue to remain in Luton.",
-        "sourceQuote": "易捷航空的總部將繼續留在盧頓鎮（Luton），此地因鄰近倫敦的機場而聞名。",
+        "claim": "Castlelake stated it had no intention to submit a higher offer after previously proposing an acquisition plan of slightly above £5 billion.",
+        "sourceQuote": "美國投資集團Castlelake表示無意提出更高的收購出價；該集團先前曾提出略高於50億英鎊的收購計畫。",
         "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -556,8 +910,8 @@
       },
       {
         "factId": "F5",
-        "claim": "Castlelake investment group said it has no intention to submit a higher acquisition bid.",
-        "sourceQuote": "今天稍早，美國投資集團Castlelake表示無意提出更高的收購出價；該集團先前曾提出略高於50億英鎊的收購計畫。",
+        "claim": "EasyJet Chief Executive Kenton Jarvis stated that Apollo's experience in aviation makes it a strong partner.",
+        "sourceQuote": "易捷航空執行長賈維士（Kenton Jarvis）今天表示，阿波羅「在航空領域的經驗使其成為強大的合作夥伴」。",
         "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -565,8 +919,8 @@
       },
       {
         "factId": "F6",
-        "claim": "EasyJet CEO Kenton Jarvis said Apollo's experience in the aviation sector makes it a strong partner.",
-        "sourceQuote": "阿波羅「在航空領域的經驗使其成為強大的合作夥伴」。",
+        "claim": "EasyJet reported that its pre-tax profit fell by 70% year-on-year to £85 million for the period from April to June.",
+        "sourceQuote": "在今年4月至6月期間，易捷航空稅前盈餘比去年同期驟降70%，跌至8500萬英鎊。",
         "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
         "evidenceScope": "source",
         "archiveEventId": null,
@@ -575,41 +929,39 @@
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "Large financial transaction involving a major order requires human review for verification and risk assessment.",
+      "decisionReason": "The story involves a major corporate acquisition valued at 5.7 billion pounds for EasyJet, triggering the financial_or_order_claim risk flag.",
       "cat": "biz",
       "zh": {
-        "title": "阿波羅以57億英鎊收購易捷航空擊退對手入主",
-        "summary": "美國私募股權公司阿波羅以57億英鎊（約新台幣2475億元）收購英國廉價航空易捷航空，交易預計於明年第一季完成，易捷航空總部仍留在盧頓，Castlelake表示無意提出更高的收購出價，易捷航空因中東戰爭推升燃油價格導致第三季淨利大幅下滑，稅前盈餘跌70%至8500萬英鎊，易捷航空總部仍留在盧頓。",
+        "title": "阿波羅以57億英鎊收購易捷航空達成協議",
+        "summary": "英國廉價航空公司易捷航空證實，已與美國私募股權公司阿波羅達成57億英鎊的建議現金收購協議。隨著競爭對手Castlelake宣布無意提出更高出價，雙方董事會已就條款達成一致。交易預估將於明年第一季結束前完成，易捷航空總部將繼續維持設於盧頓鎮。",
         "body": [
-          "阿波羅以57億英鎊（約新台幣2475億元）收購英國廉價航空易捷航空，交易已於2026年8月6日確認。",
-          "易捷航空董事會表示「雙方董事會很高興宣布，已就建議之現金收購條款與條件達成協議」, 顯示交易已獲批准。",
-          "該交易預計於明年第一季完成，符合易捷航空表示的「這筆交易預計將於明年第1季結束前完成」的說法。",
-          "易捷航空的總部將繼續留在盧頓鎮，此地因鄰近倫敦的機場而聞名。",
-          "Castlelake表示無意提出更高的收購出價，而易捷航空因中東戰爭推升燃油價格導致第三季淨利大幅下滑，稅前盈餘跌70%至8500萬英鎊，易捷航空總部仍留在盧頓。"
+          "英國廉價航空公司易捷航空正式證實，已與美國私募股權公司阿波羅達成收購協議。阿波羅將以57億英鎊（約新台幣2475億元）的金額達成這項收購案。主要經營歐洲區域航線的易捷航空透過官方聲明表示，雙方董事會非常高興地宣布，已經就建議之現金收購條款與相關條件正式達成協議。",
+          "根據易捷航空補充說明的交易時程，這筆收購案預計將於明年第一季結束前正式完成。在相關交易流程執行完畢後，易捷航空的總部將繼續留在盧頓鎮。盧頓鎮因鄰近倫敦的重要機場而聞名，該據點將持續作為易捷航空營運與管理的核心總部所在地。",
+          "在這項協議達成之前，競標對手美國投資集團Castlelake曾提出略高於50億英鎊的收購計畫。然而Castlelake表示無意提出更高的收購出價，在對手退出競標後，阿波羅順利入主易捷航空。易捷航空執行長賈維士今天對此表示，阿波羅在航空領域擁有的豐富經驗，使其成為易捷航空未來發展的強大合作夥伴。",
+          "除了收購消息之外，易捷航空近日也說明了其近期業績表現。受到中東局勢導致航空燃油價格飆升的影響，公司第三季淨利出現大幅下滑。在今年4月至6月期間，易捷航空的稅前盈餘比去年同期驟降70%，跌至8500萬英鎊。易捷航空是由企業家哈吉-約安努於1990年代創立，當時正值歐洲廉價航空業快速崛起時期。"
         ]
       },
       "en": {
-        "title": "Apollo acquires EasyJet, beating rival to take over",
-        "summary": "US private equity firm Apollo has acquired British low-cost airline EasyJet for 57 billion GBP (approximately 247.5 billion TWD), with the deal expected to close in the first quarter of next year; EasyJet's headquarters will remain in Luton, and Castlelake said it has no intention to make a higher bid, while EasyJet's Q3 profit fell sharply due to rising fuel prices from the Middle East war.",
+        "title": "Apollo Reaches Agreement to Acquire EasyJet for 5.7 Billion Pounds",
+        "summary": "British low-cost carrier EasyJet has confirmed reaching an agreement on the terms of a recommended cash acquisition by US private equity firm Apollo, valuing the airline at 5.7 billion pounds. The deal follows rival investment group Castlelake confirming it would not submit a higher bid after previously offering over 5 billion pounds. Both boards have approved the agreed terms and conditions for the cash offer. The transaction is projected to close before the end of the first quarter of next year, and EasyJet will maintain its headquarters at Luton.",
         "body": [
-          "Apollo has acquired British low-cost airline EasyJet for 57 billion GBP (approximately 247.5 billion TWD), with the deal confirmed on August 6, 2026.",
-          "EasyJet's board announced that they are happy and have reached agreement on the proposed cash acquisition terms and conditions, indicating the deal is approved.",
-          "The transaction is expected to be completed by the end of the first quarter of next year, as stated by EasyJet.",
-          "EasyJet's headquarters will continue to remain in Luton, known for its proximity to London's airports.",
-          "Castlelake said it has no intention to submit a higher acquisition bid, while EasyJet's net profit fell sharply in Q3 due to rising fuel prices from the Middle East war, with pre-tax profit dropping 70% to 85 million GBP."
+          "British low-cost carrier EasyJet has officially confirmed that US private equity firm Apollo has reached an agreement to acquire the airline for 5.7 billion pounds. EasyJet, which primarily operates routes across Europe, announced in a formal statement that the boards of both companies were pleased to confirm an agreement on the terms and conditions of the recommended cash acquisition.",
+          "According to details released by the airline, the transaction is expected to close before the end of the first quarter of next year. Following the completion of the acquisition, EasyJet will retain its corporate headquarters in Luton. The town, well known for its proximity to major London airport infrastructure, will continue to serve as the central location for the company's operations.",
+          "The agreement follows the decision by rival US investment group Castlelake to decline submitting a higher bid. Castlelake had previously presented an acquisition plan valued at slightly above 5 billion pounds before rival interest receded. Speaking on the deal, EasyJet Chief Executive Kenton Jarvis noted that Apollo's extensive background in the aviation sector makes it a strong partner for the airline.",
+          "Alongside the acquisition details, EasyJet also outlined its recent financial performance, noting that third-quarter net profit fell significantly due to surging aviation fuel costs driven by conflict in the Middle East. For the three-month period between April and June, pre-tax profit plunged 70 percent year-on-year to 85 million pounds. EasyJet was established in the 1990s by entrepreneur Stelios Haji-Ioannou during a period of rapid growth for European low-cost air travel."
         ]
       },
       "flash": {
-        "zh": "阿波羅收購易捷航空",
-        "en": "Apollo acquires EasyJet",
+        "zh": "阿波羅以57億英鎊收購易捷航空達成協議",
+        "en": "Apollo agrees to acquire EasyJet in 5.7 billion pound deal",
         "hot": false
       },
       "incident": null,
       "facts": [
         {
           "factId": "F1",
-          "claim": "Apollo has reached an acquisition agreement with EasyJet for 57 billion GBP (approximately 2475 billion TWD).",
-          "sourceQuote": "在競爭對手退出競標後，英國廉價航空公司易捷航空（EasyJet）今天證實，美國私募股權公司阿波羅（Apollo）已以57億英鎊（約新台幣2475億元）達成收購協議。",
+          "claim": "EasyJet confirmed that Apollo reached an agreement to acquire the airline for £5.7 billion.",
+          "sourceQuote": "英國廉價航空公司易捷航空（EasyJet）今天證實，美國私募股權公司阿波羅（Apollo）已以57億英鎊（約新台幣2475億元）達成收購協議。",
           "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -617,7 +969,7 @@
         },
         {
           "factId": "F2",
-          "claim": "EasyJet's board announced that they are happy and have reached agreement on the proposed cash acquisition terms and conditions.",
+          "claim": "EasyJet stated in an official announcement that both boards agreed to the proposed cash acquisition terms and conditions.",
           "sourceQuote": "雙方董事會很高興宣布，已就建議之現金收購條款與條件達成協議。",
           "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
           "evidenceScope": "source",
@@ -626,7 +978,7 @@
         },
         {
           "factId": "F3",
-          "claim": "The transaction is expected to be completed by the end of the first quarter of next year.",
+          "claim": "The deal is expected to complete before the end of the first quarter of next year, and EasyJet's headquarters will remain in Luton.",
           "sourceQuote": "這筆交易預計將於明年第1季結束前完成。",
           "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
           "evidenceScope": "source",
@@ -635,8 +987,8 @@
         },
         {
           "factId": "F4",
-          "claim": "EasyJet's headquarters will continue to remain in Luton.",
-          "sourceQuote": "易捷航空的總部將繼續留在盧頓鎮（Luton），此地因鄰近倫敦的機場而聞名。",
+          "claim": "Castlelake stated it had no intention to submit a higher offer after previously proposing an acquisition plan of slightly above £5 billion.",
+          "sourceQuote": "美國投資集團Castlelake表示無意提出更高的收購出價；該集團先前曾提出略高於50億英鎊的收購計畫。",
           "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -644,8 +996,8 @@
         },
         {
           "factId": "F5",
-          "claim": "Castlelake investment group said it has no intention to submit a higher acquisition bid.",
-          "sourceQuote": "今天稍早，美國投資集團Castlelake表示無意提出更高的收購出價；該集團先前曾提出略高於50億英鎊的收購計畫。",
+          "claim": "EasyJet Chief Executive Kenton Jarvis stated that Apollo's experience in aviation makes it a strong partner.",
+          "sourceQuote": "易捷航空執行長賈維士（Kenton Jarvis）今天表示，阿波羅「在航空領域的經驗使其成為強大的合作夥伴」。",
           "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -653,8 +1005,8 @@
         },
         {
           "factId": "F6",
-          "claim": "EasyJet CEO Kenton Jarvis said Apollo's experience in the aviation sector makes it a strong partner.",
-          "sourceQuote": "阿波羅「在航空領域的經驗使其成為強大的合作夥伴」。",
+          "claim": "EasyJet reported that its pre-tax profit fell by 70% year-on-year to £85 million for the period from April to June.",
+          "sourceQuote": "在今年4月至6月期間，易捷航空稅前盈餘比去年同期驟降70%，跌至8500萬英鎊。",
           "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -665,29 +1017,36 @@
         "F1"
       ],
       "summarySupportedBy": [
-        "F1"
+        "F1",
+        "F2",
+        "F3",
+        "F4"
       ],
       "entities": {
         "organizations": [
-          "阿波羅",
-          "易捷航空",
+          "Apollo",
           "Castlelake"
         ],
         "airlines": [
-          "易捷航空"
+          "EasyJet",
+          "Aeromexico",
+          "Sun Country Airlines",
+          "Atlas Air",
+          "Air France-KLM",
+          "Virgin Atlantic"
         ],
         "aircraft_models": [],
         "airports": [],
         "locations": [
-          "盧頓鎮",
           "倫敦",
-          "英國",
+          "盧頓鎮",
           "中東"
         ],
         "flight_numbers": [],
         "registration_numbers": [],
         "event_dates": [
-          "2026-08-06"
+          "2026-08-06",
+          "今年4月至6月"
         ]
       },
       "eventStatus": "confirmed",
@@ -697,7 +1056,7 @@
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260807-0354-10",
+      "id": "g-20260807-0718-12",
       "primarySource": "中央社 CNA 產經證券",
       "items": [
         {
@@ -708,14 +1067,6 @@
           "image": null,
           "source": "中央社 CNA 產經證券",
           "sourceKey": "cnataiwanfinance"
-        },
-        {
-          "title": "阿波羅2475億收購廉航　擊退對手入主易捷航空",
-          "summary": "阿波羅2475億收購廉航 擊退對手入主易捷航空 &nbsp;&nbsp; 經濟日報",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE4weGJuNzQ4bU1EclJwNnZ4TnRBOUpfbGdZWE1jZTdTWm42UFNxM1NQMjl3R0s0RXRPdjB5NzZuS2x6bDRPSEV4YWdCa1ItMWJLb3M3RHdTWEpfY1gzZUQ4U0ZicUVmbkVnT0ZFcGlHNjFvbHZ5bkU2UmFQWDfSAV9BVV95cUxPd25CLXVucldrSXN3OE9JVHhwS01HV09uSjlVX2Z1dHhpMU9PNk55VHdKc19SVy0xcFFlMkR4LTBqci1iLVdYenU1QUdtWlh2by1uZVZrTGI1dWVrMnZPbw?oc=5",
-          "source": "經濟日報",
-          "companion": true,
-          "publishedUtc": "2026-08-06T18:21Z"
         }
       ],
       "updateCandidate": false,
@@ -841,370 +1192,6 @@
                 "source_quote": "KLM showed off its fully-painted first A350 in a few online posts",
                 "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
                 "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260807-0354-12",
-    "queuedUtc": "2026-08-07T03:55Z",
-    "approve": false,
-    "writer": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    "decisionReason": "Story is an unconfirmed intelligence assessment about a potential future false flag drone attack; source states no decision taken and no imminent threat. High-risk developing military/political topic requiring human review.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Lithuanian military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region in a false flag operation.",
-        "sourceQuote": "Lithuanian military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region in an operation designed to obscure who launched it",
-        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Lithuania has information indicating Moscow is weighing unconventional kinetic attacks against critical infrastructure with Ukrainian-made drones as the likely means.",
-        "sourceQuote": "Lithuania has information indicating Moscow is weighing “unconventional kinetic attacks” against critical infrastructure in the region, and that Ukrainian-made drones would be the likely means",
-        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Defence Minister Kaunas described the scenario as a false flag operation using a false Ukrainian drone to weaken allied support for Kyiv, but stated no decision has been taken and no imminent threat exists.",
-        "sourceQuote": "Kaunas described the scenario as “a false flag operation, using a false Ukrainian drone.” The minister said one objective would be to weaken allied support for Kyiv, and indicated that no decision to carry out such an operation had been taken and that there was no sign of an imminent threat",
-        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Two Russian-designed Gerbera drones crossed from Belarus into Lithuania in July 2025, one overflying Vilnius before crashing in Gaižiūnai training area with an active warhead.",
-        "sourceQuote": "Two Russian-designed Gerbera airframes crossed into Lithuania from Belarus in July 2025, the second overflying Vilnius before crashing inside the Gaižiūnai training area with an active warhead aboard",
-        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "NATO Baltic Air Policing fighters engaged drones: Romanian F-16 shot down one over southern Estonia on May 19, 2026; French Rafale destroyed another over Latvia on June 8, 2026, both operating from Šiauliai Air Base.",
-        "sourceQuote": "a Romanian Air Force F-16 shot down one over southern Estonia on May 19, 2026, and a French Air and Space Force Rafale destroyed another over Latvia on June 8, 2026, both operating from Šiauliai Air Base in Lithuania",
-        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "The presidents of Estonia, Latvia and Lithuania jointly called in May 2026 for NATO to move from air policing to a full air defence mission with dedicated counter-drone capabilities.",
-        "sourceQuote": "The warning follows a joint call in May 2026 by the presidents of Estonia, Latvia and Lithuania for NATO to move from air policing to a full air defense mission with dedicated counter-drone capabilities",
-        "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Story is an unconfirmed intelligence assessment about a potential future false flag drone attack; source states no decision taken and no imminent threat. High-risk developing military/political topic requiring human review.",
-      "cat": "mil",
-      "zh": {
-        "title": "立陶宛情報指俄可能用烏製無人機發動假旗攻擊",
-        "summary": "立陶宛國防部長考納斯6日證實，軍事情報顯示俄羅斯正考慮利用烏克蘭製無人機對波羅的海地區關鍵基礎設施發動假旗攻擊，以削弱盟國對烏支持，惟強調尚無跡象顯示威脅迫在眉睫。",
-        "body": [
-          "立陶宛國防部長羅伯塔斯·考納斯8月6日向記者證實，立陶宛軍事情報顯示俄羅斯正考慮對波羅的海地區關鍵基礎設施發動「非常規動能攻擊」，並可能使用烏克蘭製無人機作為手段，以製造「假旗行動，使用假烏克蘭無人機」的假象。",
-          "考納斯指出，此類行動的目標之一將是削弱盟國對烏克蘭的支持，但他同時強調，目前尚無跡象表明俄羅斯已決定實施此類行動，也沒有迫在眉睫的威脅跡象，且未透露具體潛在目標或時間框架。",
-          "波羅的海地區近期已多次發生無人機侵入事件。2025年7月，兩架俄羅斯設計的「Gerbera」無人機從白俄羅斯進入立陶宛領空，其中一架飛越維爾紐斯後在蓋久奈訓練場墜落，機上帶有活彈頭；2026年3月，立陶宛南部又發生一起疑似跨境無人機爆炸事件。",
-          "波羅的海官員評估，其他侵入事件涉及烏克蘭長程攻擊無人機因俄羅斯干擾和欺騙而偏離航向。北約波羅的海空中警務戰機已多次攔截：2026年5月19日，羅馬尼亞空軍F-16在愛沙尼亞南部擊落一架；6月8日，法國空天軍「陣風」戰機在拉脫維亞擊落另一架，兩架戰機均從立陶宛希奧利艾空軍基地起飛。",
-          "立陶宛和拉脫維亞曾於5月20日發布空中危險警告，並短暫關閉維爾紐斯機場空域。三國總統5月曾共同呼籲北約從空中警務轉為具備專門反無人機能力的全面防空任務。",
-          "莫斯科否認計劃攻擊北約成員國，克里姆林宮此前曾將立陶宛類似警告斥為重整軍備藉口。俄方另指控波羅的海國家允許其領空被用於烏克蘭打擊，維爾紐斯與基輔均予駁回。"
-        ]
-      },
-      "en": {
-        "title": "Lithuania Warns Russia May Use Ukrainian Drones in False Flag Attack",
-        "summary": "Lithuanian Defence Minister Robertas Kaunas confirmed on August 6 that military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region in a false flag operation aimed at weakening allied support for Kyiv, though he stressed no decision has been taken and no imminent threat exists. The warning follows previous drone incursions including Russian Gerbera drones crossing from Belarus and NATO air policing fighters engaging rogue drones over Estonia and Latvia. Baltic leaders have urged NATO to upgrade its air policing mission to a full air defence mission with dedicated counter-drone capabilities.",
-        "body": [
-          "Lithuanian Defence Minister Robertas Kaunas confirmed to reporters on August 6 that Lithuanian military intelligence indicates Russia is considering \"unconventional kinetic attacks\" against critical infrastructure in the Baltic region, with Ukrainian-made drones as the likely means to stage a \"false flag operation, using a false Ukrainian drone.\"",
-          "Kaunas said one objective would be to weaken allied support for Kyiv, but stressed that no decision to carry out such an operation had been taken, there was no sign of an imminent threat, and he did not identify potential targets or a timeframe.",
-          "The Baltic region has experienced repeated drone incursions. In July 2025, two Russian-designed Gerbera airframes crossed from Belarus into Lithuania, one overflying Vilnius before crashing in the Gaižiūnai training area with an active warhead aboard; a further suspected cross-border drone exploded in southern Lithuania in March 2026.",
-          "Baltic officials have assessed other incursions as Ukrainian long-range strike drones knocked off course by Russian jamming and spoofing. NATO Baltic Air Policing fighters have engaged several: a Romanian Air Force F-16 shot down one over southern Estonia on May 19, 2026, and a French Air and Space Force Rafale destroyed another over Latvia on June 8, 2026, both operating from Šiauliai Air Base in Lithuania.",
-          "Lithuania and Latvia issued air danger alerts and briefly closed airspace over Vilnius Airport on May 20, 2026. In May, the presidents of Estonia, Latvia and Lithuania jointly called for NATO to move from air policing to a full air defence mission with dedicated counter-drone capabilities.",
-          "Moscow denies planning attacks against NATO members, and the Kremlin has previously dismissed similar Lithuanian warnings as a pretext for rearmament. Russia has separately accused the Baltic states of allowing their airspace to be used for Ukrainian strikes, an allegation Vilnius and Kyiv both reject."
-        ]
-      },
-      "flash": {
-        "zh": "立陶宛警告俄可能發動無人機假旗攻擊",
-        "en": "Lithuania Warns of Possible Russian Drone False Flag Attack",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Lithuanian military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region in a false flag operation.",
-          "sourceQuote": "Lithuanian military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region in an operation designed to obscure who launched it",
-          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Lithuania has information indicating Moscow is weighing unconventional kinetic attacks against critical infrastructure with Ukrainian-made drones as the likely means.",
-          "sourceQuote": "Lithuania has information indicating Moscow is weighing “unconventional kinetic attacks” against critical infrastructure in the region, and that Ukrainian-made drones would be the likely means",
-          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Defence Minister Kaunas described the scenario as a false flag operation using a false Ukrainian drone to weaken allied support for Kyiv, but stated no decision has been taken and no imminent threat exists.",
-          "sourceQuote": "Kaunas described the scenario as “a false flag operation, using a false Ukrainian drone.” The minister said one objective would be to weaken allied support for Kyiv, and indicated that no decision to carry out such an operation had been taken and that there was no sign of an imminent threat",
-          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Two Russian-designed Gerbera drones crossed from Belarus into Lithuania in July 2025, one overflying Vilnius before crashing in Gaižiūnai training area with an active warhead.",
-          "sourceQuote": "Two Russian-designed Gerbera airframes crossed into Lithuania from Belarus in July 2025, the second overflying Vilnius before crashing inside the Gaižiūnai training area with an active warhead aboard",
-          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "NATO Baltic Air Policing fighters engaged drones: Romanian F-16 shot down one over southern Estonia on May 19, 2026; French Rafale destroyed another over Latvia on June 8, 2026, both operating from Šiauliai Air Base.",
-          "sourceQuote": "a Romanian Air Force F-16 shot down one over southern Estonia on May 19, 2026, and a French Air and Space Force Rafale destroyed another over Latvia on June 8, 2026, both operating from Šiauliai Air Base in Lithuania",
-          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "The presidents of Estonia, Latvia and Lithuania jointly called in May 2026 for NATO to move from air policing to a full air defence mission with dedicated counter-drone capabilities.",
-          "sourceQuote": "The warning follows a joint call in May 2026 by the presidents of Estonia, Latvia and Lithuania for NATO to move from air policing to a full air defense mission with dedicated counter-drone capabilities",
-          "sourceUrl": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "立陶宛國防部",
-          "北約",
-          "羅馬尼亞空軍",
-          "法國空天軍",
-          "克里姆林宮"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Gerbera",
-          "F-16",
-          "Rafale"
-        ],
-        "airports": [
-          "維爾紐斯機場",
-          "希奧利艾空軍基地"
-        ],
-        "locations": [
-          "立陶宛",
-          "波羅的海地區",
-          "白俄羅斯",
-          "愛沙尼亞",
-          "拉脫維亞",
-          "維爾紐斯",
-          "蓋久奈訓練場",
-          "立陶宛南部"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-06",
-          "2025-07",
-          "2026-03",
-          "2026-05-19",
-          "2026-06-08",
-          "2026-05-20"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-0354-12",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Lithuania warns Russia could use Ukrainian drones in false flag attack",
-          "url": "https://www.aerotime.aero/articles/lithuania-russia-false-flag-drone-warning",
-          "publishedUtc": "2026-08-06T14:54Z",
-          "summary": "Lithuanian military intelligence believes Russia is considering using Ukrainian-made drones to strike critical infrastructure in the Baltic region… The post Lithuania warns Russia could use Ukrainian drones in false flag attack appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Lithuania says Russia could use Ukrainian drones against Baltic region",
-          "summary": "Lithuania says Russia could use Ukrainian drones against Baltic region &nbsp;&nbsp; Reuters",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQYTBhY3F3VkkyVnFWVXNjRE5FaURDVWsxVTBidVdlaEttZXBHRnNtdzBsdExYOHJFd3Y1aWJlal9LWXdTT1ZLbGxRRTBjY3BhTUVVRjZ6Y3JNeGJIYVJGQUNsem5XZURodzhNNmQ0NThDMjh5WDZaZ2lJcEZra0lXNVRNai03eVMtM0ZQblUtckxkSE1ocmpfRzVIRzB6dkV0anladGVyb18ybFhSVUlFdE1B?oc=5",
-          "source": "Reuters",
-          "companion": true,
-          "publishedUtc": "2026-08-06T11:02Z"
-        },
-        {
-          "title": "Lithuania Sees Russia Mulling False-Flag Drone Attack on Region",
-          "summary": "Lithuania Sees Russia Mulling False-Flag Drone Attack on Region &nbsp;&nbsp; Bloomberg.com",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQUZ1YW40S1cySEhWeVExSzhBVHcyc2ZpTEJyencyYTlhbk9kWW1QbmQwU05PRUdQa3Z1amg5V3c1OWF6VUZ1Qnc0SEsxaWpNUUx6UzJuMkljdlBORTJQSDFDeF90WXBDMDd6WjQtWURmMXlKejlIaldPYUw2RHJKa1BjWVp1dzNUbmxmZmZiMlFkcFpWTTRBaDl3OXl5akx4SWllMUpZZzlEbFotUi16bXhOdXg?oc=5",
-          "source": "Bloomberg.com",
-          "companion": true,
-          "publishedUtc": "2026-08-06T13:11Z"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
-            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-            "facts": [
-              {
-                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
-                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
-                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
-            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-            "facts": [
-              {
-                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
-                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
-                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
-                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
-                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
-                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
               }
             ]
           }
@@ -10105,251 +10092,6 @@
                 "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
                 "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
                 "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260801-2202-3",
-    "queuedUtc": "2026-08-01T22:02Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves an FAA regulatory proposal to establish a prohibited airspace over Trump Tower, requiring human review for regulatory action.",
-    "riskFlags": [
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The FAA has proposed adding a regulation to Title 14 of the Code of Federal Regulations to create a prohibited area necessary for the president.",
-        "sourceQuote": "The FAA has proposed adding a regulation to Title 14 of the Code of Federal Regulations, creating a prohibited area necessary for the president.",
-        "sourceUrl": "https://simpleflying.com/trump-tower-no-fly-zone/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "A permanent no-fly zone is established over Trump Tower, remaining effective even after leaving office.",
-        "sourceQuote": "Permanent No-Fly Zone Established Over Trump Tower, Effective Even After Leaving Office",
-        "sourceUrl": "https://simpleflying.com/trump-tower-no-fly-zone/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves an FAA regulatory proposal to establish a prohibited airspace over Trump Tower, requiring human review for regulatory action.",
-      "cat": "reg",
-      "zh": {
-        "title": "美國FAA擬新增法規條款 設立川普大樓總統禁飛區",
-        "summary": "根據Simple Flying報導，美國聯邦航空管理局已提議對《美國聯邦法規》第14卷新增一項法規，旨在設立總統所需的禁飛區。報導指出，相關措施涉及在川普大樓上空設立永久禁飛區，且即使在卸任後依然保持有效。",
-        "body": [
-          "根據航空媒體Simple Flying報導，美國聯邦航空管理局已正式提議針對《美國聯邦法規》第14卷進行修訂並新增相關法規條款。該項提案的核心內容旨在建立維護總統安全所必要的管制禁飛區域。",
-          "相關報導指出，該項擬議中的規定包含於川普大樓上空設立永久性禁飛區。根據相關消息，該禁飛區管制即使在卸任總統職務之後仍將繼續維持有效。",
-          "依據Simple Flying公布之訊息，主管機關劃設此一特定禁飛區域乃基於總統安全防護需求，目前已正式進入法規增訂之擬議程序。"
-        ]
-      },
-      "en": {
-        "title": "FAA Proposes New Regulation to Establish Prohibited Airspace Over Trump Tower",
-        "summary": "According to a report by Simple Flying, the Federal Aviation Administration has proposed adding a regulation to Title 14 of the Code of Federal Regulations, creating a designated prohibited area necessary for the president. The coverage states that a permanent no-fly zone has been established over Trump Tower, remaining in effect even after leaving office. The FAA regulatory proposal outlines these airspace restrictions to satisfy presidential protection requirements under federal aviation rules.",
-        "body": [
-          "According to a report by Simple Flying, the U.S. Federal Aviation Administration has proposed adding a new regulation to Title 14 of the Code of Federal Regulations. The regulatory proposal aims to establish a designated prohibited area deemed necessary for the president.",
-          "The report states that the measures involve establishing a permanent no-fly zone over Trump Tower. Under the proposed framework, this prohibited airspace restriction is designed to remain in effect even after leaving office.",
-          "The FAA proposal sets forth the specific regulatory basis for creating prohibited airspace to satisfy presidential security requirements as reported."
-        ]
-      },
-      "flash": {
-        "zh": "FAA擬修訂法規設立川普大樓禁飛區",
-        "en": "FAA proposes regulation establishing no-fly zone over Trump Tower",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The FAA has proposed adding a regulation to Title 14 of the Code of Federal Regulations to create a prohibited area necessary for the president.",
-          "sourceQuote": "The FAA has proposed adding a regulation to Title 14 of the Code of Federal Regulations, creating a prohibited area necessary for the president.",
-          "sourceUrl": "https://simpleflying.com/trump-tower-no-fly-zone/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "A permanent no-fly zone is established over Trump Tower, remaining effective even after leaving office.",
-          "sourceQuote": "Permanent No-Fly Zone Established Over Trump Tower, Effective Even After Leaving Office",
-          "sourceUrl": "https://simpleflying.com/trump-tower-no-fly-zone/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "FAA",
-          "Simple Flying"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Trump Tower"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-01"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260801-2202-3",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Permanent No-Fly Zone Established Over Trump Tower, Effective Even After Leaving Office",
-          "url": "https://simpleflying.com/trump-tower-no-fly-zone/",
-          "publishedUtc": "2026-08-01T21:18Z",
-          "summary": "The FAA has proposed adding a regulation to Title 14 of the Code of Federal Regulations, creating a prohibited area necessary for the president.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/plane-landing-at-laguardia-1.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-1805-faa-announces-successful-counter-drone-e",
-            "relationship_type": "regulatory_progression",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-22",
-            "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa...",
-            "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-            "facts": [
-              {
-                "claim": "FAA announced successful counter-drone efforts during FIFA World Cup 2026 with more than 700 drones seized.",
-                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026, With More Than 700 Drones Seized",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "Transportation Secretary Sean P. Duffy announced federal, state, and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
-                "source_quote": "Department of Transportation Secretary Sean P. Duffy announced that federal, state and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "The effort helped keep millions of fans safe.",
-                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "More than 700 drones were seized.",
-                "source_quote": "With More Than 700 Drones Seized",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "archive predates source by 6 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "archive predates source by 4 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 4 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
               }
             ]
           }
