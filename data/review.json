@@ -1,5 +1,318 @@
 [
   {
+    "id": "g-20260808-2236-12",
+    "queuedUtc": "2026-08-08T22:36Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Aviation safety event (drone crash) under investigation; requires manual review per policy.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A test‑configured XQ‑58 Valkyrie crashed at Dugway Proving Ground on 4 August.",
+        "sourceQuote": "Kratos confirmed to The War Zone that a test-configured Valkyrie was involved in a mishap shortly after taking off from a runway at Dugway Proving Ground on 4 August.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The flight was part of an internally funded research and development programme to add new configurations and capabilities.",
+        "sourceQuote": "the flight formed part of an internally funded research and development programme intended to add new configurations and capabilities to the aircraft.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "No one was injured and Kratos has temporarily suspended flight testing while investigating the cause.",
+        "sourceQuote": "No one was injured, and Kratos has temporarily suspended flight testing of the system while it investigates the cause.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Dugway Proving Ground confirmed a drone crashed during take‑off at around 08:00 local time.",
+        "sourceQuote": "a drone had crashed during take-off at around 08:00 local time",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Kratos' Steve Fendley acknowledged an investigation and said the company pushes the envelope across all system types.",
+        "sourceQuote": "there is an investigation and that “we push the envelope across all of our system types.”",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety event (drone crash) under investigation; requires manual review per policy.",
+      "cat": "safety",
+      "zh": {
+        "title": "Kratos XQ-58 無人機在杜格韋試飛墜毀",
+        "summary": "Kratos 確認一架測試配置的 XQ-58 Valkyrie 無人機於 8 月 4 日在猶他州杜格韋試驗場起飛後不久墜毀，屬內部研發計劃，無人員受傷，公司已暫停飛行測試並展開調查。",
+        "body": [
+          "Kratos 向 The War Zone 確認，一架測試配置的 Valkyrie 於 8 月 4 日在杜格韋試驗場跑道起飛後發生意外。",
+          "該飛行屬於公司自行資助的研發計劃，旨在為飛機增加新配置與能力。",
+          "杜格韋試驗場發言人另行證實，一架無人機於當地時間 08:00 左右在起飛階段墜毀。",
+          "Kratos 表示無人員受傷，並已暫停該系統的飛行測試，等待調查結果。",
+          "Kratos 無人系統部門總裁 Steve Fendley 指出正在調查，並稱「我們在所有系統類型上都不斷挑戰極限」。"
+        ]
+      },
+      "en": {
+        "title": "Kratos XQ-58 Valkyrie test drone crashes at Dugway Proving Ground",
+        "summary": "Kratos confirmed that a test‑configured XQ‑58 Valkyrie crashed shortly after take‑off at Dugway Proving Ground, Utah on 4 August during an internally funded research programme. No injuries were reported, and the company has suspended flight testing while an investigation is underway.",
+        "body": [
+          "Kratos told The War Zone that a test‑configured Valkyrie was involved in a mishap shortly after taking off from a runway at Dugway Proving Ground on 4 August.",
+          "The flight formed part of an internally funded research and development programme intended to add new configurations and capabilities to the aircraft.",
+          "A Dugway Proving Ground spokesperson separately confirmed that a drone had crashed during take‑off at around 08:00 local time.",
+          "No one was injured, and Kratos has temporarily suspended flight testing of the system while it investigates the cause.",
+          "Steve Fendley, President of Kratos’ Unmanned Systems Division, said there is an investigation and that “we push the envelope across all of our system types.”"
+        ]
+      },
+      "flash": {
+        "zh": "Kratos XQ-58 試飛墜毀，調查中",
+        "en": "Kratos XQ-58 test drone crashes, investigation ongoing",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-04",
+        "sev": "inc",
+        "aircraft": "XQ-58 Valkyrie",
+        "operator": "Kratos Defense",
+        "phase": {
+          "zh": "起飛階段",
+          "en": "takeoff phase"
+        },
+        "location": {
+          "zh": "美國猶他州杜格韋試驗場",
+          "en": "Dugway Proving Ground, Utah, USA"
+        },
+        "desc": {
+          "zh": "無人機在內部資助測試起飛後不久墜毀，無人員受傷",
+          "en": "Drone crashed shortly after takeoff during an internally funded test; no injuries reported"
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A test‑configured XQ‑58 Valkyrie crashed at Dugway Proving Ground on 4 August.",
+          "sourceQuote": "Kratos confirmed to The War Zone that a test-configured Valkyrie was involved in a mishap shortly after taking off from a runway at Dugway Proving Ground on 4 August.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The flight was part of an internally funded research and development programme to add new configurations and capabilities.",
+          "sourceQuote": "the flight formed part of an internally funded research and development programme intended to add new configurations and capabilities to the aircraft.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "No one was injured and Kratos has temporarily suspended flight testing while investigating the cause.",
+          "sourceQuote": "No one was injured, and Kratos has temporarily suspended flight testing of the system while it investigates the cause.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Dugway Proving Ground confirmed a drone crashed during take‑off at around 08:00 local time.",
+          "sourceQuote": "a drone had crashed during take-off at around 08:00 local time",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Kratos' Steve Fendley acknowledged an investigation and said the company pushes the envelope across all system types.",
+          "sourceQuote": "there is an investigation and that “we push the envelope across all of our system types.”",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F4"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Kratos Defense",
+          "US Army",
+          "Dugway Proving Ground",
+          "The War Zone"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "XQ-58 Valkyrie"
+        ],
+        "airports": [],
+        "locations": [
+          "Dugway Proving Ground, Utah, USA"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-04"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260808-2236-12",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "XQ-58 Valkyrie drone crashes at Dugway during Kratos-funded test programme News",
+          "url": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
+          "publishedUtc": "2026-08-06T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/01/Rendering-of-XQ-58-Valkyrie-with-landing-gear.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: airbus",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
+            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+            "facts": [
+              {
+                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
+                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              },
+              {
+                "claim": "Qantas is opting to utilize the Boeing 787-9 instead.",
+                "source_quote": "as the airline opts for Boeing 787-9.",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              },
+              {
+                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
+                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+              },
+              {
+                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
+                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-us-marine-corps-receives-359th-and-final",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: us marine corps",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "AeroTime — Bell Boeing delivers final MV-22 Osprey to US Marine Corps",
+            "source_url": "https://www.aerotime.aero/articles/us-marine-corps-final-mv-22b-osprey-delivery",
+            "facts": [
+              {
+                "claim": "The US Marine Corps received its 359th and final Bell Boeing MV-22B Osprey, completing the tiltrotor program.",
+                "source_quote": "The US Marine Corps has received its 359th and final Bell Boeing MV-22B Osprey, completing the tiltrotor’s program",
+                "source_url": "https://www.aerotime.aero/articles/us-marine-corps-final-mv-22b-osprey-delivery",
+                "source_name": "AeroTime — Bell Boeing delivers final MV-22 Osprey to US Marine Corps"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1934-airbus-delivers-237-aircraft-in-q2-maint",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: airbus",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar...",
+            "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+            "facts": [
+              {
+                "claim": "空中巴士在第二季交付237架飛機。",
+                "source_quote": "Airbus Achieves 237 Deliveries In 2nd Quarter",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              },
+              {
+                "claim": "空中巴士維持全年交付870架飛機的目標。",
+                "source_quote": "Keeps 870 Target For Full Year",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              },
+              {
+                "claim": "Simple Flying報導指出維持永續的產能提升對空中巴士達成全年870架交付目標至關重要。",
+                "source_quote": "Airbus' ability to maintain a sustainable production ramp-up will be crucial in achieving its 870-aircraft delivery target for the full year.",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260808-1936-4",
     "queuedUtc": "2026-08-08T19:36Z",
     "approve": false,
@@ -9742,358 +10055,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260805-0318-3",
-    "queuedUtc": "2026-08-05T03:18Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Large acquisition deal subject to regulatory approval; financial_or_order_claim and unconfirmed_or_developing flags require manual review.",
-    "riskFlags": [
-      "financial_or_order_claim",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Itochu plans to pay $1.95 billion for a 50 % stake in Aviation Capital Group.",
-        "sourceQuote": "Japanese trading company Itochu plans to pay $1.95 billion for a 50% stake in Aviation Capital Group, one of the world’s largest aircraft leasing companies.",
-        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Itochu will acquire half of TC Skyward Aviation US, the Tokyo Century‑owned company that controls ACG.",
-        "sourceQuote": "Itochu will acquire half of TC Skyward Aviation US, the Tokyo Century-owned company that controls California-based Aviation Capital Group, or ACG.",
-        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Tokyo Century will retain the other 50 %, placing ACG under joint ownership and management.",
-        "sourceQuote": "Tokyo Century will retain the other 50%, placing ACG under joint ownership and management by the two Japanese companies.",
-        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The deal remains subject to final agreements, regulatory approval and other closing conditions.",
-        "sourceQuote": "The deal remains subject to final agreements, regulatory approval and other closing conditions.",
-        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Itochu and Tokyo Century signed the initial agreement on 3 August 2026, expect a final agreement later in August and completion in November.",
-        "sourceQuote": "Itochu and Tokyo Century signed the initial agreement on August 3, 2026. They expect to sign a final agreement later in August and complete the transfer in November.",
-        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "ACG had 446 owned, managed and committed aircraft at end‑2025, including 278 owned, 33 managed and 135 commitments.",
-        "sourceQuote": "ACG had 446 owned, managed and committed aircraft at the end of 2025, including 278 aircraft it owned outright, 33 managed aircraft and commitments for another 135.",
-        "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Large acquisition deal subject to regulatory approval; financial_or_order_claim and unconfirmed_or_developing flags require manual review.",
-      "cat": "biz",
-      "zh": {
-        "title": "伊藤忠擬以19.5億美元收購ACG 50%股權",
-        "summary": "伊藤忠計劃斥資19.5億美元收購東京世紀旗下ACG 50%股權，雙方將共同管理；交易尚待最終協議、監管批准及其他條件，預計8月簽署最終協議、11月完成過户。ACG擁有446架自有、管理及承諾飛機，機隊以窄體為主。",
-        "body": [
-          "日本商社伊藤忠計劃以19.5億美元收購航空租賃公司Aviation Capital Group（ACG）50%股權，並將取得東京世紀旗下TC Skyward Aviation US的一半股權，該公司控制位於加州的ACG。",
-          "東京世紀將保留其餘50%股權，使ACG置於兩家日本企業的共同擁有與管理之下。",
-          "交易仍需最終協議、監管批准及其他結束條件；雙方於2026年8月3日簽署初步協議，預計8月稍晚簽署最終協議，並於11月完成股權轉移。",
-          "截至2025年底，ACG擁有、管理及承諾共446架飛機，其中自有278架、管理33架、承諾135架，機隊以窄體機型為主。"
-        ]
-      },
-      "en": {
-        "title": "Itochu to acquire 50% stake in aircraft lessor ACG for $1.95 billion",
-        "summary": "Itochu plans to pay $1.95 billion for a 50 % stake in Aviation Capital Group (ACG), acquiring half of Tokyo Century’s TC Skyward Aviation US holding that controls the California‑based lessor. Tokyo Century will retain the other half, placing ACG under joint ownership. The agreement, signed on 3 August 2026, remains subject to final contracts, regulatory approval and other closing conditions; the parties expect a final agreement later in August and completion in November. ACG held 446 owned, managed and committed aircraft at end‑2025, with a fleet dominated by narrow‑body Airbus A320neo and Boeing 737 MAX aircraft.",
-        "body": [
-          "Japanese trading house Itochu plans to pay $1.95 billion for a 50 % stake in Aviation Capital Group (ACG), acquiring half of Tokyo Century’s TC Skyward Aviation US holding that controls the California‑based lessor.",
-          "Tokyo Century will retain the other 50 %, placing ACG under joint ownership and management by the two Japanese companies.",
-          "The deal remains subject to final agreements, regulatory approval and other closing conditions. Itochu and Tokyo Century signed the initial agreement on 3 August 2026, expect to sign a final agreement later in August and complete the transfer in November.",
-          "At the end of 2025 ACG had 446 owned, managed and committed aircraft, including 278 owned outright, 33 managed and commitments for another 135, with a fleet heavily weighted toward narrow‑body Airbus A320neo and Boeing 737 MAX aircraft."
-        ]
-      },
-      "flash": {
-        "zh": "伊藤忠擬收購ACG 50%股權",
-        "en": "Itochu to buy 50% of ACG for $1.95B",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Itochu plans to pay $1.95 billion for a 50 % stake in Aviation Capital Group.",
-          "sourceQuote": "Japanese trading company Itochu plans to pay $1.95 billion for a 50% stake in Aviation Capital Group, one of the world’s largest aircraft leasing companies.",
-          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Itochu will acquire half of TC Skyward Aviation US, the Tokyo Century‑owned company that controls ACG.",
-          "sourceQuote": "Itochu will acquire half of TC Skyward Aviation US, the Tokyo Century-owned company that controls California-based Aviation Capital Group, or ACG.",
-          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Tokyo Century will retain the other 50 %, placing ACG under joint ownership and management.",
-          "sourceQuote": "Tokyo Century will retain the other 50%, placing ACG under joint ownership and management by the two Japanese companies.",
-          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The deal remains subject to final agreements, regulatory approval and other closing conditions.",
-          "sourceQuote": "The deal remains subject to final agreements, regulatory approval and other closing conditions.",
-          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Itochu and Tokyo Century signed the initial agreement on 3 August 2026, expect a final agreement later in August and completion in November.",
-          "sourceQuote": "Itochu and Tokyo Century signed the initial agreement on August 3, 2026. They expect to sign a final agreement later in August and complete the transfer in November.",
-          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "ACG had 446 owned, managed and committed aircraft at end‑2025, including 278 owned, 33 managed and 135 commitments.",
-          "sourceQuote": "ACG had 446 owned, managed and committed aircraft at the end of 2025, including 278 aircraft it owned outright, 33 managed aircraft and commitments for another 135.",
-          "sourceUrl": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F3",
-        "F4",
-        "F5",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "Itochu",
-          "Tokyo Century",
-          "Aviation Capital Group",
-          "TC Skyward Aviation US"
-        ],
-        "airlines": [
-          "United Airlines",
-          "Air France",
-          "WestJet",
-          "Wizz Air",
-          "Air India Express",
-          "LOT Polish Airlines",
-          "ITA Airways",
-          "Royal Air Maroc",
-          "T’way Air"
-        ],
-        "aircraft_models": [
-          "Airbus A320neo",
-          "Boeing 737 MAX"
-        ],
-        "airports": [],
-        "locations": [
-          "California, United States",
-          "Japan"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-03",
-          "2026-08",
-          "2026-11",
-          "2025-12-31"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260805-0318-3",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Itochu to acquire 50% of aircraft lessor ACG in $1.95B deal",
-          "url": "https://www.aerotime.aero/articles/itochu-buy-50-percent-aircraft-lessor-acg",
-          "publishedUtc": "2026-08-04T20:59Z",
-          "summary": "Japanese trading company Itochu plans to pay $1.95 billion for a 50% stake in Aviation Capital Group, one of the… The post Itochu to acquire 50% of aircraft lessor ACG in $1.95B deal appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: BOEING 737",
-              "same named core entity: boeing",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: BOEING 737",
-              "same named core entity: aerotime, westjet",
-              "archive predates source by 2 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
-            "event_date": "2026-08-02",
-            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
-            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-            "facts": [
-              {
-                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
-                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
-                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
-                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
-                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
-                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
-                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260804-1529-japan-airlines-unveils-tokyo-disneysea-2",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: BOEING 737",
-              "same named core entity: aerotime",
-              "archive predates source by 61 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 61 day(s) apart",
-            "event_date": "2026-06-04",
-            "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the...",
-            "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-            "facts": [
-              {
-                "claim": "Japan Airlines launched domestic flight operations with the JAL Jubilee Express, a themed aircraft celebrating Tokyo DisneySea's 25th anniversary, from June 4, 2026 through April 2027.",
-                "source_quote": "Japan Airlines has unveiled a specially themed aircraft celebrating Tokyo DisneySea’s 25th anniversary, with domestic flights that began on June 4, 2026, and continue through April 2027.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
-              },
-              {
-                "claim": "The JAL Jubilee Express is a Boeing 737-800 aircraft with registration JA339J, measuring 39.5 meters long and 12.5 meters high.",
-                "source_quote": "The JAL Jubilee Express is a Boeing 737-800 registered JA339J, measuring 39.5 meters in length and 12.5 meters in height, with a wingspan of 35.8 meters.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
-              },
-              {
-                "claim": "Japan Airlines and Oriental Land Co. first announced the custom-themed aircraft on April 16, 2026.",
-                "source_quote": "JAL and Oriental Land Co., the operator of Tokyo Disney Resort, first announced the aircraft on April 16, 2026, ahead of its debut.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
-              },
-              {
-                "claim": "The exterior of the aircraft is painted in Jubilee Blue and incorporates ocean-themed visuals alongside Tokyo DisneySea landmarks.",
-                "source_quote": "The aircraft’s exterior is painted in “Jubilee Blue,” the signature color of the anniversary celebration, drawing on the ocean theme that defines Tokyo DisneySea.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
-              },
-              {
-                "claim": "In-flight cabin features include special anniversary headrest covers and paper cups distributed to passengers.",
-                "source_quote": "Passengers flying on the aircraft will find special anniversary-designed headrest covers and paper cups, with three different cup designs distributed at random.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
