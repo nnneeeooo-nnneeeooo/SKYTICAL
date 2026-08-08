@@ -1,1 +1,45 @@
-[]
+[
+  {
+    "eventId": "fw-f1b05daf8b901bed",
+    "queuedUtc": "2026-08-08T23:47:26Z",
+    "notBeforeUtc": "2026-08-09T00:17:26Z",
+    "bootstrap": true,
+    "crossCheck": "secondary_unavailable",
+    "airport": {
+      "icao": "RCKH",
+      "iata": "KHH",
+      "name_zh": "高雄國際機場",
+      "name_en": "Kaohsiung International Airport"
+    },
+    "aircraft": {
+      "hex": "880c45",
+      "registration": "HS-CBE",
+      "type": "A20N",
+      "type_name": "Airbus A320neo",
+      "callsign": "AIQ234"
+    },
+    "operator": {
+      "icao": "AIQ",
+      "name": null
+    },
+    "arrival": {
+      "status": "confirmed_arrival",
+      "firstSeenUtc": "2026-08-08T22:55:58Z",
+      "confirmedUtc": "2026-08-08T23:47:26Z",
+      "basis": "位於機場地理圍欄內且 alt_baro 為 ground",
+      "observations": 2
+    },
+    "rarity": {
+      "score": 60,
+      "reasons": [
+        "營運者 AIQ 非 RCKH 常態業者 (+35)",
+        "過去 180 天無相同營運者+機型+機場紀錄 (+25)",
+        "過去 365 天此註冊號未曾抵達 RCKH (+15)",
+        "常見機型 (-15)"
+      ],
+      "watchlisted": false,
+      "combo180": 0,
+      "reg365": 0
+    }
+  }
+]
