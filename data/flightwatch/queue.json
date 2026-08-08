@@ -1,1 +1,45 @@
-[]
+[
+  {
+    "eventId": "fw-a0669712d1b75304",
+    "queuedUtc": "2026-08-08T08:04:44Z",
+    "notBeforeUtc": "2026-08-08T08:34:44Z",
+    "bootstrap": true,
+    "crossCheck": "confirmed_by_two_sources",
+    "airport": {
+      "icao": "RCTP",
+      "iata": "TPE",
+      "name_zh": "臺灣桃園國際機場",
+      "name_en": "Taiwan Taoyuan International Airport"
+    },
+    "aircraft": {
+      "hex": "71c525",
+      "registration": "HL8525",
+      "type": "A21N",
+      "type_name": "Airbus A321neo",
+      "callsign": "ABL791"
+    },
+    "operator": {
+      "icao": "ABL",
+      "name": "Air Busan"
+    },
+    "arrival": {
+      "status": "confirmed_arrival",
+      "firstSeenUtc": "2026-08-08T07:25:07Z",
+      "confirmedUtc": "2026-08-08T08:04:44Z",
+      "basis": "位於機場地理圍欄內且 alt_baro 為 ground",
+      "observations": 2
+    },
+    "rarity": {
+      "score": 60,
+      "reasons": [
+        "營運者 ABL 非 RCTP 常態業者 (+35)",
+        "過去 180 天無相同營運者+機型+機場紀錄 (+25)",
+        "過去 365 天此註冊號未曾抵達 RCTP (+15)",
+        "常見機型 (-15)"
+      ],
+      "watchlisted": false,
+      "combo180": 0,
+      "reg365": 0
+    }
+  }
+]
