@@ -1,1 +1,45 @@
-[]
+[
+  {
+    "eventId": "fw-c6b4f6c925b17657",
+    "queuedUtc": "2026-08-08T11:32:18Z",
+    "notBeforeUtc": "2026-08-08T12:02:18Z",
+    "bootstrap": true,
+    "crossCheck": "confirmed_by_primary_only",
+    "airport": {
+      "icao": "RCTP",
+      "iata": "TPE",
+      "name_zh": "臺灣桃園國際機場",
+      "name_en": "Taiwan Taoyuan International Airport"
+    },
+    "aircraft": {
+      "hex": "780740",
+      "registration": "B-8228",
+      "type": "A320",
+      "type_name": "Airbus A320",
+      "callsign": "CES5002"
+    },
+    "operator": {
+      "icao": "CES",
+      "name": "China Eastern Airlines"
+    },
+    "arrival": {
+      "status": "confirmed_arrival",
+      "firstSeenUtc": "2026-08-08T10:29:18Z",
+      "confirmedUtc": "2026-08-08T11:32:18Z",
+      "basis": "位於機場地理圍欄內且 alt_baro 為 ground",
+      "observations": 2
+    },
+    "rarity": {
+      "score": 60,
+      "reasons": [
+        "營運者 CES 非 RCTP 常態業者 (+35)",
+        "過去 180 天無相同營運者+機型+機場紀錄 (+25)",
+        "過去 365 天此註冊號未曾抵達 RCTP (+15)",
+        "常見機型 (-15)"
+      ],
+      "watchlisted": false,
+      "combo180": 0,
+      "reg365": 0
+    }
+  }
+]
