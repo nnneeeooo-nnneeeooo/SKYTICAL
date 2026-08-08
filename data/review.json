@@ -1,5 +1,135 @@
 [
   {
+    "id": "g-20260808-1438-2",
+    "queuedUtc": "2026-08-08T14:39Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves an admission of fraudulent activity and unauthorized flight access using a fake pilot ID, representing a high-risk security breach and legal investigation.",
+    "riskFlags": [
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A former flight attendant admitted to a scheme involving a fake pilot ID to obtain hundreds of free flights on three US airlines.",
+        "sourceQuote": "Ex-Flight Attendant Admits Fake Pilot ID Scheme For 'Hundreds' Of Free Flights On 3 US Airlines",
+        "sourceUrl": "https://simpleflying.com/ex-flight-attendant-fake-pilot-id-hundreds-free-flights/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The individual used a fictitious employee ID and insider knowledge of crew procedures to slip past checks at multiple airport hubs.",
+        "sourceQuote": "He used a fictitious employee ID and insider knowledge of crew procedures to slip past checks at multiple airport hubs.",
+        "sourceUrl": "https://simpleflying.com/ex-flight-attendant-fake-pilot-id-hundreds-free-flights/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report involves an admission of fraudulent activity and unauthorized flight access using a fake pilot ID, representing a high-risk security breach and legal investigation.",
+      "cat": "ops",
+      "zh": {
+        "title": "前空服員承認偽造機師身份 於美國三家航空公司搭乘數百次免費航班",
+        "summary": "根據 Simple Flying 報導，一名前空服員承認透過偽造機師身份的詐欺手段，在美國三家航空公司搭乘了數百次免費航班。該名人員利用虛構的員工身分識別碼以及對機組人員作業流程的內部瞭解，成功避開多個機場樞紐的核驗程序。",
+        "body": [
+          "根據媒體 Simple Flying 的報導，一名前航空公司空服員已承認參與了一項涉及偽造機師身分證明的詐欺計畫。該名人員透過這項計畫，成功在美國三家航空公司免費搭乘了數百次航班。",
+          "在具體作法方面，該名人員使用了虛構的員工身分識別碼，並充分利用其對機組人員相關作業流程與規範的內部瞭解，藉此順利通過並避開多個機場樞紐的現場核驗程序。",
+          "整起事件顯示，涉案者利用過往積累的機組人員內部知識與偽造的身分識別憑證，在多家航空公司的多個樞紐機場規避了相關檢查機制。"
+        ]
+      },
+      "en": {
+        "title": "Ex-Flight Attendant Admits Using Fake Pilot ID to Fly Free on Three US Airlines",
+        "summary": "A former flight attendant has admitted to operating a fraudulent scheme that utilized a fake pilot identification to obtain hundreds of free flights across three US airlines, according to reporting by Simple Flying. The individual reportedly used a fictitious employee ID along with insider knowledge of crew operational procedures to slip past verification checks at multiple airport hubs. The scheme allowed unauthorized access to commercial flights using falsified aviation credentials.",
+        "body": [
+          "According to reporting by Simple Flying, a former flight attendant has admitted to executing a scheme involving a fake pilot identification to obtain hundreds of free flights across three US airlines.",
+          "The individual utilized a fictitious employee ID and leveraged specialized insider knowledge of airline crew procedures to slip past identity verification checks at multiple airport hubs.",
+          "By combining the false employee ID credentials with familiar crew protocols, the former flight attendant bypassed security screening checks to travel without authorization across multiple airline hub locations.",
+          "The admission details how crew operational knowledge and counterfeit identification were used to circumvent verification procedures at commercial airport hubs across the three impacted US air carriers."
+        ]
+      },
+      "flash": {
+        "zh": "前空服員承認偽造機師身分免費搭乘三家美航數百航班",
+        "en": "Ex-flight attendant admits fake pilot ID scheme for free flights on 3 US airlines",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A former flight attendant admitted to a scheme involving a fake pilot ID to obtain hundreds of free flights on three US airlines.",
+          "sourceQuote": "Ex-Flight Attendant Admits Fake Pilot ID Scheme For 'Hundreds' Of Free Flights On 3 US Airlines",
+          "sourceUrl": "https://simpleflying.com/ex-flight-attendant-fake-pilot-id-hundreds-free-flights/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The individual used a fictitious employee ID and insider knowledge of crew procedures to slip past checks at multiple airport hubs.",
+          "sourceQuote": "He used a fictitious employee ID and insider knowledge of crew procedures to slip past checks at multiple airport hubs.",
+          "sourceUrl": "https://simpleflying.com/ex-flight-attendant-fake-pilot-id-hundreds-free-flights/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Simple Flying"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "US"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260808-1438-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Ex-Flight Attendant Admits Fake Pilot ID Scheme For 'Hundreds' Of Free Flights On 3 US Airlines",
+          "url": "https://simpleflying.com/ex-flight-attendant-fake-pilot-id-hundreds-free-flights/",
+          "publishedUtc": "2026-08-08T12:27Z",
+          "summary": "He used a fictitious employee ID and insider knowledge of crew procedures to slip past checks at multiple airport hubs.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/american-delta-and-united-aircraft-on-the-ground.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260808-1040-9",
     "queuedUtc": "2026-08-08T10:40Z",
     "approve": false,
@@ -10041,261 +10171,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260804-0634-2",
-    "queuedUtc": "2026-08-04T06:34Z",
-    "approve": false,
-    "writer": "openrouter:inclusionai/ling-3.0-flash:free",
-    "decisionReason": "Aviation safety event involving a 70-foot near-miss between an ANA 767-300ER and a Japan Aviation Bureau CJ4 at Tokyo Haneda; classified as a serious incident requiring human review per safety event rules.",
-    "riskFlags": [
-      "accident_or_serious_incident"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "An ANA 767-300ER on final approach to Tokyo Haneda came within 70 feet of a Japan Aviation Bureau CJ4.",
-        "sourceQuote": "ANA 767 & Japan Aviation Bureau CJ4 Come Within 70 Feet, Nearly Collide At Tokyo Haneda",
-        "sourceUrl": "https://simpleflying.com/ana-767-japan-aviation-bureau-cj4-70-feet-tokyo/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The near-miss was described as an 'extreme near-miss' for the ANA 767-300ER on final approach to Haneda.",
-        "sourceQuote": "An extreme near-miss for an ANA 767-300ER on final approach to Haneda.",
-        "sourceUrl": "https://simpleflying.com/ana-767-japan-aviation-bureau-cj4-70-feet-tokyo/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Aviation safety event involving a 70-foot near-miss between an ANA 767-300ER and a Japan Aviation Bureau CJ4 at Tokyo Haneda; classified as a serious incident requiring human review per safety event rules.",
-      "cat": "safety",
-      "zh": {
-        "title": "ANA 767與日本航空局CJ4在東京羽田機場距離僅70英尺險相撞",
-        "summary": "ANA 767-300ER在羽田機場最終進近時與日本航空局CJ4商務機相距僅約70英尺，險些發生碰撞。事件被描述為極端接近碰撞，目前尚無官方調查結果。",
-        "body": [
-          "根據Simple Flying於2026年8月4日發布的報導，一架ANA 767-300ER在東京羽田機場進行最終進近時，與一架日本航空局CJ4商務機之間的距離僅剩約70英尺，險些發生空中碰撞。該險情被描述為極端接近碰撞事件（extreme near-miss）。",
-          "目前此事件尚無官方調查機關發表聲明，事件的具體發生時間、詳細經過、責任歸屬及安全結論均未確定。Simple Flying的報導僅基於公開資訊，未提及是否已有正式調查程序啟動，需等待進一步官方資訊才能確認事件全貌。"
-        ]
-      },
-      "en": {
-        "title": "ANA 767-300ER and Japan Aviation Bureau CJ4 Come Within 70 Feet, Nearly Collide at Tokyo Haneda",
-        "summary": "An ANA 767-300ER on final approach to Tokyo Haneda came within approximately 70 feet of a Japan Aviation Bureau CJ4 business jet, in what was described as an extreme near-miss. No official investigation details have been confirmed.",
-        "body": [
-          "According to Simple Flying, an ANA 767-300ER on final approach to Tokyo Haneda came within approximately 70 feet of a Japan Aviation Bureau CJ4 business jet, narrowly avoiding a collision. The event was described as an 'extreme near-miss,' raising concerns about safety during the critical approach phase at one of the world's busiest airports.",
-          "No official authority has yet confirmed details, cause, or responsibility for the incident. The report is based solely on the Simple Flying article and has not been verified by an official source or investigation. The current status of any formal inquiry remains unclear, and further information from relevant authorities is awaited."
-        ]
-      },
-      "flash": {
-        "zh": "ANA 767與日本航空局CJ4在羽田機場險相撞",
-        "en": "ANA 767 and Japan Aviation Bureau CJ4 nearly collide at Haneda",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-04",
-        "sev": "ser",
-        "aircraft": "767-300ER",
-        "operator": "ANA",
-        "phase": {
-          "zh": "最終進近",
-          "en": "final approach"
-        },
-        "location": {
-          "zh": "東京羽田機場",
-          "en": "Tokyo Haneda"
-        },
-        "desc": {
-          "zh": "ANA 767-300ER在最終進近過程中與一架日本航空局CJ4商務機相距僅約70英尺，險些發生碰撞。",
-          "en": "An ANA 767-300ER on final approach came within approximately 70 feet of a Japan Aviation Bureau CJ4 business jet, narrowly avoiding a collision."
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "An ANA 767-300ER on final approach to Tokyo Haneda came within 70 feet of a Japan Aviation Bureau CJ4.",
-          "sourceQuote": "ANA 767 & Japan Aviation Bureau CJ4 Come Within 70 Feet, Nearly Collide At Tokyo Haneda",
-          "sourceUrl": "https://simpleflying.com/ana-767-japan-aviation-bureau-cj4-70-feet-tokyo/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The near-miss was described as an 'extreme near-miss' for the ANA 767-300ER on final approach to Haneda.",
-          "sourceQuote": "An extreme near-miss for an ANA 767-300ER on final approach to Haneda.",
-          "sourceUrl": "https://simpleflying.com/ana-767-japan-aviation-bureau-cj4-70-feet-tokyo/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Japan Aviation Bureau"
-        ],
-        "airlines": [
-          "ANA"
-        ],
-        "aircraft_models": [
-          "767-300ER",
-          "CJ4"
-        ],
-        "airports": [
-          "Tokyo Haneda"
-        ],
-        "locations": [
-          "Tokyo Haneda"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-04"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260804-0634-2",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "ANA 767 & Japan Aviation Bureau CJ4 Come Within 70 Feet, Nearly Collide At Tokyo Haneda",
-          "url": "https://simpleflying.com/ana-767-japan-aviation-bureau-cj4-70-feet-tokyo/",
-          "publishedUtc": "2026-08-04T03:43Z",
-          "summary": "An extreme near-miss for an ANA 767-300ER on final approach to Haneda.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2025/12/031-all-nippon-airways-boeing-767-_-wikipedia-jpg.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260730-0314-cessna-citation-cj3-gen3-completes-first",
-            "relationship_type": "other",
-            "relationship_evidence": [
-              "same flight number/test callsign: CJ4"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 6 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita",
-            "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-            "facts": [
-              {
-                "claim": "Textron Aviation flew the first Cessna Citation CJ3 Gen3 prototype on July 29, 2026, from Wichita Dwight D. Eisenhower National Airport, with the flight lasting nearly two hours.",
-                "source_quote": "The company announced the milestone on July 29, 2026, saying the CJ3 Gen3 took off from Wichita Dwight D. Eisenhower National Airport in Kansas for a flight lasting nearly two hours.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              },
-              {
-                "claim": "Test pilots Steve Helmer and Dave Welbrock focused primarily on evaluating cockpit software; the aircraft reached a maximum altitude of 41,000 feet and a top indicated airspeed of 278 knots.",
-                "source_quote": "Test pilots Steve Helmer and Dave Welbrock focused primarily on evaluating cockpit software. The aircraft reached a maximum altitude of 41,000 feet and a top indicated airspeed of 278 knots.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              },
-              {
-                "claim": "Textron will begin a broader flight-test campaign working toward FAA certification and entry into service.",
-                "source_quote": "Textron will now begin a broader flight-test campaign as it works toward Federal Aviation Administration (FAA) certification and entry into service.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              },
-              {
-                "claim": "The CJ3 Gen3 retains the Garmin G3000 avionics platform while adding Garmin autothrottles and Emergency Autoland.",
-                "source_quote": "The CJ3 Gen3 retains the Garmin G3000 avionics platform while adding Garmin autothrottles and Emergency Autoland.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              },
-              {
-                "claim": "The Citation CJ4 Gen3 prototype first flew in October 2024 and the Citation M2 Gen3 completed its first flight earlier in 2026, meaning all three next-generation Citation light jets are now undergoing flight testing.",
-                "source_quote": "The Citation CJ4 Gen3 prototype flew for the first time in October 2024, while the Citation M2 Gen3 completed its first flight earlier in 2026.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              },
-              {
-                "claim": "Textron introduced the CJ3 Gen3 at the 2024 NBAA Business Aviation Convention and Exhibition in Las Vegas and said the CJ3 Gen3 and M2 Gen3 are expected to enter service in 2027.",
-                "source_quote": "The company has said the CJ3 Gen3 and M2 Gen3 are expected to enter service in 2027.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0435-cessna-citation-cj3-gen3-prototype-compl",
-            "relationship_type": "other",
-            "relationship_evidence": [
-              "same flight number/test callsign: CJ4"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 6 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita",
-            "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-            "facts": [
-              {
-                "claim": "Textron Aviation flew the first Cessna Citation CJ3 Gen3 prototype on July 29, 2026, from Wichita Dwight D. Eisenhower National Airport, with the flight lasting nearly two hours.",
-                "source_quote": "The company announced the milestone on July 29, 2026, saying the CJ3 Gen3 took off from Wichita Dwight D. Eisenhower National Airport in Kansas for a flight lasting nearly two hours.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              },
-              {
-                "claim": "Test pilots Steve Helmer and Dave Welbrock focused primarily on evaluating cockpit software; the aircraft reached a maximum altitude of 41,000 feet and a top indicated airspeed of 278 knots.",
-                "source_quote": "Test pilots Steve Helmer and Dave Welbrock focused primarily on evaluating cockpit software. The aircraft reached a maximum altitude of 41,000 feet and a top indicated airspeed of 278 knots.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              },
-              {
-                "claim": "Textron will begin a broader flight-test campaign working toward FAA certification and entry into service.",
-                "source_quote": "Textron will now begin a broader flight-test campaign as it works toward Federal Aviation Administration (FAA) certification and entry into service.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              },
-              {
-                "claim": "The CJ4 Gen3 prototype first flew in October 2024 and the M2 Gen3 completed its first flight earlier in 2026, meaning all three next-generation Citation light jets are now undergoing flight testing.",
-                "source_quote": "The Citation CJ4 Gen3 prototype flew for the first time in October 2024, while the Citation M2 Gen3 completed its first flight earlier in 2026.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              },
-              {
-                "claim": "The CJ3 Gen3 retains the Garmin G3000 avionics platform while adding Garmin autothrottles and Emergency Autoland, which can take control if the pilot becomes incapacitated, select a suitable airport, communicate with ATC and land without pilot input.",
-                "source_quote": "The CJ3 Gen3 retains the Garmin G3000 avionics platform while adding Garmin autothrottles and Emergency Autoland. Emergency Autoland can take control of the aircraft if the pilot becomes incapacitated, select a suitable airport, communicate with air traffic control and land without pilot input.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              },
-              {
-                "claim": "Textron has said the CJ3 Gen3 and M2 Gen3 are expected to enter service in 2027; the aircraft seats up to 10 occupants, with maximum range of 2,040 nautical miles and maximum payload of 2,135 pounds.",
-                "source_quote": "The company has said the CJ3 Gen3 and M2 Gen3 are expected to enter service in 2027.",
-                "source_url": "https://www.aerotime.aero/articles/cessna-citation-cj3-gen3-completes-first-flight-in-wichita",
-                "source_name": "AeroTime — Cessna Citation CJ3 Gen3 completes first flight in Wichita"
-              }
-            ]
-          }
-        ]
       }
     }
   }
