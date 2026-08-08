@@ -1,5 +1,137 @@
 [
   {
+    "id": "g-20260808-1642-8",
+    "queuedUtc": "2026-08-08T16:42Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Aviation safety incident involving aircraft tyre damage during departure requires mandatory human review.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A United B738 aircraft experienced tyre damage on departure at San Francisco on August 6, 2026.",
+        "sourceQuote": "United B738 at San Francisco on Aug 6th 2026, tyre damage on departure",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5jVEFPWHM3c3ZnSXd3LUwwUkdGOVFtdHIwOENocUtublY4elFqUGpIY1c4M2ZSY3ZvVkZWX0NRemdUNEotdXA2YWlqSWRGa3gw?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety incident involving aircraft tyre damage during departure requires mandatory human review.",
+      "cat": "safety",
+      "zh": {
+        "title": "聯合航空B738客機於舊金山起飛時輪胎受損",
+        "summary": "根據 The Aviation Herald 消息，聯合航空一架 B738 客機於 2026 年 8 月 6 日在舊金山起飛階段發生輪胎受損事故。相關單位尚未公布詳細損壞狀況與事發原因，事件後續發展仍有待相關航空主管機關進一步調查與說明。",
+        "body": [
+          "根據航空新聞網站 The Aviation Herald 發布的消息，聯合航空（United）旗下的一架 B738 客機，於 2026 年 8 月 6 日在舊金山起飛期間發生輪胎受損事件。",
+          "根據目前掌握的公開資訊，該起事故發生於航機起飛階段。相關報導並未提及具體的受損細節、班機編號或是否有人員受傷，詳細的事故經過與原因仍有待後續調查。",
+          "針對此項輪胎受損事件，相關主管機關與航空公司尚未發表官方調查報告，事故的後續影響與詳細狀況仍需進一步追蹤確認。"
+        ]
+      },
+      "en": {
+        "title": "United B738 Suffers Tyre Damage on Departure at San Francisco",
+        "summary": "A United B738 aircraft experienced tyre damage during departure at San Francisco on August 6, 2026, according to information reported by The Aviation Herald. Further details regarding the safety event, including the exact circumstances surrounding the tyre damage and any potential flight disruptions, were not detailed in the initial report. Official authorities and the airline have not yet issued findings or formal comments regarding the occurrence, leaving the full background of the incident under review.",
+        "body": [
+          "A United B738 aircraft experienced tyre damage during its departure from San Francisco on August 6, 2026, according to an incident report published by the aviation news website The Aviation Herald.",
+          "The initial coverage did not provide specific technical details regarding the cause of the tyre failure, the extent of any resulting physical damage to the airframe, or whether the flight experienced operational disruptions.",
+          "Relevant civil aviation authorities and the airline operator have not issued formal statements or preliminary investigation findings. The circumstances surrounding the safety occurrence remain under active monitoring pending official updates."
+        ]
+      },
+      "flash": {
+        "zh": "聯合航空一架B738客機在舊金山起飛時輪胎受損",
+        "en": "United B738 suffers tyre damage on departure at San Francisco",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-06",
+        "sev": "inc",
+        "aircraft": "B738",
+        "operator": "United",
+        "phase": {
+          "zh": "起飛階段",
+          "en": "Departure"
+        },
+        "location": {
+          "zh": "舊金山",
+          "en": "San Francisco"
+        },
+        "desc": {
+          "zh": "航機起飛時發生輪胎受損",
+          "en": "Aircraft experienced tyre damage during departure"
+        },
+        "status": "prelim"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A United B738 aircraft experienced tyre damage on departure at San Francisco on August 6, 2026.",
+          "sourceQuote": "United B738 at San Francisco on Aug 6th 2026, tyre damage on departure",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5jVEFPWHM3c3ZnSXd3LUwwUkdGOVFtdHIwOENocUtublY4elFqUGpIY1c4M2ZSY3ZvVkZWX0NRemdUNEotdXA2YWlqSWRGa3gw?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [],
+        "airlines": [
+          "United"
+        ],
+        "aircraft_models": [
+          "B738"
+        ],
+        "airports": [],
+        "locations": [
+          "San Francisco"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "Aug 6th 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260808-1642-8",
+      "primarySource": "The Aviation Herald",
+      "items": [
+        {
+          "title": "Incident: United B738 at San Francisco on Aug 6th 2026, tyre damage on departure",
+          "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5jVEFPWHM3c3ZnSXd3LUwwUkdGOVFtdHIwOENocUtublY4elFqUGpIY1c4M2ZSY3ZvVkZWX0NRemdUNEotdXA2YWlqSWRGa3gw?oc=5",
+          "publishedUtc": "2026-08-06T07:00Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260808-1536-8",
     "queuedUtc": "2026-08-08T15:36Z",
     "approve": false,
@@ -9997,342 +10129,6 @@
                 "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
                 "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
                 "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260804-1806-9",
-    "queuedUtc": "2026-08-04T18:06Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "The story involves a major financial transaction (JPY 8.2 billion / US$55 million share buyback) and significant corporate restructuring including a full exit by Qantas Group from Jetstar Japan and a planned rebranding. The deal is binding but still pending regulatory approval, making it a developing financial/ownership event. Per rules, major financial claims and unconfirmed/developing events require human review.",
-    "riskFlags": [
-      "financial_or_order_claim",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Qantas Group and Japan Airlines signed a binding agreement announced August 4, 2026 to change Jetstar Japan's ownership through a share buyback, moving forward with a plan first floated in February 2026.",
-        "sourceQuote": "The Qantas Group and Japan Airlines (JAL) have signed a binding agreement to change who owns Jetstar Japan, moving forward with a plan first floated back in February 2026.",
-        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The deal still needs regulatory approval before it can be completed.",
-        "sourceQuote": "though the deal still needs regulatory approval before it can be completed",
-        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Development Bank of Japan will join as a new shareholder in Jetstar Japan, while Tokyo Century Corporation and JAL keep their existing stakes.",
-        "sourceQuote": "Development Bank of Japan will come in as a new shareholder in Jetstar Japan, while Tokyo Century Corporation and JAL keep their existing stakes in the airline.",
-        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Qantas Group will exit entirely, selling its 33.32% minority stake through a buyback carried out by Jetstar Japan itself, with the transition expected to wrap up by June 2027.",
-        "sourceQuote": "The Qantas Group, meanwhile, will exit entirely, selling off its 33.32% minority stake through a buyback carried out by Jetstar Japan itself. The whole transition is expected to wrap up by June 2027.",
-        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Once Qantas exits, Jetstar Japan plans to move away from the Jetstar name and rebrand under a new identity while continuing as a low-cost carrier in Japan.",
-        "sourceQuote": "Jetstar Japan plans to move away from the “Jetstar” name altogether, rebranding under a new identity as it continues operating as a low-cost carrier in Japan.",
-        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "The share buyback transaction is valued at JPY 8.2 billion (US$55 million), and Qantas Group expects a gain of roughly AU$115 million (US$75 million) outside its underlying financial results, mostly in its FY27 accounts.",
-        "sourceQuote": "The share buyback transaction is valued at JPY 8.2 billion (US$55 million).",
-        "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves a major financial transaction (JPY 8.2 billion / US$55 million share buyback) and significant corporate restructuring including a full exit by Qantas Group from Jetstar Japan and a planned rebranding. The deal is binding but still pending regulatory approval, making it a developing financial/ownership event. Per rules, major financial claims and unconfirmed/developing events require human review.",
-      "cat": "biz",
-      "zh": {
-        "title": "澳洲航空與日本航空簽署協議重組捷星日本股權",
-        "summary": "澳洲航空集團與日本航空於2026年8月4日宣布簽署具約束力協議，透過由捷星日本自身執行的股份回購交易改變股權結構。Development Bank of Japan將成為新股東，東京世紀與日本航空保留現有持股，澳洲航空將完全出脫其33.32%少數股權。交易金額約84億日圓，預計2027年6月前完成，仍待監管機關核准。",
-        "body": [
-          "澳洲航空集團與日本航空於2026年8月4日宣布，雙方已簽署一項具約束力的協議，將改變捷星日本的股權結構。此計畫最早於2026年2月提出，目前確認將透過由捷星日本自身執行的股份回購交易來進行，但交易仍需取得監管機關核准後方能完成。",
-          "在新架構下，Development Bank of Japan將成為捷星日本的新股東，而Tokyo Century Corporation與日本航空將保留其現有持股。澳洲航空集團則將完全退出，透過由捷星日本自身執行的回購出售其持有的33.32%少數股權。整項轉換預計於2027年6月前完成。",
-          "對澳洲航空集團而言，此舉可釋出資金，計畫用於重新投入其在澳洲的國內與國際航線營運，而非繼續持有日本航空公司的少數股權。此交易也使捷星日本轉向以日資為主的股權結構，由日本企業持有該航空公司股份。",
-          "澳洲航空退出後，捷星日本計畫不再使用「Jetstar」名稱，將以全新品牌身分繼續以低成本航空公司身分在日本營運。雙方表示，此交易不影響旅客現有航班的正常營運，澳洲航空與捷星往返澳洲與日本的國際航班將照常運作，與日本航空的共用班號安排也維持不變。",
-          "股份回購交易金額為84億日圓（約5,500萬美元）。對澳洲航空集團而言，預計將產生約1.15億澳幣（約7,500萬美元）的帳外收益，主要反映於其2027會計年度帳目中。在交易完成前，澳洲航空將繼續將捷星日本的損益份額計入其基礎稅前盈餘。"
-        ]
-      },
-      "en": {
-        "title": "Qantas Group and Japan Airlines Sign Binding Deal to Reshape Jetstar Japan Ownership",
-        "summary": "Qantas Group and Japan Airlines announced on August 4, 2026 that they have signed a binding agreement to restructure Jetstar Japan's ownership through a share buyback. Development Bank of Japan will join as a new shareholder, while Tokyo Century Corporation and JAL retain their existing stakes. Qantas Group will fully exit its 33.32% minority stake. The transaction is valued at JPY 8.2 billion (US$55 million) and is expected to be completed by June 2027, pending regulatory approval.",
-        "body": [
-          "Qantas Group and Japan Airlines announced on August 4, 2026 that they have signed a binding agreement to change the ownership structure of Jetstar Japan, moving forward with a plan first floated in February 2026. The deal confirms a share buyback transaction, though it still requires regulatory approval before completion.",
-          "Under the new structure, Development Bank of Japan will come in as a new shareholder in Jetstar Japan, while Tokyo Century Corporation and JAL will keep their existing stakes. Qantas Group will exit entirely, selling its 33.32% minority stake through a buyback carried out by Jetstar Japan itself. The transition is expected to wrap up by June 2027.",
-          "For Qantas Group, the move frees up capital that it plans to redirect toward its own domestic and international operations in Australia. The deal also shifts Jetstar Japan toward a more Japan-based ownership structure, with Japanese companies holding the airline's shares.",
-          "Once Qantas exits, Jetstar Japan plans to move away from the Jetstar name altogether, rebranding under a new identity while continuing to operate as a low-cost carrier in Japan. The airlines stated that existing operations for travelers remain unaffected, with Qantas and Jetstar international flights between Australia and Japan continuing as normal and codeshare arrangements with JAL unchanged.",
-          "The share buyback transaction is valued at JPY 8.2 billion (US$55 million). For Qantas Group, the deal is expected to result in a gain of roughly AU$115 million (US$75 million) in items outside its underlying financial results, with most of the impact showing up in its FY27 accounts. Until the deal is finalized, Qantas will continue to include its share of Jetstar Japan's profits or losses in its underlying pre-tax earnings."
-        ]
-      },
-      "flash": {
-        "zh": "澳洲航空將退出捷星日本股權，交易金額約84億日圓",
-        "en": "Qantas Group to exit Jetstar Japan in JPY 8.2B ownership restructuring deal",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Qantas Group and Japan Airlines signed a binding agreement announced August 4, 2026 to change Jetstar Japan's ownership through a share buyback, moving forward with a plan first floated in February 2026.",
-          "sourceQuote": "The Qantas Group and Japan Airlines (JAL) have signed a binding agreement to change who owns Jetstar Japan, moving forward with a plan first floated back in February 2026.",
-          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The deal still needs regulatory approval before it can be completed.",
-          "sourceQuote": "though the deal still needs regulatory approval before it can be completed",
-          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Development Bank of Japan will join as a new shareholder in Jetstar Japan, while Tokyo Century Corporation and JAL keep their existing stakes.",
-          "sourceQuote": "Development Bank of Japan will come in as a new shareholder in Jetstar Japan, while Tokyo Century Corporation and JAL keep their existing stakes in the airline.",
-          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Qantas Group will exit entirely, selling its 33.32% minority stake through a buyback carried out by Jetstar Japan itself, with the transition expected to wrap up by June 2027.",
-          "sourceQuote": "The Qantas Group, meanwhile, will exit entirely, selling off its 33.32% minority stake through a buyback carried out by Jetstar Japan itself. The whole transition is expected to wrap up by June 2027.",
-          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Once Qantas exits, Jetstar Japan plans to move away from the Jetstar name and rebrand under a new identity while continuing as a low-cost carrier in Japan.",
-          "sourceQuote": "Jetstar Japan plans to move away from the “Jetstar” name altogether, rebranding under a new identity as it continues operating as a low-cost carrier in Japan.",
-          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "The share buyback transaction is valued at JPY 8.2 billion (US$55 million), and Qantas Group expects a gain of roughly AU$115 million (US$75 million) outside its underlying financial results, mostly in its FY27 accounts.",
-          "sourceQuote": "The share buyback transaction is valued at JPY 8.2 billion (US$55 million).",
-          "sourceUrl": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F4"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "Qantas Group",
-          "Japan Airlines",
-          "Development Bank of Japan",
-          "Tokyo Century Corporation",
-          "Jetstar Japan"
-        ],
-        "airlines": [
-          "Qantas",
-          "Japan Airlines",
-          "Jetstar Japan"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Japan",
-          "Australia"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-04",
-          "2026-02",
-          "2027-06"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260804-1806-9",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Qantas Group, Japan Airlines sign deal to reshape Jetstar Japan ownership",
-          "url": "https://www.aerotime.aero/articles/qantas-group-japan-airlines-sign-deal-to-reshape-jetstar-japan-ownership",
-          "publishedUtc": "2026-08-04T12:07Z",
-          "summary": "The Qantas Group and Japan Airlines (JAL) have signed a binding agreement to change who owns Jetstar Japan,… The post Qantas Group, Japan Airlines sign deal to reshape Jetstar Japan ownership appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
-            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-            "facts": [
-              {
-                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
-                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
-                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
-            "relationship_type": "other",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
-            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-            "facts": [
-              {
-                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
-                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
-                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
-                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
-                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
-                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
               }
             ]
           }
