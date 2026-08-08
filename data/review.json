@@ -1,5 +1,177 @@
 [
   {
+    "id": "g-20260808-2335-3",
+    "queuedUtc": "2026-08-08T23:35Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "The current event is a maritime security incident — a vessel reportedly attacked by a missile/airstrike in the Strait of Hormuz — which qualifies under AVWIRE's maritime transport scope. However, the primary source (Reuters) provides only a headline with no full text, and the two secondary sources (CNBC, The Guardian) likewise provide only headlines/summaries. The core facts are drawn from verbatim headline text, but details are limited and the event is developing with conflicting descriptions (missile vs. airstrike). This warrants manual review under the unconfirmed_or_developing and conflicting_information risk flags.",
+    "riskFlags": [
+      "unconfirmed_or_developing",
+      "conflicting_information"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The UAE said Iran attacked an ADNOC vessel with a missile in the Strait of Hormuz.",
+        "sourceQuote": "UAE says Iran attacked ADNOC vessel with missile in Strait of Hormuz",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQajV4Uk9FTWd2WFJTWWVSZS1pdkl4OGFERFdzeExaYy1udkYxWGdXYWxRdHUwd2kwLVRtRTdhRkdVdUZuNXZ3U09EQUR3OXUwUzVtZmZZeWZkWmlkTThUTDBYNVBjbE9IWVBQZnhhcHBfcFVnZTc0NG1uMk54dElXNkhzQUFZR3VkRW5QZkthVjdfdTJOaXR6YWxiZmtfdzJROGg3bWFuOVhuV2ZkTDNLNkg4d18?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Iran set conditions for opening the Strait of Hormuz after the UAE said one of its ships was targeted by an airstrike.",
+        "sourceQuote": "Iran sets conditions for opening Strait of Hormuz after UAE says one of its ships was targeted by airstrike",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOHg1SGZ0bkhEeVc2QWNHb3ZDbUJsUVRLMHZhdUxxV1dZQXlZM2lkYTJmSDZVQlFmV1EtRHFHV294N1pkbERPZXk0dHJSbWJtOUFwTHBwRERWY2xFMVJMZ1ZIM1ZLelR6QTJkUXVZVEFsRktVVUJObWhvRlQzU0t0aFc1Y2xraDkxV2J4MDQ2c3pVMm_SAZgBQVVfeXFMTVBpTHl0QWRxSHFON2dTREVVTmNjUGVRSW0yMWo1ZFpVMjlDdXhPdTJwUGl4Y1pOSHIzT3NjTHU4UXd6Vk80X3hEODF4V29tQnc1dGg2NENoZmU2ME1aUWVmZzRhZEVxbzRCQlc5RFRxX1NHTF9jdFdHczVrVXBiWXlPM0lNR19udzMtRURBYXFnSnVVWk16SFY?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Iran issued tough demands to reopen the Strait of Hormuz, and a deal was still out of reach.",
+        "sourceQuote": "Iran issues tough demands to reopen strait of Hormuz as deal still out of reach",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPaUNTWVFLLXhncGRwVGVoMGZSWXhtMlNFZmFFVG5jcUV4MmhSVDA2UEJoS1NWSkotQUJwSEZEZVBjbGRWVEItY1VJR0RReVA0aXpXNlNNc1c4RkZTN1pDazh4eVc5cXlFSUR6em41VzFKdGd6SURhLUY2RFhlSlBfNTZsUjM3QkdEaXJTUEg0RXp4c2w0cVdGLTRnQzRaa0Q2c3RFdHczRDIyMnltYUVybUpjLTRRcW9wTUxwano0NllJRW1VcVE?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The current event is a maritime security incident — a vessel reportedly attacked by a missile/airstrike in the Strait of Hormuz — which qualifies under AVWIRE's maritime transport scope. However, the primary source (Reuters) provides only a headline with no full text, and the two secondary sources (CNBC, The Guardian) likewise provide only headlines/summaries. The core facts are drawn from verbatim headline text, but details are limited and the event is developing with conflicting descriptions (missile vs. airstrike). This warrants manual review under the unconfirmed_or_developing and conflicting_information risk flags.",
+      "cat": "safety",
+      "zh": {
+        "title": "阿聯稱伊朗於荷莫茲海峽以飛彈攻擊ADNOC船隻",
+        "summary": "路透社報導，阿聯表示伊朗在荷莫茲海峽以飛彈攻擊一艘ADNOC船隻；CNBC與衛報後續報導指出，伊朗對重開荷莫茲海峽提出條件，相關協議仍未能達成。攻擊描述在不同報導間存在差異。",
+        "body": [
+          "路透社於2026年8月8日報導，阿聯表示伊朗在荷莫茲海峽以飛彈攻擊一艘ADNOC船隻。",
+          "CNBC同日報導指出，伊朗對重新開放荷莫茲海峽設定條件，此前阿聯稱其一艘船隻遭到空襲攻擊。",
+          "衛報亦於同日報導，伊朗提出強硬要求以重開荷莫茲海峽，而相關協議仍未能達成。",
+          "各報導對攻擊方式的描述存在差異：路透社稱飛彈攻擊，CNBC則稱空襲。此一不一致尚無法從現有來源釐清。",
+          "本事件為發展中的海事安全事件，涉及荷莫茲海峽的航運安全，後續發展有待進一步確認。"
+        ]
+      },
+      "en": {
+        "title": "UAE says Iran attacked ADNOC vessel with missile in Strait of Hormuz",
+        "summary": "Reuters reported that the UAE said Iran attacked an ADNOC vessel with a missile in the Strait of Hormuz. CNBC and The Guardian subsequently reported that Iran set conditions for reopening the strait, with a deal still out of reach. Descriptions of the attack differ across reports.",
+        "body": [
+          "Reuters reported on August 8, 2026, that the UAE said Iran attacked an ADNOC vessel with a missile in the Strait of Hormuz.",
+          "CNBC reported the same day that Iran set conditions for opening the Strait of Hormuz after the UAE said one of its ships was targeted by an airstrike.",
+          "The Guardian also reported on August 8 that Iran issued tough demands to reopen the Strait of Hormuz, with a deal still out of reach.",
+          "The reports differ on the nature of the attack: Reuters described a missile attack while CNBC referred to an airstrike. This discrepancy cannot be resolved from the available sources.",
+          "This is a developing maritime security incident involving shipping safety in the Strait of Hormuz, and further developments await confirmation."
+        ]
+      },
+      "flash": {
+        "zh": "阿聯稱伊朗於荷莫茲海峽以飛彈攻擊ADNOC船隻",
+        "en": "UAE says Iran attacked ADNOC vessel with missile in Strait of Hormuz",
+        "hot": true
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The UAE said Iran attacked an ADNOC vessel with a missile in the Strait of Hormuz.",
+          "sourceQuote": "UAE says Iran attacked ADNOC vessel with missile in Strait of Hormuz",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQajV4Uk9FTWd2WFJTWWVSZS1pdkl4OGFERFdzeExaYy1udkYxWGdXYWxRdHUwd2kwLVRtRTdhRkdVdUZuNXZ3U09EQUR3OXUwUzVtZmZZeWZkWmlkTThUTDBYNVBjbE9IWVBQZnhhcHBfcFVnZTc0NG1uMk54dElXNkhzQUFZR3VkRW5QZkthVjdfdTJOaXR6YWxiZmtfdzJROGg3bWFuOVhuV2ZkTDNLNkg4d18?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Iran set conditions for opening the Strait of Hormuz after the UAE said one of its ships was targeted by an airstrike.",
+          "sourceQuote": "Iran sets conditions for opening Strait of Hormuz after UAE says one of its ships was targeted by airstrike",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOHg1SGZ0bkhEeVc2QWNHb3ZDbUJsUVRLMHZhdUxxV1dZQXlZM2lkYTJmSDZVQlFmV1EtRHFHV294N1pkbERPZXk0dHJSbWJtOUFwTHBwRERWY2xFMVJMZ1ZIM1ZLelR6QTJkUXVZVEFsRktVVUJObWhvRlQzU0t0aFc1Y2xraDkxV2J4MDQ2c3pVMm_SAZgBQVVfeXFMTVBpTHl0QWRxSHFON2dTREVVTmNjUGVRSW0yMWo1ZFpVMjl",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Iran issued tough demands to reopen the Strait of Hormuz, and a deal was still out of reach.",
+          "sourceQuote": "Iran issues tough demands to reopen strait of Hormuz as deal still out of reach",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPaUNTWVFLLXhncGRwVGVoMGZSWXhtMlNFZmFFVG5jcUV4MmhSVDA2UEJoS1NWSkotQUJwSEZEZVBjbGRWVEItY1VJR0RReVA0aXpXNlNNc1c4RkZTN1pDazh4eVc5cXlFSUR6em41VzFKdGd6SURhLUY2RFhlSlBfNTZsUjM3QkdEaXJTUEg0RXp4c2w0cVdGLTRnQzRaa0Q2c3RFdHczRDIyMnltYUVybUpjLTRRcW9wTUxwano0Nll",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "ADNOC",
+          "Iran",
+          "UAE"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Strait of Hormuz"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-08"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "unconfirmed_or_developing",
+        "conflicting_information"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260808-2335-3",
+      "primarySource": "Reuters",
+      "items": [
+        {
+          "title": "UAE says Iran attacked ADNOC vessel with missile in Strait of Hormuz",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQajV4Uk9FTWd2WFJTWWVSZS1pdkl4OGFERFdzeExaYy1udkYxWGdXYWxRdHUwd2kwLVRtRTdhRkdVdUZuNXZ3U09EQUR3OXUwUzVtZmZZeWZkWmlkTThUTDBYNVBjbE9IWVBQZnhhcHBfcFVnZTc0NG1uMk54dElXNkhzQUFZR3VkRW5QZkthVjdfdTJOaXR6YWxiZmtfdzJROGg3bWFuOVhuV2ZkTDNLNkg4d18?oc=5",
+          "publishedUtc": "2026-08-08T11:46Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "Iran sets conditions for opening Strait of Hormuz after UAE says one of its ships was targeted by airstrike",
+          "summary": "Iran sets conditions for opening Strait of Hormuz after UAE says one of its ships was targeted by airstrike &nbsp;&nbsp; CNBC",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOHg1SGZ0bkhEeVc2QWNHb3ZDbUJsUVRLMHZhdUxxV1dZQXlZM2lkYTJmSDZVQlFmV1EtRHFHV294N1pkbERPZXk0dHJSbWJtOUFwTHBwRERWY2xFMVJMZ1ZIM1ZLelR6QTJkUXVZVEFsRktVVUJObWhvRlQzU0t0aFc1Y2xraDkxV2J4MDQ2c3pVMm_SAZgBQVVfeXFMTVBpTHl0QWRxSHFON2dTREVVTmNjUGVRSW0yMWo1ZFpVMjlDdXhPdTJwUGl4Y1pOSHIzT3NjTHU4UXd6Vk80X3hEODF4V29tQnc1dGg2NENoZmU2ME1aUWVmZzRhZEVxbzRCQlc5RFRxX1NHTF9jdFdHczVrVXBiWXlPM0lNR19udzMtRURBYXFnSnVVWk16SFY?oc=5",
+          "source": "CNBC",
+          "companion": true,
+          "publishedUtc": "2026-08-08T13:06Z"
+        },
+        {
+          "title": "Iran issues tough demands to reopen strait of Hormuz as deal still out of reach",
+          "summary": "Iran issues tough demands to reopen strait of Hormuz as deal still out of reach &nbsp;&nbsp; The Guardian",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPaUNTWVFLLXhncGRwVGVoMGZSWXhtMlNFZmFFVG5jcUV4MmhSVDA2UEJoS1NWSkotQUJwSEZEZVBjbGRWVEItY1VJR0RReVA0aXpXNlNNc1c4RkZTN1pDazh4eVc5cXlFSUR6em41VzFKdGd6SURhLUY2RFhlSlBfNTZsUjM3QkdEaXJTUEg0RXp4c2w0cVdGLTRnQzRaa0Q2c3RFdHczRDIyMnltYUVybUpjLTRRcW9wTUxwano0NllJRW1VcVE?oc=5",
+          "source": "The Guardian",
+          "companion": true,
+          "publishedUtc": "2026-08-08T21:51Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260808-2236-12",
     "queuedUtc": "2026-08-08T22:36Z",
     "approve": false,
@@ -9933,128 +10105,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260805-0942-7",
-    "queuedUtc": "2026-08-05T09:42Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The news involves a regulatory proposal by the FAA, triggering the regulatory_action risk flag.",
-    "riskFlags": [
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The FAA has proposed removing a 64-item medical kit checklist and allowing airlines to cover nine emergencies.",
-        "sourceQuote": "FAA Proposes Ditching 64-Item Medical Kit Checklist, Letting Airlines Cover 9 Emergencies",
-        "sourceUrl": "https://simpleflying.com/faa-proposes-ditching-64-item-medical-kit-checklist-airlines/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The regulatory proposal represents a major change coming to airline medical policy.",
-        "sourceQuote": "A closer look at a major change coming to airline medical policy.",
-        "sourceUrl": "https://simpleflying.com/faa-proposes-ditching-64-item-medical-kit-checklist-airlines/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The news involves a regulatory proposal by the FAA, triggering the regulatory_action risk flag.",
-      "cat": "reg",
-      "zh": {
-        "title": "美國FAA擬廢除64項醫療箱清單改由航空公司涵蓋9種急症",
-        "summary": "美國聯邦航空管理局提議取消現行包含64個項目的航空公司急救醫療箱清單，並擬改為許可航空公司針對9種特定緊急醫療狀況進行應對配置。這項提議代表著航空醫療政策預期迎來的重大變更。",
-        "body": [
-          "根據 Simple Flying 報導，美國聯邦航空管理局（FAA）已提出一項新規範建議，擬取消現有涵蓋64個項目的急救醫療箱檢查清單。根據該項提議，未來將改由航空公司針對9種緊急醫療狀況進行相應的醫療裝備與應對處置。",
-          "這項政策提案標誌著航空公司醫療政策預期迎來的重大改變。相關醫療箱清單調整與防範急症範圍之變更，目前屬於監管機構提出之政策建議階段，後續執行細節與過渡措施仍有待相關單位實施與確認。"
-        ]
-      },
-      "en": {
-        "title": "FAA Proposes Replacing 64-Item Medical Checklist with 9-Emergency Rule",
-        "summary": "The Federal Aviation Administration has proposed a regulatory change to remove the mandatory 64-item medical kit checklist currently required onboard commercial aircraft. Under the new proposed framework, airlines would instead be expected to cover nine specific in-flight medical emergencies. According to industry reports, this regulatory proposal highlights an upcoming shift in airline medical policy standards. The proposed guidelines remain subject to official administrative procedures and review prior to any final implementation across commercial air carriers.",
-        "body": [
-          "The Federal Aviation Administration (FAA) has proposed eliminating its existing 64-item medical kit checklist, according to a report by Simple Flying. Under the proposed regulatory framework, airlines would be permitted to cover nine designated medical emergencies rather than adhering to the current checklist requirements.",
-          "The proposal marks a notable regulatory adjustment coming to broader airline medical policy and onboard emergency protocols. Because the measure is currently a proposed regulatory change, the updated standards remain subject to further administrative review and industry feedback prior to any final implementation across commercial air carriers."
-        ]
-      },
-      "flash": {
-        "zh": "FAA擬廢除64項醫療箱清單改為涵蓋9種急症",
-        "en": "FAA proposes ditching 64-item medical checklist for 9-emergency rule.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The FAA has proposed removing a 64-item medical kit checklist and allowing airlines to cover nine emergencies.",
-          "sourceQuote": "FAA Proposes Ditching 64-Item Medical Kit Checklist, Letting Airlines Cover 9 Emergencies",
-          "sourceUrl": "https://simpleflying.com/faa-proposes-ditching-64-item-medical-kit-checklist-airlines/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The regulatory proposal represents a major change coming to airline medical policy.",
-          "sourceQuote": "A closer look at a major change coming to airline medical policy.",
-          "sourceUrl": "https://simpleflying.com/faa-proposes-ditching-64-item-medical-kit-checklist-airlines/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "FAA"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260805-0942-7",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "FAA Proposes Ditching 64-Item Medical Kit Checklist, Letting Airlines Cover 9 Emergencies",
-          "url": "https://simpleflying.com/faa-proposes-ditching-64-item-medical-kit-checklist-airlines/",
-          "publishedUtc": "2026-08-05T07:05Z",
-          "summary": "A closer look at a major change coming to airline medical policy.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/frontier-airlines-airbus-a320neo-n440fr-arrival-into-runway-18r-at-dfw-international.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
