@@ -1,5 +1,422 @@
 [
   {
+    "id": "g-20260808-1849-3",
+    "queuedUtc": "2026-08-08T18:49Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves an unconfirmed military drone origin ('likely from Ukraine') exploding in Bulgarian airspace near critical infrastructure, requiring human editorial review.",
+    "riskFlags": [
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Bulgaria reported that a drone exploded in its airspace and caused no damage.",
+        "sourceQuote": "Bulgaria says drone explodes in its airspace, no damage",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOLTJIOVhtd1lJa0ptSGkzVHF4SVNjT0xLVWVJZmdqVXhGQTJNWGF2UklzYldoUmJHNVQ1QnRsbUJLM3k4OUs0aG5mbk43czBEOUE2bDAyakI4a25YWFo0YjdObVRyVGJGeWFaUGZ1eDBhSkVaOUN3NXNDX09pVmFtbmZlSC1ZWWt0eDFVVDNVVWtEbmx3czcwV3E4c0k?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "A drone likely originating from Ukraine exploded in Bulgaria near a gas pipeline close to Romania's border.",
+        "sourceQuote": "A drone likely from Ukraine explodes in Bulgaria near a gas pipeline close to Romania's border",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdHdjMXFHeUM1REdDNnZONnZ6WU1DM190YkFIYlUxUEt5ckJWdVNQZU1ramthb01ZSFAyYUpoNzgxN1BYZFU3ams5WmZrRVU5OUlVcGlCbVNPLXNQRkc1Vk1Cay1yYnd3ak9rM3F4RTg5UzNwZE5wa2tqVnJMNC1ncFh5aFZzTVNXRzB1VkRVUWFYUDZUdVpKczlzaVZpUXpGbFVPX01xclI?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report involves an unconfirmed military drone origin ('likely from Ukraine') exploding in Bulgarian airspace near critical infrastructure, requiring human editorial review.",
+      "cat": "mil",
+      "zh": {
+        "title": "保加利亞稱無人機於領空爆炸靠近天然氣管道",
+        "summary": "保加利亞方面表示，一架無人機於該國領空內發生爆炸，相關事件並未造成任何損害。根據消息指出，該架可能來自烏克蘭的無人機，是在保加利亞境內靠近羅馬尼亞邊境的一處天然氣管道附近發生爆炸事故。",
+        "body": [
+          "保加利亞官方發表聲明表示，一架無人機於該國領空內發生爆炸。保加利亞方面確認，這起發生於領空內的無人機爆炸事件並未造成任何設施或地面損害。",
+          "根據媒體報導，該架無人機被認為可能來自烏克蘭。無人機爆炸的地點位於保加利亞境內，距離羅馬尼亞邊境不遠，且緊鄰一處天然氣管道設施附近。",
+          "保加利亞當局指出，無人機在領空內爆炸後並未引發進一步損害。有關該架無人機的具體來源與相關背景，目前報導指其可能來自烏克蘭，事發地點鄰近兩國邊境與天然氣管道。"
+        ]
+      },
+      "en": {
+        "title": "Bulgaria Reports Drone Explosion in Airspace Near Gas Pipeline",
+        "summary": "Bulgaria reported that a drone exploded within its airspace, resulting in no damage. According to available reports, the drone, which likely came from Ukraine, exploded in Bulgaria near a gas pipeline close to the border with Romania. Authorities from Bulgaria confirmed that the explosion inside its airspace caused no physical damage. The aerial event took place near a gas pipeline facility situated close to the Romanian border, according to statement disclosures.",
+        "body": [
+          "Bulgaria announced that a drone exploded within its airspace, causing no physical damage. Officials from Bulgaria confirmed that the aerial detonation took place in its sovereign airspace without inflicting damage on the ground.",
+          "Reports indicated that the drone likely originated from Ukraine. The device exploded in Bulgarian territory near a gas pipeline facility situated in close proximity to the border with Romania.",
+          "Bulgarian authorities confirmed that no infrastructure damage or ground damage occurred following the explosion inside its airspace. The site of the incident was located near a gas pipeline close to the Romanian border."
+        ]
+      },
+      "flash": {
+        "zh": "保加利亞稱一架無人機於其領空爆炸且未造成損害",
+        "en": "Bulgaria reports drone explosion in airspace near Romanian border",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Bulgaria reported that a drone exploded in its airspace and caused no damage.",
+          "sourceQuote": "Bulgaria says drone explodes in its airspace, no damage",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOLTJIOVhtd1lJa0ptSGkzVHF4SVNjT0xLVWVJZmdqVXhGQTJNWGF2UklzYldoUmJHNVQ1QnRsbUJLM3k4OUs0aG5mbk43czBEOUE2bDAyakI4a25YWFo0YjdObVRyVGJGeWFaUGZ1eDBhSkVaOUN3NXNDX09pVmFtbmZlSC1ZWWt0eDFVVDNVVWtEbmx3czcwV3E4c0k?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "A drone likely originating from Ukraine exploded in Bulgaria near a gas pipeline close to Romania's border.",
+          "sourceQuote": "A drone likely from Ukraine explodes in Bulgaria near a gas pipeline close to Romania's border",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdHdjMXFHeUM1REdDNnZONnZ6WU1DM3_tbAHbU1PKyrBVuSPeMkjkaoMYHP2aJh7817PXdU7jk9ZfkEU99IUpiBmSO-sPFG5VMBk-rbwwjk3qxE89S3pdNpkkjVrL4-gpXyhVsMSWG0uVDUQaXP6TuZJs9siViQzFlUO_MqrR?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Bulgaria",
+          "Ukraine",
+          "Romania"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-08"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260808-1849-3",
+      "primarySource": "Reuters",
+      "items": [
+        {
+          "title": "Bulgaria says drone explodes in its airspace, no damage",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOLTJIOVhtd1lJa0ptSGkzVHF4SVNjT0xLVWVJZmdqVXhGQTJNWGF2UklzYldoUmJHNVQ1QnRsbUJLM3k4OUs0aG5mbk43czBEOUE2bDAyakI4a25YWFo0YjdObVRyVGJGeWFaUGZ1eDBhSkVaOUN3NXNDX09pVmFtbmZlSC1ZWWt0eDFVVDNVVWtEbmx3czcwV3E4c0k?oc=5",
+          "publishedUtc": "2026-08-08T15:33Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "A drone likely from Ukraine explodes in Bulgaria near a gas pipeline close to Romania's border",
+          "summary": "A drone likely from Ukraine explodes in Bulgaria near a gas pipeline close to Romania's border &nbsp;&nbsp; AP News",
+          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdHdjMXFHeUM1REdDNnZONnZ6WU1DM190YkFIYlUxUEt5ckJWdVNQZU1ramthb01ZSFAyYUpoNzgxN1BYZFU3ams5WmZrRVU5OUlVcGlCbVNPLXNQRkc1Vk1Cay1yYnd3ak9rM3F4RTg5UzNwZE5wa2tqVnJMNC1ncFh5aFZzTVNXRzB1VkRVUWFYUDZUdVpKczlzaVZpUXpGbFVPX01xclI?oc=5",
+          "source": "AP News",
+          "companion": true,
+          "publishedUtc": "2026-08-08T15:39Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260808-1849-7",
+    "queuedUtc": "2026-08-08T18:49Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Contract awards involving major financial claims ($615 million and $4.16 billion) require manual review under safety/risk editorial policy.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "On August 4, 2026, the US Space Force awarded $615 million in contracts to Rocket Lab, Systems & Technology Research, and a third undisclosed company for SB-AMTI technologies.",
+        "sourceQuote": "awarded $615 million in contracts to Rocket Lab, Systems & Technology Research (STR) and a third company whose identity has not been disclosed for “operational security” reasons. The awards will mature Space-Based Air Moving Target Indicator (SB-AMTI) technologies",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Rocket Lab secured $397 million, representing the largest share of the $615 million awards.",
+        "sourceQuote": "Rocket Lab confirmed it had secured $397 million, accounting for the largest share of the awards.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The SB-AMTI technology aims to enable the tracking of airborne targets across the globe from orbit.",
+        "sourceQuote": "track airborne targets across the globe, including in contested airspace",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The Space Force previously selected SpaceX under a contract worth up to $4.16 billion to develop the initial operational architecture for the SB-AMTI programme.",
+        "sourceQuote": "selected SpaceX to develop the initial operational architecture for the SB-AMTI programme under a contract worth up to $4.16 billion.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "In July, SpaceX was awarded two launch task orders worth $1.6 billion for 18 Falcon 9 launches to support the satellite portfolio by the end of 2027.",
+        "sourceQuote": "award of two National Security Space Launch Phase 3 Lane 1 task orders worth $1.6 billion, under which SpaceX will provide 18 Falcon 9 launches from Vandenberg Space Force Base to place satellites supporting the wider SBST portfolio into orbit by the end of 2027.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Contract awards involving major financial claims ($615 million and $4.16 billion) require manual review under safety/risk editorial policy.",
+      "cat": "mil",
+      "zh": {
+        "title": "美國太空軍頒發6.15億美元合約推動軌道追蹤軍機計畫",
+        "summary": "美國太空軍於2026年8月4日頒發總額6.15億美元合約，資助Rocket Lab與Systems & Technology Research等業者發展天基空中移動目標指示（SB-AMTI）技術。該計畫旨在建立可從軌道追蹤全球軍用飛機的監視網路，其中Rocket Lab獲得3.97億美元合約金額。",
+        "body": [
+          "美國太空軍於2026年8月4日頒發總額6.15億美元的合約，受資助對象包括Rocket Lab、Systems & Technology Research（STR）以及第三家基於營運安全考量未公開名稱的公司。此項採購旨在推動天基空中移動目標指示（SB-AMTI）技術成熟發展，計畫從軌道對全球空中目標進行追蹤。其中，Rocket Lab證實已獲得3.97億美元，佔本次合約總額的最大份額。",
+          "除了最新頒發的合約外，美國太空軍先前已挑選SpaceX負責開發SB-AMTI計畫的初始營運架構，該合約價值最高達41.6億美元。此外，太空軍亦於7月向SpaceX頒發價值16億美元的兩項任務訂單，預計於2027年底前透過18次Falcon 9火箭發射任務將支援衛星送入軌道。"
+        ]
+      },
+      "en": {
+        "title": "US Space Force Awards $615M Contracts to Track Military Aircraft from Orbit",
+        "summary": "On August 4, 2026, the U.S. Space Force awarded $615 million in contracts to Rocket Lab, Systems & Technology Research, and an undisclosed third company to mature Space-Based Air Moving Target Indicator (SB-AMTI) technologies. Rocket Lab secured $397 million of the awards, representing the largest portion. The SB-AMTI initiative aims to track airborne targets globally from orbit. Additionally, SpaceX was previously selected under a contract worth up to $4.16 billion to develop the initial operational architecture for the program, along with $1.6 billion in task orders for satellite launches.",
+        "body": [
+          "On August 4, 2026, the U.S. Space Force awarded $615 million in contracts to Rocket Lab, Systems & Technology Research (STR), and an undisclosed third company. The awards aim to mature Space-Based Air Moving Target Indicator (SB-AMTI) technologies, enabling orbital tracking of airborne targets worldwide. Rocket Lab confirmed securing $397 million, which represents the largest share of these contracts.",
+          "The awards follow earlier developments in the SB-AMTI initiative, including the selection of SpaceX to develop the program's initial operational architecture under a contract valued at up to $4.16 billion. In July, the Space Force also awarded SpaceX two task orders worth $1.6 billion for 18 Falcon 9 launches to deliver satellites into orbit by the end of 2027."
+        ]
+      },
+      "flash": {
+        "zh": "美國太空軍頒發6.15億美元合約，發展天基空中目標追蹤技術。",
+        "en": "US Space Force awards $615 million in contracts for space-based air target tracking.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "On August 4, 2026, the US Space Force awarded $615 million in contracts to Rocket Lab, Systems & Technology Research, and a third undisclosed company for SB-AMTI technologies.",
+          "sourceQuote": "awarded $615 million in contracts to Rocket Lab, Systems & Technology Research (STR) and a third company whose identity has not been disclosed for “operational security” reasons. The awards will mature Space-Based Air Moving Target Indicator (SB-AMTI) technologies",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Rocket Lab secured $397 million, representing the largest share of the $615 million awards.",
+          "sourceQuote": "Rocket Lab confirmed it had secured $397 million, accounting for the largest share of the awards.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The SB-AMTI technology aims to enable the tracking of airborne targets across the globe from orbit.",
+          "sourceQuote": "track airborne targets across the globe, including in contested airspace",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The Space Force previously selected SpaceX under a contract worth up to $4.16 billion to develop the initial operational architecture for the SB-AMTI programme.",
+          "sourceQuote": "selected SpaceX to develop the initial operational architecture for the SB-AMTI programme under a contract worth up to $4.16 billion.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "In July, SpaceX was awarded two launch task orders worth $1.6 billion for 18 Falcon 9 launches to support the satellite portfolio by the end of 2027.",
+          "sourceQuote": "award of two National Security Space Launch Phase 3 Lane 1 task orders worth $1.6 billion, under which SpaceX will provide 18 Falcon 9 launches from Vandenberg Space Force Base to place satellites supporting the wider SBST portfolio into orbit by the end of 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "US Space Force",
+          "Rocket Lab",
+          "Systems & Technology Research",
+          "STR",
+          "SpaceX"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [
+          "Vandenberg Space Force Base"
+        ],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "4 August",
+          "May",
+          "July",
+          "end of 2027"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260808-1849-7",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Inside the US Space Force plan to track military aircraft from orbit News",
+          "url": "https://aerospaceglobalnews.com/news/us-space-force-track-aircraft-from-orbit/",
+          "publishedUtc": "2026-08-06T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/Launch-Complex-4-Render-lowres-1-v2.webp",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260804-1529-swiss-semi-private-startup-peakjet-compl",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: aero",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-08-04",
+            "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first...",
+            "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+            "facts": [
+              {
+                "claim": "PeakJet completed its first commercial flight between Zürich and Palma de Mallorca on August 1, 2026.",
+                "source_quote": "PeakJet, a new Swiss semi-private airline, has announced that it has completed its first commercial flight between Zürich (ZRH) and Palma de Mallorca (PMI) on August 1, 2026.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "The flight was operated by the German subsidiary of VistaJet using an Embraer Legacy 650 capable of carrying up to 12 passengers.",
+                "source_quote": "The aircraft, an Embraer Legacy 650 capable of carrying up to 12 passengers, was operated by the German subsidiary of VistaJet.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "Neither PeakJet nor its parent Peak Plus AG holds an air operator certificate, functioning as a marketplace aggregating capacity on scheduled executive aircraft.",
+                "source_quote": "neither PeakJet nor its parent company, Peak Plus AG, holds an air operator certificate (AOC) of their own. Instead, PeakJet defines itself as a marketplace, which aggregates and sells capacity on executive aircraft operating on fixed schedules.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "PeakJet expects to open new direct links from Zurich to Nice-Côte d'Azur and Málaga.",
+                "source_quote": "After launching the route to Mallorca, PeakJet expects to open new direct links between Zurich and both Nice-Côte d’Azur (NCE) and Málaga (AGP)",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "PeakJet was founded by Gianni Tronza and former Etihad Airways CEO Peter Baumgartner.",
+                "source_quote": "PeakJet is the brainchild of Gianni Tronza, who has held a lengthy career as senior executive at airlines such as Crossair, British Airways, American Airlines and Etihad, and Peter Baumgartner, who has previously served as Chief Executive Officer (CEO) of Etihad Airways.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "Peter Baumgartner stated that PeakJet has proven a third way for private aviation built on technology.",
+                "source_quote": "For years, private aviation offered only two options: buy or charter the whole jet or stay on the ground. Today we’ve proven there’s a third way — one built on technology our industry has barely tapped into",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260806-0945-iberia-to-operate-special-a321xlr-flight",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: spacex",
+              "archive predates source by 0 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-08-06",
+            "source_name": "AeroTime — Iberia to operate special A321XLR flight with Starlink to o...",
+            "source_url": "https://www.aerotime.aero/articles/iberia-to-operate-special-a321xlr-flight-with-starlink-to-observe-solar-eclipse",
+            "facts": [
+              {
+                "claim": "Spanish airline Iberia will operate a special charter flight on August 12, 2026, to observe a total solar eclipse visible over parts of Spain.",
+                "source_quote": "Spanish flag carrier Iberia will operate a special charter flight to observe the total solar eclipse that will be visible over parts of Spain on August 12, 2026.",
+                "source_url": "https://www.aerotime.aero/articles/iberia-to-operate-special-a321xlr-flight-with-starlink-to-observe-solar-eclipse",
+                "source_name": "AeroTime — Iberia to operate special A321XLR flight with Starlink to o..."
+              },
+              {
+                "claim": "The flight will depart Madrid-Barajas International Airport at 18:45 local time and fly over Palencia province using a new Airbus A321XLR aircraft.",
+                "source_quote": "The airline will deploy one of its new Airbus A321XLR aircraft, which will take off from Madrid-Barajas International Airport (MAD) at 18.45 local time. The aircraft will follow a route over Palencia province",
+                "source_url": "https://www.aerotime.aero/articles/iberia-to-operate-special-a321xlr-flight-with-starlink-to-observe-solar-eclipse",
+                "source_name": "AeroTime — Iberia to operate special A321XLR flight with Starlink to o..."
+              },
+              {
+                "claim": "Iberia plans to broadcast the eclipse live using SpaceX's Starlink satellite internet connectivity equipped on the A321XLR.",
+                "source_quote": "the A321XLR that will perform the mission is one of the airline’s first aircraft to be equipped with satellite-based Starlink internet connectivity, provided by SpaceX.",
+                "source_url": "https://www.aerotime.aero/articles/iberia-to-operate-special-a321xlr-flight-with-starlink-to-observe-solar-eclipse",
+                "source_name": "AeroTime — Iberia to operate special A321XLR flight with Starlink to o..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260808-1642-8",
     "queuedUtc": "2026-08-08T16:42Z",
     "approve": false,
@@ -9625,514 +10042,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260804-1947-3",
-    "queuedUtc": "2026-08-04T19:48Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.5-flash",
-    "decisionReason": "The event involves a military aircraft crash and pilot ejection with injuries, which is a major safety event requiring manual verification.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "casualties_or_injuries"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A US Marine Corps F-35B fighter jet crashed near the runway at Marine Corps Air Station Miramar in San Diego on July 31, 2026.",
-        "sourceQuote": "A US Marine Corps pilot survived an ejection moments before an F-35B crashed and caught fire near the runway at Marine Corps Air Station Miramar in San Diego.",
-        "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The pilot was the sole person on board and was taken to a local medical facility in stable condition with non-life-threatening injuries.",
-        "sourceQuote": "The pilot, the only person aboard, was taken to a local medical facility in stable condition with non-life-threatening injuries.",
-        "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The Marine Corps has classified the crash as a Class A mishap, which is its most serious category.",
-        "sourceQuote": "The Marine Corps classified the accident as a Class A mishap, its most serious category.",
-        "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "A witness estimated that the pilot ejected at an altitude of about 100 feet before the aircraft crashed and exploded.",
-        "sourceQuote": "The witness estimated that the pilot ejected at about 100 feet above the ground. The parachute deployed before the aircraft struck the ground and exploded",
-        "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The event involves a military aircraft crash and pilot ejection with injuries, which is a major safety event requiring manual verification.",
-      "cat": "mil",
-      "zh": {
-        "title": "美軍F-35B戰機於米拉瑪基地墜毀飛行員彈射生還",
-        "summary": "美國海軍陸戰隊一架F-35B戰機於2026年7月31日在聖地牙哥米拉瑪航空基地附近墜毀。軍方表示，機上僅有的飛行員成功彈射生還，送醫後情況穩定無生命危險。海軍陸戰隊已將此事件歸類為最嚴重的A級事故。有目擊者稱彈射高度約為100英尺，但官方尚未證實詳細飛行細節。",
-        "body": [
-          "美國海軍陸戰隊一架F-35B戰鬥機於2026年7月31日在加州聖地牙哥的米拉瑪航空基地跑道附近墜毀。根據軍方說明，這架戰機隸屬於第三海軍陸戰航空聯隊第11航空大隊，事發時間大約在當地時間上午10時左右，緊急救援人員隨即抵達現場處置。",
-          "機上僅有的一名飛行員在墜機前成功進行低空彈射，隨後被送往當地醫療機構接受治療。軍方指出，該飛行員目前傷勢穩定且無生命危險。海軍陸戰隊已將此事件列為最嚴重的「A級事故」，該級別代表事故涉及飛機全毀、人員死亡或造成超過200萬美元的損失。",
-          "根據美聯社引述目擊者說法，飛行員在約100英尺的高度彈射。然而，海軍陸戰隊尚未證實該戰機當時的確切飛行高度、飛行剖面，或是否正在進行短距起飛與垂直降落操縱。"
-        ]
-      },
-      "en": {
-        "title": "US Marine Corps F-35B Crashes at MCAS Miramar, Pilot Survives Ejection",
-        "summary": "A US Marine Corps F-35B fighter jet crashed near the runway at Marine Corps Air Station Miramar in San Diego on July 31, 2026. According to military officials, the pilot was the only person on board and survived after ejecting from the aircraft. The pilot was transported to a local medical facility in stable condition with non-life-threatening injuries. The Marine Corps has classified the crash as a Class A mishap, which is its most serious accident category. While witnesses reported the pilot ejected at approximately 100 feet, officials have not confirmed the aircraft's altitude, flight profile, or whether a vertical landing was being conducted.",
-        "body": [
-          "A US Marine Corps F-35B fighter jet crashed near the runway at Marine Corps Air Station Miramar in San Diego on July 31, 2026. The aircraft was assigned to Marine Aircraft Group 11 of the 3rd Marine Aircraft Wing. Emergency crews responded at approximately 10:00 local time.",
-          "The pilot, the only occupant, survived a low-altitude ejection and was taken to a local hospital in stable condition with non-life-threatening injuries. The Marine Corps has classified the crash as a Class A mishap, which represents its most serious accident category.",
-          "A witness told the Associated Press that the pilot ejected at about 100 feet. The Marine Corps has not confirmed the aircraft's altitude or flight profile."
-        ]
-      },
-      "flash": {
-        "zh": "美軍一架F-35B戰機於米拉瑪基地附近墜毀飛行員彈射生還",
-        "en": "US Marine Corps F-35B Crashes at MCAS Miramar, Pilot Ejects Safely",
-        "hot": true
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A US Marine Corps F-35B fighter jet crashed near the runway at Marine Corps Air Station Miramar in San Diego on July 31, 2026.",
-          "sourceQuote": "A US Marine Corps pilot survived an ejection moments before an F-35B crashed and caught fire near the runway at Marine Corps Air Station Miramar in San Diego.",
-          "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The pilot was the sole person on board and was taken to a local medical facility in stable condition with non-life-threatening injuries.",
-          "sourceQuote": "The pilot, the only person aboard, was taken to a local medical facility in stable condition with non-life-threatening injuries.",
-          "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The Marine Corps has classified the crash as a Class A mishap, which is its most serious category.",
-          "sourceQuote": "The Marine Corps classified the accident as a Class A mishap, its most serious category.",
-          "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "A witness estimated that the pilot ejected at an altitude of about 100 feet before the aircraft crashed and exploded.",
-          "sourceQuote": "The witness estimated that the pilot ejected at about 100 feet above the ground. The parachute deployed before the aircraft struck the ground and exploded",
-          "sourceUrl": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Marine Corps",
-          "Marine Aircraft Group 11",
-          "3rd Marine Aircraft Wing",
-          "Associated Press"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "F-35B"
-        ],
-        "airports": [
-          "Marine Corps Air Station Miramar"
-        ],
-        "locations": [
-          "San Diego"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "July 31, 2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "casualties_or_injuries"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260804-1947-3",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Marine pilot survives low-altitude ejection before F-35B crashes at Miramar",
-          "url": "https://www.aerotime.aero/articles/marine-pilot-ejects-f35b-crash-miramar",
-          "publishedUtc": "2026-08-04T18:12Z",
-          "summary": "A US Marine Corps pilot survived an ejection moments before an F-35B crashed and caught fire near the… The post Marine pilot survives low-altitude ejection before F-35B crashes at Miramar appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260804-1806-1",
-    "queuedUtc": "2026-08-04T18:06Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story covers a formal regulatory certification action by the US Federal Aviation Administration (FAA).",
-    "riskFlags": [
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The US Federal Aviation Administration issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026.",
-        "sourceQuote": "the FAA has issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX-7.",
-        "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The FAA required key improvements prior to certification, including flight-control software updates, flightcrew alerting system updates, and a redesigned engine anti-ice system.",
-        "sourceQuote": "including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system.",
-        "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Southwest Airlines has ordered over 300 Boeing 737 MAX 7 aircraft, making it the largest customer for the variant.",
-        "sourceQuote": "has more than 300 MAX 7s on order, making it by far the largest customer for the type.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/boeing-737-max-7-faa-certification/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "As of July 2026, Boeing completed certification flight testing for both the 737-7 and 737-10.",
-        "sourceQuote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10.",
-        "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-        "evidenceScope": "archive",
-        "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-        "archiveContext": true
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story covers a formal regulatory certification action by the US Federal Aviation Administration (FAA).",
-      "cat": "reg",
-      "zh": {
-        "title": "美國FAA核發波音737 MAX 7型別檢定證",
-        "summary": "美國聯邦航空總署於2026年8月3日正式對波音737 MAX 7核發修改後的型別檢定證與生產限制紀錄。該認證要求更新飛行控制軟體、機組警報系統及重新設計引擎防冰系統。最大客戶西南航空已訂購超過300架該型客機。",
-        "body": [
-          "美國聯邦航空總署（FAA）於2026年8月3日正式對波音737 MAX 7核發修改後的型別檢定證與更新的生產限制紀錄，完成對該機型多年的審查程序。",
-          "在頒發核准之前，FAA要求波音737 MAX 7納入多項關鍵改進項目，其中包括更新飛行控制軟體、機組警報系統，以及重新設計引擎防冰系統。",
-          "根據相關紀錄，西南航空為波音737 MAX 7的最大客戶，目前已訂購超過300架該型客機。此外，波音公司截至2026年7月已完成737-7與737-10機型的認證飛行測試。"
-        ]
-      },
-      "en": {
-        "title": "US FAA Grants Type Certification for Boeing 737 MAX 7",
-        "summary": "The US Federal Aviation Administration issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026. The approval follows years of technical evaluation and requires key aircraft improvements, including updates to the flight-control software, the flightcrew alerting system, and a redesigned engine anti-ice system. Southwest Airlines remains the largest customer for the narrowbody variant, with more than 300 aircraft on order. Earlier in July 2026, Boeing completed certification flight testing on both the 737-7 and 737-10 variants.",
-        "body": [
-          "The US Federal Aviation Administration (FAA) issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026, marking the completion of an extensive regulatory review process.",
-          "Prior to granting certification, the FAA required Boeing to incorporate key safety improvements into the aircraft. These technical updates include modifications to the flight-control software, the flightcrew alerting system, and a redesigned engine anti-ice system.",
-          "Southwest Airlines is the largest customer for the variant, with an order book exceeding 300 Boeing 737 MAX 7 aircraft. In historical records, Boeing confirmed that certification flight testing for both the 737-7 and 737-10 variants was completed as of July 2026."
-        ]
-      },
-      "flash": {
-        "zh": "美國FAA宣布核發波音737 MAX 7型別檢定證",
-        "en": "US FAA certifies Boeing 737 MAX 7 airplane",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The US Federal Aviation Administration issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026.",
-          "sourceQuote": "the FAA has issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX-7.",
-          "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The FAA required key improvements prior to certification, including flight-control software updates, flightcrew alerting system updates, and a redesigned engine anti-ice system.",
-          "sourceQuote": "including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system.",
-          "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Southwest Airlines has ordered over 300 Boeing 737 MAX 7 aircraft, making it the largest customer for the variant.",
-          "sourceQuote": "has more than 300 MAX 7s on order, making it by far the largest customer for the type.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/boeing-737-max-7-faa-certification/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "As of July 2026, Boeing completed certification flight testing for both the 737-7 and 737-10.",
-          "sourceQuote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10.",
-          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-          "evidenceScope": "archive",
-          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-          "archiveContext": true
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "FAA",
-          "Federal Aviation Administration",
-          "Boeing",
-          "Southwest Airlines"
-        ],
-        "airlines": [
-          "Southwest Airlines"
-        ],
-        "aircraft_models": [
-          "Boeing 737 MAX 7",
-          "737 MAX 7",
-          "737-7",
-          "737-10"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-03",
-          "2026-07-28"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260804-1806-1",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Somon Air receives its first Boeing 737 MAX jet, a first for Tajikistan",
-          "url": "https://www.aerotime.aero/articles/somon-air-receives-its-first-boeing-737-max-jet-a-first-for-tajikistan",
-          "publishedUtc": "2026-08-03T14:12Z",
-          "summary": "Somon Air has received its first Boeing 737 MAX, marking the first appearance of the aircraft type in… The post Somon Air receives its first Boeing 737 MAX jet, a first for Tajikistan appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Boeing 737 MAX 7 gains FAA certification – which airlines placed orders?",
-          "url": "https://www.aerotime.aero/articles/boeing-737-max-7-gains-faa-certification-which-airlines-placed-orders",
-          "publishedUtc": "2026-08-04T09:47Z",
-          "summary": "Just over 13 years ago, Boeing and Southwest Airlines came together to launch the 737 MAX 7, the… The post Boeing 737 MAX 7 gains FAA certification – which airlines placed orders? appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "FAA Statement on Certification of the Boeing 737 MAX-7",
-          "url": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-          "publishedUtc": "2026-08-03T00:00Z",
-          "summary": "Statement",
-          "image": null,
-          "source": "FAA",
-          "sourceKey": "faa"
-        },
-        {
-          "title": "US FAA certifies Boeing 737 MAX 7 in win for planemaker",
-          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObm5abmxuWVVCMWR2ZDdDaTFWSnJ5SEYxZnc5MFg0Qko5RkJWMGZpTndzclotOVAza0ZYRHJoTmpUZk1yclB4MnZxUFlYanVwbnlGd3JaNk5sZ2YxbjliM3EyVk55bUtEZU9mQWNRR214WTlQRVdTRXAwbVdGRzdYdE1CY0hrOXlIWjRlV0V0VGg2d05qLUJzT05iQ0oyaS13UFM4azRFMXF2T2ZOUEhPT2hJblN1bUozNlc1SkNn?oc=5",
-          "publishedUtc": "2026-08-03T22:26Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "Boeing 737 MAX 7 finally cleared for service following FAA certification",
-          "url": "https://aerospaceglobalnews.com/news/boeing-737-max-7-faa-certification/",
-          "publishedUtc": "2026-08-04T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/737-7-max-ID-fb3c1b364a1c-scaled.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        },
-        {
-          "title": "U.S. FAA certifies new Boeing 737-7 airplane",
-          "url": "https://boeing.mediaroom.com/2026-08-03-U-S-FAA-certifies-new-Boeing-737-7-airplane",
-          "publishedUtc": "2026-08-03T17:25Z",
-          "summary": "",
-          "image": "https://mmx.prnewswire.com/media/MS1963091/737-7-max-ID-fb3c1b364a1c.jpg?id=OA2822308&p=thumbnail",
-          "source": "Boeing",
-          "sourceKey": "boeing"
-        }
-      ],
-      "updateCandidate": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: BOEING 737",
-              "same named core entity: boeing, faa, southwest airlines",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: 737, 737-7",
-              "same named core entity: boeing, faa",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: 737, 737-7",
-              "same named core entity: boeing",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
-            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-            "facts": [
-              {
-                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
-                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
-              },
-              {
-                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          }
-        ]
       }
     }
   }
