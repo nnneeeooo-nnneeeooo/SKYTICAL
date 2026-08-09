@@ -327,7 +327,8 @@ ABOUT = {
         "intro": [
             "AVWIRE 是一個以可信來源、快速更新與完整溯源為核心的航空資訊平台。",
             "系統持續追蹤航空主管機關、國際組織、航空公司及可信新聞機構所發布的公開資訊，"
-            "透過自動化資料管線整理事件，再由 Google Gemini、NVIDIA Nemotron 等企業級語言模型"
+            "透過自動化資料管線整理事件，再由 Anthropic Claude、OpenAI GPT、Google Gemini "
+            "等主流語言模型"
             "協助產生繁體中文報導。",
             "模型不是新聞來源，也不會自行憑空補充資訊。每篇內容都必須建立在系統實際取得的"
             "來源資料上，並於文末保留原始出處，方便讀者直接查證。",
@@ -360,8 +361,8 @@ ABOUT = {
                 _p("系統透過網址正規化與標題文字相似度，避免同一篇內容被重複處理。"),
                 _p("若多個來源報導同一事件，系統會先辨識共同資訊與差異，再建立單一新聞事件。"),
                 _step("04", "多模型整理"),
-                _p("合格資料會交由多模型備援系統處理，包括 Google Gemini、NVIDIA Nemotron "
-                   "及其他相容模型。"),
+                _p("合格資料會交由多模型備援系統處理，主要採用 Anthropic Claude、"
+                   "OpenAI GPT 與 Google Gemini 等主流模型系列。"),
                 _p("模型負責："),
                 _list("提取來源中的核心事實",
                       "整理事件時間與發展狀態",
@@ -404,16 +405,17 @@ ABOUT = {
                    "論壇來源必須搭配其他來源。相關條目在頁面上標示「AI 搜尋」，"
                    "快報標題亦標示 BETA；一般新聞文章完全不適用此例外。"),
             ]},
-            {"heading": "多模型備援架構", "blocks": [
+            {"heading": "使用的模型與供應商", "blocks": [
                 _p("AVWIRE 採用多模型架構，以降低單一模型或單一供應商故障造成的影響。"),
-                _p("主要使用的模型服務包括："),
-                _list("NVIDIA Nemotron",
-                      "Google Gemini",
-                      "其他通過相同輸出與來源驗證流程的備援模型"),
+                _p("對外公開的主要模型系列與供應商包括："),
+                _list("Claude（Anthropic）",
+                      "GPT（OpenAI）",
+                      "Gemini（Google）"),
                 _p("不同模型均受到相同規則約束，也必須通過相同的引文與資料驗證。更換模型不會"
                    "降低發布標準。"),
-                _p("模型名稱及實際順序可能依可用性、品質測試與服務條件調整，但來源驗證規則"
-                   "保持一致。"),
+                _p("實際模型版本、技術路由與備援順序可能依可用性、品質測試與服務條件調整。"
+                   "本方法論頁面僅列出大眾熟悉的主要模型家族；無論內部如何切換，來源驗證規則"
+                   "與發布標準都保持一致。"),
             ]},
             {"heading": "來源選擇", "blocks": [
                 _p("AVWIRE 優先採用第一手或具有明確編輯責任的來源，例如："),
@@ -471,7 +473,8 @@ ABOUT = {
             "The system continuously tracks public information released by civil aviation "
             "authorities, international organizations, airlines and trusted news outlets, "
             "organizes events through an automated data pipeline, and then uses "
-            "enterprise-grade language models such as Google Gemini and NVIDIA Nemotron "
+            "widely recognized language-model families such as Anthropic Claude, "
+            "OpenAI GPT and Google Gemini "
             "to help produce the Traditional Chinese and English reports.",
             "The models are not a news source and never invent information. Every article "
             "must be built on source material the system actually obtained, with the "
@@ -514,8 +517,9 @@ ABOUT = {
                 _p("When several sources cover one event, the system identifies what they "
                    "share and where they differ, then builds a single news event."),
                 _step("04", "Multi-model compilation"),
-                _p("Qualified material goes to a multi-model failover system, including "
-                   "Google Gemini, NVIDIA Nemotron and other compatible models."),
+                _p("Qualified material goes to a multi-model failover system built around "
+                   "widely recognized model families including Anthropic Claude, "
+                   "OpenAI GPT and Google Gemini."),
                 _p("The models are responsible for:"),
                 _list("Extracting the core facts from the sources",
                       "Organizing event timelines and development status",
@@ -568,20 +572,21 @@ ABOUT = {
                    "BETA mark; regular articles are never covered by this "
                    "exception."),
             ]},
-            {"heading": "Multi-model failover", "blocks": [
+            {"heading": "Models and providers", "blocks": [
                 _p("AVWIRE runs a multi-model architecture to limit the impact of any "
                    "single model or vendor failing."),
-                _p("The main model services include:"),
-                _list("NVIDIA Nemotron",
-                      "Google Gemini",
-                      "Other backup models that pass the same output and source "
-                      "validation"),
+                _p("The main model families and providers disclosed publicly are:"),
+                _list("Claude (Anthropic)",
+                      "GPT (OpenAI)",
+                      "Gemini (Google)"),
                 _p("Every model is bound by the same rules and must pass the same "
                    "quotation and data checks. Switching models never lowers the "
                    "publishing bar."),
-                _p("Model names and the actual order may change with availability, "
-                   "quality testing and service terms, but the source-verification rules "
-                   "stay the same."),
+                _p("Exact model versions, technical routing and fallback order may change "
+                   "with availability, quality testing and service terms. The Methodology "
+                   "lists only the major model families familiar to general readers; the "
+                   "source-verification rules and publishing bar stay the same regardless "
+                   "of internal routing."),
             ]},
             {"heading": "Source selection", "blocks": [
                 _p("AVWIRE prefers first-hand sources, or sources with clear editorial "
