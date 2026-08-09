@@ -146,6 +146,7 @@ def main() -> None:
     assert 'target.append(carrier, flight)' in js
     assert "gap: .12em" in css
     assert ".radar-list-item .radar-callsign-flight" in css
+    assert ".radar-popup-row .text-muted { color: #625b57; }" in css
     assert "row.callsign.startsWith(row.operator)" in js
     assert "row.callsign.slice(row.operator.length)" in js
     assert "function normalizeIataCallsign(value, callsignIcao)" in js
