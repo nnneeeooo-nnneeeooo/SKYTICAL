@@ -35,14 +35,16 @@ def main() -> None:
     assert "grid-template-columns: repeat(2, minmax(0, 1fr))" in css
     assert ".center-col { order: 1;" in css
     assert ".feed-copy { grid-column: 1 / -1; }" in css
-    assert "--ticker-duration: 180s" in css
-    assert '"PingFang TC"' in css
+    assert "--ticker-duration: 130s" in css
+    assert 'font-family: "Noto Sans TC", sans-serif' in css
+    assert "font-size: 13px; font-weight: 400" in css
+    assert "font-family: inherit; font-size: 11px; font-weight: 600" in css
     assert "@media (prefers-reduced-motion: reduce)" in css
     assert ".marquee-track .ticker-pass:nth-child(2) { display: none; }" in css
     assert 'setAttribute("aria-expanded"' in script
     assert 'event.key === "Escape"' in script
     assert 'matchMedia("(min-width: 721px)")' in script
-    assert 'matches ? 24 : 52' in script
+    assert 'matches ? 32 : 52' in script
     assert 'style.setProperty("--ticker-duration"' in script
 
     print("test_mobile_layout: OK")
