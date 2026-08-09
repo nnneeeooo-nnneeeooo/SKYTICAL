@@ -30,6 +30,7 @@ def main() -> None:
     assert 'class="summary-preview summary-preview--hero"' in home
     assert 'class="summary-preview summary-preview--feed"' in home
     assert 'aria-label="重點摘要"' in home
+    assert "<span>重點摘要</span>" not in home
     assert 'class="article-page"' in article
     assert 'class="summary-preview summary-preview--article"' in article
     assert 'class="summary-preview__icon"' in article
@@ -48,7 +49,12 @@ def main() -> None:
     assert ".center-col { order: 1;" in css
     assert ".feed-copy { grid-column: 1 / -1; }" in css
     assert ".summary-preview__text" in css
+    assert "grid-template-columns: auto minmax(0, 1fr);" in css
     assert "-webkit-line-clamp: 2" in css
+    assert "line-clamp: 2" in css
+    assert "max-height: 3.16em" in css
+    assert "max-height: 3.1em" in css
+    assert "max-height: 3.3em" in css
     assert "width: 100%; padding: 0;" in css
     assert "border: 0; border-radius: 0; background: transparent; box-shadow: none;" in css
     assert "--ticker-duration: 130s" in css
