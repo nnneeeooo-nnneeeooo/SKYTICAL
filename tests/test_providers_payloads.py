@@ -22,6 +22,7 @@ sys.path.insert(0, str(ROOT / "pipeline"))
 os.environ.setdefault("NVIDIA_API_KEY", "test-key-not-real")
 os.environ.setdefault("GEMINI_API_KEY", "test-key-not-real")
 os.environ.setdefault("OPENROUTER_API_KEY", "test-openrouter-key-not-real")
+os.environ.setdefault("OPENCODE_API_KEY", "oc_sk_test-not-real")
 
 import providers  # noqa: E402
 
@@ -134,9 +135,15 @@ def test_nvidia_model_profiles():
 
 def test_model_priority_defaults():
     expected = (
+        "opencode:claude-sonnet-4-6",
+        "opencode:gpt-5.5",
         "gemini:gemini-3.6-flash",
-        "gemini:gemini-3.5-flash",
+        "opencode:gemini-3.1-pro",
+        "opencode:qwen3.6-plus",
         "nvidia:z-ai/glm-5.2",
+        "opencode:glm-5.1",
+        "opencode:kimi-k2.6",
+        "gemini:gemini-3.5-flash",
         "nvidia:deepseek-ai/deepseek-v4-pro",
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -167,10 +174,12 @@ def test_model_priority_defaults():
     check(providers.OPENROUTER_DEFAULT_MODEL
           == "nvidia/nemotron-3-ultra-550b-a55b:free",
           "Nemotron Ultra is the highest-priority OpenRouter default")
-    check(expected[4:6] == (
+    check(providers.OPENCODE_DEFAULT_MODEL == "claude-sonnet-4-6",
+          "Claude Sonnet 4.6 is the highest-priority OpenCode default")
+    check(expected[10:12] == (
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    ) and expected[7:9] == (
+    ) and expected[13:15] == (
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
         "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
     ), "equivalent Nemotron models are adjacent with native NVIDIA first")
@@ -281,6 +290,133 @@ def test_openrouter_models_and_payloads():
     except providers.ProviderAuthError:
         check(True, "embedded OpenRouter auth error is classified safely")
     print("test_openrouter_models_and_payloads: done")
+
+
+def test_opencode_protocols_and_payloads():
+    """Console models use their documented provider-compatible endpoints."""
+    cases = {
+        "claude-sonnet-4-6": "anthropic/v1/messages",
+        "gpt-5.5": "openai/v1/responses",
+        "gemini-3.1-pro": "gemini/v1beta/models/",
+        "qwen3.6-plus": "anthropic/v1/messages",
+        "glm-5.1": "openai/v1/chat/completions",
+        "kimi-k2.6": "openai/v1/chat/completions",
+    }
+    for model, endpoint in cases.items():
+        captured = []
+
+        def fake_post(url, json=None, timeout=None, headers=None):
+            captured.append((url, json, headers))
+            if url.endswith("/responses"):
+                payload = {
+                    "status": "completed",
+                    "output": [{"type": "message", "content": [{
+                        "type": "output_text", "text": GOOD,
+                    }]}],
+                    "usage": {"input_tokens": 13, "output_tokens": 8},
+                }
+            elif "/anthropic/" in url:
+                payload = {
+                    "stop_reason": "end_turn",
+                    "content": [{"type": "text", "text": GOOD}],
+                    "usage": {"input_tokens": 13, "output_tokens": 8},
+                }
+            elif "/gemini/" in url:
+                payload = {
+                    "candidates": [{"finishReason": "STOP", "content": {
+                        "parts": [{"thought": True, "text": "PRIVATE"},
+                                  {"text": GOOD}],
+                    }}],
+                    "usageMetadata": {
+                        "promptTokenCount": 13, "candidatesTokenCount": 8,
+                    },
+                }
+            else:
+                payload = {
+                    "choices": [{"finish_reason": "stop", "message": {
+                        "content": GOOD, "reasoning_content": "PRIVATE",
+                    }}],
+                    "usage": {"prompt_tokens": 13,
+                              "completion_tokens": 8},
+                }
+            return FakeResponse(payload, headers={
+                "x-request-id": "req-safe",
+                "authorization": "must-not-be-captured",
+            })
+
+        provider = providers.OpenCodeProvider(model)
+        result = with_post(
+            fake_post, lambda: provider.draft("sys", "user", SCHEMA))
+        url, payload, headers = captured[0]
+        check(result == {"ok": 1}, f"{model}: OpenCode draft parsed")
+        check(endpoint in url, f"{model}: routed to {endpoint}")
+        check(provider.usage["inputTokens"] == 13
+              and provider.usage["outputTokens"] == 8,
+              f"{model}: usage recorded")
+        check(provider.request_log[0]["headers"]
+              == {"x-request-id": "req-safe"},
+              f"{model}: credentials excluded from telemetry")
+        if model.startswith("gpt-"):
+            check(payload["text"]["format"]["schema"] == SCHEMA
+                  and headers.get("Authorization", "").startswith("Bearer "),
+                  f"{model}: Responses schema and bearer auth")
+        elif model.startswith("claude-"):
+            check(payload["output_config"]["format"]["schema"] == SCHEMA
+                  and headers.get("x-api-key", "").startswith("oc_sk_"),
+                  f"{model}: Messages schema and x-api-key auth")
+        elif model.startswith("gemini-"):
+            check(payload["generationConfig"]["responseJsonSchema"] == SCHEMA
+                  and headers.get("x-goog-api-key", "").startswith("oc_sk_"),
+                  f"{model}: Gemini schema and x-goog auth")
+        else:
+            system = payload.get("system") or (
+                payload.get("messages") or [{}])[0].get("content", "")
+            check("JSON Schema" in system,
+                  f"{model}: prompt-enforced JSON schema")
+
+    provider = providers.OpenCodeProvider("gpt-5.5")
+    try:
+        provider._check_status(FakeResponse({}, status=401))
+        check(False, "OpenCode 401 must disable the service account")
+    except providers.ProviderAuthError:
+        check(True, "OpenCode 401 is classified as authentication failure")
+    try:
+        provider._check_status(FakeResponse({}, status=429))
+        check(False, "OpenCode 429 must trigger model fallback")
+    except providers.ProviderQuotaError:
+        check(False, "OpenCode 429 must not disable every model")
+    except providers.ProviderError:
+        check(True, "OpenCode 429 preserves the key for the next model")
+    check("oc_sk_SECRET" not in providers.safe_failure_message(
+        "failed key=oc_sk_SECRET"),
+        "OpenCode key is redacted from diagnostics")
+
+    saved = {
+        key: os.environ.get(key)
+        for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY",
+                    "NVIDIA_API_KEY", "OPENROUTER_API_KEY",
+                    "OPENCODE_API_KEY", "AVWIRE_PROVIDER_ORDER")
+    }
+    for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY",
+                "OPENROUTER_API_KEY", "AVWIRE_PROVIDER_ORDER"):
+        os.environ.pop(key, None)
+    os.environ["OPENCODE_API_KEY"] = "oc_sk_test-not-real"
+    try:
+        automatic = [
+            row.label for row in providers.build_providers()
+            if row.name == "opencode"
+        ]
+    finally:
+        for key, value in saved.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+    check(automatic == [
+        token for token in providers.MODEL_ORDER
+        if token.startswith("opencode:")
+    ], "automatic writer exposes all OpenCode fallbacks in owner order")
+    print("test_opencode_protocols_and_payloads: done")
 
 
 def test_nvidia_reasoning_trace_never_parsed():
@@ -425,6 +561,7 @@ def test_gemini_format_repair():
 def main():
     tests = [
         test_model_priority_defaults,
+        test_opencode_protocols_and_payloads,
         test_openrouter_models_and_payloads,
         test_nvidia_model_profiles,
         test_nvidia_reasoning_trace_never_parsed,
