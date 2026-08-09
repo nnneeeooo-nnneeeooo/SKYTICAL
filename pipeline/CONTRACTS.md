@@ -1,4 +1,4 @@
-# AVWIRE pipeline data contracts
+# SKYTICAL pipeline data contracts
 
 Every stage reads/writes JSON under `data/`. All timestamps are UTC in the
 form `2026-07-26T05:47Z` (see `common.iso_minute`). All files are written with
@@ -346,7 +346,7 @@ dashboard and likewise never contributes to the usage ledger or totals.
 
 ## config/codex_usage.json  (manually refreshed task snapshot)
 
-Checked-in token totals exported from Codex task usage metadata for AVWIRE
+Checked-in token totals exported from Codex task usage metadata for SKYTICAL
 website development. It contains no conversation content, local paths, task
 identifiers, credentials or private dashboard URL. `build.py` validates each
 row, matches it to `gptFamilyReference`, and calculates a separate theoretical
