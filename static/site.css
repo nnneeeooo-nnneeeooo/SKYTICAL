@@ -238,6 +238,25 @@ a.flash-row:hover { color: inherit; }
 .article-sources { margin-top: 28px; padding: 16px 20px 12px; border: 2px solid var(--color-divider); }
 .article-source-row { display: flex; gap: 10px; align-items: baseline; padding: 4px 0; font-size: 13.5px; }
 .article-source-row a { min-width: 0; overflow-wrap: anywhere; }
+.search-hit {
+  padding: 0 .08em; border-radius: 3px;
+  background: color-mix(in srgb, #f4d35e 38%, transparent);
+  color: inherit; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+.search-hit-pulse { animation: search-hit-pulse 750ms ease-in-out 4; }
+@keyframes search-hit-pulse {
+  0%, 100% {
+    background: color-mix(in srgb, #f4d35e 38%, transparent);
+    box-shadow: 0 0 0 0 transparent;
+  }
+  50% {
+    background: color-mix(in srgb, #f4d35e 58%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, #f4d35e 13%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .search-hit-pulse { animation: none; }
+}
 
 .is-hidden { display: none !important; }
 .sr-only {
