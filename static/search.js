@@ -29,9 +29,17 @@
     return value[lang] || value[otherLang] || "";
   }
 
-  function recordUrl(record) {
+  function recordUrl(record, highlightQuery) {
     var urls = record.url || {};
-    return urls[lang] || urls[otherLang] || "#";
+    var rawUrl = urls[lang] || urls[otherLang] || "#";
+    if (!highlightQuery || rawUrl === "#") return rawUrl;
+    try {
+      var url = new URL(rawUrl, window.location.href);
+      url.searchParams.set("highlight", highlightQuery);
+      return url.pathname + url.search + url.hash;
+    } catch (error) {
+      return rawUrl;
+    }
   }
 
   function updateQueryUrl(query) {
@@ -52,7 +60,7 @@
     return node;
   }
 
-  function resultCard(record) {
+  function resultCard(record, highlightQuery) {
     var card = document.createElement("article");
     card.className = "search-result";
 
@@ -64,7 +72,7 @@
 
     var link = document.createElement("a");
     link.className = "search-result-link";
-    link.href = recordUrl(record);
+    link.href = recordUrl(record, highlightQuery);
     link.appendChild(textNode("h2", "", localized(record, "title")));
     card.appendChild(link);
 
@@ -75,7 +83,7 @@
     footer.className = "search-result-footer";
     footer.appendChild(textNode("span", "text-muted", record.source || ""));
     var more = document.createElement("a");
-    more.href = recordUrl(record);
+    more.href = recordUrl(record, highlightQuery);
     more.textContent = root.dataset.readMore;
     footer.appendChild(more);
     card.appendChild(footer);
@@ -130,7 +138,9 @@
     }
     status.textContent = root.dataset.countTemplate.replace("{count}", String(matches.length));
     var fragment = document.createDocumentFragment();
-    matches.forEach(function (row) { fragment.appendChild(resultCard(row.record)); });
+    matches.forEach(function (row) {
+      fragment.appendChild(resultCard(row.record, query));
+    });
     results.appendChild(fragment);
   }
 
