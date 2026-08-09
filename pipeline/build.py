@@ -20,6 +20,7 @@ import sys
 import time
 import unicodedata
 from datetime import timedelta, timezone
+from functools import lru_cache
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -999,6 +1000,24 @@ def collect_articles():
         if prev is None or a["dt"] > prev["dt"]:
             by_id[a["id"]] = a
     return sorted(by_id.values(), key=lambda a: a["dt"], reverse=True)
+
+
+@lru_cache(maxsize=2)
+def header_search_placeholders(lang: str) -> tuple[str, ...]:
+    """Load the daily LLM output, with the built-in prompts as fallback."""
+    fallback = tuple(L[lang]["headerSearchPlaceholders"])
+    payload = load_json(DATA_DIR / "search-prompts.json", {})
+    prompts = ((payload.get("prompts") or {}).get(lang)
+               if isinstance(payload, dict) else None)
+    if not isinstance(prompts, list) or not 2 <= len(prompts) <= 8:
+        return fallback
+    cleaned = []
+    for value in prompts:
+        text = re.sub(r"\s+", " ", str(value or "")).strip()
+        if not text or len(text) > 96 or re.search(r"[\x00-\x1f<>]", text):
+            return fallback
+        cleaned.append(text)
+    return tuple(cleaned) if len(set(cleaned)) == len(cleaned) else fallback
 
 
 def notification_summary(value: str, lang: str) -> str:
@@ -2323,7 +2342,10 @@ def render_manual_workbench(env, build) -> int:
 # ── rendering ────────────────────────────────────────────────────────────────
 
 def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=True):
-    t = L[lang]
+    t = dict(L[lang])
+    prompts = list(header_search_placeholders(lang))
+    t["headerSearchPlaceholders"] = prompts
+    t["headerSearchPlaceholder"] = prompts[0]
     nav_defs = [("home", ""), ("briefings", "briefings/"),
                 ("radar", "radar/"),
                 ("incidents", "incidents/"),
