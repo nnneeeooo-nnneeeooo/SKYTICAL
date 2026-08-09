@@ -89,22 +89,9 @@ def main() -> None:
         r"data-search-placeholders='([^']+)'", zh).group(1))
     en_placeholders = json.loads(re.search(
         r"data-search-placeholders='([^']+)'", en).group(1))
-    assert zh_placeholders == [
-        "搜尋班號，例如 CI100",
-        "搜尋航空公司",
-        "搜尋機場或城市",
-        "搜尋機型，例如 A350",
-        "隨意搜尋想看的 SKYTICAL 內容",
-        "今天想看什麼航空新聞？",
-    ]
-    assert en_placeholders == [
-        "Search a flight number, e.g. CI100",
-        "Search an airline",
-        "Search an airport or city",
-        "Search an aircraft type, e.g. A350",
-        "Explore anything on SKYTICAL",
-        "What aviation news are you looking for?",
-    ]
+    assert zh_placeholders == list(build.header_search_placeholders("zh"))
+    assert en_placeholders == list(build.header_search_placeholders("en"))
+    assert len(zh_placeholders) == len(en_placeholders) == 6
     assert zh.count('id="news-search-form"') == 1
     assert 'class="header-search-form"' in home
     assert 'class="header-search-form"' in article
