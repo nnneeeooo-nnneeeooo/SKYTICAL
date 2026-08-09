@@ -705,7 +705,7 @@ FOOTER_ORDER = ["faa", "icao", "iata", "ntsb", "easa", "eurocontrol",
 FOOTER_SOURCES = [{"name": SOURCES[k]["name"], "url": SOURCES[k]["url"]}
                   for k in FOOTER_ORDER if k in SOURCES]
 
-FAVICON = f"{BASE_PATH}/assets/skytical-mark.svg?v=20260810-transparent"
+FAVICON = f"{BASE_PATH}/assets/skytical-mark.svg?v=20260810-clean-mark"
 
 
 # ── small helpers ────────────────────────────────────────────────────────────
@@ -2338,7 +2338,7 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=Tru
         "en_abs_url": SITE_ORIGIN + page_url("en", sub),
         "self_abs_url": SITE_ORIGIN + page_url(lang, sub),
         "social_image_abs_url": (
-            f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-social.png?v=20260810-transparent"
+            f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-social.png?v=20260810-clean-mark"
         ),
         "hreflang": hreflang,
         "home_url": page_url(lang, ""),
