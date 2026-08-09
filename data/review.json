@@ -1,5 +1,469 @@
 [
   {
+    "id": "g-20260809-1538-1",
+    "queuedUtc": "2026-08-09T15:38Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Aviation safety event involving cockpit smoke, emergency landing, slide evacuation, and an FAA investigation requires mandatory human review.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "達美航空一架波音757-200客機於2026年8月8日早上07:35自亞特蘭大起飛前往奧蘭多後，因故折返亞特蘭大。",
+        "sourceQuote": "On August 8, 2026, the Delta Air Lines flight left Atlanta at 07:35, for Orlando International Airport (MCO) but diverted back to ATL shortly after takeoff.",
+        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "美國聯邦航空總署聲明指出該波音757-200客機（註冊號N555NW）駕駛艙通報煙霧，返回降落後乘客經由緊急滑梯疏散至滑行道。",
+        "sourceQuote": "In a statement, the Federal Aviation Administration (FAA) said that smoke was reported in the cockpit of the Boeing 757-200, registered N555NW.",
+        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "該班機載有199名乘客與6名機組員，疏散後一名工作人員與一名乘客接受醫療照護。",
+        "sourceQuote": "It is understood that there were 199 passengers and six crew members on the flight. A staff member and a passenger required medical attention.",
+        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "達美航空表示機組員在駕駛艙通報異味後依程序返回機場，並已為乘客安排新航機。",
+        "sourceQuote": "The flight crew followed procedures to return to Hartsfield-Jackson Atlanta International Airport after reports of fumes in the flight deck,",
+        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "美國聯邦航空總署表示正在對此事件展開調查。",
+        "sourceQuote": "The FAA said it is investigating the incident.",
+        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety event involving cockpit smoke, emergency landing, slide evacuation, and an FAA investigation requires mandatory human review.",
+      "cat": "safety",
+      "zh": {
+        "title": "達美航空班機駕駛艙通報煙霧返航亞特蘭大 乘客經緊急滑梯疏散",
+        "summary": "達美航空一架波音757-200客機於2026年8月8日自亞特蘭大起飛後，因駕駛艙通報出現煙霧而緊急返回亞特蘭大哈茨菲爾德-傑克遜國際機場。航機降落於滑行道後，機上199名乘客與6名機組人員經由緊急滑梯疏散，其中兩人接受醫療照護。美國聯邦航空總署已就此事件展開調查。",
+        "body": [
+          "達美航空一架載有199名乘客與6名機組人員的波音757-200客機（註冊號N555NW），於2026年8月8日早上7時35分自亞特蘭大哈茨菲爾德-傑克遜國際機場起飛前往奧蘭多，起飛後不久因駕駛艙通報出現煙霧，決定緊急返航並安全降落。",
+          "客機降落於亞特蘭大機場的滑行道後，機上人員透過緊急充氣滑梯進行疏散。據報導，事件造成一名工作人員及一名乘客需要接受醫療照護。達美航空事後已安排乘客改搭另一架航機前往目的地奧蘭多。",
+          "美國聯邦航空總署（FAA）發表聲明證實收到駕駛艙煙霧通報，並表示已對該起改降與疏散事件展開調查。"
+        ]
+      },
+      "en": {
+        "title": "Delta Boeing 757 Diverts to Atlanta Over Cockpit Smoke; Passengers Evacuate via Slides",
+        "summary": "A Delta Air Lines Boeing 757-200 diverted back to Hartsfield-Jackson Atlanta International Airport on August 8, 2026, after the flight crew reported smoke in the cockpit shortly after takeoff. The aircraft, carrying 199 passengers and six crew members, landed safely before passengers evacuated onto a taxiway using emergency escape slides. Authorities reported that one staff member and one passenger required medical attention following the evacuation. Delta Air Lines reaccommodated the passengers on another aircraft for their flight to Orlando, while the Federal Aviation Administration confirmed it has launched an investigation into the incident.",
+        "body": [
+          "A Delta Air Lines Boeing 757-200, registered N555NW, diverted back to Hartsfield-Jackson Atlanta International Airport shortly after taking off for Orlando International Airport at 07:35 on August 8, 2026. The return was initiated following reports of fumes or smoke in the flight deck.",
+          "Upon returning to Atlanta, the aircraft landed on a taxiway where 199 passengers and six crew members evacuated using emergency slides. A staff member and a passenger required medical attention following the evacuation. Delta Air Lines subsequently arranged a replacement aircraft to transport passengers to Orlando.",
+          "The Federal Aviation Administration confirmed in a statement that smoke had been reported in the cockpit and stated that an investigation into the incident is underway."
+        ]
+      },
+      "flash": {
+        "zh": "達美航空客機因駕駛艙出現煙霧返航亞特蘭大，乘客經緊急滑梯疏散。",
+        "en": "Delta Boeing 757 evacuates passengers on taxiway in Atlanta after cockpit smoke report.",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-08",
+        "sev": "ser",
+        "aircraft": "Boeing 757-200",
+        "operator": "Delta Air Lines",
+        "phase": {
+          "zh": "轉降與滑行",
+          "en": "Diversion and taxi"
+        },
+        "location": {
+          "zh": "亞特蘭大哈茨菲爾德-傑克遜國際機場",
+          "en": "Hartsfield-Jackson Atlanta International Airport"
+        },
+        "desc": {
+          "zh": "達美航空一架波音757-200客機起飛後因駕駛艙通報煙霧返航亞特蘭大，客機降落於滑行道後乘客透過緊急滑梯疏散。",
+          "en": "A Delta Air Lines Boeing 757-200 diverted to Atlanta after cockpit smoke was reported, where passengers evacuated on a taxiway via emergency slides."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "達美航空一架波音757-200客機於2026年8月8日早上07:35自亞特蘭大起飛前往奧蘭多後，因故折返亞特蘭大。",
+          "sourceQuote": "On August 8, 2026, the Delta Air Lines flight left Atlanta at 07:35, for Orlando International Airport (MCO) but diverted back to ATL shortly after takeoff.",
+          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "美國聯邦航空總署聲明指出該波音757-200客機（註冊號N555NW）駕駛艙通報煙霧，返回降落後乘客經由緊急滑梯疏散至滑行道。",
+          "sourceQuote": "In a statement, the Federal Aviation Administration (FAA) said that smoke was reported in the cockpit of the Boeing 757-200, registered N555NW.",
+          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "該班機載有199名乘客與6名機組員，疏散後一名工作人員與一名乘客接受醫療照護。",
+          "sourceQuote": "It is understood that there were 199 passengers and six crew members on the flight. A staff member and a passenger required medical attention.",
+          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "達美航空表示機組員在駕駛艙通報異味後依程序返回機場，並已為乘客安排新航機。",
+          "sourceQuote": "The flight crew followed procedures to return to Hartsfield-Jackson Atlanta International Airport after reports of fumes in the flight deck,",
+          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "美國聯邦航空總署表示正在對此事件展開調查。",
+          "sourceQuote": "The FAA said it is investigating the incident.",
+          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Delta Air Lines",
+          "Federal Aviation Administration",
+          "FAA"
+        ],
+        "airlines": [
+          "Delta Air Lines"
+        ],
+        "aircraft_models": [
+          "Boeing 757-200"
+        ],
+        "airports": [
+          "Hartsfield-Jackson Atlanta International Airport",
+          "ATL",
+          "Orlando International Airport",
+          "MCO"
+        ],
+        "locations": [
+          "Atlanta",
+          "Orlando"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [
+          "N555NW"
+        ],
+        "event_dates": [
+          "August 8, 2026",
+          "2026-08-08"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260809-1538-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Delta passengers evacuate on escape slides after emergency landing",
+          "url": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "publishedUtc": "2026-08-09T08:31Z",
+          "summary": "Delta Air Lines passengers were forced to evacuate a Boeing 757-200 on escape slides at Hartsfield-Jackson Atlanta International… The post Delta passengers evacuate on escape slides after emergency landing appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Delta flight makes emergency landing in Atlanta",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOYVlNNkpOb0ZyQXJLT0wyQXQ1Nkl3WUpyVmk4YjBiM1ZhaS12b0lmWmhLMnpCOFVZMkxycXJ6dW9OMkp0aHRacHRIeC1RaldNMzFuQ1BmZ2dVQTVMVmx3dUVtcDh5VHlCVWJrcldJS1FmdzRpRVhSclQxNU0xS0FBRFFOZXVxNGNhVmtWSkRSaFQ0RUFqcGxsZXR1Tk9BMnBwZnhNREZsR0ZlUlhNcEpR?oc=5",
+          "publishedUtc": "2026-08-08T19:45Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-0855-swiss-lx16-diverts-bangor-after-smoke",
+            "relationship_type": "investigation_progression",
+            "relationship_evidence": [
+              "same named core entity: federal aviation administration",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin",
+            "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+            "facts": [
+              {
+                "claim": "LX16於班戈當地時間7月27日12時14分安全落地。",
+                "source_quote": "has landed safely at 12:14 local. The emergency was resolved.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "SWISS表示機組員因商務艙出現煙霧而改降班戈。",
+                "source_quote": "crew on board Swiss International Air Lines flight LX16 on Monday decided to divert to Bangor due to smoke in the business class section of the flight.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "消防人員檢查後未發現火源或異常熱度。",
+                "source_quote": "Firefighters inspected the aircraft and found no signs of fire or heat.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "SWISS表示208名乘客及機組員均平安。",
+                "source_quote": "All 208 passengers and crew were safe",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "FAA初步聲明記載機組員曾通報駕駛艙起火,並表示將調查。",
+                "source_quote": "Swiss International Air Lines Flight 16F safely landed at Bangor International Airport in Maine around noon on Monday, July 27, after the crew reported a cockpit fire.",
+                "source_url": "https://www.faa.gov/newsroom/statements/accident_incidents",
+                "source_name": "Federal Aviation Administration — Statements on Aviation Accidents and Incidents"
+              },
+              {
+                "claim": "SWISS尚未確定煙霧原因,將檢查航空器且不會在調查完成前推測。",
+                "source_quote": "The airline has not been able to identify for certain what caused the smoke.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260809-1538-2",
+    "queuedUtc": "2026-08-09T15:38Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Mandatory human review required for aviation safety incident involving cabin smoke and passenger evacuation via emergency slides.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "199 Delta Air Lines passengers evacuated a smoke-filled Boeing 757 aircraft down slides on an Atlanta taxiway.",
+        "sourceQuote": "199 Delta Passengers Evacuate Smoke-Filled Boeing 757 Down Slides On Atlanta Taxiway",
+        "sourceUrl": "https://simpleflying.com/delta-boeing-757-slide-evacuation-atlanta-taxiway-smoke/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Video footage showed smoke filling the passenger cabin as occupants escaped down emergency slides.",
+        "sourceQuote": "Footage shows smoke filling the cabin while passengers escaped down emergency slides.",
+        "sourceUrl": "https://simpleflying.com/delta-boeing-757-slide-evacuation-atlanta-taxiway-smoke/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Delta passengers evacuated on escape slides following an emergency landing.",
+        "sourceQuote": "Delta passengers evacuate on escape slides after emergency landing",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQ1VEaXhrS0pGejgxZUxqR3h4RUFhZ1J5ejV1NU1rSjNqX0pIdnV6NUFlQWxYU0xZUGxLWVRGWVZHbG1wMnVESVI2OC1hLTEwT3hIVVB1NFdNY0owTmJLeU1veVBJdl92NEZjcWp4cXZOR05aT1QxZGM2dGxKaTJlQ3F5RlcyM1NLNDJtczU0UzN3UzZUQ2hFd0hzdUFCSnVoMnF30gGoAUFVX3lxTE5Sd1o5QkZmbFo4UFZPVmptaUpzRGRHZWUwbE1JUVdNaWhqYmdHRzRCRzZ4V2N2VmszekRheEJEV0o3TGJvYk03N2NFcXFVZ0xXUFlwb29WVkM3RS15Z2E1LVVYdjg0SFBwc2M2eml2ZUxFNm11SFlBY2Vzb1RCejVTZDg5TWI3Yk9Femh6UndZNkw5bjlLd2NFc2I0b01fWUFKaVZ1R1lfMw?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Mandatory human review required for aviation safety incident involving cabin smoke and passenger evacuation via emergency slides.",
+      "cat": "safety",
+      "zh": {
+        "title": "達美航空波音757客機機艙冒煙 199名乘客於亞特蘭大滑行道疏散",
+        "summary": "根據報導，一架載有199名乘客的達美航空波音757客機在緊急降落後，於亞特蘭大機場滑行道上進行緊急疏散。現場畫面顯示機艙內充斥煙霧，乘客隨後透過逃生滑梯疏散離開機艙。",
+        "body": [
+          "根據媒體 Simple Flying 與 AeroTime 報導，達美航空一架載有199名乘客的波音757客機，在亞特蘭大進行緊急降落後，於機場滑行道上實施了逃生滑梯疏散程序。事發時機艙內部充斥著煙霧，全機199名乘客隨即透過緊急逃生滑梯撤離至滑行道上。",
+          "報導指出，現場相關畫面記錄了機艙內煙霧彌漫的狀況，乘客在煙霧中依序利用逃生滑梯逃生。本次事件發生於亞特蘭大機場的滑行道，達美航空波音757客機上的199名乘客均透過逃生滑梯進行緊急疏散。"
+        ]
+      },
+      "en": {
+        "title": "Delta Boeing 757 Evacuated Via Slides In Atlanta Following Emergency Landing",
+        "summary": "According to media reports, a Delta Air Lines Boeing 757 aircraft carrying 199 passengers was evacuated on an Atlanta airport taxiway following an emergency landing. Video footage showed smoke filling the passenger cabin while travelers escaped down emergency escape slides. The incident involved 199 passengers on board the Delta Boeing 757 who evacuated down the slides onto the taxiway in Atlanta as smoke filled the cabin, as reported by Simple Flying and AeroTime.",
+        "body": [
+          "According to media reports published by Simple Flying and AeroTime, a Delta Air Lines Boeing 757 carrying 199 passengers underwent an emergency evacuation on an Atlanta taxiway following an emergency landing. The passenger evacuation was conducted using emergency escape slides after smoke began filling the cabin of the aircraft.",
+          "Video footage showed smoke filling the passenger cabin while passengers escaped down the emergency slides onto the Atlanta taxiway. A total of 199 Delta passengers evacuated the smoke-filled Boeing 757 aircraft via escape slides following the emergency landing, according to initial reports."
+        ]
+      },
+      "flash": {
+        "zh": "達美航空波音757客機機艙冒煙 199名乘客於亞特蘭大滑行道疏散",
+        "en": "199 Delta passengers evacuate Boeing 757 down slides on Atlanta taxiway",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-09",
+        "sev": "inc",
+        "aircraft": "Boeing 757",
+        "operator": "Delta Air Lines",
+        "phase": {
+          "zh": "地面滑行 / 降落後",
+          "en": "Taxi / After landing"
+        },
+        "location": {
+          "zh": "亞特蘭大滑行道",
+          "en": "Atlanta taxiway"
+        },
+        "desc": {
+          "zh": "機艙充斥煙霧，199名乘客於亞特蘭大滑行道透過逃生滑梯緊急疏散。",
+          "en": "Smoke filled the cabin, leading 199 passengers to evacuate down emergency slides on an Atlanta taxiway."
+        },
+        "status": "prelim"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "199 Delta Air Lines passengers evacuated a smoke-filled Boeing 757 aircraft down slides on an Atlanta taxiway.",
+          "sourceQuote": "199 Delta Passengers Evacuate Smoke-Filled Boeing 757 Down Slides On Atlanta Taxiway",
+          "sourceUrl": "https://simpleflying.com/delta-boeing-757-slide-evacuation-atlanta-taxiway-smoke/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Video footage showed smoke filling the passenger cabin as occupants escaped down emergency slides.",
+          "sourceQuote": "Footage shows smoke filling the cabin while passengers escaped down emergency slides.",
+          "sourceUrl": "https://simpleflying.com/delta-boeing-757-slide-evacuation-atlanta-taxiway-smoke/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Delta passengers evacuated on escape slides following an emergency landing.",
+          "sourceQuote": "Delta passengers evacuate on escape slides after emergency landing",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQ1VEaXhrS0pGejgxZUxqR3h4RUFhZ1J5ejV1NU1rSjNqX0pIdnV6NUFlQWxYU0xZUGxLWVRGWVZHbG1wMnVESVI2OC1hLTEwT3hIVVB1NFdNY0owTmJLeU1veVBJdl92NEZjcWp4cXZOR05aT1QxZGM2dGxKaTJlQ3F5RlcyM1NLNDJtczU0UzN3UzZUQ2hFd0hzdUFCSnVoMnF30gGoAUFVX3lxTE5Sd1o5QkZmbFo4UFZPVmptaUp",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Delta",
+          "Simple Flying",
+          "AeroTime"
+        ],
+        "airlines": [
+          "Delta"
+        ],
+        "aircraft_models": [
+          "Boeing 757"
+        ],
+        "airports": [],
+        "locations": [
+          "Atlanta"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-09"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260809-1538-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "199 Delta Passengers Evacuate Smoke-Filled Boeing 757 Down Slides On Atlanta Taxiway",
+          "url": "https://simpleflying.com/delta-boeing-757-slide-evacuation-atlanta-taxiway-smoke/",
+          "publishedUtc": "2026-08-09T15:10Z",
+          "summary": "Footage shows smoke filling the cabin while passengers escaped down emergency slides.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/847-delta-air-lines-boeing-757-200-karolis-kavolelis-_-shutterstock.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        },
+        {
+          "title": "Delta passengers evacuate on escape slides after emergency landing",
+          "summary": "Delta passengers evacuate on escape slides after emergency landing &nbsp;&nbsp; AeroTime",
+          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQ1VEaXhrS0pGejgxZUxqR3h4RUFhZ1J5ejV1NU1rSjNqX0pIdnV6NUFlQWxYU0xZUGxLWVRGWVZHbG1wMnVESVI2OC1hLTEwT3hIVVB1NFdNY0owTmJLeU1veVBJdl92NEZjcWp4cXZOR05aT1QxZGM2dGxKaTJlQ3F5RlcyM1NLNDJtczU0UzN3UzZUQ2hFd0hzdUFCSnVoMnF30gGoAUFVX3lxTE5Sd1o5QkZmbFo4UFZPVmptaUpzRGRHZWUwbE1JUVdNaWhqYmdHRzRCRzZ4V2N2VmszekRheEJEV0o3TGJvYk03N2NFcXFVZ0xXUFlwb29WVkM3RS15Z2E1LVVYdjg0SFBwc2M2eml2ZUxFNm11SFlBY2Vzb1RCejVTZDg5TWI3Yk9Femh6UndZNkw5bjlLd2NFc2I0b01fWUFKaVZ1R1lfMw?oc=5",
+          "source": "AeroTime",
+          "companion": true,
+          "publishedUtc": "2026-08-09T08:31Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260809-1136-1",
     "queuedUtc": "2026-08-09T11:36Z",
     "approve": false,
@@ -9519,369 +9983,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260806-0638-3",
-    "queuedUtc": "2026-08-06T06:38Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves an aviation safety incident, drone collision threat, and ongoing police investigation.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "investigation",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Police stated that a drone carrying explosives was found at a German airport.",
-        "sourceQuote": "Drone carrying explosives found at German airport, police say",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5tRnlVVHAtTjQyLUlpd0stck83MWdDR3RLYXVpUWVXUFM5LXJKTnhwZF9nRFpyOXM5M0xJbTRkRUlJOWRWUFZmRXdOeTVBYVlvbzFDdHllQkNBdw?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Simple Flying reported that an explosive-laden drone forced a DHL freighter into a go-around and mid-air collision.",
-        "sourceQuote": "An explosive-laden drone forced a DHL freighter into a go-around and mid-air collision.",
-        "sourceUrl": "https://simpleflying.com/dhl-cargo-jet-collides-unidentified-object-bomb-drone/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The interior minister stated that a drone carrying explosives at a German airport marks a new level of danger.",
-        "sourceQuote": "Drone carrying explosives at German airport marks ‘new level of danger’, says interior minister",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxObFcyenlkNTJ4OVBuc0traTZWb3RYMTRWenBZNl9SNlNFc0J2OTBodWlUdWZWU2x0OGhSa3c1WUxxOEJ0bllCVThiN3J3ZDRWMExGY2V0LUhmZ21VOEs0dE02RGJnMG1RTGp2Z05zdkoxSXVxUTEzcTNiS3ZmVmZKcHRCZGNBUVFfTTNnYU9qN1hYc3c2RmdxRzFXSWNteC00S3NTaFIxT1diUQ?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves an aviation safety incident, drone collision threat, and ongoing police investigation.",
-      "cat": "safety",
-      "zh": {
-        "title": "德國機場發現載有炸藥無人機 據報致DHL貨機重飛並發生碰撞",
-        "summary": "德國警方表示，在德國一處機場發現一架載有炸藥的無人機。據Simple Flying報導，該架載有炸藥的無人機迫使一架DHL貨機進行重飛，並在空中發生碰撞。德國內政部長對此表示，在德國機場發現載有炸藥的無人機標誌著新型態的危險等級。",
-        "body": [
-          "根據德國警方發布之官方訊息，相關執法單位在德國一處機場發現了一架載有炸藥的無人機。針對此一事件，德國內政部長發布聲明指出，在機場範圍內發現載有炸藥的無人機，標誌著防護與安全領域面臨了新型態的危險等級。",
-          "另據新聞媒體Simple Flying報導，在一架載有炸藥的無人機發布相關警報之後，一架DHL貨運飛機被迫實施重飛程序，並於空中與不明物體發生碰撞。",
-          "目前警方正針對發現載有炸藥無人機之案情進行調查與釐清，相關主管機關亦持續關注此起事件的後續狀況與調查進展。"
-        ]
-      },
-      "en": {
-        "title": "Bomb Drone Found at German Airport Triggers Alert and DHL Cargo Jet Collision",
-        "summary": "Police reported that a drone carrying explosives was found at a German airport, prompting an investigation into the security threat. According to Simple Flying, an explosive-laden drone forced a DHL cargo jet into a go-around, after which the freighter collided with an unidentified object in mid-air. Germany's interior minister stated that the presence of an explosive-carrying drone at a German airport represents a new level of danger for aviation security. Authorities and police are investigating the circumstance surrounding the incident.",
-        "body": [
-          "German police confirmed that a drone carrying explosives was found at a German airport. In response to the discovery, Germany's interior minister stated that a drone carrying explosives at a German airport marks a new level of danger for public and aviation safety.",
-          "According to a report by Simple Flying, an explosive-laden drone forced a DHL freighter aircraft into a go-around, after which the jet collided with an unidentified object in mid-air during the incident.",
-          "Police officers and official authorities are conducting an investigation to clarify the circumstances of the drone alert and the subsequent mid-air collision at the airport."
-        ]
-      },
-      "flash": {
-        "zh": "德國機場發現載有炸藥無人機，引發DHL貨機重飛與碰撞警報。",
-        "en": "A drone carrying explosives at a German airport triggered an alert and DHL cargo jet collision.",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-05",
-        "sev": "inc",
-        "aircraft": "DHL freighter",
-        "operator": "DHL",
-        "phase": {
-          "zh": "重飛階段",
-          "en": "Go-around"
-        },
-        "location": {
-          "zh": "德國機場",
-          "en": "German airport"
-        },
-        "desc": {
-          "zh": "載有炸藥無人機引發警報，DHL貨機重飛並與不明物體發生碰撞",
-          "en": "An explosive-laden drone forced a DHL cargo jet into a go-around and collision with an unidentified object."
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Police stated that a drone carrying explosives was found at a German airport.",
-          "sourceQuote": "Drone carrying explosives found at German airport, police say",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5tRnlVVHAtTjQyLUlpd0stck83MWdDR3RLYXVpUWVXUFM5LXJKTnhwZF9nRFpyOXM5M0xJbTRkRUlJOWRWUFZmRXdOeTVBYVlvbzFDdHllQkNBdw?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Simple Flying reported that an explosive-laden drone forced a DHL freighter into a go-around and mid-air collision.",
-          "sourceQuote": "An explosive-laden drone forced a DHL freighter into a go-around and mid-air collision.",
-          "sourceUrl": "https://simpleflying.com/dhl-cargo-jet-collides-unidentified-object-bomb-drone/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The interior minister stated that a drone carrying explosives at a German airport marks a new level of danger.",
-          "sourceQuote": "Drone carrying explosives at German airport marks ‘new level of danger’, says interior minister",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxObFcyenlkNTJ4OVBuc0kraTZWb3RYMTRWenBZNl9SNlNFc0J2OTBodWlUdWZWU2x0OGhSa3c1WUxxOEJ0bllCVThiN3J3ZDRWMExGY2V0LUhmZ21VOEs0tM6RGJnMG1RTGp2Z05zdkoxSXVxUTEzcTNiS3ZmVmZKcHRCZGNBUVFfTTNnYU9qN1hYc3c2RmdxRzFXSWNteC00S3NTaFIxT1diUQ?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "DHL"
-        ],
-        "airlines": [
-          "DHL"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-05",
-          "2026-08-06"
-        ]
-      },
-      "eventStatus": "under_investigation",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "investigation",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260806-0638-3",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "DHL Cargo Jet Collides With Unidentified Object After Bomb Drone Alert At German Airport",
-          "url": "https://simpleflying.com/dhl-cargo-jet-collides-unidentified-object-bomb-drone/",
-          "publishedUtc": "2026-08-06T04:19Z",
-          "summary": "An explosive-laden drone forced a DHL freighter into a go-around and mid-air collision.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/357vbqo5bv8wgky4qj-1.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "title": "Drone carrying explosives found at German airport, police say",
-          "summary": "Drone carrying explosives found at German airport, police say &nbsp;&nbsp; BBC",
-          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5tRnlVVHAtTjQyLUlpd0stck83MWdDR3RLYXVpUWVXUFM5LXJKTnhwZF9nRFpyOXM5M0xJbTRkRUlJOWRWUFZmRXdOeTVBYVlvbzFDdHllQkNBdw?oc=5",
-          "source": "BBC",
-          "companion": true,
-          "publishedUtc": "2026-08-05T20:01Z"
-        },
-        {
-          "title": "Drone carrying explosives at German airport marks ‘new level of danger’, says interior minister",
-          "summary": "Drone carrying explosives at German airport marks ‘new level of danger’, says interior minister &nbsp;&nbsp; The Guardian",
-          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxObFcyenlkNTJ4OVBuc0traTZWb3RYMTRWenBZNl9SNlNFc0J2OTBodWlUdWZWU2x0OGhSa3c1WUxxOEJ0bllCVThiN3J3ZDRWMExGY2V0LUhmZ21VOEs0dE02RGJnMG1RTGp2Z05zdkoxSXVxUTEzcTNiS3ZmVmZKcHRCZGNBUVFfTTNnYU9qN1hYc3c2RmdxRzFXSWNteC00S3NTaFIxT1diUQ?oc=5",
-          "source": "The Guardian",
-          "companion": true,
-          "publishedUtc": "2026-08-05T11:37Z"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260806-0321-3",
-    "queuedUtc": "2026-08-06T03:21Z",
-    "approve": false,
-    "writer": "openrouter:google/gemma-4-26b-a4b-it:free",
-    "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The Bahamas Air Navigation Services Authority (BANSA) has begun collecting retroactive navigation fees from operators of piston twins, turboprops and jets that flew to, from, within or over the country since May 1, 2021.",
-        "sourceQuote": "The Bahamas Air Navigation Services Authority, known as BANSA, has begun collecting retroactive navigation fees from operators that flew to, from, within or over the country in piston twins, turboprops and jets since May 1, 2021.",
-        "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The NBAA reports that fee increases range from nearly 300% to almost 700%, depending on the aircraft's maximum takeoff weight.",
-        "sourceQuote": "NBAA said the increases range from nearly 300% to almost 700%, depending on the aircraft’s maximum takeoff weight.",
-        "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Exemptions from the fees include single-engine piston aircraft, search-and-rescue missions, emergency medical flights, certain emergency landings, and government or military aircraft.",
-        "sourceQuote": "Private flights in single-engine piston aircraft are exempt, along with search-and-rescue missions, emergency medical flights, certain emergency landings and government or military aircraft.",
-        "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The NBAA is launching an advocacy effort with other stakeholders and the US government regarding the economic impact of the fees.",
-        "sourceQuote": "NBAA is launching an advocacy effort with other impacted stakeholders and the US government to highlight the negative economic impact such onerous fees will have on FBOs, airports, the travel industry and surrounding businesses",
-        "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
-      "cat": "biz",
-      "zh": {
-        "title": "巴哈馬追溯徵收自2021年起之航行費",
-        "summary": "巴哈馬空中航行服務局（BANSA）已開始向自2021年5月1日起在該國領空內或其境內進行飛行之雙引擎活塞式、渦輪螺旋槳及噴射機營運商，追溯徵收航行費。根據美國國家通用航空協會（NBAA）指出，部分費用漲幅達300%至700%。",
-        "body": [
-          "巴哈馬空中航行服務局（BANSA）已開始向自2021年5月1日起，在巴哈馬境內、境內或其領空內進行飛行之雙引擎活塞式、渦輪螺旋槳及噴射機營運商，追溯徵收航行費。",
-          "根據美國國家通用航空協會（NBAA）指出，這些費用的漲幅視飛機最大起飛重量而定，漲幅介於近300%至近700%之間。",
-          "此項追溯徵收政策適用於私人及商業飛行，但單引擎活塞式飛機、搜救任務、緊急醫療飛行、特定緊急著陸以及政府或軍用飛機則獲得豁免。",
-          "NBAA 表示，該協會正與其他受影響的利害關係人及美國政府合作，針對此項費用可能對 FBO、機場、旅遊業及相關企業造成的負面經濟影響展開倡議工作。"
-        ]
-      },
-      "en": {
-        "title": "The Bahamas imposes retroactive navigation fees dating back to 2021",
-        "summary": "The Bahamas Air Navigation Services Authority (BANSA) has begun collecting retroactive navigation fees from operators of twin-engine piston, turboprop, and jet aircraft that flew to, from, within, or over the country since May 1, 2021. According to the NBAA, fee increases range from nearly 300% to almost 700%.",
-        "body": [
-          "The Bahamas Air Navigation Services Authority (BANSA) has begun collecting retroactive navigation fees from operators that flew to, from, within or over the country in piston twins, turboprops and jets since May 1, 2021.",
-          "The National Business Aviation Association (NBAA) stated that the increases range from nearly 300% to almost 700%, depending on the aircraft’s maximum takeoff weight.",
-          "The charges apply to both private and commercial flights, though exemptions are provided for single-engine piston aircraft, search-and-rescue missions, emergency medical flights, certain emergency landings, and government or military aircraft.",
-          "The NBAA is launching an advocacy effort with other impacted stakeholders and the US government to highlight the negative economic impact such fees may have on FBOs, airports, the travel industry, and surrounding businesses."
-        ]
-      },
-      "flash": {
-        "zh": "巴哈馬追溯徵收自2021年起之航行費",
-        "en": "The Bahamas imposes retroactive navigation fees dating back to 2021",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The Bahamas Air Navigation Services Authority (BANSA) has begun collecting retroactive navigation fees from operators of piston twins, turboprops and jets that flew to, from, within or over the country since May 1, 2021.",
-          "sourceQuote": "The Bahamas Air Navigation Services Authority, known as BANSA, has begun collecting retroactive navigation fees from operators that flew to, from, within or over the country in piston twins, turboprops and jets since May 1, 2021.",
-          "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The NBAA reports that fee increases range from nearly 300% to almost 700%, depending on the aircraft's maximum takeoff weight.",
-          "sourceQuote": "NBAA said the increases range from nearly 300% to almost 700%, depending on the aircraft’s maximum takeoff weight.",
-          "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Exemptions from the fees include single-engine piston aircraft, search-and-rescue missions, emergency medical flights, certain emergency landings, and government or military aircraft.",
-          "sourceQuote": "Private flights in single-engine piston aircraft are exempt, along with search-and-rescue missions, emergency medical flights, certain emergency landings and government or military aircraft.",
-          "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The NBAA is launching an advocacy effort with other stakeholders and the US government regarding the economic impact of the fees.",
-          "sourceQuote": "NBAA is launching an advocacy effort with other impacted stakeholders and the US government to highlight the negative economic impact such onerous fees will have on FBOs, airports, the travel industry and surrounding businesses",
-          "sourceUrl": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "The Bahamas Air Navigation Services Authority",
-          "BANSA",
-          "National Business Aviation Association",
-          "NBAA",
-          "CST Flight Services",
-          "International Air Transport Association",
-          "Ministry of Tourism and Aviation",
-          "AOPA"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "The Bahamas",
-          "Florida",
-          "US",
-          "Grand Bahama"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2021-05-01"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260806-0321-3",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "The Bahamas hits aircraft operators with retroactive bills dating to 2021",
-          "url": "https://www.aerotime.aero/articles/bahamas-hits-aircraft-operators-with-retroactive-bills-dating-to-2021",
-          "publishedUtc": "2026-08-05T20:57Z",
-          "summary": "For years, The Bahamas worked hard to persuade private pilots to visit, promoting its airports, organizing fly-ins and… The post The Bahamas hits aircraft operators with retroactive bills dating to 2021 appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
