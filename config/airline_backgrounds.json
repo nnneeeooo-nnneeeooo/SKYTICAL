@@ -1,0 +1,38 @@
+{
+  "_comment": "可供稀有航機稿件引用的航空公司背景。每項必須有官方來源、查核日與適用期限；逾期後程式自動略過，不得由模型自行補寫。",
+  "profiles": [
+    {
+      "icao_code": "AMU",
+      "facts": [
+        {
+          "source_name": "澳門民航局航空企業資料",
+          "source_url": "https://www.aacm.gov.mo/zh-hant/airline-company/base-airline",
+          "checked_on": "2026-08-10",
+          "valid_from": "2026-08-10",
+          "valid_through": "2026-12-31",
+          "zh": "航空公司背景：澳門民航局將澳門航空股份有限公司列為在澳門註冊成立的航空公司。",
+          "en": "Airline background: The Civil Aviation Authority of Macao lists Air Macau Company Limited as an airline incorporated in Macao."
+        },
+        {
+          "source_name": "澳門民航局澳門註冊航空器名單",
+          "source_url": "https://www.aacm.gov.mo/en/industry-page/RegisteredAircraft",
+          "checked_on": "2026-08-10",
+          "valid_from": "2026-08-09",
+          "valid_through": "2026-12-31",
+          "registrations": ["B-MBU"],
+          "zh": "航空器登記背景：澳門民航局的澳門註冊航空器名單將 B-MBU 列於澳門航空名下，型號為 Airbus A321-271NX。",
+          "en": "Aircraft registry background: The Macao aircraft register lists B-MBU under Air Macau Company Limited as an Airbus A321-271NX."
+        },
+        {
+          "source_name": "澳門民航局核准客運航班名單",
+          "source_url": "https://www.aacm.gov.mo/static/2026/04/01/e56b0c34-fb2a-410a-aee1-c2a5bde80765.pdf",
+          "checked_on": "2026-08-10",
+          "valid_from": "2026-04-01",
+          "valid_through": "2026-09-30",
+          "zh": "臺灣航線背景：澳門民航局 2026 年 4 月 1 日更新的核准客運航班名單列有澳門航空往返臺北、高雄及臺中的航線；實際班次仍以航空公司當期班表為準。",
+          "en": "Taiwan route background: The Macao authority's passenger-flight approvals updated on April 1, 2026 list Air Macau on Taipei, Kaohsiung and Taichung routes; actual operations remain subject to the airline's current schedule."
+        }
+      ]
+    }
+  ]
+}
