@@ -1,1 +1,45 @@
-[]
+[
+  {
+    "eventId": "fw-1399c701b95c3b05",
+    "queuedUtc": "2026-08-09T05:12:35Z",
+    "notBeforeUtc": "2026-08-09T05:42:35Z",
+    "bootstrap": true,
+    "crossCheck": "confirmed_by_primary_only",
+    "airport": {
+      "icao": "RCTP",
+      "iata": "TPE",
+      "name_zh": "臺灣桃園國際機場",
+      "name_en": "Taiwan Taoyuan International Airport"
+    },
+    "aircraft": {
+      "hex": "84715c",
+      "registration": "JA16JJ",
+      "type": "A320",
+      "type_name": "Airbus A320",
+      "callsign": "JJP14"
+    },
+    "operator": {
+      "icao": "JJP",
+      "name": "Jetstar Japan"
+    },
+    "arrival": {
+      "status": "confirmed_arrival",
+      "firstSeenUtc": "2026-08-09T04:02:30Z",
+      "confirmedUtc": "2026-08-09T05:12:35Z",
+      "basis": "位於機場地理圍欄內且 alt_baro 為 ground",
+      "observations": 2
+    },
+    "rarity": {
+      "score": 60,
+      "reasons": [
+        "營運者 JJP 非 RCTP 常態業者 (+35)",
+        "過去 180 天無相同營運者+機型+機場紀錄 (+25)",
+        "過去 365 天此註冊號未曾抵達 RCTP (+15)",
+        "常見機型 (-15)"
+      ],
+      "watchlisted": false,
+      "combo180": 0,
+      "reg365": 0
+    }
+  }
+]
