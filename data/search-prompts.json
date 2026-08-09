@@ -1,34 +1,34 @@
 {
-  "version": 1,
-  "generatedUtc": "2026-08-09T22:57Z",
+  "version": 2,
+  "generatedUtc": "2026-08-09T23:01Z",
   "targetDateTpe": "2026-08-10",
   "sourceWindow": "month_to_date",
-  "generationMode": "deterministic",
-  "provider": null,
+  "generationMode": "llm",
+  "provider": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
   "sourceArticleIds": [
     "a-20260809-1441-airbus-a321neo-arrives-at-taoyuan-airpor",
     "a-20260809-1305-emirates-temporarily-suspends-airbus-a38",
     "a-20260809-0948-london-heathrow-tops-airadvisor-2026-glo",
     "a-20260809-0948-jetstar-to-introduce-overhead-locker-fee",
-    "a-20260809-0853-david-cummins-sworn-in-as-eighth-tsa-adm",
-    "a-20260809-0853-indigo-to-deploy-airbus-a321xlr-on-11-ho"
+    "a-20260809-0853-indigo-to-deploy-airbus-a321xlr-on-11-ho",
+    "a-20260809-0551-jetstar-japan-a320-arrival-at-taoyuan-ai"
   ],
   "prompts": {
     "zh": [
-      "搜尋：澳門航空 A321neo B-MBU 抵達桃園",
-      "搜尋：阿聯酋航空2026年夏季暫停布拉格（PRG）…",
-      "搜尋：AirAdvisor發布2026機場排名 倫…",
-      "搜尋：捷星航空宣布2027年起收取頭頂置物箱費用",
-      "搜尋：David Cummins宣誓就任美國運輸安…",
-      "搜尋：IndiGo將以空中巴士A321XLR執飛孟…"
+      "澳門航空 B-MBU A321neo 桃園",
+      "阿聯酋航空 A380 布拉格 格拉斯哥",
+      "倫敦希斯洛機場 排名",
+      "捷星航空 頭頂置物箱 費用",
+      "靛藍航空 A321XLR 孟買 阿姆斯特丹",
+      "日航聯營 Jetstar Japan A320 桃園"
     ],
     "en": [
-      "Explore: Air Macau A321neo B-MBU Arrives at Taiwan Taoyuan",
-      "Explore: Emirates Temporarily Suspends A380 Flights to Pr…",
-      "Explore: London Heathrow Tops AirAdvisor 2026 Global Airp…",
-      "Explore: Jetstar to Introduce Overhead Locker Fees for Ec…",
-      "Explore: David Cummins Sworn In as Eighth TSA Administrat…",
-      "Explore: IndiGo to Deploy Airbus A321XLR on 11-Hour Mumba…"
+      "Air Macau B-MBU A321neo Taoyuan",
+      "Emirates A380 Prague Glasgow",
+      "London Heathrow airport ranking",
+      "Jetstar overhead locker fee",
+      "IndiGo A321XLR Mumbai Amsterdam",
+      "Jetstar Japan A320 Taoyuan"
     ]
   }
 }
