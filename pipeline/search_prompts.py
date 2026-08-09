@@ -20,6 +20,7 @@ from common import DATA_DIR, iso_minute, load_json, now_utc, parse_iso, save_jso
 
 TPE = timezone(timedelta(hours=8), "UTC+8")
 OUTPUT_NAME = "search-prompts.json"
+OUTPUT_VERSION = 2
 PROMPT_COUNT = 6
 MAX_CANDIDATES = 12
 MAX_ZH_CHARS = 26
@@ -222,9 +223,26 @@ def deterministic_prompts(candidates: list[dict]) -> tuple[dict, list[str]]:
 
 def _provider_limit() -> int:
     try:
-        return max(1, min(int(os.environ.get("SEARCH_PROMPTS_LLM_ATTEMPTS", "3")), 5))
+        return max(1, min(int(os.environ.get("SEARCH_PROMPTS_LLM_ATTEMPTS", "4")), 5))
     except ValueError:
-        return 3
+        return 4
+
+
+def _providers_for_attempts(providers) -> list:
+    """Try distinct API platforms so one bad key cannot consume the budget."""
+    selected, seen = [], set()
+    for provider in providers or []:
+        platform = _text(getattr(provider, "name", ""))
+        if not platform:
+            platform = _text(getattr(provider, "label", "unknown")).split(":", 1)[0]
+        platform = platform.casefold()
+        if platform in seen:
+            continue
+        seen.add(platform)
+        selected.append(provider)
+        if len(selected) >= _provider_limit():
+            break
+    return selected
 
 
 def update_daily_prompts(*, data_dir: Path = DATA_DIR, now: datetime | None = None,
@@ -235,7 +253,9 @@ def update_daily_prompts(*, data_dir: Path = DATA_DIR, now: datetime | None = No
     target_date = now.astimezone(TPE).strftime("%Y-%m-%d")
     existing = load_json(output_path, {})
     if not force and isinstance(existing, dict) \
-            and existing.get("targetDateTpe") == target_date:
+            and existing.get("targetDateTpe") == target_date \
+            and isinstance(existing.get("version"), int) \
+            and existing["version"] >= OUTPUT_VERSION:
         print(f"search-prompts: {target_date} already generated")
         return False
 
@@ -253,7 +273,7 @@ def update_daily_prompts(*, data_dir: Path = DATA_DIR, now: datetime | None = No
                 print(f"search-prompts: providers unavailable ({type(exc).__name__})")
                 providers = []
         digest = json.dumps(candidates, ensure_ascii=False, separators=(",", ":"))
-        for provider in list(providers or [])[:_provider_limit()]:
+        for provider in _providers_for_attempts(providers):
             attempted.append(provider)
             try:
                 draft = provider.draft(SYSTEM_PROMPT, digest, PROMPT_SCHEMA)
@@ -279,7 +299,7 @@ def update_daily_prompts(*, data_dir: Path = DATA_DIR, now: datetime | None = No
             print(f"search-prompts: usage update failed ({type(exc).__name__})")
 
     payload = {
-        "version": 1,
+        "version": OUTPUT_VERSION,
         "generatedUtc": iso_minute(now),
         "targetDateTpe": target_date,
         "sourceWindow": window,

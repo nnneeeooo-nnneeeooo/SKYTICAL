@@ -14,6 +14,7 @@ import search_prompts  # noqa: E402
 
 
 class FakeProvider:
+    name = "fake"
     label = "fake:test-model"
     http_calls = 1
     usage = {"inputTokens": 100, "outputTokens": 50, "usageEvents": 1}
@@ -75,6 +76,7 @@ def main() -> None:
         payload = json.loads(
             (data_dir / "search-prompts.json").read_text(encoding="utf-8"))
         assert payload["targetDateTpe"] == "2026-08-10"
+        assert payload["version"] == search_prompts.OUTPUT_VERSION
         assert payload["generationMode"] == "llm"
         assert payload["provider"] == "fake:test-model"
         assert len(payload["prompts"]["zh"]) == 6
@@ -104,6 +106,24 @@ def main() -> None:
         assert fallback["generationMode"] == "deterministic"
         assert fallback["provider"] is None
         assert fallback["prompts"]["zh"][0].startswith("搜尋：航空7 A327")
+
+        # A bad key can expose several models from one platform.  Only the
+        # first model from each API platform may consume the daily budget.
+        class NamedProvider:
+            def __init__(self, name, model):
+                self.name = name
+                self.label = f"{name}:{model}"
+
+        selected = search_prompts._providers_for_attempts([
+            NamedProvider("opencode", "one"),
+            NamedProvider("opencode", "two"),
+            NamedProvider("gemini", "flash"),
+            NamedProvider("nvidia", "model"),
+            NamedProvider("openrouter", "free"),
+            NamedProvider("anthropic", "sonnet"),
+        ])
+        assert [provider.name for provider in selected] == [
+            "opencode", "gemini", "nvidia", "openrouter"]
 
     workflow = (ROOT / ".github" / "workflows" / "hourly.yml").read_text(
         encoding="utf-8")
