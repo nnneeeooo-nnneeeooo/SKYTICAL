@@ -2,7 +2,7 @@ name: hourly-update
 
 on:
   schedule:
-    - cron: "0 * * * *" # every hour on the hour (UTC)
+    - cron: "1 * * * *" # hourly; 16:01 UTC is 00:01 Asia/Taipei
   workflow_dispatch:
   push:
     branches: [main]
@@ -65,6 +65,9 @@ jobs:
           python pipeline/dedupe.py
           python pipeline/write.py
           python pipeline/images.py
+          # The saved Taipei date makes this one LLM-assisted refresh per day.
+          # Missing/invalid model output falls back to published article titles.
+          python pipeline/search_prompts.py --daily-if-due
           # a briefing run may have committed newer briefing JSONs since this
           # job checked out; deploys race (last wins), so refresh them before
           # building or this deploy can put a stale briefing page back live
