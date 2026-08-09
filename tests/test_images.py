@@ -236,6 +236,49 @@ check("airline and aircraft must both match the Commons title",
       strict_match["url"]
       == "https://upload.wikimedia.org/starlux-a350.jpg")
 
+fake.commons = FakeResp(200, {"query": {"pages": {
+    "1": {"index": 0,
+          "title": "File:China Airlines B-180 Boeing 737-209.jpg",
+          "imageinfo": [{
+              "thumburl": "https://upload.wikimedia.org/china-1986.jpg",
+              "extmetadata": {
+                  "DateTimeOriginal": {"value": "1986"},
+                  "LicenseShortName": {"value": "Public domain"},
+                  "Artist": {"value": "Unknown"}}}]},
+    "2": {"index": 1,
+          "title": "File:China Airlines Boeing 737-800 2026.jpg",
+          "imageinfo": [{
+              "thumburl": "https://upload.wikimedia.org/china-2026.jpg",
+              "extmetadata": {
+                  "DateTimeOriginal": {"value": "2026-02-15"},
+                  "LicenseShortName": {"value": "CC BY 4.0"},
+                  "Artist": {"value": "Recent Photographer"}}}]},
+}}})
+recent_generic = images.lookup_commons(
+    "China Airlines aircraft", ["China Airlines"],
+    min_year=2016, prefer_recent=True)
+check("generic airline fallback rejects old fleet photos and picks newest",
+      recent_generic["url"]
+      == "https://upload.wikimedia.org/china-2026.jpg"
+      and recent_generic["photoYear"] == 2026)
+
+generic_china_story = make_article(
+    "a-generic-china", "China Airlines provides relief flight assistance")
+generic_china_story["entities"]["airlines"] = ["China Airlines"]
+old_generic_airline_image = {
+    "url": "https://upload.wikimedia.org/china-1986.jpg",
+    "link": "https://commons.wikimedia.org/w/old",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "China Airlines aircraft", "subject": "China Airlines",
+}
+fresh_generic_airline_image = dict(old_generic_airline_image,
+                                   photoYear=now_utc().year)
+check("cached generic airline photo without a recent capture year is stale",
+      not images.existing_image_matches(
+          generic_china_story, old_generic_airline_image)
+      and images.existing_image_matches(
+          generic_china_story, fresh_generic_airline_image))
+
 air_macau_story = make_article(
     "a-air-macau", "Air Macau Airbus A321neo B-MBU arrived")
 wrong_airline_image = {
@@ -407,6 +450,18 @@ check("published IndiGo article uses owner-approved name and aircraft",
       and "印地高" not in json.dumps(indigo_published, ensure_ascii=False)
       and "IndiGo_VT-IJB_A320neo" in indigo_published["image"]["url"]
       and "British_Airways" not in indigo_published["image"]["url"])
+
+all_published_images = []
+for article_path in (REPO / "data" / "articles").glob("*.json"):
+    batch = json.loads(article_path.read_text(encoding="utf-8"))
+    for article in batch.get("articles") or []:
+        image = article.get("image") or ""
+        all_published_images.append(
+            str(image.get("url") or "") if isinstance(image, dict)
+            else str(image))
+check("retired B-180 accident airframe is absent from published images",
+      not any("China_Airlines_B-180_Boeing_737-209" in url
+              for url in all_published_images))
 
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
