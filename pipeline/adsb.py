@@ -152,6 +152,7 @@ def parse_aircraft(raw: dict):
       type      position source (adsb_icao/mlat/tisb/...) - NOT the type
       alt_baro  int feet OR the literal string "ground"
       flight    callsign, often right-padded with spaces
+      ownOp     database-supplied registered owner/operator label
       hex       ICAO 24-bit address; "~" prefix = non-ICAO (TIS-B et al.)
     """
     if not isinstance(raw, dict):
@@ -171,6 +172,7 @@ def parse_aircraft(raw: dict):
         "registration": str(raw.get("r") or "").strip() or None,
         "aircraft_type": str(raw.get("t") or "").strip().upper() or None,
         "callsign": str(raw.get("flight") or "").strip() or None,
+        "operator_name": str(raw.get("ownOp") or "").strip()[:160] or None,
         "alt_baro": alt_baro,                  # feet, "ground", or None
         "alt_geom": _float(raw.get("alt_geom")),
         "ground_speed": _float(raw.get("gs")),

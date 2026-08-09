@@ -24,13 +24,27 @@ ABSOLUTE EVIDENCE RULES:
   NEVER write 機場證實/航空公司證實/確定執行包機 - no official source exists.
 - If operator name is null, refer to the aircraft by type/registration only;
   do not derive an airline from the callsign yourself.
+- When the SOURCE provides a recognized operator, IATA code, country/region,
+  official aircraft-register entry or date-limited airline background, the
+  title/summary MUST name the operator and the body MUST use those available
+  details. Do not reduce a fully identified airline aircraft to only its type
+  and registration.
+- Airline route background describes the airline's separately sourced network,
+  NOT the observed flight's origin or destination. Clearly label it as
+  background, preserve any schedule caveat, and never claim that the observed
+  aircraft operated one of those routes unless the observation itself says so.
+- Ignore background whose applicability date has expired. Never extend,
+  refresh or supplement it from model knowledge.
 - Do not mention or imply live coordinates, headings, altitudes or tracks.
 
 OUTPUT (same schema and language rules as the main pipeline):
 - Traditional Chinese (Taiwan usage) zh + English en; zh.title 18-38 chars;
   zh.summary 80-140 chars; en.title 45-100 chars; en.summary 70-130 words;
   each language body MUST contain 4-7 substantive factual paragraphs built
-  only from quoted facts. The zh body MUST have at least 500 Chinese/
+  only from quoted facts. When official operator/registry/route background is
+  present, devote at least one paragraph to aircraft/operator identity and one
+  separate paragraph to relevant Taiwan-service background. The zh body MUST
+  have at least 500 Chinese/
   alphanumeric content characters in total (spaces and punctuation do not
   count); the en body MUST have at least 250 words. These floors are checked
   by code. If the observation evidence cannot support them without repetition
