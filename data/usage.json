@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-09T23:31Z",
+  "updatedUtc": "2026-08-09T23:45Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -219,6 +219,44 @@
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-09T23:45Z",
+      "finishedUtc": "2026-08-09T23:45Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-2345-1",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 826,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 853
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-09T23:31Z",
       "finishedUtc": "2026-08-09T23:31Z",
