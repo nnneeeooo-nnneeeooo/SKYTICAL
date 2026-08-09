@@ -67,12 +67,14 @@ a.ticker-item:hover .ticker-time { color: var(--color-accent); }
 }
 .brand-logo {
   display: block; width: 100%; height: auto; max-width: 360px;
-  background: #fff;
+  background: transparent;
 }
 .footer-logo {
   display: block; width: min(100%, 300px); height: auto;
-  background: #fff;
+  background: transparent;
 }
+[data-theme="dark"] .brand-logo,
+[data-theme="dark"] .footer-logo { filter: brightness(0) invert(1); }
 
 /* — Google-style search, deliberately the first row of every page — */
 .header-search-row {
