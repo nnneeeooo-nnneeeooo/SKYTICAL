@@ -88,7 +88,7 @@
     <div class="ticker-window">
       <div class="marquee-track">
         {% for pass in range(2) %}
-        <span style="padding-right:70px;font-size:13px;white-space:nowrap;">
+        <span class="ticker-pass">
           {%- for it in ticker_items -%}
           {%- if it.url -%}
           <a class="ticker-item" href="{{ it.url }}"{% if it.external %} target="_blank" rel="noopener"{% endif %}><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>&#8195;{{ it.text }}<span class="ticker-go">↗</span></a>
