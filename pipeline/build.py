@@ -1021,21 +1021,15 @@ def header_search_placeholders(lang: str) -> tuple[str, ...]:
 
 
 def _keyword_summary(value: str, lang: str, limit: int) -> str:
-    """Turn verified text into a bounded, semicolon-separated keyword line."""
+    """Turn verified text into a bounded line of complete factual clauses."""
     text = re.sub(r"\s+", " ", str(value or "")).strip()
     if lang == "zh":
-        text = re.sub(r"[\s，、。！？：:—–|/]+", "；", text)
-        if "；" not in text:
-            org = re.match(
-                r"^(.{2,16}?(?:航空|機場|民航局|航空局|機場公司|空中巴士|波音))(.+)$",
-                text,
-            )
-            if org:
-                text = f"{org.group(1)}；{org.group(2)}"
+        text = re.sub(r"^(?:根據|據)[^，]{2,30}(?:報導|資料|消息)[，,]", "", text)
+        text = re.sub(r"[，。！？：—–|]+", "；", text)
         parts = [part.strip("； ") for part in text.split("；")
                  if part.strip("； ")]
         selected = []
-        for part in parts:
+        for part in parts[:3]:
             candidate = "；".join([*selected, part])
             if len(candidate) <= limit:
                 selected.append(part)
@@ -1050,6 +1044,13 @@ def _keyword_summary(value: str, lang: str, limit: int) -> str:
     return " ".join(words[:limit]).rstrip(".,;: ")
 
 
+def _compact_mixed_title(value: str) -> str:
+    """Remove cosmetic CJK/Latin spacing without splitting proper names."""
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    text = re.sub(r"(?<=[一-鿿）])\s+(?=[A-Za-z0-9「（])", "", text)
+    return re.sub(r"(?<=[A-Za-z0-9」）])\s+(?=[一-鿿（])", "", text)
+
+
 def notification_summary(value: str, lang: str, title: str = "") -> str:
     """Return a complete two-line summary without visual ellipsis."""
     text = re.sub(r"\s+", " ", str(value or "")).strip()
@@ -1059,13 +1060,19 @@ def notification_summary(value: str, lang: str, title: str = "") -> str:
         limit = 38
         if len(text) <= limit:
             return text.rstrip("。 ")
-        return _keyword_summary(title or text, lang, limit)
+        title_text = _compact_mixed_title(title)
+        if title_text and len(title_text) <= limit:
+            return title_text.rstrip("。 ")
+        return _keyword_summary(text, lang, limit)
 
     words = text.split()
     limit_words = 14
     if len(words) <= limit_words:
         return text.rstrip(". ")
-    return _keyword_summary(title or text, lang, limit_words)
+    title_text = re.sub(r"\s+", " ", str(title or "")).strip()
+    if title_text and len(title_text.split()) <= limit_words:
+        return title_text.rstrip(". ")
+    return _keyword_summary(text, lang, limit_words)
 
 
 def art_view(a, lang: str):

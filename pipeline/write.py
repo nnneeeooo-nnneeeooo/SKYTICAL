@@ -428,7 +428,11 @@ OUTPUT RULES:
   passenger, rescue or safety
   impact when relevant. Never use an ellipsis. Omit background history,
   editorial process and low-value detail. Never invent a missing airline,
-  place, time or impact and never pad unsupported content.
+  place, time or impact and never pad unsupported content. Every summary must
+  contain a named subject and a clear action/event. Never return a standalone
+  company/person name, never split a multi-word proper name, airport code or
+  aircraft model, and use at most two semicolons. Each separated phrase must
+  remain a readable clause, not an isolated label or keyword.
 - Bodies are plain text with every load-bearing claim traceable to facts.
   publish: 4 to 7 substantive paragraphs per language; zh at least 500 Chinese/alphanumeric content characters; en at least 250 words.
   publish_brief: 2 to 7 substantive paragraphs per language; zh 180-320 Chinese/
