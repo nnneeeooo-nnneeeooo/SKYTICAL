@@ -12,7 +12,7 @@
 <link rel="alternate" hreflang="x-default" href="{{ zh_abs_url }}">
 {% endif %}
 <link rel="icon" type="image/svg+xml" href="{{ favicon }}">
-<script>try{var t=localStorage.getItem("avwire-theme");if(t){document.documentElement.dataset.theme=t;}}catch(e){}</script>
+<script>try{var t=localStorage.getItem("avwire-theme");if(t){document.documentElement.dataset.theme=t;}}catch(e){}document.documentElement.classList.add("js");</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -43,12 +43,12 @@
       </button>
     </form>
   </div>
-  <div style="border-bottom:1px solid var(--color-divider);">
-    <div style="padding:6px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;font-size:12px;">
-      <span class="text-muted" style="letter-spacing:.06em;">{{ build.date }}</span>
-      <span id="clock-utc" style="font-weight:600;letter-spacing:.06em;">UTC {{ build.utc_hm }}</span>
-      <span id="clock-tpe" class="text-muted" style="letter-spacing:.06em;">TPE {{ build.tpe_hm }}</span>
-      <span style="margin-left:auto;display:flex;align-items:center;gap:7px;">
+  <div class="utility-bar">
+    <div class="utility-row">
+      <span class="utility-date text-muted">{{ build.date }}</span>
+      <span id="clock-utc" class="utility-clock">UTC {{ build.utc_hm }}</span>
+      <span id="clock-tpe" class="utility-clock text-muted">TPE {{ build.tpe_hm }}</span>
+      <span class="utility-update">
         <span class="pulse-dot"></span>
         <span style="letter-spacing:.04em;">{{ t.updateBadge }}</span>
       </span>
@@ -62,16 +62,20 @@
       </span>
     </div>
   </div>
-  <div style="border-bottom:2px solid var(--color-divider);">
-    <div class="brand-row" style="padding:14px 20px;display:flex;align-items:center;gap:28px;">
-      <a href="{{ home_url }}" style="display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;">
-        <div style="width:34px;height:34px;background:var(--color-accent);color:var(--color-bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;">AW</div>
-        <div>
-          <div style="font-weight:800;font-size:20px;line-height:1.05;letter-spacing:-.015em;">AVWIRE <span style="color:var(--color-accent);">{{ t.brandZh }}</span></div>
-          <div class="text-muted" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;">Aviation News · Automated Hourly</div>
+  <div class="brand-shell">
+    <div class="brand-row">
+      <a class="brand-link" href="{{ home_url }}">
+        <div class="brand-mark">AW</div>
+        <div class="brand-copy">
+          <div class="brand-name">AVWIRE <span>{{ t.brandZh }}</span></div>
+          <div class="brand-tagline text-muted">Aviation News · Automated Hourly</div>
         </div>
       </a>
-      <nav class="site-nav">
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-icon" aria-hidden="true">☰</span>
+        <span>{% if lang == 'zh' %}選單{% else %}Menu{% endif %}</span>
+      </button>
+      <nav class="site-nav" id="site-nav">
         {% for n in nav %}
         <a class="nav-link{% if n.active %} active{% endif %}" href="{{ n.url }}">{{ n.label }}</a>
         {% endfor %}
@@ -79,9 +83,9 @@
     </div>
   </div>
   {% if ticker_items %}
-  <div style="border-bottom:2px solid var(--color-divider);display:flex;align-items:stretch;">
-    <div style="background:var(--color-accent);color:var(--color-bg);font-weight:800;font-size:12px;letter-spacing:.14em;display:flex;align-items:center;padding:7px 16px;flex-shrink:0;text-transform:uppercase;">{{ t.live }}</div>
-    <div style="overflow:hidden;flex:1;display:flex;align-items:center;">
+  <div class="ticker-shell">
+    <div class="ticker-label">{{ t.live }}</div>
+    <div class="ticker-window">
       <div class="marquee-track">
         {% for pass in range(2) %}
         <span style="padding-right:70px;font-size:13px;white-space:nowrap;">
