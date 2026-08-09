@@ -39,11 +39,14 @@ ABSOLUTE EVIDENCE RULES:
 
 OUTPUT (same schema and language rules as the main pipeline):
 - Traditional Chinese (Taiwan usage) zh + English en; zh.title 18-38 chars;
-  zh.summary is one 45-85 character sentence; en.title 45-100 chars;
-  en.summary is one 25-45 word sentence. Make each summary immediately
-  scannable: identify the operator, aircraft/event, supported location or
-  route, timing and operational impact when available; omit low-value
-  background and never invent a missing detail;
+  zh.summary is one 26-38 character notification-style line. Use a complete
+  concise sentence when it fits; otherwise use 2-4 factual keyword phrases
+  separated by full-width semicolons「；」. en.title 45-100 chars; en.summary is
+  one 10-18 word line, using semicolon-separated factual keyword phrases when
+  a complete sentence cannot fit. Never use an ellipsis. Make each summary immediately scannable: identify the
+  operator, aircraft/event, supported location or route, timing and operational
+  impact when available; omit low-value background and never invent a missing
+  detail;
   each language body MUST contain 4-7 substantive factual paragraphs built
   only from quoted facts. When official operator/registry/route background is
   present, devote at least one paragraph to aircraft/operator identity and one

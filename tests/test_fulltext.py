@@ -262,8 +262,10 @@ check("system prompt bans newsroom-process padding and favors briefs",
       "never narrate the editorial process" in write.SYSTEM_PROMPT
       and "never promote it to publish merely" in write.SYSTEM_PROMPT)
 check("notification-style summaries are short and information-dense",
-      "one sentence of 45 to 85 Chinese characters" in write.SYSTEM_PROMPT
-      and "one sentence\n  of 25 to 45 English words" in write.SYSTEM_PROMPT
+      "one 26 to 38 character notification-style line" in write.SYSTEM_PROMPT
+      and "otherwise use 2 to 4 factual" in write.SYSTEM_PROMPT
+      and "semicolon-separated factual keyword phrases" in write.SYSTEM_PROMPT
+      and "Never use an ellipsis" in write.SYSTEM_PROMPT
       and "supported place/route, timing and concrete operational" in
       write.SYSTEM_PROMPT)
 
