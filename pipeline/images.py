@@ -261,6 +261,39 @@ def _strip_html(value: str) -> str:
     return re.sub(r"\s+", " ", _TAG_RE.sub(" ", unescape(value))).strip()
 
 
+def existing_image_matches(article: dict, image) -> bool:
+    """Whether an existing automatic image still fits revised article facts.
+
+    Only Commons images produced by this pipeline carry ``matched`` or
+    ``subject`` provenance and are eligible for replacement.  Legacy/manual
+    images and other providers remain owner-controlled.  Exact-registration
+    matches win; otherwise a newly identified primary airline must appear in
+    the stored match provenance so a generic aircraft photo from another
+    carrier cannot survive an article correction.
+    """
+    if not isinstance(image, dict):
+        return True
+    if (image.get("provider") != "Wikimedia Commons"
+            or image.get("kind") != "file_photo"):
+        return True
+    provenance = " ".join(str(image.get(key) or "") for key in (
+        "matched", "subject", "url", "link"))
+    if not str(image.get("matched") or image.get("subject") or "").strip():
+        return True
+    normalized = re.sub(r"[^a-z0-9]+", " ", provenance.casefold()).strip()
+    reg = find_registration(article)
+    if reg:
+        normalized_reg = re.sub(r"[^a-z0-9]+", " ", reg.casefold()).strip()
+        if normalized_reg and normalized_reg in normalized:
+            return True
+    airline = find_airline(article)
+    if not airline:
+        return True
+    normalized_airline = re.sub(
+        r"[^a-z0-9]+", " ", airline.casefold()).strip()
+    return bool(normalized_airline and normalized_airline in normalized)
+
+
 # ── providers ────────────────────────────────────────────────────────────────
 
 def lookup_planespotters(reg: str) -> dict | None:
@@ -416,8 +449,16 @@ def main() -> int:
         changed = False
         for article in articles:
             art_id = str(article.get("id") or "")
-            if not art_id or article.get("image"):
+            if not art_id:
                 continue
+            if article.get("image"):
+                if existing_image_matches(article, article["image"]):
+                    continue
+                print(f"images: stale airline-mismatched photo removed for "
+                      f"{art_id}")
+                article.pop("image", None)
+                entries.pop(art_id, None)
+                changed = True
             entry = entries.get(art_id) or {}
             if entry.get("status") == "none":
                 if entry.get("attempts", 0) >= MAX_ATTEMPTS:
@@ -429,10 +470,13 @@ def main() -> int:
                 except ValueError:
                     pass
             if entry.get("status") == "matched" and entry.get("image"):
-                article["image"] = entry["image"]
-                changed = True
-                attached += 1
-                continue
+                if existing_image_matches(article, entry["image"]):
+                    article["image"] = entry["image"]
+                    changed = True
+                    attached += 1
+                    continue
+                entries.pop(art_id, None)
+                entry = {}
             if lookups >= MAX_LOOKUPS_PER_RUN:
                 continue
             lookups += 1
