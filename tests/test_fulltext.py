@@ -261,8 +261,11 @@ check("system prompt preserves supplied airport IATA codes",
 check("system prompt bans newsroom-process padding and favors briefs",
       "never narrate the editorial process" in write.SYSTEM_PROMPT
       and "never promote it to publish merely" in write.SYSTEM_PROMPT)
-check("zh summary spec unchanged (80-140)",
-      "80 to 140 Chinese characters" in write.SYSTEM_PROMPT)
+check("notification-style summaries are short and information-dense",
+      "one sentence of 45 to 85 Chinese characters" in write.SYSTEM_PROMPT
+      and "one sentence\n  of 25 to 45 English words" in write.SYSTEM_PROMPT
+      and "supported place/route, timing and concrete operational" in
+      write.SYSTEM_PROMPT)
 
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
