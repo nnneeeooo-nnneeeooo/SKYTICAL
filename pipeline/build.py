@@ -79,6 +79,7 @@ L = {
         "flash": "即時快訊", "sourceStatus": "來源狀態",
         "latest": "最新新聞", "topStory": "頭條", "mainSource": "主要來源",
         "briefLabel": "短訊",
+        "summaryLabel": "重點摘要",
         "readMore": "閱讀全文 →", "back": "← 返回首頁",
         "heroImg": "[ 頭條照片 — 由來源圖庫自動帶入，灰階顯示 ]",
         "today": "今日全球數據", "statFlights": "目前追蹤航班", "statDelay": "全球延誤率",
@@ -182,6 +183,7 @@ L = {
         "flash": "Live flash", "sourceStatus": "Source status",
         "latest": "Latest news", "topStory": "Top story", "mainSource": "Primary source",
         "briefLabel": "Brief",
+        "summaryLabel": "Quick Summary",
         "readMore": "Read more →", "back": "← Back to front page",
         "heroImg": "[ Lead photo — pulled from source library, grayscale ]",
         "today": "Global today", "statFlights": "Flights tracked now", "statDelay": "Global delay rate",
@@ -999,8 +1001,40 @@ def collect_articles():
     return sorted(by_id.values(), key=lambda a: a["dt"], reverse=True)
 
 
+def notification_summary(value: str, lang: str) -> str:
+    """Make legacy article summaries glanceable without changing source data."""
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if not text:
+        return text
+    if lang == "zh":
+        limit, minimum = 92, 44
+        if len(text) <= limit:
+            return text
+        for marks in ("。！？", "；，"):
+            breaks = [i + 1 for i, char in enumerate(text[:limit])
+                      if char in marks and i + 1 >= minimum]
+            if breaks:
+                end = breaks[-1]
+                result = text[:end].rstrip("，；")
+                return result if result.endswith(tuple("。！？")) else result + "…"
+        return text[:limit].rstrip("，；、 ") + "…"
+
+    words = text.split()
+    limit_words, minimum_words = 42, 20
+    if len(words) <= limit_words:
+        return text
+    sentence = re.match(r"^.*?[.!?](?=\s|$)", text)
+    if sentence:
+        first = sentence.group(0).strip()
+        count = len(first.split())
+        if minimum_words <= count <= limit_words:
+            return first
+    return " ".join(words[:limit_words]).rstrip(",;: ") + "…"
+
+
 def art_view(a, lang: str):
     v = dict(a[lang])
+    v["display_summary"] = notification_summary(v.get("summary"), lang)
     v.update(
         id=a["id"], cat=a["cat"], tag_class=a["tag_class"], image=a["image"],
         cat_label=_bi(CATS.get(a["cat"]), lang, a["cat"]),

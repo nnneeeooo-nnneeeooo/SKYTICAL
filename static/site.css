@@ -245,6 +245,51 @@ a.flash-row:hover { color: inherit; }
 .hero-title { margin: 8px 0 10px; font-size: 34px; line-height: 1.15; }
 .hero-meta { display: flex; gap: 16px; align-items: baseline; margin-top: 10px; font-size: 12px; }
 
+/* Apple-style glanceable summary: the private iOS glyph is represented by
+   an original two-lines-and-arrow SVG rather than copied platform artwork. */
+.summary-preview {
+  display: grid; grid-template-columns: auto minmax(0, 1fr);
+  align-items: start; gap: 7px 11px; padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, #7c6be8 28%, var(--color-divider));
+  border-radius: 15px;
+  background: color-mix(in srgb, #7c6be8 7%, var(--color-surface));
+  box-shadow: 0 2px 9px color-mix(in srgb, #5d4dcc 9%, transparent);
+}
+.summary-preview__label {
+  display: inline-flex; align-items: center; gap: 5px; padding-top: 1px;
+  color: color-mix(in srgb, #6d5bd0 84%, var(--color-text));
+  font-size: 10.5px; font-weight: 800; line-height: 1.45;
+  letter-spacing: .06em; white-space: nowrap;
+}
+.summary-preview__icon {
+  width: 17px; height: 17px; fill: none; stroke: currentColor;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.summary-preview__text {
+  min-width: 0; color: color-mix(in srgb, var(--color-text) 82%, transparent);
+  font-size: 13.5px; font-weight: 600; line-height: 1.58;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.summary-preview--hero { margin: 0; }
+.summary-preview--feed {
+  margin-top: 7px; padding: 7px 9px; border-radius: 12px;
+  box-shadow: none;
+}
+.summary-preview--feed .summary-preview__label { font-size: 9.5px; }
+.summary-preview--feed .summary-preview__icon { width: 15px; height: 15px; }
+.summary-preview--feed .summary-preview__text { font-size: 12.5px; line-height: 1.55; }
+.summary-preview--article { margin: -8px 0 24px; padding: 13px 15px; }
+.summary-preview--article .summary-preview__text { font-size: 15px; line-height: 1.65; }
+
+[data-theme="dark"] .summary-preview {
+  border-color: color-mix(in srgb, #a99cff 38%, var(--color-divider));
+  background: color-mix(in srgb, #8171e8 11%, var(--color-surface));
+}
+[data-theme="dark"] .summary-preview__label {
+  color: color-mix(in srgb, #b8adff 88%, var(--color-text));
+}
+
 /* — article — */
 .article-page { max-width: 860px; margin: 0 auto; padding: 28px 20px 64px; }
 .article-title { margin: 14px 0 12px; font-size: 38px; line-height: 1.18; }
@@ -552,6 +597,9 @@ a.flash-row:hover { color: inherit; }
   .article-title { font-size: 29px; line-height: 1.22; }
   .article-meta { gap: 7px 12px; }
   .article-meta > :last-child { margin-left: 0 !important; flex-basis: 100%; }
+  .summary-preview { grid-template-columns: minmax(0, 1fr); gap: 5px; }
+  .summary-preview--article { margin-top: -6px; padding: 11px 12px; }
+  .summary-preview--article .summary-preview__text { font-size: 14px; }
   .article-sources { padding: 14px 12px 10px; }
   .article-source-row { flex-wrap: wrap; gap: 4px 8px; }
   .footer-grid { padding: 20px 12px 28px; gap: 24px; }
