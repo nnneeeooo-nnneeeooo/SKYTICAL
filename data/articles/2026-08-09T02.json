@@ -1,0 +1,120 @@
+{
+  "articles": [
+    {
+      "id": "a-20260809-0215-airbus-a320neo-hs-cbe-arrives-at-kaohsiu",
+      "publishedUtc": "2026-08-09T02:15Z",
+      "cat": "ops",
+      "primarySource": "Airplanes.live",
+      "image": {
+        "url": "https://t.plnspttrs.net/49059/1890113_c03571cb2f_280.jpg",
+        "link": "https://www.planespotters.net/photo/1890113/hs-cbe-thai-airasia-airbus-a320-251n?utm_source=api",
+        "credit": "Jack Li",
+        "license": null,
+        "provider": "Planespotters.net",
+        "kind": "airframe_photo",
+        "matched": "HS-CBE",
+        "subject": "註冊號 HS-CBE"
+      },
+      "zh": {
+        "title": "空客A320neo HS-CBE抵達高雄國際機場",
+        "summary": "本站監測系統確認註冊號HS-CBE的空客A320neo於2026年8月8日晚間抵達高雄國際機場。",
+        "body": [
+          "本站監測系統於2026年8月8日觀測到註冊號為HS-CBE的空客A320neo（ICAO機型A20N）以呼號AIQ234抵達高雄國際機場（ICAO RCKH）。",
+          "根據公開ADS-B觀測資料，該航班的首次有效觀測時間為2026-08-08T22:55:58Z，確認抵達時間為2026-08-08T23:47:26Z。",
+          "抵達判定為confirmed_arrival，依據是位於機場地理圍欄內且alt_baro為ground。",
+          "有效觀測筆數為2，系統觀測歷史累積中尚無可比較的長期統計。",
+          "營運者名稱未識別，營運者ICAO為AIQ，航空器ICAO hex為880c45。"
+        ]
+      },
+      "en": {
+        "title": "Airbus A320neo HS-CBE Arrives at Kaohsiung International Airport",
+        "summary": "The site's ADS-B observation confirms that Airbus A320neo registration HS-CBE arrived at Kaohsiung International Airport on 8 August 2026.",
+        "body": [
+          "The observation system recorded registration HS-CBE, an Airbus A320neo (ICAO type A20N) with callsign AIQ234, arriving at Kaohsiung International Airport (ICAO RCKH).",
+          "The first valid observation timestamp was 2026-08-08T22:55:58Z and the confirmed arrival time was 2026-08-08T23:47:26Z.",
+          "Arrival status is confirmed_arrival based on being inside the airport geofence with barometric altitude on ground.",
+          "There were two valid observation samples; the site's historical record shows no comparable long-term statistics for this combination.",
+          "Operator name is unidentified, operator ICAO is AIQ, and the aircraft ICAO hex is 880c45."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Airplanes.live — 公開 ADS-B 觀測：A20N 抵達 高雄國際機場",
+          "url": "https://airplanes.live/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-08-08T23:47Z",
+      "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+      "facts": [
+        {
+          "factId": "f1",
+          "claim": "Registration HS-CBE of an Airbus A320neo arrived at Kaohsiung International Airport.",
+          "sourceQuote": "註冊號：HS-CBE",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "f2",
+          "claim": "The aircraft type is Airbus A320neo (ICAO A20N).",
+          "sourceQuote": "航空器 ICAO 機型：A20N",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "f3",
+          "claim": "Arrival time confirmed as 2026-08-08T23:47:26Z.",
+          "sourceQuote": "確認抵達時間：2026-08-08T23:47:26Z",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "f4",
+          "claim": "Arrival status confirmed based on geofence and ground altitude.",
+          "sourceQuote": "抵達判定：confirmed_arrival",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "f5",
+          "claim": "Operator name is unidentified (ICAO AIQ).",
+          "sourceQuote": "營運者名稱：未識別",
+          "sourceUrl": "https://airplanes.live/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "aircraft_models": [
+          "A20N"
+        ],
+        "airports": [
+          "RCKH"
+        ],
+        "locations": [
+          "RCKH"
+        ],
+        "flight_numbers": [
+          "AIQ234"
+        ],
+        "registration_numbers": [
+          "HS-CBE"
+        ],
+        "event_dates": [
+          "2026-08-08"
+        ]
+      }
+    }
+  ]
+}
