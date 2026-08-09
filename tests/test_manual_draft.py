@@ -18,6 +18,7 @@ import write  # noqa: E402
 from model_config import (  # noqa: E402
     MODEL_DISPLAY_NAMES,
     MODEL_ORDER,
+    OPENCODE_MODEL_ORDER,
     OPENROUTER_MODEL_ORDER,
     manual_reasoning_profile,
 )
@@ -358,10 +359,11 @@ def test_openrouter_manual_provider_order():
     saved = {
         key: os.environ.get(key)
         for key in ("GEMINI_API_KEY", "NVIDIA_API_KEY",
-                    "OPENROUTER_API_KEY")
+                    "OPENROUTER_API_KEY", "OPENCODE_API_KEY")
     }
     os.environ.pop("GEMINI_API_KEY", None)
     os.environ.pop("NVIDIA_API_KEY", None)
+    os.environ.pop("OPENCODE_API_KEY", None)
     os.environ["OPENROUTER_API_KEY"] = "test-not-a-real-key"
     try:
         rows = manual_draft._providers_for(
@@ -376,6 +378,30 @@ def test_openrouter_manual_provider_order():
           "manual fallback exposes all OpenRouter models in owner order")
     check(all(row.reasoning_tier == "deep" for row in rows),
           "manual reasoning tier reaches every OpenRouter model")
+
+
+def test_opencode_manual_provider_order():
+    saved = {
+        key: os.environ.get(key)
+        for key in ("GEMINI_API_KEY", "NVIDIA_API_KEY",
+                    "OPENROUTER_API_KEY", "OPENCODE_API_KEY")
+    }
+    for key in ("GEMINI_API_KEY", "NVIDIA_API_KEY", "OPENROUTER_API_KEY"):
+        os.environ.pop(key, None)
+    os.environ["OPENCODE_API_KEY"] = "oc_sk_test-not-a-real-key"
+    try:
+        rows = manual_draft._providers_for(
+            manual_draft.validate_payload(sample_payload()))
+    finally:
+        for key, value in saved.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+    check([row.label for row in rows] == list(OPENCODE_MODEL_ORDER),
+          "manual fallback exposes all OpenCode models in owner order")
+    check(all(row.reasoning_tier == "deep" for row in rows),
+          "manual reasoning tier reaches every OpenCode model")
 
 
 class FakeProvider:
@@ -785,6 +811,7 @@ def test_static_security_contract():
         "true manual mode records estimated tokens with zero actual API spend")
     check("secrets.AVWIRE_MANUAL_TOKEN" in workflow
           and "secrets.OPENROUTER_API_KEY" in workflow
+          and "secrets.OPENCODE_API_KEY" in workflow
           and "encrypted envelopes only" in workflow
           and "data/manual-jobs/outbox 2>/dev/null || true" in workflow,
           "Actions uses Secrets, checks ciphertext and tolerates empty queues")
@@ -795,6 +822,10 @@ def test_static_security_contract():
           and "secrets.OPENROUTER_API_KEY" in briefing
           and "sk-or-v1-" in hourly and "sk-or-v1-" in briefing,
           "automatic workflows receive and scan for the OpenRouter secret")
+    check("secrets.OPENCODE_API_KEY" in hourly
+          and "secrets.OPENCODE_API_KEY" in briefing
+          and "oc_sk_" in hourly and "oc_sk_" in briefing,
+          "automatic workflows receive and scan for the OpenCode secret")
 
 
 def main():
@@ -806,6 +837,7 @@ def main():
         test_operator_authored_auto_source_time,
         test_reasoning_tiers,
         test_openrouter_manual_provider_order,
+        test_opencode_manual_provider_order,
         test_fallback_and_telemetry,
         test_translation_generate_path,
         test_manual_time_detection_generate_path,
