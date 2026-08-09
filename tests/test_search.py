@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -70,13 +71,33 @@ def main() -> None:
     en = (ROOT / "site" / "en" / "search" / "index.html").read_text(
         encoding="utf-8")
     home = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
+    article = next((ROOT / "site" / "news").glob("*/index.html")).read_text(
+        encoding="utf-8")
     script = (ROOT / "static" / "search.js").read_text(encoding="utf-8")
+    app_script = (ROOT / "static" / "app.js").read_text(encoding="utf-8")
+    css = (ROOT / "static" / "site.css").read_text(encoding="utf-8")
 
     assert 'id="news-search-input"' in zh
+    assert zh.count('id="news-search-form"') == 1
+    assert 'class="header-search-form"' in home
+    assert 'class="header-search-form"' in article
+    assert 'action="/avwire/search/"' in home
+    assert 'action="/avwire/en/search/"' in en
+    assert re.search(r'/avwire/assets/site\.css\?v=[0-9a-f]{10}', zh)
+    assert re.search(r'/avwire/assets/app\.js\?v=[0-9a-f]{10}', zh)
+    assert re.search(r'/avwire/assets/search\.js\?v=[0-9a-f]{10}', zh)
+    assert home.index('class="header-search-row"') < home.index('id="clock-utc"')
+    assert home.index('class="header-search-row"') < home.index('class="brand-row"')
+    main_markup = re.search(r'<main class="search-page">(.*?)</main>', zh,
+                            re.DOTALL).group(1)
+    assert "<form" not in main_markup
     assert 'data-index-url="/avwire/search-index.json"' in zh
     assert 'data-index-url="/avwire/search-index.json"' in en
-    assert 'href="/avwire/search/"' in home
     assert 'href="/avwire/en/search/"' in en
+    assert "border-radius: 999px" in css
+    assert ".header-search-form:focus-within" in css
+    assert ".header-search-input:not(:placeholder-shown) + .header-search-clear" in css
+    assert ".header-search-submit" in css
     assert "航空公司正式名稱與常用簡稱可互相查找" in zh
     assert "Official airline names and common short names are interchangeable" in en
     assert "terms.every" in script
@@ -84,6 +105,9 @@ def main() -> None:
     assert "replaceChildren" in script
     assert "innerHTML" not in script
     assert "URLSearchParams" not in script  # URL.searchParams is used directly
+    assert 'headerSearchClear.addEventListener("click"' in app_script
+    assert 'headerSearchInput.value = ""' in app_script
+    assert 'new Event("input", { bubbles: true })' in app_script
 
     print("test_search: OK")
 

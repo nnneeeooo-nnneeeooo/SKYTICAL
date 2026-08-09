@@ -41,6 +41,17 @@
   });
   reflectTheme();
 
+  /* — global header search: operate the Google-style clear key — */
+  var headerSearchInput = document.getElementById("news-search-input");
+  var headerSearchClear = document.getElementById("news-search-clear");
+  if (headerSearchInput && headerSearchClear) {
+    headerSearchClear.addEventListener("click", function () {
+      headerSearchInput.value = "";
+      headerSearchInput.dispatchEvent(new Event("input", { bubbles: true }));
+      headerSearchInput.focus();
+    });
+  }
+
   /* — home: category filter over feed rows ([data-cat]) — */
   var catBtns = Array.prototype.slice.call(document.querySelectorAll("[data-filter-cat]"));
   catBtns.forEach(function (b) {
