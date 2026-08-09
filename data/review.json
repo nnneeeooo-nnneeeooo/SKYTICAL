@@ -1,5 +1,174 @@
 [
   {
+    "id": "g-20260809-0423-3",
+    "queuedUtc": "2026-08-09T04:23Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves a reported near-collision and taxiway safety event at Sydney Kingsford Smith Airport requiring manual safety review.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Jetstar and Qatar Airways aircraft nearly collided at Sydney Kingsford Smith Airport.",
+        "sourceQuote": "Jetstar & Qatar Airways Planes Nearly Collide At Sydney Kingsford Smith Airport",
+        "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Taxiway confusion and weekend staffing strains prompted emergency stops.",
+        "sourceQuote": "Taxiway confusion and weekend staffing strains prompted emergency stops",
+        "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "A Jetstar flight was canceled after boarding was completed.",
+        "sourceQuote": "canceled Jetstar flight after boarding",
+        "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves a reported near-collision and taxiway safety event at Sydney Kingsford Smith Airport requiring manual safety review.",
+      "cat": "safety",
+      "zh": {
+        "title": "捷星航空與卡達航空客機於雪梨機場險相撞",
+        "summary": "根據 Simple Flying 報導，捷星航空與卡達航空客機於 Sydney Kingsford Smith 機場發生險些相撞事故。滑行道混亂與週末人力緊張引發緊急煞車，一架捷星航空航班在乘客完成登機後宣告取消。",
+        "body": [
+          "根據 Simple Flying 報導，捷星航空（Jetstar）與卡達航空（Qatar Airways）的航機於雪梨金斯福德·史密斯機場（Sydney Kingsford Smith Airport）發生近乎相撞事故。報導指出，現場出現滑行道混亂狀況，同時伴隨週末人力緊張情形，最終引發航機緊急煞車。",
+          "在該起地面事件發生後，一架捷星航空航班在乘客完成登機程序後遭宣告取消。滑行道動線混亂與人力資源緊縮被列為促成航機緊急煞車及後續航班取消的相關因素。"
+        ]
+      },
+      "en": {
+        "title": "Jetstar and Qatar Airways Planes Nearly Collide at Sydney Kingsford Smith Airport",
+        "summary": "According to news reports published by Simple Flying, planes belonging to Jetstar and Qatar Airways nearly collided at Sydney Kingsford Smith Airport. The report stated that taxiway confusion and weekend staffing strains prompted emergency stops during ground operations. Following the emergency braking, a Jetstar flight was canceled after passenger boarding had already been completed. Both taxiway confusion and weekend staffing conditions were cited as factors in connection with the emergency stops.",
+        "body": [
+          "According to reporting from Simple Flying, aircraft belonging to Jetstar and Qatar Airways were involved in a near-collision event at Sydney Kingsford Smith Airport. The operational disruption reportedly stemmed from taxiway confusion combined with staffing strains during weekend operations, which ultimately prompted emergency braking by the aircraft involved on the ground.",
+          "As a result of the safety event, a Jetstar flight was subsequently canceled after passengers had already completed the boarding process. The reported taxiway routing issues and airport staffing pressures were identified as key factors surrounding the emergency stops and the flight cancellation."
+        ]
+      },
+      "flash": {
+        "zh": "捷星航空與卡達航空客機於雪梨機場險些相撞",
+        "en": "Jetstar and Qatar Airways planes nearly collide at Sydney Airport",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-09",
+        "sev": "ser",
+        "aircraft": "Jetstar and Qatar Airways aircraft",
+        "operator": "Jetstar / Qatar Airways",
+        "phase": {
+          "zh": "地面滑行",
+          "en": "Taxiing"
+        },
+        "location": {
+          "zh": "澳洲雪梨金斯福德·史密斯機場",
+          "en": "Sydney Kingsford Smith Airport, Australia"
+        },
+        "desc": {
+          "zh": "捷星航空與卡達航空客機因滑行道混亂與人力緊張進行緊急煞車，險些相撞。",
+          "en": "Jetstar and Qatar Airways aircraft executed emergency stops due to taxiway confusion and staffing strains, narrowly avoiding a collision."
+        },
+        "status": "prelim"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Jetstar and Qatar Airways aircraft nearly collided at Sydney Kingsford Smith Airport.",
+          "sourceQuote": "Jetstar & Qatar Airways Planes Nearly Collide At Sydney Kingsford Smith Airport",
+          "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Taxiway confusion and weekend staffing strains prompted emergency stops.",
+          "sourceQuote": "Taxiway confusion and weekend staffing strains prompted emergency stops",
+          "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "A Jetstar flight was canceled after boarding was completed.",
+          "sourceQuote": "canceled Jetstar flight after boarding",
+          "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Simple Flying"
+        ],
+        "airlines": [
+          "Jetstar",
+          "Qatar Airways"
+        ],
+        "aircraft_models": [],
+        "airports": [
+          "Sydney Kingsford Smith Airport"
+        ],
+        "locations": [
+          "Sydney"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260809-0423-3",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Sudden Brakes: Jetstar & Qatar Airways Planes Nearly Collide At Sydney Kingsford Smith Airport",
+          "url": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
+          "publishedUtc": "2026-08-09T03:08Z",
+          "summary": "Taxiway confusion and weekend staffing strains prompted emergency stops and a canceled Jetstar flight after boarding.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/qatar-airways-boeing-777-300er-melbourne-1.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260809-0214-7",
     "queuedUtc": "2026-08-09T02:15Z",
     "approve": false,
@@ -9552,357 +9721,6 @@
               {
                 "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
                 "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260805-0942-1",
-    "queuedUtc": "2026-08-05T09:42Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The Federal Aviation Administration (FAA) issued an amended type certificate certifying the Boeing 737 MAX 7, which constitutes a regulatory action requiring human review.",
-    "riskFlags": [
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The Federal Aviation Administration (FAA) issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026.",
-        "sourceQuote": "Following almost a decade of extensive review, the FAA has issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX-7.",
-        "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The FAA required Boeing to incorporate key improvements including updates to flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system before granting approval.",
-        "sourceQuote": "Before granting approval, the FAA required the MAX-7 to incorporate key improvements that address requirements in the Aircraft Certification, Safety, and Accountability Act and NTSB recommendations , including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system.",
-        "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Boeing Commercial Airplanes President and CEO Stephanie Pope stated that the certification validates the airplane's design and recognizes the 737 MAX development team.",
-        "sourceQuote": "This important certification validates the rigor of our airplane’s design and recognizes the determination and resilience of our 737 MAX development team",
-        "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-7-gains-faa-certification-which-airlines-placed-orders",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The FAA stated that safety inspectors will remain on site at Boeing production facilities to closely monitor the manufacturing process.",
-        "sourceQuote": "FAA safety inspectors will remain on site at Boeing production facilities across the country to closely monitor the manufacturing process",
-        "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "As of July 2026, Boeing completed certification flight testing on both the 737-7 and 737-10, anticipating certification in 2026 and first delivery in 2027.",
-        "sourceQuote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-        "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-        "evidenceScope": "archive",
-        "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-        "archiveContext": true
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The Federal Aviation Administration (FAA) issued an amended type certificate certifying the Boeing 737 MAX 7, which constitutes a regulatory action requiring human review.",
-      "cat": "reg",
-      "zh": {
-        "title": "美國FAA核發波音737 MAX 7修改型別檢定證",
-        "summary": "美國聯邦航空總署核發波音737 MAX 7的修改型別檢定證與生產限制紀錄。波音依規定完成飛行控制軟體、機組員警報系統及引擎防冰系統改善。FAA安全檢查員將持續駐廠監控製造過程。",
-        "body": [
-          "美國聯邦航空總署（FAA）於2026年8月3日宣布，已核發波音737 MAX 7的修改型別檢定證與更新的生產限制紀錄。該項認證確認該型客機符合所有適用之設計與安全法規，並授權波音開始生產該機型。",
-          "在核準前，FAA要求波音進行多項關鍵改進，包括更新飛行控制軟體、機組員警報系統，以及重新設計引擎防冰系統，以防止引擎進氣口過熱並強化相關結構。波音民用飛機集團總裁兼執行長 Stephanie Pope 表示，此認證驗證了飛機設計的嚴謹性。",
-          "FAA補充說明，安全檢查員將持續駐紮於全美各地的波音生產設施，以密切監控製造過程與安全管理系統。歷史資料顯示，截至2026年7月，波音已完成737-7的認證飛行測試。"
-        ]
-      },
-      "en": {
-        "title": "FAA Grants Certification for Boeing 737 MAX 7 Commercial Service",
-        "summary": "The US Federal Aviation Administration has issued an amended type certificate and Production Limitation Record for the Boeing 737 MAX 7. Before granting approval, the regulatory agency required Boeing to incorporate key safety improvements, including updates to flight-control software, flightcrew alerting systems, and a redesigned engine anti-ice system. Boeing Commercial Airplanes leadership stated that the certification validates the aircraft's design. Federal Aviation Administration safety inspectors will remain on site at Boeing manufacturing facilities to monitor ongoing production processes.",
-        "body": [
-          "The US Federal Aviation Administration (FAA) issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026. The approval authorizes Boeing to begin production of the commercial aircraft model following regulatory review.",
-          "Prior to granting certification, the FAA required Boeing to incorporate key safety improvements, including updates to flight-control software, flightcrew alerting systems, and a redesigned engine anti-ice system. Boeing Commercial Airplanes President and CEO Stephanie Pope stated that the certification validates the rigor of the airplane's design.",
-          "The FAA stated that its safety inspectors will remain present at Boeing manufacturing facilities across the country to closely monitor production processes. Historical records indicate that Boeing had completed certification flight testing on the 737-7 variant by July 2026."
-        ]
-      },
-      "flash": {
-        "zh": "FAA發放波音737 MAX 7修改型別檢定證",
-        "en": "FAA issues amended type certificate for Boeing 737 MAX 7",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The Federal Aviation Administration (FAA) issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX 7 on August 3, 2026.",
-          "sourceQuote": "Following almost a decade of extensive review, the FAA has issued an amended type certificate and updated Production Limitation Record for the Boeing 737 MAX-7.",
-          "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The FAA required Boeing to incorporate key improvements including updates to flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system before granting approval.",
-          "sourceQuote": "Before granting approval, the FAA required the MAX-7 to incorporate key improvements that address requirements in the Aircraft Certification, Safety, and Accountability Act and NTSB recommendations , including updates to the flight-control software, flightcrew alerting system, and a redesigned engine anti-ice system.",
-          "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Boeing Commercial Airplanes President and CEO Stephanie Pope stated that the certification validates the airplane's design and recognizes the 737 MAX development team.",
-          "sourceQuote": "This important certification validates the rigor of our airplane’s design and recognizes the determination and resilience of our 737 MAX development team",
-          "sourceUrl": "https://www.aerotime.aero/articles/boeing-737-max-7-gains-faa-certification-which-airlines-placed-orders",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The FAA stated that safety inspectors will remain on site at Boeing production facilities to closely monitor the manufacturing process.",
-          "sourceQuote": "FAA safety inspectors will remain on site at Boeing production facilities across the country to closely monitor the manufacturing process",
-          "sourceUrl": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "As of July 2026, Boeing completed certification flight testing on both the 737-7 and 737-10, anticipating certification in 2026 and first delivery in 2027.",
-          "sourceQuote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-          "evidenceScope": "archive",
-          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-          "archiveContext": true
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "FAA",
-          "Federal Aviation Administration",
-          "Boeing",
-          "Boeing Commercial Airplanes",
-          "NTSB"
-        ],
-        "airlines": [
-          "Southwest Airlines"
-        ],
-        "aircraft_models": [
-          "737 MAX 7",
-          "737 MAX-7",
-          "737-7",
-          "737 MAX"
-        ],
-        "airports": [],
-        "locations": [
-          "US"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-03",
-          "2026-07"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260805-0942-1",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Somon Air receives its first Boeing 737 MAX jet, a first for Tajikistan",
-          "url": "https://www.aerotime.aero/articles/somon-air-receives-its-first-boeing-737-max-jet-a-first-for-tajikistan",
-          "publishedUtc": "2026-08-03T14:12Z",
-          "summary": "Somon Air has received its first Boeing 737 MAX, marking the first appearance of the aircraft type in… The post Somon Air receives its first Boeing 737 MAX jet, a first for Tajikistan appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Boeing 737 MAX 7 gains FAA certification – which airlines placed orders?",
-          "url": "https://www.aerotime.aero/articles/boeing-737-max-7-gains-faa-certification-which-airlines-placed-orders",
-          "publishedUtc": "2026-08-04T09:47Z",
-          "summary": "Just over 13 years ago, Boeing and Southwest Airlines came together to launch the 737 MAX 7, the… The post Boeing 737 MAX 7 gains FAA certification – which airlines placed orders? appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Why Airlines Keep Choosing The Airbus A321XLR Over The Boeing 737 MAX 10",
-          "url": "https://simpleflying.com/why-airlines-keep-choosing-airbus-a321xlr-over-boeing-737-max-10/",
-          "publishedUtc": "2026-08-05T08:00Z",
-          "summary": "While the MAX 10 awaits certification, airlines are already seeing success with the A321XLR",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/the-airbus-a321xlr.png",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "title": "FAA Statement on Certification of the Boeing 737 MAX-7",
-          "url": "https://www.faa.gov/newsroom/faa-statement-certification-boeing-737-max-7",
-          "publishedUtc": "2026-08-03T00:00Z",
-          "summary": "Statement",
-          "image": null,
-          "source": "FAA",
-          "sourceKey": "faa"
-        },
-        {
-          "title": "US FAA certifies Boeing 737 MAX 7 in win for planemaker",
-          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObm5abmxuWVVCMWR2ZDdDaTFWSnJ5SEYxZnc5MFg0Qko5RkJWMGZpTndzclotOVAza0ZYRHJoTmpUZk1yclB4MnZxUFlYanVwbnlGd3JaNk5sZ2YxbjliM3EyVk55bUtEZU9mQWNRR214WTlQRVdTRXAwbVdGRzdYdE1CY0hrOXlIWjRlV0V0VGg2d05qLUJzT05iQ0oyaS13UFM4azRFMXF2T2ZOUEhPT2hJblN1bUozNlc1SkNn?oc=5",
-          "publishedUtc": "2026-08-03T22:26Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "Boeing 737 MAX 7 finally cleared for service following FAA certification",
-          "url": "https://aerospaceglobalnews.com/news/boeing-737-max-7-faa-certification/",
-          "publishedUtc": "2026-08-04T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/737-7-max-ID-fb3c1b364a1c-scaled.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: BOEING 737",
-              "same named core entity: boeing, faa, southwest airlines",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: 737, 737-7",
-              "same named core entity: boeing, faa",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: 737, 737-7",
-              "same named core entity: boeing, simple flying",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
-            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-            "facts": [
-              {
-                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
-                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
-              },
-              {
-                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
                 "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
                 "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
               }
