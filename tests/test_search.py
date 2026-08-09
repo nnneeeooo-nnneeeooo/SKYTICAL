@@ -58,6 +58,8 @@ def main() -> None:
     assert build.main() == 0
     payload = json.loads(
         (ROOT / "site" / "search-index.json").read_text(encoding="utf-8"))
+    alias_payload = json.loads(
+        (ROOT / "site" / "search-aliases.json").read_text(encoding="utf-8"))
     assert payload["version"] == 1
     assert payload["count"] == len(payload["items"]) == len(build.collect_articles())
     assert payload["items"]
@@ -66,6 +68,8 @@ def main() -> None:
         "中華航空" in row["search"] and "華航" in row["search"]
         for row in payload["items"]
     )
+    assert alias_payload["version"] == 1
+    assert ["中華航空", "華航", "China Airlines"] in alias_payload["groups"]
 
     zh = (ROOT / "site" / "search" / "index.html").read_text(encoding="utf-8")
     en = (ROOT / "site" / "en" / "search" / "index.html").read_text(
@@ -74,6 +78,8 @@ def main() -> None:
     article = next((ROOT / "site" / "news").glob("*/index.html")).read_text(
         encoding="utf-8")
     script = (ROOT / "static" / "search.js").read_text(encoding="utf-8")
+    highlight_script = (ROOT / "static" / "highlight.js").read_text(
+        encoding="utf-8")
     app_script = (ROOT / "static" / "app.js").read_text(encoding="utf-8")
     css = (ROOT / "static" / "site.css").read_text(encoding="utf-8")
 
@@ -81,6 +87,9 @@ def main() -> None:
     assert zh.count('id="news-search-form"') == 1
     assert 'class="header-search-form"' in home
     assert 'class="header-search-form"' in article
+    assert 'data-article-body' in article
+    assert 'data-search-aliases-url="/avwire/search-aliases.json"' in article
+    assert re.search(r'/avwire/assets/highlight\.js\?v=[0-9a-f]{10}', article)
     assert 'action="/avwire/search/"' in home
     assert 'action="/avwire/en/search/"' in en
     assert re.search(r'/avwire/assets/site\.css\?v=[0-9a-f]{10}', zh)
@@ -105,6 +114,16 @@ def main() -> None:
     assert "replaceChildren" in script
     assert "innerHTML" not in script
     assert "URLSearchParams" not in script  # URL.searchParams is used directly
+    assert 'url.searchParams.set("highlight", highlightQuery)' in script
+    assert "resultCard(row.record, query)" in script
+    assert 'searchParams.get("highlight")' in highlight_script
+    assert "payload.groups" in highlight_script
+    assert 'mark.className = "search-hit"' in highlight_script
+    assert 'mark.classList.add("search-hit-pulse")' in highlight_script
+    assert 'mark.classList.remove("search-hit-pulse")' in highlight_script
+    assert ", 3000);" in highlight_script
+    assert "prefers-reduced-motion: reduce" in css
+    assert "@keyframes search-hit-pulse" in css
     assert 'headerSearchClear.addEventListener("click"' in app_script
     assert 'headerSearchInput.value = ""' in app_script
     assert 'new Event("input", { bubbles: true })' in app_script
