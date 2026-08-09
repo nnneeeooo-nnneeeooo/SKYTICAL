@@ -83,7 +83,7 @@
     if (!marqueeTrack) return;
     var tickerPass = marqueeTrack.querySelector(".ticker-pass");
     if (!tickerPass) return;
-    var pixelsPerSecond = window.matchMedia("(max-width: 720px)").matches ? 24 : 52;
+    var pixelsPerSecond = window.matchMedia("(max-width: 720px)").matches ? 32 : 52;
     var seconds = Math.max(20, tickerPass.scrollWidth / pixelsPerSecond);
     marqueeTrack.style.setProperty("--ticker-duration", seconds.toFixed(1) + "s");
   }

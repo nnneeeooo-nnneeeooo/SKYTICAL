@@ -508,15 +508,15 @@ a.flash-row:hover { color: inherit; }
   }
   .nav-link.active { border-color: var(--color-accent); }
   .ticker-label { padding: 7px 10px; font-size: 11px; letter-spacing: .08em; }
-  .marquee-track { --ticker-duration: 180s; }
+  .marquee-track { --ticker-duration: 130s; }
   .ticker-pass {
-    font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", sans-serif;
-    font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: .01em;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 13px; font-weight: 400; line-height: 1.45; letter-spacing: 0;
     -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
   .ticker-time {
-    font-family: "SFMono-Regular", ui-monospace, "Roboto Mono", Consolas, monospace;
-    font-size: 12px; font-weight: 700; letter-spacing: 0; font-variant-numeric: tabular-nums;
+    font-family: inherit; font-size: 11px; font-weight: 600;
+    letter-spacing: 0; font-variant-numeric: tabular-nums;
   }
 }
 
