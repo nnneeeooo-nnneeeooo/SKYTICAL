@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-09T16:44Z",
+  "updatedUtc": "2026-08-09T17:39Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,15 +21,15 @@
       "unknownCalls": 241
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 456,
-      "inputTokens": 1510005,
-      "outputTokens": 2950204,
-      "unknownCalls": 117
+      "calls": 458,
+      "inputTokens": 1511095,
+      "outputTokens": 2957228,
+      "unknownCalls": 118
     },
     "gemini:gemini-3.5-flash": {
-      "calls": 70,
-      "inputTokens": 172286,
-      "outputTokens": 343913,
+      "calls": 71,
+      "inputTokens": 175509,
+      "outputTokens": 346547,
       "unknownCalls": 34
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
@@ -201,12 +201,182 @@
       "outputTokens": 885772
     },
     "2026-08-09": {
-      "calls": 108,
-      "inputTokens": 275002,
-      "outputTokens": 551569
+      "calls": 111,
+      "inputTokens": 279315,
+      "outputTokens": 561227
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-09T17:38Z",
+      "finishedUtc": "2026-08-09T17:39Z",
+      "workflow": "flightwatch",
+      "taskType": "flight_event",
+      "groupId": "fw-9be876db8afaa81d",
+      "eventId": "fw-9be876db8afaa81d",
+      "sourceCount": 1,
+      "primarySource": "Airplanes.live",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": null,
+        "promptAssembly": 0,
+        "drafting": 45527,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 45527
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-09T17:38Z",
+          "durationMs": 45527,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 45526,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T17:37Z",
+      "finishedUtc": "2026-08-09T17:38Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1737-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.5-flash",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 483,
+        "promptAssembly": 0,
+        "drafting": 15615,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 16596
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-09T17:37Z",
+          "durationMs": 5829,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 5828,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 503",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "gemini",
+          "model": "gemini-3.5-flash",
+          "label": "gemini:gemini-3.5-flash",
+          "startedUtc": "2026-08-09T17:38Z",
+          "durationMs": 9786,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 9785,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T17:37Z",
+      "finishedUtc": "2026-08-09T17:38Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1737-2",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 482,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 16550
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-09T16:44Z",
       "finishedUtc": "2026-08-09T16:44Z",
