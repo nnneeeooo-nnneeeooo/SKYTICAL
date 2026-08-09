@@ -1,5 +1,195 @@
 [
   {
+    "id": "g-20260809-0551-12",
+    "queuedUtc": "2026-08-09T05:51Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Flyte's reported private funding exceeding $15 million and planned listing on the New York Stock Exchange represent financial claims and developing corporate developments.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Flyte's northeast regional flight network operates within a 500-nautical-mile radius of New York.",
+        "sourceQuote": "Flyte’s northeast network currently operates within a 500-nm radius of New York",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Flyte was founded in 2018 as an on-demand regional air mobility company.",
+        "sourceQuote": "found Flyte as an on-demand regional air mobility company in 2018",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Flyte currently operates a fleet of five Cirrus Vision Jets.",
+        "sourceQuote": "Currently operating a fleet of five Cirrus Vision Jets",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Flyte has raised more than US$15 million in private capital.",
+        "sourceQuote": "has raised more than US$15 million privately",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Flyte expects to begin trading on the New York Stock Exchange shortly.",
+        "sourceQuote": "expects to be trading on the New York Stock Exchange (NYSE) shortly",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Flyte's reported private funding exceeding $15 million and planned listing on the New York Stock Exchange represent financial claims and developing corporate developments.",
+      "cat": "biz",
+      "zh": {
+        "title": "區域航空業者Flyte營運5架願景噴射機並籌備紐約證交所上市",
+        "summary": "區域航空移動公司Flyte成立於2018年，目前於紐約方圓500海里範圍內營運由5架Cirrus Vision Jet組成的機隊，提供隨選區域載客飛行服務。該公司迄今已獲得超過1,500萬美元的私募資金，並計畫於近期前往紐約證券交易所掛牌上市交易。",
+        "body": [
+          "成立於2018年的隨選區域航空移動業者Flyte，目前營運包含5架Cirrus Vision Jet小型噴射機的機隊。該公司主要在紐約周邊500海里半徑範圍內提供區域點對點載客服務，預約回應時間為2小時，每日營運時間通常介於上午8時至晚間8時之間。",
+          "Flyte執行長Mark Sellouk指出，單程飛行價格通常約為4,900美元，定位介於定期商業航班與傳統私人包機之間。該公司迄今已於私人市場募集超過1,500萬美元資金，並計畫於近期在紐約證券交易所掛牌上市，以進一步支援其區域網絡擴展計畫。"
+        ]
+      },
+      "en": {
+        "title": "Regional Air Mobility Provider Flyte Prepares for NYSE Listing with Vision Jet Fleet",
+        "summary": "Regional air mobility company Flyte, founded in 2018, currently operates a fleet of five Cirrus Vision Jets providing on-demand passenger flights within a 500-nautical-mile radius of New York. The operator aims to offer regional air travel positioned between commercial airlines and full private jet charters. Flyte has raised more than $15 million in private capital to date and expects to begin trading on the New York Stock Exchange shortly as it seeks to expand its regional air network.",
+        "body": [
+          "Founded in 2018, regional air mobility operator Flyte currently operates a fleet of five Cirrus Vision Jets. The company provides on-demand regional passenger flights within a 500-nautical-mile radius of New York, featuring a two-hour call-out window and daily flight operations typically scheduled between 8 am and 8 pm.",
+          "According to Chief Executive Officer Mark Sellouk, a typical one-way flight is priced at approximately $4,900, positioning the service between commercial airline travel and full private jet charter. Flyte has raised more than $15 million in private funding and expects to begin trading on the New York Stock Exchange shortly."
+        ]
+      },
+      "flash": {
+        "zh": "區域航空業者Flyte計畫於近期在紐約證交所掛牌上市",
+        "en": "Regional air mobility firm Flyte prepares for upcoming NYSE listing",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Flyte's northeast regional flight network operates within a 500-nautical-mile radius of New York.",
+          "sourceQuote": "Flyte’s northeast network currently operates within a 500-nm radius of New York",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Flyte was founded in 2018 as an on-demand regional air mobility company.",
+          "sourceQuote": "found Flyte as an on-demand regional air mobility company in 2018",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Flyte currently operates a fleet of five Cirrus Vision Jets.",
+          "sourceQuote": "Currently operating a fleet of five Cirrus Vision Jets",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Flyte has raised more than US$15 million in private capital.",
+          "sourceQuote": "has raised more than US$15 million privately",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Flyte expects to begin trading on the New York Stock Exchange shortly.",
+          "sourceQuote": "expects to be trading on the New York Stock Exchange (NYSE) shortly",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3",
+        "F5"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Flyte",
+          "New York Stock Exchange",
+          "NYSE"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Cirrus Vision Jet"
+        ],
+        "airports": [],
+        "locations": [
+          "New York"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260809-0551-12",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Flyte’s regional air mobility vision is taking off ahead of the eVTOL revolution News",
+          "url": "https://aerospaceglobalnews.com/news/flyte-regional-air-mobility-network/",
+          "publishedUtc": "2026-08-06T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/Flyte-Cirrus-Vision-Jet-runway.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260809-0423-3",
     "queuedUtc": "2026-08-09T04:23Z",
     "approve": false,
@@ -9321,406 +9511,6 @@
               {
                 "claim": "As of July, Boeing anticipated certification of the 737-7 in 2026 and first delivery in 2027.",
                 "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260805-1205-3",
-    "queuedUtc": "2026-08-05T12:05Z",
-    "approve": false,
-    "writer": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    "decisionReason": "Multiple aviation safety events (suspected explosive device, mid-air collision) with ongoing police investigations, unconfirmed details from multiple sources (police, Reuters, Bild, Flightradar24), and potential sabotage classification require human review.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "investigation",
-      "unconfirmed_or_developing",
-      "conflicting_information"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Leipzig/Halle Airport partially suspended flight operations overnight from August 4 to August 5, 2026 after police responded to reports of an unidentified flying object and a suspicious item near the south runway.",
-        "sourceQuote": "Leipzig/Halle Airport (LEJ) partially suspended flight operations overnight from August 4 to August 5, 2026, after police responded to reports of an unidentified flying object and a suspicious item found near the airport’s south runway",
-        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Police reported the flying object was first sighted around 23:40 local time on August 4, prompting several aircraft including Marabu Airlines flight DI6777 to divert to Nuremberg.",
-        "sourceQuote": "Police said the flying object was first sighted around 23:40 local time on August 4, prompting several aircraft, including one passenger flight, to divert to other airports. Marabu Airlines flight DI6777, an Airbus A320neo arriving from Palma de Mallorca (PMI), was diverted to Nuremberg Airport (NUE).",
-        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Officers found an object near the south runway which federal police examined using a bomb disposal robot.",
-        "sourceQuote": "Officers later found an object near the south runway, which federal police (Bundespolizei) examined using a bomb disposal robot.",
-        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Flight operations resumed on the north runway at 01:55 on August 5 while the south runway remained closed.",
-        "sourceQuote": "Flight operations resumed on the north runway at 01:55 on August 5, though the south runway remained closed as investigations continued.",
-        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "A DHL-operated cargo aircraft collided with an unidentified object near Leipzig airport and diverted to Hanover for an emergency landing.",
-        "sourceQuote": "A DHL-operated cargo aircraft collided with an unidentified object near Leipzig airport and diverted for an emergency landing in Hanover, Reuters reported, citing a source familiar with the incident.",
-        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Flightradar24 data indicates the damaged aircraft may have been an EAT Leipzig Airbus A300 freighter registered D-AZML operating flight BCS7JG from Madrid.",
-        "sourceQuote": "Although authorities have not identified the aircraft publicly, flight-tracking data from Flightradar24 indicate that the damaged aircraft may have been EAT Leipzig Airbus A300 freighter D-AZML, operating fight BCS7JG from Madrid (MAD).",
-        "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Multiple aviation safety events (suspected explosive device, mid-air collision) with ongoing police investigations, unconfirmed details from multiple sources (police, Reuters, Bild, Flightradar24), and potential sabotage classification require human review.",
-      "cat": "safety",
-      "zh": {
-        "title": "萊比錫機場因疑似爆裂物與空中相撞暫停運作",
-        "summary": "萊比錫/哈勒機場因不明飛行物與南跑道可疑物品，於8月4日晚至5日凌晨暫停部分運作；馬拉布航空客機轉降紐倫堡；DHL貨機疑與無人機相撞轉降漢諾威，警方調查中。",
-        "body": [
-          "萊比錫/哈勒機場（LEJ）於2026年8月4日晚至5日凌晨因不明飛行物與南跑道可疑物品，部分暫停飛行作業。萊比錫警方表示，接獲通報後採取行動，導致多架航班轉降，包括馬拉布航空DI6777班機（空中巴士A320neo，自馬洛卡島馬爾馬）轉往紐倫堡機場。",
-          "警方於當地時間23時40分左右首次發現不明飛行物，稍後在南跑道尋獲一物品，聯邦警察以排爆機械人檢查。北跑道於8月5日01時55分恢復運作，南跑道因調查持續關閉。",
-          "另據路透社引述消息人士，一架DHL營運的貨機在萊比錫機場附近與不明物體相撞，緊急轉降漢諾威。DHL集團執行長托比亞斯·梅耶爾在8月5日的Q2投資人電話會議中表示，公司有應變計劃，將儘量減少對客戶影響。",
-          "飛行追蹤數據Flightradar24顯示，受損機體可能為EAT萊比錫營運的空中巴士A300貨機（註冊D-AZML），執行BCS7JG班機自馬德里起飛。德媒報導碰撞發生於機場約6公里、高度400公尺處，機鼻輕微受損。",
-          "下薩克森警方將事件列為國家安全罪行，未排除破壞行為。《圖片報》引述安全消息稱，物品為攜帶引爆裝置包裹的無人機，發現於停放的安托諾夫航空An-124貨機附近。調查人員視為可能爆裂裝置，截至8月5日下午尚不清楚是否已進行受控引爆。安托諾夫航空因2022年霍斯托梅爾機場戰損，將大部分An-124機隊遷至萊比錫。此事件加入近期歐洲軍事設施、能源終端、海港及物流樞紐遭未授權無人機干擾的系列案件，多國警方疑涉俄羅斯代理人，莫斯科否認。國際戰略研究所（IISS）評估，俄羅斯關聯無人機活動過去18個月迫使慕尼黑、哥本哈根、維爾紐斯等主要樞紐關閉。萊比錫作為德國第二大貨運機場及DHL樞紐，2024年曾發生陰謀在過境包裹置放燃燒裝置，目前仍在德刑事審理中。"
-        ]
-      },
-      "en": {
-        "title": "Leipzig airport operations disrupted by suspected explosive device and mid-air collision",
-        "summary": "Leipzig/Halle Airport partially suspended flight operations overnight August 4-5 after police responded to an unidentified flying object and a suspicious item near the south runway. A Marabu Airlines A320neo diverted to Nuremberg. Separately, a DHL-operated cargo aircraft collided with an unidentified object near Leipzig and diverted to Hanover for an emergency landing. Flightradar24 data suggests the aircraft may be an EAT Leipzig Airbus A300 freighter. Police in Lower Saxony classified the incident as a state security offense and have not ruled out sabotage. Investigations are ongoing.",
-        "body": [
-          "Leipzig/Halle Airport (LEJ) partially suspended flight operations overnight from August 4 to August 5, 2026, after police responded to reports of an unidentified flying object and a suspicious item near the south runway. The Leipzig police directorate said the flying object was first sighted around 23:40 local time on August 4, prompting several aircraft to divert, including Marabu Airlines flight DI6777, an Airbus A320neo arriving from Palma de Mallorca, which was diverted to Nuremberg Airport.",
-          "Officers later found an object near the south runway, which federal police examined using a bomb disposal robot. Flight operations resumed on the north runway at 01:55 on August 5, though the south runway remained closed as investigations continued.",
-          "Separately, a DHL-operated cargo aircraft collided with an unidentified object near Leipzig airport and diverted for an emergency landing in Hanover, Reuters reported citing a source familiar with the incident. DHL Group CEO Tobias Meyer stated during the company's Q2 2026 investor call on August 5 that the company has plans for such cases and will try to minimize customer impact.",
-          "Flightradar24 data indicates the damaged aircraft may have been an EAT Leipzig Airbus A300 freighter registered D-AZML operating flight BCS7JG from Madrid. German media reported the collision occurred roughly six kilometers from the airport at an altitude of about 400 meters, with the aircraft sustaining minor damage to its nose section.",
-          "Police in Lower Saxony classified the incident as a state security offense and have not ruled out sabotage. Bild, citing security sources, reported the object was a drone carrying a package fitted with a detonator, found close to a parked Antonov Airlines An-124 freighter. Investigators were treating the find as a possible explosive device, though it remained unclear by the afternoon of August 5 whether a controlled detonation had been carried out. Antonov Airlines relocated most of its An-124 fleet to Leipzig/Halle after fighting at Hostomel Airport near Kyiv in 2022 devastated its home base. The incident adds to a string of unauthorized drone sightings disrupting European military sites, energy terminals, seaports, and logistics hubs, which several police forces have said could involve Russian agents, an allegation Moscow denies. A recent IISS assessment found Russian-linked drone activity forced closures at major European hubs including Munich, Copenhagen, and Vilnius over the past 18 months. Leipzig/Halle, Germany's second-largest cargo airport and a major DHL hub, has featured in security investigations before: a 2024 plot to plant incendiary devices in packages transiting through the airport remains the subject of an ongoing criminal trial in Germany."
-        ]
-      },
-      "flash": {
-        "zh": "萊比錫機場因爆裂物疑慮與貨機相撞暫停運作",
-        "en": "Leipzig airport halted by explosive scare, cargo jet collision",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-04",
-        "sev": "inc",
-        "aircraft": "Airbus A300 freighter",
-        "operator": "DHL-operated (EAT Leipzig)",
-        "phase": {
-          "zh": "巡航/進場階段",
-          "en": "en route/approach phase"
-        },
-        "location": {
-          "zh": "萊比錫/哈勒機場附近6公里、高度約400公尺",
-          "en": "6 km from Leipzig/Halle Airport at about 400 m altitude"
-        },
-        "desc": {
-          "zh": "貨機與不明物體相撞，機鼻輕微受損，轉降漢諾威",
-          "en": "Cargo aircraft collided with unidentified object, sustained minor nose damage, diverted to Hanover"
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Leipzig/Halle Airport partially suspended flight operations overnight from August 4 to August 5, 2026 after police responded to reports of an unidentified flying object and a suspicious item near the south runway.",
-          "sourceQuote": "Leipzig/Halle Airport (LEJ) partially suspended flight operations overnight from August 4 to August 5, 2026, after police responded to reports of an unidentified flying object and a suspicious item found near the airport’s south runway",
-          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Police reported the flying object was first sighted around 23:40 local time on August 4, prompting several aircraft including Marabu Airlines flight DI6777 to divert to Nuremberg.",
-          "sourceQuote": "Police said the flying object was first sighted around 23:40 local time on August 4, prompting several aircraft, including one passenger flight, to divert to other airports. Marabu Airlines flight DI6777, an Airbus A320neo arriving from Palma de Mallorca (PMI), was diverted to Nuremberg Airport (NUE).",
-          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Officers found an object near the south runway which federal police examined using a bomb disposal robot.",
-          "sourceQuote": "Officers later found an object near the south runway, which federal police (Bundespolizei) examined using a bomb disposal robot.",
-          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Flight operations resumed on the north runway at 01:55 on August 5 while the south runway remained closed.",
-          "sourceQuote": "Flight operations resumed on the north runway at 01:55 on August 5, though the south runway remained closed as investigations continued.",
-          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "A DHL-operated cargo aircraft collided with an unidentified object near Leipzig airport and diverted to Hanover for an emergency landing.",
-          "sourceQuote": "A DHL-operated cargo aircraft collided with an unidentified object near Leipzig airport and diverted for an emergency landing in Hanover, Reuters reported, citing a source familiar with the incident.",
-          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Flightradar24 data indicates the damaged aircraft may have been an EAT Leipzig Airbus A300 freighter registered D-AZML operating flight BCS7JG from Madrid.",
-          "sourceQuote": "Although authorities have not identified the aircraft publicly, flight-tracking data from Flightradar24 indicate that the damaged aircraft may have been EAT Leipzig Airbus A300 freighter D-AZML, operating fight BCS7JG from Madrid (MAD).",
-          "sourceUrl": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F3",
-        "F5",
-        "F6"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "Leipzig police directorate (Polizeidirektion Leipzig)",
-          "Bundespolizei",
-          "DHL Group",
-          "EAT Leipzig",
-          "Antonov Airlines",
-          "Marabu Airlines",
-          "Flightradar24",
-          "Reuters",
-          "Bild",
-          "IISS",
-          "Lower Saxony police",
-          "Saxony authorities"
-        ],
-        "airlines": [
-          "Marabu Airlines",
-          "DHL",
-          "EAT Leipzig",
-          "Antonov Airlines"
-        ],
-        "aircraft_models": [
-          "Airbus A320neo",
-          "Airbus A300 freighter",
-          "Antonov An-124",
-          "Antonov An-225 Mriya"
-        ],
-        "airports": [
-          "Leipzig/Halle Airport (LEJ)",
-          "Nuremberg Airport (NUE)",
-          "Hanover Airport",
-          "Palma de Mallorca (PMI)",
-          "Madrid (MAD)",
-          "Hostomel Airport"
-        ],
-        "locations": [
-          "Leipzig, Germany",
-          "Nuremberg, Germany",
-          "Hanover, Germany",
-          "Palma de Mallorca, Spain",
-          "Madrid, Spain",
-          "Kyiv, Ukraine",
-          "Munich, Germany",
-          "Copenhagen, Denmark",
-          "Vilnius, Lithuania"
-        ],
-        "flight_numbers": [
-          "DI6777",
-          "BCS7JG"
-        ],
-        "registration_numbers": [
-          "D-AZML"
-        ],
-        "event_dates": [
-          "2026-08-04",
-          "2026-08-05"
-        ]
-      },
-      "eventStatus": "under_investigation",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "investigation",
-        "unconfirmed_or_developing",
-        "conflicting_information"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260805-1205-3",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Suspected explosive device and mid-air collision disrupt Leipzig airport",
-          "url": "https://www.aerotime.aero/articles/leipzig-halle-airport-explosive-drone-collision",
-          "publishedUtc": "2026-08-05T11:13Z",
-          "summary": "Leipzig/Halle Airport (LEJ) partially suspended flight operations overnight from August 4 to August 5, 2026, after police responded… The post Suspected explosive device and mid-air collision disrupt Leipzig airport appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260730-0603-philippine-airlines-receives-third-a350",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: airbus",
-              "same airport code(s): MAKE",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft",
-            "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
-            "facts": [
-              {
-                "claim": "Philippine Airlines took delivery of its third Airbus A350-1000 (registration RP-C3512) on 29 July 2026, arriving in Manila from Toulouse.",
-                "source_quote": "The aircraft, with registration RP-C3512, arrived in Manila from Airbus’ delivery center in Toulouse, France, on July 29, 2026",
-                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
-                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
-              },
-              {
-                "claim": "The newly delivered A350-1000 will debut on the Manila–San Francisco route on 5 August 2026, initially three weekly flights (Tue, Fri, Sun) before daily service in September 2026.",
-                "source_quote": "The newly delivered aircraft is set to make its debut on PAL’s Manila-San Francisco route starting August 5, 2026, initially flying three times a week, on Tuesdays, Fridays, and Sundays, before shifting to daily service in September 2026",
-                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
-                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
-              },
-              {
-                "claim": "Philippine Airlines is the first and only airline in Southeast Asia operating the Airbus A350-1000.",
-                "source_quote": "Philippine Airlines is the first, and so far only, airline in Southeast Asia flying the A350-1000",
-                "source_url": "https://www.aerotime.aero/articles/philippine-airlines-welcomes-third-airbus-a350-1000-aircraft",
-                "source_name": "AeroTime — Philippine Airlines welcomes third Airbus A350-1000 aircraft"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260801-0732-lot-polish-airlines-to-launch-direct-war",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: lot",
-              "same airport code(s): AND",
-              "archive predates source by 5 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 5 day(s) apart",
-            "event_date": "2026-07-31",
-            "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with...",
-            "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-            "facts": [
-              {
-                "claim": "LOT Polish Airlines has announced a direct route between Warsaw Chopin Airport and Hanoi Noi Bai International Airport, with the inaugural flight scheduled for March 31, 2027.",
-                "source_quote": "LOT Polish Airlines has launched a new direct route between Warsaw Chopin Airport (WAW) and Noi Bai International Airport (HAN) in Hanoi, Vietnam, marking the airline’s fifth long-haul destination in Asia. Tickets are now on sale, with the inaugural flight scheduled for March 31, 2027.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "The Warsaw-Hanoi service will operate three times per week year-round using Boeing 787 Dreamliner aircraft, with departures from Warsaw on Mondays, Wednesdays, and Fridays, and return flights from Hanoi on Tuesdays, Thursdays, and Saturdays.",
-                "source_quote": "The Warsaw-Hanoi route will operate year-round, with three flights each way per week. Departures from Warsaw Chopin Airport are set for Mondays, Wednesdays, and Fridays at 15:15 local time, while return flights from Hanoi will depart Tuesdays, Thursdays, and Saturdays at 08:35 local time.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "Hanoi is LOT Polish Airlines' fifth long-haul destination in Asia, joining Tokyo, Seoul, New Delhi, and Bangkok.",
-                "source_quote": "Hanoi joins Tokyo, Seoul, New Delhi, and Bangkok as LOT’s fifth long-haul destination in Asia",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "LOT Board Member and CCO Robert Ludera stated that the new route reflects the airline's ambition to expand in Asia and develop Warsaw as a connecting hub.",
-                "source_quote": "Robert Ludera, Board Member and Chief Commercial Officer at LOT Polish Airlines, noted that the new route reflects the airline’s ambition to expand its presence in Asia, while further developing Warsaw as a connecting hub between Central and Eastern Europe and some of the world’s fastest-growing destinations.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
                 "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
                 "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
               }
