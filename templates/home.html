@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_summary.html" import notification_summary %}
 {% block content %}
   <div class="home-grid">
     <div class="rail-left">
@@ -48,7 +49,7 @@
         <div style="margin-top:16px;">
           <span class="card-kicker" style="font-size:11px;">{{ hero.cat_label }}{% if hero.article_format == "brief" %} · {{ t.briefLabel }}{% endif %} — {{ t.topStory }}</span>
           <h2 class="hero-title">{{ hero.title }}</h2>
-          <p class="text-muted" style="font-size:14.5px;line-height:1.75;margin:0;">{{ hero.summary }}</p>
+          {{ notification_summary(hero.display_summary, t.summaryLabel, 'hero') }}
           <div class="hero-meta">
             <span style="font-weight:800;color:var(--color-accent);">{{ hero.time }}</span>
             <span class="text-muted">{{ t.mainSource }}: {{ hero.source }}</span>
@@ -80,7 +81,7 @@
         <span class="feed-category tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% endif %}</span>
         <span class="feed-copy">
           <span style="display:block;font-size:15.5px;font-weight:700;line-height:1.4;letter-spacing:-.01em;">{{ item.title }}</span>
-          <span class="text-muted" style="display:block;font-size:12.5px;line-height:1.65;margin-top:3px;">{{ item.summary }}</span>
+          {{ notification_summary(item.display_summary, t.summaryLabel, 'feed') }}
         </span>
         <span class="feed-source text-muted">{{ item.source }}</span>
       </a>
