@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-09T19:40Z",
+  "updatedUtc": "2026-08-09T20:24Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,10 +21,10 @@
       "unknownCalls": 241
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 461,
+      "calls": 462,
       "inputTokens": 1520794,
       "outputTokens": 2965344,
-      "unknownCalls": 118
+      "unknownCalls": 119
     },
     "gemini:gemini-3.5-flash": {
       "calls": 71,
@@ -39,9 +39,9 @@
       "unknownCalls": 284
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 438,
-      "inputTokens": 2181951,
-      "outputTokens": 702576,
+      "calls": 439,
+      "inputTokens": 2186188,
+      "outputTokens": 703487,
       "unknownCalls": 35
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
@@ -201,12 +201,125 @@
       "outputTokens": 885772
     },
     "2026-08-09": {
-      "calls": 114,
-      "inputTokens": 289014,
-      "outputTokens": 569343
+      "calls": 116,
+      "inputTokens": 293251,
+      "outputTokens": 570254
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-09T20:23Z",
+      "finishedUtc": "2026-08-09T20:24Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-2023-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "nvidia:z-ai/glm-5.2",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 842,
+        "promptAssembly": 0,
+        "drafting": 27397,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 29106
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-09T20:23Z",
+          "durationMs": 155,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 155,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "quota",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
+          "retryPlanned": false,
+          "disabledForRun": true
+        },
+        {
+          "sequence": 2,
+          "provider": "nvidia",
+          "model": "z-ai/glm-5.2",
+          "label": "nvidia:z-ai/glm-5.2",
+          "startedUtc": "2026-08-09T20:23Z",
+          "durationMs": 27243,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 27239,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T20:23Z",
+      "finishedUtc": "2026-08-09T20:24Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-2023-2",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 839,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 28968
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-09T19:39Z",
       "finishedUtc": "2026-08-09T19:39Z",
