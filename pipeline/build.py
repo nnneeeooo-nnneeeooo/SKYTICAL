@@ -10,12 +10,14 @@ one-line log to stdout and the script exits 0.
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import shutil
 import sys
 import time
 import math
+import unicodedata
 from datetime import timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote, urlsplit
@@ -104,8 +106,17 @@ L = {
         "footerAbout": "全自動航空新聞聚合站。GitHub Actions 每小時抓取各可信來源，自動撰寫並發布，每篇文末標註原始出處。本頁為設計原型，內容為示意樣本。",
         "footerSources": "資料來源 Data Sources",
         "footerChangelog": "網站更新紀錄",
-        "nav": ["最新", "快報", "航班雷達", "事故資料庫", "來源", "方法論"],
+        "nav": ["最新", "搜尋", "快報", "航班雷達", "事故資料庫", "來源", "方法論"],
         "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
+        "searchKicker": "News Search", "searchTitle": "搜尋新聞",
+        "searchSub": "搜尋標題、摘要、全文、來源、日期、航班、機型與機場代碼；航空公司正式名稱與常用簡稱可互相查找。",
+        "searchPlaceholder": "輸入關鍵字，例如：華航、A321neo、桃園",
+        "searchButton": "搜尋", "searchClear": "清除",
+        "searchLoading": "正在載入新聞索引…",
+        "searchPrompt": "輸入關鍵字開始搜尋全部新聞。",
+        "searchCount": "找到 {count} 則新聞",
+        "searchNoResults": "找不到符合「{query}」的新聞，請改用航空公司簡稱、機型、航班或機場代碼。",
+        "searchError": "新聞索引暫時無法載入，請稍後重新整理頁面。",
         "radarKicker": "Taiwan Flight Radar",
         "radarTitle": "台灣民航雷達",
         "radarSub": "公開 ADS-B 即時觀測圖，顯示台灣周邊民航機的 ICAO／IATA 航班代碼、航線、機型、高度、速度與航向。",
@@ -191,10 +202,19 @@ L = {
         "footerAbout": "A fully automated aviation news aggregator. GitHub Actions fetches trusted sources hourly, writes and publishes automatically, and credits originals at the end of every article. Design prototype; sample content.",
         "footerSources": "Data Sources",
         "footerChangelog": "Site changelog",
-        "nav": ["Latest", "Briefings", "Flight Radar", "Incident DB", "Sources",
-                "Methodology"],
+        "nav": ["Latest", "Search", "Briefings", "Flight Radar", "Incident DB", "Sources",
+                 "Methodology"],
         "cats": ["All", "Safety", "Regulation", "Business", "Operations",
                  "Military"],
+        "searchKicker": "News Search", "searchTitle": "Search news",
+        "searchSub": "Search titles, summaries, full text, sources, dates, flights, aircraft types and airport codes. Official airline names and common short names are interchangeable.",
+        "searchPlaceholder": "Enter keywords, e.g. China Airlines, A321neo, TPE",
+        "searchButton": "Search", "searchClear": "Clear",
+        "searchLoading": "Loading the news index…",
+        "searchPrompt": "Enter keywords to search every published story.",
+        "searchCount": "{count} articles found",
+        "searchNoResults": "No stories match “{query}”. Try an airline short name, aircraft type, flight or airport code.",
+        "searchError": "The news index is temporarily unavailable. Please reload this page later.",
         "radarKicker": "Taiwan Flight Radar",
         "radarTitle": "Taiwan civil flight radar",
         "radarSub": "A live public ADS-B view of civil aircraft around Taiwan, with ICAO/IATA flight codes, routes, type, altitude, speed and heading.",
@@ -971,6 +991,109 @@ def art_view(a, lang: str):
         external=False,
     )
     return v
+
+
+def normalize_search_text(value) -> str:
+    """Normalize human-entered/search-index text without losing CJK words."""
+    text = unicodedata.normalize("NFKC", str(value or "")).casefold()
+    return re.sub(r"[^\w]+", " ", text, flags=re.UNICODE).strip()
+
+
+def load_search_alias_groups() -> list[tuple[str, ...]]:
+    """Load bounded, duplicate-free alias groups used to expand the index."""
+    path = Path(__file__).resolve().parent.parent / "config" / "search_aliases.json"
+    raw = load_json(path, {})
+    groups = []
+    for row in (raw.get("groups") if isinstance(raw, dict) else []) or []:
+        aliases = row.get("aliases") if isinstance(row, dict) else None
+        if not isinstance(aliases, list):
+            continue
+        clean = []
+        seen = set()
+        for value in aliases[:20]:
+            alias = re.sub(r"\s+", " ", str(value)).strip()[:80]
+            norm = normalize_search_text(alias)
+            if alias and norm and norm not in seen:
+                clean.append(alias)
+                seen.add(norm)
+        if len(clean) >= 2:
+            groups.append(tuple(clean))
+    return groups[:200]
+
+
+def _search_text_has_alias(normalized_text: str, alias: str) -> bool:
+    needle = normalize_search_text(alias)
+    if not needle:
+        return False
+    if re.fullmatch(r"[a-z0-9]+", needle):
+        return re.search(
+            rf"(?<![a-z0-9]){re.escape(needle)}(?![a-z0-9])",
+            normalized_text,
+        ) is not None
+    return needle in normalized_text
+
+
+def expand_search_aliases(text: str, groups=None) -> list[str]:
+    """Return every alias from groups represented by at least one term."""
+    normalized = normalize_search_text(text)
+    matched = []
+    for group in groups if groups is not None else load_search_alias_groups():
+        if any(_search_text_has_alias(normalized, alias) for alias in group):
+            matched.extend(group)
+    return matched
+
+
+def search_index_item(article, alias_groups) -> dict:
+    """Build one bilingual, full-text record for the static client index."""
+    searchable = [
+        article["id"], article["cat"], article["source"],
+        article["meta_ts"],
+        _bi(CATS.get(article["cat"]), "zh", article["cat"]),
+        _bi(CATS.get(article["cat"]), "en", article["cat"]),
+    ]
+    for lang in ("zh", "en"):
+        searchable.extend([
+            article[lang]["title"], article[lang]["summary"],
+            *article[lang]["body"],
+        ])
+    for source in article["sources"]:
+        searchable.extend([source["name"], source["host"]])
+    raw_search = " ".join(str(value) for value in searchable if value)
+    searchable.extend(expand_search_aliases(raw_search, alias_groups))
+    urls = {
+        lang: page_url(lang, f"news/{article['id']}/")
+        for lang in article["available_languages"]
+    }
+    return {
+        "id": article["id"],
+        "title": {lang: article[lang]["title"] for lang in ("zh", "en")},
+        "summary": {
+            lang: article[lang]["summary"] for lang in ("zh", "en")
+        },
+        "category": {
+            lang: _bi(CATS.get(article["cat"]), lang, article["cat"])
+            for lang in ("zh", "en")
+        },
+        "source": article["source"],
+        "date": article["meta_ts"],
+        "published": article["dt"].isoformat(),
+        "articleFormat": article["article_format"],
+        "availableLanguages": article["available_languages"],
+        "url": urls,
+        "search": normalize_search_text(" ".join(
+            str(value) for value in searchable if value)),
+    }
+
+
+def search_index_payload(articles, generated_utc) -> dict:
+    alias_groups = load_search_alias_groups()
+    return {
+        "version": 1,
+        "generatedUtc": generated_utc.isoformat(),
+        "count": len(articles),
+        "items": [search_index_item(article, alias_groups)
+                  for article in articles],
+    }
 
 
 def collect_agg_items(now):
@@ -2139,7 +2262,8 @@ def render_manual_workbench(env, build) -> int:
 
 def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=True):
     t = L[lang]
-    nav_defs = [("home", ""), ("briefings", "briefings/"),
+    nav_defs = [("home", ""), ("search", "search/"),
+                ("briefings", "briefings/"),
                 ("radar", "radar/"),
                 ("incidents", "incidents/"),
                 ("sources", "sources/"), ("about", "about/")]
@@ -2198,6 +2322,10 @@ def main() -> int:
             if f.is_file():
                 shutil.copy2(f, SITE_DIR / "assets" / f.name)
     (SITE_DIR / ".nojekyll").write_text("", encoding="utf-8")
+    (SITE_DIR / "search-index.json").write_text(
+        json.dumps(search_index_payload(articles, now), ensure_ascii=False,
+                   separators=(",", ":")),
+        encoding="utf-8", newline="\n")
 
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATES_DIR)),
@@ -2266,6 +2394,16 @@ def main() -> int:
                    cat_seg=list(zip(cat_keys, t["cats"])),
                    latest_brief=latest_brief)
         render(env, "home.html", rel_path(lang, "index.html"), ctx)
+        pages += 1
+
+        ctx = base_ctx(
+            lang, "search", "search/",
+            title=f"{t['siteName']} — {t['searchTitle']}",
+            description=t["searchSub"], ticker=ticker, build=build)
+        ctx["search_index_url"] = (
+            f"{BASE_PATH}/search-index.json"
+            if BASE_PATH else "/search-index.json")
+        render(env, "search.html", rel_path(lang, "search/index.html"), ctx)
         pages += 1
 
         for bv in bviews:
