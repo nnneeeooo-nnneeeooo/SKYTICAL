@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-09T22:56Z",
+  "updatedUtc": "2026-08-09T22:57Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,10 +21,10 @@
       "unknownCalls": 241
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 466,
+      "calls": 467,
       "inputTokens": 1532038,
       "outputTokens": 2974594,
-      "unknownCalls": 120
+      "unknownCalls": 121
     },
     "gemini:gemini-3.5-flash": {
       "calls": 71,
@@ -129,10 +129,16 @@
       "unknownCalls": 183
     },
     "opencode:claude-sonnet-4-6": {
-      "calls": 2,
+      "calls": 3,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 2
+      "unknownCalls": 3
+    },
+    "opencode:gpt-5.5": {
+      "calls": 1,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "unknownCalls": 1
     }
   },
   "daily": {
@@ -207,18 +213,18 @@
       "outputTokens": 885772
     },
     "2026-08-09": {
-      "calls": 123,
+      "calls": 126,
       "inputTokens": 308944,
       "outputTokens": 580473
     }
   },
   "recentRuns": [
     {
-      "startedUtc": "2026-08-09T22:56Z",
-      "finishedUtc": "2026-08-09T22:56Z",
+      "startedUtc": "2026-08-09T22:57Z",
+      "finishedUtc": "2026-08-09T22:57Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260809-2256-1",
+      "groupId": "g-20260809-2257-1",
       "eventId": null,
       "sourceCount": 6,
       "primarySource": "NTSB",
@@ -234,7 +240,7 @@
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 534,
+        "archiveRetrieval": 804,
         "promptAssembly": null,
         "drafting": null,
         "validation": null,
@@ -243,7 +249,7 @@
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 549
+        "total": 831
       },
       "attempts": [],
       "resourceUsage": {
