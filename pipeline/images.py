@@ -50,6 +50,7 @@ MAX_LOOKUPS_PER_RUN = 6
 MAX_ATTEMPTS = 3          # per article before we stop retrying "none"
 RETRY_AFTER_HOURS = 6
 MAX_ARTICLE_AGE_DAYS = 14  # never backfill ancient batches
+GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS = 10
 
 PLANESPOTTERS_URL = "https://api.planespotters.net/pub/photos/reg/{reg}"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
@@ -261,6 +262,21 @@ def _strip_html(value: str) -> str:
     return re.sub(r"\s+", " ", _TAG_RE.sub(" ", unescape(value))).strip()
 
 
+def _commons_photo_year(metadata: dict) -> int | None:
+    """Return the documented capture year, never the later upload year."""
+    value = _strip_html(str(
+        (metadata.get("DateTimeOriginal") or {}).get("value") or ""))
+    match = re.search(r"\b((?:19|20)\d{2})\b", value)
+    return int(match.group(1)) if match else None
+
+
+def _article_year(article: dict) -> int:
+    try:
+        return parse_iso(str(article.get("publishedUtc"))).year
+    except (TypeError, ValueError):
+        return now_utc().year
+
+
 def existing_image_matches(article: dict, image) -> bool:
     """Whether an existing automatic image still fits revised article facts.
 
@@ -291,6 +307,16 @@ def existing_image_matches(article: dict, image) -> bool:
         return True
     normalized_airline = re.sub(
         r"[^a-z0-9]+", " ", airline.casefold()).strip()
+    generic_match = re.sub(
+        r"[^a-z0-9]+", " ",
+        str(image.get("matched") or "").casefold()).strip()
+    if generic_match == f"{normalized_airline} aircraft":
+        try:
+            photo_year = int(image.get("photoYear"))
+        except (TypeError, ValueError):
+            return False
+        return photo_year >= (
+            _article_year(article) - GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS)
     return bool(normalized_airline and normalized_airline in normalized)
 
 
@@ -324,7 +350,9 @@ def lookup_planespotters(reg: str) -> dict | None:
 
 def lookup_commons(query: str, require_tokens: list[str],
                    subject: str | None = None,
-                   require_all: bool = False) -> dict | None:
+                   require_all: bool = False,
+                   min_year: int | None = None,
+                   prefer_recent: bool = False) -> dict | None:
     """First freely-licensed Commons bitmap matching the query.
 
     require_tokens: title tokens used to reject unrelated search results.
@@ -336,7 +364,7 @@ def lookup_commons(query: str, require_tokens: list[str],
                         params={
                             "action": "query", "format": "json",
                             "generator": "search", "gsrnamespace": 6,
-                            "gsrlimit": 8,
+                            "gsrlimit": 20,
                             "gsrsearch": f"filetype:bitmap {query}",
                             "prop": "imageinfo",
                             "iiprop": "url|extmetadata",
@@ -346,6 +374,7 @@ def lookup_commons(query: str, require_tokens: list[str],
         return None
     pages = ((resp.json() or {}).get("query") or {}).get("pages") or {}
     tokens = [t.casefold() for t in require_tokens if t]
+    candidates = []
     for page in sorted(pages.values(), key=lambda p: p.get("index", 99)):
         title = str(page.get("title") or "")
         if _BAD_TITLE_RE.search(title):
@@ -360,12 +389,16 @@ def lookup_commons(query: str, require_tokens: list[str],
                 str((meta.get("LicenseShortName") or {}).get("value") or ""))
             if not _FREE_LICENSE_RE.search(license_name):
                 continue
+            photo_year = _commons_photo_year(meta)
+            if min_year is not None and (
+                    photo_year is None or photo_year < min_year):
+                continue
             thumb = info.get("thumburl") or info.get("url")
             if not thumb:
                 continue
             artist = _strip_html(
                 str((meta.get("Artist") or {}).get("value") or ""))[:80]
-            return {
+            candidate = {
                 "url": str(thumb),
                 "link": str(info.get("descriptionshorturl")
                             or info.get("descriptionurl") or thumb),
@@ -375,8 +408,13 @@ def lookup_commons(query: str, require_tokens: list[str],
                 "kind": "file_photo",
                 "matched": query,
                 "subject": subject or None,
+                "photoYear": photo_year,
             }
-    return None
+            if not prefer_recent:
+                return candidate
+            candidates.append((photo_year or 0,
+                               -int(page.get("index", 99)), candidate))
+    return max(candidates, key=lambda row: row[:2])[2] if candidates else None
 
 
 def resolve_image(article: dict) -> dict | None:
@@ -400,8 +438,11 @@ def resolve_image(article: dict) -> dict | None:
         return lookup_commons(f'{actype} aircraft', [type_token],
                               subject=actype)
     if airline:
-        return lookup_commons(f'{airline} aircraft', [airline],
-                              subject=airline)
+        min_year = (
+            _article_year(article) - GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS)
+        return lookup_commons(
+            f'{airline} aircraft', [airline], subject=airline,
+            min_year=min_year, prefer_recent=True)
     if airport:
         query, tokens, subject = airport
         return lookup_commons(query, tokens, subject=subject)
