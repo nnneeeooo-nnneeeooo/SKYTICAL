@@ -266,6 +266,9 @@ check("notification-style summaries are short and information-dense",
       and "otherwise use 2 to 4 factual" in write.SYSTEM_PROMPT
       and "semicolon-separated factual keyword phrases" in write.SYSTEM_PROMPT
       and "Never use an ellipsis" in write.SYSTEM_PROMPT
+      and "Never return a standalone" in write.SYSTEM_PROMPT
+      and "never split a multi-word proper name" in write.SYSTEM_PROMPT
+      and "readable clause" in write.SYSTEM_PROMPT
       and "supported place/route, timing and concrete operational" in
       write.SYSTEM_PROMPT)
 
