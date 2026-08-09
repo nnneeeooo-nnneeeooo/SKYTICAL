@@ -25,6 +25,7 @@ def main() -> None:
     assert 'class="site-nav" id="site-nav"' in home
     assert 'class="utility-row"' in home
     assert 'class="ticker-window"' in home
+    assert 'class="ticker-pass"' in home
     assert 'class="feed-copy"' in home
     assert 'class="article-page"' in article
     assert 'class="article-source-row"' in article
@@ -34,9 +35,15 @@ def main() -> None:
     assert "grid-template-columns: repeat(2, minmax(0, 1fr))" in css
     assert ".center-col { order: 1;" in css
     assert ".feed-copy { grid-column: 1 / -1; }" in css
+    assert "--ticker-duration: 180s" in css
+    assert '"PingFang TC"' in css
+    assert "@media (prefers-reduced-motion: reduce)" in css
+    assert ".marquee-track .ticker-pass:nth-child(2) { display: none; }" in css
     assert 'setAttribute("aria-expanded"' in script
     assert 'event.key === "Escape"' in script
     assert 'matchMedia("(min-width: 721px)")' in script
+    assert 'matches ? 24 : 52' in script
+    assert 'style.setProperty("--ticker-duration"' in script
 
     print("test_mobile_layout: OK")
 
