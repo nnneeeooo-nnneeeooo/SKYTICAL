@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-09T18:52Z",
+  "updatedUtc": "2026-08-09T19:40Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,9 +21,9 @@
       "unknownCalls": 241
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 459,
-      "inputTokens": 1514320,
-      "outputTokens": 2959120,
+      "calls": 461,
+      "inputTokens": 1520794,
+      "outputTokens": 2965344,
       "unknownCalls": 118
     },
     "gemini:gemini-3.5-flash": {
@@ -201,12 +201,202 @@
       "outputTokens": 885772
     },
     "2026-08-09": {
-      "calls": 112,
-      "inputTokens": 282540,
-      "outputTokens": 563119
+      "calls": 114,
+      "inputTokens": 289014,
+      "outputTokens": 569343
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-09T19:39Z",
+      "finishedUtc": "2026-08-09T19:39Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1939-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 802,
+        "promptAssembly": 0,
+        "drafting": 12082,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 15304
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-09T19:39Z",
+          "durationMs": 12082,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 12081,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T19:39Z",
+      "finishedUtc": "2026-08-09T19:40Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1939-2",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 799,
+        "promptAssembly": 0,
+        "drafting": 17617,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 32849
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-09T19:39Z",
+          "durationMs": 17617,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 17615,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T19:39Z",
+      "finishedUtc": "2026-08-09T19:40Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1939-3",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 798,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 32762
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T19:39Z",
+      "finishedUtc": "2026-08-09T19:40Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1939-5",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "臺灣交通要聞",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 797,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 32700
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-09T18:52Z",
       "finishedUtc": "2026-08-09T18:52Z",
