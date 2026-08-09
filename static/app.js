@@ -44,6 +44,17 @@
   /* — global header search: operate the Google-style clear key — */
   var headerSearchInput = document.getElementById("news-search-input");
   var headerSearchClear = document.getElementById("news-search-clear");
+  if (headerSearchInput) {
+    try {
+      var searchPlaceholders = JSON.parse(
+        headerSearchInput.getAttribute("data-search-placeholders") || "[]"
+      );
+      if (Array.isArray(searchPlaceholders) && searchPlaceholders.length) {
+        var randomPlaceholder = Math.floor(Math.random() * searchPlaceholders.length);
+        headerSearchInput.placeholder = searchPlaceholders[randomPlaceholder];
+      }
+    } catch (e) { /* keep the server-rendered fallback */ }
+  }
   if (headerSearchInput && headerSearchClear) {
     headerSearchClear.addEventListener("click", function () {
       headerSearchInput.value = "";
