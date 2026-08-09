@@ -94,27 +94,6 @@
       "updates": {},
       "retain_until": "2026-09-02T10:51:33.857508+00:00"
     },
-    "ev-00b39f1625d282e5": {
-      "fingerprint": "00b39f1625d282e58752796a55c92a948fa49d52e82035ce274922737c606374",
-      "urls": [
-        "https://simpleflying.com/national-airlines-record-boeing-777f-flight"
-      ],
-      "section": "international_aviation",
-      "cat": "ops",
-      "first_seen": "2026-08-06T00:10:30.876313+00:00",
-      "last_seen": "2026-08-06T00:10:30.876313+00:00",
-      "first_briefing_id": "2026-08-06-morning",
-      "article_ids": [
-        "a-20260805-1748-national-airlines-completes-11-315-mile"
-      ],
-      "fact_keys": [
-        "national airlines completed a record-breaking flight using a boeing 777f freighter aircraft.",
-        "the boeing 777f departed scotland and arrived in australia 19 hours and 24 minutes later.",
-        "the flight covered a total distance of 11,315 miles and lasted approximately 20 hours according to simple flying."
-      ],
-      "updates": {},
-      "retain_until": "2026-08-09T00:10:30.876313+00:00"
-    },
     "ev-23c1129c58b10aa3": {
       "fingerprint": "23c1129c58b10aa34627d63fdf56b370a6485352c2710838745e3f3cf39ed461",
       "urls": [
@@ -193,24 +172,31 @@
       "section": "taiwan_aviation",
       "cat": "ops",
       "first_seen": "2026-08-07T16:09:19.301359+00:00",
-      "last_seen": "2026-08-08T15:46:28.105242+00:00",
+      "last_seen": "2026-08-09T08:00:39.049803+00:00",
       "first_briefing_id": "2026-08-07-evening",
       "article_ids": [
         "a-20260807-1153-airbus-a320-b-lpn-observed-arriving-at-t",
-        "a-20260808-1303-delta-a350-900-arrives-at-taipei-taoyuan"
+        "a-20260808-1303-delta-a350-900-arrives-at-taipei-taoyuan",
+        "a-20260809-0551-jetstar-japan-a320-arrival-at-taoyuan-ai"
       ],
       "fact_keys": [
         "an airbus a320 registered b-lpn was confirmed arriving at rctp on 2026-08-07.",
+        "an airbus a320 with registration ja16jj arrived at taoyuan international airport (rctp) on august 9, 2026.",
         "arrival was confirmed based on geofence and ground altitude reading.",
         "cross-confirmation status is secondary_unavailable.",
         "no comparable long-term statistics are available yet.",
         "the aircraft icao hex is 780a99, registration b-lpn, callsign crk261, type a320.",
         "the aircraft's icao hex is a65092, registration number is n506dn, and call sign is dal69.",
         "the airport icao is rctp, which corresponds to taiwan taoyuan international airport.",
+        "the arrival was confirmed based on the aircraft being within the airport geofence with an altitude of ground level.",
         "the first valid observation time was 2026-08-08t11:56:00z, the confirmed arrival time was 2026-08-08t12:26:25z, the arrival status is confirmed_arrival based on being within the airport geofence with barometric altitude on ground, there were 2 valid observations, and the site's accumulated observation history has no comparable long-term statistics for this combination.",
+        "the first valid observation time was recorded at 04:02:30 utc on august 9, 2026.",
+        "the flight was operating under callsign jjp14, with jetstar japan as the operator.",
         "the observation record shows the event id is fw-d1cfe5f2127d531f.",
         "the operator icao is crk but operator name is unidentified.",
-        "the operator icao is dal, operator name is delta air lines, and the aircraft model is a359 (airbus a350-900)."
+        "the operator icao is dal, operator name is delta air lines, and the aircraft model is a359 (airbus a350-900).",
+        "there is currently no comparable long-term historical data available in the system.",
+        "two valid observations were recorded from airplanes.live and adsb.lol, with cross-confirmation status confirmed_by_primary_only."
       ],
       "updates": {
         "2026-08-08-evening": {
@@ -221,6 +207,17 @@
             "The aircraft's ICAO hex is a65092, registration number is N506DN, and call sign is DAL69.",
             "The operator ICAO is DAL, operator name is Delta Air Lines, and the aircraft model is A359 (Airbus A350-900).",
             "The first valid observation time was 2026-08-08T11:56:00Z, the confirmed arrival time was 2026-08-08T12:26:25Z, the arrival status is confirmed_arrival based on being within the airport geofence with barometric altitude on ground, there were 2 valid observations, and the site's accumulated observation history has no comparable long-term statistics for this combination."
+          ]
+        },
+        "2026-08-09-afternoon": {
+          "article_id": "a-20260809-0551-jetstar-japan-a320-arrival-at-taoyuan-ai",
+          "new_information": [
+            "An Airbus A320 with registration JA16JJ arrived at Taoyuan International Airport (RCTP) on August 9, 2026.",
+            "The flight was operating under callsign JJP14, with Jetstar Japan as the operator.",
+            "The arrival was confirmed based on the aircraft being within the airport geofence with an altitude of ground level.",
+            "The first valid observation time was recorded at 04:02:30 UTC on August 9, 2026.",
+            "Two valid observations were recorded from Airplanes.live and ADSB.lol, with cross-confirmation status confirmed_by_primary_only.",
+            "There is currently no comparable long-term historical data available in the system."
           ]
         }
       },
@@ -447,6 +444,47 @@
       ],
       "updates": {},
       "retain_until": "2026-08-11T23:45:03.745527+00:00"
+    },
+    "ev-33ff6d58b8ebf033": {
+      "fingerprint": "33ff6d58b8ebf033536f8e3102a0f03ba0eb213980e7550be2fc19032db79e36",
+      "urls": [
+        "https://simpleflying.com/american-airlines-1205-flight-attendants-unpaid-leave-september"
+      ],
+      "section": "international_aviation",
+      "cat": "ops",
+      "first_seen": "2026-08-09T08:00:39.049803+00:00",
+      "last_seen": "2026-08-09T08:00:39.049803+00:00",
+      "first_briefing_id": "2026-08-09-afternoon",
+      "article_ids": [
+        "a-20260809-0706-american-airlines-offers-1-205-flight-at"
+      ],
+      "fact_keys": [
+        "american airlines is offering unpaid leave to 1,205 flight attendants amid september flight cuts.",
+        "an earlier fall schedule and rising jet fuel costs prompted a 4% workforce adjustment across american airlines' busiest hubs."
+      ],
+      "updates": {},
+      "retain_until": "2026-08-12T08:00:39.049803+00:00"
+    },
+    "ev-abbf4d22b762f16f": {
+      "fingerprint": "abbf4d22b762f16f94dd3cf708edcbbdfc8248009dc38fbee604396746a9a22c",
+      "urls": [
+        "https://www.cna.com.tw/news/aipl/202608090082.aspx"
+      ],
+      "section": "ground_and_maritime",
+      "cat": "mil",
+      "first_seen": "2026-08-09T08:00:39.049803+00:00",
+      "last_seen": "2026-08-09T08:00:39.049803+00:00",
+      "first_briefing_id": "2026-08-09-afternoon",
+      "article_ids": [
+        "a-20260809-0706-military-police-conduct-troop-transport"
+      ],
+      "fact_keys": [
+        "憲兵指揮部於8月9日凌晨聯合台北市政府、台北捷運公司及台北市警察局，導入共同作戰圖像與通信備援系統演練。",
+        "憲兵指揮部表示演練旨在磨練部隊發揮既有公共設施與系統效能，建構城鎮防衛作戰韌性。",
+        "漢光演習第5天凌晨，憲兵在台北運用捷運地下路線實施部隊機動及後勤補給任務演練。"
+      ],
+      "updates": {},
+      "retain_until": "2026-08-12T08:00:39.049803+00:00"
     }
   },
   "grounded_seen": {}
