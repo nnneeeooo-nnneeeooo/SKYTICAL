@@ -1,6 +1,6 @@
 """LLM provider adapters for the write stage.
 
-Four interchangeable writers behind one interface:
+Five interchangeable writers behind one interface:
 
     anthropic  Anthropic Messages API with native structured outputs
     gemini     Google Gemini API (REST) with responseJsonSchema
@@ -8,6 +8,8 @@ Four interchangeable writers behind one interface:
                JSON enforced by prompt + local extraction
     openrouter OpenRouter Chat Completions (OpenAI-compatible REST),
                JSON enforced by prompt + local extraction
+    opencode   OpenCode Console gateway, routing each model through its
+               native Responses, Messages, Gemini or Chat Completions API
 
 Each provider exposes:
     name         registry key
@@ -69,6 +71,8 @@ HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
 NVIDIA_DEFAULT_MODEL = "z-ai/glm-5.2"
 GEMINI_DEFAULT_MODEL = "gemini-3.6-flash"
 OPENROUTER_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
+OPENCODE_DEFAULT_MODEL = "claude-sonnet-4-6"
+OPENCODE_BASE_URL = "https://console.opencode.ai/inference"
 
 MODEL_PROFILES: dict = {
     # Gemini thinking is high for fact-sensitive bilingual drafting. Format
@@ -82,6 +86,13 @@ MODEL_PROFILES: dict = {
             "thinkingConfig": {"thinkingLevel": "minimal"}},
     },
     "gemini-3.5-flash": {
+        "generationConfig": {"maxOutputTokens": 16384,
+                             "thinkingConfig": {"thinkingLevel": "high"}},
+        "repairGenerationConfig": {
+            "maxOutputTokens": 8192,
+            "thinkingConfig": {"thinkingLevel": "minimal"}},
+    },
+    "gemini-3.1-pro": {
         "generationConfig": {"maxOutputTokens": 16384,
                              "thinkingConfig": {"thinkingLevel": "high"}},
         "repairGenerationConfig": {
@@ -315,7 +326,7 @@ def safe_failure_message(value, limit: int = 180) -> str:
     )
     text = re.sub(
         r"(?i)\b(nvapi-[A-Za-z0-9_-]+|AIza[A-Za-z0-9_-]+|"
-        r"sk-or-v1-[A-Za-z0-9_-]+)\b",
+        r"sk-or-v1-[A-Za-z0-9_-]+|oc_sk_[A-Za-z0-9_-]+)\b",
         "[redacted]",
         text,
     )
@@ -893,11 +904,305 @@ class OpenRouterProvider(NvidiaProvider):
         return super()._final_text(response)
 
 
+class OpenCodeProvider(NvidiaProvider):
+    """OpenCode Console service-account gateway with native protocol routing.
+
+    Console exposes different provider-compatible paths.  Keeping one AVWIRE
+    provider name means an invalid/empty service account disables the whole
+    gateway for the run, while model-local failures still fall through to the
+    next configured OpenCode model.
+    """
+
+    name = "opencode"
+
+    def __init__(self, model=None, reasoning_tier=None) -> None:
+        self.model = (
+            model or os.environ.get("AVWIRE_OPENCODE_MODEL")
+            or OPENCODE_DEFAULT_MODEL
+        )
+        self.label = f"{self.name}:{self.model}"
+        self.http_calls = 0
+        self.repair_calls = 0
+        self.http_duration_ms = 0
+        self.repair_duration_ms = 0
+        self.usage = _blank_usage()
+        self.reasoning_tier = reasoning_tier
+        self.request_log = []
+        self.reasoning_effective = "automatic profile"
+
+    def available(self) -> bool:
+        return bool(os.environ.get("OPENCODE_API_KEY"))
+
+    def _protocol(self) -> str:
+        if self.model.startswith("gpt-"):
+            return "responses"
+        if self.model.startswith(("claude-", "qwen3.")):
+            return "messages"
+        if self.model.startswith("gemini-"):
+            return "gemini"
+        return "chat"
+
+    def _effort(self, repair: bool) -> str:
+        if repair:
+            return "low"
+        if not self.reasoning_tier:
+            return "medium"
+        effort = {
+            "fast": "low", "standard": "medium", "deep": "high",
+        }.get(self.reasoning_tier, "medium")
+        self.reasoning_effective = f"effort={effort}"
+        return effort
+
+    def _post_json(self, url: str, payload: dict, headers: dict,
+                   repair: bool):
+        self.http_calls += 1
+        if repair:
+            self.repair_calls += 1
+        started = time.perf_counter()
+        response = None
+        try:
+            response = requests.post(
+                url, json=payload, timeout=HTTP_TIMEOUT, headers=headers)
+            return response
+        except requests.RequestException as exc:
+            raise ProviderError(type(exc).__name__) from exc
+        finally:
+            elapsed = max(0, round((time.perf_counter() - started) * 1000))
+            self.http_duration_ms += elapsed
+            if repair:
+                self.repair_duration_ms += elapsed
+            if response is not None:
+                self.request_log.append(_safe_response_meta(response, elapsed))
+
+    def _check_status(self, response) -> None:
+        if response.status_code in (401, 403):
+            raise ProviderAuthError(f"HTTP {response.status_code}")
+        if response.status_code == 402:
+            raise ProviderQuotaError("HTTP 402 (credits exhausted?)")
+        if response.status_code == 429:
+            # Console can apply model-specific limits.  Preserve the shared
+            # service account so the next OpenCode model can still run.
+            raise ProviderError("HTTP 429 rate limit")
+        if response.status_code == 404:
+            raise ProviderError(
+                f"model not found: {self.model} "
+                "(not enabled in this Console organization?)")
+        if response.status_code >= 400:
+            raise ProviderError(f"HTTP {response.status_code}")
+
+    def _record_usage(self, data: dict) -> None:
+        usage = data.get("usage") or {}
+        if not usage:
+            return
+        self.usage["inputTokens"] += int(
+            usage.get("input_tokens") or usage.get("prompt_tokens") or 0)
+        self.usage["outputTokens"] += int(
+            usage.get("output_tokens") or usage.get("completion_tokens") or 0)
+        self.usage["usageEvents"] += 1
+
+    @staticmethod
+    def _schema_instruction(schema: dict) -> str:
+        return (
+            "\n\nReturn ONLY one JSON object (no markdown fences, no prose) "
+            "conforming exactly to this JSON Schema:\n"
+            + json.dumps(schema, ensure_ascii=False)
+        )
+
+    def _responses_call(self, system_prompt: str, user_prompt: str,
+                        schema: dict, repair: bool):
+        payload = {
+            "model": self.model,
+            "input": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            "max_output_tokens": 8192 if repair else 16384,
+            "reasoning": {"effort": self._effort(repair)},
+            "text": {"format": {
+                "type": "json_schema",
+                "name": "avwire_draft",
+                "schema": schema,
+            }},
+        }
+        key = os.environ["OPENCODE_API_KEY"]
+        response = self._post_json(
+            f"{OPENCODE_BASE_URL}/openai/v1/responses",
+            payload,
+            {"Authorization": f"Bearer {key}",
+             "Content-Type": "application/json"},
+            repair,
+        )
+        self._check_status(response)
+        data = response.json()
+        self._record_usage(data)
+        if data.get("status") == "incomplete":
+            reason = (data.get("incomplete_details") or {}).get("reason")
+            raise ProviderError(f"incomplete response ({reason or 'unknown'})")
+        if isinstance(data.get("output_text"), str):
+            text = data["output_text"]
+            if text.strip():
+                return text
+        texts = []
+        for item in data.get("output") or []:
+            if not isinstance(item, dict) or item.get("type") != "message":
+                continue
+            for block in item.get("content") or []:
+                if not isinstance(block, dict):
+                    continue
+                if block.get("type") == "refusal":
+                    print(f"write: {self.label} refused")
+                    return None
+                if block.get("type") == "output_text":
+                    texts.append(str(block.get("text") or ""))
+        text = "".join(texts)
+        if not text.strip():
+            raise ProviderError("empty Responses output")
+        return text
+
+    def _messages_call(self, system_prompt: str, user_prompt: str,
+                       schema: dict, repair: bool):
+        payload = {
+            "model": self.model,
+            "max_tokens": 8192 if repair else 16000,
+            "system": system_prompt,
+            "messages": [{"role": "user", "content": user_prompt}],
+        }
+        if self.model.startswith("claude-"):
+            payload["output_config"] = {
+                "effort": self._effort(repair),
+                "format": {"type": "json_schema", "schema": schema},
+            }
+        else:
+            payload["system"] += self._schema_instruction(schema)
+            if self.reasoning_tier:
+                self.reasoning_effective = "provider_default"
+        key = os.environ["OPENCODE_API_KEY"]
+        response = self._post_json(
+            f"{OPENCODE_BASE_URL}/anthropic/v1/messages",
+            payload,
+            {"x-api-key": key, "anthropic-version": "2023-06-01",
+             "Content-Type": "application/json"},
+            repair,
+        )
+        self._check_status(response)
+        data = response.json()
+        self._record_usage(data)
+        if data.get("stop_reason") == "max_tokens":
+            raise ProviderError("response truncated (max_tokens)")
+        texts = []
+        for block in data.get("content") or []:
+            if not isinstance(block, dict):
+                continue
+            if block.get("type") == "refusal":
+                print(f"write: {self.label} refused")
+                return None
+            if block.get("type") == "text":
+                texts.append(str(block.get("text") or ""))
+        text = "".join(texts)
+        if not text.strip():
+            raise ProviderError("empty Messages output")
+        return text
+
+    def _gemini_call(self, system_prompt: str, user_prompt: str,
+                     schema: dict, repair: bool):
+        profile = MODEL_PROFILES.get(self.model, {})
+        config_key = (
+            "repairGenerationConfig" if repair else "generationConfig")
+        config = dict(profile.get(config_key) or {})
+        if self.reasoning_tier and not repair:
+            level = {
+                "fast": "minimal", "standard": "medium", "deep": "high",
+            }.get(self.reasoning_tier, "medium")
+            config["thinkingConfig"] = {"thinkingLevel": level}
+            self.reasoning_effective = f"thinkingLevel={level}"
+        config["responseMimeType"] = "application/json"
+        config["responseJsonSchema"] = schema
+        payload = {
+            "systemInstruction": {"parts": [{"text": system_prompt}]},
+            "contents": [
+                {"role": "user", "parts": [{"text": user_prompt}]},
+            ],
+            "generationConfig": config,
+        }
+        key = os.environ["OPENCODE_API_KEY"]
+        response = self._post_json(
+            f"{OPENCODE_BASE_URL}/gemini/v1beta/models/"
+            f"{self.model}:generateContent",
+            payload,
+            {"x-goog-api-key": key, "Content-Type": "application/json"},
+            repair,
+        )
+        self._check_status(response)
+        return GeminiProvider._final_text(self, response)
+
+    def _chat_call(self, system_prompt: str, user_prompt: str,
+                   schema: dict, repair: bool):
+        payload = {
+            "model": self.model,
+            "messages": [
+                {"role": "system",
+                 "content": system_prompt + self._schema_instruction(schema)},
+                {"role": "user", "content": user_prompt},
+            ],
+            "max_tokens": 8192 if repair else 16384,
+            "stream": False,
+            "temperature": 0.2,
+        }
+        if self.reasoning_tier:
+            self.reasoning_effective = "provider_default"
+        key = os.environ["OPENCODE_API_KEY"]
+        response = self._post_json(
+            f"{OPENCODE_BASE_URL}/openai/v1/chat/completions",
+            payload,
+            {"Authorization": f"Bearer {key}",
+             "Accept": "application/json",
+             "Content-Type": "application/json"},
+            repair,
+        )
+        self._check_status(response)
+        return NvidiaProvider._final_text(self, response)
+
+    def _call(self, system_prompt: str, user_prompt: str, schema: dict,
+              repair: bool):
+        protocol = self._protocol()
+        if protocol == "responses":
+            return self._responses_call(
+                system_prompt, user_prompt, schema, repair)
+        if protocol == "messages":
+            return self._messages_call(
+                system_prompt, user_prompt, schema, repair)
+        if protocol == "gemini":
+            return self._gemini_call(
+                system_prompt, user_prompt, schema, repair)
+        return self._chat_call(system_prompt, user_prompt, schema, repair)
+
+    def draft(self, system_prompt: str, user_prompt: str, schema: dict):
+        text = self._call(system_prompt, user_prompt, schema, repair=False)
+        if text is None:
+            return None
+        try:
+            return extract_json(text)
+        except ValueError as exc:
+            print(f"write: {self.label} returned malformed JSON ({exc}); "
+                  "attempting format repair")
+            repaired = self._call(
+                REPAIR_SYSTEM_PROMPT, text, schema, repair=True)
+            if repaired is None:
+                return None
+            try:
+                return extract_json(repaired)
+            except ValueError as repair_exc:
+                raise ProviderError(
+                    f"bad JSON even after format repair: {repair_exc}"
+                ) from repair_exc
+
+
 _REGISTRY = {
     AnthropicProvider.name: AnthropicProvider,
     GeminiProvider.name: GeminiProvider,
     NvidiaProvider.name: NvidiaProvider,
     OpenRouterProvider.name: OpenRouterProvider,
+    OpenCodeProvider.name: OpenCodeProvider,
 }
 
 

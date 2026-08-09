@@ -2,8 +2,9 @@
 
 For each pending story group (capped at MAX_GROUPS_PER_RUN per run) one
 LLM call drafts the article, flash and optional incident row. Providers are
-tried in AVWIRE_PROVIDER_ORDER (anthropic / gemini / nvidia / openrouter; see
-providers.py): the first configured provider is the primary writer and the
+tried in AVWIRE_PROVIDER_ORDER (opencode / anthropic / gemini / nvidia /
+openrouter; see providers.py): the first configured provider is the primary
+writer and the
 rest are fallbacks — a provider that hits an auth or quota error is disabled
 for the rest of the run and the next one takes over.
 
@@ -1964,8 +1965,9 @@ def main() -> None:
     # --- 2. draft the pending groups through the provider chain ----------
     providers = build_providers()
     if not providers:
-        print("write: no LLM API key set (ANTHROPIC_API_KEY / GEMINI_API_KEY "
-              "/ NVIDIA_API_KEY / OPENROUTER_API_KEY); "
+        print("write: no LLM API key set (OPENCODE_API_KEY / "
+              "ANTHROPIC_API_KEY / GEMINI_API_KEY / NVIDIA_API_KEY / "
+              "OPENROUTER_API_KEY); "
               "skipping article generation")
         for group in groups:
             _RunTrace("hourly", "article", group).finish(
