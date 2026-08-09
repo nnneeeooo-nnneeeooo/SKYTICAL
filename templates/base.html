@@ -43,7 +43,8 @@
       <label class="sr-only" for="news-search-input">{{ t.searchTitle }}</label>
       <input id="news-search-input" class="header-search-input" name="q"
              type="search" autocomplete="off" enterkeyhint="search"
-             placeholder="{{ t.headerSearchPlaceholder }}">
+             placeholder="{{ t.headerSearchPlaceholder }}"
+             data-search-placeholders='{{ t.headerSearchPlaceholders | tojson }}'>
       <button id="news-search-clear" class="header-search-clear" type="button"
               aria-label="{{ t.searchClear }}" title="{{ t.searchClear }}">×</button>
       <button class="header-search-submit" type="submit"
