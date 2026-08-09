@@ -1,4 +1,6 @@
-# AVWIRE 航空快訊
+# SKYTICAL
+
+> **SKYLINE TO AVIATION NEWS**
 
 > **AI／新對話快速接手：**先讀 [`AGENTS.md`](AGENTS.md)，不要重新盤點整個
 > repository。最短指令：`@GitHub 依 AGENTS.md 快速模式處理：先確認【事項】，
@@ -9,7 +11,7 @@ EASA / Eurocontrol / Reuters / The Aviation Herald / 交通部民航局等免費
 去重合併後由 LLM 自動撰寫雙語（繁中 + EN）新聞稿，產出靜態頁面並部署到
 GitHub Pages。每篇文章文末列出所有原始來源連結。
 
-A fully automated aviation news aggregator: fetch trusted free sources hourly,
+A fully automated aviation news aggregator by SKYTICAL: fetch trusted free sources hourly,
 de-duplicate, draft bilingual stories with an LLM, publish as a static site on
 GitHub Pages — with every original source credited at the end of each article.
 
