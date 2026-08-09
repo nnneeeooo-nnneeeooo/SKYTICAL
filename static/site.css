@@ -35,6 +35,7 @@ a:hover { color: var(--color-accent-600); }
      ↗ mark + hover color (owner: clickable-looking but NO underline);
      the track pauses on hover so items can actually be clicked. — */
 .marquee-track:hover { animation-play-state: paused; }
+.ticker-pass { padding-right: 70px; font-size: 13px; white-space: nowrap; }
 .ticker-item { color: inherit; text-decoration: none; }
 a.ticker-item:hover { color: var(--color-accent); }
 a.ticker-item:hover .ticker-time { color: var(--color-accent); }
@@ -56,7 +57,10 @@ a.ticker-item:hover .ticker-time { color: var(--color-accent); }
   box-shadow: 0 0 32px rgba(0, 0, 0, .08);
 }
 .pulse-dot { width: 8px; height: 8px; background: var(--color-accent); animation: avwire-pulse 2s infinite; }
-.marquee-track { display: flex; width: max-content; animation: avwire-marquee 80s linear infinite; white-space: nowrap; }
+.marquee-track {
+  display: flex; width: max-content; white-space: nowrap;
+  animation: avwire-marquee var(--ticker-duration, 80s) linear infinite;
+}
 
 /* — Google-style search, deliberately the first row of every page — */
 .header-search-row {
@@ -492,6 +496,22 @@ a.flash-row:hover { color: inherit; }
   }
   .nav-link.active { border-color: var(--color-accent); }
   .ticker-label { padding: 7px 10px; font-size: 11px; letter-spacing: .08em; }
+  .marquee-track { --ticker-duration: 180s; }
+  .ticker-pass {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", sans-serif;
+    font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: .01em;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  .ticker-time {
+    font-family: "SFMono-Regular", ui-monospace, "Roboto Mono", Consolas, monospace;
+    font-size: 12px; font-weight: 700; letter-spacing: 0; font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-window { overflow-x: auto; }
+  .marquee-track { animation: none; transform: none; }
+  .marquee-track .ticker-pass:nth-child(2) { display: none; }
 }
 
 @media (max-width: 640px) {
