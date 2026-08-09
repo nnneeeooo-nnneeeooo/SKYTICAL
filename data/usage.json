@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-09T17:39Z",
+  "updatedUtc": "2026-08-09T18:52Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,9 +21,9 @@
       "unknownCalls": 241
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 458,
-      "inputTokens": 1511095,
-      "outputTokens": 2957228,
+      "calls": 459,
+      "inputTokens": 1514320,
+      "outputTokens": 2959120,
       "unknownCalls": 118
     },
     "gemini:gemini-3.5-flash": {
@@ -201,12 +201,221 @@
       "outputTokens": 885772
     },
     "2026-08-09": {
-      "calls": 111,
-      "inputTokens": 279315,
-      "outputTokens": 561227
+      "calls": 112,
+      "inputTokens": 282540,
+      "outputTokens": 563119
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-09T18:52Z",
+      "finishedUtc": "2026-08-09T18:52Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1852-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 798,
+        "promptAssembly": 0,
+        "drafting": 9285,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 13286
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-09T18:52Z",
+          "durationMs": 9285,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 9284,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T18:52Z",
+      "finishedUtc": "2026-08-09T18:52Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1852-2",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 797,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 13224
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T18:52Z",
+      "finishedUtc": "2026-08-09T18:52Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1852-3",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 793,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 13183
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T18:52Z",
+      "finishedUtc": "2026-08-09T18:52Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1852-4",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 792,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 13112
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T18:52Z",
+      "finishedUtc": "2026-08-09T18:52Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-1852-5",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Reuters",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 795,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 13062
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-09T17:38Z",
       "finishedUtc": "2026-08-09T17:39Z",
