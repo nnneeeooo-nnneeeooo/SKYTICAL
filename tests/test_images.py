@@ -236,6 +236,26 @@ check("airline and aircraft must both match the Commons title",
       strict_match["url"]
       == "https://upload.wikimedia.org/starlux-a350.jpg")
 
+air_macau_story = make_article(
+    "a-air-macau", "Air Macau Airbus A321neo B-MBU arrived")
+wrong_airline_image = {
+    "url": "https://upload.wikimedia.org/KLM_Airbus_A321neo.jpg",
+    "link": "https://commons.wikimedia.org/w/klm",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "Airbus A321neo aircraft", "subject": "Airbus A321neo",
+}
+exact_airframe_image = {
+    "url": "https://upload.wikimedia.org/Air_Macau_B-MBU.jpg",
+    "link": "https://commons.wikimedia.org/w/bmbu",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "B-MBU", "subject": "Air Macau Airbus A321neo B-MBU",
+}
+check("revised article rejects a generic photo from another airline",
+      not images.existing_image_matches(
+          air_macau_story, wrong_airline_image))
+check("exact-registration Commons photo remains compatible",
+      images.existing_image_matches(air_macau_story, exact_airframe_image))
+
 # org fallback end-to-end, with the logo/map title filter
 reset()
 fake.commons = FakeResp(200, {"query": {"pages": {
@@ -262,6 +282,33 @@ check("photo carries its zh subject caption",
       art["image"]["subject"] == "美國聯邦航空總署（FAA）總部")
 
 # ── cache behaviour ──────────────────────────────────────────────────────────
+
+reset()
+fake.commons = FakeResp(200, {"query": {"pages": {
+    "1": {"index": 0,
+          "title": "File:Air Macau B-MBU Airbus A321neo.jpg",
+          "imageinfo": [{
+              "thumburl": "https://upload.wikimedia.org/Air_Macau_B-MBU.jpg",
+              "descriptionshorturl": "https://commons.wikimedia.org/w/bmbu",
+              "extmetadata": {
+                  "LicenseShortName": {"value": "CC BY-SA 4.0"},
+                  "Artist": {"value": "Air Macau Photographer"}}}]},
+}}})
+p = write_batch([make_article(
+    "a-stale-airline", "Air Macau Airbus A321neo B-MBU arrived",
+    image=dict(wrong_airline_image))])
+(TMP / "images.json").write_text(json.dumps({"articles": {
+    "a-stale-airline": {"status": "matched",
+                        "image": wrong_airline_image}}}), encoding="utf-8")
+images.main()
+art = read_batch(p)[0]
+cache = json.loads((TMP / "images.json").read_text(encoding="utf-8"))
+check("stale airline photo and cached match are replaced together",
+      art["image"]["url"]
+      == "https://upload.wikimedia.org/Air_Macau_B-MBU.jpg"
+      and "KLM" not in json.dumps(art["image"])
+      and cache["articles"]["a-stale-airline"]["image"]["url"]
+      == "https://upload.wikimedia.org/Air_Macau_B-MBU.jpg")
 
 reset()
 fake.commons = COMMONS_HIT
