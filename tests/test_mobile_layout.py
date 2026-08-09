@@ -49,6 +49,8 @@ def main() -> None:
     assert ".feed-copy { grid-column: 1 / -1; }" in css
     assert ".summary-preview__text" in css
     assert "-webkit-line-clamp: 2" in css
+    assert "width: 100%; padding: 0;" in css
+    assert "border: 0; border-radius: 0; background: transparent; box-shadow: none;" in css
     assert "--ticker-duration: 130s" in css
     assert 'font-family: "Noto Sans TC", sans-serif' in css
     assert "font-size: 13px; font-weight: 400" in css
