@@ -25,6 +25,12 @@ def main() -> None:
     jetstar = (ROOT / "site" / "news" /
                "a-20260809-0948-jetstar-to-introduce-overhead-locker-fee" /
                "index.html").read_text(encoding="utf-8")
+    david = (ROOT / "site" / "news" /
+             "a-20260809-0853-david-cummins-sworn-in-as-eighth-tsa-adm" /
+             "index.html").read_text(encoding="utf-8")
+    emirates = (ROOT / "site" / "news" /
+                "a-20260809-1305-emirates-temporarily-suspends-airbus-a38" /
+                "index.html").read_text(encoding="utf-8")
 
     assert 'class="nav-toggle"' in home
     assert 'aria-controls="site-nav"' in home
@@ -41,14 +47,29 @@ def main() -> None:
     assert 'class="summary-preview summary-preview--article"' in article
     assert 'class="summary-preview__icon"' in article
     assert 'class="article-source-row"' in article
-    assert "AirAdvisor；2026機場排名；倫敦希斯洛16.94分居首" in airadvisor
-    assert "捷星航空；2027年2月2日起；頭頂置物箱收費；單程25澳幣起" in jetstar
+    assert "AirAdvisor發布2026機場排名；倫敦希斯洛以16.94分居首" in airadvisor
+    assert "捷星航空2027年2月2日起收取頭頂置物箱費；單程25澳幣起" in jetstar
+    assert "David Cummins就任TSA第八任局長；監管全美逾430座機場安檢" in david
+    assert "阿聯酋航空夏季暫停PRG、GLA A380航班；10月恢復每日服務" in emirates
 
     zh_long = "中華航空8月10日宣布調整桃園至福岡航班，受機場作業限制影響，兩班延後三小時，旅客須留意報到時間。" * 2
     zh_short = build.notification_summary(
         zh_long, "zh", "中華航空調整桃園至福岡航班 兩班延後三小時")
-    assert zh_short == "中華航空調整桃園至福岡航班；兩班延後三小時"
-    assert len(zh_short) <= 38 and "；" in zh_short and "…" not in zh_short
+    assert zh_short == "中華航空調整桃園至福岡航班 兩班延後三小時"
+    assert len(zh_short) <= 38 and "…" not in zh_short
+    david_fallback = build.notification_summary(
+        "美國參議院通過確認案後，David Cummins已正式宣誓就任TSA第八任局長。",
+        "zh", "David Cummins宣誓就任TSA第八任局長")
+    assert david_fallback == "David Cummins宣誓就任TSA第八任局長"
+    assert "David；Cummins" not in david_fallback
+    cessna_fallback = build.notification_summary(
+        "Textron Aviation宣布Cessna Citation CJ3 Gen3完成首飛。",
+        "zh", "Cessna Citation CJ3 Gen3 於 Wichita 完成首飛")
+    assert cessna_fallback == "Cessna Citation CJ3 Gen3於Wichita完成首飛"
+    emirates_fallback = build.notification_summary(
+        "根據Simple Flying報導，阿聯酋航空已暫停PRG與GLA的A380航班。",
+        "zh", "阿聯酋航空暫停PRG與GLA A380航班")
+    assert emirates_fallback != "阿聯酋航空" and "A380航班" in emirates_fallback
     en_short = build.notification_summary(
         "word " * 60, "en",
         "China Airlines Adjusts Two Taoyuan-Fukuoka Flights After Airport Restrictions")
