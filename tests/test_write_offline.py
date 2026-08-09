@@ -563,6 +563,18 @@ def test_extract_json_and_validate_draft():
     broken["eventStatus"] = "finalized"
     check("eventStatus" in (write.validate_draft(broken) or ""),
           "unknown eventStatus rejected")
+    broken = json.loads(json.dumps(DRAFT_BIZ))
+    broken["zh"]["body"][0] = (
+        "本文採用官方公司名錄與登記資料補足身分資訊。")
+    check("editorial-process narration" in
+          (write.validate_draft(broken) or ""),
+          "Chinese newsroom-process narration rejected")
+    broken = json.loads(json.dumps(DRAFT_BIZ))
+    broken["en"]["body"][0] = (
+        "This article uses official records to add missing context.")
+    check("editorial-process narration" in
+          (write.validate_draft(broken) or ""),
+          "English newsroom-process narration rejected")
 
     ihm = common.item_has_material
     check(ihm({"title": "T", "summary": "A real sentence with plenty of "
