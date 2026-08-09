@@ -255,6 +255,9 @@ check("system prompt enforces long bodies without padding",
       and "250 words" in write.SYSTEM_PROMPT
       and "machine-checked" in write.SYSTEM_PROMPT
       and "pad, repeat, editorialize" in write.SYSTEM_PROMPT)
+check("system prompt preserves supplied airport IATA codes",
+      "include every supplied code" in write.SYSTEM_PROMPT
+      and "Never infer a code missing from evidence" in write.SYSTEM_PROMPT)
 check("zh summary spec unchanged (80-140)",
       "80 to 140 Chinese characters" in write.SYSTEM_PROMPT)
 

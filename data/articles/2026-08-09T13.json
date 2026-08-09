@@ -7,19 +7,19 @@
       "primarySource": "Simple Flying",
       "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/05/851-emirates-airbus-a380-wael-alreweie-_-shutterstock.jpg",
       "zh": {
-        "title": "阿聯酋航空2026年夏季暫停布拉格與格拉斯哥A380航班",
-        "summary": "根據Simple Flying報導，阿聯酋航空已於2026年夏季暫時停止前往布拉格與格拉斯哥的空中巴士A380航班服務。該航空公司預計於同年10月恢復這兩條長途航線的每日A380巨無霸客機服務。此項調整影響了該航空公司在夏季期間對這兩個歐洲目的地的機型派遣規劃。",
+        "title": "阿聯酋航空2026年夏季暫停布拉格（PRG）與格拉斯哥（GLA）A380航班",
+        "summary": "根據Simple Flying報導，阿聯酋航空已於2026年夏季暫時停止前往布拉格（PRG）與格拉斯哥（GLA）的空中巴士A380航班服務。該航空公司預計於同年10月恢復這兩條長途航線的每日A380巨無霸客機服務。此項調整影響了該航空公司在夏季期間對這兩個歐洲目的地的機型派遣規劃。",
         "body": [
-          "根據Simple Flying報導，阿聯酋航空已於2026年夏季暫時停止前往布拉格與格拉斯哥這兩個長途目的地的空中巴士A380客機航班服務。此項暫停服務暫時改變了該公司在夏季班表期間對這兩個歐陸目的地的機型部署。",
+          "根據Simple Flying報導，阿聯酋航空已於2026年夏季暫時停止前往布拉格（PRG）與格拉斯哥（GLA）這兩個長途目的地的空中巴士A380客機航班服務。此項暫停服務暫時改變了該公司在夏季班表期間對這兩個歐陸目的地的機型部署。",
           "阿聯酋航空規劃於2026年10月恢復布拉格與格拉斯哥的每日空中巴士A380巨無霸客機服務，屆時將恢復這兩條長途航線的常態每日營運。",
           "在歷史機隊背景方面，阿聯酋航空工程部門先前推動了一項數十億美元的機隊改裝計畫，旨在全面翻新旗下219架空中巴士A380與波音777客機。"
         ]
       },
       "en": {
-        "title": "Emirates Temporarily Suspends Airbus A380 Flights to Prague and Glasgow for Summer 2026",
-        "summary": "According to a report by Simple Flying, Emirates has temporarily suspended its Airbus A380 flights to Prague and Glasgow for the summer 2026 season. The airline plans to restore daily superjumbo services to both of these long-haul destinations in October 2026. The temporary suspension affects scheduled operations to the Czech and Scottish cities during the summer months, with normal daily Airbus A380 service returning later in the year as part of the carrier's broader network updates.",
+        "title": "Emirates Temporarily Suspends A380 Flights to Prague (PRG) and Glasgow (GLA) for Summer 2026",
+        "summary": "According to a report by Simple Flying, Emirates has temporarily suspended its Airbus A380 flights to Prague (PRG) and Glasgow (GLA) for the summer 2026 season. The airline plans to restore daily superjumbo services to both of these long-haul destinations in October 2026. The temporary suspension affects scheduled operations to the Czech and Scottish cities during the summer months, with normal daily Airbus A380 service returning later in the year as part of the carrier's broader network updates.",
         "body": [
-          "According to a report by Simple Flying, Emirates has temporarily suspended its Airbus A380 superjumbo flights to Prague and Glasgow for the summer 2026 season. The temporary suspension alters scheduled aircraft operations to both European destinations during the summer schedule.",
+          "According to a report by Simple Flying, Emirates has temporarily suspended its Airbus A380 superjumbo flights to Prague (PRG) and Glasgow (GLA) for the summer 2026 season. The temporary suspension alters scheduled aircraft operations to both European destinations during the summer schedule.",
           "The airline expects daily Airbus A380 services to return to both Prague and Glasgow in October 2026, resuming normal daily superjumbo operations on the two long-haul routes.",
           "In historical fleet developments, Emirates Engineering previously launched a multi-billion-dollar retrofit program to fully refurbish 219 Airbus A380 and Boeing 777 aircraft across the carrier's widebody fleet."
         ]
@@ -32,6 +32,14 @@
         {
           "name": "Archive: AeroTime — Emirates Engineering launches Material Futures Studio for u... — a-20260730-1631-emirates-engineering-launches-material-f",
           "url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students"
+        },
+        {
+          "name": "Emirates — Flights from Prague (PRG)",
+          "url": "https://www.emirates.com/cz/english/destinations/flights-from-prague/"
+        },
+        {
+          "name": "Emirates — Flights to Glasgow (GLA)",
+          "url": "https://www.emirates.com/us/english/destinations/flights-to-glasgow/"
         }
       ],
       "articleFormat": "brief",
@@ -64,6 +72,24 @@
           "evidenceScope": "archive",
           "archiveEventId": "a-20260730-1631-emirates-engineering-launches-material-f",
           "archiveContext": true
+        },
+        {
+          "factId": "F4",
+          "claim": "阿聯酋航空官方航點頁以PRG標示布拉格。",
+          "sourceQuote": "Flights from Prague (PRG)",
+          "sourceUrl": "https://www.emirates.com/cz/english/destinations/flights-from-prague/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "阿聯酋航空官方航點頁以GLA標示格拉斯哥。",
+          "sourceQuote": "Flights to Glasgow (GLA)",
+          "sourceUrl": "https://www.emirates.com/us/english/destinations/flights-to-glasgow/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
         }
       ],
       "archiveContext": {
@@ -139,6 +165,10 @@
         "aircraft_models": [
           "Airbus A380",
           "Boeing 777"
+        ],
+        "airports": [
+          "Prague (PRG)",
+          "Glasgow (GLA)"
         ],
         "locations": [
           "Prague",
