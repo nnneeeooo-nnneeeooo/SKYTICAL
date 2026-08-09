@@ -1,0 +1,13 @@
+{% macro notification_summary(text, label, modifier='') -%}
+<div class="summary-preview{% if modifier %} summary-preview--{{ modifier }}{% endif %}"
+     role="note" aria-label="{{ label }}">
+  <span class="summary-preview__label">
+    <svg class="summary-preview__icon" viewBox="0 0 24 24"
+         aria-hidden="true" focusable="false">
+      <path d="M4 5.5h11M4 9.5h8M4 16h14M14.5 12.5 18 16l-3.5 3.5"/>
+    </svg>
+    <span>{{ label }}</span>
+  </span>
+  <span class="summary-preview__text">{{ text }}</span>
+</div>
+{%- endmacro %}
