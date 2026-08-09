@@ -1,5 +1,919 @@
 [
   {
+    "id": "g-20260809-0948-2",
+    "queuedUtc": "2026-08-09T09:48Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Aviation safety event involving cockpit smoke report, emergency landing, slide evacuation, medical attention, and FAA investigation requiring mandatory editorial review.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation",
+      "casualties_or_injuries",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "達美航空一架航班於2026年8月8日自亞特蘭大起飛前往奧蘭多後不久轉降返回亞特蘭大。",
+        "sourceQuote": "On August 8, 2026, the Delta Air Lines flight left Atlanta at 07:35, for Orlando International Airport (MCO) but diverted back to ATL shortly after takeoff.",
+        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "美國聯邦航空總署表示獲報國籍標誌暨登記號碼N555NW的波音757-200客機駕駛艙出現煙霧。",
+        "sourceQuote": "In a statement, the Federal Aviation Administration (FAA) said that smoke was reported in the cockpit of the Boeing 757-200, registered N555NW.",
+        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "該班機返回亞特蘭大降落後，乘客透過緊急滑梯疏散至滑行道上。",
+        "sourceQuote": "Once the aircraft landed back at Hartsfield-Jackson Atlanta, the passengers disembarked via emergency slides onto the taxiway.",
+        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "機上載有199名乘客與6名機組人員，一名工作人員及一名乘客需要醫療協助。",
+        "sourceQuote": "It is understood that there were 199 passengers and six crew members on the flight. A staff member and a passenger required medical attention.",
+        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "美國聯邦航空總署表示正在調查此起事故。",
+        "sourceQuote": "The FAA said it is investigating the incident.",
+        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety event involving cockpit smoke report, emergency landing, slide evacuation, medical attention, and FAA investigation requiring mandatory editorial review.",
+      "cat": "safety",
+      "zh": {
+        "title": "達美航空波音757駕駛艙獲報煙霧 返航亞特蘭大緊急疏散",
+        "summary": "達美航空一架載有199名乘客與6名機組人員的波音757-200客機，於2026年8月8日自亞特蘭大飛往奧蘭多途中，因駕駛艙獲報出現煙霧而返航亞特蘭大機場。客機降落後乘客經由緊急滑梯疏散至滑行道，事故造成兩人需要醫療協助。美國聯邦航空總署已就此事件展開調查。",
+        "body": [
+          "達美航空一架波音757-200客機（國籍標誌暨登記號碼：N555NW）於2026年8月8日上午07:35自亞特蘭大哈茨菲爾德-傑克遜國際機場起飛，原定飛往奧蘭多國際機場，但在起飛後不久因機組人員獲報駕駛艙出現煙霧，隨即決定返航亞特蘭大。",
+          "美國聯邦航空總署表示，該客機安全降落亞特蘭大機場後，機上人員隨即經由緊急逃生滑梯疏散至滑行道上。當時機上共載有199名乘客與6名機組人員。",
+          "事故發生後，有一名工作人員與一名乘客需要接受醫療協助，受影響乘客隨後由航空公司安排轉乘其他班機前往目的地。美國聯邦航空總署已證實正對此起事故展開調查。"
+        ]
+      },
+      "en": {
+        "title": "Delta Boeing 757 Evacuates via Slides in Atlanta After Smoke Reported in Cockpit",
+        "summary": "A Delta Air Lines Boeing 757-200 carrying 199 passengers and six crew members was forced to divert back to Hartsfield-Jackson Atlanta International Airport on August 8, 2026, following reports of smoke in the cockpit shortly after takeoff for Orlando. Upon landing, passengers evacuated the aircraft via emergency escape slides onto a taxiway. One staff member and one passenger required medical attention after the incident. The Federal Aviation Administration confirmed that it has launched an investigation into the occurrence.",
+        "body": [
+          "A Delta Air Lines Boeing 757-200, registered as N555NW, diverted back to Hartsfield-Jackson Atlanta International Airport shortly after departing at 07:35 on August 8, 2026, on a scheduled flight to Orlando International Airport.",
+          "According to the Federal Aviation Administration, smoke was reported in the cockpit of the aircraft during flight. Following the landing back at Atlanta, passengers and crew evacuated the airplane using emergency escape slides onto the airport taxiway.",
+          "The aircraft was carrying 199 passengers and six crew members. One crew member and one passenger required medical attention following the evacuation. The Federal Aviation Administration stated that it is investigating the incident."
+        ]
+      },
+      "flash": {
+        "zh": "達美航空一架波音757客機因駕駛艙出現煙霧返航亞特蘭大，乘客經滑梯疏散。",
+        "en": "Delta Boeing 757 evacuates on taxiway in Atlanta after cockpit smoke report.",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-08",
+        "sev": "inc",
+        "aircraft": "Boeing 757-200",
+        "operator": "Delta Air Lines",
+        "phase": {
+          "zh": "爬升 / 轉降降落",
+          "en": "Climb / Diversion landing"
+        },
+        "location": {
+          "zh": "美國喬治亞州亞特蘭大哈茨菲爾德-傑克遜國際機場",
+          "en": "Hartsfield-Jackson Atlanta International Airport, Georgia, United States"
+        },
+        "desc": {
+          "zh": "駕駛艙獲報煙霧後返航亞特蘭大，客機降落後乘客經由緊急逃生滑梯疏散至滑行道。",
+          "en": "Aircraft returned to Atlanta after cockpit smoke was reported, followed by passenger evacuation via slides on the taxiway."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "達美航空一架航班於2026年8月8日自亞特蘭大起飛前往奧蘭多後不久轉降返回亞特蘭大。",
+          "sourceQuote": "On August 8, 2026, the Delta Air Lines flight left Atlanta at 07:35, for Orlando International Airport (MCO) but diverted back to ATL shortly after takeoff.",
+          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "美國聯邦航空總署表示獲報國籍標誌暨登記號碼N555NW的波音757-200客機駕駛艙出現煙霧。",
+          "sourceQuote": "In a statement, the Federal Aviation Administration (FAA) said that smoke was reported in the cockpit of the Boeing 757-200, registered N555NW.",
+          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "該班機返回亞特蘭大降落後，乘客透過緊急滑梯疏散至滑行道上。",
+          "sourceQuote": "Once the aircraft landed back at Hartsfield-Jackson Atlanta, the passengers disembarked via emergency slides onto the taxiway.",
+          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "機上載有199名乘客與6名機組人員，一名工作人員及一名乘客需要醫療協助。",
+          "sourceQuote": "It is understood that there were 199 passengers and six crew members on the flight. A staff member and a passenger required medical attention.",
+          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "美國聯邦航空總署表示正在調查此起事故。",
+          "sourceQuote": "The FAA said it is investigating the incident.",
+          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Federal Aviation Administration",
+          "FAA"
+        ],
+        "airlines": [
+          "Delta Air Lines"
+        ],
+        "aircraft_models": [
+          "Boeing 757-200"
+        ],
+        "airports": [
+          "Hartsfield-Jackson Atlanta International Airport",
+          "ATL",
+          "Orlando International Airport",
+          "MCO"
+        ],
+        "locations": [
+          "Atlanta"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [
+          "N555NW"
+        ],
+        "event_dates": [
+          "2026-08-08"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation",
+        "casualties_or_injuries",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260809-0948-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Delta passengers evacuate on escape slides after emergency landing",
+          "url": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
+          "publishedUtc": "2026-08-09T08:31Z",
+          "summary": "Delta Air Lines passengers were forced to evacuate a Boeing 757-200 on escape slides at Hartsfield-Jackson Atlanta International… The post Delta passengers evacuate on escape slides after emergency landing appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-0855-swiss-lx16-diverts-bangor-after-smoke",
+            "relationship_type": "investigation_progression",
+            "relationship_evidence": [
+              "same named core entity: federal aviation administration",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin",
+            "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+            "facts": [
+              {
+                "claim": "LX16於班戈當地時間7月27日12時14分安全落地。",
+                "source_quote": "has landed safely at 12:14 local. The emergency was resolved.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "SWISS表示機組員因商務艙出現煙霧而改降班戈。",
+                "source_quote": "crew on board Swiss International Air Lines flight LX16 on Monday decided to divert to Bangor due to smoke in the business class section of the flight.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "消防人員檢查後未發現火源或異常熱度。",
+                "source_quote": "Firefighters inspected the aircraft and found no signs of fire or heat.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "SWISS表示208名乘客及機組員均平安。",
+                "source_quote": "All 208 passengers and crew were safe",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              },
+              {
+                "claim": "FAA初步聲明記載機組員曾通報駕駛艙起火,並表示將調查。",
+                "source_quote": "Swiss International Air Lines Flight 16F safely landed at Bangor International Airport in Maine around noon on Monday, July 27, after the crew reported a cockpit fire.",
+                "source_url": "https://www.faa.gov/newsroom/statements/accident_incidents",
+                "source_name": "Federal Aviation Administration — Statements on Aviation Accidents and Incidents"
+              },
+              {
+                "claim": "SWISS尚未確定煙霧原因,將檢查航空器且不會在調查完成前推測。",
+                "source_quote": "The airline has not been able to identify for certain what caused the smoke.",
+                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
+                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260809-0948-8",
+    "queuedUtc": "2026-08-09T09:48Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report relies on media accounts and unconfirmed attribution regarding the policy reason for omitting Israeli-manufactured equipment on the government aircraft.",
+    "riskFlags": [
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Ireland's new €53 million government aircraft was reportedly delivered without the FalconEye enhanced-vision system.",
+        "sourceQuote": "Ireland’s new €53 million government aircraft has reportedly been delivered without an enhanced-vision system",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Irish newspaper The Journal reported the equipment was omitted from the Dassault Falcon 6X because it is manufactured by Israeli company Elbit Systems.",
+        "sourceQuote": "reported that the equipment was not included on the Dassault Falcon 6X aircraft – which will be used for government business – because it is manufactured by an Israeli company.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Ireland announced a policy in August 2024 under which it would not purchase equipment containing Israeli-manufactured products.",
+        "sourceQuote": "policy announced in August 2024, when he was minister for defence and foreign affairs, under which Ireland would not purchase equipment containing Israeli-manufactured products.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The Irish Department of Defence stated in April that there are no current limits on the operational capability of the aircraft.",
+        "sourceQuote": "The Irish Department of Defence told the paper in April that “there are no current limits on the operational capability of the aircraft”.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The Falcon 6X is operated by the Irish Air Corps from Casement Aerodrome at Baldonnel and replaces an ageing Learjet.",
+        "sourceQuote": "operated by the Irish Air Corps from Casement Aerodrome at Baldonnel.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The Falcon 6X is powered by Pratt & Whitney PW812D engines and received certification from EASA and the FAA in August 2023.",
+        "sourceQuote": "The Falcon 6X is powered by Pratt & Whitney PW812D engines",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report relies on media accounts and unconfirmed attribution regarding the policy reason for omitting Israeli-manufactured equipment on the government aircraft.",
+      "cat": "ops",
+      "zh": {
+        "title": "愛爾蘭政府專機未配備FalconEye系統 據報因以色列裝備政策",
+        "summary": "據報導，愛爾蘭價值5300萬歐元的達梭獵鷹6X政府專機在交付時未安裝FalconEye增強視覺系統。媒體指出，該系統由以色列埃爾比特系統製造，因愛爾蘭不採購含以色列製造產品的政策而未列入規格。愛爾蘭國防部表示，目前該飛機的營運能力並未受限。",
+        "body": [
+          "據報導，愛爾蘭新接收的價值5300萬歐元達梭獵鷹6X（Dassault Falcon 6X）政府專機，交付時未裝設FalconEye增強視覺系統。該系統利用攝影機與感測器在惡劣天氣下輔助飛行員。",
+          "媒體報導指出該系統由以色列埃爾比特系統製造。愛爾蘭政府於2024年8月實施政策，規定不採購包含以色列製造產品的裝備。愛爾蘭國防部於4月表示，該飛機營運能力目前未受限制。",
+          "該飛機由愛爾蘭空軍於巴爾多奈爾凱斯門特飛行場營運，取代舊款Learjet專機。該機型搭載普惠（Pratt & Whitney）PW812D發動機，並於2023年8月獲得EASA與FAA認證。"
+        ]
+      },
+      "en": {
+        "title": "Ireland Government Falcon 6X Delivered Without FalconEye System Over Israeli Policy",
+        "summary": "Ireland's new €53 million Dassault Falcon 6X government aircraft has reportedly been delivered without the FalconEye enhanced-vision system. Media reports indicate the equipment was omitted because it is manufactured by Israeli firm Elbit Systems, conflicting with Ireland's August 2024 procurement policy restricting Israeli-manufactured products. The system uses cameras and sensors to assist flight crews during poor visibility, though its absence does not restrict landing capability. The Irish Department of Defence stated in April that the aircraft currently faces no operational limits. The Falcon 6X is operated by the Irish Air Corps from Casement Aerodrome at Baldonnel and replaces an ageing Learjet.",
+        "body": [
+          "Ireland’s new €53 million Dassault Falcon 6X government aircraft was reportedly delivered without the FalconEye enhanced-vision system. The system uses sensors and cameras to assist flight crews during poor visibility, though its absence does not prevent operations in fog.",
+          "Media reports stated the equipment was omitted because it is manufactured by Israeli firm Elbit Systems. Under a policy announced in August 2024, Ireland avoids purchasing equipment containing Israeli-manufactured products. The Irish Department of Defence stated in April that there are no operational limits on the aircraft.",
+          "The Falcon 6X is operated by the Irish Air Corps from Casement Aerodrome at Baldonnel, replacing an older Learjet. Powered by Pratt & Whitney PW812D engines, the aircraft received certification from EASA and the FAA in August 2023."
+        ]
+      },
+      "flash": {
+        "zh": "愛爾蘭新政府專機未配備FalconEye系統，據報因以色列裝備採購政策限制。",
+        "en": "Ireland's new government Falcon 6X delivered without FalconEye system due to Israeli equipment policy.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Ireland's new €53 million government aircraft was reportedly delivered without the FalconEye enhanced-vision system.",
+          "sourceQuote": "Ireland’s new €53 million government aircraft has reportedly been delivered without an enhanced-vision system",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Irish newspaper The Journal reported the equipment was omitted from the Dassault Falcon 6X because it is manufactured by Israeli company Elbit Systems.",
+          "sourceQuote": "reported that the equipment was not included on the Dassault Falcon 6X aircraft – which will be used for government business – because it is manufactured by an Israeli company.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Ireland announced a policy in August 2024 under which it would not purchase equipment containing Israeli-manufactured products.",
+          "sourceQuote": "policy announced in August 2024, when he was minister for defence and foreign affairs, under which Ireland would not purchase equipment containing Israeli-manufactured products.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The Irish Department of Defence stated in April that there are no current limits on the operational capability of the aircraft.",
+          "sourceQuote": "The Irish Department of Defence told the paper in April that “there are no current limits on the operational capability of the aircraft”.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The Falcon 6X is operated by the Irish Air Corps from Casement Aerodrome at Baldonnel and replaces an ageing Learjet.",
+          "sourceQuote": "operated by the Irish Air Corps from Casement Aerodrome at Baldonnel.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The Falcon 6X is powered by Pratt & Whitney PW812D engines and received certification from EASA and the FAA in August 2023.",
+          "sourceQuote": "The Falcon 6X is powered by Pratt & Whitney PW812D engines",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Irish Air Corps",
+          "Irish Department of Defence",
+          "Elbit Systems",
+          "Dassault",
+          "EASA",
+          "FAA",
+          "The Journal"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Dassault Falcon 6X",
+          "Falcon 6X",
+          "Learjet"
+        ],
+        "airports": [
+          "Casement Aerodrome"
+        ],
+        "locations": [
+          "Ireland",
+          "Baldonnel",
+          "Dublin",
+          "Hong Kong",
+          "Los Angeles",
+          "Geneva",
+          "Middle East"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-05",
+          "August 2024",
+          "August 2023",
+          "April"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260809-0948-8",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Ireland’s €53m government aircraft lacks FalconEye system due to Israeli equipment policy News",
+          "url": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
+          "publishedUtc": "2026-08-05T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/12/Irish-Dassault-Falcon-6x.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-1805-faa-announces-successful-counter-drone-e",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 14 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 14 day(s) apart",
+            "event_date": "2026-07-22",
+            "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa...",
+            "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+            "facts": [
+              {
+                "claim": "FAA announced successful counter-drone efforts during FIFA World Cup 2026 with more than 700 drones seized.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026, With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "Transportation Secretary Sean P. Duffy announced federal, state, and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_quote": "Department of Transportation Secretary Sean P. Duffy announced that federal, state and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "The effort helped keep millions of fans safe.",
+                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              },
+              {
+                "claim": "More than 700 drones were seized.",
+                "source_quote": "With More Than 700 Drones Seized",
+                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
+                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 10 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260809-0948-10",
+    "queuedUtc": "2026-08-09T09:48Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Includes claims regarding a potential purchase agreement of up to 100 Midnight eVTOL aircraft.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Korean Air is partnering with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft for troop transport, medical evacuation, and search-and-rescue missions.",
+        "sourceQuote": "Korean Air is teaming up with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft for troop transport, medical evacuation, and search-and-rescue missions.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Under the cooperation framework, Korean Air will lead military conversion and systems integration, while Archer provides technical support and airworthiness certification experience.",
+        "sourceQuote": "Korean Air will lead the military conversion and systems integration, while Archer supplies technical support and shares its airworthiness-certification experience.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The development is part of Korean Air's advanced air mobility initiative to build capabilities in the defense aerospace sector.",
+        "sourceQuote": "The development is part of what Korean Air calls its advanced air mobility (AAM) initiative, where it wants to lead in this emerging sector of the defence aerospace industry.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Archer reported in October 2025 an agreement to commercialize Midnight in Korea, with Korean Air expected to purchase up to 100 Midnight aircraft.",
+        "sourceQuote": "In October 2025, Archer Aviation reported it had signed an agreement to commercialize Midnight in Korea “across multiple applications and use cases.” The announcement stated that as part of the relationship, Korean Air is expected to purchase up to 100 eVTOL Midnight aircraft.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Includes claims regarding a potential purchase agreement of up to 100 Midnight eVTOL aircraft.",
+      "cat": "mil",
+      "zh": {
+        "title": "大韓航空與Archer合作開發Midnight電動垂直起降戰術軍用機型",
+        "summary": "大韓航空與Archer Aviation展開合作，計畫將Midnight電動垂直起降飛行器改裝為軍用衍生型，用於部隊運輸、醫療後送與搜救任務。依據合作架構，大韓航空將主導軍用改裝與系統整合，Archer則提供技術支援與適航認證經驗。此計畫為大韓航空先進空中交通倡議的一環。",
+        "body": [
+          "大韓航空與Archer Aviation攜手合作，預計將Midnight電動垂直起降（eVTOL）飛行器改裝為軍用衍生機型，用於執行部隊運輸、醫療後送以及搜救任務。",
+          "在雙方合作架構下，大韓航空將負責領導軍用機型的改裝與系統整合工作，Archer則會提供相關技術支援，並分享其適航認證經驗。",
+          "此項開發計畫屬於大韓航空先進空中交通（AAM）倡議的一部分，旨在國防航空航天領域建立技術能力。此外，Archer曾於2025年10月報告簽署在韓國商業化Midnight的協議，其中大韓航空預計採購最多100架Midnight飛行器。"
+        ]
+      },
+      "en": {
+        "title": "Korean Air Teams Up With Archer to Develop Military Variant of Midnight eVTOL",
+        "summary": "Korean Air is partnering with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft for troop transport, medical evacuation, and search-and-rescue missions. Under the cooperation framework, Korean Air will lead the military conversion and systems integration, while Archer provides technical support and airworthiness certification experience. The project is part of Korean Air's advanced air mobility initiative to lead in defense aerospace. Additionally, Archer previously reported an agreement in October 2025 to commercialize Midnight in Korea, where Korean Air is expected to purchase up to 100 Midnight aircraft.",
+        "body": [
+          "Korean Air has partnered with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft. The planned aircraft variant is intended for troop transport, medical evacuation, and search-and-rescue operations.",
+          "Under the cooperation framework, Korean Air will lead the military conversion and systems integration. Archer Aviation will supply technical support and share its experience in airworthiness certification for the platform.",
+          "The project forms part of Korean Air's advanced air mobility initiative to expand capabilities in the defense aerospace sector. Additionally, Archer previously reported an agreement in October 2025 to commercialize Midnight in South Korea, with Korean Air expected to purchase up to 100 Midnight aircraft."
+        ]
+      },
+      "flash": {
+        "zh": "大韓航空與Archer合作開發Midnight軍用機型",
+        "en": "Korean Air and Archer team up to develop military Midnight eVTOL",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Korean Air is partnering with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft for troop transport, medical evacuation, and search-and-rescue missions.",
+          "sourceQuote": "Korean Air is teaming up with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft for troop transport, medical evacuation, and search-and-rescue missions.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Under the cooperation framework, Korean Air will lead military conversion and systems integration, while Archer provides technical support and airworthiness certification experience.",
+          "sourceQuote": "Korean Air will lead the military conversion and systems integration, while Archer supplies technical support and shares its airworthiness-certification experience.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The development is part of Korean Air's advanced air mobility initiative to build capabilities in the defense aerospace sector.",
+          "sourceQuote": "The development is part of what Korean Air calls its advanced air mobility (AAM) initiative, where it wants to lead in this emerging sector of the defence aerospace industry.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Archer reported in October 2025 an agreement to commercialize Midnight in Korea, with Korean Air expected to purchase up to 100 Midnight aircraft.",
+          "sourceQuote": "In October 2025, Archer Aviation reported it had signed an agreement to commercialize Midnight in Korea “across multiple applications and use cases.” The announcement stated that as part of the relationship, Korean Air is expected to purchase up to 100 eVTOL Midnight aircraft.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Archer Aviation",
+          "Korean Air"
+        ],
+        "airlines": [
+          "Korean Air"
+        ],
+        "aircraft_models": [
+          "Midnight",
+          "Midnight eVTOL"
+        ],
+        "airports": [],
+        "locations": [
+          "Korea"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "4 August",
+          "October 2025"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260809-0948-10",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Korean Air to adapt Archer Midnight eVTOL for military transport missions News",
+          "url": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
+          "publishedUtc": "2026-08-05T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/safe-scaled.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: korean air",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: korean air",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0603-anduril-yfq-44a-fury-drone-destroys-targ",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: anduril, us air force",
+              "archive predates source by 6 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
+            "event_date": "2026-07-30",
+            "source_name": "Simple Flying — Why The US Air Force's New Combat Drone Still Can't Fire Wi...",
+            "source_url": "https://simpleflying.com/why-usaf-new-combat-drone-still-cant-fire-without-human-approval/",
+            "facts": [
+              {
+                "claim": "Anduril's YFQ-44A Fury drone recently destroyed a target, demonstrating its capability.",
+                "source_quote": "Anduril's YFQ-44A Fury drone recently destroyed a target proving its capability",
+                "source_url": "https://simpleflying.com/why-usaf-new-combat-drone-still-cant-fire-without-human-approval/",
+                "source_name": "Simple Flying — Why The US Air Force's New Combat Drone Still Can't Fire Wi..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260809-0706-12",
     "queuedUtc": "2026-08-09T07:06Z",
     "approve": false,
@@ -8839,704 +9753,6 @@
           "source": "CNBC",
           "companion": true,
           "publishedUtc": "2026-08-05T18:24Z"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260805-2308-4",
-    "queuedUtc": "2026-08-05T23:08Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "The story involves a formal sale/merger/partnership process and significant financial claims ($110M rights issue, $70M bridge loan, $50M cost-cutting target) that are high-risk and developing. The sale process outcome is unconfirmed. Manual review is mandatory for major financial claims and developing events.",
-    "riskFlags": [
-      "financial_or_order_claim",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "IndiGo will discontinue widebody operations on October 25, 2026 and conclude its lease agreement with Norse on October 31.",
-        "sourceQuote": "IndiGo said it will discontinue its widebody operations on October 25, 2026, and conclude its lease agreement with Norse on October 31.",
-        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Norse is looking for new work for six Boeing 787-9s and is speaking with several airlines about placing up to five aircraft under new ACMI agreements.",
-        "sourceQuote": "Norse said it is already speaking with several airlines about placing up to five aircraft under new aircraft, crew, maintenance and insurance agreements.",
-        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Norse's board has begun a formal process that may result in a sale, merger or partnership; no potential buyer or partner has been identified.",
-        "sourceQuote": "That process may result in a sale, merger or partnership. Norse has not identified any potential buyer or partner or said when the process might end.",
-        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Norse CEO Eivind Roald said elevated fuel prices, airspace disruptions and longer routes from the Middle East conflict affected the commercial viability of the IndiGo arrangement.",
-        "sourceQuote": "There is no doubt that the elevated fuel prices, airspace disruptions and longer flight routes resulting from the Middle East conflict have affected the commercial viability of the arrangement for both parties",
-        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "In April, Norse announced plans to raise $110 million through a rights issue and arranged a $70 million bridge loan; its Project Falcon cost-cutting program targets annual savings of up to $50 million.",
-        "sourceQuote": "In April, Norse announced plans to raise $110 million through a rights issue and arranged a $70 million bridge loan. Its Project Falcon cost-cutting program is targeting annual savings of up to $50 million.",
-        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Norse operates a total of 12 Boeing 787-9s and plans to use some returning capacity on its own winter network including flights from Europe to Orlando and New York.",
-        "sourceQuote": "The carrier also plans to use some of the returning capacity on its own network during the winter, including additional flights from Europe to Orlando and New York.",
-        "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves a formal sale/merger/partnership process and significant financial claims ($110M rights issue, $70M bridge loan, $50M cost-cutting target) that are high-risk and developing. The sale process outcome is unconfirmed. Manual review is mandatory for major financial claims and developing events.",
-      "cat": "biz",
-      "zh": {
-        "title": "Norse Atlantic啟動正式出售程序 IndiGo提前歸還六架787",
-        "summary": "IndiGo（印度靛藍航空）將於2026年10月31日結束與Norse Atlantic Airways的六架波音787-9租賃協議，雙方援引中東衝突導致燃油成本上升與空域中斷為由。Norse同時啟動可能導致出售、合併或合作的正式程序，並已與多家航空公司洽談新租賃安排。",
-        "body": [
-          "Norse Atlantic Airways 正在為六架波音 787-9 尋找新的營運安排，此前 IndiGo（印度靛藍航空）同意提前歸還這些客機。IndiGo 表示將於 2026 年 10 月 25 日停止寬體機營運，並於 10 月 31 日結束與 Norse 的租賃協議。",
-          "IndiGo 將孟買至阿姆斯特丹航線於 10 月 25 日改用空中巴士 A321XLR，倫敦希思路航線則暫停，直至該航空開始接收空中巴士 A350-900。IndiGo 自 2025 年起向 Norse 接收六架 787，作為未來 A350 機隊到達前的過渡安排。",
-          "Norse 執行長 Eivind Roald 表示，中東衝突導致的燃油價格上漲、空域中斷及更長的飛行路線，已影響該安排的商業可行性。雙方共同得出結論，認為飛機的替代部署對雙方在商業上更為有利。",
-          "Norse 表示已在與數家航空公司洽談，以機組、維護與保險協議方式安置最多五架飛機，並計劃將部分運力用於自身冬季航線，包括從歐洲飛往奧蘭多與紐約的額外航班。Norse 營運共 12 架波音 787-9。",
-          "Norse 的董事會已啟動正式程序，可能導致出售、合併或合作。該航空未透露任何潛在買家或合作對象，也未說明程序何時結束。此前媒體報導，Norse 曾聘請 JPMorgan 進行策略性評估。",
-          "Norse 同時在削減成本與籌集資金。2026 年 4 月，Norse 宣布透過配股籌集 1.1 億美元，並安排了 7,000 萬美元的過橋貸款。其 Project Falcon 成本削減計畫目標為每年節省最多 5,000 萬美元。"
-        ]
-      },
-      "en": {
-        "title": "Norse Atlantic begins formal sale process as IndiGo returns six Boeing 787s early",
-        "summary": "IndiGo will discontinue widebody operations on October 25, 2026 and end its lease of six Boeing 787-9s from Norse Atlantic Airways on October 31, citing geopolitical tensions. Norse has begun a formal process that may result in a sale, merger or partnership, and is in talks with several airlines about new ACMI placements.",
-        "body": [
-          "Norse Atlantic Airways is seeking new work for six Boeing 787-9s after IndiGo agreed to return the aircraft early. IndiGo said it will discontinue its widebody operations on October 25, 2026, and conclude its lease agreement with Norse on October 31.",
-          "IndiGo's Mumbai-Amsterdam route will switch to the Airbus A321XLR on October 25, while service to London Heathrow will be suspended until the airline begins receiving its Airbus A350-900s. IndiGo began taking the six Dreamliners from Norse in 2025 as a bridge to its future A350 fleet.",
-          "Norse CEO Eivind Roald said elevated fuel prices, airspace disruptions and longer flight routes resulting from the Middle East conflict had affected the commercial viability of the arrangement. The two parties jointly concluded that alternative deployment would be more commercially beneficial.",
-          "Norse said it is already speaking with several airlines about placing up to five aircraft under new aircraft, crew, maintenance and insurance agreements. The carrier also plans to use some returning capacity on its own network during winter, including additional flights from Europe to Orlando and New York. Norse operates a total of 12 Boeing 787-9s.",
-          "Norse's board has begun a formal process that may result in a sale, merger or partnership. The airline has not identified any potential buyer or partner or said when the process might end. Norse previously hired JPMorgan to conduct a strategic review after receiving interest from potential partners, according to media reports.",
-          "The airline has also been cutting costs and raising money. In April, Norse announced plans to raise $110 million through a rights issue and arranged a $70 million bridge loan. Its Project Falcon cost-cutting program is targeting annual savings of up to $50 million."
-        ]
-      },
-      "flash": {
-        "zh": "Norse啟動正式出售程序，IndiGo提前歸還六架787",
-        "en": "Norse begins formal sale process; IndiGo to return six 787s early",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "IndiGo will discontinue widebody operations on October 25, 2026 and conclude its lease agreement with Norse on October 31.",
-          "sourceQuote": "IndiGo said it will discontinue its widebody operations on October 25, 2026, and conclude its lease agreement with Norse on October 31.",
-          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Norse is looking for new work for six Boeing 787-9s and is speaking with several airlines about placing up to five aircraft under new ACMI agreements.",
-          "sourceQuote": "Norse said it is already speaking with several airlines about placing up to five aircraft under new aircraft, crew, maintenance and insurance agreements.",
-          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Norse's board has begun a formal process that may result in a sale, merger or partnership; no potential buyer or partner has been identified.",
-          "sourceQuote": "That process may result in a sale, merger or partnership. Norse has not identified any potential buyer or partner or said when the process might end.",
-          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Norse CEO Eivind Roald said elevated fuel prices, airspace disruptions and longer routes from the Middle East conflict affected the commercial viability of the IndiGo arrangement.",
-          "sourceQuote": "There is no doubt that the elevated fuel prices, airspace disruptions and longer flight routes resulting from the Middle East conflict have affected the commercial viability of the arrangement for both parties",
-          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "In April, Norse announced plans to raise $110 million through a rights issue and arranged a $70 million bridge loan; its Project Falcon cost-cutting program targets annual savings of up to $50 million.",
-          "sourceQuote": "In April, Norse announced plans to raise $110 million through a rights issue and arranged a $70 million bridge loan. Its Project Falcon cost-cutting program is targeting annual savings of up to $50 million.",
-          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Norse operates a total of 12 Boeing 787-9s and plans to use some returning capacity on its own winter network including flights from Europe to Orlando and New York.",
-          "sourceQuote": "The carrier also plans to use some of the returning capacity on its own network during the winter, including additional flights from Europe to Orlando and New York.",
-          "sourceUrl": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Norse Atlantic Airways",
-          "JPMorgan"
-        ],
-        "airlines": [
-          "Norse Atlantic Airways",
-          "IndiGo"
-        ],
-        "aircraft_models": [
-          "Boeing 787-9",
-          "Airbus A321XLR",
-          "Airbus A350-900"
-        ],
-        "airports": [
-          "Amsterdam",
-          "London Heathrow",
-          "Mumbai",
-          "Orlando",
-          "New York"
-        ],
-        "locations": [
-          "Middle East",
-          "Europe",
-          "India"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-10-25",
-          "2026-10-31",
-          "2025",
-          "2026-04"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260805-2308-4",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Norse seeks new home for six Boeing 787s as formal airline sale process begins",
-          "url": "https://www.aerotime.aero/articles/norse-six-boeing-787s-formal-sale-process",
-          "publishedUtc": "2026-08-05T21:26Z",
-          "summary": "Norse Atlantic Airways is looking for new work for six Boeing 787-9s after Indian carrier IndiGo agreed to… The post Norse seeks new home for six Boeing 787s as formal airline sale process begins appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: A350",
-              "same named core entity: airbus",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se...",
-            "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-            "facts": [
-              {
-                "claim": "Q2 2026 Airbus net income rose 126% to $1.66 billion (€1.65 billion) from $842 million (€732 million) in the same period last year, alongside a 28% increase in Q2 revenue.",
-                "source_quote": "Net income increased from $842 million (€732 million) to $1.66 billion (€1.65 billion) in Q2 2026 while revenue rose 28% over the same period.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "In the first half of 2026, Airbus delivered 351 commercial aircraft, up from 306 in H1 2025, including 237 delivered in the second quarter compared to 114 in the first quarter.",
-                "source_quote": "Between April and June 2026, Airbus delivered 237 commercial aircraft to customers while between January and March 2026, just 114 were delivered. The total for 2026 first half stands at 351.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "Airbus reported consolidated revenues of €33.2 billion ($38.2 billion) for H1 2026, a 12% increase year-on-year, with a consolidated EBIT Adjusted of €2.77 billion (€2,727 million).",
-                "source_quote": "Consolidated revenues increased 12% year-on-year to € 33.2 billion (H1 2025: € 29.6 billion).",
-                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
-              },
-              {
-                "claim": "Commercial aircraft gross orders reached 886 units (821 net orders) in the first half of 2026, bringing the total order backlog to 9,222 commercial aircraft at the end of June 2026.",
-                "source_quote": "Gross commercial aircraft orders totalled 886 (H1 2025: 494 aircraft) with net orders of 821 aircraft after cancellations (H1 2025: 402 aircraft). The order backlog amounted to 9,222",
-                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
-              },
-              {
-                "claim": "The company maintained its guidance to deliver approximately 870 commercial aircraft in 2026, and expects a full-year EBIT Adjusted of €7.5 billion ($8.6 billion).",
-                "source_quote": "The company said its ambition to deliver around 870 commercial aircraft in 2026 remains the same. While EBIT adjusted currently stands at $3.1 billion (€2.7 billion), Airbus’ outlook is $8.6 billion (€7.5 billion) by year end.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "Airbus is continuing its production ramp-up, targeting a monthly rate of 13 for the A220 in 2028, between 70 and 75 for the A320 family by late 2027, 5 for the A330 in 2029, and 12 for the A350 in 2028.",
-                "source_quote": "The A220 ramp-up is ongoing and the Company continues to target a monthly production rate of 13 aircraft in 2028. On the A320 Family, the Company continues to expect to reach a rate of between 70 and 75 aircraft a month",
-                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260731-1301-klm-shows-off-first-fully-painted-airbus",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: A350",
-              "same named core entity: airbus",
-              "archive predates source by 5 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 5 day(s) apart",
-            "event_date": "2026-07-31",
-            "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900",
-            "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
-            "facts": [
-              {
-                "claim": "荷蘭皇家航空在網路貼文中展示了其首架完成塗裝的空中巴士 A350-900 客機。",
-                "source_quote": "KLM showed off its fully-painted first A350 in a few online posts",
-                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
-                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
-              },
-              {
-                "claim": "荷蘭皇家航空於6月中旬發布貼文公布該客機名稱,並於7月中旬發布影片展示組裝過程。",
-                "source_quote": "one in mid-June which announced the jet’s name, and another in mid-July, with a video showing the assembly process.",
-                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
-                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
-              },
-              {
-                "claim": "荷蘭皇家航空選擇以荷蘭具代表性的藝術作品為飛機命名,包括林布蘭的著名畫作《夜巡》。",
-                "source_quote": "KLM has chosen to name its aircraft after iconic Dutch artworks, and so The Night Watch by Rembrandt is one of the Netherlands’ most celebrated paintings",
-                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
-                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: BOEING 787",
-              "same named core entity: aerotime",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-08-02",
-            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
-            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-            "facts": [
-              {
-                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
-                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
-                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
-                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260805-1948-6",
-    "queuedUtc": "2026-08-05T19:48Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "Risk flags present (accident_or_serious_incident, investigation) require human review despite sufficient current evidence.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The Piper PA-28 performed an emergency landing on Interstate 10 near Pensacola, Florida on August 3, 2026.",
-        "sourceQuote": "guiding their Piper PA-28 beneath an overhead highway sign and between moving vehicles during an emergency landing on Interstate 10 in Florida.",
-        "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Two people were aboard the aircraft and no injuries were reported.",
-        "sourceQuote": "Two people were aboard, and no injuries were reported.",
-        "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The pilot reported falling engine oil pressure and fumes from burning oil entering the cockpit.",
-        "sourceQuote": "She informed air traffic controllers that the aircraft’s engine oil pressure was falling into the red and that fumes from burning oil were entering the cockpit.",
-        "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The FAA is investigating the incident.",
-        "sourceQuote": "The agency is investigating.",
-        "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Risk flags present (accident_or_serious_incident, investigation) require human review despite sufficient current evidence.",
-      "cat": "safety",
-      "zh": {
-        "title": "飛教練帶學生緊急降落佛州州際10號高速",
-        "summary": "2026年8月3日，一架飛教練與學生乘坐的Piper PA-28-151 Cherokee Warrior因引擎油壓降至紅色區域而在佛州彭薩科拉州際10號高速公路上緊急迫降。飛機在高速公路上安全停止，未撞擊任何車輛，兩人無傷。FAA已確認飛員回報油壓問題並展開調查。",
-        "body": [
-          "根據AeroTime報導，飛教練Emily Shelton在學生的第一堂飛行課中發現引擎油壓急速下降，隨即向空中交通管制宣布緊急狀況。",
-          "她最初嘗試返回彭薩科拉國際機場，但判斷無法抵達，因而將飛機引導至州際10號高速公路上，並在卡車司機Eric Jordan的行車記錄器畫面中穿過車輛與 overhead 高速標誌之間的縫隙後著陸。",
-          "飛機在高速公路上中心附近觸地，保持控制並平緩滑行停止，未碰到任何車輛。Shelton稱她曾訓練過類似情況，並在事故前已累積約1300飛行時數。FAA證實飛員回報油壓問題，但未公開具體機械故障細節，調查仍在進行中。"
-        ]
-      },
-      "en": {
-        "title": "Flight instructor guides student Piper to emergency landing on Florida Interstate 10",
-        "summary": "On August 3, 2026, a flight instructor and her student made an emergency landing of a Piper PA-28-151 Cherokee Warrior on Interstate 10 near Pensacola, Florida after the engine oil pressure dropped into the red. The aircraft landed safely on the highway, avoided vehicles, and came to a stop without injuries to the two occupants. The FAA has confirmed the oil-pressure report and opened an investigation.",
-        "body": [
-          "According to AeroTime, flight instructor Emily Shelton was conducting a student's first lesson when she observed the oil pressure falling into the red zone and fumes from burning oil entering the cockpit.",
-          "She initially tried to return to Pensacola International Airport but determined the aircraft would not reach the airport, so she guided the Piper onto the highway, steering between moving vehicles and under an overhead sign as captured in a truck driver's dashcam video.",
-          "The aircraft touched down near the center of the highway, remained under control, rolled to a stop without striking any vehicles, and both occupants were uninjured. Shelton said her training had prepared her for such an emergency and she had logged about 1,300 flight hours prior to the incident. The FAA confirmed the oil-pressure announcement but has not released further mechanical details while the investigation continues."
-        ]
-      },
-      "flash": {
-        "zh": "佛州高速緊急迫降，二人無傷",
-        "en": "Florida highway emergency landing, no injuries",
-        "hot": false
-      },
-      "incident": {
-        "date": "2026-08-03",
-        "sev": "ser",
-        "aircraft": "Piper PA-28-151 Cherokee Warrior",
-        "operator": "Pensacola Air Flight School",
-        "phase": {
-          "zh": "緊急迫降",
-          "en": "emergency landing"
-        },
-        "location": {
-          "zh": "佛州彭薩科拉州際10號高速公路",
-          "en": "Interstate 10 near Pensacola, Florida"
-        },
-        "desc": {
-          "zh": "飛機因引擎油壓降至紅色區域而在高速公路上緊急著陸，未撞擊車輛，兩人無傷。",
-          "en": "Aircraft made an emergency landing on the highway after engine oil pressure dropped into the red, avoiding vehicles; both occupants uninjured."
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The Piper PA-28 performed an emergency landing on Interstate 10 near Pensacola, Florida on August 3, 2026.",
-          "sourceQuote": "guiding their Piper PA-28 beneath an overhead highway sign and between moving vehicles during an emergency landing on Interstate 10 in Florida.",
-          "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Two people were aboard the aircraft and no injuries were reported.",
-          "sourceQuote": "Two people were aboard, and no injuries were reported.",
-          "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The pilot reported falling engine oil pressure and fumes from burning oil entering the cockpit.",
-          "sourceQuote": "She informed air traffic controllers that the aircraft’s engine oil pressure was falling into the red and that fumes from burning oil were entering the cockpit.",
-          "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The FAA is investigating the incident.",
-          "sourceQuote": "The agency is investigating.",
-          "sourceUrl": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "FAA",
-          "Pensacola Air Flight School"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Piper PA-28-151 Cherokee Warrior"
-        ],
-        "airports": [],
-        "locations": [
-          "Interstate 10 near Pensacola, Florida",
-          "Pensacola"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [
-          "N41622"
-        ],
-        "event_dates": [
-          "2026-08-03"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260805-1948-6",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Video: Piper barely misses highway sign during emergency landing in Florida",
-          "url": "https://www.aerotime.aero/articles/piper-highway-emergency-landing-florida-video",
-          "publishedUtc": "2026-08-05T16:22Z",
-          "summary": "A flight instructor flying with a student on his first lesson avoided disaster by guiding their Piper PA-28… The post Video: Piper barely misses highway sign during emergency landing in Florida appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260805-1521-10",
-    "queuedUtc": "2026-08-05T15:21Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "The source reports on ongoing engine-related groundings affecting the A220 fleet, referencing Pratt & Whitney engine problems that have grounded aircraft. This constitutes a developing aviation safety/operational matter with engine abnormalities affecting fleet operations. While Airbus states issues are 'largely been resolved,' the situation is still developing with 3% of the fleet still out of service. Manual review is required for developing safety-related events.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Airbus has stated that the technical issues that grounded many A220s have now largely been resolved.",
-        "sourceQuote": "the technical issues that grounded many A220s have now \"largely been resolved,\"",
-        "sourceUrl": "https://simpleflying.com/video/all-a220s-grounded-by-pratt-whitney-issues-will-fly-again-by-year-s-end-airbus-says/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Airbus said affected A220 aircraft should be in the air before year-end.",
-        "sourceQuote": "affected aircraft should be in the air before year-end",
-        "sourceUrl": "https://simpleflying.com/video/all-a220s-grounded-by-pratt-whitney-issues-will-fly-again-by-year-s-end-airbus-says/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Pratt & Whitney engine problems are currently affecting just 3% of the global A220 fleet, with those planes still out of service.",
-        "sourceQuote": "the Pratt & Whitney engine problems are currently affecting just 3% of the global fleet of aircraft, with these planes still out of service",
-        "sourceUrl": "https://simpleflying.com/video/all-a220s-grounded-by-pratt-whitney-issues-will-fly-again-by-year-s-end-airbus-says/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The source reports on ongoing engine-related groundings affecting the A220 fleet, referencing Pratt & Whitney engine problems that have grounded aircraft. This constitutes a developing aviation safety/operational matter with engine abnormalities affecting fleet operations. While Airbus states issues are 'largely been resolved,' the situation is still developing with 3% of the fleet still out of service. Manual review is required for developing safety-related events.",
-      "cat": "ops",
-      "zh": {
-        "title": "空中巴士稱普惠引擎問題已大致解決 停飛A220年底前復飛",
-        "summary": "空中巴士表示，導致多架A220停飛的普惠引擎技術問題現已「大致獲得解決」，受影響飛機可望在年底前恢復飛行。目前全球機隊中仍有約3%的飛機因引擎問題持續停飛。",
-        "body": [
-          "空中巴士表示，導致多架A220停飛的普惠引擎技術問題現已「largely been resolved」（大致獲得解決），受影響飛機預計在年底前恢復飛行。",
-          "據報導，普惠引擎問題目前仍影響全球A220機隊中約3%的飛機，這些飛機仍處於停飛狀態。",
-          "空中巴士的說法顯示，先前因引擎技術問題而停飛的A220機隊，正逐步朝向全面恢復營運的方向發展。",
-          "此議題涉及持續中的航空營運與引擎技術問題，相關情況仍有待進一步觀察。"
-        ]
-      },
-      "en": {
-        "title": "Airbus Says Pratt & Whitney Engine Issues Grounding A220s Largely Resolved, Fleet to Fly by Year-End",
-        "summary": "Airbus has stated that the technical issues involving Pratt & Whitney engines that grounded many A220 aircraft have now been largely resolved, and affected aircraft should return to service before the end of the year. The company said the engine problems currently affect approximately 3% of the global A220 fleet, with those planes still out of service.",
-        "body": [
-          "Airbus has stated that the technical issues involving Pratt & Whitney engines that grounded many A220 aircraft have now been largely resolved, and affected aircraft should be in the air before year-end.",
-          "According to the report, the Pratt & Whitney engine problems are currently affecting just 3% of the global fleet of A220 aircraft, with these planes still out of service.",
-          "Airbus's comments indicate that the grounding situation affecting the A220 fleet is gradually moving toward full operational recovery.",
-          "This matter involves ongoing aviation operations and engine technical issues, and the situation remains subject to further developments."
-        ]
-      },
-      "flash": {
-        "zh": "空中巴士稱A220停飛問題已大致解決，年底前復飛",
-        "en": "Airbus says A220 grounding issues largely resolved, fleet to fly by year-end",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Airbus has stated that the technical issues that grounded many A220s have now largely been resolved.",
-          "sourceQuote": "the technical issues that grounded many A220s have now \"largely been resolved,\"",
-          "sourceUrl": "https://simpleflying.com/video/all-a220s-grounded-by-pratt-whitney-issues-will-fly-again-by-year-s-end-airbus-says/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Airbus said affected A220 aircraft should be in the air before year-end.",
-          "sourceQuote": "affected aircraft should be in the air before year-end",
-          "sourceUrl": "https://simpleflying.com/video/all-a220s-grounded-by-pratt-whitney-issues-will-fly-again-by-year-s-end-airbus-says/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Pratt & Whitney engine problems are currently affecting just 3% of the global A220 fleet, with those planes still out of service.",
-          "sourceQuote": "the Pratt & Whitney engine problems are currently affecting just 3% of the global fleet of aircraft, with these planes still out of service",
-          "sourceUrl": "https://simpleflying.com/video/all-a220s-grounded-by-pratt-whitney-issues-will-fly-again-by-year-s-end-airbus-says/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Airbus",
-          "Pratt & Whitney"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "A220"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260805-1521-10",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "All A220s Grounded By Pratt & Whitney Issues Will Fly Again By Year's End, Airbus Says",
-          "url": "https://simpleflying.com/video/all-a220s-grounded-by-pratt-whitney-issues-will-fly-again-by-year-s-end-airbus-says/",
-          "publishedUtc": "2026-08-05T12:33Z",
-          "summary": "Airbus has stated that the technical issues that grounded many A220s have now \"largely been resolved,\" and that affected aircraft should be in the air before year-end. It’s said that the Pratt & Whitney engine problems are currently affecting just 3% of the global fleet of aircraft, with these planes still out of service.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/a220-resolve.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
         }
       ],
       "updateCandidate": false,
