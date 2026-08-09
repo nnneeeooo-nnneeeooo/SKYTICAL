@@ -419,14 +419,16 @@ OUTPUT RULES:
   If the event and useful background fit the brief contract, publish_brief;
   never promote it to publish merely to make the article longer.
 - zh.title: 18 to 38 Chinese/alphanumeric characters excluding punctuation
-  and spaces. zh.summary: one sentence of 45 to 85 Chinese characters.
-  en.title: 45 to 100 characters including spaces. en.summary: one sentence
-  of 25 to 45 English words. The summary is a notification-style glanceable
-  brief: lead with the named operator/organisation and event, then include the
-  supported place/route, timing and concrete operational, passenger, rescue or
-  safety impact when relevant. Omit background history, editorial process and
-  low-value detail. Never invent a missing airline, place, time or impact and
-  never pad unsupported content.
+  and spaces. zh.summary: one 26 to 38 character notification-style line.
+  Use a complete concise sentence when it fits; otherwise use 2 to 4 factual
+  keyword phrases separated by full-width semicolons「；」. en.title: 45 to 100
+  characters including spaces. en.summary: one 10 to 18 word line, using
+  semicolon-separated factual keyword phrases when a complete sentence cannot fit. Lead with
+  the named operator/organisation and event, then include the supported place/route, timing and concrete operational,
+  passenger, rescue or safety
+  impact when relevant. Never use an ellipsis. Omit background history,
+  editorial process and low-value detail. Never invent a missing airline,
+  place, time or impact and never pad unsupported content.
 - Bodies are plain text with every load-bearing claim traceable to facts.
   publish: 4 to 7 substantive paragraphs per language; zh at least 500 Chinese/alphanumeric content characters; en at least 250 words.
   publish_brief: 2 to 7 substantive paragraphs per language; zh 180-320 Chinese/

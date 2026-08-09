@@ -1020,40 +1020,58 @@ def header_search_placeholders(lang: str) -> tuple[str, ...]:
     return tuple(cleaned) if len(set(cleaned)) == len(cleaned) else fallback
 
 
-def notification_summary(value: str, lang: str) -> str:
-    """Make legacy article summaries glanceable without changing source data."""
+def _keyword_summary(value: str, lang: str, limit: int) -> str:
+    """Turn verified text into a bounded, semicolon-separated keyword line."""
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if lang == "zh":
+        text = re.sub(r"[\s，、。！？：:—–|/]+", "；", text)
+        if "；" not in text:
+            org = re.match(
+                r"^(.{2,16}?(?:航空|機場|民航局|航空局|機場公司|空中巴士|波音))(.+)$",
+                text,
+            )
+            if org:
+                text = f"{org.group(1)}；{org.group(2)}"
+        parts = [part.strip("； ") for part in text.split("；")
+                 if part.strip("； ")]
+        selected = []
+        for part in parts:
+            candidate = "；".join([*selected, part])
+            if len(candidate) <= limit:
+                selected.append(part)
+                continue
+            if not selected:
+                selected.append(part[:limit].rstrip("，；、 "))
+            break
+        return "；".join(selected).rstrip("。； ")
+
+    text = re.sub(r"\s*[:—–|]+\s*", "; ", text)
+    words = text.split()
+    return " ".join(words[:limit]).rstrip(".,;: ")
+
+
+def notification_summary(value: str, lang: str, title: str = "") -> str:
+    """Return a complete two-line summary without visual ellipsis."""
     text = re.sub(r"\s+", " ", str(value or "")).strip()
     if not text:
         return text
     if lang == "zh":
-        limit, minimum = 92, 44
+        limit = 38
         if len(text) <= limit:
-            return text
-        for marks in ("。！？", "；，"):
-            breaks = [i + 1 for i, char in enumerate(text[:limit])
-                      if char in marks and i + 1 >= minimum]
-            if breaks:
-                end = breaks[-1]
-                result = text[:end].rstrip("，；")
-                return result if result.endswith(tuple("。！？")) else result + "…"
-        return text[:limit].rstrip("，；、 ") + "…"
+            return text.rstrip("。 ")
+        return _keyword_summary(title or text, lang, limit)
 
     words = text.split()
-    limit_words, minimum_words = 42, 20
+    limit_words = 14
     if len(words) <= limit_words:
-        return text
-    sentence = re.match(r"^.*?[.!?](?=\s|$)", text)
-    if sentence:
-        first = sentence.group(0).strip()
-        count = len(first.split())
-        if minimum_words <= count <= limit_words:
-            return first
-    return " ".join(words[:limit_words]).rstrip(",;: ") + "…"
+        return text.rstrip(". ")
+    return _keyword_summary(title or text, lang, limit_words)
 
 
 def art_view(a, lang: str):
     v = dict(a[lang])
-    v["display_summary"] = notification_summary(v.get("summary"), lang)
+    v["display_summary"] = notification_summary(
+        v.get("summary"), lang, v.get("title"))
     v.update(
         id=a["id"], cat=a["cat"], tag_class=a["tag_class"], image=a["image"],
         cat_label=_bi(CATS.get(a["cat"]), lang, a["cat"]),
