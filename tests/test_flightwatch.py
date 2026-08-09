@@ -60,6 +60,7 @@ RCKH = {
 def test_parse_and_sanitize():
     raw = {"hex": "A1B2C3", "r": "N501DN", "t": "a359",
            "type": "adsb_icao", "flight": "DAL123   ",
+           "ownOp": "Delta Air Lines",
            "alt_baro": "ground", "gs": 12.5, "lat": 22.58, "lon": 120.35,
            "seen": 1.2, "seen_pos": 0.8, "dbFlags": 0, "squawk": "2000"}
     ac = adsb.parse_aircraft(raw)
@@ -68,6 +69,8 @@ def test_parse_and_sanitize():
     check(ac["source_type"] == "adsb_icao",
           "`type` kept as position source, never the airframe type")
     check(ac["callsign"] == "DAL123", "trailing callsign spaces trimmed")
+    check(ac["operator_name"] == "Delta Air Lines",
+          "ADS-B owner/operator label is retained for curated matching")
     check(ac["alt_baro"] == "ground", 'alt_baro "ground" survives as string')
     check(adsb.position_ok(ac), "fresh positioned row usable")
 
@@ -204,6 +207,11 @@ def test_rarity_and_bootstrap():
           "unknown code keeps icao, NEVER invents an airline name")
     op3, _ = flightwatch.operator_from_callsign("N501DN", {})
     check(op3 is None, "registration-style callsign not parsed as airline")
+    airlines = flightwatch.load_airlines()
+    op4, name4 = flightwatch.operator_from_observation(
+        {"callsign": None, "operator_name": "Air Macau"}, airlines)
+    check(op4 == "AMU" and name4 == "Air Macau",
+          "curated ADS-B operator name resolves when callsign is missing")
     print("test_rarity_and_bootstrap: done")
 
 
@@ -218,6 +226,20 @@ def test_event_identity_and_config():
     icaos = {ap["icao"] for ap in airports}
     for need in ("RCTP", "RCSS", "RCKH", "RCMQ", "RCNN"):
         check(need in icaos, f"required airport {need} configured")
+    by_icao = {ap["icao"]: ap for ap in airports}
+    for need in ("RCTP", "RCKH", "RCMQ"):
+        check("AMU" in by_icao[need]["normal_operator_codes"],
+              f"Air Macau is a normal operator at {need}")
+    amu = adsb.parse_aircraft(
+        {"hex": "78227c", "r": "B-MBU", "t": "A21N",
+         "flight": "AMU615", "ownOp": "Air Macau", "lat": 25.08,
+         "lon": 121.23, "seen_pos": 1, "type": "adsb_icao"})
+    score, _, _ = flightwatch.rarity(
+        amu, "AMU", by_icao["RCTP"],
+        {"firstRunUtc": flightwatch.iso(NOW - timedelta(days=90)),
+         "arrivals": []}, [], NOW)
+    check(score < flightwatch.SCORE_THRESHOLD,
+          f"routine Air Macau A321neo at Taoyuan is not rare ({score})")
     try:
         flightwatch.validate_airports(
             [dict(RCKH), dict(RCKH)], {})
@@ -266,6 +288,30 @@ def test_source_assembly_privacy():
     boot = flightnews.assemble_source(dict(FLIGHT_EVENT, bootstrap=True))
     check("過去 180 天" not in boot and "統計說明" in boot,
           "bootstrap SOURCE carries no rarity statistics to quote")
+
+    macau = json.loads(json.dumps(FLIGHT_EVENT))
+    macau["airport"] = {"icao": "RCTP", "iata": "TPE",
+                        "name_zh": "臺灣桃園國際機場",
+                        "name_en": "Taiwan Taoyuan International Airport"}
+    macau["aircraft"] = {"hex": "78227c", "registration": "B-MBU",
+                         "type": "A21N", "type_name": "Airbus A321neo",
+                         "callsign": "AMU615"}
+    macau["operator"] = {"icao": "AMU", "name": None}
+    macau["arrival"]["confirmedUtc"] = "2026-08-09T13:08:18Z"
+    enriched = flightnews.assemble_source(macau)
+    for needed in ("營運者 IATA：NX", "營運者名稱：Air Macau",
+                   "營運者中文名稱：澳門航空", "營運者所屬國家或地區：澳門"):
+        check(needed in enriched, f"curated operator detail present: {needed}")
+    group = flightnews.pseudo_group(macau)
+    background = "\n".join(str(item.get("summary") or "")
+                             for item in group["items"])
+    check("B-MBU 列於澳門航空名下" in background,
+          "official registry background is attached to B-MBU")
+    check("往返臺北、高雄及臺中" in background,
+          "date-limited Taiwan route background is attached")
+    check(any("aacm.gov.mo" in item.get("url", "")
+              for item in group["items"]),
+          "background facts retain official source URLs")
     print("test_source_assembly_privacy: done")
 
 

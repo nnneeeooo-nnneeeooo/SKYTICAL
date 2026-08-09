@@ -18,6 +18,8 @@ QUEUE_PATH = DATA_DIR / "flightwatch" / "queue.json"
 MAX_EVENTS_PER_RUN = 3
 
 _PROMPT_PATH = ROOT / "prompts" / "rare-aircraft-news-zh.txt"
+_AIRLINES_PATH = ROOT / "config" / "airline_icao_codes.json"
+_BACKGROUNDS_PATH = ROOT / "config" / "airline_backgrounds.json"
 _FALLBACK_PROMPT = (
     "You write a bilingual wire item as JSON (same DRAFT_SCHEMA as the main "
     "pipeline) from ONE <SOURCE type=\"flight_observation\"> block. Use only "
@@ -44,12 +46,85 @@ def save_queue(rows: list) -> None:
     save_json(QUEUE_PATH, rows)
 
 
+def _operator_details(event: dict) -> dict:
+    """Merge the queued observation with the curated airline catalogue."""
+    operator = dict(event.get("operator") or {})
+    cfg = load_json(_AIRLINES_PATH, {})
+    rows = cfg.get("airlines") or []
+    code = str(operator.get("icao") or "").upper()
+    row = next((r for r in rows if isinstance(r, dict)
+                and r.get("active", True)
+                and str(r.get("icao_code") or "").upper() == code), {})
+    regions = cfg.get("regions") or {}
+    region_code = operator.get("country_or_region") \
+        or row.get("country_or_region")
+    region = regions.get(region_code) or {}
+    return {
+        "icao": code or None,
+        "iata": operator.get("iata") or row.get("iata_code"),
+        "name": operator.get("name") or row.get("airline_name_en"),
+        "name_zh": operator.get("name_zh") or row.get("airline_name_zh_tw"),
+        "country_or_region": region_code,
+        "region_zh": region.get("zh_tw"),
+        "region_en": region.get("en"),
+    }
+
+
+def _background_items(event: dict) -> list[dict]:
+    """Return source-bound, date-limited background for this observation."""
+    operator = _operator_details(event)
+    code = operator.get("icao")
+    registration = str((event.get("aircraft") or {}).get("registration")
+                       or "").upper()
+    confirmed = str((event.get("arrival") or {}).get("confirmedUtc") or "")
+    event_date = confirmed[:10]
+    profiles = load_json(_BACKGROUNDS_PATH, {}).get("profiles") or []
+    profile = next((p for p in profiles if isinstance(p, dict)
+                    and str(p.get("icao_code") or "").upper() == code), None)
+    if not profile:
+        return []
+    items = []
+    for fact in profile.get("facts") or []:
+        if not isinstance(fact, dict):
+            continue
+        registrations = {str(value).upper()
+                         for value in fact.get("registrations") or []}
+        if registrations and registration not in registrations:
+            continue
+        valid_from = str(fact.get("valid_from") or "")
+        valid_through = str(fact.get("valid_through") or "")
+        if event_date and valid_from and event_date < valid_from:
+            continue
+        if event_date and valid_through and event_date > valid_through:
+            continue
+        url = str(fact.get("source_url") or "").strip()
+        if not url.startswith("https://"):
+            continue
+        checked = str(fact.get("checked_on") or "未標示")
+        items.append({
+            "title": str(fact.get("source_name") or "航空公司背景來源"),
+            "url": url,
+            "publishedUtc": confirmed,
+            "summary": "\n".join([
+                str(fact.get("zh") or "").strip(),
+                str(fact.get("en") or "").strip(),
+                f"背景資料查核日期：{checked}",
+                (f"背景資料適用至：{valid_through}"
+                 if valid_through else ""),
+            ]).strip(),
+            "image": None,
+            "source": str(fact.get("source_name") or "官方背景來源"),
+            "sourceKey": "flight_background",
+        })
+    return items
+
+
 def assemble_source(event: dict) -> str:
     """Render the flight observation as line-quotable evidence. Every line
     here may become a verbatim sourceQuote; nothing else may."""
     airport = event.get("airport") or {}
     aircraft = event.get("aircraft") or {}
-    operator = event.get("operator") or {}
+    operator = _operator_details(event)
     arrival = event.get("arrival") or {}
     rar = event.get("rarity") or {}
     lines = [
@@ -65,7 +140,11 @@ def assemble_source(event: dict) -> str:
         f"註冊號：{aircraft.get('registration') or '未取得'}",
         f"呼號：{aircraft.get('callsign') or '未取得'}",
         f"營運者 ICAO：{operator.get('icao') or '未識別'}",
+        f"營運者 IATA：{operator.get('iata') or '未識別'}",
         f"營運者名稱：{operator.get('name') or '未識別'}",
+        f"營運者中文名稱：{operator.get('name_zh') or '未識別'}",
+        (f"營運者所屬國家或地區：{operator.get('region_zh')}"
+         if operator.get("region_zh") else "營運者所屬國家或地區：未識別"),
         f"航空器 ICAO 機型：{aircraft.get('type') or '未取得'}",
         f"機型顯示名稱：{aircraft.get('type_name') or aircraft.get('type') or '未取得'}",
         f"首次有效觀測時間：{arrival.get('firstSeenUtc')}",
@@ -117,6 +196,7 @@ def pseudo_group(event: dict) -> dict:
             "source": "ADSB.lol",
             "sourceKey": "adsb_lol",
         })
+    items.extend(_background_items(event))
     return {
         "id": event.get("eventId"),
         "primarySource": "Airplanes.live",

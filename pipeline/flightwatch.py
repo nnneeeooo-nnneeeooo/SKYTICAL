@@ -168,6 +168,29 @@ def operator_from_callsign(callsign, airlines: dict):
     return None, None
 
 
+def operator_from_observation(ac: dict, airlines: dict):
+    """Resolve a known airline without asking the model to infer it.
+
+    The callsign designator remains the primary key.  When it is absent or
+    unknown, ``ownOp`` from the ADS-B database is accepted only when it
+    exactly matches a curated airline name in ``airline_icao_codes.json``.
+    Free-form provider labels are never published directly.
+    """
+    code, name = operator_from_callsign(ac.get("callsign"), airlines)
+    if name:
+        return code, name
+    supplied = str(ac.get("operator_name") or "").strip().casefold()
+    if supplied:
+        for known_code, row in airlines.items():
+            known_names = {
+                str(row.get("airline_name_en") or "").strip().casefold(),
+                str(row.get("airline_name_zh_tw") or "").strip().casefold(),
+            }
+            if supplied in known_names:
+                return known_code, row.get("airline_name_en")
+    return code, name
+
+
 # --------------------------------------------------------------------------
 # arrival state machine (multi-observation; never a single snapshot)
 
@@ -506,8 +529,8 @@ def main() -> None:
             stats["duplicate_events_skipped"] += 1
             continue
 
-        operator_icao, operator_name = operator_from_callsign(
-            ac.get("callsign"), airlines)
+        operator_icao, operator_name = operator_from_observation(ac, airlines)
+        operator_row = airlines.get(operator_icao) or {}
         score, reasons, watchlisted = rarity(
             ac, operator_icao, airport, history, watchlist, now)
 
@@ -567,7 +590,13 @@ def main() -> None:
                 "type_name": type_names.get(ac.get("aircraft_type") or ""),
                 "callsign": ac.get("callsign"),
             },
-            "operator": {"icao": operator_icao, "name": operator_name},
+            "operator": {
+                "icao": operator_icao,
+                "iata": operator_row.get("iata_code"),
+                "name": operator_name,
+                "name_zh": operator_row.get("airline_name_zh_tw"),
+                "country_or_region": operator_row.get("country_or_region"),
+            },
             "arrival": {
                 "status": "confirmed_arrival",
                 "firstSeenUtc": first_ts,
