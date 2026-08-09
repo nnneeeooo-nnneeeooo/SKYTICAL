@@ -46,7 +46,11 @@ OUTPUT (same schema and language rules as the main pipeline):
   a complete sentence cannot fit. Never use an ellipsis. Make each summary immediately scannable: identify the
   operator, aircraft/event, supported location or route, timing and operational
   impact when available; omit low-value background and never invent a missing
-  detail;
+  detail. Every summary must contain a named subject and a clear action/event;
+  never return a standalone operator name, never split a multi-word proper
+  name, registration, airport code or aircraft model, use at most two
+  semicolons, and keep every separated phrase readable rather than an isolated
+  label;
   each language body MUST contain 4-7 substantive factual paragraphs built
   only from quoted facts. When official operator/registry/route background is
   present, devote at least one paragraph to aircraft/operator identity and one
