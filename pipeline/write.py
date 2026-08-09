@@ -393,6 +393,10 @@ OUTPUT RULES:
   name. Never invent a phonetic rendering or borrow a Hong Kong / mainland China rendering. When unsure, keep the complete English proper name.
   Never coin names, abbreviations or codes. A MANDATORY NAME GLOSSARY
   overrides every other rendering and is machine-checked.
+- When SOURCE explicitly supplies an airport's three-letter IATA code,
+  include it in parentheses after that airport or city on first mention in
+  both languages. If multiple named airports are central to the story,
+  include every supplied code. Never infer a code missing from evidence.
 - zh.title: 18 to 38 Chinese/alphanumeric characters excluding punctuation
   and spaces. zh.summary: 80 to 140 Chinese characters. en.title: 45 to 100
   characters including spaces.
