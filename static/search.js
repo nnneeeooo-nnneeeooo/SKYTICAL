@@ -8,7 +8,6 @@
 
   var form = document.getElementById("news-search-form");
   var input = document.getElementById("news-search-input");
-  var clear = document.getElementById("news-search-clear");
   var status = document.getElementById("news-search-status");
   var results = document.getElementById("news-search-results");
   var lang = root.dataset.lang === "en" ? "en" : "zh";
@@ -102,7 +101,6 @@
 
   function runSearch() {
     var query = input.value.trim();
-    clear.hidden = !query;
     updateQueryUrl(query);
     results.replaceChildren();
 
@@ -145,19 +143,11 @@
     window.clearTimeout(debounceTimer);
     debounceTimer = window.setTimeout(runSearch, 120);
   });
-  clear.addEventListener("click", function () {
-    input.value = "";
-    runSearch();
-    input.focus();
-  });
-
   try {
     input.value = new URL(window.location.href).searchParams.get("q") || "";
   } catch (error) {
     input.value = "";
   }
-  clear.hidden = !input.value;
-
   fetch(root.dataset.indexUrl, { credentials: "same-origin" })
     .then(function (response) {
       if (!response.ok) throw new Error("HTTP " + response.status);

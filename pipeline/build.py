@@ -10,13 +10,14 @@ one-line log to stdout and the script exits 0.
 """
 from __future__ import annotations
 
+import hashlib
 import json
+import math
 import os
 import re
 import shutil
 import sys
 import time
-import math
 import unicodedata
 from datetime import timedelta, timezone
 from pathlib import Path
@@ -48,6 +49,16 @@ from model_config import (
     MODEL_DISPLAY_NAMES,
     MODEL_ORDER,
 )
+
+
+def static_asset_version() -> str:
+    digest = hashlib.sha256()
+    for name in ("site.css", "app.js", "search.js"):
+        digest.update((STATIC_DIR / name).read_bytes())
+    return digest.hexdigest()[:10]
+
+
+ASSET_VERSION = static_asset_version()
 
 # Asia/Taipei via zoneinfo where tz data exists (Linux CI); the zone has had a
 # fixed +08:00 offset with no DST since 1980, so a static fallback is exact.
@@ -106,11 +117,11 @@ L = {
         "footerAbout": "全自動航空新聞聚合站。GitHub Actions 每小時抓取各可信來源，自動撰寫並發布，每篇文末標註原始出處。本頁為設計原型，內容為示意樣本。",
         "footerSources": "資料來源 Data Sources",
         "footerChangelog": "網站更新紀錄",
-        "nav": ["最新", "搜尋", "快報", "航班雷達", "事故資料庫", "來源", "方法論"],
+        "nav": ["最新", "快報", "航班雷達", "事故資料庫", "來源", "方法論"],
         "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
         "searchKicker": "News Search", "searchTitle": "搜尋新聞",
+        "headerSearchPlaceholder": "搜尋 AVWIRE 新聞",
         "searchSub": "搜尋標題、摘要、全文、來源、日期、航班、機型與機場代碼；航空公司正式名稱與常用簡稱可互相查找。",
-        "searchPlaceholder": "輸入關鍵字，例如：華航、A321neo、桃園",
         "searchButton": "搜尋", "searchClear": "清除",
         "searchLoading": "正在載入新聞索引…",
         "searchPrompt": "輸入關鍵字開始搜尋全部新聞。",
@@ -202,13 +213,13 @@ L = {
         "footerAbout": "A fully automated aviation news aggregator. GitHub Actions fetches trusted sources hourly, writes and publishes automatically, and credits originals at the end of every article. Design prototype; sample content.",
         "footerSources": "Data Sources",
         "footerChangelog": "Site changelog",
-        "nav": ["Latest", "Search", "Briefings", "Flight Radar", "Incident DB", "Sources",
+        "nav": ["Latest", "Briefings", "Flight Radar", "Incident DB", "Sources",
                  "Methodology"],
         "cats": ["All", "Safety", "Regulation", "Business", "Operations",
                  "Military"],
         "searchKicker": "News Search", "searchTitle": "Search news",
+        "headerSearchPlaceholder": "Search AVWIRE news",
         "searchSub": "Search titles, summaries, full text, sources, dates, flights, aircraft types and airport codes. Official airline names and common short names are interchangeable.",
-        "searchPlaceholder": "Enter keywords, e.g. China Airlines, A321neo, TPE",
         "searchButton": "Search", "searchClear": "Clear",
         "searchLoading": "Loading the news index…",
         "searchPrompt": "Enter keywords to search every published story.",
@@ -2262,13 +2273,13 @@ def render_manual_workbench(env, build) -> int:
 
 def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=True):
     t = L[lang]
-    nav_defs = [("home", ""), ("search", "search/"),
-                ("briefings", "briefings/"),
+    nav_defs = [("home", ""), ("briefings", "briefings/"),
                 ("radar", "radar/"),
                 ("incidents", "incidents/"),
                 ("sources", "sources/"), ("about", "about/")]
     return {
         "lang": lang, "t": t, "base": BASE_PATH, "favicon": FAVICON,
+        "asset_version": ASSET_VERSION,
         "html_lang": "zh-Hant" if lang == "zh" else "en",
         "title": title, "description": description,
         "zh_url": page_url("zh", sub), "en_url": page_url("en", sub),
@@ -2277,6 +2288,7 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=Tru
         "self_abs_url": SITE_ORIGIN + page_url(lang, sub),
         "hreflang": hreflang,
         "home_url": page_url(lang, ""),
+        "search_url": page_url(lang, "search/"),
         "radar_url": page_url(lang, "radar/"),
         "changelog_url": page_url(lang, "changelog/"),
         "nav": [{"label": t["nav"][i], "url": page_url(lang, s), "active": page == p}

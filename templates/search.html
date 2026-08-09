@@ -17,15 +17,6 @@
              data-error="{{ t.searchError }}"
              data-brief-label="{{ t.briefLabel }}"
              data-read-more="{{ t.readMore }}">
-      <form id="news-search-form" class="news-search-form" role="search">
-        <label class="sr-only" for="news-search-input">{{ t.searchTitle }}</label>
-        <input id="news-search-input" name="q" type="search"
-               autocomplete="off" enterkeyhint="search"
-               placeholder="{{ t.searchPlaceholder }}"
-               aria-controls="news-search-results">
-        <button class="btn btn-primary" type="submit">{{ t.searchButton }}</button>
-        <button id="news-search-clear" class="btn btn-secondary" type="button" hidden>{{ t.searchClear }}</button>
-      </form>
       <p id="news-search-status" class="search-status text-muted"
          role="status" aria-live="polite">{{ t.searchLoading }}</p>
       <div id="news-search-results" class="search-results"></div>
@@ -34,5 +25,5 @@
   </main>
 {% endblock %}
 {% block body_scripts %}
-<script src="{{ base }}/assets/search.js" defer></script>
+<script src="{{ base }}/assets/search.js?v={{ asset_version }}" defer></script>
 {% endblock %}
