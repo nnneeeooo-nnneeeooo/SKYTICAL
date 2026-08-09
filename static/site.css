@@ -255,15 +255,14 @@ a.flash-row:hover { color: inherit; }
 /* Apple-style glanceable summary: borderless and aligned with its headline.
    The private iOS glyph is represented by an original SVG. */
 .summary-preview {
-  display: grid; grid-template-columns: minmax(0, 1fr);
-  align-items: start; gap: 4px; width: 100%; padding: 0;
+  display: grid; grid-template-columns: auto minmax(0, 1fr);
+  align-items: start; gap: 8px; width: 100%; padding: 0;
   border: 0; border-radius: 0; background: transparent; box-shadow: none;
 }
 .summary-preview__label {
-  display: inline-flex; align-items: center; gap: 5px; padding-top: 1px;
+  display: inline-flex; align-items: center; padding-top: 2px;
   color: color-mix(in srgb, #6d5bd0 84%, var(--color-text));
-  font-size: 10.5px; font-weight: 800; line-height: 1.45;
-  letter-spacing: .06em; white-space: nowrap;
+  line-height: 1;
 }
 .summary-preview__icon {
   width: 17px; height: 17px; fill: none; stroke: currentColor;
@@ -273,15 +272,19 @@ a.flash-row:hover { color: inherit; }
   min-width: 0; color: color-mix(in srgb, var(--color-text) 82%, transparent);
   font-size: 13.5px; font-weight: 600; line-height: 1.58;
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
-  overflow: hidden;
+  line-clamp: 2; max-height: 3.16em; overflow: hidden;
+  overflow-wrap: anywhere; text-overflow: ellipsis;
 }
 .summary-preview--hero { margin: 0; }
 .summary-preview--feed { margin-top: 7px; }
-.summary-preview--feed .summary-preview__label { font-size: 9.5px; }
 .summary-preview--feed .summary-preview__icon { width: 15px; height: 15px; }
-.summary-preview--feed .summary-preview__text { font-size: 12.5px; line-height: 1.55; }
+.summary-preview--feed .summary-preview__text {
+  font-size: 12.5px; line-height: 1.55; max-height: 3.1em;
+}
 .summary-preview--article { margin: -8px 0 24px; }
-.summary-preview--article .summary-preview__text { font-size: 15px; line-height: 1.65; }
+.summary-preview--article .summary-preview__text {
+  font-size: 15px; line-height: 1.65; max-height: 3.3em;
+}
 
 [data-theme="dark"] .summary-preview__label {
   color: color-mix(in srgb, #b8adff 88%, var(--color-text));
