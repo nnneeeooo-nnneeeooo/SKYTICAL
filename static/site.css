@@ -173,9 +173,7 @@ a.ticker-item:hover .ticker-time { color: var(--color-accent); }
 .nav-link:hover { color: var(--color-accent); }
 .nav-link.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
 .site-nav {
-  flex: 1; display: grid; grid-template-columns: repeat(6, max-content);
-  justify-content: space-between; gap: clamp(8px, 1vw, 18px);
-  margin-left: 0; white-space: nowrap;
+  display: flex; gap: 2px; margin-left: auto; white-space: nowrap;
 }
 
 /* — segmented controls (language links / theme + filter buttons) — */
