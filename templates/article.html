@@ -28,9 +28,12 @@
       </figcaption>
     </figure>
     {% endif %}
-    {% for p in a.body %}
-    <p style="font-size:16px;line-height:1.95;margin:0 0 18px;">{{ p }}</p>
-    {% endfor %}
+    <div class="article-body" data-article-body
+         data-search-aliases-url="{{ search_aliases_url }}">
+      {% for p in a.body %}
+      <p style="font-size:16px;line-height:1.95;margin:0 0 18px;">{{ p }}</p>
+      {% endfor %}
+    </div>
     <div class="article-sources">
       <h6 style="margin:0 0 10px;">{{ t.sourcesBox }}</h6>
       {% for s in a.sources %}
@@ -45,4 +48,7 @@
       </div>
     </div>
   </div>
+{% endblock %}
+{% block body_scripts %}
+<script src="{{ base }}/assets/highlight.js?v={{ asset_version }}" defer></script>
 {% endblock %}

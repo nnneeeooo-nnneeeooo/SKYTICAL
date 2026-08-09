@@ -53,7 +53,7 @@ from model_config import (
 
 def static_asset_version() -> str:
     digest = hashlib.sha256()
-    for name in ("site.css", "app.js", "search.js"):
+    for name in ("site.css", "app.js", "search.js", "highlight.js"):
         digest.update((STATIC_DIR / name).read_bytes())
     return digest.hexdigest()[:10]
 
@@ -1104,6 +1104,14 @@ def search_index_payload(articles, generated_utc) -> dict:
         "count": len(articles),
         "items": [search_index_item(article, alias_groups)
                   for article in articles],
+    }
+
+
+def search_aliases_payload() -> dict:
+    """Publish the sanitized alias map used by article highlighting."""
+    return {
+        "version": 1,
+        "groups": [list(group) for group in load_search_alias_groups()],
     }
 
 
@@ -2289,6 +2297,10 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=Tru
         "hreflang": hreflang,
         "home_url": page_url(lang, ""),
         "search_url": page_url(lang, "search/"),
+        "search_aliases_url": (
+            f"{BASE_PATH}/search-aliases.json"
+            if BASE_PATH else "/search-aliases.json"
+        ),
         "radar_url": page_url(lang, "radar/"),
         "changelog_url": page_url(lang, "changelog/"),
         "nav": [{"label": t["nav"][i], "url": page_url(lang, s), "active": page == p}
@@ -2336,6 +2348,10 @@ def main() -> int:
     (SITE_DIR / ".nojekyll").write_text("", encoding="utf-8")
     (SITE_DIR / "search-index.json").write_text(
         json.dumps(search_index_payload(articles, now), ensure_ascii=False,
+                   separators=(",", ":")),
+        encoding="utf-8", newline="\n")
+    (SITE_DIR / "search-aliases.json").write_text(
+        json.dumps(search_aliases_payload(), ensure_ascii=False,
                    separators=(",", ":")),
         encoding="utf-8", newline="\n")
 
