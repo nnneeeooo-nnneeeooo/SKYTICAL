@@ -77,6 +77,24 @@
     });
   }
 
+  /* — LIVE ticker: keep a readable speed even as headline length changes — */
+  var marqueeTrack = document.querySelector(".marquee-track");
+  function setMarqueeDuration() {
+    if (!marqueeTrack) return;
+    var tickerPass = marqueeTrack.querySelector(".ticker-pass");
+    if (!tickerPass) return;
+    var pixelsPerSecond = window.matchMedia("(max-width: 720px)").matches ? 24 : 52;
+    var seconds = Math.max(20, tickerPass.scrollWidth / pixelsPerSecond);
+    marqueeTrack.style.setProperty("--ticker-duration", seconds.toFixed(1) + "s");
+  }
+  if (marqueeTrack) {
+    setMarqueeDuration();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(setMarqueeDuration);
+    }
+    window.addEventListener("resize", setMarqueeDuration);
+  }
+
   /* — home: category filter over feed rows ([data-cat]) — */
   var catBtns = Array.prototype.slice.call(document.querySelectorAll("[data-filter-cat]"));
   catBtns.forEach(function (b) {
