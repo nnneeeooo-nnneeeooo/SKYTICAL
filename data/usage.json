@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-09T22:57Z",
+  "updatedUtc": "2026-08-09T23:04Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,9 +21,9 @@
       "unknownCalls": 241
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 467,
-      "inputTokens": 1532038,
-      "outputTokens": 2974594,
+      "calls": 469,
+      "inputTokens": 1538997,
+      "outputTokens": 2981786,
       "unknownCalls": 121
     },
     "gemini:gemini-3.5-flash": {
@@ -39,9 +39,9 @@
       "unknownCalls": 284
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 440,
-      "inputTokens": 2190637,
-      "outputTokens": 704456,
+      "calls": 441,
+      "inputTokens": 2194014,
+      "outputTokens": 704825,
       "unknownCalls": 35
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
@@ -51,9 +51,9 @@
       "unknownCalls": 260
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
-      "calls": 241,
-      "inputTokens": 294487,
-      "outputTokens": 287276,
+      "calls": 242,
+      "inputTokens": 298394,
+      "outputTokens": 291135,
       "unknownCalls": 195
     },
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free": {
@@ -129,10 +129,10 @@
       "unknownCalls": 183
     },
     "opencode:claude-sonnet-4-6": {
-      "calls": 3,
+      "calls": 5,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 3
+      "unknownCalls": 5
     },
     "opencode:gpt-5.5": {
       "calls": 1,
@@ -213,12 +213,87 @@
       "outputTokens": 885772
     },
     "2026-08-09": {
-      "calls": 126,
-      "inputTokens": 308944,
-      "outputTokens": 580473
+      "calls": 132,
+      "inputTokens": 323187,
+      "outputTokens": 591893
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-09T23:01Z",
+      "finishedUtc": "2026-08-09T23:01Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-2301-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 838,
+        "promptAssembly": 0,
+        "drafting": 12202,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 13066
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "opencode",
+          "model": "claude-sonnet-4-6",
+          "label": "opencode:claude-sonnet-4-6",
+          "startedUtc": "2026-08-09T23:01Z",
+          "durationMs": 212,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 212,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "auth",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 401",
+          "retryPlanned": false,
+          "disabledForRun": true
+        },
+        {
+          "sequence": 2,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-09T23:01Z",
+          "durationMs": 11990,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 11989,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-09T22:57Z",
       "finishedUtc": "2026-08-09T22:57Z",
