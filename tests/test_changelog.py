@@ -19,15 +19,15 @@ def main() -> None:
         (ROOT / "config" / "changelog.json").read_text(encoding="utf-8"))
     assert raw["schemaVersion"] == 1
     assert raw["historyStart"] == "2026-07-26"
-    assert raw["updatedThrough"] == "2026-07-30"
-    assert len(raw["entries"]) == 53
+    assert raw["updatedThrough"] == "2026-08-10"
+    assert len(raw["entries"]) == 54
 
     historical = [row["commit"] for row in raw["entries"]
                   if row["commit"] is not None]
     assert len(historical) == 51
     assert len(set(historical)) == len(historical)
     assert all(re.fullmatch(r"[0-9a-f]{40}", sha) for sha in historical)
-    assert sum(row["commit"] is None for row in raw["entries"]) == 2
+    assert sum(row["commit"] is None for row in raw["entries"]) == 3
     rendered_copy = "\n".join(
         f"{row['zh']}\n{row['en']}" for row in raw["entries"])
     assert "免費" not in rendered_copy
@@ -49,11 +49,12 @@ def main() -> None:
         raw, "zh", build.L["zh"]["changeKinds"])
     en = build.changelog_view(
         raw, "en", build.L["en"]["changeKinds"])
-    assert zh["count"] == en["count"] == 53
+    assert zh["count"] == en["count"] == 54
     assert [group["date"] for group in zh["groups"]] \
-        == ["2026-07-30", "2026-07-28", "2026-07-27", "2026-07-26"]
+        == ["2026-08-10", "2026-07-30", "2026-07-28",
+            "2026-07-27", "2026-07-26"]
     assert zh["groups"][0]["entries"][0]["title"] \
-        == "私人 API 用量頁新增模型失敗、備援切換、各階段耗時與最近 30 天執行紀錄。"
+        == "網站品牌更新為 SKYTICAL，套用新 Logo 與標語「SKYLINE TO AVIATION NEWS」。"
     assert en["groups"][-1]["entries"][-1]["title"].startswith(
         "Created AVWIRE")
     linked = [entry for group in en["groups"] for entry in group["entries"]
@@ -105,7 +106,7 @@ def main() -> None:
         assert f'href="{expected_path}"' in html
         assert t["footerChangelog"] in html
         assert t["changeNotice"] in html
-        assert len(re.findall(r'class="changelog-entry"', html)) == 53
+        assert len(re.findall(r'class="changelog-entry"', html)) == 54
         assert "javascript:alert" not in html
 
     print("test_changelog: OK")
