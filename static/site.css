@@ -58,6 +58,54 @@ a.ticker-item:hover .ticker-time { color: var(--color-accent); }
 .pulse-dot { width: 8px; height: 8px; background: var(--color-accent); animation: avwire-pulse 2s infinite; }
 .marquee-track { display: flex; width: max-content; animation: avwire-marquee 80s linear infinite; white-space: nowrap; }
 
+/* — Google-style search, deliberately the first row of every page — */
+.header-search-row {
+  padding: 11px 20px; border-bottom: 1px solid var(--color-divider);
+  background: var(--color-bg);
+}
+.header-search-form {
+  width: min(720px, 100%); min-height: 48px; margin: 0 auto;
+  display: grid; grid-template-columns: 22px minmax(0, 1fr) auto 40px;
+  align-items: center; gap: 9px; padding: 3px 5px 3px 16px;
+  border: 1px solid color-mix(in srgb, var(--color-text) 24%, transparent);
+  border-radius: 999px; background: var(--color-surface);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--color-text) 12%, transparent);
+}
+.header-search-form:focus-within {
+  border-color: color-mix(in srgb, var(--color-accent) 70%, var(--color-divider));
+  box-shadow: 0 3px 12px color-mix(in srgb, var(--color-text) 18%, transparent);
+}
+.header-search-icon, .header-search-submit svg {
+  width: 20px; height: 20px; fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round;
+}
+.header-search-icon { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+.header-search-input {
+  min-width: 0; width: 100%; border: 0; outline: 0; padding: 9px 0;
+  background: transparent; color: var(--color-text); font: inherit;
+  font-size: 15px;
+}
+.header-search-input::placeholder {
+  color: color-mix(in srgb, var(--color-text) 52%, transparent);
+}
+.header-search-clear, .header-search-submit {
+  appearance: none; display: inline-flex; align-items: center; justify-content: center;
+  border: 0; border-radius: 50%; cursor: pointer; font-family: inherit;
+}
+.header-search-clear {
+  width: 32px; height: 32px; background: transparent; color: var(--color-text);
+  font-size: 24px; font-weight: 400; line-height: 1; opacity: 0; pointer-events: none;
+}
+.header-search-input:not(:placeholder-shown) + .header-search-clear { opacity: 1; pointer-events: auto; }
+.header-search-clear:hover { background: color-mix(in srgb, var(--color-text) 8%, transparent); }
+.header-search-submit {
+  width: 40px; height: 40px; background: var(--color-accent); color: var(--color-bg);
+}
+.header-search-submit:hover { background: var(--color-accent-600); }
+.header-search-clear:focus-visible, .header-search-submit:focus-visible {
+  outline: 2px solid var(--color-accent); outline-offset: 2px;
+}
+
 .nav-link {
   cursor: pointer; font-size: 14px; font-weight: 600; padding: 8px 14px;
   border-bottom: 2px solid transparent; color: var(--color-text); text-decoration: none;
@@ -308,20 +356,6 @@ a.flash-row:hover { color: inherit; }
 }
 .search-header p { margin: 0; font-size: 14px; line-height: 1.8; }
 .news-search { max-width: 960px; }
-.news-search-form {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto auto;
-  gap: 8px; padding: 12px; border: 2px solid var(--color-divider);
-  background: var(--color-surface);
-}
-.news-search-form input {
-  min-width: 0; min-height: 44px; padding: 9px 12px;
-  border: 1px solid var(--color-divider); background: var(--color-bg);
-  color: var(--color-text); font: inherit;
-}
-.news-search-form input:focus {
-  outline: 2px solid var(--color-accent); outline-offset: -2px;
-}
-.news-search-form .btn { min-height: 44px; white-space: nowrap; }
 .search-status { margin: 14px 0 0; min-height: 24px; font-size: 13px; }
 .search-results { margin-top: 8px; border-top: 2px solid var(--color-divider); }
 .search-result { padding: 18px 0; border-bottom: 1px solid var(--color-divider); }
@@ -358,9 +392,14 @@ a.flash-row:hover { color: inherit; }
 }
 
 @media (max-width: 640px) {
+  .header-search-row { padding: 9px 12px; }
+  .header-search-form {
+    min-height: 44px; grid-template-columns: 20px minmax(0, 1fr) auto 36px;
+    gap: 7px; padding-left: 13px;
+  }
+  .header-search-input { font-size: 14px; padding: 7px 0; }
+  .header-search-submit { width: 36px; height: 36px; }
   .search-page { padding: 24px 14px 40px; }
-  .news-search-form { grid-template-columns: minmax(0, 1fr) auto; }
-  .news-search-form #news-search-clear { grid-column: 1 / -1; }
   .search-result h2 { font-size: 18px; }
   .search-result-footer { align-items: flex-start; flex-direction: column; gap: 6px; }
   .radar-page { padding: 18px 12px 24px; }
