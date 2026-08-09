@@ -535,8 +535,12 @@ a.flash-row:hover { color: inherit; }
   .utility-row { padding: 8px 12px; gap: 8px 12px; }
   .utility-date { flex-basis: 100%; }
   .utility-update { margin-left: 0; }
-  .brand-row { padding: 11px 12px; gap: 10px; }
-  .brand-link { flex: 1; }
+  .brand-row {
+    padding: 9px 12px; gap: 12px; flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .brand-link { flex: 0 1 224px; min-width: 0; }
+  .brand-logo { max-width: 224px; }
   .brand-name { font-size: 18px; }
   .brand-tagline { font-size: 9px; letter-spacing: .11em; white-space: nowrap; }
   .nav-toggle { display: inline-flex; flex-shrink: 0; }
