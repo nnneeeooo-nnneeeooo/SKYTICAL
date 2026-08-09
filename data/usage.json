@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-09T23:04Z",
+  "updatedUtc": "2026-08-09T23:07Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -22,9 +22,9 @@
     },
     "gemini:gemini-3.6-flash": {
       "calls": 469,
-      "inputTokens": 1538997,
-      "outputTokens": 2981786,
-      "unknownCalls": 121
+      "inputTokens": 1532038,
+      "outputTokens": 2974594,
+      "unknownCalls": 123
     },
     "gemini:gemini-3.5-flash": {
       "calls": 71,
@@ -39,9 +39,9 @@
       "unknownCalls": 284
     },
     "nvidia:z-ai/glm-5.2": {
-      "calls": 441,
-      "inputTokens": 2194014,
-      "outputTokens": 704825,
+      "calls": 442,
+      "inputTokens": 2198514,
+      "outputTokens": 705497,
       "unknownCalls": 35
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
@@ -53,7 +53,7 @@
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "calls": 242,
       "inputTokens": 298394,
-      "outputTokens": 291135,
+      "outputTokens": 291957,
       "unknownCalls": 195
     },
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free": {
@@ -213,43 +213,81 @@
       "outputTokens": 885772
     },
     "2026-08-09": {
-      "calls": 132,
-      "inputTokens": 323187,
-      "outputTokens": 591893
+      "calls": 133,
+      "inputTokens": 320728,
+      "outputTokens": 586195
     }
   },
   "recentRuns": [
     {
-      "startedUtc": "2026-08-09T23:01Z",
-      "finishedUtc": "2026-08-09T23:01Z",
+      "startedUtc": "2026-08-09T23:05Z",
+      "finishedUtc": "2026-08-09T23:05Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20260809-2301-1",
+      "groupId": "g-20260809-2304-2",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 799,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 30813
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-09T23:04Z",
+      "finishedUtc": "2026-08-09T23:05Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260809-2304-1",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "Simple Flying",
       "result": "rejected",
       "articleId": null,
       "finalStatus": "reject",
-      "finalModel": "gemini:gemini-3.6-flash",
+      "finalModel": "nvidia:z-ai/glm-5.2",
       "fallbackUsed": true,
-      "attemptCount": 2,
-      "httpCallCount": 2,
+      "attemptCount": 3,
+      "httpCallCount": 3,
       "repairCallCount": 0,
       "durationsMs": {
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 838,
+        "archiveRetrieval": 802,
         "promptAssembly": 0,
-        "drafting": 12202,
+        "drafting": 29254,
         "validation": 0,
         "factVerification": null,
         "evidenceBinding": null,
         "glossaryCheck": null,
         "fabricationCheck": null,
         "articleBuild": null,
-        "total": 13066
+        "total": 30884
       },
       "attempts": [
         {
@@ -257,11 +295,11 @@
           "provider": "opencode",
           "model": "claude-sonnet-4-6",
           "label": "opencode:claude-sonnet-4-6",
-          "startedUtc": "2026-08-09T23:01Z",
-          "durationMs": 212,
+          "startedUtc": "2026-08-09T23:05Z",
+          "durationMs": 276,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 212,
+          "httpDurationMs": 276,
           "repairDurationMs": 0,
           "outcome": "failed",
           "failureClass": "auth",
@@ -275,11 +313,29 @@
           "provider": "gemini",
           "model": "gemini-3.6-flash",
           "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-08-09T23:01Z",
-          "durationMs": 11990,
+          "startedUtc": "2026-08-09T23:05Z",
+          "durationMs": 236,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 11989,
+          "httpDurationMs": 236,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "quota",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
+          "retryPlanned": false,
+          "disabledForRun": true
+        },
+        {
+          "sequence": 3,
+          "provider": "nvidia",
+          "model": "z-ai/glm-5.2",
+          "label": "nvidia:z-ai/glm-5.2",
+          "startedUtc": "2026-08-09T23:05Z",
+          "durationMs": 28742,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 28741,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,
