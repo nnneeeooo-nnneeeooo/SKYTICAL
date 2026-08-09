@@ -81,7 +81,7 @@ SYSTEM_PROMPT = """\
 
 輸出 JSON（無 markdown fence）：
 {"items":[{"section":"aviation_incidents|taiwan_aviation|international_aviation|ground_and_maritime",
-"headline_zh":"18-40字","summary_zh":"60-160字","headline_en":"...","summary_en":"...",
+"headline_zh":"18-40字","summary_zh":"26-38字；完整短句放得下則用短句，否則以2至4個關鍵片語用全形分號『；』分隔；禁止刪節號","headline_en":"...","summary_en":"10-18 words; use a concise sentence when it fits, otherwise semicolon-separated factual keywords; no ellipsis",
 "severity":"routine|significant|serious|fatal","taiwan":false,"military":false,
 "sourceChunks":[0]}]}
 """
