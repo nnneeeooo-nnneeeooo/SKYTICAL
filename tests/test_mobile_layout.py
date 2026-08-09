@@ -19,6 +19,12 @@ def main() -> None:
     articles = list((ROOT / "site" / "news").glob("*/index.html"))
     assert articles
     article = articles[0].read_text(encoding="utf-8")
+    airadvisor = (ROOT / "site" / "news" /
+                  "a-20260809-0948-london-heathrow-tops-airadvisor-2026-glo" /
+                  "index.html").read_text(encoding="utf-8")
+    jetstar = (ROOT / "site" / "news" /
+               "a-20260809-0948-jetstar-to-introduce-overhead-locker-fee" /
+               "index.html").read_text(encoding="utf-8")
 
     assert 'class="nav-toggle"' in home
     assert 'aria-controls="site-nav"' in home
@@ -35,13 +41,18 @@ def main() -> None:
     assert 'class="summary-preview summary-preview--article"' in article
     assert 'class="summary-preview__icon"' in article
     assert 'class="article-source-row"' in article
+    assert "AirAdvisor；2026機場排名；倫敦希斯洛16.94分居首" in airadvisor
+    assert "捷星航空；2027年2月2日起；頭頂置物箱收費；單程25澳幣起" in jetstar
 
     zh_long = "中華航空8月10日宣布調整桃園至福岡航班，受機場作業限制影響，兩班延後三小時，旅客須留意報到時間。" * 2
-    zh_short = build.notification_summary(zh_long, "zh")
-    assert len(zh_short) <= 93
-    assert "中華航空" in zh_short and "福岡" in zh_short
-    en_short = build.notification_summary("word " * 60, "en")
-    assert len(en_short.split()) <= 42
+    zh_short = build.notification_summary(
+        zh_long, "zh", "中華航空調整桃園至福岡航班 兩班延後三小時")
+    assert zh_short == "中華航空調整桃園至福岡航班；兩班延後三小時"
+    assert len(zh_short) <= 38 and "；" in zh_short and "…" not in zh_short
+    en_short = build.notification_summary(
+        "word " * 60, "en",
+        "China Airlines Adjusts Two Taoyuan-Fukuoka Flights After Airport Restrictions")
+    assert len(en_short.split()) <= 14 and "…" not in en_short
 
     assert "@media (max-width: 720px)" in css
     assert ".js .site-nav.is-open { display: grid; }" in css
