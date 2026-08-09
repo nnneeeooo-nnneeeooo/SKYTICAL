@@ -61,7 +61,7 @@
   const refreshMs = Math.max(Number(root.dataset.refreshMs) || 300000, 300000);
   const manualCooldownMs = 30000;
   const routeApiBase = String(root.dataset.routeApiUrl || "").replace(/\/+$/, "");
-  const routeCacheKey = "avwire-radar-routes-v1";
+  const routeCacheKey = "avwire-radar-routes-v2";
   const callsignModeKey = "avwire-radar-callsign-mode";
   const routePositiveTtlMs = 24 * 60 * 60 * 1000;
   const routeNegativeTtlMs = 6 * 60 * 60 * 1000;
@@ -195,7 +195,7 @@
   function renderCallsign(target, callsign) {
     const match = callsignMode === "iata" &&
       /^([A-Z0-9]{2})([0-9][A-Z0-9]*)$/.exec(callsign);
-    if (!match) {
+    if (!match || !/[A-Z]/.test(match[1])) {
       target.textContent = callsign;
       return;
     }
@@ -244,6 +244,16 @@
     };
   }
 
+  function normalizeIataCallsign(value, callsignIcao) {
+    const iata = clean(value, 16).toUpperCase();
+    const iataMatch = /^([A-Z0-9]{2})([0-9][A-Z0-9]*)$/.exec(iata);
+    if (!iataMatch || !/[A-Z]/.test(iataMatch[1])) return "";
+    const icao = clean(callsignIcao, 16).toUpperCase();
+    const icaoMatch = /^[A-Z]{3}([0-9][A-Z0-9]*)$/.exec(icao);
+    if (icaoMatch && iataMatch[2] !== icaoMatch[1]) return "";
+    return iata;
+  }
+
   function normalizeRoutePayload(payload) {
     const flightroute = payload && payload.response &&
       payload.response.flightroute;
@@ -251,9 +261,11 @@
     const origin = normalizeAirport(flightroute.origin);
     const destination = normalizeAirport(flightroute.destination);
     if (!origin || !destination) return null;
+    const callsignIcao = clean(flightroute.callsign_icao, 16).toUpperCase();
     return {
-      callsignIcao: clean(flightroute.callsign_icao, 16).toUpperCase(),
-      callsignIata: clean(flightroute.callsign_iata, 16).toUpperCase(),
+      callsignIcao,
+      callsignIata: normalizeIataCallsign(
+        flightroute.callsign_iata, callsignIcao),
       origin,
       destination,
     };

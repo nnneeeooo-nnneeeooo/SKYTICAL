@@ -76,6 +76,7 @@ def main() -> None:
             "ESR": "ZE",
             "JJP": "GK",
             "MXD": "OD",
+            "SPQ": "9G",
             "TVJ": "VZ",
         }
         assert {
@@ -97,6 +98,7 @@ def main() -> None:
             "ESR": ("ZE", "易斯達航空", "Eastar Jet"),
             "JJP": ("GK", "捷星日本航空", "Jetstar Japan"),
             "MXD": ("OD", "馬來西亞峇迪航空", "Batik Air Malaysia"),
+            "SPQ": ("9G", "太陽富國航空", "Sun PhuQuoc Airways"),
             "TVJ": ("VZ", "泰國越捷航空", "Thai Vietjet Air"),
         }
         for icao_code, (iata_code, zh_name, en_name) in expected_names.items():
@@ -138,6 +140,7 @@ def main() -> None:
     assert "airlineIataNames[iataPrefix]" in js
     assert "displayAirline(row)" in js
     assert "function renderCallsign(target, callsign)" in js
+    assert "!/[A-Z]/.test(match[1])" in js
     assert 'carrier.className = "radar-callsign-carrier"' in js
     assert 'flight.className = "radar-callsign-flight"' in js
     assert 'target.append(carrier, flight)' in js
@@ -145,12 +148,15 @@ def main() -> None:
     assert ".radar-list-item .radar-callsign-flight" in css
     assert "row.callsign.startsWith(row.operator)" in js
     assert "row.callsign.slice(row.operator.length)" in js
+    assert "function normalizeIataCallsign(value, callsignIcao)" in js
+    assert "!/[A-Z]/.test(iataMatch[1])" in js
+    assert "iataMatch[2] !== icaoMatch[1]" in js
     assert 'root.dataset.defaultCallsignMode === "icao" ? "icao" : "iata"' in js
     assert '["icao", "iata"].includes(savedCallsignMode)' in js
     assert "flightroute.origin" in js
     assert "flightroute.destination" in js
     assert "routeConcurrency = 4" in js
-    assert "routeCacheKey" in js
+    assert 'routeCacheKey = "avwire-radar-routes-v2"' in js
     assert "https://tile.openstreetmap.org/{z}/{x}/{y}.png" in js
     assert "textContent" in js
 
