@@ -83,6 +83,15 @@ ZH_BRIEF_MAX_CHARS = 320
 EN_BRIEF_MIN_WORDS = 90
 EN_BRIEF_MAX_WORDS = 150
 
+_EDITORIAL_PROCESS_RE = re.compile(
+    r"(?:本文|本報導|這篇(?:文章|報導)).{0,60}"
+    r"(?:採用|使用|引用|補足|補充|核對|交叉確認|資料來源|來源資料)"
+    r"|(?:新聞|報導).{0,20}(?:應|需要).{0,16}(?:交代|說明|寫明)"
+    r"|(?:this (?:article|report|story)).{0,100}"
+    r"(?:uses?|cites?|adds?|corrects?|cross-checks?|should|needs? to|explains?)",
+    re.I,
+)
+
 REVIEW_MAX = 40
 REVIEW_MAX_AGE_DAYS = 14
 
@@ -397,6 +406,17 @@ OUTPUT RULES:
   include it in parentheses after that airport or city on first mention in
   both languages. If multiple named airports are central to the story,
   include every supplied code. Never infer a code missing from evidence.
+- Write for readers, never narrate the editorial process. Do not explain why
+  the article should name something, how the newsroom corrected or added
+  context, which fields were cross-checked, or how sources were layered.
+  Source attribution belongs in natural reporting and the source list, not
+  in a paragraph about how the article was assembled.
+- Include background only when it directly helps readers understand the
+  event, such as the operator, relevant aircraft type, route, schedule or
+  operational status. Omit incorporation/registry boilerplate, generic
+  company descriptions, repeated limitations and unrelated archive details.
+  If the event and useful background fit the brief contract, publish_brief;
+  never promote it to publish merely to make the article longer.
 - zh.title: 18 to 38 Chinese/alphanumeric characters excluding punctuation
   and spaces. zh.summary: 80 to 140 Chinese characters. en.title: 45 to 100
   characters including spaces.
@@ -731,6 +751,16 @@ def en_body_word_count(body: list[str]) -> int:
     ))
 
 
+def editorial_process_error(draft: dict) -> str | None:
+    """Reject reader-facing prose that explains newsroom assembly choices."""
+    for lang in ("zh", "en"):
+        block = draft.get(lang) or {}
+        fields = [block.get("summary") or "", *(block.get("body") or [])]
+        if any(_EDITORIAL_PROCESS_RE.search(str(value)) for value in fields):
+            return f"{lang} contains editorial-process narration"
+    return None
+
+
 def draft_article_format(draft: dict) -> str | None:
     """Return ``full``/``brief`` when both language bodies fit one contract."""
     zh_body = (draft.get("zh") or {}).get("body")
@@ -789,6 +819,9 @@ def validate_draft(draft):
         if len(body) > MAX_BODY_PARAGRAPHS:
             return (f"{lang}.body has {len(body)} paragraphs; maximum is "
                     f"{MAX_BODY_PARAGRAPHS}")
+    process_error = editorial_process_error(draft)
+    if process_error:
+        return process_error
     article_format = draft_article_format(draft)
     if status == "publish" and article_format != "full":
         zh_len = zh_body_character_count(draft["zh"]["body"])
