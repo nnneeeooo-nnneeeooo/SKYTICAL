@@ -20,16 +20,18 @@
         "item_type": "update",
         "previous_event_id": "ev-ec4e5f8a5f168ebb",
         "category": "taiwan_aviation",
-        "headline": "A321neo 登臺桃園機場",
-        "summary": "公開 ADS-B 觀測顯示，一架註冊號 B-MBU、機型 Airbus A321neo 的飛機於 2026 年 8 月 9 日抵達臺灣桃園國際機場（RCTP）。",
-        "headline_en": "Airbus A321neo Arrives at Taoyuan Airport",
-        "summary_en": "Public ADS-B observation shows an Airbus A321neo registered as B-MBU arrived at Taoyuan International Airport (RCTP) on August 9, 2026.",
+        "headline": "澳門航空 A321neo B-MBU 抵達桃園",
+        "summary": "公開 ADS-B 觀測顯示，澳門航空（NX／AMU）註冊號 B-MBU 的 Airbus A321neo 於 8 月 9 日抵達桃園；澳門民航局登記資料列明其精確型號為 A321-271NX。",
+        "headline_en": "Air Macau A321neo B-MBU Arrives at Taiwan Taoyuan",
+        "summary_en": "Public ADS-B observations show Air Macau Airbus A321neo B-MBU arrived at Taiwan Taoyuan International Airport on August 9. Macao's civil aviation authority lists the aircraft as an Airbus A321-271NX operated by Air Macau.",
         "event_time": null,
         "source_published_at": "2026-08-09T13:08:00+00:00",
         "source_updated_at": null,
         "location": "Taoyuan International Airport",
         "entities": [
           "Airbus A321neo",
+          "Airbus A321-271NX",
+          "Air Macau",
           "Taoyuan International Airport",
           "Taoyuan International Airport",
           "AMU615",
@@ -41,17 +43,29 @@
         "military": false,
         "sources": [
           {
-            "name": "Airplanes.live — 公開 ADS-B 觀測：A21N 抵達 臺灣桃園國際機場",
+            "name": "Airplanes.live — 公開 ADS-B 觀測",
             "url": "https://airplanes.live/"
+          },
+          {
+            "name": "澳門民航局 — 澳門註冊航空器名單",
+            "url": "https://www.aacm.gov.mo/en/industry-page/RegisteredAircraft"
+          },
+          {
+            "name": "澳門民航局 — 航空企業資料",
+            "url": "https://www.aacm.gov.mo/zh-hant/airline-company/base-airline"
+          },
+          {
+            "name": "澳門民航局 — 核准客運航班名單（2026-04-01）",
+            "url": "https://www.aacm.gov.mo/static/2026/04/01/e56b0c34-fb2a-410a-aee1-c2a5bde80765.pdf"
           }
         ],
         "risk_flags": [],
         "article_id": "a-20260809-1441-airbus-a321neo-arrives-at-taoyuan-airpor",
         "new_information": [
-          "The arrival was confirmed at 13:08:18Z on August 9, 2026.",
-          "The first valid observation was at 12:03:42Z on August 9, 2026.",
-          "The primary data source is Airplanes.live with ADSB.lol as secondary source.",
-          "The system has no comparable long-term statistics for this observation."
+          "B-MBU using callsign AMU615 arrived at Taiwan Taoyuan International Airport on August 9, 2026.",
+          "The Macao register lists B-MBU under Air Macau as an Airbus A321-271NX.",
+          "Air Macau Company Limited is an airline incorporated in Macao.",
+          "The approved passenger-flight list includes Air Macau on Taipei, Kaohsiung and Taichung routes, subject to current airline schedules."
         ]
       }
     ],
