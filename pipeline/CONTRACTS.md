@@ -317,6 +317,15 @@ Planespotters.net (same airframe, by registration) or Wikimedia Commons
 caches per-article match/none results. build.normalize_image() is the
 only reader; templates always show kind + credit + license + backlink.
 
+## data/search-prompts.json  (written by search_prompts.py, read by build.py)
+
+One daily set of six bilingual search-box suggestions. `targetDateTpe` prevents
+more than one generation per Taipei calendar day; `generationMode` is `llm`
+only after every suggestion passes article-ID, length, safety, uniqueness and
+title-anchor validation. `sourceArticleIds` records the published articles used.
+When no provider is available or model output is invalid, deterministic prompts
+are built from those article titles instead. No model reasoning is stored.
+
 ## data/usage.json  (written by usage.py, read by build.py)
 
 Cumulative LLM API spend: per-model-label {calls, inputTokens,
