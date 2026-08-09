@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+  <main class="search-page">
+    <header class="search-header">
+      <span class="card-kicker">{{ t.searchKicker }}</span>
+      <h1>{{ t.searchTitle }}</h1>
+      <p class="text-muted">{{ t.searchSub }}</p>
+    </header>
+
+    <section id="news-search-app" class="news-search"
+             data-index-url="{{ search_index_url }}"
+             data-lang="{{ lang }}"
+             data-loading="{{ t.searchLoading }}"
+             data-prompt="{{ t.searchPrompt }}"
+             data-count-template="{{ t.searchCount }}"
+             data-empty-template="{{ t.searchNoResults }}"
+             data-error="{{ t.searchError }}"
+             data-brief-label="{{ t.briefLabel }}"
+             data-read-more="{{ t.readMore }}">
+      <form id="news-search-form" class="news-search-form" role="search">
+        <label class="sr-only" for="news-search-input">{{ t.searchTitle }}</label>
+        <input id="news-search-input" name="q" type="search"
+               autocomplete="off" enterkeyhint="search"
+               placeholder="{{ t.searchPlaceholder }}"
+               aria-controls="news-search-results">
+        <button class="btn btn-primary" type="submit">{{ t.searchButton }}</button>
+        <button id="news-search-clear" class="btn btn-secondary" type="button" hidden>{{ t.searchClear }}</button>
+      </form>
+      <p id="news-search-status" class="search-status text-muted"
+         role="status" aria-live="polite">{{ t.searchLoading }}</p>
+      <div id="news-search-results" class="search-results"></div>
+      <noscript><p class="search-status">{{ t.searchError }}</p></noscript>
+    </section>
+  </main>
+{% endblock %}
+{% block body_scripts %}
+<script src="{{ base }}/assets/search.js" defer></script>
+{% endblock %}
