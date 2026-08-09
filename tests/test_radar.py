@@ -25,6 +25,10 @@ def main() -> None:
     assert build.writer_model(
         "openai:gpt-5.6-sol"
     ) == "GPT-5.6 Sol"
+    assert build.writer_model(
+        "openrouter:poolside/laguna-s-2.1:free"
+    ) == "Poolside Laguna S 2.1"
+    assert all(build.writer_model(model) for model in build.MODEL_ORDER)
     assert build.writer_model("unknown:model") is None
 
     assert build.main() == 0

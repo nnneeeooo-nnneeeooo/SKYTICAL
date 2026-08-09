@@ -814,6 +814,9 @@ def writer_model(writer, writer_models=None):
     for needle, model in _WRITER_MODELS:
         if needle in model_id:
             return model
+    configured_name = MODEL_DISPLAY_NAMES.get(writer)
+    if configured_name:
+        return configured_name.removeprefix("OpenRouter · ")
     return None
 
 
