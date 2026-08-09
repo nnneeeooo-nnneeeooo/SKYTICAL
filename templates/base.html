@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SKYTICAL">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ self_abs_url }}">
+<meta property="og:image" content="{{ social_image_abs_url }}">
+<meta property="og:image:alt" content="SKYTICAL — SKYLINE TO AVIATION NEWS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ social_image_abs_url }}">
 {% if hreflang %}
 <link rel="canonical" href="{{ self_abs_url }}">
 <link rel="alternate" hreflang="zh-Hant" href="{{ zh_abs_url }}">
@@ -64,12 +75,9 @@
   </div>
   <div class="brand-shell">
     <div class="brand-row">
-      <a class="brand-link" href="{{ home_url }}">
-        <div class="brand-mark">AW</div>
-        <div class="brand-copy">
-          <div class="brand-name">AVWIRE <span>{{ t.brandZh }}</span></div>
-          <div class="brand-tagline text-muted">Aviation News · Automated Hourly</div>
-        </div>
+      <a class="brand-link" href="{{ home_url }}" aria-label="SKYTICAL — {{ t.homeLabel }}">
+        <img class="brand-logo" src="{{ base }}/assets/skytical-logo.svg"
+             alt="SKYTICAL — SKYLINE TO AVIATION NEWS" width="1000" height="220">
       </a>
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
         <span class="nav-toggle-icon" aria-hidden="true">☰</span>
@@ -107,7 +115,9 @@
   <div style="border-top:2px solid var(--color-divider);">
     <div class="footer-grid">
       <div>
-        <div style="font-weight:800;font-size:16px;">AVWIRE <span style="color:var(--color-accent);">{{ t.brandZh }}</span></div>
+        <img class="footer-logo" src="{{ base }}/assets/skytical-logo.svg"
+             alt="SKYTICAL — SKYLINE TO AVIATION NEWS" width="1000" height="220"
+             loading="lazy">
         <p class="text-muted" style="font-size:12.5px;line-height:1.8;margin-top:8px;">{{ t.footerAbout }}</p>
         <p class="text-muted" style="font-size:11.5px;letter-spacing:.04em;margin:8px 0 0;">{{ t.lastBuild }} {{ build.stamp }} UTC</p>
         <a class="btn btn-secondary footer-changelog-button" href="{{ changelog_url }}">{{ t.footerChangelog }} →</a>

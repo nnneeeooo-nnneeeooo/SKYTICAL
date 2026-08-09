@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>AVWIRE — API 用量(私人)</title>
+<title>SKYTICAL — API 用量（私人）</title>
 <link rel="icon" href="{{ favicon }}">
 <style>
   :root { color-scheme: light dark; }
@@ -77,10 +77,10 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>AVWIRE <span class="accent">API 用量</span></h1>
+  <h1>SKYTICAL <span class="accent">API 用量</span></h1>
   <div class="sub">私人頁面(noindex,無任何站內連結)· 最後更新 {{ updated }} UTC · token 追蹤自 {{ tracking_since }} UTC</div>
 
-  <h2>AVWIRE 自動化 API</h2>
+  <h2>SKYTICAL 自動化 API</h2>
   <div class="tiles">
     <div class="tile"><span>總呼叫次數</span><b>{{ "{:,}".format(totals.calls) }}</b></div>
     <div class="tile"><span>理論價值(牌價)</span><b>${{ "%.4f"|format(totals.usd) }}<span style="font-size:11px;"> ≈ NT${{ "{:,.2f}".format(twd) }}</span></b></div>
@@ -239,7 +239,7 @@
   <h2>GPT-5 網站製作累計（Codex）</h2>
   <div class="section-note">
     {{ codex_scope }}。快照截至 {{ codex_updated }} UTC，追蹤自 {{ codex_tracking_since }} UTC。
-    這是 Codex 回報的 task 累計 token，依 OpenAI 官方標準 API 牌價換算；不屬於 AVWIRE 自動化 API 用量，也不計入上方總額。
+    這是 Codex 回報的 task 累計 token，依 OpenAI 官方標準 API 牌價換算；不屬於 SKYTICAL 自動化 API 用量，也不計入上方總額。
   </div>
   <div class="tiles">
     <div class="tile"><span>累計 tokens</span><b>{{ "{:,}".format(codex_totals.tokens) }}</b></div>
@@ -272,8 +272,8 @@
   {% if non_api_rows %}
   <h2>方案內 GPT-5.6 Sol 用途與單價</h2>
   <div class="section-note">
-    下列工作透過 ChatGPT Work／Codex 方案完成，沒有由 AVWIRE 呼叫 OpenAI API；
-    上方累計涵蓋目前 AVWIRE Codex task，本表僅分項說明用途與換算單價，不重複計入任何總額。
+    下列工作透過 ChatGPT Work／Codex 方案完成，沒有由 SKYTICAL 呼叫 OpenAI API；
+    上方累計涵蓋目前 SKYTICAL Codex task，本表僅分項說明用途與換算單價，不重複計入任何總額。
   </div>
   <div class="scroll">
   <table>
@@ -296,7 +296,7 @@
   <h2>GPT-5 系列 API 理論牌價</h2>
   <div class="section-note">
     OpenAI 官方標準 API 文字 token 牌價，單位為美元／100 萬 tokens。
-    本表僅供理論成本對照，不代表 AVWIRE 已呼叫這些模型，也不計入上方實際用量與理論總值；
+    本表僅供理論成本對照，不代表 SKYTICAL 已呼叫這些模型，也不計入上方實際用量與理論總值；
     Pro 型號目前沒有快取輸入折扣，以「—」表示。
   </div>
   <div class="scroll">

@@ -1,4 +1,4 @@
-/* AVWIRE site styles — everything the design layers on top of modernist.css,
+/* SKYTICAL site styles — everything the design layers on top of modernist.css,
    plus classes replacing the design's inline styles where JS needs hooks. */
 
 /* — from the design's helmet <style> block — */
@@ -60,6 +60,18 @@ a.ticker-item:hover .ticker-time { color: var(--color-accent); }
 .marquee-track {
   display: flex; width: max-content; white-space: nowrap;
   animation: avwire-marquee var(--ticker-duration, 80s) linear infinite;
+}
+.brand-link {
+  display: inline-flex; align-items: center; color: inherit;
+  text-decoration: none; flex: 0 1 360px; min-width: 250px;
+}
+.brand-logo {
+  display: block; width: 100%; height: auto; max-width: 360px;
+  background: #fff;
+}
+.footer-logo {
+  display: block; width: min(100%, 300px); height: auto;
+  background: #fff;
 }
 
 /* — Google-style search, deliberately the first row of every page — */

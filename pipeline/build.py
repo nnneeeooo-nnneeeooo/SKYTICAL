@@ -1,4 +1,4 @@
-"""build.py — render the AVWIRE static site from data/ JSON (see CONTRACTS.md).
+"""build.py — render the SKYTICAL static site from data/ JSON (see CONTRACTS.md).
 
 Reads (all optional, degrades gracefully): data/articles/*.json, flashes.json,
 incidents.json, sources.json, stats.json. Writes the site/ tree per
@@ -21,7 +21,7 @@ import time
 import unicodedata
 from datetime import timedelta, timezone
 from pathlib import Path
-from urllib.parse import quote, urlsplit
+from urllib.parse import urlsplit
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
@@ -75,7 +75,7 @@ _ID_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z")
 # plus the handful of production-only keys at the end of each block.
 L = {
     "zh": {
-        "brandZh": "航空快訊", "live": "LIVE 快訊", "updateBadge": "每小時自動更新",
+        "homeLabel": "返回 SKYTICAL 首頁", "live": "LIVE 快訊", "updateBadge": "每小時自動更新",
         "flash": "即時快訊", "sourceStatus": "來源狀態",
         "latest": "最新新聞", "topStory": "頭條", "mainSource": "主要來源",
         "briefLabel": "短訊",
@@ -105,7 +105,7 @@ L = {
         "thFreq": "頻率", "thLast": "最近抓取", "thState": "狀態",
         "aboutKicker": "Methodology", "aboutTitle": "方法論",
         "changeKicker": "Site Changelog", "changeTitle": "網站更新紀錄",
-        "changeSub": "依 GitHub 主分支提交紀錄整理，涵蓋 AVWIRE 建站至最近一次網站功能變更。",
+        "changeSub": "依 GitHub 主分支提交紀錄整理，涵蓋 SKYTICAL 建站至最近一次網站功能變更。",
         "changeNotice": "每小時新聞、每日快報與航機狀態等自動資料更新不列入，避免機器提交淹沒真正的網站變更。",
         "changeCount": "筆網站變更", "changeStart": "紀錄起點",
         "changeLatest": "更新至", "changeSource": "查看完整 GitHub 提交紀錄",
@@ -120,7 +120,7 @@ L = {
         "nav": ["最新", "快報", "航班雷達", "事故資料庫", "來源", "方法論"],
         "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
         "searchKicker": "News Search", "searchTitle": "搜尋新聞",
-        "headerSearchPlaceholder": "搜尋 AVWIRE 新聞",
+        "headerSearchPlaceholder": "搜尋 SKYTICAL 新聞",
         "searchSub": "搜尋標題、摘要、全文、來源、日期、航班、機型與機場代碼；航空公司正式名稱與常用簡稱可互相查找。",
         "searchButton": "搜尋", "searchClear": "清除",
         "searchLoading": "正在載入新聞索引…",
@@ -163,14 +163,14 @@ L = {
         "sevs": ["全部", "事故", "嚴重事件", "事件"],
         "themeOpts": ["亮", "暗"],
         # production-only keys (not in the design dictionary)
-        "siteName": "AVWIRE 航空快訊",
+        "siteName": "SKYTICAL",
         "siteDesc": "全自動航空新聞聚合站：每小時抓取 FAA、ICAO、IATA、Reuters 等可信來源，自動撰寫雙語新聞並於文末標註原始出處。",
         "awaiting": "等待首次管線執行",
         "lastBuild": "最後建置",
         "aggNote": "純聚合模式：顯示來源原文標題，點擊前往原始報導",
     },
     "en": {
-        "brandZh": "Aviation Wire", "live": "LIVE WIRE", "updateBadge": "Auto-updates hourly",
+        "homeLabel": "Back to the SKYTICAL home page", "live": "LIVE WIRE", "updateBadge": "Auto-updates hourly",
         "flash": "Live flash", "sourceStatus": "Source status",
         "latest": "Latest news", "topStory": "Top story", "mainSource": "Primary source",
         "briefLabel": "Brief",
@@ -200,7 +200,7 @@ L = {
         "thFreq": "Interval", "thLast": "Last fetch", "thState": "Status",
         "aboutKicker": "Methodology", "aboutTitle": "Methodology",
         "changeKicker": "Site Changelog", "changeTitle": "Site changelog",
-        "changeSub": "Compiled from the GitHub main-branch history, covering AVWIRE from its creation through the latest site change.",
+        "changeSub": "Compiled from the GitHub main-branch history, covering SKYTICAL from its creation through the latest site change.",
         "changeNotice": "Automated hourly news, daily briefing and flight-state data commits are omitted so operational refreshes do not bury real site changes.",
         "changeCount": "site changes", "changeStart": "History starts",
         "changeLatest": "Updated through",
@@ -218,7 +218,7 @@ L = {
         "cats": ["All", "Safety", "Regulation", "Business", "Operations",
                  "Military"],
         "searchKicker": "News Search", "searchTitle": "Search news",
-        "headerSearchPlaceholder": "Search AVWIRE news",
+        "headerSearchPlaceholder": "Search SKYTICAL news",
         "searchSub": "Search titles, summaries, full text, sources, dates, flights, aircraft types and airport codes. Official airline names and common short names are interchangeable.",
         "searchButton": "Search", "searchClear": "Clear",
         "searchLoading": "Loading the news index…",
@@ -267,7 +267,7 @@ L = {
         "sevs": ["All", "Accident", "Serious", "Incident"],
         "themeOpts": ["Light", "Dark"],
         # production-only keys (not in the design dictionary)
-        "siteName": "AVWIRE Aviation Wire",
+        "siteName": "SKYTICAL",
         "siteDesc": "A fully automated aviation news aggregator: trusted sources fetched hourly, bilingual stories written automatically, every original source credited.",
         "awaiting": "Awaiting first pipeline run",
         "lastBuild": "Last build",
@@ -356,7 +356,7 @@ ABOUT = {
     "zh": {
         "heading": "內容產製與驗證",
         "intro": [
-            "AVWIRE 是一個以可信來源、快速更新與完整溯源為核心的航空資訊平台。",
+            "SKYTICAL 是一個以可信來源、快速更新與完整溯源為核心的航空資訊平台。",
             "系統持續追蹤航空主管機關、國際組織、航空公司及可信新聞機構所發布的公開資訊，"
             "透過自動化資料管線整理事件，再由 Anthropic Claude、OpenAI GPT、Google Gemini "
             "等主流語言模型"
@@ -367,7 +367,7 @@ ABOUT = {
         "sections": [
             {"heading": "我們的核心原則", "blocks": [
                 _sub("來源先於模型"),
-                _p("AVWIRE 的報導從可信來源開始，而不是從語言模型開始。"),
+                _p("SKYTICAL 的報導從可信來源開始，而不是從語言模型開始。"),
                 _p("系統先取得官方公告、新聞稿、RSS、公開 API 或可信媒體報導，之後才將已取得的"
                    "資料交由模型整理。模型只能使用提供給它的來源內容，不得自行加入外部知識或"
                    "未經支持的推論。"),
@@ -418,10 +418,10 @@ ABOUT = {
                       "來源發布時間",
                       "本站整理時間",
                       "自動化產製標示"),
-                _p("原始來源永遠優先於 AVWIRE 的整理內容。"),
+                _p("原始來源永遠優先於 SKYTICAL 的整理內容。"),
             ]},
             {"heading": "模型如何參與報導", "blocks": [
-                _p("AVWIRE 使用語言模型作為資訊整理與文字生成工具，而不是將模型視為事實來源。"),
+                _p("SKYTICAL 使用語言模型作為資訊整理與文字生成工具，而不是將模型視為事實來源。"),
                 _p("模型只能根據系統提供的來源資料工作，不得自行搜尋網路，也不得使用未出現在"
                    "來源中的背景知識補足內容。"),
                 _p("例如，來源只寫明某架飛機抵達某座機場，模型不得自行推測其屬於："),
@@ -437,7 +437,7 @@ ABOUT = {
                    "快報標題亦標示 BETA；一般新聞文章完全不適用此例外。"),
             ]},
             {"heading": "使用的模型與供應商", "blocks": [
-                _p("AVWIRE 採用多模型架構，以降低單一模型或單一供應商故障造成的影響。"),
+                _p("SKYTICAL 採用多模型架構，以降低單一模型或單一供應商故障造成的影響。"),
                 _p("對外公開的主要模型系列與供應商包括："),
                 _list("Claude（Anthropic）",
                       "GPT（OpenAI）",
@@ -449,7 +449,7 @@ ABOUT = {
                    "與發布標準都保持一致。"),
             ]},
             {"heading": "來源選擇", "blocks": [
-                _p("AVWIRE 優先採用第一手或具有明確編輯責任的來源，例如："),
+                _p("SKYTICAL 優先採用第一手或具有明確編輯責任的來源，例如："),
                 _list("民航主管機關",
                       "航空事故調查機構",
                       "國際航空組織",
@@ -473,7 +473,7 @@ ABOUT = {
                    "系統不會為了填補版面而生成內容。"),
             ]},
             {"heading": "透明度與開放原始碼", "blocks": [
-                _p("AVWIRE 的核心程式碼公開於 GitHub，讀者可以檢視資料擷取、去重、模型呼叫、"
+                _p("SKYTICAL 的核心程式碼公開於 GitHub，讀者可以檢視資料擷取、去重、模型呼叫、"
                    "驗證及發布流程。"),
                 _pre(_REPO_TREE_ZH),
                 _p("實際目錄可能隨系統持續開發而調整，GitHub Repository 中的版本為準。"),
@@ -489,7 +489,7 @@ ABOUT = {
                       "語言模型對內容理解有誤",
                       "多來源對同一事件的描述不同",
                       "即時資料受到覆蓋率或更新延遲影響"),
-                _p("發現問題時，AVWIRE 可更新、撤回或標記相關內容。具有權威效力的資訊，"
+                _p("發現問題時，SKYTICAL 可更新、撤回或標記相關內容。具有權威效力的資訊，"
                    "仍應以主管機關、航空公司、機場或其他原始發布單位為準。"),
             ]},
         ],
@@ -499,7 +499,7 @@ ABOUT = {
     "en": {
         "heading": "Content production & verification",
         "intro": [
-            "AVWIRE is an aviation information platform built around trusted sources, "
+            "SKYTICAL is an aviation information platform built around trusted sources, "
             "fast updates and full traceability.",
             "The system continuously tracks public information released by civil aviation "
             "authorities, international organizations, airlines and trusted news outlets, "
@@ -514,7 +514,7 @@ ABOUT = {
         "sections": [
             {"heading": "Our core principles", "blocks": [
                 _sub("Sources before models"),
-                _p("AVWIRE reporting starts from trusted sources, not from a language model."),
+                _p("SKYTICAL reporting starts from trusted sources, not from a language model."),
                 _p("The system first obtains official announcements, press releases, RSS "
                    "feeds, open APIs or trusted media reports, and only then hands the "
                    "collected material to a model. The model may use only the source "
@@ -577,10 +577,10 @@ ABOUT = {
                       "The source publication time",
                       "The time this site compiled the story",
                       "An automated-production label"),
-                _p("The original sources always prevail over AVWIRE's compilation."),
+                _p("The original sources always prevail over SKYTICAL's compilation."),
             ]},
             {"heading": "How models take part", "blocks": [
-                _p("AVWIRE uses language models as tools for organizing information and "
+                _p("SKYTICAL uses language models as tools for organizing information and "
                    "generating text — never as a source of facts."),
                 _p("Models work only from the source material the system provides. They "
                    "may not search the web, and may not fill gaps with background "
@@ -604,7 +604,7 @@ ABOUT = {
                    "exception."),
             ]},
             {"heading": "Models and providers", "blocks": [
-                _p("AVWIRE runs a multi-model architecture to limit the impact of any "
+                _p("SKYTICAL runs a multi-model architecture to limit the impact of any "
                    "single model or vendor failing."),
                 _p("The main model families and providers disclosed publicly are:"),
                 _list("Claude (Anthropic)",
@@ -620,7 +620,7 @@ ABOUT = {
                    "of internal routing."),
             ]},
             {"heading": "Source selection", "blocks": [
-                _p("AVWIRE prefers first-hand sources, or sources with clear editorial "
+                _p("SKYTICAL prefers first-hand sources, or sources with clear editorial "
                    "accountability, such as:"),
                 _list("Civil aviation authorities",
                       "Accident investigation agencies",
@@ -647,7 +647,7 @@ ABOUT = {
                    "system does not generate content to fill space."),
             ]},
             {"heading": "Transparency & open source", "blocks": [
-                _p("AVWIRE's core code is public on GitHub; readers can inspect the "
+                _p("SKYTICAL's core code is public on GitHub; readers can inspect the "
                    "fetching, deduplication, model calls, validation and publishing "
                    "flow."),
                 _pre(_REPO_TREE_EN),
@@ -667,13 +667,13 @@ ABOUT = {
                       "A language model misreading the content",
                       "Sources describing the same event differently",
                       "Coverage or update-latency limits in live data"),
-                _p("When a problem is found, AVWIRE may update, retract or flag the "
+                _p("When a problem is found, SKYTICAL may update, retract or flag the "
                    "content. For anything authoritative, defer to the regulator, "
                    "airline, airport or other original publisher."),
             ]},
         ],
         "disc_title": "Disclaimer",
-        "disclaimer": "AVWIRE is an aviation information compilation service. Nothing on "
+        "disclaimer": "SKYTICAL is an aviation information compilation service. Nothing on "
                       "this site is flight-operations, legal, regulatory-compliance or "
                       "investment advice.",
     },
@@ -687,14 +687,7 @@ FOOTER_ORDER = ["faa", "icao", "iata", "ntsb", "easa", "eurocontrol",
 FOOTER_SOURCES = [{"name": SOURCES[k]["name"], "url": SOURCES[k]["url"]}
                   for k in FOOTER_ORDER if k in SOURCES]
 
-# Favicon: the design's __bundler_thumbnail SVG as a data: URI.
-_FAVICON_SVG = (
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">'
-    '<rect width="120" height="120" fill="#ec3013"/>'
-    '<text x="60" y="72" font-family="Archivo,sans-serif" font-weight="800" '
-    'font-size="34" fill="#f3f2f2" text-anchor="middle">AW</text></svg>'
-)
-FAVICON = "data:image/svg+xml," + quote(_FAVICON_SVG)
+FAVICON = f"{BASE_PATH}/assets/skytical-mark.svg"
 
 
 # ── small helpers ────────────────────────────────────────────────────────────
@@ -1398,7 +1391,7 @@ def collect_briefings():
 def _brief_title(b, lang: str) -> str:
     cfg = _BRIEF_EDITIONS.get(b.get("edition")) or {}
     key = "title_zh_tw" if lang == "zh" else "title_en"
-    return str(cfg.get(key) or b.get("edition_label") or "AVWIRE Briefing")
+    return str(cfg.get(key) or b.get("edition_label") or "SKYTICAL Briefing")
 
 
 def _brief_label(b, lang: str) -> str:
@@ -2294,6 +2287,9 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=Tru
         "zh_abs_url": SITE_ORIGIN + page_url("zh", sub),
         "en_abs_url": SITE_ORIGIN + page_url("en", sub),
         "self_abs_url": SITE_ORIGIN + page_url(lang, sub),
+        "social_image_abs_url": (
+            f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-social.png"
+        ),
         "hreflang": hreflang,
         "home_url": page_url(lang, ""),
         "search_url": page_url(lang, "search/"),
