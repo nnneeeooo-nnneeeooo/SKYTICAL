@@ -41,9 +41,18 @@
   });
   reflectTheme();
 
-  /* — global header search: operate the Google-style clear key — */
+  /* — global header search: random suggestion, submit fallback and clear — */
+  var headerSearchForm = document.getElementById("news-search-form");
   var headerSearchInput = document.getElementById("news-search-input");
   var headerSearchClear = document.getElementById("news-search-clear");
+  function queryFromSearchPlaceholder(value) {
+    return String(value || "")
+      .replace(
+        /^(?:搜尋|查詢|尋找|看看|想看|探索|了解|Search|Explore|Find|Look\s+up|Show\s+me)\s*[：:]?\s*/i,
+        ""
+      )
+      .trim();
+  }
   if (headerSearchInput) {
     try {
       var searchPlaceholders = JSON.parse(
@@ -54,6 +63,17 @@
         headerSearchInput.placeholder = searchPlaceholders[randomPlaceholder];
       }
     } catch (e) { /* keep the server-rendered fallback */ }
+  }
+  if (headerSearchForm && headerSearchInput) {
+    headerSearchForm.addEventListener("submit", function () {
+      if (headerSearchInput.value.trim()) return;
+      var suggestedQuery = queryFromSearchPlaceholder(
+        headerSearchInput.placeholder
+      );
+      if (!suggestedQuery) return;
+      headerSearchInput.value = suggestedQuery;
+      headerSearchInput.dispatchEvent(new Event("input", { bubbles: true }));
+    });
   }
   if (headerSearchInput && headerSearchClear) {
     headerSearchClear.addEventListener("click", function () {

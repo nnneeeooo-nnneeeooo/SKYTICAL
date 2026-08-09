@@ -136,6 +136,12 @@ def main() -> None:
     assert 'getAttribute("data-search-placeholders")' in app_script
     assert "JSON.parse" in app_script
     assert "Math.floor(Math.random() * searchPlaceholders.length)" in app_script
+    assert 'headerSearchForm.addEventListener("submit"' in app_script
+    assert "queryFromSearchPlaceholder" in app_script
+    assert "搜尋|查詢|尋找|看看|想看|探索|了解" in app_script
+    assert "Search|Explore|Find|Look\\s+up|Show\\s+me" in app_script
+    assert "if (headerSearchInput.value.trim()) return" in app_script
+    assert "headerSearchInput.value = suggestedQuery" in app_script
     assert 'headerSearchInput.value = ""' in app_script
     assert 'new Event("input", { bubbles: true })' in app_script
 
