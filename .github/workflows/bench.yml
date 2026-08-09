@@ -14,6 +14,9 @@ on:
       nvidia_model:
         description: "Override AVWIRE_NVIDIA_MODEL for this bench"
         required: false
+      opencode_model:
+        description: "Override AVWIRE_OPENCODE_MODEL for this bench"
+        required: false
 
 permissions:
   contents: read
@@ -35,7 +38,15 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
         run: |
+          if [ -n "$OPENCODE_API_KEY" ]; then
+            echo "== OpenCode Console models =="
+            curl -sf https://console.opencode.ai/inference/openai/v1/models \
+              -H "Authorization: Bearer $OPENCODE_API_KEY" \
+              | python -c 'import json,sys; [print(m["id"]) for m in json.load(sys.stdin).get("data",[])]' \
+              || echo "(model list unavailable)"
+          fi
           if [ -n "$NVIDIA_API_KEY" ]; then
             echo "== NVIDIA models (deepseek/qwen/llama) =="
             curl -sf https://integrate.api.nvidia.com/v1/models \
@@ -56,14 +67,17 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }}
           AVWIRE_GEMINI_MODEL: ${{ inputs.gemini_model || vars.AVWIRE_GEMINI_MODEL }}
           AVWIRE_NVIDIA_MODEL: ${{ inputs.nvidia_model || vars.AVWIRE_NVIDIA_MODEL }}
+          AVWIRE_OPENCODE_MODEL: ${{ inputs.opencode_model || vars.AVWIRE_OPENCODE_MODEL }}
         run: |
           ok=""
           failed=""
-          for p in gemini nvidia anthropic; do
+          for p in opencode gemini nvidia anthropic; do
             case "$p" in
+              opencode)   key="$OPENCODE_API_KEY" ;;
               gemini)    key="$GEMINI_API_KEY" ;;
               nvidia)    key="$NVIDIA_API_KEY" ;;
               anthropic) key="$ANTHROPIC_API_KEY" ;;

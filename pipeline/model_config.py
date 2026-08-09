@@ -15,6 +15,15 @@ DIRECT_MODEL_ORDER = (
     "nvidia:mistralai/mistral-medium-3.5-128b",
 )
 
+OPENCODE_MODEL_ORDER = (
+    "opencode:claude-sonnet-4-6",
+    "opencode:gpt-5.5",
+    "opencode:gemini-3.1-pro",
+    "opencode:qwen3.6-plus",
+    "opencode:glm-5.1",
+    "opencode:kimi-k2.6",
+)
+
 OPENROUTER_MODEL_ORDER = (
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
@@ -36,7 +45,16 @@ OPENROUTER_MODEL_ORDER = (
 # equivalent follows immediately, instead of collecting every OpenRouter
 # model at the end of the chain.
 MODEL_ORDER = (
-    *DIRECT_MODEL_ORDER[:5],
+    OPENCODE_MODEL_ORDER[0],
+    OPENCODE_MODEL_ORDER[1],
+    DIRECT_MODEL_ORDER[0],
+    OPENCODE_MODEL_ORDER[2],
+    OPENCODE_MODEL_ORDER[3],
+    DIRECT_MODEL_ORDER[2],
+    OPENCODE_MODEL_ORDER[4],
+    OPENCODE_MODEL_ORDER[5],
+    DIRECT_MODEL_ORDER[1],
+    *DIRECT_MODEL_ORDER[3:5],
     OPENROUTER_MODEL_ORDER[0],
     *DIRECT_MODEL_ORDER[5:7],
     OPENROUTER_MODEL_ORDER[1],
@@ -47,6 +65,13 @@ MODEL_ORDER = (
 DEFAULT_PROVIDER_ORDER = ",".join(MODEL_ORDER)
 
 MODEL_DISPLAY_NAMES = {
+    "opencode:claude-sonnet-4-6":
+        "OpenCode · Anthropic Claude Sonnet 4.6",
+    "opencode:gpt-5.5": "OpenCode · OpenAI GPT-5.5",
+    "opencode:gemini-3.1-pro": "OpenCode · Google Gemini 3.1 Pro",
+    "opencode:qwen3.6-plus": "OpenCode · Qwen 3.6 Plus",
+    "opencode:glm-5.1": "OpenCode · GLM 5.1",
+    "opencode:kimi-k2.6": "OpenCode · Kimi K2.6",
     "gemini:gemini-3.6-flash": "Google Gemini 3.6 Flash",
     "gemini:gemini-3.5-flash": "Google Gemini 3.5 Flash",
     "nvidia:z-ai/glm-5.2": "NVIDIA GLM 5.2",

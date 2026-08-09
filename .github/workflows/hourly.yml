@@ -42,12 +42,13 @@ jobs:
           # the secret the owner created for it
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           AEROAPI_KEY: ${{ secrets.AEROAPI_KEY }} # optional
           # optional repo variables
           AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }}
           AVWIRE_GEMINI_MODEL: ${{ vars.AVWIRE_GEMINI_MODEL }}
           AVWIRE_NVIDIA_MODEL: ${{ vars.AVWIRE_NVIDIA_MODEL }}
-          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:z-ai/glm-5.2,nvidia:deepseek-ai/deepseek-v4-pro,nvidia:nvidia/nemotron-3-ultra-550b-a55b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:qwen/qwen3.5-397b-a17b,nvidia:nvidia/nemotron-3-super-120b-a12b,openrouter:nvidia/nemotron-3-super-120b-a12b:free,nvidia:mistralai/mistral-medium-3.5-128b,openrouter:google/gemma-4-31b-it:free,openrouter:inclusionai/ling-3.0-flash:free,openrouter:google/gemma-4-26b-a4b-it:free,openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,openrouter:openai/gpt-oss-20b:free,openrouter:nvidia/nemotron-3-nano-30b-a3b:free,openrouter:nvidia/nemotron-nano-12b-v2-vl:free,openrouter:nvidia/nemotron-nano-9b-v2:free,openrouter:poolside/laguna-s-2.1:free,openrouter:cohere/north-mini-code:free,openrouter:poolside/laguna-xs-2.1:free
+          AVWIRE_PROVIDER_ORDER: opencode:claude-sonnet-4-6,opencode:gpt-5.5,gemini:gemini-3.6-flash,opencode:gemini-3.1-pro,opencode:qwen3.6-plus,nvidia:z-ai/glm-5.2,opencode:glm-5.1,opencode:kimi-k2.6,gemini:gemini-3.5-flash,nvidia:deepseek-ai/deepseek-v4-pro,nvidia:nvidia/nemotron-3-ultra-550b-a55b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:qwen/qwen3.5-397b-a17b,nvidia:nvidia/nemotron-3-super-120b-a12b,openrouter:nvidia/nemotron-3-super-120b-a12b:free,nvidia:mistralai/mistral-medium-3.5-128b,openrouter:google/gemma-4-31b-it:free,openrouter:inclusionai/ling-3.0-flash:free,openrouter:google/gemma-4-26b-a4b-it:free,openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,openrouter:openai/gpt-oss-20b:free,openrouter:nvidia/nemotron-3-nano-30b-a3b:free,openrouter:nvidia/nemotron-nano-12b-v2-vl:free,openrouter:nvidia/nemotron-nano-9b-v2:free,openrouter:poolside/laguna-s-2.1:free,openrouter:cohere/north-mini-code:free,openrouter:poolside/laguna-xs-2.1:free
           # freshness window (hours); code default 120, validated 24-336
           NEWS_MAX_AGE_HOURS: ${{ vars.NEWS_MAX_AGE_HOURS }}
           # private usage-dashboard URL token (page skipped when unset)
@@ -86,7 +87,7 @@ jobs:
               exit 1
             fi
           }
-          scan "nvapi-[A-Za-z0-9_-]{16,}|AIza[0-9A-Za-z_-]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|sk-or-v1-[A-Za-z0-9_-]{16,}|Bearer [A-Za-z0-9_./+-]{20,}" "secret-like string"
+          scan "nvapi-[A-Za-z0-9_-]{16,}|AIza[0-9A-Za-z_-]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|sk-or-v1-[A-Za-z0-9_-]{16,}|oc_sk_[A-Za-z0-9_-]{16,}|Bearer [A-Za-z0-9_./+-]{20,}" "secret-like string"
           scan "reasoning_content|<think>" "reasoning trace"
           echo "scan: site/ and data/ clean"
 
