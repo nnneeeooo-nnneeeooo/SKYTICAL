@@ -52,6 +52,31 @@
     });
   }
 
+  /* — mobile navigation: compact by default, keyboard and screen-reader safe — */
+  var navToggle = document.querySelector("[data-nav-toggle]");
+  var siteNav = document.getElementById("site-nav");
+  function setNavOpen(open) {
+    if (!navToggle || !siteNav) return;
+    siteNav.classList.toggle("is-open", open);
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    navToggle.querySelector(".nav-toggle-icon").textContent = open ? "×" : "☰";
+  }
+  if (navToggle && siteNav) {
+    navToggle.addEventListener("click", function () {
+      setNavOpen(navToggle.getAttribute("aria-expanded") !== "true");
+    });
+    siteNav.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setNavOpen(false);
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") setNavOpen(false);
+    });
+    var desktopNav = window.matchMedia("(min-width: 721px)");
+    desktopNav.addEventListener("change", function (event) {
+      if (event.matches) setNavOpen(false);
+    });
+  }
+
   /* — home: category filter over feed rows ([data-cat]) — */
   var catBtns = Array.prototype.slice.call(document.querySelectorAll("[data-filter-cat]"));
   catBtns.forEach(function (b) {
