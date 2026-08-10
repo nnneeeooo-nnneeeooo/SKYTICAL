@@ -72,6 +72,7 @@ def main() -> None:
         added_airline_codes = {
             "ABL": "BX",
             "AHK": "LD",
+            "CXA": "MF",
             "CSZ": "ZH",
             "CYZ": "CF",
             "ESR": "ZE",
@@ -79,6 +80,7 @@ def main() -> None:
             "MXD": "OD",
             "SPQ": "9G",
             "TVJ": "VZ",
+            "UEA": "EU",
         }
         assert {
             code: airline_codes[code] for code in added_airline_codes
@@ -95,6 +97,7 @@ def main() -> None:
         expected_names = {
             "ABL": ("BX", "釜山航空", "Air Busan"),
             "AHK": ("LD", "香港華民航空", "Air Hong Kong"),
+            "CXA": ("MF", "廈門航空", "Xiamen Airlines"),
             "CSZ": ("ZH", "深圳航空", "Shenzhen Airlines"),
             "CYZ": ("CF", "中國郵政航空", "China Postal Airlines"),
             "ESR": ("ZE", "易斯達航空", "Eastar Jet"),
@@ -102,6 +105,7 @@ def main() -> None:
             "MXD": ("OD", "馬來西亞峇迪航空", "Batik Air Malaysia"),
             "SPQ": ("9G", "太陽富國航空", "Sun PhuQuoc Airways"),
             "TVJ": ("VZ", "泰國越捷航空", "Thai Vietjet Air"),
+            "UEA": ("EU", "成都航空", "Chengdu Airlines"),
         }
         for icao_code, (iata_code, zh_name, en_name) in expected_names.items():
             expected_name = zh_name if page == zh else en_name
