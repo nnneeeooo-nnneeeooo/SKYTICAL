@@ -215,9 +215,14 @@
     const configuredIata = clean(airlineIataCodes[row.operator], 3).toUpperCase();
     const rawIata = /^[A-Z0-9]{2}[0-9]/.test(row.callsign) ?
       row.callsign.slice(0, 2) : "";
-    const iataPrefix = clean(routeCallsign, 16).slice(0, 2) ||
-      configuredIata || rawIata;
-    return airlineIataNames[iataPrefix] || "";
+    const iataCandidates = [
+      clean(routeCallsign, 16).slice(0, 2), configuredIata, rawIata,
+    ];
+    for (const iataPrefix of iataCandidates) {
+      const airlineName = airlineIataNames[iataPrefix];
+      if (airlineName) return airlineName;
+    }
+    return "";
   }
 
   function airportCode(airport) {
