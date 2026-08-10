@@ -1,5 +1,322 @@
 [
   {
+    "id": "g-20260810-1748-1",
+    "queuedUtc": "2026-08-10T17:48Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.5-flash",
+    "decisionReason": "The report includes Tigerair Taiwan signing an MOU with Pratt & Whitney's IAE for engine procurement, which constitutes a major future equipment order commitment.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Starlux Airlines reported July 2026 revenue of NTD 5.729 billion, a 43% year-on-year increase, with cumulative revenues for the first seven months reaching NTD 34.282 billion.",
+        "sourceQuote": "星宇航空7月營收新台幣57.29億元，月增8%，年增43%。前7月累計營收342.82億元，年成長32%。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Starlux Airlines launched its Taipei-Prague route on August 1 using A350-900 aircraft, and plans to upgrade to A350-1000 in September.",
+        "sourceQuote": "自8月1日起，星宇航空開航首條歐洲航線「台北-布拉格」航線，開航初期以A350-900執飛、每週營運三班，自9月起升級為A350-1000",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Tigerair Taiwan reported July revenue of NTD 1.77 billion, a 27% increase year-on-year, with a passenger load factor of 92%.",
+        "sourceQuote": "台灣虎航7月自結單月營收17.7億元，年增27%，創同期新高，主因為適逢暑期旺季，7月平均載客率寫下92%的好成績。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Tigerair Taiwan signed an MOU with Pratt & Whitney's IAE for engine procurement and maintenance for its upcoming A321neo fleet to be introduced from 2028.",
+        "sourceQuote": "台灣虎航已與普惠（Pratt & Whitney）旗下IAE公司簽署合作備忘錄，針對2028年起引進的第3代A321neo機隊進行發動機採購與維護合作。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report includes Tigerair Taiwan signing an MOU with Pratt & Whitney's IAE for engine procurement, which constitutes a major future equipment order commitment.",
+      "cat": "biz",
+      "zh": {
+        "title": "星宇與台灣虎航7月營收大增並推進機隊布局",
+        "summary": "星宇航空與台灣虎航7月營收大增；虎航與普惠簽署發動機合作備忘錄",
+        "body": [
+          "星宇航空公布2026年7月營收達新台幣57.29億元，月增8%、年增43%，創下同期新高。今年前7個月累計營收達342.82億元，年成長32%。此外，星宇航空於8月1日正式開航台北-布拉格航線，並計劃於9月將執飛機型升級為A350-1000。",
+          "台灣虎航7月營收為17.7億元，年增27%，平均載客率達92%。為利於長遠航網擴張，台灣虎航已與普惠旗下IAE公司簽署合作備忘錄，針對預計於2028年起引進的第3代A321neo機隊，進行發動機採購與維護合作。"
+        ]
+      },
+      "en": {
+        "title": "Starlux Airlines and Tigerair Taiwan Report Strong July Revenues and Fleet Developments",
+        "summary": "Starlux Airlines and Tigerair Taiwan reported substantial revenue growth in July, supported by high summer travel demand.",
+        "body": [
+          "Starlux Airlines reported a July revenue of NTD 5.729 billion, representing an 8% monthly increase and a 43% year-on-year growth. The airline's cumulative revenue for the first seven months reached NTD 34.282 billion, up 32%. In fleet and route updates, Starlux launched its Taipei-Prague service on August 1 and plans to upgrade the flight equipment to Airbus A350-1000 in September.",
+          "Tigerair Taiwan generated NTD 1.77 billion in July revenue, a 27% increase year-on-year, achieving an average passenger load factor of 92%. To support its network expansion, the carrier signed a memorandum of understanding with Pratt & Whitney's IAE to cooperate on engine procurement and maintenance for its third-generation Airbus A321neo fleet, which will be introduced starting in 2028."
+        ]
+      },
+      "flash": {
+        "zh": "星宇航空與台灣虎航7月營收大增，並推進機隊布局。",
+        "en": "Starlux and Tigerair Taiwan post strong July revenues.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Starlux Airlines reported July 2026 revenue of NTD 5.729 billion, a 43% year-on-year increase, with cumulative revenues for the first seven months reaching NTD 34.282 billion.",
+          "sourceQuote": "星宇航空7月營收新台幣57.29億元，月增8%，年增43%。前7月累計營收342.82億元，年成長32%。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Starlux Airlines launched its Taipei-Prague route on August 1 using A350-900 aircraft, and plans to upgrade to A350-1000 in September.",
+          "sourceQuote": "自8月1日起，星宇航空開航首條歐洲航線「台北-布拉格」航線，開航初期以A350-900執飛、每週營運三班，自9月起升級為A350-1000",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Tigerair Taiwan reported July revenue of NTD 1.77 billion, a 27% increase year-on-year, with a passenger load factor of 92%.",
+          "sourceQuote": "台灣虎航7月自結單月營收17.7億元，年增27%，創同期新高，主因為適逢暑期旺季，7月平均載客率寫下92%的好成績。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Tigerair Taiwan signed an MOU with Pratt & Whitney's IAE for engine procurement and maintenance for its upcoming A321neo fleet to be introduced from 2028.",
+          "sourceQuote": "台灣虎航已與普惠（Pratt & Whitney）旗下IAE公司簽署合作備忘錄，針對2028年起引進的第3代A321neo機隊進行發動機採購與維護合作。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Pratt & Whitney",
+          "IAE"
+        ],
+        "airlines": [
+          "星宇航空",
+          "台灣虎航"
+        ],
+        "aircraft_models": [
+          "A350-900",
+          "A350-1000",
+          "A321neo"
+        ],
+        "airports": [],
+        "locations": [
+          "台北",
+          "布拉格"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-10",
+          "7月",
+          "8月1日",
+          "9月",
+          "10月1日",
+          "2028年"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260810-1748-1",
+      "primarySource": "中央社 CNA 產經證券",
+      "items": [
+        {
+          "title": "星宇航空7月營收成長43% 虎航看好客運旺到年底",
+          "url": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "publishedUtc": "2026-08-10T12:47Z",
+          "summary": "（中央社記者江明晏台北10日電）星宇航空7月營收年增43%，受惠暑假旅遊旺季，貨運也因AI及雲端基礎設施投資動能延續；台灣虎航7月營收創同期新高，看好今年客運需求持續暢旺至年底。",
+          "image": null,
+          "source": "中央社 CNA 產經證券",
+          "sourceKey": "cnataiwanfinance"
+        },
+        {
+          "title": "星宇航空7月營收成長43% 虎航看好客運旺到年底",
+          "url": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "publishedUtc": "2026-08-10T12:47Z",
+          "summary": "星宇航空,台灣虎航,台北-布拉格,空山銀,空山金,普惠|Pratt & Whitney,IAE",
+          "image": null,
+          "source": "中央社 CNA 國籍航空",
+          "sourceKey": "cnataiwanairlines"
+        },
+        {
+          "title": "星宇航空7月營收成長43%　虎航看好客運旺到年底",
+          "summary": "星宇航空7月營收成長43% 虎航看好客運旺到年底 &nbsp;&nbsp; 經濟日報",
+          "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE02M0tmLXUwRkNYWi1QQWR3Tzg1NW5JTUt1Q0lmVDQxN2xETFdsSEpiZW1waVk0RTdGc3RncDJMWnRkRmhmdlNhYnp3N2Q5dktMSl9UZ3QycF82eHRFVUduSlNmUnJwMHdhUE02ZDBlX3ViYURZdjltc0Vtb9IBX0FVX3lxTE5MaTZOZ2E3Znk0aGJ1OGxsdktXTld4dms2NUZzdXlXd1ctZ3h1am9NN2VpRkFGc251c3BjVnJlYUVKWE1pRVRSbnR5RFNBa08tT0pHd2pUQ0tDMlM3aFo0?oc=5",
+          "source": "經濟日報",
+          "companion": true,
+          "publishedUtc": "2026-08-10T12:55Z"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260727-0838-presidential-office-rejects-show-claim-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: 中央社",
+              "archive predates source by 14 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 14 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍",
+            "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+            "facts": [
+              {
+                "claim": "Media reported that President Lai’s inspection during the Han Kuang exercise was a \"show\".",
+                "source_quote": "有媒體報導稱總統賴清德在漢光演習期間安排視導是「作秀」",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The Presidential Office stated that, as commander‐in‐chief, the President’s inspection of a major drill is a responsibility and an obligation.",
+                "source_quote": "作為三軍統帥，總統在國軍重要演訓期間參與視導，是責任也是義務",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The spokesperson called the \"show\" accusation speculation, a distortion of views, and a defamation of the military and national defence.",
+                "source_quote": "所謂「作秀」之說，內容多屬臆測、觀點扭曲，更污名化國軍與國防，令人遺憾",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Heads of state attending major military exercises is standard practice in Europe, the US, Japan and South Korea.",
+                "source_quote": "國家元首參與國家重大軍事演訓，無論歐、美、日、韓等國，國際皆然",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Since Han Kuang 40 the drills have been unscripted and realistic; the President’s visit was scheduled by the Ministry of National Defense according to the exercise progress, with no arranged \"firepower show\".",
+                "source_quote": "自漢光40號演習起，即採取「無劇本、實戰化」演練。總統參與視導，亦由國防部依照演習進程適時規劃，不存在所謂安排「火力秀」的問題",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Accusations of shifting opposition attacks or staging a performance for voters are baseless and unfair to personnel strengthening defence.",
+                "source_quote": "至於所謂「轉移在野攻擊」、「作秀給選民看」等無端指控，對此刻正為強化國防、守護國家而努力的所有人員極不公平",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260806-1215-typhoon-white-dolphin-prompts-china-airl",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: 中央社, 星宇航空",
+              "archive predates source by 5 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
+            "event_date": "2026-08-05",
+            "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動",
+            "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+            "facts": [
+              {
+                "claim": "中華航空因颱風白海豚調整2026年8月6日至8日往返沖繩航班,共取消14架次,部分架次提前、延後或放大機型。",
+                "source_quote": "華航公布明起至8日飛沖繩航班異動，14架次取消，部分架次提前、延後或放大機型",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              },
+              {
+                "claim": "星宇航空調整8月6日至7日台灣往返沖繩航班,其中6日取消2架次,7日航班全數取消。",
+                "source_quote": "星宇航空明天6架次異動，包含2架次取消，7日往返沖繩航班全取消。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              },
+              {
+                "claim": "華航取消之航班包括8月6日CI122/CI123,7日CI120/CI121、CI122/CI123、CI310/CI311、CI2132/CI2133、CI132/CI133,以及8日CI310/CI311。",
+                "source_quote": "航班取消包括6日CI122/CI123桃園往返沖繩、7日CI120/CI121、CI122/CI123桃園往返沖繩、CI310/CI311台中往返沖繩、CI2132/ CI2133、 CI132/CI133高雄往返沖繩、8月8日CI310/CI311台中往返沖繩。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              },
+              {
+                "claim": "星宇航空調整部分8月6日航班,包括JX870、JX871、JX302、JX303提前起飛。",
+                "source_quote": "台北-沖繩JX870提前至上午9時起飛，沖繩-台北JX871提前至中午12時50分起飛，台中-沖繩JX302提前至上午8時起飛，沖繩-台中JX303提前至上午11時30分起飛。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260807-0009-typhoon-white-dolphin-prompts-flight-adj",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: 台灣虎航, 星宇航空",
+              "archive predates source by 3 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
+            "event_date": "2026-08-07",
+            "source_name": "中央社 CNA 國籍航空 — 颱風白海豚影響 飛沖繩航班異動多",
+            "source_url": "https://www.cna.com.tw/news/ahel/202608070246.aspx",
+            "facts": [
+              {
+                "claim": "受到颱風白海豚影響,台灣國籍航空2026年8月8日飛往沖繩多數航班取消。",
+                "source_quote": "受到颱風白海豚影響，國籍航空明天飛往沖繩多數航班取消，提醒旅客出發前留意航班動態。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608070246.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚影響 飛沖繩航班異動多"
+              },
+              {
+                "claim": "台灣虎航取消8月8日桃園、高雄往返沖繩那霸以及桃園往返石垣島的航班。",
+                "source_quote": "明天IT230/IT231/IT232/IT233桃園往返沖繩那霸、IT288/IT289高雄往返沖繩那霸及IT736/IT737桃園往返石垣島航班取消",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608070246.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚影響 飛沖繩航班異動多"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260810-1517-1",
     "queuedUtc": "2026-08-10T15:17Z",
     "approve": false,
@@ -9764,206 +10081,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260807-0728-5",
-    "queuedUtc": "2026-08-07T07:28Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.5-flash",
-    "decisionReason": "The article reports on a major corporate acquisition agreement and fleet expansion plans of a prominent global aircraft lessor, which involves significant financial and fleet size claims.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "DAE's aircraft leasing business represents about 85% of its operations, with the remainder being its engineering business.",
-        "sourceQuote": "The leasing business today is, I would say, about 85% of our business, and the engineering business is the remainder of that.",
-        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "DAE's current leasing fleet consists of about 700 aircraft.",
-        "sourceQuote": "On the leasing side, our fleet today is about 700 aircraft",
-        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "When the Macquarie acquisition closes, DAE's fleet will exceed 1,000 aircraft and serve 80 to 85 countries.",
-        "sourceQuote": "So, when that transaction closes, our fleet will be in excess of 1000 aircraft, allowing us to serve customers in like 80-85 countries.",
-        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "DAE previously expanded through the acquisitions of Nordic Aviation Capital in 2025 and Macquarie AirFinance in 2026.",
-        "sourceQuote": "particularly after the acquisition of two well-established players, Nordic Aviation Capital (NAC) and Macquarie AirFinance (MAF) in 2025 and 2026, respectively.",
-        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "DAE's fleet strategy focuses on narrowbody and one widebody product from Boeing and Airbus, alongside ATR72-600 and Boeing 777 freighters.",
-        "sourceQuote": "In fact, we will focus on narrowbody and one widebody product from Boeing and Airbus each, and then two unique aircraft types,",
-        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The article reports on a major corporate acquisition agreement and fleet expansion plans of a prominent global aircraft lessor, which involves significant financial and fleet size claims.",
-      "cat": "biz",
-      "zh": {
-        "title": "DAE執行長接受AeroTime專訪 表示收購完成後機隊將突破千架",
-        "summary": "杜拜航空企業（DAE）執行長 Firoz Tarapore 接受 AeroTime 專訪指出，該公司目前擁有約 700 架飛機，而在完成對 Macquarie AirFinance 的收購後，其機隊規模將突破 1,000 架。目前飛機租賃業務約佔 DAE 整體業務的 85%，其餘則為機身維修與保養業務。",
-        "body": [
-          "杜拜航空企業（DAE）執行長 Firoz Tarapore 接受 AeroTime 專訪時表示，該公司的飛機租賃業務目前約佔其整體營運的 85%，其餘的業務則為機身重度維修與工程服務。",
-          "Tarapore 指出，DAE 目前管理約 700 架飛機。在完成對 Macquarie AirFinance 的收購後，其託管機隊總數將突破 1,000 架，可服務多達 85 個國家的客戶。此外，該公司的機隊策略聚焦於波音與空中巴士的窄體機、單一寬體機機型，以及 ATR72-600 與波音 777 貨機。"
-        ]
-      },
-      "en": {
-        "title": "DAE Fleet Set to Exceed 1,000 Aircraft After Macquarie Acquisition",
-        "summary": "In an exclusive interview with AeroTime, Dubai Aerospace Enterprise (DAE) Chief Executive Officer Firoz Tarapore discussed the company's growth strategy. DAE currently operates a fleet of approximately 700 aircraft. Upon the closing of its announced agreement to acquire Macquarie AirFinance, DAE's total fleet is expected to exceed 1,000 aircraft. This transaction will expand DAE's global reach to customers in over 80 countries. Currently, aircraft leasing represents about 85% of DAE's business, while airframe maintenance services make up the remainder.",
-        "body": [
-          "Speaking to AeroTime, Dubai Aerospace Enterprise (DAE) CEO Firoz Tarapore stated that aircraft leasing accounts for approximately 85% of the company's business, with airframe maintenance services making up the remainder.",
-          "Tarapore noted that DAE's current fleet comprises about 700 aircraft. Once the recently announced agreement to acquire Macquarie AirFinance officially closes, the lessor's total fleet will exceed 1,000 aircraft, enabling DAE to serve customers across 80 to 85 countries. DAE previously expanded its regional aircraft portfolio through the acquisition of Nordic Aviation Capital. Additionally, the company's fleet strategy focuses on narrowbody and single widebody models from Boeing and Airbus, alongside the ATR72-600 and factory fresh Boeing 777 freighters."
-        ]
-      },
-      "flash": {
-        "zh": "DAE執行長預計收購完成後機隊將突破千架",
-        "en": "DAE Fleet Expected to Exceed 1,000 Aircraft After Macquarie Acquisition",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "DAE's aircraft leasing business represents about 85% of its operations, with the remainder being its engineering business.",
-          "sourceQuote": "The leasing business today is, I would say, about 85% of our business, and the engineering business is the remainder of that.",
-          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "DAE's current leasing fleet consists of about 700 aircraft.",
-          "sourceQuote": "On the leasing side, our fleet today is about 700 aircraft",
-          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "When the Macquarie acquisition closes, DAE's fleet will exceed 1,000 aircraft and serve 80 to 85 countries.",
-          "sourceQuote": "So, when that transaction closes, our fleet will be in excess of 1000 aircraft, allowing us to serve customers in like 80-85 countries.",
-          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "DAE previously expanded through the acquisitions of Nordic Aviation Capital in 2025 and Macquarie AirFinance in 2026.",
-          "sourceQuote": "particularly after the acquisition of two well-established players, Nordic Aviation Capital (NAC) and Macquarie AirFinance (MAF) in 2025 and 2026, respectively.",
-          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "DAE's fleet strategy focuses on narrowbody and one widebody product from Boeing and Airbus, alongside ATR72-600 and Boeing 777 freighters.",
-          "sourceQuote": "In fact, we will focus on narrowbody and one widebody product from Boeing and Airbus each, and then two unique aircraft types,",
-          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Dubai Aerospace Enterprise",
-          "DAE",
-          "Nordic Aviation Capital",
-          "NAC",
-          "Macquarie AirFinance",
-          "MAF",
-          "IATA",
-          "Boeing",
-          "Airbus"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "ATR72-600",
-          "B777"
-        ],
-        "airports": [],
-        "locations": [
-          "Dubai",
-          "Amman",
-          "Jordan",
-          "Rio de Janeiro"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2025",
-          "2026",
-          "June 6-8, 2026",
-          "2026-08-07"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-0728-5",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Dubai Aerospace Enterprise CEO on becoming a top-tier global aircraft lessor",
-          "url": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "publishedUtc": "2026-08-07T03:00Z",
-          "summary": "Over the last couple of decades, the Middle East has emerged as the new “center of gravity” for… The post Dubai Aerospace Enterprise CEO on becoming a top-tier global aircraft lessor appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
