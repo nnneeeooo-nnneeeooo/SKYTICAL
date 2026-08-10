@@ -6,10 +6,206 @@
   "entries": [
     {
       "date": "2026-08-10",
-      "kind": "design",
+      "kind": "editorial",
       "commit": null,
+      "zh": "補齊 7 月 29 日至 8 月 10 日的重要網站功能、編輯流程與介面更新紀錄。",
+      "en": "Backfilled significant site, editorial workflow and interface changes from 29 July through 10 August."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "design",
+      "commit": "766b4e44c66ec9b5b17c8f1ba98988d5984e0ca5",
+      "zh": "新聞摘要改為只顯示於首頁，內頁保留正文與搜尋引擎描述。",
+      "en": "Limited visible news summaries to the homepage while retaining article text and search metadata."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "fix",
+      "commit": "b62f106f82b4a9de84c606cbe29aa49774e104ea",
+      "zh": "修正摘要拆開人名、遺漏事件與只留下孤立關鍵字的問題。",
+      "en": "Prevented summaries from splitting names, dropping the event or leaving isolated keywords."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "feature",
+      "commit": "68ba63c955bf358d5e9d0256ebf8c992f46c6390",
+      "zh": "首頁加入 Apple 風格重點摘要，快速呈現航空公司、地點、時間與影響。",
+      "en": "Added Apple-style homepage summaries covering the operator, place, time and impact at a glance."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "feature",
+      "commit": "97af30c555feea29e6933a71d52b46d47486aa81",
+      "zh": "從搜尋結果開啟新聞時，短暫標示查詢關鍵字及其別名。",
+      "en": "Added brief in-article highlighting for search terms and their aliases after opening a result."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "design",
+      "commit": "b739f1f6f4d14786fc26ff5e6d43cc3fc32eae3b",
+      "zh": "將 Google 風格新聞搜尋欄移至全站頁首。",
+      "en": "Moved the Google-style news search field into the global site header."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "feature",
+      "commit": "4d92c552432409abb40e542e31a838fe8bbb4902",
+      "zh": "新聞搜尋加入航空公司簡稱與正式名稱的別名比對。",
+      "en": "Added airline short-name and formal-name alias matching to news search."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "feature",
+      "commit": "e51a50d5bdcd06ce27749c2380af6121bd1ad71f",
+      "zh": "搜尋欄依每日新聞內容產生即時搜尋提示。",
+      "en": "Added search suggestions generated from each day's published news."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "fix",
+      "commit": "1c34ad01d0bd3c67f1dddab5ee4ff4cbc766872a",
+      "zh": "更換華航舊機配圖，並限制通用航空照片的年代差距。",
+      "en": "Replaced an outdated China Airlines image and limited the age gap for generic aircraft photos."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "fix",
+      "commit": "f361a47b34f1fda9a8df68ba80849070fa69e3e8",
+      "zh": "加強航空公司與機型配圖一致性檢查，避免錯配其他業者照片。",
+      "en": "Strengthened airline and aircraft image matching to prevent unrelated operator photos."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "editorial",
+      "commit": "bd3e36235c527d11e00bd01bb22fb186911b44db",
+      "zh": "加強稀有航機的航空公司、所屬地區、機型與航線背景辨識。",
+      "en": "Improved rare-aircraft identification with operator, region, model and route context."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "feature",
+      "commit": "4c1f36e611f33434da1ca2561375e9b4ab37606d",
+      "zh": "新聞文末顯示實際使用的撰稿模型。",
+      "en": "Added the actual drafting model used to each article footer."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "editorial",
+      "commit": "0a6cfb25e11f034a5789288c0578edfbbe602b7f",
+      "zh": "撰稿規則要求保留新聞涉及機場的 IATA 代碼。",
+      "en": "Updated drafting rules to preserve IATA codes for airports named in a story."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "editorial",
+      "commit": "96c755a8526f7eb64b8a45917f4671f65d540975",
+      "zh": "精簡新聞內文並禁止加入讀者不需要的資料處理與編輯流程敘述。",
+      "en": "Tightened article copy and banned reader-irrelevant descriptions of data and editorial processing."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "fix",
+      "commit": "3b0abbcc37ca94a867b7df08052c9acbc3348c06",
+      "zh": "修正 iPhone 版面、導覽與新聞列表的響應式顯示。",
+      "en": "Corrected responsive layout, navigation and news-list display on iPhone."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "design",
+      "commit": "7ab6038e6fb68cefbf3d4c0703c568a4d61dab12",
+      "zh": "改善手機版 LIVE 快訊的字型大小與捲動速度。",
+      "en": "Improved the typography and scrolling speed of the mobile LIVE ticker."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "fix",
+      "commit": "75399e0310b545baa21f60c652f366e533b0cb51",
+      "zh": "補齊多家航空公司的航班雷達代碼對照。",
+      "en": "Completed additional airline-code mappings used by the live flight radar."
+    },
+    {
+      "date": "2026-08-10",
+      "kind": "design",
+      "commit": "922d70dfc6162668c848e74b9e4b5a4df33a2c30",
       "zh": "網站品牌更新為 SKYTICAL，套用新 Logo 與標語「SKYLINE TO AVIATION NEWS」。",
       "en": "Rebranded the site as SKYTICAL with its new logo and the tagline “SKYLINE TO AVIATION NEWS.”"
+    },
+    {
+      "date": "2026-08-06",
+      "kind": "feature",
+      "commit": "22c2c7831d79cc3280cc8cfeb7b277d1be87caa3",
+      "zh": "透過中央社網站索引擴充台灣航空新聞來源。",
+      "en": "Expanded Taiwan aviation coverage through CNA's published site index."
+    },
+    {
+      "date": "2026-08-06",
+      "kind": "editorial",
+      "commit": "5708b11987dd791000a942d590edb1258bf6adf0",
+      "zh": "提高台灣航空公司與本地民航新聞的收錄優先度。",
+      "en": "Raised the collection priority of Taiwan airlines and local civil-aviation news."
+    },
+    {
+      "date": "2026-08-05",
+      "kind": "fix",
+      "commit": "0d6dc9ff3f0d733f74bdfbeabffac5c97b54aefb",
+      "zh": "改善航班雷達的班號與航空公司代碼辨識。",
+      "en": "Improved flight-number and airline-code recognition on the live radar."
+    },
+    {
+      "date": "2026-08-05",
+      "kind": "fix",
+      "commit": "71d318d6cc1364123d54fa3a4ffcb230fc86180d",
+      "zh": "補齊航班雷達顯示的航空公司中文名稱。",
+      "en": "Completed Chinese airline names displayed by the live flight radar."
+    },
+    {
+      "date": "2026-07-31",
+      "kind": "feature",
+      "commit": "f2af0b724e659510dc7f196e323e724273784dc9",
+      "zh": "人工撰稿工作台加入一鍵發布、人工翻譯與文章排序控制。",
+      "en": "Added one-click publishing, manual translation and article ordering to the private authoring workbench."
+    },
+    {
+      "date": "2026-07-31",
+      "kind": "feature",
+      "commit": "3b2ee6e52bf9e9d48fe223e1fb0d9469935788f5",
+      "zh": "人工撰稿模式加入來源發布時間自動辨識。",
+      "en": "Added automatic source publication-time detection to manual authoring."
+    },
+    {
+      "date": "2026-07-30",
+      "kind": "editorial",
+      "commit": "22f96f0843eeefd492dec3a0369c56d7cd2ec3ab",
+      "zh": "改善跨來源事件合併，讓同一新聞的補充資訊能共同支援撰稿。",
+      "en": "Improved cross-source event enrichment so related reports can jointly support drafting."
+    },
+    {
+      "date": "2026-07-30",
+      "kind": "feature",
+      "commit": "228aef5a95a2c480cda8ce067071be537e398c30",
+      "zh": "新增 Aerospace Global News 航空新聞來源。",
+      "en": "Added Aerospace Global News as an aviation news source."
+    },
+    {
+      "date": "2026-07-30",
+      "kind": "feature",
+      "commit": "ed12f591b06a388aa0dabb32551b7707d2547f5f",
+      "zh": "新增 AeroTime 航空新聞來源。",
+      "en": "Added AeroTime as an aviation news source."
+    },
+    {
+      "date": "2026-07-30",
+      "kind": "feature",
+      "commit": "6fae3542078af08e43b9739546736c48e1105fb8",
+      "zh": "新增加密的私人人工撰稿工作台與審核流程。",
+      "en": "Added an encrypted private manual-drafting workbench and review flow."
+    },
+    {
+      "date": "2026-07-30",
+      "kind": "system",
+      "commit": "026dd73cfc901ea6928753e3048cccb8a90ca354",
+      "zh": "建立撰稿模型優先順序與品質設定檔。",
+      "en": "Configured drafting-model priority and quality profiles."
     },
     {
       "date": "2026-07-30",
@@ -17,6 +213,20 @@
       "commit": null,
       "zh": "私人 API 用量頁新增模型失敗、備援切換、各階段耗時與最近 30 天執行紀錄。",
       "en": "Added thirty-day model execution history, failure diagnostics, fallback routing and stage timing to the private API usage dashboard."
+    },
+    {
+      "date": "2026-07-29",
+      "kind": "feature",
+      "commit": "858315809c40637548bec4b17b51bc35e7e0823c",
+      "zh": "新增人工新聞部署流程，支援經覆核文章獨立發布。",
+      "en": "Added a manual article deployment workflow for independently publishing reviewed stories."
+    },
+    {
+      "date": "2026-07-29",
+      "kind": "fix",
+      "commit": "499af3d5040dabc339074980b53938bc72045d94",
+      "zh": "修正並回填每日快報頁面。",
+      "en": "Corrected and backfilled the Daily Briefing pages."
     },
     {
       "date": "2026-07-28",
