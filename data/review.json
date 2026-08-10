@@ -1,5 +1,666 @@
 [
   {
+    "id": "g-20260810-1517-1",
+    "queuedUtc": "2026-08-10T15:17Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Report contains financial performance metrics and an engine procurement memorandum of understanding (MOU) requiring editorial verification.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "星宇航空2026年7月營收為新台幣57.29億元，月增8%、年增43%，前7月累計營收達342.82億元。",
+        "sourceQuote": "星宇航空7月營收新台幣57.29億元，月增8%，年增43%。前7月累計營收342.82億元，年成長32%。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "台灣虎航2026年7月單月營收為17.7億元，年增27%，創同期新高，前7月累計營收達120.95億元。",
+        "sourceQuote": "台灣虎航7月自結單月營收17.7億元，年增27%，創同期新高",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "星宇航空7月客運營收為45.08億元，月增11%、年增42%；貨運營收為6.84億元，年增43%。",
+        "sourceQuote": "7月客運營收45.08億元，月增11%、年增42%，受惠暑假旅遊旺季，市場需求持續暢旺。貨運方面，7月貨運營收為6.84億元",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "星宇航空於8月1日開航台北往返布拉格航線，初期以A350-900執飛，並於7月完成首架彩繪機交付。",
+        "sourceQuote": "自8月1日起，星宇航空開航首條歐洲航線「台北-布拉格」航線，開航初期以A350-900執飛",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "台灣虎航7月平均載客率達92%，前7月累計平均載客率達91%，班次數年增12%。",
+        "sourceQuote": "7月平均載客率寫下92%的好成績。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "台灣虎航與普惠旗下IAE公司簽署合作備忘錄，針對2028年起引進之A321neo機隊進行發動機採購與維護合作。",
+        "sourceQuote": "台灣虎航已與普惠（Pratt & Whitney）旗下IAE公司簽署合作備忘錄，針對2028年起引進的第3代A321neo機隊進行發動機採購與維護合作。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Report contains financial performance metrics and an engine procurement memorandum of understanding (MOU) requiring editorial verification.",
+      "cat": "biz",
+      "zh": {
+        "title": "星宇航空與台灣虎航公布7月營收受惠暑期旺季大幅成長",
+        "summary": "星宇航空與台灣虎航7月營收顯著成長；暑期旅遊熱絡帶動客運表現",
+        "body": [
+          "受惠於暑期旅遊旺季表現暢旺，星宇航空與台灣虎航於2026年8月10日公布7月營收數據，雙雙寫下顯著成長成績。星宇航空7月單月營收達到新台幣57.29億元，月增8%、年增43%；今年前7個月累計營收則為342.82億元，較去年同期成長32%。",
+          "在星宇航空營收結構中，7月客運營收為新台幣45.08億元，月增11%、年增42%，顯示夏季暑期旺季客運市場需求相當強勁。貨運方面，7月貨運營收為6.84億元，年增43%，主要受惠於人工智慧（AI）與雲端基礎設施投資動能持續，帶動高價值電子相關產品需求維持高檔。",
+          "機隊與航網規劃方面，星宇航空於7月完成首架「空山銀」彩繪機交付，預計8月加入第2架「空山金」彩繪機以擴充運能。此外，星宇航空自8月1日起正式開航台北往返布拉格航線，初期以A350-900機型執飛每週3班，預計9月升級為A350-1000機型，並規劃於10月1日起增加為每週4班。",
+          "台灣虎航方面，7月自結單月營收達到17.7億元，年增27%，創下歷史同期新高，平均載客率達到92%。今年前7個月累計營收為120.95億元，年增23%，累計航班數較去年同期增加12%，平均載客率達91%新高。台灣虎航對年底前的客運需求保持樂觀，並已與普惠（Pratt & Whitney）旗下IAE公司簽署合作備忘錄，針對2028年起引進之第3代A321neo機隊進行發動機採購與維護合作。"
+        ]
+      },
+      "en": {
+        "title": "Starlux Airlines and Tigerair Taiwan Report Strong July Revenue Growth",
+        "summary": "Starlux Airlines and Tigerair Taiwan reported strong July revenue growth driven by summer travel demand.",
+        "body": [
+          "Starlux Airlines and Tigerair Taiwan reported strong financial results for July 2026, driven by robust demand during the summer travel peak. Starlux Airlines posted monthly revenue of NT$5.729 billion for July, representing an 8 percent increase month-on-month and a 43 percent expansion year-on-year. Over the first seven months of 2026, the carrier accumulated revenue of NT$34.282 billion, up 32 percent compared to the same period last year.",
+          "Detailed figures from Starlux Airlines show that passenger revenue reached NT$4.508 billion in July, growing 11 percent month-on-month and 42 percent year-on-year. Cargo revenue climbed 43 percent year-on-year to NT$684 million. The airline attributed cargo growth to ongoing investment in artificial intelligence and cloud infrastructure, which supported high demand for high-value electronic components.",
+          "Regarding fleet updates and network expansion, Starlux Airlines took delivery of its first \"Kongshan Silver\" special livery aircraft in July, with a second \"Kongshan Gold\" aircraft scheduled to join the fleet in August. On August 1, Starlux launched its flight service between Taipei and Prague. The route initially operates three weekly flights using Airbus A350-900 aircraft, with plans to upgrade to the larger A350-1000 in September and increase frequency to four weekly flights from October 1.",
+          "Meanwhile, Tigerair Taiwan recorded July revenue of NT$1.77 billion, marking a 27 percent year-on-year increase and setting a record for the month, supported by an average load factor of 92 percent. For the first seven months of 2026, Tigerair Taiwan achieved cumulative revenue of NT$12.095 billion, up 23 percent year-on-year, with total flights rising 12 percent and average load factor reaching 91 percent. To support long-term fleet growth, Tigerair Taiwan signed a memorandum of understanding with IAE, a subsidiary of Pratt & Whitney, for engine procurement and maintenance covering its third-generation Airbus A321neo fleet delivered from 2028."
+        ]
+      },
+      "flash": {
+        "zh": "星宇航空與台灣虎航公布7月營收亮麗成績",
+        "en": "Starlux Airlines and Tigerair Taiwan Report Strong July Revenues",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "星宇航空2026年7月營收為新台幣57.29億元，月增8%、年增43%，前7月累計營收達342.82億元。",
+          "sourceQuote": "星宇航空7月營收新台幣57.29億元，月增8%，年增43%。前7月累計營收342.82億元，年成長32%。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "台灣虎航2026年7月單月營收為17.7億元，年增27%，創同期新高，前7月累計營收達120.95億元。",
+          "sourceQuote": "台灣虎航7月自結單月營收17.7億元，年增27%，創同期新高",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "星宇航空7月客運營收為45.08億元，月增11%、年增42%；貨運營收為6.84億元，年增43%。",
+          "sourceQuote": "7月客運營收45.08億元，月增11%、年增42%，受惠暑假旅遊旺季，市場需求持續暢旺。貨運方面，7月貨運營收為6.84億元",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "星宇航空於8月1日開航台北往返布拉格航線，初期以A350-900執飛，並於7月完成首架彩繪機交付。",
+          "sourceQuote": "自8月1日起，星宇航空開航首條歐洲航線「台北-布拉格」航線，開航初期以A350-900執飛",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "台灣虎航7月平均載客率達92%，前7月累計平均載客率達91%，班次數年增12%。",
+          "sourceQuote": "7月平均載客率寫下92%的好成績。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "台灣虎航與普惠旗下IAE公司簽署合作備忘錄，針對2028年起引進之A321neo機隊進行發動機採購與維護合作。",
+          "sourceQuote": "台灣虎航已與普惠（Pratt & Whitney）旗下IAE公司簽署合作備忘錄，針對2028年起引進的第3代A321neo機隊進行發動機採購與維護合作。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "星宇航空",
+          "台灣虎航",
+          "普惠",
+          "IAE",
+          "Pratt & Whitney"
+        ],
+        "airlines": [
+          "星宇航空",
+          "台灣虎航"
+        ],
+        "aircraft_models": [
+          "A350-900",
+          "A350-1000",
+          "A321neo"
+        ],
+        "airports": [],
+        "locations": [
+          "台北",
+          "布拉格"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-10",
+          "2026-08-01"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260810-1517-1",
+      "primarySource": "中央社 CNA 產經證券",
+      "items": [
+        {
+          "title": "星宇航空7月營收成長43% 虎航看好客運旺到年底",
+          "url": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "publishedUtc": "2026-08-10T12:47Z",
+          "summary": "（中央社記者江明晏台北10日電）星宇航空7月營收年增43%，受惠暑假旅遊旺季，貨運也因AI及雲端基礎設施投資動能延續；台灣虎航7月營收創同期新高，看好今年客運需求持續暢旺至年底。",
+          "image": null,
+          "source": "中央社 CNA 產經證券",
+          "sourceKey": "cnataiwanfinance"
+        },
+        {
+          "title": "星宇航空7月營收成長43% 虎航看好客運旺到年底",
+          "url": "https://www.cna.com.tw/news/afe/202608100305.aspx",
+          "publishedUtc": "2026-08-10T12:47Z",
+          "summary": "星宇航空,台灣虎航,台北-布拉格,空山銀,空山金,普惠|Pratt & Whitney,IAE",
+          "image": null,
+          "source": "中央社 CNA 國籍航空",
+          "sourceKey": "cnataiwanairlines"
+        },
+        {
+          "title": "星宇航空7月營收成長43%　虎航看好客運旺到年底",
+          "summary": "星宇航空7月營收成長43% 虎航看好客運旺到年底 &nbsp;&nbsp; 經濟日報",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9TVlJMYl9fTDB1TUwxNEJJUUtJM2JCNWJ5VHR1NmJBa2lwZDhjMUZXdXVjWk9xVWFhQTc5V18tbUV6WXRlUnlRU1RmY0RQMDIzd1VnS05ienlmUdIBX0FVX3lxTE5MaTZOZ2E3Znk0aGJ1OGxsdktXTld4dms2NUZzdXlXd1ctZ3h1am9NN2VpRkFGc251c3BjVnJlYUVKWE1pRVRSbnR5RFNBa08tT0pHd2pUQ0tDMlM3aFo0?oc=5",
+          "source": "經濟日報",
+          "companion": true,
+          "publishedUtc": "2026-08-10T12:55Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260727-0838-presidential-office-rejects-show-claim-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: 中央社",
+              "archive predates source by 14 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 14 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍",
+            "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+            "facts": [
+              {
+                "claim": "Media reported that President Lai’s inspection during the Han Kuang exercise was a \"show\".",
+                "source_quote": "有媒體報導稱總統賴清德在漢光演習期間安排視導是「作秀」",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The Presidential Office stated that, as commander‐in‐chief, the President’s inspection of a major drill is a responsibility and an obligation.",
+                "source_quote": "作為三軍統帥，總統在國軍重要演訓期間參與視導，是責任也是義務",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The spokesperson called the \"show\" accusation speculation, a distortion of views, and a defamation of the military and national defence.",
+                "source_quote": "所謂「作秀」之說，內容多屬臆測、觀點扭曲，更污名化國軍與國防，令人遺憾",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Heads of state attending major military exercises is standard practice in Europe, the US, Japan and South Korea.",
+                "source_quote": "國家元首參與國家重大軍事演訓，無論歐、美、日、韓等國，國際皆然",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Since Han Kuang 40 the drills have been unscripted and realistic; the President’s visit was scheduled by the Ministry of National Defense according to the exercise progress, with no arranged \"firepower show\".",
+                "source_quote": "自漢光40號演習起，即採取「無劇本、實戰化」演練。總統參與視導，亦由國防部依照演習進程適時規劃，不存在所謂安排「火力秀」的問題",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Accusations of shifting opposition attacks or staging a performance for voters are baseless and unfair to personnel strengthening defence.",
+                "source_quote": "至於所謂「轉移在野攻擊」、「作秀給選民看」等無端指控，對此刻正為強化國防、守護國家而努力的所有人員極不公平",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260806-1215-typhoon-white-dolphin-prompts-china-airl",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: 中央社, 星宇航空",
+              "archive predates source by 5 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
+            "event_date": "2026-08-05",
+            "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動",
+            "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+            "facts": [
+              {
+                "claim": "中華航空因颱風白海豚調整2026年8月6日至8日往返沖繩航班,共取消14架次,部分架次提前、延後或放大機型。",
+                "source_quote": "華航公布明起至8日飛沖繩航班異動，14架次取消，部分架次提前、延後或放大機型",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              },
+              {
+                "claim": "星宇航空調整8月6日至7日台灣往返沖繩航班,其中6日取消2架次,7日航班全數取消。",
+                "source_quote": "星宇航空明天6架次異動，包含2架次取消，7日往返沖繩航班全取消。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              },
+              {
+                "claim": "華航取消之航班包括8月6日CI122/CI123,7日CI120/CI121、CI122/CI123、CI310/CI311、CI2132/CI2133、CI132/CI133,以及8日CI310/CI311。",
+                "source_quote": "航班取消包括6日CI122/CI123桃園往返沖繩、7日CI120/CI121、CI122/CI123桃園往返沖繩、CI310/CI311台中往返沖繩、CI2132/ CI2133、 CI132/CI133高雄往返沖繩、8月8日CI310/CI311台中往返沖繩。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              },
+              {
+                "claim": "星宇航空調整部分8月6日航班,包括JX870、JX871、JX302、JX303提前起飛。",
+                "source_quote": "台北-沖繩JX870提前至上午9時起飛，沖繩-台北JX871提前至中午12時50分起飛，台中-沖繩JX302提前至上午8時起飛，沖繩-台中JX303提前至上午11時30分起飛。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260807-0009-typhoon-white-dolphin-prompts-flight-adj",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: 台灣虎航, 星宇航空",
+              "archive predates source by 3 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
+            "event_date": "2026-08-07",
+            "source_name": "中央社 CNA 國籍航空 — 颱風白海豚影響 飛沖繩航班異動多",
+            "source_url": "https://www.cna.com.tw/news/ahel/202608070246.aspx",
+            "facts": [
+              {
+                "claim": "受到颱風白海豚影響,台灣國籍航空2026年8月8日飛往沖繩多數航班取消。",
+                "source_quote": "受到颱風白海豚影響，國籍航空明天飛往沖繩多數航班取消，提醒旅客出發前留意航班動態。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608070246.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚影響 飛沖繩航班異動多"
+              },
+              {
+                "claim": "台灣虎航取消8月8日桃園、高雄往返沖繩那霸以及桃園往返石垣島的航班。",
+                "source_quote": "明天IT230/IT231/IT232/IT233桃園往返沖繩那霸、IT288/IT289高雄往返沖繩那霸及IT736/IT737桃園往返石垣島航班取消",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608070246.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚影響 飛沖繩航班異動多"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260810-1517-2",
+    "queuedUtc": "2026-08-10T15:17Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Financial claim with non‑binding components requires human review.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Vertical Aerospace announced on 10 August 2026 that it secured US$100 million in funding commitments from existing and new investors.",
+        "sourceQuote": "Vertical Aerospace announced on August 10, 2026, that it has secured an additional US$100 million in funding commitments from both existing and new investors.",
+        "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Mudrick Capital Management will provide US$40 million, including a US$5 million closed draw and a US$35 million accelerated draw planned by 12 August 2026, part of a US$50 million facility from April 2026, and this portion is a non‑binding agreement in principle.",
+        "sourceQuote": "Existing investor Mudrick Capital Management will put up US$40 million.",
+        "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "An additional US$35 million will be underwritten by a group of existing and new investors at US$1.05 per unit (one ordinary share plus one warrant).",
+        "sourceQuote": "An additional US$35 million will be underwritten by a group of existing and new investors which will each get “units”, each comprising one ordinary share and one warrant, at a price of $1.05 per unit.",
+        "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Another US$25 million will be drawn from a preferred equity facility set up by Yorkville Advisors Global.",
+        "sourceQuote": "Last, but not least, another US$25 million is to be drawn from a preferred equity facility set up by another of Vertical Aerospace’s investors, Yorkville Advisors Global.",
+        "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The funds will support the Critical Design Review, expansion of the Energy Centre for battery production, and establishment of large‑scale UK production facilities, which may receive a £10 million UK government contribution.",
+        "sourceQuote": "Other aspects of the eVTOL program that will be funded by the latest funding round include the expansion of the company’s Energy Centre, dedicated to battery production, and the establishment of its future large- scale production facilities in the UK.",
+        "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Financial claim with non‑binding components requires human review.",
+      "cat": "biz",
+      "zh": {
+        "title": "VerticalAerospace募集1億美元推進ValoeVTOL",
+        "summary": "VerticalAerospace募集1億美元用於ValoeVTOL認證",
+        "body": [
+          "Vertical Aerospace 於 2026 年 8 月 10 日宣佈，已獲得 1 億美元資金承諾，用於 Valo eVTOL 開發。",
+          "資金來自三部分：Mudrick Capital 提供 4,000萬美元（含 500萬美元已完成提款及 3,500萬美元加速提款），另 3,500萬美元由既有與新投資人認購單位，每單位 1.05 美元；以及 2,500萬美元來自 Yorkville Advisors 的優先股權融資。",
+          "資金將用於關鍵設計審查（CDR）、擴建電池生產能量中心、在英國建立大規模生產設施，並可能獲得英國政府 1,000萬英鎊補助。"
+        ]
+      },
+      "en": {
+        "title": "Vertical Aerospace Secures $100 Million to Advance Valo eVTOL Development",
+        "summary": "Vertical Aerospace raises $100M for Valo eVTOL certification and production",
+        "body": [
+          "Vertical Aerospace announced on 10 August 2026 that it has secured US$100 million in funding commitments from existing and new investors to advance the Valo eVTOL programme.",
+          "The round comprises three tranches: US$40 million from Mudrick Capital Management, including a US$5 million draw and a US$35 million accelerated draw by 12 August; US$35 million underwritten by a group of investors at US$1.05 per unit; and US$25 million from a preferred‑equity facility of Yorkville Advisors Global.",
+          "Proceeds will fund the upcoming Critical Design Review, expansion of the Energy Centre for battery production, and establishment of large‑scale UK production facilities, which may receive a £10 million UK government contribution."
+        ]
+      },
+      "flash": {
+        "zh": "Vertical Aerospace 募 1 億美元推 Valo eVTOL",
+        "en": "Vertical Aerospace raises $100M for Valo eVTOL",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Vertical Aerospace announced on 10 August 2026 that it secured US$100 million in funding commitments from existing and new investors.",
+          "sourceQuote": "Vertical Aerospace announced on August 10, 2026, that it has secured an additional US$100 million in funding commitments from both existing and new investors.",
+          "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Mudrick Capital Management will provide US$40 million, including a US$5 million closed draw and a US$35 million accelerated draw planned by 12 August 2026, part of a US$50 million facility from April 2026, and this portion is a non‑binding agreement in principle.",
+          "sourceQuote": "Existing investor Mudrick Capital Management will put up US$40 million.",
+          "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "An additional US$35 million will be underwritten by a group of existing and new investors at US$1.05 per unit (one ordinary share plus one warrant).",
+          "sourceQuote": "An additional US$35 million will be underwritten by a group of existing and new investors which will each get “units”, each comprising one ordinary share and one warrant, at a price of $1.05 per unit.",
+          "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Another US$25 million will be drawn from a preferred equity facility set up by Yorkville Advisors Global.",
+          "sourceQuote": "Last, but not least, another US$25 million is to be drawn from a preferred equity facility set up by another of Vertical Aerospace’s investors, Yorkville Advisors Global.",
+          "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The funds will support the Critical Design Review, expansion of the Energy Centre for battery production, and establishment of large‑scale UK production facilities, which may receive a £10 million UK government contribution.",
+          "sourceQuote": "Other aspects of the eVTOL program that will be funded by the latest funding round include the expansion of the company’s Energy Centre, dedicated to battery production, and the establishment of its future large- scale production facilities in the UK.",
+          "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "Vertical Aerospace",
+          "Mudrick Capital Management",
+          "Yorkville Advisors Global",
+          "UK government"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Valo eVTOL"
+        ],
+        "airports": [],
+        "locations": [
+          "UK"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-10"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260810-1517-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Vertical Aerospace raises $100 million to further Valo eVTOL development",
+          "url": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+          "publishedUtc": "2026-08-10T14:23Z",
+          "summary": "Vertical Aerospace announced on August 10, 2026, that it has secured an additional US$100 million in funding commitments… The post Vertical Aerospace raises $100 million to further Valo eVTOL development appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
+            "relationship_type": "other",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
+            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+            "facts": [
+              {
+                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
+                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
+                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
+                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
+                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
+                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260810-1228-3",
     "queuedUtc": "2026-08-10T12:29Z",
     "approve": false,
@@ -9303,680 +9964,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260807-0728-7",
-    "queuedUtc": "2026-08-07T07:28Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.5-flash",
-    "decisionReason": "The program involves significant program losses ($280M Q2 loss and a $3.9B contract) and critical government budget report oversight, requiring manual review.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A Pentagon report released on August 3, 2026, states that Boeing's VC-25B cabin design remains behind schedule due to technical and certification issues.",
-        "sourceQuote": "The Pentagon report released on August 3, 2026, said the design for the VC-25B cabin remains behind schedule because of unresolved technical and certification issues.",
-        "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Interior delays have spread to wiring and structural modifications, leading to inefficient engineering and repeated changes on parts Boeing already began modifying.",
-        "sourceQuote": "delays to the cabin have spread into wiring design and fabrication as well as structural modifications to the two aircraft. This has resulted in “inefficient engineering work” and repeated changes",
-        "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The Air Force is targeting deliveries in 2028 and 2029, but the report warned the test schedule will be hard to meet if further unexpected work emerges.",
-        "sourceQuote": "The Air Force is working toward delivery of the first aircraft in 2028 and the second in 2029. The report warned that the planned test schedule will be difficult to meet",
-        "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Boeing expects to deliver the first aircraft in 2028 and recorded a $280 million loss on the program in Q2 2026 after adding resources to protect the schedule.",
-        "sourceQuote": "Boeing said in July that it still expects to deliver the first VC-25B in 2028. The company recorded another $280 million loss on the program during the second quarter",
-        "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "As of April, 95 repairs remained on the structural stringers of the first aircraft and 142 on the second, alongside cockpit windshield shortages and window defect issues.",
-        "sourceQuote": "Repairs are still needed for cracks found in structural stringers on both 747-8s. As of April, 95 repairs or installations remained on the first aircraft and 142 on the second",
-        "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "In the second quarter of 2026, Boeing reported revenue of $24.6 billion, a GAAP loss per share of $0.67, and a core loss per share of $0.76.",
-        "sourceQuote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-        "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-        "evidenceScope": "archive",
-        "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-        "archiveContext": true
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The program involves significant program losses ($280M Q2 loss and a $3.9B contract) and critical government budget report oversight, requiring manual review.",
-      "cat": "mil",
-      "zh": {
-        "title": "五角大廈報告揭露內部設計問題 波音新空軍一號計畫面臨延遲",
-        "summary": "根據美國國防部於2026年8月3日發布的報告，波音為替換現行總統專機而研發的VC-25B新「空軍一號」因內部設計落後與技術認證問題，導致配線及結構修改工作延宕。波音在2026年第二季為此計畫增列2.8億美元虧損，仍預計於2028年交付首架飛機。",
-        "body": [
-          "根據美國國防部於2026年8月3日發布的預算報告，波音（Boeing）公司用以研發兩架全新「空軍一號」總統專機（美軍代號VC-25B，由波音747-8客機改裝）的計畫正遭遇更多延誤。報告指出，該機隊的內部設計因技術與認證問題仍落後於進度，導致配線設計、製造以及結構修改等工作皆受到波及。",
-          "報告顯示，艙內設計進度落後引發了「低效率的工程工作」，逼使波音必須對已開始改裝的部分機體進行重複修改。此外，兩架改裝飛機的結構縱樑（stringers）皆發現裂紋。截至2026年4月，首架飛機仍有95處維修或安裝待處理，第二架則有142處。該計畫同時面臨缺少合格的747-8駕駛艙擋風玻璃，以及客艙窗戶組件存在缺陷等問題。",
-          "儘管面臨多項考驗，波音於2026年7月表示仍預計在2028年交付首架VC-25B，第二架則預計於2029年交付。為了維持此一進度，波音已投入額外的生產與認證資源，並在2026年第二季為此計畫增列了2.8億美元的虧損。波音也與美國空軍達成協議，將該飛機的認證從原本的美國聯邦航空局（FAA）認證轉移為軍事認證程序，以降低試飛與認證階段的風險。",
-          "另外，根據本站統計紀錄，波音在2026年第二季的財務報告中，錄得單季營業收入246億美元，公認會計準則（GAAP）下每股虧損0.67美元，核心（非公認會計準則）每股虧損為0.76美元。美國空軍表示，現行的VC-25A總統專機將繼續維持運作，直到全新VC-25B能夠完全執行總統空運任務為止。"
-        ]
-      },
-      "en": {
-        "title": "Pentagon Report Reveals Interior Design Issues Delaying Boeing's New Air Force One",
-        "summary": "A Pentagon report released on August 3, 2026, reveals that Boeing's VC-25B cabin design is lagging due to technical and certification issues. These interior delays have affected wiring, fabrication, and structural work on the two modified 747-8 aircraft, leading to inefficient engineering. Despite registering an additional $280 million loss on the program in the second quarter, Boeing still expects to deliver the first aircraft in 2028. Additionally, the program is addressing structural stringer cracks, a windshield shortage, and window assembly issues.",
-        "body": [
-          "According to a Pentagon report released on August 3, 2026, Boeing's efforts to develop two new Air Force One aircraft, officially designated as VC-25B, are facing further setbacks. The report, prepared as part of the Pentagon’s fiscal 2027 budget submission, indicates that the interior design for the modified Boeing 747-8 cabin continues to lag behind schedule due to unresolved technical and certification issues.",
-          "These cabin design delays have disrupted subsequent stages of the modification program, affecting wiring fabrication and structural work on both aircraft. This has led to \"inefficient engineering work\" and required Boeing to redo modifications on parts of the planes. Furthermore, structural stringer cracks on both aircraft require repairs; as of April 2026, 95 repairs remained on the first aircraft and 142 on the second. The program is also managing a shortage of certified cockpit windshields and window defect issues.",
-          "Despite these ongoing difficulties, Boeing stated in July 2026 that it still expects to deliver the first VC-25B in 2028, with the second planned for 2029. To protect this schedule, Boeing recorded an additional $280 million loss on the program during the second quarter of 2026. The manufacturer has also agreed with the U.S. Air Force to transition the aircraft from FAA certification to a military certification process to reduce risks during flight testing.",
-          "In addition, historical records from AVWIRE database show that Boeing recorded a total second-quarter revenue of $24.6 billion, with a GAAP loss per share of $0.67 and a core loss per share of $0.76. The U.S. Air Force plans to keep the current VC-25A fleet, which entered service in 1990, operational until the new VC-25B aircraft can fully carry out the presidential airlift mission."
-        ]
-      },
-      "flash": {
-        "zh": "五角大廈報告指波音新空軍一號內部設計落後致工程延誤",
-        "en": "Pentagon report reveals interior design issues delaying Boeing's new Air Force One.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A Pentagon report released on August 3, 2026, states that Boeing's VC-25B cabin design remains behind schedule due to technical and certification issues.",
-          "sourceQuote": "The Pentagon report released on August 3, 2026, said the design for the VC-25B cabin remains behind schedule because of unresolved technical and certification issues.",
-          "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Interior delays have spread to wiring and structural modifications, leading to inefficient engineering and repeated changes on parts Boeing already began modifying.",
-          "sourceQuote": "delays to the cabin have spread into wiring design and fabrication as well as structural modifications to the two aircraft. This has resulted in “inefficient engineering work” and repeated changes",
-          "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The Air Force is targeting deliveries in 2028 and 2029, but the report warned the test schedule will be hard to meet if further unexpected work emerges.",
-          "sourceQuote": "The Air Force is working toward delivery of the first aircraft in 2028 and the second in 2029. The report warned that the planned test schedule will be difficult to meet",
-          "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Boeing expects to deliver the first aircraft in 2028 and recorded a $280 million loss on the program in Q2 2026 after adding resources to protect the schedule.",
-          "sourceQuote": "Boeing said in July that it still expects to deliver the first VC-25B in 2028. The company recorded another $280 million loss on the program during the second quarter",
-          "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "As of April, 95 repairs remained on the structural stringers of the first aircraft and 142 on the second, alongside cockpit windshield shortages and window defect issues.",
-          "sourceQuote": "Repairs are still needed for cracks found in structural stringers on both 747-8s. As of April, 95 repairs or installations remained on the first aircraft and 142 on the second",
-          "sourceUrl": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "In the second quarter of 2026, Boeing reported revenue of $24.6 billion, a GAAP loss per share of $0.67, and a core loss per share of $0.76.",
-          "sourceQuote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-          "evidenceScope": "archive",
-          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-          "archiveContext": true
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F4",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "Pentagon",
-          "Air Force",
-          "FAA",
-          "GDC Technics",
-          "PPG",
-          "GKN"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "VC-25B",
-          "747-8",
-          "VC-25A",
-          "747-200"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "August 3, 2026",
-          "July",
-          "April"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-0728-7",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Boeing Air Force One delays worsen as report reveals interior design problems",
-          "url": "https://www.aerotime.aero/articles/boeing-air-force-one-delays-worsen-as-report-reveals-interior-design-problems",
-          "publishedUtc": "2026-08-06T15:33Z",
-          "summary": "Boeing’s long-delayed efforts to field two new Air Force One aircraft faces more setbacks as interior design problems… The post Boeing Air Force One delays worsen as report reveals interior design problems appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: VC-25B"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260726-1805-faa-announces-successful-counter-drone-e",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "archive predates source by 15 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
-            "event_date": "2026-07-22",
-            "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa...",
-            "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-            "facts": [
-              {
-                "claim": "FAA announced successful counter-drone efforts during FIFA World Cup 2026 with more than 700 drones seized.",
-                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026, With More Than 700 Drones Seized",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "Transportation Secretary Sean P. Duffy announced federal, state, and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
-                "source_quote": "Department of Transportation Secretary Sean P. Duffy announced that federal, state and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "The effort helped keep millions of fans safe.",
-                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "More than 700 drones were seized.",
-                "source_quote": "With More Than 700 Drones Seized",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing, faa",
-              "archive predates source by 11 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 11 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260807-0728-12",
-    "queuedUtc": "2026-08-07T07:28Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Regulatory action (foreign investment screening decision) triggers mandatory human review.",
-    "riskFlags": [
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Belgium blocked the acquisition of NHV Group by GD Helicopter Finance, an Irish lessor ultimately controlled by Chinese interests.",
-        "sourceQuote": "Belgium has blocked the acquisition of Ostend-based helicopter operator NHV Group by GD Helicopter Finance (GDHF), an Irish lessor ultimately controlled by Chinese interests",
-        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "NHV confirmed on 5 August 2026 that the deal would not proceed after a decision by Belgium’s Interfederal Screening Committee.",
-        "sourceQuote": "NHV confirmed on August 5, 2026, that the deal would not proceed following a decision by Belgium’s Interfederal Screening Committee (ISC)",
-        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "GDHF is a subsidiary of GDAT Group, a Shanghai-based helicopter operator and lessor founded in 2012 and chaired by Peter Jiang.",
-        "sourceQuote": "GDHF is registered in Dublin and led by chief executive Michael York, but it is a subsidiary of GDAT Group, a Shanghai-based helicopter operator and lessor founded in 2012 and chaired by Peter Jiang, who owns GDHF.",
-        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Belgium’s foreign investment screening mechanism, effective since 1 July 2023, covers non‑EU investors acquiring control of firms in sensitive sectors such as energy, defence and critical infrastructure.",
-        "sourceQuote": "Belgium’s foreign investment screening mechanism, in force since July 1, 2023, applies to non-EU investors acquiring control of companies active in sensitive sectors including energy, defense and critical infrastructure.",
-        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "VRT NWS reported on 7 February 2026 that Belgium’s military intelligence service ADIV took over the review, citing concerns over NHV’s bid to maintain the Belgian military helicopter fleet.",
-        "sourceQuote": "VRT NWS reported on February 7, 2026, that Belgium’s military intelligence service, ADIV, had taken over the file.",
-        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "NHV operates about 28 helicopters, employs over 400 people and reported revenue of roughly €155 million in 2025.",
-        "sourceQuote": "Founded in 1997, NHV operates around 28 helicopters with more than 400 employees and reported revenue of about €155 million in 2025.",
-        "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Regulatory action (foreign investment screening decision) triggers mandatory human review.",
-      "cat": "reg",
-      "zh": {
-        "title": "比利時阻止中國關聯收購NHV直升機運營商",
-        "summary": "比利時跨部門審查委員會否決愛爾蘭租賃公司GD Helicopter Finance收購奧斯坦德直升機運營商NHV，因其最終由中國GDAT集團控制；NHV確認交易終止，擁有權不變。",
-        "body": [
-          "比利時已阻止愛爾蘭租賃公司GD Helicopter Finance（GDHF）收購位於奧斯坦德的直升機運營商NHV Group，GDHF最終由中國GDAT集團控制。",
-          "NHV於2026年8月5日確認，因比利時跨部門審查委員會（ISC）的決定，交易將不會繼續，公司所有權與控制權維持不變，仍由法國投資公司Ardian持有。",
-          "比利時自2023年7月1日起實施的外資審查機制，適用於非歐盟投資者取得能源、國防及關鍵基礎設施等敏感領域公司的控制權。",
-          "弗拉芒公共廣播機構VRT NWS於2026年2月7日報導，比利時軍事情報機構ADIV已接手審查，因NHV曾競標為比利時軍用直升機艦隊提供維護服務，官方擔憂收購完成後將無法執行該項工作。"
-        ]
-      },
-      "en": {
-        "title": "Belgium blocks Chinese-linked takeover of NHV helicopter operator",
-        "summary": "Belgium's Interfederal Screening Committee vetoed the acquisition of Ostend-based helicopter operator NHV Group by Irish lessor GD Helicopter Finance, which is ultimately controlled by China's GDAT Group; NHV confirmed the deal is terminated and ownership remains unchanged.",
-        "body": [
-          "Belgium has blocked the acquisition of Ostend-based helicopter operator NHV Group by GD Helicopter Finance (GDHF), an Irish lessor ultimately controlled by Chinese interests.",
-          "NHV confirmed on August 5, 2026, that the deal would not proceed following a decision by Belgium’s Interfederal Screening Committee (ISC), and said there would be no change to its ownership or control, which remains with French private investment firm Ardian.",
-          "Belgium’s foreign investment screening mechanism, in force since July 1, 2023, applies to non-EU investors acquiring control of companies active in sensitive sectors including energy, defense and critical infrastructure.",
-          "VRT NWS reported on February 7, 2026, that Belgium’s military intelligence service, ADIV, had taken over the file; officials were concerned by the operator’s bid to maintain the Belgian military helicopter fleet."
-        ]
-      },
-      "flash": {
-        "zh": "比利時阻止中國關聯收購NHV",
-        "en": "Belgium blocks Chinese-linked NHV takeover",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Belgium blocked the acquisition of NHV Group by GD Helicopter Finance, an Irish lessor ultimately controlled by Chinese interests.",
-          "sourceQuote": "Belgium has blocked the acquisition of Ostend-based helicopter operator NHV Group by GD Helicopter Finance (GDHF), an Irish lessor ultimately controlled by Chinese interests",
-          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "NHV confirmed on 5 August 2026 that the deal would not proceed after a decision by Belgium’s Interfederal Screening Committee.",
-          "sourceQuote": "NHV confirmed on August 5, 2026, that the deal would not proceed following a decision by Belgium’s Interfederal Screening Committee (ISC)",
-          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "GDHF is a subsidiary of GDAT Group, a Shanghai-based helicopter operator and lessor founded in 2012 and chaired by Peter Jiang.",
-          "sourceQuote": "GDHF is registered in Dublin and led by chief executive Michael York, but it is a subsidiary of GDAT Group, a Shanghai-based helicopter operator and lessor founded in 2012 and chaired by Peter Jiang, who owns GDHF.",
-          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Belgium’s foreign investment screening mechanism, effective since 1 July 2023, covers non‑EU investors acquiring control of firms in sensitive sectors such as energy, defence and critical infrastructure.",
-          "sourceQuote": "Belgium’s foreign investment screening mechanism, in force since July 1, 2023, applies to non-EU investors acquiring control of companies active in sensitive sectors including energy, defense and critical infrastructure.",
-          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "VRT NWS reported on 7 February 2026 that Belgium’s military intelligence service ADIV took over the review, citing concerns over NHV’s bid to maintain the Belgian military helicopter fleet.",
-          "sourceQuote": "VRT NWS reported on February 7, 2026, that Belgium’s military intelligence service, ADIV, had taken over the file.",
-          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "NHV operates about 28 helicopters, employs over 400 people and reported revenue of roughly €155 million in 2025.",
-          "sourceQuote": "Founded in 1997, NHV operates around 28 helicopters with more than 400 employees and reported revenue of about €155 million in 2025.",
-          "sourceUrl": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Interfederal Screening Committee (ISC)",
-          "GD Helicopter Finance (GDHF)",
-          "GDAT Group",
-          "NHV Group",
-          "Ardian",
-          "VRT NWS",
-          "ADIV",
-          "NATO Support and Procurement Agency",
-          "Airbus",
-          "Federal Public Service Economy",
-          "Belgian Competition Authority"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Airbus H145M",
-          "Airbus H175",
-          "Airbus H160"
-        ],
-        "airports": [],
-        "locations": [
-          "Ostend",
-          "Belgium",
-          "Den Helder",
-          "Netherlands",
-          "North Sea",
-          "West Africa",
-          "Shanghai",
-          "Dublin"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-05",
-          "2026-02-07",
-          "2026-06-24",
-          "2023-07-01",
-          "2025"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-0728-12",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Belgium blocks China-linked takeover of helicopter operator NHV Group",
-          "url": "https://www.aerotime.aero/articles/belgium-blocks-china-linked-takeover-nhv-group",
-          "publishedUtc": "2026-08-06T10:42Z",
-          "summary": "Belgium has blocked the acquisition of Ostend-based helicopter operator NHV Group by GD Helicopter Finance (GDHF), an Irish… The post Belgium blocks China-linked takeover of helicopter operator NHV Group appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
-            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-            "facts": [
-              {
-                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
-                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
-                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
-            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-            "facts": [
-              {
-                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
-                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
-                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
-                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
-                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
-                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
