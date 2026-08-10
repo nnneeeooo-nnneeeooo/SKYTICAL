@@ -1,5 +1,156 @@
 [
   {
+    "id": "g-20260810-1105-2",
+    "queuedUtc": "2026-08-10T11:05Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Engine selection claim for up to 63 aircraft involves a major fleet order decision requiring manual review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "British Airways selected Pratt & Whitney GTF engines to power up to 63 Airbus A320neo family aircraft.",
+        "sourceQuote": "British Airways, has selected Pratt & Whitney's geared turbofan, or GTF engine to power up to 63 Airbus A320neo family aircraft",
+        "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The decision ends decades of exclusive reliance on CFM International engines for British Airways' Airbus narrowbody fleet.",
+        "sourceQuote": "ending decades of exclusive reliance on CFM International engines for its Airbus narrowbody fleet.",
+        "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "British Airways is introducing a second engine supplier for the first time on its A320neo family fleet.",
+        "sourceQuote": "the airline is introducing a second engine supplier for the first time on its A320neo family fleet",
+        "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Engine selection claim for up to 63 aircraft involves a major fleet order decision requiring manual review.",
+      "cat": "biz",
+      "zh": {
+        "title": "英國航空選用普惠GTF發動機為63架A320neo系列客機提供動力",
+        "summary": "英國航空選擇普惠GTF發動機；為多達63架A320neo系列客機提供動力",
+        "body": [
+          "英國旗艦航空公司英國航空已選擇普惠公司的齒輪傳動風扇（GTF）發動機，為其多達63架空中巴士A320neo系列客機提供動力。這項決定標誌著英國航空首次在其A320neo系列客機機隊中引進第二家發動機供應商。",
+          "此舉同時結束了該航空公司數十年來在其空中巴士窄體客機機隊上完全依賴CFM國際發動機的歷史。隨著這項最新選擇，英國航空正式打破以往由單一廠商獨家供應發動機的模式，為其窄體機隊帶來發動機供應商的多樣化選擇。"
+        ]
+      },
+      "en": {
+        "title": "British Airways Selects Pratt & Whitney GTF Engines for 63 A320neo Aircraft",
+        "summary": "British Airways selects Pratt & Whitney GTF engines to power up to 63 Airbus A320neo family aircraft.",
+        "body": [
+          "British Airways, the primary flag carrier of the United Kingdom, has selected Pratt & Whitney's geared turbofan (GTF) engines to power up to 63 Airbus A320neo family aircraft. This decision marks the first time that British Airways is introducing a second engine supplier for its Airbus A320neo family fleet.",
+          "The selection officially ends decades of exclusive reliance on CFM International engines for the UK carrier's Airbus narrowbody fleet. By choosing Pratt & Whitney GTF powerplants for its latest A320neo aircraft, British Airways breaks with long-standing precedent and establishes a multi-supplier approach for its narrowbody operations."
+        ]
+      },
+      "flash": {
+        "zh": "英國航空選擇普惠GTF發動機裝備A320neo機隊",
+        "en": "British Airways selects Pratt & Whitney GTF engines for A320neo fleet",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "British Airways selected Pratt & Whitney GTF engines to power up to 63 Airbus A320neo family aircraft.",
+          "sourceQuote": "British Airways, has selected Pratt & Whitney's geared turbofan, or GTF engine to power up to 63 Airbus A320neo family aircraft",
+          "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The decision ends decades of exclusive reliance on CFM International engines for British Airways' Airbus narrowbody fleet.",
+          "sourceQuote": "ending decades of exclusive reliance on CFM International engines for its Airbus narrowbody fleet.",
+          "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "British Airways is introducing a second engine supplier for the first time on its A320neo family fleet.",
+          "sourceQuote": "the airline is introducing a second engine supplier for the first time on its A320neo family fleet",
+          "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "Airbus",
+          "British Airways",
+          "CFM International",
+          "Pratt & Whitney"
+        ],
+        "airlines": [
+          "British Airways"
+        ],
+        "aircraft_models": [
+          "A320neo",
+          "Airbus A320neo"
+        ],
+        "airports": [],
+        "locations": [
+          "United Kingdom"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260810-1105-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "British Airways Breaks Decades of CFM Loyalty",
+          "url": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
+          "publishedUtc": "2026-08-10T11:00Z",
+          "summary": "The United Kingdom's primary flag carrier, British Airways, has selected Pratt & Whitney's geared turbofan, or GTF engine to power up to 63 Airbus A320neo family aircraft, ending decades of exclusive reliance on CFM International engines for its Airbus narrowbody fleet. So in this video, we take a look at why the airline is introducing a second engine supplier for the first time on its A320neo family fleet, and what this decision says about how airlines are choosing engines in today's increasin…",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/60_lh_british-airways-broke-decades-cfm-loyalty-pratt-whitney-gtf-over-60-airbus-jets_h_site-copy.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260810-1026-1",
     "queuedUtc": "2026-08-10T10:26Z",
     "approve": false,
@@ -9611,207 +9762,6 @@
           "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/ground-operations-at-minneapolis-saint-paul-international-the-largest-and-busiest-airport-in-the-upper-midwest.jpg",
           "source": "Simple Flying",
           "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260807-0718-7",
-    "queuedUtc": "2026-08-07T07:18Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves major corporate acquisition claims (Macquarie AirFinance) and fleet expansion projections exceeding 1,000 aircraft, requiring human review under financial/order claim rules.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Dubai Aerospace Enterprise operates two main business lines: aircraft leasing, which accounts for about 85% of its business, and airframe heavy maintenance.",
-        "sourceQuote": "The leasing business today is, I would say, about 85% of our business, and the engineering business is the remainder of that.",
-        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Dubai Aerospace Enterprise currently has a fleet of about 700 aircraft and has announced an agreement to acquire Macquarie AirFinance.",
-        "sourceQuote": "On the leasing side, our fleet today is about 700 aircraft and, as you may have seen, we have announced an agreement to acquire Macquarie",
-        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Upon closing the acquisition of Macquarie AirFinance, Dubai Aerospace Enterprise's fleet will exceed 1,000 aircraft, serving customers in 80 to 85 countries.",
-        "sourceQuote": "So, when that transaction closes, our fleet will be in excess of 1000 aircraft, allowing us to serve customers in like 80-85 countries.",
-        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Dubai Aerospace Enterprise focuses its fleet on narrowbody models, one widebody product each from Boeing and Airbus, ATR72-600 aircraft, and Boeing 777 freighters.",
-        "sourceQuote": "In fact, we will focus on narrowbody and one widebody product from Boeing and Airbus each, and then two unique aircraft types",
-        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Dubai Aerospace Enterprise acquired Nordic Aviation Capital in 2025 and Macquarie AirFinance in 2026.",
-        "sourceQuote": "acquisition of two well-established players, Nordic Aviation Capital (NAC) and Macquarie AirFinance (MAF) in 2025 and 2026, respectively.",
-        "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves major corporate acquisition claims (Macquarie AirFinance) and fleet expansion projections exceeding 1,000 aircraft, requiring human review under financial/order claim rules.",
-      "cat": "biz",
-      "zh": {
-        "title": "迪拜航空企業推動收購案機隊規模預計突破千架",
-        "summary": "迪拜航空企業目前擁有約700架飛機，並已宣布收購Macquarie AirFinance。交易完成後，其機隊規模將超過1000架飛機，服務範圍涵蓋約80至85個國家。該公司業務包含飛機租賃與機身重維修，機隊策略聚焦於窄體機、波音與空中巴士各一款廣體機，以及ATR72-600與波音777貨機。",
-        "body": [
-          "根據AeroTime報導，迪拜航空企業（DAE）執行長Firoz Tarapore表示，公司目前營運兩大主要業務，其中飛機租賃約佔整體業務的85%，其餘則為機身重維修工程服務。",
-          "在租賃業務方面，迪拜航空企業目前擁有約700架飛機，並已宣布收購Macquarie AirFinance的協議。待該筆交易正式完成後，其租賃機隊規模將突破1000架飛機，預計能為大約80至85個國家的客戶提供服務。",
-          "在機隊組合策略上，該公司專注於窄體機產品，以及波音與空中巴士各一款廣體機，同時重點佈局ATR72-600客機與波音777全新貨機等特殊機種。迪拜航空企業先前亦於2025年完成收購Nordic Aviation Capital。"
-        ]
-      },
-      "en": {
-        "title": "Dubai Aerospace Enterprise Fleet to Exceed 1,000 Aircraft Following Acquisition",
-        "summary": "Dubai Aerospace Enterprise currently manages a fleet of approximately 700 aircraft and has announced an agreement to acquire Macquarie AirFinance. Once the transaction closes, the lessor expects its total fleet to exceed 1,000 aircraft, enabling it to serve customers across 80 to 85 countries. Dubai Aerospace Enterprise generates around 85% of its business from aircraft leasing, with the remainder coming from airframe heavy maintenance services. The company's fleet strategy concentrates on narrowbody aircraft, one widebody model each from Boeing and Airbus, alongside ATR72-600 regional aircraft and Boeing 777 freighters.",
-        "body": [
-          "According to AeroTime, Dubai Aerospace Enterprise Chief Executive Officer Firoz Tarapore stated that the company operates two primary business lines: aircraft leasing, which accounts for roughly 85% of its business, and airframe heavy maintenance services.",
-          "On the leasing side, Dubai Aerospace Enterprise currently manages a fleet of approximately 700 aircraft and has announced an agreement to acquire Macquarie AirFinance. Upon the closing of the transaction, the lessor's fleet will exceed 1,000 aircraft, expanding its service footprint to 80 to 85 countries.",
-          "Regarding fleet strategy, the firm focuses on narrowbody aircraft and one widebody product each from Boeing and Airbus. It also maintains significant positions in specialized types, including the ATR72-600 regional aircraft and Boeing 777 freighters, following its earlier acquisition of Nordic Aviation Capital in 2025."
-        ]
-      },
-      "flash": {
-        "zh": "迪拜航空企業宣布收購案 機隊預計將突破千架",
-        "en": "Dubai Aerospace Enterprise Fleet to Exceed 1,000 Aircraft After Acquisition",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Dubai Aerospace Enterprise operates two main business lines: aircraft leasing, which accounts for about 85% of its business, and airframe heavy maintenance.",
-          "sourceQuote": "The leasing business today is, I would say, about 85% of our business, and the engineering business is the remainder of that.",
-          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Dubai Aerospace Enterprise currently has a fleet of about 700 aircraft and has announced an agreement to acquire Macquarie AirFinance.",
-          "sourceQuote": "On the leasing side, our fleet today is about 700 aircraft and, as you may have seen, we have announced an agreement to acquire Macquarie",
-          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Upon closing the acquisition of Macquarie AirFinance, Dubai Aerospace Enterprise's fleet will exceed 1,000 aircraft, serving customers in 80 to 85 countries.",
-          "sourceQuote": "So, when that transaction closes, our fleet will be in excess of 1000 aircraft, allowing us to serve customers in like 80-85 countries.",
-          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Dubai Aerospace Enterprise focuses its fleet on narrowbody models, one widebody product each from Boeing and Airbus, ATR72-600 aircraft, and Boeing 777 freighters.",
-          "sourceQuote": "In fact, we will focus on narrowbody and one widebody product from Boeing and Airbus each, and then two unique aircraft types",
-          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Dubai Aerospace Enterprise acquired Nordic Aviation Capital in 2025 and Macquarie AirFinance in 2026.",
-          "sourceQuote": "acquisition of two well-established players, Nordic Aviation Capital (NAC) and Macquarie AirFinance (MAF) in 2025 and 2026, respectively.",
-          "sourceUrl": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Dubai Aerospace Enterprise",
-          "Investment Corporation of Dubai",
-          "Nordic Aviation Capital",
-          "Macquarie AirFinance",
-          "IATA",
-          "AeroTime"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Boeing",
-          "Airbus",
-          "ATR72-600",
-          "B777 freighter"
-        ],
-        "airports": [],
-        "locations": [
-          "Dubai",
-          "Jordan",
-          "Amman",
-          "Rio de Janeiro"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2025",
-          "2026",
-          "June 6-8, 2026"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-0718-7",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Dubai Aerospace Enterprise CEO on becoming a top-tier global aircraft lessor",
-          "url": "https://www.aerotime.aero/articles/dubai-aerospace-enterprise-ceo-on-becoming-a-top-tier-global-aircraft-lessor",
-          "publishedUtc": "2026-08-07T03:00Z",
-          "summary": "Over the last couple of decades, the Middle East has emerged as the new “center of gravity” for… The post Dubai Aerospace Enterprise CEO on becoming a top-tier global aircraft lessor appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
         }
       ],
       "updateCandidate": false,
