@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% from "_summary.html" import notification_summary %}
 {% block content %}
   <div class="article-page">
     <a href="{{ home_url }}" class="btn btn-ghost" style="margin-bottom:18px;">{{ t.back }}</a>
@@ -15,7 +14,6 @@
         <span style="margin-left:auto;">{{ t.refreshNote }}</span>
       </div>
     </div>
-    {{ notification_summary(a.display_summary, t.summaryLabel, 'article') }}
     {% if a.image %}
     <figure style="margin:0 0 22px;">
       <img src="{{ a.image.url }}" alt="{{ a.image.subject or a.title }}" loading="lazy" style="width:100%;height:auto;max-height:560px;object-fit:contain;background:color-mix(in srgb,var(--color-text) 6%,var(--color-surface));border:1px solid var(--color-divider);">
