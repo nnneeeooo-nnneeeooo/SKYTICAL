@@ -94,26 +94,6 @@
       "updates": {},
       "retain_until": "2026-09-02T10:51:33.857508+00:00"
     },
-    "ev-e3796bdcdf3afb54": {
-      "fingerprint": "e3796bdcdf3afb54e7fcdca8980995957664da47199b12cf501e230c29cdf955",
-      "urls": [
-        "https://simpleflying.com/american-airlines-unpaid-leaves-absence-too-many-flight-attendants"
-      ],
-      "section": "international_aviation",
-      "cat": "ops",
-      "first_seen": "2026-08-07T23:48:23.530402+00:00",
-      "last_seen": "2026-08-07T23:48:23.530402+00:00",
-      "first_briefing_id": "2026-08-08-morning",
-      "article_ids": [
-        "a-20260807-2246-american-airlines-offers-unpaid-leaves-o"
-      ],
-      "fact_keys": [
-        "american airlines is offering unpaid leaves of absence because it has too many flight attendants.",
-        "the union-backed program offers a month of unpaid leave that preserves benefits while opening flight opportunities for junior flight attendants."
-      ],
-      "updates": {},
-      "retain_until": "2026-08-10T23:48:23.530402+00:00"
-    },
     "ev-2a4700672ba34a77": {
       "fingerprint": "2a4700672ba34a77fb582cc17d834feaec929c08c5fdbebeb0c446ed48c0bfd4",
       "urls": [
@@ -470,20 +450,39 @@
       "section": "taiwan_aviation",
       "cat": "ops",
       "first_seen": "2026-08-10T16:09:27.014321+00:00",
-      "last_seen": "2026-08-10T16:09:27.014321+00:00",
+      "last_seen": "2026-08-10T23:50:38.759722+00:00",
       "first_briefing_id": "2026-08-10-evening",
       "article_ids": [
-        "a-20260810-1141-airbus-a321neo-registered-hs-ead-arrives"
+        "a-20260810-1141-airbus-a321neo-registered-hs-ead-arrives",
+        "a-20260810-1706-b-kwa-boeing-737-max-9-arrives-at-taiwan"
       ],
       "fact_keys": [
+        "aircraft b-kwa arrived at taiwan taoyuan international airport (rctp) with confirmed arrival status.",
         "an airbus a321neo with registration hs-ead arrived at taiwan taoyuan international airport (rctp).",
+        "confirmed arrival time was 2026-08-10t16:28:54z based on geofence and ground altitude.",
+        "cross-confirmation status is secondary_unavailable with 2 valid observation records.",
+        "no comparable long-term statistics are available in the system's observation history.",
+        "the aircraft is a boeing 737 max 9 with registration b-kwa and callsign hgb710.",
         "the aircraft type is airbus a321neo (icao code a21n) with callsign aiq231 and operator icao aiq.",
         "the arrival was confirmed based on the aircraft being within the airport geofence with alt_baro indicating ground, with 2 valid observation records.",
         "the confirmed arrival time was 2026-08-10t10:51:46z, determined by the aircraft being within the airport geofence with ground-level barometric altitude.",
         "the operator iata, operator name, operator chinese name, and operator country/region are all unidentified.",
+        "the operator icao is hgb but all other operator identity fields are unidentified.",
         "the system's observation history is still accumulating and there are no comparable long-term statistics available."
       ],
-      "updates": {},
+      "updates": {
+        "2026-08-11-morning": {
+          "article_id": "a-20260810-1706-b-kwa-boeing-737-max-9-arrives-at-taiwan",
+          "new_information": [
+            "Aircraft B-KWA arrived at Taiwan Taoyuan International Airport (RCTP) with confirmed arrival status.",
+            "The aircraft is a Boeing 737 MAX 9 with registration B-KWA and callsign HGB710.",
+            "The operator ICAO is HGB but all other operator identity fields are unidentified.",
+            "Confirmed arrival time was 2026-08-10T16:28:54Z based on geofence and ground altitude.",
+            "Cross-confirmation status is secondary_unavailable with 2 valid observation records.",
+            "No comparable long-term statistics are available in the system's observation history."
+          ]
+        }
+      },
       "retain_until": "2026-08-13T16:09:27.014321+00:00"
     },
     "ev-1890130e09ddadbc": {
@@ -531,6 +530,30 @@
       ],
       "updates": {},
       "retain_until": "2026-08-13T16:09:27.014321+00:00"
+    },
+    "ev-90bc184f81542bbd": {
+      "fingerprint": "90bc184f81542bbd5087ee593a7d101f7ba8675defbeba2f0527108473e9e6e3",
+      "urls": [
+        "https://www.aerotime.aero/articles/american-makes-first-us-commercial-airport-delivery-of-synthetic-jet-fuel"
+      ],
+      "section": "international_aviation",
+      "cat": "ops",
+      "first_seen": "2026-08-10T23:50:38.759722+00:00",
+      "last_seen": "2026-08-10T23:50:38.759722+00:00",
+      "first_briefing_id": "2026-08-11-morning",
+      "article_ids": [
+        "a-20260810-2036-american-airlines-operates-commercial-fl"
+      ],
+      "fact_keys": [
+        "american airlines and infinium stated that this marked the first delivery of non-biobased saf to a commercial airport in the united states.",
+        "american airlines operated a commercial passenger flight using infinium synthetic fuel on an embraer e175 from corpus christi international airport to dallas fort worth international airport.",
+        "american airlines signed an agreement to purchase commercial volumes of esaf from infinium's project roadrunner plant under construction, expected to begin production in 2027.",
+        "infinium produces esaf using waste carbon dioxide and renewable electricity, which can reduce lifecycle greenhouse gas emissions by over 90% compared to conventional jet fuel.",
+        "the fuel was tested to meet astm specifications for jet a, allowing its use in existing aircraft engines and airport fueling systems without modification.",
+        "the synthetic fuel was produced by infinium at its pathfinder facility in corpus christi, texas, blended with conventional fuel, and delivered into common tanks at corpus christi international airport."
+      ],
+      "updates": {},
+      "retain_until": "2026-08-13T23:50:38.759722+00:00"
     }
   },
   "grounded_seen": {}

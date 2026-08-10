@@ -1,0 +1,212 @@
+{
+  "content_type": "daily_transport_briefing",
+  "briefing_id": "2026-08-11-morning",
+  "date": "2026-08-11",
+  "edition": "morning",
+  "edition_label": "晨間快報",
+  "timezone": "Asia/Taipei",
+  "window_start": "2026-08-10T23:00:00+08:00",
+  "window_end": "2026-08-11T07:00:00+08:00",
+  "cutoff_time": "2026-08-11T07:00:00+08:00",
+  "scheduled_time": "2026-08-11T07:15:00+08:00",
+  "generated_at": "2026-08-11T07:50:38.759722+08:00",
+  "status": "partial",
+  "item_count": 2,
+  "sections": {
+    "aviation_incidents": [],
+    "taiwan_aviation": [
+      {
+        "event_id": "ev-347a95ef46b3b338",
+        "item_type": "update",
+        "previous_event_id": "ev-347a95ef46b3b338",
+        "category": "taiwan_aviation",
+        "headline": "B-KWA 波音 737 MAX 9 抵達桃園機場",
+        "summary": "呼號 HGB710；B-KWA 抵達桃園；營運者未識別",
+        "headline_en": "B-KWA Boeing 737 MAX 9 Arrives at Taiwan Taoyuan International Airport",
+        "summary_en": "Callsign HGB710; B-KWA arrives at RCTP; operator unidentified",
+        "event_time": null,
+        "source_published_at": "2026-08-10T16:28:00+00:00",
+        "source_updated_at": null,
+        "location": "臺灣桃園國際機場",
+        "entities": [
+          "Boeing 737 MAX 9",
+          "RCTP",
+          "臺灣桃園國際機場",
+          "HGB710",
+          "B-KWA",
+          "2026-08-10"
+        ],
+        "severity": "routine",
+        "taiwan_priority": true,
+        "military": false,
+        "sources": [
+          {
+            "name": "Airplanes.live — 公開 ADS-B 觀測：B39M 抵達 臺灣桃園國際機場",
+            "url": "https://airplanes.live/"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260810-1706-b-kwa-boeing-737-max-9-arrives-at-taiwan",
+        "new_information": [
+          "Aircraft B-KWA arrived at Taiwan Taoyuan International Airport (RCTP) with confirmed arrival status.",
+          "The aircraft is a Boeing 737 MAX 9 with registration B-KWA and callsign HGB710.",
+          "The operator ICAO is HGB but all other operator identity fields are unidentified.",
+          "Confirmed arrival time was 2026-08-10T16:28:54Z based on geofence and ground altitude.",
+          "Cross-confirmation status is secondary_unavailable with 2 valid observation records.",
+          "No comparable long-term statistics are available in the system's observation history."
+        ]
+      }
+    ],
+    "international_aviation": [
+      {
+        "event_id": "ev-90bc184f81542bbd",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "aviation_industry",
+        "headline": "美國航空於美國機場首度引進合成永續航空燃料並完成客運航班",
+        "summary": "美國航空於科波斯克里斯蒂啟用合成燃油；執飛前往達拉斯客機；符合Jet A規範",
+        "headline_en": "American Airlines Operates Commercial Flight Using Synthetic SAF Delivered to US Airport",
+        "summary_en": "American Airlines operated a flight from Corpus Christi to Dallas Fort Worth using synthetic sustainable fuel.",
+        "event_time": null,
+        "source_published_at": "2026-08-10T18:02:00+00:00",
+        "source_updated_at": null,
+        "location": "Corpus Christi",
+        "entities": [
+          "American Airlines",
+          "Infinium",
+          "American Eagle",
+          "American Airlines",
+          "American Eagle",
+          "Embraer E175",
+          "E175",
+          "Corpus Christi International Airport",
+          "Dallas Fort Worth International Airport",
+          "CRP"
+        ],
+        "severity": "routine",
+        "taiwan_priority": false,
+        "military": false,
+        "sources": [
+          {
+            "name": "AeroTime — American makes first US commercial airport delivery of synt…",
+            "url": "https://www.aerotime.aero/articles/american-makes-first-us-commercial-airport-delivery-of-synthetic-jet-fuel"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260810-2036-american-airlines-operates-commercial-fl"
+      }
+    ],
+    "ground_and_maritime": []
+  },
+  "checked_sources": [
+    {
+      "name": "FAA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "NTSB",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "ICAO",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "IATA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "EASA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "Eurocontrol",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "Reuters",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "The Aviation Herald",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "Aerospace Global News",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "CAA Taiwan",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "長榮航空 EVA Air",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "Simple Flying",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "AeroTime",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "中央社 CNA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:25Z"
+    },
+    {
+      "name": "中央社 CNA 產經證券",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:26Z"
+    },
+    {
+      "name": "中央社 CNA 國籍航空",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:26Z"
+    },
+    {
+      "name": "國防部・軍聞社",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:26Z"
+    },
+    {
+      "name": "臺灣交通要聞",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:26Z"
+    },
+    {
+      "name": "Airbus",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:26Z"
+    },
+    {
+      "name": "Boeing",
+      "ok": true,
+      "last_fetch_utc": "2026-08-10T23:26Z"
+    }
+  ],
+  "warnings": [
+    "AI 搜尋服務暫時不穩定，本期未能產生條列內容；我們正努力恢復服務，系統將於下一期自動重試"
+  ],
+  "generation_mode": "deterministic",
+  "generation_model": null,
+  "grounded_beta": {
+    "used": false,
+    "items": 0
+  }
+}
