@@ -44,13 +44,17 @@ def main() -> None:
     assert 'aria-label="重點摘要"' in home
     assert "<span>重點摘要</span>" not in home
     assert 'class="article-page"' in article
-    assert 'class="summary-preview summary-preview--article"' in article
-    assert 'class="summary-preview__icon"' in article
+    assert 'class="summary-preview' not in article
     assert 'class="article-source-row"' in article
-    assert "AirAdvisor發布2026機場排名；倫敦希斯洛以16.94分居首" in airadvisor
-    assert "捷星航空2027年2月2日起收取頭頂置物箱費；單程25澳幣起" in jetstar
-    assert "David Cummins就任TSA第八任局長；監管全美逾430座機場安檢" in david
-    assert "阿聯酋航空夏季暫停PRG、GLA A380航班；10月恢復每日服務" in emirates
+    summaries = (
+        ("AirAdvisor發布2026機場排名；倫敦希斯洛以16.94分居首", airadvisor),
+        ("捷星航空2027年2月2日起收取頭頂置物箱費；單程25澳幣起", jetstar),
+        ("David Cummins就任TSA第八任局長；監管全美逾430座機場安檢", david),
+        ("阿聯酋航空夏季暫停PRG、GLA A380航班；10月恢復每日服務", emirates),
+    )
+    for summary, article_html in summaries:
+        assert summary in home
+        assert 'class="summary-preview' not in article_html
 
     zh_long = "中華航空8月10日宣布調整桃園至福岡航班，受機場作業限制影響，兩班延後三小時，旅客須留意報到時間。" * 2
     zh_short = build.notification_summary(
@@ -86,7 +90,6 @@ def main() -> None:
     assert "line-clamp: 2" in css
     assert "max-height: 3.16em" in css
     assert "max-height: 3.1em" in css
-    assert "max-height: 3.3em" in css
     assert "width: 100%; padding: 0;" in css
     assert "border: 0; border-radius: 0; background: transparent; box-shadow: none;" in css
     assert "--ticker-duration: 130s" in css
