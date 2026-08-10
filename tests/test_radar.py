@@ -75,16 +75,31 @@ def main() -> None:
             "CXA": "MF",
             "CSZ": "ZH",
             "CYZ": "CF",
+            "DKH": "HO",
             "ESR": "ZE",
+            "FDA": "JH",
+            "FZA": "FU",
             "JJP": "GK",
             "MXD": "OD",
             "SPQ": "9G",
+            "TLM": "SL",
             "TVJ": "VZ",
+            "TZP": "ZG",
             "UEA": "EU",
         }
         assert {
             code: airline_codes[code] for code in added_airline_codes
         } == added_airline_codes
+        callsign_examples = {
+            "DKH136U": "HO136U",
+            "FZA6742": "FU6742",
+            "TLM395D": "SL395D",
+            "TZP51": "ZG51",
+        }
+        assert {
+            raw: f"{airline_codes[raw[:3]]}{raw[3:]}"
+            for raw in callsign_examples
+        } == callsign_examples
         icao_name_match = re.search(
             r'<script id="radar-airlines" type="application/json">'
             r'(.*?)</script>', page, re.DOTALL)
@@ -100,11 +115,16 @@ def main() -> None:
             "CXA": ("MF", "廈門航空", "Xiamen Airlines"),
             "CSZ": ("ZH", "深圳航空", "Shenzhen Airlines"),
             "CYZ": ("CF", "中國郵政航空", "China Postal Airlines"),
+            "DKH": ("HO", "吉祥航空", "Juneyao Airlines"),
             "ESR": ("ZE", "易斯達航空", "Eastar Jet"),
+            "FDA": ("JH", "富士夢幻航空", "Fuji Dream Airlines"),
+            "FZA": ("FU", "福州航空", "Fuzhou Airlines"),
             "JJP": ("GK", "捷星日本航空", "Jetstar Japan"),
             "MXD": ("OD", "馬來西亞峇迪航空", "Batik Air Malaysia"),
             "SPQ": ("9G", "太陽富國航空", "Sun PhuQuoc Airways"),
+            "TLM": ("SL", "泰國獅子航空", "Thai Lion Air"),
             "TVJ": ("VZ", "泰國越捷航空", "Thai Vietjet Air"),
+            "TZP": ("ZG", "ZIPAIR Tokyo", "ZIPAIR Tokyo"),
             "UEA": ("EU", "成都航空", "Chengdu Airlines"),
         }
         for icao_code, (iata_code, zh_name, en_name) in expected_names.items():
