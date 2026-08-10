@@ -8,8 +8,8 @@
       "date": "2026-08-10",
       "kind": "editorial",
       "commit": null,
-      "zh": "補齊 7 月 29 日至 8 月 10 日的重要網站功能、編輯流程與介面更新紀錄。",
-      "en": "Backfilled significant site, editorial workflow and interface changes from 29 July through 10 August."
+      "zh": "補齊 7 月 29 日至 8 月 10 日的重要公開網站功能、新聞品質與介面更新紀錄。",
+      "en": "Backfilled significant public site, news-quality and interface changes from 29 July through 10 August."
     },
     {
       "date": "2026-08-10",
@@ -159,20 +159,6 @@
       "en": "Completed Chinese airline names displayed by the live flight radar."
     },
     {
-      "date": "2026-07-31",
-      "kind": "feature",
-      "commit": "f2af0b724e659510dc7f196e323e724273784dc9",
-      "zh": "人工撰稿工作台加入一鍵發布、人工翻譯與文章排序控制。",
-      "en": "Added one-click publishing, manual translation and article ordering to the private authoring workbench."
-    },
-    {
-      "date": "2026-07-31",
-      "kind": "feature",
-      "commit": "3b2ee6e52bf9e9d48fe223e1fb0d9469935788f5",
-      "zh": "人工撰稿模式加入來源發布時間自動辨識。",
-      "en": "Added automatic source publication-time detection to manual authoring."
-    },
-    {
       "date": "2026-07-30",
       "kind": "editorial",
       "commit": "22f96f0843eeefd492dec3a0369c56d7cd2ec3ab",
@@ -195,31 +181,10 @@
     },
     {
       "date": "2026-07-30",
-      "kind": "feature",
-      "commit": "6fae3542078af08e43b9739546736c48e1105fb8",
-      "zh": "新增加密的私人人工撰稿工作台與審核流程。",
-      "en": "Added an encrypted private manual-drafting workbench and review flow."
-    },
-    {
-      "date": "2026-07-30",
       "kind": "system",
       "commit": "026dd73cfc901ea6928753e3048cccb8a90ca354",
       "zh": "建立撰稿模型優先順序與品質設定檔。",
       "en": "Configured drafting-model priority and quality profiles."
-    },
-    {
-      "date": "2026-07-30",
-      "kind": "feature",
-      "commit": null,
-      "zh": "私人 API 用量頁新增模型失敗、備援切換、各階段耗時與最近 30 天執行紀錄。",
-      "en": "Added thirty-day model execution history, failure diagnostics, fallback routing and stage timing to the private API usage dashboard."
-    },
-    {
-      "date": "2026-07-29",
-      "kind": "feature",
-      "commit": "858315809c40637548bec4b17b51bc35e7e0823c",
-      "zh": "新增人工新聞部署流程，支援經覆核文章獨立發布。",
-      "en": "Added a manual article deployment workflow for independently publishing reviewed stories."
     },
     {
       "date": "2026-07-29",
@@ -230,24 +195,10 @@
     },
     {
       "date": "2026-07-28",
-      "kind": "system",
-      "commit": null,
-      "zh": "私人用量頁新增 AVWIRE Codex task 的 GPT-5 token 累計與理論費用",
-      "en": "Added cumulative GPT-5 tokens and theoretical cost for the AVWIRE Codex task to the private usage dashboard"
-    },
-    {
-      "date": "2026-07-28",
       "kind": "editorial",
       "commit": "4b7895fb72e201f2309ebad31982afd49e62f6ce",
       "zh": "全面調整網站更新紀錄，採用中性、精確且一致的技術用語",
       "en": "Revised the site changelog with neutral, precise and consistent technical language"
-    },
-    {
-      "date": "2026-07-28",
-      "kind": "system",
-      "commit": "1bc62b6c9eee0719ce326ccfd5ecce1cc9544482",
-      "zh": "API 用量頁新增 GPT-5 系列官方參考牌價",
-      "en": "Added official GPT-5 family reference pricing to the API usage dashboard"
     },
     {
       "date": "2026-07-28",
@@ -274,8 +225,8 @@
       "date": "2026-07-28",
       "kind": "system",
       "commit": "616fa8c191dd31db313c4fc24f380b22f565db17",
-      "zh": "調整撰稿模型署名，並在用量頁分列 GPT-5.6 Sol 參考成本",
-      "en": "Refined writer credits and separated GPT-5.6 Sol reference costs on the usage dashboard"
+      "zh": "調整文章文末的撰稿模型署名",
+      "en": "Refined drafting-model credits in article footers"
     },
     {
       "date": "2026-07-28",
@@ -458,13 +409,6 @@
       "commit": "c207832fa560f119bcaa45a3e0040917f5d97315",
       "zh": "影像配對加入機場別名與主管機關來源備援",
       "en": "Added airport aliases and official-agency source fallback to image matching"
-    },
-    {
-      "date": "2026-07-27",
-      "kind": "feature",
-      "commit": "7969b78c9ec99a472e62c21785cbbca56b490b06",
-      "zh": "新增未設公開導覽入口的模型服務用量與參考成本儀表板",
-      "en": "Added an unlisted model-service usage and reference-cost dashboard"
     },
     {
       "date": "2026-07-27",
