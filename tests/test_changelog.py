@@ -20,11 +20,11 @@ def main() -> None:
     assert raw["schemaVersion"] == 1
     assert raw["historyStart"] == "2026-07-26"
     assert raw["updatedThrough"] == "2026-08-10"
-    assert len(raw["entries"]) == 54
+    assert len(raw["entries"]) == 84
 
     historical = [row["commit"] for row in raw["entries"]
                   if row["commit"] is not None]
-    assert len(historical) == 51
+    assert len(historical) == 81
     assert len(set(historical)) == len(historical)
     assert all(re.fullmatch(r"[0-9a-f]{40}", sha) for sha in historical)
     assert sum(row["commit"] is None for row in raw["entries"]) == 3
@@ -49,12 +49,13 @@ def main() -> None:
         raw, "zh", build.L["zh"]["changeKinds"])
     en = build.changelog_view(
         raw, "en", build.L["en"]["changeKinds"])
-    assert zh["count"] == en["count"] == 54
+    assert zh["count"] == en["count"] == 84
     assert [group["date"] for group in zh["groups"]] \
-        == ["2026-08-10", "2026-07-30", "2026-07-28",
-            "2026-07-27", "2026-07-26"]
+        == ["2026-08-10", "2026-08-06", "2026-08-05",
+            "2026-07-31", "2026-07-30", "2026-07-29",
+            "2026-07-28", "2026-07-27", "2026-07-26"]
     assert zh["groups"][0]["entries"][0]["title"] \
-        == "網站品牌更新為 SKYTICAL，套用新 Logo 與標語「SKYLINE TO AVIATION NEWS」。"
+        == "補齊 7 月 29 日至 8 月 10 日的重要網站功能、編輯流程與介面更新紀錄。"
     assert en["groups"][-1]["entries"][-1]["title"].startswith(
         "Created AVWIRE")
     linked = [entry for group in en["groups"] for entry in group["entries"]
@@ -106,7 +107,7 @@ def main() -> None:
         assert f'href="{expected_path}"' in html
         assert t["footerChangelog"] in html
         assert t["changeNotice"] in html
-        assert len(re.findall(r'class="changelog-entry"', html)) == 54
+        assert len(re.findall(r'class="changelog-entry"', html)) == 84
         assert "javascript:alert" not in html
 
     print("test_changelog: OK")
