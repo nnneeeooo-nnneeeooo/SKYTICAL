@@ -1,5 +1,324 @@
 [
   {
+    "id": "g-20260810-1843-3",
+    "queuedUtc": "2026-08-10T18:43Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "The current event involves a runway overrun classified as a serious incident with ongoing investigations, triggering the accident_or_serious_incident and investigation risk flags, which requires manual review per AVWIRE safety rules.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "S7 Airlines Boeing 737-800 freighter overran the runway while landing in Norilsk, Russia on August 8, 2026.",
+        "sourceQuote": "An S7 Airlines Boeing 737-800 freighter overran the runway while landing in Norilsk, Russia, marking the airline’s second 737 runway overrun in less than six weeks.",
+        "sourceUrl": "https://www.aerotime.aero/articles/s7-second-boeing-737-runway-overrun-six-weeks",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Two crew members were on board along with cargo; no injuries were reported and the aircraft suffered minor damage.",
+        "sourceQuote": "Two crew members were on board along with cargo. No injuries were reported. The aircraft suffered minor damage.",
+        "sourceUrl": "https://www.aerotime.aero/articles/s7-second-boeing-737-runway-overrun-six-weeks",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Russian authorities opened investigations; the West Siberian Transport Prosecutor’s Office is examining compliance with aviation safety requirements while investigators determine the circumstances.",
+        "sourceQuote": "Russian authorities have opened investigations into the incident. The Novosibirsk Transport Prosecutor’s Office said it is examining whether the airline complied with aviation safety requirements, while investigators are working to determine the circumstances surrounding the overrun.",
+        "sourceUrl": "https://www.aerotime.aero/articles/s7-second-boeing-737-runway-overrun-six-weeks",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Less than six weeks earlier, another S7 Boeing 737-800 overran the runway at Mirny Airport on June 30, 2026, registration RA-73359, flight S7 5241, carrying 173 passengers and six crew, with no injuries.",
+        "sourceQuote": "The incident comes less than six weeks after another S7 Boeing 737-800 overran a runway while landing at Mirny Airport (MJZ) in Russia’s Sakha Republic. That aircraft, registration RA-73359, was operating as S7 Flight 5241 from Novosibirsk Tolmachevo Airport (OVB) to Mirny on June 30 when it traveled beyond Runway 25 after landing. That 737 was carrying 173 passengers and six crew members. No injuries were reported.",
+        "sourceUrl": "https://www.aerotime.aero/articles/s7-second-boeing-737-runway-overrun-six-weeks",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The current event involves a runway overrun classified as a serious incident with ongoing investigations, triggering the accident_or_serious_incident and investigation risk flags, which requires manual review per AVWIRE safety rules.",
+      "cat": "safety",
+      "zh": {
+        "title": "S7 Airlines 波音737-800 貨機 挪利斯克 跑道 外滑",
+        "summary": "S7 波音737-800 貨機 挪利斯克 跑道 外滑，再無人員受傷",
+        "body": [
+          "S7 Airlines 波音737-800 貨機 在 2026 年 8 月 8 日降落時跑出 挪利斯克 阿利克機場 （NSK） 跑道末端。",
+          "機上有兩名機組人員及貨物，事件中無人員受傷，機體僅受輕微損傷。",
+          "俄羅斯西西伯利亞運輸檢察署已介入調查，諾西бир斯克運輸檢察署正檢查航空公司是否符合安全要求，並努力釐清事件發生的具體情況。",
+          "這是 S7 Airlines 在短短六週內第二次 波音737-800 跑道外滑事件，前一次發生於 2026 年 6 月 30 日在 萊納 州米爾尼 機場（MJZ）。",
+          "先前事故中的客機 編號 RA-73359，執行 S7 航班 5241，載有 173 名乘客與六名機組人員，亦未造成人員傷亡。"
+        ]
+      },
+      "en": {
+        "title": "S7 Airlines Boeing 737-800 freighter overruns runway at Norilsk airport",
+        "summary": "S7 Airlines 737-800 freighter overruns Norilsk runway; no injuries reported",
+        "body": [
+          "An S7 Airlines Boeing 737-800 freighter overran the runway while landing at Norilsk Alykel Airport (NSK) on August 8, 2026.",
+          "The aircraft carried two crew members and cargo; no injuries were reported and the plane suffered only minor damage.",
+          "Russian authorities have opened investigations, with the West Siberian Transport Prosecutor’s Office examining compliance with aviation safety requirements and investigators working to determine the circumstances.",
+          "This is the second Boeing 737-800 runway overrun for S7 Airlines in less than six weeks; the earlier event occurred on June 30, 2026 at Mirny Airport (MJZ) in the Sakha Republic.",
+          "The previous overrun involved aircraft registration RA-73359 operating as S7 Flight 5241 from Novosibirsk Tolmachevo (OVB) to Mirny, carrying 173 passengers and six crew, with no injuries reported."
+        ]
+      },
+      "flash": {
+        "zh": "S7 波音737-800 貨機 挪利斯克 跑道 外滑",
+        "en": "S7 Airlines 737-800 freighter overruns Norilsk runway",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-08",
+        "sev": "ser",
+        "aircraft": "Boeing 737-800",
+        "operator": "S7 Airlines",
+        "phase": {
+          "zh": "降落",
+          "en": "landing"
+        },
+        "location": {
+          "zh": "挪利斯克 阿利克機場（NSK）",
+          "en": "Norilsk Alykel Airport (NSK)"
+        },
+        "desc": {
+          "zh": "飛機著陸後超出跑道末端，機身受輕微損傷，機上兩人無傷。",
+          "en": "The aircraft went beyond the runway end after landing, sustaining minor damage; the two crew members were uninjured."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "S7 Airlines Boeing 737-800 freighter overran the runway while landing in Norilsk, Russia on August 8, 2026.",
+          "sourceQuote": "An S7 Airlines Boeing 737-800 freighter overran the runway while landing in Norilsk, Russia, marking the airline’s second 737 runway overrun in less than six weeks.",
+          "sourceUrl": "https://www.aerotime.aero/articles/s7-second-boeing-737-runway-overrun-six-weeks",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Two crew members were on board along with cargo; no injuries were reported and the aircraft suffered minor damage.",
+          "sourceQuote": "Two crew members were on board along with cargo. No injuries were reported. The aircraft suffered minor damage.",
+          "sourceUrl": "https://www.aerotime.aero/articles/s7-second-boeing-737-runway-overrun-six-weeks",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Russian authorities opened investigations; the West Siberian Transport Prosecutor’s Office is examining compliance with aviation safety requirements while investigators determine the circumstances.",
+          "sourceQuote": "Russian authorities have opened investigations into the incident. The Novosibirsk Transport Prosecutor’s Office said it is examining whether the airline complied with aviation safety requirements, while investigators are working to determine the circumstances surrounding the overrun.",
+          "sourceUrl": "https://www.aerotime.aero/articles/s7-second-boeing-737-runway-overrun-six-weeks",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Less than six weeks earlier, another S7 Boeing 737-800 overran the runway at Mirny Airport on June 30, 2026, registration RA-73359, flight S7 5241, carrying 173 passengers and six crew, with no injuries.",
+          "sourceQuote": "The incident comes less than six weeks after another S7 Boeing 737-800 overran a runway while landing at Mirny Airport (MJZ) in Russia’s Sakha Republic. That aircraft, registration RA-73359, was operating as S7 Flight 5241 from Novosibirsk Tolmachevo Airport (OVB) to Mirny on June 30 when it traveled beyond Runway 25 after landing. That 737 was carrying 173 passengers and six crew members. No injuries were reported.",
+          "sourceUrl": "https://www.aerotime.aero/articles/s7-second-boeing-737-runway-overrun-six-weeks",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "S7 Airlines",
+          "West Siberian Transport Prosecutor’s Office",
+          "Novosibirsk Transport Prosecutor’s Office"
+        ],
+        "airlines": [
+          "S7 Airlines"
+        ],
+        "aircraft_models": [
+          "Boeing 737-800"
+        ],
+        "airports": [
+          "Norilsk Alykel Airport (NSK)",
+          "Moscow Domodedovo Airport (DME)",
+          "Mirny Airport (MJZ)",
+          "Novosibirsk Tolmachevo Airport (OVB)"
+        ],
+        "locations": [
+          "Norilsk, Russia",
+          "Mirny, Sakha Republic, Russia"
+        ],
+        "flight_numbers": [
+          "S7 Flight 5241"
+        ],
+        "registration_numbers": [
+          "RA-73359"
+        ],
+        "event_dates": [
+          "2026-08-08",
+          "2026-06-30"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260810-1843-3",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "S7 Airlines suffers second Boeing 737 runway overrun in six weeks",
+          "url": "https://www.aerotime.aero/articles/s7-second-boeing-737-runway-overrun-six-weeks",
+          "publishedUtc": "2026-08-10T17:14Z",
+          "summary": "An S7 Airlines Boeing 737-800 freighter overran the runway while landing in Norilsk, Russia, marking the airline’s second… The post S7 Airlines suffers second Boeing 737 runway overrun in six weeks appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
+            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+            "facts": [
+              {
+                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
+                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260810-1748-1",
     "queuedUtc": "2026-08-10T17:48Z",
     "approve": false,
@@ -9774,309 +10093,6 @@
                 "source_quote": "To date, that effort has resulted in more than 4,000 backpacks donated to children across 11 countries.",
                 "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
                 "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260807-1059-2",
-    "queuedUtc": "2026-08-07T10:59Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Mandatory human review required due to ongoing regulatory investigation by CAAM and mandatory drug screening measures implemented following a pilot detention.",
-    "riskFlags": [
-      "investigation",
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "馬來西亞航空集團於2026年8月6日宣布，對旗下航空公司所有機師啟動第一階段強制毒品篩檢，並將擴大至客艙組員。",
-        "sourceQuote": "On August 6, 2026, parent-company Malaysia Aviation Group (MAG) declared that as an “immediate step,” it had begun the first phase of mandatory drug screening for all pilots across its airlines, starting with Malaysia Airlines.",
-        "sourceUrl": "https://www.aerotime.aero/articles/malaysia-airlines-cabin-crew-drug-check-as-mandatory-pilot-screening",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "馬來西亞民航局已展開監管調查，確認該名機師從吉隆坡國際機場出境前是否完全符合航空安全要求。",
-        "sourceQuote": "Malaysia’s Civil Aviation Authority (CAAM) has opened a regulatory investigation in which it will examine whether all aviation security requirements were fully complied with before the pilot departed Kuala Lumpur International Airport (KUL).",
-        "sourceUrl": "https://www.aerotime.aero/articles/malaysia-airlines-cabin-crew-drug-check-as-mandatory-pilot-screening",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "印尼當局指控馬來西亞航空一名二副駕駛抵達雅加達蘇凱諾-哈達國際機場時，行李內藏有約25公斤的毒品。",
-        "sourceQuote": "Indonesian authorities allege that a Malaysia Airlines second officer arrived at Jakarta’s Soekarno-Hatta International Airport (CGK) with approximately 25 kilograms of ecstasy pills and methamphetamine concealed in their luggage .",
-        "sourceUrl": "https://www.aerotime.aero/articles/malaysia-airlines-cabin-crew-drug-check-as-mandatory-pilot-screening",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "馬來西亞航空指出，該名機師當時是以觀察員身分坐在駕駛艙觀察席，並非執飛機師，且事前已休假兩天。",
-        "sourceQuote": "The airline noted that the pilot was travelling in the cockpit jump seat as an observer and was not the pilot flying the aircraft.",
-        "sourceUrl": "https://www.aerotime.aero/articles/malaysia-airlines-cabin-crew-drug-check-as-mandatory-pilot-screening",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Mandatory human review required due to ongoing regulatory investigation by CAAM and mandatory drug screening measures implemented following a pilot detention.",
-      "cat": "reg",
-      "zh": {
-        "title": "馬來西亞航空集團推動機師強制毒品篩檢 民航局展開調查",
-        "summary": "馬來西亞航空集團於2026年8月6日宣布，對旗下機師啟動第一階段強制毒品篩檢，並計畫擴大至客艙組員。此舉係因該公司一名副駕駛於印尼雅加達機場遭指控夾帶毒品入境。馬來西亞民航局已針對吉隆坡國際機場的出境安檢程序展開監管調查。",
-        "body": [
-          "馬來西亞航空母公司馬來西亞航空集團於2026年8月6日宣布，即日起針對旗下航空公司全體機師啟動第一階段強制毒品篩檢，後續並將擴大實施至現役客艙組員。集團強調，該項新措施旨在補充現有的抽檢機制，落實對營運安全與組員勤務狀態的嚴格要求。",
-          "此項政策調整源於印尼當局指控馬來西亞航空一名二副駕駛，於抵達雅加達蘇凱諾-哈達國際機場時行李內藏有約25公斤毒品。馬來西亞民航局已展開監管調查，釐清該人員自吉隆坡國際機場出境前的安檢程序。馬來西亞航空說明，該機師當時係以觀察員身分搭乘，且事前已休假兩天，航班由兩名合格機師全程安全執飛。"
-        ]
-      },
-      "en": {
-        "title": "Malaysia Aviation Group Launches Pilot Drug Testing Following Detention",
-        "summary": "Malaysia Aviation Group declared on August 6, 2026, that it has launched the first phase of mandatory drug screening for all pilots across its airlines, with plans to expand the testing to active cabin crew. The measure follows the arrest of a Malaysia Airlines second officer in Indonesia on drug trafficking allegations at Jakarta's Soekarno-Hatta International Airport. Meanwhile, the Civil Aviation Authority of Malaysia has opened a regulatory investigation to examine whether aviation security requirements were fully complied with before the pilot departed Kuala Lumpur International Airport. Airline officials noted that the off-duty pilot was traveling as an observer.",
-        "body": [
-          "Malaysia Aviation Group (MAG) announced on August 6, 2026, that it has commenced the initial phase of mandatory drug screening for pilots across its subsidiary airlines, beginning with Malaysia Airlines. The company confirmed that the testing requirement will subsequently be expanded to include all active cabin crew members as part of enhanced operational safety measures.",
-          "The action follows allegations by Indonesian authorities that a Malaysia Airlines second officer arrived at Jakarta’s Soekarno-Hatta International Airport carrying approximately 25 kilograms of illicit substances in luggage. The Civil Aviation Authority of Malaysia has launched a regulatory investigation into pre-departure airport security compliance at Kuala Lumpur International Airport. The airline stated the off-duty pilot was seated as an observer, and the flight was safely operated by two qualified crew members."
-        ]
-      },
-      "flash": {
-        "zh": "馬來西亞航空集團啟動機師強制毒品篩檢",
-        "en": "Malaysia Aviation Group launches mandatory pilot drug screening",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "馬來西亞航空集團於2026年8月6日宣布，對旗下航空公司所有機師啟動第一階段強制毒品篩檢，並將擴大至客艙組員。",
-          "sourceQuote": "On August 6, 2026, parent-company Malaysia Aviation Group (MAG) declared that as an “immediate step,” it had begun the first phase of mandatory drug screening for all pilots across its airlines, starting with Malaysia Airlines.",
-          "sourceUrl": "https://www.aerotime.aero/articles/malaysia-airlines-cabin-crew-drug-check-as-mandatory-pilot-screening",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "馬來西亞民航局已展開監管調查，確認該名機師從吉隆坡國際機場出境前是否完全符合航空安全要求。",
-          "sourceQuote": "Malaysia’s Civil Aviation Authority (CAAM) has opened a regulatory investigation in which it will examine whether all aviation security requirements were fully complied with before the pilot departed Kuala Lumpur International Airport (KUL).",
-          "sourceUrl": "https://www.aerotime.aero/articles/malaysia-airlines-cabin-crew-drug-check-as-mandatory-pilot-screening",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "印尼當局指控馬來西亞航空一名二副駕駛抵達雅加達蘇凱諾-哈達國際機場時，行李內藏有約25公斤的毒品。",
-          "sourceQuote": "Indonesian authorities allege that a Malaysia Airlines second officer arrived at Jakarta’s Soekarno-Hatta International Airport (CGK) with approximately 25 kilograms of ecstasy pills and methamphetamine concealed in their luggage .",
-          "sourceUrl": "https://www.aerotime.aero/articles/malaysia-airlines-cabin-crew-drug-check-as-mandatory-pilot-screening",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "馬來西亞航空指出，該名機師當時是以觀察員身分坐在駕駛艙觀察席，並非執飛機師，且事前已休假兩天。",
-          "sourceQuote": "The airline noted that the pilot was travelling in the cockpit jump seat as an observer and was not the pilot flying the aircraft.",
-          "sourceUrl": "https://www.aerotime.aero/articles/malaysia-airlines-cabin-crew-drug-check-as-mandatory-pilot-screening",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Malaysia Aviation Group",
-          "MAG",
-          "Civil Aviation Authority",
-          "CAAM"
-        ],
-        "airlines": [
-          "Malaysia Airlines"
-        ],
-        "aircraft_models": [],
-        "airports": [
-          "Soekarno-Hatta International Airport",
-          "CGK",
-          "Kuala Lumpur International Airport",
-          "KUL"
-        ],
-        "locations": [
-          "Indonesia",
-          "Jakarta"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-06",
-          "August 6, 2026"
-        ]
-      },
-      "eventStatus": "under_investigation",
-      "riskFlags": [
-        "investigation",
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-1059-2",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Malaysia Airlines cabin crew face drug check as mandatory pilot screening begins",
-          "url": "https://www.aerotime.aero/articles/malaysia-airlines-cabin-crew-drug-check-as-mandatory-pilot-screening",
-          "publishedUtc": "2026-08-07T10:02Z",
-          "summary": "All 1,260 Malaysia Airlines pilots are to undergo mandatory drug screening as the airline launches a response to… The post Malaysia Airlines cabin crew face drug check as mandatory pilot screening begins appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Malaysia Aviation Group rolls out stricter drug testing after pilot detained",
-          "summary": "Malaysia Aviation Group rolls out stricter drug testing after pilot detained &nbsp;&nbsp; Reuters",
-          "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQNGFmNGhPbDB0dDA4a2Nabk15cXJwSUdhVU1ZZzhrNjREX0F2RUFTaERvcnJFclZsb2tfdl9WdkdTaDJhamZCb3JnR0NKakRKUzlvQ2FEcmRYTXo4MjFoeV9BWEFMMl9fLXl2d1kyb29VR3ItWWNTc2VlUTJMUExnMmNFTVNuRnZvdkJxQmN2OXJzMmJLTHA0a1F4UVV1M0dqd3dHMjFLcFoxVVRCNFprUXlaLTZuVklVRW9Fc1pvUTRnSzcyT0xDWmZuNnhoQkdGaGVYZV80ZzdDV0M3dGwwQ2VR?oc=5",
-          "source": "Reuters",
-          "companion": true,
-          "publishedUtc": "2026-08-07T04:37Z"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
-            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-            "facts": [
-              {
-                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
-                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
-                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
-            "relationship_type": "other",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
-            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-            "facts": [
-              {
-                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
-                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
-                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
-                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
-                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
-                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
               }
             ]
           }
