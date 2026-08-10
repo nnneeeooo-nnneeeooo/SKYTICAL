@@ -1,5 +1,260 @@
 [
   {
+    "id": "g-20260810-1228-3",
+    "queuedUtc": "2026-08-10T12:29Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The transaction involves a major corporate acquisition and equity investment between Boeing and Archer Aviation, triggering the financial_or_order_claim risk flag.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Boeing and Archer Aviation signed definitive agreements for Archer to acquire Boeing's Wisk Aero, SkyGrid, and Insitu subsidiaries.",
+        "sourceQuote": "The Boeing Company (NYSE: BA) and Archer Aviation Inc. (NYSE: ACHR) today announced the companies have signed definitive agreements in which Archer will acquire Boeing's Wisk Aero, SkyGrid and Insitu subsidiaries.",
+        "sourceUrl": "https://boeing.mediaroom.com/2026-08-10-Archer-to-Shape-Physical-AI-Future-of-Aerospace-and-Defense-with-Acquisition-of-Boeings-Wisk-Aero,-Insitu-and-SkyGrid-Subsidiaries-Boeing-to-Invest-in-Archer-and-Collaborate",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Boeing will take a stake in Archer Aviation and become a strategic partner.",
+        "sourceQuote": "Boeing to take stake and become a strategic partner to Archer",
+        "sourceUrl": "https://boeing.mediaroom.com/2026-08-10-Archer-to-Shape-Physical-AI-Future-of-Aerospace-and-Defense-with-Acquisition-of-Boeings-Wisk-Aero,-Insitu-and-SkyGrid-Subsidiaries-Boeing-to-Invest-in-Archer-and-Collaborate",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Boeing and Archer are entering into a collaboration and technology-sharing arrangement through which Boeing retains access to Wisk core autonomous flight technology.",
+        "sourceQuote": "Boeing and Archer are entering into a collaboration and technology-sharing arrangement through which Boeing will retain access to the Wisk core autonomous flight technology",
+        "sourceUrl": "https://boeing.mediaroom.com/2026-08-10-Archer-to-Shape-Physical-AI-Future-of-Aerospace-and-Defense-with-Acquisition-of-Boeings-Wisk-Aero,-Insitu-and-SkyGrid-Subsidiaries-Boeing-to-Invest-in-Archer-and-Collaborate",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The transaction involves a major corporate acquisition and equity investment between Boeing and Archer Aviation, triggering the financial_or_order_claim risk flag.",
+      "cat": "biz",
+      "zh": {
+        "title": "Archer收購波音旗下Wisk等子公司 波音將入股 Archer 合作",
+        "summary": "Archer收購波音旗下Wisk等子公司；波音將入股Archer並展開合作。",
+        "body": [
+          "Archer Aviation與波音於2026年8月10日簽署確定協議，Archer將收購波音旗下的Wisk Aero、SkyGrid與Insitu等子公司，組合雙方在自主飛行、電動垂直起降（eVTOL）飛機與無人航空載具系統（UAS）領域的技術能力。",
+          "根據交易條款，波音將取得Archer的股權並成為其戰略合作夥伴。兩家公司同步簽署合作與技術共享協議，使波音得以在未來的民用及軍用航空器產品中，繼續使用Wisk的核心自主飛行技術。"
+        ]
+      },
+      "en": {
+        "title": "Archer to Acquire Boeing Subsidiaries Wisk, SkyGrid and Insitu as Boeing Takes Stake",
+        "summary": "Archer Aviation will acquire Boeing subsidiaries Wisk Aero, SkyGrid and Insitu, with Boeing acquiring an Archer stake.",
+        "body": [
+          "Archer Aviation and The Boeing Company announced on August 10, 2026, that they have signed definitive agreements for Archer to acquire Boeing's Wisk Aero, SkyGrid, and Insitu subsidiaries. The agreement combines capabilities in autonomy, electric vertical takeoff and landing aircraft, and unmanned aircraft systems into an end-to-end platform.",
+          "In conjunction with the deal, Boeing will take a stake in Archer and become a strategic partner. Boeing and Archer are also entering into a technology-sharing arrangement through which Boeing retains ongoing access to Wisk's core autonomous flight technology for current and future aerospace programs."
+        ]
+      },
+      "flash": {
+        "zh": "Archer將收購波音旗下Wisk等子公司波音將入股合作",
+        "en": "Archer to acquire Boeing subsidiaries Wisk, SkyGrid and Insitu",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Boeing and Archer Aviation signed definitive agreements for Archer to acquire Boeing's Wisk Aero, SkyGrid, and Insitu subsidiaries.",
+          "sourceQuote": "The Boeing Company (NYSE: BA) and Archer Aviation Inc. (NYSE: ACHR) today announced the companies have signed definitive agreements in which Archer will acquire Boeing's Wisk Aero, SkyGrid and Insitu subsidiaries.",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-08-10-Archer-to-Shape-Physical-AI-Future-of-Aerospace-and-Defense-with-Acquisition-of-Boeings-Wisk-Aero,-Insitu-and-SkyGrid-Subsidiaries-Boeing-to-Invest-in-Archer-and-Collaborate",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Boeing will take a stake in Archer Aviation and become a strategic partner.",
+          "sourceQuote": "Boeing to take stake and become a strategic partner to Archer",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-08-10-Archer-to-Shape-Physical-AI-Future-of-Aerospace-and-Defense-with-Acquisition-of-Boeings-Wisk-Aero,-Insitu-and-SkyGrid-Subsidiaries-Boeing-to-Invest-in-Archer-and-Collaborate",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Boeing and Archer are entering into a collaboration and technology-sharing arrangement through which Boeing retains access to Wisk core autonomous flight technology.",
+          "sourceQuote": "Boeing and Archer are entering into a collaboration and technology-sharing arrangement through which Boeing will retain access to the Wisk core autonomous flight technology",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-08-10-Archer-to-Shape-Physical-AI-Future-of-Aerospace-and-Defense-with-Acquisition-of-Boeings-Wisk-Aero,-Insitu-and-SkyGrid-Subsidiaries-Boeing-to-Invest-in-Archer-and-Collaborate",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "The Boeing Company",
+          "Boeing",
+          "Archer Aviation Inc.",
+          "Archer",
+          "Wisk Aero",
+          "SkyGrid",
+          "Insitu",
+          "Wisk"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-10",
+          "Aug. 10, 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260810-1228-3",
+      "primarySource": "Boeing",
+      "items": [
+        {
+          "title": "Archer to Shape Physical AI Future of Aerospace and Defense with Acquisition of Boeing's Wisk Aero, Insitu and SkyGrid Subsidiaries; Boeing to Invest in Archer and Collaborate",
+          "url": "https://boeing.mediaroom.com/2026-08-10-Archer-to-Shape-Physical-AI-Future-of-Aerospace-and-Defense-with-Acquisition-of-Boeings-Wisk-Aero,-Insitu-and-SkyGrid-Subsidiaries-Boeing-to-Invest-in-Archer-and-Collaborate",
+          "publishedUtc": "2026-08-10T12:00Z",
+          "summary": "",
+          "image": null,
+          "source": "Boeing",
+          "sourceKey": "boeing"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
+            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+            "facts": [
+              {
+                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
+                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
+              },
+              {
+                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
+                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260810-1113-1",
     "queuedUtc": "2026-08-10T11:13Z",
     "approve": false,
@@ -9722,263 +9977,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260807-0354-2",
-    "queuedUtc": "2026-08-07T03:55Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Major financial takeover transaction valuing easyJet at £5.7 billion requires human review under guidelines for large financial claims and acquisitions.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Apollo Global Management has agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion).",
-        "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion)",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, matching the price Apollo indicated on July 10, 2026.",
-        "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management, matching the price Apollo indicated when it outflanked Castlelake on July 10, 2026 .",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The Haji-Ioannou family concert party has irrevocably undertaken to vote for the scheme across 116,061,871 shares, representing about 15.31% of issued capital.",
-        "sourceQuote": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Apollo has committed to no change in the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland.",
-        "sourceQuote": "Apollo has committed to no change to the location or functions of easyJet’s UK headquarters or its air operator certificates in the UK, Austria and Switzerland.",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Completion of the acquisition requires shareholder approval, court sanction, aviation license clearances, and regulatory approvals, with completion expected by the end of the first quarter of 2027.",
-        "sourceQuote": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK. The scheme document is due within 28 days, with completion expected by the end of the first quarter of 2027.",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Evercore advised the board that the cash terms are fair and reasonable, and easyJet directors intend to recommend the scheme unanimously.",
-        "sourceQuote": "Evercore advised the board that the cash terms are fair and reasonable, and the directors intend to recommend the scheme unanimously.",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Major financial takeover transaction valuing easyJet at £5.7 billion requires human review under guidelines for large financial claims and acquisitions.",
-      "cat": "biz",
-      "zh": {
-        "title": "阿波羅管理同意以57億英鎊收購易捷航空",
-        "summary": "阿波羅全球管理公司已同意以大約57億英鎊收購易捷航空，每股現金價格為7.15英鎊。該交易將透過法院批准的計畫安排進行，易捷航空董事會打算一致推薦此方案。哈吉-約安努家族一致行動方已承諾投票支持，交易預計於2027年第一季末前完成。",
-        "body": [
-          "美國私募股權公司阿波羅全球管理公司（Apollo Global Management）已同意以大約57億英鎊（約合76億美元）的建議現金併購案收購易捷航空（easyJet）。根據公布的交易條款，每股易捷航空股票將由Eagle Bidco Ltd以7.15英鎊現金收購，該公司是由阿波羅資本管理公司旗下基金間接持有的澤西島註冊公司。",
-          "此併購案將透過2006年《公司法》第26條規定的法院批准計畫安排（scheme of arrangement）來實施。易捷航空董事會在接獲財務顧問Evercore的意見後表示，現金收購條款公平合理，董事會成員打算一致推薦股東投票贊成該計畫安排。",
-          "創辦人家族方面，由Sir Stelios、Clelia與Polys Haji-Ioannou以及easyGroup Holdings與easyGroup Ltd組成的哈吉-約安努家族（Haji-Ioannou）一致行動方，已不可撤銷地承諾就其持有的116,061,871股（約占已發行股本的15.31%）投票贊成該計畫安排。此外，持有427,767股（約占0.06%）的易捷航空董事也已做出投票承諾。",
-          "為符合歐盟航空公司所有權與控制權法規，交易設計了特定股權結構。阿波羅預計Topco將由展期股東持有45.1%至49.9%、歐盟信託持有最高5%，阿波羅基金持有不超過49.9%。相關章程亦包含加權投票、喪失表決權以及移除非歐盟籍董事等機制。",
-          "阿波羅已承諾，不會改變易捷航空英國總部的地點或職能，亦不會改變其在英國、奧地利與瑞士的航空營運人許可證（AOC）。該交易仍需取得股東批准、法院裁准、航空許可審查、多國合併控制與外國直接投資批准，預計交易將於2027年第一季末前完成。"
-        ]
-      },
-      "en": {
-        "title": "Apollo Agrees £5.7 Billion Cash Takeover of easyJet",
-        "summary": "Apollo Global Management has agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion). Under the terms of the agreement, shareholders will receive £7.15 per share in cash via a court-approved scheme of arrangement. The board of directors of easyJet intends to unanimously recommend the offer following advice from Evercore that the terms are fair and reasonable. The Haji-Ioannou family concert party, holding approximately 15.31% of issued capital, has irrevocably committed to vote in favor of the scheme. The transaction remains subject to regulatory and shareholder approvals, with completion expected by the end of the first quarter of 2027.",
-        "body": [
-          "Apollo Global Management has agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion). Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management. The acquisition price matches the figure Apollo indicated on July 10, 2026, following the decision by competing bidder Castlelake to refrain from making a bid.",
-          "The transaction will be implemented by a court-approved scheme of arrangement under Part 26 of the Companies Act 2006. Following advice from Evercore stating that the cash terms are fair and reasonable, the board of directors of easyJet intends to recommend the scheme unanimously to the airline’s shareholders.",
-          "The Haji-Ioannou family concert party—comprising Sir Stelios, Clelia, and Polys Haji-Ioannou along with entities including easyGroup Holdings and easyGroup Ltd—has irrevocably undertaken to vote for the scheme across 116,061,871 shares, amounting to approximately 15.31% of easyJet’s issued capital. Company directors holding 427,767 shares, representing about 0.06%, have also committed their shares in support of the transaction.",
-          "To maintain compliance with European Union airline ownership and control rules, the deal includes an ownership framework where Apollo expects Topco to be held by rollover shareholders at between 45.1% and 49.9%, an EU trust at up to 5%, and Apollo funds at no more than 49.9%. Provisions include weighted voting, disenfranchisement, and mechanisms to remove non-EU directors.",
-          "Apollo has committed to making no change to the location or functions of easyJet’s UK headquarters or its air operator certificates in the UK, Austria, and Switzerland. Completion remains subject to shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany, and the UK, and foreign direct investment approvals, with completion targeted by the end of the first quarter of 2027."
-        ]
-      },
-      "flash": {
-        "zh": "阿波羅全球管理同意以57億英鎊現金收購易捷航空",
-        "en": "Apollo Global Management agrees £5.7 billion takeover of easyJet",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Apollo Global Management has agreed to a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion).",
-          "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion)",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, matching the price Apollo indicated on July 10, 2026.",
-          "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management, matching the price Apollo indicated when it outflanked Castlelake on July 10, 2026 .",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The Haji-Ioannou family concert party has irrevocably undertaken to vote for the scheme across 116,061,871 shares, representing about 15.31% of issued capital.",
-          "sourceQuote": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Apollo has committed to no change in the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria, and Switzerland.",
-          "sourceQuote": "Apollo has committed to no change to the location or functions of easyJet’s UK headquarters or its air operator certificates in the UK, Austria and Switzerland.",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Completion of the acquisition requires shareholder approval, court sanction, aviation license clearances, and regulatory approvals, with completion expected by the end of the first quarter of 2027.",
-          "sourceQuote": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK. The scheme document is due within 28 days, with completion expected by the end of the first quarter of 2027.",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Evercore advised the board that the cash terms are fair and reasonable, and easyJet directors intend to recommend the scheme unanimously.",
-          "sourceQuote": "Evercore advised the board that the cash terms are fair and reasonable, and the directors intend to recommend the scheme unanimously.",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F5",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "Apollo Global Management",
-          "easyJet",
-          "Eagle Bidco Ltd",
-          "Apollo Capital Management",
-          "easyGroup Holdings",
-          "easyGroup Ltd",
-          "Evercore",
-          "Castlelake"
-        ],
-        "airlines": [
-          "easyJet"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Jersey",
-          "UK",
-          "Austria",
-          "Switzerland",
-          "Egypt",
-          "Germany",
-          "France",
-          "Italy",
-          "Malta",
-          "Spain"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "August 6, 2026",
-          "July 10, 2026",
-          "June 10, 2025",
-          "February 27, 2026",
-          "first quarter of 2027"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-0718-3",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Apollo agrees £5.7 billion takeover of easyJet as Castlelake walks away",
-          "url": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "publishedUtc": "2026-08-06T13:50Z",
-          "summary": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion… The post Apollo agrees £5.7 billion takeover of easyJet as Castlelake walks away appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "No Job Cuts For 12 Months: US Private Equity Firm Plans Out easyJet’s £5.7 Billion Takeover",
-          "url": "https://simpleflying.com/us-private-equity-firm-plans-out-easyjet-takeover/",
-          "publishedUtc": "2026-08-07T03:54Z",
-          "summary": "Apollo’s £5.7 billion takeover will reshape easyJet’s ownership, workforce and commercial strategy.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/04/132-easyjet-airbus-a320neo-lukas-wunderlich-_-shutterstock.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "title": "EasyJet agrees $7.7 billion takeover by Apollo as Castlelake walks away",
-          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOMEk2SWRNS0JWWHJfRFduLXRBY1dkVV9PRU9XLWo2WkM4Z1hBM0R2RmtFLXNoN01jZmVNX2NuYVdWYWh6ZnNQX2FySGI2MkFmQkJOTTVqRVNDWDZwQ2ZqZE9lc2d2RVA3bnNtUHpJelJGckh0QjEtSmlKUzZ1aEwyaHExS3ZYcFpobnc?oc=5",
-          "publishedUtc": "2026-08-06T16:41Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "Apollo to take easyJet private in $7.7 billion deal",
-          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPQ1ZRZVR2aUpCeVY0clcyYXY3Rk8wa3hPNFpLOFBSS3FCOGJxWlo5Qjg4ZllJSjB1S0dZTTZtVGc0UzBQVmV3MG8xOWlRZ3JWTzVMVnZLbVVTc0xONmVSV0lqUGduTlY1LWhuUW5qbjVEMkNKN3p4VDFfNUZad0MwbERrQUx6TURnM3hrTXlzaHFkdw?oc=5",
-          "publishedUtc": "2026-08-06T14:06Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        }
-      ],
-      "updateCandidate": true,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
