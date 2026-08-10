@@ -1,1 +1,48 @@
-[]
+[
+  {
+    "eventId": "fw-8f17ed974d2bd6f7",
+    "queuedUtc": "2026-08-10T23:20:03Z",
+    "notBeforeUtc": "2026-08-10T23:50:03Z",
+    "bootstrap": true,
+    "crossCheck": "confirmed_by_two_sources",
+    "airport": {
+      "icao": "RCTP",
+      "iata": "TPE",
+      "name_zh": "臺灣桃園國際機場",
+      "name_en": "Taiwan Taoyuan International Airport"
+    },
+    "aircraft": {
+      "hex": "885b44",
+      "registration": "HS-VZD",
+      "type": "B38M",
+      "type_name": "Boeing 737 MAX 8",
+      "callsign": "TVJ566"
+    },
+    "operator": {
+      "icao": "TVJ",
+      "iata": "VZ",
+      "name": "Thai Vietjet Air",
+      "name_zh": "泰國越捷航空",
+      "country_or_region": "TH"
+    },
+    "arrival": {
+      "status": "confirmed_arrival",
+      "firstSeenUtc": "2026-08-10T22:03:42Z",
+      "confirmedUtc": "2026-08-10T23:20:03Z",
+      "basis": "位於機場地理圍欄內且 alt_baro 為 ground",
+      "observations": 2
+    },
+    "rarity": {
+      "score": 60,
+      "reasons": [
+        "營運者 TVJ 非 RCTP 常態業者 (+35)",
+        "過去 180 天無相同營運者+機型+機場紀錄 (+25)",
+        "過去 365 天此註冊號未曾抵達 RCTP (+15)",
+        "常見機型 (-15)"
+      ],
+      "watchlisted": false,
+      "combo180": 0,
+      "reg365": 0
+    }
+  }
+]
