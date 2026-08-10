@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-10T10:58Z",
+  "updatedUtc": "2026-08-10T10:59Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -224,6 +224,44 @@
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-10T10:59Z",
+      "finishedUtc": "2026-08-10T10:59Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260810-1059-1",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 807,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 834
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-10T10:57Z",
       "finishedUtc": "2026-08-10T10:58Z",
@@ -124284,63 +124322,6 @@
           "failureClass": "rate_limit",
           "failureStage": "draft",
           "failureMessage": "HTTP 429 rate limit",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-07-30T21:07Z",
-      "finishedUtc": "2026-07-30T21:19Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260730-2107-3",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Simple Flying",
-      "result": "rejected",
-      "articleId": null,
-      "finalStatus": "reject",
-      "finalModel": "nvidia:z-ai/glm-5.2",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 225,
-        "promptAssembly": 0,
-        "drafting": 46201,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 691186
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "nvidia",
-          "model": "z-ai/glm-5.2",
-          "label": "nvidia:z-ai/glm-5.2",
-          "startedUtc": "2026-07-30T21:18Z",
-          "durationMs": 46202,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 46200,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
           "retryPlanned": false,
           "disabledForRun": false
         }
