@@ -1,5 +1,246 @@
 [
   {
+    "id": "g-20260810-1948-9",
+    "queuedUtc": "2026-08-10T19:48Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Large financial acquisition claim (Archer acquiring three Boeing subsidiaries) triggers mandatory manual review per policy.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Archer Aviation agreed to acquire Boeing's subsidiaries Wisk Aero, Insitu and SkyGrid.",
+        "sourceQuote": "Archer Aviation has agreed to acquire three of Boeing’s autonomy and uncrewed systems subsidiaries, Wisk Aero, Insitu and SkyGrid",
+        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The definitive agreements were signed on 10 August 2026.",
+        "sourceQuote": "The two companies announced they had signed definitive agreements on August 10, 2026",
+        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Financial terms were not disclosed; Archer referenced a Form 8‑K filed with the SEC on the same day.",
+        "sourceQuote": "Financial terms were not disclosed in the announcement, with Archer pointing to a Form 8-K filed with the US Securities and Exchange Commission the same day.",
+        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Insitu generates more than $200 million annual revenue and has fielded over 3,500 uncrewed aircraft systems.",
+        "sourceQuote": "generates more than $200 million in annual revenue, and has fielded over 3,500 uncrewed aircraft systems.",
+        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Wisk contributes six generations of eVTOL design, over 1,700 flight tests, and its Generation 6 aircraft first flew in December 2025.",
+        "sourceQuote": "Wisk brings six generations of eVTOL design and more than 1,700 flight tests, along with the flight control computer, sensor suite and radar developed for its autonomous Generation 6 aircraft, which flew for the first time in December 2025.",
+        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The deal is subject to Hart‑Scott‑Rodino waiting period and expected to close by end of 2026.",
+        "sourceQuote": "The deal remains subject to closing conditions, including expiration of the waiting period under the US Hart-Scott-Rodino Antitrust Improvements Act, and is expected to close by the end of 2026.",
+        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Large financial acquisition claim (Archer acquiring three Boeing subsidiaries) triggers mandatory manual review per policy.",
+      "cat": "biz",
+      "zh": {
+        "title": "Archer 收購波音 Wisk、Insitu、SkyGrid",
+        "summary": "Archer 與波音簽署收購協議；Insitu 年營收超 2 億美元",
+        "body": [
+          "Archer Aviation 已同意收購波音旗下的 Wisk Aero、Insitu 及 SkyGrid 三家子公司，雙方於 2026 年 8 月 10 日簽署最終協議。",
+          "財務條款未公開，Archer 指向同日向美國證交會提交的 Form 8-K。",
+          "Insitu 年營收超過 2 億美元，並已部署超過 3,500 架無人機系統。",
+          "Wisk 提供六代 eVTOL 設計及逾 1,700 次試飛，其第六代機型於 2025 年 12 月首飛。",
+          "交易仍須通過美國 Hart‑Scott‑Rodino 反壟斷法等待期，預計於 2026 年底完成。"
+        ]
+      },
+      "en": {
+        "title": "Archer Aviation agrees to acquire Boeing's Wisk, Insitu and SkyGrid subsidiaries",
+        "summary": "Archer signs deal to buy Boeing's Wisk, Insitu, SkyGrid; Insitu revenue over $200M",
+        "body": [
+          "Archer Aviation has agreed to acquire three of Boeing’s autonomy and uncrewed systems subsidiaries — Wisk Aero, Insitu and SkyGrid — with definitive agreements signed on 10 August 2026.",
+          "Financial terms were not disclosed; Archer pointed to a Form 8‑K filed with the US SEC the same day.",
+          "Insitu generates more than $200 million in annual revenue and has fielded over 3,500 uncrewed aircraft systems.",
+          "Wisk brings six generations of eVTOL design and more than 1,700 flight tests; its Generation 6 aircraft first flew in December 2025.",
+          "The transaction remains subject to the Hart‑Scott‑Rodino waiting period and is expected to close by the end of 2026."
+        ]
+      },
+      "flash": {
+        "zh": "Archer 收購波音三子公司",
+        "en": "Archer acquires three Boeing units",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Archer Aviation agreed to acquire Boeing's subsidiaries Wisk Aero, Insitu and SkyGrid.",
+          "sourceQuote": "Archer Aviation has agreed to acquire three of Boeing’s autonomy and uncrewed systems subsidiaries, Wisk Aero, Insitu and SkyGrid",
+          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The definitive agreements were signed on 10 August 2026.",
+          "sourceQuote": "The two companies announced they had signed definitive agreements on August 10, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Financial terms were not disclosed; Archer referenced a Form 8‑K filed with the SEC on the same day.",
+          "sourceQuote": "Financial terms were not disclosed in the announcement, with Archer pointing to a Form 8-K filed with the US Securities and Exchange Commission the same day.",
+          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Insitu generates more than $200 million annual revenue and has fielded over 3,500 uncrewed aircraft systems.",
+          "sourceQuote": "generates more than $200 million in annual revenue, and has fielded over 3,500 uncrewed aircraft systems.",
+          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Wisk contributes six generations of eVTOL design, over 1,700 flight tests, and its Generation 6 aircraft first flew in December 2025.",
+          "sourceQuote": "Wisk brings six generations of eVTOL design and more than 1,700 flight tests, along with the flight control computer, sensor suite and radar developed for its autonomous Generation 6 aircraft, which flew for the first time in December 2025.",
+          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The deal is subject to Hart‑Scott‑Rodino waiting period and expected to close by end of 2026.",
+          "sourceQuote": "The deal remains subject to closing conditions, including expiration of the waiting period under the US Hart-Scott-Rodino Antitrust Improvements Act, and is expected to close by the end of 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Archer Aviation",
+          "Boeing",
+          "Wisk Aero",
+          "Insitu",
+          "SkyGrid"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Thunder",
+          "Halo",
+          "ScanEagle",
+          "Integrator"
+        ],
+        "airports": [],
+        "locations": [
+          "Bingen, Washington"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "August 10, 2026",
+          "December 2025",
+          "June 2025"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260810-1948-9",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Archer to acquire Boeing’s Wisk, Insitu and SkyGrid",
+          "url": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
+          "publishedUtc": "2026-08-10T12:37Z",
+          "summary": "Archer Aviation has agreed to acquire three of Boeing’s autonomy and uncrewed systems subsidiaries, Wisk Aero, Insitu and… The post Archer to acquire Boeing’s Wisk, Insitu and SkyGrid appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Archer to acquire Wisk Aero, SkyGrid and Insitu from Boeing",
+          "summary": "Archer to acquire Wisk Aero, SkyGrid and Insitu from Boeing &nbsp;&nbsp; FlightGlobal",
+          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOMkR4dnVWSTZGQkFDeUxUdllkNFNRQVpCbm0wS2hhMTM4MUpjVU5WYXlmWlE0eEVrZUJmb0NrTnRxdERNVGF6WUJLVHp6RFJ1OVdtTmVjSnpFMXJKR1NMWThHWTgyaV9JQnh2czAwTGU3R1cxZFktUGVHMHRBLTZabmI3V3pDSXZyVUx2NmpsRmM4MFM0QWUzekU4RlRHb0tVTEt5dk5kVQ?oc=5",
+          "source": "FlightGlobal",
+          "companion": true,
+          "publishedUtc": "2026-08-10T14:04Z"
+        },
+        {
+          "title": "Archer to Acquire Wisk, Insitu, SkyGrid as Boeing Expands Asset Sales",
+          "summary": "Archer to Acquire Wisk, Insitu, SkyGrid as Boeing Expands Asset Sales &nbsp;&nbsp; Airways Magazine",
+          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPQWVtRDhyUmZIZjJneUExMW9mTDlrQkpzVDJuUHROWFVESmRlREl5dHQ3elpMcERhb1JXWnNzOVVibHY3Qm1MZFlBR3Z2R2p5dmEtVlJ6ZkNNTFYwdlhpcVNHSTZrRTJBbFpfVDRWQUtCTFB0ajdFUEYyTEtoVnNnT0M2RnA?oc=5",
+          "source": "Airways Magazine",
+          "companion": true,
+          "publishedUtc": "2026-08-10T13:23Z"
+        },
+        {
+          "title": "Archer buys Wisk, Insitu & SkyGrid from Boeing in major eVTOL deal",
+          "summary": "Archer buys Wisk, Insitu & SkyGrid from Boeing in major eVTOL deal &nbsp;&nbsp; Aerospace Global News",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOMmx4TmZrSlQyQ2dlV0Rmbkh1d3NtY3lyaHZrUmxFSEtDUGhsOHYtdy1DOGFRQUZJbnF6eEIydldzMFRFTEFYSjM5THFYaTVsMGd0b0k1TDFqeTh4T3JrNFpmaEpodUdsRkdUa1VvcjNERkN3anZkaVlYYV9lcDYtSVRn?oc=5",
+          "source": "Aerospace Global News",
+          "companion": true,
+          "publishedUtc": "2026-08-10T16:40Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260810-1843-3",
     "queuedUtc": "2026-08-10T18:43Z",
     "approve": false,
@@ -9791,308 +10032,6 @@
                 "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
                 "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
                 "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260807-1319-2",
-    "queuedUtc": "2026-08-07T13:19Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Flight diversion event with stranded passengers on board without AC requires review.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "An Emirates Airbus A380 carrying 373 passengers was diverted to Hangzhou Xiaoshan International Airport after severe weather prevented its scheduled arrival at Shanghai Pudong.",
-        "sourceQuote": "An Emirates Airbus A380 carrying 373 passengers was diverted to Hangzhou Xiaoshan International Airport after severe weather prevented its scheduled arrival at Shanghai Pudong.",
-        "sourceUrl": "https://simpleflying.com/video/373-passengers-stranded-for-10-hours-without-ac-on-emirates-a380-after-late-night-diversion/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Passengers remained stranded inside the aircraft for more than 10 hours without functioning air conditioning.",
-        "sourceQuote": "stranded inside the aircraft for more than 10 hours without functioning air conditioning.",
-        "sourceUrl": "https://simpleflying.com/video/373-passengers-stranded-for-10-hours-without-ac-on-emirates-a380-after-late-night-diversion/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Emirates A380 previously experienced a late-night diversion.",
-        "sourceQuote": "Late-Night Diversion",
-        "sourceUrl": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-        "evidenceScope": "archive",
-        "archiveEventId": "a-20260728-2307-emirates-a380-diverts-overnight-passenge",
-        "archiveContext": true
-      },
-      {
-        "factId": "F4",
-        "claim": "Passengers spent the night on the aircraft on the ramp and eventually reached Shanghai.",
-        "sourceQuote": "After spending the night on the aircraft on the ramp, passengers eventually reached Shanghai.",
-        "sourceUrl": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-        "evidenceScope": "archive",
-        "archiveEventId": "a-20260728-2307-emirates-a380-diverts-overnight-passenge",
-        "archiveContext": true
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Flight diversion event with stranded passengers on board without AC requires review.",
-      "cat": "ops",
-      "zh": {
-        "title": "阿聯酋航空A380轉降杭州373名乘客滯留機上空調故障逾10小時",
-        "summary": "阿聯酋航空一架載有373名乘客的空中巴士A380客機，因惡劣天氣無法按計畫降落上海浦東國際機場，隨後轉降杭州蕭山國際機場。航班轉降後，乘客被滯留於機艙內超過10小時，且機上空調系統無法正常運作。根據本站資料庫紀錄，該航空A380先前曾有深夜轉降並於停機坪過夜之歷史紀錄。",
-        "body": [
-          "根據 Simple Flying 報導，阿聯酋航空（Emirates）一架載有373名乘客的空中巴士（Airbus）A380客機，原定降落上海浦東國際機場，因當地遭逢惡劣天氣無法按計畫抵達，隨後轉降至杭州蕭山國際機場。",
-          "航班轉降杭州後，機上373名乘客被滯留於客艙內長達10小時以上，且期間機上空調系統無法正常運作。本站歷史資料庫紀錄顯示，阿聯酋航空A380客機於2026年7月28日亦曾發生深夜轉降事件，當時乘客於停機坪機艙內過夜，最終抵達上海。"
-        ]
-      },
-      "en": {
-        "title": "Emirates A380 Diverts to Hangzhou, Stranding 373 Passengers Without AC",
-        "summary": "An Emirates Airbus A380 carrying 373 passengers was forced to divert to Hangzhou Xiaoshan International Airport after severe weather prevented its scheduled arrival at Shanghai Pudong. Following the diversion, travelers remained stranded inside the aircraft for over 10 hours without functioning air conditioning. Verified historical records show that an Emirates A380 previously experienced a late-night diversion on July 28, 2026, during which passengers spent the night on the aircraft on the ramp before reaching Shanghai.",
-        "body": [
-          "According to news reports from Simple Flying, an Emirates Airbus A380 aircraft carrying 373 passengers was diverted to Hangzhou Xiaoshan International Airport after severe weather conditions prevented its scheduled arrival at Shanghai Pudong Airport.",
-          "Following the flight diversion to Hangzhou, the travelers remained stranded inside the aircraft for more than 10 hours without functioning air conditioning. Recorded AVWIRE historical data shows that an Emirates Airbus A380 experienced a previous late-night diversion on July 28, 2026, during which passengers spent the night on the aircraft on the ramp and eventually reached Shanghai."
-        ]
-      },
-      "flash": {
-        "zh": "阿聯酋航空A380轉降杭州，乘客滯留機艙逾10小時無空調。",
-        "en": "Emirates A380 diverts to Hangzhou, leaving passengers stranded for over 10 hours without AC.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "An Emirates Airbus A380 carrying 373 passengers was diverted to Hangzhou Xiaoshan International Airport after severe weather prevented its scheduled arrival at Shanghai Pudong.",
-          "sourceQuote": "An Emirates Airbus A380 carrying 373 passengers was diverted to Hangzhou Xiaoshan International Airport after severe weather prevented its scheduled arrival at Shanghai Pudong.",
-          "sourceUrl": "https://simpleflying.com/video/373-passengers-stranded-for-10-hours-without-ac-on-emirates-a380-after-late-night-diversion/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Passengers remained stranded inside the aircraft for more than 10 hours without functioning air conditioning.",
-          "sourceQuote": "stranded inside the aircraft for more than 10 hours without functioning air conditioning.",
-          "sourceUrl": "https://simpleflying.com/video/373-passengers-stranded-for-10-hours-without-ac-on-emirates-a380-after-late-night-diversion/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Emirates A380 previously experienced a late-night diversion.",
-          "sourceQuote": "Late-Night Diversion",
-          "sourceUrl": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-          "evidenceScope": "archive",
-          "archiveEventId": "a-20260728-2307-emirates-a380-diverts-overnight-passenge",
-          "archiveContext": true
-        },
-        {
-          "factId": "F4",
-          "claim": "Passengers spent the night on the aircraft on the ramp and eventually reached Shanghai.",
-          "sourceQuote": "After spending the night on the aircraft on the ramp, passengers eventually reached Shanghai.",
-          "sourceUrl": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-          "evidenceScope": "archive",
-          "archiveEventId": "a-20260728-2307-emirates-a380-diverts-overnight-passenge",
-          "archiveContext": true
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Emirates",
-          "Airbus",
-          "Simple Flying"
-        ],
-        "airlines": [
-          "Emirates"
-        ],
-        "aircraft_models": [
-          "Airbus A380",
-          "A380"
-        ],
-        "airports": [
-          "Hangzhou Xiaoshan International Airport",
-          "Shanghai Pudong"
-        ],
-        "locations": [
-          "Hangzhou Xiaoshan International Airport",
-          "Shanghai Pudong",
-          "Shanghai"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-28",
-          "2026-08-07"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-1319-2",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "373 Passengers Stranded For 10+ Hours Without AC On Emirates A380 After Late-Night Diversion",
-          "url": "https://simpleflying.com/video/373-passengers-stranded-for-10-hours-without-ac-on-emirates-a380-after-late-night-diversion/",
-          "publishedUtc": "2026-08-07T12:31Z",
-          "summary": "An Emirates Airbus A380 carrying 373 passengers was diverted to Hangzhou Xiaoshan International Airport after severe weather prevented its scheduled arrival at Shanghai Pudong. This left the travelers stranded inside the aircraft for more than 10 hours without functioning air conditioning.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/emirates-a380-shanghai.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": true,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260728-2307-emirates-a380-diverts-overnight-passenge",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: A380",
-              "same named core entity: emirates, simple flying",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — 373 Passengers Stranded For 10+ Without AC On Emirates A380...",
-            "source_url": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-            "facts": [
-              {
-                "claim": "Emirates A380 experienced a late-night diversion.",
-                "source_quote": "Late-Night Diversion",
-                "source_url": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-                "source_name": "Simple Flying — 373 Passengers Stranded For 10+ Without AC On Emirates A380..."
-              },
-              {
-                "claim": "Passengers spent the night on the aircraft on the ramp and eventually reached Shanghai.",
-                "source_quote": "After spending the night on the aircraft on the ramp, passengers eventually reached Shanghai.",
-                "source_url": "https://simpleflying.com/373-passengers-stranded-10-hours-emirates-a380-diversion/",
-                "source_name": "Simple Flying — 373 Passengers Stranded For 10+ Without AC On Emirates A380..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: A380, AIRBUS A380",
-              "same named core entity: airbus, simple flying",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
-            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-            "facts": [
-              {
-                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
-                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              },
-              {
-                "claim": "Qantas is opting to utilize the Boeing 787-9 instead.",
-                "source_quote": "as the airline opts for Boeing 787-9.",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              },
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-1631-emirates-engineering-launches-material-f",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: AIRBUS A380",
-              "same named core entity: emirates",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-30",
-            "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u...",
-            "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-            "facts": [
-              {
-                "claim": "Emirates Engineering launched Material Futures Studio, a six-week program challenging university students to reimagine retired aircraft materials and turn them into new products.",
-                "source_quote": "Emirates Engineering has launched Material Futures Studio, a six-week program challenging university students to reimagine retired aircraft materials and turn them into new products.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "The program is led by the Upcycling department within Emirates Engineering and pairs students with aviation professionals to tackle real-world industry challenges.",
-                "source_quote": "Led by the Upcycling department within Emirates Engineering, the initiative pairs students with aviation professionals to tackle real-world industry challenges",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "The first edition brought together 23 students from Khalifa University, Emirates Aviation University, and the University of Sharjah.",
-                "source_quote": "The first edition brought together 23 students from Khalifa University, Emirates Aviation University, and the University of Sharjah.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "The program opened with an orientation and tour where students saw A-checks and C-checks on the Emirates fleet and the upcycling shop where materials are being repurposed.",
-                "source_quote": "students met with senior leaders and got a firsthand look at maintenance operations, including A-checks and C-checks performed on the Emirates fleet, along with the upcycling shop where materials are currently being repurposed.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "Material Futures Studio connects to a broader retrofit program at Emirates, a multi-billion-dollar investment to fully refurbish 219 Airbus A380 and Boeing 777 aircraft.",
-                "source_quote": "Material Futures Studio connects to a broader retrofit program at Emirates, a multi-billion-dollar investment to fully refurbish 219 Airbus A380 and Boeing 777 aircraft aimed at improving the customer experience across its fleet.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
-              },
-              {
-                "claim": "The Aircrafted KIDS initiative has resulted in more than 4,000 backpacks donated to children across 11 countries.",
-                "source_quote": "To date, that effort has resulted in more than 4,000 backpacks donated to children across 11 countries.",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "AeroTime — Emirates Engineering launches Material Futures Studio for u..."
               }
             ]
           }
