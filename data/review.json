@@ -1,5 +1,411 @@
 [
   {
+    "id": "g-20260810-0908-5",
+    "queuedUtc": "2026-08-10T09:08Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves a military aircraft incident in Djibouti with preliminary reporting and unconfirmed details regarding a potential drone crash.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The US Embassy in Djibouti reported an incident involving a US military aircraft near Chabelley Airfield.",
+        "sourceQuote": "The United States (US) Embassy in Djibouti has reported an incident involving a US military aircraft in the vicinity of Chabelley Airfield.",
+        "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Initial reports indicate that there have been no casualties or property damage from the incident.",
+        "sourceQuote": "initial reports indicate that there have been no casualties or property damage",
+        "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The embassy issued an alert stating it was tracking an aircraft in distress in Djiboutian airspace and advised the public to avoid the Chabelley airbase area.",
+        "sourceQuote": "tracking an aircraft in distress in Djiboutian airspace",
+        "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Chabelley Airfield is the US Air Force's largest remotely piloted aircraft base in Africa.",
+        "sourceQuote": "Chabelley Airfield is the US Air Force’s largest remotely piloted aircraft base in Africa",
+        "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "AeroTime contacted US Africa Command in Germany for additional information regarding the incident.",
+        "sourceQuote": "AeroTime has contacted US Africa Command in Germany for more information related to the incident.",
+        "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves a military aircraft incident in Djibouti with preliminary reporting and unconfirmed details regarding a potential drone crash.",
+      "cat": "mil",
+      "zh": {
+        "title": "美國駐吉布地大使館通報美軍軍機於沙貝利機場附近發生事件",
+        "summary": "美國駐吉布地大使館通報軍機事件；初步回報無人員傷亡或財產損失",
+        "body": [
+          "美國駐吉布地大使館通報，一架美軍軍機於沙貝利機場（Chabelley Airfield）附近發生事件。大使館表示，初步報告顯示現場並未造成任何人員傷亡或財產損失。",
+          "在大使館發布該訊息前，曾發出警示指出正監測吉布地領空內一架遇險航空器，並呼籲民眾避開沙貝利基地的周邊區域。美方人員目前正與吉布地主管機關緊密協調處理相關事宜。",
+          "根據 AeroTime 報導，沙貝利機場為美國空軍在非洲最大的遙控無人機基地。報導並指出，已就此事件聯繫位於德國的美國非洲司令部以取得更多資訊。"
+        ]
+      },
+      "en": {
+        "title": "US Embassy Reports Incident Involving Military Aircraft Near Chabelley Airfield",
+        "summary": "US Embassy reports military aircraft incident near Chabelley Airfield with no reported casualties or damage.",
+        "body": [
+          "The United States Embassy in Djibouti has reported an incident involving a US military aircraft in the vicinity of Chabelley Airfield. Embassy officials stated that initial reports indicate there were no casualties or property damage resulting from the event.",
+          "Prior to issuing the report, the embassy released a security alert stating it was tracking an aircraft in distress within Djiboutian airspace. Members of the public were advised to avoid the area surrounding Chabelley Airfield, while US personnel are coordinating closely with Djiboutian authorities to respond.",
+          "According to AeroTime, Chabelley Airfield serves as the US Air Force's largest remotely piloted aircraft base in Africa. The news outlet noted that it has contacted US Africa Command in Germany for additional details regarding the incident."
+        ]
+      },
+      "flash": {
+        "zh": "美國駐吉布地大使館通報軍機事件",
+        "en": "US Embassy in Djibouti reports military aircraft incident",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The US Embassy in Djibouti reported an incident involving a US military aircraft near Chabelley Airfield.",
+          "sourceQuote": "The United States (US) Embassy in Djibouti has reported an incident involving a US military aircraft in the vicinity of Chabelley Airfield.",
+          "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Initial reports indicate that there have been no casualties or property damage from the incident.",
+          "sourceQuote": "initial reports indicate that there have been no casualties or property damage",
+          "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The embassy issued an alert stating it was tracking an aircraft in distress in Djiboutian airspace and advised the public to avoid the Chabelley airbase area.",
+          "sourceQuote": "tracking an aircraft in distress in Djiboutian airspace",
+          "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Chabelley Airfield is the US Air Force's largest remotely piloted aircraft base in Africa.",
+          "sourceQuote": "Chabelley Airfield is the US Air Force’s largest remotely piloted aircraft base in Africa",
+          "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "AeroTime contacted US Africa Command in Germany for additional information regarding the incident.",
+          "sourceQuote": "AeroTime has contacted US Africa Command in Germany for more information related to the incident.",
+          "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "United States Embassy in Djibouti",
+          "US Air Force",
+          "US Africa Command",
+          "AeroTime"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "MQ-9 Reaper",
+          "MQ-9A Reaper"
+        ],
+        "airports": [
+          "Chabelley Airfield"
+        ],
+        "locations": [
+          "Djibouti",
+          "Yemen",
+          "Germany",
+          "Chabelley Cemetery"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "August 9, 2026"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260810-0908-5",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Embassy reports incident involving US military aircraft near Yemen",
+          "url": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
+          "publishedUtc": "2026-08-10T08:07Z",
+          "summary": "The United States (US) Embassy in Djibouti has reported an incident involving a US military aircraft in the… The post Embassy reports incident involving US military aircraft near Yemen appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260810-0908-6",
+    "queuedUtc": "2026-08-10T09:08Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story concerns a high-risk inflight security threat and lockdown protocol on an Alaska Airlines aircraft, requiring human editorial verification of developing safety facts.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "An Alaska Airlines Boeing 737 entered a lockdown protocol following a threat to take over the jet.",
+        "sourceQuote": "Alaska Airlines Boeing 737 Forced Into 'Lockdown Protocol' After Threat To Take Over Jet",
+        "sourceUrl": "https://simpleflying.com/alaska-airlines-737-lockdown-protocol-takeover-threat/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Out-of-control travelers brought the flight to a halt.",
+        "sourceQuote": "Out-of-control travelers bring the flight to a screeching halt.",
+        "sourceUrl": "https://simpleflying.com/alaska-airlines-737-lockdown-protocol-takeover-threat/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story concerns a high-risk inflight security threat and lockdown protocol on an Alaska Airlines aircraft, requiring human editorial verification of developing safety facts.",
+      "cat": "safety",
+      "zh": {
+        "title": "阿拉斯加航空波音737客機據報因劫機威脅實施封鎖程序",
+        "summary": "阿拉斯加航空班機據報遭乘客失控干擾，航機隨後實施封鎖程序。",
+        "body": [
+          "根據 Simple Flying 報導，阿拉斯加航空旗下的一架波音737客機，據報在運作過程中因遭遇威脅奪取的緊急狀況，迫使機組人員採取封鎖程序應對。報導指出，機上出現失控旅客的行為，直接對飛航安全與客機正常營運造成重大影響。",
+          "相關訊息顯示，機上失控旅客引發的突發情況，使該班機的正常飛航營運被迫中斷。針對本起涉及波音737客機的空中威脅與安全封鎖程序，相關主管機關與執法單位將對事件具體經過進行全面調查。"
+        ]
+      },
+      "en": {
+        "title": "Alaska Airlines Boeing 737 Placed in Lockdown Protocol Following Inflight Threat",
+        "summary": "An Alaska Airlines Boeing 737 entered lockdown after passengers threatened to take over the jet.",
+        "body": [
+          "An Alaska Airlines Boeing 737 aircraft was forced into a lockdown protocol following a security threat to take over the jet. According to reports from Simple Flying, the flight encountered an inflight emergency after individuals onboard allegedly threatened to gain control of the aircraft, prompting crew members to initiate safety measures.",
+          "The disruption was caused by out-of-control passengers whose disruptive behavior brought the flight operations to a halt. Further official details regarding the specific flight route, aircraft registration, and event timeline remain under investigation as relevant aviation authorities review the situation."
+        ]
+      },
+      "flash": {
+        "zh": "阿拉斯加航空班機據報遭劫機威脅實施封鎖",
+        "en": "Alaska Airlines Boeing 737 enters lockdown following threat on board",
+        "hot": true
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "An Alaska Airlines Boeing 737 entered a lockdown protocol following a threat to take over the jet.",
+          "sourceQuote": "Alaska Airlines Boeing 737 Forced Into 'Lockdown Protocol' After Threat To Take Over Jet",
+          "sourceUrl": "https://simpleflying.com/alaska-airlines-737-lockdown-protocol-takeover-threat/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Out-of-control travelers brought the flight to a halt.",
+          "sourceQuote": "Out-of-control travelers bring the flight to a screeching halt.",
+          "sourceUrl": "https://simpleflying.com/alaska-airlines-737-lockdown-protocol-takeover-threat/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Alaska Airlines",
+          "Boeing",
+          "Simple Flying"
+        ],
+        "airlines": [
+          "Alaska Airlines"
+        ],
+        "aircraft_models": [
+          "Boeing 737"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-10"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260810-0908-6",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Alaska Airlines Boeing 737 Forced Into 'Lockdown Protocol' After Threat To Take Over Jet",
+          "url": "https://simpleflying.com/alaska-airlines-737-lockdown-protocol-takeover-threat/",
+          "publishedUtc": "2026-08-10T07:34Z",
+          "summary": "Out-of-control travelers bring the flight to a screeching halt.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/alaska-airlines-boeing-737-900er.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: simple flying",
+              "archive predates source by 8 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260810-0712-1",
     "queuedUtc": "2026-08-10T07:12Z",
     "approve": false,
@@ -9398,590 +9804,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260807-0718-12",
-    "queuedUtc": "2026-08-07T07:18Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves a major corporate acquisition valued at 5.7 billion pounds for EasyJet, triggering the financial_or_order_claim risk flag.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "EasyJet confirmed that Apollo reached an agreement to acquire the airline for £5.7 billion.",
-        "sourceQuote": "英國廉價航空公司易捷航空（EasyJet）今天證實，美國私募股權公司阿波羅（Apollo）已以57億英鎊（約新台幣2475億元）達成收購協議。",
-        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "EasyJet stated in an official announcement that both boards agreed to the proposed cash acquisition terms and conditions.",
-        "sourceQuote": "雙方董事會很高興宣布，已就建議之現金收購條款與條件達成協議。",
-        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The deal is expected to complete before the end of the first quarter of next year, and EasyJet's headquarters will remain in Luton.",
-        "sourceQuote": "這筆交易預計將於明年第1季結束前完成。",
-        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Castlelake stated it had no intention to submit a higher offer after previously proposing an acquisition plan of slightly above £5 billion.",
-        "sourceQuote": "美國投資集團Castlelake表示無意提出更高的收購出價；該集團先前曾提出略高於50億英鎊的收購計畫。",
-        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "EasyJet Chief Executive Kenton Jarvis stated that Apollo's experience in aviation makes it a strong partner.",
-        "sourceQuote": "易捷航空執行長賈維士（Kenton Jarvis）今天表示，阿波羅「在航空領域的經驗使其成為強大的合作夥伴」。",
-        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "EasyJet reported that its pre-tax profit fell by 70% year-on-year to £85 million for the period from April to June.",
-        "sourceQuote": "在今年4月至6月期間，易捷航空稅前盈餘比去年同期驟降70%，跌至8500萬英鎊。",
-        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves a major corporate acquisition valued at 5.7 billion pounds for EasyJet, triggering the financial_or_order_claim risk flag.",
-      "cat": "biz",
-      "zh": {
-        "title": "阿波羅以57億英鎊收購易捷航空達成協議",
-        "summary": "英國廉價航空公司易捷航空證實，已與美國私募股權公司阿波羅達成57億英鎊的建議現金收購協議。隨著競爭對手Castlelake宣布無意提出更高出價，雙方董事會已就條款達成一致。交易預估將於明年第一季結束前完成，易捷航空總部將繼續維持設於盧頓鎮。",
-        "body": [
-          "英國廉價航空公司易捷航空正式證實，已與美國私募股權公司阿波羅達成收購協議。阿波羅將以57億英鎊（約新台幣2475億元）的金額達成這項收購案。主要經營歐洲區域航線的易捷航空透過官方聲明表示，雙方董事會非常高興地宣布，已經就建議之現金收購條款與相關條件正式達成協議。",
-          "根據易捷航空補充說明的交易時程，這筆收購案預計將於明年第一季結束前正式完成。在相關交易流程執行完畢後，易捷航空的總部將繼續留在盧頓鎮。盧頓鎮因鄰近倫敦的重要機場而聞名，該據點將持續作為易捷航空營運與管理的核心總部所在地。",
-          "在這項協議達成之前，競標對手美國投資集團Castlelake曾提出略高於50億英鎊的收購計畫。然而Castlelake表示無意提出更高的收購出價，在對手退出競標後，阿波羅順利入主易捷航空。易捷航空執行長賈維士今天對此表示，阿波羅在航空領域擁有的豐富經驗，使其成為易捷航空未來發展的強大合作夥伴。",
-          "除了收購消息之外，易捷航空近日也說明了其近期業績表現。受到中東局勢導致航空燃油價格飆升的影響，公司第三季淨利出現大幅下滑。在今年4月至6月期間，易捷航空的稅前盈餘比去年同期驟降70%，跌至8500萬英鎊。易捷航空是由企業家哈吉-約安努於1990年代創立，當時正值歐洲廉價航空業快速崛起時期。"
-        ]
-      },
-      "en": {
-        "title": "Apollo Reaches Agreement to Acquire EasyJet for 5.7 Billion Pounds",
-        "summary": "British low-cost carrier EasyJet has confirmed reaching an agreement on the terms of a recommended cash acquisition by US private equity firm Apollo, valuing the airline at 5.7 billion pounds. The deal follows rival investment group Castlelake confirming it would not submit a higher bid after previously offering over 5 billion pounds. Both boards have approved the agreed terms and conditions for the cash offer. The transaction is projected to close before the end of the first quarter of next year, and EasyJet will maintain its headquarters at Luton.",
-        "body": [
-          "British low-cost carrier EasyJet has officially confirmed that US private equity firm Apollo has reached an agreement to acquire the airline for 5.7 billion pounds. EasyJet, which primarily operates routes across Europe, announced in a formal statement that the boards of both companies were pleased to confirm an agreement on the terms and conditions of the recommended cash acquisition.",
-          "According to details released by the airline, the transaction is expected to close before the end of the first quarter of next year. Following the completion of the acquisition, EasyJet will retain its corporate headquarters in Luton. The town, well known for its proximity to major London airport infrastructure, will continue to serve as the central location for the company's operations.",
-          "The agreement follows the decision by rival US investment group Castlelake to decline submitting a higher bid. Castlelake had previously presented an acquisition plan valued at slightly above 5 billion pounds before rival interest receded. Speaking on the deal, EasyJet Chief Executive Kenton Jarvis noted that Apollo's extensive background in the aviation sector makes it a strong partner for the airline.",
-          "Alongside the acquisition details, EasyJet also outlined its recent financial performance, noting that third-quarter net profit fell significantly due to surging aviation fuel costs driven by conflict in the Middle East. For the three-month period between April and June, pre-tax profit plunged 70 percent year-on-year to 85 million pounds. EasyJet was established in the 1990s by entrepreneur Stelios Haji-Ioannou during a period of rapid growth for European low-cost air travel."
-        ]
-      },
-      "flash": {
-        "zh": "阿波羅以57億英鎊收購易捷航空達成協議",
-        "en": "Apollo agrees to acquire EasyJet in 5.7 billion pound deal",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "EasyJet confirmed that Apollo reached an agreement to acquire the airline for £5.7 billion.",
-          "sourceQuote": "英國廉價航空公司易捷航空（EasyJet）今天證實，美國私募股權公司阿波羅（Apollo）已以57億英鎊（約新台幣2475億元）達成收購協議。",
-          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "EasyJet stated in an official announcement that both boards agreed to the proposed cash acquisition terms and conditions.",
-          "sourceQuote": "雙方董事會很高興宣布，已就建議之現金收購條款與條件達成協議。",
-          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The deal is expected to complete before the end of the first quarter of next year, and EasyJet's headquarters will remain in Luton.",
-          "sourceQuote": "這筆交易預計將於明年第1季結束前完成。",
-          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Castlelake stated it had no intention to submit a higher offer after previously proposing an acquisition plan of slightly above £5 billion.",
-          "sourceQuote": "美國投資集團Castlelake表示無意提出更高的收購出價；該集團先前曾提出略高於50億英鎊的收購計畫。",
-          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "EasyJet Chief Executive Kenton Jarvis stated that Apollo's experience in aviation makes it a strong partner.",
-          "sourceQuote": "易捷航空執行長賈維士（Kenton Jarvis）今天表示，阿波羅「在航空領域的經驗使其成為強大的合作夥伴」。",
-          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "EasyJet reported that its pre-tax profit fell by 70% year-on-year to £85 million for the period from April to June.",
-          "sourceQuote": "在今年4月至6月期間，易捷航空稅前盈餘比去年同期驟降70%，跌至8500萬英鎊。",
-          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Apollo",
-          "Castlelake"
-        ],
-        "airlines": [
-          "EasyJet",
-          "Aeromexico",
-          "Sun Country Airlines",
-          "Atlas Air",
-          "Air France-KLM",
-          "Virgin Atlantic"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "倫敦",
-          "盧頓鎮",
-          "中東"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-06",
-          "今年4月至6月"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-0718-12",
-      "primarySource": "中央社 CNA 產經證券",
-      "items": [
-        {
-          "title": "阿波羅2475億收購廉航 擊退對手入主易捷航空",
-          "url": "https://www.cna.com.tw/news/aopl/202608070003.aspx",
-          "publishedUtc": "2026-08-06T17:45Z",
-          "summary": "（中央社倫敦6日綜合外電報導）在競爭對手退出競標後，英國廉價航空公司易捷航空（EasyJet）今天證實，美國私募股權公司阿波羅（Apollo）已以57億英鎊（約新台幣2475億元）達成收購協議。",
-          "image": null,
-          "source": "中央社 CNA 產經證券",
-          "sourceKey": "cnataiwanfinance"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260727-0838-presidential-office-rejects-show-claim-s",
-            "relationship_type": "other",
-            "relationship_evidence": [
-              "same named core entity: 中央社",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-27",
-            "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍",
-            "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-            "facts": [
-              {
-                "claim": "Media reported that President Lai’s inspection during the Han Kuang exercise was a \"show\".",
-                "source_quote": "有媒體報導稱總統賴清德在漢光演習期間安排視導是「作秀」",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "The Presidential Office stated that, as commander‐in‐chief, the President’s inspection of a major drill is a responsibility and an obligation.",
-                "source_quote": "作為三軍統帥，總統在國軍重要演訓期間參與視導，是責任也是義務",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "The spokesperson called the \"show\" accusation speculation, a distortion of views, and a defamation of the military and national defence.",
-                "source_quote": "所謂「作秀」之說，內容多屬臆測、觀點扭曲，更污名化國軍與國防，令人遺憾",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "Heads of state attending major military exercises is standard practice in Europe, the US, Japan and South Korea.",
-                "source_quote": "國家元首參與國家重大軍事演訓，無論歐、美、日、韓等國，國際皆然",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "Since Han Kuang 40 the drills have been unscripted and realistic; the President’s visit was scheduled by the Ministry of National Defense according to the exercise progress, with no arranged \"firepower show\".",
-                "source_quote": "自漢光40號演習起，即採取「無劇本、實戰化」演練。總統參與視導，亦由國防部依照演習進程適時規劃，不存在所謂安排「火力秀」的問題",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "Accusations of shifting opposition attacks or staging a performance for voters are baseless and unfair to personnel strengthening defence.",
-                "source_quote": "至於所謂「轉移在野攻擊」、「作秀給選民看」等無端指控，對此刻正為強化國防、守護國家而努力的所有人員極不公平",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260802-0429-royal-schiphol-group-invests-801-million",
-            "relationship_type": "other",
-            "relationship_evidence": [
-              "same named core entity: klm",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals...",
-            "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
-            "facts": [
-              {
-                "claim": "Royal Schiphol Group recorded 37.3 million passengers across its three airports in the first six months of 2026, with Amsterdam Schiphol accounting for 32.7 million.",
-                "source_quote": "The three airports combined saw 37.3 million passengers travel through them between January and June this year. The figure marks a 0.3% year-on-year increase, and Schiphol accounted for a significant chunk of passenger traffic with 32.7 million passengers.",
-                "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
-                "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
-              },
-              {
-                "claim": "Royal Schiphol Group invested €801 million in airport quality during the first half of 2026 as part of a strategy to invest €10 billion by 2035.",
-                "source_quote": "The first six months of the year saw a record €801 million investment in the quality of Royal Schiphol Group’s airports. The investment is aligned with a broader strategy to invest €10 billion in the renewal of Schiphol by 2035.",
-                "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
-                "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
-              },
-              {
-                "claim": "Royal Schiphol Group issued €500 million in bonds to maintain cash flow while funding its airport investment and quality programme.",
-                "source_quote": "To deliver on its investment programme and quality improvements while ensuring a healthy cash flow, Schiphol issued €500 million in bonds.",
-                "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
-                "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
-              },
-              {
-                "claim": "Aircraft belonging to the two quietest categories made up 38% of traffic at Schiphol in the first half of 2026, up from 29% in the same period of 2025.",
-                "source_quote": "This has resulted in 38% of aircraft at the airport being of the two quietest types (compared with 29% in HY2025).",
-                "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
-                "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
-              },
-              {
-                "claim": "As part of the Schiphol Centre Master Plan, the airport paid €317 million to relocate several KLM buildings.",
-                "source_quote": "The airport operator also paid €317 million as part of a wider programme to relocate several KLM buildings under the Schiphol Centre Master Plan.",
-                "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
-                "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260731-1301-klm-shows-off-first-fully-painted-airbus",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: klm",
-              "archive predates source by 6 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
-            "event_date": "2026-07-31",
-            "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900",
-            "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
-            "facts": [
-              {
-                "claim": "荷蘭皇家航空在網路貼文中展示了其首架完成塗裝的空中巴士 A350-900 客機。",
-                "source_quote": "KLM showed off its fully-painted first A350 in a few online posts",
-                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
-                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260807-0009-5",
-    "queuedUtc": "2026-08-07T00:09Z",
-    "approve": false,
-    "writer": "nvidia:deepseek-ai/deepseek-v4-pro",
-    "decisionReason": "Financial takeover claim of approximately £5.7 billion is a major financial transaction. Classified as financial_or_order_claim risk flag.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Apollo Global Management agreed a recommended cash acquisition of easyJet, valuing the airline at approximately £5.7 billion ($7.6 billion).",
-        "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion)",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The announcement was published on August 6, 2026, a day before the deadline both bidders faced and hours after Castlelake confirmed it would not bid.",
-        "sourceQuote": "The announcement was published on August 6, 2026, a day before the deadline both bidders faced and hours after Castlelake confirmed it would not bid.",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management.",
-        "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
-        "sourceQuote": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK, with completion expected by the end of the first quarter of 2027.",
-        "sourceQuote": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK. The scheme document is due within 28 days, with completion expected by the end of the first quarter of 2027.",
-        "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Financial takeover claim of approximately £5.7 billion is a major financial transaction. Classified as financial_or_order_claim risk flag.",
-      "cat": "biz",
-      "zh": {
-        "title": "Apollo 同意以 57 億英鎊收購易捷航空 Castlelake 退出競標",
-        "summary": "Apollo Global Management 於2026年8月6日宣布，已就建議以現金收購易捷航空達成協議，對該航空公司估值約57億英鎊。Castlelake 在截止期限前數小時確認放棄競購。收購將透過法院批准的協議安排進行，每股易捷航空股份可獲7.15英鎊現金或選擇轉換為未上市的新控股公司股份。",
-        "body": [
-          "Apollo Global Management 於2026年8月6日宣布，已就建議以現金收購易捷航空達成協議，對該航空公司估值約57億英鎊（約76億美元）。此公告發布於原競購截止日前一天，數小時前 Castlelake 確認不會參與競標。",
-          "根據協議，由 Apollo Capital Management 附屬基金間接擁有的澤西島註冊公司 Eagle Bidco Ltd 將以每股7.15英鎊現金收購 easyJet 股份。此價格與 Apollo 於2026年7月10日提出的指示性價格相符，並將透過2006年公司法第26部規定的法院批准協議安排實施。",
-          "此報價較 easyJet 每股3.94英鎊的未受影響收市價溢價81%，並較中東衝突爆發前的最後一個交易日2026年2月27日收市價4.64英鎊溢價54%。股東可選擇以所持每股 easyJet 股份換取一股未上市 Topco 股份，惟此選擇設有上限，合計不得超過 Topco 已發行普通股本的49.9%。",
-          "Haji-Ioannou 家族一致行動人士已不可撤銷地承諾投票支持該安排並選擇轉換股份，涉及約佔已發行股本15.31%的116,061,871股股份。持有427,767股（約0.06%）的董事亦已作出相同承諾。",
-          "Apollo 預計 Topco 將由選擇轉換股份的股東持有45.1%至49.9%，歐盟信託持有最多5%，而 Apollo 基金則持有不超過49.9%。相關架構設有國籍聲明、加權投票及剝奪投票權等機制，以確保遵守歐盟航空公司所有權與控制權規則。",
-          "該交易須經股東批准、法院認可、航空執照審批、奧地利、埃及、德國及英國的合併控制審查，以及多個國家的外國直接投資審批。協議文件預計於28日內發布，交易可望於2027年第一季底前完成。"
-        ]
-      },
-      "en": {
-        "title": "Apollo agrees £5.7 billion takeover of easyJet as Castlelake walks away",
-        "summary": "Apollo Global Management announced a recommended cash acquisition of easyJet on August 6, 2026, valuing the airline at approximately £5.7 billion. Castlelake confirmed it would not bid earlier the same day. The deal will be implemented via a court-approved scheme, offering £7.15 per easyJet share in cash or an option for unlisted rollover shares.",
-        "body": [
-          "Apollo Global Management announced a recommended cash acquisition of easyJet on August 6, 2026, valuing the airline at approximately £5.7 billion ($7.6 billion). The announcement was published a day before the deadline both bidders faced and hours after Castlelake confirmed it would not bid.",
-          "Under the terms, each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management. The price matches the figure Apollo indicated on July 10, 2026. The deal will be implemented by a court-approved scheme of arrangement under Part 26 of the Companies Act 2006.",
-          "The price represents an 81% premium to the unaffected closing price of £3.94, and a 54% premium to the £4.64 close on February 27, 2026, the last business day before the Middle East conflict began. Shareholders may instead elect unlisted rollover shares in Topco, one per easyJet share, capped at 49.9% of Topco's issued ordinary share capital.",
-          "The Haji-Ioannou family concert party, holding approximately 15.31% of issued capital, has irrevocably undertaken to vote for the scheme and elect the rollover for all 116,061,871 shares. Directors holding 427,767 shares, about 0.06%, have also committed.",
-          "Apollo expects Topco to be held by rollover shareholders at between 45.1% and 49.9%, an EU trust at up to 5%, and the Apollo funds at no more than 49.9%. The structure includes nationality declarations and weighted voting provisions to remain inside EU airline ownership and control rules.",
-          "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals in multiple countries. The scheme document is due within 28 days, with completion expected by the end of the first quarter of 2027."
-        ]
-      },
-      "flash": {
-        "zh": "Apollo 同意以約57億英鎊收購 easyJet",
-        "en": "Apollo agrees £5.7bn easyJet takeover",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Apollo Global Management agreed a recommended cash acquisition of easyJet, valuing the airline at approximately £5.7 billion ($7.6 billion).",
-          "sourceQuote": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion ($7.6 billion)",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The announcement was published on August 6, 2026, a day before the deadline both bidders faced and hours after Castlelake confirmed it would not bid.",
-          "sourceQuote": "The announcement was published on August 6, 2026, a day before the deadline both bidders faced and hours after Castlelake confirmed it would not bid.",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management.",
-          "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Capital Management",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
-          "sourceQuote": "The Haji-Ioannou family concert party, comprising Sir Stelios, Clelia and Polys Haji-Ioannou and vehicles including easyGroup Holdings and easyGroup Ltd, has irrevocably undertaken to vote for the scheme and elect the rollover across 116,061,871 shares, about 15.31% of issued capital.",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK, with completion expected by the end of the first quarter of 2027.",
-          "sourceQuote": "Completion requires shareholder approval, court sanction, aviation license clearances, merger control in Austria, Egypt, Germany and the UK, and foreign direct investment approvals including in Austria, France, Italy, Malta, Spain and the UK. The scheme document is due within 28 days, with completion expected by the end of the first quarter of 2027.",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Apollo has committed to no change to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria and Switzerland.",
-          "sourceQuote": "Apollo has committed to no change to the location or functions of easyJet's UK headquarters or its air operator certificates in the UK, Austria and Switzerland.",
-          "sourceUrl": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Apollo Global Management",
-          "Eagle Bidco Ltd",
-          "Apollo Capital Management",
-          "easyGroup Holdings",
-          "easyGroup Ltd",
-          "Topco",
-          "Castlelake",
-          "Evercore"
-        ],
-        "airlines": [
-          "easyJet"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Jersey",
-          "UK",
-          "Austria",
-          "Switzerland",
-          "Egypt",
-          "Germany",
-          "France",
-          "Italy",
-          "Malta",
-          "Spain"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-06",
-          "2026-07-10",
-          "2025-06-10",
-          "2026-02-27"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-0009-5",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Apollo agrees £5.7 billion takeover of easyJet as Castlelake walks away",
-          "url": "https://www.aerotime.aero/articles/castlelake-walks-away-easyjet-takeover-apollo",
-          "publishedUtc": "2026-08-06T13:50Z",
-          "summary": "Apollo Global Management has agreed a recommended cash acquisition of easyJet valuing the airline at approximately £5.7 billion… The post Apollo agrees £5.7 billion takeover of easyJet as Castlelake walks away appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "EasyJet agrees $7.7 billion takeover by Apollo as Castlelake walks away",
-          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOMEk2SWRNS0JWWHJfRFduLXRBY1dkVV9PRU9XLWo2WkM4Z1hBM0R2RmtFLXNoN01jZmVNX2NuYVdWYWh6ZnNQX2FySGI2MkFmQkJOTTVqRVNDWDZwQ2ZqZE9lc2d2RVA3bnNtUHpJelJGckh0QjEtSmlKUzZ1aEwyaHExS3ZYcFpobnc?oc=5",
-          "publishedUtc": "2026-08-06T16:41Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "Apollo to take easyJet private in $7.7 billion deal",
-          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPQ1ZRZVR2aUpCeVY0clcyYXY3Rk8wa3hPNFpLOFBSS3FCOGJxWlo5Qjg4ZllJSjB1S0dZTTZtVGc0UzBQVmV3MG8xOWlRZ3JWTzVMVnZLbVVTc0xONmVSV0lqUGduTlY1LWhuUW5qbjVEMkNKN3p4VDFfNUZad0MwbERrQUx6TURnM3hrTXlzaHFkdw?oc=5",
-          "publishedUtc": "2026-08-06T14:06Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "Apollo agrees to buy UK airline EasyJet in $7.7 billion deal as Castlelake withdraws",
-          "summary": "Apollo agrees to buy UK airline EasyJet in $7.7 billion deal as Castlelake withdraws &nbsp;&nbsp; CNBC",
-          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNanBXWEw5alMyMnpncGpTN2RXUmlrY1J3OEI1QWI4RmNTVEQ4X2NfUWZjYWZoekFSbUFibFA5VFRjS05iX3B5REdJcWRON2RpWUlReDhXODNNdVM3SnRNTWRaTWtKLUJLODd5QlA1eGplRlM2cmxwX3ZRSkJRdFVDY1o3NkRlT1VBZW1Sb1Z2RzRwWmxIUGw00gGcAUFVX3lxTE4zUnlHVF9fYTFjakJ5eWZOYVF0emZUVEp5VllBNVBsMUxvS3g1anVGUXVrUWY1V09xc3JkWEFwMnBwTHZJcTI3THhNUFByVE5LQzdiY1VEVVBISy03Ym4xSnJoWVIwWnZUdmx4Y3NiOVRxYWJoM1BkRVhuZ0lxOGhfakZpUWhHbW43N1k1WHFmWVd6cTAxZWZSREc2Vg?oc=5",
-          "source": "CNBC",
-          "companion": true,
-          "publishedUtc": "2026-08-06T14:20Z"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
