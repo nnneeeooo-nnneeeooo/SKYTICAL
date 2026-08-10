@@ -72,6 +72,7 @@ def main() -> None:
         added_airline_codes = {
             "ABL": "BX",
             "AHK": "LD",
+            "CHH": "HU",
             "CXA": "MF",
             "CSZ": "ZH",
             "CYZ": "CF",
@@ -91,6 +92,7 @@ def main() -> None:
             code: airline_codes[code] for code in added_airline_codes
         } == added_airline_codes
         callsign_examples = {
+            "CHH6033": "HU6033",
             "DKH136U": "HO136U",
             "FZA6742": "FU6742",
             "TLM395D": "SL395D",
@@ -112,6 +114,7 @@ def main() -> None:
         expected_names = {
             "ABL": ("BX", "釜山航空", "Air Busan"),
             "AHK": ("LD", "香港華民航空", "Air Hong Kong"),
+            "CHH": ("HU", "海南航空", "Hainan Airlines"),
             "CXA": ("MF", "廈門航空", "Xiamen Airlines"),
             "CSZ": ("ZH", "深圳航空", "Shenzhen Airlines"),
             "CYZ": ("CF", "中國郵政航空", "China Postal Airlines"),
@@ -163,7 +166,11 @@ def main() -> None:
         in js
     )
     assert "function displayAirline(row)" in js
-    assert "airlineIataNames[iataPrefix]" in js
+    assert "const iataCandidates = [" in js
+    assert "configuredIata, rawIata" in js
+    assert "for (const iataPrefix of iataCandidates)" in js
+    assert "const airlineName = airlineIataNames[iataPrefix]" in js
+    assert "if (airlineName) return airlineName" in js
     assert "displayAirline(row)" in js
     assert "function renderCallsign(target, callsign)" in js
     assert "!/[A-Z]/.test(match[1])" in js
