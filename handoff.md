@@ -1,8 +1,8 @@
 # SKYTICAL Copilot Beta 交接
 
 日期：2026-08-11
-分支：`feat/skytical-copilot`
-基準：`main` / `de3b850385e864e5801132c8b1569097e48abff9`
+分支：`agent/copilot-knowledge-web`
+基準：`main`
 
 ## 1. 專案分析結果
 
@@ -85,15 +85,16 @@
 - 每筆有 SHA-256 `contentHash`；未變更文章直接重用，新增、修改、刪除文章才更新對應紀錄。
 - 每次 prompt 最多 5 篇站內結果、總 RAG context 12,000 字元；context 明確標記為 untrusted evidence data。
 - 草稿永不寫入 index，只在當次 encrypted request 內使用。
-- 沒有執行外部 embedding 或高成本全站重新索引；測試只使用 fixture。正式首次啟用時會以本機規則建立約 186 篇已發布文章的輕量索引。
+- 沒有執行外部 embedding 或高成本全站重新索引；正式環境目前以本機規則維護 189 篇已發布文章的輕量索引。
 
 ## 6. 外部 fallback
 
-- 已建立具 HTTPS／文字 sanitization、每日配額與最多 5 筆結果限制的 `ExternalSearch` off-by-default interface，但沒有加入未經 owner 確認的付費搜尋供應商，也沒有新增 `EXTERNAL_SEARCH_API_KEY`。
-- 現階段 `externalSearchConfigured=false`。
-- 使用者明確要求最新／即時資訊時，若沒有外部搜尋能力，直接回覆資料不足並顯示「外部搜尋未設定，無法可靠確認即時資訊」。
-- 站內無可靠來源時不呼叫主 LLM，回覆：「目前 SKYTICAL 的資料不足以可靠確認這件事。」
-- 外部搜尋未設定不會造成 worker crash。
+- Copilot 先使用 SKYTICAL 已發布內容；站內資料不足時，允許模型以自身航空知識回答穩定的背景問題，並清楚標示為模型知識，不再一律拒答。
+- 比較、規格、性能、先進程度、最新／即時等容易過時或需要外部證據的問題，會優先改用 Gemini 的內建 Google Search grounding。
+- `GEMINI_API_KEY` 存在時，status 回覆 `externalSearchConfigured=true` 與 `webGroundingProvider=gemini-google-search`；沒有另增 `EXTERNAL_SEARCH_API_KEY`。
+- Grounded 回答最多顯示 5 筆 Google 回傳的 HTTPS citation，並在隔離 iframe 中原樣顯示 Google Search Suggestions。Grounded 結果不再交給第二個模型重寫，避免 citation 與回答失去對應。
+- 最新／即時問題若無法取得完整 grounding，仍安全拒答；一般穩定背景題則可退回模型航空知識，並標示「非即時」。
+- 既有 `ExternalSearch` interface 保留供測試或未來自訂供應商使用，但正式 Gemini 路徑不會把外部網頁永久寫入 RAG index。
 
 ## 7. Guardrail pipeline
 
@@ -104,10 +105,11 @@
 3. 中英文 jailbreak／prompt injection 規則式偵測。
 4. deterministic 航空範圍分類；off-topic、unclear、injection 直接固定回覆。
 5. rate limit、duplicate cooldown、daily limit 與 budget 檢查。
-6. 通過後才執行站內 RAG。
-7. 有可靠來源才呼叫主 LLM。
-8. model output schema、secret／internal path、來源與 URL 檢查。
-9. 前端以安全 DOM API 顯示結果。
+6. 通過後先執行站內 RAG，SKYTICAL 來源始終優先。
+7. 比較／規格／性能／時效性問題優先使用 Gemini Google Search grounding；穩定背景題可使用模型航空知識。
+8. 最新／即時問題只有在 grounding 完整時才回答；其他問題會明確區分站內來源、Google 搜尋與模型知識。
+9. model output schema、secret／internal path、來源與 URL 檢查。
+10. 前端以安全 DOM API 顯示結果；Google Search Suggestions 只在 sandboxed iframe 顯示。
 
 限制：最多 500 字元問題、最近 6 則對話、history 3,000 字元、草稿正文 12,000 字元、選取文字 4,000 字元、RAG context 12,000 字元。
 
@@ -117,7 +119,7 @@
 
 - 每分鐘 8 次。
 - 每日 50 次主 LLM attempt。
-- 外部搜尋每日上限保留為 10 次，但目前沒有啟用外部 provider。
+- Google Search grounded request 每日上限 10 次；一次 grounded request 可能由 Google 拆成多個實際搜尋 query，實際帳單以 Google 計量為準。
 - 每日估計預算上限 USD 5。
 - 相同問題 30 秒 cooldown。
 - Actions `concurrency` 限制同時只有一個 Copilot worker。
@@ -163,7 +165,7 @@ OPENROUTER_API_KEY=
 AVWIRE_PROVIDER_ORDER=
 ```
 
-沒有新增真實 secret；`.env.example` 全部是空值／安全預設。
+沒有新增真實 secret；`.env.example` 全部是空值／安全預設。既有 `GEMINI_API_KEY` 同時供一般 Gemini provider 與 Copilot Google Search grounding 使用。
 
 ## 11. Feature flag 狀態
 
@@ -178,12 +180,12 @@ AVWIRE_PROVIDER_ORDER=
 
 - `.venv/Scripts/python.exe -m py_compile pipeline/copilot.py pipeline/usage.py pipeline/build.py`
 - `node.exe --check static/copilot.js`
-- `.venv/Scripts/python.exe -m pytest -q tests/test_copilot.py`：`23 passed`
+- `.venv/Scripts/python.exe -m pytest -q tests/test_copilot.py`：`26 passed`
 - `.venv/Scripts/python.exe tests/test_usage.py`：`46 checks passed, 0 failed`
 - `.venv/Scripts/python.exe tests/test_manual_draft.py`：`62 checks passed, 0 failed`
 - 逐一獨立執行所有既有 `tests/test_*.py`：27 個腳本中 25 個通過。
-- `SKYTICAL_COPILOT_ENABLED=false` production build：186 articles、480 pages、0 failed。
-- 私有預覽 build（manual token、usage token、feature flag true）：186 articles、482 pages、0 failed。
+- `SKYTICAL_COPILOT_ENABLED=false` production build：189 articles、500 pages、0 failed。
+- 私有預覽 build（manual token、usage token、feature flag true）：189 articles、502 pages、0 failed。
 - 私有預覽檢查：補稿台含 Copilot 面板、usage 頁含 Copilot 區塊；公開首頁、英文首頁、雙語文章頁、sitemap、robots 無 Copilot 字樣或資產引用。
 - Browser 視覺 QA：1440×900 與 390×844 皆無水平 overflow；手機版鎖定列與操作列為單欄；未提供 PAT 時 controls 保持 disabled；console 0 errors。
 - `git diff --check` 通過。
@@ -200,19 +202,20 @@ AVWIRE_PROVIDER_ORDER=
 - 沒有傳統 HTTP application server；三個 `/api/admin/copilot/*` 是 encrypted job route contract，不是可由外部呼叫的 HTTP endpoint。
 - 現有私人補稿台本身仍是 secret-path 靜態頁；Copilot 額外要求 GitHub owner/admin PAT 並在 worker 端再次檢查 owner，但無法把靜態 HTML 本身變成 session-protected route。
 - 限流範圍是 authenticated admin identity，不是 IP。
-- 外部搜尋未設定；最新／即時問題會安全拒答。
-- 沒有 embedding 或向量資料庫；目前採適合 186 篇資料量的詞彙索引。資料規模大幅增加後需重新評估。
-- 尚未用真實 PAT、Actions secrets 或模型執行 live end-to-end job，因為這會在 `main` 產生 commit 且可能消耗真實 API 額度。
-- `data/copilot/index.json`、rate state 與 encrypted outbox 會由首次啟用後的 Actions job 建立；本次沒有建立 production 資料。
+- 模型自身知識可能過時或不完整；介面會標示來源模式，最新／即時問題不得以未 grounding 的模型知識冒充查證結果。
+- Google Search grounding 可能產生額外費用；每日 10 次限制計算的是 Copilot grounded request，不保證等於供應商帳單中的搜尋 query 數。
+- Grounded 回答必須連同 Google Search Suggestions 顯示；目前以不允許 script、form 或 same-origin 存取的 sandboxed iframe 隔離第三方 HTML。
+- 沒有 embedding 或向量資料庫；目前採適合 189 篇資料量的詞彙索引。資料規模大幅增加後需重新評估。
+- 既有 encrypted job 流程已由 owner 在正式環境實際使用；本次新增的 Google grounded 比較題仍需在部署後以單一真實問題確認供應商金鑰、引用與 Search Suggestions。
+- `data/copilot/index.json`、rate state 與 encrypted outbox 已由 Actions job 建立；repository 只保存加密 job payload，不保存明文問題與草稿。
 - 每次 request 透過 GitHub commit 傳輸，延遲高於一般 HTTP API，適合私人 Beta，不適合公開即時聊天。
 
-## 14. 下一步建議
+## 14. 操作與驗收
 
-1. 先以 draft PR 進行安全與 UI review，不要合併或部署。
-2. 若接受 encrypted GitHub Actions job 架構，於受控時段設定 repository variable `SKYTICAL_COPILOT_ENABLED=true`，再由 owner 手動決定何時合併與部署。
-3. 用 owner 的最小權限 fine-grained PAT 做一次單一 status job，再做單一站內問答 job；確認 outbox 解密、usage dashboard 與預算狀態。
-4. 若硬性要求真正 `/api/admin/*`、session admin role、每 IP 限流或低延遲，先選定私有 server runtime、資料庫／rate-limit store 與部署安全模型，再將現有純函式 core 移到該 runtime；不要把 GitHub Pages 當成 application server。
-5. 外部搜尋 provider 必須另經 owner 核准可信來源、成本、quota、SSRF 防護與內容授權後才啟用。
+1. 在私人補稿台送出一般航空背景題，來源模式應標示 SKYTICAL 或模型航空知識，不應只因站內沒有直接比較文章而拒答。
+2. 送出 A350 與 787 的先進程度、規格或性能比較題，來源模式應包含 Google 搜尋，回答應給出有條件的結論並顯示 citation 與 Search Suggestions。
+3. 送出「最新／目前／今日」問題；Google grounding 失敗時應明確拒答，不得退回未查證的即時斷言。
+4. status 應顯示 `modelKnowledgeEnabled=true`；Actions 有 `GEMINI_API_KEY` 時也應顯示 `externalSearchConfigured=true`。
 
 ## 15. Production 發布方式
 

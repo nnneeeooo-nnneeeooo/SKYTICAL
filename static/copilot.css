@@ -129,6 +129,19 @@
 .copilot-source-card span { margin-top: 6px; color: #91a6b5; font-size: .74rem; }
 .copilot-empty-source { color: #91a6b5; font-size: .82rem; }
 
+.copilot-search-suggestions { margin-top: 18px; }
+.copilot-search-suggestions h3 {
+  margin-bottom: 10px;
+  color: var(--copilot-white);
+}
+.copilot-search-suggestions iframe {
+  width: 100%;
+  min-height: 72px;
+  border: 1px solid #35475a;
+  border-radius: 10px;
+  background: #fff;
+}
+
 .copilot-suggestion {
   margin-top: 18px;
   padding: 16px;
