@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT / "pipeline"))
 
 import build  # noqa: E402
 import copilot  # noqa: E402
+import providers  # noqa: E402
 import usage  # noqa: E402
 
 
@@ -101,6 +102,28 @@ class FakeProvider:
         if self.fail:
             raise RuntimeError("provider unavailable")
         return self.result
+
+
+class FakeGroundedProvider(FakeProvider):
+    def __init__(self, result=None, fail=False):
+        super().__init__(result=result, fail=fail)
+        self.name = "gemini"
+        self.google_search_used = False
+        self.grounding_sources = []
+        self.search_suggestions_html = ""
+
+    def draft_grounded(self, system_prompt, user_prompt, schema):
+        assert "webGroundingRequested" in user_prompt
+        self.google_search_used = True
+        self.grounding_sources = [{
+            "title": "Airbus A350 official facts",
+            "url": "https://www.airbus.com/en/products-services/commercial-aircraft/passenger-aircraft/a350-family",
+        }, {
+            "title": "Boeing 787 official facts",
+            "url": "https://www.boeing.com/commercial/787",
+        }]
+        self.search_suggestions_html = "<div>Google Search suggestions</div>"
+        return super().draft(system_prompt, user_prompt, schema)
 
 
 @pytest.fixture
@@ -218,7 +241,7 @@ def test_successful_answer_returns_sources_and_preview_only(monkeypatch, tmp_pat
         provider_factory=lambda: [provider],
     )
     assert result["status"] == "success"
-    assert result["sourceMode"] == "SKYTICAL 站內資料"
+    assert result["sourceMode"] == "SKYTICAL＋模型航空知識"
     assert result["sources"][0]["slug"] == "a-a350"
     assert result["suggestion"]["title"] == "A350 與 787 設計差異"
     assert "publish" not in result and "draftWrite" not in result
@@ -233,11 +256,11 @@ def test_latest_without_external_search_fails_safely(monkeypatch, tmp_path,
         request("今天最新的 A350 航電消息是什麼？"), actor=ACTOR, token=TOKEN,
         index_path=tmp_path / "index.json", articles_dir=articles,
         state_path=tmp_path / "state.json",
-        provider_factory=lambda: pytest.fail("model must not run"),
+        provider_factory=lambda: [],
     )
     assert result["status"] == "insufficient"
     assert result["answer"] == copilot.INSUFFICIENT_REPLY
-    assert "外部搜尋未設定" in result["note"]
+    assert "即時網路搜尋" in result["note"] or "可用且可顯示" in result["note"]
 
 
 def test_configured_external_fallback_is_bounded_and_labeled(monkeypatch,
@@ -271,7 +294,7 @@ def test_configured_external_fallback_is_bounded_and_labeled(monkeypatch,
         provider_factory=lambda: [FakeProvider()], external_search=external,
     )
     assert result["status"] == "success"
-    assert result["sourceMode"] == "外部公開資料"
+    assert result["sourceMode"] == "外部公開資料＋模型航空知識"
     assert result["externalSearchUsed"] is True
     assert result["sources"][0]["sourceType"] == "external"
     assert external.calls == 1
@@ -287,15 +310,103 @@ def test_sufficient_site_results_do_not_call_external(tmp_path, quiet_usage):
     articles = tmp_path / "articles"
     write_articles(articles, [article()])
     result = copilot.answer_request(
-        request(), actor=ACTOR, token=TOKEN,
+        request("這篇 A350 文章的重點是什麼？"), actor=ACTOR, token=TOKEN,
         index_path=tmp_path / "index.json", articles_dir=articles,
         state_path=tmp_path / "state.json",
         provider_factory=lambda: [FakeProvider()],
         external_search=MustNotSearch(),
     )
     assert result["status"] == "success"
-    assert result["sourceMode"] == "SKYTICAL 站內資料"
+    assert result["sourceMode"] == "SKYTICAL＋模型航空知識"
     assert result["externalSearchUsed"] is False
+
+
+def test_comparison_uses_google_grounding_even_with_site_results(tmp_path,
+                                                                 quiet_usage):
+    articles = tmp_path / "articles"
+    write_articles(articles, [
+        article(f"a-a350-{index}", f"A350 與 787 比較資料 {index}")
+        for index in range(5)
+    ])
+    provider = FakeGroundedProvider()
+    result = copilot.answer_request(
+        request("A350 跟 787 誰比較先進？"), actor=ACTOR, token=TOKEN,
+        index_path=tmp_path / "index.json", articles_dir=articles,
+        state_path=tmp_path / "state.json",
+        provider_factory=lambda: [FakeProvider(), provider],
+    )
+    assert result["status"] == "success"
+    assert result["sourceMode"] == "SKYTICAL＋Google 搜尋＋模型知識"
+    assert result["externalSearchUsed"] is True
+    assert result["searchSuggestionsHtml"] == "<div>Google Search suggestions</div>"
+    assert [row["sourceType"] for row in result["sources"]][:2] == [
+        "google-search", "google-search"]
+    assert len(result["sources"]) == 5
+    assert result["model"] == provider.label
+
+
+def test_gemini_grounded_call_extracts_only_https_citations(monkeypatch):
+    class Response:
+        status_code = 200
+        text = ""
+        headers = {}
+
+        @staticmethod
+        def json():
+            return {
+                "usageMetadata": {
+                    "promptTokenCount": 10,
+                    "candidatesTokenCount": 5,
+                },
+                "candidates": [{
+                    "finishReason": "STOP",
+                    "content": {"parts": [{"text": json.dumps({
+                        "answer": "兩款機型需按面向比較。",
+                        "suggestion": {},
+                    }, ensure_ascii=False)}]},
+                    "groundingMetadata": {
+                        "webSearchQueries": ["A350 787 technology comparison"],
+                        "searchEntryPoint": {
+                            "renderedContent": "<div>Google suggestions</div>"
+                        },
+                        "groundingChunks": [
+                            {"web": {"title": "Airbus", "uri": "https://www.airbus.com/a350"}},
+                            {"web": {"title": "unsafe", "uri": "http://example.com"}},
+                        ],
+                    },
+                }],
+            }
+
+    captured = {}
+    provider = providers.GeminiProvider("gemini-3.6-flash")
+
+    def fake_post(payload, repair=False):
+        captured.update(payload)
+        return Response()
+
+    monkeypatch.setattr(provider, "_post", fake_post)
+    result = provider.draft_grounded("system", "prompt", copilot._copilot_schema())
+    assert result["answer"] == "兩款機型需按面向比較。"
+    assert captured["tools"] == [{"googleSearch": {}}]
+    assert provider.google_search_used is True
+    assert provider.search_query_count == 1
+    assert provider.grounding_sources == [{
+        "title": "Airbus", "url": "https://www.airbus.com/a350"}]
+    assert provider.search_suggestions_html == "<div>Google suggestions</div>"
+
+
+def test_no_site_results_can_use_model_aviation_knowledge(tmp_path, quiet_usage):
+    provider = FakeProvider()
+    result = copilot.answer_request(
+        request("Boeing 787 的 ETOPS 是什麼？"), actor=ACTOR, token=TOKEN,
+        index_path=tmp_path / "index.json", articles_dir=tmp_path / "articles",
+        state_path=tmp_path / "state.json",
+        provider_factory=lambda: [provider],
+    )
+    assert result["status"] == "success"
+    assert result["sourceMode"] == "模型航空知識（非即時）"
+    assert result["sources"] == []
+    assert "時效限制" in result["note"]
 
 
 def test_draft_summary_is_not_misclassified_as_live_query(monkeypatch, tmp_path,
@@ -382,11 +493,14 @@ def test_server_side_feature_flag_and_owner_authorization(monkeypatch, tmp_path,
     disabled = copilot.handle_request(status, actor=ACTOR, owner=ACTOR, token=TOKEN)
     assert disabled["statusCode"] == 404
     monkeypatch.setenv("SKYTICAL_COPILOT_ENABLED", "true")
+    monkeypatch.setenv("GEMINI_API_KEY", "fixture-key")
     allowed = copilot.handle_request(
         status, actor=ACTOR, owner=ACTOR, token=TOKEN,
         index_path=tmp_path / "index.json")
     assert allowed["statusCode"] == 200
     assert allowed["rateLimitScope"] == "authenticated-admin-identity"
+    assert allowed["externalSearchConfigured"] is True
+    assert allowed["modelKnowledgeEnabled"] is True
 
 
 def test_index_route_is_repeatable(monkeypatch, tmp_path, quiet_usage):
@@ -456,7 +570,9 @@ def test_manual_page_feature_flag_and_public_surface(monkeypatch):
         public = (ROOT / "templates" / name).read_text(encoding="utf-8").lower()
         assert "copilot" not in public
     build_source = (ROOT / "pipeline" / "build.py").read_text(encoding="utf-8").lower()
-    sitemap_region = build_source[build_source.find("sitemap"):]
+    sitemap_start = build_source.index("def write_search_discovery_files")
+    sitemap_end = build_source.index("\ndef main", sitemap_start)
+    sitemap_region = build_source[sitemap_start:sitemap_end]
     assert "copilot" not in sitemap_region
 
 
@@ -468,6 +584,8 @@ def test_client_requires_admin_and_manual_confirmation():
     assert "window.confirm" in js
     assert "mode-manual" in js and "copilot-undo" in html
     assert "innerHTML" not in js
+    assert 'sandbox="allow-popups allow-popups-to-escape-sandbox"' in html
+    assert "searchSuggestionsFrame.srcdoc" in js
     assert "OPENCODE_API_KEY" not in js and "GEMINI_API_KEY" not in js
     assert "copilot" not in (ROOT / "templates" / "base.html").read_text(
         encoding="utf-8").lower()
