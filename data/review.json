@@ -1,5 +1,530 @@
 [
   {
+    "id": "g-20260811-0924-1",
+    "queuedUtc": "2026-08-11T09:24Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Ground safety incident involving aircraft collision on active taxiway requires mandatory manual review.",
+    "riskFlags": [
+      "accident_or_serious_incident"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "On August 10, 2026, an airport service vehicle collided with a taxiing Hawker Beechcraft 400A private jet at Milan Linate Airport.",
+        "sourceQuote": "On August 10, 2026, a Hawker Beechcraft 400A was captured on video navigating along the taxiway when the Panda type vehicle crossed the tarmac and struck the front of the jet.",
+        "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The private jet is registered I-AERB and operated by Slam Lavori Aere.",
+        "sourceQuote": "The aircraft, registered I-AERB, is owned and operated by Slam Lavori Aere",
+        "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "No serious injuries were reported following the ground collision.",
+        "sourceQuote": "there have been no reports of serious injuries suffered by anyone in the crash.",
+        "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Operations at Milan Linate Airport were paused for 40 minutes, leading to flight diversions for ITA Airways and KLM.",
+        "sourceQuote": "operations at the airport were paused for 40 minutes, and an ITA Airways flight was diverted to Bergamo (BGY), and a KLM flight to Milan Malpensa Airport (MXP).",
+        "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Ground safety incident involving aircraft collision on active taxiway requires mandatory manual review.",
+      "cat": "safety",
+      "zh": {
+        "title": "米蘭林納特機場地面車輛碰撞滑行中私人噴射機",
+        "summary": "義大利米蘭林納特機場發生地勤車輛碰撞私人噴射機事故；航勤短暫暫停四十分鐘",
+        "body": [
+          "義大利米蘭林納特機場（LIN）於2026年8月10日發生一起地面碰撞事件。一架準備前往跑道滑行的 Hawker Beechcraft 400A 私人噴射機，在滑行道上遭一輛機場地勤服務車輛直接撞擊機鼻前端。碰撞造成地勤車輛嚴重受損，私人噴射機機身亦因衝擊力道偏轉。",
+          "涉事私人噴射機國籍標誌暨登記號碼為 I-AERB，由 Slam Lavori Aere 營運。事發後無人受重傷回報。受此事件影響，米蘭林納特機場暫停作業40分鐘，期間包含義大利航空及荷蘭皇家航空等航班進行轉降。"
+        ]
+      },
+      "en": {
+        "title": "Airport Ground Vehicle Collides with Taxiing Private Jet at Milan Linate Airport",
+        "summary": "A ground vehicle collided with a taxiing private jet at Milan Linate Airport, briefly pausing airport operations.",
+        "body": [
+          "An airport service vehicle collided with a taxiing Hawker Beechcraft 400A private jet on an active taxiway at Milan Linate Airport (LIN) in Italy on August 10, 2026. The collision severely damaged the service vehicle and turned the aircraft on the taxiway, but no serious injuries were reported.",
+          "The aircraft, registered I-AERB, is operated by Slam Lavori Aere. Airport operations at Milan Linate were paused for 40 minutes due to the ground incident, leading to flight diversions including an ITA Airways flight to Bergamo (BGY) and a KLM flight to Milan Malpensa Airport (MXP)."
+        ]
+      },
+      "flash": {
+        "zh": "米蘭林納特機場發生地勤車輛碰撞私人噴射機事件",
+        "en": "Ground vehicle collides with private jet at Milan Linate Airport",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-10",
+        "sev": "inc",
+        "aircraft": "Hawker Beechcraft 400A",
+        "operator": "Slam Lavori Aere",
+        "phase": {
+          "zh": "滑行",
+          "en": "Taxi"
+        },
+        "location": {
+          "zh": "義大利米蘭林納特機場",
+          "en": "Milan Linate Airport, Italy"
+        },
+        "desc": {
+          "zh": "地勤服務車輛於滑行道撞擊滑行中的私人噴射機機鼻",
+          "en": "An airport service vehicle collided with the front of a taxiing private jet on a taxiway."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "On August 10, 2026, an airport service vehicle collided with a taxiing Hawker Beechcraft 400A private jet at Milan Linate Airport.",
+          "sourceQuote": "On August 10, 2026, a Hawker Beechcraft 400A was captured on video navigating along the taxiway when the Panda type vehicle crossed the tarmac and struck the front of the jet.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The private jet is registered I-AERB and operated by Slam Lavori Aere.",
+          "sourceQuote": "The aircraft, registered I-AERB, is owned and operated by Slam Lavori Aere",
+          "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "No serious injuries were reported following the ground collision.",
+          "sourceQuote": "there have been no reports of serious injuries suffered by anyone in the crash.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Operations at Milan Linate Airport were paused for 40 minutes, leading to flight diversions for ITA Airways and KLM.",
+          "sourceQuote": "operations at the airport were paused for 40 minutes, and an ITA Airways flight was diverted to Bergamo (BGY), and a KLM flight to Milan Malpensa Airport (MXP).",
+          "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Slam Lavori Aere",
+          "Slam Air",
+          "Adler Group",
+          "Corriere Della Sera",
+          "Flightradar24"
+        ],
+        "airlines": [
+          "ITA Airways",
+          "KLM"
+        ],
+        "aircraft_models": [
+          "Hawker Beechcraft 400A"
+        ],
+        "airports": [
+          "Milan Linate",
+          "LIN",
+          "Bergamo",
+          "BGY",
+          "Milan Malpensa Airport",
+          "MXP"
+        ],
+        "locations": [
+          "Italy"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [
+          "I-AERB"
+        ],
+        "event_dates": [
+          "August 10, 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-0924-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Airport vehicle slams into taxiing private jet at Milan Linate: video",
+          "url": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
+          "publishedUtc": "2026-08-11T08:41Z",
+          "summary": "An airport service vehicle slammed into a private jet that was taxiing towards the runway at Milan Linate… The post Airport vehicle slams into taxiing private jet at Milan Linate: video appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260811-0924-5",
+    "queuedUtc": "2026-08-11T09:24Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves major financial claims and conditional equity financing commitments requiring editorial review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Vertical Aerospace announced financing commitments of about $100 million to advance its Valo eVTOL aircraft towards certification and commercialisation.",
+        "sourceQuote": "Vertical Aerospace has announced financing commitments of about $100 million to advance its Valo electric vertical take-off and landing (eVTOL) aircraft towards certification and commercialisation",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The proposed financing comprises three components: $40 million from Mudrick Capital Management, $35 million from an underwritten equity offering, and $25 million from a Yorkville Advisors Global facility.",
+        "sourceQuote": "comprises three components: $40 million from Mudrick Capital Management, $35 million from existing and new investors through an underwritten equity offering, and $25 million from its preferred equity facility with Yorkville Advisors Global.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Vertical Aerospace cautioned that the Mudrick component remains subject to definitive agreements and may not be completed on current terms or at all.",
+        "sourceQuote": "The company cautioned that the Mudrick component remains subject to definitive agreements and may not be completed on the terms currently contemplated, or at all.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The capital is intended to fund Critical Design Review, production preparations, expanded battery manufacturing, and hybrid-electric flight testing.",
+        "sourceQuote": "providing funding for Critical Design Review, production preparations, expanded battery manufacturing and hybrid-electric flight testing.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Vertical Aerospace plans to retrofit its third prototype aircraft for hybrid-electric flight testing in the first half of 2027.",
+        "sourceQuote": "support continued progress towards the retrofit of the company’s third prototype aircraft for hybrid-electric flight testing in the first half of 2027.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Certification flight testing is expected in 2028, followed by a targeted entry into service in 2029.",
+        "sourceQuote": "followed by certification flight testing in 2028 and a targeted entry into service in 2029.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report involves major financial claims and conditional equity financing commitments requiring editorial review.",
+      "cat": "biz",
+      "zh": {
+        "title": "垂直航太籌集一億美元資金推動Valo認證",
+        "summary": "垂直航太取得一億美元融資承諾；加速Valo電動垂直起降飛行器認證",
+        "body": [
+          "垂直航太（Vertical Aerospace）宣布獲得約1億美元的融資承諾，用於推進其Valo電動垂直起降（eVTOL）飛行器的認證與商業化。該融資包含來自Mudrick Capital Management的4,000萬美元、股權發行的3,500萬美元，以及來自Yorkville Advisors Global的2,500萬美元。",
+          "該資金將支援關鍵設計審查、生產準備、電池製造及混合動力飛行測試。垂直航太計劃於2027年上半年改裝第三架原型機進行測試，預計於2028年展開認證飛行測試，並於2029年投入營運。",
+          "公司提醒指出，Mudrick部分的融資仍有待簽署正式協議，最終可能無法依目前條款完成。"
+        ]
+      },
+      "en": {
+        "title": "Vertical Aerospace Secures $100M Financing Commitments for Valo eVTOL Certification",
+        "summary": "Vertical Aerospace has secured $100 million in financing commitments to advance its Valo eVTOL certification and commercialisation.",
+        "body": [
+          "Vertical Aerospace has announced financing commitments of approximately $100 million to advance its Valo electric vertical take-off and landing (eVTOL) aircraft towards certification and commercialisation. The funding package includes $40 million from Mudrick Capital Management, $35 million from an underwritten equity offering, and $25 million from a Yorkville Advisors Global facility.",
+          "The company stated that the capital will support Critical Design Review, production preparations, expanded battery manufacturing, and hybrid-electric flight testing. Vertical Aerospace plans to retrofit its third prototype aircraft for hybrid-electric testing in the first half of 2027, with certification flight testing expected in 2028 and entry into service targeted for 2029.",
+          "Vertical Aerospace cautioned that the Mudrick component remains subject to definitive agreements and may not be completed on current terms or at all."
+        ]
+      },
+      "flash": {
+        "zh": "垂直航太籌集1億美元資金推進Valo認證",
+        "en": "Vertical Aerospace secures $100M financing commitments for Valo eVTOL program.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Vertical Aerospace announced financing commitments of about $100 million to advance its Valo eVTOL aircraft towards certification and commercialisation.",
+          "sourceQuote": "Vertical Aerospace has announced financing commitments of about $100 million to advance its Valo electric vertical take-off and landing (eVTOL) aircraft towards certification and commercialisation",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The proposed financing comprises three components: $40 million from Mudrick Capital Management, $35 million from an underwritten equity offering, and $25 million from a Yorkville Advisors Global facility.",
+          "sourceQuote": "comprises three components: $40 million from Mudrick Capital Management, $35 million from existing and new investors through an underwritten equity offering, and $25 million from its preferred equity facility with Yorkville Advisors Global.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Vertical Aerospace cautioned that the Mudrick component remains subject to definitive agreements and may not be completed on current terms or at all.",
+          "sourceQuote": "The company cautioned that the Mudrick component remains subject to definitive agreements and may not be completed on the terms currently contemplated, or at all.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The capital is intended to fund Critical Design Review, production preparations, expanded battery manufacturing, and hybrid-electric flight testing.",
+          "sourceQuote": "providing funding for Critical Design Review, production preparations, expanded battery manufacturing and hybrid-electric flight testing.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Vertical Aerospace plans to retrofit its third prototype aircraft for hybrid-electric flight testing in the first half of 2027.",
+          "sourceQuote": "support continued progress towards the retrofit of the company’s third prototype aircraft for hybrid-electric flight testing in the first half of 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Certification flight testing is expected in 2028, followed by a targeted entry into service in 2029.",
+          "sourceQuote": "followed by certification flight testing in 2028 and a targeted entry into service in 2029.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "Vertical Aerospace",
+          "Mudrick Capital Management",
+          "Yorkville Advisors Global"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Valo"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-11",
+          "2027",
+          "2028",
+          "2029"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-0924-5",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Vertical Aerospace secures $100m financing commitments to advance Valo towards certification News",
+          "url": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
+          "publishedUtc": "2026-08-11T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/Vertical-Aerospace-eVTOL.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260801-1206-farnborough-airshow-2026-closes-with-84",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: farnborough international, vertical aerospace",
+              "archive predates source by 12 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 12 day(s) apart",
+            "event_date": "2026-07-30",
+            "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in...",
+            "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
+            "facts": [
+              {
+                "claim": "The 2026 Farnborough International Airshow generated over $84.7 billion in commercial business and secured 353 firm commercial aircraft orders.",
+                "source_quote": "generated over $84.7 billion in commercial business",
+                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
+                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
+              },
+              {
+                "claim": "The event welcomed 141,580 trade and public visitors from 136 countries, representing a 41% increase compared with the previous show.",
+                "source_quote": "welcomed 141,580 trade and public visitors from 136 countries. That is a 41% increase compared with the previous show",
+                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
+                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
+              },
+              {
+                "claim": "Major aircraft and engine announcements at the event were made by manufacturers including Boeing, Airbus, Embraer, and Pratt & Whitney.",
+                "source_quote": "featured several major aircraft and engine announcements by Boeing , Airbus , Embraer , LEAP and Pratt & Whitney .",
+                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
+                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
+              },
+              {
+                "claim": "Vertical Aerospace conducted its first public electric vertical take-off and landing (eVTOL) flight demonstration at the airshow.",
+                "source_quote": "Vertical Aerospace’s first public electric vertical take-off and landing (eVTOL) flight at the airshow.",
+                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
+                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
+              },
+              {
+                "claim": "The next Farnborough International Airshow is scheduled for July 17-21, 2028.",
+                "source_quote": "The next Farnborough International Airshow will take place 17-21 July 2028",
+                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
+                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260801-0732-lot-polish-airlines-to-launch-direct-war",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: lot",
+              "archive predates source by 11 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 11 day(s) apart",
+            "event_date": "2026-07-31",
+            "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with...",
+            "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
+            "facts": [
+              {
+                "claim": "LOT Polish Airlines has announced a direct route between Warsaw Chopin Airport and Hanoi Noi Bai International Airport, with the inaugural flight scheduled for March 31, 2027.",
+                "source_quote": "LOT Polish Airlines has launched a new direct route between Warsaw Chopin Airport (WAW) and Noi Bai International Airport (HAN) in Hanoi, Vietnam, marking the airline’s fifth long-haul destination in Asia. Tickets are now on sale, with the inaugural flight scheduled for March 31, 2027.",
+                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
+                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
+              },
+              {
+                "claim": "The Warsaw-Hanoi service will operate three times per week year-round using Boeing 787 Dreamliner aircraft, with departures from Warsaw on Mondays, Wednesdays, and Fridays, and return flights from Hanoi on Tuesdays, Thursdays, and Saturdays.",
+                "source_quote": "The Warsaw-Hanoi route will operate year-round, with three flights each way per week. Departures from Warsaw Chopin Airport are set for Mondays, Wednesdays, and Fridays at 15:15 local time, while return flights from Hanoi will depart Tuesdays, Thursdays, and Saturdays at 08:35 local time.",
+                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
+                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
+              },
+              {
+                "claim": "Hanoi is LOT Polish Airlines' fifth long-haul destination in Asia, joining Tokyo, Seoul, New Delhi, and Bangkok.",
+                "source_quote": "Hanoi joins Tokyo, Seoul, New Delhi, and Bangkok as LOT’s fifth long-haul destination in Asia",
+                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
+                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
+              },
+              {
+                "claim": "LOT Board Member and CCO Robert Ludera stated that the new route reflects the airline's ambition to expand in Asia and develop Warsaw as a connecting hub.",
+                "source_quote": "Robert Ludera, Board Member and Chief Commercial Officer at LOT Polish Airlines, noted that the new route reflects the airline’s ambition to expand its presence in Asia, while further developing Warsaw as a connecting hub between Central and Eastern Europe and some of the world’s fastest-growing destinations.",
+                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
+                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260804-1529-swiss-semi-private-startup-peakjet-compl",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: aero",
+              "archive predates source by 7 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
+            "event_date": "2026-08-04",
+            "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first...",
+            "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+            "facts": [
+              {
+                "claim": "PeakJet completed its first commercial flight between Zürich and Palma de Mallorca on August 1, 2026.",
+                "source_quote": "PeakJet, a new Swiss semi-private airline, has announced that it has completed its first commercial flight between Zürich (ZRH) and Palma de Mallorca (PMI) on August 1, 2026.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "The flight was operated by the German subsidiary of VistaJet using an Embraer Legacy 650 capable of carrying up to 12 passengers.",
+                "source_quote": "The aircraft, an Embraer Legacy 650 capable of carrying up to 12 passengers, was operated by the German subsidiary of VistaJet.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "Neither PeakJet nor its parent Peak Plus AG holds an air operator certificate, functioning as a marketplace aggregating capacity on scheduled executive aircraft.",
+                "source_quote": "neither PeakJet nor its parent company, Peak Plus AG, holds an air operator certificate (AOC) of their own. Instead, PeakJet defines itself as a marketplace, which aggregates and sells capacity on executive aircraft operating on fixed schedules.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260811-0804-2",
     "queuedUtc": "2026-08-11T08:04Z",
     "approve": false,
@@ -9371,576 +9896,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260808-1040-9",
-    "queuedUtc": "2026-08-08T10:40Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Requires human review due to major military defense procurement order and financial claim.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Australia announced it will become the first export customer for the US AIM-260 Joint Advanced Tactical Missile.",
-        "sourceQuote": "Australia announced it will become the first export customer for the new US AIM-260 Joint Advanced Tactical Missile (JATM).",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The Australian Government is investing almost AUD 736 million to equip the RAAF with new high-speed long-range air-to-air missiles.",
-        "sourceQuote": "The Australian Government stated it is investing “almost AUD 736 million (£381 million) to equip the Royal Australian Air Force with new high-speed, long-range air-to-air missiles.”",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Australian Defence Minister Richard Marles made the announcement during Exercise Pitch Black in Darwin.",
-        "sourceQuote": "The announcement was made by Australia’s Deputy Prime Minister and Defence Minister, Richard Marles, during the ongoing Exercise Pitch Black in Darwin.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The AIM-260 missiles will be purchased via US foreign military sales and first integrated into 24 RAAF F/A-18F Super Hornets.",
-        "sourceQuote": "The AIM-260 JATM is being purchased via the US’s foreign military sales (FMS) and will be first integrated into the Royal Australian Air Force’s (RAAF) fleet of 24 F/A-18F Super Hornets.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Australia plans to later add the AIM-260 missile to its fleets of 72 F-35A Lightning IIs and 12 EA-18G Growler jets.",
-        "sourceQuote": "Later, there are plans to add it to the RAAF’s fleet of 72 F‑35A Lightning IIs and, interestingly, to its 12 EA-18G Growler electronic warfare jets.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Requires human review due to major military defense procurement order and financial claim.",
-      "cat": "mil",
-      "zh": {
-        "title": "澳洲宣布採購美國AIM-260飛彈 首將裝備F/A-18F戰機",
-        "summary": "澳洲政府於達爾文「漆黑演習」期間宣布，將投資近7.36億澳幣，成為美國新型AIM-260聯合先進戰術飛彈的首個出口客戶。該款空對空飛彈經由美國軍售管道採購，首批將整合至澳洲皇家空軍24架F/A-18F超級大黃蜂戰機，未來計畫進一步擴及F-35A與EA-18G等機隊。",
-        "body": [
-          "澳洲政府正式宣布將成為美國新型AIM-260聯合先進戰術飛彈（JATM）的首個外銷客戶。澳洲副總理兼國防部長理查·馬爾斯（Richard Marles）於達爾文舉行的「漆黑演習」（Exercise Pitch Black）期間公布此項消息，表示政府將投資近7.36億澳幣（約3.81億英鎊），為澳洲皇家空軍配備新型高速遠程空對空飛彈。",
-          "根據公告內容，此項飛彈採購案將透過美國對外軍售（FMS）機制進行。首批AIM-260飛彈將優先整合至澳洲皇家空軍現役的24架F/A-18F超級大黃蜂戰鬥機隊，以提升其遠距空戰作戰能力。",
-          "除了首批部署的F/A-18F戰機之外，澳洲軍方未來亦計畫將AIM-260飛彈逐步擴展配備至72架F-35A閃電二式戰鬥機，以及12架EA-18G咆哮者電子作戰機，進一步強化整體空中戰力。"
-        ]
-      },
-      "en": {
-        "title": "Australia to become first export customer for US AIM-260 missiles",
-        "summary": "Australia has announced it will become the first export customer for the new US AIM-260 Joint Advanced Tactical Missile (JATM). Australian Deputy Prime Minister and Defence Minister Richard Marles revealed during Exercise Pitch Black in Darwin that the government is investing nearly AUD 736 million (£381 million) to equip the Royal Australian Air Force with the high-speed, long-range air-to-air missiles. Procured via US Foreign Military Sales, the missiles will first be integrated into Australia's fleet of 24 F/A-18F Super Hornets, with plans to later equip its 72 F-35A Lightning II fighters and 12 EA-18G Growler electronic warfare jets.",
-        "body": [
-          "Australia has announced its selection as the first export customer for the US AIM-260 Joint Advanced Tactical Missile (JATM). Deputy Prime Minister and Defence Minister Richard Marles made the announcement during Exercise Pitch Black in Darwin, stating that the government is investing almost AUD 736 million (£381 million) to equip the Royal Australian Air Force with the high-speed, long-range air-to-air munitions.",
-          "The acquisition is being conducted through the US Foreign Military Sales program. The new AIM-260 missiles will initially be integrated into the Royal Australian Air Force's operational fleet of 24 F/A-18F Super Hornet fighters to bolster their long-range combat capabilities.",
-          "Following the initial integration on the Super Hornets, Australia plans to extend the deployment of the AIM-260 missiles across its broader tactical combat fleet. Subsequent plans include equipping the RAAF's 72 F-35A Lightning II multirole fighters and 12 EA-18G Growler electronic warfare aircraft."
-        ]
-      },
-      "flash": {
-        "zh": "澳洲宣布採購美國AIM-260飛彈 首批整合至F/A-18F戰機",
-        "en": "Australia to become first export customer for US AIM-260 air-to-air missiles",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Australia announced it will become the first export customer for the US AIM-260 Joint Advanced Tactical Missile.",
-          "sourceQuote": "Australia announced it will become the first export customer for the new US AIM-260 Joint Advanced Tactical Missile (JATM).",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The Australian Government is investing almost AUD 736 million to equip the RAAF with new high-speed long-range air-to-air missiles.",
-          "sourceQuote": "The Australian Government stated it is investing “almost AUD 736 million (£381 million) to equip the Royal Australian Air Force with new high-speed, long-range air-to-air missiles.”",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Australian Defence Minister Richard Marles made the announcement during Exercise Pitch Black in Darwin.",
-          "sourceQuote": "The announcement was made by Australia’s Deputy Prime Minister and Defence Minister, Richard Marles, during the ongoing Exercise Pitch Black in Darwin.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The AIM-260 missiles will be purchased via US foreign military sales and first integrated into 24 RAAF F/A-18F Super Hornets.",
-          "sourceQuote": "The AIM-260 JATM is being purchased via the US’s foreign military sales (FMS) and will be first integrated into the Royal Australian Air Force’s (RAAF) fleet of 24 F/A-18F Super Hornets.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Australia plans to later add the AIM-260 missile to its fleets of 72 F-35A Lightning IIs and 12 EA-18G Growler jets.",
-          "sourceQuote": "Later, there are plans to add it to the RAAF’s fleet of 72 F‑35A Lightning IIs and, interestingly, to its 12 EA-18G Growler electronic warfare jets.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F4"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "Royal Australian Air Force",
-          "RAAF",
-          "Australian Government"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "F/A-18F Super Hornets",
-          "F-35A Lightning IIs",
-          "EA-18G Growler"
-        ],
-        "airports": [],
-        "locations": [
-          "Australia",
-          "Darwin"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-07"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260808-1040-9",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Australia’s F/A-18s to be first foreign fighters with secretive AIM-260 missiles News",
-          "url": "https://aerospaceglobalnews.com/news/australia-first-aim-260-export-customer/",
-          "publishedUtc": "2026-08-07T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/RAAF-FA-18.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260807-1756-finland-and-sweden-debut-at-pitch-black",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: A-18F"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 18 day(s) apart",
-            "event_date": "2026-07-20",
-            "source_name": "AeroTime — Finland and Sweden make first-ever appearance to RAAF’s Exe...",
-            "source_url": "https://www.aerotime.aero/articles/finland-and-sweden-make-first-ever-appearance-to-raafs-exercise-pitch-black",
-            "facts": [
-              {
-                "claim": "Finland and Sweden sent official delegations to Exercise Pitch Black 26 for the first time, marking their initial participation in Australia’s flagship multinational air combat exercise.",
-                "source_quote": "Finland and Sweden sent official delegations to Exercise Pitch Black 26 for the first time, marking the two Nordic nations’ initial participation in Australia’s flagship multinational air combat exercise.",
-                "source_url": "https://www.aerotime.aero/articles/finland-and-sweden-make-first-ever-appearance-to-raafs-exercise-pitch-black",
-                "source_name": "AeroTime — Finland and Sweden make first-ever appearance to RAAF’s Exe..."
-              },
-              {
-                "claim": "The Indian Air Force’s Rafale fighter jet made its debut appearance at Exercise Pitch Black 26, marking a historic first for the aircraft in Australia’s premier multinational air combat exercise.",
-                "source_quote": "The Indian Air Force’s (IAF) Rafale fighter jet has made its debut appearance at Exercise Pitch Black 26, marking a historic first for the aircraft in Australia’s premier multinational air combat exercise.",
-                "source_url": "https://www.aerotime.aero/articles/indian-air-forces-rafale-makes-historic-debut-at-exercise-pitch-black-26",
-                "source_name": "AeroTime — Indian Air Force’s Rafale makes historic debut at Exercise..."
-              },
-              {
-                "claim": "The delegations traveled to RAAF Base Darwin to observe the exercise, which runs from July 20 to August 7, 2026 across Northern Australia.",
-                "source_quote": "The delegations traveled to Royal Australian Air Force (RAAF) Base Darwin to observe the exercise, which runs from July 20 to August 7, 2026 across Northern Australia.",
-                "source_url": "https://www.aerotime.aero/articles/finland-and-sweden-make-first-ever-appearance-to-raafs-exercise-pitch-black",
-                "source_name": "AeroTime — Finland and Sweden make first-ever appearance to RAAF’s Exe..."
-              },
-              {
-                "claim": "According to Kumar, the deployment reflects the IAF’s growing ability to conduct long-range missions and operate effectively within a demanding multinational environment.",
-                "source_quote": "According to Kumar, the deployment reflects the IAF’s growing ability to conduct long-range missions and operate effectively within a demanding multinational environment.",
-                "source_url": "https://www.aerotime.aero/articles/indian-air-forces-rafale-makes-historic-debut-at-exercise-pitch-black-26",
-                "source_name": "AeroTime — Indian Air Force’s Rafale makes historic debut at Exercise..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260807-1153-han-kuang-exercise-day-3-hsinchu-base-dr",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: TO-AIR"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 0 day(s) apart",
-            "event_date": "2026-08-07",
-            "source_name": "中央社 CNA — 漢光演習第3天 新竹基地演練跑道搶修、幻象緊急起飛",
-            "source_url": "https://www.cna.com.tw/news/aipl/202608070257.aspx",
-            "facts": [
-              {
-                "claim": "Han Kuang 42 live-troop exercise entered its third day on August 7, 2026, with a scenario simulating a PLA missile attack on Taiwan.",
-                "source_quote": "國軍漢光42號實兵演習今天第3天，演習想定為共軍以飛彈襲台",
-                "source_url": "https://www.cna.com.tw/news/aipl/202608070257.aspx",
-                "source_name": "中央社 CNA — 漢光演習第3天 新竹基地演練跑道搶修、幻象緊急起飛"
-              },
-              {
-                "claim": "The Air Force's 2nd Tactical Fighter Wing conducted Mirage 2000 air-to-air missile loading, runway repair, and emergency takeoff drills at Hsinchu base.",
-                "source_quote": "空軍在新竹基地執行幻象2000戰機空對空飛彈潛力裝掛、跑道搶修，以及戰機緊急起飛等演練",
-                "source_url": "https://www.cna.com.tw/news/aipl/202608070257.aspx",
-                "source_name": "中央社 CNA — 漢光演習第3天 新竹基地演練跑道搶修、幻象緊急起飛"
-              },
-              {
-                "claim": "The maintenance unit loaded Magic II and MICA missiles onto a single-seat Mirage 2000 (aircraft number 2035) in a \"restore\" standard air defense configuration with two MICA, two Magic missiles, and two drop tanks.",
-                "source_quote": "為幻象2000單座機（機號2035）執行潛力裝掛，官兵接獲命令後，依序掛載魔法二型與雲母飛彈",
-                "source_url": "https://www.cna.com.tw/news/aipl/202608070257.aspx",
-                "source_name": "中央社 CNA — 漢光演習第3天 新竹基地演練跑道搶修、幻象緊急起飛"
-              },
-              {
-                "claim": "The runway repair drill simulated a large crater from an enemy missile, with the facilities squadron using heavy equipment to backfill and compact the crater, then deploying fiberglass mats; the standard is to complete filling within four hours.",
-                "source_quote": "規範是以4小時內完成彈坑填補",
-                "source_url": "https://www.cna.com.tw/news/aipl/202608070257.aspx",
-                "source_name": "中央社 CNA — 漢光演習第3天 新竹基地演練跑道搶修、幻象緊急起飛"
-              },
-              {
-                "claim": "Two single-seat Mirage 2000s executed a six-minute alert posture emergency takeoff, taxiing out of the alert shelter in under five minutes.",
-                "source_quote": "2架戰機在不到5分鐘內就滑出警戒機堡，執行起飛任務",
-                "source_url": "https://www.cna.com.tw/news/aipl/202608070257.aspx",
-                "source_name": "中央社 CNA — 漢光演習第3天 新竹基地演練跑道搶修、幻象緊急起飛"
-              },
-              {
-                "claim": "The Air Force stated weapons loading requires specialized personnel to complete external weapon and drop tank loading within a designated time limit, categorized as \"complete\" or \"restore\" combat readiness.",
-                "source_quote": "潛力裝掛是指專業人員應於指定時限內，完成戰機各項武器外載、副油箱裝掛作業。另依戰備需求區分為「完成」及「恢復」戰備",
-                "source_url": "https://www.cna.com.tw/news/aipl/202608070257.aspx",
-                "source_name": "中央社 CNA — 漢光演習第3天 新竹基地演練跑道搶修、幻象緊急起飛"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260808-1040-11",
-    "queuedUtc": "2026-08-08T10:40Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "Risk flag financial_or_order_claim present due to defence procurement order details.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "France formally submitted its technical and commercial proposal for India's planned acquisition of 114 Rafale fighters.",
-        "sourceQuote": "France formally submitted its technical and commercial proposal",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/france-submits-proposal-india-114-rafale-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Dassault has proposed delivering the first 18 aircraft in fly-away condition, with the remaining 96 assembled in India through an industrial partnership with Indian companies.",
-        "sourceQuote": "According to sources, Dassault has proposed delivering the first 18 aircraft in fly-away condition, with the remaining 96 assembled in India through an industrial partnership with Indian companies.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/france-submits-proposal-india-114-rafale-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The localisation plan is expected to increase indigenous content progressively over the life of the programme, rising from around 30% initially to more than 60% as domestic production matures.",
-        "sourceQuote": "The localisation plan is also expected to increase indigenous content progressively over the life of the programme, rising from around 30% initially to more than 60% as domestic production matures.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/france-submits-proposal-india-114-rafale-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Risk flag financial_or_order_claim present due to defence procurement order details.",
-      "cat": "mil",
-      "zh": {
-        "title": "法國提交印度114架Rafale提案進入關鍵階段",
-        "summary": "法國於8月7日正式遞交印度114架 Rafale fighter 的技術與商業提案，使採購進入詳細評估階段。提案包含先交付18架完機，其餘96架在印度由當地企業組裝，並預計本土零組件比例從約30%提升至60%以上。同時擬在海德राबad建立 Safran M88發動機維修中心，以支援未來機隊。",
-        "body": [
-          "法國的Dassault Aviation於8月7日向印度遞交了技術與商業提案，標誌著印度114架 Rafale fighter 採購進入關鍵評估階段。",
-          "根據印度國防部門消息來源，提案將由印度空軍與國防部審核，之後將朝著政府間協議協商方向推進。",
-          "提案內容包括先前交付18架完機（fly‑away condition），其餘96架將由印度企業合作夥伴在當地組裝。",
-          " localisation 計畫預計使本土零組件比例從起始的約30%逐步提升至60%以上，並將涉及機體、發動機與 avionics 的廣泛技術轉移。",
-          "另一項討論點是在位於海德राबad設立 Safran M88發動機的維修、修理與大修（MRO）設施，以提供長期支援並提升印度航空維護能力。"
-        ]
-      },
-      "en": {
-        "title": "France submits formal proposal for India's 114-jet Rafale deal, advancing to detailed evaluation",
-        "summary": "On August 7, France formally submitted its technical and commercial proposal for India's planned acquisition of 114 Rafale fighters, moving the programme into detailed evaluation. The proposal calls for delivering the first 18 jets in fly-away condition and assembling the remaining 96 in India through local industrial partnerships, with indigenous content rising from about 30% to over 60%. It also includes plans for a Safran M88 engine MRO facility in Hyderabad to support the future fleet.",
-        "body": [
-          "France's Dassault Aviation submitted its technical and commercial proposal for India's 114 Rafale fighter procurement on August 7, as reported by Aerospace Global News.",
-          "According to Indian Ministry of Defence sources, the proposal will be examined by the Indian Air Force and the Ministry of Defence before negotiations advance toward an Intergovernmental Agreement.",
-          "The plan involves delivering the first 18 aircraft in fly‑away condition, while the remaining 96 are to be assembled in India through partnerships with Indian companies.",
-          "Local industrial participation is expected to increase indigenous content from around 30% initially to more than 60% as domestic production matures, covering airframe, engines and avionics technology transfer.",
-          "The proposal also contemplates establishing a maintenance, repair and overhaul (MRO) facility in Hyderabad for Safran's M88 engine, which would provide long-term support for the expanding Indian fleet and strengthen domestic aerospace maintenance capability."
-        ]
-      },
-      "flash": {
-        "zh": "法國提交印度114架 Rafale 提案",
-        "en": "France submits proposal for India's 114 Rafale jets",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "France formally submitted its technical and commercial proposal for India's planned acquisition of 114 Rafale fighters.",
-          "sourceQuote": "France formally submitted its technical and commercial proposal",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/france-submits-proposal-india-114-rafale-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Dassault has proposed delivering the first 18 aircraft in fly-away condition, with the remaining 96 assembled in India through an industrial partnership with Indian companies.",
-          "sourceQuote": "According to sources, Dassault has proposed delivering the first 18 aircraft in fly-away condition, with the remaining 96 assembled in India through an industrial partnership with Indian companies.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/france-submits-proposal-india-114-rafale-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The localisation plan is expected to increase indigenous content progressively over the life of the programme, rising from around 30% initially to more than 60% as domestic production matures.",
-          "sourceQuote": "The localisation plan is also expected to increase indigenous content progressively over the life of the programme, rising from around 30% initially to more than 60% as domestic production matures.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/france-submits-proposal-india-114-rafale-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Dassault Aviation",
-          "Indian Air Force",
-          "Ministry of Defence",
-          "Safran",
-          "Thales"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Rafale"
-        ],
-        "airports": [],
-        "locations": [
-          "India",
-          "France",
-          "Hyderabad",
-          "New Delhi",
-          "Paris"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-07"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260808-1040-11",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "India’s 114-Rafale fighter jet programme enters decisive phase as France submits formal proposal",
-          "url": "https://aerospaceglobalnews.com/news/france-submits-proposal-india-114-rafale-deal/",
-          "publishedUtc": "2026-08-07T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/Featured-image.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260801-1206-farnborough-airshow-2026-closes-with-84",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: mbda",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-30",
-            "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in...",
-            "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-            "facts": [
-              {
-                "claim": "The 2026 Farnborough International Airshow generated over $84.7 billion in commercial business and secured 353 firm commercial aircraft orders.",
-                "source_quote": "generated over $84.7 billion in commercial business",
-                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
-              },
-              {
-                "claim": "The event welcomed 141,580 trade and public visitors from 136 countries, representing a 41% increase compared with the previous show.",
-                "source_quote": "welcomed 141,580 trade and public visitors from 136 countries. That is a 41% increase compared with the previous show",
-                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
-              },
-              {
-                "claim": "Major aircraft and engine announcements at the event were made by manufacturers including Boeing, Airbus, Embraer, and Pratt & Whitney.",
-                "source_quote": "featured several major aircraft and engine announcements by Boeing , Airbus , Embraer , LEAP and Pratt & Whitney .",
-                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
-              },
-              {
-                "claim": "Vertical Aerospace conducted its first public electric vertical take-off and landing (eVTOL) flight demonstration at the airshow.",
-                "source_quote": "Vertical Aerospace’s first public electric vertical take-off and landing (eVTOL) flight at the airshow.",
-                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
-              },
-              {
-                "claim": "The next Farnborough International Airshow is scheduled for July 17-21, 2028.",
-                "source_quote": "The next Farnborough International Airshow will take place 17-21 July 2028",
-                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260801-0732-lot-polish-airlines-to-launch-direct-war",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: lot",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-31",
-            "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with...",
-            "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-            "facts": [
-              {
-                "claim": "LOT Polish Airlines has announced a direct route between Warsaw Chopin Airport and Hanoi Noi Bai International Airport, with the inaugural flight scheduled for March 31, 2027.",
-                "source_quote": "LOT Polish Airlines has launched a new direct route between Warsaw Chopin Airport (WAW) and Noi Bai International Airport (HAN) in Hanoi, Vietnam, marking the airline’s fifth long-haul destination in Asia. Tickets are now on sale, with the inaugural flight scheduled for March 31, 2027.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "The Warsaw-Hanoi service will operate three times per week year-round using Boeing 787 Dreamliner aircraft, with departures from Warsaw on Mondays, Wednesdays, and Fridays, and return flights from Hanoi on Tuesdays, Thursdays, and Saturdays.",
-                "source_quote": "The Warsaw-Hanoi route will operate year-round, with three flights each way per week. Departures from Warsaw Chopin Airport are set for Mondays, Wednesdays, and Fridays at 15:15 local time, while return flights from Hanoi will depart Tuesdays, Thursdays, and Saturdays at 08:35 local time.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "Hanoi is LOT Polish Airlines' fifth long-haul destination in Asia, joining Tokyo, Seoul, New Delhi, and Bangkok.",
-                "source_quote": "Hanoi joins Tokyo, Seoul, New Delhi, and Bangkok as LOT’s fifth long-haul destination in Asia",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "LOT Board Member and CCO Robert Ludera stated that the new route reflects the airline's ambition to expand in Asia and develop Warsaw as a connecting hub.",
-                "source_quote": "Robert Ludera, Board Member and Chief Commercial Officer at LOT Polish Airlines, noted that the new route reflects the airline’s ambition to expand its presence in Asia, while further developing Warsaw as a connecting hub between Central and Eastern Europe and some of the world’s fastest-growing destinations.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260804-1529-swiss-semi-private-startup-peakjet-compl",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: aero",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-08-04",
-            "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first...",
-            "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-            "facts": [
-              {
-                "claim": "PeakJet completed its first commercial flight between Zürich and Palma de Mallorca on August 1, 2026.",
-                "source_quote": "PeakJet, a new Swiss semi-private airline, has announced that it has completed its first commercial flight between Zürich (ZRH) and Palma de Mallorca (PMI) on August 1, 2026.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "The flight was operated by the German subsidiary of VistaJet using an Embraer Legacy 650 capable of carrying up to 12 passengers.",
-                "source_quote": "The aircraft, an Embraer Legacy 650 capable of carrying up to 12 passengers, was operated by the German subsidiary of VistaJet.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "Neither PeakJet nor its parent Peak Plus AG holds an air operator certificate, functioning as a marketplace aggregating capacity on scheduled executive aircraft.",
-                "source_quote": "neither PeakJet nor its parent company, Peak Plus AG, holds an air operator certificate (AOC) of their own. Instead, PeakJet defines itself as a marketplace, which aggregates and sells capacity on executive aircraft operating on fixed schedules.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
