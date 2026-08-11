@@ -1,5 +1,162 @@
 [
   {
+    "id": "g-20260811-0458-2",
+    "queuedUtc": "2026-08-11T04:58Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report involves a major corporate equity transaction requiring human editorial verification.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Boeing is handing its flying-taxi venture to Archer Aviation and acquiring a stake of nearly 20 percent.",
+        "sourceQuote": "Boeing Hands Flying-Taxi Venture To Archer Aviation With Nearly 20% Stake",
+        "sourceUrl": "https://simpleflying.com/boeing-hands-flying-taxi-venture-archer-aviation-20-percent-stake/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Boeing is shifting its autonomous aviation bets to Archer Aviation while retaining long-term upside.",
+        "sourceQuote": "Boeing shifts its autonomous aviation bets to Archer while retaining significant long-term upside.",
+        "sourceUrl": "https://simpleflying.com/boeing-hands-flying-taxi-venture-archer-aviation-20-percent-stake/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The Wall Street Journal reported that Boeing will fold its flying-taxi venture into rival Archer Aviation.",
+        "sourceQuote": "Boeing to Fold Its Flying-Taxi Venture Into Rival Archer Aviation",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMisgFBVV95cUxORnFmTXU1R1FvTm5lU21vZVY4SlFYVkxianVfVnhkUGdqaGVfX1NTclh3YnBOTmlOSEhndGhlaFV2ZFM5Qjk4ZUN5SjdacnRwRi1vMTlYZGRudWN2OGsya2pmOUtaRWNOQXo2VzVPeGJTcWlQMXhWYXdjVU9hZlVNU1F3VUdqUzNmbTgzMTBzQUl0bmFsUTBtYUFKc1VZU1lsN3llN1BfVVVfZnRMNWtzX2Nn?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report involves a major corporate equity transaction requiring human editorial verification.",
+      "cat": "biz",
+      "zh": {
+        "title": "波音將飛行計程車事業併入 Archer 並取得近二成股權",
+        "summary": "波音將飛行計程車事業併入 Archer Aviation，獲得近 20% 股權。",
+        "body": [
+          "根據媒體報導，美國飛機製造廠波音公司正將旗下的飛行計程車業務併入競爭對手 Archer Aviation，並取得 Archer Aviation 接近 20% 的股權。",
+          "報導指出，波音將其自主航空投資重心轉移至 Archer Aviation，並透過持有這筆近 20% 的股份，保留該領域未來的長期潛在收益與發展機會。",
+          "據《華爾街日報》與 Simple Flying 報導，這項交易代表波音將其飛行計程車專案整合至 Archer Aviation。"
+        ]
+      },
+      "en": {
+        "title": "Boeing Folds Flying-Taxi Venture Into Archer Aviation for Nearly 20 Percent Stake",
+        "summary": "Boeing transfers its flying-taxi business to Archer Aviation, securing a stake of nearly twenty percent.",
+        "body": [
+          "Boeing is folding its flying-taxi venture into rival company Archer Aviation while acquiring an equity stake of nearly 20 percent in the firm, according to media reports published on Monday.",
+          "The arrangement shifts Boeing's autonomous aviation bets directly to Archer Aviation. Under the transaction, Boeing retains significant long-term upside in autonomous aviation while handing over its flying-taxi venture to Archer Aviation.",
+          "The deal was reported by The Wall Street Journal and Simple Flying, confirming that Boeing will fold its flying-taxi initiative into Archer Aviation in exchange for the nearly 20 percent ownership position."
+        ]
+      },
+      "flash": {
+        "zh": "波音將飛行計程車事業併入 Archer 並取得近二成股權",
+        "en": "Boeing folds flying-taxi venture into Archer Aviation for nearly 20% stake",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Boeing is handing its flying-taxi venture to Archer Aviation and acquiring a stake of nearly 20 percent.",
+          "sourceQuote": "Boeing Hands Flying-Taxi Venture To Archer Aviation With Nearly 20% Stake",
+          "sourceUrl": "https://simpleflying.com/boeing-hands-flying-taxi-venture-archer-aviation-20-percent-stake/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Boeing is shifting its autonomous aviation bets to Archer Aviation while retaining long-term upside.",
+          "sourceQuote": "Boeing shifts its autonomous aviation bets to Archer while retaining significant long-term upside.",
+          "sourceUrl": "https://simpleflying.com/boeing-hands-flying-taxi-venture-archer-aviation-20-percent-stake/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The Wall Street Journal reported that Boeing will fold its flying-taxi venture into rival Archer Aviation.",
+          "sourceQuote": "Boeing to Fold Its Flying-Taxi Venture Into Rival Archer Aviation",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMisgFBVV95cUxORnFmTXU1R1FvTm5lU21vZVY4SlFYVkxianVfVnhkUGdqaGVfX1NTclh3YnBOTmlOSEhndGhlaFV2ZFM5Qjk4ZUN5SjdacnRwRi1vMTlYZGRudWN2OGsya2pmOUtaRWNOQXo2VzVPeGJTcWlQMXhWYXdjVU9hZlVNU1F3VUdqUzNmbTgzMTBzQUl0bmFsUTBtYUFKc1VZU1lsN3llN1BfVVVfZnRMNWtzX2Nn?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Boeing",
+          "Archer Aviation",
+          "WSJ",
+          "Simple Flying"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-10"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-0458-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Boeing Hands Flying-Taxi Venture To Archer Aviation With Nearly 20% Stake",
+          "url": "https://simpleflying.com/boeing-hands-flying-taxi-venture-archer-aviation-20-percent-stake/",
+          "publishedUtc": "2026-08-10T22:11Z",
+          "summary": "Boeing shifts its autonomous aviation bets to Archer while retaining significant long-term upside.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/wisk-aero-1.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        },
+        {
+          "title": "Boeing to Fold Its Flying-Taxi Venture Into Rival Archer Aviation",
+          "summary": "Boeing to Fold Its Flying-Taxi Venture Into Rival Archer Aviation &nbsp;&nbsp; WSJ",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxORnFmTXU1R1FvTm5lU21vZVY4SlFYVkxianVfVnhkUGdqaGVfX1NTclh3YnBOTmlOSEhndGhlaFV2ZFM5Qjk4ZUN5SjdacnRwRi1vMTlYZGRudWN2OGsya2pmOUtaRWNOQXo2VzVPeGJTcWlQMXhWYXdjVU9hZlVNU1F3VUdqUzNmbTgzMTBzQUl0bmFsUTBtYUFKc1VZU1lsN3llN1BfVVVfZnRMNWtzX2Nn?oc=5",
+          "source": "WSJ",
+          "companion": true,
+          "publishedUtc": "2026-08-10T12:00Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260811-0305-2",
     "queuedUtc": "2026-08-11T03:05Z",
     "approve": false,
@@ -9742,229 +9899,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260808-0253-8",
-    "queuedUtc": "2026-08-08T02:53Z",
-    "approve": false,
-    "writer": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    "decisionReason": "Major acquisition with undisclosed financial terms and pending regulatory approval; high-risk financial claim and developing event require human review.",
-    "riskFlags": [
-      "financial_or_order_claim",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Solairus Aviation has agreed to acquire Clay Lacy Aviation’s aircraft management and charter businesses, creating a managed fleet of more than 500 private aircraft.",
-        "sourceQuote": "Solairus Aviation has agreed to acquire Clay Lacy Aviation’s aircraft management and charter businesses in a deal that will create a managed fleet of more than 500 private aircraft.",
-        "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The acquisition would make Solairus the world’s largest aircraft management company by fleet size.",
-        "sourceQuote": "The acquisition would make Solairus the world’s largest aircraft management company by fleet size, according to the companies.",
-        "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Solairus currently manages about 360 aircraft from more than 100 bases across North America.",
-        "sourceQuote": "Solairus currently manages about 360 aircraft from more than 100 bases across North America",
-        "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The Clay Lacy businesses included in the deal manage about 140 aircraft.",
-        "sourceQuote": "while the Clay Lacy businesses included in the deal manage about 140 aircraft.",
-        "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Financial terms were not disclosed; the transaction is expected to close at the end of September 2026 subject to regulatory approvals and customary closing conditions.",
-        "sourceQuote": "Financial terms were not disclosed. The transaction is expected to close at the end of September 2026, subject to regulatory approvals and other customary closing conditions.",
-        "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Clay Lacy Aviation’s FBO, aircraft maintenance and aviation real estate businesses are not part of the sale.",
-        "sourceQuote": "Clay Lacy Aviation’s FBO, aircraft maintenance and aviation real estate businesses are not part of the sale.",
-        "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Major acquisition with undisclosed financial terms and pending regulatory approval; high-risk financial claim and developing event require human review.",
-      "cat": "biz",
-      "zh": {
-        "title": "Solairus 擬收購 Clay Lacy 管理包機業務 機隊超 500 架",
-        "summary": "Solairus Aviation 宣布同意收購 Clay Lacy Aviation 旗下飛機管理與包機業務，合併後機隊將超過 500 架，成為全球最大純管理型公司；交易預計 2026 年 9 月底完成，仍需監管批准，財務條款未揭露，Clay Lacy 的 FBO、維修及房地產業務不在出售範圍。",
-        "body": [
-          "Solairus Aviation 已同意收購 Clay Lacy Aviation 旗下的飛機管理與包機業務，交易將使合併後的管理機隊超過 500 架，並使 Solairus 成為全球最大的純管理型飛機管理公司。",
-          "根據雙方聲明，Solairus 目前管理約 360 架飛機，分佈於北美超過 100 個基地；Clay Lacy 納入交易的業務則管理約 140 架飛機。",
-          "交易預計於 2026 年 9 月底完成，仍須獲得監管機構批准並滿足慣例成交條件，財務條款未對外披露。",
-          "Clay Lacy Aviation 的固定基地運營（FBO）、飛機維修及航空房地產業務不在本次出售範圍內，將保留原品牌與所有權繼續運營。"
-        ]
-      },
-      "en": {
-        "title": "Solairus to Acquire Clay Lacy Management and Charter Business, Fleet to Exceed 500 Aircraft",
-        "summary": "Solairus Aviation has agreed to acquire Clay Lacy Aviation’s aircraft management and charter businesses, creating a combined managed fleet of more than 500 aircraft and making Solairus the world’s largest pure‑play aircraft management company. Financial terms were not disclosed. The transaction is expected to close at the end of September 2026, subject to regulatory approvals and customary closing conditions. Clay Lacy’s FBO, aircraft maintenance and aviation real estate operations are not included in the sale and will remain under the Clay Lacy name.",
-        "body": [
-          "Solairus Aviation has agreed to acquire Clay Lacy Aviation’s aircraft management and charter businesses, a deal that will create a combined managed fleet of more than 500 aircraft and make Solairus the world’s largest pure‑play aircraft management company.",
-          "Solairus currently manages about 360 aircraft from more than 100 bases across North America, while the Clay Lacy businesses included in the deal manage about 140 aircraft.",
-          "Financial terms were not disclosed. The transaction is expected to close at the end of September 2026, subject to regulatory approvals and other customary closing conditions.",
-          "Clay Lacy Aviation’s FBO, aircraft maintenance and aviation real estate businesses are not part of the sale and will remain under the Clay Lacy name and current ownership."
-        ]
-      },
-      "flash": {
-        "zh": "Solairus 擬收購 Clay Lacy 管理包機業務",
-        "en": "Solairus to acquire Clay Lacy management and charter business",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Solairus Aviation has agreed to acquire Clay Lacy Aviation’s aircraft management and charter businesses, creating a managed fleet of more than 500 private aircraft.",
-          "sourceQuote": "Solairus Aviation has agreed to acquire Clay Lacy Aviation’s aircraft management and charter businesses in a deal that will create a managed fleet of more than 500 private aircraft.",
-          "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The acquisition would make Solairus the world’s largest aircraft management company by fleet size.",
-          "sourceQuote": "The acquisition would make Solairus the world’s largest aircraft management company by fleet size, according to the companies.",
-          "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Solairus currently manages about 360 aircraft from more than 100 bases across North America.",
-          "sourceQuote": "Solairus currently manages about 360 aircraft from more than 100 bases across North America",
-          "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The Clay Lacy businesses included in the deal manage about 140 aircraft.",
-          "sourceQuote": "while the Clay Lacy businesses included in the deal manage about 140 aircraft.",
-          "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Financial terms were not disclosed; the transaction is expected to close at the end of September 2026 subject to regulatory approvals and customary closing conditions.",
-          "sourceQuote": "Financial terms were not disclosed. The transaction is expected to close at the end of September 2026, subject to regulatory approvals and other customary closing conditions.",
-          "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Clay Lacy Aviation’s FBO, aircraft maintenance and aviation real estate businesses are not part of the sale.",
-          "sourceQuote": "Clay Lacy Aviation’s FBO, aircraft maintenance and aviation real estate businesses are not part of the sale.",
-          "sourceUrl": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F5",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "Solairus Aviation",
-          "Clay Lacy Aviation",
-          "United Airlines",
-          "National Aviation Hall of Fame",
-          "Boeing"
-        ],
-        "airlines": [
-          "United Airlines"
-        ],
-        "aircraft_models": [
-          "Learjet",
-          "Boeing 747SP"
-        ],
-        "airports": [
-          "Van Nuys Airport"
-        ],
-        "locations": [
-          "Petaluma, California",
-          "Los Angeles",
-          "New York",
-          "Van Nuys Airport, California"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-07",
-          "end of September 2026"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260808-0253-8",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Solairus deal to buy Clay Lacy charter business pushes fleet above 500 aircraft",
-          "url": "https://www.aerotime.aero/articles/solairus-deal-to-buy-clay-lacy-charter-business-pushes-fleet-above-500-aircraft",
-          "publishedUtc": "2026-08-07T19:22Z",
-          "summary": "Solairus Aviation has agreed to acquire Clay Lacy Aviation’s aircraft management and charter businesses in a deal that… The post Solairus deal to buy Clay Lacy charter business pushes fleet above 500 aircraft appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
