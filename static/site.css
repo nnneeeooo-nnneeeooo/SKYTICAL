@@ -73,9 +73,6 @@ a.ticker-item:hover .ticker-time { color: var(--color-accent); }
   display: block; width: min(100%, 300px); height: auto;
   background: transparent;
 }
-[data-theme="dark"] .brand-logo,
-[data-theme="dark"] .footer-logo { filter: brightness(0) invert(1); }
-
 /* — Google-style search, deliberately the first row of every page — */
 .header-search-row {
   padding: 11px 20px; border-bottom: 1px solid var(--color-divider);
