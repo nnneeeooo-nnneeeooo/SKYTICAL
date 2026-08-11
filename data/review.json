@@ -1,5 +1,245 @@
 [
   {
+    "id": "g-20260811-0804-2",
+    "queuedUtc": "2026-08-11T08:04Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Aviation safety event involving weather radar failure and in-flight turnaround requires human review.",
+    "riskFlags": [
+      "accident_or_serious_incident"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A British Airways Airbus A380 flew for 7 hours before returning to its departure point following a weather radar failure.",
+        "sourceQuote": "British Airways Airbus A380 Flies 7 Hours To Nowhere After Weather Radar Failure",
+        "sourceUrl": "https://simpleflying.com/british-airways-a380-7-hours-nowhere-weather-radar-failure/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The Airbus A380 aircraft was forced to turn around when its weather radar stopped functioning.",
+        "sourceQuote": "forced to turnaround when its weather radar went blind",
+        "sourceUrl": "https://simpleflying.com/british-airways-a380-7-hours-nowhere-weather-radar-failure/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety event involving weather radar failure and in-flight turnaround requires human review.",
+      "cat": "safety",
+      "zh": {
+        "title": "英國航空A380客機氣象雷達失效 飛行7小時後折返",
+        "summary": "英國航空一架空中巴士A380客機因氣象雷達失效，在飛行7小時後折返原機場。",
+        "body": [
+          "根據 Simple Flying 報導，英國航空（British Airways）一架空中巴士 A380 巨無霸客機在航行途中突發氣象雷達失效情況，導致駕駛艙無法獲得前方的氣象預警與相關航路資訊。",
+          "在氣象雷達停止運作之後，該架空中巴士 A380 客機基於飛行安全考量被迫轉向返航。航機在空中持續飛行長達 7 個小時後折返，最終返回原出發地機場。",
+          "此次氣象雷達故障事件導致航機完成了一次長達 7 小時的無效飛行，最終無功而返並返抵起飛地點。"
+        ]
+      },
+      "en": {
+        "title": "British Airways Airbus A380 Returns After 7-Hour Flight Due To Radar Failure",
+        "summary": "British Airways Airbus A380 returned after a seven-hour flight following a weather radar failure.",
+        "body": [
+          "According to Simple Flying, a British Airways Airbus A380 superjumbo was forced to execute an in-flight turnaround after experiencing a complete weather radar failure during flight operations.",
+          "The aircraft's onboard weather radar system failed while en route, leaving the aircraft without functioning weather radar capabilities necessary for detecting atmospheric hazards along the route.",
+          "As a direct result of the weather radar system malfunction during the flight, the British Airways Airbus A380 turned back toward its original departure point. The superjumbo aircraft ultimately completed a seven-hour flight to nowhere before returning and landing back at its origin."
+        ]
+      },
+      "flash": {
+        "zh": "英國航空A380雷達失效 飛行7小時後折返",
+        "en": "British Airways A380 turns back after 7-hour flight due to radar failure.",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-11",
+        "sev": "inc",
+        "aircraft": "Airbus A380",
+        "operator": "British Airways",
+        "phase": {
+          "zh": "巡航",
+          "en": "En route"
+        },
+        "location": {
+          "zh": "未說明",
+          "en": "Not specified"
+        },
+        "desc": {
+          "zh": "航機因氣象雷達失效折返出發地",
+          "en": "Aircraft returned to origin following weather radar failure"
+        },
+        "status": "prelim"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A British Airways Airbus A380 flew for 7 hours before returning to its departure point following a weather radar failure.",
+          "sourceQuote": "British Airways Airbus A380 Flies 7 Hours To Nowhere After Weather Radar Failure",
+          "sourceUrl": "https://simpleflying.com/british-airways-a380-7-hours-nowhere-weather-radar-failure/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The Airbus A380 aircraft was forced to turn around when its weather radar stopped functioning.",
+          "sourceQuote": "forced to turnaround when its weather radar went blind",
+          "sourceUrl": "https://simpleflying.com/british-airways-a380-7-hours-nowhere-weather-radar-failure/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "British Airways",
+          "Simple Flying"
+        ],
+        "airlines": [
+          "British Airways"
+        ],
+        "aircraft_models": [
+          "Airbus A380"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-11"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-0804-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "British Airways Airbus A380 Flies 7 Hours To Nowhere After Weather Radar Failure",
+          "url": "https://simpleflying.com/british-airways-a380-7-hours-nowhere-weather-radar-failure/",
+          "publishedUtc": "2026-08-11T07:45Z",
+          "summary": "The superjumbo was forced to turnaround when its weather radar went blind.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/british-airways-airbus-a380.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: AIRBUS A380",
+              "same named core entity: airbus, simple flying",
+              "archive predates source by 14 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 14 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
+            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+            "facts": [
+              {
+                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
+                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              },
+              {
+                "claim": "Qantas is opting to utilize the Boeing 787-9 instead.",
+                "source_quote": "as the airline opts for Boeing 787-9.",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              },
+              {
+                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
+                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+              },
+              {
+                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
+                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260809-1305-emirates-temporarily-suspends-airbus-a38",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: AIRBUS A380",
+              "same named core entity: simple flying",
+              "archive predates source by 2 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
+            "event_date": "2026-08-09",
+            "source_name": "Simple Flying — Emirates Has Suspended Airbus A380 Flights To These 2 Long-...",
+            "source_url": "https://simpleflying.com/emirates-suspended-a380-flights-long-haul-destinations/",
+            "facts": [
+              {
+                "claim": "阿聯酋航空在2026年夏季暫時暫停前往布拉格與格拉斯哥的空中巴士A380航班。",
+                "source_quote": "Emirates has temporarily suspended Airbus A380 flights to Prague and Glasgow for summer 2026",
+                "source_url": "https://simpleflying.com/emirates-suspended-a380-flights-long-haul-destinations/",
+                "source_name": "Simple Flying — Emirates Has Suspended Airbus A380 Flights To These 2 Long-..."
+              },
+              {
+                "claim": "阿聯酋航空預計於10月恢復布拉格與格拉斯哥的每日空中巴士A380巨無霸客機服務。",
+                "source_quote": "with daily superjumbo services returning in October.",
+                "source_url": "https://simpleflying.com/emirates-suspended-a380-flights-long-haul-destinations/",
+                "source_name": "Simple Flying — Emirates Has Suspended Airbus A380 Flights To These 2 Long-..."
+              },
+              {
+                "claim": "阿聯酋航空工程部門先前推動一項數十億美元的改裝計畫,翻新219架空中巴士A380與波音777客機。",
+                "source_quote": "a multi-billion-dollar investment to fully refurbish 219 Airbus A380 and Boeing 777 aircraft",
+                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
+                "source_name": "Archive: AeroTime — Emirates Engineering launches Material Futures Studio for u... — a-20260730-1631-emirates-engineering-launches-material-f"
+              },
+              {
+                "claim": "阿聯酋航空官方航點頁以PRG標示布拉格。",
+                "source_quote": "Flights from Prague (PRG)",
+                "source_url": "https://www.emirates.com/cz/english/destinations/flights-from-prague/",
+                "source_name": "Emirates — Flights from Prague (PRG)"
+              },
+              {
+                "claim": "阿聯酋航空官方航點頁以GLA標示格拉斯哥。",
+                "source_quote": "Flights to Glasgow (GLA)",
+                "source_url": "https://www.emirates.com/us/english/destinations/flights-to-glasgow/",
+                "source_name": "Emirates — Flights to Glasgow (GLA)"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260811-0552-12",
     "queuedUtc": "2026-08-11T05:52Z",
     "approve": false,
@@ -9701,139 +9941,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260808-0704-1",
-    "queuedUtc": "2026-08-08T07:04Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves unconfirmed allegations regarding catering hygiene standards at LAX.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "An airline catering supplier serving 15 airlines at Los Angeles International Airport faces allegations involving mold, maggots, and cockroaches.",
-        "sourceQuote": "LAX Caterer Serving 15 Airlines Faces Mold, Maggot And Cockroach Allegations",
-        "sourceUrl": "https://simpleflying.com/lax-caterer-15-airlines-mold-maggot-cockroach-allegations/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The catering company provides meals for over a dozen international airlines, including Air France, Lufthansa, Japan Airlines, Qantas, and Virgin Atlantic.",
-        "sourceQuote": "The company provides for meals for over a dozen international airlins, including Air France, Lufthansa, Japan Airlines, Qantas and Virgin Atlantic.",
-        "sourceUrl": "https://simpleflying.com/lax-caterer-15-airlines-mold-maggot-cockroach-allegations/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves unconfirmed allegations regarding catering hygiene standards at LAX.",
-      "cat": "ops",
-      "zh": {
-        "title": "洛杉磯國際機場餐飲供應商面臨黴菌與蛆蟲等指控",
-        "summary": "根據 Simple Flying 報導，一家為洛杉磯國際機場 15 家航空公司提供餐點服務的空廚供應商，目前正面臨涉及黴菌、蛆蟲與蟑螂的衛生指控。該公司為十多家國際航空公司供應機上餐點，客戶名單包含法國航空、漢莎航空、日本航空、澳洲航空以及維珍航空。",
-        "body": [
-          "根據 Simple Flying 報導，一家在洛杉磯國際機場運作的餐飲供應商正面臨衛生指控。相關訊息指出，該公司為 15 家航空公司提供餐點服務，其指控內容包含發現黴菌、蛆蟲與蟑螂等情況。",
-          "資料顯示，該餐飲服務公司為超過十多家國際航空公司 provide 機上餐點。在其供應服務的航空公司客戶之中，包含法國航空、漢莎航空、日本航空、澳洲航空以及維珍航空。",
-          "這起針對洛杉磯國際機場餐飲供應商的指控，涉及為多家跨國航空公司提供機上餐點的衛生與品質問題。"
-        ]
-      },
-      "en": {
-        "title": "LAX Caterer Serving International Airlines Faces Hygiene Allegations",
-        "summary": "According to Simple Flying, an airline catering provider operating at Los Angeles International Airport is facing severe allegations involving mold, maggots, and cockroaches. The catering company supplies inflight meals for 15 carriers, serving over a dozen international airlines. Among the affected carriers receiving meals from the facility are major global operators including Air France, Lufthansa, Japan Airlines, Qantas, and Virgin Atlantic. The claims highlight significant health and hygiene concerns regarding catering preparation standards at the airport.",
-        "body": [
-          "According to a report by Simple Flying, a catering provider based at Los Angeles International Airport is facing serious allegations regarding mold, maggots, and cockroaches. The catering company currently prepares and delivers food for 15 airlines operating out of the airport.",
-          "The affected supplier provides catering services for over a dozen international airlines. Among the carriers receiving inflight meal services from the firm are Air France, Lufthansa, Japan Airlines, Qantas, and Virgin Atlantic.",
-          "The allegations involve health and safety concerns regarding food catering operations at the major international aviation hub, which serves multiple global air carriers."
-        ]
-      },
-      "flash": {
-        "zh": "洛杉磯國際機場餐飲業者面臨黴菌與蟲害指控",
-        "en": "LAX airline catering supplier faces mold and pest allegations",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "An airline catering supplier serving 15 airlines at Los Angeles International Airport faces allegations involving mold, maggots, and cockroaches.",
-          "sourceQuote": "LAX Caterer Serving 15 Airlines Faces Mold, Maggot And Cockroach Allegations",
-          "sourceUrl": "https://simpleflying.com/lax-caterer-15-airlines-mold-maggot-cockroach-allegations/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The catering company provides meals for over a dozen international airlines, including Air France, Lufthansa, Japan Airlines, Qantas, and Virgin Atlantic.",
-          "sourceQuote": "The company provides for meals for over a dozen international airlins, including Air France, Lufthansa, Japan Airlines, Qantas and Virgin Atlantic.",
-          "sourceUrl": "https://simpleflying.com/lax-caterer-15-airlines-mold-maggot-cockroach-allegations/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Simple Flying"
-        ],
-        "airlines": [
-          "Air France",
-          "Lufthansa",
-          "Japan Airlines",
-          "Qantas",
-          "Virgin Atlantic"
-        ],
-        "aircraft_models": [],
-        "airports": [
-          "LAX"
-        ],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260808-0704-1",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "LAX Caterer Serving 15 Airlines Faces Mold, Maggot And Cockroach Allegations",
-          "url": "https://simpleflying.com/lax-caterer-15-airlines-mold-maggot-cockroach-allegations/",
-          "publishedUtc": "2026-08-08T06:14Z",
-          "summary": "The company provides for meals for over a dozen international airlins, including Air France, Lufthansa, Japan Airlines, Qantas and Virgin Atlantic.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/hawaiian-airlines-plane-at-lax-with-virgin-atlantic-plane-in-the-background.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
