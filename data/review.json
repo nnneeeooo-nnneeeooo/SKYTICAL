@@ -1,5 +1,141 @@
 [
   {
+    "id": "g-20260811-1955-3",
+    "queuedUtc": "2026-08-11T19:55Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "Story involves an airline investigation, triggering the investigation risk flag; requires human review to assess risk level and ensure no safety implications.",
+    "riskFlags": [
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Delta is investigating a possible hoax Wi-Fi network on a Las Vegas-Atlanta flight after DEF CON 34.",
+        "sourceQuote": "Delta is investigating a possible hoax Wi-Fi network on a Las Vegas-Atlanta flight after DEF CON 34",
+        "sourceUrl": "https://simpleflying.com/delta-air-lines-investigating-hoax-wifi-network-las-vegas-flight-hacking-conference/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "No aircraft systems were hacked in the incident.",
+        "sourceQuote": "though no aircraft systems were hacked",
+        "sourceUrl": "https://simpleflying.com/delta-air-lines-investigating-hoax-wifi-network-las-vegas-flight-hacking-conference/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Story involves an airline investigation, triggering the investigation risk flag; requires human review to assess risk level and ensure no safety implications.",
+      "cat": "ops",
+      "zh": {
+        "title": "達美航空調查拉斯維加斯飛往亞特蘭大航班的假Wi-Fi網路",
+        "summary": "達美航空正調查拉斯維加斯至亞特蘭大航班上疑似的假Wi-Fi網路，經DEF CON 34後發生，惟未發現航空器系統被入侵。",
+        "body": [
+          "達美航空表示，在DEF CON 34會議後，發現拉斯維加斯飛往亞特蘭大航班上出現可疑的假Wi-Fi網路，因此展開調查。",
+          "根據Simple Flying的報導，雖然有乘客報告該網路，但經初步檢查後確認航空器的任何系統未被黑客入侵或受損。",
+          "達美強調乘客安全不受影響，並將繼續監測與協調相關資安事件。",
+          "此事件凸顯大型資安會議期間，航空業界對無線網路安全的警覺需求提升。",
+          "Simple Flying為航空新聞網站，其報導為本則消息的唯一来源。"
+        ]
+      },
+      "en": {
+        "title": "Delta Investigates Possible Hoax Wi-Fi Network on Las Vegas-Atlanta Flight After DEF CON 34",
+        "summary": "Delta is looking into a suspected hoax Wi-Fi network on a Las Vegas-Atlanta flight following DEF CON 34, though no aircraft systems were hacked.",
+        "body": [
+          "Delta Air Lines said it is investigating after reports of a suspicious Wi-Fi network appeared on a flight from Las Vegas to Atlanta following the DEF CON 34 hacking conference.",
+          "According to Simple Flying, while passengers noted the network, preliminary checks showed no intrusion or damage to any aircraft systems.",
+          "The airline stressed that passenger safety was not affected and it will continue to monitor and coordinate on the matter.",
+          "The incident highlights increased vigilance around wireless security during major cybersecurity gatherings.",
+          "Simple Flying is an aviation news website and the sole source for this report."
+        ]
+      },
+      "flash": {
+        "zh": "達美調查拉斯維加斯航班假Wi-Fi",
+        "en": "Delta probes hoax Wi-Fi on Vegas-Atlanta flight",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Delta is investigating a possible hoax Wi-Fi network on a Las Vegas-Atlanta flight after DEF CON 34.",
+          "sourceQuote": "Delta is investigating a possible hoax Wi-Fi network on a Las Vegas-Atlanta flight after DEF CON 34",
+          "sourceUrl": "https://simpleflying.com/delta-air-lines-investigating-hoax-wifi-network-las-vegas-flight-hacking-conference/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "No aircraft systems were hacked in the incident.",
+          "sourceQuote": "though no aircraft systems were hacked",
+          "sourceUrl": "https://simpleflying.com/delta-air-lines-investigating-hoax-wifi-network-las-vegas-flight-hacking-conference/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Delta Air Lines",
+          "Simple Flying"
+        ],
+        "airlines": [
+          "Delta Air Lines"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Las Vegas",
+          "Atlanta"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-1955-3",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Delta Air Lines Investigating Hoax WiFi Network On Las Vegas Flight After Hacking Conference",
+          "url": "https://simpleflying.com/delta-air-lines-investigating-hoax-wifi-network-las-vegas-flight-hacking-conference/",
+          "publishedUtc": "2026-08-11T19:12Z",
+          "summary": "Delta is investigating a possible hoax Wi-Fi network on a Las Vegas-Atlanta flight after DEF CON 34, though no aircraft systems were hacked.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/05/127-delta-air-lines-boeing-757-300-markus-mainka-_-shutterstock.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260811-1727-1",
     "queuedUtc": "2026-08-11T17:27Z",
     "approve": false,
@@ -9875,213 +10011,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260808-1936-4",
-    "queuedUtc": "2026-08-08T19:36Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "Three aviation safety incidents are evidenced by source headlines from The Aviation Herald, but only headline-level information is available without full article text. These are ICAO Annex 13 occurrences requiring mandatory human review. The primary source item (Delta B752 fumes on flight deck) is the lead story; the other two are additional incidents in the same group. All three lack full-text detail, so a publish-grade article cannot be safely produced, but the events are clearly evidenced as incidents.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "investigation",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "On August 8, 2026, a Delta Boeing 757-200 experienced fumes on the flight deck at Atlanta, classified as an incident by The Aviation Herald.",
-        "sourceQuote": "Incident: Delta B752 at Atlanta on Aug 8th 2026, fumes on flight deck",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9aRWdCMFV4NXBCb0ljT0dEaE93OXI0ZmpZZm9pbnFicHhobUM0YnJ0cU1fMnNCYlJveEZsbWdOZ2Q5MjdxU0wwMWJCY1R1blli?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "On August 7, 2026, an Egypt Boeing 737-800 encountered a flaps problem at Brussels, classified as an incident by The Aviation Herald.",
-        "sourceQuote": "Incident: Egypt B738 at Brussels on Aug 7th 2026, flaps problem",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBMTUZCWFRmblhXWkVxZnZuYU12TVZrSmI0bHB3c041czN5NE5lR3ZKNGdaenpPMWVSZkoyYlo2bFR1U2JXdXhWai1sMmpxdHQtaUVVWXhaY1Q?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "On August 6, 2026, a United Boeing 737-800 sustained tyre damage on departure at San Francisco, classified as an incident by The Aviation Herald.",
-        "sourceQuote": "Incident: United B738 at San Francisco on Aug 6th 2026, tyre damage on departure",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5jVEFPWHM3c3ZnSXd3LUwwUkdGOVFtdHIwOENocUtublY4elFqUGpIY1c4M2ZSY3ZvVkZWX0NRemdUNEotdXA2YWlqSWRGa3gw?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Three aviation safety incidents are evidenced by source headlines from The Aviation Herald, but only headline-level information is available without full article text. These are ICAO Annex 13 occurrences requiring mandatory human review. The primary source item (Delta B752 fumes on flight deck) is the lead story; the other two are additional incidents in the same group. All three lack full-text detail, so a publish-grade article cannot be safely produced, but the events are clearly evidenced as incidents.",
-      "cat": "safety",
-      "zh": {
-        "title": "Delta航空B752於亞特蘭大傳駕駛艙異味 列為飛安事件",
-        "summary": "The Aviation Herald報導，2026年8月8日一架Delta航空Boeing 757-200於亞特蘭大發生駕駛艙異味事件，列為飛安事件。同日該媒體亦報導埃及航空B738於布魯塞爾襟翼問題及聯合航空B738於舊金山起飛輪胎損傷兩起事件。",
-        "body": [
-          "The Aviation Herald報導，2026年8月8日，一架Delta航空Boeing 757-200型客機於亞特蘭大發生駕駛艙異味（fumes on flight deck）事件，被列為飛安事件。",
-          "同一報導來源亦記載，2026年8月7日，一架埃及航空（Egypt）Boeing 737-800型客機於布魯塞爾發生襟翼問題（flaps problem）。",
-          "此外，2026年8月6日，一架聯合航空（United）Boeing 737-800型客機於舊金山起飛時發生輪胎損傷（tyre damage on departure）。",
-          "上述三起事件均經The Aviation Herald列為飛安事件類別，目前僅有標題層級資料，尚無完整調查報告或原因認定。",
-          "依據飛安報導規範，事件原因、責任歸屬及安全結論在官方報告發布前均不予推斷。"
-        ]
-      },
-      "en": {
-        "title": "Delta B752 at Atlanta Reports Fumes on Flight Deck, Classified as Incident",
-        "summary": "The Aviation Herald reports that on August 8, 2026, a Delta Boeing 757-200 experienced fumes on the flight deck at Atlanta, classified as an incident. The same source also reports an Egypt B738 flaps problem at Brussels on August 7 and a United B738 tyre damage on departure at San Francisco on August 6.",
-        "body": [
-          "The Aviation Herald reports that on August 8, 2026, a Delta Boeing 757-200 experienced fumes on the flight deck at Atlanta. The event is classified as an aviation incident.",
-          "The same source also records that on August 7, 2026, an Egypt Boeing 737-800 encountered a flaps problem at Brussels.",
-          "Additionally, on August 6, 2026, a United Boeing 737-800 sustained tyre damage on departure at San Francisco.",
-          "All three events are listed by The Aviation Herald in its incident category. Only headline-level information is currently available; no full investigation report or cause determination has been published.",
-          "Under aviation safety reporting standards, no cause, responsibility, or safety conclusion is inferred prior to an official report."
-        ]
-      },
-      "flash": {
-        "zh": "Delta航空B752亞特蘭大駕駛艙異味 列飛安事件",
-        "en": "Delta B752 fumes on flight deck at Atlanta, classified as incident",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-08",
-        "sev": "inc",
-        "aircraft": "B752",
-        "operator": "Delta",
-        "phase": {
-          "zh": "未載明",
-          "en": "Not stated"
-        },
-        "location": {
-          "zh": "亞特蘭大",
-          "en": "Atlanta"
-        },
-        "desc": {
-          "zh": "駕駛艙異味",
-          "en": "Fumes on flight deck"
-        },
-        "status": "prelim"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "On August 8, 2026, a Delta Boeing 757-200 experienced fumes on the flight deck at Atlanta, classified as an incident by The Aviation Herald.",
-          "sourceQuote": "Incident: Delta B752 at Atlanta on Aug 8th 2026, fumes on flight deck",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9aRWdCMFV4NXBCb0ljT0dEaE93OXI0ZmpZZm9pbnFicHhobUM0YnJ0cU1fMnNCYlJveEZsbWdOZ2Q5MjdxU0wwMWJCY1R1blli?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "On August 7, 2026, an Egypt Boeing 737-800 encountered a flaps problem at Brussels, classified as an incident by The Aviation Herald.",
-          "sourceQuote": "Incident: Egypt B738 at Brussels on Aug 7th 2026, flaps problem",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBMTUZCWFRmblhXWkVxZnZuYU12TVZrSmI0bHB3c041czN5NE5lR3ZKNGdaenpPMWVSZkoyYlo2bFR1U2JXdXhWai1sMmpxdHQtaUVVWXhaY1Q?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "On August 6, 2026, a United Boeing 737-800 sustained tyre damage on departure at San Francisco, classified as an incident by The Aviation Herald.",
-          "sourceQuote": "Incident: United B738 at San Francisco on Aug 6th 2026, tyre damage on departure",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5jVEFPWHM3c3ZnSXd3LUwwUkdGOVFtdHIwOENocUtublY4elFqUGpIY1c4M2ZSY3ZvVkZWX0NRemdUNEotdXA2YWlqSWRGa3gw?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "The Aviation Herald"
-        ],
-        "airlines": [
-          "Delta",
-          "Egypt",
-          "United"
-        ],
-        "aircraft_models": [
-          "B752",
-          "B738"
-        ],
-        "airports": [
-          "Atlanta",
-          "Brussels",
-          "San Francisco"
-        ],
-        "locations": [
-          "Atlanta",
-          "Brussels",
-          "San Francisco"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-08",
-          "2026-08-07",
-          "2026-08-06"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "investigation",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260808-1936-4",
-      "primarySource": "The Aviation Herald",
-      "items": [
-        {
-          "title": "Incident: Delta B752 at Atlanta on Aug 8th 2026, fumes on flight deck",
-          "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9aRWdCMFV4NXBCb0ljT0dEaE93OXI0ZmpZZm9pbnFicHhobUM0YnJ0cU1fMnNCYlJveEZsbWdOZ2Q5MjdxU0wwMWJCY1R1blli?oc=5",
-          "publishedUtc": "2026-08-08T16:21Z",
-          "summary": "",
-          "image": null,
-          "source": "The Aviation Herald",
-          "sourceKey": "avherald"
-        },
-        {
-          "title": "Incident: Egypt B738 at Brussels on Aug 7th 2026, flaps problem",
-          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBMTUZCWFRmblhXWkVxZnZuYU12TVZrSmI0bHB3c041czN5NE5lR3ZKNGdaenpPMWVSZkoyYlo2bFR1U2JXdXhWai1sMmpxdHQtaUVVWXhaY1Q?oc=5",
-          "publishedUtc": "2026-08-07T19:04Z",
-          "summary": "",
-          "image": null,
-          "source": "The Aviation Herald",
-          "sourceKey": "avherald"
-        },
-        {
-          "title": "Incident: United B738 at San Francisco on Aug 6th 2026, tyre damage on departure",
-          "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5jVEFPWHM3c3ZnSXd3LUwwUkdGOVFtdHIwOENocUtublY4elFqUGpIY1c4M2ZSY3ZvVkZWX0NRemdUNEotdXA2YWlqSWRGa3gw?oc=5",
-          "publishedUtc": "2026-08-06T07:00Z",
-          "summary": "",
-          "image": null,
-          "source": "The Aviation Herald",
-          "sourceKey": "avherald"
-        }
-      ],
-      "updateCandidate": true,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
