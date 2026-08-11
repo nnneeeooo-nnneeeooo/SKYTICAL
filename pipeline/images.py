@@ -3,15 +3,18 @@
 Runs after write.py. For each recent article without an image it tries,
 in order:
 
-  1. planespotters.net public photos API (no key) by aircraft
+  1. An event photo attached to a supported official source release.
+     Taiwan CAA attachments are tied to the exact cited news item and are
+     labelled as event photos.
+  2. planespotters.net public photos API (no key) by aircraft
      registration found in the article — a photo of the SAME airframe
      (kind "airframe_photo"). Free with photographer credit + backlink,
      which the site renders under the image.
-  2. Wikimedia Commons API (no key) with a conservative query built only
+  3. Wikimedia Commons API (no key) with a conservative query built only
      from entities the article actually verified (airline + aircraft
-     type, else airport, else airline). Only freely-licensed results
-     (CC*/public domain) are accepted, credited and linked (kind
-     "file_photo" — labelled as a file photo, never as an event photo).
+     type, else airport, airline or agency). Only freely-licensed results
+     (CC*/public domain) with required title tokens are accepted. Generic
+     airline/agency fallbacks also need a recent documented capture year.
 
 The photo is embedded by URL from the origin service (no files are
 committed); a match is stored on the article JSON and cached in
@@ -26,6 +29,7 @@ import sys
 from datetime import timedelta
 from html import unescape
 from pathlib import Path
+from urllib.parse import urljoin, urlsplit
 
 import requests
 
@@ -51,6 +55,7 @@ MAX_ATTEMPTS = 3          # per article before we stop retrying "none"
 RETRY_AFTER_HOURS = 6
 MAX_ARTICLE_AGE_DAYS = 14  # never backfill ancient batches
 GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS = 10
+GENERIC_ORG_MAX_PHOTO_AGE_YEARS = 10
 
 PLANESPOTTERS_URL = "https://api.planespotters.net/pub/photos/reg/{reg}"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
@@ -61,6 +66,12 @@ _BAD_TITLE_RE = re.compile(
     r"map|logo|diagram|seal|icon|flag|emblem|coat of arms|chart|plan\b",
     re.I)
 _TAG_RE = re.compile(r"<[^>]+>")
+_CAA_ATTACHMENT_RE = re.compile(
+    r'<a\b(?=[^>]*\bclass=["\'][^"\']*download-filebase)'
+    r'(?=[^>]*\bhref=["\'](?P<href>[^"\']+))'
+    r'(?=[^>]*\btitle=["\'](?P<title>[^"\']+\.(?:jpe?g|png))["\'])'
+    r'[^>]*>', re.I)
+_CAA_HOSTS = {"caa.gov.tw", "www.caa.gov.tw"}
 # Registrations, kept deliberately conservative to avoid false hits in
 # prose (e.g. plain "N95" is NOT matched): TW B-#####, US N-regs with a
 # letter suffix or 4-5 digits, JA####, and common hyphenated prefixes.
@@ -302,6 +313,16 @@ def existing_image_matches(article: dict, image) -> bool:
         normalized_reg = re.sub(r"[^a-z0-9]+", " ", reg.casefold()).strip()
         if normalized_reg and normalized_reg in normalized:
             return True
+    org = find_org(article)
+    if org:
+        query, _tokens, _subject = org
+        if str(image.get("matched") or "").casefold() == query.casefold():
+            try:
+                photo_year = int(image.get("photoYear"))
+            except (TypeError, ValueError):
+                return False
+            return photo_year >= (
+                _article_year(article) - GENERIC_ORG_MAX_PHOTO_AGE_YEARS)
     airline = find_airline(article)
     if not airline:
         return True
@@ -321,6 +342,37 @@ def existing_image_matches(article: dict, image) -> bool:
 
 
 # ── providers ────────────────────────────────────────────────────────────────
+
+def lookup_official_source_photo(article: dict) -> dict | None:
+    """Return an event photo attached to a supported official source."""
+    for source in article.get("sources") or []:
+        if not isinstance(source, dict):
+            continue
+        source_url = str(source.get("url") or "")
+        try:
+            if urlsplit(source_url).hostname not in _CAA_HOSTS:
+                continue
+        except ValueError:
+            continue
+        resp = requests.get(source_url, headers=HEADERS, timeout=TIMEOUT)
+        if resp.status_code != 200:
+            continue
+        match = _CAA_ATTACHMENT_RE.search(str(resp.text or ""))
+        if not match:
+            continue
+        title = _strip_html(unescape(match.group("title")))
+        return {
+            "url": urljoin(source_url, unescape(match.group("href"))),
+            "link": source_url,
+            "credit": "交通部民用航空局",
+            "license": None,
+            "provider": "交通部民用航空局",
+            "kind": "event_photo",
+            "matched": str(article.get("id") or title),
+            "subject": title.rsplit(".", 1)[0],
+            "photoYear": _article_year(article),
+        }
+    return None
 
 def lookup_planespotters(reg: str) -> dict | None:
     """Photo of the exact airframe by registration; None when unavailable."""
@@ -419,6 +471,9 @@ def lookup_commons(query: str, require_tokens: list[str],
 
 def resolve_image(article: dict) -> dict | None:
     """Best honest match for one article, or None. Network errors bubble."""
+    source_photo = lookup_official_source_photo(article)
+    if source_photo:
+        return source_photo
     reg = find_registration(article)
     if reg:
         photo = lookup_planespotters(reg)
@@ -449,7 +504,9 @@ def resolve_image(article: dict) -> dict | None:
     org = find_org(article)
     if org:
         query, tokens, subject = org
-        return lookup_commons(query, tokens, subject=subject)
+        min_year = _article_year(article) - GENERIC_ORG_MAX_PHOTO_AGE_YEARS
+        return lookup_commons(query, tokens, subject=subject,
+                              min_year=min_year, prefer_recent=True)
     return None  # nothing visual verified in this article -> no image
 
 
