@@ -88,6 +88,7 @@ jobs:
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
           # private manual-drafting URL/encryption token
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
+          SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           # BETA grounded search sweep (owner-approved; off unless var set)
           BRIEFING_GROUNDED: ${{ vars.BRIEFING_GROUNDED }}
           BRIEFING_GROUNDED_MODEL: ${{ vars.BRIEFING_GROUNDED_MODEL }}

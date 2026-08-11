@@ -10,12 +10,16 @@
   <title>SKYTICAL 私人補稿台</title>
   <link rel="icon" href="{{ favicon }}">
   <link rel="stylesheet" href="{{ base }}/assets/manual.css">
+  {% if copilot_enabled %}
+  <link rel="stylesheet" href="{{ base }}/assets/copilot.css?v=20260811-beta1">
+  {% endif %}
 </head>
 <body>
   <main class="shell" id="app"
         data-repository="nnneeeooo-nnneeeooo/avwire"
         data-branch="main"
-        data-base="{{ base }}">
+        data-base="{{ base }}"
+        data-copilot-enabled="{{ 'true' if copilot_enabled else 'false' }}">
     <header class="masthead">
       <div>
         <p class="eyebrow">SKYTICAL OWNER WORKBENCH</p>
@@ -283,6 +287,81 @@
       </aside>
     </div>
 
+    {% if copilot_enabled %}
+    <section id="copilot-panel" class="panel copilot-panel" aria-labelledby="copilot-title">
+      <div class="section-head copilot-head">
+        <div>
+          <p class="kicker">PRIVATE ADMIN BETA</p>
+          <h2 id="copilot-title">SKYTICAL Copilot Beta</h2>
+          <p class="copilot-subtitle">Your aviation intelligence companion.</p>
+        </div>
+        <span id="copilot-auth-state" class="copilot-badge locked">尚未驗證管理員</span>
+      </div>
+
+      <div class="copilot-lock-row">
+        <p>Copilot 只在 GitHub 驗證目前 PAT 為此 repository 管理員後啟用；AI 結果只會成為預覽，不會自動發布或覆寫草稿。</p>
+        <button id="copilot-unlock" class="copilot-secondary" type="button">驗證並解鎖</button>
+      </div>
+
+      <fieldset id="copilot-controls" disabled>
+        <div class="copilot-quick-actions" aria-label="常用 Copilot 動作">
+          <button type="button" data-copilot-prompt="摘要目前草稿，保留關鍵航空名稱與所有不確定處。">摘要草稿</button>
+          <button type="button" data-copilot-prompt="將目前草稿整理成三行繁體中文新聞摘要。">三行摘要</button>
+          <button type="button" data-copilot-prompt="建議目前草稿的文章分類與 tags，並說明判斷依據。">分類與 tags</button>
+          <button type="button" data-copilot-prompt="擷取目前草稿中的航空公司、機型、機場與航線。">擷取航空實體</button>
+          <button type="button" data-copilot-prompt="根據可靠來源，列出目前草稿仍需補充或查證的資訊。">補充與查證</button>
+        </div>
+
+        <label for="copilot-question">航空問題或編輯要求
+          <textarea id="copilot-question" rows="4" maxlength="500"
+                    placeholder="例如：A350 和 787 的設計差異是什麼？請附 SKYTICAL 站內來源。"></textarea>
+        </label>
+        <div class="copilot-context-line">
+          <span id="copilot-context-state">尚未讀取草稿 context</span>
+          <span id="copilot-char-count">0 / 500</span>
+        </div>
+        <div class="copilot-actions">
+          <button id="copilot-status" class="copilot-secondary" type="button">檢查狀態</button>
+          <button id="copilot-index" class="copilot-secondary" type="button">增量更新索引</button>
+          <button id="copilot-ask" class="copilot-primary" type="button">詢問 Copilot</button>
+        </div>
+      </fieldset>
+
+      <div id="copilot-message" class="copilot-message empty" role="status">
+        驗證管理員權限後即可使用。
+      </div>
+
+      <div id="copilot-result" class="copilot-result" hidden>
+        <div class="copilot-result-meta">
+          <span id="copilot-mode" class="copilot-badge">資料不足</span>
+          <span id="copilot-time">—</span>
+          <span id="copilot-usage">—</span>
+        </div>
+        <div id="copilot-answer" class="copilot-answer"></div>
+
+        <section class="copilot-sources" aria-labelledby="copilot-sources-title">
+          <h3 id="copilot-sources-title">回答來源</h3>
+          <div id="copilot-source-list" class="copilot-source-list"></div>
+        </section>
+
+        <section id="copilot-suggestion" class="copilot-suggestion" hidden>
+          <div class="section-head">
+            <div>
+              <p class="kicker">SUGGESTION PREVIEW</p>
+              <h3>AI 建議（尚未套用）</h3>
+            </div>
+            <span class="copilot-badge warning">需人工確認</span>
+          </div>
+          <div id="copilot-suggestion-body" class="copilot-suggestion-body"></div>
+          <div class="copilot-actions">
+            <button id="copilot-undo" class="copilot-secondary" type="button" disabled>復原上次套用</button>
+            <button id="copilot-apply" class="copilot-primary" type="button">套用建議到手動草稿</button>
+          </div>
+        </section>
+      </div>
+    </section>
+    {% endif %}
+
     <section id="review-panel" class="panel review-panel ai-only" hidden>
       <div class="section-head">
         <div>
@@ -359,5 +438,8 @@
     </details>
   </main>
   <script src="{{ base }}/assets/manual.js" defer></script>
+  {% if copilot_enabled %}
+  <script src="{{ base }}/assets/copilot.js?v=20260811-beta1" defer></script>
+  {% endif %}
 </body>
 </html>

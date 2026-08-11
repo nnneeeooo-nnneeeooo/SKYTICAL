@@ -1,0 +1,85 @@
+name: private-copilot-job
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/copilot-jobs/inbox/*.json"
+  workflow_dispatch:
+
+concurrency:
+  group: private-copilot-job
+  cancel-in-progress: false
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Process encrypted Copilot jobs
+        env:
+          SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
+          AI_RATE_LIMIT_PER_MINUTE: ${{ vars.AI_RATE_LIMIT_PER_MINUTE || '8' }}
+          AI_DAILY_REQUEST_LIMIT: ${{ vars.AI_DAILY_REQUEST_LIMIT || '50' }}
+          AI_EXTERNAL_SEARCH_DAILY_LIMIT: ${{ vars.AI_EXTERNAL_SEARCH_DAILY_LIMIT || '10' }}
+          AI_DAILY_BUDGET_LIMIT_USD: ${{ vars.AI_DAILY_BUDGET_LIMIT_USD || '5' }}
+          AVWIRE_PROVIDER_ORDER: ${{ vars.AVWIRE_PROVIDER_ORDER }}
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
+        run: python pipeline/copilot.py --process-pending
+
+      - name: Verify encrypted job store
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          allowed = {"version", "alg", "iv", "ciphertext"}
+          for path in Path("data/copilot-jobs").glob("*/*.json"):
+              row = json.loads(path.read_text(encoding="utf-8"))
+              if set(row) != allowed or row.get("version") != 1 or row.get("alg") != "A256GCM":
+                  raise SystemExit(f"unencrypted/invalid Copilot job: {path}")
+          print("Copilot jobs: encrypted envelopes only")
+          PY
+
+      - name: Commit encrypted results and private telemetry
+        run: |
+          git config user.name "avwire-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/copilot-jobs/outbox data/copilot data/usage.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no Copilot result changes"
+            exit 0
+          fi
+          git commit -m "complete encrypted Copilot job $(date -u +%FT%H:%M)"
+          pushed=""
+          for i in 1 2 3; do
+            if ! git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"; then
+              git rebase --abort || true
+              sleep 5
+              continue
+            fi
+            if git push; then
+              pushed=yes
+              break
+            fi
+            sleep 5
+          done
+          if [ -z "$pushed" ]; then
+            echo "::error::Copilot result could not be pushed after 3 attempts"
+            exit 1
+          fi
