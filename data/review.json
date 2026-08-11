@@ -1,5 +1,293 @@
 [
   {
+    "id": "g-20260811-0305-2",
+    "queuedUtc": "2026-08-11T03:05Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "Accident with casualties and ongoing NTSB investigation requires human review per safety rules.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "casualties_or_injuries",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central Utah on August 7, 2026.",
+        "sourceQuote": "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central Utah.",
+        "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The S-64 was operated by Helicopter Transport Services under a contract with the US Forest Service.",
+        "sourceQuote": "The S-64 was operated by Helicopter Transport Services under a contract with the US Forest Service.",
+        "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "National Transportation Safety Board (NTSB) investigators arrived in Utah on July 8, but wildfire conditions have so far prevented them from reaching the wreckage.",
+        "sourceQuote": "National Transportation Safety Board (NTSB) investigators arrived in Utah on July 8, but wildfire conditions have so far prevented them from reaching the wreckage.",
+        "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Accident with casualties and ongoing NTSB investigation requires human review per safety rules.",
+      "cat": "safety",
+      "zh": {
+        "title": "美國犹他州野火滅火直升機墜毀 雙飛行員罹難",
+        "summary": "直升機在野火滅火任務中墜毀；兩名飛行員確認死亡",
+        "body": [
+          "兩名飛行員在8月7日於犹他州中央地區執行野火滅火任務時，所駕駛的Sikorsky S-64 Skycrane直升機墜毀。",
+          "直升機於當地時間約10:40在Richfield附近的Widemouth 2 Fire上空降落水時失事，機上僅有兩人，皆為機組人員。",
+          "該機由Helicopter Transport Services操作，受美國森林服務局合約執行滅火任務。",
+          "事故後 steep 地形與活動中的野火阻礙救援人員即時到場，次日人員抵達 wreckage 並確認兩名飛行員已死亡，遺體已送至犹他州驗屍官辦公室。",
+          "全美運輸安全委員會（NTSB）調查員於7月8日抵達犹他州，但由於野火狀況尚未能到達 wreckage 進行現場勘查。"
+        ]
+      },
+      "en": {
+        "title": "Two Pilots Killed as Sikorsky S-64 Skycrane Crashes During Utah Wildfire Water Drop",
+        "summary": "Helicopter crashes during wildfire firefighting in Utah; two pilots confirmed dead",
+        "body": [
+          "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central Utah on August 7, 2026.",
+          "The accident occurred at approximately 10:40 local time while the helicopter was supporting crews battling the Widemouth 2 Fire near Richfield, Utah.",
+          "The S-64 was operated by Helicopter Transport Services under a contract with the US Forest Service, with only the two crew members aboard.",
+          "Steep terrain and the active wildfire initially prevented emergency responders from reaching the wreckage; crews arrived the next day and confirmed both pilots had been killed, with remains taken to the Utah Office of the Medical Examiner.",
+          "National Transportation Safety Board investigators arrived in Utah on July 8 but have been unable to reach the crash site due to ongoing wildfire conditions."
+        ]
+      },
+      "flash": {
+        "zh": "Utah野火直升機墜毀 雙飛行員死亡",
+        "en": "Utah wildfire helicopter crash kills two pilots",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-07",
+        "sev": "acc",
+        "aircraft": "Sikorsky S-64 Skycrane",
+        "operator": "Helicopter Transport Services",
+        "phase": {
+          "zh": "野火滅火水降任務",
+          "en": "water dropping on wildfire"
+        },
+        "location": {
+          "zh": "美國犹他州Richfield附近的Widemouth 2 Fire",
+          "en": "near Richfield, Utah, Widemouth 2 Fire"
+        },
+        "desc": {
+          "zh": "直升機在滅火任務中墜毀，機上兩名飛行員死亡",
+          "en": "Helicopter crashed while dropping water on a wildfire, killing both pilots"
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central Utah on August 7, 2026.",
+          "sourceQuote": "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central Utah.",
+          "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The S-64 was operated by Helicopter Transport Services under a contract with the US Forest Service.",
+          "sourceQuote": "The S-64 was operated by Helicopter Transport Services under a contract with the US Forest Service.",
+          "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "National Transportation Safety Board (NTSB) investigators arrived in Utah on July 8, but wildfire conditions have so far prevented them from reaching the wreckage.",
+          "sourceQuote": "National Transportation Safety Board (NTSB) investigators arrived in Utah on July 8, but wildfire conditions have so far prevented them from reaching the wreckage.",
+          "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "Helicopter Transport Services",
+          "US Forest Service",
+          "Federal Aviation Administration",
+          "National Transportation Safety Board"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Sikorsky S-64 Skycrane"
+        ],
+        "airports": [],
+        "locations": [
+          "Richfield",
+          "Utah",
+          "Widemouth 2 Fire",
+          "Fishlake National Forest"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-07"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "casualties_or_injuries",
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-0305-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Two pilots killed in S-64 Skycrane crash while fighting Utah wildfire",
+          "url": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
+          "publishedUtc": "2026-08-11T01:33Z",
+          "summary": "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central… The post Two pilots killed in S-64 Skycrane crash while fighting Utah wildfire appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "same airport code(s): THE",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260808-0704-faa-opens-new-air-traffic-control-tower",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "same airport code(s): THE",
+              "archive predates source by 4 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 4 day(s) apart",
+            "event_date": "2026-08-07",
+            "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor...",
+            "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+            "facts": [
+              {
+                "claim": "The FAA announced the opening of a new 121-foot air traffic control tower at Asheville Regional Airport, replacing a facility built in 1961.",
+                "source_quote": "The FAA today announced the opening of Asheville Regional Airport’s (AVL) new 121-foot air traffic control tower, which replaces the old facility built in 1961.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              },
+              {
+                "claim": "Air carrier operations at Asheville Regional Airport increased by more than 300 percent over the past decade, making it North Carolina's third-busiest airport.",
+                "source_quote": "Over the past decade, air carrier operations at Asheville Regional Airport have increased by more than 300 percent, making it the third-busiest airport in North Carolina.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              },
+              {
+                "claim": "The FAA provided $31.7 million through the Infrastructure Investment and Jobs Act to construct the new control tower.",
+                "source_quote": "The FAA provided $31.7 million through the Infrastructure Investment and Jobs Act (IIJA) to construct the new tower.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              },
+              {
+                "claim": "The FAA awarded $10 million through IIJA to expand the terminal and increase gate capacity from five to 12.",
+                "source_quote": "The FAA also awarded $10 million through IIJA to expand and modernize the airport’s terminal, increasing gate capacity from five to 12.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              },
+              {
+                "claim": "The Asheville tower will receive equipment upgrades by the end of 2028 under the Brand New Air Traffic Control System.",
+                "source_quote": "Through the Brand New Air Traffic Control System , the AVL tower will receive key equipment upgrades which will be installed by the end of 2028.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              },
+              {
+                "claim": "The FAA recently installed a new Tower Simulation System at Asheville to support controller training.",
+                "source_quote": "Additionally, the FAA recently installed a new Tower Simulation System (TSS) at Asheville.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260811-0101-5",
     "queuedUtc": "2026-08-11T01:01Z",
     "approve": false,
@@ -9677,262 +9965,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260807-2050-2",
-    "queuedUtc": "2026-08-07T20:50Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves a large financial claim regarding $15 billion in 777X program delay costs.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Simple Flying報導指出波音777X延誤成本達150億美元，大致相當於空中巴士開發A350的費用。",
-        "sourceQuote": "Boeing's 777X delays have now cost $15 billion—roughly matching Airbus' entire A350 development bill after seven years of certification setbacks.",
-        "sourceUrl": "https://simpleflying.com/boeing-777x-delays-cost-much-airbus-spent-building-entire-a350/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "波音公司先前表示777X計畫已獲FAA核准開始認證飛行測試，並預計於2027年進行首次交付。",
-        "sourceQuote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-        "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-        "evidenceScope": "archive",
-        "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-        "archiveContext": true
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves a large financial claim regarding $15 billion in 777X program delay costs.",
-      "cat": "biz",
-      "zh": {
-        "title": "根據Simple Flying報導波音777X延誤成本達150億美元",
-        "summary": "根據Simple Flying報導，波音777X客機經過七年的認證挫折後，其延誤成本已達150億美元，此金額大致相當於空中巴士開發整架A350客機的總費用。波音在此前的財報中表示，該計畫已獲准展開認證飛行測試，預計於2027年開始交付。",
-        "body": [
-          "根據Simple Flying報導，波音公司旗下的777X客機計畫在經歷長達七年的認證挫折後，其累計延誤成本已高達150億美元。這筆龐大的金額，大致相當於競爭對手空中巴士開發整架A350客機所花費的總研發費用。",
-          "此外，根據波音先前公布的官方財務報告資料，777X計畫已取得美國聯邦航空總署的核准，依據4B型別檢查授權展開認證飛行測試。波音方面當時維持計畫時程預測，持續以2027年實現首次交付為目標。"
-        ]
-      },
-      "en": {
-        "title": "Boeing 777X Delay Costs Reach $15 Billion, Matching Airbus A350 Development Bill",
-        "summary": "According to a report published by Simple Flying, Boeing's 777X aircraft program has accumulated approximately $15 billion in total delay costs after facing seven years of certification setbacks. This financial figure roughly matches the entire development bill incurred by Airbus for its A350 jetliner. Historical company records show that Boeing previously received Federal Aviation Administration approval to commence certification flight testing under Type Inspection Authorization 4B, while continuing to anticipate initial deliveries in 2027.",
-        "body": [
-          "According to a report by Simple Flying, Boeing's 777X program has accumulated $15 billion in total delay costs following seven years of certification setbacks. The cost of these delays roughly matches the entire development expense incurred by rival manufacturer Airbus to build the complete A350 aircraft program.",
-          "In previous financial disclosures, Boeing reported that the 777X program received approval from the Federal Aviation Administration to begin certification flight testing under Type Inspection Authorization 4B. Boeing maintained its operational outlook at the time, continuing to anticipate the first delivery of the aircraft in 2027."
-        ]
-      },
-      "flash": {
-        "zh": "Simple Flying報導波音777X延誤成本達150億美元，約與空巴A350開發費相當。",
-        "en": "Simple Flying reports Boeing 777X delay costs reached $15 billion, matching Airbus A350 development costs.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Simple Flying報導指出波音777X延誤成本達150億美元，大致相當於空中巴士開發A350的費用。",
-          "sourceQuote": "Boeing's 777X delays have now cost $15 billion—roughly matching Airbus' entire A350 development bill after seven years of certification setbacks.",
-          "sourceUrl": "https://simpleflying.com/boeing-777x-delays-cost-much-airbus-spent-building-entire-a350/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "波音公司先前表示777X計畫已獲FAA核准開始認證飛行測試，並預計於2027年進行首次交付。",
-          "sourceQuote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-          "evidenceScope": "archive",
-          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-          "archiveContext": true
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Simple Flying",
-          "Boeing",
-          "Airbus",
-          "FAA"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "777X",
-          "A350"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-07",
-          "2026-07-28"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260807-2050-2",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Boeing's 777X Has Now Cost As Much In Delays As Airbus Spent Building The Entire A350",
-          "url": "https://simpleflying.com/boeing-777x-delays-cost-much-airbus-spent-building-entire-a350/",
-          "publishedUtc": "2026-08-07T20:00Z",
-          "summary": "Boeing's 777X delays have now cost $15 billion—roughly matching Airbus' entire A350 development bill after seven years of certification setbacks.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/07/boeing-s-777x.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: 777X, BOEING 777X FAMILY",
-              "same named core entity: boeing",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: 777X, BOEING 777X FAMILY",
-              "same named core entity: boeing",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: A350",
-              "same named core entity: airbus",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se...",
-            "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-            "facts": [
-              {
-                "claim": "Q2 2026 Airbus net income rose 126% to $1.66 billion (€1.65 billion) from $842 million (€732 million) in the same period last year, alongside a 28% increase in Q2 revenue.",
-                "source_quote": "Net income increased from $842 million (€732 million) to $1.66 billion (€1.65 billion) in Q2 2026 while revenue rose 28% over the same period.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
