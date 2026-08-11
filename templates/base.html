@@ -5,22 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
-<meta property="og:type" content="website">
+<meta name="robots" content="{{ robots_meta }}">
+<meta property="og:type" content="{{ og_type }}">
 <meta property="og:site_name" content="SKYTICAL">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:url" content="{{ self_abs_url }}">
 <meta property="og:image" content="{{ social_image_abs_url }}">
-<meta property="og:image:alt" content="SKYTICAL — SKYLINE TO AVIATION NEWS">
+<meta property="og:image:alt" content="{{ social_image_alt }}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ description }}">
 <meta name="twitter:image" content="{{ social_image_abs_url }}">
 {% if hreflang %}
 <link rel="canonical" href="{{ self_abs_url }}">
-<link rel="alternate" hreflang="zh-Hant" href="{{ zh_abs_url }}">
+{% if has_zh_alternate %}
+<link rel="alternate" hreflang="zh-Hant-TW" href="{{ zh_abs_url }}">
+{% endif %}
+{% if has_en_alternate %}
 <link rel="alternate" hreflang="en" href="{{ en_abs_url }}">
-<link rel="alternate" hreflang="x-default" href="{{ zh_abs_url }}">
+{% endif %}
+<link rel="alternate" hreflang="x-default" href="{{ x_default_abs_url }}">
+{% endif %}
+{% if structured_data %}
+<script type="application/ld+json">{{ structured_data | tojson }}</script>
 {% endif %}
 <link rel="icon" type="image/svg+xml" href="{{ favicon }}">
 <script>try{var t=localStorage.getItem("avwire-theme");if(t){document.documentElement.dataset.theme=t;}}catch(e){}document.documentElement.classList.add("js");</script>
@@ -122,6 +130,7 @@
         <p class="text-muted" style="font-size:12.5px;line-height:1.8;margin-top:8px;">{{ t.footerAbout }}</p>
         <p class="text-muted" style="font-size:11.5px;letter-spacing:.04em;margin:8px 0 0;">{{ t.lastBuild }} {{ build.stamp }} UTC</p>
         <a class="btn btn-secondary footer-changelog-button" href="{{ changelog_url }}">{{ t.footerChangelog }} →</a>
+        <a class="btn btn-secondary footer-changelog-button" href="{{ policy_url }}">{{ t.policyLink }} →</a>
       </div>
       <div>
         <h6 style="margin:0 0 10px;">{{ t.footerSources }}</h6>
@@ -130,6 +139,12 @@
           <a href="{{ s.url }}" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">{{ s.name }}</a>
           {% endfor %}
         </div>
+        <h6 style="margin:20px 0 10px;">{{ t.topicNavLabel }}</h6>
+        <nav aria-label="{{ t.topicNavLabel }}" style="display:flex;flex-wrap:wrap;gap:8px;">
+          {% for topic_link in topic_links %}
+          <a href="{{ topic_link.url }}" class="tag tag-neutral" style="text-decoration:none;">{{ topic_link.label }}</a>
+          {% endfor %}
+        </nav>
       </div>
     </div>
   </div>
