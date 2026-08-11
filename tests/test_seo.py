@@ -23,6 +23,10 @@ def _json_ld(html: str) -> list[dict]:
 def main() -> None:
     assert build.main() == 0
 
+    verification = ROOT / "site" / "google83f7fe8f9aeba973.html"
+    assert verification.read_text(encoding="utf-8").strip() == (
+        "google-site-verification: google83f7fe8f9aeba973.html")
+
     sitemap = ET.parse(ROOT / "site" / "sitemap.xml").getroot()
     ns = {"sm": build.SITEMAP_NS, "news": build.NEWS_NS}
     locations = [node.text for node in sitemap.findall("sm:url/sm:loc", ns)]
