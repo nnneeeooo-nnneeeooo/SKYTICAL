@@ -35,13 +35,13 @@ def main() -> None:
         "53ccee38ecb372a446ebd89737070852e0d8876b04af7efdb1709e78d8553621"
     )
     assert hashlib.sha256(logo_path.read_bytes()).hexdigest() == (
-        "58a11ba2c4d10551e59683056dc5383f137eeb03228be8539fd46f4d7559325a"
+        "9f273f64694d424df681b21d7450d332d363912bdb51b2c93b2e5e34c2e44f2f"
     )
     assert hashlib.sha256(mark_path.read_bytes()).hexdigest() == (
-        "484c4e0efd1d7b899928f9cf77988f6c06278e006b981c3992bb0bcd259b7dc5"
+        "50ec6a6d663a1f4385d1f62ca546e0b6bdf815520b0bc3bd72cc5e1a255022e4"
     )
     assert hashlib.sha256(social_path.read_bytes()).hexdigest() == (
-        "e0003ccba52f1a4210e9ce6be5704a7f2d83ff256984f8793044d0b9f223fcec"
+        "b5903b8496c802725fcdfe6072631a138c8c375a438ec1d92606c5e41f7076a5"
     )
     assert 'viewBox="250 660 1000 220"' in logo
     assert 'viewBox="250 650 250 220"' in mark
@@ -50,6 +50,14 @@ def main() -> None:
         assert 'fill="#f3f2f2"' not in normalized
         assert 'fill="#ffffff"' not in normalized
         assert "data:image/png;base64," in normalized
+        assert asset.count(
+            'matrix(0.95, 0, 0, 0.95, 237.925, 645.3)'
+        ) == 2
+        assert "matrix(0.75, 0, 0, 0.75, 257.250011, 655.499924)" not in asset
+        assert (
+            "M 237.925 645.3 L 505.825 645.3 L 505.825 884.7 "
+            "L 237.925 884.7 Z"
+        ) in asset
 
     assert png_dimensions(social_path) == (1200, 630)
     assert f'/assets/skytical-logo.svg?v={build.ASSET_VERSION}' in home
