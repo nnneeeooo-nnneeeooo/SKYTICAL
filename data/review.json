@@ -1,5 +1,332 @@
 [
   {
+    "id": "g-20260811-2136-9",
+    "queuedUtc": "2026-08-11T21:36Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "The story concerns a military aircraft programme (VC-25B/Air Force One) with significant financial claims ($73.3M MCS replacement cost), programme delays, and unconfirmed/developing status. The source is a single news outlet reporting on a government report, with heavy attribution. The financial_or_order_claim and unconfirmed_or_developing risk flags apply, requiring human review before publication.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A US Government report released on 3 August, prepared as part of the Pentagon's fiscal 2027 budget submission, states that delivery of two converted Boeing 747-8 aircraft designated VC-25B will be delayed until 2028.",
+        "sourceQuote": "the programme is suffering from various complications that will delay the delivery of the two converted Boeing 747-8 aircraft, known in US military nomenclature as the VC-25B, until 2028.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The report states issues include the primary communications system requiring replacement, interior design problems, electrical wiring issues, structural defects, and preparations for flight testing.",
+        "sourceQuote": "The issues include the primary communications system (which requires replacing), interior design problems, electrical wiring issues, structural defects, and preparations for flight testing",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "A US Air Force update issued in April and recently declassified states the current Mission Communication System baseline is not viable past 2028 due to cybersecurity and obsolescence issues.",
+        "sourceQuote": "The current Mission Communication System (MCS) baseline is not viable past 2028 due to cybersecurity and obsolescence issues",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Removing and replacing the MCS system will cost an estimated $73.3 million, only half of which has been allocated and approved in the current USAF appropriation budget.",
+        "sourceQuote": "removing and replacing the MCS system will cost an estimated $73.3 million, only half of which has been allocated and approved in the current USAF appropriation budget.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Window contractor GKN is having difficulty manufacturing cabin windows to USAF specifications, and cockpit windshield replacement contractor PPG has not yet received design certification, with no spare commercial 747-8 windshields available.",
+        "sourceQuote": "the current window contractor (GKN) is having difficulty manufacturing the cabin windows to the USAF specifications",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The original interior contractor GDC Technics was replaced in 2021, a move that pushed delivery to 2028, four years behind schedule, and interior delays have impacted electrical wiring installation and structural modifications.",
+        "sourceQuote": "Having already replaced the original contractor (GDC Technics) for this task in 2021, this move already pushed back the delivery of the aircraft until 2028 – four years behind schedule",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story concerns a military aircraft programme (VC-25B/Air Force One) with significant financial claims ($73.3M MCS replacement cost), programme delays, and unconfirmed/developing status. The source is a single news outlet reporting on a government report, with heavy attribution. The financial_or_order_claim and unconfirmed_or_developing risk flags apply, requiring human review before publication.",
+      "cat": "mil",
+      "zh": {
+        "title": "美國政府報告：波音VC-25B交付延至2028年，通訊系統將過時",
+        "summary": "美國政府報告指VC-25B延遲至2028年交付；任務通訊系統2028年前將過時，更換估計7330萬美元",
+        "body": [
+          "根據美國政府於8月3日發布的報告（作為五角大廈2027財年預算申請的一部分），將兩架改裝波音747-8飛機投入總統服役的計畫面臨進一步延遲，交付將推遲至2028年。該型機在美國軍方命名中稱為VC-25B。",
+          "報告指出，計畫面臨多項問題，包括主要通訊系統需更換、內部設計問題、電氣線路問題、結構缺陷及飛行測試準備工作，均需在飛機移交美國空軍前解決。報告稱：「飛機內部的設計成熟度因眾多技術與認證問題而持續落後。」",
+          "美國空軍4月發布並近期解密的一份更新指出：「目前的任務通訊系統（MCS）基線因網路安全與過時問題，在2028年後將不可行。」報告補充稱，未緩解的風險將導致無法連接並操作總統通訊所需的關鍵國家安全系統。",
+          "據報導，移除並更換MCS系統估計耗資7330萬美元，目前美國空軍撥款預算中僅批准並分配其中一半。",
+          "報告另指出，機艙與駕駛艙窗戶的供應鏈問題亦影響進度。現有窗戶承包商GKN難以按美國空軍規格製造機艙窗戶；駕駛艙擋風玻璃原承包商已停止營業，接替承包商PPG尚未取得設計認證，且無商用747-8擋風玻璃備件可用。",
+          "機艙內部設計與供應亦持續延遲。2021年已更換原始承包商GDC Technics，此舉已將交付推遲至2028年，較原定進度落後四年。內部延遲亦影響電氣線路安裝及其他結構改裝，導致「低效率的工程工作」及零件重複變更。"
+        ]
+      },
+      "en": {
+        "title": "US Government Report: Boeing VC-25B Delivery Delayed to 2028, Communications System Obsolete by 2028",
+        "summary": "US government report says VC-25B delivery delayed to 2028; Mission Communication System obsolete by 2028; replacement estimated at $73.3 million",
+        "body": [
+          "According to a report released by the US Government on 3 August, prepared as part of the Pentagon's fiscal 2027 budget submission, the programme to bring two converted Boeing 747-8 aircraft into presidential service faces further delays, with delivery pushed back to 2028. The aircraft are designated VC-25B in US military nomenclature.",
+          "The report states that the programme suffers from multiple complications including a primary communications system requiring replacement, interior design problems, electrical wiring issues, structural defects, and flight testing preparations, all of which must be resolved before the aircraft can be handed over to the US Air Force. \"The design maturity for the aircraft interior continues to lag due to numerous technical and certification issues,\" the report stated.",
+          "A US Air Force update issued in April and recently declassified said: \"The current Mission Communication System (MCS) baseline is not viable past 2028 due to cybersecurity and obsolescence issues.\" The report added that unmitigated risk would drive an inability to connect and operate on vital National Security Systems required for Presidential communications.",
+          "According to the report, removing and replacing the MCS system will cost an estimated $73.3 million, only half of which has been allocated and approved in the current USAF appropriation budget.",
+          "Supply chain issues linked to cabin and flight deck windows are also delaying the programme. The current window contractor GKN is having difficulty manufacturing cabin windows to USAF specifications. The original cockpit windshield contractor ceased trading, and replacement contractor PPG has not yet received design certification. No spare commercial 747-8 windshields are available, requiring PPG to develop a replacement suitable for the VC-25B.",
+          "The design and supply of the bespoke presidential interior continues to be delayed. The original contractor GDC Technics was replaced in 2021, a move that already pushed delivery to 2028, four years behind schedule. Interior delays have impacted installation of electrical wiring and other structural modifications, resulting in \"inefficient engineering work\" and repeated changes to parts."
+        ]
+      },
+      "flash": {
+        "zh": "美國報告：波音VC-25B交付延至2028年，通訊系統將過時",
+        "en": "US report: Boeing VC-25B delivery delayed to 2028, comms system obsolete by 2028",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A US Government report released on 3 August, prepared as part of the Pentagon's fiscal 2027 budget submission, states that delivery of two converted Boeing 747-8 aircraft designated VC-25B will be delayed until 2028.",
+          "sourceQuote": "the programme is suffering from various complications that will delay the delivery of the two converted Boeing 747-8 aircraft, known in US military nomenclature as the VC-25B, until 2028.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The report states issues include the primary communications system requiring replacement, interior design problems, electrical wiring issues, structural defects, and preparations for flight testing.",
+          "sourceQuote": "The issues include the primary communications system (which requires replacing), interior design problems, electrical wiring issues, structural defects, and preparations for flight testing",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "A US Air Force update issued in April and recently declassified states the current Mission Communication System baseline is not viable past 2028 due to cybersecurity and obsolescence issues.",
+          "sourceQuote": "The current Mission Communication System (MCS) baseline is not viable past 2028 due to cybersecurity and obsolescence issues",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Removing and replacing the MCS system will cost an estimated $73.3 million, only half of which has been allocated and approved in the current USAF appropriation budget.",
+          "sourceQuote": "removing and replacing the MCS system will cost an estimated $73.3 million, only half of which has been allocated and approved in the current USAF appropriation budget.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Window contractor GKN is having difficulty manufacturing cabin windows to USAF specifications, and cockpit windshield replacement contractor PPG has not yet received design certification, with no spare commercial 747-8 windshields available.",
+          "sourceQuote": "the current window contractor (GKN) is having difficulty manufacturing the cabin windows to the USAF specifications",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The original interior contractor GDC Technics was replaced in 2021, a move that pushed delivery to 2028, four years behind schedule, and interior delays have impacted electrical wiring installation and structural modifications.",
+          "sourceQuote": "Having already replaced the original contractor (GDC Technics) for this task in 2021, this move already pushed back the delivery of the aircraft until 2028 – four years behind schedule",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Boeing",
+          "US Air Force",
+          "USAF",
+          "GKN",
+          "PPG",
+          "GDC Technics",
+          "Pentagon"
+        ],
+        "airlines": [
+          "Lufthansa",
+          "Air India"
+        ],
+        "aircraft_models": [
+          "Boeing 747-8",
+          "VC-25B"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-03",
+          "2028"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-2136-9",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Boeing’s new Air Force One could be obsolete before it even enters service News",
+          "url": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
+          "publishedUtc": "2026-08-11T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/02/Screenshot-2026-02-18-100132.png",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: VC-25B"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 14 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260808-0704-faa-opens-new-air-traffic-control-tower",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: faa",
+              "same airport code(s): THE",
+              "archive predates source by 4 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 4 day(s) apart",
+            "event_date": "2026-08-07",
+            "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor...",
+            "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+            "facts": [
+              {
+                "claim": "The FAA announced the opening of a new 121-foot air traffic control tower at Asheville Regional Airport, replacing a facility built in 1961.",
+                "source_quote": "The FAA today announced the opening of Asheville Regional Airport’s (AVL) new 121-foot air traffic control tower, which replaces the old facility built in 1961.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              },
+              {
+                "claim": "Air carrier operations at Asheville Regional Airport increased by more than 300 percent over the past decade, making it North Carolina's third-busiest airport.",
+                "source_quote": "Over the past decade, air carrier operations at Asheville Regional Airport have increased by more than 300 percent, making it the third-busiest airport in North Carolina.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              },
+              {
+                "claim": "The FAA provided $31.7 million through the Infrastructure Investment and Jobs Act to construct the new control tower.",
+                "source_quote": "The FAA provided $31.7 million through the Infrastructure Investment and Jobs Act (IIJA) to construct the new tower.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              },
+              {
+                "claim": "The FAA awarded $10 million through IIJA to expand the terminal and increase gate capacity from five to 12.",
+                "source_quote": "The FAA also awarded $10 million through IIJA to expand and modernize the airport’s terminal, increasing gate capacity from five to 12.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              },
+              {
+                "claim": "The Asheville tower will receive equipment upgrades by the end of 2028 under the Brand New Air Traffic Control System.",
+                "source_quote": "Through the Brand New Air Traffic Control System , the AVL tower will receive key equipment upgrades which will be installed by the end of 2028.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              },
+              {
+                "claim": "The FAA recently installed a new Tower Simulation System at Asheville to support controller training.",
+                "source_quote": "Additionally, the FAA recently installed a new Tower Simulation System (TSS) at Asheville.",
+                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
+                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260811-1955-3",
     "queuedUtc": "2026-08-11T19:55Z",
     "approve": false,
@@ -9698,319 +10025,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260808-2236-12",
-    "queuedUtc": "2026-08-08T22:36Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Aviation safety event (drone crash) under investigation; requires manual review per policy.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "investigation",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A test‑configured XQ‑58 Valkyrie crashed at Dugway Proving Ground on 4 August.",
-        "sourceQuote": "Kratos confirmed to The War Zone that a test-configured Valkyrie was involved in a mishap shortly after taking off from a runway at Dugway Proving Ground on 4 August.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The flight was part of an internally funded research and development programme to add new configurations and capabilities.",
-        "sourceQuote": "the flight formed part of an internally funded research and development programme intended to add new configurations and capabilities to the aircraft.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "No one was injured and Kratos has temporarily suspended flight testing while investigating the cause.",
-        "sourceQuote": "No one was injured, and Kratos has temporarily suspended flight testing of the system while it investigates the cause.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Dugway Proving Ground confirmed a drone crashed during take‑off at around 08:00 local time.",
-        "sourceQuote": "a drone had crashed during take-off at around 08:00 local time",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Kratos' Steve Fendley acknowledged an investigation and said the company pushes the envelope across all system types.",
-        "sourceQuote": "there is an investigation and that “we push the envelope across all of our system types.”",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Aviation safety event (drone crash) under investigation; requires manual review per policy.",
-      "cat": "safety",
-      "zh": {
-        "title": "Kratos XQ-58 無人機在杜格韋試飛墜毀",
-        "summary": "Kratos 確認一架測試配置的 XQ-58 Valkyrie 無人機於 8 月 4 日在猶他州杜格韋試驗場起飛後不久墜毀，屬內部研發計劃，無人員受傷，公司已暫停飛行測試並展開調查。",
-        "body": [
-          "Kratos 向 The War Zone 確認，一架測試配置的 Valkyrie 於 8 月 4 日在杜格韋試驗場跑道起飛後發生意外。",
-          "該飛行屬於公司自行資助的研發計劃，旨在為飛機增加新配置與能力。",
-          "杜格韋試驗場發言人另行證實，一架無人機於當地時間 08:00 左右在起飛階段墜毀。",
-          "Kratos 表示無人員受傷，並已暫停該系統的飛行測試，等待調查結果。",
-          "Kratos 無人系統部門總裁 Steve Fendley 指出正在調查，並稱「我們在所有系統類型上都不斷挑戰極限」。"
-        ]
-      },
-      "en": {
-        "title": "Kratos XQ-58 Valkyrie test drone crashes at Dugway Proving Ground",
-        "summary": "Kratos confirmed that a test‑configured XQ‑58 Valkyrie crashed shortly after take‑off at Dugway Proving Ground, Utah on 4 August during an internally funded research programme. No injuries were reported, and the company has suspended flight testing while an investigation is underway.",
-        "body": [
-          "Kratos told The War Zone that a test‑configured Valkyrie was involved in a mishap shortly after taking off from a runway at Dugway Proving Ground on 4 August.",
-          "The flight formed part of an internally funded research and development programme intended to add new configurations and capabilities to the aircraft.",
-          "A Dugway Proving Ground spokesperson separately confirmed that a drone had crashed during take‑off at around 08:00 local time.",
-          "No one was injured, and Kratos has temporarily suspended flight testing of the system while it investigates the cause.",
-          "Steve Fendley, President of Kratos’ Unmanned Systems Division, said there is an investigation and that “we push the envelope across all of our system types.”"
-        ]
-      },
-      "flash": {
-        "zh": "Kratos XQ-58 試飛墜毀，調查中",
-        "en": "Kratos XQ-58 test drone crashes, investigation ongoing",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-04",
-        "sev": "inc",
-        "aircraft": "XQ-58 Valkyrie",
-        "operator": "Kratos Defense",
-        "phase": {
-          "zh": "起飛階段",
-          "en": "takeoff phase"
-        },
-        "location": {
-          "zh": "美國猶他州杜格韋試驗場",
-          "en": "Dugway Proving Ground, Utah, USA"
-        },
-        "desc": {
-          "zh": "無人機在內部資助測試起飛後不久墜毀，無人員受傷",
-          "en": "Drone crashed shortly after takeoff during an internally funded test; no injuries reported"
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A test‑configured XQ‑58 Valkyrie crashed at Dugway Proving Ground on 4 August.",
-          "sourceQuote": "Kratos confirmed to The War Zone that a test-configured Valkyrie was involved in a mishap shortly after taking off from a runway at Dugway Proving Ground on 4 August.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The flight was part of an internally funded research and development programme to add new configurations and capabilities.",
-          "sourceQuote": "the flight formed part of an internally funded research and development programme intended to add new configurations and capabilities to the aircraft.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "No one was injured and Kratos has temporarily suspended flight testing while investigating the cause.",
-          "sourceQuote": "No one was injured, and Kratos has temporarily suspended flight testing of the system while it investigates the cause.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Dugway Proving Ground confirmed a drone crashed during take‑off at around 08:00 local time.",
-          "sourceQuote": "a drone had crashed during take-off at around 08:00 local time",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Kratos' Steve Fendley acknowledged an investigation and said the company pushes the envelope across all system types.",
-          "sourceQuote": "there is an investigation and that “we push the envelope across all of our system types.”",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F4"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Kratos Defense",
-          "US Army",
-          "Dugway Proving Ground",
-          "The War Zone"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "XQ-58 Valkyrie"
-        ],
-        "airports": [],
-        "locations": [
-          "Dugway Proving Ground, Utah, USA"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-04"
-        ]
-      },
-      "eventStatus": "under_investigation",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "investigation",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260808-2236-12",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "XQ-58 Valkyrie drone crashes at Dugway during Kratos-funded test programme News",
-          "url": "https://aerospaceglobalnews.com/news/kratos-xq58-valkyrie-crash-utah/",
-          "publishedUtc": "2026-08-06T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/01/Rendering-of-XQ-58-Valkyrie-with-landing-gear.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: airbus",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
-            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-            "facts": [
-              {
-                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
-                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              },
-              {
-                "claim": "Qantas is opting to utilize the Boeing 787-9 instead.",
-                "source_quote": "as the airline opts for Boeing 787-9.",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              },
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-us-marine-corps-receives-359th-and-final",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: us marine corps",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — Bell Boeing delivers final MV-22 Osprey to US Marine Corps",
-            "source_url": "https://www.aerotime.aero/articles/us-marine-corps-final-mv-22b-osprey-delivery",
-            "facts": [
-              {
-                "claim": "The US Marine Corps received its 359th and final Bell Boeing MV-22B Osprey, completing the tiltrotor program.",
-                "source_quote": "The US Marine Corps has received its 359th and final Bell Boeing MV-22B Osprey, completing the tiltrotor’s program",
-                "source_url": "https://www.aerotime.aero/articles/us-marine-corps-final-mv-22b-osprey-delivery",
-                "source_name": "AeroTime — Bell Boeing delivers final MV-22 Osprey to US Marine Corps"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1934-airbus-delivers-237-aircraft-in-q2-maint",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: airbus",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar...",
-            "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-            "facts": [
-              {
-                "claim": "空中巴士在第二季交付237架飛機。",
-                "source_quote": "Airbus Achieves 237 Deliveries In 2nd Quarter",
-                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
-              },
-              {
-                "claim": "空中巴士維持全年交付870架飛機的目標。",
-                "source_quote": "Keeps 870 Target For Full Year",
-                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
-              },
-              {
-                "claim": "Simple Flying報導指出維持永續的產能提升對空中巴士達成全年870架交付目標至關重要。",
-                "source_quote": "Airbus' ability to maintain a sustainable production ramp-up will be crucial in achieving its 870-aircraft delivery target for the full year.",
-                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
-                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
