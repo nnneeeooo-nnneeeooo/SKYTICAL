@@ -42,6 +42,7 @@ import json
 import os
 import re
 import time
+from urllib.parse import urlsplit
 
 import requests
 from model_config import (
@@ -477,6 +478,10 @@ class GeminiProvider:
         self.reasoning_tier = reasoning_tier
         self.request_log = []
         self.reasoning_effective = "automatic profile"
+        self.google_search_used = False
+        self.grounding_sources = []
+        self.search_suggestions_html = ""
+        self.search_query_count = 0
 
     def available(self) -> bool:
         return bool(os.environ.get("GEMINI_API_KEY"))
@@ -540,6 +545,7 @@ class GeminiProvider:
                 self.request_log.append(_safe_response_meta(response, elapsed))
 
     def draft(self, system_prompt: str, user_prompt: str, schema: dict):
+        self._reset_grounding()
         payload = {
             "systemInstruction": {"parts": [{"text": system_prompt}]},
             "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
@@ -554,6 +560,81 @@ class GeminiProvider:
             return extract_json(text)
         except ValueError as exc:
             return self._repair(text, schema, exc)
+
+    def _reset_grounding(self) -> None:
+        self.google_search_used = False
+        self.grounding_sources = []
+        self.search_suggestions_html = ""
+        self.search_query_count = 0
+
+    def _capture_grounding(self, response) -> None:
+        """Keep only Google-returned citation links and the required widget.
+
+        Search queries, prompt text and retrieved page content are never
+        persisted.  The rendered search-suggestion HTML is passed through
+        unchanged and must be displayed only inside a sandboxed iframe.
+        """
+        self._reset_grounding()
+        data = response.json()
+        candidates = data.get("candidates") or []
+        candidate = candidates[0] if candidates else {}
+        metadata = candidate.get("groundingMetadata") or {}
+        queries = metadata.get("webSearchQueries") or []
+        self.search_query_count = len([
+            query for query in queries
+            if isinstance(query, str) and query.strip()
+        ])
+        entrypoint = metadata.get("searchEntryPoint") or {}
+        rendered = entrypoint.get("renderedContent")
+        if isinstance(rendered, str) and 0 < len(rendered) <= 100_000:
+            self.search_suggestions_html = rendered
+
+        seen = set()
+        for chunk in metadata.get("groundingChunks") or []:
+            web = chunk.get("web") if isinstance(chunk, dict) else None
+            if not isinstance(web, dict):
+                continue
+            url = str(web.get("uri") or "").strip()
+            parsed = urlsplit(url)
+            if parsed.scheme != "https" or not parsed.netloc or url in seen:
+                continue
+            title = re.sub(r"\s+", " ", str(web.get("title") or "")).strip()
+            self.grounding_sources.append({
+                "title": title[:300] or parsed.netloc,
+                "url": url,
+            })
+            seen.add(url)
+            if len(self.grounding_sources) >= 5:
+                break
+        self.google_search_used = bool(
+            self.search_query_count or self.grounding_sources
+            or self.search_suggestions_html)
+
+    def draft_grounded(self, system_prompt: str, user_prompt: str,
+                       schema: dict):
+        """Generate the final answer with Gemini's Google Search grounding.
+
+        The grounded result is not sent through format-repair or another
+        model because Google's terms require it to be displayed without
+        modification and together with its associated search suggestions.
+        """
+        self._reset_grounding()
+        payload = {
+            "systemInstruction": {"parts": [{"text": system_prompt}]},
+            "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
+            "tools": [{"googleSearch": {}}],
+            "generationConfig": self._generation_config(schema, repair=False),
+        }
+        response = self._post(payload, repair=False)
+        self._check_status(response)
+        self._capture_grounding(response)
+        text = self._final_text(response)
+        if text is None:
+            return None
+        try:
+            return extract_json(text)
+        except ValueError as exc:
+            raise ProviderError(f"bad grounded JSON from model: {exc}") from exc
 
     def _final_text(self, response):
         """Final-answer text only. Returns None for genuine content blocks;

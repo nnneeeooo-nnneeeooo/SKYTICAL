@@ -11,7 +11,7 @@
   <link rel="icon" href="{{ favicon }}">
   <link rel="stylesheet" href="{{ base }}/assets/manual.css">
   {% if copilot_enabled %}
-  <link rel="stylesheet" href="{{ base }}/assets/copilot.css?v=20260811-beta1">
+  <link rel="stylesheet" href="{{ base }}/assets/copilot.css?v=20260811-knowledge1">
   {% endif %}
 </head>
 <body>
@@ -314,7 +314,7 @@
 
         <label for="copilot-question">航空問題或編輯要求
           <textarea id="copilot-question" rows="4" maxlength="500"
-                    placeholder="例如：A350 和 787 的設計差異是什麼？請附 SKYTICAL 站內來源。"></textarea>
+                    placeholder="例如：A350 和 787 誰比較先進？請結合站內資料、模型航空知識與網路查證。"></textarea>
         </label>
         <div class="copilot-context-line">
           <span id="copilot-context-state">尚未讀取草稿 context</span>
@@ -342,6 +342,15 @@
         <section class="copilot-sources" aria-labelledby="copilot-sources-title">
           <h3 id="copilot-sources-title">回答來源</h3>
           <div id="copilot-source-list" class="copilot-source-list"></div>
+        </section>
+
+        <section id="copilot-search-suggestions" class="copilot-search-suggestions"
+                 aria-labelledby="copilot-search-suggestions-title" hidden>
+          <h3 id="copilot-search-suggestions-title">Google 搜尋建議</h3>
+          <iframe id="copilot-search-suggestions-frame"
+                  title="Google Search grounding 搜尋建議"
+                  sandbox="allow-popups allow-popups-to-escape-sandbox"
+                  referrerpolicy="no-referrer" loading="lazy"></iframe>
         </section>
 
         <section id="copilot-suggestion" class="copilot-suggestion" hidden>
@@ -439,7 +448,7 @@
   </main>
   <script src="{{ base }}/assets/manual.js" defer></script>
   {% if copilot_enabled %}
-  <script src="{{ base }}/assets/copilot.js?v=20260811-beta1" defer></script>
+  <script src="{{ base }}/assets/copilot.js?v=20260811-knowledge1" defer></script>
   {% endif %}
 </body>
 </html>
