@@ -57,7 +57,15 @@ PUBLIC_DIR = Path(__file__).resolve().parent.parent / "public"
 
 def static_asset_version() -> str:
     digest = hashlib.sha256()
-    for name in ("site.css", "app.js", "search.js", "highlight.js"):
+    for name in (
+        "site.css",
+        "app.js",
+        "search.js",
+        "highlight.js",
+        "skytical-logo.svg",
+        "skytical-mark.svg",
+        "skytical-social.png",
+    ):
         digest.update((STATIC_DIR / name).read_bytes())
     return digest.hexdigest()[:10]
 
@@ -854,7 +862,7 @@ FOOTER_ORDER = ["faa", "icao", "iata", "ntsb", "easa", "eurocontrol",
 FOOTER_SOURCES = [{"name": SOURCES[k]["name"], "url": SOURCES[k]["url"]}
                   for k in FOOTER_ORDER if k in SOURCES]
 
-FAVICON = f"{BASE_PATH}/assets/skytical-mark.svg?v=20260810-clean-mark"
+FAVICON = f"{BASE_PATH}/assets/skytical-mark.svg?v={ASSET_VERSION}"
 
 SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 NEWS_NS = "http://www.google.com/schemas/sitemap-news/0.9"
@@ -2659,7 +2667,7 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build,
             "zh" if "zh" in alternate_languages else "en", sub),
         "self_abs_url": SITE_ORIGIN + page_url(lang, sub),
         "social_image_abs_url": (
-            f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-social.png?v=20260810-clean-mark"
+            f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-social.png?v={ASSET_VERSION}"
         ),
         "social_image_alt": "SKYTICAL — SKYLINE TO AVIATION NEWS",
         "og_type": "website",
@@ -2708,7 +2716,10 @@ def website_structured_data(lang: str) -> dict:
                 "url": home,
                 "logo": {
                     "@type": "ImageObject",
-                    "url": f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-mark.svg",
+                    "url": (
+                        f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-mark.svg"
+                        f"?v={ASSET_VERSION}"
+                    ),
                 },
             },
             {
@@ -2759,7 +2770,10 @@ def article_structured_data(lang: str, article: dict) -> dict:
             "url": absolute_page_url(lang, ""),
             "logo": {
                 "@type": "ImageObject",
-                "url": f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-mark.svg",
+                "url": (
+                    f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-mark.svg"
+                    f"?v={ASSET_VERSION}"
+                ),
             },
         },
     }
