@@ -93,7 +93,8 @@ L = {
         "genNote": "本文由自動化系統彙整生成，內容以原始來源為準",
         "genNotePunct": "。",
         "photoKind": {"airframe_photo": "同機資料照片",
-                      "file_photo": "資料照片（非事件現場照片）"},
+                      "file_photo": "資料照片（非事件現場照片）",
+                      "event_photo": "事件現場照片"},
         "photoSource": "照片來源",
         "incKicker": "Incident Database", "incTitle": "事故資料庫",
         "incSub": "自動彙整全球民航事故與事件，資料來自各國調查機關與專業追報來源，每小時更新。",
@@ -207,7 +208,8 @@ L = {
         "genNote": "This article was compiled automatically; the original sources prevail",
         "genNotePunct": ".",
         "photoKind": {"airframe_photo": "File photo of this airframe",
-                      "file_photo": "File photo (not from this event)"},
+                      "file_photo": "File photo (not from this event)",
+                      "event_photo": "Photo from this event"},
         "photoSource": "Photo source",
         "incKicker": "Incident Database", "incTitle": "Incident database",
         "incSub": "Automatically aggregated civil-aviation accidents and incidents, from state investigators and specialist trackers. Updated hourly.",
@@ -944,7 +946,8 @@ def normalize_image(raw_img):
             "subject": str(raw_img.get("subject") or "") or None,
             "kind": (raw_img.get("kind")
                      if raw_img.get("kind") in ("airframe_photo",
-                                                "file_photo")
+                                                "file_photo",
+                                                "event_photo")
                      else "file_photo"),
         }
     if raw_img:

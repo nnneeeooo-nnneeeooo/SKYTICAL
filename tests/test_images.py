@@ -41,9 +41,10 @@ def check(name, cond):
 # ── HTTP mock ────────────────────────────────────────────────────────────────
 
 class FakeResp:
-    def __init__(self, status=200, data=None):
+    def __init__(self, status=200, data=None, text=""):
         self.status_code = status
         self._data = data or {}
+        self.text = text
 
     def json(self):
         return self._data
@@ -54,11 +55,14 @@ class FakeHttp:
         self.calls = []
         self.planespotters = FakeResp(200, {"photos": []})
         self.commons = FakeResp(200, {})
+        self.source_pages = {}
 
     def get(self, url, **kwargs):
         self.calls.append((url, kwargs.get("params")))
         if "planespotters" in url:
             return self.planespotters
+        if url in self.source_pages:
+            return self.source_pages[url]
         return self.commons
 
 
@@ -128,6 +132,7 @@ def reset():
     except FileNotFoundError:
         pass
     fake.calls.clear()
+    fake.source_pages.clear()
     fake.planespotters = FakeResp(200, {"photos": []})
     fake.commons = FakeResp(200, {})
 
@@ -312,6 +317,7 @@ fake.commons = FakeResp(200, {"query": {"pages": {
               "thumburl": "https://upload.wikimedia.org/faa-hq.jpg",
               "descriptionshorturl": "https://commons.wikimedia.org/w/9",
               "extmetadata": {
+                  "DateTimeOriginal": {"value": str(now_utc().year)},
                   "LicenseShortName": {"value": "CC BY-SA 3.0"},
                   "Artist": {"value": "Photographer"}}}]},
 }}})
@@ -323,6 +329,33 @@ check("agency fallback attaches the building photo, never the logo",
       and "logo" not in art["image"]["url"])
 check("photo carries its zh subject caption",
       art["image"]["subject"] == "美國聯邦航空總署（FAA）總部")
+
+old_caa_file = {
+    "url": "https://upload.wikimedia.org/caa-1948.jpg",
+    "link": "https://commons.wikimedia.org/w/old-caa",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "交通部民用航空局", "subject": "交通部民用航空局",
+    "photoYear": 1948,
+}
+caa_story = make_article("a-caa", "Taiwan CAA holds drone meeting")
+caa_story["zh"]["body"] = ["交通部民用航空局召開無人機管理會議"]
+check("cached generic agency photo that is too old is stale",
+      not images.existing_image_matches(caa_story, old_caa_file))
+
+reset()
+caa_url = "https://www.caa.gov.tw/NewsPublish-Content.aspx?nid=2574"
+caa_story["sources"] = [{"name": "CAA Taiwan", "url": caa_url}]
+fake.source_pages[caa_url] = FakeResp(200, text='''
+<a href="../FileAtt.ashx?lang=1&amp;id=41286"
+ class="download-filebase"
+ title="民航局舉辦遙控無人機管理業務工作會議1.jpg">photo</a>
+''')
+official = images.resolve_image(caa_story)
+check("official CAA release attachment wins as the event photo",
+      official["url"]
+      == "https://www.caa.gov.tw/FileAtt.ashx?lang=1&id=41286"
+      and official["kind"] == "event_photo"
+      and official["link"] == caa_url)
 
 # ── cache behaviour ──────────────────────────────────────────────────────────
 
@@ -418,8 +451,12 @@ check("legacy string image still accepted",
       == "file_photo")
 check("unknown kind coerced to file_photo (never fake 'event photo')",
       build.normalize_image({"url": "https://x.example/y.jpg",
-                             "kind": "event_photo"})["kind"]
+                             "kind": "unverified_event"})["kind"]
       == "file_photo")
+check("verified official event-photo kind is preserved",
+      build.normalize_image({"url": "https://www.caa.gov.tw/photo.jpg",
+                             "kind": "event_photo"})["kind"]
+      == "event_photo")
 check("honest file-photo labels present in both languages",
       "資料照片（非事件現場照片）" in
       (REPO / "pipeline" / "build.py").read_text(encoding="utf-8")
