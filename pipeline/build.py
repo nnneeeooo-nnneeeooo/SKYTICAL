@@ -52,6 +52,8 @@ from model_config import (
     MODEL_ORDER,
 )
 
+PUBLIC_DIR = Path(__file__).resolve().parent.parent / "public"
+
 
 def static_asset_version() -> str:
     digest = hashlib.sha256()
@@ -2865,6 +2867,10 @@ def main() -> int:
         for f in STATIC_DIR.iterdir():
             if f.is_file():
                 shutil.copy2(f, SITE_DIR / "assets" / f.name)
+    if PUBLIC_DIR.is_dir():
+        for f in PUBLIC_DIR.iterdir():
+            if f.is_file():
+                shutil.copy2(f, SITE_DIR / f.name)
     (SITE_DIR / ".nojekyll").write_text("", encoding="utf-8")
     (SITE_DIR / "search-index.json").write_text(
         json.dumps(search_index_payload(articles, now), ensure_ascii=False,
