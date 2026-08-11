@@ -1,5 +1,290 @@
 [
   {
+    "id": "g-20260811-0552-12",
+    "queuedUtc": "2026-08-11T05:52Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Deal announced but not closed; involves financial stake and warrants; subject to regulatory approval; qualifies as financial claim and developing event.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Archer Aviation has agreed to acquire Boeing subsidiaries Wisk Aero, Insitu and SkyGrid.",
+        "sourceQuote": "Archer Aviation has agreed to acquire Boeing subsidiaries Wisk Aero , Insitu and SkyGrid",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Boeing will receive Archer shares representing 19.75% of outstanding Class A stock and the right to appoint one director.",
+        "sourceQuote": "Boeing will receive Archer shares representing 19.75% of the company’s outstanding Class A stock when the transaction closes, together with the right to appoint one director to Archer’s board.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Boeing will receive two warrants to purchase up to $200 million in additional Archer stock.",
+        "sourceQuote": "Boeing will also receive two warrants allowing it to purchase up to $200 million in additional Archer stock later.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The transaction is subject to U.S. competition‑law regulatory requirements and expected to close by end of 2026.",
+        "sourceQuote": "The transaction remains subject to various conditions, including regulatory requirements under US competition law. It is expected to complete by the end of 2026.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Deal announced but not closed; involves financial stake and warrants; subject to regulatory approval; qualifies as financial claim and developing event.",
+      "cat": "biz",
+      "zh": {
+        "title": "Archer收購Wisk、Insitu、SkyGrid波音持股19.75%",
+        "summary": "Archer同意收購三子公司；波音獲19.75%股份並可增持2億美元",
+        "body": [
+          "根據Aerospace Global News報導，Archer Aviation已同意收購波音旗下的Wisk Aero、Insitu與SkyGrid三家子公司。",
+          "交易完成後，波音將獲得Archer已發行Class A股份的19.75%，並有權委派一名董事進入Archer董事會。",
+          "波音還將取得兩張認股權證，可在未來以最多2億美元購買額外Archer股份。",
+          "交易仍須符合美國競爭法等監管條件，預計最晚於2026年底完成。",
+          "這項收購將把Wisk的自主載人eVTOL、Insitu的軍用無人機業務與SkyGrid的數位空域管理技術納入Archer版圖。"
+        ]
+      },
+      "en": {
+        "title": "Archer to Acquire Wisk, Insitu and SkyGrid as Boeing Takes 19.75% Stake",
+        "summary": "Archer agrees to buy three Boeing units; Boeing receives 19.75% stake and $200M warrants",
+        "body": [
+          "Aerospace Global News reports that Archer Aviation has agreed to acquire Boeing subsidiaries Wisk Aero, Insitu and SkyGrid.",
+          "Upon closing, Boeing will receive Archer shares representing 19.75% of the company's outstanding Class A stock and the right to appoint one director to Archer's board.",
+          "Boeing will also receive two warrants allowing it to purchase up to $200 million in additional Archer stock later.",
+          "The transaction remains subject to various conditions, including U.S. competition‑law regulatory requirements, and is expected to complete by the end of 2026.",
+          "The deal brings together Wisk's autonomous passenger eVTOL, Insitu's combat‑proven uncrewed aircraft business, and SkyGrid's digital airspace management technology under Archer."
+        ]
+      },
+      "flash": {
+        "zh": "Archer收購三子公司；波音持股19.75%",
+        "en": "Archer buys three Boeing units; Boeing gets 19.75% stake",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Archer Aviation has agreed to acquire Boeing subsidiaries Wisk Aero, Insitu and SkyGrid.",
+          "sourceQuote": "Archer Aviation has agreed to acquire Boeing subsidiaries Wisk Aero , Insitu and SkyGrid",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Boeing will receive Archer shares representing 19.75% of outstanding Class A stock and the right to appoint one director.",
+          "sourceQuote": "Boeing will receive Archer shares representing 19.75% of the company’s outstanding Class A stock when the transaction closes, together with the right to appoint one director to Archer’s board.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Boeing will receive two warrants to purchase up to $200 million in additional Archer stock.",
+          "sourceQuote": "Boeing will also receive two warrants allowing it to purchase up to $200 million in additional Archer stock later.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The transaction is subject to U.S. competition‑law regulatory requirements and expected to close by end of 2026.",
+          "sourceQuote": "The transaction remains subject to various conditions, including regulatory requirements under US competition law. It is expected to complete by the end of 2026.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Archer Aviation",
+          "Boeing",
+          "Wisk Aero",
+          "Insitu",
+          "SkyGrid"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Generation 6 eVTOL",
+          "ScanEagle",
+          "Integrator"
+        ],
+        "airports": [],
+        "locations": [
+          "California",
+          "Austin"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-10"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-0552-12",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Archer to acquire Wisk, Insitu and SkyGrid as Boeing takes 19.75% stake News",
+          "url": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
+          "publishedUtc": "2026-08-10T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/wwww.png",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
+            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+            "facts": [
+              {
+                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
+                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
+              },
+              {
+                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
+                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 13 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260811-0458-2",
     "queuedUtc": "2026-08-11T04:58Z",
     "approve": false,
@@ -9549,356 +9834,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260808-0704-4",
-    "queuedUtc": "2026-08-08T07:04Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.5-flash",
-    "decisionReason": "Airbus reported a major monthly commercial update including a massive order of 100 A320neo family aircraft from SMBC Aviation and additional widebody aircraft orders from Riyadh Air and China Eastern Airlines.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "On August 7, 2026, Airbus confirmed that it delivered 67 aircraft in July 2026 to 39 customers, matching the 67 jets delivered in July of last year.",
-        "sourceQuote": "On August 7, 2026, Airbus confirmed that it delivered 67 aircraft in July 2026 to 39 customers. Last year, the company announced 67 jets had been delivered in July.",
-        "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Airbus's total commercial aircraft deliveries for 2026 rose to 418 by the end of July, compared to 373 at the same point in 2025.",
-        "sourceQuote": "The total deliveries for this year rose to 418 against 373 at the same point last year.",
-        "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Airbus added 204 gross orders in July 2026, including 100 latest-generation A320neo family aircraft to SMBC Aviation.",
-        "sourceQuote": "added 204 gross orders to the books, including 100 latest-generation #A320neo Family aircraft to @SMBCAVIATION",
-        "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The 67 deliveries in July 2026 represented a monthly decline from May (81 planes) and June (89 planes), matching the delivery volume in April 2026.",
-        "sourceQuote": "In June 2026, Airbus delivered 89 planes and in May 2026, 81 aircraft were delivered. The 67 deliveries in July 2026 match exactly where Airbus was in April 2026.",
-        "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "In the first half of 2026, Airbus delivered 351 commercial aircraft, compared to 306 in H1 2025, which included 237 delivered in the second quarter.",
-        "sourceQuote": "Between April and June 2026, Airbus delivered 237 commercial aircraft to customers while between January and March 2026, just 114 were delivered. The total for 2026 first half stands at 351.",
-        "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-        "evidenceScope": "archive",
-        "archiveEventId": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
-        "archiveContext": true
-      },
-      {
-        "factId": "F6",
-        "claim": "In July 2026, IndiGo received seven new A320neo family aircraft, while American Airlines received three A321neos and Emirates received three A350-900s.",
-        "sourceQuote": "IndiGo received seven new A320neo family aircraft in July 2026",
-        "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Airbus reported a major monthly commercial update including a massive order of 100 A320neo family aircraft from SMBC Aviation and additional widebody aircraft orders from Riyadh Air and China Eastern Airlines.",
-      "cat": "biz",
-      "zh": {
-        "title": "空中巴士公布七月交付六十七架飛機 累計交付領先去年同期",
-        "summary": "空中巴士公布2026年7月向39家客戶交付67架飛機，與去年同期持平，但較5月和6月有所放緩。截至7月底，該製造商2026年已累計交付418架飛機，高於2025年同期的373架。此外，空中巴士在7月份獲得204架總訂單，包括來自租賃公司 SMBC 的100架飛機。",
-        "body": [
-          "根據 AeroTime 報導，歐洲航空製造巨頭空中巴士（Airbus）於2026年8月7日公布了最新的商用飛機交付與訂單統計。資料顯示，空中巴士在2026年7月份共向39家客戶交付了67架客機。這一數字與2025年7月份所公布的67架交付量完全相同。雖然單月交付速度與前幾個月相比有所減緩，但該製造商在2026年全年的累計交付進度上，依然保持領先於去年同期的水準。",
-          "統計資料顯示，空中巴士在2026年5月和6月分別實現了81架和89架的高交付量。相比之下，7月份的67架交付量出現了明顯的單月放緩，這與2026年4月份的交付量完全一致。儘管如此，截至2026年7月底，空中巴士在當年的累計交付總量已達到418架，相較於2025年同期的373架，依然有著顯著的增長。在先前公布的財務報告中，空中巴士重申其在2026年全年交付約870架商用飛機的目標。",
-          "在具體客戶交付方面，空中巴士在7月份為多家主要航空公司提供了新飛機。其中，IndiGo（印度靛藍航空）接收了7架全新的 A320neo 系列客機；中國南方航空則接收了4架新飛機（包括透過交通銀行金融租賃 BoCom leasing 交付的1部客機）。此外，美國航空（American Airlines）在7月接收了3架 A321neo 客機，而中東地區的阿聯酋航空（Emirates）則順利接收了3架 A350-900 廣體客機。",
-          "在訂單簽署方面，空中巴士在2026年7月份取得了不俗的成績，單月共錄得204架總訂單。這筆訂單資料中包含了來自全球領先飛機租賃公司之一的 SMBC Aviation 的重大合約，該公司向空中巴士訂購了100架最新一代的 A320neo 系列客機。此外，沙烏地阿拉伯新成立的利雅德航空（Riyadh Air）也確認追加購買6架 A350-1000 客機，中國東方航空則訂購了25架 A330-900 飛機，另有一家未透露名稱的客戶訂購了6架 A321neo 飛機。",
-          "回顧歷史紀錄，空中巴士在2026年上半年（H1 2026）的商用飛機交付總量為351架，相比於2025年上半年的306架有著穩步成長。其中，第二季的交付量高達237架，而第一季僅交付了114架。隨著7月份統計數字的發布，空中巴士正持續推進其各機型的產能提升計劃，包括預計在2027年晚期達到 A320 系列飛機每月70至75架的生產速率。"
-        ]
-      },
-      "en": {
-        "title": "Airbus Delivers 67 Aircraft in July 2026 as Year-to-Date Total Reaches 418",
-        "summary": "Airbus confirmed on August 7, 2026, that it delivered 67 commercial aircraft in July 2026 to 39 customers, matching its delivery figures from July last year. This represents a monthly slowdown compared to the 89 aircraft delivered in June and 81 delivered in May, matching April's volume. Despite the monthly dip, Airbus's cumulative deliveries for 2026 reached 418 aircraft, keeping the planemaker ahead of the 373 deliveries recorded at the same point in 2025. Additionally, the company added 204 gross orders to its books in July, highlighted by a major 100-aircraft order from SMBC Aviation.",
-        "body": [
-          "According to a report by AeroTime on August 7, 2026, Airbus has confirmed its commercial aircraft deliveries and order figures for July 2026. The European aerospace manufacturer delivered 67 aircraft during the month to 39 customers. This monthly delivery figure matches the exact total of 67 aircraft delivered during the same month last year, demonstrating a stable base compared to historical results despite a temporary loss of momentum from previous months.",
-          "The July delivery total represents a slowdown from the planemaker’s performance in the preceding months of 2026. Airbus delivered 89 commercial planes in June and 81 planes in May, meaning that July's output fell back to mirror the 67 deliveries recorded in April 2026. Despite the monthly decline, Airbus's cumulative deliveries for 2026 have risen to 418 aircraft by the end of July, keeping the manufacturer well ahead of the 373 deliveries completed by the same point in 2025. This performance supports Airbus's recently reaffirmed full-year ambition to deliver approximately 870 commercial aircraft.",
-          "Among individual airlines, IndiGo took delivery of seven new A320neo family aircraft in July 2026, while China Southern Airlines received four new planes, including one financed through BoCom leasing. Additionally, Airbus successfully handed over three A321neos to American Airlines and three long-haul A350-900s to Gulf carrier Emirates. These deliveries demonstrate continued fleet renewal efforts across major carriers globally.",
-          "On the commercial sales front, Airbus registered 204 gross orders during July 2026. This monthly total was highlighted by a massive agreement with SMBC Aviation, one of the world's leading aircraft lessors, which placed a firm order for 100 latest-generation A320neo family aircraft. The July order book also featured Riyadh Air’s formal confirmation of a purchase agreement for an additional six A350-1000 widebody aircraft, China Eastern's order for 25 A330-900s, and an order for six A321neos from an undisclosed customer.",
-          "This commercial progress builds upon Airbus's strong financial and operational performance in the first half of 2026. According to verified historical data, Airbus delivered 351 commercial aircraft in the first half of the year, up from 306 during the same period in 2025. This first-half total included 237 aircraft delivered in the second quarter and 114 in the first quarter, backed by the company's ongoing production ramp-up targets across all major aircraft families."
-        ]
-      },
-      "flash": {
-        "zh": "空中巴士七月交付六十七架飛機 累計交付領先去年同期",
-        "en": "Airbus delivers 67 commercial aircraft in July as YTD total reaches 418",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "On August 7, 2026, Airbus confirmed that it delivered 67 aircraft in July 2026 to 39 customers, matching the 67 jets delivered in July of last year.",
-          "sourceQuote": "On August 7, 2026, Airbus confirmed that it delivered 67 aircraft in July 2026 to 39 customers. Last year, the company announced 67 jets had been delivered in July.",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Airbus's total commercial aircraft deliveries for 2026 rose to 418 by the end of July, compared to 373 at the same point in 2025.",
-          "sourceQuote": "The total deliveries for this year rose to 418 against 373 at the same point last year.",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Airbus added 204 gross orders in July 2026, including 100 latest-generation A320neo family aircraft to SMBC Aviation.",
-          "sourceQuote": "added 204 gross orders to the books, including 100 latest-generation #A320neo Family aircraft to @SMBCAVIATION",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The 67 deliveries in July 2026 represented a monthly decline from May (81 planes) and June (89 planes), matching the delivery volume in April 2026.",
-          "sourceQuote": "In June 2026, Airbus delivered 89 planes and in May 2026, 81 aircraft were delivered. The 67 deliveries in July 2026 match exactly where Airbus was in April 2026.",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "In the first half of 2026, Airbus delivered 351 commercial aircraft, compared to 306 in H1 2025, which included 237 delivered in the second quarter.",
-          "sourceQuote": "Between April and June 2026, Airbus delivered 237 commercial aircraft to customers while between January and March 2026, just 114 were delivered. The total for 2026 first half stands at 351.",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-          "evidenceScope": "archive",
-          "archiveEventId": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
-          "archiveContext": true
-        },
-        {
-          "factId": "F6",
-          "claim": "In July 2026, IndiGo received seven new A320neo family aircraft, while American Airlines received three A321neos and Emirates received three A350-900s.",
-          "sourceQuote": "IndiGo received seven new A320neo family aircraft in July 2026",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Airbus",
-          "AeroTime",
-          "SMBC Aviation",
-          "BoCom leasing",
-          "SMBC"
-        ],
-        "airlines": [
-          "IndiGo",
-          "China Southern Airlines",
-          "American Airlines",
-          "Emirates",
-          "Riyadh Air",
-          "China Eastern"
-        ],
-        "aircraft_models": [
-          "A320neo",
-          "A321neo",
-          "A350-900",
-          "A350-1000",
-          "A330-900"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "July 2026",
-          "August 7, 2026",
-          "June 2026",
-          "May 2026",
-          "April 2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260808-0704-4",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Airbus deliveries slide backwards in July, total remains ahead of 2025",
-          "url": "https://www.aerotime.aero/articles/airbus-deliveries-orders-july-2026",
-          "publishedUtc": "2026-08-07T07:23Z",
-          "summary": "Airbus lost some of the momentum it has recently been building on commercial aircraft deliveries during July 2026,… The post Airbus deliveries slide backwards in July, total remains ahead of 2025 appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: A330, A350",
-              "same named core entity: airbus",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se...",
-            "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-            "facts": [
-              {
-                "claim": "Q2 2026 Airbus net income rose 126% to $1.66 billion (€1.65 billion) from $842 million (€732 million) in the same period last year, alongside a 28% increase in Q2 revenue.",
-                "source_quote": "Net income increased from $842 million (€732 million) to $1.66 billion (€1.65 billion) in Q2 2026 while revenue rose 28% over the same period.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "In the first half of 2026, Airbus delivered 351 commercial aircraft, up from 306 in H1 2025, including 237 delivered in the second quarter compared to 114 in the first quarter.",
-                "source_quote": "Between April and June 2026, Airbus delivered 237 commercial aircraft to customers while between January and March 2026, just 114 were delivered. The total for 2026 first half stands at 351.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "Airbus reported consolidated revenues of €33.2 billion ($38.2 billion) for H1 2026, a 12% increase year-on-year, with a consolidated EBIT Adjusted of €2.77 billion (€2,727 million).",
-                "source_quote": "Consolidated revenues increased 12% year-on-year to € 33.2 billion (H1 2025: € 29.6 billion).",
-                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
-              },
-              {
-                "claim": "Commercial aircraft gross orders reached 886 units (821 net orders) in the first half of 2026, bringing the total order backlog to 9,222 commercial aircraft at the end of June 2026.",
-                "source_quote": "Gross commercial aircraft orders totalled 886 (H1 2025: 494 aircraft) with net orders of 821 aircraft after cancellations (H1 2025: 402 aircraft). The order backlog amounted to 9,222",
-                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
-              },
-              {
-                "claim": "The company maintained its guidance to deliver approximately 870 commercial aircraft in 2026, and expects a full-year EBIT Adjusted of €7.5 billion ($8.6 billion).",
-                "source_quote": "The company said its ambition to deliver around 870 commercial aircraft in 2026 remains the same. While EBIT adjusted currently stands at $3.1 billion (€2.7 billion), Airbus’ outlook is $8.6 billion (€7.5 billion) by year end.",
-                "source_url": "https://www.aerotime.aero/articles/airbus-deliveries-second-quarter-half-year-financial-results",
-                "source_name": "AeroTime — Airbus profits surge 126% thanks to strong deliveries in se..."
-              },
-              {
-                "claim": "Airbus is continuing its production ramp-up, targeting a monthly rate of 13 for the A220 in 2028, between 70 and 75 for the A320 family by late 2027, 5 for the A330 in 2029, and 12 for the A350 in 2028.",
-                "source_quote": "The A220 ramp-up is ongoing and the Company continues to target a monthly production rate of 13 aircraft in 2028. On the A320 Family, the Company continues to expect to reach a rate of between 70 and 75 aircraft a month",
-                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-                "source_name": "Airbus — Airbus reports Half-Year (H1) 2026 results"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260731-1301-klm-shows-off-first-fully-painted-airbus",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: A350",
-              "same named core entity: airbus",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-31",
-            "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900",
-            "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
-            "facts": [
-              {
-                "claim": "荷蘭皇家航空在網路貼文中展示了其首架完成塗裝的空中巴士 A350-900 客機。",
-                "source_quote": "KLM showed off its fully-painted first A350 in a few online posts",
-                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
-                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
-              },
-              {
-                "claim": "荷蘭皇家航空於6月中旬發布貼文公布該客機名稱,並於7月中旬發布影片展示組裝過程。",
-                "source_quote": "one in mid-June which announced the jet’s name, and another in mid-July, with a video showing the assembly process.",
-                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
-                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
-              },
-              {
-                "claim": "荷蘭皇家航空選擇以荷蘭具代表性的藝術作品為飛機命名,包括林布蘭的著名畫作《夜巡》。",
-                "source_quote": "KLM has chosen to name its aircraft after iconic Dutch artworks, and so The Night Watch by Rembrandt is one of the Netherlands’ most celebrated paintings",
-                "source_url": "https://simpleflying.com/video/klm-shows-off-its-very-first-airbus-a350-900/",
-                "source_name": "Simple Flying — KLM Shows Off Its Very First Airbus A350-900"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              }
-            ]
-          }
-        ]
       }
     }
   }
