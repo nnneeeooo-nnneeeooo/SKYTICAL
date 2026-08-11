@@ -2287,6 +2287,55 @@ def changelog_view(raw, lang: str, labels: dict) -> dict:
     }
 
 
+def copilot_usage_view(ledger: dict) -> dict:
+    """Compact 30-day SKYTICAL Copilot view for the existing dashboard."""
+    raw = ledger.get("copilotEvents") if isinstance(ledger, dict) else []
+    rows = []
+    totals = {
+        "requests": 0, "blocked": 0, "rateLimited": 0, "llmCalls": 0,
+        "inputTokens": 0, "outputTokens": 0, "tokens": 0,
+        "costUsd": 0.0, "errors": 0, "externalSearches": 0,
+    }
+    for event in raw if isinstance(raw, list) else []:
+        if not isinstance(event, dict):
+            continue
+        name = str(event.get("event") or "")
+        status = str(event.get("status") or "")
+        if name == "copilot_request":
+            totals["requests"] += 1
+        if status == "blocked" or name in {
+                "off_topic", "unclear", "injection_detected"}:
+            totals["blocked"] += 1
+        if name == "rate_limited":
+            totals["rateLimited"] += 1
+        if name == "main_llm_request":
+            totals["llmCalls"] += 1
+            totals["inputTokens"] += int(event.get("inputTokens") or 0)
+            totals["outputTokens"] += int(event.get("outputTokens") or 0)
+            totals["costUsd"] += float(event.get("estimatedCostUsd") or 0)
+        if event.get("externalSearchUsed") is True:
+            totals["externalSearches"] += 1
+        if status in {"failed", "error", "no_provider"}:
+            totals["errors"] += 1
+        rows.append({
+            "time": timestamp_12(event.get("createdAt"), "—"),
+            "event": name or "unknown",
+            "status": status or "unknown",
+            "model": str(event.get("model") or "—")[:160],
+            "tokens": int(event.get("totalTokens") or 0),
+            "cost": float(event.get("estimatedCostUsd") or 0),
+            "latency": int(event.get("latencyMs") or 0),
+            "sources": int(event.get("sourceCount") or 0),
+            "mode": ("站內＋外部" if event.get("externalSearchUsed")
+                     else "站內" if event.get("ragUsed") else "未檢索"),
+        })
+        if len(rows) >= 100:
+            break
+    totals["tokens"] = totals["inputTokens"] + totals["outputTokens"]
+    totals["costUsd"] = round(totals["costUsd"], 8)
+    return {"rows": rows, "totals": totals}
+
+
 def render_usage_dashboard(env, build) -> int:
     """Private dashboard at /u/<token>/ - only when the secret is set."""
     token = os.environ.get("AVWIRE_USAGE_TOKEN", "").strip()
@@ -2304,6 +2353,7 @@ def render_usage_dashboard(env, build) -> int:
     rows, totals = usage_rows(ledger, prices)
     recent = recent_run_view(ledger)
     private_manual = private_manual_usage_view(recent, prices)
+    copilot = copilot_usage_view(ledger)
     codex_rows, codex_totals = codex_usage_rows(codex_snapshot, prices)
     try:
         rate = float(prices.get("usdToTwd") or 31.5)
@@ -2322,6 +2372,8 @@ def render_usage_dashboard(env, build) -> int:
         "private_manual_rows": private_manual["rows"],
         "private_manual_totals": private_manual["totals"],
         "private_manual_twd": private_manual["totals"]["usd"] * rate,
+        "copilot_rows": copilot["rows"],
+        "copilot_totals": copilot["totals"],
         "codex_rows": codex_rows, "codex_totals": codex_totals,
         "codex_twd": codex_totals["usd"] * rate,
         "codex_scope": str(codex_snapshot.get("scope") or "").strip(),
@@ -2360,6 +2412,9 @@ def render_manual_workbench(env, build) -> int:
         "favicon": FAVICON,
         "build": build,
         "models": models,
+        "copilot_enabled": os.environ.get(
+            "SKYTICAL_COPILOT_ENABLED", "false").strip().lower()
+            in {"1", "true", "yes", "on"},
     })
     return 1
 

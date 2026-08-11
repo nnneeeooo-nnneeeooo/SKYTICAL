@@ -143,6 +143,42 @@
   </table>
   </div>
 
+  <h2>SKYTICAL Copilot Beta（最近 30 天）</h2>
+  <div class="section-note">
+    Copilot 僅記錄匿名 request ID、事件類型、模型、token、估計成本、耗時、
+    guardrail 結果與來源數；不保存完整對話、草稿內容、PAT 或 API key。
+  </div>
+  <div class="tiles">
+    <div class="tile"><span>Copilot 請求</span><b>{{ copilot_totals.requests }}</b></div>
+    <div class="tile"><span>主模型呼叫</span><b>{{ copilot_totals.llmCalls }}</b></div>
+    <div class="tile"><span>Guardrail 阻擋</span><b>{{ copilot_totals.blocked }}</b></div>
+    <div class="tile"><span>Rate limited</span><b>{{ copilot_totals.rateLimited }}</b></div>
+    <div class="tile"><span>總 tokens</span><b>{{ "{:,}".format(copilot_totals.tokens) }}</b></div>
+    <div class="tile"><span>估計 USD</span><b>${{ "%.6f"|format(copilot_totals.costUsd) }}</b></div>
+    <div class="tile"><span>外部搜尋</span><b>{{ copilot_totals.externalSearches }}</b></div>
+    <div class="tile"><span>錯誤</span><b>{{ copilot_totals.errors }}</b></div>
+  </div>
+  <div class="scroll">
+  <table>
+    <tr><th>時間</th><th>事件／狀態</th><th>模型</th><th>模式</th><th>來源</th><th>Tokens</th><th>耗時</th><th>估計 USD</th></tr>
+    {% for r in copilot_rows %}
+    <tr>
+      <td>{{ r.time }}</td>
+      <td>{{ r.event }}<br><span class="est">{{ r.status }}</span></td>
+      <td class="model">{{ r.model }}</td>
+      <td>{{ r.mode }}</td>
+      <td>{{ r.sources }}</td>
+      <td>{{ "{:,}".format(r.tokens) }}</td>
+      <td>{{ r.latency }} ms</td>
+      <td>${{ "%.8f"|format(r.cost) }}</td>
+    </tr>
+    {% endfor %}
+    {% if not copilot_rows %}
+    <tr><td colspan="8" style="text-align:left;color:#9b9694;">最近 30 天尚無 Copilot 紀錄。</td></tr>
+    {% endif %}
+  </table>
+  </div>
+
   <h2>最近 30 天模型執行與失敗紀錄</h2>
   <div class="section-note">
     每個新聞工作獨立記錄模型嘗試、備援切換、格式修復與可精確量測的階段耗時；超過 30 天的詳細紀錄不會顯示。

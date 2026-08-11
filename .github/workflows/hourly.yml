@@ -55,6 +55,8 @@ jobs:
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
           # private manual-drafting URL/encryption token
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
+          # private Copilot panel; build-time visibility is not authorization
+          SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           # rare-aircraft auto-publish kill switch (code default: on)
           FLIGHT_AUTO_PUBLISH: ${{ vars.FLIGHT_AUTO_PUBLISH }}
           # bulletin-only briefing pages by default; build.py applies the
