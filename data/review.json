@@ -1,5 +1,241 @@
 [
   {
+    "id": "g-20260811-1727-1",
+    "queuedUtc": "2026-08-11T17:27Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves commercial litigation and financial prediction market claims between FlightAware and Kalshi.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "FlightAware has sued prediction-market operator Kalshi in US District Court for the Southern District of New York over using its data and trademark without permission to settle flight cancellation bets.",
+        "sourceQuote": "Flight-tracking company FlightAware has sued prediction-market operator Kalshi, accusing the service of using its data and trademark without permission to settle wagers on US flight cancellations.",
+        "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "FlightAware is seeking a temporary restraining order and permanent injunction to stop Kalshi from using its data and brand.",
+        "sourceQuote": "FlightAware is seeking a temporary restraining order and permanent injunction to stop Kalshi from using its data and brand in connection with the markets.",
+        "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Kalshi disclosed in a CFTC filing that FlightAware data would be used to determine the outcome of flight cancellation contracts.",
+        "sourceQuote": "Kalshi said in a filing with the Commodity Futures Trading Commission (CFTC) that FlightAware data would be used to determine the outcome of the contracts, with US Department of Transportation data serving as a backup.",
+        "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "RTX, FlightAware's parent company, stated FlightAware was not involved with prediction markets and no company was authorized to use its data for that purpose.",
+        "sourceQuote": "RTX, FlightAware’s parent company, said at the time that FlightAware was not involved with any prediction markets and that no company was authorized to use data collected through its network for that purpose.",
+        "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Kalshi later added a disclaimer stating that FlightAware was not affiliated with or endorsing the prediction markets.",
+        "sourceQuote": "Kalshi later added a disclaimer stating that FlightAware was not affiliated with or endorsing the markets.",
+        "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves commercial litigation and financial prediction market claims between FlightAware and Kalshi.",
+      "cat": "biz",
+      "zh": {
+        "title": "FlightAware提告Kalshi 未經授權使用航班資料預測押注",
+        "summary": "FlightAware提告Kalshi；訴請禁止未授權使用航班資料押注",
+        "body": [
+          "航班追蹤平台 FlightAware 已向美國紐約南區聯邦地區法院提告 Kalshi，指控該預測市場平台未經許可使用其資料與商標結算航班取消押注。 FlightAware 正聲請臨時限制令與永久禁制令，阻止 Kalshi 繼續使用其資料及品牌。",
+          "Kalshi 此前向美國商品期貨交易委員會（CFTC）備案，預計使用 FlightAware 資料作為合約結果依據。 FlightAware 母公司 RTX 表示，公司未參與預測市場，亦未授權任何機構出於此目的使用其資料。 Kalshi 後續在網站加入免責聲明，澄清 FlightAware 未與相關市場存在合作關係。"
+        ]
+      },
+      "en": {
+        "title": "FlightAware Sues Kalshi Over Unauthorized Use of Data in Flight Cancellation Markets",
+        "summary": "FlightAware sues Kalshi over unauthorized flight cancellation markets; seeks court injunction against data usage.",
+        "body": [
+          "Flight-tracking company FlightAware has filed a lawsuit against prediction-market operator Kalshi in the US District Court for the Southern District of New York. The lawsuit accuses Kalshi of using FlightAware data and trademarks without authorization to settle financial bets on US flight cancellations. FlightAware is seeking a temporary restraining order and permanent injunction to prohibit Kalshi from utilizing its proprietary data and brand.",
+          "The dispute began after Kalshi disclosed plans with the Commodity Futures Trading Commission (CFTC) to rely on FlightAware data for its flight cancellation contracts. RTX, FlightAware's parent company, stated that FlightAware is not affiliated with any prediction market and has not authorized any third party to use its flight-tracking data for betting operations. Kalshi later added a website disclaimer clarifying that FlightAware does not endorse the prediction markets."
+        ]
+      },
+      "flash": {
+        "zh": "FlightAware針對航班取消預測市場提告Kalshi未經授權使用資料",
+        "en": "FlightAware sues Kalshi over unauthorized data use in cancellation prediction markets",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "FlightAware has sued prediction-market operator Kalshi in US District Court for the Southern District of New York over using its data and trademark without permission to settle flight cancellation bets.",
+          "sourceQuote": "Flight-tracking company FlightAware has sued prediction-market operator Kalshi, accusing the service of using its data and trademark without permission to settle wagers on US flight cancellations.",
+          "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "FlightAware is seeking a temporary restraining order and permanent injunction to stop Kalshi from using its data and brand.",
+          "sourceQuote": "FlightAware is seeking a temporary restraining order and permanent injunction to stop Kalshi from using its data and brand in connection with the markets.",
+          "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Kalshi disclosed in a CFTC filing that FlightAware data would be used to determine the outcome of flight cancellation contracts.",
+          "sourceQuote": "Kalshi said in a filing with the Commodity Futures Trading Commission (CFTC) that FlightAware data would be used to determine the outcome of the contracts, with US Department of Transportation data serving as a backup.",
+          "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "RTX, FlightAware's parent company, stated FlightAware was not involved with prediction markets and no company was authorized to use its data for that purpose.",
+          "sourceQuote": "RTX, FlightAware’s parent company, said at the time that FlightAware was not involved with any prediction markets and that no company was authorized to use data collected through its network for that purpose.",
+          "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Kalshi later added a disclaimer stating that FlightAware was not affiliated with or endorsing the prediction markets.",
+          "sourceQuote": "Kalshi later added a disclaimer stating that FlightAware was not affiliated with or endorsing the markets.",
+          "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "FlightAware",
+          "Kalshi",
+          "Commodity Futures Trading Commission",
+          "CFTC",
+          "RTX",
+          "US District Court for the Southern District of New York"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "US",
+          "New York"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-11",
+          "2026-07"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-1727-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "FlightAware sues Kalshi over bets on flight cancellations",
+          "url": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
+          "publishedUtc": "2026-08-11T16:03Z",
+          "summary": "Flight-tracking company FlightAware has sued prediction-market operator Kalshi, accusing the service of using its data and trademark without… The post FlightAware sues Kalshi over bets on flight cancellations appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "FlightAware sues Kalshi over flight-cancellation markets",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQM1hSR282WnlrOEkxc2hWeDJYdkFHWjBIVm9tb0p1bmViU0steWR2ZW9JUnVHRjVZZ3NXb2s0RFZqOVVCRVFERjB5N2RtcmtfbllJQm1MdnVGaThvbjVpaEs4XzVCeFZ4U1BQdS13V21JS0lnNHRvLWxRQ0xQT2NuTXd1VW5pS1EyTF9aM2JIcmZza3EtWVg1Z18tcUpIcDJYbkNISkY4M05aTE1ub0E?oc=5",
+          "publishedUtc": "2026-08-11T14:58Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "Flight-Tracking Platform Sues Kalshi Over Flight Cancellation Prediction Markets",
+          "summary": "Flight-Tracking Platform Sues Kalshi Over Flight Cancellation Prediction Markets &nbsp;&nbsp; WSJ",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOdDlXVHk4SWF2bHZ1WkYwRmpfWVluZlA0N1JZeUNYVGd5N04zcHlRS1JRcVdLano5ckk3ZzNMemw3R0lUbjVkQlpIWUZjR1FTVjNBRVQ1a3BDcGlGS1JWWkNuVzVtcHRyMERIQVpvZm1ES2JZak9rLWNkM0UwN0YyUS1QRHdlMVhuclRpZmU1Y0dEeVNXWVdSSHVHVkNjQzdxWkdxSkRWeTZlVHFfN1l1dTBNZkZCWFlvQ3pzRzVYMW1OazY5QWc?oc=5",
+          "source": "WSJ",
+          "companion": true,
+          "publishedUtc": "2026-08-11T16:48Z"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260808-1040-japan-orders-evacuations-and-cancels-500",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same route: THE-TIED",
+              "same named core entity: reuters",
+              "same airport code(s): THE, TIED",
+              "archive predates source by 4 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 93,
+            "confidence_reason": "tier 2; 4 deterministic evidence item(s); 4 day(s) apart",
+            "event_date": "2026-08-07",
+            "source_name": "Reuters — Japan orders evacuations as Typhoon Dolphin approaches, can...",
+            "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQWFZfc3lhZFI0Tl91RGozVldWUjlvVVV5NUY2UHhXdmVjSXhXaHRoMFQyZDhQcWhGbVZmdVJNb2ttTVlVZEhmQkkyTGl2ZlZkVzJXQjdfdUVVNlpfSVIxS0tDb09wUlhYZXRGdm1mUUVLSV96ajdxenk1R2h2YjVSaWY0OUJ2N2xyWTU5MzRlMTFLdTJIYnVBczlHaVBJc0JHOG55MC0ycUJrbTFQSFdqV2J6VWVtMDhEWVNraXZSNE5xenBWU3lv?oc=5",
+            "facts": [
+              {
+                "claim": "Japan ordered evacuations as Typhoon Dolphin approaches.",
+                "source_quote": "Japan orders evacuations as Typhoon Dolphin approaches",
+                "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQWFZfc3lhZFI0Tl91RGozVldWUjlvVVV5NUY2UHhXdmVjSXhXaHRoMFQyZDhQcWhGbVZmdVJNb2ttTVlVZEhmQkkyTGl2ZlZkVzJXQjdfdUVVNlpfSVIxS0tDb09wUlhYZXRGdm1mUUVLSV96ajdxenk1R2h2YjVSaWY0OUJ2N2xyWTU5MzRlMTFLdTJIYnVBczlHaVBJc0JHOG55MC0ycUJrbTFQSFdqV2J6VWVtMDhEWVNraXZSNE5xenBWU3lv?oc=5",
+                "source_name": "Reuters — Japan orders evacuations as Typhoon Dolphin approaches, can..."
+              },
+              {
+                "claim": "500 flights were cancelled due to approaching Typhoon Dolphin.",
+                "source_quote": "cancels 500 flights",
+                "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQWFZfc3lhZFI0Tl91RGozVldWUjlvVVV5NUY2UHhXdmVjSXhXaHRoMFQyZDhQcWhGbVZmdVJNb2ttTVlVZEhmQkkyTGl2ZlZkVzJXQjdfdUVVNlpfSVIxS0tDb09wUlhYZXRGdm1mUUVLSV96ajdxenk1R2h2YjVSaWY0OUJ2N2xyWTU5MzRlMTFLdTJIYnVBczlHaVBJc0JHOG55MC0ycUJrbTFQSFdqV2J6VWVtMDhEWVNraXZSNE5xenBWU3lv?oc=5",
+                "source_name": "Reuters — Japan orders evacuations as Typhoon Dolphin approaches, can..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260811-1552-2",
     "queuedUtc": "2026-08-11T15:52Z",
     "approve": false,
@@ -9841,144 +10077,6 @@
         }
       ],
       "updateCandidate": true,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260808-1849-3",
-    "queuedUtc": "2026-08-08T18:49Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves an unconfirmed military drone origin ('likely from Ukraine') exploding in Bulgarian airspace near critical infrastructure, requiring human editorial review.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Bulgaria reported that a drone exploded in its airspace and caused no damage.",
-        "sourceQuote": "Bulgaria says drone explodes in its airspace, no damage",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOLTJIOVhtd1lJa0ptSGkzVHF4SVNjT0xLVWVJZmdqVXhGQTJNWGF2UklzYldoUmJHNVQ1QnRsbUJLM3k4OUs0aG5mbk43czBEOUE2bDAyakI4a25YWFo0YjdObVRyVGJGeWFaUGZ1eDBhSkVaOUN3NXNDX09pVmFtbmZlSC1ZWWt0eDFVVDNVVWtEbmx3czcwV3E4c0k?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "A drone likely originating from Ukraine exploded in Bulgaria near a gas pipeline close to Romania's border.",
-        "sourceQuote": "A drone likely from Ukraine explodes in Bulgaria near a gas pipeline close to Romania's border",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdHdjMXFHeUM1REdDNnZONnZ6WU1DM190YkFIYlUxUEt5ckJWdVNQZU1ramthb01ZSFAyYUpoNzgxN1BYZFU3ams5WmZrRVU5OUlVcGlCbVNPLXNQRkc1Vk1Cay1yYnd3ak9rM3F4RTg5UzNwZE5wa2tqVnJMNC1ncFh5aFZzTVNXRzB1VkRVUWFYUDZUdVpKczlzaVZpUXpGbFVPX01xclI?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves an unconfirmed military drone origin ('likely from Ukraine') exploding in Bulgarian airspace near critical infrastructure, requiring human editorial review.",
-      "cat": "mil",
-      "zh": {
-        "title": "保加利亞稱無人機於領空爆炸靠近天然氣管道",
-        "summary": "保加利亞方面表示，一架無人機於該國領空內發生爆炸，相關事件並未造成任何損害。根據消息指出，該架可能來自烏克蘭的無人機，是在保加利亞境內靠近羅馬尼亞邊境的一處天然氣管道附近發生爆炸事故。",
-        "body": [
-          "保加利亞官方發表聲明表示，一架無人機於該國領空內發生爆炸。保加利亞方面確認，這起發生於領空內的無人機爆炸事件並未造成任何設施或地面損害。",
-          "根據媒體報導，該架無人機被認為可能來自烏克蘭。無人機爆炸的地點位於保加利亞境內，距離羅馬尼亞邊境不遠，且緊鄰一處天然氣管道設施附近。",
-          "保加利亞當局指出，無人機在領空內爆炸後並未引發進一步損害。有關該架無人機的具體來源與相關背景，目前報導指其可能來自烏克蘭，事發地點鄰近兩國邊境與天然氣管道。"
-        ]
-      },
-      "en": {
-        "title": "Bulgaria Reports Drone Explosion in Airspace Near Gas Pipeline",
-        "summary": "Bulgaria reported that a drone exploded within its airspace, resulting in no damage. According to available reports, the drone, which likely came from Ukraine, exploded in Bulgaria near a gas pipeline close to the border with Romania. Authorities from Bulgaria confirmed that the explosion inside its airspace caused no physical damage. The aerial event took place near a gas pipeline facility situated close to the Romanian border, according to statement disclosures.",
-        "body": [
-          "Bulgaria announced that a drone exploded within its airspace, causing no physical damage. Officials from Bulgaria confirmed that the aerial detonation took place in its sovereign airspace without inflicting damage on the ground.",
-          "Reports indicated that the drone likely originated from Ukraine. The device exploded in Bulgarian territory near a gas pipeline facility situated in close proximity to the border with Romania.",
-          "Bulgarian authorities confirmed that no infrastructure damage or ground damage occurred following the explosion inside its airspace. The site of the incident was located near a gas pipeline close to the Romanian border."
-        ]
-      },
-      "flash": {
-        "zh": "保加利亞稱一架無人機於其領空爆炸且未造成損害",
-        "en": "Bulgaria reports drone explosion in airspace near Romanian border",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Bulgaria reported that a drone exploded in its airspace and caused no damage.",
-          "sourceQuote": "Bulgaria says drone explodes in its airspace, no damage",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOLTJIOVhtd1lJa0ptSGkzVHF4SVNjT0xLVWVJZmdqVXhGQTJNWGF2UklzYldoUmJHNVQ1QnRsbUJLM3k4OUs0aG5mbk43czBEOUE2bDAyakI4a25YWFo0YjdObVRyVGJGeWFaUGZ1eDBhSkVaOUN3NXNDX09pVmFtbmZlSC1ZWWt0eDFVVDNVVWtEbmx3czcwV3E4c0k?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "A drone likely originating from Ukraine exploded in Bulgaria near a gas pipeline close to Romania's border.",
-          "sourceQuote": "A drone likely from Ukraine explodes in Bulgaria near a gas pipeline close to Romania's border",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdHdjMXFHeUM1REdDNnZONnZ6WU1DM3_tbAHbU1PKyrBVuSPeMkjkaoMYHP2aJh7817PXdU7jk9ZfkEU99IUpiBmSO-sPFG5VMBk-rbwwjk3qxE89S3pdNpkkjVrL4-gpXyhVsMSWG0uVDUQaXP6TuZJs9siViQzFlUO_MqrR?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Bulgaria",
-          "Ukraine",
-          "Romania"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-08"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260808-1849-3",
-      "primarySource": "Reuters",
-      "items": [
-        {
-          "title": "Bulgaria says drone explodes in its airspace, no damage",
-          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOLTJIOVhtd1lJa0ptSGkzVHF4SVNjT0xLVWVJZmdqVXhGQTJNWGF2UklzYldoUmJHNVQ1QnRsbUJLM3k4OUs0aG5mbk43czBEOUE2bDAyakI4a25YWFo0YjdObVRyVGJGeWFaUGZ1eDBhSkVaOUN3NXNDX09pVmFtbmZlSC1ZWWt0eDFVVDNVVWtEbmx3czcwV3E4c0k?oc=5",
-          "publishedUtc": "2026-08-08T15:33Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "A drone likely from Ukraine explodes in Bulgaria near a gas pipeline close to Romania's border",
-          "summary": "A drone likely from Ukraine explodes in Bulgaria near a gas pipeline close to Romania's border &nbsp;&nbsp; AP News",
-          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdHdjMXFHeUM1REdDNnZONnZ6WU1DM190YkFIYlUxUEt5ckJWdVNQZU1ramthb01ZSFAyYUpoNzgxN1BYZFU3ams5WmZrRVU5OUlVcGlCbVNPLXNQRkc1Vk1Cay1yYnd3ak9rM3F4RTg5UzNwZE5wa2tqVnJMNC1ncFh5aFZzTVNXRzB1VkRVUWFYUDZUdVpKczlzaVZpUXpGbFVPX01xclI?oc=5",
-          "source": "AP News",
-          "companion": true,
-          "publishedUtc": "2026-08-08T15:39Z"
-        }
-      ],
-      "updateCandidate": false,
       "mustReport": false,
       "archiveContext": {
         "archive_context_version": 1,
