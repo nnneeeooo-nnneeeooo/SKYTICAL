@@ -1,5 +1,158 @@
 [
   {
+    "id": "g-20260811-1118-1",
+    "queuedUtc": "2026-08-11T11:18Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Starlux Airlines reported H1 2026 financial results showing a net loss due to surging jet fuel costs and announced obtaining an airport ground handling license, involving major financial claims.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "星宇航空董事會於2026年8月11日通過第2季財報，上半年累計營收達新台幣285.53億元，年成長30%，創歷年同期新高。",
+        "sourceQuote": "星宇航空董事會今天通過2026年第2季財報，第2季營收約新台幣147.93億元，累計上半年營收達285.53億元，年成長30%，創歷年同期新高",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "受國際航空燃油價格年增124%影響，星宇航空上半年營運成本提升，稅後淨損約新台幣3.46億元。",
+        "sourceQuote": "航空燃油價格年增124%，導致營運成本大幅提升，上半年稅後淨損約3.46億元。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "星宇航空於8月10日取得交通部民航局核發的航空站地勤業許可證，規劃逐步拓展地勤服務業務。",
+        "sourceQuote": "星宇航空表示，於10日取得交通部民航局核發的航空站地勤業許可證，未來將配合整體營運規劃及桃園國際機場各項基礎建設擴增進程，逐步拓展航空地勤服務業務",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Starlux Airlines reported H1 2026 financial results showing a net loss due to surging jet fuel costs and announced obtaining an airport ground handling license, involving major financial claims.",
+      "cat": "biz",
+      "zh": {
+        "title": "星宇航空上半年營收創新高受油價影響轉虧並取得地勤許可",
+        "summary": "星宇航空上半年營收285.53億；油價飆漲轉虧3.46億；獲地勤許可",
+        "body": [
+          "星宇航空董事會於2026年8月11日通過第2季財報。公司表示，累計上半年營收達新台幣285.53億元，年增30%，創下歷年同期新高，顯示客運與貨運需求持續表現強勁。然而，第2季受美伊戰爭影響，國際航空燃油價格大幅飆漲，年增達124%，導致營運成本大幅提升，上半年累計稅後淨損約為新台幣3.46億元。",
+          "在業務拓展方面，星宇航空表示，已於8月10日取得交通部民航局核發的航空站地勤業許可證。未來將配合整體營運規劃及桃園國際機場各項基礎建設擴增進程，逐步拓展航空地勤服務業務，以共同強化桃園國際機場的樞紐競爭力。"
+        ]
+      },
+      "en": {
+        "title": "Starlux Posts Record H1 Revenue but Net Loss on Fuel Costs, Obtains Ground Handling License",
+        "summary": "Starlux Airlines recorded record H1 revenue; fuel price surge led to net loss; obtained ground handling license.",
+        "body": [
+          "The board of Starlux Airlines approved its Q2 2026 financial report on August 11, 2026. Cumulative revenue for the first half of the year reached NT$28.553 billion, up 30% year-on-year to hit a record high for the period, supported by strong passenger and cargo demand. However, affected by the US-Iran war in the second quarter, jet fuel prices soared 124% year-on-year, significantly raising operating costs and resulting in a net loss of approximately NT$346 million for the first half.",
+          "Additionally, Starlux Airlines announced that it obtained an airport ground handling license from the Civil Aeronautics Administration on August 10. Moving forward, the carrier plans to expand its ground handling services in line with overall operational planning and infrastructure expansion at Taoyuan International Airport to enhance the airport's hub competitiveness."
+        ]
+      },
+      "flash": {
+        "zh": "星宇航空上半年營收創新高，受燃油高漲影響轉虧3.46億元並獲地勤許可",
+        "en": "Starlux Airlines posts record H1 revenue, net loss on high fuel costs, secures ground handling license",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "星宇航空董事會於2026年8月11日通過第2季財報，上半年累計營收達新台幣285.53億元，年成長30%，創歷年同期新高。",
+          "sourceQuote": "星宇航空董事會今天通過2026年第2季財報，第2季營收約新台幣147.93億元，累計上半年營收達285.53億元，年成長30%，創歷年同期新高",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "受國際航空燃油價格年增124%影響，星宇航空上半年營運成本提升，稅後淨損約新台幣3.46億元。",
+          "sourceQuote": "航空燃油價格年增124%，導致營運成本大幅提升，上半年稅後淨損約3.46億元。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "星宇航空於8月10日取得交通部民航局核發的航空站地勤業許可證，規劃逐步拓展地勤服務業務。",
+          "sourceQuote": "星宇航空表示，於10日取得交通部民航局核發的航空站地勤業許可證，未來將配合整體營運規劃及桃園國際機場各項基礎建設擴增進程，逐步拓展航空地勤服務業務",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "星宇航空董事會",
+          "交通部民航局"
+        ],
+        "airlines": [
+          "星宇航空"
+        ],
+        "aircraft_models": [],
+        "airports": [
+          "桃園國際機場"
+        ],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "10日",
+          "11日",
+          "2026年第2季"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-1118-1",
+      "primarySource": "中央社 CNA 國籍航空",
+      "items": [
+        {
+          "title": "油價翻倍漲星宇航空營運承壓 逐步拓展地勤業務",
+          "url": "https://www.cna.com.tw/news/afe/202608110313.aspx",
+          "publishedUtc": "2026-08-11T11:15Z",
+          "summary": "航空燃油,星宇航空",
+          "image": null,
+          "source": "中央社 CNA 國籍航空",
+          "sourceKey": "cnataiwanairlines"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260811-1042-7",
     "queuedUtc": "2026-08-11T10:42Z",
     "approve": false,
@@ -9782,300 +9935,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260808-1536-8",
-    "queuedUtc": "2026-08-08T15:36Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "financial_or_order_claim present",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Apollo has made a firm cash offer valuing easyJet’s issued and to-be-issued share capital at approximately £5.7 billion.",
-        "sourceQuote": "Apollo has made a firm cash offer valuing easyJet’s issued and to-be-issued share capital at approximately £5.7 billion.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/easyjet-apollo-ownership-castlelake-withdraws-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Under its principal offer, easyJet shareholders would receive £7.15 in cash for every share they hold.",
-        "sourceQuote": "Under its principal offer, easyJet shareholders would receive £7.15 in cash for every share they hold.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/easyjet-apollo-ownership-castlelake-withdraws-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The easyJet board has unanimously recommended Apollo’s cash offer, describing it as providing immediate and certain value while recognising the quality of the airline and its future prospects.",
-        "sourceQuote": "The easyJet board has unanimously recommended Apollo’s cash offer, describing it as providing immediate and certain value while recognising the quality of the airline and its future prospects.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/easyjet-apollo-ownership-castlelake-withdraws-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Castlelake had been pursuing the airline since May and submitted a series of increasingly valuable proposals. Its fifth and final public proposal offered £6.90 per share, and easyJet’s board initially said it would be minded to recommend a firm offer at that level. That position changed after Apollo proposed £7.15 per share . easyJet continued providing due diligence access to both companies, but Castlelake ultimately decided not to proceed.",
-        "sourceQuote": "Castlelake had been pursuing the airline since May and submitted a series of increasingly valuable proposals. Its fifth and final public proposal offered £6.90 per share, and easyJet’s board initially said it would be minded to recommend a firm offer at that level. That position changed after Apollo proposed £7.15 per share . easyJet continued providing due diligence access to both companies, but Castlelake ultimately decided not to proceed.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/easyjet-apollo-ownership-castlelake-withdraws-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "financial_or_order_claim present",
-      "cat": "biz",
-      "zh": {
-        "title": "阿波羅提出易捷航空每股7.15英鎊收購報價",
-        "summary": "阿波羅以每股7.15英鎊的現金報價收購易捷航空，估值約57億英鎊，易捷董事會一致推薦此報價，而競爭者Castlelake已退出收購競爭。",
-        "body": [
-          "阿波羅已提出現金收購要約，將易捷航空的已發行及將發行股本估值約為57億英鎊。",
-          "根據要約，易捷股東每持有一股可獲取7.15英鎊現金，較Castlelake之前的6.90英鎊報價高出0.25英鎊。",
-          "易捷董事會一致推薦阿波羅的現金要約，認為該要約提供即時且確定的價值，同時肯定航空公司的品質與未來前景。",
-          "Castlelake宣佈不再對易捷航空提出收購要約，並表示其退出是基於城市收購與合併守則第2.8條，但保留若第三方提出要約時重新進入的技術性權利。"
-        ]
-      },
-      "en": {
-        "title": "Apollo Offers £7.15 Per Share for easyJet Takeover",
-        "summary": "Apollo has made a firm cash offer valuing easyJet at approximately £5.7 billion, proposing £7.15 per share, which the easyJet board unanimously recommends; rival bidder Castlelake has withdrawn its offer.",
-        "body": [
-          "Apollo has made a firm cash offer valuing easyJet’s issued and to-be-issued share capital at approximately £5.7 billion.",
-          "Under the offer, easyJet shareholders would receive £7.15 in cash for each share they hold, which is 25p above Castlelake’s latest proposal of £6.90 per share.",
-          "The easyJet board has unanimously recommended Apollo’s cash offer, describing it as providing immediate and certain value while recognising the quality of the airline and its future prospects.",
-          "Castlelake has confirmed it no longer intends to make an offer for easyJet, stating it appreciated the constructive engagement with easyJet’s board and management and thanked them for considering the potential transaction."
-        ]
-      },
-      "flash": {
-        "zh": "阿波羅以每股7.15英鎊收購易捷",
-        "en": "Apollo offers £7.15 per share for easyJet",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Apollo has made a firm cash offer valuing easyJet’s issued and to-be-issued share capital at approximately £5.7 billion.",
-          "sourceQuote": "Apollo has made a firm cash offer valuing easyJet’s issued and to-be-issued share capital at approximately £5.7 billion.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/easyjet-apollo-ownership-castlelake-withdraws-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Under its principal offer, easyJet shareholders would receive £7.15 in cash for every share they hold.",
-          "sourceQuote": "Under its principal offer, easyJet shareholders would receive £7.15 in cash for every share they hold.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/easyjet-apollo-ownership-castlelake-withdraws-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The easyJet board has unanimously recommended Apollo’s cash offer, describing it as providing immediate and certain value while recognising the quality of the airline and its future prospects.",
-          "sourceQuote": "The easyJet board has unanimously recommended Apollo’s cash offer, describing it as providing immediate and certain value while recognising the quality of the airline and its future prospects.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/easyjet-apollo-ownership-castlelake-withdraws-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Castlelake had been pursuing the airline since May and submitted a series of increasingly valuable proposals. Its fifth and final public proposal offered £6.90 per share, and easyJet’s board initially said it would be minded to recommend a firm offer at that level. That position changed after Apollo proposed £7.15 per share . easyJet continued providing due diligence access to both companies, but Castlelake ultimately decided not to proceed.",
-          "sourceQuote": "Castlelake had been pursuing the airline since May and submitted a series of increasingly valuable proposals. Its fifth and final public proposal offered £6.90 per share, and easyJet’s board initially said it would be minded to recommend a firm offer at that level. That position changed after Apollo proposed £7.15 per share . easyJet continued providing due diligence access to both companies, but Castlelake ultimately decided not to proceed.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/easyjet-apollo-ownership-castlelake-withdraws-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Apollo",
-          "easyJet",
-          "Castlelake",
-          "Haji-Ioannou family"
-        ],
-        "airlines": [
-          "easyJet"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-07"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260808-1536-8",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "easyJet under Apollo ownership: What it means for passengers and shareholders",
-          "url": "https://aerospaceglobalnews.com/news/easyjet-apollo-ownership-castlelake-withdraws-deal/",
-          "publishedUtc": "2026-08-07T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/11/AdobeStock_1657768051_Editorial_Use_Only-scaled.jpeg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260730-2213-faa-releases-transition-plan-for-general",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: eagle",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-30",
-            "source_name": "FAA — FAA Releases Plan for Transitioning General Aviation Aircra...",
-            "source_url": "https://www.faa.gov/newsroom/faa-releases-plan-transitioning-general-aviation-aircraft-unleaded-gas",
-            "facts": [
-              {
-                "claim": "The FAA released its Transition Plan for Unleaded Aviation Gasoline on July 30, 2026, providing a roadmap to safely integrate unleaded fuel into the general aviation fleet.",
-                "source_quote": "The Federal Aviation Administration (FAA) released its Transition Plan for Unleaded Aviation Gasoline , which provides a roadmap to safely integrate unleaded fuel into the general aviation fleet.",
-                "source_url": "https://www.faa.gov/newsroom/faa-releases-plan-transitioning-general-aviation-aircraft-unleaded-gas",
-                "source_name": "FAA — FAA Releases Plan for Transitioning General Aviation Aircra..."
-              },
-              {
-                "claim": "The plan uses a phased approach to address fuel testing and authorization, gather market experience, execute the national transition, and manage the unique transition in Alaska.",
-                "source_quote": "The plan uses a phased approach to address fuel testing and authorization, gather market experience, execute the national transition and manage the unique transition in Alaska.",
-                "source_url": "https://www.faa.gov/newsroom/faa-releases-plan-transitioning-general-aviation-aircraft-unleaded-gas",
-                "source_name": "FAA — FAA Releases Plan for Transitioning General Aviation Aircra..."
-              },
-              {
-                "claim": "The plan fulfills a provision of the 2024 FAA Reauthorization Act requiring the agency to partner with the aviation industry to safely transition the piston-engine fleet to unleaded aviation gas by 2030 through the EAGLE initiative.",
-                "source_quote": "The plan fulfills a provision of the 2024 FAA Reauthorization Act requiring the agency to partner with the aviation industry to safely transition the piston-engine fleet to unleaded aviation gas by 2030. This partnership was through the Eliminate Aviation Gasoline Lead Emissions (EAGLE) initiative .",
-                "source_url": "https://www.faa.gov/newsroom/faa-releases-plan-transitioning-general-aviation-aircraft-unleaded-gas",
-                "source_name": "FAA — FAA Releases Plan for Transitioning General Aviation Aircra..."
-              },
-              {
-                "claim": "The FAA is testing three different fuels at the William J Hughes Technical Center as part of the first phase of the transition to address key questions concerning performance and compatibility, and will update the plan after the first phase is complete.",
-                "source_quote": "The FAA is testing three different fuels at the William J Hughes Technical Center as part of the first phase of the transition to address key questions concerning performance and compatibility. The FAA will update the plan after the first phase is complete.",
-                "source_url": "https://www.faa.gov/newsroom/faa-releases-plan-transitioning-general-aviation-aircraft-unleaded-gas",
-                "source_name": "FAA — FAA Releases Plan for Transitioning General Aviation Aircra..."
-              },
-              {
-                "claim": "In January 2026, the FAA published a draft of the transition plan and invited public comments; the agency used these comments to improve and clarify the final plan, and will summarize the comments in a supplemental document publishing in late 2026.",
-                "source_quote": "In January 2026, the FAA published a draft of the transition plan and invited public comments. The agency used these comments to improve and clarify the final plan. The FAA will summarize the comments in a supplemental document that will publish in late 2026.",
-                "source_url": "https://www.faa.gov/newsroom/faa-releases-plan-transitioning-general-aviation-aircraft-unleaded-gas",
-                "source_name": "FAA — FAA Releases Plan for Transitioning General Aviation Aircra..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260804-1529-gatwick-airport-to-proceed-with-second-r",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: high court",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-08-04",
-            "source_name": "AeroTime — Gatwick to press ahead with second runway after judges rule...",
-            "source_url": "https://www.aerotime.aero/articles/gatwick-to-press-ahead-with-second-runway-after-judges-rule-against-appeal",
-            "facts": [
-              {
-                "claim": "On August 4, 2026, London-Gatwick Airport said the Court of Appeal rejected legal challenges to planning permission granted in September 2025 for its Northern Runway Project.",
-                "source_quote": "On August 4, 2026, Gatwick Airport said that the Court of Appeal had rejected legal challenges to the planning permission that was granted by the government in September 2025.",
-                "source_url": "https://www.aerotime.aero/articles/gatwick-to-press-ahead-with-second-runway-after-judges-rule-against-appeal",
-                "source_name": "AeroTime — Gatwick to press ahead with second runway after judges rule..."
-              },
-              {
-                "claim": "Under the expansion plans, Gatwick's current standby runway will be moved 12 meters to allow a second fully functioning runway.",
-                "source_quote": "Under the plans, the current standby runway will be moved 12 meters to allow Gatwick to have a second fully functioning runway.",
-                "source_url": "https://www.aerotime.aero/articles/gatwick-to-press-ahead-with-second-runway-after-judges-rule-against-appeal",
-                "source_name": "AeroTime — Gatwick to press ahead with second runway after judges rule..."
-              },
-              {
-                "claim": "On June 23, 2026, the High Court upheld the government's decision to grant planning approval for the Northern Runway Project, after which campaigners launched an appeal.",
-                "source_quote": "On June 23, 2026, the High Court upheld the government’s decision to grant planning approval for the Northern Runway Project and campaigners subsequently launched an appeal.",
-                "source_url": "https://www.aerotime.aero/articles/gatwick-to-press-ahead-with-second-runway-after-judges-rule-against-appeal",
-                "source_name": "AeroTime — Gatwick to press ahead with second runway after judges rule..."
-              },
-              {
-                "claim": "Gatwick estimates the $2.9 billion (£2.2 billion) project will create 14,000 new jobs and add a $1.3 billion (£1 billion) annual boost to the economy.",
-                "source_quote": "Gatwick argues that the $2.9 billion (£ 2.2 billion) project will “deliver significant” business, tourism and trade benefits for the UK, including 14,000 new jobs, and a $1.3 billion (£1 billion) “boost to the economy every year”.",
-                "source_url": "https://www.aerotime.aero/articles/gatwick-to-press-ahead-with-second-runway-after-judges-rule-against-appeal",
-                "source_name": "AeroTime — Gatwick to press ahead with second runway after judges rule..."
-              },
-              {
-                "claim": "UK Transport Secretary Heidi Alexander stated that around 13 million more passengers and 100,000 more flights will give holidaymakers greater choice and strengthen global links.",
-                "source_quote": "“Around 13 million more passengers and 100,000 more flights will give holidaymakers greater choice and strengthen global links to help make the UK one of the most attractive places in the world to invest,” Alexander added.",
-                "source_url": "https://www.aerotime.aero/articles/gatwick-to-press-ahead-with-second-runway-after-judges-rule-against-appeal",
-                "source_name": "AeroTime — Gatwick to press ahead with second runway after judges rule..."
-              },
-              {
-                "claim": "The appeal was brought by Peter Barclay, Chair of Gatwick Area Conservation Campaign, and Communities Against Gatwick Noise Emissions.",
-                "source_quote": "The appeal was brought by Peter Barclay, the Chair of Gatwick Area Conservation Campaign, and Communities Against Gatwick Noise Emissions (CAGNE).",
-                "source_url": "https://www.aerotime.aero/articles/gatwick-to-press-ahead-with-second-runway-after-judges-rule-against-appeal",
-                "source_name": "AeroTime — Gatwick to press ahead with second runway after judges rule..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260804-1529-swiss-semi-private-startup-peakjet-compl",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: aero",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-08-04",
-            "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first...",
-            "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-            "facts": [
-              {
-                "claim": "PeakJet completed its first commercial flight between Zürich and Palma de Mallorca on August 1, 2026.",
-                "source_quote": "PeakJet, a new Swiss semi-private airline, has announced that it has completed its first commercial flight between Zürich (ZRH) and Palma de Mallorca (PMI) on August 1, 2026.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
