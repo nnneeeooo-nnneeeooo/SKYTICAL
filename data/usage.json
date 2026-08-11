@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-11T11:38Z",
+  "updatedUtc": "2026-08-11T11:41Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -131504,6 +131504,44 @@
     }
   ],
   "copilotEvents": [
+    {
+      "requestId": "197f8da4ca807a5a119718d8e85e6051",
+      "route": "/api/admin/copilot/ask",
+      "feature": "skytical-copilot",
+      "event": "copilot_request",
+      "model": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0,
+      "estimatedCostUsd": 0.0,
+      "latencyMs": 0,
+      "status": "received",
+      "guardrailResult": "allowed",
+      "ragUsed": false,
+      "externalSearchUsed": false,
+      "sourceCount": 0,
+      "userHash": "a030e119bff3c39721cc6768",
+      "createdAt": "2026-08-11T11:41Z"
+    },
+    {
+      "requestId": "197f8da4ca807a5a119718d8e85e6051",
+      "route": "/api/admin/copilot/ask",
+      "feature": "skytical-copilot",
+      "event": "off_topic",
+      "model": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0,
+      "estimatedCostUsd": 0.0,
+      "latencyMs": 0,
+      "status": "blocked",
+      "guardrailResult": "off_topic",
+      "ragUsed": false,
+      "externalSearchUsed": false,
+      "sourceCount": 0,
+      "userHash": "a030e119bff3c39721cc6768",
+      "createdAt": "2026-08-11T11:41Z"
+    },
     {
       "requestId": "7e8b77ff9a7406b359ec7be35a0212ca",
       "route": "/api/admin/copilot/ask",
