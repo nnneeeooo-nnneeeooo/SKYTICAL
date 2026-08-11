@@ -1,5 +1,324 @@
 [
   {
+    "id": "g-20260811-2232-3",
+    "queuedUtc": "2026-08-11T22:32Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "Current source includes an ongoing investigation (police investigation completed but findings undisclosed) triggering the investigation risk flag, requiring human review per policy.",
+    "riskFlags": [
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Multiple unidentified drones repeatedly entered restricted airspace around RAAF Base Williamtown and neighboring Newcastle Airport in New South Wales between July 11 and 13, 2026, according to Australian media reports.",
+        "sourceQuote": "The drones were reported over RAAF Base Williamtown and neighboring Newcastle Airport in New South Wales between July 11 and 13, 2026, according to Australian media reports.",
+        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Australia’s Department of Defence has acknowledged the incidents, while Defence Industry Minister Pat Conroy said the broad reporting about the number of drones and the days they appeared was accurate.",
+        "sourceQuote": "Australia’s Department of Defence has acknowledged the incidents, while Defence Industry Minister Pat Conroy said the broad reporting about the number of drones and the days they appeared was accurate.",
+        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Authorities have not identified the operators or indicated why the drones were there.",
+        "sourceQuote": "Authorities have not identified the operators or indicated why the drones were there.",
+        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Personnel at Williamtown were reportedly instructed to close window blinds to prevent sensitive information from being viewed or photographed.",
+        "sourceQuote": "Personnel at Williamtown were reportedly instructed to close window blinds to prevent sensitive information from being viewed or photographed.",
+        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The incidents were referred to the New South Wales Police Counter-UAS Unit.",
+        "sourceQuote": "The incidents were referred to the New South Wales Police Counter-UAS Unit.",
+        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Conroy said on August 10 that the police investigation has since been completed, but he did not disclose its findings.",
+        "sourceQuote": "Conroy said on August 10 that the police investigation has since been completed, but he did not disclose its findings.",
+        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Current source includes an ongoing investigation (police investigation completed but findings undisclosed) triggering the investigation risk flag, requiring human review per policy.",
+      "cat": "mil",
+      "zh": {
+        "title": "澳洲F-35基地空域反復遭不明無人機入侵",
+        "summary": "不明無人機多次闖入威廉鎮與紐卡斯爾機場禁區；國防部長證實報告數字正確，警方調查已結束未公開結果。",
+        "body": [
+          "多架不明無人機在2026年7月11日至13日間，反複進入澳洲皇家空軍威廉鎮基地及鄰近紐卡斯爾機場的限制空域。",
+          "澳洲國防部承認事件發生，國防工業部長Pat Conroy表示媒體報導的無人機數量與出現天數屬實。",
+          "當局尚未查明無人機操作者或其飛行目的，亦未公開任何無人機被回收或識別的資訊。",
+          "威廉鎮基地人員據報被指示關閉窗簾，以防止敏感資訊被攝影或觀察。",
+          "事件已移交新南威爾斯州警察反無人機單位調查，Conroy於8月10日指出調查已完成但未披露發現。",
+          "他亦未透露是否有任何反無人機措施被使用，或飛行作業因此受到干擾。"
+        ]
+      },
+      "en": {
+        "title": "Unidentified Drones Repeatedly Intrude Restricted Airspace Over Australian F-35 Base",
+        "summary": "Multiple unknown drones entered restricted airspace near RAAF Williamtown and Newcastle Airport Jul 11-13; defence minister confirms reports, police investigation concluded without disclosure.",
+        "body": [
+          "Between July 11 and July 13, 2026, several unidentified drones were reported flying repeatedly in the restricted airspace surrounding RAAF Base Williamtown and nearby Newcastle Airport in New South Wales.",
+          "Australia's Department of Defence acknowledged the incursions, and Defence Industry Minister Pat Conroy said the media coverage regarding the number of drones and the days they appeared was accurate.",
+          "Authorities have not identified the operators of the drones or disclosed why they were flying over the base.",
+          "Personnel at Williamtown were reportedly instructed to close window blinds to prevent sensitive information from being viewed or photographed.",
+          "The incidents were referred to the New South Wales Police Counter-UAS Unit; Conroy stated on August 10 that the police investigation had been completed but its findings were not disclosed.",
+          "He also declined to say whether any counter‑drone measures were employed or if military or civilian flight operations were disrupted."
+        ]
+      },
+      "flash": {
+        "zh": "澳洲F-35基地空域多次遭不明無人機入侵",
+        "en": "Unidentified drones repeatedly breach Australian F-35 base airspace",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Multiple unidentified drones repeatedly entered restricted airspace around RAAF Base Williamtown and neighboring Newcastle Airport in New South Wales between July 11 and 13, 2026, according to Australian media reports.",
+          "sourceQuote": "The drones were reported over RAAF Base Williamtown and neighboring Newcastle Airport in New South Wales between July 11 and 13, 2026, according to Australian media reports.",
+          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Australia’s Department of Defence has acknowledged the incidents, while Defence Industry Minister Pat Conroy said the broad reporting about the number of drones and the days they appeared was accurate.",
+          "sourceQuote": "Australia’s Department of Defence has acknowledged the incidents, while Defence Industry Minister Pat Conroy said the broad reporting about the number of drones and the days they appeared was accurate.",
+          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Authorities have not identified the operators or indicated why the drones were there.",
+          "sourceQuote": "Authorities have not identified the operators or indicated why the drones were there.",
+          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Personnel at Williamtown were reportedly instructed to close window blinds to prevent sensitive information from being viewed or photographed.",
+          "sourceQuote": "Personnel at Williamtown were reportedly instructed to close window blinds to prevent sensitive information from being viewed or photographed.",
+          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The incidents were referred to the New South Wales Police Counter-UAS Unit.",
+          "sourceQuote": "The incidents were referred to the New South Wales Police Counter-UAS Unit.",
+          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Conroy said on August 10 that the police investigation has since been completed, but he did not disclose its findings.",
+          "sourceQuote": "Conroy said on August 10 that the police investigation has since been completed, but he did not disclose its findings.",
+          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6"
+      ],
+      "entities": {
+        "organizations": [
+          "Australian Department of Defence",
+          "Defence Industry Minister Pat Conroy",
+          "New South Wales Police Counter-UAS Unit",
+          "Royal Australian Air Force",
+          "Lockheed Martin",
+          "Boeing"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Lockheed Martin F-35A Lightning II",
+          "Boeing E-7A Wedgetail",
+          "Hawk 127",
+          "Pilatus PC-21"
+        ],
+        "airports": [
+          "RAAF Base Williamtown",
+          "Newcastle Airport"
+        ],
+        "locations": [
+          "New South Wales",
+          "Williamtown",
+          "Newcastle"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-07-11",
+          "2026-07-13",
+          "2026-08-10"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260811-2232-3",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Mystery drones repeatedly breach airspace over Australian F-35 base",
+          "url": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
+          "publishedUtc": "2026-08-11T21:34Z",
+          "summary": "Multiple unidentified drones repeatedly entered restricted airspace around one of Australia’s most sensitive military air bases recently, raising questions… The post Mystery drones repeatedly breach airspace over Australian F-35 base appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260807-1756-finland-and-sweden-debut-at-pitch-black",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: F-35A"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 22 day(s) apart",
+            "event_date": "2026-07-20",
+            "source_name": "AeroTime — Finland and Sweden make first-ever appearance to RAAF’s Exe...",
+            "source_url": "https://www.aerotime.aero/articles/finland-and-sweden-make-first-ever-appearance-to-raafs-exercise-pitch-black",
+            "facts": [
+              {
+                "claim": "Finland and Sweden sent official delegations to Exercise Pitch Black 26 for the first time, marking their initial participation in Australia’s flagship multinational air combat exercise.",
+                "source_quote": "Finland and Sweden sent official delegations to Exercise Pitch Black 26 for the first time, marking the two Nordic nations’ initial participation in Australia’s flagship multinational air combat exercise.",
+                "source_url": "https://www.aerotime.aero/articles/finland-and-sweden-make-first-ever-appearance-to-raafs-exercise-pitch-black",
+                "source_name": "AeroTime — Finland and Sweden make first-ever appearance to RAAF’s Exe..."
+              },
+              {
+                "claim": "The Indian Air Force’s Rafale fighter jet made its debut appearance at Exercise Pitch Black 26, marking a historic first for the aircraft in Australia’s premier multinational air combat exercise.",
+                "source_quote": "The Indian Air Force’s (IAF) Rafale fighter jet has made its debut appearance at Exercise Pitch Black 26, marking a historic first for the aircraft in Australia’s premier multinational air combat exercise.",
+                "source_url": "https://www.aerotime.aero/articles/indian-air-forces-rafale-makes-historic-debut-at-exercise-pitch-black-26",
+                "source_name": "AeroTime — Indian Air Force’s Rafale makes historic debut at Exercise..."
+              },
+              {
+                "claim": "The delegations traveled to RAAF Base Darwin to observe the exercise, which runs from July 20 to August 7, 2026 across Northern Australia.",
+                "source_quote": "The delegations traveled to Royal Australian Air Force (RAAF) Base Darwin to observe the exercise, which runs from July 20 to August 7, 2026 across Northern Australia.",
+                "source_url": "https://www.aerotime.aero/articles/finland-and-sweden-make-first-ever-appearance-to-raafs-exercise-pitch-black",
+                "source_name": "AeroTime — Finland and Sweden make first-ever appearance to RAAF’s Exe..."
+              },
+              {
+                "claim": "According to Kumar, the deployment reflects the IAF’s growing ability to conduct long-range missions and operate effectively within a demanding multinational environment.",
+                "source_quote": "According to Kumar, the deployment reflects the IAF’s growing ability to conduct long-range missions and operate effectively within a demanding multinational environment.",
+                "source_url": "https://www.aerotime.aero/articles/indian-air-forces-rafale-makes-historic-debut-at-exercise-pitch-black-26",
+                "source_name": "AeroTime — Indian Air Force’s Rafale makes historic debut at Exercise..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 16 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 16 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 14 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 14 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
+            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+            "facts": [
+              {
+                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
+                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
+              },
+              {
+                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
+                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260811-2136-9",
     "queuedUtc": "2026-08-11T21:36Z",
     "approve": false,
@@ -9845,178 +10164,6 @@
           "source": "AP News",
           "companion": true,
           "publishedUtc": "2026-08-08T14:37Z"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260808-2335-3",
-    "queuedUtc": "2026-08-08T23:35Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "The current event is a maritime security incident — a vessel reportedly attacked by a missile/airstrike in the Strait of Hormuz — which qualifies under AVWIRE's maritime transport scope. However, the primary source (Reuters) provides only a headline with no full text, and the two secondary sources (CNBC, The Guardian) likewise provide only headlines/summaries. The core facts are drawn from verbatim headline text, but details are limited and the event is developing with conflicting descriptions (missile vs. airstrike). This warrants manual review under the unconfirmed_or_developing and conflicting_information risk flags.",
-    "riskFlags": [
-      "unconfirmed_or_developing",
-      "conflicting_information"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The UAE said Iran attacked an ADNOC vessel with a missile in the Strait of Hormuz.",
-        "sourceQuote": "UAE says Iran attacked ADNOC vessel with missile in Strait of Hormuz",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQajV4Uk9FTWd2WFJTWWVSZS1pdkl4OGFERFdzeExaYy1udkYxWGdXYWxRdHUwd2kwLVRtRTdhRkdVdUZuNXZ3U09EQUR3OXUwUzVtZmZZeWZkWmlkTThUTDBYNVBjbE9IWVBQZnhhcHBfcFVnZTc0NG1uMk54dElXNkhzQUFZR3VkRW5QZkthVjdfdTJOaXR6YWxiZmtfdzJROGg3bWFuOVhuV2ZkTDNLNkg4d18?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Iran set conditions for opening the Strait of Hormuz after the UAE said one of its ships was targeted by an airstrike.",
-        "sourceQuote": "Iran sets conditions for opening Strait of Hormuz after UAE says one of its ships was targeted by airstrike",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOHg1SGZ0bkhEeVc2QWNHb3ZDbUJsUVRLMHZhdUxxV1dZQXlZM2lkYTJmSDZVQlFmV1EtRHFHV294N1pkbERPZXk0dHJSbWJtOUFwTHBwRERWY2xFMVJMZ1ZIM1ZLelR6QTJkUXVZVEFsRktVVUJObWhvRlQzU0t0aFc1Y2xraDkxV2J4MDQ2c3pVMm_SAZgBQVVfeXFMTVBpTHl0QWRxSHFON2dTREVVTmNjUGVRSW0yMWo1ZFpVMjlDdXhPdTJwUGl4Y1pOSHIzT3NjTHU4UXd6Vk80X3hEODF4V29tQnc1dGg2NENoZmU2ME1aUWVmZzRhZEVxbzRCQlc5RFRxX1NHTF9jdFdHczVrVXBiWXlPM0lNR19udzMtRURBYXFnSnVVWk16SFY?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Iran issued tough demands to reopen the Strait of Hormuz, and a deal was still out of reach.",
-        "sourceQuote": "Iran issues tough demands to reopen strait of Hormuz as deal still out of reach",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPaUNTWVFLLXhncGRwVGVoMGZSWXhtMlNFZmFFVG5jcUV4MmhSVDA2UEJoS1NWSkotQUJwSEZEZVBjbGRWVEItY1VJR0RReVA0aXpXNlNNc1c4RkZTN1pDazh4eVc5cXlFSUR6em41VzFKdGd6SURhLUY2RFhlSlBfNTZsUjM3QkdEaXJTUEg0RXp4c2w0cVdGLTRnQzRaa0Q2c3RFdHczRDIyMnltYUVybUpjLTRRcW9wTUxwano0NllJRW1VcVE?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The current event is a maritime security incident — a vessel reportedly attacked by a missile/airstrike in the Strait of Hormuz — which qualifies under AVWIRE's maritime transport scope. However, the primary source (Reuters) provides only a headline with no full text, and the two secondary sources (CNBC, The Guardian) likewise provide only headlines/summaries. The core facts are drawn from verbatim headline text, but details are limited and the event is developing with conflicting descriptions (missile vs. airstrike). This warrants manual review under the unconfirmed_or_developing and conflicting_information risk flags.",
-      "cat": "safety",
-      "zh": {
-        "title": "阿聯稱伊朗於荷莫茲海峽以飛彈攻擊ADNOC船隻",
-        "summary": "路透社報導，阿聯表示伊朗在荷莫茲海峽以飛彈攻擊一艘ADNOC船隻；CNBC與衛報後續報導指出，伊朗對重開荷莫茲海峽提出條件，相關協議仍未能達成。攻擊描述在不同報導間存在差異。",
-        "body": [
-          "路透社於2026年8月8日報導，阿聯表示伊朗在荷莫茲海峽以飛彈攻擊一艘ADNOC船隻。",
-          "CNBC同日報導指出，伊朗對重新開放荷莫茲海峽設定條件，此前阿聯稱其一艘船隻遭到空襲攻擊。",
-          "衛報亦於同日報導，伊朗提出強硬要求以重開荷莫茲海峽，而相關協議仍未能達成。",
-          "各報導對攻擊方式的描述存在差異：路透社稱飛彈攻擊，CNBC則稱空襲。此一不一致尚無法從現有來源釐清。",
-          "本事件為發展中的海事安全事件，涉及荷莫茲海峽的航運安全，後續發展有待進一步確認。"
-        ]
-      },
-      "en": {
-        "title": "UAE says Iran attacked ADNOC vessel with missile in Strait of Hormuz",
-        "summary": "Reuters reported that the UAE said Iran attacked an ADNOC vessel with a missile in the Strait of Hormuz. CNBC and The Guardian subsequently reported that Iran set conditions for reopening the strait, with a deal still out of reach. Descriptions of the attack differ across reports.",
-        "body": [
-          "Reuters reported on August 8, 2026, that the UAE said Iran attacked an ADNOC vessel with a missile in the Strait of Hormuz.",
-          "CNBC reported the same day that Iran set conditions for opening the Strait of Hormuz after the UAE said one of its ships was targeted by an airstrike.",
-          "The Guardian also reported on August 8 that Iran issued tough demands to reopen the Strait of Hormuz, with a deal still out of reach.",
-          "The reports differ on the nature of the attack: Reuters described a missile attack while CNBC referred to an airstrike. This discrepancy cannot be resolved from the available sources.",
-          "This is a developing maritime security incident involving shipping safety in the Strait of Hormuz, and further developments await confirmation."
-        ]
-      },
-      "flash": {
-        "zh": "阿聯稱伊朗於荷莫茲海峽以飛彈攻擊ADNOC船隻",
-        "en": "UAE says Iran attacked ADNOC vessel with missile in Strait of Hormuz",
-        "hot": true
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The UAE said Iran attacked an ADNOC vessel with a missile in the Strait of Hormuz.",
-          "sourceQuote": "UAE says Iran attacked ADNOC vessel with missile in Strait of Hormuz",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQajV4Uk9FTWd2WFJTWWVSZS1pdkl4OGFERFdzeExaYy1udkYxWGdXYWxRdHUwd2kwLVRtRTdhRkdVdUZuNXZ3U09EQUR3OXUwUzVtZmZZeWZkWmlkTThUTDBYNVBjbE9IWVBQZnhhcHBfcFVnZTc0NG1uMk54dElXNkhzQUFZR3VkRW5QZkthVjdfdTJOaXR6YWxiZmtfdzJROGg3bWFuOVhuV2ZkTDNLNkg4d18?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Iran set conditions for opening the Strait of Hormuz after the UAE said one of its ships was targeted by an airstrike.",
-          "sourceQuote": "Iran sets conditions for opening Strait of Hormuz after UAE says one of its ships was targeted by airstrike",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOHg1SGZ0bkhEeVc2QWNHb3ZDbUJsUVRLMHZhdUxxV1dZQXlZM2lkYTJmSDZVQlFmV1EtRHFHV294N1pkbERPZXk0dHJSbWJtOUFwTHBwRERWY2xFMVJMZ1ZIM1ZLelR6QTJkUXVZVEFsRktVVUJObWhvRlQzU0t0aFc1Y2xraDkxV2J4MDQ2c3pVMm_SAZgBQVVfeXFMTVBpTHl0QWRxSHFON2dTREVVTmNjUGVRSW0yMWo1ZFpVMjl",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Iran issued tough demands to reopen the Strait of Hormuz, and a deal was still out of reach.",
-          "sourceQuote": "Iran issues tough demands to reopen strait of Hormuz as deal still out of reach",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPaUNTWVFLLXhncGRwVGVoMGZSWXhtMlNFZmFFVG5jcUV4MmhSVDA2UEJoS1NWSkotQUJwSEZEZVBjbGRWVEItY1VJR0RReVA0aXpXNlNNc1c4RkZTN1pDazh4eVc5cXlFSUR6em41VzFKdGd6SURhLUY2RFhlSlBfNTZsUjM3QkdEaXJTUEg0RXp4c2w0cVdGLTRnQzRaa0Q2c3RFdHczRDIyMnltYUVybUpjLTRRcW9wTUxwano0Nll",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "ADNOC",
-          "Iran",
-          "UAE"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Strait of Hormuz"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-08"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "unconfirmed_or_developing",
-        "conflicting_information"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260808-2335-3",
-      "primarySource": "Reuters",
-      "items": [
-        {
-          "title": "UAE says Iran attacked ADNOC vessel with missile in Strait of Hormuz",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQajV4Uk9FTWd2WFJTWWVSZS1pdkl4OGFERFdzeExaYy1udkYxWGdXYWxRdHUwd2kwLVRtRTdhRkdVdUZuNXZ3U09EQUR3OXUwUzVtZmZZeWZkWmlkTThUTDBYNVBjbE9IWVBQZnhhcHBfcFVnZTc0NG1uMk54dElXNkhzQUFZR3VkRW5QZkthVjdfdTJOaXR6YWxiZmtfdzJROGg3bWFuOVhuV2ZkTDNLNkg4d18?oc=5",
-          "publishedUtc": "2026-08-08T11:46Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "Iran sets conditions for opening Strait of Hormuz after UAE says one of its ships was targeted by airstrike",
-          "summary": "Iran sets conditions for opening Strait of Hormuz after UAE says one of its ships was targeted by airstrike &nbsp;&nbsp; CNBC",
-          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOHg1SGZ0bkhEeVc2QWNHb3ZDbUJsUVRLMHZhdUxxV1dZQXlZM2lkYTJmSDZVQlFmV1EtRHFHV294N1pkbERPZXk0dHJSbWJtOUFwTHBwRERWY2xFMVJMZ1ZIM1ZLelR6QTJkUXVZVEFsRktVVUJObWhvRlQzU0t0aFc1Y2xraDkxV2J4MDQ2c3pVMm_SAZgBQVVfeXFMTVBpTHl0QWRxSHFON2dTREVVTmNjUGVRSW0yMWo1ZFpVMjlDdXhPdTJwUGl4Y1pOSHIzT3NjTHU4UXd6Vk80X3hEODF4V29tQnc1dGg2NENoZmU2ME1aUWVmZzRhZEVxbzRCQlc5RFRxX1NHTF9jdFdHczVrVXBiWXlPM0lNR19udzMtRURBYXFnSnVVWk16SFY?oc=5",
-          "source": "CNBC",
-          "companion": true,
-          "publishedUtc": "2026-08-08T13:06Z"
-        },
-        {
-          "title": "Iran issues tough demands to reopen strait of Hormuz as deal still out of reach",
-          "summary": "Iran issues tough demands to reopen strait of Hormuz as deal still out of reach &nbsp;&nbsp; The Guardian",
-          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPaUNTWVFLLXhncGRwVGVoMGZSWXhtMlNFZmFFVG5jcUV4MmhSVDA2UEJoS1NWSkotQUJwSEZEZVBjbGRWVEItY1VJR0RReVA0aXpXNlNNc1c4RkZTN1pDazh4eVc5cXlFSUR6em41VzFKdGd6SURhLUY2RFhlSlBfNTZsUjM3QkdEaXJTUEg0RXp4c2w0cVdGLTRnQzRaa0Q2c3RFdHczRDIyMnltYUVybUpjLTRRcW9wTUxwano0NllJRW1VcVE?oc=5",
-          "source": "The Guardian",
-          "companion": true,
-          "publishedUtc": "2026-08-08T21:51Z"
         }
       ],
       "updateCandidate": false,
