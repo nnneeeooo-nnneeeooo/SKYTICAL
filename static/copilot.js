@@ -21,6 +21,8 @@
   const resultPanel = document.getElementById("copilot-result");
   const answer = document.getElementById("copilot-answer");
   const sourceList = document.getElementById("copilot-source-list");
+  const searchSuggestions = document.getElementById("copilot-search-suggestions");
+  const searchSuggestionsFrame = document.getElementById("copilot-search-suggestions-frame");
   const mode = document.getElementById("copilot-mode");
   const resultTime = document.getElementById("copilot-time");
   const usage = document.getElementById("copilot-usage");
@@ -316,6 +318,19 @@
     }
   }
 
+  function renderSearchSuggestions(value) {
+    const html = typeof value === "string" && value.length <= 100000 ? value : "";
+    if (!html) {
+      searchSuggestions.hidden = true;
+      searchSuggestionsFrame.removeAttribute("srcdoc");
+      return;
+    }
+    // Google supplies this widget with grounded results. It is deliberately
+    // isolated from the workbench: no scripts, forms or same-origin access.
+    searchSuggestionsFrame.srcdoc = html;
+    searchSuggestions.hidden = false;
+  }
+
   function suggestionRows(value) {
     const rows = [];
     const add = (label, content) => {
@@ -366,6 +381,7 @@
       ? `${response.model} · ${(metrics.inputTokens || 0).toLocaleString()} in / ${(metrics.outputTokens || 0).toLocaleString()} out · ${metrics.latencyMs || 0} ms`
       : "未呼叫主模型";
     renderSources(response.sources);
+    renderSearchSuggestions(response.searchSuggestionsHtml);
     renderSuggestion(response.suggestion);
     const kind = response.statusCode === 429 ? "rate-limit"
       : response.status === "success" ? "success"
