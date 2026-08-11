@@ -32,6 +32,8 @@ USAGE_PATH = DATA_DIR / "usage.json"
 DAILY_KEEP_DAYS = 120
 RECENT_RUN_KEEP_DAYS = 30
 RECENT_RUN_MAX = 1000
+COPILOT_EVENT_KEEP_DAYS = 30
+COPILOT_EVENT_MAX = 2000
 _RUN_STAGES = (
     "companionRetrieval", "fulltextEnrichment", "plaEnrichment",
     "archiveRetrieval", "promptAssembly", "drafting", "validation",
@@ -144,8 +146,7 @@ def _sanitize_recent_run(row: dict) -> dict | None:
             "httpCalls": _safe_count(item.get("httpCalls"), 100),
             "repairCalls": _safe_count(item.get("repairCalls"), 100),
             "httpDurationMs": _safe_duration(item.get("httpDurationMs")),
-            "repairDurationMs":
-                _safe_duration(item.get("repairDurationMs")),
+            "repairDurationMs": _safe_duration(item.get("repairDurationMs")),
             "outcome": outcome,
             "failureClass": _short_text(item.get("failureClass"), 48),
             "failureStage": _short_text(item.get("failureStage"), 48),
@@ -172,9 +173,64 @@ def _sanitize_recent_run(row: dict) -> dict | None:
         "repairCallCount": sum(item["repairCalls"] for item in attempts),
         "durationsMs": durations,
         "attempts": attempts,
-        "resourceUsage": _sanitize_resource_usage(
-            row.get("resourceUsage")),
+        "resourceUsage": _sanitize_resource_usage(row.get("resourceUsage")),
     }
+
+
+def _sanitize_copilot_event(row: dict) -> dict | None:
+    """Whitelist private Copilot telemetry without retaining conversations."""
+    if not isinstance(row, dict):
+        return None
+    created = _short_text(row.get("createdAt"), 40)
+    if not created:
+        return None
+    try:
+        parse_iso(created)
+    except (TypeError, ValueError):
+        return None
+    status = _short_text(row.get("status"), 48) or "unknown"
+    return {
+        "requestId": _short_text(row.get("requestId"), 80),
+        "route": _short_text(row.get("route"), 120),
+        "feature": "skytical-copilot",
+        "event": _short_text(row.get("event"), 64) or "unknown",
+        "model": _short_text(row.get("model"), 160),
+        "inputTokens": _safe_count(row.get("inputTokens"), 100_000_000),
+        "outputTokens": _safe_count(row.get("outputTokens"), 100_000_000),
+        "totalTokens": _safe_count(row.get("totalTokens"), 200_000_000),
+        "estimatedCostUsd": max(0.0, min(
+            float(row.get("estimatedCostUsd") or 0), 10_000.0)),
+        "latencyMs": _safe_duration(row.get("latencyMs")) or 0,
+        "status": status,
+        "guardrailResult": _short_text(row.get("guardrailResult"), 48),
+        "ragUsed": row.get("ragUsed") is True,
+        "externalSearchUsed": row.get("externalSearchUsed") is True,
+        "sourceCount": _safe_count(row.get("sourceCount"), 10_000),
+        "userHash": _short_text(row.get("userHash"), 64),
+        "createdAt": created,
+    }
+
+
+def _prune_copilot_events(rows, now=None) -> list[dict]:
+    now = now or now_utc()
+    cutoff = (now - timedelta(days=COPILOT_EVENT_KEEP_DAYS)).replace(
+        second=0, microsecond=0)
+    kept = []
+    for row in rows if isinstance(rows, list) else []:
+        try:
+            sanitized = _sanitize_copilot_event(row)
+        except (TypeError, ValueError, OverflowError):
+            sanitized = None
+        if sanitized is None:
+            continue
+        try:
+            stamp = parse_iso(sanitized["createdAt"])
+        except (TypeError, ValueError):
+            continue
+        if stamp >= cutoff:
+            kept.append((stamp, sanitized))
+    kept.sort(key=lambda item: item[0], reverse=True)
+    return [row for _, row in kept[:COPILOT_EVENT_MAX]]
 
 
 def _recent_run_time(row: dict):
@@ -218,12 +274,15 @@ def load_ledger() -> dict:
         "models": models if isinstance(models, dict) else {},
         "daily": daily if isinstance(daily, dict) else {},
         "recentRuns": _prune_recent_runs(raw.get("recentRuns")),
+        "copilotEvents": _prune_copilot_events(raw.get("copilotEvents")),
     }
 
 
 def _stamp_ledger(ledger: dict, now) -> None:
     ledger["recentRuns"] = _prune_recent_runs(
         ledger.get("recentRuns"), now)
+    ledger["copilotEvents"] = _prune_copilot_events(
+        ledger.get("copilotEvents"), now)
     ledger["updatedUtc"] = iso_minute(now)
     ledger.setdefault("trackingSinceUtc", iso_minute(now))
     if not ledger["trackingSinceUtc"]:
@@ -244,6 +303,22 @@ def record_run(run: dict) -> None:
         print("usage: recorded recent model run")
     except Exception as exc:  # ledger diagnostics must not stop publishing
         print(f"usage: recent run update failed ({type(exc).__name__})")
+
+
+def record_copilot_event(event: dict) -> None:
+    """Append sanitized Copilot telemetry; logging must never break a reply."""
+    try:
+        sanitized = _sanitize_copilot_event(event)
+        if sanitized is None:
+            print("usage: Copilot event ignored (invalid timestamp)")
+            return
+        ledger = load_ledger()
+        ledger["copilotEvents"].append(sanitized)
+        _stamp_ledger(ledger, now_utc())
+        save_json(USAGE_PATH, ledger)
+        print("usage: recorded Copilot event")
+    except Exception as exc:
+        print(f"usage: Copilot event update failed ({type(exc).__name__})")
 
 
 def record_providers(providers) -> None:
