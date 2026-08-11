@@ -19,6 +19,7 @@ import shutil
 import sys
 import time
 import unicodedata
+import xml.etree.ElementTree as ET
 from datetime import timedelta, timezone
 from functools import lru_cache
 from pathlib import Path
@@ -174,7 +175,17 @@ L = {
         "themeOpts": ["亮", "暗"],
         # production-only keys (not in the design dictionary)
         "siteName": "SKYTICAL",
-        "siteDesc": "全自動航空新聞聚合站：每小時抓取 FAA、ICAO、IATA、Reuters 等可信來源，自動撰寫雙語新聞並於文末標註原始出處。",
+        "siteDesc": "SKYTICAL 提供臺灣與全球航空新聞、即時航空快訊、航班與機場營運、飛安及航空產業動態，所有報導均附可追溯資料來源。",
+        "articleByline": "SKYTICAL 編輯系統",
+        "articleBylineLabel": "發布者",
+        "publishedLabel": "發布",
+        "modifiedLabel": "更新",
+        "sourceTimeLabel": "來源時間",
+        "metaColon": "：",
+        "topicKicker": "Aviation Topics",
+        "topicCount": "則相關新聞",
+        "topicNavLabel": "航空新聞主題",
+        "policyLink": "編輯、更正與聯絡",
         "awaiting": "等待首次管線執行",
         "lastBuild": "最後建置",
         "aggNote": "純聚合模式：顯示來源原文標題，點擊前往原始報導",
@@ -287,7 +298,17 @@ L = {
         "themeOpts": ["Light", "Dark"],
         # production-only keys (not in the design dictionary)
         "siteName": "SKYTICAL",
-        "siteDesc": "A fully automated aviation news aggregator: trusted sources fetched hourly, bilingual stories written automatically, every original source credited.",
+        "siteDesc": "SKYTICAL covers Taiwan and global aviation news, breaking updates, airline and airport operations, safety and the aviation industry, with traceable sources.",
+        "articleByline": "SKYTICAL Editorial System",
+        "articleBylineLabel": "Published by",
+        "publishedLabel": "Published",
+        "modifiedLabel": "Updated",
+        "sourceTimeLabel": "Source time",
+        "metaColon": ": ",
+        "topicKicker": "Aviation Topics",
+        "topicCount": "related stories",
+        "topicNavLabel": "Aviation news topics",
+        "policyLink": "Editorial, corrections and contact",
         "awaiting": "Awaiting first pipeline run",
         "lastBuild": "Last build",
         "aggNote": "Aggregation mode: original source headlines, linking to the original stories",
@@ -300,6 +321,129 @@ CATS = {
     "biz": {"zh": "商業", "en": "Business"},
     "ops": {"zh": "營運", "en": "Operations"},
     "mil": {"zh": "軍事", "en": "Military"},
+}
+
+# Permanent, crawlable topic hubs.  These turn the home-page filters into
+# durable landing pages for common Taiwan aviation-news search intents.
+TOPICS = {
+    "taiwan-aviation": {
+        "cats": None,
+        "terms": (
+            "台灣", "臺灣", "桃園", "松山", "高雄", "臺中", "台中",
+            "中華航空", "華航", "長榮航空", "星宇航空", "台灣虎航",
+            "Taiwan", "Taoyuan", "Taipei", "Songshan", "Kaohsiung",
+            "China Airlines", "EVA Air", "STARLUX", "Tigerair Taiwan",
+            "TPE", "TSA", "KHH", "RMQ",
+        ),
+        "zh": {
+            "label": "臺灣航空",
+            "title": "臺灣航空新聞",
+            "description": "彙整臺灣航空新聞、國籍航空公司、桃園與松山等機場、航班異動、飛安及民航政策的最新報導。",
+            "intro": "追蹤華航、長榮、星宇、台灣虎航，以及桃園、松山、高雄等臺灣機場的重要消息與航班影響。",
+        },
+        "en": {
+            "label": "Taiwan Aviation",
+            "title": "Taiwan Aviation News",
+            "description": "Latest Taiwan aviation news covering local airlines, airports, flight disruptions, safety and civil aviation policy.",
+            "intro": "Coverage of Taiwan airlines and airports, including China Airlines, EVA Air, STARLUX, Tigerair Taiwan, Taoyuan, Songshan and Kaohsiung.",
+        },
+    },
+    "flight-safety": {
+        "cats": ("safety",), "terms": (),
+        "zh": {"label": "飛安事件", "title": "飛安與航空事故新聞",
+               "description": "全球飛安新聞、航空事故、嚴重事件、返航與緊急狀況的最新可追溯報導。",
+               "intro": "整理事故調查機關、民航主管機關與可信來源發布的飛安事件及後續調查進度。"},
+        "en": {"label": "Flight Safety", "title": "Flight Safety and Accident News",
+               "description": "Traceable reporting on aviation safety, accidents, serious incidents, diversions and emergencies worldwide.",
+               "intro": "Updates from accident investigators, civil aviation authorities and other traceable aviation sources."},
+    },
+    "airline-industry": {
+        "cats": ("biz",), "terms": (),
+        "zh": {"label": "航空產業", "title": "航空公司與航空產業新聞",
+               "description": "航空公司、飛機製造商、機隊、航線、訂單與航空產業市場的最新新聞。",
+               "intro": "掌握航空公司營運策略、機隊與訂單、製造商交付及全球航空市場變化。"},
+        "en": {"label": "Airline Industry", "title": "Airline and Aviation Industry News",
+               "description": "Latest news on airlines, aircraft manufacturers, fleets, routes, orders and the global aviation market.",
+               "intro": "Airline strategy, fleet and order developments, aircraft deliveries and aviation-market updates."},
+    },
+    "flight-airport-operations": {
+        "cats": ("ops",), "terms": (),
+        "zh": {"label": "航班與機場", "title": "航班與機場營運新聞",
+               "description": "航班延誤、取消、改道、機場營運、新航線與航空公司班表異動的最新新聞。",
+               "intro": "追蹤航班異動、機場作業、新航線、班表及天候對航空運輸的影響。"},
+        "en": {"label": "Flights and Airports", "title": "Flight and Airport Operations News",
+               "description": "Latest news on flight delays, cancellations, diversions, airport operations, new routes and schedule changes.",
+               "intro": "Flight disruptions, airport operations, route launches, schedule changes and weather impacts."},
+    },
+    "aviation-regulation": {
+        "cats": ("reg",), "terms": (),
+        "zh": {"label": "航空法規", "title": "航空法規與民航政策新聞",
+               "description": "臺灣與國際航空法規、民航政策、適航指令、認證及主管機關公告的最新消息。",
+               "intro": "彙整民航主管機關、國際組織與航空安全機構的重要規範及政策變化。"},
+        "en": {"label": "Regulation", "title": "Aviation Regulation and Policy News",
+               "description": "Latest aviation regulation, civil aviation policy, airworthiness, certification and authority updates.",
+               "intro": "Regulatory and policy developments from civil aviation authorities, international bodies and safety agencies."},
+    },
+    "military-aviation": {
+        "cats": ("mil",), "terms": (),
+        "zh": {"label": "軍事航空", "title": "軍事航空新聞",
+               "description": "臺灣與全球軍事航空、軍機動態、國防航空計畫及相關空域消息。",
+               "intro": "聚焦與航空及空域直接相關的軍機、國防航空計畫與官方通報。"},
+        "en": {"label": "Military Aviation", "title": "Military Aviation News",
+               "description": "Taiwan and global military aviation, aircraft activity, defence aviation programs and airspace updates.",
+               "intro": "Officially sourced coverage of military aircraft, defence aviation programs and relevant airspace activity."},
+    },
+}
+
+EDITORIAL_POLICY = {
+    "zh": {
+        "kicker": "Transparency",
+        "title": "編輯、更正與聯絡政策",
+        "description": "SKYTICAL 的新聞來源、AI 自動化、編輯責任、更正流程與聯絡管道。",
+        "intro": "SKYTICAL 是航空新聞與公開資料彙整服務。本頁說明內容如何產生、如何標註來源，以及讀者如何提出更正。",
+        "sections": [
+            {"title": "發布者與編輯責任", "body": [
+                "本站以 SKYTICAL 名義發布內容。文章可能由自動化與 AI 輔助系統整理，並在文末揭露使用方式；模型本身不被列為新聞來源。",
+                "各篇文章均保留可開啟的原始資料來源。涉及航班操作、法規、事故調查或緊急狀況時，應以主管機關、航空公司、機場或調查單位的最新公告為準。",
+            ]},
+            {"title": "來源與更新", "body": [
+                "優先採用民航主管機關、事故調查機構、國際航空組織、航空公司與機場等可追溯來源；其他媒體內容用於補充時，同樣保留出處。",
+                "文章顯示首次發布時間；內容實質更新時會保留修改時間。網站不會只為製造新鮮感而任意更改發布日期。",
+            ]},
+            {"title": "更正政策", "body": [
+                "若標題、時間、航班、機型、地點、引述或其他事實有誤，SKYTICAL 會依可驗證來源修正、補充或撤回內容。重要變更應反映於文章內容與最後修改時間。",
+                "提出更正時，請附上文章網址、需要修正的段落、建議內容及可驗證來源。",
+            ]},
+            {"title": "聯絡方式", "body": [
+                "目前公開聯絡與更正管道為 SKYTICAL 的 GitHub Issues。請勿在公開表單提交個人資料、訂位紀錄、證件、付款資料或其他敏感內容。",
+            ]},
+        ],
+        "contactLabel": "提出內容更正或聯絡 SKYTICAL",
+    },
+    "en": {
+        "kicker": "Transparency",
+        "title": "Editorial, Corrections and Contact Policy",
+        "description": "How SKYTICAL handles sources, AI-assisted automation, editorial responsibility, corrections and reader contact.",
+        "intro": "SKYTICAL is an aviation-news and public-data compilation service. This page explains how stories are produced, sourced and corrected.",
+        "sections": [
+            {"title": "Publisher and editorial responsibility", "body": [
+                "Content is published under the SKYTICAL name. Stories may be prepared with automation and AI assistance, disclosed at the end of each article; a model is never treated as a news source.",
+                "Every article retains links to its underlying sources. For flight operations, regulation, accident investigation or emergencies, the latest notice from the responsible authority, airline, airport or investigator prevails.",
+            ]},
+            {"title": "Sources and updates", "body": [
+                "SKYTICAL prioritizes traceable civil aviation authorities, accident investigators, international aviation bodies, airlines and airports. Supplemental reporting also retains attribution.",
+                "Articles show their original publication time and carry a modified time after substantive updates. Dates are not changed merely to make old material appear new.",
+            ]},
+            {"title": "Corrections", "body": [
+                "When a headline, time, flight, aircraft type, location, quotation or other fact is wrong, SKYTICAL may correct, expand or withdraw the material using verifiable sources. Material changes should be reflected in the story and its modified time.",
+                "A correction request should include the article URL, the passage at issue, the proposed correction and a verifiable source.",
+            ]},
+            {"title": "Contact", "body": [
+                "SKYTICAL currently accepts public contact and correction requests through GitHub Issues. Do not submit personal information, booking records, identity documents, payment details or other sensitive material in a public issue.",
+            ]},
+        ],
+        "contactLabel": "Request a correction or contact SKYTICAL",
+    },
 }
 SEV = {
     "acc": {"zh": "事故", "en": "Accident", "cls": "tag-accent"},
@@ -708,6 +852,11 @@ FOOTER_SOURCES = [{"name": SOURCES[k]["name"], "url": SOURCES[k]["url"]}
 
 FAVICON = f"{BASE_PATH}/assets/skytical-mark.svg?v=20260810-clean-mark"
 
+SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
+NEWS_NS = "http://www.google.com/schemas/sitemap-news/0.9"
+ET.register_namespace("", SITEMAP_NS)
+ET.register_namespace("news", NEWS_NS)
+
 
 # ── small helpers ────────────────────────────────────────────────────────────
 
@@ -816,6 +965,16 @@ def page_url(lang: str, sub: str) -> str:
     return f"{BASE_PATH}/{'en/' if lang == 'en' else ''}{sub}"
 
 
+def absolute_page_url(lang: str, sub: str) -> str:
+    return SITE_ORIGIN + page_url(lang, sub)
+
+
+def iso_timestamp(dt) -> str:
+    """Stable W3C timestamp for structured data and XML sitemaps."""
+    return (dt.astimezone(timezone.utc).isoformat(timespec="seconds")
+            .replace("+00:00", "Z"))
+
+
 # ── data loading / preparation ───────────────────────────────────────────────
 
 # Article-footer model credit: writer id -> short public model name.
@@ -882,6 +1041,13 @@ def prep_article(raw):
     except (ValueError, TypeError):
         return None
     dt = publication_dt
+    modified_dt = publication_dt
+    if raw.get("updatedUtc"):
+        try:
+            modified_dt = max(publication_dt,
+                              parse_iso(str(raw["updatedUtc"])))
+        except (ValueError, TypeError):
+            pass
     if raw.get("sortUtc"):
         try:
             dt = parse_iso(str(raw["sortUtc"]))
@@ -943,6 +1109,8 @@ def prep_article(raw):
         except (ValueError, TypeError):
             pass
     tpe = display_dt.astimezone(TPE)
+    publication_tpe = publication_dt.astimezone(TPE)
+    modified_tpe = modified_dt.astimezone(TPE)
     today_tpe = now_utc().astimezone(TPE).date()
     # Date-only source stamps (FAA/CAA give no clock time -> 00:00Z) must
     # not render as a precise-looking "08:00" TPE: show the date instead.
@@ -958,6 +1126,14 @@ def prep_article(raw):
     return {
         "id": art_id,
         "dt": dt,
+        "published_dt": publication_dt,
+        "modified_dt": modified_dt,
+        "published_iso": iso_timestamp(publication_dt),
+        "modified_iso": iso_timestamp(modified_dt),
+        "published_meta_ts": (
+            f"{publication_tpe:%Y-%m-%d} {clock_12(publication_tpe)} UTC+8"),
+        "modified_meta_ts": (
+            f"{modified_tpe:%Y-%m-%d} {clock_12(modified_tpe)} UTC+8"),
         "cat": cat,
         "tag_class": TAGCLS.get(cat, "tag-neutral"),
         "image": image,
@@ -1086,6 +1262,10 @@ def art_view(a, lang: str):
         sources=a["sources"], url=page_url(lang, f"news/{a['id']}/"),
         writer_model=a["writer_model"],
         article_format=a["article_format"],
+        published_iso=a["published_iso"],
+        modified_iso=a["modified_iso"],
+        published_meta_ts=a["published_meta_ts"],
+        modified_meta_ts=a["modified_meta_ts"],
         external=False,
     )
     return v
@@ -1095,6 +1275,34 @@ def normalize_search_text(value) -> str:
     """Normalize human-entered/search-index text without losing CJK words."""
     text = unicodedata.normalize("NFKC", str(value or "")).casefold()
     return re.sub(r"[^\w]+", " ", text, flags=re.UNICODE).strip()
+
+
+def topic_articles(articles, slug: str):
+    """Return articles belonging to a durable editorial topic hub."""
+    topic = TOPICS[slug]
+    cats = topic.get("cats")
+    if cats:
+        return [article for article in articles if article["cat"] in cats]
+
+    terms = topic.get("terms") or ()
+    matched = []
+    for article in articles:
+        text = " ".join([
+            article["zh"]["title"], article["zh"]["summary"],
+            *article["zh"]["body"], article["en"]["title"],
+            article["en"]["summary"], *article["en"]["body"],
+        ]).casefold()
+        for term in terms:
+            needle = term.casefold()
+            if re.fullmatch(r"[a-z0-9 ]+", needle):
+                if re.search(rf"(?<![a-z0-9]){re.escape(needle)}(?![a-z0-9])",
+                             text):
+                    matched.append(article)
+                    break
+            elif needle in text:
+                matched.append(article)
+                break
+    return matched
 
 
 def load_search_alias_groups() -> list[tuple[str, ...]]:
@@ -2366,8 +2574,10 @@ def render_manual_workbench(env, build) -> int:
 
 # ── rendering ────────────────────────────────────────────────────────────────
 
-def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=True):
+def base_ctx(lang, page, sub, *, title, description, ticker, build,
+             hreflang=True, alternate_languages=None):
     t = dict(L[lang])
+    alternate_languages = set(alternate_languages or ("zh", "en"))
     prompts = list(header_search_placeholders(lang))
     t["headerSearchPlaceholders"] = prompts
     t["headerSearchPlaceholder"] = prompts[0]
@@ -2378,15 +2588,23 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=Tru
     return {
         "lang": lang, "t": t, "base": BASE_PATH, "favicon": FAVICON,
         "asset_version": ASSET_VERSION,
-        "html_lang": "zh-Hant" if lang == "zh" else "en",
+        "html_lang": "zh-Hant-TW" if lang == "zh" else "en",
         "title": title, "description": description,
         "zh_url": page_url("zh", sub), "en_url": page_url("en", sub),
         "zh_abs_url": SITE_ORIGIN + page_url("zh", sub),
         "en_abs_url": SITE_ORIGIN + page_url("en", sub),
+        "has_zh_alternate": "zh" in alternate_languages,
+        "has_en_alternate": "en" in alternate_languages,
+        "x_default_abs_url": SITE_ORIGIN + page_url(
+            "zh" if "zh" in alternate_languages else "en", sub),
         "self_abs_url": SITE_ORIGIN + page_url(lang, sub),
         "social_image_abs_url": (
             f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-social.png?v=20260810-clean-mark"
         ),
+        "social_image_alt": "SKYTICAL — SKYLINE TO AVIATION NEWS",
+        "og_type": "website",
+        "structured_data": None,
+        "robots_meta": "index,follow,max-image-preview:large",
         "hreflang": hreflang,
         "home_url": page_url(lang, ""),
         "search_url": page_url(lang, "search/"),
@@ -2395,7 +2613,14 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build, hreflang=Tru
             if BASE_PATH else "/search-aliases.json"
         ),
         "radar_url": page_url(lang, "radar/"),
+        "about_url": page_url(lang, "about/"),
+        "policy_url": page_url(lang, "editorial-policy/"),
         "changelog_url": page_url(lang, "changelog/"),
+        "topic_links": [
+            {"label": topic[lang]["label"],
+             "url": page_url(lang, f"topics/{slug}/")}
+            for slug, topic in TOPICS.items()
+        ],
         "nav": [{"label": t["nav"][i], "url": page_url(lang, s), "active": page == p}
                 for i, (p, s) in enumerate(nav_defs)],
         "ticker_items": ticker or [], "build": build,
@@ -2408,6 +2633,150 @@ def render(env, template, out_rel, ctx):
     out = SITE_DIR / out_rel
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8", newline="\n")
+
+
+def website_structured_data(lang: str) -> dict:
+    """Homepage entities used by Google for the site name and publisher."""
+    home = absolute_page_url(lang, "")
+    return {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": f"{SITE_ORIGIN}{BASE_PATH}/#organization",
+                "name": "SKYTICAL",
+                "url": home,
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-mark.svg",
+                },
+            },
+            {
+                "@type": "WebSite",
+                "@id": f"{home}#website",
+                "url": home,
+                "name": "SKYTICAL",
+                "alternateName": "SKYLINE TO AVIATION NEWS",
+                "description": L[lang]["siteDesc"],
+                "inLanguage": "zh-Hant-TW" if lang == "zh" else "en",
+                "publisher": {
+                    "@id": f"{SITE_ORIGIN}{BASE_PATH}/#organization",
+                },
+            },
+        ],
+    }
+
+
+def article_structured_data(lang: str, article: dict) -> dict:
+    """Google-supported NewsArticle fields, grounded in rendered content."""
+    article_url = absolute_page_url(lang, f"news/{article['id']}/")
+    publisher_id = f"{SITE_ORIGIN}{BASE_PATH}/#organization"
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "@id": f"{article_url}#article",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": article_url,
+        },
+        "url": article_url,
+        "headline": article["title"],
+        "description": article["summary"] or L[lang]["siteDesc"],
+        "datePublished": article["published_iso"],
+        "dateModified": article["modified_iso"],
+        "inLanguage": "zh-Hant-TW" if lang == "zh" else "en",
+        "isAccessibleForFree": True,
+        "articleSection": article["cat_label"],
+        "author": {
+            "@type": "Organization",
+            "name": "SKYTICAL",
+            "url": absolute_page_url(lang, "about/"),
+        },
+        "publisher": {
+            "@type": "Organization",
+            "@id": publisher_id,
+            "name": "SKYTICAL",
+            "url": absolute_page_url(lang, ""),
+            "logo": {
+                "@type": "ImageObject",
+                "url": f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-mark.svg",
+            },
+        },
+    }
+    if article.get("image"):
+        schema["image"] = [article["image"]["url"]]
+    return schema
+
+
+def _write_xml(path: Path, root: ET.Element) -> None:
+    tree = ET.ElementTree(root)
+    ET.indent(tree, space="  ")
+    tree.write(path, encoding="utf-8", xml_declaration=True,
+               short_empty_elements=True)
+
+
+def write_search_discovery_files(articles, briefings, now) -> None:
+    """Write generic/news sitemaps plus a crawler policy for the public site."""
+    urlset = ET.Element(ET.QName(SITEMAP_NS, "urlset"))
+    seen = set()
+
+    def add_url(lang: str, sub: str, modified=None) -> None:
+        loc = absolute_page_url(lang, sub)
+        if loc in seen:
+            return
+        seen.add(loc)
+        node = ET.SubElement(urlset, ET.QName(SITEMAP_NS, "url"))
+        ET.SubElement(node, ET.QName(SITEMAP_NS, "loc")).text = loc
+        if modified is not None:
+            ET.SubElement(node, ET.QName(SITEMAP_NS, "lastmod")).text = (
+                iso_timestamp(modified))
+
+    public_sections = ("", "briefings/", "radar/", "incidents/", "sources/",
+                       "about/", "editorial-policy/", "changelog/")
+    for lang in ("zh", "en"):
+        for sub in public_sections:
+            add_url(lang, sub)
+        for slug in TOPICS:
+            add_url(lang, f"topics/{slug}/")
+    for briefing in briefings:
+        modified = _tpe_dt(briefing.get("generated_at")
+                           or briefing.get("cutoff_time"))
+        for lang in ("zh", "en"):
+            add_url(lang, f"briefings/{briefing.get('briefing_id')}/",
+                    modified)
+    for article in articles:
+        for lang in article["available_languages"]:
+            add_url(lang, f"news/{article['id']}/", article["modified_dt"])
+    _write_xml(SITE_DIR / "sitemap.xml", urlset)
+
+    news_urlset = ET.Element(ET.QName(SITEMAP_NS, "urlset"))
+    cutoff = now - timedelta(days=2)
+    for article in articles:
+        if article["published_dt"] < cutoff:
+            continue
+        for lang in article["available_languages"]:
+            url_node = ET.SubElement(news_urlset, ET.QName(SITEMAP_NS, "url"))
+            ET.SubElement(url_node, ET.QName(SITEMAP_NS, "loc")).text = (
+                absolute_page_url(lang, f"news/{article['id']}/"))
+            news = ET.SubElement(url_node, ET.QName(NEWS_NS, "news"))
+            publication = ET.SubElement(
+                news, ET.QName(NEWS_NS, "publication"))
+            ET.SubElement(publication, ET.QName(NEWS_NS, "name")).text = (
+                "SKYTICAL")
+            ET.SubElement(publication, ET.QName(NEWS_NS, "language")).text = (
+                "zh-tw" if lang == "zh" else "en")
+            ET.SubElement(news, ET.QName(
+                NEWS_NS, "publication_date")).text = article["published_iso"]
+            ET.SubElement(news, ET.QName(
+                NEWS_NS, "title")).text = article[lang]["title"]
+    _write_xml(SITE_DIR / "news-sitemap.xml", news_urlset)
+
+    sitemap_url = f"{SITE_ORIGIN}{BASE_PATH}/sitemap.xml"
+    news_sitemap_url = f"{SITE_ORIGIN}{BASE_PATH}/news-sitemap.xml"
+    (SITE_DIR / "robots.txt").write_text(
+        "User-agent: *\nAllow: /\n\n"
+        f"Sitemap: {sitemap_url}\nSitemap: {news_sitemap_url}\n",
+        encoding="utf-8", newline="\n")
 
 
 def main() -> int:
@@ -2506,8 +2875,12 @@ def main() -> int:
                 (bv for bv in bviews
                  if bv["id"] == latest_row.get("briefing_id")), None)
 
-        ctx = base_ctx(lang, "home", "", title=t["siteName"],
+        home_title = ("SKYTICAL 航空新聞｜臺灣與全球即時航空快訊"
+                      if lang == "zh"
+                      else "SKYTICAL Aviation News | Taiwan and Global Updates")
+        ctx = base_ctx(lang, "home", "", title=home_title,
                        description=t["siteDesc"], ticker=ticker, build=build)
+        ctx["structured_data"] = website_structured_data(lang)
         ctx.update(hero=hero, feed=feed, flashes=fl, agg=agg,
                    source_status=source_status_view(sources, now),
                    stats=sv["tiles"], otp=sv["otp"], fleet=sv["fleet"],
@@ -2517,10 +2890,24 @@ def main() -> int:
         render(env, "home.html", rel_path(lang, "index.html"), ctx)
         pages += 1
 
+        for slug, topic in TOPICS.items():
+            topic_rows = topic_articles(lang_articles, slug)
+            topic_views = [art_view(article, lang) for article in topic_rows]
+            copy = topic[lang]
+            ctx = base_ctx(
+                lang, "topics", f"topics/{slug}/",
+                title=f"{copy['title']}｜{t['siteName']}",
+                description=copy["description"], ticker=ticker, build=build)
+            ctx.update(topic=copy, articles=topic_views, count=len(topic_views))
+            render(env, "topic.html",
+                   rel_path(lang, f"topics/{slug}/index.html"), ctx)
+            pages += 1
+
         ctx = base_ctx(
             lang, "search", "search/",
             title=f"{t['siteName']} — {t['searchTitle']}",
             description=t["searchSub"], ticker=ticker, build=build)
+        ctx["robots_meta"] = "noindex,follow"
         ctx["search_index_url"] = (
             f"{BASE_PATH}/search-index.json"
             if BASE_PATH else "/search-index.json")
@@ -2616,9 +3003,16 @@ def main() -> int:
         for a, v in zip(lang_articles, views):
             try:
                 ctx = base_ctx(lang, "home", f"news/{a['id']}/",
-                               title=f"{t['siteName']} — {v['title']}",
+                               title=f"{v['title']}｜{t['siteName']}",
                                description=v["summary"] or t["siteDesc"],
-                               ticker=ticker, build=build)
+                               ticker=ticker, build=build,
+                               alternate_languages=a["available_languages"])
+                ctx["og_type"] = "article"
+                if v.get("image"):
+                    ctx["social_image_abs_url"] = v["image"]["url"]
+                    ctx["social_image_alt"] = (
+                        v["image"].get("subject") or v["title"])
+                ctx["structured_data"] = article_structured_data(lang, v)
                 ctx["a"] = v
                 render(env, "article.html",
                        rel_path(lang, f"news/{a['id']}/index.html"), ctx)
@@ -2650,6 +3044,18 @@ def main() -> int:
         render(env, "about.html", rel_path(lang, "about/index.html"), ctx)
         pages += 1
 
+        policy = EDITORIAL_POLICY[lang]
+        ctx = base_ctx(
+            lang, "policy", "editorial-policy/",
+            title=f"{policy['title']}｜{t['siteName']}",
+            description=policy["description"], ticker=ticker, build=build)
+        ctx.update(policy=policy,
+                   contact_url=("https://github.com/nnneeeooo-nnneeeooo/"
+                                "avwire/issues/new"))
+        render(env, "editorial-policy.html",
+               rel_path(lang, "editorial-policy/index.html"), ctx)
+        pages += 1
+
         ctx = base_ctx(
             lang, "changelog", "changelog/",
             title=f"{t['siteName']} — {t['changeTitle']}",
@@ -2667,8 +3073,11 @@ def main() -> int:
     ctx = base_ctx("zh", "none", "", title=f"{L['zh']['siteName']} — 404",
                    description=L["zh"]["siteDesc"], ticker="", build=build,
                    hreflang=False)
+    ctx["robots_meta"] = "noindex,follow"
     render(env, "404.html", "404.html", ctx)
     pages += 1
+
+    write_search_discovery_files(articles, briefings, now)
 
     print(f"build: {len(articles)} articles, {len(flashes)} flashes, "
           f"{len(incidents)} incidents, {pages} pages, {failed} failed "
