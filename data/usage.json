@@ -1,11 +1,11 @@
 {
-  "updatedUtc": "2026-08-11T11:23Z",
+  "updatedUtc": "2026-08-11T11:28Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 615,
-      "inputTokens": 2389653,
-      "outputTokens": 1548427,
+      "calls": 616,
+      "inputTokens": 2395615,
+      "outputTokens": 1549991,
       "unknownCalls": 175
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
@@ -223,9 +223,9 @@
       "outputTokens": 841767
     },
     "2026-08-11": {
-      "calls": 182,
-      "inputTokens": 540535,
-      "outputTokens": 612582
+      "calls": 183,
+      "inputTokens": 546497,
+      "outputTokens": 614146
     }
   },
   "recentRuns": [
@@ -131846,5 +131846,82 @@
       }
     }
   ],
-  "copilotEvents": []
+  "copilotEvents": [
+    {
+      "requestId": "7e8b77ff9a7406b359ec7be35a0212ca",
+      "route": "/api/admin/copilot/ask",
+      "feature": "skytical-copilot",
+      "event": "main_llm_request",
+      "model": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+      "inputTokens": 5962,
+      "outputTokens": 1564,
+      "totalTokens": 7526,
+      "estimatedCostUsd": 0.00660397,
+      "latencyMs": 44465,
+      "status": "success",
+      "guardrailResult": "allowed",
+      "ragUsed": true,
+      "externalSearchUsed": false,
+      "sourceCount": 5,
+      "userHash": "a030e119bff3c39721cc6768",
+      "createdAt": "2026-08-11T11:28Z"
+    },
+    {
+      "requestId": "7e8b77ff9a7406b359ec7be35a0212ca",
+      "route": "/api/admin/copilot/ask",
+      "feature": "skytical-copilot",
+      "event": "successful_answer",
+      "model": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+      "inputTokens": 5962,
+      "outputTokens": 1564,
+      "totalTokens": 7526,
+      "estimatedCostUsd": 0.00660397,
+      "latencyMs": 48548,
+      "status": "success",
+      "guardrailResult": "allowed",
+      "ragUsed": true,
+      "externalSearchUsed": false,
+      "sourceCount": 5,
+      "userHash": "a030e119bff3c39721cc6768",
+      "createdAt": "2026-08-11T11:28Z"
+    },
+    {
+      "requestId": "7e8b77ff9a7406b359ec7be35a0212ca",
+      "route": "/api/admin/copilot/ask",
+      "feature": "skytical-copilot",
+      "event": "copilot_request",
+      "model": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0,
+      "estimatedCostUsd": 0.0,
+      "latencyMs": 0,
+      "status": "received",
+      "guardrailResult": "allowed",
+      "ragUsed": false,
+      "externalSearchUsed": false,
+      "sourceCount": 0,
+      "userHash": "a030e119bff3c39721cc6768",
+      "createdAt": "2026-08-11T11:27Z"
+    },
+    {
+      "requestId": "7e8b77ff9a7406b359ec7be35a0212ca",
+      "route": "/api/admin/copilot/ask",
+      "feature": "skytical-copilot",
+      "event": "rag_search",
+      "model": "lexical-v1",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0,
+      "estimatedCostUsd": 0.0,
+      "latencyMs": 931,
+      "status": "success",
+      "guardrailResult": "allowed",
+      "ragUsed": true,
+      "externalSearchUsed": false,
+      "sourceCount": 5,
+      "userHash": "a030e119bff3c39721cc6768",
+      "createdAt": "2026-08-11T11:27Z"
+    }
+  ]
 }
