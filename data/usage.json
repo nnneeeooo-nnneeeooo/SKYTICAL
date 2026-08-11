@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-11T11:41Z",
+  "updatedUtc": "2026-08-11T11:48Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -229,6 +229,82 @@
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-11T11:48Z",
+      "finishedUtc": "2026-08-11T11:48Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260811-1148-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "臺灣交通要聞",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 652,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 1330
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-11T11:48Z",
+      "finishedUtc": "2026-08-11T11:48Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260811-1148-2",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 658,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 1322
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-11T11:37Z",
       "finishedUtc": "2026-08-11T11:37Z",
@@ -131400,101 +131476,6 @@
         "fabricationCheck": null,
         "articleBuild": null,
         "total": 1449368
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-01T20:13Z",
-      "finishedUtc": "2026-08-01T20:13Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260801-2012-2",
-      "eventId": null,
-      "sourceCount": 2,
-      "primarySource": "臺灣交通要聞",
-      "result": "rejected",
-      "articleId": null,
-      "finalStatus": "reject",
-      "finalModel": "gemini:gemini-3.6-flash",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 354,
-        "promptAssembly": 0,
-        "drafting": 16940,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 20158
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-08-01T20:13Z",
-          "durationMs": 16940,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 16939,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-01T20:13Z",
-      "finishedUtc": "2026-08-01T20:13Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260801-2012-4",
-      "eventId": null,
-      "sourceCount": 6,
-      "primarySource": "NTSB",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 342,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 19954
       },
       "attempts": [],
       "resourceUsage": {
