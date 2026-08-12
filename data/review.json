@@ -1,5 +1,179 @@
 [
   {
+    "id": "g-20260812-1246-3",
+    "queuedUtc": "2026-08-12T12:46Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.5-flash",
+    "decisionReason": "The story reports a major contract award worth up to $472 million, which represents a significant financial and order claim.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The US Army awarded RTX’s Collins Aerospace a contract worth up to $472 million.",
+        "sourceQuote": "The US Army has awarded RTX’s Collins Aerospace a contract worth up to $472 million",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-army-awards-collins-aerospace-472m-deal-to-modernize-chinook-fleet",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The contract is to provide engineering services supporting the modernization and sustainment of the CH-47 Chinook helicopter fleet.",
+        "sourceQuote": "to provide engineering services supporting the modernization and sustainment of the CH-47 Chinook helicopter fleet.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-army-awards-collins-aerospace-472m-deal-to-modernize-chinook-fleet",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The engineering services will focus on avionics upgrades to integrate new capabilities, address aging systems, and strengthen avionics architecture.",
+        "sourceQuote": "The engineering services will focus on avionics upgrades designed to help the Army integrate new capabilities more efficiently, address aging systems, and strengthen the aircraft’s avionics architecture",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-army-awards-collins-aerospace-472m-deal-to-modernize-chinook-fleet",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Work under the contract will take place in Huntsville, Alabama, and Cedar Rapids, Iowa.",
+        "sourceQuote": "Work under the contract will take place in Huntsville, Alabama, and Cedar Rapids, Iowa.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-army-awards-collins-aerospace-472m-deal-to-modernize-chinook-fleet",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story reports a major contract award worth up to $472 million, which represents a significant financial and order claim.",
+      "cat": "mil",
+      "zh": {
+        "title": "美陸軍授與柯林斯航太4.72億美元 Chinook 升級合約",
+        "summary": "柯林斯航太獲美陸軍合約，為其CH-47機隊提供航電系統升級服務。",
+        "body": [
+          "美國陸軍已授予RTX旗下的柯林斯航太（Collins Aerospace）一份價值高達4.72億美元的合約，將為CH-47「契努克」（Chinook）直升機機隊提供工程服務，以支持該機隊的現代化與維持。這項工程服務將專注於航電系統的升級，旨在協助美陸軍更有效率地整合新功能、解決系統老化問題，並強化直升機的航電架構。",
+          "根據AeroTime報導，此合約相關工作將在阿拉巴馬州亨茨維爾（Huntsville）以及愛荷華州錫達拉皮茲（Cedar Rapids）進行。該計劃也旨在促進美陸軍更廣泛航空機隊的一致性，透過推動可應用於多種機型的開放式、可重複使用航電架構，簡化新技術的整合。"
+        ]
+      },
+      "en": {
+        "title": "US Army Awards Collins Aerospace $472M Deal to Modernize Chinook Fleet",
+        "summary": "Collins Aerospace secured a $472 million contract to modernize the US Army's Chinook helicopter fleet.",
+        "body": [
+          "The US Army has awarded RTX’s Collins Aerospace a contract worth up to $472 million to provide engineering services supporting the modernization and sustainment of the CH-47 Chinook helicopter fleet. These services will focus on avionics upgrades designed to integrate new capabilities, address aging systems, and strengthen the aircraft’s avionics architecture.",
+          "According to AeroTime, work under the contract will be conducted in Huntsville, Alabama, and Cedar Rapids, Iowa. The initiative also aims to support consistency across the Army’s broader aviation fleet by promoting open, reusable avionics architectures, which will simplify how new technology gets integrated and improve cost efficiency."
+        ]
+      },
+      "flash": {
+        "zh": "美陸軍授與柯林斯航太4.72億美元契努克直升機升級合約",
+        "en": "US Army awards Collins Aerospace $472M Chinook modernization contract",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The US Army awarded RTX’s Collins Aerospace a contract worth up to $472 million.",
+          "sourceQuote": "The US Army has awarded RTX’s Collins Aerospace a contract worth up to $472 million",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-army-awards-collins-aerospace-472m-deal-to-modernize-chinook-fleet",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The contract is to provide engineering services supporting the modernization and sustainment of the CH-47 Chinook helicopter fleet.",
+          "sourceQuote": "to provide engineering services supporting the modernization and sustainment of the CH-47 Chinook helicopter fleet.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-army-awards-collins-aerospace-472m-deal-to-modernize-chinook-fleet",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The engineering services will focus on avionics upgrades to integrate new capabilities, address aging systems, and strengthen avionics architecture.",
+          "sourceQuote": "The engineering services will focus on avionics upgrades designed to help the Army integrate new capabilities more efficiently, address aging systems, and strengthen the aircraft’s avionics architecture",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-army-awards-collins-aerospace-472m-deal-to-modernize-chinook-fleet",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Work under the contract will take place in Huntsville, Alabama, and Cedar Rapids, Iowa.",
+          "sourceQuote": "Work under the contract will take place in Huntsville, Alabama, and Cedar Rapids, Iowa.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-army-awards-collins-aerospace-472m-deal-to-modernize-chinook-fleet",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "US Army",
+          "RTX",
+          "Collins Aerospace"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "CH-47 Chinook",
+          "Chinook",
+          "CH-47"
+        ],
+        "airports": [],
+        "locations": [
+          "Huntsville",
+          "Alabama",
+          "Cedar Rapids",
+          "Iowa"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-12"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260812-1246-3",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "US Army awards Collins Aerospace $472M deal to modernize Chinook fleet",
+          "url": "https://www.aerotime.aero/articles/us-army-awards-collins-aerospace-472m-deal-to-modernize-chinook-fleet",
+          "publishedUtc": "2026-08-12T11:15Z",
+          "summary": "The US Army has awarded RTX’s Collins Aerospace a contract worth up to $472 million to provide engineering… The post US Army awards Collins Aerospace $472M deal to modernize Chinook fleet appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260812-1053-1",
     "queuedUtc": "2026-08-12T10:53Z",
     "approve": false,
@@ -9910,348 +10084,6 @@
                 "source_quote": "The airline has not been able to identify for certain what caused the smoke.",
                 "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
                 "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260809-0948-8",
-    "queuedUtc": "2026-08-09T09:48Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report relies on media accounts and unconfirmed attribution regarding the policy reason for omitting Israeli-manufactured equipment on the government aircraft.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Ireland's new €53 million government aircraft was reportedly delivered without the FalconEye enhanced-vision system.",
-        "sourceQuote": "Ireland’s new €53 million government aircraft has reportedly been delivered without an enhanced-vision system",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Irish newspaper The Journal reported the equipment was omitted from the Dassault Falcon 6X because it is manufactured by Israeli company Elbit Systems.",
-        "sourceQuote": "reported that the equipment was not included on the Dassault Falcon 6X aircraft – which will be used for government business – because it is manufactured by an Israeli company.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Ireland announced a policy in August 2024 under which it would not purchase equipment containing Israeli-manufactured products.",
-        "sourceQuote": "policy announced in August 2024, when he was minister for defence and foreign affairs, under which Ireland would not purchase equipment containing Israeli-manufactured products.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The Irish Department of Defence stated in April that there are no current limits on the operational capability of the aircraft.",
-        "sourceQuote": "The Irish Department of Defence told the paper in April that “there are no current limits on the operational capability of the aircraft”.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "The Falcon 6X is operated by the Irish Air Corps from Casement Aerodrome at Baldonnel and replaces an ageing Learjet.",
-        "sourceQuote": "operated by the Irish Air Corps from Casement Aerodrome at Baldonnel.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "The Falcon 6X is powered by Pratt & Whitney PW812D engines and received certification from EASA and the FAA in August 2023.",
-        "sourceQuote": "The Falcon 6X is powered by Pratt & Whitney PW812D engines",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report relies on media accounts and unconfirmed attribution regarding the policy reason for omitting Israeli-manufactured equipment on the government aircraft.",
-      "cat": "ops",
-      "zh": {
-        "title": "愛爾蘭政府專機未配備FalconEye系統 據報因以色列裝備政策",
-        "summary": "據報導，愛爾蘭價值5300萬歐元的達梭獵鷹6X政府專機在交付時未安裝FalconEye增強視覺系統。媒體指出，該系統由以色列埃爾比特系統製造，因愛爾蘭不採購含以色列製造產品的政策而未列入規格。愛爾蘭國防部表示，目前該飛機的營運能力並未受限。",
-        "body": [
-          "據報導，愛爾蘭新接收的價值5300萬歐元達梭獵鷹6X（Dassault Falcon 6X）政府專機，交付時未裝設FalconEye增強視覺系統。該系統利用攝影機與感測器在惡劣天氣下輔助飛行員。",
-          "媒體報導指出該系統由以色列埃爾比特系統製造。愛爾蘭政府於2024年8月實施政策，規定不採購包含以色列製造產品的裝備。愛爾蘭國防部於4月表示，該飛機營運能力目前未受限制。",
-          "該飛機由愛爾蘭空軍於巴爾多奈爾凱斯門特飛行場營運，取代舊款Learjet專機。該機型搭載普惠（Pratt & Whitney）PW812D發動機，並於2023年8月獲得EASA與FAA認證。"
-        ]
-      },
-      "en": {
-        "title": "Ireland Government Falcon 6X Delivered Without FalconEye System Over Israeli Policy",
-        "summary": "Ireland's new €53 million Dassault Falcon 6X government aircraft has reportedly been delivered without the FalconEye enhanced-vision system. Media reports indicate the equipment was omitted because it is manufactured by Israeli firm Elbit Systems, conflicting with Ireland's August 2024 procurement policy restricting Israeli-manufactured products. The system uses cameras and sensors to assist flight crews during poor visibility, though its absence does not restrict landing capability. The Irish Department of Defence stated in April that the aircraft currently faces no operational limits. The Falcon 6X is operated by the Irish Air Corps from Casement Aerodrome at Baldonnel and replaces an ageing Learjet.",
-        "body": [
-          "Ireland’s new €53 million Dassault Falcon 6X government aircraft was reportedly delivered without the FalconEye enhanced-vision system. The system uses sensors and cameras to assist flight crews during poor visibility, though its absence does not prevent operations in fog.",
-          "Media reports stated the equipment was omitted because it is manufactured by Israeli firm Elbit Systems. Under a policy announced in August 2024, Ireland avoids purchasing equipment containing Israeli-manufactured products. The Irish Department of Defence stated in April that there are no operational limits on the aircraft.",
-          "The Falcon 6X is operated by the Irish Air Corps from Casement Aerodrome at Baldonnel, replacing an older Learjet. Powered by Pratt & Whitney PW812D engines, the aircraft received certification from EASA and the FAA in August 2023."
-        ]
-      },
-      "flash": {
-        "zh": "愛爾蘭新政府專機未配備FalconEye系統，據報因以色列裝備採購政策限制。",
-        "en": "Ireland's new government Falcon 6X delivered without FalconEye system due to Israeli equipment policy.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Ireland's new €53 million government aircraft was reportedly delivered without the FalconEye enhanced-vision system.",
-          "sourceQuote": "Ireland’s new €53 million government aircraft has reportedly been delivered without an enhanced-vision system",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Irish newspaper The Journal reported the equipment was omitted from the Dassault Falcon 6X because it is manufactured by Israeli company Elbit Systems.",
-          "sourceQuote": "reported that the equipment was not included on the Dassault Falcon 6X aircraft – which will be used for government business – because it is manufactured by an Israeli company.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Ireland announced a policy in August 2024 under which it would not purchase equipment containing Israeli-manufactured products.",
-          "sourceQuote": "policy announced in August 2024, when he was minister for defence and foreign affairs, under which Ireland would not purchase equipment containing Israeli-manufactured products.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The Irish Department of Defence stated in April that there are no current limits on the operational capability of the aircraft.",
-          "sourceQuote": "The Irish Department of Defence told the paper in April that “there are no current limits on the operational capability of the aircraft”.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "The Falcon 6X is operated by the Irish Air Corps from Casement Aerodrome at Baldonnel and replaces an ageing Learjet.",
-          "sourceQuote": "operated by the Irish Air Corps from Casement Aerodrome at Baldonnel.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "The Falcon 6X is powered by Pratt & Whitney PW812D engines and received certification from EASA and the FAA in August 2023.",
-          "sourceQuote": "The Falcon 6X is powered by Pratt & Whitney PW812D engines",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "Irish Air Corps",
-          "Irish Department of Defence",
-          "Elbit Systems",
-          "Dassault",
-          "EASA",
-          "FAA",
-          "The Journal"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Dassault Falcon 6X",
-          "Falcon 6X",
-          "Learjet"
-        ],
-        "airports": [
-          "Casement Aerodrome"
-        ],
-        "locations": [
-          "Ireland",
-          "Baldonnel",
-          "Dublin",
-          "Hong Kong",
-          "Los Angeles",
-          "Geneva",
-          "Middle East"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-05",
-          "August 2024",
-          "August 2023",
-          "April"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260809-0948-8",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Ireland’s €53m government aircraft lacks FalconEye system due to Israeli equipment policy News",
-          "url": "https://aerospaceglobalnews.com/news/ireland-falcon-6x-falconeye-israel/",
-          "publishedUtc": "2026-08-05T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/12/Irish-Dassault-Falcon-6x.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-1805-faa-announces-successful-counter-drone-e",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "archive predates source by 14 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 14 day(s) apart",
-            "event_date": "2026-07-22",
-            "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa...",
-            "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-            "facts": [
-              {
-                "claim": "FAA announced successful counter-drone efforts during FIFA World Cup 2026 with more than 700 drones seized.",
-                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026, With More Than 700 Drones Seized",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "Transportation Secretary Sean P. Duffy announced federal, state, and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
-                "source_quote": "Department of Transportation Secretary Sean P. Duffy announced that federal, state and local partners carried out the most comprehensive airspace security and drone mitigation effort in U.S. history during FIFA World Cup 2026.",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "The effort helped keep millions of fans safe.",
-                "source_quote": "Successful Counter-Drone Efforts Helped Keep Millions of Fans Safe During FIFA World Cup 2026",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              },
-              {
-                "claim": "More than 700 drones were seized.",
-                "source_quote": "With More Than 700 Drones Seized",
-                "source_url": "https://www.faa.gov/newsroom/successful-counter-drone-efforts-helped-keep-millions-fans-safe-during-fifa-world-cup-2026",
-                "source_name": "FAA — Successful Counter-Drone Efforts Helped Keep Millions of Fa..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
               }
             ]
           }
