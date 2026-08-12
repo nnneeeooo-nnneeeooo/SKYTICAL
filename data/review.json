@@ -1,5 +1,700 @@
 [
   {
+    "id": "g-20260812-1053-1",
+    "queuedUtc": "2026-08-12T10:53Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Joby Aviation's acquisition of Resonant Sciences involves a major $500 million financial transaction and corporate agreement subject to regulatory approval, requiring human review under financial_or_order_claim.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Joby Aviation announced on August 11, 2026, that it entered into a definitive agreement to acquire defense technology company Resonant Sciences for approximately $500 million.",
+        "sourceQuote": "Joby Aviation announced on August 11, 2026, that it has entered into a definitive agreement to acquire Resonant Sciences, a Dayton, Ohio-based defense technology company, for approximately $500 million.",
+        "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Joby plans to fund the acquisition with approximately $450 million in cash and $50 million in Joby common stock.",
+        "sourceQuote": "Joby plans to fund the acquisition with approximately $450 million in cash and $50 million in Joby common stock",
+        "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The transaction is expected to close in the first half of 2027, subject to regulatory approval.",
+        "sourceQuote": "The transaction is expected to close in the first half of 2027, subject to regulatory approval.",
+        "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Resonant Sciences will become Joby's dedicated defense business and continue operating under its own name led by CEO J. Micah North.",
+        "sourceQuote": "Upon closing, Resonant will become Joby’s dedicated defense business, continuing to operate under its own name and led by co-founder and CEO J. Micah North.",
+        "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Resonant Sciences is based in Dayton, Ohio, with approximately 250 employees developing radio frequency and mission systems for US national security customers.",
+        "sourceQuote": "Resonant, founded in 2015 and based in Dayton, Ohio, develops and manufactures radio-frequency, sensing and mission systems for US national security customers.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/joby-acquires-resonant-sciences-500m-defence/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Joby Aviation's acquisition of Resonant Sciences involves a major $500 million financial transaction and corporate agreement subject to regulatory approval, requiring human review under financial_or_order_claim.",
+      "cat": "biz",
+      "zh": {
+        "title": "Joby以5億美元收購國防科技公司Resonant",
+        "summary": "Joby以5億美元收購國防科技公司Resonant，預計2027年完成。",
+        "body": [
+          "Joby Aviation於2026年8月11日宣布，已達成最終協議，將以約5億美元收購總部位於俄亥俄州代頓的國防科技公司Resonant Sciences。",
+          "根據交易條款，Joby將支付約4.5億美元現金及5000萬美元的Joby普通股。此項收購案預計於2027年上半年完成，但仍須取得監管部門的批准。",
+          "交易完成後，Resonant Sciences將成為Joby專屬的國防業務部門，並在聯合創辦人兼執行長J. Micah North的領導下，繼續以原名營運。該公司擁有約250名員工，專門為美國國家安全客戶開發無線電頻率與任務系統。"
+        ]
+      },
+      "en": {
+        "title": "Joby Aviation to Acquire Resonant Sciences for $500 Million",
+        "summary": "Joby Aviation announced an agreement to acquire Resonant Sciences for $500 million to expand defense operations.",
+        "body": [
+          "Joby Aviation announced on August 11, 2026, that it has entered into a definitive agreement to acquire defense technology company Resonant Sciences for approximately $500 million.",
+          "Under the terms of the deal, Joby will fund the transaction with $450 million in cash and $50 million in Joby common stock. The acquisition is expected to close in the first half of 2027, subject to required regulatory approvals.",
+          "Following the closing, Resonant Sciences will become Joby's dedicated defense business, continuing to operate under its own name and led by CEO J. Micah North. Based in Dayton, Ohio, Resonant employs about 250 people and develops radio-frequency and mission systems for US national security customers."
+        ]
+      },
+      "flash": {
+        "zh": "Joby Aviation以5億美元收購Resonant Sciences",
+        "en": "Joby Aviation agrees to acquire Resonant Sciences for $500 million",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Joby Aviation announced on August 11, 2026, that it entered into a definitive agreement to acquire defense technology company Resonant Sciences for approximately $500 million.",
+          "sourceQuote": "Joby Aviation announced on August 11, 2026, that it has entered into a definitive agreement to acquire Resonant Sciences, a Dayton, Ohio-based defense technology company, for approximately $500 million.",
+          "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Joby plans to fund the acquisition with approximately $450 million in cash and $50 million in Joby common stock.",
+          "sourceQuote": "Joby plans to fund the acquisition with approximately $450 million in cash and $50 million in Joby common stock",
+          "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The transaction is expected to close in the first half of 2027, subject to regulatory approval.",
+          "sourceQuote": "The transaction is expected to close in the first half of 2027, subject to regulatory approval.",
+          "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Resonant Sciences will become Joby's dedicated defense business and continue operating under its own name led by CEO J. Micah North.",
+          "sourceQuote": "Upon closing, Resonant will become Joby’s dedicated defense business, continuing to operate under its own name and led by co-founder and CEO J. Micah North.",
+          "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Resonant Sciences is based in Dayton, Ohio, with approximately 250 employees developing radio frequency and mission systems for US national security customers.",
+          "sourceQuote": "Resonant, founded in 2015 and based in Dayton, Ohio, develops and manufactures radio-frequency, sensing and mission systems for US national security customers.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/joby-acquires-resonant-sciences-500m-defence/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Joby Aviation",
+          "Resonant Sciences"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Dayton",
+          "Ohio"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-11",
+          "2027"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260812-1053-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "EnduroSat signs deal with Bulgaria to develop major space base near Sofia",
+          "url": "https://www.aerotime.aero/articles/endurosat-signs-deal-with-bulgaria-to-develop-major-space-base-near-sofia",
+          "publishedUtc": "2026-08-10T12:54Z",
+          "summary": "Vertically integrated satellite developer EnduroSat announced on August 6, 2026, that it has signed a Memorandum of Understanding… The post EnduroSat signs deal with Bulgaria to develop major space base near Sofia appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Vertical Aerospace raises $100 million to further Valo eVTOL development",
+          "url": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
+          "publishedUtc": "2026-08-10T14:23Z",
+          "summary": "Vertical Aerospace announced on August 10, 2026, that it has secured an additional US$100 million in funding commitments… The post Vertical Aerospace raises $100 million to further Valo eVTOL development appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Joby Aviation to acquire Resonant Sciences in $500 million defense deal",
+          "url": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
+          "publishedUtc": "2026-08-11T13:55Z",
+          "summary": "Joby Aviation announced on August 11, 2026, that it has entered into a definitive agreement to acquire Resonant… The post Joby Aviation to acquire Resonant Sciences in $500 million defense deal appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Joby Aviation to scale defence business through $500 million Resonant Sciences acquisition News",
+          "url": "https://aerospaceglobalnews.com/news/joby-acquires-resonant-sciences-500m-defence/",
+          "publishedUtc": "2026-08-12T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/Jobys-launch-in-New-York.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing, faa",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: aerotime, reuters",
+              "archive predates source by 10 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260804-1529-japan-airlines-unveils-tokyo-disneysea-2",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: aerotime",
+              "archive predates source by 69 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 69 day(s) apart",
+            "event_date": "2026-06-04",
+            "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the...",
+            "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+            "facts": [
+              {
+                "claim": "Japan Airlines launched domestic flight operations with the JAL Jubilee Express, a themed aircraft celebrating Tokyo DisneySea's 25th anniversary, from June 4, 2026 through April 2027.",
+                "source_quote": "Japan Airlines has unveiled a specially themed aircraft celebrating Tokyo DisneySea’s 25th anniversary, with domestic flights that began on June 4, 2026, and continue through April 2027.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
+              },
+              {
+                "claim": "The JAL Jubilee Express is a Boeing 737-800 aircraft with registration JA339J, measuring 39.5 meters long and 12.5 meters high.",
+                "source_quote": "The JAL Jubilee Express is a Boeing 737-800 registered JA339J, measuring 39.5 meters in length and 12.5 meters in height, with a wingspan of 35.8 meters.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
+              },
+              {
+                "claim": "Japan Airlines and Oriental Land Co. first announced the custom-themed aircraft on April 16, 2026.",
+                "source_quote": "JAL and Oriental Land Co., the operator of Tokyo Disney Resort, first announced the aircraft on April 16, 2026, ahead of its debut.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
+              },
+              {
+                "claim": "The exterior of the aircraft is painted in Jubilee Blue and incorporates ocean-themed visuals alongside Tokyo DisneySea landmarks.",
+                "source_quote": "The aircraft’s exterior is painted in “Jubilee Blue,” the signature color of the anniversary celebration, drawing on the ocean theme that defines Tokyo DisneySea.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
+              },
+              {
+                "claim": "In-flight cabin features include special anniversary headrest covers and paper cups distributed to passengers.",
+                "source_quote": "Passengers flying on the aircraft will find special anniversary-designed headrest covers and paper cups, with three different cup designs distributed at random.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
+                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260812-1053-6",
+    "queuedUtc": "2026-08-12T10:53Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Federal prosecutor investigation into an explosive drone strike on a parked Antonov An-124 aircraft at Leipzig/Halle Airport.",
+    "riskFlags": [
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "German investigators recovered a DNA trace from an explosive-laden drone found at Leipzig/Halle Airport that matches evidence from a July 2024 incendiary attack.",
+        "sourceQuote": "German investigators have recovered a DNA trace from the explosive-laden drone found at Leipzig/Halle Airport (LEJ) that matches evidence secured after the July 20, 2024, incendiary attack",
+        "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Video shows a drone flying at a parked Antonov Airlines An-124 at Leipzig/Halle Airport on August 4, 2026, striking a wing and falling to the ground.",
+        "sourceQuote": "Airport video reviewed by investigators shows the drone flying at a parked Antonov Airlines An-124 at around 19:30 on August 4, 2026, striking a wing and falling to the ground.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The drone's explosive charge separated on impact, failed to function, and was found four hours later near the south runway.",
+        "sourceQuote": "The charge separated on impact and came to rest some distance away, where an airport employee found it roughly four hours later near the south runway.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Germany's federal prosecutor's office took over the investigation on August 6, 2026, citing dangerous interference with air traffic and attempted causing of an explosion.",
+        "sourceQuote": "The federal prosecutor’s office took the file over from the Dresden general prosecutor on August 6, 2026, citing the particular significance of the case.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Flight operations at Leipzig/Halle Airport were partially suspended overnight while federal police examined the object with a bomb disposal robot.",
+        "sourceQuote": "Flight operations at the airport were partially suspended overnight while federal police examined the object with a bomb disposal robot.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Five defendants are on trial in Vilnius over parcels mailed in July 2024, which prosecutors allege were coordinated by individuals linked to Russia's GRU.",
+        "sourceQuote": "Lithuanian prosecutors allege the operation was coordinated by individuals linked to Russia’s GRU military intelligence service.",
+        "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Federal prosecutor investigation into an explosive drone strike on a parked Antonov An-124 aircraft at Leipzig/Halle Airport.",
+      "cat": "safety",
+      "zh": {
+        "title": "無人機撞擊安托諾夫An-124客貨機 德國檢察機關展開調查",
+        "summary": "安托諾夫An-124於萊比錫/哈勒機場（LEJ）遭無人機撞擊；德國檢察官接手調查。",
+        "body": [
+          "德國媒體報導，調查人員在萊比錫/哈勒機場（LEJ）一架停泊的安托諾夫航空（Antonov Airlines）An-124客貨機遭無人機撞擊事件中，從載有炸藥的無人機上採集到DNA痕跡。影像顯示該無人機於2026年8月4日撞擊機翼後墜地，炸藥隨後分離並落於南跑道附近，引信未起爆。",
+          "德國聯邦檢察官辦公室已於8月6日接手本案，朝嘗試引爆爆炸物及危險干涉航空交通方向調查。事件發生後，聯邦警察動用排爆機器人進行檢查，機場夜間航班營運一度部分暫停。調查指出該DNA痕跡與2024年7月物流中心縱火案之證據相符。"
+        ]
+      },
+      "en": {
+        "title": "German Prosecutors Investigate Drone Strike on Parked Antonov An-124",
+        "summary": "Antonov Airlines An-124 was struck by an explosive drone at Leipzig/Halle Airport; federal prosecutors are investigating.",
+        "body": [
+          "German investigators recovered DNA evidence from an explosive-laden drone that struck a parked Antonov Airlines An-124 at Leipzig/Halle Airport (LEJ) on August 4, 2026. Surveillance video showed the drone hitting the aircraft wing before falling to the ground. The unexploded charge separated on impact and was later discovered near the south runway.",
+          "Germany's federal prosecutor took over the case on August 6, 2026, investigating attempted causing of an explosion and dangerous interference with air traffic. Flight operations at LEJ were partially suspended overnight while federal police examined the device with a bomb disposal robot. Investigators noted the DNA matches evidence from a July 2024 incendiary attack at the airport."
+        ]
+      },
+      "flash": {
+        "zh": "德檢察官調查安托諾夫An-124遭無人機撞擊案",
+        "en": "German prosecutors investigate drone strike on Antonov An-124",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-04",
+        "sev": "inc",
+        "aircraft": "Antonov An-124",
+        "operator": "Antonov Airlines",
+        "phase": {
+          "zh": "停泊",
+          "en": "Parked"
+        },
+        "location": {
+          "zh": "萊比錫/哈勒機場",
+          "en": "Leipzig/Halle Airport"
+        },
+        "desc": {
+          "zh": "一架載有炸藥的無人機撞擊停泊中的客貨機機翼，檢察機關展開調查。",
+          "en": "An explosive-laden drone struck the wing of a parked aircraft, prompting a federal investigation."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "German investigators recovered a DNA trace from an explosive-laden drone found at Leipzig/Halle Airport that matches evidence from a July 2024 incendiary attack.",
+          "sourceQuote": "German investigators have recovered a DNA trace from the explosive-laden drone found at Leipzig/Halle Airport (LEJ) that matches evidence secured after the July 20, 2024, incendiary attack",
+          "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Video shows a drone flying at a parked Antonov Airlines An-124 at Leipzig/Halle Airport on August 4, 2026, striking a wing and falling to the ground.",
+          "sourceQuote": "Airport video reviewed by investigators shows the drone flying at a parked Antonov Airlines An-124 at around 19:30 on August 4, 2026, striking a wing and falling to the ground.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The drone's explosive charge separated on impact, failed to function, and was found four hours later near the south runway.",
+          "sourceQuote": "The charge separated on impact and came to rest some distance away, where an airport employee found it roughly four hours later near the south runway.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Germany's federal prosecutor's office took over the investigation on August 6, 2026, citing dangerous interference with air traffic and attempted causing of an explosion.",
+          "sourceQuote": "The federal prosecutor’s office took the file over from the Dresden general prosecutor on August 6, 2026, citing the particular significance of the case.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Flight operations at Leipzig/Halle Airport were partially suspended overnight while federal police examined the object with a bomb disposal robot.",
+          "sourceQuote": "Flight operations at the airport were partially suspended overnight while federal police examined the object with a bomb disposal robot.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Five defendants are on trial in Vilnius over parcels mailed in July 2024, which prosecutors allege were coordinated by individuals linked to Russia's GRU.",
+          "sourceQuote": "Lithuanian prosecutors allege the operation was coordinated by individuals linked to Russia’s GRU military intelligence service.",
+          "sourceUrl": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F2",
+        "F4"
+      ],
+      "summarySupportedBy": [
+        "F2",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Antonov Airlines",
+          "Bild",
+          "Die Zeit",
+          "DHL",
+          "DPD",
+          "Vilnius Regional Court",
+          "GRU",
+          "Antonov Logistics SALIS GmbH",
+          "NATO"
+        ],
+        "airlines": [
+          "Antonov Airlines"
+        ],
+        "aircraft_models": [
+          "An-124",
+          "Antonov An-124"
+        ],
+        "airports": [
+          "Leipzig/Halle Airport",
+          "LEJ"
+        ],
+        "locations": [
+          "Leipzig",
+          "Germany",
+          "Lithuania",
+          "Vilnius"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "August 10, 2026",
+          "July 20, 2024",
+          "August 4, 2026",
+          "August 6, 2026",
+          "April 17, 2026"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260812-1053-6",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "DNA links drone attack on An-124 in Leipzig to suspected GRU plot",
+          "url": "https://www.aerotime.aero/articles/dna-leipzig-drone-antonov-an-124-gru-parcel-plot",
+          "publishedUtc": "2026-08-12T08:24Z",
+          "summary": "German investigators have recovered a DNA trace from the explosive-laden drone found at Leipzig/Halle Airport (LEJ) that matches… The post DNA links drone attack on An-124 in Leipzig to suspected GRU plot appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
+            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+            "facts": [
+              {
+                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
+                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
+                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
+                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
+                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
+                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260812-0902-12",
     "queuedUtc": "2026-08-12T09:02Z",
     "approve": false,
@@ -9557,650 +10252,6 @@
                 "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
                 "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
                 "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260809-0948-10",
-    "queuedUtc": "2026-08-09T09:48Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Includes claims regarding a potential purchase agreement of up to 100 Midnight eVTOL aircraft.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Korean Air is partnering with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft for troop transport, medical evacuation, and search-and-rescue missions.",
-        "sourceQuote": "Korean Air is teaming up with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft for troop transport, medical evacuation, and search-and-rescue missions.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Under the cooperation framework, Korean Air will lead military conversion and systems integration, while Archer provides technical support and airworthiness certification experience.",
-        "sourceQuote": "Korean Air will lead the military conversion and systems integration, while Archer supplies technical support and shares its airworthiness-certification experience.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The development is part of Korean Air's advanced air mobility initiative to build capabilities in the defense aerospace sector.",
-        "sourceQuote": "The development is part of what Korean Air calls its advanced air mobility (AAM) initiative, where it wants to lead in this emerging sector of the defence aerospace industry.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Archer reported in October 2025 an agreement to commercialize Midnight in Korea, with Korean Air expected to purchase up to 100 Midnight aircraft.",
-        "sourceQuote": "In October 2025, Archer Aviation reported it had signed an agreement to commercialize Midnight in Korea “across multiple applications and use cases.” The announcement stated that as part of the relationship, Korean Air is expected to purchase up to 100 eVTOL Midnight aircraft.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Includes claims regarding a potential purchase agreement of up to 100 Midnight eVTOL aircraft.",
-      "cat": "mil",
-      "zh": {
-        "title": "大韓航空與Archer合作開發Midnight電動垂直起降戰術軍用機型",
-        "summary": "大韓航空與Archer Aviation展開合作，計畫將Midnight電動垂直起降飛行器改裝為軍用衍生型，用於部隊運輸、醫療後送與搜救任務。依據合作架構，大韓航空將主導軍用改裝與系統整合，Archer則提供技術支援與適航認證經驗。此計畫為大韓航空先進空中交通倡議的一環。",
-        "body": [
-          "大韓航空與Archer Aviation攜手合作，預計將Midnight電動垂直起降（eVTOL）飛行器改裝為軍用衍生機型，用於執行部隊運輸、醫療後送以及搜救任務。",
-          "在雙方合作架構下，大韓航空將負責領導軍用機型的改裝與系統整合工作，Archer則會提供相關技術支援，並分享其適航認證經驗。",
-          "此項開發計畫屬於大韓航空先進空中交通（AAM）倡議的一部分，旨在國防航空航天領域建立技術能力。此外，Archer曾於2025年10月報告簽署在韓國商業化Midnight的協議，其中大韓航空預計採購最多100架Midnight飛行器。"
-        ]
-      },
-      "en": {
-        "title": "Korean Air Teams Up With Archer to Develop Military Variant of Midnight eVTOL",
-        "summary": "Korean Air is partnering with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft for troop transport, medical evacuation, and search-and-rescue missions. Under the cooperation framework, Korean Air will lead the military conversion and systems integration, while Archer provides technical support and airworthiness certification experience. The project is part of Korean Air's advanced air mobility initiative to lead in defense aerospace. Additionally, Archer previously reported an agreement in October 2025 to commercialize Midnight in Korea, where Korean Air is expected to purchase up to 100 Midnight aircraft.",
-        "body": [
-          "Korean Air has partnered with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft. The planned aircraft variant is intended for troop transport, medical evacuation, and search-and-rescue operations.",
-          "Under the cooperation framework, Korean Air will lead the military conversion and systems integration. Archer Aviation will supply technical support and share its experience in airworthiness certification for the platform.",
-          "The project forms part of Korean Air's advanced air mobility initiative to expand capabilities in the defense aerospace sector. Additionally, Archer previously reported an agreement in October 2025 to commercialize Midnight in South Korea, with Korean Air expected to purchase up to 100 Midnight aircraft."
-        ]
-      },
-      "flash": {
-        "zh": "大韓航空與Archer合作開發Midnight軍用機型",
-        "en": "Korean Air and Archer team up to develop military Midnight eVTOL",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Korean Air is partnering with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft for troop transport, medical evacuation, and search-and-rescue missions.",
-          "sourceQuote": "Korean Air is teaming up with Archer Aviation to develop a military variant of the Midnight eVTOL aircraft for troop transport, medical evacuation, and search-and-rescue missions.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Under the cooperation framework, Korean Air will lead military conversion and systems integration, while Archer provides technical support and airworthiness certification experience.",
-          "sourceQuote": "Korean Air will lead the military conversion and systems integration, while Archer supplies technical support and shares its airworthiness-certification experience.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The development is part of Korean Air's advanced air mobility initiative to build capabilities in the defense aerospace sector.",
-          "sourceQuote": "The development is part of what Korean Air calls its advanced air mobility (AAM) initiative, where it wants to lead in this emerging sector of the defence aerospace industry.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Archer reported in October 2025 an agreement to commercialize Midnight in Korea, with Korean Air expected to purchase up to 100 Midnight aircraft.",
-          "sourceQuote": "In October 2025, Archer Aviation reported it had signed an agreement to commercialize Midnight in Korea “across multiple applications and use cases.” The announcement stated that as part of the relationship, Korean Air is expected to purchase up to 100 eVTOL Midnight aircraft.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Archer Aviation",
-          "Korean Air"
-        ],
-        "airlines": [
-          "Korean Air"
-        ],
-        "aircraft_models": [
-          "Midnight",
-          "Midnight eVTOL"
-        ],
-        "airports": [],
-        "locations": [
-          "Korea"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "4 August",
-          "October 2025"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260809-0948-10",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Korean Air to adapt Archer Midnight eVTOL for military transport missions News",
-          "url": "https://aerospaceglobalnews.com/news/korean-air-archer-military-midnight/",
-          "publishedUtc": "2026-08-05T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/safe-scaled.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: korean air",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: korean air",
-              "archive predates source by 8 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 8 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0603-anduril-yfq-44a-fury-drone-destroys-targ",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: anduril, us air force",
-              "archive predates source by 6 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
-            "event_date": "2026-07-30",
-            "source_name": "Simple Flying — Why The US Air Force's New Combat Drone Still Can't Fire Wi...",
-            "source_url": "https://simpleflying.com/why-usaf-new-combat-drone-still-cant-fire-without-human-approval/",
-            "facts": [
-              {
-                "claim": "Anduril's YFQ-44A Fury drone recently destroyed a target, demonstrating its capability.",
-                "source_quote": "Anduril's YFQ-44A Fury drone recently destroyed a target proving its capability",
-                "source_url": "https://simpleflying.com/why-usaf-new-combat-drone-still-cant-fire-without-human-approval/",
-                "source_name": "Simple Flying — Why The US Air Force's New Combat Drone Still Can't Fire Wi..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260809-0706-12",
-    "queuedUtc": "2026-08-09T07:06Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves an underwater investigation into historical 1952 aircraft crashes with reported casualties.",
-    "riskFlags": [
-      "investigation",
-      "casualties_or_injuries"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "南韓與美國已於東海岸外海展開聯合水下搜尋任務，尋找韓戰期間失蹤的三架美軍軍機殘骸。",
-        "sourceQuote": "South Korea and the United States have launched a joint underwater search for their wreckage off the country’s east coast.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "為期一個月的搜尋任務將持續至8月28日，於襄陽與江陵外海搜尋1952年墜毀的一架F4U-4海盜式戰鬥機與兩架C-46運輸機。",
-        "sourceQuote": "The month-long operation , which runs until 28 August, will search waters off Yangyang and Gangneung where an F4U-4 Corsair fighter and two Curtiss C-46 Commando transport aircraft crashed in separate incidents in 1952.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "此次聯合任務由南韓國防部遺骸發掘鑑識團（MAKRI）與美國國防部戰俘及失蹤人員統計局（DPAA）合作執行，約有40名人員參與。",
-        "sourceQuote": "The joint effort brings together South Korea’s Ministry of National Defense Agency for KIA Recovery and Identification (MAKRI) and the US Defense POW/MIA Accounting Agency (DPAA). Around 40 personnel are taking part",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "襄陽外海的搜尋目標為1952年2月護航任務中失蹤的美國海軍F4U-4戰鬥機，江陵外海則針對1952年10月與11月墜海的兩架C-46運輸機。",
-        "sourceQuote": "The search will begin off Yangyang, where investigators hope to locate the remains of a US Navy F4U-4 Corsair that disappeared during an escort mission in February 1952.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "1952年10月16日第一架C-46運輸機自江陵起飛後墜海造成25人罹難；11月15日第二架C-46起飛後墜海造成11人死亡與7人倖存。",
-        "sourceQuote": "The first aircraft being searched for crashed on 16 October 1952 shortly after taking off from Gangneung for Pohang. The C-46 went out of control during its initial climb and plunged into the sea a few kilometres offshore. All 25 people on board were killed.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "調查將分兩階段進行，先使用水下探測設備與無人海洋系統探測海床，再由潛水員與遙控感測設備進行現場檢查與記錄。",
-        "sourceQuote": "Teams will first survey the seabed using underwater detection equipment and uncrewed maritime systems to identify potential wreckage. Divers and remotely operated sensing equipment will then be deployed to inspect and document anything of interest.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves an underwater investigation into historical 1952 aircraft crashes with reported casualties.",
-      "cat": "mil",
-      "zh": {
-        "title": "美韓展開水下搜尋任務 尋找韓戰失蹤海盜式與C46軍機",
-        "summary": "南韓與美國啟動為期一個月的聯合水下搜尋任務，於南韓東海岸的襄陽與江陵外海，尋找1952年韓戰期間失蹤的一架美軍F4U-4海盜式戰鬥機及兩架C-46運輸機殘骸。此次行動由南韓國防部遺骸發掘鑑識團與美國國防部戰俘及失蹤人員統計局合作，投入約40名專業人員與水下探測設備進行搜尋。",
-        "body": [
-          "南韓與美國已於南韓東海岸外海展開聯合水下搜尋任務，旨在尋找超過70年前於韓戰期間墜毀的三架美軍軍機殘骸。這項為期一個月的搜尋行動將持續至2026年8月28日，重點搜尋區域位於襄陽與江陵外海，目標為1952年在不同事件中墜毀的一架F4U-4海盜式戰鬥機以及兩架Curtiss C-46 Commando運輸機。",
-          "本次聯合搜尋行動由南韓國防部遺骸發掘鑑識團（MAKRI）與美國國防部戰俘及失蹤人員統計局（DPAA）共同主持。行動集結了約40名專業人員，包含大韓民國海軍第一艦隊、大韓民國空軍第18戰鬥機聯隊、美國海軍潛水員、水下考古學家以及專業回收搜救小組，期望能藉此釐清未歸官兵的下落。",
-          "搜尋任務首先於襄陽外海展開，搜救團隊希望能找到1952年2月執行護航任務時失蹤的一架美國海軍F4U-4海盜式戰鬥機殘骸。該架戰鬥機當時在護航另一架受損的美軍攻擊機時墜毀，導致機上飛行員殉職。搜救人員希望在七十多年後，能夠透過殘骸定位確定其最終墜落位置。",
-          "隨後搜尋重點將轉移至江陵外海，尋找1952年下半年相隔不到一個月內相繼失事墜海的兩架C-46運輸機。第一架C-46運輸機於1952年10月16日自江陵起飛前往浦項，在初始爬升階段失控墜入離岸數公里的海中，機上25人全部罹難；第二架同型機則於1952年11月15日執行同一航線起飛後墜海，造成11人死亡、7人倖存。",
-          "此次水下調查行動將分兩個階段進行。搜尋團隊將先使用水下探測設備與無人海洋系統對海床進行勘測，以識別可能的殘骸目標。隨後將部署潛水員與遙控感測設備進行現場檢查與記錄，期盼能找出埋藏於數十年沉積物下方的軍機殘骸。"
-        ]
-      },
-      "en": {
-        "title": "US and South Korea Launch Underwater Search for Korean War Aircraft Wreckage",
-        "summary": "South Korea and the United States have launched a month-long joint underwater search off South Korea's east coast to locate the wreckage of three US military aircraft lost during the Korean War in 1952. The operation, running through August 28, targets an F4U-4 Corsair fighter off Yangyang and two Curtiss C-46 Commando transport aircraft off Gangneung. Led by South Korea's Ministry of National Defense Agency for KIA Recovery and Identification and the US Defense POW/MIA Accounting Agency, the mission involves around 40 personnel using advanced underwater detection equipment, uncrewed systems, and divers across two investigative stages.",
-        "body": [
-          "South Korea and the United States have initiated a joint underwater search off South Korea's east coast to locate the wreckage of three US military aircraft lost during the Korean War more than 70 years ago. The month-long operation, scheduled to run until August 28, is focusing on waters off Yangyang and Gangneung, where an F4U-4 Corsair fighter and two Curtiss C-46 Commando transport aircraft crashed in separate incidents in 1952.",
-          "The joint effort brings together South Korea's Ministry of National Defense Agency for KIA Recovery and Identification (MAKRI) and the US Defense POW/MIA Accounting Agency (DPAA). Around 40 personnel are participating in the mission, including members of the Republic of Korea Navy's 1st Fleet, the Republic of Korea Air Force's 18th Fighter Wing, US Navy divers, underwater archaeologists, and specialist recovery teams.",
-          "The search operation begins off the coast of Yangyang, where investigators aim to locate the remains of a US Navy F4U-4 Corsair that disappeared during an escort mission in February 1952. The aircraft crashed while escorting another damaged US attack aircraft, resulting in the death of its pilot. More than seven decades later, recovery teams hope the seabed search will pinpoint the precise location of the aircraft wreckage.",
-          "The focus will subsequently shift to Gangneung, where two Curtiss C-46 Commando transport aircraft crashed into the sea shortly after departure in late 1952. The first C-46 went out of control on October 16, 1952 during its initial climb to Pohang and plunged into the ocean, killing all 25 people on board. Less than a month later, on November 15, 1952, a second C-46 operating the same route crashed after takeoff, leaving 11 occupants dead and seven survivors.",
-          "The underwater investigation will be conducted in two sequential stages. Search teams will initially survey the seabed using underwater detection equipment and uncrewed maritime systems to identify potential debris fields. Divers and remotely operated sensing equipment will then be deployed to inspect and document candidate search targets hidden beneath decades of marine sediment."
-        ]
-      },
-      "flash": {
-        "zh": "美韓展開聯合水下搜尋 尋找韓戰失事美軍軍機殘骸",
-        "en": "US and South Korea launch underwater search for Korean War aircraft wreckage.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "南韓與美國已於東海岸外海展開聯合水下搜尋任務，尋找韓戰期間失蹤的三架美軍軍機殘骸。",
-          "sourceQuote": "South Korea and the United States have launched a joint underwater search for their wreckage off the country’s east coast.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "為期一個月的搜尋任務將持續至8月28日，於襄陽與江陵外海搜尋1952年墜毀的一架F4U-4海盜式戰鬥機與兩架C-46運輸機。",
-          "sourceQuote": "The month-long operation , which runs until 28 August, will search waters off Yangyang and Gangneung where an F4U-4 Corsair fighter and two Curtiss C-46 Commando transport aircraft crashed in separate incidents in 1952.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "此次聯合任務由南韓國防部遺骸發掘鑑識團（MAKRI）與美國國防部戰俘及失蹤人員統計局（DPAA）合作執行，約有40名人員參與。",
-          "sourceQuote": "The joint effort brings together South Korea’s Ministry of National Defense Agency for KIA Recovery and Identification (MAKRI) and the US Defense POW/MIA Accounting Agency (DPAA). Around 40 personnel are taking part",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "襄陽外海的搜尋目標為1952年2月護航任務中失蹤的美國海軍F4U-4戰鬥機，江陵外海則針對1952年10月與11月墜海的兩架C-46運輸機。",
-          "sourceQuote": "The search will begin off Yangyang, where investigators hope to locate the remains of a US Navy F4U-4 Corsair that disappeared during an escort mission in February 1952.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "1952年10月16日第一架C-46運輸機自江陵起飛後墜海造成25人罹難；11月15日第二架C-46起飛後墜海造成11人死亡與7人倖存。",
-          "sourceQuote": "The first aircraft being searched for crashed on 16 October 1952 shortly after taking off from Gangneung for Pohang. The C-46 went out of control during its initial climb and plunged into the sea a few kilometres offshore. All 25 people on board were killed.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "調查將分兩階段進行，先使用水下探測設備與無人海洋系統探測海床，再由潛水員與遙控感測設備進行現場檢查與記錄。",
-          "sourceQuote": "Teams will first survey the seabed using underwater detection equipment and uncrewed maritime systems to identify potential wreckage. Divers and remotely operated sensing equipment will then be deployed to inspect and document anything of interest.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Ministry of National Defense Agency for KIA Recovery and Identification",
-          "MAKRI",
-          "Defense POW/MIA Accounting Agency",
-          "DPAA",
-          "Republic of Korea Navy",
-          "1st Fleet",
-          "Republic of Korea Air Force",
-          "18th Fighter Wing",
-          "US Navy"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "F4U-4 Corsair",
-          "Curtiss C-46 Commando"
-        ],
-        "airports": [],
-        "locations": [
-          "South Korea",
-          "Yangyang",
-          "Gangneung",
-          "Pohang"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-05",
-          "28 August",
-          "1952",
-          "February 1952",
-          "16 October 1952",
-          "15 November 1952"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "investigation",
-        "casualties_or_injuries"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260809-0706-12",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Search beneath the sea begins for Corsair and C-46s lost during the Korean War News",
-          "url": "https://aerospaceglobalnews.com/news/korean-war-corsair-c46-wreck-search/",
-          "publishedUtc": "2026-08-05T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/F4U-4-Corsair.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260801-1006-israel-reopens-193rd-squadron-with-arriv",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: us navy",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-07-29",
-            "source_name": "Aerospace Global News — Ex-US Navy SH-60F Seahawks return Israeli maritime helicopt...",
-            "source_url": "https://aerospaceglobalnews.com/news/israel-sh60f-seahawk-193-squadron/",
-            "facts": [
-              {
-                "claim": "以色列國防軍宣布重新啟用第193中隊,並接收二手美軍SH-60F海鷹海上直升機。",
-                "source_quote": "The Israeli Defense Force stated that it has reopened its 193rd Squadron operating SH-60F maritime helicopters that it has just received.",
-                "source_url": "https://aerospaceglobalnews.com/news/israel-sh60f-seahawk-193-squadron/",
-                "source_name": "Aerospace Global News — Ex-US Navy SH-60F Seahawks return Israeli maritime helicopt..."
-              },
-              {
-                "claim": "首批三架在以色列稱為「Shalach」的SH-60F直升機已運抵,第一架於7月29日接收。",
-                "source_quote": "The first three second-hand former-US Navy SH-60F Seahawks (designated “Shalach” in Israeli service) have arrived",
-                "source_url": "https://aerospaceglobalnews.com/news/israel-sh60f-seahawk-193-squadron/",
-                "source_name": "Aerospace Global News — Ex-US Navy SH-60F Seahawks return Israeli maritime helicopt..."
-              },
-              {
-                "claim": "SH-60F直升機用以替代已退役的Eurocopter AS565豹式直升機(以色列稱為「Atalef」)。",
-                "source_quote": "The Seahawks offer a significant boost in capability over the retired Eurocopter AS565 Panther helicopters (designated “Atalef”)",
-                "source_url": "https://aerospaceglobalnews.com/news/israel-sh60f-seahawk-193-squadron/",
-                "source_name": "Aerospace Global News — Ex-US Navy SH-60F Seahawks return Israeli maritime helicopt..."
-              },
-              {
-                "claim": "第193中隊自2025年9月起暫時解散,重啟後將於帕爾馬希姆空軍基地恢復運作。",
-                "source_quote": "The 193rd Squadron had been temporarily disbanded since September 2025 and had previously operated the Airbus AS565 Panther at Ramat David Air Force Base. It will resume operations at Palmachim Airbase as a maritime support squadron.",
-                "source_url": "https://aerospaceglobalnews.com/news/israel-sh60f-seahawk-193-squadron/",
-                "source_name": "Aerospace Global News — Ex-US Navy SH-60F Seahawks return Israeli maritime helicopt..."
-              },
-              {
-                "claim": "美國透過剩餘國防物資計畫批准移交八架SH-60F,目前已交付三架,預計年底前再交付兩架。",
-                "source_quote": "Three of the eight Seahawks have been delivered, and two more are expected to arrive by the end of the year.",
-                "source_url": "https://aerospaceglobalnews.com/news/israel-sh60f-seahawk-193-squadron/",
-                "source_name": "Aerospace Global News — Ex-US Navy SH-60F Seahawks return Israeli maritime helicopt..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260801-0732-lot-polish-airlines-to-launch-direct-war",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: lot",
-              "archive predates source by 5 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
-            "event_date": "2026-07-31",
-            "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with...",
-            "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-            "facts": [
-              {
-                "claim": "LOT Polish Airlines has announced a direct route between Warsaw Chopin Airport and Hanoi Noi Bai International Airport, with the inaugural flight scheduled for March 31, 2027.",
-                "source_quote": "LOT Polish Airlines has launched a new direct route between Warsaw Chopin Airport (WAW) and Noi Bai International Airport (HAN) in Hanoi, Vietnam, marking the airline’s fifth long-haul destination in Asia. Tickets are now on sale, with the inaugural flight scheduled for March 31, 2027.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "The Warsaw-Hanoi service will operate three times per week year-round using Boeing 787 Dreamliner aircraft, with departures from Warsaw on Mondays, Wednesdays, and Fridays, and return flights from Hanoi on Tuesdays, Thursdays, and Saturdays.",
-                "source_quote": "The Warsaw-Hanoi route will operate year-round, with three flights each way per week. Departures from Warsaw Chopin Airport are set for Mondays, Wednesdays, and Fridays at 15:15 local time, while return flights from Hanoi will depart Tuesdays, Thursdays, and Saturdays at 08:35 local time.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "Hanoi is LOT Polish Airlines' fifth long-haul destination in Asia, joining Tokyo, Seoul, New Delhi, and Bangkok.",
-                "source_quote": "Hanoi joins Tokyo, Seoul, New Delhi, and Bangkok as LOT’s fifth long-haul destination in Asia",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "LOT Board Member and CCO Robert Ludera stated that the new route reflects the airline's ambition to expand in Asia and develop Warsaw as a connecting hub.",
-                "source_quote": "Robert Ludera, Board Member and Chief Commercial Officer at LOT Polish Airlines, noted that the new route reflects the airline’s ambition to expand its presence in Asia, while further developing Warsaw as a connecting hub between Central and Eastern Europe and some of the world’s fastest-growing destinations.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260803-0835-american-airlines-launches-84-mile-route",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: american",
-              "archive predates source by 2 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 2 day(s) apart",
-            "event_date": "2026-08-03",
-            "source_name": "Simple Flying — Only 84 Miles: American Airlines Launches New Extremely Sho...",
-            "source_url": "https://simpleflying.com/only-84-miles-american-launches-new-ultra-short-route/",
-            "facts": [
-              {
-                "claim": "American Airlines is resurrecting an 84-mile route last flown 27 years ago.",
-                "source_quote": "American is resurrecting a route last flown 27 years ago",
-                "source_url": "https://simpleflying.com/only-84-miles-american-launches-new-ultra-short-route/",
-                "source_name": "Simple Flying — Only 84 Miles: American Airlines Launches New Extremely Sho..."
-              },
-              {
-                "claim": "The route will feature three daily flights using 65-seater regional jets.",
-                "source_quote": "three daily flights on 65-seater regional jets.",
-                "source_url": "https://simpleflying.com/only-84-miles-american-launches-new-ultra-short-route/",
-                "source_name": "Simple Flying — Only 84 Miles: American Airlines Launches New Extremely Sho..."
-              },
-              {
-                "claim": "American Airlines has launched a new extremely short route.",
-                "source_quote": "American Airlines Launches New Extremely Short Route",
-                "source_url": "https://simpleflying.com/only-84-miles-american-launches-new-ultra-short-route/",
-                "source_name": "Simple Flying — Only 84 Miles: American Airlines Launches New Extremely Sho..."
               }
             ]
           }
