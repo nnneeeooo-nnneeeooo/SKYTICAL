@@ -1,5 +1,322 @@
 [
   {
+    "id": "g-20260812-2231-3",
+    "queuedUtc": "2026-08-12T22:31Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "Safety event involving aircraft crash during test with ongoing investigation requires human review.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly after takeoff from a runway at the US Army’s Dugway Proving Ground in Utah.",
+        "sourceQuote": "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly after takeoff from a runway at the US Army’s Dugway Proving Ground in Utah.",
+        "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The mishap occurred on August 4, 2026, during a company-funded research and development flight.",
+        "sourceQuote": "The mishap occurred on August 4, 2026, during a company-funded research and development flight.",
+        "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "No one was injured.",
+        "sourceQuote": "No one was injured.",
+        "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "A Dugway spokesperson said the drone went down at about 08:00 local time shortly after takeoff.",
+        "sourceQuote": "A Dugway spokesperson said the drone went down at about 08:00 local time shortly after takeoff.",
+        "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Safety event involving aircraft crash during test with ongoing investigation requires human review.",
+      "cat": "safety",
+      "zh": {
+        "title": "Kratos 暫停 XQ-58 Valkyrie 測試後 Utah 試飛墜機",
+        "summary": "Kratos 暫停 XQ-58 Valkyrie 飛行測試；無人機於 8 月 4 日在 Utah Dugway 試場起飛後墜毀，未造成人員傷亡。",
+        "body": [
+          "Kratos 宣布暫停其 XQ-58 Valkyrie 無人機的飛行測試，原因是其中一架在 Utah 的 Dugway 試證場起飛不久後墜毀。",
+          "事故發生於 2026 年 8 月 4 日，屬於公司自資的研發試飛，當地時間約 08:00 時墜地。",
+          "杜格威發言人證實無人機墜落，未造成建築物損壞，亦無人員受傷。",
+          "Kratos 指已暫停飛行測試，待事故調查完成後方可復測，並表示仍有其他測試機可用。",
+          "公司未公布墜機原因或涉及的具體 Valkyrie 版本，僅稱該機處於「測試配置」以驗證新能力。"
+        ]
+      },
+      "en": {
+        "title": "Kratos pauses XQ-58 Valkyrie flight testing after Utah test drone crash",
+        "summary": "Kratos halts XQ-58 Valkyrie flight testing after drone crashes shortly after takeoff at Utah's Dugway Proving Ground on August 4, 2026; no injuries reported.",
+        "body": [
+          "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly after takeoff from a runway at the US Army’s Dugway Proving Ground in Utah.",
+          "The mishap occurred on August 4, 2026, during a company-funded research and development flight, with the drone going down at about 08:00 local time.",
+          "A Dugway spokesperson said the crash caused no damage to any buildings at the installation and that no one was injured.",
+          "Kratos stated that flight testing has been paused while it investigates the mishap and noted it has additional Valkyrie test aircraft available once the investigation is completed.",
+          "The company has not disclosed what caused the crash or which version of the Valkyrie was involved, describing the aircraft only as being in a 'test configuration' for adding new capabilities."
+        ]
+      },
+      "flash": {
+        "zh": "Kratos 暫停 XQ-58 試飛後 Utah 墜機",
+        "en": "Kratos pauses XQ-58 testing after Utah drone crash",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-04",
+        "sev": "inc",
+        "aircraft": "XQ-58 Valkyrie",
+        "operator": "Kratos Defense & Security Solutions",
+        "phase": {
+          "zh": "起飛後不久",
+          "en": "shortly after takeoff"
+        },
+        "location": {
+          "zh": "美國 Utah Dugway 試證場",
+          "en": "Dugway Proving Ground, Utah, USA"
+        },
+        "desc": {
+          "zh": "無人機於試飛中墜毀，未造成人員傷亡或建築物損壞。",
+          "en": "The drone crashed during a test flight, causing no injuries or property damage."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly after takeoff from a runway at the US Army’s Dugway Proving Ground in Utah.",
+          "sourceQuote": "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly after takeoff from a runway at the US Army’s Dugway Proving Ground in Utah.",
+          "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The mishap occurred on August 4, 2026, during a company-funded research and development flight.",
+          "sourceQuote": "The mishap occurred on August 4, 2026, during a company-funded research and development flight.",
+          "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "No one was injured.",
+          "sourceQuote": "No one was injured.",
+          "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "A Dugway spokesperson said the drone went down at about 08:00 local time shortly after takeoff.",
+          "sourceQuote": "A Dugway spokesperson said the drone went down at about 08:00 local time shortly after takeoff.",
+          "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Kratos has said flight testing has been paused while it investigates the mishap.",
+          "sourceQuote": "Kratos has said flight testing has been paused while it investigates the mishap.",
+          "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "Kratos Defense & Security Solutions"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "XQ-58 Valkyrie"
+        ],
+        "airports": [],
+        "locations": [
+          "Dugway Proving Ground, Utah, USA"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-04"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260812-2231-3",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Kratos pauses XQ-58 Valkyrie flights after drone crashes during Utah test",
+          "url": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
+          "publishedUtc": "2026-08-12T18:53Z",
+          "summary": "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly… The post Kratos pauses XQ-58 Valkyrie flights after drone crashes during Utah test appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
+            "relationship_type": "other",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
+            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+            "facts": [
+              {
+                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
+                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
+                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
+                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
+                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
+                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260812-1956-2",
     "queuedUtc": "2026-08-12T19:56Z",
     "approve": false,
@@ -9912,312 +10229,6 @@
                 "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
                 "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
                 "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260810-0712-1",
-    "queuedUtc": "2026-08-10T07:12Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Flight disembarkation was delayed due to a passenger altercation requiring aviation police intervention.",
-    "riskFlags": [
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "長榮航空BR757班機8月9日抵達桃園機場後，一名後排經濟艙旅客急速往前移動並衝撞其他旅客及發生口角。",
-        "sourceQuote": "昨天BR757杭州返回桃園航班，於抵達桃園機場航機停妥等候下機期間，有一名後排經濟艙旅客急速往前移動，過程中陸續有衝撞其他旅客及發生口角行為",
-        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608100143.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "醫師鄭丞傑於該航班下機時遭衝撞旅客刮傷左手臂。",
-        "sourceQuote": "9日搭乘長榮航空從杭州返台班機，在桃園機場下機時遇到一名30~40歲男人從經濟艙後排一路衝撞往前擠，一直衝到商務艙前方想要第一個下機，讓已拿好行李準備下機的鄭丞傑，遭此男刮傷了左手臂。",
-        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608100143.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "長榮航空為維護客艙安全暫緩下機，通報航空警察到場處理，待秩序恢復後始進行下機作業。",
-        "sourceQuote": "為維護機上旅客及組員安全，故暫緩下機，並立即請地勤通報航空警察前來處理，待機上秩序恢復後再進行下機程序。",
-        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608100143.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "長榮航空對下機延誤表達歉意，並表示將為受影響旅客提供必要協助。",
-        "sourceQuote": "針對受事件影響旅客，如有相關權益受損或後續協助需求，長榮航空將提供必要協助",
-        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608100143.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Flight disembarkation was delayed due to a passenger altercation requiring aviation police intervention.",
-      "cat": "ops",
-      "zh": {
-        "title": "長榮航BR757班機下機爆旅客衝撞；地勤通報航警處理",
-        "summary": "長榮航BR757班機下機發生旅客衝撞；地勤通報航警處理並暫緩下機",
-        "body": [
-          "長榮航空8月9日由杭州返回桃園的BR757航班在航機停妥等候下機期間，發生一名後排經濟艙旅客急速往前移動並衝撞其他旅客的事件。過程中該名旅客與他人發生口角，並造成同機的婦產科醫師鄭丞傑左手臂遭刮傷。",
-          "長榮航空表示，為維護機上旅客及組員安全，當時決定暫緩下機作業，並立即請地勤通報航空警察前來處理。待機上秩序恢復後，航班才繼續進行下機程序。",
-          "長榮航空對於事件造成其他旅客下機延誤及不便表達致歉，並指出針對受影響旅客，若有相關權益受損或後續協助需求，將提供必要協助，同時呼籲旅客於航機停妥後應遵循組員指示。"
-        ]
-      },
-      "en": {
-        "title": "EVA Air Pauses Disembarkation on BR757 After Passenger Disturbance",
-        "summary": "EVA Air paused disembarkation on flight BR757 in Taoyuan after a passenger disturbance prompted police intervention.",
-        "body": [
-          "EVA Air flight BR757 from Hangzhou to Taoyuan experienced a passenger disturbance on August 9 after the aircraft had parked and passengers were waiting to disembark. According to the airline, an economy class passenger moved rapidly forward from the rear, pushing into other passengers and engaging in verbal altercations. Physician Cheng Chen-chieh was among those struck and suffered a scratched left arm during the incident.",
-          "To maintain safety for passengers and crew, EVA Air paused disembarkation and requested ground staff to notify aviation police immediately. Officers arrived on board to address the situation, and disembarkation resumed once cabin order was fully restored.",
-          "EVA Air apologized for the delay and inconvenience caused to passengers on board. The airline stated it will offer necessary assistance to affected passengers whose rights were impacted, while reminding travelers to follow crew instructions after arrival."
-        ]
-      },
-      "flash": {
-        "zh": "長榮航空BR757班機下機突發旅客衝撞，通報航警處理並致歉",
-        "en": "EVA Air paused BR757 disembarkation after passenger disturbance prompted police response",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "長榮航空BR757班機8月9日抵達桃園機場後，一名後排經濟艙旅客急速往前移動並衝撞其他旅客及發生口角。",
-          "sourceQuote": "昨天BR757杭州返回桃園航班，於抵達桃園機場航機停妥等候下機期間，有一名後排經濟艙旅客急速往前移動，過程中陸續有衝撞其他旅客及發生口角行為",
-          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608100143.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "醫師鄭丞傑於該航班下機時遭衝撞旅客刮傷左手臂。",
-          "sourceQuote": "9日搭乘長榮航空從杭州返台班機，在桃園機場下機時遇到一名30~40歲男人從經濟艙後排一路衝撞往前擠，一直衝到商務艙前方想要第一個下機，讓已拿好行李準備下機的鄭丞傑，遭此男刮傷了左手臂。",
-          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608100143.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "長榮航空為維護客艙安全暫緩下機，通報航空警察到場處理，待秩序恢復後始進行下機作業。",
-          "sourceQuote": "為維護機上旅客及組員安全，故暫緩下機，並立即請地勤通報航空警察前來處理，待機上秩序恢復後再進行下機程序。",
-          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608100143.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "長榮航空對下機延誤表達歉意，並表示將為受影響旅客提供必要協助。",
-          "sourceQuote": "針對受事件影響旅客，如有相關權益受損或後續協助需求，長榮航空將提供必要協助",
-          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608100143.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "長榮航空",
-          "航空警察",
-          "Facebook",
-          "中央社"
-        ],
-        "airlines": [
-          "長榮航空"
-        ],
-        "aircraft_models": [],
-        "airports": [
-          "桃園機場"
-        ],
-        "locations": [
-          "杭州",
-          "桃園"
-        ],
-        "flight_numbers": [
-          "BR757"
-        ],
-        "registration_numbers": [],
-        "event_dates": [
-          "9日",
-          "昨天"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260810-0712-1",
-      "primarySource": "中央社 CNA 國籍航空",
-      "items": [
-        {
-          "title": "名醫鄭丞傑下機遭旅客刮傷 長榮航：提供必要協助",
-          "url": "https://www.cna.com.tw/news/ahel/202608100143.aspx",
-          "publishedUtc": "2026-08-10T06:46Z",
-          "summary": "鄭丞傑,長榮航空,桃園機場,杭州,BR757,臉書|Facebook,航空警察",
-          "image": null,
-          "source": "中央社 CNA 國籍航空",
-          "sourceKey": "cnataiwanairlines"
-        },
-        {
-          "title": "名醫鄭丞傑下機遭旅客刮傷　長榮航：提供必要協助",
-          "summary": "名醫鄭丞傑下機遭旅客刮傷 長榮航：提供必要協助 &nbsp;&nbsp; 經濟日報",
-          "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE11cnJQQ2JfYWNVZUJmVWgweDZhOTZFeVNZZHhXM0d2Q0VHSlg3Uld6cHNROTF0emY5Z2NScmtlVmZySmZzNHRyelVBR01Sbk0zVmY3YmZVTFR1Ymp30gFiQVVfeXFMT3g1R3RGdmw5a0VST2JOY0lGX1FueXU3MG4zMnJqNnBpY3NHTDZWYXRZMk4xNzlpcmxRTFNzRE84ajFsdTZWU1cwY1duYmE1cS1DSm9ZcVp4MGRfVkZudUhEbWc?oc=5",
-          "source": "經濟日報",
-          "companion": true,
-          "publishedUtc": "2026-08-10T06:55Z"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260727-0838-presidential-office-rejects-show-claim-s",
-            "relationship_type": "other",
-            "relationship_evidence": [
-              "same named core entity: 中央社",
-              "archive predates source by 14 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 14 day(s) apart",
-            "event_date": "2026-07-27",
-            "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍",
-            "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-            "facts": [
-              {
-                "claim": "Media reported that President Lai’s inspection during the Han Kuang exercise was a \"show\".",
-                "source_quote": "有媒體報導稱總統賴清德在漢光演習期間安排視導是「作秀」",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "The Presidential Office stated that, as commander‐in‐chief, the President’s inspection of a major drill is a responsibility and an obligation.",
-                "source_quote": "作為三軍統帥，總統在國軍重要演訓期間參與視導，是責任也是義務",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "The spokesperson called the \"show\" accusation speculation, a distortion of views, and a defamation of the military and national defence.",
-                "source_quote": "所謂「作秀」之說，內容多屬臆測、觀點扭曲，更污名化國軍與國防，令人遺憾",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "Heads of state attending major military exercises is standard practice in Europe, the US, Japan and South Korea.",
-                "source_quote": "國家元首參與國家重大軍事演訓，無論歐、美、日、韓等國，國際皆然",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "Since Han Kuang 40 the drills have been unscripted and realistic; the President’s visit was scheduled by the Ministry of National Defense according to the exercise progress, with no arranged \"firepower show\".",
-                "source_quote": "自漢光40號演習起，即採取「無劇本、實戰化」演練。總統參與視導，亦由國防部依照演習進程適時規劃，不存在所謂安排「火力秀」的問題",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "Accusations of shifting opposition attacks or staging a performance for voters are baseless and unfair to personnel strengthening defence.",
-                "source_quote": "至於所謂「轉移在野攻擊」、「作秀給選民看」等無端指控，對此刻正為強化國防、守護國家而努力的所有人員極不公平",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260806-1215-typhoon-white-dolphin-prompts-china-airl",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: 中央社",
-              "archive predates source by 5 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
-            "event_date": "2026-08-05",
-            "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動",
-            "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
-            "facts": [
-              {
-                "claim": "中華航空因颱風白海豚調整2026年8月6日至8日往返沖繩航班,共取消14架次,部分架次提前、延後或放大機型。",
-                "source_quote": "華航公布明起至8日飛沖繩航班異動，14架次取消，部分架次提前、延後或放大機型",
-                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
-                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
-              },
-              {
-                "claim": "星宇航空調整8月6日至7日台灣往返沖繩航班,其中6日取消2架次,7日航班全數取消。",
-                "source_quote": "星宇航空明天6架次異動，包含2架次取消，7日往返沖繩航班全取消。",
-                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
-                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
-              },
-              {
-                "claim": "華航取消之航班包括8月6日CI122/CI123,7日CI120/CI121、CI122/CI123、CI310/CI311、CI2132/CI2133、CI132/CI133,以及8日CI310/CI311。",
-                "source_quote": "航班取消包括6日CI122/CI123桃園往返沖繩、7日CI120/CI121、CI122/CI123桃園往返沖繩、CI310/CI311台中往返沖繩、CI2132/ CI2133、 CI132/CI133高雄往返沖繩、8月8日CI310/CI311台中往返沖繩。",
-                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
-                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
-              },
-              {
-                "claim": "星宇航空調整部分8月6日航班,包括JX870、JX871、JX302、JX303提前起飛。",
-                "source_quote": "台北-沖繩JX870提前至上午9時起飛，沖繩-台北JX871提前至中午12時50分起飛，台中-沖繩JX302提前至上午8時起飛，沖繩-台中JX303提前至上午11時30分起飛。",
-                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
-                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260807-0355-eva-air-to-launch-nonstop-taoyuan-delhi",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: 長榮航空",
-              "archive predates source by 5 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 5 day(s) apart",
-            "event_date": "2026-08-05",
-            "source_name": "長榮航空 EVA Air — 長榮航空12月1日起開航桃園-印度德里直飛航線 拓展南亞市場、串聯北美航網 即日起開放訂位購票",
-            "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPalprU0pYdjRfeE0zQXh3Yl9rUmREdXlKdnhZUm9lQTdpNHM3a2YxZm5ES2syNUpnUVBxZ1lwMG9INTI5WnpGUm12SVlsYTY5akJBYm00MUQwdTgweWVfQ1ltXzlyTzRwZUhHVkRwM3ZxT190NW4xeEVzWS1ONVFnZDAtNXoxR2tKN04yaDZDNFFWQmE3SFp1dW9zNXMtR1FuN2J0OUpJSFFsZjVDNDNweElxQQ?oc=5",
-            "facts": [
-              {
-                "claim": "長榮航空將於12月1日起開航桃園至印度德里直飛航線。",
-                "source_quote": "長榮航空12月1日起開航桃園－印度德里直飛航線",
-                "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPalprU0pYdjRfeE0zQXh3Yl9rUmREdXlKdnhZUm9lQTdpNHM3a2YxZm5ES2syNUpnUVBxZ1lwMG9INTI5WnpGUm12SVlsYTY5akJBYm00MUQwdTgweWVfQ1ltXzlyTzRwZUhHVkRwM3ZxT190NW4xeEVzWS1ONVFnZDAtNXoxR2tKN04yaDZDNFFWQmE3SFp1dW9zNXMtR1FuN2J0OUpJSFFsZjVDNDNweElxQQ?oc=5",
-                "source_name": "長榮航空 EVA Air — 長榮航空12月1日起開航桃園-印度德里直飛航線 拓展南亞市場、串聯北美航網 即日起開放訂位購票"
-              },
-              {
-                "claim": "該航線即日起開放旅客訂位購票。",
-                "source_quote": "即日起開放訂位購票",
-                "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPalprU0pYdjRfeE0zQXh3Yl9rUmREdXlKdnhZUm9lQTdpNHM3a2YxZm5ES2syNUpnUVBxZ1lwMG9INTI5WnpGUm12SVlsYTY5akJBYm00MUQwdTgweWVfQ1ltXzlyTzRwZUhHVkRwM3ZxT190NW4xeEVzWS1ONVFnZDAtNXoxR2tKN04yaDZDNFFWQmE3SFp1dW9zNXMtR1FuN2J0OUpJSFFsZjVDNDNweElxQQ?oc=5",
-                "source_name": "長榮航空 EVA Air — 長榮航空12月1日起開航桃園-印度德里直飛航線 拓展南亞市場、串聯北美航網 即日起開放訂位購票"
               }
             ]
           }
