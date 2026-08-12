@@ -1,5 +1,257 @@
 [
   {
+    "id": "g-20260812-1850-2",
+    "queuedUtc": "2026-08-12T18:50Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves criminal wire fraud prosecution, extradition, and legal enforcement action regarding fraudulent pilot credentials on US airlines, requiring human review.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Dallas Pokornik pleaded guilty in federal court in Honolulu to one count of wire fraud according to the US Attorney's Office for the District of Hawaii.",
+        "sourceQuote": "Dallas Pokornik, 34, of Toronto, pleaded guilty in federal court in Honolulu, Hawaii, to one count of wire fraud, according to the US Attorney’s Office for the District of Hawaii.",
+        "sourceUrl": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Pokornik used a fictitious employee identification badge to pose as a commercial pilot and obtain free flights on three US airlines between January 2020 and October 28, 2024.",
+        "sourceQuote": "According to court documents cited by prosecutors, Pokornik, a former flight attendant for a Canadian airline, used a fictitious employee identification card to pose as a commercial pilot and obtain free flights on three US-based airlines between January 2020 and October 28, 2024.",
+        "sourceUrl": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Pokornik worked as a flight attendant for a Toronto-based airline from July 2017 to October 2019 before using a fake badge to request travel benefits including cockpit jump seats.",
+        "sourceQuote": "Pokornik had worked as a flight attendant for an unspecified Toronto-based airline from July 2017 to October 2019.",
+        "sourceUrl": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "An airline employee photographed the forged badge and reported it to Pokornik's former employer, leading to his arrest in Panama and extradition to the United States.",
+        "sourceQuote": "His scheme unraveled after an employee at one of the US airlines photographed the forged identification and passed it along to Pokornik’s former employer, which confirmed the badge was fake",
+        "sourceUrl": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Pokornik agreed to pay restitution to the affected airlines as part of his plea deal, with sentencing scheduled for December 8, 2026.",
+        "sourceQuote": "He also agreed, as part of his plea deal, to pay restitution to the three airlines affected. His sentencing hearing is scheduled for December 8, 2026, before US District Judge Shanlyn A.S Park.",
+        "sourceUrl": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves criminal wire fraud prosecution, extradition, and legal enforcement action regarding fraudulent pilot credentials on US airlines, requiring human review.",
+      "cat": "reg",
+      "zh": {
+        "title": "前空服員假冒機師免費搭機數年 在美國法庭承認電信詐欺罪",
+        "summary": "多倫多前空服員偽造機師證件免費搭機；在夏威夷聯邦法院承認電信詐欺罪",
+        "body": [
+          "美國夏威夷州聯邦檢察官辦公室表示，一名來自多倫多的34歲前空服員波科尼克，於夏威夷檀香山聯邦法院承認一項電信詐欺罪名。被告坦承使用偽造的商業機師員工證，在近五年內冒充機師，獲取美國航空公司免費航班。",
+          "檢察官引述法庭文件指出，波科尼克曾於2017年7月至2019年10月在多倫多一家航空公司擔任空服員。他於2020年1月至2024年10月28日期間，使用載明虛假任職資訊的證件，向三家美國航空公司獲取機師專屬搭乘福利，並曾要求使用駕駛艙摺疊座位。",
+          "該起詐欺案因一名航空公司員工發現證件異常並通報而曝光。波科尼克先前在巴拿馬被捕後引渡至美國，他已同意向受害航空公司支付賠償金，宣判聽證會定於2026年12月8日舉行。"
+        ]
+      },
+      "en": {
+        "title": "Former Flight Attendant Pleads Guilty to Wire Fraud for Posing as Pilot",
+        "summary": "Dallas Pokornik pleaded guilty to wire fraud in Hawaii for posing as a commercial pilot.",
+        "body": [
+          "Dallas Pokornik, a 34-year-old former flight attendant from Toronto, has pleaded guilty in federal court in Honolulu, Hawaii, to one count of wire fraud. According to the US Attorney’s Office for the District of Hawaii, Pokornik used a fraudulent commercial pilot badge to travel on US airlines without paying.",
+          "Prosecutors stated that Pokornik worked as a flight attendant for a Toronto-based airline from July 2017 to October 2019. Between January 2020 and October 2024, he presented a fake badge to obtain free travel benefits from three US airlines, including requesting cockpit jump seat access.",
+          "The fraud was exposed after an airline employee photographed the forged identification and alerted his former employer. Pokornik was arrested in Panama and extradited to the US. His sentencing is scheduled for December 8, 2026."
+        ]
+      },
+      "flash": {
+        "zh": "前空服員假冒機師免費搭機，於美國法院承認電信詐欺罪。",
+        "en": "A former flight attendant pleaded guilty in US court to posing as a commercial pilot.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Dallas Pokornik pleaded guilty in federal court in Honolulu to one count of wire fraud according to the US Attorney's Office for the District of Hawaii.",
+          "sourceQuote": "Dallas Pokornik, 34, of Toronto, pleaded guilty in federal court in Honolulu, Hawaii, to one count of wire fraud, according to the US Attorney’s Office for the District of Hawaii.",
+          "sourceUrl": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Pokornik used a fictitious employee identification badge to pose as a commercial pilot and obtain free flights on three US airlines between January 2020 and October 28, 2024.",
+          "sourceQuote": "According to court documents cited by prosecutors, Pokornik, a former flight attendant for a Canadian airline, used a fictitious employee identification card to pose as a commercial pilot and obtain free flights on three US-based airlines between January 2020 and October 28, 2024.",
+          "sourceUrl": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Pokornik worked as a flight attendant for a Toronto-based airline from July 2017 to October 2019 before using a fake badge to request travel benefits including cockpit jump seats.",
+          "sourceQuote": "Pokornik had worked as a flight attendant for an unspecified Toronto-based airline from July 2017 to October 2019.",
+          "sourceUrl": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "An airline employee photographed the forged badge and reported it to Pokornik's former employer, leading to his arrest in Panama and extradition to the United States.",
+          "sourceQuote": "His scheme unraveled after an employee at one of the US airlines photographed the forged identification and passed it along to Pokornik’s former employer, which confirmed the badge was fake",
+          "sourceUrl": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Pokornik agreed to pay restitution to the affected airlines as part of his plea deal, with sentencing scheduled for December 8, 2026.",
+          "sourceQuote": "He also agreed, as part of his plea deal, to pay restitution to the three airlines affected. His sentencing hearing is scheduled for December 8, 2026, before US District Judge Shanlyn A.S Park.",
+          "sourceUrl": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "US Attorney’s Office for the District of Hawaii",
+          "Homeland Security Investigations",
+          "United States Marshals Service"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Toronto",
+          "Honolulu",
+          "Hawaii",
+          "United States",
+          "Panama",
+          "London",
+          "Los Angeles",
+          "Mexico City",
+          "Phuket",
+          "Thailand"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "January 2020",
+          "October 28, 2024",
+          "July 2017",
+          "October 2019",
+          "October 2025",
+          "December 8, 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260812-1850-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Former flight attendant pleads guilty to posing as pilot for free flights",
+          "url": "https://www.aerotime.aero/articles/former-flight-attendant-pleads-guilty-to-posing-as-pilot-for-free-flights",
+          "publishedUtc": "2026-08-12T14:18Z",
+          "summary": "A former Toronto flight attendant has pleaded guilty to wire fraud in the United States after prosecutors said… The post Former flight attendant pleads guilty to posing as pilot for free flights appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260804-1206-japan-airlines-partners-with-hitachi-and",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: US-BASED"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 8 day(s) apart",
+            "event_date": "2026-08-04",
+            "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro...",
+            "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
+            "facts": [
+              {
+                "claim": "Japan Airlines announced on August 4, 2026, that it joined Hitachi and Mitsui O.S.K. Lines to conduct Japan's first pilot test of Direct Ocean Capture technology.",
+                "source_quote": "Japan Airlines (JAL) announced that it has joined Hitachi and Mitsui O.S.K. Lines in signing an agreement to run Japan’s first pilot test of a technology that pulls carbon dioxide directly out of seawater.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
+                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
+              },
+              {
+                "claim": "The pilot test will take place on Kume Island in Okinawa Prefecture using land-based containerized equipment to extract carbon dioxide from seawater.",
+                "source_quote": "The companies announced on August 4, 2026 that the test will take place on Kume Island in Okinawa Prefecture.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
+                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
+              },
+              {
+                "claim": "The three companies have previously invested in Captura Corp., a US-based ocean carbon capture technology developer.",
+                "source_quote": "The three companies have already invested in Captura Corp., a US-based developer of this ocean carbon capture technology",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
+                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
+              },
+              {
+                "claim": "Hitachi will handle technical monitoring and data platform development, while Mitsui O.S.K. Lines coordinates local operations and site setup on Kume Island.",
+                "source_quote": "Hitachi will handle much of the technical monitoring, using its analytical tools to track water quality and operating data",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
+                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
+              },
+              {
+                "claim": "Japan Airlines, alongside Japan Transocean Air and Ryukyu Air Commuter, will lead outreach and aims to explore using captured carbon dioxide for sustainable aviation fuel.",
+                "source_quote": "JAL, working alongside regional airline partners Japan Transocean Air and Ryukyu Air Commuter, both of which already fly to Kumejima, will lead outreach and awareness efforts around the project.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
+                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
+              },
+              {
+                "claim": "Kume Island was selected for the pilot test partly because it already hosts ocean energy research infrastructure.",
+                "source_quote": "Kume Island was chosen partly because it’s already home to other ocean-based energy research, including a system that generates electricity from temperature differences in seawater.",
+                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
+                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260812-1552-1",
     "queuedUtc": "2026-08-12T15:52Z",
     "approve": false,
@@ -9974,187 +10226,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260809-1538-2",
-    "queuedUtc": "2026-08-09T15:38Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Mandatory human review required for aviation safety incident involving cabin smoke and passenger evacuation via emergency slides.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "199 Delta Air Lines passengers evacuated a smoke-filled Boeing 757 aircraft down slides on an Atlanta taxiway.",
-        "sourceQuote": "199 Delta Passengers Evacuate Smoke-Filled Boeing 757 Down Slides On Atlanta Taxiway",
-        "sourceUrl": "https://simpleflying.com/delta-boeing-757-slide-evacuation-atlanta-taxiway-smoke/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Video footage showed smoke filling the passenger cabin as occupants escaped down emergency slides.",
-        "sourceQuote": "Footage shows smoke filling the cabin while passengers escaped down emergency slides.",
-        "sourceUrl": "https://simpleflying.com/delta-boeing-757-slide-evacuation-atlanta-taxiway-smoke/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Delta passengers evacuated on escape slides following an emergency landing.",
-        "sourceQuote": "Delta passengers evacuate on escape slides after emergency landing",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQ1VEaXhrS0pGejgxZUxqR3h4RUFhZ1J5ejV1NU1rSjNqX0pIdnV6NUFlQWxYU0xZUGxLWVRGWVZHbG1wMnVESVI2OC1hLTEwT3hIVVB1NFdNY0owTmJLeU1veVBJdl92NEZjcWp4cXZOR05aT1QxZGM2dGxKaTJlQ3F5RlcyM1NLNDJtczU0UzN3UzZUQ2hFd0hzdUFCSnVoMnF30gGoAUFVX3lxTE5Sd1o5QkZmbFo4UFZPVmptaUpzRGRHZWUwbE1JUVdNaWhqYmdHRzRCRzZ4V2N2VmszekRheEJEV0o3TGJvYk03N2NFcXFVZ0xXUFlwb29WVkM3RS15Z2E1LVVYdjg0SFBwc2M2eml2ZUxFNm11SFlBY2Vzb1RCejVTZDg5TWI3Yk9Femh6UndZNkw5bjlLd2NFc2I0b01fWUFKaVZ1R1lfMw?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Mandatory human review required for aviation safety incident involving cabin smoke and passenger evacuation via emergency slides.",
-      "cat": "safety",
-      "zh": {
-        "title": "達美航空波音757客機機艙冒煙 199名乘客於亞特蘭大滑行道疏散",
-        "summary": "根據報導，一架載有199名乘客的達美航空波音757客機在緊急降落後，於亞特蘭大機場滑行道上進行緊急疏散。現場畫面顯示機艙內充斥煙霧，乘客隨後透過逃生滑梯疏散離開機艙。",
-        "body": [
-          "根據媒體 Simple Flying 與 AeroTime 報導，達美航空一架載有199名乘客的波音757客機，在亞特蘭大進行緊急降落後，於機場滑行道上實施了逃生滑梯疏散程序。事發時機艙內部充斥著煙霧，全機199名乘客隨即透過緊急逃生滑梯撤離至滑行道上。",
-          "報導指出，現場相關畫面記錄了機艙內煙霧彌漫的狀況，乘客在煙霧中依序利用逃生滑梯逃生。本次事件發生於亞特蘭大機場的滑行道，達美航空波音757客機上的199名乘客均透過逃生滑梯進行緊急疏散。"
-        ]
-      },
-      "en": {
-        "title": "Delta Boeing 757 Evacuated Via Slides In Atlanta Following Emergency Landing",
-        "summary": "According to media reports, a Delta Air Lines Boeing 757 aircraft carrying 199 passengers was evacuated on an Atlanta airport taxiway following an emergency landing. Video footage showed smoke filling the passenger cabin while travelers escaped down emergency escape slides. The incident involved 199 passengers on board the Delta Boeing 757 who evacuated down the slides onto the taxiway in Atlanta as smoke filled the cabin, as reported by Simple Flying and AeroTime.",
-        "body": [
-          "According to media reports published by Simple Flying and AeroTime, a Delta Air Lines Boeing 757 carrying 199 passengers underwent an emergency evacuation on an Atlanta taxiway following an emergency landing. The passenger evacuation was conducted using emergency escape slides after smoke began filling the cabin of the aircraft.",
-          "Video footage showed smoke filling the passenger cabin while passengers escaped down the emergency slides onto the Atlanta taxiway. A total of 199 Delta passengers evacuated the smoke-filled Boeing 757 aircraft via escape slides following the emergency landing, according to initial reports."
-        ]
-      },
-      "flash": {
-        "zh": "達美航空波音757客機機艙冒煙 199名乘客於亞特蘭大滑行道疏散",
-        "en": "199 Delta passengers evacuate Boeing 757 down slides on Atlanta taxiway",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-09",
-        "sev": "inc",
-        "aircraft": "Boeing 757",
-        "operator": "Delta Air Lines",
-        "phase": {
-          "zh": "地面滑行 / 降落後",
-          "en": "Taxi / After landing"
-        },
-        "location": {
-          "zh": "亞特蘭大滑行道",
-          "en": "Atlanta taxiway"
-        },
-        "desc": {
-          "zh": "機艙充斥煙霧，199名乘客於亞特蘭大滑行道透過逃生滑梯緊急疏散。",
-          "en": "Smoke filled the cabin, leading 199 passengers to evacuate down emergency slides on an Atlanta taxiway."
-        },
-        "status": "prelim"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "199 Delta Air Lines passengers evacuated a smoke-filled Boeing 757 aircraft down slides on an Atlanta taxiway.",
-          "sourceQuote": "199 Delta Passengers Evacuate Smoke-Filled Boeing 757 Down Slides On Atlanta Taxiway",
-          "sourceUrl": "https://simpleflying.com/delta-boeing-757-slide-evacuation-atlanta-taxiway-smoke/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Video footage showed smoke filling the passenger cabin as occupants escaped down emergency slides.",
-          "sourceQuote": "Footage shows smoke filling the cabin while passengers escaped down emergency slides.",
-          "sourceUrl": "https://simpleflying.com/delta-boeing-757-slide-evacuation-atlanta-taxiway-smoke/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Delta passengers evacuated on escape slides following an emergency landing.",
-          "sourceQuote": "Delta passengers evacuate on escape slides after emergency landing",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQ1VEaXhrS0pGejgxZUxqR3h4RUFhZ1J5ejV1NU1rSjNqX0pIdnV6NUFlQWxYU0xZUGxLWVRGWVZHbG1wMnVESVI2OC1hLTEwT3hIVVB1NFdNY0owTmJLeU1veVBJdl92NEZjcWp4cXZOR05aT1QxZGM2dGxKaTJlQ3F5RlcyM1NLNDJtczU0UzN3UzZUQ2hFd0hzdUFCSnVoMnF30gGoAUFVX3lxTE5Sd1o5QkZmbFo4UFZPVmptaUp",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Delta",
-          "Simple Flying",
-          "AeroTime"
-        ],
-        "airlines": [
-          "Delta"
-        ],
-        "aircraft_models": [
-          "Boeing 757"
-        ],
-        "airports": [],
-        "locations": [
-          "Atlanta"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-09"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260809-1538-2",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "199 Delta Passengers Evacuate Smoke-Filled Boeing 757 Down Slides On Atlanta Taxiway",
-          "url": "https://simpleflying.com/delta-boeing-757-slide-evacuation-atlanta-taxiway-smoke/",
-          "publishedUtc": "2026-08-09T15:10Z",
-          "summary": "Footage shows smoke filling the cabin while passengers escaped down emergency slides.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/847-delta-air-lines-boeing-757-200-karolis-kavolelis-_-shutterstock.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "title": "Delta passengers evacuate on escape slides after emergency landing",
-          "summary": "Delta passengers evacuate on escape slides after emergency landing &nbsp;&nbsp; AeroTime",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQ1VEaXhrS0pGejgxZUxqR3h4RUFhZ1J5ejV1NU1rSjNqX0pIdnV6NUFlQWxYU0xZUGxLWVRGWVZHbG1wMnVESVI2OC1hLTEwT3hIVVB1NFdNY0owTmJLeU1veVBJdl92NEZjcWp4cXZOR05aT1QxZGM2dGxKaTJlQ3F5RlcyM1NLNDJtczU0UzN3UzZUQ2hFd0hzdUFCSnVoMnF30gGoAUFVX3lxTE5Sd1o5QkZmbFo4UFZPVmptaUpzRGRHZWUwbE1JUVdNaWhqYmdHRzRCRzZ4V2N2VmszekRheEJEV0o3TGJvYk03N2NFcXFVZ0xXUFlwb29WVkM3RS15Z2E1LVVYdjg0SFBwc2M2eml2ZUxFNm11SFlBY2Vzb1RCejVTZDg5TWI3Yk9Femh6UndZNkw5bjlLd2NFc2I0b01fWUFKaVZ1R1lfMw?oc=5",
-          "source": "AeroTime",
-          "companion": true,
-          "publishedUtc": "2026-08-09T08:31Z"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
