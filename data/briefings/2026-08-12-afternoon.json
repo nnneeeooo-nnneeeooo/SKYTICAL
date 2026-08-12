@@ -1,0 +1,338 @@
+{
+  "content_type": "daily_transport_briefing",
+  "briefing_id": "2026-08-12-afternoon",
+  "date": "2026-08-12",
+  "edition": "afternoon",
+  "edition_label": "午後快報",
+  "timezone": "Asia/Taipei",
+  "window_start": "2026-08-12T07:00:00+08:00",
+  "window_end": "2026-08-12T15:00:00+08:00",
+  "cutoff_time": "2026-08-12T15:00:00+08:00",
+  "scheduled_time": "2026-08-12T15:15:00+08:00",
+  "generated_at": "2026-08-12T16:39:21.566610+08:00",
+  "status": "partial",
+  "item_count": 4,
+  "sections": {
+    "aviation_incidents": [],
+    "taiwan_aviation": [
+      {
+        "event_id": "ev-347a95ef46b3b338",
+        "item_type": "update",
+        "previous_event_id": "ev-347a95ef46b3b338",
+        "category": "taiwan_aviation",
+        "headline": "B-2017 號 B734 航機觀測抵達桃園機場",
+        "summary": "註冊號 B-2017 的 B734 航機；呼號 CSS266；確認抵達桃園機場",
+        "headline_en": "B-2017 B734 Aircraft Observed Arriving at Taoyuan International Airport",
+        "summary_en": "Registration B-2017 B734; callsign CSS266; confirmed arrival at Taoyuan",
+        "event_time": null,
+        "source_published_at": "2026-08-12T01:10:00+00:00",
+        "source_updated_at": null,
+        "location": "臺灣桃園國際機場",
+        "entities": [
+          "CSS",
+          "B734",
+          "RCTP",
+          "臺灣桃園國際機場",
+          "CSS266",
+          "B-2017",
+          "2026-08-12"
+        ],
+        "severity": "routine",
+        "taiwan_priority": true,
+        "military": false,
+        "sources": [
+          {
+            "name": "Airplanes.live — 公開 ADS-B 觀測：B734 抵達 臺灣桃園國際機場",
+            "url": "https://airplanes.live/"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260812-0356-b-2017-b734-aircraft-observed-arriving-a",
+        "new_information": [
+          "An aircraft with registration B-2017 and ICAO hex 7809f0, type B734, callsign CSS266, was observed arriving at Taiwan Taoyuan International Airport (RCTP).",
+          "The operator ICAO is CSS, but operator IATA, operator name, operator Chinese name, and operator country or region are all unidentified.",
+          "The confirmed arrival time was 2026-08-12T01:10:29Z, with arrival determination confirmed_arrival based on the aircraft being within the airport geofence and alt_baro indicating ground.",
+          "The primary data source is Airplanes.live, the secondary data source is ADSB.lol, and the cross-confirmation status is secondary_unavailable.",
+          "The system's observation history is still accumulating, with no comparable long-term statistics available.",
+          "The first valid observation time was 2026-08-11T23:56:26Z and the number of valid observation records was 2."
+        ]
+      },
+      {
+        "event_id": "ev-ec503a6779ab7e88",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "taiwan_aviation",
+        "headline": "吉隆坡機場自動通關看板改標TWN國旗未恢復",
+        "summary": "吉隆坡國際機場自動通關看板改以TWN標示台灣，中華民國國旗未恢復。",
+        "headline_en": "Kuala Lumpur Airport Autogate Sign Updates Taiwan Label to TWN",
+        "summary_en": "Kuala Lumpur International Airport updated its autogate signboard to label Taiwan as TWN without restoring the flag.",
+        "event_time": null,
+        "source_published_at": "2026-08-12T06:37:00+00:00",
+        "source_updated_at": null,
+        "location": "馬來西亞",
+        "entities": [
+          "馬來西亞外交部",
+          "中央社",
+          "吉隆坡國際機場",
+          "馬來西亞",
+          "台灣",
+          "吉隆坡",
+          "2024年6月",
+          "2024年12月",
+          "2026年8月12日"
+        ],
+        "severity": "routine",
+        "taiwan_priority": true,
+        "military": false,
+        "sources": [
+          {
+            "name": "中央社 CNA — 大馬機場自動通關 旅客發現台灣改標TWN國旗未恢復",
+            "url": "https://www.cna.com.tw/news/aipl/202608120155.aspx"
+          },
+          {
+            "name": "經濟日報 — 大馬機場自動通關 旅客發現台灣改標TWN國旗未恢復",
+            "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9TcjNWbkt1RlUxbnR4M085Y0xUR2U1UFhZRDRDTGhXWjhleEtoSGFCVmNxZ0dMdEs4ZFFQNVpraGdnYXJnZ1FGeDlaV3BKZjVYZUh6bXo1aDZOZ9IBX0FVX3lxTE4wQzZmcnRMTGdBYWxFMEJhWmtLTV9zU0Z6VEZtdEFiRDRkOTlaUlBhNDBVWGxuLXhLNlpQcTg5SW81WS1lN1BjUkZfT0YzdlEtV3h6Q1BvS2JKUVc2aDBF?oc=5"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260812-0709-kuala-lumpur-airport-autogate-sign-updat"
+      }
+    ],
+    "international_aviation": [
+      {
+        "event_id": "ev-5a66cc1c950072d6",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "aviation_industry",
+        "headline": "瑞安航空導入Google雲端服務以支援營運決策",
+        "summary": "瑞安航空導入Google雲端服務；利用AI技術協助機組人員排班與營運決策",
+        "headline_en": "Ryanair to adopt Google Cloud services for operational decision-making",
+        "summary_en": "Ryanair to implement Google Cloud services; utilizing AI for crew scheduling and operational decisions",
+        "event_time": null,
+        "source_published_at": "2026-08-12T03:38:00+00:00",
+        "source_updated_at": null,
+        "location": "London",
+        "entities": [
+          "Ryanair",
+          "Google Cloud",
+          "Alphabet",
+          "Amazon Web Services",
+          "AWS",
+          "SITA",
+          "IATA",
+          "Ryanair",
+          "London",
+          "2026-08-12"
+        ],
+        "severity": "routine",
+        "taiwan_priority": false,
+        "military": false,
+        "sources": [
+          {
+            "name": "中央社 CNA 產經證券 — 瑞恩航空導入Google雲端服務 瞄準年載客3億人次",
+            "url": "https://www.cna.com.tw/news/aopl/202608120042.aspx"
+          },
+          {
+            "name": "UDN — 瑞安航空導入Google雲端服務瞄準年載客3億人次| 全球財經| 全球",
+            "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5PZjFSUm5mU1FzeEdwZkJhVzFPMGx5UmhVUXdEOXQtdjZUdFpnelhWYUphbTRZa0FZZTFKUXJBdmpKa1FIWE8wVjdwbDl0VjZX?oc=5"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260812-0525-ryanair-to-adopt-google-cloud-services-f"
+      }
+    ],
+    "ground_and_maritime": [
+      {
+        "event_id": "ev-79930c2fdb550dd5",
+        "item_type": "update",
+        "previous_event_id": "ev-79930c2fdb550dd5",
+        "category": "maritime",
+        "headline": "中共14機艦台海周邊活動 4架次共機逾越中線",
+        "summary": "國防部12日偵獲中共14機艦活動；其中4架次共機逾越台海中線",
+        "headline_en": "Taiwan Detects 14 Chinese Military Vessels and Aircraft Around Strait",
+        "summary_en": "Taiwan's defense ministry detected 14 Chinese military vessels and aircraft around Taiwan on August 11 and 12",
+        "event_time": null,
+        "source_published_at": "2026-08-12T02:21:00+00:00",
+        "source_updated_at": null,
+        "location": "台海",
+        "entities": [
+          "國防部",
+          "國軍",
+          "台海",
+          "台灣海峽",
+          "台灣",
+          "台灣西南空域",
+          "台北",
+          "8 月 11 日",
+          "1150812"
+        ],
+        "severity": "routine",
+        "taiwan_priority": true,
+        "military": true,
+        "sources": [
+          {
+            "name": "中央社 CNA — 中共14機艦台海周邊活動 國軍嚴密監控應處",
+            "url": "https://www.cna.com.tw/news/aipl/202608120043.aspx"
+          },
+          {
+            "name": "經濟日報 — 中共14機艦台海周邊活動　國軍嚴密監控應處",
+            "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBTWmxUR3pqZDd1VVVES3NSUHJocHZXLXFsV2cxeUtfVHNwSktvOEJMY2RkWnRDSDFoWEZxYk9TcXJrQVhUcDVnQ3ZWQTZYZVlxYkRMWUdPNHN2LVdLUGVfaXA0QTJnZU9TMFp2TFZfWVVtb3dEbVJr0gFfQVVfeXFMTkNqbUdnZVptR1lBOG1qN05zV2NoYkJQQmZtN0F5Y3Nuc0pPRHdDcFRFMmxKcDZRRUdldzFYNml5LVhYZWVObTQzSTNBSUVqVm5oRDJKbW1Ra0hJczlBYW8?oc=5"
+          },
+          {
+            "name": "中央社 CNA — 中共15機艦船台海周邊活動 國軍嚴密監控應處",
+            "url": "https://www.cna.com.tw/news/aipl/202608110036.aspx"
+          },
+          {
+            "name": "money.udn.com — 中共15機艦船台海周邊活動　國軍嚴密監控應處",
+            "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1YQVlDN0FmczR1SDhDSFNmYlAzUzVCdElwcDExOUk5R0NaZ1ltalAxRDZjZlFWQnZIV3czTnZNR0dRaHFBV09uYmMyZzdvSm5IQi1GeWVtMldkczlKSVZnX2FtcEVMSldaLTNLbWJHSld0ZFpHbmM1b25UONIBX0FVX3lxTE5kT012NHFuZl9SWE5mS050RHNRZ3Z5LTlrbFVnd1VFZzlKTkg1OTFLTGFMOTN2cmdiNXZydG1YOWhXWnZxSFE5WVN1WkdSYXhKcDY1aV9GMXlQOWM4WEI0?oc=5"
+          },
+          {
+            "name": "中央社 CNA — 中共21機艦船台海周邊活動 國軍嚴密監控應處",
+            "url": "https://www.cna.com.tw/news/aipl/202608100030.aspx"
+          },
+          {
+            "name": "經濟日報 — 中共21機艦船台海周邊活動　國軍嚴密監控應處",
+            "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1IU00xSGVOQUpnbW16U0Q1SE9qYW1RbXctYVdnRVVBOXg5MURUUGkycXdMTzlKOG5KekN3V09HNVRqUDZfOExDYzhyZzZqcnZ5Y3RFOHRzR3AyS3hLa0pF0gFfQVVfeXFMTUhTTTFIZU5BSmdtbXpTRDVIT2phbVFtdy1hV2dFVUE5eDkxRFRQaTJxd0xPOUo4bkp6Q3dXT0c1VGpQNl84TENjOHJnNmpydnljdEU4dHNHcDJLeEtrSkU?oc=5"
+          },
+          {
+            "name": "中央社 CNA — 中共19機艦船台海周邊活動 國軍嚴密監控應處",
+            "url": "https://www.cna.com.tw/news/aipl/202608070036.aspx"
+          },
+          {
+            "name": "經濟日報 — 中共19機艦船台海周邊活動　國軍嚴密監控應處",
+            "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE10LUMtQnlmU05wMTVGNEhpREY0ZEd1eUxMbUdoVEJaYWhaSGdZdEFsdFN2VDk2U1BUVGtEcDQ1cFpXMzlQY29wMm1COXhRVERGSktzekU1NF9KZ9IBX0FVX3lxTFB1eFpRWDVZbS00dmV3X1NuVWtxVlYwUXVYbHZSY2ozaW13SlVMRTdnRkNpSjhiZXR5SWJFNUlvZERYRklsdktpd0ZtTjFENTNhZlY2bGs2d185VHlISm9J?oc=5"
+          },
+          {
+            "name": "中央社 CNA — 中共17機艦船台海周邊活動 國軍嚴密監控應處",
+            "url": "https://www.cna.com.tw/news/aipl/202608010036.aspx"
+          },
+          {
+            "name": "經濟日報 — 中共17機艦船台海周邊活動　國軍嚴密監控應處",
+            "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPQzFRdjVDb3NtdElZVnNqYW54NjZwZUdTMklHOWZ1ZWtua1FWZm1kR3hyREdsMklKTWRLb1dFb0hlbDVEWm50ai1wVFNiOGFCMHktMUM4ZjRDZjItQkhBbmc4cjBMWFFuRGN1aEc3aXluTVQtSC1LVTdaTUhWSXNTSdIBX0FVX3lxTE5DdFlZdGFVUGVSZEQ2d3hzMzRfZlBsQ2w4MWhNR291V20zN3ZVYW1Nd0dNTEppYVFFaTZIR1lJU2NwakZJanAyakRoRC1QRDRQbUwzWWs4WVREenVORmMw?oc=5"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-20260801-0426-taiwan-detects-17-chinese-aircraft-and-v",
+        "new_information": [
+          "台灣國防部自2026年8月11日上午6時至12日上午6時止，共偵獲共機6架次及共艦8艘在台海周邊活動。",
+          "偵獲的6架次共機中，有4架次共機逾越海峽中線並進入台灣中部及西南空域。",
+          "國軍於8月11日上午8時5分至晚間6時20分，在台灣海峽空域偵獲中共3架次輔戰機及直升機，其中1架逾越中線。",
+          "國軍於8月11日上午8時5分至中午12時30分，在海峽中線以東的台灣西南空域偵獲中共3架次輔戰機。",
+          "此次中共機艦在台海周邊活動時，國軍漢光42號實兵演習已進入第8天。",
+          "根據本站統計紀錄，前一日（8月11日）偵獲的共機為2架次、共艦7艘及公務船6艘。"
+        ]
+      }
+    ]
+  },
+  "checked_sources": [
+    {
+      "name": "FAA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "NTSB",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "ICAO",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "IATA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "EASA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "Eurocontrol",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "Reuters",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "The Aviation Herald",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "Aerospace Global News",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "CAA Taiwan",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "長榮航空 EVA Air",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "Simple Flying",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "AeroTime",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "中央社 CNA",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "中央社 CNA 產經證券",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "中央社 CNA 國籍航空",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "國防部・軍聞社",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "臺灣交通要聞",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "Airbus",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    },
+    {
+      "name": "Boeing",
+      "ok": true,
+      "last_fetch_utc": "2026-08-12T07:09Z"
+    }
+  ],
+  "warnings": [
+    "AI 搜尋服務暫時不穩定，本期未能產生條列內容；我們正努力恢復服務，系統將於下一期自動重試"
+  ],
+  "generation_mode": "deterministic",
+  "generation_model": null,
+  "grounded_beta": {
+    "used": false,
+    "items": 0
+  }
+}
