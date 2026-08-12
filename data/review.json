@@ -1,5 +1,178 @@
 [
   {
+    "id": "g-20260812-0525-1",
+    "queuedUtc": "2026-08-12T05:25Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The flight performed an abnormal return to gate during taxi due to a unruly passenger disturbance and police intervention.",
+    "riskFlags": [
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "華航由桃園飛往阿姆斯特丹的CI73班機於8月11日晚間準備起飛滑行途中，因一名外籍男乘客酒醉騷擾隔壁女乘客，機長決定折返將該男子退關拒載。",
+        "sourceQuote": "原定11日晚間11時10分起飛的班機，在滑行途中因有外籍男子酒醉鬧事，機長最後決定折返並請警方協助",
+        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "航空警察局接獲華航通報後派員將該名鬧事男子帶下飛機並辦理退關，遭騷擾的女乘客表示不提告。",
+        "sourceQuote": "員警到場後將這名鬧事的外籍年輕男子帶下飛機並辦理退關",
+        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "CI73班機在完成相關處置後於凌晨1時5分重新後推起飛，未再發生其他狀況。",
+        "sourceQuote": "最後班機於凌晨1時5分重新後推起飛，未再發生其他狀況",
+        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "中華航空表示嚴正看待機上旅客滋擾與不當行為，對不理性行為堅持零容忍，並已按照標準作業程序通報航警處理。",
+        "sourceQuote": "華航以飛安及航空保安為最高原則，對於滋擾不理性行為堅持零容忍",
+        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The flight performed an abnormal return to gate during taxi due to a unruly passenger disturbance and police intervention.",
+      "cat": "ops",
+      "zh": {
+        "title": "華航桃園飛阿姆斯特丹班機醉客鬧事 折返帶下機退關",
+        "summary": "華航CI73班機因醉客鬧事折返桃園機場；警將乘客帶下機後重新起飛。",
+        "body": [
+          "中華航空一架由桃園飛往阿姆斯特丹的CI73班機，於8月11日晚間準備起飛滑行途中，因一名外籍男乘客酒醉騷擾鄰座乘客，座艙長通報後機長決定折返並報警處理。航空警察局獲報到場協助，將該名外籍男子帶下飛機辦理退關，該班機遭拒載之男子下機時配合處置。",
+          "受騷擾的女乘客表示不提出告訴，CI73班機隨後於12日凌晨1時5分重新後推起飛。中華航空對此表示，公司嚴正看待機上旅客滋擾與不當行為，對不理性行為堅持零容忍原則，事發時已依標準作業程序通報航警協助離機，確保飛航安全。"
+        ]
+      },
+      "en": {
+        "title": "China Airlines Flight Returns to Gate at Taoyuan After Unruly Passenger Disturbance",
+        "summary": "China Airlines CI73 returned to gate at Taoyuan due to a drunken passenger before departing safely.",
+        "body": [
+          "China Airlines Flight CI73, bound from Taoyuan to Amsterdam, returned to the terminal during taxiing on the evening of August 11 after a male foreign passenger engaged in drunken misconduct and harassed a female passenger next to him. The flight purser reported the incident to the captain, who decided to turn back to the gate and request assistance from law enforcement.",
+          "Officers from the Aviation Police Bureau boarded the aircraft and escorted the unruly passenger off the plane to complete immigration return processing. The harassed passenger declined to press charges, and Flight CI73 pushed back and departed at 1:05 a.m. on August 12. China Airlines stated that it maintains zero tolerance for unruly behavior and handled the situation in accordance with standard operating procedures."
+        ]
+      },
+      "flash": {
+        "zh": "華航CI73班機因客騷擾折返，警方帶走鬧事乘客後重新起飛",
+        "en": "China Airlines CI73 returns to gate at Taoyuan due to unruly passenger",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "華航由桃園飛往阿姆斯特丹的CI73班機於8月11日晚間準備起飛滑行途中，因一名外籍男乘客酒醉騷擾隔壁女乘客，機長決定折返將該男子退關拒載。",
+          "sourceQuote": "原定11日晚間11時10分起飛的班機，在滑行途中因有外籍男子酒醉鬧事，機長最後決定折返並請警方協助",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "航空警察局接獲華航通報後派員將該名鬧事男子帶下飛機並辦理退關，遭騷擾的女乘客表示不提告。",
+          "sourceQuote": "員警到場後將這名鬧事的外籍年輕男子帶下飛機並辦理退關",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "CI73班機在完成相關處置後於凌晨1時5分重新後推起飛，未再發生其他狀況。",
+          "sourceQuote": "最後班機於凌晨1時5分重新後推起飛，未再發生其他狀況",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "中華航空表示嚴正看待機上旅客滋擾與不當行為，對不理性行為堅持零容忍，並已按照標準作業程序通報航警處理。",
+          "sourceQuote": "華航以飛安及航空保安為最高原則，對於滋擾不理性行為堅持零容忍",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "中華航空",
+          "航空警察局"
+        ],
+        "airlines": [
+          "中華航空"
+        ],
+        "aircraft_models": [],
+        "airports": [
+          "桃園機場"
+        ],
+        "locations": [
+          "阿姆斯特丹"
+        ],
+        "flight_numbers": [
+          "CI73"
+        ],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-11",
+          "2026-08-12"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260812-0525-1",
+      "primarySource": "中央社 CNA 國籍航空",
+      "items": [
+        {
+          "title": "起飛滑行中外籍醉客鬧事騷擾乘客 華航折返拒載",
+          "url": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
+          "publishedUtc": "2026-08-12T04:40Z",
+          "summary": "桃園機場,阿姆斯特丹,中華航空,CI73班機,許庚辛,航空警察局,華航,外籍乘客",
+          "image": null,
+          "source": "中央社 CNA 國籍航空",
+          "sourceKey": "cnataiwanairlines"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260811-2330-1",
     "queuedUtc": "2026-08-11T23:31Z",
     "approve": false,
@@ -10027,175 +10200,6 @@
           "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/Flyte-Cirrus-Vision-Jet-runway.jpg",
           "source": "Aerospace Global News",
           "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260809-0423-3",
-    "queuedUtc": "2026-08-09T04:23Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves a reported near-collision and taxiway safety event at Sydney Kingsford Smith Airport requiring manual safety review.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Jetstar and Qatar Airways aircraft nearly collided at Sydney Kingsford Smith Airport.",
-        "sourceQuote": "Jetstar & Qatar Airways Planes Nearly Collide At Sydney Kingsford Smith Airport",
-        "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Taxiway confusion and weekend staffing strains prompted emergency stops.",
-        "sourceQuote": "Taxiway confusion and weekend staffing strains prompted emergency stops",
-        "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "A Jetstar flight was canceled after boarding was completed.",
-        "sourceQuote": "canceled Jetstar flight after boarding",
-        "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves a reported near-collision and taxiway safety event at Sydney Kingsford Smith Airport requiring manual safety review.",
-      "cat": "safety",
-      "zh": {
-        "title": "捷星航空與卡達航空客機於雪梨機場險相撞",
-        "summary": "根據 Simple Flying 報導，捷星航空與卡達航空客機於 Sydney Kingsford Smith 機場發生險些相撞事故。滑行道混亂與週末人力緊張引發緊急煞車，一架捷星航空航班在乘客完成登機後宣告取消。",
-        "body": [
-          "根據 Simple Flying 報導，捷星航空（Jetstar）與卡達航空（Qatar Airways）的航機於雪梨金斯福德·史密斯機場（Sydney Kingsford Smith Airport）發生近乎相撞事故。報導指出，現場出現滑行道混亂狀況，同時伴隨週末人力緊張情形，最終引發航機緊急煞車。",
-          "在該起地面事件發生後，一架捷星航空航班在乘客完成登機程序後遭宣告取消。滑行道動線混亂與人力資源緊縮被列為促成航機緊急煞車及後續航班取消的相關因素。"
-        ]
-      },
-      "en": {
-        "title": "Jetstar and Qatar Airways Planes Nearly Collide at Sydney Kingsford Smith Airport",
-        "summary": "According to news reports published by Simple Flying, planes belonging to Jetstar and Qatar Airways nearly collided at Sydney Kingsford Smith Airport. The report stated that taxiway confusion and weekend staffing strains prompted emergency stops during ground operations. Following the emergency braking, a Jetstar flight was canceled after passenger boarding had already been completed. Both taxiway confusion and weekend staffing conditions were cited as factors in connection with the emergency stops.",
-        "body": [
-          "According to reporting from Simple Flying, aircraft belonging to Jetstar and Qatar Airways were involved in a near-collision event at Sydney Kingsford Smith Airport. The operational disruption reportedly stemmed from taxiway confusion combined with staffing strains during weekend operations, which ultimately prompted emergency braking by the aircraft involved on the ground.",
-          "As a result of the safety event, a Jetstar flight was subsequently canceled after passengers had already completed the boarding process. The reported taxiway routing issues and airport staffing pressures were identified as key factors surrounding the emergency stops and the flight cancellation."
-        ]
-      },
-      "flash": {
-        "zh": "捷星航空與卡達航空客機於雪梨機場險些相撞",
-        "en": "Jetstar and Qatar Airways planes nearly collide at Sydney Airport",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-09",
-        "sev": "ser",
-        "aircraft": "Jetstar and Qatar Airways aircraft",
-        "operator": "Jetstar / Qatar Airways",
-        "phase": {
-          "zh": "地面滑行",
-          "en": "Taxiing"
-        },
-        "location": {
-          "zh": "澳洲雪梨金斯福德·史密斯機場",
-          "en": "Sydney Kingsford Smith Airport, Australia"
-        },
-        "desc": {
-          "zh": "捷星航空與卡達航空客機因滑行道混亂與人力緊張進行緊急煞車，險些相撞。",
-          "en": "Jetstar and Qatar Airways aircraft executed emergency stops due to taxiway confusion and staffing strains, narrowly avoiding a collision."
-        },
-        "status": "prelim"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Jetstar and Qatar Airways aircraft nearly collided at Sydney Kingsford Smith Airport.",
-          "sourceQuote": "Jetstar & Qatar Airways Planes Nearly Collide At Sydney Kingsford Smith Airport",
-          "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Taxiway confusion and weekend staffing strains prompted emergency stops.",
-          "sourceQuote": "Taxiway confusion and weekend staffing strains prompted emergency stops",
-          "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "A Jetstar flight was canceled after boarding was completed.",
-          "sourceQuote": "canceled Jetstar flight after boarding",
-          "sourceUrl": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Simple Flying"
-        ],
-        "airlines": [
-          "Jetstar",
-          "Qatar Airways"
-        ],
-        "aircraft_models": [],
-        "airports": [
-          "Sydney Kingsford Smith Airport"
-        ],
-        "locations": [
-          "Sydney"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260809-0423-3",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Sudden Brakes: Jetstar & Qatar Airways Planes Nearly Collide At Sydney Kingsford Smith Airport",
-          "url": "https://simpleflying.com/jetstar-qatar-airways-planes-nearly-collide-sydney-kingsford-smith-airport/",
-          "publishedUtc": "2026-08-09T03:08Z",
-          "summary": "Taxiway confusion and weekend staffing strains prompted emergency stops and a canceled Jetstar flight after boarding.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/qatar-airways-boeing-777-300er-melbourne-1.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
         }
       ],
       "updateCandidate": false,
