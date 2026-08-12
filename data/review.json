@@ -1,5 +1,653 @@
 [
   {
+    "id": "g-20260812-1552-1",
+    "queuedUtc": "2026-08-12T15:52Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Arrangement involves a $390 million fleet financing transaction requiring review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "United Airlines has secured $390 million in financing from Standard Chartered for four Airbus A321neo and five Boeing 737 MAX 8 aircraft.",
+        "sourceQuote": "United Airlines has secured financing worth $390 million from British multinational bank Standard Chartered for four Airbus A321neo and five Boeing 737 MAX 8 aircraft.",
+        "sourceUrl": "https://www.aerotime.aero/articles/united-airlines-secures-financing-390-million-a321neo-737-max",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Standard Chartered served as lead arranger and initial lender, stating on August 11, 2026, that the transaction supports United's fleet optimization strategy.",
+        "sourceQuote": "Standard Chartered acted as the lead arranger and the initial lender for the approximately $390 million transaction.",
+        "sourceUrl": "https://www.aerotime.aero/articles/united-airlines-secures-financing-390-million-a321neo-737-max",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Standard Chartered previously provided financing for five Airbus A321neo aircraft for United in October 2025.",
+        "sourceQuote": "In October 2025, Standard Chartered announced that it had provided financing of five Airbus A321neo aircraft for United.",
+        "sourceUrl": "https://www.aerotime.aero/articles/united-airlines-secures-financing-390-million-a321neo-737-max",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "According to ch-aviation data, United is awaiting deliveries of 132 Airbus A321neos, 49 A321XLRs, 58 Boeing 737 MAX 9s, and 165 737 MAX 10s.",
+        "sourceQuote": "According to ch-aviation data, United is awaiting deliveries of 132 Airbus A321neos and 49 A321XLRs. The airline is also expecting delivery of 58 Boeing 737 MAX 9s and 165 737 MAX 10s.",
+        "sourceUrl": "https://www.aerotime.aero/articles/united-airlines-secures-financing-390-million-a321neo-737-max",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Arrangement involves a $390 million fleet financing transaction requiring review.",
+      "cat": "biz",
+      "zh": {
+        "title": "聯合航空獲渣打銀行3.9億美元窄體客機融資",
+        "summary": "聯合航空獲渣打銀行3.9億美元融資；涵蓋四架A321neo與五架波音737-8",
+        "body": [
+          "聯合航空（United Airlines）已獲得英國跨國銀行渣打銀行（Standard Chartered）價值3.9億美元的融資安排。此項交易由渣打銀行擔任主辦行暨初始貸款人，用於支持聯合航空引進四架空中巴士（Airbus）A321neo與五架波音（Boeing）737 MAX 8窄體客機。",
+          "渣打銀行於2026年8月11日發表聲明表示，該融資方案旨在支援聯合航空持續推進的機隊最佳化與燃油效率策略。雙方過去亦曾於2025年10月合作，當時渣打銀行為聯合航空的五架A321neo客機提供了融資支援。",
+          "根據ch-aviation統計資料，聯合航空目前尚待接收132架A321neo與49架A321XLR客機，同時也等待交付58架波音737 MAX 9與165架737 MAX 10客機。"
+        ]
+      },
+      "en": {
+        "title": "United Airlines Secures $390M Financing From Standard Chartered for 9 Aircraft",
+        "summary": "United Airlines secured $390 million from Standard Chartered for four Airbus A321neo and five Boeing 737-8 jets.",
+        "body": [
+          "United Airlines has secured approximately $390 million in financing from Standard Chartered for four Airbus A321neo and five Boeing 737 MAX 8 aircraft. Standard Chartered acted as the lead arranger and initial lender for the transaction.",
+          "In an August 11, 2026 statement, Standard Chartered said the arrangement supports United Airlines' fleet optimization and fuel efficiency strategy. The bank previously arranged financing for five United Airbus A321neo aircraft in October 2025.",
+          "According to data from ch-aviation, United Airlines is currently awaiting deliveries of 132 Airbus A321neo and 49 A321XLR aircraft. The U.S. carrier is also expecting delivery of 58 Boeing 737 MAX 9 and 165 737 MAX 10 jets."
+        ]
+      },
+      "flash": {
+        "zh": "聯合航空獲渣打銀行3.9億美元客機融資",
+        "en": "United Airlines secures $390 million financing for narrowbody fleet",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "United Airlines has secured $390 million in financing from Standard Chartered for four Airbus A321neo and five Boeing 737 MAX 8 aircraft.",
+          "sourceQuote": "United Airlines has secured financing worth $390 million from British multinational bank Standard Chartered for four Airbus A321neo and five Boeing 737 MAX 8 aircraft.",
+          "sourceUrl": "https://www.aerotime.aero/articles/united-airlines-secures-financing-390-million-a321neo-737-max",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Standard Chartered served as lead arranger and initial lender, stating on August 11, 2026, that the transaction supports United's fleet optimization strategy.",
+          "sourceQuote": "Standard Chartered acted as the lead arranger and the initial lender for the approximately $390 million transaction.",
+          "sourceUrl": "https://www.aerotime.aero/articles/united-airlines-secures-financing-390-million-a321neo-737-max",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Standard Chartered previously provided financing for five Airbus A321neo aircraft for United in October 2025.",
+          "sourceQuote": "In October 2025, Standard Chartered announced that it had provided financing of five Airbus A321neo aircraft for United.",
+          "sourceUrl": "https://www.aerotime.aero/articles/united-airlines-secures-financing-390-million-a321neo-737-max",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "According to ch-aviation data, United is awaiting deliveries of 132 Airbus A321neos, 49 A321XLRs, 58 Boeing 737 MAX 9s, and 165 737 MAX 10s.",
+          "sourceQuote": "According to ch-aviation data, United is awaiting deliveries of 132 Airbus A321neos and 49 A321XLRs. The airline is also expecting delivery of 58 Boeing 737 MAX 9s and 165 737 MAX 10s.",
+          "sourceUrl": "https://www.aerotime.aero/articles/united-airlines-secures-financing-390-million-a321neo-737-max",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "Standard Chartered",
+          "ch-aviation"
+        ],
+        "airlines": [
+          "United Airlines",
+          "United"
+        ],
+        "aircraft_models": [
+          "Airbus A321neo",
+          "Boeing 737 MAX 8",
+          "A321neos",
+          "A321XLRs",
+          "Boeing 737 MAX 9s",
+          "737 MAX 10s"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "August 11, 2026",
+          "October 2025",
+          "2026-08-12"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260812-1552-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "United Airlines secures financing worth $390 million for A321neo and 737-8 jets",
+          "url": "https://www.aerotime.aero/articles/united-airlines-secures-financing-390-million-a321neo-737-max",
+          "publishedUtc": "2026-08-12T14:41Z",
+          "summary": "United Airlines has secured financing worth $390 million from British multinational bank Standard Chartered for four Airbus A321neo… The post United Airlines secures financing worth $390 million for A321neo and 737-8 jets appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
+            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+            "facts": [
+              {
+                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
+                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260812-1552-2",
+    "queuedUtc": "2026-08-12T15:52Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Aviation safety accident involving a military aircraft crash with pilot ejection. Investigation is underway and cause has not been officially determined. The governor's statement about a probable technical problem is unofficial and must not be treated as a finding. Mandatory human review required for any accident/serious incident and investigation.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A Turkish Air Force F-16 crashed during a training flight in Yalova on August 12, 2026, and the pilot ejected and survived.",
+        "sourceQuote": "A Turkish Air Force F-16 fighter crashed during a training flight in the northwestern province of Yalova on August 12, 2026, with the pilot ejecting and surviving, the Turkish Ministry of National Defense said.",
+        "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The ministry said on NSosyal that the F-16 was assigned to a squadron of the 1st Main Jet Base at Eskişehir and that the cause would be established after a detailed investigation.",
+        "sourceQuote": "the ministry said a Turkish F-16 assigned to a squadron of the 1st Main Jet Base at Eskişehir was involved in an accident at Yalova during a training flight and that the pilot ejected safely. It added that the cause would be established after a detailed investigation.",
+        "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Yalova governor Ahmet Hamdi Usta said the aircraft came down at around 15:00 local time next to the 18th Main Base Command, the pilot was recovered unharmed, and there were no casualties on the ground.",
+        "sourceQuote": "Yalova governor Ahmet Hamdi Usta, who visited the site, told reporters the aircraft came down at around 15:00 local time immediately next to the 18th Main Base Command, a Turkish Air Force military installation located in Yalova Province, northwestern Turkey. He said the pilot was recovered unharmed and that there were no casualties among civilian or military personnel on the ground.",
+        "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Usta said the accident involved a single aircraft with no collision and that the jet had probably suffered a technical problem, while stressing the investigation board would determine the cause.",
+        "sourceQuote": "Asked whether a mid-air collision had taken place, Usta said the accident involved a single aircraft and that no collision occurred. He said the jet had probably suffered a technical problem, while stressing that the investigation board would determine the cause.",
+        "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "AFAD, national medical rescue units and the fire service were dispatched; the wreckage was reached without fire and an accident investigation team began technical work.",
+        "sourceQuote": "Teams from the Turkish disaster agency AFAD, national medical rescue units and the fire service were dispatched to the scene. The wreckage was reached without a fire breaking out, and an accident investigation team had begun technical work.",
+        "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The accident is the second F-16 lost by the Turkish Air Force in 2026; on February 25, 2026, a jet from the 9th Main Jet Base Command crashed after a night departure from Balıkesir, killing pilot Major İbrahim Bolat.",
+        "sourceQuote": "The accident is the second F-16 the Turkish Air Force has lost in 2026. On February 25, 2026, a jet from the 9th Main Jet Base Command went down shortly after a night departure from Balıkesir, killing its pilot, Major İbrahim Bolat.",
+        "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety accident involving a military aircraft crash with pilot ejection. Investigation is underway and cause has not been officially determined. The governor's statement about a probable technical problem is unofficial and must not be treated as a finding. Mandatory human review required for any accident/serious incident and investigation.",
+      "cat": "mil",
+      "zh": {
+        "title": "土耳其空軍F-16於Yalova訓練飛行中墜毀飛行員彈射獲救",
+        "summary": "土耳其空軍F-16於Yalova訓練時墜毀；飛行員彈射生還，無地面傷亡",
+        "body": [
+          "土耳其國防部表示，一架土耳其空軍F-16戰機於2026年8月12日在西北部Yalova省進行訓練飛行時發生事故，飛行員彈射逃生並生還。",
+          "國防部在社群平台NSosyal發布聲明指出，該架F-16隸屬於Eskişehir第一主力噴射機基地的一個中隊，在Yalova訓練飛行期間發生事故，飛行員安全彈射。聲明補充，事故原因將在詳細調查後確認。",
+          "Yalova省長Ahmet Hamdi Usta前往現場視察後向記者表示，戰機於當地時間約15時墜落於第18主力基地指揮部旁。他表示飛行員被尋獲時未受傷，地面軍民人員均無傷亡。",
+          "針對是否發生空中相撞，Usta表示事故僅涉及單架戰機，未發生碰撞。他說戰機可能遭遇技術問題，但同時強調調查委員會將認定真正原因。",
+          "土耳其災害管理機構AFAD、國家醫療救援單位及消防部門已派赴現場。殘骸抵達時未發生火災，事故調查小組已展開技術工作。據土耳其媒體Türkiye Today報導，飛行員被送往Yalova Training and Research Hospital。",
+          "AeroTime報導，這是土耳其空軍2026年損失的第二架F-16。2026年2月25日，一架隸屬第九主力噴射機基地指揮部的戰機自Balıkesir夜間起飛後不久墜毀，飛行員Major İbrahim Bolat殉職。"
+        ]
+      },
+      "en": {
+        "title": "Turkish Air Force F-16 Crashes Near Yalova During Training, Pilot Ejects Safely",
+        "summary": "Turkish Air Force F-16 crashed during training at Yalova; pilot ejected safely, no ground casualties",
+        "body": [
+          "A Turkish Air Force F-16 fighter crashed during a training flight in the northwestern province of Yalova on August 12, 2026, with the pilot ejecting and surviving, the Turkish Ministry of National Defense said.",
+          "In a statement published on the Turkish social platform NSosyal, the ministry said a Turkish F-16 assigned to a squadron of the 1st Main Jet Base at Eskişehir was involved in an accident at Yalova during a training flight and that the pilot ejected safely. It added that the cause would be established after a detailed investigation.",
+          "Yalova governor Ahmet Hamdi Usta, who visited the site, told reporters the aircraft came down at around 15:00 local time immediately next to the 18th Main Base Command. He said the pilot was recovered unharmed and that there were no casualties among civilian or military personnel on the ground.",
+          "Asked whether a mid-air collision had taken place, Usta said the accident involved a single aircraft and that no collision occurred. He said the jet had probably suffered a technical problem, while stressing that the investigation board would determine the cause.",
+          "Teams from the Turkish disaster agency AFAD, national medical rescue units and the fire service were dispatched to the scene. The wreckage was reached without a fire breaking out, and an accident investigation team had begun technical work. Turkish outlet Türkiye Today reported that the pilot was taken to Yalova Training and Research Hospital.",
+          "According to AeroTime, the accident is the second F-16 the Turkish Air Force has lost in 2026. On February 25, 2026, a jet from the 9th Main Jet Base Command went down shortly after a night departure from Balıkesir, killing its pilot, Major İbrahim Bolat."
+        ]
+      },
+      "flash": {
+        "zh": "土耳其空軍F-16於Yalova訓練時墜毀，飛行員彈射獲救",
+        "en": "Turkish Air Force F-16 crashes during training at Yalova; pilot ejects safely",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-12",
+        "sev": "acc",
+        "aircraft": "F-16",
+        "operator": "Turkish Air Force",
+        "phase": {
+          "zh": "訓練飛行",
+          "en": "Training flight"
+        },
+        "location": {
+          "zh": "Yalova省",
+          "en": "Yalova Province"
+        },
+        "desc": {
+          "zh": "隸屬Eskişehir第一主力噴射機基地的F-16於訓練飛行中墜毀，飛行員彈射生還；原因待調查",
+          "en": "F-16 from 1st Main Jet Base at Eskişehir crashed during training flight; pilot ejected safely; cause under investigation"
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A Turkish Air Force F-16 crashed during a training flight in Yalova on August 12, 2026, and the pilot ejected and survived.",
+          "sourceQuote": "A Turkish Air Force F-16 fighter crashed during a training flight in the northwestern province of Yalova on August 12, 2026, with the pilot ejecting and surviving, the Turkish Ministry of National Defense said.",
+          "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The ministry said on NSosyal that the F-16 was assigned to a squadron of the 1st Main Jet Base at Eskişehir and that the cause would be established after a detailed investigation.",
+          "sourceQuote": "the ministry said a Turkish F-16 assigned to a squadron of the 1st Main Jet Base at Eskişehir was involved in an accident at Yalova during a training flight and that the pilot ejected safely. It added that the cause would be established after a detailed investigation.",
+          "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Yalova governor Ahmet Hamdi Usta said the aircraft came down at around 15:00 local time next to the 18th Main Base Command, the pilot was recovered unharmed, and there were no casualties on the ground.",
+          "sourceQuote": "Yalova governor Ahmet Hamdi Usta, who visited the site, told reporters the aircraft came down at around 15:00 local time immediately next to the 18th Main Base Command, a Turkish Air Force military installation located in Yalova Province, northwestern Turkey. He said the pilot was recovered unharmed and that there were no casualties among civilian or military personnel on the ground.",
+          "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Usta said the accident involved a single aircraft with no collision and that the jet had probably suffered a technical problem, while stressing the investigation board would determine the cause.",
+          "sourceQuote": "Asked whether a mid-air collision had taken place, Usta said the accident involved a single aircraft and that no collision occurred. He said the jet had probably suffered a technical problem, while stressing that the investigation board would determine the cause.",
+          "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "AFAD, national medical rescue units and the fire service were dispatched; the wreckage was reached without fire and an accident investigation team began technical work.",
+          "sourceQuote": "Teams from the Turkish disaster agency AFAD, national medical rescue units and the fire service were dispatched to the scene. The wreckage was reached without a fire breaking out, and an accident investigation team had begun technical work.",
+          "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The accident is the second F-16 lost by the Turkish Air Force in 2026; on February 25, 2026, a jet from the 9th Main Jet Base Command crashed after a night departure from Balıkesir, killing pilot Major İbrahim Bolat.",
+          "sourceQuote": "The accident is the second F-16 the Turkish Air Force has lost in 2026. On February 25, 2026, a jet from the 9th Main Jet Base Command went down shortly after a night departure from Balıkesir, killing its pilot, Major İbrahim Bolat.",
+          "sourceUrl": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Turkish Air Force",
+          "Turkish Ministry of National Defense",
+          "AFAD",
+          "1st Main Jet Base",
+          "9th Main Jet Base Command",
+          "18th Main Base Command"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "F-16"
+        ],
+        "airports": [],
+        "locations": [
+          "Yalova",
+          "Eskişehir",
+          "Balıkesir",
+          "Yalova Training and Research Hospital"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-12",
+          "2026-02-25"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260812-1552-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Turkish Air Force F-16 crashes near Yalova during training, pilot ejects",
+          "url": "https://www.aerotime.aero/articles/turkish-air-force-f-16-crashes-yalova-pilot-ejects",
+          "publishedUtc": "2026-08-12T14:28Z",
+          "summary": "A Turkish Air Force F-16 fighter crashed during a training flight in the northwestern province of Yalova on… The post Turkish Air Force F-16 crashes near Yalova during training, pilot ejects appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "same airport code(s): THE",
+              "archive predates source by 10 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260812-1246-3",
     "queuedUtc": "2026-08-12T12:46Z",
     "approve": false,
@@ -9507,587 +10155,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260809-1136-1",
-    "queuedUtc": "2026-08-09T11:36Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The item involves compliance with civil aviation airport height restrictions and obstacle limitations, requiring regulatory coordination and building demolition; submitted for manual review under regulatory action risk rules.",
-    "riskFlags": [
-      "regulatory_action"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "國泰人壽於置地廣場桃園B區推動複合式商業開發案，近期傳出建物疑似超過機場圓錐面限高。",
-        "sourceQuote": "擬於置地廣場桃園B區推動複合式商業開發案，但近期傳出建物疑似超過機場圓錐面限高。",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608090168.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "國泰人壽表示已於協調會中達成共識，將依航高限制規定修正建築物高度，並會在安全前提下儘速完成拆除作業以維護飛安。",
-        "sourceQuote": "已於協調會中達成共識，將依航高限制規定修正建築物高度，會在安全前提下儘速取得相關許可、完成拆除作業，維護飛安。",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608090168.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "國泰人壽於7月31日參與桃園市政府召集的協調會，與建管處、民航局及桃機公司代表釐清法規適用問題並檢討解決方案。",
-        "sourceQuote": "7月31日會同接手的建築師、承造公司及法律顧問等，參與桃園市政府召集的協調會，與建管處長官、民航局代表及桃機公司代表釐清法規適用問題",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608090168.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "協調會共識為該案須依航高限制規定修正高度，現取得核准的建造執照須辦理變更設計，並由民航局提供座標定位高度。",
-        "sourceQuote": "會議共識為此案須依航高限制規定修正建築物高度，修至合乎115年初因第三航道修正前的規定，現取得核准的建造執照須辦理變更設計",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608090168.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The item involves compliance with civil aviation airport height restrictions and obstacle limitations, requiring regulatory coordination and building demolition; submitted for manual review under regulatory action risk rules.",
-      "cat": "reg",
-      "zh": {
-        "title": "國泰人壽桃園建物超高允修正高度並辦理拆除",
-        "summary": "國泰人壽於置地廣場桃園B區推動複合式商業開發案，近期傳出建物超過機場圓錐面限高。國泰人壽指出，7月31日已與桃園市政府建管處、民航局及桃機公司召開協調會達成共識，將依航高限制規定修正建物高度辦理變更設計，並會在安全前提下儘速完成拆除作業，以維護飛航安全。",
-        "body": [
-          "國泰人壽於置地廣場桃園B區推動複合式商業開發案，近期傳出建物疑似超過機場圓錐面限高。國泰人壽表示，已於協調會中達成共識，將依航高限制規定修正建築物高度，並會在安全前提下儘速取得相關許可與完成拆除作業，以維護飛航安全。",
-          "國泰人壽說明，公司於7月31日會同建築師、承造公司及法律顧問，參與桃園市政府召集的協調會，與建管處、民航局及桃機公司代表釐清法規適用問題與檢討解決方案。會議共識要求此案須依航高限制規定修正高度，現取得核準的建造執照須辦理變更設計。",
-          "根據會議共識，民航局將提供座標定位高度供建築師辦理變更設計，承造公司同步向桃機公司提報施工規劃方案，國泰人壽則向桃園市建管單位申請變更設計與施工許可。國泰人壽強調已積極辦理相關程序，並在最短時間內完成拆除作業。"
-        ]
-      },
-      "en": {
-        "title": "Cathay Life to Modify Building Height and Demolish Over-Height Structure in Taoyuan",
-        "summary": "Cathay Life Insurance stated that it will modify the height of a building in its Landmark Plaza Taoyuan Zone B commercial development project after reports emerged that the structure exceeded airport conical surface height limits. Following a coordination meeting on July 31 with the Taoyuan City Building Administration Office, Civil Aeronautics Administration, and Taoyuan International Airport Corp., consensus was reached to adjust the building height in compliance with aviation height restrictions. Cathay Life confirmed it will apply for design changes and complete demolition work as quickly as possible under safe conditions to ensure aviation safety.",
-        "body": [
-          "Cathay Life Insurance announced that it will modify the height of a building in its Landmark Plaza Taoyuan Zone B commercial development project after reports indicated the structure exceeded airport height limits. The company stated it will obtain permits and carry out demolition work as quickly as possible under safe conditions to maintain flight safety.",
-          "The developer attended a July 31 coordination meeting convened by the Taoyuan City Government with officials from the Civil Aeronautics Administration, Taoyuan International Airport Corp., and local building authorities. Attendees agreed that the building height must be modified in accordance with aviation height restrictions, requiring design changes to the approved construction permit.",
-          "The Civil Aeronautics Administration will supply coordinate-based height specifications for design modifications. Cathay Life will apply for design changes and construction permits with local authorities, while the contractor submits a revised construction plan to Taoyuan International Airport Corp. prior to completing demolition."
-        ]
-      },
-      "flash": {
-        "zh": "國泰人壽置地廣場桃園B區建物超高，承諾修正高度並拆除。",
-        "en": "Cathay Life agrees to lower building height at Taoyuan development over obstacle limits.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "國泰人壽於置地廣場桃園B區推動複合式商業開發案，近期傳出建物疑似超過機場圓錐面限高。",
-          "sourceQuote": "擬於置地廣場桃園B區推動複合式商業開發案，但近期傳出建物疑似超過機場圓錐面限高。",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608090168.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "國泰人壽表示已於協調會中達成共識，將依航高限制規定修正建築物高度，並會在安全前提下儘速完成拆除作業以維護飛安。",
-          "sourceQuote": "已於協調會中達成共識，將依航高限制規定修正建築物高度，會在安全前提下儘速取得相關許可、完成拆除作業，維護飛安。",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608090168.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "國泰人壽於7月31日參與桃園市政府召集的協調會，與建管處、民航局及桃機公司代表釐清法規適用問題並檢討解決方案。",
-          "sourceQuote": "7月31日會同接手的建築師、承造公司及法律顧問等，參與桃園市政府召集的協調會，與建管處長官、民航局代表及桃機公司代表釐清法規適用問題",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608090168.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "協調會共識為該案須依航高限制規定修正高度，現取得核准的建造執照須辦理變更設計，並由民航局提供座標定位高度。",
-          "sourceQuote": "會議共識為此案須依航高限制規定修正建築物高度，修至合乎115年初因第三航道修正前的規定，現取得核准的建造執照須辦理變更設計",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608090168.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "國泰人壽",
-          "桃園市政府",
-          "民航局",
-          "桃機公司"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "桃園",
-          "置地廣場桃園B區",
-          "高鐵桃園車站產專區",
-          "台北"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-09",
-          "7月31日"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "regulatory_action"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260809-1136-1",
-      "primarySource": "中央社 CNA 產經證券",
-      "items": [
-        {
-          "title": "置地廣場桃園B區建物超高 國壽允修正高度儘速拆除",
-          "url": "https://www.cna.com.tw/news/afe/202608090168.aspx",
-          "publishedUtc": "2026-08-09T10:55Z",
-          "summary": "（中央社記者趙敏雅台北9日電）國泰人壽斥資新台幣近百億元，擬於置地廣場桃園B區推動複合式商業開發案，但近期傳出建物疑似超過機場圓錐面限高。國泰人壽今天表示，已於協調會中達成共識，將依航高限制規定修正建築物高度，會在安全前提下儘速取得相關許可、完成拆除作業，維護飛安。",
-          "image": null,
-          "source": "中央社 CNA 產經證券",
-          "sourceKey": "cnataiwanfinance"
-        },
-        {
-          "title": "置地廣場桃園B區建物超高　國壽允修正高度儘速拆除",
-          "summary": "置地廣場桃園B區建物超高 國壽允修正高度儘速拆除 &nbsp;&nbsp; 經濟日報",
-          "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFAtcDNfZEVYdlhyMFpveEJ4dFlZcEtZdFI3NThtampXVjh4ekhCcklVNzYxNGFNZG1aWUVSNDVvT0NaVVRRelFwTl9fbXVkUFNrNHVLTlJIRFk3clA1MEtKMlhxeUQweXhGa2Rram05aTRKc0VG0gFfQVVfeXFMTWw4cEpwbGw4ZWczT2hjWG1MQXhpUXNDQzdMd2Y0TzJsb1dBYWVKSTRMdHZvekFTc19fbDNUd1Ytbm1FVHdwS1dQVURDRkVFRDJlTFBZdzJBTFdnWG1Qd28?oc=5",
-          "source": "經濟日報",
-          "companion": true,
-          "publishedUtc": "2026-08-09T11:00Z"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260727-0838-presidential-office-rejects-show-claim-s",
-            "relationship_type": "regulatory_progression",
-            "relationship_evidence": [
-              "same named core entity: 中央社",
-              "archive predates source by 13 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
-            "event_date": "2026-07-27",
-            "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍",
-            "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-            "facts": [
-              {
-                "claim": "Media reported that President Lai’s inspection during the Han Kuang exercise was a \"show\".",
-                "source_quote": "有媒體報導稱總統賴清德在漢光演習期間安排視導是「作秀」",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "The Presidential Office stated that, as commander‐in‐chief, the President’s inspection of a major drill is a responsibility and an obligation.",
-                "source_quote": "作為三軍統帥，總統在國軍重要演訓期間參與視導，是責任也是義務",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "The spokesperson called the \"show\" accusation speculation, a distortion of views, and a defamation of the military and national defence.",
-                "source_quote": "所謂「作秀」之說，內容多屬臆測、觀點扭曲，更污名化國軍與國防，令人遺憾",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "Heads of state attending major military exercises is standard practice in Europe, the US, Japan and South Korea.",
-                "source_quote": "國家元首參與國家重大軍事演訓，無論歐、美、日、韓等國，國際皆然",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "Since Han Kuang 40 the drills have been unscripted and realistic; the President’s visit was scheduled by the Ministry of National Defense according to the exercise progress, with no arranged \"firepower show\".",
-                "source_quote": "自漢光40號演習起，即採取「無劇本、實戰化」演練。總統參與視導，亦由國防部依照演習進程適時規劃，不存在所謂安排「火力秀」的問題",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              },
-              {
-                "claim": "Accusations of shifting opposition attacks or staging a performance for voters are baseless and unfair to personnel strengthening defence.",
-                "source_quote": "至於所謂「轉移在野攻擊」、「作秀給選民看」等無端指控，對此刻正為強化國防、守護國家而努力的所有人員極不公平",
-                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
-                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260803-0436-taiwan-caa-announces-international-airli",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: 民航局",
-              "archive predates source by 6 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 6 day(s) apart",
-            "event_date": "2026-08-03",
-            "source_name": "CAA Taiwan — 油價調漲,國籍航空公司國際線燃油附加費8月9日起調漲",
-            "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2571&lang=1",
-            "facts": [
-              {
-                "claim": "The Civil Aeronautics Administration of Taiwan announced that passenger fuel surcharges for international flights operated by domestic airlines will increase starting August 9, 2026.",
-                "source_quote": "由於航空燃油價格近期上漲，國籍航空公司國際航線客運燃油附加費將自本月9日起調漲",
-                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2571&lang=1",
-                "source_name": "CAA Taiwan — 油價調漲,國籍航空公司國際線燃油附加費8月9日起調漲"
-              },
-              {
-                "claim": "International aviation fuel prices announced by CPC Corporation rose from $133.29 to $147.57 per barrel, adjusting the surcharge tier from level 11 to level 12.",
-                "source_quote": "依據中油今日公告之國際航線航空燃油價格，由每桶133.29元調漲為147.57美元（自第11級距調整為第12級距）",
-                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2571&lang=1",
-                "source_name": "CAA Taiwan — 油價調漲,國籍航空公司國際線燃油附加費8月9日起調漲"
-              },
-              {
-                "claim": "Short-haul international route fuel surcharges will rise from $27.50 to $30, and long-haul surcharges will rise from $71.50 to $78.",
-                "source_quote": "國籍航空公司之國際航線客運燃油附加費短程航線由27.5美元調漲為30美元，長程航線由71.5美元調漲為78美元",
-                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2571&lang=1",
-                "source_name": "CAA Taiwan — 油價調漲,國籍航空公司國際線燃油附加費8月9日起調漲"
-              },
-              {
-                "claim": "The CAA requested airlines to disclose relevant background information to safeguard consumer rights.",
-                "source_quote": "交通部民用航空局已要求業者充分揭露相關資訊，以維護消費者權益",
-                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2571&lang=1",
-                "source_name": "CAA Taiwan — 油價調漲,國籍航空公司國際線燃油附加費8月9日起調漲"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260806-1215-typhoon-white-dolphin-prompts-china-airl",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: 中央社",
-              "archive predates source by 4 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 4 day(s) apart",
-            "event_date": "2026-08-05",
-            "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動",
-            "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
-            "facts": [
-              {
-                "claim": "中華航空因颱風白海豚調整2026年8月6日至8日往返沖繩航班,共取消14架次,部分架次提前、延後或放大機型。",
-                "source_quote": "華航公布明起至8日飛沖繩航班異動，14架次取消，部分架次提前、延後或放大機型",
-                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
-                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
-              },
-              {
-                "claim": "星宇航空調整8月6日至7日台灣往返沖繩航班,其中6日取消2架次,7日航班全數取消。",
-                "source_quote": "星宇航空明天6架次異動，包含2架次取消，7日往返沖繩航班全取消。",
-                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
-                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260809-0948-2",
-    "queuedUtc": "2026-08-09T09:48Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Aviation safety event involving cockpit smoke report, emergency landing, slide evacuation, medical attention, and FAA investigation requiring mandatory editorial review.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "investigation",
-      "casualties_or_injuries",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "達美航空一架航班於2026年8月8日自亞特蘭大起飛前往奧蘭多後不久轉降返回亞特蘭大。",
-        "sourceQuote": "On August 8, 2026, the Delta Air Lines flight left Atlanta at 07:35, for Orlando International Airport (MCO) but diverted back to ATL shortly after takeoff.",
-        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "美國聯邦航空總署表示獲報國籍標誌暨登記號碼N555NW的波音757-200客機駕駛艙出現煙霧。",
-        "sourceQuote": "In a statement, the Federal Aviation Administration (FAA) said that smoke was reported in the cockpit of the Boeing 757-200, registered N555NW.",
-        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "該班機返回亞特蘭大降落後，乘客透過緊急滑梯疏散至滑行道上。",
-        "sourceQuote": "Once the aircraft landed back at Hartsfield-Jackson Atlanta, the passengers disembarked via emergency slides onto the taxiway.",
-        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "機上載有199名乘客與6名機組人員，一名工作人員及一名乘客需要醫療協助。",
-        "sourceQuote": "It is understood that there were 199 passengers and six crew members on the flight. A staff member and a passenger required medical attention.",
-        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "美國聯邦航空總署表示正在調查此起事故。",
-        "sourceQuote": "The FAA said it is investigating the incident.",
-        "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Aviation safety event involving cockpit smoke report, emergency landing, slide evacuation, medical attention, and FAA investigation requiring mandatory editorial review.",
-      "cat": "safety",
-      "zh": {
-        "title": "達美航空波音757駕駛艙獲報煙霧 返航亞特蘭大緊急疏散",
-        "summary": "達美航空一架載有199名乘客與6名機組人員的波音757-200客機，於2026年8月8日自亞特蘭大飛往奧蘭多途中，因駕駛艙獲報出現煙霧而返航亞特蘭大機場。客機降落後乘客經由緊急滑梯疏散至滑行道，事故造成兩人需要醫療協助。美國聯邦航空總署已就此事件展開調查。",
-        "body": [
-          "達美航空一架波音757-200客機（國籍標誌暨登記號碼：N555NW）於2026年8月8日上午07:35自亞特蘭大哈茨菲爾德-傑克遜國際機場起飛，原定飛往奧蘭多國際機場，但在起飛後不久因機組人員獲報駕駛艙出現煙霧，隨即決定返航亞特蘭大。",
-          "美國聯邦航空總署表示，該客機安全降落亞特蘭大機場後，機上人員隨即經由緊急逃生滑梯疏散至滑行道上。當時機上共載有199名乘客與6名機組人員。",
-          "事故發生後，有一名工作人員與一名乘客需要接受醫療協助，受影響乘客隨後由航空公司安排轉乘其他班機前往目的地。美國聯邦航空總署已證實正對此起事故展開調查。"
-        ]
-      },
-      "en": {
-        "title": "Delta Boeing 757 Evacuates via Slides in Atlanta After Smoke Reported in Cockpit",
-        "summary": "A Delta Air Lines Boeing 757-200 carrying 199 passengers and six crew members was forced to divert back to Hartsfield-Jackson Atlanta International Airport on August 8, 2026, following reports of smoke in the cockpit shortly after takeoff for Orlando. Upon landing, passengers evacuated the aircraft via emergency escape slides onto a taxiway. One staff member and one passenger required medical attention after the incident. The Federal Aviation Administration confirmed that it has launched an investigation into the occurrence.",
-        "body": [
-          "A Delta Air Lines Boeing 757-200, registered as N555NW, diverted back to Hartsfield-Jackson Atlanta International Airport shortly after departing at 07:35 on August 8, 2026, on a scheduled flight to Orlando International Airport.",
-          "According to the Federal Aviation Administration, smoke was reported in the cockpit of the aircraft during flight. Following the landing back at Atlanta, passengers and crew evacuated the airplane using emergency escape slides onto the airport taxiway.",
-          "The aircraft was carrying 199 passengers and six crew members. One crew member and one passenger required medical attention following the evacuation. The Federal Aviation Administration stated that it is investigating the incident."
-        ]
-      },
-      "flash": {
-        "zh": "達美航空一架波音757客機因駕駛艙出現煙霧返航亞特蘭大，乘客經滑梯疏散。",
-        "en": "Delta Boeing 757 evacuates on taxiway in Atlanta after cockpit smoke report.",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-08",
-        "sev": "inc",
-        "aircraft": "Boeing 757-200",
-        "operator": "Delta Air Lines",
-        "phase": {
-          "zh": "爬升 / 轉降降落",
-          "en": "Climb / Diversion landing"
-        },
-        "location": {
-          "zh": "美國喬治亞州亞特蘭大哈茨菲爾德-傑克遜國際機場",
-          "en": "Hartsfield-Jackson Atlanta International Airport, Georgia, United States"
-        },
-        "desc": {
-          "zh": "駕駛艙獲報煙霧後返航亞特蘭大，客機降落後乘客經由緊急逃生滑梯疏散至滑行道。",
-          "en": "Aircraft returned to Atlanta after cockpit smoke was reported, followed by passenger evacuation via slides on the taxiway."
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "達美航空一架航班於2026年8月8日自亞特蘭大起飛前往奧蘭多後不久轉降返回亞特蘭大。",
-          "sourceQuote": "On August 8, 2026, the Delta Air Lines flight left Atlanta at 07:35, for Orlando International Airport (MCO) but diverted back to ATL shortly after takeoff.",
-          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "美國聯邦航空總署表示獲報國籍標誌暨登記號碼N555NW的波音757-200客機駕駛艙出現煙霧。",
-          "sourceQuote": "In a statement, the Federal Aviation Administration (FAA) said that smoke was reported in the cockpit of the Boeing 757-200, registered N555NW.",
-          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "該班機返回亞特蘭大降落後，乘客透過緊急滑梯疏散至滑行道上。",
-          "sourceQuote": "Once the aircraft landed back at Hartsfield-Jackson Atlanta, the passengers disembarked via emergency slides onto the taxiway.",
-          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "機上載有199名乘客與6名機組人員，一名工作人員及一名乘客需要醫療協助。",
-          "sourceQuote": "It is understood that there were 199 passengers and six crew members on the flight. A staff member and a passenger required medical attention.",
-          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "美國聯邦航空總署表示正在調查此起事故。",
-          "sourceQuote": "The FAA said it is investigating the incident.",
-          "sourceUrl": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "Federal Aviation Administration",
-          "FAA"
-        ],
-        "airlines": [
-          "Delta Air Lines"
-        ],
-        "aircraft_models": [
-          "Boeing 757-200"
-        ],
-        "airports": [
-          "Hartsfield-Jackson Atlanta International Airport",
-          "ATL",
-          "Orlando International Airport",
-          "MCO"
-        ],
-        "locations": [
-          "Atlanta"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [
-          "N555NW"
-        ],
-        "event_dates": [
-          "2026-08-08"
-        ]
-      },
-      "eventStatus": "under_investigation",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "investigation",
-        "casualties_or_injuries",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260809-0948-2",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Delta passengers evacuate on escape slides after emergency landing",
-          "url": "https://www.aerotime.aero/articles/delta-passengers-evacuate-on-escape-slides-after-emergency-landing",
-          "publishedUtc": "2026-08-09T08:31Z",
-          "summary": "Delta Air Lines passengers were forced to evacuate a Boeing 757-200 on escape slides at Hartsfield-Jackson Atlanta International… The post Delta passengers evacuate on escape slides after emergency landing appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260728-0855-swiss-lx16-diverts-bangor-after-smoke",
-            "relationship_type": "investigation_progression",
-            "relationship_evidence": [
-              "same named core entity: federal aviation administration",
-              "archive predates source by 13 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
-            "event_date": "2026-07-27",
-            "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin",
-            "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
-            "facts": [
-              {
-                "claim": "LX16於班戈當地時間7月27日12時14分安全落地。",
-                "source_quote": "has landed safely at 12:14 local. The emergency was resolved.",
-                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
-                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
-              },
-              {
-                "claim": "SWISS表示機組員因商務艙出現煙霧而改降班戈。",
-                "source_quote": "crew on board Swiss International Air Lines flight LX16 on Monday decided to divert to Bangor due to smoke in the business class section of the flight.",
-                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
-                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
-              },
-              {
-                "claim": "消防人員檢查後未發現火源或異常熱度。",
-                "source_quote": "Firefighters inspected the aircraft and found no signs of fire or heat.",
-                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
-                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
-              },
-              {
-                "claim": "SWISS表示208名乘客及機組員均平安。",
-                "source_quote": "All 208 passengers and crew were safe",
-                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
-                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
-              },
-              {
-                "claim": "FAA初步聲明記載機組員曾通報駕駛艙起火,並表示將調查。",
-                "source_quote": "Swiss International Air Lines Flight 16F safely landed at Bangor International Airport in Maine around noon on Monday, July 27, after the crew reported a cockpit fire.",
-                "source_url": "https://www.faa.gov/newsroom/statements/accident_incidents",
-                "source_name": "Federal Aviation Administration — Statements on Aviation Accidents and Incidents"
-              },
-              {
-                "claim": "SWISS尚未確定煙霧原因,將檢查航空器且不會在調查完成前推測。",
-                "source_quote": "The airline has not been able to identify for certain what caused the smoke.",
-                "source_url": "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport/",
-                "source_name": "Portland Press Herald — Swiss Air flight makes emergency landing in Bangor due to smoke in cabin"
-              }
-            ]
-          }
-        ]
       }
     }
   }
