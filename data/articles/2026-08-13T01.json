@@ -1,0 +1,218 @@
+{
+  "articles": [
+    {
+      "id": "a-20260813-0109-lockheed-martin-tracks-drones-via-unmodi",
+      "publishedUtc": "2026-08-13T01:09Z",
+      "cat": "ops",
+      "primarySource": "AeroTime",
+      "image": null,
+      "zh": {
+        "title": "洛克希德馬丁於邁阿密完成5G網路無人機追蹤測試",
+        "summary": "洛克希德馬丁以威瑞森5G網路成功偵測並追蹤無人機；預估2027年商業化。",
+        "body": [
+          "美國國防與航太廠商洛克希德馬丁（Lockheed Martin）表示，公司於2026年7月在邁阿密地區完成一項概念驗證測試，成功利用威瑞森（Verizon）既有的商業5G行動通訊網路偵測並持續追蹤無人機。這項測試過程完全未對電信營運商已部署的無線電設備進行任何硬體修改，展現出利用既有基礎設施進行廣域空域監控的可行性。",
+          "在運作機制上，該項名為NetSense的系統並非新增雷達或專用射頻感測器，而是透過分析既有行動通訊網路中傳輸的訊號擾動來進行定位。測試過程中，ODC提供人工智慧原生無線電接取網路軟體，輝達（NVIDIA）提供AI Aerial平台於網路邊緣處理射頻測量數據，鍵視科技（Keysight Technologies）則提供模擬與測試工具，並結合洛克希德馬丁的全資子公司Astris AI進行整體運作與軌跡預測。",
+          "威瑞森技術與產品開發資深副總裁Anil Guntupali指出，將人工智慧技術應用於跨越網路的訊號測量資料，能將現有的通訊網路轉化為智慧感測平台。洛克希德馬丁強調，此一技術能在不變更既有電信無線電設備的前提下達成無人機感測，除了節省重新建置電信基礎設施的龐大成本，也能在6G整合感測與通訊標準制定完成前提早提供相應能力。",
+          "洛克希德馬丁規劃將NetSense以訂閱制服務形式推向市場，預計於2026年下半年至2027年初進行先期試點部署，並於2027年進行全面商業化推廣。不過，洛克希德馬丁並未公開本次測試的具體偵測距離、涉及的基站數量、無人機機型與尺寸、追蹤高度以及虛警率等關鍵數據。"
+        ]
+      },
+      "en": {
+        "title": "Lockheed Martin Tracks Drones via Unmodified Verizon 5G Network",
+        "summary": "Lockheed Martin tested drone tracking over Verizon's commercial 5G network in Miami ahead of planned 2027 availability.",
+        "body": [
+          "Lockheed Martin announced that it successfully detected and tracked unmanned aerial vehicles using Verizon's commercial 5G network during a demonstration conducted in the Miami area in July 2026. The test was completed without making any modifications to the telecommunications provider's deployed radio hardware. According to the company, the flight demonstration presents a viable path toward wide-area airspace monitoring by leveraging already-installed commercial cellular infrastructure.",
+          "Rather than installing traditional radar systems or dedicated radio frequency sensors, Lockheed Martin's NetSense platform operates by analyzing subtle signal disturbances naturally occurring across the cellular network. The demonstration brought together several technology partners, including ODC, which supplied AI-native radio access network software, and NVIDIA, which provided its AI Aerial platform to process radio frequency measurements at the network edge. Keysight Technologies supplied simulation and testing tools, while Lockheed Martin's wholly owned subsidiary Astris AI and proprietary algorithms predicted drone flight trajectories and generated real-time alerts.",
+          "Anil Guntupali, Senior Vice President of Technology and Product Development at Verizon, stated that applying artificial intelligence to signal measurement data traversing the network effectively turns existing connectivity infrastructure into an intelligent sensing system. Lockheed Martin highlighted that sensing drones through unmodified cellular networks avoids the heavy capital expenditures required to upgrade telecom equipment, offering airspace situational awareness prior to the formal adoption of 6G integrated sensing and communication standards.",
+          "Lockheed Martin plans to market the NetSense capability as a security operations subscription service. The company has scheduled pilot deployments for the second half of 2026 and early 2027, followed by general commercial availability later in 2027. However, Lockheed Martin did not disclose operational parameters from the Miami test, such as detection range, cell site density, drone sizes, flight altitudes, or false alarm metrics."
+        ]
+      },
+      "sources": [
+        {
+          "name": "AeroTime — Lockheed Martin tracks drones through unmodified Verizon 5G…",
+          "url": "https://www.aerotime.aero/articles/lockheed-martin-netsense-drone-tracking-verizon-5g"
+        }
+      ],
+      "articleFormat": "full",
+      "sourcePublishedUtc": "2026-08-12T12:53Z",
+      "writer": "gemini:gemini-3.6-flash",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Lockheed Martin completed a drone tracking demonstration in the Miami area in July 2026 using a commercial 5G network without modifying deployed radios.",
+          "sourceQuote": "The demonstration took place in the Miami area in July 2026 and involved Verizon, NVIDIA, Keysight Technologies, ODC, and Astris AI, Lockheed Martin’s wholly owned subsidiary.",
+          "sourceUrl": "https://www.aerotime.aero/articles/lockheed-martin-netsense-drone-tracking-verizon-5g",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "NetSense analyzes disturbances in cellular network signals to predict drone flight paths without adding dedicated radio frequency sensors or radars.",
+          "sourceQuote": "Instead of adding radars or dedicated radio frequency sensors, NetSense analyzes disturbances in the signals already traversing the cellular network.",
+          "sourceUrl": "https://www.aerotime.aero/articles/lockheed-martin-netsense-drone-tracking-verizon-5g",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Verizon Senior Vice President Anil Guntupali stated that applying AI to network signal measurement data converts the network into an intelligent sensing platform.",
+          "sourceQuote": "Anil Guntupali, Senior Vice President of Technology and Product Development at Verizon, said applying AI to the signal measurement data already crossing the network turns it into an intelligent sensing platform.",
+          "sourceUrl": "https://www.aerotime.aero/articles/lockheed-martin-netsense-drone-tracking-verizon-5g",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Lockheed Martin plans pilot deployments for NetSense in late 2026 and early 2027 ahead of general commercial availability in 2027.",
+          "sourceQuote": "Pilot deployments are planned for the second half of 2026 and early 2027, with general commercial availability in 2027",
+          "sourceUrl": "https://www.aerotime.aero/articles/lockheed-martin-netsense-drone-tracking-verizon-5g",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Lockheed Martin did not disclose details regarding detection range, cell site count, drone types or sizes, tracking altitudes, or false alarm rates.",
+          "sourceQuote": "Lockheed Martin did not disclose detection range, the number of cell sites involved, the types or sizes of drones flown, the altitudes at which they were tracked, or false alarm rates.",
+          "sourceUrl": "https://www.aerotime.aero/articles/lockheed-martin-netsense-drone-tracking-verizon-5g",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "Lockheed Martin",
+          "Verizon",
+          "NVIDIA",
+          "Keysight Technologies",
+          "ODC",
+          "Astris AI"
+        ],
+        "locations": [
+          "Miami"
+        ],
+        "event_dates": [
+          "July 2026"
+        ]
+      }
+    },
+    {
+      "id": "a-20260813-0109-jetblue-cancels-boston-barcelona-flights",
+      "publishedUtc": "2026-08-13T01:09Z",
+      "cat": "ops",
+      "primarySource": "Aerospace Global News",
+      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/09/JetBlue-Mint-Livery-Tail-View.jpg",
+      "zh": {
+        "title": "捷藍航空因機組人員短缺取消波士頓至巴塞隆納航班",
+        "summary": "捷藍航空；波士頓至巴塞隆納；機組人員短缺導致航班取消",
+        "body": [
+          "捷藍航空（JetBlue）近期因機組人員短缺，於一週內取消了兩班從波士頓前往巴塞隆納的航班。",
+          "據報導，受影響的航班為 8 月 6 日與 8 月 8 日的 B6 345 航班。由於機組人員在從紐約 JFK 機場前往波士頓的調派（deadheading）過程中遭遇延誤，導致其無法在法定執勤時間內執行跨大西洋航線。",
+          "報導指出，相關延誤是由美國東北部空域的擁塞與混亂所引起。受影響的乘客已被重新安排至前往西班牙的其他航班。",
+          "此外，捷藍航空在 8 月 10 日的波士頓至巴黎戴高樂機場航班也因機組人員短缺與疲勞相關的病假而延誤約四小時。"
+        ]
+      },
+      "en": {
+        "title": "JetBlue cancels Boston-Barcelona flights due to crew shortages",
+        "summary": "JetBlue cancels flights; Boston to Barcelona; due to crew shortages",
+        "body": [
+          "JetBlue has cancelled two flights between Boston and Barcelona within a week due to crew shortages.",
+          "The affected services, identified as flight B6 345 on August 6 and August 8, were cancelled because pilots were delayed while deadheading from New York JFK to Boston.",
+          "The delays in the domestic positioning flights were reportedly caused by congestion and disruption in the Northeast US airspace system, leaving crews unable to operate the transatlantic sector within legal duty limits.",
+          "JetBlue also reported a four-hour delay for a Boston-Paris Charles de Gaulle service on August 10, attributed to crew shortages and fatigue-related sickness absences."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — Crew shortages hit JetBlue’s transatlantic network as Barce…",
+          "url": "https://aerospaceglobalnews.com/news/jetblue-cancels-boston-barcelona-flights-delayed-pilots/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-08-12T00:00Z",
+      "writer": "openrouter:google/gemma-4-26b-a4b-it:free",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "JetBlue cancelled two Boston-Barcelona flights on August 6 and August 8.",
+          "sourceQuote": "the affected flights were JetBlue flight B6 345 from Boston Logan to Barcelona-El Prat on 6 August and again on 8 August.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jetblue-cancels-boston-barcelona-flights-delayed-pilots/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The cancellations were caused by pilots being delayed while deadheading from JFK to Boston.",
+          "sourceQuote": "the pilots rostered to operate the flights were delayed while travelling from the airline’s main crew base at New York JFK Airport to Boston aboard domestic JetBlue services.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jetblue-cancels-boston-barcelona-flights-delayed-pilots/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Northeast US airspace congestion caused the positioning flight delays.",
+          "sourceQuote": "In both cases, the domestic flights from New York to Boston were reportedly delayed by congestion and disruption in the Northeast US airspace system.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jetblue-cancels-boston-barcelona-flights-delayed-pilots/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "A Boston-Paris service was delayed by approximately four hours on August 10.",
+          "sourceQuote": "A Boston-Paris Charles de Gaulle service was delayed by around four hours on 10 August",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jetblue-cancels-boston-barcelona-flights-delayed-pilots/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The Paris delay was attributed to crew shortages and fatigue-related sickness.",
+          "sourceQuote": "Sources cited by the publication attributed the delay to crew shortages and fatigue-related sickness absences.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jetblue-cancels-boston-barcelona-flights-delayed-pilots/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "JetBlue"
+        ],
+        "airlines": [
+          "JetBlue"
+        ],
+        "airports": [
+          "Boston Logan",
+          "New York JFK",
+          "Barcelona-El Prat",
+          "Paris Charles de Gaulle"
+        ],
+        "locations": [
+          "Boston",
+          "Barcelona",
+          "New York",
+          "Paris"
+        ],
+        "flight_numbers": [
+          "B6 345"
+        ],
+        "event_dates": [
+          "2026-08-06",
+          "2026-08-08",
+          "2026-08-10"
+        ]
+      }
+    }
+  ]
+}
