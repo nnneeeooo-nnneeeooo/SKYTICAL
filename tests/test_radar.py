@@ -153,7 +153,7 @@ def main() -> None:
     assert "Callsign format" not in en
     assert "台灣民航雷達" in zh
     assert "Taiwan civil flight radar" in en
-    assert 'href="/avwire/radar/"' in home
+    assert 'href="/radar/"' in home
 
     assert "flags & (1 | 4 | 8)" in js
     assert '["7500", "7600", "7700"]' in js

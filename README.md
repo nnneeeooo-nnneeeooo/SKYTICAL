@@ -107,7 +107,8 @@ python -m http.server -d site 8000
 | `AVWIRE_NVIDIA_MODEL` | `z-ai/glm-5.2` | NVIDIA NIM 模型 |
 | `NEWS_MAX_AGE_HOURS` | `120` | 新聞新鮮度窗口（小時），驗證範圍 24–336，非法值回退預設並警告 |
 | `AEROAPI_KEY` | — | FlightAware AeroAPI（選用統計） |
-| `AVWIRE_BASE_PATH` | `/avwire` | 站台子路徑（Pages 專案站台） |
+| `AVWIRE_BASE_PATH` | 空字串 | 站台子路徑；正式自訂網域使用根路徑 |
+| `AVWIRE_SITE_ORIGIN` | `https://skytical.tech` | canonical、hreflang、sitemap 與 JSON-LD 的公開站台來源 |
 
 ## 稀有民航機偵測（預設關閉）
 
