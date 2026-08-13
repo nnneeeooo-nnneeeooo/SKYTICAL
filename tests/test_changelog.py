@@ -107,8 +107,8 @@ def main() -> None:
             description=t["changeSub"], ticker=[], build=fake_build)
         ctx["changelog"] = view
         html = env.get_template("changelog.html").render(**ctx)
-        expected_path = ("/avwire/changelog/" if lang == "zh"
-                         else "/avwire/en/changelog/")
+        expected_path = ("/changelog/" if lang == "zh"
+                         else "/en/changelog/")
         assert f'href="{expected_path}"' in html
         assert t["footerChangelog"] in html
         assert t["changeNotice"] in html

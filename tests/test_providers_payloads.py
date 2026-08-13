@@ -224,7 +224,7 @@ def test_openrouter_models_and_payloads():
         check((payload.get("reasoning") or {}).get("exclude") is True,
               f"{model}: reasoning trace excluded")
         check(headers.get("X-Title") == "AVWIRE"
-              and headers.get("HTTP-Referer", "").endswith("/avwire/"),
+              and headers.get("HTTP-Referer") == "https://skytical.tech/",
               f"{model}: optional attribution headers")
         check(provider.usage["inputTokens"] == 11
               and provider.usage["outputTokens"] == 7
