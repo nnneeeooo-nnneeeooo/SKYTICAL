@@ -1,5 +1,345 @@
 [
   {
+    "id": "g-20260813-2332-10",
+    "queuedUtc": "2026-08-13T23:32Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Financial claim (share drop 15%) and forward-looking schedule constitute financial_or_order_claim and unconfirmed_or_developing flags, requiring human review.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Virgin Galactic announced that delays to avionics and systems installation will push back commercial suborbital flights to February 2027.",
+        "sourceQuote": "Virgin Galactic has announced that delays to avionics and systems installation will push back the resumption of its commercial suborbital flights from later this year to February 2027.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Delta‑class spacecraft are designed for greater payload capacity and up to three suborbital flights per week from Spaceport America, New Mexico.",
+        "sourceQuote": "The new vehicles will provide greater payload capacity and are designed to support a higher flight cadence, with Virgin Galactic targeting up to three suborbital flights per week from Spaceport America in New Mexico.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The delay is attributed to hundreds of installation and integration tasks taking longer than expected, with no single technical issue identified.",
+        "sourceQuote": "Virgin Galactic says extra time is needed to complete avionics and systems installations on its Delta-class spacecraft. According to the company, hundreds of installation and integration tasks have taken longer than expected.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Virgin Galactic shares fell about 15% in early trading after the delay announcement.",
+        "sourceQuote": "The news was poorly received by investors, with the company’s shares falling by 15% in early trading.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Ferry of the first Delta spacecraft to Spaceport America is now expected in October instead of August.",
+        "sourceQuote": "Virgin Galactic now expects to ferry the first Delta spacecraft from its Mesa assembly site to Spaceport America in October, rather than August as originally planned.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Unity’s last revenue‑generating spaceflight occurred in June 2024.",
+        "sourceQuote": "Unity conducted the company’s last revenue-generating spaceflight in June 2024.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Financial claim (share drop 15%) and forward-looking schedule constitute financial_or_order_claim and unconfirmed_or_developing flags, requiring human review.",
+      "cat": "biz",
+      "zh": {
+        "title": "維��銀河推��Delta太空船 ��飛延至2027年2月",
+        "summary": "維��銀河宣布商業亞��道飛行延至2027年2月；Delta太空船首飛推��",
+        "body": [
+          "維��銀河於8月13日發布聲明，因��電與系統安��工序��時超出預期，將原定於今年下半年��復的商業亞��道飛行推��至2027年2月。",
+          "公司表示，Delta級太空船設計可承載更大��載，並目標每週從新墨西哥州Spaceport America��行最多三次亞��道飛行。",
+          "首架Delta 1完成全電氣系統��試後，官方確認將其從亞利桑那州梅��組����運往Spaceport America的時間由原定8月改為10月。",
+          "消息公布後，維��銀河股��早盤下��約15%，市場對時間表調整反應負面。",
+          "第二架Delta 2預計2027年3月��達並立即投入商業服務，而Unity級太空船上一次��收飛行為2024年6月。"
+        ]
+      },
+      "en": {
+        "title": "Virgin Galactic delays Delta spacecraft debut, pushes commercial flights to February 2027",
+        "summary": "Virgin Galactic pushes commercial suborbital flights to Feb 2027; Delta debut delayed",
+        "body": [
+          "Virgin Galactic announced on 13 August that delays in avionics and systems installation will postpone the resumption of commercial suborbital flights from later this year to February 2027.",
+          "The next‑generation Delta‑class vehicles are designed for greater payload capacity and a cadence of up to three flights per week from Spaceport America in New Mexico.",
+          "After the first Delta spacecraft completed a full electrical systems test at the Mesa, Arizona assembly facility, the company said the ferry to Spaceport America will now occur in October instead of August.",
+          "Shares fell about 15% in early trading following the announcement, reflecting investor concern over the revised timeline.",
+          "The second Delta spacecraft is expected to arrive in March 2027 and enter commercial service immediately, while the last revenue‑generating flight of the Unity fleet took place in June 2024."
+        ]
+      },
+      "flash": {
+        "zh": "維��銀河Delta首飛延至2027年2月",
+        "en": "Virgin Galactic delays Delta debut to Feb 2027",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Virgin Galactic announced that delays to avionics and systems installation will push back commercial suborbital flights to February 2027.",
+          "sourceQuote": "Virgin Galactic has announced that delays to avionics and systems installation will push back the resumption of its commercial suborbital flights from later this year to February 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Delta‑class spacecraft are designed for greater payload capacity and up to three suborbital flights per week from Spaceport America, New Mexico.",
+          "sourceQuote": "The new vehicles will provide greater payload capacity and are designed to support a higher flight cadence, with Virgin Galactic targeting up to three suborbital flights per week from Spaceport America in New Mexico.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The delay is attributed to hundreds of installation and integration tasks taking longer than expected, with no single technical issue identified.",
+          "sourceQuote": "Virgin Galactic says extra time is needed to complete avionics and systems installations on its Delta-class spacecraft. According to the company, hundreds of installation and integration tasks have taken longer than expected.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Virgin Galactic shares fell about 15% in early trading after the delay announcement.",
+          "sourceQuote": "The news was poorly received by investors, with the company’s shares falling by 15% in early trading.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Ferry of the first Delta spacecraft to Spaceport America is now expected in October instead of August.",
+          "sourceQuote": "Virgin Galactic now expects to ferry the first Delta spacecraft from its Mesa assembly site to Spaceport America in October, rather than August as originally planned.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Unity’s last revenue‑generating spaceflight occurred in June 2024.",
+          "sourceQuote": "Unity conducted the company’s last revenue-generating spaceflight in June 2024.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "Virgin Galactic"
+        ],
+        "airlines": [
+          "Virgin Galactic"
+        ],
+        "aircraft_models": [
+          "Delta-class spacecraft",
+          "Unity-class spacecraft"
+        ],
+        "airports": [
+          "Spaceport America"
+        ],
+        "locations": [
+          "New Mexico",
+          "Arizona"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-13",
+          "2027-02",
+          "2027-03",
+          "2024-06"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260813-2332-10",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Virgin Galactic delays Delta spacecraft debut and postpones commercial flights until 2027 News",
+          "url": "https://aerospaceglobalnews.com/news/virgin-galactic-delay-suborbital-flights-2027/",
+          "publishedUtc": "2026-08-13T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/TGP_VirginGalacticBrand_A9026_FINAL_RD2_A01-2-2.jpg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260804-1529-swiss-semi-private-startup-peakjet-compl",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: aero",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-08-04",
+            "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first...",
+            "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+            "facts": [
+              {
+                "claim": "PeakJet completed its first commercial flight between Zürich and Palma de Mallorca on August 1, 2026.",
+                "source_quote": "PeakJet, a new Swiss semi-private airline, has announced that it has completed its first commercial flight between Zürich (ZRH) and Palma de Mallorca (PMI) on August 1, 2026.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "The flight was operated by the German subsidiary of VistaJet using an Embraer Legacy 650 capable of carrying up to 12 passengers.",
+                "source_quote": "The aircraft, an Embraer Legacy 650 capable of carrying up to 12 passengers, was operated by the German subsidiary of VistaJet.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "Neither PeakJet nor its parent Peak Plus AG holds an air operator certificate, functioning as a marketplace aggregating capacity on scheduled executive aircraft.",
+                "source_quote": "neither PeakJet nor its parent company, Peak Plus AG, holds an air operator certificate (AOC) of their own. Instead, PeakJet defines itself as a marketplace, which aggregates and sells capacity on executive aircraft operating on fixed schedules.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "PeakJet expects to open new direct links from Zurich to Nice-Côte d'Azur and Málaga.",
+                "source_quote": "After launching the route to Mallorca, PeakJet expects to open new direct links between Zurich and both Nice-Côte d’Azur (NCE) and Málaga (AGP)",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "PeakJet was founded by Gianni Tronza and former Etihad Airways CEO Peter Baumgartner.",
+                "source_quote": "PeakJet is the brainchild of Gianni Tronza, who has held a lengthy career as senior executive at airlines such as Crossair, British Airways, American Airlines and Etihad, and Peter Baumgartner, who has previously served as Chief Executive Officer (CEO) of Etihad Airways.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "Peter Baumgartner stated that PeakJet has proven a third way for private aviation built on technology.",
+                "source_quote": "For years, private aviation offered only two options: buy or charter the whole jet or stay on the ground. Today we’ve proven there’s a third way — one built on technology our industry has barely tapped into",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260806-0945-delta-discounts-atlanta-riyadh-route-ami",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: delta",
+              "archive predates source by 7 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
+            "event_date": "2026-08-06",
+            "source_name": "Simple Flying — Delta Discounts First-Ever Saudi Arabia Route Amid 'Softer...",
+            "source_url": "https://simpleflying.com/delta-saudi-arabia-atlanta-riyadh-discount-softer-bookings/",
+            "facts": [
+              {
+                "claim": "Delta confirmed an October launch date for its service between Atlanta and Riyadh.",
+                "source_quote": "confirmed an October launch date for its Atlanta-Riyadh service.",
+                "source_url": "https://simpleflying.com/delta-saudi-arabia-atlanta-riyadh-discount-softer-bookings/",
+                "source_name": "Simple Flying — Delta Discounts First-Ever Saudi Arabia Route Amid 'Softer..."
+              },
+              {
+                "claim": "Delta discounted its first-ever Saudi Arabia route amid bookings described as softer than anticipated.",
+                "source_quote": "Delta Discounts First-Ever Saudi Arabia Route Amid 'Softer Than Anticipated' Bookings",
+                "source_url": "https://simpleflying.com/delta-saudi-arabia-atlanta-riyadh-discount-softer-bookings/",
+                "source_name": "Simple Flying — Delta Discounts First-Ever Saudi Arabia Route Amid 'Softer..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260813-0954-kai-and-hyundai-rotem-partner-to-develop",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: add",
+              "archive predates source by 0 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-08-13",
+            "source_name": "AeroTime — KAI and Hyundai Rotem to co-develop long-range air-to-air m...",
+            "source_url": "https://www.aerotime.aero/articles/kai-and-hyundai-rotem-to-co-develop-long-range-air-to-air-missile-for-kf-21",
+            "facts": [
+              {
+                "claim": "Korea Aerospace Industries (KAI) and Hyundai Rotem signed a memorandum of understanding on August 12, 2026, to jointly develop and integrate long-range air-to-air missiles for the KF-21 Boramae fighter.",
+                "source_quote": "The memorandum of understanding was signed on August 12, 2026, at KAI’s headquarters in Sacheon, in southeastern South Korea. It covers the development and systems integration of airborne weapons, including long-range air-to-air missiles, alongside cooperation on aircraft platforms such as the KF-21.",
+                "source_url": "https://www.aerotime.aero/articles/kai-and-hyundai-rotem-to-co-develop-long-range-air-to-air-missile-for-kf-21",
+                "source_name": "AeroTime — KAI and Hyundai Rotem to co-develop long-range air-to-air m..."
+              },
+              {
+                "claim": "The long-range air-to-air missile project is led by the Agency for Defense Development (ADD) and is scheduled to run from 2026 to 2033.",
+                "source_quote": "South Korea’s long-range air-to-air missile effort is led by the Agency for Defense Development (ADD) and is scheduled to run from 2026 to 2033",
+                "source_url": "https://www.aerotime.aero/articles/kai-and-hyundai-rotem-to-co-develop-long-range-air-to-air-missile-for-kf-21",
+                "source_name": "AeroTime — KAI and Hyundai Rotem to co-develop long-range air-to-air m..."
+              },
+              {
+                "claim": "On July 29, 2026, the Defense Acquisition Program Administration declared the KF-21 development program complete.",
+                "source_quote": "The Defense Acquisition Program Administration declared the KF-21 development program complete on July 29, 2026",
+                "source_url": "https://www.aerotime.aero/articles/kai-and-hyundai-rotem-to-co-develop-long-range-air-to-air-missile-for-kf-21",
+                "source_name": "AeroTime — KAI and Hyundai Rotem to co-develop long-range air-to-air m..."
+              },
+              {
+                "claim": "KAI plans to deliver the first batch of 40 KF-21s to the Republic of Korea Air Force by 2028.",
+                "source_quote": "KAI plans to deliver the first batch of 40 KF-21s to the Republic of Korea Air Force by 2028",
+                "source_url": "https://www.aerotime.aero/articles/kai-and-hyundai-rotem-to-co-develop-long-range-air-to-air-missile-for-kf-21",
+                "source_name": "AeroTime — KAI and Hyundai Rotem to co-develop long-range air-to-air m..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260813-2135-1",
     "queuedUtc": "2026-08-13T21:35Z",
     "approve": false,
@@ -9950,355 +10290,6 @@
                 "source_quote": "Additionally, the FAA recently installed a new Tower Simulation System (TSS) at Asheville.",
                 "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
                 "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260811-0101-5",
-    "queuedUtc": "2026-08-11T01:01Z",
-    "approve": false,
-    "writer": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    "decisionReason": "The story contains a large financial claim (defense package >€9.5B and potential order of up to 400 aircraft) and describes a developing competition, triggering financial_or_order_claim and unconfirmed_or_developing risk flags.",
-    "riskFlags": [
-      "financial_or_order_claim",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Rheinmetall announced on 10 August 2026 that it is establishing an independent system integration capability for the Boeing MQ-28 Ghost Bat in Germany.",
-        "sourceQuote": "Rheinmetall said on August 10, 2026, that it is establishing an independent system integration capability for the Boeing MQ-28 Ghost Bat in Germany",
-        "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Rheinmetall has served as Boeing’s German system integration partner since the partnership announcement on 31 March 2026.",
-        "sourceQuote": "The Düsseldorf-based group has served as Boeing’s German system integration partner since the two companies announced their partnership on March 31, 2026",
-        "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Rheinmetall states that software development, mission integration and intellectual property for a German MQ-28 will remain in Germany with domestic integration of national sensors, weapons and mission software.",
-        "sourceQuote": "Rheinmetall said software development, mission integration and intellectual property associated with a German version of the MQ-28 would remain within the country’s industrial base, with national sensors, weapons and mission software integrated domestically",
-        "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Boeing’s Glen Ferguson says meeting a 2029 in-service target requires immediate work on tactics, training, force structure and sovereign technology integration.",
-        "sourceQuote": "meeting a 2029 in-service target requires work on tactics, training, force structure and sovereign technology integration to begin now",
-        "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "The MQ-28 fired an AIM-120 AMRAAM at a target drone in December 2025, completed radar cross-section testing announced on 1 June 2026, and participated in Exercise Valiant Shield in June 2026 alongside US Air Force F-15EX fighters.",
-        "sourceQuote": "The MQ-28 fired an AIM-120 AMRAAM at a target drone in December 2025 , completed radar cross-section testing announced on June 1, 2026, and participated in Exercise Valiant Shield in June 2026 alongside US Air Force F-15EX fighters and other coalition aircraft",
-        "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "The German industrial team supporting the Boeing offer includes Rheinmetall, Rohde & Schwarz, Diehl Defence and HENSOLDT, which signed an MoU with Boeing at the Farnborough International Airshow in July 2026.",
-        "sourceQuote": "The German industrial team supporting the offer now includes Rheinmetall, Rohde & Schwarz, Diehl Defence and HENSOLDT, which signed a memorandum of understanding with Boeing at the Farnborough International Airshow in July 2026",
-        "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story contains a large financial claim (defense package >€9.5B and potential order of up to 400 aircraft) and describes a developing competition, triggering financial_or_order_claim and unconfirmed_or_developing risk flags.",
-      "cat": "mil",
-      "zh": {
-        "title": "莱茵金属在德国建立波音MQ-28幽灵蝙蝠整合能力",
-        "summary": "莱茵金属宣布在德建立MQ-28整合能力；德国空军CCA竞标加速",
-        "body": [
-          "莱茵金属于2026年8月10日宣布，在德国建立波音MQ-28幽灵蝙蝠的独立系统整合能力，这是波音主导团队争取德国空军协同作战飞机（CCA）需求的首个具体工业承诺。",
-          "该杜塞尔多夫集团自2026年3月31日双方宣布合作以来，一直担任波音在德国的系统整合合作伙伴。",
-          "莱茵金属表示，德产MQ-28的软件开发、任务整合及知识产权将留在德国工业基础内，国家传感器、武器与任务软件将在国内整合。莱茵金属空中、无人与航天业务单元CEO迈克·施密特称：“德国不必在速度与独立之间二选一。”",
-          "波音MQ-28项目全球总监格伦·弗格森指出，为实现2029年投入使用目标，战术、训练、部队架构及主权技术整合工作必须立即启动。MQ-28已于2025年12月发射AIM-120 AMRAAM击中靶机，2026年6月1日完成雷达散射截面测试，并于2026年6月参加“勇敢盾牌”演习，与美军F-15EX等协同作战。",
-          "德国工业团队现包括莱茵金属、罗德与施瓦茨、迪尔防务及汉索特，四公司已于2026年7月在范堡罗航展与波音签署谅解备忘录。德国空军需求估计达400架，交付自2029年起；联邦议院预算委员会于7月8日批准超过95亿欧元的国防拨款。竞争对手包括空客与克雷托斯的XQ-58A、亨泽尔的CA-1欧洲版、通用原子的YFQ-42A衍生型，莱茵金属亦保留与安德鲁尔的YFQ-44A合作。"
-        ]
-      },
-      "en": {
-        "title": "Rheinmetall Establishes Boeing MQ-28 Ghost Bat Integration Capability in Germany",
-        "summary": "Rheinmetall sets up MQ-28 integration in Germany; German Air Force CCA competition accelerates",
-        "body": [
-          "Rheinmetall announced on 10 August 2026 that it is establishing an independent system integration capability for the Boeing MQ-28 Ghost Bat in Germany, marking the first concrete industrial commitment from the Boeing-led team competing for the German Air Force’s collaborative combat aircraft (CCA) requirement.",
-          "The Düsseldorf-based group has served as Boeing’s German system integration partner since the two companies announced their partnership on 31 March 2026.",
-          "Rheinmetall said software development, mission integration and intellectual property for a German version of the MQ-28 would remain within the country’s industrial base, with national sensors, weapons and mission software integrated domestically. “Germany does not have to choose between speed and independence,” said Mike Schmidt, CEO of Rheinmetall’s Air, Uncrewed and Space business unit.",
-          "Boeing’s MQ-28 programme director Glen Ferguson stated that meeting a 2029 in-service target requires immediate work on tactics, training, force structure and sovereign technology integration. The platform’s flight-test record includes an AIM-120 AMRAAM launch against a target drone in December 2025, radar cross-section testing announced on 1 June 2026, and participation in Exercise Valiant Shield in June 2026 alongside US Air Force F-15EX fighters.",
-          "The German industrial team now includes Rheinmetall, Rohde & Schwarz, Diehl Defence and HENSOLDT, which signed a memorandum of understanding with Boeing at the Farnborough International Airshow in July 2026. The German Air Force requirement is estimated at up to 400 aircraft with deliveries beginning in 2029 under the Combat Fighter System Nucleus (CFSN) programme. The Bundestag budget committee cleared funding for CFSN on 8 July 2026 as part of a defence package worth more than €9.5 billion. Competing offers include Airbus and Kratos with the Europeanised XQ-58A Valkyrie, Helsing with the CA-1 Europa, and General Atomics with a derivative of the YFQ-42A; Rheinmetall also retains a separate partnership with Anduril Industries for a European version of the YFQ-44A Fury."
-        ]
-      },
-      "flash": {
-        "zh": "莱茵金属在德建立MQ-28整合能力",
-        "en": "Rheinmetall sets up MQ-28 in Germany",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Rheinmetall announced on 10 August 2026 that it is establishing an independent system integration capability for the Boeing MQ-28 Ghost Bat in Germany.",
-          "sourceQuote": "Rheinmetall said on August 10, 2026, that it is establishing an independent system integration capability for the Boeing MQ-28 Ghost Bat in Germany",
-          "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Rheinmetall has served as Boeing’s German system integration partner since the partnership announcement on 31 March 2026.",
-          "sourceQuote": "The Düsseldorf-based group has served as Boeing’s German system integration partner since the two companies announced their partnership on March 31, 2026",
-          "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Rheinmetall states that software development, mission integration and intellectual property for a German MQ-28 will remain in Germany with domestic integration of national sensors, weapons and mission software.",
-          "sourceQuote": "Rheinmetall said software development, mission integration and intellectual property associated with a German version of the MQ-28 would remain within the country’s industrial base, with national sensors, weapons and mission software integrated domestically",
-          "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Boeing’s Glen Ferguson says meeting a 2029 in-service target requires immediate work on tactics, training, force structure and sovereign technology integration.",
-          "sourceQuote": "meeting a 2029 in-service target requires work on tactics, training, force structure and sovereign technology integration to begin now",
-          "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "The MQ-28 fired an AIM-120 AMRAAM at a target drone in December 2025, completed radar cross-section testing announced on 1 June 2026, and participated in Exercise Valiant Shield in June 2026 alongside US Air Force F-15EX fighters.",
-          "sourceQuote": "The MQ-28 fired an AIM-120 AMRAAM at a target drone in December 2025 , completed radar cross-section testing announced on June 1, 2026, and participated in Exercise Valiant Shield in June 2026 alongside US Air Force F-15EX fighters and other coalition aircraft",
-          "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "The German industrial team supporting the Boeing offer includes Rheinmetall, Rohde & Schwarz, Diehl Defence and HENSOLDT, which signed an MoU with Boeing at the Farnborough International Airshow in July 2026.",
-          "sourceQuote": "The German industrial team supporting the offer now includes Rheinmetall, Rohde & Schwarz, Diehl Defence and HENSOLDT, which signed a memorandum of understanding with Boeing at the Farnborough International Airshow in July 2026",
-          "sourceUrl": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "Rheinmetall",
-          "Boeing",
-          "German Air Force",
-          "Airbus",
-          "Kratos",
-          "Helsing",
-          "General Atomics Aeronautical Systems",
-          "Anduril Industries",
-          "Rohde & Schwarz",
-          "Diehl Defence",
-          "HENSOLDT",
-          "Bundestag budget committee"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Boeing MQ-28 Ghost Bat",
-          "AIM-120 AMRAAM",
-          "F-15EX",
-          "XQ-58A Valkyrie",
-          "CA-1 Europa",
-          "YFQ-42A",
-          "YFQ-44A Fury"
-        ],
-        "airports": [],
-        "locations": [
-          "Germany",
-          "Düsseldorf",
-          "Farnborough",
-          "Manching",
-          "Berlin"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-10",
-          "2026-03-31",
-          "2025-12",
-          "2026-06-01",
-          "2026-06",
-          "2026-07",
-          "2026-07-08",
-          "2029"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-0101-5",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Rheinmetall sets up Boeing MQ-28 Ghost Bat integration in Germany",
-          "url": "https://www.aerotime.aero/articles/rheinmetall-germany-mq28-ghost-bat-integration",
-          "publishedUtc": "2026-08-10T12:24Z",
-          "summary": "Rheinmetall said on August 10, 2026, that it is establishing an independent system integration capability for the Boeing MQ-28 Ghost… The post Rheinmetall sets up Boeing MQ-28 Ghost Bat integration in Germany appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Rheinmetall sets up Boeing MQ-28 Ghost Bat integration in Germany",
-          "summary": "Rheinmetall sets up Boeing MQ-28 Ghost Bat integration in Germany &nbsp;&nbsp; aerotime.aero",
-          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNWEtCY3VZZjB5WFpfemxzVnItUi1WTkhSWGhIemNleFNud0FxZkZacHI5U1ZIQ2VWc1R5NVc0a1A3cC1JLVN1bVRLU0RMQkVNaUFoQ3ktWWxmUTlvZHQyMS1UR20zTVhPWS03cjZmVU02bTBlTzNQYXc2d2psVTk4YmV2aDhOSU1W0gGOAUFVX3lxTFBiYklUWXhuWTJFRFZhN01weTBMOGxCei15NGdMZVFEMUVaQ0pxM2YtOEJpVGtmeFJ3Q18zZTNjRmxZU0w5UllQaklTbzQtcF9IZThTZjJ2NTh5RUlCeU5yRWJtdHQycEo2a1RyaEZMcjlzX2l5ZGVIVUtFNnhaOGNWYWN0Tk12d3R3U2ZjTmc?oc=5",
-          "source": "aerotime.aero",
-          "companion": true,
-          "publishedUtc": "2026-08-10T12:24Z"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 15 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 13 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
-            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-            "facts": [
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 13 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
               }
             ]
           }
