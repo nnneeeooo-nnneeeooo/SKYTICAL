@@ -1,5 +1,473 @@
 [
   {
+    "id": "g-20260813-2135-1",
+    "queuedUtc": "2026-08-13T21:35Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The report includes financial performance claims regarding record second-quarter revenue alongside management restructuring.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "American Airlines is restructuring its management lineup to improve operational performance against competitors.",
+        "sourceQuote": "American Airlines Rejigs Management Lineup To Improve Performance Against Competitors",
+        "sourceUrl": "https://simpleflying.com/american-airline-rejigs-management-lineup-improve-performance-competitors/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "American Airlines posted record revenue in Q2 but still has ground to make up against United and Delta.",
+        "sourceQuote": "Despite posting record revenue in Q2, American has ground to make up against United and Delta.",
+        "sourceUrl": "https://simpleflying.com/american-airline-rejigs-management-lineup-improve-performance-competitors/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The report includes financial performance claims regarding record second-quarter revenue alongside management restructuring.",
+      "cat": "biz",
+      "zh": {
+        "title": "美國航空重組管理層團隊　擬提升面對競爭對手之營運表現",
+        "summary": "美國航空重組管理階層；第二季營收創新高；積極因應聯合與達美航空競爭",
+        "body": [
+          "根據 Simple Flying 報導，美國航空（American Airlines）近期正進行管理階層團隊架構的調整與重組。該公司期望透過這次管理層團隊的改組，進一步改善營運效率，並增強其在航空市場中面對競爭對手的整體表現與競爭能力。",
+          "財務表現方面，美國航空在第二季度雖然展現出強勁的營收動能，並錄得創紀錄的單季營業收入，但在綜合業務績效與市場表現上，相較於同業競爭對手聯合航空（United）以及達美航空（Delta），仍然存在需要積極追趕與提升的差距。",
+          "此次管理團隊調整反映了美國航空在推動財務成長的同時，持續致力於強化管理營運體質，以因應來自主要航空業者的激烈競爭。"
+        ]
+      },
+      "en": {
+        "title": "American Airlines Reorganizes Management Team to Improve Performance Against Rivals",
+        "summary": "American Airlines restructures management team; posts Q2 record revenue; works to close gap with United and Delta.",
+        "body": [
+          "American Airlines is restructuring its management lineup in an effort to enhance operational performance and strengthen its position against industry competitors, according to a report by Simple Flying. The organizational changes aim to optimize executive leadership and drive business efficiency across the carrier's broader operational framework.",
+          "The management adjustments come as the airline seeks to bridge performance gaps with key industry rivals. Although American Airlines posted record revenue in the second quarter, the carrier still has ground to make up when compared to major competitors United Airlines and Delta Air Lines.",
+          "Through these management adjustments, American Airlines aims to address competitive pressures from rival carriers while maintaining momentum following its record second-quarter revenue achievements."
+        ]
+      },
+      "flash": {
+        "zh": "美國航空重組管理層團隊以提升競爭力",
+        "en": "American Airlines reshuffles management lineup to boost performance against rivals",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "American Airlines is restructuring its management lineup to improve operational performance against competitors.",
+          "sourceQuote": "American Airlines Rejigs Management Lineup To Improve Performance Against Competitors",
+          "sourceUrl": "https://simpleflying.com/american-airline-rejigs-management-lineup-improve-performance-competitors/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "American Airlines posted record revenue in Q2 but still has ground to make up against United and Delta.",
+          "sourceQuote": "Despite posting record revenue in Q2, American has ground to make up against United and Delta.",
+          "sourceUrl": "https://simpleflying.com/american-airline-rejigs-management-lineup-improve-performance-competitors/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "American Airlines",
+          "United",
+          "Delta",
+          "Simple Flying"
+        ],
+        "airlines": [
+          "American Airlines",
+          "United",
+          "Delta"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260813-2135-1",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "American Airlines Rejigs Management Lineup To Improve Performance Against Competitors",
+          "url": "https://simpleflying.com/american-airline-rejigs-management-lineup-improve-performance-competitors/",
+          "publishedUtc": "2026-08-13T21:02Z",
+          "summary": "Despite posting record revenue in Q2, American has ground to make up against United and Delta.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/american-airlines-aircraft-on-stand-at-dallas-fort-worth.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260813-2135-10",
+    "queuedUtc": "2026-08-13T21:35Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Major financial acquisition claim (£5.7 billion / $7.6 billion) involving a large low-cost carrier buyout requires human review under financial_or_order_claim rules. The deal announcement is sourced from a single article and involves a significant transaction that should be verified before publication.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "On 6 August it was announced that Apollo Global Management had been successful with its offer to buy easyJet for £5.7 billion ($7.6 billion), outbidding Castlelake Investments.",
+        "sourceQuote": "On 6 August it was announced that Apollo Global Management had been successful with its offer to buy easyJet for £5.7 billion ($7.6 billion). The company had outbid rival bidder Castlelake Investments to take control of the UK-based low-cost carrier",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Global Management, via a court-approved scheme of arrangement under Part 26 of the Companies Act 2006.",
+        "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Global Management. The deal will be implemented by way of a court-approved scheme of arrangement under Part 26 of the Companies Act 2006.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "When Grupo Aeroméxico entered Chapter 11 bankruptcy protection in 2020, Apollo provided approximately $1 billion of debtor-in-possession financing, part of which was converted into equity, making Apollo its largest shareholder with approximately 22.4% stake by 2022.",
+        "sourceQuote": "Apollo provided approximately $1 billion of debtor-in-possession financing to Aeroméxico during its restructuring, part of which was subsequently converted into equity. By the time Aeroméxico emerged from bankruptcy in 2022, Apollo had become its largest shareholder with a stake of approximately 22.4%.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Apollo investment professionals have also been involved with carriers including Sun Country and Volotea, and Apollo-related entities continue to hold a substantial interest in Grupo Aeroméxico in 2026.",
+        "sourceQuote": "Apollo investment professionals have also been involved with carriers including US low-cost airline Sun Country and Spanish operator Volotea",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Apollo Global Management is one of the world's largest alternative asset managers with approximately $1.05 trillion in assets under management as of June 30, 2026, founded in 1990.",
+        "sourceQuote": "As of June 30, 2026, the New York-based firm had approximately $1.05 trillion in assets under management.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Major financial acquisition claim (£5.7 billion / $7.6 billion) involving a large low-cost carrier buyout requires human review under financial_or_order_claim rules. The deal announcement is sourced from a single article and involves a significant transaction that should be verified before publication.",
+      "cat": "biz",
+      "zh": {
+        "title": "Apollo以57億英鎊收購易捷航空 投資巨頭擴展航空版圖",
+        "summary": "Apollo Global Management以57億英鎊收購易捷航空；每股7.15英鎊現金；Apollo曾投資墨西哥航空",
+        "body": [
+          "2026年8月6日宣布，Apollo Global Management成功以57億英鎊（約76億美元）收購英國低成本航空公司易捷航空。Apollo在競標中擊敗對手Castlelake Investments，後者最終退出收購程序。",
+          "每易捷航空股票將以7.15英鎊現金收購，收購方為Eagle Bidco Ltd，這是一家在澤西島註冊的公司，由Apollo Global Management關聯基金間接持有。交易將依據2006年公司法第26部分，透過法院批准的安排計畫實施。",
+          "Apollo在航空業已有深厚布局。2020年墨西哥航空集團在美國申請第11章破產保護時，Apollo向墨西哥航空提供約10億美元的破產重組融資，部分隨後轉換為股權。至2022年墨西哥航空脫離破產時，Apollo已成為其最大股東，持股約22.4%。",
+          "Apollo的航空投資經驗不止於墨西哥。該公司的投資專業人員也曾參與美國低成本航空Sun Country及西班牙航空Volotea等業者。Apollo相關實體在2026年仍繼續持有墨西哥航空集團的大量股權。",
+          "Apollo Global Management是全球最大的另類資產管理公司之一，截至2026年6月30日管理資產約1.05兆美元。該公司1990年成立，最初專注於困境投資，業務涵蓋私募股權、信貸、基礎設施、房地產及退休服務。",
+          "此次收購規模遠超Apollo先前的航空投資，將歐洲最大的低成本航空集團之一納入其投資組合。"
+        ]
+      },
+      "en": {
+        "title": "Apollo to Acquire easyJet for £5.7 Billion, Expanding Aviation Portfolio",
+        "summary": "Apollo Global Management to buy easyJet for £5.7 billion; £7.15 per share cash; Apollo previously backed Aeroméxico",
+        "body": [
+          "On 6 August it was announced that Apollo Global Management had been successful with its offer to buy easyJet for £5.7 billion ($7.6 billion). Apollo had outbid rival bidder Castlelake Investments, which eventually walked away from the process.",
+          "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Global Management. The deal will be implemented by way of a court-approved scheme of arrangement under Part 26 of the Companies Act 2006.",
+          "Apollo already has deep roots in aviation. When Grupo Aeroméxico entered Chapter 11 bankruptcy protection in the United States in 2020, Apollo became one of the Mexican carrier's major financial backers, providing approximately $1 billion of debtor-in-possession financing during its restructuring.",
+          "Part of that financing was subsequently converted into equity. By the time Aeroméxico emerged from bankruptcy in 2022, Apollo had become its largest shareholder with a stake of approximately 22.4%. Apollo-related entities continue to hold a substantial interest in Grupo Aeroméxico in 2026.",
+          "Apollo's airline experience extends beyond Mexico. Apollo investment professionals have also been involved with carriers including US low-cost airline Sun Country and Spanish operator Volotea, while the firm has invested across the wider aviation and aerospace sector.",
+          "Apollo Global Management is one of the world's largest alternative asset managers, with approximately $1.05 trillion in assets under management as of June 30, 2026. The acquisition is considerably larger than its previous airline investments and would place one of Europe's biggest low-cost airline groups within its investment portfolio."
+        ]
+      },
+      "flash": {
+        "zh": "Apollo以57億英鎊收購易捷航空",
+        "en": "Apollo to acquire easyJet for £5.7 billion",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "On 6 August it was announced that Apollo Global Management had been successful with its offer to buy easyJet for £5.7 billion ($7.6 billion), outbidding Castlelake Investments.",
+          "sourceQuote": "On 6 August it was announced that Apollo Global Management had been successful with its offer to buy easyJet for £5.7 billion ($7.6 billion). The company had outbid rival bidder Castlelake Investments to take control of the UK-based low-cost carrier",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Global Management, via a court-approved scheme of arrangement under Part 26 of the Companies Act 2006.",
+          "sourceQuote": "Each easyJet share will be acquired for £7.15 in cash by Eagle Bidco Ltd, a Jersey-incorporated company indirectly owned by funds managed by affiliates of Apollo Global Management. The deal will be implemented by way of a court-approved scheme of arrangement under Part 26 of the Companies Act 2006.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "When Grupo Aeroméxico entered Chapter 11 bankruptcy protection in 2020, Apollo provided approximately $1 billion of debtor-in-possession financing, part of which was converted into equity, making Apollo its largest shareholder with approximately 22.4% stake by 2022.",
+          "sourceQuote": "Apollo provided approximately $1 billion of debtor-in-possession financing to Aeroméxico during its restructuring, part of which was subsequently converted into equity. By the time Aeroméxico emerged from bankruptcy in 2022, Apollo had become its largest shareholder with a stake of approximately 22.4%.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Apollo investment professionals have also been involved with carriers including Sun Country and Volotea, and Apollo-related entities continue to hold a substantial interest in Grupo Aeroméxico in 2026.",
+          "sourceQuote": "Apollo investment professionals have also been involved with carriers including US low-cost airline Sun Country and Spanish operator Volotea",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Apollo Global Management is one of the world's largest alternative asset managers with approximately $1.05 trillion in assets under management as of June 30, 2026, founded in 1990.",
+          "sourceQuote": "As of June 30, 2026, the New York-based firm had approximately $1.05 trillion in assets under management.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The easyJet acquisition is considerably larger than Apollo's previous airline investments and would place one of Europe's biggest low-cost airline groups within its investment portfolio.",
+          "sourceQuote": "The acquisition is considerably larger than its previous airline investments and would place one of Europe's biggest low-cost airline groups within its investment portfolio.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F5"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Apollo Global Management",
+          "Castlelake Investments",
+          "Eagle Bidco Ltd",
+          "Grupo Aeroméxico"
+        ],
+        "airlines": [
+          "easyJet",
+          "Aeroméxico",
+          "Sun Country",
+          "Volotea"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "United Kingdom",
+          "Jersey",
+          "United States",
+          "Mexico",
+          "Spain"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-06",
+          "2020",
+          "2022",
+          "2026-06-30",
+          "1990"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260813-2135-10",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "From Aeroméxico to the New York Yankees: Who is easyJet’s buyer Apollo? News",
+          "url": "https://aerospaceglobalnews.com/news/apollo-easyjet-aeromexico-new-york-yankees/",
+          "publishedUtc": "2026-08-13T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/06/AdobeStock_955709576_Editorial_Use_Only-scaled.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260805-1521-national-airlines-completes-nonstop-boei",
+            "relationship_type": "same_aircraft",
+            "relationship_evidence": [
+              "same registration: UK-BASED"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-08-04",
+            "source_name": "AeroTime — National Airlines completes nonstop B777F flight between Sc...",
+            "source_url": "https://www.aerotime.aero/articles/national-airlines-completes-nonstop-b777f-flight-between-scotland-and-australia",
+            "facts": [
+              {
+                "claim": "National Airlines operated a Boeing 777 freighter registered N795CA on a nonstop flight from Prestwick Airport in Scotland to Melbourne, Australia on August 4, 2026.",
+                "source_quote": "On August 4, 2026, the Florida-based cargo and charter operator flew the Boeing 777 freighter, registered N795CA, between Prestwick Airport (PIK), in Scotland, and Melbourne (MEL), Australia.",
+                "source_url": "https://www.aerotime.aero/articles/national-airlines-completes-nonstop-b777f-flight-between-scotland-and-australia",
+                "source_name": "AeroTime — National Airlines completes nonstop B777F flight between Sc..."
+              },
+              {
+                "claim": "The flight covered 9,849 nautical miles (18,240 km) without intermediate stops in 19 hours and 23 minutes.",
+                "source_quote": "The flight covered 9,849 nautical miles (18,240 km), without any intermediate stops, in 19 hours and 23 minutes.",
+                "source_url": "https://www.aerotime.aero/articles/national-airlines-completes-nonstop-b777f-flight-between-scotland-and-australia",
+                "source_name": "AeroTime — National Airlines completes nonstop B777F flight between Sc..."
+              },
+              {
+                "claim": "The flight was operated on behalf of UK-based aviation services firm Golden Aviation.",
+                "source_quote": "UK-based aviation services firm Golden Aviation as its customer",
+                "source_url": "https://www.aerotime.aero/articles/national-airlines-completes-nonstop-b777f-flight-between-scotland-and-australia",
+                "source_name": "AeroTime — National Airlines completes nonstop B777F flight between Sc..."
+              },
+              {
+                "claim": "The Boeing 777 freighter has an official full-payload range limit of 4,970 nautical miles (9,200 km), which extends to around 9,750 nautical miles (18,000 km) with a reduced payload.",
+                "source_quote": "with a full payload, is officially 4,970 nautical miles (9,200 km). The B777F range, however, can be extended to around 9,750 nautical miles (18,000 km) if the aircraft is flown with a reduced payload",
+                "source_url": "https://www.aerotime.aero/articles/national-airlines-completes-nonstop-b777f-flight-between-scotland-and-australia",
+                "source_name": "AeroTime — National Airlines completes nonstop B777F flight between Sc..."
+              },
+              {
+                "claim": "National Airlines is based in Orlando, Florida, and operates nine Boeing 747-400 and four B777-200 freighters.",
+                "source_quote": "National Airlines operates a fleet of nine Boeing 747-400 and four B777-200 freighters. The company, which is based in Orlando, Florida",
+                "source_url": "https://www.aerotime.aero/articles/national-airlines-completes-nonstop-b777f-flight-between-scotland-and-australia",
+                "source_name": "AeroTime — National Airlines completes nonstop B777F flight between Sc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: delta air lines",
+              "archive predates source by 16 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 16 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: delta air lines",
+              "archive predates source by 16 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 16 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260813-2031-8",
     "queuedUtc": "2026-08-13T20:31Z",
     "approve": false,
@@ -9831,422 +10299,6 @@
                 "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
                 "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
                 "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260810-2326-1",
-    "queuedUtc": "2026-08-10T23:26Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "In-flight passenger death involves casualties, requiring human review.",
-    "riskFlags": [
-      "casualties_or_injuries"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A 22-year-old passenger suffered a medical episode and died on a Southwest Airlines flight to Los Angeles.",
-        "sourceQuote": "The 22-year-old had a medical episode mid-flight and died during the flight to Los Angeles.",
-        "sourceUrl": "https://simpleflying.com/los-angeles-bound-southwest-airlines-passenger-dies-multiple-cpr-attempts-mid-flight/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Multiple CPR attempts were performed on the passenger mid-flight.",
-        "sourceQuote": "Los Angeles-Bound Southwest Airlines Passenger Dies After Multiple CPR Attempts Mid-Flight",
-        "sourceUrl": "https://simpleflying.com/los-angeles-bound-southwest-airlines-passenger-dies-multiple-cpr-attempts-mid-flight/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "In-flight passenger death involves casualties, requiring human review.",
-      "cat": "ops",
-      "zh": {
-        "title": "西南航空飛往洛杉磯航班一名乘客於機上身亡",
-        "summary": "西南航空飛往洛杉磯航班一名二十二歲乘客於機上突發疾病身亡。",
-        "body": [
-          "據《Simple Flying》報導，西南航空一架飛往洛杉磯的航班在飛行途中發生醫療緊急狀況。一名二十二歲的乘客在航班飛行途中突發疾病，經搶救後於機上不幸身亡。",
-          "報導指出，在該名乘客於空中出現醫療症狀後，現場人員曾對其實施多次心肺復甦術（CPR）嘗試進行搶救。不過，急救嘗試未能順利救回，該名乘客最終在航班飛行途中身亡。",
-          "此次突發醫療事件發生於飛往洛杉磯的西南航空航班上，該名二十二歲乘客於機上不幸身亡。"
-        ]
-      },
-      "en": {
-        "title": "Southwest Airlines Passenger Dies Mid-Flight on Los Angeles Route",
-        "summary": "Southwest Airlines passenger dies after medical episode on flight to Los Angeles despite CPR.",
-        "body": [
-          "A 22-year-old passenger died after suffering a medical episode mid-flight on a Southwest Airlines service bound for Los Angeles, according to a report by Simple Flying. The medical emergency occurred during the flight while the aircraft was en route to its destination.",
-          "Following the onset of the medical emergency in the air, multiple CPR attempts were made on board the flight in an effort to save the passenger. Resuscitation efforts were carried out mid-flight after the individual experienced the health episode.",
-          "Despite the multiple CPR attempts performed during the flight, the 22-year-old passenger could not be revived and died during the trip to Los Angeles."
-        ]
-      },
-      "flash": {
-        "zh": "西南航空飛往洛杉磯航班一名乘客機上不治身亡",
-        "en": "A Southwest Airlines passenger died mid-flight to Los Angeles following a medical episode.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A 22-year-old passenger suffered a medical episode and died on a Southwest Airlines flight to Los Angeles.",
-          "sourceQuote": "The 22-year-old had a medical episode mid-flight and died during the flight to Los Angeles.",
-          "sourceUrl": "https://simpleflying.com/los-angeles-bound-southwest-airlines-passenger-dies-multiple-cpr-attempts-mid-flight/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Multiple CPR attempts were performed on the passenger mid-flight.",
-          "sourceQuote": "Los Angeles-Bound Southwest Airlines Passenger Dies After Multiple CPR Attempts Mid-Flight",
-          "sourceUrl": "https://simpleflying.com/los-angeles-bound-southwest-airlines-passenger-dies-multiple-cpr-attempts-mid-flight/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Southwest Airlines",
-          "Simple Flying"
-        ],
-        "airlines": [
-          "Southwest Airlines"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Los Angeles"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "casualties_or_injuries"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260810-2326-1",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Los Angeles-Bound Southwest Airlines Passenger Dies After Multiple CPR Attempts Mid-Flight",
-          "url": "https://simpleflying.com/los-angeles-bound-southwest-airlines-passenger-dies-multiple-cpr-attempts-mid-flight/",
-          "publishedUtc": "2026-08-10T23:01Z",
-          "summary": "The 22-year-old had a medical episode mid-flight and died during the flight to Los Angeles.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/southwest-airlines-plane-los-angeles-taxiing-1.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260810-2133-3",
-    "queuedUtc": "2026-08-10T21:33Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves a major financial funding commitment of $100 million for Vertical Aerospace's Valo eVTOL project, requiring human review.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Vertical Aerospace announced on August 10, 2026, that it secured $100 million in funding commitments from existing and new investors.",
-        "sourceQuote": "Vertical Aerospace announced on August 10, 2026, that it has secured an additional US$100 million in funding commitments from both existing and new investors.",
-        "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The funds will support the certification and commercialization of the Valo eVTOL, including the Critical Design Review.",
-        "sourceQuote": "The fresh funds will be deployed to support the firm’s next steps in the path to certification and commercialization of the Valo eVTOL",
-        "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Mudrick Capital Management will put up $40 million as part of a non-binding agreement in principle.",
-        "sourceQuote": "Existing investor Mudrick Capital Management will put up US$40 million.",
-        "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "An additional $35 million will be underwritten by investors, and $25 million will come from a preferred equity facility with Yorkville Advisors Global.",
-        "sourceQuote": "An additional US$35 million will be underwritten by a group of existing and new investors",
-        "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves a major financial funding commitment of $100 million for Vertical Aerospace's Valo eVTOL project, requiring human review.",
-      "cat": "biz",
-      "zh": {
-        "title": "Vertical Aerospace獲1億美元融資推進Valo研發",
-        "summary": "Vertical Aerospace獲1億美元融資；推進Valo eVTOL認證。",
-        "body": [
-          "Vertical Aerospace於2026年8月10日宣布，已獲得來自現有與新投資人總計1億美元的追加融資承諾。該筆資金將用於支持Valo eVTOL邁向認證與商業化的下一階段，包括即將進行的關鍵設計審查（CDR）。",
-          "本次1億美元融資包含三個部分：現有投資人Mudrick Capital Management將提供4000萬美元；由現有及新投資人承銷3500萬美元；另有2500萬美元來自Yorkville Advisors Global設立的優先股融資額度。",
-          "此外，這筆資金也將用於擴建該公司專注於電池生產的能源中心，並規劃在英國設立未來的大規模生產設施。"
-        ]
-      },
-      "en": {
-        "title": "Vertical Aerospace Secures $100 Million Funding for Valo eVTOL Program",
-        "summary": "Vertical Aerospace secured $100 million in funding commitments to advance its Valo eVTOL certification and commercialization.",
-        "body": [
-          "Vertical Aerospace announced on August 10, 2026, that it has secured $100 million in funding commitments from existing and new investors. The fresh funds will support the company's next steps toward certification and commercialization of its Valo eVTOL aircraft, including the upcoming Critical Design Review.",
-          "The financing round includes $40 million from existing investor Mudrick Capital Management, under a non-binding agreement in principle. An additional $35 million will be underwritten by existing and new investors, while $25 million will be drawn from a preferred equity facility established by Yorkville Advisors Global.",
-          "The funds will also support expanding Vertical Aerospace's Energy Centre for battery production and establishing future large-scale manufacturing facilities in the UK."
-        ]
-      },
-      "flash": {
-        "zh": "Vertical Aerospace獲1億美元融資推進Valo研發",
-        "en": "Vertical Aerospace secures $100 million for Valo eVTOL development",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Vertical Aerospace announced on August 10, 2026, that it secured $100 million in funding commitments from existing and new investors.",
-          "sourceQuote": "Vertical Aerospace announced on August 10, 2026, that it has secured an additional US$100 million in funding commitments from both existing and new investors.",
-          "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The funds will support the certification and commercialization of the Valo eVTOL, including the Critical Design Review.",
-          "sourceQuote": "The fresh funds will be deployed to support the firm’s next steps in the path to certification and commercialization of the Valo eVTOL",
-          "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Mudrick Capital Management will put up $40 million as part of a non-binding agreement in principle.",
-          "sourceQuote": "Existing investor Mudrick Capital Management will put up US$40 million.",
-          "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "An additional $35 million will be underwritten by investors, and $25 million will come from a preferred equity facility with Yorkville Advisors Global.",
-          "sourceQuote": "An additional US$35 million will be underwritten by a group of existing and new investors",
-          "sourceUrl": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Vertical Aerospace",
-          "Mudrick Capital Management",
-          "Yorkville Advisors Global",
-          "AeroTime"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Valo eVTOL"
-        ],
-        "airports": [],
-        "locations": [
-          "UK"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-10"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260810-2133-3",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Vertical Aerospace raises $100 million to further Valo eVTOL development",
-          "url": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
-          "publishedUtc": "2026-08-10T14:23Z",
-          "summary": "Vertical Aerospace announced on August 10, 2026, that it has secured an additional US$100 million in funding commitments… The post Vertical Aerospace raises $100 million to further Valo eVTOL development appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": true,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 13 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 13 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
-            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-            "facts": [
-              {
-                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
-                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
-                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
-            "relationship_type": "other",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 13 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
-            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-            "facts": [
-              {
-                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
-                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
-                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
-                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
-                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
-                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
               }
             ]
           }
