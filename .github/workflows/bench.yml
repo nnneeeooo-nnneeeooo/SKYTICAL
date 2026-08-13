@@ -63,11 +63,43 @@ jobs:
 
           try:
               body = json.loads(raw)
-              model_ids = sorted({
-                  row.get("id", "").strip()
-                  for row in body.get("data", [])
-                  if isinstance(row, dict) and row.get("id", "").strip()
-              })
+              if isinstance(body, dict):
+                  print(f"MODELS_TOP_LEVEL_KEYS={','.join(sorted(body.keys()))}")
+
+              model_ids = set()
+              id_fields = {"id", "model", "model_id", "modelId", "slug"}
+              container_fields = {"data", "models", "items", "result", "results"}
+              generic_keys = id_fields | container_fields | {
+                  "object", "type", "name", "owned_by", "created",
+                  "description", "provider", "capabilities",
+              }
+
+              def plausible_model_id(value):
+                  return (
+                      isinstance(value, str)
+                      and 1 <= len(value.strip()) <= 160
+                      and not any(ch.isspace() for ch in value.strip())
+                      and value.strip() not in generic_keys
+                  )
+
+              def collect(node, parent=""):
+                  if isinstance(node, list):
+                      for item in node:
+                          if plausible_model_id(item) and parent in container_fields:
+                              model_ids.add(item.strip())
+                          else:
+                              collect(item, parent)
+                  elif isinstance(node, dict):
+                      for key, value in node.items():
+                          if key in id_fields and plausible_model_id(value):
+                              model_ids.add(value.strip())
+                          if (parent in container_fields and key not in generic_keys
+                                  and plausible_model_id(key)):
+                              model_ids.add(key.strip())
+                          collect(value, key)
+
+              collect(body)
+              model_ids = sorted(model_ids)
           except (TypeError, ValueError, json.JSONDecodeError):
               print("::error::AgentRouter returned an invalid models payload")
               raise SystemExit(1)
