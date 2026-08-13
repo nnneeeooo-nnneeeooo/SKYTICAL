@@ -1,5 +1,286 @@
 [
   {
+    "id": "g-20260813-2031-8",
+    "queuedUtc": "2026-08-13T20:31Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "decisionReason": "Current source relies on unconfirmed OSINT reports and a secondary defence outlet; deliveries not officially confirmed, high‑risk military procurement claim requires human review.",
+    "riskFlags": [
+      "unconfirmed_or_developing",
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Uzbekistan may be in the process of receiving Chengdu J-10CE fighter jets.",
+        "sourceQuote": "The former Soviet Central Asian state of Uzbekistan may be in the process of receiving Chengdu J-10CE fighter jets as traditional Russian fighter jet customers look elsewhere.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/uzbekistan-j10ce-russia-central-asia/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Defense Security Asia says the Uzbek Ministry of Defence acknowledged a contract for 24 J-10CEs with first batch delivered and two reported delivered in July 2025.",
+        "sourceQuote": "Defense Security Asia says that the Uzbek Ministry of Defence acknowledged that it has a contract for 24 J-10CEs. The first batch of J-10CEs has already been delivered, with only two J-10CEs officially reported as delivered in July 2025.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/uzbekistan-j10ce-russia-central-asia/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Open‑source trackers report four more J‑10CEs delivered to Uzbekistan Air Force, but deliveries remain unconfirmed by the Uzbekistan government.",
+        "sourceQuote": "Defense Security Asia quoted unspecified Chinese social media accounts and open-source defense trackers and reported that four more Chengdu J-10CE fighter jets have been delivered to the Uzbekistan Air Force, while adding the deliveries remain unconfirmed by the Uzbekistan government.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/uzbekistan-j10ce-russia-central-asia/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Current source relies on unconfirmed OSINT reports and a secondary defence outlet; deliveries not officially confirmed, high‑risk military procurement claim requires human review.",
+      "cat": "mil",
+      "zh": {
+        "title": "烏茲別克傳接收中國J10CE戰機第二批次",
+        "summary": "烏茲別克據報接收第二批J10CE戰機；交付仍未官方確認",
+        "body": [
+          "據Aerospace Global News報導，烏茲別克可能正在接收中國成都J10CE戰機，標誌著其戰機採購出現轉向。",
+          "防務媒體Defense Security Asia稱烏茲別克國防部承認簽訂24架J10CE合同，首批已交付，僅兩架於2025年7月正式報告。",
+          "開源情報追蹤顯示再有四架J10CE抵達烏茲別克空軍，但烏方尚未官方確認交付。",
+          "分析認為此交易顯示烏茲別克在烏克蘭戰爭背景下試圖減少對俄軍事依賴。"
+        ]
+      },
+      "en": {
+        "title": "Uzbekistan reportedly receives second batch of Chinese J-10CE fighters; deliveries unconfirmed",
+        "summary": "Uzbekistan reportedly receives second batch of J-10CE fighters; deliveries unconfirmed",
+        "body": [
+          "Aerospace Global News reports that Uzbekistan may be receiving Chinese Chengdu J-10CE fighters, signalling a shift in its combat aircraft procurement.",
+          "Defense Security Asia says the Uzbek Ministry of Defence acknowledged a contract for 24 J-10CEs, with the first batch delivered and only two aircraft officially reported as delivered in July 2025.",
+          "Open‑source trackers claim four more J-10CEs have arrived for the Uzbekistan Air Force, but the Uzbek government has not confirmed the deliveries.",
+          "Analysts suggest the deal reflects Uzbekistan's effort to diversify away from Russian military support amid the Ukraine war."
+        ]
+      },
+      "flash": {
+        "zh": "烏茲別克傳接收J10CE戰機",
+        "en": "Uzbekistan reportedly receiving J-10CE fighters",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Uzbekistan may be in the process of receiving Chengdu J-10CE fighter jets.",
+          "sourceQuote": "The former Soviet Central Asian state of Uzbekistan may be in the process of receiving Chengdu J-10CE fighter jets as traditional Russian fighter jet customers look elsewhere.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/uzbekistan-j10ce-russia-central-asia/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Defense Security Asia says the Uzbek Ministry of Defence acknowledged a contract for 24 J-10CEs with first batch delivered and two reported delivered in July 2025.",
+          "sourceQuote": "Defense Security Asia says that the Uzbek Ministry of Defence acknowledged that it has a contract for 24 J-10CEs. The first batch of J-10CEs has already been delivered, with only two J-10CEs officially reported as delivered in July 2025.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/uzbekistan-j10ce-russia-central-asia/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Open‑source trackers report four more J‑10CEs delivered to Uzbekistan Air Force, but deliveries remain unconfirmed by the Uzbekistan government.",
+          "sourceQuote": "Defense Security Asia quoted unspecified Chinese social media accounts and open-source defense trackers and reported that four more Chengdu J-10CE fighter jets have been delivered to the Uzbekistan Air Force, while adding the deliveries remain unconfirmed by the Uzbekistan government.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/uzbekistan-j10ce-russia-central-asia/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Uzbek Ministry of Defence",
+          "Defense Security Asia",
+          "Chengdu"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "J-10CE"
+        ],
+        "airports": [],
+        "locations": [
+          "Uzbekistan",
+          "Central Asia",
+          "Russia"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-13",
+          "July 2025"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "unconfirmed_or_developing",
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260813-2031-8",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "Uzbekistan turns to China’s J-10CE as Russian fighter dominance fades News",
+          "url": "https://aerospaceglobalnews.com/news/uzbekistan-j10ce-russia-central-asia/",
+          "publishedUtc": "2026-08-13T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/10/PLAAF-J-10.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260804-1529-swiss-semi-private-startup-peakjet-compl",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: aero",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-08-04",
+            "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first...",
+            "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+            "facts": [
+              {
+                "claim": "PeakJet completed its first commercial flight between Zürich and Palma de Mallorca on August 1, 2026.",
+                "source_quote": "PeakJet, a new Swiss semi-private airline, has announced that it has completed its first commercial flight between Zürich (ZRH) and Palma de Mallorca (PMI) on August 1, 2026.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "The flight was operated by the German subsidiary of VistaJet using an Embraer Legacy 650 capable of carrying up to 12 passengers.",
+                "source_quote": "The aircraft, an Embraer Legacy 650 capable of carrying up to 12 passengers, was operated by the German subsidiary of VistaJet.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "Neither PeakJet nor its parent Peak Plus AG holds an air operator certificate, functioning as a marketplace aggregating capacity on scheduled executive aircraft.",
+                "source_quote": "neither PeakJet nor its parent company, Peak Plus AG, holds an air operator certificate (AOC) of their own. Instead, PeakJet defines itself as a marketplace, which aggregates and sells capacity on executive aircraft operating on fixed schedules.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "PeakJet expects to open new direct links from Zurich to Nice-Côte d'Azur and Málaga.",
+                "source_quote": "After launching the route to Mallorca, PeakJet expects to open new direct links between Zurich and both Nice-Côte d’Azur (NCE) and Málaga (AGP)",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "PeakJet was founded by Gianni Tronza and former Etihad Airways CEO Peter Baumgartner.",
+                "source_quote": "PeakJet is the brainchild of Gianni Tronza, who has held a lengthy career as senior executive at airlines such as Crossair, British Airways, American Airlines and Etihad, and Peter Baumgartner, who has previously served as Chief Executive Officer (CEO) of Etihad Airways.",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              },
+              {
+                "claim": "Peter Baumgartner stated that PeakJet has proven a third way for private aviation built on technology.",
+                "source_quote": "For years, private aviation offered only two options: buy or charter the whole jet or stay on the ground. Today we’ve proven there’s a third way — one built on technology our industry has barely tapped into",
+                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
+                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260813-0954-kai-and-hyundai-rotem-partner-to-develop",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: add",
+              "archive predates source by 0 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-08-13",
+            "source_name": "AeroTime — KAI and Hyundai Rotem to co-develop long-range air-to-air m...",
+            "source_url": "https://www.aerotime.aero/articles/kai-and-hyundai-rotem-to-co-develop-long-range-air-to-air-missile-for-kf-21",
+            "facts": [
+              {
+                "claim": "Korea Aerospace Industries (KAI) and Hyundai Rotem signed a memorandum of understanding on August 12, 2026, to jointly develop and integrate long-range air-to-air missiles for the KF-21 Boramae fighter.",
+                "source_quote": "The memorandum of understanding was signed on August 12, 2026, at KAI’s headquarters in Sacheon, in southeastern South Korea. It covers the development and systems integration of airborne weapons, including long-range air-to-air missiles, alongside cooperation on aircraft platforms such as the KF-21.",
+                "source_url": "https://www.aerotime.aero/articles/kai-and-hyundai-rotem-to-co-develop-long-range-air-to-air-missile-for-kf-21",
+                "source_name": "AeroTime — KAI and Hyundai Rotem to co-develop long-range air-to-air m..."
+              },
+              {
+                "claim": "The long-range air-to-air missile project is led by the Agency for Defense Development (ADD) and is scheduled to run from 2026 to 2033.",
+                "source_quote": "South Korea’s long-range air-to-air missile effort is led by the Agency for Defense Development (ADD) and is scheduled to run from 2026 to 2033",
+                "source_url": "https://www.aerotime.aero/articles/kai-and-hyundai-rotem-to-co-develop-long-range-air-to-air-missile-for-kf-21",
+                "source_name": "AeroTime — KAI and Hyundai Rotem to co-develop long-range air-to-air m..."
+              },
+              {
+                "claim": "On July 29, 2026, the Defense Acquisition Program Administration declared the KF-21 development program complete.",
+                "source_quote": "The Defense Acquisition Program Administration declared the KF-21 development program complete on July 29, 2026",
+                "source_url": "https://www.aerotime.aero/articles/kai-and-hyundai-rotem-to-co-develop-long-range-air-to-air-missile-for-kf-21",
+                "source_name": "AeroTime — KAI and Hyundai Rotem to co-develop long-range air-to-air m..."
+              },
+              {
+                "claim": "KAI plans to deliver the first batch of 40 KF-21s to the Republic of Korea Air Force by 2028.",
+                "source_quote": "KAI plans to deliver the first batch of 40 KF-21s to the Republic of Korea Air Force by 2028",
+                "source_url": "https://www.aerotime.aero/articles/kai-and-hyundai-rotem-to-co-develop-long-range-air-to-air-missile-for-kf-21",
+                "source_name": "AeroTime — KAI and Hyundai Rotem to co-develop long-range air-to-air m..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260813-1252-boeing-names-former-gol-chief-celso-ferr",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: usp",
+              "archive predates source by 0 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 0 day(s) apart",
+            "event_date": "2026-08-13",
+            "source_name": "Boeing — Boeing names new president for Latin America and the Caribb...",
+            "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131708",
+            "facts": [
+              {
+                "claim": "Boeing appointed Celso Ferrer as president of Boeing Latin America and the Caribbean, effective September 4, 2026.",
+                "source_quote": "Boeing [NYSE: BA] has appointed Celso Ferrer as president of Boeing Latin America and the Caribbean, effective September 4, 2026.",
+                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131708",
+                "source_name": "Boeing — Boeing names new president for Latin America and the Caribb..."
+              },
+              {
+                "claim": "Ferrer will be responsible for strengthening Boeing's operations, strategy, and presence across Latin America and the Caribbean.",
+                "source_quote": "he will be responsible for strengthening Boeing’s operations, strategy, and presence across the region, as well as supporting the company’s growth opportunities throughout Latin America and the Caribbean.",
+                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131708",
+                "source_name": "Boeing — Boeing names new president for Latin America and the Caribb..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260813-1951-1",
     "queuedUtc": "2026-08-13T19:52Z",
     "approve": false,
@@ -9970,152 +10251,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260810-2133-9",
-    "queuedUtc": "2026-08-10T21:33Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "Current event involves safety incident under investigation; risk flag 'investigation' present, requiring human review per policy.",
-    "riskFlags": [
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Air India captain's initial drug screening prompts further testing after sudden altitude loss",
-        "sourceQuote": "Air India captain's initial drug screening prompts further testing after sudden altitude loss",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNNDBseXR4STVfU3FuR2tqajZISEM1UUFlSlVUd3ZKVV92cC1XWTdaZWVlVWdIS2RRbEJuTlRDWDZ2YTh2NFdVLUpkYTNjNUJ4Q1l2bnJMRS15M1dDd0ctalY3NXJiZDdYaFRnMHJ0NVlxX3JlSGFuU211LVVpZjdtNHhGeGtja2ktZFFURkQzTWR4ZTNrTzloRFI0WXlZMjJha3J5U1pJR2lOVGtkTDFnMDlNOXJvc1VETTNWN3BoaTBXbUdt?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Airbus to assist Air India altitude loss investigation",
-        "sourceQuote": "Airbus to assist Air India altitude loss investigation",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOS0Y2aElmZ1ZXLUc3eTItMUhNSS1JQnZtM0h0MkdVYl9PYkMyUVZWNTBXZ1lMaVNrT3RvLVNTNldtcFE3NzA3aEtTa1pXamdkTGl6OVQ2aU1fTV9VQU9FLWtzXzJfa1owVm84MjZlSXhBTWNMZkVWU09nNVkxVUdtY2pHUFE4TGtYQ2hTMnd4T3N2YkdJaENCVXI3MkFmTWZ5?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Current event involves safety incident under investigation; risk flag 'investigation' present, requiring human review per policy.",
-      "cat": "safety",
-      "zh": {
-        "title": "印度航空高度驟降機長初篩毒陽性需複檢",
-        "summary": "機師初篩毒陽性；印度航空複檢進行；空中巴士協助調查",
-        "body": [
-          "路透社報導，印度航空一名機長在飛行中出現高度驟降後，初步毒品檢測呈陽性，航空公司因而要求進行進一步複檢。",
-          "同一天，空中巴士發表聲明，將協助印度航空進行此次高度異常事件的調查。",
-          "目前尚未有官方指出事故原因或是否導致人員受傷，調查仍在進行中。",
-          "根據航空安全規定，任何機師在飛行中出現異常狀態均需接受毒品與酒精測試。",
-          "印度航空表示將全力配合調查，並依照內部程序處理此事。",
-          "空中巴士強調其角色僅為技術支援，不參與事故原因的最終判定。",
-          "事件發生的具體航班號、機型及時間細節在報導中未被披露。"
-        ]
-      },
-      "en": {
-        "title": "Air India captain's initial drug test positive after sudden altitude loss, further screening ordered",
-        "summary": "Pilot initial drug screen positive; Air India orders retest; Airbus to assist investigation",
-        "body": [
-          "Reuters reported that an Air India captain underwent a drug screening after a sudden loss of altitude during a flight, and the initial test returned positive for substances, prompting the airline to require further testing.",
-          "On the same day, Airbus issued a statement saying it will assist Air India in investigating the altitude loss incident.",
-          "No official cause has been determined, and there is no confirmation of injuries or damage; the investigation remains ongoing.",
-          "Under aviation safety regulations, any flight crew member showing abnormal inflight status must undergo drug and alcohol testing.",
-          "Air India said it will fully cooperate with the investigation and follow its internal procedures.",
-          "Airbus emphasized its role is limited to technical assistance and it will not participate in the final determination of accident causes.",
-          "Details such as flight number, aircraft type, and exact timing of the incident were not disclosed in the reports."
-        ]
-      },
-      "flash": {
-        "zh": "印度航空機長初篩毒陽性",
-        "en": "Air India captain initial drug test positive",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Air India captain's initial drug screening prompts further testing after sudden altitude loss",
-          "sourceQuote": "Air India captain's initial drug screening prompts further testing after sudden altitude loss",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNNDBseXR4STVfU3FuR2tqajZISEM1UUFlSlVUd3ZKVV92cC1XWTdaZWVlVWdIS2RRbEJuTlRDWDZ2YTh2NFdVLUpkYTNjNUJ4Q1l2bnJMRS15M1dDd0ctalY3NXJiZDdYaFRnMHJ0NVlxX3JlSGFuU211LVVpZjdtNHhGeGtja2ktZFFURkQzTWR4ZTNrTzloRFI0WXlZMjJha3J5U1pJR2lOVGtkTDFnMDlNOXJvc1VETTNWN3BoaTB",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Airbus to assist Air India altitude loss investigation",
-          "sourceQuote": "Airbus to assist Air India altitude loss investigation",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOS0Y2aElmZ1ZXLUc3eTItMUhNSS1JQnZtM0h0MkdVYl9PYkMyUVZWNTBXZ1lMaVNrT3RvLVNTNldtcFE3NzA3aEtTa1pXamdkTGl6OVQ2aU1fTV9VQU9FLWtzXzJfa1owVm84MjZlSXhBTWNMZkVWU09nNVkxVUdtY2pHUFE4TGtYQ2hTMnd4T3N2YkdJaENCVXI3MkFmTWZ5?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Air India",
-          "Airbus"
-        ],
-        "airlines": [
-          "Air India"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "under_investigation",
-      "riskFlags": [
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260810-2133-9",
-      "primarySource": "Reuters",
-      "items": [
-        {
-          "title": "Air India captain's initial drug screening prompts further testing after sudden altitude loss",
-          "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNNDBseXR4STVfU3FuR2tqajZISEM1UUFlSlVUd3ZKVV92cC1XWTdaZWVlVWdIS2RRbEJuTlRDWDZ2YTh2NFdVLUpkYTNjNUJ4Q1l2bnJMRS15M1dDd0ctalY3NXJiZDdYaFRnMHJ0NVlxX3JlSGFuU211LVVpZjdtNHhGeGtja2ktZFFURkQzTWR4ZTNrTzloRFI0WXlZMjJha3J5U1pJR2lOVGtkTDFnMDlNOXJvc1VETTNWN3BoaTBXbUdt?oc=5",
-          "publishedUtc": "2026-08-09T13:48Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "Airbus to assist Air India altitude loss investigation",
-          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOS0Y2aElmZ1ZXLUc3eTItMUhNSS1JQnZtM0h0MkdVYl9PYkMyUVZWNTBXZ1lMaVNrT3RvLVNTNldtcFE3NzA3aEtTa1pXamdkTGl6OVQ2aU1fTV9VQU9FLWtzXzJfa1owVm84MjZlSXhBTWNMZkVWU09nNVkxVUdtY2pHUFE4TGtYQ2hTMnd4T3N2YkdJaENCVXI3MkFmTWZ5?oc=5",
-          "publishedUtc": "2026-08-10T19:12Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        }
-      ],
-      "updateCandidate": true,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
