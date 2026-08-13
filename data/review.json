@@ -1,5 +1,351 @@
 [
   {
+    "id": "g-20260813-0109-7",
+    "queuedUtc": "2026-08-13T01:09Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Contains commercial aircraft order and delivery statistics for Airbus and Boeing.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "空中巴士於2026年7月交付67架商用飛機，使2026年前7個月累計交付量達到418架。",
+        "sourceQuote": "In July, European manufacturer Airbus delivered 67 commercial aircraft, bringing its 2026 total to 418 deliveries",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "波音於2026年7月交付53架飛機，2026年年初至今累計交付量達到367架。",
+        "sourceQuote": "Boeing, which handed over 53 aircraft during the month. Boeing’s year-to-date total now stands at 367 deliveries",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "空中巴士在2026年7月獲得204架新飛機總訂單，使其2026年累計總訂單量達到1,090架。",
+        "sourceQuote": "Airbus still secured 204 new aircraft orders during the month, pushing its 2026 total beyond 1,000 aircraft.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "波音於2026年7月錄得38架總訂單，截至7月底2026年累計總訂單量為483架。",
+        "sourceQuote": "Boeing recorded 38 gross orders and continued to trail its European rival",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "空中巴士7月新訂單包含168架A320neo系列單通道客機與36架廣體客機。",
+        "sourceQuote": "with 168 orders for the A320neo family, including 104 A321neos, 63 A320neos and one A319neo.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "截至7月底，空中巴士在2026年累計總訂單量領先波音607架，累計交付量領先51架。",
+        "sourceQuote": "Airbus held a 607-aircraft lead in gross orders and a 51-aircraft advantage in year-to-date deliveries.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Contains commercial aircraft order and delivery statistics for Airbus and Boeing.",
+      "cat": "biz",
+      "zh": {
+        "title": "空中巴士與波音公布7月數據 空中巴士全年累計訂單突破千架",
+        "summary": "空中巴士7月交付67架飛機；單月新增204架訂單累計突破千架",
+        "body": [
+          "歐洲飛機製造商空中巴士（Airbus）與美國波音（Boeing）已分別公布2026年7月的最新飛機訂單與交付統計數據。根據公布的資料顯示，空中巴士在商業飛機銷售與交付領域繼續保持對波音的領先優勢，且其2026年累計總訂單量已在7月成功突破1,000架大關。",
+          "在交付表現方面，空中巴士於2026年7月向客戶交付了67架商用飛機，使得2026年前七個月的累計交付總數達到418架，朝向全年870架的交付目標邁進。波音則在7月份交付了53架飛機，今年年初至今的累計交付量達到367架。",
+          "儘管空中巴士7月的交付量相較於6月的89架有所減少，但其仍維持對波音的領先地位。截至2026年7月底，空中巴士在今年年初至今的累計交付量上，對波音保持著51架飛機的領先優勢。",
+          "在銷售業務方面，空中巴士於7月錄得204架新增總訂單，主要受惠於租賃公司在范保羅航空展期間對單通道飛機的大幅承諾。這批新訂單使空中巴士2026年的累計總訂單量增加至1,090架。相比之下，波音在7月共錄得38架總訂單，分布於其單通道與廣體飛機產品線。",
+          "截至2026年7月底，波音今年累計總訂單量達到483架，這使得空中巴士在2026年的累計總訂單量上領先波音607架。在空中巴士7月獲得的訂單中，包含168架A320neo系列客機與36架廣體客機；波音7月的訂單則包含18架737 MAX、1架BBJ MAX商務機以及19架787-9客機。"
+        ]
+      },
+      "en": {
+        "title": "Airbus Extends Lead Over Boeing as July Orders Surpass 1,000 Aircraft YTD",
+        "summary": "Airbus delivered 67 aircraft in July; total 2026 gross orders exceeded 1,000 aircraft.",
+        "body": [
+          "European aircraft manufacturer Airbus and US competitor Boeing have published their operational statistics for July 2026, covering latest aircraft orders and deliveries. The updated figures reflect that Airbus further extended its commercial market lead over Boeing in both aircraft sales and deliveries during the month, while passing the milestone of 1,000 cumulative gross orders for 2026.",
+          "In commercial aircraft deliveries, Airbus handed over 67 aircraft during July 2026, bringing its cumulative total for the first seven months of the year to 418 deliveries. The manufacturer continues to pursue its full-year target of 870 aircraft deliveries. Boeing delivered 53 aircraft in July, bringing its year-to-date total across all commercial programs to 367 airplanes.",
+          "Although Airbus's monthly delivery total moderated from the 89 aircraft delivered in June, the European manufacturer sustained its margin over Boeing. By the end of July 2026, Airbus held a 51-aircraft lead over Boeing in cumulative year-to-date deliveries across their respective product ranges.",
+          "On the sales side, Airbus recorded 204 new gross orders during July 2026, supported by commitments for single-aisle aircraft finalised during the Farnborough International Airshow. The July orders pushed Airbus's total gross order count for 2026 to 1,090 aircraft. In contrast, Boeing recorded 38 gross orders during July, divided between narrowbody and widebody models.",
+          "By the end of July 2026, Boeing accumulated 483 gross orders for the year, resulting in a 607-aircraft lead for Airbus in year-to-date gross orders. Airbus's July orders included 168 A320neo-family aircraft and 36 widebody jets, while Boeing's monthly orders comprised 18 737 MAX aircraft, one BBJ MAX business jet, and 19 787-9 Dreamliners."
+        ]
+      },
+      "flash": {
+        "zh": "空中巴士與波音公佈7月數據，空中巴士累計訂單突破1,000架。",
+        "en": "Airbus and Boeing release July 2026 figures as Airbus orders top 1,000 aircraft YTD.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "空中巴士於2026年7月交付67架商用飛機，使2026年前7個月累計交付量達到418架。",
+          "sourceQuote": "In July, European manufacturer Airbus delivered 67 commercial aircraft, bringing its 2026 total to 418 deliveries",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "波音於2026年7月交付53架飛機，2026年年初至今累計交付量達到367架。",
+          "sourceQuote": "Boeing, which handed over 53 aircraft during the month. Boeing’s year-to-date total now stands at 367 deliveries",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "空中巴士在2026年7月獲得204架新飛機總訂單，使其2026年累計總訂單量達到1,090架。",
+          "sourceQuote": "Airbus still secured 204 new aircraft orders during the month, pushing its 2026 total beyond 1,000 aircraft.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "波音於2026年7月錄得38架總訂單，截至7月底2026年累計總訂單量為483架。",
+          "sourceQuote": "Boeing recorded 38 gross orders and continued to trail its European rival",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "空中巴士7月新訂單包含168架A320neo系列單通道客機與36架廣體客機。",
+          "sourceQuote": "with 168 orders for the A320neo family, including 104 A321neos, 63 A320neos and one A319neo.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "截至7月底，空中巴士在2026年累計總訂單量領先波音607架，累計交付量領先51架。",
+          "sourceQuote": "Airbus held a 607-aircraft lead in gross orders and a 51-aircraft advantage in year-to-date deliveries.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F3",
+        "F4"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Airbus",
+          "Boeing"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "A320neo",
+          "A321neo",
+          "A319neo",
+          "A220",
+          "A220-300",
+          "A330-900neo",
+          "A350-1000",
+          "A350-900",
+          "737",
+          "737 MAX",
+          "BBJ MAX",
+          "787 Dreamliner",
+          "787-9",
+          "767",
+          "777X"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "July 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260813-0109-7",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "The Airbus-Boeing gap is widening and Farnborough didn’t change it News",
+          "url": "https://aerospaceglobalnews.com/news/airbus-boeing-orders-deliveries-july-2026/",
+          "publishedUtc": "2026-08-12T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/06/AdobeStock_436396558_Editorial_Use_Only-scaled.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737, 777X, BOEING 777X FAMILY",
+              "same named core entity: boeing",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin...",
+            "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+            "facts": [
+              {
+                "claim": "Simple Flying報導波音已完成737 MAX 7與MAX 10飛行測試,為2027年交機鋪路。",
+                "source_quote": "Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearing Path For 2027 Deliveries",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin..."
+              },
+              {
+                "claim": "截至7月,波音已完成737-7與737-10的認證飛行測試,仍預期2026年認證、2027年首架交付。",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737, 777X, BOEING 777X FAMILY",
+              "same named core entity: boeing",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260812-2331-12",
     "queuedUtc": "2026-08-12T23:31Z",
     "approve": false,
@@ -9974,202 +10320,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260810-0908-5",
-    "queuedUtc": "2026-08-10T09:08Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves a military aircraft incident in Djibouti with preliminary reporting and unconfirmed details regarding a potential drone crash.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The US Embassy in Djibouti reported an incident involving a US military aircraft near Chabelley Airfield.",
-        "sourceQuote": "The United States (US) Embassy in Djibouti has reported an incident involving a US military aircraft in the vicinity of Chabelley Airfield.",
-        "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Initial reports indicate that there have been no casualties or property damage from the incident.",
-        "sourceQuote": "initial reports indicate that there have been no casualties or property damage",
-        "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The embassy issued an alert stating it was tracking an aircraft in distress in Djiboutian airspace and advised the public to avoid the Chabelley airbase area.",
-        "sourceQuote": "tracking an aircraft in distress in Djiboutian airspace",
-        "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Chabelley Airfield is the US Air Force's largest remotely piloted aircraft base in Africa.",
-        "sourceQuote": "Chabelley Airfield is the US Air Force’s largest remotely piloted aircraft base in Africa",
-        "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "AeroTime contacted US Africa Command in Germany for additional information regarding the incident.",
-        "sourceQuote": "AeroTime has contacted US Africa Command in Germany for more information related to the incident.",
-        "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves a military aircraft incident in Djibouti with preliminary reporting and unconfirmed details regarding a potential drone crash.",
-      "cat": "mil",
-      "zh": {
-        "title": "美國駐吉布地大使館通報美軍軍機於沙貝利機場附近發生事件",
-        "summary": "美國駐吉布地大使館通報軍機事件；初步回報無人員傷亡或財產損失",
-        "body": [
-          "美國駐吉布地大使館通報，一架美軍軍機於沙貝利機場（Chabelley Airfield）附近發生事件。大使館表示，初步報告顯示現場並未造成任何人員傷亡或財產損失。",
-          "在大使館發布該訊息前，曾發出警示指出正監測吉布地領空內一架遇險航空器，並呼籲民眾避開沙貝利基地的周邊區域。美方人員目前正與吉布地主管機關緊密協調處理相關事宜。",
-          "根據 AeroTime 報導，沙貝利機場為美國空軍在非洲最大的遙控無人機基地。報導並指出，已就此事件聯繫位於德國的美國非洲司令部以取得更多資訊。"
-        ]
-      },
-      "en": {
-        "title": "US Embassy Reports Incident Involving Military Aircraft Near Chabelley Airfield",
-        "summary": "US Embassy reports military aircraft incident near Chabelley Airfield with no reported casualties or damage.",
-        "body": [
-          "The United States Embassy in Djibouti has reported an incident involving a US military aircraft in the vicinity of Chabelley Airfield. Embassy officials stated that initial reports indicate there were no casualties or property damage resulting from the event.",
-          "Prior to issuing the report, the embassy released a security alert stating it was tracking an aircraft in distress within Djiboutian airspace. Members of the public were advised to avoid the area surrounding Chabelley Airfield, while US personnel are coordinating closely with Djiboutian authorities to respond.",
-          "According to AeroTime, Chabelley Airfield serves as the US Air Force's largest remotely piloted aircraft base in Africa. The news outlet noted that it has contacted US Africa Command in Germany for additional details regarding the incident."
-        ]
-      },
-      "flash": {
-        "zh": "美國駐吉布地大使館通報軍機事件",
-        "en": "US Embassy in Djibouti reports military aircraft incident",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The US Embassy in Djibouti reported an incident involving a US military aircraft near Chabelley Airfield.",
-          "sourceQuote": "The United States (US) Embassy in Djibouti has reported an incident involving a US military aircraft in the vicinity of Chabelley Airfield.",
-          "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Initial reports indicate that there have been no casualties or property damage from the incident.",
-          "sourceQuote": "initial reports indicate that there have been no casualties or property damage",
-          "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The embassy issued an alert stating it was tracking an aircraft in distress in Djiboutian airspace and advised the public to avoid the Chabelley airbase area.",
-          "sourceQuote": "tracking an aircraft in distress in Djiboutian airspace",
-          "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Chabelley Airfield is the US Air Force's largest remotely piloted aircraft base in Africa.",
-          "sourceQuote": "Chabelley Airfield is the US Air Force’s largest remotely piloted aircraft base in Africa",
-          "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "AeroTime contacted US Africa Command in Germany for additional information regarding the incident.",
-          "sourceQuote": "AeroTime has contacted US Africa Command in Germany for more information related to the incident.",
-          "sourceUrl": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "United States Embassy in Djibouti",
-          "US Air Force",
-          "US Africa Command",
-          "AeroTime"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "MQ-9 Reaper",
-          "MQ-9A Reaper"
-        ],
-        "airports": [
-          "Chabelley Airfield"
-        ],
-        "locations": [
-          "Djibouti",
-          "Yemen",
-          "Germany",
-          "Chabelley Cemetery"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "August 9, 2026"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260810-0908-5",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Embassy reports incident involving US military aircraft near Yemen",
-          "url": "https://www.aerotime.aero/articles/embassy-incident-us-military-aircraft-yemen-djibouti",
-          "publishedUtc": "2026-08-10T08:07Z",
-          "summary": "The United States (US) Embassy in Djibouti has reported an incident involving a US military aircraft in the… The post Embassy reports incident involving US military aircraft near Yemen appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
