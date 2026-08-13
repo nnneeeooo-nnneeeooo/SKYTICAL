@@ -23,11 +23,17 @@ jobs:
           import urllib.error
           import urllib.request
 
-          base_url = "https://co.agentrouter.org/v1"
           api_key = os.environ.get("AGENTROUTER_API", "")
           if not api_key:
               print("::error::AGENTROUTER_API is missing or empty")
               raise SystemExit(1)
+
+          print(f"SECRET_LENGTH={len(api_key)}")
+          print(f"SECRET_HAS_EDGE_WHITESPACE={api_key != api_key.strip()}")
+          print(f"SECRET_HAS_LINE_BREAK={chr(10) in api_key or chr(13) in api_key}")
+          print(f"SECRET_WRAPPED_IN_QUOTES={len(api_key) >= 2 and api_key[0] == api_key[-1] and api_key[0] in chr(34) + chr(39)}")
+
+          base_url = "https://agentrouter.org/v1"
 
           def request(path, *, payload=None):
               data = None if payload is None else json.dumps(payload).encode("utf-8")
@@ -48,10 +54,12 @@ jobs:
                   return exc.code, exc.read().decode("utf-8", "replace")
 
           status, raw = request("/models")
-          print(f"MODELS_HTTP_STATUS={status}")
+          print(f"MODEL_DISCOVERY={base_url}|bearer|HTTP_{status}")
           if status != 200:
               print("::error::AgentRouter authentication or model discovery failed")
               raise SystemExit(1)
+          print(f"WORKING_BASE_URL={base_url}")
+          print("WORKING_AUTH_STYLE=bearer")
 
           try:
               body = json.loads(raw)
