@@ -96,21 +96,21 @@ def main() -> None:
     assert 'class="header-search-form"' in home
     assert 'class="header-search-form"' in article
     assert 'data-article-body' in article
-    assert 'data-search-aliases-url="/avwire/search-aliases.json"' in article
-    assert re.search(r'/avwire/assets/highlight\.js\?v=[0-9a-f]{10}', article)
-    assert 'action="/avwire/search/"' in home
-    assert 'action="/avwire/en/search/"' in en
-    assert re.search(r'/avwire/assets/site\.css\?v=[0-9a-f]{10}', zh)
-    assert re.search(r'/avwire/assets/app\.js\?v=[0-9a-f]{10}', zh)
-    assert re.search(r'/avwire/assets/search\.js\?v=[0-9a-f]{10}', zh)
+    assert 'data-search-aliases-url="/search-aliases.json"' in article
+    assert re.search(r'/assets/highlight\.js\?v=[0-9a-f]{10}', article)
+    assert 'action="/search/"' in home
+    assert 'action="/en/search/"' in en
+    assert re.search(r'/assets/site\.css\?v=[0-9a-f]{10}', zh)
+    assert re.search(r'/assets/app\.js\?v=[0-9a-f]{10}', zh)
+    assert re.search(r'/assets/search\.js\?v=[0-9a-f]{10}', zh)
     assert home.index('class="header-search-row"') < home.index('id="clock-utc"')
     assert home.index('class="header-search-row"') < home.index('class="brand-row"')
     main_markup = re.search(r'<main class="search-page">(.*?)</main>', zh,
                             re.DOTALL).group(1)
     assert "<form" not in main_markup
-    assert 'data-index-url="/avwire/search-index.json"' in zh
-    assert 'data-index-url="/avwire/search-index.json"' in en
-    assert 'href="/avwire/en/search/"' in en
+    assert 'data-index-url="/search-index.json"' in zh
+    assert 'data-index-url="/search-index.json"' in en
+    assert 'href="/en/search/"' in en
     assert "border-radius: 999px" in css
     assert ".header-search-form:focus-within" in css
     assert ".header-search-input:not(:placeholder-shown) + .header-search-clear" in css

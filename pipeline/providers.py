@@ -925,7 +925,7 @@ class OpenRouterProvider(NvidiaProvider):
                     "Accept": "application/json",
                     "Content-Type": "application/json",
                     "HTTP-Referer":
-                        "https://nnneeeooo-nnneeeooo.github.io/avwire/",
+                        "https://skytical.tech/",
                     "X-Title": "AVWIRE",
                 },
             )

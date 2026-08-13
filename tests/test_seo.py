@@ -21,6 +21,8 @@ def _json_ld(html: str) -> list[dict]:
 
 
 def main() -> None:
+    assert build.SITE_ORIGIN == "https://skytical.tech"
+    assert build.BASE_PATH == ""
     assert build.main() == 0
 
     verification = ROOT / "site" / "google83f7fe8f9aeba973.html"
@@ -107,15 +109,15 @@ def main() -> None:
     taiwan_hub = (ROOT / "site" / "topics" / "taiwan-aviation" /
                   "index.html").read_text(encoding="utf-8")
     assert "<h1>臺灣航空新聞</h1>" in taiwan_hub
-    assert 'href="/avwire/news/' in taiwan_hub
+    assert 'href="/news/' in taiwan_hub
     for slug in build.TOPICS:
-        assert f'href="/avwire/topics/{slug}/"' in article
+        assert f'href="/topics/{slug}/"' in article
 
     policy = (ROOT / "site" / "editorial-policy" / "index.html").read_text(
         encoding="utf-8")
     assert "編輯、更正與聯絡政策" in policy
     assert "avwire/issues/new" in policy
-    assert 'href="/avwire/editorial-policy/"' in article
+    assert 'href="/editorial-policy/"' in article
 
     print("test_seo: OK")
 
