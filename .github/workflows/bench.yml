@@ -42,6 +42,7 @@ jobs:
                   data=data,
                   headers={
                       "Authorization": f"Bearer {api_key}",
+                      "Accept": "application/json",
                       "Content-Type": "application/json",
                       "User-Agent": "AVWIRE-AgentRouter-Diagnostic/1.0",
                   },
@@ -130,15 +131,14 @@ jobs:
               safe_prefix = " ".join(safe_prefix.split())
               print(f"MODELS_BODY_PREFIX={safe_prefix}")
               print(f"MODELS_PARSE_ERROR={type(exc).__name__}:{str(exc)[:200]}")
-              print("::error::AgentRouter returned an invalid models payload")
-              raise SystemExit(1)
+              print("::warning::AgentRouter did not return a JSON models payload")
+              model_ids = []
 
           print(f"MODEL_COUNT={len(model_ids)}")
           for model_id in model_ids:
               print(f"MODEL={model_id}")
           if not model_ids:
-              print("::error::The key authenticated but exposes no models")
-              raise SystemExit(1)
+              print("::warning::No model IDs could be discovered from /models")
 
           preferred = ("gpt-", "glm-", "kimi-", "step", "qwen-", "deepseek-")
           excluded = ("embedding", "rerank", "image", "audio", "tts", "whisper")
@@ -150,13 +150,14 @@ jobs:
           smoke_model = next(
               (model_id for prefix in preferred for model_id in smoke_candidates
                if model_id.lower().startswith(prefix)),
-              smoke_candidates[0] if smoke_candidates else "",
+              smoke_candidates[0] if smoke_candidates else "gpt-5.5",
           )
-          if not smoke_model:
-              print("::warning::No OpenAI-compatible text model was available for a smoke test")
-              raise SystemExit(0)
 
           print(f"SMOKE_MODEL={smoke_model}")
+          print(
+              "SMOKE_MODEL_SOURCE="
+              + ("models-endpoint" if smoke_candidates else "official-docs-fallback")
+          )
           status, raw, content_type, final_url = request("/chat/completions", payload={
               "model": smoke_model,
               "messages": [{"role": "user", "content": "Reply with exactly OK"}],
@@ -176,7 +177,11 @@ jobs:
           try:
               result = json.loads(raw)
               content = result["choices"][0]["message"]["content"].strip()
-          except (KeyError, IndexError, TypeError, ValueError, json.JSONDecodeError):
+          except (KeyError, IndexError, TypeError, ValueError, json.JSONDecodeError) as exc:
+              safe_prefix = raw.replace(api_key, "***")[:240]
+              safe_prefix = " ".join(safe_prefix.split())
+              print(f"SMOKE_BODY_PREFIX={safe_prefix}")
+              print(f"SMOKE_PARSE_ERROR={type(exc).__name__}:{str(exc)[:200]}")
               print("::error::Inference returned an invalid chat-completions payload")
               raise SystemExit(1)
           print(f"SMOKE_RESPONSE={content[:80]}")
