@@ -63,8 +63,20 @@ jobs:
 
           try:
               body = json.loads(raw)
+              print(f"MODELS_PAYLOAD_TYPE={type(body).__name__}")
               if isinstance(body, dict):
                   print(f"MODELS_TOP_LEVEL_KEYS={','.join(sorted(body.keys()))}")
+              elif isinstance(body, list):
+                  print(f"MODELS_TOP_LEVEL_ITEMS={len(body)}")
+                  print(
+                      "MODELS_FIRST_ITEM_TYPE="
+                      f"{type(body[0]).__name__ if body else 'none'}"
+                  )
+                  if body and isinstance(body[0], dict):
+                      print(
+                          "MODELS_FIRST_ITEM_KEYS="
+                          f"{','.join(sorted(body[0].keys()))}"
+                      )
 
               model_ids = set()
               id_fields = {"id", "model", "model_id", "modelId", "slug"}
@@ -85,7 +97,7 @@ jobs:
               def collect(node, parent=""):
                   if isinstance(node, list):
                       for item in node:
-                          if plausible_model_id(item) and parent in container_fields:
+                          if plausible_model_id(item):
                               model_ids.add(item.strip())
                           else:
                               collect(item, parent)
@@ -100,7 +112,8 @@ jobs:
 
               collect(body)
               model_ids = sorted(model_ids)
-          except (TypeError, ValueError, json.JSONDecodeError):
+          except (TypeError, ValueError, json.JSONDecodeError) as exc:
+              print(f"MODELS_PARSE_ERROR={type(exc).__name__}:{str(exc)[:200]}")
               print("::error::AgentRouter returned an invalid models payload")
               raise SystemExit(1)
 
