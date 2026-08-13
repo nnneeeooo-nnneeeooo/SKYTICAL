@@ -1,5 +1,203 @@
 [
   {
+    "id": "g-20260813-1951-1",
+    "queuedUtc": "2026-08-13T19:52Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story reports H1 and Q2 2026 financial performance and revenue statistics for EVA Airways, constituting financial claims that require editorial verification.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "EVA Airways reported H1 2026 consolidated revenue of NT$128.286 billion, up 16.4% YoY, with EPS of NT$2.24.",
+        "sourceQuote": "長榮航空上半年合併總營收1282.86億元，年增16.4%，每股盈餘2.24元",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "EVA Airways recorded H1 2026 net income of NT$13.208 billion and net income attributable to the parent company of NT$12.116 billion.",
+        "sourceQuote": "合併本期淨利為132.08億元；歸屬母公司淨利121.16億元",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "EVA Airways Q2 2026 consolidated revenue reached NT$67.77 billion, with net income attributable to parent company of NT$3.848 billion and EPS of NT$0.71.",
+        "sourceQuote": "長榮航第2季合併總營收新台幣677.7億元，年增22.5%；合併本期淨利43.43億元；歸屬母公司淨利38.48億元，每股盈餘0.71元。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "EVA Airways passenger revenue in H1 2026 reached NT$81.095 billion, up 13.3% YoY.",
+        "sourceQuote": "上半年客運營收新台幣810.95億元，年增13.3%",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "EVA Airways cargo revenue in H1 2026 reached NT$32.302 billion, up 23.1% YoY.",
+        "sourceQuote": "上半年貨運營收新台幣323.02億元，年增23.1%",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story reports H1 and Q2 2026 financial performance and revenue statistics for EVA Airways, constituting financial claims that require editorial verification.",
+      "cat": "biz",
+      "zh": {
+        "title": "長榮航空2026上半年合併總營收1282億元每股賺2.24元",
+        "summary": "長榮航空2026年上半年營收1282.86億元；每股盈餘2.24元；客貨運需求暢旺",
+        "body": [
+          "長榮航空公布2026年上半年財務業績，合併總營收達新台幣1282.86億元，較去年同期成長16.4%。上半年合併本期淨利為132.08億元，歸屬母公司淨利達121.16億元，每股盈餘為2.24元。",
+          "在2026年第二季表現方面，長榮航單季合併總營收為新台幣677.7億元，年增22.5%。第二季合併本期淨利為43.43億元，歸屬母公司淨利為38.48億元，單季每股盈餘為0.71元。",
+          "業務分類方面，上半年客運營收達新台幣810.95億元，年增13.3%，全航線平均載客率達84%。上半年貨運營收則為323.02億元，年增23.1%，主要受惠於AI伺服器與半導體強勁需求帶動。"
+        ]
+      },
+      "en": {
+        "title": "EVA Airways Reports H1 2026 Revenue of NT$128.29 Billion and EPS of NT$2.24",
+        "summary": "EVA Airways posts H1 2026 revenue of NT$128.29 billion; earnings per share reach NT$2.24.",
+        "body": [
+          "EVA Airways reported its financial results for the first half of 2026, recording consolidated revenue of NT$128.286 billion, an increase of 16.4% year-on-year. Net income attributable to the parent company reached NT$12.116 billion, yielding earnings per share of NT$2.24.",
+          "For the second quarter of 2026, the carrier posted consolidated revenue of NT$67.77 billion, up 22.5% compared to the same period last year. Net income attributable to the parent company for the quarter stood at NT$3.848 billion, with earnings per share at NT$0.71.",
+          "Passenger revenue for the first half totaled NT$81.095 billion with an overall load factor of 84%. Cargo revenue reached NT$32.302 billion, supported by robust demand for AI servers and semiconductor shipments."
+        ]
+      },
+      "flash": {
+        "zh": "長榮航空公布2026上半年財報 每股盈餘2.24元",
+        "en": "EVA Airways reports H1 2026 revenue of NT$128.29B and EPS of NT$2.24.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "EVA Airways reported H1 2026 consolidated revenue of NT$128.286 billion, up 16.4% YoY, with EPS of NT$2.24.",
+          "sourceQuote": "長榮航空上半年合併總營收1282.86億元，年增16.4%，每股盈餘2.24元",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "EVA Airways recorded H1 2026 net income of NT$13.208 billion and net income attributable to the parent company of NT$12.116 billion.",
+          "sourceQuote": "合併本期淨利為132.08億元；歸屬母公司淨利121.16億元",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "EVA Airways Q2 2026 consolidated revenue reached NT$67.77 billion, with net income attributable to parent company of NT$3.848 billion and EPS of NT$0.71.",
+          "sourceQuote": "長榮航第2季合併總營收新台幣677.7億元，年增22.5%；合併本期淨利43.43億元；歸屬母公司淨利38.48億元，每股盈餘0.71元。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "EVA Airways passenger revenue in H1 2026 reached NT$81.095 billion, up 13.3% YoY.",
+          "sourceQuote": "上半年客運營收新台幣810.95億元，年增13.3%",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "EVA Airways cargo revenue in H1 2026 reached NT$32.302 billion, up 23.1% YoY.",
+          "sourceQuote": "上半年貨運營收新台幣323.02億元，年增23.1%",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "長榮航空",
+          "長榮航"
+        ],
+        "airlines": [
+          "長榮航空",
+          "長榮航"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "台北",
+          "美洲",
+          "台灣"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026年上半年",
+          "2026年第2季"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260813-1951-1",
+      "primarySource": "中央社 CNA 產經證券",
+      "items": [
+        {
+          "title": "長榮航上半年每股賺2.24元 客貨運需求暢旺",
+          "url": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+          "publishedUtc": "2026-08-13T13:11Z",
+          "summary": "（中央社記者江明晏台北13日電）長榮航空上半年合併總營收1282.86億元，年增16.4%，每股盈餘2.24元，客運維持穩健動能，美洲及歐澳市場需求成長，貨運受益AI伺服器及半導體，市場貨運需求暢旺，貨運單位收益年增近2成。",
+          "image": null,
+          "source": "中央社 CNA 產經證券",
+          "sourceKey": "cnataiwanfinance"
+        },
+        {
+          "title": "長榮航上半年每股賺2.24元 客貨運需求暢旺",
+          "url": "https://www.cna.com.tw/news/afe/202608130335.aspx",
+          "publishedUtc": "2026-08-13T13:11Z",
+          "summary": "長榮航空,美洲,歐澳,AI伺服器,半導體",
+          "image": null,
+          "source": "中央社 CNA 國籍航空",
+          "sourceKey": "cnataiwanairlines"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": true,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260813-1558-1",
     "queuedUtc": "2026-08-13T15:58Z",
     "approve": false,
@@ -9913,247 +10111,6 @@
         }
       ],
       "updateCandidate": true,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260810-1948-9",
-    "queuedUtc": "2026-08-10T19:48Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Large financial acquisition claim (Archer acquiring three Boeing subsidiaries) triggers mandatory manual review per policy.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Archer Aviation agreed to acquire Boeing's subsidiaries Wisk Aero, Insitu and SkyGrid.",
-        "sourceQuote": "Archer Aviation has agreed to acquire three of Boeing’s autonomy and uncrewed systems subsidiaries, Wisk Aero, Insitu and SkyGrid",
-        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The definitive agreements were signed on 10 August 2026.",
-        "sourceQuote": "The two companies announced they had signed definitive agreements on August 10, 2026",
-        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Financial terms were not disclosed; Archer referenced a Form 8‑K filed with the SEC on the same day.",
-        "sourceQuote": "Financial terms were not disclosed in the announcement, with Archer pointing to a Form 8-K filed with the US Securities and Exchange Commission the same day.",
-        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Insitu generates more than $200 million annual revenue and has fielded over 3,500 uncrewed aircraft systems.",
-        "sourceQuote": "generates more than $200 million in annual revenue, and has fielded over 3,500 uncrewed aircraft systems.",
-        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Wisk contributes six generations of eVTOL design, over 1,700 flight tests, and its Generation 6 aircraft first flew in December 2025.",
-        "sourceQuote": "Wisk brings six generations of eVTOL design and more than 1,700 flight tests, along with the flight control computer, sensor suite and radar developed for its autonomous Generation 6 aircraft, which flew for the first time in December 2025.",
-        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "The deal is subject to Hart‑Scott‑Rodino waiting period and expected to close by end of 2026.",
-        "sourceQuote": "The deal remains subject to closing conditions, including expiration of the waiting period under the US Hart-Scott-Rodino Antitrust Improvements Act, and is expected to close by the end of 2026.",
-        "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Large financial acquisition claim (Archer acquiring three Boeing subsidiaries) triggers mandatory manual review per policy.",
-      "cat": "biz",
-      "zh": {
-        "title": "Archer 收購波音 Wisk、Insitu、SkyGrid",
-        "summary": "Archer 與波音簽署收購協議；Insitu 年營收超 2 億美元",
-        "body": [
-          "Archer Aviation 已同意收購波音旗下的 Wisk Aero、Insitu 及 SkyGrid 三家子公司，雙方於 2026 年 8 月 10 日簽署最終協議。",
-          "財務條款未公開，Archer 指向同日向美國證交會提交的 Form 8-K。",
-          "Insitu 年營收超過 2 億美元，並已部署超過 3,500 架無人機系統。",
-          "Wisk 提供六代 eVTOL 設計及逾 1,700 次試飛，其第六代機型於 2025 年 12 月首飛。",
-          "交易仍須通過美國 Hart‑Scott‑Rodino 反壟斷法等待期，預計於 2026 年底完成。"
-        ]
-      },
-      "en": {
-        "title": "Archer Aviation agrees to acquire Boeing's Wisk, Insitu and SkyGrid subsidiaries",
-        "summary": "Archer signs deal to buy Boeing's Wisk, Insitu, SkyGrid; Insitu revenue over $200M",
-        "body": [
-          "Archer Aviation has agreed to acquire three of Boeing’s autonomy and uncrewed systems subsidiaries — Wisk Aero, Insitu and SkyGrid — with definitive agreements signed on 10 August 2026.",
-          "Financial terms were not disclosed; Archer pointed to a Form 8‑K filed with the US SEC the same day.",
-          "Insitu generates more than $200 million in annual revenue and has fielded over 3,500 uncrewed aircraft systems.",
-          "Wisk brings six generations of eVTOL design and more than 1,700 flight tests; its Generation 6 aircraft first flew in December 2025.",
-          "The transaction remains subject to the Hart‑Scott‑Rodino waiting period and is expected to close by the end of 2026."
-        ]
-      },
-      "flash": {
-        "zh": "Archer 收購波音三子公司",
-        "en": "Archer acquires three Boeing units",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Archer Aviation agreed to acquire Boeing's subsidiaries Wisk Aero, Insitu and SkyGrid.",
-          "sourceQuote": "Archer Aviation has agreed to acquire three of Boeing’s autonomy and uncrewed systems subsidiaries, Wisk Aero, Insitu and SkyGrid",
-          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The definitive agreements were signed on 10 August 2026.",
-          "sourceQuote": "The two companies announced they had signed definitive agreements on August 10, 2026",
-          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Financial terms were not disclosed; Archer referenced a Form 8‑K filed with the SEC on the same day.",
-          "sourceQuote": "Financial terms were not disclosed in the announcement, with Archer pointing to a Form 8-K filed with the US Securities and Exchange Commission the same day.",
-          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Insitu generates more than $200 million annual revenue and has fielded over 3,500 uncrewed aircraft systems.",
-          "sourceQuote": "generates more than $200 million in annual revenue, and has fielded over 3,500 uncrewed aircraft systems.",
-          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Wisk contributes six generations of eVTOL design, over 1,700 flight tests, and its Generation 6 aircraft first flew in December 2025.",
-          "sourceQuote": "Wisk brings six generations of eVTOL design and more than 1,700 flight tests, along with the flight control computer, sensor suite and radar developed for its autonomous Generation 6 aircraft, which flew for the first time in December 2025.",
-          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "The deal is subject to Hart‑Scott‑Rodino waiting period and expected to close by end of 2026.",
-          "sourceQuote": "The deal remains subject to closing conditions, including expiration of the waiting period under the US Hart-Scott-Rodino Antitrust Improvements Act, and is expected to close by the end of 2026.",
-          "sourceUrl": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Archer Aviation",
-          "Boeing",
-          "Wisk Aero",
-          "Insitu",
-          "SkyGrid"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Thunder",
-          "Halo",
-          "ScanEagle",
-          "Integrator"
-        ],
-        "airports": [],
-        "locations": [
-          "Bingen, Washington"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "August 10, 2026",
-          "December 2025",
-          "June 2025"
-        ]
-      },
-      "eventStatus": "preliminary",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260810-1948-9",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Archer to acquire Boeing’s Wisk, Insitu and SkyGrid",
-          "url": "https://www.aerotime.aero/articles/archer-acquire-boeing-wisk-insitu-skygrid",
-          "publishedUtc": "2026-08-10T12:37Z",
-          "summary": "Archer Aviation has agreed to acquire three of Boeing’s autonomy and uncrewed systems subsidiaries, Wisk Aero, Insitu and… The post Archer to acquire Boeing’s Wisk, Insitu and SkyGrid appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Archer to acquire Wisk Aero, SkyGrid and Insitu from Boeing",
-          "summary": "Archer to acquire Wisk Aero, SkyGrid and Insitu from Boeing &nbsp;&nbsp; FlightGlobal",
-          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOMkR4dnVWSTZGQkFDeUxUdllkNFNRQVpCbm0wS2hhMTM4MUpjVU5WYXlmWlE0eEVrZUJmb0NrTnRxdERNVGF6WUJLVHp6RFJ1OVdtTmVjSnpFMXJKR1NMWThHWTgyaV9JQnh2czAwTGU3R1cxZFktUGVHMHRBLTZabmI3V3pDSXZyVUx2NmpsRmM4MFM0QWUzekU4RlRHb0tVTEt5dk5kVQ?oc=5",
-          "source": "FlightGlobal",
-          "companion": true,
-          "publishedUtc": "2026-08-10T14:04Z"
-        },
-        {
-          "title": "Archer to Acquire Wisk, Insitu, SkyGrid as Boeing Expands Asset Sales",
-          "summary": "Archer to Acquire Wisk, Insitu, SkyGrid as Boeing Expands Asset Sales &nbsp;&nbsp; Airways Magazine",
-          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPQWVtRDhyUmZIZjJneUExMW9mTDlrQkpzVDJuUHROWFVESmRlREl5dHQ3elpMcERhb1JXWnNzOVVibHY3Qm1MZFlBR3Z2R2p5dmEtVlJ6ZkNNTFYwdlhpcVNHSTZrRTJBbFpfVDRWQUtCTFB0ajdFUEYyTEtoVnNnT0M2RnA?oc=5",
-          "source": "Airways Magazine",
-          "companion": true,
-          "publishedUtc": "2026-08-10T13:23Z"
-        },
-        {
-          "title": "Archer buys Wisk, Insitu & SkyGrid from Boeing in major eVTOL deal",
-          "summary": "Archer buys Wisk, Insitu & SkyGrid from Boeing in major eVTOL deal &nbsp;&nbsp; Aerospace Global News",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOMmx4TmZrSlQyQ2dlV0Rmbkh1d3NtY3lyaHZrUmxFSEtDUGhsOHYtdy1DOGFRQUZJbnF6eEIydldzMFRFTEFYSjM5THFYaTVsMGd0b0k1TDFqeTh4T3JrNFpmaEpodUdsRkdUa1VvcjNERkN3anZkaVlYYV9lcDYtSVRn?oc=5",
-          "source": "Aerospace Global News",
-          "companion": true,
-          "publishedUtc": "2026-08-10T16:40Z"
-        }
-      ],
-      "updateCandidate": false,
       "mustReport": false,
       "archiveContext": {
         "archive_context_version": 1,
