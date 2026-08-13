@@ -284,7 +284,8 @@ site/
 └─ .nojekyll
 ```
 
-All internal links are prefixed with `common.BASE_PATH` (default `/avwire`).
+All internal links are prefixed with `common.BASE_PATH` (empty by default for
+the `https://skytical.tech` custom-domain root).
 Every page rendered through `base.html` includes a language-correct footer
 button linking to its changelog page.
 

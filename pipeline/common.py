@@ -22,14 +22,14 @@ SITE_DIR = ROOT / "site"
 TEMPLATES_DIR = ROOT / "templates"
 STATIC_DIR = ROOT / "static"
 
-# GitHub Pages project sites live under /<repo>/ — override with env for
-# user/organization pages or local preview (set AVWIRE_BASE_PATH="").
-BASE_PATH = os.environ.get("AVWIRE_BASE_PATH", "/avwire").rstrip("/")
+# The production site is served from the root of the SKYTICAL custom domain.
+# Override this for a project-site preview that needs a repository subpath.
+BASE_PATH = os.environ.get("AVWIRE_BASE_PATH", "").rstrip("/")
 
 # Absolute origin for hreflang/canonical links (search engines require
 # fully-qualified URLs there).
 SITE_ORIGIN = (os.environ.get("AVWIRE_SITE_ORIGIN")
-               or "https://nnneeeooo-nnneeeooo.github.io").rstrip("/")
+               or "https://skytical.tech").rstrip("/")
 
 USER_AGENT = (
     "AVWIREBot/1.0 (automated aviation news aggregator; "
