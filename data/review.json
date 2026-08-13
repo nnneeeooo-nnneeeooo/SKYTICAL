@@ -1,5 +1,156 @@
 [
   {
+    "id": "g-20260813-0812-3",
+    "queuedUtc": "2026-08-13T08:12Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Aviation safety incident involving a drone flying over an active runway at Las Vegas Harry Reid Airport while aircraft were landing; safety events require mandatory human review.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Simple Flying reported that Las Vegas Airport continued to land aircraft while a drone was flying over an active runway.",
+        "sourceQuote": "Las Vegas Airport Kept Landing Jets Despite A Drone Flying Over An Active Runway",
+        "sourceUrl": "https://simpleflying.com/las-vegas-airport-arrivals-drone-active-runway/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The air traffic control tower at Harry Reid International Airport permitted aircraft to land during the drone presence over the active runway.",
+        "sourceQuote": "The tower at Harry Reid tempts its luck as jets come in to land.",
+        "sourceUrl": "https://simpleflying.com/las-vegas-airport-arrivals-drone-active-runway/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety incident involving a drone flying over an active runway at Las Vegas Harry Reid Airport while aircraft were landing; safety events require mandatory human review.",
+      "cat": "safety",
+      "zh": {
+        "title": "拉斯維加斯哈里瑞德機場疑遭無人機干擾 塔台仍允許客機於使用中跑道降落",
+        "summary": "據Simple Flying報導，拉斯維加斯機場跑道上方有無人機，塔台仍允許降落。",
+        "body": [
+          "根據航空媒體 Simple Flying 報導，美國拉斯維加斯哈里瑞德機場（Harry Reid Airport）發生一起跑道安全事件。據報導指出，當時有一架無人機於機場的使用中跑道上方飛行，然而管制塔台仍持續允許噴射客機進場降落。",
+          "報導指出，當該架無人機出現在跑道空域時，機場管制塔台並未採取暫停降落的緊急防範措施，因而引發空域維安與跑道安全方面的疑慮。目前關於該事件的確切時間、影響班次及相關調查，仍有待空域主管機關發布更詳細的報告。"
+        ]
+      },
+      "en": {
+        "title": "Las Vegas Harry Reid Airport Continued Jet Landings Despite Drone Over Active Runway",
+        "summary": "Harry Reid Airport control tower continued landing aircraft despite a drone over an active runway.",
+        "body": [
+          "According to a report by Simple Flying, Las Vegas Harry Reid Airport permitted incoming jet aircraft to continue landing despite a drone flying directly over an active runway. Air traffic control at the airport allowed the arrivals to proceed during the drone presence.",
+          "The presence of unmanned aerial vehicles near active runways poses significant hazards to aviation safety and airport operations. The control tower at Harry Reid Airport allowed flights to land rather than immediately halting approach operations upon detecting the drone activity. Detailed findings regarding the incident and potential regulatory responses remain subject to official verification."
+        ]
+      },
+      "flash": {
+        "zh": "據報無人機飛越拉斯維加斯機場使用中跑道，塔台仍開放降落",
+        "en": "Las Vegas airport tower continued jet landings despite drone over active runway",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-13",
+        "sev": "inc",
+        "aircraft": "Unspecified jets",
+        "operator": "Unknown",
+        "phase": {
+          "zh": "進場與降落",
+          "en": "Approach and Landing"
+        },
+        "location": {
+          "zh": "拉斯維加斯哈里瑞德機場",
+          "en": "Harry Reid International Airport, Las Vegas"
+        },
+        "desc": {
+          "zh": "無人機飛越使用中跑道上方，塔台仍允許客機降落",
+          "en": "A drone flew over an active runway while the tower continued allowing jets to land"
+        },
+        "status": "prelim"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Simple Flying reported that Las Vegas Airport continued to land aircraft while a drone was flying over an active runway.",
+          "sourceQuote": "Las Vegas Airport Kept Landing Jets Despite A Drone Flying Over An Active Runway",
+          "sourceUrl": "https://simpleflying.com/las-vegas-airport-arrivals-drone-active-runway/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The air traffic control tower at Harry Reid International Airport permitted aircraft to land during the drone presence over the active runway.",
+          "sourceQuote": "The tower at Harry Reid tempts its luck as jets come in to land.",
+          "sourceUrl": "https://simpleflying.com/las-vegas-airport-arrivals-drone-active-runway/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Simple Flying"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [
+          "Harry Reid",
+          "Las Vegas Airport"
+        ],
+        "locations": [
+          "Las Vegas"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-13"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260813-0812-3",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Las Vegas Airport Kept Landing Jets Despite A Drone Flying Over An Active Runway",
+          "url": "https://simpleflying.com/las-vegas-airport-arrivals-drone-active-runway/",
+          "publishedUtc": "2026-08-13T07:37Z",
+          "summary": "The tower at Harry Reid tempts its luck as jets come in to land.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/las-vegas-nv-usa-private-gates-lear-jet-35a-n90j-arrival-into-harry-reid-international-airport.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260813-0401-3",
     "queuedUtc": "2026-08-13T04:01Z",
     "approve": false,
@@ -10239,157 +10390,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260810-1105-2",
-    "queuedUtc": "2026-08-10T11:05Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Engine selection claim for up to 63 aircraft involves a major fleet order decision requiring manual review.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "British Airways selected Pratt & Whitney GTF engines to power up to 63 Airbus A320neo family aircraft.",
-        "sourceQuote": "British Airways, has selected Pratt & Whitney's geared turbofan, or GTF engine to power up to 63 Airbus A320neo family aircraft",
-        "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The decision ends decades of exclusive reliance on CFM International engines for British Airways' Airbus narrowbody fleet.",
-        "sourceQuote": "ending decades of exclusive reliance on CFM International engines for its Airbus narrowbody fleet.",
-        "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "British Airways is introducing a second engine supplier for the first time on its A320neo family fleet.",
-        "sourceQuote": "the airline is introducing a second engine supplier for the first time on its A320neo family fleet",
-        "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Engine selection claim for up to 63 aircraft involves a major fleet order decision requiring manual review.",
-      "cat": "biz",
-      "zh": {
-        "title": "英國航空選用普惠GTF發動機為63架A320neo系列客機提供動力",
-        "summary": "英國航空選擇普惠GTF發動機；為多達63架A320neo系列客機提供動力",
-        "body": [
-          "英國旗艦航空公司英國航空已選擇普惠公司的齒輪傳動風扇（GTF）發動機，為其多達63架空中巴士A320neo系列客機提供動力。這項決定標誌著英國航空首次在其A320neo系列客機機隊中引進第二家發動機供應商。",
-          "此舉同時結束了該航空公司數十年來在其空中巴士窄體客機機隊上完全依賴CFM國際發動機的歷史。隨著這項最新選擇，英國航空正式打破以往由單一廠商獨家供應發動機的模式，為其窄體機隊帶來發動機供應商的多樣化選擇。"
-        ]
-      },
-      "en": {
-        "title": "British Airways Selects Pratt & Whitney GTF Engines for 63 A320neo Aircraft",
-        "summary": "British Airways selects Pratt & Whitney GTF engines to power up to 63 Airbus A320neo family aircraft.",
-        "body": [
-          "British Airways, the primary flag carrier of the United Kingdom, has selected Pratt & Whitney's geared turbofan (GTF) engines to power up to 63 Airbus A320neo family aircraft. This decision marks the first time that British Airways is introducing a second engine supplier for its Airbus A320neo family fleet.",
-          "The selection officially ends decades of exclusive reliance on CFM International engines for the UK carrier's Airbus narrowbody fleet. By choosing Pratt & Whitney GTF powerplants for its latest A320neo aircraft, British Airways breaks with long-standing precedent and establishes a multi-supplier approach for its narrowbody operations."
-        ]
-      },
-      "flash": {
-        "zh": "英國航空選擇普惠GTF發動機裝備A320neo機隊",
-        "en": "British Airways selects Pratt & Whitney GTF engines for A320neo fleet",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "British Airways selected Pratt & Whitney GTF engines to power up to 63 Airbus A320neo family aircraft.",
-          "sourceQuote": "British Airways, has selected Pratt & Whitney's geared turbofan, or GTF engine to power up to 63 Airbus A320neo family aircraft",
-          "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The decision ends decades of exclusive reliance on CFM International engines for British Airways' Airbus narrowbody fleet.",
-          "sourceQuote": "ending decades of exclusive reliance on CFM International engines for its Airbus narrowbody fleet.",
-          "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "British Airways is introducing a second engine supplier for the first time on its A320neo family fleet.",
-          "sourceQuote": "the airline is introducing a second engine supplier for the first time on its A320neo family fleet",
-          "sourceUrl": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1"
-      ],
-      "entities": {
-        "organizations": [
-          "Airbus",
-          "British Airways",
-          "CFM International",
-          "Pratt & Whitney"
-        ],
-        "airlines": [
-          "British Airways"
-        ],
-        "aircraft_models": [
-          "A320neo",
-          "Airbus A320neo"
-        ],
-        "airports": [],
-        "locations": [
-          "United Kingdom"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260810-1105-2",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "British Airways Breaks Decades of CFM Loyalty",
-          "url": "https://simpleflying.com/video/british-airways-breaks-decades-of-cfm-loyalty/",
-          "publishedUtc": "2026-08-10T11:00Z",
-          "summary": "The United Kingdom's primary flag carrier, British Airways, has selected Pratt & Whitney's geared turbofan, or GTF engine to power up to 63 Airbus A320neo family aircraft, ending decades of exclusive reliance on CFM International engines for its Airbus narrowbody fleet. So in this video, we take a look at why the airline is introducing a second engine supplier for the first time on its A320neo family fleet, and what this decision says about how airlines are choosing engines in today's increasin…",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/60_lh_british-airways-broke-decades-cfm-loyalty-pratt-whitney-gtf-over-60-airbus-jets_h_site-copy.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
