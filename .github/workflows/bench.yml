@@ -49,12 +49,25 @@ jobs:
               )
               try:
                   with urllib.request.urlopen(req, timeout=30) as response:
-                      return response.status, response.read().decode("utf-8", "replace")
+                      return (
+                          response.status,
+                          response.read().decode("utf-8", "replace"),
+                          response.headers.get("Content-Type", ""),
+                          response.geturl(),
+                      )
               except urllib.error.HTTPError as exc:
-                  return exc.code, exc.read().decode("utf-8", "replace")
+                  return (
+                      exc.code,
+                      exc.read().decode("utf-8", "replace"),
+                      exc.headers.get("Content-Type", ""),
+                      exc.geturl(),
+                  )
 
-          status, raw = request("/models")
+          status, raw, content_type, final_url = request("/models")
           print(f"MODEL_DISCOVERY={base_url}|bearer|HTTP_{status}")
+          print(f"MODELS_CONTENT_TYPE={content_type}")
+          print(f"MODELS_FINAL_URL={final_url}")
+          print(f"MODELS_BODY_LENGTH={len(raw.encode('utf-8'))}")
           if status != 200:
               print("::error::AgentRouter authentication or model discovery failed")
               raise SystemExit(1)
@@ -113,6 +126,9 @@ jobs:
               collect(body)
               model_ids = sorted(model_ids)
           except (TypeError, ValueError, json.JSONDecodeError) as exc:
+              safe_prefix = raw.replace(api_key, "***")[:240]
+              safe_prefix = " ".join(safe_prefix.split())
+              print(f"MODELS_BODY_PREFIX={safe_prefix}")
               print(f"MODELS_PARSE_ERROR={type(exc).__name__}:{str(exc)[:200]}")
               print("::error::AgentRouter returned an invalid models payload")
               raise SystemExit(1)
@@ -141,7 +157,7 @@ jobs:
               raise SystemExit(0)
 
           print(f"SMOKE_MODEL={smoke_model}")
-          status, raw = request("/chat/completions", payload={
+          status, raw, content_type, final_url = request("/chat/completions", payload={
               "model": smoke_model,
               "messages": [{"role": "user", "content": "Reply with exactly OK"}],
               "max_tokens": 8,
@@ -149,6 +165,8 @@ jobs:
               "stream": False,
           })
           print(f"SMOKE_HTTP_STATUS={status}")
+          print(f"SMOKE_CONTENT_TYPE={content_type}")
+          print(f"SMOKE_FINAL_URL={final_url}")
           if status != 200:
               safe_error = raw.replace(api_key, "***")[:500].replace("\n", " ")
               print(f"SMOKE_ERROR={safe_error}")
