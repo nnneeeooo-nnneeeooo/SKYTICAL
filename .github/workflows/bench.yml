@@ -1,122 +1,113 @@
-name: provider-bench
-
-# Manual benchmark: run the write stage once per configured provider on the
-# SAME copy of the current pending groups, then upload every provider's
-# articles as an artifact for side-by-side quality comparison. Nothing is
-# committed and nothing is deployed — data/ in the repo stays untouched.
+name: agentrouter-secret-diagnostic
 
 on:
   workflow_dispatch:
-    inputs:
-      gemini_model:
-        description: "Override AVWIRE_GEMINI_MODEL for this bench"
-        required: false
-      nvidia_model:
-        description: "Override AVWIRE_NVIDIA_MODEL for this bench"
-        required: false
-      opencode_model:
-        description: "Override AVWIRE_OPENCODE_MODEL for this bench"
-        required: false
 
 permissions:
   contents: read
 
 jobs:
-  bench:
+  diagnose:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-
-      - run: pip install -r requirements.txt
-
-      - name: List models available to each key
+      - name: Check AgentRouter key, list models, and run a minimal smoke test
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          AGENTROUTER_API: ${{ secrets.AGENTROUTER_API }}
+        shell: bash
         run: |
-          if [ -n "$OPENCODE_API_KEY" ]; then
-            echo "== OpenCode Console models =="
-            curl -sf https://console.opencode.ai/inference/openai/v1/models \
-              -H "Authorization: Bearer $OPENCODE_API_KEY" \
-              | python -c 'import json,sys; [print(m["id"]) for m in json.load(sys.stdin).get("data",[])]' \
-              || echo "(model list unavailable)"
-          fi
-          if [ -n "$NVIDIA_API_KEY" ]; then
-            echo "== NVIDIA models (deepseek/qwen/llama) =="
-            curl -sf https://integrate.api.nvidia.com/v1/models \
-              -H "Authorization: Bearer $NVIDIA_API_KEY" \
-              | python -c 'import json,sys; [print(m["id"]) for m in json.load(sys.stdin).get("data",[])]' \
-              | grep -Ei "nemotron|deepseek|qwen|glm|mistral|kimi|llama" || echo "(model list unavailable)"
-          fi
-          if [ -n "$GEMINI_API_KEY" ]; then
-            echo "== Gemini generateContent models =="
-            curl -sf https://generativelanguage.googleapis.com/v1beta/models \
-              -H "x-goog-api-key: $GEMINI_API_KEY" \
-              | python -c 'import json,sys; [print(m["name"]) for m in json.load(sys.stdin).get("models",[]) if "generateContent" in m.get("supportedGenerationMethods",[])]' \
-              || echo "(model list unavailable)"
-          fi
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.error
+          import urllib.request
 
-      - name: Bench each provider on identical pending groups
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-          AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }}
-          AVWIRE_GEMINI_MODEL: ${{ inputs.gemini_model || vars.AVWIRE_GEMINI_MODEL }}
-          AVWIRE_NVIDIA_MODEL: ${{ inputs.nvidia_model || vars.AVWIRE_NVIDIA_MODEL }}
-          AVWIRE_OPENCODE_MODEL: ${{ inputs.opencode_model || vars.AVWIRE_OPENCODE_MODEL }}
-        run: |
-          ok=""
-          failed=""
-          for p in opencode gemini nvidia anthropic; do
-            case "$p" in
-              opencode)   key="$OPENCODE_API_KEY" ;;
-              gemini)    key="$GEMINI_API_KEY" ;;
-              nvidia)    key="$NVIDIA_API_KEY" ;;
-              anthropic) key="$ANTHROPIC_API_KEY" ;;
-            esac
-            if [ -z "$key" ]; then
-              echo "bench: $p skipped (no key)"
-              continue
-            fi
-            echo "== bench: $p =="
-            # Copy only the write-stage inputs, so bench-out/$p/articles/
-            # contains exclusively this provider's fresh output (not the
-            # whole committed article archive).
-            mkdir -p "bench-out/$p/raw"
-            for f in pending.json seen.json flashes.json incidents.json; do
-              if [ -f "data/$f" ]; then cp "data/$f" "bench-out/$p/"; fi
-            done
-            if [ -f data/raw/flightaware.json ]; then
-              cp data/raw/flightaware.json "bench-out/$p/raw/"
-            fi
-            if AVWIRE_DATA_DIR="bench-out/$p" AVWIRE_PROVIDER_ORDER="$p" \
-                python pipeline/write.py; then
-              ok="$ok $p"
-            else
-              echo "::warning::bench: $p failed (bad key or quota?)"
-              failed="$failed $p"
-            fi
-          done
-          if [ -z "$ok" ]; then
-            echo "::error::no provider produced a bench run (missing keys, or every configured provider failed:$failed)"
-            exit 1
-          fi
-          echo "bench: ok:$ok failed:${failed:-none}"
+          base_url = "https://co.agentrouter.org/v1"
+          api_key = os.environ.get("AGENTROUTER_API", "")
+          if not api_key:
+              print("::error::AGENTROUTER_API is missing or empty")
+              raise SystemExit(1)
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: bench-articles
-          path: |
-            bench-out/*/articles/
-            bench-out/*/review.json
-            bench-out/*/flashes.json
-            bench-out/*/incidents.json
-          retention-days: 7
+          def request(path, *, payload=None):
+              data = None if payload is None else json.dumps(payload).encode("utf-8")
+              req = urllib.request.Request(
+                  base_url + path,
+                  data=data,
+                  headers={
+                      "Authorization": f"Bearer {api_key}",
+                      "Content-Type": "application/json",
+                      "User-Agent": "AVWIRE-AgentRouter-Diagnostic/1.0",
+                  },
+                  method="GET" if payload is None else "POST",
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as response:
+                      return response.status, response.read().decode("utf-8", "replace")
+              except urllib.error.HTTPError as exc:
+                  return exc.code, exc.read().decode("utf-8", "replace")
+
+          status, raw = request("/models")
+          print(f"MODELS_HTTP_STATUS={status}")
+          if status != 200:
+              print("::error::AgentRouter authentication or model discovery failed")
+              raise SystemExit(1)
+
+          try:
+              body = json.loads(raw)
+              model_ids = sorted({
+                  row.get("id", "").strip()
+                  for row in body.get("data", [])
+                  if isinstance(row, dict) and row.get("id", "").strip()
+              })
+          except (TypeError, ValueError, json.JSONDecodeError):
+              print("::error::AgentRouter returned an invalid models payload")
+              raise SystemExit(1)
+
+          print(f"MODEL_COUNT={len(model_ids)}")
+          for model_id in model_ids:
+              print(f"MODEL={model_id}")
+          if not model_ids:
+              print("::error::The key authenticated but exposes no models")
+              raise SystemExit(1)
+
+          preferred = ("gpt-", "glm-", "kimi-", "step", "qwen-", "deepseek-")
+          excluded = ("embedding", "rerank", "image", "audio", "tts", "whisper")
+          smoke_candidates = [
+              model_id for model_id in model_ids
+              if not model_id.lower().startswith("claude-")
+              and not any(term in model_id.lower() for term in excluded)
+          ]
+          smoke_model = next(
+              (model_id for prefix in preferred for model_id in smoke_candidates
+               if model_id.lower().startswith(prefix)),
+              smoke_candidates[0] if smoke_candidates else "",
+          )
+          if not smoke_model:
+              print("::warning::No OpenAI-compatible text model was available for a smoke test")
+              raise SystemExit(0)
+
+          print(f"SMOKE_MODEL={smoke_model}")
+          status, raw = request("/chat/completions", payload={
+              "model": smoke_model,
+              "messages": [{"role": "user", "content": "Reply with exactly OK"}],
+              "max_tokens": 8,
+              "temperature": 0,
+              "stream": False,
+          })
+          print(f"SMOKE_HTTP_STATUS={status}")
+          if status != 200:
+              safe_error = raw.replace(api_key, "***")[:500].replace("\n", " ")
+              print(f"SMOKE_ERROR={safe_error}")
+              print("::error::Model discovery succeeded but inference failed")
+              raise SystemExit(1)
+
+          try:
+              result = json.loads(raw)
+              content = result["choices"][0]["message"]["content"].strip()
+          except (KeyError, IndexError, TypeError, ValueError, json.JSONDecodeError):
+              print("::error::Inference returned an invalid chat-completions payload")
+              raise SystemExit(1)
+          print(f"SMOKE_RESPONSE={content[:80]}")
+          print("AGENTROUTER_API_USABLE=true")
+          PY
