@@ -34,6 +34,11 @@
         {% elif a.image.provider %}<span>{{ a.image.provider }}</span>{% endif %}
       </figcaption>
     </figure>
+    {% else %}
+    <figure data-image-fallback="true" style="margin:0 0 22px;">
+      <img src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}" alt="SKYTICAL" fetchpriority="high" decoding="async" style="width:100%;height:auto;max-height:560px;object-fit:contain;background:color-mix(in srgb,var(--color-text) 6%,var(--color-surface));border:1px solid var(--color-divider);">
+      <figcaption class="text-muted" style="font-size:11.5px;margin-top:6px;">{% if html_lang.startswith('zh') %}暫無可驗證的事件或資料照片，先顯示 SKYTICAL 預設圖片。{% else %}No verified event or file photo is available yet; showing the SKYTICAL default image.{% endif %}</figcaption>
+    </figure>
     {% endif %}
     <div class="article-body" data-article-body
          data-search-aliases-url="{{ search_aliases_url }}">
