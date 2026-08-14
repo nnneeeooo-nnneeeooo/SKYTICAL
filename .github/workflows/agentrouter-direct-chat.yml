@@ -1,0 +1,46 @@
+name: agentrouter-direct-chat
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/agentrouter-direct-chat.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call AgentRouter chat endpoint
+        env:
+          AGENTROUTER_API: ${{ secrets.AGENTROUTER_API }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${AGENTROUTER_API:-}"
+          body='{"model":"gpt-5","messages":[{"role":"user","content":"Reply with exactly OK"}],"max_tokens":8}'
+          code=$(curl -sS -o /tmp/agentrouter.json -w "%{http_code}" \
+            https://agentrouter.org/v1/chat/completions \
+            -H "Authorization: Bearer $AGENTROUTER_API" \
+            -H "Content-Type: application/json" \
+            --data "$body" || true)
+          echo "Chat HTTP status: $code"
+          python - <<'PY'
+          import json, sys
+          try:
+              data=json.load(open('/tmp/agentrouter.json'))
+          except Exception:
+              print('Response JSON: unavailable')
+              sys.exit(1)
+          if 'choices' in data:
+              content=((data.get('choices') or [{}])[0].get('message') or {}).get('content','').strip()
+              print('Model response received:', bool(content))
+              sys.exit(0 if content else 1)
+          err=data.get('error') or data.get('message') or 'request failed'
+          if isinstance(err, dict):
+              err=err.get('message') or err.get('code') or 'request failed'
+          print('Response summary:', str(err)[:180])
+          sys.exit(1)
+          PY
