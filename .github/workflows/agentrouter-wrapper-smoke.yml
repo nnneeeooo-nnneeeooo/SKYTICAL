@@ -1,0 +1,86 @@
+name: agentrouter-wrapper-smoke
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/agentrouter-wrapper-smoke.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reproduce wrapper request against AgentRouter
+        env:
+          AGENTROUTER_API: ${{ secrets.AGENTROUTER_API }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${AGENTROUTER_API:-}"
+
+          python - <<'PY' > /tmp/body.json
+          import json
+          body = {
+              "model": "gpt-5.6-sol",
+              "messages": [
+                  {"role": "system", "content": "Return concise plain text."},
+                  {"role": "user", "content": "Reply with exactly OK"},
+              ],
+              "stream": False,
+              "temperature": None,
+              "response_format": None,
+          }
+          def strip_nulls(v):
+              if isinstance(v, dict):
+                  return {k: strip_nulls(x) for k, x in v.items() if x is not None}
+              if isinstance(v, list):
+                  return [strip_nulls(x) for x in v]
+              return v
+          print(json.dumps(strip_nulls(body), separators=(",", ":")))
+          PY
+
+          code=$(curl -sS -D /tmp/headers.txt -o /tmp/body.out -w "%{http_code}" \
+            https://agentrouter.org/v1/chat/completions \
+            -H "Authorization: Bearer $AGENTROUTER_API" \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/json" \
+            -H "Accept-Encoding: identity" \
+            -H "User-Agent: opencode/1.17.12" \
+            --data-binary @/tmp/body.json || true)
+
+          echo "HTTP status: $code"
+          ctype=$(awk 'BEGIN{IGNORECASE=1} /^content-type:/{sub(/^[^:]*:[[:space:]]*/,""); gsub(/\r/,""); print; exit}' /tmp/headers.txt)
+          echo "Content-Type: ${ctype:-unknown}"
+          echo "Response bytes: $(wc -c < /tmp/body.out | tr -d ' ')"
+
+          python - <<'PY'
+          import json, sys
+          raw = open('/tmp/body.out','rb').read()
+          try:
+              obj = json.loads(raw)
+          except Exception:
+              text = raw.decode('utf-8', errors='replace')
+              print('JSON response: no')
+              print('Body prefix:', text[:160].replace('\n',' '))
+              sys.exit(1)
+
+          print('JSON response: yes')
+          if isinstance(obj, dict):
+              choices = obj.get('choices') or []
+              if choices:
+                  msg = choices[0].get('message') or {}
+                  content = (msg.get('content') or '').strip()
+                  print('Model response received:', bool(content))
+                  print('Returned model:', obj.get('model', 'unknown'))
+                  sys.exit(0 if content else 1)
+              err = obj.get('error') or obj.get('message') or obj.get('type') or 'request failed'
+              if isinstance(err, dict):
+                  err = err.get('message') or err.get('type') or err.get('code') or 'request failed'
+              print('Response summary:', str(err)[:180])
+          else:
+              print('Unexpected JSON shape')
+          sys.exit(1)
+          PY
