@@ -2,15 +2,16 @@
 
 Owner editorial rule: whenever an article names an airport that has an IATA
 three-letter location code, the first mention must carry that code in
-parentheses in both Traditional Chinese and English.  This is deliberately a
+parentheses in both Traditional Chinese and English. This is deliberately a
 code-level publishing rule, not a request for the writer model to remember or
 invent airport codes.
 
 The resolver uses the bundled ``airportsdata`` package (no runtime network
-request) plus SKYTICAL's reviewed Taiwan-airport configuration.  Exact or
-uniquely resolvable airport/city aliases are accepted; ambiguous names are
-never guessed.  The stage is idempotent and may safely run before every site
-build, including against already-published recent articles.
+request), SKYTICAL's reviewed Taiwan-airport configuration, and a small
+reviewed alias table for genuinely ambiguous/common source names. Exact or
+uniquely resolvable names are accepted; ambiguous names are never guessed.
+The stage is idempotent and may safely run before every site build, including
+against already-published recent articles.
 """
 from __future__ import annotations
 
@@ -35,7 +36,6 @@ _GENERIC_WORDS = {
     "aerodrome", "airfield", "terminal", "aeroporto", "aeropuerto",
     "aéroport", "flughafen",
 }
-_CODE_PAREN_RE = re.compile(r"[（(]\s*([A-Z]{3})\s*[)）]")
 _ZH_AIRPORT_RE = re.compile(
     r"[\u3400-\u9fffA-Za-z0-9·．・\-]{2,36}?(?:國際)?機場"
 )
@@ -88,8 +88,8 @@ def _registry() -> tuple[dict[str, dict], dict[str, set[str]], dict[str, dict]]:
             if len(core) >= 4:
                 _add_alias(aliases, core, code)
         if city:
-            # City-only aliases are intentionally not added.  "London" or
-            # "Tokyo" can refer to several airports.  The explicit "X Airport"
+            # City-only aliases are intentionally not added. "London" or
+            # "Tokyo" can refer to several airports. The explicit "X Airport"
             # form is accepted only when it resolves uniquely after indexing.
             _add_alias(aliases, f"{city} Airport", code)
             _add_alias(aliases, f"{city} International Airport", code)
@@ -113,6 +113,18 @@ def _registry() -> tuple[dict[str, dict], dict[str, set[str]], dict[str, dict]]:
     return rows, aliases, tw_rows
 
 
+@lru_cache(maxsize=1)
+def _reviewed_aliases() -> dict[str, str]:
+    cfg = load_json(ROOT / "config" / "airport_iata_aliases.json", {})
+    out = {}
+    for alias, code in (cfg.get("aliases") or {}).items():
+        normalized = _norm(str(alias))
+        code = str(code or "").strip().upper()
+        if normalized and re.fullmatch(r"[A-Z]{3}", code):
+            out[normalized] = code
+    return out
+
+
 def resolve_airport(entity: str) -> dict | None:
     """Resolve a verified airport entity without fuzzy guessing."""
     rows, aliases, tw_rows = _registry()
@@ -126,6 +138,13 @@ def resolve_airport(entity: str) -> dict | None:
             row.update(tw_rows.get(token) or {})
             row["code"] = token
             return row
+
+    reviewed_code = _reviewed_aliases().get(_norm(raw))
+    if reviewed_code and (reviewed_code in rows or reviewed_code in tw_rows):
+        row = dict(rows.get(reviewed_code) or {})
+        row.update(tw_rows.get(reviewed_code) or {})
+        row["code"] = reviewed_code
+        return row
 
     candidates = aliases.get(_norm(raw), set())
     if len(candidates) != 1:
@@ -158,11 +177,7 @@ def _set_slot(article: dict, lang: str, key: str, index: int | None,
 
 def _airport_patterns(entity: str, row: dict) -> list[re.Pattern]:
     values = []
-    for value in (
-        entity,
-        row.get("name_en"),
-        row.get("name"),
-    ):
+    for value in (entity, row.get("name_en"), row.get("name")):
         value = str(value or "").strip()
         if value and value not in values:
             values.append(value)
@@ -194,10 +209,8 @@ def _find_en_match(article: dict, entity: str, row: dict):
 def _zh_candidates(text: str):
     matches = []
     for match in _ZH_AIRPORT_RE.finditer(text):
-        value = match.group(0)
-        if value in _GENERIC_ZH:
-            continue
-        matches.append(match)
+        if match.group(0) not in _GENERIC_ZH:
+            matches.append(match)
     return matches
 
 
@@ -271,9 +284,9 @@ def enforce_article(article: dict) -> tuple[bool, list[str]]:
             text = new_text
         _set_slot(article, "en", key, index, text)
 
-    # Chinese: pair airport mentions with the already-resolved English mentions
-    # in the equivalent title/summary/paragraph.  This avoids asking the model
-    # or a transliteration heuristic to invent a Chinese airport identity.
+    # Chinese: pair airport mentions with resolved English mentions in the
+    # equivalent title/summary/paragraph. This avoids asking a transliteration
+    # heuristic to invent an airport identity.
     zh_done = set()
     for slot, matches in by_slot.items():
         key, index = slot
@@ -295,7 +308,7 @@ def enforce_article(article: dict) -> tuple[bool, list[str]]:
         _set_slot(article, "zh", key, index, text)
 
     # Single-airport fallback for bilingual wording that is not structurally
-    # aligned.  A lone resolved airport cannot be confused with another code.
+    # aligned. A lone resolved airport cannot be confused with another code.
     if len(resolved) == 1:
         item = resolved[0]
         code = item["code"]
