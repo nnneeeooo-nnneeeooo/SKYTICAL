@@ -1,5 +1,200 @@
 [
   {
+    "id": "g-20260814-2313-3",
+    "queuedUtc": "2026-08-14T23:13Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Aviation safety runway incursion event under ATSB investigation; source establishes a current event but is headline-and-excerpt only without full article text, and safety events require mandatory human review per editorial rules.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Airservices Australia and the ATSB disagree over a Sydney runway incursion incident.",
+        "sourceQuote": "Airservices Australia & The ATSB Disagree Over Sydney Runway Incursion Incident",
+        "sourceUrl": "https://simpleflying.com/airservices-australia-atsb-disagree-sydney-runway-incursion-incident/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Controllers rescinded takeoff clearance while aircraft remained more than 0.6 miles apart.",
+        "sourceQuote": "Controllers rescinded takeoff clearance while aircraft remained more than 0.6 miles apart",
+        "sourceUrl": "https://simpleflying.com/airservices-australia-atsb-disagree-sydney-runway-incursion-incident/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The situation sparked an ATSB probe.",
+        "sourceQuote": "sparking an ATSB probe",
+        "sourceUrl": "https://simpleflying.com/airservices-australia-atsb-disagree-sydney-runway-incursion-incident/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The article was published on 2026-08-14, four days after the incident.",
+        "sourceQuote": "4 Days Later",
+        "sourceUrl": "https://simpleflying.com/airservices-australia-atsb-disagree-sydney-runway-incursion-incident/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety runway incursion event under ATSB investigation; source establishes a current event but is headline-and-excerpt only without full article text, and safety events require mandatory human review per editorial rules.",
+      "cat": "safety",
+      "zh": {
+        "title": "雪梨跑道入侵事件 Airservices Australia 與 ATSB 看法分歧",
+        "summary": "雪梨機場跑道入侵事件；管制員撤銷起飛許可，ATSB 展開調查",
+        "body": [
+          "Simple Flying 報導，Airservices Australia 與澳洲運輸安全局（ATSB）就一起雪梨機場跑道入侵事件的看法出現分歧。",
+          "報導指出，管制員在兩架航空器仍相距超過 0.6 英里時撤銷了起飛許可，此一情況引發 ATSB 展開調查。",
+          "該事件涉及跑道入侵，目前由 ATSB 進行調查。報導標題顯示雙方對事件性質存在不同意見。",
+          "本報導基於 Simple Flying 的標題與摘要資訊，完整文章內容未經檢視。"
+        ]
+      },
+      "en": {
+        "title": "Airservices Australia and ATSB Disagree Over Sydney Runway Incursion Incident",
+        "summary": "Sydney runway incursion; controllers rescinded takeoff clearance, ATSB investigating",
+        "body": [
+          "Simple Flying reports that Airservices Australia and the Australian Transport Safety Bureau (ATSB) disagree over a runway incursion incident at Sydney Airport.",
+          "According to the report, controllers rescinded takeoff clearance while the aircraft remained more than 0.6 miles apart, prompting an ATSB investigation.",
+          "The incident is classified as a runway incursion and is currently under investigation by the ATSB. The report's headline indicates the two organisations hold differing views on the event.",
+          "This report is based on headline and summary information from Simple Flying; the full article text was not available for review."
+        ]
+      },
+      "flash": {
+        "zh": "雪梨跑道入侵事件 ATSB展開調查",
+        "en": "Sydney runway incursion under ATSB investigation",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-10",
+        "sev": "inc",
+        "aircraft": "",
+        "operator": "",
+        "phase": {
+          "zh": "起飛",
+          "en": "takeoff"
+        },
+        "location": {
+          "zh": "雪梨機場",
+          "en": "Sydney Airport"
+        },
+        "desc": {
+          "zh": "跑道入侵；管制員在航空器相距超過0.6英里時撤銷起飛許可",
+          "en": "Runway incursion; controllers rescinded takeoff clearance while aircraft more than 0.6 miles apart"
+        },
+        "status": "prelim"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Airservices Australia and the ATSB disagree over a Sydney runway incursion incident.",
+          "sourceQuote": "Airservices Australia & The ATSB Disagree Over Sydney Runway Incursion Incident",
+          "sourceUrl": "https://simpleflying.com/airservices-australia-atsb-disagree-sydney-runway-incursion-incident/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Controllers rescinded takeoff clearance while aircraft remained more than 0.6 miles apart.",
+          "sourceQuote": "Controllers rescinded takeoff clearance while aircraft remained more than 0.6 miles apart",
+          "sourceUrl": "https://simpleflying.com/airservices-australia-atsb-disagree-sydney-runway-incursion-incident/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The situation sparked an ATSB probe.",
+          "sourceQuote": "sparking an ATSB probe",
+          "sourceUrl": "https://simpleflying.com/airservices-australia-atsb-disagree-sydney-runway-incursion-incident/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The article was published on 2026-08-14, four days after the incident.",
+          "sourceQuote": "4 Days Later",
+          "sourceUrl": "https://simpleflying.com/airservices-australia-atsb-disagree-sydney-runway-incursion-incident/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Airservices Australia",
+          "ATSB"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [
+          "Sydney"
+        ],
+        "locations": [
+          "Sydney"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-10"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-2313-3",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "4 Days Later: Airservices Australia & The ATSB Disagree Over Sydney Runway Incursion Incident",
+          "url": "https://simpleflying.com/airservices-australia-atsb-disagree-sydney-runway-incursion-incident/",
+          "publishedUtc": "2026-08-14T19:33Z",
+          "summary": "Controllers rescinded takeoff clearance while aircraft remained more than 0.6 miles apart sparking an ATSB probe.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/sydney-kingsford-smith-airport-syd-qantas-and-virgin.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260814-2213-9",
     "queuedUtc": "2026-08-14T22:13Z",
     "approve": false,
@@ -10295,343 +10490,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260812-1053-1",
-    "queuedUtc": "2026-08-12T10:53Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Joby Aviation's acquisition of Resonant Sciences involves a major $500 million financial transaction and corporate agreement subject to regulatory approval, requiring human review under financial_or_order_claim.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Joby Aviation announced on August 11, 2026, that it entered into a definitive agreement to acquire defense technology company Resonant Sciences for approximately $500 million.",
-        "sourceQuote": "Joby Aviation announced on August 11, 2026, that it has entered into a definitive agreement to acquire Resonant Sciences, a Dayton, Ohio-based defense technology company, for approximately $500 million.",
-        "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Joby plans to fund the acquisition with approximately $450 million in cash and $50 million in Joby common stock.",
-        "sourceQuote": "Joby plans to fund the acquisition with approximately $450 million in cash and $50 million in Joby common stock",
-        "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The transaction is expected to close in the first half of 2027, subject to regulatory approval.",
-        "sourceQuote": "The transaction is expected to close in the first half of 2027, subject to regulatory approval.",
-        "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Resonant Sciences will become Joby's dedicated defense business and continue operating under its own name led by CEO J. Micah North.",
-        "sourceQuote": "Upon closing, Resonant will become Joby’s dedicated defense business, continuing to operate under its own name and led by co-founder and CEO J. Micah North.",
-        "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Resonant Sciences is based in Dayton, Ohio, with approximately 250 employees developing radio frequency and mission systems for US national security customers.",
-        "sourceQuote": "Resonant, founded in 2015 and based in Dayton, Ohio, develops and manufactures radio-frequency, sensing and mission systems for US national security customers.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/joby-acquires-resonant-sciences-500m-defence/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Joby Aviation's acquisition of Resonant Sciences involves a major $500 million financial transaction and corporate agreement subject to regulatory approval, requiring human review under financial_or_order_claim.",
-      "cat": "biz",
-      "zh": {
-        "title": "Joby以5億美元收購國防科技公司Resonant",
-        "summary": "Joby以5億美元收購國防科技公司Resonant，預計2027年完成。",
-        "body": [
-          "Joby Aviation於2026年8月11日宣布，已達成最終協議，將以約5億美元收購總部位於俄亥俄州代頓的國防科技公司Resonant Sciences。",
-          "根據交易條款，Joby將支付約4.5億美元現金及5000萬美元的Joby普通股。此項收購案預計於2027年上半年完成，但仍須取得監管部門的批准。",
-          "交易完成後，Resonant Sciences將成為Joby專屬的國防業務部門，並在聯合創辦人兼執行長J. Micah North的領導下，繼續以原名營運。該公司擁有約250名員工，專門為美國國家安全客戶開發無線電頻率與任務系統。"
-        ]
-      },
-      "en": {
-        "title": "Joby Aviation to Acquire Resonant Sciences for $500 Million",
-        "summary": "Joby Aviation announced an agreement to acquire Resonant Sciences for $500 million to expand defense operations.",
-        "body": [
-          "Joby Aviation announced on August 11, 2026, that it has entered into a definitive agreement to acquire defense technology company Resonant Sciences for approximately $500 million.",
-          "Under the terms of the deal, Joby will fund the transaction with $450 million in cash and $50 million in Joby common stock. The acquisition is expected to close in the first half of 2027, subject to required regulatory approvals.",
-          "Following the closing, Resonant Sciences will become Joby's dedicated defense business, continuing to operate under its own name and led by CEO J. Micah North. Based in Dayton, Ohio, Resonant employs about 250 people and develops radio-frequency and mission systems for US national security customers."
-        ]
-      },
-      "flash": {
-        "zh": "Joby Aviation以5億美元收購Resonant Sciences",
-        "en": "Joby Aviation agrees to acquire Resonant Sciences for $500 million",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Joby Aviation announced on August 11, 2026, that it entered into a definitive agreement to acquire defense technology company Resonant Sciences for approximately $500 million.",
-          "sourceQuote": "Joby Aviation announced on August 11, 2026, that it has entered into a definitive agreement to acquire Resonant Sciences, a Dayton, Ohio-based defense technology company, for approximately $500 million.",
-          "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Joby plans to fund the acquisition with approximately $450 million in cash and $50 million in Joby common stock.",
-          "sourceQuote": "Joby plans to fund the acquisition with approximately $450 million in cash and $50 million in Joby common stock",
-          "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The transaction is expected to close in the first half of 2027, subject to regulatory approval.",
-          "sourceQuote": "The transaction is expected to close in the first half of 2027, subject to regulatory approval.",
-          "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Resonant Sciences will become Joby's dedicated defense business and continue operating under its own name led by CEO J. Micah North.",
-          "sourceQuote": "Upon closing, Resonant will become Joby’s dedicated defense business, continuing to operate under its own name and led by co-founder and CEO J. Micah North.",
-          "sourceUrl": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Resonant Sciences is based in Dayton, Ohio, with approximately 250 employees developing radio frequency and mission systems for US national security customers.",
-          "sourceQuote": "Resonant, founded in 2015 and based in Dayton, Ohio, develops and manufactures radio-frequency, sensing and mission systems for US national security customers.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/joby-acquires-resonant-sciences-500m-defence/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Joby Aviation",
-          "Resonant Sciences"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Dayton",
-          "Ohio"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-11",
-          "2027"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260812-1053-1",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "EnduroSat signs deal with Bulgaria to develop major space base near Sofia",
-          "url": "https://www.aerotime.aero/articles/endurosat-signs-deal-with-bulgaria-to-develop-major-space-base-near-sofia",
-          "publishedUtc": "2026-08-10T12:54Z",
-          "summary": "Vertically integrated satellite developer EnduroSat announced on August 6, 2026, that it has signed a Memorandum of Understanding… The post EnduroSat signs deal with Bulgaria to develop major space base near Sofia appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Vertical Aerospace raises $100 million to further Valo eVTOL development",
-          "url": "https://www.aerotime.aero/articles/vertical-aerospace-raises-100-million-to-further-valo-evtol-development",
-          "publishedUtc": "2026-08-10T14:23Z",
-          "summary": "Vertical Aerospace announced on August 10, 2026, that it has secured an additional US$100 million in funding commitments… The post Vertical Aerospace raises $100 million to further Valo eVTOL development appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Joby Aviation to acquire Resonant Sciences in $500 million defense deal",
-          "url": "https://www.aerotime.aero/articles/joby-aviation-acquires-resonant-sciences-defense",
-          "publishedUtc": "2026-08-11T13:55Z",
-          "summary": "Joby Aviation announced on August 11, 2026, that it has entered into a definitive agreement to acquire Resonant… The post Joby Aviation to acquire Resonant Sciences in $500 million defense deal appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "Joby Aviation to scale defence business through $500 million Resonant Sciences acquisition News",
-          "url": "https://aerospaceglobalnews.com/news/joby-acquires-resonant-sciences-500m-defence/",
-          "publishedUtc": "2026-08-12T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/Jobys-launch-in-New-York.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": true,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: BOEING 737",
-              "same named core entity: boeing, faa",
-              "archive predates source by 17 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 17 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same aircraft model: BOEING 737",
-              "same named core entity: aerotime, reuters",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-08-02",
-            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
-            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-            "facts": [
-              {
-                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
-                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
-                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
-                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
-                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
-                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
-                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260804-1529-japan-airlines-unveils-tokyo-disneysea-2",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same aircraft model: BOEING 737",
-              "same named core entity: aerotime",
-              "archive predates source by 69 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 69 day(s) apart",
-            "event_date": "2026-06-04",
-            "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the...",
-            "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-            "facts": [
-              {
-                "claim": "Japan Airlines launched domestic flight operations with the JAL Jubilee Express, a themed aircraft celebrating Tokyo DisneySea's 25th anniversary, from June 4, 2026 through April 2027.",
-                "source_quote": "Japan Airlines has unveiled a specially themed aircraft celebrating Tokyo DisneySea’s 25th anniversary, with domestic flights that began on June 4, 2026, and continue through April 2027.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
-              },
-              {
-                "claim": "The JAL Jubilee Express is a Boeing 737-800 aircraft with registration JA339J, measuring 39.5 meters long and 12.5 meters high.",
-                "source_quote": "The JAL Jubilee Express is a Boeing 737-800 registered JA339J, measuring 39.5 meters in length and 12.5 meters in height, with a wingspan of 35.8 meters.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
-              },
-              {
-                "claim": "Japan Airlines and Oriental Land Co. first announced the custom-themed aircraft on April 16, 2026.",
-                "source_quote": "JAL and Oriental Land Co., the operator of Tokyo Disney Resort, first announced the aircraft on April 16, 2026, ahead of its debut.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
-              },
-              {
-                "claim": "The exterior of the aircraft is painted in Jubilee Blue and incorporates ocean-themed visuals alongside Tokyo DisneySea landmarks.",
-                "source_quote": "The aircraft’s exterior is painted in “Jubilee Blue,” the signature color of the anniversary celebration, drawing on the ocean theme that defines Tokyo DisneySea.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
-              },
-              {
-                "claim": "In-flight cabin features include special anniversary headrest covers and paper cups distributed to passengers.",
-                "source_quote": "Passengers flying on the aircraft will find special anniversary-designed headrest covers and paper cups, with three different cup designs distributed at random.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-unveils-tokyo-disneysea-25th-anniversary-themed-aircraft",
-                "source_name": "AeroTime — Japan Airlines unveils Tokyo DisneySea 25th anniversary-the..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
