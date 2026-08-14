@@ -34,6 +34,9 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Test mandatory airport IATA codes
+        run: python tests/test_airport_codes.py
+
       - name: Run pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -66,6 +69,7 @@ jobs:
           python pipeline/fetch.py
           python pipeline/dedupe.py
           python pipeline/write.py
+          python pipeline/airport_codes.py
           python pipeline/images.py
           python pipeline/image_fallbacks.py
           # The saved Taipei date makes this one LLM-assisted refresh per day.
