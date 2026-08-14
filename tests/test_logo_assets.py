@@ -26,10 +26,14 @@ def main() -> None:
     logo_path = ROOT / "static" / "skytical-logo.svg"
     mark_path = ROOT / "static" / "skytical-mark.svg"
     social_path = ROOT / "static" / "skytical-social.png"
+    wing_path = ROOT / "static" / "skytical-wing.svg"
+    logo_fix_path = ROOT / "static" / "logo-fix.css"
     home = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
     css = (ROOT / "static" / "site.css").read_text(encoding="utf-8")
     logo = logo_path.read_text(encoding="utf-8")
     mark = mark_path.read_text(encoding="utf-8")
+    wing = wing_path.read_text(encoding="utf-8")
+    logo_fix = logo_fix_path.read_text(encoding="utf-8")
 
     assert hashlib.sha256(master.read_bytes()).hexdigest() == (
         "53ccee38ecb372a446ebd89737070852e0d8876b04af7efdb1709e78d8553621"
@@ -63,6 +67,17 @@ def main() -> None:
     assert f'/assets/skytical-logo.svg?v={build.ASSET_VERSION}' in home
     assert f'/assets/skytical-mark.svg?v={build.ASSET_VERSION}' in home
     assert f'/assets/skytical-social.png?v={build.ASSET_VERSION}' in home
+    assert '/assets/logo-fix.css?v=20260814a' in home
+    assert '/assets/skytical-wing.svg?v=20260814a' in home
+    assert (ROOT / "site" / "assets" / "logo-fix.css").is_file()
+    assert (ROOT / "site" / "assets" / "skytical-wing.svg").is_file()
+    assert "data:image/" not in wing.lower()
+    assert wing.count("<path ") == 3
+    assert 'fill="#EC3013"' in wing
+    assert 'fill="#F2643C"' in wing
+    assert 'fill="#F2A23A"' in wing
+    assert ".skytical-wing-overlay" in logo_fix
+    assert "width: 25%;" in logo_fix
     assert "brightness(0) invert(1)" not in css
 
     print("test_logo_assets: OK")
