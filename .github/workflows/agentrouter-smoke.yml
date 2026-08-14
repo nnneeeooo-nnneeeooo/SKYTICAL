@@ -24,8 +24,8 @@ jobs:
             exit 1
           fi
 
-          endpoint="https://api.agentrouter.org/v1/chat/completions"
-          body='{"model":"deepseek/deepseek-chat","messages":[{"role":"user","content":"Reply with exactly: OK"}],"max_tokens":8}'
+          endpoint="https://api.agentrouter.to/api/agentic-api/domains/models/capabilities/chat-complete/execute"
+          body='{"routeKey":"models.chat.complete.deepseek.mpp","input":{"model":"deepseek-v4-flash","messages":[{"role":"user","content":"Reply with exactly: OK"}]},"allowFallback":false}'
           code=$(curl -sS -o /tmp/agentrouter.json -w "%{http_code}" \
             "$endpoint" \
             -H "Authorization: Bearer $AGENTROUTER_API" \
@@ -33,33 +33,29 @@ jobs:
             --data "$body" || true)
 
           echo "AgentRouter HTTP status: $code"
-          if [ "$code" != "200" ]; then
-            echo "::error::AgentRouter model call failed"
-            python - <<'PY'
-          import json
-          try:
-              data=json.load(open('/tmp/agentrouter.json'))
-              if isinstance(data, dict):
-                  msg=data.get('error') or data.get('message') or 'request failed'
-                  if isinstance(msg, dict):
-                      msg=msg.get('message') or msg.get('code') or 'request failed'
-                  print(f"Response summary: {str(msg)[:180]}")
-          except Exception:
-              print('Response summary: unavailable')
-          PY
-            exit 1
-          fi
-
           python - <<'PY'
           import json, sys
-          data=json.load(open('/tmp/agentrouter.json'))
-          choices=data.get('choices') or []
-          if not choices:
-              print('::error::HTTP 200 but no model choices returned')
+          try:
+              data=json.load(open('/tmp/agentrouter.json'))
+          except Exception:
+              print('Response summary: unavailable')
               sys.exit(1)
-          content=((choices[0].get('message') or {}).get('content') or '').strip()
-          print('Model response received:', bool(content))
-          if not content:
-              print('::error::Model returned empty content')
+          if not isinstance(data, dict):
+              print('Response summary: invalid JSON shape')
+              sys.exit(1)
+          if not data.get('success'):
+              msg=data.get('error') or data.get('message') or 'request failed'
+              if isinstance(msg, dict):
+                  msg=msg.get('message') or msg.get('code') or 'request failed'
+              print(f"Response summary: {str(msg)[:180]}")
+              sys.exit(1)
+          text=(data.get('completionText') or '').strip()
+          if not text:
+              result=data.get('result') or {}
+              if isinstance(result, dict):
+                  text=(result.get('completionText') or '').strip()
+          print('Model response received:', bool(text))
+          if not text:
+              print('::error::Successful response did not contain completion text')
               sys.exit(1)
           PY
