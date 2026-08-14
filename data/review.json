@@ -1,5 +1,279 @@
 [
   {
+    "id": "g-20260814-1242-2",
+    "queuedUtc": "2026-08-14T12:43Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Lufthansa is negotiating order rejections and potential financial contributions with Boeing for early 777-9 production airframes.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Lufthansa CEO Carsten Spohr confirmed during the airline's Q2 earnings call that discussions are underway with Boeing over which early-production 777-9 aircraft Lufthansa will refuse outright and which could be accepted after modifications with Boeing's financial contribution.",
+        "sourceQuote": "During the airline's Q2 earnings call, CEO Carsten Spohr confirmed that discussions are underway with Boeing over which early-production aircraft Lufthansa will refuse outright and which could still be accepted after being brought up to the latest standard, with Boeing contributing financially toward that work.",
+        "sourceUrl": "https://simpleflying.com/video/ouch-lufthansa-becomes-2nd-airline-to-reject-boeing-s-oldest-777-9s/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Lufthansa has become the second major Boeing 777X customer to state that it does not want some of the oldest 777-9 aircraft built.",
+        "sourceQuote": "Lufthansa has become the second major Boeing 777X customer to say it does not want some of the oldest/earliest 777-9s built.",
+        "sourceUrl": "https://simpleflying.com/video/ouch-lufthansa-becomes-2nd-airline-to-reject-boeing-s-oldest-777-9s/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Boeing previously reported in July 2026 that the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B, with first delivery anticipated in 2027.",
+        "sourceQuote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+        "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+        "evidenceScope": "archive",
+        "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+        "archiveContext": true
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Lufthansa is negotiating order rejections and potential financial contributions with Boeing for early 777-9 production airframes.",
+      "cat": "biz",
+      "zh": {
+        "title": "漢莎航空確認與波音協商 擬拒絕接收早期生產777-9客機",
+        "summary": "漢莎航空執行長證實，正與波音協商拒絕接收部分早期生產的777-9客機。",
+        "body": [
+          "漢莎航空執行長卡斯騰·斯波爾（Carsten Spohr）於第二季法說會中證實，公司正與波音就早期生產的777-9客機進行協商。相關討論包含漢莎航空將直接拒絕接收哪些早期生產機型，以及哪些客機在提升至最新標準後仍可被接收，且波音將為該升級作業提供部分資金支持。",
+          "漢莎航空已成為第二家表明不願接收部分最早建造777-9客機的大型波音777X客戶。此外，波音公司先前於2026年7月表示，777X計畫已獲得美國聯邦航空局（FAA）批准展開認證飛行測試，並持續預期於2027年進行首次交付。"
+        ]
+      },
+      "en": {
+        "title": "Lufthansa In Discussions With Boeing To Reject Early Production 777-9 Aircraft",
+        "summary": "Lufthansa CEO confirms ongoing discussions with Boeing regarding rejection of early production 777-9 aircraft.",
+        "body": [
+          "Lufthansa CEO Carsten Spohr confirmed during the airline's second-quarter earnings call that discussions are currently underway with Boeing regarding early-production 777-9 aircraft. The discussions cover which early-production airframes Lufthansa will outright reject and which airframes could be accepted after being updated to the latest standards, with Boeing contributing financially toward the required modification work.",
+          "Lufthansa has become the second major Boeing 777X customer to announce that it will not accept some of the earliest 777-9 airframes built. Separately, Boeing previously reported in July 2026 that its 777X program received Federal Aviation Administration approval to begin certification flight testing under Type Inspection Authorization 4B, with first delivery remaining anticipated in 2027."
+        ]
+      },
+      "flash": {
+        "zh": "漢莎航空與波音協商拒絕接收部分早期777-9客機",
+        "en": "Lufthansa in talks with Boeing to reject early-production 777-9s",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Lufthansa CEO Carsten Spohr confirmed during the airline's Q2 earnings call that discussions are underway with Boeing over which early-production 777-9 aircraft Lufthansa will refuse outright and which could be accepted after modifications with Boeing's financial contribution.",
+          "sourceQuote": "During the airline's Q2 earnings call, CEO Carsten Spohr confirmed that discussions are underway with Boeing over which early-production aircraft Lufthansa will refuse outright and which could still be accepted after being brought up to the latest standard, with Boeing contributing financially toward that work.",
+          "sourceUrl": "https://simpleflying.com/video/ouch-lufthansa-becomes-2nd-airline-to-reject-boeing-s-oldest-777-9s/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Lufthansa has become the second major Boeing 777X customer to state that it does not want some of the oldest 777-9 aircraft built.",
+          "sourceQuote": "Lufthansa has become the second major Boeing 777X customer to say it does not want some of the oldest/earliest 777-9s built.",
+          "sourceUrl": "https://simpleflying.com/video/ouch-lufthansa-becomes-2nd-airline-to-reject-boeing-s-oldest-777-9s/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Boeing previously reported in July 2026 that the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B, with first delivery anticipated in 2027.",
+          "sourceQuote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+          "archiveContext": true
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "Lufthansa",
+          "Boeing"
+        ],
+        "airlines": [
+          "Lufthansa"
+        ],
+        "aircraft_models": [
+          "777-9",
+          "Boeing 777X"
+        ],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1242-2",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "Ouch: Lufthansa Becomes 2nd Airline To Reject Boeing’s Oldest 777-9s",
+          "url": "https://simpleflying.com/video/ouch-lufthansa-becomes-2nd-airline-to-reject-boeing-s-oldest-777-9s/",
+          "publishedUtc": "2026-08-14T12:31Z",
+          "summary": "Lufthansa has become the second major Boeing 777X customer to say it does not want some of the oldest/earliest 777-9s built. During the airline's Q2 earnings call, CEO Carsten Spohr confirmed that discussions are underway with Boeing over which early-production aircraft Lufthansa will refuse outright and which could still be accepted after being brought up to the latest standard, with Boeing contributing financially toward that work.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/lufthansa-reject-777x.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 777X FAMILY",
+              "same named core entity: boeing",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 777X FAMILY",
+              "same named core entity: boeing",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-boeing-777-9-test-fleet-reaches-4-800-ho",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 777X FAMILY",
+              "same named core entity: boeing, simple flying",
+              "archive predates source by 15 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 15 day(s) apart",
+            "event_date": "2026-07-30",
+            "source_name": "Simple Flying — Boeing 777-9 Fleet Reaches 4,800 Test Hours As 7th Airframe...",
+            "source_url": "https://simpleflying.com/boeing-777-9-test-fleet-4800-test-hours-7th-airframe-etops-certification/",
+            "facts": [
+              {
+                "claim": "The Boeing 777-9 test fleet has reached 4,800 test hours.",
+                "source_quote": "Boeing 777-9 Fleet Reaches 4,800 Test Hours",
+                "source_url": "https://simpleflying.com/boeing-777-9-test-fleet-4800-test-hours-7th-airframe-etops-certification/",
+                "source_name": "Simple Flying — Boeing 777-9 Fleet Reaches 4,800 Test Hours As 7th Airframe..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260814-1143-8",
     "queuedUtc": "2026-08-14T11:43Z",
     "approve": false,
@@ -10135,242 +10409,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260811-1727-1",
-    "queuedUtc": "2026-08-11T17:27Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves commercial litigation and financial prediction market claims between FlightAware and Kalshi.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "FlightAware has sued prediction-market operator Kalshi in US District Court for the Southern District of New York over using its data and trademark without permission to settle flight cancellation bets.",
-        "sourceQuote": "Flight-tracking company FlightAware has sued prediction-market operator Kalshi, accusing the service of using its data and trademark without permission to settle wagers on US flight cancellations.",
-        "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "FlightAware is seeking a temporary restraining order and permanent injunction to stop Kalshi from using its data and brand.",
-        "sourceQuote": "FlightAware is seeking a temporary restraining order and permanent injunction to stop Kalshi from using its data and brand in connection with the markets.",
-        "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Kalshi disclosed in a CFTC filing that FlightAware data would be used to determine the outcome of flight cancellation contracts.",
-        "sourceQuote": "Kalshi said in a filing with the Commodity Futures Trading Commission (CFTC) that FlightAware data would be used to determine the outcome of the contracts, with US Department of Transportation data serving as a backup.",
-        "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "RTX, FlightAware's parent company, stated FlightAware was not involved with prediction markets and no company was authorized to use its data for that purpose.",
-        "sourceQuote": "RTX, FlightAware’s parent company, said at the time that FlightAware was not involved with any prediction markets and that no company was authorized to use data collected through its network for that purpose.",
-        "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Kalshi later added a disclaimer stating that FlightAware was not affiliated with or endorsing the prediction markets.",
-        "sourceQuote": "Kalshi later added a disclaimer stating that FlightAware was not affiliated with or endorsing the markets.",
-        "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves commercial litigation and financial prediction market claims between FlightAware and Kalshi.",
-      "cat": "biz",
-      "zh": {
-        "title": "FlightAware提告Kalshi 未經授權使用航班資料預測押注",
-        "summary": "FlightAware提告Kalshi；訴請禁止未授權使用航班資料押注",
-        "body": [
-          "航班追蹤平台 FlightAware 已向美國紐約南區聯邦地區法院提告 Kalshi，指控該預測市場平台未經許可使用其資料與商標結算航班取消押注。 FlightAware 正聲請臨時限制令與永久禁制令，阻止 Kalshi 繼續使用其資料及品牌。",
-          "Kalshi 此前向美國商品期貨交易委員會（CFTC）備案，預計使用 FlightAware 資料作為合約結果依據。 FlightAware 母公司 RTX 表示，公司未參與預測市場，亦未授權任何機構出於此目的使用其資料。 Kalshi 後續在網站加入免責聲明，澄清 FlightAware 未與相關市場存在合作關係。"
-        ]
-      },
-      "en": {
-        "title": "FlightAware Sues Kalshi Over Unauthorized Use of Data in Flight Cancellation Markets",
-        "summary": "FlightAware sues Kalshi over unauthorized flight cancellation markets; seeks court injunction against data usage.",
-        "body": [
-          "Flight-tracking company FlightAware has filed a lawsuit against prediction-market operator Kalshi in the US District Court for the Southern District of New York. The lawsuit accuses Kalshi of using FlightAware data and trademarks without authorization to settle financial bets on US flight cancellations. FlightAware is seeking a temporary restraining order and permanent injunction to prohibit Kalshi from utilizing its proprietary data and brand.",
-          "The dispute began after Kalshi disclosed plans with the Commodity Futures Trading Commission (CFTC) to rely on FlightAware data for its flight cancellation contracts. RTX, FlightAware's parent company, stated that FlightAware is not affiliated with any prediction market and has not authorized any third party to use its flight-tracking data for betting operations. Kalshi later added a website disclaimer clarifying that FlightAware does not endorse the prediction markets."
-        ]
-      },
-      "flash": {
-        "zh": "FlightAware針對航班取消預測市場提告Kalshi未經授權使用資料",
-        "en": "FlightAware sues Kalshi over unauthorized data use in cancellation prediction markets",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "FlightAware has sued prediction-market operator Kalshi in US District Court for the Southern District of New York over using its data and trademark without permission to settle flight cancellation bets.",
-          "sourceQuote": "Flight-tracking company FlightAware has sued prediction-market operator Kalshi, accusing the service of using its data and trademark without permission to settle wagers on US flight cancellations.",
-          "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "FlightAware is seeking a temporary restraining order and permanent injunction to stop Kalshi from using its data and brand.",
-          "sourceQuote": "FlightAware is seeking a temporary restraining order and permanent injunction to stop Kalshi from using its data and brand in connection with the markets.",
-          "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Kalshi disclosed in a CFTC filing that FlightAware data would be used to determine the outcome of flight cancellation contracts.",
-          "sourceQuote": "Kalshi said in a filing with the Commodity Futures Trading Commission (CFTC) that FlightAware data would be used to determine the outcome of the contracts, with US Department of Transportation data serving as a backup.",
-          "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "RTX, FlightAware's parent company, stated FlightAware was not involved with prediction markets and no company was authorized to use its data for that purpose.",
-          "sourceQuote": "RTX, FlightAware’s parent company, said at the time that FlightAware was not involved with any prediction markets and that no company was authorized to use data collected through its network for that purpose.",
-          "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Kalshi later added a disclaimer stating that FlightAware was not affiliated with or endorsing the prediction markets.",
-          "sourceQuote": "Kalshi later added a disclaimer stating that FlightAware was not affiliated with or endorsing the markets.",
-          "sourceUrl": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "FlightAware",
-          "Kalshi",
-          "Commodity Futures Trading Commission",
-          "CFTC",
-          "RTX",
-          "US District Court for the Southern District of New York"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "US",
-          "New York"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-11",
-          "2026-07"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-1727-1",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "FlightAware sues Kalshi over bets on flight cancellations",
-          "url": "https://www.aerotime.aero/articles/flightaware-sues-kalshi-flight-cancellation-bets",
-          "publishedUtc": "2026-08-11T16:03Z",
-          "summary": "Flight-tracking company FlightAware has sued prediction-market operator Kalshi, accusing the service of using its data and trademark without… The post FlightAware sues Kalshi over bets on flight cancellations appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        },
-        {
-          "title": "FlightAware sues Kalshi over flight-cancellation markets",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQM1hSR282WnlrOEkxc2hWeDJYdkFHWjBIVm9tb0p1bmViU0steWR2ZW9JUnVHRjVZZ3NXb2s0RFZqOVVCRVFERjB5N2RtcmtfbllJQm1MdnVGaThvbjVpaEs4XzVCeFZ4U1BQdS13V21JS0lnNHRvLWxRQ0xQT2NuTXd1VW5pS1EyTF9aM2JIcmZza3EtWVg1Z18tcUpIcDJYbkNISkY4M05aTE1ub0E?oc=5",
-          "publishedUtc": "2026-08-11T14:58Z",
-          "summary": "",
-          "image": null,
-          "source": "Reuters",
-          "sourceKey": "reuters"
-        },
-        {
-          "title": "Flight-Tracking Platform Sues Kalshi Over Flight Cancellation Prediction Markets",
-          "summary": "Flight-Tracking Platform Sues Kalshi Over Flight Cancellation Prediction Markets &nbsp;&nbsp; WSJ",
-          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOdDlXVHk4SWF2bHZ1WkYwRmpfWVluZlA0N1JZeUNYVGd5N04zcHlRS1JRcVdLano5ckk3ZzNMemw3R0lUbjVkQlpIWUZjR1FTVjNBRVQ1a3BDcGlGS1JWWkNuVzVtcHRyMERIQVpvZm1ES2JZak9rLWNkM0UwN0YyUS1QRHdlMVhuclRpZmU1Y0dEeVNXWVdSSHVHVkNjQzdxWkdxSkRWeTZlVHFfN1l1dTBNZkZCWFlvQ3pzRzVYMW1OazY5QWc?oc=5",
-          "source": "WSJ",
-          "companion": true,
-          "publishedUtc": "2026-08-11T16:48Z"
-        }
-      ],
-      "updateCandidate": true,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260808-1040-japan-orders-evacuations-and-cancels-500",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same route: THE-TIED",
-              "same named core entity: reuters",
-              "same airport code(s): THE, TIED",
-              "archive predates source by 4 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 93,
-            "confidence_reason": "tier 2; 4 deterministic evidence item(s); 4 day(s) apart",
-            "event_date": "2026-08-07",
-            "source_name": "Reuters — Japan orders evacuations as Typhoon Dolphin approaches, can...",
-            "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQWFZfc3lhZFI0Tl91RGozVldWUjlvVVV5NUY2UHhXdmVjSXhXaHRoMFQyZDhQcWhGbVZmdVJNb2ttTVlVZEhmQkkyTGl2ZlZkVzJXQjdfdUVVNlpfSVIxS0tDb09wUlhYZXRGdm1mUUVLSV96ajdxenk1R2h2YjVSaWY0OUJ2N2xyWTU5MzRlMTFLdTJIYnVBczlHaVBJc0JHOG55MC0ycUJrbTFQSFdqV2J6VWVtMDhEWVNraXZSNE5xenBWU3lv?oc=5",
-            "facts": [
-              {
-                "claim": "Japan ordered evacuations as Typhoon Dolphin approaches.",
-                "source_quote": "Japan orders evacuations as Typhoon Dolphin approaches",
-                "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQWFZfc3lhZFI0Tl91RGozVldWUjlvVVV5NUY2UHhXdmVjSXhXaHRoMFQyZDhQcWhGbVZmdVJNb2ttTVlVZEhmQkkyTGl2ZlZkVzJXQjdfdUVVNlpfSVIxS0tDb09wUlhYZXRGdm1mUUVLSV96ajdxenk1R2h2YjVSaWY0OUJ2N2xyWTU5MzRlMTFLdTJIYnVBczlHaVBJc0JHOG55MC0ycUJrbTFQSFdqV2J6VWVtMDhEWVNraXZSNE5xenBWU3lv?oc=5",
-                "source_name": "Reuters — Japan orders evacuations as Typhoon Dolphin approaches, can..."
-              },
-              {
-                "claim": "500 flights were cancelled due to approaching Typhoon Dolphin.",
-                "source_quote": "cancels 500 flights",
-                "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQWFZfc3lhZFI0Tl91RGozVldWUjlvVVV5NUY2UHhXdmVjSXhXaHRoMFQyZDhQcWhGbVZmdVJNb2ttTVlVZEhmQkkyTGl2ZlZkVzJXQjdfdUVVNlpfSVIxS0tDb09wUlhYZXRGdm1mUUVLSV96ajdxenk1R2h2YjVSaWY0OUJ2N2xyWTU5MzRlMTFLdTJIYnVBczlHaVBJc0JHOG55MC0ycUJrbTFQSFdqV2J6VWVtMDhEWVNraXZSNE5xenBWU3lv?oc=5",
-                "source_name": "Reuters — Japan orders evacuations as Typhoon Dolphin approaches, can..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
