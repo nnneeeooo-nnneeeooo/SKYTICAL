@@ -13,16 +13,16 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
-      - name: Call AgentRouter chat endpoint
+      - name: Call AgentRouter official OpenAI-compatible endpoint
         env:
           AGENTROUTER_API: ${{ secrets.AGENTROUTER_API }}
         shell: bash
         run: |
           set -euo pipefail
           test -n "${AGENTROUTER_API:-}"
-          body='{"model":"gpt-5","messages":[{"role":"user","content":"Reply with exactly OK"}],"max_tokens":8}'
+          body='{"model":"gpt-5.5","messages":[{"role":"user","content":"Reply with exactly OK"}],"max_tokens":8}'
           code=$(curl -sS -o /tmp/agentrouter.json -w "%{http_code}" \
-            https://agentrouter.org/v1/chat/completions \
+            https://co.agentrouter.org/v1/chat/completions \
             -H "Authorization: Bearer $AGENTROUTER_API" \
             -H "Content-Type: application/json" \
             --data "$body" || true)
