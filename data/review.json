@@ -1,5 +1,137 @@
 [
   {
+    "id": "g-20260814-1059-2",
+    "queuedUtc": "2026-08-14T10:59Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.5-flash",
+    "decisionReason": "Aviation safety event involving United aircraft rejecting takeoff due to tyre damage, requiring manual review.",
+    "riskFlags": [
+      "accident_or_serious_incident"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "A United B739 aircraft aborted its takeoff in Chicago on August 13, 2026, due to tyre damage.",
+        "sourceQuote": "United B739 at Chicago on Aug 13th 2026, rejected takeoff due to tyre damage",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5wM0N6Mk1Bc1JTNWlXRzk2YXFtRzNxc0NGX2JoMkNHMHZ6MDVqT0t0VHIteVhrRzU4LWc3X2tweXVUaThVQndLeWRqNnBIcVFpa1ZiR3VMeHA?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety event involving United aircraft rejecting takeoff due to tyre damage, requiring manual review.",
+      "cat": "safety",
+      "zh": {
+        "title": "United一架B739客機在芝加哥因輪胎受損中止起飛",
+        "summary": "United一架B739客機於芝加哥因輪胎異常損壞中斷起飛",
+        "body": [
+          "根據 The Aviation Herald 報導，一架 United 的 B739 飛機於 2026 年 8 月 13 日在芝加哥中止起飛。報導指出，該架飛機因輪胎受損而採取中斷起飛措施。",
+          "這起安全事件發生於 2026 年 8 月 13 日，涉及一架 United 營運的 B739 客機，事發地點位於芝加哥。該飛機在起飛過程中發現輪胎異常損壞，隨即決定中斷起飛程序。",
+          "目前關於本起事件的具體起因、輪胎受損程度以及後續的詳細調查進度，仍有待官方安全機構或相關單位發布正式報告予以確認。"
+        ]
+      },
+      "en": {
+        "title": "United B739 Rejects Takeoff in Chicago Due to Tyre Damage",
+        "summary": "United B739 aborted its takeoff in Chicago on August 13 due to tyre damage.",
+        "body": [
+          "According to The Aviation Herald, a United B739 aircraft rejected its takeoff in Chicago on August 13, 2026. The flight crew aborted the takeoff due to tyre damage during the departure.",
+          "The safety incident took place on August 13, 2026, and involved the United B739 aircraft while operating at Chicago. The takeoff was successfully rejected after tyre damage was detected.",
+          "At this time, additional details concerning the cause of the tyre damage, potential aircraft damage, or any official investigation into the incident have not been released. Further information is pending reports from the relevant aviation safety authorities."
+        ]
+      },
+      "flash": {
+        "zh": "United客機在芝加哥因輪胎受損中止起飛",
+        "en": "United B739 rejects takeoff in Chicago due to tyre damage",
+        "hot": false
+      },
+      "incident": {
+        "date": "2026-08-13",
+        "sev": "inc",
+        "aircraft": "B739",
+        "operator": "United",
+        "phase": {
+          "zh": "起飛",
+          "en": "Takeoff"
+        },
+        "location": {
+          "zh": "芝加哥",
+          "en": "Chicago"
+        },
+        "desc": {
+          "zh": "客機在起飛過程中因輪胎受損而中止起飛",
+          "en": "The aircraft aborted its takeoff due to tyre damage"
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "A United B739 aircraft aborted its takeoff in Chicago on August 13, 2026, due to tyre damage.",
+          "sourceQuote": "United B739 at Chicago on Aug 13th 2026, rejected takeoff due to tyre damage",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5wM0N6Mk1Bc1JTNWlXRzk2YXFtRzNxc0NGX2JoMkNHMHZ6MDVqT0t0VHIteVhrRzU4LWc3X2tweXVUaThVQndLeWRqNnBIcVFpa1ZiR3VMeHA?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "The Aviation Herald"
+        ],
+        "airlines": [
+          "United"
+        ],
+        "aircraft_models": [
+          "B739"
+        ],
+        "airports": [],
+        "locations": [
+          "Chicago"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "Aug 13th 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1059-2",
+      "primarySource": "The Aviation Herald",
+      "items": [
+        {
+          "title": "Incident: United B739 at Chicago on Aug 13th 2026, rejected takeoff due to tyre damage",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5wM0N6Mk1Bc1JTNWlXRzk2YXFtRzNxc0NGX2JoMkNHMHZ6MDVqT0t0VHIteVhrRzU4LWc3X2tweXVUaThVQndLeWRqNnBIcVFpa1ZiR3VMeHA?oc=5",
+          "publishedUtc": "2026-08-14T10:11Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260814-1000-2",
     "queuedUtc": "2026-08-14T10:00Z",
     "approve": false,
@@ -10266,290 +10398,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260811-1137-3",
-    "queuedUtc": "2026-08-11T11:37Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report concerns a major military aircraft acquisition and fleet procurement program.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The US Navy plans to acquire 31 E-130J Phoenix II aircraft to replace its fleet of 16 E-6B Mercury aircraft.",
-        "sourceQuote": "The U S Navy plans to acquire 31 E-130J Phoenix II aircraft to replace its fleet of 16 E-6B Mercury aircraft",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The acquisition of 31 E-130J aircraft will nearly double the number of aircraft available for the US Navy's nuclear communications mission.",
-        "sourceQuote": "nearly doubling the number of aircraft available for the service’s nuclear communications mission.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The Navy's E-130J TACAMO programme passed its preliminary design review last month and remains on its acquisition baseline according to a Pentagon Selected Acquisition Report.",
-        "sourceQuote": "The Navy’s E-130J Take Charge And Move Out (TACAMO) programme passed its preliminary design review last month and remains on its current acquisition baseline, according to a newly released Pentagon Selected Acquisition Report.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The Pentagon report confirms the programme of record calls for six developmental aircraft and 25 production aircraft.",
-        "sourceQuote": "The report also confirms, for the first time, that the programme of record calls for six developmental aircraft and 25 production aircraft.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Capt. Roger Davis confirmed that the Navy's TACAMO recapitalisation programme is funded to procure 31 E-130J aircraft.",
-        "sourceQuote": "Capt. Roger Davis, programme manager for Airborne Strategic Command, Control and Communications (PMA-271), confirmed to Aviation Week that the Navy’s TACAMO recapitalisation programme is funded to procure 31 E-130J aircraft.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report concerns a major military aircraft acquisition and fleet procurement program.",
-      "cat": "mil",
-      "zh": {
-        "title": "美國海軍計畫採購31架E-130J戰術通訊機",
-        "summary": "美國海軍計畫採購31架E-130J通訊機；將替換現有16架E-6B機隊",
-        "body": [
-          "根據美國國防部最新公布的選定採購報告，美國海軍計畫採購31架E-130J Phoenix II通訊機，用於替換現有16架E-6B Mercury飛機機隊。這項採購將使該軍種執行核子指揮與通訊任務的可部署飛機數量幾乎翻倍。",
-          "該國防部報告首次證實，E-130J「戰術空中通訊」（TACAMO）重組計畫包含6架開發測試飛機與25架量產飛機。空中戰略指揮、控制與通訊專案辦公室（PMA-271）主管羅傑·戴維斯上校（Capt. Roger Davis）已證實該專案已獲得採購資金。",
-          "此外，美國海軍的E-130J TACAMO計畫已於上個月通過初步設計審查，目前仍保持在既定的採購基準線上運作。"
-        ]
-      },
-      "en": {
-        "title": "US Navy Plans to Acquire 31 E-130J Aircraft to Replace E-6B Mercury Fleet",
-        "summary": "US Navy plans to acquire 31 E-130J Phoenix II aircraft to replace 16 E-6B Mercury planes.",
-        "body": [
-          "The US Navy plans to acquire 31 E-130J Phoenix II aircraft to replace its fleet of 16 E-6B Mercury aircraft. The acquisition will nearly double the number of aircraft available for the Navy's nuclear command and communications mission.",
-          "According to a newly released Pentagon Selected Acquisition Report, the E-130J Take Charge And Move Out (TACAMO) programme passed its preliminary design review last month and remains on its current acquisition baseline. The report also confirms that the programme of record calls for six developmental aircraft and 25 production aircraft.",
-          "Capt. Roger Davis, programme manager for Airborne Strategic Command, Control and Communications (PMA-271), confirmed that the Navy's TACAMO recapitalisation programme is funded to procure 31 E-130J aircraft."
-        ]
-      },
-      "flash": {
-        "zh": "美國海軍計畫採購31架E-130J通訊機替換E-6B",
-        "en": "US Navy plans to procure 31 E-130J Phoenix II aircraft",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The US Navy plans to acquire 31 E-130J Phoenix II aircraft to replace its fleet of 16 E-6B Mercury aircraft.",
-          "sourceQuote": "The U S Navy plans to acquire 31 E-130J Phoenix II aircraft to replace its fleet of 16 E-6B Mercury aircraft",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The acquisition of 31 E-130J aircraft will nearly double the number of aircraft available for the US Navy's nuclear communications mission.",
-          "sourceQuote": "nearly doubling the number of aircraft available for the service’s nuclear communications mission.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The Navy's E-130J TACAMO programme passed its preliminary design review last month and remains on its acquisition baseline according to a Pentagon Selected Acquisition Report.",
-          "sourceQuote": "The Navy’s E-130J Take Charge And Move Out (TACAMO) programme passed its preliminary design review last month and remains on its current acquisition baseline, according to a newly released Pentagon Selected Acquisition Report.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The Pentagon report confirms the programme of record calls for six developmental aircraft and 25 production aircraft.",
-          "sourceQuote": "The report also confirms, for the first time, that the programme of record calls for six developmental aircraft and 25 production aircraft.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Capt. Roger Davis confirmed that the Navy's TACAMO recapitalisation programme is funded to procure 31 E-130J aircraft.",
-          "sourceQuote": "Capt. Roger Davis, programme manager for Airborne Strategic Command, Control and Communications (PMA-271), confirmed to Aviation Week that the Navy’s TACAMO recapitalisation programme is funded to procure 31 E-130J aircraft.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "US Navy",
-          "Pentagon",
-          "Aviation Week",
-          "PMA-271"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "E-130J Phoenix II",
-          "E-6B Mercury",
-          "E-130J"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-11"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-1137-3",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "US Navy to nearly double TACAMO ‘Doomsday plane’ fleet with E-130J Phoenix II News",
-          "url": "https://aerospaceglobalnews.com/news/us-navy-e130j-tacamo-doomsday-plane-fleet/",
-          "publishedUtc": "2026-08-11T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/E-130J_16x9_CREDIT.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260808-0415-coulson-aviation-canada-acquires-10-c-13",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: C-130"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 4 day(s) apart",
-            "event_date": "2026-08-07",
-            "source_name": "AeroTime — Coulson buys 10 C-130 Hercules aircraft from Canada for fir...",
-            "source_url": "https://www.aerotime.aero/articles/coulson-buys-10-rcaf-c-130-hercules-firefighting",
-            "facts": [
-              {
-                "claim": "Coulson Aviation Canada has acquired 10 former Royal Canadian Air Force (RCAF) CC-130H Hercules aircraft directly from the Canadian government.",
-                "source_quote": "Coulson Aviation Canada has acquired 10 former Royal Canadian Air Force (RCAF) CC-130H Hercules aircraft",
-                "source_url": "https://www.aerotime.aero/articles/coulson-buys-10-rcaf-c-130-hercules-firefighting",
-                "source_name": "AeroTime — Coulson buys 10 C-130 Hercules aircraft from Canada for fir..."
-              },
-              {
-                "claim": "The acquisition announced on August 7, 2026, doubles Coulson's global C-130H fleet from 10 to 20 aircraft.",
-                "source_quote": "The acquisition doubles Coulson’s global fleet of C-130Hs from 10 to 20 aircraft, the company announced on August 7, 2026.",
-                "source_url": "https://www.aerotime.aero/articles/coulson-buys-10-rcaf-c-130-hercules-firefighting",
-                "source_name": "AeroTime — Coulson buys 10 C-130 Hercules aircraft from Canada for fir..."
-              },
-              {
-                "claim": "Coulson plans to convert the aircraft into large airtankers using its RADS-XXL retardant delivery system.",
-                "source_quote": "Coulson plans to convert the newly acquired aircraft into large airtankers using its RADS-XXL retardant delivery system.",
-                "source_url": "https://www.aerotime.aero/articles/coulson-buys-10-rcaf-c-130-hercules-firefighting",
-                "source_name": "AeroTime — Coulson buys 10 C-130 Hercules aircraft from Canada for fir..."
-              },
-              {
-                "claim": "Coulson Aviation Canada will lead the conversion program in British Columbia, including engineering, certification, modification, maintenance, training, and flight operations.",
-                "source_quote": "Coulson Aviation Canada will lead the conversion program in British Columbia, including engineering, certification, modification, maintenance, training and flight operations.",
-                "source_url": "https://www.aerotime.aero/articles/coulson-buys-10-rcaf-c-130-hercules-firefighting",
-                "source_name": "AeroTime — Coulson buys 10 C-130 Hercules aircraft from Canada for fir..."
-              },
-              {
-                "claim": "The RADS-XXL retardant delivery system can carry up to 4,000 gallons, or more than 15,000 liters, of water or fire retardant.",
-                "source_quote": "The system can carry up to 4,000 gallons, or more than 15,000 liters, of water or fire retardant.",
-                "source_url": "https://www.aerotime.aero/articles/coulson-buys-10-rcaf-c-130-hercules-firefighting",
-                "source_name": "AeroTime — Coulson buys 10 C-130 Hercules aircraft from Canada for fir..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 16 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 16 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 14 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 14 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
-            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-            "facts": [
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
