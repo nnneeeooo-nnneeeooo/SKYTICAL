@@ -1,5 +1,782 @@
 [
   {
+    "id": "g-20260814-1000-2",
+    "queuedUtc": "2026-08-14T10:00Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.5-flash",
+    "decisionReason": "The story covers a presidential memorandum ordering a major technology cancellation and design change for a multi-billion dollar aircraft carrier, posing significant cost, schedule, and integration risks according to the contractor.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "On August 13, 2026, US President Donald Trump signed a presidential memorandum directing the Pentagon to remove the Electromagnetic Aircraft Launch System from the future USS Doris Miller and install steam catapults.",
+        "sourceQuote": "directing the Pentagon to strip the Electromagnetic Aircraft Launch System (EMALS) from the future USS Doris Miller and to fit steam catapults instead",
+        "sourceUrl": "https://www.aerotime.aero/articles/trump-orders-emals-removed-doris-miller-carrier",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The memorandum also directs that the carrier's Advanced Weapons Elevators be replaced with hydraulic systems.",
+        "sourceQuote": "It also orders the carrier’s Advanced Weapons Elevators replaced with hydraulic systems.",
+        "sourceUrl": "https://www.aerotime.aero/articles/trump-orders-emals-removed-doris-miller-carrier",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "CVN-81 is the fourth Gerald R. Ford-class aircraft carrier under construction at HII Newport News Shipbuilding, with delivery expected in early 2034.",
+        "sourceQuote": "CVN-81 is the fourth Gerald R. Ford-class carrier, under construction at HII Newport News Shipbuilding. Its keel is due to be laid by the end of 2026, with delivery expected in early 2034.",
+        "sourceUrl": "https://www.aerotime.aero/articles/trump-orders-emals-removed-doris-miller-carrier",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The technology change does not affect the USS Gerald R. Ford, nor the future John F. Kennedy and Enterprise aircraft carriers.",
+        "sourceQuote": "USS Gerald R. Ford and the future John F. Kennedy and Enterprise are unaffected.",
+        "sourceUrl": "https://www.aerotime.aero/articles/trump-orders-emals-removed-doris-miller-carrier",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "General Atomics stated that reversing course with almost half of the production completed warrants reconsideration and presents risks to cost, schedule, and integration.",
+        "sourceQuote": "With nearly 50% of ​production complete, changing course ⁠now would introduce significant cost, schedule, and integration risks.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/trump-steam-catapults-ford-carriers/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Hudson Institute analyst Bryan Clark noted that the US Navy has not purchased steam catapults in over two decades, which has likely withered the supply chain.",
+        "sourceQuote": "the US Navy has not purchased a steam catapult in more than 20 years and that the supply chain has likely withered.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/trump-steam-catapults-ford-carriers/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story covers a presidential memorandum ordering a major technology cancellation and design change for a multi-billion dollar aircraft carrier, posing significant cost, schedule, and integration risks according to the contractor.",
+      "cat": "mil",
+      "zh": {
+        "title": "川普下令福特級新航艦USS Doris Miller改裝蒸汽彈射器",
+        "summary": "美國總統川普下令第四艘福特級航艦移除電磁彈射並改用傳統蒸汽彈射器",
+        "body": [
+          "美國總統川普於2026年8月13日簽署備忘錄，指示五角大廈將第四艘福特級航艦「USS Doris Miller」改裝蒸汽彈射器以取代電磁彈射系統（EMALS），並將先進武器升降機改為液壓系統。",
+          "正在建造中的「USS Doris Miller」（CVN-81）由紐波特紐斯造船廠承造，預計於2026年底安放龍骨並於2034年初交付。此項決策並不影響「USS Gerald R. Ford」及另外兩艘興建中的同級航艦。",
+          "電磁彈射系統承包商General Atomics警告，在生產將近完成一半的情況下，改變技術方向將帶來高昂的成本、時程與整合風險。學者指出美國海軍已逾20年未採購蒸汽彈射，相關供應鏈恐已萎縮。"
+        ]
+      },
+      "en": {
+        "title": "Trump Orders Future Ford-Class Carrier USS Doris Miller to Switch to Steam Catapults",
+        "summary": "US President Trump orders future carrier USS Doris Miller to switch from EMALS to steam catapults.",
+        "body": [
+          "On August 13, 2026, US President Donald Trump signed a national security memorandum directing the Pentagon to replace the Electromagnetic Aircraft Launch System (EMALS) on the future carrier USS Doris Miller with steam catapults, and to replace its Advanced Weapons Elevators with hydraulic systems.",
+          "The future USS Doris Miller (CVN-81) is under construction by HII Newport News Shipbuilding, with its keel expected to be laid by the end of 2026 and delivery scheduled for early 2034. Active and other under-construction carriers in the Gerald R. Ford class remain unaffected.",
+          "EMALS contractor General Atomics warned that altering course with production almost 50% complete warrants reconsideration due to cost, schedule, and integration risks. Analysts also noted that the Navy has not purchased steam catapults in over 20 years, indicating a potentially withered supply chain."
+        ]
+      },
+      "flash": {
+        "zh": "川普簽署備忘錄指示第四艘福特級航艦改裝蒸汽彈射器",
+        "en": "Trump orders steam catapults for future carrier USS Doris Miller",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "On August 13, 2026, US President Donald Trump signed a presidential memorandum directing the Pentagon to remove the Electromagnetic Aircraft Launch System from the future USS Doris Miller and install steam catapults.",
+          "sourceQuote": "directing the Pentagon to strip the Electromagnetic Aircraft Launch System (EMALS) from the future USS Doris Miller and to fit steam catapults instead",
+          "sourceUrl": "https://www.aerotime.aero/articles/trump-orders-emals-removed-doris-miller-carrier",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The memorandum also directs that the carrier's Advanced Weapons Elevators be replaced with hydraulic systems.",
+          "sourceQuote": "It also orders the carrier’s Advanced Weapons Elevators replaced with hydraulic systems.",
+          "sourceUrl": "https://www.aerotime.aero/articles/trump-orders-emals-removed-doris-miller-carrier",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "CVN-81 is the fourth Gerald R. Ford-class aircraft carrier under construction at HII Newport News Shipbuilding, with delivery expected in early 2034.",
+          "sourceQuote": "CVN-81 is the fourth Gerald R. Ford-class carrier, under construction at HII Newport News Shipbuilding. Its keel is due to be laid by the end of 2026, with delivery expected in early 2034.",
+          "sourceUrl": "https://www.aerotime.aero/articles/trump-orders-emals-removed-doris-miller-carrier",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The technology change does not affect the USS Gerald R. Ford, nor the future John F. Kennedy and Enterprise aircraft carriers.",
+          "sourceQuote": "USS Gerald R. Ford and the future John F. Kennedy and Enterprise are unaffected.",
+          "sourceUrl": "https://www.aerotime.aero/articles/trump-orders-emals-removed-doris-miller-carrier",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "General Atomics stated that reversing course with almost half of the production completed warrants reconsideration and presents risks to cost, schedule, and integration.",
+          "sourceQuote": "With nearly 50% of ​production complete, changing course ⁠now would introduce significant cost, schedule, and integration risks.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/trump-steam-catapults-ford-carriers/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Hudson Institute analyst Bryan Clark noted that the US Navy has not purchased steam catapults in over two decades, which has likely withered the supply chain.",
+          "sourceQuote": "the US Navy has not purchased a steam catapult in more than 20 years and that the supply chain has likely withered.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/trump-steam-catapults-ford-carriers/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "HII Newport News Shipbuilding",
+          "General Atomics",
+          "Hudson Institute"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "August 13, 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1000-2",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Trump orders EMALS removed from fourth Ford-class carrier USS Doris Miller",
+          "url": "https://www.aerotime.aero/articles/trump-orders-emals-removed-doris-miller-carrier",
+          "publishedUtc": "2026-08-14T07:45Z",
+          "summary": "President Donald Trump signed a national security presidential memorandum on August 13, 2026, directing the Pentagon to strip… The post Trump orders EMALS removed from fourth Ford-class carrier USS Doris Miller appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Trump orders return of steam catapults for future Ford-class carriers News",
+          "url": "https://aerospaceglobalnews.com/news/trump-steam-catapults-ford-carriers/",
+          "publishedUtc": "2026-08-14T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/04/USS-Gerald-R.-Ford-aircraft-carrier.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime, reuters",
+              "same airport code(s): THE",
+              "archive predates source by 12 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 12 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260810-1948-sun-phuquoc-airways-sets-arrival-timelin",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "same airport code(s): THE",
+              "archive predates source by 4 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 4 day(s) apart",
+            "event_date": "2026-08-10",
+            "source_name": "AeroTime — Sun PhuQuoc Airways sets out arrival timeline of ex-America...",
+            "source_url": "https://www.aerotime.aero/articles/sun-phuquoc-airways-former-american-airlines-a330s",
+            "facts": [
+              {
+                "claim": "Sun PhuQuoc Airways confirmed on August 10, 2026 that the first four of eight former American Airlines A330-200s are expected to join the fleet in 2026, with the remaining four to be delivered within the first four months of 2027.",
+                "source_quote": "On August 10, 2026, the Vietnamese leisure carrier confirmed that the first four A330s are expected to join the fleet in 2026. The remaining four Airbus A330s will be delivered within the first four months of 2027.",
+                "source_url": "https://www.aerotime.aero/articles/sun-phuquoc-airways-former-american-airlines-a330s",
+                "source_name": "AeroTime — Sun PhuQuoc Airways sets out arrival timeline of ex-America..."
+              },
+              {
+                "claim": "The eight A330-200s have been in storage since 2020, when American Airlines placed them in long-term storage at Roswell International Air Center (ROS) in April/May 2020 during the pandemic.",
+                "source_quote": "American Airlines placed the eight aircraft in long term storage at Roswell International Air Center (ROS) in April/May 2020 when global air travel was at a virtual standstill due to the pandemic.",
+                "source_url": "https://www.aerotime.aero/articles/sun-phuquoc-airways-former-american-airlines-a330s",
+                "source_name": "AeroTime — Sun PhuQuoc Airways sets out arrival timeline of ex-America..."
+              },
+              {
+                "claim": "According to Planespotters.net, the eight A330-200s are currently stored at Marana Pinal Airpark (MZJ), Mexico City International Airport (MEX) and Peru Grissom Air Reserve Base (GUS), and are listed under the ownership of Jetran.",
+                "source_quote": "According to Planespotters.net , the eight A330-200s are currently stored at Marana Pinal Airpark (MZJ), Mexico City International Airport (MEX) and Peru Grissom Air Reserve Base (GUS).",
+                "source_url": "https://www.aerotime.aero/articles/sun-phuquoc-airways-former-american-airlines-a330s",
+                "source_name": "AeroTime — Sun PhuQuoc Airways sets out arrival timeline of ex-America..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: boeing",
+              "archive predates source by 19 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 19 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260814-1000-5",
+    "queuedUtc": "2026-08-14T10:00Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "美國對進口無人機課徵關稅，漢翔因應在地化需求評估赴美生產，涉及關稅政策與產業投資決策，須進行人工審核。",
+    "riskFlags": [
+      "regulatory_action",
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "US President Donald Trump announced on August 13 tariffs on imported drones and components, imposing a 15% tariff on allies including Taiwan.",
+        "sourceQuote": "美國總統川普（Donald Trump）13日宣布將對進口無人機及其零組件，徵收最高達100%關稅，其中對歐盟、日本、韓國及台灣等盟友產品課徵15%關稅。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608140210.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "AIDC stated on August 14 that if US customers request local manufacturing and provide actual orders, it will evaluate producing drones in the US.",
+        "sourceQuote": "面對美國強化無人機供應鏈在地化，漢翔表示，若美國客戶提出在地製造需求，且有實際訂單，將評估在美國生產無人機。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608140210.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "ITRI signed a Green UAS evaluation agreement with AUVSI, becoming the first overseas recognized evaluation institute, and AIDC submitted its first drone product for verification.",
+        "sourceQuote": "工研院已與美國無人產業協會（AUVSI）簽署Green UAS授權評鑑及服務協議，成為美國Green UAS境外第一個認可評鑑機構",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608140210.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "AIDC previously stated at an investor conference that its US plant will complete aerospace quality verification this year to start engine parts production.",
+        "sourceQuote": "漢翔先前在法說會上表示，美國廠今年可完成航太品質驗證，將展開高獲利發動機零件投產",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608140210.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "美國對進口無人機課徵關稅，漢翔因應在地化需求評估赴美生產，涉及關稅政策與產業投資決策，須進行人工審核。",
+      "cat": "biz",
+      "zh": {
+        "title": "美國實施無人機關稅 漢翔評估若有訂單將赴美生產",
+        "summary": "面對美國徵收無人機關稅，漢翔表示若客戶提出在地需求且有訂單將評估赴美生產。",
+        "body": [
+          "美國總統川普於8月13日宣布，對進口無人機及其零組件加徵關稅，對台灣、歐盟、日本及韓國等盟友產品課徵15%關稅。面對美國推動無人機供應鏈在地化政策，台灣航太大廠漢翔於14日表示，若美國客戶提出在地製造需求且具備實際訂單，將評估於美國廠生產無人機。",
+          "工研院已與美國無人產業協會簽署協議，成為 Green UAS 境外首家認可評鑑機構，漢翔並已攜手學界送驗無人機產品。此外，漢翔先前於法說會指出，其美國廠預計今年完成航太品質驗證，展開發動機零件投產，維繫供應鏈優勢。"
+        ]
+      },
+      "en": {
+        "title": "AIDC Evaluates US Drone Production Option Following New US Import Tariffs",
+        "summary": "AIDC states it will evaluate US drone manufacturing if requested by clients with actual orders following tariffs.",
+        "body": [
+          "US President Donald Trump announced new tariffs on imported drones and components on August 13, imposing a 15 percent tariff on products from allies including Taiwan, the European Union, Japan, and South Korea. In response to the shift toward localized supply chains, Taiwanese aerospace manufacturer AIDC stated on August 14 that it will evaluate manufacturing drones at its facility in the United States if US customers request local production backed by firm orders.",
+          "To support verification, ITRI signed an agreement with the Association for Uncrewed Vehicle Systems International to evaluate Green UAS standards, while AIDC has submitted its first drone product for verification. AIDC previously noted that its US plant is scheduled to complete aerospace quality verification this year to begin producing engine parts."
+        ]
+      },
+      "flash": {
+        "zh": "美公布無人機關稅 漢翔評估若有訂單將赴美生產",
+        "en": "AIDC evaluates US drone production following new tariff measures",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "US President Donald Trump announced on August 13 tariffs on imported drones and components, imposing a 15% tariff on allies including Taiwan.",
+          "sourceQuote": "美國總統川普（Donald Trump）13日宣布將對進口無人機及其零組件，徵收最高達100%關稅，其中對歐盟、日本、韓國及台灣等盟友產品課徵15%關稅。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608140210.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "AIDC stated on August 14 that if US customers request local manufacturing and provide actual orders, it will evaluate producing drones in the US.",
+          "sourceQuote": "面對美國強化無人機供應鏈在地化，漢翔表示，若美國客戶提出在地製造需求，且有實際訂單，將評估在美國生產無人機。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608140210.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "ITRI signed a Green UAS evaluation agreement with AUVSI, becoming the first overseas recognized evaluation institute, and AIDC submitted its first drone product for verification.",
+          "sourceQuote": "工研院已與美國無人產業協會（AUVSI）簽署Green UAS授權評鑑及服務協議，成為美國Green UAS境外第一個認可評鑑機構",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608140210.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "AIDC previously stated at an investor conference that its US plant will complete aerospace quality verification this year to start engine parts production.",
+          "sourceQuote": "漢翔先前在法說會上表示，美國廠今年可完成航太品質驗證，將展開高獲利發動機零件投產",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608140210.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "漢翔",
+          "工研院",
+          "無人產業協會",
+          "AUVSI",
+          "國民黨團",
+          "經濟部",
+          "行政院"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "美國",
+          "台灣",
+          "歐盟",
+          "日本",
+          "韓國",
+          "台北"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-14",
+          "13日",
+          "今年"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "regulatory_action",
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1000-5",
+      "primarySource": "中央社 CNA 產經證券",
+      "items": [
+        {
+          "title": "美祭無人機關稅 漢翔：有訂單就在美生產",
+          "url": "https://www.cna.com.tw/news/afe/202608140210.aspx",
+          "publishedUtc": "2026-08-14T08:36Z",
+          "summary": "（中央社記者江明晏台北14日電）美國總統川普宣布對進口無人機及其零組件加徵關稅，台歐日韓等盟友產品適用15%關稅；面對美國強化無人機供應鏈在地化，漢翔表示，若美國客戶提出在地製造需求，且有實際訂單，將評估在美國生產無人機。",
+          "image": null,
+          "source": "中央社 CNA 產經證券",
+          "sourceKey": "cnataiwanfinance"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260727-0838-presidential-office-rejects-show-claim-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: 中央社",
+              "archive predates source by 18 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 18 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍",
+            "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+            "facts": [
+              {
+                "claim": "Media reported that President Lai’s inspection during the Han Kuang exercise was a \"show\".",
+                "source_quote": "有媒體報導稱總統賴清德在漢光演習期間安排視導是「作秀」",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The Presidential Office stated that, as commander‐in‐chief, the President’s inspection of a major drill is a responsibility and an obligation.",
+                "source_quote": "作為三軍統帥，總統在國軍重要演訓期間參與視導，是責任也是義務",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The spokesperson called the \"show\" accusation speculation, a distortion of views, and a defamation of the military and national defence.",
+                "source_quote": "所謂「作秀」之說，內容多屬臆測、觀點扭曲，更污名化國軍與國防，令人遺憾",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Heads of state attending major military exercises is standard practice in Europe, the US, Japan and South Korea.",
+                "source_quote": "國家元首參與國家重大軍事演訓，無論歐、美、日、韓等國，國際皆然",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Since Han Kuang 40 the drills have been unscripted and realistic; the President’s visit was scheduled by the Ministry of National Defense according to the exercise progress, with no arranged \"firepower show\".",
+                "source_quote": "自漢光40號演習起，即採取「無劇本、實戰化」演練。總統參與視導，亦由國防部依照演習進程適時規劃，不存在所謂安排「火力秀」的問題",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Accusations of shifting opposition attacks or staging a performance for voters are baseless and unfair to personnel strengthening defence.",
+                "source_quote": "至於所謂「轉移在野攻擊」、「作秀給選民看」等無端指控，對此刻正為強化國防、守護國家而努力的所有人員極不公平",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-0902-taiwan-presidential-office-launches-2026",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: 工研院, 經濟部",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "中央社 CNA — 總統盃無人機競賽啟動 紅色供應鏈產品不具參賽資格",
+            "source_url": "https://www.cna.com.tw/news/aipl/202607280154.aspx",
+            "facts": [
+              {
+                "claim": "總統府於2026年7月28日公布「總統盃2026無人機競賽」活動,以民主同盟及非紅供應鏈為主題,涉及紅色供應鏈之器材或產品不具參賽資格。",
+                "source_quote": "總統府今天公布「總統盃2026無人機競賽」活動。總統府秘書長潘孟安說，這次活動以民主同盟及非紅供應鏈為主題，期盼透過競賽培育科技應用人才，紅色供應鏈的器材或產品不具參賽資格。",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607280154.aspx",
+                "source_name": "中央社 CNA — 總統盃無人機競賽啟動 紅色供應鏈產品不具參賽資格"
+              },
+              {
+                "claim": "經濟部將辦理「無人機堆積木」、「無人機避障賽」及「無人機精準投放」等障礙飛行挑戰,報名自7月28日至8月31日,決賽於12月25在大台南會展中心舉辦。",
+                "source_quote": "經濟部將辦理「無人機堆積木」、「無人機避障賽」及「無人機精準投放」等障礙飛行挑戰",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607280154.aspx",
+                "source_name": "中央社 CNA — 總統盃無人機競賽啟動 紅色供應鏈產品不具參賽資格"
+              },
+              {
+                "claim": "教育部將辦理「無人機足球競賽」,國科會則規劃「關鍵技術挑戰賽」。",
+                "source_quote": "教育部辦理「無人機足球競賽」，從國小階段開始推動無人機操作；國科會則規劃「關鍵技術挑戰賽」",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607280154.aspx",
+                "source_name": "中央社 CNA — 總統盃無人機競賽啟動 紅色供應鏈產品不具參賽資格"
+              },
+              {
+                "claim": "參賽設備將由國科會、工研院及中科院建立檢核機制,非紅無人機查核進行三階段審查。",
+                "source_quote": "各項參賽設備也將由國科會、工研院及中科院等相關部會共同建立檢核機制，若涉及紅色供應鏈的器材或產品，將不具參賽資格",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607280154.aspx",
+                "source_name": "中央社 CNA — 總統盃無人機競賽啟動 紅色供應鏈產品不具參賽資格"
+              },
+              {
+                "claim": "總統府表示籌備過程參考美國Green UAS標準,建構非紅無人機供應鏈。",
+                "source_quote": "並參考美國Green UAS（綠色無人機系統）標準，建構非紅無人機供應鏈。",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607280154.aspx",
+                "source_name": "中央社 CNA — 總統盃無人機競賽啟動 紅色供應鏈產品不具參賽資格"
+              },
+              {
+                "claim": "活動規劃包括國防能量、應用服務、產業能量及學研成果等4項展示。",
+                "source_quote": "活動也規劃4項展示，包括國防能量、應用服務、產業能量、學研成果展示。",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607280154.aspx",
+                "source_name": "中央社 CNA — 總統盃無人機競賽啟動 紅色供應鏈產品不具參賽資格"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260814-1000-7",
+    "queuedUtc": "2026-08-14T10:00Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves regulatory trade policy (US drone tariff adjustments) and a major government procurement budget claim (NT$63.4 billion for drones).",
+    "riskFlags": [
+      "regulatory_action",
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "雷虎於2026年8月14日表示，美國調高進口無人機關稅對其影響中性偏利多。",
+        "sourceQuote": "無人機製造商雷虎今天表示，雖短期增加銷美成本，但美國目的在阻止中國等高敏感國家無人機銷美，且雷虎在美國有工廠，中長期實為利多",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608140180.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "台灣無人機產品若適用15%關稅會增加銷美成本，但中國或高敏感產品面臨25%至100%關稅將縮小雙方成本差距。",
+        "sourceQuote": "台灣產品若適用約15%關稅，當然會增加銷美成本；但若中國或高敏感度產品面臨25%至100%關稅，台灣與中國供應鏈之間的成本差距會大幅縮小。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608140180.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "雷虎在美國加州與俄亥俄州設有工廠，持續推動美國在地製造以爭取美國國防部訂單及標案。",
+        "sourceQuote": "雷虎目前美國加州及俄亥俄州工廠將大幅發揮作用，未來將持續推動美國製造（Made In USA）無人機，爭取更多美國國防部訂單及標案。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608140180.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "台灣新台幣634億元的無人機採購預算通過，將為台灣無人機產業未來6年提供明確且穩定的市場需求。",
+        "sourceQuote": "這次新台幣634億元預算過關的意義，不只是採購無人機，更重要的是讓台灣無人機產業未來6年有比較明確、穩定的市場需求",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608140180.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves regulatory trade policy (US drone tariff adjustments) and a major government procurement budget claim (NT$63.4 billion for drones).",
+      "cat": "biz",
+      "zh": {
+        "title": "雷虎評美國關稅政策利多 樂見634億無人機預算通過",
+        "summary": "雷虎稱美國調高無人機關稅中性偏多；樂見台灣634億元採購預算通過",
+        "body": [
+          "台灣無人機製造商雷虎科技於2026年8月14日表示，美國政府調高進口無人機關稅對公司整體影響為中性偏利多。雷虎指出，儘管台灣產品適用約15%關稅會短期增加銷美成本，但由於中國等高敏感度產品面臨25%至100%的關稅，台灣與中國供應鏈之間的成本差距將大幅縮小。",
+          "雷虎說明，公司目前在美國加州與俄亥俄州設有工廠，將發揮在地製造與組裝能力，持續推動美國製造的無人機產品，以爭取更多美國國防部的訂單與標案。此外，對於台灣通過新台幣634億元的無人機採購預算，雷虎表示樂見政府與國會支持，這將為台灣無人機產業未來6年提供明確且穩定的市場需求。"
+        ]
+      },
+      "en": {
+        "title": "Thunder Tiger Sees US Drone Tariff Hike as Net Positive, Welcomes Passed Budget",
+        "summary": "Thunder Tiger considers US drone tariff increases positive and welcomes Taiwan's passed procurement budget.",
+        "body": [
+          "Taiwanese drone manufacturer Thunder Tiger stated on August 14, 2026, that the US government's tariff increase on imported drones is overall neutral to positive for the company. Thunder Tiger noted that while Taiwanese products face tariffs of approximately 15 percent, increasing short-term export costs, products from high-sensitivity countries such as China face tariffs ranging from 25 to 100 percent, which significantly narrows the cost gap between Taiwanese and Chinese supply chains.",
+          "Thunder Tiger added that its existing manufacturing facilities in California and Ohio will play a key role in advancing US-made drones to compete for US Department of Defense orders and tenders. Furthermore, the company welcomed the passage of Taiwan's NT$63.4 billion procurement budget for drones, stating that the decision will secure clear and stable market demand for Taiwan's drone industry over the next six years."
+        ]
+      },
+      "flash": {
+        "zh": "雷虎稱美調高無人機關稅中性偏多，並樂見國內預算通過",
+        "en": "Thunder Tiger views US drone tariff hike as net positive and welcomes passed procurement budget.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "雷虎於2026年8月14日表示，美國調高進口無人機關稅對其影響中性偏利多。",
+          "sourceQuote": "無人機製造商雷虎今天表示，雖短期增加銷美成本，但美國目的在阻止中國等高敏感國家無人機銷美，且雷虎在美國有工廠，中長期實為利多",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608140180.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "台灣無人機產品若適用15%關稅會增加銷美成本，但中國或高敏感產品面臨25%至100%關稅將縮小雙方成本差距。",
+          "sourceQuote": "台灣產品若適用約15%關稅，當然會增加銷美成本；但若中國或高敏感度產品面臨25%至100%關稅，台灣與中國供應鏈之間的成本差距會大幅縮小。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608140180.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "雷虎在美國加州與俄亥俄州設有工廠，持續推動美國在地製造以爭取美國國防部訂單及標案。",
+          "sourceQuote": "雷虎目前美國加州及俄亥俄州工廠將大幅發揮作用，未來將持續推動美國製造（Made In USA）無人機，爭取更多美國國防部訂單及標案。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608140180.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "台灣新台幣634億元的無人機採購預算通過，將為台灣無人機產業未來6年提供明確且穩定的市場需求。",
+          "sourceQuote": "這次新台幣634億元預算過關的意義，不只是採購無人機，更重要的是讓台灣無人機產業未來6年有比較明確、穩定的市場需求",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608140180.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F4"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F4"
+      ],
+      "entities": {
+        "organizations": [
+          "雷虎",
+          "美國國防部",
+          "國民黨"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "美國",
+          "台灣",
+          "中國",
+          "加州",
+          "俄亥俄州"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "14日",
+          "2026/08/14"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "regulatory_action",
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1000-7",
+      "primarySource": "中央社 CNA 產經證券",
+      "items": [
+        {
+          "title": "雷虎：美調高無人機關稅中性偏多 樂見立院預算通過",
+          "url": "https://www.cna.com.tw/news/afe/202608140180.aspx",
+          "publishedUtc": "2026-08-14T07:39Z",
+          "summary": "（中央社記者潘智義台北14日電）針對美國政府調高進口無人機關稅，無人機製造商雷虎今天表示，雖短期增加銷美成本，但美國目的在阻止中國等高敏感國家無人機銷美，且雷虎在美國有工廠，中長期實為利多；雷虎也非常樂見政府與國會共同支持台灣無人機產業發展，讓無人機採購預算全數通過。",
+          "image": null,
+          "source": "中央社 CNA 產經證券",
+          "sourceKey": "cnataiwanfinance"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260814-0710-4",
     "queuedUtc": "2026-08-14T07:10Z",
     "approve": false,
@@ -9773,668 +10550,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260811-1118-1",
-    "queuedUtc": "2026-08-11T11:18Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Starlux Airlines reported H1 2026 financial results showing a net loss due to surging jet fuel costs and announced obtaining an airport ground handling license, involving major financial claims.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "星宇航空董事會於2026年8月11日通過第2季財報，上半年累計營收達新台幣285.53億元，年成長30%，創歷年同期新高。",
-        "sourceQuote": "星宇航空董事會今天通過2026年第2季財報，第2季營收約新台幣147.93億元，累計上半年營收達285.53億元，年成長30%，創歷年同期新高",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "受國際航空燃油價格年增124%影響，星宇航空上半年營運成本提升，稅後淨損約新台幣3.46億元。",
-        "sourceQuote": "航空燃油價格年增124%，導致營運成本大幅提升，上半年稅後淨損約3.46億元。",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "星宇航空於8月10日取得交通部民航局核發的航空站地勤業許可證，規劃逐步拓展地勤服務業務。",
-        "sourceQuote": "星宇航空表示，於10日取得交通部民航局核發的航空站地勤業許可證，未來將配合整體營運規劃及桃園國際機場各項基礎建設擴增進程，逐步拓展航空地勤服務業務",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Starlux Airlines reported H1 2026 financial results showing a net loss due to surging jet fuel costs and announced obtaining an airport ground handling license, involving major financial claims.",
-      "cat": "biz",
-      "zh": {
-        "title": "星宇航空上半年營收創新高受油價影響轉虧並取得地勤許可",
-        "summary": "星宇航空上半年營收285.53億；油價飆漲轉虧3.46億；獲地勤許可",
-        "body": [
-          "星宇航空董事會於2026年8月11日通過第2季財報。公司表示，累計上半年營收達新台幣285.53億元，年增30%，創下歷年同期新高，顯示客運與貨運需求持續表現強勁。然而，第2季受美伊戰爭影響，國際航空燃油價格大幅飆漲，年增達124%，導致營運成本大幅提升，上半年累計稅後淨損約為新台幣3.46億元。",
-          "在業務拓展方面，星宇航空表示，已於8月10日取得交通部民航局核發的航空站地勤業許可證。未來將配合整體營運規劃及桃園國際機場各項基礎建設擴增進程，逐步拓展航空地勤服務業務，以共同強化桃園國際機場的樞紐競爭力。"
-        ]
-      },
-      "en": {
-        "title": "Starlux Posts Record H1 Revenue but Net Loss on Fuel Costs, Obtains Ground Handling License",
-        "summary": "Starlux Airlines recorded record H1 revenue; fuel price surge led to net loss; obtained ground handling license.",
-        "body": [
-          "The board of Starlux Airlines approved its Q2 2026 financial report on August 11, 2026. Cumulative revenue for the first half of the year reached NT$28.553 billion, up 30% year-on-year to hit a record high for the period, supported by strong passenger and cargo demand. However, affected by the US-Iran war in the second quarter, jet fuel prices soared 124% year-on-year, significantly raising operating costs and resulting in a net loss of approximately NT$346 million for the first half.",
-          "Additionally, Starlux Airlines announced that it obtained an airport ground handling license from the Civil Aeronautics Administration on August 10. Moving forward, the carrier plans to expand its ground handling services in line with overall operational planning and infrastructure expansion at Taoyuan International Airport to enhance the airport's hub competitiveness."
-        ]
-      },
-      "flash": {
-        "zh": "星宇航空上半年營收創新高，受燃油高漲影響轉虧3.46億元並獲地勤許可",
-        "en": "Starlux Airlines posts record H1 revenue, net loss on high fuel costs, secures ground handling license",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "星宇航空董事會於2026年8月11日通過第2季財報，上半年累計營收達新台幣285.53億元，年成長30%，創歷年同期新高。",
-          "sourceQuote": "星宇航空董事會今天通過2026年第2季財報，第2季營收約新台幣147.93億元，累計上半年營收達285.53億元，年成長30%，創歷年同期新高",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "受國際航空燃油價格年增124%影響，星宇航空上半年營運成本提升，稅後淨損約新台幣3.46億元。",
-          "sourceQuote": "航空燃油價格年增124%，導致營運成本大幅提升，上半年稅後淨損約3.46億元。",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "星宇航空於8月10日取得交通部民航局核發的航空站地勤業許可證，規劃逐步拓展地勤服務業務。",
-          "sourceQuote": "星宇航空表示，於10日取得交通部民航局核發的航空站地勤業許可證，未來將配合整體營運規劃及桃園國際機場各項基礎建設擴增進程，逐步拓展航空地勤服務業務",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608110313.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "星宇航空董事會",
-          "交通部民航局"
-        ],
-        "airlines": [
-          "星宇航空"
-        ],
-        "aircraft_models": [],
-        "airports": [
-          "桃園國際機場"
-        ],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "10日",
-          "11日",
-          "2026年第2季"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-1118-1",
-      "primarySource": "中央社 CNA 國籍航空",
-      "items": [
-        {
-          "title": "油價翻倍漲星宇航空營運承壓 逐步拓展地勤業務",
-          "url": "https://www.cna.com.tw/news/afe/202608110313.aspx",
-          "publishedUtc": "2026-08-11T11:15Z",
-          "summary": "航空燃油,星宇航空",
-          "image": null,
-          "source": "中央社 CNA 國籍航空",
-          "sourceKey": "cnataiwanairlines"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260811-1042-7",
-    "queuedUtc": "2026-08-11T10:42Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Swarm Aero announced securing over $10 million in contracts from the Air Force Research Laboratory, representing a major financial contract claim.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Swarm Aero announced securing over $10 million in contracts from the Air Force Research Laboratory to advance its high-rate composite manufacturing technology.",
-        "sourceQuote": "Swarm Aero announced on 10 August that it had secured more than $10 million in contracts from the Air Force Research Laboratory (AFRL) to advance its high-rate composite manufacturing technology.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The funding will support research and development of Swarm Aero's manufacturing approach and aircraft component production for the US Air Force.",
-        "sourceQuote": "The funding will support further research and development of the company’s manufacturing approach, as well as the production of aircraft components for the US Air Force.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Swarm Aero has been developing its manufacturing process since 2022 to reduce the cost and time required to manufacture large composite aircraft.",
-        "sourceQuote": "Swarm says it has been developing the process since 2022 with the aim of dramatically reducing the cost and time required to manufacture large composite aircraft.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Swarm Aero is developing a Reaper-sized Group 5 UAV alongside its autonomy software, targeting a first flight in 2027.",
-        "sourceQuote": "Swarm is already developing the aircraft alongside its own autonomy and command-and-control software, with a first flight targeted for 2027.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "CEO Peter Kalogiannis stated that autonomous UAVs would share data and coordinate to achieve common goals.",
-        "sourceQuote": "cooperating together, sharing data, and really coordinating to achieve the same goals",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Swarm Aero announced securing over $10 million in contracts from the Air Force Research Laboratory, representing a major financial contract claim.",
-      "cat": "mil",
-      "zh": {
-        "title": "Swarm Aero獲美空軍逾千萬美元合約 研發無人機複合材料製造",
-        "summary": "Swarm Aero獲得美空軍研究實驗室逾千萬美元合約；推進複合材料高率製造",
-        "body": [
-          "Swarm Aero於8月10日宣布，已獲得美國空軍研究實驗室（AFRL）總額超過1000萬美元的合約。該筆資金將用於推進該公司的高率複合材料製造技術，支援相關技術的進一步研究與開發，並為美國空軍生產飛機組件。",
-          "自2022年以來，Swarm Aero持續開發這項製造工藝，旨在大幅降低製造大型複合材料飛機所需的時間與成本。該公司的目標是讓傳統上僅能小規模量產的飛機，具備進行更高效率大規模生產的能力。",
-          "此外，Swarm Aero正同步研發一款具備自主與指揮控制軟體的Reaper等級Group 5無人機，並預計於2027年進行首飛。執行長Peter Kalogiannis表示，自主無人機群將透過相互合作、共享資料與協調作業，以實現共同任務目標。"
-        ]
-      },
-      "en": {
-        "title": "Swarm Aero Secures Over $10M AFRL Contracts for Drone Composite Manufacturing",
-        "summary": "Swarm Aero secures over $10 million from AFRL to advance high-rate composite manufacturing for drones.",
-        "body": [
-          "Swarm Aero announced on August 10 that it has secured over $10 million in contracts from the Air Force Research Laboratory (AFRL). The funding will support research and development of the company's high-rate composite manufacturing technology, as well as the production of aircraft components for the US Air Force.",
-          "The company has been developing this manufacturing approach since 2022 to significantly reduce the cost and time required to build large composite aircraft. Swarm Aero aims to make aircraft traditionally produced in small quantities suitable for higher-rate production.",
-          "Alongside its manufacturing initiatives, Swarm Aero is developing a Reaper-sized Group 5 unmanned aerial vehicle with integrated autonomy and command-and-control software, targeting a first flight in 2027. Chief Executive Officer Peter Kalogiannis stated that groups of autonomous drones will share data and coordinate to achieve common mission goals."
-        ]
-      },
-      "flash": {
-        "zh": "Swarm Aero獲美空軍逾千萬美元合約推進複合材料製造",
-        "en": "Swarm Aero Secures Over $10M AFRL Contracts for Composite Manufacturing",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Swarm Aero announced securing over $10 million in contracts from the Air Force Research Laboratory to advance its high-rate composite manufacturing technology.",
-          "sourceQuote": "Swarm Aero announced on 10 August that it had secured more than $10 million in contracts from the Air Force Research Laboratory (AFRL) to advance its high-rate composite manufacturing technology.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The funding will support research and development of Swarm Aero's manufacturing approach and aircraft component production for the US Air Force.",
-          "sourceQuote": "The funding will support further research and development of the company’s manufacturing approach, as well as the production of aircraft components for the US Air Force.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Swarm Aero has been developing its manufacturing process since 2022 to reduce the cost and time required to manufacture large composite aircraft.",
-          "sourceQuote": "Swarm says it has been developing the process since 2022 with the aim of dramatically reducing the cost and time required to manufacture large composite aircraft.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Swarm Aero is developing a Reaper-sized Group 5 UAV alongside its autonomy software, targeting a first flight in 2027.",
-          "sourceQuote": "Swarm is already developing the aircraft alongside its own autonomy and command-and-control software, with a first flight targeted for 2027.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "CEO Peter Kalogiannis stated that autonomous UAVs would share data and coordinate to achieve common goals.",
-          "sourceQuote": "cooperating together, sharing data, and really coordinating to achieve the same goals",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Swarm Aero",
-          "Air Force Research Laboratory",
-          "AFRL",
-          "US Air Force"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "MQ-9 Reaper"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "10 August",
-          "2022",
-          "2027"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-1042-7",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Swarm Aero targets MQ-9 Reaper successor with mass-produced Group 5 drone News",
-          "url": "https://aerospaceglobalnews.com/news/swarm-aero-mq9-reaper-successor/",
-          "publishedUtc": "2026-08-11T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/01/GA-ASIs-MQ-9B-SkyGuardian-SeaGuardian.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260730-0603-anduril-yfq-44a-fury-drone-destroys-targ",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: anduril, us air force",
-              "archive predates source by 12 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 12 day(s) apart",
-            "event_date": "2026-07-30",
-            "source_name": "Simple Flying — Why The US Air Force's New Combat Drone Still Can't Fire Wi...",
-            "source_url": "https://simpleflying.com/why-usaf-new-combat-drone-still-cant-fire-without-human-approval/",
-            "facts": [
-              {
-                "claim": "Anduril's YFQ-44A Fury drone recently destroyed a target, demonstrating its capability.",
-                "source_quote": "Anduril's YFQ-44A Fury drone recently destroyed a target proving its capability",
-                "source_url": "https://simpleflying.com/why-usaf-new-combat-drone-still-cant-fire-without-human-approval/",
-                "source_name": "Simple Flying — Why The US Air Force's New Combat Drone Still Can't Fire Wi..."
-              },
-              {
-                "claim": "A human operator must remain in the loop for future operations.",
-                "source_quote": "yet a human must remain in the loop for future operations.",
-                "source_url": "https://simpleflying.com/why-usaf-new-combat-drone-still-cant-fire-without-human-approval/",
-                "source_name": "Simple Flying — Why The US Air Force's New Combat Drone Still Can't Fire Wi..."
-              },
-              {
-                "claim": "The US Air Force's new combat drone cannot fire without a human's approval.",
-                "source_quote": "Why The US Air Force's New Combat Drone Still Can't Fire Without A Human's Approval",
-                "source_url": "https://simpleflying.com/why-usaf-new-combat-drone-still-cant-fire-without-human-approval/",
-                "source_name": "Simple Flying — Why The US Air Force's New Combat Drone Still Can't Fire Wi..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260804-0943-us-air-force-ends-five-decades-of-a-10-f",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: us air force",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-08-04",
-            "source_name": "AeroTime — US Air Force ends nearly 50 years of A-10 flights at Davis-...",
-            "source_url": "https://www.aerotime.aero/articles/a-10-final-flight-davis-monthan-air-force-base",
-            "facts": [
-              {
-                "claim": "The US Air Force completed the final A-10C Thunderbolt II flight at Davis-Monthan Air Force Base on July 29, 2026, ending nearly 50 years of operations at the base.",
-                "source_quote": "flew the A-10C Thunderbolt II from Davis-Monthan Air Force Base, Arizona, for the final time on July 29, 2026, closing nearly five decades of operations",
-                "source_url": "https://www.aerotime.aero/articles/a-10-final-flight-davis-monthan-air-force-base",
-                "source_name": "AeroTime — US Air Force ends nearly 50 years of A-10 flights at Davis-..."
-              },
-              {
-                "claim": "The 357th Fighter Squadron was the last active-duty A-10 unit at Davis-Monthan AFB and graduated its final A-10 pilot class on April 3, 2026.",
-                "source_quote": "The 357th Fighter Squadron was the last active-duty A-10 unit at Davis-Monthan AFB and served as the type’s formal training unit. Its final class of A-10 pilots graduated on April 3, 2026",
-                "source_url": "https://www.aerotime.aero/articles/a-10-final-flight-davis-monthan-air-force-base",
-                "source_name": "AeroTime — US Air Force ends nearly 50 years of A-10 flights at Davis-..."
-              },
-              {
-                "claim": "A-10 aircraft retiring at Davis-Monthan AFB are transferred to the 309th Aerospace Maintenance and Regeneration Group on the same airfield.",
-                "source_quote": "The aircraft retired at Davis-Monthan AFB do not go far, with the 309th Aerospace Maintenance and Regeneration Group sitting on the same airfield.",
-                "source_url": "https://www.aerotime.aero/articles/a-10-final-flight-davis-monthan-air-force-base",
-                "source_name": "AeroTime — US Air Force ends nearly 50 years of A-10 flights at Davis-..."
-              },
-              {
-                "claim": "Secretary of the Air Force Troy Meink stated on April 20, 2026, that the Air Force will extend A-10 service through 2030.",
-                "source_quote": "On April 20, 2026, Secretary of the Air Force Troy Meink said the service would instead extend the A-10 through 2030",
-                "source_url": "https://www.aerotime.aero/articles/a-10-final-flight-davis-monthan-air-force-base",
-                "source_name": "AeroTime — US Air Force ends nearly 50 years of A-10 flights at Davis-..."
-              },
-              {
-                "claim": "Under current plans, the last A-10 units will operate at Moody Air Force Base in Georgia and Whiteman Air Force Base in Missouri.",
-                "source_quote": "the last A-10 units will be the 23rd Fighter Group’s 74th and 75th Fighter Squadrons at Moody Air Force Base, Georgia, and the 303rd Fighter Squadron of the US Air Force Reserve Command’s 442nd Fighter Wing at Whiteman Air Force Base, Missouri.",
-                "source_url": "https://www.aerotime.aero/articles/a-10-final-flight-davis-monthan-air-force-base",
-                "source_name": "AeroTime — US Air Force ends nearly 50 years of A-10 flights at Davis-..."
-              },
-              {
-                "claim": "Davis-Monthan AFB is rebuilding around a rescue mission and the relocating 492nd Power Projection Wing from Hurlburt Field, Florida.",
-                "source_quote": "Davis-Monthan AFB is being rebuilt around a rescue mission and the 492nd Power Projection Wing, an Air Force Special Operations Command unit relocating from Hurlburt Field, Florida",
-                "source_url": "https://www.aerotime.aero/articles/a-10-final-flight-davis-monthan-air-force-base",
-                "source_name": "AeroTime — US Air Force ends nearly 50 years of A-10 flights at Davis-..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260804-1529-swiss-semi-private-startup-peakjet-compl",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: aero",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-08-04",
-            "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first...",
-            "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-            "facts": [
-              {
-                "claim": "PeakJet completed its first commercial flight between Zürich and Palma de Mallorca on August 1, 2026.",
-                "source_quote": "PeakJet, a new Swiss semi-private airline, has announced that it has completed its first commercial flight between Zürich (ZRH) and Palma de Mallorca (PMI) on August 1, 2026.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "The flight was operated by the German subsidiary of VistaJet using an Embraer Legacy 650 capable of carrying up to 12 passengers.",
-                "source_quote": "The aircraft, an Embraer Legacy 650 capable of carrying up to 12 passengers, was operated by the German subsidiary of VistaJet.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "Neither PeakJet nor its parent Peak Plus AG holds an air operator certificate, functioning as a marketplace aggregating capacity on scheduled executive aircraft.",
-                "source_quote": "neither PeakJet nor its parent company, Peak Plus AG, holds an air operator certificate (AOC) of their own. Instead, PeakJet defines itself as a marketplace, which aggregates and sells capacity on executive aircraft operating on fixed schedules.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260811-0924-1",
-    "queuedUtc": "2026-08-11T09:24Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Ground safety incident involving aircraft collision on active taxiway requires mandatory manual review.",
-    "riskFlags": [
-      "accident_or_serious_incident"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "On August 10, 2026, an airport service vehicle collided with a taxiing Hawker Beechcraft 400A private jet at Milan Linate Airport.",
-        "sourceQuote": "On August 10, 2026, a Hawker Beechcraft 400A was captured on video navigating along the taxiway when the Panda type vehicle crossed the tarmac and struck the front of the jet.",
-        "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The private jet is registered I-AERB and operated by Slam Lavori Aere.",
-        "sourceQuote": "The aircraft, registered I-AERB, is owned and operated by Slam Lavori Aere",
-        "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "No serious injuries were reported following the ground collision.",
-        "sourceQuote": "there have been no reports of serious injuries suffered by anyone in the crash.",
-        "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Operations at Milan Linate Airport were paused for 40 minutes, leading to flight diversions for ITA Airways and KLM.",
-        "sourceQuote": "operations at the airport were paused for 40 minutes, and an ITA Airways flight was diverted to Bergamo (BGY), and a KLM flight to Milan Malpensa Airport (MXP).",
-        "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Ground safety incident involving aircraft collision on active taxiway requires mandatory manual review.",
-      "cat": "safety",
-      "zh": {
-        "title": "米蘭林納特機場地面車輛碰撞滑行中私人噴射機",
-        "summary": "義大利米蘭林納特機場發生地勤車輛碰撞私人噴射機事故；航勤短暫暫停四十分鐘",
-        "body": [
-          "義大利米蘭林納特機場（LIN）於2026年8月10日發生一起地面碰撞事件。一架準備前往跑道滑行的 Hawker Beechcraft 400A 私人噴射機，在滑行道上遭一輛機場地勤服務車輛直接撞擊機鼻前端。碰撞造成地勤車輛嚴重受損，私人噴射機機身亦因衝擊力道偏轉。",
-          "涉事私人噴射機國籍標誌暨登記號碼為 I-AERB，由 Slam Lavori Aere 營運。事發後無人受重傷回報。受此事件影響，米蘭林納特機場暫停作業40分鐘，期間包含義大利航空及荷蘭皇家航空等航班進行轉降。"
-        ]
-      },
-      "en": {
-        "title": "Airport Ground Vehicle Collides with Taxiing Private Jet at Milan Linate Airport",
-        "summary": "A ground vehicle collided with a taxiing private jet at Milan Linate Airport, briefly pausing airport operations.",
-        "body": [
-          "An airport service vehicle collided with a taxiing Hawker Beechcraft 400A private jet on an active taxiway at Milan Linate Airport (LIN) in Italy on August 10, 2026. The collision severely damaged the service vehicle and turned the aircraft on the taxiway, but no serious injuries were reported.",
-          "The aircraft, registered I-AERB, is operated by Slam Lavori Aere. Airport operations at Milan Linate were paused for 40 minutes due to the ground incident, leading to flight diversions including an ITA Airways flight to Bergamo (BGY) and a KLM flight to Milan Malpensa Airport (MXP)."
-        ]
-      },
-      "flash": {
-        "zh": "米蘭林納特機場發生地勤車輛碰撞私人噴射機事件",
-        "en": "Ground vehicle collides with private jet at Milan Linate Airport",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-10",
-        "sev": "inc",
-        "aircraft": "Hawker Beechcraft 400A",
-        "operator": "Slam Lavori Aere",
-        "phase": {
-          "zh": "滑行",
-          "en": "Taxi"
-        },
-        "location": {
-          "zh": "義大利米蘭林納特機場",
-          "en": "Milan Linate Airport, Italy"
-        },
-        "desc": {
-          "zh": "地勤服務車輛於滑行道撞擊滑行中的私人噴射機機鼻",
-          "en": "An airport service vehicle collided with the front of a taxiing private jet on a taxiway."
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "On August 10, 2026, an airport service vehicle collided with a taxiing Hawker Beechcraft 400A private jet at Milan Linate Airport.",
-          "sourceQuote": "On August 10, 2026, a Hawker Beechcraft 400A was captured on video navigating along the taxiway when the Panda type vehicle crossed the tarmac and struck the front of the jet.",
-          "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The private jet is registered I-AERB and operated by Slam Lavori Aere.",
-          "sourceQuote": "The aircraft, registered I-AERB, is owned and operated by Slam Lavori Aere",
-          "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "No serious injuries were reported following the ground collision.",
-          "sourceQuote": "there have been no reports of serious injuries suffered by anyone in the crash.",
-          "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Operations at Milan Linate Airport were paused for 40 minutes, leading to flight diversions for ITA Airways and KLM.",
-          "sourceQuote": "operations at the airport were paused for 40 minutes, and an ITA Airways flight was diverted to Bergamo (BGY), and a KLM flight to Milan Malpensa Airport (MXP).",
-          "sourceUrl": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Slam Lavori Aere",
-          "Slam Air",
-          "Adler Group",
-          "Corriere Della Sera",
-          "Flightradar24"
-        ],
-        "airlines": [
-          "ITA Airways",
-          "KLM"
-        ],
-        "aircraft_models": [
-          "Hawker Beechcraft 400A"
-        ],
-        "airports": [
-          "Milan Linate",
-          "LIN",
-          "Bergamo",
-          "BGY",
-          "Milan Malpensa Airport",
-          "MXP"
-        ],
-        "locations": [
-          "Italy"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [
-          "I-AERB"
-        ],
-        "event_dates": [
-          "August 10, 2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-0924-1",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Airport vehicle slams into taxiing private jet at Milan Linate: video",
-          "url": "https://www.aerotime.aero/articles/airport-vehicle-slams-into-taxiing-private-jet-at-milan-linate-video",
-          "publishedUtc": "2026-08-11T08:41Z",
-          "summary": "An airport service vehicle slammed into a private jet that was taxiing towards the runway at Milan Linate… The post Airport vehicle slams into taxiing private jet at Milan Linate: video appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
