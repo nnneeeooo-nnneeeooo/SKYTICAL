@@ -1,5 +1,775 @@
 [
   {
+    "id": "g-20260814-0356-5",
+    "queuedUtc": "2026-08-14T03:56Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "Regulatory action (tariff announcement) present, requiring human review per risk flags.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Trump announced US will impose tariffs on imported drones and parts, including 15% on allies (EU, Japan, Korea, Taiwan, Switzerland, Liechtenstein).",
+        "sourceQuote": "美國將對進口無人機及零組件課徵關稅，其中包括對歐洲聯盟、日本、韓國及台灣等重要盟友產品課徵15%關稅。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608140026.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "White House said tariffs will be 100% on specific size/function drones involving national security sensitivity and 25% on smaller drones.",
+        "sourceQuote": "白宮表示，川普簽署的公告將對特定尺寸或具特定功能、涉及國家安全敏感性的無人機課徵100%的從價關稅（Ad Valorem Duty）；較小型無人機則課徵25%關稅。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608140026.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Drones and parts from EU, Japan, Korea, Taiwan, Switzerland, Liechtenstein face 15% tariff; UK drones face 10% tariff.",
+        "sourceQuote": "來自歐盟（EU）、日本、韓國、台灣、瑞士及列支敦斯登的無人機及零組件將課徵15%關稅，英國無人機則課徵10%的從價關稅。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608140026.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Regulatory action (tariff announcement) present, requiring human review per risk flags.",
+      "cat": "reg",
+      "zh": {
+        "title": "美對進口無人機及零件課徵關稅 台日韓等盟友",
+        "summary": "美對無人機及零件加稅 盟友產品課15%",
+        "body": [
+          "美國總統川普今日宣布，將對進口無人機及零組件課徵關稅，其中對歐盟、日本、韓國及台灣等重要盟友產品徵收15%關稅。",
+          "白宮進一步指出，對特定尺寸或具國家安全敏感性的無人機課徵100%從價關稅，較小型無人機則課徵25%；來自歐盟、日本、韓國、台灣、瑞士及列支敦斯登的無人機及零組件將課徵15%關稅，英國無人機則課徵10%；對不涉及高度敏感用途的零組件，相關關稅將在公告簽署後180天生效，對五角大廈核准豁免FCC『受管制清單』的產品則在公告簽署後20天內生效，關稅仍將在180天後生效。"
+        ]
+      },
+      "en": {
+        "title": "US Announces Tariffs on Imported Drones and Parts, Including 15% Rate on Allied Nations",
+        "summary": "US imposes drone tariffs on imported drones; allies face 15% rate",
+        "body": [
+          "President Trump announced today that the United States will impose tariffs on imported drones and their parts, with a 15% rate applied to products from key allies including the European Union, Japan, South Korea, and Taiwan.",
+          "The White House said that drones deemed to involve national‑sensitive size or function will face a 100% ad valorem duty, while smaller drones will be subject to a 25% tariff; drones and parts from the EU, Japan, South Korea, Taiwan, Switzerland and Liechtenstein will be taxed at 15%, and UK drones at 10%. For non‑sensitive parts the tariffs take effect 180 days after the announcement, and for FCC‑covered products cleared by the Department of Defense within 20 days of the announcement, the tariffs will also apply after 180 days."
+        ]
+      },
+      "flash": {
+        "zh": "美宣布無人機關稅 盟友產品課15%",
+        "en": "US announces drone tariffs; allies face 15% rate",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Trump announced US will impose tariffs on imported drones and parts, including 15% on allies (EU, Japan, Korea, Taiwan, Switzerland, Liechtenstein).",
+          "sourceQuote": "美國將對進口無人機及零組件課徵關稅，其中包括對歐洲聯盟、日本、韓國及台灣等重要盟友產品課徵15%關稅。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608140026.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "White House said tariffs will be 100% on specific size/function drones involving national security sensitivity and 25% on smaller drones.",
+          "sourceQuote": "白宮表示，川普簽署的公告將對特定尺寸或具特定功能、涉及國家安全敏感性的無人機課徵100%的從價關稅（Ad Valorem Duty）；較小型無人機則課徵25%關稅。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608140026.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Drones and parts from EU, Japan, Korea, Taiwan, Switzerland, Liechtenstein face 15% tariff; UK drones face 10% tariff.",
+          "sourceQuote": "來自歐盟（EU）、日本、韓國、台灣、瑞士及列支敦斯登的無人機及零組件將課徵15%關稅，英國無人機則課徵10%的從價關稅。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608140026.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "For non‑sensitive drone parts tariffs take effect 180 days after announcement; for FCC‑covered list products approved by DoD within 20 days, tariffs also apply after 180 days.",
+          "sourceQuote": "對於不涉及高度敏感用途的無人機零組件，白宮表示，相關關稅將在公告簽署180天後生效。此外，在公告簽署後20天內，對五角大廈核准豁免聯邦傳播委員會（FCC）「受管制清單」（Covered List）的產品，相關關稅將在公告簽署180天後生效。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608140026.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "美國總統川普",
+          "白宮",
+          "商務部長盧特尼克",
+          "聯邦傳播委員會（FCC）",
+          "五角大廈"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "歐盟",
+          "日本",
+          "韓國",
+          "台灣",
+          "瑞士",
+          "列支敦斯登",
+          "英國"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-13"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-0356-5",
+      "primarySource": "中央社 CNA 產經證券",
+      "items": [
+        {
+          "title": "川普祭無人機關稅 台日韓等盟友產品及零組件課15%",
+          "url": "https://www.cna.com.tw/news/aopl/202608140026.aspx",
+          "publishedUtc": "2026-08-14T00:49Z",
+          "summary": "（中央社華盛頓13日綜合外電報導）美國總統川普今天指出，美國將對進口無人機及零組件課徵關稅，其中包括對歐洲聯盟、日本、韓國及台灣等重要盟友產品課徵15%關稅。川普政府表示，美國目前「過度依賴」海外無人機供應來源。",
+          "image": null,
+          "source": "中央社 CNA 產經證券",
+          "sourceKey": "cnataiwanfinance"
+        },
+        {
+          "title": "川普祭無人機關稅 台日韓等盟友產品及零組件課15%",
+          "summary": "川普祭無人機關稅 台日韓等盟友產品及零組件課15% &nbsp;&nbsp; cna.com.tw",
+          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5TVnVKVWRMQlQ3NE9VY2V6Umg2LWNLSTUyYXFYWi1mN25ZT0NVVlJ2RnE4cXc3bHZ5VUhGbGM3VFdDdHRJU0VsMmxKVHFxT3psSWZ4NGFKT2poQjRqcV9n?oc=5",
+          "source": "cna.com.tw",
+          "companion": true,
+          "publishedUtc": "2026-08-14T00:49Z"
+        },
+        {
+          "title": "川普祭無人機關稅　台日韓等盟友產品及零組件課15%",
+          "summary": "川普祭無人機關稅 台日韓等盟友產品及零組件課15% &nbsp;&nbsp; 經濟日報",
+          "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQMC1xU2JuVlVVbUpJUGxpX0hBOUtobkx3SlJ4Zk5LbjB0YlNlZHh1UFhwUVNtNVVmTTI1ZW1odl9tWmswUzFsY05pYzZtYkp2OGhJVWd1QkpZTXl6aTJOUGJiRGc1aThpRFZtam8tV01CdV9GWTNpRWdDLXBYQXFXaNIBX0FVX3lxTE93Z0ViVlEtUktDUjNGd3U3WEROcUVuZ3NJMXA2MHhOeU15eUlieE1FeS1BQngzRTRObjFCVUpwUFVWMXhxVGJRWWQ3Z1FRaXVLVUpNNE9BUi1VNThxQTI0?oc=5",
+          "source": "經濟日報",
+          "companion": true,
+          "publishedUtc": "2026-08-14T01:00Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260727-0838-presidential-office-rejects-show-claim-s",
+            "relationship_type": "regulatory_progression",
+            "relationship_evidence": [
+              "same named core entity: 中央社",
+              "archive predates source by 18 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 18 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍",
+            "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+            "facts": [
+              {
+                "claim": "Media reported that President Lai’s inspection during the Han Kuang exercise was a \"show\".",
+                "source_quote": "有媒體報導稱總統賴清德在漢光演習期間安排視導是「作秀」",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The Presidential Office stated that, as commander‐in‐chief, the President’s inspection of a major drill is a responsibility and an obligation.",
+                "source_quote": "作為三軍統帥，總統在國軍重要演訓期間參與視導，是責任也是義務",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The spokesperson called the \"show\" accusation speculation, a distortion of views, and a defamation of the military and national defence.",
+                "source_quote": "所謂「作秀」之說，內容多屬臆測、觀點扭曲，更污名化國軍與國防，令人遺憾",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Heads of state attending major military exercises is standard practice in Europe, the US, Japan and South Korea.",
+                "source_quote": "國家元首參與國家重大軍事演訓，無論歐、美、日、韓等國，國際皆然",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Since Han Kuang 40 the drills have been unscripted and realistic; the President’s visit was scheduled by the Ministry of National Defense according to the exercise progress, with no arranged \"firepower show\".",
+                "source_quote": "自漢光40號演習起，即採取「無劇本、實戰化」演練。總統參與視導，亦由國防部依照演習進程適時規劃，不存在所謂安排「火力秀」的問題",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Accusations of shifting opposition attacks or staging a performance for voters are baseless and unfair to personnel strengthening defence.",
+                "source_quote": "至於所謂「轉移在野攻擊」、「作秀給選民看」等無端指控，對此刻正為強化國防、守護國家而努力的所有人員極不公平",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260806-1215-typhoon-white-dolphin-prompts-china-airl",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: 中央社",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-08-05",
+            "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動",
+            "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+            "facts": [
+              {
+                "claim": "中華航空因颱風白海豚調整2026年8月6日至8日往返沖繩航班,共取消14架次,部分架次提前、延後或放大機型。",
+                "source_quote": "華航公布明起至8日飛沖繩航班異動，14架次取消，部分架次提前、延後或放大機型",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              },
+              {
+                "claim": "星宇航空調整8月6日至7日台灣往返沖繩航班,其中6日取消2架次,7日航班全數取消。",
+                "source_quote": "星宇航空明天6架次異動，包含2架次取消，7日往返沖繩航班全取消。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              },
+              {
+                "claim": "華航取消之航班包括8月6日CI122/CI123,7日CI120/CI121、CI122/CI123、CI310/CI311、CI2132/CI2133、CI132/CI133,以及8日CI310/CI311。",
+                "source_quote": "航班取消包括6日CI122/CI123桃園往返沖繩、7日CI120/CI121、CI122/CI123桃園往返沖繩、CI310/CI311台中往返沖繩、CI2132/ CI2133、 CI132/CI133高雄往返沖繩、8月8日CI310/CI311台中往返沖繩。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              },
+              {
+                "claim": "星宇航空調整部分8月6日航班,包括JX870、JX871、JX302、JX303提前起飛。",
+                "source_quote": "台北-沖繩JX870提前至上午9時起飛，沖繩-台北JX871提前至中午12時50分起飛，台中-沖繩JX302提前至上午8時起飛，沖繩-台中JX303提前至上午11時30分起飛。",
+                "source_url": "https://www.cna.com.tw/news/ahel/202608050158.aspx",
+                "source_name": "中央社 CNA 國籍航空 — 颱風白海豚擾亂航班 華航、星宇飛沖繩異動"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260814-0356-6",
+    "queuedUtc": "2026-08-14T03:56Z",
+    "approve": false,
+    "writer": "openrouter:google/gemma-4-26b-a4b-it:free",
+    "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "American Airlines is reshuffling its senior leadership team.",
+        "sourceQuote": "American Airlines is shaking up its senior leadership",
+        "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "CEO Robert Isom faces pressure to improve financial performance and close the gap with Delta Air Lines and United Airlines.",
+        "sourceQuote": "CEO Robert Isom faces growing pressure to improve the carrier’s financial performance and close the gap with rivals Delta Air Lines and United Airlines.",
+        "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "John Bendoraitis, former Spirit Airlines COO, joins to lead technical operations.",
+        "sourceQuote": "bring former Spirit Airlines Chief Operating Officer John Bendoraitis into the company to lead technical operations.",
+        "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Nat Pieper will add marketing and branding to his responsibilities.",
+        "sourceQuote": "Chief Commercial Officer Nat Pieper will add marketing and branding to his responsibilities",
+        "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Heather Garboden will take on reservations and service recovery.",
+        "sourceQuote": "Chief Customer Officer Heather Garboden will take on reservations and service recovery.",
+        "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "JC Gulbranson will add oversight of airports and planning.",
+        "sourceQuote": "JC Gulbranson will add oversight of airports and planning.",
+        "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "高風險或飛安事件，依編輯規範須人工覆核",
+      "cat": "biz",
+      "zh": {
+        "title": "美國航空因利潤落後進行高層領導層改組",
+        "summary": "美國航空進行領導層改組；旨在改善執行力並強化公司結構",
+        "body": [
+          "美國航空（American Airlines）正在進行高層領導層改組，執行長 Robert Isom 面臨著改善公司財務表現並縮小與達美航空（Delta Air Lines）及聯合航空（United Airlines）差距的壓力。",
+          "此次變動擴大了商業與營運團隊的監督範圍，並聘任前 Spirit Airlines 營運長 John Bendoraitis 加入公司負責技術營運。",
+          "執行長 Isom 在給員工的備忘錄中承認，公司目前的表現與目標之間存在「顯著差距」，並表示此次領導層變動是旨在改善執行力與強化公司的一系列舉措之首。",
+          "在領導層變動中，首席商務官 Nat Pieper 將增加行銷與品牌業務；首席客戶官 Heather Garboden 將負責預訂與服務恢復；JC Gulbranson 將增加對機場與規劃的監督。"
+        ]
+      },
+      "en": {
+        "title": "American Airlines reshuffles leadership team amid lagging profits",
+        "summary": "American Airlines reshuffles senior leadership; aims to improve execution and strengthen company",
+        "body": [
+          "American Airlines is shaking up its senior leadership as CEO Robert Isom faces pressure to improve financial performance and close the gap with rivals Delta Air Lines and United Airlines.",
+          "The changes broaden oversight across commercial and operational teams, including the appointment of former Spirit Airlines Chief Operating Officer John Bendoraitis to lead technical operations.",
+          "Isom acknowledged a \"meaningful gap\" between current performance and company goals, describing the moves as part of a series to improve execution.",
+          "New responsibilities include Nat Pieper overseeing marketing and branding, Heather Garboden managing reservations and service recovery, and JC Gulbranson overseeing airports and planning."
+        ]
+      },
+      "flash": {
+        "zh": "美國航空進行高層領導層改組以應對利潤壓力",
+        "en": "American Airlines reshuffles leadership team amid profit pressure",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "American Airlines is reshuffling its senior leadership team.",
+          "sourceQuote": "American Airlines is shaking up its senior leadership",
+          "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "CEO Robert Isom faces pressure to improve financial performance and close the gap with Delta Air Lines and United Airlines.",
+          "sourceQuote": "CEO Robert Isom faces growing pressure to improve the carrier’s financial performance and close the gap with rivals Delta Air Lines and United Airlines.",
+          "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "John Bendoraitis, former Spirit Airlines COO, joins to lead technical operations.",
+          "sourceQuote": "bring former Spirit Airlines Chief Operating Officer John Bendoraitis into the company to lead technical operations.",
+          "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Nat Pieper will add marketing and branding to his responsibilities.",
+          "sourceQuote": "Chief Commercial Officer Nat Pieper will add marketing and branding to his responsibilities",
+          "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Heather Garboden will take on reservations and service recovery.",
+          "sourceQuote": "Chief Customer Officer Heather Garboden will take on reservations and service recovery.",
+          "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "JC Gulbranson will add oversight of airports and planning.",
+          "sourceQuote": "JC Gulbranson will add oversight of airports and planning.",
+          "sourceUrl": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "American Airlines",
+          "Delta Air Lines",
+          "United Airlines",
+          "Spirit Airlines",
+          "AeroTime"
+        ],
+        "airlines": [
+          "American Airlines",
+          "Delta Air Lines",
+          "United Airlines",
+          "Spirit Airlines"
+        ],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-13"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-0356-6",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "American Airlines reshuffles leadership team amid lagging profits",
+          "url": "https://www.aerotime.aero/articles/american-airlines-leadership-reshuffle-lagging-profits",
+          "publishedUtc": "2026-08-13T21:16Z",
+          "summary": "American Airlines is shaking up its senior leadership as CEO Robert Isom faces growing pressure to improve the carrier’s… The post American Airlines reshuffles leadership team amid lagging profits appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
+    "id": "g-20260814-0356-7",
+    "queuedUtc": "2026-08-14T03:56Z",
+    "approve": false,
+    "writer": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+    "decisionReason": "Potential financial claim about pre‑commitment for 100 ES‑30 aircraft and unconfirmed future development require verification; hence manual review is needed.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Heart Aerospace has announced that it has completed the successful first flight of its X1 full scale hybrid-electric demonstrator.",
+        "sourceQuote": "Heart Aerospace has announced that it has completed the successful first flight of its X1 full scale hybrid-electric demonstrator.",
+        "sourceUrl": "https://www.aerotime.aero/articles/heart-aerospace-completes-first-flight-of-x1-battery-electric-demonstrator",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The aircraft took off from Plattsburgh International Airport (PBG) in upstate New York, for an initial flight that lasted 27 minutes and reached an altitude of 1,100 feet (335 meters).",
+        "sourceQuote": "The aircraft took off from Plattsburgh International Airport (PBG) in upstate New York, for an initial flight that lasted 27 minutes. During the flight, it reached an altitude of 1,100 feet (335 meters).",
+        "sourceUrl": "https://www.aerotime.aero/articles/heart-aerospace-completes-first-flight-of-x1-battery-electric-demonstrator",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The first flight of X1 is a major technical achievement for Heart Aerospace, a company United has been proud to support.",
+        "sourceQuote": "The first flight of X1 is a major technical achievement for Heart Aerospace, a company United has been proud to support.",
+        "sourceUrl": "https://www.aerotime.aero/articles/heart-aerospace-completes-first-flight-of-x1-battery-electric-demonstrator",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The X1 is also the largest battery-electric aircraft to fly to date.",
+        "sourceQuote": "The X1 is also the largest battery-electric aircraft to fly to date.",
+        "sourceUrl": "https://www.aerotime.aero/articles/heart-aerospace-completes-first-flight-of-x1-battery-electric-demonstrator",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Potential financial claim about pre‑commitment for 100 ES‑30 aircraft and unconfirmed future development require verification; hence manual review is needed.",
+      "cat": "biz",
+      "zh": {
+        "title": "Heart Aerospace 首次試飛 X1 電動示客機",
+        "summary": "Heart Aerospace 首次試飛 X1 電動示客機",
+        "body": [
+          "Heart Aerospace宣布完成X1全尺寸混合動力示客機的首次成功試飛，正如AeroTime所報導。",
+          "該ircraft於ニューヨーク州上州的Plattsburgh國際機場（PBG）起飛，飛行27分鐘，爬升至1,100英尺，重量超過25,000磅，翼展106英尺，成為目前最大的電動示客機。",
+          "United Airlines首席財務官Michael Leskinen讚賞此成就，並確認對未來的ES‑30客機的預訂。"
+        ]
+      },
+      "en": {
+        "title": "Heart Aerospace launches X1 electric demonstrator flight from Plattsburgh (PBG)",
+        "summary": "Heart Aerospace; first flight of X1 battery‑electric demonstrator; Plattsburgh Airport (PBG)",
+        "body": [
+          "Heart Aerospace has completed the first flight of its X1 battery‑electric demonstrator, a milestone highlighted by AeroTime.",
+          "The aircraft took off from Plattsburgh International Airport (PBG) in upstate New York, remained airborne for 27 minutes and climbed to 1,100 feet, demonstrating a battery‑electric system that delivered more than one megawatt of power.",
+          "With a wingspan of 106 feet and a take‑off weight exceeding 25,000 pounds, the X1 is the largest battery‑electric aircraft to have flown, serving as a test bed for the forthcoming ES‑30 airliner.",
+          "United Airlines CFO Michael Leskinen praised the achievement and noted United’s pre‑commitment for 100 ES‑30 aircraft, emphasizing the potential for electric commercial flights."
+        ]
+      },
+      "flash": {
+        "zh": "Heart Aerospace X1 首飛",
+        "en": "Heart Aerospace's X1 completes first flight",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Heart Aerospace has announced that it has completed the successful first flight of its X1 full scale hybrid-electric demonstrator.",
+          "sourceQuote": "Heart Aerospace has announced that it has completed the successful first flight of its X1 full scale hybrid-electric demonstrator.",
+          "sourceUrl": "https://www.aerotime.aero/articles/heart-aerospace-completes-first-flight-of-x1-battery-electric-demonstrator",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The aircraft took off from Plattsburgh International Airport (PBG) in upstate New York, for an initial flight that lasted 27 minutes and reached an altitude of 1,100 feet (335 meters).",
+          "sourceQuote": "The aircraft took off from Plattsburgh International Airport (PBG) in upstate New York, for an initial flight that lasted 27 minutes. During the flight, it reached an altitude of 1,100 feet (335 meters).",
+          "sourceUrl": "https://www.aerotime.aero/articles/heart-aerospace-completes-first-flight-of-x1-battery-electric-demonstrator",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The first flight of X1 is a major technical achievement for Heart Aerospace, a company United has been proud to support.",
+          "sourceQuote": "The first flight of X1 is a major technical achievement for Heart Aerospace, a company United has been proud to support.",
+          "sourceUrl": "https://www.aerotime.aero/articles/heart-aerospace-completes-first-flight-of-x1-battery-electric-demonstrator",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The X1 is also the largest battery-electric aircraft to fly to date.",
+          "sourceQuote": "The X1 is also the largest battery-electric aircraft to fly to date.",
+          "sourceUrl": "https://www.aerotime.aero/articles/heart-aerospace-completes-first-flight-of-x1-battery-electric-demonstrator",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "Heart Aerospace",
+          "United Airlines"
+        ],
+        "airlines": [
+          "United Airlines"
+        ],
+        "aircraft_models": [
+          "X1",
+          "ES-30"
+        ],
+        "airports": [
+          "Plattsburgh International Airport (PBG)"
+        ],
+        "locations": [
+          "upstate New York"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-0356-7",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Heart Aerospace completes first flight of X1 battery-electric demonstrator",
+          "url": "https://www.aerotime.aero/articles/heart-aerospace-completes-first-flight-of-x1-battery-electric-demonstrator",
+          "publishedUtc": "2026-08-13T12:58Z",
+          "summary": "Heart Aerospace has announced that it has completed the successful first flight of its X1 full scale hybrid-electric… The post Heart Aerospace completes first flight of X1 battery-electric demonstrator appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 16 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 16 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 16 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 16 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
+            "relationship_type": "other",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 16 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 16 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
+            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+            "facts": [
+              {
+                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
+                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
+                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
+                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
+                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
+                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260813-2332-10",
     "queuedUtc": "2026-08-13T23:32Z",
     "approve": false,
@@ -9560,736 +10330,6 @@
                 "source_quote": "Flights to Glasgow (GLA)",
                 "source_url": "https://www.emirates.com/us/english/destinations/flights-to-glasgow/",
                 "source_name": "Emirates — Flights to Glasgow (GLA)"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260811-0552-12",
-    "queuedUtc": "2026-08-11T05:52Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-    "decisionReason": "Deal announced but not closed; involves financial stake and warrants; subject to regulatory approval; qualifies as financial claim and developing event.",
-    "riskFlags": [
-      "financial_or_order_claim",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Archer Aviation has agreed to acquire Boeing subsidiaries Wisk Aero, Insitu and SkyGrid.",
-        "sourceQuote": "Archer Aviation has agreed to acquire Boeing subsidiaries Wisk Aero , Insitu and SkyGrid",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Boeing will receive Archer shares representing 19.75% of outstanding Class A stock and the right to appoint one director.",
-        "sourceQuote": "Boeing will receive Archer shares representing 19.75% of the company’s outstanding Class A stock when the transaction closes, together with the right to appoint one director to Archer’s board.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Boeing will receive two warrants to purchase up to $200 million in additional Archer stock.",
-        "sourceQuote": "Boeing will also receive two warrants allowing it to purchase up to $200 million in additional Archer stock later.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The transaction is subject to U.S. competition‑law regulatory requirements and expected to close by end of 2026.",
-        "sourceQuote": "The transaction remains subject to various conditions, including regulatory requirements under US competition law. It is expected to complete by the end of 2026.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Deal announced but not closed; involves financial stake and warrants; subject to regulatory approval; qualifies as financial claim and developing event.",
-      "cat": "biz",
-      "zh": {
-        "title": "Archer收購Wisk、Insitu、SkyGrid波音持股19.75%",
-        "summary": "Archer同意收購三子公司；波音獲19.75%股份並可增持2億美元",
-        "body": [
-          "根據Aerospace Global News報導，Archer Aviation已同意收購波音旗下的Wisk Aero、Insitu與SkyGrid三家子公司。",
-          "交易完成後，波音將獲得Archer已發行Class A股份的19.75%，並有權委派一名董事進入Archer董事會。",
-          "波音還將取得兩張認股權證，可在未來以最多2億美元購買額外Archer股份。",
-          "交易仍須符合美國競爭法等監管條件，預計最晚於2026年底完成。",
-          "這項收購將把Wisk的自主載人eVTOL、Insitu的軍用無人機業務與SkyGrid的數位空域管理技術納入Archer版圖。"
-        ]
-      },
-      "en": {
-        "title": "Archer to Acquire Wisk, Insitu and SkyGrid as Boeing Takes 19.75% Stake",
-        "summary": "Archer agrees to buy three Boeing units; Boeing receives 19.75% stake and $200M warrants",
-        "body": [
-          "Aerospace Global News reports that Archer Aviation has agreed to acquire Boeing subsidiaries Wisk Aero, Insitu and SkyGrid.",
-          "Upon closing, Boeing will receive Archer shares representing 19.75% of the company's outstanding Class A stock and the right to appoint one director to Archer's board.",
-          "Boeing will also receive two warrants allowing it to purchase up to $200 million in additional Archer stock later.",
-          "The transaction remains subject to various conditions, including U.S. competition‑law regulatory requirements, and is expected to complete by the end of 2026.",
-          "The deal brings together Wisk's autonomous passenger eVTOL, Insitu's combat‑proven uncrewed aircraft business, and SkyGrid's digital airspace management technology under Archer."
-        ]
-      },
-      "flash": {
-        "zh": "Archer收購三子公司；波音持股19.75%",
-        "en": "Archer buys three Boeing units; Boeing gets 19.75% stake",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Archer Aviation has agreed to acquire Boeing subsidiaries Wisk Aero, Insitu and SkyGrid.",
-          "sourceQuote": "Archer Aviation has agreed to acquire Boeing subsidiaries Wisk Aero , Insitu and SkyGrid",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Boeing will receive Archer shares representing 19.75% of outstanding Class A stock and the right to appoint one director.",
-          "sourceQuote": "Boeing will receive Archer shares representing 19.75% of the company’s outstanding Class A stock when the transaction closes, together with the right to appoint one director to Archer’s board.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Boeing will receive two warrants to purchase up to $200 million in additional Archer stock.",
-          "sourceQuote": "Boeing will also receive two warrants allowing it to purchase up to $200 million in additional Archer stock later.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The transaction is subject to U.S. competition‑law regulatory requirements and expected to close by end of 2026.",
-          "sourceQuote": "The transaction remains subject to various conditions, including regulatory requirements under US competition law. It is expected to complete by the end of 2026.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Archer Aviation",
-          "Boeing",
-          "Wisk Aero",
-          "Insitu",
-          "SkyGrid"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Generation 6 eVTOL",
-          "ScanEagle",
-          "Integrator"
-        ],
-        "airports": [],
-        "locations": [
-          "California",
-          "Austin"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-10"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-0552-12",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Archer to acquire Wisk, Insitu and SkyGrid as Boeing takes 19.75% stake News",
-          "url": "https://aerospaceglobalnews.com/news/archer-wisk-insitu-skygrid-boeing-deal/",
-          "publishedUtc": "2026-08-10T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/07/wwww.png",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 15 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 13 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
-            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-            "facts": [
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 13 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 13 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260811-0458-2",
-    "queuedUtc": "2026-08-11T04:58Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves a major corporate equity transaction requiring human editorial verification.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Boeing is handing its flying-taxi venture to Archer Aviation and acquiring a stake of nearly 20 percent.",
-        "sourceQuote": "Boeing Hands Flying-Taxi Venture To Archer Aviation With Nearly 20% Stake",
-        "sourceUrl": "https://simpleflying.com/boeing-hands-flying-taxi-venture-archer-aviation-20-percent-stake/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Boeing is shifting its autonomous aviation bets to Archer Aviation while retaining long-term upside.",
-        "sourceQuote": "Boeing shifts its autonomous aviation bets to Archer while retaining significant long-term upside.",
-        "sourceUrl": "https://simpleflying.com/boeing-hands-flying-taxi-venture-archer-aviation-20-percent-stake/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The Wall Street Journal reported that Boeing will fold its flying-taxi venture into rival Archer Aviation.",
-        "sourceQuote": "Boeing to Fold Its Flying-Taxi Venture Into Rival Archer Aviation",
-        "sourceUrl": "https://news.google.com/rss/articles/CBMisgFBVV95cUxORnFmTXU1R1FvTm5lU21vZVY4SlFYVkxianVfVnhkUGdqaGVfX1NTclh3YnBOTmlOSEhndGhlaFV2ZFM5Qjk4ZUN5SjdacnRwRi1vMTlYZGRudWN2OGsya2pmOUtaRWNOQXo2VzVPeGJTcWlQMXhWYXdjVU9hZlVNU1F3VUdqUzNmbTgzMTBzQUl0bmFsUTBtYUFKc1VZU1lsN3llN1BfVVVfZnRMNWtzX2Nn?oc=5",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves a major corporate equity transaction requiring human editorial verification.",
-      "cat": "biz",
-      "zh": {
-        "title": "波音將飛行計程車事業併入 Archer 並取得近二成股權",
-        "summary": "波音將飛行計程車事業併入 Archer Aviation，獲得近 20% 股權。",
-        "body": [
-          "根據媒體報導，美國飛機製造廠波音公司正將旗下的飛行計程車業務併入競爭對手 Archer Aviation，並取得 Archer Aviation 接近 20% 的股權。",
-          "報導指出，波音將其自主航空投資重心轉移至 Archer Aviation，並透過持有這筆近 20% 的股份，保留該領域未來的長期潛在收益與發展機會。",
-          "據《華爾街日報》與 Simple Flying 報導，這項交易代表波音將其飛行計程車專案整合至 Archer Aviation。"
-        ]
-      },
-      "en": {
-        "title": "Boeing Folds Flying-Taxi Venture Into Archer Aviation for Nearly 20 Percent Stake",
-        "summary": "Boeing transfers its flying-taxi business to Archer Aviation, securing a stake of nearly twenty percent.",
-        "body": [
-          "Boeing is folding its flying-taxi venture into rival company Archer Aviation while acquiring an equity stake of nearly 20 percent in the firm, according to media reports published on Monday.",
-          "The arrangement shifts Boeing's autonomous aviation bets directly to Archer Aviation. Under the transaction, Boeing retains significant long-term upside in autonomous aviation while handing over its flying-taxi venture to Archer Aviation.",
-          "The deal was reported by The Wall Street Journal and Simple Flying, confirming that Boeing will fold its flying-taxi initiative into Archer Aviation in exchange for the nearly 20 percent ownership position."
-        ]
-      },
-      "flash": {
-        "zh": "波音將飛行計程車事業併入 Archer 並取得近二成股權",
-        "en": "Boeing folds flying-taxi venture into Archer Aviation for nearly 20% stake",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Boeing is handing its flying-taxi venture to Archer Aviation and acquiring a stake of nearly 20 percent.",
-          "sourceQuote": "Boeing Hands Flying-Taxi Venture To Archer Aviation With Nearly 20% Stake",
-          "sourceUrl": "https://simpleflying.com/boeing-hands-flying-taxi-venture-archer-aviation-20-percent-stake/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Boeing is shifting its autonomous aviation bets to Archer Aviation while retaining long-term upside.",
-          "sourceQuote": "Boeing shifts its autonomous aviation bets to Archer while retaining significant long-term upside.",
-          "sourceUrl": "https://simpleflying.com/boeing-hands-flying-taxi-venture-archer-aviation-20-percent-stake/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The Wall Street Journal reported that Boeing will fold its flying-taxi venture into rival Archer Aviation.",
-          "sourceQuote": "Boeing to Fold Its Flying-Taxi Venture Into Rival Archer Aviation",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMisgFBVV95cUxORnFmTXU1R1FvTm5lU21vZVY4SlFYVkxianVfVnhkUGdqaGVfX1NTclh3YnBOTmlOSEhndGhlaFV2ZFM5Qjk4ZUN5SjdacnRwRi1vMTlYZGRudWN2OGsya2pmOUtaRWNOQXo2VzVPeGJTcWlQMXhWYXdjVU9hZlVNU1F3VUdqUzNmbTgzMTBzQUl0bmFsUTBtYUFKc1VZU1lsN3llN1BfVVVfZnRMNWtzX2Nn?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Boeing",
-          "Archer Aviation",
-          "WSJ",
-          "Simple Flying"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-10"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-0458-2",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Boeing Hands Flying-Taxi Venture To Archer Aviation With Nearly 20% Stake",
-          "url": "https://simpleflying.com/boeing-hands-flying-taxi-venture-archer-aviation-20-percent-stake/",
-          "publishedUtc": "2026-08-10T22:11Z",
-          "summary": "Boeing shifts its autonomous aviation bets to Archer while retaining significant long-term upside.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/wisk-aero-1.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        },
-        {
-          "title": "Boeing to Fold Its Flying-Taxi Venture Into Rival Archer Aviation",
-          "summary": "Boeing to Fold Its Flying-Taxi Venture Into Rival Archer Aviation &nbsp;&nbsp; WSJ",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxORnFmTXU1R1FvTm5lU21vZVY4SlFYVkxianVfVnhkUGdqaGVfX1NTclh3YnBOTmlOSEhndGhlaFV2ZFM5Qjk4ZUN5SjdacnRwRi1vMTlYZGRudWN2OGsya2pmOUtaRWNOQXo2VzVPeGJTcWlQMXhWYXdjVU9hZlVNU1F3VUdqUzNmbTgzMTBzQUl0bmFsUTBtYUFKc1VZU1lsN3llN1BfVVVfZnRMNWtzX2Nn?oc=5",
-          "source": "WSJ",
-          "companion": true,
-          "publishedUtc": "2026-08-10T12:00Z"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260811-0305-2",
-    "queuedUtc": "2026-08-11T03:05Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "Accident with casualties and ongoing NTSB investigation requires human review per safety rules.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "casualties_or_injuries",
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central Utah on August 7, 2026.",
-        "sourceQuote": "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central Utah.",
-        "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The S-64 was operated by Helicopter Transport Services under a contract with the US Forest Service.",
-        "sourceQuote": "The S-64 was operated by Helicopter Transport Services under a contract with the US Forest Service.",
-        "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "National Transportation Safety Board (NTSB) investigators arrived in Utah on July 8, but wildfire conditions have so far prevented them from reaching the wreckage.",
-        "sourceQuote": "National Transportation Safety Board (NTSB) investigators arrived in Utah on July 8, but wildfire conditions have so far prevented them from reaching the wreckage.",
-        "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Accident with casualties and ongoing NTSB investigation requires human review per safety rules.",
-      "cat": "safety",
-      "zh": {
-        "title": "美國犹他州野火滅火直升機墜毀 雙飛行員罹難",
-        "summary": "直升機在野火滅火任務中墜毀；兩名飛行員確認死亡",
-        "body": [
-          "兩名飛行員在8月7日於犹他州中央地區執行野火滅火任務時，所駕駛的Sikorsky S-64 Skycrane直升機墜毀。",
-          "直升機於當地時間約10:40在Richfield附近的Widemouth 2 Fire上空降落水時失事，機上僅有兩人，皆為機組人員。",
-          "該機由Helicopter Transport Services操作，受美國森林服務局合約執行滅火任務。",
-          "事故後 steep 地形與活動中的野火阻礙救援人員即時到場，次日人員抵達 wreckage 並確認兩名飛行員已死亡，遺體已送至犹他州驗屍官辦公室。",
-          "全美運輸安全委員會（NTSB）調查員於7月8日抵達犹他州，但由於野火狀況尚未能到達 wreckage 進行現場勘查。"
-        ]
-      },
-      "en": {
-        "title": "Two Pilots Killed as Sikorsky S-64 Skycrane Crashes During Utah Wildfire Water Drop",
-        "summary": "Helicopter crashes during wildfire firefighting in Utah; two pilots confirmed dead",
-        "body": [
-          "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central Utah on August 7, 2026.",
-          "The accident occurred at approximately 10:40 local time while the helicopter was supporting crews battling the Widemouth 2 Fire near Richfield, Utah.",
-          "The S-64 was operated by Helicopter Transport Services under a contract with the US Forest Service, with only the two crew members aboard.",
-          "Steep terrain and the active wildfire initially prevented emergency responders from reaching the wreckage; crews arrived the next day and confirmed both pilots had been killed, with remains taken to the Utah Office of the Medical Examiner.",
-          "National Transportation Safety Board investigators arrived in Utah on July 8 but have been unable to reach the crash site due to ongoing wildfire conditions."
-        ]
-      },
-      "flash": {
-        "zh": "Utah野火直升機墜毀 雙飛行員死亡",
-        "en": "Utah wildfire helicopter crash kills two pilots",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-07",
-        "sev": "acc",
-        "aircraft": "Sikorsky S-64 Skycrane",
-        "operator": "Helicopter Transport Services",
-        "phase": {
-          "zh": "野火滅火水降任務",
-          "en": "water dropping on wildfire"
-        },
-        "location": {
-          "zh": "美國犹他州Richfield附近的Widemouth 2 Fire",
-          "en": "near Richfield, Utah, Widemouth 2 Fire"
-        },
-        "desc": {
-          "zh": "直升機在滅火任務中墜毀，機上兩名飛行員死亡",
-          "en": "Helicopter crashed while dropping water on a wildfire, killing both pilots"
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central Utah on August 7, 2026.",
-          "sourceQuote": "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central Utah.",
-          "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The S-64 was operated by Helicopter Transport Services under a contract with the US Forest Service.",
-          "sourceQuote": "The S-64 was operated by Helicopter Transport Services under a contract with the US Forest Service.",
-          "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "National Transportation Safety Board (NTSB) investigators arrived in Utah on July 8, but wildfire conditions have so far prevented them from reaching the wreckage.",
-          "sourceQuote": "National Transportation Safety Board (NTSB) investigators arrived in Utah on July 8, but wildfire conditions have so far prevented them from reaching the wreckage.",
-          "sourceUrl": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1"
-      ],
-      "entities": {
-        "organizations": [
-          "Helicopter Transport Services",
-          "US Forest Service",
-          "Federal Aviation Administration",
-          "National Transportation Safety Board"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Sikorsky S-64 Skycrane"
-        ],
-        "airports": [],
-        "locations": [
-          "Richfield",
-          "Utah",
-          "Widemouth 2 Fire",
-          "Fishlake National Forest"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-07"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "casualties_or_injuries",
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-0305-2",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Two pilots killed in S-64 Skycrane crash while fighting Utah wildfire",
-          "url": "https://www.aerotime.aero/articles/s-64-skycrane-crash-utah-wildfire-two-pilots-killed",
-          "publishedUtc": "2026-08-11T01:33Z",
-          "summary": "Two pilots were killed when a Sikorsky S-64 Skycrane crashed while dropping water on a wildfire in central… The post Two pilots killed in S-64 Skycrane crash while fighting Utah wildfire appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "same airport code(s): THE",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-08-02",
-            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
-            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-            "facts": [
-              {
-                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
-                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
-                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
-                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
-                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
-                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              },
-              {
-                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
-                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
-                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
-                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260808-0704-faa-opens-new-air-traffic-control-tower",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "same airport code(s): THE",
-              "archive predates source by 4 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 4 day(s) apart",
-            "event_date": "2026-08-07",
-            "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor...",
-            "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-            "facts": [
-              {
-                "claim": "The FAA announced the opening of a new 121-foot air traffic control tower at Asheville Regional Airport, replacing a facility built in 1961.",
-                "source_quote": "The FAA today announced the opening of Asheville Regional Airport’s (AVL) new 121-foot air traffic control tower, which replaces the old facility built in 1961.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              },
-              {
-                "claim": "Air carrier operations at Asheville Regional Airport increased by more than 300 percent over the past decade, making it North Carolina's third-busiest airport.",
-                "source_quote": "Over the past decade, air carrier operations at Asheville Regional Airport have increased by more than 300 percent, making it the third-busiest airport in North Carolina.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              },
-              {
-                "claim": "The FAA provided $31.7 million through the Infrastructure Investment and Jobs Act to construct the new control tower.",
-                "source_quote": "The FAA provided $31.7 million through the Infrastructure Investment and Jobs Act (IIJA) to construct the new tower.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              },
-              {
-                "claim": "The FAA awarded $10 million through IIJA to expand the terminal and increase gate capacity from five to 12.",
-                "source_quote": "The FAA also awarded $10 million through IIJA to expand and modernize the airport’s terminal, increasing gate capacity from five to 12.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              },
-              {
-                "claim": "The Asheville tower will receive equipment upgrades by the end of 2028 under the Brand New Air Traffic Control System.",
-                "source_quote": "Through the Brand New Air Traffic Control System , the AVL tower will receive key equipment upgrades which will be installed by the end of 2028.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              },
-              {
-                "claim": "The FAA recently installed a new Tower Simulation System at Asheville to support controller training.",
-                "source_quote": "Additionally, the FAA recently installed a new Tower Simulation System (TSS) at Asheville.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
               }
             ]
           }
