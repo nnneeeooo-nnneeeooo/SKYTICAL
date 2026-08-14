@@ -1,5 +1,500 @@
 [
   {
+    "id": "g-20260814-1641-1",
+    "queuedUtc": "2026-08-14T16:41Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Mandatory manual review required for aviation safety incident involving engine failure, passenger injury, and ongoing NTSB investigation.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "casualties_or_injuries",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "An NTSB preliminary report states bird remains were found in the damaged right engine of a Ryanair Boeing 737-800 following a July 2026 engine failure over Greece.",
+        "sourceQuote": "Bird remains and feathers were found inside the damaged engine of a Ryanair Boeing 737-800 that was involved in a July 2026 uncontained engine failure over Greece",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The engine had experienced four other suspected bird strikes during the preceding 12 months before a fan blade fractured shortly after takeoff from Thessaloniki.",
+        "sourceQuote": "The same engine had been involved in four other suspected bird strikes during the previous 12 months",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "A broken fan blade fragment struck a passenger window in Row 11, causing rapid cabin pressure loss and injuring a passenger.",
+        "sourceQuote": "One fragment struck and broke a passenger window in Row 11, causing a rapid loss of cabin pressure.",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The Boeing 737-800 (9H-QEU), operated by Malta Air for Ryanair, was climbing through 16,000 feet toward Memmingen before returning safely to Thessaloniki.",
+        "sourceQuote": "The aircraft, registered 9H-QEU and operated by Malta Air on behalf of Ryanair, had departed Thessaloniki International Airport for Memmingen, Germany.",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Maintenance inspections following the earlier bird strikes and ultrasonic blade inspections in November 2025 and May 2026 found no reported damage.",
+        "sourceQuote": "Maintenance inspections following the four earlier suspected bird strikes did not identify damage. The engine’s fan blades also underwent ultrasonic inspections in November 2025 and May 2026, with no damage reported.",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Mandatory manual review required for aviation safety incident involving engine failure, passenger injury, and ongoing NTSB investigation.",
+      "cat": "safety",
+      "zh": {
+        "title": "NTSB初步調查：瑞安航空客機引擎故障前曾涉五次鳥擊",
+        "summary": "瑞安航空客機於希臘上空發生引擎故障；NTSB指發動機內部發現鳥類殘骸",
+        "body": [
+          "美國國家運輸安全委員會（NTSB）發布初步調查報告指出，一架由馬爾他航空代為營運的瑞安航空波音737-800客機，於2026年7月10日從希臘塞薩洛尼基飛往德國梅明根途中發生右側引擎故障。調查人員在受損發動機內部發現鳥類殘骸與羽毛。",
+          "該客機在爬升至約16,000英呎時引擎劇烈震動，風扇葉片斷裂導致碎片擊穿第11排窗戶並引發客艙失壓，造成一名乘客受傷。客機隨後安全返航塞薩洛尼基。NTSB指出該引擎在過去12個月內曾涉及另外四次疑似鳥擊，先前的超音波檢查並未發現異常。"
+        ]
+      },
+      "en": {
+        "title": "NTSB: Ryanair Boeing 737 Engine Had Five Suspected Bird Strikes Before Failure",
+        "summary": "Ryanair Boeing 737 engine experienced failure over Greece after suspected bird strikes, NTSB preliminary report says.",
+        "body": [
+          "According to a preliminary report from the National Transportation Safety Board (NTSB), bird remains and feathers were found inside the damaged right engine of a Malta Air Boeing 737-800 operating for Ryanair following an in-flight engine failure on July 10, 2026. The aircraft was climbing through 16,000 feet en route from Thessaloniki, Greece, to Memmingen, Germany, when a fan blade fractured.",
+          "Engine debris struck and shattered a passenger window in Row 11, causing rapid cabin depressurization and injuring a passenger before the flight returned safely to Thessaloniki. The NTSB noted that the same engine had been involved in four other suspected bird strikes during the prior 12 months. Maintenance inspections and earlier ultrasonic testing had reported no damage prior to the accident."
+        ]
+      },
+      "flash": {
+        "zh": "NTSB發布瑞安航空引擎故障調查報告，指發動機發現鳥類殘骸",
+        "en": "NTSB finds bird remains in damaged engine of Ryanair Boeing 737 following Greece incident",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-07-10",
+        "sev": "ser",
+        "aircraft": "Boeing 737-800",
+        "operator": "Malta Air / Ryanair",
+        "phase": {
+          "zh": "爬升階段",
+          "en": "Climb"
+        },
+        "location": {
+          "zh": "希臘塞薩洛尼基",
+          "en": "Thessaloniki, Greece"
+        },
+        "desc": {
+          "zh": "發動機風扇葉片斷裂引發引擎故障，碎片擊穿客艙窗戶造成乘客受傷，客機安全返航。",
+          "en": "Uncontained engine failure following fan blade fracture; debris broke a cabin window causing rapid depressurization and injuring a passenger before safe return."
+        },
+        "status": "prelim"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "An NTSB preliminary report states bird remains were found in the damaged right engine of a Ryanair Boeing 737-800 following a July 2026 engine failure over Greece.",
+          "sourceQuote": "Bird remains and feathers were found inside the damaged engine of a Ryanair Boeing 737-800 that was involved in a July 2026 uncontained engine failure over Greece",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The engine had experienced four other suspected bird strikes during the preceding 12 months before a fan blade fractured shortly after takeoff from Thessaloniki.",
+          "sourceQuote": "The same engine had been involved in four other suspected bird strikes during the previous 12 months",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "A broken fan blade fragment struck a passenger window in Row 11, causing rapid cabin pressure loss and injuring a passenger.",
+          "sourceQuote": "One fragment struck and broke a passenger window in Row 11, causing a rapid loss of cabin pressure.",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The Boeing 737-800 (9H-QEU), operated by Malta Air for Ryanair, was climbing through 16,000 feet toward Memmingen before returning safely to Thessaloniki.",
+          "sourceQuote": "The aircraft, registered 9H-QEU and operated by Malta Air on behalf of Ryanair, had departed Thessaloniki International Airport for Memmingen, Germany.",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Maintenance inspections following the earlier bird strikes and ultrasonic blade inspections in November 2025 and May 2026 found no reported damage.",
+          "sourceQuote": "Maintenance inspections following the four earlier suspected bird strikes did not identify damage. The engine’s fan blades also underwent ultrasonic inspections in November 2025 and May 2026, with no damage reported.",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "NTSB",
+          "National Transportation Safety Board"
+        ],
+        "airlines": [
+          "Ryanair",
+          "Malta Air"
+        ],
+        "aircraft_models": [
+          "Boeing 737-800"
+        ],
+        "airports": [],
+        "locations": [
+          "Greece",
+          "Thessaloniki",
+          "Memmingen",
+          "Germany"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [
+          "9H-QEU"
+        ],
+        "event_dates": [
+          "July 2026",
+          "July 10, 2026",
+          "November 2025",
+          "May 2026"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "casualties_or_injuries",
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1641-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "NTSB: Ryanair 737 engine had five suspected bird strikes before blade failure",
+          "url": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "publishedUtc": "2026-08-14T03:51Z",
+          "summary": "Bird remains and feathers were found inside the damaged engine of a Ryanair Boeing 737-800 that was involved… The post NTSB: Ryanair 737 engine had five suspected bird strikes before blade failure appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "NTSB Investigators Found Bird Remains In Engine After Ryanair Passenger Sucked Through Window",
+          "url": "https://simpleflying.com/ntsb-investigators-found-bird-remains-in-engine-after-ryanair-passenger-sucked-through-window/",
+          "publishedUtc": "2026-08-14T16:13Z",
+          "summary": "The accident during the climb from Thessaloniki could be connected to a bird strike incident.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/06/a-ryanair-boeing-737-800-is-landing-at-bgy-the-bergamo-milano-international-airport.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        },
+        {
+          "title": "Bird remains found aboard 737 engine from Ryanair Greek incident",
+          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQSmV1RmxReUYwWXhWWk54TWU5VHpXZ2FUREw4TEo2LTkyVi1MMkZSQ2h1SlZHMDdyWDRuaEdqS2loajVsQ1NwS3VkV0FNdGpfN181UmtLYUpUUnZ5eldNRDc0WEVqYVRsVjl5SGgyQnZIc2NZQ0dITFhaZ2JtdU1EbFdSeUlkRjZNeV85dmxaLUdhYTdtNzZvMnR4R0QyZm9HQU95Z2lIcTBxd0N5YXZ4MWtfYTdkeWFfS3dQZEFHaw?oc=5",
+          "publishedUtc": "2026-08-13T21:17Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        },
+        {
+          "title": "NTSB: Ryanair 737 engine had five suspected bird strikes before blade failure",
+          "summary": "NTSB: Ryanair 737 engine had five suspected bird strikes before blade failure &nbsp;&nbsp; aerotime.aero",
+          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQbjJBZFFBTjMzRUppdERaNWJ1eV9SNkVmRkhNYW1pMTYxQXpvNkdRWHJldW9NRi1XMThKRzhXMzNaYTlNc2xEQlg2ZUl1Ml9EVExyUjd3NVpqQU9DTUZwYkN5LTVmUFkxSUE3TThTZFlkaUlLVjFXdVZ4dnZPQzJ6RTdmUUlWWndueGfSAYoBQVVfeXFMUG4yQWRRQU4zM0VKaXREWjVidXlfUjZFZkZITWFtaTE2MUF6bzZHUVhyZXVvTUYtVzE4Skc4VzMzWmE5TXNsREJYNmVJdTJfRFRMclI3dzVaakFPQ01GcGJDeS01ZlBZMUlBN004U2RZZGlJS1YxV3VWeHZ2T0MyekU3ZlFJVlp3bnhn?oc=5",
+          "source": "aerotime.aero",
+          "companion": true,
+          "publishedUtc": "2026-08-14T03:51Z"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: aerotime, reuters, simple flying",
+              "same airport code(s): THE",
+              "archive predates source by 12 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 93,
+            "confidence_reason": "tier 2; 4 deterministic evidence item(s); 12 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing, faa, southwest airlines",
+              "archive predates source by 19 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 19 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing, faa",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "g-20260814-1641-10",
+    "queuedUtc": "2026-08-14T16:41Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "The SOURCE headline announces a strategic intent to partner on an indigenous combat engine for India's AMCA programme. This is a military aviation development involving a major partnership and potential large-scale defence-industrial commitment, but the SOURCE provides only a headline with no full text, so the scope, financial terms, and binding nature of the arrangement cannot be verified. The topic qualifies as military aviation (combat aircraft engine development). Manual review is warranted because the evidence is limited to a headline, the partnership is described as 'strategic intent' rather than a confirmed agreement, and the financial/industrial scale of the claim requires confirmation before publication.",
+    "riskFlags": [
+      "financial_or_order_claim",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Reliance Industries and Rolls-Royce announced a strategic intent to partner and develop India's indigenous combat engine for the AMCA programme.",
+        "sourceQuote": "Reliance Industries and Rolls-Royce announce strategic intent to partner and develop India's indigenous combat engine for the Advanced Medium Combat Aircraft (AMCA) programme",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiswJBVV95cUxNZnFhdUh3d1hhbmFEUXl4OTdBU1dDV0ZnYkRDQVZONmxFa2Z2UDlzdFcwVEEwYlRHanhZTm5YV095VGJKWmZXS1Rfb0pWTEpUM19vTmxBcE1yZko5WEUxaVpmTnA4LUE4cjFvbUJhaDVEMk14ZkRUTmtMb3FJZGVPcjVMOHAyNkNyREE2TERBQUttcGJtMFBPclUzeklIT1cycE1Yd3VmWWd5UEY4VktVemlfVEFha3g5WDIyMDhrX25JQmEwTjVha1ZKWUV2NW1xaXJnSjN5V1JLeDd3ZWVJakczNWk1bUFpc2FPUGlwWnBqMTJWSmdXdDBBeDdxYnhhb2h4aHF2enpkLTRqS2ExeWJRNTFFWGc2d0lpZC1xV1NheGpTT2Mwd1NPZ1UwRkY5RlNr?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The SOURCE headline announces a strategic intent to partner on an indigenous combat engine for India's AMCA programme. This is a military aviation development involving a major partnership and potential large-scale defence-industrial commitment, but the SOURCE provides only a headline with no full text, so the scope, financial terms, and binding nature of the arrangement cannot be verified. The topic qualifies as military aviation (combat aircraft engine development). Manual review is warranted because the evidence is limited to a headline, the partnership is described as 'strategic intent' rather than a confirmed agreement, and the financial/industrial scale of the claim requires confirmation before publication.",
+      "cat": "mil",
+      "zh": {
+        "title": "Reliance Industries 與勞斯萊斯宣布合作開發印度 AMCA 戰機引擎",
+        "summary": "Reliance Industries 與勞斯萊斯宣布策略合作意向；共同開發印度先進中型戰機（AMCA）計畫之國產戰鬥引擎",
+        "body": [
+          "Reliance Industries 與勞斯萊斯（Rolls-Royce）宣布雙方有意建立策略合作夥伴關係，為印度先進中型戰機（Advanced Medium Combat Aircraft, AMCA）計畫開發國產戰鬥引擎。",
+          "根據勞斯萊斯官方新聞室發布的訊息，此項宣布涉及雙方合作開發印度本土戰鬥引擎的戰略意向，目標為 AMCA 計畫。",
+          "目前 SOURCE 僅提供標題層級的資訊，尚未包含合作細節、財務條款、時程或技術規格等進一步內容，相關安排仍屬戰略意向階段。",
+          "本則報導因證據限於標題且涉及重大軍事航空工業合作，經編輯判定須人工審閱後再行發布。"
+        ]
+      },
+      "en": {
+        "title": "Reliance Industries and Rolls-Royce Announce Strategic Intent to Partner on India's AMCA Combat Engine",
+        "summary": "Reliance Industries and Rolls-Royce announce strategic intent to partner; develop India's indigenous combat engine for AMCA programme",
+        "body": [
+          "Reliance Industries and Rolls-Royce have announced a strategic intent to partner and develop India's indigenous combat engine for the Advanced Medium Combat Aircraft (AMCA) programme.",
+          "According to a release from the Rolls-Royce official newsroom, the announcement concerns a strategic partnership intent focused on developing a domestically produced combat engine for the AMCA programme.",
+          "The current SOURCE provides only headline-level information and does not include further details on the scope of cooperation, financial terms, timelines, or technical specifications.",
+          "Because the evidence is limited to a headline and the topic involves a significant military aviation industrial partnership, this item has been flagged for human review prior to publication."
+        ]
+      },
+      "flash": {
+        "zh": "Reliance Industries 與勞斯萊斯宣布合作開發 AMCA 戰機引擎",
+        "en": "Reliance Industries and Rolls-Royce announce AMCA combat engine partnership intent",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Reliance Industries and Rolls-Royce announced a strategic intent to partner and develop India's indigenous combat engine for the AMCA programme.",
+          "sourceQuote": "Reliance Industries and Rolls-Royce announce strategic intent to partner and develop India's indigenous combat engine for the Advanced Medium Combat Aircraft (AMCA) programme",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiswJBVV95cUxNZnFhdUh3d1hhbmFEUXl4OTdBU1dDV0ZnYkRDQVZONmxFa2Z2UDlzdFcwVEEwYlRHanhZTm5YV095VGJKWmZXS1Rfb0pWTEpUM19vTmxBcE1yZko5WEUxaVpmTnA4LUE4cjFvbUJhaDVEMk14ZkRUTmtMb3FJZGVPcjVMOHAyNkNyREE2TERBQUttcGJtMFBPclUzeklIT1cycE1Yd3VmWWd5UEY4VktVemlfVEFha3g5WDIyMDhrX25",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The announcement was published by the Rolls-Royce official newsroom on 2026-08-14.",
+          "sourceQuote": "Rolls-Royce 官方新聞室",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiswJBVV95cUxNZnFhdUh3d1hhbmFEUXl4OTdBU1dDV0ZnYkRDQVZONmxFa2Z2UDlzdFcwVEEwYlRHanhZTm5YV095VGJKWmZXS1Rfb0pWTEpUM19vTmxBcE1yZko5WEUxaVpmTnA4LUE4cjFvbUJhaDVEMk14ZkRUTmtMb3FJZGVPcjVMOHAyNkNyREE2TERBQUttcGJtMFBPclUzeklIT1cycE1Yd3VmWWd5UEY4VktVemlfVEFha3g5WDIyMDhrX25",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "Reliance Industries",
+          "Rolls-Royce"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Advanced Medium Combat Aircraft (AMCA)"
+        ],
+        "airports": [],
+        "locations": [
+          "India"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-14"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1641-10",
+      "primarySource": "Rolls-Royce 官方新聞室",
+      "items": [
+        {
+          "title": "Reliance Industries and Rolls-Royce announce strategic intent to partner and develop India's indigenous combat engine for the Advanced Medium Combat Aircraft (AMCA) programme",
+          "url": "https://news.google.com/rss/articles/CBMiswJBVV95cUxNZnFhdUh3d1hhbmFEUXl4OTdBU1dDV0ZnYkRDQVZONmxFa2Z2UDlzdFcwVEEwYlRHanhZTm5YV095VGJKWmZXS1Rfb0pWTEpUM19vTmxBcE1yZko5WEUxaVpmTnA4LUE4cjFvbUJhaDVEMk14ZkRUTmtMb3FJZGVPcjVMOHAyNkNyREE2TERBQUttcGJtMFBPclUzeklIT1cycE1Yd3VmWWd5UEY4VktVemlfVEFha3g5WDIyMDhrX25JQmEwTjVha1ZKWUV2NW1xaXJnSjN5V1JLeDd3ZWVJakczNWk1bUFpc2FPUGlwWnBqMTJWSmdXdDBBeDdxYnhhb2h4aHF2enpkLTRqS2ExeWJRNTFFWGc2d0lpZC1xV1NheGpTT2Mwd1NPZ1UwRkY5RlNr?oc=5",
+          "publishedUtc": "2026-08-14T14:46Z",
+          "summary": "",
+          "image": null,
+          "source": "Rolls-Royce 官方新聞室",
+          "sourceKey": "rollsroyce"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260814-1542-1",
     "queuedUtc": "2026-08-14T15:42Z",
     "approve": false,
@@ -10183,364 +10678,6 @@
           "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/AdobeStock_314894793-scaled.jpeg",
           "source": "Aerospace Global News",
           "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260812-0525-1",
-    "queuedUtc": "2026-08-12T05:25Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The flight performed an abnormal return to gate during taxi due to a unruly passenger disturbance and police intervention.",
-    "riskFlags": [
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "華航由桃園飛往阿姆斯特丹的CI73班機於8月11日晚間準備起飛滑行途中，因一名外籍男乘客酒醉騷擾隔壁女乘客，機長決定折返將該男子退關拒載。",
-        "sourceQuote": "原定11日晚間11時10分起飛的班機，在滑行途中因有外籍男子酒醉鬧事，機長最後決定折返並請警方協助",
-        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "航空警察局接獲華航通報後派員將該名鬧事男子帶下飛機並辦理退關，遭騷擾的女乘客表示不提告。",
-        "sourceQuote": "員警到場後將這名鬧事的外籍年輕男子帶下飛機並辦理退關",
-        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "CI73班機在完成相關處置後於凌晨1時5分重新後推起飛，未再發生其他狀況。",
-        "sourceQuote": "最後班機於凌晨1時5分重新後推起飛，未再發生其他狀況",
-        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "中華航空表示嚴正看待機上旅客滋擾與不當行為，對不理性行為堅持零容忍，並已按照標準作業程序通報航警處理。",
-        "sourceQuote": "華航以飛安及航空保安為最高原則，對於滋擾不理性行為堅持零容忍",
-        "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The flight performed an abnormal return to gate during taxi due to a unruly passenger disturbance and police intervention.",
-      "cat": "ops",
-      "zh": {
-        "title": "華航桃園飛阿姆斯特丹班機醉客鬧事 折返帶下機退關",
-        "summary": "華航CI73班機因醉客鬧事折返桃園機場；警將乘客帶下機後重新起飛。",
-        "body": [
-          "中華航空一架由桃園飛往阿姆斯特丹的CI73班機，於8月11日晚間準備起飛滑行途中，因一名外籍男乘客酒醉騷擾鄰座乘客，座艙長通報後機長決定折返並報警處理。航空警察局獲報到場協助，將該名外籍男子帶下飛機辦理退關，該班機遭拒載之男子下機時配合處置。",
-          "受騷擾的女乘客表示不提出告訴，CI73班機隨後於12日凌晨1時5分重新後推起飛。中華航空對此表示，公司嚴正看待機上旅客滋擾與不當行為，對不理性行為堅持零容忍原則，事發時已依標準作業程序通報航警協助離機，確保飛航安全。"
-        ]
-      },
-      "en": {
-        "title": "China Airlines Flight Returns to Gate at Taoyuan After Unruly Passenger Disturbance",
-        "summary": "China Airlines CI73 returned to gate at Taoyuan due to a drunken passenger before departing safely.",
-        "body": [
-          "China Airlines Flight CI73, bound from Taoyuan to Amsterdam, returned to the terminal during taxiing on the evening of August 11 after a male foreign passenger engaged in drunken misconduct and harassed a female passenger next to him. The flight purser reported the incident to the captain, who decided to turn back to the gate and request assistance from law enforcement.",
-          "Officers from the Aviation Police Bureau boarded the aircraft and escorted the unruly passenger off the plane to complete immigration return processing. The harassed passenger declined to press charges, and Flight CI73 pushed back and departed at 1:05 a.m. on August 12. China Airlines stated that it maintains zero tolerance for unruly behavior and handled the situation in accordance with standard operating procedures."
-        ]
-      },
-      "flash": {
-        "zh": "華航CI73班機因客騷擾折返，警方帶走鬧事乘客後重新起飛",
-        "en": "China Airlines CI73 returns to gate at Taoyuan due to unruly passenger",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "華航由桃園飛往阿姆斯特丹的CI73班機於8月11日晚間準備起飛滑行途中，因一名外籍男乘客酒醉騷擾隔壁女乘客，機長決定折返將該男子退關拒載。",
-          "sourceQuote": "原定11日晚間11時10分起飛的班機，在滑行途中因有外籍男子酒醉鬧事，機長最後決定折返並請警方協助",
-          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "航空警察局接獲華航通報後派員將該名鬧事男子帶下飛機並辦理退關，遭騷擾的女乘客表示不提告。",
-          "sourceQuote": "員警到場後將這名鬧事的外籍年輕男子帶下飛機並辦理退關",
-          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "CI73班機在完成相關處置後於凌晨1時5分重新後推起飛，未再發生其他狀況。",
-          "sourceQuote": "最後班機於凌晨1時5分重新後推起飛，未再發生其他狀況",
-          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "中華航空表示嚴正看待機上旅客滋擾與不當行為，對不理性行為堅持零容忍，並已按照標準作業程序通報航警處理。",
-          "sourceQuote": "華航以飛安及航空保安為最高原則，對於滋擾不理性行為堅持零容忍",
-          "sourceUrl": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "中華航空",
-          "航空警察局"
-        ],
-        "airlines": [
-          "中華航空"
-        ],
-        "aircraft_models": [],
-        "airports": [
-          "桃園機場"
-        ],
-        "locations": [
-          "阿姆斯特丹"
-        ],
-        "flight_numbers": [
-          "CI73"
-        ],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260812-0525-1",
-      "primarySource": "中央社 CNA 國籍航空",
-      "items": [
-        {
-          "title": "起飛滑行中外籍醉客鬧事騷擾乘客 華航折返拒載",
-          "url": "https://www.cna.com.tw/news/ahel/202608120116.aspx",
-          "publishedUtc": "2026-08-12T04:40Z",
-          "summary": "桃園機場,阿姆斯特丹,中華航空,CI73班機,許庚辛,航空警察局,華航,外籍乘客",
-          "image": null,
-          "source": "中央社 CNA 國籍航空",
-          "sourceKey": "cnataiwanairlines"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": true,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260811-2330-1",
-    "queuedUtc": "2026-08-11T23:31Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves a major defense procurement contract of 96 AH-64E Apache helicopters for Poland.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Boeing, WZL-1, and WCBKT signed offset implementation agreements in Łódź, Poland on August 11, 2026, to support Poland's AH-64E Apache helicopter fleet.",
-        "sourceQuote": "Wojskowe Zakłady Lotnicze Nr 1 S.A. (WZL-1), the Military Central Bureau of Design and Technology S.A. (WCBKT) and Boeing have signed offset implementation agreements to establish long-term industrial cooperation supporting the sustainment, maintenance and ground support of Poland’s AH-64E Apache helicopter fleet.",
-        "sourceUrl": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Boeing will support WZL-1 in providing maintenance, repair, and overhaul services for the Polish Armed Forces' AH-64E fleet.",
-        "sourceQuote": "Under the agreements, Boeing will support WZL-1 as they start to support the AH-64E aircraft for the Polish Armed Forces. The center will provide maintenance, repair, and overhaul services, including organizational- and intermediate-level inspections and repairs, as well as selected depot-level component repairs.",
-        "sourceUrl": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Boeing and WCBKT will evaluate ground support equipment for use with the AH-64E Apache helicopter.",
-        "sourceQuote": "Boeing and WCBKT will evaluate selected WCBKT ground support equipment for use with the AH-64E Apache helicopter. This effort will assess the feasibility of Polish engineering solutions in support of the combat helicopters",
-        "sourceUrl": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Poland has contracted for 96 AH-64E Apache helicopters.",
-        "sourceQuote": "Poland has contracted for 96 AH-64E Apache helicopters.",
-        "sourceUrl": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves a major defense procurement contract of 96 AH-64E Apache helicopters for Poland.",
-      "cat": "mil",
-      "zh": {
-        "title": "波音與波蘭公司簽署AH-64E直升機後勤抵換協定",
-        "summary": "波音與波蘭兩廠商簽署抵換協定，建立AH-64E直升機長期維護合作。",
-        "body": [
-          "波音公司於2026年8月11日在波蘭羅茲與波蘭軍事航空廠一號（WZL-1）及中央軍事設計技術局（WCBKT）簽署抵換實施協定。該協定旨在建立長期工業合作，為波蘭軍隊的AH-64E阿帕契直升機機隊提供後勤維護與地面支援。",
-          "根據協定內容，波音將協助WZL-1建立維修檢測服務能力，包含組織級與中間級檢修以及部分零組件基地級修復。此外，波音與WCBKT將評估選定之地面支援設備，以確認波蘭工程方案支援直升機之可行性。波蘭先前已簽署採購96架AH-64E直升機。"
-        ]
-      },
-      "en": {
-        "title": "Boeing and Polish Firms Sign Offset Agreements to Support AH-64E Fleet",
-        "summary": "Boeing signed offset agreements in Poland to support maintenance for the Polish AH-64E Apache helicopter fleet.",
-        "body": [
-          "On August 11, 2026, Boeing signed offset implementation agreements with Wojskowe Zakłady Lotnicze Nr 1 S.A. (WZL-1) and the Military Central Bureau of Design and Technology S.A. (WCBKT) in Łódź, Poland. The agreements establish long-term industrial cooperation to support the sustainment, maintenance, and ground support of Poland's AH-64E Apache helicopter fleet.",
-          "Under the agreements, Boeing will assist WZL-1 in providing maintenance, repair, and overhaul services, including organizational and intermediate-level inspections as well as selected depot-level component repairs. Boeing and WCBKT will also evaluate selected ground support equipment to assess Polish engineering solutions for the combat helicopters. Poland has contracted for 96 AH-64E Apache helicopters."
-        ]
-      },
-      "flash": {
-        "zh": "波音與波蘭廠商簽署AH-64E阿帕契直升機抵換協定",
-        "en": "Boeing signs offset agreements to support Poland's AH-64E Apache helicopter fleet.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Boeing, WZL-1, and WCBKT signed offset implementation agreements in Łódź, Poland on August 11, 2026, to support Poland's AH-64E Apache helicopter fleet.",
-          "sourceQuote": "Wojskowe Zakłady Lotnicze Nr 1 S.A. (WZL-1), the Military Central Bureau of Design and Technology S.A. (WCBKT) and Boeing have signed offset implementation agreements to establish long-term industrial cooperation supporting the sustainment, maintenance and ground support of Poland’s AH-64E Apache helicopter fleet.",
-          "sourceUrl": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Boeing will support WZL-1 in providing maintenance, repair, and overhaul services for the Polish Armed Forces' AH-64E fleet.",
-          "sourceQuote": "Under the agreements, Boeing will support WZL-1 as they start to support the AH-64E aircraft for the Polish Armed Forces. The center will provide maintenance, repair, and overhaul services, including organizational- and intermediate-level inspections and repairs, as well as selected depot-level component repairs.",
-          "sourceUrl": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Boeing and WCBKT will evaluate ground support equipment for use with the AH-64E Apache helicopter.",
-          "sourceQuote": "Boeing and WCBKT will evaluate selected WCBKT ground support equipment for use with the AH-64E Apache helicopter. This effort will assess the feasibility of Polish engineering solutions in support of the combat helicopters",
-          "sourceUrl": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Poland has contracted for 96 AH-64E Apache helicopters.",
-          "sourceQuote": "Poland has contracted for 96 AH-64E Apache helicopters.",
-          "sourceUrl": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Boeing",
-          "Wojskowe Zakłady Lotnicze Nr 1 S.A.",
-          "WZL-1",
-          "Military Central Bureau of Design and Technology S.A.",
-          "WCBKT",
-          "Polish Armed Forces",
-          "Polish Ministry of National Defence",
-          "Government of the Republic of Poland"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "AH-64E Apache",
-          "AH-64E",
-          "Apache"
-        ],
-        "airports": [],
-        "locations": [
-          "Łódź",
-          "Poland",
-          "United States"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-11",
-          "August 11, 2026"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-2330-1",
-      "primarySource": "Boeing",
-      "items": [
-        {
-          "title": "WZL-1, WCBKT and Boeing sign offset agreements to support Poland’s AH-64E Apache helicopter fleet",
-          "url": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-          "publishedUtc": "2026-08-11T15:56Z",
-          "summary": "",
-          "image": "https://boeing.mediaroom.com/file.php/101929/Agreement+signing+with+WCBKT+%282%29medresolution.jpg?thumbnail=144",
-          "source": "Boeing",
-          "sourceKey": "boeing"
-        },
-        {
-          "title": "WZL-1, WCKBT and Boeing sign offset agreements to support Poland’s AH-64E Apache helicopter fleet",
-          "summary": "WZL-1, WCKBT and Boeing sign offset agreements to support Poland’s AH-64E Apache helicopter fleet &nbsp;&nbsp; Boeing Newsroom",
-          "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB3ZTBVcHFHZ2tDcFVMWnBYdGoxX0hIUGhqR1pzQXZvS1JmMEUtT1hXWk1vLU1lVnhFUFJDX0pUWVE5d2pOMmxCaVR4ZlRGbmNGN1ozVzRvV0ZjSWkyRlpRWFozTHpjdy1MbmhmNTBEWW5yYUk?oc=5",
-          "source": "Boeing Newsroom",
-          "companion": true,
-          "publishedUtc": "2026-08-11T16:03Z"
         }
       ],
       "updateCandidate": false,
