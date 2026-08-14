@@ -1,5 +1,387 @@
 [
   {
+    "id": "g-20260814-0526-1",
+    "queuedUtc": "2026-08-14T05:26Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Mandatory human review required for an aviation safety event involving an uncontained engine failure, passenger injury, and an active NTSB investigation.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "casualties_or_injuries",
+      "investigation"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "According to an NTSB preliminary report, bird remains were found inside the damaged engine of a Ryanair Boeing 737-800 involved in a July 2026 engine failure over Greece.",
+        "sourceQuote": "Bird remains and feathers were found inside the damaged engine of a Ryanair Boeing 737-800 involved in a July 2026 uncontained engine failure over Greece",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The NTSB stated the same engine had been involved in four other suspected bird strikes during the prior 12 months.",
+        "sourceQuote": "That same engine had been involved in four other suspected bird strikes during the previous 12 months",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Investigators reported that a fan blade in the right engine fractured on July 10, 2026, after takeoff from Thessaloniki, sending debris through a passenger window.",
+        "sourceQuote": "Investigators said a fan blade in the aircraft’s right engine fractured shortly after takeoff from Thessaloniki on July 10, 2026, sending engine debris into the fuselage",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "A 61-year-old passenger seated next to the broken window was partially pulled into the opening and suffered injuries before being pulled back inside by passengers.",
+        "sourceQuote": "The 61-year-old passenger seated next to the broken window was partially pulled into the opening before other passengers dragged him back inside. He suffered neck and shoulder injuries",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The aircraft, registered 9H-QEU and operated by Malta Air for Ryanair, was bound for Memmingen, Germany, and returned safely to Thessaloniki.",
+        "sourceQuote": "The aircraft, registered 9H-QEU and operated by Malta Air on behalf of Ryanair, had departed Thessaloniki International Airport for Memmingen, Germany.",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "Maintenance inspections following the four earlier bird strikes and ultrasonic inspections in November 2025 and May 2026 had not identified damage.",
+        "sourceQuote": "Maintenance inspections following the four earlier suspected bird strikes did not identify damage. The engine’s fan blades also underwent ultrasonic inspections in November 2025 and May 2026, with no damage reported.",
+        "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Mandatory human review required for an aviation safety event involving an uncontained engine failure, passenger injury, and an active NTSB investigation.",
+      "cat": "safety",
+      "zh": {
+        "title": "NTSB指瑞安航空737引擎爆裂前曾遭五次鳥擊",
+        "summary": "美NTSB公布瑞安航空波音737事故調查；右引擎扇葉斷裂；引擎內發現鳥擊殘留物",
+        "body": [
+          "美國國家運輸安全委員會（NTSB）在一份初步報告中指出，瑞安航空（Ryanair）一架波音737-800客機於2026年7月在希臘上空發生引擎未受控失效事故，調查人員在受損的引擎內部發現了鳥類殘骸與羽毛。該起事故導致機艙窗口破裂及艙壓驟降，並造成一名乘客受傷。",
+          "根據NTSB報告，涉事引擎在事故發生前的12個月內，曾涉及另外四起疑似鳥擊事件，其中兩起在事後發現了鳥類殘骸。儘管在先前四次疑似鳥擊後進行的維修檢查未發現損傷，且該引擎扇葉曾在2025年11月及2026年5月接受超音波檢查且結果正常，但該引擎仍於2026年7月10日發生嚴重故障。",
+          "調查人員表示，這架註冊編號為9H-QEU、由馬爾他航空（Malta Air）代表瑞安航空營運的客機，當時正自希臘塞薩洛尼基國際機場起飛預計前往德國梅明根。當客機爬升至約16,000英呎時，右側2號引擎發生震動並傳出巨響，隨後右引擎的一根扇葉斷裂，飛散的碎片擊穿機身與第11排的乘客舷窗。",
+          "舷窗破裂後引發機艙快速減壓，坐在該舷窗旁的一名61歲乘客身體被部分吸出窗外，隨後被其他乘客拉回機艙內。該名乘客隨後遭受頸部與肩膀受傷以及摩擦灼傷。客機最終在起飛約一小時後安全返航並降落於塞薩洛尼基，NTSB調查人員已從引擎中回收了三塊鬆脫的扇葉碎片。",
+          "此外，客艙乘務員報告稱，在氧氣面罩釋放前，客艙內出現劇烈且持續的震動以及少量煙霧或霧氣。飛機最終安全返回塞薩洛尼基機場。美國聯邦航空管理局（FAA）於2025年曾發布指令要求進行相關引擎結構改進，而該架客機尚未完成該項改裝，NTSB亦未指出缺乏改裝與本次事故有直接關聯。"
+        ]
+      },
+      "en": {
+        "title": "NTSB: Ryanair 737 Engine Had Five Suspected Bird Strikes Before In-Flight Blade Failure",
+        "summary": "Ryanair Boeing 737 engine contained bird remains prior to July blade failure; passenger injured during Thessaloniki diversion",
+        "body": [
+          "A preliminary report from the US National Transportation Safety Board (NTSB) reveals that bird remains and feathers were found inside the damaged engine of a Ryanair Boeing 737-800 following a July 2026 uncontained engine failure over Greece. The incident resulted in a shattered passenger window and rapid cabin decompression.",
+          "According to the NTSB, the same engine had been involved in four other suspected bird strikes during the preceding 12 months, with bird remains recovered after two of those prior incidents. Maintenance inspections conducted after the four earlier events identified no damage, and ultrasonic inspections of the engine's fan blades in November 2025 and May 2026 also reported no defects.",
+          "Investigators reported that the aircraft, registered 9H-QEU and operated by Malta Air on behalf of Ryanair, had departed Thessaloniki International Airport bound for Memmingen, Germany. While climbing through approximately 16,000 feet on July 10, 2026, a fan blade in the right engine fractured, launching high-energy engine debris into the fuselage and shattering a passenger window in Row 11.",
+          "The sudden window failure triggered a rapid loss of cabin pressure, partially pulling a 61-year-old passenger seated next to the broken window into the opening before fellow passengers pulled him back inside. The passenger sustained neck and shoulder injuries along with friction burns. The aircraft returned safely to Thessaloniki approximately one hour after departure, and investigators recovered three loose fan blade fragments from the engine.",
+          "Flight attendants aboard the flight reported experiencing a loud, continuous vibration accompanied by a small amount of smoke or fog in the cabin before overhead oxygen masks deployed. The Federal Aviation Administration (FAA) had previously issued airworthiness directives in 2025 requiring engine cowling modifications to mitigate damage from fan blade failures, with compliance mandated by July 2028. The NTSB noted that the Ryanair aircraft had not yet received these major modifications, while emphasizing it has not concluded that their absence contributed to the accident."
+        ]
+      },
+      "flash": {
+        "zh": "NTSB發布瑞安航空737事故調查，引擎內發現鳥擊殘骸",
+        "en": "NTSB finds bird remains in Ryanair 737 engine involved in inflight failure",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-07-10",
+        "sev": "acc",
+        "aircraft": "Boeing 737-800",
+        "operator": "Malta Air (on behalf of Ryanair)",
+        "phase": {
+          "zh": "爬升",
+          "en": "Climb"
+        },
+        "location": {
+          "zh": "希臘塞薩洛尼基",
+          "en": "Thessaloniki, Greece"
+        },
+        "desc": {
+          "zh": "瑞安航空波音737-800客機於2026年7月10日自塞薩洛尼基起飛後發生引擎扇葉斷裂，碎片擊碎舷窗導致艙壓驟降並造成一名乘客受傷，NTSB初步報告指出該引擎有鳥擊殘留物。",
+          "en": "A Ryanair Boeing 737-800 experienced a fan blade failure shortly after takeoff from Thessaloniki on July 10, 2026, causing rapid decompression and passenger injury; NTSB preliminary report found bird remains inside the engine."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "According to an NTSB preliminary report, bird remains were found inside the damaged engine of a Ryanair Boeing 737-800 involved in a July 2026 engine failure over Greece.",
+          "sourceQuote": "Bird remains and feathers were found inside the damaged engine of a Ryanair Boeing 737-800 involved in a July 2026 uncontained engine failure over Greece",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The NTSB stated the same engine had been involved in four other suspected bird strikes during the prior 12 months.",
+          "sourceQuote": "That same engine had been involved in four other suspected bird strikes during the previous 12 months",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Investigators reported that a fan blade in the right engine fractured on July 10, 2026, after takeoff from Thessaloniki, sending debris through a passenger window.",
+          "sourceQuote": "Investigators said a fan blade in the aircraft’s right engine fractured shortly after takeoff from Thessaloniki on July 10, 2026, sending engine debris into the fuselage",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "A 61-year-old passenger seated next to the broken window was partially pulled into the opening and suffered injuries before being pulled back inside by passengers.",
+          "sourceQuote": "The 61-year-old passenger seated next to the broken window was partially pulled into the opening before other passengers dragged him back inside. He suffered neck and shoulder injuries",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The aircraft, registered 9H-QEU and operated by Malta Air for Ryanair, was bound for Memmingen, Germany, and returned safely to Thessaloniki.",
+          "sourceQuote": "The aircraft, registered 9H-QEU and operated by Malta Air on behalf of Ryanair, had departed Thessaloniki International Airport for Memmingen, Germany.",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Maintenance inspections following the four earlier bird strikes and ultrasonic inspections in November 2025 and May 2026 had not identified damage.",
+          "sourceQuote": "Maintenance inspections following the four earlier suspected bird strikes did not identify damage. The engine’s fan blades also underwent ultrasonic inspections in November 2025 and May 2026, with no damage reported.",
+          "sourceUrl": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "entities": {
+        "organizations": [
+          "NTSB",
+          "US National Transportation Safety Board",
+          "FAA"
+        ],
+        "airlines": [
+          "Ryanair",
+          "Malta Air"
+        ],
+        "aircraft_models": [
+          "Boeing 737-800"
+        ],
+        "airports": [
+          "Thessaloniki International Airport"
+        ],
+        "locations": [
+          "Greece",
+          "Thessaloniki",
+          "Memmingen",
+          "Germany"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [
+          "9H-QEU"
+        ],
+        "event_dates": [
+          "2026-07-10",
+          "July 2026",
+          "November 2025",
+          "May 2026"
+        ]
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "casualties_or_injuries",
+        "investigation"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-0526-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "NTSB: Ryanair 737 engine had five suspected bird strikes before blade failure",
+          "url": "https://www.aerotime.aero/articles/ryanair-737-five-bird-strikes-blade-failure",
+          "publishedUtc": "2026-08-14T03:51Z",
+          "summary": "Bird remains and feathers were found inside the damaged engine of a Ryanair Boeing 737-800 involved in a… The post NTSB: Ryanair 737 engine had five suspected bird strikes before blade failure appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        },
+        {
+          "title": "Bird remains found aboard 737 engine from Ryanair Greek incident",
+          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQSmV1RmxReUYwWXhWWk54TWU5VHpXZ2FUREw4TEo2LTkyVi1MMkZSQ2h1SlZHMDdyWDRuaEdqS2loajVsQ1NwS3VkV0FNdGpfN181UmtLYUpUUnZ5eldNRDc0WEVqYVRsVjl5SGgyQnZIc2NZQ0dITFhaZ2JtdU1EbFdSeUlkRjZNeV85dmxaLUdhYTdtNzZvMnR4R0QyZm9HQU95Z2lIcTBxd0N5YXZ4MWtfYTdkeWFfS3dQZEFHaw?oc=5",
+          "publishedUtc": "2026-08-13T21:17Z",
+          "summary": "",
+          "image": null,
+          "source": "Reuters",
+          "sourceKey": "reuters"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: aerotime, reuters",
+              "same airport code(s): THE",
+              "archive predates source by 12 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 93,
+            "confidence_reason": "tier 2; 4 deterministic evidence item(s); 12 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing, faa, southwest airlines",
+              "archive predates source by 19 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 19 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 737",
+              "same named core entity: boeing, faa",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260814-0356-5",
     "queuedUtc": "2026-08-14T03:56Z",
     "approve": false,
@@ -10090,246 +10472,6 @@
                 "source_quote": "neither PeakJet nor its parent company, Peak Plus AG, holds an air operator certificate (AOC) of their own. Instead, PeakJet defines itself as a marketplace, which aggregates and sells capacity on executive aircraft operating on fixed schedules.",
                 "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
                 "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260811-0804-2",
-    "queuedUtc": "2026-08-11T08:04Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Aviation safety event involving weather radar failure and in-flight turnaround requires human review.",
-    "riskFlags": [
-      "accident_or_serious_incident"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A British Airways Airbus A380 flew for 7 hours before returning to its departure point following a weather radar failure.",
-        "sourceQuote": "British Airways Airbus A380 Flies 7 Hours To Nowhere After Weather Radar Failure",
-        "sourceUrl": "https://simpleflying.com/british-airways-a380-7-hours-nowhere-weather-radar-failure/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The Airbus A380 aircraft was forced to turn around when its weather radar stopped functioning.",
-        "sourceQuote": "forced to turnaround when its weather radar went blind",
-        "sourceUrl": "https://simpleflying.com/british-airways-a380-7-hours-nowhere-weather-radar-failure/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Aviation safety event involving weather radar failure and in-flight turnaround requires human review.",
-      "cat": "safety",
-      "zh": {
-        "title": "英國航空A380客機氣象雷達失效 飛行7小時後折返",
-        "summary": "英國航空一架空中巴士A380客機因氣象雷達失效，在飛行7小時後折返原機場。",
-        "body": [
-          "根據 Simple Flying 報導，英國航空（British Airways）一架空中巴士 A380 巨無霸客機在航行途中突發氣象雷達失效情況，導致駕駛艙無法獲得前方的氣象預警與相關航路資訊。",
-          "在氣象雷達停止運作之後，該架空中巴士 A380 客機基於飛行安全考量被迫轉向返航。航機在空中持續飛行長達 7 個小時後折返，最終返回原出發地機場。",
-          "此次氣象雷達故障事件導致航機完成了一次長達 7 小時的無效飛行，最終無功而返並返抵起飛地點。"
-        ]
-      },
-      "en": {
-        "title": "British Airways Airbus A380 Returns After 7-Hour Flight Due To Radar Failure",
-        "summary": "British Airways Airbus A380 returned after a seven-hour flight following a weather radar failure.",
-        "body": [
-          "According to Simple Flying, a British Airways Airbus A380 superjumbo was forced to execute an in-flight turnaround after experiencing a complete weather radar failure during flight operations.",
-          "The aircraft's onboard weather radar system failed while en route, leaving the aircraft without functioning weather radar capabilities necessary for detecting atmospheric hazards along the route.",
-          "As a direct result of the weather radar system malfunction during the flight, the British Airways Airbus A380 turned back toward its original departure point. The superjumbo aircraft ultimately completed a seven-hour flight to nowhere before returning and landing back at its origin."
-        ]
-      },
-      "flash": {
-        "zh": "英國航空A380雷達失效 飛行7小時後折返",
-        "en": "British Airways A380 turns back after 7-hour flight due to radar failure.",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-11",
-        "sev": "inc",
-        "aircraft": "Airbus A380",
-        "operator": "British Airways",
-        "phase": {
-          "zh": "巡航",
-          "en": "En route"
-        },
-        "location": {
-          "zh": "未說明",
-          "en": "Not specified"
-        },
-        "desc": {
-          "zh": "航機因氣象雷達失效折返出發地",
-          "en": "Aircraft returned to origin following weather radar failure"
-        },
-        "status": "prelim"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A British Airways Airbus A380 flew for 7 hours before returning to its departure point following a weather radar failure.",
-          "sourceQuote": "British Airways Airbus A380 Flies 7 Hours To Nowhere After Weather Radar Failure",
-          "sourceUrl": "https://simpleflying.com/british-airways-a380-7-hours-nowhere-weather-radar-failure/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The Airbus A380 aircraft was forced to turn around when its weather radar stopped functioning.",
-          "sourceQuote": "forced to turnaround when its weather radar went blind",
-          "sourceUrl": "https://simpleflying.com/british-airways-a380-7-hours-nowhere-weather-radar-failure/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "British Airways",
-          "Simple Flying"
-        ],
-        "airlines": [
-          "British Airways"
-        ],
-        "aircraft_models": [
-          "Airbus A380"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-11"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-0804-2",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "British Airways Airbus A380 Flies 7 Hours To Nowhere After Weather Radar Failure",
-          "url": "https://simpleflying.com/british-airways-a380-7-hours-nowhere-weather-radar-failure/",
-          "publishedUtc": "2026-08-11T07:45Z",
-          "summary": "The superjumbo was forced to turnaround when its weather radar went blind.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/british-airways-airbus-a380.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: AIRBUS A380",
-              "same named core entity: airbus, simple flying",
-              "archive predates source by 14 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 14 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
-            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-            "facts": [
-              {
-                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
-                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              },
-              {
-                "claim": "Qantas is opting to utilize the Boeing 787-9 instead.",
-                "source_quote": "as the airline opts for Boeing 787-9.",
-                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
-                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
-              },
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260809-1305-emirates-temporarily-suspends-airbus-a38",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: AIRBUS A380",
-              "same named core entity: simple flying",
-              "archive predates source by 2 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
-            "event_date": "2026-08-09",
-            "source_name": "Simple Flying — Emirates Has Suspended Airbus A380 Flights To These 2 Long-...",
-            "source_url": "https://simpleflying.com/emirates-suspended-a380-flights-long-haul-destinations/",
-            "facts": [
-              {
-                "claim": "阿聯酋航空在2026年夏季暫時暫停前往布拉格與格拉斯哥的空中巴士A380航班。",
-                "source_quote": "Emirates has temporarily suspended Airbus A380 flights to Prague and Glasgow for summer 2026",
-                "source_url": "https://simpleflying.com/emirates-suspended-a380-flights-long-haul-destinations/",
-                "source_name": "Simple Flying — Emirates Has Suspended Airbus A380 Flights To These 2 Long-..."
-              },
-              {
-                "claim": "阿聯酋航空預計於10月恢復布拉格與格拉斯哥的每日空中巴士A380巨無霸客機服務。",
-                "source_quote": "with daily superjumbo services returning in October.",
-                "source_url": "https://simpleflying.com/emirates-suspended-a380-flights-long-haul-destinations/",
-                "source_name": "Simple Flying — Emirates Has Suspended Airbus A380 Flights To These 2 Long-..."
-              },
-              {
-                "claim": "阿聯酋航空工程部門先前推動一項數十億美元的改裝計畫,翻新219架空中巴士A380與波音777客機。",
-                "source_quote": "a multi-billion-dollar investment to fully refurbish 219 Airbus A380 and Boeing 777 aircraft",
-                "source_url": "https://www.aerotime.aero/articles/emirates-engineering-launches-material-futures-studio-for-university-students",
-                "source_name": "Archive: AeroTime — Emirates Engineering launches Material Futures Studio for u... — a-20260730-1631-emirates-engineering-launches-material-f"
-              },
-              {
-                "claim": "阿聯酋航空官方航點頁以PRG標示布拉格。",
-                "source_quote": "Flights from Prague (PRG)",
-                "source_url": "https://www.emirates.com/cz/english/destinations/flights-from-prague/",
-                "source_name": "Emirates — Flights from Prague (PRG)"
-              },
-              {
-                "claim": "阿聯酋航空官方航點頁以GLA標示格拉斯哥。",
-                "source_quote": "Flights to Glasgow (GLA)",
-                "source_url": "https://www.emirates.com/us/english/destinations/flights-to-glasgow/",
-                "source_name": "Emirates — Flights to Glasgow (GLA)"
               }
             ]
           }
