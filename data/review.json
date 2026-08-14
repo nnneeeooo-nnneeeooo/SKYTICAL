@@ -1,5 +1,315 @@
 [
   {
+    "id": "g-20260814-1409-8",
+    "queuedUtc": "2026-08-14T14:09Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Legislative budget passage with a NT$44.2 billion drone industry plan is a major financial claim requiring human review. The core event is a confirmed legislative action but involves large budget figures and procurement policy changes.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The Legislative Yuan passed the third reading of the ROC FY2026 central government budget on August 14, 2026, with a net reduction of NT$48 billion from the original expenditure total of NT$3.0349 trillion.",
+        "sourceQuote": "立法院今天三讀通過中華民國115年度中央政府總預算案，原列歲出總額為3兆349億7437萬1000元，審議結果，共計減列480億元。",
+        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The Legislature passed a resolution requiring the Executive Yuan to instruct the Ministry of Economic Affairs to allocate the NT$44.2 billion budget for the six-year Unmanned Vehicle Industry Development Coordinated Program evenly over six years, with annual spending not exceeding the average.",
+        "sourceQuote": "要求行政院應責成經濟部將442億元預算分6年平均編列，每年不得超過平均編列數",
+        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The Kuomintang caucus stated that the NT$44.2 billion program plus NT$19.2 billion in procurement budgets across agencies, totaling NT$63.4 billion, were all approved and excluded from the 1.5% across-the-board cut.",
+        "sourceQuote": "針對經濟部6年442億元「無人載具產業發展統籌型計畫」，及行政院各部會編列的192億元採購預算，合計634億全數通過，並排除在總預算通刪1.5%之外。",
+        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The resolution stated that the Executive Yuan approved the six-year (FY2025-2030) program with NT$44.2 billion in public budget funds, coordinated by the Ministry of Economic Affairs across agencies to build a drone industry promotion mechanism.",
+        "sourceQuote": "行政院核定6年期（114-119）「無人載具產業發展統籌型計畫」，於公務預算共匡列總經費442億元，由經濟部統籌協調，跨部會共同建構無人機產業推動機制。",
+        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The resolution specified that apart from defense military drone procurement, other agencies' non-military drone procurements may follow the Common Supply Contract Implementation Regulations, and any new unmanned vehicle projects added during the program period must be approved by the Executive Yuan before implementation.",
+        "sourceQuote": "除國防軍用無人機採購之外，其餘各部會非軍規無人機採購，得依照「共同供應契約實施辦法」進行採購辦理",
+        "sourceUrl": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "The US government announced on August 13, 2026, that it would impose tariffs on globally imported UAS and components pursuant to Section 232 of the Trade Expansion Act of 1962, with Taiwan's relevant products subject to a 15% tariff not stacked on MFN; the Ministry of Economic Affairs facilitated ITRI as the sole overseas Green UAS certification site.",
+        "sourceQuote": "美國政府在美東時間8月13日公告，依據「1962年貿易擴張法」第232條對全球進口無人機系統（UAS）及其零組件對美國國家安全影響所進行的調查結果。",
+        "sourceUrl": "https://www.cna.com.tw/news/afe/202608140260.aspx",
+        "evidenceScope": "archive",
+        "archiveEventId": "a-20260814-1143-us-imposes-section-232-drone-tariffs-tai",
+        "archiveContext": true
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Legislative budget passage with a NT$44.2 billion drone industry plan is a major financial claim requiring human review. The core event is a confirmed legislative action but involves large budget figures and procurement policy changes.",
+      "cat": "biz",
+      "zh": {
+        "title": "立法院三讀通過115年總預算 442億無人載具計畫分6年平均編列",
+        "summary": "立法院三讀通過115年度總預算；442億元無人載具計畫須分6年平均編列",
+        "body": [
+          "立法院會2026年8月14日三讀通過中華民國115年度中央政府總預算案，原列歲出總額為3兆349億7437萬1000元，審議結果共計減列480億元。",
+          "針對行政院訂定為期6年、新台幣442億元的「無人載具產業發展統籌型計畫」，國民黨團與民眾黨團共提主決議，要求行政院應責成經濟部將442億元預算分6年平均編列，每年不得超過平均編列數。",
+          "國民黨團發布新聞稿指出，全力支持發展無人機產業與強化國防，針對經濟部6年442億元「無人載具產業發展統籌型計畫」及行政院各部會編列的192億元採購預算，合計634億全數通過，並排除在總預算通刪1.5%之外。",
+          "主決議提案指出，行政院核定6年期（114-119）「無人載具產業發展統籌型計畫」，於公務預算共匡列總經費442億元，由經濟部統籌協調，跨部會共同建構無人機產業推動機制。提案表示，為強化國內無人機產業能量與供應鏈韌性，打造民主供應鏈亞太中心，每年投入經費不宜大幅波動。",
+          "提案另指出，除國防軍用無人機採購外，其餘各部會非軍規無人機採購得依照「共同供應契約實施辦法」辦理，杜絕重複編列預算或特權統包後再轉包以規避監督。統籌型計畫執行期間各部會如有新增相關無人載具計畫應納入者，須經行政院核定後始得執行。",
+          "此前，美國政府於2026年8月13日宣布依據「1962年貿易擴張法」第232條對全球進口無人機系統及其零組件加徵關稅，台灣相關產品適用15%稅率且不疊加MFN。經濟部已推動工研院成為美國Green UAS境外唯一認證據點，並促成金屬中心對接Blue UAS認證，協助業者符合美方認驗證要求。"
+        ]
+      },
+      "en": {
+        "title": "Taiwan Legislature Passes FY2026 Budget; NT$44.2B Drone Vehicle Plan to Be Evenly Allocated Over 6 Years",
+        "summary": "Legislature passes FY2026 budget; NT$44.2B unmanned vehicle plan must be evenly allocated over six years",
+        "body": [
+          "Taiwan's Legislative Yuan passed the third reading of the Republic of China FY2026 central government budget on August 14, 2026. The original total expenditure was set at NT$3.0349 trillion, with a net reduction of NT$48 billion after deliberation.",
+          "Regarding the Executive Yuan's six-year, NT$44.2 billion \"Unmanned Vehicle Industry Development Coordinated Program,\" the Kuomintang and Taiwan People's Party caucuses co-sponsored a resolution requiring the Executive Yuan to instruct the Ministry of Economic Affairs to allocate the NT$44.2 billion evenly over six years, with annual spending not exceeding the average amount.",
+          "The Kuomintang caucus stated its full support for developing the drone industry and strengthening national defense, noting that the Ministry of Economic Affairs' six-year NT$44.2 billion program plus NT$19.2 billion in procurement budgets across Executive Yuan agencies, totaling NT$63.4 billion, were all approved and excluded from the 1.5% across-the-board budget cut.",
+          "The resolution stated that the Executive Yuan approved the six-year (FY2025-2030) program with NT$44.2 billion in public budget funds, coordinated by the Ministry of Economic Affairs across agencies to build a drone industry promotion mechanism. It cited the need to strengthen domestic drone industry capacity and supply chain resilience to create a democratic supply chain Asia-Pacific hub, noting that annual funding should not fluctuate significantly.",
+          "The resolution further specified that apart from defense military drone procurement, other agencies' non-military drone procurements may follow the Common Supply Contract Implementation Regulations to prevent duplicate budget allocations or privileged subcontracting to evade oversight. Any new unmanned vehicle projects added during the program period must be approved by the Executive Yuan before implementation.",
+          "Separately, the US government announced on August 13, 2026, that it would impose tariffs on globally imported unmanned aircraft systems and components pursuant to Section 232 of the Trade Expansion Act of 1962, with Taiwan's relevant products subject to a 15% tariff not stacked on MFN. The Ministry of Economic Affairs has facilitated ITRI as the sole overseas Green UAS certification site and the Metal Industries Research & Development Centre in connecting with Blue UAS certification to help manufacturers meet US requirements."
+        ]
+      },
+      "flash": {
+        "zh": "立法院三讀通過115年總預算 442億無人機計畫分6年編列",
+        "en": "Taiwan legislature passes FY2026 budget; NT$44.2B drone plan allocated over 6 years",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The Legislative Yuan passed the third reading of the ROC FY2026 central government budget on August 14, 2026, with a net reduction of NT$48 billion from the original expenditure total of NT$3.0349 trillion.",
+          "sourceQuote": "立法院今天三讀通過中華民國115年度中央政府總預算案，原列歲出總額為3兆349億7437萬1000元，審議結果，共計減列480億元。",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The Legislature passed a resolution requiring the Executive Yuan to instruct the Ministry of Economic Affairs to allocate the NT$44.2 billion budget for the six-year Unmanned Vehicle Industry Development Coordinated Program evenly over six years, with annual spending not exceeding the average.",
+          "sourceQuote": "要求行政院應責成經濟部將442億元預算分6年平均編列，每年不得超過平均編列數",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The Kuomintang caucus stated that the NT$44.2 billion program plus NT$19.2 billion in procurement budgets across agencies, totaling NT$63.4 billion, were all approved and excluded from the 1.5% across-the-board cut.",
+          "sourceQuote": "針對經濟部6年442億元「無人載具產業發展統籌型計畫」，及行政院各部會編列的192億元採購預算，合計634億全數通過，並排除在總預算通刪1.5%之外。",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The resolution stated that the Executive Yuan approved the six-year (FY2025-2030) program with NT$44.2 billion in public budget funds, coordinated by the Ministry of Economic Affairs across agencies to build a drone industry promotion mechanism.",
+          "sourceQuote": "行政院核定6年期（114-119）「無人載具產業發展統籌型計畫」，於公務預算共匡列總經費442億元，由經濟部統籌協調，跨部會共同建構無人機產業推動機制。",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The resolution specified that apart from defense military drone procurement, other agencies' non-military drone procurements may follow the Common Supply Contract Implementation Regulations, and any new unmanned vehicle projects added during the program period must be approved by the Executive Yuan before implementation.",
+          "sourceQuote": "除國防軍用無人機採購之外，其餘各部會非軍規無人機採購，得依照「共同供應契約實施辦法」進行採購辦理",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The US government announced on August 13, 2026, that it would impose tariffs on globally imported UAS and components pursuant to Section 232 of the Trade Expansion Act of 1962, with Taiwan's relevant products subject to a 15% tariff not stacked on MFN; the Ministry of Economic Affairs facilitated ITRI as the sole overseas Green UAS certification site.",
+          "sourceQuote": "美國政府在美東時間8月13日公告，依據「1962年貿易擴張法」第232條對全球進口無人機系統（UAS）及其零組件對美國國家安全影響所進行的調查結果。",
+          "sourceUrl": "https://www.cna.com.tw/news/afe/202608140260.aspx",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260814-1143-us-imposes-section-232-drone-tariffs-tai",
+          "archiveContext": true
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "立法院",
+          "行政院",
+          "經濟部",
+          "國民黨團",
+          "民眾黨團",
+          "工研院",
+          "金屬中心"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "台北"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-14",
+          "2026-08-13"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1409-8",
+      "primarySource": "中央社 CNA",
+      "items": [
+        {
+          "title": "115年總預算三讀通過 442億無人機計畫分6年平均編列",
+          "url": "https://www.cna.com.tw/news/aipl/202608140299.aspx",
+          "publishedUtc": "2026-08-14T11:13Z",
+          "summary": "（中央社記者王承中台北14日電）立法院會今天三讀通過115年度總預算，針對行政院訂定為期6年新台幣442億元「無人載具產業發展統籌型計畫」，藍白提主決議，要求行政院應責成經濟部將442億元預算分6年平均編列，每年不得超過平均編列數。",
+          "image": null,
+          "source": "中央社 CNA",
+          "sourceKey": "cnataiwan"
+        },
+        {
+          "title": "115年總預算三讀通過442億無人機計畫分6年平均編列| 政治",
+          "summary": "115年總預算三讀通過442億無人機計畫分6年平均編列| 政治 &nbsp;&nbsp; cna.com.tw",
+          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5URFRxWTJobENUVXplMWNCbXcySE5kZmhaTHpaY0RrNkNDaWYwQnNKWXBXNFRzUXRTY21TRUdCbWlvQUxCRG55U094Y0FHOEF0eFFYanpKbjhTcXpkQjhN?oc=5",
+          "source": "cna.com.tw",
+          "companion": true,
+          "publishedUtc": "2026-08-14T13:08Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1207-taiwan-caa-to-raise-airport-firefighter",
+            "relationship_type": "regulatory_progression",
+            "relationship_evidence": [
+              "same named core entity: 行政院",
+              "archive predates source by 16 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 16 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給",
+            "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
+            "facts": [
+              {
+                "claim": "CAA Taiwan announced that Executive Yuan approved raising hazardous duty allowance for airport firefighters starting August 1, 2026.",
+                "source_quote": "為反映機場消防人員勤務的專業性與危險繁重現況，行政院核定調高危險職務加給",
+                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
+                "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給"
+              },
+              {
+                "claim": "The CAA stated that its 16 airports will be divided into two tiers, with monthly allowances of NT$9,700 for Tier 1 and NT$7,760 for Tier 2.",
+                "source_quote": "所屬16處機場將分為2級，第一級每月支領9,700元，第二級每月支領7,760元",
+                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
+                "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給"
+              },
+              {
+                "claim": "CAA noted that dedicated airport firefighting personnel are deployed at airports according to ICAO standards.",
+                "source_quote": "必須依據國際民航組織（ICAO）標準，配置專責機場消防人力",
+                "source_url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2569&lang=1",
+                "source_name": "CAA Taiwan — 留住專業人力,8月1日起,調高機場消防員危險加給"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260814-1143-us-imposes-section-232-drone-tariffs-tai",
+            "relationship_type": "regulatory_progression",
+            "relationship_evidence": [
+              "same named core entity: 經濟部",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-08-13",
+            "source_name": "中央社 CNA — 美無人機關稅 政院:台灣稅率優勢最高達85個百分點",
+            "source_url": "https://www.cna.com.tw/news/afe/202608140260.aspx",
+            "facts": [
+              {
+                "claim": "The US government announced on August 13 Eastern Time that it would impose tariffs on globally imported UAS and components pursuant to Section 232 of the Trade Expansion Act of 1962.",
+                "source_quote": "美國政府在美東時間8月13日公告，依據「1962年貿易擴張法」第232條對全球進口無人機系統（UAS）及其零組件對美國國家安全影響所進行的調查結果。",
+                "source_url": "https://www.cna.com.tw/news/afe/202608140260.aspx",
+                "source_name": "中央社 CNA — 美無人機關稅 政院:台灣稅率優勢最高達85個百分點"
+              },
+              {
+                "claim": "Taiwan, the EU, Japan, South Korea, and Switzerland face a 15% tariff not stacked on MFN; the UK faces 10% not stacked on MFN.",
+                "source_quote": "台灣與歐盟、日本、韓國、瑞士等特定貿易夥伴的相關產品稅率皆為15%且不疊加MFN，英國相關產品稅率則為10%不疊加MFN。",
+                "source_url": "https://www.cna.com.tw/news/afe/202608140260.aspx",
+                "source_name": "中央社 CNA — 美無人機關稅 政院:台灣稅率優勢最高達85個百分點"
+              },
+              {
+                "claim": "For other countries, large drones over 25 kg or those with sensitive functions like thermal imaging face 100% tariff stacked on MFN; general drones not exceeding 25 kg without thermal imaging face 25% stacked on MFN.",
+                "source_quote": "若為25公斤以上大型無人機、或具備如熱成像等敏感功能的無人機或其關鍵零組件，輸美是適用100%疊加MFN關稅；若重量不超過25公斤且不具備熱成像功能的一般商業或消費型無人機及零組件，輸美則適用25%疊加MFN關稅。",
+                "source_url": "https://www.cna.com.tw/news/afe/202608140260.aspx",
+                "source_name": "中央社 CNA — 美無人機關稅 政院:台灣稅率優勢最高達85個百分點"
+              },
+              {
+                "claim": "Taiwan's products meeting US critical component and technology source requirements have an 85 percentage point tariff advantage over other countries' 100% rate for sensitive, large, and thermal-imaging drones, and a 10 percentage point advantage for general small and medium-sized drones.",
+                "source_quote": "台灣符合美方關鍵零組件及技術來源條件要求的相關輸美產品，相比其他國家的適用稅率為100%，具85個百分點的關稅差異優勢。",
+                "source_url": "https://www.cna.com.tw/news/afe/202608140260.aspx",
+                "source_name": "中央社 CNA — 美無人機關稅 政院:台灣稅率優勢最高達85個百分點"
+              },
+              {
+                "claim": "Non-sensitive parts take effect 180 days after signing on February 9 next year; other items take effect 21 days after signing on September 3.",
+                "source_quote": "非敏感零件是自簽署後180天生效，幾就是明年2月9日生效，其餘項目則是自簽署後21天生效也就是9月3日生效。",
+                "source_url": "https://www.cna.com.tw/news/afe/202608140260.aspx",
+                "source_name": "中央社 CNA — 美無人機關稅 政院:台灣稅率優勢最高達85個百分點"
+              },
+              {
+                "claim": "The Ministry of Economic Affairs facilitated ITRI as the sole overseas Green UAS certification site and the Metal Industries Research & Development Centre in connecting with Blue UAS certification to help manufacturers meet FCC Covered List requirements.",
+                "source_quote": "經濟部已推動工研院成為美國Green UAS境外唯一認證據點，並促成金屬中心對接Blue UAS認證，協助業者符合美方認驗證要求",
+                "source_url": "https://www.cna.com.tw/news/afe/202608140260.aspx",
+                "source_name": "中央社 CNA — 美無人機關稅 政院:台灣稅率優勢最高達85個百分點"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260814-1242-2",
     "queuedUtc": "2026-08-14T12:43Z",
     "approve": false,
@@ -10273,142 +10583,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260811-1955-3",
-    "queuedUtc": "2026-08-11T19:55Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "Story involves an airline investigation, triggering the investigation risk flag; requires human review to assess risk level and ensure no safety implications.",
-    "riskFlags": [
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Delta is investigating a possible hoax Wi-Fi network on a Las Vegas-Atlanta flight after DEF CON 34.",
-        "sourceQuote": "Delta is investigating a possible hoax Wi-Fi network on a Las Vegas-Atlanta flight after DEF CON 34",
-        "sourceUrl": "https://simpleflying.com/delta-air-lines-investigating-hoax-wifi-network-las-vegas-flight-hacking-conference/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "No aircraft systems were hacked in the incident.",
-        "sourceQuote": "though no aircraft systems were hacked",
-        "sourceUrl": "https://simpleflying.com/delta-air-lines-investigating-hoax-wifi-network-las-vegas-flight-hacking-conference/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Story involves an airline investigation, triggering the investigation risk flag; requires human review to assess risk level and ensure no safety implications.",
-      "cat": "ops",
-      "zh": {
-        "title": "達美航空調查拉斯維加斯飛往亞特蘭大航班的假Wi-Fi網路",
-        "summary": "達美航空正調查拉斯維加斯至亞特蘭大航班上疑似的假Wi-Fi網路，經DEF CON 34後發生，惟未發現航空器系統被入侵。",
-        "body": [
-          "達美航空表示，在DEF CON 34會議後，發現拉斯維加斯飛往亞特蘭大航班上出現可疑的假Wi-Fi網路，因此展開調查。",
-          "根據Simple Flying的報導，雖然有乘客報告該網路，但經初步檢查後確認航空器的任何系統未被黑客入侵或受損。",
-          "達美強調乘客安全不受影響，並將繼續監測與協調相關資安事件。",
-          "此事件凸顯大型資安會議期間，航空業界對無線網路安全的警覺需求提升。",
-          "Simple Flying為航空新聞網站，其報導為本則消息的唯一来源。"
-        ]
-      },
-      "en": {
-        "title": "Delta Investigates Possible Hoax Wi-Fi Network on Las Vegas-Atlanta Flight After DEF CON 34",
-        "summary": "Delta is looking into a suspected hoax Wi-Fi network on a Las Vegas-Atlanta flight following DEF CON 34, though no aircraft systems were hacked.",
-        "body": [
-          "Delta Air Lines said it is investigating after reports of a suspicious Wi-Fi network appeared on a flight from Las Vegas to Atlanta following the DEF CON 34 hacking conference.",
-          "According to Simple Flying, while passengers noted the network, preliminary checks showed no intrusion or damage to any aircraft systems.",
-          "The airline stressed that passenger safety was not affected and it will continue to monitor and coordinate on the matter.",
-          "The incident highlights increased vigilance around wireless security during major cybersecurity gatherings.",
-          "Simple Flying is an aviation news website and the sole source for this report."
-        ]
-      },
-      "flash": {
-        "zh": "達美調查拉斯維加斯航班假Wi-Fi",
-        "en": "Delta probes hoax Wi-Fi on Vegas-Atlanta flight",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Delta is investigating a possible hoax Wi-Fi network on a Las Vegas-Atlanta flight after DEF CON 34.",
-          "sourceQuote": "Delta is investigating a possible hoax Wi-Fi network on a Las Vegas-Atlanta flight after DEF CON 34",
-          "sourceUrl": "https://simpleflying.com/delta-air-lines-investigating-hoax-wifi-network-las-vegas-flight-hacking-conference/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "No aircraft systems were hacked in the incident.",
-          "sourceQuote": "though no aircraft systems were hacked",
-          "sourceUrl": "https://simpleflying.com/delta-air-lines-investigating-hoax-wifi-network-las-vegas-flight-hacking-conference/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "Delta Air Lines",
-          "Simple Flying"
-        ],
-        "airlines": [
-          "Delta Air Lines"
-        ],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "Las Vegas",
-          "Atlanta"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "under_investigation",
-      "riskFlags": [
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-1955-3",
-      "primarySource": "Simple Flying",
-      "items": [
-        {
-          "title": "Delta Air Lines Investigating Hoax WiFi Network On Las Vegas Flight After Hacking Conference",
-          "url": "https://simpleflying.com/delta-air-lines-investigating-hoax-wifi-network-las-vegas-flight-hacking-conference/",
-          "publishedUtc": "2026-08-11T19:12Z",
-          "summary": "Delta is investigating a possible hoax Wi-Fi network on a Las Vegas-Atlanta flight after DEF CON 34, though no aircraft systems were hacked.",
-          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/05/127-delta-air-lines-boeing-757-300-markus-mainka-_-shutterstock.jpg",
-          "source": "Simple Flying",
-          "sourceKey": "simpleflying"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
