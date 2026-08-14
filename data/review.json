@@ -1,5 +1,290 @@
 [
   {
+    "id": "g-20260814-0710-4",
+    "queuedUtc": "2026-08-14T07:10Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The origin, operator, and specific type of the intercepted drone remain unconfirmed and under investigation by Latvian authorities.",
+    "riskFlags": [
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "NATO fighters shot down a drone that entered Latvian airspace early on August 14, 2026.",
+        "sourceQuote": "NATO fighters shot down a drone that entered Latvian airspace early on August 14, 2026",
+        "sourceUrl": "https://www.aerotime.aero/articles/nato-fighters-drone-latvia-finland-airspace",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Finland temporarily restricted aviation and maritime traffic in the eastern Gulf of Finland amid security concerns over the incursion.",
+        "sourceQuote": "Finland temporarily restricted aviation and maritime traffic in the eastern Gulf of Finland amid security concerns over the incursion.",
+        "sourceUrl": "https://www.aerotime.aero/articles/nato-fighters-drone-latvia-finland-airspace",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Latvia's National Armed Forces stated that allied fighters intercepted and destroyed the drone after an air threat alert was issued near the Russian border.",
+        "sourceQuote": "Latvia’s National Armed Forces said allied fighters operating on a NATO air defense mission intercepted and destroyed the drone after an air threat alert was issued for regions close to the Russian border.",
+        "sourceUrl": "https://www.aerotime.aero/articles/nato-fighters-drone-latvia-finland-airspace",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Latvian authorities have not yet identified the drone's type, operator, or origin.",
+        "sourceQuote": "Latvian authorities have not yet identified the type of drone, its operator or where it came from.",
+        "sourceUrl": "https://www.aerotime.aero/articles/nato-fighters-drone-latvia-finland-airspace",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The origin, operator, and specific type of the intercepted drone remain unconfirmed and under investigation by Latvian authorities.",
+      "cat": "mil",
+      "zh": {
+        "title": "NATO戰機於拉脫維亞擊落無人機 芬蘭限制東芬蘭灣交通",
+        "summary": "NATO戰機於拉脫維亞擊落入侵無人機；芬蘭暫時限制東芬蘭灣空域及海上交通",
+        "body": [
+          "北大西洋公約組織（NATO）盟軍戰機於2026年8月14日清晨在拉脫維亞領空擊落一架無人機。拉脫維亞國家武裝部隊表示，在靠近俄羅斯邊境地區發布空中威脅警報後，執行 NATO 空中防禦任務的盟軍戰機攔截並摧毀了該架無人機，警報隨後已解除。",
+          "受此安全事件影響，鄰國芬蘭暫時限制了東芬蘭灣（Gulf of Finland）的航空與海上交通。芬蘭當局採取相關限制措施，以防範邊境附近的安全風險。",
+          "拉脫維亞當局目前尚未確認該架無人機的具體機型、營運者或來源地。相關調查與安全監控工作仍在持續進行中。"
+        ]
+      },
+      "en": {
+        "title": "NATO Fighters Shoot Down Drone over Latvia as Finland Restricts Airspace",
+        "summary": "NATO fighters shot down a drone over Latvia on August 14, prompting Finland to restrict nearby traffic.",
+        "body": [
+          "NATO fighters operating on an air defense mission shot down a drone that entered Latvian airspace early on August 14, 2026. Latvia’s National Armed Forces stated that allied fighters intercepted and destroyed the drone following an air threat alert issued for regions near the Russian border. The threat alert was subsequently lifted.",
+          "In response to security concerns surrounding the airspace incursion, neighboring Finland temporarily restricted aviation and maritime traffic in the eastern Gulf of Finland. The precautionary measures were put in place to manage potential risks in border areas.",
+          "Latvian authorities have not yet identified the specific type of drone, its operator, or its point of origin. Investigations into the incident remain ongoing."
+        ]
+      },
+      "flash": {
+        "zh": "NATO戰機於拉脫維亞擊落入侵無人機，芬蘭限制周邊交通",
+        "en": "NATO fighters shoot down drone over Latvia; Finland restricts Gulf of Finland traffic",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "NATO fighters shot down a drone that entered Latvian airspace early on August 14, 2026.",
+          "sourceQuote": "NATO fighters shot down a drone that entered Latvian airspace early on August 14, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/nato-fighters-drone-latvia-finland-airspace",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Finland temporarily restricted aviation and maritime traffic in the eastern Gulf of Finland amid security concerns over the incursion.",
+          "sourceQuote": "Finland temporarily restricted aviation and maritime traffic in the eastern Gulf of Finland amid security concerns over the incursion.",
+          "sourceUrl": "https://www.aerotime.aero/articles/nato-fighters-drone-latvia-finland-airspace",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Latvia's National Armed Forces stated that allied fighters intercepted and destroyed the drone after an air threat alert was issued near the Russian border.",
+          "sourceQuote": "Latvia’s National Armed Forces said allied fighters operating on a NATO air defense mission intercepted and destroyed the drone after an air threat alert was issued for regions close to the Russian border.",
+          "sourceUrl": "https://www.aerotime.aero/articles/nato-fighters-drone-latvia-finland-airspace",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Latvian authorities have not yet identified the drone's type, operator, or origin.",
+          "sourceQuote": "Latvian authorities have not yet identified the type of drone, its operator or where it came from.",
+          "sourceUrl": "https://www.aerotime.aero/articles/nato-fighters-drone-latvia-finland-airspace",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "NATO",
+          "Latvia’s National Armed Forces"
+        ],
+        "airlines": [],
+        "aircraft_models": [],
+        "airports": [],
+        "locations": [
+          "Latvia",
+          "Latvian airspace",
+          "Finland",
+          "eastern Gulf of Finland"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "August 14, 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-0710-4",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "NATO fighters shoot down drone over Latvia as Finland restricts airspace",
+          "url": "https://www.aerotime.aero/articles/nato-fighters-drone-latvia-finland-airspace",
+          "publishedUtc": "2026-08-14T03:09Z",
+          "summary": "NATO fighters shot down a drone that entered Latvian airspace early on August 14, 2026, as neighboring Finland… The post NATO fighters shoot down drone over Latvia as Finland restricts airspace appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
+            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+            "facts": [
+              {
+                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
+                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
+                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
+                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
+                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
+                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260814-0526-1",
     "queuedUtc": "2026-08-14T05:26Z",
     "approve": false,
@@ -10150,332 +10435,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260811-0924-5",
-    "queuedUtc": "2026-08-11T09:24Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The report involves major financial claims and conditional equity financing commitments requiring editorial review.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Vertical Aerospace announced financing commitments of about $100 million to advance its Valo eVTOL aircraft towards certification and commercialisation.",
-        "sourceQuote": "Vertical Aerospace has announced financing commitments of about $100 million to advance its Valo electric vertical take-off and landing (eVTOL) aircraft towards certification and commercialisation",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The proposed financing comprises three components: $40 million from Mudrick Capital Management, $35 million from an underwritten equity offering, and $25 million from a Yorkville Advisors Global facility.",
-        "sourceQuote": "comprises three components: $40 million from Mudrick Capital Management, $35 million from existing and new investors through an underwritten equity offering, and $25 million from its preferred equity facility with Yorkville Advisors Global.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Vertical Aerospace cautioned that the Mudrick component remains subject to definitive agreements and may not be completed on current terms or at all.",
-        "sourceQuote": "The company cautioned that the Mudrick component remains subject to definitive agreements and may not be completed on the terms currently contemplated, or at all.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "The capital is intended to fund Critical Design Review, production preparations, expanded battery manufacturing, and hybrid-electric flight testing.",
-        "sourceQuote": "providing funding for Critical Design Review, production preparations, expanded battery manufacturing and hybrid-electric flight testing.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Vertical Aerospace plans to retrofit its third prototype aircraft for hybrid-electric flight testing in the first half of 2027.",
-        "sourceQuote": "support continued progress towards the retrofit of the company’s third prototype aircraft for hybrid-electric flight testing in the first half of 2027.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Certification flight testing is expected in 2028, followed by a targeted entry into service in 2029.",
-        "sourceQuote": "followed by certification flight testing in 2028 and a targeted entry into service in 2029.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The report involves major financial claims and conditional equity financing commitments requiring editorial review.",
-      "cat": "biz",
-      "zh": {
-        "title": "垂直航太籌集一億美元資金推動Valo認證",
-        "summary": "垂直航太取得一億美元融資承諾；加速Valo電動垂直起降飛行器認證",
-        "body": [
-          "垂直航太（Vertical Aerospace）宣布獲得約1億美元的融資承諾，用於推進其Valo電動垂直起降（eVTOL）飛行器的認證與商業化。該融資包含來自Mudrick Capital Management的4,000萬美元、股權發行的3,500萬美元，以及來自Yorkville Advisors Global的2,500萬美元。",
-          "該資金將支援關鍵設計審查、生產準備、電池製造及混合動力飛行測試。垂直航太計劃於2027年上半年改裝第三架原型機進行測試，預計於2028年展開認證飛行測試，並於2029年投入營運。",
-          "公司提醒指出，Mudrick部分的融資仍有待簽署正式協議，最終可能無法依目前條款完成。"
-        ]
-      },
-      "en": {
-        "title": "Vertical Aerospace Secures $100M Financing Commitments for Valo eVTOL Certification",
-        "summary": "Vertical Aerospace has secured $100 million in financing commitments to advance its Valo eVTOL certification and commercialisation.",
-        "body": [
-          "Vertical Aerospace has announced financing commitments of approximately $100 million to advance its Valo electric vertical take-off and landing (eVTOL) aircraft towards certification and commercialisation. The funding package includes $40 million from Mudrick Capital Management, $35 million from an underwritten equity offering, and $25 million from a Yorkville Advisors Global facility.",
-          "The company stated that the capital will support Critical Design Review, production preparations, expanded battery manufacturing, and hybrid-electric flight testing. Vertical Aerospace plans to retrofit its third prototype aircraft for hybrid-electric testing in the first half of 2027, with certification flight testing expected in 2028 and entry into service targeted for 2029.",
-          "Vertical Aerospace cautioned that the Mudrick component remains subject to definitive agreements and may not be completed on current terms or at all."
-        ]
-      },
-      "flash": {
-        "zh": "垂直航太籌集1億美元資金推進Valo認證",
-        "en": "Vertical Aerospace secures $100M financing commitments for Valo eVTOL program.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Vertical Aerospace announced financing commitments of about $100 million to advance its Valo eVTOL aircraft towards certification and commercialisation.",
-          "sourceQuote": "Vertical Aerospace has announced financing commitments of about $100 million to advance its Valo electric vertical take-off and landing (eVTOL) aircraft towards certification and commercialisation",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The proposed financing comprises three components: $40 million from Mudrick Capital Management, $35 million from an underwritten equity offering, and $25 million from a Yorkville Advisors Global facility.",
-          "sourceQuote": "comprises three components: $40 million from Mudrick Capital Management, $35 million from existing and new investors through an underwritten equity offering, and $25 million from its preferred equity facility with Yorkville Advisors Global.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Vertical Aerospace cautioned that the Mudrick component remains subject to definitive agreements and may not be completed on current terms or at all.",
-          "sourceQuote": "The company cautioned that the Mudrick component remains subject to definitive agreements and may not be completed on the terms currently contemplated, or at all.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "The capital is intended to fund Critical Design Review, production preparations, expanded battery manufacturing, and hybrid-electric flight testing.",
-          "sourceQuote": "providing funding for Critical Design Review, production preparations, expanded battery manufacturing and hybrid-electric flight testing.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Vertical Aerospace plans to retrofit its third prototype aircraft for hybrid-electric flight testing in the first half of 2027.",
-          "sourceQuote": "support continued progress towards the retrofit of the company’s third prototype aircraft for hybrid-electric flight testing in the first half of 2027.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Certification flight testing is expected in 2028, followed by a targeted entry into service in 2029.",
-          "sourceQuote": "followed by certification flight testing in 2028 and a targeted entry into service in 2029.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1"
-      ],
-      "summarySupportedBy": [
-        "F1"
-      ],
-      "entities": {
-        "organizations": [
-          "Vertical Aerospace",
-          "Mudrick Capital Management",
-          "Yorkville Advisors Global"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Valo"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-11",
-          "2027",
-          "2028",
-          "2029"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-0924-5",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Vertical Aerospace secures $100m financing commitments to advance Valo towards certification News",
-          "url": "https://aerospaceglobalnews.com/news/vertical-aerospace-funding-valo-evtol/",
-          "publishedUtc": "2026-08-11T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/Vertical-Aerospace-eVTOL.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260801-1206-farnborough-airshow-2026-closes-with-84",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: farnborough international, vertical aerospace",
-              "archive predates source by 12 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 12 day(s) apart",
-            "event_date": "2026-07-30",
-            "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in...",
-            "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-            "facts": [
-              {
-                "claim": "The 2026 Farnborough International Airshow generated over $84.7 billion in commercial business and secured 353 firm commercial aircraft orders.",
-                "source_quote": "generated over $84.7 billion in commercial business",
-                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
-              },
-              {
-                "claim": "The event welcomed 141,580 trade and public visitors from 136 countries, representing a 41% increase compared with the previous show.",
-                "source_quote": "welcomed 141,580 trade and public visitors from 136 countries. That is a 41% increase compared with the previous show",
-                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
-              },
-              {
-                "claim": "Major aircraft and engine announcements at the event were made by manufacturers including Boeing, Airbus, Embraer, and Pratt & Whitney.",
-                "source_quote": "featured several major aircraft and engine announcements by Boeing , Airbus , Embraer , LEAP and Pratt & Whitney .",
-                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
-              },
-              {
-                "claim": "Vertical Aerospace conducted its first public electric vertical take-off and landing (eVTOL) flight demonstration at the airshow.",
-                "source_quote": "Vertical Aerospace’s first public electric vertical take-off and landing (eVTOL) flight at the airshow.",
-                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
-              },
-              {
-                "claim": "The next Farnborough International Airshow is scheduled for July 17-21, 2028.",
-                "source_quote": "The next Farnborough International Airshow will take place 17-21 July 2028",
-                "source_url": "https://aerospaceglobalnews.com/news/farnborough-international-airshow-2026-84-7bn-deals-attendance-record/",
-                "source_name": "Aerospace Global News — Farnborough International Airshow 2026 generates $84.7bn in..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260801-0732-lot-polish-airlines-to-launch-direct-war",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: lot",
-              "archive predates source by 11 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 11 day(s) apart",
-            "event_date": "2026-07-31",
-            "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with...",
-            "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-            "facts": [
-              {
-                "claim": "LOT Polish Airlines has announced a direct route between Warsaw Chopin Airport and Hanoi Noi Bai International Airport, with the inaugural flight scheduled for March 31, 2027.",
-                "source_quote": "LOT Polish Airlines has launched a new direct route between Warsaw Chopin Airport (WAW) and Noi Bai International Airport (HAN) in Hanoi, Vietnam, marking the airline’s fifth long-haul destination in Asia. Tickets are now on sale, with the inaugural flight scheduled for March 31, 2027.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "The Warsaw-Hanoi service will operate three times per week year-round using Boeing 787 Dreamliner aircraft, with departures from Warsaw on Mondays, Wednesdays, and Fridays, and return flights from Hanoi on Tuesdays, Thursdays, and Saturdays.",
-                "source_quote": "The Warsaw-Hanoi route will operate year-round, with three flights each way per week. Departures from Warsaw Chopin Airport are set for Mondays, Wednesdays, and Fridays at 15:15 local time, while return flights from Hanoi will depart Tuesdays, Thursdays, and Saturdays at 08:35 local time.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "Hanoi is LOT Polish Airlines' fifth long-haul destination in Asia, joining Tokyo, Seoul, New Delhi, and Bangkok.",
-                "source_quote": "Hanoi joins Tokyo, Seoul, New Delhi, and Bangkok as LOT’s fifth long-haul destination in Asia",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              },
-              {
-                "claim": "LOT Board Member and CCO Robert Ludera stated that the new route reflects the airline's ambition to expand in Asia and develop Warsaw as a connecting hub.",
-                "source_quote": "Robert Ludera, Board Member and Chief Commercial Officer at LOT Polish Airlines, noted that the new route reflects the airline’s ambition to expand its presence in Asia, while further developing Warsaw as a connecting hub between Central and Eastern Europe and some of the world’s fastest-growing destinations.",
-                "source_url": "https://www.aerotime.aero/articles/lot-polish-airlines-launches-new-direct-route-to-hanoi-with-boeing-787",
-                "source_name": "AeroTime — LOT Polish Airlines launches new direct route to Hanoi with..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260804-1529-swiss-semi-private-startup-peakjet-compl",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: aero",
-              "archive predates source by 7 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 7 day(s) apart",
-            "event_date": "2026-08-04",
-            "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first...",
-            "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-            "facts": [
-              {
-                "claim": "PeakJet completed its first commercial flight between Zürich and Palma de Mallorca on August 1, 2026.",
-                "source_quote": "PeakJet, a new Swiss semi-private airline, has announced that it has completed its first commercial flight between Zürich (ZRH) and Palma de Mallorca (PMI) on August 1, 2026.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "The flight was operated by the German subsidiary of VistaJet using an Embraer Legacy 650 capable of carrying up to 12 passengers.",
-                "source_quote": "The aircraft, an Embraer Legacy 650 capable of carrying up to 12 passengers, was operated by the German subsidiary of VistaJet.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "Neither PeakJet nor its parent Peak Plus AG holds an air operator certificate, functioning as a marketplace aggregating capacity on scheduled executive aircraft.",
-                "source_quote": "neither PeakJet nor its parent company, Peak Plus AG, holds an air operator certificate (AOC) of their own. Instead, PeakJet defines itself as a marketplace, which aggregates and sells capacity on executive aircraft operating on fixed schedules.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
