@@ -1,5 +1,140 @@
 [
   {
+    "id": "g-20260814-1841-1",
+    "queuedUtc": "2026-08-14T18:41Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Aviation safety event involving duplicate callsigns and ATC audio confusion over Phoenix; requires human editorial review.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "Two American Airlines Boeing 737 aircraft with the same callsign flew straight at each other.",
+        "sourceQuote": "2 American Airlines Boeing 737s With The Same Callsign Flew Straight At Each Other",
+        "sourceUrl": "https://simpleflying.com/american-airlines-boeing-737-same-callsign/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "A delayed inbound AA2482 flight and an on-time departure flight sharing the same callsign created cockpit and ATC audio confusion over Phoenix.",
+        "sourceQuote": "Delayed inbound AA2482 and on time departure with the same callsign created cockpit and ATC audio confusion over Phoenix.",
+        "sourceUrl": "https://simpleflying.com/american-airlines-boeing-737-same-callsign/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety event involving duplicate callsigns and ATC audio confusion over Phoenix; requires human editorial review.",
+      "cat": "safety",
+      "zh": {
+        "title": "美國航空兩架相同呼號波音737在鳳凰城上空引發通訊混淆",
+        "summary": "美國航空兩架AA2482班機呼號重覆；鳳凰城上空駕駛艙與航管通訊混淆",
+        "body": [
+          "美國航空（American Airlines）兩架波音737（Boeing 737）客機因使用相同的航班呼號，在鳳凰城上空相向飛行。根據 Simple Flying 報導，這兩架客機出現呼號重複狀況，造成駕駛艙與空中交通管制員之間的無線電語音通訊產生混淆。",
+          "涉事航班包括一架延誤抵達的AA2482班機，以及另一架準時起飛且使用相同呼號的美國航空班機。兩架客機在鳳凰城空域同時運作時，駕駛艙與空中交通管制員之間的語音通訊出現混亂情形。"
+        ]
+      },
+      "en": {
+        "title": "Two American Airlines Boeing 737s With Same Callsign Cause Audio Confusion Over Phoenix",
+        "summary": "American Airlines flight AA2482 experienced callsign duplication; ATC audio confusion occurred over Phoenix.",
+        "body": [
+          "Two American Airlines Boeing 737 aircraft using the exact same callsign flew straight at each other over Phoenix, generating audio confusion between flight crews and air traffic control personnel. The duplicate callsign situation created radio communication difficulties as both aircraft operated in the same airspace near Phoenix.",
+          "The situation occurred when a delayed inbound AA2482 flight and an on-time departure flight were assigned or utilized identical callsigns. This duplication caused significant cockpit and air traffic control audio confusion during radio communications over Phoenix, as controllers and pilots attempted to manage instructions for the two Boeing 737 aircraft simultaneously."
+        ]
+      },
+      "flash": {
+        "zh": "美國航空兩架呼號相同波音737在鳳凰城上空引發通訊混淆",
+        "en": "Two American Airlines Boeing 737s with same callsign cause ATC confusion over Phoenix",
+        "hot": true
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Two American Airlines Boeing 737 aircraft with the same callsign flew straight at each other.",
+          "sourceQuote": "2 American Airlines Boeing 737s With The Same Callsign Flew Straight At Each Other",
+          "sourceUrl": "https://simpleflying.com/american-airlines-boeing-737-same-callsign/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "A delayed inbound AA2482 flight and an on-time departure flight sharing the same callsign created cockpit and ATC audio confusion over Phoenix.",
+          "sourceQuote": "Delayed inbound AA2482 and on time departure with the same callsign created cockpit and ATC audio confusion over Phoenix.",
+          "sourceUrl": "https://simpleflying.com/american-airlines-boeing-737-same-callsign/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "American Airlines",
+          "Simple Flying"
+        ],
+        "airlines": [
+          "American Airlines"
+        ],
+        "aircraft_models": [
+          "Boeing 737"
+        ],
+        "airports": [],
+        "locations": [
+          "Phoenix"
+        ],
+        "flight_numbers": [
+          "AA2482"
+        ],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "under_investigation",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1841-1",
+      "primarySource": "Simple Flying",
+      "items": [
+        {
+          "title": "2 American Airlines Boeing 737s With The Same Callsign Flew Straight At Each Other",
+          "url": "https://simpleflying.com/american-airlines-boeing-737-same-callsign/",
+          "publishedUtc": "2026-08-14T18:25Z",
+          "summary": "Delayed inbound AA2482 and on time departure with the same callsign created cockpit and ATC audio confusion over Phoenix.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/american-airlines-boeing-737-800-touchdown.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260814-1641-1",
     "queuedUtc": "2026-08-14T16:41Z",
     "approve": false,
@@ -10499,193 +10634,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260812-0902-12",
-    "queuedUtc": "2026-08-12T09:02Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story covers an ongoing parliamentary inquiry into cabin air contamination and potential safety regulations.",
-    "riskFlags": [
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "The UK All-Party Parliamentary Group on Cabin Air Quality held its third evidence session during an inquiry into aircraft fume events.",
-        "sourceQuote": "third evidence session of the All-Party Parliamentary Group (APPG) on Cabin Air Quality",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "AFAP safety manager Captain Marcus Diamond urged MPs to mandate real-time cabin air monitoring on all bleed-air commercial aircraft.",
-        "sourceQuote": "We should mandate real cabin air monitoring on all bleed air commercial aircraft",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "AFAP is conducting airborne monitoring using portable equipment in Australia, having sampled about 40 flight sectors.",
-        "sourceQuote": "AFAP is now participating in an airborne monitoring effort using portable nanoparticle measurement equipment on aircraft in Australia.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Airborne testing identified higher nanoparticle readings on certain aircraft during takeoff and climb.",
-        "sourceQuote": "identified aircraft showing significantly higher nanoparticle readings during particular phases of flight, including takeoff and climb.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Dr Robert Harrison reported diagnosing and treating over 125 aircrew members after cabin air contamination events over 25 years.",
-        "sourceQuote": "diagnosed and treated more than 125 pilots and flight attendants following reported cabin air contamination events during the past 25 years.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story covers an ongoing parliamentary inquiry into cabin air contamination and potential safety regulations.",
-      "cat": "reg",
-      "zh": {
-        "title": "英國國會小組審議客艙空氣品質 專家呼籲強制安裝即時監測器",
-        "summary": "英國國會聽證會接獲建議，呼籲強制所有引氣客機加裝即時空氣監測系統。",
-        "body": [
-          "英國國會「客艙空氣品質全黨派小組」（APPG）舉行第三次聽證會，調查機艙氣味事件。澳洲機師聯邦（AFAP）安全經理戴蒙（Marcus Diamond）在會中呼籲，應強制所有引氣商業客機安裝即時客艙空氣監測設備。",
-          "戴蒙指出，該協會正使用可攜式設備在澳洲進行機上採樣，已測試約40個航段。測試發現部分飛機在起飛與爬升階段出現較高的奈米顆粒讀數，顯示即時監測有助於維修團隊辨識異常。",
-          "加州大學舊金山分校臨床教授哈里森（Robert Harrison）亦證實，過去25年曾診斷並治療逾125名受客艙空氣污染影響的機組人員，並強調醫療人員極需即時暴露資料。"
-        ]
-      },
-      "en": {
-        "title": "UK Parliamentary Inquiry Urged to Mandate Real-Time Cabin Air Sensors",
-        "summary": "UK parliamentary inquiry urged to mandate real-time cabin air monitoring on commercial aircraft.",
-        "body": [
-          "A UK parliamentary inquiry by the All-Party Parliamentary Group (APPG) on Cabin Air Quality held its third evidence session regarding aircraft fume events. Captain Marcus Diamond, safety manager at the Australian Federation of Air Pilots (AFAP), urged lawmakers to mandate real-time cabin air monitoring on all bleed-air commercial aircraft.",
-          "Diamond stated that AFAP is currently participating in airborne monitoring using portable equipment in Australia, having sampled around 40 flight sectors. The testing identified elevated nanoparticle readings on certain aircraft during takeoff and climb, demonstrating the potential value of real-time data for maintenance troubleshooting.",
-          "Medical expert Dr. Robert Harrison of the University of California, San Francisco, testified that he has diagnosed and treated more than 125 aircrew members following cabin air contamination events over the past 25 years. Harrison emphasized that clinicians urgently need better real-time exposure data to properly evaluate affected patients."
-        ]
-      },
-      "flash": {
-        "zh": "英國國會聽證會探討客艙空氣品質，專家呼籲強制安裝即時監測感測器。",
-        "en": "UK parliamentary inquiry considers mandating real-time aircraft cabin air sensors.",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "The UK All-Party Parliamentary Group on Cabin Air Quality held its third evidence session during an inquiry into aircraft fume events.",
-          "sourceQuote": "third evidence session of the All-Party Parliamentary Group (APPG) on Cabin Air Quality",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "AFAP safety manager Captain Marcus Diamond urged MPs to mandate real-time cabin air monitoring on all bleed-air commercial aircraft.",
-          "sourceQuote": "We should mandate real cabin air monitoring on all bleed air commercial aircraft",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "AFAP is conducting airborne monitoring using portable equipment in Australia, having sampled about 40 flight sectors.",
-          "sourceQuote": "AFAP is now participating in an airborne monitoring effort using portable nanoparticle measurement equipment on aircraft in Australia.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Airborne testing identified higher nanoparticle readings on certain aircraft during takeoff and climb.",
-          "sourceQuote": "identified aircraft showing significantly higher nanoparticle readings during particular phases of flight, including takeoff and climb.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Dr Robert Harrison reported diagnosing and treating over 125 aircrew members after cabin air contamination events over 25 years.",
-          "sourceQuote": "diagnosed and treated more than 125 pilots and flight attendants following reported cabin air contamination events during the past 25 years.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "All-Party Parliamentary Group",
-          "APPG",
-          "Australian Federation of Air Pilots",
-          "AFAP",
-          "University of California, San Francisco"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [],
-        "locations": [
-          "UK",
-          "Australia"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": []
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260812-0902-12",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "UK MPs urged to mandate cabin air sensors as fume event inquiry gathers pace News",
-          "url": "https://aerospaceglobalnews.com/news/uk-mps-aircraft-cabin-air-sensors/",
-          "publishedUtc": "2026-08-12T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/AdobeStock_314894793-scaled.jpeg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
