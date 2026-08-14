@@ -1,5 +1,322 @@
 [
   {
+    "id": "g-20260814-1542-1",
+    "queuedUtc": "2026-08-14T15:42Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves a proposed regulatory airworthiness directive by the FAA regarding Boeing 787 engine fan cowl modifications.",
+    "riskFlags": [
+      "regulatory_action"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The FAA is proposing an airworthiness directive for certain Boeing 787-8, 787-9, and 787-10 aircraft powered by Rolls-Royce Trent 1000 engines.",
+        "sourceQuote": "The proposed airworthiness directive (AD) applies to certain Boeing 787-8, 787-9 and 787-10 aircraft powered by Rolls-Royce Trent 1000 engines.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Boeing found that engine debris from a serious failure could damage components on the opposite engine and potentially lead to a dual engine shutdown.",
+        "sourceQuote": "Boeing found that debris from a serious failure of one engine could damage critical components on the other and potentially cause both engines to shut down in flight.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "The FAA estimates that 22 US-registered aircraft would be affected by the proposed regulation.",
+        "sourceQuote": "The FAA estimates 22 aircraft on the US registry would be affected.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Boeing issued a Special Attention Requirements Bulletin on February 19, 2026, outlining inspection and modification procedures.",
+        "sourceQuote": "The manufacturer issued a Special Attention Requirements Bulletin on February 19, 2026, outlining inspections and modifications for affected aircraft.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "The FAA will accept public comments on the proposed rule through September 21, 2026.",
+        "sourceQuote": "The FAA is accepting public comments through September 21, 2026, before deciding whether to issue a final AD.",
+        "sourceUrl": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves a proposed regulatory airworthiness directive by the FAA regarding Boeing 787 engine fan cowl modifications.",
+      "cat": "reg",
+      "zh": {
+        "title": "FAA擬發布波音787風扇罩強制修改指令",
+        "summary": "FAA擬針對部分波音787發布適航指令，要求修改風扇罩以防雙引擎空中熄火。",
+        "body": [
+          "美國聯邦航空總署（FAA）擬發布新適航指令，要求配備勞斯萊斯 Trent 1000 引擎的部分波音 787-8、787-9 與 787-10 客機進行風扇罩修改。",
+          "波音公司發現，單一引擎發生嚴重故障時產生的碎片，可能損壞另一座引擎的關鍵零組件，並可能導致兩座引擎在空中同時熄火。受影響組件位於右側引擎的左側風扇罩，美國註冊的22架飛機預計將受到此項擬議法規影響。",
+          "波音已於2026年2月19日發布特別注意事項服務通告，說明相關檢查與改裝程序。FAA將開放公眾意見徵詢至2026年9月21日止，隨後再決定是否頒布最終適航指令。"
+        ]
+      },
+      "en": {
+        "title": "FAA proposes mandatory Boeing 787 fan cowl fix over dual engine shutdown risk",
+        "summary": "The FAA proposed mandatory Boeing 787 fan cowl modifications to prevent potential dual engine shutdowns in flight.",
+        "body": [
+          "The US Federal Aviation Administration (FAA) is proposing a new airworthiness directive requiring mandatory fan cowl modifications on certain Boeing 787-8, 787-9, and 787-10 aircraft powered by Rolls-Royce Trent 1000 engines.",
+          "The proposal follows Boeing's determination that high-energy debris from an uncontained rotor failure in one engine could damage critical oil lines on the opposite engine, potentially leading to a dual engine shutdown in flight. The issue specifically involves the left fan cowl of the right engine, affecting an estimated 22 US-registered Dreamliners.",
+          "Boeing previously detailed inspection and replacement procedures in a Special Attention Requirements Bulletin issued on February 19, 2026. The FAA is accepting public comments on the proposed rule through September 21, 2026, before deciding on a final directive."
+        ]
+      },
+      "flash": {
+        "zh": "FAA擬針對部分波音787發布風扇罩適航指令",
+        "en": "FAA proposes mandatory Boeing 787 fan cowl fix over dual engine shutdown risk",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The FAA is proposing an airworthiness directive for certain Boeing 787-8, 787-9, and 787-10 aircraft powered by Rolls-Royce Trent 1000 engines.",
+          "sourceQuote": "The proposed airworthiness directive (AD) applies to certain Boeing 787-8, 787-9 and 787-10 aircraft powered by Rolls-Royce Trent 1000 engines.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Boeing found that engine debris from a serious failure could damage components on the opposite engine and potentially lead to a dual engine shutdown.",
+          "sourceQuote": "Boeing found that debris from a serious failure of one engine could damage critical components on the other and potentially cause both engines to shut down in flight.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The FAA estimates that 22 US-registered aircraft would be affected by the proposed regulation.",
+          "sourceQuote": "The FAA estimates 22 aircraft on the US registry would be affected.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Boeing issued a Special Attention Requirements Bulletin on February 19, 2026, outlining inspection and modification procedures.",
+          "sourceQuote": "The manufacturer issued a Special Attention Requirements Bulletin on February 19, 2026, outlining inspections and modifications for affected aircraft.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The FAA will accept public comments on the proposed rule through September 21, 2026.",
+          "sourceQuote": "The FAA is accepting public comments through September 21, 2026, before deciding whether to issue a final AD.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "FAA",
+          "Federal Aviation Administration",
+          "Boeing"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "787",
+          "787-8",
+          "787-9",
+          "787-10",
+          "Dreamliners"
+        ],
+        "airports": [],
+        "locations": [
+          "US"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-02-19",
+          "2026-09-21"
+        ]
+      },
+      "eventStatus": "planned",
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1542-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "FAA proposes Boeing 787 fan cowl fix over risk of dual engine shutdown",
+          "url": "https://www.aerotime.aero/articles/faa-boeing-787-fan-cowl-dual-engine-shutdown",
+          "publishedUtc": "2026-08-14T14:52Z",
+          "summary": "The Federal Aviation Administration (FAA) is proposing mandatory fan cowl modifications on certain Boeing 787 Dreamliners after Boeing… The post FAA proposes Boeing 787 fan cowl fix over risk of dual engine shutdown appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260731-0010-qantas-set-to-end-airbus-a380-flights-fr",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 787-9",
+              "same named core entity: boeing",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s...",
+            "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+            "facts": [
+              {
+                "claim": "Qantas scheduled its final Airbus A380 flight from Melbourne to Los Angeles for October 24.",
+                "source_quote": "final flight of Qantas' Airbus A380 from Melbourne to Los Angeles on October 24",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              },
+              {
+                "claim": "Qantas is opting to utilize the Boeing 787-9 instead.",
+                "source_quote": "as the airline opts for Boeing 787-9.",
+                "source_url": "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport/",
+                "source_name": "Simple Flying — Qantas Axing Airbus A380 Flights From Major Airport: Here’s..."
+              },
+              {
+                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
+                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+              },
+              {
+                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
+                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
+                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
+                "source_name": "Archive: Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly... — a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 787, BOEING 787",
+              "same named core entity: aerotime",
+              "archive predates source by 12 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 12 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260809-0853-indigo-to-deploy-airbus-a321xlr-on-11-ho",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: 787-9",
+              "same named core entity: boeing",
+              "archive predates source by 9 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 9 day(s) apart",
+            "event_date": "2026-08-05",
+            "source_name": "Aerospace Global News — IndiGo turns to Airbus A321XLR for record 11-hour Amsterdam...",
+            "source_url": "https://aerospaceglobalnews.com/news/indigo-airbus-a321xlr-mumbai-amsterdam-route/",
+            "facts": [
+              {
+                "claim": "IndiGo plans to deploy its 195-seat Airbus A321XLR aircraft on the Mumbai-Amsterdam route after its Boeing 787-9 damp lease with Norse Atlantic Airways ends at the close of October 2026.",
+                "source_quote": "the Airbus A321XLR temporarily replace Boeing 787-9 services on the route after IndiGo confirmed that its damp lease agreement with Norse Atlantic Airways will end at the close of October 2026.",
+                "source_url": "https://aerospaceglobalnews.com/news/indigo-airbus-a321xlr-mumbai-amsterdam-route/",
+                "source_name": "Aerospace Global News — IndiGo turns to Airbus A321XLR for record 11-hour Amsterdam..."
+              },
+              {
+                "claim": "The scheduled Mumbai-Amsterdam route features a block time of up to 11 hours outbound and 9 hours 40 minutes return, making it the longest planned nonstop Airbus A321XLR operation.",
+                "source_quote": "scheduled with a block time of up to 11 hours from Mumbai to Amsterdam and about nine hours 40 minutes on the return sector, making it the longest planned nonstop Airbus A321XLR operation anywhere in the world.",
+                "source_url": "https://aerospaceglobalnews.com/news/indigo-airbus-a321xlr-mumbai-amsterdam-route/",
+                "source_name": "Aerospace Global News — IndiGo turns to Airbus A321XLR for record 11-hour Amsterdam..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260814-1457-1",
     "queuedUtc": "2026-08-14T14:57Z",
     "approve": false,
@@ -10232,325 +10549,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260811-2232-3",
-    "queuedUtc": "2026-08-11T22:32Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "Current source includes an ongoing investigation (police investigation completed but findings undisclosed) triggering the investigation risk flag, requiring human review per policy.",
-    "riskFlags": [
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Multiple unidentified drones repeatedly entered restricted airspace around RAAF Base Williamtown and neighboring Newcastle Airport in New South Wales between July 11 and 13, 2026, according to Australian media reports.",
-        "sourceQuote": "The drones were reported over RAAF Base Williamtown and neighboring Newcastle Airport in New South Wales between July 11 and 13, 2026, according to Australian media reports.",
-        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Australia’s Department of Defence has acknowledged the incidents, while Defence Industry Minister Pat Conroy said the broad reporting about the number of drones and the days they appeared was accurate.",
-        "sourceQuote": "Australia’s Department of Defence has acknowledged the incidents, while Defence Industry Minister Pat Conroy said the broad reporting about the number of drones and the days they appeared was accurate.",
-        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "Authorities have not identified the operators or indicated why the drones were there.",
-        "sourceQuote": "Authorities have not identified the operators or indicated why the drones were there.",
-        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Personnel at Williamtown were reportedly instructed to close window blinds to prevent sensitive information from being viewed or photographed.",
-        "sourceQuote": "Personnel at Williamtown were reportedly instructed to close window blinds to prevent sensitive information from being viewed or photographed.",
-        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "The incidents were referred to the New South Wales Police Counter-UAS Unit.",
-        "sourceQuote": "The incidents were referred to the New South Wales Police Counter-UAS Unit.",
-        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "Conroy said on August 10 that the police investigation has since been completed, but he did not disclose its findings.",
-        "sourceQuote": "Conroy said on August 10 that the police investigation has since been completed, but he did not disclose its findings.",
-        "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Current source includes an ongoing investigation (police investigation completed but findings undisclosed) triggering the investigation risk flag, requiring human review per policy.",
-      "cat": "mil",
-      "zh": {
-        "title": "澳洲F-35基地空域反復遭不明無人機入侵",
-        "summary": "不明無人機多次闖入威廉鎮與紐卡斯爾機場禁區；國防部長證實報告數字正確，警方調查已結束未公開結果。",
-        "body": [
-          "多架不明無人機在2026年7月11日至13日間，反複進入澳洲皇家空軍威廉鎮基地及鄰近紐卡斯爾機場的限制空域。",
-          "澳洲國防部承認事件發生，國防工業部長Pat Conroy表示媒體報導的無人機數量與出現天數屬實。",
-          "當局尚未查明無人機操作者或其飛行目的，亦未公開任何無人機被回收或識別的資訊。",
-          "威廉鎮基地人員據報被指示關閉窗簾，以防止敏感資訊被攝影或觀察。",
-          "事件已移交新南威爾斯州警察反無人機單位調查，Conroy於8月10日指出調查已完成但未披露發現。",
-          "他亦未透露是否有任何反無人機措施被使用，或飛行作業因此受到干擾。"
-        ]
-      },
-      "en": {
-        "title": "Unidentified Drones Repeatedly Intrude Restricted Airspace Over Australian F-35 Base",
-        "summary": "Multiple unknown drones entered restricted airspace near RAAF Williamtown and Newcastle Airport Jul 11-13; defence minister confirms reports, police investigation concluded without disclosure.",
-        "body": [
-          "Between July 11 and July 13, 2026, several unidentified drones were reported flying repeatedly in the restricted airspace surrounding RAAF Base Williamtown and nearby Newcastle Airport in New South Wales.",
-          "Australia's Department of Defence acknowledged the incursions, and Defence Industry Minister Pat Conroy said the media coverage regarding the number of drones and the days they appeared was accurate.",
-          "Authorities have not identified the operators of the drones or disclosed why they were flying over the base.",
-          "Personnel at Williamtown were reportedly instructed to close window blinds to prevent sensitive information from being viewed or photographed.",
-          "The incidents were referred to the New South Wales Police Counter-UAS Unit; Conroy stated on August 10 that the police investigation had been completed but its findings were not disclosed.",
-          "He also declined to say whether any counter‑drone measures were employed or if military or civilian flight operations were disrupted."
-        ]
-      },
-      "flash": {
-        "zh": "澳洲F-35基地空域多次遭不明無人機入侵",
-        "en": "Unidentified drones repeatedly breach Australian F-35 base airspace",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Multiple unidentified drones repeatedly entered restricted airspace around RAAF Base Williamtown and neighboring Newcastle Airport in New South Wales between July 11 and 13, 2026, according to Australian media reports.",
-          "sourceQuote": "The drones were reported over RAAF Base Williamtown and neighboring Newcastle Airport in New South Wales between July 11 and 13, 2026, according to Australian media reports.",
-          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Australia’s Department of Defence has acknowledged the incidents, while Defence Industry Minister Pat Conroy said the broad reporting about the number of drones and the days they appeared was accurate.",
-          "sourceQuote": "Australia’s Department of Defence has acknowledged the incidents, while Defence Industry Minister Pat Conroy said the broad reporting about the number of drones and the days they appeared was accurate.",
-          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Authorities have not identified the operators or indicated why the drones were there.",
-          "sourceQuote": "Authorities have not identified the operators or indicated why the drones were there.",
-          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Personnel at Williamtown were reportedly instructed to close window blinds to prevent sensitive information from being viewed or photographed.",
-          "sourceQuote": "Personnel at Williamtown were reportedly instructed to close window blinds to prevent sensitive information from being viewed or photographed.",
-          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "The incidents were referred to the New South Wales Police Counter-UAS Unit.",
-          "sourceQuote": "The incidents were referred to the New South Wales Police Counter-UAS Unit.",
-          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "Conroy said on August 10 that the police investigation has since been completed, but he did not disclose its findings.",
-          "sourceQuote": "Conroy said on August 10 that the police investigation has since been completed, but he did not disclose its findings.",
-          "sourceUrl": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F3",
-        "F4",
-        "F5",
-        "F6"
-      ],
-      "entities": {
-        "organizations": [
-          "Australian Department of Defence",
-          "Defence Industry Minister Pat Conroy",
-          "New South Wales Police Counter-UAS Unit",
-          "Royal Australian Air Force",
-          "Lockheed Martin",
-          "Boeing"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "Lockheed Martin F-35A Lightning II",
-          "Boeing E-7A Wedgetail",
-          "Hawk 127",
-          "Pilatus PC-21"
-        ],
-        "airports": [
-          "RAAF Base Williamtown",
-          "Newcastle Airport"
-        ],
-        "locations": [
-          "New South Wales",
-          "Williamtown",
-          "Newcastle"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-07-11",
-          "2026-07-13",
-          "2026-08-10"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-2232-3",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Mystery drones repeatedly breach airspace over Australian F-35 base",
-          "url": "https://www.aerotime.aero/articles/mystery-drones-australian-f35-base-williamtown",
-          "publishedUtc": "2026-08-11T21:34Z",
-          "summary": "Multiple unidentified drones repeatedly entered restricted airspace around one of Australia’s most sensitive military air bases recently, raising questions… The post Mystery drones repeatedly breach airspace over Australian F-35 base appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260807-1756-finland-and-sweden-debut-at-pitch-black",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: F-35A"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 22 day(s) apart",
-            "event_date": "2026-07-20",
-            "source_name": "AeroTime — Finland and Sweden make first-ever appearance to RAAF’s Exe...",
-            "source_url": "https://www.aerotime.aero/articles/finland-and-sweden-make-first-ever-appearance-to-raafs-exercise-pitch-black",
-            "facts": [
-              {
-                "claim": "Finland and Sweden sent official delegations to Exercise Pitch Black 26 for the first time, marking their initial participation in Australia’s flagship multinational air combat exercise.",
-                "source_quote": "Finland and Sweden sent official delegations to Exercise Pitch Black 26 for the first time, marking the two Nordic nations’ initial participation in Australia’s flagship multinational air combat exercise.",
-                "source_url": "https://www.aerotime.aero/articles/finland-and-sweden-make-first-ever-appearance-to-raafs-exercise-pitch-black",
-                "source_name": "AeroTime — Finland and Sweden make first-ever appearance to RAAF’s Exe..."
-              },
-              {
-                "claim": "The Indian Air Force’s Rafale fighter jet made its debut appearance at Exercise Pitch Black 26, marking a historic first for the aircraft in Australia’s premier multinational air combat exercise.",
-                "source_quote": "The Indian Air Force’s (IAF) Rafale fighter jet has made its debut appearance at Exercise Pitch Black 26, marking a historic first for the aircraft in Australia’s premier multinational air combat exercise.",
-                "source_url": "https://www.aerotime.aero/articles/indian-air-forces-rafale-makes-historic-debut-at-exercise-pitch-black-26",
-                "source_name": "AeroTime — Indian Air Force’s Rafale makes historic debut at Exercise..."
-              },
-              {
-                "claim": "The delegations traveled to RAAF Base Darwin to observe the exercise, which runs from July 20 to August 7, 2026 across Northern Australia.",
-                "source_quote": "The delegations traveled to Royal Australian Air Force (RAAF) Base Darwin to observe the exercise, which runs from July 20 to August 7, 2026 across Northern Australia.",
-                "source_url": "https://www.aerotime.aero/articles/finland-and-sweden-make-first-ever-appearance-to-raafs-exercise-pitch-black",
-                "source_name": "AeroTime — Finland and Sweden make first-ever appearance to RAAF’s Exe..."
-              },
-              {
-                "claim": "According to Kumar, the deployment reflects the IAF’s growing ability to conduct long-range missions and operate effectively within a demanding multinational environment.",
-                "source_quote": "According to Kumar, the deployment reflects the IAF’s growing ability to conduct long-range missions and operate effectively within a demanding multinational environment.",
-                "source_url": "https://www.aerotime.aero/articles/indian-air-forces-rafale-makes-historic-debut-at-exercise-pitch-black-26",
-                "source_name": "AeroTime — Indian Air Force’s Rafale makes historic debut at Exercise..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 16 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 16 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
-            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-            "facts": [
-              {
-                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
-                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
-                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260728-0319-boeing-787-9-leads-2026-widebody-deliver",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: boeing",
-              "archive predates source by 14 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 14 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly...",
-            "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-            "facts": [
-              {
-                "claim": "The Boeing 787-9 is leading widebody aircraft deliveries in 2026.",
-                "source_quote": "The Boeing 787-9 is leading 2026 widebody deliveries",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              },
-              {
-                "claim": "Deliveries of the Boeing 787-9 are accelerating the retirement of three older aircraft types across four airlines.",
-                "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
-                "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
-                "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
