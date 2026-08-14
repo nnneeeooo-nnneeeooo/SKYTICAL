@@ -67,6 +67,7 @@ jobs:
           python pipeline/dedupe.py
           python pipeline/write.py
           python pipeline/images.py
+          python pipeline/image_fallbacks.py
           # The saved Taipei date makes this one LLM-assisted refresh per day.
           # Missing/invalid model output falls back to published article titles.
           python pipeline/search_prompts.py --daily-if-due
