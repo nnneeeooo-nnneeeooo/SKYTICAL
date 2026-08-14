@@ -19,14 +19,14 @@
         "title": "澳門航空 A321neo B-MBU 抵達桃園",
         "summary": "公開 ADS-B 觀測顯示，澳門航空（NX／AMU）註冊號 B-MBU 的 Airbus A321neo 於 8 月 9 日抵達桃園；澳門民航局登記資料列明其精確型號為 A321-271NX。",
         "body": [
-          "公開 ADS-B 監測顯示，呼號 AMU615、註冊號 B-MBU 的澳門航空 Airbus A321neo，於 2026 年 8 月 9 日抵達臺灣桃園國際機場（RCTP）。系統於 13:08:18Z 在航機進入機場地理圍欄且高度顯示 ground 後確認抵達。",
+          "公開 ADS-B 監測顯示，呼號 AMU615、註冊號 B-MBU 的澳門航空 Airbus A321neo，於 2026 年 8 月 9 日抵達臺灣桃園國際機場（TPE）（RCTP）。系統於 13:08:18Z 在航機進入機場地理圍欄且高度顯示 ground 後確認抵達。",
           "澳門民航局航空器登記資料顯示，B-MBU 的精確型號為 Airbus A321-271NX，營運者為澳門航空；澳門航空的 IATA 代碼為 NX、ICAO 代碼為 AMU。",
           "澳門民航局截至 2026 年 4 月 1 日的核准客運航班名單，列有澳門航空往返臺北、高雄及臺中的服務，其中臺中為定期包機。實際班次仍應以航空公司及機場當期班表為準。"
         ]
       },
       "en": {
         "title": "Air Macau A321neo B-MBU Arrives at Taiwan Taoyuan",
-        "summary": "Public ADS-B observations show Air Macau Airbus A321neo B-MBU arrived at Taiwan Taoyuan International Airport on August 9. Macao's civil aviation authority lists the aircraft as an Airbus A321-271NX operated by Air Macau.",
+        "summary": "Public ADS-B observations show Air Macau Airbus A321neo B-MBU arrived at Taiwan Taoyuan International Airport (TPE) on August 9. Macao's civil aviation authority lists the aircraft as an Airbus A321-271NX operated by Air Macau.",
         "body": [
           "Public ADS-B data show Air Macau Airbus A321neo B-MBU, using callsign AMU615, arrived at Taiwan Taoyuan International Airport (RCTP) on August 9, 2026. The monitor confirmed the arrival at 13:08:18Z after the aircraft entered the airport geofence and its altitude field showed ground.",
           "Macao's civil aviation register identifies B-MBU as an Airbus A321-271NX operated by Air Macau. The carrier uses IATA code NX and ICAO code AMU.",
@@ -100,12 +100,29 @@
       "riskFlags": [],
       "eventStatus": "confirmed",
       "entities": {
-        "aircraft_models": ["Airbus A321neo", "Airbus A321-271NX"],
-        "airports": ["Taiwan Taoyuan International Airport"],
-        "locations": ["Taiwan Taoyuan International Airport", "Macao", "Taipei", "Kaohsiung", "Taichung"],
-        "flight_numbers": ["AMU615"],
-        "registration_numbers": ["B-MBU"],
-        "event_dates": ["2026-08-09"]
+        "aircraft_models": [
+          "Airbus A321neo",
+          "Airbus A321-271NX"
+        ],
+        "airports": [
+          "Taiwan Taoyuan International Airport"
+        ],
+        "locations": [
+          "Taiwan Taoyuan International Airport",
+          "Macao",
+          "Taipei",
+          "Kaohsiung",
+          "Taichung"
+        ],
+        "flight_numbers": [
+          "AMU615"
+        ],
+        "registration_numbers": [
+          "B-MBU"
+        ],
+        "event_dates": [
+          "2026-08-09"
+        ]
       }
     }
   ]
