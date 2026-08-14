@@ -1,5 +1,300 @@
 [
   {
+    "id": "g-20260814-1457-1",
+    "queuedUtc": "2026-08-14T14:57Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Commercial fleet transaction involving the sale and leaseback of seven aircraft constitutes a financial and order book claim requiring human review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "On August 14, 2026, leasing company Avolon announced a sale and leaseback agreement with Indian carrier Akasa Air for up to seven Boeing 737-8200 aircraft.",
+        "sourceQuote": "On August 14, 2026, leasing giant Avolon announced the sale and leaseback of up to seven Boeing 737-8200 aircraft to Indian carrier Akasa Air.",
+        "sourceUrl": "https://www.aerotime.aero/articles/avolon-and-akasa-air-agree-sale-and-leaseback-of-seven-boeing-737-8200-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Selling aircraft from its order book to Avolon and leasing them back enables Akasa Air to free up financial resources while operating the aircraft as normal.",
+        "sourceQuote": "Selling aircraft in its order book to Avolon and then leasing them back gives Akasa Air the ability to free up financial resources for other uses, while continuing to operate the aircraft as normal.",
+        "sourceUrl": "https://www.aerotime.aero/articles/avolon-and-akasa-air-agree-sale-and-leaseback-of-seven-boeing-737-8200-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Akasa Air operates 17 Boeing 737-8200 aircraft fitted with 197 seats in a single class cabin.",
+        "sourceQuote": "operates 17 Boeing 737-8200s, all fitted with 197 seats in a single class cabin.",
+        "sourceUrl": "https://www.aerotime.aero/articles/avolon-and-akasa-air-agree-sale-and-leaseback-of-seven-boeing-737-8200-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Avolon delivered five standard Boeing 737 MAX 8 aircraft to Akasa Air between December 2022 and January 2023.",
+        "sourceQuote": "between December 2022 and January 2023, just a few months after the airline’s launch, the leasing giant delivered five standard B737 MAX 8 aircraft to Akasa Air.",
+        "sourceUrl": "https://www.aerotime.aero/articles/avolon-and-akasa-air-agree-sale-and-leaseback-of-seven-boeing-737-8200-aircraft",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Commercial fleet transaction involving the sale and leaseback of seven aircraft constitutes a financial and order book claim requiring human review.",
+      "cat": "biz",
+      "zh": {
+        "title": "Avolon與阿卡薩航空達成7架波音737-8200售後回租協議",
+        "summary": "Avolon與阿卡薩航空達成最多7架波音737-8200售後回租協議",
+        "body": [
+          "飛機租賃公司 Avolon 於 2026 年 8 月 14 日宣布，與印度阿卡薩航空（Akasa Air）達成最多 7 架波音 737-8200 客機的售後回租協議。",
+          "阿卡薩航空將訂單簿中的飛機出售給 Avolon 再進行租回，此舉可釋放財務資源用於其他用途，同時讓航空公司維持飛機的正常營運。",
+          "目前阿卡薩航空營運 17 架波音 737-8200 客機，全數採用 197 座單一艙等配置。此外，Avolon 曾於 2022 年 12 月至 2023 年 1 月期間，向該航空公司交付 5 架標準型波音 737 MAX 8 客機。"
+        ]
+      },
+      "en": {
+        "title": "Avolon and Akasa Air Agree Sale and Leaseback of Up to Seven Boeing 737-8200s",
+        "summary": "Avolon and Akasa Air agree on sale and leaseback of seven Boeing 737-8200 aircraft.",
+        "body": [
+          "Aircraft leasing company Avolon announced on August 14, 2026, that it has agreed to a sale and leaseback transaction with Indian carrier Akasa Air for up to seven Boeing 737-8200 aircraft.",
+          "Selling aircraft from its order book to Avolon and leasing them back enables Akasa Air to free up financial resources for other uses while continuing normal aircraft operations.",
+          "Akasa Air currently operates a fleet of 17 Boeing 737-8200 aircraft, all configured with 197 seats in a single-class cabin. Previously, leasing firm Avolon delivered five standard Boeing 737 MAX 8 aircraft to the airline between December 2022 and January 2023."
+        ]
+      },
+      "flash": {
+        "zh": "Avolon與阿卡薩航空達成最多7架波音737-8200客機售後回租協議。",
+        "en": "Avolon and Akasa Air agree sale and leaseback of up to seven Boeing 737-8200 aircraft.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "On August 14, 2026, leasing company Avolon announced a sale and leaseback agreement with Indian carrier Akasa Air for up to seven Boeing 737-8200 aircraft.",
+          "sourceQuote": "On August 14, 2026, leasing giant Avolon announced the sale and leaseback of up to seven Boeing 737-8200 aircraft to Indian carrier Akasa Air.",
+          "sourceUrl": "https://www.aerotime.aero/articles/avolon-and-akasa-air-agree-sale-and-leaseback-of-seven-boeing-737-8200-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Selling aircraft from its order book to Avolon and leasing them back enables Akasa Air to free up financial resources while operating the aircraft as normal.",
+          "sourceQuote": "Selling aircraft in its order book to Avolon and then leasing them back gives Akasa Air the ability to free up financial resources for other uses, while continuing to operate the aircraft as normal.",
+          "sourceUrl": "https://www.aerotime.aero/articles/avolon-and-akasa-air-agree-sale-and-leaseback-of-seven-boeing-737-8200-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Akasa Air operates 17 Boeing 737-8200 aircraft fitted with 197 seats in a single class cabin.",
+          "sourceQuote": "operates 17 Boeing 737-8200s, all fitted with 197 seats in a single class cabin.",
+          "sourceUrl": "https://www.aerotime.aero/articles/avolon-and-akasa-air-agree-sale-and-leaseback-of-seven-boeing-737-8200-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Avolon delivered five standard Boeing 737 MAX 8 aircraft to Akasa Air between December 2022 and January 2023.",
+          "sourceQuote": "between December 2022 and January 2023, just a few months after the airline’s launch, the leasing giant delivered five standard B737 MAX 8 aircraft to Akasa Air.",
+          "sourceUrl": "https://www.aerotime.aero/articles/avolon-and-akasa-air-agree-sale-and-leaseback-of-seven-boeing-737-8200-aircraft",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1"
+      ],
+      "entities": {
+        "organizations": [
+          "Avolon"
+        ],
+        "airlines": [
+          "Akasa Air"
+        ],
+        "aircraft_models": [
+          "Boeing 737-8200",
+          "B737 MAX 8"
+        ],
+        "airports": [],
+        "locations": [
+          "India"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "August 14, 2026",
+          "December 2022",
+          "January 2023"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1457-1",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Avolon and Akasa Air agree sale and leaseback of seven Boeing 737-8200 aircraft",
+          "url": "https://www.aerotime.aero/articles/avolon-and-akasa-air-agree-sale-and-leaseback-of-seven-boeing-737-8200-aircraft",
+          "publishedUtc": "2026-08-14T13:29Z",
+          "summary": "On August 14, 2026, leasing giant Avolon announced the sale and leaseback of up to seven Boeing 737-8200… The post Avolon and Akasa Air agree sale and leaseback of seven Boeing 737-8200 aircraft appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260726-2246-boeing-737-max-7-nears-faa-approval-as-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing",
+              "archive predates source by 19 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 19 day(s) apart",
+            "event_date": "2026-07-26",
+            "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw...",
+            "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+            "facts": [
+              {
+                "claim": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_quote": "Southwest Airlines has been waiting longer than ever for the Boeing 737 MAX 7, as its entire business model revolves around a single aircraft fleet.",
+                "source_url": "https://simpleflying.com/boeing-737-max-7-finally-nearing-faa-approval-southwest-airlines-entire-next-decade-depends/",
+                "source_name": "Simple Flying — Boeing's 737 MAX 7 Is Finally Nearing FAA Approval & Southw..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: aerotime",
+              "archive predates source by 12 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 12 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Before the strike began, WestJet started grounding parts of its Boeing 737 fleet to lessen operational disruption.",
+                "source_quote": "Before the strike began, the airline had started grounding parts of its Boeing 737 fleet in an effort to reduce operational disruption and avoid stranding passengers and aircraft.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The dispute centers on compensation for ground duties, with WestJet offering pay for pre-flight and post-flight duties and a first-year double-digit wage increase.",
+                "source_quote": "According to the airline, its latest proposal included pay for all pre-flight and post-flight duties, as well as a double-digit wage increase during the first year of the agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "Boeing 737 and 787 flights are affected, while WestJet Encore Dash 8 Q400 flights and partner codeshares continue as scheduled.",
+                "source_quote": "The airline said Boeing 737 and Boeing 787 services are affected by the strike, while WestJet Encore flights operated by De Havilland Dash 8 Q400 aircraft and codeshare services operated by partner airlines continue to operate as scheduled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "CUPE Local 8125 President Alia Hussain stated that negotiations continued until the last minute but WestJet's offer did not go far enough.",
+                "source_quote": "“We tried until the very last minute to get a fair deal that recognizes the value of the work cabin crews do,” said CUPE 8125 President Alia Hussain. “WestJet’s offer did not go far enough.”",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260813-1252-boeing-names-former-gol-chief-celso-ferr",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 737",
+              "same named core entity: boeing",
+              "archive predates source by 1 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 1 day(s) apart",
+            "event_date": "2026-08-13",
+            "source_name": "Boeing — Boeing names new president for Latin America and the Caribb...",
+            "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131708",
+            "facts": [
+              {
+                "claim": "Boeing appointed Celso Ferrer as president of Boeing Latin America and the Caribbean, effective September 4, 2026.",
+                "source_quote": "Boeing [NYSE: BA] has appointed Celso Ferrer as president of Boeing Latin America and the Caribbean, effective September 4, 2026.",
+                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131708",
+                "source_name": "Boeing — Boeing names new president for Latin America and the Caribb..."
+              },
+              {
+                "claim": "Ferrer will be responsible for strengthening Boeing's operations, strategy, and presence across Latin America and the Caribbean.",
+                "source_quote": "he will be responsible for strengthening Boeing’s operations, strategy, and presence across the region, as well as supporting the company’s growth opportunities throughout Latin America and the Caribbean.",
+                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131708",
+                "source_name": "Boeing — Boeing names new president for Latin America and the Caribb..."
+              },
+              {
+                "claim": "Prior to joining Boeing, Ferrer served for four years as Chief Executive Officer of GOL Linhas Aéreas.",
+                "source_quote": "Prior to joining Boeing, Ferrer served for four years as Chief Executive Officer of GOL Linhas Aéreas",
+                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131708",
+                "source_name": "Boeing — Boeing names new president for Latin America and the Caribb..."
+              },
+              {
+                "claim": "Ferrer is an experienced certified airline pilot and was part of GOL's flight crew on the Boeing 737 fleet.",
+                "source_quote": "He is also an experienced, currently certified airline pilot and was part of GOL’s flight crew on the Boeing 737 fleet.",
+                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131708",
+                "source_name": "Boeing — Boeing names new president for Latin America and the Caribb..."
+              },
+              {
+                "claim": "Ferrer holds degrees from the University of São Paulo (USP), PUC-SP, and an Executive MBA from INSEAD.",
+                "source_quote": "Ferrer holds a degree in Economics from the University of São Paulo (USP), a degree in International Relations from PUC-SP, and an Executive MBA from INSEAD in France.",
+                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131708",
+                "source_name": "Boeing — Boeing names new president for Latin America and the Caribb..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260814-1409-8",
     "queuedUtc": "2026-08-14T14:09Z",
     "approve": false,
@@ -10252,333 +10547,6 @@
                 "source_quote": "its arrival is accelerating the retirement of three older aircraft types.",
                 "source_url": "https://simpleflying.com/how-worlds-most-delivered-widebody-2026-quietly-retiring-3-legacy-aircraft-4-airlines/",
                 "source_name": "Simple Flying — How The World's Most-Delivered Widebody Of 2026 Is Quietly..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260811-2136-9",
-    "queuedUtc": "2026-08-11T21:36Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "The story concerns a military aircraft programme (VC-25B/Air Force One) with significant financial claims ($73.3M MCS replacement cost), programme delays, and unconfirmed/developing status. The source is a single news outlet reporting on a government report, with heavy attribution. The financial_or_order_claim and unconfirmed_or_developing risk flags apply, requiring human review before publication.",
-    "riskFlags": [
-      "financial_or_order_claim",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "A US Government report released on 3 August, prepared as part of the Pentagon's fiscal 2027 budget submission, states that delivery of two converted Boeing 747-8 aircraft designated VC-25B will be delayed until 2028.",
-        "sourceQuote": "the programme is suffering from various complications that will delay the delivery of the two converted Boeing 747-8 aircraft, known in US military nomenclature as the VC-25B, until 2028.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The report states issues include the primary communications system requiring replacement, interior design problems, electrical wiring issues, structural defects, and preparations for flight testing.",
-        "sourceQuote": "The issues include the primary communications system (which requires replacing), interior design problems, electrical wiring issues, structural defects, and preparations for flight testing",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "A US Air Force update issued in April and recently declassified states the current Mission Communication System baseline is not viable past 2028 due to cybersecurity and obsolescence issues.",
-        "sourceQuote": "The current Mission Communication System (MCS) baseline is not viable past 2028 due to cybersecurity and obsolescence issues",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Removing and replacing the MCS system will cost an estimated $73.3 million, only half of which has been allocated and approved in the current USAF appropriation budget.",
-        "sourceQuote": "removing and replacing the MCS system will cost an estimated $73.3 million, only half of which has been allocated and approved in the current USAF appropriation budget.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "Window contractor GKN is having difficulty manufacturing cabin windows to USAF specifications, and cockpit windshield replacement contractor PPG has not yet received design certification, with no spare commercial 747-8 windshields available.",
-        "sourceQuote": "the current window contractor (GKN) is having difficulty manufacturing the cabin windows to the USAF specifications",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "The original interior contractor GDC Technics was replaced in 2021, a move that pushed delivery to 2028, four years behind schedule, and interior delays have impacted electrical wiring installation and structural modifications.",
-        "sourceQuote": "Having already replaced the original contractor (GDC Technics) for this task in 2021, this move already pushed back the delivery of the aircraft until 2028 – four years behind schedule",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story concerns a military aircraft programme (VC-25B/Air Force One) with significant financial claims ($73.3M MCS replacement cost), programme delays, and unconfirmed/developing status. The source is a single news outlet reporting on a government report, with heavy attribution. The financial_or_order_claim and unconfirmed_or_developing risk flags apply, requiring human review before publication.",
-      "cat": "mil",
-      "zh": {
-        "title": "美國政府報告：波音VC-25B交付延至2028年，通訊系統將過時",
-        "summary": "美國政府報告指VC-25B延遲至2028年交付；任務通訊系統2028年前將過時，更換估計7330萬美元",
-        "body": [
-          "根據美國政府於8月3日發布的報告（作為五角大廈2027財年預算申請的一部分），將兩架改裝波音747-8飛機投入總統服役的計畫面臨進一步延遲，交付將推遲至2028年。該型機在美國軍方命名中稱為VC-25B。",
-          "報告指出，計畫面臨多項問題，包括主要通訊系統需更換、內部設計問題、電氣線路問題、結構缺陷及飛行測試準備工作，均需在飛機移交美國空軍前解決。報告稱：「飛機內部的設計成熟度因眾多技術與認證問題而持續落後。」",
-          "美國空軍4月發布並近期解密的一份更新指出：「目前的任務通訊系統（MCS）基線因網路安全與過時問題，在2028年後將不可行。」報告補充稱，未緩解的風險將導致無法連接並操作總統通訊所需的關鍵國家安全系統。",
-          "據報導，移除並更換MCS系統估計耗資7330萬美元，目前美國空軍撥款預算中僅批准並分配其中一半。",
-          "報告另指出，機艙與駕駛艙窗戶的供應鏈問題亦影響進度。現有窗戶承包商GKN難以按美國空軍規格製造機艙窗戶；駕駛艙擋風玻璃原承包商已停止營業，接替承包商PPG尚未取得設計認證，且無商用747-8擋風玻璃備件可用。",
-          "機艙內部設計與供應亦持續延遲。2021年已更換原始承包商GDC Technics，此舉已將交付推遲至2028年，較原定進度落後四年。內部延遲亦影響電氣線路安裝及其他結構改裝，導致「低效率的工程工作」及零件重複變更。"
-        ]
-      },
-      "en": {
-        "title": "US Government Report: Boeing VC-25B Delivery Delayed to 2028, Communications System Obsolete by 2028",
-        "summary": "US government report says VC-25B delivery delayed to 2028; Mission Communication System obsolete by 2028; replacement estimated at $73.3 million",
-        "body": [
-          "According to a report released by the US Government on 3 August, prepared as part of the Pentagon's fiscal 2027 budget submission, the programme to bring two converted Boeing 747-8 aircraft into presidential service faces further delays, with delivery pushed back to 2028. The aircraft are designated VC-25B in US military nomenclature.",
-          "The report states that the programme suffers from multiple complications including a primary communications system requiring replacement, interior design problems, electrical wiring issues, structural defects, and flight testing preparations, all of which must be resolved before the aircraft can be handed over to the US Air Force. \"The design maturity for the aircraft interior continues to lag due to numerous technical and certification issues,\" the report stated.",
-          "A US Air Force update issued in April and recently declassified said: \"The current Mission Communication System (MCS) baseline is not viable past 2028 due to cybersecurity and obsolescence issues.\" The report added that unmitigated risk would drive an inability to connect and operate on vital National Security Systems required for Presidential communications.",
-          "According to the report, removing and replacing the MCS system will cost an estimated $73.3 million, only half of which has been allocated and approved in the current USAF appropriation budget.",
-          "Supply chain issues linked to cabin and flight deck windows are also delaying the programme. The current window contractor GKN is having difficulty manufacturing cabin windows to USAF specifications. The original cockpit windshield contractor ceased trading, and replacement contractor PPG has not yet received design certification. No spare commercial 747-8 windshields are available, requiring PPG to develop a replacement suitable for the VC-25B.",
-          "The design and supply of the bespoke presidential interior continues to be delayed. The original contractor GDC Technics was replaced in 2021, a move that already pushed delivery to 2028, four years behind schedule. Interior delays have impacted installation of electrical wiring and other structural modifications, resulting in \"inefficient engineering work\" and repeated changes to parts."
-        ]
-      },
-      "flash": {
-        "zh": "美國報告：波音VC-25B交付延至2028年，通訊系統將過時",
-        "en": "US report: Boeing VC-25B delivery delayed to 2028, comms system obsolete by 2028",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "A US Government report released on 3 August, prepared as part of the Pentagon's fiscal 2027 budget submission, states that delivery of two converted Boeing 747-8 aircraft designated VC-25B will be delayed until 2028.",
-          "sourceQuote": "the programme is suffering from various complications that will delay the delivery of the two converted Boeing 747-8 aircraft, known in US military nomenclature as the VC-25B, until 2028.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The report states issues include the primary communications system requiring replacement, interior design problems, electrical wiring issues, structural defects, and preparations for flight testing.",
-          "sourceQuote": "The issues include the primary communications system (which requires replacing), interior design problems, electrical wiring issues, structural defects, and preparations for flight testing",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "A US Air Force update issued in April and recently declassified states the current Mission Communication System baseline is not viable past 2028 due to cybersecurity and obsolescence issues.",
-          "sourceQuote": "The current Mission Communication System (MCS) baseline is not viable past 2028 due to cybersecurity and obsolescence issues",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Removing and replacing the MCS system will cost an estimated $73.3 million, only half of which has been allocated and approved in the current USAF appropriation budget.",
-          "sourceQuote": "removing and replacing the MCS system will cost an estimated $73.3 million, only half of which has been allocated and approved in the current USAF appropriation budget.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Window contractor GKN is having difficulty manufacturing cabin windows to USAF specifications, and cockpit windshield replacement contractor PPG has not yet received design certification, with no spare commercial 747-8 windshields available.",
-          "sourceQuote": "the current window contractor (GKN) is having difficulty manufacturing the cabin windows to the USAF specifications",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "The original interior contractor GDC Technics was replaced in 2021, a move that pushed delivery to 2028, four years behind schedule, and interior delays have impacted electrical wiring installation and structural modifications.",
-          "sourceQuote": "Having already replaced the original contractor (GDC Technics) for this task in 2021, this move already pushed back the delivery of the aircraft until 2028 – four years behind schedule",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F3"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Boeing",
-          "US Air Force",
-          "USAF",
-          "GKN",
-          "PPG",
-          "GDC Technics",
-          "Pentagon"
-        ],
-        "airlines": [
-          "Lufthansa",
-          "Air India"
-        ],
-        "aircraft_models": [
-          "Boeing 747-8",
-          "VC-25B"
-        ],
-        "airports": [],
-        "locations": [],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-03",
-          "2028"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-2136-9",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Boeing’s new Air Force One could be obsolete before it even enters service News",
-          "url": "https://aerospaceglobalnews.com/news/air-force-one-delays-setbacks-obsolete-systems/",
-          "publishedUtc": "2026-08-11T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/02/Screenshot-2026-02-18-100132.png",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: VC-25B"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 14 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Boeing — Boeing Reports Second Quarter Results",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
-                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
-                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              },
-              {
-                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
-                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Boeing — Boeing Reports Second Quarter Results"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260808-0704-faa-opens-new-air-traffic-control-tower",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: faa",
-              "same airport code(s): THE",
-              "archive predates source by 4 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 4 day(s) apart",
-            "event_date": "2026-08-07",
-            "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor...",
-            "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-            "facts": [
-              {
-                "claim": "The FAA announced the opening of a new 121-foot air traffic control tower at Asheville Regional Airport, replacing a facility built in 1961.",
-                "source_quote": "The FAA today announced the opening of Asheville Regional Airport’s (AVL) new 121-foot air traffic control tower, which replaces the old facility built in 1961.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              },
-              {
-                "claim": "Air carrier operations at Asheville Regional Airport increased by more than 300 percent over the past decade, making it North Carolina's third-busiest airport.",
-                "source_quote": "Over the past decade, air carrier operations at Asheville Regional Airport have increased by more than 300 percent, making it the third-busiest airport in North Carolina.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              },
-              {
-                "claim": "The FAA provided $31.7 million through the Infrastructure Investment and Jobs Act to construct the new control tower.",
-                "source_quote": "The FAA provided $31.7 million through the Infrastructure Investment and Jobs Act (IIJA) to construct the new tower.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              },
-              {
-                "claim": "The FAA awarded $10 million through IIJA to expand the terminal and increase gate capacity from five to 12.",
-                "source_quote": "The FAA also awarded $10 million through IIJA to expand and modernize the airport’s terminal, increasing gate capacity from five to 12.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              },
-              {
-                "claim": "The Asheville tower will receive equipment upgrades by the end of 2028 under the Brand New Air Traffic Control System.",
-                "source_quote": "Through the Brand New Air Traffic Control System , the AVL tower will receive key equipment upgrades which will be installed by the end of 2028.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
-              },
-              {
-                "claim": "The FAA recently installed a new Tower Simulation System at Asheville to support controller training.",
-                "source_quote": "Additionally, the FAA recently installed a new Tower Simulation System (TSS) at Asheville.",
-                "source_url": "https://www.faa.gov/newsroom/faa-opens-new-asheville-air-traffic-control-tower-support-record-growth-western-north",
-                "source_name": "FAA — FAA Opens New Asheville Air Traffic Control Tower to Suppor..."
               }
             ]
           }
