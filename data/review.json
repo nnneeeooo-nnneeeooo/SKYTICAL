@@ -1,5 +1,154 @@
 [
   {
+    "id": "g-20260814-1143-8",
+    "queuedUtc": "2026-08-14T11:43Z",
+    "approve": false,
+    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "decisionReason": "Financial claim about potential cost exceeds $1.3bn triggers financial_or_order_claim risk flag, requiring human review.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The US military has lost at least 45 MQ-9 Reaper drones during the war with Iran.",
+        "sourceQuote": "The US military has lost “at least 45 MQ-9 Reaper drones during the war with Iran,”",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/us-mq-9-reaper-losses-iran-war/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "These losses have the potential to cost the taxpayer more than $1.3 billion.",
+        "sourceQuote": "These losses have the potential to cost the taxpayer more than $1.3 billion.",
+        "sourceUrl": "https://aerospaceglobalnews.com/news/us-mq-9-reaper-losses-iran-war/",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Financial claim about potential cost exceeds $1.3bn triggers financial_or_order_claim risk flag, requiring human review.",
+      "cat": "mil",
+      "zh": {
+        "title": "美軍在伊朗戰爭中損失至少45架MQ-9無人機",
+        "summary": "華盛頓郵報引述無名官員指出，美軍在與伊朗的戰爭中已失至少45架MQ-9 Reaper無人機，潛在成本超過13億美元。",
+        "body": [
+          "根據華盛頓郵報報導，美軍在與伊朗的戰爭中「失去至少45架MQ-9 Reaper無人機」。",
+          "這些損失約佔美軍MQ-9機隊的25%，戰爭爆發時機隊規模約為185架。",
+          "華盛頓郵報引述三名無名美國官員指出，這些損失可能使納稔人承擔超過13億美元的成本。",
+          "部分損失是在操作者通訊鏈路失效後導致墜機。",
+          "海軍陸戰隊發言人約書亞·班森上校表示，海軍陸戰隊的MQ-9尚未遭受損失。",
+          "報告同時提及以色列和意大利的類似無人機亦在戰爭中遭受損失。",
+          "美國空軍參謀長Kenneth S. Wilsbach曾將MQ-9稱為「Epic Fury」行動中最有價值的平台。"
+        ]
+      },
+      "en": {
+        "title": "US Loses at Least 45 MQ-9 Reapers in Iran War, Potential Cost Over $1.3bn",
+        "summary": "The Washington Post cites unnamed US officials saying the military has lost at least 45 MQ-9 Reaper drones in the Iran war, with potential costs exceeding $1.3 billion.",
+        "body": [
+          "The Washington Post reports that the US military has lost \"at least 45 MQ-9 Reaper drones during the war with Iran,\" according to unnamed officials.",
+          "These losses represent roughly 25% of the MQ-9 fleet, which numbered about 185 aircraft at the war's outbreak.",
+          "The Post, quoting three unnamed US officials, said the losses could cost taxpayers more than $1.3 billion.",
+          "Some of the losses were attributed to crashes after the operators' communications link failed.",
+          "Marine Corps spokesman Lt. Col. Joshua Benson said none of the Marines' MQ-9s have been lost.",
+          "The article notes that Israel and Italy also lost similar drones in the conflict.",
+          "Air Force Chief of Staff Gen. Kenneth S. Wilsbach previously called the MQ-9 \"the most valuable player\" in Operation Epic Fury."
+        ]
+      },
+      "flash": {
+        "zh": "美軍在伊朗戰損失至少45架MQ-9",
+        "en": "US loses ≥45 MQ-9 Reapers in Iran war",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The US military has lost at least 45 MQ-9 Reaper drones during the war with Iran.",
+          "sourceQuote": "The US military has lost “at least 45 MQ-9 Reaper drones during the war with Iran,”",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/us-mq-9-reaper-losses-iran-war/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "These losses have the potential to cost the taxpayer more than $1.3 billion.",
+          "sourceQuote": "These losses have the potential to cost the taxpayer more than $1.3 billion.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/us-mq-9-reaper-losses-iran-war/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "US military",
+          "Washington Post",
+          "Marine Corps",
+          "US Air Force"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "MQ-9 Reaper"
+        ],
+        "airports": [],
+        "locations": [
+          "Iran"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260814-1143-8",
+      "primarySource": "Aerospace Global News",
+      "items": [
+        {
+          "title": "US has lost at least 45 MQ-9 Reapers in war with Iran, at a potential cost of more than $1.3bn News",
+          "url": "https://aerospaceglobalnews.com/news/us-mq-9-reaper-losses-iran-war/",
+          "publishedUtc": "2026-08-14T00:00Z",
+          "summary": "",
+          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/09/MQ-9A-Reaper-drone.jpeg",
+          "source": "Aerospace Global News",
+          "sourceKey": "aerospaceglobalnews"
+        },
+        {
+          "title": "U.S. military has lost roughly 25% of its Reaper drones as Iran war depletes arsenal",
+          "summary": "U.S. military has lost roughly 25% of its Reaper drones as Iran war depletes arsenal &nbsp;&nbsp; The Washington Post",
+          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNR2swcWNKLTdQX01uTFVzYmpGSGU4Q2VZcWZxWHFPLXk2aXVJQjBsVW9QNGVpdDVJLTk0blY2a1RJV1dGMlYxVlBETTdoY3BKNHB0SnBUcHM3X0NSSUtlMGtkOHpXUi1qZ3dTdm15ME5GOXQzM2lBRzBvQTJlNC1YaVJUMF9jUUw3cEt4WW04U1QyaWpqSU82OGxUZVU3X1lNdlRhVG9tbHlkV0NKVC1oa3RXRlBvRzJxMzhxbERvcGs2bWFFRl9Wdm9XWk00bkRuTXc?oc=5",
+          "source": "The Washington Post",
+          "companion": true,
+          "publishedUtc": "2026-08-13T22:39Z"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260814-1059-2",
     "queuedUtc": "2026-08-14T10:59Z",
     "approve": false,
@@ -10222,182 +10371,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260811-1552-2",
-    "queuedUtc": "2026-08-11T15:52Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves major airline financial restructuring, equity capital seeking, and fleet reduction.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "On August 11, 2026, airBaltic confirmed that its Supervisory Working Group approved a business plan to cut its fleet size and seek €225 million in interim financing.",
-        "sourceQuote": "On August 11, 2026, airBaltic confirmed that the Supervisory Working Group had approved its business plan that will see the airline cut its fleet size and seek $259 million (€225 million) of interim financing.",
-        "sourceUrl": "https://www.aerotime.aero/articles/airbaltic-reduced-fleet-airbus-a220-300-new-business-plan",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "airBaltic expects to reduce its fleet of 54 Airbus A220-300s down to 26 by the end of 2026, with plans to increase to around 40 aircraft by 2031.",
-        "sourceQuote": "By the end of 2026, airBaltic expects to reduce its fleet of 54 Airbus A220-300s down to 26, with a plan to gradually increase this to around 40 aircraft by 2031.",
-        "sourceUrl": "https://www.aerotime.aero/articles/airbaltic-reduced-fleet-airbus-a220-300-new-business-plan",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "airBaltic is seeking €100 million of new equity capital in addition to the €225 million interim financing.",
-        "sourceQuote": "To bridge the company to a permanent solution airBaltic is also seeking $259 million (€225 million) of interim financing and $115 million (€100 million) of new equity capital.",
-        "sourceUrl": "https://www.aerotime.aero/articles/airbaltic-reduced-fleet-airbus-a220-300-new-business-plan",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Holders of airBaltic's 2029 Senior Secured Notes are encouraged to participate in votes on the recapitalization starting August 17, 2026.",
-        "sourceQuote": "Holders of airBaltic’s 2029 Senior Secured Notes are encouraged to take part in votes on the proposed recapitalization and new business plan.",
-        "sourceUrl": "https://www.aerotime.aero/articles/airbaltic-reduced-fleet-airbus-a220-300-new-business-plan",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The story involves major airline financial restructuring, equity capital seeking, and fleet reduction.",
-      "cat": "biz",
-      "zh": {
-        "title": "波羅的海航空批准新商業計畫 將縮減機隊至26架並尋求融資",
-        "summary": "波羅的海航空批准新計畫；預計2026年底機隊減至26架；尋求2.25億歐元融資",
-        "body": [
-          "波羅的海航空於2026年8月11日確認，其監督工作小組已批准全新商業計畫。該計畫旨在優先實現財務穩定，內容包含縮減現有機隊規模，並尋求2.25億歐元（約2.59億美元）的過渡性融資。",
-          "根據這項新經營方案，波羅的海航空預計在2026年底前，將空中巴士A220-300機隊數量由現行的54架減少至26架，並計畫於2031年逐步回升至約40架。航網亦將重新聚焦於里加，以精簡營運結構。",
-          "此外，波羅的海航空正尋求1億歐元的新股本資金，並提議將2029年到期的優先擔保票據進行部分股權化。相關票據持有人預計自2026年8月17日起就重組與新計畫進行投票。"
-        ]
-      },
-      "en": {
-        "title": "airBaltic Approves New Business Plan to Cut Fleet to 26 Aircraft and Seek Financing",
-        "summary": "airBaltic approved a new business plan; fleet reduced to 26 aircraft; seeking 225 million euros interim financing",
-        "body": [
-          "airBaltic confirmed on August 11, 2026, that its Supervisory Working Group approved a new business plan prioritizing financial stability. Under the approved plan, the Latvian carrier will reduce its fleet size and seek 225 million euros in interim financing.",
-          "By the end of 2026, the airline expects to shrink its fleet of 54 Airbus A220-300 aircraft down to 26, before gradually increasing the fleet to around 40 aircraft by 2031. The airline will also focus its network more tightly around Riga.",
-          "To support its financial restructuring, airBaltic is seeking 100 million euros in new equity capital and proposing partial equitization of its 2029 Senior Secured Notes. Noteholders are invited to vote on the recapitalization plan starting August 17, 2026."
-        ]
-      },
-      "flash": {
-        "zh": "波羅的海航空批准新商業計畫 擬縮減機隊並尋求過渡融資",
-        "en": "airBaltic approves new business plan to cut fleet and seek interim financing",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "On August 11, 2026, airBaltic confirmed that its Supervisory Working Group approved a business plan to cut its fleet size and seek €225 million in interim financing.",
-          "sourceQuote": "On August 11, 2026, airBaltic confirmed that the Supervisory Working Group had approved its business plan that will see the airline cut its fleet size and seek $259 million (€225 million) of interim financing.",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbaltic-reduced-fleet-airbus-a220-300-new-business-plan",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "airBaltic expects to reduce its fleet of 54 Airbus A220-300s down to 26 by the end of 2026, with plans to increase to around 40 aircraft by 2031.",
-          "sourceQuote": "By the end of 2026, airBaltic expects to reduce its fleet of 54 Airbus A220-300s down to 26, with a plan to gradually increase this to around 40 aircraft by 2031.",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbaltic-reduced-fleet-airbus-a220-300-new-business-plan",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "airBaltic is seeking €100 million of new equity capital in addition to the €225 million interim financing.",
-          "sourceQuote": "To bridge the company to a permanent solution airBaltic is also seeking $259 million (€225 million) of interim financing and $115 million (€100 million) of new equity capital.",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbaltic-reduced-fleet-airbus-a220-300-new-business-plan",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Holders of airBaltic's 2029 Senior Secured Notes are encouraged to participate in votes on the recapitalization starting August 17, 2026.",
-          "sourceQuote": "Holders of airBaltic’s 2029 Senior Secured Notes are encouraged to take part in votes on the proposed recapitalization and new business plan.",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbaltic-reduced-fleet-airbus-a220-300-new-business-plan",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "airBaltic",
-          "Supervisory Working Group",
-          "Ministry of Finance"
-        ],
-        "airlines": [
-          "airBaltic"
-        ],
-        "aircraft_models": [
-          "Airbus A220-300"
-        ],
-        "airports": [],
-        "locations": [
-          "Riga",
-          "Latvia"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "August 11, 2026",
-          "December 16, 2025",
-          "November 20, 2025",
-          "August 17, 2026"
-        ]
-      },
-      "eventStatus": "planned",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260811-1552-2",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "airBaltic sets new course with reduced fleet in bid to secure its future",
-          "url": "https://www.aerotime.aero/articles/airbaltic-reduced-fleet-airbus-a220-300-new-business-plan",
-          "publishedUtc": "2026-08-11T14:39Z",
-          "summary": "airBaltic has set a new course prioritizing “financial stability first, growth second” in a bid to secure its… The post airBaltic sets new course with reduced fleet in bid to secure its future appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
