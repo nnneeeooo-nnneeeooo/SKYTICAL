@@ -1,0 +1,78 @@
+name: agentrouter-smoke
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/agentrouter-smoke.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check AGENTROUTER_API and call model
+        env:
+          AGENTROUTER_API: ${{ secrets.AGENTROUTER_API }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${AGENTROUTER_API:-}" ]; then
+            echo "::error::AGENTROUTER_API is missing or unavailable"
+            exit 1
+          fi
+
+          base="https://co.agentrouter.org/v1"
+          code=$(curl -sS -o /tmp/models.json -w "%{http_code}" \
+            "$base/models" \
+            -H "Authorization: Bearer $AGENTROUTER_API" || true)
+          echo "Models HTTP status: $code"
+          if [ "$code" != "200" ]; then
+            echo "::error::AGENTROUTER_API authentication/model-list check failed"
+            exit 1
+          fi
+
+          model=$(python - <<'PY'
+          import json
+          data=json.load(open('/tmp/models.json'))
+          items=data.get('data') or []
+          print((items[0] or {}).get('id','') if items else '')
+          PY
+          )
+          if [ -z "$model" ]; then
+            echo "::error::No available model returned"
+            exit 1
+          fi
+          echo "Model list received: yes"
+
+          python - "$model" <<'PY' > /tmp/body.json
+          import json,sys
+          print(json.dumps({
+              "model": sys.argv[1],
+              "messages": [{"role":"user","content":"Reply with exactly OK"}],
+              "max_tokens": 8,
+          }))
+          PY
+
+          code=$(curl -sS -o /tmp/chat.json -w "%{http_code}" \
+            "$base/chat/completions" \
+            -H "Authorization: Bearer $AGENTROUTER_API" \
+            -H "Content-Type: application/json" \
+            --data @/tmp/body.json || true)
+          echo "Chat HTTP status: $code"
+          if [ "$code" != "200" ]; then
+            echo "::error::Model call failed"
+            exit 1
+          fi
+
+          python - <<'PY'
+          import json,sys
+          data=json.load(open('/tmp/chat.json'))
+          choices=data.get('choices') or []
+          content=((choices[0].get('message') or {}).get('content') or '').strip() if choices else ''
+          print('Model response received:', bool(content))
+          if not content:
+              sys.exit(1)
+          PY
