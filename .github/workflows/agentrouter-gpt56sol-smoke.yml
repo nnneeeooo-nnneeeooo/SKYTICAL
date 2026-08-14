@@ -1,0 +1,56 @@
+name: agentrouter-gpt56sol-smoke
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/agentrouter-gpt56sol-smoke.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call gpt-5.6-sol through AgentRouter
+        env:
+          AGENTROUTER_API: ${{ secrets.AGENTROUTER_API }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${AGENTROUTER_API:-}" ]; then
+            echo "::error::AGENTROUTER_API is missing"
+            exit 1
+          fi
+
+          body='{"model":"gpt-5.6-sol","messages":[{"role":"user","content":"Reply with exactly OK"}]}'
+          code=$(curl -sS -o /tmp/agentrouter.json -w "%{http_code}" \
+            https://co.agentrouter.org/v1/chat/completions \
+            -H "Authorization: Bearer $AGENTROUTER_API" \
+            -H "Content-Type: application/json" \
+            --data "$body" || true)
+
+          echo "Chat HTTP status: $code"
+          python - <<'PY'
+          import json, sys
+          try:
+              data = json.load(open('/tmp/agentrouter.json'))
+          except Exception:
+              print('Response JSON: unavailable')
+              sys.exit(1)
+
+          choices = data.get('choices') or [] if isinstance(data, dict) else []
+          if choices:
+              msg = choices[0].get('message') or {}
+              content = (msg.get('content') or '').strip()
+              print('Model response received:', bool(content))
+              print('Returned model:', data.get('model', 'unknown'))
+              sys.exit(0 if content else 1)
+
+          err = data.get('error') or data.get('message') or 'request failed' if isinstance(data, dict) else 'request failed'
+          if isinstance(err, dict):
+              err = err.get('message') or err.get('code') or 'request failed'
+          print('Response summary:', str(err)[:180])
+          sys.exit(1)
+          PY
