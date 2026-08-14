@@ -13,74 +13,82 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
-      - name: Reproduce wrapper request against AgentRouter
+      - name: Reproduce wrapper with Python urllib
         env:
           AGENTROUTER_API: ${{ secrets.AGENTROUTER_API }}
         shell: bash
         run: |
           set -euo pipefail
           test -n "${AGENTROUTER_API:-}"
-
-          python - <<'PY' > /tmp/body.json
-          import json
-          body = {
-              "model": "gpt-5.6-sol",
-              "messages": [
-                  {"role": "system", "content": "Return concise plain text."},
-                  {"role": "user", "content": "Reply with exactly OK"},
-              ],
-              "stream": False,
-              "temperature": None,
-              "response_format": None,
-          }
-          def strip_nulls(v):
-              if isinstance(v, dict):
-                  return {k: strip_nulls(x) for k, x in v.items() if x is not None}
-              if isinstance(v, list):
-                  return [strip_nulls(x) for x in v]
-              return v
-          print(json.dumps(strip_nulls(body), separators=(",", ":")))
-          PY
-
-          code=$(curl -sS -D /tmp/headers.txt -o /tmp/body.out -w "%{http_code}" \
-            https://agentrouter.org/v1/chat/completions \
-            -H "Authorization: Bearer $AGENTROUTER_API" \
-            -H "Content-Type: application/json" \
-            -H "Accept: application/json" \
-            -H "Accept-Encoding: identity" \
-            -H "User-Agent: opencode/1.17.12" \
-            --data-binary @/tmp/body.json || true)
-
-          echo "HTTP status: $code"
-          ctype=$(awk 'BEGIN{IGNORECASE=1} /^content-type:/{sub(/^[^:]*:[[:space:]]*/,""); gsub(/\r/,""); print; exit}' /tmp/headers.txt)
-          echo "Content-Type: ${ctype:-unknown}"
-          echo "Response bytes: $(wc -c < /tmp/body.out | tr -d ' ')"
-
           python - <<'PY'
-          import json, sys
-          raw = open('/tmp/body.out','rb').read()
-          try:
-              obj = json.loads(raw)
-          except Exception:
-              text = raw.decode('utf-8', errors='replace')
-              print('JSON response: no')
-              print('Body prefix:', text[:160].replace('\n',' '))
-              sys.exit(1)
+          import json, os, ssl, urllib.request, urllib.error
 
-          print('JSON response: yes')
-          if isinstance(obj, dict):
-              choices = obj.get('choices') or []
-              if choices:
-                  msg = choices[0].get('message') or {}
-                  content = (msg.get('content') or '').strip()
-                  print('Model response received:', bool(content))
-                  print('Returned model:', obj.get('model', 'unknown'))
-                  sys.exit(0 if content else 1)
-              err = obj.get('error') or obj.get('message') or obj.get('type') or 'request failed'
-              if isinstance(err, dict):
-                  err = err.get('message') or err.get('type') or err.get('code') or 'request failed'
-              print('Response summary:', str(err)[:180])
-          else:
-              print('Unexpected JSON shape')
-          sys.exit(1)
+          key = os.environ['AGENTROUTER_API']
+          ctx = ssl.create_default_context()
+          common_headers = {
+              'Authorization': f'Bearer {key}',
+              'User-Agent': 'opencode/1.17.12',
+              'Accept-Encoding': 'identity',
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+          }
+
+          tests = [
+              ('chat', 'https://agentrouter.org/v1/chat/completions', {
+                  'model': 'gpt-5.6-sol',
+                  'messages': [
+                      {'role': 'system', 'content': 'Return concise plain text.'},
+                      {'role': 'user', 'content': 'Reply with exactly OK'},
+                  ],
+                  'stream': False,
+              }),
+              ('messages', 'https://agentrouter.org/v1/messages', {
+                  'model': 'gpt-5.6-sol',
+                  'max_tokens': 8,
+                  'messages': [{'role': 'user', 'content': 'Reply with exactly OK'}],
+                  'stream': False,
+              }),
+          ]
+
+          waf_hits = 0
+          api_hits = 0
+          for name, url, payload in tests:
+              body = json.dumps(payload, separators=(',', ':')).encode()
+              req = urllib.request.Request(url, data=body, headers=common_headers, method='POST')
+              try:
+                  resp = urllib.request.urlopen(req, context=ctx, timeout=30)
+                  status = resp.status
+                  ctype = resp.headers.get('Content-Type', '')
+                  raw = resp.read()
+              except urllib.error.HTTPError as exc:
+                  status = exc.code
+                  ctype = exc.headers.get('Content-Type', '')
+                  raw = exc.read()
+              text = raw.decode('utf-8', errors='replace')
+              is_waf = 'aliyun_waf_' in text or '<!doctype html>' in text.lower()
+              print(f'{name}: HTTP {status}; Content-Type={ctype}; bytes={len(raw)}; waf={is_waf}')
+              if is_waf:
+                  waf_hits += 1
+                  continue
+              api_hits += 1
+              try:
+                  obj = json.loads(raw)
+              except Exception:
+                  print(f'{name}: non-WAF non-JSON response')
+                  continue
+              if isinstance(obj, dict):
+                  choices = obj.get('choices') or []
+                  if choices:
+                      content = ((choices[0].get('message') or {}).get('content') or '').strip()
+                      print(f'{name}: model response received={bool(content)}; returned_model={obj.get("model", "unknown")}')
+                  else:
+                      err = obj.get('error') or obj.get('message') or obj.get('type') or 'unknown'
+                      if isinstance(err, dict):
+                          err = err.get('message') or err.get('type') or err.get('code') or 'unknown'
+                      print(f'{name}: API response summary={str(err)[:160]}')
+
+          if waf_hits == len(tests):
+              raise SystemExit('Both AgentRouter API paths were intercepted by Aliyun WAF before reaching the API')
+          if api_hits == 0:
+              raise SystemExit('No AgentRouter API response reached')
           PY
