@@ -1,0 +1,65 @@
+name: agentrouter-smoke
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/agentrouter-smoke.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check AGENTROUTER_API and call a model
+        env:
+          AGENTROUTER_API: ${{ secrets.AGENTROUTER_API }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${AGENTROUTER_API:-}" ]; then
+            echo "::error::AGENTROUTER_API is missing or unavailable to this workflow"
+            exit 1
+          fi
+
+          endpoint="https://api.agentrouter.org/v1/chat/completions"
+          body='{"model":"deepseek/deepseek-chat","messages":[{"role":"user","content":"Reply with exactly: OK"}],"max_tokens":8}'
+          code=$(curl -sS -o /tmp/agentrouter.json -w "%{http_code}" \
+            "$endpoint" \
+            -H "Authorization: Bearer $AGENTROUTER_API" \
+            -H "Content-Type: application/json" \
+            --data "$body" || true)
+
+          echo "AgentRouter HTTP status: $code"
+          if [ "$code" != "200" ]; then
+            echo "::error::AgentRouter model call failed"
+            python - <<'PY'
+          import json
+          try:
+              data=json.load(open('/tmp/agentrouter.json'))
+              if isinstance(data, dict):
+                  msg=data.get('error') or data.get('message') or 'request failed'
+                  if isinstance(msg, dict):
+                      msg=msg.get('message') or msg.get('code') or 'request failed'
+                  print(f"Response summary: {str(msg)[:180]}")
+          except Exception:
+              print('Response summary: unavailable')
+          PY
+            exit 1
+          fi
+
+          python - <<'PY'
+          import json, sys
+          data=json.load(open('/tmp/agentrouter.json'))
+          choices=data.get('choices') or []
+          if not choices:
+              print('::error::HTTP 200 but no model choices returned')
+              sys.exit(1)
+          content=((choices[0].get('message') or {}).get('content') or '').strip()
+          print('Model response received:', bool(content))
+          if not content:
+              print('::error::Model returned empty content')
+              sys.exit(1)
+          PY
