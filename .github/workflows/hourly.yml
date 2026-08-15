@@ -37,6 +37,9 @@ jobs:
       - name: Test mandatory airport IATA codes
         run: python tests/test_airport_codes.py
 
+      - name: Test summary boundary guard
+        run: python tests/test_summary_guard.py
+
       - name: Run pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -69,6 +72,7 @@ jobs:
           python pipeline/fetch.py
           python pipeline/dedupe.py
           python pipeline/write.py
+          python pipeline/summary_guard.py
           python pipeline/airport_codes.py
           python pipeline/images.py
           python pipeline/image_fallbacks.py
