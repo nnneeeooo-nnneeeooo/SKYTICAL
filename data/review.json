@@ -1,46 +1,47 @@
 [
   {
-    "id": "g-20260815-0556-1",
-    "queuedUtc": "2026-08-15T05:56Z",
+    "id": "g-20260815-0659-1",
+    "queuedUtc": "2026-08-15T06:59Z",
     "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The story involves a major NT$44.2 billion government budget plan for unmanned vehicle industry development.",
+    "writer": "gemini:gemini-3.5-flash",
+    "decisionReason": "Frontier flight crew members fell ill and were hospitalized, requiring manual review as an aviation safety event.",
     "riskFlags": [
-      "financial_or_order_claim"
+      "accident_or_serious_incident",
+      "casualties_or_injuries"
     ],
     "facts": [
       {
         "factId": "F1",
-        "claim": "Taiwan's Legislative Yuan passed a third reading of a 6-year NT$44.2 billion budget bill for the Unmanned Vehicle Industry Development Umbrella Plan.",
-        "sourceQuote": "立法院昨天三讀通過6年新台幣442億元「無人載具產業發展統籌型計畫」預算案",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608150088.aspx",
+        "claim": "Four out of five Frontier crew members fell ill on an Airbus A321.",
+        "sourceQuote": "4 Of 5 Frontier Crew Fall Ill On Airbus A321",
+        "sourceUrl": "https://simpleflying.com/frontier-crew-fall-ill-airbus-a321-medical-emergency/",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
       },
       {
         "factId": "F2",
-        "claim": "TAITRA Chairman James C. F. Huang stated that TAITRA will assist Taiwanese drone companies in expanding overseas through international exhibitions, forums, and global offices.",
-        "sourceQuote": "外貿協會董事長黃志芳今天表示，預算通過絕對是為產業注入一劑強心針，「無人機產業馬上就要起飛」，貿協將透過國際展覽、論壇及全球駐外據點，持續協助業者拓展海外市場。",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608150088.aspx",
+        "claim": "Two flight attendants were taken to hospital.",
+        "sourceQuote": "Two flight attendants were taken to hospital",
+        "sourceUrl": "https://simpleflying.com/frontier-crew-fall-ill-airbus-a321-medical-emergency/",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
       },
       {
         "factId": "F3",
-        "claim": "TAITRA plans to set up a drone pavilion at next year's Taipei Aerospace & Defense Technology Exhibition and hold a defense industry forum focusing on drones in October.",
-        "sourceQuote": "明年台北「國際航太暨國防工業展」將設置無人機主題館；今年10月也將舉辦國防產業論壇，並以無人機為重點議題",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608150088.aspx",
+        "claim": "The jet remains grounded and multiple flights were canceled.",
+        "sourceQuote": "the jet remains grounded and multiple flights were canceled",
+        "sourceUrl": "https://simpleflying.com/frontier-crew-fall-ill-airbus-a321-medical-emergency/",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
       },
       {
         "factId": "F4",
-        "claim": "Drones were featured as key exhibition items at Taiwan Expo events in Europe in June and Japan in July.",
-        "sourceQuote": "包括今年6月歐洲台灣形象展及7月日本台灣形象展，都獲得不錯迴響",
-        "sourceUrl": "https://www.cna.com.tw/news/afe/202608150088.aspx",
+        "claim": "The flight attendants suffered from headaches during the flight.",
+        "sourceQuote": "All My Flight Attendants Have Headaches",
+        "sourceUrl": "https://simpleflying.com/frontier-crew-fall-ill-airbus-a321-medical-emergency/",
         "evidenceScope": "source",
         "archiveEventId": null,
         "archiveContext": false
@@ -48,64 +49,65 @@
     ],
     "draft": {
       "status": "manual_review",
-      "decisionReason": "The story involves a major NT$44.2 billion government budget plan for unmanned vehicle industry development.",
-      "cat": "biz",
+      "decisionReason": "Frontier flight crew members fell ill and were hospitalized, requiring manual review as an aviation safety event.",
+      "cat": "safety",
       "zh": {
-        "title": "立法院通過442億元無人載具計畫預算 貿協將助業者拓展海外市場",
-        "summary": "立法院通過無人載具產業發展計畫預算；外貿協會將協助業者拓展海外市場",
+        "title": "Frontier航空四名空服員因頭痛送醫",
+        "summary": "Frontier航空四名空服員於客機上不適送醫，導致航班取消。",
         "body": [
-          "立法院三讀通過6年期新台幣442億元的「無人載具產業發展統籌型計畫」預算案。外貿協會董事長黃志芳表示，預算通過將為產業注入強心針，貿協將透過國際展覽、論壇及全球駐外據點，協助國內業者拓展海外市場。",
-          "黃志芳指出，台灣無人機產業在資通訊、晶片設計、電子控制、馬達與電池等關鍵零組件具備優勢，但欠缺國內市場需求。隨著政府投入資源，貿協將協助業者布局海外，並於明年台北國際航太暨國防工業展設置無人機主題館。",
-          "此外，貿協計劃於今年10月舉辦國防產業論壇，以無人機為重點議題邀請專家交流。無人機也是近年台灣形象展的重要展示項目，包含今年6月歐洲台灣形象展與7月日本台灣形象展均獲得正面迴響。"
+          "根據外媒 Simple Flying 報導，Frontier 航空一架空中巴士 A321 客機上發生醫療緊急狀況。該航班上五名機組人員中共有四人感到身體不適，報告指出空服員皆出現了頭痛的症狀。",
+          "事件發生後，其中兩名受到影響的空服員已被緊急送往醫院接受治療。目前尚不清楚被送醫人員的具體身體狀況。",
+          "由於此起機組人員不適事件，涉事的空中巴士 A321 客機目前仍維持停飛狀態。Frontier 航空也因此取消了多個後續航班，目前導致空服員集體頭痛與不適的具體原因仍有待釐清。"
         ]
       },
       "en": {
-        "title": "Taiwan Passes NT$44.2B Unmanned Vehicle Budget; TAITRA to Aid Overseas Expansion",
-        "summary": "Taiwan's Legislative Yuan passed an unmanned vehicle budget, while TAITRA plans to support industry expansion.",
+        "title": "Four Frontier Flight Attendants Fall Ill On Airbus A321 Forcing Cancellations",
+        "summary": "Frontier flight attendants fall ill on Airbus A321, leading to hospitalisations and flight cancellations.",
         "body": [
-          "Taiwan's Legislative Yuan passed the third reading of a six-year, NT$44.2 billion budget bill for the Unmanned Vehicle Industry Development Umbrella Plan. James C. F. Huang, chairman of the Taiwan External Trade Development Council (TAITRA), stated that the budget provides a strong boost to the industry. TAITRA plans to help local drone companies expand overseas through international exhibitions, forums, and global offices.",
-          "Huang noted that Taiwan's drone sector has strong foundational capabilities in information technology, chip design, electronic control, motors, and batteries, but lacks sufficient domestic demand. TAITRA will set up a dedicated drone pavilion at next year's Taipei Aerospace & Defense Technology Exhibition and host a defense industry forum focusing on drones in October. Drones were also featured at Taiwan Expo events in Europe in June and Japan in July."
+          "According to a report by Simple Flying, a medical emergency occurred on a Frontier flight where four out of five crew members fell ill. The flight attendants on board the Airbus A321 aircraft reportedly experienced severe headaches during the flight.",
+          "Following the crew illness, two of the affected flight attendants were transported to a hospital for medical treatment. The current condition of the hospitalized crew members has not been disclosed in the report.",
+          "As a result of the incident, the Airbus A321 jet remains grounded, and Frontier has been forced to cancel multiple flights. The exact cause of the flight attendants' illness is currently unknown."
         ]
       },
       "flash": {
-        "zh": "立法院通過442億元無人載具計畫預算，貿協將拓海外市場。",
-        "en": "Taiwan approves NT$44.2B unmanned vehicle budget; TAITRA to promote drone sector overseas.",
+        "zh": "Frontier 航空 A321 客機四名空服員因身體不適送醫",
+        "en": "Four Frontier flight attendants fall ill and are hospitalized",
         "hot": false
       },
       "incident": null,
       "facts": [
         {
           "factId": "F1",
-          "claim": "Taiwan's Legislative Yuan passed a third reading of a 6-year NT$44.2 billion budget bill for the Unmanned Vehicle Industry Development Umbrella Plan.",
-          "sourceQuote": "立法院昨天三讀通過6年新台幣442億元「無人載具產業發展統籌型計畫」預算案",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608150088.aspx",
+          "claim": "Four out of five Frontier crew members fell ill on an Airbus A321.",
+          "sourceQuote": "4 Of 5 Frontier Crew Fall Ill On Airbus A321",
+          "sourceUrl": "https://simpleflying.com/frontier-crew-fall-ill-airbus-a321-medical-emergency/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F2",
-          "claim": "TAITRA Chairman James C. F. Huang stated that TAITRA will assist Taiwanese drone companies in expanding overseas through international exhibitions, forums, and global offices.",
-          "sourceQuote": "外貿協會董事長黃志芳今天表示，預算通過絕對是為產業注入一劑強心針，「無人機產業馬上就要起飛」，貿協將透過國際展覽、論壇及全球駐外據點，持續協助業者拓展海外市場。",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608150088.aspx",
+          "claim": "Two flight attendants were taken to hospital.",
+          "sourceQuote": "Two flight attendants were taken to hospital",
+          "sourceUrl": "https://simpleflying.com/frontier-crew-fall-ill-airbus-a321-medical-emergency/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F3",
-          "claim": "TAITRA plans to set up a drone pavilion at next year's Taipei Aerospace & Defense Technology Exhibition and hold a defense industry forum focusing on drones in October.",
-          "sourceQuote": "明年台北「國際航太暨國防工業展」將設置無人機主題館；今年10月也將舉辦國防產業論壇，並以無人機為重點議題",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608150088.aspx",
+          "claim": "The jet remains grounded and multiple flights were canceled.",
+          "sourceQuote": "the jet remains grounded and multiple flights were canceled",
+          "sourceUrl": "https://simpleflying.com/frontier-crew-fall-ill-airbus-a321-medical-emergency/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F4",
-          "claim": "Drones were featured as key exhibition items at Taiwan Expo events in Europe in June and Japan in July.",
-          "sourceQuote": "包括今年6月歐洲台灣形象展及7月日本台灣形象展，都獲得不錯迴響",
-          "sourceUrl": "https://www.cna.com.tw/news/afe/202608150088.aspx",
+          "claim": "The flight attendants suffered from headaches during the flight.",
+          "sourceQuote": "All My Flight Attendants Have Headaches",
+          "sourceUrl": "https://simpleflying.com/frontier-crew-fall-ill-airbus-a321-medical-emergency/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
@@ -113,57 +115,50 @@
       ],
       "headlineSupportedBy": [
         "F1",
-        "F2"
+        "F2",
+        "F3",
+        "F4"
       ],
       "summarySupportedBy": [
         "F1",
-        "F2"
+        "F2",
+        "F3"
       ],
       "entities": {
         "organizations": [
-          "立法院",
-          "外貿協會"
+          "Simple Flying"
         ],
-        "airlines": [],
-        "aircraft_models": [],
+        "airlines": [
+          "Frontier"
+        ],
+        "aircraft_models": [
+          "Airbus A321"
+        ],
         "airports": [],
-        "locations": [
-          "台北",
-          "歐洲",
-          "日本"
-        ],
+        "locations": [],
         "flight_numbers": [],
         "registration_numbers": [],
-        "event_dates": [
-          "2026-08-15"
-        ]
+        "event_dates": []
       },
       "eventStatus": "confirmed",
       "riskFlags": [
-        "financial_or_order_claim"
+        "accident_or_serious_incident",
+        "casualties_or_injuries"
       ],
       "requiresHumanReview": true
     },
     "group": {
-      "id": "g-20260815-0556-1",
-      "primarySource": "中央社 CNA 產經證券",
+      "id": "g-20260815-0659-1",
+      "primarySource": "Simple Flying",
       "items": [
         {
-          "title": "立法院通過無人機預算 貿協黃志芳：將助台灣產業與國際接軌",
-          "url": "https://www.cna.com.tw/news/afe/202608150088.aspx",
-          "publishedUtc": "2026-08-15T05:26Z",
-          "summary": "（中央社記者曾筠庭台北15日電）立法院昨天三讀通過6年新台幣442億元「無人載具產業發展統籌型計畫」預算案。外貿協會董事長黃志芳今天表示，預算通過絕對是為產業注入一劑強心針，「無人機產業馬上就要起飛」，貿協將透過國際展覽、論壇及全球駐外據點，持續協助業者拓展海外市場。",
-          "image": null,
-          "source": "中央社 CNA 產經證券",
-          "sourceKey": "cnataiwanfinance"
-        },
-        {
-          "title": "立法院通過無人機預算　貿協黃志芳：將助台灣產業與國際接軌",
-          "summary": "立法院通過無人機預算 貿協黃志芳：將助台灣產業與國際接軌 &nbsp;&nbsp; 經濟日報",
-          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9KT0NrVWd5cWdaNGY1SEE5bk5rbTk2RnVIRWtCSDNHb2FMWFBNY2psOTRlNzJkWGNNVE9QZy00NklLQXYyVWlXb1FBNTkyU1YzNVhvUktxVG5oQdIBX0FVX3lxTE9TTkUzeUx2cTFtQnVhdk5RVEE1M2tnZUt3cG9rT3BXa25KWi1fU0tVZXUybjkxMFBJdkZnR3l0ai1xZjRtR0R3bld4YmZEQk1ZZEJLVEFycTdhTDNvOE40?oc=5",
-          "source": "經濟日報",
-          "companion": true,
-          "publishedUtc": "2026-08-15T05:36Z"
+          "title": "\"All My Flight Attendants Have Headaches\": 4 Of 5 Frontier Crew Fall Ill On Airbus A321",
+          "url": "https://simpleflying.com/frontier-crew-fall-ill-airbus-a321-medical-emergency/",
+          "publishedUtc": "2026-08-15T05:56Z",
+          "summary": "Two flight attendants were taken to hospital as the jet remains grounded and multiple flights were canceled.",
+          "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/159-frontier-airlines-airbus-a321-colinmthompson-_-shutterstock-1.jpg",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
         }
       ],
       "updateCandidate": false,
