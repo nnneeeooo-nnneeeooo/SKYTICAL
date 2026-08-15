@@ -1,5 +1,155 @@
 [
   {
+    "id": "g-20260815-1111-10",
+    "queuedUtc": "2026-08-15T11:11Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.5-flash",
+    "decisionReason": "This is a safety-related air traffic control incident involving callsign duplication at Phoenix on August 13, 2026, which requires human review. The available source material supports a complete brief report.",
+    "riskFlags": [
+      "accident_or_serious_incident"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "On August 13, 2026, an aviation incident occurred at Phoenix involving two American Airlines B738 aircraft.",
+        "sourceQuote": "Incident: American B738 and American B738 at Phoenix on Aug 13th 2026",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFA1dXNVS0xYWG1sTU9Md0hweGZsTDI5aHBiVk9vNEEyd3dmUFNUa0JHbDBJZ3N0OTAxelVuUTBxVF9Od3FLN3FBODVuRHphTkJHdUd1MmdOb00?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "The incident involved both aircraft using the same callsign simultaneously, with one on departure and the other on arrival.",
+        "sourceQuote": "two aircraft same callsign one on departure one on arrival",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFA1dXNVS0xYWG1sTU9Md0hweGZsTDI5aHBiVk9vNEEyd3dmUFNUa0JHbDBJZ3N0OTAxelVuUTBxVF9Od3FLN3FBODVuRHphTkJHdUd1MmdOb00?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "This is a safety-related air traffic control incident involving callsign duplication at Phoenix on August 13, 2026, which requires human review. The available source material supports a complete brief report.",
+      "cat": "safety",
+      "zh": {
+        "title": "美國航空兩架B738客機在鳳凰城發生呼號相同事件",
+        "summary": "美國航空兩架B738在鳳凰城發生重複呼號事件，一架離場一架進場。",
+        "body": [
+          "根據 The Aviation Herald 報導，2026年8月13日，美國鳳凰城發生了一起與航空管制相關的安全事件。該事件涉及兩架當時正在該地區空域運作的美國航空 B738 客機。",
+          "報導指出，這起事件起因於兩架客機在運作時使用了相同的無線電呼號。在事件發生當下，其中一架 B738 客機正在執行離場程序，而另一架 B738 客機則處於進場階段。截至目前為止，相關單位尚未公布更多關於此事件的具體影響或調查細節。"
+        ]
+      },
+      "en": {
+        "title": "Two American Airlines B738 Aircraft Involved in Phoenix Callsign Incident",
+        "summary": "American Airlines B738 aircraft experienced a callsign duplication incident during operations at Phoenix.",
+        "body": [
+          "According to an aviation safety incident report published by the publication The Aviation Herald, an operational event occurred at Phoenix on August 13, 2026. The occurrence involved two separate American Airlines B738 aircraft that were active at the airport location.",
+          "The published report details that the safety incident involved the two aircraft utilizing the exact same callsign. During the event, one of the B738 aircraft was on departure while the other B738 aircraft was on arrival. At this time, no further details regarding any air traffic control actions or safety investigations have been released."
+        ]
+      },
+      "flash": {
+        "zh": "美航兩架B738客機在鳳凰城因相同呼號發生安全事件",
+        "en": "Two American Airlines B738s involved in Phoenix callsign incident",
+        "hot": false
+      },
+      "incident": {
+        "date": "2026-08-13",
+        "sev": "inc",
+        "aircraft": "B738",
+        "operator": "American",
+        "phase": {
+          "zh": "離場與進場",
+          "en": "Departure and arrival"
+        },
+        "location": {
+          "zh": "鳳凰城",
+          "en": "Phoenix"
+        },
+        "desc": {
+          "zh": "兩架客機在運作時使用相同的無線電呼號",
+          "en": "Two aircraft used the same callsign during operations"
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "On August 13, 2026, an aviation incident occurred at Phoenix involving two American Airlines B738 aircraft.",
+          "sourceQuote": "Incident: American B738 and American B738 at Phoenix on Aug 13th 2026",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFA1dXNVS0xYWG1sTU9Md0hweGZsTDI5aHBiVk9vNEEyd3dmUFNUa0JHbDBJZ3N0OTAxelVuUTBxVF9Od3FLN3FBODVuRHphTkJHdUd1MmdOb00?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The incident involved both aircraft using the same callsign simultaneously, with one on departure and the other on arrival.",
+          "sourceQuote": "two aircraft same callsign one on departure one on arrival",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFA1dXNVS0xYWG1sTU9Md0hweGZsTDI5aHBiVk9vNEEyd3dmUFNUa0JHbDBJZ3N0OTAxelVuUTBxVF9Od3FLN3FBODVuRHphTkJHdUd1MmdOb00?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "The Aviation Herald"
+        ],
+        "airlines": [
+          "American"
+        ],
+        "aircraft_models": [
+          "B738"
+        ],
+        "airports": [],
+        "locations": [
+          "Phoenix"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "Aug 13th 2026"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260815-1111-10",
+      "primarySource": "The Aviation Herald",
+      "items": [
+        {
+          "title": "Incident: American B738 and American B738 at Phoenix on Aug 13th 2026, two aircraft same callsign one on departure one on arrival",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFA1dXNVS0xYWG1sTU9Md0hweGZsTDI5aHBiVk9vNEEyd3dmUFNUa0JHbDBJZ3N0OTAxelVuUTBxVF9Od3FLN3FBODVuRHphTkJHdUd1MmdOb00?oc=5",
+          "publishedUtc": "2026-08-13T07:00Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260815-0723-7",
     "queuedUtc": "2026-08-15T07:23Z",
     "approve": false,
@@ -9953,323 +10103,6 @@
         "archive_context_version": 1,
         "retrieval_status": "insufficient",
         "selected_events": []
-      }
-    }
-  },
-  {
-    "id": "g-20260812-2231-3",
-    "queuedUtc": "2026-08-12T22:31Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "Safety event involving aircraft crash during test with ongoing investigation requires human review.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly after takeoff from a runway at the US Army’s Dugway Proving Ground in Utah.",
-        "sourceQuote": "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly after takeoff from a runway at the US Army’s Dugway Proving Ground in Utah.",
-        "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The mishap occurred on August 4, 2026, during a company-funded research and development flight.",
-        "sourceQuote": "The mishap occurred on August 4, 2026, during a company-funded research and development flight.",
-        "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "No one was injured.",
-        "sourceQuote": "No one was injured.",
-        "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "A Dugway spokesperson said the drone went down at about 08:00 local time shortly after takeoff.",
-        "sourceQuote": "A Dugway spokesperson said the drone went down at about 08:00 local time shortly after takeoff.",
-        "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Safety event involving aircraft crash during test with ongoing investigation requires human review.",
-      "cat": "safety",
-      "zh": {
-        "title": "Kratos 暫停 XQ-58 Valkyrie 測試後 Utah 試飛墜機",
-        "summary": "Kratos 暫停 XQ-58 Valkyrie 飛行測試；無人機於 8 月 4 日在 Utah Dugway 試場起飛後墜毀，未造成人員傷亡。",
-        "body": [
-          "Kratos 宣布暫停其 XQ-58 Valkyrie 無人機的飛行測試，原因是其中一架在 Utah 的 Dugway 試證場起飛不久後墜毀。",
-          "事故發生於 2026 年 8 月 4 日，屬於公司自資的研發試飛，當地時間約 08:00 時墜地。",
-          "杜格威發言人證實無人機墜落，未造成建築物損壞，亦無人員受傷。",
-          "Kratos 指已暫停飛行測試，待事故調查完成後方可復測，並表示仍有其他測試機可用。",
-          "公司未公布墜機原因或涉及的具體 Valkyrie 版本，僅稱該機處於「測試配置」以驗證新能力。"
-        ]
-      },
-      "en": {
-        "title": "Kratos pauses XQ-58 Valkyrie flight testing after Utah test drone crash",
-        "summary": "Kratos halts XQ-58 Valkyrie flight testing after drone crashes shortly after takeoff at Utah's Dugway Proving Ground on August 4, 2026; no injuries reported.",
-        "body": [
-          "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly after takeoff from a runway at the US Army’s Dugway Proving Ground in Utah.",
-          "The mishap occurred on August 4, 2026, during a company-funded research and development flight, with the drone going down at about 08:00 local time.",
-          "A Dugway spokesperson said the crash caused no damage to any buildings at the installation and that no one was injured.",
-          "Kratos stated that flight testing has been paused while it investigates the mishap and noted it has additional Valkyrie test aircraft available once the investigation is completed.",
-          "The company has not disclosed what caused the crash or which version of the Valkyrie was involved, describing the aircraft only as being in a 'test configuration' for adding new capabilities."
-        ]
-      },
-      "flash": {
-        "zh": "Kratos 暫停 XQ-58 試飛後 Utah 墜機",
-        "en": "Kratos pauses XQ-58 testing after Utah drone crash",
-        "hot": true
-      },
-      "incident": {
-        "date": "2026-08-04",
-        "sev": "inc",
-        "aircraft": "XQ-58 Valkyrie",
-        "operator": "Kratos Defense & Security Solutions",
-        "phase": {
-          "zh": "起飛後不久",
-          "en": "shortly after takeoff"
-        },
-        "location": {
-          "zh": "美國 Utah Dugway 試證場",
-          "en": "Dugway Proving Ground, Utah, USA"
-        },
-        "desc": {
-          "zh": "無人機於試飛中墜毀，未造成人員傷亡或建築物損壞。",
-          "en": "The drone crashed during a test flight, causing no injuries or property damage."
-        },
-        "status": "open"
-      },
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly after takeoff from a runway at the US Army’s Dugway Proving Ground in Utah.",
-          "sourceQuote": "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly after takeoff from a runway at the US Army’s Dugway Proving Ground in Utah.",
-          "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The mishap occurred on August 4, 2026, during a company-funded research and development flight.",
-          "sourceQuote": "The mishap occurred on August 4, 2026, during a company-funded research and development flight.",
-          "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "No one was injured.",
-          "sourceQuote": "No one was injured.",
-          "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "A Dugway spokesperson said the drone went down at about 08:00 local time shortly after takeoff.",
-          "sourceQuote": "A Dugway spokesperson said the drone went down at about 08:00 local time shortly after takeoff.",
-          "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "Kratos has said flight testing has been paused while it investigates the mishap.",
-          "sourceQuote": "Kratos has said flight testing has been paused while it investigates the mishap.",
-          "sourceUrl": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F3",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "Kratos Defense & Security Solutions"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "XQ-58 Valkyrie"
-        ],
-        "airports": [],
-        "locations": [
-          "Dugway Proving Ground, Utah, USA"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-04"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260812-2231-3",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Kratos pauses XQ-58 Valkyrie flights after drone crashes during Utah test",
-          "url": "https://www.aerotime.aero/articles/kratos-xq-58-valkyrie-crash-utah-test",
-          "publishedUtc": "2026-08-12T18:53Z",
-          "summary": "Kratos has temporarily suspended flight testing of its XQ-58 Valkyrie after one of the uncrewed aircraft crashed shortly… The post Kratos pauses XQ-58 Valkyrie flights after drone crashes during Utah test appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 15 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
-            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-            "facts": [
-              {
-                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
-                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
-                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
-                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
-                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
-              },
-              {
-                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
-                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
-                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
-                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
-              },
-              {
-                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
-                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              },
-              {
-                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
-                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
-                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
-                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
-            "relationship_type": "delivery_followup",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 15 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
-            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-            "facts": [
-              {
-                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
-                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
-                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
-                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
-            "relationship_type": "other",
-            "relationship_evidence": [
-              "same named core entity: aerotime",
-              "archive predates source by 15 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 15 day(s) apart",
-            "event_date": "2026-07-28",
-            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
-            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-            "facts": [
-              {
-                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
-                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
-                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
-                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
-                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              },
-              {
-                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
-                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
-                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
-                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
-              }
-            ]
-          }
-        ]
       }
     }
   }
