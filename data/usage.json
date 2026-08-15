@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-15T11:15Z",
+  "updatedUtc": "2026-08-15T11:30Z",
   "trackingSinceUtc": "2026-07-26T22:52Z",
   "models": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -21,9 +21,9 @@
       "unknownCalls": 541
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 755,
-      "inputTokens": 2430971,
-      "outputTokens": 4457169,
+      "calls": 756,
+      "inputTokens": 2444057,
+      "outputTokens": 4461464,
       "unknownCalls": 224
     },
     "gemini:gemini-3.5-flash": {
@@ -129,10 +129,10 @@
       "unknownCalls": 430
     },
     "opencode:claude-sonnet-4-6": {
-      "calls": 116,
+      "calls": 117,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 116
+      "unknownCalls": 117
     },
     "opencode:gpt-5.5": {
       "calls": 1,
@@ -249,12 +249,238 @@
       "outputTokens": 1504763
     },
     "2026-08-15": {
-      "calls": 121,
-      "inputTokens": 382897,
-      "outputTokens": 429037
+      "calls": 123,
+      "inputTokens": 395983,
+      "outputTokens": 433332
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-15T11:29Z",
+      "finishedUtc": "2026-08-15T11:30Z",
+      "workflow": "manual",
+      "taskType": "manual_article",
+      "groupId": "manual-e0059db46b5d1b8182bb8aaf1d4a5361",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "www.starlux-airlines.com",
+      "result": "publish",
+      "articleId": null,
+      "finalStatus": "publish",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "total": 24575
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "opencode",
+          "model": "claude-sonnet-4-6",
+          "label": "opencode:claude-sonnet-4-6",
+          "startedUtc": null,
+          "durationMs": 385,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "auth",
+          "failureStage": "drafting",
+          "failureMessage": "HTTP 401",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": null,
+          "durationMs": 18828,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": "drafting",
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": [
+          {
+            "label": "opencode:claude-sonnet-4-6",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "opencode:gpt-5.5",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "gemini:gemini-3.6-flash",
+            "inputTokens": 13086,
+            "outputTokens": 4295,
+            "estimated": false
+          },
+          {
+            "label": "opencode:gemini-3.1-pro",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "opencode:qwen3.6-plus",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:z-ai/glm-5.2",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "opencode:glm-5.1",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "opencode:kimi-k2.6",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "gemini:gemini-3.5-flash",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:qwen/qwen3.5-397b-a17b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-31b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:inclusionai/ling-3.0-flash:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:openai/gpt-oss-20b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-s-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:cohere/north-mini-code:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-xs-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          }
+        ]
+      }
+    },
     {
       "startedUtc": "2026-08-15T11:11Z",
       "finishedUtc": "2026-08-15T11:12Z",
@@ -146259,44 +146485,6 @@
         "fabricationCheck": null,
         "articleBuild": null,
         "total": 73967
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-09T04:23Z",
-      "finishedUtc": "2026-08-09T04:24Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260809-0423-7",
-      "eventId": null,
-      "sourceCount": 2,
-      "primarySource": "臺灣交通要聞",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 753,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 73941
       },
       "attempts": [],
       "resourceUsage": {
