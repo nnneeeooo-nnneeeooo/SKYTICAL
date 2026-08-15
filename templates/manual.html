@@ -107,6 +107,11 @@
           <span>點選、拖入，或直接 Ctrl+V 貼上；最多 4 張。</span>
           <div id="image-list" class="image-list"></div>
         </div>
+        <label class="toggle-field">
+          <input id="image-direct-relation" type="checkbox" checked>
+          <span>配圖與本篇新聞直接相關</span>
+        </label>
+        <p class="field-help">預設開啟；發布後會標示為事件相關照片。若只是背景或示意資料照，請關閉，網站會顯示「資料照片（非事件現場照片）」。</p>
 
         <div class="controls-grid">
           <label>文章類型
@@ -447,6 +452,7 @@
     </details>
   </main>
   <script src="{{ base }}/assets/manual.js" defer></script>
+  <script src="{{ base }}/assets/manual-image-relation.js?v=20260815-1" defer></script>
   {% if copilot_enabled %}
   <script src="{{ base }}/assets/copilot.js?v=20260811-knowledge1" defer></script>
   {% endif %}
