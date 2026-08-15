@@ -36,6 +36,9 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Test summary boundary guard
+        run: python tests/test_summary_guard.py
+
       - name: Build site from committed data
         env:
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
@@ -43,6 +46,7 @@ jobs:
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
         run: |
+          python pipeline/summary_guard.py
           python pipeline/airport_codes.py
           python pipeline/build.py
 
