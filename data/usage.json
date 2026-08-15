@@ -1,28 +1,254 @@
 {
-  "updatedUtc": "2026-08-15T12:24Z",
+  "updatedUtc": "2026-08-15T12:46Z",
   "trackingSinceUtc": "2026-08-15T11:30Z",
   "models": {
     "opencode:claude-sonnet-4-6": {
-      "calls": 1,
+      "calls": 2,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 1
+      "unknownCalls": 2
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 1,
-      "inputTokens": 6486,
-      "outputTokens": 9884,
+      "calls": 2,
+      "inputTokens": 32431,
+      "outputTokens": 14612,
       "unknownCalls": 0
     }
   },
   "daily": {
     "2026-08-15": {
-      "calls": 2,
-      "inputTokens": 6486,
-      "outputTokens": 9884
+      "calls": 4,
+      "inputTokens": 32431,
+      "outputTokens": 14612
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-15T12:45Z",
+      "finishedUtc": "2026-08-15T12:46Z",
+      "workflow": "manual",
+      "taskType": "manual_article",
+      "groupId": "manual-e816db0275f2228dc1abe9604a9c1886",
+      "eventId": null,
+      "sourceCount": 8,
+      "primarySource": "www.knews.com.tw",
+      "result": "publish",
+      "articleId": null,
+      "finalStatus": "publish",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "total": 28455
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "opencode",
+          "model": "claude-sonnet-4-6",
+          "label": "opencode:claude-sonnet-4-6",
+          "startedUtc": null,
+          "durationMs": 89,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "auth",
+          "failureStage": "drafting",
+          "failureMessage": "HTTP 401",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": null,
+          "durationMs": 20258,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": "drafting",
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": [
+          {
+            "label": "opencode:claude-sonnet-4-6",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "opencode:gpt-5.5",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "gemini:gemini-3.6-flash",
+            "inputTokens": 25945,
+            "outputTokens": 4728,
+            "estimated": false
+          },
+          {
+            "label": "opencode:gemini-3.1-pro",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "opencode:qwen3.6-plus",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:z-ai/glm-5.2",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "opencode:glm-5.1",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "opencode:kimi-k2.6",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "gemini:gemini-3.5-flash",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:deepseek-ai/deepseek-v4-pro",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:qwen/qwen3.5-397b-a17b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "nvidia:mistralai/mistral-medium-3.5-128b",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-31b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:inclusionai/ling-3.0-flash:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:google/gemma-4-26b-a4b-it:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:openai/gpt-oss-20b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:nvidia/nemotron-nano-9b-v2:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-s-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:cohere/north-mini-code:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          },
+          {
+            "label": "openrouter:poolside/laguna-xs-2.1:free",
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "estimated": false
+          }
+        ]
+      }
+    },
     {
       "startedUtc": "2026-08-15T12:23Z",
       "finishedUtc": "2026-08-15T12:24Z",
@@ -145990,81 +146216,6 @@
         "total": 3714
       },
       "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-09T05:51Z",
-      "finishedUtc": "2026-08-09T05:53Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260809-0551-12",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Aerospace Global News",
-      "result": "manual_review",
-      "articleId": null,
-      "finalStatus": "manual_review",
-      "finalModel": "gemini:gemini-3.6-flash",
-      "fallbackUsed": false,
-      "attemptCount": 2,
-      "httpCallCount": 2,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 860,
-        "promptAssembly": 0,
-        "drafting": 91372,
-        "validation": 1,
-        "factVerification": 0,
-        "evidenceBinding": 0,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": null,
-        "total": 94957
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-08-09T05:51Z",
-          "durationMs": 55358,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 55355,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "evidence_binding_failed",
-          "failureStage": "evidenceBinding",
-          "failureMessage": "verified factId values must be sequential F1..Fn",
-          "retryPlanned": true,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-08-09T05:52Z",
-          "durationMs": 36015,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 36013,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
       "resourceUsage": {
         "actualUsd": 0.0,
         "models": []
