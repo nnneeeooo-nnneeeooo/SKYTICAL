@@ -32,7 +32,10 @@ def main() -> int:
     assert article["zh"]["summary"].endswith("。")
     assert article["en"]["summary"].endswith(".")
     assert "桃園國際機場（TPE）" in article["zh"]["summary"]
-    assert "Taoyuan International Airport (TPE)" in article["en"]["summary"]
+    assert article["en"]["summary"] == (
+        "STARLUX Airlines has completed the delivery of STARLUX AIRSORAYAMA GOLD "
+        "in collaboration with Hajime Sorayama."
+    )
 
     # A deliberate editor-written summary is never rewritten.
     custom = {
