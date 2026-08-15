@@ -1,7 +1,47 @@
 {
+  "updatedUtc": "2026-08-15T11:32Z",
+  "trackingSinceUtc": "2026-08-15T11:30Z",
   "models": {},
   "daily": {},
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-15T11:32Z",
+      "finishedUtc": "2026-08-15T11:32Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260815-1131-1",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 922,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 950
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-15T11:30Z",
       "finishedUtc": "2026-08-15T11:30Z",
@@ -46,6 +86,7 @@
       "workflow": "manual",
       "taskType": "manual_article",
       "groupId": "manual-e0059db46b5d1b8182bb8aaf1d4a5361",
+      "eventId": null,
       "sourceCount": 6,
       "primarySource": "www.starlux-airlines.com",
       "result": "published",
@@ -53,10 +94,13 @@
       "finalStatus": "publish",
       "finalModel": "gemini:gemini-3.6-flash",
       "fallbackUsed": true,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
       "durationsMs": {},
       "attempts": [],
       "resourceUsage": {
-        "actualUsd": 0,
+        "actualUsd": 0.0,
         "models": [
           {
             "label": "opencode:claude-sonnet-4-6",
@@ -146047,6 +146091,5 @@
       }
     }
   ],
-  "updatedUtc": "2026-08-15T11:30Z",
-  "trackingSinceUtc": "2026-08-15T11:30Z"
+  "copilotEvents": []
 }
