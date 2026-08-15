@@ -137,6 +137,7 @@ def test_model_priority_defaults():
     expected = (
         "opencode:claude-sonnet-4-6",
         "opencode:gpt-5.5",
+        "gemini:gemini-3.7-flash",
         "gemini:gemini-3.6-flash",
         "opencode:gemini-3.1-pro",
         "opencode:qwen3.6-plus",
@@ -167,8 +168,8 @@ def test_model_priority_defaults():
           "model priority order matches the configured product order")
     check(providers.DEFAULT_ORDER == ",".join(expected),
           "fallback default derives from model priority order")
-    check(providers.GEMINI_DEFAULT_MODEL == "gemini-3.6-flash",
-          "Gemini 3.6 Flash is the default model")
+    check(providers.GEMINI_DEFAULT_MODEL == "gemini-3.7-flash",
+          "Gemini 3.7 Flash is the default model")
     check(providers.NVIDIA_DEFAULT_MODEL == "z-ai/glm-5.2",
           "GLM 5.2 is the highest-priority NVIDIA default")
     check(providers.OPENROUTER_DEFAULT_MODEL
@@ -176,10 +177,10 @@ def test_model_priority_defaults():
           "Nemotron Ultra is the highest-priority OpenRouter default")
     check(providers.OPENCODE_DEFAULT_MODEL == "claude-sonnet-4-6",
           "Claude Sonnet 4.6 is the highest-priority OpenCode default")
-    check(expected[10:12] == (
+    check(expected[11:13] == (
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    ) and expected[13:15] == (
+    ) and expected[14:16] == (
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
         "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
     ), "equivalent Nemotron models are adjacent with native NVIDIA first")
@@ -471,8 +472,8 @@ def test_nvidia_format_repair():
 
 
 def test_gemini_model_profiles():
-    """Gemini 3.6/3.5 send thinkingLevel high; unknown models send none."""
-    for model in ("gemini-3.6-flash", "gemini-3.5-flash"):
+    """Gemini 3.7/3.6/3.5 send thinkingLevel high; unknown models send none."""
+    for model in ("gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash"):
         captured = []
 
         def fake_post(url, json=None, timeout=None, headers=None):
@@ -514,7 +515,7 @@ def test_gemini_thought_parts_excluded():
             {"text": GOOD},
         ])
 
-    provider = providers.GeminiProvider("gemini-3.6-flash")
+    provider = providers.GeminiProvider("gemini-3.7-flash")
     result = with_post(fake_post,
                        lambda: provider.draft("sys", "user", SCHEMA))
     check(result == {"ok": 1} and "leak" not in result,

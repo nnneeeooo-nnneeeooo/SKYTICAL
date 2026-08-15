@@ -70,7 +70,7 @@ HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
 # Only fields the respective endpoint documents are sent; models without a
 # profile fall back to conservative generic settings.
 NVIDIA_DEFAULT_MODEL = "z-ai/glm-5.2"
-GEMINI_DEFAULT_MODEL = "gemini-3.6-flash"
+GEMINI_DEFAULT_MODEL = "gemini-3.7-flash"
 OPENROUTER_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 OPENCODE_DEFAULT_MODEL = "claude-sonnet-4-6"
 OPENCODE_BASE_URL = "https://console.opencode.ai/inference"
@@ -79,6 +79,13 @@ MODEL_PROFILES: dict = {
     # Gemini thinking is high for fact-sensitive bilingual drafting. Format
     # repair remains minimal because that call may only fix JSON syntax.
     # Temperature is intentionally omitted: Gemini 3.x uses its tuned default.
+    "gemini-3.7-flash": {
+        "generationConfig": {"maxOutputTokens": 16384,
+                             "thinkingConfig": {"thinkingLevel": "high"}},
+        "repairGenerationConfig": {
+            "maxOutputTokens": 8192,
+            "thinkingConfig": {"thinkingLevel": "minimal"}},
+    },
     "gemini-3.6-flash": {
         "generationConfig": {"maxOutputTokens": 16384,
                              "thinkingConfig": {"thinkingLevel": "high"}},
