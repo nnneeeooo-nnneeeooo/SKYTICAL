@@ -5,6 +5,7 @@ fallback and model ordering on the private usage dashboard.
 """
 
 DIRECT_MODEL_ORDER = (
+    "gemini:gemini-3.7-flash",
     "gemini:gemini-3.6-flash",
     "gemini:gemini-3.5-flash",
     "nvidia:z-ai/glm-5.2",
@@ -48,17 +49,18 @@ MODEL_ORDER = (
     OPENCODE_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[0],
+    DIRECT_MODEL_ORDER[1],
     OPENCODE_MODEL_ORDER[2],
     OPENCODE_MODEL_ORDER[3],
-    DIRECT_MODEL_ORDER[2],
+    DIRECT_MODEL_ORDER[3],
     OPENCODE_MODEL_ORDER[4],
     OPENCODE_MODEL_ORDER[5],
-    DIRECT_MODEL_ORDER[1],
-    *DIRECT_MODEL_ORDER[3:5],
+    DIRECT_MODEL_ORDER[2],
+    *DIRECT_MODEL_ORDER[4:6],
     OPENROUTER_MODEL_ORDER[0],
-    *DIRECT_MODEL_ORDER[5:7],
+    *DIRECT_MODEL_ORDER[6:8],
     OPENROUTER_MODEL_ORDER[1],
-    DIRECT_MODEL_ORDER[7],
+    DIRECT_MODEL_ORDER[8],
     *OPENROUTER_MODEL_ORDER[2:],
 )
 
@@ -72,6 +74,7 @@ MODEL_DISPLAY_NAMES = {
     "opencode:qwen3.6-plus": "OpenCode · Qwen 3.6 Plus",
     "opencode:glm-5.1": "OpenCode · GLM 5.1",
     "opencode:kimi-k2.6": "OpenCode · Kimi K2.6",
+    "gemini:gemini-3.7-flash": "Google Gemini 3.7 Flash",
     "gemini:gemini-3.6-flash": "Google Gemini 3.6 Flash",
     "gemini:gemini-3.5-flash": "Google Gemini 3.5 Flash",
     "nvidia:z-ai/glm-5.2": "NVIDIA GLM 5.2",
