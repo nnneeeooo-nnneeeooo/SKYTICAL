@@ -37,7 +37,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ base }}/assets/modernist.css">
 <link rel="stylesheet" href="{{ base }}/assets/site.css?v={{ asset_version }}">
-<link rel="stylesheet" href="{{ base }}/assets/logo-fix.css?v=20260814a">
 {% block head_extra %}{% endblock %}
 <script src="{{ base }}/assets/app.js?v={{ asset_version }}" defer></script>
 </head>
@@ -86,12 +85,8 @@
   <div class="brand-shell">
     <div class="brand-row">
       <a class="brand-link" href="{{ home_url }}" aria-label="SKYTICAL — {{ t.homeLabel }}">
-        <span class="skytical-logo-wrap brand-logo-wrap">
-          <img class="brand-logo" src="{{ base }}/assets/skytical-logo.svg?v={{ asset_version }}"
-               alt="SKYTICAL — SKYLINE TO AVIATION NEWS" width="1000" height="220">
-          <img class="skytical-wing-overlay" src="{{ base }}/assets/skytical-wing.svg?v=20260814a"
-               alt="" aria-hidden="true" width="250" height="220">
-        </span>
+        <img class="brand-logo" src="{{ base }}/assets/skytical-logo.svg?v={{ asset_version }}"
+             alt="SKYTICAL — SKYLINE TO AVIATION NEWS" width="1000" height="220">
       </a>
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
         <span class="nav-toggle-icon" aria-hidden="true">☰</span>
@@ -117,7 +112,7 @@
           {%- else -%}
           <span class="ticker-item"><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>&#8195;{{ it.text }}</span>
           {%- endif -%}
-          {%- if not loop.last %}<span class="ticker-sep">▪</span>{% endif -%}
+          {%- if not loop.last %}<span class="ticker-sep">▪</span>{% endif %}
           {%- endfor -%}
         </span>
         {% endfor %}
@@ -129,13 +124,9 @@
   <div style="border-top:2px solid var(--color-divider);">
     <div class="footer-grid">
       <div>
-        <span class="skytical-logo-wrap footer-logo-wrap">
-          <img class="footer-logo" src="{{ base }}/assets/skytical-logo.svg?v={{ asset_version }}"
-               alt="SKYTICAL — SKYLINE TO AVIATION NEWS" width="1000" height="220"
-               loading="lazy">
-          <img class="skytical-wing-overlay" src="{{ base }}/assets/skytical-wing.svg?v=20260814a"
-               alt="" aria-hidden="true" width="250" height="220" loading="lazy">
-        </span>
+        <img class="footer-logo" src="{{ base }}/assets/skytical-logo.svg?v={{ asset_version }}"
+             alt="SKYTICAL — SKYLINE TO AVIATION NEWS" width="1000" height="220"
+             loading="lazy">
         <p class="text-muted" style="font-size:12.5px;line-height:1.8;margin-top:8px;">{{ t.footerAbout }}</p>
         <p class="text-muted" style="font-size:11.5px;letter-spacing:.04em;margin:8px 0 0;">{{ t.lastBuild }} {{ build.stamp }} UTC</p>
         <a class="btn btn-secondary footer-changelog-button" href="{{ changelog_url }}">{{ t.footerChangelog }} →</a>
