@@ -1,5 +1,332 @@
 [
   {
+    "id": "g-20260815-1413-4",
+    "queuedUtc": "2026-08-15T14:13Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Contract award involves a major financial claim of up to $10 billion over 26 years, requiring manual editorial review under policy guidelines.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "The US Army selected M1 Support Services for its Flight School Next helicopter training program under a contract worth up to $10 billion over 26 years.",
+        "sourceQuote": "selected the Robinson R66 as its next primary helicopter trainer under a contract with M1 Support Services worth up to $10 billion over 26 years.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "M1's winning training system is built around the Robinson R66, which will replace the Airbus UH-72 Lakota in primary training at Fort Rucker, Alabama.",
+        "sourceQuote": "M1’s winning training system is built around the turbine-powered R66, which will take over the primary training role now performed by the Airbus UH-72 Lakota.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "Flight School Next will operate as a contractor-owned, contractor-operated system expected to train between 800 and 1,500 pilots annually.",
+        "sourceQuote": "provide training through a contractor-owned, contractor-operated system rather than relying on Army-owned primary training helicopters.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "Maj. Gen. Clair Gill stated that Flight School Next delivers a critical improvement in initial rotary wing training and provides new military helicopter pilots with better foundational skills.",
+        "sourceQuote": "“Flight School Next delivers a critical improvement in our Initial Entry Rotary Wing Training model,” said Maj. Gen. Clair Gill",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "M1's team includes Robinson Helicopter, Quantum Helicopters, General Dynamics Information Technology, and the University of North Dakota Aerospace Foundation.",
+        "sourceQuote": "M1’s team includes Robinson Helicopter, Quantum Helicopters, General Dynamics Information Technology and the University of North Dakota Aerospace Foundation.",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "M1 beat Bell, which proposed the Bell 505, in the final stage of the Flight School Next competition.",
+        "sourceQuote": "M1 beat Bell in the final stage of the Flight School Next competition. Bell proposed the Bell 505 as its training platform",
+        "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Contract award involves a major financial claim of up to $10 billion over 26 years, requiring manual editorial review under policy guidelines.",
+      "cat": "mil",
+      "zh": {
+        "title": "美國陸軍選擇M1服務公司與R66直升機進行飛行訓練計畫",
+        "summary": "美國陸軍選擇M1與R66直升機執行100億美元直升機訓練合約",
+        "body": [
+          "美國陸軍已選擇M1服務公司執行「下一代飛行學校」計畫，合約期限長達26年，總價值最高可達100億美元。該計畫將以羅賓遜R66（Robinson R66）直升機為核心，取代目前由空中巴士UH-72 Lakota擔負的初級訓練任務。",
+          "這項計畫採用業者所有與營運模式，預計每年訓練800至1,500名飛行員。M1團隊成員包括羅賓遜直升機公司、Quantum Helicopters、通用動力資訊技術公司及北達科他大學航空基金會，並在競標最終階段擊敗提出Bell 505方案的貝爾公司。",
+          "美軍陸軍航空卓越中心指揮官吉爾少將指出，新計畫對初級旋翼機訓練帶來關鍵改進，能為新進軍事直升機飛行員提供更為紮實的基礎飛行技能。"
+        ]
+      },
+      "en": {
+        "title": "US Army selects M1 Support Services and Robinson R66 for $10B helicopter training contract",
+        "summary": "US Army awards M1 Support Services a 26-year helicopter training contract using Robinson R66 aircraft.",
+        "body": [
+          "The US Army has selected M1 Support Services for its Flight School Next program under a contract valued at up to $10 billion over 26 years. The training framework is centered on the turbine-powered Robinson R66, replacing the Airbus UH-72 Lakota currently used for primary helicopter training at Fort Rucker, Alabama.",
+          "Operating as a contractor-owned and contractor-operated system, Flight School Next is expected to train between 800 and 1,500 pilots each year. M1's winning team includes Robinson Helicopter, Quantum Helicopters, General Dynamics Information Technology, and the University of North Dakota Aerospace Foundation, defeating Bell's proposal featuring the Bell 505.",
+          "Maj. Gen. Clair Gill, Commanding General of the US Army Aviation Center of Excellence, stated that the program delivers a critical improvement in initial entry rotary-wing training, delivering new pilots with far better foundational skills."
+        ]
+      },
+      "flash": {
+        "zh": "美國陸軍選擇M1與R66直升機執行100億美元訓練合約",
+        "en": "US Army selects M1 Support Services and Robinson R66 for $10B training program",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The US Army selected M1 Support Services for its Flight School Next helicopter training program under a contract worth up to $10 billion over 26 years.",
+          "sourceQuote": "selected the Robinson R66 as its next primary helicopter trainer under a contract with M1 Support Services worth up to $10 billion over 26 years.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "M1's winning training system is built around the Robinson R66, which will replace the Airbus UH-72 Lakota in primary training at Fort Rucker, Alabama.",
+          "sourceQuote": "M1’s winning training system is built around the turbine-powered R66, which will take over the primary training role now performed by the Airbus UH-72 Lakota.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Flight School Next will operate as a contractor-owned, contractor-operated system expected to train between 800 and 1,500 pilots annually.",
+          "sourceQuote": "provide training through a contractor-owned, contractor-operated system rather than relying on Army-owned primary training helicopters.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Maj. Gen. Clair Gill stated that Flight School Next delivers a critical improvement in initial rotary wing training and provides new military helicopter pilots with better foundational skills.",
+          "sourceQuote": "“Flight School Next delivers a critical improvement in our Initial Entry Rotary Wing Training model,” said Maj. Gen. Clair Gill",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "M1's team includes Robinson Helicopter, Quantum Helicopters, General Dynamics Information Technology, and the University of North Dakota Aerospace Foundation.",
+          "sourceQuote": "M1’s team includes Robinson Helicopter, Quantum Helicopters, General Dynamics Information Technology and the University of North Dakota Aerospace Foundation.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "M1 beat Bell, which proposed the Bell 505, in the final stage of the Flight School Next competition.",
+          "sourceQuote": "M1 beat Bell in the final stage of the Flight School Next competition. Bell proposed the Bell 505 as its training platform",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2"
+      ],
+      "entities": {
+        "organizations": [
+          "US Army",
+          "M1 Support Services",
+          "US Army Aviation Center of Excellence",
+          "Robinson Helicopter",
+          "Quantum Helicopters",
+          "General Dynamics Information Technology",
+          "University of North Dakota Aerospace Foundation",
+          "Bell"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Robinson R66",
+          "UH-72 Lakota",
+          "Bell 505"
+        ],
+        "airports": [],
+        "locations": [
+          "Fort Rucker",
+          "Alabama"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": []
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260815-1413-4",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "US Army moves to Robinson R66 under $10B helicopter training program",
+          "url": "https://www.aerotime.aero/articles/us-army-robinson-r66-10-billion-helicopter-training-program",
+          "publishedUtc": "2026-08-15T13:12Z",
+          "summary": "The US Army has selected the Robinson R66 as its next primary helicopter trainer under a contract with… The post US Army moves to Robinson R66 under $10B helicopter training program appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1652-boeing-wraps-up-737-7-and-737-10-certifi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 18 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 18 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "AeroTime報導波音已完成規劃認證飛行測試。",
+                "source_quote": "Boeing has completed planned certification flight tests of the smallest and largest 737 MAX jets",
+                "source_url": "https://www.aerotime.aero/articles/boeing-737-max-certification-flight-tests",
+                "source_name": "AeroTime — Little and large: Boeing rounds off 737-7 and 737-10 certif..."
+              },
+              {
+                "claim": "737 MAX 7與MAX 10是MAX家族中最後兩款等待認證的衍生機型。",
+                "source_quote": "The two variants are the last of the MAX family awaiting certification.",
+                "source_url": "https://simpleflying.com/boeing-completes-737-max-7-max-10-flight-testing-2027-deliveries/",
+                "source_name": "Archive: Simple Flying — Boeing Completes 737 MAX 7 & MAX 10 Flight Testing, Clearin... — a-20260728-2114-boeing-completes-737-max-7-and-max-10-fl"
+              },
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260729-1742-latam-airlines-unveils-cabin-interiors-f",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 18 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 18 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet",
+            "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+            "facts": [
+              {
+                "claim": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet.",
+                "source_quote": "On July 28, 2026, LATAM Airlines unveiled the cabin interiors for its new Embraer E195 E2 fleet",
+                "source_url": "https://www.aerotime.aero/articles/latam-airlines-unveils-cabin-interiors-for-new-e195-e2-fleet",
+                "source_name": "AeroTime — LATAM Airlines unveils cabin interiors for new E195 E2 fleet"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-global-business-aviation-activity-rises",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: aerotime",
+              "archive predates source by 18 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 18 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying...",
+            "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+            "facts": [
+              {
+                "claim": "2026年上半年全球商務航空起降次數達244萬次,年增4.2%。",
+                "source_quote": "Global business aviation activity increased 4.2% during the first half of 2026",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "北美占全球起降次數65%達177萬架次,持分共享營運大幅成長11.7%。",
+                "source_quote": "North America remained the center of global business aviation activity, accounting for 65% of all departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "輕型噴射機成長6.1%為機型中最高,大型客艙噴射機則下降1.8%。",
+                "source_quote": "Light jet activity increased 6.1%, the strongest result among the aircraft categories.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "歐洲起降量占全球逾14%並成長1.6%,加拿大占比為4.8%。",
+                "source_quote": "European countries together accounted for slightly more than 14% of global departures.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              },
+              {
+                "claim": "ARGUS預計下半年北美活動成長2.2%,並將燃油價格與地緣政治列為風險。",
+                "source_quote": "The company expects North American business aviation activity to increase another 2.2% during the second half of 2026.",
+                "source_url": "https://www.aerotime.aero/articles/private-jet-travel-grows-worldwide-fractional-flying-surges",
+                "source_name": "AeroTime — Travel by private jet grows worldwide as fractional flying..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260815-1111-10",
     "queuedUtc": "2026-08-15T11:11Z",
     "approve": false,
@@ -9956,153 +10283,6 @@
             ]
           }
         ]
-      }
-    }
-  },
-  {
-    "id": "g-20260812-2331-12",
-    "queuedUtc": "2026-08-12T23:31Z",
-    "approve": false,
-    "writer": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-    "decisionReason": "Financial claim present (interim financing) triggers financial_or_order_claim risk flag, requiring human review.",
-    "riskFlags": [
-      "financial_or_order_claim"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "airBaltic plans to reduce its Airbus A220-300 fleet from 54 to 36 aircraft by the end of 2026, increasing to 40 by 2031.",
-        "sourceQuote": "By the end of 2026, airBaltic, which currently operates a fleet of 54 Airbus A220-300s, aims to reduce that to just 36 aircraft. This will gradually increase to 40 by 2031.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/airbaltic-a220-fleet-reduction-acmi-partnerships-business-plan/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "airBaltic forecasts revenue of around $0.9 billion in 2027, $1.04 billion in 2029 and $1.15 billion by 2031 under its revised business plan.",
-        "sourceQuote": "Under its revised business plan, the airline is forecasting revenues will reach around $0.9 billion in 2027, increasing to $1.04 billion in 2029 and $1.15 billion by 2031.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/airbaltic-a220-fleet-reduction-acmi-partnerships-business-plan/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Financial claim present (interim financing) triggers financial_or_order_claim risk flag, requiring human review.",
-      "cat": "biz",
-      "zh": {
-        "title": "波羅的航宣布精簡商務計畫 削減A220機隊",
-        "summary": "波羅的航；削減A220機隊至36架；預計2031年收入達11.5億美元",
-        "body": [
-          "波羅的航（airBaltic）發布調整後的商務計畫，將專注於以里加為樞紐的縮減航線網路。",
-          "計畫指出，到2026年底將把現有的54架空中巴士A220-300減少至36架，之後逐步增加至2031年的40架。",
-          "為改善財務狀況，airBaltic要求債權人批准約2.6億美元的中期融資，並規劃約2.59億美元新增債務及1.15億美元新增股本。",
-          "該航空公司預測2027年收入約9億美元，2029年增至10.4億美元，2031年達到11.5億美元。",
-          "執行長Erno Hildén表示，新計畫優先考慮財務穩定，將增長放在第二位，以創造長期價值。"
-        ]
-      },
-      "en": {
-        "title": "airBaltic unveils scaled-back business plan to cut A220 fleet",
-        "summary": "airBaltic; trims A220 fleet to 36 aircraft; projects $1.15bn revenue by 2031",
-        "body": [
-          "airBaltic has released a revised business plan focused on strengthening long-term competitiveness by reducing its fleet and building year‑round ACMI partnerships.",
-          "The plan calls for cutting the current fleet of 54 Airbus A220‑300 aircraft to 36 by the end of 2026, with a gradual increase to 40 by 2031.",
-          "To meet immediate liquidity needs, the airline has asked bondholders to approve around $260 million in interim financing, alongside a longer‑term recapitalisation of about $259 million in new debt and $115 million in new equity.",
-          "Under the revised plan, revenue is forecast to reach roughly $0.9 billion in 2027, $1.04 billion in 2029 and $1.15 billion by 2031.",
-          "CEO Erno Hildén said the updated strategy prioritises financial stability before growth, aiming to create lasting value for customers, partners and Latvia."
-        ]
-      },
-      "flash": {
-        "zh": "波羅的航削減A220機隊至36架",
-        "en": "airBaltic trims A220 fleet to 36 aircraft",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "airBaltic plans to reduce its Airbus A220-300 fleet from 54 to 36 aircraft by the end of 2026, increasing to 40 by 2031.",
-          "sourceQuote": "By the end of 2026, airBaltic, which currently operates a fleet of 54 Airbus A220-300s, aims to reduce that to just 36 aircraft. This will gradually increase to 40 by 2031.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/airbaltic-a220-fleet-reduction-acmi-partnerships-business-plan/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "airBaltic forecasts revenue of around $0.9 billion in 2027, $1.04 billion in 2029 and $1.15 billion by 2031 under its revised business plan.",
-          "sourceQuote": "Under its revised business plan, the airline is forecasting revenues will reach around $0.9 billion in 2027, increasing to $1.04 billion in 2029 and $1.15 billion by 2031.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/airbaltic-a220-fleet-reduction-acmi-partnerships-business-plan/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "entities": {
-        "organizations": [
-          "airBaltic",
-          "Airbus"
-        ],
-        "airlines": [
-          "airBaltic"
-        ],
-        "aircraft_models": [
-          "Airbus A220-300"
-        ],
-        "airports": [],
-        "locations": [
-          "Riga"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-12"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "financial_or_order_claim"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260812-2331-12",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "airBaltic reveals scaled-back business plan as the airline cuts A220 fleet News",
-          "url": "https://aerospaceglobalnews.com/news/airbaltic-a220-fleet-reduction-acmi-partnerships-business-plan/",
-          "publishedUtc": "2026-08-12T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/10/airbaltic-aircraft-21.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        },
-        {
-          "title": "airBaltic reveals scaled-back business plan as the airline cuts A220 fleet",
-          "summary": "airBaltic reveals scaled-back business plan as the airline cuts A220 fleet &nbsp;&nbsp; aerospaceglobalnews.com",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQZkpQbnhqZUpIY3V1VkFkMnE0SGpIUWE1Q3A4VkE1cnF1d3ZNWkF5T28tTU9TdkpOSjBVdEtMbjNHR1RselROVTdTU1kwRW54R3F4Zmw2VUhZM0VjWExvTmZXNzBxZDNBenZHZURwZnZISFZEWjBxMXhVcGhzUHFoUTg4S3F5WmJDSzdBRUNoZzdyLXdLNnh5UEpuNXlva25kUkE?oc=5",
-          "source": "aerospaceglobalnews.com",
-          "companion": true,
-          "publishedUtc": "2026-08-12T12:55Z"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "insufficient",
-        "selected_events": []
       }
     }
   }
