@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-15T16:18Z",
+  "updatedUtc": "2026-08-15T17:16Z",
   "trackingSinceUtc": "2026-08-15T12:46Z",
   "models": {
     "opencode:claude-sonnet-4-6": {
@@ -59,6 +59,44 @@
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-15T17:16Z",
+      "finishedUtc": "2026-08-15T17:16Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260815-1716-2",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 976,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 1009
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-15T16:13Z",
       "finishedUtc": "2026-08-15T16:14Z",
@@ -145988,44 +146026,6 @@
           "disabledForRun": false
         }
       ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-09T10:41Z",
-      "finishedUtc": "2026-08-09T10:43Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260809-1041-3",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "臺灣交通要聞",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 829,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 73983
-      },
-      "attempts": [],
       "resourceUsage": {
         "actualUsd": 0.0,
         "models": []
