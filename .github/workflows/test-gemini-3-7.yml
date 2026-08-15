@@ -1,0 +1,44 @@
+name: test-gemini-3-7-access
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/test-gemini-3-7.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test-gemini-3-7:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Gemini 3.7 Flash
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::GEMINI_API_KEY is unavailable"
+            exit 1
+          fi
+          http_code=$(curl -sS -o response.json -w "%{http_code}" \
+            -X POST \
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent" \
+            -H "x-goog-api-key: $GEMINI_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"contents":[{"role":"user","parts":[{"text":"Reply OK"}]}],"generationConfig":{"maxOutputTokens":1}}')
+          echo "HTTP $http_code"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("response.json").read_text(encoding="utf-8"))
+          if "error" in data:
+              err = data["error"]
+              print("API error:", err.get("code"), err.get("status"), err.get("message"))
+          else:
+              print("modelVersion:", data.get("modelVersion"))
+              print("finishReason:", ((data.get("candidates") or [{}])[0]).get("finishReason"))
+              print("usageMetadata:", data.get("usageMetadata"))
+          PY
+          test "$http_code" -ge 200 -a "$http_code" -lt 300
