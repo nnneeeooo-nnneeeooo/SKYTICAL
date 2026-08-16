@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-08-16T23:38Z",
+  "updatedUtc": "2026-08-16T23:43Z",
   "trackingSinceUtc": "2026-08-15T12:46Z",
   "models": {
     "opencode:claude-sonnet-4-6": {
@@ -148,6 +148,44 @@
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-16T23:43Z",
+      "finishedUtc": "2026-08-16T23:43Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260816-2343-2",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 1320,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 1364
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-16T23:37Z",
       "finishedUtc": "2026-08-16T23:38Z",
@@ -147148,44 +147186,6 @@
         "fabricationCheck": null,
         "articleBuild": null,
         "total": 45067
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-10T10:44Z",
-      "finishedUtc": "2026-08-10T10:44Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260810-1044-1",
-      "eventId": null,
-      "sourceCount": 6,
-      "primarySource": "NTSB",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 836,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 1694
       },
       "attempts": [],
       "resourceUsage": {
