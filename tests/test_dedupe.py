@@ -193,6 +193,34 @@ def test_structured_event_matching() -> None:
     assert not dedupe.same_event(aerotime, unrelated)
 
 
+def test_avherald_incidents_become_an_explicit_roundup() -> None:
+    """Headline boilerplate never pretends independent notices are one event."""
+    titles = [
+        "Incident: Alaska B39M near Chicago on Aug 16th 2026, engine shut down in flight",
+        "Incident: Ryanair B38M near Alicante on Aug 15th 2026, indication of engine issue",
+        "Incident: Hainan A333 near Krasnoyarsk on Aug 15th 2026, mechanical fault",
+    ]
+    items = [
+        {
+            "title": title,
+            "url": f"https://news.google.com/rss/articles/event-{index}",
+            "publishedUtc": _stamp(hours=index + 1),
+            "summary": "",
+            "source": "The Aviation Herald",
+            "sourceKey": "avherald",
+        }
+        for index, title in enumerate(titles)
+    ]
+    for index, item in enumerate(items):
+        for other in items[index + 1:]:
+            assert not dedupe.same_event(item, other)
+    grouped = dedupe._group_with_kind(items)
+    assert len(grouped) == 1
+    members, kind = grouped[0]
+    assert kind == "safety_roundup"
+    assert {item["title"] for item in members} == set(titles)
+
+
 def test_group_cap_and_recency_order() -> None:
     titles = [
         "Quantum kettle recall expands to blue models",

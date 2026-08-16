@@ -52,6 +52,10 @@ _EVENT_STOPWORDS = {
     "before", "new", "latest", "report", "reports", "says", "said", "set",
     "about", "more", "will", "could", "would", "into", "over", "amid",
     "航空", "飛機", "客機", "宣布", "表示", "報導", "最新",
+    # Boilerplate in occurrence-feed headlines.  These tokens describe the
+    # template, not the identity of an event.
+    "incident", "accident", "near", "aug", "sep", "oct", "nov", "dec",
+    "jan", "feb", "mar", "apr", "may", "jun", "jul",
 }
 _EVENT_ACTIONS = {
     "order", "orders", "ordered", "purchase", "buys", "delivery",
@@ -64,6 +68,9 @@ _EVENT_ACTIONS = {
     "testing", "first", "maiden", "訂單", "增購", "交付", "認證", "核准",
     "航線", "首航", "事故", "調查", "合約", "協議", "測試", "財報",
 }
+_DATE_TOKEN_RE = re.compile(
+    r"(?:19|20)\d{2}|\d{1,2}(?:st|nd|rd|th)", re.I)
+_AVHERALD_INCIDENT_RE = re.compile(r"^\s*incident\s*:", re.I)
 
 
 def norm_title(title: str) -> str:
@@ -95,6 +102,7 @@ def _event_tokens(item: dict) -> set[str]:
         token.casefold()
         for token in _TOKEN_RE.findall(text)
         if token.casefold() not in _EVENT_STOPWORDS
+        and not _DATE_TOKEN_RE.fullmatch(token)
         and (len(token) >= 3 or any(ch.isdigit() for ch in token))
     }
 
@@ -281,6 +289,42 @@ def _group(items: list[dict]) -> list[list[dict]]:
     return list(grouped.values())
 
 
+def _is_avherald_incident(item: dict) -> bool:
+    """Whether one item is an independent Aviation Herald incident notice."""
+    return (
+        item.get("sourceKey") == "avherald"
+        and bool(_AVHERALD_INCIDENT_RE.match(str(item.get("title") or "")))
+    )
+
+
+def _group_with_kind(items: list[dict]) -> list[tuple[list[dict], str]]:
+    """Build event groups, then intentionally collect thin safety notices.
+
+    Aviation Herald headlines use a repeated ``Incident: ... on Aug ...``
+    template.  Generic dates and boilerplate must not make them the same
+    event.  We may still publish them together, but only as an explicitly
+    labelled roundup of independent events.
+    """
+    ordinary: list[tuple[list[dict], str]] = []
+    roundup_items: list[dict] = []
+    for members in _group(items):
+        if len(members) == 1 and _is_avherald_incident(members[0]):
+            roundup_items.extend(members)
+        else:
+            ordinary.append((members, "event"))
+
+    roundup_items.sort(key=lambda item: _published(item) or _EPOCH,
+                       reverse=True)
+    if len(roundup_items) < 2:
+        ordinary.extend(([item], "event") for item in roundup_items)
+        return ordinary
+    for start in range(0, len(roundup_items), MAX_ITEMS_PER_GROUP):
+        chunk = roundup_items[start:start + MAX_ITEMS_PER_GROUP]
+        ordinary.append((chunk, "safety_roundup"
+                         if len(chunk) > 1 else "event"))
+    return ordinary
+
+
 def _best_first(members: list[dict]) -> list[dict]:
     """Longest summary first; ties broken by SOURCES registry order."""
     return sorted(
@@ -309,9 +353,11 @@ def main() -> None:
     # of the MAX_GROUPS cap. Within each priority tier, groups that actually
     # carry summary material come before title-only groups (which cannot
     # survive the evidence rules), then cross-source coverage and recency.
-    ranked: list[tuple[bool, bool, bool, datetime, list[dict], bool]] = []
+    ranked: list[
+        tuple[bool, bool, bool, datetime, list[dict], bool, str]
+    ] = []
     active_items = 0
-    for members in _group(eligible):
+    for members, group_kind in _group_with_kind(eligible):
         novelty = [_is_unseen(item, seen_urls, seen_titles) for item in members]
         if not any(is_new for is_new, _matched in novelty):
             stats["skipped_seen_url"] += sum(
@@ -332,10 +378,13 @@ def main() -> None:
         active_items += len(members)
         newest = max((_published(m) or _EPOCH for m in members), default=_EPOCH)
         multi = len({m["sourceKey"] for m in members}) > 1
-        material = group_has_material({"items": members})
+        material = (
+            group_kind == "safety_roundup"
+            or group_has_material({"items": members})
+        )
         must_report = is_taiwan_airline_story({"items": members})
         ranked.append((must_report, material, multi, newest, members,
-                       update_candidate))
+                       update_candidate, group_kind))
     ranked.sort(
         key=lambda entry: (entry[0], entry[1], entry[2], entry[3]),
         reverse=True,
@@ -352,10 +401,12 @@ def main() -> None:
                 "items": members,
                 "updateCandidate": update_candidate,
                 "mustReport": must_report,
+                "groupKind": group_kind,
+                "independentEvents": group_kind == "safety_roundup",
             }
             for n, (
                 must_report, _material, _multi, _newest, members,
-                update_candidate
+                update_candidate, group_kind
             ) in enumerate(
                 ranked[:MAX_GROUPS], start=1
             )
