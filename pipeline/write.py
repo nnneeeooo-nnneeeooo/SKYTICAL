@@ -261,6 +261,12 @@ EVIDENCE RULES:
   and facts explicitly listed inside <VERIFIED_ARCHIVE_CONTEXT>. Never use
   prior knowledge, model memory, training data, unstated common knowledge,
   other news, web searches or assumptions - even facts you are sure of.
+- <SYSTEM_AIRCRAFT_TYPE_REFERENCE> is trusted reference data supplied by the
+  pipeline. It may be used only to expand a source-stated ICAO aircraft type
+  code into the listed display name; it does not establish any event fact.
+- <SYSTEM_LOCATION_REFERENCE> is trusted reference data supplied by the
+  pipeline. It may be used only to add the listed reader-facing country label
+  to a source-stated place; it does not establish any other event fact.
 - <VERIFIED_ARCHIVE_CONTEXT> contains AVWIRE historical records selected by
   deterministic rules. Use ONLY each listed archive event ID, relationship
   metadata, event_date, source_name, source_url, claim and source_quote.
@@ -295,7 +301,10 @@ EVIDENCE RULES:
   aircraft sub-variants, engine types, seat counts, casualty figures,
   monetary amounts, dates, times, locations, routes, causes or purposes.
 - Never merge different current events, flights, dates, airports or operators
-  into one story. Archive events must remain explicitly historical context.
+  into one story. The sole exception is a trusted group format of
+  safety_roundup: its SOURCE items are intentionally collected independent
+  events and must remain visibly separate. Archive events must remain
+  explicitly historical context.
 - Preserve source certainty: reportedly / according to / plans / expects /
   may / preliminary / under investigation remain hedged in both languages.
   Never upgrade plans, consideration, LOIs, MOUs or applications into orders,
@@ -337,6 +346,13 @@ AVIATION SAFETY RULES (strictest standard):
 - Archive context never lowers the current-source evidence requirement and
   must never be used to infer an accident cause, responsibility or final
   finding.
+- For safety_roundup, explicitly tell readers the items are independent and
+  have no stated relationship. Use one compact introduction followed by one
+  numbered paragraph per SOURCE item. Each paragraph names the operator,
+  full aircraft display name, ICAO type code, date, place and occurrence only
+  to the extent supplied by that item. Never turn ambiguous source wording
+  into a more specific event (for example, "dog around" is only a dog-related
+  incident, not proof that a dog escaped).
 
 FACT BINDING:
 - Give facts sequential factId values F1, F2, ... without gaps.
@@ -434,6 +450,20 @@ OUTPUT RULES:
   Never pad, repeat, editorialize or add unstated background. These limits are
   machine-checked. Use publish_brief for a verified event that cannot
   support full length; reject if even a safe brief is impossible.
+- When an ICAO aircraft type code appears in SOURCE and the trusted aircraft
+  reference supplies a display name, do not leave the code unexplained. On
+  first mention write the full name and code, for example
+  「波音737 MAX 9（ICAO機型代碼B39M）」 and
+  "Boeing 737 MAX 9 (ICAO type code B39M)". Titles and summaries should prefer
+  the reader-facing full model name; the body retains the code for precision.
+- When a place in SOURCE appears in the trusted location reference, use its
+  reader-facing form on first mention so an unfamiliar city is not presented
+  without its country. Do not infer a country for an unlisted place.
+- A safety_roundup title must say 「彙整」or「快訊」 in Chinese and "roundup"
+  or "briefing" in English, state the total number of independent events, and
+  never present a secondary event as related to the lead event. Use
+  publish_brief and keep the introduction plus event paragraphs within the
+  brief length contract; omit unsupported filler.
 - cat is exactly safety, reg, biz, ops or mil. Classify the main new
   development expressed by the title and summary, not every secondary detail
   present in the source. Military takes priority only when the main editorial
@@ -487,6 +517,140 @@ GLOSSARY_FORBIDDEN = {
     for en, values in (_GLOSSARY.get("forbidden_zh") or {}).items()
     if isinstance(values, list)
 }
+_AIRCRAFT_TYPES = {
+    str(code).upper(): str(name)
+    for code, name in (
+        load_json(
+            Path(__file__).resolve().parent.parent
+            / "config" / "aircraft_types.json", {}
+        ).get("types") or {}
+    ).items()
+}
+_LOCATION_CONTEXTS = {
+    str(name): value
+    for name, value in (
+        load_json(
+            Path(__file__).resolve().parent.parent
+            / "config" / "location_contexts.json", {}
+        ).get("locations") or {}
+    ).items()
+    if isinstance(value, dict)
+}
+
+
+def group_aircraft_types(group: dict) -> list[tuple[str, str]]:
+    """Known ICAO type codes explicitly present in current source material."""
+    material = " ".join(
+        f"{item.get('title') or ''} {item.get('summary') or ''} "
+        f"{item.get('fulltext') or ''}"
+        for item in group.get("items", [])
+        if isinstance(item, dict)
+    )
+    return [
+        (code, name) for code, name in _AIRCRAFT_TYPES.items()
+        if re.search(rf"\b{re.escape(code)}\b", material, re.I)
+    ]
+
+
+def _zh_aircraft_name(name: str) -> str:
+    return (name.replace("Boeing ", "波音", 1)
+            .replace("Airbus ", "空中巴士", 1)
+            .replace("Embraer ", "巴西航空工業", 1))
+
+
+def aircraft_type_prompt_block(group: dict) -> str:
+    matches = group_aircraft_types(group)
+    if not matches:
+        return ""
+    lines = [
+        "<SYSTEM_AIRCRAFT_TYPE_REFERENCE>",
+        "Trusted display-name mappings; use only for codes present in SOURCE:",
+    ]
+    for code, name in matches:
+        lines.append(
+            f"- {code}: en=\"{name}\"; zh=\"{_zh_aircraft_name(name)}\"")
+    lines.append("</SYSTEM_AIRCRAFT_TYPE_REFERENCE>")
+    return "\n".join(lines)
+
+
+def group_location_contexts(group: dict) -> list[tuple[str, dict]]:
+    """Configured reader-facing context for source-stated place names."""
+    material = " ".join(
+        f"{item.get('title') or ''} {item.get('summary') or ''} "
+        f"{item.get('fulltext') or ''}"
+        for item in group.get("items", [])
+        if isinstance(item, dict)
+    )
+    return [
+        (name, value) for name, value in _LOCATION_CONTEXTS.items()
+        if re.search(rf"\b{re.escape(name)}\b", material, re.I)
+    ]
+
+
+def location_context_prompt_block(group: dict) -> str:
+    matches = group_location_contexts(group)
+    if not matches:
+        return ""
+    lines = [
+        "<SYSTEM_LOCATION_REFERENCE>",
+        "Trusted reader-facing place labels; use only for places in SOURCE:",
+    ]
+    for name, value in matches:
+        lines.append(
+            f"- {name}: en=\"{value.get('en', name)}\"; "
+            f"zh=\"{value.get('zh', name)}\"")
+    lines.append("</SYSTEM_LOCATION_REFERENCE>")
+    return "\n".join(lines)
+
+
+def roundup_readability_problem(draft: dict, group: dict, facts: list) -> str | None:
+    """Machine gate for an intentionally multi-event safety briefing."""
+    if group.get("groupKind") != "safety_roundup":
+        return None
+    items = [item for item in group.get("items", []) if isinstance(item, dict)]
+    zh = draft.get("zh") or {}
+    en = draft.get("en") or {}
+    zh_text = " ".join([
+        str(zh.get("title") or ""), str(zh.get("summary") or ""),
+        *(str(value) for value in zh.get("body") or []),
+    ])
+    en_text = " ".join([
+        str(en.get("title") or ""), str(en.get("summary") or ""),
+        *(str(value) for value in en.get("body") or []),
+    ])
+    if not any(marker in str(zh.get("title") or "")
+               for marker in ("彙整", "快訊")):
+        return "safety roundup zh.title lacks a roundup label"
+    if not re.search(r"\b(?:roundup|briefing)\b",
+                     str(en.get("title") or ""), re.I):
+        return "safety roundup en.title lacks a roundup label"
+    if "獨立" not in zh_text or not re.search(r"\bindependent\b", en_text, re.I):
+        return "safety roundup must state that events are independent"
+    if len(zh.get("body") or []) < len(items) + 1 \
+            or len(en.get("body") or []) < len(items) + 1:
+        return "safety roundup needs an introduction and one paragraph per event"
+    source_urls = {
+        norm_url(str(item.get("url") or "")) for item in items
+        if str(item.get("url") or "").strip()
+    }
+    fact_urls = {
+        norm_url(str(fact.get("sourceUrl") or "")) for fact in facts
+        if isinstance(fact, dict) and fact.get("evidenceScope") == "source"
+    }
+    if not source_urls.issubset(fact_urls):
+        return "safety roundup has an event without a verified source fact"
+    for code, name in group_aircraft_types(group):
+        model = name.split(" ", 1)[-1]
+        if model.casefold() not in zh_text.casefold() \
+                or model.casefold() not in en_text.casefold():
+            return f"aircraft type {code} is not expanded to {name}"
+    for name, value in group_location_contexts(group):
+        zh_label = str(value.get("zh") or name)
+        en_label = str(value.get("en") or name)
+        if (zh_label not in zh_text
+                or en_label.casefold() not in en_text.casefold()):
+            return f"location {name} lacks its configured country context"
+    return None
 
 
 def glossary_matches(text: str, include_soft: bool = False):
@@ -683,8 +847,23 @@ def group_prompt(group: dict) -> str:
     lines = [
         f"Story group {group.get('id', '?')} | primary source: "
         f"{group.get('primarySource', '?')}",
-        "<SOURCE>",
     ]
+    if group.get("groupKind") == "safety_roundup":
+        lines.extend([
+            "<TRUSTED_GROUP_FORMAT>",
+            "format: safety_roundup",
+            f"independent event count: {len(group.get('items') or [])}",
+            "Every SOURCE item below is a separate event. Preserve that "
+            "separation and do not imply a relationship between them.",
+            "</TRUSTED_GROUP_FORMAT>",
+        ])
+    aircraft_reference = aircraft_type_prompt_block(group)
+    if aircraft_reference:
+        lines.append(aircraft_reference)
+    location_reference = location_context_prompt_block(group)
+    if location_reference:
+        lines.append(location_reference)
+    lines.append("<SOURCE>")
     for idx, item in enumerate(group.get("items", []), 1):
         # defensive prompt-cost cap + envelope neutralization
         title = _clean_source_text(item.get("title"))[:300]
@@ -935,6 +1114,11 @@ def validate_draft(draft):
 # may now produce publish_brief; a vague/title-only listing is still consumed
 # without spending an API call.
 def has_material(group: dict) -> bool:
+    if group.get("groupKind") == "safety_roundup":
+        raw_items = group.get("items") or []
+        items = [item for item in raw_items if isinstance(item, dict)]
+        if len(items) >= 2 and len(items) == len(raw_items):
+            return all(str(item.get("title") or "").strip() for item in items)
     if group_has_material(group):
         return True
     return archive_context.has_identifiable_new_event(group)
@@ -1179,6 +1363,14 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                     run_trace.add_duration("evidenceBinding", evidence_started)
                 problem_stage = "evidenceBinding"
                 if problem is None:
+                    readability_started = time.perf_counter()
+                    problem = roundup_readability_problem(
+                        candidate, group, facts)
+                    if run_trace is not None:
+                        run_trace.add_duration(
+                            "roundupReadabilityCheck", readability_started)
+                    problem_stage = "roundupReadabilityCheck"
+                if problem is None:
                     glossary_started = time.perf_counter()
                     problem = glossary_problem(candidate, group)
                     if run_trace is not None:
@@ -1412,7 +1604,10 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         "zh": draft.get("zh", {}),
         "en": draft.get("en", {}),
         "sources": sources,
-        "articleFormat": draft_article_format(draft) or "full",
+        "articleFormat": (
+            "roundup" if group.get("groupKind") == "safety_roundup"
+            else draft_article_format(draft) or "full"
+        ),
     }
     if existing_article:
         article["updatedUtc"] = iso_minute(now)
@@ -1483,6 +1678,11 @@ def build_flash(draft: dict, article_id: str, now) -> dict:
 
 
 def build_incident(draft: dict, group: dict, article_id: str):
+    if group.get("groupKind") == "safety_roundup":
+        # One incident row cannot honestly represent several independent
+        # occurrences.  Individual events may be added by a dedicated
+        # structured feed later, but the roundup itself is not one occurrence.
+        return None
     incident = draft.get("incident")
     if not isinstance(incident, dict):
         return None
