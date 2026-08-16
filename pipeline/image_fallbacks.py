@@ -178,6 +178,10 @@ def lookup_commons_airport(airport: str) -> dict | None:
 
 def topic_image(article: dict) -> dict | None:
     """Return a vetted topic image, then a strict verified-airport image."""
+    if article.get("articleFormat") == "roundup":
+        # A photo selected from one item would visually misrepresent a
+        # collection of unrelated events. Keep the neutral site fallback.
+        return None
     text = _article_text(article)
     for rule in _TOPIC_IMAGES:
         if any(pattern.search(text) for pattern in rule["patterns"]):
@@ -202,7 +206,13 @@ def main() -> int:
             continue
         changed = False
         for article in batch.get("articles") or []:
-            if not isinstance(article, dict) or article.get("image"):
+            if not isinstance(article, dict):
+                continue
+            if article.get("articleFormat") == "roundup":
+                if article.pop("image", None) is not None:
+                    changed = True
+                continue
+            if article.get("image"):
                 continue
             try:
                 if parse_iso(str(article.get("publishedUtc"))) < cutoff:
