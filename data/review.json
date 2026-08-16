@@ -1,5 +1,269 @@
 [
   {
+    "id": "g-20260816-1015-3",
+    "queuedUtc": "2026-08-16T10:15Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "Aviation safety accident involving an aircraft landing mishap, pilot extraction, hospital assessment, and investigation oversight requires human editorial review.",
+    "riskFlags": [
+      "accident_or_serious_incident"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "1934年贏得賽事的 de Havilland DH.88 Comet G-ACSS 飛機，於2026年8月15日在英國貝德福德郡老沃登機場降落時翻覆並遭受嚴重損壞。",
+        "sourceQuote": "The de Havilland DH.88 Comet G-ACSS “Grosvenor House”, the aircraft that won the 1934 MacRobertson England to Australia air race, overturned on landing at Old Warden aerodrome in Bedfordshire, United Kingdom, on August 15, 2026, sustaining extensive damage.",
+        "sourceUrl": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Shuttleworth Trust 表示事故發生於 Flying Proms 航空展期間當地時間約 19:20，機上載有一名機組員。",
+        "sourceQuote": "The Shuttleworth Trust said the accident happened at approximately 19:20 local time during its Flying Proms air show, with one crew member on board.",
+        "sourceUrl": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "救援人員將飛行員救出並送醫檢查，Shuttleworth 後續確認該飛行員已出院。",
+        "sourceQuote": "Emergency services extracted the pilot, who was responding at the scene and was taken to hospital for assessment. Shuttleworth later confirmed that the pilot was discharged from hospital.",
+        "sourceUrl": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "英國航空事故調查局在報導當時尚未就此事故發表評論。",
+        "sourceQuote": "The UK Air Accidents Investigation Branch, which has investigated several recent accidents involving historic aircraft in the UK , had not commented at the time of writing.",
+        "sourceUrl": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "G-ACSS 為目前唯一具備適航能力的 DH.88 飛機，也是唯一曾獲勝的同型機。",
+        "sourceQuote": "leaves G-ACSS as the only airworthy example and the only one that actually won.",
+        "sourceUrl": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Aviation safety accident involving an aircraft landing mishap, pilot extraction, hospital assessment, and investigation oversight requires human editorial review.",
+      "cat": "safety",
+      "zh": {
+        "title": "DH.88古董飛機於英國老沃登機場降落翻覆受損",
+        "summary": "DH.88古董機降落翻覆受損；飛行員獲救送醫已出院；發生於航空展期間",
+        "body": [
+          "一架於1934年贏得麥克羅伯遜環球航線飛行競賽的 de Havilland DH.88 Comet G-ACSS 飛機，於2026年8月15日在英國貝德福德郡的老沃登機場降落時發生翻覆事故，並遭受嚴重損壞。",
+          "根據 Shuttleworth Trust 說明，事故發生於當地時間約 19:20 的 Flying Proms 航空展期間，當時機上僅有一名機組員。緊急救援人員隨後將飛行員救出並送往醫院進行檢查，Shuttleworth 後續證實該名飛行員已經出院。",
+          "這架 G-ACSS 為目前全球唯一具備適航狀態的 DH.88 飛機。英國航空事故調查局在報導發布時尚未就此起事故發表評論。"
+        ]
+      },
+      "en": {
+        "title": "Historic DH.88 Comet Overturns on Landing at Old Warden Aerodrome",
+        "summary": "Shuttleworth DH.88 Comet overturns on landing in Bedfordshire; pilot discharged after hospital evaluation.",
+        "body": [
+          "The de Havilland DH.88 Comet G-ACSS, which won the 1934 MacRobertson England to Australia air race, overturned on landing at Old Warden aerodrome in Bedfordshire, United Kingdom, on August 15, 2026, sustaining extensive damage.",
+          "The Shuttleworth Trust stated that the accident occurred at approximately 19:20 local time during its Flying Proms air show with one crew member on board. Emergency services extracted the pilot, who was responding at the scene and taken to hospital for assessment, with Shuttleworth later confirming the pilot was discharged.",
+          "The G-ACSS airframe remains the only airworthy example of the DH.88 model. At the time of reporting, the UK Air Accidents Investigation Branch had not issued a comment regarding the event."
+        ]
+      },
+      "flash": {
+        "zh": "DH.88古董飛機於英國老沃登機場降落時翻覆受損",
+        "en": "Historic DH.88 Comet damaged in landing accident at Old Warden aerodrome",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-15",
+        "sev": "acc",
+        "aircraft": "de Havilland DH.88 Comet",
+        "operator": "Shuttleworth Trust",
+        "phase": {
+          "zh": "降落",
+          "en": "Landing"
+        },
+        "location": {
+          "zh": "英國貝德福德郡老沃登機場",
+          "en": "Old Warden aerodrome, Bedfordshire, United Kingdom"
+        },
+        "desc": {
+          "zh": "一架 1934 年產 de Havilland DH.88 Comet 飛機在降落時翻覆並嚴重受損，飛行員獲救送醫後已出院。",
+          "en": "A 1934 de Havilland DH.88 Comet overturned on landing and sustained extensive damage; the pilot was rescued and later discharged from the hospital."
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "1934年贏得賽事的 de Havilland DH.88 Comet G-ACSS 飛機，於2026年8月15日在英國貝德福德郡老沃登機場降落時翻覆並遭受嚴重損壞。",
+          "sourceQuote": "The de Havilland DH.88 Comet G-ACSS “Grosvenor House”, the aircraft that won the 1934 MacRobertson England to Australia air race, overturned on landing at Old Warden aerodrome in Bedfordshire, United Kingdom, on August 15, 2026, sustaining extensive damage.",
+          "sourceUrl": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Shuttleworth Trust 表示事故發生於 Flying Proms 航空展期間當地時間約 19:20，機上載有一名機組員。",
+          "sourceQuote": "The Shuttleworth Trust said the accident happened at approximately 19:20 local time during its Flying Proms air show, with one crew member on board.",
+          "sourceUrl": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "救援人員將飛行員救出並送醫檢查，Shuttleworth 後續確認該飛行員已出院。",
+          "sourceQuote": "Emergency services extracted the pilot, who was responding at the scene and was taken to hospital for assessment. Shuttleworth later confirmed that the pilot was discharged from hospital.",
+          "sourceUrl": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "英國航空事故調查局在報導當時尚未就此事故發表評論。",
+          "sourceQuote": "The UK Air Accidents Investigation Branch, which has investigated several recent accidents involving historic aircraft in the UK , had not commented at the time of writing.",
+          "sourceUrl": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "G-ACSS 為目前唯一具備適航能力的 DH.88 飛機，也是唯一曾獲勝的同型機。",
+          "sourceQuote": "leaves G-ACSS as the only airworthy example and the only one that actually won.",
+          "sourceUrl": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "Shuttleworth Trust",
+          "Bedfordshire Fire and Rescue Service",
+          "UK Air Accidents Investigation Branch"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "DH.88 Comet",
+          "de Havilland DH.88 Comet"
+        ],
+        "airports": [
+          "Old Warden aerodrome"
+        ],
+        "locations": [
+          "Bedfordshire",
+          "United Kingdom"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [
+          "G-ACSS"
+        ],
+        "event_dates": [
+          "2026-08-15"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260816-1015-3",
+      "primarySource": "AeroTime",
+      "items": [
+        {
+          "title": "Historic 1934 race-winning DH.88 Comet badly damaged at Shuttleworth",
+          "url": "https://www.aerotime.aero/articles/historic-1934-race-winning-dh-88-comet-badly-damaged-at-shuttleworth",
+          "publishedUtc": "2026-08-16T08:41Z",
+          "summary": "The de Havilland DH.88 Comet G-ACSS “Grosvenor House”, the aircraft that won the 1934 MacRobertson England to Australia… The post Historic 1934 race-winning DH.88 Comet badly damaged at Shuttleworth appeared first on AeroTime .",
+          "image": null,
+          "source": "AeroTime",
+          "sourceKey": "aerotime"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260730-0603-delta-marks-new-saf-blending-facility-op",
+            "relationship_type": "previous_leg",
+            "relationship_evidence": [
+              "same registration: ON-SITE"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 19 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "AeroTime — Delta marks new SAF facility opening at Minneapolis-St. Pau...",
+            "source_url": "https://www.aerotime.aero/articles/delta-marks-new-saf-facility-opening-at-minneapolis-st-paul-airport",
+            "facts": [
+              {
+                "claim": "達美航空於2026年7月27日與明尼蘇達州官員在Flint Hills Resources的Pine Bend煉油廠,為一座新的燃油摻配設施完工舉行儀式。",
+                "source_quote": "Delta Air Lines gathered with Minnesota officials on July 27, 2026, to mark the completion of a new fuel blending facility at Flint Hills Resources’ Pine Bend Refinery.",
+                "source_url": "https://www.aerotime.aero/articles/delta-marks-new-saf-facility-opening-at-minneapolis-st-paul-airport",
+                "source_name": "AeroTime — Delta marks new SAF facility opening at Minneapolis-St. Pau..."
+              },
+              {
+                "claim": "此設施可於煉油廠將SAF與標準航空燃油混合,並透過既有管線輸送至明尼阿波利斯聖保羅國際機場(MSP)。",
+                "source_quote": "The new facility lets SAF be blended with standard jet fuel right at the refinery, then delivered to MSP through pipelines that are already in place.",
+                "source_url": "https://www.aerotime.aero/articles/delta-marks-new-saf-facility-opening-at-minneapolis-st-paul-airport",
+                "source_name": "AeroTime — Delta marks new SAF facility opening at Minneapolis-St. Pau..."
+              },
+              {
+                "claim": "全面運轉後,該設施預計每年可將高達3,000萬加侖的純SAF進行摻配。",
+                "source_quote": "once running at full capacity, the facility is expected to blend up to 30 million gallons of pure SAF annually",
+                "source_url": "https://www.aerotime.aero/articles/delta-marks-new-saf-facility-opening-at-minneapolis-st-paul-airport",
+                "source_name": "AeroTime — Delta marks new SAF facility opening at Minneapolis-St. Pau..."
+              },
+              {
+                "claim": "達美航空於此機場每年消耗約2.5億加侖航空燃油。",
+                "source_quote": "Delta burns through roughly 250 million gallons of jet fuel a year at that airport alone",
+                "source_url": "https://www.aerotime.aero/articles/delta-marks-new-saf-facility-opening-at-minneapolis-st-paul-airport",
+                "source_name": "AeroTime — Delta marks new SAF facility opening at Minneapolis-St. Pau..."
+              },
+              {
+                "claim": "達美航空與Flint Hills Resources最初於2024年9月宣布此計劃。",
+                "source_quote": "Delta and Flint Hills Resources first announced the plan back in September 2024.",
+                "source_url": "https://www.aerotime.aero/articles/delta-marks-new-saf-facility-opening-at-minneapolis-st-paul-airport",
+                "source_name": "AeroTime — Delta marks new SAF facility opening at Minneapolis-St. Pau..."
+              },
+              {
+                "claim": "達美航空設定2030年使用10%SAF的目標,作為其2050年達成淨零排放長遠努力的一部分。",
+                "source_quote": "the airline has set a goal of running on 10% SAF by 2030 as part of its longer-term push toward net zero emissions by 2050",
+                "source_url": "https://www.aerotime.aero/articles/delta-marks-new-saf-facility-opening-at-minneapolis-st-paul-airport",
+                "source_name": "AeroTime — Delta marks new SAF facility opening at Minneapolis-St. Pau..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260816-0918-2",
     "queuedUtc": "2026-08-16T09:18Z",
     "approve": false,
@@ -10004,288 +10268,6 @@
                 "source_quote": "The A320 Type Rating program meets standards set by both the Civil Aviation Authority of Vietnam (CAAV) and the European Union Aviation Safety Agency (EASA).",
                 "source_url": "https://www.aerotime.aero/articles/sun-phuquoc-airways-baa-training-a320-pilot-cadets",
                 "source_name": "AeroTime — Sun PhuQuoc Airways picks BAA Training for A320 cadets"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260813-1054-8",
-    "queuedUtc": "2026-08-13T10:54Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "The news covers an active, ongoing volcanic eruption and developing airport operational suspension.",
-    "riskFlags": [
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Catania Airport operator Società Aeroporto Catania (SAC) announced air traffic would remain suspended until 14.00 GMT on Thursday 13 August due to Mount Etna eruption.",
-        "sourceQuote": "In a statement, airport operator Società Aeroporto Catania (SAC) said air traffic would remain suspended until 14.00 GMT on Thursday 13 August.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/catania-airport-mount-etna-volcani-eruption/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "Catania Airport resumed full operations on August 9 but suspended them again on August 11 following ongoing eruptions.",
-        "sourceQuote": "having resumed full operations on 9 August but suspending them again on 11 August.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/catania-airport-mount-etna-volcani-eruption/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The volcanic ash cloud from Mount Etna reached Malta and extended as far as Libya.",
-        "sourceQuote": "the ash cloud has also reached Malta and as far away as Libya.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/catania-airport-mount-etna-volcani-eruption/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Italian airports including Palermo and Comiso have taken diverted flights bound for Catania.",
-        "sourceQuote": "Italian airports including Palermo (roughly a three-hour drive from Catania) and the much smaller airport at Comiso (roughly a two-hour drive from Catania) have taken diverted flights.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/catania-airport-mount-etna-volcani-eruption/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "The news covers an active, ongoing volcanic eruption and developing airport operational suspension.",
-      "cat": "ops",
-      "zh": {
-        "title": "埃特納火山噴發影響 義大利卡塔尼亞機場暫停航班營運至8月13日",
-        "summary": "卡塔尼亞機場因火山灰暫停營運至8月13日；火山灰雲延伸至馬爾他與利比亞。",
-        "body": [
-          "義大利西西里島埃特納火山持續噴發，機場營運商卡塔尼亞機場公司（SAC）發表聲明指出，卡塔尼亞機場的航空交通將持續暫停營運至8月13日GMT 14時。該機場曾於8月9日恢復全面營運，但隨著火山活動持續，於8月11日再度暫停航班起降。",
-          "埃特納火山噴發所產生的火山灰雲已進一步擴散，範圍涵蓋馬爾他，甚至延伸至利比亞地區。針對受影響的預定航班，相關單位已安排降落至其他義大利機場，包括距離卡塔尼亞較近的帕勒摩機場與科米索機場。"
-        ]
-      },
-      "en": {
-        "title": "Mount Etna Eruption Forces Catania Airport to Suspend Flights Until August 13",
-        "summary": "Catania Airport suspended air traffic until August 13 as Mount Etna ash reached Malta and Libya.",
-        "body": [
-          "Airport operator Società Aeroporto Catania (SAC) announced that air traffic at Catania Airport would remain suspended until 14:00 GMT on Thursday, August 13, following ongoing eruptions from Mount Etna in Sicily. Operations at the airport had previously resumed on August 9 but were suspended again on August 11 due to continuous volcanic activity.",
-          "The volcanic ash cloud produced by Mount Etna has spread across the region, reaching Malta and extending as far as Libya. In response to the closure, flights originally scheduled for Catania have been diverted to alternative Italian airports, including Palermo and Comiso."
-        ]
-      },
-      "flash": {
-        "zh": "埃特納火山噴發致卡塔尼亞機場暫停營運至8月13日",
-        "en": "Mount Etna eruption forces Catania Airport suspension until August 13",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Catania Airport operator Società Aeroporto Catania (SAC) announced air traffic would remain suspended until 14.00 GMT on Thursday 13 August due to Mount Etna eruption.",
-          "sourceQuote": "In a statement, airport operator Società Aeroporto Catania (SAC) said air traffic would remain suspended until 14.00 GMT on Thursday 13 August.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/catania-airport-mount-etna-volcani-eruption/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "Catania Airport resumed full operations on August 9 but suspended them again on August 11 following ongoing eruptions.",
-          "sourceQuote": "having resumed full operations on 9 August but suspending them again on 11 August.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/catania-airport-mount-etna-volcani-eruption/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The volcanic ash cloud from Mount Etna reached Malta and extended as far as Libya.",
-          "sourceQuote": "the ash cloud has also reached Malta and as far away as Libya.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/catania-airport-mount-etna-volcani-eruption/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Italian airports including Palermo and Comiso have taken diverted flights bound for Catania.",
-          "sourceQuote": "Italian airports including Palermo (roughly a three-hour drive from Catania) and the much smaller airport at Comiso (roughly a two-hour drive from Catania) have taken diverted flights.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/catania-airport-mount-etna-volcani-eruption/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F3"
-      ],
-      "entities": {
-        "organizations": [
-          "Società Aeroporto Catania",
-          "SAC"
-        ],
-        "airlines": [],
-        "aircraft_models": [],
-        "airports": [
-          "Catania Airport",
-          "Catania–Fontanarossa airport",
-          "Palermo",
-          "Comiso"
-        ],
-        "locations": [
-          "Sicily",
-          "Mount Etna",
-          "Malta",
-          "Libya",
-          "Italy"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-13",
-          "9 August",
-          "11 August",
-          "13 August"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260813-1054-8",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "Mount Etna eruption forces temporary closure of Catania Airport amid major flight disruption News",
-          "url": "https://aerospaceglobalnews.com/news/catania-airport-mount-etna-volcani-eruption/",
-          "publishedUtc": "2026-08-13T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/Catania-Airport-Sailko-Wikimedia-Commons-.jpg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260804-1206-japan-airlines-partners-with-hitachi-and",
-            "relationship_type": "other",
-            "relationship_evidence": [
-              "same named core entity: jal",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-08-04",
-            "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro...",
-            "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
-            "facts": [
-              {
-                "claim": "Japan Airlines announced on August 4, 2026, that it joined Hitachi and Mitsui O.S.K. Lines to conduct Japan's first pilot test of Direct Ocean Capture technology.",
-                "source_quote": "Japan Airlines (JAL) announced that it has joined Hitachi and Mitsui O.S.K. Lines in signing an agreement to run Japan’s first pilot test of a technology that pulls carbon dioxide directly out of seawater.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
-                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
-              },
-              {
-                "claim": "The pilot test will take place on Kume Island in Okinawa Prefecture using land-based containerized equipment to extract carbon dioxide from seawater.",
-                "source_quote": "The companies announced on August 4, 2026 that the test will take place on Kume Island in Okinawa Prefecture.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
-                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
-              },
-              {
-                "claim": "The three companies have previously invested in Captura Corp., a US-based ocean carbon capture technology developer.",
-                "source_quote": "The three companies have already invested in Captura Corp., a US-based developer of this ocean carbon capture technology",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
-                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
-              },
-              {
-                "claim": "Hitachi will handle technical monitoring and data platform development, while Mitsui O.S.K. Lines coordinates local operations and site setup on Kume Island.",
-                "source_quote": "Hitachi will handle much of the technical monitoring, using its analytical tools to track water quality and operating data",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
-                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
-              },
-              {
-                "claim": "Japan Airlines, alongside Japan Transocean Air and Ryukyu Air Commuter, will lead outreach and aims to explore using captured carbon dioxide for sustainable aviation fuel.",
-                "source_quote": "JAL, working alongside regional airline partners Japan Transocean Air and Ryukyu Air Commuter, both of which already fly to Kumejima, will lead outreach and awareness efforts around the project.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
-                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
-              },
-              {
-                "claim": "Kume Island was selected for the pilot test partly because it already hosts ocean energy research infrastructure.",
-                "source_quote": "Kume Island was chosen partly because it’s already home to other ocean-based energy research, including a system that generates electricity from temperature differences in seawater.",
-                "source_url": "https://www.aerotime.aero/articles/japan-airlines-joins-pilot-test-to-capture-co2-directly-from-seawater",
-                "source_name": "AeroTime — Japan Airlines joins pilot test to capture CO2 directly fro..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260804-1529-swiss-semi-private-startup-peakjet-compl",
-            "relationship_type": "same_route",
-            "relationship_evidence": [
-              "same named core entity: aero",
-              "archive predates source by 9 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 89,
-            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 9 day(s) apart",
-            "event_date": "2026-08-04",
-            "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first...",
-            "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-            "facts": [
-              {
-                "claim": "PeakJet completed its first commercial flight between Zürich and Palma de Mallorca on August 1, 2026.",
-                "source_quote": "PeakJet, a new Swiss semi-private airline, has announced that it has completed its first commercial flight between Zürich (ZRH) and Palma de Mallorca (PMI) on August 1, 2026.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "The flight was operated by the German subsidiary of VistaJet using an Embraer Legacy 650 capable of carrying up to 12 passengers.",
-                "source_quote": "The aircraft, an Embraer Legacy 650 capable of carrying up to 12 passengers, was operated by the German subsidiary of VistaJet.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "Neither PeakJet nor its parent Peak Plus AG holds an air operator certificate, functioning as a marketplace aggregating capacity on scheduled executive aircraft.",
-                "source_quote": "neither PeakJet nor its parent company, Peak Plus AG, holds an air operator certificate (AOC) of their own. Instead, PeakJet defines itself as a marketplace, which aggregates and sells capacity on executive aircraft operating on fixed schedules.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "PeakJet expects to open new direct links from Zurich to Nice-Côte d'Azur and Málaga.",
-                "source_quote": "After launching the route to Mallorca, PeakJet expects to open new direct links between Zurich and both Nice-Côte d’Azur (NCE) and Málaga (AGP)",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "PeakJet was founded by Gianni Tronza and former Etihad Airways CEO Peter Baumgartner.",
-                "source_quote": "PeakJet is the brainchild of Gianni Tronza, who has held a lengthy career as senior executive at airlines such as Crossair, British Airways, American Airlines and Etihad, and Peter Baumgartner, who has previously served as Chief Executive Officer (CEO) of Etihad Airways.",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
-              },
-              {
-                "claim": "Peter Baumgartner stated that PeakJet has proven a third way for private aviation built on technology.",
-                "source_quote": "For years, private aviation offered only two options: buy or charter the whole jet or stay on the ground. Today we’ve proven there’s a third way — one built on technology our industry has barely tapped into",
-                "source_url": "https://www.aerotime.aero/articles/swiss-semi-private-aviation-startup-peakjet-completes-first-flight",
-                "source_name": "AeroTime — Swiss semi-private aviation startup PeakJet completes first..."
               }
             ]
           }
