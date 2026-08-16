@@ -1,5 +1,312 @@
 [
   {
+    "id": "g-20260816-1914-2",
+    "queuedUtc": "2026-08-16T19:14Z",
+    "approve": false,
+    "writer": "nvidia:z-ai/glm-5.2",
+    "decisionReason": "Multiple aviation safety incidents reported by The Aviation Herald involving engine shutdowns, smoke smells, hydraulic problems, and mechanical faults. These are ICAO Annex 13 occurrences requiring human review before publication. Source items are headline-only with excerpts; full article contents are not available, limiting verifiable facts to what the headlines and excerpts state.",
+    "riskFlags": [
+      "accident_or_serious_incident",
+      "investigation",
+      "unconfirmed_or_developing"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "An Alaska Airlines B39M aircraft experienced an engine shutdown in flight near Chicago on August 16, 2026.",
+        "sourceQuote": "Incident: Alaska B39M near Chicago on Aug 16th 2026, engine shut down in flight",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE55YmlvUjBabVV2aGlkR3dpSW1ZdDhsTXVzYjYwMmNHWXVDZVBTOG5aU2R3ODROeGJkLWhnTHdzcjNXdlp3WXdEeElKTUFlal82bk1MTXBtWVA?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "A Ryanair B38M aircraft showed an indication of an engine issue near Alicante on August 15, 2026.",
+        "sourceQuote": "Incident: Ryanair B38M near Alicante on Aug 15th 2026, indication of engine issue",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9FemhqbHFHM3YwMHhERDJEQUh2MUxmd3otVkV3azZzNzViQkxSZGNaZXN1Nzhjdm1rZVE3dEpmLUxoa0JJX0dJNFRQLW1OemFTazNYRFFpQXg?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "A Hainan Airlines A333 aircraft experienced a mechanical fault near Krasnoyarsk on August 15, 2026.",
+        "sourceQuote": "Incident: Hainan A333 near Krasnoyarsk on Aug 15th 2026, mechanical fault",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE14cjRhazVCcXhqM042QlZpSGdEQVhqbDRvX2V0YXllelZzSmxrckhSNVFFQTBtQnExR05veUlpV3dBNThCZUFyVWhFVUhLSHE4?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "A Swiss A333 aircraft experienced hydraulic problems near Boston on August 14, 2026.",
+        "sourceQuote": "Incident: Swiss A333 near Boston on Aug 14th 2026, hydraulic problems",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NNm1GMHc2c3dmaTZ1N2lFWFRWWEk0TGpvQk5BaWJBaVZFTkMzSm96UjNlRl9PN3RJa3ZCcmtBdGRDVWpXOVhyY252aVFTd2cyYS00TkZIbEU?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "A Delta A321 aircraft reported a smell of smoke at Atlanta on August 13, 2026.",
+        "sourceQuote": "Incident: Delta A321 at Atlanta on Aug 13th 2026, smell of smoke",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBVWlVpU1MzMzFaSUhPR2dMdFNGcUFSbC1LbExBbkRRWVg5Tjd1MWIxNnFTYXNIU21fNnBGNEZ2bnlIRmpWSG1YVUY2MkdYQUlRMlU0cVhHTk8?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F6",
+        "claim": "A KLM A21N aircraft had a dog-related incident at Amsterdam on August 14, 2026.",
+        "sourceQuote": "Incident: KLM A21N at Amsterdam on Aug 14th 2026, dog around",
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1Xbk02QVhxdVJ5RmJxZG90VWlobWtlWEZUNGNmaF9RbWptZWtZd2xSaVotR3dPUjdBMXg2bkFUVkQwWV9OVm8zUGEtMDM0YW9VaU1tZnZfLXg?oc=5",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "Multiple aviation safety incidents reported by The Aviation Herald involving engine shutdowns, smoke smells, hydraulic problems, and mechanical faults. These are ICAO Annex 13 occurrences requiring human review before publication. Source items are headline-only with excerpts; full article contents are not available, limiting verifiable facts to what the headlines and excerpts state.",
+      "cat": "safety",
+      "zh": {
+        "title": "阿拉斯加航空B39M飛行中引擎關閉；多起航空安全事件通報",
+        "summary": "阿拉斯加航空B39M芝加哥附近引擎關閉；瑞安航空、海南航空等亦傳事件",
+        "body": [
+          "The Aviation Herald 通報多起航空安全事件。其中阿拉斯加航空一架 B39M 客機於 2026 年 8 月 16 日在芝加哥附近飛行時，一具引擎在空中關閉。",
+          "瑞安航空一架 B38M 客機於 2026 年 8 月 15 日在阿利坎特附近出現引擎問題指示。",
+          "海南航空一架 A333 客機於 2026 年 8 月 15 日在克拉斯諾亞爾斯克附近發生機械故障。",
+          "瑞士航空一架 A333 客機於 2026 年 8 月 14 日在波士頓附近出現液壓問題。",
+          "達美航空一架 A321 客機於 2026 年 8 月 13 日在亞特蘭大出現煙霧氣味。",
+          "荷蘭皇家航空一架 A21N 客機於 2026 年 8 月 14 日在阿姆斯特丹發生犬隻逃脫事件。",
+          "上述事件均屬初步通報，具體原因與調查狀態尚未公布。"
+        ]
+      },
+      "en": {
+        "title": "Alaska Airlines B39M Engine Shutdown in Flight; Multiple Aviation Safety Incidents Reported",
+        "summary": "Alaska B39M engine shutdown near Chicago; Ryanair, Hainan, Swiss, Delta, KLM also report incidents",
+        "body": [
+          "The Aviation Herald reported multiple aviation safety incidents. An Alaska Airlines B39M aircraft experienced an engine shutdown in flight near Chicago on August 16, 2026.",
+          "A Ryanair B38M aircraft showed an indication of an engine issue near Alicante on August 15, 2026.",
+          "A Hainan Airlines A333 aircraft experienced a mechanical fault near Krasnoyarsk on August 15, 2026.",
+          "A Swiss A333 aircraft experienced hydraulic problems near Boston on August 14, 2026.",
+          "A Delta A321 aircraft reported a smell of smoke at Atlanta on August 13, 2026.",
+          "A KLM A21N aircraft had a dog-related incident at Amsterdam on August 14, 2026.",
+          "All incidents are preliminary reports; causes and investigation statuses have not been published."
+        ]
+      },
+      "flash": {
+        "zh": "阿拉斯加航空B39M芝加哥附近飛行中引擎關閉",
+        "en": "Alaska Airlines B39M engine shutdown in flight near Chicago",
+        "hot": true
+      },
+      "incident": {
+        "date": "2026-08-16",
+        "sev": "inc",
+        "aircraft": "B39M",
+        "operator": "Alaska",
+        "phase": {
+          "zh": "飛行中",
+          "en": "in flight"
+        },
+        "location": {
+          "zh": "芝加哥附近",
+          "en": "near Chicago"
+        },
+        "desc": {
+          "zh": "一具引擎在空中關閉",
+          "en": "engine shut down in flight"
+        },
+        "status": "open"
+      },
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "An Alaska Airlines B39M aircraft experienced an engine shutdown in flight near Chicago on August 16, 2026.",
+          "sourceQuote": "Incident: Alaska B39M near Chicago on Aug 16th 2026, engine shut down in flight",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE55YmlvUjBabVV2aGlkR3dpSW1ZdDhsTXVzYjYwMmNHWXVDZVBTOG5aU2R3ODROeGJkLWhnTHdzcjNXdlp3WXdEeElKTUFlal82bk1MTXBtWVA?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "A Ryanair B38M aircraft showed an indication of an engine issue near Alicante on August 15, 2026.",
+          "sourceQuote": "Incident: Ryanair B38M near Alicante on Aug 15th 2026, indication of engine issue",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9FemhqbHFHM3YwMHhERDJEQUh2MUxmd3otVkV3azZzNzViQkxSZGNaZXN1Nzhjdm1rZVE3dEpmLUxoa0JJX0dJNFRQLW1OemFTazNYRFFpQXg?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "A Hainan Airlines A333 aircraft experienced a mechanical fault near Krasnoyarsk on August 15, 2026.",
+          "sourceQuote": "Incident: Hainan A333 near Krasnoyarsk on Aug 15th 2026, mechanical fault",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE14cjRhazVCcXhqM042QlZpSGdEQVhqbDRvX2V0YXllelZzSmxrckhSNVFFQTBtQnExR05veUlpV3dBNThCZUFyVWhFVUhLSHE4?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "A Swiss A333 aircraft experienced hydraulic problems near Boston on August 14, 2026.",
+          "sourceQuote": "Incident: Swiss A333 near Boston on Aug 14th 2026, hydraulic problems",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NNm1GMHc2c3dmaTZ1N2lFWFRWWEk0TGpvQk5BaWJBaVZFTkMzSm96UjNlRl9PN3RJa3ZCcmtBdGRDVWpXOVhyY252aVFTd2cyYS00TkZIbEU?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "A Delta A321 aircraft reported a smell of smoke at Atlanta on August 13, 2026.",
+          "sourceQuote": "Incident: Delta A321 at Atlanta on Aug 13th 2026, smell of smoke",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBVWlVpU1MzMzFaSUhPR2dMdFNGcUFSbC1LbExBbkRRWVg5Tjd1MWIxNnFTYXNIU21fNnBGNEZ2bnlIRmpWSG1YVUY2MkdYQUlRMlU0cVhHTk8?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "A KLM A21N aircraft had a dog-related incident at Amsterdam on August 14, 2026.",
+          "sourceQuote": "Incident: KLM A21N at Amsterdam on Aug 14th 2026, dog around",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1Xbk02QVhxdVJ5RmJxZG90VWlobWtlWEZUNGNmaF9RbWptZWtZd2xSaVotR3dPUjdBMXg2bkFUVkQwWV9OVm8zUGEtMDM0YW9VaU1tZnZfLXg?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6"
+      ],
+      "entities": {
+        "organizations": [
+          "The Aviation Herald"
+        ],
+        "airlines": [
+          "Alaska",
+          "Ryanair",
+          "Hainan",
+          "Swiss",
+          "Delta",
+          "KLM"
+        ],
+        "aircraft_models": [
+          "B39M",
+          "B38M",
+          "A333",
+          "A321",
+          "A21N"
+        ],
+        "airports": [
+          "Atlanta",
+          "Amsterdam"
+        ],
+        "locations": [
+          "Chicago",
+          "Alicante",
+          "Krasnoyarsk",
+          "Boston"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-16",
+          "2026-08-15",
+          "2026-08-14",
+          "2026-08-13"
+        ]
+      },
+      "eventStatus": "preliminary",
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260816-1914-2",
+      "primarySource": "The Aviation Herald",
+      "items": [
+        {
+          "title": "Incident: Delta A321 at Atlanta on Aug 13th 2026, smell of smoke",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBVWlVpU1MzMzFaSUhPR2dMdFNGcUFSbC1LbExBbkRRWVg5Tjd1MWIxNnFTYXNIU21fNnBGNEZ2bnlIRmpWSG1YVUY2MkdYQUlRMlU0cVhHTk8?oc=5",
+          "publishedUtc": "2026-08-13T21:02Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        },
+        {
+          "title": "Incident: Alaska B39M near Chicago on Aug 16th 2026, engine shut down in flight",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE55YmlvUjBabVV2aGlkR3dpSW1ZdDhsTXVzYjYwMmNHWXVDZVBTOG5aU2R3ODROeGJkLWhnTHdzcjNXdlp3WXdEeElKTUFlal82bk1MTXBtWVA?oc=5",
+          "publishedUtc": "2026-08-16T19:05Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        },
+        {
+          "title": "Incident: Swiss A333 near Boston on Aug 14th 2026, hydraulic problems",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9NNm1GMHc2c3dmaTZ1N2lFWFRWWEk0TGpvQk5BaWJBaVZFTkMzSm96UjNlRl9PN3RJa3ZCcmtBdGRDVWpXOVhyY252aVFTd2cyYS00TkZIbEU?oc=5",
+          "publishedUtc": "2026-08-14T07:00Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        },
+        {
+          "title": "Incident: KLM A21N at Amsterdam on Aug 14th 2026, dog around",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1Xbk02QVhxdVJ5RmJxZG90VWlobWtlWEZUNGNmaF9RbWptZWtZd2xSaVotR3dPUjdBMXg2bkFUVkQwWV9OVm8zUGEtMDM0YW9VaU1tZnZfLXg?oc=5",
+          "publishedUtc": "2026-08-14T07:00Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        },
+        {
+          "title": "Incident: Hainan A333 near Krasnoyarsk on Aug 15th 2026, mechanical fault",
+          "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE14cjRhazVCcXhqM042QlZpSGdEQVhqbDRvX2V0YXllelZzSmxrckhSNVFFQTBtQnExR05veUlpV3dBNThCZUFyVWhFVUhLSHE4?oc=5",
+          "publishedUtc": "2026-08-15T12:27Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        },
+        {
+          "title": "Incident: Ryanair B38M near Alicante on Aug 15th 2026, indication of engine issue",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9FemhqbHFHM3YwMHhERDJEQUh2MUxmd3otVkV3azZzNzViQkxSZGNaZXN1Nzhjdm1rZVE3dEpmLUxoa0JJX0dJNFRQLW1OemFTazNYRFFpQXg?oc=5",
+          "publishedUtc": "2026-08-15T07:00Z",
+          "summary": "",
+          "image": null,
+          "source": "The Aviation Herald",
+          "sourceKey": "avherald"
+        }
+      ],
+      "updateCandidate": true,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "insufficient",
+        "selected_events": []
+      }
+    }
+  },
+  {
     "id": "g-20260816-1220-2",
     "queuedUtc": "2026-08-16T12:20Z",
     "approve": false,
@@ -9941,287 +10248,6 @@
                 "source_quote": "The three airports combined saw 37.3 million passengers travel through them between January and June this year. The figure marks a 0.3% year-on-year increase, and Schiphol accounted for a significant chunk of passenger traffic with 32.7 million passengers.",
                 "source_url": "https://aerospaceglobalnews.com/news/amsterdam-schiphol-champions-airport-quality-as-it-reveals-e801-million-investment/",
                 "source_name": "Aerospace Global News — Amsterdam Schiphol champions airport quality as it reveals..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260813-1054-4",
-    "queuedUtc": "2026-08-13T10:54Z",
-    "approve": false,
-    "writer": "gemini:gemini-3.6-flash",
-    "decisionReason": "Fatal military helicopter crash involving crew casualties and ongoing investigation.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "casualties_or_injuries",
-      "investigation"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "On August 12, 2026, a US Army AH-64E Apache attack helicopter crashed in a field near Salado, Texas, killing two crew members on board.",
-        "sourceQuote": "Two US Army crew members were killed when an AH-64E Apache attack helicopter crashed in a field near Salado, Texas, on August 12, 2026.",
-        "sourceUrl": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "The crash started a grass fire that burned over 150 acres and forced evacuations south of Fort Hood.",
-        "sourceQuote": "The accident also started a grass fire that burned more than 150 acres and forced evacuations south of Fort Hood.",
-        "sourceUrl": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "The Bell County Sheriff's Office received 911 calls at approximately 13:34 local time reporting the down helicopter, and both crew members were pronounced dead at 14:30.",
-        "sourceQuote": "The Bell County Sheriff’s Office said it began receiving 911 calls at approximately 13:34 local time reporting a helicopter down about half a mile west of the 16400 block of Kuykendall Road, south of Salado.",
-        "sourceUrl": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Fort Hood confirmed in a statement that the aircraft was an AH-64E Apache assigned to the installation, which hosts the US Army's 1st Cavalry Division.",
-        "sourceQuote": "Fort Hood said in a statement that the aircraft was an AH-64E Apache assigned to the installation, which hosts the US Army’s 1st Cavalry Division.",
-        "sourceUrl": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "The US Army has not disclosed the purpose of the flight or given any indication of the cause of the crash.",
-        "sourceQuote": "The US Army has not disclosed the purpose of the flight or offered any indication of a cause.",
-        "sourceUrl": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Fatal military helicopter crash involving crew casualties and ongoing investigation.",
-      "cat": "mil",
-      "zh": {
-        "title": "美國陸軍AH-64E阿帕契直升機於德州墜毀 機上2名機組員殉職",
-        "summary": "美國陸軍一架AH-64E直升機於德州薩拉多附近墜毀，機上2名機組人員死亡。",
-        "body": [
-          "美國陸軍一架AH-64E阿帕契攻擊直升機於2026年8月12日在德克薩斯州薩拉多附近墜毀，機上兩名機組人員身亡。事故並引發草地火災，延燒逾150英畝，迫使福特胡德基地以南區域緊急疏散。",
-          "貝爾郡警長辦公室表示，當局於當地時間13時34分接獲報案，指稱直升機墜落於庫肯達爾路附近農田。機上2人於14時30分證實死亡，事故未造成地面人員傷亡或結構物損毀。",
-          "福特胡德基地證實該直升機隸屬於該基地，該處為美國陸軍第一騎兵師駐地。軍方尚未公布機組人員姓名，飛行目的與事故原因仍待釐清。"
-        ]
-      },
-      "en": {
-        "title": "Two US Army Crew Members Killed in AH-64E Apache Crash Near Fort Hood in Texas",
-        "summary": "A US Army AH-64E Apache helicopter crashed near Salado in Texas, killing both crew members on board.",
-        "body": [
-          "Two US Army crew members were killed when an AH-64E Apache attack helicopter crashed in a field near Salado, Texas, on August 12, 2026. The accident triggered a grass fire that burned over 150 acres and forced evacuations south of Fort Hood.",
-          "The Bell County Sheriff’s Office reported receiving emergency calls at approximately 13:34 local time regarding the down helicopter. Emergency responders located the burning wreckage, and both occupants were pronounced dead at 14:30. The crash caused no ground injuries or structural damage.",
-          "Fort Hood confirmed the aircraft was an AH-64E Apache assigned to the installation, home to the US Army's 1st Cavalry Division. Names of the deceased crew members are being withheld pending next of kin notification, and the cause of the crash remains under investigation."
-        ]
-      },
-      "flash": {
-        "zh": "美國陸軍一架AH-64E阿帕契直升機於德州墜毀，機上2名機組員殉職。",
-        "en": "Two US Army crew members killed in AH-64E Apache helicopter crash near Fort Hood, Texas.",
-        "hot": true
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "On August 12, 2026, a US Army AH-64E Apache attack helicopter crashed in a field near Salado, Texas, killing two crew members on board.",
-          "sourceQuote": "Two US Army crew members were killed when an AH-64E Apache attack helicopter crashed in a field near Salado, Texas, on August 12, 2026.",
-          "sourceUrl": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "The crash started a grass fire that burned over 150 acres and forced evacuations south of Fort Hood.",
-          "sourceQuote": "The accident also started a grass fire that burned more than 150 acres and forced evacuations south of Fort Hood.",
-          "sourceUrl": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "The Bell County Sheriff's Office received 911 calls at approximately 13:34 local time reporting the down helicopter, and both crew members were pronounced dead at 14:30.",
-          "sourceQuote": "The Bell County Sheriff’s Office said it began receiving 911 calls at approximately 13:34 local time reporting a helicopter down about half a mile west of the 16400 block of Kuykendall Road, south of Salado.",
-          "sourceUrl": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Fort Hood confirmed in a statement that the aircraft was an AH-64E Apache assigned to the installation, which hosts the US Army's 1st Cavalry Division.",
-          "sourceQuote": "Fort Hood said in a statement that the aircraft was an AH-64E Apache assigned to the installation, which hosts the US Army’s 1st Cavalry Division.",
-          "sourceUrl": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "The US Army has not disclosed the purpose of the flight or given any indication of the cause of the crash.",
-          "sourceQuote": "The US Army has not disclosed the purpose of the flight or offered any indication of a cause.",
-          "sourceUrl": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F4"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F4"
-      ],
-      "entities": {
-        "organizations": [
-          "US Army",
-          "Bell County Sheriff's Office",
-          "1st Cavalry Division"
-        ],
-        "airlines": [],
-        "aircraft_models": [
-          "AH-64E Apache",
-          "AH-64E"
-        ],
-        "airports": [],
-        "locations": [
-          "Salado",
-          "Texas",
-          "Fort Hood",
-          "Kuykendall Road"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-08-12"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "casualties_or_injuries",
-        "investigation"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260813-1054-4",
-      "primarySource": "AeroTime",
-      "items": [
-        {
-          "title": "Two crew killed as US Army AH-64E Apache crashes near Fort Hood",
-          "url": "https://www.aerotime.aero/articles/us-army-ah64e-apache-crash-fort-hood-texas",
-          "publishedUtc": "2026-08-13T09:25Z",
-          "summary": "Two US Army crew members were killed when an AH-64E Apache attack helicopter crashed in a field near… The post Two crew killed as US Army AH-64E Apache crashes near Fort Hood appeared first on AeroTime .",
-          "image": null,
-          "source": "AeroTime",
-          "sourceKey": "aerotime"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260726-1606-tracep-congo-aviation-cargo-plane-crashe-0f40c5",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: CO-PILOT"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 18 day(s) apart",
-            "event_date": "2026-07-26",
-            "source_name": "actualite.cd — Un avion-cargo porté disparu retrouvé écrasé dans une zone...",
-            "source_url": "https://actualite.cd/2026/07/27/un-avion-cargo-porte-disparu-retrouve-ecrase-dans-une-zone-forestiere-walikale",
-            "facts": [
-              {
-                "claim": "A Tracep Congo Aviation LET L-410 cargo aircraft that had been missing since Friday on a flight between Beni and Shabunda territory was found crashed in a forest area near Walikale with one survivor and one fatality among the two crew members.",
-                "source_quote": "Un avion-cargo de la compagnie Tracep Congo Aviation, porté disparu depuis vendredi lors d'un vol entre Beni, dans l'est de la RDC, et le territoire de Shabunda, a été retrouvé écrasé dans une zone forestière à Walikale avec un survivant et un mort parmi les deux membres d'équipage, selon des sources concordantes.",
-                "source_url": "https://actualite.cd/2026/07/27/un-avion-cargo-porte-disparu-retrouve-ecrase-dans-une-zone-forestiere-walikale",
-                "source_name": "actualite.cd — Un avion-cargo porté disparu retrouvé écrasé dans une zone..."
-              },
-              {
-                "claim": "The aircraft departed from Mavivi airport in Beni at 12:36 local time on Friday carrying nearly two tons of cargo bound for Kachungu in Shabunda territory.",
-                "source_quote": "L'appareil, un LET L-410, avait décollé vendredi à 12h36, heure locale, de l'aéroport de Mavivi, à Beni (Nord-Kivu), avec près de deux tonnes de marchandises à destination de Kachungu, dans le territoire de Shabunda (Sud-Kivu), selon des sources de la compagnie et de la Régie des voies aériennes (RVA).",
-                "source_url": "https://actualite.cd/2026/07/27/un-avion-cargo-porte-disparu-retrouve-ecrase-dans-une-zone-forestiere-walikale",
-                "source_name": "actualite.cd — Un avion-cargo porté disparu retrouvé écrasé dans une zone..."
-              },
-              {
-                "claim": "Shortly after takeoff, the captain reported an engine failure on one of the two engines and attempted to divert to Walikale airfield before losing radio contact.",
-                "source_quote": "Quelques minutes après le décollage, le commandant de bord avait signalé une panne sur l'un des deux moteurs et tenté de se dérouter vers l'aérodrome de Walikale avant que tout contact radio ne soit perdu, selon des informations rapportées par Radio Okapi.",
-                "source_url": "https://actualite.cd/2026/07/27/un-avion-cargo-porte-disparu-retrouve-ecrase-dans-une-zone-forestiere-walikale",
-                "source_name": "actualite.cd — Un avion-cargo porté disparu retrouvé écrasé dans une zone..."
-              },
-              {
-                "claim": "Search operations launched on Friday; according to Tracep Congo Aviation sources, the co-pilot was found alive Sunday in the crash zone while the captain died.",
-                "source_quote": "Des opérations de recherche avaient été engagées dès vendredi. Selon des sources de Tracep Congo Aviation, le copilote a été retrouvé vivant dimanche dans la zone du crash, tandis que le commandant de bord a perdu la vie.",
-                "source_url": "https://actualite.cd/2026/07/27/un-avion-cargo-porte-disparu-retrouve-ecrase-dans-une-zone-forestiere-walikale",
-                "source_name": "actualite.cd — Un avion-cargo porté disparu retrouvé écrasé dans une zone..."
-              },
-              {
-                "claim": "Local authorities in Shabunda said the aircraft was expected at Tchonka-Lulingu but never arrived, and confirmed that after reporting an engine problem about twenty minutes after takeoff from Beni, the crew became unreachable.",
-                "source_quote": "À Shabunda, des autorités locales ont indiqué que l'appareil, attendu à Tchonka-Lulingu, n'était jamais arrivé à destination. Elles ont également confirmé qu'après avoir signalé une panne moteur environ vingt minutes après son décollage de Beni, l'équipage était devenu injoignable.",
-                "source_url": "https://actualite.cd/2026/07/27/un-avion-cargo-porte-disparu-retrouve-ecrase-dans-une-zone-forestiere-walikale",
-                "source_name": "actualite.cd — Un avion-cargo porté disparu retrouvé écrasé dans une zone..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260811-1727-boeing-and-polish-partners-sign-offset-a",
-            "relationship_type": "same_aircraft",
-            "relationship_evidence": [
-              "same registration: AH-64E"
-            ],
-            "relationship_tier": 1,
-            "confidence_score": 107,
-            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 2 day(s) apart",
-            "event_date": "2026-08-11",
-            "source_name": "Boeing — WZL-1, WCKBT and Boeing sign offset agreements to support P...",
-            "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-            "facts": [
-              {
-                "claim": "On August 11, 2026, WZL-1, WCKBT, and Boeing signed offset implementation agreements in Łódź, Poland, to establish industrial cooperation for supporting Poland's AH-64E Apache helicopter fleet.",
-                "source_quote": "Wojskowe Zakłady Lotnicze Nr 1 S.A. (WZL-1), the Military Central Bureau of Design and Technology S.A. (WCKBT) and Boeing have signed offset implementation agreements to establish long-term industrial cooperation supporting the sustainment, maintenance and ground support of Poland’s AH-64E Apache helicopter fleet.",
-                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-                "source_name": "Boeing — WZL-1, WCKBT and Boeing sign offset agreements to support P..."
-              },
-              {
-                "claim": "Under the agreements, WZL-1 will provide maintenance, repair, and overhaul services, including intermediate-level inspections and selected depot-level component repairs.",
-                "source_quote": "The center will provide maintenance, repair, and overhaul services, including organizational- and intermediate-level inspections and repairs, as well as selected depot-level component repairs.",
-                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-                "source_name": "Boeing — WZL-1, WCKBT and Boeing sign offset agreements to support P..."
-              },
-              {
-                "claim": "Boeing and WCBKT will evaluate WCBKT ground support equipment for use with the AH-64E helicopter.",
-                "source_quote": "Boeing and WCBKT will evaluate selected WCBKT ground support equipment for use with the AH-64E Apache helicopter.",
-                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-                "source_name": "Boeing — WZL-1, WCKBT and Boeing sign offset agreements to support P..."
-              },
-              {
-                "claim": "Poland has contracted for 96 AH-64E Apache helicopters.",
-                "source_quote": "Poland has contracted for 96 AH-64E Apache helicopters.",
-                "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
-                "source_name": "Boeing — WZL-1, WCKBT and Boeing sign offset agreements to support P..."
               }
             ]
           }
