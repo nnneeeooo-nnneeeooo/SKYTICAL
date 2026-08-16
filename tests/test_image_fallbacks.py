@@ -134,6 +134,16 @@ def main() -> int:
     )
     assert unrelated is None
 
+    # Independent-event roundups must keep the neutral site image even when
+    # one item exposes an airport that would normally trigger a fallback.
+    roundup = article(
+        "航空安全快訊：6起獨立事件彙整",
+        "各事件互不相關。",
+        airport="Atlanta",
+    )
+    roundup["articleFormat"] = "roundup"
+    assert image_fallbacks.topic_image(roundup) is None
+
     # Returned deterministic mappings must be copies so callers cannot mutate
     # the registry for later articles.
     drone["subject"] = "changed"
