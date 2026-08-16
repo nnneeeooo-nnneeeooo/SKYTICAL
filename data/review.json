@@ -1,5 +1,320 @@
 [
   {
+    "id": "g-20260816-1220-2",
+    "queuedUtc": "2026-08-16T12:20Z",
+    "approve": false,
+    "writer": "gemini:gemini-3.6-flash",
+    "decisionReason": "The story involves major aircraft order claims and financial estimates for De Havilland Canadair firefighting aircraft.",
+    "riskFlags": [
+      "financial_or_order_claim"
+    ],
+    "facts": [
+      {
+        "factId": "F1",
+        "claim": "De Havilland has received 38 orders for Canadair firefighting aircraft from countries including France, Spain, Greece, Italy, and Portugal, with the first two deliveries expected in 2028 at the earliest.",
+        "sourceQuote": "德哈維蘭公司已獲來自法國、西班牙、希臘、義大利、葡萄牙等國共38架訂單，但最快僅能在2028年交付首批2架飛機。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F2",
+        "claim": "Hand assembly and parts constraints limit De Havilland to producing around 10 firefighting aircraft per year at full capacity, extending new order delivery dates to 2032 or 2033.",
+        "sourceQuote": "廠房在全負載運作下，一年僅能產出約10架滅火機，新訂單的交機時間已一路排到2032至2033年。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F3",
+        "claim": "De Havilland is evaluating a second production line to raise annual output to 20 aircraft if the Canadian federal government places a firm order for 50 planes.",
+        "sourceQuote": "只要聯邦下達50架的確定訂單，我們明天就能立刻著手建立第二條生產線",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F4",
+        "claim": "The Canadair firefighting aircraft line was acquired by Bombardier in 1986, paused in 2015, and restarted by De Havilland in 2022.",
+        "sourceQuote": "Canadair公司於1986年被龐巴迪公司（Bombardier）併購，該系列滅火機直至2015年停產，德哈維蘭公司（De Havilland）則於2022年重啟Canadair生產線。",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      },
+      {
+        "factId": "F5",
+        "claim": "Based on Canadian government figures, each Canadair firefighting aircraft is estimated to cost approximately 80 million Canadian dollars.",
+        "sourceQuote": "根據加拿大政府公布的數字推算，每架約8,000萬加元",
+        "sourceUrl": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+        "evidenceScope": "source",
+        "archiveEventId": null,
+        "archiveContext": false
+      }
+    ],
+    "draft": {
+      "status": "manual_review",
+      "decisionReason": "The story involves major aircraft order claims and financial estimates for De Havilland Canadair firefighting aircraft.",
+      "cat": "biz",
+      "zh": {
+        "title": "德哈維蘭水陸兩棲滅火機接單38架 首批預計2028年交付",
+        "summary": "德哈維蘭手握38架滅火機訂單；首批最快2028年交貨；評估擴建產線。",
+        "body": [
+          "加拿大製造商德哈維蘭已收到來自法國、西班牙、希臘、義大利與葡萄牙等國共計38架Canadair水陸兩棲滅火飛機的訂單。然而受限於零件供應與手工組裝程序，首批2架飛機最快僅能在2028年交付。",
+          "目前德哈維蘭廠房在全負載運作下，每年僅能產出約10架滅火機，新訂單交期已排至2032年至2033年。該系列機型最初於1960年代推出，1986年由龐巴迪收購，並於2015年停產，隨後由德哈維蘭於2022年重啟生產線。",
+          "為滿足需求，德哈維蘭正評估擴建第二條生產線。若加拿大聯邦政府發出50架的確定訂單，該公司將可立即著手籌建，預計將年產量提升至20架。據政府資料推估，每架飛機售價約為8000萬加元。"
+        ]
+      },
+      "en": {
+        "title": "De Havilland Secures 38 Orders for Canadair Water Bombers With Deliveries From 2028",
+        "summary": "De Havilland holds 38 Canadair firefighter orders; initial deliveries set for 2028; second production line under review.",
+        "body": [
+          "De Havilland has received 38 orders for Canadair amphibious firefighting aircraft from European nations, including France, Spain, Greece, Italy, and Portugal. However, due to component sourcing constraints and hand-assembly procedures, initial deliveries of the first two aircraft are expected in 2028 at the earliest.",
+          "At full capacity, the manufacturer produces around 10 aircraft per year, pushing delivery schedules for new orders out to 2032 or 2033. Originally launched in the 1960s, the Canadair line was acquired by Bombardier in 1986, paused in 2015, and restarted by De Havilland in 2022.",
+          "To expand capacity, De Havilland is evaluating a second assembly line to double annual output to 20 aircraft, provided the Canadian federal government issues a firm order for 50 planes. Based on official estimates, each aircraft costs approximately 80 million Canadian dollars."
+        ]
+      },
+      "flash": {
+        "zh": "德哈維蘭接獲38架滅火機訂單，首批最快2028年交付。",
+        "en": "De Havilland secures 38 firefighting aircraft orders, with initial deliveries slated for 2028.",
+        "hot": false
+      },
+      "incident": null,
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "De Havilland has received 38 orders for Canadair firefighting aircraft from countries including France, Spain, Greece, Italy, and Portugal, with the first two deliveries expected in 2028 at the earliest.",
+          "sourceQuote": "德哈維蘭公司已獲來自法國、西班牙、希臘、義大利、葡萄牙等國共38架訂單，但最快僅能在2028年交付首批2架飛機。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Hand assembly and parts constraints limit De Havilland to producing around 10 firefighting aircraft per year at full capacity, extending new order delivery dates to 2032 or 2033.",
+          "sourceQuote": "廠房在全負載運作下，一年僅能產出約10架滅火機，新訂單的交機時間已一路排到2032至2033年。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "De Havilland is evaluating a second production line to raise annual output to 20 aircraft if the Canadian federal government places a firm order for 50 planes.",
+          "sourceQuote": "只要聯邦下達50架的確定訂單，我們明天就能立刻著手建立第二條生產線",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The Canadair firefighting aircraft line was acquired by Bombardier in 1986, paused in 2015, and restarted by De Havilland in 2022.",
+          "sourceQuote": "Canadair公司於1986年被龐巴迪公司（Bombardier）併購，該系列滅火機直至2015年停產，德哈維蘭公司（De Havilland）則於2022年重啟Canadair生產線。",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Based on Canadian government figures, each Canadair firefighting aircraft is estimated to cost approximately 80 million Canadian dollars.",
+          "sourceQuote": "根據加拿大政府公布的數字推算，每架約8,000萬加元",
+          "sourceUrl": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "headlineSupportedBy": [
+        "F1"
+      ],
+      "summarySupportedBy": [
+        "F1",
+        "F3"
+      ],
+      "entities": {
+        "organizations": [
+          "德哈維蘭公司",
+          "龐巴迪公司",
+          "德哈維蘭",
+          "Canadair公司",
+          "Bombardier"
+        ],
+        "airlines": [],
+        "aircraft_models": [
+          "Canadair"
+        ],
+        "airports": [],
+        "locations": [
+          "加拿大",
+          "法國",
+          "西班牙",
+          "希臘",
+          "義大利",
+          "葡萄牙"
+        ],
+        "flight_numbers": [],
+        "registration_numbers": [],
+        "event_dates": [
+          "2026-08-16"
+        ]
+      },
+      "eventStatus": "confirmed",
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "requiresHumanReview": true
+    },
+    "group": {
+      "id": "g-20260816-1220-2",
+      "primarySource": "中央社 CNA 產經證券",
+      "items": [
+        {
+          "title": "野火威脅全球 加拿大「滅火神器」成市場搶手貨",
+          "url": "https://www.cna.com.tw/news/aopl/202608160162.aspx",
+          "publishedUtc": "2026-08-16T09:43Z",
+          "summary": "（中央社記者程愛芬溫哥華16日專電）野火災情威脅全球，加拿大「超級汲水機」（Super Scooper）Canadair水陸兩棲滅火飛機可在數秒內從湖海汲取數千公升水，為各國搶購的「救命神器」。供不應求之際，加拿大政府與製造商德哈維蘭承受政治與市場壓力。",
+          "image": null,
+          "source": "中央社 CNA 產經證券",
+          "sourceKey": "cnataiwanfinance"
+        }
+      ],
+      "updateCandidate": false,
+      "mustReport": false,
+      "archiveContext": {
+        "archive_context_version": 1,
+        "retrieval_status": "found",
+        "selected_events": [
+          {
+            "event_id": "a-20260727-0838-presidential-office-rejects-show-claim-s",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: 中央社",
+              "archive predates source by 20 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 20 day(s) apart",
+            "event_date": "2026-07-27",
+            "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍",
+            "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+            "facts": [
+              {
+                "claim": "Media reported that President Lai’s inspection during the Han Kuang exercise was a \"show\".",
+                "source_quote": "有媒體報導稱總統賴清德在漢光演習期間安排視導是「作秀」",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The Presidential Office stated that, as commander‐in‐chief, the President’s inspection of a major drill is a responsibility and an obligation.",
+                "source_quote": "作為三軍統帥，總統在國軍重要演訓期間參與視導，是責任也是義務",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "The spokesperson called the \"show\" accusation speculation, a distortion of views, and a defamation of the military and national defence.",
+                "source_quote": "所謂「作秀」之說，內容多屬臆測、觀點扭曲，更污名化國軍與國防，令人遺憾",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Heads of state attending major military exercises is standard practice in Europe, the US, Japan and South Korea.",
+                "source_quote": "國家元首參與國家重大軍事演訓，無論歐、美、日、韓等國，國際皆然",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Since Han Kuang 40 the drills have been unscripted and realistic; the President’s visit was scheduled by the Ministry of National Defense according to the exercise progress, with no arranged \"firepower show\".",
+                "source_quote": "自漢光40號演習起，即採取「無劇本、實戰化」演練。總統參與視導，亦由國防部依照演習進程適時規劃，不存在所謂安排「火力秀」的問題",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              },
+              {
+                "claim": "Accusations of shifting opposition attacks or staging a performance for voters are baseless and unfair to personnel strengthening defence.",
+                "source_quote": "至於所謂「轉移在野攻擊」、「作秀給選民看」等無端指控，對此刻正為強化國防、守護國家而努力的所有人員極不公平",
+                "source_url": "https://www.cna.com.tw/news/aipl/202607270167.aspx",
+                "source_name": "中央社 CNA — 府:總統視導漢光是責任與義務 作秀之說污名化國軍"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260731-0010-gulfstream-g700-breaks-bombardier-speed",
+            "relationship_type": "same_route",
+            "relationship_evidence": [
+              "same named core entity: bombardier",
+              "archive predates source by 17 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 17 day(s) apart",
+            "event_date": "2026-07-30",
+            "source_name": "AeroTime — Gulfstream smashes Bombardier’s LAX to Farnborough speed re...",
+            "source_url": "https://www.aerotime.aero/articles/gulfstream-breaks-bombardier-los-angeles-farnborough-speed-record-g700-global-8000",
+            "facts": [
+              {
+                "claim": "On July 30, 2026, Gulfstream announced its G700 completed a flight between Los Angeles Airport (LAX) and Farnborough Airport (FAB) in 8 hours and 27 minutes, claiming a new speed record.",
+                "source_quote": "On July 30, 2026, Gulfstream proudly announced that it has reclaimed the fastest time flying between the City of Angels and the Home of British Aviation. Gulfstreams said its G700 completed the 4,740-nautical-mile stretch in eight hours and 27 minutes",
+                "source_url": "https://www.aerotime.aero/articles/gulfstream-breaks-bombardier-los-angeles-farnborough-speed-record-g700-global-8000",
+                "source_name": "AeroTime — Gulfstream smashes Bombardier’s LAX to Farnborough speed re..."
+              },
+              {
+                "claim": "This flight was 19 minutes faster than Bombardier's Global 8000 record of 8 hours and 46 minutes set on July 19, 2026.",
+                "source_quote": "On July 19, 2026, while traveling to the Farnborough International Airshow , Bombardier’s Global 8000 claimed the speed record after flying between the two airports in eight hours and 46 minutes.",
+                "source_url": "https://www.aerotime.aero/articles/gulfstream-breaks-bombardier-los-angeles-farnborough-speed-record-g700-global-8000",
+                "source_name": "AeroTime — Gulfstream smashes Bombardier’s LAX to Farnborough speed re..."
+              },
+              {
+                "claim": "Gulfstream claims its flight was 3.6% faster than Bombardier's, which was previously claimed to be 2.2% faster than a prior record.",
+                "source_quote": "The Canadian company said at the time this was 2.2% faster than a previous record. Gulfstream now claims its flight was 3.6% faster than Bombardier’s trip.",
+                "source_url": "https://www.aerotime.aero/articles/gulfstream-breaks-bombardier-los-angeles-farnborough-speed-record-g700-global-8000",
+                "source_name": "AeroTime — Gulfstream smashes Bombardier’s LAX to Farnborough speed re..."
+              },
+              {
+                "claim": "The Global 8000 entered service in December 2025 with a top speed of Mach 0.95, while the G700 entered service in 2024 with a top speed of 0.935.",
+                "source_quote": "The Global 8000 entered service in December 2025, and officially is the fastest civil aircraft since Concorde, capable of reaching Mach 0.95. The G700 entered service in 2024 and has a top speed of 0.935.",
+                "source_url": "https://www.aerotime.aero/articles/gulfstream-breaks-bombardier-los-angeles-farnborough-speed-record-g700-global-8000",
+                "source_name": "AeroTime — Gulfstream smashes Bombardier’s LAX to Farnborough speed re..."
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260802-2014-westjet-cabin-crew-launch-strike-followi",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: de havilland",
+              "archive predates source by 14 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 14 day(s) apart",
+            "event_date": "2026-08-02",
+            "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc...",
+            "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+            "facts": [
+              {
+                "claim": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations with CUPE Local 8125 failed to produce a new agreement.",
+                "source_quote": "WestJet flight attendants officially went on strike on August 2, 2026, after negotiations between the airline and the Canadian Union of Public Employees (CUPE) Local 8125 failed to produce a new collective agreement.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              },
+              {
+                "claim": "The strike involves approximately 4,400 cabin crew members and has led to the cancellation of more than 300 WestJet flights.",
+                "source_quote": "The strike involves approximately 4,400 cabin crew members and has already disrupted WestJet operations, with more than 300 flights canceled.",
+                "source_url": "https://www.aerotime.aero/articles/westjet-cabin-crew-go-on-strike-more-than-300-flights-canceled",
+                "source_name": "AeroTime — WestJet cabin crew go on strike, more than 300 flights canc..."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "id": "g-20260816-1015-3",
     "queuedUtc": "2026-08-16T10:15Z",
     "approve": false,
@@ -9907,367 +10222,6 @@
                 "source_quote": "Poland has contracted for 96 AH-64E Apache helicopters.",
                 "source_url": "https://boeing.mediaroom.com/news-releases-statements?item=131706",
                 "source_name": "Boeing — WZL-1, WCKBT and Boeing sign offset agreements to support P..."
-              }
-            ]
-          }
-        ]
-      }
-    }
-  },
-  {
-    "id": "g-20260813-1054-7",
-    "queuedUtc": "2026-08-13T10:54Z",
-    "approve": false,
-    "writer": "nvidia:z-ai/glm-5.2",
-    "decisionReason": "Source describes recent fume event incidents (Boeing 757 evacuation, JetBlue A320 diversion) and an upcoming conference. The article references safety events involving smoke/fumes and passenger evacuation, which are aviation safety occurrences requiring human review. The specific incidents lack precise dates and are referenced as recent but undated, and the article is primarily a conference preview with incident context rather than a detailed incident report.",
-    "riskFlags": [
-      "accident_or_serious_incident",
-      "investigation",
-      "unconfirmed_or_developing"
-    ],
-    "facts": [
-      {
-        "factId": "F1",
-        "claim": "Passengers were evacuated from a Boeing 757 after smoke and fumes were reported in the cockpit.",
-        "sourceQuote": "passengers have been evacuated from a Boeing 757 after smoke and fumes were reported in the cockpit",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F2",
-        "claim": "A JetBlue Airbus A320 diverted to Jacksonville after its pilots encountered an acrid smell that irritated their eyes and lungs.",
-        "sourceQuote": "a JetBlue Airbus A320 diverted to Jacksonville after its pilots encountered an acrid smell that irritated their eyes and lungs",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F3",
-        "claim": "A Wall Street Journal investigation found 108 reported fume events per million departures among major US airlines in 2024, equivalent to around two a day.",
-        "sourceQuote": "A major Wall Street Journal investigation into aircraft fume events found 108 reported incidents per million departures among major US airlines in 2024, equivalent to around two a day.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F4",
-        "claim": "Internal airline industry data reviewed by the Journal estimated the true rate could be closer to 800 events per million flights, or around 22 every day in the US alone.",
-        "sourceQuote": "internal airline industry data reviewed by the Journal estimated the true rate could be closer to 800 events per million flights, or around 22 every day in the US alone.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F5",
-        "claim": "The 2026 Aircraft Cabin Air International Conference takes place at Imperial College London on September 22 and 23, bringing together more than 30 speakers and contributors.",
-        "sourceQuote": "The 2026 Aircraft Cabin Air International Conference takes place at Imperial College London on September 22 and 23, bringing together more than 30 speakers and contributors",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      },
-      {
-        "factId": "F6",
-        "claim": "The UK Civil Aviation Authority describes a fume event as involving an unusual odour, mist or smoke on an aircraft.",
-        "sourceQuote": "The UK Civil Aviation Authority describes a fume event as involving an unusual odour, mist or smoke on an aircraft.",
-        "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-        "evidenceScope": "source",
-        "archiveEventId": null,
-        "archiveContext": false
-      }
-    ],
-    "draft": {
-      "status": "manual_review",
-      "decisionReason": "Source describes recent fume event incidents (Boeing 757 evacuation, JetBlue A320 diversion) and an upcoming conference. The article references safety events involving smoke/fumes and passenger evacuation, which are aviation safety occurrences requiring human review. The specific incidents lack precise dates and are referenced as recent but undated, and the article is primarily a conference preview with incident context rather than a detailed incident report.",
-      "cat": "safety",
-      "zh": {
-        "title": "機艙煙霧事件再受關注 倫敦將辦國際研討會",
-        "summary": "波音757與捷藍航空A320近期傳出煙霧事件；倫敦九月將召開機艙空氣國際會議",
-        "body": [
-          "Aerospace Global News 報導，近日接連發生與機艙煙霧及異味有關的飛安事件。一架波音757因駕駛艙傳出煙霧與異味，乘客進行疏散；另有一架捷藍航空空中巴士A320因機師遭遇刺鼻異味導致眼睛與肺部不適，轉降傑克遜維爾。",
-          "報導引述《華爾街日報》一項調查指出，2024年美國主要航空公司每百萬航班中通報108起煙霧事件，相當於每天約兩起；但航空公司內部資料估算實際發生率可能接近每百萬航班800起，即全美每天約22起。",
-          "英國民航局將煙霧事件描述為涉及機上異常氣味、霧氣或煙霧的情況。報導指出，多數商用客機透過引氣系統從發動機壓縮段引入外部空氣用於通風與增壓，若機油或其他液體汙染該氣源，異味可能進入駕駛艙或客艙。",
-          "2026年 Aircraft Cabin Air International Conference 將於9月22日至23日在倫敦帝國理工學院舉行，匯集航空、科學、醫學、監管及工會等領域超過30名講者。議程涵蓋受汙染空氣的飛安影響、醫學與科學研究、法律與監管議題，以及潛在解決方案，包括較低危害性的發動機機油、引氣過濾與汙染空氣警示感測器等。",
-          "會議確認議題包括 EASA CAQ III 機艙空氣研究計畫、美國 FAA 2024年重新授權法中有關機艙空氣的條文，以及英國國會跨黨派機艙空氣品質小組的工作。已確認的業界講者來自 TAP 航空、Collins Aerospace、Pall Aerospace 等機構。"
-        ]
-      },
-      "en": {
-        "title": "Aircraft Fume Events Back in Spotlight Ahead of London Cabin Air Conference",
-        "summary": "Recent Boeing 757 evacuation and JetBlue A320 diversion highlight fume event concerns; London conference set for September",
-        "body": [
-          "Aerospace Global News reports that several fume-related incidents have drawn renewed attention. Passengers were evacuated from a Boeing 757 after smoke and fumes were reported in the cockpit, while a JetBlue Airbus A320 diverted to Jacksonville after its pilots encountered an acrid smell that irritated their eyes and lungs.",
-          "A Wall Street Journal investigation found 108 reported fume events per million departures among major US airlines in 2024, equivalent to around two per day. Internal airline industry data reviewed by the Journal estimated the true rate could be closer to 800 events per million flights, or around 22 every day in the US alone.",
-          "The UK Civil Aviation Authority describes a fume event as involving an unusual odour, mist or smoke on an aircraft. On most commercial aircraft, outside air used to ventilate and pressurise the cabin is taken from the compression stages of the engines through the bleed-air system; if oil or other fluids contaminate that supply, fumes can potentially reach the cockpit or cabin.",
-          "The 2026 Aircraft Cabin Air International Conference will take place at Imperial College London on September 22 and 23, bringing together more than 30 speakers from aviation, science, medicine, regulation, unions and industry. Objectives include mapping flight-safety implications through case studies, examining medical and scientific research, and considering legal, regulatory and workers' compensation issues.",
-          "Confirmed subjects include the EASA CAQ III cabin-air research program, cabin-air provisions in the FAA Reauthorization Act of 2024, and the work of the UK's All-Party Parliamentary Group on Cabin Air Quality. Industry speakers confirmed so far include specialists from TAP, Collins Aerospace, Pall Aerospace, PTI Technologies, TSI, Aeroparts, CTT Systems and BASF."
-        ]
-      },
-      "flash": {
-        "zh": "機艙煙霧事件再受關注 倫敦九月將召開國際會議",
-        "en": "Aircraft fume events back in spotlight; London cabin air conference set for September",
-        "hot": false
-      },
-      "incident": null,
-      "facts": [
-        {
-          "factId": "F1",
-          "claim": "Passengers were evacuated from a Boeing 757 after smoke and fumes were reported in the cockpit.",
-          "sourceQuote": "passengers have been evacuated from a Boeing 757 after smoke and fumes were reported in the cockpit",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F2",
-          "claim": "A JetBlue Airbus A320 diverted to Jacksonville after its pilots encountered an acrid smell that irritated their eyes and lungs.",
-          "sourceQuote": "a JetBlue Airbus A320 diverted to Jacksonville after its pilots encountered an acrid smell that irritated their eyes and lungs",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "A Wall Street Journal investigation found 108 reported fume events per million departures among major US airlines in 2024, equivalent to around two a day.",
-          "sourceQuote": "A major Wall Street Journal investigation into aircraft fume events found 108 reported incidents per million departures among major US airlines in 2024, equivalent to around two a day.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "Internal airline industry data reviewed by the Journal estimated the true rate could be closer to 800 events per million flights, or around 22 every day in the US alone.",
-          "sourceQuote": "internal airline industry data reviewed by the Journal estimated the true rate could be closer to 800 events per million flights, or around 22 every day in the US alone.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F5",
-          "claim": "The 2026 Aircraft Cabin Air International Conference takes place at Imperial College London on September 22 and 23, bringing together more than 30 speakers and contributors.",
-          "sourceQuote": "The 2026 Aircraft Cabin Air International Conference takes place at Imperial College London on September 22 and 23, bringing together more than 30 speakers and contributors",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F6",
-          "claim": "The UK Civil Aviation Authority describes a fume event as involving an unusual odour, mist or smoke on an aircraft.",
-          "sourceQuote": "The UK Civil Aviation Authority describes a fume event as involving an unusual odour, mist or smoke on an aircraft.",
-          "sourceUrl": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        }
-      ],
-      "headlineSupportedBy": [
-        "F1",
-        "F2",
-        "F5"
-      ],
-      "summarySupportedBy": [
-        "F1",
-        "F2",
-        "F5"
-      ],
-      "entities": {
-        "organizations": [
-          "UK Civil Aviation Authority",
-          "Wall Street Journal",
-          "EASA",
-          "FAA",
-          "ICAO",
-          "IATA",
-          "IFALPA",
-          "ITF",
-          "GCAQE",
-          "Collins Aerospace",
-          "Pall Aerospace",
-          "PTI Technologies",
-          "TSI",
-          "Aeroparts",
-          "CTT Systems",
-          "BASF",
-          "Imperial College London"
-        ],
-        "airlines": [
-          "JetBlue",
-          "TAP"
-        ],
-        "aircraft_models": [
-          "Boeing 757",
-          "Airbus A320"
-        ],
-        "airports": [
-          "Jacksonville"
-        ],
-        "locations": [
-          "London"
-        ],
-        "flight_numbers": [],
-        "registration_numbers": [],
-        "event_dates": [
-          "2026-09-22",
-          "2026-09-23"
-        ]
-      },
-      "eventStatus": "confirmed",
-      "riskFlags": [
-        "accident_or_serious_incident",
-        "investigation",
-        "unconfirmed_or_developing"
-      ],
-      "requiresHumanReview": true
-    },
-    "group": {
-      "id": "g-20260813-1054-7",
-      "primarySource": "Aerospace Global News",
-      "items": [
-        {
-          "title": "What’s that smell? Aircraft fume events back in spotlight ahead of London conference News",
-          "url": "https://aerospaceglobalnews.com/news/aircraft-fume-events-cabin-air-conference-2026/",
-          "publishedUtc": "2026-08-13T00:00Z",
-          "summary": "",
-          "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/AdobeStock_480808237-scaled.jpeg",
-          "source": "Aerospace Global News",
-          "sourceKey": "aerospaceglobalnews"
-        }
-      ],
-      "updateCandidate": false,
-      "mustReport": false,
-      "archiveContext": {
-        "archive_context_version": 1,
-        "retrieval_status": "found",
-        "selected_events": [
-          {
-            "event_id": "a-20260803-0835-airbus-a321xlr-challenges-traditional-hu",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: AIRBUS A320",
-              "same named core entity: airbus",
-              "archive predates source by 10 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 10 day(s) apart",
-            "event_date": "2026-08-03",
-            "source_name": "Simple Flying — How The Airbus A321XLR Is Quietly Killing The Hub & Spoke M...",
-            "source_url": "https://simpleflying.com/how-airbus-a321xlr-quietly-killing-hub-spoke-model/",
-            "facts": [
-              {
-                "claim": "The traditional hub-and-spoke model is being directly challenged by Airbus' latest addition to the A320 family, the A321XLR.",
-                "source_quote": "The hub-and-spoke model is being directly challenged by Airbus' latest addition to the A320 family.",
-                "source_url": "https://simpleflying.com/how-airbus-a321xlr-quietly-killing-hub-spoke-model/",
-                "source_name": "Simple Flying — How The Airbus A321XLR Is Quietly Killing The Hub & Spoke M..."
-              },
-              {
-                "claim": "The introduction of the Airbus A321XLR may slowly lead to a global change in airline networks.",
-                "source_quote": "Slowly, we may see a global change to networks.",
-                "source_url": "https://simpleflying.com/how-airbus-a321xlr-quietly-killing-hub-spoke-model/",
-                "source_name": "Simple Flying — How The Airbus A321XLR Is Quietly Killing The Hub & Spoke M..."
-              },
-              {
-                "claim": "Airbus is continuing its production ramp-up, expecting to reach a monthly rate of between 70 and 75 aircraft for the A320 family by late 2027.",
-                "source_quote": "On the A320 Family, the Company continues to expect to reach a rate of between 70 and 75 aircraft a month",
-                "source_url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
-                "source_name": "Archive: Airbus — Airbus reports Half-Year (H1) 2026 results — a-20260730-1422-airbus-profits-surge-126-in-q2-on-strong"
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260811-0552-airlines-prepare-special-flights-for-aug",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: AIRBUS A320",
-              "same named core entity: ace",
-              "archive predates source by 3 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 3 day(s) apart",
-            "event_date": "2026-08-10",
-            "source_name": "Aerospace Global News — Eclipse flights: Airlines offer front-row seats to solar sp...",
-            "source_url": "https://aerospaceglobalnews.com/news/solar-eclipse-flights/",
-            "facts": [
-              {
-                "claim": "Airlines including Iberia and Brussels Airlines have confirmed dedicated observation flights for the August 12 total solar eclipse.",
-                "source_quote": "Iberia and Brussels Airlines have confirmed dedicated eclipse flights",
-                "source_url": "https://aerospaceglobalnews.com/news/solar-eclipse-flights/",
-                "source_name": "Aerospace Global News — Eclipse flights: Airlines offer front-row seats to solar sp..."
-              },
-              {
-                "claim": "Iberia will operate flight IB1473 from Madrid on August 12 using an Airbus A321XLR to observe totality over Palencia province.",
-                "source_quote": "The Spanish flag carrier will operate flight IB1473 from Madrid on 12 August using an Airbus A321XLR.",
-                "source_url": "https://aerospaceglobalnews.com/news/solar-eclipse-flights/",
-                "source_name": "Aerospace Global News — Eclipse flights: Airlines offer front-row seats to solar sp..."
-              },
-              {
-                "claim": "Iberia's flight will carry researchers from the Shelios Project and broadcast the eclipse live through Starlink satellite internet.",
-                "source_quote": "The aircraft will carry scientists from the Shelios Project",
-                "source_url": "https://aerospaceglobalnews.com/news/solar-eclipse-flights/",
-                "source_name": "Aerospace Global News — Eclipse flights: Airlines offer front-row seats to solar sp..."
-              },
-              {
-                "claim": "Brussels Airlines will operate an Airbus A320 from Brussels carrying 100 passengers towards western France for partial eclipse viewing.",
-                "source_quote": "The Lufthansa Group carrier will operate the flight in coordination with Urania Public Observatory, the University of Antwerp and Vrije Universiteit Brussel, on an Airbus A320 departing from Brussels on Wednesday.",
-                "source_url": "https://aerospaceglobalnews.com/news/solar-eclipse-flights/",
-                "source_name": "Aerospace Global News — Eclipse flights: Airlines offer front-row seats to solar sp..."
-              },
-              {
-                "claim": "ASL Group's ACE will operate an Embraer ERJ135 private charter flight from Liège Airport for eclipse observation.",
-                "source_quote": "The aircraft is an Embraer ERJ135 operated by ACE, part of ASL Group, according to details of the Liège eclipse flight on the Urania website.",
-                "source_url": "https://aerospaceglobalnews.com/news/solar-eclipse-flights/",
-                "source_name": "Aerospace Global News — Eclipse flights: Airlines offer front-row seats to solar sp..."
-              }
-            ]
-          },
-          {
-            "event_id": "a-20260811-1413-sun-phuquoc-airways-partners-with-baa-tr",
-            "relationship_type": "programme_background",
-            "relationship_evidence": [
-              "same aircraft model: AIRBUS A320",
-              "same named core entity: easa",
-              "archive predates source by 2 day(s)"
-            ],
-            "relationship_tier": 2,
-            "confidence_score": 91,
-            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 2 day(s) apart",
-            "event_date": "2026-08-11",
-            "source_name": "AeroTime — Sun PhuQuoc Airways picks BAA Training for A320 cadets",
-            "source_url": "https://www.aerotime.aero/articles/sun-phuquoc-airways-baa-training-a320-pilot-cadets",
-            "facts": [
-              {
-                "claim": "BAA Training Vietnam welcomed the first group of pilot cadets from Sun PhuQuoc Airways for Airbus A320 Type Rating training.",
-                "source_quote": "BAA Training Vietnam has welcomed the first group of Sun PhuQuoc Airways pilot cadets for Airbus A320 Type Rating training",
-                "source_url": "https://www.aerotime.aero/articles/sun-phuquoc-airways-baa-training-a320-pilot-cadets",
-                "source_name": "AeroTime — Sun PhuQuoc Airways picks BAA Training for A320 cadets"
-              },
-              {
-                "claim": "The initial intake of 13 cadets started A320 Type Rating training at BAA Training Vietnam's simulator center in Ho Chi Minh City on August 10, 2026.",
-                "source_quote": "selected its first intake of 13 cadets, who began A320 Type Rating training with BAA Training Vietnam at its simulator center in Ho Chi Minh City on August 10, 2026",
-                "source_url": "https://www.aerotime.aero/articles/sun-phuquoc-airways-baa-training-a320-pilot-cadets",
-                "source_name": "AeroTime — Sun PhuQuoc Airways picks BAA Training for A320 cadets"
-              },
-              {
-                "claim": "Sun PhuQuoc Airways started commercial flights in November 2025 and has expanded its fleet to 17 aircraft.",
-                "source_quote": "Sun PhuQuoc Airways launched commercial operations in November 2025 and has since grown its fleet to 17 aircraft",
-                "source_url": "https://www.aerotime.aero/articles/sun-phuquoc-airways-baa-training-a320-pilot-cadets",
-                "source_name": "AeroTime — Sun PhuQuoc Airways picks BAA Training for A320 cadets"
-              },
-              {
-                "claim": "The two-month training program complies with standards set by the Civil Aviation Authority of Vietnam and the European Union Aviation Safety Agency.",
-                "source_quote": "The A320 Type Rating program meets standards set by both the Civil Aviation Authority of Vietnam (CAAV) and the European Union Aviation Safety Agency (EASA).",
-                "source_url": "https://www.aerotime.aero/articles/sun-phuquoc-airways-baa-training-a320-pilot-cadets",
-                "source_name": "AeroTime — Sun PhuQuoc Airways picks BAA Training for A320 cadets"
               }
             ]
           }
