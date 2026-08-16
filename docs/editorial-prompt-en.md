@@ -4,6 +4,12 @@
 > it was integrated. Placeholders `{title}` `{published_at}` `{publisher}`
 > `{url}` `{article_text}` correspond to a single-article full-text input
 > mode (the pipeline currently has no full text — see the notes).
+>
+> **Historical specification:** This page preserves the original prompt and is
+> not the current publication policy. The live pipeline has retired human
+> review: reliable material publishes directly after automated evidence gates;
+> insufficient, conflicting or unverifiable material is rejected. See
+> `pipeline/write.py` and `pipeline/CONTRACTS.md` for the active contract.
 
 ---
 

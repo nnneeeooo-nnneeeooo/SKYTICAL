@@ -12,8 +12,9 @@ Pure code-side detection - NO AI is ever called from this module:
       -> cross-check candidates against ADSB.lol (secondary source)
       -> event registry + stable event ids (no duplicate news, ever)
       -> queue publishable candidates for the HOURLY news pipeline
-         (write.py drafts them with the dedicated prompt and forces
-         manual_review; this module never publishes anything)
+         (write.py drafts them with the dedicated prompt, re-verifies every
+         source-bound fact, and publishes reliable observations directly;
+         this module never publishes anything)
 
 Persistence lives in data/flightwatch/ (committed by the monitor workflow
 only when something changed): state.json (tracks, pruned to 60 min),
@@ -435,7 +436,7 @@ def main() -> None:
         "candidate_aircraft", "approaching_aircraft", "probable_arrivals",
         "confirmed_arrivals", "overflights", "rarity_candidates",
         "duplicate_events_skipped", "secondary_confirmations",
-        "conflicting_sources", "manual_review_events")}
+        "conflicting_sources", "queued_news_events")}
 
     # ONE wide-area scan per run; failure leaves every file untouched.
     stats["provider_requests"] += 1
@@ -573,7 +574,7 @@ def main() -> None:
             "status": "candidate", "at": iso(now), "score": score,
             "airport": airport["icao"], "hex": ac["hex"],
         }
-        stats["manual_review_events"] += 1
+        stats["queued_news_events"] += 1
         queue.append({
             "eventId": eid,
             "queuedUtc": iso(now),

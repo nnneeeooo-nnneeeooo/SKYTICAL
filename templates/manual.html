@@ -364,7 +364,7 @@
               <p class="kicker">SUGGESTION PREVIEW</p>
               <h3>AI 建議（尚未套用）</h3>
             </div>
-            <span class="copilot-badge warning">需人工確認</span>
+            <span class="copilot-badge warning">尚未套用</span>
           </div>
           <div id="copilot-suggestion-body" class="copilot-suggestion-body"></div>
           <div class="copilot-actions">
@@ -379,8 +379,8 @@
     <section id="review-panel" class="panel review-panel ai-only" hidden>
       <div class="section-head">
         <div>
-          <p class="kicker">EDITORIAL REVIEW</p>
-          <h2>確認文章後發布</h2>
+          <p class="kicker">PUBLICATION PREVIEW</p>
+          <h2>發布預覽</h2>
         </div>
         <span id="review-status" class="job-state idle">等待草稿</span>
       </div>
@@ -408,7 +408,7 @@
       </article>
 
       <div class="confirm-model">
-        <label>確認／重寫使用的模型
+        <label>重寫使用的模型
           <select id="confirm-model">
             <option value="same" selected>沿用本次實際模型</option>
             <option value="auto">自動（依優先順序 fallback）</option>
@@ -429,7 +429,7 @@
           以確認模型重新生成
         </button>
         <button id="publish" class="primary" type="button" disabled>
-          確認並發布到 SKYTICAL
+          發布到 SKYTICAL
         </button>
       </div>
       <p id="publish-state" class="publish-state" role="status"></p>
