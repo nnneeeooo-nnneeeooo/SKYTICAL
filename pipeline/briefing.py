@@ -8,10 +8,9 @@ headlines and summaries are reused as-is and no model is called. At most
 one optional batch LLM call per edition (BRIEFING_LLM_INTRO=true) may add
 an intro paragraph; any failure falls back to the deterministic output.
 
-Never fetches the network for content and never bypasses the editorial
-gate: rejected groups never reach data/articles/, and manual_review items
-stay in data/review.json until a human approves them, so reading only the
-published article store enforces both exclusions structurally.
+Never fetches the network for content and never bypasses the automated
+source/evidence gates: rejected groups never reach data/articles/, so reading
+only the published article store enforces that exclusion structurally.
 
 Editions (config/briefing_editions.json is the single source of truth):
   morning    23:00 (previous day) <= source_time < 07:00, runs 07:15 TPE

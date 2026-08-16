@@ -213,6 +213,17 @@ a.flash-row:hover { color: inherit; }
   color: color-mix(in srgb, var(--color-text) 55%, transparent);
 }
 .flash-time.hot { color: var(--color-accent); }
+.flash-pin,
+.ticker-pin {
+  display: inline-block;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font: 800 8px/1 monospace;
+  letter-spacing: .08em;
+  padding: 2px 3px;
+  margin-right: 6px;
+  vertical-align: 1px;
+}
 
 .dot { width: 7px; height: 7px; background: var(--color-accent); flex-shrink: 0; }
 .dot.err { background: color-mix(in srgb, var(--color-text) 30%, transparent); }

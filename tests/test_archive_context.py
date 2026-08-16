@@ -405,7 +405,7 @@ def test_fact_scope_verification_and_current_support() -> None:
         write._evidence_binding_problem(draft, [archive_only]) or "")
 
 
-def test_publish_brief_and_manual_review_contracts() -> None:
+def test_publish_brief_and_legacy_review_contracts() -> None:
     draft = brief_draft()
     assert write.draft_article_format(draft) == "brief"
     assert write.validate_draft(draft) is None
@@ -416,6 +416,12 @@ def test_publish_brief_and_manual_review_contracts() -> None:
 
     review = brief_draft("manual_review")
     assert write.validate_draft(review) is None
+    normalized = write.auto_publish_reliable_draft(review)
+    assert normalized["status"] == "publish_brief"
+    assert normalized["requiresHumanReview"] is False
+    assert normalized["decisionReason"] == ""
+    assert "manual_review" not in (
+        write.DRAFT_SCHEMA["properties"]["status"]["enum"])
     verified = write.verify_facts(review, group("brief"), "fixture")
     assert len(verified) == 1
     assert write._evidence_binding_problem(review, verified) is None
@@ -474,6 +480,20 @@ def test_frontend_and_old_json_backward_compatibility() -> None:
     prepared = build.prep_article(built)
     assert prepared is not None
     assert prepared["article_format"] == "brief"
+
+    flash = write.build_flash(
+        draft, built["id"], datetime.now(timezone.utc))
+    assert flash["pinned"] is True
+    prepared_flashes = build.prep_flashes([flash], {built["id"]})
+    assert prepared_flashes[0]["pinned"] is True
+    assert build.flash_view(prepared_flashes, "zh")[0]["pinned"] is True
+
+    home_template = (ROOT / "templates" / "home.html").read_text(
+        encoding="utf-8")
+    base_template = (ROOT / "templates" / "base.html").read_text(
+        encoding="utf-8")
+    assert 'class="flash-pin"' in home_template
+    assert 'class="ticker-pin"' in base_template
     assert len(prepared["zh"]["body"]) == 2
 
 
@@ -487,7 +507,7 @@ def main() -> None:
         test_prompt_injection_and_prompt_envelope,
         test_limits_are_enforced,
         test_fact_scope_verification_and_current_support,
-        test_publish_brief_and_manual_review_contracts,
+        test_publish_brief_and_legacy_review_contracts,
         test_archive_cannot_replace_current_event,
         test_no_archive_keeps_strict_source_verification,
         test_frontend_and_old_json_backward_compatibility,

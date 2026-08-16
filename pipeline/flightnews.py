@@ -4,8 +4,8 @@ flightwatch.py (every 5 min, zero AI) appends confirmed rare-arrival
 candidates to data/flightwatch/queue.json. write.py (hourly) consumes the
 queue via this module: assemble_source() renders the ONLY evidence the
 model may quote, pseudo_group() adapts an event to the existing
-group/validation/verify_facts/review machinery, and the dedicated prompt
-(prompts/rare-aircraft-news-zh.txt) forces manual_review output.
+group/validation/verify_facts machinery, and the dedicated prompt
+(prompts/rare-aircraft-news-zh.txt) requires verified automatic publication.
 
 The assembled SOURCE never contains live coordinates, headings, altitudes
 or tracks - only identities, times, counts and code-computed statistics.
@@ -24,8 +24,9 @@ _FALLBACK_PROMPT = (
     "You write a bilingual wire item as JSON (same DRAFT_SCHEMA as the main "
     "pipeline) from ONE <SOURCE type=\"flight_observation\"> block. Use only "
     "its lines; quote them verbatim in facts. Facts use evidenceScope source, "
-    "archiveContext false and archiveEventId null. status MUST be manual_review, "
-    "cat ops, incident null, riskFlags include unconfirmed_or_developing. "
+    "archiveContext false and archiveEventId null. status MUST be publish or "
+    "publish_brief, cat ops, incident null, requiresHumanReview false, and "
+    "riskFlags include unconfirmed_or_developing. "
     "Never guess routes, purposes or flight numbers; never claim firsts.")
 
 

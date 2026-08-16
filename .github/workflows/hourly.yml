@@ -63,8 +63,6 @@ jobs:
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           # private Copilot panel; build-time visibility is not authorization
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
-          # rare-aircraft auto-publish kill switch (code default: on)
-          FLIGHT_AUTO_PUBLISH: ${{ vars.FLIGHT_AUTO_PUBLISH }}
           # bulletin-only briefing pages by default; build.py applies the
           # same gate at render time, so hourly rebuilds need the var too
           BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
