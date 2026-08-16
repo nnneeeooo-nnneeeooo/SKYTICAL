@@ -66,7 +66,10 @@
 
     var meta = document.createElement("div");
     meta.className = "search-result-meta";
-    meta.appendChild(textNode("span", "tag " + (record.articleFormat === "brief" ? "tag-neutral" : "tag-outline"), localized(record, "category") + (record.articleFormat === "brief" ? " · " + root.dataset.briefLabel : "")));
+    var formatLabel = record.articleFormat === "brief"
+      ? root.dataset.briefLabel
+      : (record.articleFormat === "roundup" ? root.dataset.roundupLabel : "");
+    meta.appendChild(textNode("span", "tag " + (formatLabel ? "tag-neutral" : "tag-outline"), localized(record, "category") + (formatLabel ? " · " + formatLabel : "")));
     meta.appendChild(textNode("time", "text-muted", record.date || ""));
     card.appendChild(meta);
 

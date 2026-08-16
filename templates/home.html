@@ -48,7 +48,7 @@
         <div class="text-muted" style="font-size:10.5px;margin-top:4px;">{% if html_lang.startswith('zh') %}暫無可驗證的事件或資料照片，先顯示 SKYTICAL 預設圖片。{% else %}No verified event or file photo is available yet; showing the SKYTICAL default image.{% endif %}</div>
         {% endif %}
         <div style="margin-top:16px;">
-          <span class="card-kicker" style="font-size:11px;">{{ hero.cat_label }}{% if hero.article_format == "brief" %} · {{ t.briefLabel }}{% endif %} — {{ t.topStory }}</span>
+          <span class="card-kicker" style="font-size:11px;">{{ hero.cat_label }}{% if hero.article_format == "brief" %} · {{ t.briefLabel }}{% elif hero.article_format == "roundup" %} · {{ t.roundupLabel }}{% endif %} — {{ t.topStory }}</span>
           <h2 class="hero-title">{{ hero.title }}</h2>
           {{ notification_summary(hero.display_summary, t.summaryLabel, 'hero') }}
           <div class="hero-meta">
@@ -79,7 +79,7 @@
       {% for item in feed %}
       <a class="feed-row" data-cat="{{ item.cat }}" href="{{ item.url }}"{% if item.external %} target="_blank" rel="noopener"{% endif %}>
         <span class="feed-time">{{ item.time }}</span>
-        <span class="feed-category tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% endif %}</span>
+        <span class="feed-category tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% elif item.article_format == "roundup" %} · {{ t.roundupLabel }}{% endif %}</span>
         <span class="feed-copy">
           <span style="display:block;font-size:15.5px;font-weight:700;line-height:1.4;letter-spacing:-.01em;">{{ item.title }}</span>
           {{ notification_summary(item.display_summary, t.summaryLabel, 'feed') }}

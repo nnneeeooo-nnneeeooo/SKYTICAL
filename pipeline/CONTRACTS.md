@@ -81,7 +81,10 @@ still produces `data/raw/<key>.json` and can supply a story group to
 ## data/pending.json  (written by dedupe.py, read + consumed by write.py)
 
 Only stories that are NEW this run (not in data/seen.json). Cross-source
-coverage of one event is merged into a single group.
+coverage of one event is merged into a single `event` group. Separate,
+title-backed The Aviation Herald occurrence notices may be collected into an
+explicit `safety_roundup` group; its items remain independent events and must
+never be presented as one occurrence.
 
 ```jsonc
 {
@@ -89,6 +92,8 @@ coverage of one event is merged into a single group.
   "groups": [
     {
       "id": "g-20260726-0503-1",
+      "groupKind": "event",               // event | safety_roundup
+      "independentEvents": false,          // true only for safety_roundup
       "primarySource": "Reuters",          // display name of best source in group
       "items": [ /* raw items as above, each with extra "source" (display name) and "sourceKey" */ ]
     }
@@ -121,7 +126,7 @@ absent when nothing new that hour)
       "publishedUtc": "2026-07-26T05:47Z",
       "cat": "safety",                     // safety | reg | biz | ops | mil
       "primarySource": "Reuters",
-      "articleFormat": "full",             // full | brief
+      "articleFormat": "full",             // full | brief | roundup
       "image": null,                       // og:image URL or null
       "archived": false,                   // OPTIONAL true = retained in data,
                                             // excluded from every public page
@@ -172,7 +177,13 @@ gates. Passing rows publish; failing or expired rows do not. Every row and its
 `DRAFT_SCHEMA.status` accepts `publish`, `publish_brief` and `reject`.
 `manual_review` remains parser-compatible only for the one-time legacy
 migration. Published article files do not persist the editorial status; they
-persist `articleFormat` (`full` or `brief`) so old readers remain compatible.
+persist `articleFormat` (`full`, `brief` or `roundup`) so old readers remain
+compatible. A roundup must label itself as a collection of independent events,
+use one numbered paragraph per source item, expand known ICAO aircraft type
+codes on first mention, add configured country context to unfamiliar locations,
+and avoid implying a causal or operational link. It
+uses the neutral site fallback instead of selecting one event's image and does
+not create a single `data/incidents.json` row for the whole collection.
 Old article facts without the new evidence metadata remain readable. For
 archive retrieval, an old fact is eligible only when it already has
 `sourceUrl` or its article has exactly one unambiguous source.

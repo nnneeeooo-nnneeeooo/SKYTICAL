@@ -471,6 +471,10 @@ def lookup_commons(query: str, require_tokens: list[str],
 
 def resolve_image(article: dict) -> dict | None:
     """Best honest match for one article, or None. Network errors bubble."""
+    if article.get("articleFormat") == "roundup":
+        # A single airline, aircraft or place photo would misrepresent a
+        # briefing made of unrelated events.  Use the site's neutral fallback.
+        return None
     source_photo = lookup_official_source_photo(article)
     if source_photo:
         return source_photo
@@ -548,6 +552,11 @@ def main() -> int:
         for article in articles:
             art_id = str(article.get("id") or "")
             if not art_id:
+                continue
+            if article.get("articleFormat") == "roundup":
+                if article.pop("image", None) is not None:
+                    changed = True
+                entries.pop(art_id, None)
                 continue
             if article.get("image"):
                 if existing_image_matches(article, article["image"]):
