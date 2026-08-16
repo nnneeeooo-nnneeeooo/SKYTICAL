@@ -90,7 +90,7 @@ L = {
         "homeLabel": "返回 SKYTICAL 首頁", "live": "LIVE 快訊", "updateBadge": "每小時自動更新",
         "flash": "即時快訊", "sourceStatus": "來源狀態",
         "latest": "最新新聞", "topStory": "頭條", "mainSource": "主要來源",
-        "briefLabel": "短訊",
+        "briefLabel": "短訊", "roundupLabel": "事件彙整",
         "summaryLabel": "重點摘要",
         "readMore": "閱讀全文 →", "back": "← 返回首頁",
         "heroImg": "[ 頭條照片 — 由來源圖庫自動帶入，灰階顯示 ]",
@@ -205,7 +205,7 @@ L = {
         "homeLabel": "Back to the SKYTICAL home page", "live": "LIVE WIRE", "updateBadge": "Auto-updates hourly",
         "flash": "Live flash", "sourceStatus": "Source status",
         "latest": "Latest news", "topStory": "Top story", "mainSource": "Primary source",
-        "briefLabel": "Brief",
+        "briefLabel": "Brief", "roundupLabel": "Event roundup",
         "summaryLabel": "Quick Summary",
         "readMore": "Read more →", "back": "← Back to front page",
         "heroImg": "[ Lead photo — pulled from source library, grayscale ]",
@@ -1162,7 +1162,9 @@ def prep_article(raw):
             raw.get("writer"), raw.get("writerModels")),
         "available_languages": available_languages,
         "article_format": (
-            "brief" if raw.get("articleFormat") == "brief" else "full"),
+            raw.get("articleFormat")
+            if raw.get("articleFormat") in ("brief", "roundup")
+            else "full"),
     }
 
 

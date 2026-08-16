@@ -10,6 +10,8 @@
       <span class="tag {{ a.tag_class }}">{{ a.cat_label }}</span>
       {% if a.article_format == "brief" %}
       <span class="tag tag-neutral">{{ t.briefLabel }}</span>
+      {% elif a.article_format == "roundup" %}
+      <span class="tag tag-neutral">{{ t.roundupLabel }}</span>
       {% endif %}
       <h1 class="article-title">{{ a.title }}</h1>
       <div class="article-meta text-muted">
