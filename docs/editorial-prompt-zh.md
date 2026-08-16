@@ -3,6 +3,11 @@
 > 保存原文供參照；整合方式見 `editorial-prompt-notes.md`。
 > 佔位符 `{title}` `{published_at}` `{publisher}` `{url}` `{article_text}`
 > 對應單篇全文輸入模式（管線目前無全文，見說明）。
+>
+> **歷史規格警告：** 本頁保留站長於 2026-07-27 提供的原文，並非現行發布
+> 規則。現行管線已封存人工審核；可靠來源通過自動證據閘門後直接發布，來源
+> 不足、互相衝突或無法驗證時拒絕發布。請以 `pipeline/write.py` 與
+> `pipeline/CONTRACTS.md` 為準。
 
 ---
 

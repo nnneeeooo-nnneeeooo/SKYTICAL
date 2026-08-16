@@ -269,7 +269,7 @@ write_articles([make_article("a-pub", "已發布事件", tpe(2026, 7, 27, 6))])
 briefing.main(["--edition", "morning", "--date", "2026-07-27"])
 bm = load_brief("2026-07-27-morning")
 _txt = json.dumps(bm, ensure_ascii=False)
-check("pending manual_review items never appear",
+check("retired review artifacts never appear in a briefing",
       "覆核中的墜機事件" not in _txt and bm["item_count"] == 1)
 check("selection reads only data/articles (rejects can't exist there)",
       all_items(bm)[0]["article_id"] == "a-pub")

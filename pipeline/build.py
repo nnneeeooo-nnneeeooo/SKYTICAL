@@ -552,8 +552,9 @@ ABOUT = {
                 _p("每篇報導文末均附有「資料來源」，讀者可直接開啟原始公告或報導進行核對。"),
                 _sub("自動化不等於無限制生成"),
                 _p("內容必須通過格式、來源、日期、引文及風險檢查，才能進入發布流程。"),
-                _p("資料不足、來源衝突、無法驗證或涉及事故、飛安、法律及其他高風險議題的內容，"
-                   "將被拒絕發布或標記為人工覆核，不會為了維持更新數量而勉強產生報導。"),
+                _p("資料不足、來源衝突或無法驗證的內容將被拒絕發布；事故、飛安、法律及其他"
+                   "高風險議題則必須通過相同且更嚴格的來源與證據檢查，通過後直接發布並保留"
+                   "風險標記，不會為了維持更新數量而勉強產生報導。"),
             ]},
             {"heading": "自動化資料管線", "blocks": [
                 _step("01", "來源監測"),
@@ -703,10 +704,11 @@ ABOUT = {
                 _sub("Automation is not unlimited generation"),
                 _p("Content must pass format, source, date, quotation and risk checks "
                    "before it can enter the publishing flow."),
-                _p("Content that is insufficient, conflicting or unverifiable, or that "
-                   "involves accidents, flight safety, legal matters or other high-risk "
-                   "topics, is rejected or flagged for human review. The system never "
-                   "forces out a story just to keep the update count up."),
+                _p("Content that is insufficient, conflicting or unverifiable is "
+                   "rejected. Accident, flight-safety, legal and other high-risk stories "
+                   "must pass the same, stricter source and evidence checks; passing "
+                   "stories publish directly with their risk flags retained. The system "
+                   "never forces out a story just to keep the update count up."),
             ]},
             {"heading": "Automated data pipeline", "blocks": [
                 _step("01", "Source monitoring"),
@@ -1496,7 +1498,8 @@ def agg_flashes(views):
         text = v["title"]
         if len(text) > 68:
             text = text[:68].rstrip() + "…"
-        out.append({"time": v["time"], "hot": False, "text": text,
+        out.append({"time": v["time"], "hot": False, "pinned": False,
+                    "text": text,
                     "url": v["url"], "external": True})
     return out
 
@@ -1524,6 +1527,7 @@ def prep_flashes(raw, known_ids):
         out.append({
             "time": clock_12(dt.astimezone(TPE)),
             "hot": bool(f.get("hot")),
+            "pinned": bool(f.get("pinned")),
             "zh": zh, "en": en,
             "articleId": aid if isinstance(aid, str) and aid in known_ids else None,
             "available_languages": [
@@ -1539,7 +1543,8 @@ def prep_flashes(raw, known_ids):
 
 def flash_view(flashes, lang: str):
     return [{
-        "time": f["time"], "hot": f["hot"], "text": f[lang],
+        "time": f["time"], "hot": f["hot"], "pinned": f["pinned"],
+        "text": f[lang],
         "url": page_url(lang, f"news/{f['articleId']}/") if f["articleId"] else None,
         "external": False,
     } for f in flashes if lang in f["available_languages"]]
@@ -1875,7 +1880,7 @@ _RUN_TEXT_RE = re.compile(r"[\x00-\x1f\x7f]+")
 
 _RUN_RESULT_ZH = {
     "published": "已發布",
-    "manual_review": "人工審核",
+    "manual_review": "已封存的人工審核紀錄",
     "rejected": "已拒絕",
     "refused": "已拒絕",
     "retry_pending": "待下次重試",
@@ -2209,8 +2214,7 @@ def recent_run_view(ledger: dict, now=None) -> dict:
     failed_results = {"retry_pending", "no_provider", "refused"}
     summary = {
         "jobs": len(runs),
-        "success": sum(run["result"] in {"published", "manual_review"}
-                       for run in runs),
+        "success": sum(run["result"] == "published" for run in runs),
         "failed": sum(run["result"] in failed_results for run in runs),
         "fallback": sum(run["fallback"] for run in runs),
         "fallback_rate": (
@@ -2943,6 +2947,7 @@ def main() -> int:
         # to its story (owner request: clickable, no underline)
         ticker = [{"time": f.get("time"), "text": f.get("text"),
                    "url": f.get("url"), "hot": bool(f.get("hot")),
+                   "pinned": bool(f.get("pinned")),
                    "external": bool(f.get("external"))} for f in fl]
         sv = stats_views(stats_raw, lang)
 
