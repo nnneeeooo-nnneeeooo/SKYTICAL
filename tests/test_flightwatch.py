@@ -342,23 +342,25 @@ def _flight_draft(quote="機場 ICAO：RCKH", status="publish"):
         "cat": "ops",
         "zh": {"title": "達美航空 A350-900 現身高雄機場之公開觀測紀錄",
                "summary": "公開 ADS-B 觀測資料顯示一架 A350-900 抵達高雄國際機場，"
-                          "本站監測系統已確認其落地狀態，詳細背景仍待人工確認後發布。",
+                           "兩個公開追蹤來源與本站狀態機均支持這項抵達紀錄。",
                "body": zh_body},
         "en": {"title": "Public ADS-B data shows Delta A350-900 arrival at "
                         "Kaohsiung",
                "summary": "Public ADS-B observation data indicates an Airbus "
-                          "A350-900 arrived at Kaohsiung International "
-                          "Airport. The observation was confirmed on the "
-                          "ground by the site's monitoring system and "
-                          "awaits human editorial review before any "
-                          "publication of further detail.",
+                           "A350-900 arrived at Kaohsiung International "
+                           "Airport. Two public tracking sources and the "
+                           "site's state machine support the arrival record.",
                "body": en_body},
         "flash": {"zh": "ADS-B 觀測：A350 抵達高雄", "en": "ADS-B: A350 at KHH",
                   "hot": False},
         "incident": None,
-        "facts": [{"factId": "F1", "claim": "抵達機場為高雄國際機場",
-                   "sourceQuote": quote}],
-        "headlineSupportedBy": ["F1"], "summarySupportedBy": ["F1"],
+        "facts": [
+            {"factId": "F1", "claim": "抵達機場為高雄國際機場",
+             "sourceQuote": quote},
+            {"factId": "F2", "claim": "主要觀測來源為 Airplanes.live",
+             "sourceQuote": "主要資料來源：Airplanes.live"},
+        ],
+        "headlineSupportedBy": ["F1"], "summarySupportedBy": ["F1", "F2"],
         "entities": empty_entities, "eventStatus": "confirmed",
         "riskFlags": [], "requiresHumanReview": False,
     }
@@ -411,6 +413,10 @@ def test_flight_events_auto_publish():
           == {"https://airplanes.live/", "https://www.adsb.lol/"},
           "attribution links become the article's sources")
     check(flightnews.load_queue() == [], "queue emptied after publishing")
+    flashes = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
+                               / "flashes.json", [])
+    check(len(flashes) == 1 and flashes[0].get("pinned") is True,
+          "auto-published flight observation is pinned")
     print("test_flight_events_auto_publish: done")
 
 
@@ -444,8 +450,8 @@ def test_flight_fallback_history():
     print("test_flight_fallback_history: done")
 
 
-def test_flight_gate_blocks_conflicts_safety_and_kill_switch():
-    # conflicting ADS-B sources -> human review, never published
+def test_flight_gate_rejects_conflicts_and_publishes_reliable_risk():
+    # Conflicting ADS-B sources fail closed; there is no review queue.
     _reset_data()
     event = json.loads(json.dumps(FLIGHT_EVENT))
     event["crossCheck"] = "conflicting_sources"
@@ -454,16 +460,15 @@ def test_flight_gate_blocks_conflicts_safety_and_kill_switch():
     _run_write_with([solo])
     review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
                               / "review.json", [])
-    check(len(review) == 1 and not _published_articles(),
-          "conflicting sources -> review queue, nothing published")
-    check(review[0]["draft"]["status"] == "manual_review"
-          and "unconfirmed_or_developing" in review[0]["draft"]["riskFlags"]
-          and "不一致" in review[0]["draft"]["decisionReason"],
-          "conflict entry forced to manual_review with reason")
-    check(review[0]["flight"]["eventId"] == FLIGHT_EVENT["eventId"],
-          "flight metadata stored with the review entry")
+    check(review == [] and not _published_articles(),
+          "conflicting sources are rejected without creating a review item")
+    check(solo.calls == 0,
+          "source conflict is rejected before spending an AI call")
+    check(flightnews.load_queue() == [],
+          "source-conflict event is consumed after deterministic rejection")
 
-    # a safety-flavoured draft -> human review even with clean sources
+    # A legacy safety-shaped response is normalized and publishes when its
+    # source quotes and evidence binding pass every deterministic gate.
     _reset_data()
     flightnews.save_queue([json.loads(json.dumps(FLIGHT_EVENT))])
     safety_draft = _flight_draft(status="manual_review")
@@ -474,10 +479,13 @@ def test_flight_gate_blocks_conflicts_safety_and_kill_switch():
     _run_write_with([solo])
     review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
                               / "review.json", [])
-    check(len(review) == 1 and not _published_articles(),
-          "safety risk flag -> review queue, nothing published")
+    arts = _published_articles()
+    check(review == [] and len(arts) == 1,
+          "reliable safety-risk observation publishes without a review queue")
+    check(arts[0].get("riskFlags") == ["investigation"],
+          "risk flag remains attached as publication audit metadata")
 
-    # kill switch restores review-everything behaviour
+    # The retired kill switch no longer restores a non-existent review queue.
     _reset_data()
     flightnews.save_queue([json.loads(json.dumps(FLIGHT_EVENT))])
     os.environ["FLIGHT_AUTO_PUBLISH"] = "false"
@@ -488,9 +496,9 @@ def test_flight_gate_blocks_conflicts_safety_and_kill_switch():
         del os.environ["FLIGHT_AUTO_PUBLISH"]
     review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
                               / "review.json", [])
-    check(len(review) == 1 and not _published_articles(),
-          "FLIGHT_AUTO_PUBLISH=false -> review queue, nothing published")
-    print("test_flight_gate_blocks_conflicts_safety_and_kill_switch: done")
+    check(review == [] and len(_published_articles()) == 1,
+          "retired FLIGHT_AUTO_PUBLISH setting cannot disable direct publish")
+    print("test_flight_gate_rejects_conflicts_and_publishes_reliable_risk: done")
 
 
 def test_flight_no_candidates_no_ai():
@@ -509,7 +517,7 @@ def test_flight_bad_quote_and_reject():
     _run_write_with([solo])
     check(common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
                            / "review.json", []) == [],
-          "unverifiable sourceQuote never reaches the review queue")
+          "unverifiable sourceQuote never produces a review artifact")
     check(len(flightnews.load_queue()) == 1,
           "event stays queued for the next hour after provider failure")
 
@@ -542,7 +550,7 @@ def main():
         test_source_assembly_privacy,
         test_flight_events_auto_publish,
         test_flight_fallback_history,
-        test_flight_gate_blocks_conflicts_safety_and_kill_switch,
+        test_flight_gate_rejects_conflicts_and_publishes_reliable_risk,
         test_flight_no_candidates_no_ai,
         test_flight_bad_quote_and_reject,
     ]

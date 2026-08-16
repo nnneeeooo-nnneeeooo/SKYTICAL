@@ -63,8 +63,8 @@ _EN_TEST_BODY = [
 ]
 
 DRAFT_SAFETY = {
-    # v2 editorial rules: aviation safety events are NEVER auto-published;
-    # they go to data/review.json for human approval.
+    # Legacy model output is accepted for migration, then normalized to direct
+    # publication only after deterministic evidence checks pass.
     "status": "manual_review",
     "decisionReason": "航空安全事件，調查進行中，須人工覆核",
     "facts": [
@@ -194,7 +194,7 @@ def all_articles():
 
 
 def test_publish_flow():
-    """Biz publishes; safety queues for review; approval publishes it."""
+    """Reliable business and safety drafts publish and pin immediately."""
     reset_data_dir()
     # Pre-seed the current hour's batch file to prove merging works.
     hour_path = DATA / "articles" / (NOW.strftime("%Y-%m-%dT%H") + ".json")
@@ -208,7 +208,7 @@ def test_publish_flow():
     def fake_draft(client, group):
         if group["id"] == "g-20260726-0503-1":
             # A prompt-JSON model can smuggle extra top-level keys past the
-            # schema; the review queue must whitelist them away.
+            # schema; the validation pipeline must whitelist them away.
             dirty = json.loads(json.dumps(DRAFT_SAFETY))
             dirty["reasoning"] = "SECRET REASONING TRACE"
             return dirty
@@ -223,9 +223,10 @@ def test_publish_flow():
     finally:
         write.draft_group = original
 
-    # --- run 1: only the biz article publishes -----------------------------
+    # --- both reliable drafts publish in the same run ----------------------
     articles = all_articles()
-    check(len(articles) == 2, f"expected 2 articles (dummy + biz), got {len(articles)}")
+    check(len(articles) == 3,
+          f"expected 3 articles (dummy + safety + biz), got {len(articles)}")
     check(any(a["id"] == "a-existing-dummy" for a in articles),
           "pre-existing article kept after merge")
     biz = next((a for a in articles if a.get("cat") == "biz"), None)
@@ -249,42 +250,38 @@ def test_publish_flow():
           == ["International Air Transport Association"], "entities stored")
     check(biz.get("sourcePublishedUtc") == "2026-07-24T09:00Z",
           f"source publish time recorded, got {biz.get('sourcePublishedUtc')}")
+    safety = next((a for a in articles if a.get("cat") == "safety"), None)
+    check(safety is not None, "reliable safety article auto-published")
+    check(safety.get("riskFlags") == ["accident_or_serious_incident",
+                                      "investigation"],
+          "risk flags retained as audit metadata")
+    check(safety.get("sourcePublishedUtc") == "2026-07-25T23:40Z",
+          "safety source publication time retained")
 
-    # --- the safety story sits in the review queue, not on the site --------
-    review = load(DATA / "review.json")
-    check(len(review) == 1, f"safety story queued for review, got {len(review)}")
-    entry = review[0]
-    check(entry["id"] == "g-20260726-0503-1", f"queued group id: {entry['id']}")
-    check(entry["approve"] is False, "queued entries await human approval")
-    check(entry["writer"].startswith("gemini:"), "queue records the writer")
-    check(len(entry["facts"]) == 2, "verified facts stored with the entry")
-    check(entry["riskFlags"] == ["accident_or_serious_incident", "investigation"],
-          f"risk flags on queue entry, got {entry['riskFlags']}")
-    check(entry["draft"]["zh"]["title"] == DRAFT_SAFETY["zh"]["title"],
-          "full draft preserved for the human editor")
-    check("reasoning" not in entry["draft"],
-          "non-schema keys stripped before the draft hits the public repo")
-
-    # --- flashes: only the biz flash prepended -----------------------------
+    # --- newest direct publication is pinned in the homepage flash list ----
     flashes = load(DATA / "flashes.json")
     check(len(flashes) == common.MAX_FLASHES,
           f"flashes at cap {common.MAX_FLASHES}, got {len(flashes)}")
-    check(flashes[0]["articleId"] == biz["id"] and flashes[0]["hot"] is False,
-          "newest flash is the biz story")
-    check(any(f["zh"] == "old flash 9" for f in flashes),
-          "no flash dropped yet (cap not exceeded)")
+    check(flashes[0]["articleId"] == safety["id"]
+          and flashes[0]["hot"] is True
+          and flashes[0]["pinned"] is True,
+          "safety flash is published and pinned")
+    check(flashes[1]["articleId"] == biz["id"]
+          and flashes[1]["pinned"] is True,
+          "business flash is also pinned")
 
-    # --- incidents: untouched until approval --------------------------------
+    # --- safety occurrence is added immediately ----------------------------
     incidents = load(DATA / "incidents.json")
-    check(len(incidents) == 3, f"no incident row before approval, got {len(incidents)}")
+    check(len(incidents) == 4 and incidents[0]["aircraft"] == "B737-8",
+          "verified safety incident added immediately")
 
-    # --- seen.json: published AND queued groups are consumed ----------------
+    # --- seen.json: every published group is consumed ----------------------
     seen = load(DATA / "seen.json")
     pending_fixture = load(FIXTURES / "pending.json")
     g1, g2, g3 = pending_fixture["groups"]
     for item in g1["items"] + g2["items"]:
         check(common.norm_url(item["url"]) in seen["urls"],
-              f"published/queued url recorded: {item['url']}")
+              f"published url recorded: {item['url']}")
     check(common.norm_url(g3["items"][0]["url"]) not in seen["urls"],
           "failed group url NOT recorded in seen.json")
     check(common.norm_url("https://recent.example.com/kept-story") in seen["urls"],
@@ -295,9 +292,9 @@ def test_publish_flow():
     check("recent seen title" in title_keys, "recent seen title kept")
     check("old seen title" not in title_keys, "old seen title pruned")
     check(any("united jet slides off denver runway" in t for t in title_keys),
-          "queued titles recorded (normalized)")
+          "published titles recorded (normalized)")
 
-    # --- pending.json: published + queued removed, failed group kept -------
+    # --- pending.json: published removed, failed group kept ----------------
     pending = load(DATA / "pending.json")
     ids = [g["id"] for g in pending["groups"]]
     check(ids == ["g-20260726-0503-3"], f"only failed group left pending, got {ids}")
@@ -308,59 +305,86 @@ def test_publish_flow():
     stats = load(DATA / "stats.json")
     check(re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}Z", stats["updatedUtc"]) is not None,
           "stats updatedUtc format")
-    check(stats["seriousThisWeek"] == 1,
-          f"only the fixture acc counts before approval, got {stats['seriousThisWeek']}")
+    check(stats["seriousThisWeek"] == 2,
+          f"verified safety event counted immediately, got {stats['seriousThisWeek']}")
     check(stats["flightsTracked"] == 18742 and stats["delayRate"] == 22.4
           and stats["notams"] == 1208, "FlightAware stats merged")
 
-    # --- run 2: a human flips approve -> the safety story publishes --------
-    review[0]["approve"] = True
-    (DATA / "review.json").write_text(
-        json.dumps(review, ensure_ascii=False), encoding="utf-8")
-    original = write.draft_group
-    write.draft_group = lambda client, group: None  # nothing new this run
-    try:
-        write.main()
-    finally:
-        write.draft_group = original
-
-    articles = all_articles()
-    safety = next((a for a in articles if a.get("cat") == "safety"), None)
-    check(len(articles) == 3, f"approved article published, got {len(articles)}")
-    check(safety is not None, "safety article on site after approval")
     check(safety["id"].endswith("united-737-slides-off-denver-runway"),
           f"slug derived from en title: {safety['id']}")
     # 3 items in g-1, but two Reuters urls normalize to the same address.
     check(len(safety["sources"]) == 2,
           f"sources deduped by url, got {len(safety['sources'])}")
     check(safety["image"] == "https://img.example.com/denver-737.jpg",
-          "image is first non-null item image")
+          "safety image is first non-null item image")
     check(safety["primarySource"] == "NTSB", "primarySource carried from group")
     check(safety["sources"][0]["name"].startswith("NTSB — "),
           "source name = display name + shortened title")
     check(safety.get("riskFlags") == ["accident_or_serious_incident",
                                       "investigation"],
-          "risk flags carried onto the published article")
+          "risk flags carried onto the auto-published article")
     check(len(safety.get("facts", [])) == 2, "verified facts carried over")
     check(safety.get("sourcePublishedUtc") == "2026-07-25T23:40Z",
-          f"newest source publish time kept through approval, "
+          f"newest source publish time kept through auto-publication, "
           f"got {safety.get('sourcePublishedUtc')}")
-    check(load(DATA / "review.json") == [], "review queue emptied after approval")
-    flashes = load(DATA / "flashes.json")
-    check(flashes[0]["articleId"] == safety["id"] and flashes[0]["hot"] is True,
-          "approved flash prepended, hot flag preserved")
     check(all(f["zh"] != "old flash 9" for f in flashes),
           "oldest flash dropped by the cap")
-    incidents = load(DATA / "incidents.json")
-    check(len(incidents) == 4 and incidents[0]["aircraft"] == "B737-8"
-          and incidents[0]["sev"] == "ser", "incident row added on approval")
+    check(incidents[0]["sev"] == "ser", "serious severity preserved")
     check(incidents[0]["articleId"] == safety["id"], "incident links to article")
     check(incidents[0]["sources"] == ["NTSB", "Reuters"],
           f"incident sources from group items, got {incidents[0]['sources']}")
-    stats = load(DATA / "stats.json")
-    check(stats["seriousThisWeek"] == 2,
-          f"approved ser incident counted, got {stats['seriousThisWeek']}")
     print("test_publish_flow: done")
+
+
+def test_legacy_review_is_reverified_published_and_archived():
+    """The retired queue is drained once without trusting its old decision."""
+    reset_data_dir()
+    group = load(FIXTURES / "pending.json")["groups"][0]
+    stored_facts = write.verify_facts(DRAFT_SAFETY, group, "fixture")
+    # review.json never retained fetched full text. Simulate a legacy row
+    # whose compact source fields no longer contain the already-verified
+    # quote, so migration must authenticate the stored fact provenance.
+    for item in group["items"]:
+        item["summary"] = "Aviation safety report with source-linked details."
+    entry = {
+        "id": "r-legacy-safety",
+        "queuedUtc": common.iso_minute(NOW),
+        "writer": "fixture:model",
+        "group": group,
+        "draft": json.loads(json.dumps(DRAFT_SAFETY)),
+        "facts": stored_facts,
+    }
+    (DATA / "review.json").write_text(
+        json.dumps([entry], ensure_ascii=False), encoding="utf-8")
+
+    original = write.build_providers
+    write.build_providers = lambda: []
+    try:
+        write.main()
+    finally:
+        write.build_providers = original
+
+    articles = all_articles()
+    check(len(articles) == 1 and articles[0]["cat"] == "safety",
+          "legacy row publishes only after deterministic re-verification")
+    check(common.load_json(DATA / "review.json", None) == [],
+          "retired review queue is cleared")
+    archive = common.load_json(DATA / "review-archive.json", [])
+    check(len(archive) == 1
+          and archive[0]["retirementResult"]
+          == "published_after_reverification"
+          and archive[0]["articleId"] == articles[0]["id"],
+          "legacy row and its publication outcome are preserved for audit")
+    flashes = common.load_json(DATA / "flashes.json", [])
+    check(flashes[0]["articleId"] == articles[0]["id"]
+          and flashes[0].get("pinned") is True,
+          "migrated reliable story is pinned on the homepage")
+    tampered = json.loads(json.dumps(entry))
+    tampered["facts"][0]["sourceUrl"] = "https://attacker.invalid/fake"
+    candidate, _, _, problem = write._legacy_review_candidate(tampered, NOW)
+    check(candidate is None and problem == "no machine-verifiable sourceQuote",
+          "edited stored fact cannot bypass source provenance verification")
+    print("test_legacy_review_is_reverified_published_and_archived: done")
 
 
 def test_group_cap_and_unique_ids():
@@ -542,7 +566,15 @@ def test_extract_json_and_validate_draft():
     check(write.validate_draft(reject_draft) is None,
           "reject draft valid without content fields")
     check(write.validate_draft(DRAFT_SAFETY) is None,
-          "manual_review draft validates with full content")
+          "legacy manual_review draft remains parser-compatible")
+    normalized = write.auto_publish_reliable_draft(DRAFT_SAFETY)
+    check(normalized["status"] == "publish"
+          and normalized["requiresHumanReview"] is False
+          and normalized["decisionReason"] == "",
+          "legacy review decision normalizes to direct publication")
+    check("manual_review" not in
+          write.DRAFT_SCHEMA["properties"]["status"]["enum"],
+          "new model schema can no longer emit manual_review")
     broken = json.loads(json.dumps(DRAFT_BIZ))
     broken["facts"] = []
     check("facts" in (write.validate_draft(broken) or ""),
@@ -625,12 +657,13 @@ def test_provider_failover():
         write.build_providers = original
 
     articles = all_articles()
-    check(len(articles) == 1, f"biz published via fallback, got {len(articles)}")
-    check(articles[0].get("writer") == "anthropic:fake",
-          "article records the provider that actually wrote it")
-    review = load(DATA / "review.json")
-    check(len(review) == 1 and review[0]["writer"] == "anthropic:fake",
-          "safety draft queued for review via fallback provider")
+    check(len(articles) == 2,
+          f"safety and biz both published via fallback, got {len(articles)}")
+    check(all(article.get("writer") == "anthropic:fake"
+              for article in articles),
+          "each article records the provider that actually wrote it")
+    check(common.load_json(DATA / "review.json", []) == [],
+          "fallback publication does not create review entries")
     check(primary.calls == 1,
           f"dead primary is never called again, got {primary.calls} calls")
     check(middle.calls == 3 and backup.calls == 3,
@@ -640,17 +673,16 @@ def test_provider_failover():
     check(ids == ["g-20260726-0503-3"],
           f"refused group stays pending, got {ids}")
     runs = load(DATA / "usage.json").get("recentRuns") or []
-    published_run = next(row for row in runs
-                         if row.get("result") == "published")
-    review_run = next(row for row in runs
-                      if row.get("result") == "manual_review")
+    published_runs = [row for row in runs
+                      if row.get("result") == "published"]
     refused_run = next(row for row in runs
                        if row.get("result") == "refused")
-    check(published_run["finalModel"] == "anthropic:fake"
-          and published_run["fallbackUsed"] is True,
-          "published run records fallback and final successful model")
-    check(review_run["finalStatus"] == "manual_review",
-          "manual review is a successful model result, not an API failure")
+    check(len(published_runs) == 2
+          and all(row["finalModel"] == "anthropic:fake"
+                  and row["fallbackUsed"] is True
+                  and row["finalStatus"] == "publish"
+                  for row in published_runs),
+          "both direct publications record fallback and final model")
     check(refused_run["attempts"][-1]["outcome"] == "refused",
           "refusal is recorded and stops provider shopping")
     quota_attempt = next(
@@ -871,7 +903,9 @@ def test_all_providers_auth_dead():
 
 
 def main():
-    tests = [test_publish_flow, test_group_cap_and_unique_ids,
+    tests = [test_publish_flow,
+             test_legacy_review_is_reverified_published_and_archived,
+             test_group_cap_and_unique_ids,
              test_extract_json_and_validate_draft, test_provider_failover,
              test_model_chain_and_routing_policy, test_editorial_gate,
              test_completeness_precheck, test_all_providers_auth_dead,

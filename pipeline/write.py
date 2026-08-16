@@ -9,16 +9,16 @@ rest are fallbacks — a provider that hits an auth or quota error is disabled
 for the rest of the run and the next one takes over.
 
 Each draft carries an editorial status: "publish" and "publish_brief" go
-straight to the site,
-"manual_review" (mandatory for aviation safety events and other high-risk
-topics) is queued in data/review.json until a human flips its "approve"
-field to true on GitHub, and "reject" is dropped. Every draft's facts carry
-verbatim source quotes that are re-checked in code (verify_facts); a fact
-whose quote is not found in the source material is discarded.
+straight to the site and "reject" is dropped.  The former manual-review
+queue is retired: legacy rows are re-verified once, published only when they
+clear the same deterministic source gates, then preserved in an audit archive.
+Every draft's facts carry verbatim source quotes that are re-checked in code
+(verify_facts); a fact whose quote is not found in the source material is
+discarded.
 
 New outputs are appended/prepended to data/articles/<hour>.json,
 data/flashes.json and data/incidents.json; data/seen.json is updated only for
-groups that were actually published or queued for review, so failed groups
+groups that were actually published or editorially rejected, so failed groups
 stay "unseen" and are re-emitted by dedupe.py next run. data/stats.json is
 always rewritten. When a later source joins a previously published event,
 the existing article is revised in place with the same stable article ID.
@@ -93,11 +93,12 @@ _EDITORIAL_PROCESS_RE = re.compile(
     re.I,
 )
 
-REVIEW_MAX = 40
-REVIEW_MAX_AGE_DAYS = 14
+LEGACY_REVIEW_MAX_AGE_DAYS = 14
+REVIEW_ARCHIVE_MAX = 200
 
 PENDING_PATH = DATA_DIR / "pending.json"
 REVIEW_PATH = DATA_DIR / "review.json"
+REVIEW_ARCHIVE_PATH = DATA_DIR / "review-archive.json"
 SEEN_PATH = DATA_DIR / "seen.json"
 FLASHES_PATH = DATA_DIR / "flashes.json"
 INCIDENTS_PATH = DATA_DIR / "incidents.json"
@@ -201,8 +202,7 @@ DRAFT_SCHEMA = {
     "type": "object",
     "properties": {
         "status": {"type": "string",
-                   "enum": ["publish", "publish_brief",
-                            "manual_review", "reject"]},
+                   "enum": ["publish", "publish_brief", "reject"]},
         "decisionReason": {"type": "string"},
         "cat": {"type": "string", "enum": list(CATEGORIES)},
         "zh": _LANG_SCHEMA,
@@ -334,8 +334,9 @@ AVIATION SAFETY RULES (strictest standard):
   itself an accident or mechanical failure unless evidence says so.
 - Regulatory items name the authority. Drafts/consultations/preliminary
   reports are not final rules; investigations are not findings of fault.
-- Archive context never lowers a safety or other review requirement and must
-  never be used to infer an accident cause, responsibility or final finding.
+- Archive context never lowers the current-source evidence requirement and
+  must never be used to infer an accident cause, responsibility or final
+  finding.
 
 FACT BINDING:
 - Give facts sequential factId values F1, F2, ... without gaps.
@@ -349,27 +350,20 @@ FACT BINDING:
   historical context but can never be the only support.
 - If archive and SOURCE conflict on an entity, date, route, status, number or
   description, do not use that archive fact. If the conflict affects the
-  current event and SOURCE cannot resolve it, reject or use manual_review
-  under the existing risk rules.
+  current event and SOURCE cannot resolve it, reject.
 
-STATUS DECISION (exactly one of four):
+STATUS DECISION (exactly one of three):
 - status="publish": SOURCE has at least two verified current-event facts;
   current plus optional archive evidence safely supports a full article;
-  every claim is quote-supported; no unresolved contradiction; riskFlags is
-  empty; requiresHumanReview=false; decisionReason="".
+  every claim is quote-supported; no unresolved contradiction;
+  requiresHumanReview=false; decisionReason="". Preserve any applicable
+  riskFlags as public audit metadata; risk alone never blocks publication.
 - status="publish_brief": SOURCE has at least one clear, verified, reportable
-  LOW-RISK current-event fact but evidence cannot safely support a full
+  current-event fact but evidence cannot safely support a full
   article; every claim is quote-supported; no conflict or injection;
-  riskFlags is empty; requiresHumanReview=false; decisionReason="". Never
-  reject a verified low-risk event merely because it cannot support a long
+  requiresHumanReview=false; decisionReason="". Preserve applicable
+  riskFlags. Never reject a verified event merely because it cannot support a long
   article.
-- status="manual_review": evidence is sufficient but the topic is high-risk
-  or developing. It is MANDATORY for ANY aviation safety event listed above;
-  casualties/injuries; investigations; regulatory/enforcement action; major
-  orders, cancellations, bankruptcies or large financial claims; developing
-  or not fully confirmed events; or heavy anonymous attribution. Produce a
-  complete full-or-brief draft. riskFlags contains every applicable flag,
-  requiresHumanReview=true, and decisionReason concretely states why.
 - status="reject": SOURCE does not establish a current new event; core facts
   lack verbatim quotes; dates/entities conflict or are unclear; content is
   primarily rumor, opinion, marketing or repetition; high-risk claims lack
@@ -378,14 +372,14 @@ STATUS DECISION (exactly one of four):
   identify insufficiency in the CURRENT event material, not merely absent
   archive context. Clear zh/en titles, summaries and bodies; clear flash and
   facts/supported-by arrays; incident=null.
-- When uncertain between publish/publish_brief and manual_review, use
-  manual_review. When current evidence is insufficient, reject. Never guess.
+- When evidence supports only a safe short item, use publish_brief. When
+  current evidence is insufficient or contradictory, reject. Never guess.
 
 riskFlags may contain only: accident_or_serious_incident,
 casualties_or_injuries, investigation, regulatory_action,
 financial_or_order_claim, unconfirmed_or_developing, conflicting_information.
-Use [] when none applies. If non-empty, status must be manual_review or reject,
-never publish or publish_brief.
+Use [] when none applies. Risk flags are metadata and may accompany publish,
+publish_brief or reject; they never replace source verification.
 
 entities list only values literally present in an evidence block. Never infer,
 translate, normalize or complete them. Do not turn Boeing 737 into 737-800 or
@@ -437,10 +431,8 @@ OUTPUT RULES:
   publish: 4 to 7 substantive paragraphs per language; zh at least 500 Chinese/alphanumeric content characters; en at least 250 words.
   publish_brief: 2 to 7 substantive paragraphs per language; zh 180-320 Chinese/
   alphanumeric content characters; en 90-150 words.
-  manual_review may use either complete full or brief limits according to
-  available evidence. Never pad, repeat, editorialize or add unstated
-  background. These limits are machine-checked; never pad, repeat, editorialize or add unstated material. Use publish_brief for a verified
-  low-risk event that cannot
+  Never pad, repeat, editorialize or add unstated background. These limits are
+  machine-checked. Use publish_brief for a verified event that cannot
   support full length; reject if even a safe brief is impossible.
 - cat is exactly safety, reg, biz, ops or mil. Classify the main new
   development expressed by the title and summary, not every secondary detail
@@ -462,12 +454,11 @@ SELF-CHECK: (1) every title/summary element binds to listed facts; (2) every
 new-event title and summary has current SOURCE support; (3) no unstated
 number, date, type, place, route, purpose or cause; (4) certainty preserved;
 (5) each quote verbatim and sourceUrl correct; (6) publication/event dates
-not confused; (7) risk flags and review state consistent; (8) archive facts
+not confused; (7) risk flags and automatic-publish state consistent; (8) archive facts
 carry archiveContext=true and the listed event ID; (9) no causal synthesis;
 (10) no description of unseen source or archive content. If a check fails,
-use manual_review when evidence suffices but risk remains, publish_brief for
-a verified low-risk current event with only brief evidence, or reject when
-current-event evidence is insufficient.
+use publish_brief for a verified current event with only brief evidence, or
+reject when current-event evidence is insufficient.
 """
 
 
@@ -796,6 +787,25 @@ def draft_article_format(draft: dict) -> str | None:
         and EN_BRIEF_MIN_WORDS <= en_words <= EN_BRIEF_MAX_WORDS
     )
     return "brief" if brief else None
+
+
+def auto_publish_reliable_draft(draft: dict) -> dict:
+    """Return a publishable copy under the retired-review policy.
+
+    ``manual_review`` remains accepted by ``validate_draft`` only so legacy
+    queue rows and an older model response can be migrated safely.  The
+    returned draft always uses a live publish status, never asks for a human,
+    and retains risk flags as audit metadata.
+    """
+    candidate = dict(draft)
+    article_format = draft_article_format(candidate)
+    if candidate.get("status") == "manual_review":
+        candidate["status"] = (
+            "publish" if article_format == "full" else "publish_brief")
+    if candidate.get("status") in ("publish", "publish_brief"):
+        candidate["requiresHumanReview"] = False
+        candidate["decisionReason"] = ""
+    return candidate
 
 
 def validate_draft(draft):
@@ -1149,6 +1159,15 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                     run_trace.add_attempt(
                         provider, started_perf, started_utc, before, "success")
                 return candidate, []
+            candidate = auto_publish_reliable_draft(candidate)
+            problem = validate_draft(candidate)
+            if problem is not None:
+                problem_stage = "validation"
+                # Continue through the shared retry/error reporting below.
+                facts = []
+            else:
+                facts = None
+        if problem is None:
             verify_started = time.perf_counter()
             facts = verify_facts(candidate, group, provider.label)
             if run_trace is not None:
@@ -1456,6 +1475,7 @@ def build_flash(draft: dict, article_id: str, now) -> dict:
     return {
         "timeUtc": iso_minute(now),
         "hot": bool(flash.get("hot")),
+        "pinned": True,
         "zh": str(flash.get("zh") or ""),
         "en": str(flash.get("en") or ""),
         "articleId": article_id,
@@ -1652,92 +1672,148 @@ def _prepend_capped(path, new_rows: list, cap: int) -> None:
     save_json(path, (new_rows + old)[:cap])
 
 
-def _load_review(now) -> tuple:
-    """Load data/review.json, dropping malformed and expired entries."""
+def _load_legacy_reviews() -> list:
+    """Load the retired review queue for one-time verified migration."""
     rows = load_json(REVIEW_PATH, [])
-    if not isinstance(rows, list):
-        rows = []
-    cutoff = now - timedelta(days=REVIEW_MAX_AGE_DAYS)
-    kept = []
-    for row in rows:
-        if not isinstance(row, dict) or not isinstance(row.get("draft"), dict):
-            continue
-        if not _is_fresh(row.get("queuedUtc"), cutoff):
-            print(f"write: review entry {row.get('id')} expired unreviewed; "
-                  "dropping")
-            continue
-        kept.append(row)
-    return kept, len(kept) != len(rows)
+    return rows if isinstance(rows, list) else []
 
 
-def _review_entry(candidate: dict, group: dict, writer: str, facts: list,
-                  now) -> dict:
-    # Whitelist the stored draft to schema-known keys: review.json is
-    # committed to the PUBLIC repo, and a prompt-JSON model could legally
-    # smuggle extra top-level keys (reasoning, analysis, ...) past
-    # validate_draft.
-    candidate = {key: candidate[key]
-                 for key in DRAFT_SCHEMA["properties"] if key in candidate}
-    flags = candidate.get("riskFlags")
-    return {
-        "id": group.get("id"),
-        "queuedUtc": iso_minute(now),
-        # A human sets this to true on GitHub; the next hourly run publishes
-        # the entry exactly as drafted and removes it from the queue.
-        "approve": False,
-        "writer": writer,
-        "decisionReason": str(candidate.get("decisionReason") or ""),
-        "riskFlags": [f for f in flags if f in RISK_FLAGS]
-        if isinstance(flags, list) else [],
-        "facts": facts,
-        "draft": candidate,
-        # review.json is committed to the public repo: keep the group for
-        # provenance but never republish scraped page text through it
-        "group": _strip_fulltext(group, keep_archive=True),
+def _archive_legacy_reviews(rows: list) -> None:
+    """Preserve retired queue rows and their migration outcome for audit."""
+    if not rows:
+        return
+    old = load_json(REVIEW_ARCHIVE_PATH, [])
+    if not isinstance(old, list):
+        old = []
+    save_json(REVIEW_ARCHIVE_PATH, (rows + old)[:REVIEW_ARCHIVE_MAX])
+
+
+def _verified_legacy_facts(entry: dict, draft: dict, group: dict) -> list:
+    """Authenticate facts verified before review rows had full text removed.
+
+    Old queue rows intentionally excluded scraped ``fulltext`` even though
+    their top-level ``facts`` had already passed ``verify_facts``.  A stored
+    fact is reusable only when every draft fact matches it exactly and its
+    source URL still belongs to the original group (or its selected archive
+    event).  Any mismatch rejects the whole stored set rather than trusting a
+    partially edited public JSON row.
+    """
+    stored = entry.get("facts")
+    draft_facts = draft.get("facts")
+    if not isinstance(stored, list) or not isinstance(draft_facts, list) \
+            or len(stored) != len(draft_facts) or not stored:
+        return []
+    by_id = {str(fact.get("factId") or ""): fact for fact in stored
+             if isinstance(fact, dict)}
+    if len(by_id) != len(stored):
+        return []
+    source_urls = {
+        norm_url(str(item.get("url") or ""))
+        for item in group.get("items", []) if isinstance(item, dict)
+        and str(item.get("url") or "").startswith(("http://", "https://"))
     }
+    verified = []
+    for expected in draft_facts:
+        if not isinstance(expected, dict):
+            return []
+        fact_id = str(expected.get("factId") or "")
+        fact = by_id.get(fact_id)
+        if fact is None or (
+                str(fact.get("claim") or "")
+                != str(expected.get("claim") or "")
+                or str(fact.get("sourceQuote") or "")
+                != str(expected.get("sourceQuote") or "")):
+            return []
+        quote = str(fact.get("sourceQuote") or "")
+        source_url = str(fact.get("sourceUrl") or "")
+        if len(_squash(quote)) < 8 or not source_url:
+            return []
+        scope = fact.get("evidenceScope")
+        if scope == "source":
+            if norm_url(source_url) not in source_urls \
+                    or fact.get("archiveContext") is not False \
+                    or fact.get("archiveEventId") not in (None, ""):
+                return []
+            verified.append({
+                "factId": fact_id,
+                "claim": str(fact.get("claim") or ""),
+                "sourceQuote": quote,
+                "sourceUrl": source_url,
+                "evidenceScope": "source",
+                "archiveEventId": None,
+                "archiveContext": False,
+            })
+            continue
+        if scope == "archive" and fact.get("archiveContext") is True:
+            event_id = str(fact.get("archiveEventId") or "")
+            matched = archive_context.find_archive_fact(
+                group.get("archiveContext"), event_id, quote)
+            if not matched or norm_url(str(matched.get("source_url") or "")) \
+                    != norm_url(source_url):
+                return []
+            verified.append({
+                "factId": fact_id,
+                "claim": str(fact.get("claim") or ""),
+                "sourceQuote": quote,
+                "sourceUrl": source_url,
+                "evidenceScope": "archive",
+                "archiveEventId": event_id,
+                "archiveContext": True,
+            })
+            continue
+        return []
+    return verified
 
 
-# Machine gate for rare-aircraft auto-publish (owner's 2026-07-27 policy:
-# routine observation items publish without a human). Anything that smells
-# of a safety event, a source conflict or an incident still goes to the
-# human queue - the public methodology page promises that.
-_FLIGHT_BLOCKING_FLAGS = {
-    "accident_or_serious_incident", "casualties_or_injuries",
-    "investigation", "conflicting_information",
-}
+def _legacy_review_candidate(entry: dict, now):
+    """Re-verify one legacy row; return (draft, group, facts, problem)."""
+    if not isinstance(entry, dict) or not isinstance(entry.get("draft"), dict):
+        return None, {}, [], "malformed legacy review row"
+    cutoff = now - timedelta(days=LEGACY_REVIEW_MAX_AGE_DAYS)
+    if not _is_fresh(entry.get("queuedUtc"), cutoff):
+        return None, entry.get("group") or {}, [], "legacy row expired"
+    group = entry.get("group") or {}
+    if not isinstance(group, dict) or not is_transport_story(group):
+        return None, group if isinstance(group, dict) else {}, [], (
+            "legacy row is outside aviation/transport scope")
+    if archive_context.source_has_prompt_injection(group):
+        return None, group, [], "legacy row contains prompt injection"
+    raw = entry.get("draft")
+    problem = validate_draft(raw)
+    if problem is not None:
+        return None, group, [], problem
+    draft = auto_publish_reliable_draft(raw)
+    problem = validate_draft(draft)
+    if problem is not None:
+        return None, group, [], problem
+    facts = _verified_legacy_facts(entry, draft, group)
+    if not facts:
+        facts = verify_facts(draft, group, "legacy-review")
+    if not facts:
+        return None, group, [], "no machine-verifiable sourceQuote"
+    problem = _evidence_binding_problem(draft, facts)
+    if problem is None:
+        problem = glossary_problem(draft, group)
+    if problem is None:
+        problem = fabrication_problem(draft, group)
+    return draft if problem is None else None, group, facts, problem
 
 
-def _flight_auto_publish_enabled() -> bool:
-    # default ON per the owner; repo var FLIGHT_AUTO_PUBLISH=false restores
-    # the review-everything behaviour
-    return (os.environ.get("FLIGHT_AUTO_PUBLISH", "true").strip().lower()
-            not in ("0", "false", "no"))
-
-
-def _flight_review_reason(event, candidate):
-    """None when the observation may auto-publish, else the zh reason."""
-    if not _flight_auto_publish_enabled():
-        return "自動發布已停用（FLIGHT_AUTO_PUBLISH=false），須人工確認後發布"
+def _flight_source_problem(event):
+    """Return a blocking source problem for a flight observation, if any."""
     if event.get("crossCheck") == "conflicting_sources":
-        return "兩個 ADS-B 來源觀測結果不一致，須人工確認後發布"
-    if candidate.get("cat") == "safety" or candidate.get("incident"):
-        return "涉及飛安事件，依編輯規範一律人工覆核"
-    flags = candidate.get("riskFlags")
-    flags = set(flags) if isinstance(flags, list) else set()
-    if flags & _FLIGHT_BLOCKING_FLAGS:
-        return "模型標記高風險旗標，須人工確認後發布"
+        return "兩個 ADS-B 來源觀測結果不一致"
     return None
 
 
 def _process_flight_events(queue, providers, dead_platforms, dead_auth,
-                           ai_calls, queued_entries, now,
+                           ai_calls, now,
                            new_articles, new_flashes, used_ids):
     """Draft queued flight-observation events with the dedicated prompt.
 
-    Outcomes per event: auto-published (routine observation that clears
-    the machine gate above), queued into the human-review file (gate
-    failed), rejected by the model (dropped for good), or left in the
-    queue when providers fail (retried next hour).
+    Outcomes per event: auto-published after deterministic verification,
+    rejected when source/model evidence fails, or left in the queue when
+    providers fail (retried next hour).
     """
     remaining = []
     prompt = flightnews.flight_prompt()
@@ -1757,6 +1833,12 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
         group = flightnews.pseudo_group(event)
         run_trace = _RunTrace(
             "flightwatch", "flight_event", group, event.get("eventId"))
+        source_problem = _flight_source_problem(event)
+        if source_problem is not None:
+            print(f"write: flight event {event.get('eventId')} rejected "
+                  f"before drafting ({source_problem})")
+            run_trace.finish("rejected", "source_conflict")
+            continue
         prompt_started = time.perf_counter()
         user_prompt = (flightnews.assemble_source(event)
                        + "\n\nWrite the bilingual observation item now, "
@@ -1840,6 +1922,15 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                 print(f"write: {provider.label} flight draft invalid "
                       f"({problem}); trying next provider")
                 continue
+            candidate = auto_publish_reliable_draft(candidate)
+            problem = validate_draft(candidate)
+            if problem:
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before, "failed",
+                    "invalid_schema", "validation", problem)
+                print(f"write: {provider.label} normalized flight draft "
+                      f"invalid ({problem}); trying next provider")
+                continue
             fact_started = time.perf_counter()
             facts = verify_facts(candidate, group, provider.label)
             run_trace.add_duration("factVerification", fact_started)
@@ -1850,6 +1941,15 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                     "no machine-verifiable sourceQuote")
                 print(f"write: {provider.label} flight draft has no "
                       "machine-verifiable sourceQuote; trying next provider")
+                continue
+            binding_problem = _evidence_binding_problem(candidate, facts)
+            if binding_problem:
+                run_trace.add_attempt(
+                    provider, attempt_started, attempt_utc, before, "failed",
+                    "evidence_binding_failed", "evidenceBinding",
+                    binding_problem)
+                print(f"write: {provider.label} flight draft failed evidence "
+                      f"binding ({binding_problem}); trying next provider")
                 continue
             glossary_started = time.perf_counter()
             g_problem = glossary_problem(candidate, group)
@@ -1870,63 +1970,28 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                       f"name/fabrication rules ({g_problem}); trying next "
                       "provider")
                 continue
-            review_reason = _flight_review_reason(event, candidate)
-            if review_reason is None:
-                # Machine gate cleared: routine, non-safety observation with
-                # consistent sources - publish without a human.
-                candidate["status"] = "publish"
-                candidate["requiresHumanReview"] = False
-                candidate["riskFlags"] = []
-                candidate["decisionReason"] = ""
-                run_trace.add_attempt(
-                    provider, attempt_started, attempt_utc, before, "success")
-                article_started = time.perf_counter()
-                article = build_article(candidate, group, now, used_ids,
-                                        provider.label, facts)
-                run_trace.add_duration("articleBuild", article_started)
-                if article is None:
-                    print(f"write: flight event {event.get('eventId')} has "
-                          "no usable sources; dropping")
-                    outcome = "rejected"
-                    run_trace.finish(
-                        "retry_pending", "article_build_failed",
-                        provider.label)
-                    break
-                new_articles.append(article)
-                new_flashes.append(build_flash(candidate, article["id"], now))
-                print(f"write: flight event {event.get('eventId')} "
-                      f"auto-published as {article['id']} "
-                      f"(crossCheck={event.get('crossCheck')})")
-                outcome = "published"
-                run_trace.finish(
-                    "published", "publish", provider.label, article["id"])
-                break
-            candidate["status"] = "manual_review"
-            candidate["requiresHumanReview"] = True
-            flags = candidate.get("riskFlags")
-            flags = [f for f in flags if f in RISK_FLAGS] \
-                if isinstance(flags, list) else []
-            if "unconfirmed_or_developing" not in flags:
-                flags.append("unconfirmed_or_developing")
-            candidate["riskFlags"] = flags
-            candidate["decisionReason"] = review_reason
-            entry = _review_entry(candidate, group, provider.label, facts,
-                                  now)
-            entry["flight"] = {
-                "eventId": event.get("eventId"),
-                "airport": (event.get("airport") or {}).get("icao"),
-                "crossCheck": event.get("crossCheck"),
-                "rarityScore": (event.get("rarity") or {}).get("score"),
-                "bootstrap": bool(event.get("bootstrap")),
-            }
-            queued_entries.append(entry)
             run_trace.add_attempt(
                 provider, attempt_started, attempt_utc, before, "success")
-            print(f"write: flight event {event.get('eventId')} queued for "
-                  f"human review ({review_reason})")
-            outcome = "queued"
+            article_started = time.perf_counter()
+            article = build_article(candidate, group, now, used_ids,
+                                    provider.label, facts)
+            run_trace.add_duration("articleBuild", article_started)
+            if article is None:
+                print(f"write: flight event {event.get('eventId')} has "
+                      "no usable sources; dropping")
+                outcome = "rejected"
+                run_trace.finish(
+                    "retry_pending", "article_build_failed",
+                    provider.label)
+                break
+            new_articles.append(article)
+            new_flashes.append(build_flash(candidate, article["id"], now))
+            print(f"write: flight event {event.get('eventId')} "
+                  f"auto-published as {article['id']} "
+                  f"(crossCheck={event.get('crossCheck')})")
+            outcome = "published"
             run_trace.finish(
-                "manual_review", "manual_review", provider.label)
+                "published", "publish", provider.label, article["id"])
             break
         if outcome is None:
             remaining.append(event)  # provider trouble: retry next hour
@@ -1950,7 +2015,6 @@ def main() -> None:
     new_articles, updated_articles = [], []
     new_flashes, new_incidents = [], []
     published_groups, published_ids = [], set()
-    queued_entries, queued_groups, queued_ids = [], [], set()
     rejected_groups, rejected_ids = [], set()
     dead_auth: set = set()
     dead_platforms: set = set()
@@ -1983,28 +2047,45 @@ def main() -> None:
             rejected_ids.add(group_id)
     groups = scoped_groups
 
-    # --- 1. publish entries a human approved in data/review.json ---------
-    # (needs no API key, so it runs even in aggregation mode)
-    review_rows, review_changed = _load_review(now)
-    approvals = [r for r in review_rows if r.get("approve") is True]
-    if approvals:
-        review_rows = [r for r in review_rows if r.get("approve") is not True]
-        review_changed = True
-    for entry in approvals:
-        article = build_article(entry["draft"], entry.get("group") or {},
-                                now, used_ids, entry.get("writer"),
-                                entry.get("facts"))
-        if article is None:
-            print(f"write: approved review entry {entry.get('id')} has no "
-                  "usable sources; dropping")
+    # --- 1. retire and migrate the former manual-review queue ------------
+    # Each row is re-checked with the same deterministic source, binding,
+    # glossary and fabrication gates.  Passing rows publish; every outcome is
+    # preserved in review-archive.json and the active queue is cleared.
+    legacy_reviews = _load_legacy_reviews()
+    legacy_archive = []
+    legacy_published = 0
+    for entry in legacy_reviews:
+        draft, group, facts, problem = _legacy_review_candidate(entry, now)
+        archived = dict(entry) if isinstance(entry, dict) else {"row": entry}
+        archived["retiredUtc"] = iso_minute(now)
+        if draft is None:
+            archived["retirementResult"] = "archived_not_published"
+            archived["retirementReason"] = str(problem or "verification failed")
+            print(f"write: legacy review entry {archived.get('id')} archived "
+                  f"without publication ({archived['retirementReason']})")
+            legacy_archive.append(archived)
             continue
-        print(f"write: publishing human-approved entry {entry.get('id')}")
+        article = build_article(draft, group, now, used_ids,
+                                entry.get("writer"), facts)
+        if article is None:
+            archived["retirementResult"] = "archived_not_published"
+            archived["retirementReason"] = "article build failed"
+            legacy_archive.append(archived)
+            continue
         new_articles.append(article)
-        new_flashes.append(build_flash(entry["draft"], article["id"], now))
-        incident = build_incident(entry["draft"], entry.get("group") or {},
-                                  article["id"])
+        new_flashes.append(build_flash(draft, article["id"], now))
+        incident = build_incident(draft, group, article["id"])
         if incident is not None:
             new_incidents.append(incident)
+        archived["retirementResult"] = "published_after_reverification"
+        archived["articleId"] = article["id"]
+        legacy_archive.append(archived)
+        legacy_published += 1
+        print(f"write: legacy review entry {entry.get('id')} re-verified "
+              f"and published as {article['id']}")
+    if legacy_reviews:
+        _archive_legacy_reviews(legacy_archive)
+        save_json(REVIEW_PATH, [])
 
     # --- 2. draft the pending groups through the provider chain ----------
     providers = build_providers()
@@ -2106,7 +2187,7 @@ def main() -> None:
             if drafted >= MAX_GROUPS_PER_RUN:
                 break  # LLM budget for this run is spent; the rest waits
             drafted += 1
-            draft, writer, verified, queued_this = None, None, None, False
+            draft, writer, verified = None, None, None
             final_model = None
             stopped_by_refusal = False
             for provider in list(alive):
@@ -2172,47 +2253,9 @@ def main() -> None:
                     run_trace.finish(
                         "rejected", "reject", provider.label)
                     break
-                status = candidate.get("status")
-                flags = candidate.get("riskFlags") or []
-                if status in ("publish", "publish_brief") and (
-                        flags or candidate.get("requiresHumanReview") is True):
-                    # Consistency rule: risk implies review. Downgrade -
-                    # never upgrade - when the model contradicts itself.
-                    print(f"write: {provider.label} marked group "
-                          f"{group.get('id')} {status} despite risk flags; "
-                          "downgrading to manual_review")
-                    status = "manual_review"
-                if status in ("publish", "publish_brief") and (
-                        candidate.get("cat") == "safety"
-                        or candidate.get("incident") is not None):
-                    print(f"write: {provider.label} marked safety group "
-                          f"{group.get('id')} for auto-publish; downgrading "
-                          "to manual_review")
-                    status = "manual_review"
-                if status == "manual_review":
-                    candidate["status"] = "manual_review"
-                    candidate["requiresHumanReview"] = True
-                    flags = [f for f in flags if f in RISK_FLAGS]
-                    if not flags:
-                        flags.append("unconfirmed_or_developing")
-                    candidate["riskFlags"] = flags
-                    if not str(candidate.get("decisionReason") or "").strip():
-                        candidate["decisionReason"] = (
-                            "高風險或飛安事件，依編輯規範須人工覆核")
-                    queued_entries.append(_review_entry(
-                        candidate, group, provider.label, facts, now))
-                    queued_groups.append(group)
-                    queued_ids.add(group.get("id"))
-                    queued_this = True
-                    print(f"write: group {group.get('id')} queued for human "
-                          "review: "
-                          f"{str(candidate.get('decisionReason') or '?')[:150]}")
-                    run_trace.finish(
-                        "manual_review", "manual_review", provider.label)
-                    break
                 draft, writer, verified = candidate, provider, facts
                 break
-            if queued_this or group.get("id") in rejected_ids:
+            if group.get("id") in rejected_ids:
                 continue
             if draft is None:
                 skipped += 1  # provider failures/refusals retry next hour
@@ -2258,13 +2301,12 @@ def main() -> None:
     # --- 2b. rare-aircraft flight-observation candidates -------------------
     # (queued by pipeline/flightwatch.py; zero AI calls when the queue is
     # empty. Routine observations that clear the machine gate publish
-    # automatically; safety-flavoured or conflicting events still go to
-    # human review.)
+    # automatically after deterministic source verification.)
     flight_queue = flightnews.load_queue()
     if flight_queue and providers:
         remaining_flight = _process_flight_events(
             flight_queue, providers, dead_platforms, dead_auth, ai_calls,
-            queued_entries, now, new_articles, new_flashes, used_ids)
+            now, new_articles, new_flashes, used_ids)
         if remaining_flight != flight_queue:
             flightnews.save_queue(remaining_flight)
     elif flight_queue:
@@ -2282,16 +2324,11 @@ def main() -> None:
     if new_articles or updated_articles:
         _prepend_capped(FLASHES_PATH, new_flashes, MAX_FLASHES)
         _prepend_capped(INCIDENTS_PATH, new_incidents, MAX_INCIDENTS)
-    if published_groups or queued_groups or rejected_groups:
-        # Queued and rejected groups count as consumed too: neither may
+    if published_groups or rejected_groups:
+        # Editorially rejected groups count as consumed too so they do not
         # re-emit from dedupe and burn another API call next hour.
-        update_seen(published_groups + queued_groups + rejected_groups, now)
-    if queued_entries:
-        review_rows = queued_entries + review_rows
-        review_changed = True
-    if review_changed:
-        save_json(REVIEW_PATH, review_rows[:REVIEW_MAX])
-    consumed = published_ids | queued_ids | rejected_ids
+        update_seen(published_groups + rejected_groups, now)
+    consumed = published_ids | rejected_ids
     if consumed:
         # fulltext lives in data/fulltext.json (cache), never in the
         # committed pending file - next run re-attaches it for free
@@ -2303,8 +2340,7 @@ def main() -> None:
     remaining_count = sum(1 for g in groups if g.get("id") not in consumed)
     print(f"write: published {len(new_articles)} new article(s), revised "
           f"{len(updated_articles)} existing article(s) "
-          f"({len(approvals)} human-approved), queued "
-          f"{len(queued_entries)} for review, rejected "
+          f"({legacy_published} migrated from retired review), rejected "
           f"{len(rejected_groups)}, skipped {skipped}, "
           f"pending {remaining_count}")
     try:

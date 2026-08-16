@@ -5,11 +5,10 @@
 （同日 PDF「Aviation News Verification Engine」/「航空新聞核驗與摘要規範」，
 現行整合基準）。v2 相對 v1 的主要變化，均已進入 `pipeline/write.py`：
 
-- 四態 `publish / publish_brief / manual_review / reject`；**航空安全事件一律
-  manual_review、不得自動發布** → 落地為 `data/review.json` 人工覆核佇列
-  （GitHub 上把 `"approve"` 改 true 即發布，14 天過期，上限 40 筆）。
-- `publish` 要求 riskFlags 為空；風險旗標非空只能 manual_review/reject。
-  模型自相矛盾時程式一律「向下修正」為 manual_review，絕不反向。
+- 三態 `publish / publish_brief / reject`；航空安全與高風險事件仍保留
+  riskFlags，但只要本次來源與逐字引文通過程式核驗便自動發布。舊
+  `manual_review` 僅作 `data/review.json` 一次性遷移相容，結果封存至
+  `data/review-archive.json`。
 - 廢除 `"none"` 旗標，改用空陣列。
 - facts 為 1–6 項且必須原子化；除 `factId`、`sourceQuote` 外，新增
   `sourceUrl`、`evidenceScope`、`archiveEventId`、`archiveContext`。
@@ -45,9 +44,9 @@ v1 整合時的三項架構性調整仍然適用：
    管線維持單次呼叫同時產出 zh+en（免費額度減半、且避免單語 reject
    造成兩語不同步）。繁中摘要規格為 80–140 字。
 
-3. **requires_human_review 有實際佇列**。高風險稿件存入
-   `data/review.json`，只有人工將 `approve` 改為 true 才發布；archive
-   context 不得降低審核等級。
+3. **requires_human_review 已退役**。新稿固定為 false；高風險題材以
+   riskFlags 留痕，但來源、逐字引文、事實綁定與防虛構閘門任何一項失敗
+   仍會 reject，不會因取消人工介面而降低證據標準。
 
 其餘規則——SOURCE 視為不可信資料（prompt injection 防護）、僅用所給素材、
 禁止推論補全清單、保留不確定性、日期紀律、航空安全特別規則、

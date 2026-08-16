@@ -160,46 +160,22 @@ absent when nothing new that hour)
 }
 ```
 
-## data/review.json  (written AND consumed by write.py; hand-edited by a human)
+## data/review.json and data/review-archive.json
 
-Human-review queue. Drafts whose editorial status is "manual_review" (all
-aviation safety events, plus other high-risk topics) are parked here instead
-of publishing. A human sets `"approve": true` on GitHub; the next write.py
-run publishes that entry exactly as drafted and removes it. Entries expire
-unreviewed after 14 days; the queue keeps at most 40 rows, newest first.
+The former human-review mechanism is retired. `data/review.json` is read only
+as a one-time migration source: rows no older than 14 days are re-checked by
+the current deterministic source, quote, binding, glossary and fabrication
+gates. Passing rows publish; failing or expired rows do not. Every row and its
+`retirementResult`, reason and optional article ID is preserved in
+`data/review-archive.json`, then `data/review.json` is cleared.
 
-```jsonc
-[
-  {
-    "id": "g-20260726-0503-1",        // pending-group id
-    "queuedUtc": "2026-07-27T09:03Z",
-    "approve": false,                  // flip to true to publish next run
-    "writer": "gemini:gemini-2.5-flash",
-    "decisionReason": "航空安全事件，調查進行中",
-    "riskFlags": ["accident_or_serious_incident"],
-    "facts": [ {"factId": "F1", "claim": "...", "sourceQuote": "...",
-                "sourceUrl": "https://...", "evidenceScope": "source",
-                "archiveEventId": null, "archiveContext": false} ],
-    "draft": { /* full DRAFT_SCHEMA object */ },
-    "group": { /* pending group snapshot (sources for the article) */ }
-  }
-]
-```
-
-Queued groups are recorded in seen.json immediately (they must not re-emit
-from dedupe while awaiting review).
-
-`DRAFT_SCHEMA.status` accepts `publish`, `publish_brief`, `manual_review` and
-`reject`. Published article files do not persist the editorial status; they
+`DRAFT_SCHEMA.status` accepts `publish`, `publish_brief` and `reject`.
+`manual_review` remains parser-compatible only for the one-time legacy
+migration. Published article files do not persist the editorial status; they
 persist `articleFormat` (`full` or `brief`) so old readers remain compatible.
 Old article facts without the new evidence metadata remain readable. For
 archive retrieval, an old fact is eligible only when it already has
 `sourceUrl` or its article has exactly one unambiguous source.
-
-Review entries created from rare-aircraft events additionally carry a
-`"flight"` object (eventId / airport / crossCheck / rarityScore /
-bootstrap); their `"group"` is a pseudo-group whose items are the ADS-B
-attribution links, so approval publishes with proper source credits.
 
 ## data/flightwatch/  (written by flightwatch.py; queue.json consumed by write.py)
 
@@ -216,15 +192,16 @@ Rare-aircraft monitor state, committed only when changed:
 - `queue.json`    confirmed rare-arrival candidates awaiting the hourly
                   news stage; entries hold identities/times/counts ONLY
                   (never live coordinates). write.py drafts them with
-                  prompts/rare-aircraft-news-zh.txt and ALWAYS forces
-                  status=manual_review into data/review.json.
+                  prompts/rare-aircraft-news-zh.txt and publishes only after
+                  deterministic source and evidence checks pass.
 
 ## data/flashes.json  (written by write.py, read by build.py)
 
 Most recent first, max 10 kept:
 
 ```jsonc
-[ {"timeUtc": "2026-07-26T05:47Z", "hot": true, "zh": "...", "en": "...",
+[ {"timeUtc": "2026-07-26T05:47Z", "hot": true, "pinned": true,
+   "zh": "...", "en": "...",
    "articleId": "a-20260726-0547-denver737"} ]
 ```
 

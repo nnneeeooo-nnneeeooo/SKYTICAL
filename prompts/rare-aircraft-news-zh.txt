@@ -62,12 +62,12 @@ OUTPUT (same schema and language rules as the main pipeline):
   or invented background, return status="reject".
 - cat MUST be "ops". incident MUST be null (an arrival is not an ICAO
   Annex 13 occurrence). flash: one line per language, hot=false.
-- status: "manual_review" with requiresHumanReview=true (publication policy
-  is decided by pipeline code, never by you; it may release routine
-  observation items automatically). Never mention any review process,
-  pending confirmation or publication workflow inside titles, summaries or
-  body text - write the observation itself only. riskFlags MUST include
-  "unconfirmed_or_developing".
+- status: "publish" when the evidence supports the full-length contract, or
+  "publish_brief" when it supports only the brief contract. Set
+  requiresHumanReview=false and decisionReason="". Never mention any
+  publication workflow inside titles, summaries or body text - write the
+  observation itself only. riskFlags MUST include
+  "unconfirmed_or_developing" as audit metadata.
 - facts: 1-6 atomic claims, each quoting one <SOURCE> line verbatim.
 - entities: only values literally present in <SOURCE>.
 - eventStatus: "confirmed" refers ONLY to the observed arrival itself.
