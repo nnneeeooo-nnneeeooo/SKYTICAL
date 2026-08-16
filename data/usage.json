@@ -1,17 +1,17 @@
 {
-  "updatedUtc": "2026-08-16T21:12Z",
+  "updatedUtc": "2026-08-16T22:14Z",
   "trackingSinceUtc": "2026-08-15T12:46Z",
   "models": {
     "opencode:claude-sonnet-4-6": {
-      "calls": 32,
+      "calls": 33,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 32
+      "unknownCalls": 33
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 60,
-      "inputTokens": 185268,
-      "outputTokens": 297128,
+      "calls": 62,
+      "inputTokens": 194248,
+      "outputTokens": 304060,
       "unknownCalls": 19
     },
     "nvidia:z-ai/glm-5.2": {
@@ -142,12 +142,182 @@
       "outputTokens": 126148
     },
     "2026-08-16": {
-      "calls": 151,
-      "inputTokens": 393032,
-      "outputTokens": 426831
+      "calls": 154,
+      "inputTokens": 402012,
+      "outputTokens": 433763
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-16T22:12Z",
+      "finishedUtc": "2026-08-16T22:13Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260816-2212-1",
+      "eventId": null,
+      "sourceCount": 2,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 1204,
+        "promptAssembly": 0,
+        "drafting": 82526,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 86114
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "opencode",
+          "model": "claude-sonnet-4-6",
+          "label": "opencode:claude-sonnet-4-6",
+          "startedUtc": "2026-08-16T22:12Z",
+          "durationMs": 270,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 270,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "auth",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 401",
+          "retryPlanned": false,
+          "disabledForRun": true
+        },
+        {
+          "sequence": 2,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-16T22:12Z",
+          "durationMs": 82257,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 82255,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-16T22:12Z",
+      "finishedUtc": "2026-08-16T22:14Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260816-2212-2",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 1175,
+        "promptAssembly": 0,
+        "drafting": 58895,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 144677
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-16T22:13Z",
+          "durationMs": 58895,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 58894,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-16T22:12Z",
+      "finishedUtc": "2026-08-16T22:14Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260816-2212-4",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 1167,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 144395
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-16T21:11Z",
       "finishedUtc": "2026-08-16T21:12Z",
@@ -147109,120 +147279,6 @@
         "fabricationCheck": null,
         "articleBuild": null,
         "total": 225564
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-10T10:26Z",
-      "finishedUtc": "2026-08-10T10:30Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260810-1026-7",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "臺灣交通要聞",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 825,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 225422
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-10T10:26Z",
-      "finishedUtc": "2026-08-10T10:30Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260810-1026-9",
-      "eventId": null,
-      "sourceCount": 6,
-      "primarySource": "NTSB",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 827,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 225322
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-10T10:26Z",
-      "finishedUtc": "2026-08-10T10:30Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260810-1026-11",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "臺灣交通要聞",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 825,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 225184
       },
       "attempts": [],
       "resourceUsage": {
