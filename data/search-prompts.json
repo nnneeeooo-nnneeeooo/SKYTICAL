@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-08-15T16:16Z",
-  "targetDateTpe": "2026-08-16",
+  "generatedUtc": "2026-08-16T16:14Z",
+  "targetDateTpe": "2026-08-17",
   "sourceWindow": "month_to_date",
-  "generationMode": "llm",
-  "provider": "nvidia:z-ai/glm-5.2",
+  "generationMode": "deterministic",
+  "provider": null,
   "sourceArticleIds": [
-    "a-20260815-1413-starlux-airlines-takes-delivery-of-secon",
-    "a-20260815-1413-london-heathrow-flooding-cuts-road-acces",
-    "a-20260815-1223-ryanair-and-southwest-boeing-737-800-fli",
-    "a-20260815-0331-qatar-airways-qsuite-voted-world-best-bu",
-    "a-20260814-2213-delta-air-lines-to-feature-24-first-clas",
-    "a-20260814-2117-united-airlines-removes-35-seats-from-bo"
+    "a-20260816-1512-a-10-warthog-flies-final-sortie-from-50",
+    "a-20260816-1220-delta-to-feature-56-delta-one-suites-on",
+    "a-20260816-1015-emirates-oldest-airbus-a380-continues-op",
+    "a-20260816-0918-retired-german-luftwaffe-transall-c-160d",
+    "a-20260816-0723-bengaluru-hal-airport-operationalises-rn",
+    "a-20260816-0340-twenty-three-people-trapped-in-taoyuan-a"
   ],
   "prompts": {
     "zh": [
-      "星宇航空空山金藝術機",
-      "倫敦希斯洛機場淹水",
-      "瑞安航空與西南航空737",
-      "卡達航空Qsuite商務艙",
-      "達美航空737 MAX 10頭等艙",
-      "聯合航空787-9休士頓航線"
+      "搜尋：A-10攻擊機自50年飛行員培訓基地執行最後…",
+      "搜尋：達美航空新款A330-900neo將配置56…",
+      "搜尋：阿聯酋航空最老空中巴士A380客機持續執飛英…",
+      "搜尋：德軍退役C-160D運輸機將改裝為裝甲滅火機",
+      "搜尋：班加羅爾HAL機場啟用直升機RNP CAT…",
+      "搜尋：桃園機場第二航廈電梯故障23人受困均已安全脫困"
     ],
     "en": [
-      "STARLUX Airlines Sorayama Gold art aircraft",
-      "London Heathrow flooding terminals",
-      "Ryanair and Southwest Boeing 737-800",
-      "Qatar Airways Qsuite business class",
-      "Delta Air Lines Boeing 737 MAX 10 First Class",
-      "United Airlines Boeing 787-9 Houston routes"
+      "Explore: A-10 Warthog Flies Final Sortie From 50-Year Pil…",
+      "Explore: Delta To Feature 56 Delta One Suites On New Airb…",
+      "Explore: Emirates' Oldest Airbus A380 Continues Operation…",
+      "Explore: Retired German Luftwaffe Transall C-160D Airlift…",
+      "Explore: Bengaluru HAL Airport Operationalises RNP CAT H…",
+      "Explore: Twenty-Three People Trapped in Taoyuan Airport E…"
     ]
   }
 }
