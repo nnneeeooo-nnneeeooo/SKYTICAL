@@ -1,0 +1,128 @@
+{
+  "articles": [
+    {
+      "id": "a-20260817-0832-royal-canadian-air-force-receives-first",
+      "publishedUtc": "2026-08-17T08:32Z",
+      "cat": "mil",
+      "primarySource": "Airbus",
+      "image": "https://mediarenditions.airbus.com/g8xs-Ym7iHHutnkZPAXMVWgvbpYnFsCb6h5kp9bXWMc/resize?src=kpkp%3A%2F%2Fairbus%2F38%2F922%2F922758-pj8yr78b35.jpg&w=480&h=270&poiX=50&poiY=50&el=true&t=fill-down",
+      "zh": {
+        "title": "加拿大皇家空軍接收首架空中巴士H135",
+        "summary": "加拿大皇家空軍接收首架空中巴士H135，命名為CT-153 Juno準備展開訓練。",
+        "body": [
+          "加拿大皇家空軍已接收其空中巴士H135直升機機隊的首架飛機。該款直升機在加拿大軍方內部被命名為CT-153 Juno，標誌著加拿大國家航空訓練計畫邁入全新的重要里程碑。",
+          "在順利完成首架CT-153 Juno直升機的交付作業後，加拿大皇家空軍正積極開展各項相關的訓練準備工作，為後續軍用航空人員培訓做好周全整備。",
+          "根據過往公開的營運紀錄，空中巴士在2026年第二季期間共計交付237架飛機，並持續維持全年交付870架飛機的目標。"
+        ]
+      },
+      "en": {
+        "title": "Royal Canadian Air Force Receives First Airbus H135 Helicopter",
+        "summary": "The Royal Canadian Air Force received its first Airbus H135 helicopter, designated CT-153 Juno, for training operations.",
+        "body": [
+          "The Royal Canadian Air Force has taken delivery of the first helicopter in its new Airbus H135 fleet. Officially designated as the CT-153 Juno, the aircraft represents a significant operational milestone for Canada's military pilot training capabilities.",
+          "Following the arrival of the first CT-153 Juno helicopter, the Royal Canadian Air Force is actively preparing for upcoming crew training and technical readiness operations to support the new aircraft fleet.",
+          "According to verified historical records, Airbus delivered 237 aircraft during the second quarter of 2026 and continues working to meet its full-year target of 870 total aircraft deliveries."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Airbus — Canada’s CT-153 Juno gets ready for training",
+          "url": "https://www.airbus.com/en/newsroom/stories/2026-08-canadas-ct-153-juno-gets-ready-for-training"
+        },
+        {
+          "name": "Archive: Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar... — a-20260729-1934-airbus-delivers-237-aircraft-in-q2-maint",
+          "url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-08-17T08:30Z",
+      "writer": "gemini:gemini-3.6-flash",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "加拿大皇家空軍已接收其首架空中巴士H135機隊直升機。",
+          "sourceQuote": "The Royal Canadian Air Force has received the first delivery of its Airbus H135 fleet",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/stories/2026-08-canadas-ct-153-juno-gets-ready-for-training",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "該直升機被命名為CT-153 Juno，準備用於訓練作業。",
+          "sourceQuote": "Canada’s CT-153 Juno gets ready for training",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/stories/2026-08-canadas-ct-153-juno-gets-ready-for-training",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "空中巴士在2026年第二季累計交付237架飛機，並維持全年交付870架飛機的目標。",
+          "sourceQuote": "Airbus Achieves 237 Deliveries In 2nd Quarter",
+          "sourceUrl": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260729-1934-airbus-delivers-237-aircraft-in-q2-maint",
+          "archiveContext": true
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "context_id": "26b7ec3aab211319",
+        "selected_events": [
+          {
+            "event_id": "a-20260729-1934-airbus-delivers-237-aircraft-in-q2-maint",
+            "relationship_type": "delivery_followup",
+            "relationship_evidence": [
+              "same named core entity: airbus",
+              "archive predates source by 19 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 89,
+            "confidence_reason": "tier 2; 2 deterministic evidence item(s); 19 day(s) apart",
+            "event_date": "2026-07-29",
+            "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar...",
+            "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+            "facts": [
+              {
+                "claim": "空中巴士在第二季交付237架飛機。",
+                "source_quote": "Airbus Achieves 237 Deliveries In 2nd Quarter",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              },
+              {
+                "claim": "空中巴士維持全年交付870架飛機的目標。",
+                "source_quote": "Keeps 870 Target For Full Year",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              },
+              {
+                "claim": "Simple Flying報導指出維持永續的產能提升對空中巴士達成全年870架交付目標至關重要。",
+                "source_quote": "Airbus' ability to maintain a sustainable production ramp-up will be crucial in achieving its 870-aircraft delivery target for the full year.",
+                "source_url": "https://simpleflying.com/airbus-achieve-237-deliveries-2nd-quarter-keep-87-target-full-year/",
+                "source_name": "Simple Flying — Nearly 40% More: Airbus Achieves 237 Deliveries In 2nd Quar..."
+              }
+            ]
+          }
+        ]
+      },
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "Royal Canadian Air Force"
+        ],
+        "aircraft_models": [
+          "Airbus H135",
+          "CT-153 Juno"
+        ],
+        "locations": [
+          "Canada"
+        ],
+        "event_dates": [
+          "2026-08-17"
+        ]
+      }
+    }
+  ]
+}
