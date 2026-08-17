@@ -1,9 +1,9 @@
-# AVWIRE AI 快速作業規則
+# SKYTICAL AI 快速作業規則
 
 ## 預設工作方式
 
 - 使用繁體中文（臺灣用語）。
-- repository 固定為 `nnneeeooo-nnneeeooo/avwire`，正式分支為 `main`，網站由 GitHub Pages 發布。
+- repository 固定為 `nnneeeooo-nnneeeooo/SKYTICAL`，正式分支為 `main`，網站由 GitHub Pages 發布。
 - 收到明確修改要求時，直接定位目標檔案並實作；不要先做全庫盤點、完整架構分析或逐一檢查所有 workflow。
 - 只讀本檔、使用者指定的檔案、目標程式及直接相關測試。除非修改跨越多個子系統，否則不要載入整份 README、所有文件或所有資料檔。
 - 先確認使用者指定的現況；確認後只修改要求範圍，不順手重構、不改無關內容。
