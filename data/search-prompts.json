@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-08-18T16:21Z",
-  "targetDateTpe": "2026-08-19",
+  "generatedUtc": "2026-08-19T16:53Z",
+  "targetDateTpe": "2026-08-20",
   "sourceWindow": "month_to_date",
-  "generationMode": "llm",
-  "provider": "gemini:gemini-3.6-flash",
+  "generationMode": "deterministic",
+  "provider": null,
   "sourceArticleIds": [
-    "a-20260818-1335-lufthansa-reduces-airbus-a380-flights-on",
-    "a-20260818-1335-retired-qantaslink-fokker-f100-lands-at",
-    "a-20260818-1335-air-astana-extends-suspension-of-dubai-f",
-    "a-20260818-1116-french-rafale-intercepts-bombardier-glob",
-    "a-20260818-1019-textron-aviation-delivers-500th-cessna-c",
-    "a-20260818-0730-luggage-cart-catches-fire-at-milan-malpe"
+    "a-20260819-1620-frontier-airlines-cuts-21-routes-from-at",
+    "a-20260819-1620-electra-tests-ultra-stol-aircraft-as-fee",
+    "a-20260819-1620-us-court-delays-hearing-on-google-s-purc",
+    "a-20260819-1424-futian-motor-european-drone-customer-boo",
+    "a-20260819-1226-us-marine-takes-blos-control-of-kratos-v",
+    "a-20260819-1121-turkish-airlines-plans-new-route-to-lond"
   ],
   "prompts": {
     "zh": [
-      "想查詢漢莎航空空中巴士A380的航班資訊",
-      "查詢 Shellharbour 機場最新動態",
-      "想了解阿斯塔納航空往返杜拜的航班",
-      "搜尋龐巴迪 Global 6000 相關訊息",
-      "搜尋 Cessna CJ4 系列飛機的動態",
-      "尋找英國航空在米蘭馬爾彭薩機場的動態"
+      "搜尋：Frontier Airlines裁撤亞特蘭…",
+      "搜尋：Electra 測試 ultra-STOL…",
+      "搜尋：美國法院延後審理Google收購Spirit…",
+      "搜尋：富田電機：歐洲無人機客戶包下銅鑼高效馬達新產能",
+      "搜尋：美海軍陸戰隊成功完成女武神無人機跨視距控制測試",
+      "搜尋：土耳其航空計劃開航倫敦城市機場（LCY）但面…"
     ],
     "en": [
-      "Looking for updates on Lufthansa Airbus A380 flights",
-      "Search details on QantasLink Fokker F100 aircraft",
-      "Find status on Air Astana flights to Dubai",
-      "Search for news involving Bombardier Global 6000",
-      "Learn about Textron Aviation and Cessna Citation CJ4",
-      "Look up British Airways updates at Milan Malpensa Airport"
+      "Explore: Frontier Airlines Cuts 21 Routes From Atl (ATL)a…",
+      "Explore: Electra tests ultra-STOL aircraft as feeder for…",
+      "Explore: US Court Delays Hearing on Google's Purchase of…",
+      "Explore: Futian Motor: European Drone Customer Books New…",
+      "Explore: US Marine takes BLOS control of Kratos Valkyrie…",
+      "Explore: Turkish Airlines Plans New Route to London City…"
     ]
   }
 }
