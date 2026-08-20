@@ -1,17 +1,17 @@
 {
-  "updatedUtc": "2026-08-20T09:27Z",
+  "updatedUtc": "2026-08-20T10:21Z",
   "trackingSinceUtc": "2026-08-15T12:46Z",
   "models": {
     "opencode:claude-sonnet-4-6": {
-      "calls": 460,
+      "calls": 461,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 460
+      "unknownCalls": 461
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 265,
-      "inputTokens": 858927,
-      "outputTokens": 1340831,
+      "calls": 266,
+      "inputTokens": 865616,
+      "outputTokens": 1353696,
       "unknownCalls": 94
     },
     "nvidia:z-ai/glm-5.2": {
@@ -135,10 +135,10 @@
       "unknownCalls": 3
     },
     "opencode:gpt-5.5": {
-      "calls": 410,
+      "calls": 411,
       "inputTokens": 0,
       "outputTokens": 0,
-      "unknownCalls": 410
+      "unknownCalls": 411
     },
     "opencode:gemini-3.1-pro": {
       "calls": 330,
@@ -192,12 +192,181 @@
       "outputTokens": 907808
     },
     "2026-08-20": {
-      "calls": 752,
-      "inputTokens": 645695,
-      "outputTokens": 671000
+      "calls": 755,
+      "inputTokens": 652384,
+      "outputTokens": 683865
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-08-20T10:20Z",
+      "finishedUtc": "2026-08-20T10:21Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260820-1020-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "AeroTime",
+      "result": "published",
+      "articleId": "a-20260820-1020-singapore-airlines-expands-european-netw",
+      "finalStatus": "publish",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": true,
+      "attemptCount": 3,
+      "httpCallCount": 3,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 1865,
+        "promptAssembly": 7,
+        "drafting": 56153,
+        "validation": 1,
+        "factVerification": 0,
+        "evidenceBinding": 0,
+        "glossaryCheck": 0,
+        "fabricationCheck": 0,
+        "articleBuild": 3,
+        "total": 61629
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "opencode",
+          "model": "claude-sonnet-4-6",
+          "label": "opencode:claude-sonnet-4-6",
+          "startedUtc": "2026-08-20T10:20Z",
+          "durationMs": 137,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 133,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 410",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "opencode",
+          "model": "gpt-5.5",
+          "label": "opencode:gpt-5.5",
+          "startedUtc": "2026-08-20T10:20Z",
+          "durationMs": 72,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 69,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 410",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 3,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-08-20T10:20Z",
+          "durationMs": 55948,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 55942,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-20T10:20Z",
+      "finishedUtc": "2026-08-20T10:21Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260820-1020-3",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "臺灣交通要聞",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 1772,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 60907
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-08-20T10:20Z",
+      "finishedUtc": "2026-08-20T10:21Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260820-1020-5",
+      "eventId": null,
+      "sourceCount": 6,
+      "primarySource": "NTSB",
+      "result": "skipped_no_material",
+      "articleId": null,
+      "finalStatus": "skipped_no_material",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 1774,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 60245
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-08-20T09:24Z",
       "finishedUtc": "2026-08-20T09:25Z",
@@ -192517,158 +192686,6 @@
           "disabledForRun": false
         }
       ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-14T07:10Z",
-      "finishedUtc": "2026-08-14T07:15Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260814-0710-5",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "AeroTime",
-      "result": "published",
-      "articleId": "a-20260814-0710-swiss-startup-peakjet-launches-semi-priv",
-      "finalStatus": "publish",
-      "finalModel": "gemini:gemini-3.6-flash",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 1224,
-        "promptAssembly": 0,
-        "drafting": 37631,
-        "validation": 0,
-        "factVerification": 0,
-        "evidenceBinding": 0,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": 4,
-        "total": 262225
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-08-14T07:14Z",
-          "durationMs": 37631,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 37629,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-14T07:10Z",
-      "finishedUtc": "2026-08-14T07:16Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260814-0710-6",
-      "eventId": null,
-      "sourceCount": 3,
-      "primarySource": "中央社 CNA",
-      "result": "published",
-      "articleId": "a-20260801-0426-taiwan-detects-17-chinese-aircraft-and-v",
-      "finalStatus": "publish",
-      "finalModel": "gemini:gemini-3.6-flash",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 1110,
-        "promptAssembly": 0,
-        "drafting": 49178,
-        "validation": 0,
-        "factVerification": 0,
-        "evidenceBinding": 0,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": 2,
-        "total": 311158
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-08-14T07:15Z",
-          "durationMs": 49178,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 49176,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-14T07:10Z",
-      "finishedUtc": "2026-08-14T07:16Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260814-0710-7",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "臺灣交通要聞",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 1089,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 310928
-      },
-      "attempts": [],
       "resourceUsage": {
         "actualUsd": 0.0,
         "models": []
