@@ -7,28 +7,30 @@
       "primarySource": "The Aviation Herald",
       "image": null,
       "zh": {
-        "title": "航空安全彙整：8 月 17-18 日 4 起獨立事件",
-        "summary": "四起獨立航空安全事件：Smartwings Poland 引擎火警；英國航空 液壓故障；漢莎航空 跑道短程著陸；PSA 煙霧與加壓問題",
+        "title": "航空安全快訊：包含馬來西亞航空等3起獨立飛行異常事件彙整",
+        "summary": "本專題彙整3起獨立航空安全事件；涵蓋發動機故障、起火警報與液壓失效。",
         "body": [
-          "以下彙整近期四起獨立的航空安全事件，說明各航空公司、機型、日期、地點及主要情況。",
-          "Smartwings Poland 波音737-800（ICAO機型代碼B738）於8月18日在瓦倫西亞附近顯示引擎火警警示。",
-          "英國航空 空中巴士A350-1000（ICAO機型代碼A35K）於8月18日在倫敦附近發生液壓系統故障。",
-          "漢莎航空 空中巴士A380-800（ICAO機型代碼A388）於8月17日在慕尼黑機場（MUC）跑道著陸時觸地，跑道短程著陸。",
-          "PSA CRJ7於8月17日在華盛頓機場駕駛艙內出現煙霧及加壓問題。"
+          "根據 The Aviation Herald 報導，以下彙整 3 起近期發生的獨立航空安全異常事件，各事件之間並無明確關聯。",
+          "1. 馬來西亞航空：2026 年 8 月 20 日，一架空中巴士A330-300（ICAO機型代碼A333）客機於東京發生發動機故障，隨後執行中斷起飛。",
+          "2. Smartwings Poland：2026 年 8 月 18 日，一架波音737-800（ICAO機型代碼B738）客機於瓦倫西亞附近飛行時出現發動機起火警報。",
+          "3. 英國航空：2026 年 8 月 18 日，一架空中巴士A350-1000（ICAO機型代碼A35K）客機於倫敦附近飛行時發生液壓系統失效。"
         ]
       },
       "en": {
-        "title": "Aviation Safety Roundup: Four Independent Incidents Reported on August 17-18, 2026",
-        "summary": "Four independent aviation safety incidents: Smartwings Poland engine fire indication; British Airways hydraulic failure; Lufthansa runway excursion; PSA cockpit smoke and pressurization issues",
+        "title": "Aviation Safety Briefing: Roundup of 3 Independent Airline Incidents",
+        "summary": "Safety briefing covers 3 independent incidents involving Malaysia Airlines, Smartwings Poland, and British Airways.",
         "body": [
-          "This roundup summarizes four independent aviation safety incidents that occurred on August 17-18, 2026, detailing the airlines, aircraft types, dates, locations and main occurrences.",
-          "Smartwings Poland Boeing 737-800 (ICAO type code B738) near Valencia (VLC) on August 18, 2026 showed an engine fire indication.",
-          "British Airways Airbus A350-1000 (ICAO type code A35K) near London (YXU) on August 18, 2026 experienced a hydraulic failure.",
-          "Lufthansa Airbus A380-800 (ICAO type code A388) at Munich (MUC) on August 17, 2026 touched down short of the runway.",
-          "PSA CRJ7 at Washington on August 17, 2026 had smoke in the cockpit and pressurization issues."
+          "According to reports from The Aviation Herald, the following is a summary of three recent independent aviation safety incidents. These events occurred separately and have no stated operational relationship.",
+          "1. Malaysia Airlines: On August 20, 2026, an Airbus A330-300 (ICAO type code A333) aircraft performed a rejected takeoff at Tokyo following an engine failure.",
+          "2. Smartwings Poland: On August 18, 2026, a Boeing 737-800 (ICAO type code B738) aircraft received an engine fire indication while flying near Valencia.",
+          "3. British Airways: On August 18, 2026, an Airbus A350-1000 (ICAO type code A35K) aircraft experienced a hydraulic failure while flying near London."
         ]
       },
       "sources": [
+        {
+          "name": "The Aviation Herald — Incident: Malaysia A333 at Tokyo on Aug 20th 2026, rejected…",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5VMV9BSENicVkxY0lQUDI0Z2phNkdrczVTRFVfVFZkMEJqa19LZUtLRVBTWG5KZkhHLWNuMUc1OUtBbXFoVGFLM3NmU01zTlZPaV9YdGdXUHA?oc=5"
+        },
         {
           "name": "The Aviation Herald — Incident: Smartwings Poland B738 near Valencia on Aug 18th…",
           "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5JdkhtZFYzSXZXUGRuN202SEMxaEVRc0E2MDdVM2d4bWVkY2lfVGNwcDcxYVFQdHJoYlJ6Y21Jc2hRSDZzWWFpSGdIaERqSS1n?oc=5"
@@ -95,14 +97,23 @@
         }
       ],
       "articleFormat": "roundup",
-      "updatedUtc": "2026-08-20T00:41Z",
-      "revision": 9,
-      "sourcePublishedUtc": "2026-08-18T07:00Z",
-      "writer": "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
+      "updatedUtc": "2026-08-20T15:50Z",
+      "revision": 10,
+      "sourcePublishedUtc": "2026-08-20T15:40Z",
+      "writer": "gemini:gemini-3.6-flash",
       "facts": [
         {
           "factId": "F1",
-          "claim": "Smartwings Poland B738 near Valencia on Aug 18th 2026 had engine fire indication.",
+          "claim": "Malaysia A333 experienced a rejected takeoff due to engine failure at Tokyo on Aug 20th 2026.",
+          "sourceQuote": "Malaysia A333 at Tokyo on Aug 20th 2026, rejected takeoff due to engine failure",
+          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5VMV9BSENicVkxY0lQUDI0Z2phNkdrczVTRFVfVFZkMEJqa19LZUtLRVBTWG5KZkhHLWNuMUc1OUtBbXFoVGFLM3NmU01zTlZPaV9YdGdXUHA?oc=5",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Smartwings Poland B738 experienced an engine fire indication near Valencia on Aug 18th 2026.",
           "sourceQuote": "Smartwings Poland B738 near Valencia on Aug 18th 2026, engine fire indication",
           "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5JdkhtZFYzSXZXUGRuN202SEMxaEVRc0E2MDdVM2d4bWVkY2lfVGNwcDcxYVFQdHJoYlJ6Y21Jc2hRSDZzWWFpSGdIaERqSS1n?oc=5",
           "evidenceScope": "source",
@@ -110,71 +121,41 @@
           "archiveContext": false
         },
         {
-          "factId": "F2",
-          "claim": "British Airways A35K near London on Aug 18th 2026 had hydraulic failure.",
+          "factId": "F3",
+          "claim": "British Airways A35K experienced a hydraulic failure near London on Aug 18th 2026.",
           "sourceQuote": "British Airways A35K near London on Aug 18th 2026, hydraulic failure",
           "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBJUG0zZUxSc0tzVjNaSHBsUTBmd1UxTktHQndJN3JiWW1lNGVyMnd4VmR1VUZJN3EwOWJrZW1EcnJRNFdFVkFvallLYkIxbzhq?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F3",
-          "claim": "Lufthansa A388 at Munich on Aug 17th 2026 touched down short of runway.",
-          "sourceQuote": "Lufthansa A388 at Munich on Aug 17th 2026, touched down short of runway",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE44X1BkWjQ2QzVHRXgxdFh1ZkVLQ2ZuRVZBMmp6aVFyckowbWo1NUcwOG9OSE0wTWtrV25lek1jcFVORVhjU2ZZWkJ4V3pSWTJnMEkwNXFuQTc?oc=5",
-          "evidenceScope": "source",
-          "archiveEventId": null,
-          "archiveContext": false
-        },
-        {
-          "factId": "F4",
-          "claim": "PSA CRJ7 at Washington on Aug 17th 2026 had smoke in cockpit and pressurization issues.",
-          "sourceQuote": "PSA CRJ7 at Washington on Aug 17th 2026, smoke in cockpit, pressurization issues",
-          "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5PVGQ4U0ZBelBzdXQwMFpKY3E5Mng0Z0l4YnpHT0ZyT184TmhuRUhDcV9jWWlIc1I3WDVvdUhYblhSMGpJNmpxUzk3R1ZzS0Yt?oc=5",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         }
       ],
       "riskFlags": [
-        "unconfirmed_or_developing"
+        "accident_or_serious_incident"
       ],
       "eventStatus": "confirmed",
       "entities": {
         "organizations": [
-          "Smartwings Poland",
-          "British Airways",
-          "Lufthansa",
-          "PSA"
+          "The Aviation Herald"
         ],
         "airlines": [
+          "Malaysia",
           "Smartwings Poland",
-          "British Airways",
-          "Lufthansa",
-          "PSA"
+          "British Airways"
         ],
         "aircraft_models": [
+          "A333",
           "B738",
-          "A35K",
-          "A388",
-          "CRJ7"
-        ],
-        "airports": [
-          "Valencia",
-          "London",
-          "Munich",
-          "Washington"
+          "A35K"
         ],
         "locations": [
+          "Tokyo",
           "Valencia",
-          "London",
-          "Munich",
-          "Washington"
+          "London"
         ],
         "event_dates": [
-          "Aug 18th 2026",
-          "Aug 17th 2026"
+          "Aug 20th 2026",
+          "Aug 18th 2026"
         ]
       }
     },
@@ -3221,7 +3202,7 @@
       },
       "en": {
         "title": "Heart Aerospace launches X1 electric demonstrator flight from Plattsburgh (PBG)",
-        "summary": "Heart Aerospace; first flight of X1 battery‑electric demonstrator; Plattsburgh Airport                                                                                 ",
+        "summary": "Heart Aerospace; first flight of X1 battery‑electric demonstrator; Plattsburgh Airport                                                                                  ",
         "body": [
           "Heart Aerospace has completed the first flight of its X1 battery‑electric demonstrator, a milestone highlighted by AeroTime.",
           "The aircraft took off from Plattsburgh International Airport  in upstate New York, remained airborne for 27 minutes and climbed to 1,100 feet, demonstrating a battery‑electric system that delivered more than one megawatt of power.",
