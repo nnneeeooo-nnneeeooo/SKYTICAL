@@ -82,8 +82,8 @@
         <span class="feed-category tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% elif item.article_format == "roundup" %} · {{ t.roundupLabel }}{% endif %}</span>
         <span class="feed-copy">
           <span style="display:block;font-size:15.5px;font-weight:700;line-height:1.4;letter-spacing:-.01em;">{{ item.title }}</span>
-          {{ notification_summary(item.display_summary, t.summaryLabel, 'feed') }}
         </span>
+        {{ notification_summary(item.display_summary, t.summaryLabel, 'feed') }}
         <span class="feed-source text-muted">{{ item.source }}</span>
       </a>
       {% else %}
