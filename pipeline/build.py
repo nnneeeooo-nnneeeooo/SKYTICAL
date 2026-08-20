@@ -109,6 +109,8 @@ L = {
         "incKicker": "Incident Database", "incTitle": "事故資料庫",
         "incSub": "自動彙整全球民航事故與事件，資料來自各國調查機關與專業追報來源，每小時更新。",
         "incCountLabel": "筆紀錄",
+        "incWeeklySerious": "本週嚴重事件",
+        "incReadEvent": "閱讀事件",
         "incNote": "* 分級依 ICAO Annex 13：事故（Accident）、嚴重事件（Serious incident）、事件（Incident）。",
         "thDate": "日期", "thSev": "等級", "thType": "機型", "thOp": "營運人",
         "thPhase": "飛行階段", "thLoc": "地點", "thDesc": "摘要", "thStatus": "狀態", "thSrc": "來源",
@@ -182,7 +184,7 @@ L = {
                    "🌐 國際航空產業動態", "🚄 地面與海運交通"],
         "brSevs": {"fatal": "致命", "serious": "嚴重",
                    "significant": "重要", "routine": "一般"},
-        "sevs": ["全部", "事故", "嚴重事件", "事件"],
+        "sevs": ["本週嚴重事件", "全部", "事故", "嚴重事件", "事件"],
         "themeOpts": ["亮", "暗"],
         # production-only keys (not in the design dictionary)
         "siteName": "SKYTICAL",
@@ -224,6 +226,8 @@ L = {
         "incKicker": "Incident Database", "incTitle": "Incident database",
         "incSub": "Automatically aggregated civil-aviation accidents and incidents, from state investigators and specialist trackers. Updated hourly.",
         "incCountLabel": "records",
+        "incWeeklySerious": "Serious events this week",
+        "incReadEvent": "Read event",
         "incNote": "* Classes per ICAO Annex 13: Accident, Serious incident, Incident.",
         "thDate": "Date", "thSev": "Class", "thType": "Aircraft", "thOp": "Operator",
         "thPhase": "Phase", "thLoc": "Location", "thDesc": "Summary", "thStatus": "Status", "thSrc": "Sources",
@@ -306,7 +310,7 @@ L = {
                    "🚄 Ground & maritime transport"],
         "brSevs": {"fatal": "Fatal", "serious": "Serious",
                    "significant": "Significant", "routine": "Routine"},
-        "sevs": ["All", "Accident", "Serious", "Incident"],
+        "sevs": ["This week", "All", "Accident", "Serious", "Incident"],
         "themeOpts": ["Light", "Dark"],
         # production-only keys (not in the design dictionary)
         "siteName": "SKYTICAL",
@@ -1560,7 +1564,16 @@ def prep_incidents(raw):
     return [i for i in raw if isinstance(i, dict) and i.get("date")]
 
 
-def inc_view(incidents, lang: str):
+def _is_weekly_serious_incident(incident, cutoff) -> bool:
+    if incident.get("sev") not in ("acc", "ser"):
+        return False
+    try:
+        return parse_iso(str(incident.get("date"))) >= cutoff
+    except (TypeError, ValueError):
+        return False
+
+
+def inc_view(incidents, lang: str, weekly_cutoff, published_ids):
     rows = []
     for i in incidents:
         date = str(i.get("date") or "")
@@ -1568,9 +1581,14 @@ def inc_view(incidents, lang: str):
         sev = i.get("sev") if isinstance(i.get("sev"), str) else ""
         srcs = i.get("sources")
         src = " · ".join(str(s) for s in srcs) if isinstance(srcs, list) else str(srcs or "")
+        article_id = str(i.get("articleId") or "")
+        article_url = None
+        if article_id in published_ids and _ID_RE.fullmatch(article_id):
+            article_url = page_url(lang, f"news/{article_id}/")
         rows.append({
             "d": disp,
             "sev_key": sev,
+            "weekly_serious": _is_weekly_serious_incident(i, weekly_cutoff),
             "sev_label": _bi(SEV.get(sev), lang, sev),
             "sev_class": SEV.get(sev, {}).get("cls", "tag-neutral"),
             "ac": str(i.get("aircraft") or "—"),
@@ -1578,6 +1596,7 @@ def inc_view(incidents, lang: str):
             "ph": _bi(i.get("phase"), lang, "—"),
             "loc": _bi(i.get("location"), lang, "—"),
             "desc": _bi(i.get("desc"), lang, ""),
+            "url": article_url,
             "st": _bi(ST.get(i.get("status")), lang, str(i.get("status") or "")),
             "src": src,
         })
@@ -2687,6 +2706,7 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build,
             if BASE_PATH else "/search-aliases.json"
         ),
         "radar_url": page_url(lang, "radar/"),
+        "incidents_week_url": page_url(lang, "incidents/") + "?filter=week",
         "about_url": page_url(lang, "about/"),
         "policy_url": page_url(lang, "editorial-policy/"),
         "changelog_url": page_url(lang, "changelog/"),
@@ -2917,7 +2937,7 @@ def main() -> int:
         "stamp": f"{now:%Y-%m-%d} {clock_12(now)}",
     }
     cat_keys = ["all", "safety", "reg", "biz", "ops", "mil"]
-    sev_keys = ["all", "acc", "ser", "inc"]
+    sev_keys = ["week", "all", "acc", "ser", "inc"]
     pages = 0
     failed = 0
 
@@ -3106,7 +3126,14 @@ def main() -> int:
                 failed += 1
                 print(f"build: article {a['id']} ({lang}) failed: {exc}")
 
-        rows = inc_view(incidents, lang)
+        try:
+            weekly_cutoff = (
+                parse_iso(str(stats_raw.get("updatedUtc")))
+                - timedelta(days=7)
+            )
+        except (TypeError, ValueError):
+            weekly_cutoff = now - timedelta(days=7)
+        rows = inc_view(incidents, lang, weekly_cutoff, published_ids)
         ctx = base_ctx(lang, "incidents", "incidents/",
                        title=f"{t['siteName']} — {t['incTitle']}",
                        description=t["incSub"], ticker=ticker, build=build)

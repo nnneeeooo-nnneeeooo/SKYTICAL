@@ -141,17 +141,33 @@
   /* — incidents: severity filter over rows ([data-sev]) + live record count — */
   var sevBtns = Array.prototype.slice.call(document.querySelectorAll("[data-filter-sev]"));
   var countEl = document.getElementById("inc-count");
+  function applyIncidentFilter(v, button, updateUrl) {
+    var n = 0;
+    sevBtns.forEach(function (x) { x.classList.toggle("active", x === button); });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-sev]"), function (row) {
+      var matches = v === "all" ||
+        (v === "week" ? row.dataset.weeklySerious === "true" : row.dataset.sev === v);
+      row.classList.toggle("is-hidden", !matches);
+      if (matches) n += 1;
+    });
+    if (countEl) countEl.textContent = String(n);
+    if (updateUrl && window.history && window.history.replaceState) {
+      var url = new URL(window.location.href);
+      if (v === "all") url.searchParams.delete("filter");
+      else url.searchParams.set("filter", v);
+      window.history.replaceState(null, "", url.pathname + url.search + url.hash);
+    }
+  }
   sevBtns.forEach(function (b) {
     b.addEventListener("click", function () {
-      var v = b.dataset.filterSev;
-      var n = 0;
-      sevBtns.forEach(function (x) { x.classList.toggle("active", x === b); });
-      Array.prototype.forEach.call(document.querySelectorAll("[data-sev]"), function (row) {
-        var hide = v !== "all" && row.dataset.sev !== v;
-        row.classList.toggle("is-hidden", hide);
-        if (!hide) n += 1;
-      });
-      if (countEl) countEl.textContent = String(n);
+      applyIncidentFilter(b.dataset.filterSev, b, true);
     });
   });
+  if (sevBtns.length) {
+    var requestedFilter = new URLSearchParams(window.location.search).get("filter") || "all";
+    var initialButton = sevBtns.find(function (b) {
+      return b.dataset.filterSev === requestedFilter;
+    }) || sevBtns.find(function (b) { return b.dataset.filterSev === "all"; });
+    applyIncidentFilter(initialButton.dataset.filterSev, initialButton, false);
+  }
 })();
