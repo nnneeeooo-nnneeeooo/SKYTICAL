@@ -1,6 +1,7 @@
 """Offline regression checks for AVWIRE's shared mobile layout."""
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -41,19 +42,25 @@ def main() -> None:
     assert 'class="feed-copy"' in home
     assert 'class="summary-preview summary-preview--hero"' in home
     assert 'class="summary-preview summary-preview--feed"' in home
+    assert re.search(
+        r'<span class="feed-copy">.*?</span>\s*</span>\s*'
+        r'<div class="summary-preview summary-preview--feed"',
+        home,
+        re.DOTALL,
+    )
     assert 'aria-label="重點摘要"' in home
     assert "<span>重點摘要</span>" not in home
     assert 'class="article-page"' in article
     assert 'class="summary-preview' not in article
     assert 'class="article-source-row"' in article
-    summaries = (
-        ("AirAdvisor發布2026機場排名；倫敦希斯洛以16.94分居首", airadvisor),
-        ("捷星航空2027年2月2日起收取頭頂置物箱費；單程25澳幣起", jetstar),
-        ("David Cummins就任TSA第八任局長；監管全美逾430座機場安檢", david),
-        ("阿聯酋航空夏季暫停PRG、GLA A380航班；10月恢復每日服務", emirates),
+    feed_summaries = re.findall(
+        r'<div class="summary-preview summary-preview--feed".*?'
+        r'<span class="summary-preview__text">(.*?)</span>',
+        home,
+        re.DOTALL,
     )
-    for summary, article_html in summaries:
-        assert summary in home
+    assert feed_summaries and all(summary.strip() for summary in feed_summaries)
+    for article_html in (airadvisor, jetstar, david, emirates):
         assert 'class="summary-preview' not in article_html
 
     zh_long = "中華航空8月10日宣布調整桃園至福岡航班，受機場作業限制影響，兩班延後三小時，旅客須留意報到時間。" * 2
@@ -83,7 +90,9 @@ def main() -> None:
     assert ".js .site-nav.is-open { display: grid; }" in css
     assert "grid-template-columns: repeat(2, minmax(0, 1fr))" in css
     assert ".center-col { order: 1;" in css
-    assert ".feed-copy { grid-column: 1 / -1; }" in css
+    assert '". . summary summary"' in css
+    assert '"summary summary"' in css
+    assert ".summary-preview--feed { grid-area: summary; margin-top: 7px; }" in css
     assert ".summary-preview__text" in css
     assert "grid-template-columns: auto minmax(0, 1fr);" in css
     assert "-webkit-line-clamp: 2" in css

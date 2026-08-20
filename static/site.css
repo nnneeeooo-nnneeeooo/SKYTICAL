@@ -243,15 +243,19 @@ a.flash-row:hover { color: inherit; }
 
 .feed-row {
   display: grid; grid-template-columns: 48px 84px minmax(0, 1fr) auto;
-  gap: 14px; align-items: start; padding: 13px 0;
+  grid-template-areas:
+    "time category copy source"
+    ". . summary summary";
+  column-gap: 14px; row-gap: 0; align-items: start; padding: 13px 0;
   border-top: 1px solid var(--color-divider);
   color: inherit; text-decoration: none; cursor: pointer;
 }
 .feed-row:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); color: inherit; }
-.feed-time { font-size: 13px; font-weight: 800; }
-.feed-category { justify-content: flex-start; }
-.feed-copy { min-width: 0; }
+.feed-time { grid-area: time; font-size: 13px; font-weight: 800; }
+.feed-category { grid-area: category; justify-content: flex-start; }
+.feed-copy { grid-area: copy; min-width: 0; }
 .feed-source {
+  grid-area: source;
   padding: 3px 9px; border: 1px solid var(--color-divider);
   font-size: 11px; white-space: nowrap;
 }
@@ -282,7 +286,7 @@ a.flash-row:hover { color: inherit; }
   overflow-wrap: anywhere; text-overflow: ellipsis;
 }
 .summary-preview--hero { margin: 0; }
-.summary-preview--feed { margin-top: 7px; }
+.summary-preview--feed { grid-area: summary; margin-top: 7px; }
 .summary-preview--feed .summary-preview__icon { width: 15px; height: 15px; }
 .summary-preview--feed .summary-preview__text {
   font-size: 12.5px; line-height: 1.55; max-height: 3.1em;
@@ -595,11 +599,18 @@ a.flash-row:hover { color: inherit; }
   .hero-title { font-size: 27px; line-height: 1.2; }
   .hero-meta { flex-wrap: wrap; gap: 7px 12px; }
   .hero-meta > :last-child { margin-left: 0 !important; }
-  .feed-row { grid-template-columns: auto minmax(0, 1fr); gap: 7px 10px; padding: 15px 0; }
-  .feed-time { grid-column: 1; }
-  .feed-category { grid-column: 2; justify-self: start; }
-  .feed-copy { grid-column: 1 / -1; }
-  .feed-source { grid-column: 1 / -1; justify-self: start; white-space: normal; }
+  .feed-row {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "time category"
+      "copy copy"
+      "summary summary"
+      "source source";
+    gap: 7px 10px; padding: 15px 0;
+  }
+  .feed-category { justify-self: start; }
+  .feed-source { justify-self: start; white-space: normal; }
+  .summary-preview--feed { margin-top: 0; }
   .article-page { padding: 20px 12px 44px; }
   .article-title { font-size: 29px; line-height: 1.22; }
   .article-meta { gap: 7px 12px; }
