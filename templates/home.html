@@ -101,10 +101,10 @@
           <div style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.delay }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statDelay }}</div>
         </div>
-        <div style="padding:12px;border-right:1px solid var(--color-divider);">
+        <a class="radar-stat-link" href="{{ incidents_week_url }}" aria-label="{{ t.incWeeklySerious }}：{{ stats.serious }} {{ t.incCountLabel }}" style="padding:12px;border-right:1px solid var(--color-divider);">
           <div style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.serious }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statSerious }}</div>
-        </div>
+        </a>
         <div style="padding:12px;">
           <div style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.notams }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statNotam }}</div>
