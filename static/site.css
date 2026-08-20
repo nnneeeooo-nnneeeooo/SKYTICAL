@@ -337,6 +337,14 @@ a.flash-row:hover { color: inherit; }
   color: inherit;
   background: color-mix(in srgb, var(--color-accent) 7%, transparent);
 }
+.incident-article-link,
+.incident-date-link {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  text-underline-offset: 3px;
+}
+.incident-article-link:hover,
+.incident-date-link:hover { color: var(--color-accent); }
 
 /* — Taiwan civil-flight radar — */
 .radar-page { padding: 24px 28px 32px; }
@@ -640,6 +648,16 @@ a.flash-row:hover { color: inherit; }
   .seg-cat .seg-btn { justify-content: center; }
   .seg-cat .seg-btn:nth-child(4) { border-left: 0; }
   .seg-cat .seg-btn:nth-child(n + 4) {
+    border-top: 1px solid var(--color-divider);
+  }
+  .seg-sev {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+  .seg-sev .seg-btn { justify-content: center; }
+  .seg-sev .seg-btn:nth-child(4) { border-left: 0; }
+  .seg-sev .seg-btn:nth-child(n + 4) {
     border-top: 1px solid var(--color-divider);
   }
   .changelog-page { padding: 24px 14px 48px; }

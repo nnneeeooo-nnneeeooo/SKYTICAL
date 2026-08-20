@@ -19,14 +19,14 @@
         </tr></thead>
         <tbody>
           {% for i in rows %}
-          <tr data-sev="{{ i.sev_key }}">
-            <td style="font-weight:700;white-space:nowrap;">{{ i.d }}</td>
+          <tr data-sev="{{ i.sev_key }}" data-weekly-serious="{{ 'true' if i.weekly_serious else 'false' }}">
+            <td style="font-weight:700;white-space:nowrap;">{% if i.url %}<a class="incident-date-link" href="{{ i.url }}" aria-label="{{ t.incReadEvent }}：{{ i.desc }}">{{ i.d }}</a>{% else %}{{ i.d }}{% endif %}</td>
             <td><span class="tag {{ i.sev_class }}">{{ i.sev_label }}</span></td>
             <td style="white-space:nowrap;">{{ i.ac }}</td>
             <td>{{ i.op }}</td>
             <td>{{ i.ph }}</td>
             <td>{{ i.loc }}</td>
-            <td class="text-muted">{{ i.desc }}</td>
+            <td class="text-muted">{% if i.url %}<a class="incident-article-link" href="{{ i.url }}">{{ i.desc }}</a>{% else %}{{ i.desc }}{% endif %}</td>
             <td style="white-space:nowrap;">{{ i.st }}</td>
             <td class="text-muted" style="font-size:12px;white-space:nowrap;">{{ i.src }}</td>
           </tr>
