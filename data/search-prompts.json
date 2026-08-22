@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-08-21T16:43Z",
-  "targetDateTpe": "2026-08-22",
+  "generatedUtc": "2026-08-22T16:14Z",
+  "targetDateTpe": "2026-08-23",
   "sourceWindow": "month_to_date",
-  "generationMode": "deterministic",
-  "provider": null,
+  "generationMode": "llm",
+  "provider": "gemini:gemini-3.6-flash",
   "sourceArticleIds": [
-    "a-20260821-1621-cessna-441-charter-crash-near-alaska-mil",
-    "a-20260821-1425-westjet-confirms-all-boeing-737s-reverte",
-    "a-20260821-1338-finland-investigates-suspected-airspace",
-    "a-20260821-1021-taiwan-protests-etihad-airways-in-flight",
-    "a-20260821-1021-incheon-airport-installs-counter-barrier",
-    "a-20260821-0927-vietnam-airlines-boeing-787-investigated"
+    "a-20260822-1220-unauthorized-wifi-detected-on-delta-flig",
+    "a-20260822-0724-qantas-delays-return-of-nonstop-perth-lo",
+    "a-20260822-1325-tigerair-taiwan-to-raise-booking-service",
+    "a-20260822-0818-assembly-of-switzerland-s-first-f-35a-fi",
+    "a-20260822-0724-cosmic-aerospace-details-cosmic-one-elec",
+    "a-20260822-0724-spanish-f-a-18-fighter-intercepts-and-de"
   ],
   "prompts": {
     "zh": [
-      "搜尋：賽斯納441包機於阿拉斯加軍用雷達站附近墜毀…",
-      "搜尋：西捷航空確認所有波音737已恢復174座配置…",
-      "搜尋：俄伊爾20偵察機涉侵犯芬蘭領空 邊境衛隊展開…",
-      "搜尋：阿提哈德航空廣播稱中國台灣 外交部嚴正抗議要…",
-      "搜尋：仁川機場第一航廈櫃檯加裝圍欄 防範插隊與維持…",
-      "搜尋：越南航空波音787慕尼黑起飛疑越界擦地 德國…"
+      "達美航空 DL591 班機資訊",
+      "澳洲航空伯斯到倫敦直飛航班",
+      "台灣虎航訂位服務費說明",
+      "瑞士 F-35A 戰機最新消息",
+      "Cosmic One 電動飛機計畫",
+      "西班牙 F/A-18 戰機動態"
     ],
     "en": [
-      "Explore: Cessna 441 Charter Crash Near Alaska Military Ra…",
-      "Explore: WestJet confirms all Boeing 737s reverted to 174…",
-      "Explore: Finland Investigates Suspected Airspace Violatio…",
-      "Explore: Taiwan Protests Etihad Airways In-Flight Announc…",
-      "Explore: Incheon Airport Installs Counter Barrier in Term…",
-      "Explore: Vietnam Airlines Boeing 787 Investigated for Mun…"
+      "Delta flight DL591 status",
+      "Qantas nonstop Perth to London flight info",
+      "Tigerair Taiwan booking service fee information",
+      "Switzerland F-35A fighter jet details",
+      "Cosmic Aerospace Cosmic One project updates",
+      "Spanish F/A-18 fighter jet information"
     ]
   }
 }
