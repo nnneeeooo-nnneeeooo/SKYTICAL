@@ -3,67 +3,73 @@
     {
       "id": "a-20260726-2303-taiwan-mnd-reports-7-chinese-warships-3",
       "publishedUtc": "2026-07-26T23:03Z",
-      "cat": "ops",
+      "cat": "mil",
       "primarySource": "中央社 CNA",
       "image": null,
       "zh": {
-        "title": "國防部公布共機艦動態 偵獲7艦3船4架次 台海周邊未逾越中線",
-        "summary": "國防部上午公布共機艦動態，統計自昨天上午6時起至今天上午6時止，偵獲7艘共艦、3艘公務船及4架次共機持續在台海周邊活動，期間並無共機逾越台灣海峽中線，國軍運用任務機艦及岸置飛彈系統嚴密監控與應處。",
+        "title": "國防部偵獲7艘共艦與7艘公務船擾台 期間無共機",
+        "summary": "國防部偵獲7艘共艦與7艘公務船在台海周邊活動；期間未發現共機。",
         "body": [
-          "國防部今天發布共機艦動態，統計自昨天上午6時起至今天上午6時止。",
-          "偵獲7艘共艦、3艘公務船及4架次共機，持續在台海周邊活動。",
-          "期間並無共機逾越台灣海峽中線。",
-          "國防部強調，國軍運用任務機艦及岸置飛彈系統嚴密監控與應處。"
+          "國防部於8月23日上午發布最新共機艦動態統計，指出自8月22日上午6時起至8月23日上午6時止，國軍共偵獲7艘次中國軍艦以及7艘次公務船，持續在台灣海峽周邊海域活動。",
+          "根據國防部公布的統計資料顯示，在上述24小時的周邊海空域監控期間內，國軍並未偵獲任何中國軍機進入或活動。",
+          "面對台海周邊海域相關艦艇活動，國防部強調，國軍已持續運用任務機、任務艦以及岸置飛彈系統，對周邊動態實施嚴密監控與適切應處。"
         ]
       },
       "en": {
-        "title": "Taiwan MND reports 7 Chinese warships, 3 official vessels, 4 aircraft sorties near strait; no median‑line crossing",
-        "summary": "Taiwan’s Ministry of National Defense released a daily activity report covering 06:00 yesterday to 06:00 today, detecting 7 Chinese naval vessels, 3 official ships and 4 aircraft sorties operating around the Taiwan Strait. No Chinese aircraft crossed the median line, and the armed forces employed mission aircraft, ships and shore‑based missile systems for close monitoring and response.",
+        "title": "Taiwan MND Detects 7 PLA Warships and 7 Official Vessels Near Taiwan Strait",
+        "summary": "Taiwan's defence ministry detected seven PLA warships and seven official ships near Taiwan; no aircraft were spotted.",
         "body": [
-          "The Ministry of National Defense today released a report on Chinese vessel and aircraft activity, covering the period from 06:00 yesterday to 06:00 today.",
-          "It detected 7 Chinese warships, 3 official vessels and 4 aircraft sorties continuing activities around the Taiwan Strait.",
-          "During the period no Chinese aircraft crossed the Taiwan Strait median line.",
-          "The ministry emphasized that the armed forces used mission aircraft, ships and shore‑based missile systems for close monitoring and response."
+          "Taiwan's Ministry of National Defense announced on August 23 that it detected seven Chinese naval vessels and seven official ships operating in the waters around the Taiwan Strait over a 24-hour period. The monitoring period ran from 6:00 a.m. on August 22 to 6:00 a.m. on August 23.",
+          "According to the defense ministry's released activity report, no Chinese military aircraft were detected operating around the Taiwan Strait during the same 24-hour timeframe.",
+          "The ministry emphasized that the ROC Armed Forces monitored the movements of the vessels using mission aircraft, naval ships, and land-based missile systems to maintain close surveillance and respond accordingly."
         ]
       },
       "sources": [
+        {
+          "name": "中央社 CNA — 7艘共艦7艘公務船擾台 國軍嚴密監控",
+          "url": "https://www.cna.com.tw/news/aipl/202608230025.aspx"
+        },
+        {
+          "name": "經濟日報 — 7艘共艦7艘公務船擾台　國軍嚴密監控",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9vWWU0cGZZajJ0OFMydTJERjJCZkpmXy1sZkxuOUhSZUNac0JZTUxjMWNLZDNvbUM3Njl4cmFCMWl3aWJ2bE1NaUlELWZaaTN4MmVVcGp6WEpqZ9IBX0FVX3lxTE0zc21WSm4yY21yNlRVZEVIa2VhckZQQkZBbFZyclBlbHcyTHJUckxvaGtZNnJyTHlrSjdoaktOR3NzQklBdl9yRnI1aGxPT3RDNk4wNjFXS0FNSmFGRjJV?oc=5"
+        },
         {
           "name": "中央社 CNA — 7艘共艦3艘公務船擾台 國軍監控",
           "url": "https://www.cna.com.tw/news/aipl/202607260022.aspx"
         }
       ],
-      "sourcePublishedUtc": "2026-07-26T01:57Z",
-      "writer": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+      "articleFormat": "brief",
+      "updatedUtc": "2026-08-23T03:42Z",
+      "revision": 2,
+      "sourcePublishedUtc": "2026-08-23T01:31Z",
+      "writer": "gemini:gemini-3.6-flash",
       "facts": [
         {
           "factId": "F1",
-          "claim": "The Ministry of National Defense released a report on Chinese aircraft and ship movements.",
-          "sourceQuote": "國防部今天發布共機艦動態"
+          "claim": "Taiwan's Ministry of National Defense detected 7 PLA warships and 7 official vessels operating around the Taiwan Strait between 6:00 AM on August 22 and 6:00 AM on August 23.",
+          "sourceQuote": "統計自昨天上午6時起至今天上午6時止，偵獲7艘共艦、7艘公務船持續在台海周邊活動",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608230025.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
         },
         {
           "factId": "F2",
-          "claim": "The statistics cover from yesterday 06:00 to today 06:00.",
-          "sourceQuote": "統計自昨天上午6時起至今天上午6時止"
+          "claim": "No PLA aircraft were detected operating around the Taiwan Strait during the 24-hour monitoring period.",
+          "sourceQuote": "期間並無偵獲共機",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608230025.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
         },
         {
           "factId": "F3",
-          "claim": "Detected 7 Chinese naval vessels, 3 official ships and 4 sorties of Chinese aircraft.",
-          "sourceQuote": "偵獲7艘共艦、3艘公務船及4架次共機"
-        },
-        {
-          "factId": "F4",
-          "claim": "The activities continued around the Taiwan Strait.",
-          "sourceQuote": "持續在台海周邊活動"
-        },
-        {
-          "factId": "F5",
-          "claim": "No Chinese aircraft crossed the median line of the Taiwan Strait.",
-          "sourceQuote": "期間並無共機逾越台灣海峽中線"
-        },
-        {
-          "factId": "F6",
-          "claim": "The armed forces employed mission aircraft, ships and shore‑based missile systems for close monitoring and response.",
-          "sourceQuote": "國軍運用任務機艦及岸置飛彈系統嚴密監控與應處"
+          "claim": "The ROC Armed Forces utilized mission aircraft, naval ships, and land-based missile systems to strictly monitor and respond to the activities.",
+          "sourceQuote": "國軍運用任務機艦及岸置飛彈系統嚴密監控與應處",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202608230025.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
         }
       ],
       "riskFlags": [],
@@ -74,12 +80,12 @@
           "國軍"
         ],
         "locations": [
-          "台海",
-          "台灣海峽中線"
+          "台海"
         ],
         "event_dates": [
-          "自昨天上午6時起至今天上午6時止",
-          "2026-07-26"
+          "昨天",
+          "今天",
+          "23日"
         ]
       }
     }
