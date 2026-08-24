@@ -1,6 +1,6 @@
 """LLM provider adapters for the write stage.
 
-Five interchangeable writers behind one interface:
+Six interchangeable writers behind one interface:
 
     anthropic  Anthropic Messages API with native structured outputs
     gemini     Google Gemini API (REST) with responseJsonSchema
@@ -10,6 +10,7 @@ Five interchangeable writers behind one interface:
                JSON enforced by prompt + local extraction
     opencode   OpenCode Console gateway, routing each model through its
                native Responses, Messages, Gemini or Chat Completions API
+    wechat     WeChat Coding Plan OpenAI-compatible Chat Completions gateway
 
 Each provider exposes:
     name         registry key
@@ -74,8 +75,17 @@ GEMINI_DEFAULT_MODEL = "gemini-3.6-flash"
 OPENROUTER_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 OPENCODE_DEFAULT_MODEL = "claude-sonnet-4-6"
 OPENCODE_BASE_URL = "https://console.opencode.ai/inference"
+WECHAT_DEFAULT_MODEL = "Deepseek-v4-flash"
+WECHAT_BASE_URL = "https://chatapi.weixin.qq.com/openai/v1"
 
 MODEL_PROFILES: dict = {
+    "Deepseek-v4-flash": {
+        # The contest gateway accepts the OpenAI-compatible thinking control.
+        # Disable hidden reasoning so the bilingual JSON has the full output
+        # budget and the gateway response stays predictable.
+        "payload": {"thinking": {"type": "disabled"}},
+        "repair": {"thinking": {"type": "disabled"}},
+    },
     # Gemini thinking is high for fact-sensitive bilingual drafting. Format
     # repair remains minimal because that call may only fix JSON syntax.
     # Temperature is intentionally omitted: Gemini 3.x uses its tuned default.
@@ -863,6 +873,74 @@ class NvidiaProvider:
             ) from repair_exc
 
 
+class WechatProvider(NvidiaProvider):
+    """WeChat Coding Plan's OpenAI-compatible DeepSeek gateway."""
+
+    name = "wechat"
+
+    def __init__(self, model=None, reasoning_tier=None) -> None:
+        super().__init__(
+            model or os.environ.get("AVWIRE_WECHAT_MODEL")
+            or WECHAT_DEFAULT_MODEL,
+            reasoning_tier=reasoning_tier,
+        )
+
+    def available(self) -> bool:
+        return bool(os.environ.get("WECHAT_API_KEY"))
+
+    def _post(self, messages: list, repair: bool):
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "max_tokens": 8192 if repair else 16384,
+            "stream": False,
+            **self._payload_extras(repair),
+        }
+        self.http_calls += 1
+        if repair:
+            self.repair_calls += 1
+        started = time.perf_counter()
+        response = None
+        try:
+            response = requests.post(
+                f"{WECHAT_BASE_URL}/chat/completions",
+                json=payload, timeout=HTTP_TIMEOUT,
+                headers={
+                    "Authorization":
+                        f"Bearer {os.environ['WECHAT_API_KEY']}",
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                },
+            )
+            return response
+        except requests.RequestException as exc:
+            raise ProviderError(type(exc).__name__) from exc
+        finally:
+            elapsed = max(0, round((time.perf_counter() - started) * 1000))
+            self.http_duration_ms += elapsed
+            if repair:
+                self.repair_duration_ms += elapsed
+            if response is not None:
+                self.request_log.append(_safe_response_meta(response, elapsed))
+
+    def _final_text(self, response):
+        data = response.json()
+        error = data.get("error")
+        if error:
+            code = error.get("code") if isinstance(error, dict) else None
+            try:
+                code = int(code)
+            except (TypeError, ValueError):
+                code = None
+            if code in (401, 403):
+                raise ProviderAuthError(f"WeChat error {code}")
+            if code in (402, 429):
+                raise ProviderQuotaError(
+                    f"WeChat error {code} (quota or rate limit)")
+            raise ProviderError(f"WeChat response error {code or 'unknown'}")
+        return super()._final_text(response)
+
+
 class OpenRouterProvider(NvidiaProvider):
     """OpenRouter's OpenAI-compatible endpoint with explicit model fallback."""
 
@@ -1282,6 +1360,7 @@ _REGISTRY = {
     AnthropicProvider.name: AnthropicProvider,
     GeminiProvider.name: GeminiProvider,
     NvidiaProvider.name: NvidiaProvider,
+    WechatProvider.name: WechatProvider,
     OpenRouterProvider.name: OpenRouterProvider,
     OpenCodeProvider.name: OpenCodeProvider,
 }
@@ -1312,3 +1391,4 @@ def build_providers() -> list:
         if provider.available():
             providers.append(provider)
     return providers
+
