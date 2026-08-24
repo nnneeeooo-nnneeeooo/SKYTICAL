@@ -44,6 +44,7 @@ from providers import (  # noqa: E402
     NvidiaProvider,
     OpenCodeProvider,
     OpenRouterProvider,
+    WechatProvider,
     ProviderAuthError,
     ProviderError,
     ProviderQuotaError,
@@ -562,6 +563,7 @@ def _providers_for(payload: dict) -> list:
         cls = {
             "gemini": GeminiProvider,
             "nvidia": NvidiaProvider,
+            "wechat": WechatProvider,
             "opencode": OpenCodeProvider,
             "openrouter": OpenRouterProvider,
         }.get(platform)
@@ -970,7 +972,7 @@ def generate(job_id: str, payload: dict) -> dict:
     providers = _providers_for(payload)
     if not providers:
         raise RuntimeError(
-            "no configured OpenCode, Gemini, NVIDIA or OpenRouter API key")
+            "no configured WeChat, OpenCode, Gemini, NVIDIA or OpenRouter API key")
     attempts, draft, final = [], None, None
     detected_type, detected_time = "", ""
     dead_platforms = set()
@@ -1214,3 +1216,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
