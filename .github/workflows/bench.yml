@@ -17,6 +17,9 @@ on:
       opencode_model:
         description: "Override AVWIRE_OPENCODE_MODEL for this bench"
         required: false
+      wechat_model:
+        description: "Override AVWIRE_WECHAT_MODEL for this bench"
+        required: false
 
 permissions:
   contents: read
@@ -39,6 +42,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
         run: |
           if [ -n "$OPENCODE_API_KEY" ]; then
             echo "== OpenCode Console models =="
@@ -61,6 +65,10 @@ jobs:
               | python -c 'import json,sys; [print(m["name"]) for m in json.load(sys.stdin).get("models",[]) if "generateContent" in m.get("supportedGenerationMethods",[])]' \
               || echo "(model list unavailable)"
           fi
+          if [ -n "$WECHAT_API_KEY" ]; then
+            echo "== WeChat Coding Plan model =="
+            echo "Deepseek-v4-flash"
+          fi
 
       - name: Bench each provider on identical pending groups
         env:
@@ -68,15 +76,18 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
           AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }}
           AVWIRE_GEMINI_MODEL: ${{ inputs.gemini_model || vars.AVWIRE_GEMINI_MODEL }}
           AVWIRE_NVIDIA_MODEL: ${{ inputs.nvidia_model || vars.AVWIRE_NVIDIA_MODEL }}
           AVWIRE_OPENCODE_MODEL: ${{ inputs.opencode_model || vars.AVWIRE_OPENCODE_MODEL }}
+          AVWIRE_WECHAT_MODEL: ${{ inputs.wechat_model || vars.AVWIRE_WECHAT_MODEL }}
         run: |
           ok=""
           failed=""
-          for p in opencode gemini nvidia anthropic; do
+          for p in wechat opencode gemini nvidia anthropic; do
             case "$p" in
+              wechat)    key="$WECHAT_API_KEY" ;;
               opencode)   key="$OPENCODE_API_KEY" ;;
               gemini)    key="$GEMINI_API_KEY" ;;
               nvidia)    key="$NVIDIA_API_KEY" ;;
@@ -120,3 +131,4 @@ jobs:
             bench-out/*/flashes.json
             bench-out/*/incidents.json
           retention-days: 7
+
