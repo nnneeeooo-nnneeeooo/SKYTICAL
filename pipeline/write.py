@@ -2292,7 +2292,7 @@ def main() -> None:
     if not providers:
         print("write: no LLM API key set (OPENCODE_API_KEY / "
               "ANTHROPIC_API_KEY / GEMINI_API_KEY / NVIDIA_API_KEY / "
-              "OPENROUTER_API_KEY); "
+              "OPENROUTER_API_KEY / WECHAT_API_KEY); "
               "skipping article generation")
         for group in groups:
             _RunTrace("hourly", "article", group).finish(
@@ -2567,3 +2567,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
