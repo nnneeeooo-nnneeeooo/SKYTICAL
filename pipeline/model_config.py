@@ -188,4 +188,3 @@ def manual_reasoning_profile(provider: str, model: str, tier: str) -> dict:
             "effective": f"reasoning_effort={effort}",
         }
     return {"wire": {}, "effective": "provider_default"}
-
