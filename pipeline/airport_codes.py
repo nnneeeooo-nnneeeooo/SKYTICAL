@@ -125,6 +125,21 @@ def _reviewed_aliases() -> dict[str, str]:
     return out
 
 
+@lru_cache(maxsize=32)
+def _reviewed_alias_names(code: str) -> tuple[str, ...]:
+    """Return reviewed Traditional Chinese aliases for one IATA code."""
+    cfg = load_json(ROOT / "config" / "airport_iata_aliases.json", {})
+    target = str(code or "").strip().upper()
+    names = []
+    for alias, alias_code in (cfg.get("aliases") or {}).items():
+        if str(alias_code or "").strip().upper() != target:
+            continue
+        value = str(alias or "").strip()
+        if value and re.search(r"[\u3400-\u9fff]", value):
+            names.append(value)
+    return tuple(names)
+
+
 def resolve_airport(entity: str) -> dict | None:
     """Resolve a verified airport entity without fuzzy guessing."""
     rows, aliases, tw_rows = _registry()
@@ -214,6 +229,32 @@ def _zh_candidates(text: str):
     return matches
 
 
+def _find_zh_identity_match(text: str, entity: str, row: dict):
+    """Find a reviewed Chinese airport name, including common short forms."""
+    values = []
+    for value in (entity, row.get("name_zh")):
+        value = str(value or "").strip()
+        if value and re.search(r"[\u3400-\u9fff]", value) and value not in values:
+            values.append(value)
+    for value in _reviewed_alias_names(str(row.get("code") or "")):
+        if value not in values:
+            values.append(value)
+
+    patterns = []
+    for value in values:
+        patterns.append(re.compile(re.escape(value)))
+        if not value.endswith("機場"):
+            patterns.append(re.compile(re.escape(value + "機場")))
+    hits = []
+    for pattern in patterns:
+        match = pattern.search(text)
+        if match:
+            hits.append(match)
+    if not hits:
+        return None
+    return min(hits, key=lambda match: (match.start(), -len(match.group(0))))
+
+
 def _insert_code(text: str, start: int, end: int, code: str, lang: str) -> str:
     tail = text[end:]
     immediate = re.match(r"\s*[（(]\s*([A-Z]{3})\s*[)）]", tail)
@@ -288,6 +329,7 @@ def enforce_article(article: dict) -> tuple[bool, list[str]]:
     # equivalent title/summary/paragraph. This avoids asking a transliteration
     # heuristic to invent an airport identity.
     zh_done = set()
+    resolved_by_code = {item["code"]: item for item in resolved}
     for slot, matches in by_slot.items():
         key, index = slot
         zh_slot = next((value for k, i, value in _slots(article, "zh")
@@ -296,11 +338,37 @@ def enforce_article(article: dict) -> tuple[bool, list[str]]:
             continue
         candidates = _zh_candidates(zh_slot)
         ordered = sorted(matches, key=lambda row: row[0])
-        if len(candidates) < len(ordered):
+
+        # Prefer the reviewed identity in the equivalent Chinese slot. This
+        # handles common short forms such as 芝加哥奧黑爾 that do not include
+        # the literal suffix 機場.
+        direct_pairs = []
+        for _start, _end, code in ordered:
+            item = resolved_by_code[code]
+            match = _find_zh_identity_match(
+                zh_slot, item["entity"], item["row"])
+            if match is None:
+                direct_pairs = []
+                break
+            direct_pairs.append((match, code))
+        direct_spans = {
+            (match.start(), match.end()) for match, _code in direct_pairs
+        }
+        if len(direct_pairs) == len(ordered) \
+                and len(direct_spans) == len(direct_pairs):
+            pairs = direct_pairs
+        elif len(candidates) >= len(ordered):
+            pairs = [
+                (match, code)
+                for match, (_start, _end, code) in zip(
+                    candidates[:len(ordered)], ordered)
+            ]
+        else:
             continue
+
         text = zh_slot
-        pairs = list(zip(candidates[:len(ordered)], ordered))
-        for match, (_start, _end, code) in reversed(pairs):
+        for match, code in sorted(
+                pairs, key=lambda pair: pair[0].start(), reverse=True):
             new_text = _insert_code(text, match.start(), match.end(), code, "zh")
             changed |= new_text != text
             text = new_text
@@ -329,6 +397,17 @@ def enforce_article(article: dict) -> tuple[bool, list[str]]:
                     if pos >= 0:
                         end = pos + len(zh_name)
                         new_text = _insert_code(text, pos, end, code, "zh")
+                        changed |= new_text != text
+                        _set_slot(article, "zh", key, index, new_text)
+                        placed = True
+                        break
+            if not placed:
+                for key, index, text in _slots(article, "zh"):
+                    match = _find_zh_identity_match(
+                        text, item["entity"], item["row"])
+                    if match:
+                        new_text = _insert_code(
+                            text, match.start(), match.end(), code, "zh")
                         changed |= new_text != text
                         _set_slot(article, "zh", key, index, new_text)
                         placed = True
