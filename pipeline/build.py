@@ -1292,6 +1292,117 @@ def art_view(a, lang: str):
     return v
 
 
+
+HERO_ROTATION_SECONDS = 5 * 60
+_HERO_PIN_MAX_AGE = timedelta(hours=48)
+_HERO_WEATHER_RE = re.compile(
+    r"(?:颱風|台風|熱帶(?:性)?(?:低氣壓|風暴)|豪大雨|豪雨|暴雨|大雨|"
+    r"強降雨|雷雨|強風|暴風|寒流|寒害|大雪|降雪|冰雹|濃霧|大霧|"
+    r"低能見度|沙塵暴|洪水|淹水|地震|海嘯|氣象|"
+    r"typhoon|tropical storm|tropical depression|hurricane|heavy rain|"
+    r"rainstorm|thunderstorm|strong winds?|gale|fog|low visibility|"
+    r"snow|hail|flood|earthquake|tsunami|weather)",
+    re.IGNORECASE,
+)
+_HERO_NATIONAL_AIRLINE_RE = re.compile(
+    r"(?:國籍航空|臺灣航空|台灣航空|華航|中華航空|長榮航空|星宇航空|"
+    r"台灣虎航|臺灣虎航|立榮航空|華信航空|Taiwan(?:ese)? carriers?|"
+    r"China Airlines|EVA Air|STARLUX|Tigerair Taiwan|UNI Air|"
+    r"Mandarin Airlines)",
+    re.IGNORECASE,
+)
+_HERO_FLIGHT_CHANGE_RE = re.compile(
+    r"(?:航班|班機|航線|飛航|取消|停飛|延後|延誤|調整|異動|加班機|"
+    r"疏運|改期|轉降|停駛|flight|flights|air service|schedule|"
+    r"cancel|suspend|delay|divert|rerout|extra flight|relief flight)",
+    re.IGNORECASE,
+)
+
+
+def is_weather_airline_flight_story(article, now=None) -> bool:
+    """Return True for fresh weather-driven national-airline changes.
+
+    Only headline-level fields participate, so a secondary weather mention in
+    a long article body cannot unexpectedly take over the homepage hero.
+    """
+    if not isinstance(article, dict):
+        return False
+    published = article.get("published_dt")
+    if published is None:
+        return False
+    now = now or now_utc()
+    try:
+        age = now - published
+    except TypeError:
+        return False
+    if age < timedelta(0) or age > _HERO_PIN_MAX_AGE:
+        return False
+
+    values = [article.get("source"), article.get("primarySource")]
+    for lang in ("zh", "en"):
+        side = article.get(lang)
+        if isinstance(side, dict):
+            values.extend(side.get(key) for key in ("title", "summary"))
+    text = " ".join(str(value or "") for value in values)
+    return bool(
+        _HERO_WEATHER_RE.search(text)
+        and _HERO_NATIONAL_AIRLINE_RE.search(text)
+        and _HERO_FLIGHT_CHANGE_RE.search(text)
+    )
+
+
+def _hero_image_caption(image, lang: str) -> str:
+    if not isinstance(image, dict):
+        return (
+            "暫無可驗證的事件或資料照片，先顯示 SKYTICAL 預設圖片。"
+            if lang == "zh"
+            else "No verified event or file photo is available yet; "
+                 "showing the SKYTICAL default image."
+        )
+    parts = []
+    if image.get("subject"):
+        parts.append(str(image["subject"]))
+    kind = str(image.get("kind") or "")
+    kind_label = L[lang]["photoKind"].get(kind)
+    if kind_label:
+        parts.append(kind_label)
+    if image.get("credit"):
+        parts.append(f"© {image['credit']}")
+    if image.get("license"):
+        parts.append(str(image["license"]))
+    if image.get("provider"):
+        parts.append(str(image["provider"]))
+    return " · ".join(parts)
+
+
+def hero_rotation_view(view, lang: str) -> dict:
+    """Return the small JSON-safe payload used by the five-minute hero swap."""
+    image = view.get("image") if isinstance(view.get("image"), dict) else None
+    labels = [str(view.get("cat_label") or "")]
+    if view.get("article_format") == "brief":
+        labels.append(L[lang]["briefLabel"])
+    elif view.get("article_format") == "roundup":
+        labels.append(L[lang]["roundupLabel"])
+    return {
+        "id": view.get("id"),
+        "url": view.get("url"),
+        "external": bool(view.get("external")),
+        "title": view.get("title") or "",
+        "summary": view.get("display_summary") or "",
+        "kicker": f"{' · '.join(label for label in labels if label)}"
+                  f" — {L[lang]['topStory']}",
+        "time": view.get("time") or "",
+        "source_meta": f"{L[lang]['mainSource']}: "
+                       f"{view.get('source') or '—'}",
+        "image": image,
+        "image_alt": (
+            str(image.get("subject") or "SKYTICAL")
+            if image else "SKYTICAL"
+        ),
+        "image_caption": _hero_image_caption(image, lang),
+    }
+
+
 def normalize_search_text(value) -> str:
     """Normalize human-entered/search-index text without losing CJK words."""
     text = unicodedata.normalize("NFKC", str(value or "")).casefold()
@@ -2951,19 +3062,32 @@ def main() -> int:
         lang_articles = [
             a for a in articles if lang in a["available_languages"]]
         views = [art_view(a, lang) for a in lang_articles]
+        pinned_articles = [
+            article for article in lang_articles
+            if is_weather_airline_flight_story(article, now)
+        ]
+        pinned_views = [art_view(article, lang)
+                        for article in pinned_articles]
+        hero_candidates = [hero_rotation_view(view, lang)
+                           for view in pinned_views]
         if views:
             fl = flash_view(flashes, lang)
-            hero = views[0]
-            feed = views[1:1 + HOME_FEED_LIMIT]
+            hero = pinned_views[0] if pinned_views else views[0]
+            pinned_ids = ({view["id"] for view in pinned_views}
+                          if pinned_views else {hero["id"]})
+            feed = [view for view in views if view["id"] not in pinned_ids]
+            feed = feed[:HOME_FEED_LIMIT]
         elif agg_items:
             agg = True
             av = agg_view(agg_items, lang)
             fl = agg_flashes(av)
             hero = av[0]
+            hero_candidates = []
             feed = av[1:1 + HOME_FEED_LIMIT]
         else:
             fl = flash_view(flashes, lang)
             hero = None
+            hero_candidates = []
             feed = []
         # ticker items stay structured so the marquee can link each flash
         # to its story (owner request: clickable, no underline)
@@ -2986,7 +3110,8 @@ def main() -> int:
         ctx = base_ctx(lang, "home", "", title=home_title,
                        description=t["siteDesc"], ticker=ticker, build=build)
         ctx["structured_data"] = website_structured_data(lang)
-        ctx.update(hero=hero, feed=feed, flashes=fl, agg=agg,
+        ctx.update(hero=hero, hero_candidates=hero_candidates,
+                   feed=feed, flashes=fl, agg=agg,
                    source_status=source_status_view(sources, now),
                    stats=sv["tiles"], otp=sv["otp"], fleet=sv["fleet"],
                    delays=sv["delays"],
