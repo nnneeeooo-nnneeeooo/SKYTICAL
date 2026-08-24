@@ -14,6 +14,7 @@ in order:
      from entities the article actually verified (airline + aircraft
      type, else airport, airline or agency). Only freely-licensed results
      (CC*/public domain) with required title tokens are accepted. Generic
+     airline fallbacks additionally reject cabin/interior titles; generic
      airline/agency fallbacks also need a recent documented capture year.
 
 The photo is embedded by URL from the origin service (no files are
@@ -64,6 +65,16 @@ _FREE_LICENSE_RE = re.compile(r"\b(cc[ -]|cc0|public domain|pd-)", re.I)
 # never attach maps, logos, seals etc. as a news photo
 _BAD_TITLE_RE = re.compile(
     r"map|logo|diagram|seal|icon|flag|emblem|coat of arms|chart|plan\b",
+    re.I)
+# A generic airline story should show the carrier's aircraft exterior, not a
+# cabin product. Stories with an explicit aircraft type may still use an
+# interior image when the article is specifically about that cabin product.
+_BAD_AIRLINE_INTERIOR_RE = re.compile(
+    r"cabin|interior|premium[\s_-]+economy|business[\s_-]+class|"
+    r"economy[\s_-]+class|first[\s_-]+class|seat(?:s)?|galley|"
+    r"in[-\s]?flight|meal|lounge|flight[\s_-]+deck|cockpit|"
+    r"lavatory|toilet|onboard[\s_-]+service|客艙|機艙|座椅|"
+    r"豪華經濟艙|商務艙|經濟艙|機上餐飲",
     re.I)
 _TAG_RE = re.compile(r"<[^>]+>")
 _CAA_ATTACHMENT_RE = re.compile(
@@ -331,7 +342,12 @@ def existing_image_matches(article: dict, image) -> bool:
     generic_match = re.sub(
         r"[^a-z0-9]+", " ",
         str(image.get("matched") or "").casefold()).strip()
-    if generic_match == f"{normalized_airline} aircraft":
+    is_generic_airline = (
+        generic_match == f"{normalized_airline} aircraft"
+        or generic_match.startswith(f"{normalized_airline} aircraft "))
+    if is_generic_airline:
+        if _BAD_AIRLINE_INTERIOR_RE.search(provenance):
+            return False
         try:
             photo_year = int(image.get("photoYear"))
         except (TypeError, ValueError):
@@ -404,7 +420,8 @@ def lookup_commons(query: str, require_tokens: list[str],
                    subject: str | None = None,
                    require_all: bool = False,
                    min_year: int | None = None,
-                   prefer_recent: bool = False) -> dict | None:
+                   prefer_recent: bool = False,
+                   reject_title_re=None) -> dict | None:
     """First freely-licensed Commons bitmap matching the query.
 
     require_tokens: title tokens used to reject unrelated search results.
@@ -430,6 +447,8 @@ def lookup_commons(query: str, require_tokens: list[str],
     for page in sorted(pages.values(), key=lambda p: p.get("index", 99)):
         title = str(page.get("title") or "")
         if _BAD_TITLE_RE.search(title):
+            continue
+        if reject_title_re is not None and reject_title_re.search(title):
             continue
         token_hits = [t in title.casefold() for t in tokens]
         if tokens and (not all(token_hits) if require_all
@@ -500,8 +519,9 @@ def resolve_image(article: dict) -> dict | None:
         min_year = (
             _article_year(article) - GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS)
         return lookup_commons(
-            f'{airline} aircraft', [airline], subject=airline,
-            min_year=min_year, prefer_recent=True)
+            f'{airline} aircraft exterior', [airline], subject=airline,
+            min_year=min_year, prefer_recent=True,
+            reject_title_re=_BAD_AIRLINE_INTERIOR_RE)
     if airport:
         query, tokens, subject = airport
         return lookup_commons(query, tokens, subject=subject)
