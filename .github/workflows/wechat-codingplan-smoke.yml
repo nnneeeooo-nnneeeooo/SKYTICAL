@@ -7,6 +7,9 @@ on:
       - main
     paths:
       - .github/workflows/wechat-codingplan-smoke.yml
+      - pipeline/model_config.py
+      - pipeline/providers.py
+      - tests/test_providers_payloads.py
 
 permissions:
   contents: read
@@ -98,4 +101,5 @@ jobs:
               f"total_tokens={total_tokens}."
           )
           PY
+
 
