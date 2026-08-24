@@ -162,6 +162,14 @@ indigo_story = make_article(
 indigo_story["entities"]["airlines"] = ["IndiGo", "British Airways"]
 check("primary IndiGo entity outranks an executive's former airline",
       images.find_airline(indigo_story) == "IndiGo")
+uni_story = make_article("a", "立榮申請停飛台北花蓮航線")
+uni_story["entities"]["airlines"] = ["華信航空", "立榮航空"]
+check("headline order corrects a comparison carrier listed first",
+      images.find_airline(uni_story) == "UNI Air")
+air_astana_story = make_article("a", "Air Astana extends Dubai suspension")
+air_astana_story["entities"]["airlines"] = ["Air Astana", "Air Canada"]
+check("unknown verified airline entity is kept instead of dictionary drift",
+      images.find_airline(air_astana_story) == "Air Astana")
 check("aircraft family match never over-claims a sub-variant",
       images.find_aircraft_type(make_article(
           "a", "The Airbus A350 landed")) == "Airbus A350")
@@ -182,6 +190,17 @@ check("agency stories fall back to an official-agency photo query",
           ["Federal Aviation"], "美國聯邦航空總署（FAA）總部"))
 check("substring 'faa' inside a word never triggers the org match",
       images.find_org(make_article("a", "shortfaall of capacity")) is None)
+military_story = make_article("a", "MH-60S Seahawk hard-lands in California")
+military_story["entities"]["aircraft_models"] = [
+    "MH-60S Seahawk", "HH-60W Jolly Green II"]
+check("verified military aircraft entity extends the type matcher",
+      images.find_aircraft_type(military_story) == "MH-60S Seahawk")
+airport_story = make_article("a", "Incheon airport installs queue barrier")
+airport_story["entities"]["airports"] = ["Incheon International Airport"]
+check("verified global airport entity becomes a strict lookup target",
+      images.find_airport(airport_story)
+      == ("Incheon International Airport", ["Incheon"],
+          "Incheon International Airport"))
 
 # ── tier 1: planespotters by registration ────────────────────────────────────
 
@@ -331,7 +350,75 @@ cabin_generic_image = dict(
     url="https://upload.wikimedia.org/Premium_Economy_Class_-_China_Airlines.jpg")
 check("cached generic airline cabin photo is stale",
       not images.existing_image_matches(
-          generic_china_story, cabin_generic_image))
+           generic_china_story, cabin_generic_image))
+
+brussels_story = make_article("a-brussels", "Brussels Airlines opens Arctic routes")
+brussels_story["entities"]["airlines"] = ["Brussels Airlines", "Lufthansa"]
+lufthansa_image = dict(
+    fresh_generic_airline_image,
+    url="https://upload.wikimedia.org/Lufthansa_aircraft.jpg",
+    matched="Lufthansa aircraft",
+    subject="Lufthansa",
+)
+check("cached comparison-carrier photo is stale",
+      not images.existing_image_matches(brussels_story, lufthansa_image))
+
+weather_story = make_article("a-weather", "Typhoon changes Taiwan airlines flights")
+weather_story["entities"]["airlines"] = [
+    "Tigerair Taiwan", "China Airlines", "STARLUX Airlines"]
+tigerair_image = dict(
+    fresh_generic_airline_image,
+    url="https://upload.wikimedia.org/Tigerair_Taiwan_A320.jpg",
+    matched="Tigerair Taiwan aircraft",
+    subject="Tigerair Taiwan",
+)
+check("verified secondary carrier is allowed for a multi-airline weather story",
+      images.existing_image_matches(weather_story, tigerair_image))
+
+facility_story = make_article("a-facility", "Incheon airport installs queue barrier")
+facility_story["entities"]["airports"] = ["Incheon International Airport"]
+a320_image = dict(
+    fresh_generic_airline_image,
+    url="https://upload.wikimedia.org/Lufthansa_A320.jpg",
+    matched="Airbus A320 aircraft",
+    subject="Airbus A320",
+)
+check("aircraft photo is stale for an airport-facility story",
+      not images.existing_image_matches(facility_story, a320_image))
+airport_facility_image = dict(
+    fresh_generic_airline_image,
+    url="https://upload.wikimedia.org/Incheon_airport_queue.jpg",
+    matched="Incheon International Airport",
+    subject="Incheon International Airport",
+)
+check("strict airport match remains compatible with an airport-facility story",
+      images.existing_image_matches(facility_story, airport_facility_image))
+
+drone_story = make_article("a-drone", "Amazon expands drone delivery service")
+drone_image = {
+    "url": "https://upload.wikimedia.org/Quadcopter_Drone_in_flight.jpg",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "topic:drone", "subject": "drone file photo",
+}
+check("topic fallback remains compatible with its headline",
+      images.existing_image_matches(drone_story, drone_image))
+
+malaysia_story = make_article("a-malaysia", "Malaysia Airlines completes drug testing")
+malaysia_story["entities"]["airlines"] = ["Malaysia Airlines"]
+wreckage_image = dict(
+    fresh_generic_airline_image,
+    url="https://upload.wikimedia.org/Malaysia_Airlines_wreckage.png",
+    matched="Malaysia Airlines aircraft",
+    subject="Malaysia Airlines",
+)
+check("wreckage image is stale for a non-incident airline story",
+      not images.existing_image_matches(malaysia_story, wreckage_image))
+
+incident_story = make_article("a-incident", "Cirrus Vision Jet hard-lands on runway")
+incident_story["entities"]["aircraft_models"] = ["Cirrus Vision Jet"]
+incident_story["entities"]["airports"] = ["Driggs-Reed Memorial Airport"]
+check("incident with a verified aircraft type does not fall back to a generic airport",
+      images.resolve_image(incident_story) is None)
 
 air_macau_story = make_article(
     "a-air-macau", "Air Macau Airbus A321neo B-MBU arrived")

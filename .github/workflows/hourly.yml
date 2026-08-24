@@ -40,6 +40,12 @@ jobs:
       - name: Test summary boundary guard
         run: python tests/test_summary_guard.py
 
+      - name: Test image relevance and fallback guards
+        run: |
+          python tests/test_images.py
+          python tests/test_image_fallbacks.py
+          python tests/test_recent_image_quality.py
+
       - name: Run pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
