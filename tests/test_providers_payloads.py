@@ -135,6 +135,7 @@ def test_nvidia_model_profiles():
 
 def test_model_priority_defaults():
     expected = (
+        "wechat:Deepseek-v4-flash",
         "opencode:claude-sonnet-4-6",
         "opencode:gpt-5.5",
         "gemini:gemini-3.6-flash",
@@ -176,14 +177,112 @@ def test_model_priority_defaults():
           "Nemotron Ultra is the highest-priority OpenRouter default")
     check(providers.OPENCODE_DEFAULT_MODEL == "claude-sonnet-4-6",
           "Claude Sonnet 4.6 is the highest-priority OpenCode default")
-    check(expected[10:12] == (
+    check(providers.WECHAT_DEFAULT_MODEL == "Deepseek-v4-flash",
+          "DeepSeek V4 Flash is the WeChat Coding Plan default")
+    check(expected[11:13] == (
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    ) and expected[13:15] == (
+    ) and expected[14:16] == (
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
         "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
     ), "equivalent Nemotron models are adjacent with native NVIDIA first")
     print("test_model_priority_defaults: done")
+
+
+def test_wechat_protocol_and_payloads():
+    """The contest token uses the WeChat OpenAI-compatible gateway."""
+    saved_key = os.environ.get("WECHAT_API_KEY")
+    saved_model = os.environ.get("AVWIRE_WECHAT_MODEL")
+    saved_order = os.environ.get("AVWIRE_PROVIDER_ORDER")
+    os.environ["WECHAT_API_KEY"] = "wechat-test-token"
+    os.environ.pop("AVWIRE_WECHAT_MODEL", None)
+    os.environ.pop("AVWIRE_PROVIDER_ORDER", None)
+    try:
+        captured = []
+
+        def fake_post(url, json=None, timeout=None, headers=None):
+            captured.append((url, json, headers))
+            return FakeResponse({
+                "choices": [{
+                    "finish_reason": "stop",
+                    "message": {
+                        "content": GOOD,
+                        "reasoning_content": "PRIVATE-TRACE",
+                    },
+                }],
+                "usage": {"prompt_tokens": 17, "completion_tokens": 9},
+            }, headers={"x-request-id": "wechat-safe"})
+
+        provider = providers.WechatProvider()
+        result = with_post(
+            fake_post, lambda: provider.draft("sys", "user", SCHEMA))
+        url, payload, headers = captured[0]
+        check(result == {"ok": 1}, "WeChat draft parsed")
+        check(url == ("https://chatapi.weixin.qq.com/openai/v1/"
+                      "chat/completions"), "WeChat endpoint is exact")
+        check(payload["model"] == "Deepseek-v4-flash"
+              and payload["max_tokens"] == 16384
+              and payload["stream"] is False,
+              "WeChat OpenAI payload uses the contest model")
+        check(payload.get("thinking") == {"type": "disabled"},
+              "WeChat disables hidden reasoning for JSON drafting")
+        check(headers.get("Authorization") ==
+              "Bearer wechat-test-token"
+              and headers.get("Content-Type") == "application/json",
+              "WeChat uses bearer authentication without rewriting the token")
+        check(provider.usage["inputTokens"] == 17
+              and provider.usage["outputTokens"] == 9
+              and provider.request_log[0]["headers"]
+              == {"x-request-id": "wechat-safe"},
+              "WeChat usage and safe telemetry are recorded")
+
+        calls = []
+
+        def fake_repair(url, json=None, timeout=None, headers=None):
+            calls.append(json)
+            content = '{"ok": 1,,}' if len(calls) == 1 else GOOD
+            return FakeResponse({"choices": [{
+                "finish_reason": "stop",
+                "message": {"content": content},
+            }]})
+
+        provider = providers.WechatProvider()
+        result = with_post(
+            fake_repair, lambda: provider.draft("sys", "user", SCHEMA))
+        check(result == {"ok": 1} and len(calls) == 2,
+              "WeChat malformed JSON gets one syntax repair")
+        check(calls[1].get("thinking") == {"type": "disabled"}
+              and calls[1]["max_tokens"] == 8192,
+              "WeChat repair keeps hidden reasoning disabled")
+
+        automatic = [
+            row.label for row in providers.build_providers()
+            if row.name == "wechat"
+        ]
+        check(automatic == ["wechat:Deepseek-v4-flash"],
+              "automatic writer exposes the WeChat provider in priority order")
+        try:
+            provider._final_text(FakeResponse({"error": {"code": 401}}))
+            check(False, "embedded WeChat 401 must disable the bad token")
+        except providers.ProviderAuthError:
+            check(True, "embedded WeChat auth error is classified safely")
+        check("wechat-test-token" not in providers.safe_failure_message(
+            "failed token=wechat-test-token"),
+              "WeChat token is redacted from diagnostics")
+    finally:
+        if saved_key is None:
+            os.environ.pop("WECHAT_API_KEY", None)
+        else:
+            os.environ["WECHAT_API_KEY"] = saved_key
+        if saved_model is None:
+            os.environ.pop("AVWIRE_WECHAT_MODEL", None)
+        else:
+            os.environ["AVWIRE_WECHAT_MODEL"] = saved_model
+        if saved_order is None:
+            os.environ.pop("AVWIRE_PROVIDER_ORDER", None)
+        else:
+            os.environ["AVWIRE_PROVIDER_ORDER"] = saved_order
+    print("test_wechat_protocol_and_payloads: done")
 
 
 def test_openrouter_models_and_payloads():
@@ -561,6 +660,7 @@ def test_gemini_format_repair():
 def main():
     tests = [
         test_model_priority_defaults,
+        test_wechat_protocol_and_payloads,
         test_opencode_protocols_and_payloads,
         test_openrouter_models_and_payloads,
         test_nvidia_model_profiles,
@@ -580,3 +680,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
