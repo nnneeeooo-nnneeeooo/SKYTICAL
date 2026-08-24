@@ -267,6 +267,48 @@ check("generic airline fallback rejects old fleet photos and picks newest",
       == "https://upload.wikimedia.org/china-2026.jpg"
       and recent_generic["photoYear"] == 2026)
 
+fake.commons = FakeResp(200, {"query": {"pages": {
+    "1": {"index": 0,
+          "title": "File:Premium Economy Class - China Airlines Airbus A350 2026.jpg",
+          "imageinfo": [{
+              "thumburl": "https://upload.wikimedia.org/china-cabin-2026.jpg",
+              "extmetadata": {
+                  "DateTimeOriginal": {"value": "2026-01-01"},
+                  "LicenseShortName": {"value": "CC BY 4.0"},
+                  "Artist": {"value": "Cabin Photographer"}}}]},
+    "2": {"index": 1,
+          "title": "File:China Airlines Boeing 777-300ER exterior 2025.jpg",
+          "imageinfo": [{
+              "thumburl": "https://upload.wikimedia.org/china-exterior-2025.jpg",
+              "extmetadata": {
+                  "DateTimeOriginal": {"value": "2025-01-01"},
+                  "LicenseShortName": {"value": "CC BY 4.0"},
+                  "Artist": {"value": "Exterior Photographer"}}}]},
+}}})
+generic_exterior = images.lookup_commons(
+    "China Airlines aircraft exterior", ["China Airlines"],
+    min_year=2016, prefer_recent=True,
+    reject_title_re=images._BAD_AIRLINE_INTERIOR_RE)
+check("generic airline fallback rejects a newer cabin file in favor of exterior aircraft",
+      generic_exterior["url"]
+      == "https://upload.wikimedia.org/china-exterior-2025.jpg")
+
+fake.commons = FakeResp(200, {"query": {"pages": {
+    "1": {"index": 0,
+          "title": "File:China Airlines Premium Economy Class 2026.jpg",
+          "imageinfo": [{
+              "thumburl": "https://upload.wikimedia.org/china-cabin-only.jpg",
+              "extmetadata": {
+                  "DateTimeOriginal": {"value": "2026-01-01"},
+                  "LicenseShortName": {"value": "CC BY 4.0"},
+                  "Artist": {"value": "Cabin Photographer"}}}]},
+}}})
+check("generic airline fallback returns no image when only cabin files match",
+      images.lookup_commons(
+          "China Airlines aircraft exterior", ["China Airlines"],
+          min_year=2016, prefer_recent=True,
+          reject_title_re=images._BAD_AIRLINE_INTERIOR_RE) is None)
+
 generic_china_story = make_article(
     "a-generic-china", "China Airlines provides relief flight assistance")
 generic_china_story["entities"]["airlines"] = ["China Airlines"]
@@ -283,6 +325,13 @@ check("cached generic airline photo without a recent capture year is stale",
           generic_china_story, old_generic_airline_image)
       and images.existing_image_matches(
           generic_china_story, fresh_generic_airline_image))
+
+cabin_generic_image = dict(
+    fresh_generic_airline_image,
+    url="https://upload.wikimedia.org/Premium_Economy_Class_-_China_Airlines.jpg")
+check("cached generic airline cabin photo is stale",
+      not images.existing_image_matches(
+          generic_china_story, cabin_generic_image))
 
 air_macau_story = make_article(
     "a-air-macau", "Air Macau Airbus A321neo B-MBU arrived")
