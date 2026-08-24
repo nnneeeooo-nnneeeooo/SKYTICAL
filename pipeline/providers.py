@@ -1391,4 +1391,3 @@ def build_providers() -> list:
         if provider.available():
             providers.append(provider)
     return providers
-
