@@ -812,6 +812,8 @@ def test_static_security_contract():
     check("secrets.AVWIRE_MANUAL_TOKEN" in workflow
           and "secrets.OPENROUTER_API_KEY" in workflow
           and "secrets.OPENCODE_API_KEY" in workflow
+          and "secrets.DeepSeekV4Flash_API" in workflow
+          and "WECHAT_API_KEY" in workflow
           and "encrypted envelopes only" in workflow
           and "data/manual-jobs/outbox 2>/dev/null || true" in workflow,
           "Actions uses Secrets, checks ciphertext and tolerates empty queues")
