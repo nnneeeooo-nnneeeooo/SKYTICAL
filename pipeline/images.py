@@ -22,6 +22,9 @@ committed); a match is stored on the article JSON and cached in
 data/images.json. No confident match -> the article simply keeps no
 image. Any network failure is logged and skipped: this stage may never
 fail the pipeline, never calls a model, and never requires an API key.
+Existing automatic images are revalidated inside the same seven-day article
+window.  A stale or semantically unsafe match is removed before a replacement
+is attempted; the neutral site fallback is preferable to a misleading photo.
 """
 from __future__ import annotations
 
@@ -44,6 +47,17 @@ from common import (  # noqa: E402
     parse_iso,
     save_json,
 )
+from image_policy import (  # noqa: E402
+    BAD_AIRCRAFT_TITLE_RE,
+    BAD_AIRLINE_INTERIOR_RE,
+    BAD_AIRPORT_TITLE_RE,
+    article_is_airport_operations,
+    article_context_text,
+    article_headline_text,
+    article_is_incident,
+    image_is_safe_for_article,
+    image_provenance,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_PATH = DATA_DIR / "images.json"
@@ -54,7 +68,7 @@ HEADERS = {"User-Agent": USER_AGENT}
 MAX_LOOKUPS_PER_RUN = 6
 MAX_ATTEMPTS = 3          # per article before we stop retrying "none"
 RETRY_AFTER_HOURS = 6
-MAX_ARTICLE_AGE_DAYS = 14  # never backfill ancient batches
+MAX_ARTICLE_AGE_DAYS = 7  # scan only the user-facing seven-day news window
 GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS = 10
 GENERIC_ORG_MAX_PHOTO_AGE_YEARS = 10
 
@@ -64,18 +78,20 @@ COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 _FREE_LICENSE_RE = re.compile(r"\b(cc[ -]|cc0|public domain|pd-)", re.I)
 # never attach maps, logos, seals etc. as a news photo
 _BAD_TITLE_RE = re.compile(
-    r"map|logo|diagram|seal|icon|flag|emblem|coat of arms|chart|plan\b",
+    r"map|logo|diagram|schematic|seal|icon|flag|emblem|coat of arms|"
+    r"chart|plan\b|mairie|municipal|town hall|city hall|residential|"
+    r"\bhouse\b|\bmemorial\b|statue",
     re.I)
 # A generic airline story should show the carrier's aircraft exterior, not a
 # cabin product. Stories with an explicit aircraft type may still use an
 # interior image when the article is specifically about that cabin product.
-_BAD_AIRLINE_INTERIOR_RE = re.compile(
-    r"cabin|interior|premium[\s_-]+economy|business[\s_-]+class|"
-    r"economy[\s_-]+class|first[\s_-]+class|seat(?:s)?|galley|"
-    r"in[-\s]?flight|meal|lounge|flight[\s_-]+deck|cockpit|"
-    r"lavatory|toilet|onboard[\s_-]+service|客艙|機艙|座椅|"
-    r"豪華經濟艙|商務艙|經濟艙|機上餐飲",
-    re.I)
+# Kept as a module-level alias for existing tests and callers.
+_BAD_AIRLINE_INTERIOR_RE = BAD_AIRLINE_INTERIOR_RE
+_BAD_AIRLINE_IMAGE_RE = re.compile(
+    rf"(?:{_BAD_AIRLINE_INTERIOR_RE.pattern})|"
+    rf"(?:{BAD_AIRCRAFT_TITLE_RE.pattern})",
+    re.I,
+)
 _TAG_RE = re.compile(r"<[^>]+>")
 _CAA_ATTACHMENT_RE = re.compile(
     r'<a\b(?=[^>]*\bclass=["\'][^"\']*download-filebase)'
@@ -174,55 +190,102 @@ def find_registration(article: dict) -> str | None:
 def find_airline(article: dict) -> str | None:
     """Return the article's primary airline, never a background mention.
 
-    The drafting contract orders ``entities.airlines`` by relevance.  Use
-    that order before scanning prose so a route story about STARLUX does not
-    select China Airlines merely because the comparison carrier appears in
-    the body, and an IndiGo executive story does not select a former employer.
+    ``entities.airlines`` is normally relevance-ordered, but some source
+    drafts put a comparison carrier first.  A carrier named first in the
+    headline wins; entity order is the tie-breaker.  Unknown but verified
+    airline entities are retained instead of falling back to a coincidental
+    dictionary match elsewhere in the article.
     """
-    text = _article_text(article)
-    low = text.casefold()
     entities = article.get("entities") or {}
     entity_airlines = (
         entities.get("airlines") if isinstance(entities, dict) else []) or []
-    for entity in entity_airlines:
-        entity_low = str(entity or "").casefold()
+
+    def canonical(entity) -> str:
+        raw = str(entity or "").strip()
+        raw_low = raw.casefold()
         for airline in _airlines:
-            en = str(airline.get("airline_name_en") or "")
-            zh = str(airline.get("airline_name_zh_tw") or "")
-            if entity_low and entity_low in (en.casefold(), zh.casefold()):
-                return en or zh
-    lead_parts = []
+            en = str(airline.get("airline_name_en") or "").strip()
+            zh = str(airline.get("airline_name_zh_tw") or "").strip()
+            if (raw_low in {en.casefold(), zh.casefold()}
+                    or (len(raw) >= 2 and raw_low in zh.casefold())):
+                return en or zh or raw
+        return raw
+
+    def aliases(name: str) -> list[str]:
+        low = name.casefold()
+        for airline in _airlines:
+            en = str(airline.get("airline_name_en") or "").strip()
+            zh = str(airline.get("airline_name_zh_tw") or "").strip()
+            if low in {en.casefold(), zh.casefold()}:
+                values = [value for value in (en, zh) if value]
+                if zh.endswith("航空"):
+                    values.append(zh[:-2])
+                return values
+        return [name]
+
+    headline_parts = []
     for lang in ("zh", "en"):
         block = article.get(lang) or {}
-        lead_parts.extend([
-            str(block.get("title") or ""),
-            str(block.get("summary") or ""),
-            str((block.get("body") or [""])[0]),
-        ])
-    lead = " ".join(lead_parts)
-    lead_low = lead.casefold()
+        headline_parts.append(str(block.get("title") or ""))
+    headline = " ".join(headline_parts)
+    summary_parts = []
+    for lang in ("zh", "en"):
+        block = article.get(lang) or {}
+        summary_parts.append(str(block.get("summary") or ""))
+    summary = " ".join(summary_parts)
+
     ranked = []
-    for index, airline in enumerate(_airlines):
-        en = str(airline.get("airline_name_en") or "")
-        zh = str(airline.get("airline_name_zh_tw") or "")
-        score = 0
-        positions = []
-        if en:
-            score += lead_low.count(en.casefold()) * 10
-            score += low.count(en.casefold())
-            position = lead_low.find(en.casefold())
-            if position >= 0:
-                positions.append(position)
-        if zh:
-            score += lead.count(zh) * 10
-            score += text.count(zh)
-            position = lead.find(zh)
-            if position >= 0:
-                positions.append(position)
-        if score:
-            first_position = min(positions) if positions else len(lead)
-            ranked.append((score, -first_position, -index, en or zh))
-    return max(ranked)[3] if ranked else None
+    for index, entity in enumerate(entity_airlines):
+        name = canonical(entity)
+        if not name:
+            continue
+        positions = [
+            position for value in aliases(name)
+            for text, rank in ((headline, 0), (summary, 1))
+            if (position := text.casefold().find(value.casefold())) >= 0
+        ]
+        if positions:
+            # Headline order is the strongest signal, then summary order.
+            title_positions = [
+                headline.casefold().find(value.casefold())
+                for value in aliases(name)
+                if headline.casefold().find(value.casefold()) >= 0
+            ]
+            if title_positions:
+                ranked.append((0, min(title_positions), index, name))
+                continue
+            summary_positions = [
+                summary.casefold().find(value.casefold())
+                for value in aliases(name)
+                if summary.casefold().find(value.casefold()) >= 0
+            ]
+            ranked.append((1, min(summary_positions), index, name))
+        else:
+            ranked.append((2, index, index, name))
+    if ranked:
+        return min(ranked)[3]
+
+    # No verified entity: only inspect the headline and summary.  Searching
+    # the full body is how comparison carriers became false primary matches.
+    for text in (headline, summary):
+        ranked = []
+        text_low = text.casefold()
+        for index, airline in enumerate(_airlines):
+            names = [str(airline.get(key) or "").strip()
+                     for key in ("airline_name_en", "airline_name_zh_tw")]
+            zh = names[1]
+            if zh.endswith("航空"):
+                names.append(zh[:-2])
+            positions = [
+                text_low.find(name.casefold())
+                for name in names if name and text_low.find(name.casefold()) >= 0
+            ]
+            if positions:
+                ranked.append((min(positions), -len(names[0]), -index,
+                               names[0] or names[1]))
+        if ranked:
+            return min(ranked)[3]
+    return None
 
 
 def find_aircraft_type(article: dict) -> str | None:
@@ -247,6 +310,20 @@ def find_aircraft_type(article: dict) -> str | None:
         if (len(family) >= 4 and family.casefold() != bare.casefold()
                 and re.search(rf"\b{re.escape(family)}\b", text, re.I)):
             return f"{maker} {family}"
+
+    # The compact commercial dictionary intentionally does not contain every
+    # military, experimental or historic type.  Verified entity values are a
+    # safer extension than guessing from arbitrary prose.
+    entities = article.get("entities") or {}
+    models = entities.get("aircraft_models") if isinstance(entities, dict) else []
+    for model in models or []:
+        value = str(model or "").strip()
+        if not value or re.search(
+                r"\b(?:ultra\s+short|aircraft|airplane|flight|unknown)\b",
+                value, re.I):
+            continue
+        if len(re.findall(r"[A-Za-z0-9]", value)) >= 3:
+            return value
     return None
 
 
@@ -263,6 +340,24 @@ def find_airport(article: dict):
             if val and (val in text or val.casefold() in low):
                 name = str(ap.get("name_en") or val)
                 return name, [name.split()[0]], str(ap.get("name_zh") or name)
+
+    # Verified non-Taiwan airport entities are also valid lookup targets.  A
+    # bare three-letter code is not enough evidence to select a building or
+    # civic photo, so require a meaningful name or CJK text.
+    entities = article.get("entities") or {}
+    airports = entities.get("airports") if isinstance(entities, dict) else []
+    generic = {"airport", "international", "intl", "terminal", "airfield"}
+    for value in airports or []:
+        name = str(value or "").strip()
+        if not name:
+            continue
+        words = re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9]+", name)
+        meaningful = [word for word in words
+                      if len(word) >= 4 and word.casefold() not in generic]
+        if not meaningful and not re.search(r"[一-鿿]", name):
+            continue
+        tokens = meaningful[:3] or [name]
+        return name, tokens, name
     return None
 
 
@@ -299,6 +394,67 @@ def _article_year(article: dict) -> int:
         return now_utc().year
 
 
+def _normalized_phrase(value: object) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", str(value or "").casefold()).strip()
+
+
+def _image_named_airlines(image: dict) -> list[str]:
+    """Return configured carrier names found in image provenance."""
+    provenance = _normalized_phrase(image_provenance(image))
+    found = []
+    for airline in _airlines:
+        en = str(airline.get("airline_name_en") or "").strip()
+        zh = str(airline.get("airline_name_zh_tw") or "").strip()
+        aliases = [_normalized_phrase(value) for value in (en, zh) if value]
+        if any(alias and alias in provenance for alias in aliases):
+            found.append(en or zh)
+    return found
+
+
+def _airline_aliases(name: str) -> list[str]:
+    normalized = name.casefold()
+    for airline in _airlines:
+        en = str(airline.get("airline_name_en") or "").strip()
+        zh = str(airline.get("airline_name_zh_tw") or "").strip()
+        if normalized in {en.casefold(), zh.casefold()}:
+            return [value for value in (en, zh) if value]
+    return [name]
+
+
+def _secondary_image_airline_allowed(article: dict,
+                                     named_airlines: list[str]) -> bool:
+    """Allow a secondary carrier only for explicit multi-carrier headlines."""
+    entities = article.get("entities") or {}
+    entity_values = (
+        entities.get("airlines") if isinstance(entities, dict) else []) or []
+    if not entity_values:
+        return False
+    headline = article_headline_text(article).casefold()
+    context = article_context_text(article)
+    weather_multi = re.search(
+        r"typhoon|storm|weather|颱風|天氣|豪雨|航班調整|班機調整|"
+        r"取消航班|航班取消",
+        context,
+        re.I,
+    ) is not None
+    for name in named_airlines:
+        aliases = _airline_aliases(name)
+        mentioned_in_headline = any(
+            alias and alias.casefold() in headline for alias in aliases)
+        if mentioned_in_headline or weather_multi:
+            # Only permit the secondary image if the carrier is itself one of
+            # the verified entities, not merely a dictionary match.
+            for entity in entity_values:
+                entity_low = str(entity or "").casefold()
+                if any(
+                        alias and (alias.casefold() == entity_low
+                                   or entity_low in alias.casefold()
+                                   or alias.casefold() in entity_low)
+                        for alias in aliases):
+                    return True
+    return False
+
+
 def existing_image_matches(article: dict, image) -> bool:
     """Whether an existing automatic image still fits revised article facts.
 
@@ -314,6 +470,8 @@ def existing_image_matches(article: dict, image) -> bool:
     if (image.get("provider") != "Wikimedia Commons"
             or image.get("kind") != "file_photo"):
         return True
+    if not image_is_safe_for_article(article, image):
+        return False
     provenance = " ".join(str(image.get(key) or "") for key in (
         "matched", "subject", "url", "link"))
     if not str(image.get("matched") or image.get("subject") or "").strip():
@@ -324,6 +482,42 @@ def existing_image_matches(article: dict, image) -> bool:
         normalized_reg = re.sub(r"[^a-z0-9]+", " ", reg.casefold()).strip()
         if normalized_reg and normalized_reg in normalized:
             return True
+
+    # A carrier explicitly named by a Commons result must be the article's
+    # primary verified carrier.  This catches background-entity accidents such
+    # as Air Canada on an Air Astana article and Mandarin on a UNI Air article.
+    named_airlines = _image_named_airlines(image)
+    secondary_carrier = False
+    if named_airlines:
+        primary = find_airline(article)
+        if not primary:
+            return False
+        primary_aliases = {
+            _normalized_phrase(value) for value in _airline_aliases(primary)
+        }
+        if not any(
+                _normalized_phrase(name) in primary_aliases
+                for name in named_airlines):
+            if not _secondary_image_airline_allowed(article, named_airlines):
+                return False
+            secondary_carrier = True
+
+    # A strict airport match is allowed even when the article also mentions a
+    # carrier in the background.  Facility and infrastructure stories often
+    # have both kinds of entities, and the airport exterior is the more honest
+    # visual subject.
+    if str(image.get("matched") or "").casefold().startswith("airport:"):
+        return True
+    if str(image.get("matched") or "").casefold().startswith("topic:"):
+        return True
+    airport = find_airport(article)
+    if airport:
+        query, _tokens, _subject = airport
+        if _normalized_phrase(image.get("matched")) == _normalized_phrase(query):
+            return True
+    if secondary_carrier:
+        return True
+
     org = find_org(article)
     if org:
         query, _tokens, _subject = org
@@ -336,9 +530,10 @@ def existing_image_matches(article: dict, image) -> bool:
                 _article_year(article) - GENERIC_ORG_MAX_PHOTO_AGE_YEARS)
     airline = find_airline(article)
     if not airline:
+        # No primary carrier means a generic aircraft photo can still be a
+        # valid type match, but named-carrier photos were rejected above.
         return True
-    normalized_airline = re.sub(
-        r"[^a-z0-9]+", " ", airline.casefold()).strip()
+    normalized_airline = _normalized_phrase(airline)
     generic_match = re.sub(
         r"[^a-z0-9]+", " ",
         str(image.get("matched") or "").casefold()).strip()
@@ -505,26 +700,43 @@ def resolve_image(article: dict) -> dict | None:
     airline = find_airline(article)
     actype = find_aircraft_type(article)
     airport = find_airport(article)
+
+    # For a facility/queue/security story, an aircraft search is a semantic
+    # mismatch even when the article happens to mention an A320.  Prefer a
+    # strict airport exterior photo and otherwise keep the neutral fallback.
+    if (airport and article_is_airport_operations(article)
+            and not (article_is_incident(article) and actype)):
+        query, tokens, subject = airport
+        return lookup_commons(
+            query, tokens, subject=subject,
+            reject_title_re=BAD_AIRPORT_TITLE_RE)
+
     if airline and actype:
         # family token ("A350") so Commons titles with any sub-variant match
         type_token = actype.split()[-1].split("-")[0]
         return lookup_commons(
             f'{airline} {actype}', [type_token, airline],
-            subject=f"{airline} {actype}", require_all=True)
+            subject=f"{airline} {actype}", require_all=True,
+            reject_title_re=BAD_AIRCRAFT_TITLE_RE)
     if actype:
         type_token = actype.split()[-1].split("-")[0]
         return lookup_commons(f'{actype} aircraft', [type_token],
-                              subject=actype)
+                              subject=actype,
+                              reject_title_re=BAD_AIRCRAFT_TITLE_RE)
     if airline:
         min_year = (
             _article_year(article) - GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS)
         return lookup_commons(
             f'{airline} aircraft exterior', [airline], subject=airline,
             min_year=min_year, prefer_recent=True,
-            reject_title_re=_BAD_AIRLINE_INTERIOR_RE)
+            reject_title_re=_BAD_AIRLINE_IMAGE_RE)
     if airport:
+        if article_is_incident(article) and actype:
+            return None
         query, tokens, subject = airport
-        return lookup_commons(query, tokens, subject=subject)
+        return lookup_commons(
+            query, tokens, subject=subject,
+            reject_title_re=BAD_AIRPORT_TITLE_RE)
     org = find_org(article)
     if org:
         query, tokens, subject = org
@@ -565,6 +777,7 @@ def main() -> int:
         entries = {}
     cache = {"articles": entries}
     now = now_utc()
+    cutoff = now - timedelta(days=MAX_ARTICLE_AGE_DAYS)
     lookups = attached = 0
 
     for path, batch, articles in _recent_batches():
@@ -572,6 +785,11 @@ def main() -> int:
         for article in articles:
             art_id = str(article.get("id") or "")
             if not art_id:
+                continue
+            try:
+                if parse_iso(str(article.get("publishedUtc"))) < cutoff:
+                    continue
+            except (TypeError, ValueError):
                 continue
             if article.get("articleFormat") == "roundup":
                 if article.pop("image", None) is not None:

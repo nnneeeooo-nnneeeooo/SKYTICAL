@@ -52,10 +52,16 @@ def main() -> int:
     assert "Quadcopter_Drone_in_flight.jpg" in drone["url"]
 
     english = image_fallbacks.topic_image(
-        article("Section 232 tariff update", "New tariffs apply to imported UAS components")
+        article("Section 232 drone tariff update", "New tariffs apply to imported UAS components")
     )
     assert english is not None
     assert english["matched"] == "topic:drone"
+
+    # A body-only mention must not turn an unrelated fleet story into a
+    # quadcopter card.
+    assert image_fallbacks.topic_image(
+        article("UK military fleet inventory update", "The report also counts drone systems")
+    ) is None
 
     # Regression: the Etna story already exposes Catania airport as a verified
     # entity, so a non-Taiwan airport must now become a Commons lookup target.
@@ -113,6 +119,14 @@ def main() -> int:
                 "extmetadata": {"LicenseShortName": {"value": "All rights reserved"}},
             }],
         },
+        "4": {
+            "index": 3,
+            "title": "File:Catania airport ceiling interior.jpg",
+            "imageinfo": [{
+                "thumburl": "https://upload.wikimedia.org/ceiling.jpg",
+                "extmetadata": {"LicenseShortName": {"value": "CC BY 4.0"}},
+            }],
+        },
         "3": {
             "index": 2,
             "title": "File:Palermo airport.jpg",
@@ -133,6 +147,16 @@ def main() -> int:
         article("航空公司公布季度財報", "營收與載客率同步成長")
     )
     assert unrelated is None
+
+    # Airport names in a route, finance or compliance story are background
+    # context; without an airport-operation headline they must not create a
+    # generic airport card.
+    background_airport = article(
+        "航空公司完成機師藥檢",
+        "結果均為陰性。",
+        airport="Kuala Lumpur International Airport",
+    )
+    assert image_fallbacks.topic_image(background_airport) is None
 
     # Independent-event roundups must keep the neutral site image even when
     # one item exposes an airport that would normally trigger a fallback.

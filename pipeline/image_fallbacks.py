@@ -6,7 +6,8 @@ still empty. It has two responsibilities:
 1. deterministic, manually vetted topic photos for a small set of clearly
    identifiable aviation topics;
 2. a conservative global-airport fallback driven by the article's verified
-   ``entities.airports`` values. The Commons result must be freely licensed,
+   ``entities.airports`` values only when the headline describes airport
+   operations or facilities. The Commons result must be freely licensed,
    bitmap-based, visually usable, and contain a meaningful airport-name token
    in the file title.
 
@@ -33,15 +34,22 @@ from common import (
     parse_iso,
     save_json,
 )
+from image_policy import (  # noqa: E402
+    BAD_AIRPORT_TITLE_RE,
+    article_headline_text,
+    article_is_airport_operations,
+)
 
-MAX_ARTICLE_AGE_DAYS = 14
+MAX_ARTICLE_AGE_DAYS = 7
 TIMEOUT = (10, 30)
 HEADERS = {"User-Agent": USER_AGENT}
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 
 _FREE_LICENSE_RE = re.compile(r"\b(cc[ -]|cc0|public domain|pd-)", re.I)
 _BAD_TITLE_RE = re.compile(
-    r"map|logo|diagram|seal|icon|flag|emblem|coat of arms|chart|plan\b",
+    r"map|logo|diagram|schematic|seal|icon|flag|emblem|coat of arms|"
+    r"chart|plan\b|mairie|municipal|town hall|city hall|residential|"
+    r"\bhouse\b|\bmemorial\b|statue",
     re.I,
 )
 _TAG_RE = re.compile(r"<[^>]+>")
@@ -142,7 +150,8 @@ def lookup_commons_airport(airport: str) -> dict | None:
     for page in sorted(pages.values(), key=lambda p: p.get("index", 99)):
         title = str(page.get("title") or "")
         title_low = title.casefold()
-        if _BAD_TITLE_RE.search(title):
+        if (_BAD_TITLE_RE.search(title)
+                or BAD_AIRPORT_TITLE_RE.search(title)):
             continue
         if not any(token.casefold() in title_low for token in tokens):
             continue
@@ -182,13 +191,13 @@ def topic_image(article: dict) -> dict | None:
         # A photo selected from one item would visually misrepresent a
         # collection of unrelated events. Keep the neutral site fallback.
         return None
-    text = _article_text(article)
+    text = article_headline_text(article)
     for rule in _TOPIC_IMAGES:
         if any(pattern.search(text) for pattern in rule["patterns"]):
             return dict(rule["image"])
 
     airport = _airport_entity(article)
-    if airport:
+    if airport and article_is_airport_operations(article):
         return lookup_commons_airport(airport)
     return None
 
@@ -208,16 +217,28 @@ def main() -> int:
         for article in batch.get("articles") or []:
             if not isinstance(article, dict):
                 continue
-            if article.get("articleFormat") == "roundup":
-                if article.pop("image", None) is not None:
-                    changed = True
-                continue
-            if article.get("image"):
-                continue
             try:
                 if parse_iso(str(article.get("publishedUtc"))) < cutoff:
                     continue
             except (TypeError, ValueError):
+                continue
+            if article.get("articleFormat") == "roundup":
+                if article.pop("image", None) is not None:
+                    changed = True
+                continue
+            existing_image = article.get("image")
+            if (isinstance(existing_image, dict)
+                    and str(existing_image.get("matched") or "")
+                    .startswith("airport:")
+                    and not article_is_airport_operations(article)):
+                # A verified airport entity may be background context for an
+                # airline, finance or safety story.  Do not turn that into a
+                # generic airport card unless the headline is actually about
+                # airport operations or facilities.
+                article.pop("image", None)
+                changed = True
+                existing_image = None
+            if article.get("image"):
                 continue
             try:
                 image = topic_image(article)
