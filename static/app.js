@@ -170,4 +170,67 @@
     }) || sevBtns.find(function (b) { return b.dataset.filterSev === "all"; });
     applyIncidentFilter(initialButton.dataset.filterSev, initialButton, false);
   }
+  /* — Priority weather/airline hero: rotate every five minutes — */
+  var heroCandidatesNode = document.getElementById("hero-candidates");
+  var heroLink = document.getElementById("hero-story-link");
+  if (heroCandidatesNode && heroLink) {
+    var heroCandidates = [];
+    try {
+      heroCandidates = JSON.parse(heroCandidatesNode.textContent || "[]");
+    } catch (e) {
+      heroCandidates = [];
+    }
+    var heroImage = document.getElementById("hero-story-image");
+    var heroImageCaption = document.getElementById("hero-image-caption");
+    var heroKicker = document.getElementById("hero-story-kicker");
+    var heroTitle = document.getElementById("hero-story-title");
+    var heroSummary = document.querySelector(
+      ".summary-preview--hero .summary-preview__text"
+    );
+    var heroTime = document.getElementById("hero-story-time");
+    var heroSource = document.getElementById("hero-story-source");
+
+    function renderPriorityHero(story) {
+      if (!story || !heroImage) return;
+      heroLink.href = story.url || "#";
+      heroLink.setAttribute("aria-label", story.title || "SKYTICAL");
+      if (story.external) {
+        heroLink.target = "_blank";
+        heroLink.rel = "noopener";
+      } else {
+        heroLink.removeAttribute("target");
+        heroLink.removeAttribute("rel");
+      }
+      var image = story.image && story.image.url ? story.image : null;
+      if (image) {
+        heroImage.src = image.url;
+        heroImage.alt = story.image_alt || "";
+        heroImage.removeAttribute("data-image-fallback");
+      } else {
+        heroImage.src = heroImage.dataset.fallbackSrc;
+        heroImage.alt = story.image_alt || "SKYTICAL";
+        heroImage.setAttribute("data-image-fallback", "true");
+      }
+      if (heroImageCaption) {
+        heroImageCaption.textContent = story.image_caption || "";
+      }
+      if (heroKicker) heroKicker.textContent = story.kicker || "";
+      if (heroTitle) heroTitle.textContent = story.title || "";
+      if (heroSummary) heroSummary.textContent = story.summary || "";
+      if (heroTime) heroTime.textContent = story.time || "";
+      if (heroSource) heroSource.textContent = story.source_meta || "";
+    }
+
+    if (heroCandidates.length) {
+      var heroIndex = 0;
+      renderPriorityHero(heroCandidates[heroIndex]);
+      if (heroCandidates.length > 1) {
+        window.setInterval(function () {
+          heroIndex = (heroIndex + 1) % heroCandidates.length;
+          renderPriorityHero(heroCandidates[heroIndex]);
+        }, 5 * 60 * 1000);
+      }
+    }
+  }
+
 })();
