@@ -15,6 +15,10 @@ DIRECT_MODEL_ORDER = (
     "nvidia:mistralai/mistral-medium-3.5-128b",
 )
 
+WECHAT_MODEL_ORDER = (
+    "wechat:Deepseek-v4-flash",
+)
+
 OPENCODE_MODEL_ORDER = (
     "opencode:claude-sonnet-4-6",
     "opencode:gpt-5.5",
@@ -45,6 +49,7 @@ OPENROUTER_MODEL_ORDER = (
 # equivalent follows immediately, instead of collecting every OpenRouter
 # model at the end of the chain.
 MODEL_ORDER = (
+    WECHAT_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[0],
@@ -65,6 +70,8 @@ MODEL_ORDER = (
 DEFAULT_PROVIDER_ORDER = ",".join(MODEL_ORDER)
 
 MODEL_DISPLAY_NAMES = {
+    "wechat:Deepseek-v4-flash":
+        "WeChat Coding Plan · DeepSeek V4 Flash",
     "opencode:claude-sonnet-4-6":
         "OpenCode · Anthropic Claude Sonnet 4.6",
     "opencode:gpt-5.5": "OpenCode · OpenAI GPT-5.5",
@@ -138,6 +145,11 @@ def manual_reasoning_profile(provider: str, model: str, tier: str) -> dict:
         return {
             "wire": {"thinkingConfig": {"thinkingLevel": level}},
             "effective": f"thinkingLevel={level}",
+        }
+    if provider == "wechat":
+        return {
+            "wire": {"thinking": {"type": "disabled"}},
+            "effective": "thinking.type=disabled",
         }
     if model == "z-ai/glm-5.2":
         return {"wire": {}, "effective": "provider_default"}
