@@ -305,6 +305,11 @@ Planespotters.net (same airframe, by registration) or Wikimedia Commons
 (free-licensed file photo), never a claimed event photo. images.json
 caches per-article match/none results. build.normalize_image() is the
 only reader; templates always show kind + credit + license + backlink.
+The resolver revalidates only the current seven-day article window, prefers
+the headline's verified primary carrier, gives airport-operation headlines
+priority over generic aircraft matches, and rejects logos, diagrams, interiors,
+civic buildings, wreckage and other deterministic false matches. If no
+confident replacement exists, the article keeps the neutral site fallback.
 
 ## data/search-prompts.json  (written by search_prompts.py, read by build.py)
 

@@ -39,6 +39,12 @@ jobs:
       - name: Test summary boundary guard
         run: python tests/test_summary_guard.py
 
+      - name: Test image relevance and fallback guards
+        run: |
+          python tests/test_images.py
+          python tests/test_image_fallbacks.py
+          python tests/test_recent_image_quality.py
+
       - name: Build site from committed data
         env:
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
