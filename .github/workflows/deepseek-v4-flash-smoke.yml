@@ -1,0 +1,151 @@
+name: deepseek-v4-flash-smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/deepseek-v4-flash-smoke.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deepseek-v4-flash-smoke
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      DEEPSEEK_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
+    steps:
+      - name: Verify DeepSeek V4 Flash API
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${DEEPSEEK_API_KEY:-}" ]; then
+            echo "::error::Repository secret DeepSeekV4Flash_API is missing or empty."
+            exit 1
+          fi
+
+          models_file="${RUNNER_TEMP}/deepseek-models.json"
+          models_status="$(
+            curl --silent --show-error \
+              --output "${models_file}" \
+              --write-out "%{http_code}" \
+              --connect-timeout 10 \
+              --max-time 60 \
+              --header "Accept: application/json" \
+              --header "Authorization: Bearer ${DEEPSEEK_API_KEY}" \
+              https://api.deepseek.com/models
+          )"
+
+          if [ "${models_status}" != "200" ]; then
+            python3 - "${models_file}" "${models_status}" <<'PY'
+          import json
+          import sys
+
+          path, status = sys.argv[1:]
+          try:
+              payload = json.load(open(path, encoding="utf-8"))
+          except Exception:
+              payload = {}
+          error = payload.get("error") if isinstance(payload, dict) else {}
+          error = error if isinstance(error, dict) else {}
+          error_type = str(error.get("type") or "unknown")[:80]
+          error_code = str(error.get("code") or "unknown")[:80]
+          print(
+              f"::error::DeepSeek model-list request failed: "
+              f"HTTP {status}, type={error_type}, code={error_code}"
+          )
+          PY
+            exit 1
+          fi
+
+          python3 - "${models_file}" <<'PY'
+          import json
+          import sys
+
+          payload = json.load(open(sys.argv[1], encoding="utf-8"))
+          models = {
+              row.get("id")
+              for row in payload.get("data", [])
+              if isinstance(row, dict)
+          }
+          if "deepseek-v4-flash" not in models:
+              print("::error::Authenticated key cannot list deepseek-v4-flash.")
+              raise SystemExit(1)
+          print("DeepSeek authentication succeeded; deepseek-v4-flash is available.")
+          PY
+
+          request_file="${RUNNER_TEMP}/deepseek-request.json"
+          response_file="${RUNNER_TEMP}/deepseek-response.json"
+          printf '%s' '{"model":"deepseek-v4-flash","messages":[{"role":"system","content":"Reply with one short confirmation token."},{"role":"user","content":"Confirm this API smoke test."}],"thinking":{"type":"disabled"},"max_tokens":16,"stream":false}' > "${request_file}"
+
+          chat_status="$(
+            curl --silent --show-error \
+              --output "${response_file}" \
+              --write-out "%{http_code}" \
+              --connect-timeout 10 \
+              --max-time 120 \
+              --header "Content-Type: application/json" \
+              --header "Authorization: Bearer ${DEEPSEEK_API_KEY}" \
+              --data-binary "@${request_file}" \
+              https://api.deepseek.com/chat/completions
+          )"
+
+          if [ "${chat_status}" != "200" ]; then
+            python3 - "${response_file}" "${chat_status}" <<'PY'
+          import json
+          import sys
+
+          path, status = sys.argv[1:]
+          try:
+              payload = json.load(open(path, encoding="utf-8"))
+          except Exception:
+              payload = {}
+          error = payload.get("error") if isinstance(payload, dict) else {}
+          error = error if isinstance(error, dict) else {}
+          error_type = str(error.get("type") or "unknown")[:80]
+          error_code = str(error.get("code") or "unknown")[:80]
+          print(
+              f"::error::DeepSeek chat request failed: "
+              f"HTTP {status}, type={error_type}, code={error_code}"
+          )
+          PY
+            exit 1
+          fi
+
+          python3 - "${response_file}" <<'PY'
+          import json
+          import sys
+
+          payload = json.load(open(sys.argv[1], encoding="utf-8"))
+          choices = payload.get("choices") or []
+          first = choices[0] if choices and isinstance(choices[0], dict) else {}
+          message = first.get("message") if isinstance(first, dict) else {}
+          message = message if isinstance(message, dict) else {}
+          content = message.get("content")
+          if not isinstance(content, str) or not content.strip():
+              print("::error::DeepSeek returned HTTP 200 without assistant content.")
+              raise SystemExit(1)
+
+          usage = payload.get("usage") if isinstance(payload, dict) else {}
+          usage = usage if isinstance(usage, dict) else {}
+          model = str(payload.get("model") or "unknown")[:80]
+          finish_reason = str(first.get("finish_reason") or "unknown")[:40]
+          total_tokens = usage.get("total_tokens", "unknown")
+          print(
+              "DeepSeek V4 Flash call succeeded: "
+              f"model={model}, finish_reason={finish_reason}, "
+              f"total_tokens={total_tokens}."
+          )
+          PY
+
