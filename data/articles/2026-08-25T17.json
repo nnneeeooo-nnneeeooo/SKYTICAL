@@ -1,0 +1,303 @@
+{
+  "articles": [
+    {
+      "id": "a-20260825-1723-boeing-777x-to-be-exclusively-powered-by",
+      "publishedUtc": "2026-08-25T17:23Z",
+      "cat": "ops",
+      "primarySource": "Simple Flying",
+      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/how-the-134-inch-ge9x-solves-a-noise-problem-that-chevrons-used-to-handle.jpg",
+      "zh": {
+        "title": "波音777X獨家配備GE9X發動機未採用Dreamliner鋸齒後緣",
+        "summary": "波音777X確認獨家採用GE9X發動機；取消Dreamliner鋸齒設計",
+        "body": [
+          "根據航空媒體Simple Flying報導，波音（Boeing）777X系列客機將獨家採用新一代GE9X渦輪扇發動機作為動力來源。該型GE9X發動機在設計上未採用先前Dreamliner（787）所配備的標誌性鋸齒狀噴嘴結構（chevrons）。",
+          "根據過往歷史紀錄，波音777X計畫先前已獲得美國聯邦航空管理局（FAA）批准，依據4B型別檢查授權（TIA 4B）展開認證飛行測試。波音公司持續預計777X首架客機將於2027年交付。",
+          "此外，歷史計畫資料顯示，波音777-9測試機隊在整體研發測試過程中，累計測試時間已達4,800小時。"
+        ]
+      },
+      "en": {
+        "title": "Boeing 777X To Be Exclusively Powered By GE9X Engines Without Chevrons",
+        "summary": "Boeing 777X aircraft will exclusively use GE9X engines without the chevrons seen on Dreamliners.",
+        "body": [
+          "According to aviation news outlet Simple Flying, the Boeing 777X aircraft family will be exclusively powered by next-generation GE9X turbofan engines. The GE9X engines lack the iconic trailing-edge chevrons that were used on the Dreamliner aircraft.",
+          "According to verified historical records, the Boeing 777X program previously received approval from the Federal Aviation Administration (FAA) to begin certification flight testing under Type Inspection Authorization 4B. The manufacturer continues to anticipate the first delivery of the aircraft in 2027.",
+          "In addition, historical program records show that the Boeing 777-9 test fleet has reached 4,800 total test hours during its ongoing development and testing campaign."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Simple Flying — How The 134-Inch GE9X Solves A Noise Problem That Chevrons…",
+          "url": "https://simpleflying.com/how-134-inch-ge9x-solves-noise-problem-chevrons-used-handle/"
+        },
+        {
+          "name": "Archive: Boeing — Boeing Reports Second Quarter Results — a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+          "url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results"
+        },
+        {
+          "name": "Archive: Simple Flying — Boeing 777-9 Fleet Reaches 4,800 Test Hours As 7th Airframe... — a-20260730-0841-boeing-777-9-test-fleet-reaches-4-800-ho",
+          "url": "https://simpleflying.com/boeing-777-9-test-fleet-4800-test-hours-7th-airframe-etops-certification/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-08-25T17:00Z",
+      "writer": "gemini:gemini-3.6-flash",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The Boeing 777X will be exclusively powered by next-generation GE9X turbofans.",
+          "sourceQuote": "The Boeing 777X will be exclusively powered by next-generation GE9X turbofans",
+          "sourceUrl": "https://simpleflying.com/how-134-inch-ge9x-solves-noise-problem-chevrons-used-handle/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The GE9X turbofans powering the Boeing 777X lack the chevrons seen on the Dreamliner.",
+          "sourceQuote": "which lack the iconic chevrons of the Dreamliner",
+          "sourceUrl": "https://simpleflying.com/how-134-inch-ge9x-solves-noise-problem-chevrons-used-handle/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The 777X program received FAA approval to begin certification flight testing under TIA 4B with first delivery anticipated in 2027.",
+          "sourceQuote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+          "sourceUrl": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+          "archiveContext": true
+        },
+        {
+          "factId": "F4",
+          "claim": "The Boeing 777-9 test fleet has reached 4,800 test hours.",
+          "sourceQuote": "Boeing 777-9 Fleet Reaches 4,800 Test Hours",
+          "sourceUrl": "https://simpleflying.com/boeing-777-9-test-fleet-4800-test-hours-7th-airframe-etops-certification/",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260730-0841-boeing-777-9-test-fleet-reaches-4-800-ho",
+          "archiveContext": true
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "context_id": "0f8423ff91b553dc",
+        "selected_events": [
+          {
+            "event_id": "a-20260728-1208-boeing-reports-q2-revenue-of-24-6-billio",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 777X FAMILY",
+              "same named core entity: boeing",
+              "archive predates source by 28 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 28 day(s) apart",
+            "event_date": "2026-07-28",
+            "source_name": "Boeing — Boeing Reports Second Quarter Results",
+            "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+            "facts": [
+              {
+                "claim": "Boeing recorded second quarter revenue of $24.6 billion, GAAP loss per share of $0.67, and core loss per share (non-GAAP) of $0.76.",
+                "source_quote": "The Boeing Company [NYSE: BA] recorded second quarter revenue of $24.6 billion, GAAP loss per share of ($0.67) and core loss per share (non-GAAP)* of ($0.76).",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Boeing reported operating cash flow of $1.4 billion and free cash flow (non-GAAP) of $0.6 billion for the second quarter.",
+                "source_quote": "The company reported operating cash flow of $1.4 billion and free cash flow (non-GAAP)* of $0.6 billion.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Commercial Airplanes delivered 171 airplanes in the second quarter and booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital.",
+                "source_quote": "Commercial Airplanes booked 246 net orders including orders from Korean Air, Delta Air Lines, and SMBC Capital. Commercial Airplanes delivered 171 airplanes",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "As of July, certification flight testing has been completed on both the 737-7 and 737-10, with certification anticipated in 2026 and first delivery in 2027 for both variants.",
+                "source_quote": "As of July, certification flight testing has been completed on both the 737-7 and 737-10. The company continues to anticipate certification in 2026 and first delivery in 2027 for both variants.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "The 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B in the quarter, with first delivery anticipated in 2027.",
+                "source_quote": "In the quarter, the 777X program received FAA approval to begin certification flight testing under Type Inspection Authorization 4B. The company continues to anticipate first delivery in 2027.",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              },
+              {
+                "claim": "Total company backlog at quarter end grew to a record $715 billion, including over 6,200 commercial airplanes.",
+                "source_quote": "Total company backlog at quarter end grew to a record $715 billion",
+                "source_url": "https://boeing.mediaroom.com/2026-07-28-Boeing-Reports-Second-Quarter-Results",
+                "source_name": "Boeing — Boeing Reports Second Quarter Results"
+              }
+            ]
+          },
+          {
+            "event_id": "a-20260730-0841-boeing-777-9-test-fleet-reaches-4-800-ho",
+            "relationship_type": "programme_background",
+            "relationship_evidence": [
+              "same aircraft model: BOEING 777X FAMILY",
+              "same named core entity: boeing, simple flying",
+              "archive predates source by 26 day(s)"
+            ],
+            "relationship_tier": 2,
+            "confidence_score": 91,
+            "confidence_reason": "tier 2; 3 deterministic evidence item(s); 26 day(s) apart",
+            "event_date": "2026-07-30",
+            "source_name": "Simple Flying — Boeing 777-9 Fleet Reaches 4,800 Test Hours As 7th Airframe...",
+            "source_url": "https://simpleflying.com/boeing-777-9-test-fleet-4800-test-hours-7th-airframe-etops-certification/",
+            "facts": [
+              {
+                "claim": "The Boeing 777-9 test fleet has reached 4,800 test hours.",
+                "source_quote": "Boeing 777-9 Fleet Reaches 4,800 Test Hours",
+                "source_url": "https://simpleflying.com/boeing-777-9-test-fleet-4800-test-hours-7th-airframe-etops-certification/",
+                "source_name": "Simple Flying — Boeing 777-9 Fleet Reaches 4,800 Test Hours As 7th Airframe..."
+              }
+            ]
+          }
+        ]
+      },
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "Simple Flying",
+          "Boeing",
+          "FAA"
+        ],
+        "aircraft_models": [
+          "Boeing 777X",
+          "Dreamliner",
+          "777-9"
+        ],
+        "event_dates": [
+          "2026-08-25"
+        ]
+      }
+    },
+    {
+      "id": "a-20260825-1723-united-airlines-prepares-airbus-a321xlr",
+      "publishedUtc": "2026-08-25T17:23Z",
+      "cat": "ops",
+      "primarySource": "Aerospace Global News",
+      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/06/Untied-AIrlines-A321neo-1.jpg",
+      "zh": {
+        "title": "聯合航空引進首架空中巴士A321XLR 規劃擴展跨大西洋與歐洲航線",
+        "summary": "聯合航空將部署空中巴士A321XLR航機；2027年夏季拓展10個歐亞新航點",
+        "body": [
+          "聯合航空首架空中巴士A321XLR預計於2026年9月先投入美國國內線營運，並於同年12月1日正式啟動國際航線，首波營運從華盛頓杜勒斯飛往阿姆斯特丹與都柏林的航班。",
+          "該國航業者規劃於2027年夏季新增10個橫跨歐洲與亞洲的航點，其中8個航點目前無其他美國航空公司提供直飛服務，包括盧森堡、圖盧茲、馬賽、伊比薩島與瓦倫西亞等城市。",
+          "聯合航空的空中巴士A321XLR客艙配置32個高階座位，包含20席配有隱私門的Polaris套房與12席豪華經濟艙座位，主要由紐華克樞紐發射並配合華盛頓杜勒斯進行轉接。"
+        ]
+      },
+      "en": {
+        "title": "United Airlines Prepares Airbus A321XLR for European Network Expansion",
+        "summary": "United Airlines will deploy its Airbus A321XLR; expanding to ten European and Asian routes in 2027",
+        "body": [
+          "United Airlines' first Airbus A321XLR is scheduled to begin domestic flights in September 2026 before launching international operations on December 1, 2026, with initial routes connecting Washington Dulles to Amsterdam and Dublin.",
+          "The carrier plans to add 10 destinations across Europe and Asia for summer 2027. Eight of these destinations, including Luxembourg, Toulouse, Marseille, Ibiza, and Valencia, currently have no competing nonstop service from any other United States airline.",
+          "United Airlines is configuring the single-aisle aircraft with 32 premium seats, featuring 20 Polaris suites with privacy doors and 12 Premium Plus seats. Most of the new European services will operate out of the airline's hub at Newark, supported by Washington Dulles."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — United’s Airbus A321XLR era begins with an assault on Europ…",
+          "url": "https://aerospaceglobalnews.com/news/united-airbus-a321xlr-overlooked-europe-routes/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-08-25T00:00Z",
+      "writer": "gemini:gemini-3.6-flash",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "United Airlines' Airbus A321XLR will enter domestic service in September 2026 before starting international operations on December 1, 2026.",
+          "sourceQuote": "The single-aisle aircraft will initially enter domestic service in September before beginning international operations on December 1",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/united-airbus-a321xlr-overlooked-europe-routes/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "International operations for United's A321XLR will begin with flights from Washington Dulles to Amsterdam and Dublin.",
+          "sourceQuote": "with flights from Washington Dulles to Amsterdam and Dublin.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/united-airbus-a321xlr-overlooked-europe-routes/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "United will add 10 destinations across Europe and Asia for summer 2027, eight of which have no competing nonstop service from another US airline.",
+          "sourceQuote": "United will add 10 destinations across Europe and Asia for summer 2027, eight of which have no competing nonstop service from another US airline.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/united-airbus-a321xlr-overlooked-europe-routes/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The A321XLR will be deployed on newly announced services to destinations including Luxembourg, Toulouse, Marseille, Ibiza, and Valencia.",
+          "sourceQuote": "It will subsequently be deployed on the newly announced services to Luxembourg, Toulouse, Marseille, Ibiza and Valencia.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/united-airbus-a321xlr-overlooked-europe-routes/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "United's A321XLR cabin features 20 Polaris suites with privacy doors and 12 Premium Plus seats, giving it 32 premium seats in total.",
+          "sourceQuote": "The aircraft will feature 20 United Polaris suites with privacy doors and 12 Premium Plus seats, giving it 32 premium seats in total.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/united-airbus-a321xlr-overlooked-europe-routes/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "Airbus",
+          "Boeing"
+        ],
+        "airlines": [
+          "United Airlines",
+          "United"
+        ],
+        "aircraft_models": [
+          "Airbus A321XLR",
+          "A321XLR",
+          "Boeing 757-200",
+          "Boeing 767-400ER"
+        ],
+        "locations": [
+          "Europe",
+          "Luxembourg",
+          "Toulouse",
+          "Marseille",
+          "Asia",
+          "US",
+          "Ibiza",
+          "Valencia",
+          "Amsterdam",
+          "Dublin",
+          "Newark",
+          "Washington Dulles"
+        ],
+        "event_dates": [
+          "2026-08-25",
+          "2027",
+          "September 2026",
+          "December 1",
+          "summer 2027"
+        ]
+      }
+    }
+  ]
+}
