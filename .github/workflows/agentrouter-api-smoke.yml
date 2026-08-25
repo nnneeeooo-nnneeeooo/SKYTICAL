@@ -59,10 +59,10 @@ jobs:
           PY
 
           set +e
-          http_status="$(
+          curl_meta="$(
             curl --silent --show-error \
               --output "${response_file}" \
-              --write-out "%{http_code}" \
+              --write-out "%{http_code}\t%{content_type}\t%{size_download}" \
               --connect-timeout 10 \
               --max-time 120 \
               --header "Accept: application/json" \
@@ -81,14 +81,19 @@ jobs:
             exit 1
           fi
 
+          IFS=$'\t' read -r http_status content_type response_bytes <<< "${curl_meta}"
+          http_status="${http_status:-000}"
+          content_type="${content_type:-unknown}"
+          response_bytes="${response_bytes:-unknown}"
+
           if [ "${http_status}" != "200" ]; then
-            python3 - "${response_file}" "${http_status}" <<'PY'
+            python3 - "${response_file}" "${http_status}" "${content_type}" "${response_bytes}" <<'PY'
           import json
           import sys
 
-          path, status = sys.argv[1:]
+          path, status, content_type, response_bytes = sys.argv[1:]
           try:
-              with open(path, encoding="utf-8") as handle:
+              with open(path, encoding="utf-8-sig") as handle:
                   payload = json.load(handle)
           except Exception:
               payload = {}
@@ -99,27 +104,42 @@ jobs:
           error_code = str(error.get("code") or error.get("error_code") or "unknown")[:80]
           print(
               "::error::AgentRouter request failed: "
-              f"HTTP {status}, type={error_type}, code={error_code}."
+              f"HTTP {status}, type={error_type}, code={error_code}, "
+              f"content_type={content_type}, bytes={response_bytes}."
           )
           PY
             exit 1
           fi
 
-          python3 - "${response_file}" "${AGENTROUTER_MODEL}" <<'PY'
+          python3 - "${response_file}" "${AGENTROUTER_MODEL}" "${content_type}" "${response_bytes}" <<'PY'
           import json
           import sys
 
-          path, requested_model = sys.argv[1:]
+          path, requested_model, content_type, response_bytes = sys.argv[1:]
           try:
-              with open(path, encoding="utf-8") as handle:
-                  payload = json.load(handle)
+              raw = open(path, "rb").read()
+              payload = json.loads(raw.decode("utf-8-sig"))
           except Exception:
-              print("::error::AgentRouter returned HTTP 200 with invalid JSON.")
+              raw = locals().get("raw", b"")
+              first = raw.lstrip(b"\xef\xbb\xbf \t\r\n")[:16].lower()
+              if first.startswith(b"<"):
+                  body_kind = "html_or_waf"
+              elif first.startswith(b"data:"):
+                  body_kind = "sse_stream"
+              elif first.startswith((b"{", b"[")):
+                  body_kind = "json_parse_error"
+              else:
+                  body_kind = "plain_or_binary"
+              print(
+                  "::error::AgentRouter returned HTTP 200 without JSON: "
+                  f"content_type={content_type}, bytes={response_bytes}, "
+                  f"body_kind={body_kind}."
+              )
               raise SystemExit(1)
 
           choices = payload.get("choices") or []
-          first = choices[0] if choices and isinstance(choices[0], dict) else {}
-          message = first.get("message") if isinstance(first, dict) else {}
+          first_choice = choices[0] if choices and isinstance(choices[0], dict) else {}
+          message = first_choice.get("message") if isinstance(first_choice, dict) else {}
           message = message if isinstance(message, dict) else {}
           content = message.get("content")
 
@@ -144,7 +164,7 @@ jobs:
           usage = payload.get("usage")
           usage = usage if isinstance(usage, dict) else {}
           model = str(payload.get("model") or requested_model)[:80]
-          finish_reason = str(first.get("finish_reason") or "unknown")[:40]
+          finish_reason = str(first_choice.get("finish_reason") or "unknown")[:40]
           total_tokens = usage.get("total_tokens", "unknown")
           print(
               "AgentRouter call succeeded: "
