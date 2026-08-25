@@ -1,0 +1,154 @@
+name: agentrouter-api-smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/agentrouter-api-smoke.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agentrouter-api-smoke
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      AGENTROUTER_TOKEN: ${{ secrets.AGENTROUTER_API }}
+      AGENTROUTER_ENDPOINT: https://agentrouter.org/v1/chat/completions
+      AGENTROUTER_MODEL: gpt-5.6-sol
+    steps:
+      - name: Call AgentRouter with a minimal request
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${AGENTROUTER_TOKEN:-}" ]; then
+            echo "::error::Repository secret AGENTROUTER_API is missing or empty."
+            exit 1
+          fi
+
+          request_file="${RUNNER_TEMP}/agentrouter-request.json"
+          response_file="${RUNNER_TEMP}/agentrouter-response.json"
+          curl_error_file="${RUNNER_TEMP}/agentrouter-curl-error.txt"
+
+          python3 - "${request_file}" "${AGENTROUTER_MODEL}" <<'PY'
+          import json
+          import sys
+
+          path, model = sys.argv[1:]
+          request = {
+              "model": model,
+              "messages": [
+                  {"role": "user", "content": "Reply with exactly OK."}
+              ],
+              "max_tokens": 8,
+              "stream": False,
+          }
+          with open(path, "w", encoding="utf-8") as handle:
+              json.dump(request, handle, separators=(",", ":"))
+          PY
+
+          set +e
+          http_status="$(
+            curl --silent --show-error \
+              --output "${response_file}" \
+              --write-out "%{http_code}" \
+              --connect-timeout 10 \
+              --max-time 120 \
+              --header "Accept: application/json" \
+              --header "Content-Type: application/json" \
+              --header "User-Agent: SKYTICAL-agentrouter-smoke/1.0" \
+              --header "Authorization: Bearer ${AGENTROUTER_TOKEN}" \
+              --data-binary "@${request_file}" \
+              "${AGENTROUTER_ENDPOINT}" \
+              2>"${curl_error_file}"
+          )"
+          curl_exit=$?
+          set -e
+
+          if [ "${curl_exit}" -ne 0 ]; then
+            echo "::error::AgentRouter transport failed (curl exit ${curl_exit})."
+            exit 1
+          fi
+
+          if [ "${http_status}" != "200" ]; then
+            python3 - "${response_file}" "${http_status}" <<'PY'
+          import json
+          import sys
+
+          path, status = sys.argv[1:]
+          try:
+              with open(path, encoding="utf-8") as handle:
+                  payload = json.load(handle)
+          except Exception:
+              payload = {}
+
+          error = payload.get("error") if isinstance(payload, dict) else {}
+          error = error if isinstance(error, dict) else {}
+          error_type = str(error.get("type") or "unknown")[:80]
+          error_code = str(error.get("code") or error.get("error_code") or "unknown")[:80]
+          print(
+              "::error::AgentRouter request failed: "
+              f"HTTP {status}, type={error_type}, code={error_code}."
+          )
+          PY
+            exit 1
+          fi
+
+          python3 - "${response_file}" "${AGENTROUTER_MODEL}" <<'PY'
+          import json
+          import sys
+
+          path, requested_model = sys.argv[1:]
+          try:
+              with open(path, encoding="utf-8") as handle:
+                  payload = json.load(handle)
+          except Exception:
+              print("::error::AgentRouter returned HTTP 200 with invalid JSON.")
+              raise SystemExit(1)
+
+          choices = payload.get("choices") or []
+          first = choices[0] if choices and isinstance(choices[0], dict) else {}
+          message = first.get("message") if isinstance(first, dict) else {}
+          message = message if isinstance(message, dict) else {}
+          content = message.get("content")
+
+          if isinstance(content, str):
+              has_content = bool(content.strip())
+          elif isinstance(content, list):
+              has_content = any(
+                  isinstance(item, dict)
+                  and isinstance(item.get("text"), str)
+                  and item["text"].strip()
+                  for item in content
+              )
+          else:
+              has_content = False
+
+          if not has_content:
+              print(
+                  "::error::AgentRouter returned HTTP 200 without assistant content."
+              )
+              raise SystemExit(1)
+
+          usage = payload.get("usage")
+          usage = usage if isinstance(usage, dict) else {}
+          model = str(payload.get("model") or requested_model)[:80]
+          finish_reason = str(first.get("finish_reason") or "unknown")[:40]
+          total_tokens = usage.get("total_tokens", "unknown")
+          print(
+              "AgentRouter call succeeded: "
+              f"model={model}, finish_reason={finish_reason}, "
+              f"total_tokens={total_tokens}."
+          )
+          PY
