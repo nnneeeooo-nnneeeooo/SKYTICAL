@@ -60,7 +60,9 @@ def _queue_key(article: dict, image: dict) -> str:
 def build_queue(now, *, articles_dir: Path = ARTICLES_DIR,
                 existing: dict | None = None) -> dict:
     """Return the current seven-day visual-review queue."""
-    old_items = (existing or {}).get("items") if isinstance(existing, dict) else []
+    raw_old_items = ((existing or {}).get("items")
+                     if isinstance(existing, dict) else [])
+    old_items = raw_old_items if isinstance(raw_old_items, list) else []
     old_by_key = {
         str(row.get("key")): row for row in old_items
         if isinstance(row, dict) and row.get("key")
