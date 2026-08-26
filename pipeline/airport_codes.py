@@ -59,6 +59,16 @@ _AIRPORT_IDENTITY_RE = re.compile(
 )
 
 
+def _console_safe(value: object) -> str:
+    """Render diagnostics even when Windows stdout uses a narrow code page."""
+    text = str(value)
+    encoding = getattr(sys.stdout, "encoding", None) or "utf-8"
+    try:
+        return text.encode(encoding, errors="backslashreplace").decode(encoding)
+    except (LookupError, UnicodeError):
+        return text.encode("ascii", errors="backslashreplace").decode("ascii")
+
+
 def _norm(value: str) -> str:
     text = unicodedata.normalize("NFKD", str(value or "")).casefold()
     text = "".join(ch for ch in text if not unicodedata.combining(ch))
@@ -786,17 +796,21 @@ def main() -> int:
             if unresolved:
                 unresolved_total += len(unresolved)
                 print(
-                    "airport_codes: no unique IATA match for "
-                    + ", ".join(unresolved)
-                    + f" in {article.get('id') or path.name}"
+                    _console_safe(
+                        "airport_codes: no unique IATA match for "
+                        + ", ".join(unresolved)
+                        + f" in {article.get('id') or path.name}"
+                    )
                 )
             violations = validate_article(article)
             if violations:
                 violation_total += len(violations)
                 print(
-                    "airport_codes: visible first-mention code violation: "
-                    + "; ".join(violations)
-                    + f" in {article.get('id') or path.name}"
+                    _console_safe(
+                        "airport_codes: visible first-mention code violation: "
+                        + "; ".join(violations)
+                        + f" in {article.get('id') or path.name}"
+                    )
                 )
             if article_changed:
                 changed = True
