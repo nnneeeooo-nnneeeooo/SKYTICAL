@@ -37,6 +37,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ base }}/assets/modernist.css">
 <link rel="stylesheet" href="{{ base }}/assets/site.css?v={{ asset_version }}">
+<link rel="alternate" type="application/rss+xml"
+      title="{{ t.siteName }} — {{ t.latest }}" href="{{ feed_url }}">
 {% block head_extra %}{% endblock %}
 <script src="{{ base }}/assets/app.js?v={{ asset_version }}" defer></script>
 </head>

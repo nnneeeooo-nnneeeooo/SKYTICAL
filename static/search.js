@@ -14,6 +14,7 @@
   var otherLang = lang === "zh" ? "en" : "zh";
   var records = [];
   var ready = false;
+  var loading = null;
   var debounceTimer = 0;
 
   function normalize(value) {
@@ -27,6 +28,25 @@
   function localized(record, field) {
     var value = record[field] || {};
     return value[lang] || value[otherLang] || "";
+  }
+
+  function localizedValues(record, field) {
+    var value = record[field] || {};
+    if (typeof value === "string") return [value];
+    return [value.zh || "", value.en || ""];
+  }
+
+  function recordSearchText(record) {
+    return normalize([
+      record.id,
+      record.source,
+      record.date,
+      record.published,
+      localizedValues(record, "title").join(" "),
+      localizedValues(record, "summary").join(" "),
+      localizedValues(record, "category").join(" "),
+      record.search,
+    ].join(" "));
   }
 
   function recordUrl(record, highlightQuery) {
@@ -94,7 +114,7 @@
   }
 
   function scoreRecord(record, normalizedQuery, terms) {
-    var haystack = String(record.search || "");
+    var haystack = recordSearchText(record);
     if (!terms.every(function (term) { return haystack.indexOf(term) !== -1; })) {
       return -1;
     }
@@ -115,12 +135,14 @@
     updateQueryUrl(query);
     results.replaceChildren();
 
-    if (!ready) {
-      status.textContent = root.dataset.loading;
-      return;
-    }
     if (!query) {
       status.textContent = root.dataset.prompt;
+      return;
+    }
+
+    if (!ready) {
+      status.textContent = root.dataset.loading;
+      loadIndex().then(runSearch).catch(showLoadError);
       return;
     }
 
@@ -161,19 +183,33 @@
   } catch (error) {
     input.value = "";
   }
-  fetch(root.dataset.indexUrl, { credentials: "same-origin" })
-    .then(function (response) {
-      if (!response.ok) throw new Error("HTTP " + response.status);
-      return response.json();
-    })
-    .then(function (payload) {
-      records = Array.isArray(payload.items) ? payload.items : [];
-      ready = true;
-      runSearch();
-    })
-    .catch(function () {
-      ready = false;
-      results.replaceChildren();
-      status.textContent = root.dataset.error;
-    });
+
+  function showLoadError() {
+    ready = false;
+    loading = null;
+    results.replaceChildren();
+    status.textContent = root.dataset.error;
+  }
+
+  function loadIndex() {
+    if (ready) return Promise.resolve();
+    if (loading) return loading;
+    loading = fetch(root.dataset.indexUrl, { credentials: "same-origin" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.json();
+      })
+      .then(function (payload) {
+        records = Array.isArray(payload.items) ? payload.items : [];
+        ready = true;
+      })
+      .catch(function (error) {
+        showLoadError();
+        throw error;
+      });
+    return loading;
+  }
+
+  if (input.value.trim()) runSearch();
+  else status.textContent = root.dataset.prompt;
 })();

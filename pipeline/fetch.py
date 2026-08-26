@@ -29,7 +29,7 @@ from common import (
     RAW_DIR,
     SOURCES,
     USER_AGENT,
-    is_transport_story,
+    is_transport_headline,
     iso_minute,
     load_json,
     norm_url,
@@ -42,11 +42,15 @@ TIMEOUT = 20  # seconds per request
 
 
 def _matches_keywords(item: dict, keywords) -> bool:
-    """True when a broad-feed item matches both keyword and site scope."""
-    blob = (f"{item.get('title') or ''} "
-            f"{item.get('summary') or ''}").casefold()
-    return (any(str(k).casefold() in blob for k in keywords)
-            and is_transport_story(item))
+    """True when a broad-feed item's headline passes the subject gate.
+
+    A carrier mentioned only in a summary can be a partner or background
+    entity, so it must not make a non-aviation headline enter the editorial
+    queue.
+    """
+    title = str(item.get("title") or "").casefold()
+    return (any(str(k).casefold() in title for k in keywords)
+            and is_transport_headline(item))
 RETRY_DELAY = 2  # seconds between the two attempts
 RESOLVE_TIMEOUT = 6  # seconds for google-news link resolution
 MAX_RESOLVE_FAILURES = 3  # stop resolving after this many misses in a row
@@ -649,10 +653,10 @@ def _fetch_source(session: requests.Session, key: str, spec: dict,
                   f"{len(raw_items)}/{before} items")
     elif spec.get("scope_filter"):
         # Broad feeds without a keyword list (currently MND/軍聞社) still need
-        # the same aviation/transport gate.  General defence politics and
-        # land-exercise stories never enter the editorial queue.
+        # the headline-level aviation/transport gate. General defence
+        # politics and land-exercise stories never enter the editorial queue.
         before = len(raw_items)
-        raw_items = [it for it in raw_items if is_transport_story(it)]
+        raw_items = [it for it in raw_items if is_transport_headline(it)]
         if before != len(raw_items):
             print(f"[fetch] {key}: scope filter kept "
                   f"{len(raw_items)}/{before} items")
