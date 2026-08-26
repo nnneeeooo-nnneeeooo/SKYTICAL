@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% from "_summary.html" import notification_summary %}
+{% block content %}
+  <main class="search-page topic-page">
+    <header class="search-header">
+      <span class="card-kicker">{{ t.newsKicker }}</span>
+      <h1>{{ t.newsTitle }}</h1>
+      <p class="text-muted">{{ t.newsSub }}</p>
+      <p class="text-muted" style="font-size:12.5px;">{{ count }} {{ t.topicCount }}</p>
+    </header>
+    <section aria-label="{{ t.newsTitle }}">
+      {% for item in articles %}
+      <a class="feed-row" href="{{ item.url }}">
+        <span class="feed-time">{{ item.time }}</span>
+        <span class="feed-category tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% elif item.article_format == "roundup" %} · {{ t.roundupLabel }}{% endif %}</span>
+        <span class="feed-copy">
+          <span style="display:block;font-size:15.5px;font-weight:700;line-height:1.4;letter-spacing:-.01em;">{{ item.title }}</span>
+        </span>
+        {{ notification_summary(item.display_summary, t.summaryLabel, 'feed') }}
+        <span class="feed-source text-muted">{{ item.source }}</span>
+      </a>
+      {% else %}
+      <p class="text-muted">{{ t.awaiting }}</p>
+      {% endfor %}
+    </section>
+  </main>
+{% endblock %}

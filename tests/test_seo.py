@@ -43,6 +43,20 @@ def main() -> None:
         assert (f"{build.SITE_ORIGIN}{build.BASE_PATH}/en/topics/{slug}/"
                 in locations)
 
+    news_index = ROOT / "site" / "news" / "index.html"
+    en_news_index = ROOT / "site" / "en" / "news" / "index.html"
+    assert news_index.is_file() and en_news_index.is_file()
+    news_html = news_index.read_text(encoding="utf-8")
+    assert "https://skytical.tech/news/" in news_html
+    assert "塑膠包材循環示範聯盟" not in news_html
+
+    feed = ET.parse(ROOT / "site" / "feed.xml").getroot()
+    en_feed = ET.parse(ROOT / "site" / "en" / "feed.xml").getroot()
+    assert feed.tag == "rss" and en_feed.tag == "rss"
+    assert feed.findtext("channel/link").endswith("/news/")
+    assert en_feed.findtext("channel/link").endswith("/en/news/")
+    assert feed.findall("channel/item")
+
     news_sitemap = ET.parse(ROOT / "site" / "news-sitemap.xml").getroot()
     news_rows = news_sitemap.findall("sm:url", ns)
     assert news_rows and len(news_rows) <= 1000
@@ -74,6 +88,9 @@ def main() -> None:
     assert '<meta name="robots" content="index,follow,max-image-preview:large">' in home
     assert '<link rel="alternate" hreflang="zh-Hant-TW"' in home
     assert "SKYTICAL 航空新聞｜臺灣與全球即時航空快訊" in home
+    assert "暫無資料" in home
+    assert "部分即時數據目前尚未取得" in home
+    assert 'type="application/rss+xml"' in home
 
     article_paths = list((ROOT / "site" / "news").glob("*/index.html"))
     article = article_paths[0].read_text(encoding="utf-8")
@@ -92,7 +109,8 @@ def main() -> None:
     assert "SKYTICAL 編輯系統" in article
     pictured_article = next(
         path.read_text(encoding="utf-8") for path in article_paths
-        if "<figure" in path.read_text(encoding="utf-8"))
+        if "<figure" in path.read_text(encoding="utf-8")
+        and "data-image-fallback" not in path.read_text(encoding="utf-8"))
     pictured_schema = _json_ld(pictured_article)[0]
     assert 'fetchpriority="high" decoding="async"' in pictured_article
     assert 'loading="lazy"' not in re.search(

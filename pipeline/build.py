@@ -21,6 +21,7 @@ import time
 import unicodedata
 import xml.etree.ElementTree as ET
 from datetime import timedelta, timezone
+from email.utils import format_datetime
 from functools import lru_cache
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -44,6 +45,7 @@ from common import (
     norm_url,
     now_utc,
     parse_iso,
+    is_transport_headline,
     story_category,
 )
 from model_config import (
@@ -95,6 +97,8 @@ L = {
         "readMore": "閱讀全文 →", "back": "← 返回首頁",
         "heroImg": "[ 頭條照片 — 由來源圖庫自動帶入，灰階顯示 ]",
         "today": "今日全球數據", "statFlights": "目前追蹤航班", "statDelay": "全球延誤率",
+        "statUnavailable": "暫無資料",
+        "statsNote": "部分即時數據目前尚未取得；已取得的項目照常顯示。",
         "statSerious": "本週嚴重事件", "statNotam": "生效中 NOTAM",
         "otp": "準點率排行 · 7月", "fleet": "機隊與訂單追蹤", "fleetDeliv": "2026 上半年交付",
         "fleetBacklog": "積壓訂單", "fleetOrders": "本月新訂單",
@@ -136,6 +140,8 @@ L = {
         "nav": ["最新", "快報", "航班雷達", "事故資料庫", "來源", "方法論"],
         "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
         "searchKicker": "News Search", "searchTitle": "搜尋新聞",
+        "newsKicker": "News Index", "newsTitle": "全部新聞",
+        "newsSub": "依發布時間排列的本站航空與運輸新聞索引。",
         "headerSearchPlaceholder": "搜尋班號，例如 CI100",
         "headerSearchPlaceholders": [
             "搜尋班號，例如 CI100",
@@ -212,6 +218,8 @@ L = {
         "readMore": "Read more →", "back": "← Back to front page",
         "heroImg": "[ Lead photo — pulled from source library, grayscale ]",
         "today": "Global today", "statFlights": "Flights tracked now", "statDelay": "Global delay rate",
+        "statUnavailable": "Data unavailable",
+        "statsNote": "Some live metrics are currently unavailable; available metrics are shown as reported.",
         "statSerious": "Serious events this week", "statNotam": "Active NOTAMs",
         "otp": "On-time ranking · Jul", "fleet": "Fleet & orders", "fleetDeliv": "H1 2026 deliveries",
         "fleetBacklog": "Backlog", "fleetOrders": "New orders this month",
@@ -256,6 +264,8 @@ L = {
         "cats": ["All", "Safety", "Regulation", "Business", "Operations",
                  "Military"],
         "searchKicker": "News Search", "searchTitle": "Search news",
+        "newsKicker": "News Index", "newsTitle": "All news",
+        "newsSub": "An archive of SKYTICAL aviation and transport news, ordered by publication time.",
         "headerSearchPlaceholder": "Search a flight number, e.g. CI100",
         "headerSearchPlaceholders": [
             "Search a flight number, e.g. CI100",
@@ -1189,6 +1199,8 @@ def collect_articles():
                               and raw.get("archived") is True
                               else "bad article entry skipped")
                     print(f"build: {path.name}: {reason}")
+                elif not is_transport_headline(raw):
+                    print(f"build: {path.name}: non-transport headline skipped")
                 else:
                     arts.append(art)
     by_id = {}
@@ -1482,21 +1494,30 @@ def expand_search_aliases(text: str, groups=None) -> list[str]:
 
 
 def search_index_item(article, alias_groups) -> dict:
-    """Build one bilingual, full-text record for the static client index."""
-    searchable = [
-        article["id"], article["cat"], article["source"],
-        article["meta_ts"],
+    """Build one bilingual, full-text record for the static client index.
+
+    Titles, summaries and display metadata are already stored as structured
+    fields below.  Keep only body/source text plus matched aliases in the
+    opaque search field; the browser adds the structured fields while scoring.
+    This removes a large amount of duplicated text from the public index.
+    """
+    searchable = []
+    raw_searchable = [
+        article["id"], article["cat"], article["source"], article["meta_ts"],
         _bi(CATS.get(article["cat"]), "zh", article["cat"]),
         _bi(CATS.get(article["cat"]), "en", article["cat"]),
     ]
     for lang in ("zh", "en"):
-        searchable.extend([
+        raw_searchable.extend([
             article[lang]["title"], article[lang]["summary"],
             *article[lang]["body"],
         ])
     for source in article["sources"]:
+        raw_searchable.extend([source["name"], source["host"]])
         searchable.extend([source["name"], source["host"]])
-    raw_search = " ".join(str(value) for value in searchable if value)
+    for lang in ("zh", "en"):
+        searchable.extend(article[lang]["body"])
+    raw_search = " ".join(str(value) for value in raw_searchable if value)
     searchable.extend(expand_search_aliases(raw_search, alias_groups))
     urls = {
         lang: page_url(lang, f"news/{article['id']}/")
@@ -1641,6 +1662,9 @@ def prep_flashes(raw, known_ids):
         if not zh:
             continue
         aid = f.get("articleId")
+        if isinstance(aid, str) and aid not in known_ids:
+            # A hidden/archived article must not leave an orphan ticker item.
+            continue
         out.append({
             "time": clock_12(dt.astimezone(TPE)),
             "hot": bool(f.get("hot")),
@@ -1944,12 +1968,23 @@ def brief_view(b, lang: str, t, published_ids):
 def stats_views(stats, lang: str):
     if not isinstance(stats, dict):
         stats = {}
+    unavailable = L[lang]["statUnavailable"]
+
+    def metric(formatter, key):
+        value = formatter(stats.get(key))
+        return value if value != "—" else unavailable
+
     tiles = {
-        "flights": fmt_int(stats.get("flightsTracked")),
-        "delay": fmt_pct(stats.get("delayRate")),
-        "serious": fmt_int(stats.get("seriousThisWeek")),
-        "notams": fmt_int(stats.get("notams")),
+        "flights": metric(fmt_int, "flightsTracked"),
+        "delay": metric(fmt_pct, "delayRate"),
+        "serious": metric(fmt_int, "seriousThisWeek"),
+        "notams": metric(fmt_int, "notams"),
     }
+    optional_keys = ("flightsTracked", "delayRate", "notams")
+    note = (L[lang]["statsNote"]
+            if any(metric(fmt_int if key != "delayRate" else fmt_pct, key)
+                   == unavailable for key in optional_keys)
+            else "")
     otp = []
     raw_otp = stats.get("otp")
     if isinstance(raw_otp, list):
@@ -2001,7 +2036,8 @@ def stats_views(stats, lang: str):
             delays.append({"code": str(d["code"]),
                            "name": str(d.get(lang) or d.get("name") or ""),
                            "pct": f"{pct:g}"})
-    return {"tiles": tiles, "otp": otp, "fleet": fleet, "delays": delays}
+    return {"tiles": tiles, "otp": otp, "fleet": fleet, "delays": delays,
+            "note": note}
 
 
 # ── private usage dashboard (URL token from AVWIRE_USAGE_TOKEN secret) ──────
@@ -2811,6 +2847,8 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build,
         "robots_meta": "index,follow,max-image-preview:large",
         "hreflang": hreflang,
         "home_url": page_url(lang, ""),
+        "news_url": page_url(lang, "news/"),
+        "feed_url": page_url(lang, "feed.xml"),
         "search_url": page_url(lang, "search/"),
         "search_aliases_url": (
             f"{BASE_PATH}/search-aliases.json"
@@ -2926,8 +2964,39 @@ def _write_xml(path: Path, root: ET.Element) -> None:
                short_empty_elements=True)
 
 
+def _write_rss_feed(path: Path, lang: str, articles, now) -> None:
+    """Write a small RSS 2.0 feed for the latest localized articles."""
+    root = ET.Element("rss", {"version": "2.0"})
+    channel = ET.SubElement(root, "channel")
+    title = ("SKYTICAL 航空新聞" if lang == "zh"
+             else "SKYTICAL Aviation News")
+    description = L[lang]["newsSub"]
+    ET.SubElement(channel, "title").text = title
+    ET.SubElement(channel, "link").text = absolute_page_url(lang, "news/")
+    ET.SubElement(channel, "description").text = description
+    ET.SubElement(channel, "language").text = "zh-tw" if lang == "zh" else "en"
+    ET.SubElement(channel, "lastBuildDate").text = format_datetime(
+        now.astimezone(timezone.utc), usegmt=True)
+    ET.SubElement(channel, "generator").text = "SKYTICAL static pipeline"
+
+    localized = [article for article in articles
+                 if lang in article["available_languages"]]
+    for article in localized[:50]:
+        item = ET.SubElement(channel, "item")
+        url = absolute_page_url(lang, f"news/{article['id']}/")
+        ET.SubElement(item, "title").text = article[lang]["title"]
+        ET.SubElement(item, "link").text = url
+        ET.SubElement(item, "guid", {"isPermaLink": "true"}).text = url
+        ET.SubElement(item, "description").text = (
+            article[lang]["summary"] or article[lang]["title"])
+        ET.SubElement(item, "pubDate").text = format_datetime(
+            article["published_dt"].astimezone(timezone.utc), usegmt=True)
+        ET.SubElement(item, "source").text = article["source"]
+    _write_xml(path, root)
+
+
 def write_search_discovery_files(articles, briefings, now) -> None:
-    """Write generic/news sitemaps plus a crawler policy for the public site."""
+    """Write sitemaps, RSS feeds and a crawler policy for the public site."""
     urlset = ET.Element(ET.QName(SITEMAP_NS, "urlset"))
     seen = set()
 
@@ -2942,7 +3011,7 @@ def write_search_discovery_files(articles, briefings, now) -> None:
             ET.SubElement(node, ET.QName(SITEMAP_NS, "lastmod")).text = (
                 iso_timestamp(modified))
 
-    public_sections = ("", "briefings/", "radar/", "incidents/", "sources/",
+    public_sections = ("", "news/", "briefings/", "radar/", "incidents/", "sources/",
                        "about/", "editorial-policy/", "changelog/")
     for lang in ("zh", "en"):
         for sub in public_sections:
@@ -2981,6 +3050,8 @@ def write_search_discovery_files(articles, briefings, now) -> None:
             ET.SubElement(news, ET.QName(
                 NEWS_NS, "title")).text = article[lang]["title"]
     _write_xml(SITE_DIR / "news-sitemap.xml", news_urlset)
+    _write_rss_feed(SITE_DIR / "feed.xml", "zh", articles, now)
+    _write_rss_feed(SITE_DIR / "en" / "feed.xml", "en", articles, now)
 
     sitemap_url = f"{SITE_ORIGIN}{BASE_PATH}/sitemap.xml"
     news_sitemap_url = f"{SITE_ORIGIN}{BASE_PATH}/news-sitemap.xml"
@@ -3114,10 +3185,19 @@ def main() -> int:
                    feed=feed, flashes=fl, agg=agg,
                    source_status=source_status_view(sources, now),
                    stats=sv["tiles"], otp=sv["otp"], fleet=sv["fleet"],
-                   delays=sv["delays"],
+                   delays=sv["delays"], stats_note=sv["note"],
                    cat_seg=list(zip(cat_keys, t["cats"])),
                    latest_brief=latest_brief)
         render(env, "home.html", rel_path(lang, "index.html"), ctx)
+        pages += 1
+
+        news_ctx = base_ctx(
+            lang, "news", "news/",
+            title=f"{t['newsTitle']}｜{t['siteName']}",
+            description=t["newsSub"], ticker=ticker, build=build)
+        news_ctx.update(articles=views[:100], count=len(views))
+        render(env, "news_index.html", rel_path(lang, "news/index.html"),
+               news_ctx)
         pages += 1
 
         for slug, topic in TOPICS.items():

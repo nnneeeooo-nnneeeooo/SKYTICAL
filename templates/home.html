@@ -72,7 +72,7 @@
       {% endif %}
       <hr class="hr" style="margin:20px 0 0;">
       <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;flex-wrap:wrap;gap:10px;">
-        <h6 style="margin:0;">{{ t.latest }}</h6>
+        <h6 style="margin:0;"><a href="{{ news_url }}" style="color:inherit;text-decoration:none;">{{ t.latest }} →</a></h6>
         {% if agg %}
         <span class="text-muted" style="font-size:12px;letter-spacing:.02em;">{{ t.aggNote }}</span>
         {% else %}
@@ -101,22 +101,25 @@
       <h6 style="margin:0 0 12px;">{{ t.today }}</h6>
       <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-divider);">
         <a class="radar-stat-link" href="{{ radar_url }}" style="padding:12px;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);">
-          <div style="font-size:24px;font-weight:800;color:var(--color-accent);letter-spacing:-.02em;">{{ stats.flights }}</div>
+          <div class="stat-value{% if stats.flights == t.statUnavailable %} stat-unavailable{% endif %}" style="font-size:24px;font-weight:800;color:var(--color-accent);letter-spacing:-.02em;">{{ stats.flights }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statFlights }}</div>
         </a>
         <div style="padding:12px;border-bottom:1px solid var(--color-divider);">
-          <div style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.delay }}</div>
+          <div class="stat-value{% if stats.delay == t.statUnavailable %} stat-unavailable{% endif %}" style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.delay }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statDelay }}</div>
         </div>
         <a class="radar-stat-link" href="{{ incidents_week_url }}" aria-label="{{ t.incWeeklySerious }}：{{ stats.serious }} {{ t.incCountLabel }}" style="padding:12px;border-right:1px solid var(--color-divider);">
-          <div style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.serious }}</div>
+          <div class="stat-value{% if stats.serious == t.statUnavailable %} stat-unavailable{% endif %}" style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.serious }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statSerious }}</div>
         </a>
         <div style="padding:12px;">
-          <div style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.notams }}</div>
+          <div class="stat-value{% if stats.notams == t.statUnavailable %} stat-unavailable{% endif %}" style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.notams }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statNotam }}</div>
         </div>
       </div>
+      {% if stats_note %}
+      <p class="stats-note text-muted">{{ stats_note }}</p>
+      {% endif %}
       {% if otp %}
       <h6 style="margin:28px 0 12px;">{{ t.otp }}</h6>
       {% for r in otp %}

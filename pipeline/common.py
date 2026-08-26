@@ -517,6 +517,23 @@ _TRANSPORT_EN_RE = re.compile(
     r")\b",
     re.IGNORECASE,
 )
+_TRANSPORT_HEADLINE_ZH_TERMS = (
+    "豪華經濟艙", "商務艙", "機組員", "紅箭", "火箭", "探空", "地滑翔機",
+    "航艦", "無人載具", "教練機", "開航", "航展", "登機門", "候機廳",
+    "指揮控制", "發動機", "原型機", "史基浦", "達美", "墨航",
+)
+_TRANSPORT_HEADLINE_EN_RE = re.compile(
+    r"\b(?:air\s+force|airshow|air\s+show|aircrew|red\s+arrows?|"
+    r"seaglider|schiphol|farnborough|gulfstream|cessna|lockheed|"
+    r"recaro|collins|delta|rafale|fighter|prototype|rocket|missile|"
+    r"air\s+base|airbase)\b",
+    re.IGNORECASE,
+)
+_AIRCRAFT_MODEL_RE = re.compile(
+    r"(?<![A-Za-z0-9])(?:[A-Z]{1,4}-?\d{2,4}[A-Z0-9]*(?:-\d+)?|"
+    r"Il-\d{2,4}(?:-\d+)?|"
+    r"R\d|JASSM|EPACS)\b"
+)
 _MILITARY_REPLICA_ZH_RE = re.compile(
     r"(?:建造|打造|興建|搭建|建).{0,24}(?:模型|複製品)"
     r"|(?:模型|複製品).{0,32}(?:國防預算|敵情|威脅|情報)"
@@ -558,6 +575,43 @@ def is_transport_story(*records) -> bool:
         return False
     return (any(term in text for term in _TRANSPORT_ZH_TERMS)
             or _TRANSPORT_EN_RE.search(text) is not None)
+
+
+def _headline_values(value):
+    """Yield only title fields from RSS items or stored bilingual articles."""
+    if isinstance(value, str):
+        yield value
+        return
+    if not isinstance(value, dict):
+        return
+    title = value.get("title")
+    if isinstance(title, str):
+        yield title
+    for lang in ("zh", "en"):
+        block = value.get(lang)
+        if isinstance(block, dict) and isinstance(block.get("title"), str):
+            yield block["title"]
+
+
+def is_transport_headline(*records) -> bool:
+    """True when a story's headline itself names a transport subject.
+
+    Summaries and body paragraphs often mention an airline only as a partner,
+    advertiser or piece of background context.  Broad feeds therefore need a
+    title-level gate in addition to the wider source-material gate.
+    """
+    headline = " ".join(
+        title for record in records for title in _headline_values(record)
+    )
+    if not headline.strip():
+        return False
+    if (_MILITARY_REPLICA_ZH_RE.search(headline)
+            or _MILITARY_REPLICA_EN_RE.search(headline)):
+        return False
+    return (is_transport_story({"title": headline})
+            or any(term in headline for term in _TRANSPORT_HEADLINE_ZH_TERMS)
+            or _TRANSPORT_HEADLINE_EN_RE.search(headline) is not None
+            or _AIRCRAFT_MODEL_RE.search(headline) is not None)
 
 
 _TAIWAN_AIRLINE_ZH_TERMS = TAIWAN_AIRLINE_KEYWORDS
