@@ -114,8 +114,11 @@ def main() -> None:
     assert "SKYTICAL 航空新聞｜臺灣與全球即時航空快訊" in home
     assert "可追溯來源" in home
     assert "設計原型" not in home and "示意樣本" not in home
-    assert "暫無資料" in home
-    assert "部分即時數據目前尚未取得" in home
+    assert "即時航班雷達" in home
+    assert "今日全球延誤" in home and "今日全球取消" in home
+    assert "來源未設定" in home
+    assert "FlightAware AeroAPI 尚未設定" in home
+    assert "全球延誤率" not in home and "生效中 NOTAM" not in home
     assert 'type="application/rss+xml"' in home
 
     if expected_zh_pages > 1:
