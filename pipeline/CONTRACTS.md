@@ -240,19 +240,24 @@ actual occurrence (ICAO Annex 13):
 
 ## data/stats.json  (written by write.py — optional FlightAware AeroAPI part; read by build.py)
 
-All fields optional; build.py renders an explicit unavailable state for a
-missing dashboard metric and adds a note below the dashboard, while hiding
-sections whose arrays are missing/empty:
+The site-derived fields are always written. FlightAware values are optional;
+`flightAwareStatus` distinguishes an unconfigured source from a temporary
+failure instead of presenting either as a real zero:
 
 ```jsonc
 {
   "updatedUtc": "2026-07-26T05:47Z",
-  "flightsTracked": 18742,
-  "delayRate": 22.4,
   "seriousThisWeek": 3,        // write.py derives from incidents.json
-  "notams": 1208
+  "flightAwareStatus": "ok",  // ok | unconfigured | unavailable
+  "flightAwareUpdatedUtc": "2026-07-26T05:46Z",
+  "delaysWorldwide": 4201,
+  "cancellationsWorldwide": 318
 }
 ```
+
+The FlightAware disruption endpoint does not provide a denominator for a
+worldwide delay rate or an active-NOTAM total. Neither value may be inferred
+from this response.
 
 ## site/  (written by build.py)
 

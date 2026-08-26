@@ -99,10 +99,13 @@ L = {
         "summaryLabel": "重點摘要",
         "readMore": "閱讀全文 →", "back": "← 返回首頁",
         "heroImg": "[ 頭條照片 — 由來源圖庫自動帶入，灰階顯示 ]",
-        "today": "今日全球數據", "statFlights": "目前追蹤航班", "statDelay": "全球延誤率",
-        "statUnavailable": "暫無資料",
-        "statsNote": "部分即時數據目前尚未取得；已取得的項目照常顯示。",
-        "statSerious": "本週嚴重事件", "statNotam": "生效中 NOTAM",
+        "today": "即時營運概況", "statRadar": "即時航班雷達", "statRadarValue": "LIVE",
+        "statDelay": "今日全球延誤", "statCancelled": "今日全球取消",
+        "statUnavailable": "暫時無法取得", "statUnconfigured": "來源未設定",
+        "statsNoteOk": "延誤與取消數據來自 FlightAware AeroAPI，每小時更新。",
+        "statsNoteUnconfigured": "FlightAware AeroAPI 尚未設定；今日全球延誤與取消暫不顯示。即時航班雷達與本站事件統計照常提供。",
+        "statsNoteUnavailable": "FlightAware 即時營運資料暫時無法取得；即時航班雷達與本站事件統計照常提供。",
+        "statSerious": "本週嚴重事件",
         "otp": "準點率排行 · 7月", "fleet": "機隊與訂單追蹤", "fleetDeliv": "2026 上半年交付",
         "fleetBacklog": "積壓訂單", "fleetOrders": "本月新訂單",
         "delays": "今日延誤熱點機場", "autoCompiled": "自動彙整",
@@ -223,10 +226,13 @@ L = {
         "summaryLabel": "Quick Summary",
         "readMore": "Read more →", "back": "← Back to front page",
         "heroImg": "[ Lead photo — pulled from source library, grayscale ]",
-        "today": "Global today", "statFlights": "Flights tracked now", "statDelay": "Global delay rate",
-        "statUnavailable": "Data unavailable",
-        "statsNote": "Some live metrics are currently unavailable; available metrics are shown as reported.",
-        "statSerious": "Serious events this week", "statNotam": "Active NOTAMs",
+        "today": "Live operations", "statRadar": "Live flight radar", "statRadarValue": "LIVE",
+        "statDelay": "Worldwide delays today", "statCancelled": "Worldwide cancellations today",
+        "statUnavailable": "Temporarily unavailable", "statUnconfigured": "Source not configured",
+        "statsNoteOk": "Delay and cancellation counts are provided by FlightAware AeroAPI and update hourly.",
+        "statsNoteUnconfigured": "FlightAware AeroAPI is not configured, so today's worldwide delay and cancellation totals are not displayed. Live flight radar and SKYTICAL incident statistics remain available.",
+        "statsNoteUnavailable": "FlightAware live operations data is temporarily unavailable. Live flight radar and SKYTICAL incident statistics remain available.",
+        "statSerious": "Serious events this week",
         "otp": "On-time ranking · Jul", "fleet": "Fleet & orders", "fleetDeliv": "H1 2026 deliveries",
         "fleetBacklog": "Backlog", "fleetOrders": "New orders this month",
         "delays": "Delay hotspots today", "autoCompiled": "Auto-compiled",
@@ -1996,23 +2002,44 @@ def brief_view(b, lang: str, t, published_ids):
 def stats_views(stats, lang: str):
     if not isinstance(stats, dict):
         stats = {}
+    status = str(stats.get("flightAwareStatus") or "").lower()
+    if status not in {"ok", "unconfigured", "unavailable"}:
+        status = ("ok" if any(isinstance(stats.get(key), (int, float))
+                              and not isinstance(stats.get(key), bool)
+                              for key in ("delaysWorldwide",
+                                          "cancellationsWorldwide"))
+                  else "unavailable")
+    source_missing = (L[lang]["statUnconfigured"]
+                      if status == "unconfigured"
+                      else L[lang]["statUnavailable"])
     unavailable = L[lang]["statUnavailable"]
 
-    def metric(formatter, key):
+    def metric(formatter, key, missing=unavailable):
         value = formatter(stats.get(key))
-        return value if value != "—" else unavailable
+        return value if value != "—" else missing
+
+    def available(key):
+        return isinstance(stats.get(key), (int, float)) \
+            and not isinstance(stats.get(key), bool)
 
     tiles = {
-        "flights": metric(fmt_int, "flightsTracked"),
-        "delay": metric(fmt_pct, "delayRate"),
+        "radar": L[lang]["statRadarValue"],
+        "radar_available": True,
+        "delay": metric(fmt_int, "delaysWorldwide", source_missing),
+        "delay_available": available("delaysWorldwide"),
         "serious": metric(fmt_int, "seriousThisWeek"),
-        "notams": metric(fmt_int, "notams"),
+        "serious_available": available("seriousThisWeek"),
+        "cancellations": metric(fmt_int, "cancellationsWorldwide",
+                                source_missing),
+        "cancellations_available": available("cancellationsWorldwide"),
     }
-    optional_keys = ("flightsTracked", "delayRate", "notams")
-    note = (L[lang]["statsNote"]
-            if any(metric(fmt_int if key != "delayRate" else fmt_pct, key)
-                   == unavailable for key in optional_keys)
-            else "")
+    if status == "unconfigured":
+        note = L[lang]["statsNoteUnconfigured"]
+    elif status != "ok" or not (tiles["delay_available"]
+                                and tiles["cancellations_available"]):
+        note = L[lang]["statsNoteUnavailable"]
+    else:
+        note = L[lang]["statsNoteOk"]
     otp = []
     raw_otp = stats.get("otp")
     if isinstance(raw_otp, list):
@@ -3109,6 +3136,29 @@ def main() -> int:
     incidents = prep_incidents(load_json(DATA_DIR / "incidents.json", None))
     sources = merged_sources(load_json(DATA_DIR / "sources.json", []))
     stats_raw = load_json(DATA_DIR / "stats.json", {})
+    if not isinstance(stats_raw, dict):
+        stats_raw = {}
+    if stats_raw.get("flightAwareStatus") not in {
+            "ok", "unconfigured", "unavailable"}:
+        flightaware_raw = load_json(RAW_DIR / "flightaware.json", {})
+        if isinstance(flightaware_raw, dict) \
+                and flightaware_raw.get("ok") is True:
+            fa_stats = flightaware_raw.get("stats")
+            if isinstance(fa_stats, dict):
+                for key in ("delaysWorldwide", "cancellationsWorldwide"):
+                    value = fa_stats.get(key)
+                    if isinstance(value, (int, float)) \
+                            and not isinstance(value, bool):
+                        stats_raw[key] = value
+            stats_raw["flightAwareStatus"] = (
+                "ok" if all(key in stats_raw for key in (
+                    "delaysWorldwide", "cancellationsWorldwide"))
+                else "unavailable")
+        elif isinstance(flightaware_raw, dict) and str(
+                flightaware_raw.get("error") or "") == "AEROAPI_KEY not set":
+            stats_raw["flightAwareStatus"] = "unconfigured"
+        else:
+            stats_raw["flightAwareStatus"] = "unavailable"
     briefings = collect_briefings()
     brief_rows = [r for r in (load_json(
         DATA_DIR / "briefings" / "index.json", {}).get("briefings") or [])

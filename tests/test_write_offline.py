@@ -307,8 +307,12 @@ def test_publish_flow():
           "stats updatedUtc format")
     check(stats["seriousThisWeek"] == 2,
           f"verified safety event counted immediately, got {stats['seriousThisWeek']}")
-    check(stats["flightsTracked"] == 18742 and stats["delayRate"] == 22.4
-          and stats["notams"] == 1208, "FlightAware stats merged")
+    check(stats["delaysWorldwide"] == 4201
+          and stats["cancellationsWorldwide"] == 318,
+          "FlightAware disruption counts merged")
+    check(stats["flightAwareStatus"] == "ok", "FlightAware status recorded")
+    check(not any(key in stats for key in ("flightsTracked", "delayRate", "notams")),
+          "unsupported FlightAware metrics omitted")
 
     check(safety["id"].endswith("united-737-slides-off-denver-runway"),
           f"slug derived from en title: {safety['id']}")
@@ -451,7 +455,13 @@ def test_no_api_key_end_to_end():
     tmp2 = TMP_BASE / "nokey-data"
     (tmp2 / "raw").mkdir(parents=True)
     shutil.copy(FIXTURES / "pending.json", tmp2 / "pending.json")
-    shutil.copy(FIXTURES / "flightaware.json", tmp2 / "raw" / "flightaware.json")
+    (tmp2 / "raw" / "flightaware.json").write_text(json.dumps({
+        "source": "flightaware",
+        "fetchedUtc": "2026-07-26T05:02Z",
+        "ok": False,
+        "error": "AEROAPI_KEY not set",
+        "items": [],
+    }), encoding="utf-8")
     pending_before = (tmp2 / "pending.json").read_bytes()
 
     env = dict(os.environ)
@@ -472,7 +482,10 @@ def test_no_api_key_end_to_end():
     stats = load(tmp2 / "stats.json")
     check("updatedUtc" in stats, "stats.json refreshed without key")
     check(stats["seriousThisWeek"] == 0, "seriousThisWeek 0 with no incidents.json")
-    check(stats["flightsTracked"] == 18742, "FlightAware stats merged without key")
+    check(stats["flightAwareStatus"] == "unconfigured",
+          "missing FlightAware key recorded as unconfigured")
+    check("delaysWorldwide" not in stats and "cancellationsWorldwide" not in stats,
+          "no FlightAware values fabricated without key")
     check(not (tmp2 / "seen.json").exists(), "seen.json not created without key")
     print("test_no_api_key_end_to_end: done")
 

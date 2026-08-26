@@ -1739,7 +1739,7 @@ def update_seen(published_groups: list, now) -> None:
 
 
 def refresh_stats(now) -> None:
-    """Rewrite stats.json: updatedUtc, seriousThisWeek, optional FlightAware."""
+    """Rewrite stats.json with site and optional FlightAware statistics."""
     stats = {"updatedUtc": iso_minute(now)}
     incidents = load_json(INCIDENTS_PATH, [])
     if not isinstance(incidents, list):
@@ -1753,12 +1753,22 @@ def refresh_stats(now) -> None:
     stats["seriousThisWeek"] = serious
     raw = load_json(FLIGHTAWARE_RAW_PATH, {})
     fa_stats = raw.get("stats") if isinstance(raw, dict) else None
-    if isinstance(fa_stats, dict):
-        for key in ("flightsTracked", "delayRate", "notams",
-                    "delaysWorldwide", "cancellationsWorldwide"):
+    copied = 0
+    if isinstance(raw, dict) and raw.get("ok") is True \
+            and isinstance(fa_stats, dict):
+        for key in ("delaysWorldwide", "cancellationsWorldwide"):
             value = fa_stats.get(key)
             if isinstance(value, (int, float)) and not isinstance(value, bool):
                 stats[key] = value
+                copied += 1
+        stats["flightAwareStatus"] = "ok" if copied == 2 else "unavailable"
+    elif isinstance(raw, dict) \
+            and str(raw.get("error") or "") == "AEROAPI_KEY not set":
+        stats["flightAwareStatus"] = "unconfigured"
+    else:
+        stats["flightAwareStatus"] = "unavailable"
+    if isinstance(raw, dict) and isinstance(raw.get("fetchedUtc"), str):
+        stats["flightAwareUpdatedUtc"] = raw["fetchedUtc"]
     save_json(STATS_PATH, stats)
 
 
