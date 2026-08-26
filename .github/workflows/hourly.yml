@@ -40,10 +40,14 @@ jobs:
       - name: Test summary boundary guard
         run: python tests/test_summary_guard.py
 
+      - name: Test headline priority and subject scope
+        run: python tests/test_headline_rotation.py
+
       - name: Test image relevance and fallback guards
         run: |
           python tests/test_images.py
           python tests/test_image_fallbacks.py
+          python tests/test_image_qa.py
           python tests/test_recent_image_quality.py
 
       - name: Run pipeline
@@ -82,6 +86,7 @@ jobs:
           python pipeline/airport_codes.py
           python pipeline/images.py
           python pipeline/image_fallbacks.py
+          python pipeline/image_qa.py
           # The saved Taipei date makes this one LLM-assisted refresh per day.
           # Missing/invalid model output falls back to published article titles.
           python pipeline/search_prompts.py --daily-if-due

@@ -292,6 +292,9 @@ a.flash-row:hover { color: inherit; }
   font-size: 12.5px; line-height: 1.55; max-height: 3.1em;
 }
 
+.stat-unavailable { font-size: 15px !important; letter-spacing: 0 !important; }
+.stats-note { margin: 8px 0 0; font-size: 11px; line-height: 1.5; }
+
 [data-theme="dark"] .summary-preview__label {
   color: color-mix(in srgb, #b8adff 88%, var(--color-text));
 }
