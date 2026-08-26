@@ -34,6 +34,7 @@ from common import (
     BASE_PATH,
     DATA_DIR,
     HOME_FEED_LIMIT,
+    NEWS_PAGE_SIZE,
     MAX_FLASHES,
     RAW_DIR,
     SITE_DIR,
@@ -41,6 +42,7 @@ from common import (
     SOURCES,
     STATIC_DIR,
     TEMPLATES_DIR,
+    is_google_news_url,
     load_json,
     norm_url,
     now_utc,
@@ -91,7 +93,8 @@ L = {
     "zh": {
         "homeLabel": "返回 SKYTICAL 首頁", "live": "LIVE 快訊", "updateBadge": "每小時自動更新",
         "flash": "即時快訊", "sourceStatus": "來源狀態",
-        "latest": "最新新聞", "topStory": "頭條", "mainSource": "主要來源",
+        "latest": "最新新聞", "topStory": "頭條", "priorityLabel": "頭條",
+        "mainSource": "主要來源",
         "briefLabel": "短訊", "roundupLabel": "事件彙整",
         "summaryLabel": "重點摘要",
         "readMore": "閱讀全文 →", "back": "← 返回首頁",
@@ -134,7 +137,7 @@ L = {
             "feature": "功能", "fix": "修正", "system": "系統",
             "editorial": "編輯", "design": "介面",
         },
-        "footerAbout": "全自動航空新聞聚合站。GitHub Actions 每小時抓取各可信來源，自動撰寫並發布，每篇文末標註原始出處。本頁為設計原型，內容為示意樣本。",
+        "footerAbout": "SKYTICAL 是以可追溯來源為基礎的自動化航空新聞彙整服務；每篇報導附原始來源，原始報導與更正公告優先。",
         "footerSources": "資料來源 Data Sources",
         "footerChangelog": "網站更新紀錄",
         "nav": ["最新", "快報", "航班雷達", "事故資料庫", "來源", "方法論"],
@@ -142,6 +145,8 @@ L = {
         "searchKicker": "News Search", "searchTitle": "搜尋新聞",
         "newsKicker": "News Index", "newsTitle": "全部新聞",
         "newsSub": "依發布時間排列的本站航空與運輸新聞索引。",
+        "paginationLabel": "新聞分頁", "previousPage": "上一頁",
+        "nextPage": "下一頁", "pageLabel": "第 {page} / {pages} 頁",
         "headerSearchPlaceholder": "搜尋班號，例如 CI100",
         "headerSearchPlaceholders": [
             "搜尋班號，例如 CI100",
@@ -212,7 +217,8 @@ L = {
     "en": {
         "homeLabel": "Back to the SKYTICAL home page", "live": "LIVE WIRE", "updateBadge": "Auto-updates hourly",
         "flash": "Live flash", "sourceStatus": "Source status",
-        "latest": "Latest news", "topStory": "Top story", "mainSource": "Primary source",
+        "latest": "Latest news", "topStory": "Top story", "priorityLabel": "TOP",
+        "mainSource": "Primary source",
         "briefLabel": "Brief", "roundupLabel": "Event roundup",
         "summaryLabel": "Quick Summary",
         "readMore": "Read more →", "back": "← Back to front page",
@@ -256,7 +262,7 @@ L = {
             "feature": "Feature", "fix": "Fix", "system": "System",
             "editorial": "Editorial", "design": "Design",
         },
-        "footerAbout": "A fully automated aviation news aggregator. GitHub Actions fetches trusted sources hourly, writes and publishes automatically, and credits originals at the end of every article. Design prototype; sample content.",
+        "footerAbout": "SKYTICAL is an automated aviation-news compilation service built on traceable sources. Every story links to its sources; original reports and corrections prevail.",
         "footerSources": "Data Sources",
         "footerChangelog": "Site changelog",
         "nav": ["Latest", "Briefings", "Flight Radar", "Incident DB", "Sources",
@@ -266,6 +272,8 @@ L = {
         "searchKicker": "News Search", "searchTitle": "Search news",
         "newsKicker": "News Index", "newsTitle": "All news",
         "newsSub": "An archive of SKYTICAL aviation and transport news, ordered by publication time.",
+        "paginationLabel": "News pagination", "previousPage": "Previous",
+        "nextPage": "Next", "pageLabel": "Page {page} of {pages}",
         "headerSearchPlaceholder": "Search a flight number, e.g. CI100",
         "headerSearchPlaceholders": [
             "Search a flight number, e.g. CI100",
@@ -951,6 +959,12 @@ def _safe_web_url(url: str) -> bool:
         return False
 
 
+def _public_direct_url(url: str) -> bool:
+    """Only safe, direct original URLs may be shown as public sources."""
+    value = str(url or "").strip()
+    return bool(value) and _safe_web_url(value) and not is_google_news_url(value)
+
+
 def normalize_image(raw_img):
     """Article image -> {url, link, credit, license, provider, kind} or None.
 
@@ -1106,7 +1120,9 @@ def prep_article(raw):
     for s in raw.get("sources") or []:
         if isinstance(s, dict) and s.get("url"):
             url = str(s["url"])
-            if not _safe_web_url(url):  # feed-derived: block javascript: etc.
+            if (not _safe_web_url(url) or is_google_news_url(url)):
+                # Google News is a discovery aggregator, not an original
+                # source URL that should be exposed or credited publicly.
                 continue
             try:
                 host = urlsplit(url).netloc
@@ -1637,6 +1653,7 @@ def agg_flashes(views):
         if len(text) > 68:
             text = text[:68].rstrip() + "…"
         out.append({"time": v["time"], "hot": False, "pinned": False,
+                    "priority": False,
                     "text": text,
                     "url": v["url"], "external": True})
     return out
@@ -1682,9 +1699,11 @@ def prep_flashes(raw, known_ids):
     return out
 
 
-def flash_view(flashes, lang: str):
+def flash_view(flashes, lang: str, priority_ids=None):
+    priority_ids = set(priority_ids or ())
     return [{
         "time": f["time"], "hot": f["hot"], "pinned": f["pinned"],
+        "priority": f.get("articleId") in priority_ids,
         "text": f[lang],
         "url": page_url(lang, f"news/{f['articleId']}/") if f["articleId"] else None,
         "external": False,
@@ -1753,12 +1772,17 @@ def merged_sources(raw):
         # public Sources page; Airbus and Boeing opt in via public=true.
         if not bool(s.get("public", reg.get("public", True))):
             continue
+        url = str(s.get("url") or reg["url"] or "").strip()
+        if not _public_direct_url(url):
+            # Discovery aggregators may remain pipeline inputs, but never
+            # appear in the reader-facing source inventory.
+            continue
         out.append({
             "key": key,
             "name": str(s.get("name") or reg["name"]),
             "kind": str(s.get("kind") or reg["kind"]),
             "fmt": str(s.get("fmt") or reg["fmt"]),
-            "url": str(s.get("url") or reg["url"]),
+            "url": url,
             "cover": s.get("cover") or reg["cover"],
             "lastFetchUtc": s.get("lastFetchUtc"),
             "ok": bool(s.get("ok", False)),
@@ -1906,8 +1930,12 @@ def brief_item_view(item, lang: str, published_ids):
         "sev_cls": _BRIEF_SEV_CLS.get(item.get("severity"), "tag-neutral"),
         "update": item.get("item_type") == "update",
         "url": url,
-        "sources": [s for s in item.get("sources") or []
-                    if isinstance(s, dict) and s.get("url")],
+        "sources": [
+            {"name": str(s.get("name") or ""),
+             "url": str(s.get("url") or "").strip()}
+            for s in item.get("sources") or []
+            if isinstance(s, dict) and _public_direct_url(s.get("url"))
+        ],
     }
 
 
@@ -2991,7 +3019,10 @@ def _write_rss_feed(path: Path, lang: str, articles, now) -> None:
             article[lang]["summary"] or article[lang]["title"])
         ET.SubElement(item, "pubDate").text = format_datetime(
             article["published_dt"].astimezone(timezone.utc), usegmt=True)
-        ET.SubElement(item, "source").text = article["source"]
+        source_attrs = {}
+        if article.get("sources") and article["sources"][0].get("url"):
+            source_attrs["url"] = article["sources"][0]["url"]
+        ET.SubElement(item, "source", source_attrs).text = article["source"]
     _write_xml(path, root)
 
 
@@ -3018,6 +3049,12 @@ def write_search_discovery_files(articles, briefings, now) -> None:
             add_url(lang, sub)
         for slug in TOPICS:
             add_url(lang, f"topics/{slug}/")
+        localized_count = sum(
+            lang in article["available_languages"] for article in articles
+        )
+        page_count = max(1, math.ceil(localized_count / NEWS_PAGE_SIZE))
+        for page_number in range(2, page_count + 1):
+            add_url(lang, f"news/page/{page_number}/")
     for briefing in briefings:
         modified = _tpe_dt(briefing.get("generated_at")
                            or briefing.get("cutoff_time"))
@@ -3139,10 +3176,11 @@ def main() -> int:
         ]
         pinned_views = [art_view(article, lang)
                         for article in pinned_articles]
+        priority_ids = {article["id"] for article in pinned_articles}
         hero_candidates = [hero_rotation_view(view, lang)
                            for view in pinned_views]
         if views:
-            fl = flash_view(flashes, lang)
+            fl = flash_view(flashes, lang, priority_ids)
             hero = pinned_views[0] if pinned_views else views[0]
             pinned_ids = ({view["id"] for view in pinned_views}
                           if pinned_views else {hero["id"]})
@@ -3156,7 +3194,7 @@ def main() -> int:
             hero_candidates = []
             feed = av[1:1 + HOME_FEED_LIMIT]
         else:
-            fl = flash_view(flashes, lang)
+            fl = flash_view(flashes, lang, priority_ids)
             hero = None
             hero_candidates = []
             feed = []
@@ -3165,6 +3203,7 @@ def main() -> int:
         ticker = [{"time": f.get("time"), "text": f.get("text"),
                    "url": f.get("url"), "hot": bool(f.get("hot")),
                    "pinned": bool(f.get("pinned")),
+                   "priority": bool(f.get("priority")),
                    "external": bool(f.get("external"))} for f in fl]
         sv = stats_views(stats_raw, lang)
 
@@ -3191,14 +3230,37 @@ def main() -> int:
         render(env, "home.html", rel_path(lang, "index.html"), ctx)
         pages += 1
 
-        news_ctx = base_ctx(
-            lang, "news", "news/",
-            title=f"{t['newsTitle']}｜{t['siteName']}",
-            description=t["newsSub"], ticker=ticker, build=build)
-        news_ctx.update(articles=views[:100], count=len(views))
-        render(env, "news_index.html", rel_path(lang, "news/index.html"),
-               news_ctx)
-        pages += 1
+        page_count = max(1, math.ceil(len(views) / NEWS_PAGE_SIZE))
+        for page_number in range(1, page_count + 1):
+            start = (page_number - 1) * NEWS_PAGE_SIZE
+            end = start + NEWS_PAGE_SIZE
+            sub = ("news/" if page_number == 1
+                   else f"news/page/{page_number}/")
+            previous_sub = ("news/" if page_number == 2
+                            else f"news/page/{page_number - 1}/")
+            next_sub = f"news/page/{page_number + 1}/"
+            news_ctx = base_ctx(
+                lang, "news", sub,
+                title=(f"{t['newsTitle']}｜{t['siteName']}"
+                       if page_number == 1 else
+                       f"{t['newsTitle']} · {t['pageLabel'].format(page=page_number, pages=page_count)}｜{t['siteName']}"),
+                description=t["newsSub"], ticker=ticker, build=build)
+            news_ctx.update(
+                articles=views[start:end], count=len(views),
+                page_number=page_number, page_count=page_count,
+                previous_url=(page_url(lang, previous_sub)
+                              if page_number > 1 else None),
+                next_url=(page_url(lang, next_sub)
+                          if page_number < page_count else None),
+                previous_abs_url=(absolute_page_url(lang, previous_sub)
+                                  if page_number > 1 else None),
+                next_abs_url=(absolute_page_url(lang, next_sub)
+                              if page_number < page_count else None),
+            )
+            out_rel = ("news/index.html" if page_number == 1
+                       else f"news/page/{page_number}/index.html")
+            render(env, "news_index.html", rel_path(lang, out_rel), news_ctx)
+            pages += 1
 
         for slug, topic in TOPICS.items():
             topic_rows = topic_articles(lang_articles, slug)

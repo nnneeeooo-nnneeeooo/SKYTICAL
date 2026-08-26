@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% from "_summary.html" import notification_summary %}
+{% block head_extra %}
+{% if previous_abs_url %}<link rel="prev" href="{{ previous_abs_url }}">{% endif %}
+{% if next_abs_url %}<link rel="next" href="{{ next_abs_url }}">{% endif %}
+{% endblock %}
 {% block content %}
   <main class="search-page topic-page">
     <header class="search-header">
@@ -23,5 +27,12 @@
       <p class="text-muted">{{ t.awaiting }}</p>
       {% endfor %}
     </section>
+    {% if page_count > 1 %}
+    <nav class="news-pagination" aria-label="{{ t.paginationLabel }}">
+      {% if previous_url %}<a class="btn btn-secondary" href="{{ previous_url }}">← {{ t.previousPage }}</a>{% endif %}
+      <span class="news-pagination-status">{{ t.pageLabel.format(page=page_number, pages=page_count) }}</span>
+      {% if next_url %}<a class="btn btn-secondary" href="{{ next_url }}">{{ t.nextPage }} →</a>{% endif %}
+    </nav>
+    {% endif %}
   </main>
 {% endblock %}

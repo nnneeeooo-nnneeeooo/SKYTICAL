@@ -57,6 +57,27 @@ def main() -> int:
     assert english is not None
     assert english["matched"] == "topic:drone"
 
+    # A China Airlines headline gets an aircraft file photo, not a cabin or
+    # lounge image; a body-only comparison mention must not trigger it.
+    china = image_fallbacks.topic_image(
+        article("華航籌集公益款項捐贈團體", "中華航空公布會員哩程捐贈成果")
+    )
+    assert china is not None
+    assert china["matched"] == "topic:china-airlines"
+    assert china["subject"] == "China Airlines Boeing 737-800"
+    assert "Boeing_737-800" in china["url"]
+    assert image_fallbacks.topic_image(
+        article("星宇航空公布新航線", "華航也在同篇背景資料中被提及")
+    ) is None
+
+    f16 = image_fallbacks.topic_image(
+        article("台灣首批F-16V戰機完成交付飛行")
+    )
+    assert f16 is not None
+    assert f16["matched"] == "topic:f16"
+    assert f16["license"] == "Public domain"
+    assert "F-16" in f16["subject"]
+
     # A body-only mention must not turn an unrelated fleet story into a
     # quadcopter card.
     assert image_fallbacks.topic_image(

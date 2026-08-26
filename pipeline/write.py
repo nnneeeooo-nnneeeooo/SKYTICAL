@@ -46,6 +46,7 @@ from common import (
     RAW_DIR,
     SITE_ORIGIN,
     group_has_material,
+    is_google_news_url,
     is_transport_story,
     iso_minute,
     load_json,
@@ -1515,7 +1516,7 @@ def build_sources(items: list) -> list:
     sources, seen_urls = [], set()
     for item in items:
         url = str(item.get("url") or "").strip()
-        if not url:
+        if not url or is_google_news_url(url):
             continue
         key = norm_url(url)
         if key in seen_urls:
@@ -1553,7 +1554,7 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
             continue
         used_archive_ids.add(event_id)
         url = indexed["source_url"]
-        if norm_url(url) in source_urls:
+        if is_google_news_url(url) or norm_url(url) in source_urls:
             continue
         source_urls.add(norm_url(url))
         sources.append({
@@ -1567,7 +1568,8 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
             if not isinstance(source, dict):
                 continue
             url = str(source.get("url") or "").strip()
-            if not url or norm_url(url) in source_urls:
+            if (not url or is_google_news_url(url)
+                    or norm_url(url) in source_urls):
                 continue
             source_urls.add(norm_url(url))
             sources.append({

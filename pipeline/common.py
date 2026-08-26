@@ -41,6 +41,9 @@ MAX_ITEMS_PER_SOURCE = 25
 MAX_FLASHES = 10
 # Articles shown on the home page feed.
 HOME_FEED_LIMIT = 30
+# Articles shown on each static news-index page.  Pagination keeps the index
+# crawlable without making the first screen carry the entire archive.
+NEWS_PAGE_SIZE = 100
 
 
 def _parse_max_age(value, default: int = 120,
@@ -825,6 +828,19 @@ def norm_url(url: str) -> str:
             "",
         )
     )
+
+
+def is_google_news_url(url: str) -> bool:
+    """Return whether ``url`` is a Google News aggregator link.
+
+    Google News is useful as a discovery feed, but its redirect/app-shell URL
+    is not an original article URL that can be credited to readers.
+    """
+    try:
+        host = (urlsplit(str(url).strip()).hostname or "").casefold()
+    except ValueError:
+        return False
+    return host == "news.google.com" or host.endswith(".news.google.com")
 
 
 def slugify(text: str, max_len: int = 40) -> str:
