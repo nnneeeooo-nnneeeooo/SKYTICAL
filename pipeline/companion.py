@@ -14,7 +14,7 @@ full page - instead of inventing detail around one sentence.
 Guard rails:
 - Only allowlisted domains join a group; the outlet is identified from
   Google News' own <source> element, and links are resolved off
-  news.google.com when possible.
+  news.google.com when possible; an unresolved aggregator URL is discarded.
 - A candidate must share enough significant title tokens with the seed
   headline to count as the same topic.
 - Caps: MAX_ITEMS_PER_GROUP companions and MAX_SEARCHES_PER_RUN searches per
@@ -37,6 +37,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import (  # noqa: E402
     USER_AGENT,
     iso_minute,
+    is_google_news_url,
     load_json,
     norm_url,
     squash_text,
@@ -125,21 +126,25 @@ def _domain_ok(host: str) -> bool:
     return any(host == d or host.endswith("." + d) for d in DOMAINS)
 
 
-def _resolve(link: str) -> str:
-    """One redirect hop off news.google.com; the Google link otherwise."""
+def _resolve(link: str) -> str | None:
+    """Resolve one hop to a direct outlet URL, or fail closed."""
     try:
         resp = requests.get(link, headers=HEADERS, timeout=TIMEOUT,
                             allow_redirects=False)
     except requests.RequestException:
-        return link
+        return None
     location = resp.headers.get("Location") if hasattr(resp, "headers") else None
     if getattr(resp, "status_code", 0) in (301, 302, 303, 307, 308) \
             and location:
         location = urljoin(link, location)
-        host = urlsplit(location).netloc.lower()
-        if host and "google.com" not in host:
+        host = (urlsplit(location).hostname or "").casefold()
+        if host and not (
+            is_google_news_url(location)
+            or host == "google.com"
+            or host.endswith(".google.com")
+        ):
             return location
-    return link
+    return None
 
 
 def _entry_source(entry) -> tuple[str, str]:
@@ -212,12 +217,17 @@ def search_candidates(query: str, seed_tokens: list[str],
         for future in as_completed(futures):
             candidate = futures[future]
             try:
-                candidate["url"] = future.result()
+                resolved = future.result()
+                if resolved and not is_google_news_url(resolved):
+                    candidate["url"] = resolved
             except Exception:
-                candidate["url"] = candidate["_googleUrl"]
+                pass
+    resolved_candidates = []
     for candidate in out:
         candidate.pop("_googleUrl", None)
-    return out
+        if candidate.get("url") and not is_google_news_url(candidate["url"]):
+            resolved_candidates.append(candidate)
+    return resolved_candidates
 
 
 def enrich_thin_groups(groups: list) -> int:

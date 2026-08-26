@@ -101,6 +101,20 @@ def test_rotation_payload_contains_localized_hero_fields():
     assert build.HERO_ROTATION_SECONDS == 300
 
 
+def test_flash_priority_is_distinct_from_legacy_pinned_flag():
+    flashes = [
+        {"time": "6:00 PM", "hot": False, "pinned": True,
+         "articleId": "a-weather", "zh": "天氣航班異動", "en": "Weather flight change",
+         "available_languages": ["zh"]},
+        {"time": "5:00 PM", "hot": False, "pinned": True,
+         "articleId": "a-normal", "zh": "一般航空新聞", "en": "Regular aviation news",
+         "available_languages": ["zh"]},
+    ]
+    views = build.flash_view(flashes, "zh", {"a-weather"})
+    assert views[0]["pinned"] is True and views[0]["priority"] is True
+    assert views[1]["pinned"] is True and views[1]["priority"] is False
+
+
 def main() -> int:
     tests = (
         test_weather_national_airline_flight_change_is_priority_story,
@@ -108,6 +122,7 @@ def main() -> int:
         test_priority_story_at_sixteen_hours_is_still_pinned,
         test_stale_priority_story_is_not_pinned,
         test_rotation_payload_contains_localized_hero_fields,
+        test_flash_priority_is_distinct_from_legacy_pinned_flag,
     )
     for test in tests:
         test()

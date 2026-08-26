@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -40,6 +41,25 @@ def main() -> None:
     for slug in build.TOPICS:
         assert (f"{build.SITE_ORIGIN}{build.BASE_PATH}/topics/{slug}/"
                 in locations)
+    localized_zh_count = sum(
+        "zh" in article["available_languages"]
+        for article in build.collect_articles()
+    )
+    expected_zh_pages = max(
+        1, math.ceil(localized_zh_count / build.NEWS_PAGE_SIZE))
+    if expected_zh_pages > 1:
+        assert (f"{build.SITE_ORIGIN}{build.BASE_PATH}/news/page/2/"
+                in locations)
+    localized_en_count = sum(
+        "en" in article["available_languages"]
+        for article in build.collect_articles()
+    )
+    expected_en_pages = max(
+        1, math.ceil(localized_en_count / build.NEWS_PAGE_SIZE))
+    if expected_en_pages > 1:
+        assert (f"{build.SITE_ORIGIN}{build.BASE_PATH}/en/news/page/2/"
+                in locations)
+    for slug in build.TOPICS:
         assert (f"{build.SITE_ORIGIN}{build.BASE_PATH}/en/topics/{slug}/"
                 in locations)
 
@@ -56,6 +76,10 @@ def main() -> None:
     assert feed.findtext("channel/link").endswith("/news/")
     assert en_feed.findtext("channel/link").endswith("/en/news/")
     assert feed.findall("channel/item")
+    for feed_item in feed.findall("channel/item") + en_feed.findall("channel/item"):
+        source = feed_item.find("source")
+        assert source is not None and source.attrib.get("url")
+        assert "news.google.com" not in source.attrib["url"]
 
     news_sitemap = ET.parse(ROOT / "site" / "news-sitemap.xml").getroot()
     news_rows = news_sitemap.findall("sm:url", ns)
@@ -88,9 +112,25 @@ def main() -> None:
     assert '<meta name="robots" content="index,follow,max-image-preview:large">' in home
     assert '<link rel="alternate" hreflang="zh-Hant-TW"' in home
     assert "SKYTICAL 航空新聞｜臺灣與全球即時航空快訊" in home
+    assert "可追溯來源" in home
+    assert "設計原型" not in home and "示意樣本" not in home
     assert "暫無資料" in home
     assert "部分即時數據目前尚未取得" in home
     assert 'type="application/rss+xml"' in home
+
+    if expected_zh_pages > 1:
+        page_two = (ROOT / "site" / "news" / "page" / "2" /
+                    "index.html").read_text(encoding="utf-8")
+        assert 'rel="prev" href="https://skytical.tech/news/"' in page_two
+        assert 'rel="next" href="https://skytical.tech/news/page/3/"' in page_two
+        assert "第 2 / " in page_two
+        assert page_two.count('class="feed-row"') <= build.NEWS_PAGE_SIZE
+    if expected_en_pages > 1:
+        en_page_two = (ROOT / "site" / "en" / "news" / "page" / "2" /
+                       "index.html").read_text(encoding="utf-8")
+        assert 'rel="prev" href="https://skytical.tech/en/news/"' in en_page_two
+        assert "Page 2 of " in en_page_two
+        assert en_page_two.count('class="feed-row"') <= build.NEWS_PAGE_SIZE
 
     article_paths = list((ROOT / "site" / "news").glob("*/index.html"))
     article = article_paths[0].read_text(encoding="utf-8")

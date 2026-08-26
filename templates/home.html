@@ -18,13 +18,13 @@
       {% if f.url %}
       <a class="flash-row" href="{{ f.url }}"{% if f.external %} target="_blank" rel="noopener"{% endif %}>
         <span class="flash-time{% if f.hot %} hot{% endif %}">{{ f.time }}</span>
-        {% if f.pinned|default(false) %}<span class="flash-pin">PIN</span>{% endif %}
+        {% if f.priority|default(false) %}<span class="flash-pin">{{ t.priorityLabel }}</span>{% endif %}
         <span style="font-size:12.5px;line-height:1.6;">{{ f.text }}</span>
       </a>
       {% else %}
       <div class="flash-row">
         <span class="flash-time{% if f.hot %} hot{% endif %}">{{ f.time }}</span>
-        {% if f.pinned|default(false) %}<span class="flash-pin">PIN</span>{% endif %}
+        {% if f.priority|default(false) %}<span class="flash-pin">{{ t.priorityLabel }}</span>{% endif %}
         <span style="font-size:12.5px;line-height:1.6;">{{ f.text }}</span>
       </div>
       {% endif %}

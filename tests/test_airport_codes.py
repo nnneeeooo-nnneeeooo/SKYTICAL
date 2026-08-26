@@ -108,6 +108,54 @@ def main() -> int:
     assert resolved_ohare_zh is not None
     assert resolved_ohare_zh["code"] == "ORD", resolved_ohare_zh
 
+    assert airport_codes.resolve_airport("London Heathrow")["code"] == "LHR"
+    assert airport_codes.resolve_airport("倫敦希斯洛機場")["code"] == "LHR"
+
+    # The textual airport identity outranks a stale/wrong embedded code.
+    resolved_phl = airport_codes.resolve_airport(
+        "Philadelphia International Airport (PNE)")
+    assert resolved_phl is not None
+    assert resolved_phl["code"] == "PHL", resolved_phl
+
+    # The first visible article mention is title/body; an invisible summary
+    # must not consume the code before the reader reaches the body.
+    visible_body = catania_article()
+    visible_body["zh"]["title"] = "埃特納火山活動持續"
+    visible_body["en"]["title"] = "Etna volcanic activity continues"
+    visible_body["zh"]["summary"] = "卡塔尼亞機場（CTA）摘要"
+    visible_body["en"]["summary"] = "Catania airport (CTA) summary"
+    airport_codes.enforce_article(visible_body)
+    assert "卡塔尼亞機場（CTA）" in visible_body["zh"]["body"][0]
+    assert "Catania airport (CTA)" in visible_body["en"]["body"][0]
+
+    # Two similarly named London airports must retain their own codes; the
+    # old city-generic matcher could append both codes to one mention.
+    london = {
+        "entities": {"airports": [
+            "London-Gatwick Airport", "London-Heathrow Airport"]},
+        "zh": {"title": "英國機場航班調整", "summary": "",
+                "body": ["航班往返 London Gatwick Airport 與 London Heathrow Airport。"]},
+        "en": {"title": "UK airport schedule update", "summary": "",
+                "body": ["Flights link London Gatwick Airport with London Heathrow Airport."]},
+    }
+    changed, unresolved = airport_codes.enforce_article(london)
+    assert changed is True and unresolved == []
+    assert "London Gatwick Airport (LGW)" in london["en"]["body"][0]
+    assert "London Heathrow Airport (LHR)" in london["en"]["body"][0]
+    assert "(LHR)" not in london["en"]["body"][0].split("London Heathrow")[0]
+    assert airport_codes.validate_article(london) == []
+
+    # City-only and military-installation entities remain review noise rather
+    # than being reported as missing civilian airport codes.
+    noise = {
+        "entities": {"airports": [
+            "Atlanta", "Springfield Air National Guard Base"]},
+        "zh": {"title": "航空安全更新", "summary": "", "body": []},
+        "en": {"title": "Aviation safety update", "summary": "", "body": []},
+    }
+    _changed, unresolved = airport_codes.enforce_article(noise)
+    assert unresolved == [], unresolved
+
     # Each article owns its first-mention counter. The second fixture must
     # independently receive ORD even though the first fixture was processed.
     for article in (ohare_article(), ohare_article()):
@@ -125,6 +173,74 @@ def main() -> int:
         assert "Chicago O'Hare (ORD)" in article["en"]["title"]
         assert zh_all.count("（ORD）") == 1, zh_all
         assert en_all.count("(ORD)") == 1, en_all
+
+    assert airport_codes.resolve_airport(
+        "Atlantic City Bader Field (AIY)")["code"] == "AIY"
+
+    # A Chinese title can lead an English body paragraph, and a bilingual
+    # parenthetical should remain readable while receiving only one code.
+    qantas = {
+        "entities": {"airports": ["London Heathrow", "Melbourne Airport"]},
+        "zh": {
+            "title": "澳洲航空航線調整",
+            "summary": "",
+            "body": [
+                "旅客將繼續前往倫敦希斯洛機場並經由新加坡停靠。",
+                "澳洲航空集團已與墨爾本機場就基礎設施達成協議。",
+            ],
+        },
+        "en": {
+            "title": "Qantas network update",
+            "summary": "",
+            "body": [
+                "Passengers will continue to London Heathrow via Singapore.",
+                "Qantas and Melbourne Airport agreed infrastructure terms.",
+            ],
+        },
+    }
+    changed, unresolved = airport_codes.enforce_article(qantas)
+    assert changed is True and unresolved == []
+    assert "倫敦希斯洛機場（LHR）" in qantas["zh"]["body"][0]
+    assert "墨爾本機場（MEL）" in qantas["zh"]["body"][1]
+    assert "London Heathrow (LHR)" in qantas["en"]["body"][0]
+    assert "Melbourne Airport (MEL)" in qantas["en"]["body"][1]
+    assert airport_codes.validate_article(qantas) == []
+
+    bilingual = {
+        "entities": {"airports": ["Midland International Air & Space Port"]},
+        "zh": {"title": "德州米德蘭國際空天港（Midland International Air & Space Port）",
+                "summary": "", "body": []},
+        "en": {"title": "Midland International Air & Space Port",
+                "summary": "", "body": []},
+    }
+    airport_codes.enforce_article(bilingual)
+    assert bilingual["zh"]["title"] == (
+        "德州米德蘭國際空天港（MAF；Midland International Air & Space Port）")
+    assert bilingual["zh"]["title"].count("MAF") == 1
+    assert airport_codes.validate_article(bilingual) == []
+
+    # A code-only entity does not provide a name anchor. Preserve its
+    # already-correct first-mention annotations instead of deleting them.
+    code_only = {
+        "entities": {"airports": ["ATL"]},
+        "zh": {"title": "航線公告", "summary": "", "body": [
+            "航班由亞特蘭大（ATL）飛往達拉斯-沃斯堡。",
+        ]},
+        "en": {"title": "Route update", "summary": "", "body": [
+            "The flight operated from Atlanta (ATL) to Dallas-Fort Worth; the airport remained open.",
+        ]},
+    }
+    airport_codes.enforce_article(code_only)
+    assert "亞特蘭大（ATL）" in code_only["zh"]["body"][0]
+    assert code_only["en"]["body"][0].count("(ATL)") == 1
+    assert "airport (ATL)" not in code_only["en"]["body"][0]
+
+    # Existing bilingual formatting is stable on the second publishing pass.
+    bilingual_snapshot = copy.deepcopy(bilingual)
+    changed_again, unresolved_again = airport_codes.enforce_article(bilingual)
+    assert changed_again is False
+    assert unresolved_again == []
+    assert bilingual == bilingual_snapshot
 
     print("PASS test_airport_codes")
     return 0

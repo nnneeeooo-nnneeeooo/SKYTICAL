@@ -42,7 +42,7 @@ it has a stable historical commit.
   "items": [
     {
       "title": "FAA Statement on ...",     // plain text, no HTML
-      "url": "https://www.faa.gov/...",    // original link (Google News links resolved when possible)
+      "url": "https://www.faa.gov/...",    // direct original link (unresolved Google News links are dropped)
       "publishedUtc": "2026-07-26T04:41Z", // best-effort; fetchedUtc when unknown
       "summary": "First ~500 chars of plain-text summary/description",
       "image": null                        // og:image / enclosure URL when cheaply available
@@ -300,6 +300,9 @@ Briefings select only from data/articles/ (already verified/published);
 failed runs never modify briefing files and never downgrade a
 published/partial index row. build.py renders /briefings/ and
 /briefings/<id>/ for published|partial only.
+Briefing item source links must be direct original `http(s)` URLs; unsafe
+schemes and Google News aggregator links are discovery-only and are dropped
+before persistence or reader-facing rendering.
 
 ## data/images.json + article "image"  (written by images.py)
 
