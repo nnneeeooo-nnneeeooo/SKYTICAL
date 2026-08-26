@@ -532,7 +532,7 @@ HTML_PARSERS = {
 # FlightAware AeroAPI (optional)
 
 def _fetch_flightaware(session: requests.Session, spec: dict) -> dict:
-    """One cheap AeroAPI call -> best-effort stats object; items stay empty."""
+    """Fetch the global disruption totals exposed by AeroAPI."""
     api_key = os.environ.get("AEROAPI_KEY")
     if not api_key:
         raise FetchError("AEROAPI_KEY not set")
@@ -541,17 +541,12 @@ def _fetch_flightaware(session: requests.Session, spec: dict) -> dict:
     data = resp.json()
     stats: dict = {}
     for src_key, dest_key in (
-        ("total_flights", "flightsTracked"),
         ("total_delays_worldwide", "delaysWorldwide"),
         ("total_cancellations_worldwide", "cancellationsWorldwide"),
     ):
         value = data.get(src_key)
         if isinstance(value, (int, float)):
             stats[dest_key] = value
-    delays = stats.get("delaysWorldwide")
-    tracked = stats.get("flightsTracked")
-    if delays is not None and tracked:
-        stats["delayRate"] = round(100.0 * delays / tracked, 1)
     return stats
 
 

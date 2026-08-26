@@ -285,8 +285,8 @@ SOURCES: dict[str, dict] = {
         "endpoint": "https://aeroapi.flightaware.com/aeroapi",
         "type": "api",  # optional; used only when AEROAPI_KEY is set
         "cover": {
-            "zh": "航班追蹤與延誤數據",
-            "en": "Flight tracking & delay data",
+            "zh": "全球航班延誤與取消統計",
+            "en": "Worldwide flight delay & cancellation statistics",
         },
     },
     "caataiwan": {
