@@ -50,10 +50,23 @@ def test_queue_records_current_image_and_preserves_decision(tmp_path):
     assert row["createdUtc"] == "2026-08-26T08:30:00+00:00"
 
 
+def test_malformed_existing_items_are_reset_safely(tmp_path):
+    articles = tmp_path / "articles-malformed"
+    articles.mkdir()
+    payload = image_qa.build_queue(
+        datetime(2026, 8, 26, 9, tzinfo=timezone.utc),
+        articles_dir=articles,
+        existing={"items": None},
+    )
+    assert payload["items"] == []
+
+
 def main() -> int:
     with tempfile.TemporaryDirectory() as directory:
-        test_queue_records_current_image_and_preserves_decision(Path(directory))
-    print("PASS test_image_qa")
+        root = Path(directory)
+        test_queue_records_current_image_and_preserves_decision(root)
+        test_malformed_existing_items_are_reset_safely(root)
+    print("PASS test_image_qa: 2 checks")
     return 0
 
 
