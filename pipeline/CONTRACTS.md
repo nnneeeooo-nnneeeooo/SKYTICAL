@@ -240,7 +240,8 @@ actual occurrence (ICAO Annex 13):
 
 ## data/stats.json  (written by write.py — optional FlightAware AeroAPI part; read by build.py)
 
-All fields optional; build.py renders "—" for missing numbers and hides
+All fields optional; build.py renders an explicit unavailable state for a
+missing dashboard metric and adds a note below the dashboard, while hiding
 sections whose arrays are missing/empty:
 
 ```jsonc
@@ -259,8 +260,12 @@ sections whose arrays are missing/empty:
 site/
 ├─ index.html                  zh home        /
 ├─ en/index.html               en home        /en/
+├─ news/index.html             zh news index  /news/
+├─ en/news/index.html          en news index  /en/news/
 ├─ news/<id>/index.html        zh article     /news/<id>/
 ├─ en/news/<id>/index.html     en article
+├─ feed.xml                    zh RSS feed    /feed.xml
+├─ en/feed.xml                 en RSS feed    /en/feed.xml
 ├─ incidents/index.html        + en/incidents/
 ├─ sources/index.html          + en/sources/
 ├─ about/index.html            + en/about/
@@ -310,6 +315,24 @@ the headline's verified primary carrier, gives airport-operation headlines
 priority over generic aircraft matches, and rejects logos, diagrams, interiors,
 civic buildings, wreckage and other deterministic false matches. If no
 confident replacement exists, the article keeps the neutral site fallback.
+
+`pipeline/image_qa.py` also maintains `data/image-qa.json`, a seven-day
+maintainer queue of current image provenance for manual visual inspection.
+Its `status` may be kept as `pending`, `approved` or `rejected` by the
+maintainer; the queue is not copied to `site/`.
+
+## News scope and search index
+
+Broad feeds require both a keyword hit and a transport subject in the
+headline. A carrier mentioned only in a summary cannot make an unrelated
+headline enter the editorial queue. During a build, stored articles with a
+headline outside the same subject gate are omitted from public pages and
+orphaned ticker entries are omitted as well; source JSON remains preserved.
+
+`site/search-index.json` keeps titles, summaries and display metadata in their
+structured fields and stores body/source text plus matched aliases in its
+search field. The search page loads the index only when a query is made, so
+visiting the page without searching does not download the full index.
 
 ## data/search-prompts.json  (written by search_prompts.py, read by build.py)
 

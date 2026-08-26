@@ -118,6 +118,9 @@ def main() -> None:
     assert "航空公司正式名稱與常用簡稱可互相查找" in zh
     assert "Official airline names and common short names are interchangeable" in en
     assert "terms.every" in script
+    assert "function loadIndex()" in script
+    assert "function recordSearchText" in script
+    assert "if (input.value.trim()) runSearch();" in script
     assert "textContent" in script
     assert "replaceChildren" in script
     assert "innerHTML" not in script

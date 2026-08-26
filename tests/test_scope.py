@@ -70,6 +70,16 @@ def main() -> None:
     assert not common.is_transport_story(political)
     assert not fetch._matches_keywords(
         political["items"][0], ["國軍", "漢光"])
+    summary_only = {
+        "title": "工研院攜手奇美等成立塑膠包材循環示範聯盟",
+        "summary": "中華航空參與聯盟，推動資源循環。",
+    }
+    assert not common.is_transport_headline(summary_only)
+    assert not fetch._matches_keywords(
+        summary_only, common.TAIWAN_TRANSPORT_KEYWORDS)
+    assert fetch._matches_keywords(
+        {"title": "華航調整航班", "summary": "受到天候影響。"},
+        common.TAIWAN_TRANSPORT_KEYWORDS)
 
     assert common.is_transport_story(story(
         "國防部公布共機艦動態",
@@ -118,13 +128,16 @@ def main() -> None:
 
     flash_data = json.loads(
         (ROOT / "data" / "flashes.json").read_text(encoding="utf-8"))
-    for target_id in TARGET_IDS:
-        archived_flash = next(row for row in flash_data
-                              if row.get("articleId") == target_id)
-        assert archived_flash["archived"] is True
+    archived_flashes = [row for row in flash_data
+                        if row.get("articleId") in TARGET_IDS]
+    assert all(row.get("archived") is True for row in archived_flashes)
     visible_flashes = build.prep_flashes(flash_data, set(TARGET_IDS))
     assert all(row.get("articleId") not in TARGET_IDS
                for row in visible_flashes)
+
+    orphan = {"timeUtc": "2026-07-27T08:00Z", "zh": "不應顯示",
+              "en": "Should be hidden", "articleId": "missing-article"}
+    assert build.prep_flashes([orphan], set()) == []
 
     print("test_scope: OK")
 

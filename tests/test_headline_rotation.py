@@ -1,5 +1,10 @@
 """Regression tests for weather-driven national-airline hero pinning."""
 from datetime import timedelta
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 from pipeline import build
 
@@ -94,3 +99,21 @@ def test_rotation_payload_contains_localized_hero_fields():
     assert payload["summary"] == "國籍航空調整航班。"
     assert "China Airlines Boeing 777-300ER" in payload["image_caption"]
     assert build.HERO_ROTATION_SECONDS == 300
+
+
+def main() -> int:
+    tests = (
+        test_weather_national_airline_flight_change_is_priority_story,
+        test_priority_story_requires_all_three_signals,
+        test_priority_story_at_sixteen_hours_is_still_pinned,
+        test_stale_priority_story_is_not_pinned,
+        test_rotation_payload_contains_localized_hero_fields,
+    )
+    for test in tests:
+        test()
+    print(f"test_headline_rotation: {len(tests)} passed")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
