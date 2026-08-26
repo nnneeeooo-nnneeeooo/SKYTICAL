@@ -110,6 +110,10 @@ def main() -> int:
 
     assert airport_codes.resolve_airport("London Heathrow")["code"] == "LHR"
     assert airport_codes.resolve_airport("倫敦希斯洛機場")["code"] == "LHR"
+    assert airport_codes.resolve_airport("Dubai International Airport")["code"] == "DXB"
+    assert airport_codes.resolve_airport("杜拜國際機場")["code"] == "DXB"
+    assert airport_codes.resolve_airport("Al Maktoum International")["code"] == "DWC"
+    assert airport_codes.resolve_airport("阿勒馬克圖姆國際機場")["code"] == "DWC"
 
     # The textual airport identity outranks a stale/wrong embedded code.
     resolved_phl = airport_codes.resolve_airport(
