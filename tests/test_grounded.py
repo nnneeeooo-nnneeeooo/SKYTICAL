@@ -73,7 +73,8 @@ def item(section="aviation_incidents", chunks=(0,), **kw):
 CHUNKS = [("https://vertexaisearch.example/redirect1", "reuters.com"),
           ("https://www.youtube.com/watch?v=x", "youtube.com"),
           ("https://www.pprune.org/thread", "pprune.org"),
-          ("https://economictimes.com/article", "economictimes.com")]
+          ("https://economictimes.com/article", "economictimes.com"),
+          ("https://news.google.com/rss/articles/example?oc=5", "Google News")]
 
 # ── enable gate ──────────────────────────────────────────────────────────────
 
@@ -108,6 +109,11 @@ check("item with no retrieved source dropped",
 out, _ = grounded.sanitize_items(
     resp_data([item(chunks=(1,))], CHUNKS), [], {}, NOW)
 check("social/video-only citation dropped",
+      out["aviation_incidents"] == [])
+
+out, _ = grounded.sanitize_items(
+    resp_data([item(chunks=(4,))], CHUNKS), [], {}, NOW)
+check("Google News aggregator citation dropped",
       out["aviation_incidents"] == [])
 
 out, _ = grounded.sanitize_items(

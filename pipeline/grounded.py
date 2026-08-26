@@ -33,7 +33,7 @@ from types import SimpleNamespace
 import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import squash_text  # noqa: E402
+from common import is_google_news_url, squash_text  # noqa: E402
 from providers import extract_json  # noqa: E402
 
 # `or` (not a get() default) so the empty env var CI passes when the repo
@@ -201,7 +201,9 @@ def sanitize_items(data: dict, existing_titles: list[str],
         refs = [r for r in refs if isinstance(r, int)
                 and 0 <= r < len(chunks)] if isinstance(refs, list) else []
         cited = [chunks[r] for r in dict.fromkeys(refs)]
-        cited = [c for c in cited if c["uri"] and not _is_blocked(c)]
+        cited = [c for c in cited
+                 if c["uri"] and not _is_blocked(c)
+                 and not is_google_news_url(c["uri"])]
         # forums only alongside at least one non-forum source
         if cited and all(_is_forum(c) for c in cited):
             dropped += 1

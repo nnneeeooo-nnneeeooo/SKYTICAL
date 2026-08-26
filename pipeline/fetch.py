@@ -29,6 +29,7 @@ from common import (
     RAW_DIR,
     SOURCES,
     USER_AGENT,
+    is_google_news_url,
     is_transport_headline,
     iso_minute,
     load_json,
@@ -285,14 +286,18 @@ def _rss_items(session: requests.Session, key: str, entries: list,
             title = _clean_gnews_title(title, entry)
             if not title:
                 continue
-            if (GOOGLE_NEWS_HOST in urlsplit(link).netloc
-                    and resolve_failures < MAX_RESOLVE_FAILURES):
+            if is_google_news_url(link):
+                if resolve_failures >= MAX_RESOLVE_FAILURES:
+                    continue
                 resolved = _resolve_gnews_link(session, link)
                 if resolved:
                     link = resolved
                     resolve_failures = 0
                 else:
                     resolve_failures += 1
+                    # A Google aggregator page is discovery material only;
+                    # never carry it into pending data as a public source.
+                    continue
         summary = _strip_html(entry.get("summary") or entry.get("description"))
         if is_google and len(summary) <= len(title) + 40:
             summary = ""  # google news descriptions just repeat the headline

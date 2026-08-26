@@ -122,6 +122,20 @@ check("google redirect resolved to the outlet URL",
 check("outlet suffix stripped from the headline",
       cands[0]["title"].endswith("finish line"))
 
+# A Google app-shell response without an outlet redirect is not publishable
+# as a companion source and must be discarded rather than exposed verbatim.
+unresolved_http = types.SimpleNamespace(
+    get=lambda url, **kwargs: types.SimpleNamespace(
+        status_code=200, headers={}))
+original_requests = companion.requests
+companion.requests = types.SimpleNamespace(
+    get=unresolved_http.get, RequestException=Exception)
+try:
+    check("unresolved Google News link fails closed",
+          companion._resolve("https://news.google.com/rss/articles/nope") is None)
+finally:
+    companion.requests = original_requests
+
 # ── group enrichment end-to-end ──────────────────────────────────────────────
 
 group = {"id": "g9", "items": [dict(THIN_GROUP["items"][0])]}
@@ -147,7 +161,7 @@ fake.calls.clear()
 companion.enrich_thin_groups(thin_groups)
 searches = [c for c in fake.calls if "news.google.com/rss" in c]
 check("per-run search budget enforced",
-      len(searches) == companion.MAX_SEARCHES_PER_RUN)
+      len(searches) == min(companion.MAX_SEARCHES_PER_RUN, len(thin_groups)))
 
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "

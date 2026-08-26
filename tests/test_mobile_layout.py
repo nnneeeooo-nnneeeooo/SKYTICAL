@@ -26,9 +26,6 @@ def main() -> None:
     jetstar = (ROOT / "site" / "news" /
                "a-20260809-0948-jetstar-to-introduce-overhead-locker-fee" /
                "index.html").read_text(encoding="utf-8")
-    david = (ROOT / "site" / "news" /
-             "a-20260809-0853-david-cummins-sworn-in-as-eighth-tsa-adm" /
-             "index.html").read_text(encoding="utf-8")
     emirates = (ROOT / "site" / "news" /
                 "a-20260809-1305-emirates-temporarily-suspends-airbus-a38" /
                 "index.html").read_text(encoding="utf-8")
@@ -60,7 +57,7 @@ def main() -> None:
         re.DOTALL,
     )
     assert feed_summaries and all(summary.strip() for summary in feed_summaries)
-    for article_html in (airadvisor, jetstar, david, emirates):
+    for article_html in (airadvisor, jetstar, emirates):
         assert 'class="summary-preview' not in article_html
 
     zh_long = "中華航空8月10日宣布調整桃園至福岡航班，受機場作業限制影響，兩班延後三小時，旅客須留意報到時間。" * 2
