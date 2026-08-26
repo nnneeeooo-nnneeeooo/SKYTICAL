@@ -1294,7 +1294,7 @@ def art_view(a, lang: str):
 
 
 HERO_ROTATION_SECONDS = 5 * 60
-_HERO_PIN_MAX_AGE = timedelta(hours=48)
+_HERO_PIN_MAX_AGE = timedelta(hours=16)
 _HERO_WEATHER_RE = re.compile(
     r"(?:颱風|台風|熱帶(?:性)?(?:低氣壓|風暴)|豪大雨|豪雨|暴雨|大雨|"
     r"強降雨|雷雨|強風|暴風|寒流|寒害|大雪|降雪|冰雹|濃霧|大霧|"
