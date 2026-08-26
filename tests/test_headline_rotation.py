@@ -47,13 +47,24 @@ def test_priority_story_requires_all_three_signals():
     assert not build.is_weather_airline_flight_story(no_weather, now)
 
 
+def test_priority_story_at_sixteen_hours_is_still_pinned():
+    now = build.now_utc()
+    article = _article(
+        now,
+        "豪雨造成國籍航空航班異動",
+        "國籍航空因天候調整航班。",
+        age_hours=16,
+    )
+    assert build.is_weather_airline_flight_story(article, now)
+
+
 def test_stale_priority_story_is_not_pinned():
     now = build.now_utc()
     article = _article(
         now,
         "豪雨造成國籍航空航班異動",
         "國籍航空因天候調整航班。",
-        age_hours=49,
+        age_hours=17,
     )
     assert not build.is_weather_airline_flight_story(article, now)
 
