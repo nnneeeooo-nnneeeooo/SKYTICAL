@@ -26,6 +26,7 @@ from pathlib import Path
 import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from airport_codes import resolve_airport  # noqa: E402
 from common import (
     ARTICLES_DIR,
     USER_AGENT,
@@ -61,6 +62,41 @@ _GENERIC_AIRPORT_WORDS = {
 # Every deterministic entry must be manually vetted for relevance and reuse.
 # They are file photos, never represented as photos from the current event.
 _TOPIC_IMAGES = (
+    {
+        "name": "china-airlines",
+        "patterns": (
+            re.compile(r"^(?:華航|中華航空)"),
+            re.compile(r"^China Airlines\b", re.I),
+        ),
+        "image": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/China_Airlines_Boeing_737-800_B-18651_on_final_approach_to_Taoyuan_February_2026.jpg/1280px-China_Airlines_Boeing_737-800_B-18651_on_final_approach_to_Taoyuan_February_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "link": "https://commons.wikimedia.org/wiki/File:China_Airlines_Boeing_737-800_B-18651_on_final_approach_to_Taoyuan_February_2026.jpg",
+            "credit": "4300streetcar",
+            "license": "CC BY 4.0",
+            "provider": "Wikimedia Commons",
+            "kind": "file_photo",
+            "matched": "topic:china-airlines",
+            "subject": "China Airlines Boeing 737-800",
+            "photoYear": 2026,
+        },
+    },
+    {
+        "name": "f16",
+        "patterns": (
+            re.compile(r"(?<![A-Za-z0-9])F-?16(?:[A-Z0-9-]*)(?![A-Za-z0-9])", re.I),
+        ),
+        "image": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/A_USAF_F-16_pilot_breaking_right_on_final_approach_over_northern_Las_Vegas.jpg/1280px-A_USAF_F-16_pilot_breaking_right_on_final_approach_over_northern_Las_Vegas.jpg",
+            "link": "https://commons.wikimedia.org/wiki/File:A_USAF_F-16_pilot_breaking_right_on_final_approach_over_northern_Las_Vegas.jpg",
+            "credit": "Master Sgt. Benjamin Bloker",
+            "license": "Public domain",
+            "provider": "Wikimedia Commons",
+            "kind": "file_photo",
+            "matched": "topic:f16",
+            "subject": "USAF F-16 資料照片",
+            "photoYear": 2017,
+        },
+    },
     {
         "name": "drone",
         "patterns": (
@@ -105,7 +141,7 @@ def _airport_entity(article: dict) -> str | None:
         return None
     for value in airports:
         name = str(value or "").strip()
-        if len(name) >= 3:
+        if len(name) >= 3 and resolve_airport(name):
             return name
     return None
 

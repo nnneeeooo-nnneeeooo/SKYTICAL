@@ -35,10 +35,10 @@ def main() -> None:
         "53ccee38ecb372a446ebd89737070852e0d8876b04af7efdb1709e78d8553621"
     )
     assert hashlib.sha256(logo_path.read_bytes()).hexdigest() == (
-        "9f273f64694d424df681b21d7450d332d363912bdb51b2c93b2e5e34c2e44f2f"
+        "35f5284ba070088d746d6ca2b1047cbe3463bd8941b3f4f5763bbbbfd6b0805a"
     )
     assert hashlib.sha256(mark_path.read_bytes()).hexdigest() == (
-        "50ec6a6d663a1f4385d1f62ca546e0b6bdf815520b0bc3bd72cc5e1a255022e4"
+        "1d97c44f571f152880dbf9464faf63ec3a8e34a2b405d0b387aee58580adb6d9"
     )
     assert hashlib.sha256(social_path.read_bytes()).hexdigest() == (
         "b5903b8496c802725fcdfe6072631a138c8c375a438ec1d92606c5e41f7076a5"

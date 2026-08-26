@@ -49,6 +49,23 @@ class EvaAirSourceTests(unittest.TestCase):
         self.assertEqual([item["title"] for item in kept],
                          ["長榮航空12月開航台北直飛德里"])
 
+    def test_google_app_shell_without_direct_redirect_is_dropped(self):
+        class Session:
+            def get(self, url, **kwargs):
+                return type("Response", (), {
+                    "status_code": 200, "headers": {}})()
+
+        items = fetch._rss_items(
+            Session(), "google", [{
+                "title": "Airline update - Reuters",
+                "link": "https://news.google.com/rss/articles/example",
+                "summary": "Airline update",
+            }],
+            "https://news.google.com/rss/search?q=airline",
+            max_items=10,
+        )
+        self.assertEqual(items, [])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -114,9 +114,9 @@
         <span class="ticker-pass">
           {%- for it in ticker_items -%}
           {%- if it.url -%}
-          <a class="ticker-item" href="{{ it.url }}"{% if it.external %} target="_blank" rel="noopener"{% endif %}><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>{% if it.pinned|default(false) %}<span class="ticker-pin">PIN</span>{% endif %}&#8195;{{ it.text }}<span class="ticker-go">↗</span></a>
+          <a class="ticker-item" href="{{ it.url }}"{% if it.external %} target="_blank" rel="noopener"{% endif %}><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>{% if it.priority|default(false) %}<span class="ticker-pin">{{ t.priorityLabel }}</span>{% endif %}&#8195;{{ it.text }}<span class="ticker-go">↗</span></a>
           {%- else -%}
-          <span class="ticker-item"><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>{% if it.pinned|default(false) %}<span class="ticker-pin">PIN</span>{% endif %}&#8195;{{ it.text }}</span>
+          <span class="ticker-item"><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>{% if it.priority|default(false) %}<span class="ticker-pin">{{ t.priorityLabel }}</span>{% endif %}&#8195;{{ it.text }}</span>
           {%- endif -%}
           {%- if not loop.last %}<span class="ticker-sep">▪</span>{% endif %}
           {%- endfor -%}

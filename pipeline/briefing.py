@@ -31,12 +31,14 @@ import traceback
 from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
+from urllib.parse import urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import (  # noqa: E402
     ARTICLES_DIR,
     DATA_DIR,
     iso_minute,
+    is_google_news_url,
     load_json,
     norm_url,
     now_utc,
@@ -70,6 +72,18 @@ CRON_TO_EDITION = {
 
 SECTIONS = ("aviation_incidents", "taiwan_aviation",
             "international_aviation", "ground_and_maritime")
+
+
+def _direct_source_url(value) -> str | None:
+    url = str(value or "").strip()
+    try:
+        scheme = urlsplit(url).scheme.lower()
+    except ValueError:
+        return None
+    if not url or scheme not in ("http", "https") \
+            or is_google_news_url(url):
+        return None
+    return url
 
 # Event-index retention: incidents/investigations/policy keep 30 days for
 # update matching; everything else 72 hours (spec minimum).
@@ -310,9 +324,9 @@ def article_source_time(article: dict) -> datetime | None:
 def _canonical_urls(article: dict) -> list[str]:
     urls = []
     for src in article.get("sources") or []:
-        url = (src or {}).get("url")
+        url = _direct_source_url((src or {}).get("url"))
         if url:
-            urls.append(norm_url(str(url)))
+            urls.append(norm_url(url))
     return sorted(set(urls))
 
 
@@ -450,9 +464,10 @@ def _build_item(article: dict, section: str, event_id: str,
         "taiwan_priority": _has_marker(blob, _TAIWAN_MARKERS),
         "military": _has_marker(blob, _MILITARY_MARKERS),
         "sources": [{"name": str((s or {}).get("name") or ""),
-                     "url": str((s or {}).get("url") or "")}
+                     "url": url}
                     for s in article.get("sources") or []
-                    if (s or {}).get("url")],
+                    for url in [_direct_source_url((s or {}).get("url"))]
+                    if url],
         "risk_flags": list(article.get("riskFlags") or []),
         "article_id": article.get("id"),
     }
