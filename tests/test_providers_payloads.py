@@ -135,7 +135,6 @@ def test_nvidia_model_profiles():
 
 def test_model_priority_defaults():
     expected = (
-        "wechat:Deepseek-v4-flash",
         "opencode:claude-sonnet-4-6",
         "opencode:gpt-5.5",
         "gemini:gemini-3.6-flash",
@@ -147,6 +146,7 @@ def test_model_priority_defaults():
         "gemini:gemini-3.5-flash",
         "nvidia:deepseek-ai/deepseek-v4-pro",
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+        "wechat:Deepseek-v4-flash",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
         "nvidia:qwen/qwen3.5-397b-a17b",
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
@@ -179,13 +179,14 @@ def test_model_priority_defaults():
           "Claude Sonnet 4.6 is the highest-priority OpenCode default")
     check(providers.WECHAT_DEFAULT_MODEL == "Deepseek-v4-flash",
           "DeepSeek V4 Flash is the WeChat Coding Plan default")
-    check(expected[11:13] == (
+    check(expected[10:13] == (
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+        "wechat:Deepseek-v4-flash",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
     ) and expected[14:16] == (
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
         "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-    ), "equivalent Nemotron models are adjacent with native NVIDIA first")
+    ), "primary routes stay before WeChat Flash and free fallbacks")
     print("test_model_priority_defaults: done")
 
 
