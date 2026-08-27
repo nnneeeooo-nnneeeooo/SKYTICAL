@@ -1,10 +1,10 @@
-"""airport_codes.py — enforce one IATA code on each named airport.
+"""airport_codes.py — enforce IATA codes on each named airport surface.
 
 Owner editorial rule: whenever an article names an airport that has an IATA
-three-letter location code, the first mention must carry that code in
-parentheses in both Traditional Chinese and English. This is deliberately a
-code-level publishing rule, not a request for the writer model to remember or
-invent airport codes.
+three-letter location code, the first headline mention and the first body
+mention must each carry that code in parentheses in both Traditional Chinese
+and English. This is deliberately a code-level publishing rule, not a request
+for the writer model to remember or invent airport codes.
 
 The resolver uses the bundled ``airportsdata`` package (no runtime network
 request), SKYTICAL's reviewed Taiwan-airport configuration, and a small
@@ -332,6 +332,7 @@ def _find_zh_identity_match(text: str, entity: str, row: dict):
     for value in values:
         patterns.append(re.compile(re.escape(value)))
         if not value.endswith("機場"):
+            patterns.append(re.compile(re.escape(value + "國際機場")))
             patterns.append(re.compile(re.escape(value + "機場")))
     hits = []
     for pattern in patterns:
@@ -427,38 +428,63 @@ def _code_annotation_pattern(code: str) -> re.Pattern:
     )
 
 
-def _first_identity_anchor(article: dict, lang: str, entity: str,
-                           row: dict):
-    if lang == "en":
-        return _find_en_match(article, entity, row)
-    for key, index, text in _slots(article, "zh"):
-        match = _find_zh_identity_match(text, entity, row)
-        if match:
-            return key, index, match.start(), match.end()
-    return None
+def _surface_identity_anchors(article: dict, lang: str, entity: str,
+                              row: dict):
+    """Return the first exact identity in the headline and body surfaces."""
+    anchors = []
+    for surface in ("title", "body"):
+        for key, index, text in _slots(article, lang):
+            if key != surface:
+                continue
+            if lang == "en":
+                hits = [match for pattern in _airport_patterns(entity, row)
+                        for match in pattern.finditer(text)]
+                match = (min(hits, key=lambda hit: (
+                    hit.start(), -len(hit.group(0)))) if hits else None)
+            else:
+                match = _find_zh_identity_match(text, entity, row)
+            if match:
+                anchors.append((key, index, match.start(), match.end()))
+                break
+    return anchors
+
+
+def _ensure_surface_codes(article: dict, lang: str, code: str, entity: str,
+                          row: dict) -> bool:
+    """Annotate the first headline and body mentions independently."""
+    changed = False
+    for key, index, start, end in _surface_identity_anchors(
+            article, lang, entity, row):
+        text = _slot_text(article, lang, key, index)
+        new_text = _insert_code(text, start, end, code, lang)
+        new_text = _clean_punctuation_spacing(new_text)
+        if new_text != text:
+            _set_slot(article, lang, key, index, new_text)
+            changed = True
+    return changed
 
 
 def _dedupe_code(article: dict, lang: str, code: str, entity: str,
                  row: dict) -> None:
-    """Keep a code only when it annotates the first resolved identity."""
+    """Keep one code on each reader-visible headline/body surface."""
     pattern = _code_annotation_pattern(code)
-    anchor = _first_identity_anchor(article, lang, entity, row)
-    if not anchor:
+    anchors = _surface_identity_anchors(article, lang, entity, row)
+    if not anchors:
         # Code-only entities such as route endpoints may already be correctly
         # annotated in the copy even though no full airport name is present.
         # Without an identity anchor there is no safe basis for deleting any
         # existing annotation.
         return
-    target = None
-    key, index, _start, end = anchor
-    text = _slot_text(article, lang, key, index)
-    immediate = pattern.match(text[end:])
-    if immediate:
-        target = (key, index, end + immediate.start())
+    targets = set()
+    for key, index, _start, end in anchors:
+        text = _slot_text(article, lang, key, index)
+        immediate = pattern.match(text[end:])
+        if immediate:
+            targets.add((key, index, end + immediate.start()))
 
     for key, index, text in _slots(article, lang):
         def repl(match):
-            if target == (key, index, match.start()):
+            if (key, index, match.start()) in targets:
                 return match.group(0)
             content = match.group("content")
             if content is not None:
@@ -482,7 +508,7 @@ def _visible_has_code(article: dict, lang: str, code: str) -> bool:
 
 
 def enforce_article(article: dict) -> tuple[bool, list[str]]:
-    """Add first-mention IATA codes; return (changed, unresolved entities)."""
+    """Add headline/body IATA codes; return (changed, unresolved entities)."""
     entities = article.get("entities") or {}
     airports = entities.get("airports") if isinstance(entities, dict) else []
     if not isinstance(airports, list) or not airports:
@@ -629,6 +655,14 @@ def enforce_article(article: dict) -> tuple[bool, list[str]]:
                         _set_slot(article, "zh", key, index, new_text)
                         break
 
+    # A headline and the article body are separate reader-visible surfaces.
+    # Annotate the first airport identity in each even when an earlier stage
+    # already placed the same code in the headline.
+    for item in resolved:
+        for lang in ("zh", "en"):
+            changed |= _ensure_surface_codes(
+                article, lang, item["code"], item["entity"], item["row"])
+
     for item in resolved:
         for lang in ("zh", "en"):
             before = "\n".join(value for _k, _i, value in _slots(article, lang))
@@ -766,6 +800,16 @@ def validate_article(article: dict) -> list[str]:
                         article, "zh", key, index, candidate.start(),
                         item["code"], item["entity"], item["row"])):
                 report(item, "zh", key, index)
+
+    # Headline and body must each introduce a named airport with its code.
+    # Do not let a correctly annotated headline mask a missing body code.
+    for item in resolved:
+        for lang in ("zh", "en"):
+            for key, index, _start, end in _surface_identity_anchors(
+                    article, lang, item["entity"], item["row"]):
+                text = _slot_text(article, lang, key, index)
+                if not _has_immediate_code(text, end, item["code"]):
+                    report(item, lang, key, index)
 
     return violations
 
