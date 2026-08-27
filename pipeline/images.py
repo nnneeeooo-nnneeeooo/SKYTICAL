@@ -64,13 +64,21 @@ CACHE_PATH = DATA_DIR / "images.json"
 TIMEOUT = (10, 30)
 HEADERS = {"User-Agent": USER_AGENT}
 
-# Politeness caps per run; articles are few and the cache is permanent.
+# Politeness caps per run; negative matches back off but keep retrying while
+# the article remains in the user-facing seven-day window.
 MAX_LOOKUPS_PER_RUN = 6
-MAX_ATTEMPTS = 3          # per article before we stop retrying "none"
+FAST_RETRY_ATTEMPTS = 3
 RETRY_AFTER_HOURS = 6
+LONG_RETRY_AFTER_HOURS = 24
 MAX_ARTICLE_AGE_DAYS = 7  # scan only the user-facing seven-day news window
 GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS = 10
 GENERIC_ORG_MAX_PHOTO_AGE_YEARS = 10
+
+
+def _retry_after_hours(attempts: int) -> int:
+    """Use short initial retries, then a daily retry until the article ages out."""
+    return (RETRY_AFTER_HOURS if attempts <= FAST_RETRY_ATTEMPTS
+            else LONG_RETRY_AFTER_HOURS)
 
 PLANESPOTTERS_URL = "https://api.planespotters.net/pub/photos/reg/{reg}"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
@@ -806,8 +814,6 @@ def main() -> int:
                 changed = True
             entry = entries.get(art_id) or {}
             if entry.get("status") == "none":
-                if entry.get("attempts", 0) >= MAX_ATTEMPTS:
-                    continue
                 try:
                     if (entry.get("next_retry_utc")
                             and parse_iso(entry["next_retry_utc"]) > now):
@@ -843,7 +849,7 @@ def main() -> int:
                     "status": "none", "attempts": attempts,
                     "checked_utc": now.isoformat(),
                     "next_retry_utc":
-                        (now + timedelta(hours=RETRY_AFTER_HOURS))
+                        (now + timedelta(hours=_retry_after_hours(attempts)))
                         .isoformat(),
                 }
         if changed:

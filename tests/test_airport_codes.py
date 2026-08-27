@@ -74,8 +74,8 @@ def main() -> int:
     ])
     assert "卡塔尼亞機場（CTA）" in article["zh"]["title"]
     assert "Catania airport (CTA)" in article["en"]["title"]
-    assert zh_all.count("（CTA）") == 1, zh_all
-    assert en_all.count("(CTA)") == 1, en_all
+    assert zh_all.count("（CTA）") == 2, zh_all
+    assert en_all.count("(CTA)") == 2, en_all
 
     # Idempotence: running the publishing guard repeatedly must not duplicate
     # or move the already-inserted code.
@@ -96,10 +96,10 @@ def main() -> int:
     airport_codes.enforce_article(pretagged)
     assert "\n".join([
         pretagged["zh"]["title"], pretagged["zh"]["summary"], *pretagged["zh"]["body"]
-    ]).count("（CTA）") == 1
+    ]).count("（CTA）") == 2
     assert "\n".join([
         pretagged["en"]["title"], pretagged["en"]["summary"], *pretagged["en"]["body"]
-    ]).count("(CTA)") == 1
+    ]).count("(CTA)") == 2
 
     resolved_ohare = airport_codes.resolve_airport("Chicago O'Hare")
     assert resolved_ohare is not None
@@ -173,10 +173,12 @@ def main() -> int:
             article["en"]["title"], article["en"]["summary"], *article["en"]["body"]
         ])
         assert "芝加哥奧黑爾（ORD）" in article["zh"]["title"]
+        assert "芝加哥奧黑爾（ORD）" in article["zh"]["body"][0]
         assert "（ORD）" not in article["zh"]["body"][1]
         assert "Chicago O'Hare (ORD)" in article["en"]["title"]
-        assert zh_all.count("（ORD）") == 1, zh_all
-        assert en_all.count("(ORD)") == 1, en_all
+        assert "Chicago O'Hare (ORD)" in article["en"]["body"][0]
+        assert zh_all.count("（ORD）") == 2, zh_all
+        assert en_all.count("(ORD)") == 2, en_all
 
     assert airport_codes.resolve_airport(
         "Atlantic City Bader Field (AIY)")["code"] == "AIY"
