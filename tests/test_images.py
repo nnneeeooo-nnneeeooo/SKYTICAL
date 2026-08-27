@@ -546,6 +546,26 @@ images.main()
 check("negative result is not retried before the retry window",
       fake.calls == [] and read_batch(p)[0]["image"] is None)
 
+# A negative cache entry must never become permanent. After the initial
+# six-hour retries, a newly available image is still attached on a later
+# daily retry while the article remains in the seven-day news window.
+cache_path = TMP / "images.json"
+cache = json.loads(cache_path.read_text(encoding="utf-8"))
+cache["articles"]["a-none"]["attempts"] = images.FAST_RETRY_ATTEMPTS
+cache["articles"]["a-none"]["next_retry_utc"] = (
+    now_utc() - timedelta(minutes=1)).isoformat()
+cache_path.write_text(json.dumps(cache), encoding="utf-8")
+fake.commons = COMMONS_HIT
+fake.calls.clear()
+images.main()
+check("image appearing after the old retry cap is attached automatically",
+      bool(fake.calls)
+      and read_batch(p)[0]["image"]["url"]
+      == "https://upload.wikimedia.org/delta-a350.jpg")
+check("negative image retries back off from six hours to daily",
+      images._retry_after_hours(images.FAST_RETRY_ATTEMPTS) == 6
+      and images._retry_after_hours(images.FAST_RETRY_ATTEMPTS + 1) == 24)
+
 reset()
 existing = {"url": "https://example.org/keep.jpg", "kind": "file_photo"}
 p = write_batch([make_article("a-keep", "Delta Air Lines Airbus A350",
