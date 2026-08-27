@@ -1,31 +1,5 @@
 {
   "events": {
-    "ev-627dec0ccf237f21": {
-      "fingerprint": "627dec0ccf237f21796e1cd89824ff42d6defeb7e57f4e9b9c32f0343fd4b661",
-      "urls": [
-        "https://www.faa.gov/newsroom/statements/accident_incidents",
-        "https://www.mainepublic.org/maine/2026-07-27/aircraft-emergency-closes-bangor-international-airport-runway",
-        "https://www.pressherald.com/2026/07/27/emergency-landing-briefly-closes-runway-at-bangor-airport"
-      ],
-      "section": "aviation_incidents",
-      "cat": "safety",
-      "first_seen": "2026-07-28T18:10:26.853147+00:00",
-      "last_seen": "2026-07-28T18:10:26.853147+00:00",
-      "first_briefing_id": "2026-07-28-morning",
-      "article_ids": [
-        "a-20260728-0855-swiss-lx16-diverts-bangor-after-smoke"
-      ],
-      "fact_keys": [
-        "faa初步聲明記載機組員曾通報駕駛艙起火，並表示將調查。",
-        "lx16於班戈當地時間7月27日12時14分安全落地。",
-        "swiss尚未確定煙霧原因，將檢查航空器且不會在調查完成前推測。",
-        "swiss表示208名乘客及機組員均平安。",
-        "swiss表示機組員因商務艙出現煙霧而改降班戈。",
-        "消防人員檢查後未發現火源或異常熱度。"
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T18:10:26.853147+00:00"
-    },
     "ev-9871a7200acb3be7": {
       "fingerprint": "9871a7200acb3be795bf6e0bb50afa46be4ce21b88ba8d1cbd1092b67e98fee2",
       "urls": [
@@ -481,24 +455,42 @@
     "ev-0d9005410655d7f2": {
       "fingerprint": "0d9005410655d7f25ce961df4c6eb4c6bf2061ad38f80af57557ce5a3aca6c9d",
       "urls": [
-        "https://www.cna.com.tw/news/aipl/202608200169.aspx"
+        "https://www.cna.com.tw/news/aipl/202608200169.aspx",
+        "https://www.cna.com.tw/news/aipl/202608270066.aspx"
       ],
       "section": "taiwan_aviation",
       "cat": "reg",
       "first_seen": "2026-08-20T15:49:26.153766+00:00",
-      "last_seen": "2026-08-20T15:49:26.153766+00:00",
+      "last_seen": "2026-08-27T18:17:00.856014+00:00",
       "first_briefing_id": "2026-08-20-evening",
       "article_ids": [
-        "a-20260820-0733-taiwan-lawmakers-fail-to-reach-consensus"
+        "a-20260820-0733-taiwan-lawmakers-fail-to-reach-consensus",
+        "a-20260827-0859-taiwan-lawmakers-process-drone-act-draft"
       ],
       "fact_keys": [
         "國防部說明無人機採「一年一採購」模式，以利維持技術規格迭代提升。",
         "國防部長顧立雄表示，國民黨團版本設每年400億元上限，但國防部115及116年度無人機採購即達559億元。",
         "朝野立委對無人機條例草案的法案名稱、主管機關、經費上限及施行期間等項目均無共識。",
+        "民眾黨團主張無人機預算由行政院依產業需求與財政狀況逐年編列，並由立法院監督審查。",
+        "民眾黨立法院黨團總召陳清龍說明黨版「強化國防自主暨無人機產業發展條例草案」，主張成立無人載具戰略特別委員會制定發展綱領。",
+        "立法院於2026年8月20日就無人載具條例草案進行黨團協商，因未達共識宣告全案保留。",
         "立法院於2026年8月20日舉行朝野黨團協商無人載具條例草案，因未達共識宣告全案保留。",
-        "立法院相關委員會曾於7月27日初審無人載具條例等14個版本草案並交付協商。"
+        "立法院會於2026年8月27日排定處理無人機條例草案。",
+        "立法院相關委員會曾於7月27日初審無人載具條例等14個版本草案並交付協商。",
+        "立法院長韓國瑜召集朝野黨團協商無人機條例草案，民進黨團主張特別條例，藍白堅持年度預算編列，國民黨團主張6年共2400億元，朝野未達共識。"
       ],
-      "updates": {},
+      "updates": {
+        "2026-08-27-afternoon": {
+          "article_id": "a-20260827-0859-taiwan-lawmakers-process-drone-act-draft",
+          "new_information": [
+            "立法院會於2026年8月27日排定處理無人機條例草案。",
+            "民眾黨立法院黨團總召陳清龍說明黨版「強化國防自主暨無人機產業發展條例草案」，主張成立無人載具戰略特別委員會制定發展綱領。",
+            "民眾黨團主張無人機預算由行政院依產業需求與財政狀況逐年編列，並由立法院監督審查。",
+            "立法院長韓國瑜召集朝野黨團協商無人機條例草案，民進黨團主張特別條例，藍白堅持年度預算編列，國民黨團主張6年共2400億元，朝野未達共識。",
+            "立法院於2026年8月20日就無人載具條例草案進行黨團協商，因未達共識宣告全案保留。"
+          ]
+        }
+      },
       "retain_until": "2026-09-19T15:49:26.153766+00:00"
     },
     "ev-8fd883453af8912d": {
@@ -625,282 +617,6 @@
       ],
       "updates": {},
       "retain_until": "2026-09-22T15:36:38.993651+00:00"
-    },
-    "ev-a13d73f61585c58b": {
-      "fingerprint": "a13d73f61585c58be35fb663e647dc88e305e90e0b7a04a93ab9905b80422c1a",
-      "urls": [
-        "https://www.aerotime.aero/articles/oman-air-and-salamair-announce-leadership-changes-on-the-same-day"
-      ],
-      "section": "international_aviation",
-      "cat": "biz",
-      "first_seen": "2026-08-24T08:03:49.495257+00:00",
-      "last_seen": "2026-08-24T08:03:49.495257+00:00",
-      "first_briefing_id": "2026-08-24-afternoon",
-      "article_ids": [
-        "a-20260824-0436-oman-air-and-salamair-announce-ceo-chang"
-      ],
-      "fact_keys": [
-        "oman air announced on 20 august 2026 that ceo con korfiatis will step aside on 1 september 2026, to be succeeded by nasser al sharji.",
-        "oman air posted its first positive ebitda in 15 years in 2025, amounting to 3.2 million rials (us$8.3 million).",
-        "oman air’s net losses roughly halved between 2023 and 2025, from 103 million rials (us$268 million) in 2023 to 52.2 million rials (us$135.8 million) in 2025.",
-        "salamair announced that engineer yaqoob bin saif bin hamoud al kiyumi will replace adrian hamilton-manns as ceo from 1 october 2026."
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T08:03:49.495257+00:00"
-    },
-    "ev-3d4059e512d4f9ee": {
-      "fingerprint": "3d4059e512d4f9ee3f1d6b48500574799078ab63353b3e5626a73061af842783",
-      "urls": [
-        "https://www.aerotime.aero/articles/bulgaria-sofia-gps-jammer-aircraft-navigation"
-      ],
-      "section": "international_aviation",
-      "cat": "ops",
-      "first_seen": "2026-08-24T15:56:33.249891+00:00",
-      "last_seen": "2026-08-24T15:56:33.249891+00:00",
-      "first_briefing_id": "2026-08-24-evening",
-      "article_ids": [
-        "a-20260824-1228-bulgaria-neutralizes-high-powered-gps-ja"
-      ],
-      "fact_keys": [
-        "bulgaria's state agency for national security (dans) neutralized a gps jammer suppressing frequencies at sofia airport (sof) on august 21, 2026.",
-        "commercial pilot aleksandar bogoyavlenski stated flights experienced gps disruption over sofia for at least three days, but ground-based navigation prevented delays or safety issues.",
-        "sofia airport's press office confirmed operations were unaffected and flights ran on schedule on august 21, 2026.",
-        "the jammer was located in dragalevtsi district and suppressed gps signals used by the airport, overflying aircraft, and television towers.",
-        "transport and communications minister georgi peev stated satellite navigation was compromised but flight safety was not affected as aircraft switched to conventional ground navaids."
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T15:56:33.249891+00:00"
-    },
-    "ev-b248a7fd893292f3": {
-      "fingerprint": "b248a7fd893292f387c6c5615747660376a39ec4fe0628b22f5cd15f8f545672",
-      "urls": [
-        "https://aerospaceglobalnews.com/news/archer-los-angeles-air-taxi-vertiport-la28",
-        "https://www.aerotime.aero/articles/archer-aeg-vertiport-la-live-downtown-los-angeles"
-      ],
-      "section": "international_aviation",
-      "cat": "biz",
-      "first_seen": "2026-08-24T15:56:33.249891+00:00",
-      "last_seen": "2026-08-24T15:56:33.249891+00:00",
-      "first_briefing_id": "2026-08-24-evening",
-      "article_ids": [
-        "a-20260824-1228-archer-aviation-and-aeg-partner-to-devel"
-      ],
-      "fact_keys": [
-        "archer aviation and aeg announced on august 24, 2026, an agreement to develop a vertiport at l.a. live in downtown los angeles, making archer the district's exclusive air taxi partner.",
-        "archer's midnight aircraft does not hold faa type certification, and archer reported a q2 2026 net loss of $263.2 million while planning midnight test operations later in 2026 under the evtol integration pilot program.",
-        "the companies completed an initial feasibility study covering land use, airspace, power availability, and community impact, but disclosed no financial terms, timeline, target service date, or secured municipal/federal permits.",
-        "the proposed l.a. live vertiport site is planned to use charging hardware from beta technologies through the aces consortium, with archer and aeg displaying a midnight aircraft at l.a. live on august 24–25, 2026.",
-        "the site would join a planned los angeles network featuring hawthorne municipal airport (hhr) as hub alongside destinations including hollywood burbank airport (bur) and los angeles international airport (lax)."
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T15:56:33.249891+00:00"
-    },
-    "ev-0af0817644933d73": {
-      "fingerprint": "0af0817644933d739394326631ab7651bd0ecce9460b1e4e3406517dada24740",
-      "urls": [
-        "https://www.aerotime.aero/articles/hungarian-gripen-fighter-jet-crashes-at-szolnok-military-base"
-      ],
-      "section": "international_aviation",
-      "cat": "mil",
-      "first_seen": "2026-08-24T15:56:33.249891+00:00",
-      "last_seen": "2026-08-24T15:56:33.249891+00:00",
-      "first_briefing_id": "2026-08-24-evening",
-      "article_ids": [
-        "a-20260824-1119-hungarian-gripen-fighter-jet-crashes-at"
-      ],
-      "fact_keys": [
-        "一架匈牙利國防軍的獅鷲戰機於2026年8月24日在索爾諾克軍事基地附近墜毀。",
-        "初步報告顯示沒有其他人受傷，也未對民用基礎設施造成損傷。",
-        "失事原因尚未明確，調查正在進行中。",
-        "總理彼得葛馬札爾確認飛行員已成功彈射逃生。",
-        "飛行員已被救護車送往醫院。"
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T15:56:33.249891+00:00"
-    },
-    "ev-9284897154850824": {
-      "fingerprint": "9284897154850824ec6e81300f91eda49932be7aff8e22aa3b52f920a6a0cc1e",
-      "urls": [
-        "https://www.aerotime.aero/articles/indonesian-air-force-sukhoi-su-30-runs-off-runway-at-makassar-airport"
-      ],
-      "section": "international_aviation",
-      "cat": "mil",
-      "first_seen": "2026-08-24T15:56:33.249891+00:00",
-      "last_seen": "2026-08-24T15:56:33.249891+00:00",
-      "first_briefing_id": "2026-08-24-evening",
-      "article_ids": [
-        "a-20260824-1119-indonesian-air-force-su-30-overruns-runw"
-      ],
-      "fact_keys": [
-        "印尼空軍一架蘇愷-30戰鬥機於2026年8月24日上午在蘇丹哈桑努丁國際機場（upg）偏離13跑道並停於草地上。",
-        "印尼空軍尚未對事件原因、經過或機組人員狀況發表聲明。",
-        "機場營運由3,100公尺長的03-21跑道維持，未接獲商業航班受影響的報告。",
-        "機場發言人taufan yudhistira證實事故發生於西側跑道，且現場處置工作正在進行中。",
-        "蘇丹哈桑努丁機場為軍民合用機場，第11飛行中隊負責營運印尼空軍全數蘇愷戰鬥機。"
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T15:56:33.249891+00:00"
-    },
-    "ev-d1e2bf46e5ea59ef": {
-      "fingerprint": "d1e2bf46e5ea59efa52df566220b93b0e828968c0bef13931a55d81834cb3d03",
-      "urls": [
-        "https://www.aerotime.aero/articles/ana-launches-remote-airport-robot-support-as-japans-workforce-shrinks"
-      ],
-      "section": "international_aviation",
-      "cat": "ops",
-      "first_seen": "2026-08-24T15:56:33.249891+00:00",
-      "last_seen": "2026-08-24T15:56:33.249891+00:00",
-      "first_briefing_id": "2026-08-24-evening",
-      "article_ids": [
-        "a-20260824-1119-ana-to-roll-out-remote-robot-support-at"
-      ],
-      "fact_keys": [
-        "全日空宣布將自2026年8月21日起，在日本多座區域機場推出遠端旅客支援服務，合作夥伴為總部位於東京的ai與機器人新創公司avatarin。",
-        "全日空表示將評估計畫對於客戶滿意度與營運績效的影響，再決定是否擴展至其他機場。",
-        "全日空表示，此方案奠基於羽田機場的測試，研究員分析超過25,000種互動，發現98.4%的旅客問題可以以與現場服務相同品質遠端解決。",
-        "此服務將使用名為「新me」的機器人，由關西國際機場（kix）中心運作，使全日空成為首家推出此類跨機場遠端支援系統的日本航空公司。"
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T15:56:33.249891+00:00"
-    },
-    "ev-d95e4af8466da5d1": {
-      "fingerprint": "d95e4af8466da5d17534a96430eb6f2dba9331bef5ac4410f2f51e6d3b1849b7",
-      "urls": [
-        "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5CS3JpUE0xdzJSMXpmeWt3VG40bURpV0RsSUoyY2UwR0s2YXNsbndfcWV1N2tXc0w0NDJnM0dqRE13ZjNBNmw5QlJkQ0I0RV9aRVJHN2RfRU1WZ9IBX0FVX3lxTFBiUWdoRlFVVXdIRTVEU1R6aThFVWZTbDBwWWNEUnhQQl80cmQyQkdjOTMwSkowN1dfb2NFb3I5VU1HUGRfRjlUVmMzeGtteXRnbzlGNEtlUlZZLWFrNklZ?oc=5",
-        "https://www.cna.com.tw/news/ahel/202608240243.aspx"
-      ],
-      "section": "taiwan_aviation",
-      "cat": "biz",
-      "first_seen": "2026-08-24T15:56:33.249891+00:00",
-      "last_seen": "2026-08-24T15:56:33.249891+00:00",
-      "first_briefing_id": "2026-08-24-evening",
-      "article_ids": [
-        "a-20260824-1006-china-airlines-donates-nt-1-8m-to-charit"
-      ],
-      "fact_keys": [
-        "中華航空籌集新台幣180萬元公益款項，捐贈予兒少照顧與弱勢家庭關懷等公益團體。",
-        "會員哩程捐贈受惠公益團體包括無國界醫生基金會、看見．齊柏林基金會及親愛音樂文化基金會等。",
-        "華航推出的會員哩程公益捐贈專區截至今年6月已有近300名會員參與，捐贈總哩程數突破100萬哩。",
-        "華航於桃園新光影城舉行愛心公益電影日，由資深副總經理李榮輝代表將義賣所得捐贈予家扶基金會等團體。"
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T15:56:33.249891+00:00"
-    },
-    "ev-070714cef42efb7d": {
-      "fingerprint": "070714cef42efb7d09c7b7d217455f30ba20564eda09785a46720a8cd423e706",
-      "urls": [
-        "https://www.aerotime.aero/articles/boeing-staff-strike-speea-professional-technical"
-      ],
-      "section": "international_aviation",
-      "cat": "biz",
-      "first_seen": "2026-08-24T15:56:33.249891+00:00",
-      "last_seen": "2026-08-24T15:56:33.249891+00:00",
-      "first_briefing_id": "2026-08-24-evening",
-      "article_ids": [
-        "a-20260824-0931-boeing-speea-union-rejects-new-contract"
-      ],
-      "fact_keys": [
-        "almost 90% of members from both sectors authorized the union to proceed with industrial action.",
-        "in the voting, 64% of 11,339 professional unit members and 71% of 3,909 technical unit members rejected the proposed offer.",
-        "speea announced on august 21, 2026, that a majority of its boeing union members rejected a new contract offer from the employer.",
-        "speea members overwhelmingly supported authorizing strike action if there are no significant improvements to the contract offer.",
-        "speea sent members a survey open until august 26, 2026, to understand requirements for the next contract offer.",
-        "the four-year contract offer was presented in august 2026 to around 13,000 engineers and scientists and 4,000 technical staff."
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T15:56:33.249891+00:00"
-    },
-    "ev-149e8b87a6dc3966": {
-      "fingerprint": "149e8b87a6dc39668240800ebc5c2b1b0e9786b0c142265003c8469fe02138b7",
-      "urls": [
-        "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBocWhUdTVtMlBuMmhUaUd2T05BM3ZURXk5c0VtcmlPMHY2UUFCWmM4c2NaSjZXQTF2aWJVUUpZMUhiaDhsdGhEV0NnN2VBazBWdkN0eThDdWszTnlVUlJZ?oc=5",
-        "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5qUmlvWEdtNWc1eGRSdXJuMXZaNTViVi1fSUhvdENoTG9BWHJ2Z250TFl6YW94OVUtSktpbkNpUmxkSkNZOVdjOTY3ZG1qVEgwWVI0Z01JV0NFMHhv0gFiQVVfeXFMUGZGNDNNcGpsQVJ3QlE4bkRXRTE0MlBlUk9fNXVhRV9yNkxfSngxdVBQdks1YTg3bWducU12cF8xSExJQTgxSTRMRHItX2QwaEtNRHg5eWptdTBOMmNHWHJWT0E?oc=5",
-        "https://www.cna.com.tw/news/ahel/202608240207.aspx",
-        "https://www.cna.com.tw/news/ahel/202608250299.aspx",
-        "https://www.cna.com.tw/news/ahel/202608250327.aspx"
-      ],
-      "section": "taiwan_aviation",
-      "cat": "ops",
-      "first_seen": "2026-08-24T15:56:33.249891+00:00",
-      "last_seen": "2026-08-25T16:00:16.849571+00:00",
-      "first_briefing_id": "2026-08-24-evening",
-      "article_ids": [
-        "a-20260824-0931-typhoon-sadel-prompts-taiwan-airlines-to",
-        "a-20260824-0931-typhoon-sadel-prompts-taiwan-airlines-to"
-      ],
-      "fact_keys": [
-        "中央氣象署於2026年8月24日下午2時觀測到颱風沙德爾中心位置在北緯24.5度、東經134.8度，以每小時24公里速度向西北西進行。",
-        "中華航空於8月25日取消ci312/ci313與ci132/ci133航班並提前ci310/ci311與ci122/ci123航班，8月26日取消ci120/ci121與ci310/ci311航班。",
-        "受到颱風沙德爾影響，台灣多家航空公司宣布2026年8月25日與26日往返沖繩的航班時間有所異動。",
-        "受颱風沙德爾影響，長榮航空2026年8月26日往返沖繩航班全天取消。",
-        "台灣虎航、中華航空及星宇航空調整8月26日飛往沖繩的多個航班改為延後起飛。",
-        "台灣虎航於8月25日提前it232/it233桃園往返沖繩那霸、it288/it289/it728高雄往返沖繩那霸及it793沖繩那霸前往台中的航班起飛時間。",
-        "星宇航空8月26日往返台北與台中至沖繩之jx870、jx871、jx302及jx303航班均延後起飛。",
-        "星宇航空於8月25日提前jx870、jx871、jx302及jx303航班起飛時間，並取消jx312/jx313台中往返沖繩航班。",
-        "桃園國際機場8月26日取消的航班包含樂桃航空、中華航空、長榮航空、星宇航空及泰國獅子航空等航空公司部分班機。",
-        "桃園國際機場公司表示，截至8月25日晚間6時，已知8月26日共有16班航班因颱風沙德爾影響取消。",
-        "長榮航空暫無航班異動，針對持有8月21日前開立、原訂25日下午4時至27日上午11時往返沖繩機票旅客提供免一次手續費改票規範。"
-      ],
-      "updates": {
-        "2026-08-25-evening": {
-          "article_id": "a-20260824-0931-typhoon-sadel-prompts-taiwan-airlines-to",
-          "new_information": [
-            "受颱風沙德爾影響，長榮航空2026年8月26日往返沖繩航班全天取消。",
-            "桃園國際機場公司表示，截至8月25日晚間6時，已知8月26日共有16班航班因颱風沙德爾影響取消。",
-            "桃園國際機場8月26日取消的航班包含樂桃航空、中華航空、長榮航空、星宇航空及泰國獅子航空等航空公司部分班機。",
-            "台灣虎航、中華航空及星宇航空調整8月26日飛往沖繩的多個航班改為延後起飛。",
-            "星宇航空8月26日往返台北與台中至沖繩之JX870、JX871、JX302及JX303航班均延後起飛。"
-          ]
-        }
-      },
-      "retain_until": "2026-08-27T15:56:33.249891+00:00"
-    },
-    "ev-1a4ad74468d6269c": {
-      "fingerprint": "1a4ad74468d6269ce77e06e305096be39fcea3a50178eb705ed9cce848e9c606",
-      "urls": [
-        "https://www.cna.com.tw/news/afe/202608240177.aspx"
-      ],
-      "section": "taiwan_aviation",
-      "cat": "biz",
-      "first_seen": "2026-08-24T15:56:33.249891+00:00",
-      "last_seen": "2026-08-24T15:56:33.249891+00:00",
-      "first_briefing_id": "2026-08-24-evening",
-      "article_ids": [
-        "a-20260824-0837-esing-opens-taoyuan-guishan-phase-2-plan"
-      ],
-      "fact_keys": [
-        "絕緣材料廠鉅橡受惠兩岸pcb客戶需求，積極推進新廠建置計畫並提升高階產品出貨比重。",
-        "邑昇實業將產品組合鎖定無人機、低軌衛星與航太軍工等高附加價值應用領域。",
-        "邑昇實業桃園龜山擴建二期廠房啟用，導入高階設備並提升高階印刷電路板（pcb）製造能力，二期新廠月產能可望提升至原有產能的1.5倍。",
-        "鉅橡指出ai與高效能運算帶動之pcb高階材料需求已延伸至無人機等新興領域。",
-        "面對關鍵材料價格上漲與交期拉長，邑昇採取多元取得、掌握需求與快速替代三項策略以維持供應韌性。"
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T15:56:33.249891+00:00"
-    },
-    "ev-0a840ef5bff01256": {
-      "fingerprint": "0a840ef5bff0125693e8f10cb7dabcb86c768096e8cea0173981ffae07c76ba9",
-      "urls": [
-        "https://news.google.com/rss/articles/CBMiSkFVX3lxTE1yb1lYNXhQVlFfZUwxNnNENHcwaldBZWk1WDUxSjBQdkJMRkFINEJFLWNPTkNIWDFhM1NHWU9sRFFFMGRZZ0ltVnpn?oc=5",
-        "https://news.google.com/rss/articles/CBMiTEFVX3lxTFA1aXB4cHA1Y3pFcjFJR0IwYks0Y0E4aGF6NldhXzJmcVZPQ1pqMkdKdGNiZ2xVOXYtZTNHNjBIQlM4YUVzaldlMWpPS1PSAVJBVV95cUxOeU9PNWZnSXlWUVRqRUxOSlRaX0tDb29fRXdLZFhCcGpVblNHajBsaC1JUmtob2dwTUdoT1JZVDZvQVVUOUhWWjFSMzZoZXFtS3RR?oc=5",
-        "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBMY0NGcC03M3N4V2VydG80TEoySi1ycHlpTmp3R241WUJOaXNVRVlJS19LQkVZa2U5aVk0ZEtzb0RiOFNrZEQ4aVp1MURac0Uz0gFWQVVfeXFMT0JXdV9FT2JYX0lkdTRGSnJHaWRualJQN1lLT20weDY3RE0yZGg0SlJJRkVMZlNlSGEyRlI5V0hfTFdXZmVEa3doRklrMGJVbVU1d1diYkE?oc=5",
-        "https://news.google.com/rss/articles/CBMiX0FVX3lxTFAwMmxmNGZJU0tMZDh2cFRadDlxRU53Z1IzZlppcGdWUmxyV0IxV3hoQ1BjUnBReEJaeXJjMWlGUWdidjZPRUdXNFBidmlSa3hfUWVqaFhhWVBBQ3ZLZFZz?oc=5",
-        "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1WWnR2ODdsMV91eDhHYVJUUWhSYUVoVXBPVHVMTUVLdFZsUFhubFUwSldGRTdFWjM2RzNGRFlHenBZZTZjWi1LTlF1WGhhMUtlMGVtM0dwSGlETjU4Nm1DaktHcmY?oc=5",
-        "https://news.google.com/rss/articles/CBMigwFBVV95cUxPNWlFdzVESElZWVZ3V3ZQX2NKWUpFSERhNC16TG8xWUFqU2xfbVAxcHZIaXVPZjlCaWdXVlFwNU1qQ0pjVG0xVDJtdHliTVZ1YzFYWC1TQkhPcFhGZk9HeUk0cmFmWnlOWHpFcWR4UTZELUMzZGVvVVk3Xzd1VFhlU2ozTdIBYkFVX3lxTE0ydmk0UXQ4dTM5Wmw5SWo3WVBQdjhwbGVuU2JXOXRVUWk1NkhTNHFXZ3FzYi11RlN2X2l0SWk3eURMS0RGYnVCSjdpZ2xvSUFtRXFuckFoUl81b2VzWjJ5ZFNR?oc=5"
-      ],
-      "section": "ground_and_maritime",
-      "cat": "ops",
-      "first_seen": "2026-08-24T15:56:33.249891+00:00",
-      "last_seen": "2026-08-24T15:56:33.249891+00:00",
-      "first_briefing_id": "2026-08-24-evening",
-      "article_ids": [
-        "a-20260824-0751-tra-suspends-south-link-and-eastern-line"
-      ],
-      "fact_keys": [
-        "因應豪大雨，臺灣鐵路公司宣佈2026年8月24日18時前，南迴線及東部幹線的對號列車全面停駛。"
-      ],
-      "updates": {},
-      "retain_until": "2026-08-27T15:56:33.249891+00:00"
     },
     "ev-fc89702c5709f7f9": {
       "fingerprint": "fc89702c5709f7f9dfe9d7687ec8f073055795f784686db2c90876c88d450651",
@@ -1611,23 +1327,37 @@
         "https://www.cna.com.tw/news/aipl/202608230025.aspx",
         "https://www.cna.com.tw/news/aipl/202608240039.aspx",
         "https://www.cna.com.tw/news/aipl/202608250025.aspx",
-        "https://www.cna.com.tw/news/aipl/202608260032.aspx"
+        "https://www.cna.com.tw/news/aipl/202608260032.aspx",
+        "https://www.cna.com.tw/news/aipl/202608270037.aspx"
       ],
       "section": "ground_and_maritime",
       "cat": "mil",
       "first_seen": "2026-08-26T07:58:15.988562+00:00",
-      "last_seen": "2026-08-26T07:58:15.988562+00:00",
+      "last_seen": "2026-08-27T18:17:00.856014+00:00",
       "first_briefing_id": "2026-08-26-afternoon",
       "article_ids": [
+        "a-20260726-2303-taiwan-mnd-reports-7-chinese-warships-3",
         "a-20260726-2303-taiwan-mnd-reports-7-chinese-warships-3"
       ],
       "fact_keys": [
         "according to site statistical records, 2 pla aircraft, 7 pla vessels, and 2 official ships were recorded around taiwan on august 24.",
         "no pla aircraft were detected operating around taiwan during the 24-hour monitoring period.",
         "taiwan's armed forces deployed aircraft, naval vessels, and land-based missile systems to monitor and respond to the activity.",
-        "taiwan's ministry of national defense detected 6 pla vessels and 7 official ships operating around taiwan between 06:00 on august 25 and 06:00 on august 26, 2026."
+        "taiwan's ministry of national defense detected 6 pla vessels and 7 official ships operating around taiwan between 06:00 on august 25 and 06:00 on august 26, 2026.",
+        "國軍運用任務機艦及岸置飛彈系統嚴密監控與應處。",
+        "國防部統計期間內並無偵獲共機。",
+        "國防部統計自8月26日上午6時至8月27日上午6時止，偵獲9艘共艦及7艘公務船持續在台海周邊活動。"
       ],
-      "updates": {},
+      "updates": {
+        "2026-08-27-afternoon": {
+          "article_id": "a-20260726-2303-taiwan-mnd-reports-7-chinese-warships-3",
+          "new_information": [
+            "國防部統計自8月26日上午6時至8月27日上午6時止，偵獲9艘共艦及7艘公務船持續在台海周邊活動。",
+            "國防部統計期間內並無偵獲共機。",
+            "國軍運用任務機艦及岸置飛彈系統嚴密監控與應處。"
+          ]
+        }
+      },
       "retain_until": "2026-08-29T07:58:15.988562+00:00"
     },
     "ev-96979c47e33eed63": {
@@ -1680,25 +1410,39 @@
       "urls": [
         "https://simpleflying.com/british-airways-launches-new-14-hour-airbus-a380-route-next-week",
         "https://simpleflying.com/emirates-suspended-a380-flights-long-haul-destinations",
+        "https://simpleflying.com/qantas-airbus-a380-retirement-2028",
         "https://simpleflying.com/qantas-axing-a380-flights-from-major-airport"
       ],
       "section": "international_aviation",
       "cat": "ops",
       "first_seen": "2026-08-26T16:34:17.638665+00:00",
-      "last_seen": "2026-08-26T16:34:17.638665+00:00",
+      "last_seen": "2026-08-27T18:17:00.856014+00:00",
       "first_briefing_id": "2026-08-26-evening",
       "article_ids": [
-        "a-20260826-1120-british-airways-to-resume-airbus-a380-fl"
+        "a-20260826-1120-british-airways-to-resume-airbus-a380-fl",
+        "a-20260827-0746-qantas-brings-forward-airbus-a380-retire"
       ],
       "fact_keys": [
         "british airways is set to launch an airbus a380 route lasting 14 hours next week.",
         "emirates expects daily airbus a380 services to prague and glasgow to return in october.",
         "emirates temporarily suspended airbus a380 flights to prague and glasgow for summer 2026.",
+        "qantas has moved up the retirement of its airbus a380 fleet by four years, with the first superjumbos set to exit in 2028.",
+        "qantas is australia's flag carrier.",
         "qantas opted to replace the a380 on that route with the boeing 787-9.",
+        "qantas opted to utilize the boeing 787-9 to replace airbus a380 operations on the route.",
         "qantas scheduled its final airbus a380 flight from melbourne to los angeles for october 24.",
         "the long-haul route last saw operations with the airbus a380 16 months ago."
       ],
-      "updates": {},
+      "updates": {
+        "2026-08-27-afternoon": {
+          "article_id": "a-20260827-0746-qantas-brings-forward-airbus-a380-retire",
+          "new_information": [
+            "Qantas has moved up the retirement of its Airbus A380 fleet by four years, with the first superjumbos set to exit in 2028.",
+            "Qantas is Australia's flag carrier.",
+            "Qantas opted to utilize the Boeing 787-9 to replace Airbus A380 operations on the route."
+          ]
+        }
+      },
       "retain_until": "2026-08-29T16:34:17.638665+00:00"
     },
     "ev-f2bca1e0d84d942a": {
@@ -1854,6 +1598,118 @@
       ],
       "updates": {},
       "retain_until": "2026-08-30T04:31:28.552634+00:00"
+    },
+    "ev-cc5c5fb7a7b2b8d4": {
+      "fingerprint": "cc5c5fb7a7b2b8d447d51f5256baa74298a44e2ad4d2a48339b6961fe9d17be2",
+      "urls": [
+        "https://www.cna.com.tw/news/ahel/202608270148.aspx"
+      ],
+      "section": "taiwan_aviation",
+      "cat": "ops",
+      "first_seen": "2026-08-27T18:17:00.856014+00:00",
+      "last_seen": "2026-08-27T18:17:00.856014+00:00",
+      "first_briefing_id": "2026-08-27-afternoon",
+      "article_ids": [
+        "a-20260827-0746-caa-permits-mandarin-airlines-flight-cut"
+      ],
+      "fact_keys": [
+        "caa agreed to allow mandarin airlines to reduce flight frequencies when booking numbers are low rather than suspending operations completely.",
+        "caa stated that uni air's application to suspend the taipei-hualien route remains under evaluation and review.",
+        "caa statistics show average load factors from 2023 to 2025 were 36% for taipei-hualien, 37% for kaohsiung-hualien, and 44% for taichung-hualien.",
+        "mandarin airlines applied to suspend kaohsiung-hualien and taichung-hualien routes, while uni air applied to suspend the taipei-hualien route."
+      ],
+      "updates": {},
+      "retain_until": "2026-08-30T18:17:00.856014+00:00"
+    },
+    "ev-93a87ef04323bec7": {
+      "fingerprint": "93a87ef04323bec7a7921c1ea60ea13790a5cb48d8ad19bd293a15a60e223676",
+      "urls": [
+        "https://www.cna.com.tw/news/afe/202608270099.aspx"
+      ],
+      "section": "taiwan_aviation",
+      "cat": "biz",
+      "first_seen": "2026-08-27T18:17:00.856014+00:00",
+      "last_seen": "2026-08-27T18:17:00.856014+00:00",
+      "first_briefing_id": "2026-08-27-afternoon",
+      "article_ids": [
+        "a-20260827-0746-egis-group-to-feature-ai-smart-drones-at"
+      ],
+      "fact_keys": [
+        "egis group subsidiary ene technology will focus on ai smart drones at the trade show to demonstrate semiconductor technology application in flight.",
+        "ene technology stated that ai software trains a world model through simulated environments and integrates with a 3-axis gimbal camera module for environment perception and autonomous mission planning.",
+        "semicon taiwan 2026 will open on september 2, where egis group will participate with drones and robotics as exhibition highlights.",
+        "the system integrates a satellite iot dongle supporting two-way satellite communication and multi-constellation gnss positioning for long-distance message transmission."
+      ],
+      "updates": {},
+      "retain_until": "2026-08-30T18:17:00.856014+00:00"
+    },
+    "ev-a4bb695d31b28d54": {
+      "fingerprint": "a4bb695d31b28d54cb679edbb8a095483c6a2c8036caedc81caeca4817f51b4f",
+      "urls": [
+        "https://www.cna.com.tw/news/afe/202608270093.aspx"
+      ],
+      "section": "taiwan_aviation",
+      "cat": "biz",
+      "first_seen": "2026-08-27T18:17:00.856014+00:00",
+      "last_seen": "2026-08-27T18:17:00.856014+00:00",
+      "first_briefing_id": "2026-08-27-afternoon",
+      "article_ids": [
+        "a-20260827-0746-formosa-smart-energy-algae-oil-wins-iscc"
+      ],
+      "fact_keys": [
+        "台塑新智能於2026年8月27日宣布，轉投資之澄灝科技以微藻開發的國產永續航空燃油（saf）原料取得歐盟iscc eu國際永續性與碳驗證。",
+        "台塑生醫回收廢食用油提煉saf原料，台塑新智能以微藻技術開發在地生質原料，兩者採取雙軌並行建立供應體系。",
+        "台灣設定2030年國籍航空永續航空燃油使用量達到5%的政策目標。",
+        "本次iscc eu驗證範圍涵蓋微藻培育與藻油製造，並納入溫室氣體排放計算與相關管理機制。",
+        "澄灝科技已開發異營發酵量產技術使藻體含油量達50%至60%，其500公升試製線已完成配方與穩定性評估，藻油符合下游煉製規格。"
+      ],
+      "updates": {},
+      "retain_until": "2026-08-30T18:17:00.856014+00:00"
+    },
+    "ev-eaa27c155872be4a": {
+      "fingerprint": "eaa27c155872be4a3219ff9a1cc11414e52712f6bc354c3845313fb1aeba1c86",
+      "urls": [
+        "https://aerospaceglobalnews.com/news/fly2galicia-new-budget-carrier-spain"
+      ],
+      "section": "international_aviation",
+      "cat": "ops",
+      "first_seen": "2026-08-27T18:17:00.856014+00:00",
+      "last_seen": "2026-08-27T18:17:00.856014+00:00",
+      "first_briefing_id": "2026-08-27-afternoon",
+      "article_ids": [
+        "a-20260827-0859-fly2galicia-plans-december-launch-from-s"
+      ],
+      "fact_keys": [
+        "fly2galicia flights will be operated under a wet-lease agreement by romanian carrier flyyo, while aviation & mobility services group markets the services.",
+        "fly2galicia plans to launch flights from rosalia de castro airport in santiago de compostela on 1 december 2026.",
+        "fly2galicia plans to serve eight destinations across spain and europe.",
+        "the planned route network includes domestic services to alicante, granada, and zaragoza, alongside european routes to brussels, milan, venice, munich, and prague."
+      ],
+      "updates": {},
+      "retain_until": "2026-08-30T18:17:00.856014+00:00"
+    },
+    "ev-65f4392548dd6958": {
+      "fingerprint": "65f4392548dd695838948133b6a322994d35c86682d92660ae29b41d2a235706",
+      "urls": [
+        "https://aerospaceglobalnews.com/news/uk-airports-record-budget-europe-middle-east"
+      ],
+      "section": "taiwan_aviation",
+      "cat": "ops",
+      "first_seen": "2026-08-27T18:17:00.856014+00:00",
+      "last_seen": "2026-08-27T18:17:00.856014+00:00",
+      "first_briefing_id": "2026-08-27-afternoon",
+      "article_ids": [
+        "a-20260827-0859-uk-airport-passenger-numbers-hit-record"
+      ],
+      "fact_keys": [
+        "emirates carried 46% fewer passengers through uk airports during the quarter, while qatar airways was down 42%.",
+        "only 74% of flights were on time, average delay rose to 14 minutes and the proportion of flights cancelled within 24 hours of departure increased to 0.91%.",
+        "ryanair, easyjet and jet2 together carried 2.25 million more passengers than during q2 2025.",
+        "uk civil aviation authority data released on 27 august shows uk airports handled a record 81.16 million passengers between april and june 2026.",
+        "western europe generated around 1 million additional uk airport passengers compared with q2 2025."
+      ],
+      "updates": {},
+      "retain_until": "2026-08-30T18:17:00.856014+00:00"
     }
   },
   "grounded_seen": {}
