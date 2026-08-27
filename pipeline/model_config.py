@@ -45,11 +45,10 @@ OPENROUTER_MODEL_ORDER = (
 )
 
 # Rank by model capability first, then by provider for equivalent models.
-# The native NVIDIA route remains the first attempt and its OpenRouter
-# equivalent follows immediately, instead of collecting every OpenRouter
-# model at the end of the chain.
+# Primary provider routes remain ahead of OpenRouter's free fallbacks. The
+# WeChat Flash route stays below the primary models because its gateway
+# disables hidden reasoning for predictable output.
 MODEL_ORDER = (
-    WECHAT_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[0],
@@ -60,6 +59,7 @@ MODEL_ORDER = (
     OPENCODE_MODEL_ORDER[5],
     DIRECT_MODEL_ORDER[1],
     *DIRECT_MODEL_ORDER[3:5],
+    WECHAT_MODEL_ORDER[0],
     OPENROUTER_MODEL_ORDER[0],
     *DIRECT_MODEL_ORDER[5:7],
     OPENROUTER_MODEL_ORDER[1],
