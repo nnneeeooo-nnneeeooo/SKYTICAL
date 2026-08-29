@@ -6,8 +6,11 @@
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
 <meta name="robots" content="{{ robots_meta }}">
+<meta name="googlebot" content="{{ robots_meta }}">
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:site_name" content="SKYTICAL">
+<meta property="og:locale" content="{% if lang == 'zh' %}zh_TW{% else %}en_US{% endif %}">
+{% if lang == 'zh' and has_en_alternate %}<meta property="og:locale:alternate" content="en_US">{% elif lang == 'en' and has_zh_alternate %}<meta property="og:locale:alternate" content="zh_TW">{% endif %}
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:url" content="{{ self_abs_url }}">
@@ -17,6 +20,7 @@
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ description }}">
 <meta name="twitter:image" content="{{ social_image_abs_url }}">
+<meta name="twitter:image:alt" content="{{ social_image_alt }}">
 {% if hreflang %}
 <link rel="canonical" href="{{ self_abs_url }}">
 {% if has_zh_alternate %}
