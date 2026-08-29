@@ -181,7 +181,7 @@ L = {
         "radarSource": "航機位置：Airplanes.live 公開社群 ADS-B；航班代碼與航線：ADSBdb；地圖：OpenStreetMap。",
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "快報",
-        "brIndexSub": "每日三次（臺北時間 07:15／15:15／23:15）的條列式全球航空與交通要聞快報，以本站已查證新聞為基礎，並由具搜尋能力的模型補充彙整（Beta）。",
+        "brIndexSub": "每日早、中、晚三次（臺北時間 07:15／15:15／23:15）的完整 24 小時航空與交通運輸匯總，以本站已查證新聞為基礎，並由具搜尋能力的模型補充彙整（Beta）。",
         "brLatest": "最新快報", "brWindow": "資料範圍", "brCutoff": "資料截止",
         "brGenerated": "系統整理完成", "brTo": "至",
         "brEmpty": "截至本期資料截止時間，系統在本次查核的指定來源中，未發現符合收錄門檻的新事件。",
@@ -189,7 +189,9 @@ L = {
         "brChecked": "📡 本期查核來源", "brWarnings": "資料覆蓋提示",
         "brUpdate": "更新", "brItems": "則",
         "brNoItems": "本期查核來源中，此分類無新增符合收錄門檻的事件通報",
-        "brModeDet": "程式化組裝（未使用模型）", "brModeLlm": "模型輔助導言",
+        "brModeDet": "已查證新聞匯總", "brModeLlm": "模型輔助匯總",
+        "brModeGrounded": "AI 搜尋輔助匯總",
+        "brCivil": "民航部分", "brMilitary": "軍航部分",
         "brBeta": "BETA", "brAiTag": "AI 搜尋",
         "brBetaNote": "Beta 功能：本快報部分條目由具搜尋能力的模型輔助彙整"
                       "（標示「AI 搜尋」者），引用連結僅取自檢索實際回傳的來源；"
@@ -311,7 +313,7 @@ L = {
         "radarSource": "Aircraft positions: Airplanes.live public community ADS-B; flight codes and routes: ADSBdb; map: OpenStreetMap.",
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "Briefings",
-        "brIndexSub": "A bulleted global air and transport briefing three times daily (07:15 / 15:15 / 23:15 Taipei time), based on the site's verified articles and supplemented by a search-capable model (Beta).",
+        "brIndexSub": "A complete trailing-24-hour air and transport roundup each morning, afternoon and evening (07:15 / 15:15 / 23:15 Taipei time), based on the site's verified articles and supplemented by a search-capable model (Beta).",
         "brLatest": "Latest briefing", "brWindow": "Data window",
         "brCutoff": "Data cutoff", "brGenerated": "Compiled", "brTo": "to",
         "brEmpty": "As of this edition's data cutoff, no new events meeting the inclusion bar were found in the sources checked for this edition.",
@@ -320,8 +322,10 @@ L = {
         "brUpdate": "UPDATE", "brItems": "items",
         "brNoItems": "No new events met the inclusion bar in this section "
                      "among the sources checked",
-        "brModeDet": "Deterministic assembly (no model used)",
-        "brModeLlm": "Model-assisted intro",
+        "brModeDet": "Verified-news roundup",
+        "brModeLlm": "Model-assisted roundup",
+        "brModeGrounded": "AI-search-assisted roundup",
+        "brCivil": "Civil aviation", "brMilitary": "Military aviation",
         "brBeta": "BETA", "brAiTag": "AI search",
         "brBetaNote": "Beta: some briefing entries (tagged \"AI search\") "
                       "are compiled with a search-capable model; cited "
@@ -1956,8 +1960,23 @@ def _render_include_articles() -> bool:
 def brief_view(b, lang: str, t, published_ids):
     sections = []
     raw_sections = b.get("sections") or {}
+    coverage_notes = b.get("coverage_notes") or {}
     include_articles = _render_include_articles()
     dropped = 0
+
+    def note_view(scope):
+        note = coverage_notes.get(scope) or {}
+        return {
+            "text": str(note.get("zh" if lang == "zh" else "en") or ""),
+            "sources": [
+                {"name": str(source.get("name") or ""),
+                 "url": str(source.get("url") or "").strip()}
+                for source in note.get("sources") or []
+                if isinstance(source, dict)
+                and _public_direct_url(source.get("url"))
+            ],
+        }
+
     for i, name in enumerate(BRIEFING_SECTIONS):
         raw = [it for it in raw_sections.get(name) or []
                if isinstance(it, dict)]
@@ -1965,8 +1984,24 @@ def brief_view(b, lang: str, t, published_ids):
             kept = [it for it in raw if it.get("origin") == "grounded"]
             dropped += len(raw) - len(kept)
             raw = kept
-        items = [brief_item_view(it, lang, published_ids) for it in raw]
-        sections.append({"label": t["brSecs"][i], "items": items})
+        if name == "taiwan_aviation":
+            civil = [brief_item_view(it, lang, published_ids)
+                     for it in raw if not it.get("military")]
+            military = [brief_item_view(it, lang, published_ids)
+                        for it in raw if it.get("military")]
+            sections.append({
+                "label": t["brSecs"][i], "items": civil + military,
+                "subsections": [
+                    {"label": t["brCivil"], "items": civil,
+                     "note": note_view("taiwan_civil")},
+                    {"label": t["brMilitary"], "items": military,
+                     "note": note_view("taiwan_military")},
+                ],
+            })
+        else:
+            items = [brief_item_view(it, lang, published_ids) for it in raw]
+            sections.append({"label": t["brSecs"][i], "items": items,
+                             "subsections": [], "note": note_view(name)})
     gen_model = b.get("generation_model") or {}
     date_dt = _tpe_dt(b.get("cutoff_time"))
     # an intro written over the merged item set is stale once items are cut
@@ -1987,8 +2022,11 @@ def brief_view(b, lang: str, t, published_ids):
         "total": sum(len(s["items"]) for s in sections),
         "sections": sections,
         "intro": intro,
-        "mode_label": (t["brModeLlm"] if b.get("generation_mode")
-                       == "llm_assisted" else t["brModeDet"]),
+        "mode_label": (
+            t["brModeLlm"] if b.get("generation_mode") == "llm_assisted"
+            else t["brModeGrounded"]
+            if b.get("generation_mode") == "grounded_assisted"
+            else t["brModeDet"]),
         "model_label": (f"{gen_model.get('provider')}:{gen_model.get('model')}"
                         if gen_model else ""),
         "checked": [c for c in b.get("checked_sources") or []

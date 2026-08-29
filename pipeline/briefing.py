@@ -1,9 +1,11 @@
 """briefing.py — thrice-daily air & transport briefing assembler.
 
 Selects already-verified articles (data/articles/) whose source time falls
-inside a fixed 8-hour Asia/Taipei window, deduplicates events across
-editions via a persistent event index, and writes one briefing JSON per
-edition to data/briefings/. Assembly is deterministic by default: verified
+inside a fixed trailing-24-hour Asia/Taipei window and writes one complete
+snapshot per edition to data/briefings/. Events may therefore appear in more
+than one edition while they remain inside that edition's 24-hour window;
+each morning, afternoon and evening report must be independently readable.
+Assembly is deterministic by default: verified
 headlines and summaries are reused as-is and no model is called. At most
 one optional batch LLM call per edition (BRIEFING_LLM_INTRO=true) may add
 an intro paragraph; any failure falls back to the deterministic output.
@@ -13,10 +15,11 @@ source/evidence gates: rejected groups never reach data/articles/, so reading
 only the published article store enforces that exclusion structurally.
 
 Editions (config/briefing_editions.json is the single source of truth):
-  morning    23:00 (previous day) <= source_time < 07:00, runs 07:15 TPE
-  afternoon  07:00               <= source_time < 15:00, runs 15:15 TPE
-  evening    15:00               <= source_time < 23:00, runs 23:15 TPE
-Windows are half-open and fixed: a delayed run never widens or shifts them.
+  morning    07:00 (previous day) <= source_time < 07:00, runs 07:15 TPE
+  afternoon  15:00 (previous day) <= source_time < 15:00, runs 15:15 TPE
+  evening    23:00 (previous day) <= source_time < 23:00, runs 23:15 TPE
+Windows are trailing 24 hours, half-open and fixed: a delayed run never
+widens or shifts them.
 """
 from __future__ import annotations
 
@@ -165,7 +168,7 @@ class BriefingWindow:
 
 
 def get_briefing_window(edition: str, taipei_date: date) -> BriefingWindow:
-    """Fixed 8-hour window for one edition on one Taipei date.
+    """Fixed trailing-24-hour window for one edition on one Taipei date.
 
     Derived only from the edition config and the date — never from the
     clock — so a delayed Actions run keeps the exact same window.
@@ -547,10 +550,14 @@ def select_items(articles: list[dict], window: BriefingWindow,
 
         new_facts = [f for f in facts if f not in set(event.get("fact_keys") or [])]
         if not new_facts:
-            # Same event, nothing substantive: retitles/reprints are not
-            # updates. Remember the extra URLs so later reprints match too.
+            # A briefing is a complete 24-hour snapshot, not an incremental
+            # change log. Keep the event in later editions while it remains
+            # in-window, but do not mislabel a retitle/reprint as an update.
             event["urls"] = sorted(set(event.get("urls") or []) | set(urls))
             event["last_seen"] = now.isoformat()
+            picked.append((section, _build_item(
+                article, section, event_id, "ongoing", event_id, None)))
+            emitted.add(event_id)
             continue
 
         original_claims = [
@@ -846,7 +853,8 @@ def checked_sources_snapshot() -> tuple[list[dict], list[str]]:
             # coverage.
             continue
         row = {"name": src.get("name"), "ok": bool(src.get("ok")),
-               "last_fetch_utc": src.get("lastFetchUtc")}
+               "last_fetch_utc": src.get("lastFetchUtc"),
+               "url": _direct_source_url(src.get("url"))}
         rows.append(row)
         if not row["ok"]:
             warnings.append(f"source fetch failing: {row['name']} — a fetch "
@@ -855,12 +863,82 @@ def checked_sources_snapshot() -> tuple[list[dict], list[str]]:
     return rows, warnings
 
 
+_COVERAGE_SOURCE_MARKERS = {
+    "aviation_incidents": ("FAA", "NTSB", "The Aviation Herald", "EASA"),
+    "taiwan_civil": (
+        "CAA Taiwan", "長榮航空 EVA Air", "中央社 CNA 國籍航空"),
+    "taiwan_military": ("國防部・軍聞社", "中央社 CNA"),
+    "international_aviation": (
+        "Airbus", "Boeing", "Reuters", "AeroTime",
+        "Aerospace Global News", "IATA", "Eurocontrol"),
+    "ground_and_maritime": ("臺灣交通要聞", "中央社 CNA", "Eurocontrol"),
+}
+
+_COVERAGE_EMPTY_COPY = {
+    "aviation_incidents": (
+        "本期 24 小時資料窗口內，已查核來源未收錄符合本站門檻的重大飛安事件通報。",
+        "No major safety event meeting the site's inclusion threshold was found in the checked sources during this 24-hour window."),
+    "taiwan_civil": (
+        "本期 24 小時資料窗口內，已查核來源未收錄臺灣民航事故、重大航班異動或機隊受損通報。",
+        "No Taiwan civil-aviation accident, major disruption or fleet-damage report was found in the checked sources during this 24-hour window."),
+    "taiwan_military": (
+        "本期 24 小時資料窗口內，已查核來源未收錄國軍航空器事故、迫降或人員傷亡通報。",
+        "No ROC military-aircraft accident, forced landing or casualty report was found in the checked sources during this 24-hour window."),
+    "international_aviation": (
+        "本期 24 小時資料窗口內，已查核來源未收錄新的重大訂單、首航、監管措施或航空公司營運危機。",
+        "No new major order, inaugural service, regulatory action or airline operating crisis was found in the checked sources during this 24-hour window."),
+    "ground_and_maritime": (
+        "本期 24 小時資料窗口內，已查核來源未收錄符合本站門檻的重大地面或海運交通事件。",
+        "No major ground or maritime transport event meeting the site's threshold was found in the checked sources during this 24-hour window."),
+}
+
+
+def build_coverage_notes(sections: dict, checked_sources: list[dict]) -> dict:
+    """Reader-facing, source-scoped empty-state notes for every report area.
+
+    These sentences describe only what this pipeline found in the sources it
+    actually checked. They deliberately do not claim that nothing happened.
+    """
+    empty = {
+        "aviation_incidents": not sections.get("aviation_incidents"),
+        "taiwan_civil": not any(
+            not item.get("military")
+            for item in sections.get("taiwan_aviation") or []),
+        "taiwan_military": not any(
+            item.get("military")
+            for item in sections.get("taiwan_aviation") or []),
+        "international_aviation": not sections.get("international_aviation"),
+        "ground_and_maritime": not sections.get("ground_and_maritime"),
+    }
+    notes = {}
+    for scope, is_empty in empty.items():
+        if not is_empty:
+            continue
+        markers = {marker.casefold()
+                   for marker in _COVERAGE_SOURCE_MARKERS[scope]}
+        sources = []
+        for source in checked_sources:
+            name = str(source.get("name") or "")
+            if (source.get("ok") and source.get("url")
+                    and name.casefold() in markers):
+                sources.append({"name": name, "url": source["url"]})
+        zh, en = _COVERAGE_EMPTY_COPY[scope]
+        notes[scope] = {"zh": zh, "en": en, "sources": sources[:5]}
+    return notes
+
+
 def assemble_briefing(window: BriefingWindow, sections: dict,
                       checked_sources: list[dict], warnings: list[str],
                       generated_at: datetime, partial: bool,
                       grounded_info: dict | None = None) -> dict:
     cfg = load_editions()[window.edition]
     total = sum(len(v) for v in sections.values())
+    grounded_info = grounded_info or {"used": False, "items": 0}
+    generation_mode = ("grounded_assisted"
+                       if grounded_info.get("used") else "deterministic")
+    generation_model = (
+        {"provider": "gemini", "model": grounded_info.get("model")}
+        if grounded_info.get("used") else None)
     return {
         "content_type": "daily_transport_briefing",
         "briefing_id": window.briefing_id,
@@ -876,11 +954,12 @@ def assemble_briefing(window: BriefingWindow, sections: dict,
         "status": "partial" if partial else "published",
         "item_count": total,
         "sections": sections,
+        "coverage_notes": build_coverage_notes(sections, checked_sources),
         "checked_sources": checked_sources,
         "warnings": warnings,
-        "generation_mode": "deterministic",
-        "generation_model": None,
-        "grounded_beta": grounded_info or {"used": False, "items": 0},
+        "generation_mode": generation_mode,
+        "generation_model": generation_model,
+        "grounded_beta": grounded_info,
     }
 
 
@@ -947,7 +1026,7 @@ def run_edition(edition: str, taipei_date: date) -> int:
             if data is None:
                 # reader-facing copy stays non-technical; details go to CI log
                 print("briefing: grounded sweep skipped (no API key)")
-                warnings.append("AI 搜尋服務暫時未啟用，本期未產生條列內容")
+                warnings.append("AI 搜尋補充暫時未啟用；本期仍依已查證新聞與來源查核結果彙整")
                 grounded_degraded = True
             else:
                 g_items, g_warnings = grounded.sanitize_items(
@@ -960,7 +1039,8 @@ def run_edition(edition: str, taipei_date: date) -> int:
                     sections[name].extend(extra)
                     added += len(extra)
                 grounded_info = {"used": True,
-                                 "model": grounded.GROUNDED_MODEL,
+                                 "model": getattr(
+                                     shim, "model", grounded.GROUNDED_MODEL),
                                  "items": added}
                 event_index["grounded_seen"] = g_seen
                 if shim is not None:
@@ -974,8 +1054,8 @@ def run_edition(edition: str, taipei_date: date) -> int:
         # reader-facing copy stays non-technical; details go to CI log
         print(f"briefing: grounded sweep failed "
               f"({type(exc).__name__}: {str(exc)[:300]})")
-        warnings.append("AI 搜尋服務暫時不穩定，本期未能產生條列內容；"
-                        "我們正努力恢復服務，系統將於下一期自動重試")
+        warnings.append("AI 搜尋補充暫時不穩定；本期仍依已查證新聞與來源查核結果彙整，"
+                        "系統將於下一期自動重試")
         grounded_degraded = True
 
     # partial = our own inputs were degraded, never "no events".
