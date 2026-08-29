@@ -295,13 +295,17 @@ data/briefings/
 │                          status published|partial|failed, cutoff_time,
 │                          generated_at, item_count}]}
 ├─ <date>-<edition>.json one briefing per edition (schema in briefing.py:
-│                          fixed half-open Asia/Taipei window, sections,
-│                          checked_sources, warnings, generation_mode)
-└─ event_index.json      cross-edition dedup: {"events": {event_id:
+│                          fixed trailing-24-hour Asia/Taipei window,
+│                          sections, coverage_notes, checked_sources,
+│                          warnings, generation_mode)
+└─ event_index.json      cross-edition event/update tracking: {"events": {event_id:
                            {fingerprint, urls, fact_keys, updates, ...}}}
 ```
 
-Briefings select only from data/articles/ (already verified/published);
+Each morning, afternoon and evening edition is an independently readable
+24-hour snapshot, so an event may remain visible across editions while it is
+still in-window. Briefings select only from data/articles/ (already
+verified/published) plus source-grounded search results;
 failed runs never modify briefing files and never downgrade a
 published/partial index row. build.py renders /briefings/ and
 /briefings/<id>/ for published|partial only.
