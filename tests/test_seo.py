@@ -1,6 +1,7 @@
 """Offline regression checks for SKYTICAL search and Google News metadata."""
 from __future__ import annotations
 
+import html as html_lib
 import json
 import math
 import re
@@ -21,6 +22,20 @@ def _json_ld(html: str) -> list[dict]:
         flags=re.DOTALL)]
 
 
+def _schema_entities(html: str) -> list[dict]:
+    entities = []
+    for document in _json_ld(html):
+        if not isinstance(document, dict):
+            continue
+        if document.get("@type"):
+            entities.append(document)
+        entities.extend(
+            entity for entity in document.get("@graph", [])
+            if isinstance(entity, dict)
+        )
+    return entities
+
+
 def main() -> None:
     assert build.SITE_ORIGIN == "https://skytical.tech"
     assert build.BASE_PATH == ""
@@ -33,6 +48,10 @@ def main() -> None:
     sitemap = ET.parse(ROOT / "site" / "sitemap.xml").getroot()
     ns = {"sm": build.SITEMAP_NS, "news": build.NEWS_NS}
     locations = [node.text for node in sitemap.findall("sm:url/sm:loc", ns)]
+    sitemap_rows = {
+        row.findtext("sm:loc", namespaces=ns): row
+        for row in sitemap.findall("sm:url", ns)
+    }
     assert len(locations) == len(set(locations))
     assert f"{build.SITE_ORIGIN}{build.BASE_PATH}/" in locations
     assert f"{build.SITE_ORIGIN}{build.BASE_PATH}/en/" in locations
@@ -62,6 +81,11 @@ def main() -> None:
     for slug in build.TOPICS:
         assert (f"{build.SITE_ORIGIN}{build.BASE_PATH}/en/topics/{slug}/"
                 in locations)
+    for path in ("/", "/news/", "/topics/taiwan-aviation/",
+                 "/en/", "/en/news/", "/en/topics/taiwan-aviation/"):
+        lastmod = sitemap_rows[f"{build.SITE_ORIGIN}{path}"].findtext(
+            "sm:lastmod", namespaces=ns)
+        assert lastmod and lastmod.endswith("Z")
 
     news_index = ROOT / "site" / "news" / "index.html"
     en_news_index = ROOT / "site" / "en" / "news" / "index.html"
@@ -110,6 +134,10 @@ def main() -> None:
         "Organization", "WebSite"}
     assert '<html lang="zh-Hant-TW">' in home
     assert '<meta name="robots" content="index,follow,max-image-preview:large">' in home
+    assert '<meta name="author" content="SKYTICAL">' in home
+    assert '<meta property="og:image:width" content="1200">' in home
+    assert '<meta property="og:image:height" content="630">' in home
+    assert '<meta property="og:image:type" content="image/png">' in home
     assert '<link rel="alternate" hreflang="zh-Hant-TW"' in home
     assert "SKYTICAL 航空新聞｜臺灣與全球即時航空快訊" in home
     assert "可追溯來源" in home
@@ -137,7 +165,13 @@ def main() -> None:
 
     article_paths = list((ROOT / "site" / "news").glob("*/index.html"))
     article = article_paths[0].read_text(encoding="utf-8")
-    article_schema = _json_ld(article)[0]
+    article_entities = _schema_entities(article)
+    article_schema = next(
+        entity for entity in article_entities
+        if entity.get("@type") == "NewsArticle")
+    article_breadcrumb = next(
+        entity for entity in article_entities
+        if entity.get("@type") == "BreadcrumbList")
     assert article_schema["@type"] == "NewsArticle"
     assert article_schema["headline"]
     assert article_schema["datePublished"].endswith("Z")
@@ -145,8 +179,14 @@ def main() -> None:
     assert article_schema["inLanguage"] == "zh-Hant-TW"
     assert article_schema["author"]["name"] == "SKYTICAL"
     assert article_schema["publisher"]["name"] == "SKYTICAL"
+    assert [item["position"] for item in
+            article_breadcrumb["itemListElement"]] == [1, 2, 3]
+    assert article_breadcrumb["itemListElement"][1]["item"].endswith(
+        "/news/")
     assert '<meta property="og:type" content="article">' in article
     assert '<meta property="article:published_time"' in article
+    assert '<meta property="article:section"' in article
+    assert '<meta property="article:author" content="SKYTICAL">' in article
     assert f'<time datetime="{article_schema["datePublished"]}"' in article
     assert "發布：" in article and "來源時間：" in article
     assert "SKYTICAL 編輯系統" in article
@@ -154,12 +194,17 @@ def main() -> None:
         path.read_text(encoding="utf-8") for path in article_paths
         if "<figure" in path.read_text(encoding="utf-8")
         and "data-image-fallback" not in path.read_text(encoding="utf-8"))
-    pictured_schema = _json_ld(pictured_article)[0]
+    pictured_schema = next(
+        entity for entity in _schema_entities(pictured_article)
+        if entity.get("@type") == "NewsArticle")
     assert 'fetchpriority="high" decoding="async"' in pictured_article
     assert 'loading="lazy"' not in re.search(
         r'<figure.*?</figure>', pictured_article, flags=re.DOTALL).group(0)
-    assert (f'<meta property="og:image" content="{pictured_schema["image"][0]}">'
-            in pictured_article)
+    assert (
+        f'<meta property="og:image" content="'
+        f'{html_lib.escape(pictured_schema["image"][0], quote=True)}">'
+        in pictured_article
+    )
 
     search = (ROOT / "site" / "search" / "index.html").read_text(
         encoding="utf-8")
@@ -171,6 +216,8 @@ def main() -> None:
                   "index.html").read_text(encoding="utf-8")
     assert "<h1>臺灣航空新聞</h1>" in taiwan_hub
     assert 'href="/news/' in taiwan_hub
+    assert any(entity.get("@type") == "BreadcrumbList"
+               for entity in _schema_entities(taiwan_hub))
     for slug in build.TOPICS:
         assert f'href="/topics/{slug}/"' in article
 
