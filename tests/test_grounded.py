@@ -127,13 +127,17 @@ check("forum + established-media citation accepted",
       len(out["aviation_incidents"]) == 1
       and len(out["aviation_incidents"][0]["sources"]) == 2)
 
-# ── dedupe + caps ────────────────────────────────────────────────────────────
+# ── per-response dedupe + caps ──────────────────────────────────────────────
 
 seen = {}
 grounded.sanitize_items(resp_data([item()], CHUNKS), [], seen, NOW)
 out2, _ = grounded.sanitize_items(resp_data([item()], CHUNKS), [], seen, NOW)
-check("seen-set blocks the same story in a later edition",
-      out2["aviation_incidents"] == [])
+check("complete snapshots may retain the same story in a later edition",
+      len(out2["aviation_incidents"]) == 1)
+out_dupe, _ = grounded.sanitize_items(
+    resp_data([item(), item()], CHUNKS), [], {}, NOW)
+check("duplicate items in one model response are collapsed",
+      len(out_dupe["aviation_incidents"]) == 1)
 check("seen entries carry a TTL and prune",
       grounded.prune_seen(
           {"old": (NOW - timedelta(hours=1)).isoformat(),
@@ -176,7 +180,7 @@ def fake_post(url, json=None, timeout=None, headers=None):
 grounded.requests = types.SimpleNamespace(post=fake_post)
 os.environ["GEMINI_API_KEY"] = "test-not-real"
 window = types.SimpleNamespace(
-    window_start=NOW, window_end=NOW + timedelta(hours=8))
+    window_start=NOW, window_end=NOW + timedelta(hours=24))
 data, shim = grounded.call_grounded(window)
 del os.environ["GEMINI_API_KEY"]
 cfg = captured["payload"]["generationConfig"]
@@ -192,6 +196,26 @@ check("grounded call targets a real model id in the URL",
       f"models/{grounded.GROUNDED_MODEL}:generateContent"
       in captured["url"] and grounded.GROUNDED_MODEL)
 
+fallback_calls = []
+
+
+def fake_post_with_quota_fallback(url, json=None, timeout=None, headers=None):
+    fallback_calls.append(url)
+    if len(fallback_calls) == 1:
+        return types.SimpleNamespace(status_code=429, text="quota")
+    return types.SimpleNamespace(
+        status_code=200, json=lambda: resp_data([], []))
+
+
+grounded.requests = types.SimpleNamespace(post=fake_post_with_quota_fallback)
+os.environ["GEMINI_API_KEY"] = "test-not-real"
+_fallback_data, fallback_shim = grounded.call_grounded(window)
+del os.environ["GEMINI_API_KEY"]
+check("HTTP 429 falls through to the next grounded Gemini model",
+      len(fallback_calls) == 2
+      and fallback_shim.model == grounded.GROUNDED_MODELS[1]
+      and fallback_shim.http_calls == 2)
+
 # the empty-string env CI passes when the repo var is unset must not
 # blank the model id (this exact bug produced HTTP 404 in production)
 import importlib  # noqa: E402
@@ -199,7 +223,9 @@ import importlib  # noqa: E402
 os.environ["BRIEFING_GROUNDED_MODEL"] = ""
 importlib.reload(grounded)
 check("empty BRIEFING_GROUNDED_MODEL env falls back to the default",
-      grounded.GROUNDED_MODEL == "gemini-3.6-flash")
+      grounded.GROUNDED_MODEL == "gemini-3.6-flash"
+      and grounded.GROUNDED_MODELS[:2]
+      == ("gemini-3.6-flash", "gemini-3.5-flash"))
 del os.environ["BRIEFING_GROUNDED_MODEL"]
 importlib.reload(grounded)
 

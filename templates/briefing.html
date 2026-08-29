@@ -27,8 +27,42 @@
       <p class="text-muted" style="font-size:14.5px;line-height:1.9;margin:0;">{{ t.brEmpty }}</p>
     </div>
     {% endif %}
-    {% for sec in (b.sections if b.total > 0 else []) %}
+    {% for sec in b.sections %}
     <h4 style="margin:26px 0 4px;">{{ sec.label }}</h4>
+    {% if sec.subsections %}
+    {% for sub in sec.subsections %}
+    <h6 style="margin:16px 0 4px;">{{ sub.label }}</h6>
+    {% for it in sub['items'] %}
+    <div style="padding:14px 0;border-bottom:1px solid var(--color-divider);">
+      <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;">
+        {% if it.marks %}<span style="font-size:14px;">{{ it.marks }}</span>{% endif %}
+        <span class="tag {{ it.sev_cls }}">{{ t.brSevs[it.severity] }}</span>
+        {% if it.update %}<span class="tag tag-outline">{{ t.brUpdate }}</span>{% endif %}
+        {% if it.grounded %}<span class="tag tag-outline" title="{{ t.brBetaNote }}">{{ t.brAiTag }}</span>{% endif %}
+        <span class="text-muted" style="font-size:12px;font-weight:800;">{{ it.time }}</span>
+      </div>
+      {% if it.url %}
+      <a href="{{ it.url }}" style="display:block;font-size:16.5px;font-weight:700;line-height:1.5;margin:8px 0 6px;">{{ it.headline }}</a>
+      {% else %}
+      <div style="font-size:16.5px;font-weight:700;line-height:1.5;margin:8px 0 6px;">{{ it.headline }}</div>
+      {% endif %}
+      <p class="text-muted" style="font-size:14px;line-height:1.85;margin:0 0 8px;">{{ it.summary }}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:12px;">
+        {% for s in it.sources %}
+        <a href="{{ s.url }}" target="_blank" rel="noopener" class="text-muted">{{ s.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <p class="text-muted" style="font-size:13px;line-height:1.8;margin:6px 0 0;">{{ sub.note.text or t.brNoItems }}</p>
+    {% if sub.note.sources %}
+    <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:12px;margin-top:5px;">
+      {% for s in sub.note.sources %}<a href="{{ s.url }}" target="_blank" rel="noopener" class="text-muted">{{ s.name }}</a>{% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% else %}
     {% for it in sec['items'] %}
     <div style="padding:14px 0;border-bottom:1px solid var(--color-divider);">
       <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;">
@@ -51,8 +85,14 @@
       </div>
     </div>
     {% else %}
-    <p class="text-muted" style="font-size:13px;line-height:1.8;margin:6px 0 0;">{{ t.brNoItems }}</p>
+    <p class="text-muted" style="font-size:13px;line-height:1.8;margin:6px 0 0;">{{ sec.note.text or t.brNoItems }}</p>
+    {% if sec.note.sources %}
+    <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:12px;margin-top:5px;">
+      {% for s in sec.note.sources %}<a href="{{ s.url }}" target="_blank" rel="noopener" class="text-muted">{{ s.name }}</a>{% endfor %}
+    </div>
+    {% endif %}
     {% endfor %}
+    {% endif %}
     {% endfor %}
     <div style="border:2px solid var(--color-divider);padding:16px 20px 12px;margin-top:32px;">
       <h6 style="margin:0 0 10px;">{{ t.brChecked }}</h6>
