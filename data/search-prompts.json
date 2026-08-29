@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-08-29T19:19Z",
+  "generatedUtc": "2026-08-29T20:06Z",
   "targetDateTpe": "2026-08-30",
   "sourceWindow": "month_to_date",
-  "generationMode": "llm",
-  "provider": "wechat:Deepseek-v4-flash",
+  "generationMode": "deterministic",
+  "provider": null,
   "sourceArticleIds": [
-    "a-20260829-1758-manchester-airport-owner-says-hackers-de",
     "a-20260829-1449-cathay-pacific-jet-intercepted-by-nato-f",
     "a-20260829-1449-south-korean-attack-drones-crash-in-nava",
     "a-20260829-1449-czech-startup-zuri-unveils-hybrid-electr",
     "a-20260829-1449-nz-prime-minister-scolds-air-new-zealand",
-    "a-20260829-0937-taiwan-tigerair-holds-cabin-crew-recruit"
+    "a-20260829-1449-discover-airlines-announces-first-routes",
+    "a-20260829-1449-regent-craft-closes-240m-series-b-round"
   ],
   "prompts": {
     "zh": [
-      "曼徹斯特機場遭駭",
-      "國泰航空遭攔截",
-      "韓國攻擊無人機墜海",
-      "Zuri傾轉旋翼機亮相",
-      "紐航虧損惹批評",
-      "台灣虎航空服招募"
+      "搜尋：國泰航空客機因無線電頻率錯誤遭北約戰機攔截",
+      "搜尋：韓國國產巡飛彈首度艦載試射失敗 國防科學研究…",
+      "搜尋：捷克Zuri發表無人貨運傾轉旋翼機並籌措A輪…",
+      "搜尋：紐西蘭總理公開批評紐航業績表現 紐航財年稅後…",
+      "搜尋：DiscoverAirlines將於2027…",
+      "搜尋：REGENT完成2.4億美元B輪融資 總籌資…"
     ],
     "en": [
-      "Manchester Airport cyber attack",
-      "Cathay Pacific NATO interception",
-      "South Korean drones crash",
-      "Zuri hybrid tiltrotor drone",
-      "Air New Zealand loss scolded",
-      "Taiwan Tigerair cabin crew test"
+      "Explore: Cathay Pacific Jet Intercepted by NATO Fighter J…",
+      "Explore: South Korean Attack Drones Crash in Naval Test D…",
+      "Explore: Czech Startup Zuri Unveils Hybrid-Electric Cargo…",
+      "Explore: NZ Prime Minister Scolds Air New Zealand Over Fi…",
+      "Explore: Discover Airlines Announces First Routes to UK a…",
+      "Explore: REGENT Craft Closes $240M Series B Round to Adva…"
     ]
   }
 }
