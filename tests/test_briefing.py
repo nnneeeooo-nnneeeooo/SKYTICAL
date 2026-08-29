@@ -104,8 +104,10 @@ def write_articles(articles, fname="batch.json") -> None:
 
 def write_sources(ok=True) -> None:
     (TMP / "sources.json").write_text(json.dumps([
-        {"name": "FAA", "ok": ok, "lastFetchUtc": "2026-07-27T00:00Z"},
+        {"name": "FAA", "ok": ok, "url": "https://www.faa.gov",
+         "lastFetchUtc": "2026-07-27T00:00Z"},
         {"name": "CAA Taiwan", "ok": True,
+         "url": "https://www.caa.gov.tw",
          "lastFetchUtc": "2026-07-27T00:00Z"},
     ]), encoding="utf-8")
 
@@ -149,32 +151,34 @@ def install_fake_providers(providers):
     sys.modules["providers"] = fake
 
 
-# ── 1-6: fixed half-open windows ────────────────────────────────────────────
+# ── 1-6: fixed trailing-24-hour windows ─────────────────────────────────────
 
 D = date(2026, 7, 27)
 morning = get_briefing_window("morning", D)
 afternoon = get_briefing_window("afternoon", D)
 evening = get_briefing_window("evening", D)
 
-check("morning window is prev-day 23:00 -> 07:00 TPE",
-      morning.window_start == tpe(2026, 7, 26, 23)
+check("morning window is prev-day 07:00 -> 07:00 TPE",
+      morning.window_start == tpe(2026, 7, 26, 7)
       and morning.window_end == tpe(2026, 7, 27, 7))
-check("afternoon window is 07:00 -> 15:00 TPE",
-      afternoon.window_start == tpe(2026, 7, 27, 7)
+check("afternoon window is prev-day 15:00 -> 15:00 TPE",
+      afternoon.window_start == tpe(2026, 7, 26, 15)
       and afternoon.window_end == tpe(2026, 7, 27, 15))
-check("evening window is 15:00 -> 23:00 TPE",
-      evening.window_start == tpe(2026, 7, 27, 15)
+check("evening window is prev-day 23:00 -> 23:00 TPE",
+      evening.window_start == tpe(2026, 7, 26, 23)
       and evening.window_end == tpe(2026, 7, 27, 23))
 check("windows are timezone-aware (+08:00)",
       morning.window_start.utcoffset() == timedelta(hours=8)
       and morning.cutoff_time.tzinfo is not None)
-check("07:00:00 belongs to afternoon, not morning",
+check("morning retains an event from the preceding daytime",
+      morning.contains(tpe(2026, 7, 26, 10)))
+check("07:00 cutoff is excluded from morning but included in afternoon",
       not morning.contains(tpe(2026, 7, 27, 7))
       and afternoon.contains(tpe(2026, 7, 27, 7)))
-check("15:00:00 belongs to evening, not afternoon",
+check("15:00 cutoff is excluded from afternoon but included in evening",
       not afternoon.contains(tpe(2026, 7, 27, 15))
       and evening.contains(tpe(2026, 7, 27, 15)))
-check("23:00:00 belongs to next-day morning, not evening",
+check("23:00 cutoff is excluded from evening but included next morning",
       not evening.contains(tpe(2026, 7, 27, 23))
       and get_briefing_window("morning", date(2026, 7, 28))
       .contains(tpe(2026, 7, 27, 23)))
@@ -227,10 +231,10 @@ check("scheduled workflow passes cron so delayed date is resolved centrally",
       'python pipeline/briefing.py --cron "${{ steps.ed.outputs.cron }}"'
       in _wf)
 
-# 11: no now-minus-24h briefing logic anywhere in the module.
+# 11: every edition is explicitly a fixed trailing-24-hour snapshot.
 _src = (REPO / "pipeline" / "briefing.py").read_text(encoding="utf-8")
-check("no 24-hour rolling-window logic in briefing.py",
-      "hours=24" not in _src
+check("briefing documents complete trailing-24-hour snapshots",
+      "trailing-24-hour" in _src
       and re.search(r"now\w*\(\)\s*-\s*timedelta", _src) is None)
 
 # ── 10: CLI dispatch (edition + date, and cron form) ─────────────────────────
@@ -245,7 +249,7 @@ bm = load_brief("2026-07-27-morning")
 check("briefing schema basics", bm["content_type"]
       == "daily_transport_briefing" and bm["edition"] == "morning"
       and bm["timezone"] == "Asia/Taipei"
-      and bm["window_start"] == "2026-07-26T23:00:00+08:00"
+      and bm["window_start"] == "2026-07-26T07:00:00+08:00"
       and bm["window_end"] == "2026-07-27T07:00:00+08:00"
       and bm["cutoff_time"] == bm["window_end"])
 check("morning picked the 06:30 article",
@@ -288,7 +292,7 @@ check("article without source URL is skipped with a warning",
       bm["item_count"] == 1
       and any("a-bad" in w for w in bm["warnings"]))
 
-# ── 15-18: cross-edition dedup, updates, id stability ────────────────────────
+# ── 15-18: complete later snapshots, updates, id stability ──────────────────
 
 reset()
 write_sources(ok=True)
@@ -300,15 +304,16 @@ write_articles([make_article("a-ev1", "達美A350抵達小港",
 briefing.main(["--edition", "morning", "--date", "2026-07-27"])
 ev_id = all_items(load_brief("2026-07-27-morning"))[0]["event_id"]
 
-# afternoon: same facts, retitled, reprinted on a new URL -> not an update
+# afternoon: same facts remain visible, but a retitle is not an update
 write_articles([make_article("a-ev2", "換個標題的同一事件",
                              tpe(2026, 7, 27, 8, 5),
                              urls=("https://other-site.example/copy",),
                              **base_kw)], "a.json")
 briefing.main(["--edition", "afternoon", "--date", "2026-07-27"])
 ba = load_brief("2026-07-27-afternoon")
-check("same event without new facts never repeats in a later edition",
-      ba["item_count"] == 0)
+check("same event remains in a later complete snapshot without false update",
+      ba["item_count"] == 1
+      and all_items(ba)[0]["item_type"] == "ongoing")
 
 # evening: same event with a genuinely new fact -> update item
 write_articles([make_article(
@@ -359,6 +364,12 @@ check("empty edition is deterministic with empty sections",
       b_empty["generation_mode"] == "deterministic"
       and b_empty["item_count"] == 0
       and all(v == [] for v in b_empty["sections"].values()))
+check("empty edition explains every report area without absolute claims",
+      set(b_empty["coverage_notes"]) == {
+          "aviation_incidents", "taiwan_civil", "taiwan_military",
+          "international_aviation", "ground_and_maritime"}
+      and all("已查核來源未收錄" in note["zh"]
+              for note in b_empty["coverage_notes"].values()))
 
 # items with verified summaries -> no per-item rewriting; intro is one batch
 reset()
@@ -626,7 +637,7 @@ bm = load_brief("2026-07-27-morning")
 check("grounded outage keeps article fallback and marks edition partial",
       bm["status"] == "partial"
       and bm["item_count"] == 1
-      and any("AI 搜尋服務暫時不穩定" in w for w in bm["warnings"]))
+      and any("AI 搜尋補充暫時不穩定" in w for w in bm["warnings"]))
 
 # ── caps ─────────────────────────────────────────────────────────────────────
 
