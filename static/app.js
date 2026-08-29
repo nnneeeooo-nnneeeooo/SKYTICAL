@@ -102,7 +102,7 @@
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") setNavOpen(false);
     });
-    var desktopNav = window.matchMedia("(min-width: 721px)");
+    var desktopNav = window.matchMedia("(min-width: 901px)");
     desktopNav.addEventListener("change", function (event) {
       if (event.matches) setNavOpen(false);
     });

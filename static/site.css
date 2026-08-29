@@ -563,31 +563,56 @@ a.flash-row:hover { color: inherit; }
   .changelog-group { grid-template-columns: 96px minmax(0, 1fr); }
 }
 
+/* Tablet portrait (including the 820px-wide iPad Air): use the compact
+   navigation before the full desktop nav starts scrolling or squeezing. */
+@media (max-width: 900px) {
+  .page { width: 100%; overflow-x: clip; }
+  .brand-row {
+    padding: 9px 16px; gap: 12px; flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .brand-link { flex: 0 1 280px; min-width: 0; }
+  .brand-logo { max-width: 280px; }
+  .nav-toggle { display: inline-flex; flex-shrink: 0; margin-left: auto; }
+  .site-nav {
+    order: 3; width: 100%; flex: 0 0 100%; margin: 0; padding: 4px 0 0;
+    overflow: visible; display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px;
+    white-space: normal;
+  }
+  .js .site-nav { display: none; }
+  .js .site-nav.is-open { display: grid; }
+  .nav-link {
+    min-width: 0; min-height: 44px; padding: 10px 12px;
+    display: flex; align-items: center;
+    border: 1px solid var(--color-divider); border-bottom-width: 1px;
+    overflow-wrap: anywhere;
+  }
+  .nav-link.active { border-color: var(--color-accent); }
+  .center-col { order: 1; }
+  .rail-left {
+    order: 2; border-top: 2px solid var(--color-divider); border-bottom: 0;
+  }
+  .rail-right { order: 3; }
+  .radar-layout { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .radar-map { min-height: 520px; }
+  .radar-list-panel { border-left: 0; border-top: 1px solid var(--color-divider); }
+  .radar-list { max-height: 360px; }
+}
+
 @media (max-width: 720px) {
   .utility-row { padding: 8px 12px; gap: 8px 12px; }
   .utility-date { flex-basis: 100%; }
   .utility-update { margin-left: 0; }
   .brand-row {
-    padding: 9px 12px; gap: 12px; flex-wrap: nowrap;
+    padding: 9px 12px; gap: 12px;
     justify-content: space-between;
   }
   .brand-link { flex: 0 1 224px; min-width: 0; }
   .brand-logo { max-width: 224px; }
   .brand-name { font-size: 18px; }
   .brand-tagline { font-size: 9px; letter-spacing: .11em; white-space: nowrap; }
-  .nav-toggle { display: inline-flex; flex-shrink: 0; }
-  .site-nav {
-    order: 3; width: 100%; margin: 0; padding: 4px 0 0; overflow: visible;
-    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px;
-    white-space: normal;
-  }
-  .js .site-nav { display: none; }
-  .js .site-nav.is-open { display: grid; }
-  .nav-link {
-    min-height: 44px; padding: 10px 12px; display: flex; align-items: center;
-    border: 1px solid var(--color-divider); border-bottom-width: 1px;
-  }
-  .nav-link.active { border-color: var(--color-accent); }
+  .site-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ticker-label { padding: 7px 10px; font-size: 11px; letter-spacing: .08em; }
   .marquee-track { --ticker-duration: 130s; }
   .ticker-pass {
