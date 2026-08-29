@@ -2897,6 +2897,9 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build,
             f"{SITE_ORIGIN}{BASE_PATH}/assets/skytical-social.png?v={ASSET_VERSION}"
         ),
         "social_image_alt": "SKYTICAL — SKYLINE TO AVIATION NEWS",
+        "social_image_width": 1200,
+        "social_image_height": 630,
+        "social_image_type": "image/png",
         "og_type": "website",
         "structured_data": None,
         "robots_meta": "index,follow,max-image-preview:large",
@@ -2968,12 +2971,37 @@ def website_structured_data(lang: str) -> dict:
     }
 
 
+def breadcrumb_entity(lang: str, crumbs) -> dict:
+    """Schema.org breadcrumb hierarchy for a rendered public page."""
+    current_url = absolute_page_url(lang, crumbs[-1][1])
+    return {
+        "@type": "BreadcrumbList",
+        "@id": f"{current_url}#breadcrumb",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": position,
+                "name": label,
+                "item": absolute_page_url(lang, sub),
+            }
+            for position, (label, sub) in enumerate(crumbs, start=1)
+        ],
+    }
+
+
+def breadcrumb_structured_data(lang: str, crumbs) -> dict:
+    """Standalone JSON-LD document for non-home public pages."""
+    return {
+        "@context": "https://schema.org",
+        **breadcrumb_entity(lang, crumbs),
+    }
+
+
 def article_structured_data(lang: str, article: dict) -> dict:
     """Google-supported NewsArticle fields, grounded in rendered content."""
     article_url = absolute_page_url(lang, f"news/{article['id']}/")
     publisher_id = f"{SITE_ORIGIN}{BASE_PATH}/#organization"
-    schema = {
-        "@context": "https://schema.org",
+    article_entity = {
         "@type": "NewsArticle",
         "@id": f"{article_url}#article",
         "mainEntityOfPage": {
@@ -3008,8 +3036,16 @@ def article_structured_data(lang: str, article: dict) -> dict:
         },
     }
     if article.get("image"):
-        schema["image"] = [article["image"]["url"]]
-    return schema
+        article_entity["image"] = [article["image"]["url"]]
+    breadcrumbs = breadcrumb_entity(lang, [
+        (L[lang]["siteName"], ""),
+        (L[lang]["newsTitle"], "news/"),
+        (article["title"], f"news/{article['id']}/"),
+    ])
+    return {
+        "@context": "https://schema.org",
+        "@graph": [article_entity, breadcrumbs],
+    }
 
 
 def _write_xml(path: Path, root: ET.Element) -> None:
@@ -3069,19 +3105,42 @@ def write_search_discovery_files(articles, briefings, now) -> None:
             ET.SubElement(node, ET.QName(SITEMAP_NS, "lastmod")).text = (
                 iso_timestamp(modified))
 
-    public_sections = ("", "news/", "briefings/", "radar/", "incidents/", "sources/",
-                       "about/", "editorial-policy/", "changelog/")
+    briefing_modified = [
+        _tpe_dt(briefing.get("generated_at") or briefing.get("cutoff_time"))
+        for briefing in briefings
+    ]
+    latest_briefing_modified = (
+        max(briefing_modified) if briefing_modified else None)
+    static_sections = ("radar/", "incidents/", "sources/", "about/",
+                       "editorial-policy/", "changelog/")
     for lang in ("zh", "en"):
-        for sub in public_sections:
+        localized = [
+            article for article in articles
+            if lang in article["available_languages"]
+        ]
+        latest_modified = (
+            max(article["modified_dt"] for article in localized)
+            if localized else None
+        )
+        add_url(lang, "", latest_modified)
+        add_url(lang, "news/", latest_modified)
+        add_url(lang, "briefings/", latest_briefing_modified)
+        for sub in static_sections:
             add_url(lang, sub)
         for slug in TOPICS:
-            add_url(lang, f"topics/{slug}/")
-        localized_count = sum(
-            lang in article["available_languages"] for article in articles
-        )
-        page_count = max(1, math.ceil(localized_count / NEWS_PAGE_SIZE))
+            topic_rows = topic_articles(localized, slug)
+            topic_modified = (
+                max(article["modified_dt"] for article in topic_rows)
+                if topic_rows else None
+            )
+            add_url(lang, f"topics/{slug}/", topic_modified)
+        page_count = max(1, math.ceil(len(localized) / NEWS_PAGE_SIZE))
         for page_number in range(2, page_count + 1):
-            add_url(lang, f"news/page/{page_number}/")
+            start = (page_number - 1) * NEWS_PAGE_SIZE
+            page_rows = localized[start:start + NEWS_PAGE_SIZE]
+            page_modified = max(
+                article["modified_dt"] for article in page_rows)
+            add_url(lang, f"news/page/{page_number}/", page_modified)
     for briefing in briefings:
         modified = _tpe_dt(briefing.get("generated_at")
                            or briefing.get("cutoff_time"))
@@ -3307,6 +3366,18 @@ def main() -> int:
                 next_abs_url=(absolute_page_url(lang, next_sub)
                               if page_number < page_count else None),
             )
+            news_crumbs = [
+                (t["siteName"], ""),
+                (t["newsTitle"], "news/"),
+            ]
+            if page_number > 1:
+                news_crumbs.append((
+                    t["pageLabel"].format(
+                        page=page_number, pages=page_count),
+                    sub,
+                ))
+            news_ctx["structured_data"] = breadcrumb_structured_data(
+                lang, news_crumbs)
             out_rel = ("news/index.html" if page_number == 1
                        else f"news/page/{page_number}/index.html")
             render(env, "news_index.html", rel_path(lang, out_rel), news_ctx)
@@ -3320,6 +3391,10 @@ def main() -> int:
                 lang, "topics", f"topics/{slug}/",
                 title=f"{copy['title']}｜{t['siteName']}",
                 description=copy["description"], ticker=ticker, build=build)
+            ctx["structured_data"] = breadcrumb_structured_data(lang, [
+                (t["siteName"], ""),
+                (copy["title"], f"topics/{slug}/"),
+            ])
             ctx.update(topic=copy, articles=topic_views, count=len(topic_views))
             render(env, "topic.html",
                    rel_path(lang, f"topics/{slug}/index.html"), ctx)
@@ -3339,9 +3414,14 @@ def main() -> int:
         for bv in bviews:
             try:
                 ctx = base_ctx(lang, "briefings", f"briefings/{bv['id']}/",
-                               title=f"{t['siteName']} — {bv['title']}",
+                               title=f"{bv['title']}｜{t['siteName']}",
                                description=f"{bv['title']} · {bv['date_label']}",
                                ticker=ticker, build=build)
+                ctx["structured_data"] = breadcrumb_structured_data(lang, [
+                    (t["siteName"], ""),
+                    (t["brIndexTitle"], "briefings/"),
+                    (bv["title"], f"briefings/{bv['id']}/"),
+                ])
                 ctx["b"] = bv
                 render(env, "briefing.html",
                        rel_path(lang, f"briefings/{bv['id']}/index.html"), ctx)
@@ -3354,8 +3434,12 @@ def main() -> int:
         for bv in bviews:  # bviews sorted newest cutoff first -> dates desc
             groups.setdefault(bv["date_label"], []).append(bv)
         ctx = base_ctx(lang, "briefings", "briefings/",
-                       title=f"{t['siteName']} — {t['brIndexTitle']}",
+                       title=f"{t['brIndexTitle']}｜{t['siteName']}",
                        description=t["brIndexSub"], ticker=ticker, build=build)
+        ctx["structured_data"] = breadcrumb_structured_data(lang, [
+            (t["siteName"], ""),
+            (t["brIndexTitle"], "briefings/"),
+        ])
         ctx.update(groups=[
             {"date": d, "rows": sorted(rows, key=lambda r: r["cutoff_iso"])}
             for d, rows in groups.items()])
@@ -3410,8 +3494,12 @@ def main() -> int:
         ]
         ctx = base_ctx(
             lang, "radar", "radar/",
-            title=f"{t['siteName']} — {t['radarTitle']}",
+            title=f"{t['radarTitle']}｜{t['siteName']}",
             description=t["radarSub"], ticker=ticker, build=build)
+        ctx["structured_data"] = breadcrumb_structured_data(lang, [
+            (t["siteName"], ""),
+            (t["radarTitle"], "radar/"),
+        ])
         ctx.update(
             airline_names=airline_names,
             airline_iata_codes=airline_iata_codes,
@@ -3434,6 +3522,9 @@ def main() -> int:
                     ctx["social_image_abs_url"] = v["image"]["url"]
                     ctx["social_image_alt"] = (
                         v["image"].get("subject") or v["title"])
+                    ctx["social_image_width"] = None
+                    ctx["social_image_height"] = None
+                    ctx["social_image_type"] = None
                 ctx["structured_data"] = article_structured_data(lang, v)
                 ctx["a"] = v
                 render(env, "article.html",
@@ -3452,23 +3543,35 @@ def main() -> int:
             weekly_cutoff = now - timedelta(days=7)
         rows = inc_view(incidents, lang, weekly_cutoff, published_ids)
         ctx = base_ctx(lang, "incidents", "incidents/",
-                       title=f"{t['siteName']} — {t['incTitle']}",
+                       title=f"{t['incTitle']}｜{t['siteName']}",
                        description=t["incSub"], ticker=ticker, build=build)
+        ctx["structured_data"] = breadcrumb_structured_data(lang, [
+            (t["siteName"], ""),
+            (t["incTitle"], "incidents/"),
+        ])
         ctx.update(rows=rows, count=len(rows),
                    sev_seg=list(zip(sev_keys, t["sevs"])))
         render(env, "incidents.html", rel_path(lang, "incidents/index.html"), ctx)
         pages += 1
 
         ctx = base_ctx(lang, "sources", "sources/",
-                       title=f"{t['siteName']} — {t['srcTitle']}",
+                       title=f"{t['srcTitle']}｜{t['siteName']}",
                        description=t["srcSub"], ticker=ticker, build=build)
+        ctx["structured_data"] = breadcrumb_structured_data(lang, [
+            (t["siteName"], ""),
+            (t["srcTitle"], "sources/"),
+        ])
         ctx.update(rows=sources_rows_view(sources, lang, now))
         render(env, "sources.html", rel_path(lang, "sources/index.html"), ctx)
         pages += 1
 
         ctx = base_ctx(lang, "about", "about/",
-                       title=f"{t['siteName']} — {t['aboutTitle']}",
+                       title=f"{t['aboutTitle']}｜{t['siteName']}",
                        description=ABOUT[lang]["intro"][0], ticker=ticker, build=build)
+        ctx["structured_data"] = breadcrumb_structured_data(lang, [
+            (t["siteName"], ""),
+            (t["aboutTitle"], "about/"),
+        ])
         ctx.update(about=ABOUT[lang])
         render(env, "about.html", rel_path(lang, "about/index.html"), ctx)
         pages += 1
@@ -3478,6 +3581,10 @@ def main() -> int:
             lang, "policy", "editorial-policy/",
             title=f"{policy['title']}｜{t['siteName']}",
             description=policy["description"], ticker=ticker, build=build)
+        ctx["structured_data"] = breadcrumb_structured_data(lang, [
+            (t["siteName"], ""),
+            (policy["title"], "editorial-policy/"),
+        ])
         ctx.update(policy=policy,
                    contact_url=("https://github.com/nnneeeooo-nnneeeooo/"
                                 "avwire/issues/new"))
@@ -3487,8 +3594,12 @@ def main() -> int:
 
         ctx = base_ctx(
             lang, "changelog", "changelog/",
-            title=f"{t['siteName']} — {t['changeTitle']}",
+            title=f"{t['changeTitle']}｜{t['siteName']}",
             description=t["changeSub"], ticker=ticker, build=build)
+        ctx["structured_data"] = breadcrumb_structured_data(lang, [
+            (t["siteName"], ""),
+            (t["changeTitle"], "changelog/"),
+        ])
         ctx.update(changelog=changelog_view(
             changelog_raw, lang, t["changeKinds"]))
         render(env, "changelog.html",

@@ -2,6 +2,8 @@
 {% block head_extra %}
 <meta property="article:published_time" content="{{ a.published_iso }}">
 <meta property="article:modified_time" content="{{ a.modified_iso }}">
+<meta property="article:section" content="{{ a.cat_label }}">
+<meta property="article:author" content="SKYTICAL">
 {% endblock %}
 {% block content %}
   <div class="article-page">
