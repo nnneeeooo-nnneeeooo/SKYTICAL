@@ -14,7 +14,7 @@ import os
 import sys
 import tempfile
 import types
-from datetime import datetime, timedelta, timezone
+from datetime import timedelta, timezone
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
@@ -119,7 +119,7 @@ check("tracking start stamped once", bool(led["trackingSinceUtc"]))
 check("old ledger without recentRuns loads compatibly",
       led["recentRuns"] == [])
 
-fixed_now = datetime(2026, 7, 30, 10, 20, tzinfo=timezone.utc)
+fixed_now = now_utc().replace(second=0, microsecond=0)
 sample_run = {
     "startedUtc": usage.iso_minute(fixed_now),
     "finishedUtc": usage.iso_minute(fixed_now),
@@ -424,9 +424,14 @@ codex_snapshot = json.loads(
 snapshot_entry = codex_snapshot["entries"][0]
 snapshot_total = (snapshot_entry["inputTokens"]
                   + snapshot_entry["outputTokens"])
+fixed_tpe = fixed_now.astimezone(timezone(timedelta(hours=8)))
+fixed_tpe_label = (
+    f"{fixed_tpe:%Y-%m-%d} "
+    f"{fixed_tpe.strftime('%I:%M %p').lstrip('0')} TPE"
+)
 check("page shows thirty-day history, fallback chain and final model",
       "最近 30 天模型執行與失敗紀錄" in page
-      and "2026-07-30 6:20 PM TPE" in page
+      and fixed_tpe_label in page
       and "Nemotron 3 Ultra 550B A55B" in page
       and "JSON 格式錯誤" in page
       and "Gemini 3.6 Flash" in page

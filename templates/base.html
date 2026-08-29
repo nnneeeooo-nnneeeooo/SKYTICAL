@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
+<meta name="author" content="SKYTICAL">
 <meta name="robots" content="{{ robots_meta }}">
 <meta name="googlebot" content="{{ robots_meta }}">
 <meta property="og:type" content="{{ og_type }}">
@@ -16,6 +17,9 @@
 <meta property="og:url" content="{{ self_abs_url }}">
 <meta property="og:image" content="{{ social_image_abs_url }}">
 <meta property="og:image:alt" content="{{ social_image_alt }}">
+{% if social_image_width and social_image_height %}<meta property="og:image:width" content="{{ social_image_width }}">
+<meta property="og:image:height" content="{{ social_image_height }}">{% endif %}
+{% if social_image_type %}<meta property="og:image:type" content="{{ social_image_type }}">{% endif %}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ description }}">
