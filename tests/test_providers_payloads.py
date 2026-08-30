@@ -25,6 +25,10 @@ os.environ.setdefault("OPENROUTER_API_KEY", "test-openrouter-key-not-real")
 os.environ.setdefault("OPENCODE_API_KEY", "oc_sk_test-not-real")
 
 import providers  # noqa: E402
+from model_config import (  # noqa: E402
+    AUTOMATIC_MODEL_ORDER,
+    OPENROUTER_MODEL_ORDER,
+)
 
 _pass = 0
 _fail = 0
@@ -166,12 +170,22 @@ def test_model_priority_defaults():
     )
     check(providers.MODEL_ORDER == expected,
           "model priority order matches the configured product order")
-    check(providers.DEFAULT_ORDER == ",".join(expected),
-          "fallback default derives from model priority order")
+    active = (
+        "gemini:gemini-3.6-flash",
+        "gemini:gemini-3.5-flash",
+        "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+        "wechat:Deepseek-v4-flash",
+        "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+        "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    )
+    check(AUTOMATIC_MODEL_ORDER == active
+          and providers.DEFAULT_ORDER == ",".join(active),
+          "automatic fallback default contains only proven live routes")
     check(providers.GEMINI_DEFAULT_MODEL == "gemini-3.6-flash",
           "Gemini 3.6 Flash is the default model")
-    check(providers.NVIDIA_DEFAULT_MODEL == "z-ai/glm-5.2",
-          "GLM 5.2 is the highest-priority NVIDIA default")
+    check(providers.NVIDIA_DEFAULT_MODEL
+          == "nvidia/nemotron-3-ultra-550b-a55b",
+          "Nemotron Ultra is the highest-priority NVIDIA default")
     check(providers.OPENROUTER_DEFAULT_MODEL
           == "nvidia/nemotron-3-ultra-550b-a55b:free",
           "Nemotron Ultra is the highest-priority OpenRouter default")
@@ -186,7 +200,7 @@ def test_model_priority_defaults():
     ) and expected[14:16] == (
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
         "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-    ), "primary routes stay before WeChat Flash and free fallbacks")
+    ), "complete catalog preserves owner model order")
     print("test_model_priority_defaults: done")
 
 
@@ -289,10 +303,9 @@ def test_wechat_protocol_and_payloads():
 def test_openrouter_models_and_payloads():
     models = [
         token.split(":", 1)[1]
-        for token in providers.MODEL_ORDER
-        if token.startswith("openrouter:")
+        for token in OPENROUTER_MODEL_ORDER
     ]
-    check(len(models) == 13, "all 13 OpenRouter models are configured")
+    check(len(models) == 13, "all 13 OpenRouter profiles remain supported")
     for model in models:
         captured = []
 
@@ -380,9 +393,9 @@ def test_openrouter_models_and_payloads():
             else:
                 os.environ[key] = value
     check(automatic == [
-        token for token in providers.MODEL_ORDER
+        token for token in AUTOMATIC_MODEL_ORDER
         if token.startswith("openrouter:")
-    ], "automatic writer exposes all OpenRouter fallbacks in owner order")
+    ], "automatic writer exposes only proven OpenRouter fallbacks")
 
     try:
         provider._final_text(FakeResponse({"error": {"code": 401}}))
@@ -513,9 +526,9 @@ def test_opencode_protocols_and_payloads():
             else:
                 os.environ[key] = value
     check(automatic == [
-        token for token in providers.MODEL_ORDER
+        token for token in AUTOMATIC_MODEL_ORDER
         if token.startswith("opencode:")
-    ], "automatic writer exposes all OpenCode fallbacks in owner order")
+    ], "automatic writer excludes unavailable OpenCode routes")
     print("test_opencode_protocols_and_payloads: done")
 
 

@@ -70,7 +70,7 @@ HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
 #           (JSON syntax only - content failures NEVER take this path)
 # Only fields the respective endpoint documents are sent; models without a
 # profile fall back to conservative generic settings.
-NVIDIA_DEFAULT_MODEL = "z-ai/glm-5.2"
+NVIDIA_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b"
 GEMINI_DEFAULT_MODEL = "gemini-3.6-flash"
 OPENROUTER_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 OPENCODE_DEFAULT_MODEL = "claude-sonnet-4-6"

@@ -16,6 +16,7 @@ import build  # noqa: E402
 import manual_draft  # noqa: E402
 import write  # noqa: E402
 from model_config import (  # noqa: E402
+    AUTOMATIC_MODEL_ORDER,
     MODEL_DISPLAY_NAMES,
     MODEL_ORDER,
     OPENCODE_MODEL_ORDER,
@@ -817,9 +818,10 @@ def test_static_security_contract():
           and "encrypted envelopes only" in workflow
           and "data/manual-jobs/outbox 2>/dev/null || true" in workflow,
           "Actions uses Secrets, checks ciphertext and tolerates empty queues")
-    configured_order = f"AVWIRE_PROVIDER_ORDER: {','.join(MODEL_ORDER)}"
+    configured_order = (
+        f"AVWIRE_PROVIDER_ORDER: {','.join(AUTOMATIC_MODEL_ORDER)}")
     check(configured_order in hourly and configured_order in briefing,
-          "automatic workflows use the complete shared fallback order")
+          "automatic workflows use the proven production fallback order")
     check("secrets.OPENROUTER_API_KEY" in hourly
           and "secrets.OPENROUTER_API_KEY" in briefing
           and "sk-or-v1-" in hourly and "sk-or-v1-" in briefing,
