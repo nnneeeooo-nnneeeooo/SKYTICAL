@@ -644,6 +644,25 @@ check("published IndiGo article uses owner-approved name and aircraft",
       and "IndiGo_VT-IJB_A320neo" in indigo_published["image"]["url"]
       and "British_Airways" not in indigo_published["image"]["url"])
 
+regional_story = make_article(
+    "a-regional-brand",
+    "Air Canada Express CRJ900 collision at LaGuardia")
+regional_story["entities"] = {
+    "airlines": ["Air Canada Express", "Jazz Aviation"],
+    "aircraft_models": ["CRJ900"],
+}
+regional_image = {
+    "url": "https://upload.wikimedia.org/air-canada-crj900.jpg",
+    "link": "https://commons.wikimedia.org/wiki/File:Air_Canada_CRJ900.jpg",
+    "provider": "Wikimedia Commons",
+    "kind": "file_photo",
+    "matched": "Air Canada Express CRJ900",
+    "subject": "Air Canada Express CRJ900",
+    "photoYear": 2025,
+}
+check("parent airline brand remains valid for its regional operation",
+      images.existing_image_matches(regional_story, regional_image))
+
 all_published_images = []
 for article_path in (REPO / "data" / "articles").glob("*.json"):
     batch = json.loads(article_path.read_text(encoding="utf-8"))
