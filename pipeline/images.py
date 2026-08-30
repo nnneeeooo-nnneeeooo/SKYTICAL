@@ -503,8 +503,19 @@ def existing_image_matches(article: dict, image) -> bool:
         primary_aliases = {
             _normalized_phrase(value) for value in _airline_aliases(primary)
         }
+        # Commons filenames often use the parent brand for a branded regional
+        # operation (for example ``Air Canada`` on an ``Air Canada Express``
+        # aircraft). Treat that parent phrase as the same carrier only when it
+        # is a complete, multi-word prefix of the verified primary entity.
+        parent_brand_aliases = {
+            _normalized_phrase(name) for name in named_airlines
+            if len(_normalized_phrase(name).split()) >= 2
+            and any(alias.startswith(f"{_normalized_phrase(name)} ")
+                    for alias in primary_aliases)
+        }
         if not any(
                 _normalized_phrase(name) in primary_aliases
+                or _normalized_phrase(name) in parent_brand_aliases
                 for name in named_airlines):
             if not _secondary_image_airline_allowed(article, named_airlines):
                 return False
