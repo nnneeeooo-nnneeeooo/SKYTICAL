@@ -44,10 +44,8 @@ OPENROUTER_MODEL_ORDER = (
     "openrouter:poolside/laguna-xs-2.1:free",
 )
 
-# Rank by model capability first, then by provider for equivalent models.
-# Primary provider routes remain ahead of OpenRouter's free fallbacks. The
-# WeChat Flash route stays below the primary models because its gateway
-# disables hidden reasoning for predictable output.
+# Complete model catalog used by the manual drafting workbench and historical
+# usage dashboard.
 MODEL_ORDER = (
     OPENCODE_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[1],
@@ -67,7 +65,19 @@ MODEL_ORDER = (
     *OPENROUTER_MODEL_ORDER[2:],
 )
 
-DEFAULT_PROVIDER_ORDER = ",".join(MODEL_ORDER)
+# Automated runs use only routes that completed at least one valid article in
+# recent production telemetry. Retired/unavailable routes stay selectable in
+# the manual workbench but no longer add doomed HTTP 410 calls to every story.
+AUTOMATIC_MODEL_ORDER = (
+    DIRECT_MODEL_ORDER[0],
+    DIRECT_MODEL_ORDER[1],
+    DIRECT_MODEL_ORDER[4],
+    WECHAT_MODEL_ORDER[0],
+    OPENROUTER_MODEL_ORDER[0],
+    DIRECT_MODEL_ORDER[6],
+)
+
+DEFAULT_PROVIDER_ORDER = ",".join(AUTOMATIC_MODEL_ORDER)
 
 MODEL_DISPLAY_NAMES = {
     "wechat:Deepseek-v4-flash":

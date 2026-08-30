@@ -28,6 +28,7 @@ import build  # noqa: E402
 import providers  # noqa: E402
 import usage  # noqa: E402
 from common import now_utc  # noqa: E402
+from model_config import AUTOMATIC_MODEL_ORDER  # noqa: E402
 
 CHECKS = 0
 FAILED = 0
@@ -300,9 +301,11 @@ priority_ledger = {
     }
 }
 priority_rows, _ = build.usage_rows(priority_ledger, prices)
+expected_priority = list(AUTOMATIC_MODEL_ORDER) + sorted(
+    set(providers.MODEL_ORDER) - set(AUTOMATIC_MODEL_ORDER))
 check("usage dashboard follows the configured model priority",
       [row["label"] for row in priority_rows]
-      == list(providers.MODEL_ORDER))
+      == expected_priority)
 ultra = next(r for r in rows if "ultra" in r["label"])
 expect_usd = (ultra["in"] / 1e6 * 0.423) + (ultra["out"] / 1e6 * 2.61)
 check("theoretical USD uses the reference price table",
