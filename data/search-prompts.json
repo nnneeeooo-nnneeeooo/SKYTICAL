@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-08-30T19:26Z",
-  "targetDateTpe": "2026-08-31",
+  "generatedUtc": "2026-08-31T20:48Z",
+  "targetDateTpe": "2026-09-01",
   "sourceWindow": "month_to_date",
-  "generationMode": "deterministic",
-  "provider": null,
+  "generationMode": "llm",
+  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
   "sourceArticleIds": [
-    "a-20260830-1419-ukraine-intelligence-russia-imports-70-0",
-    "a-20260830-1419-singapore-airlines-outlines-10-airbus-a3",
-    "a-20260830-1419-airbus-a320-family-final-assembly-takes",
-    "a-20260830-0842-taiwan-executive-yuan-to-review-passed-u",
-    "a-20260830-0842-flyarystan-airbus-a320-catches-fire-duri",
-    "a-20260830-0842-airlink-e-jets-flyover-cape-town-stadium"
+    "a-20260831-2030-latam-airbus-a320-runs-off-runway-in-hea",
+    "a-20260831-1437-algeria-deploys-four-su-30-fighters-and",
+    "a-20260831-1437-raf-a400m-transport-lands-us-and-uk-mari",
+    "a-20260831-1437-euroatlantic-airways-names-pauls-calitis",
+    "a-20260831-0854-faa-orders-boeing-787-wing-inspections-o",
+    "a-20260831-0626-israel-to-replace-aging-boeing-707-tanke"
   ],
   "prompts": {
     "zh": [
-      "搜尋：烏情報單位指俄羅斯進口7萬噸Jet A-1航…",
-      "搜尋：新加坡航空空中巴士A380航線公布：涵蓋倫敦…",
-      "搜尋：空中巴士A320客機組裝耗時約三週 目標20…",
-      "搜尋：立院三讀無人機條例 政院稱收到法案後審慎考量",
-      "搜尋：FlyArystan空中巴士A320在阿拉木…",
-      "搜尋：Airlink客機低空飛越開普敦體育場 飛行…"
+      "搜尋 LATAM A320 巴西 跑道",
+      "查詢 阿爾及利亞 Su30 尼亞美",
+      "尋找 RAF A400M 極地 島嶼",
+      "了解 euroAtlantic 新執行長",
+      "查詢 FAA 787 機翼 檢查",
+      "搜尋 以色列 KC-46A 替換 707"
     ],
     "en": [
-      "Explore: Ukraine Intelligence: Russia Imports 70,000 Tons…",
-      "Explore: Singapore Airlines Outlines 10 Airbus A380 Route…",
-      "Explore: Airbus A320 Family Final Assembly Takes Three We…",
-      "Explore: Taiwan Executive Yuan to Review Passed Unmanned…",
-      "Explore: FlyArystan Airbus A320 Catches Fire During Maint…",
-      "Explore: Airlink E-Jets Flyover Cape Town Stadium Shows C…"
+      "Find LATAM A320 runway incident Brazil",
+      "Search Algeria Su30 deployment Niamey",
+      "Locate RAF A400M Arctic island Jan Mayen",
+      "Explore euroAtlantic new CEO Pauls Calitis",
+      "Check FAA Boeing 787 wing inspection order",
+      "Find Israel KC-46A replacement Boeing 707"
     ]
   }
 }
