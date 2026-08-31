@@ -107,9 +107,12 @@ def main() -> None:
     assert "width: 100%; padding: 0;" in css
     assert "border: 0; border-radius: 0; background: transparent; box-shadow: none;" in css
     assert "--ticker-duration: 130s" in css
-    assert 'font-family: "Noto Sans TC", sans-serif' in css
-    assert "font-size: 13px; font-weight: 400" in css
-    assert "font-family: inherit; font-size: 11px; font-weight: 600" in css
+    assert "font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont" in css
+    assert '"PingFang TC", "Microsoft JhengHei", sans-serif' in css
+    assert "font-size: 14px; font-weight: 600" in css
+    assert "font-synthesis: none; -webkit-font-smoothing: auto" in css
+    assert 'font-family: ui-monospace, "SFMono-Regular", Menlo' in css
+    assert "font-size: 12px; font-weight: 700" in css
     assert "@media (prefers-reduced-motion: reduce)" in css
     assert ".marquee-track .ticker-pass:nth-child(2) { display: none; }" in css
     assert 'setAttribute("aria-expanded"' in script
