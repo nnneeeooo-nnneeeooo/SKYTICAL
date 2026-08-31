@@ -86,6 +86,10 @@ def main() -> None:
     assert "@media (max-width: 900px)" in css
     assert "@media (max-width: 720px)" in css
     assert ".page { width: 100%; overflow-x: clip; }" in css
+    assert "aspect-ratio: 50 / 11; overflow: hidden;" in css
+    assert "width: 100%; height: 100%; max-width: 320px" in css
+    assert "object-fit: contain; background: transparent;" in css
+    assert "position: relative; contain: paint;" in css
     assert "grid-template-columns: repeat(3, minmax(0, 1fr))" in css
     assert ".js .site-nav.is-open { display: grid; }" in css
     assert "grid-template-columns: repeat(2, minmax(0, 1fr))" in css
