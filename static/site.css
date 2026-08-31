@@ -64,10 +64,13 @@ a.ticker-item:hover .ticker-time { color: var(--color-accent); }
 .brand-link {
   display: inline-flex; align-items: center; color: inherit;
   text-decoration: none; flex: 0 0 320px; min-width: 250px;
+  /* iOS in-app browsers briefly use the object's 220px HTML height while
+     its external SVG is loading. Pin the frame ratio before that happens. */
+  aspect-ratio: 50 / 11; overflow: hidden;
 }
 .brand-logo {
-  display: block; width: 100%; height: auto; max-width: 320px;
-  background: transparent;
+  display: block; width: 100%; height: 100%; max-width: 320px;
+  object-fit: contain; background: transparent;
 }
 .footer-logo {
   display: block; width: min(100%, 300px); height: auto;
@@ -160,8 +163,12 @@ a.ticker-item:hover .ticker-time { color: var(--color-accent); }
   padding: 7px 16px; display: flex; align-items: center; flex-shrink: 0;
   background: var(--color-accent); color: var(--color-bg); font-size: 12px;
   font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+  position: relative; z-index: 1;
 }
-.ticker-window { min-width: 0; overflow: hidden; flex: 1; display: flex; align-items: center; }
+.ticker-window {
+  min-width: 0; overflow: hidden; flex: 1; display: flex; align-items: center;
+  position: relative; contain: paint;
+}
 
 .nav-link {
   cursor: pointer; font-size: 14px; font-weight: 600; padding: 8px 14px;
