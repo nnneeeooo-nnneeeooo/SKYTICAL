@@ -301,13 +301,18 @@ def _rss_items(session: requests.Session, key: str, entries: list,
         summary = _strip_html(entry.get("summary") or entry.get("description"))
         if is_google and len(summary) <= len(title) + 40:
             summary = ""  # google news descriptions just repeat the headline
-        items.append({
+        item = {
             "title": title,
             "url": link,
             "published": published,
             "summary": summary,
             "image": _entry_image(entry),
-        })
+        }
+        if is_google:
+            publisher = str((entry.get("source") or {}).get("title") or "").strip()
+            if publisher:
+                item["publisher"] = publisher
+        items.append(item)
         if len(items) >= max_items:
             break
     return items

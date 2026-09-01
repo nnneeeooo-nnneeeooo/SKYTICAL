@@ -148,6 +148,21 @@ TAIWAN_AIRLINE_KEYWORDS = (
     "華信航空", "華信",
 )
 
+# Google News discovery query for Asian-airline fleet and identity changes.
+# The fixed publisher feeds are strong on regulators and large western
+# outlets but routinely miss Chinese/Japanese/Korean carrier developments.
+# This remains a discovery index: direct outlet links are required by
+# fetch.py, and the ordinary evidence/completeness gates still decide whether
+# a headline can become an article.
+ASIA_AIRLINE_FLEET_QUERY = (
+    '("Hainan Airlines" OR 海南航空 OR 海航 OR "T\'way Air" OR 德威航空 '
+    'OR "Asian airline" OR 亞洲航空公司 OR 中國航空公司 OR 日本航空公司 '
+    'OR 韓國航空公司) '
+    '(fleet OR aircraft OR grounded OR parked OR retirement OR sale '
+    'OR delivery OR order OR rebrand OR rename OR 機隊 OR 客機 OR 停飛 '
+    'OR 停場 OR 退役 OR 出售 OR 交付 OR 訂購 OR 更名 OR 改名) when:7d'
+)
+
 # Master source registry. `key` is the stable identifier used for
 # data/raw/<key>.json. `fmt` is what we display on the sources page.
 # `endpoint` is what fetch.py actually requests; `kind`:
@@ -318,6 +333,53 @@ SOURCES: dict[str, dict] = {
         "cover": {
             "zh": "長榮航空官方新聞稿索引 — 航線、機隊與營運動態",
             "en": "EVA Air official release index — network, fleet & operations",
+        },
+    },
+    "hainanair": {
+        "name": "海南航空官方資訊",
+        "kind": "official",
+        "fmt": "RSS",
+        "url": "https://www.hnair.com",
+        "endpoint": (
+            "https://news.google.com/rss/search?" + urlencode({
+                "q": (
+                    '(site:hnair.com OR site:hainanairlines.com OR '
+                    '(site:sse.com.cn 海航控股)) when:14d'
+                ),
+                "hl": "zh-TW",
+                "gl": "TW",
+                "ceid": "TW:zh-Hant",
+            })
+        ),
+        "type": "rss",
+        "scope_filter": True,
+        "cover": {
+            "zh": "海南航空官網與海航控股公告 — 機隊、航線與營運",
+            "en": "Hainan Airlines and HNA filings — fleet, network and operations",
+        },
+    },
+    "asiaairlinefleet": {
+        "name": "亞洲航空機隊新聞索引",
+        "kind": "media",
+        "fmt": "RSS",
+        "url": "https://news.google.com",
+        "endpoint": (
+            "https://news.google.com/rss/search?" + urlencode({
+                "q": ASIA_AIRLINE_FLEET_QUERY,
+                "hl": "zh-TW",
+                "gl": "TW",
+                "ceid": "TW:zh-Hant",
+            })
+        ),
+        "type": "rss",
+        # Attribution must name the actual Google News publisher rather than
+        # the generic discovery feed. The outlet URL must still resolve off
+        # news.google.com before the item enters pending data.
+        "publisher_passthrough": True,
+        "scope_filter": True,
+        "cover": {
+            "zh": "亞洲航空公司機隊、停場、退役、交付與品牌異動",
+            "en": "Asian airline fleet, grounding, retirement, delivery and rebranding news",
         },
     },
     "simpleflying": {
