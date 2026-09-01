@@ -16,3 +16,15 @@ def test_airway_magazine_related_domains_are_allowlisted() -> None:
 
     assert "airway.com.tw" in domains
     assert "airshop.com.tw" in domains
+
+
+def test_asian_fleet_claims_can_be_cross_checked_with_primary_sources() -> None:
+    config = json.loads(
+        (REPO / "config" / "companion_sources.json").read_text(encoding="utf-8")
+    )
+    domains = set(config["domains"])
+
+    assert {"hnair.com", "hainanairlines.com", "sse.com.cn", "caac.gov.cn"} \
+        <= domains
+    assert {"aeroroutes.com", "flightaware.com", "flightradar24.com",
+            "planespotters.net"} <= domains

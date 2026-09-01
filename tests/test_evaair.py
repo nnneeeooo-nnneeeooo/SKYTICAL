@@ -66,6 +66,28 @@ class EvaAirSourceTests(unittest.TestCase):
         )
         self.assertEqual(items, [])
 
+    def test_google_news_keeps_actual_publisher_for_discovery_attribution(self):
+        class Session:
+            def get(self, url, **kwargs):
+                return type("Response", (), {
+                    "status_code": 302,
+                    "headers": {"Location": "https://example.com/fleet-story"},
+                })()
+
+        items = fetch._rss_items(
+            Session(), "asiaairlinefleet", [{
+                "title": "海南航空787-8機隊停場 - Example Aviation",
+                "link": "https://news.google.com/rss/articles/fleet",
+                "summary": "海南航空787-8機隊停場",
+                "source": {"title": "Example Aviation"},
+            }],
+            common.SOURCES["asiaairlinefleet"]["endpoint"],
+            max_items=10,
+        )
+
+        self.assertEqual(items[0]["publisher"], "Example Aviation")
+        self.assertEqual(items[0]["url"], "https://example.com/fleet-story")
+
 
 if __name__ == "__main__":
     unittest.main()

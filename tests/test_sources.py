@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 from bs4 import BeautifulSoup
 
@@ -10,6 +11,7 @@ REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "pipeline"))
 
 import common  # noqa: E402
+import dedupe  # noqa: E402
 import fetch  # noqa: E402
 
 
@@ -87,3 +89,25 @@ def test_taiwan_airline_priority_signal_covers_all_national_carriers() -> None:
         assert common.is_taiwan_airline_story({"title": title}), title
     assert not common.is_taiwan_airline_story(
         {"title": "Boeing resumes 777-9 certification testing"})
+
+
+def test_asia_fleet_discovery_and_hainan_official_sources_are_registered() -> None:
+    official = common.SOURCES["hainanair"]
+    discovery = common.SOURCES["asiaairlinefleet"]
+
+    assert official["kind"] == "official"
+    assert "news.google.com/rss/search" in official["endpoint"]
+    official_query = parse_qs(urlsplit(official["endpoint"]).query)["q"][0]
+    assert "site:hnair.com" in official_query
+    assert "site:sse.com.cn" in official_query
+
+    assert discovery["publisher_passthrough"] is True
+    assert discovery["scope_filter"] is True
+    query = parse_qs(urlsplit(discovery["endpoint"]).query)["q"][0]
+    for anchor in ("海南航空", "Hainan Airlines", "T'way Air", "停飛",
+                   "停場", "退役", "交付", "rename", "when:7d"):
+        assert anchor in query
+    assert dedupe._source_label(
+        discovery, {"publisher": "Example Aviation"}) == "Example Aviation"
+    assert dedupe._source_label(
+        official, {"publisher": "Google News"}) == "海南航空官方資訊"
