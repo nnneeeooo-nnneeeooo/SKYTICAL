@@ -160,6 +160,14 @@ def _published(item: dict) -> datetime | None:
         return None
 
 
+def _source_label(source: dict, item: dict) -> str:
+    """Use Google News' publisher only for explicitly marked discovery feeds."""
+    publisher = str(item.get("publisher") or "").strip()
+    if source.get("publisher_passthrough") and publisher:
+        return publisher
+    return str(source["name"])
+
+
 def _load_raw_items() -> list[dict]:
     """All items from data/raw/<key>.json snapshots, each annotated with the
     source display name and key. ok=false snapshots are NOT skipped: fetch.py
@@ -177,7 +185,7 @@ def _load_raw_items() -> list[dict]:
             if not isinstance(raw, dict):
                 continue
             item = dict(raw)
-            item["source"] = source["name"]
+            item["source"] = _source_label(source, item)
             item["sourceKey"] = key
             items.append(item)
     return items

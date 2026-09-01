@@ -55,6 +55,7 @@ ALLOWED_HOSTS = {
     "www.faa.gov", "faa.gov",
     "www.ntsb.gov", "ntsb.gov",
     "www.caa.gov.tw", "caa.gov.tw",
+    "www.caac.gov.cn", "caac.gov.cn",
     "www.easa.europa.eu", "easa.europa.eu",
     "www.icao.int", "icao.int",
     "www.iata.org", "iata.org",
@@ -66,6 +67,12 @@ ALLOWED_HOSTS = {
     "www.cna.com.tw", "cna.com.tw",
     # Taiwan flag-carrier newsroom releases
     "www.evaair.com", "evaair.com",
+    # Hainan Airlines releases and HNA's exchange filings. These are official
+    # evidence for fleet-disposal and operating-status claims; robots.txt and
+    # redirect-host checks still apply to every page request.
+    "www.hnair.com", "hnair.com",
+    "www.hainanairlines.com", "hainanairlines.com",
+    "www.sse.com.cn", "sse.com.cn",
     # aircraft and engine manufacturers.  Their newsroom listings are in
     # common.SOURCES; every article request still passes robots.txt and the
     # final redirect-host check below.
