@@ -48,7 +48,6 @@ jobs:
           python tests/test_images.py
           python tests/test_image_fallbacks.py
           python tests/test_image_qa.py
-          python tests/test_recent_image_quality.py
 
       - name: Run pipeline
         env:
@@ -96,6 +95,12 @@ jobs:
           git fetch origin "${GITHUB_REF_NAME}"
           git checkout "origin/${GITHUB_REF_NAME}" -- data/briefings || true
           python pipeline/build.py
+
+      # Audit the pipeline output after images.py has had a chance to remove
+      # stale or misleading cached photos. This still fails closed before any
+      # artifact is uploaded or generated data is committed.
+      - name: Audit generated image relevance
+        run: python tests/test_recent_image_quality.py
 
       - name: Scan build output and committed data for secrets/reasoning
         run: |
