@@ -1,0 +1,134 @@
+{
+  "articles": [
+    {
+      "id": "a-20260902-1655-ryanair-to-cut-winter-flights-over-high",
+      "publishedUtc": "2026-09-02T16:55Z",
+      "cat": "biz",
+      "primarySource": "Simple Flying",
+      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/03/ryanair-easyjet-and-wizz-jamesdc152-shutterstock.jpg",
+      "zh": {
+        "title": "因應高昂燃料成本 瑞安航空計劃縮減今年冬季航班",
+        "summary": "瑞安航空計劃縮減今冬與2027財年航班，以應對燃料價格風險。",
+        "body": [
+          "根據航空媒體《Simple Flying》報導，歐洲廉價航空瑞安航空（Ryanair）表示燃料價格過於高昂，並計劃縮減航班。該航空公司在今年冬季以及2027財年（FY2027）的航班數量可能會有所減少，以此降低因未進行避險的燃料價格變動所帶來的財務風險。",
+          "在此之前，其他歐洲廉航也面臨類似挑戰。根據本站歷史資料，另一家超低成本航空公司威茲航空（Wizz Air）於2026年8月公布，其2027財年第一季淨虧損約1.98億歐元。該公司指出，較低的票價、高昂的燃料成本以及持續的機隊營運中斷，是導致其出現季度淨虧損的主因。"
+        ]
+      },
+      "en": {
+        "title": "Ryanair to Cut Winter Flights Over High Fuel Costs",
+        "summary": "Ryanair plans to reduce flights this winter to mitigate unhedged fuel price risks.",
+        "body": [
+          "Ryanair has indicated that fuel prices are too expensive and has planned to scale back its flight offerings. The airline could see fewer flights operating during this winter season and the 2027 financial year (FY2027) as part of efforts to mitigate the potential financial risks associated with unhedged fuel price fluctuations.",
+          "This development follows challenges faced by other European low-cost carriers. In August 2026, competitor Wizz Air reported a net loss of approximately €198 million for the first quarter of its 2027 financial year. Wizz Air stated that lower average fares, higher fuel costs, and continued fleet disruption had contributed significantly to its quarterly financial loss."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Simple Flying — Fuel Too Expensive? Ryanair Say It Is While Cutting Winter…",
+          "url": "https://simpleflying.com/ryanair-cuts-flights-fuel-too-expensive/"
+        },
+        {
+          "name": "Archive: Aerospace Global News — Wizz Air is carrying millions more passengers, so why is it... — a-20260808-1737-wizz-air-reports-approximately-198-milli",
+          "url": "https://aerospaceglobalnews.com/news/wizz-air-passenger-growth-loss/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-09-02T16:33Z",
+      "writer": "gemini:gemini-3.5-flash",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Ryanair may reduce its flights during this winter and the 2027 financial year due to high fuel prices and to mitigate the risk of unhedged fuel price changes.",
+          "sourceQuote": "This winter and FY2027 could see less Ryanair flights to ease the risk of unhedged fuel price changes.",
+          "sourceUrl": "https://simpleflying.com/ryanair-cuts-flights-fuel-too-expensive/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "In August 2026, Wizz Air reported a net loss of approximately €198 million for its first quarter of the 2027 financial year, driven in part by lower fares, higher fuel costs, and continued fleet disruption.",
+          "sourceQuote": "lower fares, higher fuel costs and continued fleet disruption pushed the airline to a net loss.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/wizz-air-passenger-growth-loss/",
+          "evidenceScope": "archive",
+          "archiveEventId": "a-20260808-1737-wizz-air-reports-approximately-198-milli",
+          "archiveContext": true
+        }
+      ],
+      "archiveContext": {
+        "archive_context_version": 1,
+        "context_id": "dcd34b4743d7da7f",
+        "selected_events": [
+          {
+            "event_id": "a-20260808-1737-wizz-air-reports-approximately-198-milli",
+            "relationship_type": "other",
+            "relationship_evidence": [
+              "same flight number/test callsign: FY2027"
+            ],
+            "relationship_tier": 1,
+            "confidence_score": 107,
+            "confidence_reason": "tier 1; 1 deterministic evidence item(s); 27 day(s) apart",
+            "event_date": "2026-08-06",
+            "source_name": "Aerospace Global News — Wizz Air is carrying millions more passengers, so why is it...",
+            "source_url": "https://aerospaceglobalnews.com/news/wizz-air-passenger-growth-loss/",
+            "facts": [
+              {
+                "claim": "Wizz Air reported a net loss of approximately €198 million for the first quarter of its 2027 financial year.",
+                "source_quote": "Wizz Air reported a net loss of approximately €198 million for the period.",
+                "source_url": "https://aerospaceglobalnews.com/news/wizz-air-passenger-growth-loss/",
+                "source_name": "Aerospace Global News — Wizz Air is carrying millions more passengers, so why is it..."
+              },
+              {
+                "claim": "Wizz Air increased seat capacity by 25% year-on-year and available seat kilometres rose by 15% during the quarter.",
+                "source_quote": "The ultra-low-cost carrier increased seat capacity by 25% year-on-year during the quarter. Available seat kilometres rose by 15%.",
+                "source_url": "https://aerospaceglobalnews.com/news/wizz-air-passenger-growth-loss/",
+                "source_name": "Aerospace Global News — Wizz Air is carrying millions more passengers, so why is it..."
+              },
+              {
+                "claim": "Lower fares, higher fuel costs and continued fleet disruption pushed the airline to a net loss.",
+                "source_quote": "lower fares, higher fuel costs and continued fleet disruption pushed the airline to a net loss.",
+                "source_url": "https://aerospaceglobalnews.com/news/wizz-air-passenger-growth-loss/",
+                "source_name": "Aerospace Global News — Wizz Air is carrying millions more passengers, so why is it..."
+              },
+              {
+                "claim": "CEO József Váradi said the airline did not assume fuel prices would improve quickly and planned on a prolonged war with continuous fuel-pricing distress.",
+                "source_quote": "Our baseline expectation is fuel stays high because anything else is speculative",
+                "source_url": "https://aerospaceglobalnews.com/news/wizz-air-passenger-growth-loss/",
+                "source_name": "Aerospace Global News — Wizz Air is carrying millions more passengers, so why is it..."
+              },
+              {
+                "claim": "Wizz Air plans to operate its intended fleet programme and continue pursuing growth opportunities during the winter, with a €2.3 billion liquidity position equivalent to close to 40% liquidity cover.",
+                "source_quote": "Wizz Air plans to operate its intended fleet programme and continue pursuing growth opportunities during the winter.",
+                "source_url": "https://aerospaceglobalnews.com/news/wizz-air-passenger-growth-loss/",
+                "source_name": "Aerospace Global News — Wizz Air is carrying millions more passengers, so why is it..."
+              },
+              {
+                "claim": "Wizz Air expects ASKs to rise around 20% in Q2 with load factors broadly flat and RASK slightly lower, while fares were trending mid-single to high-single digits below the previous year.",
+                "source_quote": "Wizz Air expects available seat kilometres to rise by around 20% during the second quarter, with load factors broadly flat and RASK slightly lower.",
+                "source_url": "https://aerospaceglobalnews.com/news/wizz-air-passenger-growth-loss/",
+                "source_name": "Aerospace Global News — Wizz Air is carrying millions more passengers, so why is it..."
+              }
+            ]
+          }
+        ]
+      },
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "Simple Flying"
+        ],
+        "airlines": [
+          "Ryanair",
+          "Wizz Air"
+        ],
+        "event_dates": [
+          "2026-09-02",
+          "2026-08-06"
+        ]
+      }
+    }
+  ]
+}

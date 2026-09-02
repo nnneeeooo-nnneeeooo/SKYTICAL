@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-09-01T16:35Z",
-  "targetDateTpe": "2026-09-02",
+  "generatedUtc": "2026-09-02T17:39Z",
+  "targetDateTpe": "2026-09-03",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "gemini:gemini-3.6-flash",
+  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
   "sourceArticleIds": [
-    "a-20260901-1600-starlux-airlines-sorayama-gold-a350-1000",
-    "a-20260901-1048-air-advisor-names-london-heathrow-world",
-    "a-20260901-1048-jetzero-secures-100-million-loan-facilit",
-    "a-20260901-1048-united-airlines-app-update-lets-delayed",
-    "a-20260901-1048-boeing-reportedly-discounting-737-max-10",
-    "a-20260901-1048-iata-to-hold-4th-world-sustainability-sy"
+    "a-20260902-1655-ryanair-to-cut-winter-flights-over-high",
+    "a-20260902-1224-taiwan-tigerair-launches-kaohsiung-route",
+    "a-20260902-1224-air-china-boeing-747-8-damaged-by-fuel-t",
+    "a-20260902-0727-sas-equips-over-80-a320neo-aircraft-with",
+    "a-20260902-0727-faa-grants-part-139-operating-certificat",
+    "a-20260902-0217-boeing-mh-139a-grey-wolf-reaches-initial"
   ],
   "prompts": {
     "zh": [
-      "想瞭解星宇航空 A350-1000 塗裝特色",
-      "查詢倫敦希斯洛機場 (LHR) 的服務評價",
-      "搜尋 JetZero Z4 翼身融合飛機設計細節",
-      "探索聯合航空 App 提供的最新服務功能",
-      "了解波音 737 MAX 10 的機型規格與售價",
-      "尋找 IATA 於布魯塞爾舉辦高峰會的相關資訊"
+      "查詢 Ryanair 航班",
+      "查詢 台灣虎航 高雄 航線",
+      "查詢 中國國際航空 波音747-8",
+      "查詢 SAS A320neo 衛星網路",
+      "查詢 FAA 華盛頓馬納薩斯機場",
+      "查詢 波音 MH-139A 灰狼"
     ],
     "en": [
-      "Explore STARLUX Airlines A350-1000 fleet features",
-      "Look up reviews for London Heathrow Airport (LHR)",
-      "Search for JetZero Z4 blended wing body details",
-      "Discover features in the United Airlines mobile app",
-      "Learn more about Boeing 737 MAX 10 specifications",
-      "Find info on the IATA summit hosted in Brussels"
+      "Find Ryanair flight info",
+      "Taiwan Tigerair Kaohsiung routes",
+      "Air China Boeing 747-8 details",
+      "SAS A320neo Starlink Wi‑Fi",
+      "FAA Washington Manassas Airport cert",
+      "Boeing MH-139A Grey Wolf info"
     ]
   }
 }
