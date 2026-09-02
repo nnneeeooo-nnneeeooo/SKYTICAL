@@ -176,6 +176,13 @@ check("aircraft family match never over-claims a sub-variant",
 check("ICAO type code A359 maps to its display name",
       images.find_aircraft_type(make_article(
           "a", "DAL flight, type A359, arrived")) == "Airbus A350-900")
+luna_story = make_article(
+    "a-luna", "Rheinmetall LUNA NG drone receives military certification")
+luna_story["en"]["body"].append(
+    "Certification follows standards used for the Airbus A320.")
+luna_story["entities"]["aircraft_models"] = ["LUNA NG", "Airbus A320"]
+check("headline aircraft entity outranks a comparison type in the body",
+      images.find_aircraft_type(luna_story) == "LUNA NG")
 check("no visual entity -> resolve_image returns None without HTTP",
       (fake.calls.clear() is None
        and images.resolve_image(make_article(
@@ -402,6 +409,13 @@ drone_image = {
 }
 check("topic fallback remains compatible with its headline",
       images.existing_image_matches(drone_story, drone_image))
+unrelated_airliner_image = {
+    "url": "https://upload.wikimedia.org/Lufthansa_Airbus_A320.jpg",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "Airbus A320 aircraft", "subject": "Airbus A320",
+}
+check("comparison airliner photo is stale for a headline drone model",
+      not images.existing_image_matches(luna_story, unrelated_airliner_image))
 
 malaysia_story = make_article("a-malaysia", "Malaysia Airlines completes drug testing")
 malaysia_story["entities"]["airlines"] = ["Malaysia Airlines"]
