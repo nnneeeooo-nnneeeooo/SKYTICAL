@@ -23,6 +23,7 @@ def main() -> None:
     assert build.main() == 0
 
     master = ROOT / "docs" / "brand" / "SKYTICAL-master.svg"
+    spec_path = ROOT / "docs" / "brand" / "SKYTICAL-LOGO-SPEC.md"
     logo_path = ROOT / "static" / "skytical-logo.svg"
     mark_path = ROOT / "static" / "skytical-mark.svg"
     social_path = ROOT / "static" / "skytical-social.png"
@@ -30,19 +31,17 @@ def main() -> None:
     css = (ROOT / "static" / "site.css").read_text(encoding="utf-8")
     logo = logo_path.read_text(encoding="utf-8")
     mark = mark_path.read_text(encoding="utf-8")
+    spec = spec_path.read_text(encoding="utf-8")
 
-    assert hashlib.sha256(master.read_bytes()).hexdigest() == (
-        "53ccee38ecb372a446ebd89737070852e0d8876b04af7efdb1709e78d8553621"
-    )
-    assert hashlib.sha256(logo_path.read_bytes()).hexdigest() == (
-        "2990e0352b72c78764106940cc4e01eb66e7cce5ff67b587eafbde07cf28cccf"
-    )
-    assert hashlib.sha256(mark_path.read_bytes()).hexdigest() == (
-        "d076a98cf758ec7d36475e2df95664b6c6e52b7b758df5122b37cf64799f43cd"
-    )
-    assert hashlib.sha256(social_path.read_bytes()).hexdigest() == (
-        "b5903b8496c802725fcdfe6072631a138c8c375a438ec1d92606c5e41f7076a5"
-    )
+    approved_assets = {
+        master: "53ccee38ecb372a446ebd89737070852e0d8876b04af7efdb1709e78d8553621",
+        logo_path: "2990e0352b72c78764106940cc4e01eb66e7cce5ff67b587eafbde07cf28cccf",
+        mark_path: "d076a98cf758ec7d36475e2df95664b6c6e52b7b758df5122b37cf64799f43cd",
+        social_path: "b5903b8496c802725fcdfe6072631a138c8c375a438ec1d92606c5e41f7076a5",
+    }
+    for path, approved_hash in approved_assets.items():
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == approved_hash
+        assert approved_hash in spec
     assert 'viewBox="250 660 1000 220"' in logo
     assert 'viewBox="250 650 250 220"' in mark
     for asset in (logo, mark):
