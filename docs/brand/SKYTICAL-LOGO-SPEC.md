@@ -41,8 +41,8 @@
 
 目前核准輸出的 SHA-256：
 
-- `static/skytical-logo.svg`：`9f273f64694d424df681b21d7450d332d363912bdb51b2c93b2e5e34c2e44f2f`
-- `static/skytical-mark.svg`：`50ec6a6d663a1f4385d1f62ca546e0b6bdf815520b0bc3bd72cc5e1a255022e4`
+- `static/skytical-logo.svg`：`2990e0352b72c78764106940cc4e01eb66e7cce5ff67b587eafbde07cf28cccf`
+- `static/skytical-mark.svg`：`d076a98cf758ec7d36475e2df95664b6c6e52b7b758df5122b37cf64799f43cd`
 - `static/skytical-social.png`：`b5903b8496c802725fcdfe6072631a138c8c375a438ec1d92606c5e41f7076a5`
 
 橫式 Logo 與翼標的產生規則：
