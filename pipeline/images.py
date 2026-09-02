@@ -304,6 +304,18 @@ def find_aircraft_type(article: dict) -> str | None:
     family match returns the family-level name so the photo query never
     claims a sub-variant the article did not verify.
     """
+    entities = article.get("entities") or {}
+    models = entities.get("aircraft_models") if isinstance(entities, dict) else []
+    context = article_context_text(article).casefold()
+    for model in models or []:
+        value = str(model or "").strip()
+        if (value and value.casefold() in context
+                and not re.search(
+                    r"\b(?:ultra\s+short|aircraft|airplane|flight|unknown)\b",
+                    value, re.I)
+                and len(re.findall(r"[A-Za-z0-9]", value)) >= 3):
+            return value
+
     text = _article_text(article)
     low = text.casefold()
     for code, name in _types.items():
@@ -322,8 +334,6 @@ def find_aircraft_type(article: dict) -> str | None:
     # The compact commercial dictionary intentionally does not contain every
     # military, experimental or historic type.  Verified entity values are a
     # safer extension than guessing from arbitrary prose.
-    entities = article.get("entities") or {}
-    models = entities.get("aircraft_models") if isinstance(entities, dict) else []
     for model in models or []:
         value = str(model or "").strip()
         if not value or re.search(
@@ -550,8 +560,21 @@ def existing_image_matches(article: dict, image) -> bool:
     airline = find_airline(article)
     if not airline:
         # No primary carrier means a generic aircraft photo can still be a
-        # valid type match, but named-carrier photos were rejected above.
-        return True
+        # valid type match, but it must depict the primary model rather than
+        # a comparison type mentioned only in the body.
+        actype = find_aircraft_type(article)
+        if not actype:
+            return True
+        model_tokens = _normalized_phrase(actype).split()
+        specific_tokens = [
+            token for token in model_tokens if any(char.isdigit() for char in token)
+        ] or [
+            token for token in model_tokens
+            if token not in {"airbus", "boeing", "aircraft", "airplane", "jet"}
+        ]
+        provenance_tokens = set(normalized.split())
+        return bool(specific_tokens and all(
+            token in provenance_tokens for token in specific_tokens))
     normalized_airline = _normalized_phrase(airline)
     generic_match = re.sub(
         r"[^a-z0-9]+", " ",
