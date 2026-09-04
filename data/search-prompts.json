@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-09-03T18:49Z",
-  "targetDateTpe": "2026-09-04",
+  "generatedUtc": "2026-09-04T17:25Z",
+  "targetDateTpe": "2026-09-05",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "provider": "gemini:gemini-3.6-flash",
   "sourceArticleIds": [
-    "a-20260903-1815-ge-aerospace-secures-pentagon-diu-contra",
-    "a-20260903-1815-us-air-force-to-deploy-f-15exs-to-seymou",
-    "a-20260903-1815-qatar-airways-accepts-boeing-787-9s-with",
-    "a-20260903-1815-jcb-aero-receives-boeing-part-145-mainte",
-    "a-20260903-1815-airasia-launches-first-codeshare-with-pe",
-    "a-20260903-1449-fly91-places-1b-order-for-40-atr-72-600"
+    "a-20260904-1640-air-india-a320neo-loses-all-three-hydrau",
+    "a-20260904-1640-all-nippon-airways-finalises-additional",
+    "a-20260904-1223-us-air-force-retires-ec-130h-compass-cal",
+    "a-20260904-1223-dhl-global-forwarding-to-build-healthcar",
+    "a-20260904-0205-united-airlines-unveils-ski-season-speci",
+    "a-20260903-2342-boeing-737-max-7-receives-certification"
   ],
   "prompts": {
     "zh": [
-      "GE Aerospace 測試載具",
-      "F-15EX 部署 Seymour Johnson",
-      "卡達航空 787-9 無 Qsuite",
-      "JCB Aero 獲 Boeing 145 認證",
-      "亞航 與 飛馬航空 代碼共享",
-      "FLY91 訂購 ATR 72-600"
+      "查詢印度航空 A320neo 相關動態",
+      "搜尋全日空 E190-E2 客機資訊",
+      "搜尋美國空軍 EC-130H 機隊",
+      "查詢 DHL 樟宜機場物流樞紐",
+      "搜尋聯合航空 E175 波士頓航線",
+      "搜尋波音 737 MAX 7 最新動態"
     ],
     "en": [
-      "GE Aerospace hypersonic test vehicle",
-      "F-15EX deployment at Seymour Johnson",
-      "Qatar Airways 787-9 without Qsuite",
-      "JCB Aero receives Boeing Part 145 approval",
-      "AirAsia codeshare with Pegasus Airlines",
-      "FLY91 orders ATR 72-600 aircraft"
+      "Search Air India A320neo",
+      "Search All Nippon Airways E190-E2",
+      "Search US Air Force EC-130H Compass Call",
+      "Search DHL at Changi Airport",
+      "Search United Airlines E175 Boston flights",
+      "Search Boeing 737 MAX 7 updates"
     ]
   }
 }
