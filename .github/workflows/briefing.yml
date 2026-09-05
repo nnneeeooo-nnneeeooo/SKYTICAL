@@ -40,14 +40,14 @@ jobs:
       contents: write # commits data/briefings back to the repo
       pages: write # configure-pages enablement
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Enable GitHub Pages (build_type=workflow)
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
         with:
           enablement: true
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -127,9 +127,11 @@ jobs:
           echo "scan: site/ and data/ clean"
 
       # Upload BEFORE the data commit so the deploy never depends on git push.
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
+          # Preserve v3 packaging, including .nojekyll and other site dotfiles.
+          include-hidden-files: true
 
       - name: Commit briefing data (only when changed)
         continue-on-error: true # a push race must not fail the run or block deploy
@@ -171,5 +173,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v5
         id: deployment
