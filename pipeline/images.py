@@ -716,6 +716,7 @@ def lookup_commons(query: str, require_tokens: list[str],
                 "kind": "file_photo",
                 "matched": query,
                 "subject": subject or None,
+                "description": title.removeprefix("File:").rsplit(".", 1)[0].replace("_", " "),
                 "photoYear": photo_year,
             }
             if not prefer_recent:

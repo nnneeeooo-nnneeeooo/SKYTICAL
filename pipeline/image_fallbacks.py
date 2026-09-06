@@ -217,6 +217,7 @@ def lookup_commons_airport(airport: str) -> dict | None:
                 "kind": "file_photo",
                 "matched": f"airport:{airport}",
                 "subject": f"{airport} 資料照片",
+                "description": title.removeprefix("File:").rsplit(".", 1)[0].replace("_", " "),
             }
     return None
 

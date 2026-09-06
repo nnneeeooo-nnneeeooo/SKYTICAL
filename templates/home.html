@@ -47,7 +47,7 @@
         <img id="hero-story-image" class="hero-img"
              data-fallback-src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}"
              src="{{ hero.image.url }}" alt="{{ hero.image.subject or '' }}">
-        <div id="hero-image-caption" class="text-muted" style="font-size:10.5px;margin-top:4px;">{% if hero.image.subject %}<b style="color:var(--color-text);">{{ hero.image.subject }}</b> · {% endif %}{{ t.photoKind[hero.image.kind] }}{% if hero.image.credit %} · © {{ hero.image.credit }}{% endif %}{% if hero.image.license %} · {{ hero.image.license }}{% endif %}{% if hero.image.provider %} · {{ hero.image.provider }}{% endif %}</div>
+        <div id="hero-image-caption" class="text-muted" style="font-size:10.5px;margin-top:4px;"><b data-image-description style="color:var(--color-text);">{% if html_lang.startswith('zh') %}圖中主體：{% else %}Pictured: {% endif %}{{ hero.image.subject }}</b> · {{ t.photoKind[hero.image.kind] }}{% if hero.image.credit %} · © {{ hero.image.credit }}{% endif %}{% if hero.image.license %} · {{ hero.image.license }}{% endif %}{% if hero.image.provider %} · {{ hero.image.provider }}{% endif %}</div>
         {% else %}
         <img id="hero-story-image" class="hero-img" data-image-fallback="true"
              data-fallback-src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}"
