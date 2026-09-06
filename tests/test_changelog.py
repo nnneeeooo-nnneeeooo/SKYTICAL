@@ -18,16 +18,18 @@ def main() -> None:
     raw = json.loads(
         (ROOT / "config" / "changelog.json").read_text(encoding="utf-8"))
     assert raw["schemaVersion"] == 1
+    assert raw["repository"] == build._CHANGELOG_REPOSITORY \
+        == "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL"
     assert raw["historyStart"] == "2026-07-26"
-    assert raw["updatedThrough"] == "2026-08-10"
-    assert len(raw["entries"]) == 76
+    assert raw["updatedThrough"] == "2026-09-07"
+    assert len(raw["entries"]) == 119
 
     historical = [row["commit"] for row in raw["entries"]
                   if row["commit"] is not None]
-    assert len(historical) == 75
+    assert len(historical) == 119
     assert len(set(historical)) == len(historical)
     assert all(re.fullmatch(r"[0-9a-f]{40}", sha) for sha in historical)
-    assert sum(row["commit"] is None for row in raw["entries"]) == 1
+    assert sum(row["commit"] is None for row in raw["entries"]) == 0
     rendered_copy = "\n".join(
         f"{row['zh']}\n{row['en']}" for row in raw["entries"])
     assert "免費" not in rendered_copy
@@ -54,13 +56,11 @@ def main() -> None:
         raw, "zh", build.L["zh"]["changeKinds"])
     en = build.changelog_view(
         raw, "en", build.L["en"]["changeKinds"])
-    assert zh["count"] == en["count"] == 76
+    assert zh["count"] == en["count"] == 119
     assert [group["date"] for group in zh["groups"]] \
-        == ["2026-08-10", "2026-08-06", "2026-08-05",
-            "2026-07-30", "2026-07-29", "2026-07-28",
-            "2026-07-27", "2026-07-26"]
+        == sorted(set(dates), reverse=True)
     assert zh["groups"][0]["entries"][0]["title"] \
-        == "補齊 7 月 29 日至 8 月 10 日的重要公開網站功能、新聞品質與介面更新紀錄。"
+        == "首頁全球延誤與取消改為連結至 FlightAware 公開即時統計，移除未設定來源提示。"
     assert en["groups"][-1]["entries"][-1]["title"].startswith(
         "Created AVWIRE")
     linked = [entry for group in en["groups"] for entry in group["entries"]
@@ -112,7 +112,7 @@ def main() -> None:
         assert f'href="{expected_path}"' in html
         assert t["footerChangelog"] in html
         assert t["changeNotice"] in html
-        assert len(re.findall(r'class="changelog-entry"', html)) == 76
+        assert len(re.findall(r'class="changelog-entry"', html)) == 119
         assert "javascript:alert" not in html
 
     print("test_changelog: OK")
