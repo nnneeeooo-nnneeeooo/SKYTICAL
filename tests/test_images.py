@@ -606,6 +606,7 @@ images.requests = types.SimpleNamespace(get=fake.get)
 # ── build-side normalization & honest labels ─────────────────────────────────
 
 img = build.normalize_image({"url": "https://upload.wikimedia.org/a.jpg",
+                             "subject": "China Airlines Boeing 777-300ER",
                              "link": "https://commons.wikimedia.org/w/1",
                              "credit": "P", "license": "CC BY 4.0",
                              "provider": "Wikimedia Commons",
@@ -616,15 +617,16 @@ check("normalize_image keeps attribution fields",
 check("normalize_image rejects non-http urls",
       build.normalize_image({"url": "javascript:alert(1)"}) is None
       and build.normalize_image("data:text/html,x") is None)
-check("legacy string image still accepted",
-      build.normalize_image("https://x.example/y.jpg")["kind"]
-      == "file_photo")
+check("uncaptioned legacy string uses brand fallback",
+      build.normalize_image("https://x.example/y.jpg") is None)
 check("unknown kind coerced to file_photo (never fake 'event photo')",
       build.normalize_image({"url": "https://x.example/y.jpg",
+                             "subject": "Airbus A350 aircraft",
                              "kind": "unverified_event"})["kind"]
       == "file_photo")
 check("verified official event-photo kind is preserved",
       build.normalize_image({"url": "https://www.caa.gov.tw/photo.jpg",
+                             "subject": "民航局防災演練現場",
                              "kind": "event_photo"})["kind"]
       == "event_photo")
 check("honest file-photo labels present in both languages",
