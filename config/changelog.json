@@ -1,13 +1,314 @@
 {
   "schemaVersion": 1,
-  "repository": "https://github.com/nnneeeooo-nnneeeooo/avwire",
+  "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-08-10",
+  "updatedThrough": "2026-09-07",
   "entries": [
+    {
+      "date": "2026-09-07",
+      "kind": "design",
+      "commit": "f2a00048300a42bf6057f6e5e240127f27606669",
+      "zh": "首頁全球延誤與取消改為連結至 FlightAware 公開即時統計，移除未設定來源提示。",
+      "en": "Replaced unavailable homepage disruption totals with a link to FlightAware's public live statistics."
+    },
+    {
+      "date": "2026-09-07",
+      "kind": "design",
+      "commit": "7d22cf1b02a78507200be408136fca3e64db46c1",
+      "zh": "精簡喀拉喀托之子火山照片圖說，拍攝日期保留於圖片資料。",
+      "en": "Shortened the Anak Krakatau photo caption while retaining its capture date in image metadata."
+    },
+    {
+      "date": "2026-09-07",
+      "kind": "fix",
+      "commit": "63f5add7ecb6b99178f670487458316eff70d7ef",
+      "zh": "加入喀拉喀托之子火山的對應歷史資料照片，保留作者、授權與來源資訊。",
+      "en": "Added a matching historical file photo for Anak Krakatau with author, licence and source attribution."
+    },
+    {
+      "date": "2026-09-06",
+      "kind": "feature",
+      "commit": "9521e35962e12e6237599a285d6d96689f343d88",
+      "zh": "新聞圖片顯示可驗證的主體描述並保留原始圖說；缺少可信描述時使用已標示的網站預設圖。",
+      "en": "Added verified image-subject descriptions and original captions, with a labelled site fallback when reliable descriptions are unavailable."
+    },
+    {
+      "date": "2026-09-06",
+      "kind": "editorial",
+      "commit": "ff2afa3b869a83e8caa43ee3eb16f1f059b1c7d9",
+      "zh": "修正 Simple Flying 媒體名稱誤譯，並加入標題、摘要與內文的用詞檢查。",
+      "en": "Corrected mistranslations of Simple Flying and added terminology checks for headlines, summaries and article text."
+    },
+    {
+      "date": "2026-09-02",
+      "kind": "fix",
+      "commit": "6c73346944de655c53c44a8d0774e79a8d88a72b",
+      "zh": "調整圖片清理與發布前檢查順序，讓既有錯圖能先被修正，再驗證更新內容。",
+      "en": "Reordered image cleanup and pre-publication checks so existing mismatches can be corrected before validation."
+    },
+    {
+      "date": "2026-09-02",
+      "kind": "fix",
+      "commit": "def3cead4e62860c0e2714b62f8f4eee44207602",
+      "zh": "配圖優先依標題與摘要中的主要機型判斷，避免使用內文僅供比較的其他機型照片。",
+      "en": "Prioritised aircraft types in headlines and summaries to avoid photos of aircraft mentioned only for comparison."
+    },
+    {
+      "date": "2026-09-01",
+      "kind": "editorial",
+      "commit": "981120fd7fe8df476214781a46c84ec1898baac9",
+      "zh": "擴充亞洲航空公司機隊新聞與海南航空官方資訊來源，保留原始發布者署名。",
+      "en": "Expanded Asian airline fleet coverage and official Hainan Airlines sources while preserving original publisher attribution."
+    },
+    {
+      "date": "2026-08-31",
+      "kind": "design",
+      "commit": "84910e30fc3422f77a714ffbbaa1a0c482b555fd",
+      "zh": "穩定手機版即時快訊字型，分別調整新聞文字與時間的字級及字重。",
+      "en": "Stabilised mobile live-ticker typography with separate sizing and weights for stories and timestamps."
+    },
+    {
+      "date": "2026-08-31",
+      "kind": "fix",
+      "commit": "d2edd8ed365b3aec47243796d55a679cd7086145",
+      "zh": "修正 iPhone 頁首標誌載入時的短暫留白，以及即時快訊文字超出顯示範圍的問題。",
+      "en": "Fixed transient iPhone header spacing during logo loading and ticker text painting outside its viewport."
+    },
+    {
+      "date": "2026-08-31",
+      "kind": "system",
+      "commit": "a6015884b14a3358abd60985969e36b5321d3450",
+      "zh": "移除自動撰稿中持續失效的模型路由，減少重複失敗請求造成的更新延遲。",
+      "en": "Removed persistently failing automatic drafting routes to reduce update delays from repeated failed requests."
+    },
+    {
+      "date": "2026-08-30",
+      "kind": "fix",
+      "commit": "d307b1d8810cc469650a4a9d8d25701903fe55cb",
+      "zh": "改善區域航空品牌與母品牌的配圖辨識，避免誤擋符合機型的資料照片。",
+      "en": "Improved regional-airline and parent-brand image matching to avoid rejecting valid aircraft file photos."
+    },
+    {
+      "date": "2026-08-30",
+      "kind": "feature",
+      "commit": "0d07e372968c0eaf90c3d8ab1c925e5b38edc4cd",
+      "zh": "早、午、晚快報各自提供完整過去 24 小時匯總，並將臺灣航空分為民航與軍航。",
+      "en": "Made each morning, afternoon and evening briefing a complete 24-hour digest, with separate Taiwan civil and military aviation sections."
+    },
+    {
+      "date": "2026-08-30",
+      "kind": "feature",
+      "commit": "0959f7cc0703327a28c62ccaff484afa9e3fe0a5",
+      "zh": "加入導覽路徑結構化資料，改善網站地圖更新日期、文章作者及社群分享資訊。",
+      "en": "Added breadcrumb structured data and improved sitemap modification dates, article authorship and social-sharing metadata."
+    },
+    {
+      "date": "2026-08-30",
+      "kind": "fix",
+      "commit": "31db04c68fa534b6924b855582c02729c096b59a",
+      "zh": "改善 iPad 直式導覽、首頁閱讀順序與雷達單欄排列，避免頁面橫向溢位。",
+      "en": "Improved portrait iPad navigation, homepage reading order and single-column radar layout without horizontal overflow."
+    },
+    {
+      "date": "2026-08-30",
+      "kind": "design",
+      "commit": "3dbd19c18177311296f02569ff69a88195902f92",
+      "zh": "補齊中英文社群分享語系與預覽圖片替代文字。",
+      "en": "Completed Chinese and English social-sharing locale metadata and preview-image alternative text."
+    },
+    {
+      "date": "2026-08-27",
+      "kind": "fix",
+      "commit": "6c8662f45ecf83367e4aa84821659bda1319ff78",
+      "zh": "機場 IATA 代碼在標題與內文首次提及時分別標註；未找到合適配圖的近期文章持續重試至第七天。",
+      "en": "Annotated airport IATA codes independently in headlines and article text, and continued missing-image retries through day seven."
+    },
+    {
+      "date": "2026-08-27",
+      "kind": "fix",
+      "commit": "65874c483d64972925e9d3fb9568b507769be768",
+      "zh": "修正營運統計欄位與來源狀態，區分資料來源未設定及暫時無法取得。",
+      "en": "Corrected operational-statistics fields and distinguished unconfigured sources from temporarily unavailable data."
+    },
+    {
+      "date": "2026-08-26",
+      "kind": "feature",
+      "commit": "243d6c7056b37570442e0ec6e139cd92273dc3a0",
+      "zh": "新聞索引加入分頁，強化機場代碼與原始來源連結，避免公開頁面使用未解析的新聞聚合網址。",
+      "en": "Added news-index pagination and strengthened airport-code and original-source links, excluding unresolved aggregator URLs from public pages."
+    },
+    {
+      "date": "2026-08-26",
+      "kind": "feature",
+      "commit": "c27c1f18a953d5261490885d39d7bec37cd2fe78",
+      "zh": "新增中英文新聞索引與 RSS，延後載入搜尋索引，並加強新聞主題及近期配圖檢查。",
+      "en": "Added bilingual news indexes and RSS, deferred search-index loading and strengthened story-scope and recent-image checks."
+    },
+    {
+      "date": "2026-08-26",
+      "kind": "design",
+      "commit": "9fa79e316accd954b09da57dad477b8c82819cb4",
+      "zh": "天氣造成國籍航空航班異動的頭條優先顯示期限縮短為 16 小時。",
+      "en": "Shortened homepage priority for weather-related national-airline flight changes to 16 hours."
+    },
+    {
+      "date": "2026-08-24",
+      "kind": "fix",
+      "commit": "8e4d4d69ba9824747bd4d872f32c76a545831f7c",
+      "zh": "強化近期新聞配圖相關性，排除不符主題的航空公司、機型、航廈、機艙與事故照片。",
+      "en": "Strengthened recent-news image relevance checks against unrelated airlines, aircraft, terminals, cabins and accident imagery."
+    },
+    {
+      "date": "2026-08-24",
+      "kind": "fix",
+      "commit": "1a4adf785cf09d24569176c7d7bb4f784ef19d18",
+      "zh": "機場簡稱也納入首次 IATA 代碼標註，補齊芝加哥奧黑爾機場別名辨識。",
+      "en": "Included airport short names in first-mention IATA annotation and added Chicago O'Hare aliases."
+    },
+    {
+      "date": "2026-08-24",
+      "kind": "feature",
+      "commit": "1bea1c0b87d906ee9c3a19c8111de78adb774018",
+      "zh": "首頁可輪播符合條件的天氣與國籍航空航班異動新聞，每五分鐘切換。",
+      "en": "Added five-minute homepage rotation for qualifying weather-related national-airline flight-change stories."
+    },
+    {
+      "date": "2026-08-24",
+      "kind": "fix",
+      "commit": "b875e0318fbc25308bd049f9e833eed6a77f623f",
+      "zh": "一般航空公司新聞的備援配圖排除機艙內裝，優先使用符合業者的飛機外觀照片。",
+      "en": "Excluded cabin interiors from generic airline image fallbacks in favour of matching exterior aircraft photos."
+    },
+    {
+      "date": "2026-08-21",
+      "kind": "feature",
+      "commit": "4ed4256904c10d238d4ecd1f168c3e764c37ae35",
+      "zh": "首頁本週嚴重事件可連到相同統計範圍的事故清單，再開啟完整新聞。",
+      "en": "Linked the homepage weekly serious-event count to the matching incident list and full articles."
+    },
+    {
+      "date": "2026-08-20",
+      "kind": "design",
+      "commit": "8b4981da4bb6d76a7cc6b49f83c3c9e4de399ad4",
+      "zh": "擴大首頁與主題頁新聞摘要的可用寬度，改善桌面版提早換行。",
+      "en": "Expanded summary width on home and topic pages to reduce premature desktop line wrapping."
+    },
+    {
+      "date": "2026-08-17",
+      "kind": "fix",
+      "commit": "a885e0f6d11b80ff72f252ad95c194ae6fe95d0f",
+      "zh": "多起獨立事件的飛安彙整維持中性預設圖，避免後續配圖流程重新附加單一事件照片。",
+      "en": "Kept neutral imagery for multi-event safety roundups and prevented later fallback stages from attaching single-event photos."
+    },
+    {
+      "date": "2026-08-17",
+      "kind": "editorial",
+      "commit": "e3ce6b52b6c22bff5f7c501df9abdf157f8c3ced",
+      "zh": "飛安彙整明確區分不相關事件，補足機型與地點說明，避免將整篇彙整當成單一事故。",
+      "en": "Separated unrelated events in safety roundups, expanded aircraft and location descriptions and avoided treating a roundup as one incident."
+    },
+    {
+      "date": "2026-08-17",
+      "kind": "editorial",
+      "commit": "313e035de218ee2d47e38cc1e14c4e7e8bc23fa0",
+      "zh": "統一使用航空用語「機齡」，避免誤植為「車齡」。",
+      "en": "Standardised the Chinese term for aircraft age and prevented the road-vehicle equivalent."
+    },
+    {
+      "date": "2026-08-15",
+      "kind": "fix",
+      "commit": "9dd8e102a721878f24c4cd113c81ba1c490b1c73",
+      "zh": "調整 iPhone 頁首 SVG 標誌的載入方式，減少縮放時的灰色毛邊。",
+      "en": "Adjusted iPhone header SVG loading to reduce grey fringes during scaling."
+    },
+    {
+      "date": "2026-08-15",
+      "kind": "fix",
+      "commit": "be52359e82f8712e0befebc08d946cf347bbc173",
+      "zh": "加入摘要句子邊界檢查，避免既有截斷方式留下不完整句子。",
+      "en": "Added summary-boundary checks to prevent incomplete sentences caused by legacy truncation."
+    },
+    {
+      "date": "2026-08-15",
+      "kind": "editorial",
+      "commit": "104d5166322b366a84d46c0d9230109938d3bc17",
+      "zh": "統一 Heathrow Airport 的臺灣慣用譯名為「希斯洛機場」。",
+      "en": "Standardised the Taiwan Chinese rendering of Heathrow Airport."
+    },
+    {
+      "date": "2026-08-15",
+      "kind": "design",
+      "commit": "076199724f6a01cabba5a9e93965be521b8dcae1",
+      "zh": "頁首與頁尾統一使用核准的 SKYTICAL 標誌母版，移除額外重描的翼形疊圖。",
+      "en": "Restored the approved SKYTICAL logo master in headers and footers and removed the redrawn wing overlay."
+    },
+    {
+      "date": "2026-08-15",
+      "kind": "editorial",
+      "commit": "519140eaf5ec0a11fc82539291944ceb7962abc2",
+      "zh": "發布前依可信機場資料庫補齊首次提及的 IATA 代碼；無法唯一辨識的名稱不猜測代碼。",
+      "en": "Added database-backed first-mention airport IATA annotation before publication without guessing ambiguous names."
+    },
+    {
+      "date": "2026-08-15",
+      "kind": "editorial",
+      "commit": "cd2869b753f295fd2dc6424ffd79c64452131edc",
+      "zh": "擴充世界民航雜誌相關可信來源，支援跨來源新聞查證。",
+      "en": "Added trusted sources associated with Airway magazine for cross-source news verification."
+    },
+    {
+      "date": "2026-08-15",
+      "kind": "feature",
+      "commit": "dd3448112affffcaa749aa15086070c735aad85a",
+      "zh": "配圖搜尋擴充至全球已辨識機場，保留授權與主題檢查及網站預設圖。",
+      "en": "Extended image search to identified airports worldwide while retaining licence, relevance and site-fallback checks."
+    },
+    {
+      "date": "2026-08-15",
+      "kind": "design",
+      "commit": "b13ab59085db90f8aaf9e60f6b562d64a2772e9a",
+      "zh": "未取得可驗證新聞照片時，文章顯示附有說明的 SKYTICAL 預設圖。",
+      "en": "Added a clearly labelled SKYTICAL fallback image when a verified news photo is unavailable."
+    },
+    {
+      "date": "2026-08-14",
+      "kind": "feature",
+      "commit": "962442d141a19498678a7ff152a3b1ebd2ea3e4e",
+      "zh": "正式網站啟用 skytical.tech，同步更新中英文網址、網站地圖與搜尋分享資訊。",
+      "en": "Launched skytical.tech and updated bilingual URLs, sitemaps and search and sharing metadata."
+    },
+    {
+      "date": "2026-08-12",
+      "kind": "design",
+      "commit": "06ffc2d9172cb1609af620e4dc60fd663fd52a3c",
+      "zh": "調整 SKYTICAL 翼標與字樣的比例及對齊，同步更新圖示與社群預覽圖。",
+      "en": "Balanced the SKYTICAL wing and wordmark proportions and alignment, including icons and social previews."
+    },
+    {
+      "date": "2026-08-12",
+      "kind": "design",
+      "commit": "b023b74ec4231f9a386cf7f98380c18b1f21bca1",
+      "zh": "更新 SKYTICAL 彩色品牌標誌、頁首頁尾、網站圖示與社群分享圖片。",
+      "en": "Updated SKYTICAL colour branding across headers, footers, site icons and social-sharing images."
+    },
+    {
+      "date": "2026-08-11",
+      "kind": "fix",
+      "commit": "d244123f9e5c5d7bd85fe27f99f6265405793e97",
+      "zh": "民航局新聞優先採用對應官方現場照片，並加入資料照片年份檢查。",
+      "en": "Prioritised matching official CAA event photos and added age checks for file-photo fallbacks."
+    },
+    {
+      "date": "2026-08-11",
+      "kind": "feature",
+      "commit": "eb1c13da9ac285a61e7ffe127bc139543fd76ea2",
+      "zh": "新增航空主題頁、編輯與更正政策、網站地圖及新聞結構化資料，改善搜尋收錄。",
+      "en": "Added aviation topic pages, editorial and correction policies, sitemaps and news structured data for search discovery."
+    },
     {
       "date": "2026-08-10",
       "kind": "editorial",
-      "commit": null,
+      "commit": "80e5614c5149662a48af6d117e5360850f8ed309",
       "zh": "補齊 7 月 29 日至 8 月 10 日的重要公開網站功能、新聞品質與介面更新紀錄。",
       "en": "Backfilled significant public site, news-quality and interface changes from 29 July through 10 August."
     },
