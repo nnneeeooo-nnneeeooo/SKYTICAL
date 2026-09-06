@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-09-06T17:51Z",
+  "updatedUtc": "2026-09-06T17:52Z",
   "trackingSinceUtc": "2026-08-15T12:46Z",
   "models": {
     "opencode:claude-sonnet-4-6": {
@@ -9,10 +9,10 @@
       "unknownCalls": 1217
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 906,
-      "inputTokens": 3082325,
-      "outputTokens": 4822001,
-      "unknownCalls": 311
+      "calls": 910,
+      "inputTokens": 3092614,
+      "outputTokens": 4839181,
+      "unknownCalls": 313
     },
     "nvidia:z-ai/glm-5.2": {
       "calls": 598,
@@ -283,15 +283,72 @@
       "outputTokens": 733400
     },
     "2026-09-06": {
-      "calls": 143,
-      "inputTokens": 821665,
-      "outputTokens": 556139
+      "calls": 147,
+      "inputTokens": 819253,
+      "outputTokens": 573155
     }
   },
   "recentRuns": [
     {
-      "startedUtc": "2026-09-06T17:40Z",
-      "finishedUtc": "2026-09-06T17:41Z",
+      "startedUtc": "2026-09-06T17:52Z",
+      "finishedUtc": "2026-09-06T17:52Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260906-1752-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "AeroTime",
+      "result": "published",
+      "articleId": "a-20260906-1752-uss-abraham-lincoln-departs-thailand-to",
+      "finalStatus": "publish",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 2447,
+        "promptAssembly": 2,
+        "drafting": 47404,
+        "validation": 1,
+        "factVerification": 0,
+        "evidenceBinding": 0,
+        "glossaryCheck": 0,
+        "fabricationCheck": 0,
+        "articleBuild": 6,
+        "total": 49949
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-09-06T17:52Z",
+          "durationMs": 47406,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 47400,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-09-06T17:26Z",
+      "finishedUtc": "2026-09-06T17:27Z",
       "workflow": "hourly",
       "taskType": "article",
       "groupId": "g-20260906-1740-1",
@@ -139600,44 +139657,6 @@
         "fabricationCheck": null,
         "articleBuild": null,
         "total": 127701
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-24T03:45Z",
-      "finishedUtc": "2026-08-24T03:47Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260824-0345-9",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "臺灣交通要聞",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 1984,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 127078
       },
       "attempts": [],
       "resourceUsage": {
