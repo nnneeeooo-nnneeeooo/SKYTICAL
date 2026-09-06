@@ -10,6 +10,9 @@ import re
 from html import unescape
 from urllib.parse import unquote, urlsplit
 
+# Match the named volcano, never an arbitrary eruption or a passing body mention.
+ANAK_KRAKATAU_RE = re.compile(r"喀拉喀托之子|\bAnak\s+Krakat(?:au|oa)\b", re.I)
+
 
 _BAD_METADATA_RE = re.compile(
     r"map|logo|diagram|schematic|seal|icon|flag|emblem|coat of arms|"
@@ -148,6 +151,11 @@ def image_is_safe_for_article(article: dict, image) -> bool:
     if not provenance:
         return True
     matched = str(image.get("matched") or "").casefold()
+
+    if matched == "topic:volcano:anak-krakatau" and not (
+            ANAK_KRAKATAU_RE.search(article_headline_text(article))
+            and ANAK_KRAKATAU_RE.search(provenance.replace("_", " "))):
+        return False
 
     if _BAD_METADATA_RE.search(provenance):
         return False
