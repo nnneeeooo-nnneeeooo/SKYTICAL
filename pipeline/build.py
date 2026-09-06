@@ -2727,7 +2727,7 @@ def codex_usage_rows(snapshot: dict, prices: dict):
 _CHANGELOG_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}\Z")
 _CHANGELOG_COMMIT_RE = re.compile(r"[0-9a-f]{40}\Z")
 _CHANGELOG_KINDS = {"feature", "fix", "system", "editorial", "design"}
-_CHANGELOG_REPOSITORY = "https://github.com/nnneeeooo-nnneeeooo/avwire"
+_CHANGELOG_REPOSITORY = "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL"
 
 
 def changelog_view(raw, lang: str, labels: dict) -> dict:
