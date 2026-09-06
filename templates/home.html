@@ -100,26 +100,20 @@
     <div class="rail-right">
       <h6 style="margin:0 0 12px;">{{ t.today }}</h6>
       <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-divider);">
-        <a class="radar-stat-link" href="{{ radar_url }}" style="padding:12px;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);">
+        <a class="radar-stat-link" href="{{ radar_url }}" style="padding:12px;border-right:1px solid var(--color-divider);">
           <div class="stat-value" style="font-size:24px;font-weight:800;color:var(--color-accent);letter-spacing:-.02em;">{{ stats.radar }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statRadar }}</div>
         </a>
-        <div style="padding:12px;border-bottom:1px solid var(--color-divider);">
-          <div class="stat-value{% if not stats.delay_available %} stat-unavailable{% endif %}" style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.delay }}</div>
-          <div class="text-muted" style="font-size:11px;">{{ t.statDelay }}</div>
-        </div>
-        <a class="radar-stat-link" href="{{ incidents_week_url }}" aria-label="{{ t.incWeeklySerious }}：{{ stats.serious }} {{ t.incCountLabel }}" style="padding:12px;border-right:1px solid var(--color-divider);">
+        <a class="radar-stat-link" href="{{ incidents_week_url }}" aria-label="{{ t.incWeeklySerious }}：{{ stats.serious }} {{ t.incCountLabel }}" style="padding:12px;">
           <div class="stat-value{% if not stats.serious_available %} stat-unavailable{% endif %}" style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.serious }}</div>
           <div class="text-muted" style="font-size:11px;">{{ t.statSerious }}</div>
         </a>
-        <div style="padding:12px;">
-          <div class="stat-value{% if not stats.cancellations_available %} stat-unavailable{% endif %}" style="font-size:24px;font-weight:800;letter-spacing:-.02em;">{{ stats.cancellations }}</div>
-          <div class="text-muted" style="font-size:11px;">{{ t.statCancelled }}</div>
-        </div>
+        <a class="radar-stat-link" href="https://www.flightaware.com/live/cancelled/today/" target="_blank" rel="noopener noreferrer" style="grid-column:1 / -1;padding:12px;border-top:1px solid var(--color-divider);">
+          <div style="font-size:14px;font-weight:800;">{% if html_lang.startswith('zh') %}全球延誤與取消{% else %}Worldwide delays and cancellations{% endif %}</div>
+          <div style="font-size:13px;margin-top:4px;color:var(--color-accent);">{% if html_lang.startswith('zh') %}查看即時統計{% else %}View live statistics{% endif %} ↗</div>
+          <div class="text-muted" style="font-size:11px;margin-top:4px;">{% if html_lang.startswith('zh') %}前往 FlightAware 查看（另開分頁）{% else %}View on FlightAware (opens in a new tab){% endif %}</div>
+        </a>
       </div>
-      {% if stats_note %}
-      <p class="stats-note text-muted">{{ stats_note }}</p>
-      {% endif %}
       {% if otp %}
       <h6 style="margin:28px 0 12px;">{{ t.otp }}</h6>
       {% for r in otp %}
