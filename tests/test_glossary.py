@@ -108,6 +108,27 @@ good_sf = draft("Simple Flying 發布達美航空空服員薪資分析",
 check("verbatim Simple Flying + 達美航空 passes",
       write.glossary_problem(good_sf, GROUP) is None)
 
+# Retaining the English name must not mask an invented Chinese translation.
+for wrong in ("簡易飛行", "簡單飛行", "简易飞行", "简单飞行"):
+    check(f"prompt explicitly forbids {wrong}",
+          f"「{wrong}」" in block and "NEVER" in block)
+    for surface in ("title", "summary", "body", "flash"):
+        bad = draft("航線調整", "Route changes")
+        text = f"據{wrong}（Simple Flying）報導，航線將調整。"
+        if surface == "flash":
+            bad["flash"]["zh"] = text
+        else:
+            bad["zh"][surface] = [text] if surface == "body" else text
+        problem = write.glossary_problem(bad, GROUP)
+        check(f"source-only brand rejects {wrong} with English in {surface}",
+              problem is not None and "forbidden rendering" in problem)
+
+sf_body = draft("航線調整", "Route changes",
+                zh_body=("據 Simple Flying 報導，航線將調整。",),
+                en_body=("Simple Flying reports route changes.",))
+check("English-only attribution in body passes",
+      write.glossary_problem(sf_body, GROUP) is None)
+
 bad_delta = draft("Simple Flying 發布德爾塔航空空服員薪資分析",
                   "Simple Flying publishes Delta Air Lines pay analysis")
 check("non-Taiwan rendering 德爾塔航空 is rejected",
