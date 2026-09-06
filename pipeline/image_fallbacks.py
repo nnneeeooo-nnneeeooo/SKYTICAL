@@ -36,6 +36,7 @@ from common import (
     save_json,
 )
 from image_policy import (  # noqa: E402
+    ANAK_KRAKATAU_RE,
     BAD_AIRPORT_TITLE_RE,
     article_headline_text,
     article_is_airport_operations,
@@ -62,6 +63,21 @@ _GENERIC_AIRPORT_WORDS = {
 # Every deterministic entry must be manually vetted for relevance and reuse.
 # They are file photos, never represented as photos from the current event.
 _TOPIC_IMAGES = (
+    {
+        "name": "anak-krakatau",
+        "patterns": (ANAK_KRAKATAU_RE,),
+        "image": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Uprising-mt_anak_krakatau.jpg/1280px-Uprising-mt_anak_krakatau.jpg",
+            "link": "https://commons.wikimedia.org/wiki/File:Uprising-mt_anak_krakatau.jpg",
+            "credit": "Uprising",
+            "license": "CC BY-SA 3.0",
+            "provider": "Wikimedia Commons",
+            "kind": "file_photo",
+            "matched": "topic:volcano:anak-krakatau",
+            "subject": "印尼喀拉喀托之子火山（Anak Krakatau）冒煙景象；2012-09-09 拍攝的歷史資料照",
+            "photoYear": 2012,
+        },
+    },
     {
         "name": "china-airlines",
         "patterns": (
