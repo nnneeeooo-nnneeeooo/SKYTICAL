@@ -47,6 +47,7 @@ jobs:
         run: |
           python tests/test_images.py
           python tests/test_image_fallbacks.py
+          python tests/test_volcano_images.py
           python tests/test_image_qa.py
 
       - name: Run pipeline
