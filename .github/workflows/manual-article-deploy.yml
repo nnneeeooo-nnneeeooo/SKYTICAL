@@ -58,6 +58,8 @@ jobs:
         run: |
           python pipeline/summary_guard.py
           python pipeline/airport_codes.py
+          python pipeline/image_captions.py
+          python tests/test_image_captions.py
           python pipeline/build.py
 
       - name: Scan publishable output

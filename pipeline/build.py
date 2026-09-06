@@ -55,6 +55,13 @@ from model_config import (
     MODEL_DISPLAY_NAMES,
     MODEL_ORDER,
 )
+from image_captions import clean_description
+
+_caption_cache = load_json(DATA_DIR / "image-captions.json", {})
+IMAGE_CAPTIONS = (_caption_cache.get("images", {})
+                  if isinstance(_caption_cache, dict) else {})
+if not isinstance(IMAGE_CAPTIONS, dict):
+    IMAGE_CAPTIONS = {}
 
 PUBLIC_DIR = Path(__file__).resolve().parent.parent / "public"
 
@@ -975,37 +982,43 @@ def _public_direct_url(url: str) -> bool:
     return bool(value) and _safe_web_url(value) and not is_google_news_url(value)
 
 
-def normalize_image(raw_img):
+def normalize_image(raw_img, titles=()):
     """Article image -> {url, link, credit, license, provider, kind} or None.
 
-    Accepts the images.py match dict or a plain URL string (legacy).
+    Accepts the images.py match dict or a plain URL string (legacy) with an
+    exact-URL cached description. Uncaptioned photos use the brand fallback.
     Only http(s) URLs survive; a credited external embed keeps its
     attribution and backlink so CC/photographer terms are honored.
     """
+    if isinstance(raw_img, str):
+        raw_img = {"url": raw_img}
     if isinstance(raw_img, dict):
         url = str(raw_img.get("url") or "")
         if not url or not _safe_web_url(url):
             return None
-        link = str(raw_img.get("link") or "")
+        cached = IMAGE_CAPTIONS.get(url) or {}
+        if not isinstance(cached, dict):
+            cached = {}
+        subject = (clean_description(raw_img.get("description"))
+                   or clean_description(raw_img.get("subject"))
+                   or clean_description(cached.get("subject")))
+        if not subject or subject.casefold() in {
+                str(title).strip().casefold() for title in titles if title}:
+            return None
+        link = str(raw_img.get("link") or cached.get("link") or "")
         return {
             "url": url,
             "link": link if link and _safe_web_url(link) else None,
             "credit": str(raw_img.get("credit") or "") or None,
             "license": str(raw_img.get("license") or "") or None,
-            "provider": str(raw_img.get("provider") or "") or None,
-            "subject": str(raw_img.get("subject") or "") or None,
+            "provider": str(raw_img.get("provider") or cached.get("provider") or "") or None,
+            "subject": subject,
             "kind": (raw_img.get("kind")
                      if raw_img.get("kind") in ("airframe_photo",
                                                 "file_photo",
                                                 "event_photo")
                      else "file_photo"),
         }
-    if raw_img:
-        url = str(raw_img)
-        if not _safe_web_url(url):
-            return None
-        return {"url": url, "link": None, "credit": None, "license": None,
-                "provider": None, "subject": None, "kind": "file_photo"}
     return None
 
 
@@ -1153,7 +1166,8 @@ def prep_article(raw):
     ]
     if not available_languages:
         available_languages = ["zh", "en"]
-    image = normalize_image(raw.get("image"))
+    image = normalize_image(raw.get("image"), titles=[
+        (raw.get(lang) or {}).get("title") for lang in ("zh", "en")])
     # Display the SOURCE's newest publication time when the write stage
     # recorded one; the generation time (dt) is used for ordering only, so
     # a days-old official release is never presented as breaking news.
@@ -1399,7 +1413,8 @@ def _hero_image_caption(image, lang: str) -> str:
         )
     parts = []
     if image.get("subject"):
-        parts.append(str(image["subject"]))
+        parts.append(("圖中主體：" if lang == "zh" else "Pictured: ")
+                     + str(image["subject"]))
     kind = str(image.get("kind") or "")
     kind_label = L[lang]["photoKind"].get(kind)
     if kind_label:
