@@ -85,6 +85,8 @@ jobs:
           python pipeline/airport_codes.py
           python pipeline/images.py
           python pipeline/image_fallbacks.py
+          python pipeline/image_captions.py
+          python tests/test_image_captions.py
           python pipeline/image_qa.py
           # The saved Taipei date makes this one LLM-assisted refresh per day.
           # Missing/invalid model output falls back to published article titles.

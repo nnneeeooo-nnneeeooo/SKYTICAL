@@ -20,7 +20,7 @@
     "publication-period", "manual-order-panel", "sort-follow-publication",
     "sort-time-fields", "sort-date", "sort-hour", "sort-minute",
     "sort-period",
-    "image-input", "image-list", "upload-zone", "article-type", "language",
+    "image-input", "image-list", "image-description", "upload-zone", "article-type", "language",
     "model", "reasoning-tier", "chat-history", "instruction", "clear-chat",
     "generate", "form-error", "security-state", "job-state", "metric-model",
     "metric-reasoning", "metric-fallback", "metric-duration",
@@ -659,6 +659,17 @@
     els.attempts.innerHTML = '<p class="muted">尚無資料</p>';
   }
 
+  function manualImageSubject() {
+    const subject = els["image-description"].value.trim();
+    if (subject.length < 4 || subject.length > 240
+        || /^(圖片|照片|資料照片|示意圖|image|photo|file photo)$/i.test(subject)
+        || subject === els["manual-title-primary"].value.trim()
+        || subject === els["manual-title-secondary"].value.trim()) {
+      throw new Error("請填寫首張配圖的具體主體，不能只寫資料照片或直接使用新聞標題。");
+    }
+    return subject;
+  }
+
   function validateForm() {
     if (!validToken) return "私人網址權杖無效";
     if (!validPat(els["github-token"].value.trim())) {
@@ -670,6 +681,9 @@
       return "來源網址只能使用 http:// 或 https://";
     }
     if (workbenchMode === "manual") {
+      if (images.length) {
+        try { manualImageSubject(); } catch (error) { return error.message; }
+      }
       if (!els["manual-title-primary"].value.trim()) {
         return "請輸入文章標題";
       }
@@ -770,7 +784,7 @@
       image: imageUrls[0] ? {
         url: imageUrls[0],
         provider: "AVWIRE manual upload",
-        subject: zh.title || en.title,
+        subject: manualImageSubject(),
         kind: "file_photo",
       } : null,
       zh,
@@ -1475,12 +1489,13 @@
     try {
       let latestCommit = "";
       if (lastResult.operatorAuthored && images.length) {
+        const imageSubject = manualImageSubject();
         const imageUrls = imageUrlsForArticle(article.id);
         latestCommit = await uploadManualImages(article.id);
         article.image = {
           url: imageUrls[0],
           provider: "AVWIRE manual upload",
-          subject: article.zh.title || article.en.title,
+          subject: imageSubject,
           kind: "file_photo",
         };
         article.attachments = imageUrls.map((url, index) => ({
