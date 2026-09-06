@@ -30,7 +30,10 @@ class VolcanoImagesTests(unittest.TestCase):
             self.assertEqual(image["kind"], "file_photo")
             self.assertTrue(images.existing_image_matches(row, image))
             caption = build._hero_image_caption(build.normalize_image(image), "zh")
-            for value in ("Anak Krakatau", "2012-09-09", "非事件現場照片", "Uprising", "CC BY-SA 3.0"):
+            self.assertEqual(image["subject"], "印尼喀拉喀托之子火山（Anak Krakatau）冒煙景象")
+            self.assertEqual(image["photoDate"], "2012-09-09")
+            self.assertNotIn("2012-09-09", caption)
+            for value in ("Anak Krakatau", "非事件現場照片", "Uprising", "CC BY-SA 3.0"):
                 self.assertIn(value, caption)
 
     def test_other_volcano_and_body_only_do_not_match(self):
