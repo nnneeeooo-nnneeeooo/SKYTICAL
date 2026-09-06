@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-09-06T17:38Z",
+  "generatedUtc": "2026-09-06T17:49Z",
   "targetDateTpe": "2026-09-07",
   "sourceWindow": "month_to_date",
-  "generationMode": "llm",
-  "provider": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+  "generationMode": "deterministic",
+  "provider": null,
   "sourceArticleIds": [
-    "a-20260906-1726-american-airlines-to-launch-10-nonstop-r",
     "a-20260906-1439-mount-anak-krakatau-eruption-grounds-fli",
     "a-20260906-1439-ramp-agent-dies-after-being-struck-by-ai",
     "a-20260906-1439-recaro-begins-r4-premium-economy-seat-de",
     "a-20260906-1016-delta-air-lines-cuts-4-domestic-routes-f",
+    "a-20260906-1016-taiwan-mnd-tracks-21-chinese-aircraft-an",
     "a-20260906-0835-american-airlines-flight-diverted-to-bal"
   ],
   "prompts": {
     "zh": [
-      "搜尋美國航空JFK歐洲航線",
-      "查詢喀拉喀托之子火山CGK影響",
-      "了解空中巴士A350蒙特婁意外",
-      "探索RecaroR4全日空787-9座椅",
-      "查看達美航空紐約拉斯維加斯停飛",
-      "搜尋美國航空轉降巴爾的摩事件"
+      "搜尋：印尼喀拉喀托之子火山噴發 8座機場暫停營運",
+      "搜尋：蒙特婁機場地勤人員遭空中巴士A350撞擊不治…",
+      "搜尋：Recaro交付新型R4豪華經濟艙座椅 全日…",
+      "搜尋：達美航空今冬調整網路 砍紐約與拉斯維加斯4條…",
+      "搜尋：國防部偵獲21架次共機與10艘共艦 13架次…",
+      "搜尋：美國航空班機因旅客鬧事轉降 乘客協助以膠帶將…"
     ],
     "en": [
-      "Find American Airlines JFK Europe routes",
-      "Check Mount Anak Krakatau impact on CGK",
-      "Learn about Airbus A350 Montreal incident",
-      "Explore Recaro R4 seats on ANA 787-9",
-      "See Delta Air Lines cuts NY Las Vegas routes",
-      "Search American Airlines diversion to Baltimore"
+      "Explore: Mount Anak Krakatau Eruption Grounds Flights at…",
+      "Explore: Ramp Agent Dies After Being Struck by Airbus A35…",
+      "Explore: Recaro Begins R4 Premium Economy Seat Deliveries…",
+      "Explore: Delta Air Lines Cuts 4 Domestic Routes From New…",
+      "Explore: Taiwan MND Tracks 21 Chinese Aircraft and 10 War…",
+      "Explore: American Airlines Flight Diverted to Baltimore A…"
     ]
   }
 }
