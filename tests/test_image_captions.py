@@ -61,11 +61,9 @@ class ImageCaptionTests(unittest.TestCase):
             self.assertEqual(image["subject"], "Virgin Atlantic Airbus A350")
             self.assertEqual(image["kind"], "file_photo")
             self.assertEqual(image["link"], SOURCE)
-            self.assertIn("圖中主體：Virgin Atlantic Airbus A350",
-                          build._hero_image_caption(image, "zh"))
-            self.assertIn("Pictured: Virgin Atlantic Airbus A350",
-                          build._hero_image_caption(image, "en"))
-            self.assertIn("非事件現場照片", build._hero_image_caption(image, "zh"))
+            for lang in ("zh", "en"):
+                self.assertEqual(build._hero_image_caption(image, lang),
+                                 "Virgin Atlantic Airbus A350 · Simple Flying")
 
     def test_uncaptioned_and_headline_copied_images_use_brand_fallback(self):
         with patch.object(build, "IMAGE_CAPTIONS", {}):
@@ -79,7 +77,7 @@ class ImageCaptionTests(unittest.TestCase):
                "description": "Virgin Atlantic Airbus A350 at Heathrow",
                "credit": "Jane", "license": "CC BY 4.0", "kind": "airframe_photo"}
         normalized = build.normalize_image(raw)
-        self.assertEqual(normalized["subject"], raw["description"])
+        self.assertEqual(normalized["subject"], raw["subject"])
         for key in ("credit", "license", "kind"):
             self.assertEqual(normalized[key], raw[key])
 
@@ -112,7 +110,9 @@ class ImageCaptionTests(unittest.TestCase):
         for name in ("article", "home"):
             html = (ROOT / "templates" / f"{name}.html").read_text(encoding="utf-8")
             self.assertIn("data-image-description", html)
-            self.assertIn("圖中主體：", html)
+            self.assertNotIn("圖中主體：", html)
+            self.assertNotIn("Pictured: ", html)
+            self.assertNotIn("t.photoKind[", html)
         script = (ROOT / "static" / "manual.js").read_text(encoding="utf-8")
         self.assertNotIn("subject: zh.title || en.title", script)
         self.assertNotIn("subject: article.zh.title || article.en.title", script)
