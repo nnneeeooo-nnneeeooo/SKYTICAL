@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-09-06T23:23Z",
+  "updatedUtc": "2026-09-07T01:59Z",
   "trackingSinceUtc": "2026-08-15T12:46Z",
   "models": {
     "opencode:claude-sonnet-4-6": {
@@ -9,9 +9,9 @@
       "unknownCalls": 1217
     },
     "gemini:gemini-3.6-flash": {
-      "calls": 916,
-      "inputTokens": 3108754,
-      "outputTokens": 4863139,
+      "calls": 917,
+      "inputTokens": 3112786,
+      "outputTokens": 4877845,
       "unknownCalls": 315
     },
     "nvidia:z-ai/glm-5.2": {
@@ -286,9 +286,71 @@
       "calls": 163,
       "inputTokens": 885882,
       "outputTokens": 625963
+    },
+    "2026-09-07": {
+      "calls": 1,
+      "inputTokens": 4032,
+      "outputTokens": 14706
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-09-07T01:58Z",
+      "finishedUtc": "2026-09-07T01:59Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20260907-0157-2",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "published",
+      "articleId": "a-20260907-0158-airbus-a350-output-target-in-doubt-over",
+      "finalStatus": "publish",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 2375,
+        "promptAssembly": 1,
+        "drafting": 69761,
+        "validation": 0,
+        "factVerification": 0,
+        "evidenceBinding": 0,
+        "glossaryCheck": 0,
+        "fabricationCheck": 0,
+        "articleBuild": 3,
+        "total": 72209
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-09-07T01:58Z",
+          "durationMs": 69761,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 69759,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-09-06T23:22Z",
       "finishedUtc": "2026-09-06T23:22Z",
@@ -139805,44 +139867,6 @@
         "fabricationCheck": null,
         "articleBuild": null,
         "total": 476122
-      },
-      "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-08-24T04:36Z",
-      "finishedUtc": "2026-08-24T04:44Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260824-0436-6",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "臺灣交通要聞",
-      "result": "skipped_no_material",
-      "articleId": null,
-      "finalStatus": "skipped_no_material",
-      "finalModel": null,
-      "fallbackUsed": false,
-      "attemptCount": 0,
-      "httpCallCount": 0,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 1966,
-        "promptAssembly": null,
-        "drafting": null,
-        "validation": null,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 475486
       },
       "attempts": [],
       "resourceUsage": {
