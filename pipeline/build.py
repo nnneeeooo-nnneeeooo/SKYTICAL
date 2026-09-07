@@ -999,8 +999,8 @@ def normalize_image(raw_img, titles=()):
         cached = IMAGE_CAPTIONS.get(url) or {}
         if not isinstance(cached, dict):
             cached = {}
-        subject = (clean_description(raw_img.get("description"))
-                   or clean_description(raw_img.get("subject"))
+        subject = (clean_description(raw_img.get("subject"))
+                   or clean_description(raw_img.get("description"))
                    or clean_description(cached.get("subject")))
         if not subject or subject.casefold() in {
                 str(title).strip().casefold() for title in titles if title}:
@@ -1413,12 +1413,7 @@ def _hero_image_caption(image, lang: str) -> str:
         )
     parts = []
     if image.get("subject"):
-        parts.append(("圖中主體：" if lang == "zh" else "Pictured: ")
-                     + str(image["subject"]))
-    kind = str(image.get("kind") or "")
-    kind_label = L[lang]["photoKind"].get(kind)
-    if kind_label:
-        parts.append(kind_label)
+        parts.append(str(image["subject"]))
     if image.get("credit"):
         parts.append(f"© {image['credit']}")
     if image.get("license"):
