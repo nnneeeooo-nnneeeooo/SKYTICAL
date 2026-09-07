@@ -1,6 +1,10 @@
 """images.py — attach a real, matching photo to published articles.
 
-Runs after write.py. For each recent article without an image it tries,
+Runs after write.py. A captioned CNA publicity photo from the exact cited
+article is checked first, including when a provisional Commons photo exists.
+Source lookups have a separate six-request budget and retry failures after
+six hours within the same seven-day freshness window.
+For each remaining recent article without an image it tries,
 in order:
 
   1. An event photo attached to a supported official source release.
@@ -58,6 +62,7 @@ from image_policy import (  # noqa: E402
     image_is_safe_for_article,
     image_provenance,
 )
+from source_images import can_upgrade, lookup_source_photo, supported_source
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_PATH = DATA_DIR / "images.json"
@@ -818,10 +823,11 @@ def main() -> int:
     entries = cache.get("articles")
     if not isinstance(entries, dict):
         entries = {}
-    cache = {"articles": entries}
+    source_entries = cache.get("sources") or {}
+    cache = {"articles": entries, "sources": source_entries}
     now = now_utc()
     cutoff = now - timedelta(days=MAX_ARTICLE_AGE_DAYS)
-    lookups = attached = 0
+    lookups = attached = source_lookups = 0
 
     for path, batch, articles in _recent_batches():
         changed = False
@@ -839,6 +845,34 @@ def main() -> int:
                     changed = True
                 entries.pop(art_id, None)
                 continue
+            # A stock fallback is provisional: RSS often omits the publisher's
+            # body photo. Check the exact cited page before keeping that fallback.
+            source_url = supported_source(article) if can_upgrade(article) else None
+            if source_url:
+                source_entry = source_entries.get(source_url) or {}
+                source_image = source_entry.get("image")
+                retry_due = True
+                try:
+                    retry_due = parse_iso(source_entry["next_retry_utc"]) <= now
+                except (KeyError, TypeError, ValueError):
+                    pass
+                if not source_image and retry_due and source_lookups < MAX_LOOKUPS_PER_RUN:
+                    source_lookups += 1
+                    try:
+                        source_image = lookup_source_photo(article)
+                    except Exception as exc:
+                        print(f"images: source lookup failed for {art_id}: {type(exc).__name__}")
+                    source_entries[source_url] = {
+                        "image": source_image,
+                        "next_retry_utc": (now + timedelta(hours=6)).isoformat(),
+                    }
+                if source_image:
+                    article["image"] = source_image
+                    entries[art_id] = {"status": "matched", "image": source_image,
+                                       "checked_utc": now.isoformat()}
+                    changed = True
+                    attached += 1
+                    continue
             if article.get("image"):
                 if existing_image_matches(article, article["image"]):
                     continue
@@ -892,7 +926,8 @@ def main() -> int:
 
     if cache != load_json(CACHE_PATH, {}):
         save_json(CACHE_PATH, cache)
-    print(f"images: {lookups} lookup(s), {attached} article(s) got a photo")
+    print(f"images: {lookups} stock lookup(s), {source_lookups} source lookup(s), "
+          f"{attached} article(s) got a photo")
     return 0
 
 
