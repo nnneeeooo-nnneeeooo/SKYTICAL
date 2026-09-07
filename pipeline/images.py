@@ -58,6 +58,7 @@ from image_policy import (  # noqa: E402
     article_is_airport_operations,
     article_context_text,
     article_headline_text,
+    article_is_cargo_story,
     article_is_incident,
     image_is_safe_for_article,
     image_provenance,
@@ -499,6 +500,12 @@ def existing_image_matches(article: dict, image) -> bool:
         "matched", "subject", "url", "link"))
     if not str(image.get("matched") or image.get("subject") or "").strip():
         return True
+    # A passenger-aircraft result is not an acceptable image for a cargo-led
+    # article simply because the carrier name happens to match.
+    if (article_is_cargo_story(article)
+            and not re.search(r"cargo|freighter|freight|貨運|貨機|貨物",
+                              provenance, re.I)):
+        return False
     normalized = re.sub(r"[^a-z0-9]+", " ", provenance.casefold()).strip()
     reg = find_registration(article)
     if reg:
@@ -748,6 +755,34 @@ def resolve_image(article: dict) -> dict | None:
     airline = find_airline(article)
     actype = find_aircraft_type(article)
     airport = find_airport(article)
+
+    # Cargo stories require a freighter-specific result. Keep this ahead of
+    # the generic airline branch, which otherwise returns a passenger jet.
+    if article_is_cargo_story(article):
+        if airline and actype:
+            type_token = actype.split()[-1].split("-")[0]
+            return lookup_commons(
+                f"{airline} Cargo {actype}",
+                [airline, "Cargo", type_token],
+                subject=f"{airline} Cargo {actype}",
+                require_all=True,
+                reject_title_re=_BAD_AIRLINE_IMAGE_RE)
+        if airline:
+            min_year = _article_year(article) - GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS
+            return lookup_commons(
+                f"{airline} Cargo aircraft",
+                [airline, "Cargo"],
+                subject=f"{airline} Cargo",
+                require_all=True,
+                min_year=min_year,
+                prefer_recent=True,
+                reject_title_re=_BAD_AIRLINE_IMAGE_RE)
+        if actype:
+            type_token = actype.split()[-1].split("-")[0]
+            return lookup_commons(
+                f"{actype} freighter", [type_token, "freighter"],
+                subject=f"{actype} freighter", require_all=True,
+                reject_title_re=BAD_AIRCRAFT_TITLE_RE)
 
     # For a facility/queue/security story, an aircraft search is a semantic
     # mismatch even when the article happens to mention an A320.  Prefer a

@@ -80,6 +80,28 @@ _TOPIC_IMAGES = (
         },
     },
     {
+        "name": "china-airlines-cargo",
+        "patterns": (
+            re.compile(
+                r"(?=.*(?:華航|中華航空|China Airlines))"
+                r"(?=.*(?:貨運|貨機|貨物|全貨機|cargo|freighter|freight))",
+                re.I,
+            ),
+        ),
+        "image": {
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/China_Airlines_Cargo_Boeing_777F_B-18771_departing_Taoyuan_February_2026_1.jpg/1280px-China_Airlines_Cargo_Boeing_777F_B-18771_departing_Taoyuan_February_2026_1.jpg",
+            "link": "https://commons.wikimedia.org/wiki/File:China_Airlines_Cargo_Boeing_777F_B-18771_departing_Taoyuan_February_2026_1.jpg",
+            "credit": "4300streetcar",
+            "license": "CC BY 4.0",
+            "provider": "Wikimedia Commons",
+            "kind": "file_photo",
+            "matched": "topic:china-airlines-cargo",
+            "subject": "China Airlines Cargo Boeing 777F",
+            "photoDate": "2026-02-04",
+            "photoYear": 2026,
+        },
+    },
+    {
         "name": "china-airlines",
         "patterns": (
             re.compile(r"^(?:華航|中華航空)"),
