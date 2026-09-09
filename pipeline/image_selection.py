@@ -110,6 +110,16 @@ def model_matches(model, text):
     return False
 
 
+def verified_cargo_model(article):
+    """True only when structured entities name a freighter subtype."""
+    entities = article.get("entities") or {}
+    models = (entities.get("aircraft_models")
+              if isinstance(entities, dict) else []) or []
+    return any(re.search(
+        r"(?:P2F|BCF|BDSF|ERF|freighter|cargo)|(?:[/ -]|\d)C?F\)?$",
+        str(model), re.I) for model in models)
+
+
 def rejection_reason(article, raw, captions=None):
     from image_policy import (article_context_text, article_headline_text,
                               article_is_airport_operations, article_is_cabin_story,
@@ -135,7 +145,10 @@ def rejection_reason(article, raw, captions=None):
             return "registration-mismatch"
         if article_is_airport_operations(article) and not article_is_incident(article):
             return "airframe-not-airport-facility"
-        if re.search(r"彩繪|藝術機|塗裝|\blivery\b|客艙|座椅|貨機|freighter", head, re.I):
+        if re.search(r"彩繪|藝術機|塗裝|\blivery\b|客艙|座椅", head, re.I):
+            return "airframe-role-unverified"
+        if (re.search(r"貨機|貨運|freighter|cargo", head, re.I)
+                and not verified_cargo_model(article)):
             return "airframe-role-unverified"
         carrier = images.find_airline(article)
         if carrier and not any(phrase(alias, ev) for alias in images._airline_aliases(carrier)):
@@ -160,7 +173,10 @@ def rejection_reason(article, raw, captions=None):
     matched = str(im.get("matched") or "")
     # Exact event caption can describe seats/ceremony without repeating model.
     if source_bound and im.get("kind") == "event_photo":
-        if airline and not any(phrase(a, ev) for a in images._airline_aliases(airline)):
+        event_evidence = f"{ev} {im.get('subject') or ''}"
+        if airline and not any(
+                phrase(a, event_evidence)
+                for a in images._airline_aliases(airline)):
             return "source-airline-unverified"
         return None
     headline_model = images.find_aircraft_type({"en": {"title": head},
