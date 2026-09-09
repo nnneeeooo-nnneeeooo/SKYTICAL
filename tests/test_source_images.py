@@ -13,6 +13,20 @@ HTML = f'''<meta property="og:image" content="{PHOTO}">
 <figure class="floatImg center"><img src="{PHOTO.replace('/1024/', '/800/')}">
 <figcaption>華航名古屋航線限定頭墊紙。（華航提供）中央社記者傳真 115年9月7日</figcaption>
 </figure>'''
+AEROTIME_URL = "https://www.aerotime.aero/articles/dc-8-runway-excursion"
+AEROTIME_PHOTO = "https://www.aerotime.aero/images/2026/09/dc8congo.jpeg"
+AEROTIME_HTML = f'''<meta property="og:image" content="{AEROTIME_PHOTO}">
+<figure class="cs-entry__post-media post-media">
+<img src="{AEROTIME_PHOTO.replace('.jpeg', '-800x500.jpeg')}">
+<figcaption class="cs-entry__caption-text">Bystander video</figcaption>
+</figure>'''
+AEROTIME_ARTICLE = {
+    "entities": {
+        "airlines": ["Trans Air Cargo Service"],
+        "aircraft_models": ["DC-8-73CF"],
+        "registration_numbers": ["9S-AJO"],
+    }
+}
 
 
 def test_captioned_body_photo_and_resize_variants():
@@ -28,6 +42,28 @@ def test_reject_unrelated_og_and_uncredited_photo():
     assert source.parse_cna_photo(HTML.replace('src="'+PHOTO.replace('/1024/', '/800/'), 'src="https://example.com/other.jpg'), URL) is None
     assert source.parse_cna_photo(HTML.replace("華航提供", "記者攝影"), URL) is None
     assert source.parse_cna_photo(f'<meta property="og:image" content="{PHOTO}">', URL) is None
+
+
+def test_aerotime_exact_lead_event_photo_with_credit_and_entities():
+    photo = source.parse_aerotime_photo(
+        AEROTIME_HTML, AEROTIME_URL, AEROTIME_ARTICLE)
+    assert photo["url"] == AEROTIME_PHOTO
+    assert photo["subject"] == \
+        "Trans Air Cargo Service DC-8-73CF 9S-AJO"
+    assert photo["credit"] == "Bystander video"
+    assert photo["license"] is None
+    assert photo["kind"] == "event_photo"
+    assert source.supported_source({
+        "sources": [{"url": AEROTIME_URL}]}) == AEROTIME_URL
+
+
+def test_aerotime_rejects_unbound_or_uncredited_lead_image():
+    assert source.parse_aerotime_photo(
+        AEROTIME_HTML.replace("dc8congo-800x500", "different-800x500"),
+        AEROTIME_URL, AEROTIME_ARTICLE) is None
+    assert source.parse_aerotime_photo(
+        AEROTIME_HTML.replace("Bystander video", "Image"),
+        AEROTIME_URL, AEROTIME_ARTICLE) is None
 
 
 def test_protect_manual_and_exact_airframe_images():
