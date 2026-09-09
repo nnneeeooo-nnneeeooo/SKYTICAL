@@ -5,7 +5,6 @@
       "publishedUtc": "2026-09-06T23:22Z",
       "cat": "safety",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/amazon-tragedy.png",
       "zh": {
         "title": "亞馬遜塗裝波音767在邁阿密衝出跑道造成5死",
         "summary": "亞馬遜塗裝波音767在邁阿密衝出跑道，造成五人死亡多人受傷。",
@@ -90,6 +89,26 @@
         "event_dates": [
           "Sunday, September 6th"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/amazon-tragedy.png",
+          "sources": [
+            {
+              "name": "Simple Flying — 5 Dead After Amazon Prime Air-Branded Boeing 767-300F Overr…",
+              "url": "https://simpleflying.com/video/5-dead-after-amazon-prime-air-branded-boeing-767-300f-overruns-runway-in-miami/"
+            },
+            {
+              "name": "Simple Flying — 5 Dead After Amazon Prime Air-Branded Boeing 767-300F Overr…",
+              "url": "https://simpleflying.com/amazon-prime-air-boeing-767-300f-overruns-runway-miami/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "missing-source-evidence"
       }
     }
   ]

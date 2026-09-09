@@ -112,17 +112,6 @@
       "publishedUtc": "2026-09-02T22:10Z",
       "cat": "biz",
       "primarySource": "AeroTime",
-      "image": {
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/VUELING_AIRBUS_A321_EC-MGY%2CTUI_BOEING_737-8_MAX_G-TUMJ_%2851882169384%29.jpg/1280px-VUELING_AIRBUS_A321_EC-MGY%2CTUI_BOEING_737-8_MAX_G-TUMJ_%2851882169384%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=176989375",
-        "credit": "simon butler from halesowen, uk",
-        "license": "CC BY 2.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "Vueling Boeing 737 MAX",
-        "subject": "Vueling Boeing 737 MAX",
-        "photoYear": 2022
-      },
       "zh": {
         "title": "Vueling推遲B737 MAX服役 座椅認證延誤",
         "summary": "Vueling確認B737 MAX延至2027上半年服役；RECARO座椅認證拖延",
@@ -249,6 +238,11 @@
           "2026-12",
           "2026 Q4"
         ]
+      },
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "aircraft-model-mismatch"
       }
     },
     {
@@ -256,7 +250,6 @@
       "publishedUtc": "2026-09-02T22:10Z",
       "cat": "biz",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/04/premium-economy-2026.jpg",
       "zh": {
         "title": "阿聯酋航空獲Skytrax高端經濟艙獎 但腿部空間不如日本航空",
         "summary": "阿聯酋航空奪Skytrax高端經濟艙獎；腿部空間較日本航空少",
@@ -320,6 +313,22 @@
         "event_dates": [
           "2026-09-02"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/04/premium-economy-2026.jpg",
+          "sources": [
+            {
+              "name": "Simple Flying — The World's Most Comfortable Premium Economy Doesn't Have T…",
+              "url": "https://simpleflying.com/most-comfortable-premium-economy-doesnt-have-most-legroom/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "airline-mismatch"
       }
     }
   ]

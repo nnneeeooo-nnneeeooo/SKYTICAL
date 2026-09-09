@@ -106,6 +106,28 @@ class ImageCaptionTests(unittest.TestCase):
                 captions.main()
                 self.assertEqual(resolve.call_count, 3)
 
+    def test_success_after_negative_cache_is_written_to_disk(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            articles = root / "articles"
+            articles.mkdir()
+            cache = root / "captions.json"
+            cache.write_text(json.dumps({"images": {IMAGE: {"retryUtc": "2000-01-01T00:00Z"}}}), encoding="utf-8")
+            row = {"publishedUtc": captions.now_utc().isoformat(),
+                   "sourceImageCandidates": [{"url": IMAGE, "sources": [{"url": SOURCE}]}],
+                   "zh": {"title": "航線調整"}}
+            (articles / "one.json").write_text(json.dumps({"articles": [row]}), encoding="utf-8")
+            recovered = {"subject": "Delta Air Lines Airbus A350", "link": SOURCE,
+                         "captionSource": "source-image-metadata"}
+            with patch.object(captions, "ARTICLES_DIR", articles), \
+                    patch.object(captions, "CACHE_PATH", cache), \
+                    patch.object(captions, "resolve_description", return_value=recovered) as resolve:
+                captions.main()
+                saved = json.loads(cache.read_text(encoding="utf-8"))
+                self.assertEqual(saved["images"][IMAGE]["subject"], recovered["subject"])
+                captions.main()
+                self.assertEqual(resolve.call_count, 1)
+
     def test_all_public_surfaces_and_manual_upload_have_description(self):
         for name in ("article", "home"):
             html = (ROOT / "templates" / f"{name}.html").read_text(encoding="utf-8")

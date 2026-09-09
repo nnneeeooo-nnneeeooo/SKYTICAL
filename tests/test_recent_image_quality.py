@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 import images  # noqa: E402
+from image_selection import image_key, MAX_STOCK_REUSE, manual_image  # noqa: E402
+from collections import Counter
 from image_policy import (  # noqa: E402
     article_is_airport_operations,
     article_is_drone_story,
@@ -20,6 +22,7 @@ def main() -> int:
     cutoff = images.now_utc() - timedelta(days=images.MAX_ARTICLE_AGE_DAYS)
     total = with_image = structured = 0
     failures: list[str] = []
+    usage = Counter()
     for path in sorted(images.ARTICLES_DIR.glob("*.json")):
         batch = json.loads(path.read_text(encoding="utf-8"))
         for article in batch.get("articles") or []:
@@ -34,11 +37,14 @@ def main() -> int:
             if not image:
                 continue
             with_image += 1
-            if not isinstance(image, dict):
-                continue
-            structured += 1
-            matched = str(image.get("matched") or "")
+            if isinstance(image, dict):
+                structured += 1
+            matched = str(image.get("matched") or "") if isinstance(image, dict) else ""
             valid = images.existing_image_matches(article, image)
+            if (isinstance(image, dict) and image.get("kind") == "file_photo"
+                    and not manual_image(article, image)):
+                usage[image_key(image)] += 1
+                valid = valid and usage[image_key(image)] <= MAX_STOCK_REUSE
             if matched.casefold().startswith("airport:"):
                 valid = valid and article_is_airport_operations(article)
             if matched.casefold().startswith("topic:drone"):

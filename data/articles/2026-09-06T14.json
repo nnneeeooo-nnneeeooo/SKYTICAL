@@ -144,7 +144,6 @@
       "publishedUtc": "2026-09-06T14:39Z",
       "cat": "safety",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/french-bee-pushback.jpg",
       "zh": {
         "title": "蒙特婁機場地勤人員遭空中巴士A350撞擊不治身亡",
         "summary": "蒙特婁機場8月24日發生意外，一名地勤人員遭空中巴士A350客機撞擊不治身亡。",
@@ -208,6 +207,22 @@
         "event_dates": [
           "August 24th"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/french-bee-pushback.jpg",
+          "sources": [
+            {
+              "name": "Simple Flying — Ramp Agent Struck By Airbus A350 At Montreal Airport, Succu…",
+              "url": "https://simpleflying.com/video/ramp-agent-struck-by-airbus-a350-at-montreal-airport-succumbs-to-injuries/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "missing-source-evidence"
       }
     },
     {
@@ -215,7 +230,6 @@
       "publishedUtc": "2026-09-06T14:39Z",
       "cat": "biz",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/RECARO-Aircraft-Seating_press-release_ANA_seat-presentation_Copyright-RECARO-scaled.jpg",
       "zh": {
         "title": "Recaro交付新型R4豪華經濟艙座椅 全日空787-9機隊2026年底導入",
         "summary": "Recaro交付R4豪華經濟艙座椅；全日空預計2026年底於787-9啟用",
@@ -383,6 +397,26 @@
           "2023",
           "2025"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/RECARO-Aircraft-Seating_press-release_ANA_seat-presentation_Copyright-RECARO-scaled.jpg",
+          "sources": [
+            {
+              "name": "Aerospace Global News — The new aircraft seat bringing more privacy to premium econ…",
+              "url": "https://aerospaceglobalnews.com/news/reacaro-r4-aircraft-seat-ana-787-privacy-premium-economy/"
+            },
+            {
+              "name": "Archive: AeroTime — RECARO confirms first deliveries of new generation R4 Premi... — a-20260826-0932-recaro-begins-deliveries-of-new-r4-premi",
+              "url": "https://www.aerotime.aero/articles/recaro-confirms-first-deliveries-of-new-generation-r4-premium-economy-seats"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "aircraft-model-mismatch"
       }
     }
   ]
