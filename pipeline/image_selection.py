@@ -183,7 +183,7 @@ def rejection_reason(article, raw, captions=None):
         return None if ANAK_KRAKATAU_RE.search(head) and ANAK_KRAKATAU_RE.search(ev) else "volcano-mismatch"
     if matched == "topic:drone":
         if (not article_is_drone_story(article) or model or
-                re.search(r"military|defen[cs]e|attack|combat|delivery|Amazon|軍|國防|攻擊|作戰|配送", ctx, re.I)):
+                re.search(r"military|defen[cs]e|attack|combat|delivery|logistics|medical|cargo|freight|Amazon|軍|國防|攻擊|作戰|配送|物流|醫藥|醫療|貨運", ctx, re.I)):
             return "generic-drone-mismatch"
         return None if re.search(r"quadcopter|drone", ev, re.I) else "drone-unverified"
     # Specific livery, cargo conversion and national operators need evidence too.
