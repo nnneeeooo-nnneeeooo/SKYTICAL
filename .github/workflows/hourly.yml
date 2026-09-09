@@ -45,6 +45,7 @@ jobs:
 
       - name: Test image relevance and fallback guards
         run: |
+          python tests/test_image_selection.py
           python tests/test_images.py
           python tests/test_image_fallbacks.py
           python tests/test_volcano_images.py
@@ -84,9 +85,9 @@ jobs:
           python pipeline/write.py
           python pipeline/summary_guard.py
           python pipeline/airport_codes.py
+          python pipeline/image_captions.py
           python pipeline/images.py
           python pipeline/image_fallbacks.py
-          python pipeline/image_captions.py
           python tests/test_image_captions.py
           python pipeline/image_qa.py
           # The saved Taipei date makes this one LLM-assisted refresh per day.

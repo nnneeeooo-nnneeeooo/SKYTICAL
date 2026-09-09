@@ -73,10 +73,8 @@ def main() -> int:
     f16 = image_fallbacks.topic_image(
         article("台灣首批F-16V戰機完成交付飛行")
     )
-    assert f16 is not None
-    assert f16["matched"] == "topic:f16"
-    assert f16["license"] == "Public domain"
-    assert "F-16" in f16["subject"]
+    assert f16 is None  # USAF F-16 is not a Taiwan F-16V
+
 
     # A body-only mention must not turn an unrelated fleet story into a
     # quadcopter card.

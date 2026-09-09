@@ -239,7 +239,7 @@ def lookup_commons_airport(airport: str) -> dict | None:
     return None
 
 
-def topic_image(article: dict) -> dict | None:
+def topic_image(article: dict, *, allow_airport_lookup=True) -> dict | None:
     """Return a vetted topic image, then a strict verified-airport image."""
     if article.get("articleFormat") == "roundup":
         # A photo selected from one item would visually misrepresent a
@@ -248,76 +248,48 @@ def topic_image(article: dict) -> dict | None:
     text = article_headline_text(article)
     for rule in _TOPIC_IMAGES:
         if any(pattern.search(text) for pattern in rule["patterns"]):
-            return dict(rule["image"])
+            from images import existing_image_matches
+            candidate = dict(rule["image"])
+            if existing_image_matches(article, candidate):
+                return candidate
 
     airport = _airport_entity(article)
-    if airport and article_is_airport_operations(article):
+    if allow_airport_lookup and airport and article_is_airport_operations(article):
         return lookup_commons_airport(airport)
     return None
 
 
 def main() -> int:
-    if not ARTICLES_DIR.is_dir():
-        print("image_fallbacks: no articles yet")
-        return 0
-
+    # No second unbudgeted airport network search. Only vetted local candidates.
+    from image_selection import enforce_recent, stock_usage, image_key, MAX_STOCK_REUSE
+    enforce_recent(ARTICLES_DIR, ARTICLES_DIR.parent / "images.json")
     cutoff = now_utc() - timedelta(days=MAX_ARTICLE_AGE_DAYS)
-    attached = 0
-    for path in sorted(ARTICLES_DIR.glob("*.json"), reverse=True):
-        batch = load_json(path, None)
-        if not isinstance(batch, dict):
-            continue
+    batches = [(p, load_json(p, {})) for p in sorted(ARTICLES_DIR.glob("*.json"), reverse=True)]
+    recent = []
+    for _, batch in batches:
+        for article in batch.get("articles", []):
+            try:
+                if parse_iso(article["publishedUtc"]) >= cutoff:
+                    recent.append(article)
+            except (KeyError, TypeError, ValueError):
+                continue
+    usage = stock_usage(recent)
+    for path, batch in batches:
         changed = False
-        for article in batch.get("articles") or []:
-            if not isinstance(article, dict):
-                continue
+        for article in batch.get("articles", []):
             try:
-                if parse_iso(str(article.get("publishedUtc"))) < cutoff:
+                if article.get("image") or parse_iso(article["publishedUtc"]) < cutoff:
                     continue
-            except (TypeError, ValueError):
+            except (KeyError, TypeError, ValueError):
                 continue
-            if article.get("articleFormat") == "roundup":
-                if article.pop("image", None) is not None:
-                    changed = True
-                continue
-            existing_image = article.get("image")
-            if (isinstance(existing_image, dict)
-                    and str(existing_image.get("matched") or "")
-                    .startswith("airport:")
-                    and not article_is_airport_operations(article)):
-                # A verified airport entity may be background context for an
-                # airline, finance or safety story.  Do not turn that into a
-                # generic airport card unless the headline is actually about
-                # airport operations or facilities.
-                article.pop("image", None)
+            photo = topic_image(article, allow_airport_lookup=False)
+            if photo and usage[image_key(photo)] < MAX_STOCK_REUSE:
+                article["image"] = photo
+                article.pop("imageSelection", None)
+                usage[image_key(photo)] += 1
                 changed = True
-                existing_image = None
-            if article.get("image"):
-                continue
-            try:
-                image = topic_image(article)
-            except Exception as exc:
-                # Enhancement only: article publishing and the final brand
-                # fallback must continue even when Commons is unavailable.
-                print(
-                    "image_fallbacks: lookup failed for "
-                    f"{article.get('id') or path.name}: "
-                    f"{type(exc).__name__}: {exc}"
-                )
-                continue
-            if not image:
-                continue
-            article["image"] = image
-            changed = True
-            attached += 1
-            print(
-                "image_fallbacks: attached "
-                f"{image['matched']} to {article.get('id') or path.name}"
-            )
         if changed:
             save_json(path, batch)
-
-    print(f"image_fallbacks: {attached} article(s) got a fallback photo")
     return 0
 
 

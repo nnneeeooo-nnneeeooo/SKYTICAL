@@ -59,10 +59,14 @@ from image_policy import (  # noqa: E402
     article_context_text,
     article_headline_text,
     article_is_incident,
+    article_lead_text,
     image_is_safe_for_article,
     image_provenance,
 )
+from requests.exceptions import RequestException
 from source_images import can_upgrade, lookup_source_photo, supported_source
+from image_selection import (rejection_reason, prepare_image, enforce_recent,
+                             image_key, stock_usage, MAX_STOCK_REUSE)
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_PATH = DATA_DIR / "images.json"
@@ -196,7 +200,7 @@ def _article_text(article: dict) -> str:
 
 
 def find_registration(article: dict) -> str | None:
-    match = _REG_RE.search(_article_text(article))
+    match = _REG_RE.search(article_lead_text(article))
     return match.group(1) if match else None
 
 
@@ -231,7 +235,7 @@ def find_airline(article: dict) -> str | None:
             zh = str(airline.get("airline_name_zh_tw") or "").strip()
             if low in {en.casefold(), zh.casefold()}:
                 values = [value for value in (en, zh) if value]
-                if zh.endswith("航空"):
+                if zh in {"星宇航空", "長榮航空", "立榮航空", "華信航空"}:
                     values.append(zh[:-2])
                 return values
         return [name]
@@ -273,9 +277,9 @@ def find_airline(article: dict) -> str | None:
                 if summary.casefold().find(value.casefold()) >= 0
             ]
             ranked.append((1, min(summary_positions), index, name))
-        else:
-            ranked.append((2, index, index, name))
     if ranked:
+        if min(ranked)[0] > 0 and find_aircraft_type({"en": {"title": headline}}):
+            return None
         return min(ranked)[3]
 
     # No verified entity: only inspect the headline and summary.  Searching
@@ -287,7 +291,7 @@ def find_airline(article: dict) -> str | None:
             names = [str(airline.get(key) or "").strip()
                      for key in ("airline_name_en", "airline_name_zh_tw")]
             zh = names[1]
-            if zh.endswith("航空"):
+            if zh in {"星宇航空", "長榮航空", "立榮航空", "華信航空"}:
                 names.append(zh[:-2])
             positions = [
                 text_low.find(name.casefold())
@@ -302,91 +306,68 @@ def find_airline(article: dict) -> str | None:
 
 
 def find_aircraft_type(article: dict) -> str | None:
-    """Display name for a type the article mentions.
-
-    Accepts the full name ("Airbus A350-900"), the bare model
-    ("A350-900"), the ICAO code ("A359"), or the family ("A350") — the
-    family match returns the family-level name so the photo query never
-    claims a sub-variant the article did not verify.
-    """
-    entities = article.get("entities") or {}
-    models = entities.get("aircraft_models") if isinstance(entities, dict) else []
-    context = article_context_text(article).casefold()
-    for model in models or []:
-        value = str(model or "").strip()
-        if (value and value.casefold() in context
-                and not re.search(
-                    r"\b(?:ultra\s+short|aircraft|airplane|flight|unknown)\b",
-                    value, re.I)
-                and len(re.findall(r"[A-Za-z0-9]", value)) >= 3):
-            return value
-
-    text = _article_text(article)
-    low = text.casefold()
-    for code, name in _types.items():
-        maker = name.split()[0]
-        bare = name.split()[-1]
-        if name.casefold() in low or (len(bare) >= 4
-                                      and bare.casefold() in low):
-            return name
-        if len(code) >= 4 and re.search(rf"\b{re.escape(code)}\b", text):
-            return name
-        family = bare.split("-")[0]
-        if (len(family) >= 4 and family.casefold() != bare.casefold()
-                and re.search(rf"\b{re.escape(family)}\b", text, re.I)):
-            return f"{maker} {family}"
-
-    # The compact commercial dictionary intentionally does not contain every
-    # military, experimental or historic type.  Verified entity values are a
-    # safer extension than guessing from arbitrary prose.
-    for model in models or []:
-        value = str(model or "").strip()
-        if not value or re.search(
-                r"\b(?:ultra\s+short|aircraft|airplane|flight|unknown)\b",
-                value, re.I):
-            continue
-        if len(re.findall(r"[A-Za-z0-9]", value)) >= 3:
-            return value
+    """Title before summary; longest model at the same position wins."""
+    models = (article.get("entities") or {}).get("aircraft_models") or []
+    for text in (article_headline_text(article), article_context_text(article)):
+        candidates = []
+        for value in list(models) + list(_types.values()) + list(_types):
+            value = str(value or "").strip()
+            if not value or value.lower() in {"aircraft", "airplane", "unknown"}:
+                continue
+            hit = re.search(rf"(?<![A-Za-z0-9]){re.escape(value)}(?![A-Za-z0-9])", text, re.I)
+            if hit:
+                candidates.append((hit.start(), -len(value), _types.get(value, value)))
+        # Preserve the entire suffix (including MAX numbers and neo/XLR).
+        for hit in re.finditer(r"(?<![A-Za-z0-9])(?:A\d{3}(?:-\d{3,4}|neo|XLR)?|7\d7(?:-\d{1,3}(?:ER|F)?|\s+MAX(?:\s+\d{1,2})?)?)(?![A-Za-z0-9])", text, re.I):
+            value = hit.group()
+            candidates.append((hit.start(), -len(value), ("Airbus " if value.startswith("A") else "Boeing ")+value))
+        if candidates:
+            return min(candidates)[2]
     return None
 
 
 def find_airport(article: dict):
-    """(commons_query, required_title_tokens, subject_zh) for an airport."""
-    text = _article_text(article)
-    low = text.casefold()
+    """Choose a named headline airport before a summary/background airport."""
+    from image_selection import phrase
+    from airport_codes import resolve_airport
+    candidates = []
     for marker, query, tokens, subject in _AIRPORT_ALIASES:
-        if marker in text:
-            return query, list(tokens), subject
+        candidates.append(([marker], query, list(tokens), subject))
     for ap in _tw_airports:
-        for key in ("name_zh", "name_en"):
-            val = str(ap.get(key) or "")
-            if val and (val in text or val.casefold() in low):
-                name = str(ap.get("name_en") or val)
-                return name, [name.split()[0]], str(ap.get("name_zh") or name)
-
-    # Verified non-Taiwan airport entities are also valid lookup targets.  A
-    # bare three-letter code is not enough evidence to select a building or
-    # civic photo, so require a meaningful name or CJK text.
-    entities = article.get("entities") or {}
-    airports = entities.get("airports") if isinstance(entities, dict) else []
+        name = str(ap.get("name_en") or "")
+        if name:
+            candidates.append(([name, ap.get("name_zh", "")], name,
+                               [name.split()[0]], ap.get("name_zh") or name))
     generic = {"airport", "international", "intl", "terminal", "airfield"}
-    for value in airports or []:
+    for value in (article.get("entities") or {}).get("airports") or []:
         name = str(value or "").strip()
-        if not name:
-            continue
         words = re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9]+", name)
-        meaningful = [word for word in words
-                      if len(word) >= 4 and word.casefold() not in generic]
-        if not meaningful and not re.search(r"[一-鿿]", name):
+        tokens = [w for w in words if len(w) >= 4 and w.casefold() not in generic][:3]
+        if not tokens and not re.search(r"[一-鿿]", name):
             continue
-        tokens = meaningful[:3] or [name]
-        return name, tokens, name
+        aliases = [name]
+        row = resolve_airport(name)
+        if row:
+            aliases.extend([row.get("name", ""), row.get("code", "")])
+        # Distinctive name tokens help locate translated/shortened headlines;
+        # the image itself still needs the entire token set or registry match.
+        aliases.extend(tokens)
+        candidates.append((aliases, name, tokens or [name], name))
+    for text in (article_headline_text(article), article_context_text(article)):
+        ranked = []
+        for index, (aliases, query, tokens, subject) in enumerate(candidates):
+            positions = [text.casefold().find(a.casefold()) for a in aliases if a and phrase(a, text)]
+            if positions:
+                ranked.append((min(positions), index, query, tokens, subject))
+        if ranked:
+            _, _, query, tokens, subject = min(ranked)
+            return query, tokens, subject
     return None
 
 
 def find_org(article: dict):
     """(commons_query, required_title_tokens, subject_zh) for an agency."""
-    text = _article_text(article)
+    text = article_context_text(article)
     low = text.casefold()
     for marker, query, tokens, subject in _ORG_QUERIES:
         if re.search(r"[一-鿿]", marker):
@@ -440,8 +421,8 @@ def _airline_aliases(name: str) -> list[str]:
         en = str(airline.get("airline_name_en") or "").strip()
         zh = str(airline.get("airline_name_zh_tw") or "").strip()
         if normalized in {en.casefold(), zh.casefold()}:
-            return [value for value in (en, zh) if value]
-    return [name]
+            return [value for value in (en, zh, zh[:-2] if zh in {"星宇航空", "長榮航空", "立榮航空", "華信航空"} else "") if value]
+    return [name, name.removesuffix(" Express")] if name.endswith(" Express") else [name]
 
 
 def _secondary_image_airline_allowed(article: dict,
@@ -479,124 +460,8 @@ def _secondary_image_airline_allowed(article: dict,
 
 
 def existing_image_matches(article: dict, image) -> bool:
-    """Whether an existing automatic image still fits revised article facts.
-
-    Only Commons images produced by this pipeline carry ``matched`` or
-    ``subject`` provenance and are eligible for replacement.  Legacy/manual
-    images and other providers remain owner-controlled.  Exact-registration
-    matches win; otherwise a newly identified primary airline must appear in
-    the stored match provenance so a generic aircraft photo from another
-    carrier cannot survive an article correction.
-    """
-    if not isinstance(image, dict):
-        return True
-    if (image.get("provider") != "Wikimedia Commons"
-            or image.get("kind") != "file_photo"):
-        return True
-    if not image_is_safe_for_article(article, image):
-        return False
-    provenance = " ".join(str(image.get(key) or "") for key in (
-        "matched", "subject", "url", "link"))
-    if not str(image.get("matched") or image.get("subject") or "").strip():
-        return True
-    normalized = re.sub(r"[^a-z0-9]+", " ", provenance.casefold()).strip()
-    reg = find_registration(article)
-    if reg:
-        normalized_reg = re.sub(r"[^a-z0-9]+", " ", reg.casefold()).strip()
-        if normalized_reg and normalized_reg in normalized:
-            return True
-
-    # A carrier explicitly named by a Commons result must be the article's
-    # primary verified carrier.  This catches background-entity accidents such
-    # as Air Canada on an Air Astana article and Mandarin on a UNI Air article.
-    named_airlines = _image_named_airlines(image)
-    secondary_carrier = False
-    if named_airlines:
-        primary = find_airline(article)
-        if not primary:
-            return False
-        primary_aliases = {
-            _normalized_phrase(value) for value in _airline_aliases(primary)
-        }
-        # Commons filenames often use the parent brand for a branded regional
-        # operation (for example ``Air Canada`` on an ``Air Canada Express``
-        # aircraft). Treat that parent phrase as the same carrier only when it
-        # is a complete, multi-word prefix of the verified primary entity.
-        parent_brand_aliases = {
-            _normalized_phrase(name) for name in named_airlines
-            if len(_normalized_phrase(name).split()) >= 2
-            and any(alias.startswith(f"{_normalized_phrase(name)} ")
-                    for alias in primary_aliases)
-        }
-        if not any(
-                _normalized_phrase(name) in primary_aliases
-                or _normalized_phrase(name) in parent_brand_aliases
-                for name in named_airlines):
-            if not _secondary_image_airline_allowed(article, named_airlines):
-                return False
-            secondary_carrier = True
-
-    # A strict airport match is allowed even when the article also mentions a
-    # carrier in the background.  Facility and infrastructure stories often
-    # have both kinds of entities, and the airport exterior is the more honest
-    # visual subject.
-    if str(image.get("matched") or "").casefold().startswith("airport:"):
-        return True
-    if str(image.get("matched") or "").casefold().startswith("topic:"):
-        return True
-    airport = find_airport(article)
-    if airport:
-        query, _tokens, _subject = airport
-        if _normalized_phrase(image.get("matched")) == _normalized_phrase(query):
-            return True
-    if secondary_carrier:
-        return True
-
-    org = find_org(article)
-    if org:
-        query, _tokens, _subject = org
-        if str(image.get("matched") or "").casefold() == query.casefold():
-            try:
-                photo_year = int(image.get("photoYear"))
-            except (TypeError, ValueError):
-                return False
-            return photo_year >= (
-                _article_year(article) - GENERIC_ORG_MAX_PHOTO_AGE_YEARS)
-    airline = find_airline(article)
-    if not airline:
-        # No primary carrier means a generic aircraft photo can still be a
-        # valid type match, but it must depict the primary model rather than
-        # a comparison type mentioned only in the body.
-        actype = find_aircraft_type(article)
-        if not actype:
-            return True
-        model_tokens = _normalized_phrase(actype).split()
-        specific_tokens = [
-            token for token in model_tokens if any(char.isdigit() for char in token)
-        ] or [
-            token for token in model_tokens
-            if token not in {"airbus", "boeing", "aircraft", "airplane", "jet"}
-        ]
-        provenance_tokens = set(normalized.split())
-        return bool(specific_tokens and all(
-            token in provenance_tokens for token in specific_tokens))
-    normalized_airline = _normalized_phrase(airline)
-    generic_match = re.sub(
-        r"[^a-z0-9]+", " ",
-        str(image.get("matched") or "").casefold()).strip()
-    is_generic_airline = (
-        generic_match == f"{normalized_airline} aircraft"
-        or generic_match.startswith(f"{normalized_airline} aircraft "))
-    if is_generic_airline:
-        if _BAD_AIRLINE_INTERIOR_RE.search(provenance):
-            return False
-        try:
-            photo_year = int(image.get("photoYear"))
-        except (TypeError, ValueError):
-            return False
-        return photo_year >= (
-            _article_year(article) - GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS)
-    return bool(normalized_airline and normalized_airline in normalized)
+    """Shared source-evidence gate for new, cached and rendered images."""
+    return rejection_reason(article, image) is None
 
 
 # ── providers ────────────────────────────────────────────────────────────────
@@ -615,6 +480,8 @@ def lookup_official_source_photo(article: dict) -> dict | None:
         resp = requests.get(source_url, headers=HEADERS, timeout=TIMEOUT)
         if resp.status_code != 200:
             continue
+        if getattr(resp, "url", source_url).rstrip("/") != source_url.rstrip("/"):
+            continue
         match = _CAA_ATTACHMENT_RE.search(str(resp.text or ""))
         if not match:
             continue
@@ -628,11 +495,12 @@ def lookup_official_source_photo(article: dict) -> dict | None:
             "kind": "event_photo",
             "matched": str(article.get("id") or title),
             "subject": title.rsplit(".", 1)[0],
+            "sourceCaption": title.rsplit(".", 1)[0],
             "photoYear": _article_year(article),
         }
     return None
 
-def lookup_planespotters(reg: str) -> dict | None:
+def lookup_planespotters(reg: str, *, article=None) -> dict | None:
     """Photo of the exact airframe by registration; None when unavailable."""
     resp = requests.get(PLANESPOTTERS_URL.format(reg=reg),
                         headers=HEADERS, timeout=TIMEOUT)
@@ -645,7 +513,7 @@ def lookup_planespotters(reg: str) -> dict | None:
         link = photo.get("link")
         if not thumb or not link:
             continue
-        return {
+        candidate = {
             "url": str(thumb),
             "link": str(link),
             "credit": str(photo.get("photographer") or "").strip() or None,
@@ -655,6 +523,8 @@ def lookup_planespotters(reg: str) -> dict | None:
             "matched": reg,
             "subject": f"註冊號 {reg}",
         }
+        if article is None or existing_image_matches(article, candidate):
+            return candidate
     return None
 
 
@@ -663,7 +533,7 @@ def lookup_commons(query: str, require_tokens: list[str],
                    require_all: bool = False,
                    min_year: int | None = None,
                    prefer_recent: bool = False,
-                   reject_title_re=None) -> dict | None:
+                   reject_title_re=None, article=None, usage=None) -> dict | None:
     """First freely-licensed Commons bitmap matching the query.
 
     require_tokens: title tokens used to reject unrelated search results.
@@ -692,7 +562,8 @@ def lookup_commons(query: str, require_tokens: list[str],
             continue
         if reject_title_re is not None and reject_title_re.search(title):
             continue
-        token_hits = [t in title.casefold() for t in tokens]
+        from image_selection import phrase
+        token_hits = [phrase(t, title) for t in tokens]
         if tokens and (not all(token_hits) if require_all
                        else not any(token_hits)):
             continue
@@ -724,74 +595,70 @@ def lookup_commons(query: str, require_tokens: list[str],
                 "description": title.removeprefix("File:").rsplit(".", 1)[0].replace("_", " "),
                 "photoYear": photo_year,
             }
-            if not prefer_recent:
+            if article is not None and not existing_image_matches(article, candidate):
+                continue
+            count = (usage or {}).get(image_key(candidate), 0)
+            if count >= MAX_STOCK_REUSE:
+                continue
+            if not prefer_recent and not usage:
                 return candidate
-            candidates.append((photo_year or 0,
+            candidates.append((-count, photo_year or 0 if prefer_recent else 0,
                                -int(page.get("index", 99)), candidate))
-    return max(candidates, key=lambda row: row[:2])[2] if candidates else None
+    return max(candidates, key=lambda row: row[:3])[3] if candidates else None
 
 
-def resolve_image(article: dict) -> dict | None:
-    """Best honest match for one article, or None. Network errors bubble."""
+def resolve_image(article: dict, *, usage=None) -> dict | None:
+    """Try independently failing providers; never relax subject constraints."""
     if article.get("articleFormat") == "roundup":
-        # A single airline, aircraft or place photo would misrepresent a
-        # briefing made of unrelated events.  Use the site's neutral fallback.
         return None
-    source_photo = lookup_official_source_photo(article)
-    if source_photo:
-        return source_photo
+    def attempt(fn, *args, **kwargs):
+        try:
+            photo = fn(*args, **kwargs)
+            if photo and existing_image_matches(article, photo):
+                if photo.get("kind") == "file_photo" and (usage or {}).get(image_key(photo), 0) >= MAX_STOCK_REUSE:
+                    return None
+                return photo
+        except (RequestException, OSError, ValueError, TypeError, KeyError) as exc:
+            print(f"images: {getattr(fn, "__name__", "provider")}: {type(exc).__name__}")
+        return None
+    photo = attempt(lookup_official_source_photo, article)
+    if photo:
+        return photo
     reg = find_registration(article)
     if reg:
-        photo = lookup_planespotters(reg)
+        photo = attempt(lookup_planespotters, reg, article=article)
         if photo:
             return photo
-    airline = find_airline(article)
-    actype = find_aircraft_type(article)
-    airport = find_airport(article)
-
-    # For a facility/queue/security story, an aircraft search is a semantic
-    # mismatch even when the article happens to mention an A320.  Prefer a
-    # strict airport exterior photo and otherwise keep the neutral fallback.
-    if (airport and article_is_airport_operations(article)
-            and not (article_is_incident(article) and actype)):
+    airline, actype, airport = find_airline(article), find_aircraft_type(article), find_airport(article)
+    def commons(query, tokens, **kwargs):
+        return attempt(lookup_commons, query, tokens, article=article, usage=usage, **kwargs)
+    photo = None
+    if airport and article_is_airport_operations(article) and not (article_is_incident(article) and actype):
         query, tokens, subject = airport
-        return lookup_commons(
-            query, tokens, subject=subject,
-            reject_title_re=BAD_AIRPORT_TITLE_RE)
-
-    if airline and actype:
-        # family token ("A350") so Commons titles with any sub-variant match
-        type_token = actype.split()[-1].split("-")[0]
-        return lookup_commons(
-            f'{airline} {actype}', [type_token, airline],
-            subject=f"{airline} {actype}", require_all=True,
-            reject_title_re=BAD_AIRCRAFT_TITLE_RE)
-    if actype:
-        type_token = actype.split()[-1].split("-")[0]
-        return lookup_commons(f'{actype} aircraft', [type_token],
-                              subject=actype,
-                              reject_title_re=BAD_AIRCRAFT_TITLE_RE)
-    if airline:
-        min_year = (
-            _article_year(article) - GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS)
-        return lookup_commons(
-            f'{airline} aircraft exterior', [airline], subject=airline,
-            min_year=min_year, prefer_recent=True,
-            reject_title_re=_BAD_AIRLINE_IMAGE_RE)
-    if airport:
-        if article_is_incident(article) and actype:
-            return None
-        query, tokens, subject = airport
-        return lookup_commons(
-            query, tokens, subject=subject,
-            reject_title_re=BAD_AIRPORT_TITLE_RE)
-    org = find_org(article)
-    if org:
-        query, tokens, subject = org
-        min_year = _article_year(article) - GENERIC_ORG_MAX_PHOTO_AGE_YEARS
-        return lookup_commons(query, tokens, subject=subject,
-                              min_year=min_year, prefer_recent=True)
-    return None  # nothing visual verified in this article -> no image
+        photo = commons(query, tokens, subject=subject, require_all=True, reject_title_re=BAD_AIRPORT_TITLE_RE)
+    elif actype:
+        query = f"{airline} {actype}" if airline else f"{actype} aircraft"
+        # The shared model gate handles manufacturer subtypes (A350-941 is
+        # within A350-900); an exact phrase prefilter would discard them first.
+        photo = commons(query, [airline] if airline else [],
+                        subject=query.removesuffix(" aircraft"), require_all=True,
+                        reject_title_re=BAD_AIRCRAFT_TITLE_RE)
+    elif airline:
+        photo = commons(f"{airline} aircraft exterior", [airline], subject=airline,
+                        min_year=_article_year(article)-GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS,
+                        prefer_recent=True, reject_title_re=_BAD_AIRLINE_IMAGE_RE)
+    else:
+        org = find_org(article)
+        if org:
+            query, tokens, subject = org
+            photo = commons(query, tokens, subject=subject,
+                            min_year=_article_year(article)-GENERIC_ORG_MAX_PHOTO_AGE_YEARS,
+                            prefer_recent=True)
+    if photo:
+        return photo
+    # Vetted topic candidates are subject to the identical evidence/reuse gate.
+    from image_fallbacks import topic_image
+    return attempt(topic_image, article, allow_airport_lookup=False)
 
 
 # ── batch update ─────────────────────────────────────────────────────────────
@@ -819,6 +686,8 @@ def main() -> int:
     if not ARTICLES_DIR.is_dir():
         print("images: no articles yet")
         return 0
+    enforce_recent()
+    usage = stock_usage([a for _, _, aa in _recent_batches() for a in aa])
     cache = load_json(CACHE_PATH, {})
     entries = cache.get("articles")
     if not isinstance(entries, dict):
@@ -845,12 +714,27 @@ def main() -> int:
                     changed = True
                 entries.pop(art_id, None)
                 continue
+            # Exact-source caption recovery outranks Commons, but a caption
+            # still has to identify this article's primary visual subject.
+            for candidate in (article.get("sourceImageCandidates") or []) if can_upgrade(article) else []:
+                bound = dict(article, sources=candidate.get("sources") or [])
+                source_image = prepare_image(bound, candidate.get("url"))
+                if (source_image and existing_image_matches(article, source_image)
+                        and usage[image_key(source_image)] < MAX_STOCK_REUSE):
+                    if source_image != article.get("image"):
+                        article["image"] = source_image
+                        article.pop("imageSelection", None)
+                        usage[image_key(source_image)] += 1
+                        changed = True
+                    break
             # A stock fallback is provisional: RSS often omits the publisher's
             # body photo. Check the exact cited page before keeping that fallback.
             source_url = supported_source(article) if can_upgrade(article) else None
             if source_url:
                 source_entry = source_entries.get(source_url) or {}
                 source_image = source_entry.get("image")
+                if source_image and not existing_image_matches(article, source_image):
+                    source_image = None
                 retry_due = True
                 try:
                     retry_due = parse_iso(source_entry["next_retry_utc"]) <= now
@@ -866,7 +750,7 @@ def main() -> int:
                         "image": source_image,
                         "next_retry_utc": (now + timedelta(hours=6)).isoformat(),
                     }
-                if source_image:
+                if source_image and existing_image_matches(article, source_image):
                     article["image"] = source_image
                     entries[art_id] = {"status": "matched", "image": source_image,
                                        "checked_utc": now.isoformat()}
@@ -890,8 +774,11 @@ def main() -> int:
                 except ValueError:
                     pass
             if entry.get("status") == "matched" and entry.get("image"):
-                if existing_image_matches(article, entry["image"]):
+                if (existing_image_matches(article, entry["image"])
+                        and usage[image_key(entry["image"])] < MAX_STOCK_REUSE):
                     article["image"] = entry["image"]
+                    if entry["image"].get("kind") == "file_photo":
+                        usage[image_key(entry["image"])] += 1
                     changed = True
                     attached += 1
                     continue
@@ -901,12 +788,15 @@ def main() -> int:
                 continue
             lookups += 1
             try:
-                image = resolve_image(article)
+                image = resolve_image(article, usage=usage)
             except Exception as exc:  # enhancement only: never fail the run
                 print(f"images: lookup failed for {art_id}: "
                       f"{type(exc).__name__}: {exc}")
                 continue
-            if image:
+            if image and existing_image_matches(article, image):
+                if image.get("kind") == "file_photo":
+                    usage[image_key(image)] += 1
+                article.pop("imageSelection", None)
                 article["image"] = image
                 changed = True
                 attached += 1

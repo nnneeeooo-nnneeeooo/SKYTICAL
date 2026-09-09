@@ -27,6 +27,9 @@ def supported_source(article):
 
 def can_upgrade(article):
     """Leave manually selected, source and exact-airframe images intact."""
+    from image_selection import manual_image
+    if manual_image(article, article.get("image")):
+        return False
     if article.get("articleFormat") == "roundup":
         return False
     image = article.get("image")

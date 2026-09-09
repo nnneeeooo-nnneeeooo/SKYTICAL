@@ -5,7 +5,16 @@
       "publishedUtc": "2026-09-05T07:14Z",
       "cat": "ops",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/frontier-airlines-aircraft-landing-at-tampa-1.jpg",
+      "image": {
+        "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/frontier-airlines-aircraft-landing-at-tampa-1.jpg",
+        "link": "https://simpleflying.com/frontier-airlines-new-york-jfk-exit-date-confirmed/",
+        "provider": "Simple Flying",
+        "subject": "Frontier Airlines aircraft landing at Tampa (1)",
+        "sourceCaption": "Frontier Airlines aircraft landing at Tampa (1)",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "Frontier Airlines確認退出紐約JFK 轉向LGA與EWR",
         "summary": "Frontier Airlines將退出JFK；營運重心轉至LGA與EWR",
@@ -325,7 +334,6 @@
       "publishedUtc": "2026-09-05T07:14Z",
       "cat": "biz",
       "primarySource": "Boeing",
-      "image": "https://boeing.mediaroom.com/file.php/101985/Boeing+Connecting+Africa_1000.png?thumbnail=144",
       "zh": {
         "title": "波音預測非洲民航機隊2045年前增逾一倍至1625架",
         "summary": "波音預測非洲航空客運量年增近6%；機隊2045年前將倍增至1625架",
@@ -432,6 +440,22 @@
           "September 3, 2026",
           "2026-09-04"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://boeing.mediaroom.com/file.php/101985/Boeing+Connecting+Africa_1000.png?thumbnail=144",
+          "sources": [
+            {
+              "name": "Boeing — Boeing: Africa’s Airplane Fleet Will More than Double by 20…",
+              "url": "https://boeing.mediaroom.com/2026-09-04-Boeing-Africas-Airplane-Fleet-Will-More-than-Double-by-2045-to-Meet-Rising-Air-Travel-Demand"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "missing-source-evidence"
       }
     },
     {
@@ -439,7 +463,16 @@
       "publishedUtc": "2026-09-05T07:14Z",
       "cat": "biz",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Screenshot-2026-09-04-at-10.26.58.png",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Screenshot-2026-09-04-at-10.26.58.png",
+        "link": "https://aerospaceglobalnews.com/news/united-airlines-mountain-ascent-special-livery/",
+        "provider": "Aerospace Global News",
+        "subject": "United Airlines Mountain Ascent livery Embraer E175",
+        "sourceCaption": "United Airlines Mountain Ascent livery Embraer E175",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "聯合航空發表Mountain Ascent彩繪機身 擬2027年初投入營運",
         "summary": "聯合航空發表Mountain Ascent塗裝；預計2027年初投入營運",
@@ -546,7 +579,16 @@
       "publishedUtc": "2026-09-05T07:14Z",
       "cat": "biz",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/2ek32140_fb_02-Large.jpeg",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/2ek32140_fb_02-Large.jpeg",
+        "link": "https://aerospaceglobalnews.com/news/emirates-takes-on-business-class-with-new-premium-economy-seat/",
+        "provider": "Aerospace Global News",
+        "subject": "Emirates new A350 premium economy class",
+        "sourceCaption": "Emirates new A350 premium economy class",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "阿聯酋航空發表A350新豪華經濟艙座椅 配備可調式隔板",
         "summary": "阿聯酋航空發表A350電動豪華經濟艙座椅；配置28席與全高隔板",

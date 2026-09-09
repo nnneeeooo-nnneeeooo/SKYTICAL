@@ -1166,7 +1166,11 @@ def prep_article(raw):
     ]
     if not available_languages:
         available_languages = ["zh", "en"]
-    image = normalize_image(raw.get("image"), titles=[
+    from image_selection import prepare_image, rejection_reason
+    selected_image = prepare_image(raw, raw.get("image"), IMAGE_CAPTIONS)
+    if selected_image and rejection_reason(raw, selected_image, IMAGE_CAPTIONS):
+        selected_image = None
+    image = normalize_image(selected_image, titles=[
         (raw.get(lang) or {}).get("title") for lang in ("zh", "en")])
     # Display the SOURCE's newest publication time when the write stage
     # recorded one; the generation time (dt) is used for ordering only, so

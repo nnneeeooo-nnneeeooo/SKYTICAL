@@ -132,17 +132,6 @@
       "publishedUtc": "2026-09-06T08:35Z",
       "cat": "mil",
       "primarySource": "AeroTime",
-      "image": {
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Eesti_Lennundusmuuseum._H%C3%A4vitaja_F-4C_Phantom_II_kabiin.jpg/1280px-Eesti_Lennundusmuuseum._H%C3%A4vitaja_F-4C_Phantom_II_kabiin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=104602802",
-        "credit": "Lauri Veerde",
-        "license": "CC BY-SA 4.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "F-4 Phantom aircraft",
-        "subject": "F-4 Phantom",
-        "photoYear": 2020
-      },
       "zh": {
         "title": "希臘空軍F-4戰機於飛行展墜毀兩飛官殉職",
         "summary": "希臘空軍F-4戰機於航空展墜毀；兩名飛行員殉職；地面觀展民眾無人受傷",
@@ -246,6 +235,11 @@
           "September 5, 2026",
           "September 5 and 6"
         ]
+      },
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "non-documentary-stock"
       }
     },
     {
@@ -253,7 +247,16 @@
       "publishedUtc": "2026-09-06T08:35Z",
       "cat": "ops",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Archer-Midnight-II.png",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Archer-Midnight-II.png",
+        "link": "https://aerospaceglobalnews.com/news/archer-air-taxi-flight-tour-2028-olympics/",
+        "provider": "Aerospace Global News",
+        "subject": "Archer Midnight II",
+        "sourceCaption": "Archer Midnight II",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "Archer展開Midnight空中計程車巡迴試飛",
         "summary": "Archer啟動Midnight空中計程車巡迴試飛；首階段聚焦加州城際航線",
@@ -379,7 +382,16 @@
       "publishedUtc": "2026-09-06T08:35Z",
       "cat": "reg",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Airlink-display-HQ637PkXgAAb0hB.jpeg",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Airlink-display-HQ637PkXgAAb0hB.jpeg",
+        "link": "https://aerospaceglobalnews.com/news/airlink-cancels-flypast-sacaa-cape-town-review/",
+        "provider": "Aerospace Global News",
+        "subject": "Airlink display",
+        "sourceCaption": "Airlink display",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "Airlink取消約翰尼斯堡衝場 民航局審查低空飛行數據",
         "summary": "Airlink取消約翰尼斯堡體育場衝場；南非民航局對開普敦低空飛行展開審查",
