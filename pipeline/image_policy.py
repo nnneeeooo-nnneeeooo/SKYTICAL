@@ -66,6 +66,13 @@ INCIDENT_RE = re.compile(
     re.I,
 )
 
+CARGO_TOPIC_RE = re.compile(
+    r"貨運|貨機|貨物|全貨機|運貨|客改貨|"
+    r"\b(?:air\s+cargo|cargo\s+(?:aircraft|airline|carrier|flight|"
+    r"fuel|surcharge|operation|demand|freighter)|freighter|freight)\b",
+    re.I,
+)
+
 DRONE_RE = re.compile(
     r"\b(?:drone|drones|uas|uav|unmanned aerial)\b|無人機",
     re.I,
@@ -121,6 +128,11 @@ def article_is_cabin_story(article: dict) -> bool:
 
 def article_is_incident(article: dict) -> bool:
     return bool(INCIDENT_RE.search(article_context_text(article)))
+
+
+def article_is_cargo_story(article: dict) -> bool:
+    """Return true when the headline/summary makes cargo the main subject."""
+    return bool(CARGO_TOPIC_RE.search(article_context_text(article)))
 
 
 def article_is_drone_story(article: dict) -> bool:
