@@ -5,17 +5,6 @@
       "publishedUtc": "2026-09-05T11:29Z",
       "cat": "reg",
       "primarySource": "FAA",
-      "image": {
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Atlanta_Airport_%E2%80%93_Hartsfield-Jackson_Atlanta_International_Airport_in_Georgia.jpg/1280px-Atlanta_Airport_%E2%80%93_Hartsfield-Jackson_Atlanta_International_Airport_in_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=146782097",
-        "credit": "Harrison Keely",
-        "license": "CC BY 4.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "Hartsfield-Jackson Atlanta International Airport",
-        "subject": "Hartsfield-Jackson Atlanta International Airport",
-        "photoYear": 2023
-      },
       "zh": {
         "title": "美國FAA投資4.81億美元補助191處機場改善基礎設施",
         "summary": "美國FAA投入4.81億美元補助，升級全美36州與兩領地共191處機場設施。",
@@ -132,6 +121,11 @@
         "event_dates": [
           "2026-09-03"
         ]
+      },
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "headline-organization-unverified"
       }
     },
     {
@@ -139,7 +133,16 @@
       "publishedUtc": "2026-09-05T11:29Z",
       "cat": "ops",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/REGENT_Viceroy_Seaglider_First_Flight-e1788451437487.jpg",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/REGENT_Viceroy_Seaglider_First_Flight-e1788451437487.jpg",
+        "link": "https://aerospaceglobalnews.com/news/regent-seaglider-first-human-crewed-flight/",
+        "provider": "Aerospace Global News",
+        "subject": "REGENT’s Viceroy Seaglider prototype has completed its first human-crewed flight",
+        "sourceCaption": "REGENT’s Viceroy Seaglider prototype has completed its first human-crewed flight",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "REGENT Viceroy Seaglider完成首次載人飛行",
         "summary": "REGENT Viceroy原型完成首次載人飛行；兩名乘員；計畫載客12人",

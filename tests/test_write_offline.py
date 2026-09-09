@@ -319,8 +319,10 @@ def test_publish_flow():
     # 3 items in g-1, but two Reuters urls normalize to the same address.
     check(len(safety["sources"]) == 2,
           f"sources deduped by url, got {len(safety['sources'])}")
-    check(safety["image"] == "https://img.example.com/denver-737.jpg",
-          "safety image is first non-null item image")
+    check(safety["image"] is None and
+          safety["sourceImageCandidates"][0]["url"] == "https://img.example.com/denver-737.jpg"
+          and safety["sourceImageCandidates"][0]["sources"][0]["url"],
+          "RSS image keeps source binding as a candidate, not an approved image")
     check(safety["primarySource"] == "NTSB", "primarySource carried from group")
     check(safety["sources"][0]["name"].startswith("NTSB — "),
           "source name = display name + shortened title")

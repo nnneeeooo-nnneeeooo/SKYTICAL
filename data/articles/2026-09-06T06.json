@@ -127,7 +127,6 @@
       "publishedUtc": "2026-09-06T06:56Z",
       "cat": "biz",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/hawaiian-airlines-jet-with-cargo-pallets.jpg",
       "zh": {
         "title": "日本畫作於檀香山停機坪雨淋受損 阿拉斯加航空挨告索賠",
         "summary": "阿拉斯加航空因11幅日本畫作於檀香山受雨勢損壞，遭索賠521900美元。",
@@ -187,6 +186,22 @@
         "locations": [
           "Honolulu"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/hawaiian-airlines-jet-with-cargo-pallets.jpg",
+          "sources": [
+            {
+              "name": "Simple Flying — Alaska Airlines Sued For $521,900 After 11 Japanese Paintin…",
+              "url": "https://simpleflying.com/alaska-airlines-lawsuit-japanese-paintings-honolulu-rain-damage/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "airline-mismatch"
       }
     },
     {
@@ -194,7 +209,16 @@
       "publishedUtc": "2026-09-06T06:56Z",
       "cat": "biz",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/09/K63391.jpg",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/09/K63391.jpg",
+        "link": "https://aerospaceglobalnews.com/news/kenya-airways-ceo-resigns-airline-losses-africa/",
+        "provider": "Aerospace Global News",
+        "subject": "Kenya Airways' Boeing 787 Dreamliner",
+        "sourceCaption": "Kenya Airways' Boeing 787 Dreamliner",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "肯亞航空代理CEO辭職 財務虧損擴大至160億",
         "summary": "代理CEO辭職；上半年虧損160億；燃油價漲66%；營收增9%",
@@ -319,7 +343,16 @@
       "publishedUtc": "2026-09-06T06:56Z",
       "cat": "mil",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/MH-139_Grey_Wolf_conducts_flight_training_in_Camp_Guernsey_Wyoming.png",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/MH-139_Grey_Wolf_conducts_flight_training_in_Camp_Guernsey_Wyoming.png",
+        "link": "https://aerospaceglobalnews.com/news/boeing-mh-139a-grey-wolf-enters-usaf-service/",
+        "provider": "Aerospace Global News",
+        "subject": "USAF Grey Wolf",
+        "sourceCaption": "USAF Grey Wolf",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "波音MH-139A灰狼達初始作戰能力 接替UH-1N執行核彈安全任務",
         "summary": "MH-139A灰狼8月10日達IOC；首度護航民兵三型車隊；速度快50%、載員倍增",

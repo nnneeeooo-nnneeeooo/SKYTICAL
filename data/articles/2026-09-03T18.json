@@ -120,7 +120,6 @@
       "publishedUtc": "2026-09-03T18:15Z",
       "cat": "mil",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/f-15exs-to-seymour-johnson.png",
       "zh": {
         "title": "美國空軍調配F15EX與打擊鷹戰機部署",
         "summary": "美國空軍部署F15EX戰機並將打擊鷹移至匿蹤轟炸機基地",
@@ -262,6 +261,26 @@
           "2026-09-03",
           "2026-08-18"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/f-15exs-to-seymour-johnson.png",
+          "sources": [
+            {
+              "name": "Simple Flying — Why The Air Force Is Sending F-15EXs To Seymour Johnson & S…",
+              "url": "https://simpleflying.com/why-air-force-sending-f-15ex-seymour-johnson-strike-eagles-b-2-stealth-base/"
+            },
+            {
+              "name": "Archive: Aerospace Global News — A-10s, U-2s and F-15Es: What the US Air Force wants to reti... — a-20260819-0930-us-air-force-proposes-retiring-149-aircr",
+              "url": "https://aerospaceglobalnews.com/news/us-air-force-aircraft-retirements-2027/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "aircraft-model-mismatch"
       }
     },
     {
@@ -269,7 +288,16 @@
       "publishedUtc": "2026-09-03T18:15Z",
       "cat": "biz",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/accepting-boeing-787-9s.png",
+      "image": {
+        "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/accepting-boeing-787-9s.png",
+        "link": "https://simpleflying.com/why-qatar-airways-accepting-boeing-787-9s-without-qsuites-refunding-passengers-get-one/",
+        "provider": "Simple Flying",
+        "subject": "Qatar Airways 787-9 business class",
+        "sourceCaption": "Qatar Airways 787-9 business class",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "卡達航空接收無Qsuite波音787-9並補償旅客",
         "summary": "卡達航空接收未配備Qsuite的波音787-9，並為受影響旅客提供退款。",
@@ -416,17 +444,6 @@
       "publishedUtc": "2026-09-03T18:15Z",
       "cat": "reg",
       "primarySource": "AeroTime",
-      "image": {
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Southwest_Boeing_737-700_N947WN_BWI_MD1.jpg/1280px-Southwest_Boeing_737-700_N947WN_BWI_MD1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=168876834",
-        "credit": "Acroterion",
-        "license": "CC BY-SA 4.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "Boeing 737-700 aircraft",
-        "subject": "Boeing 737-700",
-        "photoYear": 2025
-      },
       "zh": {
         "title": "JCB Aero取得波音Part 145維修認證",
         "summary": "JCB Aero獲波音Part 145認證；將服務波音737系列",
@@ -513,6 +530,11 @@
           "2026-08",
           "2024-10"
         ]
+      },
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "headline-organization-unverified"
       }
     },
     {

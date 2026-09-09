@@ -5,7 +5,16 @@
       "publishedUtc": "2026-09-04T02:05Z",
       "cat": "ops",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/united-airlines-e175-ski-livery-1.jpg",
+      "image": {
+        "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/united-airlines-e175-ski-livery-1.jpg",
+        "link": "https://simpleflying.com/united-airlines-new-ski-season-special-livery-embraer-e175/",
+        "provider": "Simple Flying",
+        "subject": "United Airlines E175 ski livery (1)",
+        "sourceCaption": "United Airlines E175 ski livery (1)",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "聯合航空推出滑雪季塗裝E175 波士頓開航傑克遜霍爾",
         "summary": "聯合航空揭曉滑雪季特別塗裝E175；波士頓季節性直飛傑克遜霍爾贈升降機票",
@@ -80,7 +89,6 @@
       "publishedUtc": "2026-09-04T02:05Z",
       "cat": "biz",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Astrova-Icelandair-4-Large.jpeg",
       "zh": {
         "title": "Panasonic Astrova IFE 獲 Eyesafe 藍光減量認證",
         "summary": "Astrova IFE 獲 Eyesafe 認證；RPF40 達標",
@@ -166,6 +174,22 @@
         "event_dates": [
           "2026-09-03"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Astrova-Icelandair-4-Large.jpeg",
+          "sources": [
+            {
+              "name": "Aerospace Global News — First airline seatback screens certified to reduce blue lig…",
+              "url": "https://aerospaceglobalnews.com/news/panasonic-astrova-ife-eyesafe-blue-light-certification/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "headline-organization-unverified"
       }
     }
   ]

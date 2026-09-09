@@ -120,7 +120,6 @@
       "publishedUtc": "2026-09-08T07:35Z",
       "cat": "mil",
       "primarySource": "Airbus",
-      "image": "https://mediarenditions.airbus.com/2QhuPZcX9Dk_NrYM2hgUDFPGTpYra8MOoJ9CNbw8zOw/resize?src=kpkp%3A%2F%2Fairbus%2F38%2F926%2F926457-4c9fcbmln2.jpg&w=480&h=270&poiX=50&poiY=50&el=true&t=fill-down",
       "zh": {
         "title": "紐西蘭空軍NH90直升機飛行時數突破3,000小時",
         "summary": "紐西蘭空軍NH90直升機突破3,000飛行小時，成為全球首架達成該紀錄機型。",
@@ -275,6 +274,30 @@
           "July 30, 2026",
           "December 2025"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://mediarenditions.airbus.com/2QhuPZcX9Dk_NrYM2hgUDFPGTpYra8MOoJ9CNbw8zOw/resize?src=kpkp%3A%2F%2Fairbus%2F38%2F926%2F926457-4c9fcbmln2.jpg&w=480&h=270&poiX=50&poiY=50&el=true&t=fill-down",
+          "sources": [
+            {
+              "name": "Airbus — Above and beyond 3,000 hours: RNZAF’s NH90 sets a new fligh…",
+              "url": "https://www.airbus.com/en/newsroom/stories/2026-09-above-and-beyond-3000-hours-rnzafs-nh90-sets-a-new-flight-hour-milestone"
+            },
+            {
+              "name": "Archive: AeroTime — France receives first special forces NH90 to replace Caraca... — a-20260731-1048-airbus-delivers-first-special-operations",
+              "url": "https://www.aerotime.aero/articles/france-first-special-forces-nh90-replace-caracal-cougar"
+            },
+            {
+              "name": "Archive: Airbus — Airbus delivers first NH90 designed for special operations... — a-20260731-1048-airbus-delivers-first-special-operations",
+              "url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-delivers-first-nh90-designed-for-special-operations-to-france"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "missing-source-evidence"
       }
     },
     {
@@ -282,18 +305,6 @@
       "publishedUtc": "2026-09-08T07:35Z",
       "cat": "ops",
       "primarySource": "AeroTime",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Kamov_KA-52.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=111182165",
-        "credit": "Kamov KA-52",
-        "license": "CC BY-SA 4.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "Kamov Ka-52 aircraft",
-        "subject": "Kamov Ka-52",
-        "description": "Kamov KA-52",
-        "photoYear": 2021
-      },
       "zh": {
         "title": "索契機場（AER）遭無人機襲擊 衛星照示兩架俄直升機疑似損毀",
         "summary": "烏克蘭襲擊索契機場；衛星顯示兩架直升機疑似被毀；航班一度受阻",
@@ -379,6 +390,11 @@
           "2026-09-05",
           "2026-09-07"
         ]
+      },
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "airport-mismatch"
       }
     },
     {
@@ -386,7 +402,6 @@
       "publishedUtc": "2026-09-08T07:35Z",
       "cat": "mil",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/08/Air-New-Zealand-OpenAI-ChatGPT-1.jpg",
       "zh": {
         "title": "印度延後AMCA匿蹤戰機原型機投標截止日 至10月30日",
         "summary": "印度將AMCA匿蹤戰機原型機投標截止日延至10月30日；三組民營團隊競標",
@@ -515,6 +530,27 @@
           "2029",
           "2035"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/08/Air-New-Zealand-OpenAI-ChatGPT-1.jpg",
+          "sources": [
+            {
+              "name": "Aerospace Global News — AMCA bid deadline extended: Here’s who is in the race to bu…",
+              "url": "https://aerospaceglobalnews.com/news/india-amca-stealth-jet-bidders/"
+            }
+          ]
+        }
+      ],
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/08/Air-New-Zealand-OpenAI-ChatGPT-1.jpg",
+        "link": "https://aerospaceglobalnews.com/news/india-amca-stealth-jet-bidders/",
+        "provider": "Aerospace Global News",
+        "subject": "India AMCA fighter jet",
+        "sourceCaption": "India AMCA fighter jet",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
       }
     },
     {
@@ -522,7 +558,6 @@
       "publishedUtc": "2026-09-08T07:35Z",
       "cat": "ops",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2025/11/AdobeStock_246175691.jpeg",
       "zh": {
         "title": "聖嬰現象預估持續至2027年 或使全球冬季航班顛簸加劇",
         "summary": "世界氣象組織預測強烈聖嬰現象將持續至2027年初，或導致冬季航班亂流增加。",
@@ -620,6 +655,22 @@
           "1979",
           "2020"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/11/AdobeStock_246175691.jpeg",
+          "sources": [
+            {
+              "name": "Aerospace Global News — How El Niño could affect flights this winter: Turbulence, d…",
+              "url": "https://aerospaceglobalnews.com/news/el-nino-impact-aviation-winter-weather/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "missing-source-evidence"
       }
     },
     {
@@ -627,7 +678,6 @@
       "publishedUtc": "2026-09-08T07:35Z",
       "cat": "biz",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/01/Airbus_A380_-_9H-GLOBL_from_Global_Airlines_landing_at_LFBT_airport.jpg",
       "zh": {
         "title": "英國Global Airlines面臨清算聲請 旗下A380復飛進度受阻",
         "summary": "英國Global Airlines遭債權人提清算聲請；旗下A380停飛法國",
@@ -743,6 +793,27 @@
           "2025",
           "2026-09-07"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/01/Airbus_A380_-_9H-GLOBL_from_Global_Airlines_landing_at_LFBT_airport.jpg",
+          "sources": [
+            {
+              "name": "Aerospace Global News — Global Airlines faces fresh liquidation petition as A380 pl…",
+              "url": "https://aerospaceglobalnews.com/news/global-airlines-liquidation-petition-a380-routes/"
+            }
+          ]
+        }
+      ],
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/01/Airbus_A380_-_9H-GLOBL_from_Global_Airlines_landing_at_LFBT_airport.jpg",
+        "link": "https://aerospaceglobalnews.com/news/global-airlines-liquidation-petition-a380-routes/",
+        "provider": "Aerospace Global News",
+        "subject": "Global Airlines A380",
+        "sourceCaption": "Global Airlines A380",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
       }
     },
     {
@@ -750,7 +821,6 @@
       "publishedUtc": "2026-09-08T07:35Z",
       "cat": "ops",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Anak_Krakatau_january_2016.jpg",
       "zh": {
         "title": "印尼喀拉喀托之子火山噴發致雅加達等七座機場關閉",
         "summary": "喀拉喀托之子火山噴發；印尼七座機場關閉；逾27萬旅客受阻",
@@ -835,6 +905,29 @@
           "5 September",
           "7 September"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Anak_Krakatau_january_2016.jpg",
+          "sources": [
+            {
+              "name": "Aerospace Global News — Jakarta airport closures: What passengers need to know as A…",
+              "url": "https://aerospaceglobalnews.com/news/jakarta-airport-closures-anak-krakatau-volcanic-ash/"
+            }
+          ]
+        }
+      ],
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Uprising-mt_anak_krakatau.jpg/1280px-Uprising-mt_anak_krakatau.jpg",
+        "link": "https://commons.wikimedia.org/wiki/File:Uprising-mt_anak_krakatau.jpg",
+        "credit": "Uprising",
+        "license": "CC BY-SA 3.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "topic:volcano:anak-krakatau",
+        "subject": "印尼喀拉喀托之子火山（Anak Krakatau）冒煙景象",
+        "photoDate": "2012-09-09",
+        "photoYear": 2012
       }
     },
     {
@@ -842,7 +935,6 @@
       "publishedUtc": "2026-09-08T07:35Z",
       "cat": "mil",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Hellenic-Air-Force-F-4-Phantom-II.jpg",
       "zh": {
         "title": "希臘空軍F-4戰機於航空展失事墜毀 兩名飛行員殉職調查中",
         "summary": "希臘空軍一架F-4戰機於塔納格拉基地航空展墜毀；兩名飛官殉職；事故原因調查中",
@@ -972,6 +1064,27 @@
           "1974",
           "2024"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Hellenic-Air-Force-F-4-Phantom-II.jpg",
+          "sources": [
+            {
+              "name": "Aerospace Global News — Fatal Greek F-4 Phantom airshow crash raises questions abou…",
+              "url": "https://aerospaceglobalnews.com/news/greek-f4-phantom-tanagra-crash/"
+            }
+          ]
+        }
+      ],
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Hellenic-Air-Force-F-4-Phantom-II.jpg",
+        "link": "https://aerospaceglobalnews.com/news/greek-f4-phantom-tanagra-crash/",
+        "provider": "Aerospace Global News",
+        "subject": "Hellenic Air Force F-4 Phantom II",
+        "sourceCaption": "Hellenic Air Force F-4 Phantom II",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
       }
     }
   ]

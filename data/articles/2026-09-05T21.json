@@ -5,7 +5,6 @@
       "publishedUtc": "2026-09-05T21:48Z",
       "cat": "ops",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/777-freighter.png",
       "zh": {
         "title": "DHL接收首架Mammoth改裝波音777貨機",
         "summary": "DHL已接收其首架經Mammoth改裝之波音777貨機，據稱具備原廠貨機性能。",
@@ -71,6 +70,22 @@
         "event_dates": [
           "2026-09-05"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/777-freighter.png",
+          "sources": [
+            {
+              "name": "Simple Flying — DHL's 1st Converted Boeing 777 Freighter Has Been Delivered…",
+              "url": "https://simpleflying.com/dhls-first-converted-777-freighter-has-been-delivered-and-you-can-track-it-live/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "airline-mismatch"
       }
     },
     {
@@ -78,7 +93,6 @@
       "publishedUtc": "2026-09-05T21:48Z",
       "cat": "ops",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/new_air_force_one_stops_at_raf_mildenhall_-9803478-2.jpg",
       "zh": {
         "title": "Simple Flying：川普將搭乘前卡達波音747-8客機前往海外",
         "summary": "川普擬搭前卡達波音747-8前往海外；飛機具未證實安全升級與反制措施",
@@ -141,6 +155,22 @@
         "event_dates": [
           "2026-09-05"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/new_air_force_one_stops_at_raf_mildenhall_-9803478-2.jpg",
+          "sources": [
+            {
+              "name": "Simple Flying — Trump To Fly Overseas On Ex-Qatari Boeing 747-8 With Unconf…",
+              "url": "https://simpleflying.com/trump-fly-overseas-ex-qatari-boeing-747-8-unconfirmed-security-upgrades/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "aircraft-model-mismatch"
       }
     },
     {
@@ -148,7 +178,6 @@
       "publishedUtc": "2026-09-05T21:48Z",
       "cat": "biz",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Embraer-celebrates-the-delivery-of-the-2000th-E-Jet-rolling-out.jpg",
       "zh": {
         "title": "巴西航空工業交付第2000架EJet予AzulLinhasAéreas",
         "summary": "巴西航空工業交付2000架E195-E2；Azul Linhas Aéreas接收",
@@ -277,6 +306,22 @@
           "2026-09-03",
           "2026-09-05"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Embraer-celebrates-the-delivery-of-the-2000th-E-Jet-rolling-out.jpg",
+          "sources": [
+            {
+              "name": "Aerospace Global News — Embraer celebrates 2,000th E-Jet delivery as backlog tops 3…",
+              "url": "https://aerospaceglobalnews.com/news/embraer-2000th-ejet-delivery-azul/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "aircraft-model-mismatch"
       }
     },
     {
@@ -284,7 +329,16 @@
       "publishedUtc": "2026-09-05T21:48Z",
       "cat": "biz",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/AdobeStock_657609128_Editorial_Use_Only-scaled.jpeg",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/AdobeStock_657609128_Editorial_Use_Only-scaled.jpeg",
+        "link": "https://aerospaceglobalnews.com/news/ethiopian-airlines-potential-boeing-777f-order/",
+        "provider": "Aerospace Global News",
+        "subject": "Ethiopian Airlines B777F",
+        "sourceCaption": "Ethiopian Airlines B777F",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "衣索比亞航空洽購最多10架波音777貨機",
         "summary": "傳聞洽購8至10架777貨機；兩公司未置評",
