@@ -1006,6 +1006,15 @@ def normalize_image(raw_img, titles=()):
                 str(title).strip().casefold() for title in titles if title}:
             return None
         link = str(raw_img.get("link") or cached.get("link") or "")
+        kind = raw_img.get("kind") or "file_photo"
+        # An exact publisher caption establishes the subject, not whether the
+        # asset is a photograph. Keep stock accounting in the selection layer;
+        # use conservative presentation labels for publisher artwork here.
+        if kind == "file_photo" and (raw_img.get("sourceCaption") or cached.get("subject")):
+            kind = "source_image"
+            if re.search(r"illustration|render(?:ing)?|composite|concept|openai|chatgpt|示意|合成|概念",
+                         " ".join((url, subject, str(raw_img.get("sourceCaption") or ""))), re.I):
+                kind = "illustration"
         return {
             "url": url,
             "link": link if link and _safe_web_url(link) else None,
@@ -1013,8 +1022,8 @@ def normalize_image(raw_img, titles=()):
             "license": str(raw_img.get("license") or "") or None,
             "provider": str(raw_img.get("provider") or cached.get("provider") or "") or None,
             "subject": subject,
-            "kind": (raw_img.get("kind")
-                     if raw_img.get("kind") in ("airframe_photo",
+            "kind": (kind
+                     if kind in ("source_image", "illustration", "airframe_photo",
                                                 "file_photo",
                                                 "event_photo")
                      else "file_photo"),

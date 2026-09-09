@@ -26,6 +26,13 @@ def photo(filename, **extra):
 
 
 class ImageSelectionTests(unittest.TestCase):
+    def test_medical_logistics_cannot_use_consumer_quadcopter(self):
+        im = photo("Quadcopter_Drone_in_flight", matched="topic:drone")
+        for title in ("JEDSY medical logistics drone partnership",
+                      "新纖引進醫藥物流無人機", "無人機醫療運輸", "Drone cargo services"):
+            self.assertEqual(policy.rejection_reason(article(title), im), "generic-drone-mismatch")
+        self.assertIsNone(policy.rejection_reason(article("Civil drone market growth"), im))
+
     def test_search_query_cannot_attest_airline(self):
         im = photo("Air_Canada_A350-900", matched="STARLUX Airlines A350-900",
                    subject="STARLUX Airlines A350-900")
