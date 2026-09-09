@@ -67,67 +67,108 @@
     {
       "id": "a-20260829-2124-rolls-royce-triples-boeing-787-engine-ov",
       "publishedUtc": "2026-08-29T21:24Z",
-      "cat": "ops",
+      "cat": "biz",
       "primarySource": "Simple Flying",
       "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/boeing-787-engine-1.png",
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/trent-fix.jpg",
+          "sources": [
+            {
+              "url": "https://simpleflying.com/video/rolls-royce-just-tripled-the-time-between-boeing-787-engine-overhauls-with-1-blade-redesign/",
+              "name": "Simple Flying"
+            }
+          ]
+        }
+      ],
       "zh": {
-        "title": "勞斯萊斯重設單一葉片 提升波音787引擎大修間隔至三倍",
-        "summary": "勞斯萊斯重新設計單一發動機葉片；波音787引擎大修時間間隔延長至三倍",
+        "title": "Simple Flying報導：勞斯萊斯單一葉片重設計使787發動機大修間隔增三倍",
+        "summary": "Simple Flying報導勞斯萊斯787大修增三倍；Trent 1000份額流失",
         "body": [
-          "根據航空新聞網站 Simple Flying 於 2026 年 8 月 29 日發布的報導，航空發動機製造商勞斯萊斯（Rolls-Royce）已透過對單一發動機葉片進行重新設計，成功將波音 787（Boeing 787）客機發動機的大修間隔時間提升至原先的三倍。",
-          "這項針對波音 787 機型發動機葉片的重新設計，大幅延長了發動機在兩次全面大修維護之間的持續運作時間。該報導同時關注這項維修間隔的技術突破，是否代表勞斯萊斯在波音 787 相關發動機市場中迎來營運轉機。"
+          "Simple Flying於2026年9月9日發布影片報導，指勞斯萊斯透過單一葉片重設計，將波音787用Trent 1000發動機的大修間隔提高三倍。",
+          "報導指出Trent 1000早期嚴重缺乏耐久性導致昂貴提前大修甚至有787因等待引擎維修而停飛使其市場份額大幅流失予通用電氣GEnx。",
+          "勞斯萊斯近年持續改進Trent 1000，Simple Flying早前亦報導過聯合航空因引擎耐久性問題與勞斯萊斯產生糾紛，涉及金額達1.75億美元，波及45架A350。"
         ]
       },
       "en": {
-        "title": "Rolls-Royce Triples Boeing 787 Engine Overhaul Intervals With Blade Redesign",
-        "summary": "Rolls-Royce triples Boeing 787 engine overhaul intervals following a single blade redesign.",
+        "title": "Simple Flying Reports Rolls-Royce Tripled 787 Engine Overhaul Interval via Blade Redesign",
+        "summary": "Simple Flying reports Rolls-Royce blade redesign triples 787 overhaul interval; Trent 1000 lost share to GEnx.",
         "body": [
-          "According to a report published by Simple Flying on August 29, 2026, aircraft engine manufacturer Rolls-Royce has tripled the time between overhauls for engines powering Boeing 787 aircraft. The engine manufacturer achieved this operational maintenance interval extension through a redesign of a single engine blade component.",
-          "The redesign of the single engine blade significantly extends the required duration between comprehensive maintenance overhauls for the Boeing 787 powerplant fleet. The report also raised questions regarding whether this technical improvement represents an operational turnaround for Rolls-Royce in the wider Boeing 787 engine market."
+          "Simple Flying published a video report on September 9, 2026, stating that Rolls-Royce has tripled the time between overhauls for the Boeing 787's Trent 1000 engine through a single blade redesign.",
+          "The report notes that severe durability issues previously led to costly premature overhauls and grounded 787s, causing the Trent 1000 to lose significant market share to General Electric's GEnx.",
+          "Rolls-Royce has been working to improve the Trent 1000; Simple Flying previously reported a dispute between United Airlines and Rolls-Royce over engine durability involving $175 million and 45 Airbus A350 aircraft."
         ]
       },
       "sources": [
+        {
+          "name": "Simple Flying — Rolls-Royce Just Tripled The Time Between Boeing 787 Engine…",
+          "url": "https://simpleflying.com/video/rolls-royce-just-tripled-the-time-between-boeing-787-engine-overhauls-with-1-blade-redesign/"
+        },
         {
           "name": "Simple Flying — Rolls-Royce Just Tripled The Time Between Boeing 787 Engine…",
           "url": "https://simpleflying.com/rolls-royce-tripled-time-between-boeing-787-engine-overhauls-1-blade-redesign/"
         }
       ],
       "articleFormat": "brief",
-      "sourcePublishedUtc": "2026-08-29T21:00Z",
-      "writer": "gemini:gemini-3.6-flash",
+      "updatedUtc": "2026-09-09T13:17Z",
+      "revision": 2,
+      "sourcePublishedUtc": "2026-09-09T12:32Z",
+      "writer": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
       "facts": [
         {
           "factId": "F1",
-          "claim": "Rolls-Royce tripled the time between Boeing 787 engine overhauls through a single blade redesign.",
+          "claim": "Simple Flying published a video article titled 'Rolls-Royce Just Tripled The Time Between Boeing 787 Engine Overhauls With 1 Blade Redesign' on 2026-09-09.",
           "sourceQuote": "Rolls-Royce Just Tripled The Time Between Boeing 787 Engine Overhauls With 1 Blade Redesign",
-          "sourceUrl": "https://simpleflying.com/rolls-royce-tripled-time-between-boeing-787-engine-overhauls-1-blade-redesign/",
+          "sourceUrl": "https://simpleflying.com/video/rolls-royce-just-tripled-the-time-between-boeing-787-engine-overhauls-with-1-blade-redesign/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F2",
-          "claim": "The report questioned whether Rolls-Royce is making a turnaround in the Boeing 787 market.",
-          "sourceQuote": "Is Rolls-Royce making a turnaround in the 787 market?",
-          "sourceUrl": "https://simpleflying.com/rolls-royce-tripled-time-between-boeing-787-engine-overhauls-1-blade-redesign/",
+          "claim": "The article summary states that a severe lack of durability led to expensive, premature overhauls and 787s were grounded as the list of engines needing work grew.",
+          "sourceQuote": "A severe lack of durability led to expensive, premature overhauls, and 787s were grounded as the list of engines needing work grew.",
+          "sourceUrl": "https://simpleflying.com/video/rolls-royce-just-tripled-the-time-between-boeing-787-engine-overhauls-with-1-blade-redesign/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The article summary states that the Trent 1000 has lost significant market share to the GEnx.",
+          "sourceQuote": "the Trent 1000 has lost significant market share to the GEnx",
+          "sourceUrl": "https://simpleflying.com/video/rolls-royce-just-tripled-the-time-between-boeing-787-engine-overhauls-with-1-blade-redesign/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The article summary states that Rolls-Royce has been working hard to improve the Trent 1000 and it seems Rolls-Royce might be back.",
+          "sourceQuote": "Rolls-Royce has been working hard to improve the Trent 1000, and it seems Rolls-Royce might be back.",
+          "sourceUrl": "https://simpleflying.com/video/rolls-royce-just-tripled-the-time-between-boeing-787-engine-overhauls-with-1-blade-redesign/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         }
       ],
-      "riskFlags": [],
-      "eventStatus": "confirmed",
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "preliminary",
       "entities": {
         "organizations": [
           "Rolls-Royce",
+          "Boeing",
           "Simple Flying"
         ],
         "aircraft_models": [
-          "787",
-          "Boeing 787"
+          "Boeing 787",
+          "Trent 1000",
+          "GEnx"
         ],
         "event_dates": [
-          "2026-08-29"
+          "2026-09-09"
         ]
       }
     },
