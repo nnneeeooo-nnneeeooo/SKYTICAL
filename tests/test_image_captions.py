@@ -59,11 +59,22 @@ class ImageCaptionTests(unittest.TestCase):
                 "provider": "Simple Flying"}}):
             image = build.normalize_image(IMAGE)
             self.assertEqual(image["subject"], "Virgin Atlantic Airbus A350")
-            self.assertEqual(image["kind"], "file_photo")
+            self.assertEqual(image["kind"], "source_image")
             self.assertEqual(image["link"], SOURCE)
             for lang in ("zh", "en"):
                 self.assertEqual(build._hero_image_caption(image, lang),
                                  "Virgin Atlantic Airbus A350 · Simple Flying")
+
+    def test_publisher_caption_does_not_certify_a_photograph(self):
+        raw = {"url": IMAGE, "subject": "Turkish Airlines sponsorship",
+               "sourceCaption": "Turkish Airlines sponsorship", "kind": "file_photo"}
+        self.assertEqual(build.normalize_image(raw)["kind"], "source_image")
+        raw["url"] = "https://news.example/OpenAI-ChatGPT-1.jpg"
+        self.assertEqual(build.normalize_image(raw)["kind"], "illustration")
+        raw["kind"] = "event_photo"
+        self.assertEqual(build.normalize_image(raw)["kind"], "event_photo")
+        # Rendering labels must not mutate the stock kind used for reuse limits.
+        self.assertEqual(raw["kind"], "event_photo")
 
     def test_uncaptioned_and_headline_copied_images_use_brand_fallback(self):
         with patch.object(build, "IMAGE_CAPTIONS", {}):
