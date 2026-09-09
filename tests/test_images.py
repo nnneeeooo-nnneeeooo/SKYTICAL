@@ -142,6 +142,11 @@ def reset():
 check("registration found in article text",
       images.find_registration(make_article(
           "a", "Delta A350 registration N512DN arrived")) == "N512DN")
+congo_dc8 = make_article(
+    "a", "Trans Air Cargo Service DC-8-73CF 9S-AJO runway excursion")
+congo_dc8["entities"]["registration_numbers"] = ["9S-AJO", "OB-2231P"]
+check("verified entity registration supports 9S prefix",
+      images.find_registration(congo_dc8) == "9S-AJO")
 check("plain N95 is never treated as a registration",
       images.find_registration(make_article(
           "a", "Airport staff wore N95 masks")) is None)
@@ -560,6 +565,19 @@ fake.calls.clear()
 images.main()
 check("negative result is not retried before the retry window",
       fake.calls == [] and read_batch(p)[0]["image"] is None)
+negative_entry = json.loads(
+    (TMP / "images.json").read_text(encoding="utf-8"))["articles"]["a-none"]
+check("negative cache records provider rejection reasons",
+      bool(negative_entry.get("rejection_reasons"))
+      and any("no-result" in reason
+              for reason in negative_entry["rejection_reasons"]))
+
+due_articles = [make_article(str(i), "Delta Air Lines Airbus A350")
+                for i in range(40)]
+check("lookup budget scales with backlog and remains bounded",
+      images._lookup_budget(due_articles, {}, now_utc()) == 14
+      and images._lookup_budget(due_articles * 10, {}, now_utc())
+      == images.MAX_LOOKUPS_PER_RUN)
 
 # A negative cache entry must never become permanent. After the initial
 # six-hour retries, a newly available image is still attached on a later

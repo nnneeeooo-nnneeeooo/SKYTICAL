@@ -59,6 +59,12 @@ class ImageSelectionTests(unittest.TestCase):
         a["en"]["body"] = ["Earnings increased.", "A historical flight used N512DN."]
         self.assertIsNone(images.find_registration(a))
 
+    def test_verified_entity_registration_supports_9s_prefix(self):
+        a = article(
+            "Trans Air Cargo Service DC-8-73CF 9S-AJO runway excursion",
+            entities={"registration_numbers": ["9S-AJO", "OB-2231P"]})
+        self.assertEqual(images.find_registration(a), "9S-AJO")
+
     def test_country_is_not_airline(self):
         self.assertIsNone(images.find_airline(article("美國公布無人機新規則")))
 
@@ -135,6 +141,40 @@ class ImageSelectionTests(unittest.TestCase):
         im = {"url": "https://cdn.planespotters.net/example.jpg", "provider": "Planespotters.net",
               "kind": "airframe_photo", "matched": "N512DN", "link": "https://www.planespotters.net/photo/1"}
         self.assertEqual(policy.rejection_reason(a, im), "airframe-operator-unverified")
+
+    def test_exact_airframe_and_verified_freighter_subtype_are_allowed(self):
+        a = article(
+            "Trans Air Cargo Service DC-8 freighter 9S-AJO runway excursion",
+            entities={
+                "airlines": ["Trans Air Cargo Service"],
+                "aircraft_models": ["DC-8-73CF", "DC-8"],
+                "registration_numbers": ["9S-AJO"],
+            })
+        im = {
+            "url": "https://cdn.planespotters.net/9s-ajo.jpg",
+            "provider": "Planespotters.net", "kind": "airframe_photo",
+            "matched": "9S-AJO",
+            "description": "Trans Air Cargo Service DC-8-73CF 9S-AJO",
+            "link": "https://www.planespotters.net/photo/9s-ajo-trans-air-cargo-service",
+        }
+        self.assertIsNone(policy.rejection_reason(a, im))
+        a["entities"]["aircraft_models"] = ["DC-8"]
+        self.assertEqual(
+            policy.rejection_reason(a, im), "airframe-role-unverified")
+
+    def test_bound_aerotime_event_uses_verified_subject(self):
+        url = "https://www.aerotime.aero/articles/dc-8-runway-excursion"
+        a = article(
+            "Trans Air Cargo Service DC-8 freighter 9S-AJO runway excursion",
+            sources=[{"url": url}],
+            entities={"airlines": ["Trans Air Cargo Service"]})
+        im = {
+            "url": "https://www.aerotime.aero/images/2026/09/dc8.jpeg",
+            "link": url, "provider": "AeroTime", "kind": "event_photo",
+            "matched": "source:aerotime", "sourceCaption": "Bystander video",
+            "subject": "Trans Air Cargo Service DC-8-73CF 9S-AJO",
+        }
+        self.assertIsNone(policy.rejection_reason(a, im))
 
     def test_url_identity_handles_resize_but_not_attachment_id(self):
         original = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Test.jpg"

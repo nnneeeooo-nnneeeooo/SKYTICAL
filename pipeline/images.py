@@ -73,9 +73,11 @@ CACHE_PATH = DATA_DIR / "images.json"
 TIMEOUT = (10, 30)
 HEADERS = {"User-Agent": USER_AGENT}
 
-# Politeness caps per run; negative matches back off but keep retrying while
-# the article remains in the user-facing seven-day window.
-MAX_LOOKUPS_PER_RUN = 6
+# Politeness caps per run; scale within a bounded range when due no-image
+# articles accumulate, then back off negative matches while they remain fresh.
+BASE_LOOKUPS_PER_RUN = 6
+MAX_LOOKUPS_PER_RUN = 18
+LOOKUP_BACKLOG_DIVISOR = 3
 FAST_RETRY_ATTEMPTS = 3
 RETRY_AFTER_HOURS = 6
 LONG_RETRY_AFTER_HOURS = 24
@@ -121,7 +123,10 @@ _CAA_HOSTS = {"caa.gov.tw", "www.caa.gov.tw"}
 # letter suffix or 4-5 digits, JA####, and common hyphenated prefixes.
 _REG_RE = re.compile(
     r"\b(B-\d{4,5}|N\d{2,4}[A-Z]{1,2}|N\d{4,5}|JA\d{3,4}[A-Z]?"
-    r"|(?:HL|VH|HS|9V|9M|D|F|G|PH|EI|OE|VT|A6|A7|TC)-[A-Z]{3,4})\b")
+    r"|(?:HL|VH|HS|9S|9V|9M|D|F|G|PH|EI|OE|VT|A6|A7|TC)-[A-Z]{3,4})\b")
+_ENTITY_REG_RE = re.compile(
+    r"^(?:B-\d{4,5}|N\d{2,5}[A-Z]{0,2}|JA\d{3,4}[A-Z]?|"
+    r"[A-Z0-9]{1,2}-[A-Z0-9]{3,5})$", re.I)
 
 # Location wording -> Taiwan airport photo query. Articles about island
 # routes say 澎湖/金門/馬祖, never the airport's registry name, so the
@@ -200,7 +205,18 @@ def _article_text(article: dict) -> str:
 
 
 def find_registration(article: dict) -> str | None:
-    match = _REG_RE.search(article_lead_text(article))
+    lead = article_lead_text(article)
+    entities = article.get("entities") or {}
+    registrations = (entities.get("registration_numbers")
+                     if isinstance(entities, dict) else []) or []
+    for value in registrations:
+        candidate = str(value or "").strip().upper()
+        if (_ENTITY_REG_RE.fullmatch(candidate)
+                and re.search(
+                    rf"(?<![A-Z0-9]){re.escape(candidate)}(?![A-Z0-9])",
+                    lead, re.I)):
+            return candidate
+    match = _REG_RE.search(lead)
     return match.group(1) if match else None
 
 
@@ -513,6 +529,9 @@ def lookup_planespotters(reg: str, *, article=None) -> dict | None:
         link = photo.get("link")
         if not thumb or not link:
             continue
+        description = " ".join(str(photo.get(key) or "").strip()
+                               for key in ("airline", "aircraft", "reg"))
+        description = " ".join(description.split())
         candidate = {
             "url": str(thumb),
             "link": str(link),
@@ -521,7 +540,8 @@ def lookup_planespotters(reg: str, *, article=None) -> dict | None:
             "provider": "Planespotters.net",
             "kind": "airframe_photo",
             "matched": reg,
-            "subject": f"註冊號 {reg}",
+            "subject": description or f"註冊號 {reg}",
+            "description": description,
         }
         if article is None or existing_image_matches(article, candidate):
             return candidate
@@ -607,26 +627,40 @@ def lookup_commons(query: str, require_tokens: list[str],
     return max(candidates, key=lambda row: row[:3])[3] if candidates else None
 
 
-def resolve_image(article: dict, *, usage=None) -> dict | None:
+def resolve_image(article: dict, *, usage=None, diagnostics=None) -> dict | None:
     """Try independently failing providers; never relax subject constraints."""
     if article.get("articleFormat") == "roundup":
         return None
     def attempt(fn, *args, **kwargs):
+        label = getattr(fn, "__name__", "provider")
         try:
             photo = fn(*args, **kwargs)
-            if photo and existing_image_matches(article, photo):
+            if not photo:
+                if diagnostics is not None:
+                    diagnostics.append(f"{label}:no-result")
+                return None
+            reason = rejection_reason(article, photo)
+            if not reason:
                 if photo.get("kind") == "file_photo" and (usage or {}).get(image_key(photo), 0) >= MAX_STOCK_REUSE:
+                    if diagnostics is not None:
+                        diagnostics.append(f"{label}:stock-reuse-limit")
                     return None
                 return photo
+            if diagnostics is not None:
+                diagnostics.append(f"{label}:{reason}")
         except (RequestException, OSError, ValueError, TypeError, KeyError) as exc:
-            print(f"images: {getattr(fn, "__name__", "provider")}: {type(exc).__name__}")
+            if diagnostics is not None:
+                diagnostics.append(
+                    f"{label}:lookup-error:{type(exc).__name__}")
+            print(f"images: {label}: {type(exc).__name__}")
         return None
     photo = attempt(lookup_official_source_photo, article)
     if photo:
         return photo
     reg = find_registration(article)
     if reg:
-        photo = attempt(lookup_planespotters, reg, article=article)
+        # Validate once in ``attempt`` so the precise reason is retained.
+        photo = attempt(lookup_planespotters, reg)
         if photo:
             return photo
     airline, actype, airport = find_airline(article), find_aircraft_type(article), find_airport(article)
@@ -682,12 +716,32 @@ def _recent_batches():
             yield path, batch, articles
 
 
+def _lookup_budget(articles, entries, now) -> int:
+    """Scale lookups with due no-image backlog without becoming unbounded."""
+    due = 0
+    for article in articles:
+        if article.get("articleFormat") == "roundup" or article.get("image"):
+            continue
+        entry = entries.get(str(article.get("id") or "")) or {}
+        try:
+            if (entry.get("status") == "none" and entry.get("next_retry_utc")
+                    and parse_iso(entry["next_retry_utc"]) > now):
+                continue
+        except (TypeError, ValueError):
+            pass
+        due += 1
+    base = min(BASE_LOOKUPS_PER_RUN, MAX_LOOKUPS_PER_RUN)
+    demand = (due + LOOKUP_BACKLOG_DIVISOR - 1) // LOOKUP_BACKLOG_DIVISOR
+    return min(MAX_LOOKUPS_PER_RUN, max(base, demand))
+
+
 def main() -> int:
     if not ARTICLES_DIR.is_dir():
         print("images: no articles yet")
         return 0
     enforce_recent()
-    usage = stock_usage([a for _, _, aa in _recent_batches() for a in aa])
+    recent_batches = list(_recent_batches())
+    usage = stock_usage([a for _, _, aa in recent_batches for a in aa])
     cache = load_json(CACHE_PATH, {})
     entries = cache.get("articles")
     if not isinstance(entries, dict):
@@ -696,9 +750,11 @@ def main() -> int:
     cache = {"articles": entries, "sources": source_entries}
     now = now_utc()
     cutoff = now - timedelta(days=MAX_ARTICLE_AGE_DAYS)
+    lookup_budget = _lookup_budget(
+        [a for _, _, aa in recent_batches for a in aa], entries, now)
     lookups = attached = source_lookups = 0
 
-    for path, batch, articles in _recent_batches():
+    for path, batch, articles in recent_batches:
         changed = False
         for article in articles:
             art_id = str(article.get("id") or "")
@@ -714,12 +770,16 @@ def main() -> int:
                     changed = True
                 entries.pop(art_id, None)
                 continue
+            rejection_reasons = []
             # Exact-source caption recovery outranks Commons, but a caption
             # still has to identify this article's primary visual subject.
             for candidate in (article.get("sourceImageCandidates") or []) if can_upgrade(article) else []:
                 bound = dict(article, sources=candidate.get("sources") or [])
                 source_image = prepare_image(bound, candidate.get("url"))
-                if (source_image and existing_image_matches(article, source_image)
+                reason = rejection_reason(bound, candidate.get("url"))
+                if reason:
+                    rejection_reasons.append(f"source-candidate:{reason}")
+                if (source_image and not reason
                         and usage[image_key(source_image)] < MAX_STOCK_REUSE):
                     if source_image != article.get("image"):
                         article["image"] = source_image
@@ -740,16 +800,25 @@ def main() -> int:
                     retry_due = parse_iso(source_entry["next_retry_utc"]) <= now
                 except (KeyError, TypeError, ValueError):
                     pass
-                if not source_image and retry_due and source_lookups < MAX_LOOKUPS_PER_RUN:
+                if not source_image and retry_due and source_lookups < lookup_budget:
                     source_lookups += 1
+                    source_reason = "no-event-photo"
                     try:
                         source_image = lookup_source_photo(article)
                     except Exception as exc:
+                        source_reason = f"lookup-error:{type(exc).__name__}"
                         print(f"images: source lookup failed for {art_id}: {type(exc).__name__}")
+                    if source_image:
+                        source_reason = rejection_reason(article, source_image)
+                        if source_reason:
+                            source_image = None
                     source_entries[source_url] = {
                         "image": source_image,
+                        "rejection_reason": source_reason,
                         "next_retry_utc": (now + timedelta(hours=6)).isoformat(),
                     }
+                    if source_reason:
+                        rejection_reasons.append(f"source-photo:{source_reason}")
                 if source_image and existing_image_matches(article, source_image):
                     article["image"] = source_image
                     entries[art_id] = {"status": "matched", "image": source_image,
@@ -784,11 +853,12 @@ def main() -> int:
                     continue
                 entries.pop(art_id, None)
                 entry = {}
-            if lookups >= MAX_LOOKUPS_PER_RUN:
+            if lookups >= lookup_budget:
                 continue
             lookups += 1
             try:
-                image = resolve_image(article, usage=usage)
+                image = resolve_image(article, usage=usage,
+                                      diagnostics=rejection_reasons)
             except Exception as exc:  # enhancement only: never fail the run
                 print(f"images: lookup failed for {art_id}: "
                       f"{type(exc).__name__}: {exc}")
@@ -806,6 +876,8 @@ def main() -> int:
                 attempts = entry.get("attempts", 0) + 1
                 entries[art_id] = {
                     "status": "none", "attempts": attempts,
+                    "rejection_reasons": list(dict.fromkeys(
+                        rejection_reasons or ["no-suitable-image"])),
                     "checked_utc": now.isoformat(),
                     "next_retry_utc":
                         (now + timedelta(hours=_retry_after_hours(attempts)))
@@ -816,7 +888,8 @@ def main() -> int:
 
     if cache != load_json(CACHE_PATH, {}):
         save_json(CACHE_PATH, cache)
-    print(f"images: {lookups} stock lookup(s), {source_lookups} source lookup(s), "
+    print(f"images: budget {lookup_budget}; {lookups} stock lookup(s), "
+          f"{source_lookups} source lookup(s), "
           f"{attached} article(s) got a photo")
     return 0
 
