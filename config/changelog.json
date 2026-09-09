@@ -2,8 +2,15 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-09-07",
+  "updatedThrough": "2026-09-09",
   "entries": [
+    {
+      "date": "2026-09-09",
+      "kind": "fix",
+      "commit": "e909a099593c2bbc17e7b879dcf37caca848ff11",
+      "zh": "改善新聞配圖可用率：支援 AeroTime 具署名的事件照片、依結構化實體辨識航空器註冊號，並在貨機子型號已驗證時接受同機照片；無圖查詢額度會依待處理數量調整，快取亦保留拒絕原因。",
+      "en": "Improved news-image availability by supporting credited AeroTime event photos, resolving aircraft registrations from structured entities, and accepting exact-airframe photos when a freighter subtype is verified; lookup capacity now scales with the due backlog and cached misses retain rejection reasons."
+    },
     {
       "date": "2026-09-07",
       "kind": "design",
