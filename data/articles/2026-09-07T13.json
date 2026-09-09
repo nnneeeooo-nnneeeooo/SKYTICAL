@@ -5,17 +5,6 @@
       "publishedUtc": "2026-09-07T13:35Z",
       "cat": "biz",
       "primarySource": "中央社 CNA 國籍航空",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/China_Airlines_Boeing_737-800_B-18651_on_final_approach_to_Taoyuan_February_2026.jpg/1280px-China_Airlines_Boeing_737-800_B-18651_on_final_approach_to_Taoyuan_February_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/wiki/File:China_Airlines_Boeing_737-800_B-18651_on_final_approach_to_Taoyuan_February_2026.jpg",
-        "credit": "4300streetcar",
-        "license": "CC BY 4.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "topic:china-airlines",
-        "subject": "China Airlines Boeing 737-800",
-        "photoYear": 2026
-      },
       "zh": {
         "title": "華航9月16日起調漲貨運燃油附加費 歐美線每公斤62元",
         "summary": "中華航空9月16日起調漲台灣出口貨運燃油附加費，歐美長程每公斤62元。",
@@ -89,6 +78,11 @@
           "9月初",
           "7日"
         ]
+      },
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "cargo-role-unverified"
       }
     },
     {
@@ -96,7 +90,6 @@
       "publishedUtc": "2026-09-07T13:35Z",
       "cat": "safety",
       "primarySource": "AeroTime",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/NTSB-MIAMI-CRASH.jpeg",
       "zh": {
         "title": "21 Air波音767貨機邁阿密衝出跑道奪5命",
         "summary": "21 Air波音767貨機降落邁阿密衝出跑道；撞擊地面車輛釀5死5傷",
@@ -243,6 +236,30 @@
           "September 8, 2026",
           "Sunday"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/NTSB-MIAMI-CRASH.jpeg",
+          "sources": [
+            {
+              "name": "AeroTime — Data shows Miami 767 left runway at 112 knots in fatal Amaz…",
+              "url": "https://www.aerotime.aero/articles/miami-767-overrun-112-knots-ntsb-investigation"
+            },
+            {
+              "name": "Aerospace Global News — Black box recovered from Amazon Boeing 767 after 1,300ft Mi…",
+              "url": "https://aerospaceglobalnews.com/news/black-box-recovered-amazon-boeing-767-miami-runway-overrun/"
+            },
+            {
+              "name": "Aerospace Global News — Five killed after Amazon Air Boeing 767 overruns runway at…",
+              "url": "https://aerospaceglobalnews.com/news/five-killed-after-amazon-air-boeing-767-overruns-runway-miami-airport/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "missing-source-evidence"
       }
     },
     {
@@ -250,7 +267,16 @@
       "publishedUtc": "2026-09-07T13:35Z",
       "cat": "biz",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/shutterstock_2772076721_cropped.jpg",
+      "image": {
+        "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/shutterstock_2772076721_cropped.jpg",
+        "link": "https://simpleflying.com/airbus-a330neo-delivery-pause-lost-tool/",
+        "provider": "Simple Flying",
+        "subject": "Delta A330neo Water Cannon Salute",
+        "sourceCaption": "Delta A330neo Water Cannon Salute",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "空中巴士A330neo交付延誤 影響赴美航線高端客艙推廣",
         "summary": "空中巴士A330neo交付曾暫停數月；航機延誤影響美國航線佈局",
@@ -319,18 +345,6 @@
       "publishedUtc": "2026-09-07T13:35Z",
       "cat": "reg",
       "primarySource": "AeroTime",
-      "image": {
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/EASA_Headquarters_-_EASA_Direktion.jpg/1280px-EASA_Headquarters_-_EASA_Direktion.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=49320120",
-        "credit": null,
-        "license": "CC BY-SA 4.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "European Union Aviation Safety Agency",
-        "subject": "歐盟航空安全局（EASA）",
-        "description": "EASA Headquarters - EASA Direktion",
-        "photoYear": 2016
-      },
       "zh": {
         "title": "荷蘭PAL-V飛行車獲EASA生產組織批准書",
         "summary": "荷蘭PAL-V飛行車取得EASA生產批准，預計將於2028年開始首批交付。",
@@ -429,6 +443,11 @@
           "March 2024",
           "2028"
         ]
+      },
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "headline-organization-unverified"
       }
     },
     {
@@ -436,18 +455,6 @@
       "publishedUtc": "2026-09-07T13:35Z",
       "cat": "biz",
       "primarySource": "AeroTime",
-      "image": {
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Swiss_Airbus_A330-300_HB-JHM_IAD_VA2.jpg/1280px-Swiss_Airbus_A330-300_HB-JHM_IAD_VA2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=165036143",
-        "credit": "Acroterion",
-        "license": "CC BY-SA 4.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "Airbus A330-300 aircraft",
-        "subject": "Airbus A330-300",
-        "description": "Swiss Airbus A330-300 HB-JHM IAD VA2",
-        "photoYear": 2025
-      },
       "zh": {
         "title": "IAI完成空中巴士A330客改貨機首飛",
         "summary": "IAI完成A330-300BDSF客改貨機首飛；設計載重達61噸。",
@@ -516,6 +523,11 @@
         "event_dates": [
           "2026-09-07"
         ]
+      },
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "cargo-role-unverified"
       }
     },
     {
@@ -642,7 +654,16 @@
       "publishedUtc": "2026-09-07T13:35Z",
       "cat": "ops",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/emirates-airbus-a380-on-short-final.jpg",
+      "image": {
+        "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/emirates-airbus-a380-on-short-final.jpg",
+        "link": "https://simpleflying.com/emirates-suspends-airbus-a380-flights-to-europes-4th-busiest-airport/",
+        "provider": "Simple Flying",
+        "subject": "Emirates Airbus A380 on short final",
+        "sourceCaption": "Emirates Airbus A380 on short final",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "阿聯酋航空10月暫停A380飛往荷蘭航班 11月航班將倍增",
         "summary": "阿聯酋航空10月暫停荷蘭A380航班；航線服務預計於11月增加一倍",
@@ -808,7 +829,6 @@
       "publishedUtc": "2026-09-07T13:35Z",
       "cat": "biz",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/66_lh_the-real-reason-why-aircraft-recyclers-dread-the-retirement-of-the-airbus-a350-boeing-787_h_site-copy.jpg",
       "zh": {
         "title": "航空回收業者面臨空中巴士A350與波音787回收難題",
         "summary": "航空回收業者不願接收空中巴士A350與波音787，面臨永續挑戰。",
@@ -921,6 +941,26 @@
           "2026-09-07",
           "2026-08-22"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/66_lh_the-real-reason-why-aircraft-recyclers-dread-the-retirement-of-the-airbus-a350-boeing-787_h_site-copy.jpg",
+          "sources": [
+            {
+              "name": "Simple Flying — Aircraft Recyclers Don't Want The Airbus A350 Or Boeing 787",
+              "url": "https://simpleflying.com/video/aircraft-recyclers-don-t-want-the-airbus-a350-or-boeing-787/"
+            },
+            {
+              "name": "Archive: Simple Flying — Why United Airlines' CEO Put Rolls-Royce In The 'Doghouse'... — a-20260822-1816-united-airlines-rolls-royce-dispute-puts",
+              "url": "https://simpleflying.com/united-airlines-ceo-rolls-royce-doghouse-means-45-airbus-a350s/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "missing-source-evidence"
       }
     },
     {
@@ -928,7 +968,6 @@
       "publishedUtc": "2026-09-07T13:35Z",
       "cat": "mil",
       "primarySource": "AeroTime",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/03/Saab-340-AEWCs.jpg",
       "zh": {
         "title": "烏克蘭宣布瑞典ASC890預警機已投入戰鬥任務",
         "summary": "烏克蘭國防部表示瑞典ASC890預警機已於三月執行戰鬥任務",
@@ -1051,6 +1090,26 @@
           "July 8, 2026",
           "July"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/03/Saab-340-AEWCs.jpg",
+          "sources": [
+            {
+              "name": "AeroTime — Swedish ASC 890 radar aircraft made combat debut over Ukrai…",
+              "url": "https://www.aerotime.aero/articles/swedish-asc-890-radar-aircraft-combat-debut-ukraine"
+            },
+            {
+              "name": "Aerospace Global News — Ukraine’s Swedish ASC 890 AEW&C narrows Russia’s airborne r…",
+              "url": "https://aerospaceglobalnews.com/news/ukraine-asc890-combat-sorties/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "aircraft-model-mismatch"
       }
     },
     {
@@ -1155,7 +1214,6 @@
       "publishedUtc": "2026-09-07T13:55Z",
       "cat": "safety",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/54450039919_9e2e421d1a_o_cropped.jpg",
       "zh": {
         "title": "英國航空波音787緊急滑梯於蒙特婁意外充氣",
         "summary": "英國航空波音787緊急滑梯對著餐點卡車充氣；班機延誤數小時",
@@ -1233,6 +1291,22 @@
         "event_dates": [
           "2026-09-07"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/54450039919_9e2e421d1a_o_cropped.jpg",
+          "sources": [
+            {
+              "name": "Simple Flying — Oops: British Airways Boeing 787 Emergency Slide Inflates O…",
+              "url": "https://simpleflying.com/british-airways-787-emergency-slide-catering-truck-montreal/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "airline-mismatch"
       }
     }
   ]

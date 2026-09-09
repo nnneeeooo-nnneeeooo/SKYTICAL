@@ -48,6 +48,7 @@ def setup_batch(tmp_path, monkeypatch, image=None):
     monkeypatch.setattr(images, "ARTICLES_DIR", tmp_path)
     monkeypatch.setattr(images, "CACHE_PATH", tmp_path / "cache.json")
     monkeypatch.setattr(images, "existing_image_matches", lambda *args: True)
+    monkeypatch.setattr(images, "enforce_recent", lambda: [])
     return path
 
 
@@ -57,7 +58,7 @@ def test_upgrade_stock_without_rss_image_and_idempotence(tmp_path, monkeypatch):
     calls = []
     monkeypatch.setattr(images, "lookup_source_photo",
                         lambda article: calls.append(article) or source.parse_cna_photo(HTML, URL))
-    monkeypatch.setattr(images, "resolve_image", lambda _: (_ for _ in ()).throw(AssertionError("stock lookup")))
+    monkeypatch.setattr(images, "resolve_image", lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("stock lookup")))
     images.main()
     assert json.loads(path.read_text(encoding="utf-8"))["articles"][0]["image"]["url"] == PHOTO
     images.main()
@@ -67,7 +68,7 @@ def test_upgrade_stock_without_rss_image_and_idempotence(tmp_path, monkeypatch):
 def test_missing_image_prefers_source(tmp_path, monkeypatch):
     path = setup_batch(tmp_path, monkeypatch)
     monkeypatch.setattr(images, "lookup_source_photo", lambda _: source.parse_cna_photo(HTML, URL))
-    monkeypatch.setattr(images, "resolve_image", lambda _: (_ for _ in ()).throw(AssertionError("stock lookup")))
+    monkeypatch.setattr(images, "resolve_image", lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("stock lookup")))
     images.main()
     assert json.loads(path.read_text(encoding="utf-8"))["articles"][0]["image"]["url"] == PHOTO
 

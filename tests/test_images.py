@@ -339,7 +339,7 @@ generic_china_story = make_article(
     "a-generic-china", "China Airlines provides relief flight assistance")
 generic_china_story["entities"]["airlines"] = ["China Airlines"]
 old_generic_airline_image = {
-    "url": "https://upload.wikimedia.org/china-1986.jpg",
+    "url": "https://upload.wikimedia.org/China_Airlines_Boeing_737-800.jpg",
     "link": "https://commons.wikimedia.org/w/old",
     "provider": "Wikimedia Commons", "kind": "file_photo",
     "matched": "China Airlines aircraft", "subject": "China Airlines",
@@ -379,8 +379,8 @@ tigerair_image = dict(
     matched="Tigerair Taiwan aircraft",
     subject="Tigerair Taiwan",
 )
-check("verified secondary carrier is allowed for a multi-airline weather story",
-      images.existing_image_matches(weather_story, tigerair_image))
+check("background carrier does not illustrate a multi-airline weather story",
+      not images.existing_image_matches(weather_story, tigerair_image))
 
 facility_story = make_article("a-facility", "Incheon airport installs queue barrier")
 facility_story["entities"]["airports"] = ["Incheon International Airport"]
@@ -407,8 +407,8 @@ drone_image = {
     "provider": "Wikimedia Commons", "kind": "file_photo",
     "matched": "topic:drone", "subject": "drone file photo",
 }
-check("topic fallback remains compatible with its headline",
-      images.existing_image_matches(drone_story, drone_image))
+check("generic quadcopter cannot stand in for Amazon delivery hardware",
+      not images.existing_image_matches(drone_story, drone_image))
 unrelated_airliner_image = {
     "url": "https://upload.wikimedia.org/Lufthansa_Airbus_A320.jpg",
     "provider": "Wikimedia Commons", "kind": "file_photo",
@@ -447,6 +447,7 @@ exact_airframe_image = {
     "link": "https://commons.wikimedia.org/w/bmbu",
     "provider": "Wikimedia Commons", "kind": "file_photo",
     "matched": "B-MBU", "subject": "Air Macau Airbus A321neo B-MBU",
+    "description": "Air Macau Airbus A321neo B-MBU",
 }
 check("revised article rejects a generic photo from another airline",
       not images.existing_image_matches(
@@ -581,11 +582,11 @@ check("negative image retries back off from six hours to daily",
       and images._retry_after_hours(images.FAST_RETRY_ATTEMPTS + 1) == 24)
 
 reset()
-existing = {"url": "https://example.org/keep.jpg", "kind": "file_photo"}
+existing = {"url": "https://example.org/keep.jpg", "kind": "file_photo", "provider": "manual"}
 p = write_batch([make_article("a-keep", "Delta Air Lines Airbus A350",
                               image=dict(existing))])
 images.main()
-check("existing images are never overwritten or re-looked-up",
+check("explicit manual images are never overwritten or re-looked-up",
       read_batch(p)[0]["image"] == existing and fake.calls == [])
 
 # ── network failure never breaks the pipeline ────────────────────────────────

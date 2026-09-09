@@ -1590,9 +1590,14 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
             article_id = f"{base_id}-{n}"
             n += 1
     used_ids.add(article_id)
-    image = next((item.get("image") for item in items if item.get("image")), None)
-    if not image and existing_article:
-        image = existing_article.get("image")
+    # RSS/teaser images are candidates, not verified illustrations. Keep their
+    # exact source binding so selection cannot borrow a different item's photo.
+    image = (existing_article or {}).get("image")
+    image_candidates = [
+        {"url": item["image"], "sources": [{"url": item.get("url"),
+                                            "name": item.get("source", "")}]}
+        for item in items if isinstance(item.get("image"), str)
+    ]
     article = {
         "id": article_id,
         "publishedUtc": (
@@ -1603,6 +1608,8 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         "cat": story_category(draft.get("cat", "ops"), group, draft),
         "primarySource": group.get("primarySource", ""),
         "image": image,
+        "sourceImageCandidates": image_candidates or
+            (existing_article or {}).get("sourceImageCandidates", []),
         "zh": draft.get("zh", {}),
         "en": draft.get("en", {}),
         "sources": sources,

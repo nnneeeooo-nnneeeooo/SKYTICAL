@@ -5,7 +5,6 @@
       "publishedUtc": "2026-09-05T17:02Z",
       "cat": "ops",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/brand-new-airbus-a321xlr.png",
       "zh": {
         "title": "加拿大航空開通A321XLR倫敦希斯洛新航線",
         "summary": "加拿大航空新航線；早班出發晚間抵達倫敦；經多倫多可美預清關",
@@ -74,6 +73,22 @@
         "event_dates": [
           "2026-09-05"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/08/brand-new-airbus-a321xlr.png",
+          "sources": [
+            {
+              "name": "Simple Flying — Air Canada Launches New 8-Hour A321XLR Heathrow Route: But…",
+              "url": "https://simpleflying.com/air-canada-launches-new-8-hour-xlr-heathrow-route/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "airline-mismatch"
       }
     },
     {
@@ -81,7 +96,16 @@
       "publishedUtc": "2026-09-05T17:02Z",
       "cat": "biz",
       "primarySource": "Simple Flying",
-      "image": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/387-virgin-atlantic-airbus-a350-ceri-breeze-_-shutterstock.jpg",
+      "image": {
+        "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/09/387-virgin-atlantic-airbus-a350-ceri-breeze-_-shutterstock.jpg",
+        "link": "https://simpleflying.com/virgin-atlantic-has-cut-5-long-haul-routes-north-america/",
+        "provider": "Simple Flying",
+        "subject": "Virgin Atlantic Airbus A350",
+        "sourceCaption": "Virgin Atlantic Airbus A350",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
       "zh": {
         "title": "Virgin Atlantic削減5條北美長程航線",
         "summary": "Virgin Atlantic削減5條北美長程航線；多數為美國航線",
@@ -153,7 +177,6 @@
       "publishedUtc": "2026-09-05T17:02Z",
       "cat": "biz",
       "primarySource": "Aerospace Global News",
-      "image": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/United-Airlines_XLR-Polaris-Seats_March-2026-Large.jpeg",
       "zh": {
         "title": "美國航空業擴大高端艙配置 推出新頭等艙與貴賓室",
         "summary": "美國航空業增設頭等艙、貴賓室；捷藍推BlueFirst",
@@ -259,6 +282,22 @@
           "2026-09-02",
           "2026-08"
         ]
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/United-Airlines_XLR-Polaris-Seats_March-2026-Large.jpeg",
+          "sources": [
+            {
+              "name": "Aerospace Global News — US airlines are giving more space to premium passengers – h…",
+              "url": "https://aerospaceglobalnews.com/news/us-airlines-premium-seats-first-class-boom/"
+            }
+          ]
+        }
+      ],
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "airline-mismatch"
       }
     }
   ]

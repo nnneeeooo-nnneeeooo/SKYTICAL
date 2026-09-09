@@ -138,25 +138,29 @@ def main(*, all_articles=False, max_lookups=MAX_LOOKUPS) -> int:
                 except (TypeError, ValueError):
                     continue
             raw = article.get("image")
-            if isinstance(raw, dict) and clean_description(raw.get("subject")):
-                continue
-            url = raw.get("url") if isinstance(raw, dict) else raw
-            if not isinstance(url, str) or not image_identity(url)[0]:
-                continue
-            old = entries.get(url) or {}
-            if clean_description(old.get("subject")):
-                continue
-            try:
-                if old.get("retryUtc") and parse_iso(old["retryUtc"]) > now:
+            pending = list(article.get("sourceImageCandidates") or [])
+            if not (isinstance(raw, dict) and clean_description(raw.get("subject"))):
+                url = raw.get("url") if isinstance(raw, dict) else raw
+                if url:
+                    pending.append({"url": url, "sources": article.get("sources") or []})
+            for item in pending:
+                url = item.get("url")
+                if not isinstance(url, str) or not image_identity(url)[0]:
                     continue
-            except (TypeError, ValueError):
-                pass
-            candidate = candidates.setdefault(url, {"sources": [], "titles": []})
-            for source in article.get("sources") or []:
-                if isinstance(source, dict) and source not in candidate["sources"]:
-                    candidate["sources"].append(source)
-            candidate["titles"].extend((article.get(lang) or {}).get("title")
-                                       for lang in ("zh", "en"))
+                old = entries.get(url) or {}
+                if clean_description(old.get("subject")):
+                    continue
+                try:
+                    if old.get("retryUtc") and parse_iso(old["retryUtc"]) > now:
+                        continue
+                except (TypeError, ValueError):
+                    pass
+                candidate = candidates.setdefault(url, {"sources": [], "titles": []})
+                for source in item.get("sources") or []:
+                    if isinstance(source, dict) and source not in candidate["sources"]:
+                        candidate["sources"].append(source)
+                candidate["titles"].extend((article.get(lang) or {}).get("title")
+                                           for lang in ("zh", "en"))
     jobs = list(candidates.items())[:max_lookups]
 
     def lookup(job):
@@ -174,7 +178,9 @@ def main(*, all_articles=False, max_lookups=MAX_LOOKUPS) -> int:
                 entry["retryUtc"] = (now + timedelta(hours=6)).isoformat()
             entries[url] = entry
     payload = {"images": entries}
-    if payload != cache:
+    # entries aliases cache['images']; comparing against that mutated object
+    # silently discards all updates once the cache already exists.
+    if payload != load_json(CACHE_PATH, {}):
         save_json(CACHE_PATH, payload)
     print(f"image captions: {len(jobs)} lookup(s), {found} descriptions, "
           f"{len(jobs) - found} awaiting source metadata", flush=True)
