@@ -33,7 +33,7 @@ SITE_ORIGIN = (os.environ.get("AVWIRE_SITE_ORIGIN")
 
 USER_AGENT = (
     "AVWIREBot/1.0 (automated aviation news aggregator; "
-    "+https://github.com/avwire) requests"
+    "+https://github.com/nnneeeooo-nnneeeooo/SKYTICAL) requests"
 )
 
 # Keep at most this many entries per source per fetch, and this many flashes.
