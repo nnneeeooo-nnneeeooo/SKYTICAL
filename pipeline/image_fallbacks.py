@@ -80,24 +80,6 @@ _TOPIC_IMAGES = (
         },
     },
     {
-        "name": "china-airlines",
-        "patterns": (
-            re.compile(r"^(?:華航|中華航空)"),
-            re.compile(r"^China Airlines\b", re.I),
-        ),
-        "image": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/China_Airlines_Boeing_737-800_B-18651_on_final_approach_to_Taoyuan_February_2026.jpg/1280px-China_Airlines_Boeing_737-800_B-18651_on_final_approach_to_Taoyuan_February_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-            "link": "https://commons.wikimedia.org/wiki/File:China_Airlines_Boeing_737-800_B-18651_on_final_approach_to_Taoyuan_February_2026.jpg",
-            "credit": "4300streetcar",
-            "license": "CC BY 4.0",
-            "provider": "Wikimedia Commons",
-            "kind": "file_photo",
-            "matched": "topic:china-airlines",
-            "subject": "China Airlines Boeing 737-800",
-            "photoYear": 2026,
-        },
-    },
-    {
         "name": "f16",
         "patterns": (
             re.compile(r"(?<![A-Za-z0-9])F-?16(?:[A-Z0-9-]*)(?![A-Za-z0-9])", re.I),

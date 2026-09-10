@@ -26,6 +26,18 @@ def photo(filename, **extra):
 
 
 class ImageSelectionTests(unittest.TestCase):
+    def test_visual_profiles_are_auditable_and_not_a_single_airline_exception(self):
+        profiles = list(images._visual_profiles.values())
+        self.assertGreaterEqual(len(profiles), 9)
+        for profile in profiles:
+            with self.subTest(airline=profile.get("airline")):
+                self.assertTrue(str(profile.get("source") or "").startswith("https://"))
+                self.assertRegex(str(profile.get("verified_utc") or ""), r"^20\d\d-")
+                self.assertIsInstance(profile.get("flagship"), list)
+                self.assertFalse(
+                    set(profile.get("flagship") or [])
+                    & set(profile.get("excluded_generic") or []))
+
     def test_medical_logistics_cannot_use_consumer_quadcopter(self):
         im = photo("Quadcopter_Drone_in_flight", matched="topic:drone")
         for title in ("JEDSY medical logistics drone partnership",
@@ -106,6 +118,62 @@ class ImageSelectionTests(unittest.TestCase):
     def test_topic_rule_does_not_override_model(self):
         a = article("China Airlines A350-1000 delivery")
         self.assertIsNone(image_fallbacks.topic_image(a, allow_airport_lookup=False))
+
+    def test_airline_profiles_apply_the_same_role_rules_across_carriers(self):
+        cases = (
+            ("China Airlines reports annual earnings", "Airbus A350-900"),
+            ("EVA Air reports annual earnings", "Boeing 787-10"),
+            ("STARLUX Airlines reports annual earnings", "Airbus A350-1000"),
+            ("Delta Air Lines reports annual earnings", "Airbus A350-900"),
+        )
+        for title, expected in cases:
+            a = article(title, entities={"airlines": [title.split(" reports")[0]]})
+            airline = images.find_airline(a)
+            self.assertEqual(images.preferred_airline_models(a, airline)[0], expected)
+
+    def test_airline_profiles_separate_cargo_from_passenger_images(self):
+        a = article("China Airlines cargo revenue rises",
+                    entities={"airlines": ["China Airlines"]})
+        self.assertEqual(images.airline_visual_role(a), "cargo")
+        self.assertEqual(images.preferred_airline_models(a, "China Airlines")[:2],
+                         ["Boeing 777F", "Boeing 747-400F"])
+        self.assertEqual(
+            images.profiled_airline_stock_reason(
+                a, "China Airlines", "China Airlines Airbus A350-900"),
+            "airline-role-mismatch")
+
+    def test_nonrepresentative_generic_stock_is_rejected_but_exact_story_is_not(self):
+        generic = article("China Airlines reports annual earnings",
+                          entities={"airlines": ["China Airlines"]})
+        old = photo("China_Airlines_Boeing_737-800")
+        self.assertEqual(policy.rejection_reason(generic, old),
+                         "nonrepresentative-airline-stock")
+        exact = article("China Airlines Boeing 737-800 maintenance update",
+                        entities={"airlines": ["China Airlines"],
+                                  "aircraft_models": ["Boeing 737-800"]})
+        self.assertIsNone(policy.rejection_reason(exact, old))
+
+    def test_unprofiled_airline_is_not_guessed(self):
+        a = article("Air Astana reports annual earnings",
+                    entities={"airlines": ["Air Astana"]})
+        self.assertEqual(images.preferred_airline_models(a, "Air Astana"), [])
+
+    def test_published_china_airlines_737_photos_require_a_737_story(self):
+        root = Path(__file__).resolve().parents[1] / "data" / "articles"
+        violations = []
+        for path in root.glob("*.json"):
+            batch = json.loads(path.read_text(encoding="utf-8"))
+            for row in batch.get("articles") or []:
+                image = row.get("image") or {}
+                if not isinstance(image, dict):
+                    continue
+                identity = f"{image.get('url', '')} {image.get('subject', '')}"
+                if "China_Airlines_Boeing_737" not in identity and \
+                        "China Airlines Boeing 737" not in identity:
+                    continue
+                if "737" not in images.article_headline_text(row):
+                    violations.append(row.get("id"))
+        self.assertEqual(violations, [])
 
     def test_captioned_rss_wrong_carrier_is_rejected(self):
         a = article("Alaska Airlines sued", entities={"airlines": ["Alaska Airlines"]}, sources=[{"url": "https://publisher.test/story"}])
@@ -196,6 +264,28 @@ class ImageSelectionTests(unittest.TestCase):
             found = images.lookup_commons("Delta Air Lines Airbus A350", ["Delta Air Lines", "A350"],
                                           article=a, require_all=True, usage={policy.image_key(first): 1})
         self.assertEqual(found["url"], second["url"])
+
+    def test_landscape_aircraft_photo_beats_portrait_result(self):
+        a = article("Delta Air Lines Airbus A350")
+        payload = {"query": {"pages": {
+            "1": {"index": 0, "title": "File:Delta Air Lines Airbus A350-941 portrait.jpg",
+                  "imageinfo": [{"thumburl": "https://upload.wikimedia.org/portrait.jpg",
+                                 "width": 1200, "height": 1800,
+                                 "extmetadata": {"LicenseShortName": {"value": "CC BY 4.0"}}}]},
+            "2": {"index": 1, "title": "File:Delta Air Lines Airbus A350-941 landscape.jpg",
+                  "imageinfo": [{"thumburl": "https://upload.wikimedia.org/landscape.jpg",
+                                 "width": 2400, "height": 1400,
+                                 "extmetadata": {"LicenseShortName": {"value": "CC BY 4.0"}}}]},
+        }}}
+        class Response:
+            status_code = 200
+            def json(self): return payload
+        with patch.object(images.requests, "get", return_value=Response()):
+            found = images.lookup_commons(
+                "Delta Air Lines Airbus A350", ["Delta Air Lines"],
+                article=a, require_all=True, required_model="Airbus A350-900",
+                prefer_landscape=True)
+        self.assertEqual(found["url"], "https://upload.wikimedia.org/landscape.jpg")
 
     def test_failed_provider_continues_to_next(self):
         a = article("Delta Air Lines Airbus A350")
