@@ -1,0 +1,141 @@
+name: AgentRouter API smoke
+
+on:
+  push:
+    branches:
+      - test/agentrouter-api-20260910
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      AGENTROUTER_API: ${{ secrets.AGENTROUTER_API }}
+    steps:
+      - name: Call AgentRouter safely
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.error
+          import urllib.request
+
+          base_url = "https://co.agentrouter.org/v1"
+          api_key = os.environ.get("AGENTROUTER_API", "").strip()
+          if not api_key:
+              print("secret_present=false")
+              raise SystemExit(2)
+          print("secret_present=true")
+
+          def call(path, payload=None):
+              headers = {
+                  "Accept": "application/json",
+                  "Authorization": f"Bearer {api_key}",
+                  "User-Agent": "SKYTICAL-AgentRouter-Smoke/1.0",
+              }
+              data = None
+              method = "GET"
+              if payload is not None:
+                  headers["Content-Type"] = "application/json"
+                  data = json.dumps(payload).encode("utf-8")
+                  method = "POST"
+              request = urllib.request.Request(
+                  base_url + path,
+                  data=data,
+                  headers=headers,
+                  method=method,
+              )
+              try:
+                  with urllib.request.urlopen(request, timeout=45) as response:
+                      body = response.read(262_144)
+                      return response.status, response.headers, body
+              except urllib.error.HTTPError as error:
+                  return error.code, error.headers, error.read(262_144)
+              except Exception as error:
+                  print(f"request_error={type(error).__name__}")
+                  raise SystemExit(3)
+
+          def decode_json(body):
+              try:
+                  return json.loads(body.decode("utf-8"))
+              except (UnicodeDecodeError, json.JSONDecodeError):
+                  return None
+
+          models_status, models_headers, models_body = call("/models")
+          models_type = models_headers.get("Content-Type", "unknown").split(";", 1)[0]
+          models_json = decode_json(models_body)
+          print(f"models_http_status={models_status}")
+          print(f"models_content_type={models_type}")
+          print(f"models_bytes={len(models_body)}")
+          print(f"models_body_kind={'json' if models_json is not None else 'non_json'}")
+
+          model_ids = []
+          if isinstance(models_json, dict) and isinstance(models_json.get("data"), list):
+              model_ids = [
+                  row.get("id") for row in models_json["data"]
+                  if isinstance(row, dict) and isinstance(row.get("id"), str)
+              ]
+          print(f"models_count={len(model_ids)}")
+
+          preferred = ("gpt-5.5", "kimi-k2.6", "glm-5.1")
+          selected_model = next((name for name in preferred if name in model_ids), None)
+          if selected_model is None and model_ids:
+              selected_model = model_ids[0]
+          if selected_model is None:
+              selected_model = "gpt-5.5"
+              print("model_selection=fallback_documented_default")
+          else:
+              print("model_selection=advertised_by_models_endpoint")
+          print(f"requested_model={selected_model}")
+
+          chat_status, chat_headers, chat_body = call(
+              "/chat/completions",
+              {
+                  "model": selected_model,
+                  "messages": [{"role": "user", "content": "Reply with exactly OK"}],
+                  "max_tokens": 8,
+                  "temperature": 0,
+              },
+          )
+          chat_type = chat_headers.get("Content-Type", "unknown").split(";", 1)[0]
+          chat_json = decode_json(chat_body)
+          print(f"chat_http_status={chat_status}")
+          print(f"chat_content_type={chat_type}")
+          print(f"chat_bytes={len(chat_body)}")
+          print(f"chat_body_kind={'json' if chat_json is not None else 'non_json'}")
+
+          if not isinstance(chat_json, dict):
+              raise SystemExit(4)
+          if isinstance(chat_json.get("error"), dict):
+              error = chat_json["error"]
+              print(f"error_type={error.get('type', 'unknown')}")
+              print(f"error_code={error.get('code', 'unknown')}")
+              raise SystemExit(5)
+
+          choices = chat_json.get("choices")
+          choice = choices[0] if isinstance(choices, list) and choices else {}
+          message = choice.get("message") if isinstance(choice, dict) else {}
+          content = message.get("content") if isinstance(message, dict) else None
+          if isinstance(content, list):
+              content = "".join(
+                  item.get("text", "") for item in content
+                  if isinstance(item, dict)
+              )
+          content = content.strip() if isinstance(content, str) else ""
+          usage = chat_json.get("usage") if isinstance(chat_json.get("usage"), dict) else {}
+          print(f"response_model={chat_json.get('model', 'unknown')}")
+          print(f"finish_reason={choice.get('finish_reason', 'unknown') if isinstance(choice, dict) else 'unknown'}")
+          print(f"prompt_tokens={usage.get('prompt_tokens', 'unknown')}")
+          print(f"completion_tokens={usage.get('completion_tokens', 'unknown')}")
+          print(f"total_tokens={usage.get('total_tokens', 'unknown')}")
+          print(f"assistant_content_present={bool(content)}")
+          print(f"assistant_replied_ok={content.upper() == 'OK'}")
+          if not (200 <= chat_status < 300 and content):
+              raise SystemExit(6)
+          PY
