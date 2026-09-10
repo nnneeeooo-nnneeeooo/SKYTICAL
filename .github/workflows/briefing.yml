@@ -80,6 +80,7 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
+          ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional
           AVWIRE_WECHAT_MODEL: ${{ vars.AVWIRE_WECHAT_MODEL }}
           AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:nvidia/nemotron-3-super-120b-a12b
           BRIEFING_LLM_INTRO: ${{ vars.BRIEFING_LLM_INTRO }}
@@ -106,6 +107,7 @@ jobs:
             python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}"
           fi
           python pipeline/build.py
+          python pipeline/radar_snapshot.py
 
       - name: Scan build output and committed data for secrets/reasoning
         run: |

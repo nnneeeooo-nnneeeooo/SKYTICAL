@@ -50,7 +50,8 @@ def main() -> None:
 
     for page in (zh, en):
         assert 'id="radar-map"' in page
-        assert "https://api.airplanes.live/v2/point/23.7000/120.9000/250" in page
+        assert 'data-api-url="/assets/radar.json"' in page
+        assert 'data-max-snapshot-age-ms="1800000"' in page
         assert "https://api.adsbdb.com/v0/callsign" in page
         assert 'data-default-callsign-mode="iata"' in page
         assert 'id="radar-callsign-icao"' in page
@@ -143,6 +144,8 @@ def main() -> None:
             '                data-callsign-mode="iata" aria-pressed="true"'
         ) in page
         assert "ADSBdb" in page
+        assert "ADSB.lol" in page
+        assert "NEAR-LIVE ADS-B" in page
         assert "https://tile.openstreetmap.org" not in page  # lives in JS
         assert "leaflet@1.9.4" in page
         assert "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" in page
@@ -159,6 +162,9 @@ def main() -> None:
     assert '["7500", "7600", "7700"]' in js
     assert "seenPos > 30" in js
     assert "refreshMs" in js and "300000" in js
+    assert "maxSnapshotAgeMs" in js and "stale snapshot" in js
+    assert 'apiUrl.searchParams.set("_"' in js
+    assert "source_total" in js and "payload.filtered" in js
     assert "callsign_iata" in js
     assert 'const airlineIataCodes = parseJson("radar-airline-codes", {})' in js
     assert (
@@ -193,6 +199,18 @@ def main() -> None:
     assert 'routeCacheKey = "avwire-radar-routes-v2"' in js
     assert "https://tile.openstreetmap.org/{z}/{x}/{y}.png" in js
     assert "textContent" in js
+
+    workflows = [
+        ROOT / ".github" / "workflows" / "hourly.yml",
+        ROOT / ".github" / "workflows" / "briefing.yml",
+        ROOT / ".github" / "workflows" / "manual-article-deploy.yml",
+        ROOT / ".github" / "workflows" / "radar-snapshot.yml",
+    ]
+    for workflow in workflows:
+        source = workflow.read_text(encoding="utf-8")
+        assert "python pipeline/radar_snapshot.py" in source
+        assert source.index("python pipeline/radar_snapshot.py") < source.index(
+            "actions/upload-pages-artifact@v5")
 
     assert any(
         "本文由自動化系統彙整生成，內容以原始來源為準 • "
