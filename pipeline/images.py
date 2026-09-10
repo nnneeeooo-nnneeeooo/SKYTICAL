@@ -84,6 +84,7 @@ LONG_RETRY_AFTER_HOURS = 24
 MAX_ARTICLE_AGE_DAYS = 7  # scan only the user-facing seven-day news window
 GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS = 10
 GENERIC_ORG_MAX_PHOTO_AGE_YEARS = 10
+MAX_PROFILE_MODEL_QUERIES = 2
 
 
 def _retry_after_hours(attempts: int) -> int:
@@ -183,6 +184,19 @@ _tw_airports = [
                 .get("airports") or [])
     if isinstance(a, dict)
 ]
+_visual_profiles = {
+    str(row.get("airline") or "").casefold(): row
+    for row in (load_json(ROOT / "config" / "airline_visual_profiles.json", {})
+                .get("profiles") or [])
+    if isinstance(row, dict) and row.get("airline")
+}
+
+_CARGO_VISUAL_RE = re.compile(
+    r"貨機|貨運|航空貨運|全貨機|客改貨|\bcargo\b|\bfreight(?:er)?\b", re.I)
+_REGIONAL_VISUAL_RE = re.compile(
+    r"國內線|區域航線|短程航線|離島航線|\bdomestic\b|\bregional\b|\bshort[- ]haul\b",
+    re.I,
+)
 
 
 def _article_text(article: dict) -> str:
@@ -202,6 +216,58 @@ def _article_text(article: dict) -> str:
             if isinstance(group, list):
                 parts.extend(str(v) for v in group if v)
     return " ".join(parts)
+
+
+def airline_visual_profile(airline: str | None) -> dict | None:
+    """Return a verified profile; absence must never be filled by guessing."""
+    return _visual_profiles.get(str(airline or "").casefold())
+
+
+def airline_visual_role(article: dict) -> str:
+    """Classify only broad roles that are safe for a generic airline photo."""
+    lead = f"{article_headline_text(article)} {article_lead_text(article)}"
+    if _CARGO_VISUAL_RE.search(lead):
+        return "cargo"
+    if _REGIONAL_VISUAL_RE.search(lead):
+        return "regional"
+    return "flagship"
+
+
+def preferred_airline_models(article: dict, airline: str | None) -> list[str]:
+    """Verified representative models for an airline-only story.
+
+    Exact article-named models bypass this function.  A cargo story with no
+    verified cargo profile deliberately returns no passenger substitute.
+    """
+    profile = airline_visual_profile(airline)
+    if not profile:
+        return []
+    role = airline_visual_role(article)
+    values = profile.get(role) or (
+        [] if role == "cargo" else profile.get("flagship"))
+    return [str(value).strip() for value in values or [] if str(value).strip()]
+
+
+def profiled_airline_stock_reason(article: dict, airline: str,
+                                  evidence_text: str) -> str | None:
+    """Reject a generic stock photo outside the airline's verified role."""
+    if find_aircraft_type(article):
+        return None
+    profile = airline_visual_profile(airline)
+    if not profile:
+        return None
+    from image_selection import model_matches
+    role = airline_visual_role(article)
+    allowed = preferred_airline_models(article, airline)
+    if role == "cargo" and not allowed:
+        return "airline-cargo-profile-unavailable"
+    if any(model_matches(str(model), evidence_text)
+           for model in profile.get("excluded_generic") or []):
+        return "nonrepresentative-airline-stock"
+    if allowed and not any(model_matches(model, evidence_text)
+                           for model in allowed):
+        return "airline-role-mismatch"
+    return None
 
 
 def find_registration(article: dict) -> str | None:
@@ -552,7 +618,8 @@ def lookup_commons(query: str, require_tokens: list[str],
                    subject: str | None = None,
                    require_all: bool = False,
                    min_year: int | None = None,
-                   prefer_recent: bool = False,
+                   prefer_recent: bool = False, prefer_landscape: bool = False,
+                   required_model: str | None = None,
                    reject_title_re=None, article=None, usage=None) -> dict | None:
     """First freely-licensed Commons bitmap matching the query.
 
@@ -568,7 +635,7 @@ def lookup_commons(query: str, require_tokens: list[str],
                             "gsrlimit": 20,
                             "gsrsearch": f"filetype:bitmap {query}",
                             "prop": "imageinfo",
-                            "iiprop": "url|extmetadata",
+                            "iiprop": "url|size|extmetadata",
                             "iiurlwidth": 1280,
                         })
     if resp.status_code != 200:
@@ -587,6 +654,10 @@ def lookup_commons(query: str, require_tokens: list[str],
         if tokens and (not all(token_hits) if require_all
                        else not any(token_hits)):
             continue
+        if required_model:
+            from image_selection import model_matches
+            if not model_matches(required_model, title):
+                continue
         for info in page.get("imageinfo") or []:
             meta = info.get("extmetadata") or {}
             license_name = _strip_html(
@@ -620,11 +691,20 @@ def lookup_commons(query: str, require_tokens: list[str],
             count = (usage or {}).get(image_key(candidate), 0)
             if count >= MAX_STOCK_REUSE:
                 continue
-            if not prefer_recent and not usage:
+            if not prefer_recent and not prefer_landscape and not usage:
                 return candidate
-            candidates.append((-count, photo_year or 0 if prefer_recent else 0,
+            try:
+                width = int(info.get("width") or 0)
+                height = int(info.get("height") or 0)
+                ratio = width / height if height else 0
+            except (TypeError, ValueError, ZeroDivisionError):
+                width, ratio = 0, 0
+            landscape = int(1.25 <= ratio <= 2.5) if prefer_landscape else 0
+            resolution = min(width, 4000) if prefer_landscape else 0
+            candidates.append((-count, landscape, resolution,
+                               photo_year or 0 if prefer_recent else 0,
                                -int(page.get("index", 99)), candidate))
-    return max(candidates, key=lambda row: row[:3])[3] if candidates else None
+    return max(candidates, key=lambda row: row[:-1])[-1] if candidates else None
 
 
 def resolve_image(article: dict, *, usage=None, diagnostics=None) -> dict | None:
@@ -676,11 +756,33 @@ def resolve_image(article: dict, *, usage=None, diagnostics=None) -> dict | None
         # within A350-900); an exact phrase prefilter would discard them first.
         photo = commons(query, [airline] if airline else [],
                         subject=query.removesuffix(" aircraft"), require_all=True,
+                        prefer_landscape=True,
                         reject_title_re=BAD_AIRCRAFT_TITLE_RE)
     elif airline:
-        photo = commons(f"{airline} aircraft exterior", [airline], subject=airline,
-                        min_year=_article_year(article)-GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS,
-                        prefer_recent=True, reject_title_re=_BAD_AIRLINE_IMAGE_RE)
+        profile = airline_visual_profile(airline)
+        role = airline_visual_role(article)
+        preferred = preferred_airline_models(article, airline)
+        for representative in preferred[:MAX_PROFILE_MODEL_QUERIES]:
+            photo = commons(
+                f"{airline} {representative}", [airline],
+                subject=f"{airline} {representative}", require_all=True,
+                required_model=representative,
+                min_year=_article_year(article)-GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS,
+                prefer_recent=True, prefer_landscape=True,
+                reject_title_re=_BAD_AIRLINE_IMAGE_RE)
+            if photo:
+                break
+        # Unprofiled cargo carriers still receive a cargo-specific query.  A
+        # profiled passenger airline with no verified cargo fleet fails closed.
+        if not preferred and (role != "cargo" or not profile):
+            generic_query = (f"{airline} cargo aircraft"
+                             if role == "cargo"
+                             else f"{airline} aircraft exterior")
+            photo = commons(
+                generic_query, [airline], subject=airline,
+                min_year=_article_year(article)-GENERIC_AIRLINE_MAX_PHOTO_AGE_YEARS,
+                prefer_recent=True, prefer_landscape=True,
+                reject_title_re=_BAD_AIRLINE_IMAGE_RE)
     else:
         org = find_org(article)
         if org:

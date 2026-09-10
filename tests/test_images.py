@@ -344,10 +344,11 @@ generic_china_story = make_article(
     "a-generic-china", "China Airlines provides relief flight assistance")
 generic_china_story["entities"]["airlines"] = ["China Airlines"]
 old_generic_airline_image = {
-    "url": "https://upload.wikimedia.org/China_Airlines_Boeing_737-800.jpg",
+    "url": "https://upload.wikimedia.org/China_Airlines_Airbus_A350-900.jpg",
     "link": "https://commons.wikimedia.org/w/old",
     "provider": "Wikimedia Commons", "kind": "file_photo",
-    "matched": "China Airlines aircraft", "subject": "China Airlines",
+    "matched": "China Airlines Airbus A350-900",
+    "subject": "China Airlines Airbus A350-900",
 }
 fresh_generic_airline_image = dict(old_generic_airline_image,
                                    photoYear=now_utc().year)
