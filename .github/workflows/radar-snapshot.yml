@@ -11,6 +11,7 @@ on:
       - ".github/workflows/briefing.yml"
       - ".github/workflows/manual-article-deploy.yml"
       - "pipeline/adsb.py"
+      - "pipeline/common.py"
       - "pipeline/radar_snapshot.py"
       - "pipeline/build.py"
       - "static/radar.js"
@@ -22,6 +23,7 @@ on:
     paths:
       - ".github/workflows/radar-snapshot.yml"
       - "pipeline/adsb.py"
+      - "pipeline/common.py"
       - "pipeline/radar_snapshot.py"
       - "pipeline/build.py"
       - "static/radar.js"
