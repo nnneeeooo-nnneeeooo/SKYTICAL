@@ -3741,9 +3741,13 @@
     },
     "a-20260906-1752-uss-abraham-lincoln-departs-thailand-to": {
       "status": "none",
-      "attempts": 5,
-      "checked_utc": "2026-09-08T22:42:23.884174+00:00",
-      "next_retry_utc": "2026-09-09T22:42:23.884174+00:00"
+      "attempts": 6,
+      "rejection_reasons": [
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-11T02:52:40.621662+00:00"
     },
     "a-20260907-0655-china-airlines-to-deploy-larger-aircraft": {
       "status": "matched",
@@ -3824,18 +3828,17 @@
     "a-20260907-2352-la-compagnie-adds-dusseldorfnewark-route": {
       "status": "matched",
       "image": {
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/La_Compagnie_Airbus_A321-251NX_F-HBUZ_approaching_Newark_Airport.jpg/1280px-La_Compagnie_Airbus_A321-251NX_F-HBUZ_approaching_Newark_Airport.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=79999681",
-        "credit": "Adam Moreira (AEMoreira042281)",
-        "license": "CC BY-SA 4.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "La Compagnie Airbus A321",
-        "subject": "La Compagnie Airbus A321",
-        "description": "La Compagnie Airbus A321-251NX F-HBUZ approaching Newark Airport",
-        "photoYear": 2019
+        "url": "https://www.aerotime.aero/images/2026/09/La-Compagnie-Airbus-A321LR.jpg",
+        "link": "https://www.aerotime.aero/articles/la-compagnie-dusseldorf-new-york-newark-airport",
+        "subject": "La Compagnie Airbus A321LR",
+        "sourceCaption": "La Compagnie",
+        "credit": "La Compagnie",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
       },
-      "checked_utc": "2026-09-08T00:26:04.580635+00:00"
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00"
     },
     "a-20260908-1224-japan-scrambles-fighter-jets-five-consec": {
       "status": "matched",
@@ -4076,26 +4079,26 @@
     },
     "a-20260909-1026-egyptair-to-launch-20-hour-sydney-route": {
       "status": "none",
-      "attempts": 2,
+      "attempts": 3,
       "rejection_reasons": [
         "source-candidate:non-documentary-stock",
         "lookup_official_source_photo:no-result",
         "lookup_commons:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-09-09T19:04:11.776624+00:00",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "a-20260909-1026-french-navy-receives-first-two-falcon-20": {
       "status": "none",
-      "attempts": 2,
+      "attempts": 3,
       "rejection_reasons": [
         "lookup_official_source_photo:no-result",
         "lookup_commons:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-09-09T19:04:11.776624+00:00",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "a-20260909-1026-us-army-corps-awards-74-78m-contract-for": {
       "status": "matched",
@@ -4115,13 +4118,13 @@
     },
     "a-20260909-1026-trump-threatens-to-ban-bombardier-jet-sa": {
       "status": "none",
-      "attempts": 2,
+      "attempts": 3,
       "rejection_reasons": [
         "lookup_official_source_photo:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-09-09T19:04:11.776624+00:00",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "a-20260909-1317-airbus-and-boeing-outpace-2025-delivery": {
       "status": "matched",
@@ -4274,26 +4277,26 @@
     },
     "a-20260907-1335-swedish-asc-890-aew-c-aircraft-flies-fir": {
       "status": "none",
-      "attempts": 1,
+      "attempts": 2,
       "rejection_reasons": [
         "source-candidate:aircraft-model-mismatch",
         "lookup_official_source_photo:no-result",
         "lookup_commons:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-09-09T16:37:10.552050+00:00",
-      "next_retry_utc": "2026-09-09T22:37:10.552050+00:00"
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "a-20260909-1812-delta-to-launch-daily-austin-paris-fligh": {
       "status": "none",
-      "attempts": 1,
+      "attempts": 2,
       "rejection_reasons": [
         "source-candidate:no-primary-visual-entity",
         "lookup_official_source_photo:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-09-09T19:04:11.776624+00:00",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "a-20260909-1812-first-airbus-variant-with-shark-skin-fil": {
       "status": "matched",
@@ -4313,15 +4316,15 @@
     },
     "a-20260909-1812-hermeus-unveils-ramjet-x-vehicle-to-laun": {
       "status": "none",
-      "attempts": 1,
+      "attempts": 2,
       "rejection_reasons": [
         "source-photo:no-event-photo",
         "lookup_official_source_photo:no-result",
         "lookup_commons:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-09-09T19:04:11.776624+00:00",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "a-20260907-1355-british-airways-boeing-787-emergency-sli": {
       "status": "matched",
@@ -4357,15 +4360,15 @@
     },
     "a-20260906-2322-amazon-prime-air-branded-boeing-767-300f": {
       "status": "none",
-      "attempts": 1,
+      "attempts": 2,
       "rejection_reasons": [
         "source-candidate:missing-source-evidence",
         "lookup_official_source_photo:no-result",
         "lookup_commons:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-09-09T19:04:11.776624+00:00",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "a-20260906-1439-ramp-agent-dies-after-being-struck-by-ai": {
       "status": "matched",
@@ -4505,13 +4508,75 @@
       ],
       "checked_utc": "2026-09-09T23:54:04.741103+00:00",
       "next_retry_utc": "2026-09-10T05:54:04.741103+00:00"
+    },
+    "a-20260910-0211-us-house-report-calls-for-long-term-stud": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:no-event-photo",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
+    },
+    "a-20260910-0211-boeings-spirit-aerosystems-takeover-cost": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:no-event-photo",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
+    },
+    "a-20260910-0211-sydney-airport-welcomes-egyptair-new-cai": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:no-event-photo",
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
+    },
+    "a-20260905-2148-trump-scheduled-to-fly-overseas-on-ex-qa": {
+      "status": "matched",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Lufthansa_Boeing_747-8_D-ABYI_IAD_VA1.jpg/1280px-Lufthansa_Boeing_747-8_D-ABYI_IAD_VA1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=164992369",
+        "credit": "Acroterion",
+        "license": "CC BY-SA 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "747-8 aircraft",
+        "subject": "747-8",
+        "description": "Lufthansa Boeing 747-8 D-ABYI IAD VA1",
+        "photoYear": 2025
+      },
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00"
+    },
+    "a-20260905-2148-embraer-delivers-2-000th-e-jet-an-e195-e": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-candidate:aircraft-model-mismatch",
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-09-10T02:52:40.621662+00:00",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     }
   },
   "sources": {
     "https://www.cna.com.tw/news/afe/202609070155.aspx": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "https://www.cna.com.tw/news/ahel/202609070125.aspx": {
       "image": null,
@@ -4574,7 +4639,7 @@
     "https://www.cna.com.tw/news/afe/202609080117.aspx": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "https://www.cna.com.tw/news/aipl/202609090131.aspx": {
       "image": null,
@@ -4749,12 +4814,12 @@
     "https://www.aerotime.aero/articles/first-airbus-variant-modified-with-shark-skin-inspired-film-nears-approval": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "https://www.aerotime.aero/articles/hermeus-unveils-ramjet-x-vehicle-to-launch-from-quarterhorse-at-mach-3": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "https://www.aerotime.aero/articles/two-killed-after-cessna-crashes-at-san-diegos-montgomery-gibbs-airport": {
       "image": {
@@ -4789,32 +4854,42 @@
     "https://www.aerotime.aero/articles/satellite-images-ka-52-mi-28-destroyed-sochi-airport": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "https://www.aerotime.aero/articles/la-compagnie-dusseldorf-new-york-newark-airport": {
-      "image": null,
-      "rejection_reason": "no-event-photo",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/09/La-Compagnie-Airbus-A321LR.jpg",
+        "link": "https://www.aerotime.aero/articles/la-compagnie-dusseldorf-new-york-newark-airport",
+        "subject": "La Compagnie Airbus A321LR",
+        "sourceCaption": "La Compagnie",
+        "credit": "La Compagnie",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "rejection_reason": null,
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "https://www.aerotime.aero/articles/jetblue-new-non-stop-routes-fort-lauderdale-airport": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "https://www.aerotime.aero/articles/miami-767-overrun-112-knots-ntsb-investigation": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "https://www.aerotime.aero/articles/flying-car-developer-pal-v-reaches-key-certification-milestone-with-easa": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "https://www.aerotime.aero/articles/iai-completes-maiden-flight-of-airbus-a330-300-freighter-conversion-aircraft": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "next_retry_utc": "2026-09-10T01:04:11.776624+00:00"
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     },
     "https://www.aerotime.aero/articles/beechcraft-bonanza-crash-stockleigh-brisbane-two-killed": {
       "image": null,
@@ -4905,6 +4980,21 @@
       "image": null,
       "rejection_reason": "no-event-photo",
       "next_retry_utc": "2026-09-10T05:54:04.741103+00:00"
+    },
+    "https://www.aerotime.aero/articles/navy-pilots-brain-injury-study-house-report": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
+    },
+    "https://www.aerotime.aero/articles/boeing-spirit-aerosystems-takeover-costs": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
+    },
+    "https://www.aerotime.aero/articles/sydney-airport-welcomes-egyptair-as-its-newest-airline-effective-2027": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "next_retry_utc": "2026-09-10T08:52:40.621662+00:00"
     }
   }
 }
