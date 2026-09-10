@@ -1,18 +1,56 @@
-name: manual-article-deploy
+name: radar-snapshot
 
 on:
+  schedule:
+    - cron: "*/10 * * * *"
   workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/radar-snapshot.yml"
+      - ".github/workflows/hourly.yml"
+      - ".github/workflows/briefing.yml"
+      - ".github/workflows/manual-article-deploy.yml"
+      - "pipeline/adsb.py"
+      - "pipeline/radar_snapshot.py"
+      - "pipeline/build.py"
+      - "static/radar.js"
+      - "templates/radar.html"
+      - "tests/test_radar.py"
+      - "tests/test_radar_snapshot.py"
   push:
     branches: [main]
     paths:
-      - ".github/deploy-trigger"
+      - ".github/workflows/radar-snapshot.yml"
+      - "pipeline/adsb.py"
+      - "pipeline/radar_snapshot.py"
+      - "pipeline/build.py"
+      - "static/radar.js"
+      - "templates/radar.html"
 
 concurrency:
-  group: manual-article-deploy
+  group: radar-snapshot
   cancel-in-progress: true
 
 jobs:
+  test:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Run radar regression tests
+        run: |
+          python tests/test_radar_snapshot.py
+          python tests/test_radar.py
+
   deploy:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -36,34 +74,15 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Test summary boundary guard
-        run: python tests/test_summary_guard.py
-
-      - name: Test headline priority and subject scope
-        run: python tests/test_headline_rotation.py
-
-      - name: Test image relevance and fallback guards
-        run: |
-          python tests/test_image_selection.py
-          python tests/test_images.py
-          python tests/test_image_fallbacks.py
-          python tests/test_volcano_images.py
-          python tests/test_image_qa.py
-          python pipeline/image_selection.py
-          python tests/test_recent_image_quality.py
-
-      - name: Build site from committed data
+      - name: Test and build current radar snapshot
         env:
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
-          ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional
+          ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }}
         run: |
-          python pipeline/summary_guard.py
-          python pipeline/airport_codes.py
-          python pipeline/image_captions.py
-          python tests/test_image_captions.py
+          python tests/test_radar_snapshot.py
           python pipeline/build.py
           python pipeline/radar_snapshot.py
 
@@ -89,7 +108,6 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
-          # Preserve v3 packaging, including .nojekyll and other site dotfiles.
           include-hidden-files: true
 
       - uses: actions/deploy-pages@v5

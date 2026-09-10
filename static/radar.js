@@ -1,8 +1,7 @@
 /* AVWIRE Taiwan civil-flight radar.
  *
- * One browser-side Airplanes.live point query every five minutes. The page
- * stores no aircraft positions and filters source-tagged sensitive records
- * before creating any marker or list row.
+ * The browser reads a same-origin, server-filtered ADSB.lol snapshot. GitHub
+ * Actions replaces the snapshot regularly; stale snapshots fail closed.
  */
 (function () {
   "use strict";
@@ -13,7 +12,7 @@
   const lang = root.dataset.lang === "en" ? "en" : "zh";
   const copy = {
     zh: {
-      live: "資料正常", loading: "正在取得最新 ADS-B 觀測資料…",
+      live: "近即時資料正常", loading: "正在取得最新 ADS-B 觀測資料…",
       error: "目前無法取得航機資料，將保留上次成功畫面並稍後再試。",
       noData: "目前篩選條件下沒有可顯示的民航機。",
       shown: (visible, total, hidden) =>
@@ -29,7 +28,7 @@
       fpm: "呎／分", seconds: "秒前", noCallsign: "無航班代碼",
     },
     en: {
-      live: "Data live", loading: "Loading the latest ADS-B observations…",
+      live: "Near-live data", loading: "Loading the latest ADS-B observations…",
       error: "Aircraft data is unavailable. The last successful view is retained and the page will retry.",
       noData: "No civil aircraft match the current filters.",
       shown: (visible, total, hidden) =>
@@ -59,6 +58,8 @@
   const aircraftTypes = parseJson("radar-types", {});
   const airports = parseJson("radar-airports", []);
   const refreshMs = Math.max(Number(root.dataset.refreshMs) || 300000, 300000);
+  const maxSnapshotAgeMs = Math.max(
+    Number(root.dataset.maxSnapshotAgeMs) || 1800000, 600000);
   const manualCooldownMs = 30000;
   const routeApiBase = String(root.dataset.routeApiUrl || "").replace(/\/+$/, "");
   const routeCacheKey = "avwire-radar-routes-v2";
@@ -511,7 +512,9 @@
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 15000);
     try {
-      const response = await fetch(root.dataset.apiUrl, {
+      const apiUrl = new URL(root.dataset.apiUrl, window.location.href);
+      apiUrl.searchParams.set("_", String(Math.floor(Date.now() / 60000)));
+      const response = await fetch(apiUrl, {
         method: "GET",
         mode: "cors",
         credentials: "omit",
@@ -520,17 +523,24 @@
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const payload = await response.json();
+      const sourceTime = numberOrNull(payload.now);
+      if (sourceTime === null) throw new Error("missing snapshot timestamp");
+      const sourceTimeMs = sourceTime > 1e12 ? sourceTime : sourceTime * 1000;
+      if (Date.now() - sourceTimeMs > maxSnapshotAgeMs ||
+          sourceTimeMs - Date.now() > 5 * 60 * 1000) {
+        throw new Error("stale snapshot");
+      }
       const raw = Array.isArray(payload.ac) ? payload.ac : [];
-      sourceRows = raw.length;
+      sourceRows = Math.max(numberOrNull(payload.source_total) || 0, raw.length);
       currentRows = raw.filter((ac) => !isSensitiveOrStale(ac)).map(normalize);
-      hiddenRows = sourceRows - currentRows.length;
+      hiddenRows = Math.max(
+        numberOrNull(payload.filtered) || 0,
+        sourceRows - currentRows.length);
       const generation = ++loadGeneration;
       render();
       void hydrateRoutes(currentRows, generation);
 
-      const sourceTime = numberOrNull(payload.now);
-      const dataTime = sourceTime === null ? new Date() :
-        new Date(sourceTime > 1e12 ? sourceTime : sourceTime * 1000);
+      const dataTime = new Date(sourceTimeMs);
       updatedEl.textContent = copy.updated(new Intl.DateTimeFormat(
         "en-US",
         { hour: "numeric", minute: "2-digit", hour12: true }

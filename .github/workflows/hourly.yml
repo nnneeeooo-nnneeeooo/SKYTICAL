@@ -62,6 +62,7 @@ jobs:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
           AEROAPI_KEY: ${{ secrets.AEROAPI_KEY }} # optional
+          ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional
           # optional repo variables
           AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }}
           AVWIRE_GEMINI_MODEL: ${{ vars.AVWIRE_GEMINI_MODEL }}
@@ -99,6 +100,7 @@ jobs:
           git fetch origin "${GITHUB_REF_NAME}"
           git checkout "origin/${GITHUB_REF_NAME}" -- data/briefings || true
           python pipeline/build.py
+          python pipeline/radar_snapshot.py
 
       # Audit the pipeline output after images.py has had a chance to remove
       # stale or misleading cached photos. This still fails closed before any
