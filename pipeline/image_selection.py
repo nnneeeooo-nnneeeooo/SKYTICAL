@@ -222,6 +222,11 @@ def rejection_reason(article, raw, captions=None):
     if airline:
         if not any(phrase(alias, ev) for alias in images._airline_aliases(airline)):
             return "airline-mismatch"
+        if stock and not model:
+            quality_reason = images.profiled_airline_stock_reason(
+                article, airline, ev)
+            if quality_reason:
+                return quality_reason
         if not model and im.get("provider") == "Wikimedia Commons":
             try:
                 if not images._article_year(article)-10 <= int(im.get("photoYear")) <= images._article_year(article):
