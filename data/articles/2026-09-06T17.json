@@ -5,16 +5,6 @@
       "publishedUtc": "2026-09-06T17:26Z",
       "cat": "ops",
       "primarySource": "Simple Flying",
-      "image": {
-        "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2025/12/aa.png",
-        "link": "https://simpleflying.com/american-airlines-launches-10-nonstop-routes-from-jfk-to-europe/",
-        "provider": "Simple Flying",
-        "subject": "American Airlines Airbus A321XLR (N303NY)",
-        "sourceCaption": "American Airlines Airbus A321XLR (N303NY)",
-        "kind": "file_photo",
-        "matched": "source:caption",
-        "captionSource": "source-image-metadata"
-      },
       "zh": {
         "title": "美國航空開辦紐約JFK至歐洲10條直飛航線",
         "summary": "美國航空將開辦紐約JFK至歐洲10條直飛航線，預計2027年新增2個航點。",
@@ -75,6 +65,11 @@
         "event_dates": [
           "2027"
         ]
+      },
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "airline-role-mismatch"
       }
     },
     {
