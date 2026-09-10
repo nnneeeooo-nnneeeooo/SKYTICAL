@@ -12,15 +12,16 @@
       <h1>{{ t.radarTitle }}</h1>
       <p class="text-muted">{{ t.radarSub }}</p>
     </div>
-    <div class="radar-live-badge"><span class="pulse-dot"></span> LIVE ADS-B</div>
+    <div class="radar-live-badge"><span class="pulse-dot"></span> NEAR-LIVE ADS-B</div>
   </header>
 
   <section id="flight-radar"
            class="radar-shell"
            data-lang="{{ lang }}"
-           data-api-url="https://api.airplanes.live/v2/point/23.7000/120.9000/250"
+           data-api-url="{{ base }}/assets/radar.json"
            data-route-api-url="https://api.adsbdb.com/v0/callsign"
            data-default-callsign-mode="iata"
+           data-max-snapshot-age-ms="1800000"
            data-refresh-ms="300000">
     <div class="radar-toolbar">
       <label class="radar-search">
@@ -66,7 +67,7 @@
     <p><b>{{ t.radarNotice }}</b></p>
     <p>{{ t.radarPrivacy }}</p>
     <p>{{ t.radarSource }}
-      <a href="https://airplanes.live/api-guide/" target="_blank" rel="noopener">API</a>
+      <a href="https://api.adsb.lol/docs" target="_blank" rel="noopener">API</a>
       · <a href="https://www.adsbdb.com/" target="_blank" rel="noopener">ADSBdb</a>
       · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">ODbL</a>
     </p>
