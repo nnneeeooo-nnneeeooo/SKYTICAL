@@ -58,12 +58,14 @@ jobs:
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
+          ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional
         run: |
           python pipeline/summary_guard.py
           python pipeline/airport_codes.py
           python pipeline/image_captions.py
           python tests/test_image_captions.py
           python pipeline/build.py
+          python pipeline/radar_snapshot.py
 
       - name: Scan publishable output
         run: |

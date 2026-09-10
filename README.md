@@ -125,12 +125,14 @@ prompt 撰寫；來源一致、逐字引文與稿件契約均通過後自動發�
 
 啟用方式：Repo Variables 設 `FLIGHT_TRACKING_ENABLED=true`。
 
-公開網站另提供 `/radar/`（英文版 `/en/radar/`）台灣民航雷達頁。頁面由
-訪客瀏覽器每 5 分鐘直接查詢一次 Airplanes.live 公開 API，以 Leaflet 與
+公開網站另提供 `/radar/`（英文版 `/en/radar/`）台灣民航雷達頁。GitHub
+Actions 每 10 分鐘向 ADSB.lol 取得一次資料，先排除敏感與過期紀錄，再將
+單一近即時快照放入 Pages 部署產物；頁面每 5 分鐘讀取同網域快照，以 Leaflet 與
 OpenStreetMap 顯示航班呼號、航空公司、機型、高度、地速及航向，並以
 ADSBdb 公開呼號端點補充 ICAO／IATA 班號切換與起迄機場，預設以旅客常見的
 IATA 班號顯示，仍可切回 ICAO 呼號；兩者皆不需 API key。航線查詢會在訪客
-瀏覽器內去重、限制併發並快取，不儲存即時座標；
+瀏覽器內去重、限制併發並快取。近即時快照不提交到 repository，不保留軌跡，
+每次部署直接覆寫，且超過 30 分鐘即停止顯示；
 建立任何標記前會排除軍事、PIA、LADD、緊急狀態、非 ICAO 位址與位置過期
 資料。此頁僅供航空資訊參考，不是航管雷達，航線資料查不到時不會猜測。
 製造商官方新聞來源另由 `config/manufacturer_sources.json` 管理；Airbus 與

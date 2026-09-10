@@ -1,0 +1,114 @@
+name: radar-snapshot
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/radar-snapshot.yml"
+      - ".github/workflows/hourly.yml"
+      - ".github/workflows/briefing.yml"
+      - ".github/workflows/manual-article-deploy.yml"
+      - "pipeline/adsb.py"
+      - "pipeline/radar_snapshot.py"
+      - "pipeline/build.py"
+      - "static/radar.js"
+      - "templates/radar.html"
+      - "tests/test_radar.py"
+      - "tests/test_radar_snapshot.py"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/radar-snapshot.yml"
+      - "pipeline/adsb.py"
+      - "pipeline/radar_snapshot.py"
+      - "pipeline/build.py"
+      - "static/radar.js"
+      - "templates/radar.html"
+
+concurrency:
+  group: radar-snapshot
+  cancel-in-progress: true
+
+jobs:
+  test:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Run radar regression tests
+        run: |
+          python tests/test_radar_snapshot.py
+          python tests/test_radar.py
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Enable GitHub Pages
+        uses: actions/configure-pages@v6
+        with:
+          enablement: true
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Test and build current radar snapshot
+        env:
+          AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
+          AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
+          SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
+          BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
+          ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }}
+        run: |
+          python tests/test_radar_snapshot.py
+          python pipeline/build.py
+          python pipeline/radar_snapshot.py
+
+      - name: Scan publishable output
+        run: |
+          scan() {
+            set +e
+            grep -rInE "$1" site/ data/
+            rc=$?
+            set -e
+            if [ "$rc" -eq 0 ]; then
+              echo "::error::$2 found in publishable output"
+              exit 1
+            elif [ "$rc" -ge 2 ]; then
+              echo "::error::scan failed (grep rc=$rc)"
+              exit 1
+            fi
+          }
+          scan "nvapi-[A-Za-z0-9_-]{16,}|AIza[0-9A-Za-z_-]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|sk-or-v1-[A-Za-z0-9_-]{16,}|oc_sk_[A-Za-z0-9_-]{16,}|Bearer [A-Za-z0-9_./+-]{20,}" "secret-like string"
+          scan "reasoning_content|<think>" "reasoning trace"
+          echo "scan: site/ and data/ clean"
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+          include-hidden-files: true
+
+      - uses: actions/deploy-pages@v5
+        id: deployment
