@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "description": "Verified fleet-role preferences for generic airline news images. Exact event, registration and article-named aircraft evidence always outrank these profiles.",
+  "profiles": [
+    {
+      "airline": "China Airlines",
+      "flagship": ["Airbus A350-900", "Boeing 777-300ER"],
+      "regional": ["Airbus A321neo", "Airbus A330-300"],
+      "cargo": ["Boeing 777F", "Boeing 747-400F"],
+      "future": ["Airbus A350-1000", "Boeing 787-9", "Boeing 787-10", "Boeing 777-9", "Boeing 777-8F"],
+      "excluded_generic": ["Boeing 737-800"],
+      "verified_utc": "2026-09-10T00:00:00Z",
+      "source": "https://www.china-airlines.com/tw/en/about-china-airlines/about-us/operations"
+    },
+    {
+      "airline": "EVA Air",
+      "flagship": ["Boeing 787-10", "Boeing 787-9", "Boeing 777-300ER"],
+      "regional": ["Boeing 787-10", "Airbus A330-300", "Airbus A321-200"],
+      "cargo": ["Boeing 777F"],
+      "future": ["Airbus A350-1000", "Airbus A321neo"],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-10T00:00:00Z",
+      "source": "https://www.evaair.com/en-tw/about-eva-air/about-us/market-and-sales-overview/eva-air-fleet/"
+    },
+    {
+      "airline": "STARLUX Airlines",
+      "flagship": ["Airbus A350-1000", "Airbus A350-900"],
+      "regional": ["Airbus A330neo", "Airbus A321neo"],
+      "cargo": [],
+      "future": [],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-10T00:00:00Z",
+      "source": "https://www.starlux-airlines.com/en-US/experience/walk-into-starlux/our-fleet"
+    },
+    {
+      "airline": "Delta Air Lines",
+      "flagship": ["Airbus A350-900", "Airbus A330neo"],
+      "regional": ["Airbus A321neo", "Airbus A220-300"],
+      "cargo": [],
+      "future": ["Airbus A350-1000", "Boeing 787-10"],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-10T00:00:00Z",
+      "source": "https://www.delta.com/us/en/aircraft/overview"
+    },
+    {
+      "airline": "American Airlines",
+      "flagship": ["Boeing 787-9", "Boeing 777-300ER"],
+      "regional": ["Airbus A321neo", "Boeing 737 MAX 8"],
+      "cargo": [],
+      "future": [],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-10T00:00:00Z",
+      "source": "https://www.aa.com/web/i18n/travel-info/experience/planes/planes.html"
+    },
+    {
+      "airline": "Emirates",
+      "flagship": ["Airbus A380-800", "Airbus A350-900", "Boeing 777-300ER"],
+      "regional": ["Airbus A350-900", "Boeing 777-300ER"],
+      "cargo": [],
+      "future": [],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-10T00:00:00Z",
+      "source": "https://www.emirates.com/us/english/experience/our-fleet/"
+    },
+    {
+      "airline": "British Airways",
+      "flagship": ["Airbus A350-1000", "Boeing 787-10", "Boeing 787-9"],
+      "regional": ["Airbus A321neo", "Airbus A320neo"],
+      "cargo": [],
+      "future": [],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-10T00:00:00Z",
+      "source": "https://www.britishairways.com/content/information/about-ba/fleet-facts"
+    },
+    {
+      "airline": "All Nippon Airways",
+      "flagship": ["Boeing 787-9", "Boeing 787-10"],
+      "regional": ["Airbus A321neo", "Airbus A320neo"],
+      "cargo": ["Boeing 777F", "Boeing 767-300F"],
+      "future": [],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-10T00:00:00Z",
+      "source": "https://www.ana.co.jp/group/en/company/ana/scale/"
+    },
+    {
+      "airline": "Qatar Airways",
+      "flagship": ["Airbus A350-1000", "Airbus A350-900", "Boeing 787-9"],
+      "regional": ["Boeing 787-9", "Airbus A320-200"],
+      "cargo": [],
+      "future": [],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-10T00:00:00Z",
+      "source": "https://www.qatarairways.com/en-gb/fleet.html"
+    }
+  ]
+}
