@@ -27,11 +27,32 @@ jobs:
           import urllib.request
 
           base_url = "https://co.agentrouter.org/v1"
-          api_key = os.environ.get("AGENTROUTER_API", "").strip()
-          if not api_key:
+          raw_api_key = os.environ.get("AGENTROUTER_API", "").strip()
+          if not raw_api_key:
               print("secret_present=false")
               raise SystemExit(2)
           print("secret_present=true")
+
+          api_key = raw_api_key
+          bearer_prefix = api_key.lower().startswith("bearer ")
+          assignment_prefix = api_key.upper().startswith("AGENTROUTER_API=")
+          if bearer_prefix:
+              api_key = api_key[7:].strip()
+          if assignment_prefix:
+              api_key = api_key.split("=", 1)[1].strip()
+          quoted = (
+              len(api_key) >= 2
+              and api_key[0] == api_key[-1]
+              and api_key[0] in ("'", '"')
+          )
+          if quoted:
+              api_key = api_key[1:-1].strip()
+          print(f"secret_bearer_prefix_normalized={bearer_prefix}")
+          print(f"secret_assignment_prefix_normalized={assignment_prefix}")
+          print(f"secret_quotes_normalized={quoted}")
+          if not api_key:
+              print("secret_normalized_empty=true")
+              raise SystemExit(2)
 
           def call(path, payload=None):
               headers = {
@@ -74,6 +95,7 @@ jobs:
           print(f"models_content_type={models_type}")
           print(f"models_bytes={len(models_body)}")
           print(f"models_body_kind={'json' if models_json is not None else 'non_json'}")
+          print(f"models_auth_rejected={models_status in (401, 403)}")
 
           model_ids = []
           if isinstance(models_json, dict) and isinstance(models_json.get("data"), list):
@@ -109,6 +131,7 @@ jobs:
           print(f"chat_content_type={chat_type}")
           print(f"chat_bytes={len(chat_body)}")
           print(f"chat_body_kind={'json' if chat_json is not None else 'non_json'}")
+          print(f"chat_auth_rejected={chat_status in (401, 403)}")
 
           if not isinstance(chat_json, dict):
               raise SystemExit(4)
