@@ -27,8 +27,8 @@ def photo(filename, **extra):
 
 class ImageSelectionTests(unittest.TestCase):
     def test_visual_profiles_are_auditable_and_not_a_single_airline_exception(self):
-        profiles = list(images._visual_profiles.values())
-        self.assertGreaterEqual(len(profiles), 9)
+        profiles = images._visual_profile_rows
+        self.assertGreaterEqual(len(profiles), 15)
         for profile in profiles:
             with self.subTest(airline=profile.get("airline")):
                 self.assertTrue(str(profile.get("source") or "").startswith("https://"))
@@ -37,6 +37,33 @@ class ImageSelectionTests(unittest.TestCase):
                 self.assertFalse(
                     set(profile.get("flagship") or [])
                     & set(profile.get("excluded_generic") or []))
+
+    def test_visual_profile_aliases_share_the_same_verified_rules(self):
+        for alias, canonical in (
+                ("Breeze", "Breeze Airways"),
+                ("JetBlue Airways", "JetBlue"),
+                ("Egypt Air", "EgyptAir"),
+                ("Frontier", "Frontier Airlines")):
+            with self.subTest(alias=alias):
+                self.assertIs(images.airline_visual_profile(alias),
+                              images.airline_visual_profile(canonical))
+
+    def test_new_profiles_choose_modern_representative_aircraft(self):
+        cases = (
+            ("Air Canada", "Boeing 787-9"),
+            ("Alaska Airlines", "Boeing 737 MAX 9"),
+            ("JetBlue", "Airbus A321neo"),
+            ("Breeze", "Airbus A220-300"),
+            ("EgyptAir", "Boeing 787-9"),
+            ("Frontier Airlines", "Airbus A321neo"),
+        )
+        for airline, expected in cases:
+            with self.subTest(airline=airline):
+                story = article(f"{airline} announces a network update",
+                                entities={"airlines": [airline]})
+                self.assertEqual(
+                    images.preferred_airline_models(story, airline)[0],
+                    expected)
 
     def test_medical_logistics_cannot_use_consumer_quadcopter(self):
         im = photo("Quadcopter_Drone_in_flight", matched="topic:drone")

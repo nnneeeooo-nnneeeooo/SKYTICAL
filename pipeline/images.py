@@ -185,11 +185,17 @@ _tw_airports = [
                 .get("airports") or [])
     if isinstance(a, dict)
 ]
-_visual_profiles = {
-    str(row.get("airline") or "").casefold(): row
+_visual_profile_rows = [
+    row
     for row in (load_json(ROOT / "config" / "airline_visual_profiles.json", {})
                 .get("profiles") or [])
     if isinstance(row, dict) and row.get("airline")
+]
+_visual_profiles = {
+    str(name).strip().casefold(): row
+    for row in _visual_profile_rows
+    for name in [row.get("airline"), *(row.get("aliases") or [])]
+    if str(name or "").strip()
 }
 
 _CARGO_VISUAL_RE = re.compile(
