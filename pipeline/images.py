@@ -939,13 +939,17 @@ def main() -> int:
             if source_url:
                 source_entry = source_entries.get(source_url) or {}
                 source_image = source_entry.get("image")
+                parser_stale = (
+                    source_entry.get("parser_version")
+                    != SOURCE_IMAGE_PARSER_VERSION)
+                if parser_stale:
+                    source_image = None
                 if source_image and not existing_image_matches(article, source_image):
                     source_image = None
                 retry_due = True
                 try:
                     retry_due = (
-                        source_entry.get("parser_version")
-                        != SOURCE_IMAGE_PARSER_VERSION
+                        parser_stale
                         or parse_iso(source_entry["next_retry_utc"]) <= now
                     )
                 except (KeyError, TypeError, ValueError):

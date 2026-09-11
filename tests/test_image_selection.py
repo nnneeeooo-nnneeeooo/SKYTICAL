@@ -385,6 +385,27 @@ class ImageSelectionTests(unittest.TestCase):
         }
         self.assertIsNone(policy.rejection_reason(a, im))
 
+    def test_bound_event_with_an_explicit_wrong_model_is_rejected(self):
+        url = "https://www.aerotime.aero/articles/ana-e190"
+        a = article(
+            "ANA Embraer E190 enters service",
+            sources=[{"url": url}],
+            entities={
+                "airlines": ["All Nippon Airways"],
+                "aircraft_models": ["Embraer E190"],
+            },
+        )
+        im = {
+            "url": "https://www.aerotime.aero/images/2026/09/ana-787.jpeg",
+            "link": url, "provider": "AeroTime", "kind": "event_photo",
+            "matched": "source:aerotime", "sourceCaption": "ANA Boeing 787",
+            "subject": "Boeing 787",
+        }
+        self.assertEqual(
+            policy.rejection_reason(a, im),
+            "source-aircraft-model-unverified",
+        )
+
     def test_url_identity_handles_resize_but_not_attachment_id(self):
         original = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Test.jpg"
         thumb = "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Test.jpg/1280px-Test.jpg?utm_source=x"

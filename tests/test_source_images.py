@@ -70,6 +70,21 @@ def test_aerotime_webp_resize_and_short_corporate_credit():
     assert photo["credit"] == "IAI"
 
 
+def test_aerotime_subject_uses_the_aircraft_identified_by_the_caption():
+    article = {
+        "entities": {
+            "aircraft_models": [
+                "A-10 Thunderbolt II", "F-15E Strike Eagle", "F-15E"],
+        },
+    }
+    html = AEROTIME_HTML.replace(
+        "Bystander video",
+        "A USAF F-15E Strike Eagle in Jordan. Credit: U.S. Air Force photo",
+    )
+    photo = source.parse_aerotime_photo(html, AEROTIME_URL, article)
+    assert photo["subject"] == "F-15E Strike Eagle"
+
+
 def test_aerotime_short_generic_credit_remains_rejected():
     html = AEROTIME_HTML.replace("Bystander video", "Photo")
     assert source.parse_aerotime_photo(
@@ -113,6 +128,16 @@ def test_protect_manual_and_exact_airframe_images():
         assert not source.can_upgrade({"image": image})
     assert not source.can_upgrade({"articleFormat": "roundup"})
     assert source.supported_source({"sources": [{"url": URL+"/sidebar"}]}) is None
+
+
+def test_aerotime_source_image_is_reparsed_after_parser_upgrade():
+    assert source.can_upgrade({
+        "image": {
+            "provider": "AeroTime",
+            "kind": "event_photo",
+            "matched": "source:aerotime",
+        }
+    })
 
 
 def setup_batch(tmp_path, monkeypatch, image=None):
