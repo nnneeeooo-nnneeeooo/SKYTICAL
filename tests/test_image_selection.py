@@ -93,6 +93,61 @@ class ImageSelectionTests(unittest.TestCase):
         a["en"]["body"] = ["Airbus A320 is a background comparison."]
         self.assertEqual(images.find_aircraft_type(a), "Gripen F")
 
+    def test_any_explicit_headline_model_can_illustrate_a_fleet_transition(self):
+        a = article(
+            "Breeze Airways retires its last Embraer E190 for an all-Airbus A220 fleet",
+            entities={
+                "airlines": ["Breeze Airways"],
+                "aircraft_models": ["Embraer E190", "Airbus A220-300"],
+            },
+        )
+        self.assertEqual(images.find_aircraft_type(a), "Embraer E190")
+        self.assertEqual(
+            images.headline_aircraft_types(a),
+            ["Embraer E190", "Airbus A220"],
+        )
+        self.assertIsNone(
+            policy.rejection_reason(a, photo("Breeze_Airways_Airbus_A220-300")))
+
+    def test_summary_or_body_comparison_model_does_not_authorize_an_image(self):
+        a = article(
+            "Breeze Airways retires its last Embraer E190",
+            entities={
+                "airlines": ["Breeze Airways"],
+                "aircraft_models": ["Embraer E190", "Airbus A220-300"],
+            },
+        )
+        a["en"]["summary"] = "The airline will operate an all-Airbus A220-300 fleet."
+        a["en"]["body"] = ["Airbus A220-300 replaces the retired aircraft."]
+        self.assertEqual(images.headline_aircraft_types(a), ["Embraer E190"])
+        self.assertEqual(
+            policy.rejection_reason(a, photo("Breeze_Airways_Airbus_A220-300")),
+            "aircraft-model-mismatch",
+        )
+
+    def test_verified_profile_alias_can_attest_the_same_airline(self):
+        a = article(
+            "Frontier Airlines announces new routes",
+            entities={"airlines": ["Frontier Airlines"]},
+        )
+        self.assertIn("Frontier", images._airline_aliases("Frontier Airlines"))
+        self.assertIsNone(
+            policy.rejection_reason(a, photo("Frontier_A321neo_lifting_off")))
+
+    def test_brand_alias_in_photographer_name_cannot_hide_wrong_airline(self):
+        a = article(
+            "Breeze Airways adds Airbus A220 flights",
+            entities={
+                "airlines": ["Breeze Airways"],
+                "aircraft_models": ["Airbus A220"],
+            },
+        )
+        wrong = photo("American_Airlines_Airbus_A220_by_Ceri_Breeze")
+        self.assertEqual(
+            policy.rejection_reason(a, wrong),
+            "airline-mismatch",
+        )
+
     def test_background_registration_is_not_primary(self):
         a = article("Delta Air Lines announces earnings")
         a["en"]["body"] = ["Earnings increased.", "A historical flight used N512DN."]

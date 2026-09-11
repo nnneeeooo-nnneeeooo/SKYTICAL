@@ -120,6 +120,22 @@ def verified_cargo_model(article):
         str(model), re.I) for model in models)
 
 
+def airline_matches(article, airline, image, evidence_text):
+    """Require the target carrier and reject an explicit competing carrier."""
+    import images
+    aliases = images._airline_aliases(airline)
+    named_airlines = images._image_named_airlines(image)
+    target_is_named = any(
+        any(phrase(alias, named) or phrase(named, alias) for alias in aliases)
+        for named in named_airlines
+    )
+    if (named_airlines and not target_is_named
+            and not images._secondary_image_airline_allowed(
+                article, named_airlines)):
+        return False
+    return any(phrase(alias, evidence_text) for alias in aliases)
+
+
 def rejection_reason(article, raw, captions=None):
     from image_policy import (article_context_text, article_headline_text,
                               article_is_airport_operations, article_is_cabin_story,
@@ -151,7 +167,7 @@ def rejection_reason(article, raw, captions=None):
                 and not verified_cargo_model(article)):
             return "airframe-role-unverified"
         carrier = images.find_airline(article)
-        if carrier and not any(phrase(alias, ev) for alias in images._airline_aliases(carrier)):
+        if carrier and not airline_matches(article, carrier, im, ev):
             return "airframe-operator-unverified"
         return None
     if not ev.strip():
@@ -169,14 +185,15 @@ def rejection_reason(article, raw, captions=None):
         return "unrelated-interior"
     airline = images.find_airline(article)
     model = images.find_aircraft_type(article)
+    headline_models = images.headline_aircraft_types(article)
+    eligible_models = headline_models or ([model] if model else [])
     airport = images.find_airport(article)
     matched = str(im.get("matched") or "")
     # Exact event caption can describe seats/ceremony without repeating model.
     if source_bound and im.get("kind") == "event_photo":
         event_evidence = f"{ev} {im.get('subject') or ''}"
-        if airline and not any(
-                phrase(a, event_evidence)
-                for a in images._airline_aliases(airline)):
+        if airline and not airline_matches(
+                article, airline, im, event_evidence):
             return "source-airline-unverified"
         return None
     headline_model = images.find_aircraft_type({"en": {"title": head},
@@ -210,7 +227,8 @@ def rejection_reason(article, raw, captions=None):
         if not re.search(r"freighter|cargo|P2F|BCF|BDSF|7\d7[- ]?\d*(?:F|ERF)\b|貨", ev, re.I):
             return "cargo-role-unverified"
     if model:
-        if not model_matches(model, ev) and not (reg and phrase(reg, ev)):
+        if (not any(model_matches(candidate, ev) for candidate in eligible_models)
+                and not (reg and phrase(reg, ev))):
             return "aircraft-model-mismatch"
         for pattern, required in (
             (r"Turkish|土耳其", r"Turkish|Turkey|Türk|土耳其"),
@@ -220,7 +238,7 @@ def rejection_reason(article, raw, captions=None):
             if re.search(r"fighter|F-?\d|戰機", head, re.I) and re.search(pattern, head, re.I) and not re.search(required, ev, re.I):
                 return "military-operator-unverified"
     if airline:
-        if not any(phrase(alias, ev) for alias in images._airline_aliases(airline)):
+        if not airline_matches(article, airline, im, ev):
             return "airline-mismatch"
         if stock and not model:
             quality_reason = images.profiled_airline_stock_reason(
