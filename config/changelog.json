@@ -7,6 +7,13 @@
     {
       "date": "2026-09-11",
       "kind": "fix",
+      "commit": "128b2a341bf5ee3fca440cc8ac2ee4304d187f37",
+      "zh": "擴充通用航空公司配圖規則：新增 Air Canada、Alaska、JetBlue、Breeze、EgyptAir 與 Frontier 的官方機隊角色資料及品牌別名，讓未指定機型的新聞優先採用 787、737 MAX、A321neo 或 A220 等具代表性的現役機型；文章明確指定的機型仍維持最高優先。",
+      "en": "Expanded shared airline image rules with official fleet roles and brand aliases for Air Canada, Alaska, JetBlue, Breeze, EgyptAir and Frontier, so stories without a named aircraft prefer representative current types such as the 787, 737 MAX, A321neo or A220 while article-specific aircraft remain the highest priority."
+    },
+    {
+      "date": "2026-09-11",
+      "kind": "fix",
       "commit": "b3fc2321e6782f6a90c4cb34353f0b9a3665959b",
       "zh": "提升 AeroTime 來源配圖恢復率：正確辨識 WebP 包裝縮圖與 IAI 等短機構署名，解析器升級後會立即重試舊的無圖快取；第三方圖庫照片仍須通過航空公司與機型證據檢查，避免把 Air Force One 等不相關照片配給其他航空公司新聞。",
       "en": "Improved AeroTime image recovery by matching WebP-wrapped thumbnails and short organisation credits such as IAI, while immediately retrying stale negative cache entries after parser upgrades; third-party library photos still require airline and aircraft evidence so unrelated images such as Air Force One are rejected."
