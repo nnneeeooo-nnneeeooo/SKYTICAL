@@ -199,6 +199,7 @@ def rejection_reason(article, raw, captions=None):
         return None
     headline_model = images.find_aircraft_type({"en": {"title": head},
                                               "entities": article.get("entities") or {}})
+    headline_org_verified = False
     # A customer, certifier or comparison model in the summary must not replace
     # a named headline organization (e.g. JCB Aero -> generic Boeing 737).
     if not airline and not headline_model:
@@ -209,6 +210,7 @@ def rejection_reason(article, raw, captions=None):
             if not phrase(primary, ev) and matched not in {
                     "topic:drone", "topic:volcano:anak-krakatau"}:
                 return "headline-organization-unverified"
+            headline_org_verified = phrase(primary, ev)
     if (re.search(r"新.*座椅|套房|頭等艙|premium economy|first class|\bsuites?\b", head, re.I)
             and not cabin_evidence):
         return "cabin-product-unverified"
@@ -269,6 +271,16 @@ def rejection_reason(article, raw, captions=None):
                 if row and row.get("code") == target["code"]:
                     return None
         return "airport-mismatch"
+    # A source-bound file photo can illustrate a non-aircraft story when its
+    # own caption verifies the primary headline organization, or when a short
+    # named subject is reproduced verbatim in the headline.  Long descriptive
+    # stock captions and indirect consequence photos do not qualify.
+    source_caption = str(im.get("sourceCaption") or "").strip()
+    caption_words = re.findall(r"[A-Za-z0-9]+", source_caption)
+    short_named_subject = (
+        2 <= len(caption_words) <= 5 and phrase(source_caption, head))
+    if source_bound and (headline_org_verified or short_named_subject):
+        return None
     org = images.find_org(article)
     if org:
         if not any(phrase(t, ev) for t in org[1]):

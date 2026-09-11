@@ -284,6 +284,45 @@ class ImageSelectionTests(unittest.TestCase):
                        "captionSource": "source-image-metadata"}}
         self.assertEqual(policy.rejection_reason(a, url, cache), "airline-mismatch")
 
+    def test_source_bound_primary_headline_organization_photo_is_allowed(self):
+        source = "https://publisher.test/tsa-precheck"
+        a = article(
+            "TSA PreCheck members can clear security without flying",
+            sources=[{"url": source}],
+            entities={"organizations": ["TSA"]},
+        )
+        image = {
+            "url": "https://cdn.test/tsa-checkpoint.jpg",
+            "link": source,
+            "provider": "Publisher",
+            "kind": "file_photo",
+            "sourceCaption": "TSA screening checkpoint at New Orleans",
+        }
+        self.assertIsNone(policy.rejection_reason(a, image))
+
+    def test_source_bound_short_named_subject_must_appear_in_headline(self):
+        source = "https://publisher.test/air-force-one"
+        image = {
+            "url": "https://cdn.test/air-force-one.jpg",
+            "link": source,
+            "provider": "Publisher",
+            "kind": "file_photo",
+            "sourceCaption": "Air Force One",
+        }
+        exact = article(
+            "Emergency slide delays Air Force One departure",
+            sources=[{"url": source}],
+        )
+        indirect = article(
+            "Trump's ex-Qatari aircraft delayed by emergency slide",
+            sources=[{"url": source}],
+        )
+        self.assertIsNone(policy.rejection_reason(exact, image))
+        self.assertEqual(
+            policy.rejection_reason(indirect, image),
+            "no-primary-visual-entity",
+        )
+
     def test_caption_cache_must_bind_exact_source(self):
         a = article("Delta Air Lines news", sources=[{"url": "https://publisher.test/story"}])
         url = "https://cdn.test/photo.jpg"
