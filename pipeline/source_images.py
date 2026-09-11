@@ -5,6 +5,7 @@ figure. An unrelated sidebar image or an uncaptioned Open Graph image is not
 enough. Keep the original caption for provenance; never infer a free license.
 """
 import re
+from html import unescape
 from urllib.parse import urlsplit
 
 import requests
@@ -12,6 +13,12 @@ from bs4 import BeautifulSoup
 
 from common import USER_AGENT
 from image_captions import clean_description
+
+
+PARSER_VERSION = 2
+_AEROTIME_STOCK_CREDIT_RE = re.compile(
+    r"Shutterstock|Wikimedia Commons|Getty Images?|Adobe Stock|"
+    r"Unsplash|Pexels|Flickr", re.I)
 
 
 def supported_source(article):
@@ -88,8 +95,36 @@ def _aerotime_image_key(url):
                 r"/images/\d{4}/\d{2}/[^/]+\.(?:jpe?g|png|webp)",
                 parts.path, re.I)):
         return None
-    path = re.sub(r"-\d{2,4}x\d{2,4}(?=\.[^.]+$)", "", parts.path)
-    return re.sub(r"\.webp$", "", path, flags=re.I)
+    # WordPress commonly serves ``name-800x500.jpg.webp`` while og:image
+    # keeps ``name.jpg``.  Remove the delivery wrapper before normalising the
+    # resize suffix so both URLs bind to the exact same source photograph.
+    path = re.sub(r"\.webp$", "", parts.path, flags=re.I)
+    return re.sub(r"-\d{2,4}x\d{2,4}(?=\.[^.]+$)", "", path)
+
+
+def _aerotime_credit(value):
+    """Keep a real caption credit, including short organisation acronyms."""
+    if not isinstance(value, str):
+        return ""
+    raw = " ".join(BeautifulSoup(unescape(value), "html.parser").stripped_strings)
+    raw = re.sub(r"\s+", " ", raw).strip()
+    match = re.search(
+        r"\b(?:photo\s+)?credit\s*[:：]\s*([^()]+)", raw, re.I)
+    candidate = match.group(1).strip() if match else raw
+    cleaned = clean_description(candidate)
+    if cleaned:
+        return cleaned
+    # ``clean_description`` deliberately rejects descriptions shorter than
+    # four characters.  Credits such as IAI, ANA and GE are nevertheless
+    # meaningful attribution.  Accept only acronym-shaped leftovers and keep
+    # rejecting generic placeholders such as "Image" or "Photo".
+    candidate = re.sub(
+        r"^(?:©|credit\s*[:：]|photo\s+credit\s*[:：])\s*", "", candidate,
+        flags=re.I).strip()
+    if (re.fullmatch(r"[A-Z0-9][A-Z0-9&.+/' -]{1,19}", candidate)
+            and candidate.casefold() not in {"image", "photo", "picture"}):
+        return candidate
+    return ""
 
 
 def _aerotime_subject(article):
@@ -119,15 +154,26 @@ def parse_aerotime_photo(html, source_url, article):
         if (not img or not caption
                 or _aerotime_image_key(img.get("src", "")) != key):
             continue
-        credit = clean_description(" ".join(caption.stripped_strings))
-        subject = _aerotime_subject(article)
+        caption_text = " ".join(caption.stripped_strings)
+        credit = _aerotime_credit(caption_text)
+        article_subject = _aerotime_subject(article)
+        is_stock = bool(_AEROTIME_STOCK_CREDIT_RE.search(caption_text))
+        image_subject = clean_description(img.get("alt", ""))
+        subject = image_subject if is_stock else article_subject
         if not credit or not subject:
             continue
+        source_caption = caption_text
+        if is_stock:
+            # For publisher-selected stock, retain the source-owned alt text as
+            # evidence so the shared gate can still reject a wrong airline or
+            # aircraft.  Never relabel stock as an event photograph.
+            source_caption = f"{image_subject}. {caption_text}"
         return {
             "url": url, "link": source_url,
-            "subject": subject, "sourceCaption": credit,
+            "subject": subject, "sourceCaption": source_caption,
             "credit": credit, "license": None,
-            "provider": "AeroTime", "kind": "event_photo",
+            "provider": "AeroTime",
+            "kind": "file_photo" if is_stock else "event_photo",
             "matched": "source:aerotime",
         }
     return None
