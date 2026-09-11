@@ -41,6 +41,8 @@ class ImageSelectionTests(unittest.TestCase):
     def test_visual_profile_aliases_share_the_same_verified_rules(self):
         for alias, canonical in (
                 ("Breeze", "Breeze Airways"),
+                ("Delta", "Delta Air Lines"),
+                ("Delta Connection", "Delta Air Lines"),
                 ("JetBlue Airways", "JetBlue"),
                 ("Egypt Air", "EgyptAir"),
                 ("Frontier", "Frontier Airlines")):
@@ -65,6 +67,23 @@ class ImageSelectionTests(unittest.TestCase):
                     images.preferred_airline_models(story, airline)[0],
                     expected)
 
+    def test_verified_operating_brand_alias_identifies_parent_airline(self):
+        a = article(
+            "Delta cuts four domestic routes",
+            entities={"airlines": ["Delta Air Lines"]},
+        )
+        self.assertEqual(images.find_airline(a), "Delta Air Lines")
+        self.assertIsNone(policy.rejection_reason(
+            a, photo("Delta_Connection_Embraer_E175_above_the_runway")))
+
+    def test_current_a321xlr_is_valid_american_representative_stock(self):
+        a = article(
+            "American Airlines announces ten new routes",
+            entities={"airlines": ["American Airlines"]},
+        )
+        self.assertIsNone(images.profiled_airline_stock_reason(
+            a, "American Airlines", "American Airlines Airbus A321XLR"))
+
     def test_medical_logistics_cannot_use_consumer_quadcopter(self):
         im = photo("Quadcopter_Drone_in_flight", matched="topic:drone")
         for title in ("JEDSY medical logistics drone partnership",
@@ -83,7 +102,8 @@ class ImageSelectionTests(unittest.TestCase):
                  ("Airbus A350", "Airbus_A350-1000", True),
                  ("Gripen F", "Saab_Gripen_NG", False),
                  ("Boeing 737 MAX 7", "Boeing_737_MAX_8", False),
-                 ("F-16V", "USAF_F-16", False)]
+                 ("F-16V", "USAF_F-16", False),
+                 ("Airbus A330neo", "Delta_A330-900neo", True)]
         for model, filename, valid in cases:
             with self.subTest(model=model):
                 self.assertEqual(policy.model_matches(model, filename.replace("_", " ")), valid)
