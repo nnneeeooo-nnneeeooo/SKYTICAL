@@ -7,28 +7,28 @@
     {
       "date": "2026-09-11",
       "kind": "fix",
-      "commit": "92d0f20946d8b66b83ca2fbe71dc6a571a6b4b21",
+      "commit": "34015a5112525854e22e31a663e85296ed0280ee",
       "zh": "提升非機型新聞的來源配圖覆蓋率：當來源圖綁定該篇報導，且圖說直接驗證標題的首要機構或完整短主體時即可採用；間接情境照與冗長示意圖說仍維持拒絕。",
       "en": "Improved source-image coverage for non-aircraft stories when the image is bound to the cited article and its caption directly verifies the primary headline organization or an exact short named subject; indirect context images and long illustrative captions remain rejected."
     },
     {
       "date": "2026-09-11",
       "kind": "fix",
-      "commit": "1ac28a093cf5fa058bf9d8aae07c26ab1a2ff7bf",
+      "commit": "997d7b5a05c24d34253d738c8fa130981d596434",
       "zh": "擴充經官方資料驗證的現代機隊辨識：支援 Delta 與 Delta Connection 品牌關係及 E175 區域機型，並將已投入營運的 American Airlines A321XLR 納入代表機型；同時補正 A330-800neo／A330-900neo 完整型號寫法。",
       "en": "Expanded officially verified modern-fleet matching for the Delta and Delta Connection brand relationship and regional E175s, added the in-service American Airlines A321XLR as a representative type, and recognized full A330-800neo and A330-900neo variant names."
     },
     {
       "date": "2026-09-11",
       "kind": "fix",
-      "commit": "8512a08bdf53aaa47feee502fbd9b9432b5ee8f2",
+      "commit": "9e77fc89181d7fe13214b0623ff7a60207c95960",
       "zh": "修正機隊轉型新聞的配圖判斷：標題同時明列新舊機型時，可採用其中任一符合的實機照片；官方機隊資料中的品牌別名亦能用於航空公司核對，並新增衝突航司檢查，避免攝影者姓名等偶然字樣造成誤配。",
       "en": "Fixed image matching for fleet-transition stories so a photo may depict any aircraft type explicitly named in the headline; verified brand aliases now support airline checks, with an explicit competing-carrier guard to prevent incidental words such as photographer names from causing false matches."
     },
     {
       "date": "2026-09-11",
       "kind": "fix",
-      "commit": "128b2a341bf5ee3fca440cc8ac2ee4304d187f37",
+      "commit": "17d9359a87f9f96cc80029764dc1ca87c53e848a",
       "zh": "擴充通用航空公司配圖規則：新增 Air Canada、Alaska、JetBlue、Breeze、EgyptAir 與 Frontier 的官方機隊角色資料及品牌別名，讓未指定機型的新聞優先採用 787、737 MAX、A321neo 或 A220 等具代表性的現役機型；文章明確指定的機型仍維持最高優先。",
       "en": "Expanded shared airline image rules with official fleet roles and brand aliases for Air Canada, Alaska, JetBlue, Breeze, EgyptAir and Frontier, so stories without a named aircraft prefer representative current types such as the 787, 737 MAX, A321neo or A220 while article-specific aircraft remain the highest priority."
     },
