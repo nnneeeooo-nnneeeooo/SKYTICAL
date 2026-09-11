@@ -2,8 +2,15 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-09-10",
+  "updatedThrough": "2026-09-11",
   "entries": [
+    {
+      "date": "2026-09-11",
+      "kind": "fix",
+      "commit": "b3fc2321e6782f6a90c4cb34353f0b9a3665959b",
+      "zh": "提升 AeroTime 來源配圖恢復率：正確辨識 WebP 包裝縮圖與 IAI 等短機構署名，解析器升級後會立即重試舊的無圖快取；第三方圖庫照片仍須通過航空公司與機型證據檢查，避免把 Air Force One 等不相關照片配給其他航空公司新聞。",
+      "en": "Improved AeroTime image recovery by matching WebP-wrapped thumbnails and short organisation credits such as IAI, while immediately retrying stale negative cache entries after parser upgrades; third-party library photos still require airline and aircraft evidence so unrelated images such as Air Force One are rejected."
+    },
     {
       "date": "2026-09-10",
       "kind": "fix",
