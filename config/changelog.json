@@ -7,6 +7,13 @@
     {
       "date": "2026-09-11",
       "kind": "fix",
+      "commit": "46d611b94e829f4dba34b259e12d3eb54f5b225b",
+      "zh": "修正多機型事件照片的主體標示：AeroTime 圖片改以來源圖說中實際匹配的機型作為顯示主體，圖說若明寫與標題不符的機型則拒絕；解析器升級後也會重新檢查既有自動來源圖。",
+      "en": "Fixed subject labels for multi-aircraft event photos by using the aircraft actually identified in AeroTime's source caption, rejecting captions that explicitly name a model absent from the headline, and rechecking existing automatic source images after parser upgrades."
+    },
+    {
+      "date": "2026-09-11",
+      "kind": "fix",
       "commit": "34015a5112525854e22e31a663e85296ed0280ee",
       "zh": "提升非機型新聞的來源配圖覆蓋率：當來源圖綁定該篇報導，且圖說直接驗證標題的首要機構或完整短主體時即可採用；間接情境照與冗長示意圖說仍維持拒絕。",
       "en": "Improved source-image coverage for non-aircraft stories when the image is bound to the cited article and its caption directly verifies the primary headline organization or an exact short named subject; indirect context images and long illustrative captions remain rejected."
