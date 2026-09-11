@@ -185,11 +185,17 @@ _tw_airports = [
                 .get("airports") or [])
     if isinstance(a, dict)
 ]
-_visual_profiles = {
-    str(row.get("airline") or "").casefold(): row
+_visual_profile_rows = [
+    row
     for row in (load_json(ROOT / "config" / "airline_visual_profiles.json", {})
                 .get("profiles") or [])
     if isinstance(row, dict) and row.get("airline")
+]
+_visual_profiles = {
+    str(name).strip().casefold(): row
+    for row in _visual_profile_rows
+    for name in [row.get("airline"), *(row.get("aliases") or [])]
+    if str(name or "").strip()
 }
 
 _CARGO_VISUAL_RE = re.compile(
@@ -309,19 +315,13 @@ def find_airline(article: dict) -> str | None:
             if (raw_low in {en.casefold(), zh.casefold()}
                     or (len(raw) >= 2 and raw_low in zh.casefold())):
                 return en or zh or raw
+        profile = airline_visual_profile(raw)
+        if profile:
+            return str(profile.get("airline") or raw)
         return raw
 
     def aliases(name: str) -> list[str]:
-        low = name.casefold()
-        for airline in _airlines:
-            en = str(airline.get("airline_name_en") or "").strip()
-            zh = str(airline.get("airline_name_zh_tw") or "").strip()
-            if low in {en.casefold(), zh.casefold()}:
-                values = [value for value in (en, zh) if value]
-                if zh in {"星宇航空", "長榮航空", "立榮航空", "華信航空"}:
-                    values.append(zh[:-2])
-                return values
-        return [name]
+        return _airline_aliases(name)
 
     headline_parts = []
     for lang in ("zh", "en"):
@@ -388,24 +388,49 @@ def find_airline(article: dict) -> str | None:
     return None
 
 
+def _aircraft_types_in_text(text: str, models=()) -> list[str]:
+    """Return distinct aircraft types in textual order, preserving variants."""
+    candidates = []
+    for value in list(models) + list(_types.values()) + list(_types):
+        value = str(value or "").strip()
+        if not value or value.lower() in {"aircraft", "airplane", "unknown"}:
+            continue
+        hit = re.search(
+            rf"(?<![A-Za-z0-9]){re.escape(value)}(?![A-Za-z0-9])", text, re.I)
+        if hit:
+            candidates.append((hit.start(), -len(value), _types.get(value, value)))
+    # Preserve the entire suffix (including MAX numbers and neo/XLR).
+    for hit in re.finditer(
+            r"(?<![A-Za-z0-9])(?:A\d{3}(?:-\d{3,4}|neo|XLR)?|"
+            r"7\d7(?:-\d{1,3}(?:ER|F)?|\s+MAX(?:\s+\d{1,2})?)?)"
+            r"(?![A-Za-z0-9])", text, re.I):
+        value = hit.group()
+        candidates.append((
+            hit.start(), -len(value),
+            ("Airbus " if value.upper().startswith("A") else "Boeing ") + value))
+    found = []
+    seen = set()
+    for _, _, value in sorted(candidates):
+        key = str(value).casefold()
+        if key not in seen:
+            seen.add(key)
+            found.append(value)
+    return found
+
+
+def headline_aircraft_types(article: dict) -> list[str]:
+    """Return only aircraft types explicitly present in either headline."""
+    models = (article.get("entities") or {}).get("aircraft_models") or []
+    return _aircraft_types_in_text(article_headline_text(article), models)
+
+
 def find_aircraft_type(article: dict) -> str | None:
     """Title before summary; longest model at the same position wins."""
     models = (article.get("entities") or {}).get("aircraft_models") or []
     for text in (article_headline_text(article), article_context_text(article)):
-        candidates = []
-        for value in list(models) + list(_types.values()) + list(_types):
-            value = str(value or "").strip()
-            if not value or value.lower() in {"aircraft", "airplane", "unknown"}:
-                continue
-            hit = re.search(rf"(?<![A-Za-z0-9]){re.escape(value)}(?![A-Za-z0-9])", text, re.I)
-            if hit:
-                candidates.append((hit.start(), -len(value), _types.get(value, value)))
-        # Preserve the entire suffix (including MAX numbers and neo/XLR).
-        for hit in re.finditer(r"(?<![A-Za-z0-9])(?:A\d{3}(?:-\d{3,4}|neo|XLR)?|7\d7(?:-\d{1,3}(?:ER|F)?|\s+MAX(?:\s+\d{1,2})?)?)(?![A-Za-z0-9])", text, re.I):
-            value = hit.group()
-            candidates.append((hit.start(), -len(value), ("Airbus " if value.startswith("A") else "Boeing ")+value))
+        candidates = _aircraft_types_in_text(text, models)
         if candidates:
-            return min(candidates)[2]
+            return candidates[0]
     return None
 
 
@@ -500,12 +525,30 @@ def _image_named_airlines(image: dict) -> list[str]:
 
 def _airline_aliases(name: str) -> list[str]:
     normalized = name.casefold()
+    values = [name]
     for airline in _airlines:
         en = str(airline.get("airline_name_en") or "").strip()
         zh = str(airline.get("airline_name_zh_tw") or "").strip()
         if normalized in {en.casefold(), zh.casefold()}:
-            return [value for value in (en, zh, zh[:-2] if zh in {"星宇航空", "長榮航空", "立榮航空", "華信航空"} else "") if value]
-    return [name, name.removesuffix(" Express")] if name.endswith(" Express") else [name]
+            values.extend((
+                en, zh,
+                zh[:-2] if zh in {"星宇航空", "長榮航空", "立榮航空", "華信航空"}
+                else "",
+            ))
+            break
+    profile = airline_visual_profile(name)
+    if profile:
+        values.extend([profile.get("airline"), *(profile.get("aliases") or [])])
+    if name.endswith(" Express"):
+        values.append(name.removesuffix(" Express"))
+    aliases = []
+    seen = set()
+    for value in values:
+        value = str(value or "").strip()
+        if value and value.casefold() not in seen:
+            seen.add(value.casefold())
+            aliases.append(value)
+    return aliases
 
 
 def _secondary_image_airline_allowed(article: dict,
@@ -896,13 +939,17 @@ def main() -> int:
             if source_url:
                 source_entry = source_entries.get(source_url) or {}
                 source_image = source_entry.get("image")
+                parser_stale = (
+                    source_entry.get("parser_version")
+                    != SOURCE_IMAGE_PARSER_VERSION)
+                if parser_stale:
+                    source_image = None
                 if source_image and not existing_image_matches(article, source_image):
                     source_image = None
                 retry_due = True
                 try:
                     retry_due = (
-                        source_entry.get("parser_version")
-                        != SOURCE_IMAGE_PARSER_VERSION
+                        parser_stale
                         or parse_iso(source_entry["next_retry_utc"]) <= now
                     )
                 except (KeyError, TypeError, ValueError):
@@ -929,6 +976,7 @@ def main() -> int:
                         rejection_reasons.append(f"source-photo:{source_reason}")
                 if source_image and existing_image_matches(article, source_image):
                     article["image"] = source_image
+                    article.pop("imageSelection", None)
                     entries[art_id] = {"status": "matched", "image": source_image,
                                        "checked_utc": now.isoformat()}
                     changed = True

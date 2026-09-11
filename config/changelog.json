@@ -7,6 +7,48 @@
     {
       "date": "2026-09-11",
       "kind": "fix",
+      "commit": "67c2a6a26dc72a6de0a0c34292f39be40aafe8ff",
+      "zh": "補強來源圖片的機型證據：AeroTime 圖片檔名若明確對應文章已驗證的機型，可用來產生正確主體；多航司、多機型報導可採用與來源照片實際相符的其中一型，未出現在結構化實體中的機型仍會拒絕。成功恢復來源圖時也會清除舊的拒絕狀態。",
+      "en": "Strengthened aircraft evidence for source images by using an AeroTime image filename when it clearly matches a verified aircraft entity. Multi-airline, multi-aircraft stories may use the model actually shown by a bound source photo, while models absent from structured entities remain rejected; successful recovery also clears stale rejection state."
+    },
+    {
+      "date": "2026-09-11",
+      "kind": "fix",
+      "commit": "46d611b94e829f4dba34b259e12d3eb54f5b225b",
+      "zh": "修正多機型事件照片的主體標示：AeroTime 圖片改以來源圖說中實際匹配的機型作為顯示主體，圖說若明寫與標題不符的機型則拒絕；解析器升級後也會重新檢查既有自動來源圖。",
+      "en": "Fixed subject labels for multi-aircraft event photos by using the aircraft actually identified in AeroTime's source caption, rejecting captions that explicitly name a model absent from the headline, and rechecking existing automatic source images after parser upgrades."
+    },
+    {
+      "date": "2026-09-11",
+      "kind": "fix",
+      "commit": "34015a5112525854e22e31a663e85296ed0280ee",
+      "zh": "提升非機型新聞的來源配圖覆蓋率：當來源圖綁定該篇報導，且圖說直接驗證標題的首要機構或完整短主體時即可採用；間接情境照與冗長示意圖說仍維持拒絕。",
+      "en": "Improved source-image coverage for non-aircraft stories when the image is bound to the cited article and its caption directly verifies the primary headline organization or an exact short named subject; indirect context images and long illustrative captions remain rejected."
+    },
+    {
+      "date": "2026-09-11",
+      "kind": "fix",
+      "commit": "997d7b5a05c24d34253d738c8fa130981d596434",
+      "zh": "擴充經官方資料驗證的現代機隊辨識：支援 Delta 與 Delta Connection 品牌關係及 E175 區域機型，並將已投入營運的 American Airlines A321XLR 納入代表機型；同時補正 A330-800neo／A330-900neo 完整型號寫法。",
+      "en": "Expanded officially verified modern-fleet matching for the Delta and Delta Connection brand relationship and regional E175s, added the in-service American Airlines A321XLR as a representative type, and recognized full A330-800neo and A330-900neo variant names."
+    },
+    {
+      "date": "2026-09-11",
+      "kind": "fix",
+      "commit": "9e77fc89181d7fe13214b0623ff7a60207c95960",
+      "zh": "修正機隊轉型新聞的配圖判斷：標題同時明列新舊機型時，可採用其中任一符合的實機照片；官方機隊資料中的品牌別名亦能用於航空公司核對，並新增衝突航司檢查，避免攝影者姓名等偶然字樣造成誤配。",
+      "en": "Fixed image matching for fleet-transition stories so a photo may depict any aircraft type explicitly named in the headline; verified brand aliases now support airline checks, with an explicit competing-carrier guard to prevent incidental words such as photographer names from causing false matches."
+    },
+    {
+      "date": "2026-09-11",
+      "kind": "fix",
+      "commit": "17d9359a87f9f96cc80029764dc1ca87c53e848a",
+      "zh": "擴充通用航空公司配圖規則：新增 Air Canada、Alaska、JetBlue、Breeze、EgyptAir 與 Frontier 的官方機隊角色資料及品牌別名，讓未指定機型的新聞優先採用 787、737 MAX、A321neo 或 A220 等具代表性的現役機型；文章明確指定的機型仍維持最高優先。",
+      "en": "Expanded shared airline image rules with official fleet roles and brand aliases for Air Canada, Alaska, JetBlue, Breeze, EgyptAir and Frontier, so stories without a named aircraft prefer representative current types such as the 787, 737 MAX, A321neo or A220 while article-specific aircraft remain the highest priority."
+    },
+    {
+      "date": "2026-09-11",
+      "kind": "fix",
       "commit": "b3fc2321e6782f6a90c4cb34353f0b9a3665959b",
       "zh": "提升 AeroTime 來源配圖恢復率：正確辨識 WebP 包裝縮圖與 IAI 等短機構署名，解析器升級後會立即重試舊的無圖快取；第三方圖庫照片仍須通過航空公司與機型證據檢查，避免把 Air Force One 等不相關照片配給其他航空公司新聞。",
       "en": "Improved AeroTime image recovery by matching WebP-wrapped thumbnails and short organisation credits such as IAI, while immediately retrying stale negative cache entries after parser upgrades; third-party library photos still require airline and aircraft evidence so unrelated images such as Air Force One are rejected."
