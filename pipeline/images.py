@@ -64,7 +64,8 @@ from image_policy import (  # noqa: E402
     image_provenance,
 )
 from requests.exceptions import RequestException
-from source_images import can_upgrade, lookup_source_photo, supported_source
+from source_images import (PARSER_VERSION as SOURCE_IMAGE_PARSER_VERSION,
+                           can_upgrade, lookup_source_photo, supported_source)
 from image_selection import (rejection_reason, prepare_image, enforce_recent,
                              image_key, stock_usage, MAX_STOCK_REUSE)
 
@@ -899,7 +900,11 @@ def main() -> int:
                     source_image = None
                 retry_due = True
                 try:
-                    retry_due = parse_iso(source_entry["next_retry_utc"]) <= now
+                    retry_due = (
+                        source_entry.get("parser_version")
+                        != SOURCE_IMAGE_PARSER_VERSION
+                        or parse_iso(source_entry["next_retry_utc"]) <= now
+                    )
                 except (KeyError, TypeError, ValueError):
                     pass
                 if not source_image and retry_due and source_lookups < lookup_budget:
@@ -917,6 +922,7 @@ def main() -> int:
                     source_entries[source_url] = {
                         "image": source_image,
                         "rejection_reason": source_reason,
+                        "parser_version": SOURCE_IMAGE_PARSER_VERSION,
                         "next_retry_utc": (now + timedelta(hours=6)).isoformat(),
                     }
                     if source_reason:

@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pipeline"))
 import images
 import source_images as source
+from image_selection import rejection_reason
 
 URL = "https://www.cna.com.tw/news/ahel/202609070138.aspx"
 PHOTO = "https://imgcdn.cna.com.tw/www/WebPhotos/1024/20260907/photo.jpg"
@@ -55,6 +56,46 @@ def test_aerotime_exact_lead_event_photo_with_credit_and_entities():
     assert photo["kind"] == "event_photo"
     assert source.supported_source({
         "sources": [{"url": AEROTIME_URL}]}) == AEROTIME_URL
+
+
+def test_aerotime_webp_resize_and_short_corporate_credit():
+    original = "https://www.aerotime.aero/images/2026/09/a330-first-flight.jpg"
+    html = f'''<meta property="og:image" content="{original}">
+    <figure class="cs-entry__post-media post-media">
+    <img src="{original.replace('.jpg', '-800x500.jpg.webp')}">
+    <figcaption>IAI</figcaption></figure>'''
+    photo = source.parse_aerotime_photo(html, AEROTIME_URL,
+                                        AEROTIME_ARTICLE)
+    assert photo["url"] == original
+    assert photo["credit"] == "IAI"
+
+
+def test_aerotime_short_generic_credit_remains_rejected():
+    html = AEROTIME_HTML.replace("Bystander video", "Photo")
+    assert source.parse_aerotime_photo(
+        html, AEROTIME_URL, AEROTIME_ARTICLE) is None
+
+
+def test_aerotime_stock_uses_source_alt_and_shared_entity_gate():
+    original = "https://www.aerotime.aero/images/2026/09/air-force-one.jpg"
+    html = f'''<meta property="og:image" content="{original}">
+    <figure class="cs-entry__post-media post-media">
+    <img src="{original.replace('.jpg', '-800x500.jpg.webp')}"
+         alt="Air Force One Boeing 747 in Qatar">
+    <figcaption>Bogac Erkan / Shutterstock.com</figcaption></figure>'''
+    article = {
+        "sources": [{"url": AEROTIME_URL}],
+        "entities": {
+            "airlines": ["Lufthansa"],
+            "aircraft_models": ["Boeing 747"],
+        },
+        "en": {"title": "Lufthansa Boeing 747 delayed"},
+    }
+    photo = source.parse_aerotime_photo(html, AEROTIME_URL, article)
+    assert photo["kind"] == "file_photo"
+    assert photo["subject"] == "Air Force One Boeing 747 in Qatar"
+    assert "Shutterstock" in photo["sourceCaption"]
+    assert rejection_reason(article, photo) == "airline-mismatch"
 
 
 def test_aerotime_rejects_unbound_or_uncredited_lead_image():
@@ -126,3 +167,28 @@ def test_failure_keeps_fallback_and_retries(tmp_path, monkeypatch):
     images.CACHE_PATH.write_text(json.dumps(cache), encoding="utf-8")
     images.main()
     assert len(calls) == 2
+
+
+def test_parser_upgrade_retries_old_negative_source_cache(tmp_path, monkeypatch):
+    path = setup_batch(tmp_path, monkeypatch)
+    images.CACHE_PATH.write_text(json.dumps({
+        "articles": {},
+        "sources": {URL: {
+            "image": None,
+            "rejection_reason": "no-event-photo",
+            "next_retry_utc": "2999-01-01T00:00:00+00:00",
+        }},
+    }), encoding="utf-8")
+    calls = []
+    monkeypatch.setattr(
+        images, "lookup_source_photo",
+        lambda article: calls.append(article) or source.parse_cna_photo(
+            HTML, URL))
+    monkeypatch.setattr(
+        images, "resolve_image",
+        lambda *args, **kwargs: (_ for _ in ()).throw(
+            AssertionError("stock lookup")))
+    images.main()
+    assert len(calls) == 1
+    assert json.loads(path.read_text(encoding="utf-8"))["articles"][0][
+        "image"]["url"] == PHOTO
