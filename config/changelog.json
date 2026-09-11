@@ -7,6 +7,13 @@
     {
       "date": "2026-09-11",
       "kind": "fix",
+      "commit": "67c2a6a26dc72a6de0a0c34292f39be40aafe8ff",
+      "zh": "補強來源圖片的機型證據：AeroTime 圖片檔名若明確對應文章已驗證的機型，可用來產生正確主體；多航司、多機型報導可採用與來源照片實際相符的其中一型，未出現在結構化實體中的機型仍會拒絕。成功恢復來源圖時也會清除舊的拒絕狀態。",
+      "en": "Strengthened aircraft evidence for source images by using an AeroTime image filename when it clearly matches a verified aircraft entity. Multi-airline, multi-aircraft stories may use the model actually shown by a bound source photo, while models absent from structured entities remain rejected; successful recovery also clears stale rejection state."
+    },
+    {
+      "date": "2026-09-11",
+      "kind": "fix",
       "commit": "46d611b94e829f4dba34b259e12d3eb54f5b225b",
       "zh": "修正多機型事件照片的主體標示：AeroTime 圖片改以來源圖說中實際匹配的機型作為顯示主體，圖說若明寫與標題不符的機型則拒絕；解析器升級後也會重新檢查既有自動來源圖。",
       "en": "Fixed subject labels for multi-aircraft event photos by using the aircraft actually identified in AeroTime's source caption, rejecting captions that explicitly name a model absent from the headline, and rechecking existing automatic source images after parser upgrades."
