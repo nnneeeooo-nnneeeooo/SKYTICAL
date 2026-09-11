@@ -976,6 +976,7 @@ def main() -> int:
                         rejection_reasons.append(f"source-photo:{source_reason}")
                 if source_image and existing_image_matches(article, source_image):
                     article["image"] = source_image
+                    article.pop("imageSelection", None)
                     entries[art_id] = {"status": "matched", "image": source_image,
                                        "checked_utc": now.isoformat()}
                     changed = True

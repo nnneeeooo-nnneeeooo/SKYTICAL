@@ -85,6 +85,25 @@ def test_aerotime_subject_uses_the_aircraft_identified_by_the_caption():
     assert photo["subject"] == "F-15E Strike Eagle"
 
 
+def test_aerotime_subject_can_use_the_source_owned_image_filename():
+    original = (
+        "https://www.aerotime.aero/images/2026/09/"
+        "Vietravel-Airlines-Airbus-A321-200-VN-A290.jpg")
+    html = f'''<meta property="og:image" content="{original}">
+    <figure class="cs-entry__post-media post-media">
+    <img src="{original.replace('.jpg', '-800x500.jpg.webp')}"
+         alt="Vietravel Airlines">
+    <figcaption>Vietravel Airlines</figcaption></figure>'''
+    article = {
+        "entities": {
+            "airlines": ["Vietravel Airlines", "Vietnam Airlines"],
+            "aircraft_models": ["A220", "A321", "A350-900", "A321-200"],
+        },
+    }
+    photo = source.parse_aerotime_photo(html, AEROTIME_URL, article)
+    assert photo["subject"] == "A321-200"
+
+
 def test_aerotime_short_generic_credit_remains_rejected():
     html = AEROTIME_HTML.replace("Bystander video", "Photo")
     assert source.parse_aerotime_photo(
@@ -169,10 +188,19 @@ def test_upgrade_stock_without_rss_image_and_idempotence(tmp_path, monkeypatch):
 
 def test_missing_image_prefers_source(tmp_path, monkeypatch):
     path = setup_batch(tmp_path, monkeypatch)
+    batch = json.loads(path.read_text(encoding="utf-8"))
+    batch["articles"][0]["imageSelection"] = {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "source-aircraft-model-unverified",
+    }
+    path.write_text(json.dumps(batch), encoding="utf-8")
     monkeypatch.setattr(images, "lookup_source_photo", lambda _: source.parse_cna_photo(HTML, URL))
     monkeypatch.setattr(images, "resolve_image", lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("stock lookup")))
     images.main()
-    assert json.loads(path.read_text(encoding="utf-8"))["articles"][0]["image"]["url"] == PHOTO
+    article = json.loads(path.read_text(encoding="utf-8"))["articles"][0]
+    assert article["image"]["url"] == PHOTO
+    assert "imageSelection" not in article
 
 
 def test_failure_keeps_fallback_and_retries(tmp_path, monkeypatch):

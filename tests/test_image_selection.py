@@ -406,6 +406,25 @@ class ImageSelectionTests(unittest.TestCase):
             "source-aircraft-model-unverified",
         )
 
+    def test_bound_event_can_use_another_verified_article_model(self):
+        url = "https://www.aerotime.aero/articles/vietravel-order"
+        a = article(
+            "Vietravel Airlines orders Airbus aircraft as Vietnam Airlines signs for A350s",
+            sources=[{"url": url}],
+            entities={
+                "airlines": ["Vietravel Airlines", "Vietnam Airlines"],
+                "aircraft_models": ["A220", "A321-200", "A350-900"],
+            },
+        )
+        im = {
+            "url": "https://www.aerotime.aero/images/vietravel-a321.jpg",
+            "link": url, "provider": "AeroTime", "kind": "event_photo",
+            "matched": "source:aerotime",
+            "sourceCaption": "Vietravel Airlines Airbus A321-200",
+            "subject": "A321-200",
+        }
+        self.assertIsNone(policy.rejection_reason(a, im))
+
     def test_url_identity_handles_resize_but_not_attachment_id(self):
         original = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Test.jpg"
         thumb = "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Test.jpg/1280px-Test.jpg?utm_source=x"
