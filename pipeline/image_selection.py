@@ -196,6 +196,11 @@ def rejection_reason(article, raw, captions=None):
         if airline and not airline_matches(
                 article, airline, im, event_evidence):
             return "source-airline-unverified"
+        caption_models = images._aircraft_types_in_text(event_evidence)
+        if (eligible_models and caption_models
+                and not any(model_matches(candidate, event_evidence)
+                            for candidate in eligible_models)):
+            return "source-aircraft-model-unverified"
         return None
     headline_model = images.find_aircraft_type({"en": {"title": head},
                                               "entities": article.get("entities") or {}})

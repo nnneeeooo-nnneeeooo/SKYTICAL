@@ -15,7 +15,7 @@ from common import USER_AGENT
 from image_captions import clean_description
 
 
-PARSER_VERSION = 2
+PARSER_VERSION = 3
 _AEROTIME_STOCK_CREDIT_RE = re.compile(
     r"Shutterstock|Wikimedia Commons|Getty Images?|Adobe Stock|"
     r"Unsplash|Pexels|Flickr", re.I)
@@ -43,6 +43,10 @@ def can_upgrade(article):
     if article.get("articleFormat") == "roundup":
         return False
     image = article.get("image")
+    if (isinstance(image, dict)
+            and image.get("provider") == "AeroTime"
+            and image.get("matched") == "source:aerotime"):
+        return True
     return not image or (
         isinstance(image, dict)
         and image.get("provider") == "Wikimedia Commons"
@@ -127,9 +131,32 @@ def _aerotime_credit(value):
     return ""
 
 
-def _aerotime_subject(article):
+def _aerotime_subject(article, image_text=""):
     """Describe an exact article-bound event photo with verified entities."""
     entities = article.get("entities") or {}
+    models = (entities.get("aircraft_models")
+              if isinstance(entities, dict) else []) or []
+    if image_text and models:
+        from image_selection import model_matches
+        matching = [
+            clean_description(str(value))
+            for value in models
+            if clean_description(str(value))
+            and model_matches(str(value), image_text)
+        ]
+        # Structured entities often contain both a full subtype and a shorter
+        # alias.  Keep the most concrete description rather than displaying
+        # both (for example, F-15E Strike Eagle instead of F-15E + F-15).
+        matching = [
+            value for value in matching
+            if not any(
+                value.casefold() != other.casefold()
+                and value.casefold() in other.casefold()
+                for other in matching
+            )
+        ]
+        if matching:
+            return " ".join(dict.fromkeys(matching))
     values = []
     for key in ("airlines", "aircraft_models", "registration_numbers"):
         group = entities.get(key) if isinstance(entities, dict) else []
@@ -156,7 +183,8 @@ def parse_aerotime_photo(html, source_url, article):
             continue
         caption_text = " ".join(caption.stripped_strings)
         credit = _aerotime_credit(caption_text)
-        article_subject = _aerotime_subject(article)
+        article_subject = _aerotime_subject(
+            article, f"{img.get('alt', '')} {caption_text}")
         is_stock = bool(_AEROTIME_STOCK_CREDIT_RE.search(caption_text))
         image_subject = clean_description(img.get("alt", ""))
         subject = image_subject if is_stock else article_subject
