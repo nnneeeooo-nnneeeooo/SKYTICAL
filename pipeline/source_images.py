@@ -15,7 +15,7 @@ from common import USER_AGENT
 from image_captions import clean_description
 
 
-PARSER_VERSION = 3
+PARSER_VERSION = 4
 _AEROTIME_STOCK_CREDIT_RE = re.compile(
     r"Shutterstock|Wikimedia Commons|Getty Images?|Adobe Stock|"
     r"Unsplash|Pexels|Flickr", re.I)
@@ -184,7 +184,7 @@ def parse_aerotime_photo(html, source_url, article):
         caption_text = " ".join(caption.stripped_strings)
         credit = _aerotime_credit(caption_text)
         article_subject = _aerotime_subject(
-            article, f"{img.get('alt', '')} {caption_text}")
+            article, f"{urlsplit(url).path} {img.get('alt', '')} {caption_text}")
         is_stock = bool(_AEROTIME_STOCK_CREDIT_RE.search(caption_text))
         image_subject = clean_description(img.get("alt", ""))
         subject = image_subject if is_stock else article_subject
