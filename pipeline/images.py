@@ -315,19 +315,13 @@ def find_airline(article: dict) -> str | None:
             if (raw_low in {en.casefold(), zh.casefold()}
                     or (len(raw) >= 2 and raw_low in zh.casefold())):
                 return en or zh or raw
+        profile = airline_visual_profile(raw)
+        if profile:
+            return str(profile.get("airline") or raw)
         return raw
 
     def aliases(name: str) -> list[str]:
-        low = name.casefold()
-        for airline in _airlines:
-            en = str(airline.get("airline_name_en") or "").strip()
-            zh = str(airline.get("airline_name_zh_tw") or "").strip()
-            if low in {en.casefold(), zh.casefold()}:
-                values = [value for value in (en, zh) if value]
-                if zh in {"星宇航空", "長榮航空", "立榮航空", "華信航空"}:
-                    values.append(zh[:-2])
-                return values
-        return [name]
+        return _airline_aliases(name)
 
     headline_parts = []
     for lang in ("zh", "en"):

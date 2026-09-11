@@ -106,7 +106,8 @@ def model_matches(model, text):
     if re.fullmatch(r"A\d{3}|7\d7", model, re.I):
         return bool(re.search(rf"(?<![a-z0-9]){re.escape(model)}(?=[\W_]|neo|F\b|$)", text, re.I))
     if model.lower() == "a330neo":
-        return bool(re.search(r"\bA330(?:neo|[- ](?:8|9)\d{2})\b", text, re.I))
+        return bool(re.search(
+            r"\bA330(?:neo|[- ](?:8|9)\d{2}(?:neo)?)\b", text, re.I))
     return False
 
 
