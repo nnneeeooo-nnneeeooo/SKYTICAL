@@ -27,8 +27,8 @@ def photo(filename, **extra):
 
 class ImageSelectionTests(unittest.TestCase):
     def test_visual_profiles_are_auditable_and_not_a_single_airline_exception(self):
-        profiles = list(images._visual_profiles.values())
-        self.assertGreaterEqual(len(profiles), 9)
+        profiles = images._visual_profile_rows
+        self.assertGreaterEqual(len(profiles), 15)
         for profile in profiles:
             with self.subTest(airline=profile.get("airline")):
                 self.assertTrue(str(profile.get("source") or "").startswith("https://"))
@@ -37,6 +37,52 @@ class ImageSelectionTests(unittest.TestCase):
                 self.assertFalse(
                     set(profile.get("flagship") or [])
                     & set(profile.get("excluded_generic") or []))
+
+    def test_visual_profile_aliases_share_the_same_verified_rules(self):
+        for alias, canonical in (
+                ("Breeze", "Breeze Airways"),
+                ("Delta", "Delta Air Lines"),
+                ("Delta Connection", "Delta Air Lines"),
+                ("JetBlue Airways", "JetBlue"),
+                ("Egypt Air", "EgyptAir"),
+                ("Frontier", "Frontier Airlines")):
+            with self.subTest(alias=alias):
+                self.assertIs(images.airline_visual_profile(alias),
+                              images.airline_visual_profile(canonical))
+
+    def test_new_profiles_choose_modern_representative_aircraft(self):
+        cases = (
+            ("Air Canada", "Boeing 787-9"),
+            ("Alaska Airlines", "Boeing 737 MAX 9"),
+            ("JetBlue", "Airbus A321neo"),
+            ("Breeze", "Airbus A220-300"),
+            ("EgyptAir", "Boeing 787-9"),
+            ("Frontier Airlines", "Airbus A321neo"),
+        )
+        for airline, expected in cases:
+            with self.subTest(airline=airline):
+                story = article(f"{airline} announces a network update",
+                                entities={"airlines": [airline]})
+                self.assertEqual(
+                    images.preferred_airline_models(story, airline)[0],
+                    expected)
+
+    def test_verified_operating_brand_alias_identifies_parent_airline(self):
+        a = article(
+            "Delta cuts four domestic routes",
+            entities={"airlines": ["Delta Air Lines"]},
+        )
+        self.assertEqual(images.find_airline(a), "Delta Air Lines")
+        self.assertIsNone(policy.rejection_reason(
+            a, photo("Delta_Connection_Embraer_E175_above_the_runway")))
+
+    def test_current_a321xlr_is_valid_american_representative_stock(self):
+        a = article(
+            "American Airlines announces ten new routes",
+            entities={"airlines": ["American Airlines"]},
+        )
+        self.assertIsNone(images.profiled_airline_stock_reason(
+            a, "American Airlines", "American Airlines Airbus A321XLR"))
 
     def test_medical_logistics_cannot_use_consumer_quadcopter(self):
         im = photo("Quadcopter_Drone_in_flight", matched="topic:drone")
@@ -56,7 +102,8 @@ class ImageSelectionTests(unittest.TestCase):
                  ("Airbus A350", "Airbus_A350-1000", True),
                  ("Gripen F", "Saab_Gripen_NG", False),
                  ("Boeing 737 MAX 7", "Boeing_737_MAX_8", False),
-                 ("F-16V", "USAF_F-16", False)]
+                 ("F-16V", "USAF_F-16", False),
+                 ("Airbus A330neo", "Delta_A330-900neo", True)]
         for model, filename, valid in cases:
             with self.subTest(model=model):
                 self.assertEqual(policy.model_matches(model, filename.replace("_", " ")), valid)
@@ -65,6 +112,61 @@ class ImageSelectionTests(unittest.TestCase):
         a = article("Saab Gripen F first flight", entities={"aircraft_models": ["Airbus A320", "Gripen F"]})
         a["en"]["body"] = ["Airbus A320 is a background comparison."]
         self.assertEqual(images.find_aircraft_type(a), "Gripen F")
+
+    def test_any_explicit_headline_model_can_illustrate_a_fleet_transition(self):
+        a = article(
+            "Breeze Airways retires its last Embraer E190 for an all-Airbus A220 fleet",
+            entities={
+                "airlines": ["Breeze Airways"],
+                "aircraft_models": ["Embraer E190", "Airbus A220-300"],
+            },
+        )
+        self.assertEqual(images.find_aircraft_type(a), "Embraer E190")
+        self.assertEqual(
+            images.headline_aircraft_types(a),
+            ["Embraer E190", "Airbus A220"],
+        )
+        self.assertIsNone(
+            policy.rejection_reason(a, photo("Breeze_Airways_Airbus_A220-300")))
+
+    def test_summary_or_body_comparison_model_does_not_authorize_an_image(self):
+        a = article(
+            "Breeze Airways retires its last Embraer E190",
+            entities={
+                "airlines": ["Breeze Airways"],
+                "aircraft_models": ["Embraer E190", "Airbus A220-300"],
+            },
+        )
+        a["en"]["summary"] = "The airline will operate an all-Airbus A220-300 fleet."
+        a["en"]["body"] = ["Airbus A220-300 replaces the retired aircraft."]
+        self.assertEqual(images.headline_aircraft_types(a), ["Embraer E190"])
+        self.assertEqual(
+            policy.rejection_reason(a, photo("Breeze_Airways_Airbus_A220-300")),
+            "aircraft-model-mismatch",
+        )
+
+    def test_verified_profile_alias_can_attest_the_same_airline(self):
+        a = article(
+            "Frontier Airlines announces new routes",
+            entities={"airlines": ["Frontier Airlines"]},
+        )
+        self.assertIn("Frontier", images._airline_aliases("Frontier Airlines"))
+        self.assertIsNone(
+            policy.rejection_reason(a, photo("Frontier_A321neo_lifting_off")))
+
+    def test_brand_alias_in_photographer_name_cannot_hide_wrong_airline(self):
+        a = article(
+            "Breeze Airways adds Airbus A220 flights",
+            entities={
+                "airlines": ["Breeze Airways"],
+                "aircraft_models": ["Airbus A220"],
+            },
+        )
+        wrong = photo("American_Airlines_Airbus_A220_by_Ceri_Breeze")
+        self.assertEqual(
+            policy.rejection_reason(a, wrong),
+            "airline-mismatch",
+        )
 
     def test_background_registration_is_not_primary(self):
         a = article("Delta Air Lines announces earnings")
@@ -182,6 +284,45 @@ class ImageSelectionTests(unittest.TestCase):
                        "captionSource": "source-image-metadata"}}
         self.assertEqual(policy.rejection_reason(a, url, cache), "airline-mismatch")
 
+    def test_source_bound_primary_headline_organization_photo_is_allowed(self):
+        source = "https://publisher.test/tsa-precheck"
+        a = article(
+            "TSA PreCheck members can clear security without flying",
+            sources=[{"url": source}],
+            entities={"organizations": ["TSA"]},
+        )
+        image = {
+            "url": "https://cdn.test/tsa-checkpoint.jpg",
+            "link": source,
+            "provider": "Publisher",
+            "kind": "file_photo",
+            "sourceCaption": "TSA screening checkpoint at New Orleans",
+        }
+        self.assertIsNone(policy.rejection_reason(a, image))
+
+    def test_source_bound_short_named_subject_must_appear_in_headline(self):
+        source = "https://publisher.test/air-force-one"
+        image = {
+            "url": "https://cdn.test/air-force-one.jpg",
+            "link": source,
+            "provider": "Publisher",
+            "kind": "file_photo",
+            "sourceCaption": "Air Force One",
+        }
+        exact = article(
+            "Emergency slide delays Air Force One departure",
+            sources=[{"url": source}],
+        )
+        indirect = article(
+            "Trump's ex-Qatari aircraft delayed by emergency slide",
+            sources=[{"url": source}],
+        )
+        self.assertIsNone(policy.rejection_reason(exact, image))
+        self.assertEqual(
+            policy.rejection_reason(indirect, image),
+            "no-primary-visual-entity",
+        )
+
     def test_caption_cache_must_bind_exact_source(self):
         a = article("Delta Air Lines news", sources=[{"url": "https://publisher.test/story"}])
         url = "https://cdn.test/photo.jpg"
@@ -241,6 +382,46 @@ class ImageSelectionTests(unittest.TestCase):
             "link": url, "provider": "AeroTime", "kind": "event_photo",
             "matched": "source:aerotime", "sourceCaption": "Bystander video",
             "subject": "Trans Air Cargo Service DC-8-73CF 9S-AJO",
+        }
+        self.assertIsNone(policy.rejection_reason(a, im))
+
+    def test_bound_event_with_an_explicit_wrong_model_is_rejected(self):
+        url = "https://www.aerotime.aero/articles/ana-e190"
+        a = article(
+            "ANA Embraer E190 enters service",
+            sources=[{"url": url}],
+            entities={
+                "airlines": ["All Nippon Airways"],
+                "aircraft_models": ["Embraer E190"],
+            },
+        )
+        im = {
+            "url": "https://www.aerotime.aero/images/2026/09/ana-787.jpeg",
+            "link": url, "provider": "AeroTime", "kind": "event_photo",
+            "matched": "source:aerotime", "sourceCaption": "ANA Boeing 787",
+            "subject": "Boeing 787",
+        }
+        self.assertEqual(
+            policy.rejection_reason(a, im),
+            "source-aircraft-model-unverified",
+        )
+
+    def test_bound_event_can_use_another_verified_article_model(self):
+        url = "https://www.aerotime.aero/articles/vietravel-order"
+        a = article(
+            "Vietravel Airlines orders Airbus aircraft as Vietnam Airlines signs for A350s",
+            sources=[{"url": url}],
+            entities={
+                "airlines": ["Vietravel Airlines", "Vietnam Airlines"],
+                "aircraft_models": ["A220", "A321-200", "A350-900"],
+            },
+        )
+        im = {
+            "url": "https://www.aerotime.aero/images/vietravel-a321.jpg",
+            "link": url, "provider": "AeroTime", "kind": "event_photo",
+            "matched": "source:aerotime",
+            "sourceCaption": "Vietravel Airlines Airbus A321-200",
+            "subject": "A321-200",
         }
         self.assertIsNone(policy.rejection_reason(a, im))
 

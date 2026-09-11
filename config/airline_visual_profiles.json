@@ -34,8 +34,9 @@
     },
     {
       "airline": "Delta Air Lines",
+      "aliases": ["Delta", "Delta Connection"],
       "flagship": ["Airbus A350-900", "Airbus A330neo"],
-      "regional": ["Airbus A321neo", "Airbus A220-300"],
+      "regional": ["Airbus A321neo", "Airbus A220-300", "Embraer E175"],
       "cargo": [],
       "future": ["Airbus A350-1000", "Boeing 787-10"],
       "excluded_generic": [],
@@ -44,13 +45,13 @@
     },
     {
       "airline": "American Airlines",
-      "flagship": ["Boeing 787-9", "Boeing 777-300ER"],
+      "flagship": ["Boeing 787-9", "Boeing 777-300ER", "Airbus A321XLR"],
       "regional": ["Airbus A321neo", "Boeing 737 MAX 8"],
       "cargo": [],
       "future": [],
       "excluded_generic": [],
-      "verified_utc": "2026-09-10T00:00:00Z",
-      "source": "https://www.aa.com/web/i18n/travel-info/experience/planes/planes.html"
+      "verified_utc": "2026-09-11T00:00:00Z",
+      "source": "https://news.aa.com/news/news-details/2025/A-suite-treat-American-Airlines-welcomes-the-Airbus-A321XLR-to-the-fleet-FLT-10/default.aspx"
     },
     {
       "airline": "Emirates",
@@ -91,6 +92,72 @@
       "excluded_generic": [],
       "verified_utc": "2026-09-10T00:00:00Z",
       "source": "https://www.qatarairways.com/en-gb/fleet.html"
+    },
+    {
+      "airline": "Air Canada",
+      "aliases": [],
+      "flagship": ["Boeing 787-9", "Boeing 777-300ER"],
+      "regional": ["Airbus A220-300", "Boeing 737 MAX 8"],
+      "cargo": ["Boeing 767 Freighter"],
+      "future": ["Boeing 787-10", "Airbus A350-1000"],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-11T00:00:00Z",
+      "source": "https://www.aircanada.com/ca/en/aco/home/about/corporate-profile.html"
+    },
+    {
+      "airline": "Alaska Airlines",
+      "aliases": [],
+      "flagship": ["Boeing 737 MAX 9", "Boeing 737-900ER"],
+      "regional": ["Boeing 737 MAX 9", "Embraer E175"],
+      "cargo": ["Boeing 737-800F", "Boeing 737-700F"],
+      "future": [],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-11T00:00:00Z",
+      "source": "https://news.alaskaair.com/current-fleet/"
+    },
+    {
+      "airline": "JetBlue",
+      "aliases": ["JetBlue Airways"],
+      "flagship": ["Airbus A321neo", "Airbus A321LR"],
+      "regional": ["Airbus A220-300", "Airbus A321neo"],
+      "cargo": [],
+      "future": [],
+      "excluded_generic": ["Embraer E190"],
+      "verified_utc": "2026-09-11T00:00:00Z",
+      "source": "https://mediaroom.jetblue.com/latest-news/press-release-details/2026/Returning-to-the-Runway-JetBlue-Debuts-Blueprint-II-on-an-Airbus-A220/default.aspx"
+    },
+    {
+      "airline": "Breeze Airways",
+      "aliases": ["Breeze"],
+      "flagship": ["Airbus A220-300"],
+      "regional": ["Airbus A220-300"],
+      "cargo": [],
+      "future": [],
+      "excluded_generic": ["Embraer E190", "Embraer E195"],
+      "verified_utc": "2026-09-11T00:00:00Z",
+      "source": "https://www.flybreeze.com/shopping/en-us/breeze-air-a"
+    },
+    {
+      "airline": "EgyptAir",
+      "aliases": ["Egypt Air"],
+      "flagship": ["Boeing 787-9", "Boeing 777-300ER"],
+      "regional": ["Airbus A321neo", "Airbus A320neo"],
+      "cargo": [],
+      "future": [],
+      "excluded_generic": ["Boeing 737-800"],
+      "verified_utc": "2026-09-11T00:00:00Z",
+      "source": "https://www.egyptair.com/en/about-egyptair/fleet/Pages/default.aspx"
+    },
+    {
+      "airline": "Frontier Airlines",
+      "aliases": ["Frontier"],
+      "flagship": ["Airbus A321neo", "Airbus A320neo"],
+      "regional": ["Airbus A320neo", "Airbus A321neo"],
+      "cargo": [],
+      "future": [],
+      "excluded_generic": [],
+      "verified_utc": "2026-09-11T00:00:00Z",
+      "source": "https://ir.flyfrontier.com/financials/quarterly-results/default.aspx"
     }
   ]
 }
