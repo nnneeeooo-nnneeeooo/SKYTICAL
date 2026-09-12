@@ -2,8 +2,29 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-09-11",
+  "updatedThrough": "2026-09-12",
   "entries": [
+    {
+      "date": "2026-09-12",
+      "kind": "design",
+      "commit": "89bf7125d9ba7bf3919ac7eba8c7edeb767e8094",
+      "zh": "將公開介面、歷史文章、圖片署名與專案連結中的 AVWIRE 統一改為 SKYTICAL，並更新舊版資產網址。",
+      "en": "Unified the public interface, historical articles, image credits and project links under SKYTICAL, while updating legacy asset URLs."
+    },
+    {
+      "date": "2026-09-12",
+      "kind": "fix",
+      "commit": "5f29896586be218c4b732454a345417d5b62e845",
+      "zh": "修正 iPad 直式首頁偶發採用桌面版排列的問題，固定先顯示頭條，再顯示即時快訊與來源狀態，並同步調整導覽列斷點。",
+      "en": "Fixed an iPad portrait layout issue that could apply desktop ordering, keeping the lead story before the live ticker and source status while aligning the navigation breakpoint."
+    },
+    {
+      "date": "2026-09-12",
+      "kind": "fix",
+      "commit": "e8e1f7b7800055d0fa3f466c022dc8a8db5fbdab",
+      "zh": "修正搜尋建議送出後可能沒有結果的問題：空白搜尋會正確套用目前建議詞，嚴格查詢也支援一個建議詞片段的同義表述，並擴充中英文建議詞回歸測試。",
+      "en": "Fixed suggested searches that could return no results by applying the selected suggestion to empty searches, allowing one synonymous fragment in strict matching, and expanding bilingual suggestion regression coverage."
+    },
     {
       "date": "2026-09-11",
       "kind": "fix",
