@@ -21,8 +21,8 @@ def main() -> None:
     assert raw["repository"] == build._CHANGELOG_REPOSITORY \
         == "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL"
     assert raw["historyStart"] == "2026-07-26"
-    assert raw["updatedThrough"] == "2026-09-11"
-    assert len(raw["entries"]) == 128
+    assert raw["updatedThrough"] == "2026-09-12"
+    assert len(raw["entries"]) == 131
 
     historical = [row["commit"] for row in raw["entries"]
                   if row["commit"] is not None]
@@ -56,7 +56,7 @@ def main() -> None:
         raw, "zh", build.L["zh"]["changeKinds"])
     en = build.changelog_view(
         raw, "en", build.L["en"]["changeKinds"])
-    assert zh["count"] == en["count"] == 128
+    assert zh["count"] == en["count"] == 131
     assert [group["date"] for group in zh["groups"]] \
         == sorted(set(dates), reverse=True)
     assert zh["groups"][0]["entries"][0]["title"] \
@@ -112,7 +112,7 @@ def main() -> None:
         assert f'href="{expected_path}"' in html
         assert t["footerChangelog"] in html
         assert t["changeNotice"] in html
-        assert len(re.findall(r'class="changelog-entry"', html)) == 128
+        assert len(re.findall(r'class="changelog-entry"', html)) == 131
         assert "javascript:alert" not in html
 
     print("test_changelog: OK")
