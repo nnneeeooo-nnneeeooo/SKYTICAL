@@ -544,7 +544,7 @@ def _pre(x):
     return {"t": "pre", "x": x}
 
 
-_REPO_TREE_ZH = """avwire/
+_REPO_TREE_ZH = """SKYTICAL/
 ├─ .github/workflows/       # 排程與自動化工作流程
 ├─ pipeline/
 │  ├─ fetch.py              # RSS、API 與來源擷取
@@ -555,7 +555,7 @@ _REPO_TREE_ZH = """avwire/
 ├─ data/                    # 處理狀態與公開資料
 └─ site/                    # GitHub Pages 網站"""
 
-_REPO_TREE_EN = """avwire/
+_REPO_TREE_EN = """SKYTICAL/
 ├─ .github/workflows/       # schedules & automation
 ├─ pipeline/
 │  ├─ fetch.py              # RSS / API source fetching
@@ -3648,7 +3648,7 @@ def main() -> int:
         ])
         ctx.update(policy=policy,
                    contact_url=("https://github.com/nnneeeooo-nnneeeooo/"
-                                "avwire/issues/new"))
+                                "SKYTICAL/issues/new"))
         render(env, "editorial-policy.html",
                rel_path(lang, "editorial-policy/index.html"), ctx)
         pages += 1

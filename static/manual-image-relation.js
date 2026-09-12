@@ -40,7 +40,7 @@
     const article = Array.isArray(payload?.articles)
       ? payload.articles[0] : null;
     const image = article?.image;
-    if (!image || image.provider !== "AVWIRE manual upload") return bodyText;
+    if (!image || image.provider !== "SKYTICAL manual upload") return bodyText;
 
     const directlyRelated = toggle.checked;
     image.manualDirectRelation = directlyRelated;

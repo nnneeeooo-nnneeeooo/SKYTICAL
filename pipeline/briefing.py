@@ -811,7 +811,7 @@ def maybe_llm_intro(briefing: dict, sections: dict,
                     "groupId": str(briefing.get("briefing_id") or "")[:160],
                     "eventId": None,
                     "sourceCount": total,
-                    "primarySource": "AVWIRE verified articles",
+                    "primarySource": "SKYTICAL verified articles",
                     "result": "published",
                     "articleId": None,
                     "finalStatus": (

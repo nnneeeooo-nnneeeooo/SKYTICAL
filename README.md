@@ -18,7 +18,7 @@ GitHub Pages — with every original source credited at the end of each article.
 ## 架構
 
 ```
-avwire/
+SKYTICAL/
 ├─ .github/workflows/hourly.yml   # cron: 0 * * * * + workflow_dispatch
 ├─ pipeline/
 │  ├─ common.py     # 共用設定與來源註冊表
@@ -110,6 +110,8 @@ python -m http.server -d site 8000
 | `AEROAPI_KEY` | — | FlightAware AeroAPI（選用統計） |
 | `AVWIRE_BASE_PATH` | 空字串 | 站台子路徑；正式自訂網域使用根路徑 |
 | `AVWIRE_SITE_ORIGIN` | `https://skytical.tech` | canonical、hreflang、sitemap 與 JSON-LD 的公開站台來源 |
+
+> 相容性說明：`AVWIRE_*` 是既有部署使用的環境變數前綴，暫時保留以相容 GitHub Secrets／Variables；網站公開品牌與介面均統一使用 SKYTICAL。
 
 ## 稀有民航機偵測（預設關閉）
 

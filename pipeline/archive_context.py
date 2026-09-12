@@ -1,4 +1,4 @@
-"""Deterministic retrieval of verified historical context for AVWIRE.
+"""Deterministic retrieval of verified historical context for SKYTICAL.
 
 The archive is the already-published ``data/articles/*.json`` collection.
 This module never calls a network service, embedding model or LLM.  It

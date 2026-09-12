@@ -48,7 +48,7 @@ jobs:
 
       - name: Commit state (only when changed)
         run: |
-          git config user.name "avwire-bot"
+          git config user.name "skytical-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/flightwatch
           if git diff --cached --quiet; then

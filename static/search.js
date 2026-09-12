@@ -1,4 +1,4 @@
-/* AVWIRE static full-text news search. The build expands configured aliases
+/* SKYTICAL static full-text news search. The build expands configured aliases
    into each record, so official names and common short names are equivalent. */
 (function () {
   "use strict";
