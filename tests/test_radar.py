@@ -109,9 +109,14 @@ def main() -> None:
         iata_name_match = re.search(
             r'<script id="radar-airline-iata-names" '
             r'type="application/json">(.*?)</script>', page, re.DOTALL)
-        assert icao_name_match and iata_name_match
+        alias_match = re.search(
+            r'<script id="radar-airline-iata-aliases" '
+            r'type="application/json">(.*?)</script>', page, re.DOTALL)
+        assert icao_name_match and iata_name_match and alias_match
         icao_names = json.loads(icao_name_match.group(1))
         iata_names = json.loads(iata_name_match.group(1))
+        iata_aliases = json.loads(alias_match.group(1))
+        assert iata_aliases["9S"] == "9C"
         expected_names = {
             "ABL": ("BX", "釜山航空", "Air Busan"),
             "AHK": ("LD", "香港華民航空", "Air Hong Kong"),
@@ -171,9 +176,17 @@ def main() -> None:
         'const airlineIataNames = parseJson("radar-airline-iata-names", {})'
         in js
     )
+    assert (
+        'const airlineIataAliases = parseJson("radar-airline-iata-aliases", {})'
+        in js
+    )
+    assert "function canonicalizeIataPrefix(value)" in js
+    assert "function canonicalizeIataCallsign(value)" in js
+    assert "canonicalizeIataCallsign(row.route.callsignIata)" in js
     assert "function displayAirline(row)" in js
     assert "const iataCandidates = [" in js
-    assert "configuredIata, rawIata" in js
+    assert "const aliasIata = canonicalizeIataPrefix(rawIata)" in js
+    assert "aliasIata, rawIata" in js
     assert "for (const iataPrefix of iataCandidates)" in js
     assert "const airlineName = airlineIataNames[iataPrefix]" in js
     assert "if (airlineName) return airlineName" in js
