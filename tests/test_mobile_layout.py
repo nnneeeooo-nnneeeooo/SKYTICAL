@@ -83,7 +83,8 @@ def main() -> None:
         "China Airlines Adjusts Two Taoyuan-Fukuoka Flights After Airport Restrictions")
     assert len(en_short.split()) <= 14 and "…" not in en_short
 
-    assert "@media (max-width: 900px)" in css
+    assert css.count("@media (max-width: 1100px)") == 2
+    assert "@media (max-width: 900px)" not in css
     assert "@media (max-width: 720px)" in css
     assert ".page { width: 100%; overflow-x: clip; }" in css
     assert "aspect-ratio: 50 / 11; overflow: hidden;" in css
@@ -117,7 +118,7 @@ def main() -> None:
     assert ".marquee-track .ticker-pass:nth-child(2) { display: none; }" in css
     assert 'setAttribute("aria-expanded"' in script
     assert 'event.key === "Escape"' in script
-    assert 'matchMedia("(min-width: 901px)")' in script
+    assert 'matchMedia("(min-width: 1101px)")' in script
     assert 'matches ? 32 : 52' in script
     assert 'style.setProperty("--ticker-duration"' in script
 

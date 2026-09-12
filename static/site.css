@@ -570,9 +570,9 @@ a.flash-row:hover { color: inherit; }
   .changelog-group { grid-template-columns: 96px minmax(0, 1fr); }
 }
 
-/* Tablet portrait (including the 820px-wide iPad Air): use the compact
-   navigation before the full desktop nav starts scrolling or squeezing. */
-@media (max-width: 900px) {
+/* Tablet portrait, including iPad desktop-site mode with its wider layout
+   viewport: keep the headline first and use compact navigation. */
+@media (max-width: 1100px) {
   .page { width: 100%; overflow-x: clip; }
   .brand-row {
     padding: 9px 16px; gap: 12px; flex-wrap: wrap;
