@@ -183,7 +183,7 @@ L = {
         "radarLoading": "正在取得最新 ADS-B 觀測資料…",
         "radarMapLabel": "台灣周邊民航近即時觀測地圖",
         "radarList": "目前航機",
-        "radarNotice": "本頁不是航管雷達，資料可能延遲、缺漏或錯誤，不得用於導航、飛航操作或緊急判斷。ICAO／IATA 航班代碼不一定等同旅客票面班號。",
+        "radarNotice": "本頁不是航管雷達，資料可能延遲、缺漏或錯誤，不得用於導航、飛航操作或緊急判斷。ICAO／IATA 航班代碼不一定等同旅客票面班號；已知的歷史別名會在 IATA 顯示模式正規化為現行代碼。",
         "radarPrivacy": "為保障安全與隱私，來源標記為軍事、PIA、LADD、緊急狀態及位置過期的資料不會顯示。",
         "radarSource": "航機位置：ADSB.lol 開放資料（ODbL）；航班代碼與航線：ADSBdb；地圖：OpenStreetMap。",
         # daily briefings
@@ -315,7 +315,7 @@ L = {
         "radarLoading": "Loading the latest ADS-B observations…",
         "radarMapLabel": "Near-live civil-aircraft observations around Taiwan",
         "radarList": "Aircraft now",
-        "radarNotice": "This is not air traffic control radar. Data may be delayed, incomplete or wrong and must not be used for navigation, flight operations or emergencies. ICAO/IATA flight codes may differ from a passenger flight number.",
+        "radarNotice": "This is not air traffic control radar. Data may be delayed, incomplete or wrong and must not be used for navigation, flight operations or emergencies. ICAO/IATA flight codes may differ from a passenger flight number; known historical aliases are canonicalized to the current code in IATA view.",
         "radarPrivacy": "For safety and privacy, source-tagged military, PIA, LADD, emergency-state and stale-position records are not shown.",
         "radarSource": "Aircraft positions: ADSB.lol open data (ODbL); flight codes and routes: ADSBdb; map: OpenStreetMap.",
         # daily briefings
@@ -3534,6 +3534,14 @@ def main() -> int:
             if isinstance(row, dict) and row.get("active", True)
                and row.get("iata_code")
         }
+        airline_iata_aliases = {
+            str(alias).strip().upper(): str(row.get("iata_code") or "").upper()
+            for row in (airline_cfg.get("airlines") or [])
+            if isinstance(row, dict) and row.get("active", True)
+               and row.get("iata_code")
+            for alias in (row.get("legacy_iata_codes") or [])
+            if str(alias).strip()
+        }
         type_cfg = load_json(
             Path(__file__).resolve().parent.parent
             / "config" / "aircraft_types.json", {})
@@ -3565,6 +3573,7 @@ def main() -> int:
             airline_names=airline_names,
             airline_iata_codes=airline_iata_codes,
             airline_iata_names=airline_iata_names,
+            airline_iata_aliases=airline_iata_aliases,
             aircraft_types=aircraft_types,
             radar_airports=radar_airports,
         )

@@ -55,6 +55,7 @@
   const airlines = parseJson("radar-airlines", {});
   const airlineIataCodes = parseJson("radar-airline-codes", {});
   const airlineIataNames = parseJson("radar-airline-iata-names", {});
+  const airlineIataAliases = parseJson("radar-airline-iata-aliases", {});
   const aircraftTypes = parseJson("radar-types", {});
   const airports = parseJson("radar-airports", []);
   const refreshMs = Math.max(Number(root.dataset.refreshMs) || 300000, 300000);
@@ -182,9 +183,27 @@
     };
   }
 
+  function canonicalizeIataPrefix(value) {
+    const prefix = clean(value, 3).toUpperCase();
+    return clean(airlineIataAliases[prefix] || prefix, 3).toUpperCase();
+  }
+
+  function canonicalizeIataCallsign(value) {
+    const callsign = clean(value, 16).toUpperCase();
+    const match = /^([A-Z0-9]{2})([0-9][A-Z0-9]*)$/.exec(callsign);
+    if (!match) return callsign;
+    return canonicalizeIataPrefix(match[1]) + match[2];
+  }
+
   function displayCallsign(row) {
     if (callsignMode === "iata") {
-      if (row.route && row.route.callsignIata) return row.route.callsignIata;
+      if (row.route && row.route.callsignIata) {
+        return canonicalizeIataCallsign(row.route.callsignIata);
+      }
+      if (/^[A-Z0-9]{2}[0-9]/.test(row.callsign)) {
+        const canonical = canonicalizeIataCallsign(row.callsign);
+        if (canonical !== row.callsign) return canonical;
+      }
       const iataPrefix = clean(airlineIataCodes[row.operator], 3).toUpperCase();
       if (iataPrefix && row.callsign.startsWith(row.operator)) {
         return `${iataPrefix}${row.callsign.slice(row.operator.length)}`;
@@ -216,8 +235,10 @@
     const configuredIata = clean(airlineIataCodes[row.operator], 3).toUpperCase();
     const rawIata = /^[A-Z0-9]{2}[0-9]/.test(row.callsign) ?
       row.callsign.slice(0, 2) : "";
+    const aliasIata = canonicalizeIataPrefix(rawIata);
     const iataCandidates = [
-      clean(routeCallsign, 16).slice(0, 2), configuredIata, rawIata,
+      clean(routeCallsign, 16).slice(0, 2), configuredIata,
+      aliasIata, rawIata,
     ];
     for (const iataPrefix of iataCandidates) {
       const airlineName = airlineIataNames[iataPrefix];
