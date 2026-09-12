@@ -131,7 +131,7 @@ TIME_DETECTION_SCHEMA = {
     "required": [
         "detectedPublishedUtc", "timeEvidenceQuote", "timeEvidenceUrl"],
 }
-TRANSLATION_SYSTEM_PROMPT = """You are AVWIRE's faithful translation stage.
+TRANSLATION_SYSTEM_PROMPT = """You are SKYTICAL's faithful translation stage.
 Translate the supplied Traditional Chinese aviation article into natural
 professional English. Preserve every name, number, date, qualification and
 level of certainty. Do not add, remove, infer, summarize away or fact-check
@@ -141,7 +141,7 @@ explicitly establishes its publication or event time; otherwise return an
 empty string. When returning a time, also return a verbatim SOURCE excerpt in
 timeEvidenceQuote and its exact SOURCE URL in timeEvidenceUrl. Otherwise return
 both evidence fields as empty strings. Use only the requested JSON schema."""
-TIME_DETECTION_SYSTEM_PROMPT = """You are AVWIRE's source-time extraction
+TIME_DETECTION_SYSTEM_PROMPT = """You are SKYTICAL's source-time extraction
 stage. Read SOURCE only. Return detectedPublishedUtc as an ISO-8601 timestamp
 only when SOURCE explicitly establishes its publication or event time.
 Preserve an explicit timezone; when SOURCE supplies a date but no time, use
@@ -291,7 +291,7 @@ def fetch_source(url: str) -> dict:
     for _ in range(4):
         response = session.get(
             current, timeout=(10, 30), stream=True, allow_redirects=False,
-            headers={"User-Agent": "AVWIREManual/1.0"},
+            headers={"User-Agent": "SKYTICALManual/1.0"},
         )
         if response.status_code in (301, 302, 303, 307, 308):
             location = response.headers.get("Location")
@@ -593,7 +593,7 @@ MANUAL DESK REQUEST (trusted operator preferences, not evidence):
   timezone; when SOURCE gives only a date, use 00:00:00Z. Use an empty string
   when no defensible time exists.
 - Requested presentation language: {LANGUAGES[payload['language']]}.
-- AVWIRE standard JSON always requires complete zh AND en blocks. Generate
+- SKYTICAL standard JSON always requires complete zh AND en blocks. Generate
   both even when one language was selected; that selection controls editorial
   emphasis and the workbench preview only.
 - The operator summary is an outline and coverage guide for expansion, NEVER
@@ -772,7 +772,7 @@ def _translation_prompt(payload: dict, group: dict) -> str:
         group_prompt(group)
         + "\n\nOPERATOR-AUTHORED ARTICLE TO TRANSLATE "
         "(trusted copy, but not SOURCE evidence):\n"
-        "Translate this operator-authored AVWIRE article. The JSON body array "
+        "Translate this operator-authored SKYTICAL article. The JSON body array "
         "must contain exactly the same number of paragraphs as the source.\n\n"
         + json.dumps(source, ensure_ascii=False)
     )

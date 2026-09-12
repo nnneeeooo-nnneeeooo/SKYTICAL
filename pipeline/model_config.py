@@ -1,4 +1,4 @@
-"""Shared AVWIRE model priority configuration.
+"""Shared SKYTICAL model priority configuration.
 
 The first entry is the default writer. The same order drives provider
 fallback and model ordering on the private usage dashboard.

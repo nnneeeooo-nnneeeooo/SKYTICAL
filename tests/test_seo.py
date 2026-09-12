@@ -224,7 +224,7 @@ def main() -> None:
     policy = (ROOT / "site" / "editorial-policy" / "index.html").read_text(
         encoding="utf-8")
     assert "編輯、更正與聯絡政策" in policy
-    assert "avwire/issues/new" in policy
+    assert "SKYTICAL/issues/new" in policy
     assert 'href="/editorial-policy/"' in article
 
     print("test_seo: OK")

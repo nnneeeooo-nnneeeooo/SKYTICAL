@@ -1,4 +1,4 @@
-"""Offline regression checks for AVWIRE's shared mobile layout."""
+"""Offline regression checks for SKYTICAL's shared mobile layout."""
 from __future__ import annotations
 
 import re

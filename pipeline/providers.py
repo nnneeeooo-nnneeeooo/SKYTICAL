@@ -35,7 +35,7 @@ may appear multiple times with different models, e.g.:
     gemini,
     nvidia:qwen/qwen3.5-397b-a17b
 
-A bare name uses the platform's AVWIRE_*_MODEL env var / default.
+A bare name uses the platform's legacy AVWIRE_*_MODEL env var / default.
 """
 from __future__ import annotations
 
@@ -1004,7 +1004,7 @@ class OpenRouterProvider(NvidiaProvider):
                     "Content-Type": "application/json",
                     "HTTP-Referer":
                         "https://skytical.tech/",
-                    "X-Title": "AVWIRE",
+                    "X-Title": "SKYTICAL",
                 },
             )
             return response
@@ -1066,7 +1066,7 @@ class OpenRouterProvider(NvidiaProvider):
 class OpenCodeProvider(NvidiaProvider):
     """OpenCode Console service-account gateway with native protocol routing.
 
-    Console exposes different provider-compatible paths.  Keeping one AVWIRE
+    Console exposes different provider-compatible paths.  Keeping one SKYTICAL
     provider name means an invalid/empty service account disables the whole
     gateway for the run, while model-local failures still fall through to the
     next configured OpenCode model.
@@ -1179,7 +1179,7 @@ class OpenCodeProvider(NvidiaProvider):
             "reasoning": {"effort": self._effort(repair)},
             "text": {"format": {
                 "type": "json_schema",
-                "name": "avwire_draft",
+                "name": "skytical_draft",
                 "schema": schema,
             }},
         }
