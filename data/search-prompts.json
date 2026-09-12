@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-09-12T17:10Z",
+  "generatedUtc": "2026-09-12T17:47Z",
   "targetDateTpe": "2026-09-13",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "wechat:Deepseek-v4-flash",
+  "provider": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
   "sourceArticleIds": [
-    "a-20260912-1633-air-canada-launches-9-hour-transatlantic",
+    "a-20260912-1714-uk-gives-nats-one-week-to-explain-outage",
     "a-20260912-1451-bombardier-global-8000-cleared-by-caa-fo",
-    "a-20260912-1316-us-air-force-awards-highest-safety-troph",
-    "a-20260912-1316-faa-proposes-replacing-53-year-overland",
     "a-20260912-1316-ryanair-boeing-737-max-scrapes-wingtip-a",
-    "a-20260912-1316-la-compagnie-plans-all-business-class-fl"
+    "a-20260912-1316-la-compagnie-plans-all-business-class-fl",
+    "a-20260912-0949-united-airlines-awaits-boeing-737-max-10",
+    "a-20260912-0949-avianca-signs-sale-and-leaseback-deal-fo"
   ],
   "prompts": {
     "zh": [
-      "加拿大航空跨大西洋新航線",
-      "龐巴迪Global 8000倫敦城市機場",
-      "美國空軍F-22飛行員獎項",
-      "FAA超音速飛行標準",
-      "瑞安航空737 MAX都柏林降落",
-      "La Compagnie紐約杜塞道夫航線"
+      "NATS 系統故障查詢",
+      "Global 8000 倫敦城市機場",
+      "Ryanair 737 MAX 都柏林翼尖",
+      "La Compagnie 紐約杜塞道夫全商務",
+      "United 737 MAX 10 交付",
+      "Avianca A320neo 租賃"
     ],
     "en": [
-      "Air Canada transatlantic route",
-      "Bombardier Global 8000 London City Airport",
-      "US Air Force F-22 pilot award",
-      "FAA supersonic flight standard",
-      "Ryanair 737 MAX Dublin landing",
-      "La Compagnie Newark Düsseldorf route"
+      "NATS outage explanation request",
+      "Global 8000 London City Airport operations",
+      "Ryanair 737 MAX Dublin wingtip incident",
+      "La Compagnie New York Düsseldorf all‑business",
+      "United 737 MAX 10 delivery status",
+      "Avianca A320neo leaseback with BOC Aviation"
     ]
   }
 }
