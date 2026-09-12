@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -30,6 +31,32 @@ def sample_article(title: str):
         },
         "sources": [{"name": "Test source", "url": "https://example.com/news"}],
     })
+
+
+def normalize_search_text(value: str) -> str:
+    value = unicodedata.normalize("NFKC", str(value or "")).lower()
+    return re.sub(r"[^\w]+", " ", value).strip()
+
+
+def suggestion_has_result(prompt: str, items: list[dict]) -> bool:
+    terms = normalize_search_text(prompt).split()
+    minimum_matches = len(terms) if len(terms) < 3 else len(terms) - 1
+    for item in items:
+        values = [
+            item.get("id", ""), item.get("source", ""),
+            item.get("date", ""), item.get("published", ""),
+            item.get("search", ""),
+        ]
+        for field in ("title", "summary", "category"):
+            localized = item.get(field, {})
+            if isinstance(localized, dict):
+                values.extend((localized.get("zh", ""), localized.get("en", "")))
+            else:
+                values.append(localized)
+        haystack = normalize_search_text(" ".join(values))
+        if sum(term in haystack for term in terms) >= minimum_matches:
+            return True
+    return False
 
 
 def main() -> None:
@@ -92,6 +119,10 @@ def main() -> None:
     assert zh_placeholders == list(build.header_search_placeholders("zh"))
     assert en_placeholders == list(build.header_search_placeholders("en"))
     assert len(zh_placeholders) == len(en_placeholders) == 6
+    assert all(suggestion_has_result(prompt, payload["items"])
+               for prompt in zh_placeholders + en_placeholders)
+    assert suggestion_has_result(
+        "亞馬遜空運 貨機 邁阿密 衝出跑道", payload["items"])
     assert zh.count('id="news-search-form"') == 1
     assert 'class="header-search-form"' in home
     assert 'class="header-search-form"' in article
@@ -117,7 +148,8 @@ def main() -> None:
     assert ".header-search-submit" in css
     assert "航空公司正式名稱與常用簡稱可互相查找" in zh
     assert "Official airline names and common short names are interchangeable" in en
-    assert "terms.every" in script
+    assert "function matchingRecords" in script
+    assert "terms.length - 1" in script
     assert "function loadIndex()" in script
     assert "function recordSearchText" in script
     assert "if (input.value.trim()) runSearch();" in script
@@ -145,6 +177,10 @@ def main() -> None:
     assert "Search|Explore|Find|Look\\s+up|Show\\s+me" in app_script
     assert "if (headerSearchInput.value.trim()) return" in app_script
     assert "headerSearchInput.value = suggestedQuery" in app_script
+    assert 'document.getElementById("news-search-app")' in app_script
+    assert "event.preventDefault()" in app_script
+    assert 'searchUrl.searchParams.set(headerSearchInput.name || "q", suggestedQuery)' in app_script
+    assert "window.location.assign(searchUrl.toString())" in app_script
     assert 'headerSearchInput.value = ""' in app_script
     assert 'new Event("input", { bubbles: true })' in app_script
 

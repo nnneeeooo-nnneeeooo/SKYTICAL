@@ -65,7 +65,7 @@
     } catch (e) { /* keep the server-rendered fallback */ }
   }
   if (headerSearchForm && headerSearchInput) {
-    headerSearchForm.addEventListener("submit", function () {
+    headerSearchForm.addEventListener("submit", function (event) {
       if (headerSearchInput.value.trim()) return;
       var suggestedQuery = queryFromSearchPlaceholder(
         headerSearchInput.placeholder
@@ -73,6 +73,15 @@
       if (!suggestedQuery) return;
       headerSearchInput.value = suggestedQuery;
       headerSearchInput.dispatchEvent(new Event("input", { bubbles: true }));
+      if (document.getElementById("news-search-app")) return;
+
+      /* Build the navigation URL explicitly.  Some browsers snapshot the
+         form controls before this submit handler fills the suggestion, which
+         otherwise opens the search page without q. */
+      event.preventDefault();
+      var searchUrl = new URL(headerSearchForm.action, window.location.href);
+      searchUrl.searchParams.set(headerSearchInput.name || "q", suggestedQuery);
+      window.location.assign(searchUrl.toString());
     });
   }
   if (headerSearchInput && headerSearchClear) {
