@@ -1,4 +1,4 @@
-"""Offline regression checks for AVWIRE's static full-text news search."""
+"""Offline regression checks for SKYTICAL's static full-text news search."""
 from __future__ import annotations
 
 import json

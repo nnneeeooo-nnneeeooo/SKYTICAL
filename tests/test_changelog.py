@@ -62,7 +62,7 @@ def main() -> None:
     assert zh["groups"][0]["entries"][0]["title"] \
         .startswith("補強來源圖片的機型證據")
     assert en["groups"][-1]["entries"][-1]["title"].startswith(
-        "Created AVWIRE")
+        "Created SKYTICAL")
     linked = [entry for group in en["groups"] for entry in group["entries"]
               if entry["commit"]]
     assert all(entry["url"] ==

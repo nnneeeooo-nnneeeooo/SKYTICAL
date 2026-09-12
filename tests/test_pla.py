@@ -87,7 +87,7 @@ group = {"id": "g1", "items": [{
     "publishedUtc": "2026-07-27T00:10Z"}]}
 n = pla_series.enrich_groups([group], NOW)
 check("PLA group gains the database context item",
-      n == 1 and group["items"][-1]["source"] == "AVWIRE 資料庫"
+      n == 1 and group["items"][-1]["source"] == "SKYTICAL 資料庫"
       and "近 30 日" in group["items"][-1]["summary"])
 check("re-enrichment is skipped",
       pla_series.enrich_groups([group], NOW) == 0)
@@ -102,7 +102,7 @@ check("comparison claims quoting the database block machine-verify",
       len(write.verify_facts(draft, group, "test")) == 1)
 check("database item is never a footer source (no url)",
       write.build_sources(group["items"]) and all(
-          "AVWIRE" not in s["name"]
+          "SKYTICAL" not in s["name"]
           for s in write.build_sources(group["items"])))
 
 print(f"\n{CHECKS} checks passed, {FAILED} failed"

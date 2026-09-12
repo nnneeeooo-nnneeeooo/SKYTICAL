@@ -1,4 +1,4 @@
-"""Shared helpers and configuration for the AVWIRE pipeline.
+"""Shared helpers and configuration for the SKYTICAL pipeline.
 
 Every pipeline stage (fetch -> dedupe -> write -> build) imports from here.
 Data contracts between stages are documented in pipeline/CONTRACTS.md.
@@ -32,7 +32,7 @@ SITE_ORIGIN = (os.environ.get("AVWIRE_SITE_ORIGIN")
                or "https://skytical.tech").rstrip("/")
 
 USER_AGENT = (
-    "AVWIREBot/1.0 (automated aviation news aggregator; "
+    "SKYTICALBot/1.0 (automated aviation news aggregator; "
     "+https://github.com/nnneeeooo-nnneeeooo/SKYTICAL) requests"
 )
 

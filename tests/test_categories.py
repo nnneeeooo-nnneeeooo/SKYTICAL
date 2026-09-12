@@ -1,4 +1,4 @@
-"""Offline tests for AVWIRE's editorial category contract."""
+"""Offline tests for SKYTICAL's editorial category contract."""
 from __future__ import annotations
 
 import sys
