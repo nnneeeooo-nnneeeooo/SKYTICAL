@@ -113,9 +113,12 @@
     return card;
   }
 
-  function scoreRecord(record, normalizedQuery, terms) {
+  function scoreRecord(record, normalizedQuery, terms, minimumMatches) {
     var haystack = recordSearchText(record);
-    if (!terms.every(function (term) { return haystack.indexOf(term) !== -1; })) {
+    var matchedTerms = terms.filter(function (term) {
+      return haystack.indexOf(term) !== -1;
+    });
+    if (matchedTerms.length < minimumMatches) {
       return -1;
     }
     var title = normalize(localized(record, "title"));
@@ -123,11 +126,22 @@
     var score = 1;
     if (title === normalizedQuery) score += 200;
     else if (title.indexOf(normalizedQuery) !== -1) score += 100;
-    terms.forEach(function (term) {
+    matchedTerms.forEach(function (term) {
       if (title.indexOf(term) !== -1) score += 20;
       if (summary.indexOf(term) !== -1) score += 6;
     });
     return score;
+  }
+
+  function matchingRecords(normalizedQuery, terms, minimumMatches) {
+    return records.map(function (record) {
+      return {
+        record: record,
+        score: scoreRecord(record, normalizedQuery, terms, minimumMatches)
+      };
+    }).filter(function (row) {
+      return row.score >= 0;
+    });
   }
 
   function runSearch() {
@@ -148,11 +162,14 @@
 
     var normalizedQuery = normalize(query);
     var terms = normalizedQuery.split(/\s+/).filter(Boolean);
-    var matches = records.map(function (record) {
-      return { record: record, score: scoreRecord(record, normalizedQuery, terms) };
-    }).filter(function (row) {
-      return row.score >= 0;
-    }).sort(function (left, right) {
+    var matches = matchingRecords(normalizedQuery, terms, terms.length);
+    if (!matches.length && terms.length >= 3) {
+      /* Daily suggestions may paraphrase one phrase from the source title.
+         Keep normal searches strict, then allow one unmatched term only when
+         the strict pass produced nothing. */
+      matches = matchingRecords(normalizedQuery, terms, terms.length - 1);
+    }
+    matches.sort(function (left, right) {
       if (right.score !== left.score) return right.score - left.score;
       return String(right.record.published || "").localeCompare(String(left.record.published || ""));
     });
