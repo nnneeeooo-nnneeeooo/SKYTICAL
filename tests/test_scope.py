@@ -1,4 +1,4 @@
-"""Regression tests for AVWIRE subject scope and non-destructive archiving."""
+"""Regression tests for SKYTICAL subject scope and non-destructive archiving."""
 from __future__ import annotations
 
 import json

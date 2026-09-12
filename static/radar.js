@@ -1,4 +1,4 @@
-/* AVWIRE Taiwan civil-flight radar.
+/* SKYTICAL Taiwan civil-flight radar.
  *
  * The browser reads a same-origin, server-filtered ADSB.lol snapshot. GitHub
  * Actions replaces the snapshot regularly; stale snapshots fail closed.

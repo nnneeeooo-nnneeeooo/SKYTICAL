@@ -450,7 +450,7 @@
     conversation.forEach(row => {
       const line = document.createElement("p");
       line.className = `chat-line ${row.role}`;
-      line.textContent = `${row.role === "user" ? "你" : "AVWIRE"}：${row.text}`;
+      line.textContent = `${row.role === "user" ? "你" : "SKYTICAL"}：${row.text}`;
       els["chat-history"].append(line);
     });
     els["chat-history"].scrollTop = els["chat-history"].scrollHeight;
@@ -783,7 +783,7 @@
       primarySource: sources[0]?.name || "Manual source",
       image: imageUrls[0] ? {
         url: imageUrls[0],
-        provider: "AVWIRE manual upload",
+        provider: "SKYTICAL manual upload",
         subject: manualImageSubject(),
         kind: "file_photo",
       } : null,
@@ -1494,7 +1494,7 @@
         latestCommit = await uploadManualImages(article.id);
         article.image = {
           url: imageUrls[0],
-          provider: "AVWIRE manual upload",
+          provider: "SKYTICAL manual upload",
           subject: imageSubject,
           kind: "file_photo",
         };

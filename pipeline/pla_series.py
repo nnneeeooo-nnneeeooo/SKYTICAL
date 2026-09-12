@@ -9,7 +9,7 @@ numbers on its own. The pipeline therefore:
    公務船 K 艘 / 中線 note) from the source material with regexes - no
    model in the loop - and records them in data/pla_activity.json;
 2. renders the history (previous day, 7/30-day averages, 30-day peak,
-   same day last month) as an extra <SOURCE> item labeled 「AVWIRE 資料庫」,
+   same day last month) as an extra <SOURCE> item labeled 「SKYTICAL 資料庫」,
    so every comparison the model writes is quote-verifiable against
    material it was actually shown, exactly like any other claim.
 
@@ -34,7 +34,7 @@ from common import (  # noqa: E402
 
 SERIES_PATH = DATA_DIR / "pla_activity.json"
 KEEP_DAYS = 400
-DB_SOURCE_NAME = "AVWIRE 資料庫"
+DB_SOURCE_NAME = "SKYTICAL 資料庫"
 
 # Both phrasing orders appear in the wild:
 # 「偵獲中共軍機4架次、軍艦7艘及公務船3艘」 (noun first)
@@ -112,7 +112,7 @@ def context_block(day_iso: str) -> str:
         except ValueError:
             continue
     rows.sort()
-    lines = ["以下為本站資料庫（AVWIRE 依國防部歷日公開統計自行記錄）之歷史數據，"
+    lines = ["以下為本站資料庫（SKYTICAL 依國防部歷日公開統計自行記錄）之歷史數據，"
              "僅供比較，引用時請標明為本站統計紀錄："]
     if not rows:
         lines.append(f"資料庫自 {day_iso} 起開始記錄，尚無更早的歷史數據可供比較。")

@@ -1,4 +1,4 @@
-/* AVWIRE client behavior: clocks, theme toggle, client-side filters.
+/* SKYTICAL client behavior: clocks, theme toggle, client-side filters.
    Language switching is pure links — nothing to do here. */
 (function () {
   "use strict";
