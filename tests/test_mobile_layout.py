@@ -15,6 +15,8 @@ def main() -> None:
     assert build.main() == 0
 
     home = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
+    home_template = (ROOT / "templates" / "home.html").read_text(
+        encoding="utf-8")
     css = (ROOT / "static" / "site.css").read_text(encoding="utf-8")
     script = (ROOT / "static" / "app.js").read_text(encoding="utf-8")
     articles = list((ROOT / "site" / "news").glob("*/index.html"))
@@ -115,6 +117,15 @@ def main() -> None:
     assert 'font-family: ui-monospace, "SFMono-Regular", Menlo' in css
     assert "font-size: 12px; font-weight: 700" in css
     assert "@media (prefers-reduced-motion: reduce)" in css
+    assert 'id="hero-prev"' in home_template
+    assert 'id="hero-next"' in home_template
+    assert 'id="hero-dots"' in home_template
+    assert 'aria-roledescription="carousel"' in home_template
+    assert "hero-enter-right" in css
+    assert 'data-rotation-ms="8000"' in home
+    assert "dataset.rotationMs" in script
+    assert 'addEventListener("mouseenter"' in script
+    assert 'addEventListener("focusin"' in script
     assert ".marquee-track .ticker-pass:nth-child(2) { display: none; }" in css
     assert 'setAttribute("aria-expanded"' in script
     assert 'event.key === "Escape"' in script
