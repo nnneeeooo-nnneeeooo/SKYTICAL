@@ -73,6 +73,7 @@ def main() -> None:
         added_airline_codes = {
             "ABL": "BX",
             "AHK": "LD",
+            "BOX": "3S",
             "CHH": "HU",
             "CXA": "MF",
             "CSZ": "ZH",
@@ -83,21 +84,26 @@ def main() -> None:
             "FZA": "FU",
             "JJP": "GK",
             "MXD": "OD",
+            "NCA": "KZ",
             "SPQ": "9G",
             "TLM": "SL",
             "TVJ": "VZ",
             "TZP": "ZG",
             "UEA": "EU",
+            "XAX": "D7",
         }
         assert {
             code: airline_codes[code] for code in added_airline_codes
         } == added_airline_codes
         callsign_examples = {
+            "BOX590": "3S590",
             "CHH6033": "HU6033",
             "DKH136U": "HO136U",
             "FZA6742": "FU6742",
+            "NCA203": "KZ203",
             "TLM395D": "SL395D",
             "TZP51": "ZG51",
+            "XAX379": "D7379",
         }
         assert {
             raw: f"{airline_codes[raw[:3]]}{raw[3:]}"
@@ -117,9 +123,13 @@ def main() -> None:
         iata_names = json.loads(iata_name_match.group(1))
         iata_aliases = json.loads(alias_match.group(1))
         assert iata_aliases["9S"] == "9C"
+        assert "ASV" not in airline_codes
+        assert "ASV" not in iata_names
+        assert icao_names["ASV"] == "Astravia-Bissau Air Transports Ltd."
         expected_names = {
             "ABL": ("BX", "釜山航空", "Air Busan"),
             "AHK": ("LD", "香港華民航空", "Air Hong Kong"),
+            "BOX": ("3S", "AeroLogic", "AeroLogic"),
             "CHH": ("HU", "海南航空", "Hainan Airlines"),
             "CXA": ("MF", "廈門航空", "Xiamen Airlines"),
             "CSZ": ("ZH", "深圳航空", "Shenzhen Airlines"),
@@ -130,11 +140,13 @@ def main() -> None:
             "FZA": ("FU", "福州航空", "Fuzhou Airlines"),
             "JJP": ("GK", "捷星日本航空", "Jetstar Japan"),
             "MXD": ("OD", "馬來西亞峇迪航空", "Batik Air Malaysia"),
+            "NCA": ("KZ", "日本貨物航空", "Nippon Cargo Airlines"),
             "SPQ": ("9G", "太陽富國航空", "Sun PhuQuoc Airways"),
             "TLM": ("SL", "泰國獅子航空", "Thai Lion Air"),
             "TVJ": ("VZ", "泰國越捷航空", "Thai Vietjet Air"),
             "TZP": ("ZG", "ZIPAIR Tokyo", "ZIPAIR Tokyo"),
             "UEA": ("EU", "成都航空", "Chengdu Airlines"),
+            "XAX": ("D7", "AirAsia X", "AirAsia X"),
         }
         for icao_code, (iata_code, zh_name, en_name) in expected_names.items():
             expected_name = zh_name if page == zh else en_name
