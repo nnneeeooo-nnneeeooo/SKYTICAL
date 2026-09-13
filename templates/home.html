@@ -42,7 +42,11 @@
     </div>
     <div class="center-col">
       {% if hero %}
-      <a id="hero-story-link" href="{{ hero.url }}"{% if hero.external %} target="_blank" rel="noopener"{% endif %} style="display:block;color:inherit;text-decoration:none;cursor:pointer;">
+      <div id="hero-carousel" class="hero-carousel" role="region"
+           data-rotation-ms="{{ hero_rotation_seconds * 1000 }}"
+           aria-roledescription="carousel"
+           aria-label="{% if html_lang.startswith('zh') %}臺灣焦點新聞{% else %}Taiwan focus stories{% endif %}">
+      <a id="hero-story-link" class="hero-story" href="{{ hero.url }}"{% if hero.external %} target="_blank" rel="noopener"{% endif %}>
         {% if hero.image %}
         <img id="hero-story-image" class="hero-img"
              data-fallback-src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}"
@@ -55,7 +59,7 @@
         <div id="hero-image-caption" class="text-muted" style="font-size:10.5px;margin-top:4px;">{% if html_lang.startswith('zh') %}暫無可驗證的事件或資料照片，先顯示 SKYTICAL 預設圖片。{% else %}No verified event or file photo is available yet; showing the SKYTICAL default image.{% endif %}</div>
         {% endif %}
         <div style="margin-top:16px;">
-          <span id="hero-story-kicker" class="card-kicker" style="font-size:11px;">{{ hero.cat_label }}{% if hero.article_format == "brief" %} · {{ t.briefLabel }}{% elif hero.article_format == "roundup" %} · {{ t.roundupLabel }}{% endif %} — {{ t.topStory }}</span>
+          <span id="hero-story-kicker" class="card-kicker" style="font-size:11px;">{% if hero.focus|default(false) %}{{ t.focusLabel }} · {% endif %}{{ hero.cat_label }}{% if hero.article_format == "brief" %} · {{ t.briefLabel }}{% elif hero.article_format == "roundup" %} · {{ t.roundupLabel }}{% endif %} — {{ t.topStory }}</span>
           <h2 id="hero-story-title" class="hero-title" aria-live="polite">{{ hero.title }}</h2>
           {{ notification_summary(hero.display_summary, t.summaryLabel, 'hero') }}
           <div class="hero-meta">
@@ -65,6 +69,21 @@
           </div>
         </div>
       </a>
+      {% if hero_candidates|length > 1 %}
+      <button id="hero-prev" class="hero-nav hero-nav--prev" type="button"
+              aria-label="{% if html_lang.startswith('zh') %}上一篇焦點新聞{% else %}Previous focus story{% endif %}">‹</button>
+      <button id="hero-next" class="hero-nav hero-nav--next" type="button"
+              aria-label="{% if html_lang.startswith('zh') %}下一篇焦點新聞{% else %}Next focus story{% endif %}">›</button>
+      <div id="hero-dots" class="hero-dots" aria-label="{% if html_lang.startswith('zh') %}選擇焦點新聞{% else %}Choose a focus story{% endif %}">
+        {% for candidate in hero_candidates %}
+        <button type="button" class="hero-dot{% if loop.first %} active{% endif %}"
+                data-hero-index="{{ loop.index0 }}"
+                aria-label="{% if html_lang.startswith('zh') %}第 {{ loop.index }} 篇焦點新聞{% else %}Focus story {{ loop.index }}{% endif %}"
+                {% if loop.first %}aria-current="true"{% endif %}></button>
+        {% endfor %}
+      </div>
+      {% endif %}
+      </div>
       {% else %}
       <div class="grayscale hero-ph">
         <span class="text-muted" style="font-family:monospace;font-size:11px;">{{ t.awaiting }}</span>

@@ -101,6 +101,7 @@ L = {
         "homeLabel": "返回 SKYTICAL 首頁", "live": "LIVE 快訊", "updateBadge": "每小時自動更新",
         "flash": "即時快訊", "sourceStatus": "來源狀態",
         "latest": "最新新聞", "topStory": "頭條", "priorityLabel": "頭條",
+        "focusLabel": "臺灣焦點",
         "mainSource": "主要來源",
         "briefLabel": "短訊", "roundupLabel": "事件彙整",
         "summaryLabel": "重點摘要",
@@ -230,6 +231,7 @@ L = {
         "homeLabel": "Back to the SKYTICAL home page", "live": "LIVE WIRE", "updateBadge": "Auto-updates hourly",
         "flash": "Live flash", "sourceStatus": "Source status",
         "latest": "Latest news", "topStory": "Top story", "priorityLabel": "TOP",
+        "focusLabel": "Taiwan focus",
         "mainSource": "Primary source",
         "briefLabel": "Brief", "roundupLabel": "Event roundup",
         "summaryLabel": "Quick Summary",
@@ -1358,8 +1360,11 @@ def art_view(a, lang: str):
 
 
 
-HERO_ROTATION_SECONDS = 5 * 60
+HERO_ROTATION_SECONDS = 8
 _HERO_PIN_MAX_AGE = timedelta(hours=16)
+_HERO_FOCUS_FRESH_AGE = timedelta(hours=24)
+_HERO_FOCUS_FALLBACK_AGE = timedelta(days=7)
+_HERO_FOCUS_LIMIT = 5
 _HERO_WEATHER_RE = re.compile(
     r"(?:颱風|台風|熱帶(?:性)?(?:低氣壓|風暴)|豪大雨|豪雨|暴雨|大雨|"
     r"強降雨|雷雨|強風|暴風|寒流|寒害|大雪|降雪|冰雹|濃霧|大霧|"
@@ -1380,6 +1385,41 @@ _HERO_FLIGHT_CHANGE_RE = re.compile(
     r"(?:航班|班機|航線|飛航|取消|停飛|延後|延誤|調整|異動|加班機|"
     r"疏運|改期|轉降|停駛|flight|flights|air service|schedule|"
     r"cancel|suspend|delay|divert|rerout|extra flight|relief flight)",
+    re.IGNORECASE,
+)
+_HERO_TAIWAN_CARRIER_RE = re.compile(
+    r"(?:國籍航空|臺灣航空|台灣航空|華航|中華航空|長榮航空|星宇航空|"
+    r"台灣虎航|臺灣虎航|立榮航空|華信航空|China Airlines|EVA Air|"
+    r"STARLUX|Tigerair Taiwan|UNI Air|Mandarin Airlines)",
+    re.IGNORECASE,
+)
+_HERO_TAIWAN_PLACE_RE = re.compile(
+    r"(?:臺灣|台灣|臺北|台北|桃園|松山|高雄|臺中|台中|花蓮|澎湖|金門|"
+    r"馬祖|交通部民用航空局|國家運輸安全調查委員會|運安會|"
+    r"Taiwan CAA|TTSB|Taiwan|Taipei|Taoyuan|Songshan|"
+    # TSA is deliberately omitted: it commonly means the US Transportation
+    # Security Administration, not Taipei Songshan Airport.
+    r"Kaohsiung|Taichung|\b(?:TPE|KHH|RMQ)\b)",
+    re.IGNORECASE,
+)
+_HERO_CATHAY_RE = re.compile(
+    r"(?:國泰航空|香港快運|Cathay Pacific|HK Express)", re.IGNORECASE)
+_HERO_MATERIAL_RE = re.compile(
+    r"(?:航班|班機|航線|機場|空域|旅客|營運|機隊|飛安|事故|事件|"
+    r"取消|停飛|延誤|轉降|新航點|訂單|交付|flight|route|airport|"
+    r"airspace|passenger|operation|fleet|safety|incident|cancel|delay|"
+    r"divert|destination|order|delivery)",
+    re.IGNORECASE,
+)
+_HERO_LOW_VALUE_RE = re.compile(
+    r"(?:餐點|菜單|貴賓室|彩繪|塗裝|代言|名人|公益|捐贈|里程活動|哩程活動|"
+    r"meal|menu|lounge|livery|celebrity|charity|donat|mileage promotion)",
+    re.IGNORECASE,
+)
+_HERO_TIME_SENSITIVE_RE = re.compile(
+    r"(?:颱風|台風|豪雨|暴雨|強風|濃霧|地震|海嘯|航班異動|取消|停飛|"
+    r"延誤|機場關閉|typhoon|storm|heavy rain|strong wind|fog|earthquake|"
+    r"tsunami|cancel|suspend|delay|airport closure)",
     re.IGNORECASE,
 )
 
@@ -1416,6 +1456,82 @@ def is_weather_airline_flight_story(article, now=None) -> bool:
     )
 
 
+def _hero_focus_text(article) -> str:
+    values = [article.get("source"), article.get("primarySource")]
+    for lang in ("zh", "en"):
+        side = article.get(lang)
+        if isinstance(side, dict):
+            values.extend(side.get(key) for key in ("title", "summary"))
+    return " ".join(str(value or "") for value in values)
+
+
+def taiwan_focus_score(article, now=None) -> int:
+    """Score a recent story for the Taiwan-reader homepage carousel.
+
+    Only headline, summary and source fields participate.  This keeps a
+    passing body mention from promoting an otherwise unrelated story.
+    """
+    if not isinstance(article, dict) or article.get("published_dt") is None:
+        return 0
+    now = now or now_utc()
+    try:
+        age = now - article["published_dt"]
+    except TypeError:
+        return 0
+    if age < timedelta(0) or age > _HERO_FOCUS_FALLBACK_AGE:
+        return 0
+
+    text = _hero_focus_text(article)
+    score = 0
+    if _HERO_TAIWAN_CARRIER_RE.search(text):
+        score = 100
+    elif _HERO_TAIWAN_PLACE_RE.search(text):
+        score = 95
+    elif _HERO_CATHAY_RE.search(text) and _HERO_MATERIAL_RE.search(text):
+        score = 70
+    if not score:
+        return 0
+    if _HERO_MATERIAL_RE.search(text):
+        score += 10
+    if is_weather_airline_flight_story(article, now):
+        score += 20
+    if _HERO_LOW_VALUE_RE.search(text):
+        score -= 50
+    return score if score >= 60 else 0
+
+
+def taiwan_focus_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
+    """Return fresh Taiwan-focus stories, or one safe recent fallback."""
+    now = now or now_utc()
+    scored = []
+    for article in articles:
+        score = taiwan_focus_score(article, now)
+        if not score:
+            continue
+        age = now - article["published_dt"]
+        scored.append((score, article["published_dt"], age, article))
+    scored.sort(key=lambda row: (row[0], row[1]), reverse=True)
+    fresh = [row[3] for row in scored if row[2] <= _HERO_FOCUS_FRESH_AGE]
+    if fresh:
+        selected = fresh[:limit]
+        # With only one fresh match, add one still-current background story so
+        # the carousel remains useful without filling it with stale alerts.
+        if len(selected) == 1 and limit > 1:
+            older = [
+                row[3] for row in scored
+                if row[2] > _HERO_FOCUS_FRESH_AGE
+                and not _HERO_TIME_SENSITIVE_RE.search(
+                    _hero_focus_text(row[3]))
+            ]
+            selected.extend(older[:1])
+        return selected
+    fallback = [
+        row[3] for row in scored
+        if not _HERO_TIME_SENSITIVE_RE.search(_hero_focus_text(row[3]))
+    ]
+    return fallback[:1]
+
+
 def _hero_image_caption(image, lang: str) -> str:
     if not isinstance(image, dict):
         return (
@@ -1437,7 +1553,7 @@ def _hero_image_caption(image, lang: str) -> str:
 
 
 def hero_rotation_view(view, lang: str) -> dict:
-    """Return the small JSON-safe payload used by the five-minute hero swap."""
+    """Return the small JSON-safe payload used by the focus carousel."""
     image = view.get("image") if isinstance(view.get("image"), dict) else None
     labels = [str(view.get("cat_label") or "")]
     if view.get("article_format") == "brief":
@@ -1450,7 +1566,8 @@ def hero_rotation_view(view, lang: str) -> dict:
         "external": bool(view.get("external")),
         "title": view.get("title") or "",
         "summary": view.get("display_summary") or "",
-        "kicker": f"{' · '.join(label for label in labels if label)}"
+        "kicker": f"{L[lang]['focusLabel']} · "
+                  f"{' · '.join(label for label in labels if label)}"
                   f" — {L[lang]['topStory']}",
         "time": view.get("time") or "",
         "source_meta": f"{L[lang]['mainSource']}: "
@@ -3340,20 +3457,21 @@ def main() -> int:
         lang_articles = [
             a for a in articles if lang in a["available_languages"]]
         views = [art_view(a, lang) for a in lang_articles]
-        pinned_articles = [
-            article for article in lang_articles
-            if is_weather_airline_flight_story(article, now)
-        ]
-        pinned_views = [art_view(article, lang)
-                        for article in pinned_articles]
+        pinned_articles = taiwan_focus_articles(lang_articles, now)
+        pinned_views = []
+        for article in pinned_articles:
+            view = art_view(article, lang)
+            view["focus"] = True
+            pinned_views.append(view)
         priority_ids = {article["id"] for article in pinned_articles}
         hero_candidates = [hero_rotation_view(view, lang)
                            for view in pinned_views]
         if views:
             fl = flash_view(flashes, lang, priority_ids)
             hero = pinned_views[0] if pinned_views else views[0]
-            pinned_ids = ({view["id"] for view in pinned_views}
-                          if pinned_views else {hero["id"]})
+            # Keep the other focus candidates discoverable in Latest news;
+            # only avoid repeating the initially visible hero immediately.
+            pinned_ids = {hero["id"]}
             feed = [view for view in views if view["id"] not in pinned_ids]
             feed = feed[:HOME_FEED_LIMIT]
         elif agg_items:
@@ -3391,6 +3509,7 @@ def main() -> int:
                        description=t["siteDesc"], ticker=ticker, build=build)
         ctx["structured_data"] = website_structured_data(lang)
         ctx.update(hero=hero, hero_candidates=hero_candidates,
+                   hero_rotation_seconds=HERO_ROTATION_SECONDS,
                    feed=feed, flashes=fl, agg=agg,
                    source_status=source_status_view(sources, now),
                    stats=sv["tiles"], otp=sv["otp"], fleet=sv["fleet"],
