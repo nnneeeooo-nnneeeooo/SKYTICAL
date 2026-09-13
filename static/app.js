@@ -179,7 +179,7 @@
     }) || sevBtns.find(function (b) { return b.dataset.filterSev === "all"; });
     applyIncidentFilter(initialButton.dataset.filterSev, initialButton, false);
   }
-  /* — Priority weather/airline hero: rotate every five minutes — */
+  /* — Taiwan-focus hero carousel: timed, controllable and pauseable — */
   var heroCandidatesNode = document.getElementById("hero-candidates");
   var heroLink = document.getElementById("hero-story-link");
   if (heroCandidatesNode && heroLink) {
@@ -198,6 +198,20 @@
     );
     var heroTime = document.getElementById("hero-story-time");
     var heroSource = document.getElementById("hero-story-source");
+    var heroCarousel = document.getElementById("hero-carousel");
+    var heroPrev = document.getElementById("hero-prev");
+    var heroNext = document.getElementById("hero-next");
+    var heroDots = Array.prototype.slice.call(
+      document.querySelectorAll("[data-hero-index]")
+    );
+    var heroIndex = 0;
+    var heroTimer = null;
+    var heroPaused = false;
+    var heroChanging = false;
+    var reduceHeroMotion = window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var heroTransitionMs = reduceHeroMotion ? 0 : 220;
+    var heroRotationMs = Number(heroCarousel && heroCarousel.dataset.rotationMs) || 8000;
 
     function renderPriorityHero(story) {
       if (!story || !heroImage) return;
@@ -230,14 +244,96 @@
       if (heroSource) heroSource.textContent = story.source_meta || "";
     }
 
+    function reflectHeroDots() {
+      heroDots.forEach(function (dot, index) {
+        var active = index === heroIndex;
+        dot.classList.toggle("active", active);
+        if (active) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    }
+
+    function stopHeroTimer() {
+      if (heroTimer !== null) window.clearTimeout(heroTimer);
+      heroTimer = null;
+    }
+
+    function scheduleHeroRotation() {
+      stopHeroTimer();
+      if (heroPaused || document.hidden || heroCandidates.length < 2) return;
+      heroTimer = window.setTimeout(function () {
+        showHero((heroIndex + 1) % heroCandidates.length, "next");
+      }, heroRotationMs);
+    }
+
+    function showHero(nextIndex, direction) {
+      if (heroChanging || !heroCandidates.length) return;
+      nextIndex = (nextIndex + heroCandidates.length) % heroCandidates.length;
+      stopHeroTimer();
+      if (nextIndex === heroIndex) {
+        scheduleHeroRotation();
+        return;
+      }
+      heroChanging = true;
+      heroLink.classList.add(direction === "previous" ?
+        "hero-exit-right" : "hero-exit-left");
+      window.setTimeout(function () {
+        heroIndex = nextIndex;
+        renderPriorityHero(heroCandidates[heroIndex]);
+        heroLink.classList.remove("hero-exit-left", "hero-exit-right");
+        heroLink.classList.add(direction === "previous" ?
+          "hero-enter-left" : "hero-enter-right");
+        reflectHeroDots();
+        window.requestAnimationFrame(function () {
+          window.requestAnimationFrame(function () {
+            heroLink.classList.remove("hero-enter-left", "hero-enter-right");
+            heroChanging = false;
+            scheduleHeroRotation();
+          });
+        });
+      }, heroTransitionMs);
+    }
+
     if (heroCandidates.length) {
-      var heroIndex = 0;
       renderPriorityHero(heroCandidates[heroIndex]);
       if (heroCandidates.length > 1) {
-        window.setInterval(function () {
-          heroIndex = (heroIndex + 1) % heroCandidates.length;
-          renderPriorityHero(heroCandidates[heroIndex]);
-        }, 5 * 60 * 1000);
+        if (heroPrev) heroPrev.addEventListener("click", function () {
+          showHero(heroIndex - 1, "previous");
+        });
+        if (heroNext) heroNext.addEventListener("click", function () {
+          showHero(heroIndex + 1, "next");
+        });
+        heroDots.forEach(function (dot) {
+          dot.addEventListener("click", function () {
+            var nextIndex = Number(dot.dataset.heroIndex);
+            showHero(nextIndex, nextIndex < heroIndex ? "previous" : "next");
+          });
+        });
+        if (heroCarousel) {
+          heroCarousel.addEventListener("mouseenter", function () {
+            heroPaused = true;
+            stopHeroTimer();
+          });
+          heroCarousel.addEventListener("mouseleave", function () {
+            heroPaused = false;
+            scheduleHeroRotation();
+          });
+          heroCarousel.addEventListener("focusin", function () {
+            heroPaused = true;
+            stopHeroTimer();
+          });
+          heroCarousel.addEventListener("focusout", function () {
+            window.setTimeout(function () {
+              if (!heroCarousel.contains(document.activeElement)) {
+                heroPaused = false;
+                scheduleHeroRotation();
+              }
+            }, 0);
+          });
+        }
+        document.addEventListener("visibilitychange", scheduleHeroRotation);
+        reflectHeroDots();
+        scheduleHeroRotation();
       }
     }
   }
