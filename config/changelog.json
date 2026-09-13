@@ -2,8 +2,22 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-09-12",
+  "updatedThrough": "2026-09-13",
   "entries": [
+    {
+      "date": "2026-09-13",
+      "kind": "feature",
+      "commit": "7f51371d84dfb0cd5e78a86f61a06902426a9c33",
+      "zh": "首頁加入臺灣焦點頭條輪播，優先呈現臺灣相關航空新聞，並提供 8 秒自動輪播、左右切換、暫停與無障礙控制。",
+      "en": "Added a Taiwan-focused headline carousel to the homepage, prioritizing Taiwan-related aviation news with eight-second autoplay, previous/next controls, pause support and accessible controls."
+    },
+    {
+      "date": "2026-09-13",
+      "kind": "fix",
+      "commit": "7e03c1c3414c635f53fb23290a30213bb3c0b951",
+      "zh": "修正雷達頁面春秋航空舊版航班代碼的顯示：保留原始上游呼號，僅在 IATA 顯示模式將已知的 9S 歷史別名正規化為現行 9C，並新增回歸測試。",
+      "en": "Fixed the radar display for Spring Airlines' legacy flight-code alias by preserving the raw upstream callsign, canonicalizing the known historical 9S alias to the current 9C only in IATA view, and adding regression coverage."
+    },
     {
       "date": "2026-09-12",
       "kind": "design",
