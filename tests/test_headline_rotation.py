@@ -12,6 +12,7 @@ from pipeline import build
 def _article(now, title, summary, *, source="中央社 CNA 國籍航空",
              age_hours=1):
     return {
+        "id": title,
         "published_dt": now - timedelta(hours=age_hours),
         "source": source,
         "zh": {"title": title, "summary": summary},
@@ -85,6 +86,7 @@ def test_rotation_payload_contains_localized_hero_fields():
         "article_format": "brief",
         "time": "6:00 PM",
         "source": "中央社 CNA 國籍航空",
+        "focus": True,
         "image": {
             "url": "https://example.com/aircraft.jpg",
             "subject": "China Airlines Boeing 777-300ER",
@@ -99,6 +101,10 @@ def test_rotation_payload_contains_localized_hero_fields():
     assert payload["summary"] == "國籍航空調整航班。"
     assert "China Airlines Boeing 777-300ER" in payload["image_caption"]
     assert build.HERO_ROTATION_SECONDS == 8
+
+    view["focus"] = False
+    global_payload = build.hero_rotation_view(view, "zh")
+    assert global_payload["kicker"] == "營運 · 短訊 — 頭條"
 
 
 def test_taiwan_focus_scores_direct_and_material_cathay_stories():
@@ -143,6 +149,28 @@ def test_focus_selection_prefers_fresh_and_uses_safe_recent_fallback():
     assert build.taiwan_focus_articles([stale_alert, old_route], now) == [old_route]
 
 
+def test_carousel_leads_with_taiwan_then_prioritizes_global_news():
+    now = build.now_utc()
+    global_newest = _article(
+        now, "空中巴士公布新訂單", "歐洲航空公司增購客機。",
+        source="Airbus", age_hours=1)
+    taiwan_primary = _article(
+        now, "長榮航空新增桃園航線", "新航線預計下月開航。",
+        age_hours=2)
+    taiwan_secondary = _article(
+        now, "華航調整高雄航班", "中華航空更新班表。", age_hours=3)
+    global_second = _article(
+        now, "波音完成新機交付", "美國航空公司接收新機。",
+        source="Boeing", age_hours=4)
+
+    selected = build.headline_carousel_articles(
+        [global_newest, taiwan_primary, taiwan_secondary, global_second],
+        now,
+    )
+    assert selected == [
+        taiwan_primary, global_newest, global_second, taiwan_secondary]
+
+
 def test_flash_priority_is_distinct_from_legacy_pinned_flag():
     flashes = [
         {"time": "6:00 PM", "hot": False, "pinned": True,
@@ -166,6 +194,7 @@ def main() -> int:
         test_rotation_payload_contains_localized_hero_fields,
         test_taiwan_focus_scores_direct_and_material_cathay_stories,
         test_focus_selection_prefers_fresh_and_uses_safe_recent_fallback,
+        test_carousel_leads_with_taiwan_then_prioritizes_global_news,
         test_flash_priority_is_distinct_from_legacy_pinned_flag,
     )
     for test in tests:

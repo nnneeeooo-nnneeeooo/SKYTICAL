@@ -45,7 +45,7 @@
       <div id="hero-carousel" class="hero-carousel" role="region"
            data-rotation-ms="{{ hero_rotation_seconds * 1000 }}"
            aria-roledescription="carousel"
-           aria-label="{% if html_lang.startswith('zh') %}臺灣焦點新聞{% else %}Taiwan focus stories{% endif %}">
+           aria-label="{% if html_lang.startswith('zh') %}頭條新聞輪播{% else %}Headline story carousel{% endif %}">
       <a id="hero-story-link" class="hero-story" href="{{ hero.url }}"{% if hero.external %} target="_blank" rel="noopener"{% endif %}>
         {% if hero.image %}
         <img id="hero-story-image" class="hero-img"
