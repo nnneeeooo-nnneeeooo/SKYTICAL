@@ -67,6 +67,7 @@
   if (headerSearchForm && headerSearchInput) {
     headerSearchForm.addEventListener("submit", function (event) {
       if (headerSearchInput.value.trim()) return;
+      if (headerSearchInput.dataset.searchSuggestionEnabled !== "true") return;
       var suggestedQuery = queryFromSearchPlaceholder(
         headerSearchInput.placeholder
       );
