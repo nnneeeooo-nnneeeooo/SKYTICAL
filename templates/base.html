@@ -62,6 +62,7 @@
       <input id="news-search-input" class="header-search-input" name="q"
              type="search" autocomplete="off" enterkeyhint="search"
              placeholder="{{ t.headerSearchPlaceholder }}"
+             data-search-suggestion-enabled="{{ 'true' if t.headerSearchSuggestionEnabled else 'false' }}"
              data-search-placeholders='{{ t.headerSearchPlaceholders | tojson }}'>
       <button id="news-search-clear" class="header-search-clear" type="button"
               aria-label="{{ t.searchClear }}" title="{{ t.searchClear }}">×</button>
