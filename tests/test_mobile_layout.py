@@ -121,6 +121,7 @@ def main() -> None:
     assert 'id="hero-next"' in home_template
     assert 'id="hero-dots"' in home_template
     assert 'aria-roledescription="carousel"' in home_template
+    assert 'aria-label="{% if html_lang.startswith(\'zh\') %}頭條新聞輪播' in home_template
     assert "hero-enter-right" in css
     assert 'data-rotation-ms="8000"' in home
     assert "dataset.rotationMs" in script

@@ -1532,6 +1532,38 @@ def taiwan_focus_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
     return fallback[:1]
 
 
+def headline_carousel_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
+    """Lead with one Taiwan focus, then favour recent global coverage."""
+    if limit <= 0:
+        return []
+    now = now or now_utc()
+    focus = taiwan_focus_articles(articles, now, limit=1)
+    selected = focus[:1]
+    selected_ids = {article["id"] for article in selected}
+
+    def is_taiwan_related(article):
+        text = _hero_focus_text(article)
+        return bool(
+            _HERO_TAIWAN_CARRIER_RE.search(text)
+            or _HERO_TAIWAN_PLACE_RE.search(text)
+            or _HERO_CATHAY_RE.search(text)
+        )
+
+    # The article list is already newest-first.  Fill the remaining positions
+    # with global stories before considering more Taiwan-related stories.
+    for prefer_global in (True, False):
+        for article in articles:
+            if article["id"] in selected_ids:
+                continue
+            if prefer_global == is_taiwan_related(article):
+                continue
+            selected.append(article)
+            selected_ids.add(article["id"])
+            if len(selected) >= limit:
+                return selected
+    return selected
+
+
 def _hero_image_caption(image, lang: str) -> str:
     if not isinstance(image, dict):
         return (
@@ -1560,13 +1592,14 @@ def hero_rotation_view(view, lang: str) -> dict:
         labels.append(L[lang]["briefLabel"])
     elif view.get("article_format") == "roundup":
         labels.append(L[lang]["roundupLabel"])
+    focus_prefix = f"{L[lang]['focusLabel']} · " if view.get("focus") else ""
     return {
         "id": view.get("id"),
         "url": view.get("url"),
         "external": bool(view.get("external")),
         "title": view.get("title") or "",
         "summary": view.get("display_summary") or "",
-        "kicker": f"{L[lang]['focusLabel']} · "
+        "kicker": f"{focus_prefix}"
                   f"{' · '.join(label for label in labels if label)}"
                   f" — {L[lang]['topStory']}",
         "time": view.get("time") or "",
@@ -3457,19 +3490,21 @@ def main() -> int:
         lang_articles = [
             a for a in articles if lang in a["available_languages"]]
         views = [art_view(a, lang) for a in lang_articles]
-        pinned_articles = taiwan_focus_articles(lang_articles, now)
-        pinned_views = []
-        for article in pinned_articles:
+        focus_articles = taiwan_focus_articles(lang_articles, now, limit=1)
+        focus_ids = {article["id"] for article in focus_articles}
+        headline_articles = headline_carousel_articles(lang_articles, now)
+        headline_views = []
+        for article in headline_articles:
             view = art_view(article, lang)
-            view["focus"] = True
-            pinned_views.append(view)
-        priority_ids = {article["id"] for article in pinned_articles}
+            view["focus"] = article["id"] in focus_ids
+            headline_views.append(view)
+        priority_ids = focus_ids
         hero_candidates = [hero_rotation_view(view, lang)
-                           for view in pinned_views]
+                           for view in headline_views]
         if views:
             fl = flash_view(flashes, lang, priority_ids)
-            hero = pinned_views[0] if pinned_views else views[0]
-            # Keep the other focus candidates discoverable in Latest news;
+            hero = headline_views[0] if headline_views else views[0]
+            # Keep the other carousel candidates discoverable in Latest news;
             # only avoid repeating the initially visible hero immediately.
             pinned_ids = {hero["id"]}
             feed = [view for view in views if view["id"] not in pinned_ids]
