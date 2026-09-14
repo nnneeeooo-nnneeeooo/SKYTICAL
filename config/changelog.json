@@ -2,8 +2,15 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-09-13",
+  "updatedThrough": "2026-09-14",
   "entries": [
+    {
+      "date": "2026-09-14",
+      "kind": "fix",
+      "commit": "f7a65783ea40e21766b27b0af8a43bd99a356b16",
+      "zh": "修正每日搜尋推薦與文章索引不同步的問題，將每句推薦詞精確連結至來源文章，並避免把一般提示文字當成可搜尋推薦送出。",
+      "en": "Fixed daily search suggestions drifting from the article index by linking each suggestion to its source article and preventing generic hints from being submitted as searches."
+    },
     {
       "date": "2026-09-13",
       "kind": "feature",

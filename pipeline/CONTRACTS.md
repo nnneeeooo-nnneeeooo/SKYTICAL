@@ -345,6 +345,9 @@ orphaned ticker entries are omitted as well; source JSON remains preserved.
 structured fields and stores body/source text plus matched aliases in its
 search field. The search page loads the index only when a query is made, so
 visiting the page without searching does not download the full index.
+Daily search-box suggestions are also indexed as exact aliases of their linked
+article, so every displayed suggestion resolves without weakening ordinary
+full-text matching.
 
 ## data/search-prompts.json  (written by search_prompts.py, read by build.py)
 
@@ -352,6 +355,9 @@ One daily set of six bilingual search-box suggestions. `targetDateTpe` prevents
 more than one generation per Taipei calendar day; `generationMode` is `llm`
 only after every suggestion passes article-ID, length, safety, uniqueness and
 title-anchor validation. `sourceArticleIds` records the published articles used.
+The three ordered lists (`sourceArticleIds`, `prompts.zh`, and `prompts.en`) are
+one-to-one; malformed mappings fall back to the built-in search hints.
+Built-in hints are never submitted as suggested queries.
 When no provider is available or model output is invalid, deterministic prompts
 are built from those article titles instead. No model reasoning is stored.
 
