@@ -1266,22 +1266,47 @@ def collect_articles():
     return sorted(by_id.values(), key=lambda a: a["dt"], reverse=True)
 
 
+@lru_cache(maxsize=1)
+def daily_search_prompt_rows() -> tuple[tuple[str, str, str], ...]:
+    """Return validated (article ID, zh, en) daily search suggestions."""
+    payload = load_json(DATA_DIR / "search-prompts.json", {})
+    prompts = payload.get("prompts") if isinstance(payload, dict) else None
+    source_ids = (payload.get("sourceArticleIds")
+                  if isinstance(payload, dict) else None)
+    zh_prompts = prompts.get("zh") if isinstance(prompts, dict) else None
+    en_prompts = prompts.get("en") if isinstance(prompts, dict) else None
+    if not all(isinstance(values, list)
+               for values in (source_ids, zh_prompts, en_prompts)):
+        return ()
+    if not 2 <= len(source_ids) <= 8 \
+            or not len(source_ids) == len(zh_prompts) == len(en_prompts):
+        return ()
+
+    rows = []
+    for article_id, zh_value, en_value in zip(source_ids, zh_prompts, en_prompts):
+        article_id = re.sub(r"\s+", " ", str(article_id or "")).strip()
+        zh = re.sub(r"\s+", " ", str(zh_value or "")).strip()
+        en = re.sub(r"\s+", " ", str(en_value or "")).strip()
+        if not article_id or any(
+                not text or len(text) > 96 or re.search(r"[\x00-\x1f<>]", text)
+                for text in (zh, en)):
+            return ()
+        rows.append((article_id, zh, en))
+    if len({row[0] for row in rows}) != len(rows) \
+            or len({row[1] for row in rows}) != len(rows) \
+            or len({row[2] for row in rows}) != len(rows):
+        return ()
+    return tuple(rows)
+
+
 @lru_cache(maxsize=2)
 def header_search_placeholders(lang: str) -> tuple[str, ...]:
-    """Load the daily LLM output, with the built-in prompts as fallback."""
-    fallback = tuple(L[lang]["headerSearchPlaceholders"])
-    payload = load_json(DATA_DIR / "search-prompts.json", {})
-    prompts = ((payload.get("prompts") or {}).get(lang)
-               if isinstance(payload, dict) else None)
-    if not isinstance(prompts, list) or not 2 <= len(prompts) <= 8:
-        return fallback
-    cleaned = []
-    for value in prompts:
-        text = re.sub(r"\s+", " ", str(value or "")).strip()
-        if not text or len(text) > 96 or re.search(r"[\x00-\x1f<>]", text):
-            return fallback
-        cleaned.append(text)
-    return tuple(cleaned) if len(set(cleaned)) == len(cleaned) else fallback
+    """Load article-backed daily prompts, with non-actionable hints as fallback."""
+    rows = daily_search_prompt_rows()
+    if rows:
+        prompt_index = 1 if lang == "zh" else 2
+        return tuple(row[prompt_index] for row in rows)
+    return tuple(L[lang]["headerSearchPlaceholders"])
 
 
 def _keyword_summary(value: str, lang: str, limit: int) -> str:
@@ -1692,7 +1717,7 @@ def expand_search_aliases(text: str, groups=None) -> list[str]:
     return matched
 
 
-def search_index_item(article, alias_groups) -> dict:
+def search_index_item(article, alias_groups, prompt_aliases=()) -> dict:
     """Build one bilingual, full-text record for the static client index.
 
     Titles, summaries and display metadata are already stored as structured
@@ -1716,6 +1741,7 @@ def search_index_item(article, alias_groups) -> dict:
         searchable.extend([source["name"], source["host"]])
     for lang in ("zh", "en"):
         searchable.extend(article[lang]["body"])
+    searchable.extend(str(value) for value in prompt_aliases if value)
     raw_search = " ".join(str(value) for value in raw_searchable if value)
     searchable.extend(expand_search_aliases(raw_search, alias_groups))
     urls = {
@@ -1745,11 +1771,18 @@ def search_index_item(article, alias_groups) -> dict:
 
 def search_index_payload(articles, generated_utc) -> dict:
     alias_groups = load_search_alias_groups()
+    article_ids = {article["id"] for article in articles}
+    prompt_aliases = {}
+    prompt_rows = daily_search_prompt_rows()
+    if prompt_rows and all(row[0] in article_ids for row in prompt_rows):
+        for article_id, zh_prompt, en_prompt in prompt_rows:
+            prompt_aliases[article_id] = (zh_prompt, en_prompt)
     return {
         "version": 1,
         "generatedUtc": generated_utc.isoformat(),
         "count": len(articles),
-        "items": [search_index_item(article, alias_groups)
+        "items": [search_index_item(
+            article, alias_groups, prompt_aliases.get(article["id"], ()))
                   for article in articles],
     }
 
@@ -3087,6 +3120,7 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build,
     prompts = list(header_search_placeholders(lang))
     t["headerSearchPlaceholders"] = prompts
     t["headerSearchPlaceholder"] = prompts[0]
+    t["headerSearchSuggestionEnabled"] = bool(daily_search_prompt_rows())
     nav_defs = [("home", ""), ("briefings", "briefings/"),
                 ("radar", "radar/"),
                 ("incidents", "incidents/"),

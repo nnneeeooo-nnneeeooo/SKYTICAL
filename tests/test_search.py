@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import tempfile
 import unicodedata
 from pathlib import Path
 
@@ -40,8 +41,9 @@ def normalize_search_text(value: str) -> str:
 
 def suggestion_has_result(prompt: str, items: list[dict]) -> bool:
     terms = normalize_search_text(prompt).split()
-    minimum_matches = len(terms) if len(terms) < 3 else len(terms) - 1
-    for item in items:
+    minimum_matches = len(terms)
+
+    def matches(item: dict, required: int) -> bool:
         values = [
             item.get("id", ""), item.get("source", ""),
             item.get("date", ""), item.get("published", ""),
@@ -54,9 +56,12 @@ def suggestion_has_result(prompt: str, items: list[dict]) -> bool:
             else:
                 values.append(localized)
         haystack = normalize_search_text(" ".join(values))
-        if sum(term in haystack for term in terms) >= minimum_matches:
-            return True
-    return False
+        return sum(term in haystack for term in terms) >= required
+
+    if any(matches(item, minimum_matches) for item in items):
+        return True
+    return len(terms) >= 3 and any(
+        matches(item, minimum_matches - 1) for item in items)
 
 
 def main() -> None:
@@ -76,6 +81,13 @@ def main() -> None:
     short = build.search_index_item(sample_article("華航新增航班"), aliases)
     assert "中華航空" in short["search"]
     assert "china airlines" in short["search"]
+
+    suggested = build.search_index_item(
+        sample_article("維珍澳洲航空班機爆乘客滋擾"), aliases,
+        ("維珍澳洲航班乘客事件", "Virgin Australia passenger incident"),
+    )
+    assert "維珍澳洲航班乘客事件" in suggested["search"]
+    assert "virgin australia passenger incident" in suggested["search"]
 
     # Short Latin aliases require token boundaries: ordinary words must not
     # accidentally activate an airline group.
@@ -112,6 +124,7 @@ def main() -> None:
 
     assert 'id="news-search-input"' in zh
     assert 'data-search-placeholders=' in zh
+    assert 'data-search-suggestion-enabled="true"' in zh
     zh_placeholders = json.loads(re.search(
         r"data-search-placeholders='([^']+)'", zh).group(1))
     en_placeholders = json.loads(re.search(
@@ -121,6 +134,14 @@ def main() -> None:
     assert len(zh_placeholders) == len(en_placeholders) == 6
     assert all(suggestion_has_result(prompt, payload["items"])
                for prompt in zh_placeholders + en_placeholders)
+    prompt_rows = build.daily_search_prompt_rows()
+    assert len(prompt_rows) == len(zh_placeholders) == len(en_placeholders)
+    items_by_id = {row["id"]: row for row in payload["items"]}
+    for article_id, zh_prompt, en_prompt in prompt_rows:
+        assert article_id in items_by_id
+        indexed = items_by_id[article_id]["search"]
+        assert normalize_search_text(zh_prompt) in indexed
+        assert normalize_search_text(en_prompt) in indexed
     assert suggestion_has_result(
         "亞馬遜空運 貨機 邁阿密 衝出跑道", payload["items"])
     assert zh.count('id="news-search-form"') == 1
@@ -176,6 +197,7 @@ def main() -> None:
     assert "搜尋|查詢|尋找|看看|想看|探索|了解" in app_script
     assert "Search|Explore|Find|Look\\s+up|Show\\s+me" in app_script
     assert "if (headerSearchInput.value.trim()) return" in app_script
+    assert 'dataset.searchSuggestionEnabled !== "true"' in app_script
     assert "headerSearchInput.value = suggestedQuery" in app_script
     assert 'document.getElementById("news-search-app")' in app_script
     assert "event.preventDefault()" in app_script
@@ -183,6 +205,20 @@ def main() -> None:
     assert "window.location.assign(searchUrl.toString())" in app_script
     assert 'headerSearchInput.value = ""' in app_script
     assert 'new Event("input", { bubbles: true })' in app_script
+
+    original_data_dir = build.DATA_DIR
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            build.DATA_DIR = Path(tmp)
+            build.daily_search_prompt_rows.cache_clear()
+            build.header_search_placeholders.cache_clear()
+            assert build.daily_search_prompt_rows() == ()
+            assert build.header_search_placeholders("zh") == tuple(
+                build.L["zh"]["headerSearchPlaceholders"])
+    finally:
+        build.DATA_DIR = original_data_dir
+        build.daily_search_prompt_rows.cache_clear()
+        build.header_search_placeholders.cache_clear()
 
     print("test_search: OK")
 
