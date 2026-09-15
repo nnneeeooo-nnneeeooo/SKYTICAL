@@ -1,0 +1,148 @@
+name: agentrouter-api-smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/agentrouter-api-smoke.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agentrouter-api-smoke
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      AGENTROUTER_TOKEN: ${{ secrets.AGENTROUTER_API }}
+    steps:
+      - name: Verify AgentRouter Responses API
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${AGENTROUTER_TOKEN:-}" ]; then
+            echo "::error::Repository secret AGENTROUTER_API is missing or empty."
+            exit 1
+          fi
+
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.error
+          import urllib.request
+
+          endpoint = "https://agentrouter.org/v1/responses"
+          token = os.environ["AGENTROUTER_TOKEN"]
+          request_body = json.dumps(
+              {
+                  "model": "gpt-5.6-sol",
+                  "input": "Reply with exactly ROUTER_OK.",
+                  "max_output_tokens": 128,
+              }
+          ).encode("utf-8")
+          request = urllib.request.Request(
+              endpoint,
+              data=request_body,
+              method="POST",
+              headers={
+                  "Accept": "application/json",
+                  "Authorization": f"Bearer {token}",
+                  "Content-Type": "application/json",
+                  "User-Agent": "SKYTICAL-AgentRouter-Smoke/1.0",
+              },
+          )
+
+          try:
+              with urllib.request.urlopen(request, timeout=120) as response:
+                  status = response.status
+                  content_type = response.headers.get("Content-Type", "unknown")
+                  body = response.read()
+          except urllib.error.HTTPError as error:
+              status = error.code
+              content_type = error.headers.get("Content-Type", "unknown")
+              body = error.read()
+          except urllib.error.URLError as error:
+              reason = type(error.reason).__name__
+              print(f"::error::AgentRouter network failure: reason={reason}")
+              raise SystemExit(1)
+
+          body_kind = "json"
+          try:
+              payload = json.loads(body)
+          except Exception:
+              payload = None
+              lowered = body[:4096].lower()
+              body_kind = (
+                  "html_or_waf"
+                  if b"<html" in lowered
+                  or b"<!doctype" in lowered
+                  or b"cloudflare" in lowered
+                  or b"challenge" in lowered
+                  else "non_json"
+              )
+
+          if not isinstance(payload, dict):
+              print(
+                  "::error::AgentRouter returned no JSON: "
+                  f"http_status={status}, content_type={content_type}, "
+                  f"bytes={len(body)}, body_kind={body_kind}"
+              )
+              raise SystemExit(1)
+
+          error = payload.get("error")
+          error = error if isinstance(error, dict) else {}
+          if status != 200 or error:
+              error_type = str(error.get("type") or "unknown")[:80]
+              error_code = str(error.get("code") or "unknown")[:80]
+              print(
+                  "::error::AgentRouter request failed: "
+                  f"http_status={status}, content_type={content_type}, "
+                  f"bytes={len(body)}, type={error_type}, code={error_code}"
+              )
+              raise SystemExit(1)
+
+          output_text = payload.get("output_text")
+          if not isinstance(output_text, str):
+              parts = []
+              for item in payload.get("output") or []:
+                  if not isinstance(item, dict):
+                      continue
+                  for part in item.get("content") or []:
+                      if isinstance(part, dict) and isinstance(part.get("text"), str):
+                          parts.append(part["text"])
+              output_text = "".join(parts)
+
+          if not output_text.strip():
+              response_status = str(payload.get("status") or "unknown")[:40]
+              print(
+                  "::error::AgentRouter returned HTTP 200 without model output: "
+                  f"response_status={response_status}, bytes={len(body)}"
+              )
+              raise SystemExit(1)
+
+          usage = payload.get("usage")
+          usage = usage if isinstance(usage, dict) else {}
+          model = str(payload.get("model") or "unknown")[:80]
+          response_status = str(payload.get("status") or "unknown")[:40]
+          exact_reply = output_text.strip() == "ROUTER_OK"
+          print(
+              "AgentRouter Responses API call succeeded: "
+              f"http_status={status}, content_type={content_type}, "
+              f"bytes={len(body)}, model={model}, "
+              f"response_status={response_status}, output_present=true, "
+              f"exact_reply={str(exact_reply).lower()}, "
+              f"input_tokens={usage.get('input_tokens', 'unknown')}, "
+              f"output_tokens={usage.get('output_tokens', 'unknown')}, "
+              f"total_tokens={usage.get('total_tokens', 'unknown')}"
+          )
+          PY
