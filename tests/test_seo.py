@@ -143,9 +143,10 @@ def main() -> None:
     assert "可追溯來源" in home
     assert "設計原型" not in home and "示意樣本" not in home
     assert "即時航班雷達" in home
-    assert "今日全球延誤" in home and "今日全球取消" in home
-    assert "來源未設定" in home
-    assert "FlightAware AeroAPI 尚未設定" in home
+    assert "全球延誤與取消" in home and "查看即時統計" in home
+    assert 'href="https://www.flightaware.com/live/cancelled/today/"' in home
+    assert "今日全球延誤" not in home and "今日全球取消" not in home
+    assert "來源未設定" not in home
     assert "全球延誤率" not in home and "生效中 NOTAM" not in home
     assert 'type="application/rss+xml"' in home
 
