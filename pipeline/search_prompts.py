@@ -16,7 +16,15 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import DATA_DIR, iso_minute, load_json, now_utc, parse_iso, save_json  # noqa: E402
+from common import (  # noqa: E402
+    DATA_DIR,
+    is_transport_headline,
+    iso_minute,
+    load_json,
+    now_utc,
+    parse_iso,
+    save_json,
+)
 
 TPE = timezone(timedelta(hours=8), "UTC+8")
 OUTPUT_NAME = "search-prompts.json"
@@ -85,6 +93,8 @@ def collect_candidates(articles_dir: Path, now: datetime) -> tuple[list[dict], s
         article_rows = payload.get("articles") if isinstance(payload, dict) else []
         for raw in article_rows if isinstance(article_rows, list) else []:
             if not isinstance(raw, dict) or raw.get("archived") is True:
+                continue
+            if not is_transport_headline(raw):
                 continue
             article_id = _text(raw.get("id"))
             published = _article_time(raw)
