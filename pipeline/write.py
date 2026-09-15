@@ -4,9 +4,9 @@ For each pending story group (capped at MAX_GROUPS_PER_RUN per run) one
 LLM call drafts the article, flash and optional incident row. Providers are
 tried in AVWIRE_PROVIDER_ORDER (opencode / anthropic / gemini / nvidia /
 openrouter; see providers.py): the first configured provider is the primary
-writer and the
-rest are fallbacks — a provider that hits an auth or quota error is disabled
-for the rest of the run and the next one takes over.
+writer and the rest are fallbacks. A provider that hits an auth/quota error or
+repeated transport outage is disabled for the rest of the run and the next one
+takes over.
 
 Each draft carries an editorial status: "publish" and "publish_brief" go
 straight to the site and "reject" is dropped.  The former manual-review
@@ -71,6 +71,7 @@ from providers import (
 )
 
 MAX_GROUPS_PER_RUN = 10
+TRANSIENT_PLATFORM_FAILURE_LIMIT = 2
 MAX_INCIDENTS = 60
 SEEN_MAX_AGE_DAYS = 21
 SERIOUS_WINDOW_DAYS = 7
@@ -1272,6 +1273,45 @@ def _problem_class(stage: str, problem: str) -> str:
     return "validation_failed"
 
 
+def _is_transient_platform_failure(exc) -> bool:
+    """Return whether a failure is likely shared by a provider platform.
+
+    Content/schema failures stay model- and story-specific.  Network failures,
+    repeated short-window rate limits and HTTP 5xx responses instead indicate
+    that immediately trying the same platform for every remaining group is
+    unlikely to help.
+    """
+    failure_class = classify_failure(exc)
+    if failure_class in {"timeout", "connection", "rate_limit"}:
+        return True
+    return bool(re.search(r"\bHTTP\s+5\d\d\b", str(exc), re.IGNORECASE))
+
+
+def _record_transient_platform_failure(provider, exc, alive: list,
+                                       dead_platforms: set,
+                                       failure_counts: dict) -> bool:
+    """Trip a run-local circuit after repeated infrastructure failures."""
+    name = provider.name
+    if not _is_transient_platform_failure(exc):
+        failure_counts.pop(name, None)
+        return False
+    count = failure_counts.get(name, 0) + 1
+    failure_counts[name] = count
+    if count < TRANSIENT_PLATFORM_FAILURE_LIMIT:
+        return False
+    alive[:] = [candidate for candidate in alive
+                if candidate.name != name]
+    dead_platforms.add(name)
+    print(f"write: '{name}' hit {count} consecutive transient failures; "
+          "disabling the platform for this run")
+    return True
+
+
+def _record_provider_response(provider, failure_counts: dict) -> None:
+    """A completed response proves the platform circuit should recover."""
+    failure_counts.pop(provider.name, None)
+
+
 def _normalize_reject_reason(candidate: dict) -> None:
     """Keep archive completeness from becoming the stated rejection cause."""
     reason = str(candidate.get("decisionReason") or "").strip()
@@ -2237,6 +2277,7 @@ def main() -> None:
     rejected_groups, rejected_ids = [], set()
     dead_auth: set = set()
     dead_platforms: set = set()
+    transient_failure_counts: dict = {}
     ai_calls: dict = {}
     skipped = 0
 
@@ -2422,6 +2463,8 @@ def main() -> None:
                                                         tries, ai_calls,
                                                         run_trace)
                 except DraftInvalid:
+                    _record_provider_response(
+                        provider, transient_failure_counts)
                     continue  # try the next provider in the chain
                 except ProviderAuthError as exc:
                     # Account-level failure: every model on this platform
@@ -2432,6 +2475,7 @@ def main() -> None:
                     alive[:] = [p for p in alive if p.name != provider.name]
                     dead_auth.add(provider.name)
                     dead_platforms.add(provider.name)
+                    transient_failure_counts.pop(provider.name, None)
                     run_trace.disable_last_provider()
                     continue
                 except ProviderQuotaError as exc:
@@ -2441,17 +2485,27 @@ def main() -> None:
                           "for this run")
                     alive[:] = [p for p in alive if p.name != provider.name]
                     dead_platforms.add(provider.name)
+                    transient_failure_counts.pop(provider.name, None)
                     run_trace.disable_last_provider()
                     continue
                 except ProviderError as exc:
                     print(f"write: {provider.label} error on group "
                           f"{group.get('id')}: {exc}; trying next provider")
+                    if _record_transient_platform_failure(
+                            provider, exc, alive, dead_platforms,
+                            transient_failure_counts):
+                        run_trace.disable_last_provider()
                     continue
                 except Exception as exc:  # one bad group must not kill a run
                     print(f"write: unexpected {provider.label} error on group"
                           f" {group.get('id')}: {type(exc).__name__}: {exc}; "
                           "trying next provider")
+                    if _record_transient_platform_failure(
+                            provider, exc, alive, dead_platforms,
+                            transient_failure_counts):
+                        run_trace.disable_last_provider()
                     continue
+                _record_provider_response(provider, transient_failure_counts)
                 if candidate is None:
                     # Genuine refusal / safety block: content-based, so
                     # don't shop the group around to a laxer provider.

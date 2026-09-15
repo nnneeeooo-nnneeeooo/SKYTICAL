@@ -75,6 +75,17 @@ def main() -> None:
         "summary": "中華航空參與聯盟，推動資源循環。",
     }
     assert not common.is_transport_headline(summary_only)
+    branded_airline = {
+        "zh": {"title": "airBaltic向美國法院申請第11章破產保護"},
+        "en": {"title": "airBaltic Files for Chapter 11 Protection"},
+        "entities": {"airlines": ["airBaltic"]},
+    }
+    assert common.is_transport_headline(branded_airline)
+    assert not common.is_transport_headline({
+        "title": "工研院成立循環示範聯盟",
+        "summary": "中華航空參與聯盟。",
+        "entities": {"airlines": ["中華航空"]},
+    })
     assert not fetch._matches_keywords(
         summary_only, common.TAIWAN_TRANSPORT_KEYWORDS)
     assert fetch._matches_keywords(

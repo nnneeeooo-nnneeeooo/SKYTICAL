@@ -2,8 +2,15 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-09-14",
+  "updatedThrough": "2026-09-15",
   "entries": [
+    {
+      "date": "2026-09-15",
+      "kind": "fix",
+      "commit": "d4c8c6e1f8f2c86b66195ee9961add3b70ea2df1",
+      "zh": "修正品牌名稱未含「航空」或「Airline」字樣的航空公司新聞可能被錯誤排除，並讓每日搜尋推薦只採用會出現在搜尋索引的文章。",
+      "en": "Fixed airline stories whose brand names do not contain the words Airline or Aviation being incorrectly excluded, while limiting daily search suggestions to articles that will appear in the search index."
+    },
     {
       "date": "2026-09-14",
       "kind": "fix",
