@@ -68,6 +68,32 @@ def main() -> None:
         assert len(candidates) == 8
         assert window == "today"
 
+        branded_dir = data_dir / "branded" / "articles"
+        branded_dir.mkdir(parents=True)
+        branded = {
+            "id": "a-20260810-0010-airbaltic-restructuring",
+            "publishedUtc": "2026-08-10T00:10:00Z",
+            "zh": {"title": "airBaltic向法院申請第11章重組",
+                   "summary": "航空公司啟動重組程序。"},
+            "en": {"title": "airBaltic Files for Chapter 11 Restructuring",
+                   "summary": "The airline started restructuring."},
+            "entities": {"airlines": ["airBaltic"]},
+        }
+        unrelated = {
+            "id": "a-20260810-0011-unrelated-partnership",
+            "publishedUtc": "2026-08-10T00:11:00Z",
+            "title": "Research institute forms recycling partnership",
+            "summary": "China Airlines joined as one of several partners.",
+            "entities": {"airlines": ["China Airlines"]},
+        }
+        (branded_dir / "batch.json").write_text(
+            json.dumps({"articles": [branded, unrelated]}, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        branded_candidates, _ = search_prompts.collect_candidates(
+            branded_dir, now)
+        assert [row["id"] for row in branded_candidates] == [branded["id"]]
+
         provider = FakeProvider()
         changed = search_prompts.update_daily_prompts(
             data_dir=data_dir, now=now, providers=[provider],

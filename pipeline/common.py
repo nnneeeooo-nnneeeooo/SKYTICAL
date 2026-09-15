@@ -658,6 +658,36 @@ def _headline_values(value):
             yield block["title"]
 
 
+_GENERIC_AIRLINE_ENTITY_NAMES = {
+    "air", "airline", "airlines", "aviation", "carrier", "operator",
+}
+
+
+def _headline_names_airline(headline: str, records) -> bool:
+    """Whether a headline directly names a structured airline entity.
+
+    Some carrier brands, such as airBaltic, do not contain the standalone word
+    ``airline``.  Requiring the verified entity itself to appear in the title
+    keeps this check title-scoped without mistaking a body-only partnership or
+    background mention for the article's main transport subject.
+    """
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        entities = record.get("entities")
+        airlines = (entities.get("airlines")
+                    if isinstance(entities, dict) else None)
+        for value in airlines if isinstance(airlines, list) else ():
+            name = re.sub(r"\s+", " ", str(value or "")).strip()
+            if len(name) < 3 or name.casefold() in _GENERIC_AIRLINE_ENTITY_NAMES:
+                continue
+            if re.search(
+                    rf"(?<![A-Za-z0-9]){re.escape(name)}(?![A-Za-z0-9])",
+                    headline, re.IGNORECASE):
+                return True
+    return False
+
+
 def is_transport_headline(*records) -> bool:
     """True when a story's headline itself names a transport subject.
 
@@ -676,7 +706,8 @@ def is_transport_headline(*records) -> bool:
     return (is_transport_story({"title": headline})
             or any(term in headline for term in _TRANSPORT_HEADLINE_ZH_TERMS)
             or _TRANSPORT_HEADLINE_EN_RE.search(headline) is not None
-            or _AIRCRAFT_MODEL_RE.search(headline) is not None)
+            or _AIRCRAFT_MODEL_RE.search(headline) is not None
+            or _headline_names_airline(headline, records))
 
 
 _TAIWAN_AIRLINE_ZH_TERMS = TAIWAN_AIRLINE_KEYWORDS

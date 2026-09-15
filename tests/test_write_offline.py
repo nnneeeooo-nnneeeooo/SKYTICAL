@@ -709,7 +709,7 @@ def test_provider_failover():
 
 
 def test_model_chain_and_routing_policy():
-    """name:model order tokens; platform-level death; primary retry-once."""
+    """Model order, run-local platform circuits and primary retry policy."""
     # --- order tokens: same platform may appear with different models -----
     saved = {k: os.environ.get(k) for k in (
         "AVWIRE_PROVIDER_ORDER", "NVIDIA_API_KEY", "GEMINI_API_KEY",
@@ -758,6 +758,43 @@ def test_model_chain_and_routing_policy():
     articles = all_articles()
     check(len(articles) == 1 and articles[0]["writer"] == "gemini:fake",
           "cross-platform fallback wrote the publishable article")
+
+    # --- repeated transport outages trip a run-local platform circuit -----
+    reset_data_dir()
+    gem_primary = FakeProvider(
+        "gemini", [providers.ProviderError("HTTP 503")])
+    gem_fallback = FakeProvider(
+        "gemini", [providers.ProviderError("HTTP 503")])
+    healthy = FakeProvider("anthropic", [DRAFT_SAFETY, DRAFT_BIZ, None])
+
+    original = write.build_providers
+    write.build_providers = lambda: [gem_primary, gem_fallback, healthy]
+    try:
+        write.main()
+    finally:
+        write.build_providers = original
+
+    check(gem_primary.calls == 1 and gem_fallback.calls == 1,
+          "two same-platform 503s stop repeated calls for later groups")
+    articles = all_articles()
+    check(len(articles) == 2
+          and all(article["writer"] == "anthropic:fake"
+                  for article in articles),
+          "healthy cross-platform fallback handles remaining groups")
+    runs = load(DATA / "usage.json").get("recentRuns") or []
+    disabled_attempts = [
+        attempt for row in runs for attempt in row.get("attempts", [])
+        if attempt.get("label") == "gemini:fake"
+        and attempt.get("disabledForRun")
+    ]
+    check(len(disabled_attempts) == 1,
+          "circuit-breaking failure is marked disabled in the run ledger")
+    check(write._is_transient_platform_failure(
+              providers.ProviderError("finishReason MAX_TOKENS")) is False,
+          "model truncation does not trip the platform circuit")
+    check(write._is_transient_platform_failure(
+              providers.ProviderError("HTTP 400")) is False,
+          "request-specific HTTP 400 does not trip the platform circuit")
 
     # --- primary model retries ONCE on a validation failure ----------------
     reset_data_dir()
