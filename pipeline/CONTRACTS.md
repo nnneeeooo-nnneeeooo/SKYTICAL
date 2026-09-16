@@ -347,6 +347,16 @@ orphaned ticker entries are omitted as well; source JSON remains preserved.
 structured fields and stores body/source text plus matched aliases in its
 search field. The search page loads the index only when a query is made, so
 visiting the page without searching does not download the full index.
+Version 2 also publishes a verified `airlineCodes` map and an `airlines` list
+of canonical ICAO identity keys on each record. Exact IATA/ICAO queries filter
+by those keys instead of treating short codes as ordinary substrings; an
+optional remaining phrase (for example `DE A320`) is then matched only within
+that carrier's articles. Membership comes from structured airline entities;
+only older rows without airline entity data fall back to an exact reviewed
+airline name in the headline. A translated label or passing body mention cannot
+override a present entity list. Legacy radar-only IATA aliases are intentionally not
+published to the news search index. Short Latin full-text terms of up to three
+characters require whole-token matches.
 Daily search-box suggestions are also indexed as exact aliases of their linked
 article, so every displayed suggestion resolves without weakening ordinary
 full-text matching. Previously displayed suggestions stay searchable after the
