@@ -63,7 +63,9 @@ IMAGE_CAPTIONS = (_caption_cache.get("images", {})
 if not isinstance(IMAGE_CAPTIONS, dict):
     IMAGE_CAPTIONS = {}
 
-PUBLIC_DIR = Path(__file__).resolve().parent.parent / "public"
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+PUBLIC_DIR = PROJECT_DIR / "public"
+CONFIG_DIR = PROJECT_DIR / "config"
 
 
 def static_asset_version() -> str:
@@ -167,12 +169,14 @@ L = {
             "隨意搜尋想看的 SKYTICAL 內容",
             "今天想看什麼航空新聞？",
         ],
-        "searchSub": "搜尋標題、摘要、全文、來源、日期、航班、機型與機場代碼；航空公司正式名稱與常用簡稱可互相查找。",
+        "searchSub": "搜尋標題、摘要、全文、來源、日期、航班、機型、機場代碼與航空公司 IATA／ICAO 代碼；航空公司正式名稱與常用簡稱可互相查找。",
         "searchButton": "搜尋", "searchClear": "清除",
         "searchLoading": "正在載入新聞索引…",
         "searchPrompt": "輸入關鍵字開始搜尋全部新聞。",
         "searchCount": "找到 {count} 則新聞",
         "searchNoResults": "找不到符合「{query}」的新聞，請改用航空公司簡稱、機型、航班或機場代碼。",
+        "searchAirlineCodeCount": "航空公司代碼：{code}（{type}）· {airline}；找到 {count} 則新聞",
+        "searchAirlineCodeNoResults": "已辨識航空公司代碼：{code}（{type}）· {airline}，但目前沒有對應新聞。",
         "searchError": "新聞索引暫時無法載入，請稍後重新整理頁面。",
         "radarKicker": "Taiwan Flight Radar",
         "radarTitle": "台灣民航雷達",
@@ -300,12 +304,14 @@ L = {
             "Explore anything on SKYTICAL",
             "What aviation news are you looking for?",
         ],
-        "searchSub": "Search titles, summaries, full text, sources, dates, flights, aircraft types and airport codes. Official airline names and common short names are interchangeable.",
+        "searchSub": "Search titles, summaries, full text, sources, dates, flights, aircraft types, airport codes and airline IATA/ICAO codes. Official airline names and common short names are interchangeable.",
         "searchButton": "Search", "searchClear": "Clear",
         "searchLoading": "Loading the news index…",
         "searchPrompt": "Enter keywords to search every published story.",
         "searchCount": "{count} articles found",
         "searchNoResults": "No stories match “{query}”. Try an airline short name, aircraft type, flight or airport code.",
+        "searchAirlineCodeCount": "Airline code: {code} ({type}) · {airline}; {count} articles found",
+        "searchAirlineCodeNoResults": "Airline code recognised: {code} ({type}) · {airline}, but no matching stories are currently available.",
         "searchError": "The news index is temporarily unavailable. Please reload this page later.",
         "radarKicker": "Taiwan Flight Radar",
         "radarTitle": "Taiwan civil flight radar",
@@ -1177,6 +1183,15 @@ def prep_article(raw):
     ]
     if not available_languages:
         available_languages = ["zh", "en"]
+    entities = raw.get("entities") if isinstance(raw.get("entities"), dict) else {}
+    raw_airlines = entities.get("airlines")
+    airline_entities = []
+    for value in raw_airlines[:20] if isinstance(raw_airlines, list) else []:
+        clean = re.sub(r"[\x00-\x1f\x7f<>]+", " ", str(value))
+        clean = re.sub(r"\s+", " ", clean).strip()[:80]
+        if clean and normalize_search_text(clean) not in {
+                normalize_search_text(existing) for existing in airline_entities}:
+            airline_entities.append(clean)
     from image_selection import prepare_image, rejection_reason
     selected_image = prepare_image(raw, raw.get("image"), IMAGE_CAPTIONS)
     if selected_image and rejection_reason(raw, selected_image, IMAGE_CAPTIONS):
@@ -1227,6 +1242,7 @@ def prep_article(raw):
         "zh": side(zh, en),
         "en": side(en, zh),
         "sources": sources,
+        "airline_entities": airline_entities,
         "writer_model": writer_model(
             raw.get("writer"), raw.get("writerModels")),
         "available_languages": available_languages,
@@ -1726,6 +1742,88 @@ def load_search_alias_groups() -> list[tuple[str, ...]]:
     return groups[:200]
 
 
+@lru_cache(maxsize=1)
+def load_airline_search_catalog() -> dict:
+    """Load verified airline identities for structured IATA/ICAO search.
+
+    Codes are never treated as full-text aliases.  They resolve to one
+    canonical ICAO key, while article membership is inferred only from
+    source-grounded airline entities or complete reviewed airline names.
+    Duplicate codes and ambiguous names fail closed.
+    """
+    raw = load_json(CONFIG_DIR / "airline_icao_codes.json", {})
+    rows = raw.get("airlines") if isinstance(raw, dict) else None
+    identities = {}
+    alias_groups = load_search_alias_groups()
+    for row in rows[:500] if isinstance(rows, list) else []:
+        if not isinstance(row, dict) or row.get("active") is not True:
+            continue
+        icao = str(row.get("icao_code") or "").strip().upper()
+        iata = str(row.get("iata_code") or "").strip().upper()
+        zh = re.sub(r"\s+", " ", str(
+            row.get("airline_name_zh_tw") or "")).strip()[:80]
+        en = re.sub(r"\s+", " ", str(
+            row.get("airline_name_en") or "")).strip()[:80]
+        if not re.fullmatch(r"[A-Z]{3}", icao) \
+                or (iata and not re.fullmatch(r"[A-Z0-9]{2}", iata)) \
+                or not zh or not en or icao in identities:
+            continue
+
+        aliases = [zh, en]
+        configured = row.get("search_aliases")
+        if isinstance(configured, list):
+            aliases.extend(str(value) for value in configured[:20])
+        official = {normalize_search_text(zh), normalize_search_text(en)}
+        for group in alias_groups:
+            if official & {normalize_search_text(value) for value in group}:
+                aliases.extend(group)
+
+        clean_aliases, seen = [], set()
+        for value in aliases:
+            alias = re.sub(r"[\x00-\x1f\x7f<>]+", " ", str(value))
+            alias = re.sub(r"\s+", " ", alias).strip()[:80]
+            normalized = normalize_search_text(alias)
+            # Never infer article membership from a short Latin token such as
+            # "IT" or "ANA".  Codes are resolved separately, and structured
+            # article entities may still match an exact short brand safely.
+            unsafe_short_latin = re.fullmatch(r"[a-z0-9]{1,3}", normalized)
+            if alias and normalized and not unsafe_short_latin \
+                    and normalized not in seen:
+                seen.add(normalized)
+                clean_aliases.append(alias)
+        identities[icao] = {
+            "iata": iata,
+            "icao": icao,
+            "zh": zh,
+            "en": en,
+            "aliases": tuple(clean_aliases),
+        }
+
+    def unique_map(field: str) -> dict[str, str]:
+        owners = {}
+        for key, identity in identities.items():
+            owners.setdefault(identity[field], []).append(key)
+        return {
+            code: keys[0] for code, keys in owners.items()
+            if code and len(keys) == 1
+        }
+
+    alias_owners = {}
+    for key, identity in identities.items():
+        for alias in identity["aliases"]:
+            alias_owners.setdefault(normalize_search_text(alias), []).append(key)
+    alias_to_key = {
+        alias: keys[0] for alias, keys in alias_owners.items()
+        if alias and len(set(keys)) == 1
+    }
+    return {
+        "identities": identities,
+        "iata": unique_map("iata"),
+        "icao": unique_map("icao"),
+        "alias_to_key": alias_to_key,
+    }
+
+
 def _search_text_has_alias(normalized_text: str, alias: str) -> bool:
     needle = normalize_search_text(alias)
     if not needle:
@@ -1748,7 +1846,36 @@ def expand_search_aliases(text: str, groups=None) -> list[str]:
     return matched
 
 
-def search_index_item(article, alias_groups, prompt_aliases=()) -> dict:
+def article_airline_keys(article: dict, catalog=None) -> list[str]:
+    """Return verified airline identity keys represented by one article."""
+    catalog = catalog or load_airline_search_catalog()
+    identities = catalog.get("identities", {})
+    alias_to_key = catalog.get("alias_to_key", {})
+    matched = set()
+    entity_values = article.get("airline_entities") or []
+    for value in entity_values:
+        key = alias_to_key.get(normalize_search_text(value))
+        if key:
+            matched.add(key)
+
+    # Trust a present structured entity list over translated headline wording.
+    # Titles are only the conservative fallback for older rows with no airline
+    # entity data.  A passing reference in the body is never enough.
+    if entity_values:
+        return sorted(matched)
+    raw_text = " ".join([
+        article["zh"]["title"], article["en"]["title"],
+    ])
+    normalized_text = normalize_search_text(raw_text)
+    for key, identity in identities.items():
+        if any(_search_text_has_alias(normalized_text, alias)
+               for alias in identity["aliases"]):
+            matched.add(key)
+    return sorted(matched)
+
+
+def search_index_item(article, alias_groups, prompt_aliases=(),
+                      airline_catalog=None) -> dict:
     """Build one bilingual, full-text record for the static client index.
 
     Titles, summaries and display metadata are already stored as structured
@@ -1794,6 +1921,7 @@ def search_index_item(article, alias_groups, prompt_aliases=()) -> dict:
         "published": article["dt"].isoformat(),
         "articleFormat": article["article_format"],
         "availableLanguages": article["available_languages"],
+        "airlines": article_airline_keys(article, airline_catalog),
         "url": urls,
         "search": normalize_search_text(" ".join(
             str(value) for value in searchable if value)),
@@ -1802,6 +1930,7 @@ def search_index_item(article, alias_groups, prompt_aliases=()) -> dict:
 
 def search_index_payload(articles, generated_utc) -> dict:
     alias_groups = load_search_alias_groups()
+    airline_catalog = load_airline_search_catalog()
     article_ids = {article["id"] for article in articles}
     prompt_aliases = {}
     for article_id, zh_prompt, en_prompt in search_prompt_alias_rows():
@@ -1809,11 +1938,25 @@ def search_index_payload(articles, generated_utc) -> dict:
             continue
         prompt_aliases.setdefault(article_id, []).extend((zh_prompt, en_prompt))
     return {
-        "version": 1,
+        "version": 2,
         "generatedUtc": generated_utc.isoformat(),
         "count": len(articles),
+        "airlineCodes": {
+            "iata": airline_catalog["iata"],
+            "icao": airline_catalog["icao"],
+            "labels": {
+                key: {
+                    "iata": identity["iata"],
+                    "icao": identity["icao"],
+                    "zh": identity["zh"],
+                    "en": identity["en"],
+                }
+                for key, identity in airline_catalog["identities"].items()
+            },
+        },
         "items": [search_index_item(
-            article, alias_groups, prompt_aliases.get(article["id"], ()))
+            article, alias_groups, prompt_aliases.get(article["id"], ()),
+            airline_catalog)
                   for article in articles],
     }
 

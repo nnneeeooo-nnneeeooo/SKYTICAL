@@ -14,7 +14,8 @@ sys.path.insert(0, str(ROOT / "pipeline"))
 import build  # noqa: E402
 
 
-def sample_article(title: str):
+def sample_article(title: str, *, en_title: str = "Airline search alias test",
+                   airlines=()):
     return build.prep_article({
         "id": "a-search-alias-test",
         "publishedUtc": "2026-08-10T00:00:00Z",
@@ -26,10 +27,11 @@ def sample_article(title: str):
             "body": ["航機抵達臺灣桃園國際機場。"],
         },
         "en": {
-            "title": "Airline search alias test",
+            "title": en_title,
             "summary": "Testing airline aliases in search.",
             "body": ["The aircraft arrived at Taoyuan Airport."],
         },
+        "entities": {"airlines": list(airlines)},
         "sources": [{"name": "Test source", "url": "https://example.com/news"}],
     })
 
@@ -67,6 +69,26 @@ def suggestion_has_result(prompt: str, items: list[dict]) -> bool:
 def main() -> None:
     aliases = build.load_search_alias_groups()
     assert len(aliases) >= 25
+    catalog = build.load_airline_search_catalog()
+    assert catalog["iata"]["DE"] == "CFG"
+    assert catalog["icao"]["CFG"] == "CFG"
+    assert catalog["icao"]["ASV"] == "ASV"
+    assert "ASV" in catalog["identities"]
+    assert "9S" not in catalog["iata"]
+
+    condor = build.search_index_item(sample_article(
+        "Condor A320因宵禁被拒降法蘭克福",
+        en_title="Condor A320 denied landing at Frankfurt",
+        airlines=("Condor",),
+    ), aliases, airline_catalog=catalog)
+    etihad = build.search_index_item(sample_article(
+        "阿提哈德航空推出Beyond Borders全新客艙體驗",
+        en_title="Etihad Airways unveils Beyond Borders cabin experience",
+        airlines=("Etihad Airways",),
+    ), aliases, airline_catalog=catalog)
+    assert condor["airlines"] == ["CFG"]
+    assert "CFG" not in etihad["airlines"]
+    assert "ETD" in etihad["airlines"]
 
     formal = build.search_index_item(sample_article("中華航空新增航班"), aliases)
     formal_search = formal["search"]
@@ -99,10 +121,24 @@ def main() -> None:
         (ROOT / "site" / "search-index.json").read_text(encoding="utf-8"))
     alias_payload = json.loads(
         (ROOT / "site" / "search-aliases.json").read_text(encoding="utf-8"))
-    assert payload["version"] == 1
+    assert payload["version"] == 2
     assert payload["count"] == len(payload["items"]) == len(build.collect_articles())
     assert payload["items"]
     assert all(row["search"] and row["url"] for row in payload["items"])
+    assert payload["airlineCodes"]["iata"]["DE"] == "CFG"
+    assert payload["airlineCodes"]["icao"]["CFG"] == "CFG"
+    assert payload["airlineCodes"]["icao"]["ASV"] == "ASV"
+    assert "9S" not in payload["airlineCodes"]["iata"]
+    items_by_id = {row["id"]: row for row in payload["items"]}
+    live_condor = items_by_id[
+        "a-20260915-0811-simple-flying-reports-condor-a320-missed"]
+    beyond_borders = items_by_id[
+        "a-20260916-0014-etihad-airways-unveils-beyond-borders-ca"]
+    assert "CFG" in live_condor["airlines"]
+    assert "CFG" not in beyond_borders["airlines"]
+    assert "ETD" in beyond_borders["airlines"]
+    assert [row["id"] for row in payload["items"]
+            if "CFG" in row["airlines"]] == [live_condor["id"]]
     assert any(
         "中華航空" in row["search"] and "華航" in row["search"]
         for row in payload["items"]
@@ -136,7 +172,6 @@ def main() -> None:
                for prompt in zh_placeholders + en_placeholders)
     prompt_rows = build.daily_search_prompt_rows()
     assert len(prompt_rows) == len(zh_placeholders) == len(en_placeholders)
-    items_by_id = {row["id"]: row for row in payload["items"]}
     for article_id, zh_prompt, en_prompt in prompt_rows:
         assert article_id in items_by_id
         indexed = items_by_id[article_id]["search"]
@@ -183,9 +218,14 @@ def main() -> None:
     assert ".header-search-form:focus-within" in css
     assert ".header-search-input:not(:placeholder-shown) + .header-search-clear" in css
     assert ".header-search-submit" in css
-    assert "航空公司正式名稱與常用簡稱可互相查找" in zh
-    assert "Official airline names and common short names are interchangeable" in en
+    assert "航空公司 IATA／ICAO 代碼" in zh
+    assert "airline IATA/ICAO codes" in en
+    assert "data-airline-code-count-template" in zh
+    assert "data-airline-code-empty-template" in en
     assert "function matchingRecords" in script
+    assert "function parseAirlineCodeQuery" in script
+    assert "function termMatches" in script
+    assert "record.airlines" in script
     assert "terms.length - 1" in script
     assert "function loadIndex()" in script
     assert "function recordSearchText" in script
@@ -195,7 +235,7 @@ def main() -> None:
     assert "innerHTML" not in script
     assert "URLSearchParams" not in script  # URL.searchParams is used directly
     assert 'url.searchParams.set("highlight", highlightQuery)' in script
-    assert "resultCard(row.record, query)" in script
+    assert "resultCard(row.record, highlightQuery)" in script
     assert 'searchParams.get("highlight")' in highlight_script
     assert "payload.groups" in highlight_script
     assert 'mark.className = "search-hit"' in highlight_script
