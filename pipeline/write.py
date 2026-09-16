@@ -47,6 +47,7 @@ from common import (
     SITE_ORIGIN,
     group_has_material,
     is_google_news_url,
+    is_major_event_story,
     is_transport_story,
     iso_minute,
     load_json,
@@ -1112,9 +1113,11 @@ def validate_draft(draft):
     return None
 
 
-# Code-level source-completeness check.  A short but explicit event headline
-# may now produce publish_brief; a vague/title-only listing is still consumed
-# without spending an API call.
+# Code-level source-completeness check. A short but explicit event headline
+# may now produce publish_brief; pipeline-fetched fulltext also counts as
+# current evidence. A vague/title-only listing is still consumed without
+# spending an API call unless the deterministic major-event retention rule
+# has reserved it for a material retry.
 def has_material(group: dict) -> bool:
     if group.get("groupKind") == "safety_roundup":
         raw_items = group.get("items") or []
@@ -1123,6 +1126,11 @@ def has_material(group: dict) -> bool:
             return all(str(item.get("title") or "").strip() for item in items)
     if group_has_material(group):
         return True
+    # Archive context can justify a short update only after the current
+    # source contributes evidence. It must not turn a retained major title
+    # into an API call when its official page was not fetched yet.
+    if is_major_event_story(group):
+        return False
     return archive_context.has_identifiable_new_event(group)
 
 
@@ -2349,6 +2357,7 @@ def main() -> None:
 
     # --- 2. draft the pending groups through the provider chain ----------
     providers = build_providers()
+    major_deferred = 0
     if not providers:
         print("write: no LLM API key set (OPENCODE_API_KEY / "
               "ANTHROPIC_API_KEY / GEMINI_API_KEY / NVIDIA_API_KEY / "
@@ -2374,7 +2383,8 @@ def main() -> None:
                   f"({type(exc).__name__}: {exc})")
         try:
             # Pipeline-side enrichment: full text of official pages joins
-            # the verifiable material. Failures just leave items thin.
+            # the verifiable material. Failures leave ordinary items thin;
+            # major title-only candidates are retained for a later retry.
             enrich_pending(groups)
         except Exception as exc:
             print(f"write: fulltext enrichment skipped "
@@ -2434,6 +2444,15 @@ def main() -> None:
                 run_trace.finish("no_provider", "retry_pending")
                 continue
             if not has_material(group):
+                if is_major_event_story(group):
+                    # A major official title is valuable discovery, but it is
+                    # not evidence by itself. Keep it unseen so a transient
+                    # fulltext/robots/network failure can be retried next run.
+                    major_deferred += 1
+                    print(f"write: major group {group.get('id')} has no "
+                          "usable source material; retained for retry")
+                    run_trace.finish("retry_pending", "retry_pending")
+                    continue
                 # Title-only material can never satisfy the evidence rules:
                 # consume it here without spending an API call - and without
                 # letting it crowd summary-bearing groups out of the cap.
@@ -2615,7 +2634,7 @@ def main() -> None:
           f"{len(updated_articles)} existing article(s) "
           f"({legacy_published} migrated from retired review), rejected "
           f"{len(rejected_groups)}, skipped {skipped}, "
-          f"pending {remaining_count}")
+          f"pending {remaining_count}, major retries {major_deferred}")
     try:
         # Flush this run's per-provider token spend into data/usage.json
         # (exactly once - the counters live on the provider objects).

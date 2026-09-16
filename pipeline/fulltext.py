@@ -18,8 +18,9 @@ Guard rails:
   HTTP 404 robots -> allowed, per convention).
 - Results (including misses) are cached in data/fulltext.json with a TTL,
   and each run performs at most MAX_FETCHES_PER_RUN requests.
-- Any failure leaves the item exactly as before - thin material then
-  simply produces the same short-but-honest article as today.
+- Any failure leaves the item exactly as before - ordinary thin material is
+  still handled by the normal completeness gate, while a retained major
+  candidate stays pending for a later retry.
 """
 from __future__ import annotations
 
