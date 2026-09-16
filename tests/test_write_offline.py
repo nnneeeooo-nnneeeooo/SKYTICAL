@@ -920,6 +920,47 @@ def test_completeness_precheck():
     print("test_completeness_precheck: done")
 
 
+def test_major_title_only_is_retained_for_material_retry():
+    """A major title stays unseen when its official page cannot enrich it."""
+    reset_data_dir()
+    pending = load(DATA / "pending.json")
+    major_url = "https://boeing.mediaroom.com/2026-09-16-major-order"
+    pending["groups"] = [{
+        "id": "g-major-thin",
+        "primarySource": "Boeing",
+        "editorialPriority": "major",
+        "items": [{
+            "title": "Boeing, Korean Air Announce Record 103-Airplane Order",
+            "url": major_url,
+            "publishedUtc": "2026-09-16T02:00Z",
+            "summary": "",
+            "image": None,
+            "source": "Boeing",
+            "sourceKey": "boeing",
+        }],
+    }]
+    (DATA / "pending.json").write_text(
+        json.dumps(pending, ensure_ascii=False), encoding="utf-8")
+    os.environ["GEMINI_API_KEY"] = "test-key-not-real"
+    solo = FakeProvider("gemini", [DRAFT_BIZ])
+
+    original = write.build_providers
+    write.build_providers = lambda: [solo]
+    try:
+        write.main()
+    finally:
+        write.build_providers = original
+
+    check(solo.calls == 0,
+          "major title-only item waits for evidence without an API call")
+    retained = load(DATA / "pending.json")["groups"]
+    check([group["id"] for group in retained] == ["g-major-thin"],
+          "major title-only item remains pending")
+    check(common.norm_url(major_url) not in load(DATA / "seen.json")["urls"],
+          "major title-only item remains unseen for retry")
+    print("test_major_title_only_is_retained_for_material_retry: done")
+
+
 def test_all_providers_auth_dead():
     """Every provider failing auth -> SystemExit(1), nothing published."""
     reset_data_dir()
@@ -960,7 +1001,9 @@ def main():
              test_group_cap_and_unique_ids,
              test_extract_json_and_validate_draft, test_provider_failover,
              test_model_chain_and_routing_policy, test_editorial_gate,
-             test_completeness_precheck, test_all_providers_auth_dead,
+             test_completeness_precheck,
+             test_major_title_only_is_retained_for_material_retry,
+             test_all_providers_auth_dead,
              test_no_api_key_end_to_end]
     crashed = False
     for test in tests:

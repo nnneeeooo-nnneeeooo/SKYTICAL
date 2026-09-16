@@ -21,6 +21,7 @@ from common import (
     RAW_DIR,
     SOURCES,
     group_has_material,
+    is_major_event_story,
     is_taiwan_airline_story,
     iso_minute,
     load_json,
@@ -358,11 +359,13 @@ def main() -> None:
     ]
 
     # Rank Taiwan national-carrier coverage first so it cannot be crowded out
-    # of the MAX_GROUPS cap. Within each priority tier, groups that actually
-    # carry summary material come before title-only groups (which cannot
-    # survive the evidence rules), then cross-source coverage and recency.
+    # of the MAX_GROUPS cap. A conservative major-event signal comes next so
+    # a consequential official title-only release survives long enough for
+    # write.py/fulltext.py to retrieve its evidence. Within those tiers,
+    # material groups come before ordinary title-only groups, then
+    # cross-source coverage and recency.
     ranked: list[
-        tuple[bool, bool, bool, datetime, list[dict], bool, str]
+        tuple[bool, bool, bool, bool, datetime, list[dict], bool, str]
     ] = []
     active_items = 0
     for members, group_kind in _group_with_kind(eligible):
@@ -391,13 +394,17 @@ def main() -> None:
             or group_has_material({"items": members})
         )
         must_report = is_taiwan_airline_story({"items": members})
-        ranked.append((must_report, material, multi, newest, members,
+        major = is_major_event_story({"items": members})
+        ranked.append((must_report, major, material, multi, newest, members,
                        update_candidate, group_kind))
     ranked.sort(
-        key=lambda entry: (entry[0], entry[1], entry[2], entry[3]),
+        key=lambda entry: (entry[0], entry[1], entry[2], entry[3], entry[4]),
         reverse=True,
     )
-    material_groups = sum(1 for entry in ranked if entry[1])
+    major_groups = sum(1 for entry in ranked if entry[1])
+    selected = ranked[:MAX_GROUPS]
+    selected_material_groups = sum(1 for entry in selected if entry[2])
+    selected_major_groups = sum(1 for entry in selected if entry[1])
 
     stamp = now.strftime("%Y%m%d-%H%M")
     payload = {
@@ -409,14 +416,15 @@ def main() -> None:
                 "items": members,
                 "updateCandidate": update_candidate,
                 "mustReport": must_report,
+                "editorialPriority": "major" if major else "standard",
                 "groupKind": group_kind,
                 "independentEvents": group_kind == "safety_roundup",
             }
             for n, (
-                must_report, _material, _multi, _newest, members,
+                must_report, major, _material, _multi, _newest, members,
                 update_candidate, group_kind
             ) in enumerate(
-                ranked[:MAX_GROUPS], start=1
+                selected, start=1
             )
         ],
     }
@@ -427,10 +435,13 @@ def main() -> None:
     )
     print(
         "dedupe stats: window={}h sources={} {} "
-        "groups_with_material={}/{}".format(
+        "groups_with_material={}/{} major_candidates={} "
+        "major_retained={} major_deferred={}".format(
             MAX_ITEM_AGE_HOURS, len(SOURCES),
             " ".join(f"{k}={v}" for k, v in stats.items()),
-            min(material_groups, MAX_GROUPS), len(payload["groups"]),
+            selected_material_groups, len(payload["groups"]),
+            major_groups, selected_major_groups,
+            max(0, major_groups - selected_major_groups),
         )
     )
 

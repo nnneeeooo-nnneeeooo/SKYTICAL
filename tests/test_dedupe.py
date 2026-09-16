@@ -328,6 +328,55 @@ def test_taiwan_airline_story_is_reserved_ahead_of_general_cap() -> None:
         assert all(group["mustReport"] is False for group in groups[1:])
 
 
+def test_major_title_only_survives_group_cap() -> None:
+    """A large official order is retained before ordinary material news."""
+    body = "A real summary carrying enough evidence text for the model."
+    titles = [
+        "Airport opens a remote terminal for regional flights",
+        "Engine maker completes a high altitude certification campaign",
+        "Cargo operator adds a cold chain handling facility",
+        "Regulator adopts revised runway inspection guidance",
+        "Helicopter manufacturer delivers a coastal rescue aircraft",
+        "Air traffic agency activates an oceanic control sector",
+        "Leasing company places an order for freighter conversions",
+        "Maintenance provider expands a composite repair hangar",
+        "Regional airline introduces a redesigned business cabin",
+        "Airport authority awards a terminal rail contract",
+        "Aircraft supplier opens a new landing gear factory",
+        "Cargo carrier signs a sustainable fuel agreement",
+    ]
+    ordinary = [
+        _mk_item(title, f"https://www.faa.gov/n/ordinary-{i}", i + 1,
+                 body)
+        for i, title in enumerate(titles)
+    ]
+    major = _mk_item(
+        "Boeing, Korean Air Announce Record 103-Airplane Order",
+        "https://boeing.mediaroom.com/2026-09-16-major-order",
+        dedupe.MAX_GROUPS + 20,
+        "",
+    )
+    assert dedupe.is_major_event_story({"items": [
+        {**major, "sourceKey": "boeing"},
+    ]})
+    assert not dedupe.is_major_event_story({"items": [
+        {**major, "title": "Boeing delivers 100th 787 to Emirates!",
+         "sourceKey": "boeing"},
+    ]})
+    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+        data_dir = Path(tmp)
+        _write_snapshot(data_dir, "faa", ordinary)
+        _write_snapshot(data_dir, "boeing", [major])
+        stdout = _run_dedupe(data_dir)
+        groups = _load_pending(data_dir)["groups"]
+
+        assert len(groups) == dedupe.MAX_GROUPS
+        assert groups[0]["items"][0]["title"] == major["title"]
+        assert groups[0]["editorialPriority"] == "major"
+        assert "major_candidates=1" in stdout, stdout
+        assert "major_retained=1" in stdout, stdout
+
+
 def test_empty_data_dir() -> None:
     with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
         data_dir = Path(tmp)
@@ -436,6 +485,7 @@ def main() -> None:
         test_filtering_grouping_and_ranking,
         test_group_cap_and_recency_order,
         test_taiwan_airline_story_is_reserved_ahead_of_general_cap,
+        test_major_title_only_survives_group_cap,
         test_empty_data_dir,
         test_freshness_window_and_future_guard,
         test_material_groups_rank_first,
