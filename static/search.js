@@ -3,7 +3,68 @@
 (function () {
   "use strict";
 
-  var root = document.getElementById("news-search-app");
+  function normalize(value) {
+    return String(value || "")
+      .normalize("NFKC")
+      .toLocaleLowerCase()
+      .replace(/[^\p{L}\p{N}_]+/gu, " ")
+      .trim();
+  }
+
+  function termMatches(haystack, term) {
+    if (/^[a-z0-9]{1,3}$/.test(term)) {
+      return haystack.split(/\s+/).indexOf(term) !== -1;
+    }
+    return haystack.indexOf(term) !== -1;
+  }
+
+  function parseAirlineCodeQuery(query, codeIndex) {
+    var raw = String(query || "").trim();
+    var explicit = /^(iata|icao|airline)\s*:\s*([A-Za-z0-9]{2,3})(?:\s+(.+))?$/i.exec(raw);
+    var automatic = explicit ? null : /^([A-Za-z0-9]{2,3})$/.exec(raw);
+    var combined = explicit || automatic ? null : /^([A-Z0-9]{2,3})\s+(.+)$/.exec(raw);
+    var requestedType = explicit ? explicit[1].toLowerCase() : "airline";
+    var code = String(
+      explicit ? explicit[2] : automatic ? automatic[1] : combined ? combined[1] : ""
+    ).toUpperCase();
+    var remainder = String(
+      explicit ? explicit[3] || "" : combined ? combined[2] || "" : ""
+    ).trim();
+    if (!code) return null;
+
+    var source = codeIndex && typeof codeIndex === "object" ? codeIndex : {};
+    var iata = source.iata && typeof source.iata === "object" ? source.iata : {};
+    var icao = source.icao && typeof source.icao === "object" ? source.icao : {};
+    var labels = source.labels && typeof source.labels === "object" ? source.labels : {};
+    var key = "";
+    var type = "";
+    if (requestedType === "iata") {
+      key = iata[code] || "";
+      type = "IATA";
+    } else if (requestedType === "icao") {
+      key = icao[code] || "";
+      type = "ICAO";
+    } else if (iata[code]) {
+      key = iata[code];
+      type = "IATA";
+    } else if (icao[code]) {
+      key = icao[code];
+      type = "ICAO";
+    }
+    if (!key || !labels[key] || typeof labels[key] !== "object") return null;
+    return { key: key, code: code, type: type, remainder: remainder, label: labels[key] };
+  }
+
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = {
+      normalize: normalize,
+      termMatches: termMatches,
+      parseAirlineCodeQuery: parseAirlineCodeQuery
+    };
+  }
+
+  var root = typeof document === "undefined" ? null :
+    document.getElementById("news-search-app");
   if (!root) return;
 
   var form = document.getElementById("news-search-form");
@@ -13,17 +74,10 @@
   var lang = root.dataset.lang === "en" ? "en" : "zh";
   var otherLang = lang === "zh" ? "en" : "zh";
   var records = [];
+  var airlineCodes = { iata: {}, icao: {}, labels: {} };
   var ready = false;
   var loading = null;
   var debounceTimer = 0;
-
-  function normalize(value) {
-    return String(value || "")
-      .normalize("NFKC")
-      .toLocaleLowerCase()
-      .replace(/[^\p{L}\p{N}_]+/gu, " ")
-      .trim();
-  }
 
   function localized(record, field) {
     var value = record[field] || {};
@@ -116,7 +170,7 @@
   function scoreRecord(record, normalizedQuery, terms, minimumMatches) {
     var haystack = recordSearchText(record);
     var matchedTerms = terms.filter(function (term) {
-      return haystack.indexOf(term) !== -1;
+      return termMatches(haystack, term);
     });
     if (matchedTerms.length < minimumMatches) {
       return -1;
@@ -124,17 +178,21 @@
     var title = normalize(localized(record, "title"));
     var summary = normalize(localized(record, "summary"));
     var score = 1;
-    if (title === normalizedQuery) score += 200;
-    else if (title.indexOf(normalizedQuery) !== -1) score += 100;
+    if (normalizedQuery && title === normalizedQuery) score += 200;
+    else if (normalizedQuery && title.indexOf(normalizedQuery) !== -1) score += 100;
     matchedTerms.forEach(function (term) {
-      if (title.indexOf(term) !== -1) score += 20;
-      if (summary.indexOf(term) !== -1) score += 6;
+      if (termMatches(title, term)) score += 20;
+      if (termMatches(summary, term)) score += 6;
     });
     return score;
   }
 
-  function matchingRecords(normalizedQuery, terms, minimumMatches) {
+  function matchingRecords(normalizedQuery, terms, minimumMatches, airlineKey) {
     return records.map(function (record) {
+      var airlines = Array.isArray(record.airlines) ? record.airlines : [];
+      if (airlineKey && airlines.indexOf(airlineKey) === -1) {
+        return { record: record, score: -1 };
+      }
       return {
         record: record,
         score: scoreRecord(record, normalizedQuery, terms, minimumMatches)
@@ -160,14 +218,19 @@
       return;
     }
 
-    var normalizedQuery = normalize(query);
+    var airlineQuery = parseAirlineCodeQuery(query, airlineCodes);
+    var textQuery = airlineQuery ? airlineQuery.remainder : query;
+    var normalizedQuery = normalize(textQuery);
     var terms = normalizedQuery.split(/\s+/).filter(Boolean);
-    var matches = matchingRecords(normalizedQuery, terms, terms.length);
+    var airlineKey = airlineQuery ? airlineQuery.key : "";
+    var matches = matchingRecords(
+      normalizedQuery, terms, terms.length, airlineKey);
     if (!matches.length && terms.length >= 3) {
       /* Daily suggestions may paraphrase one phrase from the source title.
          Keep normal searches strict, then allow one unmatched term only when
          the strict pass produced nothing. */
-      matches = matchingRecords(normalizedQuery, terms, terms.length - 1);
+      matches = matchingRecords(
+        normalizedQuery, terms, terms.length - 1, airlineKey);
     }
     matches.sort(function (left, right) {
       if (right.score !== left.score) return right.score - left.score;
@@ -175,15 +238,35 @@
     });
 
     if (!matches.length) {
-      status.textContent = root.dataset.emptyTemplate.replace("{query}", query);
+      if (airlineQuery) {
+        status.textContent = airlineStatus(
+          root.dataset.airlineCodeEmptyTemplate, airlineQuery, 0);
+      } else {
+        status.textContent = root.dataset.emptyTemplate.replace("{query}", query);
+      }
       return;
     }
-    status.textContent = root.dataset.countTemplate.replace("{count}", String(matches.length));
+    status.textContent = airlineQuery ? airlineStatus(
+      root.dataset.airlineCodeCountTemplate, airlineQuery, matches.length) :
+      root.dataset.countTemplate.replace("{count}", String(matches.length));
+    var highlightQuery = airlineQuery ? (
+      airlineQuery.remainder || airlineQuery.label[lang] ||
+      airlineQuery.label[otherLang] || "") : query;
     var fragment = document.createDocumentFragment();
     matches.forEach(function (row) {
-      fragment.appendChild(resultCard(row.record, query));
+      fragment.appendChild(resultCard(row.record, highlightQuery));
     });
     results.appendChild(fragment);
+  }
+
+  function airlineStatus(template, airlineQuery, count) {
+    var label = airlineQuery.label[lang] ||
+      airlineQuery.label[otherLang] || airlineQuery.key;
+    return String(template || "")
+      .replace("{code}", airlineQuery.code)
+      .replace("{type}", airlineQuery.type)
+      .replace("{airline}", label)
+      .replace("{count}", String(count));
   }
 
   form.addEventListener("submit", function (event) {
@@ -218,6 +301,9 @@
       })
       .then(function (payload) {
         records = Array.isArray(payload.items) ? payload.items : [];
+        airlineCodes = payload.airlineCodes &&
+          typeof payload.airlineCodes === "object" ? payload.airlineCodes :
+          { iata: {}, icao: {}, labels: {} };
         ready = true;
       })
       .catch(function (error) {
