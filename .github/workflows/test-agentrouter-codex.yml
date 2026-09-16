@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 10
     env:
       CODEX_GATEWAY_API_KEY: ${{ secrets.AGENTROUTER_API_KEY }}
-      CODEX_HOME: ${{ runner.temp }}/codex-agentrouter
+      CODEX_HOME: /tmp/codex-agentrouter
 
     steps:
       - name: Set up Node.js
