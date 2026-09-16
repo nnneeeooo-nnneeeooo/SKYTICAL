@@ -94,6 +94,8 @@ never be presented as one occurrence.
       "id": "g-20260726-0503-1",
       "groupKind": "event",               // event | safety_roundup
       "independentEvents": false,          // true only for safety_roundup
+      "editorialPriority": "standard",    // standard | major; deterministic
+                                            // retention priority before cap
       "primarySource": "Reuters",          // display name of best source in group
       "items": [ /* raw items as above, each with extra "source" (display name) and "sourceKey" */ ]
     }
