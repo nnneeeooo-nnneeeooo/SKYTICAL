@@ -6,6 +6,13 @@
   "entries": [
     {
       "date": "2026-09-16",
+      "kind": "feature",
+      "commit": "56b58637d6c1be2ed8ea730eea952c47546aaaa4",
+      "zh": "搜尋新增航空公司 IATA／ICAO 代碼辨識，以結構化航空公司實體限定結果，並將 1 至 3 字元的英數搜尋改為完整詞匹配，避免 DE 等短代碼誤中一般單字。",
+      "en": "Added airline IATA/ICAO code recognition to search, restricting results through structured airline identities and requiring whole-token matches for one-to-three-character Latin searches so short codes such as DE cannot match ordinary words."
+    },
+    {
+      "date": "2026-09-16",
       "kind": "fix",
       "commit": "ae00adb2ac72fd214c0e716497a2181afa63cf31",
       "zh": "修正每日搜尋推薦在隔日輪替後失效的問題，持久保留已顯示推薦詞與來源文章的連結，並回填既有 272 組中英文推薦詞。",
