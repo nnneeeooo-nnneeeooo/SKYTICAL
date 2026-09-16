@@ -84,9 +84,10 @@ NEWS_MAX_AGE_HOURS = _parse_max_age(
 FUTURE_SKEW_HOURS = 6
 
 # --- source-material completeness (editorial spec section 2) -------------
-# An item contributes usable evidence only when its summary adds real text
-# beyond the headline; a group needs at least one such item to be worth an
-# LLM call. Single source of truth for dedupe.py and write.py.
+# An item contributes usable evidence only when its summary or pipeline-fetched
+# full text adds real text beyond the headline; a group needs at least one such
+# item to be worth an LLM call. Single source of truth for dedupe.py and
+# write.py.
 MIN_EFFECTIVE_SUMMARY_CHARS = 25
 # CJK text is roughly twice as information-dense: a 15-character Chinese
 # sentence is a complete evidential statement.
@@ -108,21 +109,28 @@ def _comparable(text: str) -> str:
     return _SQUASH_RE.sub(" ", _PUNCT_RE.sub(" ", text)).strip()
 
 
-def item_has_material(item: dict) -> bool:
-    if not isinstance(item, dict):
+def _text_has_material(text, title) -> bool:
+    """Whether one source-text field adds evidence beyond the headline."""
+    comparable = _comparable(squash_text(text))
+    if not comparable:
         return False
-    summary = _comparable(squash_text(item.get("summary")))
-    if not summary:
-        return False
-    title = _comparable(squash_text(item.get("title")))
-    if title and title in summary:
-        # A summary that merely repeats the headline is not evidence.
-        summary = summary.replace(title, "", 1)
-    effective = summary.strip()
+    title_text = _comparable(squash_text(title))
+    if title_text and title_text in comparable:
+        # A field that merely repeats the headline is not evidence.
+        comparable = comparable.replace(title_text, "", 1)
+    effective = comparable.strip()
     threshold = (MIN_EFFECTIVE_SUMMARY_CHARS_CJK
                  if _CJK_RE.search(effective)
                  else MIN_EFFECTIVE_SUMMARY_CHARS)
     return len(effective) >= threshold
+
+
+def item_has_material(item: dict) -> bool:
+    if not isinstance(item, dict):
+        return False
+    title = item.get("title")
+    return any(_text_has_material(item.get(field), title)
+               for field in ("summary", "fulltext"))
 
 
 def group_has_material(group: dict) -> bool:
@@ -729,6 +737,76 @@ def is_taiwan_airline_story(*records) -> bool:
     )
     return (any(term in text for term in _TAIWAN_AIRLINE_ZH_TERMS)
             or _TAIWAN_AIRLINE_EN_RE.search(text) is not None)
+
+
+# A title-only official release can still announce a consequential event.  It
+# must survive the group cap long enough for fulltext.py to retrieve the
+# evidence; this rule is deliberately conservative and source-aware so a
+# generic thin listing cannot bypass the normal material gate.
+_MAJOR_SOURCE_KINDS = frozenset(("official", "industry"))
+_MAJOR_ACTION_RE = re.compile(
+    r"\b(?:announce(?:s|d)?|order(?:s|ed)?|purchas(?:e|es|ed)|"
+    r"buy(?:s|ing)?|bought|contract(?:s|ed)?|agreement|commitment|"
+    r"deal|deliver(?:s|ed|y|ies)?|acquir(?:e|es|ed)|merger)\b"
+    r"|訂購|訂單|採購|下單|合約|協議|承諾|交易|交付|併購",
+    re.IGNORECASE,
+)
+_MAJOR_SCALE_RE = re.compile(
+    r"\b(?:record|largest|biggest|historic|landmark|unprecedented|"
+    r"all[- ]time|more than|over|nearly|hundreds?)\b"
+    r"|紀錄|創紀錄|破紀錄|史上最大|歷來最大|超過|逾|上百|數百",
+    re.IGNORECASE,
+)
+_MAJOR_QUANTITY_RE = re.compile(
+    r"\b(?:[5-9]\d|[1-9]\d{2,})(?:st|nd|rd|th)?\s*[- ]?"
+    r"(?:[A-Za-z][A-Za-z-]*\s+){0,2}"
+    r"(?:aircraft|airplanes?|aeroplanes?|jets?|orders?|"
+    r"ships?|vessels?)\b"
+    r"|(?<!\w)(?:[5-9]\d|[1-9]\d{2,})\s*"
+    r"(?:架|架飛機|架客機|架貨機|艘|艘船|筆訂單)",
+    re.IGNORECASE,
+)
+
+
+def is_major_event_story(*records) -> bool:
+    """Whether a trusted title-only event deserves a slot before the cap.
+
+    The signal is intentionally limited to official/industry sources, a
+    transport subject in the headline, a consequential commercial action,
+    and either a superlative/scale term or a large quantity.  It is a
+    retention hint only: downstream evidence, safety and editorial gates
+    remain authoritative.
+    """
+    items = []
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        members = record.get("items")
+        if isinstance(members, list):
+            items.extend(item for item in members
+                         if isinstance(item, dict))
+        else:
+            items.append(record)
+    if not items:
+        return False
+    headline = " ".join(
+        title for item in items for title in _headline_values(item)
+    ).strip()
+    if not headline or not is_transport_headline(*items):
+        return False
+
+    trusted_source = False
+    for item in items:
+        source = SOURCES.get(str(item.get("sourceKey") or ""))
+        if isinstance(source, dict) and source.get("kind") \
+                in _MAJOR_SOURCE_KINDS:
+            trusted_source = True
+            break
+    if not trusted_source:
+        return False
+    return bool(_MAJOR_ACTION_RE.search(headline)
+                and (_MAJOR_SCALE_RE.search(headline)
+                     or _MAJOR_QUANTITY_RE.search(headline)))
 
 
 # Military takes precedence over the other editorial categories when it is

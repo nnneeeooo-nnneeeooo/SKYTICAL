@@ -22,6 +22,7 @@ TMP = Path(tempfile.mkdtemp(prefix="avwire-fulltext-"))
 os.environ["AVWIRE_DATA_DIR"] = str(TMP)
 
 sys.path.insert(0, str(REPO / "pipeline"))
+import common  # noqa: E402
 import fulltext  # noqa: E402
 import write  # noqa: E402
 
@@ -213,6 +214,13 @@ check("group_prompt shows the full text block",
       and prompt.count("A" * 100) > 0)
 check("prompt never shows text beyond the shared cap constant",
       "UNIQUE-TAIL-MARKER" not in prompt)
+material_group = {"items": [{
+    "title": "FAA counter-drone results", "summary": "",
+    "fulltext": LONG_PARA,
+}]}
+check("pipeline fulltext counts as source material",
+      common.item_has_material(material_group["items"][0])
+      and write.has_material(material_group))
 
 quote_in = "counter drone operations during the tournament"
 draft = {"facts": [
