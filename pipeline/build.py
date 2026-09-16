@@ -1299,6 +1299,37 @@ def daily_search_prompt_rows() -> tuple[tuple[str, str, str], ...]:
     return tuple(rows)
 
 
+@lru_cache(maxsize=1)
+def search_prompt_alias_rows() -> tuple[tuple[str, str, str], ...]:
+    """Return bounded historical prompt aliases plus the current daily set."""
+    payload = load_json(DATA_DIR / "search-prompt-aliases.json", {})
+    items = payload.get("items") if isinstance(payload, dict) else None
+    rows = []
+    if isinstance(payload, dict) and payload.get("version") == 1 \
+            and isinstance(items, list) and len(items) <= 4096:
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            date_tpe = str(item.get("dateTpe") or "").strip()
+            article_id = re.sub(
+                r"\s+", " ", str(item.get("articleId") or "")).strip()
+            zh = re.sub(r"\s+", " ", str(item.get("zh") or "")).strip()
+            en = re.sub(r"\s+", " ", str(item.get("en") or "")).strip()
+            if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_tpe) \
+                    or not article_id or len(article_id) > 256 or any(
+                    not text or len(text) > 96
+                    or re.search(r"[\x00-\x1f<>]", text)
+                    for text in (zh, en)):
+                continue
+            rows.append((article_id, zh, en))
+
+    rows.extend(daily_search_prompt_rows())
+    unique = {}
+    for row in rows:
+        unique.setdefault(row, row)
+    return tuple(unique.values())
+
+
 @lru_cache(maxsize=2)
 def header_search_placeholders(lang: str) -> tuple[str, ...]:
     """Load article-backed daily prompts, with non-actionable hints as fallback."""
@@ -1773,10 +1804,10 @@ def search_index_payload(articles, generated_utc) -> dict:
     alias_groups = load_search_alias_groups()
     article_ids = {article["id"] for article in articles}
     prompt_aliases = {}
-    prompt_rows = daily_search_prompt_rows()
-    if prompt_rows and all(row[0] in article_ids for row in prompt_rows):
-        for article_id, zh_prompt, en_prompt in prompt_rows:
-            prompt_aliases[article_id] = (zh_prompt, en_prompt)
+    for article_id, zh_prompt, en_prompt in search_prompt_alias_rows():
+        if article_id not in article_ids:
+            continue
+        prompt_aliases.setdefault(article_id, []).extend((zh_prompt, en_prompt))
     return {
         "version": 1,
         "generatedUtc": generated_utc.isoformat(),
