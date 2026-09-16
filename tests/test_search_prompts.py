@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 import sys
 import tempfile
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -95,6 +95,8 @@ def main() -> None:
         assert [row["id"] for row in branded_candidates] == [branded["id"]]
 
         provider = FakeProvider()
+        (data_dir / search_prompts.ALIAS_HISTORY_NAME).write_text(
+            "[]", encoding="utf-8")
         changed = search_prompts.update_daily_prompts(
             data_dir=data_dir, now=now, providers=[provider],
             record_usage=False)
@@ -108,11 +110,46 @@ def main() -> None:
         assert len(payload["prompts"]["zh"]) == 6
         assert len(payload["sourceArticleIds"]) == 6
 
+        history_path = data_dir / search_prompts.ALIAS_HISTORY_NAME
+        history = json.loads(history_path.read_text(encoding="utf-8"))
+        assert history["version"] == search_prompts.ALIAS_HISTORY_VERSION
+        assert len(history["items"]) == 6
+        first_day_aliases = {
+            (row["articleId"], row["zh"], row["en"])
+            for row in history["items"]
+        }
+
+        history_path.unlink()
         second_provider = FakeProvider()
         assert search_prompts.update_daily_prompts(
             data_dir=data_dir, now=now, providers=[second_provider],
             record_usage=False) is False
         assert second_provider.calls == 0
+        assert history_path.is_file()  # Same-day early return repairs history.
+
+        tomorrow = now + timedelta(days=1)
+        next_rows = []
+        for i in range(8):
+            row = article(i)
+            row["id"] = f"a-20260811-000{i}-next-{i}"
+            row["publishedUtc"] = f"2026-08-11T00:0{i}:00Z"
+            row["zh"]["title"] = f"新航空{i} B78{i} 抵達松山"
+            row["en"]["title"] = f"New Airline {i} B78{i} arrives at Songshan"
+            next_rows.append(row)
+        (articles_dir / "next.json").write_text(
+            json.dumps({"articles": next_rows}, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        assert search_prompts.update_daily_prompts(
+            data_dir=data_dir, now=tomorrow, providers=[FakeProvider()],
+            record_usage=False) is True
+        rotated = json.loads(history_path.read_text(encoding="utf-8"))
+        rotated_aliases = {
+            (row["articleId"], row["zh"], row["en"])
+            for row in rotated["items"]
+        }
+        assert first_day_aliases <= rotated_aliases
+        assert len(rotated_aliases) == 12
 
         fallback_dir = data_dir / "fallback"
         fallback_articles = fallback_dir / "articles"

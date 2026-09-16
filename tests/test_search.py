@@ -142,6 +142,22 @@ def main() -> None:
         indexed = items_by_id[article_id]["search"]
         assert normalize_search_text(zh_prompt) in indexed
         assert normalize_search_text(en_prompt) in indexed
+    alias_rows = build.search_prompt_alias_rows()
+    assert (
+        "a-20260913-0748-virgin-australia-passengers-restrained-a",
+        "維珍澳洲航班乘客事件",
+        "Virgin Australia passenger incident",
+    ) in alias_rows
+    historical = items_by_id[
+        "a-20260913-0748-virgin-australia-passengers-restrained-a"]
+    assert "維珍澳洲航班乘客事件" in historical["search"]
+    assert "virgin australia passenger incident" in historical["search"]
+    for article_id, zh_prompt, en_prompt in alias_rows:
+        if article_id not in items_by_id:
+            continue
+        indexed = items_by_id[article_id]["search"]
+        assert normalize_search_text(zh_prompt) in indexed
+        assert normalize_search_text(en_prompt) in indexed
     assert suggestion_has_result(
         "亞馬遜空運 貨機 邁阿密 衝出跑道", payload["items"])
     assert zh.count('id="news-search-form"') == 1
@@ -211,13 +227,43 @@ def main() -> None:
         with tempfile.TemporaryDirectory() as tmp:
             build.DATA_DIR = Path(tmp)
             build.daily_search_prompt_rows.cache_clear()
+            build.search_prompt_alias_rows.cache_clear()
             build.header_search_placeholders.cache_clear()
             assert build.daily_search_prompt_rows() == ()
+            (build.DATA_DIR / "search-prompt-aliases.json").write_text(
+                json.dumps({
+                    "version": 1,
+                    "items": [
+                        {
+                            "dateTpe": "2026-08-10",
+                            "articleId": "a-search-alias-test",
+                            "zh": "保留這筆推薦詞",
+                            "en": "Keep this suggestion",
+                        },
+                        {
+                            "dateTpe": "2026-08-10",
+                            "articleId": "a-missing-article",
+                            "zh": "缺少來源文章",
+                            "en": "Missing source article",
+                        },
+                        {"articleId": "", "zh": "bad", "en": "bad"},
+                    ],
+                }, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            build.search_prompt_alias_rows.cache_clear()
+            isolated = build.search_index_payload(
+                [sample_article("測試航空新增航班")],
+                build.now_utc(),
+            )
+            assert "保留這筆推薦詞" in isolated["items"][0]["search"]
+            assert "缺少來源文章" not in isolated["items"][0]["search"]
             assert build.header_search_placeholders("zh") == tuple(
                 build.L["zh"]["headerSearchPlaceholders"])
     finally:
         build.DATA_DIR = original_data_dir
         build.daily_search_prompt_rows.cache_clear()
+        build.search_prompt_alias_rows.cache_clear()
         build.header_search_placeholders.cache_clear()
 
     print("test_search: OK")
