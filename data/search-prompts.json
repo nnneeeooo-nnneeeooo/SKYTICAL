@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-09-15T16:09Z",
-  "targetDateTpe": "2026-09-16",
+  "generatedUtc": "2026-09-16T16:09Z",
+  "targetDateTpe": "2026-09-17",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "wechat:Deepseek-v4-flash",
+  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
   "sourceArticleIds": [
-    "a-20260915-1545-sydney-airport-rolls-out-50-electric-bus",
-    "a-20260915-1400-ntsb-releases-flight-data-from-amazon-bo",
-    "a-20260915-0811-simple-flying-reports-condor-a320-missed",
-    "a-20260915-0811-virgin-atlantic-accelerates-a330-300-ret",
-    "a-20260914-1527-ana-holdings-names-new-cargo-airline-ana",
-    "a-20260914-1420-china-airlines-looks-to-deliver-787-9-je"
+    "a-20260916-1524-swarm-aero-unveils-gamera-drone-targetin",
+    "a-20260916-1354-china-airlines-targets-nt-80-billion-mon",
+    "a-20260916-1354-boeing-and-korean-air-finalize-order-for",
+    "a-20260916-0805-qantas-unveils-widebody-grade-business-s",
+    "a-20260916-0227-singapore-airlines-confirms-major-adjust",
+    "a-20260916-0014-etihad-airways-unveils-beyond-borders-ca"
   ],
   "prompts": {
     "zh": [
-      "雪梨機場電動巴士",
-      "亞馬遜波音767貨機",
-      "Condor A320法蘭克福",
-      "維珍航空A330退役",
-      "ANA Nippon Cargo",
-      "華航787-9新機"
+      "查詢 Swarm Aero Gamera 無人機",
+      "查詢 中華航空 貨運 目標",
+      "查詢 波音 大韓航空 訂單",
+      "查詢 澳航 A321XLR 商務艙",
+      "查詢 新加坡航空 A380 調整",
+      "查詢 阿提哈德 Beyond Borders 客艙"
     ],
     "en": [
-      "Sydney Airport electric buses",
-      "Amazon Boeing 767 flight data",
-      "Condor A320 Frankfurt curfew",
-      "Virgin Atlantic A330-300 retirement",
-      "ANA Nippon Cargo airline",
-      "China Airlines 787-9 delivery"
+      "Search Swarm Aero Gamera drone",
+      "Search China Airlines cargo target",
+      "Search Boeing Korean Air order",
+      "Search Qantas A321XLR business suite",
+      "Search Singapore Airlines A380 adjustment",
+      "Search Etihad Beyond Borders cabin"
     ]
   }
 }
