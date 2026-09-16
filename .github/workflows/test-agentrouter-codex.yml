@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      CODEX_GATEWAY_API_KEY: ${{ secrets.AGENTROUTER_API_KEY }}
+      CODEX_GATEWAY_API_KEY: ${{ secrets.AGENTROUTER_API }}
       CODEX_HOME: /tmp/codex-agentrouter
 
     steps:
@@ -29,7 +29,7 @@ jobs:
         shell: bash
         run: |
           if [[ -z "${CODEX_GATEWAY_API_KEY}" ]]; then
-            echo "AGENTROUTER_API_KEY is not configured" >&2
+            echo "Repository secret AGENTROUTER_API is not configured" >&2
             exit 1
           fi
 
