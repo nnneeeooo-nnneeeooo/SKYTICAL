@@ -2,8 +2,15 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-09-15",
+  "updatedThrough": "2026-09-16",
   "entries": [
+    {
+      "date": "2026-09-16",
+      "kind": "fix",
+      "commit": "ae00adb2ac72fd214c0e716497a2181afa63cf31",
+      "zh": "修正每日搜尋推薦在隔日輪替後失效的問題，持久保留已顯示推薦詞與來源文章的連結，並回填既有 272 組中英文推薦詞。",
+      "en": "Fixed daily search suggestions becoming ineffective after the next rotation by persistently linking displayed suggestions to their source articles and backfilling 272 existing bilingual suggestion pairs."
+    },
     {
       "date": "2026-09-15",
       "kind": "fix",
