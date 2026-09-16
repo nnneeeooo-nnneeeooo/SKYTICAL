@@ -347,7 +347,9 @@ search field. The search page loads the index only when a query is made, so
 visiting the page without searching does not download the full index.
 Daily search-box suggestions are also indexed as exact aliases of their linked
 article, so every displayed suggestion resolves without weakening ordinary
-full-text matching.
+full-text matching. Previously displayed suggestions stay searchable after the
+daily set rotates; a missing historical article only drops its own aliases and
+does not invalidate the rest of the batch.
 
 ## data/search-prompts.json  (written by search_prompts.py, read by build.py)
 
@@ -360,6 +362,15 @@ one-to-one; malformed mappings fall back to the built-in search hints.
 Built-in hints are never submitted as suggested queries.
 When no provider is available or model output is invalid, deterministic prompts
 are built from those article titles instead. No model reasoning is stored.
+
+## data/search-prompt-aliases.json  (written by search_prompts.py, read by build.py)
+
+Bounded history of validated bilingual daily suggestions and their source
+article IDs. The generator repairs or creates this registry even when the
+current Taipei-day prompt file is already up to date, appends each new daily
+set, de-duplicates identical mappings and keeps at most 4,096 rows. The build
+ignores malformed or orphaned rows individually and indexes every remaining
+prompt as an exact alias of its linked published article.
 
 ## data/usage.json  (written by usage.py, read by build.py)
 

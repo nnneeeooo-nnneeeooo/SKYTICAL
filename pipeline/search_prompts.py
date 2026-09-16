@@ -29,6 +29,9 @@ from common import (  # noqa: E402
 TPE = timezone(timedelta(hours=8), "UTC+8")
 OUTPUT_NAME = "search-prompts.json"
 OUTPUT_VERSION = 2
+ALIAS_HISTORY_NAME = "search-prompt-aliases.json"
+ALIAS_HISTORY_VERSION = 1
+MAX_ALIAS_HISTORY_ROWS = 4096
 PROMPT_COUNT = 6
 MAX_CANDIDATES = 12
 MAX_ZH_CHARS = 26
@@ -255,6 +258,94 @@ def _providers_for_attempts(providers) -> list:
     return selected
 
 
+def _daily_prompt_rows(payload) -> tuple[tuple[str, str, str], ...]:
+    """Return normalized article/prompt mappings from one daily payload."""
+    prompts = payload.get("prompts") if isinstance(payload, dict) else None
+    source_ids = payload.get("sourceArticleIds") if isinstance(payload, dict) else None
+    zh_prompts = prompts.get("zh") if isinstance(prompts, dict) else None
+    en_prompts = prompts.get("en") if isinstance(prompts, dict) else None
+    if not all(isinstance(values, list)
+               for values in (source_ids, zh_prompts, en_prompts)):
+        return ()
+    if not 2 <= len(source_ids) <= 8 \
+            or not len(source_ids) == len(zh_prompts) == len(en_prompts):
+        return ()
+
+    rows = []
+    for article_id, zh_value, en_value in zip(
+            source_ids, zh_prompts, en_prompts):
+        article_id, zh, en = map(_text, (article_id, zh_value, en_value))
+        if not article_id or len(article_id) > 256 or any(
+                not value or len(value) > 96 or re.search(r"[\x00-\x1f<>]", value)
+                for value in (zh, en)):
+            return ()
+        rows.append((article_id, zh, en))
+    if len({row[0] for row in rows}) != len(rows) \
+            or len({row[1] for row in rows}) != len(rows) \
+            or len({row[2] for row in rows}) != len(rows):
+        return ()
+    return tuple(rows)
+
+
+def _update_alias_history(data_dir: Path, payload: dict, now: datetime) -> bool:
+    """Persist every valid displayed suggestion as an article search alias."""
+    current_rows = _daily_prompt_rows(payload)
+    if not current_rows:
+        return False
+
+    history_path = data_dir / ALIAS_HISTORY_NAME
+    existing = load_json(history_path, {})
+    raw_items = existing.get("items") if isinstance(existing, dict) else None
+    raw_items = raw_items if isinstance(raw_items, list) else []
+    existing_version = (existing.get("version")
+                        if isinstance(existing, dict) else None)
+    normalized = {}
+    for item in raw_items[:MAX_ALIAS_HISTORY_ROWS]:
+        if not isinstance(item, dict):
+            continue
+        article_id, zh, en = map(
+            _text, (item.get("articleId"), item.get("zh"), item.get("en")))
+        date_tpe = _text(item.get("dateTpe"))
+        if not article_id or len(article_id) > 256 or any(
+                not value or len(value) > 96 or re.search(r"[\x00-\x1f<>]", value)
+                for value in (zh, en)):
+            continue
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_tpe):
+            continue
+        normalized[(article_id, zh, en)] = {
+            "dateTpe": date_tpe,
+            "articleId": article_id,
+            "zh": zh,
+            "en": en,
+        }
+
+    date_tpe = _text(payload.get("targetDateTpe"))
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_tpe):
+        return False
+    for article_id, zh, en in current_rows:
+        normalized[(article_id, zh, en)] = {
+            "dateTpe": date_tpe,
+            "articleId": article_id,
+            "zh": zh,
+            "en": en,
+        }
+
+    items = sorted(
+        normalized.values(),
+        key=lambda row: (row["dateTpe"], row["articleId"], row["zh"], row["en"]),
+    )[-MAX_ALIAS_HISTORY_ROWS:]
+    existing_items = raw_items if isinstance(existing, dict) else []
+    if existing_version == ALIAS_HISTORY_VERSION \
+            and existing_items == items:
+        return False
+    save_json(history_path, {
+        "version": ALIAS_HISTORY_VERSION,
+        "updatedUtc": iso_minute(now),
+        "items": items,
+    })
+    return True
+
+
 def update_daily_prompts(*, data_dir: Path = DATA_DIR, now: datetime | None = None,
                          force: bool = False, providers=None,
                          record_usage: bool = True) -> bool:
@@ -266,6 +357,7 @@ def update_daily_prompts(*, data_dir: Path = DATA_DIR, now: datetime | None = No
             and existing.get("targetDateTpe") == target_date \
             and isinstance(existing.get("version"), int) \
             and existing["version"] >= OUTPUT_VERSION:
+        _update_alias_history(data_dir, existing, now)
         print(f"search-prompts: {target_date} already generated")
         return False
 
@@ -319,6 +411,7 @@ def update_daily_prompts(*, data_dir: Path = DATA_DIR, now: datetime | None = No
         "prompts": prompts,
     }
     save_json(output_path, payload)
+    _update_alias_history(data_dir, payload, now)
     print(f"search-prompts: wrote {PROMPT_COUNT} prompts for {target_date} "
           f"({generation_mode}, {window})")
     return True
