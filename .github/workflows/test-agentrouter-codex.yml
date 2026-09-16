@@ -1,0 +1,65 @@
+name: Test AgentRouter with supported Codex client
+
+on:
+  push:
+    branches:
+      - codex/agentrouter-codex-client-test
+
+permissions:
+  contents: read
+
+jobs:
+  connectivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CODEX_GATEWAY_API_KEY: ${{ secrets.AGENTROUTER_API_KEY }}
+      CODEX_HOME: ${{ runner.temp }}/codex-agentrouter
+
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install the supported Codex CLI
+        run: npm install --global @openai/codex
+
+      - name: Configure AgentRouter provider
+        shell: bash
+        run: |
+          if [[ -z "${CODEX_GATEWAY_API_KEY}" ]]; then
+            echo "AGENTROUTER_API_KEY is not configured" >&2
+            exit 1
+          fi
+
+          mkdir -p "${CODEX_HOME}"
+          cat > "${CODEX_HOME}/config.toml" <<'EOF'
+          model = "gpt-5.6-sol"
+          model_provider = "AgentRouter"
+
+          [model_providers.AgentRouter]
+          base_url = "https://agentrouter.org/v1"
+          env_key = "CODEX_GATEWAY_API_KEY"
+          name = "AgentRouter"
+          wire_api = "responses"
+
+          [model_providers.AgentRouter.models]
+          "gpt-5.6-sol" = { name = "GPT-5.6 Sol" }
+          EOF
+
+      - name: Verify AgentRouter through Codex
+        shell: bash
+        run: |
+          result_file="${RUNNER_TEMP}/agentrouter-result.txt"
+          timeout 5m codex exec \
+            --ephemeral \
+            --skip-git-repo-check \
+            --sandbox read-only \
+            --color never \
+            --cd "${RUNNER_TEMP}" \
+            --output-last-message "${result_file}" \
+            "This is a connectivity check for a developer automation. Reply with exactly SKYTICAL_AGENTROUTER_OK and nothing else."
+
+          grep -Fxq "SKYTICAL_AGENTROUTER_OK" "${result_file}"
+          echo "AgentRouter returned the expected response through the supported Codex client."
