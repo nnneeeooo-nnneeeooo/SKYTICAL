@@ -210,16 +210,26 @@ a.seg-btn.active:hover { color: var(--color-bg); }
 .rail-right { border-left: 2px solid var(--color-divider); padding: 20px; }
 
 .flash-row {
-  padding: 9px 0; border-bottom: 1px solid var(--color-divider);
-  display: flex; gap: 10px; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px solid var(--color-divider);
+  display: grid; grid-template-columns: 56px minmax(0, 1fr);
+  column-gap: 9px; align-items: start;
   color: inherit; text-decoration: none;
 }
 a.flash-row:hover { color: inherit; }
 .flash-time {
-  font-size: 12px; font-weight: 800; flex-shrink: 0;
+  padding-top: 2px; font-size: 11.5px; font-weight: 800;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
   color: color-mix(in srgb, var(--color-text) 55%, transparent);
 }
 .flash-time.hot { color: var(--color-accent); }
+.flash-copy {
+  min-width: 0; max-height: 3.1em; overflow: hidden;
+  font-size: 12.5px; line-height: 1.55;
+  overflow-wrap: anywhere;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+a.flash-row:hover .flash-text { color: var(--color-accent); }
 .flash-pin,
 .ticker-pin {
   display: inline-block;

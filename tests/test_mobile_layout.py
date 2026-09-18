@@ -38,6 +38,8 @@ def main() -> None:
     assert 'class="utility-row"' in home
     assert 'class="ticker-window"' in home
     assert 'class="ticker-pass"' in home
+    assert 'class="flash-copy"' in home
+    assert 'class="flash-text"' in home
     assert 'class="feed-copy"' in home
     assert 'class="summary-preview summary-preview--hero"' in home
     assert 'class="summary-preview summary-preview--feed"' in home
@@ -96,6 +98,9 @@ def main() -> None:
     assert "grid-template-columns: repeat(3, minmax(0, 1fr))" in css
     assert ".js .site-nav.is-open { display: grid; }" in css
     assert "grid-template-columns: repeat(2, minmax(0, 1fr))" in css
+    assert "grid-template-columns: 56px minmax(0, 1fr)" in css
+    assert ".flash-copy" in css
+    assert "max-height: 3.1em" in css
     assert ".center-col { order: 1;" in css
     assert ".radar-layout { grid-template-columns: minmax(0, 1fr); min-height: 0; }" in css
     assert '". . summary summary"' in css
