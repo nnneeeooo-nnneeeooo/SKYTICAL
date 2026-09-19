@@ -1,0 +1,46 @@
+name: regression-ci
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Compile pipeline and tests
+        run: python -m compileall -q pipeline tests
+
+      - name: Run complete offline regression suite
+        env:
+          # Regression tests mock provider/network calls. Empty production
+          # credentials make accidental external dependency obvious.
+          GEMINI_API_KEY: ""
+          NVIDIA_API_KEY: ""
+          OPENROUTER_API_KEY: ""
+          OPENCODE_API_KEY: ""
+          WECHAT_API_KEY: ""
+          AEROAPI_KEY: ""
+          ADSBLOL_API_KEY: ""
+          AIRPLANES_LIVE_API_KEY: ""
+        run: python -m pytest -q
+
+      - name: Verify production build
+        run: python pipeline/build.py
