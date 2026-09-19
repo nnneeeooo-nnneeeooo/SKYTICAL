@@ -18,8 +18,8 @@ from datetime import timedelta, timezone
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TMP = Path(tempfile.mkdtemp(prefix="avwire-images-"))
-os.environ["AVWIRE_DATA_DIR"] = str(TMP)
+TMP = Path(tempfile.mkdtemp(prefix="skytical-images-"))
+os.environ["SKYTICAL_DATA_DIR"] = str(TMP)
 
 sys.path.insert(0, str(REPO / "pipeline"))
 import images  # noqa: E402

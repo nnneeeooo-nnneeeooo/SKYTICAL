@@ -17,8 +17,8 @@ from urllib.parse import urlsplit
 from bs4 import BeautifulSoup
 
 REPO = Path(__file__).resolve().parent.parent
-TMP = Path(tempfile.mkdtemp(prefix="avwire-manufacturers-"))
-os.environ["AVWIRE_DATA_DIR"] = str(TMP)
+TMP = Path(tempfile.mkdtemp(prefix="skytical-manufacturers-"))
+os.environ["SKYTICAL_DATA_DIR"] = str(TMP)
 sys.path.insert(0, str(REPO / "pipeline"))
 
 import briefing  # noqa: E402
