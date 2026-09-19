@@ -1,170 +1,209 @@
-"""Tests for pipeline/companion.py (thin-story same-topic retrieval).
+"""Discoverable, process-isolated companion regression tests.
 
-No pytest required — run from the repo root:
+Run with either python tests/test_companion.py or
+python -m pytest -q tests/test_companion.py.
 
-    py tests\\test_companion.py
-
-All HTTP mocked; no real Google News call is ever made.
+The original 14 checks are preserved verbatim in _companion_legacy.py and
+execute in a fresh interpreter. Importing this module performs no pipeline
+work and mutates no environment or module state.
 """
 from __future__ import annotations
 
+import importlib.util
+import io
 import os
+import re
+import subprocess
 import sys
 import tempfile
-import types
+import unittest
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 REPO = Path(__file__).resolve().parent.parent
-os.environ["AVWIRE_DATA_DIR"] = tempfile.mkdtemp(prefix="avwire-companion-")
+LEGACY = Path(__file__).with_name("_companion_legacy.py")
+EXPECTED_CHECKS = 14
 
-sys.path.insert(0, str(REPO / "pipeline"))
-import companion  # noqa: E402
+_WORKER = r"""
+import ast
+import runpy
+import socket
+import sys
+import urllib.request
+from contextlib import ExitStack
+from pathlib import Path
+from unittest.mock import patch
 
-CHECKS = 0
-FAILED = 0
+import httpx
+import requests
+
+path = Path(sys.argv[1])
+mode = sys.argv[2]
+if mode not in {"run", "fail", "network"}:
+    raise ValueError("unknown companion-test worker mode")
+
+with ExitStack() as stack:
+    for target in (
+        "socket.socket.connect",
+        "socket.socket.connect_ex",
+        "socket.create_connection",
+        "requests.sessions.Session.request",
+        "urllib.request.urlopen",
+        "httpx.Client.send",
+        "httpx.AsyncClient.send",
+    ):
+        stack.enter_context(
+            patch(target, side_effect=AssertionError("live network is forbidden"))
+        )
+
+    if mode == "network":
+        probes = (
+            lambda: requests.get("https://example.invalid"),
+            lambda: urllib.request.urlopen("https://example.invalid"),
+            lambda: httpx.get("https://example.invalid"),
+            lambda: socket.create_connection(("example.invalid", 443)),
+        )
+        for probe in probes:
+            try:
+                probe()
+            except AssertionError as exc:
+                if str(exc) != "live network is forbidden":
+                    raise
+            else:
+                raise AssertionError("network guard did not reject a request")
+        print("4 network probes blocked")
+    elif mode == "fail":
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        calls = sorted(
+            (
+                node for node in ast.walk(tree)
+                if isinstance(node, ast.Call)
+                and isinstance(node.func, ast.Name)
+                and node.func.id == "check"
+            ),
+            key=lambda node: node.lineno,
+        )
+        calls[0].args[0] = ast.Constant(
+            "intentional companion isolation regression failure"
+        )
+        calls[0].args[1] = ast.Constant(False)
+        ast.fix_missing_locations(tree)
+        exec(
+            compile(tree, str(path), "exec"),
+            {"__name__": "__main__", "__file__": str(path), "__package__": None},
+        )
+    else:
+        runpy.run_path(str(path), run_name="__main__")
+"""
 
 
-def check(name, cond):
-    global CHECKS, FAILED
-    CHECKS += 1
-    print(("PASS " if cond else "FAIL ") + name)
-    if not cond:
-        FAILED += 1
+def _run_legacy(mode: str = "run"):
+    env = {
+        key: value
+        for key, value in os.environ.items()
+        if not key.startswith(("AVWIRE_", "SKYTICAL_", "API_1_", "PYTHON"))
+        and not key.endswith(("_API_KEY", "_TOKEN"))
+    }
+    with tempfile.TemporaryDirectory(prefix="skytical-companion-test-") as directory:
+        root = Path(directory)
+        env.update(
+            TMPDIR=str(root),
+            TMP=str(root),
+            TEMP=str(root),
+            PYTHONDONTWRITEBYTECODE="1",
+            PYTHONHASHSEED="0",
+            PYTHONIOENCODING="utf-8",
+        )
+        result = subprocess.run(
+            [sys.executable, "-B", "-c", _WORKER, str(LEGACY), mode],
+            cwd=REPO,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=60,
+            check=False,
+        )
+    return result, root
 
 
-SEED_TITLE = ("Boeing's 737 MAX 7 Is About To Receive Its Long-Awaited "
-              "FAA Certification")
-THIN_GROUP = {"id": "g1", "items": [{
-    "title": SEED_TITLE,
-    "summary": "Short blurb.",
-    "url": "https://simpleflying.com/max7", "source": "Simple Flying"}]}
+class CompanionIsolationTests(unittest.TestCase):
+    def _assert_success(self, result):
+        output = result.stdout + result.stderr
+        self.assertEqual(result.returncode, 0, output)
+        match = re.search(
+            r"^(\d+) checks passed, 0 failed$", output, re.MULTILINE
+        )
+        self.assertIsNotNone(match, output)
+        self.assertEqual(int(match.group(1)), EXPECTED_CHECKS, output)
+
+    def test_all_original_checks_pass_in_isolated_process(self):
+        result, directory = _run_legacy()
+        self._assert_success(result)
+        self.assertFalse(directory.exists())
+
+    def test_failure_propagates_to_test_runner(self):
+        result, directory = _run_legacy("fail")
+        output = result.stdout + result.stderr
+        self.assertEqual(result.returncode, 1, output)
+        self.assertIn(
+            "FAIL intentional companion isolation regression failure", output
+        )
+        self.assertIn("13/14 passed, 1 FAILED", output)
+        self.assertFalse(directory.exists())
+
+    def test_parent_environment_and_search_path_are_unchanged(self):
+        environment = dict(os.environ)
+        search_path = list(sys.path)
+        result, directory = _run_legacy()
+        self._assert_success(result)
+        self.assertEqual(dict(os.environ), environment)
+        self.assertEqual(sys.path, search_path)
+        self.assertFalse(directory.exists())
+
+    def test_import_has_no_environment_filesystem_or_execution_side_effects(self):
+        spec = importlib.util.spec_from_file_location(
+            "_companion_import_probe", __file__
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        module = importlib.util.module_from_spec(spec)
+        environment = dict(os.environ)
+        search_path = list(sys.path)
+        output = io.StringIO()
+        with ExitStack() as stack:
+            for target in (
+                "tempfile.mkdtemp",
+                "tempfile.TemporaryDirectory",
+                "subprocess.run",
+            ):
+                stack.enter_context(
+                    patch(
+                        target,
+                        side_effect=AssertionError("work performed on import"),
+                    )
+                )
+            stack.enter_context(redirect_stdout(output))
+            stack.enter_context(redirect_stderr(output))
+            spec.loader.exec_module(module)
+        self.assertEqual(output.getvalue(), "")
+        self.assertEqual(dict(os.environ), environment)
+        self.assertEqual(sys.path, search_path)
+
+    def test_network_guard_blocks_live_requests(self):
+        result, directory = _run_legacy("network")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("4 network probes blocked", result.stdout)
+        self.assertFalse(directory.exists())
+
+    def test_legacy_file_keeps_original_contract(self):
+        source = LEGACY.read_text(encoding="utf-8")
+        self.assertIn("one-liner group is thin", source)
+        self.assertIn("per-run search budget enforced", source)
+        self.assertIn("sys.exit(1 if FAILED else 0)", source)
 
 
-def rss(entries):
-    items = "".join(
-        f"<item><title>{t} - {src}</title><link>{link}</link>"
-        f"<description>{desc}</description>"
-        f'<source url="{href}">{src}</source></item>'
-        for t, src, href, link, desc in entries)
-    return (f'<?xml version="1.0"?><rss version="2.0"><channel>{items}'
-            "</channel></rss>").encode()
-
-
-class FakeHttp:
-    def __init__(self):
-        self.calls = []
-        self.rss_body = rss([])
-
-    def get(self, url, **kwargs):
-        self.calls.append(url)
-        if "news.google.com/rss" in url:
-            return types.SimpleNamespace(status_code=200,
-                                         content=self.rss_body,
-                                         headers={})
-        # redirect resolution: send everything to the real outlet
-        return types.SimpleNamespace(
-            status_code=302,
-            headers={"Location": "https://www.reuters.com/max7-story"})
-
-
-fake = FakeHttp()
-companion.requests = types.SimpleNamespace(
-    get=fake.get, RequestException=Exception)
-
-# ── thinness + query ─────────────────────────────────────────────────────────
-
-check("one-liner group is thin", companion.is_thin(THIN_GROUP))
-check("single-source fulltext still needs independent coverage",
-      companion.is_thin({"items": [dict(THIN_GROUP["items"][0],
-                                        fulltext="x" * 2000)]}))
-check("substantial single-source text still needs independent coverage",
-      companion.is_thin({"items": [dict(THIN_GROUP["items"][0],
-                                        summary="長" * 2000)]}))
-diverse = {"items": [
-    {"title": f"ANA E190-E2 order update {i}",
-     "summary": "Independent source material. " * 20,
-     "source": f"Outlet {i}"}
-    for i in range(companion.TARGET_SOURCE_COUNT)
-]}
-check("diverse substantial group needs no companion search",
-      not companion.is_thin(diverse))
-check("network work is bounded and parallel",
-      companion.TIMEOUT[1] <= 12
-      and companion.SEARCH_WORKERS > 1
-      and companion.RESOLVE_WORKERS > 1
-      and companion.MAX_RESOLVE_CANDIDATES
-      == companion.MAX_ITEMS_PER_GROUP * 2)
-
-query, tokens = companion.build_query(THIN_GROUP)
-check("query keeps anchors and drops stopwords",
-      "737" in tokens and "max" in tokens and "faa" in tokens
-      and "certification" in tokens and "about" not in tokens
-      and "long" not in tokens)
-
-# ── candidate filtering ──────────────────────────────────────────────────────
-
-fake.rss_body = rss([
-    ("Boeing 737 MAX 7 certification nears FAA finish line", "Reuters",
-     "https://www.reuters.com", "https://news.google.com/articles/a",
-     "Boeing expects the 737 MAX 7 to be certified soon."),
-    ("Boeing 737 MAX 7 nears certification", "Random Aviation Blog",
-     "https://randomaviationblog.example", "https://news.google.com/x2",
-     "blog take"),
-    ("Completely unrelated cruise ship story", "Reuters",
-     "https://www.reuters.com", "https://news.google.com/x3", "ships"),
-])
-cands = companion.search_candidates(query, tokens, lang_zh=False)
-check("allowlisted same-topic candidate accepted, blog and off-topic "
-      "rejected",
-      len(cands) == 1 and cands[0]["source"] == "Reuters")
-check("google redirect resolved to the outlet URL",
-      cands[0]["url"] == "https://www.reuters.com/max7-story")
-check("outlet suffix stripped from the headline",
-      cands[0]["title"].endswith("finish line"))
-
-# A Google app-shell response without an outlet redirect is not publishable
-# as a companion source and must be discarded rather than exposed verbatim.
-unresolved_http = types.SimpleNamespace(
-    get=lambda url, **kwargs: types.SimpleNamespace(
-        status_code=200, headers={}))
-original_requests = companion.requests
-companion.requests = types.SimpleNamespace(
-    get=unresolved_http.get, RequestException=Exception)
-try:
-    check("unresolved Google News link fails closed",
-          companion._resolve("https://news.google.com/rss/articles/nope") is None)
-finally:
-    companion.requests = original_requests
-
-# ── group enrichment end-to-end ──────────────────────────────────────────────
-
-group = {"id": "g9", "items": [dict(THIN_GROUP["items"][0])]}
-added = companion.enrich_thin_groups([group])
-check("companion merged into the group as an ordinary item",
-      added == 1 and len(group["items"]) == 2
-      and group["items"][1]["companion"] is True
-      and group["items"][1]["source"] == "Reuters")
-check("re-running never duplicates an existing outlet or URL",
-      companion.enrich_thin_groups([group]) == 0 and len(group["items"]) == 2)
-
-rich = {"id": "g10", **diverse}
-fake.calls.clear()
-check("source-diverse groups perform zero searches",
-      companion.enrich_thin_groups([rich]) == 0 and fake.calls == [])
-
-# per-run search budget
-fake.rss_body = rss([])
-thin_groups = [{"id": f"t{i}", "items": [{
-    "title": SEED_TITLE, "summary": "s",
-    "url": f"https://example.com/{i}"}]} for i in range(5)]
-fake.calls.clear()
-companion.enrich_thin_groups(thin_groups)
-searches = [c for c in fake.calls if "news.google.com/rss" in c]
-check("per-run search budget enforced",
-      len(searches) == min(companion.MAX_SEARCHES_PER_RUN, len(thin_groups)))
-
-print(f"\n{CHECKS} checks passed, {FAILED} failed"
-      if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
-      f"{FAILED} FAILED")
 if __name__ == "__main__":
-    sys.exit(1 if FAILED else 0)
+    unittest.main(verbosity=2)
