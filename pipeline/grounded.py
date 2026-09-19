@@ -80,6 +80,28 @@ def enabled() -> bool:
             in ("1", "true", "yes"))
 
 
+def _quota_exhausted(response) -> bool:
+    """Return True for project/daily quota exhaustion, not short RPM/TPM 429s.
+
+    All grounded Gemini models use the same API project/key. Once the project
+    quota itself is exhausted, trying more models with that same key cannot
+    recover this edition and only adds latency/noise.
+    """
+    if getattr(response, "status_code", None) != 429:
+        return False
+    body = str(getattr(response, "text", "") or "").casefold()
+    markers = (
+        "exceeded your current quota",
+        "resource_exhausted",
+        "quota exceeded",
+        "perday",
+        "per day",
+        "daily",
+        "billing",
+    )
+    return any(marker in body for marker in markers)
+
+
 SYSTEM_PROMPT = """\
 你是 SKYTICAL 的航空與交通運輸快報彙整助理。使用 google_search 搜尋本期指定的
 「完整 24 小時資料窗口」，聚焦：全球航空事故與事件、台灣民航與軍用航空動態（含國防部共機動態、
@@ -190,6 +212,10 @@ def call_grounded(window) -> tuple[dict | None, SimpleNamespace | None]:
             return data, shim
         snippet = str(getattr(resp, "text", ""))[:160].replace("\n", " ")
         failures.append(f"{model}=HTTP {resp.status_code}: {snippet}")
+        if _quota_exhausted(resp):
+            print("briefing: Gemini grounded quota exhausted for this API "
+                  "project; skipping same-key model retries")
+            break
         print(f"briefing: grounded model {model} unavailable "
               f"(HTTP {resp.status_code}); trying fallback")
         if resp.status_code not in (404, 408, 429, 500, 502, 503, 504):
