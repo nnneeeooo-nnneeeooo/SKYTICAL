@@ -13,6 +13,16 @@ on:
       - "pipeline/flightnews.py"
       - "pipeline/airport_codes.py"
       - "config/airport_iata_aliases.json"
+      # Changes to usage/dashboard dependencies need the same regression gate.
+      - "pipeline/usage.py"
+      - "pipeline/providers.py"
+      - "pipeline/build.py"
+      - "pipeline/common.py"
+      - "pipeline/model_config.py"
+      - "templates/usage.html"
+      - "config/model_prices.json"
+      - "config/codex_usage.json"
+      - "requirements.txt"
       - "tests/**"
   push:
     branches: [main]
@@ -30,6 +40,7 @@ jobs:
   regression:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       contents: read
     steps:
