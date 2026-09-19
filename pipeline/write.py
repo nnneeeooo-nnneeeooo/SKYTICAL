@@ -2,7 +2,7 @@
 
 For each pending story group (capped at MAX_GROUPS_PER_RUN per run) one
 LLM call drafts the article, flash and optional incident row. Providers are
-tried in AVWIRE_PROVIDER_ORDER (opencode / anthropic / gemini / nvidia /
+tried in SKYTICAL_PROVIDER_ORDER (opencode / anthropic / gemini / nvidia /
 openrouter; see providers.py): the first configured provider is the primary
 writer and the rest are fallbacks. A provider that hits an auth/quota error or
 repeated transport outage is disabled for the rest of the run and the next one

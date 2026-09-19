@@ -4,7 +4,7 @@ Providers accumulate per-call token usage in memory (providers.py reads
 it straight from each API response); write.py and briefing.py flush it
 here exactly once per run. The ledger stores lifetime totals per model
 label plus a rolling daily series, and build.py renders it on a private
-dashboard page whose URL contains a secret token (AVWIRE_USAGE_TOKEN).
+dashboard page whose URL contains a secret token (SKYTICAL_USAGE_TOKEN).
 
 Numbers are usage accounting only - no keys, no prompts, no article
 content ever lands in this file. Calls made before this ledger existed

@@ -42,6 +42,7 @@ from common import (
     SOURCES,
     STATIC_DIR,
     TEMPLATES_DIR,
+    env_alias,
     is_google_news_url,
     load_json,
     norm_url,
@@ -2513,7 +2514,7 @@ def stats_views(stats, lang: str):
             "note": note}
 
 
-# ── private usage dashboard (URL token from AVWIRE_USAGE_TOKEN secret) ──────
+# ── private usage dashboard (URL token from SKYTICAL_USAGE_TOKEN secret) ──────
 
 _USAGE_TOKEN_RE = re.compile(r"[A-Za-z0-9_-]{16,128}\Z")
 _RECENT_RUN_KEEP_DAYS = 30
@@ -2578,7 +2579,7 @@ def _usage_price_for(label: str, prices: dict):
 
 
 def _configured_model_priority() -> dict:
-    configured = (os.environ.get("AVWIRE_PROVIDER_ORDER")
+    configured = (env_alias("SKYTICAL_PROVIDER_ORDER", "AVWIRE_PROVIDER_ORDER")
                   or DEFAULT_PROVIDER_ORDER)
     return {
         token.strip(): index
@@ -3204,11 +3205,11 @@ def copilot_usage_view(ledger: dict) -> dict:
 
 def render_usage_dashboard(env, build) -> int:
     """Private dashboard at /u/<token>/ - only when the secret is set."""
-    token = os.environ.get("AVWIRE_USAGE_TOKEN", "").strip()
+    token = str(env_alias("SKYTICAL_USAGE_TOKEN", "SKYTICAL_USAGE_TOKEN", "")).strip()
     if not token:
         return 0
     if not _USAGE_TOKEN_RE.fullmatch(token):
-        print("build: AVWIRE_USAGE_TOKEN ignored "
+        print("build: SKYTICAL_USAGE_TOKEN ignored "
               "(want 16-128 chars of A-Za-z0-9_-)")
         return 0
     ledger = load_json(DATA_DIR / "usage.json", {})
@@ -3262,11 +3263,11 @@ def render_usage_dashboard(env, build) -> int:
 
 def render_manual_workbench(env, build) -> int:
     """Private drafting page at /m/<token>/; omitted when unset/invalid."""
-    token = os.environ.get("AVWIRE_MANUAL_TOKEN", "").strip()
+    token = str(env_alias("SKYTICAL_MANUAL_TOKEN", "SKYTICAL_MANUAL_TOKEN", "")).strip()
     if not token:
         return 0
     if not re.fullmatch(r"[A-Za-z0-9_-]{32,128}\Z", token):
-        print("build: AVWIRE_MANUAL_TOKEN ignored "
+        print("build: SKYTICAL_MANUAL_TOKEN ignored "
               "(want 32-128 chars of A-Za-z0-9_-)")
         return 0
     models = [{

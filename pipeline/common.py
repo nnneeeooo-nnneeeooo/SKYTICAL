@@ -14,8 +14,17 @@ from pathlib import Path
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 ROOT = Path(__file__).resolve().parent.parent
-# AVWIRE_DATA_DIR lets tests point the pipeline at fixture data.
-DATA_DIR = Path(os.environ.get("AVWIRE_DATA_DIR", ROOT / "data"))
+
+def env_alias(primary: str, legacy: str | None = None, default=None):
+    """Read a SKYTICAL setting while preserving one legacy AVWIRE alias."""
+    if primary in os.environ:
+        return os.environ[primary]
+    if legacy and legacy in os.environ:
+        return os.environ[legacy]
+    return default
+
+# SKYTICAL_DATA_DIR lets tests point the pipeline at fixture data.
+DATA_DIR = Path(env_alias("SKYTICAL_DATA_DIR", "AVWIRE_DATA_DIR", ROOT / "data"))
 RAW_DIR = DATA_DIR / "raw"
 ARTICLES_DIR = DATA_DIR / "articles"
 SITE_DIR = ROOT / "site"
@@ -24,11 +33,11 @@ STATIC_DIR = ROOT / "static"
 
 # The production site is served from the root of the SKYTICAL custom domain.
 # Override this for a project-site preview that needs a repository subpath.
-BASE_PATH = os.environ.get("AVWIRE_BASE_PATH", "").rstrip("/")
+BASE_PATH = str(env_alias("SKYTICAL_BASE_PATH", "AVWIRE_BASE_PATH", "")).rstrip("/")
 
 # Absolute origin for hreflang/canonical links (search engines require
 # fully-qualified URLs there).
-SITE_ORIGIN = (os.environ.get("AVWIRE_SITE_ORIGIN")
+SITE_ORIGIN = (env_alias("SKYTICAL_SITE_ORIGIN", "AVWIRE_SITE_ORIGIN")
                or "https://skytical.tech").rstrip("/")
 
 USER_AGENT = (
@@ -72,11 +81,11 @@ def _parse_max_age(value, default: int = 120,
 # Freshness window for the dedupe stage. Official sources go quiet on
 # weekends, so the default reaches back 5 days; seen.json's 21-day memory
 # still prevents any story from running twice. Single source of truth -
-# do not read the env var anywhere else. (AVWIRE_MAX_AGE_HOURS is the
-# deprecated alias.)
+# do not read the env var anywhere else. SKYTICAL_MAX_AGE_HOURS is the
+# branded alias; AVWIRE_MAX_AGE_HOURS remains a deprecated compatibility alias.
 NEWS_MAX_AGE_HOURS = _parse_max_age(
     os.environ.get("NEWS_MAX_AGE_HOURS")
-    or os.environ.get("AVWIRE_MAX_AGE_HOURS"))
+    or env_alias("SKYTICAL_MAX_AGE_HOURS", "AVWIRE_MAX_AGE_HOURS"))
 
 # Items stamped this far in the future are treated as source clock/parse
 # errors and dropped before any AI call; smaller offsets are tolerated as

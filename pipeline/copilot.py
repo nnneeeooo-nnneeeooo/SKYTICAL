@@ -36,6 +36,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import (  # noqa: E402
     ARTICLES_DIR,
     DATA_DIR,
+    env_alias,
     iso_minute,
     load_json,
     now_utc,
@@ -1288,9 +1289,9 @@ def process_one(path: Path, *, actor: str, owner: str, token: str) -> bool:
 
 
 def process_pending() -> int:
-    token = os.environ.get("AVWIRE_MANUAL_TOKEN", "").strip()
+    token = str(env_alias("SKYTICAL_MANUAL_TOKEN", "SKYTICAL_MANUAL_TOKEN", "")).strip()
     if not _TOKEN_RE.fullmatch(token):
-        raise SystemExit("copilot: AVWIRE_MANUAL_TOKEN is missing or invalid")
+        raise SystemExit("copilot: SKYTICAL_MANUAL_TOKEN is missing or invalid")
     actor = clean_text(os.environ.get("GITHUB_ACTOR"), 80)
     owner = clean_text(os.environ.get("GITHUB_REPOSITORY_OWNER"), 80)
     if not actor or not owner:
