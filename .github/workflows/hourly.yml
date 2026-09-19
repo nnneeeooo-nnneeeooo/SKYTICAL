@@ -21,7 +21,7 @@ on:
 
 concurrency:
   group: ${{ github.event_name == 'pull_request' && format('hourly-pr-{0}', github.event.pull_request.number) || 'hourly' }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   regression:
