@@ -1202,7 +1202,7 @@ def main() -> int:
     args = parser.parse_args()
     if not args.process_pending:
         parser.error("--process-pending is required")
-    token = str(env_alias("SKYTICAL_MANUAL_TOKEN", "SKYTICAL_MANUAL_TOKEN", "")).strip()
+    token = str(env_alias("SKYTICAL_MANUAL_TOKEN", "AVWIRE_MANUAL_TOKEN", "")).strip()
     if not TOKEN_RE.fullmatch(token):
         print("manual: SKYTICAL_MANUAL_TOKEN must be 32-128 URL-safe chars")
         return 1

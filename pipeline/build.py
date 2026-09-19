@@ -3205,7 +3205,7 @@ def copilot_usage_view(ledger: dict) -> dict:
 
 def render_usage_dashboard(env, build) -> int:
     """Private dashboard at /u/<token>/ - only when the secret is set."""
-    token = str(env_alias("SKYTICAL_USAGE_TOKEN", "SKYTICAL_USAGE_TOKEN", "")).strip()
+    token = str(env_alias("SKYTICAL_USAGE_TOKEN", "AVWIRE_USAGE_TOKEN", "")).strip()
     if not token:
         return 0
     if not _USAGE_TOKEN_RE.fullmatch(token):
@@ -3263,7 +3263,7 @@ def render_usage_dashboard(env, build) -> int:
 
 def render_manual_workbench(env, build) -> int:
     """Private drafting page at /m/<token>/; omitted when unset/invalid."""
-    token = str(env_alias("SKYTICAL_MANUAL_TOKEN", "SKYTICAL_MANUAL_TOKEN", "")).strip()
+    token = str(env_alias("SKYTICAL_MANUAL_TOKEN", "AVWIRE_MANUAL_TOKEN", "")).strip()
     if not token:
         return 0
     if not re.fullmatch(r"[A-Za-z0-9_-]{32,128}\Z", token):
