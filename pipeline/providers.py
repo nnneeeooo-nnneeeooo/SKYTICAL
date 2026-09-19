@@ -1374,7 +1374,7 @@ def build_providers() -> list:
     ("nvidia:nvidia/nemotron-3-ultra-550b-a55b"); the same platform may
     appear multiple times with different models.
     """
-    order = env_alias("SKYTICAL_PROVIDER_ORDER", "SKYTICAL_PROVIDER_ORDER") or DEFAULT_ORDER
+    order = env_alias("SKYTICAL_PROVIDER_ORDER", "AVWIRE_PROVIDER_ORDER") or DEFAULT_ORDER
     providers, seen = [], set()
     for token in order.split(","):
         name, _, model = token.strip().partition(":")

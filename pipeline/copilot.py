@@ -1289,7 +1289,7 @@ def process_one(path: Path, *, actor: str, owner: str, token: str) -> bool:
 
 
 def process_pending() -> int:
-    token = str(env_alias("SKYTICAL_MANUAL_TOKEN", "SKYTICAL_MANUAL_TOKEN", "")).strip()
+    token = str(env_alias("SKYTICAL_MANUAL_TOKEN", "AVWIRE_MANUAL_TOKEN", "")).strip()
     if not _TOKEN_RE.fullmatch(token):
         raise SystemExit("copilot: SKYTICAL_MANUAL_TOKEN is missing or invalid")
     actor = clean_text(os.environ.get("GITHUB_ACTOR"), 80)
