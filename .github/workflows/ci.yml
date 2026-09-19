@@ -28,10 +28,33 @@ jobs:
       - name: Compile pipeline and tests
         run: python -m compileall -q pipeline tests
 
-      - name: Run complete offline regression suite
+      - name: Run legacy isolated regression scripts
         env:
-          # Regression tests mock provider/network calls. Empty production
-          # credentials make accidental external dependency obvious.
+          GEMINI_API_KEY: ""
+          NVIDIA_API_KEY: ""
+          OPENROUTER_API_KEY: ""
+          OPENCODE_API_KEY: ""
+          WECHAT_API_KEY: ""
+          AEROAPI_KEY: ""
+          ADSBLOL_API_KEY: ""
+          AIRPLANES_LIVE_API_KEY: ""
+        run: |
+          for test in \
+            tests/test_pla.py \
+            tests/test_usage.py \
+            tests/test_grounded.py \
+            tests/test_fulltext.py \
+            tests/test_glossary.py \
+            tests/test_companion.py \
+            tests/test_briefing.py \
+            tests/test_images.py
+          do
+            echo "== $test =="
+            python "$test"
+          done
+
+      - name: Run native pytest suite
+        env:
           GEMINI_API_KEY: ""
           NVIDIA_API_KEY: ""
           OPENROUTER_API_KEY: ""
