@@ -2,7 +2,7 @@
 
 Pure code-side detection - NO AI is ever called from this module:
 
-    scan (Airplanes.live, ONE wide-area query)
+    scan (Airplanes.live; ADSB.lol wide-area fallback on provider failure)
       -> sanitize + sensitive/privacy exclusion (adsb.py)
       -> assign aircraft to nearby civil airports (config/tw_civil_airports)
       -> per-aircraft track state machine (multi-observation, never a
@@ -21,9 +21,11 @@ only when something changed): state.json (tracks, pruned to 60 min),
 history.json (rarity statistics), events.json (event registry),
 queue.json (candidates awaiting the news stage).
 
-Failure rules: any provider failure leaves every file untouched - an API
-outage is "unknown sky", never "no aircraft" and never a reason to touch
-the news site. Feature is OFF unless FLIGHT_TRACKING_ENABLED=true.
+Failure rules: wide-area providers are tried in order. If Airplanes.live is
+unavailable, one ADSB.lol wide-area fallback is allowed for that scheduler
+run. If both providers fail, every file remains untouched - an API outage is
+"unknown sky", never "no aircraft" and never a reason to touch the news site.
+Feature is OFF unless FLIGHT_TRACKING_ENABLED=true.
 """
 from __future__ import annotations
 
@@ -418,6 +420,38 @@ def _save_if_changed(path: Path, obj, before: str) -> bool:
     return True
 
 
+def _wide_area_scan(stats: dict) -> tuple[list | None, str | None]:
+    """Fetch one wide-area snapshot with a bounded provider fallback.
+
+    Airplanes.live remains preferred. ADSB.lol is tried only after the
+    preferred provider fails, so a normal run still performs one wide-area
+    request. If both fail the caller must leave persisted state untouched.
+    """
+    providers = (
+        ("airplanes_live", adsb.airplanes_live_point),
+        ("adsb_lol", adsb.adsb_lol_point),
+    )
+    failures = []
+    for provider_key, fetcher in providers:
+        stats["provider_requests"] += 1
+        try:
+            rows = fetcher(CENTER_LAT, CENTER_LON, RADIUS_NM)
+        except adsb.ProviderDown as exc:
+            stats["provider_failures"] += 1
+            failures.append(f"{provider_key}={exc}")
+            print(f"flightwatch: {provider_key} wide-area provider "
+                  f"unavailable ({exc})")
+            continue
+        if provider_key != "airplanes_live":
+            print("flightwatch: using ADSB.lol wide-area fallback")
+        return rows, provider_key
+
+    print("flightwatch: all wide-area providers unavailable "
+          f"({' | '.join(failures)}); state untouched - an API failure "
+          "is NOT an empty sky")
+    return None, None
+
+
 def main() -> None:
     if (os.environ.get("FLIGHT_TRACKING_ENABLED") or "false").lower() != "true":
         print("flightwatch: disabled (FLIGHT_TRACKING_ENABLED != true)")
@@ -438,14 +472,10 @@ def main() -> None:
         "duplicate_events_skipped", "secondary_confirmations",
         "conflicting_sources", "queued_news_events")}
 
-    # ONE wide-area scan per run; failure leaves every file untouched.
-    stats["provider_requests"] += 1
-    try:
-        raw_rows = adsb.airplanes_live_point(CENTER_LAT, CENTER_LON, RADIUS_NM)
-    except adsb.ProviderDown as exc:
-        stats["provider_failures"] += 1
-        print(f"flightwatch: primary provider unavailable ({exc}); "
-              "state untouched - an API failure is NOT an empty sky")
+    # Prefer Airplanes.live; allow one bounded ADSB.lol fallback. Only an
+    # all-provider failure leaves every persisted file untouched.
+    raw_rows, primary_provider = _wide_area_scan(stats)
+    if raw_rows is None:
         print("flightwatch stats: "
               + " ".join(f"{k}={v}" for k, v in stats.items()))
         return
@@ -495,7 +525,7 @@ def main() -> None:
                 continue
             key = f"{ac['hex']}@{airport['icao']}"
             point = {
-                "ts": iso(now), "provider": "airplanes_live",
+                "ts": iso(now), "provider": primary_provider,
                 "lat": round(ac["lat"], 3), "lon": round(ac["lon"], 3),
                 "alt_baro": ac["alt_baro"],
                 "ground_speed": ac["ground_speed"],
@@ -553,13 +583,18 @@ def main() -> None:
             continue
         stats["rarity_candidates"] += 1
 
-        # Secondary source ONLY now, for this one candidate.
-        stats["provider_requests"] += 1
-        try:
-            secondary = adsb.adsb_lol_icao(ac["hex"])
-            cross = cross_check(ac, secondary)
-        except adsb.ProviderDown:
-            stats["provider_failures"] += 1
+        # Secondary confirmation is meaningful only when ADSB.lol was not
+        # already used as the primary wide-area fallback. Never "confirm" a
+        # provider with a second endpoint from the same provider.
+        if primary_provider == "airplanes_live":
+            stats["provider_requests"] += 1
+            try:
+                secondary = adsb.adsb_lol_icao(ac["hex"])
+                cross = cross_check(ac, secondary)
+            except adsb.ProviderDown:
+                stats["provider_failures"] += 1
+                cross = "secondary_unavailable"
+        else:
             cross = "secondary_unavailable"
         if cross == "confirmed_by_two_sources":
             stats["secondary_confirmations"] += 1
@@ -582,6 +617,9 @@ def main() -> None:
                 minutes=PUBLICATION_DELAY_MIN)),
             "bootstrap": bootstrap,
             "crossCheck": cross,
+            "primaryProvider": primary_provider,
+            "secondaryProvider": (
+                "adsb_lol" if primary_provider == "airplanes_live" else None),
             "airport": {k: airport[k] for k in
                         ("icao", "iata", "name_zh", "name_en")},
             "aircraft": {
