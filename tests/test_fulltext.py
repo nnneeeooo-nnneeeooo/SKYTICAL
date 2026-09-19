@@ -1,288 +1,210 @@
-"""Tests for pipeline/fulltext.py + its write.py integration (offline).
+"""Discoverable, process-isolated full-text regression tests.
 
-No pytest required — run from the repo root:
+Run with either python tests/test_fulltext.py or
+python -m pytest -q tests/test_fulltext.py.
 
-    py tests\\test_fulltext.py
-
-All HTTP is mocked; robots.txt honoring, allowlisting, caching, caps and
-the prompt/verification consistency are checked without any real fetch.
+The original 28 checks are preserved verbatim in _fulltext_legacy.py and
+execute in a fresh interpreter. Importing this module performs no pipeline
+work and mutates no environment or module state.
 """
 from __future__ import annotations
 
-import json
+import importlib.util
+import io
 import os
-import shutil
+import re
+import subprocess
 import sys
 import tempfile
-import types
+import unittest
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 REPO = Path(__file__).resolve().parent.parent
-TMP = Path(tempfile.mkdtemp(prefix="avwire-fulltext-"))
-os.environ["AVWIRE_DATA_DIR"] = str(TMP)
+LEGACY = Path(__file__).with_name("_fulltext_legacy.py")
+EXPECTED_CHECKS = 28
 
-sys.path.insert(0, str(REPO / "pipeline"))
-import common  # noqa: E402
-import fulltext  # noqa: E402
-import write  # noqa: E402
+_WORKER = r"""
+import ast
+import runpy
+import socket
+import sys
+import urllib.request
+from contextlib import ExitStack
+from pathlib import Path
+from unittest.mock import patch
 
-CHECKS = 0
-FAILED = 0
+import httpx
+import requests
 
+path = Path(sys.argv[1])
+mode = sys.argv[2]
+if mode not in {"run", "fail", "network"}:
+    raise ValueError("unknown fulltext-test worker mode")
 
-def check(name, cond):
-    global CHECKS, FAILED
-    CHECKS += 1
-    print(("PASS " if cond else "FAIL ") + name)
-    if not cond:
-        FAILED += 1
+with ExitStack() as stack:
+    for target in (
+        "socket.socket.connect",
+        "socket.socket.connect_ex",
+        "socket.create_connection",
+        "requests.sessions.Session.request",
+        "urllib.request.urlopen",
+        "httpx.Client.send",
+        "httpx.AsyncClient.send",
+    ):
+        stack.enter_context(
+            patch(target, side_effect=AssertionError("live network is forbidden"))
+        )
 
-
-class FakeResp:
-    def __init__(self, status=200, text=""):
-        self.status_code = status
-        self.text = text
-
-
-class FakeHttp:
-    def __init__(self):
-        self.calls = []
-        self.routes = {}
-
-    def get(self, url, **kwargs):
-        self.calls.append(url)
-        for prefix, resp in self.routes.items():
-            if url.startswith(prefix):
-                if isinstance(resp, Exception):
-                    raise resp
-                return resp
-        return FakeResp(404, "")
-
-
-fake = FakeHttp()
-fulltext.requests = types.SimpleNamespace(
-    get=fake.get, RequestException=Exception)
-
-LONG_PARA = ("The Federal Aviation Administration announced the results of "
-             "its counter drone operations during the tournament, seizing "
-             "more than seven hundred drones across host cities. " * 4)
-PAGE_HTML = f"""
-<html><head><script>var x=1;</script><style>.a{{}}</style></head><body>
-<nav><a>Home</a><a>About</a></nav>
-<header>FAA newsroom</header>
-<main>
-  <h1>Successful Counter-Drone Efforts Helped Keep Millions Safe</h1>
-  <p>{LONG_PARA}</p>
-  <p>Transportation Secretary Sean P. Duffy said the operation was the
-  most comprehensive airspace security effort in United States history,
-  involving federal, state and local partners working together.</p>
-  <li>Short</li>
-</main>
-<footer>Contact us</footer>
-</body></html>
+    if mode == "network":
+        probes = (
+            lambda: requests.get("https://example.invalid"),
+            lambda: urllib.request.urlopen("https://example.invalid"),
+            lambda: httpx.get("https://example.invalid"),
+            lambda: socket.create_connection(("example.invalid", 443)),
+        )
+        for probe in probes:
+            try:
+                probe()
+            except AssertionError as exc:
+                if str(exc) != "live network is forbidden":
+                    raise
+            else:
+                raise AssertionError("network guard did not reject a request")
+        print("4 network probes blocked")
+    elif mode == "fail":
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        calls = sorted(
+            (
+                node
+                for node in ast.walk(tree)
+                if isinstance(node, ast.Call)
+                and isinstance(node.func, ast.Name)
+                and node.func.id == "check"
+            ),
+            key=lambda node: node.lineno,
+        )
+        calls[0].args[0] = ast.Constant(
+            "intentional fulltext isolation regression failure"
+        )
+        calls[0].args[1] = ast.Constant(False)
+        ast.fix_missing_locations(tree)
+        exec(
+            compile(tree, str(path), "exec"),
+            {"__name__": "__main__", "__file__": str(path), "__package__": None},
+        )
+    else:
+        runpy.run_path(str(path), run_name="__main__")
 """
 
 
-def reset():
-    fake.calls.clear()
-    fake.routes.clear()
-    fulltext._robots_cache.clear()
-    try:
-        (TMP / "fulltext.json").unlink()
-    except FileNotFoundError:
-        pass
+def _run_legacy(mode: str = "run"):
+    env = {
+        key: value
+        for key, value in os.environ.items()
+        if not key.startswith(("AVWIRE_", "SKYTICAL_", "API_1_", "PYTHON"))
+        and not key.endswith(("_API_KEY", "_TOKEN"))
+    }
+    with tempfile.TemporaryDirectory(prefix="skytical-fulltext-test-") as directory:
+        root = Path(directory)
+        env.update(
+            TMPDIR=str(root),
+            TMP=str(root),
+            TEMP=str(root),
+            PYTHONDONTWRITEBYTECODE="1",
+            PYTHONHASHSEED="0",
+            PYTHONIOENCODING="utf-8",
+        )
+        result = subprocess.run(
+            [sys.executable, "-B", "-c", _WORKER, str(LEGACY), mode],
+            cwd=REPO,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=60,
+            check=False,
+        )
+    return result, root
 
 
-ROBOTS_OK = FakeResp(404, "")
-ROBOTS_DENY = FakeResp(200, "User-agent: *\nDisallow: /")
+class FulltextIsolationTests(unittest.TestCase):
+    def _assert_success(self, result):
+        output = result.stdout + result.stderr
+        self.assertEqual(result.returncode, 0, output)
+        match = re.search(
+            r"^(\d+) checks passed, 0 failed$", output, re.MULTILINE
+        )
+        self.assertIsNotNone(match, output)
+        self.assertEqual(int(match.group(1)), EXPECTED_CHECKS, output)
 
-# ── allowlist + robots ───────────────────────────────────────────────────────
+    def test_all_original_checks_pass_in_isolated_process(self):
+        result, directory = _run_legacy()
+        self._assert_success(result)
+        self.assertFalse(directory.exists())
 
-reset()
-check("non-allowlisted host is never fetched",
-      fulltext.fetch_fulltext("https://evil.example/a") is None
-      and fake.calls == [])
-check("news.google.com redirects are not allowlisted",
-      fulltext.fetch_fulltext(
-          "https://news.google.com/rss/articles/x") is None
-      and fake.calls == [])
-check("Valnet properties stay off the allowlist (terms ban AI mining)",
-      not any("simpleflying" in h for h in fulltext.ALLOWED_HOSTS)
-      and fulltext.fetch_fulltext("https://simpleflying.com/x") is None
-      and fake.calls == [])
-check("approved aviation publishers can supply full article material",
-      {"www.aerotime.aero", "aerospaceglobalnews.com",
-       "www.flightglobal.com", "www.evaair.com", "www.hnair.com",
-       "www.sse.com.cn", "www.caac.gov.cn"}.issubset(
-           fulltext.ALLOWED_HOSTS))
-check("fulltext network work has a bounded runtime",
-      fulltext.TIMEOUT[1] <= 12 and fulltext.MAX_FETCHES_PER_RUN <= 12)
+    def test_failure_propagates_to_test_runner(self):
+        result, directory = _run_legacy("fail")
+        output = result.stdout + result.stderr
+        self.assertEqual(result.returncode, 1, output)
+        self.assertIn(
+            "FAIL intentional fulltext isolation regression failure", output
+        )
+        self.assertIn("27/28 passed, 1 FAILED", output)
+        self.assertFalse(directory.exists())
 
-reset()
-fake.routes["https://www.faa.gov/robots.txt"] = ROBOTS_DENY
-check("robots Disallow is honored (page never requested)",
-      fulltext.fetch_fulltext("https://www.faa.gov/newsroom/x") is None
-      and fake.calls == ["https://www.faa.gov/robots.txt"])
+    def test_parent_environment_and_search_path_are_unchanged(self):
+        environment = dict(os.environ)
+        search_path = list(sys.path)
+        result, directory = _run_legacy()
+        self._assert_success(result)
+        self.assertEqual(dict(os.environ), environment)
+        self.assertEqual(sys.path, search_path)
+        self.assertFalse(directory.exists())
 
-reset()
-fake.routes["https://www.faa.gov/robots.txt"] = OSError("net down")
-check("unreachable robots.txt fails closed",
-      fulltext.fetch_fulltext("https://www.faa.gov/newsroom/x") is None)
+    def test_import_has_no_environment_filesystem_or_execution_side_effects(self):
+        spec = importlib.util.spec_from_file_location(
+            "_fulltext_import_probe", __file__
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        module = importlib.util.module_from_spec(spec)
+        environment = dict(os.environ)
+        search_path = list(sys.path)
+        output = io.StringIO()
+        with ExitStack() as stack:
+            for target in (
+                "tempfile.mkdtemp",
+                "tempfile.TemporaryDirectory",
+                "subprocess.run",
+            ):
+                stack.enter_context(
+                    patch(
+                        target,
+                        side_effect=AssertionError("work performed on import"),
+                    )
+                )
+            stack.enter_context(redirect_stdout(output))
+            stack.enter_context(redirect_stderr(output))
+            spec.loader.exec_module(module)
+        self.assertEqual(output.getvalue(), "")
+        self.assertEqual(dict(os.environ), environment)
+        self.assertEqual(sys.path, search_path)
 
-reset()
-fake.routes["https://www.faa.gov/robots.txt"] = ROBOTS_OK
-fake.routes["https://www.faa.gov/newsroom/x"] = FakeResp(200, PAGE_HTML)
-text = fulltext.fetch_fulltext("https://www.faa.gov/newsroom/x")
-check("allowlisted page fetched when robots absent (404)",
-      text is not None and "seven hundred drones" in text)
-check("extraction keeps main content, drops nav/script/short items",
-      "Home" not in text and "var x=1" not in text and "Short" not in text
-      and "Sean P. Duffy" in text)
-check("stored text capped", len(text) <= fulltext.MAX_STORED_CHARS)
+    def test_network_guard_blocks_live_requests(self):
+        result, directory = _run_legacy("network")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("4 network probes blocked", result.stdout)
+        self.assertFalse(directory.exists())
 
-reset()
-fake.routes["https://www.faa.gov/robots.txt"] = ROBOTS_OK
-fake.routes["https://www.faa.gov/thin"] = FakeResp(
-    200, "<html><body><p>Too short to add value here.</p></body></html>")
-check("near-empty extraction returns None (feed summary suffices)",
-      fulltext.fetch_fulltext("https://www.faa.gov/thin") is None)
-
-# ── enrich_pending: caching + caps ───────────────────────────────────────────
-
-def group_with(urls):
-    return {"id": "g1", "items": [
-        {"title": f"T{i}", "summary": "s", "url": u}
-        for i, u in enumerate(urls)]}
+    def test_legacy_file_keeps_original_contract(self):
+        source = LEGACY.read_text(encoding="utf-8")
+        self.assertIn("non-allowlisted host is never fetched", source)
+        self.assertIn("notification-style summaries are short", source)
+        self.assertIn("sys.exit(1 if FAILED else 0)", source)
 
 
-reset()
-fake.routes["https://www.faa.gov/robots.txt"] = ROBOTS_OK
-fake.routes["https://www.faa.gov/newsroom/x"] = FakeResp(200, PAGE_HTML)
-g = group_with(["https://www.faa.gov/newsroom/x",
-                "https://random.example/y"])
-n = fulltext.enrich_pending([g])
-check("enrich attaches fulltext to allowlisted items only",
-      n == 1 and "seven hundred drones" in g["items"][0]["fulltext"]
-      and "fulltext" not in g["items"][1])
-
-page_calls = [c for c in fake.calls if "newsroom" in c]
-g2 = group_with(["https://www.faa.gov/newsroom/x"])
-fulltext.enrich_pending([g2])
-check("second run served from cache (no new page request)",
-      [c for c in fake.calls if "newsroom" in c] == page_calls
-      and "seven hundred drones" in g2["items"][0]["fulltext"])
-
-reset()
-fake.routes["https://www.faa.gov/robots.txt"] = ROBOTS_OK
-fake.routes["https://www.faa.gov/miss"] = FakeResp(500, "")
-g = group_with(["https://www.faa.gov/miss"])
-fulltext.enrich_pending([g])
-first_calls = len(fake.calls)
-fulltext.enrich_pending([group_with(["https://www.faa.gov/miss"])])
-check("failed page is negative-cached (no immediate refetch)",
-      len(fake.calls) == first_calls)
-
-reset()
-fake.routes["https://www.faa.gov/robots.txt"] = ROBOTS_OK
-for i in range(12):
-    fake.routes[f"https://www.faa.gov/p{i}"] = FakeResp(200, PAGE_HTML)
-groups = [group_with([f"https://www.faa.gov/p{i}"]) for i in range(12)]
-fulltext.enrich_pending(groups)
-page_hits = [c for c in fake.calls if "/p" in c]
-check("per-run fetch budget enforced",
-      len(page_hits) == fulltext.MAX_FETCHES_PER_RUN)
-
-reset()
-fake.routes["https://www.faa.gov/robots.txt"] = ROBOTS_OK
-for i in range(4):
-    fake.routes[f"https://www.faa.gov/q{i}"] = FakeResp(200, PAGE_HTML)
-g = group_with([f"https://www.faa.gov/q{i}" for i in range(4)])
-fulltext.enrich_pending([g])
-check("at most MAX_ITEMS_PER_GROUP items enriched per group",
-      sum(1 for it in g["items"] if it.get("fulltext"))
-      == fulltext.MAX_ITEMS_PER_GROUP)
-
-# ── write.py integration: prompt + quote verification consistency ────────────
-
-item = {"title": "FAA counter-drone results", "summary": "short summary",
-        "url": "https://www.faa.gov/newsroom/x",
-        "fulltext": "A" * 3990 + " UNIQUE-TAIL-MARKER beyond the cap"}
-group = {"id": "g9", "primarySource": "FAA", "items": [item]}
-prompt = write.group_prompt(group)
-check("group_prompt shows the full text block",
-      "full text (fetched by the pipeline" in prompt
-      and prompt.count("A" * 100) > 0)
-check("prompt never shows text beyond the shared cap constant",
-      "UNIQUE-TAIL-MARKER" not in prompt)
-material_group = {"items": [{
-    "title": "FAA counter-drone results", "summary": "",
-    "fulltext": LONG_PARA,
-}]}
-check("pipeline fulltext counts as source material",
-      common.item_has_material(material_group["items"][0])
-      and write.has_material(material_group))
-
-quote_in = "counter drone operations during the tournament"
-draft = {"facts": [
-    {"factId": "F1", "claim": "c1", "sourceQuote": quote_in},
-    {"factId": "F2", "claim": "c2",
-     "sourceQuote": "UNIQUE-TAIL-MARKER beyond the cap"},
-]}
-item2 = {"title": "t", "summary": "s",
-         "url": "https://www.faa.gov/newsroom/inside-cap",
-         "fulltext": ("Results of counter drone operations during the "
-                      "tournament were announced by the agency today.")}
-ok = write.verify_facts(draft, {"items": [item2]}, "test")
-check("quote from full text verifies verbatim",
-      any(f["sourceQuote"] == quote_in for f in ok))
-item3 = {"title": "t", "summary": "s",
-         "url": "https://www.faa.gov/newsroom/outside-cap",
-         "fulltext": item["fulltext"]}
-ok3 = write.verify_facts(draft, {"items": [item3]}, "test")
-check("quote beyond the prompt cap is dropped (model never saw it)",
-      not any("UNIQUE-TAIL-MARKER" in f["sourceQuote"] for f in ok3))
-
-# a "quote" straddling two fields is not contiguous in any real source
-straddle = {"facts": [{"factId": "F1", "claim": "x",
-                       "sourceQuote": "tail of summary head of fulltext"}]}
-item4 = {"title": "t", "summary": "something tail of summary",
-         "url": "https://www.faa.gov/newsroom/straddle",
-         "fulltext": "head of fulltext continues here with more text"}
-check("field-straddling quotes are rejected",
-      write.verify_facts(straddle, {"items": [item4]}, "test") == [])
-
-check("nested SOURCE-tag smuggling is neutralized to a fixpoint",
-      "</SOURCE" not in write._clean_source_text("</SOURCE</SOURCE>>")
-      and "<SOURCE" not in write._clean_source_text("<SOURCE<SOURCE>>"))
-
-check("system prompt: model never fetches, pipeline does",
-      "you never fetch anything yourself" in write.SYSTEM_PROMPT)
-check("system prompt enforces long bodies without padding",
-      "4 to 7" in write.SYSTEM_PROMPT
-      and "substantive paragraphs" in write.SYSTEM_PROMPT
-      and "500 Chinese/alphanumeric content characters" in write.SYSTEM_PROMPT
-      and "250 words" in write.SYSTEM_PROMPT
-      and "machine-checked" in write.SYSTEM_PROMPT
-      and "pad, repeat, editorialize" in write.SYSTEM_PROMPT)
-check("system prompt preserves supplied airport IATA codes",
-      "include every supplied code" in write.SYSTEM_PROMPT
-      and "Never infer a code missing from evidence" in write.SYSTEM_PROMPT)
-check("system prompt bans newsroom-process padding and favors briefs",
-      "never narrate the editorial process" in write.SYSTEM_PROMPT
-      and "never promote it to publish merely" in write.SYSTEM_PROMPT)
-check("notification-style summaries are short and information-dense",
-      "one 26 to 38 character notification-style line" in write.SYSTEM_PROMPT
-      and "otherwise use 2 to 4 factual" in write.SYSTEM_PROMPT
-      and "semicolon-separated factual keyword phrases" in write.SYSTEM_PROMPT
-      and "Never use an ellipsis" in write.SYSTEM_PROMPT
-      and "Never return a standalone" in write.SYSTEM_PROMPT
-      and "never split a multi-word proper name" in write.SYSTEM_PROMPT
-      and "readable clause" in write.SYSTEM_PROMPT
-      and "supported place/route, timing and concrete operational" in
-      write.SYSTEM_PROMPT)
-
-print(f"\n{CHECKS} checks passed, {FAILED} failed"
-      if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
-      f"{FAILED} FAILED")
 if __name__ == "__main__":
-    sys.exit(1 if FAILED else 0)
+    unittest.main(verbosity=2)
