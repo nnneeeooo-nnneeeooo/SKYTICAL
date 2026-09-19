@@ -80,6 +80,18 @@ class FetchError(Exception):
     """Per-source fetch/parse failure — recorded in the raw file, never fatal."""
 
 
+def _fetch_log_status(key: str, error: str) -> str:
+    """Classify fetch log severity without changing persisted source state.
+
+    FlightAware AeroAPI is explicitly optional. A missing key still persists
+    the existing unconfigured raw payload so build/write behavior is unchanged,
+    but it must not be presented as an operational failure in Actions logs.
+    """
+    if key == "flightaware" and error == "AEROAPI_KEY not set":
+        return "SKIPPED"
+    return "FAILED"
+
+
 # --------------------------------------------------------------------------
 # small text/date helpers
 
@@ -731,7 +743,8 @@ def main() -> None:
                     payload["stats"] = previous["stats"]
             save_json(raw_path, payload)
             cache.pop(key, None)  # do not 304 our way past a failure next run
-            print(f"[fetch] {key}: FAILED - {error}")
+            status = _fetch_log_status(key, error)
+            print(f"[fetch] {key}: {status} - {error}")
             success = False
         last_success[key] = fetched_iso if success else None
 
