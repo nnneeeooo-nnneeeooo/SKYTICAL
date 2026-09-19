@@ -658,4 +658,5 @@ check("per-section cap (6) enforced with an explicit warning",
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
       f"{FAILED} FAILED")
-if __name__ == "__main__":\n    sys.exit(1 if FAILED else 0)
+if __name__ == "__main__":
+    sys.exit(1 if FAILED else 0)
