@@ -221,7 +221,7 @@ def main() -> None:
     assert "flightroute.origin" in js
     assert "flightroute.destination" in js
     assert "routeConcurrency = 4" in js
-    assert 'routeCacheKey = "avwire-radar-routes-v2"' in js
+    assert 'routeCacheKey = "skytical-radar-routes-v2"' in js
     assert "https://tile.openstreetmap.org/{z}/{x}/{y}.png" in js
     assert "textContent" in js
 

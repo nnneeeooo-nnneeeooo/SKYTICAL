@@ -44,8 +44,10 @@ jobs:
         run: python -m compileall -q pipeline tests
       - name: Run standalone briefing checks
         run: python tests/test_briefing.py
+      - name: Verify environment-name compatibility
+        run: python tests/test_env_migration.py
       - name: Verify pytest collection and isolation
-        run: python -m pytest -q tests/test_briefing.py
+        run: python -m pytest -q tests/test_briefing.py tests/test_env_migration.py
       - name: Verify production output is unchanged
         if: always()
         shell: bash
