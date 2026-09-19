@@ -223,4 +223,5 @@ check("phrases present in the material itself stay allowed",
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
       f"{FAILED} FAILED")
-sys.exit(1 if FAILED else 0)
+if FAILED:
+    raise AssertionError(f"{FAILED} test_glossary checks failed")
