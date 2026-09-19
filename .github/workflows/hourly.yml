@@ -13,9 +13,7 @@ on:
       - "pipeline/flightnews.py"
       - "pipeline/airport_codes.py"
       - "config/airport_iata_aliases.json"
-      - "tests/test_companion.py"
-      - "tests/test_flightwatch.py"
-      - "tests/test_airport_codes.py"
+      - "tests/**"
   push:
     branches: [main]
     paths-ignore:
@@ -43,6 +41,7 @@ jobs:
           python tests/test_companion.py
           python tests/test_flightwatch.py
           python tests/test_airport_codes.py
+          python -m pytest -q
 
   update:
     if: github.event_name != 'pull_request'
