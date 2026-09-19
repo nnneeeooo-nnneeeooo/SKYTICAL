@@ -22,7 +22,7 @@ on:
       - "data/**" # bot data commits must not retrigger the workflow
 
 concurrency:
-  group: hourly
+  group: ${{ github.event_name == 'pull_request' && format('hourly-pr-{0}', github.event.pull_request.number) || 'hourly' }}
   cancel-in-progress: false
 
 jobs:
