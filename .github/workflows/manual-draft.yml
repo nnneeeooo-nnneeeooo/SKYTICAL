@@ -33,7 +33,7 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
-          AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
+          SKYTICAL_MANUAL_TOKEN: ${{ secrets.SKYTICAL_MANUAL_TOKEN || secrets.AVWIRE_MANUAL_TOKEN }}
         run: python pipeline/manual_draft.py --process-pending
 
       - name: Verify that only encrypted envelopes enter the job store
