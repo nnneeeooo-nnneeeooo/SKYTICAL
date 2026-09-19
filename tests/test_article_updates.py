@@ -9,8 +9,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA = Path(tempfile.mkdtemp(prefix="avwire-article-update-"))
-os.environ["AVWIRE_DATA_DIR"] = str(DATA)
+DATA = Path(tempfile.mkdtemp(prefix="skytical-article-update-"))
+os.environ["SKYTICAL_DATA_DIR"] = str(DATA)
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 import write  # noqa: E402

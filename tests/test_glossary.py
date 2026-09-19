@@ -12,7 +12,7 @@ import tempfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-os.environ["AVWIRE_DATA_DIR"] = tempfile.mkdtemp(prefix="avwire-glossary-")
+os.environ["SKYTICAL_DATA_DIR"] = tempfile.mkdtemp(prefix="skytical-glossary-")
 
 sys.path.insert(0, str(REPO / "pipeline"))
 import write  # noqa: E402

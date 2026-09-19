@@ -2,7 +2,7 @@
 
 Run from the repo root:  py tests\\test_write_offline.py   (or python3 on Linux)
 
-The tests point the pipeline at a temporary data directory via AVWIRE_DATA_DIR
+The tests point the pipeline at a temporary data directory via SKYTICAL_DATA_DIR
 and monkeypatch write.draft_group with canned model output, so no Anthropic
 API call is ever attempted.
 """
@@ -21,11 +21,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 FIXTURES = Path(__file__).resolve().parent / "fixtures" / "write"
-TMP_BASE = Path(tempfile.mkdtemp(prefix="avwire-write-test-"))
+TMP_BASE = Path(tempfile.mkdtemp(prefix="skytical-write-test-"))
 DATA = TMP_BASE / "data"
 
 # Must be set BEFORE importing common/write (common.DATA_DIR reads it at import).
-os.environ["AVWIRE_DATA_DIR"] = str(DATA)
+os.environ["SKYTICAL_DATA_DIR"] = str(DATA)
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 import common  # noqa: E402
@@ -470,7 +470,7 @@ def test_no_api_key_end_to_end():
     for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY",
                 "OPENROUTER_API_KEY", "OPENCODE_API_KEY"):
         env.pop(key, None)
-    env["AVWIRE_DATA_DIR"] = str(tmp2)
+    env["SKYTICAL_DATA_DIR"] = str(tmp2)
     env["PYTHONIOENCODING"] = "utf-8"
     result = subprocess.run(
         [sys.executable, str(ROOT / "pipeline" / "write.py")],
@@ -712,9 +712,9 @@ def test_model_chain_and_routing_policy():
     """Model order, run-local platform circuits and primary retry policy."""
     # --- order tokens: same platform may appear with different models -----
     saved = {k: os.environ.get(k) for k in (
-        "AVWIRE_PROVIDER_ORDER", "NVIDIA_API_KEY", "GEMINI_API_KEY",
+        "SKYTICAL_PROVIDER_ORDER", "NVIDIA_API_KEY", "GEMINI_API_KEY",
         "OPENROUTER_API_KEY", "OPENCODE_API_KEY", "ANTHROPIC_API_KEY")}
-    os.environ["AVWIRE_PROVIDER_ORDER"] = (
+    os.environ["SKYTICAL_PROVIDER_ORDER"] = (
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b, "
         "nvidia:nvidia/nemotron-3-super-120b-a12b, "
         "gemini:gemini-3-flash-preview, "

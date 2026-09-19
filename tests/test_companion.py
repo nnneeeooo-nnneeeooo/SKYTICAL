@@ -15,7 +15,7 @@ import types
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-os.environ["AVWIRE_DATA_DIR"] = tempfile.mkdtemp(prefix="avwire-companion-")
+os.environ["SKYTICAL_DATA_DIR"] = tempfile.mkdtemp(prefix="skytical-companion-")
 
 sys.path.insert(0, str(REPO / "pipeline"))
 import companion  # noqa: E402
