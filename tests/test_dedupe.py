@@ -7,7 +7,7 @@ No pytest required — run from the repo root with:
 Fixtures under tests/fixtures/dedupe/ use {{H-n}} / {{D-n}} placeholders
 (n hours / days before now) so the freshness (default 120 h) and 21-day
 windows never go stale. Each test materializes the fixtures into a temp
-AVWIRE_DATA_DIR and runs dedupe.py as a subprocess, never touching the
+SKYTICAL_DATA_DIR and runs dedupe.py as a subprocess, never touching the
 real data/ dir.
 """
 from __future__ import annotations
@@ -53,9 +53,9 @@ def _materialize_fixtures(data_dir: Path) -> None:
 
 
 def _run_dedupe(data_dir: Path, extra_env: dict | None = None) -> str:
-    env = dict(os.environ, AVWIRE_DATA_DIR=str(data_dir))
+    env = dict(os.environ, SKYTICAL_DATA_DIR=str(data_dir))
     env.pop("NEWS_MAX_AGE_HOURS", None)
-    env.pop("AVWIRE_MAX_AGE_HOURS", None)
+    env.pop("SKYTICAL_MAX_AGE_HOURS", None)
     if extra_env:
         env.update(extra_env)
     proc = subprocess.run(
@@ -100,7 +100,7 @@ def test_norm_title_and_tiebreak() -> None:
 
 
 def test_filtering_grouping_and_ranking() -> None:
-    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="skytical-dedupe-") as tmp:
         data_dir = Path(tmp)
         _materialize_fixtures(data_dir)
         seen_before = (data_dir / "seen.json").read_bytes()
@@ -259,7 +259,7 @@ def test_group_cap_and_recency_order() -> None:
         }
         for i, title in enumerate(titles)
     ]
-    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="skytical-dedupe-") as tmp:
         data_dir = Path(tmp)
         raw_dir = data_dir / "raw"
         raw_dir.mkdir(parents=True)
@@ -315,7 +315,7 @@ def test_taiwan_airline_story_is_reserved_ahead_of_general_cap() -> None:
         dedupe.MAX_GROUPS + 10,
         "長榮航空宣布十二月開航台北至德里航線，每週提供五班直飛服務。",
     )
-    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="skytical-dedupe-") as tmp:
         data_dir = Path(tmp)
         _write_snapshot(data_dir, "faa", general)
         _write_snapshot(data_dir, "cnataiwanfinance", [taiwan])
@@ -363,7 +363,7 @@ def test_major_title_only_survives_group_cap() -> None:
         {**major, "title": "Boeing delivers 100th 787 to Emirates!",
          "sourceKey": "boeing"},
     ]})
-    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="skytical-dedupe-") as tmp:
         data_dir = Path(tmp)
         _write_snapshot(data_dir, "faa", ordinary)
         _write_snapshot(data_dir, "boeing", [major])
@@ -378,7 +378,7 @@ def test_major_title_only_survives_group_cap() -> None:
 
 
 def test_empty_data_dir() -> None:
-    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="skytical-dedupe-") as tmp:
         data_dir = Path(tmp)
         stdout = _run_dedupe(data_dir)
         assert _summary_line(stdout) == \
@@ -416,7 +416,7 @@ def test_freshness_window_and_future_guard() -> None:
         _mk_item("Ancient item far outside window", "https://www.faa.gov/n/o2",
                  130, body),           # dropped
     ]
-    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="skytical-dedupe-") as tmp:
         data_dir = Path(tmp)
         _write_snapshot(data_dir, "faa", items)
 
@@ -463,7 +463,7 @@ def test_material_groups_rank_first() -> None:
         _mk_item("Newest but title only headline item",
                  "https://www.reuters.com/n/thin", 1, ""),
     ]
-    with tempfile.TemporaryDirectory(prefix="avwire-dedupe-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="skytical-dedupe-") as tmp:
         data_dir = Path(tmp)
         _write_snapshot(data_dir, "faa", faa_items)
         _write_snapshot(data_dir, "reuters", reuters_items)
