@@ -1,0 +1,54 @@
+name: companion-tests
+
+on:
+  push:
+    paths:
+      - ".github/workflows/companion-tests.yml"
+      - "tests/test_companion.py"
+      - "tests/_companion_legacy.py"
+      - "pipeline/companion.py"
+      - "pipeline/common.py"
+      - "requirements.txt"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/companion-tests.yml"
+      - "tests/test_companion.py"
+      - "tests/_companion_legacy.py"
+      - "pipeline/companion.py"
+      - "pipeline/common.py"
+      - "requirements.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install test dependencies
+        run: python -m pip install -r requirements.txt "pytest>=8,<10"
+      - name: Compile pipeline and tests
+        run: python -m compileall -q pipeline tests
+      - name: Run standalone companion checks
+        run: python tests/test_companion.py
+      - name: Verify pytest collection and isolation
+        run: python -m pytest -q tests/test_companion.py
+      - name: Verify production output is unchanged
+        if: always()
+        shell: bash
+        run: |
+          changes="$(git status --porcelain --untracked-files=all -- data site)"
+          if [ -n "$changes" ]; then
+            printf '%s\n' "$changes"
+            echo "::error::Companion tests modified production output"
+            exit 1
+          fi
