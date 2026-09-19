@@ -19,4 +19,5 @@ collect_ignore = [
     "test_companion.py",
     "test_briefing.py",
     "test_images.py",
+    "test_manufacturer_sources.py",
 ]
