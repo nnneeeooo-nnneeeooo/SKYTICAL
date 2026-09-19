@@ -8,8 +8,8 @@
 
 - 技術棧：Python 3.12、Jinja2、Vanilla JavaScript/CSS、JSON 檔案資料庫、GitHub Actions、GitHub Pages。
 - 正式網站是純靜態 GitHub Pages，沒有常駐 application server、session middleware、資料庫連線或可部署 `/api/*` 的 server runtime。
-- 私人補稿台：建置時由 `pipeline/build.py` 產生於 `/m/<AVWIRE_MANUAL_TOKEN>/`，主要檔案為 `templates/manual.html`、`static/manual.js`、`static/manual.css`、`pipeline/manual_draft.py`、`.github/workflows/manual-draft.yml`。
-- API 用量頁：建置時產生於 `/u/<AVWIRE_USAGE_TOKEN>/`，主要檔案為 `templates/usage.html`、`pipeline/usage.py` 與 `pipeline/build.py`。
+- 私人補稿台：建置時由 `pipeline/build.py` 產生於 `/m/<SKYTICAL_MANUAL_TOKEN>/`，主要檔案為 `templates/manual.html`、`static/manual.js`、`static/manual.css`、`pipeline/manual_draft.py`、`.github/workflows/manual-draft.yml`。
+- API 用量頁：建置時產生於 `/u/<SKYTICAL_USAGE_TOKEN>/`，主要檔案為 `templates/usage.html`、`pipeline/usage.py` 與 `pipeline/build.py`。
 - 現有管理員身分：補稿台由瀏覽器中的 fine-grained GitHub PAT 存取 GitHub Contents API；沒有傳統登入 session。Copilot UI 另向 GitHub 驗證 PAT 的 login、repository owner 與 `permissions.admin`，Actions worker 再以 `GITHUB_ACTOR == GITHUB_REPOSITORY_OWNER` 做獨立 server-side 檢查。
 - 未登入時，GitHub API 會回 401；非 repository owner／管理員在 UI 被鎖定，worker 也回 403；feature flag 關閉時 worker 回 404。
 - 文章資料模型：已發布文章位於 `data/articles/*.json`，包含中英文標題、摘要、正文、來源、發布時間、分類、facts 與 entities。Copilot 只索引已發布且未封存文章；當前草稿只存在單次加密 job context，不會寫入 RAG index。
@@ -68,7 +68,7 @@
 此 repository 沒有 HTTP server，因此上述路徑是加密 job payload 的 route contract，不是公開網路上的 HTTP endpoint。傳輸流程：
 
 1. 私人補稿台驗證 GitHub owner/admin PAT。
-2. 瀏覽器以 `AVWIRE_MANUAL_TOKEN` 衍生的 AES-256-GCM key 加密請求。
+2. 瀏覽器以 `SKYTICAL_MANUAL_TOKEN` 衍生的 AES-256-GCM key 加密請求。
 3. GitHub Contents API 將密文寫到 `data/copilot-jobs/inbox/<jobId>.json`。
 4. `private-copilot-job` Actions worker 檢查 `GITHUB_ACTOR`、repository owner 與 server-side feature flag。
 5. worker 處理後把密文結果寫到 `data/copilot-jobs/outbox/<jobId>.json`。
@@ -156,13 +156,13 @@ AI_DAILY_BUDGET_LIMIT_USD=5
 重用既有：
 
 ```dotenv
-AVWIRE_MANUAL_TOKEN=
+SKYTICAL_MANUAL_TOKEN=
 OPENCODE_API_KEY=
 ANTHROPIC_API_KEY=
 GEMINI_API_KEY=
 NVIDIA_API_KEY=
 OPENROUTER_API_KEY=
-AVWIRE_PROVIDER_ORDER=
+SKYTICAL_PROVIDER_ORDER=
 ```
 
 沒有新增真實 secret；`.env.example` 全部是空值／安全預設。既有 `GEMINI_API_KEY` 同時供一般 Gemini provider 與 Copilot Google Search grounding 使用。
@@ -228,3 +228,8 @@ AVWIRE_PROVIDER_ORDER=
 
 **沒有將 Copilot 加入公開頁面。**
 公開首頁、Header、Footer、文章頁、搜尋頁、sitemap、robots 與公開導覽均沒有 Copilot 入口、文案或 script／stylesheet 引用。
+
+
+### Legacy environment compatibility
+
+Runtime configuration uses `SKYTICAL_*` names. Matching `AVWIRE_*` names are deprecated aliases only and remain accepted temporarily while repository Secrets/Variables are migrated.

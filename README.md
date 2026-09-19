@@ -39,7 +39,7 @@ SKYTICAL/
 ## 上線設定
 
 1. Settings → Secrets and variables → Actions：新增至少一組撰稿 key（都設也可以，
-   會依 `AVWIRE_PROVIDER_ORDER` 順序自動備援）：
+   會依 `SKYTICAL_PROVIDER_ORDER` 順序自動備援）：
    - `OPENCODE_API_KEY`（OpenCode Console service account，主力模型閘道）
    - `ANTHROPIC_API_KEY`（Anthropic，品質最佳、付費）
    - `GEMINI_API_KEY`（Google AI Studio 免費層）
@@ -88,7 +88,7 @@ pip install -r requirements.txt
 python pipeline/fetch.py
 python pipeline/dedupe.py
 OPENCODE_API_KEY=... python pipeline/write.py    # 可省略；或其他撰稿 key
-AVWIRE_BASE_PATH= python pipeline/build.py       # 本機預覽用空 base path
+SKYTICAL_BASE_PATH= python pipeline/build.py       # 本機預覽用空 base path
 python -m http.server -d site 8000
 ```
 
@@ -101,17 +101,17 @@ python -m http.server -d site 8000
 | `GEMINI_API_KEY` | — | Google Gemini 撰稿（選用，免費層） |
 | `NVIDIA_API_KEY` | — | NVIDIA NIM 撰稿（選用，免費額度） |
 | `OPENROUTER_API_KEY` | — | OpenRouter 撰稿備援（選用） |
-| `AVWIRE_PROVIDER_ORDER` | `opencode:claude-sonnet-4-6,opencode:gpt-5.5,gemini:gemini-3.6-flash,opencode:gemini-3.1-pro,opencode:qwen3.6-plus,nvidia:z-ai/glm-5.2,opencode:glm-5.1,opencode:kimi-k2.6,gemini:gemini-3.5-flash,...` | 撰稿優先鏈，完整預設見 `pipeline/model_config.py`；主力模型驗證失敗自動重試一次，之後依序備援；帳號／額度失效會跳過同平台所有備援模型 |
-| `AVWIRE_OPENCODE_MODEL` | `claude-sonnet-4-6` | OpenCode Console 模型 |
-| `AVWIRE_MODEL` | `claude-opus-5` | Anthropic 模型 |
-| `AVWIRE_GEMINI_MODEL` | `gemini-3.6-flash` | Gemini 模型 |
-| `AVWIRE_NVIDIA_MODEL` | `z-ai/glm-5.2` | NVIDIA NIM 模型 |
+| `SKYTICAL_PROVIDER_ORDER` | `opencode:claude-sonnet-4-6,opencode:gpt-5.5,gemini:gemini-3.6-flash,opencode:gemini-3.1-pro,opencode:qwen3.6-plus,nvidia:z-ai/glm-5.2,opencode:glm-5.1,opencode:kimi-k2.6,gemini:gemini-3.5-flash,...` | 撰稿優先鏈，完整預設見 `pipeline/model_config.py`；主力模型驗證失敗自動重試一次，之後依序備援；帳號／額度失效會跳過同平台所有備援模型 |
+| `SKYTICAL_OPENCODE_MODEL` | `claude-sonnet-4-6` | OpenCode Console 模型 |
+| `SKYTICAL_MODEL` | `claude-opus-5` | Anthropic 模型 |
+| `SKYTICAL_GEMINI_MODEL` | `gemini-3.6-flash` | Gemini 模型 |
+| `SKYTICAL_NVIDIA_MODEL` | `z-ai/glm-5.2` | NVIDIA NIM 模型 |
 | `NEWS_MAX_AGE_HOURS` | `120` | 新聞新鮮度窗口（小時），驗證範圍 24–336，非法值回退預設並警告 |
 | `AEROAPI_KEY` | — | FlightAware AeroAPI（選用統計） |
-| `AVWIRE_BASE_PATH` | 空字串 | 站台子路徑；正式自訂網域使用根路徑 |
-| `AVWIRE_SITE_ORIGIN` | `https://skytical.tech` | canonical、hreflang、sitemap 與 JSON-LD 的公開站台來源 |
+| `SKYTICAL_BASE_PATH` | 空字串 | 站台子路徑；正式自訂網域使用根路徑 |
+| `SKYTICAL_SITE_ORIGIN` | `https://skytical.tech` | canonical、hreflang、sitemap 與 JSON-LD 的公開站台來源 |
 
-> 相容性說明：`AVWIRE_*` 是既有部署使用的環境變數前綴，暫時保留以相容 GitHub Secrets／Variables；網站公開品牌與介面均統一使用 SKYTICAL。
+> 相容性說明：新的設定名稱統一使用 `SKYTICAL_*`。遷移期間，程式仍接受對應的 `AVWIRE_*` 舊名稱作為 fallback；GitHub Actions 也會優先讀取新的 Secret／Variable，再退回舊名稱。
 
 ## 稀有民航機偵測（預設關閉）
 
