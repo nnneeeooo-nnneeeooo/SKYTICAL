@@ -1,0 +1,36 @@
+name: python-syntax
+
+on:
+  push:
+    paths:
+      - ".github/workflows/python-syntax.yml"
+      - "pipeline/**"
+      - "tests/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/python-syntax.yml"
+      - "pipeline/**"
+      - "tests/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: python-syntax-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      # Compile only: do not import tests, call providers, or modify site data.
+      - name: Compile pipeline and test files
+        run: python -m compileall -q pipeline tests
