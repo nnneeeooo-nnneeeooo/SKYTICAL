@@ -35,13 +35,20 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt pytest
+      - run: pip install -r requirements.txt
       - name: Run pipeline regression tests
         run: |
           python tests/test_companion.py
           python tests/test_flightwatch.py
           python tests/test_airport_codes.py
-          python -m pytest -q
+          python tests/test_grounded.py
+          python tests/test_pla.py
+          python tests/test_usage.py
+          python tests/test_fulltext.py
+          python tests/test_glossary.py
+          python tests/test_briefing.py
+          python tests/test_images.py
+          python tests/test_manufacturer_sources.py
 
   update:
     if: github.event_name != 'pull_request'
