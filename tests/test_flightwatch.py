@@ -159,6 +159,51 @@ def test_cross_check():
     print("test_cross_check: done")
 
 
+def test_wide_area_provider_fallback():
+    original_live = adsb.airplanes_live_point
+    original_lol = adsb.adsb_lol_point
+    calls = []
+
+    def live_down(lat, lon, radius):
+        calls.append("airplanes_live")
+        raise adsb.ProviderDown("HTTP 403")
+
+    def lol_ok(lat, lon, radius):
+        calls.append("adsb_lol")
+        return [{"hex": "abc123"}]
+
+    try:
+        adsb.airplanes_live_point = live_down
+        adsb.adsb_lol_point = lol_ok
+        stats = {"provider_requests": 0, "provider_failures": 0}
+        rows, provider = flightwatch._wide_area_scan(stats)
+        check(provider == "adsb_lol" and len(rows) == 1,
+              "ADSB.lol takes over when Airplanes.live is unavailable")
+        check(calls == ["airplanes_live", "adsb_lol"]
+              and stats["provider_requests"] == 2
+              and stats["provider_failures"] == 1,
+              "wide-area fallback is bounded to one request per provider")
+
+        calls.clear()
+
+        def lol_down(lat, lon, radius):
+            calls.append("adsb_lol")
+            raise adsb.ProviderDown("HTTP 503")
+
+        adsb.adsb_lol_point = lol_down
+        stats = {"provider_requests": 0, "provider_failures": 0}
+        rows, provider = flightwatch._wide_area_scan(stats)
+        check(rows is None and provider is None
+              and calls == ["airplanes_live", "adsb_lol"],
+              "all-provider outage remains unknown sky")
+        check(stats["provider_failures"] == 2,
+              "all provider failures are counted without touching state")
+    finally:
+        adsb.airplanes_live_point = original_live
+        adsb.adsb_lol_point = original_lol
+    print("test_wide_area_provider_fallback: done")
+
+
 def test_rarity_and_bootstrap():
     old_history = {"firstRunUtc": flightwatch.iso(NOW - timedelta(days=90)),
                    "arrivals": []}
@@ -545,6 +590,7 @@ def main():
         test_parse_and_sanitize,
         test_arrival_state_machine,
         test_cross_check,
+        test_wide_area_provider_fallback,
         test_rarity_and_bootstrap,
         test_event_identity_and_config,
         test_source_assembly_privacy,
