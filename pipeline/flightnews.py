@@ -128,12 +128,21 @@ def assemble_source(event: dict) -> str:
     operator = _operator_details(event)
     arrival = event.get("arrival") or {}
     rar = event.get("rarity") or {}
+    primary_key = str(event.get("primaryProvider") or "airplanes_live")
+    secondary_key = event.get("secondaryProvider")
+    provider_names = {
+        "airplanes_live": "Airplanes.live",
+        "adsb_lol": "ADSB.lol",
+    }
+    primary_name = provider_names.get(primary_key, primary_key)
+    secondary_name = (provider_names.get(str(secondary_key), str(secondary_key))
+                      if secondary_key else "未使用")
     lines = [
         '<SOURCE type="flight_observation">',
         f"事件 ID：{event.get('eventId')}",
         "資料類型：公開 ADS-B 觀測",
-        "主要資料來源：Airplanes.live",
-        "第二資料來源：ADSB.lol",
+        f"主要資料來源：{primary_name}",
+        f"第二資料來源：{secondary_name}",
         f"交叉確認狀態：{event.get('crossCheck')}",
         f"機場 ICAO：{airport.get('icao')}",
         f"機場名稱：{airport.get('name_zh')}",
@@ -178,28 +187,38 @@ def pseudo_group(event: dict) -> dict:
              f" 抵達 {airport.get('name_zh') or airport.get('icao')}")
     confirmed = (event.get("arrival") or {}).get("confirmedUtc") or ""
     published = confirmed[:16] + "Z" if len(confirmed) >= 16 else confirmed
+    primary_key = str(event.get("primaryProvider") or "airplanes_live")
+    provider_meta = {
+        "airplanes_live": ("Airplanes.live", "https://airplanes.live/"),
+        "adsb_lol": ("ADSB.lol", "https://www.adsb.lol/"),
+    }
+    primary_name, primary_url = provider_meta.get(
+        primary_key, (primary_key, "https://www.adsb.lol/"))
     items = [{
         "title": title,
-        "url": "https://airplanes.live/",
+        "url": primary_url,
         "publishedUtc": published,
         "summary": source_text,
         "image": None,
-        "source": "Airplanes.live",
-        "sourceKey": "airplanes_live",
+        "source": primary_name,
+        "sourceKey": primary_key,
     }]
     if event.get("crossCheck") == "confirmed_by_two_sources":
+        secondary_key = str(event.get("secondaryProvider") or "adsb_lol")
+        secondary_name, secondary_url = provider_meta.get(
+            secondary_key, (secondary_key, "https://www.adsb.lol/"))
         items.append({
             "title": title,
-            "url": "https://www.adsb.lol/",
+            "url": secondary_url,
             "publishedUtc": published,
             "summary": "第二資料來源交叉確認相符（ODbL 開放資料）。",
             "image": None,
-            "source": "ADSB.lol",
-            "sourceKey": "adsb_lol",
+            "source": secondary_name,
+            "sourceKey": secondary_key,
         })
     items.extend(_background_items(event))
     return {
         "id": event.get("eventId"),
-        "primarySource": "Airplanes.live",
+        "primarySource": primary_name,
         "items": items,
     }
