@@ -54,6 +54,9 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Test grounded briefing fallback
+        run: python tests/test_grounded.py
+
       - name: Resolve edition (explicit cron mapping, never guessed from the clock)
         id: ed
         run: |
