@@ -216,6 +216,28 @@ check("HTTP 429 falls through to the next grounded Gemini model",
       and fallback_shim.model == grounded.GROUNDED_MODELS[1]
       and fallback_shim.http_calls == 2)
 
+hard_quota_calls = []
+
+
+def fake_post_with_hard_quota(url, json=None, timeout=None, headers=None):
+    hard_quota_calls.append(url)
+    return types.SimpleNamespace(
+        status_code=429,
+        text="You exceeded your current quota, please check your plan and billing details.")
+
+
+grounded.requests = types.SimpleNamespace(post=fake_post_with_hard_quota)
+os.environ["GEMINI_API_KEY"] = "test-not-real"
+hard_quota_raised = False
+try:
+    grounded.call_grounded(window)
+except RuntimeError:
+    hard_quota_raised = True
+finally:
+    del os.environ["GEMINI_API_KEY"]
+check("billing/project quota exhaustion stops model-churn after one call",
+      hard_quota_raised and len(hard_quota_calls) == 1)
+
 # the empty-string env CI passes when the repo var is unset must not
 # blank the model id (this exact bug produced HTTP 404 in production)
 import importlib  # noqa: E402
@@ -234,4 +256,5 @@ del os.environ["BRIEFING_GROUNDED"]
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
       f"{FAILED} FAILED")
-sys.exit(1 if FAILED else 0)
+if __name__ == "__main__":
+    sys.exit(1 if FAILED else 0)
