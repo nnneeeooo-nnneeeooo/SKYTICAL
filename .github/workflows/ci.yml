@@ -47,7 +47,8 @@ jobs:
             tests/test_glossary.py \
             tests/test_companion.py \
             tests/test_briefing.py \
-            tests/test_images.py
+            tests/test_images.py \
+            tests/test_manufacturer_sources.py
           do
             echo "== $test =="
             python "$test"
