@@ -202,7 +202,7 @@ fallback_calls = []
 def fake_post_with_quota_fallback(url, json=None, timeout=None, headers=None):
     fallback_calls.append(url)
     if len(fallback_calls) == 1:
-        return types.SimpleNamespace(status_code=429, text="quota")
+        return types.SimpleNamespace(status_code=429, text="per-minute rate limit")
     return types.SimpleNamespace(
         status_code=200, json=lambda: resp_data([], []))
 
@@ -211,10 +211,32 @@ grounded.requests = types.SimpleNamespace(post=fake_post_with_quota_fallback)
 os.environ["GEMINI_API_KEY"] = "test-not-real"
 _fallback_data, fallback_shim = grounded.call_grounded(window)
 del os.environ["GEMINI_API_KEY"]
-check("HTTP 429 falls through to the next grounded Gemini model",
+check("transient HTTP 429 falls through to the next grounded Gemini model",
       len(fallback_calls) == 2
       and fallback_shim.model == grounded.GROUNDED_MODELS[1]
       and fallback_shim.http_calls == 2)
+
+quota_calls = []
+
+
+def fake_post_with_exhausted_quota(url, json=None, timeout=None, headers=None):
+    quota_calls.append(url)
+    return types.SimpleNamespace(
+        status_code=429,
+        text="You exceeded your current quota, please check your plan and billing details.")
+
+
+grounded.requests = types.SimpleNamespace(post=fake_post_with_exhausted_quota)
+os.environ["GEMINI_API_KEY"] = "test-not-real"
+try:
+    grounded.call_grounded(window)
+except RuntimeError:
+    pass
+else:
+    check("exhausted quota raises for deterministic briefing fallback", False)
+del os.environ["GEMINI_API_KEY"]
+check("project-level exhausted quota stops same-key model shopping",
+      len(quota_calls) == 1)
 
 # the empty-string env CI passes when the repo var is unset must not
 # blank the model id (this exact bug produced HTTP 404 in production)
@@ -234,4 +256,5 @@ del os.environ["BRIEFING_GROUNDED"]
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
       f"{FAILED} FAILED")
-sys.exit(1 if FAILED else 0)
+if FAILED:
+    raise AssertionError(f"{FAILED} grounded checks failed")
