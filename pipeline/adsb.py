@@ -2,10 +2,10 @@
 
 Two public community data sources behind one thin interface:
 
-    airplanes_live_point()  PRIMARY wide-area scan
+    airplanes_live_point()  preferred wide-area scan
                             https://api.airplanes.live/v2/point/{lat}/{lon}/{nm}
-    adsb_lol_point() /
-    adsb_lol_icao()         SECONDARY, candidate confirmation only
+    adsb_lol_point()        wide-area fallback when Airplanes.live is down
+    adsb_lol_icao()         independent candidate confirmation when available
                             https://api.adsb.lol/v2/...
 
 Operating rules baked in (both services are volunteer-run, no SLA):
