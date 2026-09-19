@@ -509,6 +509,39 @@ def test_flight_no_candidates_no_ai():
     print("test_flight_no_candidates_no_ai: done")
 
 
+def test_scan_provider_fallback():
+    _reset_data()
+    original_primary = adsb.airplanes_live_point
+    original_fallback = adsb.adsb_lol_point
+    original_enabled = os.environ.get("FLIGHT_TRACKING_ENABLED")
+    calls = {"primary": 0, "fallback": 0}
+
+    def primary(*_args, **_kwargs):
+        calls["primary"] += 1
+        raise adsb.ProviderDown("HTTP 403")
+
+    def fallback(*_args, **_kwargs):
+        calls["fallback"] += 1
+        return []
+
+    adsb.airplanes_live_point = primary
+    adsb.adsb_lol_point = fallback
+    os.environ["FLIGHT_TRACKING_ENABLED"] = "true"
+    try:
+        flightwatch.main()
+    finally:
+        adsb.airplanes_live_point = original_primary
+        adsb.adsb_lol_point = original_fallback
+        if original_enabled is None:
+            os.environ.pop("FLIGHT_TRACKING_ENABLED", None)
+        else:
+            os.environ["FLIGHT_TRACKING_ENABLED"] = original_enabled
+
+    check(calls == {"primary": 1, "fallback": 1},
+          "Airplanes.live failure triggers exactly one ADSB.lol wide-area fallback")
+    print("test_scan_provider_fallback: done")
+
+
 def test_flight_bad_quote_and_reject():
     _reset_data()
     flightnews.save_queue([json.loads(json.dumps(FLIGHT_EVENT))])
@@ -550,6 +583,7 @@ def main():
         test_source_assembly_privacy,
         test_flight_events_auto_publish,
         test_flight_fallback_history,
+        test_scan_provider_fallback,
         test_flight_gate_rejects_conflicts_and_publishes_reliable_risk,
         test_flight_no_candidates_no_ai,
         test_flight_bad_quote_and_reject,

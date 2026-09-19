@@ -438,17 +438,31 @@ def main() -> None:
         "duplicate_events_skipped", "secondary_confirmations",
         "conflicting_sources", "queued_news_events")}
 
-    # ONE wide-area scan per run; failure leaves every file untouched.
+    # Prefer Airplanes.live, but fail over to ADSB.lol for the wide-area
+    # scan. A single provider outage must not silently blind the monitor.
+    # If both providers fail, preserve every state file: unknown sky is
+    # never interpreted as an empty sky.
+    scan_provider = "Airplanes.live"
     stats["provider_requests"] += 1
     try:
         raw_rows = adsb.airplanes_live_point(CENTER_LAT, CENTER_LON, RADIUS_NM)
-    except adsb.ProviderDown as exc:
+    except adsb.ProviderDown as primary_exc:
         stats["provider_failures"] += 1
-        print(f"flightwatch: primary provider unavailable ({exc}); "
-              "state untouched - an API failure is NOT an empty sky")
-        print("flightwatch stats: "
-              + " ".join(f"{k}={v}" for k, v in stats.items()))
-        return
+        print(f"flightwatch: Airplanes.live unavailable ({primary_exc}); "
+              "trying ADSB.lol wide-area fallback")
+        stats["provider_requests"] += 1
+        try:
+            raw_rows = adsb.adsb_lol_point(CENTER_LAT, CENTER_LON, RADIUS_NM)
+            scan_provider = "ADSB.lol"
+            print("flightwatch: ADSB.lol wide-area fallback active")
+        except adsb.ProviderDown as fallback_exc:
+            stats["provider_failures"] += 1
+            print(f"flightwatch: both scan providers unavailable "
+                  f"(Airplanes.live: {primary_exc}; ADSB.lol: {fallback_exc}); "
+                  "state untouched - API failure is NOT an empty sky")
+            print("flightwatch stats: "
+                  + " ".join(f"{k}={v}" for k, v in stats.items()))
+            return
     stats["aircraft_returned"] = len(raw_rows)
 
     state = _load_state()
@@ -553,14 +567,19 @@ def main() -> None:
             continue
         stats["rarity_candidates"] += 1
 
-        # Secondary source ONLY now, for this one candidate.
-        stats["provider_requests"] += 1
-        try:
-            secondary = adsb.adsb_lol_icao(ac["hex"])
-            cross = cross_check(ac, secondary)
-        except adsb.ProviderDown:
-            stats["provider_failures"] += 1
-            cross = "secondary_unavailable"
+        # Cross-check only when ADSB.lol is independent of the wide-area
+        # scan. If ADSB.lol already rescued the scan, do not pretend that a
+        # second request to the same provider is independent confirmation.
+        if scan_provider == "ADSB.lol":
+            cross = "confirmed_by_primary_only"
+        else:
+            stats["provider_requests"] += 1
+            try:
+                secondary = adsb.adsb_lol_icao(ac["hex"])
+                cross = cross_check(ac, secondary)
+            except adsb.ProviderDown:
+                stats["provider_failures"] += 1
+                cross = "secondary_unavailable"
         if cross == "confirmed_by_two_sources":
             stats["secondary_confirmations"] += 1
         elif cross == "conflicting_sources":
@@ -581,6 +600,7 @@ def main() -> None:
             "notBeforeUtc": iso(now + timedelta(
                 minutes=PUBLICATION_DELAY_MIN)),
             "bootstrap": bootstrap,
+            "primaryProvider": scan_provider,
             "crossCheck": cross,
             "airport": {k: airport[k] for k in
                         ("icao", "iata", "name_zh", "name_en")},
