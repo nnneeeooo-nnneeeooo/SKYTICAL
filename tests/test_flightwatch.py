@@ -334,6 +334,21 @@ def test_source_assembly_privacy():
     check("過去 180 天" not in boot and "統計說明" in boot,
           "bootstrap SOURCE carries no rarity statistics to quote")
 
+    fallback = json.loads(json.dumps(FLIGHT_EVENT))
+    fallback["primaryProvider"] = "adsb_lol"
+    fallback["secondaryProvider"] = None
+    fallback["crossCheck"] = "secondary_unavailable"
+    fallback_text = flightnews.assemble_source(fallback)
+    fallback_group = flightnews.pseudo_group(fallback)
+    check("主要資料來源：ADSB.lol" in fallback_text
+          and "第二資料來源：未使用" in fallback_text,
+          "fallback observation exposes the real primary provider")
+    check(fallback_group["primarySource"] == "ADSB.lol"
+          and fallback_group["items"][0]["url"] == "https://www.adsb.lol/"
+          and len([item for item in fallback_group["items"]
+                   if item.get("sourceKey") == "adsb_lol"]) == 1,
+          "fallback article never fabricates two-source confirmation")
+
     macau = json.loads(json.dumps(FLIGHT_EVENT))
     macau["airport"] = {"icao": "RCTP", "iata": "TPE",
                         "name_zh": "臺灣桃園國際機場",
