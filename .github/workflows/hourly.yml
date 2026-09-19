@@ -38,7 +38,23 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt
+      - run: python -m pip install -r requirements.txt "pytest>=8,<10"
+      - name: Compile pipeline and tests
+        run: python -m compileall -q pipeline tests
+      - name: Verify usage test collection and isolation
+        run: |
+          python tests/test_usage.py
+          python -m pytest -q tests/test_usage.py
+      - name: Verify usage tests leave production files unchanged
+        if: always()
+        shell: bash
+        run: |
+          changes="$(git status --porcelain --untracked-files=all -- data site)"
+          if [ -n "$changes" ]; then
+            printf '%s\n' "$changes"
+            echo "::error::Usage tests modified production data or site output"
+            exit 1
+          fi
       - name: Run pipeline regression tests
         run: |
           python tests/test_companion.py
