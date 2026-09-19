@@ -63,8 +63,10 @@
     Number(root.dataset.maxSnapshotAgeMs) || 1800000, 600000);
   const manualCooldownMs = 30000;
   const routeApiBase = String(root.dataset.routeApiUrl || "").replace(/\/+$/, "");
-  const routeCacheKey = "avwire-radar-routes-v2";
-  const callsignModeKey = "avwire-radar-callsign-mode";
+  const routeCacheKey = "skytical-radar-routes-v2";
+  const legacyRouteCacheKey = "avwire-radar-routes-v2";
+  const callsignModeKey = "skytical-radar-callsign-mode";
+  const legacyCallsignModeKey = "avwire-radar-callsign-mode";
   const routePositiveTtlMs = 24 * 60 * 60 * 1000;
   const routeNegativeTtlMs = 6 * 60 * 60 * 1000;
   const routeConcurrency = 4;
@@ -92,7 +94,12 @@
   let loadGeneration = 0;
   const defaultCallsignMode =
     root.dataset.defaultCallsignMode === "icao" ? "icao" : "iata";
-  const savedCallsignMode = readStorage(callsignModeKey);
+  const currentCallsignMode = readStorage(callsignModeKey);
+  const savedCallsignMode =
+    currentCallsignMode || readStorage(legacyCallsignModeKey);
+  if (!currentCallsignMode && ["icao", "iata"].includes(savedCallsignMode)) {
+    writeStorage(callsignModeKey, savedCallsignMode);
+  }
   let callsignMode = ["icao", "iata"].includes(savedCallsignMode) ?
     savedCallsignMode : defaultCallsignMode;
   let routeCache = loadRouteCache();
@@ -123,7 +130,10 @@
 
   function loadRouteCache() {
     try {
-      const parsed = JSON.parse(readStorage(routeCacheKey) || "{}");
+      const current = readStorage(routeCacheKey);
+      const legacy = current ? null : readStorage(legacyRouteCacheKey);
+      if (!current && legacy) writeStorage(routeCacheKey, legacy);
+      const parsed = JSON.parse(current || legacy || "{}");
       return parsed && typeof parsed === "object" && !Array.isArray(parsed) ?
         parsed : {};
     } catch (_) {
