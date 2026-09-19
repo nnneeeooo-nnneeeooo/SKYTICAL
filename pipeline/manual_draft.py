@@ -29,6 +29,7 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import (  # noqa: E402
     DATA_DIR,
+    env_alias,
     iso_minute,
     now_utc,
     parse_iso,
@@ -1201,9 +1202,9 @@ def main() -> int:
     args = parser.parse_args()
     if not args.process_pending:
         parser.error("--process-pending is required")
-    token = os.environ.get("AVWIRE_MANUAL_TOKEN", "").strip()
+    token = str(env_alias("SKYTICAL_MANUAL_TOKEN", "SKYTICAL_MANUAL_TOKEN", "")).strip()
     if not TOKEN_RE.fullmatch(token):
-        print("manual: AVWIRE_MANUAL_TOKEN must be 32-128 URL-safe chars")
+        print("manual: SKYTICAL_MANUAL_TOKEN must be 32-128 URL-safe chars")
         return 1
     INBOX.mkdir(parents=True, exist_ok=True)
     processed = sum(

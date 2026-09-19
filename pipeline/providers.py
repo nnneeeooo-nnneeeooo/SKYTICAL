@@ -25,7 +25,7 @@ Each provider exposes:
         raises ProviderError      failure of this one call (truncation,
                bad JSON, transient HTTP) -> try the next provider
 
-The write stage tries providers in AVWIRE_PROVIDER_ORDER (defaulting to the
+The write stage tries providers in SKYTICAL_PROVIDER_ORDER (defaulting to the
 configured MODEL_ORDER below) and falls through to the next on failure.
 An order token may pin a model with "name:model", and the same platform
 may appear multiple times with different models, e.g.:
@@ -35,7 +35,7 @@ may appear multiple times with different models, e.g.:
     gemini,
     nvidia:qwen/qwen3.5-397b-a17b
 
-A bare name uses the platform's legacy AVWIRE_*_MODEL env var / default.
+A bare name uses the platform's SKYTICAL_*_MODEL env var (legacy AVWIRE_* alias) / default.
 """
 from __future__ import annotations
 
@@ -46,6 +46,7 @@ import time
 from urllib.parse import urlsplit
 
 import requests
+from common import env_alias
 from model_config import (
     DEFAULT_PROVIDER_ORDER,
     MODEL_ORDER,
@@ -380,7 +381,7 @@ class AnthropicProvider:
 
     def __init__(self, model=None) -> None:
         # `or` (not a get() default) so an empty env var still falls back.
-        self.model = model or os.environ.get("AVWIRE_MODEL") or "claude-opus-5"
+        self.model = model or env_alias("SKYTICAL_MODEL", "AVWIRE_MODEL") or "claude-opus-5"
         self.label = f"{self.name}:{self.model}"
         self.http_calls = 0
         self.repair_calls = 0
@@ -477,7 +478,7 @@ class GeminiProvider:
     name = "gemini"
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
-        self.model = (model or os.environ.get("AVWIRE_GEMINI_MODEL")
+        self.model = (model or env_alias("SKYTICAL_GEMINI_MODEL", "AVWIRE_GEMINI_MODEL")
                       or GEMINI_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
         self.http_calls = 0  # real API spend incl. format-repair calls
@@ -718,7 +719,7 @@ class NvidiaProvider:
     name = "nvidia"
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
-        self.model = (model or os.environ.get("AVWIRE_NVIDIA_MODEL")
+        self.model = (model or env_alias("SKYTICAL_NVIDIA_MODEL", "AVWIRE_NVIDIA_MODEL")
                       or NVIDIA_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
         self.http_calls = 0  # real API spend incl. format-repair calls
@@ -880,7 +881,7 @@ class WechatProvider(NvidiaProvider):
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
         super().__init__(
-            model or os.environ.get("AVWIRE_WECHAT_MODEL")
+            model or env_alias("SKYTICAL_WECHAT_MODEL", "AVWIRE_WECHAT_MODEL")
             or WECHAT_DEFAULT_MODEL,
             reasoning_tier=reasoning_tier,
         )
@@ -948,7 +949,7 @@ class OpenRouterProvider(NvidiaProvider):
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
         self.model = (
-            model or os.environ.get("AVWIRE_OPENROUTER_MODEL")
+            model or env_alias("SKYTICAL_OPENROUTER_MODEL", "AVWIRE_OPENROUTER_MODEL")
             or OPENROUTER_DEFAULT_MODEL
         )
         self.label = f"{self.name}:{self.model}"
@@ -1076,7 +1077,7 @@ class OpenCodeProvider(NvidiaProvider):
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
         self.model = (
-            model or os.environ.get("AVWIRE_OPENCODE_MODEL")
+            model or env_alias("SKYTICAL_OPENCODE_MODEL", "AVWIRE_OPENCODE_MODEL")
             or OPENCODE_DEFAULT_MODEL
         )
         self.label = f"{self.name}:{self.model}"
@@ -1367,13 +1368,13 @@ _REGISTRY = {
 
 
 def build_providers() -> list:
-    """Instantiate available providers in AVWIRE_PROVIDER_ORDER order.
+    """Instantiate available providers in SKYTICAL_PROVIDER_ORDER order.
 
     A token is either a platform name ("nvidia") or a pinned model
     ("nvidia:nvidia/nemotron-3-ultra-550b-a55b"); the same platform may
     appear multiple times with different models.
     """
-    order = os.environ.get("AVWIRE_PROVIDER_ORDER") or DEFAULT_ORDER
+    order = env_alias("SKYTICAL_PROVIDER_ORDER", "SKYTICAL_PROVIDER_ORDER") or DEFAULT_ORDER
     providers, seen = [], set()
     for token in order.split(","):
         name, _, model = token.strip().partition(":")
@@ -1384,7 +1385,7 @@ def build_providers() -> list:
         seen.add((key, model))
         cls = _REGISTRY.get(key)
         if cls is None:
-            print(f"write: unknown provider '{key}' in AVWIRE_PROVIDER_ORDER; "
+            print(f"write: unknown provider '{key}' in SKYTICAL_PROVIDER_ORDER; "
                   "ignoring")
             continue
         provider = cls(model)
