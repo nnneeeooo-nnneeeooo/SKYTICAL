@@ -23,7 +23,10 @@ on:
 
 concurrency:
   group: ${{ github.event_name == 'pull_request' && format('hourly-pr-{0}', github.event.pull_request.number) || 'hourly' }}
-  cancel-in-progress: false
+  # A code push is a production hotfix/deploy signal: do not let a stale
+  # scheduled run on older code block it. Scheduled runs still serialize and
+  # never cancel each other.
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 jobs:
   regression:
