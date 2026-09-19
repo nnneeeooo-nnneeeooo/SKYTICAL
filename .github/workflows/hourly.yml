@@ -4,6 +4,18 @@ on:
   schedule:
     - cron: "1 * * * *" # hourly; 16:01 UTC is 00:01 Asia/Taipei
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/hourly.yml"
+      - "pipeline/adsb.py"
+      - "pipeline/flightwatch.py"
+      - "pipeline/flightnews.py"
+      - "pipeline/airport_codes.py"
+      - "config/airport_iata_aliases.json"
+      - "tests/test_companion.py"
+      - "tests/test_flightwatch.py"
+      - "tests/test_airport_codes.py"
   push:
     branches: [main]
     paths-ignore:
@@ -14,7 +26,26 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  regression:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Run pipeline regression tests
+        run: |
+          python tests/test_companion.py
+          python tests/test_flightwatch.py
+          python tests/test_airport_codes.py
+
   update:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       contents: write # commits data/ back to the repo
