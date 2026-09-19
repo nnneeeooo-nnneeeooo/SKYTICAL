@@ -200,7 +200,7 @@ class ImagesIsolationTests(unittest.TestCase):
 
     def test_legacy_file_keeps_original_contract(self):
         source = LEGACY.read_text(encoding="utf-8")
-        self.assertIn("non-airline story never calls Planespotters", source)
+        self.assertIn("registration found in article text", source)
         self.assertIn("retired B-180 accident airframe is absent", source)
         self.assertIn("sys.exit(1 if FAILED else 0)", source)
 
