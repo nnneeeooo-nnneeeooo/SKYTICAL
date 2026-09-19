@@ -611,22 +611,22 @@ def test_manual_time_detection_generate_path():
 def test_private_page_render_contract():
     captured = []
     original_render = build.render
-    original_token = os.environ.get("AVWIRE_MANUAL_TOKEN")
+    original_token = os.environ.get("SKYTICAL_MANUAL_TOKEN")
     build.render = lambda env, template, out, ctx: captured.append(
         (template, out, ctx))
     try:
-        os.environ.pop("AVWIRE_MANUAL_TOKEN", None)
+        os.environ.pop("SKYTICAL_MANUAL_TOKEN", None)
         check(build.render_manual_workbench(None, {}) == 0,
               "manual page is absent without its secret")
-        os.environ["AVWIRE_MANUAL_TOKEN"] = "x" * 43
+        os.environ["SKYTICAL_MANUAL_TOKEN"] = "x" * 43
         check(build.render_manual_workbench(None, {}) == 1,
               "manual page renders with a valid secret")
     finally:
         build.render = original_render
         if original_token is None:
-            os.environ.pop("AVWIRE_MANUAL_TOKEN", None)
+            os.environ.pop("SKYTICAL_MANUAL_TOKEN", None)
         else:
-            os.environ["AVWIRE_MANUAL_TOKEN"] = original_token
+            os.environ["SKYTICAL_MANUAL_TOKEN"] = original_token
     template, out, ctx = captured[0]
     check(template == "manual.html" and out == f"m/{'x' * 43}/index.html",
           "private route embeds the unguessable token")
@@ -810,7 +810,7 @@ def test_static_security_contract():
         and "manual_workbench" in js
         and "actualUsd: 0" in js,
         "true manual mode records estimated tokens with zero actual API spend")
-    check("secrets.AVWIRE_MANUAL_TOKEN" in workflow
+    check("secrets.SKYTICAL_MANUAL_TOKEN" in workflow
           and "secrets.OPENROUTER_API_KEY" in workflow
           and "secrets.OPENCODE_API_KEY" in workflow
           and "secrets.DeepSeekV4Flash_API" in workflow
@@ -819,7 +819,7 @@ def test_static_security_contract():
           and "data/manual-jobs/outbox 2>/dev/null || true" in workflow,
           "Actions uses Secrets, checks ciphertext and tolerates empty queues")
     configured_order = (
-        f"AVWIRE_PROVIDER_ORDER: {','.join(AUTOMATIC_MODEL_ORDER)}")
+        f"SKYTICAL_PROVIDER_ORDER: {','.join(AUTOMATIC_MODEL_ORDER)}")
     check(configured_order in hourly and configured_order in briefing,
           "automatic workflows use the proven production fallback order")
     check("secrets.OPENROUTER_API_KEY" in hourly

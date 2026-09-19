@@ -18,8 +18,8 @@ from datetime import timedelta, timezone
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TMP = Path(tempfile.mkdtemp(prefix="avwire-usage-"))
-os.environ["AVWIRE_DATA_DIR"] = str(TMP)
+TMP = Path(tempfile.mkdtemp(prefix="skytical-usage-"))
+os.environ["SKYTICAL_DATA_DIR"] = str(TMP)
 os.environ["NVIDIA_API_KEY"] = "test-not-a-real-key"
 os.environ["GEMINI_API_KEY"] = "test-not-a-real-key"
 
@@ -409,13 +409,13 @@ build.SITE_DIR = TMP / "site"
 fake_build = {"date": "2026-07-27 MON", "utc_hm": "12:00 AM",
               "tpe_hm": "8:00 AM", "stamp": "2026-07-27 12:00 AM"}
 
-os.environ.pop("AVWIRE_USAGE_TOKEN", None)
+os.environ.pop("SKYTICAL_USAGE_TOKEN", None)
 check("no token -> no dashboard page",
       build.render_usage_dashboard(env, fake_build) == 0)
-os.environ["AVWIRE_USAGE_TOKEN"] = "bad token!"
+os.environ["SKYTICAL_USAGE_TOKEN"] = "bad token!"
 check("malformed token -> refused",
       build.render_usage_dashboard(env, fake_build) == 0)
-os.environ["AVWIRE_USAGE_TOKEN"] = "testtoken-1234567890abc"
+os.environ["SKYTICAL_USAGE_TOKEN"] = "testtoken-1234567890abc"
 check("valid token renders the private page",
       build.render_usage_dashboard(env, fake_build) == 1
       and (TMP / "site" / "u" / "testtoken-1234567890abc"
@@ -496,7 +496,7 @@ check("page shows GPT-5 family official rates without adding them to totals",
       and page.count("官方牌價") == 19)
 check("page never contains key-shaped strings",
       "test-not-a-real-key" not in page and "nvapi-" not in page)
-del os.environ["AVWIRE_USAGE_TOKEN"]
+del os.environ["SKYTICAL_USAGE_TOKEN"]
 
 # the dashboard is linked from NOWHERE in the public site templates
 linked = False

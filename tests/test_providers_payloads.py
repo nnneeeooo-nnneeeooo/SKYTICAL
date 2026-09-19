@@ -207,11 +207,11 @@ def test_model_priority_defaults():
 def test_wechat_protocol_and_payloads():
     """The contest token uses the WeChat OpenAI-compatible gateway."""
     saved_key = os.environ.get("WECHAT_API_KEY")
-    saved_model = os.environ.get("AVWIRE_WECHAT_MODEL")
-    saved_order = os.environ.get("AVWIRE_PROVIDER_ORDER")
+    saved_model = os.environ.get("SKYTICAL_WECHAT_MODEL")
+    saved_order = os.environ.get("SKYTICAL_PROVIDER_ORDER")
     os.environ["WECHAT_API_KEY"] = "wechat-test-token"
-    os.environ.pop("AVWIRE_WECHAT_MODEL", None)
-    os.environ.pop("AVWIRE_PROVIDER_ORDER", None)
+    os.environ.pop("SKYTICAL_WECHAT_MODEL", None)
+    os.environ.pop("SKYTICAL_PROVIDER_ORDER", None)
     try:
         captured = []
 
@@ -290,13 +290,13 @@ def test_wechat_protocol_and_payloads():
         else:
             os.environ["WECHAT_API_KEY"] = saved_key
         if saved_model is None:
-            os.environ.pop("AVWIRE_WECHAT_MODEL", None)
+            os.environ.pop("SKYTICAL_WECHAT_MODEL", None)
         else:
-            os.environ["AVWIRE_WECHAT_MODEL"] = saved_model
+            os.environ["SKYTICAL_WECHAT_MODEL"] = saved_model
         if saved_order is None:
-            os.environ.pop("AVWIRE_PROVIDER_ORDER", None)
+            os.environ.pop("SKYTICAL_PROVIDER_ORDER", None)
         else:
-            os.environ["AVWIRE_PROVIDER_ORDER"] = saved_order
+            os.environ["SKYTICAL_PROVIDER_ORDER"] = saved_order
     print("test_wechat_protocol_and_payloads: done")
 
 
@@ -375,10 +375,10 @@ def test_openrouter_models_and_payloads():
         key: os.environ.get(key)
         for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY",
                     "NVIDIA_API_KEY", "OPENROUTER_API_KEY",
-                    "AVWIRE_PROVIDER_ORDER")
+                    "SKYTICAL_PROVIDER_ORDER")
     }
     for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY",
-                "AVWIRE_PROVIDER_ORDER"):
+                "SKYTICAL_PROVIDER_ORDER"):
         os.environ.pop(key, None)
     os.environ["OPENROUTER_API_KEY"] = "test-key-not-real"
     try:
@@ -508,10 +508,10 @@ def test_opencode_protocols_and_payloads():
         key: os.environ.get(key)
         for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY",
                     "NVIDIA_API_KEY", "OPENROUTER_API_KEY",
-                    "OPENCODE_API_KEY", "AVWIRE_PROVIDER_ORDER")
+                    "OPENCODE_API_KEY", "SKYTICAL_PROVIDER_ORDER")
     }
     for key in ("ANTHROPIC_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY",
-                "OPENROUTER_API_KEY", "AVWIRE_PROVIDER_ORDER"):
+                "OPENROUTER_API_KEY", "SKYTICAL_PROVIDER_ORDER"):
         os.environ.pop(key, None)
     os.environ["OPENCODE_API_KEY"] = "oc_sk_test-not-real"
     try:

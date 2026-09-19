@@ -13,8 +13,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TMP = Path(tempfile.mkdtemp(prefix="avwire-pla-"))
-os.environ["AVWIRE_DATA_DIR"] = str(TMP)
+TMP = Path(tempfile.mkdtemp(prefix="skytical-pla-"))
+os.environ["SKYTICAL_DATA_DIR"] = str(TMP)
 
 sys.path.insert(0, str(REPO / "pipeline"))
 import pla_series  # noqa: E402
