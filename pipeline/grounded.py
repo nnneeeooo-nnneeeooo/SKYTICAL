@@ -149,6 +149,15 @@ def _final_text(data: dict) -> str | None:
     return text.strip() or None
 
 
+def _hard_quota_exhausted(response_text: str) -> bool:
+    """Return True only for billing/project quota exhaustion, not rate limiting."""
+    text = str(response_text or "").casefold()
+    return (
+        "you exceeded your current quota" in text
+        or "check your plan and billing details" in text
+    )
+
+
 def call_grounded(window) -> tuple[dict | None, SimpleNamespace | None]:
     """Grounded search with model-level quota/unavailability fallback."""
     key = os.environ.get("GEMINI_API_KEY")
@@ -188,8 +197,13 @@ def call_grounded(window) -> tuple[dict | None, SimpleNamespace | None]:
                            + int(meta.get("thoughtsTokenCount") or 0)),
                        "usageEvents": 1 if meta else 0})
             return data, shim
-        snippet = str(getattr(resp, "text", ""))[:160].replace("\n", " ")
+        response_text = str(getattr(resp, "text", ""))
+        snippet = response_text[:160].replace("\n", " ")
         failures.append(f"{model}=HTTP {resp.status_code}: {snippet}")
+        if resp.status_code == 429 and _hard_quota_exhausted(response_text):
+            print(f"briefing: Gemini project quota exhausted on {model}; "
+                  "skipping remaining grounded models")
+            break
         print(f"briefing: grounded model {model} unavailable "
               f"(HTTP {resp.status_code}); trying fallback")
         if resp.status_code not in (404, 408, 429, 500, 502, 503, 504):
