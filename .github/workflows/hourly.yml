@@ -13,9 +13,7 @@ on:
       - "pipeline/flightnews.py"
       - "pipeline/airport_codes.py"
       - "config/airport_iata_aliases.json"
-      - "tests/test_companion.py"
-      - "tests/test_flightwatch.py"
-      - "tests/test_airport_codes.py"
+      - "tests/**"
   push:
     branches: [main]
     paths-ignore:
@@ -26,7 +24,7 @@ concurrency:
   # A code push is a production hotfix/deploy signal: do not let a stale
   # scheduled run on older code block it. Scheduled runs still serialize and
   # never cancel each other.
-  cancel-in-progress: ${{ github.event_name == 'push' }}
+  cancel-in-progress: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
 
 jobs:
   regression:
@@ -46,6 +44,14 @@ jobs:
           python tests/test_companion.py
           python tests/test_flightwatch.py
           python tests/test_airport_codes.py
+          python tests/test_grounded.py
+          python tests/test_pla.py
+          python tests/test_usage.py
+          python tests/test_fulltext.py
+          python tests/test_glossary.py
+          python tests/test_briefing.py
+          python tests/test_images.py
+          python tests/test_manufacturer_sources.py
 
   update:
     if: github.event_name != 'pull_request'
