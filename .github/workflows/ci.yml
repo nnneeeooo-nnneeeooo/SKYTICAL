@@ -54,7 +54,7 @@ jobs:
             python "$test"
           done
 
-      - name: Run native pytest suite
+      - name: Run native pytest files in isolated processes
         env:
           GEMINI_API_KEY: ""
           NVIDIA_API_KEY: ""
@@ -64,7 +64,25 @@ jobs:
           AEROAPI_KEY: ""
           ADSBLOL_API_KEY: ""
           AIRPLANES_LIVE_API_KEY: ""
-        run: python -m pytest -q
+        run: |
+          for test in tests/test_*.py
+          do
+            case "$test" in
+              tests/test_pla.py|\
+              tests/test_usage.py|\
+              tests/test_grounded.py|\
+              tests/test_fulltext.py|\
+              tests/test_glossary.py|\
+              tests/test_companion.py|\
+              tests/test_briefing.py|\
+              tests/test_images.py|\
+              tests/test_manufacturer_sources.py)
+                continue
+                ;;
+            esac
+            echo "== pytest $test =="
+            python -m pytest -q "$test"
+          done
 
       - name: Verify production build
         run: python pipeline/build.py
