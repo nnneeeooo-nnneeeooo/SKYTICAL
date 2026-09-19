@@ -12,6 +12,7 @@ on:
       - "pipeline/flightwatch.py"
       - "pipeline/flightnews.py"
       - "pipeline/airport_codes.py"
+      - "pipeline/fetch.py"
       - "config/airport_iata_aliases.json"
       - "tests/**"
   push:
@@ -53,6 +54,7 @@ jobs:
           python tests/test_images.py
           python tests/test_manufacturer_sources.py
           python tests/test_source_links.py
+          python tests/test_operational_stats.py
 
   update:
     if: github.event_name != 'pull_request'
@@ -76,7 +78,9 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Test mandatory airport IATA codes
-        run: python tests/test_airport_codes.py
+        run: |
+          python tests/test_airport_codes.py
+          python tests/test_operational_stats.py
 
       - name: Test summary boundary guard
         run: python tests/test_summary_guard.py
