@@ -12,8 +12,10 @@ on:
       - "pipeline/flightwatch.py"
       - "pipeline/flightnews.py"
       - "pipeline/airport_codes.py"
+      - "pipeline/grounded.py"
       - "config/airport_iata_aliases.json"
       - "tests/test_companion.py"
+      - "tests/test_grounded.py"
       - "tests/test_flightwatch.py"
       - "tests/test_airport_codes.py"
   push:
@@ -43,6 +45,7 @@ jobs:
           python tests/test_companion.py
           python tests/test_flightwatch.py
           python tests/test_airport_codes.py
+          python tests/test_grounded.py
 
   update:
     if: github.event_name != 'pull_request'
