@@ -40,6 +40,11 @@ jobs:
       - name: Test summary boundary guard
         run: python tests/test_summary_guard.py
 
+      - name: Test source enrichment and flightwatch resilience
+        run: |
+          python tests/test_companion.py
+          python tests/test_flightwatch.py
+
       - name: Test headline priority and subject scope
         run: python tests/test_headline_rotation.py
 
