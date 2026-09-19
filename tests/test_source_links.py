@@ -1,6 +1,7 @@
 """Regression checks for direct public source links."""
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -55,6 +56,29 @@ def main() -> int:
         build.load_json(build.DATA_DIR / "sources.json", []))
     assert all(not common.is_google_news_url(source["url"])
                for source in public_sources)
+
+    # Every non-archived historical article must retain at least one direct
+    # publisher/source URL. Google News may be discovery input, but it is not
+    # a public attribution target and build.py intentionally filters it out.
+    google_only = []
+    for path in sorted(build.ARTICLES_DIR.glob("*.json")):
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for article in payload.get("articles", []):
+            if not isinstance(article, dict) or article.get("archived") is True:
+                continue
+            urls = [
+                str(source.get("url") or "")
+                for source in article.get("sources", [])
+                if isinstance(source, dict) and source.get("url")
+            ]
+            direct_urls = [
+                url for url in urls
+                if url.startswith(("http://", "https://"))
+                and not common.is_google_news_url(url)
+            ]
+            if not direct_urls:
+                google_only.append((path.name, article.get("id")))
+    assert not google_only, f"published articles without direct sources: {google_only}"
 
     print("PASS test_source_links")
     return 0
