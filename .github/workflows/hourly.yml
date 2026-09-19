@@ -52,6 +52,7 @@ jobs:
           python tests/test_briefing.py
           python tests/test_images.py
           python tests/test_manufacturer_sources.py
+          python tests/test_source_links.py
 
   update:
     if: github.event_name != 'pull_request'
@@ -84,6 +85,7 @@ jobs:
         run: |
           python tests/test_companion.py
           python tests/test_flightwatch.py
+          python tests/test_source_links.py
 
       - name: Test headline priority and subject scope
         run: python tests/test_headline_rotation.py
