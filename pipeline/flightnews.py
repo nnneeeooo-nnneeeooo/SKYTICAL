@@ -128,12 +128,15 @@ def assemble_source(event: dict) -> str:
     operator = _operator_details(event)
     arrival = event.get("arrival") or {}
     rar = event.get("rarity") or {}
+    primary_provider = str(event.get("primaryProvider") or "Airplanes.live")
+    secondary_provider = ("ADSB.lol"
+                          if primary_provider != "ADSB.lol" else "未使用獨立第二來源")
     lines = [
         '<SOURCE type="flight_observation">',
         f"事件 ID：{event.get('eventId')}",
         "資料類型：公開 ADS-B 觀測",
-        "主要資料來源：Airplanes.live",
-        "第二資料來源：ADSB.lol",
+        f"主要資料來源：{primary_provider}",
+        f"第二資料來源：{secondary_provider}",
         f"交叉確認狀態：{event.get('crossCheck')}",
         f"機場 ICAO：{airport.get('icao')}",
         f"機場名稱：{airport.get('name_zh')}",
