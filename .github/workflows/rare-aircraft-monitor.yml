@@ -1,8 +1,9 @@
 name: rare-aircraft-monitor
 
-# Taiwan rare-aircraft arrival monitor: ONE Airplanes.live wide-area query
-# per run, code-side detection only (never calls any AI model - candidates
-# are queued for the hourly news pipeline, which forces manual review).
+# Taiwan rare-aircraft arrival monitor: Airplanes.live is preferred for the
+# wide-area scan; ADSB.lol is a bounded fallback when that provider is down.
+# Detection is code-side only (never calls any AI model - candidates are
+# queued for the hourly news pipeline, which forces manual review).
 # Actions cron is best-effort, not radar: delays are expected and fine.
 # OFF by default: set repo variable FLIGHT_TRACKING_ENABLED=true to start.
 
