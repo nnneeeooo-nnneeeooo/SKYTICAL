@@ -533,6 +533,14 @@ def test_extract_json_and_validate_draft():
 
     check(write.validate_draft(DRAFT_SAFETY) is None, "safety draft validates")
     check(write.validate_draft(DRAFT_BIZ) is None, "biz draft validates")
+    broken = json.loads(json.dumps(DRAFT_BIZ))
+    broken["zh"]["title"] = "美航空公司反对中国国航增飞纽约华盛顿"
+    check("Simplified Chinese" in (write.validate_draft(broken) or ""),
+          "simplified Chinese title is rejected before publication")
+    broken = json.loads(json.dumps(DRAFT_BIZ))
+    broken["flash"]["zh"] = "中国国航增飞纽约航班"
+    check("Simplified Chinese" in (write.validate_draft(broken) or ""),
+          "simplified Chinese flash is rejected before publication")
     check(write.zh_body_character_count(DRAFT_BIZ["zh"]["body"])
           >= write.ZH_BODY_MIN_CHARS, "zh test fixture clears body floor")
     check(write.en_body_word_count(DRAFT_BIZ["en"]["body"])
