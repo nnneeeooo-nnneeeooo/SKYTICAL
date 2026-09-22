@@ -37,6 +37,8 @@ from datetime import timedelta
 from difflib import SequenceMatcher
 from pathlib import Path
 
+from opencc import OpenCC
+
 from common import (
     ARTICLES_DIR,
     BASE_PATH,
@@ -86,6 +88,37 @@ ZH_BRIEF_MIN_CHARS = 180
 ZH_BRIEF_MAX_CHARS = 320
 EN_BRIEF_MIN_WORDS = 90
 EN_BRIEF_MAX_WORDS = 150
+
+_S2T = OpenCC("s2t")
+
+
+def simplified_chinese_error(draft: dict) -> str | None:
+    """Reject reader-facing Chinese copy that still contains simplified glyphs."""
+    fields: list[tuple[str, object]] = []
+    zh = draft.get("zh")
+    if isinstance(zh, dict):
+        fields.extend([
+            ("zh.title", zh.get("title")),
+            ("zh.summary", zh.get("summary")),
+        ])
+        body = zh.get("body")
+        if isinstance(body, list):
+            fields.extend((f"zh.body[{index}]", paragraph)
+                          for index, paragraph in enumerate(body))
+    flash = draft.get("flash")
+    if isinstance(flash, dict):
+        fields.append(("flash.zh", flash.get("zh")))
+    incident = draft.get("incident")
+    if isinstance(incident, dict):
+        for key in ("phase", "location", "desc"):
+            bilingual = incident.get(key)
+            if isinstance(bilingual, dict):
+                fields.append((f"incident.{key}.zh", bilingual.get("zh")))
+    for field, value in fields:
+        if isinstance(value, str) and _S2T.convert(value) != value:
+            return f"{field} contains Simplified Chinese characters"
+    return None
+
 
 _EDITORIAL_PROCESS_RE = re.compile(
     r"(?:本文|本報導|這篇(?:文章|報導)).{0,60}"
@@ -1023,6 +1056,9 @@ def validate_draft(draft):
         if len(body) > MAX_BODY_PARAGRAPHS:
             return (f"{lang}.body has {len(body)} paragraphs; maximum is "
                     f"{MAX_BODY_PARAGRAPHS}")
+    language_error = simplified_chinese_error(draft)
+    if language_error:
+        return language_error
     process_error = editorial_process_error(draft)
     if process_error:
         return process_error
