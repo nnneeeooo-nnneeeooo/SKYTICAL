@@ -1,0 +1,111 @@
+{
+  "articles": [
+    {
+      "id": "a-20260922-1036-us-gao-warns-cybersecurity-gaps-in-aircr",
+      "publishedUtc": "2026-09-22T10:36Z",
+      "cat": "reg",
+      "primarySource": "AeroTime",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "美國政府問責署警告飛機通訊系統存在安全漏洞",
+        "summary": "美國問責署指出航管通訊系統易遭欺騙；聯邦航空總署承諾改善。",
+        "body": [
+          "美國政府問責署（GAO）於2026年9月21日發布報告指出，現行飛機通訊系統（ACARS與CPDLC）存在安全漏洞，容易被惡意攔截與欺騙，可能使不法分子發送虛假航管（ATC）訊息（例如虛假取消許可），進而導致航班延誤或安全威脅。",
+          "GAO指出，美國聯邦航空總署（FAA）在實時監控與檢測電磁頻譜威脅方面，亦缺乏完整的能力。美國交通部已代表FAA同意GAO提出的九項強化安全與協調之建議，並將採取後續改善行動。",
+          "此外，報告發布同日，費城國際機場（PHL）及紐約地區發生了因地面線路故障導致的航管通訊中斷，但官員指出該事件與網路攻擊或訊息欺騙無關。"
+        ]
+      },
+      "en": {
+        "title": "US GAO Warns Cybersecurity Gaps in Aircraft Communications Could Put Flights at Risk",
+        "summary": "US GAO warns of aircraft communication vulnerabilities in September 2026; FAA agrees to implement reforms.",
+        "body": [
+          "The US Government Accountability Office (GAO) issued a report on September 21, 2026, warning that aircraft communications systems are vulnerable to interception and cyber spoofing. According to the watchdog, malicious actors could exploit these security gaps in systems like ACARS and CPDLC to transmit fraudulent air traffic control messages, potentially disrupting flights or creating safety hazards.",
+          "Additionally, the GAO found that the Federal Aviation Administration (FAA) lacks real-time capabilities to monitor and detect electromagnetic spectrum threats. The US Department of Transportation, responding on behalf of the FAA, concurred with all nine recommendations in the report to address security and coordination.",
+          "Separately, on the same day the report was published, an ATC communications outage disrupted flights across the New York area and at Philadelphia International Airport (PHL) due to a ground circuit failure, which officials confirmed was not related to a cyberattack."
+        ]
+      },
+      "sources": [
+        {
+          "name": "AeroTime — Fake ATC messages could put flights at risk, US watchdog wa…",
+          "url": "https://www.aerotime.aero/articles/faa-atc-message-spoofing-cybersecurity-gao-report"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-09-22T08:20Z",
+      "writer": "gemini:gemini-3.5-flash",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "美國政府問責署（GAO）於2026年9月21日發布報告警告，飛機通訊系統（ACARS與CPDLC）存在安全漏洞，惡意人士可能藉此發送虛假航管（ATC）訊息。",
+          "sourceQuote": "In a report published on September 21, 2026 , the watchdog identified cybersecurity weaknesses in aircraft communications systems",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-atc-message-spoofing-cybersecurity-gao-report",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "GAO指出上述系統容易被攔截和欺騙，可能導致虛假的許可取消訊息，進而造成航班延誤或安全問題。",
+          "sourceQuote": "GAO found that both are vulnerable to interception and spoofing because of weaknesses in authentication, encryption, and protocol design. A malicious actor could exploit these vulnerabilities to transmit fraudulent messages, including fake clearance cancellations",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-atc-message-spoofing-cybersecurity-gao-report",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "報告亦指出美國聯邦航空總署（FAA）缺乏實時監控電磁頻譜威脅（如GPS干擾與欺騙）的能力。",
+          "sourceQuote": "The FAA also lacks a defined capability to continuously monitor and detect all spectrum-related threats in real time.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-atc-message-spoofing-cybersecurity-gao-report",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "美國交通部代表FAA同意了GAO提出的所有九項改善建議。",
+          "sourceQuote": "The US Department of Transportation (DOT), responding on behalf of the FAA, concurred with all nine.",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-atc-message-spoofing-cybersecurity-gao-report",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "報告發布同日，費城與紐約地區發生因線路故障導致的航管通訊中斷，但官方表示該故障與網路攻擊無關。",
+          "sourceQuote": "The report was published on the same day that an ATC communications outage disrupted flights across the New York area and at Philadelphia International Airport (PHL) .",
+          "sourceUrl": "https://www.aerotime.aero/articles/faa-atc-message-spoofing-cybersecurity-gao-report",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "regulatory_action"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "US Government Accountability Office",
+          "GAO",
+          "Federal Aviation Administration",
+          "FAA",
+          "US Department of Transportation",
+          "DOT"
+        ],
+        "airports": [
+          "Philadelphia International Airport",
+          "PHL"
+        ],
+        "locations": [
+          "New York",
+          "Philadelphia"
+        ],
+        "event_dates": [
+          "September 21, 2026"
+        ]
+      }
+    }
+  ]
+}
