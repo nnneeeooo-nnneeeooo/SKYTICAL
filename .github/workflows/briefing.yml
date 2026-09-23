@@ -30,8 +30,9 @@ on:
         type: string
 
 concurrency:
-  group: briefing
+  group: skytical-pages-publish
   cancel-in-progress: false
+  queue: max
 
 jobs:
   briefing:
@@ -170,9 +171,6 @@ jobs:
 
   deploy:
     needs: briefing
-    concurrency:
-      group: pages-deploy
-      cancel-in-progress: false
     runs-on: ubuntu-latest
     permissions:
       pages: write
