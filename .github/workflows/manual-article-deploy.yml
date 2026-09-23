@@ -8,14 +8,12 @@ on:
       - ".github/deploy-trigger"
 
 concurrency:
-  group: manual-article-deploy
+  group: skytical-pages-publish
   cancel-in-progress: false
+  queue: max
 
 jobs:
   deploy:
-    concurrency:
-      group: pages-deploy
-      cancel-in-progress: false
     runs-on: ubuntu-latest
     permissions:
       contents: read
