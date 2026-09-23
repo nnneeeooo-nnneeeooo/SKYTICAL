@@ -30,8 +30,9 @@ on:
         type: string
 
 concurrency:
-  group: briefing
+  group: skytical-pages-publish
   cancel-in-progress: false
+  queue: max
 
 jobs:
   briefing:

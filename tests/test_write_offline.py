@@ -541,6 +541,18 @@ def test_extract_json_and_validate_draft():
     broken["flash"]["zh"] = "中国国航增飞纽约航班"
     check("Simplified Chinese" in (write.validate_draft(broken) or ""),
           "simplified Chinese flash is rejected before publication")
+
+    live_flashes = json.loads((ROOT / "data" / "flashes.json").read_text(
+        encoding="utf-8"))
+    simplified_flashes = [
+        flash.get("articleId")
+        for flash in live_flashes
+        if isinstance(flash, dict)
+        and isinstance(flash.get("zh"), str)
+        and write._S2T.convert(flash["zh"]) != flash["zh"]
+    ]
+    check(not simplified_flashes,
+          "published flash headlines use Traditional Chinese")
     check(write.zh_body_character_count(DRAFT_BIZ["zh"]["body"])
           >= write.ZH_BODY_MIN_CHARS, "zh test fixture clears body floor")
     check(write.en_body_word_count(DRAFT_BIZ["en"]["body"])

@@ -20,11 +20,10 @@ on:
       - "data/**" # bot data commits must not retrigger the workflow
 
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('hourly-pr-{0}', github.event.pull_request.number) || 'hourly' }}
-  # A code push is a production hotfix/deploy signal: do not let a stale
-  # scheduled run on older code block it. Scheduled runs still serialize and
-  # never cancel each other.
-  cancel-in-progress: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
+  group: ${{ github.event_name == 'pull_request' && format('hourly-pr-{0}', github.event.pull_request.number) || 'skytical-pages-publish' }}
+  # Production publishers share a FIFO queue; PR checks use a separate group.
+  cancel-in-progress: false
+  queue: max
 
 jobs:
   regression:
