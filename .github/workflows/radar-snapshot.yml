@@ -30,8 +30,9 @@ on:
       - "templates/radar.html"
 
 concurrency:
-  group: radar-snapshot
-  cancel-in-progress: true
+  group: ${{ github.event_name == 'pull_request' && format('radar-snapshot-pr-{0}', github.event.pull_request.number) || 'skytical-pages-publish' }}
+  cancel-in-progress: false
+  queue: max
 
 jobs:
   test:

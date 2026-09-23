@@ -237,6 +237,13 @@ def main() -> None:
         assert source.index("python pipeline/radar_snapshot.py") < source.index(
             "actions/upload-pages-artifact@v5")
 
+        workflow_header = source.split("\njobs:\n", 1)[0]
+        assert "skytical-pages-publish" in workflow_header
+        assert re.search(r"(?m)^  queue: max$", workflow_header)
+        assert re.search(r"(?m)^  cancel-in-progress: false$", workflow_header)
+        if workflow.name in {"hourly.yml", "radar-snapshot.yml"}:
+            assert "github.event.pull_request.number" in workflow_header
+
     assert any(
         "本文由自動化系統彙整生成，內容以原始來源為準 • "
         "Nemotron 3 Super" in page
