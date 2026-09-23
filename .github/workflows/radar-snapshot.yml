@@ -31,7 +31,7 @@ on:
 
 concurrency:
   group: radar-snapshot
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   test:
@@ -53,6 +53,9 @@ jobs:
 
   deploy:
     if: github.event_name != 'pull_request'
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     permissions:
       contents: read
