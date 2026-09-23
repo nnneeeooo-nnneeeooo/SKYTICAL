@@ -237,6 +237,26 @@ def main() -> None:
         assert source.index("python pipeline/radar_snapshot.py") < source.index(
             "actions/upload-pages-artifact@v5")
 
+        deploy_job = re.search(
+            r"(?ms)^  deploy:\n(.*?)(?=^  [A-Za-z0-9_-]+:\n|\Z)",
+            source,
+        )
+        assert deploy_job
+        assert re.search(
+            r"(?m)^    concurrency:\n"
+            r"      group: pages-deploy\n"
+            r"      cancel-in-progress: false$",
+            deploy_job.group(0),
+        )
+        workflow_header = source.split("\njobs:\n", 1)[0]
+        top_level_cancel = re.search(
+            r"(?m)^  cancel-in-progress:\s*(.+)$", workflow_header)
+        assert top_level_cancel
+        assert top_level_cancel.group(1) in (
+            "false",
+            "${{ github.event_name == 'pull_request' }}",
+        )
+
     assert any(
         "本文由自動化系統彙整生成，內容以原始來源為準 • "
         "Nemotron 3 Super" in page

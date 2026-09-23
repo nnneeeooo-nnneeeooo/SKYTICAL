@@ -21,10 +21,8 @@ on:
 
 concurrency:
   group: ${{ github.event_name == 'pull_request' && format('hourly-pr-{0}', github.event.pull_request.number) || 'hourly' }}
-  # A code push is a production hotfix/deploy signal: do not let a stale
-  # scheduled run on older code block it. Scheduled runs still serialize and
-  # never cancel each other.
-  cancel-in-progress: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
+  # Superseded PR checks may stop; production workflows finish before another publish.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   regression:
@@ -213,6 +211,9 @@ jobs:
 
   deploy:
     needs: update
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     permissions:
       pages: write

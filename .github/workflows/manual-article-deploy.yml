@@ -9,10 +9,13 @@ on:
 
 concurrency:
   group: manual-article-deploy
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     permissions:
       contents: read

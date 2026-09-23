@@ -170,6 +170,9 @@ jobs:
 
   deploy:
     needs: briefing
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     permissions:
       pages: write
