@@ -1,5 +1,11 @@
 # SKYTICAL AI 快速作業規則
 
+## 新對話的工作區定位
+
+- Codex 桌面版的 SKYTICAL 專案綁定 `C:\Users\iwnlewn\Documents\ChatGPT\SKYTICAL`；GitHub repository 為 `nnneeeooo-nnneeeooo/SKYTICAL`。
+- 新對話先以目前工作目錄為準。若它是此 repository 的 checkout 或 Codex worktree，就在該工作樹的根目錄作業，不要切回上述固定路徑。
+- 只有目前目錄不屬於此 repository 時，才使用上述本機路徑定位；執行修改前以 `git rev-parse --show-toplevel` 與 `git remote get-url origin` 確認，勿搜尋其他 SKYTICAL 複本。
+
 ## 預設工作方式
 
 - 使用繁體中文（臺灣用語）。
