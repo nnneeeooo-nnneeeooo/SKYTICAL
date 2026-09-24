@@ -511,10 +511,11 @@ OUTPUT RULES:
   body paragraphs do not by themselves make the story mil.
 - flash is one line in each language; zh at most 40 characters. hot=true only
   for breaking safety events.
-- incident is non-null only when cat="safety" and the story is an actual ICAO
-  Annex 13 occurrence. Include supported date (YYYY-MM-DD), sev acc/ser/inc,
-  source-stated aircraft and operator, bilingual phase/location/desc, and
-  status open/closed/prelim.
+- incident is non-null only for a source-supported actual aviation occurrence,
+  including military/state-aircraft events, regardless of the article's
+  editorial category. Apply ICAO Annex 13 classifications where applicable.
+  Include supported date (YYYY-MM-DD), sev acc/ser/inc, source-stated aircraft
+  and operator, bilingual phase/location/desc, and status open/closed/prelim.
 
 SELF-CHECK: (1) every title/summary element binds to listed facts; (2) every
 new-event title and summary has current SOURCE support; (3) no unstated
@@ -1778,11 +1779,6 @@ def build_incident(draft: dict, group: dict, article_id: str):
         return None
     incident = draft.get("incident")
     if not isinstance(incident, dict):
-        return None
-    if draft.get("cat") != "safety":
-        # CONTRACTS.md: incidents.json holds safety-category occurrences only.
-        print(f"write: dropping incident row from non-safety article "
-              f"{article_id}")
         return None
     names = []
     for item in group.get("items", []):
