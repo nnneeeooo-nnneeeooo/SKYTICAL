@@ -220,8 +220,9 @@ Most recent first, max 10 kept:
 
 ## data/incidents.json  (written by write.py, read by build.py)
 
-Most recent first, max 60 kept. Only safety-category events that describe an
-actual occurrence (ICAO Annex 13):
+Most recent first, max 60 kept. Include source-supported actual civil and
+military/state-aircraft occurrences regardless of the article's editorial
+category. Apply ICAO Annex 13 classifications where applicable:
 
 ```jsonc
 [
