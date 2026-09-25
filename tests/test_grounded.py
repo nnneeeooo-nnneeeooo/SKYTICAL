@@ -64,6 +64,7 @@ def item(section="aviation_incidents", chunks=(0,), **kw):
         "summary_en": "A private light aircraft crashed into a residential "
                       "roof in northwest Germany; both occupants died.",
         "severity": "fatal", "taiwan": False, "military": False,
+        "sourcePublishedAt": "2026-07-27T04:00:00+00:00",
         "sourceChunks": list(chunks),
     }
     base.update(kw)
@@ -93,6 +94,20 @@ check("valid item accepted with the retrieved source",
       len(got) == 1 and got[0]["origin"] == "grounded"
       and got[0]["sources"][0]["url"]
       == "https://vertexaisearch.example/redirect1")
+window_for_items = types.SimpleNamespace(
+    window_start=NOW, window_end=NOW + timedelta(hours=24))
+dated, _ = grounded.sanitize_items(
+    resp_data([item()], CHUNKS), [], {}, NOW, window_for_items)
+check("grounded item retains its in-window source time",
+      dated["aviation_incidents"][0]["source_published_at"]
+      == "2026-07-27T04:00:00+00:00")
+for bad_date in ("", "2026-07-26T23:59:59+00:00",
+                 "2026-07-28T00:00:00+00:00", "2026-07-27T04:00:00"):
+    rejected, _ = grounded.sanitize_items(
+        resp_data([item(sourcePublishedAt=bad_date)], CHUNKS),
+        [], {}, NOW, window_for_items)
+    check(f"missing, out-of-window or timezone-free date rejected: {bad_date!r}",
+          rejected["aviation_incidents"] == [])
 check("item severity/marks metadata preserved",
       got[0]["severity"] == "fatal" and got[0]["event_id"].startswith("gr-"))
 

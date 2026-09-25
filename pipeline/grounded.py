@@ -27,9 +27,10 @@ from __future__ import annotations
 import hashlib
 import os
 import sys
-from datetime import timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 from types import SimpleNamespace
+from urllib.parse import urlsplit
 
 import requests
 
@@ -96,6 +97,9 @@ SYSTEM_PROMPT = """\
   最多只能寫成「媒體報導稱……，官方尚未證實」，不得自行推定原因或永久性。
 - 每一則 item 的 sourceChunks 必須列出支持該則內容的檢索結果編號
   （grounding chunk index，從 0 起算）；沒有可引用檢索結果的內容不得輸出。
+- 每則須填 sourcePublishedAt（來源頁面明示的發布或更新時間，ISO 8601 且含時區）。
+  無法查證時間，或時間不在指定 24 小時窗口內的事件，請勿輸出；舊事件可在
+  當期新報導中作為有日期的背景，不得當作本期新事件。
 - 繁體中文（台灣用語）為主，並提供英文版本。
 - 事故有死亡者 severity="fatal"；重大事故 "serious"；一般飛安事件
   "significant"；其他 "routine"。military=true 僅限軍用航空相關。
@@ -105,7 +109,7 @@ SYSTEM_PROMPT = """\
 {"items":[{"section":"aviation_incidents|taiwan_aviation|international_aviation|ground_and_maritime",
 "headline_zh":"18-40字","summary_zh":"26-38字；須含主體與明確事件；完整短句優先，否則以最多兩個全形分號『；』串接可獨立閱讀的事實子句；禁止拆開人名、航空器型號或機場代碼；禁止刪節號與孤立標籤","headline_en":"...","summary_en":"10-18 words; include a named subject and clear event; use readable clauses with at most two semicolons; never split proper names, aircraft models or airport codes; no ellipsis or isolated labels",
 "severity":"routine|significant|serious|fatal","taiwan":false,"military":false,
-"sourceChunks":[0]}]}
+"sourcePublishedAt":"YYYY-MM-DDTHH:MM:SS+08:00","sourceChunks":[0]}]}
 """
 
 
@@ -121,6 +125,14 @@ def _is_blocked(chunk) -> bool:
 def _is_forum(chunk) -> bool:
     blob = _host_of(f"{chunk.get('uri')} {chunk.get('title')}")
     return any(h in blob for h in _FORUM_HOSTS)
+
+
+def _direct_web_url(uri: str) -> bool:
+    try:
+        parts = urlsplit(str(uri or ""))
+        return parts.scheme.lower() in ("http", "https") and bool(parts.netloc)
+    except ValueError:
+        return False
 
 
 def _chunks_from(data: dict) -> list[dict]:
@@ -217,7 +229,7 @@ def _seen_key(headline_zh: str) -> str:
 
 
 def sanitize_items(data: dict, existing_titles: list[str],
-                   seen: dict, now) -> tuple[dict, list[str]]:
+                   seen: dict, now, window=None) -> tuple[dict, list[str]]:
     """Validated grounded items per section + warnings. Mutates `seen`."""
     warnings: list[str] = []
     out: dict = {name: [] for name in SECTIONS}
@@ -242,12 +254,24 @@ def sanitize_items(data: dict, existing_titles: list[str],
                 or not (20 <= len(sum_zh) <= 400)):
             dropped += 1
             continue
+        published_at = None
+        if window is not None:
+            try:
+                published_at = datetime.fromisoformat(
+                    str(item.get("sourcePublishedAt") or "").replace("Z", "+00:00"))
+                if (published_at.tzinfo is None
+                        or not window.window_start <= published_at < window.window_end):
+                    raise ValueError("outside briefing window")
+            except (TypeError, ValueError):
+                dropped += 1
+                continue
         refs = item.get("sourceChunks")
         refs = [r for r in refs if isinstance(r, int)
                 and 0 <= r < len(chunks)] if isinstance(refs, list) else []
         cited = [chunks[r] for r in dict.fromkeys(refs)]
         cited = [c for c in cited
-                 if c["uri"] and not _is_blocked(c)
+                 if _direct_web_url(c["uri"])
+                 and not _is_blocked(c)
                  and not is_google_news_url(c["uri"])]
         # forums only alongside at least one non-forum source
         if cited and all(_is_forum(c) for c in cited):
@@ -282,7 +306,8 @@ def sanitize_items(data: dict, existing_titles: list[str],
             "headline_en": str(item.get("headline_en") or "").strip(),
             "summary_en": str(item.get("summary_en") or "").strip(),
             "event_time": None,
-            "source_published_at": None,
+            "source_published_at": (published_at.isoformat()
+                                    if published_at else None),
             "source_updated_at": None,
             "location": None,
             "entities": [],
