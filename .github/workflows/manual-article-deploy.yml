@@ -66,7 +66,7 @@ jobs:
           python pipeline/image_captions.py
           python tests/test_image_captions.py
           python pipeline/build.py
-          python pipeline/radar_snapshot.py
+          python pipeline/radar_snapshot.py --optional
 
       - name: Scan publishable output
         run: |
