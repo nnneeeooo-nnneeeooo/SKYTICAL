@@ -60,14 +60,28 @@ def main() -> None:
     assert "emergency" not in serialized
 
     original = adsb.adsb_lol_point
+    original_argv = sys.argv
     try:
         adsb.adsb_lol_point = lambda *_: [row()]
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "assets" / "radar.json"
             written = radar_snapshot.write_snapshot(output)
             assert json.loads(output.read_text(encoding="utf-8")) == written
+            adsb.adsb_lol_point = lambda *_: []
+            sys.argv = ["radar_snapshot.py", "--output", str(output),
+                        "--optional"]
+            assert radar_snapshot.main() == 0
+            assert json.loads(output.read_text(encoding="utf-8")) == written
+            sys.argv = ["radar_snapshot.py", "--output", str(output)]
+            try:
+                radar_snapshot.main()
+            except adsb.ProviderDown:
+                pass
+            else:
+                raise AssertionError("strict snapshot must fail on provider outage")
     finally:
         adsb.adsb_lol_point = original
+        sys.argv = original_argv
     print("test_radar_snapshot: OK")
 
 
