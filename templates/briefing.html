@@ -3,8 +3,7 @@
   <div style="max-width:860px;margin:0 auto;padding:28px 20px 64px;">
     <a href="{{ base }}/{% if lang == 'en' %}en/{% endif %}briefings/" class="btn btn-ghost" style="margin-bottom:18px;">← {{ t.brIndexTitle }}</a>
     <span class="card-kicker">{{ t.brKicker }}</span>
-    <h1 style="font-size:32px;line-height:1.2;margin:10px 0 6px;">✈️ {{ b.title }}<sup style="font-size:10px;font-weight:800;color:var(--color-bg);background:var(--color-accent);padding:2px 5px;margin-left:6px;vertical-align:super;letter-spacing:.05em;">{{ t.brBeta }}</sup></h1>
-    <div style="font-size:17px;font-weight:700;margin-bottom:14px;">{{ b.date_label }}</div>
+    <h1 style="font-size:32px;line-height:1.2;margin:10px 0 14px;">✈️ [{{ b.date_iso }}] {{ b.title }}<sup style="font-size:10px;font-weight:800;color:var(--color-bg);background:var(--color-accent);padding:2px 5px;margin-left:6px;vertical-align:super;letter-spacing:.05em;">{{ t.brBeta }}</sup></h1>
     <div class="text-muted" style="font-size:13px;line-height:2;border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider);padding:10px 0;margin-bottom:6px;">
       <div><span style="font-weight:800;">{{ t.brWindow }}</span>：{{ b.window_start }} {{ t.brTo }} {{ b.window_end }}（UTC+8）</div>
       <div><span style="font-weight:800;">{{ t.brCutoff }}</span>：{{ b.cutoff }}</div>
@@ -29,6 +28,7 @@
     {% endif %}
     {% for sec in b.sections %}
     <h4 style="margin:26px 0 4px;">{{ sec.label }}</h4>
+    {% if sec.lead %}<p style="font-size:14px;line-height:1.8;margin:6px 0 10px;">{{ sec.lead }}</p>{% endif %}
     {% if sec.subsections %}
     {% for sub in sec.subsections %}
     <h6 style="margin:16px 0 4px;">{{ sub.label }}</h6>
@@ -94,6 +94,16 @@
     {% endfor %}
     {% endif %}
     {% endfor %}
+    {% if b.references %}
+    <section style="border-top:2px solid var(--color-divider);margin-top:32px;padding-top:16px;">
+      <h4 style="margin:0 0 10px;">{{ t.brReferences }}</h4>
+      <ul style="margin:0;padding-left:22px;line-height:1.8;">
+        {% for source in b.references %}
+        <li><a href="{{ source.url }}" target="_blank" rel="noopener">{{ source.name or source.url }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
     <div style="border:2px solid var(--color-divider);padding:16px 20px 12px;margin-top:32px;">
       <h6 style="margin:0 0 10px;">{{ t.brChecked }}</h6>
       <div style="display:flex;gap:10px 18px;flex-wrap:wrap;font-size:12.5px;">
