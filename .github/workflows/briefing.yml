@@ -110,7 +110,7 @@ jobs:
             python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}"
           fi
           python pipeline/build.py
-          python pipeline/radar_snapshot.py
+          python pipeline/radar_snapshot.py --optional
 
       - name: Scan build output and committed data for secrets/reasoning
         run: |

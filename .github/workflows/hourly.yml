@@ -146,7 +146,7 @@ jobs:
           git fetch origin "${GITHUB_REF_NAME}"
           git checkout "origin/${GITHUB_REF_NAME}" -- data/briefings || true
           python pipeline/build.py
-          python pipeline/radar_snapshot.py
+          python pipeline/radar_snapshot.py --optional
 
       # Audit the pipeline output after images.py has had a chance to remove
       # stale or misleading cached photos. This still fails closed before any

@@ -54,8 +54,16 @@ def write_snapshot(output: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--optional", action="store_true",
+                        help="Skip a missing provider snapshot during site builds")
     args = parser.parse_args()
-    payload = write_snapshot(args.output)
+    try:
+        payload = write_snapshot(args.output)
+    except adsb.ProviderDown as exc:
+        if not args.optional:
+            raise
+        print(f"radar snapshot: unavailable ({exc}); continuing site build")
+        return 0
     print(
         f"radar snapshot: {len(payload['ac'])} public / "
         f"{payload['source_total']} source rows")
