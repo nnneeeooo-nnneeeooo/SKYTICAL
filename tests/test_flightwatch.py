@@ -14,8 +14,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TMP = Path(tempfile.mkdtemp(prefix="avwire-flightwatch-"))
-os.environ["AVWIRE_DATA_DIR"] = str(TMP / "data")
+TMP = Path(tempfile.mkdtemp(prefix="skytical-flightwatch-"))
+os.environ["SKYTICAL_DATA_DIR"] = str(TMP / "data")
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 import adsb  # noqa: E402
@@ -368,7 +368,7 @@ def _flight_draft(quote="機場 ICAO：RCKH", status="publish"):
 
 def _reset_data():
     import shutil
-    data = Path(os.environ["AVWIRE_DATA_DIR"])
+    data = Path(os.environ["SKYTICAL_DATA_DIR"])
     if data.exists():
         shutil.rmtree(data)
     (data / "flightwatch").mkdir(parents=True)
@@ -385,7 +385,7 @@ def _run_write_with(providers_list):
 
 
 def _published_articles():
-    articles_dir = Path(os.environ["AVWIRE_DATA_DIR"]) / "articles"
+    articles_dir = Path(os.environ["SKYTICAL_DATA_DIR"]) / "articles"
     out = []
     for f in articles_dir.glob("*.json"):
         out.extend(json.loads(f.read_text(encoding="utf-8"))["articles"])
@@ -401,7 +401,7 @@ def test_flight_events_auto_publish():
     _run_write_with([solo])
 
     check(solo.calls == 1, f"one AI call for one event, got {solo.calls}")
-    review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
+    review = common.load_json(Path(os.environ["SKYTICAL_DATA_DIR"])
                               / "review.json", [])
     check(review == [], "clean observation skips the review queue")
     arts = _published_articles()
@@ -413,7 +413,7 @@ def test_flight_events_auto_publish():
           == {"https://airplanes.live/", "https://www.adsb.lol/"},
           "attribution links become the article's sources")
     check(flightnews.load_queue() == [], "queue emptied after publishing")
-    flashes = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
+    flashes = common.load_json(Path(os.environ["SKYTICAL_DATA_DIR"])
                                / "flashes.json", [])
     check(len(flashes) == 1 and flashes[0].get("pinned") is True,
           "auto-published flight observation is pinned")
@@ -428,7 +428,7 @@ def test_flight_fallback_history():
     backup = FakeProvider("gemini", [_flight_draft(status="publish")])
     _run_write_with([primary, backup])
     ledger = common.load_json(
-        Path(os.environ["AVWIRE_DATA_DIR"]) / "usage.json", {})
+        Path(os.environ["SKYTICAL_DATA_DIR"]) / "usage.json", {})
     runs = ledger.get("recentRuns") or []
     run = next(row for row in runs
                if row.get("workflow") == "flightwatch")
@@ -458,7 +458,7 @@ def test_flight_gate_rejects_conflicts_and_publishes_reliable_risk():
     flightnews.save_queue([event])
     solo = FakeProvider("gemini", [_flight_draft(status="publish")])
     _run_write_with([solo])
-    review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
+    review = common.load_json(Path(os.environ["SKYTICAL_DATA_DIR"])
                               / "review.json", [])
     check(review == [] and not _published_articles(),
           "conflicting sources are rejected without creating a review item")
@@ -477,7 +477,7 @@ def test_flight_gate_rejects_conflicts_and_publishes_reliable_risk():
     safety_draft["decisionReason"] = "involves an investigation"
     solo = FakeProvider("gemini", [safety_draft])
     _run_write_with([solo])
-    review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
+    review = common.load_json(Path(os.environ["SKYTICAL_DATA_DIR"])
                               / "review.json", [])
     arts = _published_articles()
     check(review == [] and len(arts) == 1,
@@ -494,7 +494,7 @@ def test_flight_gate_rejects_conflicts_and_publishes_reliable_risk():
         _run_write_with([solo])
     finally:
         del os.environ["FLIGHT_AUTO_PUBLISH"]
-    review = common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
+    review = common.load_json(Path(os.environ["SKYTICAL_DATA_DIR"])
                               / "review.json", [])
     check(review == [] and len(_published_articles()) == 1,
           "retired FLIGHT_AUTO_PUBLISH setting cannot disable direct publish")
@@ -548,7 +548,7 @@ def test_flight_bad_quote_and_reject():
     solo = FakeProvider("gemini",
                         [_flight_draft(quote="this line is nowhere")])
     _run_write_with([solo])
-    check(common.load_json(Path(os.environ["AVWIRE_DATA_DIR"])
+    check(common.load_json(Path(os.environ["SKYTICAL_DATA_DIR"])
                            / "review.json", []) == [],
           "unverifiable sourceQuote never produces a review artifact")
     check(len(flightnews.load_queue()) == 1,

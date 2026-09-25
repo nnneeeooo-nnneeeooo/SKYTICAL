@@ -85,16 +85,16 @@ jobs:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
           ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional
-          AVWIRE_WECHAT_MODEL: ${{ vars.AVWIRE_WECHAT_MODEL }}
-          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:nvidia/nemotron-3-super-120b-a12b
+          SKYTICAL_WECHAT_MODEL: ${{ vars.SKYTICAL_WECHAT_MODEL || vars.AVWIRE_WECHAT_MODEL }}
+          SKYTICAL_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:nvidia/nemotron-3-super-120b-a12b
           BRIEFING_LLM_INTRO: ${{ vars.BRIEFING_LLM_INTRO }}
           BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}
           BRIEFING_MAX_ITEMS_PER_SECTION: ${{ vars.BRIEFING_MAX_ITEMS_PER_SECTION }}
           BRIEFING_EXTRA_LLM_CALLS_MAX: ${{ vars.BRIEFING_EXTRA_LLM_CALLS_MAX }}
           # private usage-dashboard URL token (page skipped when unset)
-          AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
+          SKYTICAL_USAGE_TOKEN: ${{ secrets.SKYTICAL_USAGE_TOKEN || secrets.AVWIRE_USAGE_TOKEN }}
           # private manual-drafting URL/encryption token
-          AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
+          SKYTICAL_MANUAL_TOKEN: ${{ secrets.SKYTICAL_MANUAL_TOKEN || secrets.AVWIRE_MANUAL_TOKEN }}
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           # BETA grounded search sweep (owner-approved; off unless var set)
           BRIEFING_GROUNDED: ${{ vars.BRIEFING_GROUNDED }}

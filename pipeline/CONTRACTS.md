@@ -391,7 +391,7 @@ Cumulative LLM API spend: per-model-label {calls, inputTokens,
 outputTokens, unknownCalls} + rolling 120-day daily series. Providers
 capture usage from each API response; write.py/briefing.py flush once
 per run via usage.record_providers(). build.py renders it on a PRIVATE
-dashboard at site/u/<AVWIRE_USAGE_TOKEN>/ (noindex, linked from
+dashboard at site/u/<SKYTICAL_USAGE_TOKEN>/ (noindex, linked from
 nowhere) only when that secret is set. Reference list prices live in
 config/model_prices.json - theoretical value only; free-tier spend is 0.
 
