@@ -275,10 +275,13 @@ def classify_section(article: dict) -> str:
     blob = _text_blob(article)
     if _has_marker(blob, _GROUND_MARKERS) or _has_marker(blob, _MARITIME_MARKERS):
         return "ground_and_maritime"
-    if article.get("cat") == "safety":
-        return "aviation_incidents"
     if _has_marker(blob, _TAIWAN_MARKERS):
         return "taiwan_aviation"
+    if (article.get("cat") == "safety"
+            or _has_marker(blob, _SERIOUS_MARKERS)
+            or _has_marker(blob, ("跑道偏出", "衝出跑道", "runway excursion",
+                                  "engine failure", "發動機故障"))):
+        return "aviation_incidents"
     return "international_aviation"
 
 
@@ -1030,7 +1033,7 @@ def run_edition(edition: str, taipei_date: date) -> int:
                 grounded_degraded = True
             else:
                 g_items, g_warnings = grounded.sanitize_items(
-                    data, existing_titles, g_seen, now)
+                    data, existing_titles, g_seen, now, window)
                 warnings.extend(g_warnings)
                 grounded_degraded = bool(g_warnings)
                 added = 0

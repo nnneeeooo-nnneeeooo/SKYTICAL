@@ -199,6 +199,7 @@ L = {
         "brEmpty": "截至本期資料截止時間，系統在本次查核的指定來源中，未發現符合收錄門檻的新事件。",
         "brPartial": "本期部分來源資料未能完整取得，內容可能不完整；來源擷取失敗不代表沒有新事件。",
         "brChecked": "📡 本期查核來源", "brWarnings": "資料覆蓋提示",
+        "brReferences": "📡 來源參考",
         "brUpdate": "更新", "brItems": "則",
         "brNoItems": "本期查核來源中，此分類無新增符合收錄門檻的事件通報",
         "brModeDet": "已查證新聞匯總", "brModeLlm": "模型輔助匯總",
@@ -334,6 +335,7 @@ L = {
         "brEmpty": "As of this edition's data cutoff, no new events meeting the inclusion bar were found in the sources checked for this edition.",
         "brPartial": "Some sources could not be fetched in full for this edition; coverage may be incomplete. A fetch failure does not mean no events occurred.",
         "brChecked": "📡 Sources checked", "brWarnings": "Coverage notes",
+        "brReferences": "📡 References",
         "brUpdate": "UPDATE", "brItems": "items",
         "brNoItems": "No new events met the inclusion bar in this section "
                      "among the sources checked",
@@ -2382,6 +2384,32 @@ def brief_view(b, lang: str, t, published_ids):
             items = [brief_item_view(it, lang, published_ids) for it in raw]
             sections.append({"label": t["brSecs"][i], "items": items,
                              "subsections": [], "note": note_view(name)})
+    for section in sections:
+        headlines = [item["headline"] for item in section["items"][:2]]
+        if headlines:
+            count = len(section["items"])
+            section["lead"] = (
+                f"本期收錄 {count} 則動態，包含{'、'.join(headlines)}。"
+                if lang == "zh" else
+                f"This edition includes {count} item(s), including "
+                f"{' and '.join(headlines)}.")
+        else:
+            section["lead"] = ""
+    references = []
+    referenced_urls = set()
+    for section in sections:
+        for item in section["items"]:
+            for source in item["sources"]:
+                if source["url"] not in referenced_urls:
+                    references.append(source)
+                    referenced_urls.add(source["url"])
+        notes = ([sub["note"] for sub in section["subsections"]]
+                 if section["subsections"] else [section["note"]])
+        for note in notes:
+            for source in note["sources"]:
+                if source["url"] not in referenced_urls:
+                    references.append(source)
+                    referenced_urls.add(source["url"])
     gen_model = b.get("generation_model") or {}
     date_dt = _tpe_dt(b.get("cutoff_time"))
     # an intro written over the merged item set is stale once items are cut
@@ -2394,6 +2422,7 @@ def brief_view(b, lang: str, t, published_ids):
         "title": _brief_title(b, lang),
         "label": _brief_label(b, lang),
         "date_label": _fmt_tpe_date(date_dt, lang) if date_dt else "—",
+        "date_iso": str(b.get("date") or ""),
         "window_start": _fmt_tpe(b.get("window_start"), lang),
         "window_end": _fmt_tpe(b.get("window_end"), lang),
         "cutoff": _fmt_tpe(b.get("cutoff_time"), lang),
@@ -2401,6 +2430,7 @@ def brief_view(b, lang: str, t, published_ids):
         "partial": b.get("status") == "partial",
         "total": sum(len(s["items"]) for s in sections),
         "sections": sections,
+        "references": references,
         "intro": intro,
         "mode_label": (
             t["brModeLlm"] if b.get("generation_mode") == "llm_assisted"

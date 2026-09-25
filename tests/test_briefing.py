@@ -535,6 +535,10 @@ check("共機動態 stories are taiwan_aviation with the military flag",
       and briefing._has_marker(
           briefing._text_blob(_art_text("中共軍機臺海周邊動態")),
           briefing._MILITARY_MARKERS))
+_raf = _art_text("英國皇家空軍 Hawk T2 教練機在威爾斯墜毀")
+_raf["entities"]["organizations"] = ["Royal Air Force"]
+check("RAF crash is a safety event even when the article category is ops",
+      briefing.classify_section(_raf) == "aviation_incidents")
 
 import build as _b  # noqa: E402
 
@@ -585,6 +589,19 @@ os.environ.pop("BRIEFING_INCLUDE_ARTICLES", None)
 _bv = _b.brief_view(_stale, "zh", _b.L["zh"], set())
 check("render gate includes verified articles by default",
       _bv["total"] == 3 and _bv["intro"] == "為合併版寫的導言")
+_cited_item = dict(_stale_item, sources=[
+    {"name": "Official", "url": "https://example.gov/report"},
+    {"name": "Repeated", "url": "https://example.gov/report"},
+    {"name": "Blocked", "url": "javascript:alert(1)"},
+])
+_cited = dict(_stale, sections={
+    "aviation_incidents": [_cited_item],
+    "international_aviation": [_cited_item],
+})
+_cited_view = _b.brief_view(_cited, "zh", _b.L["zh"], set())
+check("reference list contains only cited, deduplicated direct URLs",
+      _cited_view["references"] == [
+          {"name": "Official", "url": "https://example.gov/report"}])
 os.environ["BRIEFING_INCLUDE_ARTICLES"] = "false"
 _bv2 = _b.brief_view(_stale, "zh", _b.L["zh"], set())
 os.environ["BRIEFING_INCLUDE_ARTICLES"] = "true"
