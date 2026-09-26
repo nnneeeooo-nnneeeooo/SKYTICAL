@@ -1,0 +1,44 @@
+name: dedupe-benchmark
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install production and benchmark dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r benchmarks/requirements-dedupe.txt
+
+      - name: Run deterministic vs semantic dedupe benchmark
+        run: python benchmarks/dedupe_benchmark.py
+
+      - name: Add report to workflow summary
+        if: always()
+        run: |
+          if [ -f benchmark-results/dedupe/summary.md ]; then
+            cat benchmark-results/dedupe/summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload benchmark report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dedupe-benchmark
+          path: benchmark-results/dedupe/
+          if-no-files-found: warn
