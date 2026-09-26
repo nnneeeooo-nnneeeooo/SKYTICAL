@@ -1565,15 +1565,17 @@ _DATE_PATTERNS = (
 _TECH_ATOM_RE = re.compile(
     r"(?<![A-Za-z0-9])(?=[A-Za-z0-9-]*[A-Za-z])(?=[A-Za-z0-9-]*\\d)"
     r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+(?![A-Za-z0-9])"
-    r"|(?<![A-Za-z0-9])[A-Za-z]{1,5}\\d{2,5}[A-Za-z]?(?![A-Za-z0-9])"
+    r"|(?<![A-Za-z0-9])\\d{2,4}-\\d{1,3}[A-Za-z]?(?![A-Za-z0-9])"
+    r"|(?<![A-Za-z0-9])[A-Za-z]{1,5}\\d{2,5}[A-Za-z]{0,5}(?![A-Za-z0-9])"
 )
 _TIME_ATOM_RE = re.compile(r"(?<!\\d)(?:[01]?\\d|2[0-3]):[0-5]\\d(?!\\d)")
 _NUMBER_ATOM_RE = re.compile(
-    r"(?<![A-Za-z0-9])\\d{2,}(?:,\\d{3})*(?:\\.\\d+)?"
-    r"(?:\\s*[-–]\\s*\\d{2,}(?:,\\d{3})*(?:\\.\\d+)?)?(?![A-Za-z0-9])"
+    r"(?<![A-Za-z0-9.])(?:\\d+\\.\\d+|\\d{1,3}(?:,\\d{3})+|\\d{2,})"
+    r"(?:\\s*[-–]\\s*(?:\\d+\\.\\d+|\\d{1,3}(?:,\\d{3})+|\\d{2,}))?"
+    r"(?![A-Za-z0-9.])"
 )
 _SINGLE_COUNT_RE = re.compile(
-    r"(?<!\\d)(?P<n>[0-9])\\s*(?P<u>%|percent|people|persons|crew|aircraft|"
+    r"(?<![\\d.])(?P<n>[0-9])\\s*(?P<u>%|percent|people|persons|crew|aircraft|"
     r"jets|flights|routes|cities|countries|days|hours|minutes|人|名|架|班|條|個|次)"
     r"(?![A-Za-z])", re.I)
 _NUMBER_WORDS = {
