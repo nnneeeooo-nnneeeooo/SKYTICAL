@@ -1557,25 +1557,25 @@ _MONTH_TO_NUM = {
     name: number for number, names in _MONTH_NAMES.items() for name in names
 }
 _DATE_PATTERNS = (
-    re.compile(r"(?P<y>20\\d{2})[-/.](?P<m>0?[1-9]|1[0-2])[-/.](?P<d>0?[1-9]|[12]\\d|3[01])"),
-    re.compile(r"(?P<y>20\\d{2})年(?P<m>0?[1-9]|1[0-2])月(?P<d>0?[1-9]|[12]\\d|3[01])日"),
-    re.compile(r"(?P<d>0?[1-9]|[12]\\d|3[01])\\s+(?P<mon>January|February|March|April|May|June|July|August|September|October|November|December)\\s+(?P<y>20\\d{2})", re.I),
-    re.compile(r"(?P<mon>January|February|March|April|May|June|July|August|September|October|November|December)\\s+(?P<d>0?[1-9]|[12]\\d|3[01])(?:st|nd|rd|th)?[,]?\\s+(?P<y>20\\d{2})", re.I),
+    re.compile(r"(?P<y>20\d{2})[-/.](?P<m>0?[1-9]|1[0-2])[-/.](?P<d>0?[1-9]|[12]\d|3[01])"),
+    re.compile(r"(?P<y>20\d{2})年(?P<m>0?[1-9]|1[0-2])月(?P<d>0?[1-9]|[12]\d|3[01])日"),
+    re.compile(r"(?P<d>0?[1-9]|[12]\d|3[01])\s+(?P<mon>January|February|March|April|May|June|July|August|September|October|November|December)\s+(?P<y>20\d{2})", re.I),
+    re.compile(r"(?P<mon>January|February|March|April|May|June|July|August|September|October|November|December)\s+(?P<d>0?[1-9]|[12]\d|3[01])(?:st|nd|rd|th)?[,]?\s+(?P<y>20\d{2})", re.I),
 )
 _TECH_ATOM_RE = re.compile(
-    r"(?<![A-Za-z0-9])(?=[A-Za-z0-9-]*[A-Za-z])(?=[A-Za-z0-9-]*\\d)"
+    r"(?<![A-Za-z0-9])(?=[A-Za-z0-9-]*[A-Za-z])(?=[A-Za-z0-9-]*\d)"
     r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+(?![A-Za-z0-9])"
-    r"|(?<![A-Za-z0-9])\\d{2,4}-\\d{1,3}[A-Za-z]?(?![A-Za-z0-9])"
-    r"|(?<![A-Za-z0-9])[A-Za-z]{1,5}\\d{2,5}[A-Za-z]{0,5}(?![A-Za-z0-9])"
+    r"|(?<![A-Za-z0-9])\d{2,4}-\d{1,3}[A-Za-z]?(?![A-Za-z0-9])"
+    r"|(?<![A-Za-z0-9])[A-Za-z]{1,5}\d{2,5}[A-Za-z]{0,5}(?![A-Za-z0-9])"
 )
-_TIME_ATOM_RE = re.compile(r"(?<!\\d)(?:[01]?\\d|2[0-3]):[0-5]\\d(?!\\d)")
+_TIME_ATOM_RE = re.compile(r"(?<!\d)(?:[01]?\d|2[0-3]):[0-5]\d(?!\d)")
 _NUMBER_ATOM_RE = re.compile(
-    r"(?<![A-Za-z0-9.])(?:\\d+\\.\\d+|\\d{1,3}(?:,\\d{3})+|\\d{2,})"
-    r"(?:\\s*[-–]\\s*(?:\\d+\\.\\d+|\\d{1,3}(?:,\\d{3})+|\\d{2,}))?"
+    r"(?<![A-Za-z0-9.])(?:\d+\.\d+|\d{1,3}(?:,\d{3})+|\d{2,})"
+    r"(?:\s*[-–]\s*(?:\d+\.\d+|\d{1,3}(?:,\d{3})+|\d{2,}))?"
     r"(?![A-Za-z0-9.])"
 )
 _SINGLE_COUNT_RE = re.compile(
-    r"(?<![\\d.])(?P<n>[0-9])\\s*(?P<u>%|percent|people|persons|crew|aircraft|"
+    r"(?<![\d.])(?P<n>[0-9])\s*(?P<u>%|percent|people|persons|crew|aircraft|"
     r"jets|flights|routes|cities|countries|days|hours|minutes|人|名|架|班|條|個|次)"
     r"(?![A-Za-z])", re.I)
 _NUMBER_WORDS = {
