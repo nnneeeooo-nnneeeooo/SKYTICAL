@@ -289,8 +289,8 @@ DRAFT_SCHEMA = {
     },
     "required": ["status", "decisionReason", "cat", "zh", "en", "flash",
                  "incident", "facts", "headlineSupportedBy",
-                 "summarySupportedBy", "entities", "eventStatus",
-                 "riskFlags", "requiresHumanReview"],
+                 "summarySupportedBy", "entities", "entityEvidence",
+                 "eventStatus", "riskFlags", "requiresHumanReview"],
     "additionalProperties": False,
 }
 
@@ -1489,6 +1489,14 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
             if facts:
                 evidence_started = time.perf_counter()
                 problem = _evidence_binding_problem(candidate, facts)
+                if problem is None:
+                    problem = claim_evidence_problem(facts)
+                if problem is None:
+                    clean_entities, entity_evidence, problem = \
+                        verify_entity_evidence(candidate, group, provider.label)
+                    if problem is None:
+                        candidate["entities"] = clean_entities
+                        candidate["entityEvidence"] = entity_evidence
                 if run_trace is not None:
                     run_trace.add_duration("evidenceBinding", evidence_started)
                 problem_stage = "evidenceBinding"
@@ -1998,6 +2006,19 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
                     cleaned[key] = unique
         if cleaned:
             article["entities"] = cleaned
+    entity_evidence = draft.get("entityEvidence")
+    if isinstance(entity_evidence, list):
+        verified_rows = [
+            row for row in entity_evidence
+            if isinstance(row, dict)
+            and row.get("entityType") in ENTITY_KEYS
+            and row.get("value")
+            and row.get("sourceQuote")
+            and row.get("sourceUrl")
+        ]
+        if verified_rows:
+            article["entityEvidence"] = verified_rows
+            article["evidenceVersion"] = 2
     return article
 
 
