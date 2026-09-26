@@ -1,0 +1,50 @@
+name: fulltext-benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Number of recent allowlisted source pages to benchmark"
+        required: false
+        default: "30"
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install production and benchmark dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r benchmarks/requirements-fulltext.txt
+
+      - name: Run full-text extractor benchmark
+        run: |
+          python benchmarks/fulltext_benchmark.py --limit "${{ inputs.limit }}"
+
+      - name: Add summary to workflow
+        if: always()
+        run: |
+          if [ -f benchmark-results/fulltext/summary.md ]; then
+            cat benchmark-results/fulltext/summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload benchmark report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fulltext-benchmark
+          path: benchmark-results/fulltext/
+          if-no-files-found: warn
