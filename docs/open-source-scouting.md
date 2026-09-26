@@ -56,6 +56,8 @@
 
 ### P1 — 正文抽取 fallback benchmark
 
+**狀態：已建立可重跑 benchmark（`benchmarks/fulltext_benchmark.py` + `fulltext-benchmark` 手動 workflow）。正式管線尚未改動。**
+
 目標：挑 20–30 個目前常見來源，使用現行抽取器、Trafilatura、Newspaper4k 比較：
 - 成功率
 - 正文乾淨度
@@ -64,6 +66,8 @@
 - 失敗時是否可安全 fallback
 
 只有結果顯著優於現況才導入。
+
+執行方式：GitHub Actions → `fulltext-benchmark` → Run workflow。報告會寫入 Actions Step Summary，並上傳 `fulltext-benchmark` artifact。每個 URL 只抓一次，同一份 HTML 交給所有抽取器，並沿用現有 allowlist、robots 與 redirect host 驗證。
 
 ### P1 — 去重漏網率 benchmark
 
