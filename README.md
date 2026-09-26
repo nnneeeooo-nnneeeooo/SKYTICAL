@@ -2,6 +2,9 @@
 
 > **SKYLINE TO AVIATION NEWS**
 
+🌐 **Live site:** https://skytical.tech/  
+🧭 **Open-source scouting:** [docs/open-source-scouting.md](docs/open-source-scouting.md)
+
 > **AI／新對話快速接手：**先讀 [`AGENTS.md`](AGENTS.md)，不要重新盤點整個
 > repository。最短指令：`@GitHub 依 AGENTS.md 快速模式處理：先確認【事項】，
 > 再修改【內容】；測試通過後直接 commit、合併 main，並確認網站上線。`
