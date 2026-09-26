@@ -1623,17 +1623,17 @@ def _date_supported(date_value, quote: str) -> bool:
     q = str(quote or "").casefold()
     if str(year) not in q:
         return False
-    if not re.search(rf"(?<!\\d)0?{day}(?:st|nd|rd|th)?(?!\\d)", q):
+    if not re.search(rf"(?<!\d)0?{day}(?:st|nd|rd|th)?(?!\d)", q):
         return False
     month_names = _MONTH_NAMES.get(month, ())
     return (
-        any(re.search(rf"\\b{re.escape(name)}\\b", q) for name in month_names)
-        or re.search(rf"(?:^|\\D)0?{month}(?:\\D|$)", q) is not None
+        any(re.search(rf"\b{re.escape(name)}\b", q) for name in month_names)
+        or re.search(rf"(?:^|\D)0?{month}(?:\D|$)", q) is not None
     )
 
 
 def _normalized_atom(value: str) -> str:
-    return re.sub(r"[\\s,–—]+", "", str(value or "").casefold())
+    return re.sub(r"[\s,–—]+", "", str(value or "").casefold())
 
 
 def _atom_supported(atom: str, quote: str) -> bool:
@@ -1643,7 +1643,7 @@ def _atom_supported(atom: str, quote: str) -> bool:
         return True
     if atom in _NUMBER_WORDS:
         q = str(quote or "").casefold()
-        return any(re.search(rf"\\b{word}\\b", q)
+        return any(re.search(rf"\b{word}\b", q)
                    for word in _NUMBER_WORDS[atom])
     return False
 
