@@ -55,6 +55,7 @@ from write import (  # noqa: E402
     DRAFT_SCHEMA,
     SYSTEM_PROMPT,
     _evidence_binding_problem,
+    claim_evidence_problem,
     build_article,
     build_flash,
     build_incident,
@@ -62,6 +63,7 @@ from write import (  # noqa: E402
     glossary_problem,
     group_prompt,
     validate_draft,
+    verify_entity_evidence,
     verify_facts,
 )
 import usage as usage_ledger  # noqa: E402
@@ -1025,6 +1027,16 @@ def generate(job_id: str, payload: dict) -> dict:
                 candidate["facts"] = facts
                 problem = (
                     _evidence_binding_problem(candidate, facts)
+                    or claim_evidence_problem(facts)
+                )
+                if not problem:
+                    clean_entities, entity_evidence, problem = \
+                        verify_entity_evidence(candidate, group, provider.label)
+                    if not problem:
+                        candidate["entities"] = clean_entities
+                        candidate["entityEvidence"] = entity_evidence
+                problem = (
+                    problem
                     or glossary_problem(candidate, group)
                     or fabrication_problem(candidate, group)
                 )
