@@ -234,6 +234,21 @@ _ENTITIES_SCHEMA = {
     "additionalProperties": False,
 }
 
+# Evidence for structured metadata is intentionally separate from facts.
+# value must use wording present in sourceQuote. Future evidence versions may
+# add deterministic alias/canonical-name resolution without weakening this.
+_ENTITY_EVIDENCE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "entityType": {"type": "string", "enum": list(ENTITY_KEYS)},
+        "value": {"type": "string"},
+        "sourceQuote": {"type": "string"},
+        "sourceUrl": {"type": "string"},
+    },
+    "required": ["entityType", "value", "sourceQuote", "sourceUrl"],
+    "additionalProperties": False,
+}
+
 DRAFT_SCHEMA = {
     "type": "object",
     "properties": {
@@ -260,6 +275,11 @@ DRAFT_SCHEMA = {
         "summarySupportedBy": {"type": "array",
                                "items": {"type": "string"}},
         "entities": _ENTITIES_SCHEMA,
+        "entityEvidence": {
+            "type": "array",
+            "items": _ENTITY_EVIDENCE_SCHEMA,
+            "maxItems": 80,
+        },
         "eventStatus": {"type": "string", "enum": list(EVENT_STATUSES)},
         "riskFlags": {
             "type": "array",
@@ -328,6 +348,18 @@ EVIDENCE RULES:
   substring from ONE current source field or ONE selected archive fact. Aim
   under 200 characters and never quote a whole paragraph. Every load-bearing
   title and summary claim must bind to a fact.
+- A fact claim may contain ONLY details supported by its OWN sourceQuote.
+  If one sentence needs evidence from two separate excerpts, split it into
+  two facts or choose one contiguous quote that supports the entire claim.
+  Never borrow a date, number, aircraft/engine code, flight/registration,
+  route, status or other detail from another fact.
+- entityEvidence is mandatory for every non-empty value in entities. Use one
+  evidence row per entity value. entityType is the entities key; value MUST
+  use wording that appears verbatim in its own current SOURCE sourceQuote
+  apart from case and whitespace. sourceQuote must itself be a verbatim
+  contiguous SOURCE substring. Do not translate, canonicalize or infer an
+  entity alias here; unsupported entities must be omitted. This conservative
+  contract can later be expanded by deterministic alias tables.
 - Current facts: evidenceScope="source", archiveEventId=null,
   archiveContext=false, and sourceUrl is the current item URL.
 - Historical facts: evidenceScope="archive", archiveContext=true,
@@ -1131,6 +1163,18 @@ def validate_draft(draft):
     entities = draft.get("entities")
     if entities is not None and not isinstance(entities, dict):
         return "entities must be an object"
+    entity_evidence = draft.get("entityEvidence")
+    if entity_evidence is not None:
+        if not isinstance(entity_evidence, list):
+            return "entityEvidence must be an array"
+        for row in entity_evidence:
+            if not isinstance(row, dict):
+                return "entityEvidence entries must be objects"
+            if row.get("entityType") not in ENTITY_KEYS:
+                return "bad entityEvidence.entityType"
+            for key in ("value", "sourceQuote", "sourceUrl"):
+                if not isinstance(row.get(key), str):
+                    return f"entityEvidence.{key} must be a string"
     incident = draft.get("incident")
     if incident is not None:
         if not isinstance(incident, dict):
