@@ -234,6 +234,21 @@ _ENTITIES_SCHEMA = {
     "additionalProperties": False,
 }
 
+# Evidence for structured metadata is intentionally separate from facts.
+# value must use wording present in sourceQuote. Future evidence versions may
+# add deterministic alias/canonical-name resolution without weakening this.
+_ENTITY_EVIDENCE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "entityType": {"type": "string", "enum": list(ENTITY_KEYS)},
+        "value": {"type": "string"},
+        "sourceQuote": {"type": "string"},
+        "sourceUrl": {"type": "string"},
+    },
+    "required": ["entityType", "value", "sourceQuote", "sourceUrl"],
+    "additionalProperties": False,
+}
+
 DRAFT_SCHEMA = {
     "type": "object",
     "properties": {
@@ -260,6 +275,11 @@ DRAFT_SCHEMA = {
         "summarySupportedBy": {"type": "array",
                                "items": {"type": "string"}},
         "entities": _ENTITIES_SCHEMA,
+        "entityEvidence": {
+            "type": "array",
+            "items": _ENTITY_EVIDENCE_SCHEMA,
+            "maxItems": 80,
+        },
         "eventStatus": {"type": "string", "enum": list(EVENT_STATUSES)},
         "riskFlags": {
             "type": "array",
@@ -269,8 +289,8 @@ DRAFT_SCHEMA = {
     },
     "required": ["status", "decisionReason", "cat", "zh", "en", "flash",
                  "incident", "facts", "headlineSupportedBy",
-                 "summarySupportedBy", "entities", "eventStatus",
-                 "riskFlags", "requiresHumanReview"],
+                 "summarySupportedBy", "entities", "entityEvidence",
+                 "eventStatus", "riskFlags", "requiresHumanReview"],
     "additionalProperties": False,
 }
 
@@ -328,6 +348,18 @@ EVIDENCE RULES:
   substring from ONE current source field or ONE selected archive fact. Aim
   under 200 characters and never quote a whole paragraph. Every load-bearing
   title and summary claim must bind to a fact.
+- A fact claim may contain ONLY details supported by its OWN sourceQuote.
+  If one sentence needs evidence from two separate excerpts, split it into
+  two facts or choose one contiguous quote that supports the entire claim.
+  Never borrow a date, number, aircraft/engine code, flight/registration,
+  route, status or other detail from another fact.
+- entityEvidence is mandatory for every non-empty value in entities. Use one
+  evidence row per entity value. entityType is the entities key; value MUST
+  use wording that appears verbatim in its own current SOURCE sourceQuote
+  apart from case and whitespace. sourceQuote must itself be a verbatim
+  contiguous SOURCE substring. Do not translate, canonicalize or infer an
+  entity alias here; unsupported entities must be omitted. This conservative
+  contract can later be expanded by deterministic alias tables.
 - Current facts: evidenceScope="source", archiveEventId=null,
   archiveContext=false, and sourceUrl is the current item URL.
 - Historical facts: evidenceScope="archive", archiveContext=true,
@@ -1131,6 +1163,18 @@ def validate_draft(draft):
     entities = draft.get("entities")
     if entities is not None and not isinstance(entities, dict):
         return "entities must be an object"
+    entity_evidence = draft.get("entityEvidence")
+    if entity_evidence is not None:
+        if not isinstance(entity_evidence, list):
+            return "entityEvidence must be an array"
+        for row in entity_evidence:
+            if not isinstance(row, dict):
+                return "entityEvidence entries must be objects"
+            if row.get("entityType") not in ENTITY_KEYS:
+                return "bad entityEvidence.entityType"
+            for key in ("value", "sourceQuote", "sourceUrl"):
+                if not isinstance(row.get(key), str):
+                    return f"entityEvidence.{key} must be a string"
     incident = draft.get("incident")
     if incident is not None:
         if not isinstance(incident, dict):
@@ -1445,6 +1489,14 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
             if facts:
                 evidence_started = time.perf_counter()
                 problem = _evidence_binding_problem(candidate, facts)
+                if problem is None:
+                    problem = claim_evidence_problem(facts)
+                if problem is None:
+                    clean_entities, entity_evidence, problem = \
+                        verify_entity_evidence(candidate, group, provider.label)
+                    if problem is None:
+                        candidate["entities"] = clean_entities
+                        candidate["entityEvidence"] = entity_evidence
                 if run_trace is not None:
                     run_trace.add_duration("evidenceBinding", evidence_started)
                 problem_stage = "evidenceBinding"
@@ -1494,18 +1546,47 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
 
 _squash = squash_text  # shared with common.item_has_material
 
+_MONTH_NAMES = {
+    1: ("january", "jan"), 2: ("february", "feb"),
+    3: ("march", "mar"), 4: ("april", "apr"), 5: ("may",),
+    6: ("june", "jun"), 7: ("july", "jul"), 8: ("august", "aug"),
+    9: ("september", "sep", "sept"), 10: ("october", "oct"),
+    11: ("november", "nov"), 12: ("december", "dec"),
+}
+_MONTH_TO_NUM = {
+    name: number for number, names in _MONTH_NAMES.items() for name in names
+}
+_DATE_PATTERNS = (
+    re.compile(r"(?P<y>20\d{2})[-/.](?P<m>0?[1-9]|1[0-2])[-/.](?P<d>0?[1-9]|[12]\d|3[01])"),
+    re.compile(r"(?P<y>20\d{2})年(?P<m>0?[1-9]|1[0-2])月(?P<d>0?[1-9]|[12]\d|3[01])日"),
+    re.compile(r"(?P<d>0?[1-9]|[12]\d|3[01])\s+(?P<mon>January|February|March|April|May|June|July|August|September|October|November|December)\s+(?P<y>20\d{2})", re.I),
+    re.compile(r"(?P<mon>January|February|March|April|May|June|July|August|September|October|November|December)\s+(?P<d>0?[1-9]|[12]\d|3[01])(?:st|nd|rd|th)?[,]?\s+(?P<y>20\d{2})", re.I),
+)
+_TECH_ATOM_RE = re.compile(
+    r"(?<![A-Za-z0-9])(?=[A-Za-z0-9-]*[A-Za-z])(?=[A-Za-z0-9-]*\d)"
+    r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+(?![A-Za-z0-9])"
+    r"|(?<![A-Za-z0-9])\d{2,4}-\d{1,3}[A-Za-z]?(?![A-Za-z0-9])"
+    r"|(?<![A-Za-z0-9])[A-Za-z]{1,5}\d{2,5}[A-Za-z]{0,5}(?![A-Za-z0-9])"
+)
+_TIME_ATOM_RE = re.compile(r"(?<!\d)(?:[01]?\d|2[0-3]):[0-5]\d(?!\d)")
+_NUMBER_ATOM_RE = re.compile(
+    r"(?<![A-Za-z0-9.])(?:\d+\.\d+|\d{1,3}(?:,\d{3})+|\d{2,})"
+    r"(?:\s*[-–]\s*(?:\d+\.\d+|\d{1,3}(?:,\d{3})+|\d{2,}))?"
+    r"(?![A-Za-z0-9.])"
+)
+_SINGLE_COUNT_RE = re.compile(
+    r"(?<![\d.])(?P<n>[0-9])\s*(?P<u>%|percent|people|persons|crew|aircraft|"
+    r"jets|flights|routes|cities|countries|days|hours|minutes|人|名|架|班|條|個|次)"
+    r"(?![A-Za-z])", re.I)
+_NUMBER_WORDS = {
+    "0": ("zero",), "1": ("one",), "2": ("two",), "3": ("three",),
+    "4": ("four",), "5": ("five",), "6": ("six",), "7": ("seven",),
+    "8": ("eight",), "9": ("nine",),
+}
 
-def verify_facts(draft: dict, group: dict, label: str) -> list:
-    """Keep only facts whose sourceQuote is a verbatim substring of the
-    material actually shown to the model (whitespace-squashed, case-folded).
 
-    The quote requirement is enforced HERE, in code, because prompt-level
-    rules alone cannot be trusted: a fabricated or paraphrased quote is
-    silently dropped, and a draft with zero surviving quotes is unpublishable.
-    """
-    # Keep current fields separate so a quote cannot straddle fields and so
-    # the surviving fact can be bound to the exact current source URL.
-    source_fields = []
+def _current_source_fields(group: dict) -> list[tuple[str, list[str]]]:
+    fields_by_url = []
     for item in group.get("items", []):
         url = str(item.get("url") or "").strip()
         if not url and item.get("source") == "SKYTICAL 資料庫" \
@@ -1519,7 +1600,178 @@ def verify_facts(draft: dict, group: dict, label: str) -> list:
             _squash(_clean_source_text(item.get("fulltext"))
                     .strip()[:FULLTEXT_PROMPT_CHARS]),
         ]
-        source_fields.append((url, fields))
+        fields_by_url.append((url, fields))
+    return fields_by_url
+
+
+def _date_rows(text: str):
+    rows = []
+    for pattern in _DATE_PATTERNS:
+        for match in pattern.finditer(str(text or "")):
+            try:
+                gd = match.groupdict()
+                month = int(gd["m"]) if gd.get("m") else _MONTH_TO_NUM[gd["mon"].casefold()]
+                rows.append(((int(gd["y"]), month, int(gd["d"])), match.span()))
+            except (KeyError, TypeError, ValueError):
+                continue
+    rows.sort(key=lambda row: row[1][0])
+    return rows
+
+
+def _date_supported(date_value, quote: str) -> bool:
+    year, month, day = date_value
+    q = str(quote or "").casefold()
+    if str(year) not in q:
+        return False
+    if not re.search(rf"(?<!\d)0?{day}(?:st|nd|rd|th)?(?!\d)", q):
+        return False
+    month_names = _MONTH_NAMES.get(month, ())
+    return (
+        any(re.search(rf"\b{re.escape(name)}\b", q) for name in month_names)
+        or re.search(rf"(?:^|\D)0?{month}(?:\D|$)", q) is not None
+    )
+
+
+def _normalized_atom(value: str) -> str:
+    return re.sub(r"[\s,–—]+", "", str(value or "").casefold())
+
+
+def _atom_supported(atom: str, quote: str) -> bool:
+    target = _normalized_atom(atom)
+    q_norm = _normalized_atom(quote)
+    if target and target in q_norm:
+        return True
+    if atom in _NUMBER_WORDS:
+        q = str(quote or "").casefold()
+        return any(re.search(rf"\b{word}\b", q)
+                   for word in _NUMBER_WORDS[atom])
+    return False
+
+
+def claim_evidence_problem(facts: list[dict]) -> str | None:
+    """Block high-risk details that are absent from a fact's own quote.
+
+    This is deliberately deterministic instead of using a second model. It
+    focuses on the details most damaging to aviation-news accuracy: explicit
+    dates/times, counts and technical identifiers. The gate can be extended
+    without changing the persisted evidence contract.
+    """
+    for fact in facts:
+        fact_id = str(fact.get("factId") or "?")
+        claim = str(fact.get("claim") or "")
+        quote = str(fact.get("sourceQuote") or "")
+        masked = list(claim)
+        for date_value, (start, end) in _date_rows(claim):
+            if not _date_supported(date_value, quote):
+                return f"{fact_id} claim date is not supported by its sourceQuote"
+            for index in range(start, end):
+                masked[index] = " "
+        residual = "".join(masked)
+        atoms = []
+        atoms.extend(m.group() for m in _TIME_ATOM_RE.finditer(residual))
+        atoms.extend(m.group() for m in _TECH_ATOM_RE.finditer(residual))
+        atoms.extend(m.group() for m in _NUMBER_ATOM_RE.finditer(residual))
+        atoms.extend(m.group("n") for m in _SINGLE_COUNT_RE.finditer(residual))
+        for atom in dict.fromkeys(atoms):
+            if not _atom_supported(atom, quote):
+                return (
+                    f"{fact_id} claim adds high-risk atom {atom!r} not present "
+                    "in its own sourceQuote"
+                )
+    return None
+
+
+def verify_entity_evidence(draft: dict, group: dict, label: str):
+    """Require every structured entity to bind to current source evidence.
+
+    v1 intentionally requires exact source wording. A future deterministic
+    alias/canonicalization layer can map verified source values onto normalized
+    display/search values while preserving these original evidence rows.
+    """
+    entities = draft.get("entities") or {}
+    rows = draft.get("entityEvidence")
+    if rows is None:
+        rows = []
+    if not isinstance(entities, dict) or not isinstance(rows, list):
+        return {}, [], "entities/entityEvidence shape is invalid"
+
+    listed = []
+    for key in ENTITY_KEYS:
+        values = entities.get(key) or []
+        if not isinstance(values, list):
+            return {}, [], f"entities.{key} must be an array"
+        for value in values:
+            value = str(value or "").strip()
+            if value:
+                listed.append((key, value))
+    listed_set = set(listed)
+    if listed_set and not rows:
+        return {}, [], "every entity requires entityEvidence"
+
+    source_fields = _current_source_fields(group)
+    verified, bound = [], set()
+    for row in rows:
+        if not isinstance(row, dict):
+            return {}, [], "entityEvidence entry is not an object"
+        key = str(row.get("entityType") or "")
+        value = str(row.get("value") or "").strip()
+        quote = _squash(row.get("sourceQuote"))
+        if key not in ENTITY_KEYS or not value or len(quote) < 2:
+            return {}, [], "entityEvidence entry is incomplete"
+        matched_url = next(
+            (url for url, fields in source_fields
+             if any(quote in field for field in fields)),
+            None,
+        )
+        if not matched_url:
+            return {}, [], (
+                f"entity evidence quote not found in current source: "
+                f"{key}={value!r}"
+            )
+        if _squash(value).casefold() not in quote.casefold():
+            return {}, [], (
+                f"entity value {value!r} is not verbatim in its sourceQuote"
+            )
+        pair = (key, value)
+        if pair not in listed_set:
+            return {}, [], (
+                f"entityEvidence references unlisted entity {key}={value!r}"
+            )
+        if pair in bound:
+            continue
+        bound.add(pair)
+        verified.append({
+            "entityType": key,
+            "value": value,
+            "sourceQuote": str(row.get("sourceQuote") or ""),
+            "sourceUrl": matched_url,
+        })
+
+    missing = listed_set - bound
+    if missing:
+        key, value = sorted(missing)[0]
+        return {}, [], f"entity lacks verified evidence: {key}={value!r}"
+
+    clean = {}
+    for key in ENTITY_KEYS:
+        values = [value for entity_key, value in listed
+                  if entity_key == key and (entity_key, value) in bound]
+        if values:
+            clean[key] = list(dict.fromkeys(values))
+    return clean, verified, None
+
+
+def verify_facts(draft: dict, group: dict, label: str) -> list:
+    """Keep only facts whose sourceQuote is a verbatim substring of the
+    material actually shown to the model (whitespace-squashed, case-folded).
+
+    The quote requirement is enforced HERE, in code, because prompt-level
+    rules alone cannot be trusted: a fabricated or paraphrased quote is
+    silently dropped, and a draft with zero surviving quotes is unpublishable.
+    """
+    # Keep current fields separate so a quote cannot straddle fields and so
+    # the surviving fact can be bound to the exact current source URL.
+    source_fields = _current_source_fields(group)
     verified = []
     for fact in draft.get("facts", []):
         quote = _squash(fact.get("sourceQuote"))
@@ -1756,6 +2008,19 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
                     cleaned[key] = unique
         if cleaned:
             article["entities"] = cleaned
+    entity_evidence = draft.get("entityEvidence")
+    if isinstance(entity_evidence, list):
+        verified_rows = [
+            row for row in entity_evidence
+            if isinstance(row, dict)
+            and row.get("entityType") in ENTITY_KEYS
+            and row.get("value")
+            and row.get("sourceQuote")
+            and row.get("sourceUrl")
+        ]
+        if verified_rows:
+            article["entityEvidence"] = verified_rows
+            article["evidenceVersion"] = 2
     return article
 
 

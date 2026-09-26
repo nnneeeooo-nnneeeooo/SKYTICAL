@@ -160,14 +160,30 @@ absent when nothing new that hour)
                                             // (subset of write.RISK_FLAGS; non-empty
                                             // only on human-approved articles)
       "eventStatus": "under_investigation", // OPTIONAL write.EVENT_STATUSES value
-      "entities": {"airlines": ["..."]}     // OPTIONAL source-grounded entities
-                                            // (subset of write.ENTITY_KEYS arrays)
+      "entities": {"airlines": ["KLM"]},    // OPTIONAL verified source wording
+      "entityEvidence": [                   // OPTIONAL on legacy articles; REQUIRED
+        {"entityType": "airlines",           // for every non-empty entity on v2 drafts
+         "value": "KLM",
+         "sourceQuote": "... KLM ...",
+         "sourceUrl": "https://..."}
+      ],
+      "evidenceVersion": 2                  // OPTIONAL; absent on legacy articles
     }
   ]
 }
 ```
 
 ## data/review.json and data/review-archive.json
+
+Evidence v2 is deliberately additive and backward-compatible. Existing
+articles without `entityEvidence` or `evidenceVersion` remain readable.
+New drafts must bind every structured entity value to a verbatim current-source
+quote. The writer also deterministically checks high-risk atoms inside each
+fact claim (explicit dates/times, counts and technical identifiers) against
+that fact's own `sourceQuote`; facts may not borrow those details from another
+fact. The original evidence row is retained so future deterministic
+alias/canonical-name layers can normalize search/display values without
+discarding source provenance.
 
 The former human-review mechanism is retired. `data/review.json` is read only
 as a one-time migration source: rows no older than 14 days are re-checked by
