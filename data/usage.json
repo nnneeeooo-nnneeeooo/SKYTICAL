@@ -1,11 +1,11 @@
 {
-  "updatedUtc": "2026-09-27T16:51Z",
+  "updatedUtc": "2026-09-27T18:59Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
-      "calls": 370,
-      "inputTokens": 790403,
-      "outputTokens": 1272230,
+      "calls": 371,
+      "inputTokens": 790533,
+      "outputTokens": 1273136,
       "unknownCalls": 221
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -116,12 +116,58 @@
       "outputTokens": 685676
     },
     "2026-09-27": {
-      "calls": 165,
-      "inputTokens": 853983,
-      "outputTokens": 518203
+      "calls": 166,
+      "inputTokens": 854113,
+      "outputTokens": 519109
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-09-27T18:59Z",
+      "finishedUtc": "2026-09-27T18:59Z",
+      "workflow": "briefing",
+      "taskType": "briefing",
+      "groupId": "2026-09-27-evening",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "SKYTICAL verified articles",
+      "result": "published",
+      "articleId": null,
+      "finalStatus": "published_with_llm_intro",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "drafting": 4467,
+        "total": 4864
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-09-27T18:59Z",
+          "durationMs": 4467,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-09-27T16:04Z",
       "finishedUtc": "2026-09-27T16:15Z",
@@ -95353,117 +95399,6 @@
           "failureClass": "invalid_schema",
           "failureStage": "validation",
           "failureMessage": "publish body does not meet full contract (zh=87 content characters, en=38 words, paragraphs=4/4)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-09-12T18:53Z",
-      "finishedUtc": "2026-09-12T19:10Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260912-1853-6",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Aerospace Global News",
-      "result": "retry_pending",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": null,
-      "fallbackUsed": true,
-      "attemptCount": 4,
-      "httpCallCount": 4,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 3170,
-        "promptAssembly": 12,
-        "drafting": 168909,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 1035396
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-09-12T19:08Z",
-          "durationMs": 71954,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 71949,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish body does not meet full contract (zh=188 content characters, en=125 words, paragraphs=5/5)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "wechat",
-          "model": "Deepseek-v4-flash",
-          "label": "wechat:Deepseek-v4-flash",
-          "startedUtc": "2026-09-12T19:09Z",
-          "durationMs": 16999,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 16994,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish_brief body does not meet brief contract (zh=290 content characters, en=153 words, paragraphs=4/4)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 3,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": "2026-09-12T19:09Z",
-          "durationMs": 54945,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 54940,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish_brief body does not meet brief contract (zh=168 content characters, en=100 words, paragraphs=3/3)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 4,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-super-120b-a12b",
-          "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-          "startedUtc": "2026-09-12T19:10Z",
-          "durationMs": 25011,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 25007,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish_brief must have an empty decisionReason",
           "retryPlanned": false,
           "disabledForRun": false
         }
