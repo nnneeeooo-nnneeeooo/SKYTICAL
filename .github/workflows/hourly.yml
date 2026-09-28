@@ -2,7 +2,7 @@ name: hourly-update
 
 on:
   schedule:
-    - cron: "1 * * * *" # hourly; 16:01 UTC is 00:01 Asia/Taipei
+    - cron: "45 * * * *" # hourly; staggered away from the top of the hour
   workflow_dispatch:
   pull_request:
     branches: [main]
