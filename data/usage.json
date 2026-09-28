@@ -1,12 +1,12 @@
 {
-  "updatedUtc": "2026-09-28T11:18Z",
+  "updatedUtc": "2026-09-28T15:27Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
-      "calls": 388,
+      "calls": 389,
       "inputTokens": 790533,
       "outputTokens": 1273136,
-      "unknownCalls": 238
+      "unknownCalls": 239
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "calls": 765,
@@ -121,12 +121,58 @@
       "outputTokens": 723754
     },
     "2026-09-28": {
-      "calls": 64,
+      "calls": 65,
       "inputTokens": 339230,
       "outputTokens": 219672
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-09-28T15:26Z",
+      "finishedUtc": "2026-09-28T15:27Z",
+      "workflow": "briefing",
+      "taskType": "briefing",
+      "groupId": "2026-09-28-afternoon",
+      "eventId": null,
+      "sourceCount": 2,
+      "primarySource": "SKYTICAL verified articles",
+      "result": "published",
+      "articleId": null,
+      "finalStatus": "published_without_llm_intro",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "drafting": 14034,
+        "total": 14595
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-09-28T15:26Z",
+          "durationMs": 14034,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 503",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-09-28T10:40Z",
       "finishedUtc": "2026-09-28T11:08Z",
@@ -95547,63 +95593,6 @@
           "httpCalls": 1,
           "repairCalls": 0,
           "httpDurationMs": 68094,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-09-13T07:48Z",
-      "finishedUtc": "2026-09-13T07:49Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260913-0748-2",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Simple Flying",
-      "result": "rejected",
-      "articleId": null,
-      "finalStatus": "reject",
-      "finalModel": "gemini:gemini-3.6-flash",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 2811,
-        "promptAssembly": 1,
-        "drafting": 18162,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 39132
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-09-13T07:48Z",
-          "durationMs": 18162,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 18161,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,
