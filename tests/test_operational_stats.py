@@ -57,6 +57,13 @@ def main() -> None:
     assert unconfigured["tiles"]["cancellations"] == "來源未設定"
     assert "尚未設定" in unconfigured["note"]
 
+    assert fetch._fetch_log_status(
+        "flightaware", "AEROAPI_KEY not set") == "SKIPPED"
+    assert fetch._fetch_log_status(
+        "flightaware", "HTTP 503 for https://example.test") == "FAILED"
+    assert fetch._fetch_log_status(
+        "reuters", "HTTP 503 for https://example.test") == "FAILED"
+
     print("test_operational_stats: OK")
 
 
