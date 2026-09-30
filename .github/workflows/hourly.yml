@@ -12,6 +12,8 @@ on:
       - "pipeline/flightwatch.py"
       - "pipeline/flightnews.py"
       - "pipeline/write.py"
+      - "pipeline/common.py"
+      - "pipeline/draft_recovery.py"
       - "pipeline/manual_draft.py"
       - "pipeline/airport_codes.py"
       - "config/airport_iata_aliases.json"
@@ -55,6 +57,7 @@ jobs:
           python tests/test_images.py
           python tests/test_manufacturer_sources.py
           python tests/test_source_links.py
+          python tests/test_draft_recovery.py
 
   update:
     if: github.event_name != 'pull_request'
@@ -225,3 +228,4 @@ jobs:
     steps:
       - uses: actions/deploy-pages@v5
         id: deployment
+
