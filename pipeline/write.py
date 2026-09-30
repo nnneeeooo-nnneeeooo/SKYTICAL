@@ -38,6 +38,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 from opencc import OpenCC
+from draft_recovery import normalize_reader_copy, repair_prompt
 
 from common import (
     ARTICLES_DIR,
@@ -1438,10 +1439,13 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
         before = _snapshot_provider(provider)
         try:
             drafting_started = time.perf_counter()
-            if run_trace is not None and draft_group is _DEFAULT_DRAFT_GROUP:
+            if draft_group is _DEFAULT_DRAFT_GROUP:
                 prompt_started = time.perf_counter()
                 user_prompt = group_prompt(group)
-                run_trace.add_duration("promptAssembly", prompt_started)
+                if attempt:
+                    user_prompt = repair_prompt(user_prompt, last_problem)
+                if run_trace is not None:
+                    run_trace.add_duration("promptAssembly", prompt_started)
                 candidate = provider.draft(
                     SYSTEM_PROMPT, user_prompt, DRAFT_SCHEMA)
             else:
@@ -1461,6 +1465,20 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                     provider, started_perf, started_utc, before, "refused",
                     "refusal", "draft", "model refusal")
             return None, None
+        candidate = normalize_reader_copy(candidate, _S2T)
+        # Reclassify only when the existing body fully meets the other format.
+        actual_format = None
+        if (isinstance(candidate, dict)
+                and all(isinstance(candidate.get(lang), dict)
+                        and isinstance(candidate[lang].get("body"), list)
+                        and all(isinstance(p, str) for p in candidate[lang]["body"])
+                        for lang in ("zh", "en"))):
+            actual_format = draft_article_format(candidate)
+        if isinstance(candidate, dict) and candidate.get("status") in ("publish", "publish_brief"):
+            if actual_format == "brief":
+                candidate["status"] = "publish_brief"
+            elif actual_format == "full":
+                candidate["status"] = "publish"
         validation_started = time.perf_counter()
         problem = validate_draft(candidate)
         if run_trace is not None:
@@ -2766,19 +2784,22 @@ def main() -> None:
             draft, writer, verified = None, None, None
             final_model = None
             stopped_by_refusal = False
+            fallback_repair_used = False
             for provider in list(alive):
                 if provider not in alive:
                     # Removed mid-group by a platform-level auth/quota
                     # death earlier in this same iteration.
                     continue
-                # Routing policy: the primary model gets one retry on
-                # validation failures; every fallback gets a single try.
-                tries = 2 if provider is providers[0] else 1
+                # One primary retry and one responsive-fallback repair per
+                # group; transport failures do not spend the repair budget.
+                tries = 2 if provider is providers[0] or not fallback_repair_used else 1
                 try:
                     candidate, facts = _validated_draft(provider, group,
                                                         tries, ai_calls,
                                                         run_trace)
                 except DraftInvalid:
+                    if provider is not providers[0]:
+                        fallback_repair_used = True
                     _record_provider_response(
                         provider, transient_failure_counts)
                     continue  # try the next provider in the chain
@@ -2927,6 +2948,19 @@ def main() -> None:
 
     refresh_stats(now)
     remaining_count = sum(1 for g in groups if g.get("id") not in consumed)
+    stalled = bool(ai_calls and remaining_count and not new_articles
+                   and not updated_articles)
+    stats = load_json(STATS_PATH, {})
+    stats["newsWriter"] = {
+        "status": "stalled" if stalled else "ok" if ai_calls else "idle",
+        "updatedUtc": iso_minute(now),
+        "published": len(new_articles), "revised": len(updated_articles),
+        "pending": remaining_count,
+    }
+    save_json(STATS_PATH, stats)
+    if stalled:
+        print("::warning::News drafting stalled: sources are pending but no "
+              "article passed publication gates; see provider/validation logs")
     print(f"write: published {len(new_articles)} new article(s), revised "
           f"{len(updated_articles)} existing article(s) "
           f"({legacy_published} migrated from retired review), rejected "
@@ -2956,3 +2990,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
