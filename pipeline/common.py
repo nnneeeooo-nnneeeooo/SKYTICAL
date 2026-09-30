@@ -795,6 +795,21 @@ def is_major_event_story(*records) -> bool:
     if not headline or not is_transport_headline(*items):
         return False
 
+    # Consequential safety findings and new airline codeshares need enrichment
+    # even when a publisher's index supplies only a title. This is priority,
+    # never permission to publish without evidence.
+    registered = any(str(item.get("sourceKey") or "") in SOURCES for item in items)
+    safety_update = bool(
+        re.search(r"investigat|interim report|final report|調查|期中報告|最終報告",
+                  headline, re.I)
+        and re.search(r"runway|crash|accident|incident|跑道|墜|事故", headline, re.I))
+    codeshare_update = bool(
+        re.search(r"code[- ]?share|共用班號|聯營航班", headline, re.I)
+        and re.search(r"launch|sign|announce|partnership|agreement|啟動|宣布|協議",
+                      headline, re.I))
+    if registered and (safety_update or codeshare_update):
+        return True
+
     trusted_source = False
     for item in items:
         source = SOURCES.get(str(item.get("sourceKey") or ""))
@@ -1019,3 +1034,4 @@ def slugify(text: str, max_len: int = 40) -> str:
     text = text.encode("ascii", "ignore").decode("ascii").lower()
     text = re.sub(r"[^a-z0-9]+", "-", text).strip("-")
     return text[:max_len].rstrip("-") or "story"
+
