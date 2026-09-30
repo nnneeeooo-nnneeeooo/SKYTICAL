@@ -1037,8 +1037,43 @@ def test_all_providers_auth_dead():
     print("test_all_providers_auth_dead: done")
 
 
+
+def test_budget_saves_completed_articles_and_retains_unattempted_groups():
+    reset_data_dir()
+    clock = [0.0]
+
+    class BudgetProvider(FakeProvider):
+        def draft(self, system_prompt, user_prompt, schema):
+            result = super().draft(system_prompt, user_prompt, schema)
+            clock[0] = write.MAX_DRAFT_SECONDS_PER_RUN + 1
+            return result
+
+    solo = BudgetProvider("gemini", [DRAFT_SAFETY])
+    original_build = write.build_providers
+    original_clock = write.time.monotonic
+    write.build_providers = lambda: [solo]
+    write.time.monotonic = lambda: clock[0]
+    try:
+        write.main()
+    finally:
+        write.build_providers = original_build
+        write.time.monotonic = original_clock
+
+    check(solo.calls == 1, "budget stops additional model calls")
+    check(len(all_articles()) == 1, "completed draft is flushed when budget expires")
+    remaining = load(DATA / "pending.json")["groups"]
+    check(len(remaining) == 2, "unattempted groups remain pending after deadline")
+    seen = load(DATA / "seen.json")["urls"]
+    fixture = load(FIXTURES / "pending.json")
+    check(common.norm_url(fixture["groups"][0]["items"][0]["url"]) in seen,
+          "completed group alone is marked seen")
+    check(common.norm_url(fixture["groups"][1]["items"][0]["url"]) not in seen,
+          "unattempted group stays unseen for next run")
+    print("test_budget_saves_completed_articles_and_retains_unattempted_groups: done")
+
 def main():
-    tests = [test_publish_flow,
+    tests = [test_budget_saves_completed_articles_and_retains_unattempted_groups,
+             test_publish_flow,
              test_legacy_review_is_reverified_published_and_archived,
              test_group_cap_and_unique_ids,
              test_extract_json_and_validate_draft, test_provider_failover,
