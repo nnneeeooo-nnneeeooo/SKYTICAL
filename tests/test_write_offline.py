@@ -70,7 +70,7 @@ DRAFT_SAFETY = {
     "facts": [
         {"factId": "F1",
          "claim": "NTSB 已對丹佛 737 衝出跑道事件展開調查",
-         "sourceQuote": "NTSB said it is investigating a runway excursion"},
+         "sourceQuote": "The NTSB said it is investigating a runway excursion involving a United Airlines Boeing 737-8 at Denver International Airport during landing on July 25."},
         {"factId": "F2",
          "claim": "無人受傷",
          "sourceQuote": "No injuries were reported."},
@@ -122,7 +122,7 @@ DRAFT_BIZ = {
          "sourceQuote": "rose 8.2% in June 2026"},
         {"factId": "F2",
          "claim": "需求以貨運噸公里計算並與 2025 年六月比較",
-         "sourceQuote": "measured in cargo tonne-kilometers"},
+         "sourceQuote": "measured in cargo tonne-kilometers, rose 8.2% in June 2026 compared with June 2025."},
     ],
     "headlineSupportedBy": ["F1"],
     "summarySupportedBy": ["F1", "F2"],
@@ -149,6 +149,22 @@ DRAFT_BIZ = {
     },
     "incident": None,
 }
+
+# Fixtures must satisfy the current per-entity evidence contract. Keep the
+# source quote intact while normalizing displayed Chinese as production does.
+DRAFT_SAFETY["entityEvidence"] = [
+    {"entityType": key, "value": value,
+     "sourceQuote": DRAFT_SAFETY["facts"][0]["sourceQuote"],
+     "sourceUrl": "https://www.ntsb.gov/news/press-releases/denver-737"}
+    for key, values in DRAFT_SAFETY["entities"].items() for value in values
+]
+DRAFT_BIZ["entityEvidence"] = [{
+    "entityType": "organizations", "value": "International Air Transport Association",
+    "sourceQuote": "The International Air Transport Association reported",
+    "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/2026-07-24-01/",
+}]
+DRAFT_SAFETY = write.normalize_reader_copy(DRAFT_SAFETY, write._S2T)
+DRAFT_BIZ = write.normalize_reader_copy(DRAFT_BIZ, write._S2T)
 
 _pass = 0
 _fail = 0
@@ -429,6 +445,8 @@ def test_group_cap_and_unique_ids():
          "sourceQuote": "operational details for certificate holders"},
     ]
     cap_draft["summarySupportedBy"] = ["F1", "F2"]
+    cap_draft["entities"] = dict(_EMPTY_ENTITIES)
+    cap_draft["entityEvidence"] = []
     original = write.draft_group
     write.draft_group = lambda client, group: cap_draft
     try:
@@ -848,6 +866,7 @@ def test_editorial_gate():
     fabricated = json.loads(json.dumps(DRAFT_BIZ))
     fabricated["facts"] = [{"factId": "F1", "claim": "完全捏造的主張",
                             "sourceQuote": "this text appears nowhere"}]
+    fabricated["summarySupportedBy"] = ["F1"]
     partial = json.loads(json.dumps(DRAFT_BIZ))
     partial["facts"] = [
         {"factId": "F1", "claim": "FAA 發布鬧事乘客執法聲明",
