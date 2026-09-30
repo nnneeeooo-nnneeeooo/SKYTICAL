@@ -1,0 +1,38 @@
+name: unblock superseded news update
+on:
+  push:
+    branches: [ops/unblock-news-recovery-20260930]
+    paths: [.github/workflows/unblock-news-recovery.yml]
+jobs:
+  cancel-superseded:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Cancel only the superseded update with an exact SHA guard
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          repo = "nnneeeooo-nnneeeooo/SKYTICAL"
+          assert os.environ["GITHUB_REPOSITORY"] == repo
+          run_id = 36705490131
+          root = f"https://api.github.com/repos/{repo}/actions/runs/{run_id}"
+          headers = {"Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                     "Accept": "application/vnd.github+json",
+                     "X-GitHub-Api-Version": "2022-11-28"}
+          with urllib.request.urlopen(urllib.request.Request(root, headers=headers)) as response:
+              run = json.load(response)
+          assert run["head_sha"] == "6a56892a96e0b5a72f6ba23997885a944b6bf9d0", "unexpected run SHA"
+          assert run["name"] == "hourly-update" and run["head_branch"] == "main"
+          if run["status"] == "completed":
+              print("Superseded update already completed; nothing to cancel.")
+          else:
+              request = urllib.request.Request(root + "/cancel", headers=headers, data=b"", method="POST")
+              with urllib.request.urlopen(request) as response:
+                  assert response.status == 202
+              print("Canceled superseded update 36705490131; current main update remains queued.")
+          PY
