@@ -142,9 +142,10 @@ def test_filtering_grouping_and_ranking() -> None:
         # ok=false snapshots are carried forward by fetch.py — items survive.
         assert "EASA carried-forward item survives source flap" in all_titles
 
-        # Group 1: the multi-source Denver story ranks first; Reuters has
-        # the longer summary so it is primary and its item comes first.
-        denver = groups[0]
+        # Safety investigation updates may rank first. Within the Denver
+        # event, Reuters has the longer summary and remains primary.
+        denver = next(g for g in groups if {i["sourceKey"] for i in g["items"]}
+                      == {"faa", "reuters"})
         assert {i["sourceKey"] for i in denver["items"]} == {"faa", "reuters"}
         assert denver["primarySource"] == "Reuters"
         assert denver["items"][0]["sourceKey"] == "reuters"
@@ -155,16 +156,15 @@ def test_filtering_grouping_and_ranking() -> None:
         }
         assert denver["items"][0]["image"] == "https://www.reuters.com/img/denver.jpg"
 
-        # Remaining single-source groups ranked by newest publishedUtc. The
-        # Boeing URL is new, so its seen-title match becomes an article update.
-        assert groups[1]["items"][0]["sourceKey"] == "easa"
-        assert groups[2]["items"][0]["title"] == \
-            "Boeing delivers 100th 787 to Emirates!"
-        assert groups[2]["updateCandidate"] is True
-        assert groups[3]["items"][0]["title"] == (
-            "Airbus opens new A320 production line in Toulouse"
-        )  # seen-title match is 30 days old -> outside the 21-day window
-        assert groups[4]["items"][0]["title"].startswith("NTSB opens investigation")
+        # Investigation updates get priority, then material/multi-source
+        # events; the remaining ordinary groups retain recency ordering.
+        assert groups[0]["editorialPriority"] == "major"
+        assert groups[0]["items"][0]["title"].startswith("NTSB opens investigation")
+        assert groups[1] is denver
+        assert groups[2]["items"][0]["sourceKey"] == "easa"
+        assert groups[3]["items"][0]["title"] == "Boeing delivers 100th 787 to Emirates!"
+        assert groups[3]["updateCandidate"] is True
+        assert groups[4]["items"][0]["title"] == "Airbus opens new A320 production line in Toulouse"
 
         # Balloon group fits the six-item current-source cap.
         balloons = groups[5]
@@ -498,3 +498,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

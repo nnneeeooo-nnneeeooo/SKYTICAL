@@ -70,7 +70,7 @@ DRAFT_SAFETY = {
     "facts": [
         {"factId": "F1",
          "claim": "NTSB 已對丹佛 737 衝出跑道事件展開調查",
-         "sourceQuote": "NTSB said it is investigating a runway excursion"},
+         "sourceQuote": "The NTSB said it is investigating a runway excursion involving a United Airlines Boeing 737-8 at Denver International Airport during landing on July 25."},
         {"factId": "F2",
          "claim": "無人受傷",
          "sourceQuote": "No injuries were reported."},
@@ -122,7 +122,7 @@ DRAFT_BIZ = {
          "sourceQuote": "rose 8.2% in June 2026"},
         {"factId": "F2",
          "claim": "需求以貨運噸公里計算並與 2025 年六月比較",
-         "sourceQuote": "measured in cargo tonne-kilometers"},
+         "sourceQuote": "measured in cargo tonne-kilometers, rose 8.2% in June 2026 compared with June 2025."},
     ],
     "headlineSupportedBy": ["F1"],
     "summarySupportedBy": ["F1", "F2"],
@@ -149,6 +149,22 @@ DRAFT_BIZ = {
     },
     "incident": None,
 }
+
+# Fixtures must satisfy the current per-entity evidence contract. Keep the
+# source quote intact while normalizing displayed Chinese as production does.
+DRAFT_SAFETY["entityEvidence"] = [
+    {"entityType": key, "value": value,
+     "sourceQuote": DRAFT_SAFETY["facts"][0]["sourceQuote"],
+     "sourceUrl": "https://www.ntsb.gov/news/press-releases/denver-737"}
+    for key, values in DRAFT_SAFETY["entities"].items() for value in values
+]
+DRAFT_BIZ["entityEvidence"] = [{
+    "entityType": "organizations", "value": "International Air Transport Association",
+    "sourceQuote": "The International Air Transport Association reported",
+    "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/2026-07-24-01/",
+}]
+DRAFT_SAFETY = write.normalize_reader_copy(DRAFT_SAFETY, write._S2T)
+DRAFT_BIZ = write.normalize_reader_copy(DRAFT_BIZ, write._S2T)
 
 _pass = 0
 _fail = 0
@@ -429,6 +445,8 @@ def test_group_cap_and_unique_ids():
          "sourceQuote": "operational details for certificate holders"},
     ]
     cap_draft["summarySupportedBy"] = ["F1", "F2"]
+    cap_draft["entities"] = dict(_EMPTY_ENTITIES)
+    cap_draft["entityEvidence"] = []
     original = write.draft_group
     write.draft_group = lambda client, group: cap_draft
     try:
@@ -589,7 +607,8 @@ def test_extract_json_and_validate_draft():
         retrying_provider, cargo_group, tries=2)
     check(retrying_provider.calls == 2,
           "short body automatically triggers the allowed retry")
-    check(candidate == DRAFT_BIZ and facts,
+    check(candidate["zh"] == DRAFT_BIZ["zh"]
+          and write.validate_draft(candidate) is None and facts,
           "length-compliant retry survives validation and quote checks")
     check(write.validate_draft("nope") is not None, "non-dict rejected")
     broken = json.loads(json.dumps(DRAFT_BIZ))
@@ -701,8 +720,8 @@ def test_provider_failover():
           "fallback publication does not create review entries")
     check(primary.calls == 1,
           f"dead primary is never called again, got {primary.calls} calls")
-    check(middle.calls == 3 and backup.calls == 3,
-          "surviving providers tried once per group")
+    check(middle.calls == 6 and backup.calls == 3,
+          "first responsive fallback gets one bounded repair per group")
     pending = load(DATA / "pending.json")
     ids = [g["id"] for g in pending["groups"]]
     check(ids == ["g-20260726-0503-3"],
@@ -848,6 +867,7 @@ def test_editorial_gate():
     fabricated = json.loads(json.dumps(DRAFT_BIZ))
     fabricated["facts"] = [{"factId": "F1", "claim": "完全捏造的主張",
                             "sourceQuote": "this text appears nowhere"}]
+    fabricated["summarySupportedBy"] = ["F1"]
     partial = json.loads(json.dumps(DRAFT_BIZ))
     partial["facts"] = [
         {"factId": "F1", "claim": "FAA 發布鬧事乘客執法聲明",
@@ -859,6 +879,8 @@ def test_editorial_gate():
     ]
     partial["headlineSupportedBy"] = ["F1"]
     partial["summarySupportedBy"] = ["F1", "F2"]
+    partial["entities"] = dict(_EMPTY_ENTITIES)
+    partial["entityEvidence"] = []
     # g1 -> editorial reject; g2 -> all quotes fabricated; g3 -> one good.
     solo = FakeProvider("gemini", [reject_draft, fabricated, partial])
 
@@ -1042,3 +1064,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
