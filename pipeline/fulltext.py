@@ -90,6 +90,7 @@ ALLOWED_HOSTS = {
     "english.comac.cc", "www.comac.cc", "comac.cc",
     # Editorial sources with direct article URLs. robots.txt is still checked
     # on every host and any unreachable/denied policy fails closed.
+    "latestnews.starlux-airlines.com", "news.aa.com",
     "www.aerotime.aero", "aerotime.aero",
     "www.aerospaceglobalnews.com", "aerospaceglobalnews.com",
     "www.flightglobal.com", "flightglobal.com",
@@ -242,3 +243,4 @@ def enrich_pending(groups: list) -> int:
     if fetches or enriched:
         print(f"fulltext: {fetches} fetch(es), {enriched} item(s) enriched")
     return enriched
+
