@@ -189,6 +189,24 @@ def _load_raw_items() -> list[dict]:
             item["source"] = _source_label(source, item)
             item["sourceKey"] = key
             items.append(item)
+    # Explicit editorial recovery inputs are bounded by an expiry and retain
+    # the source's original date. They are still subject to unseen, source,
+    # prompt-injection and evidence gates; no article is published here.
+    recovery = load_json(DATA_DIR / "news-recovery.json", {})
+    if isinstance(recovery, dict):
+        try:
+            until = parse_iso(str(recovery.get("expiresUtc") or ""))
+        except (TypeError, ValueError):
+            until = None
+        if until is not None and now_utc() < until:
+            for raw in recovery.get("items") or []:
+                if (not isinstance(raw, dict)
+                        or not str(raw.get("url") or "").startswith("https://")
+                        or not raw.get("source") or not raw.get("sourceKey")):
+                    continue
+                item = dict(raw)
+                item["_recoveryUntilUtc"] = iso_minute(until)
+                items.append(item)
     return items
 
 
@@ -220,8 +238,13 @@ def _is_fresh(item: dict, now: datetime, stats: dict) -> bool:
     published = _published(item)
     if published is not None:
         if now - published > timedelta(hours=MAX_ITEM_AGE_HOURS):
-            stats["skipped_too_old"] += 1
-            return False
+            try:
+                recovery_until = parse_iso(str(item.get("_recoveryUntilUtc") or ""))
+            except (TypeError, ValueError):
+                recovery_until = None
+            if recovery_until is None or now >= recovery_until:
+                stats["skipped_too_old"] += 1
+                return False
         if published - now > timedelta(hours=FUTURE_SKEW_HOURS):
             # Beyond timezone/parse skew: a source clock error, not news.
             stats["skipped_future_date"] += 1
@@ -448,3 +471,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

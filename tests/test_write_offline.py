@@ -701,8 +701,8 @@ def test_provider_failover():
           "fallback publication does not create review entries")
     check(primary.calls == 1,
           f"dead primary is never called again, got {primary.calls} calls")
-    check(middle.calls == 3 and backup.calls == 3,
-          "surviving providers tried once per group")
+    check(middle.calls == 6 and backup.calls == 3,
+          "first responsive fallback gets one bounded repair per group")
     pending = load(DATA / "pending.json")
     ids = [g["id"] for g in pending["groups"]]
     check(ids == ["g-20260726-0503-3"],
@@ -1042,3 +1042,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
