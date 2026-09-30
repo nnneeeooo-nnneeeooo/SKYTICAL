@@ -607,7 +607,8 @@ def test_extract_json_and_validate_draft():
         retrying_provider, cargo_group, tries=2)
     check(retrying_provider.calls == 2,
           "short body automatically triggers the allowed retry")
-    check(candidate == DRAFT_BIZ and facts,
+    check(candidate["zh"] == DRAFT_BIZ["zh"]
+          and write.validate_draft(candidate) is None and facts,
           "length-compliant retry survives validation and quote checks")
     check(write.validate_draft("nope") is not None, "non-dict rejected")
     broken = json.loads(json.dumps(DRAFT_BIZ))
@@ -878,6 +879,8 @@ def test_editorial_gate():
     ]
     partial["headlineSupportedBy"] = ["F1"]
     partial["summarySupportedBy"] = ["F1", "F2"]
+    partial["entities"] = dict(_EMPTY_ENTITIES)
+    partial["entityEvidence"] = []
     # g1 -> editorial reject; g2 -> all quotes fabricated; g3 -> one good.
     solo = FakeProvider("gemini", [reject_draft, fabricated, partial])
 
