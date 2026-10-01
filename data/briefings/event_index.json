@@ -1056,7 +1056,7 @@
       "section": "taiwan_aviation",
       "cat": "biz",
       "first_seen": "2026-10-01T14:27:38.302887+00:00",
-      "last_seen": "2026-10-01T14:27:38.302887+00:00",
+      "last_seen": "2026-10-01T20:21:23.822057+00:00",
       "first_briefing_id": "2026-10-01-afternoon",
       "article_ids": [
         "a-mag-sepang-aircraft-engineering-acquisition-20261001"
@@ -1075,7 +1075,7 @@
       "section": "taiwan_aviation",
       "cat": "ops",
       "first_seen": "2026-10-01T14:27:38.302887+00:00",
-      "last_seen": "2026-10-01T14:27:38.302887+00:00",
+      "last_seen": "2026-10-01T20:21:23.822057+00:00",
       "first_briefing_id": "2026-10-01-afternoon",
       "article_ids": [
         "a-starlux-taipei-bali-launch-20261001"
@@ -1092,7 +1092,7 @@
       "section": "international_aviation",
       "cat": "mil",
       "first_seen": "2026-10-01T14:27:38.302887+00:00",
-      "last_seen": "2026-10-01T14:27:38.302887+00:00",
+      "last_seen": "2026-10-01T20:21:23.822057+00:00",
       "first_briefing_id": "2026-10-01-afternoon",
       "article_ids": [
         "a-boeing-usaf-mh139a-full-rate-production-order-20261001"
@@ -1110,7 +1110,7 @@
       "section": "international_aviation",
       "cat": "biz",
       "first_seen": "2026-10-01T14:27:38.302887+00:00",
-      "last_seen": "2026-10-01T14:27:38.302887+00:00",
+      "last_seen": "2026-10-01T20:21:23.822057+00:00",
       "first_briefing_id": "2026-10-01-afternoon",
       "article_ids": [
         "a-rwandair-four-a330200-expansion-20261001"
@@ -1128,7 +1128,7 @@
       "section": "aviation_incidents",
       "cat": "safety",
       "first_seen": "2026-10-01T14:27:38.302887+00:00",
-      "last_seen": "2026-10-01T14:27:38.302887+00:00",
+      "last_seen": "2026-10-01T20:21:23.822057+00:00",
       "first_briefing_id": "2026-10-01-afternoon",
       "article_ids": [
         "a-taic-air-new-zealand-q300-timaru-final-report-20261001"
@@ -1145,13 +1145,29 @@
       "section": "taiwan_aviation",
       "cat": "reg",
       "first_seen": "2026-10-01T14:27:38.302887+00:00",
-      "last_seen": "2026-10-01T14:27:38.302887+00:00",
+      "last_seen": "2026-10-01T20:21:23.822057+00:00",
       "first_briefing_id": "2026-10-01-afternoon",
       "article_ids": [
-        "a-taiwan-caa-fuel-surcharge-increase-20261001"
+        "a-taiwan-caa-fuel-surcharge-increase-20261001",
+        "a-20261001-1529-taiwan-caa-international-fuel-surcharges"
       ],
-      "fact_keys": [],
-      "updates": {},
+      "fact_keys": [
+        "中油公告之國際航線航空燃油價格由每桶156.79元調漲為177.89美元。",
+        "交通部民用航空局宣布，國籍航空公司國際航線客運燃油附加費自本月7日起調漲。",
+        "短程航線燃油附加費由32.5美元調漲為37.5美元。",
+        "長程航線燃油附加費由84.5美元調漲為97.5美元。"
+      ],
+      "updates": {
+        "2026-10-01-evening": {
+          "article_id": "a-20261001-1529-taiwan-caa-international-fuel-surcharges",
+          "new_information": [
+            "交通部民用航空局宣布，國籍航空公司國際航線客運燃油附加費自本月7日起調漲。",
+            "短程航線燃油附加費由32.5美元調漲為37.5美元。",
+            "長程航線燃油附加費由84.5美元調漲為97.5美元。",
+            "中油公告之國際航線航空燃油價格由每桶156.79元調漲為177.89美元。"
+          ]
+        }
+      },
       "retain_until": "2026-10-31T14:27:38.302887+00:00"
     },
     "ev-3e14ebb3ce355f2c": {
@@ -1163,7 +1179,7 @@
       "section": "aviation_incidents",
       "cat": "safety",
       "first_seen": "2026-10-01T14:27:38.302887+00:00",
-      "last_seen": "2026-10-01T14:27:38.302887+00:00",
+      "last_seen": "2026-10-01T20:21:23.822057+00:00",
       "first_briefing_id": "2026-10-01-afternoon",
       "article_ids": [
         "a-flydubai-fz1073-tabuk-security-incident-20260930"
@@ -1181,7 +1197,7 @@
       "section": "international_aviation",
       "cat": "biz",
       "first_seen": "2026-10-01T14:27:38.302887+00:00",
-      "last_seen": "2026-10-01T14:27:38.302887+00:00",
+      "last_seen": "2026-10-01T20:21:23.822057+00:00",
       "first_briefing_id": "2026-10-01-afternoon",
       "article_ids": [
         "a-volotea-creditor-negotiation-20260929"
@@ -1244,6 +1260,24 @@
       "fact_keys": [],
       "updates": {},
       "retain_until": "2026-10-04T14:27:38.302887+00:00"
+    },
+    "ev-f318376f621ee563": {
+      "fingerprint": "f318376f621ee5633c1e6c1ab6395f993e40423e4af2cee958bbfddf057556b3",
+      "urls": [
+        "https://www.iata.org/en/pressroom/2026-releases/10-01-new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys",
+        "https://www.prnewswire.com/news-releases/new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys-302895507.html"
+      ],
+      "section": "international_aviation",
+      "cat": "reg",
+      "first_seen": "2026-10-01T20:21:23.822057+00:00",
+      "last_seen": "2026-10-01T20:21:23.822057+00:00",
+      "first_briefing_id": "2026-10-01-evening",
+      "article_ids": [
+        "a-responsible-biometrics-coalition-20261001"
+      ],
+      "fact_keys": [],
+      "updates": {},
+      "retain_until": "2026-10-31T20:21:23.822057+00:00"
     }
   },
   "grounded_seen": {}
