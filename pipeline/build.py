@@ -1435,6 +1435,7 @@ def art_view(a, lang: str):
         modified_iso=a["modified_iso"],
         published_meta_ts=a["published_meta_ts"],
         modified_meta_ts=a["modified_meta_ts"],
+        late_ingest=a["late_ingest"],
         external=False,
     )
     return v
