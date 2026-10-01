@@ -13,6 +13,8 @@ on:
       - "pipeline/flightnews.py"
       - "pipeline/write.py"
       - "pipeline/provider_health.py"
+      - "pipeline/article_schema.py"
+      - "pipeline/build.py"
       - "pipeline/common.py"
       - "pipeline/dedupe.py"
       - "pipeline/fulltext.py"
@@ -58,6 +60,7 @@ jobs:
           python tests/test_dedupe.py
           python tests/test_write_offline.py
           python tests/test_provider_health.py
+          python tests/test_build_resilience.py
           python tests/test_news_freshness.py
 
   update:
