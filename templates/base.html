@@ -51,6 +51,7 @@
 <script src="{{ base }}/assets/app.js?v={{ asset_version }}" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">{% if html_lang.startswith('zh') %}跳至主要內容{% else %}Skip to main content{% endif %}</a>
 <div class="page">
   <div class="header-search-row">
     <form id="news-search-form" class="header-search-form"
@@ -80,7 +81,7 @@
       <span id="clock-utc" class="utility-clock">UTC {{ build.utc_hm }}</span>
       <span id="clock-tpe" class="utility-clock text-muted">TPE {{ build.tpe_hm }}</span>
       <span class="utility-update">
-        <span class="pulse-dot"></span>
+        <span class="pulse-dot" aria-hidden="true"></span>
         <span style="letter-spacing:.04em;">{{ t.updateBadge }}</span>
       </span>
       <span class="seg seg-lang">
@@ -109,7 +110,7 @@
       </button>
       <nav class="site-nav" id="site-nav">
         {% for n in nav %}
-        <a class="nav-link{% if n.active %} active{% endif %}" href="{{ n.url }}">{{ n.label }}</a>
+        <a class="nav-link{% if n.active %} active{% endif %}" href="{{ n.url }}"{% if n.active %} aria-current="page"{% endif %}>{{ n.label }}</a>
         {% endfor %}
       </nav>
     </div>
@@ -120,7 +121,7 @@
     <div class="ticker-window">
       <div class="marquee-track">
         {% for pass in range(2) %}
-        <span class="ticker-pass">
+        <span class="ticker-pass"{% if pass == 1 %} aria-hidden="true"{% endif %}>
           {%- for it in ticker_items -%}
           {%- if it.url -%}
           <a class="ticker-item" href="{{ it.url }}"{% if it.external %} target="_blank" rel="noopener"{% endif %}><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>{% if it.priority|default(false) %}<span class="ticker-pin">{{ t.priorityLabel }}</span>{% endif %}&#8195;{{ it.text }}<span class="ticker-go">↗</span></a>
@@ -135,7 +136,9 @@
     </div>
   </div>
   {% endif %}
+<div id="main-content" class="main-content" tabindex="-1">
 {% block content %}{% endblock %}
+</div>
   <div style="border-top:2px solid var(--color-divider);">
     <div class="footer-grid">
       <div>
