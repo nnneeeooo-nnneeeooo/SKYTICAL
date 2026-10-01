@@ -29,14 +29,12 @@ on:
         required: false
         type: string
 
-concurrency:
-  group: skytical-pages-publish
-  cancel-in-progress: false
-  queue: max
-
 jobs:
   briefing:
     runs-on: ubuntu-latest
+    concurrency:
+      group: skytical-briefing-pipeline
+      cancel-in-progress: false
     permissions:
       contents: write # commits data/briefings back to the repo
       pages: write # configure-pages enablement
@@ -171,6 +169,9 @@ jobs:
   deploy:
     needs: briefing
     runs-on: ubuntu-latest
+    concurrency:
+      group: skytical-pages-publish
+      cancel-in-progress: false
     permissions:
       pages: write
       id-token: write
