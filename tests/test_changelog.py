@@ -22,11 +22,11 @@ def main() -> None:
         == "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL"
     assert raw["historyStart"] == "2026-07-26"
     assert raw["updatedThrough"] == "2026-10-01"
-    assert len(raw["entries"]) == 153
+    assert len(raw["entries"]) == 155
 
     historical = [row["commit"] for row in raw["entries"]
                   if row["commit"] is not None]
-    assert len(historical) == 153
+    assert len(historical) == 155
     assert len(set(historical)) == len(historical)
     assert all(re.fullmatch(r"[0-9a-f]{40}", sha) for sha in historical)
     assert sum(row["commit"] is None for row in raw["entries"]) == 0
@@ -56,11 +56,11 @@ def main() -> None:
         raw, "zh", build.L["zh"]["changeKinds"])
     en = build.changelog_view(
         raw, "en", build.L["en"]["changeKinds"])
-    assert zh["count"] == en["count"] == 153
+    assert zh["count"] == en["count"] == 155
     assert [group["date"] for group in zh["groups"]] \
         == sorted(set(dates), reverse=True)
     assert zh["groups"][0]["entries"][0]["title"] \
-        .startswith("修正首頁、全部新聞與搜尋的時間排序")
+        .startswith("加入文章資料讀取邊界的向後相容正規化")
     assert en["groups"][-1]["entries"][-1]["title"].startswith(
         "Created SKYTICAL")
     linked = [entry for group in en["groups"] for entry in group["entries"]
@@ -112,7 +112,7 @@ def main() -> None:
         assert f'href="{expected_path}"' in html
         assert t["footerChangelog"] in html
         assert t["changeNotice"] in html
-        assert len(re.findall(r'class="changelog-entry"', html)) == 153
+        assert len(re.findall(r'class="changelog-entry"', html)) == 155
         assert "javascript:alert" not in html
 
     print("test_changelog: OK")
