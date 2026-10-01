@@ -101,7 +101,8 @@ def main() -> None:
 
     source = (ROOT / "pipeline" / "build.py").read_text(encoding="utf-8")
     assert "if catastrophic:" in source
-    assert "::error::Build blocked: render failures exceeded the safety budget" in source
+    assert "::error::Build blocked: render failures exceeded the safety " in source
+    assert "budget (" in source
     assert "return 1" in source
 
     print(f"test_build_resilience: OK ({accepted} historical article rows accepted)")
