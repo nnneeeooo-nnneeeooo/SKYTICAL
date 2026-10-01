@@ -1,12 +1,12 @@
 {
-  "updatedUtc": "2026-10-01T11:01Z",
+  "updatedUtc": "2026-10-01T14:27Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
-      "calls": 433,
+      "calls": 434,
       "inputTokens": 790651,
       "outputTokens": 1274037,
-      "unknownCalls": 282
+      "unknownCalls": 283
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "calls": 851,
@@ -136,12 +136,58 @@
       "outputTokens": 543500
     },
     "2026-10-01": {
-      "calls": 115,
+      "calls": 116,
       "inputTokens": 582789,
       "outputTokens": 327733
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-10-01T14:27Z",
+      "finishedUtc": "2026-10-01T14:27Z",
+      "workflow": "briefing",
+      "taskType": "briefing",
+      "groupId": "2026-10-01-afternoon",
+      "eventId": null,
+      "sourceCount": 11,
+      "primarySource": "SKYTICAL verified articles",
+      "result": "published",
+      "articleId": null,
+      "finalStatus": "published_without_llm_intro",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "drafting": 950,
+        "total": 1535
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-10-01T14:27Z",
+          "durationMs": 950,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 503",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-10-01T10:45Z",
       "finishedUtc": "2026-10-01T10:55Z",
@@ -96969,99 +97015,6 @@
         "total": 0
       },
       "attempts": [],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-09-15T14:00Z",
-      "finishedUtc": "2026-09-15T14:02Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260915-1400-1",
-      "eventId": null,
-      "sourceCount": 5,
-      "primarySource": "AeroTime",
-      "result": "rejected",
-      "articleId": null,
-      "finalStatus": "reject",
-      "finalModel": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-      "fallbackUsed": true,
-      "attemptCount": 3,
-      "httpCallCount": 3,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 5068,
-        "promptAssembly": 43,
-        "drafting": 124400,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 160442
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-09-15T14:00Z",
-          "durationMs": 556,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 540,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "http_error",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 503",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "gemini",
-          "model": "gemini-3.5-flash",
-          "label": "gemini:gemini-3.5-flash",
-          "startedUtc": "2026-09-15T14:00Z",
-          "durationMs": 4080,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 4066,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "http_error",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 503",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 3,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-09-15T14:00Z",
-          "durationMs": 119765,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 119750,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
       "resourceUsage": {
         "actualUsd": 0.0,
         "models": []
