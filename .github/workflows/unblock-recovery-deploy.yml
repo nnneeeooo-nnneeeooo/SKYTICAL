@@ -1,0 +1,31 @@
+name: unblock-recovery-deploy
+on:
+  push:
+    branches: [ops/deploy-news-recovery-20261001]
+permissions:
+  actions: write
+  contents: read
+jobs:
+  cancel-superseded-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel the exact superseded production run
+        env:
+          GH_RUN_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          url = "https://api.github.com/repos/nnneeeooo-nnneeeooo/SKYTICAL/actions/runs/36805697786"
+          headers = {"Authorization": "Bearer " + os.environ["GH_RUN_TOKEN"], "Accept": "application/vnd.github+json"}
+          with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as response:
+              run = json.load(response)
+          assert run["head_sha"] == "f48c228436fad581d6f71f6c1f158ac85e394e04"
+          assert run["name"] == "hourly-update" and run["head_branch"] == "main"
+          if run["status"] == "completed":
+              print("The superseded run already completed")
+          else:
+              request = urllib.request.Request(url + "/cancel", data=b"", headers=headers, method="POST")
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  assert response.status == 202
+              print("Cancelled superseded run 36805697786 so PR 232 can deploy")
+          PY
