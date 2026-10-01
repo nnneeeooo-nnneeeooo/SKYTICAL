@@ -7076,25 +7076,24 @@
     },
     "a-20260927-2242-etna-ash-forces-catania-airport-to-suspe": {
       "status": "none",
-      "attempts": 5,
+      "attempts": 6,
       "rejection_reasons": [
-        "source-photo:no-event-photo",
         "lookup_official_source_photo:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-09-30T08:28:29.566417+00:00",
-      "next_retry_utc": "2026-10-01T08:28:29.566417+00:00"
+      "checked_utc": "2026-10-01T09:41:46.015728+00:00",
+      "next_retry_utc": "2026-10-02T09:41:46.015728+00:00"
     },
     "a-20260930-1937-eurocontrol-and-easa-launch-avenir-envir": {
       "status": "none",
-      "attempts": 2,
+      "attempts": 3,
       "rejection_reasons": [
         "lookup_official_source_photo:no-result",
         "lookup_commons:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-10-01T03:17:28.885611+00:00",
-      "next_retry_utc": "2026-10-01T09:17:28.885611+00:00"
+      "checked_utc": "2026-10-01T09:41:46.015728+00:00",
+      "next_retry_utc": "2026-10-01T15:41:46.015728+00:00"
     },
     "a-20260930-2312-starlux-airlines-and-american-airlines-l": {
       "status": "matched",
@@ -7138,6 +7137,42 @@
         "photoYear": 2026
       },
       "checked_utc": "2026-10-01T07:00:04.330892+00:00"
+    },
+    "a-usaf-boeing-f15ex-lot7-order-20260929": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-01T09:41:46.015728+00:00",
+      "next_retry_utc": "2026-10-01T15:41:46.015728+00:00"
+    },
+    "a-starlux-taipei-bali-launch-20261001": {
+      "status": "matched",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Starlux_Airlines_Airbus_A321neo_B-58203_at_Taoyuan_February_2026.jpg/1280px-Starlux_Airlines_Airbus_A321neo_B-58203_at_Taoyuan_February_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=187946942",
+        "credit": "4300streetcar",
+        "license": "CC BY 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "STARLUX Airlines Airbus A321neo",
+        "subject": "STARLUX Airlines Airbus A321neo",
+        "description": "Starlux Airlines Airbus A321neo B-58203 at Taoyuan February 2026",
+        "photoYear": 2026
+      },
+      "checked_utc": "2026-10-01T09:41:46.015728+00:00"
+    },
+    "a-airbus-a350f-first-flight-20260929": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-01T09:41:46.015728+00:00",
+      "next_retry_utc": "2026-10-01T15:41:46.015728+00:00"
     }
   },
   "sources": {
@@ -8714,6 +8749,12 @@
       "rejection_reason": "no-event-photo",
       "parser_version": 4,
       "next_retry_utc": "2026-10-01T13:00:04.330892+00:00"
+    },
+    "https://www.cna.com.tw/news/ahel/202610010126.aspx": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "parser_version": 4,
+      "next_retry_utc": "2026-10-01T15:41:46.015728+00:00"
     }
   }
 }
