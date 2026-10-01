@@ -238,10 +238,16 @@ def main() -> None:
             "actions/upload-pages-artifact@v5")
 
         workflow_header = source.split("\njobs:\n", 1)[0]
-        assert "skytical-pages-publish" in workflow_header
-        assert re.search(r"(?m)^  queue: max$", workflow_header)
-        assert re.search(r"(?m)^  cancel-in-progress: false$", workflow_header)
-        if workflow.name in {"hourly.yml", "radar-snapshot.yml"}:
+        if workflow.name in {"hourly.yml", "briefing.yml"}:
+            # Data generation is intentionally independent of the Pages queue;
+            # only the deploy job remains serialized.
+            assert "group: skytical-pages-publish" in source
+            assert "cancel-in-progress: false" in source
+        else:
+            assert "skytical-pages-publish" in workflow_header
+            assert re.search(r"(?m)^  queue: max$", workflow_header)
+            assert re.search(r"(?m)^  cancel-in-progress: false$", workflow_header)
+        if workflow.name == "radar-snapshot.yml":
             assert "github.event.pull_request.number" in workflow_header
 
     assert any(
