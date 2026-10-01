@@ -1201,8 +1201,8 @@ def prep_article(raw):
     image = normalize_image(selected_image, titles=[
         (raw.get(lang) or {}).get("title") for lang in ("zh", "en")])
     # Display the SOURCE's newest publication time when the write stage
-    # recorded one; the generation time (dt) is used for ordering only, so
-    # a days-old official release is never presented as breaking news.
+    # recorded one. Chronological feeds use this same timestamp so a late
+    # generated article cannot place an older source above newer news.
     display_dt = publication_dt
     if raw.get("sourcePublishedUtc"):
         try:
@@ -1227,6 +1227,7 @@ def prep_article(raw):
     return {
         "id": art_id,
         "dt": dt,
+        "news_dt": display_dt,
         "published_dt": publication_dt,
         "modified_dt": modified_dt,
         "published_iso": iso_timestamp(publication_dt),
@@ -1281,7 +1282,8 @@ def collect_articles():
         prev = by_id.get(a["id"])
         if prev is None or a["dt"] > prev["dt"]:
             by_id[a["id"]] = a
-    return sorted(by_id.values(), key=lambda a: a["dt"], reverse=True)
+    return sorted(by_id.values(),
+                  key=lambda a: (a["news_dt"], a["id"]), reverse=True)
 
 
 @lru_cache(maxsize=1)
@@ -1920,7 +1922,7 @@ def search_index_item(article, alias_groups, prompt_aliases=(),
         },
         "source": article["source"],
         "date": article["meta_ts"],
-        "published": article["dt"].isoformat(),
+        "published": article["news_dt"].isoformat(),
         "articleFormat": article["article_format"],
         "availableLanguages": article["available_languages"],
         "airlines": article_airline_keys(article, airline_catalog),
