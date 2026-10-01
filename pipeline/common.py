@@ -191,6 +191,52 @@ SOURCES: dict[str, dict] = {
             "en": "US regulator — news, ADs, rules",
         },
     },
+    "starluxnews": {
+        "name": "STARLUX Airlines",
+        "kind": "official",
+        "fmt": "RSS",
+        "url": "https://latestnews.starlux-airlines.com",
+        "endpoint": (
+            "https://news.google.com/rss/search?"
+            "q=site:latestnews.starlux-airlines.com%20when:7d&hl=en-US&gl=US&ceid=US:en"
+        ),
+        "type": "rss",
+        "cover": {
+            "zh": "星宇航空官方公告與新聞",
+            "en": "STARLUX official announcements and news",
+        },
+    },
+    "americannews": {
+        "name": "American Airlines",
+        "kind": "official",
+        "fmt": "RSS",
+        "url": "https://news.aa.com",
+        "endpoint": (
+            "https://news.google.com/rss/search?"
+            "q=site:news.aa.com/news/news-details%20when:7d&hl=en-US&gl=US&ceid=US:en"
+        ),
+        "type": "rss",
+        "cover": {
+            "zh": "美國航空官方新聞室",
+            "en": "American Airlines newsroom",
+        },
+    },
+    "bfu": {
+        "name": "BFU Germany",
+        "kind": "official",
+        "fmt": "RSS",
+        "url": "https://www.bfu-web.de",
+        "endpoint": (
+            "https://news.google.com/rss/search?"
+            "q=site:bfu-web.de%20Flugunfall%20OR%20Untersuchungsbericht%20when:7d"
+            "&hl=de&gl=DE&ceid=DE:de"
+        ),
+        "type": "rss",
+        "cover": {
+            "zh": "德國聯邦航空事故調查局 — 調查報告與公告",
+            "en": "German Federal Bureau of Aircraft Accident Investigation",
+        },
+    },
     "ntsb": {
         "name": "NTSB",
         "kind": "official",

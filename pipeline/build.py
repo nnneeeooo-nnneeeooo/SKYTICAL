@@ -220,7 +220,7 @@ L = {
         "siteDesc": "SKYTICAL 提供臺灣與全球航空新聞、即時航空快訊、航班與機場營運、飛安及航空產業動態，所有報導均附可追溯資料來源。",
         "articleByline": "SKYTICAL 編輯系統",
         "articleBylineLabel": "發布者",
-        "publishedLabel": "發布",
+        "publishedLabel": "SKYTICAL 發布", "lateIngestLabel": "補收錄",
         "modifiedLabel": "更新",
         "sourceTimeLabel": "來源時間",
         "metaColon": "：",
@@ -362,7 +362,7 @@ L = {
         "siteDesc": "SKYTICAL covers Taiwan and global aviation news, breaking updates, airline and airport operations, safety and the aviation industry, with traceable sources.",
         "articleByline": "SKYTICAL Editorial System",
         "articleBylineLabel": "Published by",
-        "publishedLabel": "Published",
+        "publishedLabel": "SKYTICAL published", "lateIngestLabel": "Backfilled",
         "modifiedLabel": "Updated",
         "sourceTimeLabel": "Source time",
         "metaColon": ": ",
@@ -1212,6 +1212,10 @@ def prep_article(raw):
     tpe = display_dt.astimezone(TPE)
     publication_tpe = publication_dt.astimezone(TPE)
     modified_tpe = modified_dt.astimezone(TPE)
+    late_ingest = bool(
+        raw.get("sourcePublishedUtc")
+        and publication_dt - display_dt >= timedelta(hours=24)
+    )
     today_tpe = now_utc().astimezone(TPE).date()
     # Date-only source stamps (FAA/CAA give no clock time -> 00:00Z) must
     # not render as a precise-looking "08:00" TPE: show the date instead.
@@ -1236,6 +1240,7 @@ def prep_article(raw):
             f"{publication_tpe:%Y-%m-%d} {clock_12(publication_tpe)} UTC+8"),
         "modified_meta_ts": (
             f"{modified_tpe:%Y-%m-%d} {clock_12(modified_tpe)} UTC+8"),
+        "late_ingest": late_ingest,
         "cat": cat,
         "tag_class": TAGCLS.get(cat, "tag-neutral"),
         "image": image,
@@ -1430,6 +1435,7 @@ def art_view(a, lang: str):
         modified_iso=a["modified_iso"],
         published_meta_ts=a["published_meta_ts"],
         modified_meta_ts=a["modified_meta_ts"],
+        late_ingest=a["late_ingest"],
         external=False,
     )
     return v

@@ -10,6 +10,7 @@
     <a href="{{ home_url }}" class="btn btn-ghost" style="margin-bottom:18px;">{{ t.back }}</a>
     <div>
       <span class="tag {{ a.tag_class }}">{{ a.cat_label }}</span>
+      {% if a.late_ingest %}<span class="tag tag-outline">{{ t.lateIngestLabel }}</span>{% endif %}
       {% if a.article_format == "brief" %}
       <span class="tag tag-neutral">{{ t.briefLabel }}</span>
       {% elif a.article_format == "roundup" %}
