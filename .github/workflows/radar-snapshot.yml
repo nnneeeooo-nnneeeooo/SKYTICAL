@@ -14,6 +14,7 @@ on:
       - "pipeline/common.py"
       - "pipeline/radar_snapshot.py"
       - "pipeline/build.py"
+      - "pipeline/article_schema.py"
       - "static/radar.js"
       - "templates/radar.html"
       - "tests/test_radar.py"
@@ -26,6 +27,7 @@ on:
       - "pipeline/common.py"
       - "pipeline/radar_snapshot.py"
       - "pipeline/build.py"
+      - "pipeline/article_schema.py"
       - "static/radar.js"
       - "templates/radar.html"
 
@@ -48,6 +50,7 @@ jobs:
       - name: Run radar regression tests
         run: |
           python tests/test_radar_snapshot.py
+          python tests/test_build_resilience.py
           python tests/test_radar.py
 
   build:
