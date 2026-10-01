@@ -29,15 +29,13 @@ on:
       - "static/radar.js"
       - "templates/radar.html"
 
-concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('radar-snapshot-pr-{0}', github.event.pull_request.number) || 'skytical-pages-publish' }}
-  cancel-in-progress: false
-  queue: max
-
 jobs:
   test:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    concurrency:
+      group: radar-snapshot-pr-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
     permissions:
       contents: read
     steps:
@@ -52,16 +50,17 @@ jobs:
           python tests/test_radar_snapshot.py
           python tests/test_radar.py
 
-  deploy:
+  build:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    concurrency:
+      group: skytical-radar-build
+      cancel-in-progress: true
     permissions:
       contents: read
       pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      should_deploy: ${{ steps.snapshot.outputs.should_deploy }}
     steps:
       - uses: actions/checkout@v5
 
@@ -78,6 +77,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Test and build current radar snapshot
+        id: snapshot
         env:
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
@@ -87,9 +87,16 @@ jobs:
         run: |
           python tests/test_radar_snapshot.py
           python pipeline/build.py
-          python pipeline/radar_snapshot.py
+          python pipeline/radar_snapshot.py --optional
+          if [ -f site/assets/radar.json ]; then
+            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::ADSB.lol is temporarily unavailable; keeping the last deployed radar snapshot"
+            echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Scan publishable output
+        if: steps.snapshot.outputs.should_deploy == 'true'
         run: |
           scan() {
             set +e
@@ -109,9 +116,24 @@ jobs:
           echo "scan: site/ and data/ clean"
 
       - uses: actions/upload-pages-artifact@v5
+        if: steps.snapshot.outputs.should_deploy == 'true'
         with:
           path: site
           include-hidden-files: true
 
+  deploy:
+    if: needs.build.outputs.should_deploy == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    concurrency:
+      group: skytical-pages-publish
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - uses: actions/deploy-pages@v5
         id: deployment
