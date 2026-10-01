@@ -12,6 +12,7 @@ on:
       - "pipeline/flightwatch.py"
       - "pipeline/flightnews.py"
       - "pipeline/write.py"
+      - "pipeline/provider_health.py"
       - "pipeline/common.py"
       - "pipeline/dedupe.py"
       - "pipeline/fulltext.py"
@@ -56,6 +57,7 @@ jobs:
           python tests/test_draft_recovery.py
           python tests/test_dedupe.py
           python tests/test_write_offline.py
+          python tests/test_provider_health.py
           python tests/test_news_freshness.py
 
   update:
@@ -87,6 +89,9 @@ jobs:
 
       - name: Test news freshness invariants
         run: python tests/test_news_freshness.py
+
+      - name: Test provider cooldown persistence
+        run: python tests/test_provider_health.py
 
       - name: Test summary boundary guard
         run: python tests/test_summary_guard.py
