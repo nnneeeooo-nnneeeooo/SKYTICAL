@@ -6,7 +6,17 @@
       "sourcePublishedUtc": "2026-09-29T00:00:00Z",
       "cat": "biz",
       "primarySource": "ch-aviation",
-      "image": null,
+      "image": {
+        "url": "https://t.plnspttrs.net/16098/1980230_54bb230e8c_280.jpg",
+        "link": "https://www.planespotters.net/photo/1980230/oe-laz-austrian-airlines-boeing-767-3z9er-wl?utm_source=api",
+        "credit": "Markus Pichler",
+        "license": null,
+        "provider": "Planespotters.net",
+        "kind": "airframe_photo",
+        "matched": "OE-LAZ",
+        "subject": "註冊號 OE-LAZ",
+        "description": ""
+      },
       "zh": {
         "title": "Austrian Airlines 售出最後三架 767-300ER　12 月 1 日結束定期營運",
         "summary": "最後三架 767-300ER 將售予美國 Cobra Aviation 拆解，首架 10 月離隊，其餘兩架於年底前交付。",
@@ -26,22 +36,56 @@
         ]
       },
       "sources": [
-        {"name": "ch-aviation", "url": "https://www.ch-aviation.com/news/172247-austrian-airlines-sells-last-three-b767-300ers-for-part-out"}
+        {
+          "name": "ch-aviation",
+          "url": "https://www.ch-aviation.com/news/172247-austrian-airlines-sells-last-three-b767-300ers-for-part-out"
+        }
       ],
       "writer": "scheduled:GPT 6.1 Sol",
-      "writerModels": ["GPT 6.1 Sol"],
+      "writerModels": [
+        "GPT 6.1 Sol"
+      ],
       "articleFormat": "full",
-      "availableLanguages": ["zh", "en"],
-      "entities": {"manufacturers": ["Boeing"], "operators": ["Austrian Airlines", "Cobra Aviation"], "aircraft": ["Boeing 767-300ER"], "airports": ["Vienna International Airport"]},
+      "availableLanguages": [
+        "zh",
+        "en"
+      ],
+      "entities": {
+        "manufacturers": [
+          "Boeing"
+        ],
+        "operators": [
+          "Austrian Airlines",
+          "Cobra Aviation"
+        ],
+        "aircraft": [
+          "Boeing 767-300ER"
+        ],
+        "airports": [
+          "Vienna International Airport"
+        ]
+      },
       "scheduledNews": {
         "version": 1,
         "eventKey": "austrian-final-767-retirement-20261201",
         "checkedUtc": "2026-10-01T13:13:06Z",
-        "modelAttribution": {"kind": "user_requested_label", "verifiedRuntimeModel": false},
+        "modelAttribution": {
+          "kind": "user_requested_label",
+          "verifiedRuntimeModel": false
+        },
         "facts": [
-          {"claim": "Austrian Airlines confirmed the sale of its final three 767-300ERs to Cobra Aviation for part-out.", "sourceUrl": "https://www.ch-aviation.com/news/172247-austrian-airlines-sells-last-three-b767-300ers-for-part-out"},
-          {"claim": "The aircraft are OE-LAZ, OE-LAY and OE-LAE; the first is due to leave in October and the others before year-end.", "sourceUrl": "https://www.ch-aviation.com/news/172247-austrian-airlines-sells-last-three-b767-300ers-for-part-out"},
-          {"claim": "The last scheduled Austrian 767 flight is due to arrive in Vienna on 2026-12-01.", "sourceUrl": "https://www.ch-aviation.com/news/172247-austrian-airlines-sells-last-three-b767-300ers-for-part-out"}
+          {
+            "claim": "Austrian Airlines confirmed the sale of its final three 767-300ERs to Cobra Aviation for part-out.",
+            "sourceUrl": "https://www.ch-aviation.com/news/172247-austrian-airlines-sells-last-three-b767-300ers-for-part-out"
+          },
+          {
+            "claim": "The aircraft are OE-LAZ, OE-LAY and OE-LAE; the first is due to leave in October and the others before year-end.",
+            "sourceUrl": "https://www.ch-aviation.com/news/172247-austrian-airlines-sells-last-three-b767-300ers-for-part-out"
+          },
+          {
+            "claim": "The last scheduled Austrian 767 flight is due to arrive in Vienna on 2026-12-01.",
+            "sourceUrl": "https://www.ch-aviation.com/news/172247-austrian-airlines-sells-last-three-b767-300ers-for-part-out"
+          }
         ]
       }
     }
