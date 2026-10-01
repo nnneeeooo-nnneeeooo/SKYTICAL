@@ -6,6 +6,20 @@
   "entries": [
     {
       "date": "2026-10-01",
+      "kind": "system",
+      "commit": "6135a203e055017f95affec2ee40c3b9dd41ed8b",
+      "zh": "加入文章資料讀取邊界的向後相容正規化，讓歷史文章缺少後來新增的選填欄位時仍可安全建置；同時新增建置失敗安全門檻，當頁面渲染錯誤超過 5 頁或 1% 時停止發布，避免將大範圍殘缺版本部署至正式網站。",
+      "en": "Added backward-compatible article normalization at the build read boundary so historical stories remain renderable when newer optional fields are absent. Also added a build safety budget that blocks publication when render failures exceed five pages or 1%, preventing broadly incomplete site versions from reaching production."
+    },
+    {
+      "date": "2026-10-01",
+      "kind": "system",
+      "commit": "87d95e47c1a10e28a7bd72f05be3215781462b48",
+      "zh": "將雷達與手動新聞的建置階段從 GitHub Pages 共用發布佇列中分離，只有最後部署階段需要排隊；雷達資料來源暫時無回應時保留上一份成功快照並略過部署，另為模型供應商加入跨執行週期的冷卻機制，降低重複逾時、額度耗盡與驗證失敗造成的連鎖影響。",
+      "en": "Decoupled radar and manual-news builds from the shared GitHub Pages publication queue so only final deployment is serialized. Temporary radar-source outages now keep the last successful snapshot and skip deployment, while persistent provider cooldowns reduce repeated timeouts, quota exhaustion and authentication failures across runs."
+    },
+    {
+      "date": "2026-10-01",
       "kind": "fix",
       "commit": "f0eaa940a004893a4a814ed8810e84885e64bcd6",
       "zh": "修正首頁、全部新聞與搜尋的時間排序，統一依畫面顯示的來源新聞時間由新到舊排列；來源時間缺少或無效時使用文章發布時間，避免晚生成的舊新聞排在新新聞前面。",
