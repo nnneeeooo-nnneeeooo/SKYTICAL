@@ -66,6 +66,7 @@ from common import (
 )
 import flightnews
 import archive_context
+import provider_health
 from fulltext import FULLTEXT_PROMPT_CHARS, enrich_pending
 from providers import (
     ProviderAuthError,
@@ -1396,14 +1397,16 @@ def _record_transient_platform_failure(provider, exc, alive: list,
     alive[:] = [candidate for candidate in alive
                 if candidate.name != name]
     dead_platforms.add(name)
+    provider_health.mark_failure(name, "transient")
     print(f"write: '{name}' hit {count} consecutive transient failures; "
-          "disabling the platform for this run")
+          "disabling the platform for this run and cooling it down for 1 hour")
     return True
 
 
 def _record_provider_response(provider, failure_counts: dict) -> None:
     """A completed response proves the platform circuit should recover."""
     failure_counts.pop(provider.name, None)
+    provider_health.mark_success(provider.name)
 
 
 def _normalize_reject_reason(candidate: dict) -> None:
@@ -2460,6 +2463,7 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                       f"disabling all '{provider.name}' providers")
                 dead_platforms.add(provider.name)
                 dead_auth.add(provider.name)
+                provider_health.mark_failure(provider.name, "auth")
                 continue
             except ProviderQuotaError as exc:
                 run_trace.add_duration("drafting", drafting_started)
@@ -2470,6 +2474,7 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                 print(f"write: {provider.label} quota exhausted ({exc}); "
                       f"disabling all '{provider.name}' providers")
                 dead_platforms.add(provider.name)
+                provider_health.mark_failure(provider.name, "quota")
                 continue
             except ProviderError as exc:
                 run_trace.add_duration("drafting", drafting_started)
@@ -2683,7 +2688,16 @@ def main() -> None:
         save_json(REVIEW_PATH, [])
 
     # --- 2. draft the pending groups through the provider chain ----------
-    providers = build_providers()
+    configured_providers = build_providers()
+    persisted_cooldowns = provider_health.active_platforms(now)
+    providers = [p for p in configured_providers
+                 if p.name not in persisted_cooldowns]
+    if persisted_cooldowns:
+        rows = provider_health.cooldown_rows(now)
+        details = ", ".join(
+            f"{name} until {rows[name]['cooldownUntilUtc']}"
+            for name in sorted(persisted_cooldowns) if name in rows)
+        print(f"write: persisted provider cooldowns active: {details}")
     major_deferred = 0
     if not providers:
         print("write: no LLM API key set (OPENCODE_API_KEY / "
@@ -2833,6 +2847,7 @@ def main() -> None:
                     dead_auth.add(provider.name)
                     dead_platforms.add(provider.name)
                     transient_failure_counts.pop(provider.name, None)
+                    provider_health.mark_failure(provider.name, "auth")
                     run_trace.disable_last_provider()
                     continue
                 except ProviderQuotaError as exc:
@@ -2843,6 +2858,7 @@ def main() -> None:
                     alive[:] = [p for p in alive if p.name != provider.name]
                     dead_platforms.add(provider.name)
                     transient_failure_counts.pop(provider.name, None)
+                    provider_health.mark_failure(provider.name, "quota")
                     run_trace.disable_last_provider()
                     continue
                 except (ProviderError, ProviderCallTimeout) as exc:
@@ -3002,7 +3018,9 @@ def main() -> None:
         f"{p.label}={p.http_calls}" for p in providers
         if getattr(p, "http_calls", 0)) or "none"
     print(f"write stats: ai_calls {calls_note} | http_calls {http_note}")
-    if providers and dead_auth and dead_auth == {p.name for p in providers}:
+    if configured_providers and dead_auth and dead_auth == {
+            p.name for p in configured_providers
+            if p.name not in persisted_cooldowns}:
         # Every configured platform failed authentication: turn the Actions
         # run red instead of silently green.
         raise SystemExit(1)
