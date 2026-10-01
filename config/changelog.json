@@ -2,8 +2,113 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-09-18",
+  "updatedThrough": "2026-10-01",
   "entries": [
+    {
+      "date": "2026-10-01",
+      "kind": "fix",
+      "commit": "f0eaa940a004893a4a814ed8810e84885e64bcd6",
+      "zh": "修正首頁、全部新聞與搜尋的時間排序，統一依畫面顯示的來源新聞時間由新到舊排列；來源時間缺少或無效時使用文章發布時間，避免晚生成的舊新聞排在新新聞前面。",
+      "en": "Aligned chronological ordering on the homepage, news index and search with the displayed source publication time, falling back to article publication time when unavailable or invalid. Older stories generated later no longer appear above newer news."
+    },
+    {
+      "date": "2026-10-01",
+      "kind": "feature",
+      "commit": "f5fee491e63a54bd7cf0e5c33e92ba1b86eb0c0e",
+      "zh": "新增 ChatGPT 排程新聞發布試作入口，發布前驗證中英文內容、來源、查證紀錄、新聞時間與事件識別碼，沿用既有網站建置流程，並保留原有自動新聞管線。",
+      "en": "Added a pilot publishing path for ChatGPT scheduled news, validating bilingual copy, sources, verification records, news timestamps and event identifiers before using the existing site build. The original automated news pipeline remains available."
+    },
+    {
+      "date": "2026-10-01",
+      "kind": "system",
+      "commit": "2d7f169bb54f28655efe016fbbe42accd5e876eb",
+      "zh": "限制單次模型撰稿嘗試為 180 秒、每輪一般新聞撰稿為 15 分鐘，時間用盡時儲存已完成稿件並保留其他新聞供後續重試，減少模型故障阻塞發布的時間。",
+      "en": "Limited each drafting attempt to 180 seconds and each regular news drafting run to 15 minutes. Completed drafts are saved when the budget expires, while remaining stories stay available for retries."
+    },
+    {
+      "date": "2026-09-30",
+      "kind": "fix",
+      "commit": "a0fd69b602e23054be269549559affc6f136b686",
+      "zh": "恢復星宇與美國航空聯營及越航慕尼黑事故期中報告的來源輸入，保留原始發布日期與既有去重、來源及事實核驗規則；調整故障模型的備援順序，減少反覆逾時。",
+      "en": "Recovered source inputs for the STARLUX–American codeshare and Vietnam Airlines Munich interim report while preserving original dates, deduplication and verification rules. Adjusted model fallback order to reduce repeated timeouts."
+    },
+    {
+      "date": "2026-09-30",
+      "kind": "fix",
+      "commit": "6a56892a96e0b5a72f6ba23997885a944b6bf9d0",
+      "zh": "改善稿件修正重試，提供具體驗證錯誤並維持原有證據與字數要求；優先保留飛安調查進展及新聯營協議，當仍有待處理新聞卻沒有發布成果時記錄停滯狀態。",
+      "en": "Improved draft repair retries with specific validation errors while retaining evidence and length requirements. Prioritized investigation updates and new codeshare agreements, and recorded stalled runs when pending news produced no publications."
+    },
+    {
+      "date": "2026-09-28",
+      "kind": "system",
+      "commit": "62c6950cb31b3aab768e37e8744e39c51fffc8d0",
+      "zh": "將每小時新聞抓取排程移至第 45 分鐘，降低整點附近排程壅塞造成延遲的風險。",
+      "en": "Moved hourly news collection to minute 45 to reduce scheduling delays around the top of the hour."
+    },
+    {
+      "date": "2026-09-26",
+      "kind": "fix",
+      "commit": "745e354fc76e71cf79d1e35d9e7e5f51b147725b",
+      "zh": "加強文章事實與原始來源的對應，檢查明確日期、時間、數量及航空技術識別資訊，並要求新增的結構化實體附來源網址與原文引述，適用於自動及手動撰稿。",
+      "en": "Strengthened source binding for explicit dates, times, counts and aviation technical identifiers. New structured entities must carry a source URL and verbatim supporting quote, for both automatic and manually initiated drafting."
+    },
+    {
+      "date": "2026-09-26",
+      "kind": "fix",
+      "commit": "c39b2f5bb6d941f8c06a1a8bbf120df543543759",
+      "zh": "雷達來源暫時沒有航機資料時，新聞及快報網站仍可完成發布，且不產生空白雷達快照；獨立雷達更新仍會回報來源異常。",
+      "en": "Allowed news and briefing deployments to finish when radar data is temporarily unavailable without producing an empty snapshot. Independent radar updates still report source failures."
+    },
+    {
+      "date": "2026-09-26",
+      "kind": "feature",
+      "commit": "3e19d27e68c28e9469d53a4088081ee34343ec90",
+      "zh": "啟用每日早、中、晚快報的搜尋補充與總覽，依事件內容分類並產生章節導言；搜尋新聞須有該期時間範圍內的來源發布時間，頁面列出實際引用的去重來源連結。",
+      "en": "Enabled search supplementation and overviews for morning, afternoon and evening briefings, with event-based categorization and section introductions. Search items require source timestamps within the issue window, and pages list deduplicated cited sources."
+    },
+    {
+      "date": "2026-09-24",
+      "kind": "fix",
+      "commit": "101e0acdaf4b7e255d3ea90af99a1b708085e61e",
+      "zh": "事故資料庫支援有來源依據的軍用與其他國家航空器事件，不再限制文章必須歸入飛安分類，並更新資料庫涵蓋範圍與分級說明。",
+      "en": "Allowed source-supported military and other state-aircraft events in the incident database regardless of article category, and clarified its scope and classification notes."
+    },
+    {
+      "date": "2026-09-24",
+      "kind": "system",
+      "commit": "f865ed35e29491b69111c8831b8c7fc4a7ecd9e7",
+      "zh": "將新聞、快報與雷達的正式網站發布統一排入同一個佇列，避免多筆 GitHub Pages 部署同時進行而失敗；修正首頁快訊中的簡體字。",
+      "en": "Serialized production news, briefing and radar publication in a shared queue to prevent concurrent GitHub Pages deployment failures, and corrected Simplified Chinese text in a homepage flash."
+    },
+    {
+      "date": "2026-09-22",
+      "kind": "fix",
+      "commit": "f9628128302d0aeb5e0f7e8d6f9c5ad0a4c6eeb2",
+      "zh": "發布前檢查文章、摘要、快訊與事故欄位的繁體中文，避免簡體字出現在公開內容，並修正既有文章與晨間快報的標題及摘要。",
+      "en": "Added pre-publication Traditional Chinese checks for article copy, summaries, flashes and incident fields, and corrected affected titles and summaries in existing articles and a morning briefing."
+    },
+    {
+      "date": "2026-09-19",
+      "kind": "fix",
+      "commit": "8c737d6573175c4b0adaef0ac9a09bbb4baafa62",
+      "zh": "將 14 篇歷史文章的 Google News 轉址來源恢復為可直接開啟的官方或媒體網址，並加入全歷史文章來源檢查，確保未封存文章至少有一個直接來源。",
+      "en": "Restored direct official or media source URLs for 14 historical articles that only had Google News redirects, and added archive-wide checks requiring at least one direct source for every active article."
+    },
+    {
+      "date": "2026-09-19",
+      "kind": "system",
+      "commit": "228e24c701461ad3018b1b57a886fff622b72e27",
+      "zh": "擴充合併前回歸檢查，涵蓋航機追蹤、機場代碼、來源擷取、事實查證、快報與圖片等既有測試，並讓測試檔案變更也觸發檢查。",
+      "en": "Expanded pre-merge regression coverage for flight tracking, airport codes, source extraction, fact checking, briefings and images, and made test-file changes trigger regression checks."
+    },
+    {
+      "date": "2026-09-19",
+      "kind": "fix",
+      "commit": "2c1375781a689830911d01ea25ec65b2329909f3",
+      "zh": "航機追蹤的主要來源失敗時改用備援來源，依實際使用的來源標示觀測資料，避免把同一來源重複查詢視為獨立交叉驗證，並擴充機場名稱辨識。",
+      "en": "Added a fallback source for aircraft tracking, labeled observations by the source actually used, prevented repeated queries to one provider from counting as independent corroboration, and expanded airport-name recognition."
+    },
     {
       "date": "2026-09-18",
       "kind": "design",
