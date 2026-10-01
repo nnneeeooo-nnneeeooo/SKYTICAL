@@ -5,8 +5,9 @@ incidents.json, sources.json, stats.json. Writes the site/ tree per
 CONTRACTS.md: zh at /, en under /en/, one page per article ever published,
 incidents / sources / methodology / changelog pages, copied assets, 404.html
 and .nojekyll.
-A single bad input never crashes the build: bad entries are skipped with a
-one-line log to stdout and the script exits 0.
+Isolated bad inputs degrade gracefully and are skipped with a one-line log.
+A bounded render-failure budget prevents a systemic schema/template regression
+from publishing a substantially incomplete site.
 """
 from __future__ import annotations
 
@@ -56,6 +57,7 @@ from model_config import (
     MODEL_ORDER,
 )
 from image_captions import clean_description
+from article_schema import normalize_article_record
 
 _caption_cache = load_json(DATA_DIR / "image-captions.json", {})
 IMAGE_CAPTIONS = (_caption_cache.get("images", {})
@@ -66,6 +68,22 @@ if not isinstance(IMAGE_CAPTIONS, dict):
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 PUBLIC_DIR = PROJECT_DIR / "public"
 CONFIG_DIR = PROJECT_DIR / "config"
+
+# Render failures are tolerated only while they remain genuinely isolated.
+# Exceeding either bound is treated as systemic and blocks artifact upload.
+MAX_TOLERATED_RENDER_FAILURES = 5
+MAX_TOLERATED_RENDER_FAILURE_RATIO = 0.01
+
+
+def render_failures_are_catastrophic(failed: int, expected: int) -> bool:
+    """Return True when partial rendering is too broad to publish safely."""
+    failed = max(0, int(failed or 0))
+    expected = max(0, int(expected or 0))
+    if failed == 0:
+        return False
+    if failed > MAX_TOLERATED_RENDER_FAILURES:
+        return True
+    return expected > 0 and failed / expected > MAX_TOLERATED_RENDER_FAILURE_RATIO
 
 
 def static_asset_version() -> str:
@@ -1113,7 +1131,8 @@ def writer_model(writer, writer_models=None):
 
 
 def prep_article(raw):
-    if not isinstance(raw, dict):
+    raw = normalize_article_record(raw)
+    if raw is None:
         return None
     if raw.get("archived") is True:
         return None
@@ -1271,14 +1290,15 @@ def collect_articles():
                 print(f"build: {path.name}: no articles[] — skipped")
                 continue
             for raw in rows:
-                art = prep_article(raw)
+                normalized = normalize_article_record(raw)
+                art = prep_article(normalized)
                 if art is None:
                     reason = ("archived article skipped"
-                              if isinstance(raw, dict)
-                              and raw.get("archived") is True
+                              if isinstance(normalized, dict)
+                              and normalized.get("archived") is True
                               else "bad article entry skipped")
                     print(f"build: {path.name}: {reason}")
-                elif not is_transport_headline(raw):
+                elif not is_transport_headline(normalized):
                     print(f"build: {path.name}: non-transport headline skipped")
                 else:
                     arts.append(art)
@@ -3680,6 +3700,10 @@ def main() -> int:
         DATA_DIR / "briefings" / "index.json", {}).get("briefings") or [])
         if isinstance(r, dict)]
     latest_row = latest_briefing(brief_rows)
+    expected_guarded_pages = (
+        sum(len(article["available_languages"]) for article in articles)
+        + (2 * len(briefings))
+    )
     changelog_raw = load_json(
         Path(__file__).resolve().parent.parent
         / "config" / "changelog.json", {})
@@ -4089,9 +4113,20 @@ def main() -> int:
 
     write_search_discovery_files(articles, briefings, now)
 
+    catastrophic = render_failures_are_catastrophic(
+        failed, expected_guarded_pages)
     print(f"build: {len(articles)} articles, {len(flashes)} flashes, "
           f"{len(incidents)} incidents, {pages} pages, {failed} failed "
           f"-> {SITE_DIR} (base='{BASE_PATH}') in {time.time() - t0:.2f}s")
+    if catastrophic:
+        ratio = failed / expected_guarded_pages if expected_guarded_pages else 1.0
+        print(
+            "::error::Build blocked: render failures exceeded the safety "
+            f"budget ({failed}/{expected_guarded_pages}, {ratio:.2%}; "
+            f"limits: {MAX_TOLERATED_RENDER_FAILURES} pages and "
+            f"{MAX_TOLERATED_RENDER_FAILURE_RATIO:.0%})"
+        )
+        return 1
     return 0
 
 
