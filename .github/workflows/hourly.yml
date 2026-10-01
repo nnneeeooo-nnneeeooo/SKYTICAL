@@ -25,12 +25,6 @@ on:
     paths-ignore:
       - "data/**" # bot data commits must not retrigger the workflow
 
-concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('hourly-pr-{0}', github.event.pull_request.number) || 'skytical-pages-publish' }}
-  # Production publishers share a FIFO queue; PR checks use a separate group.
-  cancel-in-progress: false
-  queue: max
-
 jobs:
   regression:
     if: github.event_name == 'pull_request'
@@ -66,6 +60,9 @@ jobs:
   update:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    concurrency:
+      group: skytical-news-pipeline
+      cancel-in-progress: false
     permissions:
       contents: write # commits data/ back to the repo
       pages: write # configure-pages enablement
@@ -224,6 +221,9 @@ jobs:
   deploy:
     needs: update
     runs-on: ubuntu-latest
+    concurrency:
+      group: skytical-pages-publish
+      cancel-in-progress: false
     permissions:
       pages: write
       id-token: write
