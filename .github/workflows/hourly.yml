@@ -56,6 +56,7 @@ jobs:
           python tests/test_draft_recovery.py
           python tests/test_dedupe.py
           python tests/test_write_offline.py
+          python tests/test_news_freshness.py
 
   update:
     if: github.event_name != 'pull_request'
@@ -83,6 +84,9 @@ jobs:
 
       - name: Test mandatory airport IATA codes
         run: python tests/test_airport_codes.py
+
+      - name: Test news freshness invariants
+        run: python tests/test_news_freshness.py
 
       - name: Test summary boundary guard
         run: python tests/test_summary_guard.py
