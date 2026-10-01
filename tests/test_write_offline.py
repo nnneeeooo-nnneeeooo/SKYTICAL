@@ -828,6 +828,9 @@ def test_model_chain_and_routing_policy():
     ]
     check(len(disabled_attempts) == 1,
           "circuit-breaking failure is marked disabled in the run ledger")
+    health = load(DATA / "provider-health.json")
+    check(health["platforms"]["gemini"]["failureClass"] == "transient",
+          "transient platform circuit persists a cross-run cooldown")
     check(write._is_transient_platform_failure(
               providers.ProviderError("finishReason MAX_TOKENS")) is False,
           "model truncation does not trip the platform circuit")
@@ -1021,6 +1024,11 @@ def test_all_providers_auth_dead():
         write.build_providers = original
 
     check(exited == 1, f"SystemExit(1) when all providers fail auth, got {exited}")
+    health = load(DATA / "provider-health.json")
+    check(set(health["platforms"]) == {"gemini", "nvidia"}
+          and all(row["failureClass"] == "auth"
+                  for row in health["platforms"].values()),
+          "auth-dead platforms persist a cross-run cooldown")
     check(not list((DATA / "articles").glob("*.json")),
           "no articles when every provider is auth-dead")
     check((DATA / "pending.json").read_bytes() == pending_before,
