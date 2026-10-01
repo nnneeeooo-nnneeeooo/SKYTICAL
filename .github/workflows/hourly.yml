@@ -127,6 +127,7 @@ jobs:
           AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,wechat:Deepseek-v4-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:nvidia/nemotron-3-super-120b-a12b
           # freshness window (hours); code default 120, validated 24-336
           NEWS_MAX_AGE_HOURS: ${{ vars.NEWS_MAX_AGE_HOURS }}
+          PYTHONUNBUFFERED: '1'
           # private usage-dashboard URL token (page skipped when unset)
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
           # private manual-drafting URL/encryption token

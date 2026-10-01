@@ -38,7 +38,9 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 from opencc import OpenCC
-from draft_recovery import normalize_reader_copy, repair_prompt
+from draft_recovery import (
+    normalize_reader_copy, repair_prompt, draft_timeout, ProviderCallTimeout,
+)
 
 from common import (
     ARTICLES_DIR,
@@ -75,6 +77,8 @@ from providers import (
 )
 
 MAX_GROUPS_PER_RUN = 10
+MAX_DRAFT_SECONDS_PER_RUN = 15 * 60
+MAX_MODEL_ATTEMPT_SECONDS = 180
 TRANSIENT_PLATFORM_FAILURE_LIMIT = 2
 MAX_INCIDENTS = 60
 SEEN_MAX_AGE_DAYS = 21
@@ -1421,7 +1425,8 @@ def _normalize_reject_reason(candidate: dict) -> None:
 
 
 def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
-                     run_trace: _RunTrace | None = None):
+                     run_trace: _RunTrace | None = None,
+                     deadline: float | None = None):
     """Call `provider` up to `tries` times until a draft survives validation
     and quote verification.
 
@@ -1431,6 +1436,7 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
     policy retries validation failures, never transport failures.
     """
     last_problem = "draft validation failed"
+    previous_candidate = None
     for attempt in range(tries):
         if ai_calls is not None:
             ai_calls[provider.label] = ai_calls.get(provider.label, 0) + 1
@@ -1443,11 +1449,16 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                 prompt_started = time.perf_counter()
                 user_prompt = group_prompt(group)
                 if attempt:
-                    user_prompt = repair_prompt(user_prompt, last_problem)
+                    user_prompt = repair_prompt(user_prompt, last_problem,
+                                                previous_candidate)
                 if run_trace is not None:
                     run_trace.add_duration("promptAssembly", prompt_started)
-                candidate = provider.draft(
-                    SYSTEM_PROMPT, user_prompt, DRAFT_SCHEMA)
+                allowance = MAX_MODEL_ATTEMPT_SECONDS
+                if deadline is not None:
+                    allowance = min(allowance, deadline - time.monotonic())
+                with draft_timeout(allowance):
+                    candidate = provider.draft(
+                        SYSTEM_PROMPT, user_prompt, DRAFT_SCHEMA)
             else:
                 candidate = draft_group(provider, group)
             if run_trace is not None:
@@ -1549,6 +1560,7 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
             else:
                 problem = "no machine-verifiable sourceQuote"
                 problem_stage = "factVerification"
+        previous_candidate = candidate
         retrying = attempt + 1 < tries
         last_problem = str(problem or "draft validation failed")
         if run_trace is not None:
@@ -2751,10 +2763,15 @@ def main() -> None:
             run_traces[id(group)] = run_trace
         groups = safe_groups
         existing_articles = _load_existing_articles()
+        draft_deadline = time.monotonic() + MAX_DRAFT_SECONDS_PER_RUN
         alive = list(providers)  # priority order; shrinks on auth/quota death
         drafted = 0  # only API-consuming groups count toward the run cap
         for group in groups:
             run_trace = run_traces[id(group)]
+            if time.monotonic() >= draft_deadline:
+                print("write: drafting time budget reached; saving completed drafts")
+                run_trace.finish("retry_pending", "retry_pending")
+                break
             if not alive:
                 run_trace.finish("no_provider", "retry_pending")
                 continue
@@ -2786,6 +2803,8 @@ def main() -> None:
             stopped_by_refusal = False
             fallback_repair_used = False
             for provider in list(alive):
+                if time.monotonic() >= draft_deadline:
+                    break
                 if provider not in alive:
                     # Removed mid-group by a platform-level auth/quota
                     # death earlier in this same iteration.
@@ -2796,7 +2815,8 @@ def main() -> None:
                 try:
                     candidate, facts = _validated_draft(provider, group,
                                                         tries, ai_calls,
-                                                        run_trace)
+                                                        run_trace,
+                                                        deadline=draft_deadline)
                 except DraftInvalid:
                     if provider is not providers[0]:
                         fallback_repair_used = True
@@ -2825,7 +2845,7 @@ def main() -> None:
                     transient_failure_counts.pop(provider.name, None)
                     run_trace.disable_last_provider()
                     continue
-                except ProviderError as exc:
+                except (ProviderError, ProviderCallTimeout) as exc:
                     print(f"write: {provider.label} error on group "
                           f"{group.get('id')}: {exc}; trying next provider")
                     if _record_transient_platform_failure(
