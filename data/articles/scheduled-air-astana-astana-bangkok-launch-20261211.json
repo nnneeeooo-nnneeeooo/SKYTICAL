@@ -1,0 +1,50 @@
+{
+  "articles": [
+    {
+      "id": "a-air-astana-astana-bangkok-launch-20261211",
+      "publishedUtc": "2026-10-01T13:13:06Z",
+      "sourcePublishedUtc": "2026-09-30T07:12:00Z",
+      "cat": "ops",
+      "primarySource": "Kazakhstan Ministry of Transport",
+      "image": null,
+      "zh": {
+        "title": "Air Astana 12 月開航阿斯塔納—曼谷　A321LR 每週兩班",
+        "summary": "新航線將於 2026 年 12 月 11 日開航，每週二、五飛航，搭配既有阿拉木圖航線後每週共九班往返泰國。",
+        "body": [
+          "Air Astana 將於 2026 年 12 月 11 日開闢哈薩克首都阿斯塔納至泰國曼谷的直飛航線，使用 Airbus A321LR，每週二與週五各飛一班。",
+          "哈薩克交通部公布這項開航計畫；Aviation Week 報導，去程飛行時間約 7 小時 50 分，回程約 8 小時 30 分。",
+          "新航線將補充 Air Astana 現有的阿拉木圖—曼谷每日航班，使該公司兩國間班次增至每週九班。"
+        ]
+      },
+      "en": {
+        "title": "Air Astana to launch twice-weekly Astana–Bangkok A321LR service on December 11",
+        "summary": "The Tuesday-and-Friday route will lift the carrier's Kazakhstan–Thailand schedule to nine weekly flights when combined with daily Almaty service.",
+        "body": [
+          "Air Astana will open nonstop service between Kazakhstan's capital Astana and Bangkok on December 11, 2026, using Airbus A321LR aircraft. Flights are scheduled twice weekly on Tuesdays and Fridays.",
+          "Kazakhstan's transport authorities announced the route. Aviation Week reports an outbound flight time of about seven hours 50 minutes and a return journey of about eight hours 30 minutes.",
+          "The new service will complement Air Astana's existing daily Almaty–Bangkok route, bringing the airline's Kazakhstan–Thailand schedule to nine weekly flights."
+        ]
+      },
+      "sources": [
+        {"name": "Kazakhstan Ministry of Transport via Interfax", "url": "https://interfax.kz/en/news/82810"},
+        {"name": "Aviation Week", "url": "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-sept-28-2026"}
+      ],
+      "writer": "scheduled:GPT 6.1 Sol",
+      "writerModels": ["GPT 6.1 Sol"],
+      "articleFormat": "full",
+      "availableLanguages": ["zh", "en"],
+      "entities": {"manufacturers": ["Airbus"], "operators": ["Air Astana"], "aircraft": ["Airbus A321LR"], "airports": ["Nursultan Nazarbayev International Airport", "Suvarnabhumi Airport"]},
+      "scheduledNews": {
+        "version": 1,
+        "eventKey": "air-astana-astana-bangkok-launch-20261211",
+        "checkedUtc": "2026-10-01T13:13:06Z",
+        "modelAttribution": {"kind": "user_requested_label", "verifiedRuntimeModel": false},
+        "facts": [
+          {"claim": "Air Astana will launch nonstop Astana-Bangkok service on 2026-12-11.", "sourceUrl": "https://interfax.kz/en/news/82810"},
+          {"claim": "The route will operate on Tuesdays and Fridays with Airbus A321LR aircraft.", "sourceUrl": "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-sept-28-2026"},
+          {"claim": "Together with daily Almaty-Bangkok service, Air Astana will operate nine weekly Kazakhstan-Thailand flights.", "sourceUrl": "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-sept-28-2026"}
+        ]
+      }
+    }
+  ]
+}
