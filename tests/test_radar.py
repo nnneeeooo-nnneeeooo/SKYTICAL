@@ -231,24 +231,34 @@ def main() -> None:
         ROOT / ".github" / "workflows" / "manual-article-deploy.yml",
         ROOT / ".github" / "workflows" / "radar-snapshot.yml",
     ]
-    for workflow in workflows:
-        source = workflow.read_text(encoding="utf-8")
+    workflow_sources = {
+        workflow.name: workflow.read_text(encoding="utf-8")
+        for workflow in workflows
+    }
+    for source in workflow_sources.values():
         assert "python pipeline/radar_snapshot.py" in source
         assert source.index("python pipeline/radar_snapshot.py") < source.index(
             "actions/upload-pages-artifact@v5")
+        # Only the final deploy job may occupy the shared Pages queue.
+        assert source.count("group: skytical-pages-publish") == 1
+        assert "cancel-in-progress: false" in source
 
-        workflow_header = source.split("\njobs:\n", 1)[0]
-        if workflow.name in {"hourly.yml", "briefing.yml"}:
-            # Data generation is intentionally independent of the Pages queue;
-            # only the deploy job remains serialized.
-            assert "group: skytical-pages-publish" in source
-            assert "cancel-in-progress: false" in source
-        else:
-            assert "skytical-pages-publish" in workflow_header
-            assert re.search(r"(?m)^  queue: max$", workflow_header)
-            assert re.search(r"(?m)^  cancel-in-progress: false$", workflow_header)
-        if workflow.name == "radar-snapshot.yml":
-            assert "github.event.pull_request.number" in workflow_header
+    manual_workflow = workflow_sources["manual-article-deploy.yml"]
+    assert "group: skytical-manual-article-build" in manual_workflow
+    assert manual_workflow.index("  build:") < manual_workflow.index("  deploy:")
+    assert manual_workflow.index("actions/upload-pages-artifact@v5") < (
+        manual_workflow.index("actions/deploy-pages@v5")
+    )
+
+    radar_workflow = workflow_sources["radar-snapshot.yml"]
+    assert "group: radar-snapshot-pr-${{ github.event.pull_request.number }}" in (
+        radar_workflow
+    )
+    assert "group: skytical-radar-build" in radar_workflow
+    assert "python pipeline/radar_snapshot.py --optional" in radar_workflow
+    assert "should_deploy=false" in radar_workflow
+    assert "keeping the last deployed radar snapshot" in radar_workflow
+    assert "if: needs.build.outputs.should_deploy == 'true'" in radar_workflow
 
     assert any(
         "本文由自動化系統彙整生成，內容以原始來源為準 • "
