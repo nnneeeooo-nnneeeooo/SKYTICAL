@@ -38,15 +38,18 @@ def test_news_chronology():
         with patch.object(build, "ARTICLES_DIR", folder):
             collected = build.collect_articles()
     assert [a["id"] for a in collected] == [
-        "newer-manual", "no-source-time", "older-late-generated",
-        "invalid-source-time", "date-only-source",
+        "date-only-source", "older-late-generated", "newer-manual",
+        "no-source-time", "invalid-source-time",
     ]
-    assert collected[0]["meta_ts"] == "2026-09-30 4:50 PM UTC+8"
-    assert collected[-1]["meta_ts"] == "2026-09-26"
+    assert collected[0]["meta_ts"] == "2026-10-01 11:00 AM UTC+8"
+    assert collected[0]["source_meta_ts"] == "2026-09-26"
+    assert collected[-1]["source_meta_ts"] is None
     for prepared in collected:
         indexed = build.search_index_item(prepared, [])
         assert build.parse_iso(indexed["published"]) == prepared["news_dt"]
-    assert collected[0]["published_iso"] == "2026-09-30T08:50:00Z"
+    assert collected[2]["published_iso"] == "2026-09-30T08:50:00Z"
+    revised = rows[0] | {"updatedUtc": "2026-10-02T08:00:00Z"}
+    assert build.prep_article(revised)["news_dt"] == collected[1]["news_dt"]
 
 
 if __name__ == "__main__":

@@ -1219,34 +1219,32 @@ def prep_article(raw):
         selected_image = None
     image = normalize_image(selected_image, titles=[
         (raw.get(lang) or {}).get("title") for lang in ("zh", "en")])
-    # Display the SOURCE's newest publication time when the write stage
-    # recorded one. Chronological feeds use this same timestamp so a late
-    # generated article cannot place an older source above newer news.
+    # Feeds use first site publication; source chronology stays separate.
     display_dt = publication_dt
+    source_dt = None
     if raw.get("sourcePublishedUtc"):
         try:
-            display_dt = parse_iso(str(raw["sourcePublishedUtc"]))
+            source_dt = parse_iso(str(raw["sourcePublishedUtc"]))
         except (ValueError, TypeError):
             pass
     tpe = display_dt.astimezone(TPE)
     publication_tpe = publication_dt.astimezone(TPE)
     modified_tpe = modified_dt.astimezone(TPE)
     late_ingest = bool(
-        raw.get("sourcePublishedUtc")
-        and publication_dt - display_dt >= timedelta(hours=24)
+        source_dt and publication_dt - source_dt >= timedelta(hours=24)
     )
     today_tpe = now_utc().astimezone(TPE).date()
     # Date-only source stamps (FAA/CAA give no clock time -> 00:00Z) must
     # not render as a precise-looking "08:00" TPE: show the date instead.
-    date_only = (raw.get("sourcePublishedUtc")
-                 and display_dt.hour == 0 and display_dt.minute == 0)
-    if date_only:
-        time_label = tpe.strftime("%m/%d")
-        meta_ts = tpe.strftime("%Y-%m-%d")
-    else:
-        time_label = (clock_12(tpe) if tpe.date() == today_tpe
-                      else tpe.strftime("%m/%d"))
-        meta_ts = f"{tpe:%Y-%m-%d} {clock_12(tpe)} UTC+8"
+    source_meta_ts = None
+    if source_dt:
+        source_tpe = source_dt.astimezone(TPE)
+        source_meta_ts = (source_tpe.strftime("%Y-%m-%d")
+                          if source_dt.hour == 0 and source_dt.minute == 0 else
+                          f"{source_tpe:%Y-%m-%d} {clock_12(source_tpe)} UTC+8")
+    time_label = (clock_12(tpe) if tpe.date() == today_tpe
+                  else tpe.strftime("%m/%d"))
+    meta_ts = f"{tpe:%Y-%m-%d} {clock_12(tpe)} UTC+8"
     return {
         "id": art_id,
         "dt": dt,
@@ -1266,6 +1264,7 @@ def prep_article(raw):
         "source": str(raw.get("primarySource") or (sources[0]["name"] if sources else "—")),
         "time": time_label,
         "meta_ts": meta_ts,
+        "source_meta_ts": source_meta_ts,
         "zh": side(zh, en),
         "en": side(en, zh),
         "sources": sources,
@@ -1448,6 +1447,7 @@ def art_view(a, lang: str):
         id=a["id"], cat=a["cat"], tag_class=a["tag_class"], image=a["image"],
         cat_label=_bi(CATS.get(a["cat"]), lang, a["cat"]),
         source=a["source"], time=a["time"], meta_ts=a["meta_ts"],
+        source_meta_ts=a["source_meta_ts"],
         sources=a["sources"], url=page_url(lang, f"news/{a['id']}/"),
         writer_model=a["writer_model"],
         article_format=a["article_format"],
