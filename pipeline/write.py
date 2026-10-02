@@ -2880,6 +2880,9 @@ def main() -> None:
                     run_trace.disable_last_provider()
                     continue
                 except (ProviderError, ProviderCallTimeout) as exc:
+                    # The service returned unusable generated output. These
+                    # are content repairs, unlike transport/quota failures.
+                    content_failed |= classify_failure(exc) in {"invalid_json", "truncated"}
                     print(f"write: {provider.label} error on group "
                           f"{group.get('id')}: {exc}; trying next provider")
                     if _record_transient_platform_failure(
@@ -2888,6 +2891,7 @@ def main() -> None:
                         run_trace.disable_last_provider()
                     continue
                 except Exception as exc:  # one bad group must not kill a run
+                    content_failed |= classify_failure(exc) in {"invalid_json", "truncated"}
                     print(f"write: unexpected {provider.label} error on group"
                           f" {group.get('id')}: {type(exc).__name__}: {exc}; "
                           "trying next provider")
