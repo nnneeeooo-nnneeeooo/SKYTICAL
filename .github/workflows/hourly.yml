@@ -122,6 +122,17 @@ jobs:
           python tests/test_volcano_images.py
           python tests/test_image_qa.py
 
+      - name: Refresh persisted retry and provider cooldown state
+        # A queued push run checks out its event SHA, which may predate the
+        # preceding run's data commit. Keep code pinned, refresh budgets only.
+        run: |
+          git fetch origin "${GITHUB_REF_NAME}"
+          for path in data/news-retry.json data/provider-health.json; do
+            if git cat-file -e "origin/${GITHUB_REF_NAME}:$path" 2>/dev/null; then
+              git checkout "origin/${GITHUB_REF_NAME}" -- "$path"
+            fi
+          done
+
       - name: Run pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
