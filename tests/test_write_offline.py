@@ -1181,9 +1181,31 @@ def test_persistent_story_retry_budget():
         write.build_providers, write.now_utc = original_build, original_now
 
 
+def test_model_format_failure_uses_content_budget():
+    for error, content in (("bad JSON even after format repair", True),
+                           ("response truncated (length)", True),
+                           ("ReadTimeout", False)):
+        reset_data_dir()
+        pending = load(DATA / "pending.json")
+        pending["groups"] = pending["groups"][:1]
+        common.save_json(DATA / "pending.json", pending)
+        solo = FakeProvider("gemini", [providers.ProviderError(error)])
+        original_build = write.build_providers
+        write.build_providers = lambda: [solo]
+        try:
+            write.main()
+        finally:
+            write.build_providers = original_build
+        row = next(iter(load(DATA / "news-retry.json")["stories"].values()))
+        check(row["contentFailures"] == int(content) and
+              row["serviceFailures"] == int(not content),
+              f"{error} spends the correct retry budget")
+
+
 def main():
     tests = [test_flexible_publication_keeps_evidence_gates,
              test_persistent_story_retry_budget,
+             test_model_format_failure_uses_content_budget,
              test_story_budget_allows_later_groups,
              test_budget_saves_completed_articles_and_retains_unattempted_groups,
              test_publish_flow,
