@@ -284,6 +284,18 @@ def test_group_cap_and_recency_order() -> None:
         # Single-source groups rank purely by newest publishedUtc, so the
         # 12 newest stories are emitted in recency order.
         assert [g["items"][0]["title"] for g in groups] == titles[:12]
+        # Suppression happens before MAX_GROUPS: blocked stories cannot
+        # monopolize discovery or be reset by regenerated group IDs.
+        ledger = {"schemaVersion": 1, "stories": {
+            str(i): {"sourceUrls": [items[i]["url"]], "contentFailures": 4,
+                     "serviceFailures": 0, "status": "exhausted",
+                     "updatedUtc": _stamp(hours=0), "nextRetryUtc": None}
+            for i in range(12)
+        }}
+        (data_dir / "news-retry.json").write_text(json.dumps(ledger), encoding="utf-8")
+        _run_dedupe(data_dir)
+        remaining = _load_pending(data_dir)["groups"]
+        assert [g["items"][0]["title"] for g in remaining] == titles[12:]
 
 
 def test_taiwan_airline_story_is_reserved_ahead_of_general_cap() -> None:

@@ -38,6 +38,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 from opencc import OpenCC
+import news_retry
 from draft_recovery import (
     normalize_reader_copy, normalize_fact_ids, repair_prompt, draft_timeout, ProviderCallTimeout,
 )
@@ -2011,9 +2012,7 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         except (TypeError, ValueError):
             continue
     if source_dates:
-        # The source's own newest publication time - the site displays this,
-        # never the generation time, so multi-day-old releases are not
-        # presented as breaking news.
+        # Preserve source chronology separately from first site publication.
         article["sourcePublishedUtc"] = iso_minute(max(source_dates))
     elif existing_article and existing_article.get("sourcePublishedUtc"):
         article["sourcePublishedUtc"] = existing_article["sourcePublishedUtc"]
@@ -2657,6 +2656,8 @@ def main() -> None:
             rejected_groups.append(group)
             rejected_ids.add(group_id)
     groups = scoped_groups
+    retry_ledger = news_retry.RetryLedger(now)
+    groups, deferred_groups = retry_ledger.plan(groups, MAX_GROUPS_PER_RUN)
 
     # --- 1. retire and migrate the former manual-review queue ------------
     # Each row is re-checked with the same deterministic source, binding,
@@ -2826,6 +2827,8 @@ def main() -> None:
             draft, writer, verified = None, None, None
             final_model = None
             stopped_by_refusal = False
+            content_failed = False
+            calls_before = sum(ai_calls.values())
             fallback_repair_used = False
             group_deadline = min(draft_deadline,
                                  time.monotonic() + MAX_DRAFT_SECONDS_PER_GROUP)
@@ -2846,6 +2849,7 @@ def main() -> None:
                                                         run_trace,
                                                         deadline=group_deadline)
                 except DraftInvalid:
+                    content_failed = True
                     if provider is not providers[0]:
                         fallback_repair_used = True
                     _record_provider_response(
@@ -2897,6 +2901,7 @@ def main() -> None:
                     # Genuine refusal / safety block: content-based, so
                     # don't shop the group around to a laxer provider.
                     stopped_by_refusal = True
+                    content_failed = True
                     final_model = provider.label
                     break
                 final_model = provider.label
@@ -2918,7 +2923,9 @@ def main() -> None:
             if group.get("id") in rejected_ids:
                 continue
             if draft is None:
-                skipped += 1  # provider failures/refusals retry next hour
+                skipped += 1
+                if sum(ai_calls.values()) > calls_before:
+                    retry_ledger.failure(group, content=content_failed)
                 run_trace.finish(
                     "refused" if stopped_by_refusal else "retry_pending",
                     "refusal" if stopped_by_refusal else "retry_pending",
@@ -2933,6 +2940,7 @@ def main() -> None:
             run_trace.add_duration("articleBuild", article_started)
             if article is None:
                 skipped += 1
+                retry_ledger.failure(group, content=True)
                 run_trace.finish(
                     "retry_pending", "article_build_failed", writer.label)
                 continue
@@ -2989,15 +2997,17 @@ def main() -> None:
         # re-emit from dedupe and burn another API call next hour.
         update_seen(published_groups + rejected_groups, now)
     consumed = published_ids | rejected_ids
-    if consumed:
-        # fulltext lives in data/fulltext.json (cache), never in the
-        # committed pending file - next run re-attaches it for free
-        remaining = [_strip_fulltext(g) for g in groups
-                     if g.get("id") not in consumed]
-        save_json(PENDING_PATH, {**pending, "groups": remaining})
+    for group in published_groups + rejected_groups:
+        retry_ledger.complete(group)
+    # Exhausted stories remain only in the failure register. They are not
+    # marked seen: a genuinely new source can reopen them at discovery.
+    remaining = [_strip_fulltext(g) for g in groups + deferred_groups
+                 if g.get("id") not in consumed and not retry_ledger.exhausted(g)]
+    save_json(PENDING_PATH, {**pending, "groups": remaining})
+    retry_ledger.save()
 
     refresh_stats(now)
-    remaining_count = sum(1 for g in groups if g.get("id") not in consumed)
+    remaining_count = len(remaining)
     stalled = bool(ai_calls and remaining_count and not new_articles
                    and not updated_articles)
     stats = load_json(STATS_PATH, {})
@@ -3006,6 +3016,8 @@ def main() -> None:
         "updatedUtc": iso_minute(now),
         "published": len(new_articles), "revised": len(updated_articles),
         "pending": remaining_count,
+        "retryExhausted": sum(row.get("status") == "exhausted"
+                              for row in retry_ledger.rows.values()),
     }
     save_json(STATS_PATH, stats)
     if stalled:

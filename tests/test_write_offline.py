@@ -1145,8 +1145,45 @@ def test_story_budget_allows_later_groups():
           "timed-out story is not marked consumed")
 
 
+def test_persistent_story_retry_budget():
+    reset_data_dir()
+    pending = load(DATA / "pending.json")
+    group = pending["groups"][0]
+    pending["groups"] = [group]
+    common.save_json(DATA / "pending.json", pending)
+    solo = FakeProvider("gemini", [None])
+    original_build, original_now = write.build_providers, write.now_utc
+    clock = [NOW]
+    write.build_providers = lambda: [solo]
+    write.now_utc = lambda: clock[0]
+    try:
+        for hours in (2, 6, 24):
+            write.main()
+            attempted = solo.calls
+            write.main()
+            check(solo.calls == attempted, "cooling story spends zero model calls")
+            clock[0] += timedelta(hours=hours)
+        write.main()
+        check(solo.calls == 4, "initial failure plus three retries exhausts the budget")
+        check(not load(DATA / "pending.json")["groups"],
+              "exhausted story leaves pending and remains in failure register")
+        check(next(iter(load(DATA / "news-retry.json")["stories"].values()))["status"]
+              == "exhausted", "exhaustion persists across runs")
+        pending["groups"] = [group | {"id": "rediscovered"}]
+        common.save_json(DATA / "pending.json", pending)
+        write.main()
+        check(solo.calls == 4, "rediscovery with a new group ID cannot bypass the cap")
+        group["items"].append(group["items"][0] | {"url": "https://official.example.com/new-source"})
+        common.save_json(DATA / "pending.json", pending)
+        write.main()
+        check(solo.calls == 5, "a new source reopens the story")
+    finally:
+        write.build_providers, write.now_utc = original_build, original_now
+
+
 def main():
     tests = [test_flexible_publication_keeps_evidence_gates,
+             test_persistent_story_retry_budget,
              test_story_budget_allows_later_groups,
              test_budget_saves_completed_articles_and_retains_unattempted_groups,
              test_publish_flow,

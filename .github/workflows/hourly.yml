@@ -19,6 +19,7 @@ on:
       - "pipeline/dedupe.py"
       - "pipeline/fulltext.py"
       - "pipeline/draft_recovery.py"
+      - "pipeline/news_retry.py"
       - "pipeline/manual_draft.py"
       - "pipeline/airport_codes.py"
       - "config/airport_iata_aliases.json"
@@ -62,6 +63,8 @@ jobs:
           python tests/test_provider_health.py
           python tests/test_build_resilience.py
           python tests/test_news_freshness.py
+          python tests/test_news_retry.py
+          python tests/test_news_chronology.py
 
   update:
     if: github.event_name != 'pull_request'
@@ -91,7 +94,10 @@ jobs:
         run: python tests/test_airport_codes.py
 
       - name: Test news freshness invariants
-        run: python tests/test_news_freshness.py
+        run: |
+          python tests/test_news_freshness.py
+          python tests/test_news_retry.py
+          python tests/test_news_chronology.py
 
       - name: Test provider cooldown persistence
         run: python tests/test_provider_health.py
