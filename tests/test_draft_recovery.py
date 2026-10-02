@@ -10,7 +10,7 @@ from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pipeline"))
-from draft_recovery import normalize_reader_copy, repair_prompt, draft_timeout, ProviderCallTimeout
+from draft_recovery import normalize_reader_copy, normalize_fact_ids, repair_prompt, draft_timeout, ProviderCallTimeout
 import common
 import dedupe
 
@@ -21,6 +21,30 @@ class Converter:
 
 
 class RecoveryTests(unittest.TestCase):
+    def test_numbering_preserves_quotes_and_reference_relationships(self):
+        draft = {"facts": [{"factId": "F3", "sourceQuote": "exact first"},
+                           {"factId": "F8", "sourceQuote": "exact second"}],
+                 "headlineSupportedBy": ["F8"], "summarySupportedBy": ["F3", "F8"]}
+        result = normalize_fact_ids(draft)
+        self.assertEqual([f["factId"] for f in result["facts"]], ["F1", "F2"])
+        self.assertEqual(result["headlineSupportedBy"], ["F2"])
+        self.assertEqual(result["summarySupportedBy"], ["F1", "F2"])
+        self.assertEqual(result["facts"][1]["sourceQuote"], "exact second")
+        self.assertEqual(draft["facts"][0]["factId"], "F3")
+        draft["facts"][1]["factId"] = "F3"
+        self.assertEqual(normalize_fact_ids(draft), draft)
+        draft["facts"][1]["factId"] = "F8"
+        draft["headlineSupportedBy"] = ["F99"]
+        self.assertEqual(normalize_fact_ids(draft), draft)
+
+    def test_missing_summary_reuses_copy_without_inventing_support(self):
+        draft = {"en": {"body": ["Existing supported sentence."]},
+                 "summarySupportedBy": ["F9"]}
+        result = normalize_reader_copy(draft, Converter())
+        self.assertEqual(result["en"]["summary"], "Existing supported sentence.")
+        self.assertEqual(result["summarySupportedBy"], ["F9"])
+        self.assertNotIn("summary", draft["en"])
+
     def test_conversion_preserves_verbatim_evidence_and_input(self):
         source = {"zh": {"title": "中国飞机", "summary": "飞机", "body": ["中国"]},
                   "en": {"title": "China aircraft"}, "flash": {"zh": "飞机"},
