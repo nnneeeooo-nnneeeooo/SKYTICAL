@@ -7065,14 +7065,14 @@
     },
     "a-20260927-1603-do-private-jets-burn-1015-less-fuel-per": {
       "status": "none",
-      "attempts": 6,
+      "attempts": 7,
       "rejection_reasons": [
         "source-candidate:no-primary-visual-entity",
         "lookup_official_source_photo:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-10-01T00:18:01.668141+00:00",
-      "next_retry_utc": "2026-10-02T00:18:01.668141+00:00"
+      "checked_utc": "2026-10-02T07:50:32.666739+00:00",
+      "next_retry_utc": "2026-10-03T07:50:32.666739+00:00"
     },
     "a-20260927-2242-etna-ash-forces-catania-airport-to-suspe": {
       "status": "none",
@@ -7086,14 +7086,14 @@
     },
     "a-20260930-1937-eurocontrol-and-easa-launch-avenir-envir": {
       "status": "none",
-      "attempts": 3,
+      "attempts": 4,
       "rejection_reasons": [
         "lookup_official_source_photo:no-result",
         "lookup_commons:no-result",
         "topic_image:no-result"
       ],
-      "checked_utc": "2026-10-01T09:41:46.015728+00:00",
-      "next_retry_utc": "2026-10-01T15:41:46.015728+00:00"
+      "checked_utc": "2026-10-02T07:50:32.666739+00:00",
+      "next_retry_utc": "2026-10-03T07:50:32.666739+00:00"
     },
     "a-20260930-2312-starlux-airlines-and-american-airlines-l": {
       "status": "matched",
@@ -7524,6 +7524,28 @@
       ],
       "checked_utc": "2026-10-02T07:43:42.660714+00:00",
       "next_retry_utc": "2026-10-02T13:43:42.660714+00:00"
+    },
+    "a-20261002-0745-philippine-airlines-to-restore-nonstop-m": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:airline-mismatch",
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-02T07:50:32.666739+00:00",
+      "next_retry_utc": "2026-10-02T13:50:32.666739+00:00"
+    },
+    "a-20261001-1529-taiwan-caa-international-fuel-surcharges": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-02T07:50:32.666739+00:00",
+      "next_retry_utc": "2026-10-02T13:50:32.666739+00:00"
     }
   },
   "sources": {
@@ -9166,6 +9188,12 @@
       "rejection_reason": "no-event-photo",
       "parser_version": 4,
       "next_retry_utc": "2026-10-02T13:26:46.264735+00:00"
+    },
+    "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026": {
+      "image": null,
+      "rejection_reason": "airline-mismatch",
+      "parser_version": 4,
+      "next_retry_utc": "2026-10-02T13:50:32.666739+00:00"
     }
   }
 }

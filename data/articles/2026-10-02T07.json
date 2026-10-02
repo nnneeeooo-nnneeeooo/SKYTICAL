@@ -126,6 +126,134 @@
         }
       ],
       "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261002-0745-philippine-airlines-to-restore-nonstop-m",
+      "publishedUtc": "2026-10-02T07:45Z",
+      "cat": "ops",
+      "primarySource": "AeroTime",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "菲律賓航空10月25日起復飛馬尼拉－塞班直飛航線",
+        "summary": "菲律賓航空；10月25日復飛馬尼拉至塞班航線",
+        "body": [
+          "菲律賓航空（Philippine Airlines）宣佈，自2026年10月25日起恢復馬尼拉與北馬利安納羣島塞班之間的直飛航班服務。",
+          "該航線連接馬尼拉尼諾伊·艾奎諾國際機場（MNL）與塞班國際機場（SPN），並定位為結合菲律賓與塞班的多目的地度假旅遊路線。",
+          "菲律賓航空表示，該服務將強化其亞洲與太平洋地區的航網，並支援菲律賓、北馬利安納羣島與亞洲主要市場之間的旅遊及商業聯繫。"
+        ]
+      },
+      "en": {
+        "title": "Philippine Airlines to restore nonstop Manila-Saipan flights from Oct 25, 2026",
+        "summary": "Philippine Airlines; nonstop flights resume Oct 25, 2026",
+        "body": [
+          "Philippine Airlines (PAL) has announced it will restore nonstop service between Manila and Saipan, the largest island of the Commonwealth of the Northern Mariana Islands, starting October 25, 2026.",
+          "The route will connect Ninoy Aquino International Airport (MNL) in Manila with Saipan International Airport (SPN). It is positioned as a leisure link for multi-destination holidays combining the Philippines with Saipan.",
+          "PAL said it is also targeting connecting traffic through its Manila hub, and that the service strengthens its network across Asia and the Pacific while supporting tourism and commercial ties between the Philippines, the Northern Mariana Islands and key Asian markets."
+        ]
+      },
+      "sources": [
+        {
+          "name": "AeroTime — Philippine Airlines restores nonstop Manila–Saipan flights…",
+          "url": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-01T13:30Z",
+      "writer": "wechat:Deepseek-v4-flash",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Philippine Airlines will restore nonstop flights between Manila and Saipan from October 25, 2026.",
+          "sourceQuote": "Philippine Airlines (PAL) announced it will restore nonstop flights between Ninoy Aquino International Airport (MNL) in Manila and Saipan International Airport (SPN) in the Northern Mariana Islands from October 25, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The route connects Ninoy Aquino International Airport (MNL) in Manila with Saipan International Airport (SPN).",
+          "sourceQuote": "nonstop flights between Ninoy Aquino International Airport (MNL) in Manila and Saipan International Airport (SPN) in the Northern Mariana Islands",
+          "sourceUrl": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "Philippine Airlines"
+        ],
+        "airlines": [
+          "Philippine Airlines"
+        ],
+        "airports": [
+          "Ninoy Aquino International Airport (MNL)",
+          "Saipan International Airport (SPN)"
+        ],
+        "locations": [
+          "Manila",
+          "Saipan",
+          "Northern Mariana Islands"
+        ],
+        "event_dates": [
+          "October 25, 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "Philippine Airlines",
+          "sourceQuote": "Philippine Airlines (PAL)",
+          "sourceUrl": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Philippine Airlines",
+          "sourceQuote": "Philippine Airlines (PAL)",
+          "sourceUrl": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026"
+        },
+        {
+          "entityType": "airports",
+          "value": "Ninoy Aquino International Airport (MNL)",
+          "sourceQuote": "Ninoy Aquino International Airport (MNL)",
+          "sourceUrl": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026"
+        },
+        {
+          "entityType": "airports",
+          "value": "Saipan International Airport (SPN)",
+          "sourceQuote": "Saipan International Airport (SPN)",
+          "sourceUrl": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026"
+        },
+        {
+          "entityType": "locations",
+          "value": "Manila",
+          "sourceQuote": "in Manila",
+          "sourceUrl": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026"
+        },
+        {
+          "entityType": "locations",
+          "value": "Saipan",
+          "sourceQuote": "Saipan International Airport (SPN)",
+          "sourceUrl": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026"
+        },
+        {
+          "entityType": "locations",
+          "value": "Northern Mariana Islands",
+          "sourceQuote": "the Northern Mariana Islands",
+          "sourceUrl": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "October 25, 2026",
+          "sourceQuote": "October 25, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/philippine-airlines-restores-nonstop-manila-saipan-flights-from-october-25-2026"
+        }
+      ],
+      "evidenceVersion": 2
     }
   ]
 }
