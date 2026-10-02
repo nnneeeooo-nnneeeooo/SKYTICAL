@@ -3774,11 +3774,9 @@ def main() -> int:
         if views:
             fl = flash_view(flashes, lang, priority_ids)
             hero = headline_views[0] if headline_views else views[0]
-            # Keep the other carousel candidates discoverable in Latest news;
-            # only avoid repeating the initially visible hero immediately.
-            pinned_ids = {hero["id"]}
-            feed = [view for view in views if view["id"] not in pinned_ids]
-            feed = feed[:HOME_FEED_LIMIT]
+            # Latest news must include headline stories in source-date order,
+            # even when the same article is also visible in the carousel.
+            feed = views[:HOME_FEED_LIMIT]
         elif agg_items:
             agg = True
             av = agg_view(agg_items, lang)
