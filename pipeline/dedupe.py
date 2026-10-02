@@ -11,6 +11,7 @@ data/seen.json is READ-ONLY here — write.py owns it (see CONTRACTS.md).
 from __future__ import annotations
 
 import re
+from news_retry import RetryLedger
 from datetime import datetime, timedelta, timezone
 from difflib import SequenceMatcher
 
@@ -425,7 +426,16 @@ def main() -> None:
         reverse=True,
     )
     major_groups = sum(1 for entry in ranked if entry[1])
-    selected = ranked[:MAX_GROUPS]
+    retry_ledger = RetryLedger(now)
+    # Schedule before the discovery cap so cooling or exhausted major
+    # stories cannot displace fresh news every hour.
+    candidates = [{"items": entry[5], "rank": entry} for entry in ranked]
+    eligible, deferred = retry_ledger.plan(candidates, MAX_GROUPS)
+    selected = [g["rank"] for g in eligible]
+    # Keep cooling rows visible in pending, within the existing queue cap.
+    selected += [g["rank"] for g in deferred
+                 if not retry_ledger.exhausted(g)][:MAX_GROUPS - len(selected)]
+    retry_ledger.save()
     selected_material_groups = sum(1 for entry in selected if entry[2])
     selected_major_groups = sum(1 for entry in selected if entry[1])
 

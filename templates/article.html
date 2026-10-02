@@ -20,7 +20,7 @@
       <div class="article-meta text-muted">
         <time datetime="{{ a.published_iso }}" style="font-weight:800;color:var(--color-accent);">{{ t.publishedLabel }}{{ t.metaColon }}{{ a.published_meta_ts }}</time>
         {% if a.modified_iso != a.published_iso %}<time datetime="{{ a.modified_iso }}">{{ t.modifiedLabel }}{{ t.metaColon }}{{ a.modified_meta_ts }}</time>{% endif %}
-        <span>{{ t.sourceTimeLabel }}{{ t.metaColon }}{{ a.meta_ts }}</span>
+        {% if a.source_meta_ts %}<span>{{ t.sourceTimeLabel }}{{ t.metaColon }}{{ a.source_meta_ts }}</span>{% endif %}
         <span>{{ t.articleBylineLabel }}{{ t.metaColon }}<a href="{{ about_url }}">{{ t.articleByline }}</a></span>
         <span>{{ t.autoCompiled }} · {{ t.mainSource }}: {{ a.source }}</span>
         <span style="margin-left:auto;">{{ t.refreshNote }}</span>

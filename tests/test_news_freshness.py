@@ -41,13 +41,14 @@ def main() -> None:
         assert source["type"] == "rss"
         assert "news.google.com/rss/search" in source["endpoint"]
 
-    # Source publication time drives reader-facing chronology.
+    # First site publication drives reader-facing chronology.
     late = build.prep_article(_article(
         published="2026-10-01T12:00Z",
         source_published="2026-09-29T10:00Z",
     ))
     assert late is not None
-    assert late["news_dt"].isoformat().startswith("2026-09-29T10:00")
+    assert late["news_dt"].isoformat().startswith("2026-10-01T12:00")
+    assert late["source_meta_ts"].startswith("2026-09-29")
     assert late["published_dt"].isoformat().startswith("2026-10-01T12:00")
     assert late["late_ingest"] is True
 
