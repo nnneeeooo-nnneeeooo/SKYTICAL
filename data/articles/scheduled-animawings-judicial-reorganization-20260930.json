@@ -6,7 +6,18 @@
       "sourcePublishedUtc": "2026-09-30T00:00:00Z",
       "cat": "biz",
       "primarySource": "AnimaWings",
-      "image": null,
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Airbus_A320_-_9A-BTL_from_Trade_Air_during_take_off_at_LFBT_airport.jpg/1280px-Airbus_A320_-_9A-BTL_from_Trade_Air_during_take_off_at_LFBT_airport.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=164186032",
+        "credit": "Shougissime",
+        "license": "CC BY-SA 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "Airbus A320 aircraft",
+        "subject": "Airbus A320",
+        "description": "Airbus A320 - 9A-BTL from Trade Air during take off at LFBT airport",
+        "photoYear": 2025
+      },
       "zh": {
         "title": "AnimaWings 啟動司法重整　以兩架 A320 維持營運並調整航班",
         "summary": "這家羅馬尼亞航空公司表示，技術與成本壓力促使其啟動司法重整；目前由兩架 A320 執飛，部分航班可能調整或取消。",
@@ -26,23 +37,58 @@
         ]
       },
       "sources": [
-        {"name": "AnimaWings", "url": "https://www.animawings.com/ro/informatii-importante-passageri?mc_cid=69d45e3eb9&mc_eid=cd1f92f96c"},
-        {"name": "AeroTime", "url": "https://www.aerotime.aero/articles/romanian-airline-animawings-files-for-insolvency-disposes-of-entire-a220-fleet"}
+        {
+          "name": "AnimaWings",
+          "url": "https://www.animawings.com/ro/informatii-importante-passageri?mc_cid=69d45e3eb9&mc_eid=cd1f92f96c"
+        },
+        {
+          "name": "AeroTime",
+          "url": "https://www.aerotime.aero/articles/romanian-airline-animawings-files-for-insolvency-disposes-of-entire-a220-fleet"
+        }
       ],
       "writer": "scheduled:GPT 6.1 Sol",
-      "writerModels": ["GPT 6.1 Sol"],
+      "writerModels": [
+        "GPT 6.1 Sol"
+      ],
       "articleFormat": "full",
-      "availableLanguages": ["zh", "en"],
-      "entities": {"manufacturers": ["Airbus"], "operators": ["AnimaWings"], "aircraft": ["Airbus A320", "Airbus A220-300"], "airports": []},
+      "availableLanguages": [
+        "zh",
+        "en"
+      ],
+      "entities": {
+        "manufacturers": [
+          "Airbus"
+        ],
+        "operators": [
+          "AnimaWings"
+        ],
+        "aircraft": [
+          "Airbus A320",
+          "Airbus A220-300"
+        ],
+        "airports": []
+      },
       "scheduledNews": {
         "version": 1,
         "eventKey": "animawings-judicial-reorganization-20260930",
         "checkedUtc": "2026-10-01T13:13:06Z",
-        "modelAttribution": {"kind": "user_requested_label", "verifiedRuntimeModel": false},
+        "modelAttribution": {
+          "kind": "user_requested_label",
+          "verifiedRuntimeModel": false
+        },
         "facts": [
-          {"claim": "AnimaWings initiated judicial reorganization on 2026-09-30 while stating that operations would continue.", "sourceUrl": "https://www.animawings.com/ro/informatii-importante-passageri?mc_cid=69d45e3eb9&mc_eid=cd1f92f96c"},
-          {"claim": "The airline said two Airbus A320s were currently available and that isolated schedule changes or cancellations were possible.", "sourceUrl": "https://www.animawings.com/ro/informatii-importante-passageri?mc_cid=69d45e3eb9&mc_eid=cd1f92f96c"},
-          {"claim": "AeroTime reported that six leased A220-300s had left the operation as the fleet shrank from eight aircraft to two.", "sourceUrl": "https://www.aerotime.aero/articles/romanian-airline-animawings-files-for-insolvency-disposes-of-entire-a220-fleet"}
+          {
+            "claim": "AnimaWings initiated judicial reorganization on 2026-09-30 while stating that operations would continue.",
+            "sourceUrl": "https://www.animawings.com/ro/informatii-importante-passageri?mc_cid=69d45e3eb9&mc_eid=cd1f92f96c"
+          },
+          {
+            "claim": "The airline said two Airbus A320s were currently available and that isolated schedule changes or cancellations were possible.",
+            "sourceUrl": "https://www.animawings.com/ro/informatii-importante-passageri?mc_cid=69d45e3eb9&mc_eid=cd1f92f96c"
+          },
+          {
+            "claim": "AeroTime reported that six leased A220-300s had left the operation as the fleet shrank from eight aircraft to two.",
+            "sourceUrl": "https://www.aerotime.aero/articles/romanian-airline-animawings-files-for-insolvency-disposes-of-entire-a220-fleet"
+          }
         ]
       }
     }
