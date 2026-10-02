@@ -1,10 +1,20 @@
 {
   "schemaVersion": 1,
   "platforms": {
-    "gemini": {
+    "nvidia": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-01T22:23Z",
-      "updatedUtc": "2026-10-01T21:23Z"
+      "cooldownUntilUtc": "2026-10-02T07:47Z",
+      "updatedUtc": "2026-10-02T06:47Z"
+    },
+    "gemini": {
+      "failureClass": "quota",
+      "cooldownUntilUtc": "2026-10-02T12:52Z",
+      "updatedUtc": "2026-10-02T06:52Z"
+    },
+    "openrouter": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-02T07:55Z",
+      "updatedUtc": "2026-10-02T06:55Z"
     }
   }
 }
