@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-10-01T16:58Z",
-  "targetDateTpe": "2026-10-02",
+  "generatedUtc": "2026-10-02T19:40Z",
+  "targetDateTpe": "2026-10-03",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "wechat:Deepseek-v4-flash",
+  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
   "sourceArticleIds": [
+    "a-20261002-0745-philippine-airlines-to-restore-nonstop-m",
+    "a-20261002-0718-first-two-f-16v-block-70-jets-land-at-ta",
+    "a-20261001-manual-starlux-b58310",
+    "a-20261001-1529-taiwan-caa-international-fuel-surcharges",
     "a-20261001-1529-china-airlines-launches-recruitment-for",
-    "a-air-astana-astana-bangkok-launch-20261211",
-    "a-austrian-final-767-retirement-20261201",
-    "a-rwandair-four-a330200-expansion-20261001",
-    "a-mag-sepang-aircraft-engineering-acquisition-20261001",
-    "a-taic-air-new-zealand-q300-timaru-final-report-20261001"
+    "a-boeing-usaf-mh139a-full-rate-production-order-20261001"
   ],
   "prompts": {
     "zh": [
-      "華航徵才資訊",
-      "Air Astana 曼谷航線",
-      "Austrian 767 退役",
-      "RwandAir A330 擴充",
-      "馬航收購 Sepang 工程",
-      "紐西蘭 Q300 報告"
+      "搜尋菲律賓航空馬尼拉塞班航班",
+      "查詢F-16V志航基地降落資訊",
+      "搜尋星宇航空A330-900 B-58310",
+      "查詢國籍航空國際燃油附加費",
+      "搜尋華航客艙組員徵才資訊",
+      "查詢波音MH-139A全速率生產訂單"
     ],
     "en": [
-      "China Airlines recruitment info",
-      "Air Astana Bangkok route",
-      "Austrian 767 retirement",
-      "RwandAir A330 expansion",
-      "MAG Sepang engineering deal",
-      "New Zealand Q300 report"
+      "Search Philippine Airlines Manila Saipan flights",
+      "Lookup F-16V Chihhang Air Base landing info",
+      "Find Starlux A330-900 B-58310 details",
+      "Check Taiwan carriers international fuel surcharge",
+      "Search China Airlines cabin crew recruitment info",
+      "Lookup Boeing MH-139A full rate production order"
     ]
   }
 }
