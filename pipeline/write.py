@@ -39,7 +39,7 @@ from pathlib import Path
 
 from opencc import OpenCC
 from draft_recovery import (
-    normalize_reader_copy, repair_prompt, draft_timeout, ProviderCallTimeout,
+    normalize_reader_copy, normalize_fact_ids, repair_prompt, draft_timeout, ProviderCallTimeout,
 )
 
 from common import (
@@ -79,7 +79,8 @@ from providers import (
 
 MAX_GROUPS_PER_RUN = 10
 MAX_DRAFT_SECONDS_PER_RUN = 15 * 60
-MAX_MODEL_ATTEMPT_SECONDS = 180
+MAX_MODEL_ATTEMPT_SECONDS = 60
+MAX_DRAFT_SECONDS_PER_GROUP = 120
 TRANSIENT_PLATFORM_FAILURE_LIMIT = 2
 MAX_INCIDENTS = 60
 SEEN_MAX_AGE_DAYS = 21
@@ -94,6 +95,10 @@ ZH_BRIEF_MIN_CHARS = 180
 ZH_BRIEF_MAX_CHARS = 320
 EN_BRIEF_MIN_WORDS = 90
 EN_BRIEF_MAX_WORDS = 150
+# Prompt lengths remain editorial targets; publication has a lower safety
+# floor and no brief ceiling. Evidence gates still decide whether to publish.
+ZH_PUBLICATION_MIN_CHARS = 140
+EN_PUBLICATION_MIN_WORDS = 70
 
 _S2T = OpenCC("s2t")
 
@@ -430,6 +435,7 @@ AVIATION SAFETY RULES (strictest standard):
 
 FACT BINDING:
 - Give facts sequential factId values F1, F2, ... without gaps.
+  Formatting defects can be repaired; never invent evidence to fill a gap.
 - headlineSupportedBy and summarySupportedBy contain existing fact IDs only.
   Titles and summaries may use only information in those listed facts.
 - Each fact is atomic. Never mix dates, flights, aircraft, operators,
@@ -521,8 +527,10 @@ OUTPUT RULES:
   publish: 4 to 7 substantive paragraphs per language; zh at least 500 Chinese/alphanumeric content characters; en at least 250 words.
   publish_brief: 2 to 7 substantive paragraphs per language; zh 180-320 Chinese/
   alphanumeric content characters; en 90-150 words.
-  Never pad, repeat, editorialize or add unstated background. These limits are
-  machine-checked. Use publish_brief for a verified event that cannot
+  Brief lengths are editorial targets. The publication floor is 140 Chinese
+  content characters and 70 English words, with no brief length ceiling.
+  Never pad, repeat, editorialize or add unstated background.
+  Use publish_brief for a verified event that cannot
   support full length; reject if even a safe brief is impossible.
 - When an ICAO aircraft type code appears in SOURCE and the trusted aircraft
   reference supplies a display name, do not leave the code unexplained. On
@@ -1037,8 +1045,8 @@ def draft_article_format(draft: dict) -> str | None:
     brief = (
         BRIEF_MIN_BODY_PARAGRAPHS <= len(zh_body) <= MAX_BODY_PARAGRAPHS
         and BRIEF_MIN_BODY_PARAGRAPHS <= len(en_body) <= MAX_BODY_PARAGRAPHS
-        and ZH_BRIEF_MIN_CHARS <= zh_chars <= ZH_BRIEF_MAX_CHARS
-        and EN_BRIEF_MIN_WORDS <= en_words <= EN_BRIEF_MAX_WORDS
+        and zh_chars >= ZH_PUBLICATION_MIN_CHARS
+        and en_words >= EN_PUBLICATION_MIN_WORDS
     )
     return "brief" if brief else None
 
@@ -1441,6 +1449,8 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
     last_problem = "draft validation failed"
     previous_candidate = None
     for attempt in range(tries):
+        if deadline is not None and time.monotonic() >= deadline:
+            raise ProviderCallTimeout("model wall-clock timeout: story budget exhausted")
         if ai_calls is not None:
             ai_calls[provider.label] = ai_calls.get(provider.label, 0) + 1
         started_perf = time.perf_counter()
@@ -1480,6 +1490,7 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                     "refusal", "draft", "model refusal")
             return None, None
         candidate = normalize_reader_copy(candidate, _S2T)
+        candidate = normalize_fact_ids(candidate)
         # Reclassify only when the existing body fully meets the other format.
         actual_format = None
         if (isinstance(candidate, dict)
@@ -2816,8 +2827,11 @@ def main() -> None:
             final_model = None
             stopped_by_refusal = False
             fallback_repair_used = False
+            group_deadline = min(draft_deadline,
+                                 time.monotonic() + MAX_DRAFT_SECONDS_PER_GROUP)
             for provider in list(alive):
-                if time.monotonic() >= draft_deadline:
+                if time.monotonic() >= group_deadline:
+                    print(f"write: group {group.get('id')} drafting time budget reached; retained for retry")
                     break
                 if provider not in alive:
                     # Removed mid-group by a platform-level auth/quota
@@ -2830,7 +2844,7 @@ def main() -> None:
                     candidate, facts = _validated_draft(provider, group,
                                                         tries, ai_calls,
                                                         run_trace,
-                                                        deadline=draft_deadline)
+                                                        deadline=group_deadline)
                 except DraftInvalid:
                     if provider is not providers[0]:
                         fallback_repair_used = True

@@ -1079,8 +1079,76 @@ def test_budget_saves_completed_articles_and_retains_unattempted_groups():
           "unattempted group stays unseen for next run")
     print("test_budget_saves_completed_articles_and_retains_unattempted_groups: done")
 
+def test_flexible_publication_keeps_evidence_gates():
+    reset_data_dir()
+    group = load(FIXTURES / "pending.json")["groups"][1]
+    for zh_chars, en_words in ((323, 155), (193, 88), (165, 96), (433, 208)):
+        draft = json.loads(json.dumps(DRAFT_BIZ))
+        draft["zh"]["body"] = ["航" * (zh_chars // 2), "空" * (zh_chars - zh_chars // 2)]
+        draft["en"]["body"] = ["word " * (en_words // 2), "word " * (en_words - en_words // 2)]
+        draft["en"].pop("summary", None)
+        provider = FakeProvider("gemini", [draft])
+        candidate, facts = write._validated_draft(provider, group, tries=1)
+        check(candidate["status"] == "publish_brief" and bool(facts),
+              f"production length case {zh_chars}/{en_words} passes as a verified brief")
+        check(provider.calls == 1, "format recovery avoids a model retry")
+    renamed = json.loads(json.dumps(DRAFT_BIZ))
+    mapping = {f["factId"]: f"F{i + 5}" for i, f in enumerate(renamed["facts"])}
+    for fact in renamed["facts"]:
+        fact["factId"] = mapping[fact["factId"]]
+    for field in ("headlineSupportedBy", "summarySupportedBy"):
+        renamed[field] = [mapping[ref] for ref in renamed[field]]
+    candidate, facts = write._validated_draft(FakeProvider("gemini", [renamed]), group, tries=1)
+    check(candidate["status"] == "publish" and bool(facts),
+          "numbering-only defects pass the full source verification path")
+    renamed["facts"][0]["sourceQuote"] = "This quotation does not exist in SOURCE."
+    try:
+        write._validated_draft(FakeProvider("gemini", [renamed]), group, tries=1)
+        check(False, "renumbering must not rescue an unverified fact")
+    except write.DraftInvalid:
+        check(True, "numbering repair cannot hide a dropped source fact")
+    draft["headlineSupportedBy"] = ["F99"]
+    try:
+        write._validated_draft(FakeProvider("gemini", [draft]), group, tries=1)
+        check(False, "unsupported headline must fail")
+    except write.DraftInvalid:
+        check(True, "flexible lengths still reject unsupported headline references")
+    draft["zh"]["body"] = ["短文", "短文"]
+    check(write.draft_article_format(draft) is None, "empty news cannot pass a soft target")
+
+
+def test_story_budget_allows_later_groups():
+    reset_data_dir()
+    clock = [0.0]
+
+    class SlowFirstProvider(FakeProvider):
+        def draft(self, *args):
+            if not self.calls:
+                self.calls += 1
+                clock[0] += write.MAX_DRAFT_SECONDS_PER_GROUP + 1
+                raise providers.ProviderError("ReadTimeout")
+            return super().draft(*args)
+
+    solo = SlowFirstProvider("gemini", [DRAFT_BIZ, None])
+    original_build, original_clock = write.build_providers, write.time.monotonic
+    write.build_providers = lambda: [solo]
+    write.time.monotonic = lambda: clock[0]
+    try:
+        write.main()
+    finally:
+        write.build_providers, write.time.monotonic = original_build, original_clock
+    check(len(all_articles()) == 1, "a timed-out first story does not block later publication")
+    remaining = load(DATA / "pending.json")["groups"]
+    first = load(FIXTURES / "pending.json")["groups"][0]
+    check(any(g["id"] == first["id"] for g in remaining), "timed-out story remains retryable")
+    check(common.norm_url(first["items"][0]["url"]) not in load(DATA / "seen.json")["urls"],
+          "timed-out story is not marked consumed")
+
+
 def main():
-    tests = [test_budget_saves_completed_articles_and_retains_unattempted_groups,
+    tests = [test_flexible_publication_keeps_evidence_gates,
+             test_story_budget_allows_later_groups,
+             test_budget_saves_completed_articles_and_retains_unattempted_groups,
              test_publish_flow,
              test_legacy_review_is_reverified_published_and_archived,
              test_group_cap_and_unique_ids,
