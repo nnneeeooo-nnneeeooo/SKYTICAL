@@ -71,6 +71,9 @@ def main() -> None:
     assert "group: skytical-news-pipeline" in hourly
     assert "group: skytical-briefing-pipeline" in briefing
     assert hourly.count("group: skytical-pages-publish") == 1
+    refresh = hourly.index("- name: Refresh persisted retry and provider cooldown state")
+    assert refresh < hourly.index("- name: Run pipeline\n")
+    assert "for path in data/news-retry.json data/provider-health.json" in hourly
     assert briefing.count("group: skytical-pages-publish") == 1
 
     print("test_news_freshness: OK")
