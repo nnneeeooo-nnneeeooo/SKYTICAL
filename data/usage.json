@@ -1,11 +1,11 @@
 {
-  "updatedUtc": "2026-10-03T08:45Z",
+  "updatedUtc": "2026-10-03T12:33Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
-      "calls": 481,
-      "inputTokens": 790651,
-      "outputTokens": 1274037,
+      "calls": 482,
+      "inputTokens": 790797,
+      "outputTokens": 1277550,
       "unknownCalls": 330
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
@@ -146,12 +146,58 @@
       "outputTokens": 271362
     },
     "2026-10-03": {
-      "calls": 76,
-      "inputTokens": 330802,
-      "outputTokens": 76474
+      "calls": 77,
+      "inputTokens": 330948,
+      "outputTokens": 79987
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-10-03T12:33Z",
+      "finishedUtc": "2026-10-03T12:33Z",
+      "workflow": "briefing",
+      "taskType": "briefing",
+      "groupId": "2026-10-03-afternoon",
+      "eventId": null,
+      "sourceCount": 2,
+      "primarySource": "SKYTICAL verified articles",
+      "result": "published",
+      "articleId": null,
+      "finalStatus": "published_with_llm_intro",
+      "finalModel": "gemini:gemini-3.6-flash",
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "drafting": 16163,
+        "total": 16720
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-10-03T12:33Z",
+          "durationMs": 16163,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-10-03T08:34Z",
       "finishedUtc": "2026-10-03T08:36Z",
@@ -96775,63 +96821,6 @@
           "httpCalls": 1,
           "repairCalls": 0,
           "httpDurationMs": 67380,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-09-16T20:40Z",
-      "finishedUtc": "2026-09-16T20:44Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260916-2039-4",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "AeroTime",
-      "result": "published",
-      "articleId": "a-20260916-2039-hermeus-obtains-license-from-pratt-whitn",
-      "finalStatus": "publish",
-      "finalModel": "gemini:gemini-3.6-flash",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 3937,
-        "promptAssembly": 2,
-        "drafting": 65714,
-        "validation": 0,
-        "factVerification": 0,
-        "evidenceBinding": 0,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": 8,
-        "total": 241749
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-09-16T20:43Z",
-          "durationMs": 65715,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 65710,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,
