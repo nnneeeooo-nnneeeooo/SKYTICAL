@@ -1,12 +1,12 @@
 {
-  "updatedUtc": "2026-10-02T23:25Z",
+  "updatedUtc": "2026-10-03T01:57Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
-      "calls": 468,
+      "calls": 469,
       "inputTokens": 790651,
       "outputTokens": 1274037,
-      "unknownCalls": 317
+      "unknownCalls": 318
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "calls": 870,
@@ -144,9 +144,60 @@
       "calls": 209,
       "inputTokens": 1079656,
       "outputTokens": 271362
+    },
+    "2026-10-03": {
+      "calls": 1,
+      "inputTokens": 0,
+      "outputTokens": 0
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-10-03T01:57Z",
+      "finishedUtc": "2026-10-03T01:57Z",
+      "workflow": "briefing",
+      "taskType": "briefing",
+      "groupId": "2026-10-03-morning",
+      "eventId": null,
+      "sourceCount": 3,
+      "primarySource": "SKYTICAL verified articles",
+      "result": "published",
+      "articleId": null,
+      "finalStatus": "published_without_llm_intro",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "drafting": 1563,
+        "total": 2125
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-10-03T01:57Z",
+          "durationMs": 1563,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 503",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-10-02T23:16Z",
       "finishedUtc": "2026-10-02T23:18Z",
@@ -96331,63 +96382,6 @@
           "httpCalls": 1,
           "repairCalls": 0,
           "httpDurationMs": 39535,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-09-16T15:25Z",
-      "finishedUtc": "2026-09-16T16:09Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260916-1524-11",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "AeroTime",
-      "result": "published",
-      "articleId": "a-20260916-1524-swarm-aero-unveils-gamera-drone-targetin",
-      "finalStatus": "publish",
-      "finalModel": "wechat:Deepseek-v4-flash",
-      "fallbackUsed": false,
-      "attemptCount": 1,
-      "httpCallCount": 1,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 4009,
-        "promptAssembly": 3,
-        "drafting": 25027,
-        "validation": 0,
-        "factVerification": 0,
-        "evidenceBinding": 0,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": 8,
-        "total": 2672574
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "wechat",
-          "model": "Deepseek-v4-flash",
-          "label": "wechat:Deepseek-v4-flash",
-          "startedUtc": "2026-09-16T16:09Z",
-          "durationMs": 25029,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 25023,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,
