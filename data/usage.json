@@ -1,12 +1,12 @@
 {
-  "updatedUtc": "2026-10-03T18:26Z",
+  "updatedUtc": "2026-10-03T18:41Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
-      "calls": 495,
+      "calls": 496,
       "inputTokens": 790797,
       "outputTokens": 1277550,
-      "unknownCalls": 343
+      "unknownCalls": 344
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "calls": 885,
@@ -146,12 +146,58 @@
       "outputTokens": 271362
     },
     "2026-10-03": {
-      "calls": 155,
+      "calls": 156,
       "inputTokens": 544248,
       "outputTokens": 122392
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-10-03T18:41Z",
+      "finishedUtc": "2026-10-03T18:41Z",
+      "workflow": "briefing",
+      "taskType": "briefing",
+      "groupId": "2026-10-03-evening",
+      "eventId": null,
+      "sourceCount": 2,
+      "primarySource": "SKYTICAL verified articles",
+      "result": "published",
+      "articleId": null,
+      "finalStatus": "published_without_llm_intro",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "drafting": 11037,
+        "total": 11626
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-10-03T18:41Z",
+          "durationMs": 11037,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 503",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-10-03T18:17Z",
       "finishedUtc": "2026-10-03T18:22Z",
@@ -96818,81 +96864,6 @@
           "httpCalls": 1,
           "repairCalls": 0,
           "httpDurationMs": 9783,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-09-17T02:32Z",
-      "finishedUtc": "2026-09-17T02:33Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260917-0231-3",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Simple Flying",
-      "result": "published",
-      "articleId": "a-20260917-0231-us-air-force-may-keep-rq-4-global-hawk-f",
-      "finalStatus": "publish",
-      "finalModel": "gemini:gemini-3.5-flash",
-      "fallbackUsed": true,
-      "attemptCount": 2,
-      "httpCallCount": 2,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 3808,
-        "promptAssembly": 0,
-        "drafting": 40129,
-        "validation": 1,
-        "factVerification": 0,
-        "evidenceBinding": 0,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": 5,
-        "total": 90490
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-09-17T02:32Z",
-          "durationMs": 9630,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 9630,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "http_error",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 503",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "gemini",
-          "model": "gemini-3.5-flash",
-          "label": "gemini:gemini-3.5-flash",
-          "startedUtc": "2026-09-17T02:33Z",
-          "durationMs": 30500,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 30497,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,
