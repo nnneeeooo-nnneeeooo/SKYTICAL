@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-10-04T18:35Z",
+  "updatedUtc": "2026-10-04T18:38Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
@@ -43,6 +43,12 @@
       "inputTokens": 11917,
       "outputTokens": 2192,
       "unknownCalls": 12
+    },
+    "openai:gpt-6-luna+search": {
+      "calls": 1,
+      "inputTokens": 38831,
+      "outputTokens": 1124,
+      "unknownCalls": 0
     }
   },
   "daily": {
@@ -157,9 +163,9 @@
       "outputTokens": 157816
     },
     "2026-10-04": {
-      "calls": 265,
-      "inputTokens": 1237853,
-      "outputTokens": 277739
+      "calls": 266,
+      "inputTokens": 1276684,
+      "outputTokens": 278863
     }
   },
   "recentRuns": [
