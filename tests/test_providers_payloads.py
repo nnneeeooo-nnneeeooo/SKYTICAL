@@ -139,7 +139,6 @@ def test_nvidia_model_profiles():
 
 def test_model_priority_defaults():
     expected = (
-        "openai:gpt-6-luna",
         "opencode:claude-sonnet-4-6",
         "opencode:gpt-5.5",
         "gemini:gemini-3.6-flash",
@@ -168,21 +167,22 @@ def test_model_priority_defaults():
         "openrouter:poolside/laguna-s-2.1:free",
         "openrouter:cohere/north-mini-code:free",
         "openrouter:poolside/laguna-xs-2.1:free",
+        "openai:gpt-6-luna",
     )
     check(providers.MODEL_ORDER == expected,
           "model priority order matches the configured product order")
     active = (
-        "openai:gpt-6-luna",
         "gemini:gemini-3.6-flash",
         "gemini:gemini-3.5-flash",
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
         "wechat:Deepseek-v4-flash",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
+        "openai:gpt-6-luna",
     )
     check(AUTOMATIC_MODEL_ORDER == active
           and providers.DEFAULT_ORDER == ",".join(active),
-          "GPT-6 Luna is primary and current production routes remain fallbacks")
+          "GPT-6 Luna is last after all preferred production routes")
     check(providers.GEMINI_DEFAULT_MODEL == "gemini-3.6-flash",
           "Gemini 3.6 Flash is the default model")
     check(providers.OPENAI_DEFAULT_MODEL == "gpt-6-luna",
@@ -197,15 +197,36 @@ def test_model_priority_defaults():
           "Claude Sonnet 4.6 is the highest-priority OpenCode default")
     check(providers.WECHAT_DEFAULT_MODEL == "Deepseek-v4-flash",
           "DeepSeek V4 Flash is the WeChat Coding Plan default")
-    check(expected[11:14] == (
+    check(expected[10:13] == (
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
         "wechat:Deepseek-v4-flash",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    ) and expected[15:17] == (
+    ) and expected[14:16] == (
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
         "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
     ), "complete catalog preserves owner model order")
     print("test_model_priority_defaults: done")
+
+
+def test_luna_last_with_environment_override():
+    """Custom workflow order cannot accidentally promote GPT-6 Luna."""
+    keys = ("AVWIRE_PROVIDER_ORDER", "OPENAI_API_KEY", "GEMINI_API_KEY")
+    saved = {key: os.environ.get(key) for key in keys}
+    os.environ["AVWIRE_PROVIDER_ORDER"] = (
+        "openai:gpt-6-luna,gemini:gemini-3.6-flash,openai:gpt-6-luna")
+    os.environ["OPENAI_API_KEY"] = "test-openai-key-not-real"
+    os.environ["GEMINI_API_KEY"] = "test-gemini-key-not-real"
+    try:
+        labels = [provider.label for provider in providers.build_providers()]
+    finally:
+        for key, value in saved.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+    check(labels == ["gemini:gemini-3.6-flash", "openai:gpt-6-luna"],
+          "environment overrides keep Luna last and deduplicate it")
+    print("test_luna_last_with_environment_override: done")
 
 
 def test_wechat_protocol_and_payloads():
@@ -760,6 +781,7 @@ def test_gemini_format_repair():
 def main():
     tests = [
         test_model_priority_defaults,
+        test_luna_last_with_environment_override,
         test_wechat_protocol_and_payloads,
         test_opencode_protocols_and_payloads,
         test_openai_responses_api,

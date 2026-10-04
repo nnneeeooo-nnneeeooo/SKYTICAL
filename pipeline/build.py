@@ -1081,8 +1081,17 @@ def iso_timestamp(dt) -> str:
 # ── data loading / preparation ───────────────────────────────────────────────
 
 # Article-footer model credit: writer id -> short public model name.
+def _public_writer_model_name(value):
+    clean = re.sub(r"[\x00-\x1f\x7f<>]+", " ", str(value))
+    clean = re.sub(r"\s+", " ", clean).strip()
+    normalized = re.sub(r"[^a-z0-9]+", "", clean.casefold())
+    if normalized in {"gpt6luna", "openaigpt6luna"}:
+        return "GPT 6"
+    return clean[:80]
+
+
 _WRITER_MODELS = (
-    ("gpt-6-luna", "GPT-6 Luna"),
+    ("gpt-6-luna", "GPT 6"),
     ("gpt-5.6-sol", "GPT-5.6 Sol"),
     ("nemotron-3-ultra", "Nemotron 3 Ultra"),
     ("nemotron-3-super", "Nemotron 3 Super"),
@@ -1108,8 +1117,7 @@ def writer_model(writer, writer_models=None):
     if isinstance(writer_models, list):
         labels = []
         for value in writer_models[:5]:
-            clean = re.sub(r"[\x00-\x1f\x7f<>]+", " ", str(value))
-            clean = re.sub(r"\s+", " ", clean).strip()[:80]
+            clean = _public_writer_model_name(value)
             if clean and clean not in labels:
                 labels.append(clean)
         if labels:
@@ -1118,9 +1126,7 @@ def writer_model(writer, writer_models=None):
         return None
     provider, model_value = writer.split(":", 1)
     if provider == "manual":
-        exact = re.sub(r"[\x00-\x1f\x7f<>]+", " ", model_value)
-        exact = re.sub(r"\s+", " ", exact).strip()
-        return exact[:80] or None
+        return _public_writer_model_name(model_value) or None
     model_id = model_value.lower()
     for needle, model in _WRITER_MODELS:
         if needle in model_id:

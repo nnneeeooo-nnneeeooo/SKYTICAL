@@ -855,7 +855,10 @@ def test_static_security_contract():
     configured_order = (
         f"AVWIRE_PROVIDER_ORDER: {','.join(AUTOMATIC_MODEL_ORDER)}")
     check(configured_order in hourly and configured_order in briefing,
-          "automatic workflows use GPT-6 Luna and the configured fallbacks")
+          "automatic workflows put GPT-6 Luna after preferred fallbacks")
+    check("AVWIRE_PROVIDER_ORDER: ${{ vars.AVWIRE_PROVIDER_ORDER }},openai:gpt-6-luna"
+          in copilot,
+          "Copilot appends GPT-6 Luna after its configured provider order")
     check("secrets.OPENROUTER_API_KEY" in hourly
           and "secrets.OPENROUTER_API_KEY" in briefing
           and "sk-or-v1-" in hourly and "sk-or-v1-" in briefing,

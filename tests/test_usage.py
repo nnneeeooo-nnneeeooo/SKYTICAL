@@ -292,6 +292,12 @@ check("private workbench usage is separated and priced per article",
       and abs(manual_view["rows"][0]["usd"] - 0.03) < 1e-9)
 check("manual writer credit keeps the owner-entered model name exactly",
       build.writer_model("manual:GPT 5.6 Sol") == "GPT 5.6 Sol")
+check("GPT-6 Luna article credits always use the public name GPT 6",
+      build.writer_model("openai:gpt-6-luna") == "GPT 6"
+      and build.writer_model("manual:OpenAI · GPT-6 Luna") == "GPT 6"
+      and build.writer_model(
+          "manual:OpenAI · GPT-6 Luna", ["OpenAI · GPT-6 Luna"])
+      == "GPT 6")
 rows, totals = build.usage_rows(usage.load_ledger(), prices)
 priority_ledger = {
     "models": {

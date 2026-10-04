@@ -82,6 +82,7 @@ MAX_GROUPS_PER_RUN = 10
 MAX_DRAFT_SECONDS_PER_RUN = 15 * 60
 MAX_MODEL_ATTEMPT_SECONDS = 60
 MAX_DRAFT_SECONDS_PER_GROUP = 120
+PROVIDER_ROUTING_OVERHEAD_SECONDS = 5
 TRANSIENT_PLATFORM_FAILURE_LIMIT = 2
 MAX_INCIDENTS = 60
 SEEN_MAX_AGE_DAYS = 21
@@ -1456,6 +1457,24 @@ def _provider_group_budget(provider) -> float:
     if (isinstance(budget, bool) or not isinstance(budget, (int, float))
             or budget < MAX_DRAFT_SECONDS_PER_GROUP):
         return MAX_DRAFT_SECONDS_PER_GROUP
+    return budget
+
+
+def _provider_chain_budget(providers) -> float:
+    """Leave room for each preferred route to time out before GPT-6 Luna."""
+    providers = tuple(providers)
+    budget = max(
+        (_provider_group_budget(provider) for provider in providers),
+        default=MAX_DRAFT_SECONDS_PER_GROUP,
+    )
+    if any(getattr(provider, "name", None) == "openai"
+           for provider in providers):
+        attempt_budget = sum(
+            _provider_attempt_allowance(provider)
+            for provider in providers)
+        routing_overhead = (
+            len(providers) * PROVIDER_ROUTING_OVERHEAD_SECONDS)
+        budget = max(budget, attempt_budget + routing_overhead)
     return budget
 
 
@@ -2852,10 +2871,7 @@ def main() -> None:
             content_failed = False
             calls_before = sum(ai_calls.values())
             fallback_repair_used = False
-            group_budget = max(
-                (_provider_group_budget(provider) for provider in alive),
-                default=MAX_DRAFT_SECONDS_PER_GROUP,
-            )
+            group_budget = _provider_chain_budget(alive)
             group_deadline = min(
                 draft_deadline, time.monotonic() + group_budget)
             for provider in list(alive):

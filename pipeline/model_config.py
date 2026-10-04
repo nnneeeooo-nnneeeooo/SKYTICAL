@@ -51,7 +51,6 @@ OPENROUTER_MODEL_ORDER = (
 # Complete model catalog used by the manual drafting workbench and historical
 # usage dashboard.
 MODEL_ORDER = (
-    OPENAI_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[0],
@@ -68,18 +67,19 @@ MODEL_ORDER = (
     OPENROUTER_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[7],
     *OPENROUTER_MODEL_ORDER[2:],
+    OPENAI_MODEL_ORDER[0],
 )
 
-# GPT-6 Luna is the requested automatic primary; remaining routes are the
-# current production fallbacks that completed valid articles in telemetry.
+# GPT-6 Luna is the final automatic fallback after the preferred production
+# routes have failed or timed out.
 AUTOMATIC_MODEL_ORDER = (
-    OPENAI_MODEL_ORDER[0],
     DIRECT_MODEL_ORDER[0],
     DIRECT_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[4],
     WECHAT_MODEL_ORDER[0],
     OPENROUTER_MODEL_ORDER[0],
     DIRECT_MODEL_ORDER[6],
+    OPENAI_MODEL_ORDER[0],
 )
 
 DEFAULT_PROVIDER_ORDER = ",".join(AUTOMATIC_MODEL_ORDER)
