@@ -100,7 +100,7 @@ def test_rotation_payload_contains_localized_hero_fields():
     assert payload["kicker"] == "臺灣焦點 · 營運 · 短訊 — 頭條"
     assert payload["summary"] == "國籍航空調整航班。"
     assert "China Airlines Boeing 777-300ER" in payload["image_caption"]
-    assert build.HERO_ROTATION_SECONDS == 8
+    assert build.HERO_ROTATION_SECONDS == 2.5
 
     view["focus"] = False
     global_payload = build.hero_rotation_view(view, "zh")

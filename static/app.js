@@ -212,7 +212,7 @@
     var reduceHeroMotion = window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var heroTransitionMs = reduceHeroMotion ? 0 : 220;
-    var heroRotationMs = Number(heroCarousel && heroCarousel.dataset.rotationMs) || 8000;
+    var heroRotationMs = Number(heroCarousel && heroCarousel.dataset.rotationMs) || 2500;
 
     function renderPriorityHero(story) {
       if (!story || !heroImage) return;
