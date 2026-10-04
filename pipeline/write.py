@@ -1436,6 +1436,29 @@ def _normalize_reject_reason(candidate: dict) -> None:
             f"to establish a new event. Model detail: {reason}")
 
 
+def _provider_attempt_allowance(provider, deadline: float | None = None) -> float:
+    """Return this provider's bounded call budget, clipped to its story time."""
+    allowance = getattr(
+        provider, "max_attempt_seconds", MAX_MODEL_ATTEMPT_SECONDS)
+    if (isinstance(allowance, bool)
+            or not isinstance(allowance, (int, float))
+            or allowance <= 0):
+        allowance = MAX_MODEL_ATTEMPT_SECONDS
+    if deadline is not None:
+        allowance = min(allowance, deadline - time.monotonic())
+    return allowance
+
+
+def _provider_group_budget(provider) -> float:
+    """Use a provider-specific story cap without shrinking the default cap."""
+    budget = getattr(provider, "group_budget_seconds",
+                     MAX_DRAFT_SECONDS_PER_GROUP)
+    if (isinstance(budget, bool) or not isinstance(budget, (int, float))
+            or budget < MAX_DRAFT_SECONDS_PER_GROUP):
+        return MAX_DRAFT_SECONDS_PER_GROUP
+    return budget
+
+
 def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                      run_trace: _RunTrace | None = None,
                      deadline: float | None = None):
@@ -1467,9 +1490,7 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                                                 previous_candidate)
                 if run_trace is not None:
                     run_trace.add_duration("promptAssembly", prompt_started)
-                allowance = MAX_MODEL_ATTEMPT_SECONDS
-                if deadline is not None:
-                    allowance = min(allowance, deadline - time.monotonic())
+                allowance = _provider_attempt_allowance(provider, deadline)
                 with draft_timeout(allowance):
                     candidate = provider.draft(
                         SYSTEM_PROMPT, user_prompt, DRAFT_SCHEMA)
@@ -2831,8 +2852,12 @@ def main() -> None:
             content_failed = False
             calls_before = sum(ai_calls.values())
             fallback_repair_used = False
-            group_deadline = min(draft_deadline,
-                                 time.monotonic() + MAX_DRAFT_SECONDS_PER_GROUP)
+            group_budget = max(
+                (_provider_group_budget(provider) for provider in alive),
+                default=MAX_DRAFT_SECONDS_PER_GROUP,
+            )
+            group_deadline = min(
+                draft_deadline, time.monotonic() + group_budget)
             for provider in list(alive):
                 if time.monotonic() >= group_deadline:
                     print(f"write: group {group.get('id')} drafting time budget reached; retained for retry")

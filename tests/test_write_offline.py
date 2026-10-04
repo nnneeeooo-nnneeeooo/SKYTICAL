@@ -864,6 +864,29 @@ def test_model_chain_and_routing_policy():
     print("test_model_chain_and_routing_policy: done")
 
 
+def test_provider_specific_time_budget():
+    """Extended reasoning providers get bounded extra time; defaults persist."""
+    class SlowReasoningProvider:
+        max_attempt_seconds = 90
+        group_budget_seconds = 180
+
+    provider = SlowReasoningProvider()
+    check(write._provider_attempt_allowance(provider) == 90,
+          "provider-specific request timeout is honored")
+    check(write._provider_group_budget(provider) == 180,
+          "provider-specific group budget is honored")
+    check(write._provider_attempt_allowance(object())
+          == write.MAX_MODEL_ATTEMPT_SECONDS
+          and write._provider_group_budget(object())
+          == write.MAX_DRAFT_SECONDS_PER_GROUP,
+          "providers without custom budgets keep existing defaults")
+    deadline = write.time.monotonic() + 5
+    remaining = write._provider_attempt_allowance(provider, deadline)
+    check(0 < remaining <= 5,
+          "provider request timeout remains clipped to the group deadline")
+    print("test_provider_specific_time_budget: done")
+
+
 def test_editorial_gate():
     """Model reject skips the group; fabricated quotes are dropped/blocking."""
     reset_data_dir()
@@ -1214,7 +1237,8 @@ def main():
              test_legacy_review_is_reverified_published_and_archived,
              test_group_cap_and_unique_ids,
              test_extract_json_and_validate_draft, test_provider_failover,
-             test_model_chain_and_routing_policy, test_editorial_gate,
+             test_model_chain_and_routing_policy,
+             test_provider_specific_time_budget, test_editorial_gate,
              test_completeness_precheck,
              test_major_title_only_is_retained_for_material_retry,
              test_all_providers_auth_dead,

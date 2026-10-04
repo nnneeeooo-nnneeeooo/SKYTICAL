@@ -1373,6 +1373,11 @@ class OpenAIProvider(OpenCodeProvider):
     """Direct OpenAI Responses API writer using the repository's REST stack."""
 
     name = "openai"
+    # GPT-6 Luna with MAX reasoning needs more wall-clock time than the
+    # generic 60-second attempt budget. Keep the per-group cap bounded while
+    # leaving time for configured fallbacks after a slow OpenAI response.
+    max_attempt_seconds = 90
+    group_budget_seconds = 180
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
         selected_model = (
