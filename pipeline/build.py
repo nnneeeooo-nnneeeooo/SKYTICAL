@@ -1469,7 +1469,7 @@ def art_view(a, lang: str):
 
 
 
-HERO_ROTATION_SECONDS = 8
+HERO_ROTATION_SECONDS = 2.5
 _HERO_PIN_MAX_AGE = timedelta(hours=16)
 _HERO_FOCUS_FRESH_AGE = timedelta(hours=24)
 _HERO_FOCUS_FALLBACK_AGE = timedelta(days=7)
