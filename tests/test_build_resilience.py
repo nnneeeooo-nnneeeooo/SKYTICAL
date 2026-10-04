@@ -58,6 +58,8 @@ def main() -> None:
     assert prepared["available_languages"] == ["zh", "en"]
     assert prepared["en"]["title"] == prepared["zh"]["title"]
 
+    assert build.writer_model("wechat:Deepseek-v4-flash") == "DeepSeek V4 Flash"
+
     # Every currently persisted article generation must cross the same
     # normalization boundary and expose a complete prepared-view contract.
     required_view_keys = {

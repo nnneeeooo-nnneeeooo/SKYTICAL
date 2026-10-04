@@ -1097,6 +1097,7 @@ _WRITER_MODELS = (
     ("nemotron-3-super", "Nemotron 3 Super"),
     ("nemotron", "Nemotron"),
     ("deepseek-v4-pro", "DeepSeek V4 Pro"),
+    ("deepseek-v4-flash", "DeepSeek V4 Flash"),
     ("deepseek", "DeepSeek"),
     ("gemini-3.6-flash", "Gemini 3.6 Flash"),
     ("gemini-3.5-flash", "Gemini 3.5 Flash"),
