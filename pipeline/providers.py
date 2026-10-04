@@ -1449,6 +1449,17 @@ _REGISTRY = {
 }
 
 
+def _is_luna_route(token: str) -> bool:
+    """Recognize an OpenAI route that resolves to GPT-6 Luna."""
+    name, _, model = token.partition(":")
+    if name.strip().lower() != "openai":
+        return False
+    selected = (model.strip()
+                or os.environ.get("AVWIRE_OPENAI_MODEL")
+                or OPENAI_DEFAULT_MODEL)
+    return selected.strip().lower() == OPENAI_DEFAULT_MODEL
+
+
 def build_providers() -> list:
     """Instantiate available providers in AVWIRE_PROVIDER_ORDER order.
 
@@ -1458,7 +1469,12 @@ def build_providers() -> list:
     """
     order = os.environ.get("AVWIRE_PROVIDER_ORDER") or DEFAULT_ORDER
     providers, seen = [], set()
-    for token in order.split(","):
+    tokens = order.split(",")
+    # Environment overrides (for example the Copilot workflow variable) may
+    # still list Luna early. Keep it terminal even when configured twice.
+    tokens = ([token for token in tokens if not _is_luna_route(token)]
+              + [token for token in tokens if _is_luna_route(token)])
+    for token in tokens:
         name, _, model = token.strip().partition(":")
         key = name.strip().lower()
         model = model.strip() or None

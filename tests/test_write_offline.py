@@ -867,8 +867,12 @@ def test_model_chain_and_routing_policy():
 def test_provider_specific_time_budget():
     """Extended reasoning providers get bounded extra time; defaults persist."""
     class SlowReasoningProvider:
+        name = "openai"
         max_attempt_seconds = 90
         group_budget_seconds = 180
+
+    class PreferredProvider:
+        name = "gemini"
 
     provider = SlowReasoningProvider()
     check(write._provider_attempt_allowance(provider) == 90,
@@ -880,11 +884,50 @@ def test_provider_specific_time_budget():
           and write._provider_group_budget(object())
           == write.MAX_DRAFT_SECONDS_PER_GROUP,
           "providers without custom budgets keep existing defaults")
+    chain_budget = write._provider_chain_budget(
+        [PreferredProvider(), PreferredProvider(), provider])
+    check(chain_budget >= 60 + 60 + 90 + 3 *
+          write.PROVIDER_ROUTING_OVERHEAD_SECONDS,
+          "group budget leaves room for preferred timeouts and Luna")
+    check(write._provider_chain_budget([PreferredProvider()])
+          == write.MAX_DRAFT_SECONDS_PER_GROUP,
+          "chains without OpenAI keep the existing group cap")
     deadline = write.time.monotonic() + 5
     remaining = write._provider_attempt_allowance(provider, deadline)
     check(0 < remaining <= 5,
           "provider request timeout remains clipped to the group deadline")
     print("test_provider_specific_time_budget: done")
+
+
+def test_luna_is_used_after_preferred_service_failures():
+    """The final provider receives the group after failures and timeout."""
+    reset_data_dir()
+    pending = load(FIXTURES / "pending.json")
+    one_group = {**pending, "groups": [pending["groups"][1]]}
+    (DATA / "pending.json").write_text(
+        json.dumps(one_group, ensure_ascii=False), encoding="utf-8")
+
+    first = FakeProvider(
+        "gemini", [providers.ProviderError("HTTP 503")])
+    second = FakeProvider(
+        "nvidia", [write.ProviderCallTimeout("model wall-clock timeout")])
+    luna = FakeProvider("openai", [DRAFT_BIZ])
+    luna.max_attempt_seconds = 90
+    luna.group_budget_seconds = 180
+
+    original = write.build_providers
+    write.build_providers = lambda: [first, second, luna]
+    try:
+        write.main()
+    finally:
+        write.build_providers = original
+
+    articles = all_articles()
+    check(first.calls == 1 and second.calls == 1 and luna.calls == 1,
+          "every preferred route is tried once before the Luna fallback")
+    check(len(articles) == 1 and articles[0]["writer"] == "openai:fake",
+          "GPT-6 Luna fallback writes the article after earlier failures")
+    print("test_luna_is_used_after_preferred_service_failures: done")
 
 
 def test_editorial_gate():
@@ -1238,7 +1281,9 @@ def main():
              test_group_cap_and_unique_ids,
              test_extract_json_and_validate_draft, test_provider_failover,
              test_model_chain_and_routing_policy,
-             test_provider_specific_time_budget, test_editorial_gate,
+             test_provider_specific_time_budget,
+             test_luna_is_used_after_preferred_service_failures,
+             test_editorial_gate,
              test_completeness_precheck,
              test_major_title_only_is_retained_for_material_retry,
              test_all_providers_auth_dead,

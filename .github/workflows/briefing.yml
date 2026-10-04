@@ -85,7 +85,7 @@ jobs:
           ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional
           AVWIRE_WECHAT_MODEL: ${{ vars.AVWIRE_WECHAT_MODEL }}
           AVWIRE_OPENAI_MODEL: ${{ vars.AVWIRE_OPENAI_MODEL }}
-          AVWIRE_PROVIDER_ORDER: openai:gpt-6-luna,gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:nvidia/nemotron-3-super-120b-a12b
+          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:nvidia/nemotron-3-super-120b-a12b,openai:gpt-6-luna
           BRIEFING_LLM_INTRO: "true"
           BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}
           BRIEFING_MAX_ITEMS_PER_SECTION: ${{ vars.BRIEFING_MAX_ITEMS_PER_SECTION }}
