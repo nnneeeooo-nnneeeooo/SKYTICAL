@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
   "platforms": {
-    "nvidia": {
-      "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-04T11:13Z",
-      "updatedUtc": "2026-10-04T10:13Z"
-    },
-    "openai": {
-      "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-04T11:16Z",
-      "updatedUtc": "2026-10-04T10:16Z"
-    },
-    "openrouter": {
-      "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-04T11:17Z",
-      "updatedUtc": "2026-10-04T10:17Z"
-    },
     "gemini": {
       "failureClass": "quota",
       "cooldownUntilUtc": "2026-10-04T16:27Z",
       "updatedUtc": "2026-10-04T10:27Z"
+    },
+    "nvidia": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-04T13:07Z",
+      "updatedUtc": "2026-10-04T12:07Z"
+    },
+    "openrouter": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-04T13:12Z",
+      "updatedUtc": "2026-10-04T12:12Z"
+    },
+    "openai": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-04T13:14Z",
+      "updatedUtc": "2026-10-04T12:14Z"
     }
   }
 }
