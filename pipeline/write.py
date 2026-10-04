@@ -2,11 +2,11 @@
 
 For each pending story group (capped at MAX_GROUPS_PER_RUN per run) one
 LLM call drafts the article, flash and optional incident row. Providers are
-tried in AVWIRE_PROVIDER_ORDER (opencode / anthropic / gemini / nvidia /
-openrouter; see providers.py): the first configured provider is the primary
-writer and the rest are fallbacks. A provider that hits an auth/quota error or
-repeated transport outage is disabled for the rest of the run and the next one
-takes over.
+tried in AVWIRE_PROVIDER_ORDER (openai / opencode / anthropic / gemini /
+nvidia / openrouter / wechat; see providers.py): the first configured
+provider is the primary writer and the rest are fallbacks. A provider that
+hits an auth/quota error or repeated transport outage is disabled for the rest
+of the run and the next one takes over.
 
 Each draft carries an editorial status: "publish" and "publish_brief" go
 straight to the site and "reject" is dropped.  The former manual-review
@@ -2712,7 +2712,8 @@ def main() -> None:
         print(f"write: persisted provider cooldowns active: {details}")
     major_deferred = 0
     if not providers:
-        print("write: no LLM API key set (OPENCODE_API_KEY / "
+        print("write: no LLM API key set (OPENAI_API_KEY / "
+              "OPENCODE_API_KEY / "
               "ANTHROPIC_API_KEY / GEMINI_API_KEY / NVIDIA_API_KEY / "
               "OPENROUTER_API_KEY / WECHAT_API_KEY); "
               "skipping article generation")
