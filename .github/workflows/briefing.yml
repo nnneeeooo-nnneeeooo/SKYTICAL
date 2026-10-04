@@ -76,6 +76,7 @@ jobs:
       - name: Assemble briefing and build site
         env:
           # Existing model keys support one sourced search and one overview.
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -83,7 +84,8 @@ jobs:
           WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
           ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional
           AVWIRE_WECHAT_MODEL: ${{ vars.AVWIRE_WECHAT_MODEL }}
-          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:nvidia/nemotron-3-super-120b-a12b
+          AVWIRE_OPENAI_MODEL: ${{ vars.AVWIRE_OPENAI_MODEL }}
+          AVWIRE_PROVIDER_ORDER: openai:gpt-6-luna,gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:nvidia/nemotron-3-super-120b-a12b
           BRIEFING_LLM_INTRO: "true"
           BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}
           BRIEFING_MAX_ITEMS_PER_SECTION: ${{ vars.BRIEFING_MAX_ITEMS_PER_SECTION }}

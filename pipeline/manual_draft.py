@@ -42,6 +42,7 @@ from model_config import (  # noqa: E402
 from providers import (  # noqa: E402
     GeminiProvider,
     NvidiaProvider,
+    OpenAIProvider,
     OpenCodeProvider,
     OpenRouterProvider,
     WechatProvider,
@@ -567,6 +568,7 @@ def _providers_for(payload: dict) -> list:
             "nvidia": NvidiaProvider,
             "wechat": WechatProvider,
             "opencode": OpenCodeProvider,
+            "openai": OpenAIProvider,
             "openrouter": OpenRouterProvider,
         }.get(platform)
         if cls is None:

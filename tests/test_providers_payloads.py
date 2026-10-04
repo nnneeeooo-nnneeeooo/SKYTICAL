@@ -139,6 +139,7 @@ def test_nvidia_model_profiles():
 
 def test_model_priority_defaults():
     expected = (
+        "openai:gpt-6-luna",
         "opencode:claude-sonnet-4-6",
         "opencode:gpt-5.5",
         "gemini:gemini-3.6-flash",
@@ -171,6 +172,7 @@ def test_model_priority_defaults():
     check(providers.MODEL_ORDER == expected,
           "model priority order matches the configured product order")
     active = (
+        "openai:gpt-6-luna",
         "gemini:gemini-3.6-flash",
         "gemini:gemini-3.5-flash",
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
@@ -180,9 +182,11 @@ def test_model_priority_defaults():
     )
     check(AUTOMATIC_MODEL_ORDER == active
           and providers.DEFAULT_ORDER == ",".join(active),
-          "automatic fallback default contains only proven live routes")
+          "GPT-6 Luna is primary and current production routes remain fallbacks")
     check(providers.GEMINI_DEFAULT_MODEL == "gemini-3.6-flash",
           "Gemini 3.6 Flash is the default model")
+    check(providers.OPENAI_DEFAULT_MODEL == "gpt-6-luna",
+          "GPT-6 Luna is the direct OpenAI default model")
     check(providers.NVIDIA_DEFAULT_MODEL
           == "nvidia/nemotron-3-ultra-550b-a55b",
           "Nemotron Ultra is the highest-priority NVIDIA default")
@@ -193,11 +197,11 @@ def test_model_priority_defaults():
           "Claude Sonnet 4.6 is the highest-priority OpenCode default")
     check(providers.WECHAT_DEFAULT_MODEL == "Deepseek-v4-flash",
           "DeepSeek V4 Flash is the WeChat Coding Plan default")
-    check(expected[10:13] == (
+    check(expected[11:14] == (
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
         "wechat:Deepseek-v4-flash",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    ) and expected[14:16] == (
+    ) and expected[15:17] == (
         "nvidia:nvidia/nemotron-3-super-120b-a12b",
         "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
     ), "complete catalog preserves owner model order")
@@ -532,6 +536,85 @@ def test_opencode_protocols_and_payloads():
     print("test_opencode_protocols_and_payloads: done")
 
 
+def test_openai_responses_api():
+    """Direct OpenAI uses MAX reasoning and strict Responses JSON output."""
+    saved = {
+        key: os.environ.get(key)
+        for key in ("OPENAI_API_KEY", "AVWIRE_PROVIDER_ORDER",
+                    "AVWIRE_OPENAI_MODEL")
+    }
+    os.environ.pop("OPENAI_API_KEY", None)
+    provider = providers.OpenAIProvider()
+    check(not provider.available(), "OpenAI is unavailable without its key")
+    os.environ["OPENAI_API_KEY"] = "test-openai-key-not-real"
+    os.environ["AVWIRE_PROVIDER_ORDER"] = "openai:gpt-6-luna"
+    try:
+        provider = providers.OpenAIProvider()
+        captured = []
+
+        def fake_post(url, json=None, timeout=None, headers=None):
+            captured.append((url, json, headers))
+            return FakeResponse({
+                "status": "completed",
+                "output_text": GOOD,
+                "usage": {"input_tokens": 41, "output_tokens": 17},
+            }, headers={"x-request-id": "req-openai-safe",
+                        "authorization": "must-not-be-captured"})
+
+        result = with_post(
+            fake_post, lambda: provider.draft("sys", "user", SCHEMA))
+        url, payload, headers = captured[0]
+        check(provider.available() and result == {"ok": 1},
+              "OpenAI Responses draft succeeds with configured key")
+        check(url == "https://api.openai.com/v1/responses"
+              and payload["model"] == "gpt-6-luna",
+              "GPT-6 Luna uses the direct OpenAI Responses endpoint")
+        check(payload["reasoning"] == {"effort": "max"}
+              and provider.reasoning_effective == "reasoning.effort=max",
+              "automatic GPT-6 Luna calls request MAX reasoning")
+        check(payload["max_output_tokens"] == 48_000,
+              "MAX reasoning has an output cap that reserves reasoning room")
+        check(payload["text"]["format"] == {
+                  "type": "json_schema", "name": "skytical_draft",
+                  "schema": SCHEMA, "strict": True,
+              } and headers["Authorization"]
+              == "Bearer test-openai-key-not-real",
+              "OpenAI sends strict schema output with bearer authentication")
+        check(provider.usage == {
+                  "inputTokens": 41, "outputTokens": 17,
+                  "usageEvents": 1,
+              } and provider.request_log[0]["headers"]
+              == {"x-request-id": "req-openai-safe"},
+              "usage is counted and credentials are excluded from telemetry")
+        try:
+            provider._check_status(FakeResponse({}, status=429))
+            check(False, "OpenAI rate-limit 429 should request provider fallback")
+        except providers.ProviderQuotaError:
+            check(False, "OpenAI rate limit must not disable its provider")
+        except providers.ProviderError:
+            check(True, "OpenAI rate limit preserves provider availability")
+        try:
+            provider._check_status(FakeResponse(
+                {"error": {"code": "insufficient_quota"}}, status=429))
+            check(False, "OpenAI insufficient quota should disable provider")
+        except providers.ProviderQuotaError:
+            check(True, "OpenAI insufficient quota disables this provider run")
+        rows = providers.build_providers()
+        check([row.label for row in rows] == ["openai:gpt-6-luna"],
+              "provider registry builds the configured OpenAI model")
+        deep = providers.OpenAIProvider(
+            "gpt-6-luna", reasoning_tier="deep")
+        check(deep._effort(repair=False) == "max",
+              "manual deep reasoning maps to OpenAI MAX")
+    finally:
+        for key, value in saved.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+    print("test_openai_responses_api: done")
+
+
 def test_nvidia_reasoning_trace_never_parsed():
     """reasoning_content is ignored; empty final content is a failure."""
     def fake_post(url, json=None, timeout=None, headers=None):
@@ -676,6 +759,7 @@ def main():
         test_model_priority_defaults,
         test_wechat_protocol_and_payloads,
         test_opencode_protocols_and_payloads,
+        test_openai_responses_api,
         test_openrouter_models_and_payloads,
         test_nvidia_model_profiles,
         test_nvidia_reasoning_trace_never_parsed,

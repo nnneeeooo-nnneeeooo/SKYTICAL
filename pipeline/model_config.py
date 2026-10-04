@@ -15,6 +15,10 @@ DIRECT_MODEL_ORDER = (
     "nvidia:mistralai/mistral-medium-3.5-128b",
 )
 
+OPENAI_MODEL_ORDER = (
+    "openai:gpt-6-luna",
+)
+
 WECHAT_MODEL_ORDER = (
     "wechat:Deepseek-v4-flash",
 )
@@ -47,6 +51,7 @@ OPENROUTER_MODEL_ORDER = (
 # Complete model catalog used by the manual drafting workbench and historical
 # usage dashboard.
 MODEL_ORDER = (
+    OPENAI_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[0],
@@ -65,10 +70,10 @@ MODEL_ORDER = (
     *OPENROUTER_MODEL_ORDER[2:],
 )
 
-# Automated runs use only routes that completed at least one valid article in
-# recent production telemetry. Retired/unavailable routes stay selectable in
-# the manual workbench but no longer add doomed HTTP 410 calls to every story.
+# GPT-6 Luna is the requested automatic primary; remaining routes are the
+# current production fallbacks that completed valid articles in telemetry.
 AUTOMATIC_MODEL_ORDER = (
+    OPENAI_MODEL_ORDER[0],
     DIRECT_MODEL_ORDER[0],
     DIRECT_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[4],
@@ -80,6 +85,7 @@ AUTOMATIC_MODEL_ORDER = (
 DEFAULT_PROVIDER_ORDER = ",".join(AUTOMATIC_MODEL_ORDER)
 
 MODEL_DISPLAY_NAMES = {
+    "openai:gpt-6-luna": "OpenAI · GPT-6 Luna",
     "wechat:Deepseek-v4-flash":
         "WeChat Coding Plan · DeepSeek V4 Flash",
     "opencode:claude-sonnet-4-6":
@@ -140,6 +146,13 @@ def manual_reasoning_profile(provider: str, model: str, tier: str) -> dict:
     """
     if tier not in REASONING_TIERS:
         tier = "standard"
+    if provider == "openai":
+        effort = {"fast": "low", "standard": "medium",
+                  "deep": "max"}[tier]
+        return {
+            "wire": {"reasoning": {"effort": effort}},
+            "effective": f"reasoning.effort={effort}",
+        }
     if provider == "openrouter":
         effort = {"fast": "low", "standard": "medium",
                   "deep": "high"}[tier]

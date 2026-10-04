@@ -385,6 +385,13 @@ gpt_api_rows, _ = build.usage_rows(
 check("GPT-5.6 Sol API usage would use the official $5/$30 rates",
       gpt_api_rows[0]["usd"] == 35.0
       and gpt_api_rows[0]["kind"] == "reference")
+gpt6_rows, _ = build.usage_rows(
+    {"models": {"openai:gpt-6-luna":
+                {"calls": 1, "inputTokens": 1_000_000,
+                 "outputTokens": 1_000_000, "unknownCalls": 0}}}, prices)
+check("GPT-6 Luna API usage uses the official $0.10/$0.50 rates",
+      gpt6_rows[0]["usd"] == 0.6
+      and gpt6_rows[0]["kind"] == "reference")
 check("totals aggregate across models",
       totals["calls"] == 8 and totals["usd"] > 0)
 rows2, _ = build.usage_rows(
