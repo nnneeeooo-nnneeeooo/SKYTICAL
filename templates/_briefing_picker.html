@@ -1,0 +1,37 @@
+{% set nav = briefing_navigation %}
+<nav class="briefing-picker" aria-label="{% if lang == 'zh' %}快報日期與時段切換{% else %}Briefing date and edition navigation{% endif %}"
+     data-briefing-picker data-date="{{ nav.date }}" data-edition="{{ nav.edition }}"
+     data-language="{{ lang }}"
+     data-unavailable="{% if lang == 'zh' %}此時段尚未發布，已保留目前快報。{% else %}This edition is not published yet. The current briefing is unchanged.{% endif %}"
+     >
+  <button class="briefing-day-button" type="button" data-day="previous"
+          data-url="{{ nav.previous_url or '' }}" {% if not nav.previous_url %}disabled{% endif %}
+          aria-label="{% if lang == 'zh' %}前一天{% else %}Previous day{% endif %}">
+    <span class="briefing-day-arrow" aria-hidden="true"></span>
+    <span class="briefing-day-copy">{% if lang == 'zh' %}前一天{% else %}Previous{% endif %}</span>
+  </button>
+  <div class="briefing-picker-center">
+    <p class="briefing-date" data-briefing-date>{{ nav.date }}</p>
+    <label class="sr-only" for="briefing-edition">{% if lang == 'zh' %}快報時段{% else %}Briefing edition{% endif %}</label>
+    <input class="briefing-range" id="briefing-edition" type="range" min="0" max="2" step="1"
+           value="{% if nav.edition == 'morning' %}0{% elif nav.edition == 'afternoon' %}1{% else %}2{% endif %}"
+           aria-valuetext="{{ nav.periods[0].label if nav.edition == 'morning' else nav.periods[1].label if nav.edition == 'afternoon' else nav.periods[2].label }}"
+           data-briefing-range>
+    <div class="briefing-periods">
+      {% for period in nav.periods %}
+      <button class="briefing-period" type="button" data-period="{{ loop.index0 }}"
+              data-url="{{ period.url or '' }}" aria-pressed="{{ 'true' if period.selected else 'false' }}"
+              {% if not period.available %}disabled{% endif %}>
+        <span>{{ period.label }}</span>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+  <button class="briefing-day-button" type="button" data-day="next"
+          data-url="{{ nav.next_url or '' }}" {% if not nav.next_url %}disabled{% endif %}
+          aria-label="{% if lang == 'zh' %}後一天{% else %}Next day{% endif %}">
+    <span class="briefing-day-arrow" aria-hidden="true"></span>
+    <span class="briefing-day-copy">{% if lang == 'zh' %}後一天{% else %}Next{% endif %}</span>
+  </button>
+  <p class="briefing-picker-status" aria-live="polite" aria-atomic="true" data-briefing-status></p>
+</nav>

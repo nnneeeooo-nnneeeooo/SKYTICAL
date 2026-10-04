@@ -21,7 +21,7 @@ import sys
 import time
 import unicodedata
 import xml.etree.ElementTree as ET
-from datetime import timedelta, timezone
+from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
 from functools import lru_cache
 from pathlib import Path
@@ -96,6 +96,8 @@ def static_asset_version() -> str:
         "skytical-logo.svg",
         "skytical-mark.svg",
         "skytical-social.png",
+        "briefing.css",
+        "briefing.js",
     ):
         digest.update((STATIC_DIR / name).read_bytes())
     return digest.hexdigest()[:10]
@@ -211,15 +213,15 @@ L = {
         "radarSource": "航機位置：ADSB.lol 開放資料（ODbL）；航班代碼與航線：ADSBdb；地圖：OpenStreetMap。",
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "快報",
-        "brIndexSub": "每日早、中、晚三次（臺北時間 07:15／15:15／23:15）的完整 24 小時航空與交通運輸匯總，以本站已查證新聞為基礎，並由具搜尋能力的模型補充彙整（Beta）。",
+        "brIndexSub": "每日晨間、午後與晚間三次航空快報（臺灣時間07:15／15:15／23:15），彙整完整24小時的飛安、臺灣航空與國際航空產業動態。",
         "brLatest": "最新快報", "brWindow": "資料範圍", "brCutoff": "資料截止",
         "brGenerated": "系統整理完成", "brTo": "至",
-        "brEmpty": "截至本期資料截止時間，系統在本次查核的指定來源中，未發現符合收錄門檻的新事件。",
-        "brPartial": "本期部分來源資料未能完整取得，內容可能不完整；來源擷取失敗不代表沒有新事件。",
+        "brEmpty": "截至本期資料截止時間，尚未收錄符合門檻的航空動態。",
+        "brPartial": "本期部分資料尚未完整取得，以下彙整目前已確認的航空動態。",
         "brChecked": "📡 本期查核來源", "brWarnings": "資料覆蓋提示",
         "brReferences": "📡 來源參考",
         "brUpdate": "更新", "brItems": "則",
-        "brNoItems": "本期查核來源中，此分類無新增符合收錄門檻的事件通報",
+        "brNoItems": "本期已收錄新聞中，沒有符合此分類的新增航空動態。",
         "brModeDet": "已查證新聞匯總", "brModeLlm": "模型輔助匯總",
         "brModeGrounded": "AI 搜尋輔助匯總",
         "brCivil": "民航部分", "brMilitary": "軍航部分",
@@ -227,8 +229,7 @@ L = {
         "brBetaNote": "Beta 功能：本快報部分條目由具搜尋能力的模型輔助彙整"
                       "（標示「AI 搜尋」者），引用連結僅取自檢索實際回傳的來源；"
                       "功能持續最佳化中，內容以各條目之原始來源為準。",
-        "brSecs": ["🚨 飛安事件與緊急狀況", "🇹🇼 台灣航空動態（民航＋軍航）",
-                   "🌐 國際航空產業動態", "🚄 地面與海運交通"],
+        "brSecs": ["🚨 飛安事件與緊急狀況", "🇹🇼 臺灣航空動態", "🌐 國際航空產業動態"],
         "brSevs": {"fatal": "致命", "serious": "嚴重",
                    "significant": "重要", "routine": "一般"},
         "sevs": ["本週嚴重事件", "全部", "事故", "嚴重事件", "事件"],
@@ -347,16 +348,15 @@ L = {
         "radarSource": "Aircraft positions: ADSB.lol open data (ODbL); flight codes and routes: ADSBdb; map: OpenStreetMap.",
         # daily briefings
         "brKicker": "Daily Briefing", "brIndexTitle": "Briefings",
-        "brIndexSub": "A complete trailing-24-hour air and transport roundup each morning, afternoon and evening (07:15 / 15:15 / 23:15 Taipei time), based on the site's verified articles and supplemented by a search-capable model (Beta).",
+        "brIndexSub": "A complete 24-hour aviation briefing each morning, afternoon and evening (07:15 / 15:15 / 23:15 Taipei time), covering safety, Taiwan aviation and international aviation industry news.",
         "brLatest": "Latest briefing", "brWindow": "Data window",
         "brCutoff": "Data cutoff", "brGenerated": "Compiled", "brTo": "to",
-        "brEmpty": "As of this edition's data cutoff, no new events meeting the inclusion bar were found in the sources checked for this edition.",
-        "brPartial": "Some sources could not be fetched in full for this edition; coverage may be incomplete. A fetch failure does not mean no events occurred.",
+        "brEmpty": "No aviation developments meeting the inclusion threshold have been collected as of this edition's cutoff.",
+        "brPartial": "Some information is not yet complete. This edition summarizes the aviation developments currently confirmed.",
         "brChecked": "📡 Sources checked", "brWarnings": "Coverage notes",
         "brReferences": "📡 References",
         "brUpdate": "UPDATE", "brItems": "items",
-        "brNoItems": "No new events met the inclusion bar in this section "
-                     "among the sources checked",
+        "brNoItems": "No new aviation developments in this category appear in the articles collected for this edition.",
         "brModeDet": "Verified-news roundup",
         "brModeLlm": "Model-assisted roundup",
         "brModeGrounded": "AI-search-assisted roundup",
@@ -369,8 +369,7 @@ L = {
                       "sources prevail.",
         "brSecs": ["🚨 Safety events & emergencies",
                    "🇹🇼 Taiwan aviation (civil + military)",
-                   "🌐 International industry news",
-                   "🚄 Ground & maritime transport"],
+                   "🌐 International aviation industry news"],
         "brSevs": {"fatal": "Fatal", "serious": "Serious",
                    "significant": "Significant", "routine": "Routine"},
         "sevs": ["This week", "All", "Accident", "Serious", "Incident"],
@@ -2234,8 +2233,7 @@ def sources_rows_view(sources, lang: str, now):
 
 # ── daily briefings ──────────────────────────────────────────────────────────
 
-BRIEFING_SECTIONS = ("aviation_incidents", "taiwan_aviation",
-                     "international_aviation", "ground_and_maritime")
+BRIEFING_SECTIONS = ("aviation_incidents", "taiwan_aviation", "international_aviation")
 _BRIEF_EDITIONS = load_json(
     Path(__file__).resolve().parent.parent / "config"
     / "briefing_editions.json", {})
@@ -2328,7 +2326,8 @@ def _brief_label(b, lang: str) -> str:
     return str(cfg.get(key) or b.get("edition_label") or "")
 
 
-def brief_item_view(item, lang: str, published_ids):
+def brief_item_view(item, lang: str, published_ids, article_lookup=None):
+    from briefing_writer import clean_copy, fallback_keyword, fallback_summary
     zh_head = str(item.get("headline") or "").strip()
     zh_sum = str(item.get("summary") or "").strip()
     head = zh_head if lang == "zh" else (
@@ -2338,6 +2337,16 @@ def brief_item_view(item, lang: str, published_ids):
     art_id = item.get("article_id")
     url = (page_url(lang, f"news/{art_id}/")
            if art_id in published_ids else None)
+    article = (article_lookup or {}).get(art_id) or {}
+    image = article.get("image") if isinstance(article.get("image"), dict) else {}
+    # Image metadata is resolved from the current prepared article on every
+    # build; historical digest JSON never freezes a missing or stale image.
+    fallback_image = f"{BASE_PATH}/assets/skytical-social.png?v={ASSET_VERSION}"
+    if article and not item.get("keyword_zh"):
+        summary = fallback_summary(article, lang, summary)
+    keyword = clean_copy(item.get("keyword_zh" if lang == "zh" else "keyword_en"))
+    if not keyword or len(keyword) > 36:
+        keyword = fallback_keyword(head, lang)
     severity = str(item.get("severity") or "routine")
     marks = ""
     if severity == "fatal":
@@ -2351,7 +2360,14 @@ def brief_item_view(item, lang: str, published_ids):
     return {
         "marks": marks,
         "grounded": item.get("origin") == "grounded",
-        "headline": head, "summary": summary,
+        "headline": clean_copy(head), "summary": clean_copy(summary),
+        "keyword": keyword,
+        "image_url": image.get("url") or fallback_image,
+        "image_alt": image.get("subject") or "SKYTICAL",
+        "image_credit": image.get("credit") or "",
+        "image_credit_url": image.get("link") or "",
+        "image_license": image.get("license") or "",
+        "photo_kind": image.get("kind") or "",
         "time": _fmt_tpe(item.get("source_published_at"), lang,
                          time_only=True),
         "severity": str(item.get("severity") or "routine"),
@@ -2375,7 +2391,7 @@ def _render_include_articles() -> bool:
             not in ("0", "false", "no"))
 
 
-def brief_view(b, lang: str, t, published_ids):
+def brief_view(b, lang: str, t, published_ids, article_lookup=None):
     sections = []
     raw_sections = b.get("sections") or {}
     coverage_notes = b.get("coverage_notes") or {}
@@ -2397,29 +2413,14 @@ def brief_view(b, lang: str, t, published_ids):
 
     for i, name in enumerate(BRIEFING_SECTIONS):
         raw = [it for it in raw_sections.get(name) or []
-               if isinstance(it, dict)]
+               if isinstance(it, dict) and it.get("article_id") in published_ids]
         if not include_articles:
             kept = [it for it in raw if it.get("origin") == "grounded"]
             dropped += len(raw) - len(kept)
             raw = kept
-        if name == "taiwan_aviation":
-            civil = [brief_item_view(it, lang, published_ids)
-                     for it in raw if not it.get("military")]
-            military = [brief_item_view(it, lang, published_ids)
-                        for it in raw if it.get("military")]
-            sections.append({
-                "label": t["brSecs"][i], "items": civil + military,
-                "subsections": [
-                    {"label": t["brCivil"], "items": civil,
-                     "note": note_view("taiwan_civil")},
-                    {"label": t["brMilitary"], "items": military,
-                     "note": note_view("taiwan_military")},
-                ],
-            })
-        else:
-            items = [brief_item_view(it, lang, published_ids) for it in raw]
-            sections.append({"label": t["brSecs"][i], "items": items,
-                             "subsections": [], "note": note_view(name)})
+        items = [brief_item_view(it, lang, published_ids, article_lookup) for it in raw]
+        sections.append({"label": t["brSecs"][i], "items": items,
+                         "subsections": [], "note": note_view(name)})
     for section in sections:
         headlines = [item["headline"] for item in section["items"][:2]]
         if headlines:
@@ -2455,6 +2456,7 @@ def brief_view(b, lang: str, t, published_ids):
         intro = ""
     return {
         "id": b.get("briefing_id"),
+        "edition": b.get("edition"),
         "title": _brief_title(b, lang),
         "label": _brief_label(b, lang),
         "date_label": _fmt_tpe_date(date_dt, lang) if date_dt else "—",
@@ -2480,6 +2482,40 @@ def brief_view(b, lang: str, t, published_ids):
         "warnings": [str(w) for w in b.get("warnings") or []],
         "url": page_url(lang, f"briefings/{b.get('briefing_id')}/"),
         "cutoff_iso": str(b.get("cutoff_time") or ""),
+    }
+
+
+def briefing_navigation(current, views, lang: str) -> dict:
+    """Adjacent calendar dates and real, already-closed edition routes."""
+    editions = ("morning", "afternoon", "evening")
+    labels = ("早晨", "中午", "傍晚") if lang == "zh" else ("Morning", "Afternoon", "Evening")
+    now = now_utc().astimezone(TPE)
+    available = {}
+    for view in views:
+        cutoff = _tpe_dt(view.get("cutoff_iso"))
+        if cutoff is None or cutoff > now or view.get("edition") not in editions:
+            continue
+        available.setdefault(view["date_iso"], {})[view["edition"]] = view
+    selected_date = str(current.get("date_iso") or "")
+    selected_edition = current.get("edition")
+    day = datetime.fromisoformat(selected_date).date()
+
+    def adjacent_url(offset):
+        rows = available.get((day + timedelta(days=offset)).isoformat(), {})
+        selected = rows.get(selected_edition)
+        if not selected and rows:
+            selected = max(rows.values(), key=lambda view: view["cutoff_iso"])
+        return selected.get("url") if selected else None
+
+    rows = available.get(selected_date, {})
+    return {
+        "date": selected_date, "edition": selected_edition,
+        "previous_url": adjacent_url(-1), "next_url": adjacent_url(1),
+        "periods": [{"edition": edition, "label": labels[index],
+                     "available": edition in rows,
+                     "url": rows.get(edition, {}).get("url"),
+                     "selected": edition == selected_edition}
+                    for index, edition in enumerate(editions)],
     }
 
 
@@ -3806,7 +3842,8 @@ def main() -> int:
                    "external": bool(f.get("external"))} for f in fl]
         sv = stats_views(stats_raw, lang)
 
-        bviews = [brief_view(b, lang, t, published_ids) for b in briefings]
+        article_lookup = {article["id"]: article for article in articles}
+        bviews = [brief_view(b, lang, t, published_ids, article_lookup) for b in briefings]
         latest_brief = None
         if latest_row:
             latest_brief = next(
@@ -3914,6 +3951,8 @@ def main() -> int:
                     (bv["title"], f"briefings/{bv['id']}/"),
                 ])
                 ctx["b"] = bv
+                ctx["briefing_navigation"] = briefing_navigation(bv, bviews, lang)
+                ctx["fallback_image_url"] = f"{BASE_PATH}/assets/skytical-social.png?v={ASSET_VERSION}"
                 render(env, "briefing.html",
                        rel_path(lang, f"briefings/{bv['id']}/index.html"), ctx)
                 pages += 1
@@ -3934,6 +3973,9 @@ def main() -> int:
         ctx.update(groups=[
             {"date": d, "rows": sorted(rows, key=lambda r: r["cutoff_iso"])}
             for d, rows in groups.items()])
+        ctx["b"] = latest_brief or (bviews[0] if bviews else None)
+        ctx["briefing_navigation"] = briefing_navigation(ctx["b"], bviews, lang) if ctx["b"] else None
+        ctx["fallback_image_url"] = f"{BASE_PATH}/assets/skytical-social.png?v={ASSET_VERSION}"
         render(env, "briefings.html",
                rel_path(lang, "briefings/index.html"), ctx)
         pages += 1

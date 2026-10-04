@@ -367,7 +367,7 @@ check("empty edition is deterministic with empty sections",
 check("empty edition explains every report area without absolute claims",
       set(b_empty["coverage_notes"]) == {
           "aviation_incidents", "taiwan_civil", "taiwan_military",
-          "international_aviation", "ground_and_maritime"}
+          "international_aviation"}
       and all("已查核來源未收錄" in note["zh"]
               for note in b_empty["coverage_notes"].values()))
 
@@ -414,11 +414,13 @@ del os.environ["BRIEFING_LLM_INTRO"]
 
 # ── 23-24: empty copy vs source failure ──────────────────────────────────────
 
+import build as _b  # noqa: E402
 _build_src = (REPO / "pipeline" / "build.py").read_text(encoding="utf-8")
-check("conservative empty-edition copy is the specified sentence",
-      "截至本期資料截止時間，系統在本次查核的指定來源中，未發現符合收錄門檻的新事件。"
-      in _build_src)
-check("no 'nothing happened worldwide' style claims in templates",
+_empty_copy = _b.L["zh"]["brEmpty"]
+check("empty-edition copy is bounded to this edition",
+      "本期" in _empty_copy and "全球沒有" not in _empty_copy
+      and "均無異常" not in _empty_copy)
+check("no 'nothing happened worldwide' style claims in build copy",
       "全球沒有" not in _build_src and "均無異常" not in _build_src)
 
 reset()
@@ -540,8 +542,6 @@ _raf["entities"]["organizations"] = ["Royal Air Force"]
 check("RAF crash is a safety event even when the article category is ops",
       briefing.classify_section(_raf) == "aviation_incidents")
 
-import build as _b  # noqa: E402
-
 _mil_item = {"headline": "共機動態", "summary": "s", "severity": "routine",
              "taiwan_priority": True, "military": True, "item_type": "new",
              "sources": [], "article_id": None,
@@ -572,7 +572,7 @@ check("default mode includes verified site articles as fallback",
 # build.py must use the same include-by-default policy.
 _stale_item = {"headline": "殘留的正式新聞", "summary": "s",
                "severity": "routine", "item_type": "new", "sources": [],
-               "article_id": None,
+               "article_id": "published-story",
                "source_published_at": "2026-07-27T00:00:00+08:00"}
 _stale = {
     "briefing_id": "2026-07-27-morning", "edition": "morning",
@@ -580,13 +580,17 @@ _stale = {
     "sections": {
         "aviation_incidents": [_stale_item,
                                dict(_stale_item, headline="AI搜尋條目",
+                                    article_id="grounded-story",
                                     origin="grounded")],
-        "taiwan_aviation": [dict(_stale_item, headline="另一則殘留")],
+        "taiwan_aviation": [dict(_stale_item, headline="另一則殘留",
+                                 article_id="published-taiwan")],
     },
     "intro_zh": "為合併版寫的導言",
 }
 os.environ.pop("BRIEFING_INCLUDE_ARTICLES", None)
-_bv = _b.brief_view(_stale, "zh", _b.L["zh"], set())
+_published_stale_ids = {"published-story", "grounded-story",
+                         "published-taiwan"}
+_bv = _b.brief_view(_stale, "zh", _b.L["zh"], _published_stale_ids)
 check("render gate includes verified articles by default",
       _bv["total"] == 3 and _bv["intro"] == "為合併版寫的導言")
 _cited_item = dict(_stale_item, sources=[
@@ -598,12 +602,12 @@ _cited = dict(_stale, sections={
     "aviation_incidents": [_cited_item],
     "international_aviation": [_cited_item],
 })
-_cited_view = _b.brief_view(_cited, "zh", _b.L["zh"], set())
+_cited_view = _b.brief_view(_cited, "zh", _b.L["zh"], _published_stale_ids)
 check("reference list contains only cited, deduplicated direct URLs",
       _cited_view["references"] == [
           {"name": "Official", "url": "https://example.gov/report"}])
 os.environ["BRIEFING_INCLUDE_ARTICLES"] = "false"
-_bv2 = _b.brief_view(_stale, "zh", _b.L["zh"], set())
+_bv2 = _b.brief_view(_stale, "zh", _b.L["zh"], _published_stale_ids)
 os.environ["BRIEFING_INCLUDE_ARTICLES"] = "true"
 check("render gate: explicit false restores search-only mode",
       _bv2["total"] == 1
