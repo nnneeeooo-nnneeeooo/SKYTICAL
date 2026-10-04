@@ -112,8 +112,8 @@ def brief_draft(status: str = "publish_brief") -> dict:
         "decisionReason": (
             "飛安調查進展須人工覆核" if status == "manual_review" else ""),
         "cat": "safety" if status == "manual_review" else "ops",
-        "zh": {"title": "機場管理單位宣布第三跑道正式啟用",
-               "summary": "機場管理單位宣布第三跑道已經正式啟用，"
+        "zh": {"title": "機場管理單位宣佈第三跑道正式啟用",
+               "summary": "機場管理單位宣佈第三跑道已經正式啟用，"
                           "現有來源僅能確認啟用這項最新發展，未提供其他營運細節。",
                "body": zh},
         "en": {"title": "Airport Authority opens Runway 3 for operations",
@@ -405,6 +405,88 @@ def test_fact_scope_verification_and_current_support() -> None:
         write._evidence_binding_problem(draft, [archive_only]) or "")
 
 
+def test_background_sources_are_separate_evidence() -> None:
+    current = group("brief")
+    current_url = current["items"][0]["url"]
+    current_quote = "The Airport Authority opened Runway 3 on 2026-07-27."
+    current["items"][0]["summary"] = current_quote
+    background_url = "https://background.example.com/runway-history"
+    background_quote = "Runway 3 completed 90 days of testing before opening."
+    current["items"].append({
+        "title": "Runway 3 testing history",
+        "summary": background_quote,
+        "url": background_url,
+        "source": "Background Outlet",
+        "backgroundCompanion": True,
+        "publishedUtc": "2025-12-01T00:00Z",
+    })
+    prompt = write.group_prompt(current)
+    assert "<BACKGROUND_SOURCE>" in prompt
+    assert "</BACKGROUND_SOURCE>" in prompt
+    assert prompt.index("</SOURCE>") < prompt.index("<BACKGROUND_SOURCE>")
+
+    draft = brief_draft()
+    draft["zh"]["title"] = "第三跑道正式啟用"
+    draft["zh"]["summary"] = (
+        "第三跑道已於2026年7月27日啟用。現有來源未提供其他營運細節。")
+    draft["facts"] = [
+        source_fact("F1", "Runway 3 opened", current_quote, current_url),
+        {
+            "factId": "F2",
+            "claim": "Runway 3 had completed a testing period",
+            "sourceQuote": background_quote,
+            "sourceUrl": background_url,
+            "evidenceScope": "background",
+            "archiveEventId": None,
+            "archiveContext": False,
+        },
+    ]
+    draft["headlineSupportedBy"] = ["F1"]
+    draft["summarySupportedBy"] = ["F1"]
+    validation_problem = write.validate_draft(draft)
+    assert validation_problem is None, validation_problem
+    verified = write.verify_facts(draft, current, "fixture")
+    assert [fact["evidenceScope"] for fact in verified] \
+        == ["source", "background"]
+    assert [fact["sourceUrl"] for fact in verified] \
+        == [current_url, background_url]
+    assert write._evidence_binding_problem(draft, verified) is None
+
+    background_headline = copy.deepcopy(draft)
+    background_headline["headlineSupportedBy"] = ["F1", "F2"]
+    assert "cannot use background-source" in (
+        write._evidence_binding_problem(
+            background_headline, verified) or "")
+    background_summary = copy.deepcopy(draft)
+    background_summary["summarySupportedBy"] = ["F2"]
+    assert "cannot use background-source" in (
+        write._evidence_binding_problem(
+            background_summary, verified) or "")
+
+    misdeclared = copy.deepcopy(draft)
+    misdeclared["facts"][1]["evidenceScope"] = "source"
+    current_only = write.verify_facts(misdeclared, current, "fixture")
+    assert [fact["factId"] for fact in current_only] == ["F1"]
+
+
+def test_background_facts_are_not_rearchived() -> None:
+    old = archive("same_aircraft")
+    old["facts"].append({
+        "factId": "F2",
+        "claim": "Background fleet fact",
+        "sourceQuote": "The airline previously operated this aircraft type.",
+        "sourceUrl": old["sources"][0]["url"],
+        "evidenceScope": "background",
+        "archiveEventId": None,
+        "archiveContext": False,
+    })
+    source_rows = [{"name": old["sources"][0]["name"],
+                    "url": old["sources"][0]["url"]}]
+    facts = archive_context._qualified_facts(old, source_rows)
+    assert len(facts) == 1
+    assert facts[0]["claim"] == old["facts"][0]["claim"]
+
+
 def test_publish_brief_and_legacy_review_contracts() -> None:
     draft = brief_draft()
     assert write.draft_article_format(draft) == "brief"
@@ -507,6 +589,8 @@ def main() -> None:
         test_prompt_injection_and_prompt_envelope,
         test_limits_are_enforced,
         test_fact_scope_verification_and_current_support,
+        test_background_sources_are_separate_evidence,
+        test_background_facts_are_not_rearchived,
         test_publish_brief_and_legacy_review_contracts,
         test_archive_cannot_replace_current_event,
         test_no_archive_keeps_strict_source_verification,
