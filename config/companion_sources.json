@@ -1,5 +1,5 @@
 {
-  "_comment": "同事件跨來源補強搜尋(companion.py)的可靠來源網域白名單：每個來源不足的候選事件都會搜尋，只有這些網域的同主題報導會被併入故事組；來源一律列於文末。",
+  "_comment": "companion.py 使用的可靠來源網域白名單：來源不足時補同事件報導，仍缺背景時最多再查一筆無日期限制的背景報導；來源一律列於文末。",
   "domains": [
     "reuters.com", "apnews.com", "bloomberg.com", "bbc.com", "bbc.co.uk",
     "cnbc.com", "wsj.com", "ft.com", "nytimes.com", "washingtonpost.com",
@@ -17,6 +17,7 @@
   ],
   "max_items_per_group": 4,
   "max_searches_per_run": 10,
+  "max_background_searches_per_run": 2,
   "thin_material_chars": 400,
   "target_material_chars": 1600,
   "target_source_count": 4

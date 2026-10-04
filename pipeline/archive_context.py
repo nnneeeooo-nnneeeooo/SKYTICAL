@@ -429,6 +429,8 @@ def _qualified_facts(article: dict, sources: list[dict]) -> list[dict]:
     for fact in article.get("facts") or []:
         if not isinstance(fact, dict):
             continue
+        if fact.get("evidenceScope") == "background":
+            continue
         claim = _plain(fact.get("claim"))
         quote = str(fact.get("sourceQuote") or "").strip()
         url = _safe_url(fact.get("sourceUrl"))
