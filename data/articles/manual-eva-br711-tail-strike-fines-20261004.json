@@ -7,7 +7,18 @@
       "sortUtc": "2026-10-04T10:18:00Z",
       "cat": "safety",
       "primarySource": "鏡新聞",
-      "image": null,
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/EVA_Air_Boeing_787-10_B-17808_lined_up_at_Taipei_Songshan_February_2026.jpg/1280px-EVA_Air_Boeing_787-10_B-17808_lined_up_at_Taipei_Songshan_February_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=186630190",
+        "credit": "4300streetcar",
+        "license": "CC BY 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "EVA Air Boeing 787-10",
+        "subject": "EVA Air Boeing 787-10",
+        "description": "EVA Air Boeing 787-10 B-17808 lined up at Taipei Songshan February 2026",
+        "photoYear": 2026
+      },
       "zh": {
         "title": "長榮BR711桃園重飛機尾擦地　民航局裁罰機長12萬元、副駕6萬元",
         "summary": "長榮航空BR711於2025年10月4日在桃園機場重飛期間發生機尾擦地；民航局近期完成裁處，機長與副駕分別遭罰新臺幣12萬元及6萬元。",
@@ -35,26 +46,63 @@
         ]
       },
       "sources": [
-        {"name": "鏡新聞", "url": "https://www.knews.com.tw/news/F7EEB7A0096929AC433BA0A2DB51CE63"},
-        {"name": "聯合新聞網", "url": "https://udn.com/news/story/7266/9051160"},
-        {"name": "TVBS新聞網", "url": "https://news.tvbs.com.tw/life/3008058"},
-        {"name": "AeroInside — EVA B789 at Taipei on Oct 4th 2025, tail scrape on go around", "url": "https://www.aeroinside.com/21185/eva-b789-at-taipei-on-oct-4th-2025-tail-scrape-on-go-around"},
-        {"name": "AeroTime — EVA Air Boeing 787-9 suffers tail strike during go-around in Taipei", "url": "https://www.aerotime.aero/articles/eva-air-boeing-787-9-suffers-tail-strike-during-go-around-in-taipei"},
-        {"name": "Flightradar24 — B-17881", "url": "https://www.flightradar24.com/data/aircraft/b-17881"}
+        {
+          "name": "鏡新聞",
+          "url": "https://www.knews.com.tw/news/F7EEB7A0096929AC433BA0A2DB51CE63"
+        },
+        {
+          "name": "聯合新聞網",
+          "url": "https://udn.com/news/story/7266/9051160"
+        },
+        {
+          "name": "TVBS新聞網",
+          "url": "https://news.tvbs.com.tw/life/3008058"
+        },
+        {
+          "name": "AeroInside — EVA B789 at Taipei on Oct 4th 2025, tail scrape on go around",
+          "url": "https://www.aeroinside.com/21185/eva-b789-at-taipei-on-oct-4th-2025-tail-scrape-on-go-around"
+        },
+        {
+          "name": "AeroTime — EVA Air Boeing 787-9 suffers tail strike during go-around in Taipei",
+          "url": "https://www.aerotime.aero/articles/eva-air-boeing-787-9-suffers-tail-strike-during-go-around-in-taipei"
+        },
+        {
+          "name": "Flightradar24 — B-17881",
+          "url": "https://www.flightradar24.com/data/aircraft/b-17881"
+        }
       ],
       "writer": "manual:GPT 5.6 Sol",
-      "writerModels": ["GPT 5.6 Sol"],
+      "writerModels": [
+        "GPT 5.6 Sol"
+      ],
       "articleFormat": "full",
-      "availableLanguages": ["zh", "en"],
+      "availableLanguages": [
+        "zh",
+        "en"
+      ],
       "manualArticleType": "incident",
       "attachments": [],
-      "riskFlags": ["accident_or_serious_incident"],
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
       "eventStatus": "resolved",
       "entities": {
-        "airlines": ["長榮航空", "EVA Air"],
-        "aircraft_models": ["Boeing 787-9 Dreamliner"],
-        "aircraft_registrations": ["B-17881"],
-        "airports": ["臺灣桃園國際機場", "Taiwan Taoyuan International Airport", "上海浦東國際機場", "Shanghai Pudong International Airport"]
+        "airlines": [
+          "長榮航空",
+          "EVA Air"
+        ],
+        "aircraft_models": [
+          "Boeing 787-9 Dreamliner"
+        ],
+        "aircraft_registrations": [
+          "B-17881"
+        ],
+        "airports": [
+          "臺灣桃園國際機場",
+          "Taiwan Taoyuan International Airport",
+          "上海浦東國際機場",
+          "Shanghai Pudong International Airport"
+        ]
       }
     }
   ]
