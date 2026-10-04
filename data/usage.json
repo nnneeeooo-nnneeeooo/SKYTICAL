@@ -1,12 +1,12 @@
 {
-  "updatedUtc": "2026-10-04T02:07Z",
+  "updatedUtc": "2026-10-04T02:39Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
-      "calls": 498,
+      "calls": 499,
       "inputTokens": 790797,
       "outputTokens": 1277550,
-      "unknownCalls": 346
+      "unknownCalls": 347
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "calls": 890,
@@ -151,12 +151,58 @@
       "outputTokens": 157816
     },
     "2026-10-04": {
-      "calls": 26,
+      "calls": 27,
       "inputTokens": 131292,
       "outputTokens": 24526
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-10-04T02:39Z",
+      "finishedUtc": "2026-10-04T02:39Z",
+      "workflow": "briefing",
+      "taskType": "briefing",
+      "groupId": "2026-10-04-morning",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "SKYTICAL verified articles",
+      "result": "published",
+      "articleId": null,
+      "finalStatus": "published_without_llm_intro",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 1,
+      "httpCallCount": 1,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "drafting": 141,
+        "total": 542
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-10-04T02:39Z",
+          "durationMs": 141,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": null,
+          "repairDurationMs": null,
+          "outcome": "failed",
+          "failureClass": "quota",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-10-04T02:00Z",
       "finishedUtc": "2026-10-04T02:06Z",
@@ -96421,117 +96467,6 @@
           "failureClass": null,
           "failureStage": null,
           "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-09-17T13:58Z",
-      "finishedUtc": "2026-09-17T14:18Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260917-1357-4",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Simple Flying",
-      "result": "retry_pending",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": null,
-      "fallbackUsed": true,
-      "attemptCount": 4,
-      "httpCallCount": 4,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 3827,
-        "promptAssembly": 0,
-        "drafting": 256974,
-        "validation": 1,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 1198741
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-09-17T14:13Z",
-          "durationMs": 67978,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 67976,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish_brief body does not meet brief contract (zh=57 content characters, en=33 words, paragraphs=2/2)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "wechat",
-          "model": "Deepseek-v4-flash",
-          "label": "wechat:Deepseek-v4-flash",
-          "startedUtc": "2026-09-17T14:14Z",
-          "durationMs": 9620,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 9618,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish_brief body does not meet brief contract (zh=240 content characters, en=77 words, paragraphs=3/3)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 3,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": "2026-09-17T14:15Z",
-          "durationMs": 179094,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 179091,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "publish_brief body does not meet brief contract (zh=166 content characters, en=78 words, paragraphs=2/2)",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 4,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-super-120b-a12b",
-          "label": "nvidia:nvidia/nemotron-3-super-120b-a12b",
-          "startedUtc": "2026-09-17T14:18Z",
-          "durationMs": 284,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 284,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "http_error",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 503",
           "retryPlanned": false,
           "disabledForRun": false
         }
