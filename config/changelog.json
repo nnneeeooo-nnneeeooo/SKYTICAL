@@ -2,8 +2,71 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-10-01",
+  "updatedThrough": "2026-10-04",
   "entries": [
+    {
+      "date": "2026-10-04",
+      "kind": "fix",
+      "commit": "9a0ae79f8b21c605f24f8aa38d2b1373584e0273",
+      "zh": "將 GPT-6 Luna 移至模型備援順序末端，並為前序模型保留足夠處理時間，讓較慢的 MAX 推理仍能接手撰稿，同時維持單篇稿件的時限。",
+      "en": "Moved GPT-6 Luna to the end of the model fallback order and reserved enough time for earlier routes to run, allowing its slower MAX reasoning to take over while keeping each story bounded."
+    },
+    {
+      "date": "2026-10-04",
+      "kind": "fix",
+      "commit": "7cb489436d9bf12a3485ad1a1d2246b9ff2e8870",
+      "zh": "延長 GPT-6 Luna MAX 推理的單次呼叫與單篇處理時限，降低模型推理時間較長時遭提前中止的情況。",
+      "en": "Extended per-call and per-story time budgets for GPT-6 Luna MAX reasoning to reduce premature termination of longer model responses."
+    },
+    {
+      "date": "2026-10-04",
+      "kind": "feature",
+      "commit": "4d30a920ee36593c9657b4d0ae87c5002e366e71",
+      "zh": "新增 OpenAI GPT-6 Luna 與 MAX 推理支援，納入自動撰稿及手動選用模型，並使用結構化輸出與用量紀錄。",
+      "en": "Added OpenAI GPT-6 Luna with MAX reasoning to automatic drafting and the manual model catalog, with structured output and usage tracking."
+    },
+    {
+      "date": "2026-10-02",
+      "kind": "system",
+      "commit": "76a765f8d0de18750bb802322ade286d351799fa",
+      "zh": "排隊中的每小時流程會先同步最新的新聞重試與模型冷卻狀態，避免沿用較舊執行版本裡過期的限制。",
+      "en": "Queued hourly runs now refresh persisted news retry and provider cooldown state before processing, avoiding stale limits from an older event revision."
+    },
+    {
+      "date": "2026-10-02",
+      "kind": "fix",
+      "commit": "3833978c8e1000a4e236b94865d9bf07df1c7c88",
+      "zh": "將格式錯誤或遭截斷的模型回應納入單篇新聞重試上限，避免無效輸出繞過重試限制而反覆消耗資源。",
+      "en": "Counted malformed or truncated model responses against each story's retry cap so unusable output cannot bypass retry limits and consume repeated resources."
+    },
+    {
+      "date": "2026-10-02",
+      "kind": "system",
+      "commit": "a2b0de46850dc321cec2e40ab65cc4baa5e3b895",
+      "zh": "加入跨執行週期的新聞重試上限與等待間隔，避免失敗舊稿反覆擠壓新新聞；新聞列表依文章發布時間排序，來源發布時間另行標示。",
+      "en": "Added retry caps and cooling intervals across news runs so failed older stories do not repeatedly crowd out new items. News lists now sort by article publication time, with source publication time shown separately."
+    },
+    {
+      "date": "2026-10-02",
+      "kind": "feature",
+      "commit": "3f565b4c7cd7f976c2672575aa85aab455d080a0",
+      "zh": "在中英文共用網站導覽新增「全部新聞」入口，讓讀者可直接開啟完整新聞列表。",
+      "en": "Added an All news link to the shared English and Chinese site navigation for direct access to the full news index."
+    },
+    {
+      "date": "2026-10-02",
+      "kind": "fix",
+      "commit": "1e9031001f091ecf45ca52f0bdadcdb335ab642c",
+      "zh": "修正首頁最新新聞列表漏掉頭條文章的問題，讓頭條即使已出現在主視覺輪播中，仍會依時間順序列於新聞列表。",
+      "en": "Fixed the homepage latest-news list so headline stories remain in the chronological feed even when also shown in the featured carousel."
+    },
+    {
+      "date": "2026-10-02",
+      "kind": "fix",
+      "commit": "16f5a72ce5926429e8eb7623b9c83170f4b3c3b5",
+      "zh": "放寬有來源支撐的短稿最低字數門檻，並設定單篇撰稿時限；時間用盡時保留稿件供後續重試，避免單篇失敗卡住整輪流程。",
+      "en": "Lowered the minimum length for source-supported brief drafts and bounded per-story drafting time. Unfinished stories remain available for retries instead of blocking the full run."
+    },
     {
       "date": "2026-10-01",
       "kind": "system",
