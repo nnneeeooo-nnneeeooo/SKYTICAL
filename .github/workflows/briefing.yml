@@ -1,6 +1,6 @@
 name: daily-briefing
 
-# Thrice-daily air & transport briefing (Asia/Taipei editions).
+# Three daily aviation briefings (Asia/Taipei editions).
 # UTC crons map to fixed Taipei editions — the mapping below must match
 # CRON_TO_EDITION in pipeline/briefing.py (tests cross-check both):
 #   15 23 * * *  ->  morning    (07:15 Taipei)
@@ -53,8 +53,12 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Test grounded briefing fallback
-        run: python tests/test_grounded.py
+      - name: Test aviation briefing contracts
+        run: |
+          python tests/test_grounded.py
+          python tests/test_briefing.py
+          python tests/test_briefing_writer.py
+          python tests/test_briefing_ui.py
 
       - name: Resolve edition (explicit cron mapping, never guessed from the clock)
         id: ed
@@ -75,7 +79,7 @@ jobs:
 
       - name: Assemble briefing and build site
         env:
-          # Existing model keys support one sourced search and one overview.
+          # Briefing search and writer use an independent paid OpenAI Luna route.
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
@@ -86,19 +90,23 @@ jobs:
           AVWIRE_WECHAT_MODEL: ${{ vars.AVWIRE_WECHAT_MODEL }}
           AVWIRE_OPENAI_MODEL: ${{ vars.AVWIRE_OPENAI_MODEL }}
           AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:nvidia/nemotron-3-super-120b-a12b,openai:gpt-6-luna
-          BRIEFING_LLM_INTRO: "true"
+          BRIEFING_WRITER: "true"
+          BRIEFING_WRITER_MODEL: gpt-6-luna
+          BRIEFING_WRITER_EFFORT: medium
+          BRIEFING_WRITER_CALLS_MAX: '2'
+          BRIEFING_GROUNDED: "true"
+          BRIEFING_GROUNDED_PROVIDER: openai
+          BRIEFING_GROUNDED_MODEL: gpt-6-luna
+          BRIEFING_GROUNDED_EFFORT: medium
+          BRIEFING_LLM_INTRO: "false"
           BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}
           BRIEFING_MAX_ITEMS_PER_SECTION: ${{ vars.BRIEFING_MAX_ITEMS_PER_SECTION }}
-          BRIEFING_EXTRA_LLM_CALLS_MAX: ${{ vars.BRIEFING_EXTRA_LLM_CALLS_MAX }}
           # private usage-dashboard URL token (page skipped when unset)
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
           # private manual-drafting URL/encryption token
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
-          # Search each edition; verified site articles remain the fallback.
-          BRIEFING_GROUNDED: "true"
-          BRIEFING_GROUNDED_MODEL: ${{ vars.BRIEFING_GROUNDED_MODEL }}
-          # verified site articles are the reliable fallback; false opts out
+          # Verified site articles remain available as a search fallback.
           BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
         run: |
           python tests/test_headline_rotation.py

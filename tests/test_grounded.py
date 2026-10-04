@@ -20,10 +20,15 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 TMP = Path(tempfile.mkdtemp(prefix="avwire-grounded-"))
+_ENV_KEYS = ("AVWIRE_DATA_DIR", "BRIEFING_GROUNDED", "BRIEFING_GROUNDED_PROVIDER",
+             "BRIEFING_GROUNDED_MODEL", "BRIEFING_GROUNDED_MODELS",
+             "BRIEFING_GROUNDED_EFFORT", "GEMINI_API_KEY", "OPENAI_API_KEY")
+_OLD_ENV = {key: os.environ.get(key) for key in _ENV_KEYS}
 os.environ["AVWIRE_DATA_DIR"] = str(TMP)
 
 sys.path.insert(0, str(REPO / "pipeline"))
 import grounded  # noqa: E402
+_original_requests = grounded.requests
 
 CHECKS = 0
 FAILED = 0
@@ -266,7 +271,127 @@ check("empty BRIEFING_GROUNDED_MODEL env falls back to the default",
 del os.environ["BRIEFING_GROUNDED_MODEL"]
 importlib.reload(grounded)
 
-del os.environ["BRIEFING_GROUNDED"]
+# ── OpenAI Responses web_search adapter and bounded routing ──────────────────
+
+window = types.SimpleNamespace(
+    window_start=NOW, window_end=NOW + timedelta(hours=24))
+openai_item = item(sourceChunks=[])  # URLs are mapped from actual retrieval metadata.
+openai_payload_text = json.dumps({"items": [dict(openai_item,
+    sourceUrls=["https://news.example/actual", "https://fake.example/forged"])]},
+    ensure_ascii=False)
+openai_response = {
+    "status": "completed",
+    "output": [
+        {"type": "web_search_call", "status": "completed", "action": {
+            "sources": [{"url": "https://news.example/actual", "title": "News"}]}},
+        {"type": "message", "content": [{"type": "output_text", "text": openai_payload_text,
+            "annotations": [{"type": "url_citation", "url": "https://news.example/actual",
+                             "title": "News"},
+                            ]}]},
+    ],
+    "usage": {"input_tokens": 123, "output_tokens": 45},
+}
+captured_openai = {}
+usage_calls = []
+try:
+    import usage  # noqa: E402
+    _original_record_providers = usage.record_providers
+except Exception:
+    usage = None
+    _original_record_providers = None
+
+
+def fake_openai_post(url, json=None, timeout=None, headers=None):
+    captured_openai.update(url=url, payload=json, headers=headers, timeout=timeout)
+    return types.SimpleNamespace(status_code=200, json=lambda: openai_response)
+
+
+grounded.requests = types.SimpleNamespace(post=fake_openai_post)
+if usage:
+    usage.record_providers = lambda providers: usage_calls.append(list(providers))
+os.environ["BRIEFING_GROUNDED_PROVIDER"] = "openai"
+os.environ["OPENAI_API_KEY"] = "offline-test-key"
+os.environ["BRIEFING_GROUNDED_MODEL"] = "gpt-6-luna"
+data, shim = grounded.call_grounded(window)
+openai_items, openai_warnings = grounded.sanitize_items(
+    data, [], {}, NOW, window)
+accepted = openai_items["aviation_incidents"]
+check("OpenAI result maps only retrieved source URLs into citation chunks",
+      len(accepted) == 1
+      and accepted[0]["sources"] == [{"name": "News", "url": "https://news.example/actual"}]
+      and all(source["url"] != "https://fake.example/forged"
+              for source in accepted[0]["sources"]))
+check("OpenAI call selects Luna Responses web_search with bounded medium reasoning",
+      captured_openai["url"] == "https://api.openai.com/v1/responses"
+      and captured_openai["payload"]["model"] == "gpt-6-luna"
+      and captured_openai["payload"]["reasoning"] == {"effort": "medium"}
+      and captured_openai["payload"]["tools"][0]["type"] == "web_search"
+      and captured_openai["payload"]["max_tool_calls"] == 4)
+check("OpenAI usage shim records paid call and prevents duplicate upper-layer recording",
+      shim.usage_recorded and shim.usage["inputTokens"] == 123
+      and shim.usage["outputTokens"] == 45
+      and (not usage or len(usage_calls) == 1))
+
+# No key is a clean zero-network result; incomplete responses are not adapted.
+del os.environ["OPENAI_API_KEY"]
+before = len(captured_openai)
+check("OpenAI provider without key returns no data and makes no request",
+      grounded.call_grounded(window) == (None, None) and len(captured_openai) == before)
+os.environ["OPENAI_API_KEY"] = "offline-test-key"
+for label, response in (
+        ("non-completed response", dict(openai_response, status="incomplete")),
+        ("missing completed search call", {"status": "completed", "output": [
+            {"type": "message", "content": [{"type": "output_text", "text": openai_payload_text,
+                                                  "annotations": []}]}]}),
+):
+    try:
+        grounded._openai_search_response(response)
+        rejected = False
+    except ValueError:
+        rejected = True
+    check("OpenAI " + label + " is rejected", rejected)
+
+# Only sources in the completed search metadata are eligible, including citations
+# added by annotations; model-only fake URLs never become a source chunk.
+fake_only_text = json.dumps({"items": [dict(openai_item,
+    sourceUrls=["https://model-only.example/fake"])]}, ensure_ascii=False)
+fake_only = dict(openai_response, output=[
+    openai_response["output"][0],
+    {"type": "message", "content": [{"type": "output_text", "text": fake_only_text,
+                                         "annotations": []}]},
+])
+adapted_fake = grounded._openai_search_response(fake_only)
+fake_out, _ = grounded.sanitize_items(adapted_fake, [], {}, NOW, window)
+check("model-typed URL without retrieved metadata cannot be cited",
+      fake_out["aviation_incidents"] == [])
+
+# Existing sanitizer continues enforcing timestamp timezone and window limits.
+for bad_date in ("2026-07-26T23:59:59+00:00", "2026-07-28T00:00:00+00:00",
+                 "2026-07-27T04:00:00"):
+    bad_data = grounded._openai_search_response(dict(openai_response, output=[
+        openai_response["output"][0],
+        {"type": "message", "content": [{"type": "output_text",
+          "text": json.dumps({"items": [dict(openai_item, sourcePublishedAt=bad_date,
+               sourceUrls=["https://news.example/actual"])]}, ensure_ascii=False),
+          "annotations": []}]},
+    ]))
+    bad_out, _ = grounded.sanitize_items(bad_data, [], {}, NOW, window)
+    check("OpenAI source date outside window or without timezone rejected: " + bad_date,
+          bad_out["aviation_incidents"] == [])
+
+if usage:
+    usage.record_providers = _original_record_providers
+grounded.requests = _original_requests
+for _key, _value in _OLD_ENV.items():
+    if _value is None:
+        os.environ.pop(_key, None)
+    else:
+        os.environ[_key] = _value
+try:
+    import shutil
+    shutil.rmtree(TMP)
+except OSError:
+    pass
 
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "

@@ -1,0 +1,50 @@
+<article class="briefing-report" aria-labelledby="briefing-report-title">
+  <header class="briefing-report-header">
+    <h2 id="briefing-report-title" class="briefing-report-title">✈️ [{{ b.date_iso }}] {{ b.title }}<sup class="briefing-report-beta">{{ t.brBeta }}</sup></h2>
+    <div class="briefing-meta">
+      <span><strong>{{ t.brWindow }}：</strong>{{ b.window_start }} {{ t.brTo }} {{ b.window_end }}（UTC+8）</span>
+      <span><strong>{{ t.brCutoff }}：</strong>{{ b.cutoff }}（UTC+8）</span>
+      <span>{{ b.total }} {{ t.brItems }}</span>
+    </div>
+    {% if b.partial %}<p class="briefing-partial">{{ t.brPartial }}</p>{% endif %}
+  </header>
+  {% for sec in b.sections %}
+  <section class="briefing-section">
+    <h3>{{ sec.label }}</h3>
+    {% if sec['items'] %}
+      {% for it in sec['items'] %}
+      {% set fallback = fallback_image_url or (base ~ '/assets/skytical-social.png') %}
+      <article class="briefing-story">
+        <a class="briefing-thumbnail" href="{{ it.url }}" aria-label="{{ it.headline }}" title="{{ it.headline }}">
+          <img src="{{ it.image_url or fallback }}" alt="{{ it.image_alt or it.headline }}"
+               width="1200" height="675" loading="lazy" decoding="async"
+               data-fallback="{{ fallback }}">
+        </a>
+        <div class="briefing-story-copy">
+          <p class="briefing-story-text"><strong>{{ it.headline }}</strong>：{{ it.summary }}
+            <a class="briefing-citation" href="{{ it.url }}" aria-label="閱讀本站原文：{{ it.headline }}"
+               title="{{ it.headline }}">
+              <img src="{{ base }}/assets/skytical-mark.svg" alt="" width="16" height="16" aria-hidden="true">
+              <span>{{ it.keyword or it.headline }}</span>
+            </a>
+          </p>
+          {% if it.image_credit or it.image_license or it.photo_kind %}
+          <p class="briefing-image-credit">
+            {% if it.photo_kind in ['file_photo', 'airframe_photo'] %}{% if lang == 'zh' %}資料照片{% else %}File photo{% endif %}
+            {% elif it.photo_kind == 'illustration' %}{% if lang == 'zh' %}示意圖{% else %}Illustration{% endif %}
+            {% elif it.photo_kind == 'event_photo' %}{% if lang == 'zh' %}現場照片{% else %}Event photo{% endif %}
+            {% elif it.photo_kind == 'source_image' %}{% if lang == 'zh' %}原文配圖{% else %}Source image{% endif %}{% endif %}
+            {% if it.image_credit %}{% if it.photo_kind in ['file_photo', 'airframe_photo', 'illustration', 'event_photo', 'source_image'] %} · {% endif %}{% if it.image_credit_url %}<a href="{{ it.image_credit_url }}" rel="noopener noreferrer">{{ it.image_credit }}</a>{% else %}{{ it.image_credit }}{% endif %}{% endif %}
+            {% if it.image_license %}{% if it.image_credit or it.photo_kind in ['file_photo', 'airframe_photo', 'illustration', 'event_photo', 'source_image'] %} · {% endif %}{{ it.image_license }}{% endif %}
+          </p>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    {% else %}
+    <p class="briefing-section-empty text-muted">{{ t.brNoItems }}</p>
+    {% endif %}
+  </section>
+  {% endfor %}
+  {% if b.total == 0 %}<p class="briefing-empty text-muted">{{ t.brEmpty }}</p>{% endif %}
+</article>

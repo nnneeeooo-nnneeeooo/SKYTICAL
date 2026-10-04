@@ -1,18 +1,15 @@
-"""briefing.py — thrice-daily air & transport briefing assembler.
+"""briefing.py — thrice-daily aviation briefing assembler.
 
 Selects already-verified articles (data/articles/) whose source time falls
 inside a fixed trailing-24-hour Asia/Taipei window and writes one complete
 snapshot per edition to data/briefings/. Events may therefore appear in more
 than one edition while they remain inside that edition's 24-hour window;
 each morning, afternoon and evening report must be independently readable.
-Assembly is deterministic by default: verified
-headlines and summaries are reused as-is and no model is called. At most
-one optional batch LLM call per edition (BRIEFING_LLM_INTRO=true) may add
-an intro paragraph; any failure falls back to the deterministic output.
-
-Never fetches the network for content and never bypasses the automated
-source/evidence gates: rejected groups never reach data/articles/, so reading
-only the published article store enforces that exclusion structurally.
+Production uses a briefing-specific Luna search and one structured writing
+batch (at most one correction). Published article evidence is mandatory for
+every public story and original-article link. Any model failure retains
+complete extractive article copy; image-only changes reuse saved writing.
+Optional legacy intro mode remains available for offline compatibility.
 
 Editions (config/briefing_editions.json is the single source of truth):
   morning    07:00 (previous day) <= source_time < 07:00, runs 07:15 TPE
@@ -73,8 +70,7 @@ CRON_TO_EDITION = {
     "15 15 * * *": "evening",
 }
 
-SECTIONS = ("aviation_incidents", "taiwan_aviation",
-            "international_aviation", "ground_and_maritime")
+SECTIONS = ("aviation_incidents", "taiwan_aviation", "international_aviation")
 
 
 def _direct_source_url(value) -> str | None:
@@ -275,13 +271,13 @@ def classify_section(article: dict) -> str:
     blob = _text_blob(article)
     if _has_marker(blob, _GROUND_MARKERS) or _has_marker(blob, _MARITIME_MARKERS):
         return "ground_and_maritime"
-    if _has_marker(blob, _TAIWAN_MARKERS):
-        return "taiwan_aviation"
     if (article.get("cat") == "safety"
             or _has_marker(blob, _SERIOUS_MARKERS)
             or _has_marker(blob, ("跑道偏出", "衝出跑道", "runway excursion",
                                   "engine failure", "發動機故障"))):
         return "aviation_incidents"
+    if _has_marker(blob, _TAIWAN_MARKERS):
+        return "taiwan_aviation"
     return "international_aviation"
 
 
@@ -505,6 +501,8 @@ def select_items(articles: list[dict], window: BriefingWindow,
     emitted: set[str] = set()
     for src_time, article in in_window:
         section = classify_section(article)
+        if section not in SECTIONS or re.search(r"月球|太空站|space station|lunar", _text_blob(article), re.I):
+            continue
         fingerprint = event_fingerprint(article, section)
         event_id = "ev-" + fingerprint[:16]
         urls = _canonical_urls(article)
@@ -586,7 +584,8 @@ def arrange_sections(picked: list[tuple[str, dict]],
                      warnings: list[str]) -> dict:
     sections = {name: [] for name in SECTIONS}
     for section, item in picked:
-        sections[section].append(item)
+        if section in sections:
+            sections[section].append(item)
 
     def sort_key(item):
         return (-_SEVERITY_RANK.get(item.get("severity"), 0),
@@ -911,7 +910,6 @@ def build_coverage_notes(sections: dict, checked_sources: list[dict]) -> dict:
             item.get("military")
             for item in sections.get("taiwan_aviation") or []),
         "international_aviation": not sections.get("international_aviation"),
-        "ground_and_maritime": not sections.get("ground_and_maritime"),
     }
     notes = {}
     for scope, is_empty in empty.items():
@@ -940,7 +938,7 @@ def assemble_briefing(window: BriefingWindow, sections: dict,
     generation_mode = ("grounded_assisted"
                        if grounded_info.get("used") else "deterministic")
     generation_model = (
-        {"provider": "gemini", "model": grounded_info.get("model")}
+        {"provider": grounded_info.get("provider", "gemini"), "model": grounded_info.get("model")}
         if grounded_info.get("used") else None)
     return {
         "content_type": "daily_transport_briefing",
@@ -1003,8 +1001,8 @@ def run_edition(edition: str, taipei_date: date) -> int:
     event_index = load_event_index()
     prune_event_index(event_index, now)
     load_warnings: list[str] = []
+    articles, load_warnings = load_published_articles()
     if _include_articles():
-        articles, load_warnings = load_published_articles()
         warnings.extend(load_warnings)
         picked = select_items(articles, window, event_index, now, warnings)
         sections = arrange_sections(picked, warnings)
@@ -1036,17 +1034,35 @@ def run_edition(edition: str, taipei_date: date) -> int:
                     data, existing_titles, g_seen, now, window)
                 warnings.extend(g_warnings)
                 grounded_degraded = bool(g_warnings)
+                # Public items require an actual SKYTICAL original article.
+                # Link only an exact retrieved source URL to a published record;
+                # never let model titles or typed URLs fabricate an internal link.
+                source_articles = {url: article for article in articles
+                                   for url in _canonical_urls(article)}
+                linked = {it.get("article_id") for section in sections.values() for it in section}
                 added = 0
                 for name in SECTIONS:
-                    extra = g_items.get(name) or []
-                    sections[name].extend(extra)
-                    added += len(extra)
+                    for item in g_items.get(name) or []:
+                        article = next((source_articles.get(norm_url(source["url"])) for source in item.get("sources") or []
+                                        if source_articles.get(norm_url(source["url"]))), None)
+                        if not article or article.get("id") in linked:
+                            continue
+                        source_time = article_source_time(article)
+                        if not source_time or not window.contains(source_time) or not _eligible(article):
+                            continue
+                        target = classify_section(article)
+                        if target not in SECTIONS:
+                            continue
+                        sections[target].append(_build_item(article, target, item["event_id"], "new", None, None))
+                        linked.add(article["id"])
+                        added += 1
                 grounded_info = {"used": True,
+                                 "provider": getattr(shim, "provider", "gemini"),
                                  "model": getattr(
                                      shim, "model", grounded.GROUNDED_MODEL),
                                  "items": added}
                 event_index["grounded_seen"] = g_seen
-                if shim is not None:
+                if shim is not None and not getattr(shim, "usage_recorded", False):
                     try:
                         import usage as usage_ledger
 
@@ -1063,12 +1079,16 @@ def run_edition(edition: str, taipei_date: date) -> int:
 
     # partial = our own inputs were degraded, never "no events".
     partial = bool(load_warnings or source_warnings or grounded_degraded)
+    sections = arrange_sections([(name, item) for name in SECTIONS for item in sections[name]], warnings)
     briefing = assemble_briefing(window, sections, checked_sources,
                                  warnings, now, partial, grounded_info)
-    maybe_llm_intro(briefing, sections, warnings)
-
     path = BRIEFINGS_DIR / f"{window.briefing_id}.json"
     old = load_json(path, None)
+    if os.environ.get("BRIEFING_WRITER", "").strip().lower() in ("1", "true", "yes"):
+        from briefing_writer import write_briefing
+        write_briefing(briefing, articles, old)
+    else:
+        maybe_llm_intro(briefing, sections, warnings)
     if _briefing_changed(old, briefing):
         save_json(path, briefing)
         save_json(EVENT_INDEX_PATH, event_index)
