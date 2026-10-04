@@ -178,7 +178,7 @@ def test_publication_detection_prompt_and_bundle():
         "zh": {
             "title": "機場與航空公司營運更新",
             "summary": "主管機關說明航空公司與機場的最新營運狀況。",
-            "body": ["航空主管機關公布最新營運說明。" * 12
+            "body": ["航空主管機關發布最新營運說明。" * 12
                      for _ in range(write.MIN_BODY_PARAGRAPHS)],
         },
         "en": {
@@ -195,7 +195,7 @@ def test_publication_detection_prompt_and_bundle():
             ],
         },
         "flash": {
-            "zh": "主管機關公布航空營運更新。",
+            "zh": "主管機關發布航空營運更新。",
             "en": "The authority published an aviation operations update.",
             "hot": False,
         },
@@ -343,6 +343,10 @@ def test_reasoning_tiers():
         == {"reasoning_effort": "max"},
         "Nemotron Ultra deep maps to maximum reasoning")
     check(manual_reasoning_profile(
+        "openai", "gpt-6-luna", "deep")["wire"]
+        == {"reasoning": {"effort": "max"}},
+        "GPT-6 Luna deep maps to maximum reasoning")
+    check(manual_reasoning_profile(
         "nvidia", "z-ai/glm-5.2", "deep")["effective"]
         == "provider_default",
         "GLM reports provider-default when no control exists")
@@ -359,9 +363,10 @@ def test_reasoning_tiers():
 def test_openrouter_manual_provider_order():
     saved = {
         key: os.environ.get(key)
-        for key in ("GEMINI_API_KEY", "NVIDIA_API_KEY",
+        for key in ("OPENAI_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY",
                     "OPENROUTER_API_KEY", "OPENCODE_API_KEY")
     }
+    os.environ.pop("OPENAI_API_KEY", None)
     os.environ.pop("GEMINI_API_KEY", None)
     os.environ.pop("NVIDIA_API_KEY", None)
     os.environ.pop("OPENCODE_API_KEY", None)
@@ -384,10 +389,11 @@ def test_openrouter_manual_provider_order():
 def test_opencode_manual_provider_order():
     saved = {
         key: os.environ.get(key)
-        for key in ("GEMINI_API_KEY", "NVIDIA_API_KEY",
+        for key in ("OPENAI_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY",
                     "OPENROUTER_API_KEY", "OPENCODE_API_KEY")
     }
-    for key in ("GEMINI_API_KEY", "NVIDIA_API_KEY", "OPENROUTER_API_KEY"):
+    for key in ("OPENAI_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY",
+                "OPENROUTER_API_KEY"):
         os.environ.pop(key, None)
     os.environ["OPENCODE_API_KEY"] = "oc_sk_test-not-a-real-key"
     try:
@@ -403,6 +409,31 @@ def test_opencode_manual_provider_order():
           "manual fallback exposes all OpenCode models in owner order")
     check(all(row.reasoning_tier == "deep" for row in rows),
           "manual reasoning tier reaches every OpenCode model")
+
+
+def test_openai_manual_provider_order():
+    saved = {
+        key: os.environ.get(key)
+        for key in ("OPENAI_API_KEY", "GEMINI_API_KEY", "NVIDIA_API_KEY",
+                    "OPENROUTER_API_KEY", "OPENCODE_API_KEY")
+    }
+    for key in ("GEMINI_API_KEY", "NVIDIA_API_KEY", "OPENROUTER_API_KEY",
+                "OPENCODE_API_KEY"):
+        os.environ.pop(key, None)
+    os.environ["OPENAI_API_KEY"] = "test-openai-key-not-real"
+    try:
+        rows = manual_draft._providers_for(
+            manual_draft.validate_payload(sample_payload()))
+    finally:
+        for key, value in saved.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+    check([row.label for row in rows] == ["openai:gpt-6-luna"],
+          "manual workbench exposes direct GPT-6 Luna selection")
+    check(all(row.reasoning_tier == "deep" for row in rows),
+          "manual default deep tier reaches GPT-6 Luna as MAX")
 
 
 class FakeProvider:
@@ -696,6 +727,8 @@ def test_static_security_contract():
               / "hourly.yml").read_text(encoding="utf-8")
     briefing = (ROOT / ".github" / "workflows"
                 / "briefing.yml").read_text(encoding="utf-8")
+    copilot = (ROOT / ".github" / "workflows"
+               / "copilot.yml").read_text(encoding="utf-8")
     check("noindex,nofollow,noarchive,nosnippet" in html
           and "Content-Security-Policy" in html,
           "private page is noindex and has a restrictive CSP")
@@ -811,6 +844,7 @@ def test_static_security_contract():
         and "actualUsd: 0" in js,
         "true manual mode records estimated tokens with zero actual API spend")
     check("secrets.AVWIRE_MANUAL_TOKEN" in workflow
+          and "secrets.OPENAI_API" in workflow
           and "secrets.OPENROUTER_API_KEY" in workflow
           and "secrets.OPENCODE_API_KEY" in workflow
           and "secrets.DeepSeekV4Flash_API" in workflow
@@ -821,7 +855,7 @@ def test_static_security_contract():
     configured_order = (
         f"AVWIRE_PROVIDER_ORDER: {','.join(AUTOMATIC_MODEL_ORDER)}")
     check(configured_order in hourly and configured_order in briefing,
-          "automatic workflows use the proven production fallback order")
+          "automatic workflows use GPT-6 Luna and the configured fallbacks")
     check("secrets.OPENROUTER_API_KEY" in hourly
           and "secrets.OPENROUTER_API_KEY" in briefing
           and "sk-or-v1-" in hourly and "sk-or-v1-" in briefing,
@@ -830,6 +864,11 @@ def test_static_security_contract():
           and "secrets.OPENCODE_API_KEY" in briefing
           and "oc_sk_" in hourly and "oc_sk_" in briefing,
           "automatic workflows receive and scan for the OpenCode secret")
+    check("secrets.OPENAI_API" in hourly
+          and "secrets.OPENAI_API" in briefing
+          and "secrets.OPENAI_API" in copilot
+          and "secrets.OPENAI_API" in workflow,
+          "all model workflows map the OPENAI_API secret into runtime")
 
 
 def main():
@@ -842,6 +881,7 @@ def main():
         test_reasoning_tiers,
         test_openrouter_manual_provider_order,
         test_opencode_manual_provider_order,
+        test_openai_manual_provider_order,
         test_fallback_and_telemetry,
         test_translation_generate_path,
         test_manual_time_detection_generate_path,

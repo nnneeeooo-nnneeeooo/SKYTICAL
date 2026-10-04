@@ -1082,6 +1082,7 @@ def iso_timestamp(dt) -> str:
 
 # Article-footer model credit: writer id -> short public model name.
 _WRITER_MODELS = (
+    ("gpt-6-luna", "GPT-6 Luna"),
     ("gpt-5.6-sol", "GPT-5.6 Sol"),
     ("nemotron-3-ultra", "Nemotron 3 Ultra"),
     ("nemotron-3-super", "Nemotron 3 Super"),

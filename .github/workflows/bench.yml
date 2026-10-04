@@ -11,6 +11,9 @@ on:
       gemini_model:
         description: "Override AVWIRE_GEMINI_MODEL for this bench"
         required: false
+      openai_model:
+        description: "Override AVWIRE_OPENAI_MODEL for this bench"
+        required: false
       nvidia_model:
         description: "Override AVWIRE_NVIDIA_MODEL for this bench"
         required: false
@@ -39,11 +42,16 @@ jobs:
 
       - name: List models available to each key
         env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
         run: |
+          if [ -n "$OPENAI_API_KEY" ]; then
+            echo "== OpenAI models (GPT-6 Luna) =="
+            curl -sf https://api.openai.com/v1/models -H "Authorization: Bearer $OPENAI_API_KEY" | python -c 'import json,sys; [print(m["id"]) for m in json.load(sys.stdin).get("data",[]) if "gpt-6-luna" in m.get("id", "")]' || echo "(model list unavailable)"
+          fi
           if [ -n "$OPENCODE_API_KEY" ]; then
             echo "== OpenCode Console models =="
             curl -sf https://console.opencode.ai/inference/openai/v1/models \
@@ -72,12 +80,14 @@ jobs:
 
       - name: Bench each provider on identical pending groups
         env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
           AVWIRE_MODEL: ${{ vars.AVWIRE_MODEL }}
+          AVWIRE_OPENAI_MODEL: ${{ inputs.openai_model || vars.AVWIRE_OPENAI_MODEL }}
           AVWIRE_GEMINI_MODEL: ${{ inputs.gemini_model || vars.AVWIRE_GEMINI_MODEL }}
           AVWIRE_NVIDIA_MODEL: ${{ inputs.nvidia_model || vars.AVWIRE_NVIDIA_MODEL }}
           AVWIRE_OPENCODE_MODEL: ${{ inputs.opencode_model || vars.AVWIRE_OPENCODE_MODEL }}
@@ -85,8 +95,9 @@ jobs:
         run: |
           ok=""
           failed=""
-          for p in wechat opencode gemini nvidia anthropic; do
+          for p in openai wechat opencode gemini nvidia anthropic; do
             case "$p" in
+              openai)    key="$OPENAI_API_KEY" ;;
               wechat)    key="$WECHAT_API_KEY" ;;
               opencode)   key="$OPENCODE_API_KEY" ;;
               gemini)    key="$GEMINI_API_KEY" ;;

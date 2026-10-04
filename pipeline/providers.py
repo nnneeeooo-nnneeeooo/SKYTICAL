@@ -1,6 +1,6 @@
 """LLM provider adapters for the write stage.
 
-Six interchangeable writers behind one interface:
+Seven interchangeable writers behind one interface:
 
     anthropic  Anthropic Messages API with native structured outputs
     gemini     Google Gemini API (REST) with responseJsonSchema
@@ -8,6 +8,7 @@ Six interchangeable writers behind one interface:
                JSON enforced by prompt + local extraction
     openrouter OpenRouter Chat Completions (OpenAI-compatible REST),
                JSON enforced by prompt + local extraction
+    openai     OpenAI Responses API with strict JSON Schema output
     opencode   OpenCode Console gateway, routing each model through its
                native Responses, Messages, Gemini or Chat Completions API
     wechat     WeChat Coding Plan OpenAI-compatible Chat Completions gateway
@@ -72,6 +73,7 @@ HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
 # profile fall back to conservative generic settings.
 NVIDIA_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b"
 GEMINI_DEFAULT_MODEL = "gemini-3.6-flash"
+OPENAI_DEFAULT_MODEL = "gpt-6-luna"
 OPENROUTER_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 OPENCODE_DEFAULT_MODEL = "claude-sonnet-4-6"
 OPENCODE_BASE_URL = "https://console.opencode.ai/inference"
@@ -1159,6 +1161,22 @@ class OpenCodeProvider(NvidiaProvider):
             usage.get("output_tokens") or usage.get("completion_tokens") or 0)
         self.usage["usageEvents"] += 1
 
+    def _responses_endpoint(self) -> str:
+        return f"{OPENCODE_BASE_URL}/openai/v1/responses"
+
+    def _responses_api_key(self) -> str:
+        return os.environ["OPENCODE_API_KEY"]
+
+    def _responses_format(self, schema: dict) -> dict:
+        return {
+            "type": "json_schema",
+            "name": "skytical_draft",
+            "schema": schema,
+        }
+
+    def _responses_output_tokens(self, repair: bool) -> int:
+        return 8192 if repair else 16384
+
     @staticmethod
     def _schema_instruction(schema: dict) -> str:
         return (
@@ -1175,19 +1193,14 @@ class OpenCodeProvider(NvidiaProvider):
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
-            "max_output_tokens": 8192 if repair else 16384,
+            "max_output_tokens": self._responses_output_tokens(repair),
             "reasoning": {"effort": self._effort(repair)},
-            "text": {"format": {
-                "type": "json_schema",
-                "name": "skytical_draft",
-                "schema": schema,
-            }},
+            "text": {"format": self._responses_format(schema)},
         }
-        key = os.environ["OPENCODE_API_KEY"]
         response = self._post_json(
-            f"{OPENCODE_BASE_URL}/openai/v1/responses",
+            self._responses_endpoint(),
             payload,
-            {"Authorization": f"Bearer {key}",
+            {"Authorization": f"Bearer {self._responses_api_key()}",
              "Content-Type": "application/json"},
             repair,
         )
@@ -1356,12 +1369,77 @@ class OpenCodeProvider(NvidiaProvider):
                 ) from repair_exc
 
 
+class OpenAIProvider(OpenCodeProvider):
+    """Direct OpenAI Responses API writer using the repository's REST stack."""
+
+    name = "openai"
+
+    def __init__(self, model=None, reasoning_tier=None) -> None:
+        selected_model = (
+            model or os.environ.get("AVWIRE_OPENAI_MODEL")
+            or OPENAI_DEFAULT_MODEL
+        )
+        super().__init__(selected_model, reasoning_tier)
+
+    def available(self) -> bool:
+        return bool(os.environ.get("OPENAI_API_KEY"))
+
+    def _responses_endpoint(self) -> str:
+        return "https://api.openai.com/v1/responses"
+
+    def _responses_api_key(self) -> str:
+        return os.environ["OPENAI_API_KEY"]
+
+    def _check_status(self, response) -> None:
+        if response.status_code in (401, 403):
+            raise ProviderAuthError(f"HTTP {response.status_code}")
+        if response.status_code == 402:
+            raise ProviderQuotaError("HTTP 402 (credits exhausted?)")
+        if response.status_code == 429:
+            body = str(getattr(response, "text", "") or "").lower()
+            if any(code in body for code in (
+                    "insufficient_quota", "billing_hard_limit",
+                    "exceeded your current quota")):
+                raise ProviderQuotaError("HTTP 429 (quota exhausted)")
+            raise ProviderError("HTTP 429 rate limit")
+        if response.status_code == 404:
+            raise ProviderError(
+                f"model not found: {self.model} "
+                "(not available to this API key?)")
+        if response.status_code >= 400:
+            raise ProviderError(f"HTTP {response.status_code}")
+
+    def _responses_format(self, schema: dict) -> dict:
+        return {
+            "type": "json_schema",
+            "name": "skytical_draft",
+            "schema": schema,
+            "strict": True,
+        }
+
+    def _responses_output_tokens(self, repair: bool) -> int:
+        # GPT-6 Luna counts reasoning tokens against this cap. Leave room for
+        # substantial MAX reasoning and the final bilingual JSON response.
+        return 48_000
+
+    def _effort(self, repair: bool) -> str:
+        if self.reasoning_tier:
+            profile = manual_reasoning_profile(
+                self.name, self.model, self.reasoning_tier)
+            effort = profile["wire"]["reasoning"]["effort"]
+            self.reasoning_effective = profile["effective"]
+            return effort
+        self.reasoning_effective = "reasoning.effort=max"
+        return "max"
+
+
 _REGISTRY = {
     AnthropicProvider.name: AnthropicProvider,
     GeminiProvider.name: GeminiProvider,
     NvidiaProvider.name: NvidiaProvider,
     WechatProvider.name: WechatProvider,
     OpenRouterProvider.name: OpenRouterProvider,
+    OpenAIProvider.name: OpenAIProvider,
     OpenCodeProvider.name: OpenCodeProvider,
 }
 
