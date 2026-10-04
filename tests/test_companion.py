@@ -54,17 +54,26 @@ class FakeHttp:
     def __init__(self):
         self.calls = []
         self.rss_body = rss([])
+        self.background_body = rss([])
 
     def get(self, url, **kwargs):
         self.calls.append(url)
         if "news.google.com/rss" in url:
+            body = (self.rss_body if "when%3A2d" in url
+                    else self.background_body)
             return types.SimpleNamespace(status_code=200,
-                                         content=self.rss_body,
+                                         content=body,
                                          headers={})
         # redirect resolution: send everything to the real outlet
+        if url.endswith("/context"):
+            destination = "https://www.apnews.com/context-story"
+        elif url.endswith("/badredirect"):
+            destination = "https://untrusted.example/story"
+        else:
+            destination = "https://www.reuters.com/max7-story"
         return types.SimpleNamespace(
             status_code=302,
-            headers={"Location": "https://www.reuters.com/max7-story"})
+            headers={"Location": destination})
 
 
 fake = FakeHttp()
@@ -100,6 +109,11 @@ check("query keeps anchors and drops stopwords",
       "737" in tokens and "max" in tokens and "faa" in tokens
       and "certification" in tokens and "about" not in tokens
       and "long" not in tokens)
+background_query, background_anchors, _ = companion.build_background_query(
+    THIN_GROUP)
+check("background query keeps model anchors and adds context terms",
+      "737" in background_anchors and "max" in background_anchors
+      and "maintenance" in background_query and "history" in background_query)
 
 # ── candidate filtering ──────────────────────────────────────────────────────
 
@@ -112,9 +126,12 @@ fake.rss_body = rss([
      "blog take"),
     ("Completely unrelated cruise ship story", "Reuters",
      "https://www.reuters.com", "https://news.google.com/x3", "ships"),
+    ("Boeing 737 MAX 7 certification background", "Reuters",
+     "https://www.reuters.com", "https://news.google.com/articles/badredirect",
+     "A related story."),
 ])
 cands = companion.search_candidates(query, tokens, lang_zh=False)
-check("allowlisted same-topic candidate accepted, blog and off-topic "
+check("allowlisted same-topic candidate accepted, blog, off-topic and unsafe "
       "rejected",
       len(cands) == 1 and cands[0]["source"] == "Reuters")
 check("google redirect resolved to the outlet URL",
@@ -138,30 +155,66 @@ finally:
 
 # ── group enrichment end-to-end ──────────────────────────────────────────────
 
+fake.rss_body = rss([
+    ("Boeing 737 MAX 7 certification nears FAA finish line", "Reuters",
+     "https://www.reuters.com", "https://news.google.com/articles/event",
+     "Boeing expects the 737 MAX 7 to be certified soon."),
+])
+fake.background_body = rss([
+    ("Boeing 737 MAX 7 certification history and fleet plans", "AP News",
+     "https://apnews.com", "https://news.google.com/articles/context",
+     "Boeing's 737 MAX 7 certification history and fleet plans."),
+])
 group = {"id": "g9", "items": [dict(THIN_GROUP["items"][0])]}
 added = companion.enrich_thin_groups([group])
-check("companion merged into the group as an ordinary item",
-      added == 1 and len(group["items"]) == 2
+check("current and background companions merge with distinct scopes",
+      added == 2 and len(group["items"]) == 3
       and group["items"][1]["companion"] is True
-      and group["items"][1]["source"] == "Reuters")
+      and group["items"][1]["source"] == "Reuters"
+      and group["items"][2]["source"] == "AP News"
+      and group["items"][2]["backgroundCompanion"] is True)
+background_calls = [c for c in fake.calls
+                    if "news.google.com/rss" in c
+                    and "when%3A2d" not in c]
+check("background search has no recency window and requests context",
+      len(background_calls) == 1
+      and "maintenance" in background_calls[0]
+      and "when%3A2d" not in background_calls[0])
 check("re-running never duplicates an existing outlet or URL",
-      companion.enrich_thin_groups([group]) == 0 and len(group["items"]) == 2)
+      companion.enrich_thin_groups([group]) == 0 and len(group["items"]) == 3)
 
 rich = {"id": "g10", **diverse}
 fake.calls.clear()
 check("source-diverse groups perform zero searches",
       companion.enrich_thin_groups([rich]) == 0 and fake.calls == [])
 
+fake.rss_body = rss([])
+fake.background_body = rss([])
+roundup = {"id": "g11", "groupKind": "safety_roundup",
+           "items": [dict(THIN_GROUP["items"][0])]}
+fake.calls.clear()
+companion.enrich_thin_groups([roundup])
+check("independent-event safety roundups skip broad background searches",
+      not any("news.google.com/rss" in url and "when%3A2d" not in url
+              for url in fake.calls))
+
 # per-run search budget
 fake.rss_body = rss([])
+fake.background_body = rss([])
 thin_groups = [{"id": f"t{i}", "items": [{
     "title": SEED_TITLE, "summary": "s",
     "url": f"https://example.com/{i}"}]} for i in range(5)]
 fake.calls.clear()
 companion.enrich_thin_groups(thin_groups)
 searches = [c for c in fake.calls if "news.google.com/rss" in c]
-check("per-run search budget enforced",
-      len(searches) == min(companion.MAX_SEARCHES_PER_RUN, len(thin_groups)))
+current_searches = [c for c in searches if "when%3A2d" in c]
+background_searches = [c for c in searches if "when%3A2d" not in c]
+check("per-run current-event search budget enforced",
+      len(current_searches)
+      == min(companion.MAX_SEARCHES_PER_RUN, len(thin_groups)))
+check("per-run background search budget enforced",
+      len(background_searches)
+      == min(companion.MAX_BACKGROUND_SEARCHES_PER_RUN, len(thin_groups)))
 
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "

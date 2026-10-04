@@ -48,6 +48,9 @@ _CFG = load_json(ROOT / "config" / "companion_sources.json", {})
 DOMAINS = tuple(str(d).casefold() for d in _CFG.get("domains") or [])
 MAX_ITEMS_PER_GROUP = int(_CFG.get("max_items_per_group") or 3)
 MAX_SEARCHES_PER_RUN = int(_CFG.get("max_searches_per_run") or 2)
+MAX_BACKGROUND_SEARCHES_PER_RUN = max(
+    0, int(_CFG.get("max_background_searches_per_run", 2)))
+MAX_BACKGROUND_ITEMS_PER_GROUP = 1
 THIN_MATERIAL_CHARS = int(_CFG.get("thin_material_chars") or 400)
 TARGET_MATERIAL_CHARS = int(_CFG.get("target_material_chars") or 1600)
 TARGET_SOURCE_COUNT = int(_CFG.get("target_source_count") or 4)
@@ -69,6 +72,19 @@ _STOPWORDS = {
     "ever", "long", "awaited", "your", "you", "our", "new", "just",
 }
 _TOKEN_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9\-']*|[一-鿿]{2,}")
+_BACKGROUND_EVENT_WORDS = {
+    "first", "first-ever", "rare", "rarely", "unusual", "arrival",
+    "arrive", "arrives", "arrived", "landing", "lands", "landed",
+    "flight", "flights", "ferry", "ferried", "sighting", "seen",
+    "returns", "return", "returned", "visits", "visit", "visited",
+    "today", "yesterday", "桃園", "抵達", "飛抵", "罕見", "少見",
+    "首度", "首次", "再度", "重返", "今日", "昨天",
+}
+_BACKGROUND_TERMS = (
+    "(fleet OR route OR routes OR maintenance OR history OR operations "
+    "OR airport OR aircraft OR 機隊 OR 航線 OR 維修 OR 維護 OR 歷史 OR "
+    "營運 OR 機場 OR 機型 OR 過往)"
+)
 
 
 def significant_tokens(title: str) -> list[str]:
@@ -121,6 +137,23 @@ def build_query(group: dict) -> tuple[str, list[str]]:
     return " ".join(tokens), tokens
 
 
+def build_background_query(group: dict) -> tuple[str, list[str], bool]:
+    """Build one broader, unbounded query anchored to the story's entities."""
+    query, tokens = build_query(group)
+    lang_zh = bool(re.search(r"[一-鿿]", query))
+    anchors = list(dict.fromkeys(
+        token for token in tokens if token not in _BACKGROUND_EVENT_WORDS))
+    identifiers = [token for token in anchors if re.search(r"\d", token)]
+    names = [token for token in anchors if token not in identifiers]
+    if identifiers:
+        anchors = list(dict.fromkeys(names[:2] + identifiers[:1]))
+    else:
+        anchors = names[:4]
+    if len(anchors) < 2:
+        return "", anchors, lang_zh
+    return f"{' '.join(anchors)} {_BACKGROUND_TERMS}", anchors, lang_zh
+
+
 def _domain_ok(host: str) -> bool:
     host = str(host or "").casefold().split(":")[0]
     return any(host == d or host.endswith("." + d) for d in DOMAINS)
@@ -161,14 +194,16 @@ def _clean_title(title: str, source_title: str) -> str:
 
 
 def search_candidates(query: str, seed_tokens: list[str],
-                      lang_zh: bool) -> list[dict]:
+                      lang_zh: bool, *, when: str | None = "2d",
+                      min_shared_tokens: int | None = None) -> list[dict]:
     """Same-topic items from allowlisted outlets, best-first."""
     if not query:
         return []
     locale = ("&hl=zh-TW&gl=TW&ceid=TW:zh-Hant" if lang_zh
               else "&hl=en-US&gl=US&ceid=US:en")
+    time_filter = f" when:{when}" if when else ""
     url = ("https://news.google.com/rss/search?q="
-           + quote(f"{query} when:2d") + locale)
+           + quote(f"{query}{time_filter}") + locale)
     resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     if getattr(resp, "status_code", 0) != 200:
         return []
@@ -183,7 +218,10 @@ def search_candidates(query: str, seed_tokens: list[str],
         overlap = seed & set(significant_tokens(title))
         # same-topic bar: at least 3 shared significant tokens, or all of
         # a short seed
-        if len(overlap) < min(3, max(1, len(seed))):
+        threshold = (min(3, max(1, len(seed)))
+                     if min_shared_tokens is None
+                     else max(1, min_shared_tokens))
+        if len(overlap) < threshold:
             continue
         summary = re.sub(r"<[^>]+>", " ", str(entry.get("summary") or ""))
         summary = re.sub(r"\s+", " ", summary).strip()[:500]
@@ -218,7 +256,8 @@ def search_candidates(query: str, seed_tokens: list[str],
             candidate = futures[future]
             try:
                 resolved = future.result()
-                if resolved and not is_google_news_url(resolved):
+                if (resolved and not is_google_news_url(resolved)
+                        and _domain_ok(urlsplit(resolved).netloc)):
                     candidate["url"] = resolved
             except Exception:
                 pass
@@ -228,6 +267,43 @@ def search_candidates(query: str, seed_tokens: list[str],
         if candidate.get("url") and not is_google_news_url(candidate["url"]):
             resolved_candidates.append(candidate)
     return resolved_candidates
+
+
+def _merge_candidates(group: dict, candidates: list[dict], *, limit: int,
+                      background: bool = False) -> int:
+    existing = {norm_url(str(item.get("url") or ""))
+                for item in group.get("items") or []}
+    existing_sources = {
+        str(item.get("source") or "").strip().casefold()
+        for item in group.get("items") or []
+        if str(item.get("source") or "").strip()
+    }
+    added = 0
+    for candidate in candidates:
+        if added >= limit:
+            break
+        key = norm_url(candidate["url"])
+        source_key = str(candidate.get("source") or "").strip().casefold()
+        if key in existing or source_key in existing_sources:
+            continue
+        existing.add(key)
+        existing_sources.add(source_key)
+        item = {
+            "title": candidate["title"],
+            "summary": candidate["summary"],
+            "url": candidate["url"],
+            "source": str(candidate["source"]),
+            "companion": True,
+        }
+        if background:
+            item["backgroundCompanion"] = True
+        if candidate.get("publishedUtc"):
+            item["publishedUtc"] = candidate["publishedUtc"]
+        else:
+            item["dateInferred"] = True
+        group.setdefault("items", []).append(item)
+        added += 1
+    return added
 
 
 def enrich_thin_groups(groups: list) -> int:
@@ -269,38 +345,58 @@ def enrich_thin_groups(groups: list) -> int:
     added_total = 0
     for index, (group, query, _seed_tokens, _lang_zh) in enumerate(targets):
         candidates = results.get(index, [])
-        existing = {norm_url(str(item.get("url") or ""))
-                    for item in group.get("items") or []}
-        existing_sources = {
-            str(item.get("source") or "").strip().casefold()
-            for item in group.get("items") or []
-            if str(item.get("source") or "").strip()
-        }
-        added = 0
-        for cand in candidates:
-            if added >= MAX_ITEMS_PER_GROUP:
-                break
-            key = norm_url(cand["url"])
-            source_key = str(cand.get("source") or "").strip().casefold()
-            if key in existing or source_key in existing_sources:
-                continue
-            existing.add(key)
-            existing_sources.add(source_key)
-            item = {
-                "title": cand["title"],
-                "summary": cand["summary"],
-                "url": cand["url"],
-                "source": f'{cand["source"]}',
-                "companion": True,
-            }
-            if cand.get("publishedUtc"):
-                item["publishedUtc"] = cand["publishedUtc"]
-            else:
-                item["dateInferred"] = True
-            group.setdefault("items", []).append(item)
-            added += 1
+        added = _merge_candidates(
+            group, candidates, limit=MAX_ITEMS_PER_GROUP)
         added_total += added
         if added:
             print(f"companion: group {group.get('id')} +{added} same-topic "
                   f"item(s) from reliable outlets (query: {query[:60]})")
+
+    # A small second pass looks for older background reporting only when the
+    # current-event pass still leaves a group thin. It is separately capped,
+    # uses the same outlet allowlist, and adds at most one context item/group.
+    background_targets = []
+    if MAX_BACKGROUND_SEARCHES_PER_RUN > 0:
+        for group, _event_query, _seed_tokens, _lang_zh in targets:
+            if (group.get("groupKind") == "safety_roundup"
+                    or not is_thin(group) or any(
+                    item.get("backgroundCompanion")
+                    for item in group.get("items") or [])):
+                continue
+            query, anchors, lang_zh = build_background_query(group)
+            if not query or len(anchors) < 2:
+                continue
+            background_targets.append((group, query, anchors, lang_zh))
+            if len(background_targets) >= MAX_BACKGROUND_SEARCHES_PER_RUN:
+                break
+
+    background_results = {}
+    if background_targets:
+        with ThreadPoolExecutor(max_workers=SEARCH_WORKERS) as executor:
+            futures = {
+                executor.submit(
+                    search_candidates, query, anchors, lang_zh,
+                    when=None, min_shared_tokens=2): index
+                for index, (_group, query, anchors, lang_zh)
+                in enumerate(background_targets)
+            }
+            for future in as_completed(futures):
+                index = futures[future]
+                try:
+                    background_results[index] = future.result()
+                except Exception as exc:
+                    group = background_targets[index][0]
+                    print(f"companion: background search failed for group "
+                          f"{group.get('id')}: {type(exc).__name__}: {exc}")
+                    background_results[index] = []
+
+    for index, (group, query, _anchors, _lang_zh) in enumerate(
+            background_targets):
+        added = _merge_candidates(
+            group, background_results.get(index, []),
+            limit=MAX_BACKGROUND_ITEMS_PER_GROUP, background=True)
+        added_total += added
+        if added:
+            print(f"companion: group {group.get('id')} +{added} verified "
+                  f"background source(s) (query: {query[:60]})")
     return added_total
