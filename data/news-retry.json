@@ -322,13 +322,13 @@
       "sourceUrls": [
         "https://www.airbus.com/en/newsroom/press-releases/2026-10-klm-royal-dutch-airlines-takes-delivery-of-its-first-airbus-a350-900"
       ],
-      "contentFailures": 3,
+      "contentFailures": 4,
       "serviceFailures": 0,
       "history": [],
-      "updatedUtc": "2026-10-04T10:25Z",
+      "updatedUtc": "2026-10-05T10:44Z",
       "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-05T10:25Z",
+      "status": "exhausted",
+      "nextRetryUtc": null,
       "title": "KLM Royal Dutch Airlines takes delivery of its first Airbus A350-900"
     },
     "53e99fa1e2508eb4d10ebd87": {
@@ -932,19 +932,6 @@
       "nextRetryUtc": "2026-10-04T15:27Z",
       "title": "British Airways Launches New 2-Hour Boeing 787 Flights From Heathrow: See Map Now"
     },
-    "ec546c691f8cc24954bf2fb0": {
-      "sourceUrls": [
-        "https://www.aerotime.aero/articles/riyadh-air-first-production-boeing-787-dreamliner-indigo-livery"
-      ],
-      "contentFailures": 3,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-10-05T00:50Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-06T00:50Z",
-      "title": "Riyadh Air shares photos of its first production Boeing 787-9 in indigo livery"
-    },
     "2342fa84509cea6617140df5": {
       "sourceUrls": [
         "https://simpleflying.com/american-airlines-ends-involuntarily-bumping-passengers-off-flights"
@@ -997,13 +984,13 @@
         "https://aerospaceglobalnews.com/news/gulfstream-g100-air-ambulance-crash-nantucket",
         "https://www.aerotime.aero/articles/us-coast-guard-debris-foeld-search-gulfstream-g100"
       ],
-      "contentFailures": 1,
+      "contentFailures": 2,
       "serviceFailures": 0,
       "history": [],
-      "updatedUtc": "2026-10-05T07:41Z",
+      "updatedUtc": "2026-10-05T10:44Z",
       "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-05T09:41Z",
+      "nextRetryUtc": "2026-10-05T16:44Z",
       "title": "US Coast Guard locates debris field in search for Gulfstream and missing six"
     },
     "86d4ba0cec87f278ae25b2f1": {
@@ -1091,6 +1078,40 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-05T11:39Z",
       "title": "US Air Force withdraws all B-1 bombers from RAF Fairford base"
+    },
+    "ec546c691f8cc24954bf2fb0": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/riyadh-air-unveils-first-indigo-boeing-787-9-dreamliner",
+        "https://www.aerotime.aero/articles/riyadh-air-first-production-boeing-787-dreamliner-indigo-livery"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 3,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-10-05T00:50Z"
+        }
+      ],
+      "updatedUtc": "2026-10-05T10:44Z",
+      "nextRetryUtc": "2026-10-05T12:44Z",
+      "failureClass": "content_validation",
+      "title": "Riyadh Air shares photos of its first production Boeing 787-9 in indigo livery"
+    },
+    "7b18e238d4d036dabe9dbcdd": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/flydubai-cockpit-attack-pilot-vetting"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-05T10:44Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-05T12:44Z",
+      "title": "Flydubai cockpit attack raises questions about pilot vetting and security checks News"
     }
   }
 }
