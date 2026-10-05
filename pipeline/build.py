@@ -1525,6 +1525,11 @@ _HERO_LOW_VALUE_RE = re.compile(
     r"meal|menu|lounge|livery|celebrity|charity|donat|mileage promotion)",
     re.IGNORECASE,
 )
+_HERO_ACTIVE_MOVEMENT_RE = re.compile(
+    r"(?:飛抵|抵達|降落|到場|執飛|起飛|飛往|arrival|arrive|land(?:ed|ing)?|"
+    r"operate(?:d|s|ing)?\s+(?:flight|service)|depart(?:ed|ure)?|bound for)",
+    re.IGNORECASE,
+)
 _HERO_TIME_SENSITIVE_RE = re.compile(
     r"(?:颱風|台風|豪雨|暴雨|強風|濃霧|地震|海嘯|航班異動|取消|停飛|"
     r"延誤|機場關閉|typhoon|storm|heavy rain|strong wind|fog|earthquake|"
@@ -1605,7 +1610,15 @@ def taiwan_focus_score(article, now=None) -> int:
     if is_weather_airline_flight_story(article, now):
         score += 20
     if _HERO_LOW_VALUE_RE.search(text):
-        score -= 50
+        # Promotional/livery stories are normally de-emphasized, but a fresh
+        # aircraft movement that is actually arriving in or operating to
+        # Taiwan is still useful real-time homepage material.
+        if (_HERO_TAIWAN_PLACE_RE.search(text)
+                and _HERO_MATERIAL_RE.search(text)
+                and _HERO_ACTIVE_MOVEMENT_RE.search(text)):
+            score -= 30
+        else:
+            score -= 50
     return score if score >= 60 else 0
 
 
