@@ -296,13 +296,13 @@
       "sourceUrls": [
         "https://www.aerotime.aero/articles/klm-first-airbus-a350-night-watch"
       ],
-      "contentFailures": 3,
+      "contentFailures": 4,
       "serviceFailures": 0,
       "history": [],
-      "updatedUtc": "2026-10-03T21:45Z",
+      "updatedUtc": "2026-10-05T01:01Z",
       "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-04T21:45Z",
+      "status": "exhausted",
+      "nextRetryUtc": null,
       "title": "KLM welcomes its first Airbus A350, named ‘The Night Watch’"
     },
     "7dae5834b7dec8879018dc28": {
@@ -335,13 +335,13 @@
       "sourceUrls": [
         "https://www.aerotime.aero/articles/ntsb-preliminary-report-21-air-fatal-crash-miami-airport"
       ],
-      "contentFailures": 2,
+      "contentFailures": 3,
       "serviceFailures": 1,
       "history": [],
-      "updatedUtc": "2026-10-04T18:48Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-10-05T01:01Z",
+      "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-04T20:48Z",
+      "nextRetryUtc": "2026-10-06T01:01Z",
       "title": "NTSB states 21 Air crew not given required wind info before fatal crash"
     },
     "726552b492aca84cc7509f30": {
@@ -970,6 +970,32 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-06T00:50Z",
       "title": "Riyadh Air shares photos of its first production Boeing 787-9 in indigo livery"
+    },
+    "2342fa84509cea6617140df5": {
+      "sourceUrls": [
+        "https://simpleflying.com/american-airlines-ends-involuntarily-bumping-passengers-off-flights"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-05T01:01Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-05T03:01Z",
+      "title": "“Take A Delay” Instead: American Airlines Ends Bumping Passengers Involuntarily Off Flights"
+    },
+    "3e9568d3a3971ef77582f2af": {
+      "sourceUrls": [
+        "https://simpleflying.com/airbus-deliver-99-jets-month-year-end-2026-target"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-05T01:01Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-05T03:01Z",
+      "title": "Why Airbus Must Deliver 99 Jets A Month Through Year-End To Hit Its 2026 Target"
     }
   }
 }
