@@ -108,6 +108,22 @@ check("valid output is a single initial medium-effort batch",
       len(provider.calls) == 1 and provider.calls[0]["repair"] is False
       and provider.calls[0]["schema"] == writer.SCHEMA)
 
+# Punctuation-only defects are normalized in one batch and summaries retain
+# their valid semicolon punctuation.
+punctuation_row = valid_row(
+    headline_zh="航空公司；公布波音 787 新航線",
+    summary_zh="航空公司宣布波音 787 將於 2026 年 10 月 6 日開航；航線每日一班。")
+punctuation_provider = FakeProvider([encoded([punctuation_row])])
+punctuation_brief, punctuation_articles = make_input()
+punctuation_ok = run_with(punctuation_provider, punctuation_brief,
+                          punctuation_articles)[0]
+punctuation_item = punctuation_brief["sections"]["international_aviation"][0]
+check("new headline semicolon is normalized in one batch and summary is preserved",
+      punctuation_ok and len(punctuation_provider.calls) == 1
+      and punctuation_provider.calls[0]["repair"] is False
+      and punctuation_item["headline"] == "航空公司 公布波音 787 新航線"
+      and punctuation_item["summary"] == punctuation_row["summary_zh"])
+
 # Image fields do not enter the digest; cache reuse preserves the saved labels.
 old = copy.deepcopy(brief)
 old["sections"]["international_aviation"][0]["keyword_zh"] = "已保存關鍵字"
@@ -121,6 +137,37 @@ check("image-only change reuses writer cache and saved keyword without a call",
       cached_ok and not provider2.calls
       and cached_brief["sections"]["international_aviation"][0]["keyword_zh"] == "已保存關鍵字")
 
+# Headline punctuation is normalized without touching valid summary punctuation.
+cached_semicolon = copy.deepcopy(old)
+cached_semicolon_item = cached_semicolon["sections"]["international_aviation"][0]
+cached_semicolon_item["headline"] = "航空公司；公布波音 787 新航線"
+cached_semicolon_item["summary"] = "航空公司宣布波音 787 開航；新航線每日一班。"
+provider_semicolon_cache = FakeProvider([])
+semicolon_cache_brief, semicolon_cache_articles = make_input()
+semicolon_cache_ok = run_with(provider_semicolon_cache, semicolon_cache_brief,
+                              semicolon_cache_articles,
+                              cached_semicolon)[0]
+semicolon_cache_item = semicolon_cache_brief["sections"]["international_aviation"][0]
+check("cached headline semicolon is normalized without a provider call",
+      semicolon_cache_ok and not provider_semicolon_cache.calls
+      and semicolon_cache_item["headline"] == "航空公司 公布波音 787 新航線"
+      and semicolon_cache_item["summary"] == cached_semicolon_item["summary"])
+
+# A cached opaque title cannot bypass the guard; a failed repair falls back to
+# the verified article copy instead of reusing the rejected cached headline.
+cached_opaque = copy.deepcopy(old)
+cached_opaque["sections"]["international_aviation"][0]["headline"] = (
+    "航空公司波音787換志願者")
+provider_cache_failure = FakeProvider([ProviderAuthError("offline test")])
+opaque_cache_brief, opaque_cache_articles = make_input()
+opaque_cache_ok = run_with(provider_cache_failure, opaque_cache_brief,
+                           opaque_cache_articles, cached_opaque)[0]
+opaque_cache_item = opaque_cache_brief["sections"]["international_aviation"][0]
+check("opaque cached headline triggers bounded regeneration and source fallback",
+      not opaque_cache_ok and len(provider_cache_failure.calls) == 1
+      and opaque_cache_item["headline"] == "原始標題"
+      and "換志願者" not in opaque_cache_item["headline"])
+
 # Invalid batch gets one low-effort repair; a still-invalid response falls back.
 malformed = encoded([valid_row(evidence=[99])])
 provider3 = FakeProvider([malformed, encoded([valid_row()])])
@@ -128,6 +175,25 @@ brief3, articles3 = make_input()
 check("malformed output receives one low-effort repair then succeeds",
       run_with(provider3, brief3, articles3)[0]
       and len(provider3.calls) == 2 and provider3.calls[1]["repair"] is True)
+
+# An opaque but otherwise well-formed headline receives the existing single
+# low-effort correction; its summary remains unchanged, including semicolons.
+opaque_row = valid_row(
+    headline_zh="男子持假登機證拒離機清艙",
+    summary_zh="航空公司宣布波音 787 將於 2026 年 10 月 6 日開航；新航線每日一班。")
+corrected_row = valid_row(
+    headline_zh="航空公司宣布波音 787 新航線將於 2026 年 10 月 6 日開航並每日一班",
+    summary_zh=opaque_row["summary_zh"])
+provider_opaque = FakeProvider([
+    encoded([opaque_row]), encoded([corrected_row])])
+brief_opaque, articles_opaque = make_input()
+opaque_ok = run_with(provider_opaque, brief_opaque, articles_opaque)[0]
+opaque_item = brief_opaque["sections"]["international_aviation"][0]
+check("opaque briefing headline receives one bounded low-effort correction",
+      opaque_ok and len(provider_opaque.calls) == 2
+      and provider_opaque.calls[1]["repair"] is True
+      and opaque_item["headline"] == corrected_row["headline_zh"]
+      and opaque_item["summary"] == opaque_row["summary_zh"])
 provider4 = FakeProvider([malformed, malformed])
 brief4, articles4 = make_input()
 fallback_ok = run_with(provider4, brief4, articles4)[0]
