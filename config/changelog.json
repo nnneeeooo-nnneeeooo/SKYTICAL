@@ -2,8 +2,36 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-10-04",
+  "updatedThrough": "2026-10-05",
   "entries": [
+    {
+      "date": "2026-10-05",
+      "kind": "fix",
+      "commit": "f1ada6883c299855fed41c5bfec5bc3586f366cf",
+      "zh": "修正首頁頭條輪播對臺灣特殊塗裝航機抵臺新聞的辨識，讓符合臺灣焦點條件的報導能正常進入輪播。",
+      "en": "Fixed headline-carousel eligibility for Taiwan arrivals featuring special liveries, allowing qualifying Taiwan-focused stories to appear in the rotation."
+    },
+    {
+      "date": "2026-10-04",
+      "kind": "feature",
+      "commit": "5e9f73ad2aeb66b014e3e34c6a97f6cac263be59",
+      "zh": "每日新增晨間、午後與晚間三期航空快報；首頁呈現最新一期，報告分為飛安、臺灣航空及國際航空產業動態，並可依日期與時段瀏覽。",
+      "en": "Added morning, afternoon and evening aviation briefing editions each day. The homepage shows the latest edition, with reports organised into safety, Taiwan aviation and international industry sections and browsable by date and time."
+    },
+    {
+      "date": "2026-10-04",
+      "kind": "design",
+      "commit": "1fa4b2e93b7e6cce1e772ca2c20c5befb7434eb1",
+      "zh": "將首頁頭條輪播間隔調整為 2.5 秒，並保留手動切換及游標／鍵盤焦點暫停功能。",
+      "en": "Set the homepage headline carousel to advance every 2.5 seconds while keeping manual controls and hover/focus pause behavior."
+    },
+    {
+      "date": "2026-10-04",
+      "kind": "design",
+      "commit": "e00c33f3818148dab5e5e36cafaf6dc4ec32d143",
+      "zh": "文章署名新增 DeepSeek V4 Flash 顯示名稱，讓讀者能辨識實際使用的撰稿模型。",
+      "en": "Added DeepSeek V4 Flash to article bylines so readers can identify the actual drafting model used."
+    },
     {
       "date": "2026-10-04",
       "kind": "fix",
