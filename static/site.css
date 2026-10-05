@@ -174,6 +174,12 @@ a.ticker-item:hover .ticker-time { color: var(--color-accent); }
   cursor: pointer; font-size: 14px; font-weight: 600; padding: 8px 14px;
   border-bottom: 2px solid transparent; color: var(--color-text); text-decoration: none;
 }
+.nav-beta {
+  display: inline-block; margin-left: 5px; padding: 2px 4px;
+  vertical-align: 2px; background: var(--color-accent); color: var(--color-bg);
+  font: 800 8px/1 sans-serif; letter-spacing: .06em; white-space: nowrap;
+  pointer-events: none;
+}
 .nav-link:hover { color: var(--color-accent); }
 .nav-link.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
 .site-nav {
@@ -639,6 +645,11 @@ a.flash-row:hover .flash-text { color: var(--color-accent); }
     border: 1px solid var(--color-divider); border-bottom-width: 1px;
     overflow-wrap: anywhere;
   }
+  .nav-link-briefing {
+    flex-wrap: wrap; column-gap: 5px;
+  }
+  .nav-link-briefing .nav-link-label { flex: 0 0 auto; }
+  .nav-link-briefing .nav-beta { margin-left: 0; }
   .nav-link.active { border-color: var(--color-accent); }
   .center-col { order: 1; }
   .rail-left {

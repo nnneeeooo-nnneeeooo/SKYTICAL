@@ -109,7 +109,8 @@
       </button>
       <nav class="site-nav" id="site-nav">
         {% for n in nav %}
-        <a class="nav-link{% if n.active %} active{% endif %}" href="{{ n.url }}">{{ n.label }}</a>
+        {% set is_briefing_nav = n.url.endswith('/briefings/') %}
+        <a class="nav-link{% if is_briefing_nav %} nav-link-briefing{% endif %}{% if n.active %} active{% endif %}" href="{{ n.url }}">{% if is_briefing_nav %}<span class="nav-link-label">{{ n.label }}</span><span class="nav-beta">BETA</span>{% else %}{{ n.label }}{% endif %}</a>
         {% endfor %}
       </nav>
     </div>
