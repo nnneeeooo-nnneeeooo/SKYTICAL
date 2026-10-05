@@ -21,15 +21,21 @@ def main() -> None:
     assert raw["repository"] == build._CHANGELOG_REPOSITORY \
         == "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL"
     assert raw["historyStart"] == "2026-07-26"
-    assert raw["updatedThrough"] == "2026-10-04"
-    assert len(raw["entries"]) == 164
+    assert raw["updatedThrough"] == "2026-10-05"
+    assert len(raw["entries"]) == 168
 
     historical = [row["commit"] for row in raw["entries"]
                   if row["commit"] is not None]
-    assert len(historical) == 164
+    assert len(historical) == 168
     assert len(set(historical)) == len(historical)
     assert all(re.fullmatch(r"[0-9a-f]{40}", sha) for sha in historical)
     assert sum(row["commit"] is None for row in raw["entries"]) == 0
+    assert {row["commit"] for row in raw["entries"][:4]} == {
+        "f1ada6883c299855fed41c5bfec5bc3586f366cf",
+        "5e9f73ad2aeb66b014e3e34c6a97f6cac263be59",
+        "1fa4b2e93b7e6cce1e772ca2c20c5befb7434eb1",
+        "e00c33f3818148dab5e5e36cafaf6dc4ec32d143",
+    }
     rendered_copy = "\n".join(
         f"{row['zh']}\n{row['en']}" for row in raw["entries"])
     assert "免費" not in rendered_copy
@@ -56,11 +62,11 @@ def main() -> None:
         raw, "zh", build.L["zh"]["changeKinds"])
     en = build.changelog_view(
         raw, "en", build.L["en"]["changeKinds"])
-    assert zh["count"] == en["count"] == 164
+    assert zh["count"] == en["count"] == 168
     assert [group["date"] for group in zh["groups"]] \
         == sorted(set(dates), reverse=True)
     assert zh["groups"][0]["entries"][0]["title"] \
-        .startswith("將 GPT-6 Luna 移至模型備援順序末端")
+        .startswith("修正首頁頭條輪播")
     assert en["groups"][-1]["entries"][-1]["title"].startswith(
         "Created SKYTICAL")
     linked = [entry for group in en["groups"] for entry in group["entries"]
@@ -112,7 +118,7 @@ def main() -> None:
         assert f'href="{expected_path}"' in html
         assert t["footerChangelog"] in html
         assert t["changeNotice"] in html
-        assert len(re.findall(r'class="changelog-entry"', html)) == 164
+        assert len(re.findall(r'class="changelog-entry"', html)) == 168
         assert "javascript:alert" not in html
 
     print("test_changelog: OK")
