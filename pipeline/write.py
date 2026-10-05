@@ -525,7 +525,9 @@ OUTPUT RULES:
   If the event and useful background fit the brief contract, publish_brief;
   never promote it to publish merely to make the article longer.
 - zh.title: 18 to 38 Chinese/alphanumeric characters excluding punctuation
-  and spaces. zh.summary: one 26 to 38 character notification-style line.
+  and spaces; do not use full-width or half-width semicolons in Chinese news
+  headlines. When separating the main headline from a supporting point, use
+  one half-width space. zh.summary: one 26 to 38 character notification-style line.
   Use a complete concise sentence when it fits; otherwise use 2 to 4 factual
   keyword phrases separated by full-width semicolons「；」. en.title: 45 to 100
   characters including spaces. en.summary: one 10 to 18 word line, using
