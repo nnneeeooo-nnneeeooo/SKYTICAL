@@ -42,6 +42,7 @@ import news_retry
 from draft_recovery import (
     normalize_reader_copy, normalize_fact_ids, repair_prompt, draft_timeout, ProviderCallTimeout,
 )
+from headline_quality import normalize_zh_headline, zh_headline_problem
 
 from common import (
     ARTICLES_DIR,
@@ -525,9 +526,14 @@ OUTPUT RULES:
   If the event and useful background fit the brief contract, publish_brief;
   never promote it to publish merely to make the article longer.
 - zh.title: 18 to 38 Chinese/alphanumeric characters excluding punctuation
-  and spaces; do not use full-width or half-width semicolons in Chinese news
-  headlines. When separating the main headline from a supporting point, use
-  one half-width space. zh.summary: one 26 to 38 character notification-style line.
+  and spaces as a soft target only; go longer when needed to keep the headline
+  clear, and never truncate or sacrifice meaning for length. A Chinese headline
+  must stand alone and clearly name its subject, action and supported result;
+  state a causal link only when the evidence supports it. Preserve uncertainty,
+  avoid unexplained jargon and compressed word strings such as「拒離機」,
+  「清艙」or「換志願者」. Do not use full-width or half-width semicolons in
+  Chinese headlines; separate the main event and a supported outcome with one
+  half-width space. zh.summary: one 26 to 38 character notification-style line.
   Use a complete concise sentence when it fits; otherwise use 2 to 4 factual
   keyword phrases separated by full-width semicolons「；」. en.title: 45 to 100
   characters including spaces. en.summary: one 10 to 18 word line, using
@@ -1137,6 +1143,9 @@ def validate_draft(draft):
         if len(body) > MAX_BODY_PARAGRAPHS:
             return (f"{lang}.body has {len(body)} paragraphs; maximum is "
                     f"{MAX_BODY_PARAGRAPHS}")
+    headline_problem = zh_headline_problem(draft["zh"]["title"])
+    if headline_problem:
+        return "zh.title " + headline_problem
     language_error = simplified_chinese_error(draft)
     if language_error:
         return language_error
@@ -1570,6 +1579,13 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
             return None, None
         candidate = normalize_reader_copy(candidate, _S2T)
         candidate = normalize_fact_ids(candidate)
+        # Punctuation alone is deterministic to repair. Keep this scoped to
+        # the title so valid semicolons in summaries and article bodies survive.
+        if (isinstance(candidate, dict)
+                and isinstance(candidate.get("zh"), dict)
+                and isinstance(candidate["zh"].get("title"), str)):
+            candidate["zh"]["title"] = normalize_zh_headline(
+                candidate["zh"]["title"])
         # Reclassify only when the existing body fully meets the other format.
         actual_format = None
         if (isinstance(candidate, dict)

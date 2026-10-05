@@ -551,6 +551,27 @@ def test_extract_json_and_validate_draft():
 
     check(write.validate_draft(DRAFT_SAFETY) is None, "safety draft validates")
     check(write.validate_draft(DRAFT_BIZ) is None, "biz draft validates")
+    opaque_headline = json.loads(json.dumps(DRAFT_BIZ))
+    opaque_headline["zh"]["title"] = "Frontier Airlines男子持假登機證拒離機清艙"
+    check("opaque compressed wording" in
+          (write.validate_draft(opaque_headline) or ""),
+          "opaque compressed Chinese headline is blocked before publication")
+    semicolon_headline = json.loads(json.dumps(DRAFT_BIZ))
+    semicolon_headline["zh"]["title"] = "IATA；六月全球航空貨運需求年增8.2%"
+    check("zh.title contains a semicolon" in
+          (write.validate_draft(semicolon_headline) or ""),
+          "semicolon in a direct or legacy Chinese headline is blocked")
+    semicolon_summary = json.loads(json.dumps(DRAFT_BIZ))
+    semicolon_summary["zh"]["summary"] = (
+        "IATA發布六月航空貨運需求年增8.2%；以貨運噸公里計算。")
+    long_headline = json.loads(json.dumps(DRAFT_BIZ))
+    long_headline["zh"]["title"] = (
+        "IATA發布2026年6月全球航空貨運需求以貨運噸公里計較2025年同期增加8.2%")
+    check(len(long_headline["zh"]["title"]) > 38
+          and write.validate_draft(long_headline) is None,
+          "clear Chinese headline may exceed the soft 38-character target")
+    check(write.validate_draft(semicolon_summary) is None,
+          "a supported summary may keep its Chinese semicolon")
     broken = json.loads(json.dumps(DRAFT_BIZ))
     broken["zh"]["title"] = "美航空公司反对中国国航增飞纽约华盛顿"
     check("Simplified Chinese" in (write.validate_draft(broken) or ""),
@@ -600,6 +621,30 @@ def test_extract_json_and_validate_draft():
     pending = load(FIXTURES / "pending.json")
     cargo_group = next(g for g in pending["groups"]
                        if g["id"] == "g-20260726-0503-2")
+    semicolon_copy = json.loads(json.dumps(DRAFT_BIZ))
+    semicolon_copy["zh"]["title"] = "IATA；六月全球航空貨運需求年增8.2%"
+    semicolon_copy["zh"]["summary"] = semicolon_summary["zh"]["summary"]
+    punctuation_provider = FakeProvider("gemini", [semicolon_copy])
+    normalized, facts = write._validated_draft(
+        punctuation_provider, cargo_group, tries=2)
+    check(punctuation_provider.calls == 1 and facts
+          and "；" not in normalized["zh"]["title"]
+          and ";" not in normalized["zh"]["title"]
+          and normalized["zh"]["summary"] == semicolon_summary["zh"]["summary"],
+          "headline semicolon is normalized without extra call or summary edits")
+    opaque_copy = json.loads(json.dumps(DRAFT_BIZ))
+    opaque_copy["zh"]["title"] = "IATA航空貨運需求換志願者"
+    repaired_title = json.loads(json.dumps(DRAFT_BIZ))
+    repaired_title["zh"]["title"] = long_headline["zh"]["title"]
+    repaired_title["zh"]["summary"] = semicolon_summary["zh"]["summary"]
+    opaque_provider = FakeProvider("gemini", [opaque_copy, repaired_title])
+    repaired, facts = write._validated_draft(
+        opaque_provider, cargo_group, tries=2)
+    check(opaque_provider.calls == 2 and facts
+          and repaired["zh"]["title"] == long_headline["zh"]["title"]
+          and len(repaired["zh"]["title"]) > 38
+          and repaired["zh"]["summary"] == semicolon_summary["zh"]["summary"],
+          "opaque headline gets one bounded repair and accepts a clear long title")
     short = json.loads(json.dumps(DRAFT_BIZ))
     short["zh"]["body"] = ["短文。"] * write.MIN_BODY_PARAGRAPHS
     retrying_provider = FakeProvider("gemini", [short, DRAFT_BIZ])
