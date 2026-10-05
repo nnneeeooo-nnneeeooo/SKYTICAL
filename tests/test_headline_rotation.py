@@ -135,6 +135,24 @@ def test_taiwan_focus_scores_direct_and_material_cathay_stories():
     assert build.taiwan_focus_score(foreign_caa, now) == 0
 
 
+def test_taiwan_special_livery_arrival_can_enter_carousel_but_promo_cannot():
+    now = build.now_utc()
+    arrival = _article(
+        now,
+        "國泰80週年復古塗裝A350今晨飛抵桃園",
+        "CX422航班由香港飛往臺灣桃園國際機場，航機已起飛。",
+        source="Cathay Pacific",
+    )
+    promo = _article(
+        now,
+        "國泰80週年復古塗裝A350亮相",
+        "航空公司公布特殊塗裝設計與週年活動。",
+        source="Cathay Pacific",
+    )
+    assert build.taiwan_focus_score(arrival, now) >= 60
+    assert build.taiwan_focus_score(promo, now) == 0
+
+
 def test_focus_selection_prefers_fresh_and_uses_safe_recent_fallback():
     now = build.now_utc()
     fresh = _article(
@@ -193,6 +211,7 @@ def main() -> int:
         test_stale_priority_story_is_not_pinned,
         test_rotation_payload_contains_localized_hero_fields,
         test_taiwan_focus_scores_direct_and_material_cathay_stories,
+        test_taiwan_special_livery_arrival_can_enter_carousel_but_promo_cannot,
         test_focus_selection_prefers_fresh_and_uses_safe_recent_fallback,
         test_carousel_leads_with_taiwan_then_prioritizes_global_news,
         test_flash_priority_is_distinct_from_legacy_pinned_flag,
