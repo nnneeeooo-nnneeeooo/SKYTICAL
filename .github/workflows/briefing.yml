@@ -14,6 +14,7 @@ on:
     - cron: "15 23 * * *"
     - cron: "15 7 * * *"
     - cron: "15 15 * * *"
+    - cron: "5,35 * * * *"
   workflow_dispatch:
     inputs:
       edition:
@@ -32,6 +33,11 @@ on:
 jobs:
   briefing:
     runs-on: ubuntu-latest
+    outputs:
+      publish: ${{ steps.run_briefing.outputs.publish }}
+      failed: ${{ steps.run_briefing.outputs.failed }}
+      persisted: ${{ steps.persist.outputs.persisted }}
+      artifact: ${{ steps.upload.outputs.artifact_id }}
     concurrency:
       group: skytical-briefing-pipeline
       cancel-in-progress: false
@@ -40,6 +46,11 @@ jobs:
       pages: write # configure-pages enablement
     steps:
       - uses: actions/checkout@v5
+
+      - name: Refresh to latest main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
 
       - name: Enable GitHub Pages (build_type=workflow)
         uses: actions/configure-pages@v6
@@ -59,27 +70,39 @@ jobs:
           python tests/test_briefing.py
           python tests/test_briefing_writer.py
           python tests/test_briefing_ui.py
+          python tests/test_briefing_recovery.py
 
-      - name: Resolve edition (explicit cron mapping, never guessed from the clock)
+      - name: Resolve briefing run mode
         id: ed
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          INPUT_EDITION: ${{ inputs.edition }}
+          INPUT_DATE: ${{ inputs.date }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "edition=${{ inputs.edition }}" >> "$GITHUB_OUTPUT"
-            echo "date=${{ inputs.date }}" >> "$GITHUB_OUTPUT"
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "mode=normal" >> "$GITHUB_OUTPUT"
+            echo "edition=$INPUT_EDITION" >> "$GITHUB_OUTPUT"
+            echo "date=$INPUT_DATE" >> "$GITHUB_OUTPUT"
           else
-            case "${{ github.event.schedule }}" in
+            case "$SCHEDULE" in
               "15 23 * * *") echo "edition=morning" >> "$GITHUB_OUTPUT" ;;
               "15 7 * * *")  echo "edition=afternoon" >> "$GITHUB_OUTPUT" ;;
               "15 15 * * *") echo "edition=evening" >> "$GITHUB_OUTPUT" ;;
-              *) echo "::error::unmapped schedule '${{ github.event.schedule }}'"; exit 1 ;;
+              "5,35 * * * *") echo "mode=recover" >> "$GITHUB_OUTPUT" ;;
+              *) echo "::error::unmapped schedule '$SCHEDULE'"; exit 1 ;;
             esac
-            echo "date=" >> "$GITHUB_OUTPUT"
-            echo "cron=${{ github.event.schedule }}" >> "$GITHUB_OUTPUT"
+            if [ "$SCHEDULE" != "5,35 * * * *" ]; then
+              echo "mode=normal" >> "$GITHUB_OUTPUT"
+              echo "date=" >> "$GITHUB_OUTPUT"
+              echo "cron=$SCHEDULE" >> "$GITHUB_OUTPUT"
+            fi
           fi
 
-      - name: Assemble briefing and build site
+      - name: Run briefing with persisted-state guard
+        id: run_briefing
+        continue-on-error: true
         env:
-          # Briefing search and writer use an independent paid OpenAI Luna route.
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
@@ -106,21 +129,36 @@ jobs:
           # private manual-drafting URL/encryption token
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
-          # Verified site articles remain available as a search fallback.
           BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
+          RUN_MODE: ${{ steps.ed.outputs.mode }}
+          EDITION: ${{ steps.ed.outputs.edition }}
+          REPORT_DATE: ${{ steps.ed.outputs.date }}
+          SCHEDULE_CRON: ${{ steps.ed.outputs.cron }}
         run: |
           python tests/test_headline_rotation.py
-          if [ -n "${{ steps.ed.outputs.date }}" ]; then
-            python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}" --date "${{ steps.ed.outputs.date }}"
-          elif [ "${{ github.event_name }}" = "schedule" ]; then
-            python pipeline/briefing.py --cron "${{ steps.ed.outputs.cron }}"
+          if [ "$RUN_MODE" = "recover" ]; then
+            python pipeline/briefing_recovery.py --recover
+          elif [ -n "$REPORT_DATE" ]; then
+            python pipeline/briefing_recovery.py --edition "$EDITION" --date "$REPORT_DATE"
+          elif [ -n "$SCHEDULE_CRON" ]; then
+            python pipeline/briefing_recovery.py --edition "$EDITION" --cron "$SCHEDULE_CRON"
           else
-            python pipeline/briefing.py --edition "${{ steps.ed.outputs.edition }}"
+            python pipeline/briefing_recovery.py --edition "$EDITION"
           fi
+
+      - name: Build site when briefing data changed
+        if: steps.run_briefing.outputs.publish == 'true'
+        env:
+          ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional radar snapshot
+          AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
+          AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
+          SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
+        run: |
           python pipeline/build.py
           python pipeline/radar_snapshot.py --optional
 
       - name: Scan build output and committed data for secrets/reasoning
+        if: steps.run_briefing.outputs.publish == 'true'
         run: |
           scan() {
             set +e
@@ -141,43 +179,55 @@ jobs:
 
       # Upload BEFORE the data commit so the deploy never depends on git push.
       - uses: actions/upload-pages-artifact@v5
+        id: upload
+        if: steps.run_briefing.outputs.publish == 'true'
         with:
           path: site
           # Preserve v3 packaging, including .nojekyll and other site dotfiles.
           include-hidden-files: true
 
       - name: Commit briefing data (only when changed)
-        continue-on-error: true # a push race must not fail the run or block deploy
+        id: persist
+        if: steps.run_briefing.outputs.publish == 'true'
         run: |
           git config user.name "skytical-bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/briefings
           git add data/usage.json 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "no changes to commit"
+            echo "no changes to commit; current main already contains the state"
+            echo "persisted=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "briefing ${{ steps.ed.outputs.edition }} $(date -u +%FT%H:%M)"
           pushed=""
           for i in 1 2 3; do
-            if ! git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"; then
+            if ! git pull --rebase -X theirs origin main; then
               git rebase --abort || true
               sleep 5
               continue
             fi
-            if git push; then
+            if git push origin HEAD:main; then
               pushed=yes
               break
             fi
             sleep 5
           done
           if [ -z "$pushed" ]; then
-            echo "::warning::briefing data could not be pushed after 3 attempts"
+            echo "::error::briefing data could not be persisted after 3 attempts"
             exit 1
           fi
+          echo "persisted=true" >> "$GITHUB_OUTPUT"
+
+      - name: Fail run if an edition failed validation
+        if: steps.run_briefing.outcome == 'failure' || steps.run_briefing.outputs.failed == 'true'
+        run: |
+          echo "::error::one or more briefing editions failed; inspect per-edition logs"
+          exit 1
 
   deploy:
     needs: briefing
+    if: always() && needs.briefing.outputs.publish == 'true' && needs.briefing.outputs.persisted == 'true' && needs.briefing.outputs.artifact != ''
     runs-on: ubuntu-latest
     concurrency:
       group: skytical-pages-publish
