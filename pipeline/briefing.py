@@ -986,9 +986,64 @@ def upsert_index_row(row: dict) -> None:
         save_json(INDEX_PATH, new)
 
 
-def run_edition(edition: str, taipei_date: date) -> int:
+def complete_briefing(path: Path, briefing_id: str) -> dict | None:
+    """Return a complete persisted report, including valid public status."""
+    data = load_json(path, None)
+    if not isinstance(data, dict):
+        return None
+    if (data.get("briefing_id") != briefing_id
+            or data.get("status") not in ("published", "partial")
+            or not isinstance(data.get("sections"), dict)
+            or set(data["sections"]) != set(SECTIONS)
+            or not all(isinstance(data["sections"][name], list)
+                       for name in SECTIONS)
+            or not isinstance(data.get("checked_sources"), list)
+            or not isinstance(data.get("warnings"), list)
+            or not all(key in data for key in (
+                "date", "edition", "window_start", "window_end",
+                "cutoff_time", "generated_at", "item_count"))):
+        return None
+    try:
+        target_date = date.fromisoformat(str(data["date"]))
+        edition = str(data["edition"])
+        window = get_briefing_window(edition, target_date)
+        if (window.briefing_id != briefing_id
+                or data["window_start"] != window.window_start.isoformat()
+                or data["window_end"] != window.window_end.isoformat()
+                or data["cutoff_time"] != window.cutoff_time.isoformat()):
+            return None
+        generated_at = parse_iso(str(data["generated_at"]))
+        if generated_at is None or generated_at.tzinfo is None:
+            return None
+    except (KeyError, TypeError, ValueError):
+        return None
+    try:
+        count = sum(len(data["sections"][name]) for name in SECTIONS)
+        if int(data["item_count"]) != count:
+            return None
+    except (TypeError, ValueError):
+        return None
+    return data
+
+
+def run_edition(edition: str, taipei_date: date, *,
+               skip_existing: bool = False) -> int:
     now = now_utc()
     window = get_briefing_window(edition, taipei_date)
+    existing = complete_briefing(
+        BRIEFINGS_DIR / f"{window.briefing_id}.json", window.briefing_id)
+    if existing and skip_existing:
+        upsert_index_row({
+            "briefing_id": window.briefing_id,
+            "date": window.date.isoformat(),
+            "edition": edition,
+            "status": existing["status"],
+            "cutoff_time": existing["cutoff_time"],
+            "generated_at": existing["generated_at"],
+            "item_count": existing["item_count"],
+        })
+        print(f"briefing: {window.briefing_id} already complete; skipped generation")
+        return 0
     if now < window.window_end.astimezone(timezone.utc):
         raise RuntimeError(
             f"briefing window has not closed: {window.briefing_id} "
@@ -1141,6 +1196,8 @@ def main(argv=None) -> int:
                                        "mapped via CRON_TO_EDITION")
     parser.add_argument("--date", help="Taipei date YYYY-MM-DD "
                                        "(default: today in Asia/Taipei)")
+    parser.add_argument("--skip-existing", action="store_true",
+                        help="skip a complete persisted edition")
     args = parser.parse_args(argv)
 
     edition = args.edition
@@ -1165,7 +1222,8 @@ def main(argv=None) -> int:
         taipei_date = now_utc().astimezone(TPE).date()
 
     try:
-        return run_edition(edition, taipei_date)
+        return run_edition(edition, taipei_date,
+                           skip_existing=args.skip_existing)
     except Exception as exc:  # never nuke previous briefings on a crash
         traceback.print_exc()
         record_failure(edition, taipei_date, f"{type(exc).__name__}: {exc}")
