@@ -217,9 +217,10 @@ check("config cron_utc agrees with CRON_TO_EDITION",
       == CRON_TO_EDITION)
 _wf = (REPO / ".github" / "workflows" / "briefing.yml").read_text(
     encoding="utf-8")
-check("workflow declares exactly the three edition crons",
+check("workflow retains three edition crons and adds recovery cron",
       all(f'cron: "{c}"' in _wf for c in CRON_TO_EDITION)
-      and _wf.count("- cron:") == 3)
+      and 'cron: "5,35 * * * *"' in _wf
+      and _wf.count("- cron:") == 4)
 check("workflow maps each schedule string explicitly",
       all(re.search(re.escape(f'"{c}")') + r'\s+echo "edition=' + e + '"',
                     _wf)
@@ -228,7 +229,7 @@ check("workflow supports dispatch edition+date inputs",
       "workflow_dispatch" in _wf and "edition:" in _wf and "date:" in _wf
       and "concurrency" in _wf)
 check("scheduled workflow passes cron so delayed date is resolved centrally",
-      'python pipeline/briefing.py --cron "${{ steps.ed.outputs.cron }}"'
+      'python pipeline/briefing_recovery.py --edition "$EDITION" --cron "$SCHEDULE_CRON"'
       in _wf)
 
 # 11: every edition is explicitly a fixed trailing-24-hour snapshot.
