@@ -103,6 +103,22 @@
 
 ## 目前結論
 
+### 2026-10-06 — Sites 暖備援調查
+
+以下比較用於判斷獨立 RSS／儲存與 Python runtime；未複製第三方程式碼、
+未新增 production 依賴。詳細備援能力及驗收見 `docs/sites-standby.md`。
+
+| 專案 | 最近 push（UTC 日期）／stars | 語言／授權 | 可參考架構 | 導入成本與決定 |
+| --- | --- | --- | --- | --- |
+| [acviana/cloud-reader](https://github.com/acviana/cloud-reader) | 2026-03-28／0 | TypeScript／API 未標示授權 | Workers、D1、RSS 與靜態 UI | 架構參考；未確認授權，不搬用程式碼 |
+| [johnwmail/tsrss](https://github.com/johnwmail/tsrss) | 2026-09-09／7 | TypeScript／MIT | RSS 服務及部署方式 | 須重新接上來源核驗與事件去重，保留既有管線 |
+| [cloudflare/workers-py](https://github.com/cloudflare/workers-py) | 2026-10-06／120 | Python／MIT | Pyodide Python Workers | 不等同一般 CPython；套件及 runtime 契約需測試，暫不導入 |
+| [thematters/matters-rss-service](https://github.com/thematters/matters-rss-service) | 2026-08-02／2 | JavaScript／MIT | RSS 來源整理服務 | 無法代替既有撰稿／證據核驗／發布管線，僅參考 |
+
+結論：既有 Python 管線的核驗規則較完整，暫時不為備援重寫成另一套 RSS
+服務。本次僅實作可重跑的閱讀快照匯出；全系統接管須有獨立執行器、
+資料持久化與故障演練，不能把 Sites 靜態頁面視為完整接管。
+
 截至 2026-09-26，GitHub-first 階段可在不碰 production 的項目已完成：
 
 - 正文抽取比較工具與手動 workflow 已建立。
