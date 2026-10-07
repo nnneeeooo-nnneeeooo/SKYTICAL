@@ -943,9 +943,9 @@
         "https://aerospaceglobalnews.com/news/northrop-yfq-48a-talon-blue-first-flight",
         "https://www.aerotime.aero/articles/northrop-grummans-autonomous-cost-cutter-talon-blue-takes-first-flight"
       ],
-      "contentFailures": 3,
+      "contentFailures": 4,
       "serviceFailures": 0,
-      "status": "waiting",
+      "status": "exhausted",
       "history": [
         {
           "status": "waiting",
@@ -954,8 +954,8 @@
           "updatedUtc": "2026-10-04T22:31Z"
         }
       ],
-      "updatedUtc": "2026-10-06T02:55Z",
-      "nextRetryUtc": "2026-10-07T02:55Z",
+      "updatedUtc": "2026-10-07T09:30Z",
+      "nextRetryUtc": null,
       "failureClass": "content_validation",
       "title": "Northrop Grumman’s autonomous cost-cutter Talon Blue takes first flight"
     },
@@ -1003,12 +1003,12 @@
         "https://www.cna.com.tw/news/ahel/202610050219.aspx"
       ],
       "contentFailures": 3,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-10-07T01:48Z",
+      "updatedUtc": "2026-10-07T09:30Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-07T03:48Z",
+      "nextRetryUtc": "2026-10-07T15:30Z",
       "title": "華航認養苗栗南庄林地 年吸存二氧化碳達236公噸"
     },
     "dd0f90c15e389f844eb5e7c5": {
@@ -1695,6 +1695,32 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-07T11:12Z",
       "title": "Airlines delay return to Gulf amid airspace restrictions and safety warnings News"
+    },
+    "468077f0c72e47e8200ee4e1": {
+      "sourceUrls": [
+        "https://simpleflying.com/united-airlines-suspends-pilot-praised-october-7-attack"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-07T09:30Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-07T11:30Z",
+      "title": "United Suspends Pilot Who Praised October 7 Attack, Years After Quietly Letting Him Fly Again"
+    },
+    "797c9ab63b8ad63c480ab6e1": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/flydubai-copilot-planned-tel-aviv-airport-crash"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-07T09:30Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-07T11:30Z",
+      "title": "Flydubai co-pilot joined airline to crash plane into Tel Aviv airport, according to reports"
     }
   }
 }
