@@ -1,15 +1,20 @@
 {
   "schemaVersion": 1,
   "platforms": {
+    "openrouter": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-07T23:25Z",
+      "updatedUtc": "2026-10-07T22:25Z"
+    },
     "nvidia": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-07T11:33Z",
-      "updatedUtc": "2026-10-07T10:33Z"
+      "cooldownUntilUtc": "2026-10-07T23:26Z",
+      "updatedUtc": "2026-10-07T22:26Z"
     },
     "openai": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-07T11:37Z",
-      "updatedUtc": "2026-10-07T10:37Z"
+      "cooldownUntilUtc": "2026-10-07T23:27Z",
+      "updatedUtc": "2026-10-07T22:27Z"
     }
   }
 }
