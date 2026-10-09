@@ -7696,7 +7696,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-09T13:17:33.046416+00:00"
+      "checked_utc": "2026-10-09T13:38:32.850942+00:00"
     },
     "a-20261004-2021-manual-eastar-nmixx-livery": {
       "status": "matched",
@@ -7876,7 +7876,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-09T13:17:33.046416+00:00"
+      "checked_utc": "2026-10-09T13:38:32.850942+00:00"
     },
     "a-20261005-2136-manual-lufthansa-a350-1000-first-flight": {
       "status": "matched",
@@ -8027,7 +8027,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-09T13:17:33.046416+00:00"
+      "checked_utc": "2026-10-09T13:38:32.850942+00:00"
     },
     "a-20261009-1921-manual-riyadh-airport-attack": {
       "status": "none",
@@ -8064,7 +8064,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-09T13:17:33.046416+00:00"
+      "checked_utc": "2026-10-09T13:38:32.850942+00:00"
     },
     "a-20261009-1301-airbus-delivered-72-aircraft-in-septembe": {
       "status": "matched",
@@ -8103,6 +8103,47 @@
       ],
       "checked_utc": "2026-10-09T13:17:33.046416+00:00",
       "next_retry_utc": "2026-10-09T19:17:33.046416+00:00"
+    },
+    "a-20261009-1323-u-s-army-report-cites-interrupted-radio": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-candidate:no-primary-visual-entity",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-09T13:38:32.850942+00:00",
+      "next_retry_utc": "2026-10-09T19:38:32.850942+00:00"
+    },
+    "a-20261009-1323-us-navy-awards-shield-ai-another-150-mil": {
+      "status": "matched",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/10/Shield-AI-illustration-showing-a-proposed-deployment-of-X-BAT-autonomous-VTOL-combat-aircraft-aboard-a-US-Navy-vessel-1-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter",
+        "subject": "X-BAT",
+        "sourceCaption": "Shield AI illustration showing a proposed deployment of X-BAT autonomous VTOL combat aircraft aboard a US Navy vessel. (Credit: Shield AI)",
+        "credit": "Shield AI",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "checked_utc": "2026-10-09T13:38:32.850942+00:00"
+    },
+    "a-20261009-1323-airbus-delivered-72-aircraft-in-septembe": {
+      "status": "matched",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/10/China-Eastern-Airbus-A320neo-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026",
+        "subject": "A320neo",
+        "sourceCaption": "In September Airbus delivered the first A320 Family aircraft assembled at its second Final Assembly Line (FAL) in Tianjin, China,(credit: Airbus)",
+        "credit": "Airbus",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "checked_utc": "2026-10-09T13:38:32.850942+00:00"
     }
   },
   "sources": {
@@ -9866,6 +9907,38 @@
       "rejection_reason": null,
       "parser_version": 4,
       "next_retry_utc": "2026-10-09T19:17:33.046416+00:00"
+    },
+    "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter": {
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/10/Shield-AI-illustration-showing-a-proposed-deployment-of-X-BAT-autonomous-VTOL-combat-aircraft-aboard-a-US-Navy-vessel-1-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter",
+        "subject": "X-BAT",
+        "sourceCaption": "Shield AI illustration showing a proposed deployment of X-BAT autonomous VTOL combat aircraft aboard a US Navy vessel. (Credit: Shield AI)",
+        "credit": "Shield AI",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "rejection_reason": null,
+      "parser_version": 4,
+      "next_retry_utc": "2026-10-09T19:38:32.850942+00:00"
+    },
+    "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026": {
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/10/China-Eastern-Airbus-A320neo-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026",
+        "subject": "A320neo",
+        "sourceCaption": "In September Airbus delivered the first A320 Family aircraft assembled at its second Final Assembly Line (FAL) in Tianjin, China,(credit: Airbus)",
+        "credit": "Airbus",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "rejection_reason": null,
+      "parser_version": 4,
+      "next_retry_utc": "2026-10-09T19:38:32.850942+00:00"
     }
   }
 }
