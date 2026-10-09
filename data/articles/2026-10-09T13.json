@@ -877,6 +877,939 @@
         }
       ],
       "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261009-1323-u-s-army-report-cites-interrupted-radio",
+      "publishedUtc": "2026-10-09T13:23Z",
+      "cat": "mil",
+      "primarySource": "Aerospace Global News",
+      "image": null,
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/02/Black-Hawk-Helicopter-in-the-Potomac-River-following-the-mid-air-crash.jpeg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "美國陸軍報告指出無線電通訊中斷促成致命空中相撞",
+        "summary": "美國陸軍公開相撞調查報告，指出無線電通訊中斷是促成因素。",
+        "body": [
+          "美國陸軍一份關於美國航空Flight 5342與陸軍直升機致命空中相撞的報告已公開。相撞於2025年1月29日發生在羅納德·雷根國家機場附近；客機為PSA Airlines營運的龐巴迪CRJ700，直升機為美國陸軍UH-60L Black Hawk。",
+          "調查指出，兩次中斷的無線電通訊是事故促成因素之一。報告另稱，直升機相撞時約在海平面以上278英尺，高於指定航線200英尺的最高許可高度。陸軍表示，3,585架受影響的陸軍旋翼航空器已於2025年7月31日前完成ADS-B設定檢查。"
+        ]
+      },
+      "en": {
+        "title": "U.S. Army report cites interrupted radio transmissions in fatal midair collision",
+        "summary": "The U.S. Army released its collision report, citing interrupted radio transmissions as a contributing factor.",
+        "body": [
+          "A U.S. Army report into the fatal midair collision involving American Airlines Flight 5342 and an Army helicopter has been made public. The collision occurred near Ronald Reagan National Airport on 29 January 2025. The jet was a Bombardier CRJ700 operated by PSA Airlines; the helicopter was a US Army UH-60L Black Hawk.",
+          "The Army investigation identified two interrupted radio transmissions as a contributing factor. Investigators also said the helicopter was at about 278 feet above sea level at the time of the collision, despite a 200-foot maximum permitted altitude on its designated route. The Army said all 3,585 affected Army rotary-wing aircraft had been inspected by 31 July 2025 to check their ADS-B configurations."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — Black Hawk crash report reveals failures behind American Ai…",
+          "url": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-09T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "美國陸軍關於致命空中相撞的報告已公開。",
+          "sourceQuote": "A US Army report into the fatal midair collision between an American Airlines jet and a Black Hawk helicopter has been made public.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Flight 5342與美國陸軍直升機於2025年1月29日在羅納德·雷根國家機場附近相撞。",
+          "sourceQuote": "The collision between Flight 5342 and the US Army helicopter near Ronald Reagan National Airport on 29 January 2025",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "客機為由PSA Airlines營運的Bombardier CRJ700。",
+          "sourceQuote": "a Bombardier CRJ700 operated by PSA Airlines",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "調查指出兩次遭中斷的無線電通訊是相撞的促成因素之一。",
+          "sourceQuote": "The Army’s investigation identifies two interrupted radio transmissions as a contributing factor in the crash.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "相撞時直升機高度約為海平面以上278英尺，指定航線最高許可高度為200英尺。",
+          "sourceQuote": "According to investigators, the helicopter was flying at approximately 278ft above sea level when the collision occurred, despite a maximum permitted altitude of 200ft along its designated route.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "客機上60名乘客與4名機組員，以及直升機上3名士兵罹難。",
+          "sourceQuote": "All 60 passengers and four crew members aboard the jet died, along with three soldiers travelling in the US Army UH-60L Black Hawk helicopter.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "casualties_or_injuries",
+        "investigation"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "US Army",
+          "PSA Airlines"
+        ],
+        "airlines": [
+          "American Airlines"
+        ],
+        "aircraft_models": [
+          "Bombardier CRJ700",
+          "UH-60L Black Hawk"
+        ],
+        "airports": [
+          "Ronald Reagan National Airport"
+        ],
+        "flight_numbers": [
+          "Flight 5342"
+        ],
+        "event_dates": [
+          "29 January 2025"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "US Army",
+          "sourceQuote": "The collision between Flight 5342 and the US Army helicopter near Ronald Reagan National Airport",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/"
+        },
+        {
+          "entityType": "organizations",
+          "value": "PSA Airlines",
+          "sourceQuote": "a Bombardier CRJ700 operated by PSA Airlines",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/"
+        },
+        {
+          "entityType": "airlines",
+          "value": "American Airlines",
+          "sourceQuote": "American Airlines Flight 5342, a Bombardier CRJ700 operated by PSA Airlines",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "Bombardier CRJ700",
+          "sourceQuote": "a Bombardier CRJ700 operated by PSA Airlines",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "UH-60L Black Hawk",
+          "sourceQuote": "US Army UH-60L Black Hawk helicopter",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/"
+        },
+        {
+          "entityType": "airports",
+          "value": "Ronald Reagan National Airport",
+          "sourceQuote": "near Ronald Reagan National Airport on 29 January 2025",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/"
+        },
+        {
+          "entityType": "flight_numbers",
+          "value": "Flight 5342",
+          "sourceQuote": "American Airlines Flight 5342",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "29 January 2025",
+          "sourceQuote": "on 29 January 2025",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/black-hawk-crash-report-reveals-failures-american-airlines-collision/"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261009-1323-buntar-aerospace-raises-16-million-for-d",
+      "publishedUtc": "2026-10-09T13:23Z",
+      "cat": "mil",
+      "primarySource": "Aerospace Global News",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/10/Buntar-Aerospace-drones-and-equipment-scaled.jpg",
+        "link": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/",
+        "provider": "Aerospace Global News",
+        "subject": "Buntar Aerospace drones and equipment",
+        "sourceCaption": "Buntar Aerospace drones and equipment",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/10/Buntar-Aerospace-drones-and-equipment-scaled.jpg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "Buntar Aerospace募得1,600萬美元拓展防務科技業務",
+        "summary": "Buntar Aerospace募得1,600萬美元，資金將用於製造及產品開發",
+        "body": [
+          "Buntar Aerospace表示，公司在新一輪融資中募得1,600萬美元，使累計募資額達3,000萬美元。該公司位於烏克蘭基輔，開發無人ISR系統及防務自主技術。",
+          "公司表示，資金將用於擴大製造、加快產品開發及拓展國際市場，也將支持超越核心ISR業務的新防務與雙重用途產品線。本輪融資由Freedom Fund及一間國際私募股權基金領投；Gardar、Iron Wolf與Autonomy Capital也有參與。"
+        ]
+      },
+      "en": {
+        "title": "Buntar Aerospace raises $16 million for defence-tech expansion",
+        "summary": "Buntar Aerospace raises $16 million, with funds earmarked for manufacturing and product expansion.",
+        "body": [
+          "Buntar Aerospace said it raised $16 million in a new financing round, bringing its total capital raised to $30 million. The Kyiv-based Ukrainian defence-tech company develops unmanned ISR systems and defence autonomy technologies.",
+          "The company said the funding is earmarked to scale manufacturing, accelerate product development and expand into international markets. The plans include new defence and dual-use product lines beyond its core ISR business. Freedom Fund and an international private equity fund led the round; Gardar, Iron Wolf and Autonomy Capital also participated."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — Ukraine’s defence-tech industry draws growing international…",
+          "url": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-08T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Buntar Aerospace said it raised $16 million in a new financing round, bringing its total capital raised to $30 million.",
+          "sourceQuote": "Buntar Aerospace said it has raised $16 million in a new financing round, bringing its total capital raised to $30 million.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Buntar is a Kyiv-based Ukrainian defence-tech company developing unmanned ISR systems and defence autonomy technologies.",
+          "sourceQuote": "Buntar is a Kyiv-based Ukrainian defence-tech company developing unmanned ISR systems and defence autonomy technologies.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The new funding is earmarked for scaling manufacturing, accelerating product development and expanding into international markets.",
+          "sourceQuote": "The new funding is earmarked for scaling manufacturing, accelerating product development, and expanding into international markets.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The funding includes new defence and dual-use product lines beyond Buntar’s core ISR business.",
+          "sourceQuote": "This includes new defence and dual-use product lines that will go beyond its core ISR business.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Freedom Fund and an international private equity fund led the round; Gardar, Iron Wolf and Autonomy Capital also participated.",
+          "sourceQuote": "This round was led by Freedom Fund and an international private equity fund. Gardar, Iron Wolf, and Autonomy Capital also participated.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "Buntar Aerospace",
+          "Freedom Fund",
+          "Gardar",
+          "Iron Wolf",
+          "Autonomy Capital"
+        ],
+        "locations": [
+          "Kyiv"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "Buntar Aerospace",
+          "sourceQuote": "Buntar Aerospace said it has raised $16 million in a new financing round, bringing its total capital raised to $30 million.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Freedom Fund",
+          "sourceQuote": "This round was led by Freedom Fund and an international private equity fund.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Gardar",
+          "sourceQuote": "Gardar, Iron Wolf, and Autonomy Capital also participated.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Iron Wolf",
+          "sourceQuote": "Gardar, Iron Wolf, and Autonomy Capital also participated.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Autonomy Capital",
+          "sourceQuote": "Gardar, Iron Wolf, and Autonomy Capital also participated.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/"
+        },
+        {
+          "entityType": "locations",
+          "value": "Kyiv",
+          "sourceQuote": "Buntar is a Kyiv-based Ukrainian defence-tech company developing unmanned ISR systems and defence autonomy technologies.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ukraine-defence-tech-foreign-investment/"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261009-1323-qantas-plans-paid-extra-legroom-section",
+      "publishedUtc": "2026-10-09T13:23Z",
+      "cat": "biz",
+      "primarySource": "Aerospace Global News",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/06/Qantas-Airbus-A380-vh-oqi.jpg",
+        "link": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/",
+        "provider": "Aerospace Global News",
+        "subject": "Qantas Airbus A380 vh-oqi",
+        "sourceCaption": "Qantas Airbus A380 vh-oqi",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/06/Qantas-Airbus-A380-vh-oqi.jpg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "澳洲航空計畫2027年為A380增設付費加長腿部空間區",
+        "summary": "澳洲航空計畫2027年在A380推出付費加長腿部空間區",
+        "body": [
+          "澳洲航空計畫於2027年在A380機隊推出Economy Plus，設置付費加長腿部空間區。該座位也將提供優先登機及優先使用頭頂行李置物櫃的權益。",
+          "部分經濟艙座位可能因此移除，但澳洲航空尚未公佈最終客艙配置。航空公司表示，現有12架A380將自2028年起逐步退役，比原定計畫提前四年；目前也未公佈每架飛機將減少多少經濟艙座位，或Economy Plus的收費。"
+        ]
+      },
+      "en": {
+        "title": "Qantas plans paid extra-legroom section on A380s from 2027",
+        "summary": "Qantas plans paid extra-legroom seating on its A380 fleet during 2027.",
+        "body": [
+          "Qantas plans to introduce its Economy Plus product on its A380 fleet during 2027. The paid extra-legroom section will also come with priority boarding and priority access to overhead bins.",
+          "Some economy seats could be removed to make room for the product, but Qantas has not detailed the final cabin layout. The airline has 12 A380s and plans a gradual phase-out from 2028, four years earlier than planned. Qantas has not said how many economy seats would be removed from each aircraft or how much it will charge for Economy Plus on the A380."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — Qantas to reconfigure A380 cabins despite planned retiremen…",
+          "url": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-08T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The Australian flag carrier plans to introduce Economy Plus on its A380 fleet during 2027.",
+          "sourceQuote": "The Australian flag carrier will introduce its Economy Plus product on the A380 fleet during 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Qantas is reconfiguring its Airbus A380 economy cabin to create a paid extra-legroom section.",
+          "sourceQuote": "Qantas is reconfiguring its economy cabin on its Airbus A380s to create a new paid extra-legroom section on its superjumbo",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Some economy seats could be removed for the new product, and the final cabin layout has not been detailed.",
+          "sourceQuote": "The introduction of the product could result in some economy seats being removed to create additional legroom, although Qantas has not yet detailed the final cabin layout.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Qantas plans a gradual A380 phase-out from 2028, four years earlier than planned.",
+          "sourceQuote": "The carrier has 12 A380s and plans a gradual phase-out from 2028 – four years earlier than planned .",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The Economy Plus seats will include priority boarding and priority access to overhead bins.",
+          "sourceQuote": "The seats will also come with priority boarding and priority access to the overhead bins.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Qantas has 12 A380s.",
+          "sourceQuote": "The carrier has 12 A380s and plans a gradual phase-out from 2028 – four years earlier than planned .",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "planned",
+      "entities": {
+        "airlines": [
+          "Qantas"
+        ],
+        "aircraft_models": [
+          "Airbus A380s"
+        ],
+        "event_dates": [
+          "during 2027",
+          "from 2028"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "Qantas",
+          "sourceQuote": "Qantas is reconfiguring its economy cabin on its Airbus A380s",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "Airbus A380s",
+          "sourceQuote": "Qantas is reconfiguring its economy cabin on its Airbus A380s",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "during 2027",
+          "sourceQuote": "The Australian flag carrier will introduce its Economy Plus product on the A380 fleet during 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "from 2028",
+          "sourceQuote": "The carrier has 12 A380s and plans a gradual phase-out from 2028 – four years earlier than planned .",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/qantas-a380-retirement-seats-economy-cabin/"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261009-1323-us-navy-awards-shield-ai-another-150-mil",
+      "publishedUtc": "2026-10-09T13:23Z",
+      "cat": "mil",
+      "primarySource": "AeroTime",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/10/Shield-AI-illustration-showing-a-proposed-deployment-of-X-BAT-autonomous-VTOL-combat-aircraft-aboard-a-US-Navy-vessel-1-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter",
+        "subject": "X-BAT",
+        "sourceCaption": "Shield AI illustration showing a proposed deployment of X-BAT autonomous VTOL combat aircraft aboard a US Navy vessel. (Credit: Shield AI)",
+        "credit": "Shield AI",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "美國海軍追加資金支持Shield AI開發X-BAT戰機",
+        "summary": "美國海軍追加資金，支持Shield AI開發可垂直起降的X-BAT戰機",
+        "body": [
+          "美國海軍已追加150 million美元給Shield AI，用於開發X-BAT；Shield AI於2026年10月8日公佈此事。報導指出，X-BAT是由人工智慧駕駛、可垂直起飛與降落的戰機。",
+          "Shield AI表示，將在政府資金之外再投入150 million美元，使X-BAT已公佈的投資總額達400 million美元。最新資金透過五角大廈的Defense Exportability Features（DEF）計畫提供，預定協助加入技術防護措施，以利未來向美國盟友出口。"
+        ]
+      },
+      "en": {
+        "title": "US Navy awards Shield AI another $150 million for X-BAT development",
+        "summary": "US Navy awards Shield AI $150 million to develop its vertically landing X-BAT fighter.",
+        "body": [
+          "The US Navy has awarded Shield AI an additional $150 million to develop X-BAT, an AI-piloted fighter capable of taking off and landing vertically. Shield AI announced the award on October 8, 2026.",
+          "Shield AI will invest another $150 million of its own money alongside the government funding, bringing the total announced investment in X-BAT to $400 million. The latest funding comes through the Pentagon’s Defense Exportability Features program and is intended to support technology safeguards that would make future exports to US allies easier."
+        ]
+      },
+      "sources": [
+        {
+          "name": "AeroTime — US Navy adds $150M to Shield AI’s X-BAT autonomous fighter…",
+          "url": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-09T08:43Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "美國海軍追加$150 million給Shield AI，用於開發X-BAT。",
+          "sourceQuote": "The US Navy has awarded Shield AI an additional $150 million to develop X-BAT, its AI-piloted fighter jet capable of taking off and landing vertically, the company announced on October 8, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Shield AI於2026年10月8日公布美國海軍追加資金一事。",
+          "sourceQuote": "The US Navy has awarded Shield AI an additional $150 million to develop X-BAT, its AI-piloted fighter jet capable of taking off and landing vertically, the company announced on October 8, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Shield AI將另投入$150 million自有資金，使X-BAT已公布的投資總額達$400 million。",
+          "sourceQuote": "Shield AI will invest another $150 million of its own money alongside the government funding, bringing total announced investment in X-BAT to $400 million.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "最新資金旨在協助加入技術防護措施，以利X-BAT未來出口給美國盟友。",
+          "sourceQuote": "The latest funding is intended to help prepare the aircraft for future exports by incorporating technology safeguards that would make it easier to sell to US allies.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "這筆資金透過Defense Exportability Features（DEF）計畫提供；該計畫協助美國國防公司開發可供海外銷售、且不暴露敏感美國技術的武器。",
+          "sourceQuote": "The funding comes through the Defense Exportability Features (DEF) program, a Pentagon initiative that helps US defense companies develop weapons that can be sold abroad without exposing sensitive US technology.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "US Navy",
+          "Shield AI"
+        ],
+        "aircraft_models": [
+          "X-BAT"
+        ],
+        "event_dates": [
+          "October 8, 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "US Navy",
+          "sourceQuote": "The US Navy has awarded Shield AI an additional $150 million to develop X-BAT, its AI-piloted fighter jet capable of taking off and landing vertically, the company announced on October 8, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Shield AI",
+          "sourceQuote": "The US Navy has awarded Shield AI an additional $150 million to develop X-BAT, its AI-piloted fighter jet capable of taking off and landing vertically, the company announced on October 8, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "X-BAT",
+          "sourceQuote": "The US Navy has awarded Shield AI an additional $150 million to develop X-BAT, its AI-piloted fighter jet capable of taking off and landing vertically, the company announced on October 8, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "October 8, 2026",
+          "sourceQuote": "The US Navy has awarded Shield AI an additional $150 million to develop X-BAT, its AI-piloted fighter jet capable of taking off and landing vertically, the company announced on October 8, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-navy-150-million-shield-ai-x-bat-fighter"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261009-1323-airbus-delivered-72-aircraft-in-septembe",
+      "publishedUtc": "2026-10-09T13:23Z",
+      "cat": "biz",
+      "primarySource": "AeroTime",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/10/China-Eastern-Airbus-A320neo-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026",
+        "subject": "A320neo",
+        "sourceCaption": "In September Airbus delivered the first A320 Family aircraft assembled at its second Final Assembly Line (FAL) in Tianjin, China,(credit: Airbus)",
+        "credit": "Airbus",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "空中巴士9月交付72架 全年870架目標仍需每月逾百架",
+        "summary": "空中巴士9月交付72架給37家客戶；今年累計547架，達標仍需323架",
+        "body": [
+          "空中巴士（Airbus）於2026年10月8日確認，2026年9月共交付72架飛機給37家客戶，其中包括達美航空、英國航空與阿聯酋航空。",
+          "以全年約870架的目標計算，空中巴士今年前九個月已交付547架，仍需再交付323架，相當於每月約108架。",
+          "相較之下，空中巴士在2025年9月交付73架，2025年前九個月則交付507架。今年9月的72架也高於2026年8月的57架；2026年6月為67架。",
+          "9月較受矚目的交付之一，是空中巴士在中國天津第二條總裝線（FAL）組裝的首架A320家族飛機。這架A320neo已於2026年9月22日交付中國東方航空。",
+          "空中巴士上月交付兩架A330neo與三架A350。依先前預估，空中巴士的目標是每月交付約四架A330neo，並在2029年增至每月五架。空中巴士在2026年6月與7月未交付A330neo，8月僅交付一架給星宇航空。",
+          "訂單方面，空中巴士在2026年9月接獲17架飛機訂單，包括Air Cairo購買15架A320neo，以及FlyOne Armenia購買兩架A321neo。相較之下，空中巴士2026年8月有67架訂單，7月為204架，6月為71架；9月的17架是空中巴士今年最低的單月訂單總數。"
+        ],
+        "title_note": ""
+      },
+      "en": {
+        "title": "Airbus delivered 72 aircraft in September 2026, needs over 100 a month for 870 goal",
+        "summary": "Airbus delivered 72 aircraft to 37 customers in September 2026; 547 delivered so far this year",
+        "body": [
+          "Airbus confirmed on October 8, 2026, that it delivered 72 aircraft to 37 customers during September 2026, including Delta Air Lines, British Airways and Emirates.",
+          "To reach its annual goal of around 870 aircraft, Airbus has delivered 547 aircraft so far this year and therefore requires 323 further deliveries, or around 108 per month.",
+          "By comparison, Airbus delivered 73 aircraft in September 2025 and 507 through the first nine months of last year. The 72 deliveries in September 2026 also marked an improvement on the 57 jets delivered in August 2026; in June 2026, Airbus delivered 67 aircraft.",
+          "Among the notable deliveries in September 2026 was the first A320 family aircraft assembled at Airbus' second Final Assembly Line (FAL) in Tianjin, China. The A320neo was delivered to China Eastern Airlines on September 22, 2026.",
+          "Airbus delivered two A330neos and three A350s last month. Based on previous projections, the manufacturer aims to deliver around four A330neos each month, rising to five a month during 2029. Airbus made no A330neo deliveries in June and July 2026, and only one, to Starlux Airlines, in August 2026.",
+          "On orders, Airbus received orders for 17 aircraft in September 2026, including a purchase from Air Cairo for 15 A320neos and a second from FlyOne Armenia for two A321neos. In August 2026 Airbus had 67 orders, in July 2026 it received 204 orders and in June 2026 it had 71; the 17 orders in September 2026 mark Airbus' lowest monthly total this year."
+        ],
+        "title_note": ""
+      },
+      "sources": [
+        {
+          "name": "AeroTime — Airbus must target over 100 aircraft deliveries per month t…",
+          "url": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-09T08:42Z",
+      "writer": "wechat:Deepseek-v4-flash",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "空中巴士於2026年10月8日確認，2026年9月共交付72架飛機給37家客戶。",
+          "sourceQuote": "On October 8, 2026, Airbus confirmed that, across September 2026, the company had delivered 72 aircraft to 37 customers",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "空中巴士今年已交付547架，距離約870架的年度目標仍需再交付323架，相當於每月約108架。",
+          "sourceQuote": "Over the course of the year so far, Airbus has delivered 547 aircraft and therefore requires 323 further deliveries – around 108 per month – to reach the magic 870.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "空中巴士在天津第二條總裝線組裝的首架A320家族飛機，於2026年9月22日交付中國東方航空。",
+          "sourceQuote": "Among the notable deliveries in September 2026, was the first A320 family aircraft assembled at Airbus’ second Final Assembly Line (FAL) in Tianjin, China. The A320neo was delivered to China Eastern Airlines on September 22, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "空中巴士2026年9月的72架交付量高於8月的57架，2026年6月則交付67架。",
+          "sourceQuote": "The 72 aircraft deliveries in September 2026 marked a significant improvement on the 57 jets delivered in August 2026. In June 2026, Airbus delivered 67 aircraft.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "空中巴士上月交付兩架A330neo與三架A350，並依先前預估以每月約四架A330neo為目標，2029年增至每月五架。",
+          "sourceQuote": "Last month, Airbus delivered two A330neos and three A350s. Based on previous projections, Airbus aims to deliver around four A330neos each month, rising to five a month during 2029.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "空中巴士2026年9月接獲17架飛機訂單，包括Air Cairo購買15架A320neo與FlyOne Armenia購買兩架A321neo，為今年最低的單月訂單總數。",
+          "sourceQuote": "In September 2026, Airbus received orders for 17 aircraft. These included a purchase from Air Cairo for 15 A320neos and a second from FlyOne Armenia for two A321neos.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "Airbus",
+          "Delta Air Lines",
+          "British Airways",
+          "Emirates",
+          "China Eastern Airlines",
+          "Starlux Airlines",
+          "Air Cairo",
+          "FlyOne Armenia"
+        ],
+        "airlines": [
+          "Delta Air Lines",
+          "British Airways",
+          "Emirates",
+          "China Eastern Airlines",
+          "Starlux Airlines",
+          "Air Cairo",
+          "FlyOne Armenia"
+        ],
+        "aircraft_models": [
+          "A320",
+          "A320neo",
+          "A321neo",
+          "A330neo",
+          "A350"
+        ],
+        "locations": [
+          "Tianjin, China"
+        ],
+        "event_dates": [
+          "October 8, 2026",
+          "September 2026",
+          "September 22, 2026",
+          "August 2026",
+          "June 2026",
+          "July 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "Airbus",
+          "sourceQuote": "On October 8, 2026, Airbus confirmed that, across September 2026, the company had delivered 72 aircraft to 37 customers",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Delta Air Lines",
+          "sourceQuote": "including Delta Air Lines, British Airways and Emirates",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "organizations",
+          "value": "British Airways",
+          "sourceQuote": "including Delta Air Lines, British Airways and Emirates",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Emirates",
+          "sourceQuote": "including Delta Air Lines, British Airways and Emirates",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "organizations",
+          "value": "China Eastern Airlines",
+          "sourceQuote": "The A320neo was delivered to China Eastern Airlines on September 22, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Starlux Airlines",
+          "sourceQuote": "Airbus made no A330neo deliveries in June and July 2026, and only one, to Starlux Airlines, in August 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Air Cairo",
+          "sourceQuote": "These included a purchase from Air Cairo for 15 A320neos and a second from FlyOne Armenia for two A321neos.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "organizations",
+          "value": "FlyOne Armenia",
+          "sourceQuote": "These included a purchase from Air Cairo for 15 A320neos and a second from FlyOne Armenia for two A321neos.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Delta Air Lines",
+          "sourceQuote": "including Delta Air Lines, British Airways and Emirates",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "airlines",
+          "value": "British Airways",
+          "sourceQuote": "including Delta Air Lines, British Airways and Emirates",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Emirates",
+          "sourceQuote": "including Delta Air Lines, British Airways and Emirates",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "airlines",
+          "value": "China Eastern Airlines",
+          "sourceQuote": "The A320neo was delivered to China Eastern Airlines on September 22, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Starlux Airlines",
+          "sourceQuote": "Airbus made no A330neo deliveries in June and July 2026, and only one, to Starlux Airlines, in August 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Air Cairo",
+          "sourceQuote": "These included a purchase from Air Cairo for 15 A320neos and a second from FlyOne Armenia for two A321neos.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "airlines",
+          "value": "FlyOne Armenia",
+          "sourceQuote": "These included a purchase from Air Cairo for 15 A320neos and a second from FlyOne Armenia for two A321neos.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A320",
+          "sourceQuote": "was the first A320 family aircraft assembled at Airbus’ second Final Assembly Line (FAL) in Tianjin, China.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A320neo",
+          "sourceQuote": "The A320neo was delivered to China Eastern Airlines on September 22, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A321neo",
+          "sourceQuote": "a second from FlyOne Armenia for two A321neos.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A330neo",
+          "sourceQuote": "Last month, Airbus delivered two A330neos and three A350s.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A350",
+          "sourceQuote": "Last month, Airbus delivered two A330neos and three A350s.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "locations",
+          "value": "Tianjin, China",
+          "sourceQuote": "was the first A320 family aircraft assembled at Airbus’ second Final Assembly Line (FAL) in Tianjin, China.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "October 8, 2026",
+          "sourceQuote": "On October 8, 2026, Airbus confirmed that, across September 2026, the company had delivered 72 aircraft to 37 customers",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "September 2026",
+          "sourceQuote": "On October 8, 2026, Airbus confirmed that, across September 2026, the company had delivered 72 aircraft to 37 customers",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "September 22, 2026",
+          "sourceQuote": "The A320neo was delivered to China Eastern Airlines on September 22, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "August 2026",
+          "sourceQuote": "The 72 aircraft deliveries in September 2026 marked a significant improvement on the 57 jets delivered in August 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "June 2026",
+          "sourceQuote": "In June 2026, Airbus delivered 67 aircraft.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "July 2026",
+          "sourceQuote": "Airbus made no A330neo deliveries in June and July 2026, and only one, to Starlux Airlines, in August 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-september-2026"
+        }
+      ],
+      "evidenceVersion": 2
     }
   ]
 }
