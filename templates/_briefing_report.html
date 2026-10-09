@@ -22,7 +22,7 @@
         </a>
         <div class="briefing-story-copy">
           <p class="briefing-story-text"><strong>{{ it.headline }}</strong>：{{ it.summary }}
-            <a class="briefing-citation" href="{{ it.url }}" aria-label="閱讀本站原文：{{ it.headline }}"
+            <a class="briefing-citation" href="{{ it.url }}" aria-label="{% if lang == 'en' %}Read the article: {% else %}閱讀本站原文：{% endif %}{{ it.headline }}"
                title="{{ it.headline }}">
               <img src="{{ base }}/assets/skytical-mark.svg" alt="" width="16" height="16" aria-hidden="true">
               <span>{{ it.keyword or it.headline }}</span>
