@@ -558,7 +558,7 @@ def test_opencode_protocols_and_payloads():
 
 
 def test_openai_responses_api():
-    """Direct OpenAI uses MAX reasoning and strict Responses JSON output."""
+    """Direct OpenAI uses medium reasoning and strict Responses JSON output."""
     saved = {
         key: os.environ.get(key)
         for key in ("OPENAI_API_KEY", "AVWIRE_PROVIDER_ORDER",
@@ -574,7 +574,7 @@ def test_openai_responses_api():
         captured = []
         check(provider.max_attempt_seconds == 90
               and provider.group_budget_seconds == 180,
-              "GPT-6 Luna MAX receives bounded request and group budgets")
+              "GPT-6 Luna receives bounded request and group budgets")
 
         def fake_post(url, json=None, timeout=None, headers=None):
             captured.append((url, json, headers))
@@ -593,11 +593,12 @@ def test_openai_responses_api():
         check(url == "https://api.openai.com/v1/responses"
               and payload["model"] == "gpt-6-luna",
               "GPT-6 Luna uses the direct OpenAI Responses endpoint")
-        check(payload["reasoning"] == {"effort": "max"}
-              and provider.reasoning_effective == "reasoning.effort=max",
-              "automatic GPT-6 Luna calls request MAX reasoning")
+        check(payload["reasoning"] == {"effort": "medium"}
+              and provider.reasoning_effective == "reasoning.effort=medium"
+              and provider._effort(repair=True) == "medium",
+              "automatic GPT-6 Luna calls and repairs request medium reasoning")
         check(payload["max_output_tokens"] == 48_000,
-              "MAX reasoning has an output cap that reserves reasoning room")
+              "Luna has an output cap that reserves reasoning room")
         check(payload["text"]["format"] == {
                   "type": "json_schema", "name": "skytical_draft",
                   "schema": SCHEMA, "strict": True,

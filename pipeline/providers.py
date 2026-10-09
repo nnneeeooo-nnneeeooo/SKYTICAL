@@ -1373,7 +1373,7 @@ class OpenAIProvider(OpenCodeProvider):
     """Direct OpenAI Responses API writer using the repository's REST stack."""
 
     name = "openai"
-    # GPT-6 Luna with MAX reasoning needs more wall-clock time than the
+    # GPT-6 Luna needs more wall-clock time than the
     # generic 60-second attempt budget. Keep the per-group cap bounded while
     # leaving time for configured fallbacks after a slow OpenAI response.
     max_attempt_seconds = 90
@@ -1424,7 +1424,7 @@ class OpenAIProvider(OpenCodeProvider):
 
     def _responses_output_tokens(self, repair: bool) -> int:
         # GPT-6 Luna counts reasoning tokens against this cap. Leave room for
-        # substantial MAX reasoning and the final bilingual JSON response.
+        # reasoning and the final bilingual JSON response.
         return 48_000
 
     def _effort(self, repair: bool) -> str:
@@ -1434,8 +1434,8 @@ class OpenAIProvider(OpenCodeProvider):
             effort = profile["wire"]["reasoning"]["effort"]
             self.reasoning_effective = profile["effective"]
             return effort
-        self.reasoning_effective = "reasoning.effort=max"
-        return "max"
+        self.reasoning_effective = "reasoning.effort=medium"
+        return "medium"
 
 
 _REGISTRY = {
