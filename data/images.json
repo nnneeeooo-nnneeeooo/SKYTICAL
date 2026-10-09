@@ -7696,7 +7696,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-09T11:41:48.849989+00:00"
+      "checked_utc": "2026-10-09T13:17:33.046416+00:00"
     },
     "a-20261004-2021-manual-eastar-nmixx-livery": {
       "status": "matched",
@@ -7876,7 +7876,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-09T11:41:48.849989+00:00"
+      "checked_utc": "2026-10-09T13:17:33.046416+00:00"
     },
     "a-20261005-2136-manual-lufthansa-a350-1000-first-flight": {
       "status": "matched",
@@ -8027,7 +8027,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-09T11:41:48.849989+00:00"
+      "checked_utc": "2026-10-09T13:17:33.046416+00:00"
     },
     "a-20261009-1921-manual-riyadh-airport-attack": {
       "status": "none",
@@ -8050,6 +8050,59 @@
       ],
       "checked_utc": "2026-10-09T11:41:48.849989+00:00",
       "next_retry_utc": "2026-10-09T17:41:48.849989+00:00"
+    },
+    "a-20261009-1301-airbus-confirms-avolon-firm-order-for-11": {
+      "status": "matched",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/10/Airbus-A330neo.jpg",
+        "link": "https://www.aerotime.aero/articles/airbus-lands-triple-digit-aircraft-order-from-avolon",
+        "subject": "A330-900",
+        "sourceCaption": "Airbus",
+        "credit": "Airbus",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "checked_utc": "2026-10-09T13:17:33.046416+00:00"
+    },
+    "a-20261009-1301-airbus-delivered-72-aircraft-in-septembe": {
+      "status": "matched",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/KLM_Airbus_A321neo_%28PH-AXA%29_%40_MAN%2C_2025-07-16_%2803%29.jpg/1280px-KLM_Airbus_A321neo_%28PH-AXA%29_%40_MAN%2C_2025-07-16_%2803%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=174461448",
+        "credit": "Photograph by Mike Peel ( www.mikepeel.net ).",
+        "license": "CC BY-SA 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "A321neo aircraft",
+        "subject": "A321neo",
+        "description": "KLM Airbus A321neo (PH-AXA) @ MAN, 2025-07-16 (03)",
+        "photoYear": 2025
+      },
+      "checked_utc": "2026-10-09T13:17:33.046416+00:00"
+    },
+    "a-20261009-1301-thailands-queen-suthida-completes-41-min": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-candidate:no-primary-visual-entity",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-09T13:17:33.046416+00:00",
+      "next_retry_utc": "2026-10-09T19:17:33.046416+00:00"
+    },
+    "a-20261009-1301-nearly-300-riyadh-flights-cancelled-or-d": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-candidate:no-primary-visual-entity",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-09T13:17:33.046416+00:00",
+      "next_retry_utc": "2026-10-09T19:17:33.046416+00:00"
     }
   },
   "sources": {
@@ -9797,6 +9850,22 @@
       "rejection_reason": null,
       "parser_version": 4,
       "next_retry_utc": "2026-10-09T08:48:20.368433+00:00"
+    },
+    "https://www.aerotime.aero/articles/airbus-lands-triple-digit-aircraft-order-from-avolon": {
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/10/Airbus-A330neo.jpg",
+        "link": "https://www.aerotime.aero/articles/airbus-lands-triple-digit-aircraft-order-from-avolon",
+        "subject": "A330-900",
+        "sourceCaption": "Airbus",
+        "credit": "Airbus",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "rejection_reason": null,
+      "parser_version": 4,
+      "next_retry_utc": "2026-10-09T19:17:33.046416+00:00"
     }
   }
 }
