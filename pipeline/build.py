@@ -1446,16 +1446,41 @@ def notification_summary(value: str, lang: str, title: str = "") -> str:
     return _keyword_summary(text, lang, limit_words)
 
 
+_ENGLISH_LABELS = load_json(
+    Path(__file__).resolve().parent.parent / "config" / "english_labels.json", {})
+
+
+def localized_label(value, lang: str):
+    if lang != "en" or not isinstance(value, str):
+        return value
+    if value in _ENGLISH_LABELS:
+        return _ENGLISH_LABELS[value]
+    match = re.fullmatch(r"註冊號\s+([A-Z0-9-]+)", value)
+    return f"Registration {match[1]}" if match else value
+
+
+def localized_image(image, lang: str):
+    if not isinstance(image, dict):
+        return None
+    if lang != "en":
+        return image
+    return {**image, **{key: localized_label(image.get(key), lang)
+                       for key in ("subject", "credit", "provider")}}
+
+
 def art_view(a, lang: str):
     v = dict(a[lang])
     v["display_summary"] = notification_summary(
         v.get("summary"), lang, v.get("title"))
     v.update(
-        id=a["id"], cat=a["cat"], tag_class=a["tag_class"], image=a["image"],
+        id=a["id"], cat=a["cat"], tag_class=a["tag_class"],
+        image=localized_image(a["image"], lang),
         cat_label=_bi(CATS.get(a["cat"]), lang, a["cat"]),
-        source=a["source"], time=a["time"], meta_ts=a["meta_ts"],
+        source=localized_label(a["source"], lang), time=a["time"], meta_ts=a["meta_ts"],
         source_meta_ts=a["source_meta_ts"],
-        sources=a["sources"], url=page_url(lang, f"news/{a['id']}/"),
+        sources=[{**source, "name": localized_label(source["name"], lang)}
+                 for source in a["sources"]],
+        url=page_url(lang, f"news/{a['id']}/"),
         writer_model=a["writer_model"],
         article_format=a["article_format"],
         published_iso=a["published_iso"],
@@ -1694,6 +1719,7 @@ def _hero_image_caption(image, lang: str) -> str:
             else "No verified event or file photo is available yet; "
                  "showing the SKYTICAL default image."
         )
+    image = localized_image(image, lang)
     parts = []
     if image.get("subject"):
         parts.append(str(image["subject"]))
@@ -2230,14 +2256,16 @@ def merged_sources(raw):
     return out
 
 
-def source_status_view(sources, now):
-    return [{"name": s["name"], "ok": s["ok"], "ago": ago(s["lastFetchUtc"], now)}
+def source_status_view(sources, now, lang="zh"):
+    return [{"name": localized_label(s["name"], lang), "ok": s["ok"],
+             "ago": ago(s["lastFetchUtc"], now)}
             for s in sources]
 
 
 def sources_rows_view(sources, lang: str, now):
     return [{
-        "name": s["name"], "url": s["url"], "fmt": s["fmt"], "ok": s["ok"],
+        "name": localized_label(s["name"], lang),
+        "url": s["url"], "fmt": s["fmt"], "ok": s["ok"],
         "kind": _bi(KIND.get(s["kind"]), lang, s["kind"]),
         "cover": _bi(s["cover"], lang),
         "last": ago(s["lastFetchUtc"], now),
@@ -2351,7 +2379,7 @@ def brief_item_view(item, lang: str, published_ids, article_lookup=None):
     url = (page_url(lang, f"news/{art_id}/")
            if art_id in published_ids else None)
     article = (article_lookup or {}).get(art_id) or {}
-    image = article.get("image") if isinstance(article.get("image"), dict) else {}
+    image = localized_image(article.get("image"), lang) or {}
     # Image metadata is resolved from the current prepared article on every
     # build; historical digest JSON never freezes a missing or stale image.
     fallback_image = f"{BASE_PATH}/assets/skytical-social.png?v={ASSET_VERSION}"
@@ -3872,7 +3900,7 @@ def main() -> int:
         ctx.update(hero=hero, hero_candidates=hero_candidates,
                    hero_rotation_seconds=HERO_ROTATION_SECONDS,
                    feed=feed, flashes=fl, agg=agg,
-                   source_status=source_status_view(sources, now),
+                   source_status=source_status_view(sources, now, lang),
                    stats=sv["tiles"], otp=sv["otp"], fleet=sv["fleet"],
                    delays=sv["delays"], stats_note=sv["note"],
                    cat_seg=list(zip(cat_keys, t["cats"])),
@@ -4165,11 +4193,18 @@ def main() -> int:
     pages += render_manual_workbench(env, build)
 
     # 404 (zh chrome, bilingual body), served by GitHub Pages from the root
-    ctx = base_ctx("zh", "none", "", title=f"{L['zh']['siteName']} — 404",
+    ctx = base_ctx("zh", "none", "404.html", title=f"{L['zh']['siteName']} — 404",
                    description=L["zh"]["siteDesc"], ticker="", build=build,
                    hreflang=False)
     ctx["robots_meta"] = "noindex,follow"
     render(env, "404.html", "404.html", ctx)
+    pages += 1
+
+    ctx = base_ctx("en", "none", "404.html", title=f"{L['en']['siteName']} — 404",
+                   description=L["en"]["siteDesc"], ticker="", build=build,
+                   hreflang=False)
+    ctx["robots_meta"] = "noindex,follow"
+    render(env, "404.html", "en/404.html", ctx)
     pages += 1
 
     write_search_discovery_files(articles, briefings, now)
