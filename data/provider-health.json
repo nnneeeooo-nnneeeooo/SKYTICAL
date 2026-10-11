@@ -1,15 +1,20 @@
 {
   "schemaVersion": 1,
   "platforms": {
-    "gemini": {
-      "failureClass": "quota",
-      "cooldownUntilUtc": "2026-10-11T05:01Z",
-      "updatedUtc": "2026-10-10T23:01Z"
-    },
     "nvidia": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-11T03:20Z",
-      "updatedUtc": "2026-10-11T02:20Z"
+      "cooldownUntilUtc": "2026-10-11T10:26Z",
+      "updatedUtc": "2026-10-11T09:26Z"
+    },
+    "gemini": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-11T10:27Z",
+      "updatedUtc": "2026-10-11T09:27Z"
+    },
+    "openrouter": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-11T10:28Z",
+      "updatedUtc": "2026-10-11T09:28Z"
     }
   }
 }
