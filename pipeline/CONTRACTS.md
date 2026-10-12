@@ -20,7 +20,10 @@ reserved for programming errors.
 
 `config/changelog.json` is a checked-in, bilingual history of meaningful
 site changes. It is curated from the GitHub `main` history and deliberately
-omits automated `hourly update`, briefing and flight-state data commits.
+includes only reader-visible site upgrades and major maintenance changes.
+It excludes routine debugging, isolated content corrections, individual news
+publishing, minor operational tuning, and automated `hourly update`, briefing
+and flight-state data commits. Git history remains the detailed engineering log.
 Every historical row carries a full 40-character commit SHA; build.py derives
 the public GitHub URL from that validated SHA rather than accepting arbitrary
 links from the file. The one current changelog-page row may use `null` until
