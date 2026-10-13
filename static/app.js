@@ -153,7 +153,10 @@
   var countEl = document.getElementById("inc-count");
   function applyIncidentFilter(v, button, updateUrl) {
     var n = 0;
-    sevBtns.forEach(function (x) { x.classList.toggle("active", x === button); });
+    sevBtns.forEach(function (x) {
+      x.classList.toggle("active", x === button);
+      x.setAttribute("aria-pressed", String(x === button));
+    });
     Array.prototype.forEach.call(document.querySelectorAll("[data-sev]"), function (row) {
       var matches = v === "all" ||
         (v === "week" ? row.dataset.weeklySerious === "true" : row.dataset.sev === v);
@@ -161,6 +164,8 @@
       if (matches) n += 1;
     });
     if (countEl) countEl.textContent = String(n);
+    var emptyEl = document.getElementById("inc-empty");
+    if (emptyEl) emptyEl.classList.toggle("is-hidden", n > 0);
     if (updateUrl && window.history && window.history.replaceState) {
       var url = new URL(window.location.href);
       if (v === "all") url.searchParams.delete("filter");
