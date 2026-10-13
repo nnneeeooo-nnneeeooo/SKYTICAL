@@ -1,41 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
-  <div style="padding:28px 20px 64px;">
-    <span class="card-kicker">{{ t.incKicker }}</span>
-    <h2 style="margin:8px 0 6px;">{{ t.incTitle }}</h2>
-    <p class="text-muted" style="font-size:14px;max-width:640px;">{{ t.incSub }}</p>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 0;flex-wrap:wrap;gap:10px;">
-      <span class="seg seg-sev">
+  <section class="incidents-page" aria-labelledby="incidents-title">
+    <header class="incidents-header">
+      <span class="card-kicker">{{ t.incKicker }}</span>
+      <h1 id="incidents-title">{{ t.incTitle }}</h1>
+      <p class="text-muted">{{ t.incSub }}</p>
+    </header>
+    <div class="incidents-toolbar">
+      <div class="incidents-filters" role="group" aria-label="{{ t.thSev }}">
         {% for key, label in sev_seg %}
-        <button type="button" class="seg-btn{% if key == 'all' %} active{% endif %}" data-filter-sev="{{ key }}">{{ label }}</button>
+        <button type="button" class="seg-btn{% if key == 'all' %} active{% endif %}" data-filter-sev="{{ key }}" aria-pressed="{{ 'true' if key == 'all' else 'false' }}">{{ label }}</button>
         {% endfor %}
-      </span>
-      <span class="text-muted" style="font-size:12.5px;"><span id="inc-count">{{ count }}</span> {{ t.incCountLabel }}</span>
+      </div>
+      <span class="incidents-count" role="status"><strong id="inc-count">{{ count }}</strong> {{ t.incCountLabel }}</span>
     </div>
-    <div style="overflow-x:auto;">
-      <table class="table" style="margin-top:14px;">
-        <thead><tr>
-          <th>{{ t.thDate }}</th><th>{{ t.thSev }}</th><th>{{ t.thType }}</th><th>{{ t.thOp }}</th><th>{{ t.thPhase }}</th><th>{{ t.thLoc }}</th><th>{{ t.thDesc }}</th><th>{{ t.thStatus }}</th><th>{{ t.thSrc }}</th>
-        </tr></thead>
-        <tbody>
-          {% for i in rows %}
-          <tr data-sev="{{ i.sev_key }}" data-weekly-serious="{{ 'true' if i.weekly_serious else 'false' }}">
-            <td style="font-weight:700;white-space:nowrap;">{% if i.url %}<a class="incident-date-link" href="{{ i.url }}" aria-label="{{ t.incReadEvent }}：{{ i.desc }}">{{ i.d }}</a>{% else %}{{ i.d }}{% endif %}</td>
-            <td><span class="tag {{ i.sev_class }}">{{ i.sev_label }}</span></td>
-            <td style="white-space:nowrap;">{{ i.ac }}</td>
-            <td>{{ i.op }}</td>
-            <td>{{ i.ph }}</td>
-            <td>{{ i.loc }}</td>
-            <td class="text-muted">{% if i.url %}<a class="incident-article-link" href="{{ i.url }}">{{ i.desc }}</a>{% else %}{{ i.desc }}{% endif %}</td>
-            <td style="white-space:nowrap;">{{ i.st }}</td>
-            <td class="text-muted" style="font-size:12px;white-space:nowrap;">{{ i.src }}</td>
-          </tr>
-          {% else %}
-          <tr><td colspan="9" class="text-muted">{{ t.awaiting }}</td></tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    <div class="incidents-list">
+      {% for i in rows %}
+      <article data-sev="{{ i.sev_key }}" data-weekly-serious="{{ 'true' if i.weekly_serious else 'false' }}" class="incident-card">
+        <div class="incident-date">
+          <span class="incident-label">{{ t.thDate }}</span>
+          {% if i.url %}<a class="incident-date-link" href="{{ i.url }}" aria-label="{{ t.incReadEvent }}：{{ i.desc }}">{{ i.d }}</a>{% else %}<span class="incident-date-value">{{ i.d }}</span>{% endif %}
+          <span class="tag {{ i.sev_class }}">{{ i.sev_label }}</span>
+        </div>
+        <div class="incident-body">
+          <h2 class="incident-summary">{% if i.url %}<a class="incident-article-link" href="{{ i.url }}">{{ i.desc }}<span class="incident-go" aria-hidden="true"> ↗</span></a>{% else %}{{ i.desc }}{% endif %}</h2>
+          <dl class="incident-details">
+            <div><dt>{{ t.thType }}</dt><dd>{{ i.ac }}</dd></div>
+            <div><dt>{{ t.thOp }}</dt><dd>{{ i.op }}</dd></div>
+            <div><dt>{{ t.thPhase }}</dt><dd>{{ i.ph }}</dd></div>
+            <div><dt>{{ t.thLoc }}</dt><dd>{{ i.loc }}</dd></div>
+          </dl>
+          <div class="incident-footer">
+            <span class="incident-status"><span class="incident-label">{{ t.thStatus }}</span> {{ i.st }}</span>
+            <span class="incident-source"><span class="incident-label">{{ t.thSrc }}</span> {{ i.src }}</span>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+      <p id="inc-empty" class="incidents-empty{% if rows %} is-hidden{% endif %}" role="status">{{ t.awaiting }}</p>
     </div>
-    <p class="text-muted" style="font-size:12px;margin-top:14px;">{{ t.incNote }}</p>
-  </div>
+    <p class="incidents-note text-muted">{{ t.incNote }}</p>
+  </section>
 {% endblock %}
