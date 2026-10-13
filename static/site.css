@@ -407,6 +407,7 @@ a.flash-row:hover .flash-text { color: var(--color-accent); }
 .incident-date-link:hover { color: var(--color-accent); }
 
 /* — incident database: shares the briefing page and story layout — */
+.briefing-page.incidents-page { width: 100%; }
 .incidents-toolbar {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 8px 16px; margin: 18px 0 24px; padding: 12px 0;
