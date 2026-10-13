@@ -82,6 +82,7 @@ from providers import (
 MAX_GROUPS_PER_RUN = 10
 MAX_DRAFT_SECONDS_PER_RUN = 15 * 60
 MAX_MODEL_ATTEMPT_SECONDS = 60
+PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK = 30
 MAX_DRAFT_SECONDS_PER_GROUP = 120
 PROVIDER_ROUTING_OVERHEAD_SECONDS = 5
 TRANSIENT_PLATFORM_FAILURE_LIMIT = 2
@@ -1484,7 +1485,8 @@ def _normalize_reject_reason(candidate: dict) -> None:
             f"to establish a new event. Model detail: {reason}")
 
 
-def _provider_attempt_allowance(provider, deadline: float | None = None) -> float:
+def _provider_attempt_allowance(provider, deadline: float | None = None,
+                                max_attempt_seconds: float | None = None) -> float:
     """Return this provider's bounded call budget, clipped to its story time."""
     allowance = getattr(
         provider, "max_attempt_seconds", MAX_MODEL_ATTEMPT_SECONDS)
@@ -1492,6 +1494,8 @@ def _provider_attempt_allowance(provider, deadline: float | None = None) -> floa
             or not isinstance(allowance, (int, float))
             or allowance <= 0):
         allowance = MAX_MODEL_ATTEMPT_SECONDS
+    if max_attempt_seconds is not None:
+        allowance = min(allowance, max_attempt_seconds)
     if deadline is not None:
         allowance = min(allowance, deadline - time.monotonic())
     return allowance
@@ -1507,9 +1511,34 @@ def _provider_group_budget(provider) -> float:
     return budget
 
 
+def _is_final_paid_provider(provider) -> bool:
+    return (getattr(provider, "name", None) == "openai"
+            and getattr(provider, "model", None) == "gpt-6")
+
+
+def _final_paid_reserve_seconds(providers) -> float:
+    """Reserve one initial draft and one independent repair for final Fallback."""
+    return sum(2 * _provider_attempt_allowance(provider)
+               + 2 * PROVIDER_ROUTING_OVERHEAD_SECONDS
+               for provider in providers if _is_final_paid_provider(provider))
+
+
 def _provider_chain_budget(providers) -> float:
     """Leave room for each preferred route to time out before GPT 6."""
     providers = tuple(providers)
+    final_paid_reserve = _final_paid_reserve_seconds(providers)
+    if final_paid_reserve:
+        preferred = [provider for provider in providers
+                     if not _is_final_paid_provider(provider)]
+        # Existing primary/shared fallback repairs remain bounded, while
+        # neither can spend Fallback's own repair time.
+        preferred_budget = sum(_provider_attempt_allowance(
+            provider, max_attempt_seconds=PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK)
+            for provider in preferred)
+        if preferred:
+            preferred_budget += 2 * PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK
+        return final_paid_reserve + preferred_budget + (
+            len(preferred) + 2) * PROVIDER_ROUTING_OVERHEAD_SECONDS
     budget = max(
         (_provider_group_budget(provider) for provider in providers),
         default=MAX_DRAFT_SECONDS_PER_GROUP,
@@ -1527,7 +1556,8 @@ def _provider_chain_budget(providers) -> float:
 
 def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                      run_trace: _RunTrace | None = None,
-                     deadline: float | None = None):
+                     deadline: float | None = None,
+                     max_attempt_seconds: float | None = None):
     """Call `provider` up to `tries` times until a draft survives validation
     and quote verification.
 
@@ -1556,7 +1586,8 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                                                 previous_candidate)
                 if run_trace is not None:
                     run_trace.add_duration("promptAssembly", prompt_started)
-                allowance = _provider_attempt_allowance(provider, deadline)
+                allowance = _provider_attempt_allowance(
+                    provider, deadline, max_attempt_seconds)
                 with draft_timeout(allowance):
                     candidate = provider.draft(
                         SYSTEM_PROMPT, user_prompt, DRAFT_SCHEMA)
@@ -2863,6 +2894,10 @@ def main() -> None:
     else:
         print("write: provider order: "
               + " -> ".join(p.label for p in providers))
+        if _final_paid_reserve_seconds(providers):
+            print("write: Fallback final fallback policy: preferred calls capped "
+                  f"at {PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK}s; independent "
+                  "draft/repair time reserved")
         try:
             # Thin-story companion retrieval: excerpt-only items (e.g.
             # Simple Flying) act as a discovery index and the pipeline
@@ -2962,6 +2997,11 @@ def main() -> None:
                 continue
             if drafted >= MAX_GROUPS_PER_RUN:
                 break  # LLM budget for this run is spent; the rest waits
+            if draft_deadline - time.monotonic() < _final_paid_reserve_seconds(alive):
+                print("write: insufficient run time for Fallback draft and repair; "
+                      "retaining remaining groups for retry")
+                run_trace.finish("retry_pending", "retry_pending")
+                break
             drafted += 1
             draft, writer, verified = None, None, None
             final_model = None
@@ -2980,17 +3020,30 @@ def main() -> None:
                     # Removed mid-group by a platform-level auth/quota
                     # death earlier in this same iteration.
                     continue
-                # One primary retry and one responsive-fallback repair per
-                # group; transport failures do not spend the repair budget.
-                tries = 2 if provider is providers[0] or not fallback_repair_used else 1
+                is_final_paid = _is_final_paid_provider(provider)
+                final_paid_reserve = _final_paid_reserve_seconds(alive)
+                provider_deadline = group_deadline
+                attempt_cap = None
+                if final_paid_reserve and not is_final_paid:
+                    provider_deadline -= final_paid_reserve
+                    attempt_cap = PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK
+                    if time.monotonic() >= provider_deadline:
+                        print(f"write: {provider.label} skipped on group "
+                              f"{group.get('id')}: preserving Fallback draft/repair time")
+                        continue
+                # Fallback has its own repair, independent of the shared repair
+                # for preferred fallbacks. Transport failures still fail over.
+                tries = 2 if (is_final_paid or provider is providers[0]
+                              or not fallback_repair_used) else 1
                 try:
                     candidate, facts = _validated_draft(provider, group,
                                                         tries, ai_calls,
                                                         run_trace,
-                                                        deadline=group_deadline)
+                                                        deadline=provider_deadline,
+                                                        max_attempt_seconds=attempt_cap)
                 except DraftInvalid:
                     content_failed = True
-                    if provider is not providers[0]:
+                    if provider is not providers[0] and not is_final_paid:
                         fallback_repair_used = True
                     _record_provider_response(
                         provider, transient_failure_counts)
