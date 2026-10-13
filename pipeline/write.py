@@ -414,18 +414,21 @@ EVIDENCE RULES:
 
 EDITORIAL SCOPE GATE:
 - SKYTICAL publishes only civil/military aircraft, airlines, airports, flights,
-  airspace/ATC, aviation industry and safety, maritime transport, vessels,
-  ports, rail, metro or road transport.
+  airspace/ATC, aviation industry and safety. The core event must directly
+  concern civil or military aviation. Maritime shipping, vessels, ports,
+  rail, metro and road transport are OUT-OF-SCOPE unless the core event
+  directly affects aircraft, flights or airport operations. 航線 and 航班
+  can describe ships and are not sufficient evidence of aviation relevance.
 - A defence ministry, armed forces, exercise, president, budget, weapon or
   military label alone is insufficient. Military stories qualify only when
   the evidenced core event directly concerns aircraft, airspace, aviation,
-  vessels/ports or a concrete transport operation.
+  or a concrete flight operation.
 - General politics, rebuttals, speeches, elections, defence-policy positions,
   land exercises and presidential inspection protocol are OUT-OF-SCOPE and
   must be rejected.
 - Military replicas, scale models and mock-ups are OUT-OF-SCOPE when the core
   event is the replica or political/budget statement. Incidental warships,
-  jets, bases or ports do not make an item aviation or transport news.
+  jets, bases or ports do not make an item aviation news.
 
 AVIATION SAFETY RULES (strictest standard):
 - For accidents, serious incidents, emergency/forced landings, diversions,
