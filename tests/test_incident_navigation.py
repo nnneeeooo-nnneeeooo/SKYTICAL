@@ -27,7 +27,7 @@ def main() -> None:
     assert 'href="/en/incidents/?filter=week"' in en_home
     assert 'data-filter-sev="week"' in incidents
     weekly_rows = re.findall(
-        r'<tr data-sev="(?:acc|ser)" data-weekly-serious="true">.*?</tr>',
+        r'<article data-sev="(?:acc|ser)" data-weekly-serious="true"[^>]*>.*?</article>',
         incidents,
         re.DOTALL,
     )
