@@ -22,6 +22,8 @@ TARGET_IDS = {
         "2026-07-27T04.json",
     "a-20260727-0443-defense-minister-clarifies-no-live-fire":
         "2026-07-27T04.json",
+    "a-20261013-1326-south-korea-s-lee-welcomes-return-of-arc":
+        "2026-10-13T13.json",
 }
 
 
@@ -95,12 +97,36 @@ def main() -> None:
     assert common.is_transport_story(story(
         "國防部公布共機艦動態",
         "偵獲共機4架次、共艦7艘於台海周邊活動。"))
-    assert common.is_transport_story(story(
+    assert not common.is_transport_story(story(
         "台鐵列車故障部分區間停駛"))
-    assert common.is_transport_story(story(
+    assert not common.is_transport_story(story(
         "港務公司公告客輪停航"))
-    assert common.is_transport_story(story(
+    assert not common.is_transport_story(story(
         "高速公路客運事故造成回堵"))
+    for title in (
+        "李在明歡迎北極航線貨櫃輪返國 拚2030年前開通定期服務",
+        "South Korea's Lee welcomes return of Arctic route container ship",
+        "海運公司宣布貨輪定期航班服務", "航空母艦返港",
+        "Aircraft carrier returns to naval port", "Railway resumes service",
+        "Metro train derails", "Highway bus crash", "共艦通過台灣海峽",
+    ):
+        item = {"title": title, "summary": "航空公司為背景合作夥伴。"}
+        assert not common.is_transport_headline(item), title
+        assert not common.is_transport_story(story(title, item["summary"])), title
+        assert not fetch._matches_keywords(item, common.TAIWAN_TRANSPORT_KEYWORDS)
+        assert write.build_article(
+            draft(), story(title), datetime.now(timezone.utc), set()) is None
+    for title in (
+        "貨輪事故影響機場聯外道路 航班延誤", "航母艦載戰機起飛訓練",
+        "Aircraft carrier launches fighter jets", "FAA updates safety rules",
+        "空軍接收新型教練機", "華航新增北極航線",
+        "ATR identifies potential new routes in Indonesia",
+        "Wizz Air postpones six Abu Dhabi routes",
+        "Rolls-Royce triples 787 engine overhaul interval",
+        "Aircraft carrier switches to steam catapults",
+    ):
+        assert common.is_transport_headline({"title": title}), title
+    assert "twtransport" not in common.SOURCES
     assert not common.is_transport_story(story(
         "國防預算攻防延燒 朝野公布最新主張"))
     assert not common.is_transport_story(story(
@@ -151,6 +177,10 @@ def main() -> None:
     assert build.prep_flashes([orphan], set()) == []
 
     print("test_scope: OK")
+
+
+def test_scope_regressions() -> None:
+    main()
 
 
 if __name__ == "__main__":
