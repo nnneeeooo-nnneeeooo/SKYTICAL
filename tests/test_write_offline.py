@@ -16,6 +16,7 @@ import subprocess
 import sys
 import tempfile
 import traceback
+from contextlib import contextmanager
 from datetime import timedelta
 from pathlib import Path
 
@@ -975,6 +976,104 @@ def test_final_paid_is_used_after_preferred_service_failures():
     print("test_final_paid_is_used_after_preferred_service_failures: done")
 
 
+def test_final_paid_repairs_after_shared_fallback_repair_is_spent():
+    """A responsive preferred fallback cannot consume Fallback's repair."""
+    for valid_repair in (True, False):
+        reset_data_dir()
+        pending = load(DATA / "pending.json")
+        group = pending["groups"][1]
+        pending["groups"] = [group]
+        common.save_json(DATA / "pending.json", pending)
+        bad = json.loads(json.dumps(DRAFT_BIZ))
+        bad["cat"] = "not-a-cat"
+        short = json.loads(json.dumps(DRAFT_BIZ))
+        short["zh"]["body"] = ["短訊", "短訊"]
+        fabricated = json.loads(json.dumps(DRAFT_BIZ))
+        fabricated["facts"][0]["sourceQuote"] = "This quote is fabricated."
+        primary = FakeProvider("gemini", [providers.ProviderError("HTTP 503")])
+        fallback = FakeProvider("wechat", [bad])
+
+        class Fallback(FakeProvider):
+            model = "gpt-6"
+            max_attempt_seconds = 90
+            group_budget_seconds = 180
+
+            def draft(self, system_prompt, user_prompt, schema):
+                self.prompts.append(user_prompt)
+                return super().draft(system_prompt, user_prompt, schema)
+
+        final_paid = Fallback("openai", [short, DRAFT_BIZ if valid_repair else fabricated])
+        final_paid.prompts = []
+        original = write.build_providers
+        write.build_providers = lambda: [primary, fallback, final_paid]
+        try:
+            write.main()
+        finally:
+            write.build_providers = original
+        check(primary.calls == 1 and fallback.calls == 2 and final_paid.calls == 2,
+              "Fallback independently repairs after preferred fallback uses both calls")
+        check("body does not meet" in final_paid.prompts[1],
+              "Fallback repair receives the actual failed body validation")
+        if valid_repair:
+            check(len(all_articles()) == 1
+                  and all_articles()[0]["writer"] == "openai:fake",
+                  "a valid Fallback repair publishes the formerly short draft")
+        else:
+            check(not all_articles() and load(DATA / "pending.json")["groups"],
+                  "fabricated Fallback repair remains unpublished and retryable")
+            check(common.norm_url(group["items"][0]["url"])
+                  not in load(DATA / "seen.json")["urls"],
+                  "failed Fallback repair does not consume the source")
+
+
+def test_preferred_timeout_preserves_final_paid_and_run_budget():
+    """A clipped run deadline still leaves two full Fallback calls, then stops."""
+    reset_data_dir()
+    pending = load(DATA / "pending.json")
+    pending["groups"] = [pending["groups"][1], pending["groups"][0]]
+    common.save_json(DATA / "pending.json", pending)
+    clock, allowances, order = [0.0], [], []
+    bad = json.loads(json.dumps(DRAFT_BIZ))
+    bad["cat"] = "not-a-cat"
+
+    class TimedProvider(FakeProvider):
+        def draft(self, *args):
+            order.append(self.name)
+            clock[0] += allowances[-1]
+            return super().draft(*args)
+
+    first = TimedProvider("gemini", [providers.ProviderError("ReadTimeout")])
+    skipped = TimedProvider("wechat", [DRAFT_BIZ])
+    final_paid = TimedProvider("openai", [bad, DRAFT_BIZ])
+    final_paid.model = "gpt-6"
+    final_paid.max_attempt_seconds = 90
+    final_paid.group_budget_seconds = 180
+
+    @contextmanager
+    def fake_timeout(seconds):
+        allowances.append(seconds)
+        yield
+
+    original = (write.build_providers, write.time.monotonic,
+                write.draft_timeout, write.MAX_DRAFT_SECONDS_PER_RUN)
+    write.build_providers = lambda: [first, skipped, final_paid]
+    write.time.monotonic = lambda: clock[0]
+    write.draft_timeout = fake_timeout
+    write.MAX_DRAFT_SECONDS_PER_RUN = 220
+    try:
+        write.main()
+    finally:
+        (write.build_providers, write.time.monotonic,
+         write.draft_timeout, write.MAX_DRAFT_SECONDS_PER_RUN) = original
+    check(order == ["gemini", "openai", "openai"],
+          "preferred routes yield to final Fallback when its reserved time is reached")
+    check(allowances == [30, 90, 90] and clock[0] == 210,
+          "preferred request is capped and Fallback gets two full calls within run cap")
+    check(len(all_articles()) == 1
+          and len(load(DATA / "pending.json")["groups"]) == 1,
+          "completed article is saved; next story waits for a full fallback budget")
+
+
 def test_editorial_gate():
     """Model reject skips the group; fabricated quotes are dropped/blocking."""
     reset_data_dir()
@@ -1328,6 +1427,8 @@ def main():
              test_model_chain_and_routing_policy,
              test_provider_specific_time_budget,
              test_final_paid_is_used_after_preferred_service_failures,
+             test_final_paid_repairs_after_shared_fallback_repair_is_spent,
+             test_preferred_timeout_preserves_final_paid_and_run_budget,
              test_editorial_gate,
              test_completeness_precheck,
              test_major_title_only_is_retained_for_material_retry,
