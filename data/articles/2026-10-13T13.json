@@ -727,6 +727,841 @@
         }
       ],
       "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261013-1354-nasa-reportedly-contacts-former-sr-71-en",
+      "publishedUtc": "2026-10-13T13:54Z",
+      "cat": "ops",
+      "primarySource": "Aerospace Global News",
+      "image": null,
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/09/Three-SR-71-blackbirds-parked-together.jpg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "NASA據報接觸前SR-71工程人員探討重返飛行",
+        "summary": "NASA據報接觸前SR-71工程人員，探討飛機重返飛行可能性。",
+        "body": [
+          "《Aviation Week》報導，NASA已接觸多名前SR-71工程人員，詢問是否能協助讓飛機重返飛行。報導指出，這架飛機名為NASA 844，最後一次飛行是在1999年10月9日。",
+          "《Aviation Week》另報導，NASA已將飛機移入一處曾供太空梭使用的機庫，地點在愛德華茲空軍基地。NASA尚未公開確認重返飛行計畫，也未說明打算如何使用這架飛機；目前重返飛行仍未獲公開確認。"
+        ]
+      },
+      "en": {
+        "title": "NASA reportedly contacts former SR-71 engineers about possible return to flight",
+        "summary": "NASA reportedly approached former SR-71 engineers about helping return the aircraft to flight.",
+        "body": [
+          "Aviation Week reported that NASA had approached former SR-71 engineers about helping return the aircraft to flight. The aircraft, known as NASA 844, last flew on 9 October 1999, according to the report.",
+          "Aviation Week also reported that NASA had moved the aircraft into a hangar formerly used for the Space Shuttle at Edwards Air Force Base. NASA has not publicly confirmed a return-to-flight programme or explained what it intends to do with the aircraft. A return to flight has therefore not been publicly confirmed."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — Why no aircraft has ever replaced the SR-71 Blackbird News",
+          "url": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-13T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "According to Aviation Week, NASA has approached former SR-71 engineers about helping return the aircraft to flight.",
+          "sourceQuote": "According to an investigation by Aviation Week, NASA has approached former SR-71 engineers about helping return the aircraft to the skies.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "NASA has not publicly confirmed a return-to-flight programme or explained what it intends to do with the aircraft.",
+          "sourceQuote": "The agency has not publicly confirmed a return-to-flight programme or explained what it intends to do with the aircraft.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Aviation Week reported that NASA had moved the aircraft into a hangar formerly used for the Space Shuttle at Edwards Air Force Base.",
+          "sourceQuote": "Aviation Week also reported that NASA had moved the aircraft into a hangar formerly used for the Space Shuttle at Edwards Air Force Base.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "NASA 844 last flew on 9 October 1999.",
+          "sourceQuote": "The aircraft in question, known as NASA 844, last flew on 9 October 1999.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "unknown",
+      "entities": {
+        "organizations": [
+          "NASA",
+          "Aviation Week"
+        ],
+        "aircraft_models": [
+          "Lockheed SR-71 Blackbird"
+        ],
+        "locations": [
+          "Edwards Air Force Base"
+        ],
+        "event_dates": [
+          "9 October 1999"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "NASA",
+          "sourceQuote": "According to an investigation by Aviation Week, NASA has approached former SR-71 engineers about helping return the aircraft to the skies.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Aviation Week",
+          "sourceQuote": "According to an investigation by Aviation Week, NASA has approached former SR-71 engineers about helping return the aircraft to the skies.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "Lockheed SR-71 Blackbird",
+          "sourceQuote": "Nearly three decades after its final flight, the Lockheed SR-71 Blackbird remains the world’s fastest operational jet aircraft remains without a direct successor.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/"
+        },
+        {
+          "entityType": "locations",
+          "value": "Edwards Air Force Base",
+          "sourceQuote": "Aviation Week also reported that NASA had moved the aircraft into a hangar formerly used for the Space Shuttle at Edwards Air Force Base.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "9 October 1999",
+          "sourceQuote": "The aircraft in question, known as NASA 844, last flew on 9 October 1999.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/nasa-sr71-blackbird-never-replaced/"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261013-1354-palm-springs-air-museum-schedules-five-p",
+      "publishedUtc": "2026-10-13T13:54Z",
+      "cat": "ops",
+      "primarySource": "Aerospace Global News",
+      "image": null,
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/10/Walt-Disneys-Private-Plane-Goes-On-Public-Display-for-the-First-Time-in-Palm-Springs.webp",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "棕櫚泉航空博物館安排五場活動開放民眾參觀迪士尼私人飛機",
+        "summary": "棕櫚泉航空博物館安排五場晚間活動，開放民眾進入迪士尼私人飛機參觀",
+        "body": [
+          "棕櫚泉航空博物館安排在October 2026至April 2027間舉行五場特別晚間活動，讓一般民眾進入華特迪士尼私人飛機內部參觀。報導指出，不屬於迪士尼官方D23粉絲組織的民眾也可參加，活動將在加州棕櫚泉航空博物館舉行。",
+          "開放參觀的飛機是與華特迪士尼相關、登記號N732G的Grumman Gulfstream I。每場活動都將安排機內導覽；特別體驗為兩小時，重新整修的機艙內裝是體驗重點。"
+        ]
+      },
+      "en": {
+        "title": "Palm Springs Air Museum schedules five public tours inside Disney’s Gulfstream I",
+        "summary": "Palm Springs Air Museum schedules five evenings for public tours inside Walt Disney’s aircraft.",
+        "body": [
+          "The Palm Springs Air Museum has scheduled five special evening events between October 2026 and April 2027. The events will allow members of the general public who are not part of Disney’s official D23 fan organisation to experience the interior of Walt Disney’s last personal aircraft at the museum in California.",
+          "The aircraft is a Grumman Gulfstream I registered as N732G and associated with Walt Disney. Each event will include a guided experience inside the aircraft. The newly restored interior is described as the highlight of the museum’s special two-hour experiences."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — Visitors can now tour inside Walt Disney’s vintage Gulfstre…",
+          "url": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-13T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "一般民眾可在棕櫚泉航空博物館舉辦的一系列活動中參觀迪士尼私人飛機內部。",
+          "sourceQuote": "members of the general public who are not part of Disney’s official D23 fan organisation can experience the interior of Disney’s last personal aircraft during a series of exclusive events at the Palm Springs Air Museum in California.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "棕櫚泉航空博物館安排五場特別晚間活動，時間介於October 2026與April 2027之間。",
+          "sourceQuote": "The Palm Springs Air Museum has scheduled five special evenings between October 2026 and April 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "與華特迪士尼相關的私人飛機是登記號N732G的Grumman Gulfstream I。",
+          "sourceQuote": "The aircraft at the centre of the experience is a Grumman Gulfstream I registered as N732G, the private aircraft associated with Walt Disney and his work at the Walt Disney Company.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "每場活動都將包含機內導覽體驗。",
+          "sourceQuote": "Each event will include a guided experience inside the aircraft",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "博物館的特別體驗為兩小時，重新整修的內裝是體驗重點。",
+          "sourceQuote": "The newly restored interior is being described as the highlight of the museum’s special two-hour experiences",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "Palm Springs Air Museum"
+        ],
+        "aircraft_models": [
+          "Grumman Gulfstream I"
+        ],
+        "locations": [
+          "Palm Springs",
+          "California"
+        ],
+        "registration_numbers": [
+          "N732G"
+        ],
+        "event_dates": [
+          "between October 2026 and April 2027"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "Palm Springs Air Museum",
+          "sourceQuote": "The Palm Springs Air Museum has scheduled five special evenings between October 2026 and April 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "Grumman Gulfstream I",
+          "sourceQuote": "The aircraft at the centre of the experience is a Grumman Gulfstream I registered as N732G, the private aircraft associated with Walt Disney and his work at the Walt Disney Company.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/"
+        },
+        {
+          "entityType": "locations",
+          "value": "Palm Springs",
+          "sourceQuote": "For the first time, members of the general public who are not part of Disney’s official D23 fan organisation can experience the interior of Disney’s last personal aircraft during a series of exclusive events at the Palm Springs Air Museum in California.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/"
+        },
+        {
+          "entityType": "locations",
+          "value": "California",
+          "sourceQuote": "For the first time, members of the general public who are not part of Disney’s official D23 fan organisation can experience the interior of Disney’s last personal aircraft during a series of exclusive events at the Palm Springs Air Museum in California.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/"
+        },
+        {
+          "entityType": "registration_numbers",
+          "value": "N732G",
+          "sourceQuote": "The aircraft at the centre of the experience is a Grumman Gulfstream I registered as N732G, the private aircraft associated with Walt Disney and his work at the Walt Disney Company.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "between October 2026 and April 2027",
+          "sourceQuote": "The Palm Springs Air Museum has scheduled five special evenings between October 2026 and April 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/walt-disney-grumman-gulfstream-palm-springs-museum/"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261013-1354-assaia-report-estimates-airlines-could-s",
+      "publishedUtc": "2026-10-13T13:54Z",
+      "cat": "biz",
+      "primarySource": "Aerospace Global News",
+      "image": null,
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/08/AdobeStock_399612767-scaled.jpeg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "Assaia報告：改善航機周轉每年最多可省US$44bn",
+        "summary": "Assaia估計改善航機周轉每年可為航空公司節省最高US$44bn。",
+        "body": [
+          "航空科技公司Assaia分析指出，2026年第一季，歐洲及北美的航機平均在地面停留時間比排定時間多11.1分鐘。",
+          "一份新產業報告估計，改善航機周轉表現每年最多可為航空公司節省US$44bn。Assaia表示，這項計算以每分鐘延誤成本100美元估算，並將約11分鐘的超時套用於相關航班。",
+          "Assaia分析了歐洲及北美超過75萬次航機周轉，探討為何部分作業能接近排程完成，另一些則超時超過20分鐘。報告聚焦航機抵達停機位至準備起飛的周轉作業。"
+        ]
+      },
+      "en": {
+        "title": "Assaia report estimates airlines could save up to $44bn a year through faster turnarounds",
+        "summary": "Assaia estimates turnaround improvements could save airlines up to $44bn annually.",
+        "body": [
+          "Aviation technology company Assaia found that aircraft in Europe and North America spent an average of 11.1 minutes longer on the ground than scheduled in the first quarter of 2026.",
+          "A new industry report estimates that improving aircraft turnaround performance could save airlines up to $44bn annually. Assaia said its calculation uses an estimated cost of $100 for each minute of delay and an 11-minute overrun across the flights.",
+          "Assaia analysed more than 750,000 turnarounds across Europe and North America to examine why some operations finish close to schedule while others overrun by more than 20 minutes. The report focuses on the period between an aircraft arriving at its stand and departing for its next flight."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — Airlines could save $44bn a year by cutting just 11 minutes…",
+          "url": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-13T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "一份新產業報告估計，改善航機周轉表現每年最多可節省$44bn。",
+          "sourceQuote": "Airlines could cut costs and ease pressure on congested airports by improving aircraft turnaround performance, with the potential savings estimated at up to $44bn annually, according to a new industry report.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Assaia分析發現，2026年第一季歐洲及北美航機在地面的時間平均比排定時間多11.1分鐘。",
+          "sourceQuote": "Analysis by aviation technology company Assaia found that aircraft in Europe and North America spent an average of 11.1 minutes longer on the ground than scheduled in the first quarter of 2026.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Assaia的計算以每分鐘延誤成本100美元估算。",
+          "sourceQuote": "The calculation uses an estimated cost of $100 for each minute of delay",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "該計算指出，相關航班每次11分鐘超時合計為$44 billion。",
+          "sourceQuote": "with an 11-minute overrun across those flights adding up to $44 billion.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Assaia分析了歐洲及北美超過750,000次航機周轉，以探討哪些作業接近排程、哪些超時超過20分鐘。",
+          "sourceQuote": "Assaia analysed more than 750,000 turnarounds across Europe and North America to investigate why some operations finish close to schedule while others overrun by more than 20 minutes.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "financial_or_order_claim"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "Assaia"
+        ],
+        "locations": [
+          "Europe",
+          "North America"
+        ],
+        "event_dates": [
+          "first quarter of 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "Assaia",
+          "sourceQuote": "Analysis by aviation technology company Assaia found that aircraft in Europe and North America spent an average of 11.1 minutes longer on the ground than scheduled in the first quarter of 2026.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/"
+        },
+        {
+          "entityType": "locations",
+          "value": "Europe",
+          "sourceQuote": "Analysis by aviation technology company Assaia found that aircraft in Europe and North America spent an average of 11.1 minutes longer on the ground than scheduled in the first quarter of 2026.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/"
+        },
+        {
+          "entityType": "locations",
+          "value": "North America",
+          "sourceQuote": "Analysis by aviation technology company Assaia found that aircraft in Europe and North America spent an average of 11.1 minutes longer on the ground than scheduled in the first quarter of 2026.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "first quarter of 2026",
+          "sourceQuote": "Analysis by aviation technology company Assaia found that aircraft in Europe and North America spent an average of 11.1 minutes longer on the ground than scheduled in the first quarter of 2026.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/airlines-turnaround-delays-assaia-report-ai/"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261013-1354-avealto-seeks-55-million-for-kent-facili",
+      "publishedUtc": "2026-10-13T13:54Z",
+      "cat": "biz",
+      "primarySource": "Aerospace Global News",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/10/Avealto-HAPS-Image.jpg",
+        "link": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/",
+        "provider": "Aerospace Global News",
+        "subject": "Avealto giant airship for connectivity to rival starlink",
+        "sourceCaption": "Avealto giant airship for connectivity to rival starlink",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/10/Avealto-HAPS-Image.jpg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "Avealto尋求5,500萬美元 規劃肯特設廠並推出馬來西亞商業服務",
+        "summary": "Avealto尋求5,500萬美元，規劃肯特設廠並在馬來西亞推出商業服務",
+        "body": [
+          "Avealto表示正尋求5,500萬美元，以在肯特設立製造設施，並在馬來西亞推出首個商業服務。這項服務仍屬規劃中的方案。",
+          "公司提出的飛船長度約100公尺，預計在約65,000英尺高度運作，並在同一地點上空近乎定點停留，每次可持續三至四個月。",
+          "Avealto表示，每艘飛船可提供直徑約240公里的通訊涵蓋範圍，並透過回傳鏈路連接傳統行動電話基地臺與電信業者的網路。"
+        ]
+      },
+      "en": {
+        "title": "Avealto Seeks $55 Million for Kent Facility and Planned Malaysia Service",
+        "summary": "Avealto seeks $55 million for a planned Kent facility and Malaysia service",
+        "body": [
+          "Avealto is seeking $55 million to establish a manufacturing facility in Kent and launch its first commercial service in Malaysia. The company’s service remains a proposal.",
+          "The proposed airships would be about 100 metres (330 feet) long and operate at around 65,000 feet. Avealto says they would remain almost stationary above the same location for three to four months at a time.",
+          "The company says each airship would provide communications coverage across a 240-kilometre-diameter area. Rather than connecting ordinary mobile phones directly to aircraft, the airships would provide backhaul linking conventional mobile phone towers to an operator’s wider network."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — A British company wants to challenge Starlink with giant ai…",
+          "url": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-13T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Avealto is seeking $55 million to establish a manufacturing facility in Kent.",
+          "sourceQuote": "Avealto is now seeking $55 million to establish a manufacturing facility in Kent",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Avealto plans to launch its first commercial service in Malaysia.",
+          "sourceQuote": "Avealto is now seeking $55 million to establish a manufacturing facility in Kent and launch its first commercial service in Malaysia.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The proposed aircraft would be approximately 100 metres (330 feet) long.",
+          "sourceQuote": "The proposed aircraft will be approximately 100 metres (330 feet) long",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The proposed aircraft would operate at around 65,000 feet and remain almost stationary above the same location for three to four months at a time.",
+          "sourceQuote": "operate at around 65,000 feet and remain almost stationary above the same location for three to four months at a time.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Each proposed airship would provide communications coverage across an area 150 miles (240 km) in diameter.",
+          "sourceQuote": "From the stratosphere, each airship would provide communications coverage across an area 150 miles (240 km) in diameter",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The airships would provide backhaul connecting conventional mobile phone towers to an operator’s wider network.",
+          "sourceQuote": "Instead, the airships would provide backhaul, the communications link connecting conventional mobile phone towers to an operator’s wider network.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "financial_or_order_claim",
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "Avealto"
+        ],
+        "locations": [
+          "Kent",
+          "Malaysia"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "Avealto",
+          "sourceQuote": "Avealto is now seeking $55 million to establish a manufacturing facility in Kent",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/"
+        },
+        {
+          "entityType": "locations",
+          "value": "Kent",
+          "sourceQuote": "Avealto is now seeking $55 million to establish a manufacturing facility in Kent",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/"
+        },
+        {
+          "entityType": "locations",
+          "value": "Malaysia",
+          "sourceQuote": "Avealto is now seeking $55 million to establish a manufacturing facility in Kent and launch its first commercial service in Malaysia.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/avealto-airships-challenge-starlink/"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261013-1354-jet2-withdraws-from-la-palma-cancelling",
+      "publishedUtc": "2026-10-13T13:54Z",
+      "cat": "ops",
+      "primarySource": "Aerospace Global News",
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/11/AdobeStock_436692223_Editorial_Use_Only-scaled.jpeg",
+        "link": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/",
+        "provider": "Aerospace Global News",
+        "subject": "Jet2",
+        "sourceCaption": "Jet2",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/11/AdobeStock_436692223_Editorial_Use_Only-scaled.jpeg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "Jet2撤出La Palma 取消曼徹斯特服務並放棄斯坦斯特德航線",
+        "summary": "Jet2撤出La Palma，取消曼徹斯特航班及未啟航的斯坦斯特德航線。",
+        "body": [
+          "Jet2表示，檢視飛航計畫及顧客需求後，決定撤出La Palma的航班與假期。該公司取消曼徹斯特（Manchester）—La Palma服務，也放棄原定由倫敦斯坦斯特德（London Stansted）開辦的航線；斯坦斯特德服務尚未啟航。",
+          "曼徹斯特—La Palma最後一班預定航班預計於10月30日執飛；該服務始於4月3日。Jet2表示，會聯絡受影響顧客，提供退款或替代假期安排，並為造成的不便致歉。"
+        ]
+      },
+      "en": {
+        "title": "Jet2 withdraws from La Palma, cancelling Manchester and planned Stansted flights",
+        "summary": "Jet2 withdraws from La Palma, ending Manchester flights and dropping planned Stansted service.",
+        "body": [
+          "Jet2 said it is withdrawing flights and holidays to La Palma after reviewing its flying programme and customer demand. The decision cancels the Manchester service and abandons a planned route from London Stansted. Jet2’s last scheduled Manchester–La Palma flight is due to operate on 30 October; the service began on 3 April.",
+          "Flights from Stansted were due to start on 6 November, but the planned route was dropped before launch. Jet2 said it would contact affected customers, offering refunds or alternative holiday arrangements, and apologised for the disruption."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — Jet2 scraps La Palma flights six months after launching Can…",
+          "url": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-13T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Jet2 is withdrawing from La Palma, cancelling its Manchester service and abandoning a planned route from London Stansted.",
+          "sourceQuote": "Jet2 is withdrawing from La Palma less than seven months after launching flights to the Canary Island, cancelling its Manchester service and abandoning a planned route from London Stansted.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Jet2's last scheduled Manchester–La Palma flight is due to operate on 30 October.",
+          "sourceQuote": "The airline’s last scheduled Manchester–La Palma flight is due to operate on 30 October, ending a service that began on 3 April.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The planned Stansted route was due to start on 6 November but was dropped before launch.",
+          "sourceQuote": "Flights from Stansted were due to start on 6 November, but the planned route has now been dropped before its launch.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Jet2 said the decision followed a review of its flying programme and customer demand.",
+          "sourceQuote": "Jet2 said the decision followed a review of its flying programme and customer demand.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Jet2 said it would contact affected customers and offer refunds or alternative holiday arrangements.",
+          "sourceQuote": "The company said it would contact affected customers, offering refunds or alternative holiday arrangements, and apologised for the disruption.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "Jet2"
+        ],
+        "airlines": [
+          "Jet2"
+        ],
+        "locations": [
+          "La Palma",
+          "Manchester",
+          "London Stansted"
+        ],
+        "event_dates": [
+          "30 October",
+          "3 April",
+          "6 November"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "Jet2",
+          "sourceQuote": "Jet2 said the decision followed a review of its flying programme and customer demand.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Jet2",
+          "sourceQuote": "Jet2 is withdrawing from La Palma less than seven months after launching flights to the Canary Island, cancelling its Manchester service and abandoning a planned route from London Stansted.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/"
+        },
+        {
+          "entityType": "locations",
+          "value": "La Palma",
+          "sourceQuote": "Jet2 is withdrawing from La Palma less than seven months after launching flights to the Canary Island, cancelling its Manchester service and abandoning a planned route from London Stansted.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/"
+        },
+        {
+          "entityType": "locations",
+          "value": "Manchester",
+          "sourceQuote": "The airline’s last scheduled Manchester–La Palma flight is due to operate on 30 October, ending a service that began on 3 April.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/"
+        },
+        {
+          "entityType": "locations",
+          "value": "London Stansted",
+          "sourceQuote": "Jet2 is withdrawing from La Palma less than seven months after launching flights to the Canary Island, cancelling its Manchester service and abandoning a planned route from London Stansted.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "30 October",
+          "sourceQuote": "The airline’s last scheduled Manchester–La Palma flight is due to operate on 30 October, ending a service that began on 3 April.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "3 April",
+          "sourceQuote": "The airline’s last scheduled Manchester–La Palma flight is due to operate on 30 October, ending a service that began on 3 April.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "6 November",
+          "sourceQuote": "Flights from Stansted were due to start on 6 November, but the planned route has now been dropped before its launch.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/jet2-scraps-la-palma-flights-canary-islands-route/"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261013-1354-eagle-ekranoplan-concept-unveiled-in-syd",
+      "publishedUtc": "2026-10-13T13:54Z",
+      "cat": "ops",
+      "primarySource": "Aerospace Global News",
+      "image": null,
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/10/EAGLE-all-together-R7-frame-at-3m21s-EAGLE-flight-in-high-ground-effect-over-high-density-shipping-lanes.jpg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/ecofriendly-airborne-global-luxury-ekranoplan-eagle-aviation-disruptor/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "EAGLE地效飛行器概念於雪梨揭示 發明者稱可望2035年營運",
+        "summary": "EAGLE概念於雪梨ICAS會議揭示；發明者認為可望2035年投入營運",
+        "body": [
+          "EAGLE地效飛行器概念已在雪梨舉行的ICAS會議揭示，報導並稱首項專利數週前剛核發。發明者Dr Mithra Sankrithi認為，EAGLE可能在2035年投入營運；這是對未來可行性的看法，並非已投入服務。",
+          "報導將 ekranoplan 說明為貼近水面飛行、利用氣墊提升效率的地效飛行器。構想中的載具可環球航行，搭載5萬名乘客及逾1,000個貨櫃。Sankrithi描述的營運模式則是少數船艇每週停靠30至45次，分別向東、西航行。"
+        ]
+      },
+      "en": {
+        "title": "EAGLE ekranoplan concept unveiled in Sydney; inventor sees possible 2035 operation",
+        "summary": "EAGLE was unveiled in Sydney; its inventor says it could operate by 2035.",
+        "body": [
+          "The EAGLE ekranoplan concept was unveiled at the ICAS conference in Sydney, and the report says its first patent was issued just weeks ago. Inventor Dr Mithra Sankrithi believes the vehicle could be operational by 2035; this is a projection, not a report that it has entered service. An ekranoplan, also known as a wing-in-ground-effect vehicle, flies just above water using an air cushion to improve efficiency.",
+          "The proposed vehicle is described as carrying 50,000 passengers and more than 1,000 shipping containers while circling the globe. Sankrithi's outlined operating model calls for a small number of vessels making 30 to 45 stops a week, with one heading east and another west."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — Meet EAGLE, the 50,000-passenger flying ship aiming to tran…",
+          "url": "https://aerospaceglobalnews.com/news/ecofriendly-airborne-global-luxury-ekranoplan-eagle-aviation-disruptor/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-12T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "EAGLE was unveiled at the ICAS conference in Sydney.",
+          "sourceQuote": "It was unveiled at the ICAS conference in Sydney",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ecofriendly-airborne-global-luxury-ekranoplan-eagle-aviation-disruptor/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The first patent was issued just weeks before the article's report.",
+          "sourceQuote": "with the first patent issued just weeks ago.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ecofriendly-airborne-global-luxury-ekranoplan-eagle-aviation-disruptor/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Inventor Dr Mithra Sankrithi believes EAGLE could be operational by 2035.",
+          "sourceQuote": "Sankrithi believes the EAGLE could be operational by 2035.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ecofriendly-airborne-global-luxury-ekranoplan-eagle-aviation-disruptor/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "An ekranoplan, also called a wing-in-ground-effect vehicle, flies just above water using an air cushion to improve efficiency.",
+          "sourceQuote": "An ekranoplan, also known as a wing-in-ground-effect vehicle, flies just above the water using a cushion of air to improve efficiency.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ecofriendly-airborne-global-luxury-ekranoplan-eagle-aviation-disruptor/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The concept is described as carrying 50,000 passengers and more than 1,000 shipping containers while circumnavigating the globe.",
+          "sourceQuote": "Carrying 50,000 passengers and more than 1,000 shipping containers as it circumnavigates the globe",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ecofriendly-airborne-global-luxury-ekranoplan-eagle-aviation-disruptor/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The proposed operating model has a handful of vessels making 30 to 45 stops a week, with one heading east and another west.",
+          "sourceQuote": "A handful of vessels would circle the globe, making 30 to 45 stops a week, with one vessel heading east and another west.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/ecofriendly-airborne-global-luxury-ekranoplan-eagle-aviation-disruptor/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "confirmed"
     }
   ]
 }
