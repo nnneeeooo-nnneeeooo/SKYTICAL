@@ -1,44 +1,59 @@
 {% extends "base.html" %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ base }}/assets/briefing.css?v={{ asset_version }}">
+{% endblock %}
 {% block content %}
-  <section class="incidents-page" aria-labelledby="incidents-title">
-    <header class="incidents-header">
-      <span class="card-kicker">{{ t.incKicker }}</span>
-      <h1 id="incidents-title">{{ t.incTitle }}</h1>
-      <p class="text-muted">{{ t.incSub }}</p>
-    </header>
-    <div class="incidents-toolbar">
-      <div class="incidents-filters" role="group" aria-label="{{ t.thSev }}">
-        {% for key, label in sev_seg %}
-        <button type="button" class="seg-btn{% if key == 'all' %} active{% endif %}" data-filter-sev="{{ key }}" aria-pressed="{{ 'true' if key == 'all' else 'false' }}">{{ label }}</button>
-        {% endfor %}
-      </div>
-      <span class="incidents-count" role="status"><strong id="inc-count">{{ count }}</strong> {{ t.incCountLabel }}</span>
-    </div>
-    <div class="incidents-list">
-      {% for i in rows %}
-      <article data-sev="{{ i.sev_key }}" data-weekly-serious="{{ 'true' if i.weekly_serious else 'false' }}" class="incident-card">
-        <div class="incident-date">
-          <span class="incident-label">{{ t.thDate }}</span>
-          {% if i.url %}<a class="incident-date-link" href="{{ i.url }}" aria-label="{{ t.incReadEvent }}：{{ i.desc }}">{{ i.d }}</a>{% else %}<span class="incident-date-value">{{ i.d }}</span>{% endif %}
-          <span class="tag {{ i.sev_class }}">{{ i.sev_label }}</span>
-        </div>
-        <div class="incident-body">
-          <h2 class="incident-summary">{% if i.url %}<a class="incident-article-link" href="{{ i.url }}">{{ i.desc }}<span class="incident-go" aria-hidden="true"> ↗</span></a>{% else %}{{ i.desc }}{% endif %}</h2>
-          <dl class="incident-details">
-            <div><dt>{{ t.thType }}</dt><dd>{{ i.ac }}</dd></div>
-            <div><dt>{{ t.thOp }}</dt><dd>{{ i.op }}</dd></div>
-            <div><dt>{{ t.thPhase }}</dt><dd>{{ i.ph }}</dd></div>
-            <div><dt>{{ t.thLoc }}</dt><dd>{{ i.loc }}</dd></div>
-          </dl>
-          <div class="incident-footer">
-            <span class="incident-status"><span class="incident-label">{{ t.thStatus }}</span> {{ i.st }}</span>
-            <span class="incident-source"><span class="incident-label">{{ t.thSrc }}</span> {{ i.src }}</span>
-          </div>
-        </div>
-      </article>
+<main class="briefing-page incidents-page" aria-labelledby="incidents-title">
+  <span class="card-kicker">{{ t.incKicker }}</span>
+  <h1 id="incidents-title" class="briefing-page-title">{{ t.incTitle }}</h1>
+  <p class="briefing-index-sub text-muted">{{ t.incSub }}</p>
+  <div class="incidents-toolbar">
+    <div class="incidents-filters" role="group" aria-label="{{ t.thSev }}">
+      {% for key, label in sev_seg %}
+      <button type="button" class="briefing-period{% if key == 'all' %} active{% endif %}" data-filter-sev="{{ key }}" aria-pressed="{{ 'true' if key == 'all' else 'false' }}">{{ label }}</button>
       {% endfor %}
-      <p id="inc-empty" class="incidents-empty{% if rows %} is-hidden{% endif %}" role="status">{{ t.awaiting }}</p>
     </div>
-    <p class="incidents-note text-muted">{{ t.incNote }}</p>
+    <span class="incidents-count" role="status"><strong id="inc-count">{{ count }}</strong> {{ t.incCountLabel }}</span>
+  </div>
+  <section class="briefing-report incidents-list" aria-label="{{ t.incTitle }}">
+    {% for i in rows %}
+    {% set fallback = base ~ '/assets/skytical-social.png' %}
+    <article data-sev="{{ i.sev_key }}" data-weekly-serious="{{ 'true' if i.weekly_serious else 'false' }}" class="briefing-story incident-card">
+      <div class="incident-media">
+        {% if i.url %}<a class="briefing-thumbnail" href="{{ i.url }}" aria-label="{{ t.incReadEvent }}：{{ i.desc }}">{% else %}<div class="briefing-thumbnail">{% endif %}
+          <img src="{{ i.image.get('url') or fallback }}" alt="{{ i.image.get('subject') or 'SKYTICAL' }}" width="1200" height="675" loading="lazy" decoding="async" data-fallback="{{ fallback }}">
+        {% if i.url %}</a>{% else %}</div>{% endif %}
+        {% if i.image.get('credit') or i.image.get('license') or i.image.get('kind') %}
+        <p class="briefing-image-credit">
+          {% if i.image.get('kind') in ['file_photo', 'airframe_photo'] %}{% if lang == 'zh' %}資料照片{% else %}File photo{% endif %}
+          {% elif i.image.get('kind') == 'illustration' %}{% if lang == 'zh' %}示意圖{% else %}Illustration{% endif %}
+          {% elif i.image.get('kind') == 'event_photo' %}{% if lang == 'zh' %}現場照片{% else %}Event photo{% endif %}
+          {% elif i.image.get('kind') == 'source_image' %}{% if lang == 'zh' %}原文配圖{% else %}Source image{% endif %}{% endif %}
+          {% if i.image.get('credit') %}{% if i.image.get('kind') in ['file_photo', 'airframe_photo', 'illustration', 'event_photo', 'source_image'] %} · {% endif %}{% if i.image.get('link') %}<a href="{{ i.image.get('link') }}" rel="noopener noreferrer">{{ i.image.get('credit') }}</a>{% else %}{{ i.image.get('credit') }}{% endif %}{% endif %}
+          {% if i.image.get('license') %}{% if i.image.get('credit') or i.image.get('kind') in ['file_photo', 'airframe_photo', 'illustration', 'event_photo', 'source_image'] %} · {% endif %}{{ i.image.get('license') }}{% endif %}
+        </p>
+        {% endif %}
+      </div>
+      <div class="briefing-story-copy">
+        <div class="incident-meta briefing-meta">
+          {% if i.url %}<a class="incident-date-link" href="{{ i.url }}" aria-label="{{ t.incReadEvent }}：{{ i.desc }}">{{ i.d }}</a>{% else %}<strong>{{ i.d }}</strong>{% endif %}
+          <span class="tag {{ i.sev_class }}">{{ i.sev_label }}</span>
+          <span>{{ i.st }}</span>
+        </div>
+        <h2 class="briefing-story-text incident-summary">{% if i.url %}<a class="incident-article-link" href="{{ i.url }}">{{ i.desc }}</a>{% else %}{{ i.desc }}{% endif %}</h2>
+        <dl class="incident-details">
+          <div><dt>{{ t.thType }}</dt><dd>{{ i.ac }}</dd></div>
+          <div><dt>{{ t.thOp }}</dt><dd>{{ i.op }}</dd></div>
+          <div><dt>{{ t.thPhase }}</dt><dd>{{ i.ph }}</dd></div>
+          <div><dt>{{ t.thLoc }}</dt><dd>{{ i.loc }}</dd></div>
+        </dl>
+        <p class="incident-source briefing-image-credit">{{ t.thSrc }}：{{ i.src }}</p>
+        {% if i.url %}<a class="briefing-citation" href="{{ i.url }}"><img src="{{ base }}/assets/skytical-mark.svg" alt="" width="16" height="16" aria-hidden="true"><span>{{ t.incReadEvent }}</span></a>{% endif %}
+      </div>
+    </article>
+    {% endfor %}
+    <p id="inc-empty" class="briefing-empty text-muted{% if rows %} is-hidden{% endif %}" role="status">{{ t.awaiting }}</p>
   </section>
+  <p class="incidents-note text-muted">{{ t.incNote }}</p>
+</main>
 {% endblock %}
