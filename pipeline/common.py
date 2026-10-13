@@ -139,15 +139,15 @@ def group_has_material(group: dict) -> bool:
 
 
 # Broad Taiwan feeds use one shared allowlist so a new category cannot drift
-# away from the established aviation/transport coverage gate.
+# away from the aviation-only coverage gate. The legacy constant name is
+# retained for callers; maritime, rail and road transport are out of scope.
 TAIWAN_TRANSPORT_KEYWORDS = (
     "航空", "民航", "飛安", "航班", "航機", "飛機", "客機",
     "貨機", "小型機", "機場", "航線", "空域", "空管", "跑道",
     "墜機", "迫降", "轉降", "起飛", "降落", "華航", "中華航空",
     "長榮航", "星宇", "台灣虎航", "臺灣虎航", "立榮", "華信",
-    "空軍", "軍機", "共機", "中共機艦", "共艦", "軍艦", "軍港",
-    "無人機", "直升機", "戰機", "轟炸機", "台鐵", "臺鐵",
-    "高鐵", "捷運", "航港", "港務", "小三通", "船班",
+    "空軍", "軍機", "共機", "中共機艦",
+    "無人機", "直升機", "戰機", "轟炸機",
 )
 
 TAIWAN_AIRLINE_KEYWORDS = (
@@ -466,15 +466,15 @@ SOURCES: dict[str, dict] = {
         "fmt": "RSS",
         "url": "https://www.cna.com.tw",
         # official CNA feed (broad politics wire); the keyword filter below
-        # keeps only aviation / military-aviation / transport items so the
+        # keeps only civil / military aviation items so the
         # editorial stage never burns model calls on unrelated politics
         "endpoint": "https://feeds.feedburner.com/rsscna/politics",
         "type": "rss",
         "keywords": list(TAIWAN_TRANSPORT_KEYWORDS),
         "scope_filter": True,
         "cover": {
-            "zh": "中央社 — 航空、軍航與交通相關報導",
-            "en": "CNA Taiwan — aviation, military air & transport",
+            "zh": "中央社 — 民航與軍事航空報導",
+            "en": "CNA Taiwan — civil and military aviation",
         },
     },
     "cnataiwanfinance": {
@@ -487,8 +487,8 @@ SOURCES: dict[str, dict] = {
         "keywords": list(TAIWAN_TRANSPORT_KEYWORDS),
         "scope_filter": True,
         "cover": {
-            "zh": "中央社產經證券 — 國籍航空、航太與交通產業",
-            "en": "CNA business — Taiwan airlines, aerospace & transport",
+            "zh": "中央社產經證券 — 國籍航空與航空產業",
+            "en": "CNA business — Taiwan airlines and aviation industry",
         },
     },
     "cnataiwanairlines": {
@@ -527,25 +527,8 @@ SOURCES: dict[str, dict] = {
         "type": "rss",
         "scope_filter": True,
         "cover": {
-            "zh": "國防部/軍聞社 — 軍事航空、機艦與運輸動態",
-            "en": "Taiwan MND — military aviation, vessels & transport",
-        },
-    },
-    "twtransport": {
-        "name": "臺灣交通要聞",
-        "kind": "media",
-        "fmt": "RSS",
-        "url": "https://news.google.com",
-        "endpoint": (
-            "https://news.google.com/rss/search?"
-            "q=(台鐵%20OR%20高鐵%20OR%20捷運%20OR%20航港局%20OR%20小三通)"
-            "%20(事故%20OR%20停駛%20OR%20停航%20OR%20出軌%20OR%20恢復)"
-            "%20when:1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
-        ),
-        "type": "rss",
-        "cover": {
-            "zh": "台鐵/高鐵/捷運/海運重大營運與事故報導",
-            "en": "Taiwan rail / metro / maritime major events",
+            "zh": "國防部/軍聞社 — 軍事航空動態",
+            "en": "Taiwan MND — military aviation",
         },
     },
 }
@@ -599,27 +582,19 @@ for _manufacturer_source in MANUFACTURER_SOURCE_CATALOG.get("feeds") or []:
 CATEGORIES = ("safety", "reg", "biz", "ops", "mil")
 
 # Site-wide subject gate.  A military label does not by itself make a story
-# relevant to an aviation and transport publication: the material must still
-# contain a concrete aviation, airspace, maritime, rail or road-transport
+# relevant to an aviation publication: the material must still
+# contain a concrete civil/military aviation or airspace
 # subject.  Keep these terms specific enough that generic politics/defence
 # stories (budgets, speeches, presidential inspections, land exercises) fail.
 _TRANSPORT_ZH_TERMS = (
     # civil and military aviation
     "航空", "民航", "飛安", "航班", "航機", "飛機", "小型機", "客機",
-    "貨機", "機場", "航線", "飛航", "空域", "空管", "航管", "塔台",
+    "貨機", "機場", "飛航", "空域", "空管", "航管", "塔台",
     "跑道", "起飛", "降落", "墜機", "空難", "迫降", "轉降", "客艙",
     "空服員", "機師", "飛行員", "直升機", "無人機", "戰機", "軍機",
     "共機", "轟炸機",
     "機艦", "航太", "波音", "空中巴士", "華航", "中華航空", "長榮航",
     "星宇", "台灣虎航", "臺灣虎航", "立榮", "華信",
-    # maritime transport and military vessels
-    "共艦", "軍艦", "軍港", "航空母艦", "航母", "艦艇", "船班", "船舶",
-    "客輪", "貨輪", "渡輪", "郵輪", "海運", "航運", "航港", "港務",
-    "港口", "碼頭", "小三通", "停航", "擱淺", "沉船",
-    # rail and road transport
-    "台鐵", "臺鐵", "高鐵", "捷運", "鐵路", "列車", "火車", "軌道",
-    "出軌", "停駛", "客運", "公車", "巴士", "高速公路", "道路運輸",
-    "交通事故",
 )
 _TRANSPORT_EN_RE = re.compile(
     r"\b(?:"
@@ -628,23 +603,21 @@ _TRANSPORT_EN_RE = re.compile(
     r"air\s+cargo|airspace|air\s+traffic|flights?|runways?|pilots?|"
     r"cabin\s+crew|flight\s+attendants?|boeing|airbus|e-?vtol|ads-?b|"
     r"drones?|helicopters?|fighter\s+(?:jets?|aircraft)|bombers?|"
-    r"warships?|naval\s+(?:vessels?|base|port)|aircraft\s+carriers?|"
-    r"shipping|maritime|ports?|harbou?rs?|ferr(?:y|ies)|cruise\s+ships?|"
-    r"cargo\s+ships?|passenger\s+ships?|vessels?|"
-    r"railways?|railroads?|trains?|metros?|subways?|high-?speed\s+rail|"
-    r"buses?|coaches|highways?|road\s+transport|transportation"
+    r"air\s+force|air\s+base|airbase"
     r")\b",
     re.IGNORECASE,
 )
 _TRANSPORT_HEADLINE_ZH_TERMS = (
-    "豪華經濟艙", "商務艙", "機組員", "紅箭", "火箭", "探空", "地滑翔機",
-    "航艦", "無人載具", "教練機", "開航", "航展", "登機門", "候機廳",
-    "指揮控制", "發動機", "原型機", "史基浦", "達美", "墨航",
+    "豪華經濟艙", "商務艙", "機組員", "紅箭", "地滑翔機",
+    "教練機", "航展", "登機門", "候機廳",
+    "史基浦", "達美", "墨航", "電磁彈射", "蒸汽彈射",
 )
 _TRANSPORT_HEADLINE_EN_RE = re.compile(
     r"\b(?:air\s+force|airshow|air\s+show|aircrew|red\s+arrows?|"
     r"seaglider|schiphol|farnborough|gulfstream|cessna|lockheed|"
-    r"recaro|collins|delta|rafale|fighter|prototype|rocket|missile|"
+    r"recaro|collins|delta|rafale|fighter|"
+    r"atr|wizz\s+air|westjet|airadvisor|rolls[-\s]+royce|trent\s+7000|"
+    r"emals|steam\s+catapults?|"
     r"air\s+base|airbase)\b",
     re.IGNORECASE,
 )
@@ -682,7 +655,16 @@ def _string_values(value):
 
 
 def is_transport_story(*records) -> bool:
-    """True only for concrete aviation or transport subject matter."""
+    """Legacy API: accept only aviation, with a title-level subject gate.
+
+    Source names, URLs and incidental body mentions cannot qualify a story.
+    """
+    items = [item for record in records if isinstance(record, dict)
+             for item in (record.get("items") or []) if isinstance(item, dict)]
+    headlines = items or [record for record in records
+                         if list(_headline_values(record))]
+    if headlines:
+        return is_transport_headline(*headlines)
     text = " ".join(
         part for record in records for part in _string_values(record)
     )
@@ -743,7 +725,7 @@ def _headline_names_airline(headline: str, records) -> bool:
 
 
 def is_transport_headline(*records) -> bool:
-    """True when a story's headline itself names a transport subject.
+    """Legacy API: true when the headline itself names an aviation subject.
 
     Summaries and body paragraphs often mention an airline only as a partner,
     advertiser or piece of background context.  Broad feeds therefore need a
@@ -757,7 +739,16 @@ def is_transport_headline(*records) -> bool:
     if (_MILITARY_REPLICA_ZH_RE.search(headline)
             or _MILITARY_REPLICA_EN_RE.search(headline)):
         return False
-    return (is_transport_story({"title": headline})
+    # A ship's "航線"/"航班" and an aircraft carrier's name are not
+    # aviation evidence. Retain genuine aircraft activity on carriers.
+    headline = re.sub(r"航空母艦|aircraft\s+carriers?", "", headline,
+                      flags=re.IGNORECASE)
+    if re.search(r"貨櫃輪|貨輪|客輪|船舶|船班|海運|航運|渡輪|郵輪|"
+                 r"container\s+ship|shipping|maritime|ferr(?:y|ies)|vessels?",
+                 headline, re.IGNORECASE):
+        headline = re.sub(r"航班|起飛|降落", "", headline)
+    return (any(term in headline for term in _TRANSPORT_ZH_TERMS)
+            or _TRANSPORT_EN_RE.search(headline) is not None
             or any(term in headline for term in _TRANSPORT_HEADLINE_ZH_TERMS)
             or _TRANSPORT_HEADLINE_EN_RE.search(headline) is not None
             or _AIRCRAFT_MODEL_RE.search(headline) is not None
