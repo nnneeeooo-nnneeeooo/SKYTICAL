@@ -2193,7 +2193,7 @@ def _is_weekly_serious_incident(incident, cutoff) -> bool:
         return False
 
 
-def inc_view(incidents, lang: str, weekly_cutoff, published_ids):
+def inc_view(incidents, lang: str, weekly_cutoff, published_ids, article_lookup=None):
     rows = []
     for i in incidents:
         date = str(i.get("date") or "")
@@ -2205,6 +2205,8 @@ def inc_view(incidents, lang: str, weekly_cutoff, published_ids):
         article_url = None
         if article_id in published_ids and _ID_RE.fullmatch(article_id):
             article_url = page_url(lang, f"news/{article_id}/")
+        article = (article_lookup or {}).get(article_id) or {}
+        image = localized_image(article.get("image"), lang) or {}
         rows.append({
             "d": disp,
             "sev_key": sev,
@@ -2219,6 +2221,7 @@ def inc_view(incidents, lang: str, weekly_cutoff, published_ids):
             "url": article_url,
             "st": _bi(ST.get(i.get("status")), lang, str(i.get("status") or "")),
             "src": src,
+            "image": image,
         })
     return rows
 
@@ -4124,7 +4127,7 @@ def main() -> int:
             )
         except (TypeError, ValueError):
             weekly_cutoff = now - timedelta(days=7)
-        rows = inc_view(incidents, lang, weekly_cutoff, published_ids)
+        rows = inc_view(incidents, lang, weekly_cutoff, published_ids, article_lookup)
         ctx = base_ctx(lang, "incidents", "incidents/",
                        title=f"{t['incTitle']}｜{t['siteName']}",
                        description=t["incSub"], ticker=ticker, build=build)
