@@ -1,0 +1,117 @@
+{
+  "articles": [
+    {
+      "id": "a-20261014-0537-lincoln-airport-pours-17-inches-of-concr",
+      "publishedUtc": "2026-10-14T05:37Z",
+      "cat": "mil",
+      "primarySource": "Simple Flying",
+      "image": null,
+      "sourceImageCandidates": [
+        {
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/10/lincoln-cover-pic.jpg",
+          "sources": [
+            {
+              "url": "https://simpleflying.com/airport-pouring-17-inches-concrete-runway-built-b-47-bombers/",
+              "name": "Simple Flying"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "Lincoln Airport（LNK）主跑道重建 鋪設17英吋混凝土",
+        "summary": "Lincoln Airport重建主跑道，跑道鋪設17英吋混凝土",
+        "body": [
+          "Simple Flying報導，Lincoln Airport（LNK）目前正進行主跑道重大重建。報導標題指出，機場正於一條為B-47轟炸機建造的跑道上澆置17英吋混凝土。",
+          "報導摘要稱，Lincoln Airport曾是冷戰時期基地，目前是八架KC-135R加油機的駐地。摘要並指出，該機場的主跑道正進行重大重建；標題所述的混凝土施工則涉及一條為B-47轟炸機建造的跑道。"
+        ]
+      },
+      "en": {
+        "title": "Lincoln Airport (LNK) Pours 17 Inches of Concrete as Primary Runway Is Rebuilt",
+        "summary": "Lincoln Airport rebuilds its primary runway with 17 inches of concrete over a runway built for B-47 bombers.",
+        "body": [
+          "Simple Flying reports that Lincoln Airport (LNK) is undergoing a major reconstruction of its primary runway. The publication’s headline says the airport is pouring 17 inches of concrete over a runway built for B-47 bombers.",
+          "The report’s summary describes Lincoln Airport as a former Cold War base and says it is now home to eight KC-135R tankers. It also identifies the primary runway as undergoing major reconstruction. The headline describes concrete being poured over a runway built for B-47 bombers."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Simple Flying — The Airport Pouring 17 Inches Of Concrete Over A Runway Bui…",
+          "url": "https://simpleflying.com/airport-pouring-17-inches-concrete-runway-built-b-47-bombers/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-14T05:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "報導標題稱，機場正於一條為B-47轟炸機建造的跑道上澆置17英吋混凝土。",
+          "sourceQuote": "The Airport Pouring 17 Inches Of Concrete Over A Runway Built For B-47 Bombers",
+          "sourceUrl": "https://simpleflying.com/airport-pouring-17-inches-concrete-runway-built-b-47-bombers/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "報導摘要稱，Lincoln Airport目前正進行主跑道重大重建。",
+          "sourceQuote": "Once a Cold War base, Lincoln Airport now is home to eight KC-135R tankers, and it is now undergoing a major reconstruction of its primary runway.",
+          "sourceUrl": "https://simpleflying.com/airport-pouring-17-inches-concrete-runway-built-b-47-bombers/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "報導摘要稱，Lincoln Airport曾是冷戰時期基地。",
+          "sourceQuote": "Once a Cold War base, Lincoln Airport now is home to eight KC-135R tankers, and it is now undergoing a major reconstruction of its primary runway.",
+          "sourceUrl": "https://simpleflying.com/airport-pouring-17-inches-concrete-runway-built-b-47-bombers/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "報導摘要稱，Lincoln Airport目前是八架KC-135R加油機的駐地。",
+          "sourceQuote": "Once a Cold War base, Lincoln Airport now is home to eight KC-135R tankers, and it is now undergoing a major reconstruction of its primary runway.",
+          "sourceUrl": "https://simpleflying.com/airport-pouring-17-inches-concrete-runway-built-b-47-bombers/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "aircraft_models": [
+          "B-47 Bombers",
+          "KC-135R"
+        ],
+        "airports": [
+          "Lincoln Airport"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "aircraft_models",
+          "value": "B-47 Bombers",
+          "sourceQuote": "The Airport Pouring 17 Inches Of Concrete Over A Runway Built For B-47 Bombers",
+          "sourceUrl": "https://simpleflying.com/airport-pouring-17-inches-concrete-runway-built-b-47-bombers/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "KC-135R",
+          "sourceQuote": "Once a Cold War base, Lincoln Airport now is home to eight KC-135R tankers, and it is now undergoing a major reconstruction of its primary runway.",
+          "sourceUrl": "https://simpleflying.com/airport-pouring-17-inches-concrete-runway-built-b-47-bombers/"
+        },
+        {
+          "entityType": "airports",
+          "value": "Lincoln Airport",
+          "sourceQuote": "Once a Cold War base, Lincoln Airport now is home to eight KC-135R tankers, and it is now undergoing a major reconstruction of its primary runway.",
+          "sourceUrl": "https://simpleflying.com/airport-pouring-17-inches-concrete-runway-built-b-47-bombers/"
+        }
+      ],
+      "evidenceVersion": 2
+    }
+  ]
+}
