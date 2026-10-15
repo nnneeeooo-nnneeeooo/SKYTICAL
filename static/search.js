@@ -212,6 +212,11 @@
       return;
     }
 
+    if (!normalize(query)) {
+      status.textContent = root.dataset.emptyTemplate.replace("{query}", query);
+      return;
+    }
+
     if (!ready) {
       status.textContent = root.dataset.loading;
       loadIndex().then(runSearch).catch(showLoadError);
