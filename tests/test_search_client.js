@@ -42,4 +42,32 @@ assert.strictEqual(search.termMatches(search.normalize("waiting for passengers")
 assert.strictEqual(search.termMatches(search.normalize("IT flight 216"), "it"), true);
 assert.strictEqual(search.termMatches(beyond, "beyond"), true);
 
+// Exercise the browser entry point: punctuation must never load/render all news.
+const vm = require("vm");
+const fs = require("fs");
+const source = fs.readFileSync(require.resolve("../static/search.js"), "utf8");
+for (const query of ["!!!", "。？！", "✈️", "  ---  "]) {
+  const input = { value: "", addEventListener() {} };
+  const status = { textContent: "" };
+  let cleared = false;
+  const nodes = {
+    "news-search-app": { dataset: { emptyTemplate: 'No results: {query}' } },
+    "news-search-form": { addEventListener() {} },
+    "news-search-input": input,
+    "news-search-status": status,
+    "news-search-results": { replaceChildren() { cleared = true; } }
+  };
+  vm.runInNewContext(source, {
+    document: { getElementById(id) { return nodes[id]; } },
+    window: {
+      location: { href: "https://example.com/search/?q=" + encodeURIComponent(query) },
+      history: { replaceState() {} }
+    },
+    URL,
+    fetch() { throw new Error("Punctuation search must not fetch the index"); }
+  });
+  assert.strictEqual(status.textContent, "No results: " + query.trim());
+  assert.strictEqual(cleared, true);
+}
+
 console.log("test_search_client: OK");
