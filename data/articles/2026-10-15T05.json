@@ -1,0 +1,118 @@
+{
+  "articles": [
+    {
+      "id": "a-20261015-0529-taipei-mayor-chiang-wan-an-seeks-coopera",
+      "publishedUtc": "2026-10-15T05:29Z",
+      "cat": "ops",
+      "primarySource": "中央社 CNA",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "蔣萬安盼與中央合作推動松山機場遷建",
+        "summary": "臺北市長蔣萬安列席行政院會，盼與中央合作推動松山機場遷建。",
+        "body": [
+          "臺北市長蔣萬安列席行政院會，會前表示將在會中說明、討論松山機場遷建，並就整體評估交換意見。他也表示，願意與中央共同努力推動遷移目標；目前談及的是遷建議題與合作目標，並非已完成遷建。",
+          "蔣萬安將打造AI園區與松山機場遷建形容為臺灣未來的重要新起點，並表示相關構想會影響臺北市的經濟發展、居住與交通。他也稱，長期受到航高限制的生活空間將因此打開。媒體追問遷移可能影響後送醫療等情形時，蔣萬安表示須參加行政院會，未作回應。"
+        ]
+      },
+      "en": {
+        "title": "Taipei Mayor Chiang Wan-an Seeks Cooperation on Songshan Airport Relocation",
+        "summary": "Taipei Mayor Chiang Wan-an attended an Executive Yuan meeting and sought cooperation on Songshan Airport relocation.",
+        "body": [
+          "Taipei Mayor Chiang Wan-an attended an Executive Yuan meeting and said before it that Songshan Airport relocation would be explained and discussed there, with views exchanged on an overall assessment. He also said he was willing to work with the central government to pursue the relocation goal. His remarks described a goal for discussion and cooperation, not a completed relocation.",
+          "Chiang described the AI park and Songshan Airport relocation as an important new starting point for Taiwan. He said the proposals would affect Taipei’s economic development, housing and transportation, and described living space long subject to height restrictions as set to open up. Asked about possible effects of relocation on medical transfers, he said he needed to attend the Executive Yuan meeting and did not respond."
+        ]
+      },
+      "sources": [
+        {
+          "name": "中央社 CNA — 蔣萬安列席行政院會 盼與中央合作推動松山機場遷移",
+          "url": "https://www.cna.com.tw/news/aipl/202610150038.aspx"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-15T02:16Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "台北市長蔣萬安列席行政院會。",
+          "sourceQuote": "台北市長蔣萬安今天列席行政院會",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610150038.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "蔣萬安表示，松山機場遷建將在行政院會說明、討論，並就整體評估交換意見。",
+          "sourceQuote": "打造AI園區與松山機場遷建將是歷史性的新起點，因此今天將在行政院會進行說明與討論，且就整體評估交換意見",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610150038.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "蔣萬安表示，願意與中央共同努力推動松機遷移目標。",
+          "sourceQuote": "非常願意開啟和中央共同努力推動松機遷移的目標",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610150038.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "蔣萬安將AI園區與松機遷建描述為台灣未來的重要新起點，並稱相關構想會影響台北市經濟發展、居住與交通，且受航高限制的生活空間將打開。",
+          "sourceQuote": "AI時代來臨，是台北非常重要的新契機，打造AI園區以及松機遷建將是台灣未來非常重要、關鍵且歷史性的新起點，對台北市來說，也會影響整體經濟發展、居住、交通等，長期受到航高限制的生活空間將全部打開",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610150038.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "被問及松機遷移可能影響後送醫療等情形時，蔣萬安表示須參加行政院會，未作回應。",
+          "sourceQuote": "媒體追問如何看待松機遷移恐影響後送醫療等情形，蔣萬安表示須參加行政院會，並未回應。",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610150038.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "行政院"
+        ],
+        "airports": [
+          "松山機場"
+        ],
+        "locations": [
+          "台北市"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "行政院",
+          "sourceQuote": "今天將在行政院會進行說明與討論",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610150038.aspx"
+        },
+        {
+          "entityType": "airports",
+          "value": "松山機場",
+          "sourceQuote": "打造AI園區與松山機場遷建將是歷史性的新起點",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610150038.aspx"
+        },
+        {
+          "entityType": "locations",
+          "value": "台北市",
+          "sourceQuote": "對台北市來說，也會影響整體經濟發展、居住、交通等",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610150038.aspx"
+        }
+      ],
+      "evidenceVersion": 2
+    }
+  ]
+}
