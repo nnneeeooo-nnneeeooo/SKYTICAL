@@ -55,33 +55,10 @@
     return { key: key, code: code, type: type, remainder: remainder, label: labels[key] };
   }
 
-  if (typeof module !== "undefined" && module.exports) {
-    module.exports = {
-      normalize: normalize,
-      termMatches: termMatches,
-      parseAirlineCodeQuery: parseAirlineCodeQuery
-    };
-  }
-
-  var root = typeof document === "undefined" ? null :
-    document.getElementById("news-search-app");
-  if (!root) return;
-
-  var form = document.getElementById("news-search-form");
-  var input = document.getElementById("news-search-input");
-  var status = document.getElementById("news-search-status");
-  var results = document.getElementById("news-search-results");
-  var lang = root.dataset.lang === "en" ? "en" : "zh";
-  var otherLang = lang === "zh" ? "en" : "zh";
-  var records = [];
-  var airlineCodes = { iata: {}, icao: {}, labels: {} };
-  var ready = false;
-  var loading = null;
-  var debounceTimer = 0;
-
-  function localized(record, field) {
+  function localized(record, field, lang) {
     var value = record[field] || {};
-    return value[lang] || value[otherLang] || "";
+    var fallbackLang = lang === "zh" ? "en" : "zh";
+    return value[lang] || value[fallbackLang] || "";
   }
 
   function localizedValues(record, field) {
@@ -102,6 +79,106 @@
       record.search,
     ].join(" "));
   }
+
+  function scoreRecord(record, criteria, minimumMatches) {
+    var haystack = recordSearchText(record);
+    var matchedTerms = criteria.terms.filter(function (term) {
+      return termMatches(haystack, term);
+    });
+    if (matchedTerms.length < minimumMatches) {
+      return -1;
+    }
+    var title = normalize(localized(record, "title", criteria.lang));
+    var summary = normalize(localized(record, "summary", criteria.lang));
+    var score = 1;
+    if (criteria.normalizedQuery && title === criteria.normalizedQuery) score += 200;
+    else if (criteria.normalizedQuery && title.indexOf(criteria.normalizedQuery) !== -1) score += 100;
+    matchedTerms.forEach(function (term) {
+      if (termMatches(title, term)) score += 20;
+      if (termMatches(summary, term)) score += 6;
+    });
+    return score;
+  }
+
+  function matchingRecords(records, criteria, minimumMatches) {
+    return records.map(function (record) {
+      var airlines = Array.isArray(record.airlines) ? record.airlines : [];
+      if (criteria.airlineKey && airlines.indexOf(criteria.airlineKey) === -1) {
+        return { record: record, score: -1 };
+      }
+      return {
+        record: record,
+        score: scoreRecord(record, criteria, minimumMatches)
+      };
+    }).filter(function (row) {
+      return row.score >= 0;
+    });
+  }
+
+  function searchRecords(records, query, airlineCodes, lang) {
+    query = String(query || "").trim();
+    lang = lang === "en" ? "en" : "zh";
+    if (!normalize(query)) {
+      return { matches: [], airlineQuery: null, highlightQuery: "" };
+    }
+
+    var airlineQuery = parseAirlineCodeQuery(query, airlineCodes);
+    var textQuery = airlineQuery ? airlineQuery.remainder : query;
+    var normalizedQuery = normalize(textQuery);
+    var terms = normalizedQuery.split(/\s+/).filter(Boolean);
+    var criteria = {
+      normalizedQuery: normalizedQuery,
+      terms: terms,
+      airlineKey: airlineQuery ? airlineQuery.key : "",
+      lang: lang
+    };
+    var matches = matchingRecords(records, criteria, terms.length);
+    if (!matches.length && terms.length >= 3) {
+      /* Daily suggestions may paraphrase one phrase from the source title.
+         Keep normal searches strict, then allow one unmatched term only when
+         the strict pass produced nothing. */
+      matches = matchingRecords(records, criteria, terms.length - 1);
+    }
+    matches.sort(function (left, right) {
+      if (right.score !== left.score) return right.score - left.score;
+      return String(right.record.published || "").localeCompare(
+        String(left.record.published || ""));
+    });
+
+    var highlightQuery = airlineQuery ? (
+      airlineQuery.remainder || localized(airlineQuery, "label", lang)
+    ) : query;
+    return {
+      matches: matches,
+      airlineQuery: airlineQuery,
+      highlightQuery: highlightQuery
+    };
+  }
+
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = {
+      normalize: normalize,
+      termMatches: termMatches,
+      parseAirlineCodeQuery: parseAirlineCodeQuery,
+      searchRecords: searchRecords
+    };
+  }
+
+  var root = typeof document === "undefined" ? null :
+    document.getElementById("news-search-app");
+  if (!root) return;
+
+  var form = document.getElementById("news-search-form");
+  var input = document.getElementById("news-search-input");
+  var status = document.getElementById("news-search-status");
+  var results = document.getElementById("news-search-results");
+  var lang = root.dataset.lang === "en" ? "en" : "zh";
+  var otherLang = lang === "zh" ? "en" : "zh";
+  var records = [];
+  var airlineCodes = { iata: {}, icao: {}, labels: {} };
+  var ready = false;
+  var loading = null;
+  var debounceTimer = 0;
 
   function recordUrl(record, highlightQuery) {
     var urls = record.url || {};
@@ -143,63 +220,32 @@
     var formatLabel = record.articleFormat === "brief"
       ? root.dataset.briefLabel
       : (record.articleFormat === "roundup" ? root.dataset.roundupLabel : "");
-    meta.appendChild(textNode("span", "tag " + (formatLabel ? "tag-neutral" : "tag-outline"), localized(record, "category") + (formatLabel ? " · " + formatLabel : "")));
+    var categoryLabel = localized(record, "category", lang);
+    var tagClass = formatLabel ? "tag-neutral" : "tag-outline";
+    if (formatLabel) categoryLabel += " · " + formatLabel;
+    meta.appendChild(textNode("span", "tag " + tagClass, categoryLabel));
     meta.appendChild(textNode("time", "text-muted", record.date || ""));
     card.appendChild(meta);
 
+    var url = recordUrl(record, highlightQuery);
     var link = document.createElement("a");
     link.className = "search-result-link";
-    link.href = recordUrl(record, highlightQuery);
-    link.appendChild(textNode("h2", "", localized(record, "title")));
+    link.href = url;
+    link.appendChild(textNode("h2", "", localized(record, "title", lang)));
     card.appendChild(link);
 
-    var summary = localized(record, "summary");
+    var summary = localized(record, "summary", lang);
     if (summary) card.appendChild(textNode("p", "text-muted", summary));
 
     var footer = document.createElement("div");
     footer.className = "search-result-footer";
     footer.appendChild(textNode("span", "text-muted", record.source || ""));
     var more = document.createElement("a");
-    more.href = recordUrl(record, highlightQuery);
+    more.href = url;
     more.textContent = root.dataset.readMore;
     footer.appendChild(more);
     card.appendChild(footer);
     return card;
-  }
-
-  function scoreRecord(record, normalizedQuery, terms, minimumMatches) {
-    var haystack = recordSearchText(record);
-    var matchedTerms = terms.filter(function (term) {
-      return termMatches(haystack, term);
-    });
-    if (matchedTerms.length < minimumMatches) {
-      return -1;
-    }
-    var title = normalize(localized(record, "title"));
-    var summary = normalize(localized(record, "summary"));
-    var score = 1;
-    if (normalizedQuery && title === normalizedQuery) score += 200;
-    else if (normalizedQuery && title.indexOf(normalizedQuery) !== -1) score += 100;
-    matchedTerms.forEach(function (term) {
-      if (termMatches(title, term)) score += 20;
-      if (termMatches(summary, term)) score += 6;
-    });
-    return score;
-  }
-
-  function matchingRecords(normalizedQuery, terms, minimumMatches, airlineKey) {
-    return records.map(function (record) {
-      var airlines = Array.isArray(record.airlines) ? record.airlines : [];
-      if (airlineKey && airlines.indexOf(airlineKey) === -1) {
-        return { record: record, score: -1 };
-      }
-      return {
-        record: record,
-        score: scoreRecord(record, normalizedQuery, terms, minimumMatches)
-      };
-    }).filter(function (row) {
-      return row.score >= 0;
-    });
   }
 
   function runSearch() {
@@ -213,7 +259,7 @@
     }
 
     if (!normalize(query)) {
-      status.textContent = root.dataset.emptyTemplate.replace("{query}", query);
+      status.textContent = searchStatus(query, null, 0);
       return;
     }
 
@@ -223,40 +269,12 @@
       return;
     }
 
-    var airlineQuery = parseAirlineCodeQuery(query, airlineCodes);
-    var textQuery = airlineQuery ? airlineQuery.remainder : query;
-    var normalizedQuery = normalize(textQuery);
-    var terms = normalizedQuery.split(/\s+/).filter(Boolean);
-    var airlineKey = airlineQuery ? airlineQuery.key : "";
-    var matches = matchingRecords(
-      normalizedQuery, terms, terms.length, airlineKey);
-    if (!matches.length && terms.length >= 3) {
-      /* Daily suggestions may paraphrase one phrase from the source title.
-         Keep normal searches strict, then allow one unmatched term only when
-         the strict pass produced nothing. */
-      matches = matchingRecords(
-        normalizedQuery, terms, terms.length - 1, airlineKey);
-    }
-    matches.sort(function (left, right) {
-      if (right.score !== left.score) return right.score - left.score;
-      return String(right.record.published || "").localeCompare(String(left.record.published || ""));
-    });
+    var outcome = searchRecords(records, query, airlineCodes, lang);
+    var matches = outcome.matches;
+    var highlightQuery = outcome.highlightQuery;
+    status.textContent = searchStatus(query, outcome.airlineQuery, matches.length);
+    if (!matches.length) return;
 
-    if (!matches.length) {
-      if (airlineQuery) {
-        status.textContent = airlineStatus(
-          root.dataset.airlineCodeEmptyTemplate, airlineQuery, 0);
-      } else {
-        status.textContent = root.dataset.emptyTemplate.replace("{query}", query);
-      }
-      return;
-    }
-    status.textContent = airlineQuery ? airlineStatus(
-      root.dataset.airlineCodeCountTemplate, airlineQuery, matches.length) :
-      root.dataset.countTemplate.replace("{count}", String(matches.length));
-    var highlightQuery = airlineQuery ? (
-      airlineQuery.remainder || airlineQuery.label[lang] ||
-      airlineQuery.label[otherLang] || "") : query;
     var fragment = document.createDocumentFragment();
     matches.forEach(function (row) {
       fragment.appendChild(resultCard(row.record, highlightQuery));
@@ -264,9 +282,18 @@
     results.appendChild(fragment);
   }
 
+  function searchStatus(query, airlineQuery, count) {
+    if (airlineQuery) {
+      var template = count ? root.dataset.airlineCodeCountTemplate :
+        root.dataset.airlineCodeEmptyTemplate;
+      return airlineStatus(template, airlineQuery, count);
+    }
+    return count ? root.dataset.countTemplate.replace("{count}", String(count)) :
+      root.dataset.emptyTemplate.replace("{query}", query);
+  }
+
   function airlineStatus(template, airlineQuery, count) {
-    var label = airlineQuery.label[lang] ||
-      airlineQuery.label[otherLang] || airlineQuery.key;
+    var label = localized(airlineQuery, "label", lang) || airlineQuery.key;
     return String(template || "")
       .replace("{code}", airlineQuery.code)
       .replace("{type}", airlineQuery.type)
