@@ -6,15 +6,14 @@
       "cat": "biz",
       "primarySource": "AeroTime",
       "image": {
-        "url": "https://www.aerotime.aero/images/2026/10/Aviation-Capital-Group-Grows-Portfolio-with-Order-for-75-Airbus-A320neo-Family-Aircraft-3-1200x675.jpg",
-        "link": "https://www.aerotime.aero/articles/airbus-order-75-airbus-a320neo-aviation-capital-group",
-        "subject": "A320neo Family",
-        "sourceCaption": "Aviation Capital Group",
-        "credit": "Aviation Capital Group",
-        "license": null,
-        "provider": "AeroTime",
-        "kind": "event_photo",
-        "matched": "source:aerotime"
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/10/Aviation-Capital-Group-Airbus-A320neo.jpg",
+        "link": "https://aerospaceglobalnews.com/news/airbus-order-a320neo-aviation-capital-group/",
+        "provider": "Aerospace Global News",
+        "subject": "Two Aviation Capital Group Airbus A320neo jets flying",
+        "sourceCaption": "Two Aviation Capital Group Airbus A320neo jets flying",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
       },
       "sourceImageCandidates": [
         {
@@ -25,22 +24,31 @@
               "name": "Airbus"
             }
           ]
+        },
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/10/Aviation-Capital-Group-Airbus-A320neo.jpg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/airbus-order-a320neo-aviation-capital-group/",
+              "name": "Aerospace Global News"
+            }
+          ]
         }
       ],
       "zh": {
-        "title": "空中巴士取得ACG 75架A320neo系列客機確定訂單",
-        "summary": "ACG簽署75架A320neo系列客機訂單，預定2032至2035年交付。",
+        "title": "Aviation Capital Group向空中巴士訂購75架A320neo系列客機",
+        "summary": "ACG訂購75架A320neo系列客機，預計2032至2035年間交付",
         "body": [
-          "空中巴士表示，Aviation Capital Group LLC（ACG）已簽署75架A320neo Family客機的確定訂單。空中巴士稱，這筆交易使ACG對該機型的歷史訂購總數達190架。ACG總裁暨執行長Thomas Baker形容，這是公司近40年來最大的一筆訂單。",
-          "AeroTime報導，這批新機預定於2032年至2035年間交付。報導也指出，合約包括轉換為A320neo系列其他機型的權利。"
+          "Aviation Capital Group（ACG）向空中巴士訂購75架A320neo系列客機。AeroTime報導，這是ACG這家美國租賃公司的歷來最大筆飛機採購。ACG表示，這批飛機預定於2032年至2035年間交付。",
+          "協議也包含在A320neo系列不同機型間轉換的權利。ACG表示，其投資組合策略著重於航空公司全球需求最高的新技術窄體客機。空中巴士指出，這筆訂單使ACG對該系列的歷來訂單總數達190架。"
         ]
       },
       "en": {
-        "title": "ACG signs firm order for 75 Airbus A320neo Family aircraft",
-        "summary": "ACG signs for 75 A320neo Family aircraft, with arrivals scheduled from 2032 to 2035.",
+        "title": "Airbus secures ACG order for 75 A320neo family aircraft",
+        "summary": "Aviation Capital Group orders 75 Airbus A320neo family aircraft, with deliveries scheduled for 2032–2035.",
         "body": [
-          "Airbus said Aviation Capital Group LLC (ACG) signed a firm order for 75 A320neo Family aircraft. Airbus said the transaction takes ACG’s total historical orders for the type to 190 aircraft. ACG Chief Executive and President Thomas Baker described it as the largest order in the company’s nearly 40-year history.",
-          "AeroTime reported that the aircraft are scheduled to arrive between 2032 and 2035. It also reported that the agreement includes conversion rights to variants within the A320neo family."
+          "Airbus has secured an order from Aviation Capital Group (ACG) for 75 A320neo family aircraft. AeroTime described it as the US lessor’s largest aircraft purchase to date. ACG said the aircraft are scheduled to arrive between 2032 and 2035.",
+          "The agreement includes conversion rights among variants within the A320neo family, AeroTime reported. ACG said its portfolio strategy focuses on new-technology narrowbody aircraft that are in strong demand with airlines globally. Airbus said the order brings ACG’s total historical orders for the type to 190 aircraft."
         ]
       },
       "sources": [
@@ -51,25 +59,31 @@
         {
           "name": "Airbus — Aviation Capital Group orders 75 Airbus A320neo Family airc…",
           "url": "https://www.airbus.com/en/newsroom/press-releases/2026-10-aviation-capital-group-orders-75-airbus-a320neo-family-aircraft"
+        },
+        {
+          "name": "Aerospace Global News — Airbus wins order for 75 A320neo Family aircraft from Aviat…",
+          "url": "https://aerospaceglobalnews.com/news/airbus-order-a320neo-aviation-capital-group/"
         }
       ],
       "articleFormat": "brief",
+      "updatedUtc": "2026-10-16T20:04Z",
+      "revision": 2,
       "sourcePublishedUtc": "2026-10-16T09:00Z",
       "writer": "openai:gpt-6-luna",
       "facts": [
         {
           "factId": "F1",
-          "claim": "Aviation Capital Group LLC (ACG) signed a firm order for 75 A320neo Family aircraft.",
-          "sourceQuote": "Aviation Capital Group LLC (ACG), a premier global full-service aircraft asset manager, headquartered in Newport Beach, California has signed a firm order for 75 A320neo Family aircraft",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-10-aviation-capital-group-orders-75-airbus-a320neo-family-aircraft",
+          "claim": "Airbus secured an order from Aviation Capital Group for 75 A320neo family aircraft; AeroTime described it as the lessor's largest-ever aircraft purchase.",
+          "sourceQuote": "Airbus has secured an order for 75 Airbus A320neo family jets from Aviation Capital Group (ACG) – the US lessor’s largest ever aircraft purchase.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-order-75-airbus-a320neo-aviation-capital-group",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F2",
-          "claim": "The new aircraft are scheduled to arrive between 2032 and 2035.",
-          "sourceQuote": "the new Airbus A320neos are scheduled to arrive between 2032 and 2035.",
+          "claim": "ACG's aircraft are scheduled to arrive between 2032 and 2035.",
+          "sourceQuote": "Aviation Capital Group , a subsidiary of Tokyo Century Corporation , declared that the new Airbus A320neos are scheduled to arrive between 2032 and 2035.",
           "sourceUrl": "https://www.aerotime.aero/articles/airbus-order-75-airbus-a320neo-aviation-capital-group",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -78,7 +92,7 @@
         {
           "factId": "F3",
           "claim": "The agreement includes conversion rights to variants within the A320neo family.",
-          "sourceQuote": "the contract also includes conversion rights to variants within the A320neo family.",
+          "sourceQuote": "Under the agreement as signed, ACG, based out of Newport Beach, California, confirmed that the contract also includes conversion rights to variants within the A320neo family.",
           "sourceUrl": "https://www.aerotime.aero/articles/airbus-order-75-airbus-a320neo-aviation-capital-group",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -86,18 +100,18 @@
         },
         {
           "factId": "F4",
-          "claim": "ACG’s CEO and President described the order as the largest in the company’s nearly 40-year history.",
-          "sourceQuote": "Placing the largest order in our nearly 40-year history",
-          "sourceUrl": "https://www.aerotime.aero/articles/airbus-order-75-airbus-a320neo-aviation-capital-group",
+          "claim": "Airbus said the order takes ACG's total historical orders for the type to 190 aircraft.",
+          "sourceQuote": "Aviation Capital Group LLC (ACG), a premier global full-service aircraft asset manager, headquartered in Newport Beach, California has signed a firm order for 75 A320neo Family aircraft, taking its total historical order for the type to 190 aircraft.",
+          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-10-aviation-capital-group-orders-75-airbus-a320neo-family-aircraft",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F5",
-          "claim": "The order takes ACG’s total historical orders for the type to 190 aircraft.",
-          "sourceQuote": "signed a firm order for 75 A320neo Family aircraft, taking its total historical order for the type to 190 aircraft.",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-10-aviation-capital-group-orders-75-airbus-a320neo-family-aircraft",
+          "claim": "ACG said its portfolio strategy focuses on new-technology narrowbody aircraft in demand with airlines globally.",
+          "sourceQuote": "ACG’s portfolio strategy is focused on new-technology narrowbody aircraft that are most in-demand with airlines globally,",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-order-75-airbus-a320neo-aviation-capital-group",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
@@ -110,30 +124,30 @@
       "entities": {
         "organizations": [
           "Airbus",
-          "Aviation Capital Group LLC (ACG)"
+          "Aviation Capital Group (ACG)"
         ],
         "aircraft_models": [
-          "A320neo Family"
+          "A320neo family"
         ]
       },
       "entityEvidence": [
         {
           "entityType": "organizations",
           "value": "Airbus",
-          "sourceQuote": "Airbus",
+          "sourceQuote": "Airbus has secured an order for 75 Airbus A320neo family jets from Aviation Capital Group (ACG) – the US lessor’s largest ever aircraft purchase.",
           "sourceUrl": "https://www.aerotime.aero/articles/airbus-order-75-airbus-a320neo-aviation-capital-group"
         },
         {
           "entityType": "organizations",
-          "value": "Aviation Capital Group LLC (ACG)",
-          "sourceQuote": "Aviation Capital Group LLC (ACG), a premier global full-service aircraft asset manager, headquartered in Newport Beach, California has signed a firm order for 75 A320neo Family aircraft",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-10-aviation-capital-group-orders-75-airbus-a320neo-family-aircraft"
+          "value": "Aviation Capital Group (ACG)",
+          "sourceQuote": "Airbus has secured an order for 75 Airbus A320neo family jets from Aviation Capital Group (ACG) – the US lessor’s largest ever aircraft purchase.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-order-75-airbus-a320neo-aviation-capital-group"
         },
         {
           "entityType": "aircraft_models",
-          "value": "A320neo Family",
-          "sourceQuote": "has signed a firm order for 75 A320neo Family aircraft",
-          "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-10-aviation-capital-group-orders-75-airbus-a320neo-family-aircraft"
+          "value": "A320neo family",
+          "sourceQuote": "Airbus has secured an order for 75 Airbus A320neo family jets from Aviation Capital Group (ACG) – the US lessor’s largest ever aircraft purchase.",
+          "sourceUrl": "https://www.aerotime.aero/articles/airbus-order-75-airbus-a320neo-aviation-capital-group"
         }
       ],
       "evidenceVersion": 2
