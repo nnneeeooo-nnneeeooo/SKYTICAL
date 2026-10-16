@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-10-15T17:30Z",
-  "targetDateTpe": "2026-10-16",
+  "generatedUtc": "2026-10-16T17:06Z",
+  "targetDateTpe": "2026-10-17",
   "sourceWindow": "month_to_date",
-  "generationMode": "llm",
-  "provider": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+  "generationMode": "deterministic",
+  "provider": null,
   "sourceArticleIds": [
-    "a-20261015-1721-ukraine-says-six-su-34-bombers-damaged-a",
-    "a-20261015-1721-embraer-signs-e-jet-fleet-support-agreem",
-    "a-20261015-1721-lufthansa-selects-tokyo-for-december-deb",
-    "a-20261015-1207-emirates-to-hold-first-pilot-recruitment",
-    "a-20261015-0052-alaska-airlines-to-be-first-with-lie-fla",
-    "a-20261015-0052-british-airways-airbus-a321-returns-to-g"
+    "a-20261016-1657-planesense-plans-galileo-satellite-wi-fi",
+    "a-20261016-1657-tsa-suddenly-halts-gate-access-expansion",
+    "a-20261016-1154-acg-signs-firm-order-for-75-airbus-a320n",
+    "a-20261016-1154-turkish-airlines-signs-cfm-mou-for-300-p",
+    "a-20261016-1154-delta-air-lines-and-thai-airways-to-use",
+    "a-20261016-1154-pakistan-international-airlines-signs-bo"
   ],
   "prompts": {
     "zh": [
-      "搜尋 Su-34 戰機資訊",
-      "查詢 Portugália Airlines 動態",
-      "搜尋 Lufthansa A350-1000 東京",
-      "查詢 Emirates 馬尼拉 招募",
-      "阿拉斯加航空 737 MAX 10",
-      "英國航空 A321"
+      "搜尋：PlaneSense規劃為71架Pilatu…",
+      "搜尋：美國TSA突然停止301座機場登機門通道擴建",
+      "搜尋：空中巴士取得ACG 75架A320neo系列…",
+      "搜尋：土耳其航空與CFM Internationa…",
+      "搜尋：達美航空與泰國航空最新商務艙將採用相同核心座椅",
+      "搜尋：巴基斯坦國際航空簽署波音777客艙翻新協議"
     ],
     "en": [
-      "Find Su-34 bomber details",
-      "Check Portugália Airlines updates",
-      "Search Lufthansa A350-1000 Tokyo debut",
-      "Check Emirates Manila pilot recruitment",
-      "Alaska Airlines 737 MAX 10 lie-flat",
-      "British Airways A321 Gatwick return"
+      "Explore: PlaneSense plans Galileo satellite Wi-Fi for all…",
+      "Explore: TSA suddenly halts gate-access expansion at 301…",
+      "Explore: ACG signs firm order for 75 Airbus A320neo Famil…",
+      "Explore: Turkish Airlines signs CFM MOU for 300-plus LEAP…",
+      "Explore: Delta Air Lines and Thai Airways to Use the Same…",
+      "Explore: Pakistan International Airlines signs Boeing 777…"
     ]
   }
 }
