@@ -1,10 +1,15 @@
 {
   "schemaVersion": 1,
   "platforms": {
+    "gemini": {
+      "failureClass": "quota",
+      "cooldownUntilUtc": "2026-10-18T01:43Z",
+      "updatedUtc": "2026-10-17T19:43Z"
+    },
     "nvidia": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-17T18:39Z",
-      "updatedUtc": "2026-10-17T17:39Z"
+      "cooldownUntilUtc": "2026-10-17T20:45Z",
+      "updatedUtc": "2026-10-17T19:45Z"
     }
   }
 }
