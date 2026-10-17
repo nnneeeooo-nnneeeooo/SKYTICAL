@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-10-17T21:49Z",
+  "updatedUtc": "2026-10-17T23:29Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
@@ -9,15 +9,15 @@
       "unknownCalls": 588
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "calls": 1059,
+      "calls": 1060,
       "inputTokens": 3918395,
       "outputTokens": 2334102,
-      "unknownCalls": 466
+      "unknownCalls": 467
     },
     "wechat:Deepseek-v4-flash": {
-      "calls": 2568,
-      "inputTokens": 17531974,
-      "outputTokens": 4035649,
+      "calls": 2569,
+      "inputTokens": 17539392,
+      "outputTokens": 4036129,
       "unknownCalls": 86
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
@@ -228,12 +228,87 @@
       "outputTokens": 233619
     },
     "2026-10-17": {
-      "calls": 157,
-      "inputTokens": 699640,
-      "outputTokens": 169235
+      "calls": 159,
+      "inputTokens": 707058,
+      "outputTokens": 169715
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-10-17T23:28Z",
+      "finishedUtc": "2026-10-17T23:29Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20261017-2328-2",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "rejected",
+      "articleId": null,
+      "finalStatus": "reject",
+      "finalModel": "wechat:Deepseek-v4-flash",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 4411,
+        "promptAssembly": 1,
+        "drafting": 36753,
+        "validation": 0,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 41360
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "nvidia",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+          "startedUtc": "2026-10-17T23:28Z",
+          "durationMs": 30002,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 30000,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "timeout",
+          "failureStage": "draft",
+          "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "wechat",
+          "model": "Deepseek-v4-flash",
+          "label": "wechat:Deepseek-v4-flash",
+          "startedUtc": "2026-10-17T23:28Z",
+          "durationMs": 6752,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 6749,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-10-17T21:46Z",
       "finishedUtc": "2026-10-17T21:48Z",
@@ -93635,81 +93710,6 @@
           "failureClass": "invalid_schema",
           "failureStage": "validation",
           "failureMessage": "zh.body[0] contains Simplified Chinese characters",
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-09-29T09:05Z",
-      "finishedUtc": "2026-09-29T09:30Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20260929-0904-3",
-      "eventId": null,
-      "sourceCount": 2,
-      "primarySource": "AeroTime",
-      "result": "retry_pending",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": null,
-      "fallbackUsed": true,
-      "attemptCount": 2,
-      "httpCallCount": 2,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 5025,
-        "promptAssembly": 15,
-        "drafting": 413025,
-        "validation": 1,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 1528084
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "wechat",
-          "model": "Deepseek-v4-flash",
-          "label": "wechat:Deepseek-v4-flash",
-          "startedUtc": "2026-09-29T09:23Z",
-          "durationMs": 26420,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 26410,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "bad status None",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "openrouter",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-          "label": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-          "startedUtc": "2026-09-29T09:24Z",
-          "durationMs": 386606,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 386596,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "zh.body[1] contains Simplified Chinese characters",
           "retryPlanned": false,
           "disabledForRun": false
         }
