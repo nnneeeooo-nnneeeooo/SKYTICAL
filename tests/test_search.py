@@ -73,6 +73,9 @@ def test_public_model_search_index():
         ("openai:gpt-6", None, ["GPT 6"]),
         ("manual:GPT 6.1 Sol", None, ["GPT 6.1 Sol"]),
         ("openai:gpt-6.1-sol", None, ["GPT 6.1 Sol"]),
+        ("wechat:Deepseek-v4-flash", None, ["DeepSeek V4.1 Flash"]),
+        ("nvidia:deepseek-ai/deepseek-v4-pro", None, ["DeepSeek V4.1 Flash"]),
+        ("manual:owner", ["DeepSeek", "DeepSeek V4 Pro"], ["DeepSeek V4.1 Flash"]),
         ("manual:owner", ["GPT 6", "GPT 6.1 Sol"], ["GPT 6", "GPT 6.1 Sol"]),
         (None, None, []),
     ]:

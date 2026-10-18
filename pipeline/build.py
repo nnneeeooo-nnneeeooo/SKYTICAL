@@ -1080,12 +1080,17 @@ def iso_timestamp(dt) -> str:
 # ── data loading / preparation ───────────────────────────────────────────────
 
 # Article-footer model credit: writer id -> short public model name.
+PUBLIC_DEEPSEEK_MODEL = "DeepSeek V4.1 Flash"
+
+
 def _public_writer_model_name(value):
     clean = re.sub(r"[\x00-\x1f\x7f<>]+", " ", str(value))
     clean = re.sub(r"\s+", " ", clean).strip()
     normalized = re.sub(r"[^a-z0-9]+", "", clean.casefold())
     if normalized in {"gpt6", "openaigpt6"}:
         return "GPT 6"
+    if "deepseek" in normalized:
+        return PUBLIC_DEEPSEEK_MODEL
     return clean[:80]
 
 
@@ -1097,9 +1102,7 @@ _WRITER_MODELS = (
     ("nemotron-3-ultra", "Nemotron 3 Ultra"),
     ("nemotron-3-super", "Nemotron 3 Super"),
     ("nemotron", "Nemotron"),
-    ("deepseek-v4-pro", "DeepSeek V4 Pro"),
-    ("deepseek-v4-flash", "DeepSeek V4 Flash"),
-    ("deepseek", "DeepSeek"),
+    ("deepseek", PUBLIC_DEEPSEEK_MODEL),
     ("gemini-3.6-flash", "Gemini 3.6 Flash"),
     ("gemini-3.5-flash", "Gemini 3.5 Flash"),
     ("gemini", "Gemini"),
