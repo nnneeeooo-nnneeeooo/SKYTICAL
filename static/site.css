@@ -274,7 +274,9 @@ a.flash-row:hover .flash-text { color: var(--color-accent); }
   transform: translateX(-6%); opacity: 0; transition: none;
 }
 .hero-img {
-  width: 100%; height: auto; max-height: 420px; object-fit: contain;
+  /* Reserve the same frame before loading and between different photo sizes. */
+  display: block; width: 100%; aspect-ratio: 16 / 9;
+  height: auto; max-height: 420px; object-fit: contain;
   background: color-mix(in srgb, var(--color-text) 6%, var(--color-surface));
   border: 1px solid var(--color-divider);
 }
