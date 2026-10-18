@@ -189,7 +189,7 @@ L = {
             "隨意搜尋想看的 SKYTICAL 內容",
             "今天想看什麼航空新聞？",
         ],
-        "searchSub": "搜尋標題、摘要、全文、來源、日期、航班、機型、機場代碼與航空公司 IATA／ICAO 代碼；航空公司正式名稱與常用簡稱可互相查找。",
+        "searchSub": "搜尋標題、摘要、全文、來源、日期、航班、機型、機場代碼、航空公司 IATA／ICAO 代碼與撰稿模型（例如 GPT 6、GPT6、GPT 6.1 Sol）；航空公司正式名稱與常用簡稱可互相查找。",
         "searchButton": "搜尋", "searchClear": "清除",
         "searchLoading": "正在載入新聞索引…",
         "searchPrompt": "輸入關鍵字開始搜尋全部新聞。",
@@ -324,7 +324,7 @@ L = {
             "Explore anything on SKYTICAL",
             "What aviation news are you looking for?",
         ],
-        "searchSub": "Search titles, summaries, full text, sources, dates, flights, aircraft types, airport codes and airline IATA/ICAO codes. Official airline names and common short names are interchangeable.",
+        "searchSub": "Search titles, summaries, full text, sources, dates, flights, aircraft types, airport codes, airline IATA/ICAO codes and writing models (e.g. GPT 6, GPT6, GPT 6.1 Sol). Official airline names and common short names are interchangeable.",
         "searchButton": "Search", "searchClear": "Clear",
         "searchLoading": "Loading the news index…",
         "searchPrompt": "Enter keywords to search every published story.",
@@ -1090,6 +1090,8 @@ def _public_writer_model_name(value):
 
 
 _WRITER_MODELS = (
+    ("gpt-6.1-sol", "GPT 6.1 Sol"),
+    ("gpt-6-sol", "GPT 6 Sol"),
     ("gpt-6-luna", "GPT 6"),
     ("gpt-5.6-sol", "GPT-5.6 Sol"),
     ("nemotron-3-ultra", "Nemotron 3 Ultra"),
@@ -1998,6 +2000,8 @@ def search_index_item(article, alias_groups, prompt_aliases=(),
         "articleFormat": article["article_format"],
         "availableLanguages": article["available_languages"],
         "airlines": article_airline_keys(article, airline_catalog),
+        "models": [label for label in (article.get("writer_model") or "").split("、")
+                   if label],
         "url": urls,
         "search": normalize_search_text(" ".join(
             str(value) for value in searchable if value)),

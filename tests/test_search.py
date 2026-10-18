@@ -66,7 +66,25 @@ def suggestion_has_result(prompt: str, items: list[dict]) -> bool:
         matches(item, minimum_matches - 1) for item in items)
 
 
+def test_public_model_search_index():
+    article = sample_article("華航新增航班")
+    aliases = build.load_search_alias_groups()
+    for writer, supplied, expected in [
+        ("openai:gpt-6-luna", None, ["GPT 6"]),
+        ("manual:GPT 6.1 Sol", None, ["GPT 6.1 Sol"]),
+        ("openai:gpt-6.1-sol", None, ["GPT 6.1 Sol"]),
+        ("manual:owner", ["GPT 6 Luna", "GPT 6.1 Sol"], ["GPT 6", "GPT 6.1 Sol"]),
+        (None, None, []),
+    ]:
+        article["writer_model"] = build.writer_model(writer, supplied)
+        item = build.search_index_item(article, aliases)
+        assert item["models"] == expected
+        assert "luna" not in json.dumps(item, ensure_ascii=False).lower()
+        assert "openai:" not in json.dumps(item, ensure_ascii=False).lower()
+
+
 def main() -> None:
+    test_public_model_search_index()
     aliases = build.load_search_alias_groups()
     assert len(aliases) >= 25
     catalog = build.load_airline_search_catalog()
