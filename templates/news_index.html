@@ -5,12 +5,14 @@
 {% if next_abs_url %}<link rel="next" href="{{ next_abs_url }}">{% endif %}
 {% endblock %}
 {% block content %}
-  <main class="search-page topic-page">
-    <header class="search-header">
+  <main class="search-page topic-page news-index">
+    <header class="search-header news-index-header">
       <span class="card-kicker">{{ t.newsKicker }}</span>
-      <h1>{{ t.newsTitle }}</h1>
+      <div class="news-index-heading">
+        <h1>{{ t.newsTitle }}</h1>
+        <span class="news-index-count">{{ count }} {{ t.topicCount }}</span>
+      </div>
       <p class="text-muted">{{ t.newsSub }}</p>
-      <p class="text-muted" style="font-size:12.5px;">{{ count }} {{ t.topicCount }}</p>
     </header>
     <section aria-label="{{ t.newsTitle }}">
       {% for item in articles %}
@@ -21,17 +23,23 @@
                alt="{{ (item.image.subject or item.title) if item.image else 'SKYTICAL' }}"
                width="160" height="90" loading="lazy" decoding="async"
                data-fallback="{{ fallback }}">
-          {% if item.image and (item.image.credit or item.image.license) %}
-          <span class="news-image-credit">{% if item.image.credit %}© {{ item.image.credit }}{% endif %}{% if item.image.credit and item.image.license %} · {% endif %}{{ item.image.license or '' }}</span>
+        </span>
+        <div class="news-story-body">
+          <div class="news-story-meta">
+            <span class="tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% elif item.article_format == "roundup" %} · {{ t.roundupLabel }}{% endif %}</span>
+            <span class="news-story-time">{{ item.time }}</span>
+          </div>
+          <h2 class="news-story-title">{{ item.title }}</h2>
+          {% if item.display_summary and item.display_summary|replace(' ', '')|replace('　', '') != item.title|replace(' ', '')|replace('　', '') %}
+          {{ notification_summary(item.display_summary, t.summaryLabel, 'feed') }}
           {% endif %}
-        </span>
-        <span class="feed-time">{{ item.time }}</span>
-        <span class="feed-category tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% elif item.article_format == "roundup" %} · {{ t.roundupLabel }}{% endif %}</span>
-        <span class="feed-copy">
-          <span style="display:block;font-size:15.5px;font-weight:700;line-height:1.4;letter-spacing:-.01em;">{{ item.title }}</span>
-        </span>
-        {{ notification_summary(item.display_summary, t.summaryLabel, 'feed') }}
-        <span class="feed-source text-muted">{{ item.source }}</span>
+          <div class="news-story-footer">
+            <span class="news-story-source">{{ item.source }}</span>
+            {% if item.image and (item.image.credit or item.image.license) %}
+            <span class="news-image-credit">{% if item.image.credit %}© {{ item.image.credit }}{% endif %}{% if item.image.credit and item.image.license %} · {% endif %}{{ item.image.license or '' }}</span>
+            {% endif %}
+          </div>
+        </div>
       </a>
       {% else %}
       <p class="text-muted">{{ t.awaiting }}</p>
