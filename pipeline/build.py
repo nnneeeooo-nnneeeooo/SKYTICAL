@@ -3982,8 +3982,7 @@ def main() -> int:
             description=t["searchSub"], ticker=ticker, build=build)
         ctx["robots_meta"] = "noindex,follow"
         ctx["search_index_url"] = (
-            f"{BASE_PATH}/search-index.json"
-            if BASE_PATH else "/search-index.json")
+            f"{BASE_PATH}/search-index.json?v={ASSET_VERSION}")
         render(env, "search.html", rel_path(lang, "search/index.html"), ctx)
         pages += 1
 
