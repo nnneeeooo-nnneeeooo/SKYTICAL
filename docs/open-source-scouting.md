@@ -1,6 +1,18 @@
 # SKYTICAL Open-source Scouting
 
-更新日期：2026-09-26
+更新日期：2026-10-18
+
+## 撰稿模型搜尋評估（2026-10-18）
+
+透過 GitHub API 查證下列搜尋專案；本次只比較設計，未複製程式碼。
+
+| 專案 | 最近推送 | Stars | 語言／授權 | 可借鑑設計與導入成本 |
+| --- | --- | --- | --- | --- |
+| [MiniSearch](https://github.com/lucaong/minisearch) | 2025-09-16 | 6,173 | TypeScript／MIT | 欄位搜尋與結果過濾；需新增瀏覽器套件及索引流程。 |
+| [FlexSearch](https://github.com/nextapps-de/flexsearch) | 2026-06-28 | 13,807 | JavaScript／Apache-2.0 | 文件欄位與標籤索引；設定與打包成本高於目前需求。 |
+| [Fuse](https://github.com/krisk/Fuse) | 2026-08-09 | 20,506 | JavaScript／Apache-2.0 | 多欄位搜尋；模糊比對可能混淆精確模型版本。 |
+
+SKYTICAL 已有靜態 JSON 索引與零套件搜尋。本次保留現況，將公開模型署名加入獨立欄位，再以模型名稱篩選結果；支援連寫與連字號，模型條件不套用放寬比對。這樣可避免內部 provider ID 進入公開索引，也不需要新增依賴。MiniSearch 的欄位過濾可留待資料量成長後評估，目前不導入。
 
 這份文件記錄在新增功能前值得研究的成熟 GitHub 專案。它不是依賴清單，也不代表應直接導入；每次實作仍需先和 SKYTICAL 現有架構、授權、維護成本與新聞核驗要求比較。
 
