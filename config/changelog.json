@@ -2,8 +2,57 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-10-05",
+  "updatedThrough": "2026-10-19",
   "entries": [
+    {
+      "date": "2026-10-18",
+      "kind": "design",
+      "commit": "10eafb38be69447d39ea888df819e4b694e41ced",
+      "zh": "全部新聞列表新增文章縮圖與圖片署名，並配合手機版面調整排列；圖片缺少或載入失敗時顯示網站預設圖。",
+      "en": "Added article thumbnails and image credits to the All news index, with a mobile-friendly layout and a site image fallback when a photo is missing or fails to load."
+    },
+    {
+      "date": "2026-10-18",
+      "kind": "feature",
+      "commit": "eaa85e006fbfb9bbe0992e0a0afdba6f6063c625",
+      "zh": "搜尋支援依公開署名的撰稿模型查找文章，可搭配新聞關鍵字與航空公司代碼縮小範圍，並辨識不同模型版本。",
+      "en": "Added article search by publicly credited writing model, with support for combining model names, news keywords and airline codes while distinguishing model versions."
+    },
+    {
+      "date": "2026-10-13",
+      "kind": "system",
+      "commit": "a8bbd76a65adb780e6f6cd9c8c28474d17b597a6",
+      "zh": "強化航空新聞範圍判定，將缺乏直接航空關聯的航運、物流與其他題材排除於撰稿及公開頁面，並撤下不符範圍的既有內容。",
+      "en": "Strengthened aviation scope checks to exclude shipping, logistics and other topics without a direct aviation connection from drafting and public pages, and withdrew existing out-of-scope content."
+    },
+    {
+      "date": "2026-10-13",
+      "kind": "design",
+      "commit": "1b525576bf182fbf18ec4698918136bccf03fdf0",
+      "zh": "事故資料庫改用響應式事件卡片，整合事件日期、航空器與地點等資訊，並提供更清楚的嚴重程度篩選及結果數量，改善手機與桌面瀏覽。",
+      "en": "Redesigned the incident database with responsive event cards that bring together dates, aircraft and locations, plus clearer severity filters and result counts for mobile and desktop browsing."
+    },
+    {
+      "date": "2026-10-13",
+      "kind": "system",
+      "commit": "8c002ae7ee67846b9cd8fd7385195db10916915a",
+      "zh": "強化自動撰稿的最後備援，為 GPT 6 保留獨立撰稿與修正時間；剩餘時間不足時保留新聞供後續重試，並維持來源與事實核驗要求。",
+      "en": "Strengthened the final drafting fallback by reserving independent drafting and repair time for GPT 6. Stories remain available for later retries when time is insufficient, with source and fact verification requirements preserved."
+    },
+    {
+      "date": "2026-10-09",
+      "kind": "feature",
+      "commit": "56179e906bcc36fb404378e7aa15924fd9df37b3",
+      "zh": "完善既有文章與公開頁面的英文版本，涵蓋缺漏的文章內容、快報摘要、來源名稱、圖片說明及錯誤頁面，提升英文閱讀的一致性。",
+      "en": "Completed missing English content across existing articles and public pages, including article copy, briefing summaries, source names, image labels and error pages, for a more consistent English reading experience."
+    },
+    {
+      "date": "2026-10-05",
+      "kind": "system",
+      "commit": "4a422de681f963d8303136bd0af6d50615d59a4d",
+      "zh": "改善中文新聞與快報標題的可讀性，要求清楚交代主體、動作及有來源支持的結果，避免難懂的壓縮用語；網站導覽同步為快報標示 BETA。",
+      "en": "Improved Chinese news and briefing headline clarity by requiring clear subjects, actions and source-supported outcomes instead of opaque shorthand. The site navigation now labels Briefings as BETA."
+    },
     {
       "date": "2026-10-04",
       "kind": "feature",
