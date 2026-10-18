@@ -408,33 +408,66 @@ a.flash-row:hover .flash-text { color: var(--color-accent); }
 .incident-article-link:hover,
 .incident-date-link:hover { color: var(--color-accent); }
 
-/* — incident database: shares the briefing page and story layout — */
-.briefing-page.incidents-page { width: 100%; }
+/* — incident database: wide editorial list with readable event details — */
+.briefing-page.incidents-page { width: 100%; padding: 32px 24px 56px; }
+.incidents-page .briefing-page-title { font-size: clamp(28px, 3.5vw, 38px); margin-bottom: 12px; }
+.incidents-page .briefing-index-sub { max-width: 760px; line-height: 1.8; }
 .incidents-toolbar {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-  gap: 8px 16px; margin: 18px 0 24px; padding: 12px 0;
-  border-block: 1px solid var(--color-divider);
+  gap: 12px 20px; margin: 24px 0 8px; padding: 16px 0;
+  border-bottom: 1px solid var(--color-divider);
 }
-.incidents-filters { --briefing-selection: var(--color-accent); display: flex; flex-wrap: wrap; gap: 4px; }
-.incidents-filters .briefing-period { border-bottom: 2px solid transparent; }
-.incidents-filters .briefing-period.active { border-bottom-color: var(--color-accent); }
+.incidents-filters { --briefing-selection: var(--color-accent); display: flex; flex-wrap: wrap; gap: 6px; }
+.incidents-filters .briefing-period {
+  min-height: 42px; padding: 9px 14px; border: 1px solid transparent;
+  border-radius: 6px; font-size: 13px; color: var(--color-text);
+  background: color-mix(in srgb, var(--color-text) 5%, transparent);
+}
+.incidents-filters .briefing-period[aria-pressed="true"] {
+  color: var(--color-accent); border-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 9%, var(--color-bg));
+}
 .incidents-filters button:focus-visible,
 .incident-card a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-.incidents-count { font-size: 12px; color: color-mix(in srgb, var(--color-text) 65%, transparent); }
-.incident-meta { align-items: center; margin-bottom: 8px; }
-.incident-meta .tag { white-space: nowrap; font-size: 10px; }
-.incident-summary { font-weight: 700; }
+.incidents-count { white-space: nowrap; font-size: 13px; color: color-mix(in srgb, var(--color-text) 65%, transparent); }
+.incidents-count strong { margin-right: 4px; font-size: 20px; color: var(--color-text); }
+.incidents-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+.incidents-page .incidents-list .incident-card {
+  grid-template-columns: 144px minmax(0, 1fr); gap: 18px; min-width: 0;
+  margin: 0; padding: 24px 0; border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text) 18%, transparent);
+}
+.incidents-page .briefing-thumbnail { max-width: none; aspect-ratio: 4 / 3; border-radius: 8px; }
+.incidents-page .briefing-image-credit { font-size: 11px; line-height: 1.6; overflow-wrap: anywhere; }
+.incidents-page .incident-meta { align-items: center; gap: 8px 12px; margin-bottom: 10px; font-size: 12px; }
+.incident-meta .tag { white-space: nowrap; font-size: 11px; }
+.incident-date-link { font-weight: 700; font-variant-numeric: tabular-nums; text-decoration: none; }
+.incidents-page .incident-summary { font-size: 17px; font-weight: 700; line-height: 1.7; }
 .incident-summary .incident-article-link { text-decoration: none; }
-.incident-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 16px; margin: 10px 0 0; }
+.incident-details { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 12px 0 0; }
 .incident-details div { display: flex; gap: 6px; min-width: 0; font-size: 12px; line-height: 1.8; }
-.incident-details dt { flex: none; color: color-mix(in srgb, var(--color-text) 65%, transparent); }
-.incident-details dd { margin: 0; overflow-wrap: anywhere; }
-.incident-details div:last-child { grid-column: 1 / -1; }
-.incident-source { margin-top: 8px; }
-.incident-card .briefing-citation { margin: 6px 0 0; }
-.incidents-note { margin: 24px 0 0; padding-top: 16px; border-top: 1px solid var(--color-divider); font-size: 12px; line-height: 1.8; }
+.incident-details dt { flex: none; color: color-mix(in srgb, var(--color-text) 62%, transparent); }
+.incident-details dd { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+.incident-details div:last-child { flex-basis: 100%; }
+.incidents-page .incident-source { margin-top: 10px; font-size: 12px; }
+.incidents-page .incident-card .briefing-citation { margin: 10px 0 0; padding: 5px 10px 5px 6px; font-size: 12px; }
+.incidents-list #inc-empty { grid-column: 1 / -1; padding: 32px 0; }
+.incidents-note { margin: 24px 0 0; font-size: 12px; line-height: 1.8; }
+@media (max-width: 1100px) {
+  .incidents-list { grid-template-columns: minmax(0, 1fr); }
+  .incidents-page .incidents-list .incident-card { grid-template-columns: 200px minmax(0, 1fr); gap: 24px; }
+  .incidents-page .briefing-thumbnail { aspect-ratio: 16 / 9; }
+}
 @media (max-width: 600px) {
-  .incident-details { grid-template-columns: minmax(0, 1fr); }
+  .briefing-page.incidents-page { padding: 24px 16px 40px; }
+  .incidents-toolbar { margin-top: 18px; gap: 12px; }
+  .incidents-filters { width: 100%; gap: 6px; }
+  .incidents-filters .briefing-period { padding: 8px 10px; font-size: 12px; }
+  .incidents-page .incidents-list .incident-card { grid-template-columns: 88px minmax(0, 1fr); gap: 14px; padding: 22px 0; }
+  .incidents-page .briefing-thumbnail { aspect-ratio: 1; border-radius: 6px; }
+  .incidents-page .incident-summary { font-size: 16px; }
+  .incidents-page .incident-meta { gap: 6px 8px; }
+  .incident-details { gap: 4px 12px; }
 }
 
 /* — Taiwan civil-flight radar — */
