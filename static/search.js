@@ -77,6 +77,7 @@
       localizedValues(record, "summary").join(" "),
       localizedValues(record, "category").join(" "),
       record.search,
+      (record.models || []).join(" "),
     ].join(" "));
   }
 
@@ -103,6 +104,9 @@
   function matchingRecords(records, criteria, minimumMatches) {
     return records.map(function (record) {
       var airlines = Array.isArray(record.airlines) ? record.airlines : [];
+      if (criteria.model && (record.models || []).indexOf(criteria.model) === -1) {
+        return { record: record, score: -1 };
+      }
       if (criteria.airlineKey && airlines.indexOf(criteria.airlineKey) === -1) {
         return { record: record, score: -1 };
       }
@@ -115,6 +119,23 @@
     });
   }
 
+  function parseModelQuery(records, query) {
+    // Only public credits enter this index. Match versions as a whole and
+    // accept spaces, hyphens or compact spelling without exposing internal IDs.
+    var labels = Array.from(new Set(records.flatMap(function (record) {
+      return Array.isArray(record.models) ? record.models : [];
+    }))).sort(function (a, b) { return b.length - a.length; });
+    for (var label of labels) {
+      var parts = label.normalize("NFKC").match(/[\p{L}\p{N}]+/gu) || [];
+      var pattern = parts.map(function (part) {
+        return part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }).join("[\\s.-]*");
+      var match = new RegExp("^" + pattern + "(?![\\p{L}\\p{N}]|\\.\\d)", "iu").exec(query);
+      if (match) return { model: label, remainder: query.slice(match[0].length).trim() };
+    }
+    return null;
+  }
+
   function searchRecords(records, query, airlineCodes, lang) {
     query = String(query || "").trim();
     lang = lang === "en" ? "en" : "zh";
@@ -124,16 +145,20 @@
 
     var airlineQuery = parseAirlineCodeQuery(query, airlineCodes);
     var textQuery = airlineQuery ? airlineQuery.remainder : query;
+    var modelQuery = parseModelQuery(records, textQuery.normalize("NFKC"));
+    if (modelQuery) textQuery = modelQuery.remainder;
     var normalizedQuery = normalize(textQuery);
     var terms = normalizedQuery.split(/\s+/).filter(Boolean);
     var criteria = {
       normalizedQuery: normalizedQuery,
       terms: terms,
       airlineKey: airlineQuery ? airlineQuery.key : "",
+      model: modelQuery ? modelQuery.model : "",
       lang: lang
     };
     var matches = matchingRecords(records, criteria, terms.length);
-    if (!matches.length && terms.length >= 3) {
+    if (!matches.length && terms.length >= 3 && !modelQuery &&
+        !/^gpt[\s-]*\d/i.test(textQuery)) {
       /* Daily suggestions may paraphrase one phrase from the source title.
          Keep normal searches strict, then allow one unmatched term only when
          the strict pass produced nothing. */

@@ -61,6 +61,27 @@ const articles = [
   { id: "unrelated", title: { en: "Airport terminal" }, search: "航廈" }
 ];
 const originalArticles = JSON.stringify(articles);
+const modelArticles = [
+  { id: "six", models: ["GPT 6"], search: "華航", airlines: ["CAL"] },
+  { id: "sol", models: ["GPT 6.1 Sol"], search: "華航" },
+  { id: "mixed", models: ["GPT 6.1 Sol", "DeepSeek V4 Flash"] },
+  { id: "other", models: ["DeepSeek V4 Flash"], search: "GPT 6.1 Sol 華航" },
+  { id: "uncredited", search: "GPT 6.1 Sol 華航" }
+];
+for (const lang of ["zh", "en"]) {
+  for (const query of ["GPT 6", "GPT6", "gpt-6", "ＧＰＴ６"]) {
+    assert.deepStrictEqual(ids(find(query, lang, modelArticles)), ["six"]);
+  }
+  for (const query of ["GPT 6.1 Sol", "GPT6.1Sol", "gpt-6.1-sol"]) {
+    assert.deepStrictEqual(ids(find(query, lang, modelArticles)), ["sol", "mixed"]);
+  }
+  assert.deepStrictEqual(ids(find("GPT6 華航", lang, modelArticles)), ["six"]);
+  assert.deepStrictEqual(ids(find("CI GPT6", lang, modelArticles)), ["six"]);
+  assert.deepStrictEqual(ids(find("GPT 6.1 Sol missing", lang, modelArticles)), []);
+  assert.deepStrictEqual(ids(find("GPT 6.2 Sol", lang, modelArticles)), []);
+  assert.deepStrictEqual(ids(find("GPT 6", lang, modelArticles)), []);
+  assert.deepStrictEqual(ids(find("DeepSeekV4Flash", lang, modelArticles)), ["mixed", "other"]);
+}
 function find(query, lang = "en", items = articles) {
   return search.searchRecords(items, query, codes, lang);
 }
