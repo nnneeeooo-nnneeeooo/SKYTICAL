@@ -3,6 +3,19 @@
 (function () {
   "use strict";
 
+  document.querySelectorAll(".news-thumbnail img[data-fallback]").forEach(function (image) {
+    function useFallback() {
+      if (image.dataset.fallbackTried === "true") return;
+      image.dataset.fallbackTried = "true";
+      image.alt = "SKYTICAL";
+      var credit = image.parentElement.querySelector(".news-image-credit");
+      if (credit) credit.hidden = true;
+      image.src = image.dataset.fallback;
+    }
+    image.addEventListener("error", useFallback);
+    if (image.complete && image.naturalWidth === 0) useFallback();
+  });
+
   /* — UTC + TPE clocks, updated every 10 s (per the design) — */
   var utcEl = document.getElementById("clock-utc");
   var tpeEl = document.getElementById("clock-tpe");
