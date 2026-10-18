@@ -8,7 +8,7 @@
       if (image.dataset.fallbackTried === "true") return;
       image.dataset.fallbackTried = "true";
       image.alt = "SKYTICAL";
-      var credit = image.parentElement.querySelector(".news-image-credit");
+      var credit = image.closest(".feed-row--illustrated").querySelector(".news-image-credit");
       if (credit) credit.hidden = true;
       image.src = image.dataset.fallback;
     }
