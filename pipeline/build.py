@@ -155,8 +155,8 @@ L = {
         "thDate": "日期", "thSev": "等級", "thType": "機型", "thOp": "營運人",
         "thPhase": "飛行階段", "thLoc": "地點", "thDesc": "摘要", "thStatus": "狀態", "thSrc": "來源",
         "srcKicker": "Data Sources", "srcTitle": "資料來源",
-        "srcSub": "全站僅使用公開且可溯源的官方與權威資訊來源。每小時自動抓取一次，抓取狀態即時顯示於首頁側欄。",
-        "srcNote": "* 所有來源皆標註於各篇文末；轉載內容僅做事實彙整，原文著作權屬原單位。",
+        "srcSub": "本頁列出新聞媒體、政府主管機關、國際公共機構與航空資料服務。每小時自動抓取一次。",
+        "srcNote": "* 本頁為部分來源清單；航空公司、製造商與產業組織的公開資料仍供新聞查證與彙整使用。各篇文章標註實際引用來源，原文著作權屬原單位。",
         "thName": "來源", "thKind": "類型", "thCover": "涵蓋範圍", "thFmt": "格式",
         "thFreq": "頻率", "thLast": "最近抓取", "thState": "狀態",
         "aboutKicker": "Methodology", "aboutTitle": "方法論",
@@ -287,8 +287,8 @@ L = {
         "thDate": "Date", "thSev": "Class", "thType": "Aircraft", "thOp": "Operator",
         "thPhase": "Phase", "thLoc": "Location", "thDesc": "Summary", "thStatus": "Status", "thSrc": "Sources",
         "srcKicker": "Data Sources", "srcTitle": "Sources",
-        "srcSub": "Public, traceable official and authoritative sources only. Fetched hourly; live fetch status shows on the front page rail.",
-        "srcNote": "* Every article credits its sources; content is factual aggregation and copyright stays with the originators.",
+        "srcSub": "This page lists news media, government authorities, international public bodies and aviation data services. Fetched hourly.",
+        "srcNote": "* This is a selected source directory. Public material from airlines, manufacturers and industry associations remains available for verification and news aggregation. Each article credits the sources it uses; copyright stays with the originators.",
         "thName": "Source", "thKind": "Kind", "thCover": "Coverage", "thFmt": "Format",
         "thFreq": "Interval", "thLast": "Last fetch", "thState": "Status",
         "aboutKicker": "Methodology", "aboutTitle": "Methodology",
@@ -2273,13 +2273,21 @@ def source_status_view(sources, now, lang="zh"):
 
 
 def sources_rows_view(sources, lang: str, now):
+    # This directory is a curated public-service/media list, separate from
+    # fetch eligibility and the other source-status displays. The legacy
+    # "official" kind also includes airlines and manufacturers, so only
+    # explicitly reviewed public bodies may appear under that kind.
+    public_bodies = {"faa", "bfu", "ntsb", "icao", "easa",
+                     "eurocontrol", "caataiwan", "mndnews"}
     return [{
         "name": localized_label(s["name"], lang),
         "url": s["url"], "fmt": s["fmt"], "ok": s["ok"],
         "kind": _bi(KIND.get(s["kind"]), lang, s["kind"]),
         "cover": _bi(s["cover"], lang),
         "last": ago(s["lastFetchUtc"], now),
-    } for s in sources]
+    } for s in sources
+        if s["kind"] in {"media", "data"}
+        or (s["kind"] == "official" and s["key"] in public_bodies)]
 
 
 # ── daily briefings ──────────────────────────────────────────────────────────
