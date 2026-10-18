@@ -352,7 +352,8 @@
   function loadIndex() {
     if (ready) return Promise.resolve();
     if (loading) return loading;
-    loading = fetch(root.dataset.indexUrl, { credentials: "same-origin" })
+    // Revalidate cached indexes when airline mappings or public credits change.
+    loading = fetch(root.dataset.indexUrl, { credentials: "same-origin", cache: "no-cache" })
       .then(function (response) {
         if (!response.ok) throw new Error("HTTP " + response.status);
         return response.json();

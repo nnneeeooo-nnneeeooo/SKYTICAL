@@ -94,6 +94,16 @@ def main() -> None:
     assert catalog["iata"]["DE"] == "CFG"
     assert catalog["icao"]["CFG"] == "CFG"
     assert catalog["icao"]["ASV"] == "ASV"
+    assert catalog["iata"]["AV"] == "AVA"
+    assert catalog["icao"]["AVA"] == "AVA"
+    for title in ("哥倫比亞航空新增航班", "亞維安卡航空新增航班", "Avianca adds flights"):
+        avianca = build.search_index_item(sample_article(title), aliases,
+                                          airline_catalog=catalog)
+        assert "AVA" in avianca["airlines"]
+    unrelated = build.search_index_item(sample_article(
+        "New flights available", en_title="New flights available"), aliases,
+        airline_catalog=catalog)
+    assert "AVA" not in unrelated["airlines"]
     assert "ASV" in catalog["identities"]
     assert "9S" not in catalog["iata"]
 
