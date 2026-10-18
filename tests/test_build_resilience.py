@@ -58,7 +58,15 @@ def main() -> None:
     assert prepared["available_languages"] == ["zh", "en"]
     assert prepared["en"]["title"] == prepared["zh"]["title"]
 
-    assert build.writer_model("wechat:Deepseek-v4-flash") == "DeepSeek V4 Flash"
+    for writer in (
+        "wechat:Deepseek-v4-flash", "nvidia:deepseek-ai/deepseek-v4-pro",
+        "openrouter:deepseek/deepseek-chat", "manual:DeepSeek",
+        "manual:DeepSeekV4.1 Flash", "future:deepseek-new-model",
+    ):
+        assert build.writer_model(writer) == "DeepSeek V4.1 Flash"
+    assert build.writer_model("manual:owner", [
+        "DeepSeek V4 Pro", "DeepSeek V4 Flash", "GPT 6.1 Sol",
+    ]) == "DeepSeek V4.1 Flash、GPT 6.1 Sol"
 
     # Every currently persisted article generation must cross the same
     # normalization boundary and expose a complete prepared-view contract.
