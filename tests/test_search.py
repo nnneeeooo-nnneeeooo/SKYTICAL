@@ -229,8 +229,8 @@ def main() -> None:
     main_markup = re.search(r'<main class="search-page">(.*?)</main>', zh,
                             re.DOTALL).group(1)
     assert "<form" not in main_markup
-    assert 'data-index-url="/search-index.json"' in zh
-    assert 'data-index-url="/search-index.json"' in en
+    assert f'data-index-url="/search-index.json?v={build.ASSET_VERSION}"' in zh
+    assert f'data-index-url="/search-index.json?v={build.ASSET_VERSION}"' in en
     assert 'href="/en/search/"' in en
     assert "border-radius: 999px" in css
     assert ".header-search-form:focus-within" in css
