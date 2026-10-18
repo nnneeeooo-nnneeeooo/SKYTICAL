@@ -4,9 +4,10 @@ const assert = require("assert");
 const search = require("../static/search.js");
 
 const codes = {
-  iata: { DE: "CFG", CI: "CAL", IT: "TTW" },
-  icao: { CFG: "CFG", CAL: "CAL", TTW: "TTW", ASV: "ASV" },
+  iata: { DE: "CFG", CI: "CAL", IT: "TTW", AV: "AVA" },
+  icao: { CFG: "CFG", CAL: "CAL", TTW: "TTW", ASV: "ASV", AVA: "AVA" },
   labels: {
+    AVA: { iata: "AV", icao: "AVA", zh: "哥倫比亞航空", en: "Avianca" },
     CFG: { iata: "DE", icao: "CFG", zh: "德國神鷹航空", en: "Condor" },
     CAL: { iata: "CI", icao: "CAL", zh: "中華航空", en: "China Airlines" },
     TTW: { iata: "IT", icao: "TTW", zh: "台灣虎航", en: "Tigerair Taiwan" },
@@ -34,6 +35,10 @@ assert.strictEqual(parsed("de A320"), null);
 assert.strictEqual(parsed("9S"), null);
 assert.strictEqual(parsed("ZZ"), null);
 assert.strictEqual(parsed("ASV").type, "ICAO");
+assert.strictEqual(parsed("AV").key, "AVA");
+assert.strictEqual(parsed("av").key, "AVA");
+assert.strictEqual(parsed("AVA").key, "AVA");
+assert.strictEqual(parsed("iata:AV A320").remainder, "A320");
 
 const beyond = search.normalize("Etihad launches Beyond Borders cabins");
 assert.strictEqual(search.termMatches(beyond, "de"), false);
@@ -61,6 +66,13 @@ const articles = [
   { id: "unrelated", title: { en: "Airport terminal" }, search: "航廈" }
 ];
 const originalArticles = JSON.stringify(articles);
+const aviancaArticles = [
+  { id: "avianca", airlines: ["AVA"], search: "A320", title: { en: "Avianca adds flights" } },
+  { id: "available", search: "available aviation A320" }
+];
+for (const query of ["AV", "av", "AVA", "iata:AV", "AV A320"]) {
+  assert.deepStrictEqual(ids(find(query, "en", aviancaArticles)), ["avianca"]);
+}
 const modelArticles = [
   { id: "six", models: ["GPT 6"], search: "華航", airlines: ["CAL"] },
   { id: "sol", models: ["GPT 6.1 Sol"], search: "華航" },
