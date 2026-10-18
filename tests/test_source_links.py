@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -56,6 +57,22 @@ def main() -> int:
         build.load_json(build.DATA_DIR / "sources.json", []))
     assert all(not common.is_google_news_url(source["url"])
                for source in public_sources)
+
+    # Persisted corporate rows remain fetchable, but cannot leak into either
+    # language's selected directory even when their public flag is true.
+    corporate_keys = {"starluxnews", "americannews", "evaair", "hainanair",
+                      "airbus", "boeing", "iata"}
+    corporate_names = {common.SOURCES[key]["name"] for key in corporate_keys}
+    stale_rows = [{"key": key, "public": True} for key in corporate_keys]
+    merged = build.merged_sources(stale_rows)
+    assert corporate_keys.issubset({row["key"] for row in merged})
+    for lang in ("zh", "en"):
+        rows = build.sources_rows_view(merged, lang, datetime.now(timezone.utc))
+        names = {row["name"] for row in rows}
+        assert not names & corporate_names
+        assert {"FAA", "NTSB", "ICAO", "EASA", "Reuters", "AeroTime",
+                "CAA Taiwan", "FlightAware"}.issubset(names)
+    assert all(common.SOURCES[key].get("endpoint") for key in corporate_keys)
 
     # Every non-archived historical article must retain at least one direct
     # publisher/source URL. Google News may be discovery input, but it is not
