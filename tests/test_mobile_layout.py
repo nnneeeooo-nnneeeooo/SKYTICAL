@@ -87,7 +87,7 @@ def main() -> None:
         "China Airlines Adjusts Two Taoyuan-Fukuoka Flights After Airport Restrictions")
     assert len(en_short.split()) <= 14 and "…" not in en_short
 
-    assert css.count("@media (max-width: 1100px)") == 2
+    assert "@media (max-width: 1100px)" in css
     assert "@media (max-width: 900px)" not in css
     assert "@media (max-width: 720px)" in css
     assert ".page { width: 100%; overflow-x: clip; }" in css

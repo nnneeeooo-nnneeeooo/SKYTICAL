@@ -299,8 +299,9 @@ a.flash-row:hover .flash-text { color: var(--color-accent); }
 }
 .hero-dot.active { background: var(--color-accent); border-color: var(--color-accent); }
 
+html[lang^="en"] { --feed-category-width: 144px; }
 .feed-row {
-  display: grid; grid-template-columns: 48px 84px minmax(0, 1fr) auto;
+  display: grid; grid-template-columns: 48px var(--feed-category-width, 100px) minmax(0, 1fr) auto;
   grid-template-areas:
     "time category copy source"
     ". . summary summary";
@@ -310,7 +311,7 @@ a.flash-row:hover .flash-text { color: var(--color-accent); }
 }
 .feed-row:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); color: inherit; }
 .feed-time { grid-area: time; font-size: 13px; font-weight: 800; }
-.feed-category { grid-area: category; justify-content: flex-start; }
+.feed-category { grid-area: category; justify-content: flex-start; white-space: nowrap; }
 .feed-copy { grid-area: copy; min-width: 0; }
 .feed-source {
   grid-area: source;
