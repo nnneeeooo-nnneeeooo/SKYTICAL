@@ -14,11 +14,11 @@
 
 | 檔案 | 尺寸 | 用途 |
 | --- | --- | --- |
-| `static/skytical-logo-8bit.svg` | 220 × 48 | 淺底橫式 Logo，主字標與標語維持正式灰色色票 |
-| `static/skytical-logo-8bit-dark.svg` | 220 × 48 | 深底橫式 Logo，米白字標與淺藍灰標語；翼形三色維持原樣 |
+| `static/skytical-logo-8bit.svg` | 212 × 48 | 淺底橫式 Logo，主字標與標語維持正式灰色色票 |
+| `static/skytical-logo-8bit-dark.svg` | 212 × 48 | 深底橫式 Logo，米白字標與淺藍灰標語；翼形三色維持原樣 |
 | `static/skytical-mark-8bit.svg` | 44 × 32 | 獨立翼標，供圖示或 favicon 調用 |
-| `static/skytical-logo-8bit.png` | 880 × 192 | 淺底版透明 PNG，4 倍整數放大 |
-| `static/skytical-logo-8bit-dark.png` | 880 × 192 | 深底版透明 PNG，4 倍整數放大 |
+| `static/skytical-logo-8bit.png` | 848 × 192 | 淺底版透明 PNG，4 倍整數放大 |
+| `static/skytical-logo-8bit-dark.png` | 848 × 192 | 深底版透明 PNG，4 倍整數放大 |
 | `static/skytical-mark-8bit.png` | 176 × 128 | 翼標透明 PNG，4 倍整數放大 |
 
 網站建置時，`static/` 資產會複製至 `/assets/`。此提交僅保存資產，沒有將其接入正式網站版型。深底版的範例：
@@ -26,7 +26,7 @@
 ```html
 <img src="/assets/skytical-logo-8bit-dark.svg"
      alt="SKYTICΛL — SKYLINE TO AVIATION NEWS"
-     width="220" height="48">
+     width="212" height="48">
 ```
 
 優先使用 SVG，保留長寬比；盡量以整數倍尺寸呈現。PNG 使用整數倍縮放及 `image-rendering: pixelated`，避免柔化像素邊緣。
@@ -34,6 +34,8 @@
 ## 像素母版與重現方式
 
 `docs/brand/SKYTICAL-8BIT-master.json` 保存翼形每一格的顏色、手工像素字形、精確拼字，以及來源母版的 SHA-256。這是像素版的重建資料，不取代正式品牌母版。
+
+2026-10-19 的視覺平衡修正記錄於 `lockup`：翼標原點由 `(0, 8)` 上移至 `(0, 1)`，字標與標語由 `x=58` 左移至 `x=50`，畫布寬度由 `220` 收至 `212`。翼標可視中心為 `y=16.5`，與主字標中心一致；兩者留白由 `16` 格縮至 `8` 格。獨立翼標不受橫式排版調整影響。
 
 在 repository 根目錄執行：
 
