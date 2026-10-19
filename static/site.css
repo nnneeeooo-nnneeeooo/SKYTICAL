@@ -312,6 +312,10 @@ html[lang^="en"] { --feed-category-width: 144px; }
 .feed-row:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); color: inherit; }
 .feed-time { grid-area: time; font-size: 13px; font-weight: 800; }
 .feed-category { grid-area: category; justify-content: flex-start; white-space: nowrap; }
+.feed-category--short {
+  display: block; width: var(--feed-category-width, 100px);
+  text-align: justify; text-align-last: justify;
+}
 .feed-copy { grid-area: copy; min-width: 0; }
 .feed-source {
   grid-area: source;
