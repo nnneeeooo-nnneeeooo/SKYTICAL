@@ -518,6 +518,10 @@ OUTPUT RULES:
   include it in parentheses after that airport or city on first mention in
   both languages. If multiple named airports are central to the story,
   include every supplied code. Never infer a code missing from evidence.
+  Preserve the supplied airport identities in entities.airports and in the
+  visible body of both languages, including publish_brief. Do not shorten
+  a named airport to a city and thereby drop its supplied code. Headline
+  and body first mentions must each carry the code when naming an airport.
 - Write for readers, never narrate the editorial process. Do not explain why
   the article should name something, how the newsroom corrected or added
   context, which fields were cross-checked, or how sources were layered.
