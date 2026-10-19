@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-10-19T14:06Z",
+  "updatedUtc": "2026-10-19T14:08Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
@@ -39,9 +39,9 @@
       "unknownCalls": 440
     },
     "openai:gpt-6": {
-      "calls": 480,
-      "inputTokens": 2903962,
-      "outputTokens": 1468981,
+      "calls": 477,
+      "inputTokens": 2876331,
+      "outputTokens": 1458304,
       "unknownCalls": 70
     },
     "openai:gpt-6+search": {
@@ -238,43 +238,43 @@
       "outputTokens": 193326
     },
     "2026-10-19": {
-      "calls": 98,
-      "inputTokens": 450857,
-      "outputTokens": 155850
+      "calls": 92,
+      "inputTokens": 414623,
+      "outputTokens": 142558
     }
   },
   "recentRuns": [
     {
-      "startedUtc": "2026-10-19T14:04Z",
-      "finishedUtc": "2026-10-19T14:06Z",
+      "startedUtc": "2026-10-19T14:07Z",
+      "finishedUtc": "2026-10-19T14:08Z",
       "workflow": "hourly",
       "taskType": "article",
-      "groupId": "g-20261019-1404-1",
+      "groupId": "g-20261019-1407-1",
       "eventId": null,
       "sourceCount": 1,
       "primarySource": "Simple Flying",
       "result": "published",
-      "articleId": "a-20261019-1404-qantas-and-british-airways-reconfigure-a",
+      "articleId": "a-20261019-1407-qantas-and-british-airways-adjust-a380-c",
       "finalStatus": "publish",
       "finalModel": "openai:gpt-6",
       "fallbackUsed": false,
-      "attemptCount": 2,
-      "httpCallCount": 2,
+      "attemptCount": 1,
+      "httpCallCount": 1,
       "repairCallCount": 0,
       "durationsMs": {
         "companionRetrieval": null,
         "fulltextEnrichment": null,
         "plaEnrichment": null,
-        "archiveRetrieval": 4541,
+        "archiveRetrieval": 4530,
         "promptAssembly": 1,
-        "drafting": 109885,
-        "validation": 2,
+        "drafting": 54693,
+        "validation": 1,
         "factVerification": 0,
         "evidenceBinding": 0,
         "glossaryCheck": 0,
         "fabricationCheck": 0,
         "articleBuild": 0,
-        "total": 114642
+        "total": 59433
       },
       "attempts": [
         {
@@ -282,29 +282,11 @@
           "provider": "openai",
           "model": "gpt-6",
           "label": "openai:gpt-6",
-          "startedUtc": "2026-10-19T14:04Z",
-          "durationMs": 65746,
+          "startedUtc": "2026-10-19T14:07Z",
+          "durationMs": 54697,
           "httpCalls": 1,
           "repairCalls": 0,
-          "httpDurationMs": 65740,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "evidence_binding_failed",
-          "failureStage": "evidenceBinding",
-          "failureMessage": "F5 claim adds high-risk atom 'A380' not present in its own sourceQuote",
-          "retryPlanned": true,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "openai",
-          "model": "gpt-6",
-          "label": "openai:gpt-6",
-          "startedUtc": "2026-10-19T14:05Z",
-          "durationMs": 44145,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 44140,
+          "httpDurationMs": 54690,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,
@@ -320,8 +302,8 @@
       }
     },
     {
-      "startedUtc": "2026-10-19T13:49Z",
-      "finishedUtc": "2026-10-19T13:55Z",
+      "startedUtc": "2026-10-19T13:57Z",
+      "finishedUtc": "2026-10-19T13:59Z",
       "workflow": "hourly",
       "taskType": "article",
       "groupId": "g-20261019-1357-1",
