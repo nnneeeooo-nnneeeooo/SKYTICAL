@@ -57,6 +57,32 @@ def ohare_article() -> dict:
 
 
 def main() -> int:
+    # Route airports supplied by the source must each survive brief copy,
+    # even when the headline only names a city. Cities alone stay unguessed.
+    route = {
+        "entities": {"airports": [
+            "Delhi Indira Gandhi International Airport",
+            "Dubai International Airport"]},
+        "zh": {"title": "阿聯酋航空德里鳥擊延誤", "summary": "", "body": [
+            "旅客由德里英迪拉・甘地國際機場前往杜拜國際機場。"]},
+        "en": {"title": "Emirates bird strike in Delhi", "summary": "", "body": [
+            "Passengers traveled from Delhi Indira Gandhi International Airport to Dubai International Airport."]},
+    }
+    assert airport_codes.validate_article(route)
+    changed, unresolved = airport_codes.enforce_article(route)
+    assert changed and unresolved == []
+    assert "德里英迪拉・甘地國際機場（DEL）" in route["zh"]["body"][0]
+    assert "杜拜國際機場（DXB）" in route["zh"]["body"][0]
+    assert "Delhi Indira Gandhi International Airport (DEL)" in route["en"]["body"][0]
+    assert "Dubai International Airport (DXB)" in route["en"]["body"][0]
+    assert "DEL" not in route["en"]["title"]
+    assert airport_codes.validate_article(route) == []
+    snapshot = copy.deepcopy(route)
+    assert airport_codes.enforce_article(route) == (False, [])
+    assert route == snapshot
+    assert airport_codes.resolve_airport("Delhi") is None
+    assert airport_codes.resolve_airport("Dubai") is None
+
     resolved = airport_codes.resolve_airport("Catania airport")
     assert resolved is not None, "Catania airport must resolve"
     assert resolved["code"] == "CTA", resolved
