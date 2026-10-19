@@ -1,0 +1,114 @@
+@font-face {
+  font-family: "Fusion Pixel TW";
+  src: url("fusion-pixel-tw-v2026-10-16.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+}
+/* Hidden theme controls and unlock dialog. */
+[data-set-theme][hidden] { display: none; }
+.pixel-brand { display: none; }
+.pixel-unlock { display: none; border: 0; font: inherit; font-size: 11px; cursor: pointer; }
+.js .pixel-unlock { display: inline-flex; }
+.pixel-unlock:hover { outline: 1px solid var(--color-accent); outline-offset: 2px; }
+.pixel-dialog {
+  max-width: min(460px, calc(100% - 40px)); padding: 32px;
+  background: #14243c; color: #f1edd7; border: 4px solid #75d8fa;
+  box-shadow: 8px 8px 0 #080f1e; font-family: "Fusion Pixel TW", monospace;
+}
+.pixel-dialog::backdrop { background: rgb(6 14 29 / .78); }
+.pixel-dialog [hidden] { display: none; }
+.pixel-dialog-icon { display: block; color: #ffd36d; font-size: 48px; line-height: 1; margin-bottom: 20px; }
+.pixel-dialog h2 { font: 400 24px/1.5 "Fusion Pixel TW", monospace; margin-bottom: 16px; }
+.pixel-dialog p { font-size: 16px; line-height: 1.8; color: #c3d3e7; }
+.pixel-dialog-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.pixel-dialog .btn { min-height: 44px; font: 400 16px/1.5 "Fusion Pixel TW", monospace; border: 2px solid #75d8fa; color: #f1edd7; }
+.pixel-dialog .btn-primary { background: #ffd36d; border-color: #ffd36d; color: #122039; box-shadow: 3px 3px 0 #92632d; }
+.pixel-dialog :focus-visible { outline: 2px solid #ffd36d; outline-offset: 4px; }
+/* Classic SKYTICAL layout: inherit all sizing, spacing, typography and breakpoints
+   from site.css. Theme styling preserves the classic page layout. */
+html[data-theme="8bit"] {
+  color-scheme: dark;
+  --color-bg: #122039;
+  --color-surface: #1b3050;
+  --color-text: #f1edd7;
+  --color-accent: #ffd36d;
+  --color-accent-2: #75d8fa;
+  --color-divider: #405a7a;
+  --color-neutral-100: #233e60;
+  --color-neutral-200: #2c4a6e;
+  --color-neutral-300: #405a7a;
+  --color-neutral-400: #7591b1;
+  --color-neutral-500: #91abc8;
+  --color-neutral-600: #adc4de;
+  --color-neutral-700: #c3d3e7;
+  --color-neutral-800: #d8e4f1;
+  --color-neutral-900: #f1edd7;
+  --color-accent-100: #3d3529;
+  --color-accent-200: #5c492f;
+  --color-accent-600: #ffe3a2;
+  --color-accent-700: #ffeac0;
+  --color-accent-800: #ffd36d;
+  --color-accent-2-100: #1b3c52;
+  --color-accent-2-600: #9fe6ff;
+  --color-accent-2-800: #75d8fa;
+  --shadow-sm: 3px 3px 0 #080f1e;
+  --shadow-md: 4px 4px 0 #080f1e;
+  --shadow-lg: 6px 6px 0 #080f1e;
+  --font-heading: "Fusion Pixel TW", monospace;
+  --font-body: "Fusion Pixel TW", monospace;
+}
+
+html[data-theme="8bit"], [data-theme="8bit"] body { background: #0a1427; }
+[data-theme="8bit"] .page { box-shadow: 0 0 0 1px #405a7a; }
+[data-theme="8bit"] .text-muted { color: #adc4de; }
+[data-theme="8bit"] .brand-link { display: none; }
+[data-theme="8bit"] .pixel-brand {
+ display: flex; align-items: center; flex: 0 0 320px; min-width: 0;
+ aspect-ratio: 50 / 11; overflow: hidden; color: inherit; text-decoration: none;
+}
+[data-theme="8bit"] .pixel-brand img {
+ display: block; width: 100%; height: 100%; max-width: 320px;
+ object-fit: contain; image-rendering: pixelated;
+}
+.pixel-footer-logo { display: none; }
+[data-theme="8bit"] .footer-logo { display: none; }
+[data-theme="8bit"] .pixel-footer-logo {
+ display: block; width: min(100%,300px); height: auto; image-rendering: pixelated;
+}
+[data-theme="8bit"] :is(.seg-btn, .ticker-label, .utility-clock, .feed-time, .flash-time, .stat-value) {
+ font-family: "Fusion Pixel TW", "Noto Sans TC", monospace;
+}
+[data-theme="8bit"] :is(.seg, .tag, .btn, .hero-dot, .nav-beta, .nav-toggle) { border-radius: 0; }
+[data-theme="8bit"] .seg { box-shadow: 2px 2px 0 #080f1e; }
+[data-theme="8bit"] .seg-btn.active { color: #122039; }
+[data-theme="8bit"] .seg-btn:focus-visible { outline-color: #75d8fa; }
+[data-theme="8bit"] .seg-btn.active:focus-visible { outline-color: #122039; }
+[data-theme="8bit"] .btn-primary { color: #122039; }
+[data-theme="8bit"] .hero-img { border-color: #405a7a; }
+[data-theme="8bit"] .hero-dot.active { box-shadow: 2px 2px 0 #92632d; }
+[data-theme="8bit"] .pulse-dot { animation: none; box-shadow: 2px 2px 0 #315a75; }
+[data-theme="8bit"] .summary-preview__text { color: #c3d3e7; }
+[data-theme="8bit"] .pixel-unlock { border: 0; }
+[data-theme="8bit"] :focus-visible { outline-color: #75d8fa; }
+@media (max-width: 1100px) {
+ [data-theme="8bit"] .pixel-brand { flex: 0 1 280px; min-width: 0; }
+ [data-theme="8bit"] .pixel-brand img { max-width: 280px; }
+}
+@media (max-width: 720px) {
+ [data-theme="8bit"] .pixel-brand { flex: 0 1 224px; min-width: 0; }
+ [data-theme="8bit"] .pixel-brand img { max-width: 224px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ [data-theme="8bit"] .marquee-track { animation: none; }
+}
+
+/* Full pixel typography; keep the classic layout and its responsive sizing. */
+[data-theme="8bit"] :is(body, h1, h2, h3, h4, h5, h6, a, p, span,
+ button, input, select, textarea, label, table, th, td, div,
+ .btn, .card-title, .nav-brand) {
+ font-family: "Fusion Pixel TW", "Noto Sans TC", monospace;
+ font-synthesis: none;
+}
+[data-theme="8bit"] input::placeholder {
+ font-family: "Fusion Pixel TW", "Noto Sans TC", monospace;
+}

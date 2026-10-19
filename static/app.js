@@ -38,19 +38,67 @@
   setInterval(tick, 10000);
 
   /* — theme seg: data-theme on <html> + localStorage persistence — */
+  var themeKey = "avwire-theme";
+  var unlockKey = "skytical-8bit-unlocked";
+  var pixelUnlocked = document.documentElement.dataset.pixelUnlocked === "true";
   var themeBtns = Array.prototype.slice.call(document.querySelectorAll("[data-set-theme]"));
+  var unlockBtn = document.querySelector("[data-unlock-8bit]");
+  var pixelDialog = document.querySelector(".pixel-dialog");
+  var pixelRefresh = document.querySelector("[data-pixel-refresh]");
+  var pixelClose = document.querySelector("[data-pixel-close]");
+  var favicon = document.querySelector('link[rel="icon"]');
+  var themeColor = document.querySelector('meta[name="theme-color"]');
+  var classicFavicon = favicon ? favicon.getAttribute("href") : "";
+  var isZh = document.documentElement.lang.indexOf("zh") === 0;
   function reflectTheme() {
-    var cur = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    var cur = document.documentElement.dataset.theme || "light";
     themeBtns.forEach(function (b) {
-      b.classList.toggle("active", b.dataset.setTheme === cur);
+      var selected = b.dataset.setTheme === cur;
+      b.classList.toggle("active", selected);
+      b.setAttribute("aria-pressed", String(selected));
+      if (b.dataset.setTheme === "8bit") b.hidden = !pixelUnlocked;
     });
+    if (favicon) favicon.setAttribute("href", cur === "8bit" ? favicon.dataset.pixelHref : classicFavicon);
+    if (themeColor) themeColor.setAttribute("content", cur === "8bit" ? "#122039" : cur === "dark" ? "#171514" : "#f3f2f2");
+  }
+  function setTheme(theme, persist) {
+    if (["light", "dark", "8bit"].indexOf(theme) < 0 || (theme === "8bit" && !pixelUnlocked)) theme = "light";
+    document.documentElement.dataset.theme = theme;
+    if (persist) {
+      try { localStorage.setItem(themeKey, theme); } catch (e) { /* unavailable storage */ }
+    }
+    reflectTheme();
   }
   themeBtns.forEach(function (b) {
     b.addEventListener("click", function () {
-      document.documentElement.dataset.theme = b.dataset.setTheme;
-      try { localStorage.setItem("avwire-theme", b.dataset.setTheme); } catch (e) { /* private mode */ }
-      reflectTheme();
+      setTheme(b.dataset.setTheme, true);
     });
+  });
+  if (unlockBtn && pixelDialog && pixelClose && pixelRefresh) {
+    unlockBtn.addEventListener("click", function () {
+      try {
+        localStorage.setItem(unlockKey, "true");
+      } catch (e) {
+        // A refresh would discard an in-memory unlock; offer this tab instead.
+        pixelUnlocked = true;
+        reflectTheme();
+        pixelDialog.querySelector(".pixel-dialog-copy").textContent = isZh
+          ? "瀏覽器無法儲存設定，此分頁已暫時解鎖，可直接切換 8-bit。"
+          : "Storage is unavailable. 8-bit mode is available in this tab.";
+        pixelRefresh.hidden = true;
+        pixelClose.textContent = isZh ? "關閉" : "Close";
+      }
+      pixelDialog.showModal();
+    });
+    pixelClose.addEventListener("click", function () { pixelDialog.close(); });
+    pixelRefresh.addEventListener("click", function () { window.location.reload(); });
+  }
+  window.addEventListener("storage", function (event) {
+    if (event.key !== themeKey && event.key !== unlockKey && event.key !== null) return;
+    try {
+      pixelUnlocked = localStorage.getItem(unlockKey) === "true";
+      setTheme(localStorage.getItem(themeKey) || "light", false);
+    } catch (e) { /* retain this tab's current state */ }
   });
   reflectTheme();
 

@@ -90,10 +90,14 @@ def static_asset_version() -> str:
     digest = hashlib.sha256()
     for name in (
         "site.css",
+        "pixel.css",
+        "fusion-pixel-tw-v2026-10-16.woff2",
         "app.js",
         "search.js",
         "highlight.js",
         "skytical-logo.svg",
+        "skytical-logo-8bit-dark.svg",
+        "skytical-mark-8bit.svg",
         "skytical-mark.svg",
         "skytical-social.png",
         "briefing.css",
