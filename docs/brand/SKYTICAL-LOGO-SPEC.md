@@ -80,4 +80,4 @@ python docs/brand/generate_classic_logo.py --social
 
 2026-10-19 依使用者要求新增像素風版本，供隱藏主題與預覽使用。這是明確授權的像素化衍生版本，不替換上述正式母版或已核准資產；前述禁止重新取樣與替換字型的規則仍適用於正式 Logo 的一般輸出。
 
-像素版保留紅、橘、金三層掠翼、`SKYTICΛL` 的倒 V／Lambda（無橫槓），以及完整標語。檔案、重建指令與使用限制見 [SKYTICAL-8BIT-LOGO.md](SKYTICAL-8BIT-LOGO.md)。目前僅保存可重用資產，正式網站尚未啟用 8-bit 主題。
+像素版保留紅、橘、金三層掠翼、`SKYTICΛL` 的倒 V／Lambda（無橫槓），以及完整標語。檔案、重建指令與使用限制見 [SKYTICAL-8BIT-LOGO.md](SKYTICAL-8BIT-LOGO.md)。於頁尾「資料來源」點擊 `8-bit` 解鎖並重新整理後，即可切換像素主題。

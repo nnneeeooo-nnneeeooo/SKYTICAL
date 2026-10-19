@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f3f2f2">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
 <meta name="author" content="SKYTICAL">
@@ -38,13 +39,14 @@
 {% if structured_data %}
 <script type="application/ld+json">{{ structured_data | tojson }}</script>
 {% endif %}
-<link rel="icon" type="image/svg+xml" href="{{ favicon }}">
-<script>try{var t=localStorage.getItem("avwire-theme");if(t){document.documentElement.dataset.theme=t;}}catch(e){}document.documentElement.classList.add("js");</script>
+<link rel="icon" type="image/svg+xml" href="{{ favicon }}" data-pixel-href="{{ base }}/assets/skytical-mark-8bit.svg?v={{ asset_version }}">
+<script>try{var u=localStorage.getItem("skytical-8bit-unlocked")==="true";if(u){document.documentElement.dataset.pixelUnlocked="true";}var t=localStorage.getItem("avwire-theme");if(t==="light"||t==="dark"||(t==="8bit"&&u)){document.documentElement.dataset.theme=t;}}catch(e){}document.documentElement.classList.add("js");</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ base }}/assets/modernist.css">
 <link rel="stylesheet" href="{{ base }}/assets/site.css?v={{ asset_version }}">
+<link rel="stylesheet" href="{{ base }}/assets/pixel.css?v={{ asset_version }}">
 <link rel="alternate" type="application/rss+xml"
       title="{{ t.siteName }} — {{ t.latest }}" href="{{ feed_url }}">
 {% block head_extra %}{% endblock %}
@@ -88,8 +90,9 @@
         <a class="seg-btn{% if lang == 'en' %} active{% endif %}" href="{{ en_url }}">EN</a>
       </span>
       <span class="seg seg-lang">
-        <button type="button" class="seg-btn active" data-set-theme="light">{{ t.themeOpts[0] }}</button>
-        <button type="button" class="seg-btn" data-set-theme="dark">{{ t.themeOpts[1] }}</button>
+        <button type="button" class="seg-btn active" data-set-theme="light" aria-pressed="true">{{ t.themeOpts[0] }}</button>
+        <button type="button" class="seg-btn" data-set-theme="dark" aria-pressed="false">{{ t.themeOpts[1] }}</button>
+        <button type="button" class="seg-btn" data-set-theme="8bit" aria-pressed="false" hidden>8-bit</button>
       </span>
     </div>
   </div>
@@ -102,6 +105,10 @@
           <img src="{{ base }}/assets/skytical-logo.svg?v={{ asset_version }}"
                alt="" width="1000" height="220">
         </object>
+      </a>
+      <a class="pixel-brand" href="{{ home_url }}" aria-label="SKYTICΛL — {{ t.homeLabel }}">
+        <img src="{{ base }}/assets/skytical-logo-8bit-dark.svg?v={{ asset_version }}"
+             alt="SKYTICΛL — SKYLINE TO AVIATION NEWS" width="212" height="48">
       </a>
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
         <span class="nav-toggle-icon" aria-hidden="true">☰</span>
@@ -143,6 +150,8 @@
         <img class="footer-logo" src="{{ base }}/assets/skytical-logo.svg?v={{ asset_version }}"
              alt="SKYTICAL — SKYLINE TO AVIATION NEWS" width="1000" height="220"
              loading="lazy">
+        <img class="pixel-footer-logo" src="{{ base }}/assets/skytical-logo-8bit-dark.svg?v={{ asset_version }}"
+             alt="SKYTICΛL — SKYLINE TO AVIATION NEWS" width="212" height="48" loading="lazy">
         <p class="text-muted" style="font-size:12.5px;line-height:1.8;margin-top:8px;">{{ t.footerAbout }}</p>
         <p class="text-muted" style="font-size:11.5px;letter-spacing:.04em;margin:8px 0 0;">{{ t.lastBuild }} {{ build.stamp }} UTC</p>
         <a class="btn btn-secondary footer-changelog-button" href="{{ changelog_url }}">{{ t.footerChangelog }} →</a>
@@ -154,6 +163,7 @@
           {% for s in footer_sources %}
           <a href="{{ s.url }}" target="_blank" rel="noopener" class="tag tag-neutral" style="text-decoration:none;">{{ s.name }}</a>
           {% endfor %}
+          <button type="button" class="tag tag-neutral pixel-unlock" data-unlock-8bit aria-haspopup="dialog">8-bit</button>
         </div>
         <h6 style="margin:20px 0 10px;">{{ t.topicNavLabel }}</h6>
         <nav aria-label="{{ t.topicNavLabel }}" style="display:flex;flex-wrap:wrap;gap:8px;">
@@ -165,6 +175,15 @@
     </div>
   </div>
 </div>
+<dialog class="pixel-dialog" aria-labelledby="pixel-dialog-title">
+  <span class="pixel-dialog-icon" aria-hidden="true">✦</span>
+  <h2 id="pixel-dialog-title">{% if lang == 'zh' %}你發現了隱藏主題！{% else %}You found a secret theme!{% endif %}</h2>
+  <p class="pixel-dialog-copy">{% if lang == 'zh' %}8-bit 主題已解鎖。重新整理後，就能在主題選單選擇 8-bit。{% else %}8-bit mode is unlocked. Refresh to add it to your theme selector.{% endif %}</p>
+  <div class="pixel-dialog-actions">
+    <button type="button" class="btn btn-secondary" data-pixel-close>{% if lang == 'zh' %}稍後再玩{% else %}Later{% endif %}</button>
+    <button type="button" class="btn btn-primary" data-pixel-refresh autofocus>{% if lang == 'zh' %}重新整理{% else %}Refresh{% endif %}</button>
+  </div>
+</dialog>
 {% block body_scripts %}{% endblock %}
 </body>
 </html>
