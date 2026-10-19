@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import struct
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -35,28 +37,55 @@ def main() -> None:
 
     approved_assets = {
         master: "53ccee38ecb372a446ebd89737070852e0d8876b04af7efdb1709e78d8553621",
-        logo_path: "2990e0352b72c78764106940cc4e01eb66e7cce5ff67b587eafbde07cf28cccf",
+        logo_path: "950b7aa5e839d68aca8529b7fa1686d78402429609f3fd6e28ac201989dcd713",
         mark_path: "d076a98cf758ec7d36475e2df95664b6c6e52b7b758df5122b37cf64799f43cd",
-        social_path: "b5903b8496c802725fcdfe6072631a138c8c375a438ec1d92606c5e41f7076a5",
+        social_path: "60fe314df91442268940f1d56663c8170ddbdfec6aa782c46f902f0af467689d",
     }
     for path, approved_hash in approved_assets.items():
-        assert hashlib.sha256(path.read_bytes()).hexdigest() == approved_hash
+        payload = path.read_bytes()
+        if path.suffix == ".svg":
+            payload = payload.replace(b"\r\n", b"\n")
+        assert hashlib.sha256(payload).hexdigest() == approved_hash, path.name
         assert approved_hash in spec
     assert 'viewBox="250 660 1000 220"' in logo
     assert 'viewBox="250 650 250 220"' in mark
-    for asset in (logo, mark):
+    for asset, transform, clipping in (
+        (logo, "matrix(0.95, 0, 0, 0.95, 254.925, 614.3)",
+         "M 254.925 614.3 L 522.825 614.3 L 522.825 853.7 L 254.925 853.7 Z"),
+        (mark, "matrix(0.95, 0, 0, 0.95, 237.925, 645.3)",
+         "M 237.925 645.3 L 505.825 645.3 L 505.825 884.7 L 237.925 884.7 Z"),
+    ):
         normalized = asset.lower()
         assert 'fill="#f3f2f2"' not in normalized
         assert 'fill="#ffffff"' not in normalized
         assert "data:image/png;base64," in normalized
-        assert asset.count(
-            'matrix(0.95, 0, 0, 0.95, 237.925, 645.3)'
-        ) == 2
+        assert asset.count(transform) == 2
         assert "matrix(0.75, 0, 0, 0.75, 257.250011, 655.499924)" not in asset
-        assert (
-            "M 237.925 645.3 L 505.825 645.3 L 505.825 884.7 "
-            "L 237.925 884.7 Z"
-        ) in asset
+        assert clipping in asset
+
+    # Reposition only the existing wing layers; preserve every letter path,
+    # including the Lambda, and the original embedded wing pixels/mask.
+    ns = {"svg": "http://www.w3.org/2000/svg"}
+    canonical = ET.parse(master).getroot()
+    aligned = ET.fromstring(logo)
+    for color in ("#48515c", "#75808c"):
+        original_groups = [ET.tostring(el) for el in canonical if el.get("fill") == color]
+        aligned_groups = [ET.tostring(el) for el in aligned if el.get("fill") == color]
+        assert original_groups and original_groups == aligned_groups
+    href = "{http://www.w3.org/1999/xlink}href"
+    assert [el.get(href) for el in canonical.findall(".//svg:image", ns)] == [
+        el.get(href) for el in aligned.findall(".//svg:image", ns)]
+
+    pixels = json.loads((ROOT / "docs/brand/SKYTICAL-8BIT-master.json").read_text(encoding="utf-8"))
+    assert pixels["wordmark"] == "SKYTICΛL"
+    assert "11111" not in pixels["glyphs"]["Λ"]
+    lockup = pixels["lockup"]
+    wing_points = [(x, y) for y, row in enumerate(pixels["wing"])
+                   for x, cell in enumerate(row) if cell != "."]
+    wing_top = min(y for x, y in wing_points) + lockup["wingOrigin"][1]
+    wing_bottom = max(y for x, y in wing_points) + lockup["wingOrigin"][1]
+    text_center = lockup["wordmarkOrigin"][1] + (7 * 3 - 1) / 2
+    assert abs((wing_top + wing_bottom) / 2 - text_center) <= 1
 
     assert png_dimensions(social_path) == (1200, 630)
     assert home.count(f'/assets/skytical-logo.svg?v={build.ASSET_VERSION}') >= 2

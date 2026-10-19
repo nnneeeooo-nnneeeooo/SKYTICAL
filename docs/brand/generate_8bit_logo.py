@@ -79,16 +79,17 @@ def png(width: int, height: int, rects: list[tuple], scale: int = 4) -> bytes:
 
 def generated_assets() -> dict[str, bytes]:
     master = json.loads(MASTER.read_text(encoding="utf-8"))
+    layout = master["lockup"]
     variants = {
         "skytical-mark-8bit": (44, 32, wing_rects(master), "SKYTICAL — 8-bit swept-wing mark"),
     }
     for suffix, ink, secondary in (("", "#48515C", "#75808C"),
                                    ("-dark", "#F1EDD7", "#ADC4DE")):
-        rects = (wing_rects(master, 0, 8)
-                 + text_rects(master, master["wordmark"], 58, 6, 3, ink)
-                 + text_rects(master, master["tagline"], 58, 33, 1, secondary))
+        rects = (wing_rects(master, *layout["wingOrigin"])
+                 + text_rects(master, master["wordmark"], *layout["wordmarkOrigin"], 3, ink)
+                 + text_rects(master, master["tagline"], *layout["taglineOrigin"], 1, secondary))
         variants["skytical-logo-8bit" + suffix] = (
-            220, 48, rects, "SKYTICΛL — SKYLINE TO AVIATION NEWS — 8-bit")
+            *layout["canvas"], rects, "SKYTICΛL — SKYLINE TO AVIATION NEWS — 8-bit")
     files = {}
     for name, (width, height, rects, title) in variants.items():
         files[name + ".svg"] = svg(width, height, rects, title).encode("utf-8")
