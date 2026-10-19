@@ -29,25 +29,19 @@
         }
       ],
       "zh": {
-        "title": "達美航空將暫停紐約至橙縣跨洲航線 美國航空維持每日飛航",
-        "summary": "達美航空將暫停「大蘋果」與橙縣間跨洲航線；美國航空維持每日飛航；該航線五個月前才恢復",
+        "title": "達美航空將暫停紐約甘迺迪機場（JFK）至橙縣約翰韋恩機場（SNA）航線 美國航空維持每日飛航",
+        "summary": "達美航空將暫停紐約（JFK）至橙縣（SNA）航線；美國航空維持每日飛航",
         "body": [
-          "根據 Simple Flying 報導，達美航空（Delta Air Lines）將暫停其跨洲航線。",
-          "報導摘要指出，這家航空公司將暫停「大蘋果」（Big Apple）與橙縣（Orange County）之間的航班。",
-          "報導摘要同時提到，達美航空是在把這條航線重新推出僅五個月之後，準備再次暫停飛航。",
-          "同一則報導的標題寫道，美國航空（American）在這條航線上維持每日飛航。",
-          "Simple Flying 的報導未說明暫停的生效日期、預計暫停多久，或是否已有其他營運安排。"
+          "達美航空（Delta Air Lines）將暫停紐約甘迺迪機場（JFK）至南加州橙縣約翰韋恩機場（SNA）的跨洲航線。",
+          "據Simple Flying報導，達美航空是在恢復這條航線約五個月後，準備再次暫停飛航；美國航空則維持這條航線每日飛航。"
         ]
       },
       "en": {
-        "title": "Delta Air Lines set to pause premium transcon route while American stays daily",
-        "summary": "Delta Air Lines to suspend Big Apple-Orange County transcon flights; American stays daily; route was brought back five months ago",
+        "title": "Delta to pause John F. Kennedy International Airport (JFK) to John Wayne Airport (SNA) route; American stays daily",
+        "summary": "Delta to pause New York (JFK)–Orange County (SNA) flights five months after their return; American stays daily",
         "body": [
-          "Delta Air Lines is set to pause its premium transcontinental route, according to Simple Flying.",
-          "The report summary states that the carrier will suspend flights between the Big Apple and Orange County.",
-          "The same summary says the route was brought back five months before the planned suspension.",
-          "The headline states that American stays daily on the route.",
-          "Simple Flying did not state when the suspension would take effect, how long it would last, or other operational details."
+          "Delta Air Lines is set to pause its transcontinental service between John F. Kennedy International Airport (JFK) in New York and John Wayne Airport (SNA) in Southern California.",
+          "The planned suspension comes about five months after Delta restored the route. American Airlines will continue daily service on the route, according to Simple Flying."
         ]
       },
       "sources": [
@@ -95,6 +89,15 @@
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The affected route connects John F. Kennedy International Airport (JFK) and John Wayne Airport (SNA).",
+          "sourceQuote": "Atlanta-based Delta Air Lines will cut flights between its hub at John F. Kennedy International Airport (JFK) and John Wayne Airport (SNA) in Southern California next month.",
+          "sourceUrl": "https://simpleflying.com/delta-air-lines-pause-premium-transcon-route-american-stay-daily/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
         }
       ],
       "riskFlags": [
@@ -109,6 +112,10 @@
         "locations": [
           "Big Apple",
           "Orange County"
+        ],
+        "airports": [
+          "John F. Kennedy International Airport",
+          "John Wayne Airport"
         ]
       },
       "entityEvidence": [
@@ -135,9 +142,22 @@
           "value": "Orange County",
           "sourceQuote": "The carrier will suspend flights between the Big Apple and Orange County after just bringing them back five months ago.",
           "sourceUrl": "https://simpleflying.com/delta-air-lines-pause-premium-transcon-route-american-stay-daily/"
+        },
+        {
+          "entityType": "airports",
+          "value": "John F. Kennedy International Airport",
+          "sourceQuote": "Atlanta-based Delta Air Lines will cut flights between its hub at John F. Kennedy International Airport (JFK) and John Wayne Airport (SNA) in Southern California next month.",
+          "sourceUrl": "https://simpleflying.com/delta-air-lines-pause-premium-transcon-route-american-stay-daily/"
+        },
+        {
+          "entityType": "airports",
+          "value": "John Wayne Airport",
+          "sourceQuote": "Atlanta-based Delta Air Lines will cut flights between its hub at John F. Kennedy International Airport (JFK) and John Wayne Airport (SNA) in Southern California next month.",
+          "sourceUrl": "https://simpleflying.com/delta-air-lines-pause-premium-transcon-route-american-stay-daily/"
         }
       ],
-      "evidenceVersion": 2
+      "evidenceVersion": 2,
+      "updatedUtc": "2026-10-19T13:11:19Z"
     }
   ]
 }
