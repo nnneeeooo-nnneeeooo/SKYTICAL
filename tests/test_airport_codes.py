@@ -83,6 +83,26 @@ def main() -> int:
     assert airport_codes.resolve_airport("Delhi") is None
     assert airport_codes.resolve_airport("Dubai") is None
 
+    delta = {
+        "entities": {"airports": [
+            "John F. Kennedy International Airport", "John Wayne Airport"]},
+        "zh": {"title": "達美航空暫停紐約甘迺迪機場至橙縣約翰韋恩機場航線",
+                "summary": "", "body": [
+                    "航線連接紐約甘迺迪機場與橙縣約翰韋恩機場。"]},
+        "en": {"title": "Delta pauses John F. Kennedy International Airport to John Wayne Airport flights",
+                "summary": "", "body": [
+                    "Flights link John F. Kennedy International Airport and John Wayne Airport."]},
+    }
+    assert airport_codes.validate_article(delta)
+    assert airport_codes.enforce_article(delta) == (True, [])
+    for key, value in (("JFK", "紐約甘迺迪機場"), ("SNA", "橙縣約翰韋恩機場")):
+        assert f"{value}（{key}）" in delta["zh"]["title"]
+        assert f"{value}（{key}）" in delta["zh"]["body"][0]
+        assert f"({key})" in delta["en"]["title"]
+        assert f"({key})" in delta["en"]["body"][0]
+    assert airport_codes.validate_article(delta) == []
+    assert airport_codes.enforce_article(delta) == (False, [])
+
     resolved = airport_codes.resolve_airport("Catania airport")
     assert resolved is not None, "Catania airport must resolve"
     assert resolved["code"] == "CTA", resolved
