@@ -27,25 +27,19 @@
         }
       ],
       "zh": {
-        "title": "阿聯酋航空波音777德里鳥擊機鼻錐受損 旅客滯留17小時",
-        "summary": "阿聯酋航空波音777遭遇鳥擊致機鼻錐受損；旅客在德里滯留17小時，航機隔日上午返回杜拜",
+        "title": "阿聯酋航空波音777德里英迪拉・甘地國際機場（DEL）鳥擊機鼻錐受損 旅客滯留17小時",
+        "summary": "阿聯酋航空波音777鳥擊致機鼻錐受損；德里英迪拉・甘地國際機場（DEL）往杜拜國際機場（DXB）旅客滯留17小時",
         "body": [
-          "根據Simple Flying的報導，阿聯酋航空一架波音777客機遭遇鳥擊，機鼻錐（nose cone）受損。",
-          "報導標題指出，事發後旅客在德里滯留17小時。",
-          "報導摘要指出，該架航機在隔日上午返回杜拜。",
-          "報導未說明鳥擊發生的具體時間、飛行階段、航班編號或是否有人受傷。",
-          "報導亦未交代機鼻錐受損的詳細程度、維修安排或後續調查情況。"
+          "阿聯酋航空一架波音777客機遭遇鳥擊，機鼻錐（nose cone）受損。原定由德里英迪拉・甘地國際機場（DEL）前往杜拜國際機場（DXB）的旅客因此滯留17小時。",
+          "據Simple Flying報導，受影響航機在隔日上午返回杜拜。"
         ]
       },
       "en": {
-        "title": "Emirates Boeing 777 nose cone damaged in Delhi bird strike; passengers stranded 17 hours",
-        "summary": "Emirates Boeing 777 nose cone damaged in a bird strike; passengers stranded 17 hours in Delhi; aircraft returned to Dubai the next morning",
+        "title": "Emirates Boeing 777 nose cone damaged in Delhi Indira Gandhi International Airport (DEL) bird strike; passengers stranded 17 hours",
+        "summary": "Emirates Boeing 777 nose cone damaged in a bird strike; Delhi Indira Gandhi International Airport (DEL) to Dubai International Airport (DXB) passengers stranded 17 hours",
         "body": [
-          "An Emirates Boeing 777 was damaged in a bird strike, with the aircraft's nose cone affected, according to Simple Flying.",
-          "The report's headline states passengers were stranded in Delhi for 17 hours after the bird strike.",
-          "The report's summary states the aircraft returned to Dubai the following morning.",
-          "The report does not specify when the bird strike occurred, the flight phase, the flight number, or whether anyone was injured.",
-          "The report also does not detail the extent of the nose cone damage, maintenance arrangements or any follow-up investigation."
+          "An Emirates Boeing 777 sustained nose cone damage in a bird strike. Passengers traveling from Delhi Indira Gandhi International Airport (DEL) to Dubai International Airport (DXB) were stranded for 17 hours.",
+          "The aircraft returned to Dubai the following morning, according to Simple Flying."
         ]
       },
       "sources": [
@@ -84,6 +78,15 @@
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The affected passengers were traveling from Delhi Indira Gandhi International Airport (DEL) to Dubai International Airport (DXB).",
+          "sourceQuote": "Emirates passengers traveling from Delhi Indira Gandhi International Airport (DEL) to Dubai International Airport (DXB) faced an overnight delay after a bird strike damaged a Boeing 777’s nose cone, forcing the airline to postpone the aircraft’s return flight for repairs.",
+          "sourceUrl": "https://simpleflying.com/emirates-passengers-stranded-delhi-bird-strike-boeing-777/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
         }
       ],
       "riskFlags": [
@@ -100,6 +103,10 @@
         "locations": [
           "Delhi",
           "Dubai"
+        ],
+        "airports": [
+          "Delhi Indira Gandhi International Airport",
+          "Dubai International Airport"
         ]
       },
       "entityEvidence": [
@@ -126,9 +133,22 @@
           "value": "Dubai",
           "sourceQuote": "The aircraft returned to Dubai the following morning.",
           "sourceUrl": "https://simpleflying.com/emirates-passengers-stranded-delhi-bird-strike-boeing-777/"
+        },
+        {
+          "entityType": "airports",
+          "value": "Delhi Indira Gandhi International Airport",
+          "sourceQuote": "Emirates passengers traveling from Delhi Indira Gandhi International Airport (DEL) to Dubai International Airport (DXB) faced an overnight delay after a bird strike damaged a Boeing 777’s nose cone, forcing the airline to postpone the aircraft’s return flight for repairs.",
+          "sourceUrl": "https://simpleflying.com/emirates-passengers-stranded-delhi-bird-strike-boeing-777/"
+        },
+        {
+          "entityType": "airports",
+          "value": "Dubai International Airport",
+          "sourceQuote": "Emirates passengers traveling from Delhi Indira Gandhi International Airport (DEL) to Dubai International Airport (DXB) faced an overnight delay after a bird strike damaged a Boeing 777’s nose cone, forcing the airline to postpone the aircraft’s return flight for repairs.",
+          "sourceUrl": "https://simpleflying.com/emirates-passengers-stranded-delhi-bird-strike-boeing-777/"
         }
       ],
-      "evidenceVersion": 2
+      "evidenceVersion": 2,
+      "updatedUtc": "2026-10-19T13:08:18Z"
     },
     {
       "id": "a-20261018-2339-private-jet-veers-off-runway-after-abort",

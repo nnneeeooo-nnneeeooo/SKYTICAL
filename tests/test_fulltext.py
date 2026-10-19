@@ -266,7 +266,9 @@ check("system prompt enforces long bodies without padding",
       and "pad, repeat, editorialize" in write.SYSTEM_PROMPT)
 check("system prompt preserves supplied airport IATA codes",
       "include every supplied code" in write.SYSTEM_PROMPT
-      and "Never infer a code missing from evidence" in write.SYSTEM_PROMPT)
+      and "Never infer a code missing from evidence" in write.SYSTEM_PROMPT
+      and "Preserve the supplied airport identities in entities.airports" in write.SYSTEM_PROMPT
+      and "including publish_brief" in write.SYSTEM_PROMPT)
 check("system prompt bans newsroom-process padding and favors briefs",
       "never narrate the editorial process" in write.SYSTEM_PROMPT
       and "never promote it to publish merely" in write.SYSTEM_PROMPT)
