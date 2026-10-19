@@ -37,9 +37,9 @@ def main() -> None:
 
     approved_assets = {
         master: "53ccee38ecb372a446ebd89737070852e0d8876b04af7efdb1709e78d8553621",
-        logo_path: "950b7aa5e839d68aca8529b7fa1686d78402429609f3fd6e28ac201989dcd713",
+        logo_path: "2c273c8ccd32d0e28073f1add47775eee4e096ea08cb5e2616c2d46f00b772f5",
         mark_path: "d076a98cf758ec7d36475e2df95664b6c6e52b7b758df5122b37cf64799f43cd",
-        social_path: "60fe314df91442268940f1d56663c8170ddbdfec6aa782c46f902f0af467689d",
+        social_path: "03524d99264300ead258e0a585e9b87353ade80d4eba2e3faa02e280c3db9b75",
     }
     for path, approved_hash in approved_assets.items():
         payload = path.read_bytes()
@@ -50,8 +50,8 @@ def main() -> None:
     assert 'viewBox="250 660 1000 220"' in logo
     assert 'viewBox="250 650 250 220"' in mark
     for asset, transform, clipping in (
-        (logo, "matrix(0.95, 0, 0, 0.95, 254.925, 614.3)",
-         "M 254.925 614.3 L 522.825 614.3 L 522.825 853.7 L 254.925 853.7 Z"),
+        (logo, "matrix(0.95, 0, 0, 0.95, 254.925, 630.3)",
+         "M 254.925 630.3 L 522.825 630.3 L 522.825 869.7 L 254.925 869.7 Z"),
         (mark, "matrix(0.95, 0, 0, 0.95, 237.925, 645.3)",
          "M 237.925 645.3 L 505.825 645.3 L 505.825 884.7 L 237.925 884.7 Z"),
     ):
@@ -83,9 +83,8 @@ def main() -> None:
     wing_points = [(x, y) for y, row in enumerate(pixels["wing"])
                    for x, cell in enumerate(row) if cell != "."]
     wing_top = min(y for x, y in wing_points) + lockup["wingOrigin"][1]
-    wing_bottom = max(y for x, y in wing_points) + lockup["wingOrigin"][1]
-    text_center = lockup["wordmarkOrigin"][1] + (7 * 3 - 1) / 2
-    assert abs((wing_top + wing_bottom) / 2 - text_center) <= 1
+    red_top = min(y for y, row in enumerate(pixels["wing"]) if "R" in row) + lockup["wingOrigin"][1]
+    assert wing_top == red_top == lockup["wordmarkOrigin"][1]
 
     assert png_dimensions(social_path) == (1200, 630)
     assert home.count(f'/assets/skytical-logo.svg?v={build.ASSET_VERSION}') >= 2

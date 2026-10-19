@@ -11,8 +11,8 @@ import re
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[2]
-WING_TRANSFORM = "matrix(0.95, 0, 0, 0.95, 254.925, 614.3)"
-WING_CLIP = "M 254.925 614.3 L 522.825 614.3 L 522.825 853.7 L 254.925 853.7 Z"
+WING_TRANSFORM = "matrix(0.95, 0, 0, 0.95, 254.925, 630.3)"
+WING_CLIP = "M 254.925 630.3 L 522.825 630.3 L 522.825 869.7 L 254.925 869.7 Z"
 
 
 def logo_svg() -> str:
