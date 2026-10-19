@@ -5,40 +5,63 @@
       "publishedUtc": "2026-10-19T06:49Z",
       "cat": "biz",
       "primarySource": "AeroTime",
-      "image": null,
-      "sourceImageCandidates": [],
+      "image": {
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/09/VietJet-A330neo-photo-4-222-1748253254621-scaled.jpg",
+        "link": "https://aerospaceglobalnews.com/news/vietjet-faces-worldwide-asset-freeze-250-million-aircraft-leasing-dispute/",
+        "provider": "Aerospace Global News",
+        "subject": "VietJet A330neo",
+        "sourceCaption": "VietJet A330neo",
+        "kind": "file_photo",
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
+      },
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/09/VietJet-A330neo-photo-4-222-1748253254621-scaled.jpg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/vietjet-faces-worldwide-asset-freeze-250-million-aircraft-leasing-dispute/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
       "zh": {
-        "title": "英國法院下令全球凍結VietJet Aviation資產",
-        "summary": "英國法院下令全球凍結VietJet Aviation資產，FWA追討判決款項",
+        "title": "英國法院對越捷航空發布全球資產凍結令",
+        "summary": "英國法院凍結越捷航空全球資產，追討逾2.5億美元判決債務",
         "body": [
-          "英國商業法院已對VietJet Aviation下達全球資產凍結令。命令於2026年10月15日作出；FW Aviation Holdings1 Limited（FWA）尋求追回超過$250 million的未償法院判決款項。",
-          "法院認為，在FWA繼續追討款項期間，VietJet可能將資產移出債權人可追索範圍，存在實際風險。",
-          "這起爭議源於四架空中巴士A321的租賃協議，飛機於2018年及2019年交付給VietJet。報導並指出，這項凍結令不代表VietJet的飛機訂單已取消。"
+          "英國商業法院於2026年10月15日對越捷航空（VietJet Aviation）發布全球資產凍結令。FW Aviation Holdings1 Limited（FWA）正尋求追討逾2.5億美元的未清償法院判決款項。法院表示，越捷可能將資產移出債權人可追索範圍，存在相關風險。",
+          "爭議涉及四架空中巴士A321飛機的租賃協議，飛機於2018年及2019年交付越捷航空。法院審視的另一項安排涉及越捷與 Angelica Holding Limited（AHL）的協議；越捷將未來飛機訂單簿幾乎全部價值轉給AHL，估值基準為2024年12月。"
         ]
       },
       "en": {
-        "title": "UK court orders worldwide freeze of VietJet Aviation assets as FWA pursues judgments",
-        "summary": "UK court freezes VietJet Aviation assets; FWA seeks recovery of outstanding judgments",
+        "title": "UK court grants worldwide asset freeze against VietJet over leasing debt",
+        "summary": "UK court freezes VietJet assets as FW Aviation pursues more than $250 million in judgments",
         "body": [
-          "The UK Commercial Court has granted a worldwide asset-freezing order against VietJet Aviation. The order was granted on 15 October 2026, as FW Aviation Holdings1 Limited (FWA) seeks to recover more than $250 million in outstanding court judgments.",
-          "The court found a real risk that VietJet could move assets beyond creditors’ reach while FWA continues its recovery efforts.",
-          "The dispute began over lease agreements for four Airbus A321 aircraft delivered to VietJet in 2018 and 2019. The order does not mean VietJet’s aircraft orders have been cancelled."
+          "The UK Commercial Court granted a worldwide asset-freezing order against VietJet Aviation on 15 October 2026. FW Aviation Holdings1 Limited (FWA) is seeking to recover more than $250 million in outstanding court judgments. The court found a real risk that VietJet could move assets beyond creditors’ reach while FWA continues its recovery efforts.",
+          "The dispute concerns lease agreements for four Airbus A321 aircraft delivered to VietJet in 2018 and 2019. The court also examined agreements involving Angelica Holding Limited (AHL), under which VietJet transferred almost all the value of its future aircraft order book to AHL, based on the order book’s value in December 2024."
         ]
       },
       "sources": [
         {
           "name": "AeroTime — VietJet faces worldwide asset freeze over $250 million airc…",
           "url": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt"
+        },
+        {
+          "name": "Aerospace Global News — VietJet faces worldwide asset freeze over $250 million airc…",
+          "url": "https://aerospaceglobalnews.com/news/vietjet-faces-worldwide-asset-freeze-250-million-aircraft-leasing-dispute/"
         }
       ],
       "articleFormat": "brief",
+      "updatedUtc": "2026-10-19T20:43Z",
+      "revision": 2,
       "sourcePublishedUtc": "2026-10-19T03:00Z",
       "writer": "openai:gpt-6-luna",
       "facts": [
         {
           "factId": "F1",
-          "claim": "The UK Commercial Court granted a worldwide freezing order against VietJet Aviation.",
-          "sourceQuote": "The UK Commercial Court has granted a worldwide freezing order against VietJet Aviation",
+          "claim": "The UK Commercial Court imposed a worldwide asset-freezing order against VietJet Aviation.",
+          "sourceQuote": "VietJet Aviation has been subjected to a worldwide asset-freezing order by the UK Commercial Court",
           "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -55,7 +78,7 @@
         },
         {
           "factId": "F3",
-          "claim": "FW Aviation Holdings1 Limited (FWA) seeks to recover more than $250 million in outstanding court judgments.",
+          "claim": "FWA is seeking to recover more than $250 million in outstanding court judgments.",
           "sourceQuote": "FW Aviation Holdings1 Limited (FWA) seeks to recover more than $250 million in outstanding court judgments.",
           "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt",
           "evidenceScope": "source",
@@ -64,7 +87,7 @@
         },
         {
           "factId": "F4",
-          "claim": "The court found a real risk VietJet could move assets out of creditors’ reach while FWA continues its efforts to recover the money.",
+          "claim": "The court found a real risk VietJet could move assets beyond creditors’ reach while FWA continues its recovery efforts.",
           "sourceQuote": "The court found that there was a real risk VietJet could move assets out of reach of its creditors while FWA continues its efforts to recover the money.",
           "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt",
           "evidenceScope": "source",
@@ -74,7 +97,7 @@
         {
           "factId": "F5",
           "claim": "The dispute began over lease agreements for four Airbus A321 aircraft delivered to VietJet in 2018 and 2019.",
-          "sourceQuote": "The dispute began over lease agreements for four Airbus A321 aircraft delivered to VietJet in 2018 and 2019",
+          "sourceQuote": "The dispute began over lease agreements for four Airbus A321 aircraft delivered to VietJet in 2018 and 2019 under financing arrangements known as Japanese Operating Leases with Call Options (JOLCO).",
           "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -82,8 +105,8 @@
         },
         {
           "factId": "F6",
-          "claim": "The order does not mean VietJet’s aircraft orders have been cancelled.",
-          "sourceQuote": "The order does not mean VietJet’s aircraft orders have been cancelled.",
+          "claim": "Under agreements involving Angelica Holding Limited, VietJet transferred almost all the value of its future aircraft order book to AHL, based on its December 2024 value.",
+          "sourceQuote": "The latest ruling also examined agreements between VietJet and Angelica Holding Limited (AHL), a related company. Under these agreements, VietJet transferred almost all the value of its future aircraft order book, based on its value in December 2024, to AHL.",
           "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -96,25 +119,32 @@
       "eventStatus": "confirmed",
       "entities": {
         "organizations": [
+          "VietJet Aviation",
           "UK Commercial Court",
-          "FW Aviation Holdings1 Limited (FWA)"
+          "FW Aviation Holdings1 Limited (FWA)",
+          "Angelica Holding Limited (AHL)"
         ],
         "airlines": [
-          "VietJet Aviation"
+          "VietJet"
         ],
         "aircraft_models": [
           "Airbus A321"
         ],
         "event_dates": [
-          "15 October 2026",
-          "2018 and 2019"
+          "15 October 2026"
         ]
       },
       "entityEvidence": [
         {
           "entityType": "organizations",
+          "value": "VietJet Aviation",
+          "sourceQuote": "VietJet Aviation has been subjected to a worldwide asset-freezing order by the UK Commercial Court",
+          "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt"
+        },
+        {
+          "entityType": "organizations",
           "value": "UK Commercial Court",
-          "sourceQuote": "The UK Commercial Court has granted a worldwide freezing order against VietJet Aviation",
+          "sourceQuote": "VietJet Aviation has been subjected to a worldwide asset-freezing order by the UK Commercial Court",
           "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt"
         },
         {
@@ -124,9 +154,15 @@
           "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt"
         },
         {
+          "entityType": "organizations",
+          "value": "Angelica Holding Limited (AHL)",
+          "sourceQuote": "The latest ruling also examined agreements between VietJet and Angelica Holding Limited (AHL), a related company.",
+          "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt"
+        },
+        {
           "entityType": "airlines",
-          "value": "VietJet Aviation",
-          "sourceQuote": "The UK Commercial Court has granted a worldwide freezing order against VietJet Aviation",
+          "value": "VietJet",
+          "sourceQuote": "The dispute began over lease agreements for four Airbus A321 aircraft delivered to VietJet in 2018 and 2019",
           "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt"
         },
         {
@@ -139,12 +175,6 @@
           "entityType": "event_dates",
           "value": "15 October 2026",
           "sourceQuote": "The order was granted on 15 October 2026.",
-          "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt"
-        },
-        {
-          "entityType": "event_dates",
-          "value": "2018 and 2019",
-          "sourceQuote": "The dispute began over lease agreements for four Airbus A321 aircraft delivered to VietJet in 2018 and 2019",
           "sourceUrl": "https://www.aerotime.aero/articles/vietjet-faces-worldwide-asset-freeze-over-250-million-aircraft-leasing-debt"
         }
       ],

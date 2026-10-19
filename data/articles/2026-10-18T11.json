@@ -96,155 +96,199 @@
       "cat": "ops",
       "primarySource": "AeroTime",
       "image": {
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Lufthansa_Airbus_A340-600_at_Hong_Kong_airport.jpg/1280px-Lufthansa_Airbus_A340-600_at_Hong_Kong_airport.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=151626650",
-        "credit": "4300streetcar",
-        "license": "CC BY 4.0",
-        "provider": "Wikimedia Commons",
+        "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/10/Lufthansa-Airbus-A340-600-on-approach-to-JFK.jpg",
+        "link": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/",
+        "provider": "Aerospace Global News",
+        "subject": "Lufthansa Airbus A340-600 on approach to JFK",
+        "sourceCaption": "Lufthansa Airbus A340-600 on approach to JFK",
         "kind": "file_photo",
-        "matched": "Lufthansa Airbus A340-600",
-        "subject": "Lufthansa Airbus A340-600",
-        "description": "Lufthansa Airbus A340-600 at Hong Kong airport",
-        "photoYear": 2023
+        "matched": "source:caption",
+        "captionSource": "source-image-metadata"
       },
-      "sourceImageCandidates": [],
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2025/10/Lufthansa-Airbus-A340-600-on-approach-to-JFK.jpg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
       "zh": {
-        "title": "漢莎航空預定執行空中巴士A340-600最後客運航班",
-        "summary": "漢莎航空預定執行A340-600最後客運服務，安排仍可能變動",
+        "title": "漢莎航空完成空中巴士A340-600最後定期載客航班",
+        "summary": "漢莎航空完成A340-600最後定期載客航班，班機抵達法蘭克福。",
         "body": [
-          "漢莎航空預定於10月18日執行空中巴士A340-600最後一班客運服務。這趟航班預定標誌漢莎航空A340-600定期客運營運的結束，但安排仍可能因營運狀況變動而調整。",
-          "航班LH419預定於當地時間下午5時55分自華盛頓杜勒斯（IAD）起飛，並於10月19日上午7時55分抵達法蘭克福機場（FRA）。報導指出，執行最後一班客運服務的飛機尚未獲得獨立確認；漢莎航空仍保留四架A340-600供剩餘營運使用。"
+          "漢莎航空已完成空中巴士A340-600最後一班定期載客航班，該機型在漢莎航空的定期載客服務至此結束。LH419於10月18日自Washington Dulles International Airport (IAD)出發，前往Frankfurt；這是漢莎航空最後一班由A340-600執行的定期載客航班。",
+          "A340-600 D-AIHW於10月19日上午6時31分（GMT）降落Frankfurt Airport (FRA)，為近23年的機型營運畫下句點。較小型的Airbus A340-300預計會持續服役至2027年。"
         ]
       },
       "en": {
-        "title": "Lufthansa schedules final Airbus A340-600 passenger service for October 18",
-        "summary": "Lufthansa schedules its final A340-600 passenger service, subject to operational changes.",
+        "title": "Lufthansa completes final scheduled A340-600 passenger flight",
+        "summary": "Lufthansa completed its final scheduled A340-600 passenger flight, which landed in Frankfurt on 19 October.",
         "body": [
-          "Lufthansa is scheduled to operate its final Airbus A340-600 passenger service on October 18. The flight marks the planned end of Lufthansa’s scheduled A340-600 passenger operations, subject to operational changes.",
-          "Flight LH419 is due to depart Washington Dulles (IAD) at 5.55 pm local time and arrive at Frankfurt Airport (FRA) at 7.55 am on October 19. The aircraft assigned to the final passenger service has not been independently confirmed at the time of writing. Lufthansa has retained four A340-600s for its remaining operations."
+          "Lufthansa has operated its final scheduled passenger flight with the Airbus A340-600, ending the type’s scheduled passenger service with the airline. Flight LH419 was the final service, operating from Washington Dulles International Airport (IAD) to Frankfurt. The service departed on 18 October.",
+          "At 6:31am GMT on 19 October, Lufthansa Airbus A340-600 D-AIHW landed at Frankfurt Airport (FRA), bringing an end to almost 23 years of operations for the type at the airline. The smaller Airbus A340-300 is expected to remain in service until 2027."
         ]
       },
       "sources": [
         {
           "name": "AeroTime — Lufthansa prepares for final A340-600 flight as 17-year-old…",
           "url": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet"
+        },
+        {
+          "name": "Aerospace Global News — Lufthansa retires its last Airbus A340-600 after final flig…",
+          "url": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
         }
       ],
       "articleFormat": "brief",
-      "sourcePublishedUtc": "2026-10-18T10:25Z",
+      "updatedUtc": "2026-10-19T20:43Z",
+      "revision": 2,
+      "sourcePublishedUtc": "2026-10-19T00:00Z",
       "writer": "openai:gpt-6-luna",
       "facts": [
         {
           "factId": "F1",
-          "claim": "Lufthansa is scheduled to operate its final Airbus A340-600 passenger service on October 18.",
-          "sourceQuote": "Lufthansa is scheduled to operate its final Airbus A340-600 passenger service on October 18",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet",
+          "claim": "Lufthansa operated its final scheduled passenger flight with the Airbus A340-600.",
+          "sourceQuote": "Lufthansa has operated its final scheduled passenger flight with the Airbus A340-600",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F2",
-          "claim": "Flight LH419 is due to depart Washington Dulles (IAD) at 5.55 pm local time and arrive at Frankfurt Airport (FRA) at 7.55 am on October 19.",
-          "sourceQuote": "Flight LH419 is due to depart Washington Dulles (IAD) at 5.55 pm local time and arrive at Frankfurt Airport (FRA) at 7.55 am on October 19.",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet",
+          "claim": "Lufthansa Airbus A340-600 D-AIHW landed at Frankfurt Airport (FRA) at 6:31am GMT on 19 October.",
+          "sourceQuote": "At 6:31am GMT on 19 October, Lufthansa Airbus A340-600 D-AIHW landed at Frankfurt Airport (FRA)",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F3",
-          "claim": "The flight marks the planned end of Lufthansa’s scheduled A340-600 passenger operations, subject to operational changes.",
-          "sourceQuote": "The flight marks the planned end of Lufthansa’s scheduled A340-600 passenger operations, subject to operational changes.",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet",
+          "claim": "The final service was flight LH419 from Washington Dulles International Airport (IAD) to Frankfurt.",
+          "sourceQuote": "The final service was flight LH419 from Washington Dulles International Airport (IAD) to Frankfurt, following the aircraft’s transatlantic rotation between the two cities.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F4",
-          "claim": "Lufthansa has retained four A340-600s for its remaining operations.",
-          "sourceQuote": "Lufthansa has retained four A340-600s for its remaining operations",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet",
+          "claim": "Sunday, 18 October, marked the official departure of Lufthansa’s last scheduled passenger operations with the Airbus A340-600.",
+          "sourceQuote": "Sunday, 18 October, marked the official departure of Lufthansa’s last scheduled passenger operations with the Airbus A340-600.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F5",
-          "claim": "The aircraft assigned to the final passenger service has not been independently confirmed at the time of writing.",
-          "sourceQuote": "The aircraft assigned to the final passenger service has not been independently confirmed at the time of writing.",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet",
+          "claim": "The smaller Airbus A340-300 is expected to remain in service until 2027.",
+          "sourceQuote": "the smaller Airbus A340-300 is expected to remain in service until 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The final flight marked the end of almost 23 years of operations of the type.",
+          "sourceQuote": "bringing the curtain down on almost 23 years of operations of the type.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         }
       ],
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
-      "eventStatus": "planned",
+      "riskFlags": [],
+      "eventStatus": "confirmed",
       "entities": {
         "airlines": [
           "Lufthansa"
         ],
         "aircraft_models": [
-          "Airbus A340-600"
+          "Airbus A340-600",
+          "Airbus A340-300"
         ],
         "airports": [
-          "Washington Dulles (IAD)",
+          "Washington Dulles International Airport (IAD)",
           "Frankfurt Airport (FRA)"
         ],
         "flight_numbers": [
           "LH419"
         ],
+        "registration_numbers": [
+          "D-AIHW"
+        ],
         "event_dates": [
-          "October 18",
-          "October 19"
+          "Sunday, 18 October",
+          "19 October",
+          "2027"
         ]
       },
       "entityEvidence": [
         {
           "entityType": "airlines",
           "value": "Lufthansa",
-          "sourceQuote": "Lufthansa is scheduled to operate its final Airbus A340-600 passenger service on October 18",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet"
+          "sourceQuote": "Lufthansa has operated its final scheduled passenger flight with the Airbus A340-600",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
         },
         {
           "entityType": "aircraft_models",
           "value": "Airbus A340-600",
-          "sourceQuote": "Lufthansa is scheduled to operate its final Airbus A340-600 passenger service on October 18",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet"
+          "sourceQuote": "Lufthansa has operated its final scheduled passenger flight with the Airbus A340-600",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "Airbus A340-300",
+          "sourceQuote": "the smaller Airbus A340-300 is expected to remain in service until 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
         },
         {
           "entityType": "airports",
-          "value": "Washington Dulles (IAD)",
-          "sourceQuote": "Flight LH419 is due to depart Washington Dulles (IAD) at 5.55 pm local time and arrive at Frankfurt Airport (FRA) at 7.55 am on October 19.",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet"
+          "value": "Washington Dulles International Airport (IAD)",
+          "sourceQuote": "The final service was flight LH419 from Washington Dulles International Airport (IAD) to Frankfurt, following the aircraft’s transatlantic rotation between the two cities.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
         },
         {
           "entityType": "airports",
           "value": "Frankfurt Airport (FRA)",
-          "sourceQuote": "Flight LH419 is due to depart Washington Dulles (IAD) at 5.55 pm local time and arrive at Frankfurt Airport (FRA) at 7.55 am on October 19.",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet"
+          "sourceQuote": "At 6:31am GMT on 19 October, Lufthansa Airbus A340-600 D-AIHW landed at Frankfurt Airport (FRA)",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
         },
         {
           "entityType": "flight_numbers",
           "value": "LH419",
-          "sourceQuote": "Flight LH419 is due to depart Washington Dulles (IAD) at 5.55 pm local time and arrive at Frankfurt Airport (FRA) at 7.55 am on October 19.",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet"
+          "sourceQuote": "The final service was flight LH419 from Washington Dulles International Airport (IAD) to Frankfurt, following the aircraft’s transatlantic rotation between the two cities.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
+        },
+        {
+          "entityType": "registration_numbers",
+          "value": "D-AIHW",
+          "sourceQuote": "At 6:31am GMT on 19 October, Lufthansa Airbus A340-600 D-AIHW landed at Frankfurt Airport (FRA)",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
         },
         {
           "entityType": "event_dates",
-          "value": "October 18",
-          "sourceQuote": "Lufthansa is scheduled to operate its final Airbus A340-600 passenger service on October 18",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet"
+          "value": "Sunday, 18 October",
+          "sourceQuote": "Sunday, 18 October, marked the official departure of Lufthansa’s last scheduled passenger operations with the Airbus A340-600.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
         },
         {
           "entityType": "event_dates",
-          "value": "October 19",
-          "sourceQuote": "Flight LH419 is due to depart Washington Dulles (IAD) at 5.55 pm local time and arrive at Frankfurt Airport (FRA) at 7.55 am on October 19.",
-          "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-prepares-for-final-a340-600-flight-as-17-year-old-aircraft-exits-fleet"
+          "value": "19 October",
+          "sourceQuote": "At 6:31am GMT on 19 October, Lufthansa Airbus A340-600 D-AIHW landed at Frankfurt Airport (FRA)",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "2027",
+          "sourceQuote": "the smaller Airbus A340-300 is expected to remain in service until 2027.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/lufthansa-airbus-a340-600-final-flight/"
         }
       ],
       "evidenceVersion": 2
