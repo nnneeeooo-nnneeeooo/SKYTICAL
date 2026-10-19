@@ -1,6 +1,6 @@
 # SKYTICAL 8-bit Logo
 
-此版本依 2026-10-19 的使用者要求製作，供 8-bit 隱藏主題使用。正式 Logo 與網站目前的主題切換行為均維持原樣。
+此版本依 2026-10-19 的使用者要求製作，供 8-bit 隱藏主題使用。於頁尾「資料來源」點擊 `8-bit`，重新整理後即可選擇像素主題；解鎖與主題儲存在同一瀏覽器中。
 
 ## 品牌保留項目
 
@@ -21,7 +21,7 @@
 | `static/skytical-logo-8bit-dark.png` | 848 × 192 | 深底版透明 PNG，4 倍整數放大 |
 | `static/skytical-mark-8bit.png` | 176 × 128 | 翼標透明 PNG，4 倍整數放大 |
 
-網站建置時，`static/` 資產會複製至 `/assets/`。此提交僅保存資產，沒有將其接入正式網站版型。深底版的範例：
+網站建置時，`static/` 資產會複製至 `/assets/`。像素主題的頁首、頁尾使用深底版，favicon 使用獨立翼標；亮／暗主題仍使用原版 Logo。深底版的範例：
 
 ```html
 <img src="/assets/skytical-logo-8bit-dark.svg"
@@ -46,3 +46,9 @@ python docs/brand/generate_8bit_logo.py
 產生器只使用 Python 標準函式庫，不需要安裝圖片套件、字型、SVG 轉檔程式，也不連線網路。SVG 僅含整數格點矩形；PNG 由同一組矩形以 4 倍整數比例輸出。
 
 修改像素版時，先編輯 JSON，再重新產生六個輸出檔。勿個別修改輸出檔，勿改動 `SKYTICAL-master.svg` 或原有正式資產。發布前檢查倒 V 無橫槓、翼形色序、透明背景與深淺底對比。
+
+## 主題字型與授權
+
+像素主題使用 [Fusion Pixel Font](https://github.com/TakWolf/fusion-pixel-font/releases/tag/2026.10.16) 的 12px 比例字寬 `zh_tw` 版本，對應臺灣繁體字形。字型以 `static/fusion-pixel-tw-v2026-10-16.woff2` 隨站提供，授權及上游字型聲明保存於 `static/fusion-pixel-LICENSE.txt`；採 SIL Open Font License 1.1，不依賴外部字型 CDN。
+
+樣式位於 `static/pixel.css`；網站使用者的主題鍵沿用 `avwire-theme`，解鎖鍵為 `skytical-8bit-unlocked`。無法使用 localStorage 時，僅於當前分頁暫時解鎖並顯示說明，不要求會失去解鎖狀態的重新整理。
