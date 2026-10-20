@@ -18,14 +18,20 @@ def main() -> None:
     raw = json.loads(
         (ROOT / "config" / "changelog.json").read_text(encoding="utf-8"))
     assert raw["schemaVersion"] == 1
-    assert raw["repository"] == build._CHANGELOG_REPOSITORY \
-        == "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL"
+    assert raw["repository"] == "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL"
     assert raw["historyStart"] == "2026-07-26"
     assert raw["updatedThrough"] == "2026-10-20"
     assert len(raw["entries"]) == 92
 
     historical = [row["commit"] for row in raw["entries"]
                   if row["commit"] is not None]
+    archive = json.loads(
+        (ROOT / "config" / "commit-records.json").read_text(encoding="utf-8"))
+    assert archive["schemaVersion"] == 1
+    assert set(archive["commits"]) == set(historical)
+    commit_records = build.commit_records_view(archive, historical)
+    assert all(commit_records[sha]["sha"] == sha for sha in historical)
+    assert all(commit_records[sha]["diff"] for sha in historical)
     assert len(historical) == 91
     assert len(set(historical)) == len(historical)
     assert all(re.fullmatch(r"[0-9a-f]{40}", sha) for sha in historical)
@@ -70,13 +76,14 @@ def main() -> None:
     assert zh["count"] == en["count"] == 92
     assert [group["date"] for group in zh["groups"]] \
         == sorted(set(dates), reverse=True)
-    assert zh["groups"][0]["entries"][0]["title"] == "新增 8-bit 彩蛋。"
+    assert zh["groups"][0]["entries"][0]["title"] == "新增彩蛋。"
     assert en["groups"][-1]["entries"][-1]["title"].startswith(
         "Created SKYTICAL")
     linked = [entry for group in en["groups"] for entry in group["entries"]
               if entry["commit"]]
-    assert all(entry["url"] ==
-               f"{build._CHANGELOG_REPOSITORY}/commit/{entry['commit']}"
+    assert len(linked) == len(historical)
+    assert all(entry["url"] == build.page_url(
+               "en", f"changelog/commits/{entry['commit']}/")
                for entry in linked)
 
     malformed = {
@@ -123,7 +130,25 @@ def main() -> None:
         assert t["footerChangelog"] in html
         assert t["changeNotice"] in html
         assert len(re.findall(r'class="changelog-entry"', html)) == 92
+        assert len(re.findall(r'class="changelog-commit"', html)) == 91
+        assert 'href="https://github.com/nnneeeooo-nnneeeooo/SKYTICAL/commit/' not in html
         assert "javascript:alert" not in html
+
+        sha = historical[0]
+        record = commit_records[sha]
+        sub = f"changelog/commits/{sha}/"
+        record_ctx = build.base_ctx(
+            lang, "changelog", sub,
+            title=f"{sha[:7]}｜{t['commitRecordTitle']}｜{t['siteName']}",
+            description=t["changeNotice"], ticker=[], build=fake_build)
+        record_ctx["commit_record"] = record
+        record_ctx["raw_record_url"] = f"{build.BASE_PATH}/commit-records/{sha}.json"
+        record_html = env.get_template("commit_record.html").render(**record_ctx)
+        assert sha in record_html
+        assert f'href="{build.BASE_PATH}/commit-records/{sha}.json"' in record_html
+        assert record["files"][0]["filename"] in record_html
+        assert "commit-record-diff" in record_html
+        assert 'href="https://github.com/nnneeeooo-nnneeeooo/SKYTICAL/commit/' not in record_html
 
     print("test_changelog: OK")
 
