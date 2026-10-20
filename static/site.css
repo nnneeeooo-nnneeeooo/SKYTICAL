@@ -215,6 +215,22 @@ a.seg-btn.active:hover { color: var(--color-bg); }
 .center-col { padding: 20px 24px; min-width: 0; }
 .rail-right { border-left: 2px solid var(--color-divider); padding: 20px; }
 
+.home-rail-section { margin-top: 28px; min-width: 0; }
+.home-rail-section h6 { margin: 0 0 12px; }
+.rail-stories { list-style: none; margin: 0; padding: 0; }
+.rail-stories li { border-top: 1px solid var(--color-divider); }
+.rail-story { display: block; padding: 12px 0; color: inherit; text-decoration: none; }
+.rail-story-meta { display: block; font-size: 11px; color: var(--color-accent); }
+.rail-story-title { display: block; margin: 5px 0; font-size: 14px; font-weight: 700; line-height: 1.55; overflow-wrap: anywhere; }
+.rail-story-source { display: block; font-size: 11px; overflow-wrap: anywhere; }
+.rail-story:hover .rail-story-title { color: var(--color-accent); }
+.rail-more { display: inline-block; padding: 10px 0; font-size: 12px; font-weight: 700; }
+.rail-empty { font-size: 12px; line-height: 1.6; }
+.rail-topics { display: flex; flex-wrap: wrap; gap: 8px; }
+.rail-topics a { display: inline-flex; align-items: center; min-height: 36px; max-width: 100%; padding: 6px 10px; border: 1px solid var(--color-divider); color: inherit; text-decoration: none; font-size: 12px; overflow-wrap: anywhere; }
+.rail-topics a:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.rail-story:focus-visible, .rail-more:focus-visible, .rail-topics a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+
 .flash-row {
   padding: 10px 0; border-bottom: 1px solid var(--color-divider);
   display: grid; grid-template-columns: 56px minmax(0, 1fr);

@@ -137,6 +137,33 @@
           <div class="text-muted" style="font-size:11px;margin-top:4px;">{% if html_lang.startswith('zh') %}前往 FlightAware 查看（另開分頁）{% else %}View on FlightAware (opens in a new tab){% endif %}</div>
         </a>
       </div>
+      <section class="home-rail-section" aria-labelledby="taiwan-focus-heading">
+        <h6 id="taiwan-focus-heading">{{ t.taiwanFocusTitle }}</h6>
+        {% if taiwan_focus %}
+        <ul class="rail-stories">
+          {% for item in taiwan_focus %}
+          <li>
+            <a class="rail-story" href="{{ item.url }}">
+              <span class="rail-story-meta"><time datetime="{{ item.published_iso }}" title="{{ item.published_meta_ts }}">{{ item.time }}</time> · {{ item.cat_label }}</span>
+              <span class="rail-story-title">{{ item.title }}</span>
+              <span class="rail-story-source text-muted">{{ item.source }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="rail-empty text-muted">{{ t.taiwanFocusEmpty }}</p>
+        {% endif %}
+        <a class="rail-more" href="{{ taiwan_topic_url }}">{{ t.taiwanFocusMore }}</a>
+      </section>
+      <nav class="home-rail-section" aria-labelledby="explore-topics-heading">
+        <h6 id="explore-topics-heading">{{ t.exploreTopics }}</h6>
+        <div class="rail-topics">
+          {% for topic in topic_links %}
+          <a href="{{ topic.url }}">{{ topic.label }}</a>
+          {% endfor %}
+        </div>
+      </nav>
       {% if otp %}
       <h6 style="margin:28px 0 12px;">{{ t.otp }}</h6>
       {% for r in otp %}
