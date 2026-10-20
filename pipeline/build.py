@@ -250,6 +250,10 @@ L = {
         "topicKicker": "Aviation Topics",
         "topicCount": "則相關新聞",
         "topicNavLabel": "航空新聞主題",
+        "taiwanFocusTitle": "臺灣航空焦點",
+        "taiwanFocusMore": "更多臺灣新聞 →",
+        "taiwanFocusEmpty": "近 7 天暫無臺灣航空新聞，查看歷來報導。",
+        "exploreTopics": "探索主題",
         "policyLink": "編輯、更正與聯絡",
         "awaiting": "等待首次管線執行",
         "lastBuild": "最後建置",
@@ -390,6 +394,10 @@ L = {
         "topicKicker": "Aviation Topics",
         "topicCount": "related stories",
         "topicNavLabel": "Aviation news topics",
+        "taiwanFocusTitle": "Taiwan aviation focus",
+        "taiwanFocusMore": "More Taiwan news →",
+        "taiwanFocusEmpty": "No Taiwan aviation stories in the past 7 days. Browse the archive.",
+        "exploreTopics": "Explore topics",
         "policyLink": "Editorial, corrections and contact",
         "awaiting": "Awaiting first pipeline run",
         "lastBuild": "Last build",
@@ -1654,6 +1662,27 @@ def taiwan_focus_score(article, now=None) -> int:
         else:
             score -= 50
     return score if score >= 60 else 0
+
+
+def taiwan_sidebar_articles(articles, now=None):
+    """Latest five direct Taiwan stories from the past week, without fallbacks.
+
+    Reuse headline-level Taiwan signals; avoid body-only mentions and the
+    carousel's broader Cathay fallback in this explicitly local news rail.
+    """
+    now = now or now_utc()
+    recent = []
+    for article in articles:
+        published = article.get("published_dt")
+        if (published is None
+                or not timedelta(0) <= now - published <= timedelta(days=7)):
+            continue
+        text = _hero_focus_text(article)
+        if (_HERO_TAIWAN_CARRIER_RE.search(text)
+                or _HERO_TAIWAN_PLACE_RE.search(text)):
+            recent.append(article)
+    recent.sort(key=lambda article: article["published_dt"], reverse=True)
+    return recent[:5]
 
 
 def taiwan_focus_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
@@ -3922,6 +3951,9 @@ def main() -> int:
         ctx.update(hero=hero, hero_candidates=hero_candidates,
                    hero_rotation_seconds=HERO_ROTATION_SECONDS,
                    feed=feed, flashes=fl, agg=agg,
+                   taiwan_focus=[art_view(article, lang) for article in
+                                 taiwan_sidebar_articles(lang_articles, now)],
+                   taiwan_topic_url=page_url(lang, "topics/taiwan-aviation/"),
                    source_status=source_status_view(sources, now, lang),
                    stats=sv["tiles"], otp=sv["otp"], fleet=sv["fleet"],
                    delays=sv["delays"], stats_note=sv["note"],
