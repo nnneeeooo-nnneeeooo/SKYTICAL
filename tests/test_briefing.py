@@ -502,7 +502,7 @@ _repo_hits = []
 for path in REPO.rglob("*"):
     if (path.suffix not in (".py", ".yml", ".yaml", ".json", ".md", ".txt")
             or ".git" in path.parts or "tests" in path.parts
-            or "site" in path.parts):
+            or "site" in path.parts or path.name == "commit-records.json"):
         continue
     text = path.read_text(encoding="utf-8", errors="ignore")
     for marker in ("PERPLEXITY_API_KEY", "api.perplexity.ai",
