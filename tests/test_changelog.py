@@ -32,8 +32,8 @@ def main() -> None:
     assert sum(row["commit"] is None for row in raw["entries"]) == 1
     assert raw["entries"][0] == {
         "date": "2026-10-19", "kind": "feature", "commit": None,
-        "zh": "新增 8-bit 彩蛋。",
-        "en": "Added an 8-bit theme Easter egg.",
+        "zh": "新增彩蛋。",
+        "en": "Added an Easter egg.",
     }
     assert {row["commit"] for row in raw["entries"][1:5]} == {
         "10eafb38be69447d39ea888df819e4b694e41ced",
