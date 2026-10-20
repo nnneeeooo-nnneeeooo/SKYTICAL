@@ -3362,7 +3362,6 @@ def changelog_view(raw, lang: str, labels: dict) -> dict:
         "count": len(rows),
         "history_start": history_start,
         "updated_through": updated_through,
-remove external archive URL
     }
 
 
