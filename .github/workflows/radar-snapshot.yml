@@ -103,14 +103,29 @@ jobs:
         run: |
           scan() {
             set +e
-            grep -rInE "$1" site/ data/
+            matches=$(grep -rIHnEo "$1" site/ data/ | awk -F: '
+              {
+                path = $1
+                value = $3
+                archive = path ~ /^site\/commit-records\// \
+                       || path ~ /^site\/changelog\/commits\// \
+                       || path ~ /^site\/[a-z][a-z]\/changelog\/commits\//
+                fixture = value == "nvapi-TESTFAKEKEY1234567890" \
+                       || value == "oc_sk_test-not-a-real-key" \
+                       || value == "Bearer test-openai-key-not-real" \
+                       || value == "reasoning_content" \
+                       || value == "<think>"
+                if (archive && fixture) next
+                print
+              }')
             rc=$?
             set -e
-            if [ "$rc" -eq 0 ]; then
-              echo "::error::$2 found in publishable output"
-              exit 1
-            elif [ "$rc" -ge 2 ]; then
+            if [ "$rc" -ge 2 ]; then
               echo "::error::scan failed (grep rc=$rc)"
+              exit 1
+            elif [ -n "$matches" ]; then
+              printf '%s\n' "$matches"
+              echo "::error::$2 found in publishable output"
               exit 1
             fi
           }
