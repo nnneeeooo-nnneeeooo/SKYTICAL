@@ -315,7 +315,6 @@ L = {
         "changeNotice": "Select a commit ID to view its saved record, changed files and full diff. Automated data updates are omitted.",
         "changeCount": "site changes", "changeStart": "History starts",
         "changeLatest": "Updated through",
-        
         "changeCommit": "commit",
         "commitRecordTitle": "Original commit record",
         "commitRecordBack": "← Back to the site changelog",
