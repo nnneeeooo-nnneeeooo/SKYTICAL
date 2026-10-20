@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+  <main class="commit-record-page">
+    <a class="commit-record-back" href="{{ base }}/{{ 'en/' if lang == 'en' else '' }}changelog/">{{ t.commitRecordBack }}</a>
+    <span class="card-kicker">{{ t.changeKicker }}</span>
+    <h1>{{ t.commitRecordTitle }}</h1>
+    <p class="commit-record-message">{{ commit_record.message }}</p>
+
+    <div class="commit-record-actions">
+      <a class="btn btn-secondary" href="{{ raw_record_url }}" download>{{ t.commitRecordDownload }} ↓</a>
+    </div>
+
+    <dl class="commit-record-meta">
+      <div>
+        <dt>SHA</dt>
+        <dd><code>{{ commit_record.sha }}</code></dd>
+      </div>
+      <div>
+        <dt>{{ t.commitRecordDate }}</dt>
+        <dd><time datetime="{{ commit_record.created_at }}">{{ commit_record.created_at }}</time></dd>
+      </div>
+      <div>
+        <dt>{{ t.commitRecordAuthor }}</dt>
+        <dd>{{ commit_record.author.name or commit_record.author.login or "—" }}{% if commit_record.author.email %} · {{ commit_record.author.email }}{% endif %}</dd>
+      </div>
+      <div>
+        <dt>{{ t.commitRecordCommitter }}</dt>
+        <dd>{{ commit_record.committer.name or commit_record.committer.login or "—" }}{% if commit_record.committer.email %} · {{ commit_record.committer.email }}{% endif %}</dd>
+      </div>
+    </dl>
+
+    <section class="commit-record-files" aria-labelledby="commit-record-files-title">
+      <h2 id="commit-record-files-title">{{ t.commitRecordFiles }} <span>({{ commit_record.files | length }})</span></h2>
+      {% if commit_record.files %}
+      <ul>
+        {% for file in commit_record.files %}
+        <li>
+          <code>{% if file.previous_filename %}{{ file.previous_filename }} → {% endif %}{{ file.filename }}</code>
+          <span>{{ file.status }} · +{{ file.additions }} / −{{ file.deletions }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>{{ t.commitRecordNoFiles }}</p>
+      {% endif %}
+    </section>
+
+    <section class="commit-record-diff" aria-labelledby="commit-record-diff-title">
+      <h2 id="commit-record-diff-title">{{ t.commitRecordDiff }}</h2>
+      {% if commit_record.diff %}
+      <pre><code>{{ commit_record.diff }}</code></pre>
+      {% else %}
+      <p>{{ t.commitRecordNoDiff }}</p>
+      {% endif %}
+    </section>
+  </main>
+{% endblock %}

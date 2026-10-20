@@ -18,16 +18,22 @@ A stage must NEVER crash the pipeline because one input is missing or one
 source failed: degrade gracefully, log to stdout, exit 0. Non-zero exit is
 reserved for programming errors.
 
-`config/changelog.json` is a checked-in, bilingual history of meaningful
-site changes. It is curated from the GitHub `main` history and deliberately
+config/changelog.json is a checked-in, bilingual history of meaningful
+site changes. It is curated from the SKYTICAL project history and deliberately
 includes only reader-visible site upgrades and major maintenance changes.
 It excludes routine debugging, isolated content corrections, individual news
-publishing, minor operational tuning, and automated `hourly update`, briefing
-and flight-state data commits. Git history remains the detailed engineering log.
-Every historical row carries a full 40-character commit SHA; build.py derives
-the public GitHub URL from that validated SHA rather than accepting arbitrary
-links from the file. The one current changelog-page row may use `null` until
-it has a stable historical commit.
+publishing, minor operational tuning, and automated hourly update, briefing
+and flight-state data commits. Every historical row carries a full 40-character
+commit SHA; the one current changelog-page row may use null until it has a
+stable historical commit. Changelog commit links point to site-local detail
+pages.
+
+config/commit-records.json stores a public snapshot for each linked changelog
+commit: commit metadata, changed-file statistics and the complete text diff.
+build.py validates that every linked SHA has a snapshot, then emits a detail
+page under changelog/commits/<sha>/ and a downloadable JSON copy under
+commit-records/<sha>.json. These snapshots keep the commit records available
+on the public site without linking to the source repository.
 
 ## data/raw/<source_key>.json  (written by fetch.py, read by dedupe.py)
 
@@ -297,6 +303,8 @@ site/
 ├─ sources/index.html          + en/sources/
 ├─ about/index.html            + en/about/
 ├─ changelog/index.html        + en/changelog/
+├─ changelog/commits/<sha>/     + en/changelog/commits/<sha>/
+├─ commit-records/<sha>.json    raw commit-record copies
 ├─ assets/modernist.css        copied from static/
 ├─ assets/site.css
 ├─ assets/app.js
