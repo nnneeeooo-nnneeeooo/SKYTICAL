@@ -165,11 +165,21 @@ L = {
         "thFreq": "頻率", "thLast": "最近抓取", "thState": "狀態",
         "aboutKicker": "Methodology", "aboutTitle": "方法論",
         "changeKicker": "Site Changelog", "changeTitle": "網站更新紀錄",
-        "changeSub": "依 GitHub 主分支提交紀錄整理，涵蓋 SKYTICAL 建站至最近一次網站功能變更。",
-        "changeNotice": "每小時新聞、每日快報與航機狀態等自動資料更新不列入，避免機器提交淹沒真正的網站變更。",
+        "changeSub": "依 SKYTICAL 專案提交紀錄整理，涵蓋網站建立至最近一次功能變更。",
+        "changeNotice": "點選提交代碼，可查看本站保存的原始紀錄、變更檔案與完整差異。自動資料更新不列入。",
         "changeCount": "筆網站變更", "changeStart": "紀錄起點",
-        "changeLatest": "更新至", "changeSource": "查看完整 GitHub 提交紀錄",
+        "changeLatest": "更新至",
         "changeCommit": "提交",
+        "commitRecordTitle": "提交原始紀錄",
+        "commitRecordBack": "← 返回網站更新紀錄",
+        "commitRecordDate": "提交時間",
+        "commitRecordAuthor": "作者",
+        "commitRecordCommitter": "提交者",
+        "commitRecordFiles": "變更檔案",
+        "commitRecordDiff": "完整差異",
+        "commitRecordDownload": "下載 JSON 原始紀錄",
+        "commitRecordNoFiles": "此提交沒有列出的檔案。",
+        "commitRecordNoDiff": "此提交沒有可顯示的文字差異。",
         "changeKinds": {
             "feature": "功能", "fix": "修正", "system": "系統",
             "editorial": "編輯", "design": "介面",
@@ -301,12 +311,22 @@ L = {
         "thFreq": "Interval", "thLast": "Last fetch", "thState": "Status",
         "aboutKicker": "Methodology", "aboutTitle": "Methodology",
         "changeKicker": "Site Changelog", "changeTitle": "Site changelog",
-        "changeSub": "Compiled from the GitHub main-branch history, covering SKYTICAL from its creation through the latest site change.",
-        "changeNotice": "Automated hourly news, daily briefing and flight-state data commits are omitted so operational refreshes do not bury real site changes.",
+        "changeSub": "Compiled from the SKYTICAL project history, covering the site from its creation through the latest feature change.",
+        "changeNotice": "Select a commit ID to view its saved record, changed files and full diff. Automated data updates are omitted.",
         "changeCount": "site changes", "changeStart": "History starts",
         "changeLatest": "Updated through",
-        "changeSource": "View the complete GitHub commit history",
+        
         "changeCommit": "commit",
+        "commitRecordTitle": "Original commit record",
+        "commitRecordBack": "← Back to the site changelog",
+        "commitRecordDate": "Commit date",
+        "commitRecordAuthor": "Author",
+        "commitRecordCommitter": "Committer",
+        "commitRecordFiles": "Changed files",
+        "commitRecordDiff": "Full diff",
+        "commitRecordDownload": "Download original JSON record",
+        "commitRecordNoFiles": "No files are listed for this commit.",
+        "commitRecordNoDiff": "No text diff is available for this commit.",
         "changeKinds": {
             "feature": "Feature", "fix": "Fix", "system": "System",
             "editorial": "Editorial", "design": "Design",
@@ -3286,14 +3306,14 @@ def codex_usage_rows(snapshot: dict, prices: dict):
 _CHANGELOG_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}\Z")
 _CHANGELOG_COMMIT_RE = re.compile(r"[0-9a-f]{40}\Z")
 _CHANGELOG_KINDS = {"feature", "fix", "system", "editorial", "design"}
-_CHANGELOG_REPOSITORY = "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL"
+
 
 
 def changelog_view(raw, lang: str, labels: dict) -> dict:
     """Validate checked-in changelog data and prepare date-grouped rows.
 
-    URLs are derived from validated full commit SHAs instead of accepting
-    arbitrary href values from the data file.
+    Site-local record URLs are derived from validated full commit SHAs instead
+    of accepting arbitrary href values from the data file.
     """
     if not isinstance(raw, dict):
         raw = {}
@@ -3322,7 +3342,7 @@ def changelog_view(raw, lang: str, labels: dict) -> dict:
             "title": title,
             "commit": commit,
             "short_commit": commit[:7] if commit else "",
-            "url": (f"{_CHANGELOG_REPOSITORY}/commit/{commit}"
+            "url": (page_url(lang, f"changelog/commits/{commit}/")
                     if commit else ""),
             "order": order,
         })
@@ -3343,9 +3363,66 @@ def changelog_view(raw, lang: str, labels: dict) -> dict:
         "count": len(rows),
         "history_start": history_start,
         "updated_through": updated_through,
-        "repository_url": f"{_CHANGELOG_REPOSITORY}/commits/main/",
+remove external archive URL
     }
 
+
+
+def commit_records_view(raw, expected_shas) -> dict:
+    """Validate the checked-in snapshots and restore their unified diffs."""
+    if not isinstance(raw, dict) or raw.get("schemaVersion") != 1:
+        raise ValueError("commit record archive has an unsupported schema")
+    commits = raw.get("commits")
+    if not isinstance(commits, dict):
+        raise ValueError("commit record archive has no commit map")
+
+    records = {}
+    for sha in expected_shas:
+        item = commits.get(sha)
+        if (not _CHANGELOG_COMMIT_RE.fullmatch(sha)
+                or not isinstance(item, dict)
+                or item.get("sha") != sha
+                or not isinstance(item.get("message"), str)
+                or not isinstance(item.get("created_at"), str)
+                or not isinstance(item.get("author"), dict)
+                or not isinstance(item.get("committer"), dict)
+                or not isinstance(item.get("files"), list)
+                or not isinstance(item.get("diffLines"), list)
+                or not all(isinstance(line, str)
+                           for line in item.get("diffLines", []))):
+            raise ValueError(f"commit record snapshot is invalid: {sha}")
+        files = []
+        for file in item["files"]:
+            if (not isinstance(file, dict)
+                    or not isinstance(file.get("filename"), str)
+                    or not isinstance(file.get("status"), str)):
+                raise ValueError(f"commit record file entry is invalid: {sha}")
+            files.append({
+                "filename": file["filename"],
+                "previous_filename": str(file.get("previous_filename") or ""),
+                "status": file["status"],
+                "additions": max(0, int(file.get("additions") or 0)),
+                "deletions": max(0, int(file.get("deletions") or 0)),
+                "changes": max(0, int(file.get("changes") or 0)),
+            })
+        records[sha] = {
+            "sha": sha,
+            "message": item["message"],
+            "author": {
+                "login": str(item["author"].get("login") or ""),
+                "name": str(item["author"].get("name") or ""),
+                "email": str(item["author"].get("email") or ""),
+            },
+            "committer": {
+                "login": str(item["committer"].get("login") or ""),
+                "name": str(item["committer"].get("name") or ""),
+                "email": str(item["committer"].get("email") or ""),
+            },
+            "created_at": item["created_at"],
+            "files": files,
+            "diff": "\\n".join(item["diffLines"]),
+        }
+    return records
 
 def copilot_usage_view(ledger: dict) -> dict:
     """Compact 30-day SKYTICAL Copilot view for the existing dashboard."""
@@ -3702,7 +3779,8 @@ def _write_rss_feed(path: Path, lang: str, articles, now) -> None:
     _write_xml(path, root)
 
 
-def write_search_discovery_files(articles, briefings, now) -> None:
+def write_search_discovery_files(articles, briefings, now,
+                                 commit_records=None) -> None:
     """Write sitemaps, RSS feeds and a crawler policy for the public site."""
     urlset = ET.Element(ET.QName(SITEMAP_NS, "urlset"))
     seen = set()
@@ -3740,6 +3818,8 @@ def write_search_discovery_files(articles, briefings, now) -> None:
         add_url(lang, "briefings/", latest_briefing_modified)
         for sub in static_sections:
             add_url(lang, sub)
+        for sha in (commit_records or {}):
+            add_url(lang, f"changelog/commits/{sha}/")
         for slug in TOPICS:
             topic_rows = topic_articles(localized, slug)
             topic_modified = (
@@ -3843,6 +3923,18 @@ def main() -> int:
     changelog_raw = load_json(
         Path(__file__).resolve().parent.parent
         / "config" / "changelog.json", {})
+    commit_records_raw = load_json(
+        Path(__file__).resolve().parent.parent
+        / "config" / "commit-records.json", {})
+    changelog_shas = [
+        str(item.get("commit"))
+        for item in changelog_raw.get("entries", [])
+        if isinstance(item, dict)
+        and isinstance(item.get("commit"), str)
+        and _CHANGELOG_COMMIT_RE.fullmatch(item["commit"])
+    ] if isinstance(changelog_raw, dict) else []
+    commit_records = commit_records_view(
+        commit_records_raw, changelog_shas)
 
     # clean output tree
     if SITE_DIR.exists():
@@ -3856,6 +3948,12 @@ def main() -> int:
         for f in PUBLIC_DIR.iterdir():
             if f.is_file():
                 shutil.copy2(f, SITE_DIR / f.name)
+    record_dir = SITE_DIR / "commit-records"
+    record_dir.mkdir(parents=True, exist_ok=True)
+    for sha, record in commit_records.items():
+        (record_dir / f"{sha}.json").write_text(
+            json.dumps(record, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8")
     (SITE_DIR / ".nojekyll").write_text("", encoding="utf-8")
     (SITE_DIR / "search-index.json").write_text(
         json.dumps(search_index_payload(articles, now), ensure_ascii=False,
@@ -4242,6 +4340,23 @@ def main() -> int:
                rel_path(lang, "changelog/index.html"), ctx)
         pages += 1
 
+        for sha, record in commit_records.items():
+            sub = f"changelog/commits/{sha}/"
+            record_ctx = base_ctx(
+                lang, "changelog", sub,
+                title=f"{sha[:7]}｜{t['commitRecordTitle']}｜{t['siteName']}",
+                description=t["changeNotice"], ticker=ticker, build=build)
+            record_ctx["commit_record"] = record
+            record_ctx["raw_record_url"] = f"{BASE_PATH}/commit-records/{sha}.json"
+            record_ctx["structured_data"] = breadcrumb_structured_data(lang, [
+                (t["siteName"], ""),
+                (t["changeTitle"], "changelog/"),
+                (t["commitRecordTitle"], sub),
+            ])
+            render(env, "commit_record.html",
+                   rel_path(lang, f"{sub}index.html"), record_ctx)
+            pages += 1
+
     pages += render_usage_dashboard(env, build)
     pages += render_manual_workbench(env, build)
 
@@ -4260,7 +4375,7 @@ def main() -> int:
     render(env, "404.html", "en/404.html", ctx)
     pages += 1
 
-    write_search_discovery_files(articles, briefings, now)
+    write_search_discovery_files(articles, briefings, now, commit_records)
 
     catastrophic = render_failures_are_catastrophic(
         failed, expected_guarded_pages)
