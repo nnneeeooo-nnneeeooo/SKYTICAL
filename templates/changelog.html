@@ -22,7 +22,6 @@
 
     <div class="changelog-notice">
       <p>{{ t.changeNotice }}</p>
-      <a href="{{ changelog.repository_url }}" target="_blank" rel="noopener">{{ t.changeSource }} ↗</a>
     </div>
 
     <div class="changelog-history">
@@ -37,9 +36,9 @@
               <h2>{{ entry.title }}</h2>
             </div>
             {% if entry.url %}
-            <a class="changelog-commit" href="{{ entry.url }}" target="_blank" rel="noopener"
+            <a class="changelog-commit" href="{{ entry.url }}"
                aria-label="{{ t.changeCommit }} {{ entry.short_commit }}">
-              {{ entry.short_commit }} ↗
+              {{ entry.short_commit }} →
             </a>
             {% endif %}
           </article>
