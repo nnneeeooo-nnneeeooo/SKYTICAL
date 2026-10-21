@@ -1,0 +1,55 @@
+name: manufacturer-source-tests
+
+on:
+  push:
+    paths:
+      - ".github/workflows/manufacturer-tests.yml"
+      - "tests/test_manufacturer_sources.py"
+      - "pipeline/common.py"
+      - "pipeline/fetch.py"
+      - "pipeline/briefing.py"
+      - "pipeline/build.py"
+      - "pipeline/fulltext.py"
+      - "requirements.txt"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/manufacturer-tests.yml"
+      - "tests/test_manufacturer_sources.py"
+      - "pipeline/common.py"
+      - "pipeline/fetch.py"
+      - "pipeline/briefing.py"
+      - "pipeline/build.py"
+      - "pipeline/fulltext.py"
+      - "requirements.txt"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: manufacturer-tests-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install test dependencies
+        run: python -m pip install -r requirements.txt "pytest>=8,<10"
+      - name: Compile pipeline and tests
+        run: python -m compileall -q pipeline tests
+      - name: Run standalone manufacturer checks
+        run: python tests/test_manufacturer_sources.py
+      - name: Verify pytest collection and state isolation
+        run: python -m pytest -q tests/test_manufacturer_sources.py
+      - name: Verify tracked production data is unchanged
+        if: always()
+        run: git diff --exit-code -- data
