@@ -2090,9 +2090,20 @@ def build_sources(items: list) -> list:
     return sources
 
 
+def _is_editorially_managed(article: dict | None) -> bool:
+    """Manual copy stays authoritative until an editor explicitly changes it."""
+    if not isinstance(article, dict):
+        return False
+    return (article.get("editorialLocked") is True
+            or str(article.get("writer") or "").startswith("manual:"))
+
+
 def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
                   facts=None, existing_article: dict | None = None):
     """Assemble one article dict, or None when it cannot credit any source."""
+    if _is_editorially_managed(existing_article):
+        print(f"write: preserving editorial article {existing_article['id']}")
+        return None
     if not is_transport_story(group):
         print(f"write: group {group.get('id')} failed aviation/transport "
               "scope gate; skipping")
@@ -2441,7 +2452,8 @@ def _write_article_updates(updates: list[tuple[Path, dict]]) -> None:
         for index, current in enumerate(rows):
             article_id = str(current.get("id") or "") \
                 if isinstance(current, dict) else ""
-            if article_id in replacements:
+            if (article_id in replacements
+                    and not _is_editorially_managed(current)):
                 rows[index] = replacements[article_id]
                 changed = True
         if changed:
@@ -2975,6 +2987,15 @@ def main() -> None:
         drafted = 0  # only API-consuming groups count toward the run cap
         for group in groups:
             run_trace = run_traces[id(group)]
+            existing = _match_existing_article(group, existing_articles)
+            if existing and _is_editorially_managed(existing["article"]):
+                print(f"write: preserving editorial article "
+                      f"{existing['article']['id']}; consuming automatic update")
+                rejected_groups.append(group)
+                rejected_ids.add(group.get("id"))
+                run_trace.finish("editorial_protected", "editorial_protected",
+                                 article_id=existing["article"]["id"])
+                continue
             if time.monotonic() >= draft_deadline:
                 print("write: drafting time budget reached; saving completed drafts")
                 run_trace.finish("retry_pending", "retry_pending")
@@ -3135,7 +3156,6 @@ def main() -> None:
                     "refusal" if stopped_by_refusal else "retry_pending",
                     final_model)
                 continue
-            existing = _match_existing_article(group, existing_articles)
             article_started = time.perf_counter()
             article = build_article(
                 draft, group, now, used_ids, writer.label, verified,
