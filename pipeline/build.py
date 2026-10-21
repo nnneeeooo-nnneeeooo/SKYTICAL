@@ -1736,14 +1736,34 @@ def taiwan_focus_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
     return fallback[:1]
 
 
-def headline_carousel_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
-    """Lead with one Taiwan focus, then favour recent global coverage."""
+def headline_carousel_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT,
+                              pinned_ids=None):
+    """Lead with editorial pins, then Taiwan focus and global coverage."""
     if limit <= 0:
         return []
     now = now or now_utc()
+    if pinned_ids is None:
+        pinned_ids = load_json(CONFIG_DIR / "headline_pins.json", [])
+    if not isinstance(pinned_ids, list):
+        pinned_ids = []
+    by_id = {article["id"]: article for article in articles}
+    selected = []
+    selected_ids = set()
+    for article_id in pinned_ids:
+        if (not isinstance(article_id, str) or article_id not in by_id
+                or article_id in selected_ids):
+            continue
+        selected.append(by_id[article_id])
+        selected_ids.add(article_id)
+        if len(selected) >= limit:
+            return selected
     focus = taiwan_focus_articles(articles, now, limit=1)
-    selected = focus[:1]
-    selected_ids = {article["id"] for article in selected}
+    for article in focus:
+        if article["id"] not in selected_ids:
+            selected.append(article)
+            selected_ids.add(article["id"])
+        if len(selected) >= limit:
+            return selected
 
     def is_taiwan_related(article):
         text = _hero_focus_text(article)
