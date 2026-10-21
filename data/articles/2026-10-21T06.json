@@ -1,0 +1,362 @@
+{
+  "articles": [
+    {
+      "id": "a-20261021-0622-french-military-aircraft-crashes-near-na",
+      "publishedUtc": "2026-10-21T06:22Z",
+      "cat": "mil",
+      "primarySource": "AeroTime",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "法國軍用飛機南錫附近墜毀 機型尚未確認",
+        "summary": "法國軍用飛機10月20日晚在南錫附近墜毀，機型尚未獲官方確認。",
+        "body": [
+          "一架法國軍用飛機於2026年10月20日晚在法國東北部南錫附近墜毀。Pont-à-Mousson市長Henry Lemoine表示，飛機約於當地時間23時35分在Rogéville、Domèvre-en-Haye與Tremblecourt之間墜毀。事件引發夜間搜索行動。",
+          "市長表示，無人機已發現殘骸，現場部署大量消防及憲兵資源。Le Parisien於2026年10月21日上午報導至少一人死亡，但軍方當局尚未正式確認傷亡。報導並指出，飛機型號、所屬單位及機上人數尚未獲官方確認。"
+        ]
+      },
+      "en": {
+        "title": "French military aircraft crashes near Nancy; type not officially confirmed",
+        "summary": "A French military aircraft crashed near Nancy on October 20; its type remains unconfirmed.",
+        "body": [
+          "A French military aircraft crashed near Nancy in northeastern France late on October 20, 2026. Henry Lemoine, mayor of Pont-à-Mousson, said the aircraft went down at approximately 23:35 local time in an area between Rogéville, Domèvre-en-Haye and Tremblecourt. The crash prompted a major overnight search operation.",
+          "Lemoine said debris had been spotted by a drone and substantial firefighting and gendarmerie resources had been deployed. Le Parisien reported at least one fatality on the morning of October 21, but military authorities had not officially confirmed casualties. The aircraft type, unit and number of people aboard had not been officially confirmed."
+        ]
+      },
+      "sources": [
+        {
+          "name": "AeroTime — French Mirage 2000D fighter jet crashes near Nancy",
+          "url": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-21T05:53Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "一架法國軍用飛機於2026年10月20日晚在法國東北部南錫附近墜毀。",
+          "sourceQuote": "A French military aircraft crashed near Nancy in northeastern France late on October 20, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Pont-à-Mousson市長Henry Lemoine表示，飛機約於當地時間23時35分在Rogéville、Domèvre-en-Haye與Tremblecourt之間墜毀。",
+          "sourceQuote": "Henry Lemoine, mayor of Pont-à-Mousson, said on Facebook that the aircraft crashed at approximately 23:35 local time in an area between Rogéville, Domèvre-en-Haye and Tremblecourt",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "墜機引發大規模夜間搜索行動。",
+          "sourceQuote": "prompting a major overnight search operation.",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "市長表示無人機已發現殘骸，並部署大量消防及憲兵資源。",
+          "sourceQuote": "The mayor said debris had been spotted by a drone and that substantial firefighting and gendarmerie resources had been deployed.",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Le Parisien於2026年10月21日上午報導至少一人死亡，但軍方當局尚未正式確認傷亡。",
+          "sourceQuote": "Le Parisien reported at least one fatality on the morning of October 21, 2026, although military authorities had not officially confirmed casualties.",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "飛機型號、所屬單位及機上人數尚未獲官方確認。",
+          "sourceQuote": "The aircraft type, unit and number of personnel aboard had not been officially confirmed.",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "casualties_or_injuries",
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "preliminary",
+      "entities": {
+        "locations": [
+          "Nancy",
+          "Rogéville",
+          "Domèvre-en-Haye",
+          "Tremblecourt"
+        ],
+        "event_dates": [
+          "October 20, 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "locations",
+          "value": "Nancy",
+          "sourceQuote": "A French military aircraft crashed near Nancy in northeastern France late on October 20, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy"
+        },
+        {
+          "entityType": "locations",
+          "value": "Rogéville",
+          "sourceQuote": "in an area between Rogéville, Domèvre-en-Haye and Tremblecourt",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy"
+        },
+        {
+          "entityType": "locations",
+          "value": "Domèvre-en-Haye",
+          "sourceQuote": "in an area between Rogéville, Domèvre-en-Haye and Tremblecourt",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy"
+        },
+        {
+          "entityType": "locations",
+          "value": "Tremblecourt",
+          "sourceQuote": "in an area between Rogéville, Domèvre-en-Haye and Tremblecourt",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "October 20, 2026",
+          "sourceQuote": "A French military aircraft crashed near Nancy in northeastern France late on October 20, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/french-mirage-2000d-fighter-jet-crashes-near-nancy"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261021-0622-songshan-airport-relocation-plan-draws-s",
+      "publishedUtc": "2026-10-21T06:22Z",
+      "cat": "ops",
+      "primarySource": "中央社 CNA",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "松山機場遷移構想待審慎評估 空勤基地尚無替代方案",
+        "summary": "劉世芳稱松山空勤基地無替代方案，科學園區規劃最快需20年",
+        "body": [
+          "臺北市長蔣萬安宣佈規劃遷移松山機場，打造臺北人工智慧（AI）園區。內政部長劉世芳表示，空勤總隊松山基地目前沒有替代方案。她指出，空勤總隊操作直升機需要一定場地，才能支援救災、救難及醫療後送；遷移要選擇何處，須審慎評估。",
+          "劉世芳說，松山機場遷移牽涉內政部、衛福部、國防部及交通部等部會，相關部會都認為應審慎評估。她另表示，爭取科學園區從取得用地到通過環境影響評估，還有水、電等需求，通常最快也要20年。這項時間估算是針對科學園區籌設流程。"
+        ]
+      },
+      "en": {
+        "title": "Songshan Airport relocation plan draws scrutiny as air-service base lacks an alternative",
+        "summary": "Liu says Songshan’s air-service base lacks an alternative; a science park could take at least 20 years.",
+        "body": [
+          "Taipei Mayor 蔣萬安 announced plans to relocate Songshan Airport and develop a Taipei artificial-intelligence (AI) park. Interior Minister 劉世芳 said the Airborne Service Corps’ Songshan base currently has no alternative. She said helicopter operations need suitable space to support rescue work and medical evacuation, and that any relocation destination requires careful assessment.",
+          "劉世芳 said relocation also involves the Ministry of the Interior, Ministry of Health and Welfare, Ministry of National Defense, and Ministry of Transportation and Communications; the ministries consider careful assessment necessary. She also said developing a science park—from acquiring land through environmental impact assessment, while meeting water and electricity needs—usually takes at least 20 years at the fastest. That estimate concerns the science-park process."
+        ]
+      },
+      "sources": [
+        {
+          "name": "中央社 CNA — 松山機場遷移改科學園區？劉世芳：最快也要20年",
+          "url": "https://www.cna.com.tw/news/aipl/202610210077.aspx"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-21T03:32Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "台北市長蔣萬安宣布規劃遷移松山機場，打造台北人工智慧（AI）園區。",
+          "sourceQuote": "台北市長蔣萬安宣布，規劃遷移松山機場，打造台北人工智慧（AI）園區。",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210077.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "劉世芳表示，空勤總隊松山基地目前沒有替代方案。",
+          "sourceQuote": "空勤總隊松山基地目前沒有替代方案",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210077.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "劉世芳表示，空勤總隊操作直升機需要一定場地，以支援救災、救難及醫療後送。",
+          "sourceQuote": "空勤總隊操作直升機需要一定場地、場域，才能快速有效率救災、救難，以及醫療後送支援。",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210077.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "劉世芳表示，松山機場遷移涉及多個部會，相關部會認為應審慎評估。",
+          "sourceQuote": "松機遷移不只有內政部，還包括衛福部、國防部，甚至交通部等，幾個部會都覺得要審慎評估。",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210077.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "劉世芳表示，科學園區從取得用地到通過環境影響評估並滿足水電需求，通常最快要20年。",
+          "sourceQuote": "爭取一個科學園區，從用地取得到通過環境影響評估，還有水、電等需求，通常最快要20年的時間",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210077.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "內政部",
+          "空勤總隊"
+        ],
+        "airports": [
+          "松山機場"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "內政部",
+          "sourceQuote": "松機遷移不只有內政部，還包括衛福部、國防部，甚至交通部等",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210077.aspx"
+        },
+        {
+          "entityType": "organizations",
+          "value": "空勤總隊",
+          "sourceQuote": "空勤總隊松山基地目前沒有替代方案",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210077.aspx"
+        },
+        {
+          "entityType": "airports",
+          "value": "松山機場",
+          "sourceQuote": "規劃遷移松山機場",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210077.aspx"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261021-0622-taipei-mayor-urges-central-government-to",
+      "publishedUtc": "2026-10-21T06:22Z",
+      "cat": "ops",
+      "primarySource": "中央社 CNA",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "蔣萬安促中央啟動松山機場遷移規劃",
+        "summary": "蔣萬安呼籲中央啟動松山機場遷移，並提出遷後公園構想。",
+        "body": [
+          "臺北市長蔣萬安赴議會報告松山機場遷移計畫等案時，再次呼籲中央現在就啟動遷移案。他表示，遷移關乎臺北及臺灣未來數十年的發展，並主張應努力面對問題、克服困難，朝目標推動。",
+          "蔣萬安說，松山機場若遷移，遷後可規劃約110公頃公園綠地，打造為臺北中央公園。構想中的園區分為中央草原區、生態溪地區、運動休閒區、管理中心及歷史紀念園區、森林綠帶區與城市農園區，共6個區域。"
+        ]
+      },
+      "en": {
+        "title": "Taipei Mayor 蔣萬安 urges central government to begin Songshan Airport relocation planning",
+        "summary": "蔣萬安 urges central action on Songshan Airport relocation and outlines a proposed park plan.",
+        "body": [
+          "Taipei Mayor 蔣萬安 urged the central government to begin the Songshan Airport relocation process while reporting to the Taipei City Council on the plan and other matters. He said the relocation concerns Taipei and Taiwan’s development over the coming decades, and called for efforts to address obstacles and pursue the goal.",
+          "For the site after a possible relocation, 蔣萬安 described a concept for a 110-hectare park envisioned as a Taipei Central Park. The proposed park would have six zones: central grassland, an ecological stream area, sports and recreation, a management center and historical memorial area, a forest belt, and an urban farm."
+        ]
+      },
+      "sources": [
+        {
+          "name": "中央社 CNA — 松山機場遷移 蔣萬安赴議會報告提現在就應啟動",
+          "url": "https://www.cna.com.tw/news/aipl/202610210062.aspx"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-21T03:17Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "蔣萬安在議會報告時呼籲中央現在就啟動松山機場遷移案。",
+          "sourceQuote": "自己再三強調並呼籲中央對此案現在就要開始啟動。",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210062.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "蔣萬安表示，松山機場遷移關乎台北及台灣未來數十年的發展。",
+          "sourceQuote": "松山機場遷移關乎台北及台灣往後數10年發展",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210062.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "蔣萬安提出松山機場遷移後可規劃約110公頃公園綠地，打造為台北中央公園。",
+          "sourceQuote": "松山機場若遷移後，可規劃如110公頃公園綠地，將打造成台北的中央公園",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210062.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "遷後公園構想包含六個區域，分別為中央草原、生態溪地、運動休閒、管理中心及歷史紀念園區、森林綠帶、城市農園。",
+          "sourceQuote": "園區有中央草原區、生態溪地區、運動休閒區、管理中心及歷史紀念園區、森林綠帶區、城市農園區共6區域",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210062.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "planned",
+      "entities": {
+        "airports": [
+          "松山機場"
+        ],
+        "locations": [
+          "台北",
+          "台灣"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airports",
+          "value": "松山機場",
+          "sourceQuote": "松山機場遷移計畫等案",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210062.aspx"
+        },
+        {
+          "entityType": "locations",
+          "value": "台北",
+          "sourceQuote": "台北及台灣往後數10年發展",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210062.aspx"
+        },
+        {
+          "entityType": "locations",
+          "value": "台灣",
+          "sourceQuote": "台北及台灣往後數10年發展",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202610210062.aspx"
+        }
+      ],
+      "evidenceVersion": 2
+    }
+  ]
+}
