@@ -1414,8 +1414,40 @@ def test_model_format_failure_uses_content_budget():
               f"{error} spends the correct retry budget")
 
 
+def test_hourly_preserves_editorial_copy_without_model_calls():
+    reset_data_dir()
+    pending = load(DATA / "pending.json")
+    group = pending["groups"][0]
+    group["updateCandidate"] = True
+    editorial = {
+        "id": "a-manual-expanded-story", "publishedUtc": common.iso_minute(NOW),
+        "writer": "manual:GPT 6.1 Sol", "editorialLocked": True,
+        "zh": {"title": "人工擴寫航空新聞", "body": ["保留完整中文稿"]},
+        "en": {"title": "Edited aviation report", "body": ["Full English copy"]},
+        "sources": [{"name": item["source"], "url": item["url"]}
+                    for item in group["items"]],
+    }
+    common.save_json(DATA / "articles" / "manual.json", {"articles": [editorial]})
+    provider = FakeProvider("gemini", [providers.ProviderError("must not call")])
+    original_build = write.build_providers
+    write.build_providers = lambda: [provider]
+    try:
+        for run in range(2):
+            group["id"] = f"g-editorial-update-{run}"
+            common.save_json(DATA / "pending.json", {**pending, "groups": [group]})
+            write.main()
+            check(all_articles() == [editorial],
+                  f"hourly cycle {run} keeps full manual copy without duplicate")
+            check(not load(DATA / "pending.json")["groups"],
+                  f"hourly cycle {run} consumes the protected update")
+        check(provider.calls == 0, "editorial updates spend no model calls")
+    finally:
+        write.build_providers = original_build
+
+
 def main():
-    tests = [test_flexible_publication_keeps_evidence_gates,
+    tests = [test_hourly_preserves_editorial_copy_without_model_calls,
+             test_flexible_publication_keeps_evidence_gates,
              test_persistent_story_retry_budget,
              test_model_format_failure_uses_content_budget,
              test_story_budget_allows_later_groups,

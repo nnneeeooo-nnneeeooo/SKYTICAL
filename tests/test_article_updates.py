@@ -105,6 +105,49 @@ def test_match_and_revision_preserve_stable_article() -> None:
     assert stored[0]["revision"] == 2
 
 
+def test_editorial_updates_match_without_becoming_duplicate_articles() -> None:
+    source = "https://www.faa.gov/newsroom/737-max-10"
+    group = {"id": "g-max10", "updateCandidate": True, "items": [
+        {"url": source, "title": "FAA certifies Boeing 737 MAX 10"}]}
+    for metadata in ({"writer": "manual:GPT 6.1 Sol"},
+                     {"writer": "openai:auto", "editorialLocked": True}):
+        article = {"id": "a-editorial-max10", **metadata}
+        record = {"article": article, "urls": {source}, "titles": []}
+        assert write._match_existing_article(group, [record]) == record
+        assert write._is_editorially_managed(article)
+        used_ids = set()
+        assert write.build_article(
+            {"zh": {"body": ["short replacement"]}}, group,
+            datetime.now(timezone.utc), used_ids, writer="openai:auto",
+            existing_article=article) is None
+        assert not used_ids
+    assert not write._is_editorially_managed({"writer": "openai:auto"})
+    assert not write._is_editorially_managed(None)
+
+
+def test_persistence_preserves_manual_edit_made_after_update_was_drafted() -> None:
+    path = DATA / "articles" / "editorial-protection.json"
+    protected = {
+        "id": "a-editorial", "writer": "manual:GPT 6.1 Sol",
+        "revision": 5, "zh": {"body": ["完整人工擴寫版"]},
+        "en": {"body": ["Full editorial copy"]},
+    }
+    automatic = {"id": "a-auto", "writer": "openai:auto", "revision": 1}
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({"articles": [protected, automatic]}),
+                    encoding="utf-8")
+    stale = {"id": "a-editorial", "writer": "openai:auto", "revision": 2}
+    revised_auto = {**automatic, "revision": 2}
+    for _ in range(2):
+        write._write_article_updates([(path, stale), (path, revised_auto)])
+        rows = json.loads(path.read_text(encoding="utf-8"))["articles"]
+        assert rows == [protected, revised_auto]
+
+
 if __name__ == "__main__":
     test_match_and_revision_preserve_stable_article()
     print("PASS test_match_and_revision_preserve_stable_article")
+    test_editorial_updates_match_without_becoming_duplicate_articles()
+    print("PASS test_editorial_updates_match_without_becoming_duplicate_articles")
+    test_persistence_preserves_manual_edit_made_after_update_was_drafted()
+    print("PASS test_persistence_preserves_manual_edit_made_after_update_was_drafted")
