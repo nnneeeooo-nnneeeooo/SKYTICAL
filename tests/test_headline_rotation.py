@@ -189,6 +189,26 @@ def test_carousel_leads_with_taiwan_then_prioritizes_global_news():
         taiwan_primary, global_newest, global_second, taiwan_secondary]
 
 
+def test_editorial_pin_leads_even_when_older_than_automatic_focus():
+    now = build.now_utc()
+    global_story = _article(
+        now, "737 MAX 10取得認證", "FAA核准波音新機型。",
+        source="FAA", age_hours=72)
+    taiwan_story = _article(
+        now, "長榮航空新增桃園航線", "航空公司公布新航線。")
+    articles = [taiwan_story, global_story]
+    pins = ["missing-id", global_story["id"], global_story["id"]]
+    selected = build.headline_carousel_articles(articles, now, pinned_ids=pins)
+    assert selected == [global_story, taiwan_story]
+    assert articles == [taiwan_story, global_story]
+    assert build.headline_carousel_articles(
+        articles, now, limit=1, pinned_ids=pins) == [global_story]
+    assert build.headline_carousel_articles(
+        articles, now, limit=0, pinned_ids=pins) == []
+    assert build.headline_carousel_articles(
+        articles, now, limit=1, pinned_ids=["missing-id"]) == [taiwan_story]
+
+
 def test_flash_priority_is_distinct_from_legacy_pinned_flag():
     flashes = [
         {"time": "6:00 PM", "hot": False, "pinned": True,
@@ -214,6 +234,7 @@ def main() -> int:
         test_taiwan_special_livery_arrival_can_enter_carousel_but_promo_cannot,
         test_focus_selection_prefers_fresh_and_uses_safe_recent_fallback,
         test_carousel_leads_with_taiwan_then_prioritizes_global_news,
+        test_editorial_pin_leads_even_when_older_than_automatic_focus,
         test_flash_priority_is_distinct_from_legacy_pinned_flag,
     )
     for test in tests:
