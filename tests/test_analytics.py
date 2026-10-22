@@ -9,12 +9,16 @@ sys.path.insert(0, str(ROOT / "pipeline"))
 import build  # noqa: E402
 
 def main():
+    with patch.dict(os.environ, {}, clear=True):
+        assert build.ga4_measurement_id() == "G-J45CLL0ZVY"
     with patch.dict(os.environ, {"SKYTICAL_GA4_MEASUREMENT_ID": "G-ABC1234567"}):
         assert build.ga4_measurement_id() == "G-ABC1234567"
         ctx = build.base_ctx("zh", "home", "", title="Test",
                              description="Test", ticker=[], build={})
         assert ctx["ga4_measurement_id"] == "G-ABC1234567"
-    for bad in ("", "G-INVALID<script>", "UA-123-1", "G-TOO_LONG_AAAAAAAAAAAAA"):
+    with patch.dict(os.environ, {"SKYTICAL_GA4_MEASUREMENT_ID": ""}):
+        assert build.ga4_measurement_id() == "G-J45CLL0ZVY"
+    for bad in ("G-INVALID<script>", "UA-123-1", "G-TOO_LONG_AAAAAAAAAAAAA"):
         with patch.dict(os.environ, {"SKYTICAL_GA4_MEASUREMENT_ID": bad}):
             assert build.ga4_measurement_id() == ""
     base = (ROOT / "templates" / "base.html").read_text(encoding="utf-8")

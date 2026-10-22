@@ -1,14 +1,12 @@
 # SKYTICAL 免費流量追蹤設定
 
-SKYTICAL 支援免費版 Google Analytics 4（GA4），以及不需帳號或付費的 UTM 活動連結。尚未設定 GA4 網站資料串流前，分析程式不會載入，也不會記錄任何訪客。
+SKYTICAL 支援免費版 Google Analytics 4（GA4），以及不需帳號或付費的 UTM 活動連結。目前已預設使用 SKYTICAL 官方 GA4 資料串流測量 ID `G-J45CLL0ZVY`；每次網站重建都會自動載入 Google 官方追蹤程式。
 
-## 完成 GA4 設定（網站擁有者執行一次）
+## 驗證 GA4 是否正在記錄
 
-1. 前往 https://analytics.google.com/ ，建立或選取 GA4 資源，新增「網頁」資料串流，網站網址設定為 `https://skytical.tech`。
-2. 在資料串流詳細資料複製測量 ID（格式 `G-XXXXXXXXXX`；**不要**使用他人的 ID）。
-3. 到本儲存庫 Settings → Secrets and variables → Actions → **Variables**，建立 `SKYTICAL_GA4_MEASUREMENT_ID`，填入上述公開測量 ID。
-4. 手動執行 `hourly-update` workflow（或等待下一次自動重建），確保所有文章都含 GA4 程式碼。本站的 `daily-briefing`、`manual-article-deploy` 建站也會沿用同一變數。
-5. 在 GA4 即時報表打開網站確認有測試造訪。資料收集開始前的歷史 Facebook 點擊**不能補回**。
+1. 正式網站部署後開啟 https://skytical.tech/，再在 Google Analytics 點選 **Test installation** 或查看即時報表。
+2. GA4 所有權由網站擁有者的 Google 帳號管理；訪客數據從標籤實際上線之後開始累積，歷史 Facebook 點擊**不能補回**。
+3. 若未來更換 GA4 資源，可到儲存庫 Settings → Secrets and variables → Actions → **Variables** 新增或更新 `SKYTICAL_GA4_MEASUREMENT_ID`，其值將覆蓋程式預設值，並適用所有建站 workflow。測量 ID 屬公開識別碼，並非 API 密鑰。
 
 ## Facebook 社團導流
 
