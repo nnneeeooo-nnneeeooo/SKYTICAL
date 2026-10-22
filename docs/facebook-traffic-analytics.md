@@ -10,7 +10,11 @@ SKYTICAL 支援免費版 Google Analytics 4（GA4），以及不需帳號或付�
 
 ## Facebook 社團導流
 
-在每篇 SKYTICAL 新聞內按「複製 Facebook 推廣連結」，貼進社團。連結自動附加：
+為避免讀者在公開文章頁看到營運者使用的推廣工具，新聞頁**不顯示** Facebook 推廣連結按鈕。營運者要在社團分享時，可從文章正式網址自行加上 UTM 查詢參數（若網址已有 `?`，後續參數以 `&` 串接），例如：
+
+`https://skytical.tech/news/文章ID/?utm_source=facebook&utm_medium=social&utm_campaign=skytical_aviation_news&utm_content=文章ID`
+
+依據實際文章 ID 組合，使用以下四個參數：
 
 - `utm_source=facebook`
 - `utm_medium=social`
