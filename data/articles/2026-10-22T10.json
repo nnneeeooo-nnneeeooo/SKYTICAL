@@ -1,0 +1,472 @@
+{
+  "articles": [
+    {
+      "id": "a-20261022-1038-taiwan-caa-says-domestic-flights-cancell",
+      "publishedUtc": "2026-10-22T10:38Z",
+      "cat": "mil",
+      "primarySource": "CAA Taiwan",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "民航局稱明日國內線全數取消 國際線可能持續調整",
+        "summary": "民航局稱明日國內線全日取消，國際航班可能持續調整",
+        "body": [
+          "交通部民用航空局表示，明日國內線全數取消；國際線航班也可能因颱風因素持續調整。民航局提醒旅客留意航班異動，並在出發前向航空公司確認航班動態。",
+          "民航局統計，今日截至18：00，國內線已取消126架次，國際線取消40架次，主要為往來日本沖繩的航班。為在颱風來襲前疏運滯留旅客，民航局協調立榮航空及華信航空於今日上午加開高雄—澎湖及臺北—澎湖航線班機，各2架次。"
+        ]
+      },
+      "en": {
+        "title": "Taiwan CAA says domestic flights cancelled tomorrow, international schedules may change",
+        "summary": "Taiwan CAA says domestic flights are cancelled tomorrow; international schedules may change with the typhoon.",
+        "body": [
+          "Taiwan’s Civil Aeronautics Administration said all domestic flights are scheduled to be cancelled tomorrow. International flights may also continue to be adjusted because of the typhoon. The authority urged passengers to watch for schedule changes and confirm their flight status with their airline before departure.",
+          "As of 18:00 today, the authority reported 126 domestic flight cancellations and 40 international cancellations, mainly on services to and from Okinawa, Japan. It also said it had coordinated with 立榮航空 and 華信航空 to add two flight sectors each this morning on the Kaohsiung–Penghu and Taipei–Penghu routes, to move stranded passengers before the typhoon."
+        ]
+      },
+      "sources": [
+        {
+          "name": "CAA Taiwan — 颱風逼近，國內線明日全數取消，民航局提醒留意航班異動",
+          "url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-22T00:00Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "民航局表示明日國內線全數取消。",
+          "sourceQuote": "明日國內線全數取消",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "民航局表示國際線航班可能因颱風因素持續調整。",
+          "sourceQuote": "國際線也可能因颱風因素而持續調整",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "民航局統計今日截至18：00國內線取消126架次、國際線取消40架次。",
+          "sourceQuote": "今日截至18：00，國內線已取消126架次，國際線則取消40架次",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "民航局為疏運滯留旅客，協調立榮航空及華信航空於今日上午在高雄—澎湖及台北—澎湖航線各加開2架次。",
+          "sourceQuote": "民航局已協調立榮航空及華信航空於今日上午分別加開高雄—澎湖及台北—澎湖航線班機各2架次",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "民航局提醒旅客出發前向航空公司確認航班動態。",
+          "sourceQuote": "出發前務必先向航空公司確認航班動態",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "交通部民用航空局",
+          "立榮航空",
+          "華信航空"
+        ],
+        "airlines": [
+          "立榮航空",
+          "華信航空"
+        ],
+        "locations": [
+          "高雄",
+          "澎湖",
+          "台北",
+          "日本沖繩"
+        ],
+        "event_dates": [
+          "明日",
+          "今日"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "交通部民用航空局",
+          "sourceQuote": "交通部民用航空局提醒，明日國內線全日取消",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        },
+        {
+          "entityType": "organizations",
+          "value": "立榮航空",
+          "sourceQuote": "民航局已協調立榮航空及華信航空於今日上午分別加開高雄—澎湖及台北—澎湖航線班機各2架次",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        },
+        {
+          "entityType": "organizations",
+          "value": "華信航空",
+          "sourceQuote": "民航局已協調立榮航空及華信航空於今日上午分別加開高雄—澎湖及台北—澎湖航線班機各2架次",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        },
+        {
+          "entityType": "airlines",
+          "value": "立榮航空",
+          "sourceQuote": "民航局已協調立榮航空及華信航空於今日上午分別加開高雄—澎湖及台北—澎湖航線班機各2架次",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        },
+        {
+          "entityType": "airlines",
+          "value": "華信航空",
+          "sourceQuote": "民航局已協調立榮航空及華信航空於今日上午分別加開高雄—澎湖及台北—澎湖航線班機各2架次",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        },
+        {
+          "entityType": "locations",
+          "value": "高雄",
+          "sourceQuote": "加開高雄—澎湖及台北—澎湖航線班機各2架次",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        },
+        {
+          "entityType": "locations",
+          "value": "澎湖",
+          "sourceQuote": "加開高雄—澎湖及台北—澎湖航線班機各2架次",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        },
+        {
+          "entityType": "locations",
+          "value": "台北",
+          "sourceQuote": "加開高雄—澎湖及台北—澎湖航線班機各2架次",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        },
+        {
+          "entityType": "locations",
+          "value": "日本沖繩",
+          "sourceQuote": "主要為往來日本沖繩航班",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "明日",
+          "sourceQuote": "明日國內線全數取消",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "今日",
+          "sourceQuote": "今日截至18：00，國內線已取消126架次",
+          "sourceUrl": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2591&lang=1"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261022-1038-singapore-airlines-announces-inflight-en",
+      "publishedUtc": "2026-10-22T10:38Z",
+      "cat": "biz",
+      "primarySource": "AeroTime",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/06/Untitled-design-86.jpg",
+        "link": "https://www.aerotime.aero/articles/singapore-airlines-refreshes-its-inflight-entertainment-offering",
+        "subject": "Singapore Airlines passenger jet lifting off the runway wheels still extended under a partly cloudy blue sky",
+        "sourceCaption": "Singapore Airlines passenger jet lifting off the runway wheels still extended under a partly cloudy blue sky. Minh K Tran / Shutterstock.com",
+        "credit": "Minh K Tran / Shutterstock.com",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "file_photo",
+        "matched": "source:aerotime"
+      },
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "新加坡航空公佈機上娛樂升級 將提供4K螢幕與空間音訊",
+        "summary": "新加坡航空公佈機上娛樂升級，平臺將提供4K螢幕及2,500項內容",
+        "body": [
+          "新加坡航空於2026年10月21日宣佈更新並升級機上娛樂（IFE）服務。新版KrisWorld機上娛樂平臺將配備採用OLED技術的4K觸控螢幕，並提供空間音訊與藍牙配對功能。",
+          "航空公司表示，平臺將提供2,500項內容，涵蓋Apple TV、BBC、HBO Max及Paramount+等內容製作方。這些內容將透過新版KrisWorld平臺提供給乘客。",
+          "機上娛樂系統的使用者介面也已重新設計，以提升操作便利性。新版介面將採用更清楚的選單與較大的圖示，並改善搜尋和篩選功能。平臺還將加入迷你播放器，讓乘客在繼續觀看電影時，同時搜尋內容及資訊。",
+          "使用KrisFlyer忠誠計畫憑證登入KrisWorld的乘客，將可獲得個人化內容推薦及航班資訊。新加坡航空此次公佈的升級內容包括平臺的視聽設備、內容選擇與介面功能；來源未提供新平臺開始使用的時間。"
+        ]
+      },
+      "en": {
+        "title": "Singapore Airlines announces inflight entertainment refresh with 4K screens",
+        "summary": "Singapore Airlines announces an inflight entertainment refresh featuring 4K screens and 2,500 content options.",
+        "body": [
+          "Singapore Airlines announced a refresh and upgrade of its inflight entertainment offering on October 21, 2026. The new KrisWorld platform will feature 4K touchscreens using OLED technology, spatial audio and Bluetooth pairing.",
+          "The platform will offer 2,500 content options, including offerings from Apple TV, the BBC, HBO Max and Paramount+. The airline’s announcement describes the content range as part of the updated KrisWorld inflight entertainment service.",
+          "The system’s user interface has also been redesigned for easier use. The airline says it will have clearer menus and larger icons, along with improved search and filter functions. A mini player will allow passengers to search for content and information while continuing to watch a film, rather than stopping playback to look for those items.",
+          "Passengers who log in to the KrisWorld inflight entertainment program with their KrisFlyer loyalty program credentials will receive personalized content recommendations and flight information. The announcement sets out the planned platform features but does not state when the updated system will be available to passengers."
+        ]
+      },
+      "sources": [
+        {
+          "name": "AeroTime — Singapore Airlines refreshes its inflight entertainment off…",
+          "url": "https://www.aerotime.aero/articles/singapore-airlines-refreshes-its-inflight-entertainment-offering"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-22T08:33Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Singapore Airlines announced a refresh and upgrade of its inflight entertainment offering on October 21, 2026.",
+          "sourceQuote": "Singapore Airlines announced a refresh and upgrade of its inflight entertainment (IFE) offering on October 21, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-refreshes-its-inflight-entertainment-offering",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The new KrisWorld platform will feature OLED 4K touchscreens, spatial audio and Bluetooth pairing.",
+          "sourceQuote": "The new KrisWorld inflight entertainment platform will feature 4K touchscreens with OLED technology, spatial audio and Bluetooth pairing.",
+          "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-refreshes-its-inflight-entertainment-offering",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The platform will offer 2,500 content options, including Apple TV, the BBC, HBO Max and Paramount+.",
+          "sourceQuote": "It will also offer 2,500 content options, taking in some of the world’s most prominent producers, such as Apple TV, the BBC, HBO Max and Paramount+.",
+          "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-refreshes-its-inflight-entertainment-offering",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The IFE interface has been redesigned for ease of use, with clearer menus and larger icons.",
+          "sourceQuote": "The IFE system’s user interface (UI) has also been redesigned for better ease of use. It will have clearer menus, larger icons",
+          "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-refreshes-its-inflight-entertainment-offering",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The platform will have improved search and filter functions and a mini player for searching while continuing to watch a film.",
+          "sourceQuote": "improved search and filter functions, as well as a mini player which makes it possible to simultaneously search for content and information while continuing to watch a film.",
+          "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-refreshes-its-inflight-entertainment-offering",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Passengers using KrisFlyer loyalty program credentials to log in will receive personalized content recommendations and flight information.",
+          "sourceQuote": "Passengers who log into the KrisWorld inflight entertainment program using their KrisFlyer loyalty program credentials will enjoy personalized content recommendations and flight information",
+          "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-refreshes-its-inflight-entertainment-offering",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "planned",
+      "entities": {
+        "airlines": [
+          "Singapore Airlines"
+        ],
+        "event_dates": [
+          "October 21, 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "Singapore Airlines",
+          "sourceQuote": "Singapore Airlines announced a refresh and upgrade of its inflight entertainment (IFE) offering on October 21, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-refreshes-its-inflight-entertainment-offering"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "October 21, 2026",
+          "sourceQuote": "Singapore Airlines announced a refresh and upgrade of its inflight entertainment (IFE) offering on October 21, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/singapore-airlines-refreshes-its-inflight-entertainment-offering"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261022-1038-armenias-first-l-39-skyfox-appears-in-ai",
+      "publishedUtc": "2026-10-22T10:38Z",
+      "cat": "mil",
+      "primarySource": "AeroTime",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/10/Armenian-Defense-Minister-Suren-Papikyan-poses-beside-an-Aero-L-39-Skyfox-jet-bearing-Armenian-Air-Force-markings-during-a-visit-to-Aero-Vodochodys-factory-e1792655658919-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody",
+        "subject": "L-39 Skyfox",
+        "sourceCaption": "Armenian Defense Minister Suren Papikyan poses beside an Aero L-39 Skyfox jet bearing Armenian Air Force markings during a visit to Aero Vodochody’s factory. (Credit: Armenian Ministry of Defense)",
+        "credit": "Armenian Ministry of Defense",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "亞美尼亞首架L-39 Skyfox現身空軍標誌",
+        "summary": "亞美尼亞首架L-39 Skyfox現身空軍標誌，交付數量與時程未公佈",
+        "body": [
+          "AeroTime報導，亞美尼亞首架L-39 Skyfox噴射機已出現亞美尼亞空軍標誌。亞美尼亞國防部公佈的照片顯示，國防部長Suren Papikyan正在查看一架掛有空軍標誌的L-39 Skyfox。",
+          "Papikyan於10月20日到訪Aero Vodochody位於布拉格以北的工廠時，在Facebook貼文表示，這些飛機「很快將在亞美尼亞天空飛行」。",
+          "捷克通訊社ČTK於10月21日引述自身消息報導，未來幾週可能有最多4架飛機交付亞美尼亞。雙方尚未正式公佈訂購數量、合約金額或交付時程。"
+        ]
+      },
+      "en": {
+        "title": "Armenia’s first L-39 Skyfox appears in Air Force markings",
+        "summary": "Armenia’s first L-39 Skyfox appears in Air Force markings; delivery details remain undisclosed",
+        "body": [
+          "AeroTime reported that Armenia’s first L-39 Skyfox jet has appeared in Armenian Air Force markings. Photographs released by Armenia’s Ministry of Defense show Defense Minister Suren Papikyan inspecting the aircraft.",
+          "Papikyan wrote on Facebook on October 20, during a visit to Aero Vodochody’s factory north of Prague, that the aircraft would “soon soar in Armenia’s skies.”",
+          "Czech news agency ČTK reported on October 21, citing its own information, that up to four aircraft could be delivered to Armenia over the coming weeks. Neither side has formally disclosed the number of aircraft ordered, the contract value or a delivery schedule."
+        ]
+      },
+      "sources": [
+        {
+          "name": "AeroTime — Armenia’s first L-39 Skyfox jet appears in Armenian Air For…",
+          "url": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-10-22T07:59Z",
+      "writer": "openai:gpt-6-luna",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "AeroTime報導，亞美尼亞首架L-39 Skyfox噴射機出現在亞美尼亞空軍標誌下。",
+          "sourceQuote": "Armenia’s first L-39 Skyfox jet appears in Armenian Air Force markings",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Papikyan表示這些飛機很快將在亞美尼亞天空飛行；他於2026年10月20日到訪Aero Vodochody工廠時發布相關Facebook貼文。",
+          "sourceQuote": "“These marvels will soon soar in Armenia’s skies,” Papikyan wrote in a Facebook post on October 20, 2026, during a visit to Aero Vodochody’s factory north of Prague.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "亞美尼亞國防部公布的照片顯示，Papikyan正在查看一架展示亞美尼亞空軍標誌的L-39 Skyfox。",
+          "sourceQuote": "Photographs released by the Armenian Ministry of Defense show Papikyan inspecting an L-39 Skyfox displaying Armenian Air Force insignia.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "ČTK於2026年10月21日引述自身消息報導，未來幾週可能有最多4架飛機交付亞美尼亞。",
+          "sourceQuote": "Up to four aircraft could be delivered to Armenia over the coming weeks, Czech news agency ČTK reported on October 21, 2026, citing its own information.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "雙方尚未正式公布訂購數量、合約金額或交付時程。",
+          "sourceQuote": "Neither side has formally disclosed the number of aircraft ordered, the contract value or a delivery schedule.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "unconfirmed_or_developing",
+        "financial_or_order_claim"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "Armenian Ministry of Defense",
+          "Aero Vodochody",
+          "ČTK"
+        ],
+        "aircraft_models": [
+          "L-39 Skyfox"
+        ],
+        "locations": [
+          "Armenia",
+          "north of Prague"
+        ],
+        "event_dates": [
+          "October 20, 2026",
+          "October 21, 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "Armenian Ministry of Defense",
+          "sourceQuote": "Photographs released by the Armenian Ministry of Defense show Papikyan inspecting an L-39 Skyfox displaying Armenian Air Force insignia.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Aero Vodochody",
+          "sourceQuote": "“These marvels will soon soar in Armenia’s skies,” Papikyan wrote in a Facebook post on October 20, 2026, during a visit to Aero Vodochody’s factory north of Prague.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody"
+        },
+        {
+          "entityType": "organizations",
+          "value": "ČTK",
+          "sourceQuote": "Up to four aircraft could be delivered to Armenia over the coming weeks, Czech news agency ČTK reported on October 21, 2026, citing its own information.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "L-39 Skyfox",
+          "sourceQuote": "Photographs released by the Armenian Ministry of Defense show Papikyan inspecting an L-39 Skyfox displaying Armenian Air Force insignia.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody"
+        },
+        {
+          "entityType": "locations",
+          "value": "Armenia",
+          "sourceQuote": "Up to four aircraft could be delivered to Armenia over the coming weeks, Czech news agency ČTK reported on October 21, 2026, citing its own information.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody"
+        },
+        {
+          "entityType": "locations",
+          "value": "north of Prague",
+          "sourceQuote": "“These marvels will soon soar in Armenia’s skies,” Papikyan wrote in a Facebook post on October 20, 2026, during a visit to Aero Vodochody’s factory north of Prague.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "October 20, 2026",
+          "sourceQuote": "“These marvels will soon soar in Armenia’s skies,” Papikyan wrote in a Facebook post on October 20, 2026, during a visit to Aero Vodochody’s factory north of Prague.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "October 21, 2026",
+          "sourceQuote": "Up to four aircraft could be delivered to Armenia over the coming weeks, Czech news agency ČTK reported on October 21, 2026, citing its own information.",
+          "sourceUrl": "https://www.aerotime.aero/articles/armenia-l39-skyfox-jets-czech-aero-vodochody"
+        }
+      ],
+      "evidenceVersion": 2
+    }
+  ]
+}
