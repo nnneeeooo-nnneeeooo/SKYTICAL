@@ -114,9 +114,9 @@ check("sources.json persists manufacturer visibility",
 
 public_rows = build.merged_sources(source_rows)
 public_keys = {row["key"] for row in public_rows}
-check("homepage/sources-page data shows Airbus and Boeing",
+check("merged source inventory retains Airbus and Boeing",
       {"airbus", "boeing"}.issubset(public_keys))
-check("homepage/sources-page data hides other manufacturers",
+check("merged source inventory excludes private manufacturers",
       not (expected - {"airbus", "boeing"}) & public_keys)
 
 brief_rows, _warnings = briefing.checked_sources_snapshot()
