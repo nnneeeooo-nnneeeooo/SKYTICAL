@@ -39,6 +39,18 @@
 {% if structured_data %}
 <script type="application/ld+json">{{ structured_data | tojson }}</script>
 {% endif %}
+{% if ga4_measurement_id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ ga4_measurement_id }}"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '{{ ga4_measurement_id }}', {
+  allow_google_signals: false,
+  allow_ad_personalization_signals: false
+});
+</script>
+{% endif %}
 <link rel="icon" type="image/svg+xml" href="{{ favicon }}" data-pixel-href="{{ base }}/assets/skytical-mark-8bit.svg?v={{ asset_version }}">
 <script>try{var u=localStorage.getItem("skytical-8bit-unlocked")==="true";if(u){document.documentElement.dataset.pixelUnlocked="true";}var t=localStorage.getItem("avwire-theme");if(t==="light"||t==="dark"||(t==="8bit"&&u)){document.documentElement.dataset.theme=t;}}catch(e){}document.documentElement.classList.add("js");</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
