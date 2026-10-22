@@ -111,7 +111,7 @@ ASSET_VERSION = static_asset_version()
 
 def ga4_measurement_id() -> str:
     """Accept only a public GA4 web stream ID; an empty value disables tagging."""
-    measurement_id = os.environ.get("SKYTICAL_GA4_MEASUREMENT_ID", "").strip()
+    measurement_id = os.environ.get("SKYTICAL_GA4_MEASUREMENT_ID", "G-J45CLL0ZVY").strip()
     if re.fullmatch(r"G-[A-Z0-9]{6,16}", measurement_id):
         return measurement_id
     return ""
