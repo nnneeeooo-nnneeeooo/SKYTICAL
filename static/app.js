@@ -3,36 +3,6 @@
 (function () {
   "use strict";
 
-  document.querySelectorAll("[data-facebook-promo-copy]").forEach(function (button) {
-    button.addEventListener("click", function () {
-      var url = new URL(button.dataset.canonicalUrl, window.location.origin);
-      url.searchParams.set("utm_source", "facebook");
-      url.searchParams.set("utm_medium", "social");
-      url.searchParams.set("utm_campaign", "skytical_aviation_news");
-      url.searchParams.set("utm_content", button.dataset.articleId);
-      var status = button.parentElement.querySelector("[data-facebook-promo-status]");
-      function setStatus(ok) {
-        if (status) status.textContent = ok ?
-          (document.documentElement.lang.startsWith("zh") ? "已複製追蹤連結" : "Tracking link copied") :
-          (document.documentElement.lang.startsWith("zh") ? "複製失敗，請手動複製網址" : "Unable to copy; please copy the URL");
-      }
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(url.toString()).then(function () {
-          setStatus(true);
-        }).catch(function () { setStatus(false); });
-      } else {
-        var input = document.createElement("textarea");
-        input.value = url.toString();
-        document.body.appendChild(input);
-        input.select();
-        var ok = document.execCommand("copy");
-        input.remove();
-        setStatus(ok);
-      }
-    });
-  });
-
-
   document.querySelectorAll(".news-thumbnail img[data-fallback]").forEach(function (image) {
     function useFallback() {
       if (image.dataset.fallbackTried === "true") return;
