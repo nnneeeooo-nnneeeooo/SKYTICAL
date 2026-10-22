@@ -1,38 +1,101 @@
 {% extends "base.html" %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ base }}/assets/about.css?v={{ asset_version }}">
+{% endblock %}
+{% macro body_block(b) %}
+  {% if b.t == 'list' %}
+  <ul class="about-list">{% for item in b['items'] %}<li>{{ item }}</li>{% endfor %}</ul>
+  {% elif b.t == 'pre' %}
+  <pre class="about-code" tabindex="0" aria-label="{% if lang == 'zh' %}公開程式碼目錄{% else %}Public source directory{% endif %}">{{ b.x }}</pre>
+  {% elif b.t == 'sub' %}
+  <h3>{{ b.x }}</h3>
+  {% else %}
+  <p>{{ b.x }}</p>
+  {% endif %}
+{% endmacro %}
 {% block content %}
-  <div style="max-width:860px;margin:0 auto;padding:28px 20px 64px;">
-    <span class="card-kicker">{{ t.aboutKicker }}</span>
-    <h2 style="margin:8px 0 18px;">{{ about.heading }}</h2>
-    {% for p in about.intro %}
-    <p style="font-size:16px;line-height:1.9;margin:0 0 14px;">{{ p }}</p>
-    {% endfor %}
-    {% for sec in about.sections %}
-    <hr class="hr" style="margin:28px 0 22px;">
-    <h4 style="margin:0 0 14px;">{{ sec.heading }}</h4>
-    {% for b in sec.blocks %}
-    {% if b.t == "sub" %}
-    <h5 style="margin:22px 0 8px;">{{ b.x }}</h5>
-    {% elif b.t == "step" %}
-    <div style="display:flex;gap:14px;align-items:baseline;margin:20px 0 10px;padding-top:14px;border-top:1px solid var(--color-divider);">
-      <span style="font-weight:800;color:var(--color-accent);font-size:15px;">{{ b.n }}</span>
-      <h5 style="margin:0;">{{ b.x }}</h5>
+<main class="about-page" id="about-main">
+  <header class="about-hero">
+    <div class="about-hero-copy">
+      <p class="about-kicker">{{ t.aboutTitle }}</p>
+      <h1>{{ about.heading }}</h1>
+      <p class="about-lead">{{ about.intro[0] }}</p>
+      <a class="about-text-link" href="#about-section-2">{% if lang == 'zh' %}看一篇報導如何誕生{% else %}Follow a story from source to publication{% endif %}<span aria-hidden="true">↘</span></a>
     </div>
-    {% elif b.t == "list" %}
-    <ul style="margin:4px 0 12px;padding-left:22px;font-size:14.5px;line-height:2;">
-      {% for it in b['items'] %}
-      <li>{{ it }}</li>
-      {% endfor %}
-    </ul>
-    {% elif b.t == "pre" %}
-    <pre style="background:var(--color-surface);border:1px solid var(--color-divider);padding:16px 20px;font-size:12.5px;line-height:1.8;overflow-x:auto;margin:14px 0;">{{ b.x }}</pre>
-    {% else %}
-    <p style="font-size:14.5px;line-height:1.9;margin:0 0 12px;">{{ b.x }}</p>
-    {% endif %}
+    <figure class="about-signal">
+      <div class="about-signal-label">{% if lang == 'zh' %}從原始資訊，到可追溯的報導{% else %}From original sources to a traceable story{% endif %}</div>
+      <div class="about-signal-sources" aria-hidden="true">
+        <span>{% if lang == 'zh' %}官方公告{% else %}Official notices{% endif %}</span>
+        <span>{% if lang == 'zh' %}公開資料{% else %}Public data{% endif %}</span>
+        <span>{% if lang == 'zh' %}可信媒體{% else %}Trusted media{% endif %}</span>
+      </div>
+      <svg class="about-signal-lines" viewBox="0 0 440 120" fill="none" aria-hidden="true">
+        <path d="M73 0V18C73 65 220 40 220 88M220 0V88M367 0V18C367 65 220 40 220 88" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="220" cy="93" r="6" fill="currentColor"/>
+        <path d="M220 100V120" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <div class="about-signal-check">{% if lang == 'zh' %}整理 · 比對 · 驗證{% else %}Organize · Compare · Verify{% endif %}</div>
+      <div class="about-story" aria-hidden="true">
+        <span class="about-story-brand">SKYTICAL</span>
+        <span class="about-story-line"></span><span class="about-story-line"></span>
+        <span class="about-story-source">{% if lang == 'zh' %}報導與原始出處，一起呈現{% else %}The story, with its original sources{% endif %}</span>
+      </div>
+      <figcaption>{% if lang == 'zh' %}模型協助整理；原始來源始終是查證依據。{% else %}Models help organize. Original sources remain the evidence.{% endif %}</figcaption>
+    </figure>
+  </header>
+
+  <div class="about-intro">{% for p in about.intro[1:] %}<p>{{ p }}</p>{% endfor %}</div>
+
+  <div class="about-layout">
+    <nav class="about-nav" aria-label="{% if lang == 'zh' %}本頁章節{% else %}On this page{% endif %}">
+      <p>{% if lang == 'zh' %}本頁導覽{% else %}On this page{% endif %}</p>
+      {% for sec in about.sections %}<a href="#about-section-{{ loop.index }}">{{ sec.heading }}</a>{% endfor %}
+    </nav>
+    <div class="about-sections">
+    {% for sec in about.sections %}
+      <section class="about-section{% if loop.index == 1 %} about-principles{% elif loop.index == 2 %} about-pipeline{% endif %}" id="about-section-{{ loop.index }}" aria-labelledby="about-title-{{ loop.index }}">
+        <h2 id="about-title-{{ loop.index }}">{{ sec.heading }}</h2>
+        {% if loop.index in [1, 2] %}
+          {% set groups = namespace(items=[]) %}
+          {% for b in sec.blocks %}
+            {% if b.t in ['sub', 'step'] %}
+              {% set _ = groups.items.append({'title': b.x, 'number': b.n|default(''), 'blocks': []}) %}
+            {% else %}
+              {% set _ = groups.items[-1].blocks.append(b) %}
+            {% endif %}
+          {% endfor %}
+          {% if loop.index == 2 %}
+          <ol class="about-route" aria-label="{% if lang == 'zh' %}產製流程總覽{% else %}Production overview{% endif %}">
+            {% for group in groups.items %}<li><a href="#about-stage-{{ loop.index }}"><span>{{ group.number }}</span>{{ group.title }}</a></li>{% endfor %}
+          </ol>
+          <ol class="about-stages">
+            {% for group in groups.items %}
+            <li class="about-stage" id="about-stage-{{ loop.index }}">
+              <span class="about-stage-number" aria-hidden="true">{{ group.number }}</span>
+              <div><h3>{{ group.title }}</h3>{% for b in group.blocks %}{{ body_block(b) }}{% endfor %}</div>
+            </li>
+            {% endfor %}
+          </ol>
+          {% else %}
+          <div class="about-principle-grid">
+            {% for group in groups.items %}
+            <article><h3>{{ group.title }}</h3>{% for b in group.blocks %}{{ body_block(b) }}{% endfor %}</article>
+            {% endfor %}
+          </div>
+          {% endif %}
+        {% else %}
+          <div class="about-section-body">{% for b in sec.blocks %}{{ body_block(b) }}{% endfor %}
+          {% if loop.index == 7 %}<a class="about-text-link" href="https://github.com/nnneeeooo-nnneeeooo/SKYTICAL">{% if lang == 'zh' %}在 GitHub 檢視原始碼{% else %}Explore the source on GitHub{% endif %}<span aria-hidden="true">↗</span></a>{% endif %}
+          {% if loop.last %}<a class="about-text-link" href="{{ policy_url }}">{{ t.policyLink }}<span aria-hidden="true">↗</span></a>{% endif %}
+          </div>
+        {% endif %}
+      </section>
     {% endfor %}
-    {% endfor %}
-    <div style="border:2px solid var(--color-divider);border-left:6px solid var(--color-accent);padding:14px 18px;margin-top:32px;">
-      <h6 style="margin:0 0 6px;">{{ about.disc_title }}</h6>
-      <p class="text-muted" style="font-size:13px;line-height:1.8;margin:0;">{{ about.disclaimer }}</p>
+    <aside class="about-disclaimer" aria-labelledby="about-disclaimer-title">
+      <h2 id="about-disclaimer-title">{{ about.disc_title }}</h2>
+      <p>{{ about.disclaimer }}</p>
+    </aside>
     </div>
   </div>
+</main>
 {% endblock %}
