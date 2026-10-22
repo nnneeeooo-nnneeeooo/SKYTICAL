@@ -158,9 +158,9 @@ def test_filtering_grouping_and_ranking() -> None:
 
         # Investigation updates get priority, then material/multi-source
         # events; the remaining ordinary groups retain recency ordering.
-        assert groups[0]["editorialPriority"] == "major"
-        assert groups[0]["items"][0]["title"].startswith("NTSB opens investigation")
-        assert groups[1] is denver
+        assert groups[0] is denver  # current runway excursion is urgent
+        assert groups[1]["editorialPriority"] == "major"
+        assert groups[1]["items"][0]["title"].startswith("NTSB opens investigation")
         assert groups[2]["items"][0]["sourceKey"] == "easa"
         assert groups[3]["items"][0]["title"] == "Boeing delivers 100th 787 to Emirates!"
         assert groups[3]["updateCandidate"] is True

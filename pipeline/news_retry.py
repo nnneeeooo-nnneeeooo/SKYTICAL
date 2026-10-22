@@ -9,6 +9,7 @@ import hashlib
 from datetime import timedelta
 
 from common import DATA_DIR, iso_minute, load_json, norm_url, parse_iso, save_json
+from editorial_policy import news_policy
 
 MAX_RETRIES_PER_RUN = 2
 RETRY_HOURS = (2, 6, 24)
@@ -80,10 +81,39 @@ class RetryLedger:
                 deferred.append(group)
             else:
                 retries.append(group)
-        retry_count = min(MAX_RETRIES_PER_RUN, len(retries), limit)
-        chosen = fresh[:limit - retry_count] + retries[:retry_count]
-        # Fill unused capacity with fresh news, never extra old retries.
-        deferred += fresh[limit - retry_count:] + retries[retry_count:]
+        # Reserve up to two slots for the oldest niche stories, including one
+        # while regular discovery is busy. Keep the global old-retry cap.
+        def policy(g):
+            return news_policy(g)
+
+        def oldest(g):
+            items = g.get("items", [])
+            return min((str(i.get("publishedUtc") or "") for i in items), default="")
+
+        candidates = fresh + retries
+        retry_ids = {id(g) for g in retries}
+        niche = sorted((g for g in candidates if policy(g).priority == "niche"), key=oldest)
+        regular = [g for g in candidates if policy(g).priority != "niche"]
+        regular.sort(key=lambda g: policy(g).priority != "urgent")
+        chosen = retries[:min(MAX_RETRIES_PER_RUN, limit)]
+        if (niche and len(chosen) < limit
+                and not any(policy(g).priority == "niche" for g in chosen)):
+            chosen.append(niche[0])
+        for group in regular + niche:
+            if (any(group is g for g in chosen) or len(chosen) >= limit
+                    or (id(group) in retry_ids
+                        and sum(id(g) in retry_ids for g in chosen) >= MAX_RETRIES_PER_RUN)
+                    or (policy(group).priority == "niche"
+                        and sum(policy(g).priority == "niche" for g in chosen) >= 2)):
+                continue
+            chosen.append(group)
+        # Service a niche slot early enough to survive the run's wall clock.
+        selected = {id(g) for g in chosen}
+        high = [g for g in regular if id(g) in selected]
+        low = [g for g in niche if id(g) in selected]
+        chosen = high[:2] + low[:1] + high[2:] + low[1:]
+        selected_ids = {id(g) for g in chosen}
+        deferred += [g for g in candidates if id(g) not in selected_ids]
         return chosen, deferred
 
     def exhausted(self, group):
