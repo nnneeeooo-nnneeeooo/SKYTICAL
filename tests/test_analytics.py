@@ -9,6 +9,8 @@ sys.path.insert(0, str(ROOT / "pipeline"))
 import build  # noqa: E402
 
 def main():
+    with patch.dict(os.environ, {}, clear=True):
+        assert build.ga4_measurement_id() == "G-J45CLL0ZVY"
     with patch.dict(os.environ, {"SKYTICAL_GA4_MEASUREMENT_ID": "G-ABC1234567"}):
         assert build.ga4_measurement_id() == "G-ABC1234567"
         ctx = build.base_ctx("zh", "home", "", title="Test",
