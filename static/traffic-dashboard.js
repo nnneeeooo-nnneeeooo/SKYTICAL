@@ -158,7 +158,7 @@
     $("refresh").disabled = true;
     $("last-updated").textContent = "正在讀取 GA4…";
     alertMessage("");
-    const dateRanges = [{startDate: days + "daysAgo", endDate:"today"}];
+    const dateRanges = [{startDate: (days - 1) + "daysAgo", endDate:"today"}];
     const dateFilters = {dateRanges:dateRanges};
     try {
       const [overview, trend, sources, facebook, pages] = await Promise.all([
