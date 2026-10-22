@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block head_extra %}
-<link rel="stylesheet" href="{{ base }}/assets/about.css?v={{ asset_version }}">
+<link rel="stylesheet" href="{{ base }}/assets/about.css?v={{ asset_version }}-hero2">
 {% endblock %}
 {% macro body_block(b) %}
   {% if b.t == 'list' %}
@@ -15,13 +15,13 @@
 {% endmacro %}
 {% block content %}
 <main class="about-page" id="about-main">
-  <header class="about-hero">
-    <div class="about-hero-copy">
+  <section class="about-hero" aria-labelledby="about-hero-title">
+    <header class="about-hero-copy">
       <p class="about-kicker">{{ t.aboutTitle }}</p>
-      <h1>{{ about.heading }}</h1>
+      <h1 id="about-hero-title">{{ about.heading }}</h1>
       <p class="about-lead">{{ about.intro[0] }}</p>
       <a class="about-text-link" href="#about-section-2">{% if lang == 'zh' %}看一篇報導如何誕生{% else %}Follow a story from source to publication{% endif %}<span aria-hidden="true">↘</span></a>
-    </div>
+    </header>
     <figure class="about-signal">
       <div class="about-signal-label">{% if lang == 'zh' %}從原始資訊，到可追溯的報導{% else %}From original sources to a traceable story{% endif %}</div>
       <div class="about-signal-sources" aria-hidden="true">
@@ -42,7 +42,7 @@
       </div>
       <figcaption>{% if lang == 'zh' %}模型協助整理；原始來源始終是查證依據。{% else %}Models help organize. Original sources remain the evidence.{% endif %}</figcaption>
     </figure>
-  </header>
+  </section>
 
   <div class="about-intro">{% for p in about.intro[1:] %}<p>{{ p }}</p>{% endfor %}</div>
 
