@@ -22,6 +22,7 @@ on:
       - "pipeline/fulltext.py"
       - "pipeline/draft_recovery.py"
       - "pipeline/news_retry.py"
+      - "pipeline/editorial_policy.py"
       - "pipeline/manual_draft.py"
       - "pipeline/airport_codes.py"
       - "config/airport_iata_aliases.json"
@@ -72,6 +73,7 @@ jobs:
           python tests/test_english_backfill.py
           python tests/test_news_freshness.py
           python tests/test_news_retry.py
+          python tests/test_editorial_policy.py
           python tests/test_news_chronology.py
 
   update:
