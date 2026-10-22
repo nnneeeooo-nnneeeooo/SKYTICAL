@@ -66,8 +66,32 @@ def news_policy(group: dict) -> NewsPolicy:
         matches(r"\b(?:military|navy|air force|MQ-25)\b|軍用|海軍|空軍", title)
         and (matches(r"\b(?:test|trial|demonstrat\w*)\b|測試|試驗", excerpt)
              or matches(r"remotely controls?|remote control|control link|遠端控制", title)))
+    local_passenger_transfer = (
+        matches(r"\bpassengers?\b|旅客", text)
+        and matches(r"(?<![A-Za-z])(?:airport|airlines?)(?![A-Za-z])|機場|航空", text)
+        and (matches(r"\b(?:bus(?:es)?|coaches|road (?:journeys?|transfers?))\b"
+                     r"|巴士|公路接駁|改道|改經", text)
+             or matches(r"\broute\w* .{0,60}passengers? (?:through|via)\b"
+                        r"|\bairport .{0,30}hours? away\b", title)))
+    counter_drone_policy = (
+        matches(r"\bdrones?\b|無人機", title)
+        and matches(r"\b(?:powers?|laws?|legislation|authorit\w*|rights?)\b"
+                    r"|權限|法律|法規|立法", title)
+        and matches(r"\b(?:consider\w*|weigh\w*|propos\w*|expand\w*|"
+                    r"allow\w*|giving|passes?|passed)\b|研議|考慮|擴大|允許|通過", title))
+    route_schedule_update = (
+        matches(r"\broutes?\b|flight schedules?|nonstop services?|航線|航班|班表", title)
+        and matches(r"\b(?:cancel\w*|cuts?|cutting|suspend\w*|ends?|drops?|"
+                    r"reduc\w*|resum\w*|seasonal|winter|summer|switch\w*)\b"
+                    r"|取消|停飛|停航|減班|減少|恢復|冬季|夏季|季節|調整", title))
     niche = None
-    if limited or (
+    if local_passenger_transfer:
+        niche = "local_passenger_rerouting"
+    elif counter_drone_policy:
+        niche = "regional_counter_drone_policy"
+    elif route_schedule_update:
+        niche = "routine_route_schedule"
+    elif limited or (
             matches(r"\beVTOL\b|advanced air mobility|electric aircraft|電動飛機", text)
             and matches(r"certificat\w*|authori[sz]\w*|allows?|approval|認證|授權|允許", title)):
         niche = "limited_certification"
