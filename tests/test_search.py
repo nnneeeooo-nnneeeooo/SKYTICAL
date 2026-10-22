@@ -251,6 +251,20 @@ def main() -> None:
     assert ".header-search-submit" in css
     assert "航空公司 IATA／ICAO 代碼" in zh
     assert "airline IATA/ICAO codes" in en
+    from bs4 import BeautifulSoup
+    for markup, language in ((zh, "zh"), (en, "en")):
+        header = BeautifulSoup(markup, "html.parser").select_one(".search-header")
+        groups = header.select(".search-help-group")
+        assert len(groups) == 3
+        assert [group.select_one("dt").text for group in groups] == [
+            group["label"] for group in build.L[language]["searchHelpGroups"]]
+        for group, expected in zip(groups, build.L[language]["searchHelpGroups"]):
+            terms = group.select(".search-help-term")
+            assert len(terms) == len(expected["terms"])
+            assert all(term.text.startswith(label)
+                       for term, label in zip(terms, expected["terms"]))
+        assert header.select_one(".search-help-note").text == build.L[language]["searchHelpNote"]
+        assert header.find("p", string=build.L[language]["searchSub"]) is None
     assert "data-airline-code-count-template" in zh
     assert "data-airline-code-empty-template" in en
     assert "function matchingRecords" in script

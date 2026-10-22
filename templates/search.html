@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
   <main class="search-page">
-    <header class="search-header">
+    <header class="search-header search-header--help">
       <span class="card-kicker">{{ t.searchKicker }}</span>
       <h1>{{ t.searchTitle }}</h1>
-      <p class="text-muted">{{ t.searchSub }}</p>
+      <dl class="search-help">
+        {% for group in t.searchHelpGroups %}
+        <div class="search-help-group">
+          <dt>{{ group.label }}</dt>
+          <dd class="text-muted">{% for term in group.terms %}<span class="search-help-term">{{ term }}{% if not loop.last %}{{ t.searchHelpSeparator }}{% endif %}</span>{% endfor %}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+      <p class="search-help-note text-muted">{{ t.searchHelpNote }}</p>
     </header>
 
     <section id="news-search-app" class="news-search"
