@@ -48,6 +48,7 @@ jobs:
       - name: Run pipeline regression tests
         run: |
           python tests/test_analytics.py
+          python tests/test_traffic_dashboard.py
           python tests/test_scope.py
           python tests/test_companion.py
           python tests/test_flightwatch.py
