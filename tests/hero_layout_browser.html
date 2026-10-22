@@ -1,0 +1,90 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Headline carousel layout regression</title>
+<style>
+  #results { height: 160px; overflow: auto; margin: 0; }
+  iframe { position: fixed; top: 170px; left: 0; border: 0; }
+</style>
+<!-- Build the site, copy this file to site/hero-layout-check.html, then serve
+     site/ over HTTP and open /hero-layout-check.html. Results appear below. -->
+<pre id="results">Running…</pre>
+<iframe title="Homepage under test" height="900" style="border:0"></iframe>
+<script>
+(async () => {
+  const output = document.getElementById('results');
+  const frame = document.querySelector('iframe');
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const waitFor = async predicate => {
+    const deadline = Date.now() + 15000;
+    while (!predicate()) {
+      if (Date.now() > deadline) throw new Error('Carousel transition timed out');
+      await sleep(50);
+    }
+  };
+  const reports = [];
+  try {
+    for (const route of ['/', '/en/']) {
+      await new Promise(resolve => { frame.onload = resolve; frame.src = route; });
+      const doc = frame.contentDocument;
+      await doc.fonts.ready;
+      const carousel = doc.getElementById('hero-carousel');
+      const next = doc.getElementById('hero-next');
+      if (!next) throw new Error('At least two carousel candidates are required');
+      next.focus(); // Exercise the normal focus-pause behavior during manual checks.
+      const link = doc.getElementById('hero-story-link');
+      const idle = () => !/hero-(?:exit|enter)-/.test(link.className);
+      await waitFor(idle);
+      const selectors = ['#hero-carousel', '#hero-story-image', '#hero-image-caption',
+        '#hero-story-kicker', '#hero-story-title', '.summary-preview--hero', '.hero-meta'];
+      // Revisit desktop after mobile to catch stale reservations on resize.
+      for (const width of [1280, 1440, 1024, 390, 1280]) {
+        frame.width = width;
+        // Wait for resize observation and paint, including background throttling.
+        await new Promise(resolve => frame.contentWindow.requestAnimationFrame(() =>
+          frame.contentWindow.requestAnimationFrame(resolve)));
+        await doc.fonts.ready;
+        await sleep(100);
+        const samples = [];
+        const capture = () => {
+          const values = selectors.flatMap(selector => {
+            const rect = doc.querySelector(selector).getBoundingClientRect();
+            return [rect.top + frame.contentWindow.scrollY, rect.height];
+          });
+          const below = carousel.nextElementSibling.getBoundingClientRect();
+          values.push(below.top + frame.contentWindow.scrollY);
+          samples.push(values);
+        };
+        const timer = setInterval(capture, 16);
+        const seen = new Set();
+        try {
+          for (let i = 0; i < doc.querySelectorAll('[data-hero-index]').length; i++) {
+            seen.add(doc.getElementById('hero-story-title').textContent);
+            capture();
+            const previous = doc.getElementById('hero-story-title').textContent;
+            next.click();
+            await waitFor(() => idle() &&
+              doc.getElementById('hero-story-title').textContent !== previous);
+          }
+        } finally { clearInterval(timer); }
+        const drift = Math.max(...samples[0].map((_, index) => {
+          const values = samples.map(sample => sample[index]);
+          return Math.max(...values) - Math.min(...values);
+        }));
+        if (seen.size !== doc.querySelectorAll('[data-hero-index]').length)
+          throw new Error('Not every carousel candidate was exercised');
+        if (drift > 1) throw new Error(`${route} ${width}px shifted ${drift}px: ` +
+          JSON.stringify(samples[0].map((_, index) => {
+            const values = samples.map(sample => sample[index]);
+            return {index, min: Math.min(...values), max: Math.max(...values)};
+          })));
+        if (doc.querySelector('.hero-layout-probe')) throw new Error('Probe was not removed');
+        reports.push({route, width, stories: seen.size, samples: samples.length, drift});
+        output.textContent = JSON.stringify(reports, null, 2);
+      }
+    }
+    output.textContent = 'PASS\n' + JSON.stringify(reports, null, 2);
+  } catch (error) {
+    output.textContent = 'FAIL: ' + error.message + '\n' + JSON.stringify(reports, null, 2);
+  }
+})();
+</script>

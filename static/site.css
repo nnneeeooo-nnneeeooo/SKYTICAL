@@ -281,6 +281,13 @@ a.flash-row:hover .flash-text { color: var(--color-accent); }
   transition: transform 220ms ease, opacity 220ms ease;
 }
 .hero-story:hover { color: inherit; }
+.hero-layout-probe {
+  position: absolute; top: 0; left: 0; width: 100%; visibility: hidden;
+  pointer-events: none; transform: none; transition: none;
+}
+#hero-story-kicker, .hero-layout-probe .card-kicker { display: block; }
+#hero-image-caption, #hero-story-source,
+.hero-layout-probe .text-muted { overflow-wrap: anywhere; }
 .hero-story.hero-exit-left { transform: translateX(-6%); opacity: 0; }
 .hero-story.hero-exit-right { transform: translateX(6%); opacity: 0; }
 .hero-story.hero-enter-right {
