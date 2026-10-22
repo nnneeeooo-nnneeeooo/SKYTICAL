@@ -69,6 +69,8 @@ def main() -> int:
     for lang in ("zh", "en"):
         rows = build.sources_rows_view(merged, lang, datetime.now(timezone.utc))
         names = {row["name"] for row in rows}
+        status = build.source_status_view(merged, datetime.now(timezone.utc), lang)
+        assert {row["name"] for row in status} == names
         assert not names & corporate_names
         assert {"FAA", "NTSB", "ICAO", "EASA", "Reuters", "AeroTime",
                 "CAA Taiwan", "FlightAware"}.issubset(names)

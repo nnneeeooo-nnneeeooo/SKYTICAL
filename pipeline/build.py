@@ -2352,28 +2352,31 @@ def merged_sources(raw):
     return out
 
 
+def public_display_sources(sources):
+    # Share the homepage/directory policy without changing fetch eligibility.
+    # The legacy "official" kind also includes airlines and manufacturers,
+    # so only explicitly reviewed public bodies may appear under that kind.
+    public_bodies = {"faa", "bfu", "ntsb", "icao", "easa",
+                     "eurocontrol", "caataiwan", "mndnews"}
+    return [s for s in sources
+            if s["kind"] in {"media", "data"}
+            or (s["kind"] == "official" and s["key"] in public_bodies)]
+
+
 def source_status_view(sources, now, lang="zh"):
     return [{"name": localized_label(s["name"], lang), "ok": s["ok"],
              "ago": ago(s["lastFetchUtc"], now)}
-            for s in sources]
+            for s in public_display_sources(sources)]
 
 
 def sources_rows_view(sources, lang: str, now):
-    # This directory is a curated public-service/media list, separate from
-    # fetch eligibility and the other source-status displays. The legacy
-    # "official" kind also includes airlines and manufacturers, so only
-    # explicitly reviewed public bodies may appear under that kind.
-    public_bodies = {"faa", "bfu", "ntsb", "icao", "easa",
-                     "eurocontrol", "caataiwan", "mndnews"}
     return [{
         "name": localized_label(s["name"], lang),
         "url": s["url"], "fmt": s["fmt"], "ok": s["ok"],
         "kind": _bi(KIND.get(s["kind"]), lang, s["kind"]),
         "cover": _bi(s["cover"], lang),
         "last": ago(s["lastFetchUtc"], now),
-    } for s in sources
-        if s["kind"] in {"media", "data"}
-        or (s["kind"] == "official" and s["key"] in public_bodies)]
+    } for s in public_display_sources(sources)]
 
 
 # ── daily briefings ──────────────────────────────────────────────────────────
