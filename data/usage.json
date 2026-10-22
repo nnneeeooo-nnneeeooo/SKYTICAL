@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-10-22T14:55Z",
+  "updatedUtc": "2026-10-22T15:08Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
@@ -259,6 +259,47 @@
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-10-22T15:08Z",
+      "finishedUtc": "2026-10-22T15:08Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "standard",
+      "routeReason": "ordinary_news",
+      "paidFallbackAllowed": false,
+      "groupId": "g-20261022-1508-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Simple Flying",
+      "result": "no_provider",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": null,
+      "fallbackUsed": false,
+      "attemptCount": 0,
+      "httpCallCount": 0,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 3996,
+        "promptAssembly": null,
+        "drafting": null,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 4190
+      },
+      "attempts": [],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-10-22T14:55Z",
       "finishedUtc": "2026-10-22T14:55Z",
@@ -95364,102 +95405,6 @@
           "failureMessage": "ConnectionError",
           "retryPlanned": false,
           "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-10-03T18:17Z",
-      "finishedUtc": "2026-10-03T18:26Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": null,
-      "routeReason": null,
-      "paidFallbackAllowed": null,
-      "groupId": "g-20261003-1816-12",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Airbus",
-      "result": "retry_pending",
-      "articleId": null,
-      "finalStatus": "retry_pending",
-      "finalModel": null,
-      "fallbackUsed": true,
-      "attemptCount": 3,
-      "httpCallCount": 4,
-      "repairCallCount": 1,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 2557,
-        "promptAssembly": 6,
-        "drafting": 119995,
-        "validation": 2,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 553120
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "wechat",
-          "model": "Deepseek-v4-flash",
-          "label": "wechat:Deepseek-v4-flash",
-          "startedUtc": "2026-10-03T18:24Z",
-          "durationMs": 49616,
-          "httpCalls": 2,
-          "repairCalls": 1,
-          "httpDurationMs": 49609,
-          "repairDurationMs": 22656,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "headlineSupportedBy must reference existing factId values",
-          "retryPlanned": true,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "wechat",
-          "model": "Deepseek-v4-flash",
-          "label": "wechat:Deepseek-v4-flash",
-          "startedUtc": "2026-10-03T18:25Z",
-          "durationMs": 22307,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 22301,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "invalid_schema",
-          "failureStage": "validation",
-          "failureMessage": "bad eventStatus None",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 3,
-          "provider": "nvidia",
-          "model": "nvidia/nemotron-3-ultra-550b-a55b",
-          "label": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-          "startedUtc": "2026-10-03T18:25Z",
-          "durationMs": 48077,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 48075,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "timeout",
-          "failureStage": "draft",
-          "failureMessage": "ReadTimeout",
-          "retryPlanned": false,
-          "disabledForRun": true
         }
       ],
       "resourceUsage": {
