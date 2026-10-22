@@ -310,6 +310,59 @@
     var heroTransitionMs = reduceHeroMotion ? 0 : 220;
     var heroRotationMs = Number(heroCarousel && heroCarousel.dataset.rotationMs) || 2500;
 
+    // Reserve each text row for the tallest candidate at the current width.
+    // Measuring a hidden copy keeps the visible story and live region untouched.
+    function reserveHeroLayout() {
+      if (!heroCarousel || !heroCandidates.length || !heroCarousel.clientWidth) return;
+      var probe = heroLink.cloneNode(true);
+      probe.className = "hero-story hero-layout-probe";
+      probe.setAttribute("aria-hidden", "true");
+      probe.setAttribute("inert", "");
+      var textFields = [
+        ["#hero-image-caption", "image_caption"],
+        ["#hero-story-kicker", "kicker"],
+        ["#hero-story-title", "title"],
+        [".summary-preview--hero .summary-preview__text", "summary"],
+        ["#hero-story-time", "time"],
+        ["#hero-story-source", "source_meta"]
+      ].map(function (field) {
+        return [probe.querySelector(field[0]), field[1]];
+      });
+      var selectors = ["#hero-image-caption", "#hero-story-kicker",
+        "#hero-story-title", ".summary-preview--hero", ".hero-meta"];
+      var originalRows = selectors.map(function (selector) {
+        return heroLink.querySelector(selector);
+      });
+      var probeRows = selectors.map(function (selector) {
+        var row = probe.querySelector(selector);
+        if (row) row.style.minHeight = "0";
+        return row;
+      });
+      var heights = selectors.map(function () { return 0; });
+      probe.removeAttribute("id");
+      probe.querySelectorAll("[id], [aria-live]").forEach(function (node) {
+        node.removeAttribute("id");
+        node.removeAttribute("aria-live");
+      });
+      // Only text is measured; no duplicate photo request is needed.
+      var probeImage = probe.querySelector("img");
+      if (probeImage) probeImage.remove();
+      heroCarousel.appendChild(probe);
+      heroCandidates.forEach(function (story) {
+        textFields.forEach(function (field) {
+          if (field[0]) field[0].textContent = story[field[1]] || "";
+        });
+        probeRows.forEach(function (row, index) {
+          if (row) heights[index] = Math.max(heights[index],
+            Math.ceil(row.getBoundingClientRect().height));
+        });
+      });
+      probe.remove();
+      originalRows.forEach(function (row, index) {
+        if (row) row.style.minHeight = heights[index] + "px";
+      });
+    }
+
     function renderPriorityHero(story) {
       if (!story || !heroImage) return;
       heroLink.href = story.url || "#";
@@ -393,6 +446,22 @@
 
     if (heroCandidates.length) {
       renderPriorityHero(heroCandidates[heroIndex]);
+      reserveHeroLayout();
+      window.addEventListener("resize", reserveHeroLayout);
+      if (window.ResizeObserver && heroCarousel) {
+        var heroLayoutWidth = heroCarousel.clientWidth;
+        new ResizeObserver(function () {
+          var width = heroCarousel.clientWidth;
+          if (width !== heroLayoutWidth) {
+            heroLayoutWidth = width;
+            reserveHeroLayout();
+          }
+        }).observe(heroCarousel);
+      }
+      if (document.fonts) {
+        document.fonts.ready.then(reserveHeroLayout);
+        document.fonts.addEventListener("loadingdone", reserveHeroLayout);
+      }
       if (heroCandidates.length > 1) {
         if (heroPrev) heroPrev.addEventListener("click", function () {
           showHero(heroIndex - 1, "previous");
