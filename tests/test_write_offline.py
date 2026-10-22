@@ -17,6 +17,7 @@ import sys
 import tempfile
 import traceback
 from contextlib import contextmanager
+from unittest.mock import patch
 from datetime import timedelta
 from pathlib import Path
 
@@ -521,6 +522,9 @@ class FakeProvider:
     def __init__(self, name, script):
         self.name = name
         self.label = f"{name}:fake"
+        self.model = getattr(type(self), "model",
+                             "fake:free" if name == "openrouter" else
+                             "gemini-3.6-flash" if name == "gemini" else "fake")
         self.script = list(script)
         self.calls = 0
 
@@ -740,6 +744,50 @@ def test_extract_json_and_validate_draft():
     print("test_extract_json_and_validate_draft: done")
 
 
+def test_free_only_news_never_calls_paid_fallback():
+    for free_available in (True, False):
+        reset_data_dir()
+        pending = load(DATA / "pending.json")
+        group = pending["groups"][1]
+        group["items"][0]["title"] = "Airbus completes H140 hot-and-high tests"
+        pending["groups"] = [group]
+        common.save_json(DATA / "pending.json", pending)
+        free = FakeProvider("nvidia", [providers.ProviderError("HTTP 503")])
+        final_paid = FakeProvider("openai", [DRAFT_BIZ])
+        final_paid.model = "gpt-6"
+        subscription = FakeProvider("wechat", [DRAFT_BIZ])
+        chain = ([free] if free_available else []) + [subscription, final_paid]
+        with patch.object(write, "build_providers", return_value=chain):
+            write.main()
+        check(final_paid.calls == subscription.calls == 0,
+              "free-only news cannot call paid/subscription fallback")
+        check(free.calls == int(free_available), "only available free routes are attempted")
+        check(not all_articles() and load(DATA / "pending.json")["groups"],
+              "service failure retains free-only story without publication")
+        rows = load(DATA / "news-retry.json")["stories"]
+        check(len(rows) == 1 and next(iter(rows.values()))["serviceFailures"] == 1,
+              "no free capacity and failed free calls both get persistent backoff")
+        check(common.norm_url(group["items"][0]["url"])
+              not in load(DATA / "seen.json")["urls"], "waiting source remains unseen")
+
+    # Real eligibility stays enabled for this urgent-event end-to-end test.
+    reset_data_dir()
+    pending = load(DATA / "pending.json")
+    pending["groups"] = [pending["groups"][0]]
+    common.save_json(DATA / "pending.json", pending)
+    free = FakeProvider("nvidia", [providers.ProviderError("HTTP 503")])
+    final_paid = FakeProvider("openai", [DRAFT_SAFETY])
+    final_paid.model = "gpt-6"
+    with patch.object(write, "build_providers", return_value=[free, final_paid]):
+        write.main()
+    check(free.calls == final_paid.calls == 1 and len(all_articles()) == 1,
+          "urgent safety event can still publish through paid fallback")
+    repetitive = json.loads(json.dumps(DRAFT_BIZ))
+    repetitive["zh"]["body"][0] = "報導標題指出出售數量，摘要則描述這項機隊安排。"
+    check(write.editorial_process_error(repetitive) is not None,
+          "headline/summary narration cannot pad a short source into an article")
+
+
 def test_provider_failover():
     """Primary dies on quota -> fallback writes; invalid draft falls through."""
     reset_data_dir()
@@ -747,7 +795,7 @@ def test_provider_failover():
     bad_draft = json.loads(json.dumps(DRAFT_BIZ))
     bad_draft["cat"] = "not-a-cat"  # fails validation -> next provider
     middle = FakeProvider("nvidia", [bad_draft])
-    backup = FakeProvider("anthropic", [DRAFT_SAFETY, DRAFT_BIZ, None])
+    backup = FakeProvider("openrouter", [DRAFT_SAFETY, DRAFT_BIZ, None])
 
     original = write.build_providers
     write.build_providers = lambda: [primary, middle, backup]
@@ -759,7 +807,7 @@ def test_provider_failover():
     articles = all_articles()
     check(len(articles) == 2,
           f"safety and biz both published via fallback, got {len(articles)}")
-    check(all(article.get("writer") == "anthropic:fake"
+    check(all(article.get("writer") == "openrouter:fake"
               for article in articles),
           "each article records the provider that actually wrote it")
     check(common.load_json(DATA / "review.json", []) == [],
@@ -778,7 +826,7 @@ def test_provider_failover():
     refused_run = next(row for row in runs
                        if row.get("result") == "refused")
     check(len(published_runs) == 2
-          and all(row["finalModel"] == "anthropic:fake"
+          and all(row["finalModel"] == "openrouter:fake"
                   and row["fallbackUsed"] is True
                   and row["finalStatus"] == "publish"
                   for row in published_runs),
@@ -852,7 +900,7 @@ def test_model_chain_and_routing_policy():
         "gemini", [providers.ProviderError("HTTP 503")])
     gem_fallback = FakeProvider(
         "gemini", [providers.ProviderError("HTTP 503")])
-    healthy = FakeProvider("anthropic", [DRAFT_SAFETY, DRAFT_BIZ, None])
+    healthy = FakeProvider("openrouter", [DRAFT_SAFETY, DRAFT_BIZ, None])
 
     original = write.build_providers
     write.build_providers = lambda: [gem_primary, gem_fallback, healthy]
@@ -865,7 +913,7 @@ def test_model_chain_and_routing_policy():
           "two same-platform 503s stop repeated calls for later groups")
     articles = all_articles()
     check(len(articles) == 2
-          and all(article["writer"] == "anthropic:fake"
+          and all(article["writer"] == "openrouter:fake"
                   for article in articles),
           "healthy cross-platform fallback handles remaining groups")
     runs = load(DATA / "usage.json").get("recentRuns") or []
@@ -945,6 +993,9 @@ def test_provider_specific_time_budget():
     print("test_provider_specific_time_budget: done")
 
 
+# Provider timing/repair mechanics are exercised after cost eligibility.
+@patch("write.eligible_providers", lambda group, chain: list(chain))
+@patch("news_retry.news_policy", lambda group: write.news_policy({}))
 def test_final_paid_is_used_after_preferred_service_failures():
     """The final provider receives the group after failures and timeout."""
     reset_data_dir()
@@ -976,6 +1027,9 @@ def test_final_paid_is_used_after_preferred_service_failures():
     print("test_final_paid_is_used_after_preferred_service_failures: done")
 
 
+# Provider timing/repair mechanics are exercised after cost eligibility.
+@patch("write.eligible_providers", lambda group, chain: list(chain))
+@patch("news_retry.news_policy", lambda group: write.news_policy({}))
 def test_final_paid_repairs_after_shared_fallback_repair_is_spent():
     """A responsive preferred fallback cannot consume Fallback's repair."""
     for valid_repair in (True, False):
@@ -1026,6 +1080,9 @@ def test_final_paid_repairs_after_shared_fallback_repair_is_spent():
                   "failed Fallback repair does not consume the source")
 
 
+# Provider timing/repair mechanics are exercised after cost eligibility.
+@patch("write.eligible_providers", lambda group, chain: list(chain))
+@patch("news_retry.news_policy", lambda group: write.news_policy({}))
 def test_preferred_timeout_preserves_final_paid_and_run_budget():
     """A clipped run deadline still leaves two full Fallback calls, then stops."""
     reset_data_dir()
@@ -1446,7 +1503,8 @@ def test_hourly_preserves_editorial_copy_without_model_calls():
 
 
 def main():
-    tests = [test_hourly_preserves_editorial_copy_without_model_calls,
+    tests = [test_free_only_news_never_calls_paid_fallback,
+             test_hourly_preserves_editorial_copy_without_model_calls,
              test_flexible_publication_keeps_evidence_gates,
              test_persistent_story_retry_budget,
              test_model_format_failure_uses_content_budget,

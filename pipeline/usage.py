@@ -159,6 +159,11 @@ def _sanitize_recent_run(row: dict) -> dict | None:
         "finishedUtc": finished,
         "workflow": _short_text(row.get("workflow"), 32) or "unknown",
         "taskType": _short_text(row.get("taskType"), 32) or "unknown",
+        "editorialTier": _short_text(row.get("editorialTier"), 24),
+        "routeReason": _short_text(row.get("routeReason"), 64),
+        "paidFallbackAllowed": (row["paidFallbackAllowed"]
+                                if isinstance(row.get("paidFallbackAllowed"), bool)
+                                else None),
         "groupId": _short_text(row.get("groupId"), 160),
         "eventId": _short_text(row.get("eventId"), 160),
         "sourceCount": _safe_count(row.get("sourceCount"), 10_000),
