@@ -24,10 +24,14 @@ def main():
     base = (ROOT / "templates" / "base.html").read_text(encoding="utf-8")
     assert "{% if ga4_measurement_id %}" in base
     assert "allow_ad_personalization_signals: false" in base
+    # Campaign parameters remain usable in links, but promotion controls are private.
+    article = (ROOT / "templates" / "article.html").read_text(encoding="utf-8")
     app = (ROOT / "static" / "app.js").read_text(encoding="utf-8")
+    assert "data-facebook-promo-copy" not in article
+    assert "data-facebook-promo-copy" not in app
+    docs = (ROOT / "docs" / "facebook-traffic-analytics.md").read_text(encoding="utf-8")
     for param in ("utm_source", "utm_medium", "utm_campaign", "utm_content"):
-        assert 'url.searchParams.set("' + param + '"' in app
-    assert 'data-facebook-promo-copy' in (ROOT / "templates" / "article.html").read_text(encoding="utf-8")
+        assert param in docs
     for path in ("hourly.yml", "manual-article-deploy.yml", "briefing.yml"):
         assert "SKYTICAL_GA4_MEASUREMENT_ID" in (
             ROOT / ".github" / "workflows" / path).read_text(encoding="utf-8")
