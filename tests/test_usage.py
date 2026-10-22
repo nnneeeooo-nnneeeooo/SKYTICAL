@@ -207,6 +207,9 @@ check("recent runs retain the deterministic spending decision",
       usage.load_ledger()["recentRuns"][0]["editorialTier"] == "niche"
       and usage.load_ledger()["recentRuns"][0]["routeReason"] == "routine_fleet_assets"
       and usage.load_ledger()["recentRuns"][0]["paidFallbackAllowed"] is False)
+legacy_run = {k: v for k, v in sample_run.items() if k != "paidFallbackAllowed"}
+check("historical rows have unknown rather than denied paid eligibility",
+      usage._sanitize_recent_run(legacy_run)["paidFallbackAllowed"] is None)
 boundary = {**sample_run,
             "groupId": "boundary",
             "startedUtc": usage.iso_minute(
