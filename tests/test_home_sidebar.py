@@ -57,7 +57,28 @@ def test_rendered_sidebar():
             assert build.parse_iso(timestamp["datetime"])
 
 
+def test_compact_attribution_preserves_article_references():
+    import json
+    raw = json.loads((ROOT / "data" / "articles" /
+                     "manual-cal-b18306-lease-return-20261021.json").read_text())
+    article = raw["articles"][0]
+    assert article["primarySource"] == "Flightradar24"
+    assert len(article["sources"]) == 3
+    assert article["sources"][0]["url"].endswith("/b-18306")
+    for prefix in ("", "en/"):
+        home = BeautifulSoup((build.SITE_DIR / prefix / "index.html").read_text(
+            encoding="utf-8"), "html.parser")
+        row = home.select_one(f'.feed-row[href="/{prefix}news/{article["id"]}/"]')
+        if row:  # This report eventually ages out of the homepage feed.
+            assert row.select_one(".feed-source").text.strip() == "Flightradar24"
+        page = build.SITE_DIR / prefix / "news" / article["id"] / "index.html"
+        soup = BeautifulSoup(page.read_text(encoding="utf-8"), "html.parser")
+        for source in article["sources"]:
+            assert soup.find("a", href=source["url"])
+
+
 if __name__ == "__main__":
     test_taiwan_sidebar_selection()
     test_rendered_sidebar()
-    print("test_home_sidebar: 2 passed")
+    test_compact_attribution_preserves_article_references()
+    print("test_home_sidebar: 3 passed")
