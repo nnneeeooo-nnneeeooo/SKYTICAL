@@ -1,12 +1,12 @@
 {
-  "updatedUtc": "2026-10-22T05:30Z",
+  "updatedUtc": "2026-10-22T06:20Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
-      "calls": 795,
+      "calls": 796,
       "inputTokens": 790797,
       "outputTokens": 1277550,
-      "unknownCalls": 643
+      "unknownCalls": 644
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "calls": 1168,
@@ -33,16 +33,16 @@
       "unknownCalls": 214
     },
     "gemini:gemini-3.5-flash": {
-      "calls": 527,
+      "calls": 528,
       "inputTokens": 319427,
       "outputTokens": 584629,
-      "unknownCalls": 467
+      "unknownCalls": 468
     },
     "openai:gpt-6-luna": {
-      "calls": 634,
+      "calls": 635,
       "inputTokens": 4033098,
       "outputTokens": 2050972,
-      "unknownCalls": 71
+      "unknownCalls": 72
     },
     "openai:gpt-6-luna+search": {
       "calls": 53,
@@ -253,12 +253,105 @@
       "outputTokens": 210212
     },
     "2026-10-22": {
-      "calls": 27,
+      "calls": 30,
       "inputTokens": 131982,
       "outputTokens": 38905
     }
   },
   "recentRuns": [
+    {
+      "startedUtc": "2026-10-22T06:18Z",
+      "finishedUtc": "2026-10-22T06:20Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "groupId": "g-20261022-0618-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "Aerospace Global News",
+      "result": "retry_pending",
+      "articleId": null,
+      "finalStatus": "retry_pending",
+      "finalModel": null,
+      "fallbackUsed": true,
+      "attemptCount": 3,
+      "httpCallCount": 3,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 5373,
+        "promptAssembly": 16,
+        "drafting": 92495,
+        "validation": null,
+        "factVerification": null,
+        "evidenceBinding": null,
+        "glossaryCheck": null,
+        "fabricationCheck": null,
+        "articleBuild": null,
+        "total": 98092
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "gemini",
+          "model": "gemini-3.6-flash",
+          "label": "gemini:gemini-3.6-flash",
+          "startedUtc": "2026-10-22T06:18Z",
+          "durationMs": 2296,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 2290,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "http_error",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 503",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "gemini",
+          "model": "gemini-3.5-flash",
+          "label": "gemini:gemini-3.5-flash",
+          "startedUtc": "2026-10-22T06:18Z",
+          "durationMs": 194,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 189,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "quota",
+          "failureStage": "draft",
+          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
+          "retryPlanned": false,
+          "disabledForRun": true
+        },
+        {
+          "sequence": 3,
+          "provider": "openai",
+          "model": "gpt-6-luna",
+          "label": "openai:gpt-6-luna",
+          "startedUtc": "2026-10-22T06:18Z",
+          "durationMs": 90005,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 90000,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "timeout",
+          "failureStage": "draft",
+          "failureMessage": "ReadTimeout",
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
     {
       "startedUtc": "2026-10-22T05:22Z",
       "finishedUtc": "2026-10-22T05:23Z",
@@ -93366,81 +93459,6 @@
           "httpCalls": 1,
           "repairCalls": 0,
           "httpDurationMs": 27700,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
-      "startedUtc": "2026-10-03T02:20Z",
-      "finishedUtc": "2026-10-03T02:22Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "groupId": "g-20261003-0220-2",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "Simple Flying",
-      "result": "rejected",
-      "articleId": null,
-      "finalStatus": "reject",
-      "finalModel": "wechat:Deepseek-v4-flash",
-      "fallbackUsed": true,
-      "attemptCount": 2,
-      "httpCallCount": 2,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 4105,
-        "promptAssembly": 0,
-        "drafting": 4691,
-        "validation": 0,
-        "factVerification": null,
-        "evidenceBinding": null,
-        "glossaryCheck": null,
-        "fabricationCheck": null,
-        "articleBuild": null,
-        "total": 159620
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "gemini",
-          "model": "gemini-3.6-flash",
-          "label": "gemini:gemini-3.6-flash",
-          "startedUtc": "2026-10-03T02:22Z",
-          "durationMs": 172,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 171,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "quota",
-          "failureStage": "draft",
-          "failureMessage": "HTTP 429 (free-tier quota exhausted?)",
-          "retryPlanned": false,
-          "disabledForRun": true
-        },
-        {
-          "sequence": 2,
-          "provider": "wechat",
-          "model": "Deepseek-v4-flash",
-          "label": "wechat:Deepseek-v4-flash",
-          "startedUtc": "2026-10-03T02:22Z",
-          "durationMs": 4519,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 4517,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,

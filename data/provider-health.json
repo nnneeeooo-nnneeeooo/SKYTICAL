@@ -1,11 +1,6 @@
 {
   "schemaVersion": 1,
   "platforms": {
-    "gemini": {
-      "failureClass": "quota",
-      "cooldownUntilUtc": "2026-10-22T06:13Z",
-      "updatedUtc": "2026-10-22T00:13Z"
-    },
     "wechat": {
       "failureClass": "quota",
       "cooldownUntilUtc": "2026-10-22T11:23Z",
@@ -20,6 +15,11 @@
       "failureClass": "transient",
       "cooldownUntilUtc": "2026-10-22T06:25Z",
       "updatedUtc": "2026-10-22T05:25Z"
+    },
+    "gemini": {
+      "failureClass": "quota",
+      "cooldownUntilUtc": "2026-10-22T12:18Z",
+      "updatedUtc": "2026-10-22T06:18Z"
     }
   }
 }
