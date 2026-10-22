@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://accounts.google.com/gsi/client; style-src 'self'; img-src 'self' data:; connect-src 'self' https://analyticsdata.googleapis.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'none'; base-uri 'none'; frame-ancestors 'none'">
+<title>SKYTICAL｜私人流量儀表板</title>
+<link rel="icon" href="{{ favicon }}">
+<link rel="stylesheet" href="{{ base }}/assets/traffic-dashboard.css">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="{{ base }}/assets/traffic-dashboard.js" defer></script>
+</head>
+<body>
+<main class="shell" id="traffic-app">
+  <header class="header">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> SKYTICAL · OWNER ANALYTICS</div>
+      <h1>網站流量儀表板</h1>
+      <p class="subtitle">掌握訪客、新聞閱讀與 Facebook 推廣成效。GA4 持續蒐集資料；開啟此頁後每 10 分鐘更新。</p>
+    </div>
+    <div class="header-actions">
+      <a class="quiet-link" href="https://skytical.tech/" target="_blank" rel="noopener noreferrer">前往網站 ↗</a>
+      <button id="refresh" type="button" disabled>立即更新</button>
+    </div>
+  </header>
+  <section class="setup" id="setup">
+    <div class="section-heading">
+      <div><p class="kicker">ONE-TIME SETUP</p><h2>連接 Google Analytics 4</h2></div>
+      <span id="auth-state" class="status">尚未登入</span>
+    </div>
+    <p class="help">第一次使用需設定 GA4「資源 ID」（純數字）及 Google OAuth 網頁用戶端 ID。這兩項設定只存在本瀏覽器；Google 存取權杖只存在此分頁記憶體，不會上傳到 SKYTICAL 或 GitHub。</p>
+    <div class="setup-grid">
+      <label>GA4 資源 ID（Property ID）
+        <input id="property-id" inputmode="numeric" autocomplete="off" placeholder="例如 123456789" pattern="[0-9]+">
+        <small>GA4 → 管理 → 資源詳細資料 → 資源 ID（不是 G- 開頭的測量 ID）</small>
+      </label>
+      <label>Google OAuth 用戶端 ID
+        <input id="client-id" autocomplete="off" spellcheck="false" placeholder="xxxxxxxx.apps.googleusercontent.com">
+        <small>Google Cloud → 憑證 → OAuth 2.0 用戶端 ID（網頁應用程式）</small>
+      </label>
+    </div>
+    <div class="actions">
+      <button id="connect" class="primary" type="button">使用 Google 帳號連接</button>
+      <span class="help">需在 Google Cloud 啟用 Analytics Data API，並將 <code>https://skytical.tech</code> 加入授權 JavaScript 來源。</span>
+    </div>
+    <p id="error" class="error" role="alert" hidden></p>
+  </section>
+
+  <section id="report" hidden>
+    <div class="toolbar">
+      <div class="segmented" role="group" aria-label="查看期間">
+        <button class="period active" data-days="7" aria-pressed="true" type="button">近 7 天</button>
+        <button class="period" data-days="28" aria-pressed="false" type="button">近 28 天</button>
+      </div>
+      <p id="last-updated" class="muted">尚未載入</p>
+    </div>
+    <div class="kpis">
+      <article class="kpi"><p>活躍使用者</p><strong id="kpi-users">—</strong><small>不重複活躍訪客</small></article>
+      <article class="kpi"><p>工作階段</p><strong id="kpi-sessions">—</strong><small>所有來源的到訪次數</small></article>
+      <article class="kpi"><p>頁面瀏覽量</p><strong id="kpi-views">—</strong><small>包含重複閱讀</small></article>
+      <article class="kpi"><p>互動率</p><strong id="kpi-engagement">—</strong><small>互動工作階段占比</small></article>
+      <article class="kpi emphasis"><p>Facebook 導流</p><strong id="kpi-facebook">—</strong><small>來源為 Facebook 的工作階段</small></article>
+    </div>
+    <div class="layout">
+      <section class="panel trend">
+        <div class="section-heading"><div><p class="kicker">TRAFFIC TREND</p><h2>每日訪客趨勢</h2></div><span class="muted">工作階段</span></div>
+        <svg id="trend-plot" role="img" aria-label="每日工作階段折線圖" viewBox="0 0 760 246" preserveAspectRatio="xMidYMid meet"></svg>
+        <div id="trend-labels" class="trend-labels"></div>
+      </section>
+      <section class="panel">
+        <div class="section-heading"><div><p class="kicker">ACQUISITION</p><h2>流量來源</h2></div></div>
+        <div id="sources-list" class="rank-list"><p class="muted">尚無資料</p></div>
+      </section>
+    </div>
+    <section class="panel">
+      <div class="section-heading"><div><p class="kicker">TOP STORIES</p><h2>最多人閱讀的網頁</h2></div><span class="muted">依瀏覽量排序</span></div>
+      <div id="pages-list" class="rank-list"><p class="muted">尚無資料</p></div>
+    </section>
+    <p class="footnote">本頁資料只在你完成 Google 授權後由瀏覽器直接向 GA4 Data API 取得，不會放在公開的 GitHub Pages 資料檔。GA4 處理資料可能有延遲；Facebook 數據依工作階段來源歸類，無法回溯追蹤程式安裝前的造訪。</p>
+  </section>
+
+  <footer class="footer">
+    <span>SKYTICAL OWNER ANALYTICS · 私人入口不等於帳號驗證；讀取流量需 Google 帳號授權。</span>
+    <a href="draft/">舊版私人補稿臺（備用）</a>
+  </footer>
+</main>
+</body>
+</html>
