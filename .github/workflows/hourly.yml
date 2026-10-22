@@ -48,6 +48,8 @@ jobs:
       - name: Run pipeline regression tests
         run: |
           python tests/test_analytics.py
+          node --check static/traffic-dashboard.js
+          python tests/test_traffic_dashboard.py
           python tests/test_scope.py
           python tests/test_companion.py
           python tests/test_flightwatch.py

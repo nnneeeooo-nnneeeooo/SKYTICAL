@@ -558,11 +558,11 @@ def test_manual_page_feature_flag_and_public_surface(monkeypatch):
                         lambda env, template, out_rel, ctx: captured.append((template, out_rel, ctx)))
     monkeypatch.setenv("AVWIRE_MANUAL_TOKEN", "m" * 40)
     monkeypatch.setenv("SKYTICAL_COPILOT_ENABLED", "false")
-    assert build.render_manual_workbench(None, {}) == 1
-    assert captured[-1][2]["copilot_enabled"] is False
+    assert build.render_manual_workbench(None, {}) == 2
+    assert captured[-2][2]["copilot_enabled"] is False
     monkeypatch.setenv("SKYTICAL_COPILOT_ENABLED", "true")
     assert build.render_manual_workbench(None, {}) == 1
-    assert captured[-1][2]["copilot_enabled"] is True
+    assert captured[-2][2]["copilot_enabled"] is True
 
     template = (ROOT / "templates" / "manual.html").read_text(encoding="utf-8")
     assert "{% if copilot_enabled %}" in template
