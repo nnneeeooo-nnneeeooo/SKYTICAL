@@ -39,6 +39,7 @@ from pathlib import Path
 
 from opencc import OpenCC
 import news_retry
+from editorial_policy import eligible_providers, news_policy
 from draft_recovery import (
     normalize_reader_copy, normalize_fact_ids, repair_prompt, draft_timeout, ProviderCallTimeout,
 )
@@ -140,7 +141,9 @@ _EDITORIAL_PROCESS_RE = re.compile(
     r"(?:採用|使用|引用|補足|補充|核對|交叉確認|資料來源|來源資料)"
     r"|(?:新聞|報導).{0,20}(?:應|需要).{0,16}(?:交代|說明|寫明)"
     r"|(?:this (?:article|report|story)).{0,100}"
-    r"(?:uses?|cites?|adds?|corrects?|cross-checks?|should|needs? to|explains?)",
+    r"(?:uses?|cites?|adds?|corrects?|cross-checks?|should|needs? to|explains?)"
+    r"|(?:標題|摘要)(?:則|同時|也)?(?:指出|稱|提及|列出|描述|表示|將|以)"
+    r"|\b(?:the |its )?(?:headline|summary) (?:says|states|describes|lists|mentions|links|characterizes)\b",
     re.I,
 )
 
@@ -963,6 +966,14 @@ def group_prompt(group: dict) -> str:
         f"Story group {group.get('id', '?')} | primary source: "
         f"{group.get('primarySource', '?')}",
     ]
+    if news_policy(group).reason not in {"ordinary_news", "taiwan_relevance",
+                                         "safety_or_major_operational_event"}:
+        lines.append(
+            "Prefer a concise publish_brief for this routine update. Include "
+            "only distinct verified facts; never repeat a headline/summary or "
+            "describe what the source headline says to reach a length target. "
+            "If evidence cannot support the brief publication floor, reject "
+            "rather than pad. All normal evidence and length gates still apply.")
     if group.get("groupKind") == "safety_roundup":
         lines.extend([
             "<TRUSTED_GROUP_FORMAT>",
@@ -1303,7 +1314,11 @@ class _RunTrace:
     def __init__(self, workflow: str, task_type: str, group: dict,
                  event_id=None) -> None:
         self._started_perf = time.perf_counter()
+        policy = news_policy(group)
         self.data = {
+            "editorialTier": policy.priority,
+            "routeReason": policy.reason,
+            "paidFallbackAllowed": policy.paid_allowed,
             "startedUtc": iso_minute(now_utc()),
             "finishedUtc": None,
             "workflow": workflow,
@@ -2640,7 +2655,7 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                          "following the rules strictly.")
         run_trace.add_duration("promptAssembly", prompt_started)
         outcome = None
-        for provider in providers:
+        for provider in eligible_providers(group, providers):
             if provider.name in dead_platforms:
                 continue
             ai_calls[provider.label] = ai_calls.get(provider.label, 0) + 1
@@ -3000,7 +3015,9 @@ def main() -> None:
                 print("write: drafting time budget reached; saving completed drafts")
                 run_trace.finish("retry_pending", "retry_pending")
                 break
-            if not alive:
+            story_providers = eligible_providers(group, alive)
+            if not story_providers:
+                retry_ledger.failure(group, content=False)
                 run_trace.finish("no_provider", "retry_pending")
                 continue
             if not has_material(group):
@@ -3025,7 +3042,7 @@ def main() -> None:
                 continue
             if drafted >= MAX_GROUPS_PER_RUN:
                 break  # LLM budget for this run is spent; the rest waits
-            if draft_deadline - time.monotonic() < _luna_reserve_seconds(alive):
+            if draft_deadline - time.monotonic() < _luna_reserve_seconds(story_providers):
                 print("write: insufficient run time for Luna draft and repair; "
                       "retaining remaining groups for retry")
                 run_trace.finish("retry_pending", "retry_pending")
@@ -3037,10 +3054,13 @@ def main() -> None:
             content_failed = False
             calls_before = sum(ai_calls.values())
             fallback_repair_used = False
-            group_budget = _provider_chain_budget(alive)
+            policy = news_policy(group)
+            print(f"write: editorial route {group.get('id')}: "
+                  f"{policy.priority}/{policy.reason}; paid={policy.paid_allowed}")
+            group_budget = _provider_chain_budget(story_providers)
             group_deadline = min(
                 draft_deadline, time.monotonic() + group_budget)
-            for provider in list(alive):
+            for provider in story_providers:
                 if time.monotonic() >= group_deadline:
                     print(f"write: group {group.get('id')} drafting time budget reached; retained for retry")
                     break
@@ -3049,7 +3069,8 @@ def main() -> None:
                     # death earlier in this same iteration.
                     continue
                 is_luna = _is_luna_provider(provider)
-                luna_reserve = _luna_reserve_seconds(alive)
+                luna_reserve = _luna_reserve_seconds(
+                    [p for p in story_providers if p in alive])
                 provider_deadline = group_deadline
                 attempt_cap = None
                 if luna_reserve and not is_luna:
@@ -3061,7 +3082,7 @@ def main() -> None:
                         continue
                 # Luna has its own repair, independent of the shared repair
                 # for preferred fallbacks. Transport failures still fail over.
-                tries = 2 if (is_luna or provider is providers[0]
+                tries = 2 if (is_luna or provider is story_providers[0]
                               or not fallback_repair_used) else 1
                 try:
                     candidate, facts = _validated_draft(provider, group,
@@ -3071,7 +3092,7 @@ def main() -> None:
                                                         max_attempt_seconds=attempt_cap)
                 except DraftInvalid:
                     content_failed = True
-                    if provider is not providers[0] and not is_luna:
+                    if provider is not story_providers[0] and not is_luna:
                         fallback_repair_used = True
                     _record_provider_response(
                         provider, transient_failure_counts)

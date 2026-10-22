@@ -448,3 +448,26 @@ row, matches it to `gptFamilyReference`, and calculates a separate theoretical
 API-equivalent cost. Cached input is a subset of input and reasoning output is
 a subset of output, so neither is counted twice. This snapshot is displayed on
 the private dashboard but never merged into `data/usage.json` or its totals.
+
+## Automatic news spending policy
+
+`editorial_policy.news_policy` derives priority and paid eligibility from current
+source headlines/excerpts, excluding archive and background companions. The
+owner's eight examples (routine tests, limited certification, local second-seat
+policy, general-aviation orders, small aviation-services stakes, fleet asset
+sales and concept mockups) use free-quota Gemini/NVIDIA or explicit OpenRouter
+`:free` routes only. Ordinary news is also free-only. Taiwan relevance can
+raise ordering but does not authorize paid calls. Luna/subscription/other paid
+fallbacks are allowed only for explicit critical safety, major operational
+interruptions or achieved full type/commercial-passenger approvals. Persisted
+`mustReport`/`editorialPriority` flags cannot authorize spend.
+
+The retry scheduler used by both dedupe and write reserves an early slot for
+the oldest eligible niche story and caps niche work at two groups per run.
+The existing two-retry cap, 2/6/24-hour backoff and freshness window remain.
+When free routes fail or are unavailable, keep the source unseen and queued;
+never age a story into paid eligibility. Free-only drafts reserve no Luna time.
+All normal evidence, refusal and publication gates still apply. Routine updates
+prefer a concise brief; headline/summary narration cannot pad thin evidence.
+Recent-run telemetry records `editorialTier`, `routeReason` and
+`paidFallbackAllowed` so the spending decision can be audited.

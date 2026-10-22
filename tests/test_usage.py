@@ -194,6 +194,8 @@ sample_run = {
         }],
     },
 }
+sample_run.update(editorialTier="niche", routeReason="routine_fleet_assets",
+                  paidFallbackAllowed=False)
 usage.record_run(sample_run)
 check("record_run appends one detailed run",
       usage.load_ledger()["recentRuns"][0]["groupId"]
@@ -201,6 +203,13 @@ check("record_run appends one detailed run",
       and "prompt" not in usage.load_ledger()["recentRuns"][0]
       and usage.load_ledger()["recentRuns"][0]["resourceUsage"]["models"][0]
       ["outputTokens"] == 800)
+check("recent runs retain the deterministic spending decision",
+      usage.load_ledger()["recentRuns"][0]["editorialTier"] == "niche"
+      and usage.load_ledger()["recentRuns"][0]["routeReason"] == "routine_fleet_assets"
+      and usage.load_ledger()["recentRuns"][0]["paidFallbackAllowed"] is False)
+legacy_run = {k: v for k, v in sample_run.items() if k != "paidFallbackAllowed"}
+check("historical rows have unknown rather than denied paid eligibility",
+      usage._sanitize_recent_run(legacy_run)["paidFallbackAllowed"] is None)
 boundary = {**sample_run,
             "groupId": "boundary",
             "startedUtc": usage.iso_minute(
