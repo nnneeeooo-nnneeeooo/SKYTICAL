@@ -103,7 +103,8 @@ def main() -> None:
     assert "max-height: 3.1em" in css
     assert ".center-col { order: 1;" in css
     assert ".radar-layout { grid-template-columns: minmax(0, 1fr); min-height: 0; }" in css
-    assert '". . summary summary"' in css
+    assert '". . summary"' in css
+    assert '". . source"' in css
     assert '"summary summary"' in css
     assert ".summary-preview--feed { grid-area: summary; margin-top: 7px; }" in css
     assert ".summary-preview__text" in css
