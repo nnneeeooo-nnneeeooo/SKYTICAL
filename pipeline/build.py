@@ -109,6 +109,14 @@ def static_asset_version() -> str:
 
 ASSET_VERSION = static_asset_version()
 
+def ga4_measurement_id() -> str:
+    """Accept only a public GA4 web stream ID; an empty value disables tagging."""
+    measurement_id = os.environ.get("SKYTICAL_GA4_MEASUREMENT_ID", "").strip()
+    if re.fullmatch(r"G-[A-Z0-9]{6,16}", measurement_id):
+        return measurement_id
+    return ""
+
+
 # Asia/Taipei via zoneinfo where tz data exists (Linux CI); the zone has had a
 # fixed +08:00 offset with no DST since 1980, so a static fallback is exact.
 try:
@@ -3605,6 +3613,7 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build,
     return {
         "lang": lang, "t": t, "base": BASE_PATH, "favicon": FAVICON,
         "asset_version": ASSET_VERSION,
+        "ga4_measurement_id": ga4_measurement_id(),
         "html_lang": "zh-Hant-TW" if lang == "zh" else "en",
         "title": title, "description": description,
         "zh_url": page_url("zh", sub), "en_url": page_url("en", sub),
