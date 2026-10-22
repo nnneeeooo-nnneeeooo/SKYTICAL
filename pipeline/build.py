@@ -3588,7 +3588,8 @@ def render_manual_workbench(env, build) -> int:
         "id": token_id,
         "name": MODEL_DISPLAY_NAMES.get(token_id, token_id),
     } for token_id in MODEL_ORDER]
-    render(env, "manual.html", f"m/{token}/index.html", {
+    # The previous manual editor remains available at /draft/ as a fallback.
+    render(env, "manual.html", f"m/{token}/draft/index.html", {
         "base": BASE_PATH,
         "favicon": FAVICON,
         "build": build,
@@ -3597,7 +3598,13 @@ def render_manual_workbench(env, build) -> int:
             "SKYTICAL_COPILOT_ENABLED", "false").strip().lower()
             in {"1", "true", "yes", "on"},
     })
-    return 1
+    # Owner GA4 reports are fetched only after Google OAuth in the browser:
+    # nothing sensitive is built into a publicly hosted static asset.
+    render(env, "traffic-dashboard.html", f"m/{token}/index.html", {
+        "base": BASE_PATH,
+        "favicon": FAVICON,
+    })
+    return 2
 
 
 # ── rendering ────────────────────────────────────────────────────────────────
