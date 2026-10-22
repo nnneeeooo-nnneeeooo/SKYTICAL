@@ -650,8 +650,8 @@ def test_private_page_render_contract():
         check(build.render_manual_workbench(None, {}) == 0,
               "manual page is absent without its secret")
         os.environ["AVWIRE_MANUAL_TOKEN"] = "x" * 43
-        check(build.render_manual_workbench(None, {}) == 1,
-              "manual page renders with a valid secret")
+        check(build.render_manual_workbench(None, {}) == 2,
+              "analytics and legacy editor render with a valid secret")
     finally:
         build.render = original_render
         if original_token is None:
@@ -659,8 +659,11 @@ def test_private_page_render_contract():
         else:
             os.environ["AVWIRE_MANUAL_TOKEN"] = original_token
     template, out, ctx = captured[0]
-    check(template == "manual.html" and out == f"m/{'x' * 43}/index.html",
+    check(template == "manual.html" and out == f"m/{'x' * 43}/draft/index.html",
           "private route embeds the unguessable token")
+    check(captured[1][0] == "traffic-dashboard.html"
+          and captured[1][1] == f"m/{'x' * 43}/index.html",
+          "private root now serves GA4 dashboard")
     check([row["id"] for row in ctx["models"]] == list(MODEL_ORDER)
           and [row["name"] for row in ctx["models"]]
           == [MODEL_DISPLAY_NAMES[item] for item in MODEL_ORDER],
