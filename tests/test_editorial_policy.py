@@ -26,6 +26,10 @@ def main():
         ("WestJet sold 27 Boeing 737-700s but will keep flying 17", ""),
         ("US Navy remotely controls MQ-25A Stingray", ""),
         ("SyberJet unveils SJ36 mockup and single-pilot avionics", ""),
+        ("Saudia and Riyadh Air route Riyadh passengers through Al Qassim Airport",
+         "Onward bus transfers after King Khalid International Airport reopened with restrictions."),
+        ("European governments weigh expanded drone powers for infrastructure operators", ""),
+        ("Emirates cancels three nonstop A380 routes this winter", ""),
     ]
     free = SimpleNamespace(name="gemini", model="gemini-3.6-flash")
     nim = SimpleNamespace(name="nvidia", model="nvidia/nemotron-3-super-120b-a12b")
@@ -48,6 +52,9 @@ def main():
 
     for title in ("Airliner crash at airport", "FAA grounds all Boeing 737 aircraft",
                   "Airport closed after power failure", "Nationwide strike causes mass cancellations",
+                  "Airport closed after drone incursions",
+                  "Airline suspends routes after airspace closure",
+                  "Emirates cancels hundreds of flights after airport closure",
                   "BETA receives type certificate", "BETA begins commercial passenger service"):
         group = story(title)
         assert news_policy(group).paid_allowed, title
@@ -61,6 +68,23 @@ def main():
     current = story("Airbus completes H140 flight tests")
     current["items"].append({"title": "Fatal aircraft crash", "backgroundCompanion": True})
     assert not news_policy(current).paid_allowed
+
+    for title, reason in (
+            ("Airlines fly Riyadh passengers to an airport four hours away", "local_passenger_rerouting"),
+            ("Europe considers giving private companies powers to shoot down drones", "regional_counter_drone_policy"),
+            ("Emirates switches its London route from A380 to Boeing 777 this winter", "routine_route_schedule"),
+            ("阿聯酋航空本冬季取消三條不停站A380航線", "routine_route_schedule"),
+            ("歐洲研議擴大關鍵基礎設施業者反制無人機權限", "regional_counter_drone_policy"),
+            ("Saudia與Riyadh Air改道經Al Qassim Airport接送利雅德旅客", "local_passenger_rerouting")):
+        policy = news_policy(story(title))
+        assert (policy.priority, policy.paid_allowed, policy.reason) == ("niche", False, reason), title
+    taiwan = news_policy(story("EVA Air adjusts winter routes from Taipei"))
+    assert taiwan.priority == "standard" and not taiwan.paid_allowed
+
+    # Do not classify actual drone incidents or ordinary new routes as one of
+    # these low-priority follow-up categories merely because of a shared word.
+    assert news_policy(story("Airport detects drone near runway")).priority == "standard"
+    assert news_policy(story("Airline announces new route to Paris")).priority == "standard"
 
     now = datetime(2026, 10, 22, tzinfo=timezone.utc)
     with tempfile.TemporaryDirectory() as tmp, patch.object(news_retry, "DATA_DIR", Path(tmp)):
@@ -79,7 +103,7 @@ def main():
         # Only a critical current event can upgrade a queued niche story.
         niche[0]["items"][0]["title"] = "SyberJet aircraft crash"
         assert news_policy(niche[0]).paid_allowed
-    print("PASS eight owner examples, paid isolation, upgrades and fair queue")
+    print("PASS eleven owner examples, paid isolation, urgent exceptions and fair queue")
 
 
 if __name__ == "__main__":

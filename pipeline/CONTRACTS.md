@@ -453,9 +453,11 @@ the private dashboard but never merged into `data/usage.json` or its totals.
 
 `editorial_policy.news_policy` derives priority and paid eligibility from current
 source headlines/excerpts, excluding archive and background companions. The
-owner's eight examples (routine tests, limited certification, local second-seat
+owner's eleven examples (routine tests, limited certification, local second-seat
 policy, general-aviation orders, small aviation-services stakes, fleet asset
-sales and concept mockups) use free-quota Gemini/NVIDIA or explicit OpenRouter
+sales, concept mockups, overseas passenger rerouting/bus transfers, regional
+counter-drone legal powers and seasonal route/schedule changes) use free-quota
+Gemini/NVIDIA or explicit OpenRouter
 `:free` routes only. Ordinary news is also free-only. Taiwan relevance can
 raise ordering but does not authorize paid calls. Fallback/subscription/other paid
 fallbacks are allowed only for explicit critical safety, major operational
