@@ -28,6 +28,23 @@ def response(status=200, text="", location=None):
 
 
 class DiscoveryTests(unittest.TestCase):
+    def test_publisher_survives_snapshot_and_dedupe_loading(self):
+        stamp = datetime(2026, 10, 23, tzinfo=timezone.utc)
+        raw = fetch._finalize([{
+            "title": "中部空港 貨物機から炎", "published": stamp,
+            "url": "https://www.chunichi.co.jp/article/123",
+            "publisher": "中日新聞Web",
+        }], "2026-10-23T00:00Z", None)
+        with tempfile.TemporaryDirectory() as folder:
+            directory = Path(folder)
+            common.save_json(directory / "japansafety.json", {"items": raw})
+            with patch.object(dedupe, "RAW_DIR", directory), \
+                    patch.object(dedupe, "DATA_DIR", directory), \
+                    patch.object(dedupe, "SOURCES", {
+                        "japansafety": common.SOURCES["japansafety"]}):
+                items = dedupe._load_raw_items()
+        self.assertEqual(items[0]["source"], "中日新聞Web")
+
     def test_japanese_safety_headlines_and_attribution(self):
         source = common.SOURCES["japansafety"]
         query = parse_qs(urlsplit(source["endpoint"]).query)
@@ -101,6 +118,17 @@ class SourceHealthTests(unittest.TestCase):
             with patch.object(fetch, "RAW_DIR", directory), \
                     patch.object(fetch, "_request", return_value=response()) as request:
                 fetch._conditional_get(object(), "avherald", url, cache)
+                self.assertEqual(request.call_args.args[2], {})
+
+    def test_legacy_discovery_snapshot_refreshes_missing_publisher(self):
+        with tempfile.TemporaryDirectory() as folder:
+            directory = Path(folder)
+            (directory / "japansafety.json").write_text('{"items": [{"title": "old"}]}')
+            url = common.SOURCES["japansafety"]["endpoint"]
+            cache = {"japansafety": {"url": url, "etag": "old"}}
+            with patch.object(fetch, "RAW_DIR", directory), \
+                    patch.object(fetch, "_request", return_value=response()) as request:
+                fetch._conditional_get(object(), "japansafety", url, cache)
                 self.assertEqual(request.call_args.args[2], {})
 
     def test_empty_streak_warning_recovery_and_failure(self):

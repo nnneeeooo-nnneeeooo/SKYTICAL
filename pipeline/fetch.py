@@ -194,6 +194,12 @@ def _conditional_get(session: requests.Session, key: str, url: str,
         # Reparse empty snapshots after resolver/parser recovery even when
         # the upstream feed itself has not changed.
         entry = {}
+    if (SOURCES.get(key, {}).get("publisher_passthrough")
+            and isinstance(previous, dict)
+            and any(not item.get("publisher") for item in previous.get("items", [])
+                    if isinstance(item, dict))):
+        # Rebuild snapshots saved before publisher attribution was persisted.
+        entry = {}
     headers = {}
     if entry.get("url") == url:  # ignore validators from an older endpoint
         if entry.get("etag"):
@@ -652,6 +658,8 @@ def _finalize(raw_items: list[dict], fetched_iso: str,
             "summary": _clip(_collapse(item.get("summary"))),
             "image": item.get("image"),
         }
+        if item.get("publisher"):
+            row["publisher"] = _clip(str(item["publisher"]), TITLE_MAX)
         if inferred:
             row["dateInferred"] = True
         items.append(row)
