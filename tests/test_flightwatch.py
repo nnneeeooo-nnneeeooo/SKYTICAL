@@ -393,15 +393,15 @@ def _published_articles():
     return out
 
 
-def test_routine_flight_observation_never_uses_paid_fallback():
+def test_taiwan_flight_observation_uses_paid_fallback():
     _reset_data()
     flightnews.save_queue([json.loads(json.dumps(FLIGHT_EVENT))])
     paid = FakeProvider("openai", [_flight_draft(status="publish")])
     paid.model = "gpt-6-luna"
     _run_write_with([paid])
-    check(paid.calls == 0 and not _published_articles(),
-          "routine Taiwan observation does not authorize a paid call")
-    check(len(flightnews.load_queue()) == 1, "free-only flight event stays queued")
+    check(paid.calls == 1 and len(_published_articles()) == 1,
+          "Taiwan observation authorizes paid fallback and publishes")
+    check(not flightnews.load_queue(), "published Taiwan flight event leaves queue")
 
 
 def test_flight_events_auto_publish():
@@ -593,7 +593,7 @@ def main():
         test_rarity_and_bootstrap,
         test_event_identity_and_config,
         test_source_assembly_privacy,
-        test_routine_flight_observation_never_uses_paid_fallback,
+        test_taiwan_flight_observation_uses_paid_fallback,
         test_flight_events_auto_publish,
         test_flight_fallback_history,
         test_scan_provider_fallback,
