@@ -91,6 +91,7 @@ def main():
             ("颱風影響航班", "花蓮與臺東機場公布異動資訊"),
             ("Airline adjusts flight schedule", "Flights to Taiwan are affected by a typhoon."),
             ("Foreign airline suspends TPE flights due to typhoon", ""),
+            ("Flights at Songshan (TSA) delayed by typhoon", ""),
             ("如何查詢颱風期間臺灣航班異動？", ""),
             ("漢翔公布航空研發測試進度", "")):
         group = story(title, summary)
@@ -109,6 +110,7 @@ def main():
     foreign.update(taiwanRelevance=True, archiveContext={"title": "Taipei flights"})
     assert not news_policy(foreign).paid_allowed
     assert not eligible_providers(foreign, paid)
+    assert not news_policy(story("TSA introduces new US airport screening procedures")).paid_allowed
     assert news_policy(story("颱風將接近臺灣", "尚未宣布航班取消")).priority == "standard"
 
     # Do not classify actual drone incidents or ordinary new routes as one of

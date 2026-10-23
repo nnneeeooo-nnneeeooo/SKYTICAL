@@ -69,8 +69,10 @@ def news_policy(group: dict) -> NewsPolicy:
             r"|臺灣|台灣|臺北|台北|桃園|高雄|松山機場|臺中|台中|臺南|台南"
             r"|花蓮|臺東|台東|澎湖|馬公|金門|馬祖|南竿|北竿|嘉義|恆春"
             r"|綠島|蘭嶼|七美|望安|臺海|台海|共機|漢翔|中科院", text)
-        or re.search(r"\b(?:TPE|TSA|KHH|RMQ|TNN|HUN|TTT|MZG|KNH|"
+        or re.search(r"\b(?:TPE|KHH|RMQ|TNN|HUN|TTT|MZG|KNH|"
                      r"LZN|MFK|CYI|HCN|GNI|KYD|CMJ|WOT)\b", text) is not None
+        # Bare TSA also names the US Transportation Security Administration.
+        or re.search(r"[（(]TSA[）)]", text) is not None
         or any(item.get("source") == "CAA Taiwan" for item in items)
     )
     if taiwan:
