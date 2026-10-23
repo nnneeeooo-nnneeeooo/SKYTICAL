@@ -250,6 +250,8 @@ def main() -> None:
                    for entity in _schema_entities(team))
     assert "創辦人・首席網站營運與維護顧問" in (
         ROOT / "site/team/index.html").read_text(encoding="utf-8")
+    assert "你好，我是<strong>nwe</strong>。" in (
+        ROOT / "site/team/index.html").read_text(encoding="utf-8")
     assert (ROOT / "site/assets/team-nwe.jpg").read_bytes() == (
         ROOT / "static/team-nwe.jpg").read_bytes()
 
