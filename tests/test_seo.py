@@ -9,6 +9,9 @@ import sys
 import xml.etree.ElementTree as ET
 from datetime import timedelta
 from pathlib import Path
+from urllib.parse import urlsplit
+
+from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
@@ -237,10 +240,40 @@ def main() -> None:
         assert f"<h1>{label}</h1>" in team
         assert f'<link rel="canonical" href="{team_url}">' in team
         assert 'hreflang="zh-Hant-TW"' in team and 'hreflang="en"' in team
-        assert '<h2 id="team-name">neo</h2>' in team
+        soup = BeautifulSoup(team, "html.parser")
+        assert soup.select_one("#team-name").get_text(strip=True) == "neo"
+        name_logos = soup.select("#team-name img")
+        assert len(name_logos) == 2
+        assert "/assets/skytical-mark.svg?v=" in name_logos[0]["src"]
+        assert "/assets/skytical-mark-8bit.svg?v=" in name_logos[1]["src"]
+        assert all(image["alt"] == "" and image["aria-hidden"] == "true"
+                   for image in name_logos)
         assert 'href="https://www.instagram.com/ks.17___/"' in team
         assert 'href="mailto:kass09221477@gmail.com"' in team
         assert "Frank Ocean" in team and "Daniel Caesar" in team
+        artist_links = soup.select(".team-artist-link")
+        expected_artists = [
+            ("Frank Ocean", "442122051"), ("Daniel Caesar", "1019899019"),
+            ("keshi", "430144465"), ("Joji", "1258279972"),
+            ("Royel Otis", "1537647213"), ("LANY", "867853783"),
+            ("Cigarettes After Sex", "1069739468"),
+            ("周杰倫" if lang == "zh" else "Jay Chou", "300117743"),
+            ("Abel", "479756766"),
+        ]
+        assert [a.get_text() for a in artist_links] == [
+            name for name, _ in expected_artists]
+        for anchor, (_, artist_id) in zip(artist_links, expected_artists):
+            url = urlsplit(anchor["href"])
+            assert url.scheme == "https" and url.netloc == "music.apple.com"
+            assert url.path.startswith("/tw/artist/")
+            assert url.path.endswith("/" + artist_id)
+            assert anchor["target"] == "_blank"
+            assert {"noopener", "noreferrer"} <= set(anchor["rel"])
+        team_config = json.loads((ROOT / "config/team.json").read_text(
+            encoding="utf-8"))[lang]
+        for section, expected in zip(soup.select(".team-chapter"),
+                                     team_config["sections"]):
+            assert [p.get_text() for p in section.select("p")] == expected["body"]
         assert "/assets/team-neo.jpg?v=" in team
         nav = re.search(r'<nav class="site-nav".*?</nav>', team,
                         flags=re.DOTALL).group(0)
