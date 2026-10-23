@@ -91,7 +91,18 @@
       pixelDialog.showModal();
     });
     pixelClose.addEventListener("click", function () { pixelDialog.close(); });
-    pixelRefresh.addEventListener("click", function () { window.location.reload(); });
+    pixelRefresh.addEventListener("click", function () {
+      pixelUnlocked = true;
+      setTheme("8bit", false);
+      try {
+        localStorage.setItem(unlockKey, "true");
+        localStorage.setItem(themeKey, "8bit");
+      } catch (e) {
+        pixelDialog.close();
+        return; // Keep the applied theme if storage becomes unavailable.
+      }
+      window.location.reload();
+    });
   }
   window.addEventListener("storage", function (event) {
     if (event.key !== themeKey && event.key !== unlockKey && event.key !== null) return;
