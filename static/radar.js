@@ -96,6 +96,8 @@
   let callsignMode = ["icao", "iata"].includes(savedCallsignMode) ?
     savedCallsignMode : defaultCallsignMode;
   let routeCache = loadRouteCache();
+  let selectedKey = null;
+  const aircraftSymbols = window.SkyticalAircraft;
 
   const numberOrNull = (value) => {
     const n = Number(value);
@@ -424,6 +426,10 @@
     box.className = "radar-popup";
     const title = document.createElement("strong");
     title.className = "radar-popup-title";
+    const silhouette = document.createElement("div");
+    silhouette.className = "radar-detail-aircraft";
+    silhouette.innerHTML = aircraftSymbols.svg(row.typeCode);
+    box.appendChild(silhouette);
     renderCallsign(title, displayCallsign(row) || copy.noCallsign);
     box.appendChild(title);
     const route = formatRoute(row);
@@ -445,11 +451,14 @@
     const heading = row.heading === null ? 0 :
       ((row.heading % 360) + 360) % 360;
     const ground = row.altitude === "ground" ? " ground" : "";
+    const selected = row.key === selectedKey ? " selected" : "";
+    const profile = aircraftSymbols.profile(row.typeCode);
+    const size = profile.size;
     return L.divIcon({
       className: "radar-plane-wrap",
-      html: `<span class="radar-plane${ground}" style="--heading:${heading}deg">▲</span>`,
-      iconSize: [24, 24],
-      iconAnchor: [12, 12],
+      html: `<span class="radar-plane${ground}${selected}" style="--heading:${heading}deg;--aircraft-size:${size}px">${aircraftSymbols.svg(row.typeCode)}</span>`,
+      iconSize: [48, 48],
+      iconAnchor: [24, 24],
     });
   }
 
@@ -468,6 +477,20 @@
       rowMatches(row, query, airborneEl.checked));
     aircraftLayer.clearLayers();
     listEl.replaceChildren();
+    document.getElementById("radar-list-count").textContent = rows.length;
+    const selections = [];
+    if (!rows.some((row) => row.key === selectedKey)) selectedKey = null;
+
+    function selectFlight(key) {
+      selectedKey = key;
+      selections.forEach(({ row, marker, item }) => {
+        const active = row.key === key;
+        item.classList.toggle("selected", active);
+        item.setAttribute("aria-pressed", String(active));
+        marker.setIcon(planeIcon(row));
+        marker.setZIndexOffset(active ? 1000 : 0);
+      });
+    }
 
     rows.sort((a, b) =>
       (displayCallsign(a) || "ZZZ").localeCompare(
@@ -487,20 +510,29 @@
 
       const item = document.createElement("button");
       item.type = "button";
-      item.className = "radar-list-item";
+      item.className = "radar-list-item" + (row.key === selectedKey ? " selected" : "");
+      item.setAttribute("aria-pressed", String(row.key === selectedKey));
       const name = document.createElement("strong");
       renderCallsign(name, visibleCallsign || copy.noCallsign);
       const meta = document.createElement("span");
       meta.className = "text-muted";
       meta.textContent = [
-        formatRoute(row), displayAirline(row), row.typeCode, formatAltitude(row),
+        formatRoute(row), displayAirline(row), row.typeCode,
       ].filter(Boolean).join(" · ");
       item.append(name, meta);
+      const telemetry = document.createElement("span");
+      telemetry.className = "radar-list-telemetry";
+      telemetry.textContent = `${formatAltitude(row)}  /  ${formatNumber(row.speed, copy.knots)}`;
+      item.appendChild(telemetry);
+      selections.push({ row, marker, item });
+      marker.on("popupopen", () => selectFlight(row.key));
       item.addEventListener("click", () => {
+        selectFlight(row.key);
         map.setView([row.lat, row.lon], Math.max(map.getZoom(), 9));
         marker.openPopup();
       });
       listEl.appendChild(item);
+      if (row.key === selectedKey) marker.openPopup();
     });
 
     if (!rows.length) {
@@ -591,16 +623,18 @@
       zoomSnap: 0.5,
       maxBounds: [[17.5, 114.5], [30, 128]],
       maxBoundsViscosity: 0.65,
+      zoomControl: false,
     });
+    L.control.zoom({ position: "bottomright" }).addTo(map);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     L.circle([23.7, 120.9], {
       radius: 250 * 1852,
-      color: "#ec3013",
+      color: "#526d81",
       weight: 1,
-      opacity: 0.45,
+      opacity: 0.25,
       fill: false,
       dashArray: "5 7",
       interactive: false,
@@ -627,6 +661,27 @@
   searchEl.addEventListener("input", render);
   airborneEl.addEventListener("change", render);
   refreshEl.addEventListener("click", () => loadAircraft(true));
+  document.getElementById("radar-reset").addEventListener("click", () => {
+    map.setView([23.7, 120.9], 7);
+    map.closePopup();
+  });
+  const expandEl = document.getElementById("radar-expand");
+  function setExpanded(expanded) {
+    root.classList.toggle("radar-expanded", expanded);
+    expandEl.setAttribute("aria-pressed", String(expanded));
+    expandEl.textContent = expanded ?
+      (lang === "en" ? "⛶ Exit map" : "⛶ 收合地圖") :
+      (lang === "en" ? "⛶ Expand map" : "⛶ 展開地圖");
+    map.invalidateSize();
+  }
+  expandEl.addEventListener("click", () =>
+    setExpanded(!root.classList.contains("radar-expanded")));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && root.classList.contains("radar-expanded")) {
+      setExpanded(false);
+      expandEl.focus();
+    }
+  });
   callsignModeEls.forEach((button) => {
     button.addEventListener("click", () =>
       setCallsignMode(button.dataset.callsignMode, true));

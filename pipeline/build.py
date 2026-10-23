@@ -104,6 +104,9 @@ def static_asset_version() -> str:
         "briefing.js",
         "team.css",
         "team-neo.jpg",
+        "radar.css",
+        "radar.js",
+        "radar-aircraft.js",
     ):
         digest.update((STATIC_DIR / name).read_bytes())
     return digest.hexdigest()[:10]
