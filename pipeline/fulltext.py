@@ -96,10 +96,12 @@ ALLOWED_HOSTS = {
     "www.flightglobal.com", "flightglobal.com",
     # Japanese safety discovery: selected editorial publishers only;
     # robots and final redirect allowlisting remain mandatory.
-    "www.chunichi.co.jp", "chunichi.co.jp",
     "newsdigest.jp", "www.fnn.jp", "newsdig.tbs.co.jp",
     "news.web.nhk", "www3.nhk.or.jp",
 }
+# Chunichi remains discovery/attribution only: its member-only article page
+# exposes unrelated recommended stories to the generic text extractor.
+# Do not treat those cards as source evidence (including cached extracts).
 # NEVER add simpleflying.com or other Valnet properties: their robots.txt
 # terms explicitly prohibit automated text/data mining and AI use of page
 # content (checked 2026-07-27). Their RSS excerpt is all we may use.

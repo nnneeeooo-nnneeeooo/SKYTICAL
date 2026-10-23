@@ -58,8 +58,14 @@ class DiscoveryTests(unittest.TestCase):
             "title": "名古屋市の住宅で火災", "summary": "空港の近く。"}))
         self.assertEqual(dedupe._source_label(source, {"publisher": "中日新聞Web"}),
                          "中日新聞Web")
-        self.assertIn("www.chunichi.co.jp", fulltext.ALLOWED_HOSTS)
+        self.assertNotIn("www.chunichi.co.jp", fulltext.ALLOWED_HOSTS)
         self.assertNotIn("news.google.com", fulltext.ALLOWED_HOSTS)
+
+    def test_member_only_publisher_cannot_supply_unrelated_fulltext(self):
+        with patch.object(fulltext.requests, "get") as request:
+            self.assertIsNone(fulltext.fetch_fulltext(
+                "https://www.chunichi.co.jp/article/1328893"))
+            request.assert_not_called()
 
     def test_signed_resolution_after_internal_redirect(self):
         session = Mock()
