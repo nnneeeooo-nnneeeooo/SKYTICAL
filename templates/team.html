@@ -19,7 +19,12 @@
       <div class="team-introduction">
         <h2 id="team-name">{{ team.name }}</h2>
         <p class="team-role">{{ team.role }}</p>
-        <p class="team-lead">{{ team.intro }}</p>
+        <p class="team-lead">
+          {%- if lang == 'zh' -%}
+          {%- set intro = team.intro.partition(team.name) -%}
+          {{- intro[0] -}}<strong>{{ intro[1] }}</strong>{{ intro[2] }}
+          {%- else -%}{{ team.intro }}{%- endif -%}
+        </p>
         <div class="team-contact" aria-labelledby="team-contact-title">
           <h3 id="team-contact-title">{{ team.contactTitle }}</h3>
           <a href="https://www.instagram.com/ks.17___/" target="_blank" rel="noopener noreferrer">
