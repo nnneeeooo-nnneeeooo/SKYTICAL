@@ -16,6 +16,9 @@ on:
       - "pipeline/build.py"
       - "pipeline/article_schema.py"
       - "static/radar.js"
+      - "static/radar.css"
+      - "static/radar-aircraft.js"
+      - "tests/test_radar_aircraft.js"
       - "templates/radar.html"
       - "tests/test_radar.py"
       - "tests/test_radar_snapshot.py"
@@ -29,6 +32,8 @@ on:
       - "pipeline/build.py"
       - "pipeline/article_schema.py"
       - "static/radar.js"
+      - "static/radar.css"
+      - "static/radar-aircraft.js"
       - "templates/radar.html"
 
 jobs:
@@ -49,6 +54,7 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Run radar regression tests
         run: |
+          node tests/test_radar_aircraft.js
           python tests/test_radar_snapshot.py
           python tests/test_build_resilience.py
           python tests/test_radar.py

@@ -50,6 +50,10 @@ def main() -> None:
 
     for page in (zh, en):
         assert 'id="radar-map"' in page
+        assert '/assets/radar.css?v=' in page
+        assert page.index('/assets/radar-aircraft.js?v=') < page.index('/assets/radar.js?v=')
+        assert 'id="radar-expand"' in page
+        assert 'id="radar-reset"' in page
         assert 'data-api-url="/assets/radar.json"' in page
         assert 'data-max-snapshot-age-ms="1800000"' in page
         assert "https://api.adsbdb.com/v0/callsign" in page

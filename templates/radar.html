@@ -3,8 +3,10 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin="">
+<link rel="stylesheet" href="{{ base }}/assets/radar.css?v={{ asset_version }}">
 {% endblock %}
 {% block content %}
+{% set en = lang == "en" %}
 <main class="radar-page">
   <header class="radar-header">
     <div>
@@ -54,10 +56,18 @@
     </div>
 
     <div class="radar-layout">
+      <div class="radar-map-stage">
+      <div class="radar-map-tools">
+        <button id="radar-reset" type="button">◎ {{ "Taiwan" if en else "回到臺灣" }}</button>
+        <button id="radar-expand" type="button" aria-pressed="false">⛶ {{ "Expand map" if en else "展開地圖" }}</button>
+      </div>
+      <div class="radar-map-key"><span class="radar-key-plane">✈</span> {{ "Aircraft silhouettes by type · relative sizes" if en else "依機型顯示剪影・大小為相對比例" }}</div>
       <div id="radar-map" class="radar-map" role="application"
            aria-label="{{ t.radarMapLabel }}"></div>
+      </div>
       <aside class="radar-list-panel">
-        <h2>{{ t.radarList }}</h2>
+        <div class="radar-panel-heading"><h2>{{ t.radarList }}</h2><span id="radar-list-count">0</span></div>
+        <p class="radar-panel-hint">{{ "Select an aircraft to explore its flight." if en else "點選地圖上的飛機，查看航班資訊。" }}</p>
         <div id="radar-list" class="radar-list"></div>
       </aside>
     </div>
@@ -85,5 +95,6 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin="" defer></script>
-<script src="{{ base }}/assets/radar.js" defer></script>
+<script src="{{ base }}/assets/radar-aircraft.js?v={{ asset_version }}" defer></script>
+<script src="{{ base }}/assets/radar.js?v={{ asset_version }}" defer></script>
 {% endblock %}
