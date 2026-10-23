@@ -2,6 +2,18 @@
 
 更新日期：2026-10-23
 
+## 團隊頁與創辦人介紹（2026-10-23）
+
+透過 GitHub repository search、官方 API 與 README 比較三個仍在維護的個人網站主題。僅參考內容層級與版面設計，未複製程式碼或新增依賴。
+
+| 專案 | 最近提交 | Stars | 語言／授權 | 架構、借鑑方向與導入成本 |
+| --- | --- | --- | --- | --- |
+| [al-folio](https://github.com/alshedivat/al-folio) | 2026-10-19 | 16,268 | HTML／MIT | Jekyll 個人網站；參考照片、個人介紹與內容分段。整套導入需要 Ruby／Jekyll，與現有建站流程重複。 |
+| [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) | 2026-10-09 | 13,588 | HTML／MIT | Jekyll 雙欄個人網站；參考介紹與主要內容的閱讀層級。需要 Jekyll 與 include-cache 外掛，不適合只為一頁加入。 |
+| [Blowfish](https://github.com/nunocoracao/blowfish) | 2026-10-07 | 2,916 | HTML／MIT | Hugo 與 Tailwind CSS 4；參考響應式介紹頁。需要另一套建站與 CSS 工具，不導入。最近推送為 2026-10-21，與最近主分支提交日期分開記錄。 |
+
+SKYTICAL 已有 Jinja2 共用導覽、雙語路徑與主題色票；保留現況，用一份雙語設定、一個版型與頁面限定 CSS 完成。使用創辦人提供的照片，以 CSS 控制顯示範圍，保留原始影像。沒有需要另開 issue 導入的套件。
+
 ## 日本突發飛安搜尋與來源零筆提示（2026-10-23）
 
 本次透過 GitHub API 查證維護狀態、授權與 README，並實測日本語 RSS：
