@@ -17,7 +17,11 @@
         <figcaption>{{ team.photoCaption }}</figcaption>
       </figure>
       <div class="team-introduction">
-        <h2 id="team-name">{{ team.name }}</h2>
+        <h2 id="team-name">
+          <img class="team-name-logo team-name-logo--classic" src="{{ base }}/assets/skytical-mark.svg?v={{ asset_version }}" width="88" height="88" alt="" aria-hidden="true">
+          <img class="team-name-logo team-name-logo--pixel" src="{{ base }}/assets/skytical-mark-8bit.svg?v={{ asset_version }}" width="88" height="88" alt="" aria-hidden="true">
+          <span>{{ team.name }}</span>
+        </h2>
         <p class="team-role">{{ team.role }}</p>
         <p class="team-lead">
           {%- if lang == 'zh' -%}
@@ -37,10 +41,16 @@
       </div>
     </div>
     <div class="team-story">
-      {% for section in team.sections %}
+      {% for section in team_sections %}
       <section class="team-chapter" aria-labelledby="team-chapter-{{ loop.index }}">
         <h3 id="team-chapter-{{ loop.index }}">{{ section.title }}</h3>
-        <div>{% for paragraph in section.body %}<p>{{ paragraph }}</p>{% endfor %}</div>
+        <div>{% for paragraph in section.body %}<p>
+          {%- for part in paragraph -%}
+            {%- if part.url -%}
+            <a class="team-artist-link" href="{{ part.url }}" target="_blank" rel="noopener noreferrer" title="Apple Music">{{ part.text }}</a>
+            {%- else -%}{{ part.text }}{%- endif -%}
+          {%- endfor -%}
+        </p>{% endfor %}</div>
       </section>
       {% endfor %}
     </div>

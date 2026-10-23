@@ -3680,6 +3680,16 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build,
     }
 
 
+def team_paragraph_parts(paragraph: str, artist_links: dict) -> list[dict]:
+    """Split artist names from prose while leaving Jinja autoescaping intact."""
+    if not artist_links:
+        return [{"text": paragraph, "url": None}]
+    names = sorted(artist_links, key=len, reverse=True)
+    pattern = "(" + "|".join(re.escape(name) for name in names) + ")"
+    return [{"text": part, "url": artist_links.get(part)}
+            for part in re.split(pattern, paragraph) if part]
+
+
 def render(env, template, out_rel, ctx):
     html = env.get_template(template).render(**ctx)
     out = SITE_DIR / out_rel
@@ -4371,14 +4381,20 @@ def main() -> int:
         render(env, "about.html", rel_path(lang, "about/index.html"), ctx)
         pages += 1
 
-        team = load_json(CONFIG_DIR / "team.json", {})[lang]
+        team_data = load_json(CONFIG_DIR / "team.json", {})
+        team = team_data[lang]
         ctx = base_ctx(lang, "team", "team/",
                        title=f"{team['title']}｜{t['siteName']}",
                        description=team["description"], ticker=ticker, build=build)
         ctx["structured_data"] = breadcrumb_structured_data(lang, [
             (t["siteName"], ""), (team["title"], "team/"),
         ])
-        ctx.update(team=team)
+        ctx.update(team=team, team_sections=[
+            {**section, "body": [
+                team_paragraph_parts(paragraph, team_data["artistLinks"])
+                for paragraph in section["body"]
+            ]} for section in team["sections"]
+        ])
         render(env, "team.html", rel_path(lang, "team/index.html"), ctx)
         pages += 1
 
