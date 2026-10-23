@@ -1910,12 +1910,12 @@
         "https://www.aerotime.aero/articles/faa-single-pilot-citation-exemptions-bedford-nbaa"
       ],
       "contentFailures": 0,
-      "serviceFailures": 2,
+      "serviceFailures": 3,
       "history": [],
-      "updatedUtc": "2026-10-23T07:56Z",
+      "updatedUtc": "2026-10-23T18:59Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-23T13:56Z",
+      "nextRetryUtc": "2026-10-24T18:59Z",
       "title": "FAA head open to reviewing path for single-pilot Citation operations"
     },
     "fa7a5154ebcf4f2734ea3ef1": {
@@ -2357,12 +2357,12 @@
         "https://www.aerotime.aero/articles/africa-world-airlines-embraer-e190-west-africa-expansion"
       ],
       "contentFailures": 0,
-      "serviceFailures": 2,
+      "serviceFailures": 3,
       "history": [],
-      "updatedUtc": "2026-10-23T12:28Z",
+      "updatedUtc": "2026-10-23T18:59Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-23T18:28Z",
+      "nextRetryUtc": "2026-10-24T18:59Z",
       "title": "Africa World Airlines bets on Embraer E190s to connect West Africa"
     },
     "78a5439a64c477e6488a1771": {
@@ -2832,19 +2832,6 @@
       "nextRetryUtc": "2026-10-23T20:35Z",
       "title": "Alaska Airlines Says Long-Haul Flights 'A Drag': 9 Nonstop Routes"
     },
-    "c11e3d417d0407362a8d805b": {
-      "sourceUrls": [
-        "https://simpleflying.com/united-airlines-unveils-new-6-hour-nonstop-boeing-737-max-route"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-10-23T18:35Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-23T20:35Z",
-      "title": "United Airlines Launches New 6-Hour Nonstop Boeing 737 MAX Routes: See Map Now"
-    },
     "b21b6502834f9ea954fc7088": {
       "sourceUrls": [
         "https://simpleflying.com/4-engine-cessna-business-airliner-met-design-goals-canceled-14-months-1st-flight"
@@ -2987,6 +2974,79 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-23T20:47Z",
       "title": "Airport fees still outweigh fuel costs for Eurowings despite Middle East crisis News"
+    },
+    "c11e3d417d0407362a8d805b": {
+      "sourceUrls": [
+        "https://simpleflying.com/qantas-launches-new-15-hour-nonstop-route",
+        "https://simpleflying.com/united-airlines-unveils-new-6-hour-nonstop-boeing-737-max-route"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-10-23T18:35Z"
+        }
+      ],
+      "updatedUtc": "2026-10-23T18:59Z",
+      "nextRetryUtc": "2026-10-23T20:59Z",
+      "failureClass": "provider_failure",
+      "title": "Qantas Launches New 15-Hour Nonstop Route In 2 Months: See Map Now"
+    },
+    "5fb1409f51cb4a1f639f0377": {
+      "sourceUrls": [
+        "https://www.geaerospace.com/news/press-releases/ge-aerospace-announces-third-quarter-2026-results"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-10-23T18:59Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-23T20:59Z",
+      "title": "GE Aerospace Announces Third Quarter 2026 Results"
+    },
+    "f8d6ec2304c8c9b5aa91ae31": {
+      "sourceUrls": [
+        "https://www.safran-group.com/pressroom/safran-skynaute-inertial-navigation-system-will-equip-airbus-a220-2026-10-20"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-10-23T18:59Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-23T20:59Z",
+      "title": "Safran SkyNaute inertial navigation system will equip the Airbus A220"
+    },
+    "5e82e7f81d363e59d8a00947": {
+      "sourceUrls": [
+        "https://www.rolls-royce.com/media/press-releases/2026/19-10-2026-rr-introduces-additional-benefits-for-corporatecare-enhanced-customers.aspx"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-10-23T18:59Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-23T20:59Z",
+      "title": "Rolls-Royce introduces additional benefits for CorporateCare Enhanced customers"
+    },
+    "eddc6644a9aadda0dd9ac518": {
+      "sourceUrls": [
+        "http://www.embraer.com/media-center/en?mediatype=NEWS&detail=33033"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-10-23T18:59Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-23T20:59Z",
+      "title": "Embraer Delivers First E175 Featuring New RECARO Seats to American Airlines"
     }
   }
 }
