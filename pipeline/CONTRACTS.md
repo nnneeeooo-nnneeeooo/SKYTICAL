@@ -75,7 +75,11 @@ Array, one entry per key in `common.SOURCES`, in registry order:
     "cover": {"zh": "...", "en": "..."},
     "public": true,                      // false = editorial input only; hidden from public source-status UI
     "lastFetchUtc": "2026-07-26T05:02Z",  // last SUCCESSFUL fetch (persisted across runs)
-    "ok": true
+    "ok": true,                          // HTTP/parsing success, not coverage proof
+    "itemCount": 0,                      // usable items; null on failure
+    "emptyRuns": 3,                      // monitored feeds only
+    "emptyWarning": true,                // 3 consecutive successful empty fetches
+    "lastNonEmptyUtc": null              // last successful fetch with usable items
   }
 ]
 ```
