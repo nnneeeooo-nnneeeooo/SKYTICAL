@@ -11,6 +11,7 @@ error string and the loop continues. The script always exits 0.
 from __future__ import annotations
 
 import calendar
+import json
 import os
 import re
 import time
@@ -55,6 +56,7 @@ def _matches_keywords(item: dict, keywords) -> bool:
 RETRY_DELAY = 2  # seconds between the two attempts
 RESOLVE_TIMEOUT = 6  # seconds for google-news link resolution
 MAX_RESOLVE_FAILURES = 3  # stop resolving after this many misses in a row
+EMPTY_WARNING_RUNS = 3
 MAX_RSS_SCAN_ITEMS = 200  # broad feeds are filtered after parsing
 SUMMARY_MAX = 500
 GOOGLE_NEWS_HOST = "news.google.com"
@@ -186,6 +188,12 @@ def _conditional_get(session: requests.Session, key: str, url: str,
                      cache: dict) -> requests.Response:
     """GET with If-None-Match / If-Modified-Since from the validator cache."""
     entry = cache.get(key) or {}
+    previous = load_json(RAW_DIR / f"{key}.json", {})
+    if (SOURCES.get(key, {}).get("monitor_empty")
+            and isinstance(previous, dict) and previous.get("items") == []):
+        # Reparse empty snapshots after resolver/parser recovery even when
+        # the upstream feed itself has not changed.
+        entry = {}
     headers = {}
     if entry.get("url") == url:  # ignore validators from an older endpoint
         if entry.get("etag"):
@@ -247,18 +255,68 @@ def _clean_gnews_title(title: str, entry) -> str:
 
 
 def _resolve_gnews_link(session: requests.Session, link: str) -> str | None:
-    """Follow one redirect off news.google.com; None when it stays on Google."""
+    """Resolve a publisher URL without admitting Google discovery pages.
+
+    Modern Google News links need a signed lookup after an internal redirect.
+    Protocol context adapted from SSujitX/google-news-url-decoder (MIT);
+    see docs/licenses/google-news-url-decoder.txt.
+    """
     try:
-        resp = session.get(link, timeout=RESOLVE_TIMEOUT, allow_redirects=False)
-    except requests.RequestException:
+        for _ in range(3):
+            resp = session.get(link, timeout=RESOLVE_TIMEOUT, allow_redirects=False)
+            location = resp.headers.get("Location")
+            if resp.status_code in (301, 302, 303, 307, 308) and location:
+                target = urljoin(link, location)
+                if _publisher_url(target):
+                    return target
+                if urlsplit(target).hostname != GOOGLE_NEWS_HOST:
+                    return None
+                link = target
+                continue
+            if resp.status_code != 200:
+                return None
+            node = BeautifulSoup(resp.text, "lxml").select_one(
+                "[data-n-a-id][data-n-a-ts][data-n-a-sg]")
+            if node is None:
+                return None
+            context = [
+                ["X", "X", ["X", "X"], None, None, 1, 1, "US:en", None,
+                 1, None, None, None, None, None, 0, 1],
+                "X", "X", 1, [1, 1, 1], 1, 1, None, 0, 0, None, 0,
+            ]
+            request = ["garturlreq", context, node["data-n-a-id"],
+                       int(node["data-n-a-ts"]), node["data-n-a-sg"]]
+            decoded = session.post(
+                "https://news.google.com/_/DotsSplashUi/data/batchexecute",
+                data={"f.req": json.dumps([[
+                    ["Fbv4je", json.dumps(request), None, "0"]]])},
+                timeout=RESOLVE_TIMEOUT, allow_redirects=False,
+            )
+            if decoded.status_code != 200:
+                return None
+            # The RPC uses an anti-XSSI prefix and optional length lines.
+            for line in decoded.text.splitlines():
+                if not line.startswith("[["):
+                    continue
+                for row in json.loads(line):
+                    if (isinstance(row, list) and len(row) >= 3
+                            and row[0] == "wrb.fr" and row[1] == "Fbv4je"):
+                        payload = json.loads(row[2])
+                        if (isinstance(payload, list) and len(payload) >= 2
+                                and payload[0] == "garturlres"
+                                and _publisher_url(payload[1])):
+                            return payload[1]
+            return None
+    except (requests.RequestException, ValueError, TypeError, KeyError):
         return None
-    location = resp.headers.get("Location")
-    if resp.status_code in (301, 302, 303, 307, 308) and location:
-        location = urljoin(link, location)
-        host = urlsplit(location).netloc.lower()
-        if host and not (host == "google.com" or host.endswith(".google.com")):
-            return location
     return None
+
+
+def _publisher_url(url: str) -> bool:
+    parsed = urlsplit(url)
+    host = parsed.hostname or ""
+    return (parsed.scheme in {"http", "https"} and bool(host)
+            and not (host == "google.com" or host.endswith(".google.com")))
 
 
 def _rss_items(session: requests.Session, key: str, entries: list,
@@ -684,7 +742,18 @@ def _write_sources(last_success: dict[str, str | None]) -> None:
     output = []
     for key, spec in SOURCES.items():
         fetched = last_success.get(key)
-        carried = (previous.get(key) or {}).get("lastFetchUtc")
+        old = previous.get(key) or {}
+        carried = old.get("lastFetchUtc")
+        snapshot = load_json(RAW_DIR / f"{key}.json", {})
+        items = snapshot.get("items") if isinstance(snapshot, dict) else None
+        count = len(items) if fetched and isinstance(items, list) else None
+        streak = (int(old.get("emptyRuns") or 0) + 1
+                  if spec.get("monitor_empty") and count == 0 else 0)
+        warning = streak >= EMPTY_WARNING_RUNS
+        if warning:
+            print(f"::warning title=News source has no usable items::{key}: "
+                  f"{streak} consecutive successful fetches returned 0 usable "
+                  "items; check discovery, parsing and original-link resolution")
         output.append({
             "key": key,
             "name": spec["name"],
@@ -695,6 +764,10 @@ def _write_sources(last_success: dict[str, str | None]) -> None:
             "public": bool(spec.get("public", True)),
             "lastFetchUtc": fetched or carried,
             "ok": bool(fetched),
+            "itemCount": count,
+            "emptyRuns": streak,
+            "emptyWarning": warning,
+            "lastNonEmptyUtc": fetched if count else old.get("lastNonEmptyUtc"),
         })
     save_json(sources_path, output)
     ok_count = sum(1 for entry in output if entry["ok"])

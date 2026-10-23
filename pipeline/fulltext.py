@@ -94,6 +94,11 @@ ALLOWED_HOSTS = {
     "www.aerotime.aero", "aerotime.aero",
     "www.aerospaceglobalnews.com", "aerospaceglobalnews.com",
     "www.flightglobal.com", "flightglobal.com",
+    # Japanese safety discovery: selected editorial publishers only;
+    # robots and final redirect allowlisting remain mandatory.
+    "www.chunichi.co.jp", "chunichi.co.jp",
+    "newsdigest.jp", "www.fnn.jp", "newsdig.tbs.co.jp",
+    "news.web.nhk", "www3.nhk.or.jp",
 }
 # NEVER add simpleflying.com or other Valnet properties: their robots.txt
 # terms explicitly prohibit automated text/data mining and AI use of page

@@ -2357,6 +2357,8 @@ def merged_sources(raw):
             "cover": s.get("cover") or reg["cover"],
             "lastFetchUtc": s.get("lastFetchUtc"),
             "ok": bool(s.get("ok", False)),
+            "emptyWarning": bool(s.get("emptyWarning", False)),
+            "emptyRuns": s.get("emptyRuns", 0),
         })
     return out
 
@@ -2385,6 +2387,10 @@ def sources_rows_view(sources, lang: str, now):
         "kind": _bi(KIND.get(s["kind"]), lang, s["kind"]),
         "cover": _bi(s["cover"], lang),
         "last": ago(s["lastFetchUtc"], now),
+        "emptyWarning": s.get("emptyWarning", False),
+        "emptyNote": (f"連續 {s.get('emptyRuns', 0)} 次未取得新聞"
+                      if lang == "zh" else
+                      f"No usable news in {s.get('emptyRuns', 0)} consecutive fetches"),
     } for s in public_display_sources(sources)]
 
 

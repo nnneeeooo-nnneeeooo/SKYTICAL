@@ -51,6 +51,8 @@ jobs:
           node --check static/traffic-dashboard.js
           python tests/test_traffic_dashboard.py
           python tests/test_scope.py
+          python tests/test_fetch_health.py
+          python tests/test_evaair.py
           python tests/test_companion.py
           python tests/test_flightwatch.py
           python tests/test_airport_codes.py
