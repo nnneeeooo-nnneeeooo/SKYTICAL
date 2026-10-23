@@ -60,18 +60,27 @@ page.unlock.events.click();
 assert.equal(page.dialog.open, true);
 assert.equal(storage["skytical-8bit-unlocked"], "true");
 assert.equal(page.buttons[2].hidden, true, "Reveal only after reload");
+assert.equal(storage["avwire-theme"], "dark", "Opening the dialog preserves the current choice");
 page.refresh.events.click();
 assert.equal(page.reloads(), 1);
+assert.equal(storage["avwire-theme"], "8bit", "Refresh persists the pixel theme before navigation");
 page = launch(storage);
 assert.equal(page.buttons[2].hidden, false);
-assert.equal(page.html.dataset.theme, "dark", "Unlock must not replace the selected theme");
-page.choose("8bit");
+assert.equal(page.html.dataset.theme, "8bit", "Refresh directly applies the unlocked theme");
 assert.equal(page.buttons[2].attributes["aria-pressed"], "true");
 assert.equal(page.favicon.attributes.href, "/pixel-mark.svg");
 page = launch(storage, false, "en");
 assert.equal(page.html.dataset.theme, "8bit", "Persist across reload and language navigation");
 page.choose("light");
 assert.equal(page.favicon.attributes.href, "/classic-mark.svg");
+
+const laterStorage = { "avwire-theme": "dark" };
+const later = launch(laterStorage);
+later.unlock.events.click();
+later.close.events.click();
+assert.equal(laterStorage["avwire-theme"], "dark", "Later preserves the selected theme");
+assert.equal(later.reloads(), 0);
+assert.equal(launch(laterStorage).html.dataset.theme, "dark");
 
 for (const bad of ["8bit", "unknown"]) {
   const locked = launch({ "avwire-theme": bad });
