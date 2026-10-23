@@ -58,6 +58,24 @@ def news_policy(group: dict) -> NewsPolicy:
     if not explainer and (safety or disruption or major_approval):
         return NewsPolicy("urgent", True, "safety_or_major_operational_event")
 
+    # Taiwan relevance comes from current headlines/excerpts, including a
+    # foreign carrier's Taiwan flights. Weather alone never implies disruption.
+    taiwan = (
+        is_taiwan_airline_story({"title": title, "summary": excerpt})
+        or matches(
+            r"\b(?:taiwan|taiwanese|taipei|taoyuan|kaohsiung|songshan|"
+            r"taichung|tainan|hualien|taitung|penghu|kinmen|matsu|"
+            r"chiayi|hengchun|green island|lanyu)\b"
+            r"|臺灣|台灣|臺北|台北|桃園|高雄|松山機場|臺中|台中|臺南|台南"
+            r"|花蓮|臺東|台東|澎湖|馬公|金門|馬祖|南竿|北竿|嘉義|恆春"
+            r"|綠島|蘭嶼|七美|望安|臺海|台海|共機|漢翔|中科院", text)
+        or re.search(r"\b(?:TPE|TSA|KHH|RMQ|TNN|HUN|TTT|MZG|KNH|"
+                     r"LZN|MFK|CYI|HCN|GNI|KYD|CMJ|WOT)\b", text) is not None
+        or any(item.get("source") == "CAA Taiwan" for item in items)
+    )
+    if taiwan:
+        return NewsPolicy("standard", True, "taiwan_relevance")
+
     development_test = (
         matches(r"\b(?:test(?:s|ing)?|tested|trial|demonstrat\w*)\b|測試|試驗|展示", title)
         and matches(r"\b(?:aircraft|airplane|helicopters?|prototype|H140|eVTOL|"
@@ -113,13 +131,9 @@ def news_policy(group: dict) -> NewsPolicy:
     elif matches(r"\b(?:sold|sells?|sale[- ]and[- ]leaseback|retires?|"
                  r"retirement|fleet renewal)\b|出售|售出|售後租回|汰換|退役", title):
         niche = "routine_fleet_assets"
-    taiwan = (
-        is_taiwan_airline_story({"items": [{"title": title, "summary": excerpt}]})
-        or matches(r"\b(?:taiwan|taipei|taoyuan|kaohsiung)\b"
-                   r"|臺灣|台灣|桃園|高雄|臺北|台北", title))
     if niche:
-        return NewsPolicy("standard" if taiwan else "niche", False, niche)
-    return NewsPolicy("standard", False, "taiwan_relevance" if taiwan else "ordinary_news")
+        return NewsPolicy("niche", False, niche)
+    return NewsPolicy("standard", False, "ordinary_news")
 
 
 def is_free_provider(provider):
