@@ -8,6 +8,8 @@ import tempfile
 import unicodedata
 from pathlib import Path
 
+from bs4 import BeautifulSoup
+
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
 
@@ -239,6 +241,20 @@ def main() -> None:
     assert re.search(r'/assets/search\.js\?v=[0-9a-f]{10}', zh)
     assert home.index('class="header-search-row"') < home.index('id="clock-utc"')
     assert home.index('class="header-search-row"') < home.index('class="brand-row"')
+    for page in (home, article, en):
+        social = BeautifulSoup(page, "html.parser").select_one(
+            ".header-search-row .header-social-links")
+        assert social is not None and social.find_parent("form") is None
+        links = social.select("a")
+        assert [link["href"] for link in links] == [
+            "https://www.facebook.com/profile.php?id=61595860824748",
+            "https://www.instagram.com/skyticalnews/",
+        ]
+        for link in links:
+            assert link["target"] == "_blank"
+            assert {"noopener", "noreferrer"} <= set(link["rel"])
+            assert "SKYTICAL" in link["aria-label"]
+            assert link.select_one('svg[aria-hidden="true"]') is not None
     main_markup = re.search(r'<main class="search-page">(.*?)</main>', zh,
                             re.DOTALL).group(1)
     assert "<form" not in main_markup
@@ -251,7 +267,6 @@ def main() -> None:
     assert ".header-search-submit" in css
     assert "航空公司 IATA／ICAO 代碼" in zh
     assert "airline IATA/ICAO codes" in en
-    from bs4 import BeautifulSoup
     for markup, language in ((zh, "zh"), (en, "en")):
         header = BeautifulSoup(markup, "html.parser").select_one(".search-header")
         groups = header.select(".search-help-group")
