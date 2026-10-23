@@ -237,11 +237,11 @@ def main() -> None:
         assert f"<h1>{label}</h1>" in team
         assert f'<link rel="canonical" href="{team_url}">' in team
         assert 'hreflang="zh-Hant-TW"' in team and 'hreflang="en"' in team
-        assert '<h2 id="team-name">nwe</h2>' in team
+        assert '<h2 id="team-name">neo</h2>' in team
         assert 'href="https://www.instagram.com/ks.17___/"' in team
         assert 'href="mailto:kass09221477@gmail.com"' in team
         assert "Frank Ocean" in team and "Daniel Caesar" in team
-        assert "/assets/team-nwe.jpg?v=" in team
+        assert "/assets/team-neo.jpg?v=" in team
         nav = re.search(r'<nav class="site-nav".*?</nav>', team,
                         flags=re.DOTALL).group(0)
         assert nav.index(f'/{sub}about/') < nav.index(f'/{sub}team/')
@@ -250,10 +250,10 @@ def main() -> None:
                    for entity in _schema_entities(team))
     assert "創辦人・首席網站營運與維護顧問" in (
         ROOT / "site/team/index.html").read_text(encoding="utf-8")
-    assert "你好，我是<strong>nwe</strong>。" in (
+    assert "你好，我是<strong>neo</strong>。" in (
         ROOT / "site/team/index.html").read_text(encoding="utf-8")
-    assert (ROOT / "site/assets/team-nwe.jpg").read_bytes() == (
-        ROOT / "static/team-nwe.jpg").read_bytes()
+    assert (ROOT / "site/assets/team-neo.jpg").read_bytes() == (
+        ROOT / "static/team-neo.jpg").read_bytes()
 
     print("test_seo: OK")
 
