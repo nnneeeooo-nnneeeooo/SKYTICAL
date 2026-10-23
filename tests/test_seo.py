@@ -244,7 +244,7 @@ def main() -> None:
         assert soup.select_one("#team-name").get_text(strip=True) == "neo"
         name_logos = soup.select("#team-name img")
         assert len(name_logos) == 2
-        assert "/assets/skytical-mark.svg?v=" in name_logos[0]["src"]
+        assert "/assets/skytical-team-mark.svg?v=" in name_logos[0]["src"]
         assert "/assets/skytical-mark-8bit.svg?v=" in name_logos[1]["src"]
         assert all(image["alt"] == "" and image["aria-hidden"] == "true"
                    for image in name_logos)
@@ -281,9 +281,11 @@ def main() -> None:
         assert f'class="nav-link active" href="{build.BASE_PATH}/{sub}team/"' in nav
         assert any(entity.get("@type") == "BreadcrumbList"
                    for entity in _schema_entities(team))
-    assert "創辦人・首席網站營運與維護顧問" in (
+    assert "創辦人・營運與維護顧問" in (
         ROOT / "site/team/index.html").read_text(encoding="utf-8")
-    assert "你好，我是<strong>neo</strong>。" in (
+    assert "我是<strong>neo，</strong>歡迎來到SKYTICAL。" in (
+        ROOT / "site/team/index.html").read_text(encoding="utf-8")
+    assert "與我聯絡．找尋合作" in (
         ROOT / "site/team/index.html").read_text(encoding="utf-8")
     assert (ROOT / "site/assets/team-neo.jpg").read_bytes() == (
         ROOT / "static/team-neo.jpg").read_bytes()
