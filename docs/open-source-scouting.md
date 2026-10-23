@@ -1,6 +1,19 @@
 # SKYTICAL Open-source Scouting
 
-更新日期：2026-10-18
+更新日期：2026-10-23
+
+## 日本突發飛安搜尋與來源零筆提示（2026-10-23）
+
+本次透過 GitHub API 查證維護狀態、授權與 README，並實測日本語 RSS：
+
+| 專案 | 最近推送 | Stars | 語言／授權 | 比較結果 |
+| --- | --- | --- | --- | --- |
+| [GNews](https://github.com/ranahaani/GNews) | 2026-10-09 | 1,018 | Python／MIT | 可參考語言、國家與查詢設定；SKYTICAL 已有 RSS 與來源署名流程，不需再加封裝。 |
+| [google-news-scraper](https://github.com/lewisdonovan/google-news-scraper) | 2026-10-15 | 384 | JavaScript／MIT | v3 改用 RSS，部分功能仍需 Puppeteer；增加 Node／瀏覽器流程不符本次需求。 |
+| [feedparser](https://github.com/kurtmckee/feedparser) | 2026-10-06 | 2,448 | Python／BSD 類授權，上游 API 標示 NOASSERTION | 已有依賴，保留現行 RSS 正規化；零筆健康判斷屬 SKYTICAL 作業狀態，放在既有抓取流程。 |
+| [google-news-url-decoder](https://github.com/SSujitX/google-news-url-decoder) | 2026-10-18 | 302 | Python／MIT | 實測確認站內轉址後需簽章查詢才能取得原文。僅在既有 resolver 修補必要協定，不導入套件、批次系統或非同步架構；協定 context 的授權聲明保存在 `docs/licenses/google-news-url-decoder.txt`。 |
+
+保留現有 requests、feedparser、BeautifulSoup 與來源／正文核驗。新增日本語搜尋與少量日文航空用語，所有解析失敗的 Google 連結仍不進入待稿；重要媒體連續三次成功抓取卻無可用新聞時才提示，低頻官方公告不套用此警示。原文解析相容修補屬現有功能 bugfix，沒有引入新套件或替換子系統。
 
 ## 撰稿模型搜尋評估（2026-10-18）
 

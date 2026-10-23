@@ -19,7 +19,9 @@
             <td>60 min</td>
             <td class="text-muted" style="white-space:nowrap;">{{ s.last }}</td>
             <td>
-              {% if s.ok %}
+              {% if s.emptyWarning %}
+              <span class="text-muted" style="font-size:12px;">{{ s.emptyNote }}</span>
+              {% elif s.ok %}
               <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot"></span>OK</span>
               {% else %}
               <span class="text-muted" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;"><span class="dot err"></span>ERR</span>

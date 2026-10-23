@@ -53,7 +53,7 @@ class EvaAirSourceTests(unittest.TestCase):
         class Session:
             def get(self, url, **kwargs):
                 return type("Response", (), {
-                    "status_code": 200, "headers": {}})()
+                    "status_code": 200, "headers": {}, "text": ""})()
 
         items = fetch._rss_items(
             Session(), "google", [{

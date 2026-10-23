@@ -156,6 +156,12 @@ TAIWAN_AIRLINE_KEYWORDS = (
     "華信航空", "華信",
 )
 
+# Local-language safety discovery complements fixed publisher feeds.
+JAPAN_SAFETY_QUERY = (
+    '(航空機 OR 貨物機 OR 旅客機 OR 空港 OR 滑走路 OR ヘリコプター) '
+    '(火災 OR 炎 OR 緊急着陸 OR 胴体着陸 OR 事故 OR 閉鎖) when:3d'
+)
+
 # Google News discovery query for Asian-airline fleet and identity changes.
 # The fixed publisher feeds are strong on regulators and large western
 # outlets but routinely miss Chinese/Japanese/Korean carrier developments.
@@ -301,6 +307,7 @@ SOURCES: dict[str, dict] = {
         },
     },
     "reuters": {
+        "monitor_empty": True,
         "name": "Reuters",
         "kind": "media",
         "fmt": "RSS",
@@ -318,6 +325,7 @@ SOURCES: dict[str, dict] = {
         },
     },
     "avherald": {
+        "monitor_empty": True,
         "name": "The Aviation Herald",
         "kind": "media",
         "fmt": "RSS",
@@ -335,6 +343,7 @@ SOURCES: dict[str, dict] = {
         },
     },
     "aerospaceglobalnews": {
+        "monitor_empty": True,
         "name": "Aerospace Global News",
         "kind": "media",
         "fmt": "HTML",
@@ -412,6 +421,23 @@ SOURCES: dict[str, dict] = {
             "en": "Hainan Airlines and HNA filings — fleet, network and operations",
         },
     },
+    "japansafety": {
+        "name": "日本突發飛安新聞索引",
+        "kind": "media",
+        "fmt": "RSS",
+        "url": "https://news.google.com",
+        "endpoint": "https://news.google.com/rss/search?" + urlencode({
+            "q": JAPAN_SAFETY_QUERY, "hl": "ja", "gl": "JP", "ceid": "JP:ja",
+        }),
+        "type": "rss",
+        "publisher_passthrough": True,
+        "scope_filter": True,
+        "monitor_empty": True,
+        "cover": {
+            "zh": "日本機場起火、緊急降落與跑道封閉等飛安事件",
+            "en": "Breaking aviation safety events reported in Japan",
+        },
+    },
     "asiaairlinefleet": {
         "name": "亞洲航空機隊新聞索引",
         "kind": "media",
@@ -437,6 +463,7 @@ SOURCES: dict[str, dict] = {
         },
     },
     "simpleflying": {
+        "monitor_empty": True,
         "name": "Simple Flying",
         "kind": "media",
         "fmt": "RSS",
@@ -449,6 +476,7 @@ SOURCES: dict[str, dict] = {
         },
     },
     "aerotime": {
+        "monitor_empty": True,
         "name": "AeroTime",
         "kind": "media",
         "fmt": "RSS",
@@ -587,6 +615,9 @@ CATEGORIES = ("safety", "reg", "biz", "ops", "mil")
 # subject.  Keep these terms specific enough that generic politics/defence
 # stories (budgets, speeches, presidential inspections, land exercises) fail.
 _TRANSPORT_ZH_TERMS = (
+    # Japanese reports use different characters for airport/cargo aircraft.
+    "航空機", "貨物機", "旅客機", "空港", "滑走路", "緊急着陸",
+    "胴体着陸", "ヘリコプター",
     # civil and military aviation
     "航空", "民航", "飛安", "航班", "航機", "飛機", "小型機", "客機",
     "貨機", "機場", "飛航", "空域", "空管", "航管", "塔台",
