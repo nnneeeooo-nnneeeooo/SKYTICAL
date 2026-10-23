@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ base }}/assets/team.css?v={{ asset_version }}">
+{% endblock %}
+{% block content %}
+<main class="team-page" id="team-main">
+  <header class="team-header">
+    <h1>{{ team.title }}</h1>
+    <p>{{ team.heading }}</p>
+  </header>
+  <article class="team-profile" aria-labelledby="team-name">
+    <div class="team-hero">
+      <figure class="team-portrait">
+        <img src="{{ base }}/assets/team-nwe.jpg?v={{ asset_version }}"
+             alt="{{ team.photoAlt }}" width="720" height="1280"
+             fetchpriority="high" decoding="async">
+        <figcaption>{{ team.photoCaption }}</figcaption>
+      </figure>
+      <div class="team-introduction">
+        <h2 id="team-name">{{ team.name }}</h2>
+        <p class="team-role">{{ team.role }}</p>
+        <p class="team-lead">{{ team.intro }}</p>
+        <div class="team-contact" aria-labelledby="team-contact-title">
+          <h3 id="team-contact-title">{{ team.contactTitle }}</h3>
+          <a href="https://www.instagram.com/ks.17___/" target="_blank" rel="noopener noreferrer">
+            {{ team.instagramLabel }}<span aria-hidden="true">↗</span>
+          </a>
+          <a href="mailto:kass09221477@gmail.com">
+            {{ team.emailLabel }}<span class="team-email">kass09221477@gmail.com</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="team-story">
+      {% for section in team.sections %}
+      <section class="team-chapter" aria-labelledby="team-chapter-{{ loop.index }}">
+        <h3 id="team-chapter-{{ loop.index }}">{{ section.title }}</h3>
+        <div>{% for paragraph in section.body %}<p>{{ paragraph }}</p>{% endfor %}</div>
+      </section>
+      {% endfor %}
+    </div>
+  </article>
+  <div class="team-closing">
+    <p>{{ team.closing }}</p>
+    <a href="{{ about_url }}">{{ team.aboutLabel }}<span aria-hidden="true">↗</span></a>
+  </div>
+</main>
+{% endblock %}
