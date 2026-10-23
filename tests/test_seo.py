@@ -228,7 +228,7 @@ def main() -> None:
     assert "SKYTICAL/issues/new" in policy
     assert 'href="/editorial-policy/"' in article
 
-    for lang, sub, label in (("zh", "", "SKYTICAL 團隊"),
+    for lang, sub, label in (("zh", "", "SKYTICAL團隊"),
                              ("en", "en/", "SKYTICAL Team")):
         team_url = f"{build.SITE_ORIGIN}{build.BASE_PATH}/{sub}team/"
         assert team_url in locations
