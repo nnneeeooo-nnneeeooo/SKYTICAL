@@ -16,19 +16,23 @@
              fetchpriority="high" decoding="async">
         <figcaption>{{ team.photoCaption }}</figcaption>
       </figure>
+
       <div class="team-introduction">
         <h2 id="team-name">
-          <img class="team-name-logo team-name-logo--classic" src="{{ base }}/assets/skytical-mark.svg?v={{ asset_version }}" width="88" height="88" alt="" aria-hidden="true">
+          <img class="team-name-logo team-name-logo--classic" src="{{ base }}/assets/skytical-team-mark.svg?v={{ asset_version }}" width="88" height="88" alt="" aria-hidden="true">
           <img class="team-name-logo team-name-logo--pixel" src="{{ base }}/assets/skytical-mark-8bit.svg?v={{ asset_version }}" width="88" height="88" alt="" aria-hidden="true">
           <span>{{ team.name }}</span>
         </h2>
         <p class="team-role">{{ team.role }}</p>
         <p class="team-lead">
           {%- if lang == 'zh' -%}
-          {%- set intro = team.intro.partition(team.name) -%}
+          {%- set intro = team.intro.partition(team.name ~ '，') -%}
           {{- intro[0] -}}<strong>{{ intro[1] }}</strong>{{ intro[2] }}
           {%- else -%}{{ team.intro }}{%- endif -%}
         </p>
+
+      </div>
+
         <div class="team-contact" aria-labelledby="team-contact-title">
           <h3 id="team-contact-title">{{ team.contactTitle }}</h3>
           <a href="https://www.instagram.com/ks.17___/" target="_blank" rel="noopener noreferrer">
@@ -38,13 +42,12 @@
             {{ team.emailLabel }}<span class="team-email">kass09221477@gmail.com</span>
           </a>
         </div>
-      </div>
     </div>
     <div class="team-story">
       {% for section in team_sections %}
       <section class="team-chapter" aria-labelledby="team-chapter-{{ loop.index }}">
         <h3 id="team-chapter-{{ loop.index }}">{{ section.title }}</h3>
-        <div>{% for paragraph in section.body %}<p>
+        <div class="team-chapter-body">{% for paragraph in section.body %}<p>
           {%- for part in paragraph -%}
             {%- if part.url -%}
             <a class="team-artist-link" href="{{ part.url }}" target="_blank" rel="noopener noreferrer" title="Apple Music">{{ part.text }}</a>
@@ -56,7 +59,7 @@
     </div>
   </article>
   <div class="team-closing">
-    <p>{{ team.closing }}</p>
+    <p>{%- if lang == 'zh' -%}{%- set closing = team.closing.partition('SKYTICAL') -%}{{ closing[0] }}<span class="team-closing-brand"><img class="team-inline-logo team-name-logo--classic" src="{{ base }}/assets/skytical-team-mark.svg?v={{ asset_version }}" width="24" height="24" alt="" aria-hidden="true"><img class="team-inline-logo team-name-logo--pixel" src="{{ base }}/assets/skytical-mark-8bit.svg?v={{ asset_version }}" width="24" height="24" alt="" aria-hidden="true">{{ closing[1] }}</span>{{ closing[2] }}{%- else -%}{{ team.closing }}{%- endif -%}</p>
     <a href="{{ about_url }}">{{ team.aboutLabel }}<span aria-hidden="true">↗</span></a>
   </div>
 </main>
