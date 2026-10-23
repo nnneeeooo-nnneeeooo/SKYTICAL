@@ -102,6 +102,8 @@ def static_asset_version() -> str:
         "skytical-social.png",
         "briefing.css",
         "briefing.js",
+        "team.css",
+        "team-nwe.jpg",
     ):
         digest.update((STATIC_DIR / name).read_bytes())
     return digest.hexdigest()[:10]
@@ -196,7 +198,7 @@ L = {
         "footerAbout": "SKYTICAL 是以可追溯來源為基礎的自動化航空新聞彙整服務；每篇報導附原始來源，原始報導與更正公告優先。",
         "footerSources": "資料來源 Data Sources",
         "footerChangelog": "網站更新紀錄",
-        "nav": ["最新", "全部新聞", "快報", "航班雷達", "事故資料庫", "來源", "關於 SKYTICAL"],
+        "nav": ["最新", "全部新聞", "快報", "航班雷達", "事故資料庫", "來源", "關於 SKYTICAL", "SKYTICAL 團隊"],
         "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
         "searchKicker": "News Search", "searchTitle": "搜尋新聞",
         "newsKicker": "News Index", "newsTitle": "全部新聞",
@@ -350,7 +352,7 @@ L = {
         "footerSources": "Data Sources",
         "footerChangelog": "Site changelog",
         "nav": ["Latest", "All news", "Briefings", "Flight Radar", "Incident DB", "Sources",
-                 "About SKYTICAL"],
+                 "About SKYTICAL", "SKYTICAL Team"],
         "cats": ["All", "Safety", "Regulation", "Business", "Operations",
                  "Military"],
         "searchKicker": "News Search", "searchTitle": "Search news",
@@ -3626,7 +3628,8 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build,
     nav_defs = [("home", ""), ("news", "news/"), ("briefings", "briefings/"),
                 ("radar", "radar/"),
                 ("incidents", "incidents/"),
-                ("sources", "sources/"), ("about", "about/")]
+                ("sources", "sources/"), ("about", "about/"),
+                ("team", "team/")]
     return {
         "lang": lang, "t": t, "base": BASE_PATH, "favicon": FAVICON,
         "asset_version": ASSET_VERSION,
@@ -3860,7 +3863,7 @@ def write_search_discovery_files(articles, briefings, now,
     ]
     latest_briefing_modified = (
         max(briefing_modified) if briefing_modified else None)
-    static_sections = ("radar/", "incidents/", "sources/", "about/",
+    static_sections = ("radar/", "incidents/", "sources/", "about/", "team/",
                        "editorial-policy/", "changelog/")
     for lang in ("zh", "en"):
         localized = [
@@ -4366,6 +4369,17 @@ def main() -> int:
         ])
         ctx.update(about=ABOUT[lang])
         render(env, "about.html", rel_path(lang, "about/index.html"), ctx)
+        pages += 1
+
+        team = load_json(CONFIG_DIR / "team.json", {})[lang]
+        ctx = base_ctx(lang, "team", "team/",
+                       title=f"{team['title']}｜{t['siteName']}",
+                       description=team["description"], ticker=ticker, build=build)
+        ctx["structured_data"] = breadcrumb_structured_data(lang, [
+            (t["siteName"], ""), (team["title"], "team/"),
+        ])
+        ctx.update(team=team)
+        render(env, "team.html", rel_path(lang, "team/index.html"), ctx)
         pages += 1
 
         policy = EDITORIAL_POLICY[lang]
