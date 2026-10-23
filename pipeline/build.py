@@ -198,7 +198,7 @@ L = {
         "footerAbout": "SKYTICAL 是以可追溯來源為基礎的自動化航空新聞彙整服務；每篇報導附原始來源，原始報導與更正公告優先。",
         "footerSources": "資料來源 Data Sources",
         "footerChangelog": "網站更新紀錄",
-        "nav": ["最新", "全部新聞", "快報", "航班雷達", "事故資料庫", "來源", "關於 SKYTICAL", "SKYTICAL 團隊"],
+        "nav": ["最新", "全部新聞", "快報", "航班雷達", "事故資料庫", "來源", "關於 SKYTICAL", "SKYTICAL團隊"],
         "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
         "searchKicker": "News Search", "searchTitle": "搜尋新聞",
         "newsKicker": "News Index", "newsTitle": "全部新聞",
