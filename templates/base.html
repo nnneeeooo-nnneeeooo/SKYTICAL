@@ -190,7 +190,7 @@ gtag('config', '{{ ga4_measurement_id }}', {
 <dialog class="pixel-dialog" aria-labelledby="pixel-dialog-title">
   <span class="pixel-dialog-icon" aria-hidden="true">✦</span>
   <h2 id="pixel-dialog-title">{% if lang == 'zh' %}你發現了隱藏主題！{% else %}You found a secret theme!{% endif %}</h2>
-  <p class="pixel-dialog-copy">{% if lang == 'zh' %}8-bit 主題已解鎖。重新整理後，就能在主題選單選擇 8-bit。{% else %}8-bit mode is unlocked. Refresh to add it to your theme selector.{% endif %}</p>
+  <p class="pixel-dialog-copy">{% if lang == 'zh' %}8-bit 主題已解鎖。按下「重新整理」就會直接套用，之後可隨時在主題選單切換。{% else %}8-bit mode is unlocked. Refresh to apply it now. You can switch themes anytime using the theme selector.{% endif %}</p>
   <div class="pixel-dialog-actions">
     <button type="button" class="btn btn-secondary" data-pixel-close>{% if lang == 'zh' %}稍後再玩{% else %}Later{% endif %}</button>
     <button type="button" class="btn btn-primary" data-pixel-refresh autofocus>{% if lang == 'zh' %}重新整理{% else %}Refresh{% endif %}</button>
