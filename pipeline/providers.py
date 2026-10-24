@@ -960,6 +960,8 @@ class GroqProvider(NvidiaProvider):
     default_model = "openai/gpt-oss-120b"
     key_env = "GROQ_API_KEY"
     include_previous_draft_in_retry = False
+    output_tokens = 4096
+    repair_tokens = 2048
 
     def __init__(self, model=None, reasoning_tier=None):
         super().__init__(model or os.environ.get(
@@ -980,12 +982,30 @@ class GroqProvider(NvidiaProvider):
                 "already specified. Use only source-supported facts; never "
                 "pad or repeat to reach a length. Reject if the source cannot "
                 "support a safe brief. Entity values must be exact contiguous "
-                "substrings of their sourceQuote; preserve date range wording "
+                "substrings of their sourceQuote; prefer empty optional entity "
+                "arrays over unsupported aliases or airport codes. For a brief, "
+                "aim for three paragraphs of 80 Chinese content characters "
+                "and three English paragraphs of 40 words, using distinct "
+                "source-supported details without padding. Preserve date range wording "
                 "and punctuation verbatim. Return final JSON only.")
+        # Preserve every instruction while removing indentation/newline tokens.
+        system_prompt = re.sub(r"\s+", " ", system_prompt).strip()
         return super().draft(system_prompt, user_prompt, schema)
 
     def available(self):
         return bool(os.environ.get(self.key_env, "").strip())
+
+    def _check_status(self, response):
+        if response.status_code == 413:
+            try:
+                message = str((response.json().get("error") or {}).get("message") or "")
+            except (ValueError, TypeError, AttributeError):
+                message = ""
+            numbers = re.search(r"Limit\s+(\d+),\s*Requested\s+(\d+)", message)
+            detail = (f" token_limit={numbers[1]} requested_tokens={numbers[2]}"
+                      if numbers else "")
+            raise ProviderError("HTTP 413 request too large" + detail)
+        return super()._check_status(response)
 
     def _endpoint(self):
         return "https://api.groq.com/openai/v1/chat/completions"
@@ -993,7 +1013,7 @@ class GroqProvider(NvidiaProvider):
     def _post(self, messages, repair):
         # No NIM-specific profiles or reasoning fields cross provider boundaries.
         payload = {"model": self.model, "messages": messages,
-                   "max_tokens": 4096 if repair else 8192,
+                   "max_tokens": self.repair_tokens if repair else self.output_tokens,
                    "temperature": 0.2, "stream": False}
         self.http_calls += 1
         self.repair_calls += int(repair)
@@ -1017,6 +1037,8 @@ class GroqProvider(NvidiaProvider):
 
 class CloudflareProvider(GroqProvider):
     name = "cloudflare"
+    output_tokens = 8192
+    repair_tokens = 4096
     default_model = "@cf/qwen/qwen3-30b-a3b-fp8"
     key_env = "CLOUDFLARE_API_TOKEN"
 

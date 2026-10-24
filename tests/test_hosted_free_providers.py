@@ -33,7 +33,7 @@ def main():
                 request = post.call_args
                 assert request.args[0] == p._endpoint()
                 body = request.kwargs['json']
-                assert body['model'] == p.model and body['max_tokens'] == 8192
+                assert body['model'] == p.model and body['max_tokens'] == p.output_tokens
                 assert 'JSON Schema' in body['messages'][1]['content']
                 assert not any(k in body for k in ('thinking', 'reasoning_effort', 'chat_template_kwargs'))
                 assert p.usage['inputTokens'] == 11 and p.usage['outputTokens'] == 3
@@ -47,7 +47,7 @@ def main():
             with patch.object(providers.requests, 'post', side_effect=[broken, good]) as post:
                 assert p.draft('sys', 'user', {}) == {'ok': 1}
                 assert post.call_count == 2 and p.repair_calls == 1
-                assert post.call_args.kwargs['json']['max_tokens'] == 4096
+                assert post.call_args.kwargs['json']['max_tokens'] == p.repair_tokens
             for status, exc in [(401, providers.ProviderAuthError),
                                 (429, providers.ProviderQuotaError),
                                 (404, providers.ProviderRouteError),
@@ -75,6 +75,13 @@ def main():
                 assert probe.prepare_routes([p], datetime.now(timezone.utc), lambda *a, **kw: ({'status': 'reject'}, [])) == []
     with patch.dict(os.environ, {**creds, 'CLOUDFLARE_ACCOUNT_ID': '../bad'}, clear=True):
         assert not providers.CloudflareProvider().available()
+    try:
+        providers.GroqProvider()._check_status(response({'error': {
+            'message': 'Limit 8000, Requested 9000. SOURCE PRIVATE gsk_SECRET'}}, 413))
+        raise AssertionError('oversized request accepted')
+    except providers.ProviderError as exc:
+        assert 'token_limit=8000 requested_tokens=9000' in str(exc)
+        assert 'PRIVATE' not in str(exc) and 'gsk_SECRET' not in str(exc)
     import manual_draft
     with patch.dict(os.environ, creds, clear=True):
         selected = manual_draft._providers_for({
