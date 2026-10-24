@@ -12,8 +12,8 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-10-24T17:36Z",
       "untilUtc": "2026-10-24T23:36Z",
+      "checkedUtc": "2026-10-24T17:36Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 2,
@@ -41,6 +41,15 @@
       "status": "unavailable",
       "untilUtc": "2026-10-25T13:26Z",
       "checkedUtc": "2026-10-24T13:26Z",
+      "failureClass": "model_unavailable",
+      "diagnostic": "model absent from account catalog",
+      "probeVersion": 2,
+      "schemaMode": null
+    },
+    "groq:llama-3.3-70b-versatile": {
+      "status": "unavailable",
+      "checkedUtc": "2026-10-24T18:51Z",
+      "untilUtc": "2026-10-25T18:51Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 2,
