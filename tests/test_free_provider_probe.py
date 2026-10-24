@@ -20,7 +20,7 @@ def response(code, body):
 def main():
     now = datetime(2026, 10, 24, tzinfo=timezone.utc)
     p = SimpleNamespace(name='gemini', model='gemini-3.6-flash', label='gemini:test', requires_verification=True)
-    paid = SimpleNamespace(name='openai', model='gpt-6-luna', label='openai:paid', requires_verification=False)
+    paid = SimpleNamespace(name='openai', model='gpt-6', label='openai:paid', requires_verification=False)
     calls = []
     def validate(provider, source, **kwargs):
         calls.append((provider.label, source['id'], kwargs))
@@ -73,10 +73,10 @@ def main():
     assert providers.WechatProvider.max_attempt_seconds == 60
     import write
     free = providers.GeminiProvider('gemini-3.6-flash')
-    luna = providers.OpenAIProvider('gpt-6-luna')
+    fallback = providers.OpenAIProvider('gpt-6')
     assert write._preferred_attempt_cap(free) == 180
     assert write._provider_chain_budget([free]) >= 360
-    assert write._provider_chain_budget([free, luna]) >= write._luna_reserve_seconds([luna])+180
+    assert write._provider_chain_budget([free, fallback]) >= write._fallback_reserve_seconds([fallback])+180
     print('PASS route verification, fixed-source admission, expiry, 400/404 quarantine, secret-safe errors and 180s budgets')
 
 

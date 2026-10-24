@@ -73,19 +73,19 @@ def test_public_model_search_index():
     article = sample_article("華航新增航班")
     aliases = build.load_search_alias_groups()
     for writer, supplied, expected in [
-        ("openai:gpt-6-luna", None, ["GPT 6"]),
+        ("openai:gpt-6", None, ["GPT 6"]),
         ("manual:GPT 6.1 Sol", None, ["GPT 6.1 Sol"]),
         ("openai:gpt-6.1-sol", None, ["GPT 6.1 Sol"]),
         ("wechat:Deepseek-v4-flash", None, ["DeepSeek V4.1 Flash"]),
         ("nvidia:deepseek-ai/deepseek-v4-pro", None, ["DeepSeek V4.1 Flash"]),
         ("manual:owner", ["DeepSeek", "DeepSeek V4 Pro"], ["DeepSeek V4.1 Flash"]),
-        ("manual:owner", ["GPT 6 Luna", "GPT 6.1 Sol"], ["GPT 6", "GPT 6.1 Sol"]),
+        ("manual:owner", ["GPT 6", "GPT 6.1 Sol"], ["GPT 6", "GPT 6.1 Sol"]),
         (None, None, []),
     ]:
         article["writer_model"] = build.writer_model(writer, supplied)
         item = build.search_index_item(article, aliases)
         assert item["models"] == expected
-        assert "luna" not in json.dumps(item, ensure_ascii=False).lower()
+        assert "fallback" not in json.dumps(item, ensure_ascii=False).lower()
         assert "openai:" not in json.dumps(item, ensure_ascii=False).lower()
 
 

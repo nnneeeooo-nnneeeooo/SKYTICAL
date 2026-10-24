@@ -104,6 +104,7 @@ jobs:
         continue-on-error: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
+          AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -115,14 +116,14 @@ jobs:
           ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional
           AVWIRE_WECHAT_MODEL: ${{ vars.AVWIRE_WECHAT_MODEL }}
           AVWIRE_OPENAI_MODEL: ${{ vars.AVWIRE_OPENAI_MODEL }}
-          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,groq:llama-3.3-70b-versatile,cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast,openai:gpt-6-luna
+          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,groq:llama-3.3-70b-versatile,cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast,openai:gpt-6
           BRIEFING_WRITER: "true"
-          BRIEFING_WRITER_MODEL: gpt-6-luna
+          BRIEFING_WRITER_MODEL: gpt-6
           BRIEFING_WRITER_EFFORT: medium
           BRIEFING_WRITER_CALLS_MAX: '2'
           BRIEFING_GROUNDED: "true"
           BRIEFING_GROUNDED_PROVIDER: openai
-          BRIEFING_GROUNDED_MODEL: gpt-6-luna
+          BRIEFING_GROUNDED_MODEL: gpt-6
           BRIEFING_GROUNDED_EFFORT: medium
           BRIEFING_LLM_INTRO: "false"
           BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}

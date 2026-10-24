@@ -21,7 +21,7 @@ FREE_HOSTED_MODEL_ORDER = (
 )
 
 OPENAI_MODEL_ORDER = (
-    "openai:gpt-6-luna",
+    "openai:gpt-6",
 )
 
 WECHAT_MODEL_ORDER = (
@@ -76,7 +76,7 @@ MODEL_ORDER = (
     OPENAI_MODEL_ORDER[0],
 )
 
-# GPT-6 Luna is the final automatic fallback after the preferred production
+# GPT 6 is the final automatic fallback after the preferred production
 # routes have failed or timed out.
 AUTOMATIC_MODEL_ORDER = (
     DIRECT_MODEL_ORDER[0],
@@ -93,7 +93,7 @@ DEFAULT_PROVIDER_ORDER = ",".join(AUTOMATIC_MODEL_ORDER)
 MODEL_DISPLAY_NAMES = {
     FREE_HOSTED_MODEL_ORDER[0]: "Groq · Llama 3.3 70B",
     FREE_HOSTED_MODEL_ORDER[1]: "Cloudflare Workers AI · Llama 3.3 70B",
-    "openai:gpt-6-luna": "OpenAI · GPT-6 Luna",
+    "openai:gpt-6": "OpenAI · GPT 6",
     "wechat:Deepseek-v4-flash":
         "WeChat Coding Plan · DeepSeek V4 Flash",
     "opencode:claude-sonnet-4-6":

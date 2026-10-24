@@ -301,11 +301,11 @@ check("private workbench usage is separated and priced per article",
       and abs(manual_view["rows"][0]["usd"] - 0.03) < 1e-9)
 check("manual writer credit keeps the owner-entered model name exactly",
       build.writer_model("manual:GPT 5.6 Sol") == "GPT 5.6 Sol")
-check("GPT-6 Luna article credits always use the public name GPT 6",
-      build.writer_model("openai:gpt-6-luna") == "GPT 6"
-      and build.writer_model("manual:OpenAI · GPT-6 Luna") == "GPT 6"
+check("GPT 6 article credits always use the public name GPT 6",
+      build.writer_model("openai:gpt-6") == "GPT 6"
+      and build.writer_model("manual:OpenAI · GPT 6") == "GPT 6"
       and build.writer_model(
-          "manual:OpenAI · GPT-6 Luna", ["OpenAI · GPT-6 Luna"])
+          "manual:OpenAI · GPT 6", ["OpenAI · GPT 6"])
       == "GPT 6")
 rows, totals = build.usage_rows(usage.load_ledger(), prices)
 priority_ledger = {
@@ -401,10 +401,10 @@ check("GPT-5.6 Sol API usage would use the official $5/$30 rates",
       gpt_api_rows[0]["usd"] == 35.0
       and gpt_api_rows[0]["kind"] == "reference")
 gpt6_rows, _ = build.usage_rows(
-    {"models": {"openai:gpt-6-luna":
+    {"models": {"openai:gpt-6":
                 {"calls": 1, "inputTokens": 1_000_000,
                  "outputTokens": 1_000_000, "unknownCalls": 0}}}, prices)
-check("GPT-6 Luna API usage uses the official $0.10/$0.50 rates",
+check("GPT 6 API usage uses the official $0.10/$0.50 rates",
       gpt6_rows[0]["usd"] == 0.6
       and gpt6_rows[0]["kind"] == "reference")
 check("totals aggregate across models",

@@ -75,7 +75,7 @@ HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
 # profile fall back to conservative generic settings.
 NVIDIA_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b"
 GEMINI_DEFAULT_MODEL = "gemini-3.6-flash"
-OPENAI_DEFAULT_MODEL = "gpt-6-luna"
+OPENAI_DEFAULT_MODEL = "gpt-6"
 OPENROUTER_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 OPENCODE_DEFAULT_MODEL = "claude-sonnet-4-6"
 OPENCODE_BASE_URL = "https://console.opencode.ai/inference"
@@ -1512,7 +1512,7 @@ class OpenAIProvider(OpenCodeProvider):
     """Direct OpenAI Responses API writer using the repository's REST stack."""
 
     name = "openai"
-    # GPT-6 Luna needs more wall-clock time than the
+    # GPT 6 needs more wall-clock time than the
     # generic 60-second attempt budget. Keep the per-group cap bounded while
     # leaving time for configured fallbacks after a slow OpenAI response.
     max_attempt_seconds = 90
@@ -1527,6 +1527,17 @@ class OpenAIProvider(OpenCodeProvider):
 
     def available(self) -> bool:
         return bool(os.environ.get("OPENAI_API_KEY"))
+
+    def _post_json(self, url: str, payload: dict, headers: dict,
+                   repair: bool):
+        # Resolve the public model alias only at the HTTP boundary. Logs,
+        # article provenance and usage records retain the public identifier.
+        wire_model = os.environ.get("AVWIRE_OPENAI_API_MODEL", "").strip()
+        if self.model == OPENAI_DEFAULT_MODEL:
+            if not wire_model:
+                raise ProviderError("private OpenAI model mapping is not configured")
+            payload = {**payload, "model": wire_model}
+        return super()._post_json(url, payload, headers, repair)
 
     def _responses_endpoint(self) -> str:
         return "https://api.openai.com/v1/responses"
@@ -1562,7 +1573,7 @@ class OpenAIProvider(OpenCodeProvider):
         }
 
     def _responses_output_tokens(self, repair: bool) -> int:
-        # GPT-6 Luna counts reasoning tokens against this cap. Leave room for
+        # GPT 6 counts reasoning tokens against this cap. Leave room for
         # reasoning and the final bilingual JSON response.
         return 48_000
 
@@ -1590,8 +1601,8 @@ _REGISTRY = {
 }
 
 
-def _is_luna_route(token: str) -> bool:
-    """Recognize an OpenAI route that resolves to GPT-6 Luna."""
+def _is_fallback_route(token: str) -> bool:
+    """Recognize an OpenAI route that resolves to GPT 6."""
     name, _, model = token.partition(":")
     if name.strip().lower() != "openai":
         return False
@@ -1612,9 +1623,9 @@ def build_providers() -> list:
     providers, seen = [], set()
     tokens = order.split(",")
     # Environment overrides (for example the Copilot workflow variable) may
-    # still list Luna early. Keep it terminal even when configured twice.
-    tokens = ([token for token in tokens if not _is_luna_route(token)]
-              + [token for token in tokens if _is_luna_route(token)])
+    # still list Fallback early. Keep it terminal even when configured twice.
+    tokens = ([token for token in tokens if not _is_fallback_route(token)]
+              + [token for token in tokens if _is_fallback_route(token)])
     for token in tokens:
         name, _, model = token.strip().partition(":")
         key = name.strip().lower()

@@ -35,7 +35,7 @@ def main():
     nim = SimpleNamespace(name="nvidia", model="nvidia/nemotron-3-super-120b-a12b")
     router = SimpleNamespace(name="openrouter", model="test:free")
     paid = [SimpleNamespace(name=n, model=m) for n, m in (
-        ("openai", "gpt-6-luna"), ("wechat", "Deepseek-v4-flash"),
+        ("openai", "gpt-6"), ("wechat", "Deepseek-v4-flash"),
         ("openrouter", "paid/model"), ("anthropic", "claude"),
         ("gemini", "gemini-pro-paid"))]
     for title, summary in examples:

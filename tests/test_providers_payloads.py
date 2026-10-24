@@ -169,7 +169,7 @@ def test_model_priority_defaults():
         "openrouter:poolside/laguna-xs-2.1:free",
         "groq:llama-3.3-70b-versatile",
         "cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-        "openai:gpt-6-luna",
+        "openai:gpt-6",
     )
     check(providers.MODEL_ORDER == expected,
           "model priority order matches the configured product order")
@@ -181,15 +181,15 @@ def test_model_priority_defaults():
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
         "groq:llama-3.3-70b-versatile",
         "cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-        "openai:gpt-6-luna",
+        "openai:gpt-6",
     )
     check(AUTOMATIC_MODEL_ORDER == active
           and providers.DEFAULT_ORDER == ",".join(active),
-          "GPT-6 Luna is last after all preferred production routes")
+          "GPT 6 is last after all preferred production routes")
     check(providers.GEMINI_DEFAULT_MODEL == "gemini-3.6-flash",
           "Gemini 3.6 Flash is the default model")
-    check(providers.OPENAI_DEFAULT_MODEL == "gpt-6-luna",
-          "GPT-6 Luna is the direct OpenAI default model")
+    check(providers.OPENAI_DEFAULT_MODEL == "gpt-6",
+          "GPT 6 is the direct OpenAI default model")
     check(providers.NVIDIA_DEFAULT_MODEL
           == "nvidia/nemotron-3-ultra-550b-a55b",
           "Nemotron Ultra is the highest-priority NVIDIA default")
@@ -211,12 +211,12 @@ def test_model_priority_defaults():
     print("test_model_priority_defaults: done")
 
 
-def test_luna_last_with_environment_override():
-    """Custom workflow order cannot accidentally promote GPT-6 Luna."""
+def test_fallback_last_with_environment_override():
+    """Custom workflow order cannot accidentally promote GPT 6."""
     keys = ("AVWIRE_PROVIDER_ORDER", "OPENAI_API_KEY", "GEMINI_API_KEY")
     saved = {key: os.environ.get(key) for key in keys}
     os.environ["AVWIRE_PROVIDER_ORDER"] = (
-        "openai:gpt-6-luna,gemini:gemini-3.6-flash,openai:gpt-6-luna")
+        "openai:gpt-6,gemini:gemini-3.6-flash,openai:gpt-6")
     os.environ["OPENAI_API_KEY"] = "test-openai-key-not-real"
     os.environ["GEMINI_API_KEY"] = "test-gemini-key-not-real"
     try:
@@ -227,9 +227,9 @@ def test_luna_last_with_environment_override():
                 os.environ.pop(key, None)
             else:
                 os.environ[key] = value
-    check(labels == ["gemini:gemini-3.6-flash", "openai:gpt-6-luna"],
-          "environment overrides keep Luna last and deduplicate it")
-    print("test_luna_last_with_environment_override: done")
+    check(labels == ["gemini:gemini-3.6-flash", "openai:gpt-6"],
+          "environment overrides keep Fallback last and deduplicate it")
+    print("test_fallback_last_with_environment_override: done")
 
 
 def test_wechat_protocol_and_payloads():
@@ -565,19 +565,20 @@ def test_openai_responses_api():
     saved = {
         key: os.environ.get(key)
         for key in ("OPENAI_API_KEY", "AVWIRE_PROVIDER_ORDER",
-                    "AVWIRE_OPENAI_MODEL")
+                    "AVWIRE_OPENAI_MODEL", "AVWIRE_OPENAI_API_MODEL")
     }
     os.environ.pop("OPENAI_API_KEY", None)
     provider = providers.OpenAIProvider()
     check(not provider.available(), "OpenAI is unavailable without its key")
     os.environ["OPENAI_API_KEY"] = "test-openai-key-not-real"
-    os.environ["AVWIRE_PROVIDER_ORDER"] = "openai:gpt-6-luna"
+    os.environ["AVWIRE_PROVIDER_ORDER"] = "openai:gpt-6"
+    os.environ["AVWIRE_OPENAI_API_MODEL"] = "test-private-model"
     try:
         provider = providers.OpenAIProvider()
         captured = []
         check(provider.max_attempt_seconds == 90
               and provider.group_budget_seconds == 180,
-              "GPT-6 Luna receives bounded request and group budgets")
+              "GPT 6 receives bounded request and group budgets")
 
         def fake_post(url, json=None, timeout=None, headers=None):
             captured.append((url, json, headers))
@@ -594,14 +595,14 @@ def test_openai_responses_api():
         check(provider.available() and result == {"ok": 1},
               "OpenAI Responses draft succeeds with configured key")
         check(url == "https://api.openai.com/v1/responses"
-              and payload["model"] == "gpt-6-luna",
-              "GPT-6 Luna uses the direct OpenAI Responses endpoint")
+              and payload["model"] == "test-private-model",
+              "GPT 6 uses the direct OpenAI Responses endpoint")
         check(payload["reasoning"] == {"effort": "medium"}
               and provider.reasoning_effective == "reasoning.effort=medium"
               and provider._effort(repair=True) == "medium",
-              "automatic GPT-6 Luna calls and repairs request medium reasoning")
+              "automatic GPT 6 calls and repairs request medium reasoning")
         check(payload["max_output_tokens"] == 48_000,
-              "Luna has an output cap that reserves reasoning room")
+              "Fallback has an output cap that reserves reasoning room")
         check(payload["text"]["format"] == {
                   "type": "json_schema", "name": "skytical_draft",
                   "schema": SCHEMA, "strict": True,
@@ -628,12 +629,34 @@ def test_openai_responses_api():
         except providers.ProviderQuotaError:
             check(True, "OpenAI insufficient quota disables this provider run")
         rows = providers.build_providers()
-        check([row.label for row in rows] == ["openai:gpt-6-luna"],
+        check([row.label for row in rows] == ["openai:gpt-6"],
               "provider registry builds the configured OpenAI model")
         deep = providers.OpenAIProvider(
-            "gpt-6-luna", reasoning_tier="deep")
+            "gpt-6", reasoning_tier="deep")
         check(deep._effort(repair=False) == "max",
               "manual deep reasoning maps to OpenAI MAX")
+        check(provider.model == "gpt-6" and provider.label == "openai:gpt-6"
+              and "test-private-model" not in json.dumps(provider.__dict__),
+              "private wire model never enters provenance or telemetry")
+        os.environ.pop("AVWIRE_OPENAI_API_MODEL", None)
+        before = len(captured)
+        try:
+            with_post(fake_post, lambda: provider.draft("sys", "user", SCHEMA))
+            check(False, "missing private mapping must fail before HTTP")
+        except providers.ProviderError:
+            check(len(captured) == before,
+                  "missing private mapping makes no invalid API request")
+        check(provider.model == "gpt-6" and provider.label == "openai:gpt-6"
+              and "test-private-model" not in json.dumps(provider.__dict__),
+              "private wire model never enters provenance or telemetry")
+        os.environ.pop("AVWIRE_OPENAI_API_MODEL", None)
+        before = len(captured)
+        try:
+            with_post(fake_post, lambda: provider.draft("sys", "user", SCHEMA))
+            check(False, "missing private mapping must fail before HTTP")
+        except providers.ProviderError:
+            check(len(captured) == before,
+                  "missing private mapping makes no invalid API request")
     finally:
         for key, value in saved.items():
             if value is None:
@@ -819,7 +842,7 @@ def test_gemini_format_repair():
 def main():
     tests = [
         test_model_priority_defaults,
-        test_luna_last_with_environment_override,
+        test_fallback_last_with_environment_override,
         test_wechat_protocol_and_payloads,
         test_opencode_protocols_and_payloads,
         test_openai_responses_api,

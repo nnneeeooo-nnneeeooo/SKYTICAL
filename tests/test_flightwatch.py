@@ -397,7 +397,7 @@ def test_taiwan_flight_observation_uses_paid_fallback():
     _reset_data()
     flightnews.save_queue([json.loads(json.dumps(FLIGHT_EVENT))])
     paid = FakeProvider("openai", [_flight_draft(status="publish")])
-    paid.model = "gpt-6-luna"
+    paid.model = "gpt-6"
     _run_write_with([paid])
     check(paid.calls == 1 and len(_published_articles()) == 1,
           "Taiwan observation authorizes paid fallback and publishes")

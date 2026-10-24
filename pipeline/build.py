@@ -1149,7 +1149,7 @@ def _public_writer_model_name(value):
     clean = re.sub(r"[\x00-\x1f\x7f<>]+", " ", str(value))
     clean = re.sub(r"\s+", " ", clean).strip()
     normalized = re.sub(r"[^a-z0-9]+", "", clean.casefold())
-    if normalized in {"gpt6luna", "openaigpt6luna"}:
+    if normalized in {"gpt6", "openaigpt6"}:
         return "GPT 6"
     if "deepseek" in normalized:
         return PUBLIC_DEEPSEEK_MODEL
@@ -1159,7 +1159,7 @@ def _public_writer_model_name(value):
 _WRITER_MODELS = (
     ("gpt-6.1-sol", "GPT 6.1 Sol"),
     ("gpt-6-sol", "GPT 6 Sol"),
-    ("gpt-6-luna", "GPT 6"),
+    ("gpt-6", "GPT 6"),
     ("gpt-5.6-sol", "GPT-5.6 Sol"),
     ("nemotron-3-ultra", "Nemotron 3 Ultra"),
     ("nemotron-3-super", "Nemotron 3 Super"),
@@ -3470,6 +3470,7 @@ def commit_records_view(raw, expected_shas) -> dict:
             })
         records[sha] = {
             "sha": sha,
+            "redacted": item.get("redacted") is True,
             "message": item["message"],
             "author": {
                 "login": str(item["author"].get("login") or ""),

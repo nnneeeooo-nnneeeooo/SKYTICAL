@@ -5,7 +5,7 @@ inside a fixed trailing-24-hour Asia/Taipei window and writes one complete
 snapshot per edition to data/briefings/. Events may therefore appear in more
 than one edition while they remain inside that edition's 24-hour window;
 each morning, afternoon and evening report must be independently readable.
-Production uses a briefing-specific Luna search and one structured writing
+Production uses a briefing-specific Fallback search and one structured writing
 batch (at most one correction). Published article evidence is mandatory for
 every public story and original-article link. Any model failure retains
 complete extractive article copy; image-only changes reuse saved writing.

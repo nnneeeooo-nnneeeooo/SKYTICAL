@@ -311,7 +311,8 @@ if usage:
     usage.record_providers = lambda providers: usage_calls.append(list(providers))
 os.environ["BRIEFING_GROUNDED_PROVIDER"] = "openai"
 os.environ["OPENAI_API_KEY"] = "offline-test-key"
-os.environ["BRIEFING_GROUNDED_MODEL"] = "gpt-6-luna"
+os.environ["BRIEFING_GROUNDED_MODEL"] = "gpt-6"
+os.environ["AVWIRE_OPENAI_API_MODEL"] = "test-private-model"
 data, shim = grounded.call_grounded(window)
 openai_items, openai_warnings = grounded.sanitize_items(
     data, [], {}, NOW, window)
@@ -321,9 +322,9 @@ check("OpenAI result maps only retrieved source URLs into citation chunks",
       and accepted[0]["sources"] == [{"name": "News", "url": "https://news.example/actual"}]
       and all(source["url"] != "https://fake.example/forged"
               for source in accepted[0]["sources"]))
-check("OpenAI call selects Luna Responses web_search with bounded medium reasoning",
+check("OpenAI call selects Fallback Responses web_search with bounded medium reasoning",
       captured_openai["url"] == "https://api.openai.com/v1/responses"
-      and captured_openai["payload"]["model"] == "gpt-6-luna"
+      and captured_openai["payload"]["model"] == "test-private-model"
       and captured_openai["payload"]["reasoning"] == {"effort": "medium"}
       and captured_openai["payload"]["tools"][0]["type"] == "web_search"
       and captured_openai["payload"]["max_tool_calls"] == 4)

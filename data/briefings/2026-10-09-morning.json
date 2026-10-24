@@ -348,16 +348,16 @@
   "warnings": [
     "grounded sweep: 1 item(s) dropped by source-quality/limit checks"
   ],
-  "generation_mode": "luna_written",
+  "generation_mode": "model_written",
   "generation_model": {
     "provider": "openai",
-    "model": "gpt-6-luna",
+    "model": "gpt-6",
     "reasoning_effort": "medium"
   },
   "grounded_beta": {
     "used": true,
     "provider": "openai",
-    "model": "gpt-6-luna",
+    "model": "gpt-6",
     "items": 0
   },
   "writer_input_digest": "6b8e54fda175aa0129b964d8dda72f14e06156acb4f2327274d1a6d3c6b4ad37"

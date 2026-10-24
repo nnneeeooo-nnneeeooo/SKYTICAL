@@ -60,7 +60,7 @@ def valid_row(article_id="art-1", **changes):
 
 
 class FakeProvider:
-    model = "gpt-6-luna"
+    model = "gpt-6"
 
     def __init__(self, replies):
         self.replies = list(replies)

@@ -493,7 +493,7 @@ sales, concept mockups, overseas passenger rerouting/bus transfers, regional
 counter-drone legal powers and seasonal route/schedule changes) use free-quota
 Gemini/NVIDIA or explicit OpenRouter
 `:free` routes only. Ordinary news is also free-only. Taiwan relevance can
-raise ordering but does not authorize paid calls. Luna/subscription/other paid
+raise ordering but does not authorize paid calls. Fallback/subscription/other paid
 fallbacks are allowed only for explicit critical safety, major operational
 interruptions or achieved full type/commercial-passenger approvals. Persisted
 `mustReport`/`editorialPriority` flags cannot authorize spend.
@@ -502,7 +502,7 @@ The retry scheduler used by both dedupe and write reserves an early slot for
 the oldest eligible niche story and caps niche work at two groups per run.
 The existing two-retry cap, 2/6/24-hour backoff and freshness window remain.
 When free routes fail or are unavailable, keep the source unseen and queued;
-never age a story into paid eligibility. Free-only drafts reserve no Luna time.
+never age a story into paid eligibility. Free-only drafts reserve no Fallback time.
 All normal evidence, refusal and publication gates still apply. Routine updates
 prefer a concise brief; headline/summary narration cannot pad thin evidence.
 Recent-run telemetry records `editorialTier`, `routeReason` and
