@@ -553,7 +553,7 @@ EDITORIAL_POLICY = {
                 "提出更正時，請附上文章網址、需要修正的段落、建議內容及可驗證來源。",
             ]},
             {"title": "聯絡方式", "body": [
-                "目前公開聯絡與更正管道為 SKYTICAL 的 GitHub Issues。請勿在公開表單提交個人資料、訂位紀錄、證件、付款資料或其他敏感內容。",
+                "如需聯絡 SKYTICAL 或提出內容更正，請寄信至 kass09221477@gmail.com。請勿在信件中提供訂位紀錄、證件、付款資料或其他敏感內容。",
             ]},
         ],
         "contactLabel": "提出內容更正或聯絡 SKYTICAL",
@@ -577,7 +577,7 @@ EDITORIAL_POLICY = {
                 "A correction request should include the article URL, the passage at issue, the proposed correction and a verifiable source.",
             ]},
             {"title": "Contact", "body": [
-                "SKYTICAL currently accepts public contact and correction requests through GitHub Issues. Do not submit personal information, booking records, identity documents, payment details or other sensitive material in a public issue.",
+                "To contact SKYTICAL or request a correction, email kass09221477@gmail.com. Do not include booking records, identity documents, payment details or other sensitive material in your email.",
             ]},
         ],
         "contactLabel": "Request a correction or contact SKYTICAL",
@@ -4417,8 +4417,7 @@ def main() -> int:
             (policy["title"], "editorial-policy/"),
         ])
         ctx.update(policy=policy,
-                   contact_url=("https://github.com/nnneeeooo-nnneeeooo/"
-                                "SKYTICAL/issues/new"))
+                   contact_url="mailto:kass09221477@gmail.com")
         render(env, "editorial-policy.html",
                rel_path(lang, "editorial-policy/index.html"), ctx)
         pages += 1
