@@ -2256,7 +2256,7 @@ def prep_flashes(raw, known_ids):
             # A hidden/archived article must not leave an orphan ticker item.
             continue
         out.append({
-            "time": clock_12(dt.astimezone(TPE)),
+            "time": _honest_time_label(dt, False),
             "hot": bool(f.get("hot")),
             "pinned": bool(f.get("pinned")),
             "zh": zh, "en": en,
