@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 import build  # noqa: E402
+from text_spacing import compact_text
 
 
 def _json_ld(html: str) -> list[dict]:
@@ -142,7 +143,7 @@ def main() -> None:
     assert '<meta property="og:image:height" content="630">' in home
     assert '<meta property="og:image:type" content="image/png">' in home
     assert '<link rel="alternate" hreflang="zh-Hant-TW"' in home
-    assert "SKYTICAL 航空新聞｜臺灣與全球即時航空快訊" in home
+    assert "SKYTICAL航空新聞｜臺灣與全球即時航空快訊" in home
     assert "可追溯來源" in home
     assert "設計原型" not in home and "示意樣本" not in home
     assert "即時航班雷達" in home
@@ -158,7 +159,7 @@ def main() -> None:
                     "index.html").read_text(encoding="utf-8")
         assert 'rel="prev" href="https://skytical.tech/news/"' in page_two
         assert 'rel="next" href="https://skytical.tech/news/page/3/"' in page_two
-        assert "第 2 / " in page_two
+        assert "第2 / " in page_two
         assert page_two.count('class="feed-row"') <= build.NEWS_PAGE_SIZE
     if expected_en_pages > 1:
         en_page_two = (ROOT / "site" / "en" / "news" / "page" / "2" /
@@ -193,7 +194,7 @@ def main() -> None:
     assert '<meta property="article:author" content="SKYTICAL">' in article
     assert f'<time datetime="{article_schema["datePublished"]}"' in article
     assert "發布：" in article and "來源時間：" in article
-    assert "SKYTICAL 編輯系統" in article
+    assert "SKYTICAL編輯系統" in article
     pictured_article = next(
         path.read_text(encoding="utf-8") for path in article_paths
         if "<figure" in path.read_text(encoding="utf-8")
@@ -281,7 +282,8 @@ def main() -> None:
             encoding="utf-8"))[lang]
         for section, expected in zip(soup.select(".team-chapter"),
                                      team_config["sections"]):
-            assert [p.get_text() for p in section.select("p")] == expected["body"]
+            assert [p.get_text() for p in section.select("p")] == [
+                compact_text(text) for text in expected["body"]]
         assert "/assets/team-neo.jpg?v=" in team
         nav = re.search(r'<nav class="site-nav".*?</nav>', team,
                         flags=re.DOTALL).group(0)

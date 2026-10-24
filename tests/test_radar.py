@@ -265,12 +265,12 @@ def main() -> None:
     assert "if: needs.build.outputs.should_deploy == 'true'" in radar_workflow
 
     assert any(
-        "本文由自動化系統彙整生成，內容以原始來源為準 • "
+        "本文由自動化系統彙整生成，內容以原始來源為準• "
         "Nemotron 3 Super" in page
         for page in zh_articles
     )
     assert any(
-        "本文由自動化系統彙整生成，內容以原始來源為準 • "
+        "本文由自動化系統彙整生成，內容以原始來源為準• "
         "Nemotron 3 Ultra" in page
         for page in zh_articles
     )
@@ -279,8 +279,8 @@ def main() -> None:
         "prevail • Nemotron 3 Super" in page
         for page in en_articles
     )
-    assert not any("為準。 • " in page for page in zh_articles)
-    assert all("AI 撰稿模型" not in page for page in zh_articles)
+    assert not any("為準。• " in page for page in zh_articles)
+    assert all("AI撰稿模型" not in page for page in zh_articles)
     assert all("Drafted by" not in page for page in en_articles)
     assert all("model-mark" not in page for page in zh_articles + en_articles)
     print("test_radar: OK")
