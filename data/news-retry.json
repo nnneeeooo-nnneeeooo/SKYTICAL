@@ -1884,12 +1884,12 @@
         "https://www.aerotime.aero/articles/gulfstream-g400-cabin-flight-testing-nbaa-2026"
       ],
       "contentFailures": 1,
-      "serviceFailures": 3,
+      "serviceFailures": 4,
       "history": [],
-      "updatedUtc": "2026-10-24T09:48Z",
-      "failureClass": "content_validation",
+      "updatedUtc": "2026-10-24T13:26Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-24T11:48Z",
+      "nextRetryUtc": "2026-10-25T13:26Z",
       "title": "Gulfstream adds first fully outfitted G400 to flight-test program"
     },
     "b1b838aca31892e0b3ed4e6a": {
@@ -3089,7 +3089,7 @@
         "https://www.reuters.com/business/aerospace-defense/allegiant-exercises-options-six-boeing-737-max-jets-worth-over-720-million-2026-10-23"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "status": "waiting",
       "history": [
         {
@@ -3111,8 +3111,8 @@
           "updatedUtc": "2026-10-24T09:48Z"
         }
       ],
-      "updatedUtc": "2026-10-24T11:26Z",
-      "nextRetryUtc": "2026-10-24T13:26Z",
+      "updatedUtc": "2026-10-24T13:26Z",
+      "nextRetryUtc": "2026-10-24T19:26Z",
       "failureClass": "provider_failure",
       "title": "FAA orders checks on nearly 2,000 Boeing 737s after pitch oscillation events"
     },
@@ -3120,19 +3120,64 @@
       "sourceUrls": [
         "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FDockets%2FAviation%2FNYC07MA162%2F392074.pdf",
         "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FEvents%2Fsymp_air_cargo%2Fpresentations%2F4.1_IPA.pdf",
+        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FO_n_O%2Fdocs%2FAVIATION%2F3573.PDF",
         "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief.aspx%3Fev%25255Fid%3D12002%26key%3D0",
         "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FRecs%2Fletters%2F2002%2FM02_25_28.pdf",
         "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2Falj%2FO_n_O%2Fdocs%2FAVIATION%2F4471.pdf",
         "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2Finvestigations%2FAccidentReports%2FPages%2FRAR1001.aspx"
       ],
       "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-10-24T11:30Z"
+        }
+      ],
+      "updatedUtc": "2026-10-24T13:26Z",
+      "nextRetryUtc": null
+    },
+    "44685e15dc6ea147b338bbda": {
+      "sourceUrls": [
+        "https://simpleflying.com/sr-71-blackbird-pilot-preflight-mission-routine"
+      ],
+      "contentFailures": 0,
       "serviceFailures": 1,
       "history": [],
-      "updatedUtc": "2026-10-24T11:30Z",
+      "updatedUtc": "2026-10-24T13:26Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-24T13:30Z",
-      "title": "- NTSB (.gov)"
+      "nextRetryUtc": "2026-10-24T15:26Z",
+      "title": "What SR-71 Blackbird Pilots Had To Do Before Missions That Most Other Pilots In History Have Never Done"
+    },
+    "8e81ef77e72063584d95fafb": {
+      "sourceUrls": [
+        "https://simpleflying.com/50-seat-jet-first-class-cabin-united-airlines-using-rebuild-newark-hub"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-10-24T13:26Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-24T15:26Z",
+      "title": "The 50-Seat Jet With A First Class Cabin United Airlines Is Using To Rebuild Its Newark Hub Feed"
+    },
+    "48277c4642d6d85160844897": {
+      "sourceUrls": [
+        "https://www.reuters.com/business/aerospace-defense/russia-says-drone-attack-damages-togliatti-facilities-ukraine-says-petrochemical-2026-10-24"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-10-24T13:26Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-24T15:26Z",
+      "title": "Russia says drone attack damages Togliatti facilities, Ukraine says petrochemical plant hit"
     }
   }
 }
