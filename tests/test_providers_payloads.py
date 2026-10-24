@@ -177,7 +177,6 @@ def test_model_priority_defaults():
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
         "wechat:Deepseek-v4-flash",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-        "nvidia:nvidia/nemotron-3-super-120b-a12b",
         "openai:gpt-6",
     )
     check(AUTOMATIC_MODEL_ORDER == active

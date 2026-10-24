@@ -1,0 +1,45 @@
+name: free-model-validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/free-model-validation.yml'
+      - 'pipeline/providers.py'
+      - 'pipeline/free_provider_probe.py'
+      - 'config/free_provider_probe.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: free-model-validation-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Validate free routes against the same public source
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,nvidia:nvidia/nemotron-3-super-120b-a12b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free
+          AVWIRE_DATA_DIR: ${{ runner.temp }}/free-model-validation
+          PYTHONUNBUFFERED: '1'
+        run: python pipeline/free_provider_probe.py --force
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: free-model-validation
+          path: ${{ runner.temp }}/free-model-validation/provider-routes.json
+          retention-days: 7
