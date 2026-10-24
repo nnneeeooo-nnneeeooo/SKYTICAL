@@ -525,7 +525,7 @@
   }
 
   function validCustomModel(value) {
-    return /^(gemini|nvidia|openrouter):[A-Za-z0-9._/+:-]{2,180}$/
+    return /^(gemini|nvidia|openrouter|groq|cloudflare):[A-Za-z0-9@._/+:-]{2,180}$/
       .test(value);
   }
 
@@ -538,7 +538,7 @@
       const customModel = els["custom-model"].value.trim();
       if (!validCustomModel(customModel)) {
         throw new Error(
-          "自訂模型格式須為 gemini:模型、nvidia:模型或 openrouter:模型");
+          "自訂模型格式須為 gemini:模型、nvidia:模型、openrouter:模型、groq:模型或 cloudflare:模型");
       }
       return {model: "custom", customModel};
     }
