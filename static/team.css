@@ -12,7 +12,7 @@
 .team-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); grid-template-areas: "portrait intro" "portrait contact"; column-gap: clamp(32px, 6vw, 80px); row-gap: 36px; align-items: center; }
 .team-introduction { grid-area: intro; min-width: 0; align-self: end; padding-top: 20px; }
 .team-introduction h2 { display: flex; align-items: center; gap: 16px; margin: 0 0 24px; font-size: clamp(88px, 9vw, 120px); font-weight: 800; line-height: 1; letter-spacing: -.065em; }
-.team-name-logo { display: block; width: .57em; height: .57em; flex: 0 0 auto; object-fit: contain; }
+.team-name-logo { display: block; width: .9em; height: .9em; flex: 0 0 auto; object-fit: contain; }
 .team-name-logo--pixel { display: none; }
 [data-theme="8bit"] .team-name-logo--classic { display: none; }
 [data-theme="8bit"] .team-name-logo--pixel { display: block; image-rendering: pixelated; }
