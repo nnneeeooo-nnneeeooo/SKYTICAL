@@ -241,6 +241,11 @@ Rare-aircraft monitor state, committed only when changed:
 
 Most recent first, max 10 kept:
 
+Public flash and ticker labels use Taipei time for today's entries and
+`MM/DD` for older entries, matching the news feed's date policy. The second
+marquee pass is a visual duplicate only: it is hidden from assistive
+technology and its links are excluded from keyboard navigation.
+
 ```jsonc
 [ {"timeUtc": "2026-07-26T05:47Z", "hot": true, "pinned": true,
    "zh": "...", "en": "...",

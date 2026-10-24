@@ -2,8 +2,12 @@
 import json
 import sys
 import tempfile
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
+
+from bs4 import BeautifulSoup
+from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pipeline"))
 import build
@@ -52,6 +56,45 @@ def test_news_chronology():
     assert build.prep_article(revised)["news_dt"] == collected[1]["news_dt"]
 
 
+def test_flash_dates_and_marquee_accessibility():
+    # Taipei has crossed midnight while UTC is still on the previous day.
+    now = datetime(2026, 10, 24, 16, 30, tzinfo=timezone.utc)
+    rows = [
+        {"timeUtc": "2026-10-24T16:15Z", "articleId": "today",
+         "zh": "今日快訊", "en": "Today's flash", "hot": True},
+        {"timeUtc": "2026-10-24T15:59Z", "articleId": "yesterday",
+         "zh": "昨日快訊", "en": "Yesterday's flash"},
+        {"timeUtc": "2026-10-22T10:54Z", "articleId": "older",
+         "zh": "舊快訊", "en": "Older flash"},
+    ]
+    with patch.object(build, "now_utc", return_value=now):
+        flashes = build.prep_flashes(rows, {"today", "yesterday", "older"})
+    assert [f["time"] for f in flashes] == ["12:15 AM", "10/24", "10/22"]
+    env = Environment(loader=FileSystemLoader(build.TEMPLATES_DIR),
+                      undefined=StrictUndefined, autoescape=True)
+    for lang in ("zh", "en"):
+        ticker = build.flash_view(flashes, lang, {"today"})
+        assert ticker[0]["hot"] and ticker[0]["priority"]
+        assert ticker[1]["url"] == build.page_url(lang, "news/yesterday/")
+        context = build.base_ctx(
+            lang, "home", "", title="Test", description="Test", ticker=ticker,
+            build={"date": "2026-10-25", "utc_hm": "4:30 PM",
+                   "tpe_hm": "12:30 AM", "stamp": "2026-10-24 4:30 PM"})
+        soup = BeautifulSoup(env.get_template("base.html").render(**context),
+                             "html.parser")
+        original, duplicate = soup.select(".ticker-pass")
+        assert not original.has_attr("aria-hidden")
+        assert duplicate["aria-hidden"] == "true"
+        assert len(original.select("a")) == len(duplicate.select("a")) == 3
+        assert all(a.get("tabindex") is None for a in original.select("a"))
+        assert all(a.get("tabindex") == "-1" for a in duplicate.select("a"))
+        assert [a["href"] for a in original.select("a")] == [
+            a["href"] for a in duplicate.select("a")]
+        assert [t.text for t in original.select(".ticker-time")] == [
+            "12:15 AM", "10/24", "10/22"]
+
+
 if __name__ == "__main__":
     test_news_chronology()
-    print("PASS news chronology, source-time fallback and search timestamps")
+    test_flash_dates_and_marquee_accessibility()
+    print("PASS news chronology, flash dates and marquee accessibility")

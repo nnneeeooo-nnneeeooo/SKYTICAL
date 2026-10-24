@@ -158,10 +158,10 @@ gtag('config', '{{ ga4_measurement_id }}', {
     <div class="ticker-window">
       <div class="marquee-track">
         {% for pass in range(2) %}
-        <span class="ticker-pass">
+        <span class="ticker-pass"{% if pass == 1 %} aria-hidden="true"{% endif %}>
           {%- for it in ticker_items -%}
           {%- if it.url -%}
-          <a class="ticker-item" href="{{ it.url }}"{% if it.external %} target="_blank" rel="noopener"{% endif %}><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>{% if it.priority|default(false) %}<span class="ticker-pin">{{ t.priorityLabel }}</span>{% endif %}&#8195;{{ it.text }}<span class="ticker-go">↗</span></a>
+          <a class="ticker-item" href="{{ it.url }}"{% if pass == 1 %} tabindex="-1"{% endif %}{% if it.external %} target="_blank" rel="noopener"{% endif %}><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>{% if it.priority|default(false) %}<span class="ticker-pin">{{ t.priorityLabel }}</span>{% endif %}&#8195;{{ it.text }}<span class="ticker-go">↗</span></a>
           {%- else -%}
           <span class="ticker-item"><b class="ticker-time{% if it.hot %} hot{% endif %}">{{ it.time }}</b>{% if it.priority|default(false) %}<span class="ticker-pin">{{ t.priorityLabel }}</span>{% endif %}&#8195;{{ it.text }}</span>
           {%- endif -%}
