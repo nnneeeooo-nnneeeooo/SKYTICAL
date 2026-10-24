@@ -2,18 +2,18 @@
   "schemaVersion": 1,
   "routes": {
     "gemini:gemini-3.6-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-10-24T17:30Z",
-      "checkedUtc": "2026-10-24T11:30Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "status": "verified",
+      "untilUtc": "2026-10-25T17:36Z",
+      "checkedUtc": "2026-10-24T17:36Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 2,
-      "schemaMode": null
+      "schemaMode": "prompt"
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-24T17:30Z",
-      "checkedUtc": "2026-10-24T11:30Z",
+      "checkedUtc": "2026-10-24T17:36Z",
+      "untilUtc": "2026-10-24T23:36Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 2,
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-10-24T13:26Z",
       "untilUtc": "2026-10-25T13:26Z",
+      "checkedUtc": "2026-10-24T13:26Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 2,
