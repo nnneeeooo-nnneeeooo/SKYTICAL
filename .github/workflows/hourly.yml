@@ -15,6 +15,8 @@ on:
       - "pipeline/providers.py"
       - "pipeline/model_config.py"
       - "pipeline/provider_health.py"
+      - "pipeline/free_provider_probe.py"
+      - "config/free_provider_probe.json"
       - "pipeline/article_schema.py"
       - "pipeline/build.py"
       - "pipeline/common.py"
@@ -72,6 +74,7 @@ jobs:
           python tests/test_dedupe.py
           python tests/test_write_offline.py
           python tests/test_provider_health.py
+          python tests/test_free_provider_probe.py
           python tests/test_build_resilience.py
           python tests/test_home_sidebar.py
           python tests/test_search.py
@@ -142,7 +145,7 @@ jobs:
         # preceding run's data commit. Keep code pinned, refresh budgets only.
         run: |
           git fetch origin "${GITHUB_REF_NAME}"
-          for path in data/news-retry.json data/provider-health.json; do
+          for path in data/news-retry.json data/provider-health.json data/provider-routes.json; do
             if git cat-file -e "origin/${GITHUB_REF_NAME}:$path" 2>/dev/null; then
               git checkout "origin/${GITHUB_REF_NAME}" -- "$path"
             fi
@@ -167,7 +170,7 @@ jobs:
           AVWIRE_GEMINI_MODEL: ${{ vars.AVWIRE_GEMINI_MODEL }}
           AVWIRE_NVIDIA_MODEL: ${{ vars.AVWIRE_NVIDIA_MODEL }}
           AVWIRE_WECHAT_MODEL: ${{ vars.AVWIRE_WECHAT_MODEL }}
-          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,nvidia:nvidia/nemotron-3-super-120b-a12b,openai:gpt-6-luna
+          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,openai:gpt-6-luna
           # freshness window (hours); code default 120, validated 24-336
           NEWS_MAX_AGE_HOURS: ${{ vars.NEWS_MAX_AGE_HOURS }}
           PYTHONUNBUFFERED: '1'
