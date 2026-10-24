@@ -157,6 +157,7 @@ jobs:
       - name: Run pipeline
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
+          AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           # one NIM key serves every model on the platform; the long name is

@@ -85,7 +85,7 @@ def test_public_model_search_index():
         article["writer_model"] = build.writer_model(writer, supplied)
         item = build.search_index_item(article, aliases)
         assert item["models"] == expected
-        assert "final_paid" not in json.dumps(item, ensure_ascii=False).lower()
+        assert "fallback" not in json.dumps(item, ensure_ascii=False).lower()
         assert "openai:" not in json.dumps(item, ensure_ascii=False).lower()
 
 

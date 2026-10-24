@@ -190,7 +190,7 @@ def write_briefing(briefing: dict, articles: list[dict], old: dict | None = None
         return False
     evidence = {item["article_id"]: _evidence(lookup[item["article_id"]]) for item in items}
     digest = hashlib.sha256(json.dumps(evidence, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
-    if old and old.get("writer_input_digest") == digest and old.get("generation_mode") == "final_paid_written":
+    if old and old.get("writer_input_digest") == digest and old.get("generation_mode") == "model_written":
         cached = {item.get("article_id"): item for section in (old.get("sections") or {}).values() for item in section}
         cached_headlines = {key: normalize_zh_headline(value.get("headline"))
                             for key, value in cached.items()}
@@ -229,7 +229,7 @@ def write_briefing(briefing: dict, articles: list[dict], old: dict | None = None
                                                    ("summary_en", "summary_en"), ("keyword_zh", "keyword_zh"), ("keyword_en", "keyword_en")):
                         item[target_key] = clean_copy(row[source_key])
                     item["writer_evidence"] = row["evidence"]
-                briefing["generation_mode"] = "final_paid_written"
+                briefing["generation_mode"] = "model_written"
                 briefing["generation_model"] = {"provider": "openai", "model": provider.model, "reasoning_effort": os.environ.get("BRIEFING_WRITER_EFFORT") or "medium"}
                 briefing["writer_input_digest"] = digest
                 return True

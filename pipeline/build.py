@@ -3470,6 +3470,7 @@ def commit_records_view(raw, expected_shas) -> dict:
             })
         records[sha] = {
             "sha": sha,
+            "redacted": item.get("redacted") is True,
             "message": item["message"],
             "author": {
                 "login": str(item["author"].get("login") or ""),

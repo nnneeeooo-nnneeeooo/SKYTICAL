@@ -312,6 +312,7 @@ if usage:
 os.environ["BRIEFING_GROUNDED_PROVIDER"] = "openai"
 os.environ["OPENAI_API_KEY"] = "offline-test-key"
 os.environ["BRIEFING_GROUNDED_MODEL"] = "gpt-6"
+os.environ["AVWIRE_OPENAI_API_MODEL"] = "test-private-model"
 data, shim = grounded.call_grounded(window)
 openai_items, openai_warnings = grounded.sanitize_items(
     data, [], {}, NOW, window)
@@ -323,7 +324,7 @@ check("OpenAI result maps only retrieved source URLs into citation chunks",
               for source in accepted[0]["sources"]))
 check("OpenAI call selects Fallback Responses web_search with bounded medium reasoning",
       captured_openai["url"] == "https://api.openai.com/v1/responses"
-      and captured_openai["payload"]["model"] == "gpt-6"
+      and captured_openai["payload"]["model"] == "test-private-model"
       and captured_openai["payload"]["reasoning"] == {"effort": "medium"}
       and captured_openai["payload"]["tools"][0]["type"] == "web_search"
       and captured_openai["payload"]["max_tool_calls"] == 4)

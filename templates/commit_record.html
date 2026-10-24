@@ -5,6 +5,9 @@
     <span class="card-kicker">{{ t.changeKicker }}</span>
     <h1>{{ t.commitRecordTitle }}</h1>
     <p class="commit-record-message">{{ commit_record.message }}</p>
+    {% if commit_record.redacted %}
+    <p>{{ '此快照已隱去內部設定名稱，並非原始 diff 的逐字副本。' if lang == 'zh' else 'Internal configuration names have been redacted from this snapshot; it is not a verbatim copy of the original diff.' }}</p>
+    {% endif %}
 
     <div class="commit-record-actions">
       <a class="btn btn-secondary" href="{{ raw_record_url }}" download>{{ t.commitRecordDownload }} ↓</a>

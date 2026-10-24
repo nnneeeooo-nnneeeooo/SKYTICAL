@@ -211,7 +211,7 @@ def test_model_priority_defaults():
     print("test_model_priority_defaults: done")
 
 
-def test_final_paid_last_with_environment_override():
+def test_fallback_last_with_environment_override():
     """Custom workflow order cannot accidentally promote GPT 6."""
     keys = ("AVWIRE_PROVIDER_ORDER", "OPENAI_API_KEY", "GEMINI_API_KEY")
     saved = {key: os.environ.get(key) for key in keys}
@@ -229,7 +229,7 @@ def test_final_paid_last_with_environment_override():
                 os.environ[key] = value
     check(labels == ["gemini:gemini-3.6-flash", "openai:gpt-6"],
           "environment overrides keep Fallback last and deduplicate it")
-    print("test_final_paid_last_with_environment_override: done")
+    print("test_fallback_last_with_environment_override: done")
 
 
 def test_wechat_protocol_and_payloads():
@@ -565,13 +565,14 @@ def test_openai_responses_api():
     saved = {
         key: os.environ.get(key)
         for key in ("OPENAI_API_KEY", "AVWIRE_PROVIDER_ORDER",
-                    "AVWIRE_OPENAI_MODEL")
+                    "AVWIRE_OPENAI_MODEL", "AVWIRE_OPENAI_API_MODEL")
     }
     os.environ.pop("OPENAI_API_KEY", None)
     provider = providers.OpenAIProvider()
     check(not provider.available(), "OpenAI is unavailable without its key")
     os.environ["OPENAI_API_KEY"] = "test-openai-key-not-real"
     os.environ["AVWIRE_PROVIDER_ORDER"] = "openai:gpt-6"
+    os.environ["AVWIRE_OPENAI_API_MODEL"] = "test-private-model"
     try:
         provider = providers.OpenAIProvider()
         captured = []
@@ -594,7 +595,7 @@ def test_openai_responses_api():
         check(provider.available() and result == {"ok": 1},
               "OpenAI Responses draft succeeds with configured key")
         check(url == "https://api.openai.com/v1/responses"
-              and payload["model"] == "gpt-6",
+              and payload["model"] == "test-private-model",
               "GPT 6 uses the direct OpenAI Responses endpoint")
         check(payload["reasoning"] == {"effort": "medium"}
               and provider.reasoning_effective == "reasoning.effort=medium"
@@ -634,6 +635,28 @@ def test_openai_responses_api():
             "gpt-6", reasoning_tier="deep")
         check(deep._effort(repair=False) == "max",
               "manual deep reasoning maps to OpenAI MAX")
+        check(provider.model == "gpt-6" and provider.label == "openai:gpt-6"
+              and "test-private-model" not in json.dumps(provider.__dict__),
+              "private wire model never enters provenance or telemetry")
+        os.environ.pop("AVWIRE_OPENAI_API_MODEL", None)
+        before = len(captured)
+        try:
+            with_post(fake_post, lambda: provider.draft("sys", "user", SCHEMA))
+            check(False, "missing private mapping must fail before HTTP")
+        except providers.ProviderError:
+            check(len(captured) == before,
+                  "missing private mapping makes no invalid API request")
+        check(provider.model == "gpt-6" and provider.label == "openai:gpt-6"
+              and "test-private-model" not in json.dumps(provider.__dict__),
+              "private wire model never enters provenance or telemetry")
+        os.environ.pop("AVWIRE_OPENAI_API_MODEL", None)
+        before = len(captured)
+        try:
+            with_post(fake_post, lambda: provider.draft("sys", "user", SCHEMA))
+            check(False, "missing private mapping must fail before HTTP")
+        except providers.ProviderError:
+            check(len(captured) == before,
+                  "missing private mapping makes no invalid API request")
     finally:
         for key, value in saved.items():
             if value is None:
@@ -819,7 +842,7 @@ def test_gemini_format_repair():
 def main():
     tests = [
         test_model_priority_defaults,
-        test_final_paid_last_with_environment_override,
+        test_fallback_last_with_environment_override,
         test_wechat_protocol_and_payloads,
         test_opencode_protocols_and_payloads,
         test_openai_responses_api,

@@ -1533,31 +1533,31 @@ def _provider_group_budget(provider) -> float:
     return budget
 
 
-def _is_final_paid_provider(provider) -> bool:
+def _is_fallback_provider(provider) -> bool:
     return (getattr(provider, "name", None) == "openai"
             and getattr(provider, "model", None) == "gpt-6")
 
 
-def _final_paid_reserve_seconds(providers) -> float:
+def _fallback_reserve_seconds(providers) -> float:
     """Reserve one initial draft and one independent repair for final Fallback."""
     return sum(2 * _provider_attempt_allowance(provider)
                + 2 * PROVIDER_ROUTING_OVERHEAD_SECONDS
-               for provider in providers if _is_final_paid_provider(provider))
+               for provider in providers if _is_fallback_provider(provider))
 
 
 def _provider_chain_budget(providers) -> float:
     """Leave room for each preferred route to time out before GPT 6."""
     providers = tuple(providers)
-    final_paid_reserve = _final_paid_reserve_seconds(providers)
-    if final_paid_reserve:
+    fallback_reserve = _fallback_reserve_seconds(providers)
+    if fallback_reserve:
         preferred = [provider for provider in providers
-                     if not _is_final_paid_provider(provider)]
+                     if not _is_fallback_provider(provider)]
         # Existing primary/shared fallback repairs remain bounded, while
         # neither can spend Fallback's own repair time.
         preferred_budget = sum(_preferred_attempt_cap(provider) for provider in preferred)
         if preferred:
             preferred_budget += 2 * max(_preferred_attempt_cap(p) for p in preferred)
-        return final_paid_reserve + preferred_budget + (
+        return fallback_reserve + preferred_budget + (
             len(preferred) + 2) * PROVIDER_ROUTING_OVERHEAD_SECONDS
     budget = max(
         (_provider_group_budget(provider) for provider in providers),
@@ -2950,7 +2950,7 @@ def main() -> None:
     else:
         print("write: provider order: "
               + " -> ".join(p.label for p in providers))
-        if _final_paid_reserve_seconds(providers):
+        if _fallback_reserve_seconds(providers):
             print("write: Fallback final fallback policy: preferred calls capped "
                   f"at {PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK}s for paid routes; free routes keep their model budget; independent "
                   "draft/repair time reserved")
@@ -3064,7 +3064,7 @@ def main() -> None:
                 continue
             if drafted >= MAX_GROUPS_PER_RUN:
                 break  # LLM budget for this run is spent; the rest waits
-            if draft_deadline - time.monotonic() < _final_paid_reserve_seconds(story_providers):
+            if draft_deadline - time.monotonic() < _fallback_reserve_seconds(story_providers):
                 print("write: insufficient run time for Fallback draft and repair; "
                       "retaining remaining groups for retry")
                 run_trace.finish("retry_pending", "retry_pending")
@@ -3090,13 +3090,13 @@ def main() -> None:
                     # Removed mid-group by a platform-level auth/quota
                     # death earlier in this same iteration.
                     continue
-                is_final_paid = _is_final_paid_provider(provider)
-                final_paid_reserve = _final_paid_reserve_seconds(
+                is_fallback = _is_fallback_provider(provider)
+                fallback_reserve = _fallback_reserve_seconds(
                     [p for p in story_providers if p in alive])
                 provider_deadline = group_deadline
                 attempt_cap = None
-                if final_paid_reserve and not is_final_paid:
-                    provider_deadline -= final_paid_reserve
+                if fallback_reserve and not is_fallback:
+                    provider_deadline -= fallback_reserve
                     attempt_cap = _preferred_attempt_cap(provider)
                     if time.monotonic() >= provider_deadline:
                         print(f"write: {provider.label} skipped on group "
@@ -3104,7 +3104,7 @@ def main() -> None:
                         continue
                 # Fallback has its own repair, independent of the shared repair
                 # for preferred fallbacks. Transport failures still fail over.
-                tries = 2 if (is_final_paid or provider is story_providers[0]
+                tries = 2 if (is_fallback or provider is story_providers[0]
                               or not fallback_repair_used) else 1
                 try:
                     candidate, facts = _validated_draft(provider, group,
@@ -3114,7 +3114,7 @@ def main() -> None:
                                                         max_attempt_seconds=attempt_cap)
                 except DraftInvalid:
                     content_failed = True
-                    if provider is not story_providers[0] and not is_final_paid:
+                    if provider is not story_providers[0] and not is_fallback:
                         fallback_repair_used = True
                     _record_provider_response(
                         provider, transient_failure_counts)

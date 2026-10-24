@@ -1528,6 +1528,17 @@ class OpenAIProvider(OpenCodeProvider):
     def available(self) -> bool:
         return bool(os.environ.get("OPENAI_API_KEY"))
 
+    def _post_json(self, url: str, payload: dict, headers: dict,
+                   repair: bool):
+        # Resolve the public model alias only at the HTTP boundary. Logs,
+        # article provenance and usage records retain the public identifier.
+        wire_model = os.environ.get("AVWIRE_OPENAI_API_MODEL", "").strip()
+        if self.model == OPENAI_DEFAULT_MODEL:
+            if not wire_model:
+                raise ProviderError("private OpenAI model mapping is not configured")
+            payload = {**payload, "model": wire_model}
+        return super()._post_json(url, payload, headers, repair)
+
     def _responses_endpoint(self) -> str:
         return "https://api.openai.com/v1/responses"
 
@@ -1590,7 +1601,7 @@ _REGISTRY = {
 }
 
 
-def _is_final_paid_route(token: str) -> bool:
+def _is_fallback_route(token: str) -> bool:
     """Recognize an OpenAI route that resolves to GPT 6."""
     name, _, model = token.partition(":")
     if name.strip().lower() != "openai":
@@ -1613,8 +1624,8 @@ def build_providers() -> list:
     tokens = order.split(",")
     # Environment overrides (for example the Copilot workflow variable) may
     # still list Fallback early. Keep it terminal even when configured twice.
-    tokens = ([token for token in tokens if not _is_final_paid_route(token)]
-              + [token for token in tokens if _is_final_paid_route(token)])
+    tokens = ([token for token in tokens if not _is_fallback_route(token)]
+              + [token for token in tokens if _is_fallback_route(token)])
     for token in tokens:
         name, _, model = token.strip().partition(":")
         key = name.strip().lower()

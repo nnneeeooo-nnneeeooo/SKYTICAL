@@ -176,11 +176,16 @@ def call_openai_grounded(window):
     if not key:
         return None, None
     model = os.environ.get("BRIEFING_GROUNDED_MODEL") or "gpt-6"
+    wire_model = model
+    if model == "gpt-6":
+        wire_model = os.environ.get("AVWIRE_OPENAI_API_MODEL", "").strip()
+        if not wire_model:
+            raise RuntimeError("private OpenAI model mapping is not configured")
     effort = os.environ.get("BRIEFING_GROUNDED_EFFORT") or "medium"
     if effort not in ("low", "medium", "high"):
         effort = "medium"
     response = requests.post("https://api.openai.com/v1/responses", json={
-        "model": model, "reasoning": {"effort": effort},
+        "model": wire_model, "reasoning": {"effort": effort},
         "input": [{"role": "system", "content": OPENAI_SEARCH_SYSTEM},
                   {"role": "user", "content": f"窗口：{window.window_start.isoformat()} 至 {window.window_end.isoformat()}（不含終點），僅限來源發布/更新於此窗口的航空新聞。"}],
         "tools": [{"type": "web_search", "search_context_size": "medium"}],
