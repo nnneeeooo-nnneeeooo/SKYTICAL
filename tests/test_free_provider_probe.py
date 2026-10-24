@@ -73,10 +73,10 @@ def main():
     assert providers.WechatProvider.max_attempt_seconds == 60
     import write
     free = providers.GeminiProvider('gemini-3.6-flash')
-    final_paid = providers.OpenAIProvider('gpt-6')
+    fallback = providers.OpenAIProvider('gpt-6')
     assert write._preferred_attempt_cap(free) == 180
     assert write._provider_chain_budget([free]) >= 360
-    assert write._provider_chain_budget([free, final_paid]) >= write._final_paid_reserve_seconds([final_paid])+180
+    assert write._provider_chain_budget([free, fallback]) >= write._fallback_reserve_seconds([fallback])+180
     print('PASS route verification, fixed-source admission, expiry, 400/404 quarantine, secret-safe errors and 180s budgets')
 
 

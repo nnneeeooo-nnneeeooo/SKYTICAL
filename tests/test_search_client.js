@@ -91,7 +91,7 @@ for (const lang of ["zh", "en"]) {
   assert.deepStrictEqual(ids(find("CI GPT6", lang, modelArticles)), ["six"]);
   assert.deepStrictEqual(ids(find("GPT 6.1 Sol missing", lang, modelArticles)), []);
   assert.deepStrictEqual(ids(find("GPT 6.2 Sol", lang, modelArticles)), []);
-  assert.deepStrictEqual(ids(find("GPT 6", lang, modelArticles)), []);
+  assert.deepStrictEqual(ids(find("GPT6 Unknown", lang, modelArticles)), []);
   for (const query of ["DeepSeek", "DeepSeek V4.1 Flash", "DeepSeekV4.1 Flash", "deepseek-v4.1-flash"]) {
     assert.deepStrictEqual(ids(find(query, lang, modelArticles)), ["mixed", "other"]);
   }

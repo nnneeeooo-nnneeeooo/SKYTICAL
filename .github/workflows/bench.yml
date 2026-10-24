@@ -43,6 +43,7 @@ jobs:
       - name: List models available to each key
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
+          AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
@@ -50,7 +51,7 @@ jobs:
         run: |
           if [ -n "$OPENAI_API_KEY" ]; then
             echo "== OpenAI models (GPT 6) =="
-            curl -sf https://api.openai.com/v1/models -H "Authorization: Bearer $OPENAI_API_KEY" | python -c 'import json,sys; [print(m["id"]) for m in json.load(sys.stdin).get("data",[]) if "gpt-6" in m.get("id", "")]' || echo "(model list unavailable)"
+            echo "OpenAI model selection is configured privately."
           fi
           if [ -n "$OPENCODE_API_KEY" ]; then
             echo "== OpenCode Console models =="
@@ -81,6 +82,7 @@ jobs:
       - name: Bench each provider on identical pending groups
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
+          AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}

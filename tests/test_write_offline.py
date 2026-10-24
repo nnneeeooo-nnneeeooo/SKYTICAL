@@ -986,7 +986,7 @@ def test_provider_specific_time_budget():
         [PreferredProvider(), PreferredProvider(), provider])
     check(chain_budget >= 60 + 60 + 90 + 3 *
           write.PROVIDER_ROUTING_OVERHEAD_SECONDS,
-          "group budget leaves room for preferred timeouts and Fallback")
+          "group budget leaves room for preferred timeouts and FinalPaid")
     check(write._provider_chain_budget([PreferredProvider()])
           == write.MAX_DRAFT_SECONDS_PER_GROUP,
           "chains without OpenAI keep the existing group cap")
@@ -1025,7 +1025,7 @@ def test_final_paid_is_used_after_preferred_service_failures():
 
     articles = all_articles()
     check(first.calls == 1 and second.calls == 1 and final_paid.calls == 1,
-          "every preferred route is tried once before the Fallback fallback")
+          "every preferred route is tried once before the FinalPaid fallback")
     check(len(articles) == 1 and articles[0]["writer"] == "openai:fake",
           "GPT 6 fallback writes the article after earlier failures")
     print("test_final_paid_is_used_after_preferred_service_failures: done")
@@ -1035,7 +1035,7 @@ def test_final_paid_is_used_after_preferred_service_failures():
 @patch("write.eligible_providers", lambda group, chain: list(chain))
 @patch("news_retry.news_policy", lambda group: write.news_policy({}))
 def test_final_paid_repairs_after_shared_fallback_repair_is_spent():
-    """A responsive preferred fallback cannot consume Fallback's repair."""
+    """A responsive preferred fallback cannot consume FinalPaid's repair."""
     for valid_repair in (True, False):
         reset_data_dir()
         pending = load(DATA / "pending.json")
@@ -1051,7 +1051,7 @@ def test_final_paid_repairs_after_shared_fallback_repair_is_spent():
         primary = FakeProvider("gemini", [providers.ProviderError("HTTP 503")])
         fallback = FakeProvider("wechat", [bad])
 
-        class Fallback(FakeProvider):
+        class FinalPaid(FakeProvider):
             model = "gpt-6"
             max_attempt_seconds = 90
             group_budget_seconds = 180
@@ -1060,7 +1060,7 @@ def test_final_paid_repairs_after_shared_fallback_repair_is_spent():
                 self.prompts.append(user_prompt)
                 return super().draft(system_prompt, user_prompt, schema)
 
-        final_paid = Fallback("openai", [short, DRAFT_BIZ if valid_repair else fabricated])
+        final_paid = FinalPaid("openai", [short, DRAFT_BIZ if valid_repair else fabricated])
         final_paid.prompts = []
         original = write.build_providers
         write.build_providers = lambda: [primary, fallback, final_paid]
@@ -1069,26 +1069,26 @@ def test_final_paid_repairs_after_shared_fallback_repair_is_spent():
         finally:
             write.build_providers = original
         check(primary.calls == 1 and fallback.calls == 2 and final_paid.calls == 2,
-              "Fallback independently repairs after preferred fallback uses both calls")
+              "FinalPaid independently repairs after preferred fallback uses both calls")
         check("body does not meet" in final_paid.prompts[1],
-              "Fallback repair receives the actual failed body validation")
+              "FinalPaid repair receives the actual failed body validation")
         if valid_repair:
             check(len(all_articles()) == 1
                   and all_articles()[0]["writer"] == "openai:fake",
-                  "a valid Fallback repair publishes the formerly short draft")
+                  "a valid FinalPaid repair publishes the formerly short draft")
         else:
             check(not all_articles() and load(DATA / "pending.json")["groups"],
-                  "fabricated Fallback repair remains unpublished and retryable")
+                  "fabricated FinalPaid repair remains unpublished and retryable")
             check(common.norm_url(group["items"][0]["url"])
                   not in load(DATA / "seen.json")["urls"],
-                  "failed Fallback repair does not consume the source")
+                  "failed FinalPaid repair does not consume the source")
 
 
 # Provider timing/repair mechanics are exercised after cost eligibility.
 @patch("write.eligible_providers", lambda group, chain: list(chain))
 @patch("news_retry.news_policy", lambda group: write.news_policy({}))
 def test_preferred_timeout_preserves_final_paid_and_run_budget():
-    """A clipped run deadline still leaves two full Fallback calls, then stops."""
+    """A clipped run deadline still leaves two full FinalPaid calls, then stops."""
     reset_data_dir()
     pending = load(DATA / "pending.json")
     pending["groups"] = [pending["groups"][1], pending["groups"][0]]
@@ -1127,9 +1127,9 @@ def test_preferred_timeout_preserves_final_paid_and_run_budget():
         (write.build_providers, write.time.monotonic,
          write.draft_timeout, write.MAX_DRAFT_SECONDS_PER_RUN) = original
     check(order == ["gemini", "openai", "openai"],
-          "preferred routes yield to final Fallback when its reserved time is reached")
+          "preferred routes yield to final FinalPaid when its reserved time is reached")
     check(allowances == [30, 90, 90] and clock[0] == 210,
-          "preferred request is capped and Fallback gets two full calls within run cap")
+          "preferred request is capped and FinalPaid gets two full calls within run cap")
     check(len(all_articles()) == 1
           and len(load(DATA / "pending.json")["groups"]) == 1,
           "completed article is saved; next story waits for a full fallback budget")
