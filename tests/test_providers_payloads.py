@@ -168,7 +168,7 @@ def test_model_priority_defaults():
         "openrouter:cohere/north-mini-code:free",
         "openrouter:poolside/laguna-xs-2.1:free",
         "groq:openai/gpt-oss-120b",
-        "cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
         "openai:gpt-6",
     )
     check(providers.MODEL_ORDER == expected,
@@ -180,7 +180,7 @@ def test_model_priority_defaults():
         "wechat:Deepseek-v4-flash",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
         "groq:openai/gpt-oss-120b",
-        "cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
         "openai:gpt-6",
     )
     check(AUTOMATIC_MODEL_ORDER == active

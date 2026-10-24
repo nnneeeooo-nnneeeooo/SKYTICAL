@@ -78,10 +78,23 @@ def main():
     import manual_draft
     with patch.dict(os.environ, creds, clear=True):
         selected = manual_draft._providers_for({
-            'model': 'cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast',
+            'model': 'cloudflare:@cf/qwen/qwen3-30b-a3b-fp8',
             'reasoningTier': 'deep'})
         assert [p.name for p in selected] == ['cloudflare', 'groq']
         assert manual_draft.CUSTOM_MODEL_RE.fullmatch(selected[0].label)
+    import write
+    p = providers.GroqProvider()
+    prompts = []
+    def reject(system, user, schema):
+        prompts.append(user)
+        return {'status': 'reject', 'reason': 'insufficient evidence'}
+    with patch.object(write, 'group_prompt', return_value='SOURCE_TEST'), patch.object(
+            write, 'validate_draft', side_effect=['exact quote required', None]), patch.object(
+            p, 'draft', side_effect=reject):
+        result, facts = write._validated_draft(p, {'id': 'test'}, tries=2)
+    assert result['status'] == 'reject' and facts == [] and len(prompts) == 2
+    assert 'SOURCE_TEST' in prompts[1] and 'exact quote required' in prompts[1]
+    assert 'PREVIOUS DRAFT (untrusted' not in prompts[1]
     assert 'gsk_SECRET'  not in providers.safe_failure_message('failed gsk_SECRET')
     print('PASS hosted providers: credentials, routing, payload, usage, repair, errors, catalog and admission')
 

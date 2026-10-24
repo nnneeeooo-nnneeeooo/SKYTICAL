@@ -959,6 +959,7 @@ class GroqProvider(NvidiaProvider):
     name = "groq"
     default_model = "openai/gpt-oss-120b"
     key_env = "GROQ_API_KEY"
+    include_previous_draft_in_retry = False
 
     def __init__(self, model=None, reasoning_tier=None):
         super().__init__(model or os.environ.get(
@@ -978,7 +979,9 @@ class GroqProvider(NvidiaProvider):
                 "not count. For publish use the full-article requirements "
                 "already specified. Use only source-supported facts; never "
                 "pad or repeat to reach a length. Reject if the source cannot "
-                "support a safe brief. Return final JSON only.")
+                "support a safe brief. Entity values must be exact contiguous "
+                "substrings of their sourceQuote; preserve date range wording "
+                "and punctuation verbatim. Return final JSON only.")
         return super().draft(system_prompt, user_prompt, schema)
 
     def available(self):
@@ -1014,7 +1017,7 @@ class GroqProvider(NvidiaProvider):
 
 class CloudflareProvider(GroqProvider):
     name = "cloudflare"
-    default_model = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+    default_model = "@cf/qwen/qwen3-30b-a3b-fp8"
     key_env = "CLOUDFLARE_API_TOKEN"
 
     def available(self):
