@@ -139,7 +139,7 @@ absent when nothing new that hour)
     {
       "id": "a-20260726-0547-denver737",   // a-YYYYMMDD-HHMM-<slug>
       "publishedUtc": "2026-07-26T05:47Z",
-      "cat": "safety",                     // safety | reg | biz | ops | mil
+      "cat": "safety",                     // safety | reg | biz | ops | mil | feature
       "primarySource": "Reuters",
       "articleFormat": "full",             // full | brief | roundup
       "image": null,                       // og:image URL or null

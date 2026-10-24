@@ -607,7 +607,7 @@ for _manufacturer_source in MANUFACTURER_SOURCE_CATALOG.get("feeds") or []:
     SOURCES[_manufacturer_key] = _manufacturer_source
 
 
-CATEGORIES = ("safety", "reg", "biz", "ops", "mil")
+CATEGORIES = ("safety", "reg", "biz", "ops", "mil", "feature")
 
 # Site-wide subject gate.  A military label does not by itself make a story
 # relevant to an aviation publication: the material must still

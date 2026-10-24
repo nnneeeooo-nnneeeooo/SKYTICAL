@@ -53,7 +53,8 @@ def valid_draft(category: str) -> dict:
 
 
 def main() -> None:
-    assert common.CATEGORIES == ("safety", "reg", "biz", "ops", "mil")
+    assert common.CATEGORIES == ("safety", "reg", "biz", "ops", "mil",
+                                 "feature")
     assert write.DRAFT_SCHEMA["properties"]["cat"]["enum"] \
         == list(common.CATEGORIES)
     assert write.validate_draft(valid_draft("mil")) is None
@@ -64,8 +65,16 @@ def main() -> None:
     assert published["cat"] == "mil"
     assert build.CATS["mil"] == {"zh": "軍事", "en": "Military"}
     assert build.TAGCLS["mil"] == "tag-accent-2"
-    assert build.L["zh"]["cats"][-1] == "軍事"
-    assert build.L["en"]["cats"][-1] == "Military"
+    assert build.L["zh"]["cats"][-2] == "軍事"
+    assert build.L["en"]["cats"][-2] == "Military"
+    assert build.CATS["feature"] == {"zh": "專欄報導", "en": "Feature"}
+    assert "feature" in build.TAGCLS
+    assert build.L["zh"]["cats"][-1] == "專欄報導"
+    assert build.L["en"]["cats"][-1] == "Feature"
+    assert write.validate_draft(valid_draft("feature")) is None
+    feature = build.prep_article(
+        article("A380機翼設計回顧", category="feature"))
+    assert feature is not None and feature["cat"] == "feature"
 
     group = {
         "id": "g-military-test",

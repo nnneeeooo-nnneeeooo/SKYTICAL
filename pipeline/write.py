@@ -581,9 +581,13 @@ OUTPUT RULES:
   never present a secondary event as related to the lead event. Use
   publish_brief and keep the introduction plus event paragraphs within the
   brief length contract; omit unsupported filler.
-- cat is exactly safety, reg, biz, ops or mil. Classify the main new
-  development expressed by the title and summary, not every secondary detail
-  present in the source. Military takes priority only when the main editorial
+- cat is exactly safety, reg, biz, ops, mil or feature. Classify the main
+  new development expressed by the title and summary, not every secondary
+  detail present in the source. Use feature when the article's main purpose
+  is to explain, introduce or look back at a topic (an aircraft, technology,
+  history or how something works), even if it mentions accidents or
+  incidents as background; use safety only when the main development is
+  itself an accident or incident occurrence or its investigation. Military takes priority only when the main editorial
   focus is armed forces, military aircraft/vessels, exercises, defence
   ministries or military activity. A diversified manufacturer's consolidated
   earnings, commercial deliveries or company-wide financial results remain
