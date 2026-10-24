@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "routes": {
+    "gemini:gemini-3.6-flash": {
+      "status": "waiting",
+      "untilUtc": "2026-10-24T17:30Z",
+      "checkedUtc": "2026-10-24T11:30Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "probeVersion": 2,
+      "schemaMode": null
+    },
+    "gemini:gemini-3.5-flash": {
+      "status": "waiting",
+      "checkedUtc": "2026-10-24T11:30Z",
+      "untilUtc": "2026-10-24T17:30Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "probeVersion": 2,
+      "schemaMode": null
+    }
+  }
+}
