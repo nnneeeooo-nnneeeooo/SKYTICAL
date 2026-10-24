@@ -1,7 +1,7 @@
 # Groq 與 Cloudflare Workers AI
 
 兩條路由加入既有自動撰稿備援鏈，位於 OpenAI 最終備援之前。未設定憑證時自動略過。
-使用 Llama 3.3 70B；所有既有來源證據、品質驗證與免費路由固定來源測試仍適用。
+Groq 使用 GPT-OSS 120B，Workers AI 使用 Llama 3.3 70B；所有既有來源證據、品質驗證與免費路由固定來源測試仍適用。
 只有通過 `free_provider_probe` 的路由能進入自動撰稿，HTTP 429 會停用該服務於本次執行。
 
 ## 設定
@@ -13,7 +13,9 @@
 - `CLOUDFLARE_API_TOKEN`：限目標帳號，具 Account → Workers AI → Read 權限的 Token。
 
 請勿將憑證放入 repository、前端或文章。無須部署額外 Worker，管線直接使用 Workers AI API。
-設定後可手動執行 Actions 的 `free-model-validation`，檢查 provider probe artifact；下一次 hourly 會重新驗證。
+設定後可手動執行 Actions 的 `free-model-validation`，指定 `provider_order` 為
+`groq:openai/gpt-oss-120b,cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast` 可只驗證新服務；
+留空則測試全部免費路由。檢查 provider probe artifact；下一次 hourly 會重新驗證。
 手動工作臺同樣提供這兩個模型，模型覆寫使用 `AVWIRE_GROQ_MODEL` 與 `AVWIRE_CLOUDFLARE_MODEL`。
 
 ## 免費額度
@@ -33,3 +35,6 @@
 （Apache-2.0、官方通用 SDK）及 BerriAI/litellm（MIT、跨服務 gateway）。前兩者適合原生 SDK，
 LiteLLM 適合大型路由管理；本專案已有 requests adapter、用量與品質閘門，故沿用現有架構、
 不增加依賴、不複製第三方程式碼。三者均有近期維護紀錄。
+
+2026-10-25 實測：Groq Llama 3.3 為 Enterprise 模型、帳號 catalog 不提供，改用正式 GPT-OSS 120B。
+Workers AI 憑證已確認可連線；補強既有文章長度契約提示，品質與來源證據閘門維持不變。

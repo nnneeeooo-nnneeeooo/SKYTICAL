@@ -957,7 +957,7 @@ class NvidiaProvider:
 class GroqProvider(NvidiaProvider):
     """Free-quota hosted chat; reuse parsing, repair and usage accounting."""
     name = "groq"
-    default_model = "llama-3.3-70b-versatile"
+    default_model = "openai/gpt-oss-120b"
     key_env = "GROQ_API_KEY"
 
     def __init__(self, model=None, reasoning_tier=None):
@@ -965,6 +965,21 @@ class GroqProvider(NvidiaProvider):
             f"AVWIRE_{self.name.upper()}_MODEL") or self.default_model,
             reasoning_tier=reasoning_tier)
         self.reasoning_effective = "provider_default"
+
+    def draft(self, system_prompt, user_prompt, schema):
+        if "status" in schema.get("properties", {}):
+            # Small hosted models otherwise tend to summarize below the
+            # existing publication floor, even after validation feedback.
+            system_prompt += (
+                "\nPublication length contract: for publish_brief, write "
+                "180-320 Chinese/alphanumeric content characters in zh.body "
+                "and 90-150 words in en.body, with 2-7 substantive paragraphs "
+                "per language. Titles, summaries, spaces and punctuation do "
+                "not count. For publish use the full-article requirements "
+                "already specified. Use only source-supported facts; never "
+                "pad or repeat to reach a length. Reject if the source cannot "
+                "support a safe brief. Return final JSON only.")
+        return super().draft(system_prompt, user_prompt, schema)
 
     def available(self):
         return bool(os.environ.get(self.key_env, "").strip())
