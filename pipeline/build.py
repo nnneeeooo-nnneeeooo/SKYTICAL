@@ -2790,6 +2790,9 @@ _RECENT_RUN_KEEP_DAYS = 30
 _RUN_TEXT_RE = re.compile(r"[\x00-\x1f\x7f]+")
 
 _RUN_RESULT_ZH = {
+    "probe_verified": "免費路線驗證通過",
+    "probe_rejected": "免費路線未通過發稿檢查",
+    "probe_failed": "免費路線呼叫失敗",
     "published": "已發布",
     "manual_review": "已封存的人工審核紀錄",
     "rejected": "已拒絕",
@@ -2809,6 +2812,8 @@ _FAILURE_ZH = {
     "timeout": "逾時",
     "connection": "連線失敗",
     "http_error": "HTTP 錯誤",
+    "invalid_request": "請求參數不相容",
+    "model_unavailable": "模型路線不可用",
     "refusal": "模型拒絕",
     "truncated": "回應遭截斷",
     "invalid_json": "JSON 格式錯誤",

@@ -466,9 +466,13 @@ probe version and cooldown timestamps; it contains no prompts or API bodies.
 Unavailable model IDs wait 24 hours; failed probes and route-local 400/429 errors
 wait six hours. Increment `PROBE_VERSION` when the probe contract changes.
 
-Automatic Super routing is disabled. A hosted NIM Llama 3.3 70B fallback is
+Automatic Super routing is disabled. A hosted NIM Qwen 3.5 fallback is
 subject to the same catalog and publication gates. The validation workflow
 uses free-service credentials only and never publishes its probe article.
+Probes allow the writer's existing single content-repair attempt within 360
+seconds. Gemini native-schema HTTP 400 permits one JSON-mode attempt with
+the entire schema in the prompt; successful compatibility mode is cached
+with admission. All local schema and evidence gates remain mandatory.
 Probe HTTP calls and tokens remain in the usage ledger, with separate
 `provider_probe` execution traces. Catalog GETs are not generation calls.
 Free Gemini/NIM/OpenRouter calls have a 180-second attempt ceiling and a
