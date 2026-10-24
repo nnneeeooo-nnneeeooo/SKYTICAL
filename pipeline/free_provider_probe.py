@@ -74,11 +74,21 @@ def catalog(provider):
     elif provider.name == "nvidia":
         url = "https://integrate.api.nvidia.com/v1/models"
         headers = {"Authorization": "Bearer " + os.environ["NVIDIA_API_KEY"]}
+    elif provider.name == "groq":
+        url = "https://api.groq.com/openai/v1/models"
+        headers = {"Authorization": "Bearer " + os.environ["GROQ_API_KEY"]}
+    elif provider.name == "cloudflare":
+        # Exact-name filter avoids catalog pagination and confirms this route.
+        account = os.environ["CLOUDFLARE_ACCOUNT_ID"]
+        url = f"https://api.cloudflare.com/client/v4/accounts/{account}/ai/models/search"
+        headers = {"Authorization": "Bearer " + os.environ["CLOUDFLARE_API_TOKEN"]}
     else:
         url, headers = "https://openrouter.ai/api/v1/models", {}
     ids, token = set(), None
     for _ in range(10):
         params = {"pageSize": 1000} if provider.name == "gemini" else {}
+        if provider.name == "cloudflare":
+            params = {"search": provider.model, "per_page": 100}
         if token:
             params["pageToken"] = token
         try:
@@ -88,6 +98,11 @@ def catalog(provider):
         if response.status_code >= 400:
             raise ProviderError(safe_api_error(response))
         data = response.json()
+        if provider.name == "cloudflare":
+            if data.get("success") is not True:
+                raise ProviderError("Cloudflare catalog unsuccessful")
+            return {row.get("name") for row in data.get("result", [])
+                    if isinstance(row, dict) and row.get("name") == provider.model}
         for item in data.get("models" if provider.name == "gemini" else "data", []):
             if not isinstance(item, dict):
                 continue
