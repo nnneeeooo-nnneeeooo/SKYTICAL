@@ -1,227 +1,210 @@
-"""Tests for the proper-noun glossary enforcement in write.py (offline).
+"""Discoverable, process-isolated glossary regression tests.
 
-No pytest required — run from the repo root:
+Run with either python tests/test_glossary.py or
+python -m pytest -q tests/test_glossary.py.
 
-    py tests\\test_glossary.py
+The original 48 checks are preserved verbatim in _glossary_legacy.py and
+execute in a fresh interpreter. Importing this module performs no pipeline
+work and mutates no environment or module state.
 """
 from __future__ import annotations
 
+import importlib.util
+import io
 import os
+import re
+import subprocess
 import sys
 import tempfile
+import unittest
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 REPO = Path(__file__).resolve().parent.parent
-os.environ["AVWIRE_DATA_DIR"] = tempfile.mkdtemp(prefix="avwire-glossary-")
+LEGACY = Path(__file__).with_name("_glossary_legacy.py")
+EXPECTED_CHECKS = 48
 
-sys.path.insert(0, str(REPO / "pipeline"))
-import write  # noqa: E402
+_WORKER = r"""
+import ast
+import runpy
+import socket
+import sys
+import urllib.request
+from contextlib import ExitStack
+from pathlib import Path
+from unittest.mock import patch
 
-CHECKS = 0
-FAILED = 0
+import httpx
+import requests
+
+path = Path(sys.argv[1])
+mode = sys.argv[2]
+if mode not in {"run", "fail", "network"}:
+    raise ValueError("unknown glossary-test worker mode")
+
+with ExitStack() as stack:
+    for target in (
+        "socket.socket.connect",
+        "socket.socket.connect_ex",
+        "socket.create_connection",
+        "requests.sessions.Session.request",
+        "urllib.request.urlopen",
+        "httpx.Client.send",
+        "httpx.AsyncClient.send",
+    ):
+        stack.enter_context(
+            patch(target, side_effect=AssertionError("live network is forbidden"))
+        )
+
+    if mode == "network":
+        probes = (
+            lambda: requests.get("https://example.invalid"),
+            lambda: urllib.request.urlopen("https://example.invalid"),
+            lambda: httpx.get("https://example.invalid"),
+            lambda: socket.create_connection(("example.invalid", 443)),
+        )
+        for probe in probes:
+            try:
+                probe()
+            except AssertionError as exc:
+                if str(exc) != "live network is forbidden":
+                    raise
+            else:
+                raise AssertionError("network guard did not reject a request")
+        print("4 network probes blocked")
+    elif mode == "fail":
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        calls = sorted(
+            (
+                node
+                for node in ast.walk(tree)
+                if isinstance(node, ast.Call)
+                and isinstance(node.func, ast.Name)
+                and node.func.id == "check"
+            ),
+            key=lambda node: node.lineno,
+        )
+        calls[0].args[0] = ast.Constant(
+            "intentional glossary isolation regression failure"
+        )
+        calls[0].args[1] = ast.Constant(False)
+        ast.fix_missing_locations(tree)
+        exec(
+            compile(tree, str(path), "exec"),
+            {"__name__": "__main__", "__file__": str(path), "__package__": None},
+        )
+    else:
+        runpy.run_path(str(path), run_name="__main__")
+"""
 
 
-def check(name, cond):
-    global CHECKS, FAILED
-    CHECKS += 1
-    print(("PASS " if cond else "FAIL ") + name)
-    if not cond:
-        FAILED += 1
-
-
-def draft(zh_title, en_title, zh_body=("內文。",), en_body=("Body.",)):
-    return {
-        "zh": {"title": zh_title, "summary": zh_title, "body": list(zh_body)},
-        "en": {"title": en_title, "summary": en_title, "body": list(en_body)},
-        "flash": {"zh": zh_title[:20], "en": en_title[:40], "hot": False},
+def _run_legacy(mode: str = "run"):
+    env = {
+        key: value
+        for key, value in os.environ.items()
+        if not key.startswith(("AVWIRE_", "SKYTICAL_", "API_1_", "PYTHON"))
+        and not key.endswith(("_API_KEY", "_TOKEN"))
     }
+    with tempfile.TemporaryDirectory(prefix="skytical-glossary-test-") as directory:
+        root = Path(directory)
+        env.update(
+            TMPDIR=str(root),
+            TMP=str(root),
+            TEMP=str(root),
+            PYTHONDONTWRITEBYTECODE="1",
+            PYTHONHASHSEED="0",
+            PYTHONIOENCODING="utf-8",
+        )
+        result = subprocess.run(
+            [sys.executable, "-B", "-c", _WORKER, str(LEGACY), mode],
+            cwd=REPO,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=60,
+            check=False,
+        )
+    return result, root
 
 
-GROUP = {"id": "g1", "items": [{
-    "title": "Boeing 737 MAX 7 nears FAA approval for Southwest Airlines",
-    "summary": "Simple Flying reports the final certification steps.",
-    "source": "Simple Flying", "url": "https://example.com/a"}]}
+class GlossaryIsolationTests(unittest.TestCase):
+    def _assert_success(self, result):
+        output = result.stdout + result.stderr
+        self.assertEqual(result.returncode, 0, output)
+        match = re.search(
+            r"^(\d+) checks passed, 0 failed$", output, re.MULTILINE
+        )
+        self.assertIsNotNone(match, output)
+        self.assertEqual(int(match.group(1)), EXPECTED_CHECKS, output)
 
-GATWICK_GROUP = {"id": "gatwick", "items": [{
-    "title": "London Gatwick Airport Loses All Running Water",
-    "summary": "Gatwick Airport terminal services were affected.",
-    "source": "Simple Flying", "url": "https://example.com/gatwick"}]}
+    def test_all_original_checks_pass_in_isolated_process(self):
+        result, directory = _run_legacy()
+        self._assert_success(result)
+        self.assertFalse(directory.exists())
 
-AIRLINE_BRAND_GROUP = {"id": "brands", "items": [{
-    "title": "STARLUX Airlines expands while IndiGo names a CEO",
-    "summary": "STARLUX Airlines and IndiGo announced company updates.",
-    "source": "AeroTime", "url": "https://example.com/brands"}]}
+    def test_failure_propagates_to_test_runner(self):
+        result, directory = _run_legacy("fail")
+        output = result.stdout + result.stderr
+        self.assertEqual(result.returncode, 1, output)
+        self.assertIn(
+            "FAIL intentional glossary isolation regression failure", output
+        )
+        self.assertIn("47/48 passed, 1 FAILED", output)
+        self.assertFalse(directory.exists())
 
-# ── matching + prompt injection ──────────────────────────────────────────────
+    def test_parent_environment_and_search_path_are_unchanged(self):
+        environment = dict(os.environ)
+        search_path = list(sys.path)
+        result, directory = _run_legacy()
+        self._assert_success(result)
+        self.assertEqual(dict(os.environ), environment)
+        self.assertEqual(sys.path, search_path)
+        self.assertFalse(directory.exists())
 
-pairs, keeps = write.glossary_matches(
-    "Southwest Airlines and Simple Flying and Airbus", include_soft=True)
-check("glossary matches translate pairs and keep-names",
-      ("Southwest Airlines", "西南航空") in pairs
-      and ("Airbus", "空中巴士") in pairs and "Simple Flying" in keeps)
-hard_pairs, _ = write.glossary_matches("Airbus and Boeing and Reuters")
-check("manufacturers/agencies are soft (prompt-only, never draft-gating)",
-      hard_pairs == [])
+    def test_import_has_no_environment_filesystem_or_execution_side_effects(self):
+        spec = importlib.util.spec_from_file_location(
+            "_glossary_import_probe", __file__
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        module = importlib.util.module_from_spec(spec)
+        environment = dict(os.environ)
+        search_path = list(sys.path)
+        output = io.StringIO()
+        with ExitStack() as stack:
+            for target in (
+                "tempfile.mkdtemp",
+                "tempfile.TemporaryDirectory",
+                "subprocess.run",
+            ):
+                stack.enter_context(
+                    patch(
+                        target,
+                        side_effect=AssertionError("work performed on import"),
+                    )
+                )
+            stack.enter_context(redirect_stdout(output))
+            stack.enter_context(redirect_stderr(output))
+            spec.loader.exec_module(module)
+        self.assertEqual(output.getvalue(), "")
+        self.assertEqual(dict(os.environ), environment)
+        self.assertEqual(sys.path, search_path)
 
-block = write.glossary_prompt_block(GROUP)
-check("prompt block lists the mandatory renderings",
-      "西南航空" in block and "Simple Flying" in block
-      and "MANDATORY NAME GLOSSARY" in block)
-check("prompt block appears inside the group prompt",
-      "MANDATORY NAME GLOSSARY" in write.group_prompt(GROUP))
-check("system prompt bans guessed and non-Taiwan proper-name renderings",
-      "Never invent a phonetic rendering" in write.SYSTEM_PROMPT
-      and "Hong Kong / mainland China rendering" in write.SYSTEM_PROMPT
-      and "keep the complete English proper name" in write.SYSTEM_PROMPT)
-check("no matches -> no glossary block",
-      write.glossary_prompt_block(
-          {"items": [{"title": "民航局公告離島加班機", "summary": ""}]}) == "")
-gatwick_block = write.glossary_prompt_block(GATWICK_GROUP)
-check("Gatwick prompt requires Taiwan rendering and bans the wrong one",
-      "蓋特威克機場" in gatwick_block and "格域機場" in gatwick_block
-      and "NEVER" in gatwick_block)
+    def test_network_guard_blocks_live_requests(self):
+        result, directory = _run_legacy("network")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("4 network probes blocked", result.stdout)
+        self.assertFalse(directory.exists())
 
-# ── the machine gate (the two real failures from 2026-07-27) ────────────────
+    def test_legacy_file_still_contains_original_script_contract(self):
+        source = LEGACY.read_text(encoding="utf-8")
+        self.assertIn("glossary matches translate pairs and keep-names", source)
+        self.assertIn("phrases present in the material itself stay allowed", source)
+        self.assertIn("sys.exit(1 if FAILED else 0)", source)
 
-bad_sw = draft("南威航空737 MAX 7即將獲FAA批准",
-               "Boeing 737 MAX 7 nears FAA approval for Southwest Airlines")
-check("coined 南威航空 is rejected",
-      write.glossary_problem(bad_sw, GROUP) is not None
-      and "西南航空" in write.glossary_problem(bad_sw, GROUP))
 
-good_sw = draft("西南航空737 MAX 7即將獲FAA批准",
-                "Boeing 737 MAX 7 nears FAA approval for Southwest Airlines")
-check("canonical 西南航空 passes", write.glossary_problem(good_sw, GROUP) is None)
-
-kept_en = draft("Southwest Airlines 737 MAX 7 即將獲FAA批准",
-                "Boeing 737 MAX 7 nears FAA approval for Southwest Airlines")
-check("keeping the English name verbatim also passes",
-      write.glossary_problem(kept_en, GROUP) is None)
-
-bad_sf = draft("簡單飛行發布達美空服員薪資分析",
-               "Simple Flying publishes Delta flight attendant pay analysis")
-check("coined 簡單飛行 is rejected (brand must stay English)",
-      write.glossary_problem(bad_sf, GROUP) is not None)
-
-good_sf = draft("Simple Flying 發布達美航空空服員薪資分析",
-                "Simple Flying publishes Delta Air Lines pay analysis")
-check("verbatim Simple Flying + 達美航空 passes",
-      write.glossary_problem(good_sf, GROUP) is None)
-
-# Retaining the English name must not mask an invented Chinese translation.
-for wrong in ("簡易飛行", "簡單飛行", "简易飞行", "简单飞行"):
-    check(f"prompt explicitly forbids {wrong}",
-          f"「{wrong}」" in block and "NEVER" in block)
-    for surface in ("title", "summary", "body", "flash"):
-        bad = draft("航線調整", "Route changes")
-        text = f"據{wrong}（Simple Flying）報導，航線將調整。"
-        if surface == "flash":
-            bad["flash"]["zh"] = text
-        else:
-            bad["zh"][surface] = [text] if surface == "body" else text
-        problem = write.glossary_problem(bad, GROUP)
-        check(f"source-only brand rejects {wrong} with English in {surface}",
-              problem is not None and "forbidden rendering" in problem)
-
-sf_body = draft("航線調整", "Route changes",
-                zh_body=("據 Simple Flying 報導，航線將調整。",),
-                en_body=("Simple Flying reports route changes.",))
-check("English-only attribution in body passes",
-      write.glossary_problem(sf_body, GROUP) is None)
-
-bad_delta = draft("Simple Flying 發布德爾塔航空空服員薪資分析",
-                  "Simple Flying publishes Delta Air Lines pay analysis")
-check("non-Taiwan rendering 德爾塔航空 is rejected",
-      write.glossary_problem(bad_delta, GROUP) is not None)
-
-unrelated = draft("民航局公布中秋加班機", "CAA Taiwan announces extra flights")
-check("names absent from the draft's en text are not enforced",
-      write.glossary_problem(unrelated, GROUP) is None)
-
-bad_gatwick = draft("倫敦格域機場停水影響旅客服務",
-                    "Gatwick Airport loses its running water")
-check("Hong Kong rendering 格域機場 is rejected",
-      "forbidden rendering" in
-      write.glossary_problem(bad_gatwick, GATWICK_GROUP))
-
-mixed_gatwick = draft("蓋特威克機場停水，格域機場旅客受影響",
-                      "Gatwick Airport loses its running water")
-check("a correct occurrence cannot hide another forbidden rendering",
-      write.glossary_problem(mixed_gatwick, GATWICK_GROUP) is not None)
-
-good_gatwick = draft("倫敦蓋特威克機場停水影響旅客服務",
-                     "Gatwick Airport loses its running water")
-check("Taiwan rendering 蓋特威克機場 passes",
-      write.glossary_problem(good_gatwick, GATWICK_GROUP) is None)
-
-bad_starlux = draft(
-    "星達航空開通首條歐洲航線",
-    "STARLUX Airlines launches its first European route")
-check("coined 星達航空 is rejected",
-      write.glossary_problem(bad_starlux, AIRLINE_BRAND_GROUP) is not None)
-
-good_starlux = draft(
-    "星宇航空開通首條歐洲航線",
-    "STARLUX Airlines launches its first European route")
-check("official 星宇航空 brand passes",
-      write.glossary_problem(good_starlux, AIRLINE_BRAND_GROUP) is None)
-
-bad_indigo = draft(
-    "印地高宣布新任執行長",
-    "IndiGo announces its new chief executive")
-check("coined 印地高 is rejected",
-      write.glossary_problem(bad_indigo, AIRLINE_BRAND_GROUP) is not None)
-
-good_indigo = draft(
-    "IndiGo（印度靛藍航空）宣布新任執行長",
-    "IndiGo announces its new chief executive")
-check("IndiGo with Taiwan explanatory name passes",
-      write.glossary_problem(good_indigo, AIRLINE_BRAND_GROUP) is None)
-
-english_gatwick = draft("倫敦 Gatwick Airport 停水影響旅客服務",
-                        "Gatwick Airport loses its running water")
-check("keeping Gatwick Airport in English passes",
-      write.glossary_problem(english_gatwick, GATWICK_GROUP) is None)
-
-omitted_en_gatwick = draft("格域機場停水影響旅客服務",
-                           "London airport loses its running water")
-check("source material still activates the forbidden rendering gate",
-      write.glossary_problem(omitted_en_gatwick, GATWICK_GROUP) is not None)
-
-# ── fabrication tripwire (the Delta-pay body invention, 2026-07-27) ─────────
-
-THIN_GROUP = {"id": "g2", "items": [{
-    "title": "How Much A Delta Flight Attendant Earns Before Door Close",
-    "summary": "The first airline to solve a long term grievance.",
-    "source": "Simple Flying", "url": "https://example.com/b"}]}
-
-fab = draft("Simple Flying 發布達美航空空服員薪資報導",
-            "Simple Flying publishes Delta Air Lines pay report")
-fab["zh"]["body"] = ["文章詳細分析薪資結構，並引述公司內部文件說明實施細節。"]
-check("thin material + body describing unseen article contents rejected",
-      write.fabrication_problem(fab, THIN_GROUP) is not None)
-
-ok = draft("Simple Flying 發布達美航空空服員薪資報導",
-           "Simple Flying publishes Delta Air Lines pay report")
-ok["zh"]["body"] = ["該報導摘要指出，達美航空成為首家解決此一長期薪資糾紛的航空公司。"]
-check("supported-only body passes the tripwire",
-      write.fabrication_problem(ok, THIN_GROUP) is None)
-
-rich_group = {"id": "g3", "items": [dict(THIN_GROUP["items"][0],
-                                         fulltext="long official text " * 30)]}
-check("groups with full text are exempt (long bodies may describe quotes)",
-      write.fabrication_problem(fab, rich_group) is None)
-
-zh_material_group = {"id": "g4", "items": [{
-    "title": "民航局引述調查報告說明事件經過", "summary": "官方說明。",
-    "source": "CNA", "url": "https://example.com/c"}]}
-quoted = draft("民航局引述調查報告", "CAA cites the investigation report")
-quoted["zh"]["body"] = ["民航局引述調查報告說明事件經過。"]
-check("phrases present in the material itself stay allowed",
-      write.fabrication_problem(quoted, zh_material_group) is None)
-
-print(f"\n{CHECKS} checks passed, {FAILED} failed"
-      if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "
-      f"{FAILED} FAILED")
 if __name__ == "__main__":
-    sys.exit(1 if FAILED else 0)
+    unittest.main(verbosity=2)
