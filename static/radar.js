@@ -22,6 +22,9 @@
       cooldown: (seconds) => `請於 ${seconds} 秒後再手動更新`,
       callsign: "航班代碼", airline: "航空公司", type: "機型",
       route: "起迄點",
+      photoLoading: "正在載入實機照片…", photoMissing: "暫無這架飛機的照片",
+      photoError: "實機照片暫時無法載入", photoOriginal: "查看原始照片",
+      photoAircraft: "對應實機照片",
       altitude: "高度", speed: "地速", heading: "航向",
       vertical: "垂直速率", freshness: "位置新鮮度",
       ground: "地面", unknown: "未提供", feet: "呎", knots: "節",
@@ -38,6 +41,9 @@
       cooldown: (seconds) => `Manual refresh available in ${seconds}s`,
       callsign: "Flight code", airline: "Airline", type: "Aircraft",
       route: "Route",
+      photoLoading: "Loading aircraft photo…", photoMissing: "No photo available for this aircraft",
+      photoError: "Aircraft photo is temporarily unavailable", photoOriginal: "View original photo",
+      photoAircraft: "Photo of this aircraft",
       altitude: "Altitude", speed: "Ground speed", heading: "Heading",
       vertical: "Vertical rate", freshness: "Position age",
       ground: "Ground", unknown: "Not reported", feet: "ft", knots: "kt",
@@ -426,10 +432,10 @@
     box.className = "radar-popup";
     const title = document.createElement("strong");
     title.className = "radar-popup-title";
-    const silhouette = document.createElement("div");
-    silhouette.className = "radar-detail-aircraft";
-    silhouette.innerHTML = aircraftSymbols.svg(row.typeCode);
-    box.appendChild(silhouette);
+    const photo = document.createElement("div");
+    photo.className = "radar-aircraft-photo";
+    photo.textContent = copy.photoLoading;
+    box.appendChild(photo);
     renderCallsign(title, displayCallsign(row) || copy.noCallsign);
     box.appendChild(title);
     const route = formatRoute(row);
@@ -460,6 +466,21 @@
       iconSize: [48, 48],
       iconAnchor: [24, 24],
     });
+  }
+
+  function fitFlightPopup(marker) {
+    if (!marker.isPopupOpen()) return;
+    const popup = marker.getPopup();
+    popup.update();
+    const card = popup.getElement().getBoundingClientRect();
+    const bounds = map.getContainer().getBoundingClientRect();
+    const top = Math.max(bounds.top, 0) + 16;
+    const bottom = Math.min(bounds.bottom, window.innerHeight) - 16;
+    const left = Math.max(bounds.left, 0) + 8;
+    const right = Math.min(bounds.right, window.innerWidth) - 8;
+    const dx = card.left < left ? card.left - left : Math.max(0, card.right - right);
+    const dy = card.top < top ? card.top - top : Math.max(0, card.bottom - bottom);
+    if (dx || dy) map.panBy([dx, dy], { animate: false });
   }
 
   function rowMatches(row, query, airborneOnly) {
@@ -506,7 +527,11 @@
       const tooltip = document.createElement("span");
       tooltip.textContent = visibleCallsign || row.typeCode || copy.noCallsign;
       marker.bindTooltip(tooltip, { direction: "top", offset: [0, -10] });
-      marker.bindPopup(popupFor(row), { minWidth: 230 });
+      marker.bindPopup(popupFor(row), {
+        minWidth: 260,
+        maxHeight: Math.max(200, Math.min(440, window.innerHeight - 240)),
+        autoPan: false,
+      });
 
       const item = document.createElement("button");
       item.type = "button";
@@ -525,10 +550,17 @@
       telemetry.textContent = `${formatAltitude(row)}  /  ${formatNumber(row.speed, copy.knots)}`;
       item.appendChild(telemetry);
       selections.push({ row, marker, item });
-      marker.on("popupopen", () => selectFlight(row.key));
+      marker.on("popupopen", () => {
+        selectFlight(row.key);
+        const photo = marker.getPopup().getContent().querySelector(".radar-aircraft-photo");
+        void window.SkyticalPhotos.render(photo, row.key,
+          [visibleCallsign, row.typeCode].filter(Boolean).join(" · "), copy,
+          () => fitFlightPopup(marker));
+        fitFlightPopup(marker);
+      });
       item.addEventListener("click", () => {
         selectFlight(row.key);
-        map.setView([row.lat, row.lon], Math.max(map.getZoom(), 9));
+        map.setView([row.lat, row.lon], Math.max(map.getZoom(), 9), { animate: false });
         marker.openPopup();
       });
       listEl.appendChild(item);
