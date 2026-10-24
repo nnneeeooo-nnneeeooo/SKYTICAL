@@ -15,6 +15,11 @@ DIRECT_MODEL_ORDER = (
     "nvidia:mistralai/mistral-medium-3.5-128b",
 )
 
+FREE_HOSTED_MODEL_ORDER = (
+    "groq:llama-3.3-70b-versatile",
+    "cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+)
+
 OPENAI_MODEL_ORDER = (
     "openai:gpt-6-luna",
 )
@@ -67,6 +72,7 @@ MODEL_ORDER = (
     OPENROUTER_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[7],
     *OPENROUTER_MODEL_ORDER[2:],
+    *FREE_HOSTED_MODEL_ORDER,
     OPENAI_MODEL_ORDER[0],
 )
 
@@ -78,12 +84,15 @@ AUTOMATIC_MODEL_ORDER = (
     DIRECT_MODEL_ORDER[4],
     WECHAT_MODEL_ORDER[0],
     OPENROUTER_MODEL_ORDER[0],
+    *FREE_HOSTED_MODEL_ORDER,
     OPENAI_MODEL_ORDER[0],
 )
 
 DEFAULT_PROVIDER_ORDER = ",".join(AUTOMATIC_MODEL_ORDER)
 
 MODEL_DISPLAY_NAMES = {
+    FREE_HOSTED_MODEL_ORDER[0]: "Groq · Llama 3.3 70B",
+    FREE_HOSTED_MODEL_ORDER[1]: "Cloudflare Workers AI · Llama 3.3 70B",
     "openai:gpt-6-luna": "OpenAI · GPT-6 Luna",
     "wechat:Deepseek-v4-flash":
         "WeChat Coding Plan · DeepSeek V4 Flash",
