@@ -145,7 +145,7 @@ def is_free_provider(provider):
     must explicitly select :free, regardless of AVWIRE_PROVIDER_ORDER overrides.
     """
     name = getattr(provider, "name", "")
-    if name == "nvidia":
+    if name in {"nvidia", "groq", "cloudflare"}:
         return True
     if name == "gemini":
         return getattr(provider, "model", "") in {"gemini-3.6-flash", "gemini-3.5-flash"}

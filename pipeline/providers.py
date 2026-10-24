@@ -1,7 +1,9 @@
 """LLM provider adapters for the write stage.
 
-Seven interchangeable writers behind one interface:
+Nine interchangeable writers behind one interface:
 
+    groq       Groq OpenAI-compatible Chat Completions
+    cloudflare Cloudflare Workers AI OpenAI-compatible Chat Completions
     anthropic  Anthropic Messages API with native structured outputs
     gemini     Google Gemini API (REST) with responseJsonSchema
     nvidia     NVIDIA NIM (integrate.api.nvidia.com, OpenAI-compatible REST),
@@ -350,7 +352,7 @@ def safe_failure_message(value, limit: int = 180) -> str:
     )
     text = re.sub(
         r"(?i)\b(nvapi-[A-Za-z0-9_-]+|AIza[A-Za-z0-9_-]+|"
-        r"sk-or-v1-[A-Za-z0-9_-]+|oc_sk_[A-Za-z0-9_-]+)\b",
+        r"sk-or-v1-[A-Za-z0-9_-]+|oc_sk_[A-Za-z0-9_-]+|gsk_[A-Za-z0-9_-]+)\b",
         "[redacted]",
         text,
     )
@@ -952,6 +954,65 @@ class NvidiaProvider:
             ) from repair_exc
 
 
+class GroqProvider(NvidiaProvider):
+    """Free-quota hosted chat; reuse parsing, repair and usage accounting."""
+    name = "groq"
+    default_model = "llama-3.3-70b-versatile"
+    key_env = "GROQ_API_KEY"
+
+    def __init__(self, model=None, reasoning_tier=None):
+        super().__init__(model or os.environ.get(
+            f"AVWIRE_{self.name.upper()}_MODEL") or self.default_model,
+            reasoning_tier=reasoning_tier)
+        self.reasoning_effective = "provider_default"
+
+    def available(self):
+        return bool(os.environ.get(self.key_env, "").strip())
+
+    def _endpoint(self):
+        return "https://api.groq.com/openai/v1/chat/completions"
+
+    def _post(self, messages, repair):
+        # No NIM-specific profiles or reasoning fields cross provider boundaries.
+        payload = {"model": self.model, "messages": messages,
+                   "max_tokens": 4096 if repair else 8192,
+                   "temperature": 0.2, "stream": False}
+        self.http_calls += 1
+        self.repair_calls += int(repair)
+        started, response = time.perf_counter(), None
+        try:
+            response = requests.post(
+                self._endpoint(), json=payload, timeout=HTTP_TIMEOUT,
+                headers={"Authorization": f"Bearer {os.environ[self.key_env]}",
+                         "Accept": "application/json"})
+            return response
+        except requests.RequestException as exc:
+            raise ProviderError(type(exc).__name__) from exc
+        finally:
+            elapsed = max(0, round((time.perf_counter() - started) * 1000))
+            self.http_duration_ms += elapsed
+            if repair:
+                self.repair_duration_ms += elapsed
+            if response is not None:
+                self.request_log.append(_safe_response_meta(response, elapsed))
+
+
+class CloudflareProvider(GroqProvider):
+    name = "cloudflare"
+    default_model = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+    key_env = "CLOUDFLARE_API_TOKEN"
+
+    def available(self):
+        return super().available() and bool(re.fullmatch(
+            r"[a-fA-F0-9]{32}", os.environ.get("CLOUDFLARE_ACCOUNT_ID", "")))
+
+    def _endpoint(self):
+        account = os.environ["CLOUDFLARE_ACCOUNT_ID"]
+        if not re.fullmatch(r"[a-fA-F0-9]{32}", account):
+            raise ProviderError("invalid Cloudflare account ID")
+        return f"https://api.cloudflare.com/client/v4/accounts/{account}/ai/v1/chat/completions"
+
+
 class WechatProvider(NvidiaProvider):
     requires_verification = False
     max_attempt_seconds = 60
@@ -1520,6 +1581,8 @@ _REGISTRY = {
     AnthropicProvider.name: AnthropicProvider,
     GeminiProvider.name: GeminiProvider,
     NvidiaProvider.name: NvidiaProvider,
+    GroqProvider.name: GroqProvider,
+    CloudflareProvider.name: CloudflareProvider,
     WechatProvider.name: WechatProvider,
     OpenRouterProvider.name: OpenRouterProvider,
     OpenAIProvider.name: OpenAIProvider,

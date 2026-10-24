@@ -41,6 +41,8 @@ from model_config import (  # noqa: E402
 )
 from providers import (  # noqa: E402
     GeminiProvider,
+    GroqProvider,
+    CloudflareProvider,
     NvidiaProvider,
     OpenAIProvider,
     OpenCodeProvider,
@@ -92,7 +94,7 @@ LANGUAGES = {"zh": "繁中", "en": "英文", "bilingual": "雙語"}
 PUBLICATION_MODES = {"auto", "manual"}
 SORT_MODES = {"publication", "manual"}
 CUSTOM_MODEL_RE = re.compile(
-    r"(?:gemini|nvidia|openrouter):[A-Za-z0-9._/+:-]{2,180}\Z")
+    r"(?:gemini|nvidia|openrouter|groq|cloudflare):[A-Za-z0-9@._/+:-]{2,180}\Z")
 MANUAL_DRAFT_SCHEMA = copy.deepcopy(DRAFT_SCHEMA)
 MANUAL_DRAFT_SCHEMA["properties"].update({
     "detectedArticleType": {
@@ -566,6 +568,8 @@ def _providers_for(payload: dict) -> list:
         cls = {
             "gemini": GeminiProvider,
             "nvidia": NvidiaProvider,
+            "groq": GroqProvider,
+            "cloudflare": CloudflareProvider,
             "wechat": WechatProvider,
             "opencode": OpenCodeProvider,
             "openai": OpenAIProvider,
