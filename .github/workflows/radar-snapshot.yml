@@ -18,7 +18,9 @@ on:
       - "static/radar.js"
       - "static/radar.css"
       - "static/radar-aircraft.js"
+      - "static/radar-photos.js"
       - "tests/test_radar_aircraft.js"
+      - "tests/test_radar_photos.js"
       - "templates/radar.html"
       - "tests/test_radar.py"
       - "tests/test_radar_snapshot.py"
@@ -34,6 +36,7 @@ on:
       - "static/radar.js"
       - "static/radar.css"
       - "static/radar-aircraft.js"
+      - "static/radar-photos.js"
       - "templates/radar.html"
 
 jobs:
@@ -55,6 +58,7 @@ jobs:
       - name: Run radar regression tests
         run: |
           node tests/test_radar_aircraft.js
+          node tests/test_radar_photos.js
           python tests/test_radar_snapshot.py
           python tests/test_build_resilience.py
           python tests/test_radar.py
