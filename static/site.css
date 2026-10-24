@@ -4,6 +4,7 @@
 /* — from the design's helmet <style> block — */
 /* boxed layout: the page sheet is centered, the body shows a darker gutter */
 html, body { margin: 0; background: color-mix(in srgb, var(--color-text) 12%, var(--color-bg)); }
+html { text-autospace: no-autospace; }
 body, h1, h2, h3, h4, h5, h6, .btn, .card-title, .nav-brand {
   font-family: "Archivo", "Noto Sans TC", system-ui, sans-serif;
 }

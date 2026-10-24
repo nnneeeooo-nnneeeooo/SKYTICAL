@@ -76,6 +76,8 @@ jobs:
           python tests/test_provider_health.py
           python tests/test_free_provider_probe.py
           python tests/test_build_resilience.py
+          python tests/test_text_spacing.py
+          node tests/test_text_spacing_client.js
           python tests/test_home_sidebar.py
           python tests/test_search.py
           python tests/test_english_backfill.py

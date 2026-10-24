@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 import build  # noqa: E402
+from text_spacing import compact_text
 
 
 def sample_article(title: str, *, en_title: str = "Airline search alias test",
@@ -265,20 +266,22 @@ def main() -> None:
     assert ".header-search-form:focus-within" in css
     assert ".header-search-input:not(:placeholder-shown) + .header-search-clear" in css
     assert ".header-search-submit" in css
-    assert "航空公司 IATA／ICAO 代碼" in zh
+    assert "航空公司IATA／ICAO代碼" in zh
     assert "airline IATA/ICAO codes" in en
     for markup, language in ((zh, "zh"), (en, "en")):
         header = BeautifulSoup(markup, "html.parser").select_one(".search-header")
         groups = header.select(".search-help-group")
         assert len(groups) == 3
         assert [group.select_one("dt").text for group in groups] == [
-            group["label"] for group in build.L[language]["searchHelpGroups"]]
+            compact_text(group["label"])
+            for group in build.L[language]["searchHelpGroups"]]
         for group, expected in zip(groups, build.L[language]["searchHelpGroups"]):
             terms = group.select(".search-help-term")
             assert len(terms) == len(expected["terms"])
-            assert all(term.text.startswith(label)
+            assert all(term.text.startswith(compact_text(label))
                        for term, label in zip(terms, expected["terms"]))
-        assert header.select_one(".search-help-note").text == build.L[language]["searchHelpNote"]
+        assert header.select_one(".search-help-note").text == compact_text(
+            build.L[language]["searchHelpNote"])
         assert header.find("p", string=build.L[language]["searchSub"]) is None
     assert "data-airline-code-count-template" in zh
     assert "data-airline-code-empty-template" in en

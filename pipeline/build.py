@@ -58,6 +58,7 @@ from model_config import (
 )
 from image_captions import clean_description
 from article_schema import normalize_article_record
+from text_spacing import compact_html
 
 _caption_cache = load_json(DATA_DIR / "image-captions.json", {})
 IMAGE_CAPTIONS = (_caption_cache.get("images", {})
@@ -93,6 +94,7 @@ def static_asset_version() -> str:
         "pixel.css",
         "fusion-pixel-tw-v2026-10-16.woff2",
         "app.js",
+        "text-spacing.js",
         "search.js",
         "highlight.js",
         "skytical-logo.svg",
@@ -3700,7 +3702,7 @@ def team_paragraph_parts(paragraph: str, artist_links: dict) -> list[dict]:
 
 
 def render(env, template, out_rel, ctx):
-    html = env.get_template(template).render(**ctx)
+    html = compact_html(env.get_template(template).render(**ctx))
     out = SITE_DIR / out_rel
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8", newline="\n")
