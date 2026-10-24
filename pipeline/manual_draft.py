@@ -89,6 +89,7 @@ ARTICLE_TYPES = {
     "fleet_order": "機隊／訂單",
     "regulation": "監管",
     "financial": "財報",
+    "feature": "專欄報導",
 }
 LANGUAGES = {"zh": "繁中", "en": "英文", "bilingual": "雙語"}
 PUBLICATION_MODES = {"auto", "manual"}
@@ -832,6 +833,7 @@ def _operator_draft(payload: dict, candidate: dict) -> dict:
         "regulation": "reg",
         "fleet_order": "biz",
         "financial": "biz",
+        "feature": "feature",
     }.get(payload["articleType"], "ops")
     return {
         "status": "publish",

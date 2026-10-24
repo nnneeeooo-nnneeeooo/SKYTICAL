@@ -60,6 +60,7 @@
     fleet_order: "機隊／訂單",
     regulation: "監管",
     financial: "財報",
+    feature: "專欄報導",
   };
   const TIME_SOURCE_LABELS = {
     manual: "手動指定（臺北時間）",
@@ -770,6 +771,7 @@
       regulation: "reg",
       fleet_order: "biz",
       financial: "biz",
+      feature: "feature",
     }[els["article-type"].value] || "ops";
     const attachments = imageUrls.map((url, index) => ({
       url,

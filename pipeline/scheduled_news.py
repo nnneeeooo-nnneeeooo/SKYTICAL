@@ -56,7 +56,7 @@ def validate_article(row, now=None):
         raise ValueError("future timestamp")
     if source_time > publication or checked > publication + timedelta(minutes=5):
         raise ValueError("source/check time after publication")
-    if row.get("cat") not in {"safety", "reg", "biz", "ops", "mil"}:
+    if row.get("cat") not in {"safety", "reg", "biz", "ops", "mil", "feature"}:
         raise ValueError("invalid category")
     if row.get("availableLanguages") != ["zh", "en"]:
         raise ValueError("both zh and en required")

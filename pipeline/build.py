@@ -205,7 +205,7 @@ L = {
         "footerSources": "資料來源 Data Sources",
         "footerChangelog": "網站更新紀錄",
         "nav": ["最新", "全部新聞", "快報", "航班雷達", "事故資料庫", "來源", "關於 SKYTICAL", "SKYTICAL團隊"],
-        "cats": ["全部", "事故", "法規", "商業", "營運", "軍事"],
+        "cats": ["全部", "事故", "法規", "商業", "營運", "軍事", "專欄報導"],
         "searchKicker": "News Search", "searchTitle": "搜尋新聞",
         "newsKicker": "News Index", "newsTitle": "全部新聞",
         "newsSub": "依發布時間排列的本站航空新聞索引。",
@@ -360,7 +360,7 @@ L = {
         "nav": ["Latest", "All news", "Briefings", "Flight Radar", "Incident DB", "Sources",
                  "About SKYTICAL", "SKYTICAL Team"],
         "cats": ["All", "Safety", "Regulation", "Business", "Operations",
-                 "Military"],
+                 "Military", "Feature"],
         "searchKicker": "News Search", "searchTitle": "Search news",
         "newsKicker": "News Index", "newsTitle": "All news",
         "newsSub": "An archive of SKYTICAL aviation news, ordered by publication time.",
@@ -461,6 +461,7 @@ CATS = {
     "biz": {"zh": "商業", "en": "Business"},
     "ops": {"zh": "營運", "en": "Operations"},
     "mil": {"zh": "軍事", "en": "Military"},
+    "feature": {"zh": "專欄報導", "en": "Feature"},
 }
 
 # Permanent, crawlable topic hubs.  These turn the home-page filters into
@@ -607,6 +608,7 @@ TAGCLS = {
     "biz": "tag-neutral",
     "ops": "tag-neutral",
     "mil": "tag-accent-2",
+    "feature": "tag-accent-2",
 }
 
 
@@ -4062,7 +4064,7 @@ def main() -> int:
         "tpe_hm": clock_12(tpe_now),
         "stamp": f"{now:%Y-%m-%d} {clock_12(now)}",
     }
-    cat_keys = ["all", "safety", "reg", "biz", "ops", "mil"]
+    cat_keys = ["all", "safety", "reg", "biz", "ops", "mil", "feature"]
     sev_keys = ["week", "all", "acc", "ser", "inc"]
     pages = 0
     failed = 0
