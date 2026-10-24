@@ -526,6 +526,7 @@ class GeminiProvider:
         self.model = (model or os.environ.get("AVWIRE_GEMINI_MODEL")
                       or GEMINI_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
+        self.json_schema_mode = "native"
         self.http_calls = 0  # real API spend incl. format-repair calls
         self.repair_calls = 0
         self.http_duration_ms = 0
@@ -609,8 +610,7 @@ class GeminiProvider:
             "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
             "generationConfig": self._generation_config(schema, repair=False),
         }
-        response = self._post(payload, repair=False)
-        self._check_status(response)
+        response = self._schema_post(payload, schema, repair=False)
         text = self._final_text(response)
         if text is None:
             return None
@@ -618,6 +618,37 @@ class GeminiProvider:
             return extract_json(text)
         except ValueError as exc:
             return self._repair(text, schema, exc)
+
+    def _schema_post(self, payload, schema, *, repair):
+        """One bounded JSON-mode fallback for native-schema HTTP 400.
+
+        The full schema remains in the prompt and the writer still performs
+        every local validation/evidence check. No auth/quota/transient error
+        takes this path, and an incompatible fallback is never retried here.
+        """
+        from copy import deepcopy
+
+        def json_mode_payload():
+            body = deepcopy(payload)
+            body["generationConfig"].pop("responseJsonSchema", None)
+            body["contents"][0]["parts"].append({"text":
+                "Return ONLY a JSON object conforming exactly to this schema:\n"
+                + json.dumps(schema, ensure_ascii=False)})
+            return body
+
+        body = json_mode_payload() if self.json_schema_mode == "prompt" else payload
+        response = self._post(body, repair=repair)
+        try:
+            self._check_status(response)
+        except ProviderRouteError as exc:
+            if (exc.status != 400 or self.json_schema_mode == "prompt"
+                    or "billing_or_free_tier_requirement" in str(exc)):
+                raise
+            print(f"write: {self.label} native schema rejected; trying JSON mode once")
+            self.json_schema_mode = "prompt"
+            response = self._post(json_mode_payload(), repair=repair)
+            self._check_status(response)
+        return response
 
     def _reset_grounding(self) -> None:
         self.google_search_used = False
@@ -749,8 +780,7 @@ class GeminiProvider:
             "contents": [{"role": "user", "parts": [{"text": broken}]}],
             "generationConfig": self._generation_config(schema, repair=True),
         }
-        response = self._post(payload, repair=True)
-        self._check_status(response)
+        response = self._schema_post(payload, schema, repair=True)
         text = self._final_text(response)
         if not text:
             raise ProviderError("format repair returned no text")

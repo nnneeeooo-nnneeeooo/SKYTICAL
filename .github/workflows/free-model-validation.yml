@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/free-model-validation.yml'
       - 'pipeline/providers.py'
+      - 'pipeline/write.py'
       - 'pipeline/free_provider_probe.py'
       - 'config/free_provider_probe.json'
   workflow_dispatch:
