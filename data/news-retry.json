@@ -2469,12 +2469,12 @@
         "https://www.aerotime.aero/articles/emirates-deploys-a350-with-new-business-class-on-mauritius-route-from-november-1"
       ],
       "contentFailures": 0,
-      "serviceFailures": 2,
+      "serviceFailures": 3,
       "history": [],
-      "updatedUtc": "2026-10-23T18:35Z",
+      "updatedUtc": "2026-10-24T13:33Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-24T00:35Z",
+      "nextRetryUtc": "2026-10-25T13:33Z",
       "title": "Emirates deploys A350 with new Business Class on Mauritius route from November 1"
     },
     "3c9c322220b2e71804d33e67": {
@@ -2482,12 +2482,12 @@
         "https://www.aerotime.aero/articles/eu-funding-lithuania-estonia-drone-warhead-production"
       ],
       "contentFailures": 0,
-      "serviceFailures": 2,
+      "serviceFailures": 3,
       "history": [],
-      "updatedUtc": "2026-10-23T18:44Z",
+      "updatedUtc": "2026-10-24T13:33Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-24T00:44Z",
+      "nextRetryUtc": "2026-10-25T13:33Z",
       "title": "EU awards €29.5M to Lithuania, Estonia for drone warhead production"
     },
     "8deafc15857ab22cd68534fb": {
@@ -3146,6 +3146,26 @@
       ],
       "contentFailures": 0,
       "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-10-24T11:30Z"
+        }
+      ],
+      "updatedUtc": "2026-10-24T13:33Z",
+      "nextRetryUtc": "2026-10-24T15:33Z",
+      "failureClass": "provider_failure",
+      "title": "- NTSB (.gov)"
+    },
+    "44685e15dc6ea147b338bbda": {
+      "sourceUrls": [
+        "https://simpleflying.com/sr-71-blackbird-pilot-preflight-mission-routine"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
       "history": [],
       "updatedUtc": "2026-10-24T13:26Z",
       "failureClass": "provider_failure",
@@ -3178,6 +3198,32 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-24T15:26Z",
       "title": "Russia says drone attack damages Togliatti facilities, Ukraine says petrochemical plant hit"
+    },
+    "3e81019b087f61829a13e132": {
+      "sourceUrls": [
+        "https://www.vietnam.vn/ja/canh-bao-khong-kich-vang-len-ca-4-san-bay-tai-matxcova-dong-loat-dung-hoat-dong"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-10-24T13:33Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-24T15:33Z",
+      "title": "空襲警報が鳴り響き、モスクワにある4つの空港すべてが同時に運用を停止した。"
+    },
+    "370c4021461987ac73d4185e": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/american-widebody-replacement-q3-results"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-10-24T13:33Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-24T15:33Z",
+      "title": "American Airlines widebody order expected by year-end as weaker Q3 results fail to slow fleet renewal plans News"
     }
   }
 }
