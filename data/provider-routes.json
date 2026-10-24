@@ -12,10 +12,37 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-10-24T11:30Z",
       "untilUtc": "2026-10-24T17:30Z",
+      "checkedUtc": "2026-10-24T11:30Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "probeVersion": 2,
+      "schemaMode": null
+    },
+    "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
+      "status": "waiting",
+      "untilUtc": "2026-10-24T19:26Z",
+      "checkedUtc": "2026-10-24T13:26Z",
+      "failureClass": "unexpected",
+      "diagnostic": "headlineSupportedBy references a fact that did not verify",
+      "probeVersion": 2,
+      "schemaMode": null
+    },
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
+      "status": "waiting",
+      "untilUtc": "2026-10-24T19:26Z",
+      "checkedUtc": "2026-10-24T13:26Z",
+      "failureClass": "unexpected",
+      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "probeVersion": 2,
+      "schemaMode": null
+    },
+    "nvidia:qwen/qwen3.5-397b-a17b": {
+      "status": "unavailable",
+      "checkedUtc": "2026-10-24T13:26Z",
+      "untilUtc": "2026-10-25T13:26Z",
+      "failureClass": "model_unavailable",
+      "diagnostic": "model absent from account catalog",
       "probeVersion": 2,
       "schemaMode": null
     }
