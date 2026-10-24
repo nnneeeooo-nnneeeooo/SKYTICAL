@@ -2,6 +2,18 @@
 
 更新日期：2026-10-23
 
+## 雷達對應實機照片（2026-10-24）
+
+查證官方 Photo API 文件與三個開源專案；不複製第三方實作。
+
+| 專案 | 最近推送 | Stars | 語言／授權 | 比較與導入成本 |
+| --- | --- | --- | --- | --- |
+| [tar1090](https://github.com/wiedehopf/tar1090) | 2026-10-19 | 1,941 | JavaScript／NOASSERTION | 成熟 ADS-B 介面，參考選取航機再顯示資訊的流程；整套導入過重。 |
+| [SkyWatcher](https://github.com/Sperryfreak01/SkyWatcher) | 2026-04-24 | 0 | JavaScript／未宣告授權 | 近期功能包含按 hex 查詢照片與攝影者署名；僅比較 API 整合方式，不使用其程式碼。 |
+| [contrails](https://github.com/gauravdraj/contrails) | 2026-10-21 | 0 | JavaScript／MIT | 輕量 plane spotting、照片 metadata 快取；不導入其 Worker 與代理層。 |
+
+採用原生瀏覽器 fetch 與現有 Leaflet popup，僅點選航機時依完整六位 ICAO hex 查詢照片。依 [Planespotters 官方規範](https://www.planespotters.net/photo/api) 保留 API 回傳的原始縮圖／原圖連結 URL、顯示攝影者文字署名；縮圖直接由顯示它的瀏覽器載入，不下載、重存或代理圖片。metadata 僅記憶體快取一小時、無照片十五分鐘；查無照片與失敗均不改用同機型其他實機。官方 hex 端點依已知現役實機查詢，未知 hex 由其資料庫對應註冊號；未加入機型 fallback 參數。
+
 ## 民航雷達介面與機型剪影（2026-10-24）
 
 透過 GitHub 搜尋及官方 API 比較，僅借鑑地圖優先、機型剪影與選取資訊的互動概念，沒有複製第三方程式碼或圖示。
