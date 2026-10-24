@@ -460,6 +460,31 @@ the private dashboard but never merged into `data/usage.json` or its totals.
 
 ## Automatic news spending policy
 
+### Free-route availability and admission
+
+`config/free_provider_probe.json` contains one fixed public news source with
+quote-verified excerpts. `free_provider_probe.py` checks each free route against
+its account model catalog and then the existing draft, evidence and article
+construction checks. Only a publishable result grants admission for 24 hours.
+`data/provider-routes.json` persists route IDs, finite sanitized diagnostics,
+probe version and cooldown timestamps; it contains no prompts or API bodies.
+Unavailable model IDs wait 24 hours; failed probes and route-local 400/429 errors
+wait six hours. Increment `PROBE_VERSION` when the probe contract changes.
+
+Automatic Super routing is disabled. A hosted NIM Qwen 3.5 fallback is
+subject to the same catalog and publication gates. The validation workflow
+uses free-service credentials only and never publishes its probe article.
+Probes allow the writer's existing single content-repair attempt within 360
+seconds. Gemini native-schema HTTP 400 permits one JSON-mode attempt with
+the entire schema in the prompt; successful compatibility mode is cached
+with admission. All local schema and evidence gates remain mandatory.
+Probe HTTP calls and tokens remain in the usage ledger, with separate
+`provider_probe` execution traces. Catalog GETs are not generation calls.
+Free Gemini/NIM/OpenRouter calls have a 180-second attempt ceiling and a
+360-second group budget; the batch cap is five groups. Existing per-platform
+cooldowns and per-news paid eligibility still apply. No failed free probe
+authorizes a paid fallback for a free-only story.
+
 `editorial_policy.news_policy` derives priority and paid eligibility from current
 source headlines/excerpts, excluding archive and background companions. The
 owner's eleven examples (routine tests, limited certification, local second-seat

@@ -177,7 +177,6 @@ def test_model_priority_defaults():
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
         "wechat:Deepseek-v4-flash",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-        "nvidia:nvidia/nemotron-3-super-120b-a12b",
         "openai:gpt-6-luna",
     )
     check(AUTOMATIC_MODEL_ORDER == active
@@ -727,6 +726,40 @@ def test_gemini_model_profiles():
     print("test_gemini_model_profiles: done")
 
 
+def test_gemini_schema_compatibility():
+    calls = []
+    def fake_post(url, json=None, **kwargs):
+        calls.append(json)
+        if len(calls) == 1:
+            return FakeResponse({'error': {'status':'INVALID_ARGUMENT',
+                'message':'Invalid response schema'}}, status=400)
+        return gemini_ok([{'text': GOOD}])
+    provider = providers.GeminiProvider('gemini-3.6-flash')
+    result = with_post(fake_post, lambda: provider.draft('sys', 'user', SCHEMA))
+    check(result == {'ok':1} and len(calls) == 2,
+          'native schema 400 gets exactly one JSON-mode compatibility attempt')
+    check('responseJsonSchema' not in calls[1]['generationConfig']
+          and calls[1]['generationConfig']['responseMimeType'] == 'application/json'
+          and providers.json.dumps(SCHEMA, ensure_ascii=False)
+              in calls[1]['contents'][0]['parts'][-1]['text'],
+          'JSON mode preserves full schema in prompt and JSON MIME type')
+    with_post(fake_post, lambda: provider.draft('sys','user',SCHEMA))
+    check(len(calls) == 3 and 'responseJsonSchema' not in calls[-1]['generationConfig'],
+          'successful compatibility mode avoids repeating known-bad native schema')
+    for status in (400, 401, 429, 503):
+        attempts = []
+        def fail(url, json=None, **kwargs):
+            attempts.append(json)
+            return FakeResponse({'error':{'message':'Invalid argument'}},status=status)
+        p = providers.GeminiProvider('gemini-3.6-flash')
+        try:
+            with_post(fail, lambda:p.draft('sys','user',SCHEMA))
+        except providers.ProviderError:
+            pass
+        check(len(attempts) == (2 if status == 400 else 1),
+              f'HTTP {status} retries remain bounded and exclude auth/quota/transient failures')
+
+
 def test_gemini_thought_parts_excluded():
     """Thought parts (reasoning trace) never reach the parser or output."""
     def fake_post(url, json=None, timeout=None, headers=None):
@@ -791,6 +824,7 @@ def main():
         test_nvidia_reasoning_trace_never_parsed,
         test_nvidia_format_repair,
         test_gemini_model_profiles,
+        test_gemini_schema_compatibility,
         test_gemini_thought_parts_excluded,
         test_gemini_format_repair,
     ]
