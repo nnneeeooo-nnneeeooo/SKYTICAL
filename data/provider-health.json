@@ -3,18 +3,23 @@
   "platforms": {
     "wechat": {
       "failureClass": "quota",
-      "cooldownUntilUtc": "2026-10-24T00:37Z",
-      "updatedUtc": "2026-10-23T18:37Z"
+      "cooldownUntilUtc": "2026-10-24T11:03Z",
+      "updatedUtc": "2026-10-24T05:03Z"
     },
     "gemini": {
       "failureClass": "quota",
-      "cooldownUntilUtc": "2026-10-24T03:45Z",
-      "updatedUtc": "2026-10-23T21:45Z"
+      "cooldownUntilUtc": "2026-10-24T11:04Z",
+      "updatedUtc": "2026-10-24T05:04Z"
+    },
+    "openrouter": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-24T06:06Z",
+      "updatedUtc": "2026-10-24T05:06Z"
     },
     "nvidia": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-24T01:07Z",
-      "updatedUtc": "2026-10-24T00:07Z"
+      "cooldownUntilUtc": "2026-10-24T06:08Z",
+      "updatedUtc": "2026-10-24T05:08Z"
     }
   }
 }
