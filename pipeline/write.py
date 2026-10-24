@@ -39,7 +39,7 @@ from pathlib import Path
 
 from opencc import OpenCC
 import news_retry
-from editorial_policy import eligible_providers, news_policy
+from editorial_policy import eligible_providers, is_free_provider, news_policy
 from draft_recovery import (
     normalize_reader_copy, normalize_fact_ids, repair_prompt, draft_timeout, ProviderCallTimeout,
 )
@@ -80,7 +80,7 @@ from providers import (
     safe_failure_message,
 )
 
-MAX_GROUPS_PER_RUN = 10
+MAX_GROUPS_PER_RUN = 5
 MAX_DRAFT_SECONDS_PER_RUN = 15 * 60
 MAX_MODEL_ATTEMPT_SECONDS = 60
 PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK = 30
@@ -1554,11 +1554,9 @@ def _provider_chain_budget(providers) -> float:
                      if not _is_final_paid_provider(provider)]
         # Existing primary/shared fallback repairs remain bounded, while
         # neither can spend Fallback's own repair time.
-        preferred_budget = sum(_provider_attempt_allowance(
-            provider, max_attempt_seconds=PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK)
-            for provider in preferred)
+        preferred_budget = sum(_preferred_attempt_cap(provider) for provider in preferred)
         if preferred:
-            preferred_budget += 2 * PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK
+            preferred_budget += 2 * max(_preferred_attempt_cap(p) for p in preferred)
         return final_paid_reserve + preferred_budget + (
             len(preferred) + 2) * PROVIDER_ROUTING_OVERHEAD_SECONDS
     budget = max(
@@ -1574,6 +1572,25 @@ def _provider_chain_budget(providers) -> float:
             len(providers) * PROVIDER_ROUTING_OVERHEAD_SECONDS)
         budget = max(budget, attempt_budget + routing_overhead)
     return budget
+
+
+def _preferred_attempt_cap(provider):
+    return (_provider_attempt_allowance(provider) if is_free_provider(provider)
+            else PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK)
+
+
+def _probe_draft(provider, group, **kwargs):
+    trace = _RunTrace("provider_probe", "article_probe", group)
+    try:
+        candidate, facts = _validated_draft(provider, group, run_trace=trace, **kwargs)
+        passed = (candidate and candidate.get("status") in {"publish", "publish_brief"}
+                  and build_article(candidate, group, now_utc(), set(), provider.label, facts))
+        trace.finish("probe_verified" if passed else "probe_rejected",
+                     "publish" if passed else "reject", provider.label)
+        return (candidate, facts) if passed else (None, None)
+    except Exception:
+        trace.finish("probe_failed", "retry_pending", provider.label)
+        raise
 
 
 def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
@@ -2907,6 +2924,11 @@ def main() -> None:
     persisted_cooldowns = provider_health.active_platforms(now)
     providers = [p for p in configured_providers
                  if p.name not in persisted_cooldowns]
+    accounted_providers = list(providers)
+    if any(getattr(p, "requires_verification", False) and is_free_provider(p)
+           for p in providers):
+        from free_provider_probe import prepare_routes
+        providers = prepare_routes(accounted_providers, now, _probe_draft)
     if persisted_cooldowns:
         rows = provider_health.cooldown_rows(now)
         details = ", ".join(
@@ -2930,7 +2952,7 @@ def main() -> None:
               + " -> ".join(p.label for p in providers))
         if _final_paid_reserve_seconds(providers):
             print("write: Fallback final fallback policy: preferred calls capped "
-                  f"at {PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK}s; independent "
+                  f"at {PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK}s for paid routes; free routes keep their model budget; independent "
                   "draft/repair time reserved")
         try:
             # Thin-story companion retrieval: excerpt-only items (e.g.
@@ -3075,7 +3097,7 @@ def main() -> None:
                 attempt_cap = None
                 if final_paid_reserve and not is_final_paid:
                     provider_deadline -= final_paid_reserve
-                    attempt_cap = PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK
+                    attempt_cap = _preferred_attempt_cap(provider)
                     if time.monotonic() >= provider_deadline:
                         print(f"write: {provider.label} skipped on group "
                               f"{group.get('id')}: preserving Fallback draft/repair time")
@@ -3127,6 +3149,10 @@ def main() -> None:
                     content_failed |= classify_failure(exc) in {"invalid_json", "truncated"}
                     print(f"write: {provider.label} error on group "
                           f"{group.get('id')}: {exc}; trying next provider")
+                    from free_provider_probe import quarantine
+                    if is_free_provider(provider) and quarantine(provider, exc):
+                        alive[:] = [p for p in alive if p.label != provider.label]
+                        run_trace.disable_last_provider()
                     if _record_transient_platform_failure(
                             provider, exc, alive, dead_platforms,
                             transient_failure_counts):
@@ -3278,7 +3304,7 @@ def main() -> None:
         # (exactly once - the counters live on the provider objects).
         import usage as usage_ledger
 
-        usage_ledger.record_providers(providers)
+        usage_ledger.record_providers(accounted_providers)
     except Exception as exc:
         print(f"write: usage ledger update failed ({exc})")
     calls_note = " ".join(f"{label}={n}" for label, n in ai_calls.items()) \
@@ -3286,7 +3312,7 @@ def main() -> None:
     # http_calls includes internal format-repair calls, so it is the true
     # spend figure; ai_calls counts drafting attempts.
     http_note = " ".join(
-        f"{p.label}={p.http_calls}" for p in providers
+        f"{p.label}={p.http_calls}" for p in accounted_providers
         if getattr(p, "http_calls", 0)) or "none"
     print(f"write stats: ai_calls {calls_note} | http_calls {http_note}")
     if configured_providers and dead_auth and dead_auth == {

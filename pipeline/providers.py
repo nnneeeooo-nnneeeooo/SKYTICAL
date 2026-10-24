@@ -277,6 +277,14 @@ class ProviderQuotaError(ProviderError):
     """Rate/credit quota exhausted; stop using this provider this run."""
 
 
+class ProviderRouteError(ProviderError):
+    """A request/model error that should quarantine this route, not its peers."""
+
+    def __init__(self, response):
+        self.status = response.status_code
+        super().__init__(safe_api_error(response))
+
+
 def classify_failure(exc) -> str:
     """Stable, response-free failure class for run-history diagnostics."""
     chain = []
@@ -288,6 +296,9 @@ def classify_failure(exc) -> str:
         return "auth"
     if any(isinstance(item, ProviderQuotaError) for item in chain):
         return "quota"
+    route = next((item for item in chain if isinstance(item, ProviderRouteError)), None)
+    if route is not None:
+        return "model_unavailable" if route.status in (404, 410) else "invalid_request"
     timeout_types = tuple(
         cls for cls in (
             getattr(requests, "Timeout", None),
@@ -344,6 +355,35 @@ def safe_failure_message(value, limit: int = 180) -> str:
         text,
     )
     return text[:max(1, min(int(limit or 180), 300))]
+
+
+def safe_api_error(response) -> str:
+    """Extract finite diagnostics; never copy a response body or echoed prompt."""
+    try:
+        data = response.json()
+    except (ValueError, TypeError):
+        data = {}
+    error = data.get("error", {}) if isinstance(data, dict) else {}
+    error = error if isinstance(error, dict) else {}
+    parts = [f"HTTP {response.status_code}"]
+    code = str(error.get("status") or error.get("type") or error.get("code") or "")
+    if code in {"INVALID_ARGUMENT", "NOT_FOUND", "RESOURCE_EXHAUSTED", "UNAVAILABLE",
+                "PERMISSION_DENIED", "FAILED_PRECONDITION", "invalid_request_error"}:
+        parts.append(f"code={code}")
+    message = str(error.get("message") or "")
+    for pattern, diagnostic in (
+            (r"unknown (?:name|field)|unrecognized (?:field|parameter)", "unsupported_field"),
+            (r"schema.{0,80}(?:too complex|too many)|too many.{0,80}schema", "schema_too_complex"),
+            (r"invalid.{0,80}(?:schema|payload|argument)|schema.{0,80}invalid", "invalid_payload_or_schema"),
+            (r"billing|paid plan|free tier.*not available", "billing_or_free_tier_requirement"),
+            (r"model.{0,80}(?:not found|not supported|not available)", "model_unavailable")):
+        if re.search(pattern, message, re.I):
+            parts.append(f"reason={diagnostic}")
+            break
+    field = re.search(r'''(?:Unknown name|Unknown field|at) ["']([A-Za-z_][A-Za-z0-9_.\[\]]{0,80})["']''', message, re.I)
+    if field and not re.search(r"key|token|secret|password|authorization", field[1], re.I):
+        parts.append(f"field={field[1]}")
+    return safe_failure_message(" ".join(parts))
 
 
 def extract_json(text: str) -> dict:
@@ -467,6 +507,7 @@ def _safe_response_meta(response, duration_ms: int) -> dict:
     return {
         "status": int(getattr(response, "status_code", 0) or 0),
         "durationMs": max(0, int(duration_ms or 0)),
+        "error": safe_api_error(response) if response.status_code >= 400 else None,
         "headers": {
             str(key).lower(): str(value)[:240]
             for key, value in headers.items()
@@ -476,12 +517,16 @@ def _safe_response_meta(response, duration_ms: int) -> dict:
 
 
 class GeminiProvider:
+    requires_verification = True
+    max_attempt_seconds = 180
+    group_budget_seconds = 360
     name = "gemini"
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
         self.model = (model or os.environ.get("AVWIRE_GEMINI_MODEL")
                       or GEMINI_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
+        self.json_schema_mode = "native"
         self.http_calls = 0  # real API spend incl. format-repair calls
         self.repair_calls = 0
         self.http_duration_ms = 0
@@ -517,7 +562,9 @@ class GeminiProvider:
                 raise ProviderError("HTTP 429 (per-minute rate limit)")
             raise ProviderQuotaError("HTTP 429 (free-tier quota exhausted?)")
         if response.status_code >= 400:
-            raise ProviderError(f"HTTP {response.status_code}")
+            if response.status_code in (400, 404, 410, 422):
+                raise ProviderRouteError(response)
+            raise ProviderError(safe_api_error(response))
 
     def _generation_config(self, schema: dict, repair: bool) -> dict:
         profile = MODEL_PROFILES.get(self.model, {})
@@ -563,8 +610,7 @@ class GeminiProvider:
             "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
             "generationConfig": self._generation_config(schema, repair=False),
         }
-        response = self._post(payload, repair=False)
-        self._check_status(response)
+        response = self._schema_post(payload, schema, repair=False)
         text = self._final_text(response)
         if text is None:
             return None
@@ -572,6 +618,37 @@ class GeminiProvider:
             return extract_json(text)
         except ValueError as exc:
             return self._repair(text, schema, exc)
+
+    def _schema_post(self, payload, schema, *, repair):
+        """One bounded JSON-mode fallback for native-schema HTTP 400.
+
+        The full schema remains in the prompt and the writer still performs
+        every local validation/evidence check. No auth/quota/transient error
+        takes this path, and an incompatible fallback is never retried here.
+        """
+        from copy import deepcopy
+
+        def json_mode_payload():
+            body = deepcopy(payload)
+            body["generationConfig"].pop("responseJsonSchema", None)
+            body["contents"][0]["parts"].append({"text":
+                "Return ONLY a JSON object conforming exactly to this schema:\n"
+                + json.dumps(schema, ensure_ascii=False)})
+            return body
+
+        body = json_mode_payload() if self.json_schema_mode == "prompt" else payload
+        response = self._post(body, repair=repair)
+        try:
+            self._check_status(response)
+        except ProviderRouteError as exc:
+            if (exc.status != 400 or self.json_schema_mode == "prompt"
+                    or "billing_or_free_tier_requirement" in str(exc)):
+                raise
+            print(f"write: {self.label} native schema rejected; trying JSON mode once")
+            self.json_schema_mode = "prompt"
+            response = self._post(json_mode_payload(), repair=repair)
+            self._check_status(response)
+        return response
 
     def _reset_grounding(self) -> None:
         self.google_search_used = False
@@ -703,8 +780,7 @@ class GeminiProvider:
             "contents": [{"role": "user", "parts": [{"text": broken}]}],
             "generationConfig": self._generation_config(schema, repair=True),
         }
-        response = self._post(payload, repair=True)
-        self._check_status(response)
+        response = self._schema_post(payload, schema, repair=True)
         text = self._final_text(response)
         if not text:
             raise ProviderError("format repair returned no text")
@@ -717,6 +793,9 @@ class GeminiProvider:
 
 
 class NvidiaProvider:
+    requires_verification = True
+    max_attempt_seconds = 180
+    group_budget_seconds = 360
     name = "nvidia"
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
@@ -824,12 +903,10 @@ class NvidiaProvider:
         if response.status_code in (402, 429):
             raise ProviderQuotaError(
                 f"HTTP {response.status_code} (credits exhausted?)")
-        if response.status_code == 404:
-            raise ProviderError(
-                f"model not found: {self.model} "
-                "(not in this key's catalog yet?)")
+        if response.status_code in (400, 404, 410, 422):
+            raise ProviderRouteError(response)
         if response.status_code >= 400:
-            raise ProviderError(f"HTTP {response.status_code}")
+            raise ProviderError(safe_api_error(response))
 
     def draft(self, system_prompt: str, user_prompt: str, schema: dict):
         # No guided decoding on NIM across all models: enforce JSON by prompt
@@ -876,6 +953,9 @@ class NvidiaProvider:
 
 
 class WechatProvider(NvidiaProvider):
+    requires_verification = False
+    max_attempt_seconds = 60
+    group_budget_seconds = 120
     """WeChat Coding Plan's OpenAI-compatible DeepSeek gateway."""
 
     name = "wechat"
@@ -1029,12 +1109,10 @@ class OpenRouterProvider(NvidiaProvider):
             # Free-model limits can be model-specific. Keep trying the next
             # OpenRouter model instead of disabling the shared key.
             raise ProviderError("HTTP 429 rate limit")
-        if response.status_code == 404:
-            raise ProviderError(
-                f"model not found: {self.model} "
-                "(not in this key's catalog yet?)")
+        if response.status_code in (400, 404, 410, 422):
+            raise ProviderRouteError(response)
         if response.status_code >= 400:
-            raise ProviderError(f"HTTP {response.status_code}")
+            raise ProviderError(safe_api_error(response))
 
     @staticmethod
     def _raise_embedded_error(error, stage: str) -> None:

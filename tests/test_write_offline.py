@@ -39,6 +39,9 @@ import write  # noqa: E402
 # own modules; prevent fixture domains from ever reaching requests here.
 write.enrich_pending = lambda groups: None
 companion.enrich_thin_groups = lambda groups: 0
+# Admission makes real catalog/inference calls; this suite supplies canned
+# drafts. Its network and admission behavior is covered in test_free_provider_probe.
+providers.GeminiProvider.requires_verification = False
 
 NOW = common.now_utc()
 OLD_STAMP = common.iso_minute(NOW - timedelta(days=30))
@@ -462,8 +465,9 @@ def test_group_cap_and_unique_ids():
     ids = [a["id"] for a in articles]
     check(len(set(ids)) == len(ids), "colliding slugs got unique article ids")
     pending = load(DATA / "pending.json")
-    check(len(pending["groups"]) == 2,
-          f"2 groups beyond the cap stay pending, got {len(pending['groups'])}")
+    remaining = len(groups) - write.MAX_GROUPS_PER_RUN
+    check(len(pending["groups"]) == remaining,
+          f"{remaining} groups beyond the cap stay pending, got {len(pending['groups'])}")
     seen = load(DATA / "seen.json")
     check(len(seen["urls"]) == write.MAX_GROUPS_PER_RUN,
           f"seen has exactly the published urls, got {len(seen['urls'])}")
