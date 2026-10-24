@@ -21,19 +21,19 @@
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-10-24T19:26Z",
-      "checkedUtc": "2026-10-24T13:26Z",
+      "untilUtc": "2026-10-25T02:14Z",
+      "checkedUtc": "2026-10-24T20:14Z",
       "failureClass": "unexpected",
-      "diagnostic": "headlineSupportedBy references a fact that did not verify",
+      "diagnostic": "F1 claim adds high-risk atom '13' not present in its own sourceQuote",
       "probeVersion": 2,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-24T19:26Z",
-      "checkedUtc": "2026-10-24T13:26Z",
+      "untilUtc": "2026-10-25T02:14Z",
+      "checkedUtc": "2026-10-24T20:14Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
       "probeVersion": 2,
       "schemaMode": null
     },
@@ -48,10 +48,19 @@
     },
     "groq:llama-3.3-70b-versatile": {
       "status": "unavailable",
-      "checkedUtc": "2026-10-24T18:51Z",
       "untilUtc": "2026-10-25T18:51Z",
+      "checkedUtc": "2026-10-24T18:51Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
+      "probeVersion": 2,
+      "schemaMode": null
+    },
+    "cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+      "status": "waiting",
+      "checkedUtc": "2026-10-24T20:14Z",
+      "untilUtc": "2026-10-25T02:14Z",
+      "failureClass": "unexpected",
+      "diagnostic": "publish_brief body does not meet brief contract (zh=114 content characters, en=49 words, paragraphs=2/2)",
       "probeVersion": 2,
       "schemaMode": null
     }
