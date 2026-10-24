@@ -455,19 +455,19 @@ fixed_tpe_label = (
     f"{fixed_tpe.strftime('%I:%M %p').lstrip('0')} TPE"
 )
 check("page shows thirty-day history, fallback chain and final model",
-      "最近 30 天模型執行與失敗紀錄" in page
+      "最近30天模型執行與失敗紀錄" in page
       and fixed_tpe_label in page
       and "Nemotron 3 Ultra 550B A55B" in page
-      and "JSON 格式錯誤" in page
+      and "JSON格式錯誤" in page
       and "Gemini 3.6 Flash" in page
-      and "→ 改用" in page)
+      and "→改用" in page)
 check("page independently shows private workbench theoretical spend",
-      "私人補稿功能用的理論花費（最近 30 天）" in page
+      "私人補稿功能用的理論花費（最近30天）" in page
       and "完全手動撰稿" in page
-      and "實際新增 API 支出" in page)
+      and "實際新增API支出" in page)
 check("page shows stage duration and repair count",
       "Archive Context retrieval" in page
-      and "223.4 秒" in page
+      and "223.4秒" in page
       and "HTTP 2 · Repair 1" in page)
 check("dashboard sanitizes secrets and escapes HTML",
       "very-secret" not in page
@@ -494,21 +494,21 @@ check("recent model statistics follow configured model priority",
           "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
           "nvidia:nvidia/nemotron-3-super-120b-a12b"])
 check("page is noindex and shows totals",
-      "noindex" in page and "API 用量" in page and "$0" in page)
+      "noindex" in page and "API用量" in page and "$0" in page)
 check("page shows exact Codex GPT-5 task totals and cost semantics",
-      "GPT-5 網站製作累計（Codex）" in page
+      "GPT-5網站製作累計（Codex）" in page
       and f"{snapshot_total:,}" in page
       and f"{snapshot_entry['cachedInputTokens']:,}" in page
-      and "推理 tokens 已包含在輸出 tokens 內，不重複加總" in page
-      and "實際新增 API 支出" in page)
+      and "推理tokens已包含在輸出tokens內，不重複加總" in page
+      and "實際新增API支出" in page)
 check("page shows separate GPT-5.6 Sol non-API reference rows",
-      "方案內 GPT-5.6 Sol 用途與單價" in page
+      "方案內GPT-5.6 Sol用途與單價" in page
       and "新聞撰稿（手動補稿）" in page
       and "網站修改（Codex）" in page
       and page.count("<td>$30.00</td>") == 2
       and "不重複計入任何總額" in page)
 check("page shows GPT-5 family official rates without adding them to totals",
-      "GPT-5 系列 API 理論牌價" in page
+      "GPT-5系列API理論牌價" in page
       and "GPT-5.6 Terra" in page
       and "GPT-5.4 Pro" in page
       and "GPT-5 nano" in page
