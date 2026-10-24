@@ -228,7 +228,15 @@ def main() -> None:
     policy = (ROOT / "site" / "editorial-policy" / "index.html").read_text(
         encoding="utf-8")
     assert "編輯、更正與聯絡政策" in policy
-    assert "SKYTICAL/issues/new" in policy
+    for sub in ("", "en/"):
+        contact_policy = (ROOT / "site" / sub / "editorial-policy" /
+                          "index.html").read_text(encoding="utf-8")
+        contact_soup = BeautifulSoup(contact_policy, "html.parser")
+        assert "kass09221477@gmail.com" in contact_soup.main.get_text()
+        contact_link = contact_soup.select_one("main a.btn-primary")
+        assert contact_link["href"] == "mailto:kass09221477@gmail.com"
+        assert not contact_link.has_attr("target")
+        assert "GitHub Issues" not in contact_soup.main.get_text()
     assert 'href="/editorial-policy/"' in article
 
     for lang, sub, label in (("zh", "", "SKYTICAL團隊"),
