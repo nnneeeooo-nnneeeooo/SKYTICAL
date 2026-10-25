@@ -188,6 +188,17 @@ def rejection_reason(article, raw, captions=None):
     model = images.find_aircraft_type(article)
     headline_models = images.headline_aircraft_types(article)
     eligible_models = headline_models or ([model] if model else [])
+    # The G-IV-derived G400 predates the clean-sheet G400 that first flew in
+    # 2024. Their shared name is not enough to establish a photo match.
+    if (str(model or "").casefold() in {"g400", "gulfstream g400"} and
+            not re.search(r"\bG[- ]?IV(?:[- ]?SP)?\b", ctx, re.I)):
+        old_airframe = re.search(r"\bG[- ]?IV(?:[- ]?SP)?\b", ev, re.I)
+        try:
+            predates_first_flight = int(im.get("photoYear")) < 2024
+        except (TypeError, ValueError):
+            predates_first_flight = False
+        if old_airframe or predates_first_flight:
+            return "g400-generation-mismatch"
     airport = images.find_airport(article)
     matched = str(im.get("matched") or "")
     # Exact event caption can describe seats/ceremony without repeating model.

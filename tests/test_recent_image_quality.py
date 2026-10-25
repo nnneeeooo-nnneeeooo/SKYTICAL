@@ -26,6 +26,8 @@ def main() -> int:
     for path in sorted(images.ARTICLES_DIR.glob("*.json")):
         batch = json.loads(path.read_text(encoding="utf-8"))
         for article in batch.get("articles") or []:
+            if article.get("archived") is True:
+                continue
             try:
                 published = images.parse_iso(str(article.get("publishedUtc")))
             except (TypeError, ValueError):
