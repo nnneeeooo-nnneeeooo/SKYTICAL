@@ -2,28 +2,47 @@
   "use strict";
   var cjk = "\\u2e80-\\u9fff\\uf900-\\ufaff\\uff01-\\uff60\\u{20000}-\\u{323af}";
   var spaces = new RegExp("(?<=[" + cjk + "]) +| +(?=[" + cjk + "])", "gu");
+  var sentenceEnd = /[。！？][」』”’）)】\]〕〉》]*(?=[^\s。！？!?，,、；;：:．.…」』”’）)】\]〕〉》])/gu;
   var blocks = new Set("HTML HEAD BODY ADDRESS ARTICLE ASIDE BLOCKQUOTE BR BUTTON DD DETAILS DIALOG DIV DL DT FIELDSET FIGCAPTION FIGURE FOOTER FORM H1 H2 H3 H4 H5 H6 HEADER HR LI MAIN NAV OL OPTION P SECTION SUMMARY TABLE TBODY TD TH THEAD TR UL".split(" "));
   var skip = "script,style,pre,code,textarea,[contenteditable]:not([contenteditable=false])";
   var attrs = ["alt", "title", "placeholder", "aria-label", "aria-description"];
 
-  function compact(text) { return text.replace(spaces, ""); }
+  function changes(text) {
+    var removed = new Set(), positions = [];
+    text.replace(spaces, function (match, offset) {
+      for (var i = 0; i < match.length; i++) removed.add(offset + i);
+      return "";
+    });
+    for (var i = 0; i < text.length; i++) if (!removed.has(i)) positions.push(i);
+    var compacted = positions.map(function (index) { return text[index]; }).join("");
+    var inserted = new Set();
+    compacted.replace(sentenceEnd, function (match, offset) {
+      inserted.add(positions[offset + match.length]);
+      return match;
+    });
+    return { removed: removed, inserted: inserted };
+  }
+
+  function cleanNode(text, offset, edits) {
+    return text.split("").map(function (char, index) {
+      var position = offset + index;
+      return edits.removed.has(position) ? "" :
+        (edits.inserted.has(position) ? " " : "") + char;
+    }).join("");
+  }
+
+  function compact(text) { return cleanNode(text, 0, changes(text)); }
 
   function normalize(root) {
     var run = [];
     function flush() {
       var text = run.map(function (node) { return node.data; }).join("");
-      var removed = new Set();
-      text.replace(spaces, function (match, offset) {
-        for (var i = 0; i < match.length; i++) removed.add(offset + i);
-        return "";
-      });
+      var edits = changes(text);
       var offset = 0;
-      if (removed.size) run.forEach(function (node) {
+      if (edits.removed.size || edits.inserted.size) run.forEach(function (node) {
         var original = node.data;
         // String offsets and regex indices both use UTF-16 code units.
-        var clean = original.split("").filter(function (_, index) {
-          return !removed.has(offset + index);
-        }).join("");
+        var clean = cleanNode(original, offset, edits);
         offset += original.length;
         if (clean !== original) node.data = clean;
       });

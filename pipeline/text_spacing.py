@@ -7,6 +7,9 @@ from html.parser import HTMLParser
 
 CJK = r"\u2e80-\u9fff\uf900-\ufaff\uff01-\uff60\U00020000-\U000323af"
 SPACES = re.compile(rf"(?<=[{CJK}]) +| +(?=[{CJK}])")
+# Keep sentence separation even when source copy omitted the space. Include
+# closing quotes/brackets, but never split repeated punctuation or a paragraph.
+SENTENCE_END = re.compile(r'[。！？][」』”’）)】\]〕〉》]*(?=[^\s。！？!?，,、；;：:．.…」』”’）)】\]〕〉》])')
 BLOCKS = set("html head body address article aside blockquote br button dd details dialog div dl dt fieldset figcaption figure footer form h1 h2 h3 h4 h5 h6 header hr li main nav ol option p section summary table tbody td th thead tr ul".split())
 SKIP = {"script", "style", "pre", "code", "textarea"}
 TEXT_ATTRS = {"alt", "title", "placeholder", "aria-label", "aria-description"}
@@ -15,8 +18,19 @@ META_TEXT = {"description", "og:title", "og:description", "og:image:alt",
 ATTR = re.compile(r'''([\w:-]+)(\s*=\s*)(["'])(.*?)\3''', re.DOTALL)
 
 
+def _spacing_changes(text: str):
+    removed = {i for match in SPACES.finditer(text)
+               for i in range(match.start(), match.end())}
+    positions = [i for i in range(len(text)) if i not in removed]
+    compacted = "".join(text[i] for i in positions)
+    inserted = {positions[match.end()] for match in SENTENCE_END.finditer(compacted)}
+    return removed, inserted
+
+
 def compact_text(text: str) -> str:
-    return SPACES.sub("", text)
+    removed, inserted = _spacing_changes(text)
+    return "".join((" " if i in inserted else "") + char
+                   for i, char in enumerate(text) if i not in removed)
 
 
 class _DisplaySpacing(HTMLParser):
@@ -34,16 +48,17 @@ class _DisplaySpacing(HTMLParser):
 
     def flush(self):
         text = "".join(value for _, _, value in self.run)
-        removed = set()
-        for match in SPACES.finditer(text):
-            removed.update(range(match.start(), match.end()))
+        removed, inserted = _spacing_changes(text)
         cursor = 0
-        if removed:
+        if removed or inserted:
             for start, raw, value in self.run:
-                cleaned = "".join(c for i, c in enumerate(value)
+                cleaned = "".join((" " if cursor + i in inserted else "") + c
+                                  for i, c in enumerate(value)
                                   if cursor + i not in removed)
                 if cleaned != value:
                     # Entities are individual tokens; untouched ones stay verbatim.
+                    if raw != value:
+                        cleaned = html.escape(cleaned, quote=False)
                     self.edits.append((start, start + len(raw), cleaned))
                 cursor += len(value)
         self.run.clear()
