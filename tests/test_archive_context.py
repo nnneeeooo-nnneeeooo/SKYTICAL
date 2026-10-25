@@ -487,6 +487,70 @@ def test_background_facts_are_not_rearchived() -> None:
     assert facts[0]["claim"] == old["facts"][0]["claim"]
 
 
+def test_archive_subjects_and_recursive_context_are_excluded() -> None:
+    old = archive("same_aircraft")
+    original = copy.deepcopy(old["facts"][0])
+    old["facts"].extend([
+        {**original, "evidenceScope": "archive", "archiveContext": True,
+         "archiveEventId": "a-other-story"},
+        {**original, "claim": "The aircraft is gaining ground as 777X slips.",
+         "sourceQuote": "The aircraft is gaining ground as 777X slips."},
+    ])
+    sources = [{"name": "Fixture", "url": old["sources"][0]["url"]}]
+    assert archive_context._qualified_facts(old, sources) == [
+        {"claim": original["claim"], "source_quote": original["sourceQuote"],
+         "source_url": old["sources"][0]["url"], "source_name": "Fixture"}]
+
+
+def test_programme_context_filters_unrelated_delivery_totals() -> None:
+    current = {"items": [{"title": "Emirates discusses the Boeing 777X programme",
+                          "summary": "Emirates discussed the Boeing 777X programme."}]}
+    old = archive("same_aircraft")
+    old.update({
+        "id": "a-boeing-777x-background", "publishedUtc": "2026-07-01T00:00Z",
+        "sourcePublishedUtc": "2026-07-01T00:00Z",
+        "en": {"title": "Boeing 777X programme and delivery report"},
+        "zh": {}, "entities": {"organizations": ["Boeing"],
+                                   "aircraft_models": ["777X"]},
+        "facts": [{**old["facts"][0], "claim": claim, "sourceQuote": claim}
+                  for claim in ["Boeing 777X deliveries are expected in 2027.",
+                                "Boeing delivered 161 commercial aircraft.",
+                                "Boeing Defence delivered 33 aircraft."]],
+    })
+    current["items"][0]["publishedUtc"] = "2026-07-30T00:00Z"
+    result = archive_context.retrieve_archive_context(current, articles=[old])
+    assert len(result["selected_events"]) == 1
+    selected = result["selected_events"][0]
+    assert selected["relationship_type"] == "programme_background"
+    assert [f["claim"] for f in selected["facts"]] == [
+        "Boeing 777X deliveries are expected in 2027."]
+    old["facts"] = old["facts"][1:]
+    result = archive_context.retrieve_archive_context(current, articles=[old])
+    assert not result["selected_events"]
+    assert result["excluded_candidates"][0]["reason"] == "no directly related programme facts"
+
+
+def test_context_balance_and_milestone_translation() -> None:
+    draft = brief_draft()
+    source = draft["facts"][0]
+    archive = {**source, "factId": "F2", "evidenceScope": "archive",
+               "claim": "Boeing 777X has a 2027 debut.",
+               "sourceQuote": "Boeing 777X has a 2027 debut."}
+    assert write._evidence_binding_problem(draft, [source, archive]) is None
+    assert "must not outnumber" in write._evidence_binding_problem(
+        draft, [source, archive, {**archive, "factId": "F3"}])
+    unclear = {**archive, "claim": "The aircraft is gaining ground.",
+               "sourceQuote": "The aircraft is gaining ground."}
+    assert "unresolved" in write._evidence_binding_problem(draft, [source, unclear])
+    draft["zh"]["body"] = ["波音777X預計2027年首飛。"]
+    assert "first flight" in write._evidence_binding_problem(draft, [source, archive])
+    draft["zh"]["body"] = ["波音777X預期2027年交機。"]
+    assert write._evidence_binding_problem(draft, [source, archive]) is None
+    draft["zh"]["body"] = ["波音777X首飛。"]
+    explicit = {**archive, "sourceQuote": "Boeing 777X completed its first flight before its debut."}
+    assert write._evidence_binding_problem(draft, [source, explicit]) is None
+
+
 def test_publish_brief_and_legacy_review_contracts() -> None:
     draft = brief_draft()
     assert write.draft_article_format(draft) == "brief"
@@ -591,6 +655,9 @@ def main() -> None:
         test_fact_scope_verification_and_current_support,
         test_background_sources_are_separate_evidence,
         test_background_facts_are_not_rearchived,
+        test_archive_subjects_and_recursive_context_are_excluded,
+        test_programme_context_filters_unrelated_delivery_totals,
+        test_context_balance_and_milestone_translation,
         test_publish_brief_and_legacy_review_contracts,
         test_archive_cannot_replace_current_event,
         test_no_archive_keeps_strict_source_verification,

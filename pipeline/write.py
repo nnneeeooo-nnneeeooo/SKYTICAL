@@ -537,6 +537,14 @@ OUTPUT RULES:
   company descriptions, repeated limitations and unrelated archive details.
   If the event and useful background fit the brief contract, publish_brief;
   never promote it to publish merely to make the article longer.
+- Each background paragraph must explain its direct link to the current
+    event and identify its own subject. Never transplant "The aircraft",
+    "the company", "it" or "its" from another story without an explicit,
+    source-supported antecedent. Omit the fact if its subject cannot be
+    established. Background facts must not outnumber current-source facts.
+    Never use general manufacturer or military delivery totals to pad a
+    passenger-route story. Keep first flight, first delivery and entry into
+    service distinct: "debut" alone never supports translating it as 首飛.
 - zh.title: 18 to 38 Chinese/alphanumeric characters excluding punctuation
   and spaces as a soft target only; go longer when needed to keep the headline
   clear, and never truncate or sacrifice meaning for length. A Chinese headline
@@ -2117,6 +2125,23 @@ def _evidence_binding_problem(draft: dict, facts: list[dict]) -> str | None:
         if not any(by_id[ref].get("evidenceScope") == "source"
                    for ref in refs):
             return f"{field} must include current-source support"
+    context_facts = [fact for fact in facts
+                     if fact.get("evidenceScope") in {"archive", "background"}]
+    if len(context_facts) > source_count:
+        return "background/archive facts must not outnumber current-source facts"
+    for fact in context_facts:
+        if archive_context.has_unresolved_subject(
+                fact.get("claim", ""), fact.get("sourceQuote", "")):
+            return f"{fact['factId']} has an unresolved background/archive subject"
+    zh = draft.get("zh") or {}
+    zh_copy = " ".join([str(zh.get("title") or ""),
+                        str(zh.get("summary") or ""),
+                        *(zh.get("body") or [])])
+    quotes = " ".join(str(fact.get("sourceQuote") or "") for fact in facts)
+    if ("首飛" in zh_copy and re.search(r"\bdebut\b", quotes, re.IGNORECASE)
+            and not re.search(r"\b(?:first|maiden)\s+(?:test\s+)?flight\b|"
+                              r"首飛|首次(?:試飛|飛行)", quotes, re.IGNORECASE)):
+        return "debut does not establish a first flight; preserve the source milestone"
     return None
 
 
