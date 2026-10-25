@@ -834,6 +834,11 @@ def glossary_problem(draft: dict, group: dict):
                         " ".join(str(p) for p in zh_block.get("body") or []),
                         str(flash.get("zh") or "")])
     zh_low = zh_text.casefold()
+    incident = draft.get("incident") or {}
+    for field in ("phase", "location", "desc"):
+        value = incident.get(field)
+        if isinstance(value, dict):
+            zh_low += " " + str(value.get("zh") or "").casefold()
     source_text = " ".join(
         f"{item.get('title') or ''} {item.get('summary') or ''} "
         f"{item.get('fulltext') or ''} {item.get('source') or ''}"
