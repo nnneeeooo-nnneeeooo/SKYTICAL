@@ -1774,20 +1774,6 @@
       "failureClass": "provider_failure",
       "title": "Airbus projects global freighter fleet to grow 46% by 2045"
     },
-    "ceb8c1dda484501321dfae75": {
-      "sourceUrls": [
-        "https://aerospaceglobalnews.com/news/lockheed-martin-department-of-war-850-f-35-fighter-jets",
-        "https://www.aerotime.aero/articles/pentagon-lockheed-10-year-f35-framework-850-jets"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 4,
-      "history": [],
-      "updatedUtc": "2026-10-25T05:23Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-25T07:23Z",
-      "title": "Pentagon and Lockheed agree 10-year framework for at least 850 F-35s"
-    },
     "08dc41148288d9ce5c8d09c1": {
       "sourceUrls": [
         "https://simpleflying.com/avelo-airlines-cancels-all-flights-to-9-destinations"
@@ -2375,7 +2361,7 @@
         "https://aerospaceglobalnews.com/news/air-astana-first-boeing-787-9-flight-testing",
         "https://www.aerotime.aero/articles/air-astanas-first-787-9-dreamliner-undergoes-flight-testing-ahead-of-2027-debut"
       ],
-      "contentFailures": 1,
+      "contentFailures": 2,
       "serviceFailures": 3,
       "status": "waiting",
       "history": [
@@ -2386,8 +2372,8 @@
           "updatedUtc": "2026-10-23T09:49Z"
         }
       ],
-      "updatedUtc": "2026-10-25T05:23Z",
-      "nextRetryUtc": "2026-10-25T07:23Z",
+      "updatedUtc": "2026-10-25T09:57Z",
+      "nextRetryUtc": "2026-10-25T15:57Z",
       "failureClass": "content_validation",
       "title": "Air Astana’s first 787-9 Dreamliner undergoes flight testing ahead of 2027 debut"
     },
@@ -3141,47 +3127,6 @@
       "nextRetryUtc": "2026-10-24T23:36Z",
       "title": "Why The 737-900 Didn't Turn Out To Be The Success Boeing Wanted It To Be"
     },
-    "97a79a018848bf78e53ff193": {
-      "sourceUrls": [
-        "https://news.livedoor.com/article/image_detail/32633315?img_id=57146383",
-        "https://news.livedoor.com/topics/detail/32633315",
-        "https://www.fnn.jp/articles/-/1138186"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-10-23T07:41Z"
-        },
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-10-23T09:49Z"
-        }
-      ],
-      "updatedUtc": "2026-10-24T14:08Z",
-      "nextRetryUtc": "2026-10-24T16:08Z",
-      "failureClass": "provider_failure",
-      "title": "佐渡空港で“航空機事故”想定した訓練 消火や負傷者救助の手順確認「しっかりとした体制組み対応を」新潟"
-    },
-    "1ac6f8760247b989ecd57de9": {
-      "sourceUrls": [
-        "https://www.vietnam.vn/ja/khoanh-khac-hai-may-bay-quan-su-philippines-va-nhau-tren-khong"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-10-24T14:08Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-24T16:08Z",
-      "title": "フィリピン軍の航空機2機が空中衝突した瞬間。"
-    },
     "c730511d4f3ae39dd3e93d87": {
       "sourceUrls": [
         "https://avherald.com/h?article=5448760a&opt=0",
@@ -3485,6 +3430,71 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-25T07:23Z",
       "title": "Sydney’s New $14 Billion Airport Officially Opens As First Jetstar Flight Takes Off"
+    },
+    "1ac6f8760247b989ecd57de9": {
+      "sourceUrls": [
+        "https://www.vietnam.vn/ja/2-may-bay-philippines-va-cham-tren-khong-ca-4-phi-cong-thiet-mang",
+        "https://www.vietnam.vn/ja/khoanh-khac-hai-may-bay-quan-su-philippines-va-nhau-tren-khong"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-10-24T14:08Z"
+        }
+      ],
+      "updatedUtc": "2026-10-25T09:57Z",
+      "nextRetryUtc": null
+    },
+    "97a79a018848bf78e53ff193": {
+      "sourceUrls": [
+        "http://www.excite.co.jp/news/article/NST_032911",
+        "https://news.livedoor.com/article/image_detail/32633315?img_id=57146383",
+        "https://news.livedoor.com/topics/detail/32633315",
+        "https://www.fnn.jp/articles/-/1138186"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-10-23T07:41Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-10-23T09:49Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-10-24T14:08Z"
+        }
+      ],
+      "updatedUtc": "2026-10-25T09:57Z",
+      "nextRetryUtc": null
+    },
+    "edcb19a8ee7b557e16758165": {
+      "sourceUrls": [
+        "https://simpleflying.com/sas-flight-jfk-turns-back-atlantic-passengers-find-hotels-midnight"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-25T09:57Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-25T11:57Z",
+      "title": "SAS Flight From JFK Turns Back Over Atlantic, Passengers Left To Find Hotels After Midnight"
     }
   }
 }

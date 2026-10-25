@@ -11,13 +11,13 @@
       "schemaMode": "prompt"
     },
     "gemini:gemini-3.5-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-10-25T06:34Z",
-      "checkedUtc": "2026-10-25T00:34Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
+      "status": "verified",
+      "untilUtc": "2026-10-26T09:57Z",
+      "checkedUtc": "2026-10-25T09:57Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 2,
-      "schemaMode": null
+      "schemaMode": "prompt"
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "verified",
@@ -57,10 +57,28 @@
     },
     "cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
       "status": "waiting",
-      "checkedUtc": "2026-10-25T05:23Z",
       "untilUtc": "2026-10-25T11:23Z",
+      "checkedUtc": "2026-10-25T05:23Z",
       "failureClass": "unexpected",
       "diagnostic": "publish_brief body does not meet brief contract (zh=130 content characters, en=70 words, paragraphs=4/4)",
+      "probeVersion": 2,
+      "schemaMode": null
+    },
+    "groq:openai/gpt-oss-120b": {
+      "status": "waiting",
+      "untilUtc": "2026-10-25T15:57Z",
+      "checkedUtc": "2026-10-25T09:57Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (credits exhausted?)",
+      "probeVersion": 2,
+      "schemaMode": null
+    },
+    "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
+      "status": "waiting",
+      "checkedUtc": "2026-10-25T09:57Z",
+      "untilUtc": "2026-10-25T15:57Z",
+      "failureClass": "unexpected",
+      "diagnostic": "entity lacks verified evidence: event_dates='2026-10-21'",
       "probeVersion": 2,
       "schemaMode": null
     }
