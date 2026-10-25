@@ -188,6 +188,28 @@ omitted_en_gatwick = draft("格域機場停水影響旅客服務",
 check("source material still activates the forbidden rendering gate",
       write.glossary_problem(omitted_en_gatwick, GATWICK_GROUP) is not None)
 
+SYDNEY_GROUP = {"items": [{"title": "Western Sydney airport opens",
+                            "summary": "Sydney's new airport begins service."}]}
+sydney_block = write.glossary_prompt_block(SYDNEY_GROUP)
+check("Sydney prompt requires Taiwan name and forbids wrong renderings",
+      all(word in sydney_block for word in ("雪梨", "悉尼", "稀泥", "NEVER")))
+for wrong in ("悉尼", "稀泥"):
+    for surface in ("title", "summary", "body", "flash", "phase", "location", "desc"):
+        bad = draft("雪梨新機場啟用", "New airport opens")
+        if surface in ("phase", "location", "desc"):
+            bad["incident"] = {surface: {"zh": wrong, "en": "Sydney"}}
+        elif surface == "flash":
+            bad["flash"]["zh"] = wrong
+        else:
+            bad["zh"][surface] = [wrong] if surface == "body" else wrong
+        problem = write.glossary_problem(bad, SYDNEY_GROUP)
+        check(f"source-only Sydney rejects {wrong} in {surface} despite correct title",
+              problem is not None and "forbidden rendering" in problem)
+for proper in ("雪梨新機場啟用", "Western Sydney 新機場啟用"):
+    check(f"Sydney accepts {proper}",
+          write.glossary_problem(draft(proper, "Western Sydney airport opens"),
+                                 SYDNEY_GROUP) is None)
+
 # ── fabrication tripwire (the Delta-pay body invention, 2026-07-27) ─────────
 
 THIN_GROUP = {"id": "g2", "items": [{
