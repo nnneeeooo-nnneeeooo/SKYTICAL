@@ -7,18 +7,6 @@
       "publishedUtc": "2026-10-25T20:53Z",
       "cat": "biz",
       "primarySource": "AeroTime",
-      "image": {
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/N413QS_2004_Gulfstream_Aerospace_G-IV_%28G400%29_C-N_1521_%2816195932930%29.jpg/1280px-N413QS_2004_Gulfstream_Aerospace_G-IV_%28G400%29_C-N_1521_%2816195932930%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=58161117",
-        "credit": "Tomás Del Coro from Las Vegas, Nevada, USA",
-        "license": "CC BY-SA 2.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "G400 aircraft",
-        "subject": "G400",
-        "description": "N413QS 2004 Gulfstream Aerospace G-IV (G400) C-N 1521 (16195932930)",
-        "photoYear": 2014
-      },
       "sourceImageCandidates": [],
       "zh": {
         "title": "Gulfstream 首架全配備 G400 完成機艙飛行測試",
@@ -143,7 +131,12 @@
           "sourceUrl": "https://www.aerotime.aero/articles/gulfstream-g400-cabin-flight-testing-nbaa-2026"
         }
       ],
-      "evidenceVersion": 2
+      "evidenceVersion": 2,
+      "imageSelection": {
+        "policyVersion": 2,
+        "status": "fallback",
+        "reason": "g400-generation-mismatch"
+      }
     }
   ]
 }
