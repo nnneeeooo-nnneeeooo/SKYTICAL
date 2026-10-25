@@ -2,22 +2,22 @@
   "schemaVersion": 1,
   "routes": {
     "gemini:gemini-3.6-flash": {
-      "status": "verified",
-      "untilUtc": "2026-10-25T17:36Z",
-      "checkedUtc": "2026-10-24T17:36Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-10-25T23:54Z",
+      "checkedUtc": "2026-10-25T17:54Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 2,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
-      "status": "verified",
-      "untilUtc": "2026-10-26T09:57Z",
-      "checkedUtc": "2026-10-25T09:57Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-10-25T23:54Z",
+      "checkedUtc": "2026-10-25T17:54Z",
+      "failureClass": "quota",
+      "diagnostic": "platform cooldown",
       "probeVersion": 2,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "verified",
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-10-25T14:36Z",
       "untilUtc": "2026-10-26T14:36Z",
+      "checkedUtc": "2026-10-25T14:36Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 2,
@@ -66,8 +66,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-25T15:57Z",
-      "checkedUtc": "2026-10-25T09:57Z",
+      "untilUtc": "2026-10-25T23:54Z",
+      "checkedUtc": "2026-10-25T17:54Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 2,
@@ -75,10 +75,10 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "untilUtc": "2026-10-25T15:57Z",
-      "checkedUtc": "2026-10-25T09:57Z",
+      "checkedUtc": "2026-10-25T17:54Z",
+      "untilUtc": "2026-10-25T23:54Z",
       "failureClass": "unexpected",
-      "diagnostic": "entity lacks verified evidence: event_dates='2026-10-21'",
+      "diagnostic": "verified factId values must be sequential F1..Fn",
       "probeVersion": 2,
       "schemaMode": null
     }

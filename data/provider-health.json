@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "platforms": {
+    "gemini": {
+      "failureClass": "quota",
+      "cooldownUntilUtc": "2026-10-25T23:54Z",
+      "updatedUtc": "2026-10-25T17:54Z"
+    },
     "groq": {
       "failureClass": "quota",
-      "cooldownUntilUtc": "2026-10-25T15:57Z",
-      "updatedUtc": "2026-10-25T09:57Z"
-    },
-    "gemini": {
-      "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-25T16:40Z",
-      "updatedUtc": "2026-10-25T15:40Z"
+      "cooldownUntilUtc": "2026-10-25T23:54Z",
+      "updatedUtc": "2026-10-25T17:54Z"
     }
   }
 }
