@@ -1170,7 +1170,6 @@ def _public_writer_model_name(value):
 
 
 _WRITER_MODELS = (
-    ("codex", "GPT 6.1 Sol"),
     ("gpt-6.1-sol", "GPT 6.1 Sol"),
     ("gpt-6-sol", "GPT 6 Sol"),
     ("gpt-6", "GPT 6"),
@@ -1211,6 +1210,8 @@ def writer_model(writer, writer_models=None):
     if provider == "manual":
         return _public_writer_model_name(model_value) or None
     model_id = model_value.lower()
+    if model_id.strip() == "codex":
+        return "GPT 6.1 Sol"
     for needle, model in _WRITER_MODELS:
         if needle in model_id:
             return model
