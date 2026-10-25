@@ -2982,7 +2982,7 @@
         "https://www.aerotime.aero/articles/faa-boeing-737ng-stabilizer-inspections",
         "https://www.reuters.com/business/aerospace-defense/allegiant-exercises-options-six-boeing-737-max-jets-worth-over-720-million-2026-10-23"
       ],
-      "contentFailures": 0,
+      "contentFailures": 1,
       "serviceFailures": 3,
       "status": "waiting",
       "history": [
@@ -3005,9 +3005,9 @@
           "updatedUtc": "2026-10-24T09:48Z"
         }
       ],
-      "updatedUtc": "2026-10-24T20:14Z",
-      "nextRetryUtc": "2026-10-25T20:14Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-10-25T20:24Z",
+      "nextRetryUtc": "2026-10-25T22:24Z",
+      "failureClass": "content_validation",
       "title": "FAA orders checks on nearly 2,000 Boeing 737s after pitch oscillation events"
     },
     "44685e15dc6ea147b338bbda": {
@@ -3204,52 +3204,6 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-24T22:14Z",
       "title": "Operation Guillotine: How The Boeing 707 Paved The Way For The Design Of Today's Fuselages"
-    },
-    "daeeccc6bddc5b0d28223788": {
-      "sourceUrls": [
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2F%40fs%2Fvar%2Frun%2Fsecrets%2Fkubernetes.io%2Fserviceaccount%2Ftoken",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FDockets%2FAviation%2FNYC06FA027%2F408195.pdf",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FDockets%2FAviation%2FNYC07MA162%2F392074.pdf",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FEvents%2Fsymp_air_cargo%2Fpresentations%2F4.1_IPA.pdf",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FO_n_O%2Fdocs%2FAVIATION%2F3573.PDF",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FO_n_O%2Fdocs%2FAVIATION%2F4966.PDF",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief.aspx%3Fev%25255Fid%3D12002%26key%3D0",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FPages%2Fbrief.aspx%3Fev%25255Fid%3D55627%26key%3D0",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2FRecs%2Fletters%2F2002%2FM02_25_28.pdf",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2Falj%2FO_n_O%2Fdocs%2FAVIATION%2F4471.pdf",
-        "https://www.ntsb.gov/_layouts/15/Authenticate.aspx?Source=%2Finvestigations%2FAccidentReports%2FPages%2FRAR1001.aspx"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-10-24T11:30Z"
-        },
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-10-24T13:41Z"
-        },
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-10-24T14:08Z"
-        },
-        {
-          "status": "ready",
-          "contentFailures": 0,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-10-24T17:36Z"
-        }
-      ],
-      "updatedUtc": "2026-10-24T21:57Z",
-      "nextRetryUtc": null
     },
     "99b7cbc21b40ee91d0e253d1": {
       "sourceUrls": [
@@ -3517,19 +3471,6 @@
       "nextRetryUtc": "2026-10-25T19:54Z",
       "title": "Why No Engine Other Than One Can Power Airbus' Most Fuel-Efficient Widebody"
     },
-    "3bfd5df9faeee8d5089acdc6": {
-      "sourceUrls": [
-        "https://simpleflying.com/how-b-21-raider-compares-b-2-spiritb-52-b-1b"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-25T17:54Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-25T19:54Z",
-      "title": "How The B-21 Raider Compares To The B-2 Spirit, B-52 & B-1B – And Why It Wins Every Category"
-    },
     "ba30474718504962dcc62d53": {
       "sourceUrls": [
         "https://simpleflying.com/where-to-spot-the-worlds-last-passenger-airbus-a340s"
@@ -3620,6 +3561,19 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-25T21:39Z",
       "title": "The surprising reason most airplanes are painted white News"
+    },
+    "1a258b99c9d0272596be6191": {
+      "sourceUrls": [
+        "https://simpleflying.com/why-westjet-sending-boeing-737-max-8-recliners-across-atlantic-american-jetblue-bet-lie-flat"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-10-25T20:24Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-25T22:24Z",
+      "title": "Why WestJet Is Sending Boeing 737 MAX 8 Recliners Across The Atlantic While American & JetBlue Bet On Lie-Flats"
     }
   }
 }
