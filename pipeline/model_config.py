@@ -16,8 +16,8 @@ DIRECT_MODEL_ORDER = (
 )
 
 FREE_HOSTED_MODEL_ORDER = (
-    "groq:llama-3.3-70b-versatile",
-    "cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "groq:openai/gpt-oss-120b",
+    "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
 )
 
 OPENAI_MODEL_ORDER = (
@@ -91,8 +91,8 @@ AUTOMATIC_MODEL_ORDER = (
 DEFAULT_PROVIDER_ORDER = ",".join(AUTOMATIC_MODEL_ORDER)
 
 MODEL_DISPLAY_NAMES = {
-    FREE_HOSTED_MODEL_ORDER[0]: "Groq · Llama 3.3 70B",
-    FREE_HOSTED_MODEL_ORDER[1]: "Cloudflare Workers AI · Llama 3.3 70B",
+    FREE_HOSTED_MODEL_ORDER[0]: "Groq · OpenAI GPT-OSS 120B",
+    FREE_HOSTED_MODEL_ORDER[1]: "Cloudflare Workers AI · Qwen3 30B A3B",
     "openai:gpt-6": "OpenAI · GPT 6",
     "wechat:Deepseek-v4-flash":
         "WeChat Coding Plan · DeepSeek V4 Flash",

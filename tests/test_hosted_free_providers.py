@@ -33,16 +33,25 @@ def main():
                 request = post.call_args
                 assert request.args[0] == p._endpoint()
                 body = request.kwargs['json']
-                assert body['model'] == p.model and body['max_tokens'] == 8192
+                assert body['model'] == p.model and body['max_tokens'] == p.output_tokens
                 assert 'JSON Schema' in body['messages'][1]['content']
-                assert not any(k in body for k in ('thinking', 'reasoning_effort', 'chat_template_kwargs'))
+                assert not any(k in body for k in ('thinking', 'chat_template_kwargs'))
+                if p.name == 'groq':
+                    assert body['reasoning_effort'] == 'low'
+                else:
+                    assert 'reasoning_effort' not in body
                 assert p.usage['inputTokens'] == 11 and p.usage['outputTokens'] == 3
                 assert 'test-cf' not in str(p.request_log) and 'test-groq' not in str(p.request_log)
+            with patch.object(providers.requests, 'post', return_value=good) as post:
+                p.draft('sys', 'user', {'properties': {'status': {}}})
+                system = post.call_args.kwargs['json']['messages'][0]['content']
+                assert '180-320' in system and '90-150' in system
+                assert 'never pad or repeat' in system
             broken = response({'choices': [{'message': {'content': '{"ok":1,,'}}]})
             with patch.object(providers.requests, 'post', side_effect=[broken, good]) as post:
                 assert p.draft('sys', 'user', {}) == {'ok': 1}
                 assert post.call_count == 2 and p.repair_calls == 1
-                assert post.call_args.kwargs['json']['max_tokens'] == 4096
+                assert post.call_args.kwargs['json']['max_tokens'] == p.repair_tokens
             for status, exc in [(401, providers.ProviderAuthError),
                                 (429, providers.ProviderQuotaError),
                                 (404, providers.ProviderRouteError),
@@ -70,13 +79,33 @@ def main():
                 assert probe.prepare_routes([p], datetime.now(timezone.utc), lambda *a, **kw: ({'status': 'reject'}, [])) == []
     with patch.dict(os.environ, {**creds, 'CLOUDFLARE_ACCOUNT_ID': '../bad'}, clear=True):
         assert not providers.CloudflareProvider().available()
+    try:
+        providers.GroqProvider()._check_status(response({'error': {
+            'message': 'Limit 8000, Requested 9000. SOURCE PRIVATE gsk_SECRET'}}, 413))
+        raise AssertionError('oversized request accepted')
+    except providers.ProviderError as exc:
+        assert 'token_limit=8000 requested_tokens=9000' in str(exc)
+        assert 'PRIVATE' not in str(exc) and 'gsk_SECRET' not in str(exc)
     import manual_draft
     with patch.dict(os.environ, creds, clear=True):
         selected = manual_draft._providers_for({
-            'model': 'cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast',
+            'model': 'cloudflare:@cf/qwen/qwen3-30b-a3b-fp8',
             'reasoningTier': 'deep'})
         assert [p.name for p in selected] == ['cloudflare', 'groq']
         assert manual_draft.CUSTOM_MODEL_RE.fullmatch(selected[0].label)
+    import write
+    p = providers.GroqProvider()
+    prompts = []
+    def reject(system, user, schema):
+        prompts.append(user)
+        return {'status': 'reject', 'reason': 'insufficient evidence'}
+    with patch.object(write, 'group_prompt', return_value='SOURCE_TEST'), patch.object(
+            write, 'validate_draft', side_effect=['exact quote required', None]), patch.object(
+            p, 'draft', side_effect=reject):
+        result, facts = write._validated_draft(p, {'id': 'test'}, tries=2)
+    assert result['status'] == 'reject' and facts == [] and len(prompts) == 2
+    assert 'SOURCE_TEST' in prompts[1] and 'exact quote required' in prompts[1]
+    assert 'PREVIOUS DRAFT (untrusted' not in prompts[1]
     assert 'gsk_SECRET'  not in providers.safe_failure_message('failed gsk_SECRET')
     print('PASS hosted providers: credentials, routing, payload, usage, repair, errors, catalog and admission')
 

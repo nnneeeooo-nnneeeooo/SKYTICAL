@@ -1625,8 +1625,13 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                 prompt_started = time.perf_counter()
                 user_prompt = group_prompt(group)
                 if attempt:
+                    # Free hosted request limits apply to the full prompt.
+                    # Keep source + precise feedback; omit the bulky old draft
+                    # only for adapters that explicitly request this behavior.
+                    previous = (previous_candidate if getattr(
+                        provider, "include_previous_draft_in_retry", True) else None)
                     user_prompt = repair_prompt(user_prompt, last_problem,
-                                                previous_candidate)
+                                                previous)
                 if run_trace is not None:
                     run_trace.add_duration("promptAssembly", prompt_started)
                 allowance = _provider_attempt_allowance(

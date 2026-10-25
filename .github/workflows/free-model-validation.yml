@@ -10,6 +10,11 @@ on:
       - 'pipeline/free_provider_probe.py'
       - 'config/free_provider_probe.json'
   workflow_dispatch:
+    inputs:
+      provider_order:
+        description: '僅驗證指定免費路由（留空使用完整清單）'
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -37,7 +42,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,nvidia:nvidia/nemotron-3-super-120b-a12b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,groq:llama-3.3-70b-versatile,cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast
+          AVWIRE_PROVIDER_ORDER: ${{ inputs.provider_order || 'gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,nvidia:nvidia/nemotron-3-super-120b-a12b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,groq:openai/gpt-oss-120b,cloudflare:@cf/qwen/qwen3-30b-a3b-fp8' }}
           AVWIRE_DATA_DIR: ${{ runner.temp }}/free-model-validation
           PYTHONUNBUFFERED: '1'
         run: python pipeline/free_provider_probe.py --force
