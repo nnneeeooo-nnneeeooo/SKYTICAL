@@ -30,17 +30,17 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-25T11:23Z",
-      "checkedUtc": "2026-10-25T05:23Z",
+      "untilUtc": "2026-10-25T20:36Z",
+      "checkedUtc": "2026-10-25T14:36Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 2,
       "schemaMode": null
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-10-25T13:26Z",
-      "checkedUtc": "2026-10-24T13:26Z",
+      "checkedUtc": "2026-10-25T14:36Z",
+      "untilUtc": "2026-10-26T14:36Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 2,
@@ -75,8 +75,8 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "checkedUtc": "2026-10-25T09:57Z",
       "untilUtc": "2026-10-25T15:57Z",
+      "checkedUtc": "2026-10-25T09:57Z",
       "failureClass": "unexpected",
       "diagnostic": "entity lacks verified evidence: event_dates='2026-10-21'",
       "probeVersion": 2,
