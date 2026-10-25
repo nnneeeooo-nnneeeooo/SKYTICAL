@@ -2505,38 +2505,68 @@ def _load_existing_articles() -> list[dict]:
     return records
 
 
-def _match_existing_article(group: dict, records: list[dict]):
-    """Resolve a dedupe update candidate to one existing event article."""
-    if not group.get("updateCandidate"):
-        return None
-    urls = {
+def _group_source_urls(group: dict) -> set[str]:
+    return {
         norm_url(str(item.get("url") or ""))
         for item in group.get("items") or []
-        if str(item.get("url") or "").strip()
+        if isinstance(item, dict) and str(item.get("url") or "").strip()
     }
-    for record in records:
-        if urls & record["urls"]:
-            return record
 
+
+def _title_match_score(group_titles: list[str], record: dict) -> float:
+    return max(
+        (SequenceMatcher(None, current, previous).ratio()
+         for current in group_titles for previous in record["titles"]),
+        default=0.0,
+    )
+
+
+def _match_existing_article(group: dict, records: list[dict]):
+    """Resolve a dedupe update candidate to one existing event article."""
+    urls = _group_source_urls(group)
     group_titles = [
         _norm_title(str(item.get("title") or ""))
         for item in group.get("items") or []
-        if _norm_title(str(item.get("title") or ""))
+        if isinstance(item, dict) and _norm_title(str(item.get("title") or ""))
     ]
+    for record in records:
+        if (urls & record["urls"] and
+                (group.get("updateCandidate") or
+                 (urls <= record["urls"] and
+                  bool(group_titles) and
+                  set(group_titles) <= set(record["titles"])))):
+            return record
+    if not group.get("updateCandidate"):
+        return None
     best = None
     best_score = 0.0
     for record in records:
-        score = max(
-            (
-                SequenceMatcher(None, current, previous).ratio()
-                for current in group_titles
-                for previous in record["titles"]
-            ),
-            default=0.0,
-        )
+        score = _title_match_score(group_titles, record)
         if score >= 0.75 and score > best_score:
             best, best_score = record, score
     return best
+
+
+def _already_published_without_new_coverage(group: dict, record: dict) -> bool:
+    """Skip a scheduled article's unchanged source without hiding later news."""
+    if group.get("updateCandidate"):
+        return False
+    urls = _group_source_urls(group)
+    if not urls or not urls <= record["urls"]:
+        return False
+    stamp = record["article"].get("sourcePublishedUtc")
+    if not isinstance(stamp, str) or not stamp:
+        return False
+    try:
+        previous = parse_iso(stamp)
+        items = group.get("items") or []
+        if not items or any(not isinstance(item, dict) or
+                            not item.get("publishedUtc") for item in items):
+            return False
+        current = [parse_iso(str(item["publishedUtc"])) for item in items]
+    except (ValueError, TypeError):
+        return False
+    return bool(current) and max(current) <= previous
 
 
 def _write_article_updates(updates: list[tuple[Path, dict]]) -> None:
@@ -2914,6 +2944,7 @@ def main() -> None:
     new_flashes, new_incidents = [], []
     published_groups, published_ids = [], set()
     rejected_groups, rejected_ids = [], set()
+    duplicate_groups, duplicate_ids = [], set()
     dead_auth: set = set()
     dead_platforms: set = set()
     transient_failure_counts: dict = {}
@@ -3097,7 +3128,18 @@ def main() -> None:
         # Existing articles stay on the established revision/protection path.
         model_groups = []
         for group in groups:
-            if _match_existing_article(group, existing_articles):
+            existing = _match_existing_article(group, existing_articles)
+            if existing and _already_published_without_new_coverage(group, existing):
+                print(f"write: source already published as "
+                      f"{existing['article']['id']}; consuming duplicate group "
+                      f"{group.get('id')}")
+                duplicate_groups.append(group)
+                duplicate_ids.add(group.get("id"))
+                run_traces[id(group)].finish(
+                    "already_published", "duplicate_existing",
+                    article_id=existing["article"]["id"])
+                continue
+            if existing:
                 model_groups.append(group)
                 continue
             prepared = announcements.get(id(group)) or _validated_announcement(group, now)
@@ -3365,12 +3407,12 @@ def main() -> None:
     if new_articles or updated_articles:
         _prepend_capped(FLASHES_PATH, new_flashes, MAX_FLASHES)
         _prepend_capped(INCIDENTS_PATH, new_incidents, MAX_INCIDENTS)
-    if published_groups or rejected_groups:
+    if published_groups or rejected_groups or duplicate_groups:
         # Editorially rejected groups count as consumed too so they do not
         # re-emit from dedupe and burn another API call next hour.
-        update_seen(published_groups + rejected_groups, now)
-    consumed = published_ids | rejected_ids
-    for group in published_groups + rejected_groups:
+        update_seen(published_groups + rejected_groups + duplicate_groups, now)
+    consumed = published_ids | rejected_ids | duplicate_ids
+    for group in published_groups + rejected_groups + duplicate_groups:
         retry_ledger.complete(group)
     # Exhausted stories remain only in the failure register. They are not
     # marked seen: a genuinely new source can reopen them at discovery.
@@ -3400,7 +3442,8 @@ def main() -> None:
     print(f"write: published {len(new_articles)} new article(s), revised "
           f"{len(updated_articles)} existing article(s) "
           f"({legacy_published} migrated from retired review), rejected "
-          f"{len(rejected_groups)}, skipped {skipped}, "
+          f"{len(rejected_groups)}, duplicates {len(duplicate_groups)}, "
+          f"skipped {skipped}, "
           f"pending {remaining_count}, major retries {major_deferred}")
     try:
         # Flush this run's per-provider token spend into data/usage.json
