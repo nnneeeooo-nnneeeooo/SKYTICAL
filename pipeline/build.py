@@ -1160,6 +1160,8 @@ def _public_writer_model_name(value):
     clean = re.sub(r"[\x00-\x1f\x7f<>]+", " ", str(value))
     clean = re.sub(r"\s+", " ", clean).strip()
     normalized = re.sub(r"[^a-z0-9]+", "", clean.casefold())
+    if normalized == "codex":
+        return "GPT 6.1 Sol"
     if normalized in {"gpt6", "openaigpt6"}:
         return "GPT 6"
     if "deepseek" in normalized:
@@ -1200,12 +1202,16 @@ def writer_model(writer, writer_models=None):
                 labels.append(clean)
         if labels:
             return "、".join(labels)
+    if isinstance(writer, str) and writer.strip().casefold() == "codex":
+        return "GPT 6.1 Sol"
     if not isinstance(writer, str) or ":" not in writer:
         return None
     provider, model_value = writer.split(":", 1)
     if provider == "manual":
         return _public_writer_model_name(model_value) or None
     model_id = model_value.lower()
+    if model_id.strip() == "codex":
+        return "GPT 6.1 Sol"
     for needle, model in _WRITER_MODELS:
         if needle in model_id:
             return model

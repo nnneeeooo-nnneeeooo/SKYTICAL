@@ -57,6 +57,10 @@ def main() -> None:
     assert prepared["airline_entities"] == []
     assert prepared["available_languages"] == ["zh", "en"]
     assert prepared["en"]["title"] == prepared["zh"]["title"]
+    for writer in ("Codex", "codex", "manual:Codex", "scheduled:codex"):
+        assert build.writer_model(writer) == "GPT 6.1 Sol"
+    assert build.writer_model("manual:owner", ["Codex", "GPT 6.1 Sol"]) == "GPT 6.1 Sol"
+    assert build.writer_model("manual:owner", [" codex ", "GPT 6"]) == "GPT 6.1 Sol、GPT 6"
 
     for writer in (
         "wechat:Deepseek-v4-flash", "nvidia:deepseek-ai/deepseek-v4-pro",
