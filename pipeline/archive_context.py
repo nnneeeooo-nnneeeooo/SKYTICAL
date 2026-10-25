@@ -424,12 +424,30 @@ def _article_sources(article: dict) -> list[dict]:
     return sources
 
 
+_DEPENDENT_SUBJECT = re.compile(
+    r"^(?:it|its|they|their|this|that)\b|"
+    r"^(?:the|this|that)\s+(?:aircraft|airliner|plane|jet|helicopter|"
+    r"airline|carrier|company|manufacturer)\s+"
+    r"(?:is|are|was|were|has|have|had|will|would|can|could|faces?|"
+    r"gains?|gained|continues?|recorded)\b|"
+    r"^(?:該機|這架飛機|該型飛機|該公司|該航空公司)(?=正|已|將|因|在|於|的|為|獲|面|預|遭|是)",
+    re.IGNORECASE)
+
+
+def has_unresolved_subject(claim: str, quote: str) -> bool:
+    """An isolated archive fact cannot inherit its subject from another fact."""
+    return bool(_DEPENDENT_SUBJECT.search(_plain(claim))
+                and _DEPENDENT_SUBJECT.search(_plain(quote)))
+
+
 def _qualified_facts(article: dict, sources: list[dict]) -> list[dict]:
     facts = []
     for fact in article.get("facts") or []:
         if not isinstance(fact, dict):
             continue
-        if fact.get("evidenceScope") == "background":
+        if (fact.get("evidenceScope") in ("background", "archive")
+                or fact.get("archiveContext") is True
+                or fact.get("archiveEventId")):
             continue
         claim = _plain(fact.get("claim"))
         quote = str(fact.get("sourceQuote") or "").strip()
@@ -438,7 +456,8 @@ def _qualified_facts(article: dict, sources: list[dict]) -> list[dict]:
             # Backward compatibility: a single-source old article has an
             # unambiguous fact-to-source mapping even before sourceUrl existed.
             url = sources[0]["url"]
-        if not claim or len(_key(quote)) < 8 or not url:
+        if (not claim or len(_key(quote)) < 8 or not url
+                or has_unresolved_subject(claim, quote)):
             continue
         source_name = next(
             (s["name"] for s in sources if s["url"] == url),
@@ -787,7 +806,19 @@ def retrieve_archive_context(group: dict, articles_dir: Path = ARTICLES_DIR,
                 "event_id": event["event_id"], "reason": "event limit"})
             continue
         kept_facts = []
+        related_fact_found = False
         for fact in event["facts"]:
+            # A shared model in one paragraph must not pull unrelated company
+            # delivery totals or military programmes into the current story.
+            if event["relationship_type"] == "programme_background":
+                keys = extract_entity_keys({"en": {
+                    "title": fact["claim"], "summary": fact["source_quote"]}})
+                fields = ("aircraft_models", "programmes")
+                if (any(current[field] for field in fields)
+                        and not any(set(current[field]) & set(keys[field])
+                                    for field in fields)):
+                    continue
+            related_fact_found = True
             size = sum(len(str(v)) for v in fact.values())
             if fact_count >= MAX_ARCHIVE_FACTS \
                     or prompt_chars + size > MAX_ARCHIVE_PROMPT_CHARS:
@@ -797,7 +828,9 @@ def retrieve_archive_context(group: dict, articles_dir: Path = ARTICLES_DIR,
             prompt_chars += size
         if not kept_facts:
             result["excluded_candidates"].append({
-                "event_id": event["event_id"], "reason": "fact/token limit"})
+                "event_id": event["event_id"],
+                "reason": ("fact/token limit" if related_fact_found
+                           else "no directly related programme facts")})
             continue
         result["selected_events"].append({**event, "facts": kept_facts})
 
