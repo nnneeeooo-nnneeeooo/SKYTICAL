@@ -19,6 +19,7 @@ on:
       - "config/free_provider_probe.json"
       - "pipeline/article_schema.py"
       - "pipeline/build.py"
+      - "pipeline/public_article.py"
       - "pipeline/common.py"
       - "pipeline/dedupe.py"
       - "pipeline/fulltext.py"
@@ -77,6 +78,7 @@ jobs:
           python tests/test_provider_health.py
           python tests/test_free_provider_probe.py
           python tests/test_build_resilience.py
+          python tests/test_public_articles.py
           python tests/test_text_spacing.py
           node tests/test_text_spacing_client.js
           python tests/test_home_sidebar.py

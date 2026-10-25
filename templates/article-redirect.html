@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="{{ html_lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="{{ target_abs }}">
+<meta http-equiv="refresh" content="0;url={{ target }}">
+<title>SKYTICAL</title>
+<script>location.replace({{ target | tojson }} + location.search + location.hash);</script>
+</head>
+<body><a href="{{ target }}">{% if html_lang.startswith('zh') %}前往新聞{% else %}Continue to article{% endif %}</a></body>
+</html>
