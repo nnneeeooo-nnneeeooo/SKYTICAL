@@ -985,9 +985,12 @@ class GroqProvider(NvidiaProvider):
                 "substrings of their sourceQuote; prefer empty optional entity "
                 "arrays over unsupported aliases or airport codes. For a brief, "
                 "aim for three paragraphs of 80 Chinese content characters "
-                "and three English paragraphs of 40 words, using distinct "
+                "and three English paragraphs with three complete sentences "
+                "each (100-150 words total), using distinct "
                 "source-supported details without padding. Preserve date range wording "
-                "and punctuation verbatim. Return final JSON only.")
+                "and punctuation verbatim. For publish and publish_brief "
+                "requiresHumanReview MUST be false and decisionReason MUST "
+                "be the empty string, not an explanation. Return final JSON only.")
         # Preserve every instruction while removing indentation/newline tokens.
         system_prompt = re.sub(r"\s+", " ", system_prompt).strip()
         return super().draft(system_prompt, user_prompt, schema)
@@ -1015,6 +1018,9 @@ class GroqProvider(NvidiaProvider):
         payload = {"model": self.model, "messages": messages,
                    "max_tokens": self.repair_tokens if repair else self.output_tokens,
                    "temperature": 0.2, "stream": False}
+        if self.name == "groq" and self.model in {
+                "openai/gpt-oss-120b", "openai/gpt-oss-20b"}:
+            payload["reasoning_effort"] = "low"
         self.http_calls += 1
         self.repair_calls += int(repair)
         started, response = time.perf_counter(), None

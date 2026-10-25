@@ -35,7 +35,11 @@ def main():
                 body = request.kwargs['json']
                 assert body['model'] == p.model and body['max_tokens'] == p.output_tokens
                 assert 'JSON Schema' in body['messages'][1]['content']
-                assert not any(k in body for k in ('thinking', 'reasoning_effort', 'chat_template_kwargs'))
+                assert not any(k in body for k in ('thinking', 'chat_template_kwargs'))
+                if p.name == 'groq':
+                    assert body['reasoning_effort'] == 'low'
+                else:
+                    assert 'reasoning_effort' not in body
                 assert p.usage['inputTokens'] == 11 and p.usage['outputTokens'] == 3
                 assert 'test-cf' not in str(p.request_log) and 'test-groq' not in str(p.request_log)
             with patch.object(providers.requests, 'post', return_value=good) as post:
