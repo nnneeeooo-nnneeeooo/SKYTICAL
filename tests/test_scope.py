@@ -24,6 +24,10 @@ TARGET_IDS = {
         "2026-07-27T04.json",
     "a-20261013-1326-south-korea-s-lee-welcomes-return-of-arc":
         "2026-10-13T13.json",
+    "a-20261025-1843-eu-awards-29-5m-to-lithuania-and-estonia":
+        "2026-10-25T18.json",
+    "a-kosmos-2612-iceye-x36-close-approach-20261025":
+        "scheduled-kosmos-2612-iceye-x36-close-approach-20261025.json",
 }
 
 
@@ -109,6 +113,10 @@ def main() -> None:
         "海運公司宣布貨輪定期航班服務", "航空母艦返港",
         "Aircraft carrier returns to naval port", "Railway resumes service",
         "Metro train derails", "Highway bus crash", "共艦通過台灣海峽",
+        "俄羅斯衛星Kosmos2612連日接近ICEYE-X36：軌道對峙",
+        "Kosmos 2612 satellite approaches ICEYE-X36 in orbit",
+        "歐盟撥款生產無人機彈頭與炸藥",
+        "EU funds loitering munition warhead production",
     ):
         item = {"title": title, "summary": "航空公司為背景合作夥伴。"}
         assert not common.is_transport_headline(item), title
@@ -124,6 +132,10 @@ def main() -> None:
         "Wizz Air postpones six Abu Dhabi routes",
         "Rolls-Royce triples 787 engine overhaul interval",
         "Aircraft carrier switches to steam catapults",
+        "衛星導航故障造成機場航班延誤",
+        "Satellite navigation outage delays airport flights",
+        "無人機彈頭爆炸迫使機場航班改道",
+        "Drone warhead explosion diverts airport flights",
     ):
         assert common.is_transport_headline({"title": title}), title
     assert "twtransport" not in common.SOURCES
