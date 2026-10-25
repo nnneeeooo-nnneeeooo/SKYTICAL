@@ -196,7 +196,13 @@ def resolve_airport(entity: str) -> dict | None:
     # airport's code (for example Philadelphia International Airport (PNE)).
     # The name is the authoritative part when it resolves uniquely.
     identity = _strip_iata_annotation(raw)
-    reviewed_code = _reviewed_aliases().get(_norm(identity))
+    reviewed_aliases = _reviewed_aliases()
+    reviewed_code = reviewed_aliases.get(_norm(identity))
+    if not reviewed_code and identity != raw:
+        # Some reviewed source names contain the IATA token as part of the
+        # airport name (for example, "New York JFK"). Check the exact
+        # reviewed spelling after the stripped identity fails to resolve.
+        reviewed_code = reviewed_aliases.get(_norm(raw))
     if reviewed_code:
         row = _row_for_code(reviewed_code, rows, tw_rows)
         if row:
@@ -273,14 +279,17 @@ def _airport_patterns(entity: str, row: dict) -> list[re.Pattern]:
     entity_value = _strip_iata_annotation(str(entity or "").strip())
     for value in (entity_value, row.get("name_en"), row.get("name"),
                   *_reviewed_alias_values(str(row.get("code") or ""))):
-        value = _strip_iata_annotation(str(value or "").strip())
-        # An ICAO/IATA-only entity is metadata, not the visible airport
-        # identity.  Matching it first would place TPE after "ICAO code
-        # RCTP" instead of after the airport name.
-        if value == entity_value and re.fullmatch(r"[A-Z]{3,4}", value):
-            continue
-        if value and value not in values:
-            values.append(value)
+        raw_value = str(value or "").strip()
+        stripped_value = _strip_iata_annotation(raw_value)
+        for candidate in (raw_value, stripped_value):
+            # An ICAO/IATA-only entity is metadata, not the visible airport
+            # identity. Matching it first would place TPE after "ICAO code
+            # RCTP" instead of after the airport name.
+            if (candidate == entity_value
+                    and re.fullmatch(r"[A-Z]{3,4}", candidate)):
+                continue
+            if candidate and candidate not in values:
+                values.append(candidate)
     patterns = []
     for value in values:
         variants = {value}
