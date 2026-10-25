@@ -358,6 +358,37 @@ check("cached generic airline photo without a recent capture year is stale",
       and images.existing_image_matches(
           generic_china_story, fresh_generic_airline_image))
 
+modern_g400 = make_article(
+    "a-modern-g400", "Gulfstream begins G400 cabin flight tests with PW812GA engines")
+modern_g400["entities"]["aircraft_models"] = ["G400"]
+old_g400_photo = {
+    "url": "https://upload.wikimedia.org/2004_Gulfstream_G-IV_(G400).jpg",
+    "link": "https://commons.wikimedia.org/wiki/File:2004_Gulfstream_G-IV_(G400).jpg",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "G400", "subject": "Gulfstream G-IV (G400)",
+    "description": "N413QS 2004 Gulfstream Aerospace G-IV (G400)",
+    "photoYear": 2014,
+}
+check("new G400 story rejects the old G-IV-derived G400 photo",
+      not images.existing_image_matches(modern_g400, old_g400_photo))
+check("new G400 story rejects an old capture even without a G-IV label",
+      not images.existing_image_matches(
+          modern_g400, dict(old_g400_photo,
+                           description="Gulfstream G400", photoYear=2014,
+                           url="https://upload.wikimedia.org/g400.jpg",
+                           link="https://commons.wikimedia.org/wiki/File:G400.jpg")))
+check("new G400 story accepts a documented current-generation aircraft",
+      images.existing_image_matches(
+          modern_g400, dict(old_g400_photo,
+                           description="Gulfstream G400 flight-test aircraft",
+                           photoYear=2025,
+                           url="https://upload.wikimedia.org/new-g400.jpg",
+                           link="https://commons.wikimedia.org/wiki/File:New_G400.jpg")))
+legacy_g400 = make_article("a-legacy-g400", "Gulfstream G-IV (G400) fleet history")
+legacy_g400["entities"]["aircraft_models"] = ["G400"]
+check("explicit G-IV history may use its actual old G400 photo",
+      images.existing_image_matches(legacy_g400, old_g400_photo))
+
 cabin_generic_image = dict(
     fresh_generic_airline_image,
     url="https://upload.wikimedia.org/Premium_Economy_Class_-_China_Airlines.jpg")
@@ -710,6 +741,14 @@ for article_path in (REPO / "data" / "articles").glob("*.json"):
 check("retired B-180 accident airframe is absent from published images",
       not any("China_Airlines_B-180_Boeing_737-209" in url
               for url in all_published_images))
+
+reset()
+visible = make_article("a-visible-image", "Gulfstream G400 flight tests")
+archived = dict(visible, id="a-archived-image", archived=True)
+write_batch([visible, archived], "archive-check.json")
+recent = list(images._recent_batches())
+check("image refresh ignores archived articles",
+      len(recent) == 1 and [a["id"] for a in recent[0][2]] == [visible["id"]])
 
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "

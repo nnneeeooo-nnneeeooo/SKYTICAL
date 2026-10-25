@@ -850,7 +850,7 @@ def _recent_batches():
         if not isinstance(batch, dict):
             continue
         articles = [a for a in batch.get("articles") or []
-                    if isinstance(a, dict)]
+                    if isinstance(a, dict) and a.get("archived") is not True]
         fresh = False
         for a in articles:
             try:
