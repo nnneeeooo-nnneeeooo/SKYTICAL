@@ -872,7 +872,7 @@ def _operator_publication_bundle(job_id: str, payload: dict,
         if not any(row["url"] == url for row in sources):
             sources.append({"name": source, "url": url})
     article_id = (
-        f"a-{fallback_time:%Y%m%d-%H%M}-manual-{job_id[:6]}"
+        f"a-{fallback_time:%Y%m%d-%H%M}-{job_id[:12]}"
     )
     writer_models = payload["writerModels"]
     languages = (

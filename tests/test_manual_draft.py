@@ -235,7 +235,8 @@ def test_publication_detection_prompt_and_bundle():
         and bundle["article"]["publishedUtc"] == "2026-07-30T02:11:12Z"
         and bundle["article"]["sortUtc"] == "2026-07-29T12:00:00Z"
         and bundle["flash"]["timeUtc"] == "2026-07-29T12:00:00Z"
-        and bundle["flash"]["articleId"] == bundle["article"]["id"],
+        and bundle["flash"]["articleId"] == bundle["article"]["id"]
+        and "manual" not in bundle["article"]["id"],
         "publish bundle links article and flash with independent sort time")
 
 

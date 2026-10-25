@@ -756,7 +756,7 @@
     const compact = now.toISOString()
       .replace(/[-:]/g, "").slice(0, 13).replace("T", "-");
     const articleId = fixedArticleId
-      || `a-${compact}-manual-${jobId.slice(0, 6)}`;
+      || `a-${compact}-${jobId.slice(0, 12)}`;
     const sources = sourceUrls().map(url => {
       let name = url;
       try {
@@ -782,10 +782,10 @@
       publishedUtc: publicationTime,
       sortUtc: sortTime,
       cat: category,
-      primarySource: sources[0]?.name || "Manual source",
+      primarySource: sources[0]?.name || "SKYTICAL",
       image: imageUrls[0] ? {
         url: imageUrls[0],
-        provider: "SKYTICAL manual upload",
+        provider: "SKYTICAL",
         subject: manualImageSubject(),
         kind: "file_photo",
       } : null,
@@ -1382,7 +1382,7 @@
     const jobId = makeJobId();
     const previewId = `a-${new Date().toISOString()
       .replace(/[-:]/g, "").slice(0, 13).replace("T", "-")}`
-      + `-manual-${jobId.slice(0, 6)}`;
+      + `-${jobId.slice(0, 12)}`;
     const imageUrls = imageUrlsForArticle(previewId);
     const article = manualArticle(jobId, imageUrls, previewId);
     const articlePath = `data/articles/manual-${jobId}.json`;
@@ -1496,7 +1496,7 @@
         latestCommit = await uploadManualImages(article.id);
         article.image = {
           url: imageUrls[0],
-          provider: "SKYTICAL manual upload",
+          provider: "SKYTICAL",
           subject: imageSubject,
           kind: "file_photo",
         };

@@ -68,10 +68,11 @@ def test_compact_attribution_preserves_article_references():
     for prefix in ("", "en/"):
         home = BeautifulSoup((build.SITE_DIR / prefix / "index.html").read_text(
             encoding="utf-8"), "html.parser")
-        row = home.select_one(f'.feed-row[href="/{prefix}news/{article["id"]}/"]')
+        public_id = build.public_article_id(article["id"])
+        row = home.select_one(f'.feed-row[href="/{prefix}news/{public_id}/"]')
         if row:  # This report eventually ages out of the homepage feed.
             assert row.select_one(".feed-source").text.strip() == "Flightradar24"
-        page = build.SITE_DIR / prefix / "news" / article["id"] / "index.html"
+        page = build.SITE_DIR / prefix / "news" / public_id / "index.html"
         soup = BeautifulSoup(page.read_text(encoding="utf-8"), "html.parser")
         for source in article["sources"]:
             assert soup.find("a", href=source["url"])

@@ -207,6 +207,7 @@ def main() -> None:
     prompt_rows = build.daily_search_prompt_rows()
     assert len(prompt_rows) == len(zh_placeholders) == len(en_placeholders)
     for article_id, zh_prompt, en_prompt in prompt_rows:
+        article_id = build.public_article_id(article_id)
         assert article_id in items_by_id
         indexed = items_by_id[article_id]["search"]
         assert normalize_search_text(zh_prompt) in indexed
@@ -222,6 +223,7 @@ def main() -> None:
     assert "維珍澳洲航班乘客事件" in historical["search"]
     assert "virgin australia passenger incident" in historical["search"]
     for article_id, zh_prompt, en_prompt in alias_rows:
+        article_id = build.public_article_id(article_id)
         if article_id not in items_by_id:
             continue
         indexed = items_by_id[article_id]["search"]
