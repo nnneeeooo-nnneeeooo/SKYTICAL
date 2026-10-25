@@ -2533,7 +2533,8 @@ def _match_existing_article(group: dict, records: list[dict]):
         if (urls & record["urls"] and
                 (group.get("updateCandidate") or
                  (urls <= record["urls"] and
-                  bool(set(group_titles) & set(record["titles"]))))):
+                  bool(group_titles) and
+                  set(group_titles) <= set(record["titles"])))):
             return record
     if not group.get("updateCandidate"):
         return None
@@ -2558,9 +2559,11 @@ def _already_published_without_new_coverage(group: dict, record: dict) -> bool:
         return False
     try:
         previous = parse_iso(stamp)
-        current = [parse_iso(str(item["publishedUtc"]))
-                   for item in group.get("items") or []
-                   if isinstance(item, dict) and item.get("publishedUtc")]
+        items = group.get("items") or []
+        if not items or any(not isinstance(item, dict) or
+                            not item.get("publishedUtc") for item in items):
+            return False
+        current = [parse_iso(str(item["publishedUtc"])) for item in items]
     except (ValueError, TypeError):
         return False
     return bool(current) and max(current) <= previous

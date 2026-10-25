@@ -1547,6 +1547,10 @@ def test_scheduled_source_is_not_drafted_again():
     changed_claim["items"][0]["title"] = source["title"].replace("up", "may rise")
     check(write._match_existing_article(changed_claim, [record]) is None,
           "a changed source headline stays eligible for editorial review")
+    missing_time = json.loads(json.dumps(group))
+    missing_time["items"][0].pop("publishedUtc")
+    check(not write._already_published_without_new_coverage(missing_time, record),
+          "an undated source cannot be consumed as an unchanged duplicate")
 
     provider = FakeProvider("gemini", [providers.ProviderError("must not call")])
     with patch.object(write, "build_providers", return_value=[provider]):
