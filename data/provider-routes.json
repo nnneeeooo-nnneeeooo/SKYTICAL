@@ -12,28 +12,28 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-10-25T00:34Z",
       "untilUtc": "2026-10-25T06:34Z",
+      "checkedUtc": "2026-10-25T00:34Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 2,
       "schemaMode": null
     },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "waiting",
-      "untilUtc": "2026-10-25T02:14Z",
-      "checkedUtc": "2026-10-24T20:14Z",
-      "failureClass": "unexpected",
-      "diagnostic": "F1 claim adds high-risk atom '13' not present in its own sourceQuote",
+      "status": "verified",
+      "untilUtc": "2026-10-26T05:23Z",
+      "checkedUtc": "2026-10-25T05:23Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 2,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-25T02:14Z",
-      "checkedUtc": "2026-10-24T20:14Z",
+      "untilUtc": "2026-10-25T11:23Z",
+      "checkedUtc": "2026-10-25T05:23Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 2,
       "schemaMode": null
     },
@@ -57,10 +57,10 @@
     },
     "cloudflare:@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
       "status": "waiting",
-      "untilUtc": "2026-10-25T02:14Z",
-      "checkedUtc": "2026-10-24T20:14Z",
+      "checkedUtc": "2026-10-25T05:23Z",
+      "untilUtc": "2026-10-25T11:23Z",
       "failureClass": "unexpected",
-      "diagnostic": "publish_brief body does not meet brief contract (zh=114 content characters, en=49 words, paragraphs=2/2)",
+      "diagnostic": "publish_brief body does not meet brief contract (zh=130 content characters, en=70 words, paragraphs=4/4)",
       "probeVersion": 2,
       "schemaMode": null
     }
