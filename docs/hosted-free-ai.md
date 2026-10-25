@@ -40,3 +40,13 @@ LiteLLM 適合大型路由管理；本專案已有 requests adapter、用量與�
 Workers AI 憑證已確認可連線；補強既有文章長度契約提示，品質與來源證據閘門維持不變。
 Workers AI 的 Llama 兩次測試皆未達短訊門檻，改用多語系 Qwen3。
 Groq 重試保留完整來源與驗證回饋、略去舊稿，避免超過免費帳號每次請求大小限制。
+
+## 每分鐘速率限制與原生輸出
+
+Groq GPT-OSS 路由以原生 strict JSON Schema 傳送完整資料契約，避免提示詞內重複附上 schema。
+回應仍經過原有引文、事實、實體、字數及發布檢查；不自動補造或刪改模型的證據。
+明確的 TPM／RPM HTTP 429 且 Retry-After 在 60 秒內時，最多等待後重送一次。
+每日／信用額度耗盡、缺少有效 Retry-After 或過長等待不重送；每次 HTTP 呼叫都獨立計數。
+持續的每分鐘限制只冷卻該路由一分鐘，不當成六小時的額度耗盡。
+Workers AI 的 GLM-4.7-Flash 可透過既有 provider_order 定向評估，使用 JSON object 輸出，
+不會因評估而自動取代目前預設模型。

@@ -21,7 +21,7 @@ HEALTH_PATH = DATA_DIR / "provider-routes.json"
 FIXTURE_PATH = ROOT / "config" / "free_provider_probe.json"
 PROBE_SECONDS = 180
 # API signatures/prompts change independently of the model ID.
-PROBE_VERSION = 2
+PROBE_VERSION = 3
 FALLBACK_MODEL = "qwen/qwen3.5-397b-a17b"
 
 
@@ -46,9 +46,11 @@ def record(label, *, passed=False, failure="provider_failure", diagnostic="", no
     now = now or now_utc()
     rows = load_routes()
     unavailable = failure == "model_unavailable"
+    cooldown = (timedelta(minutes=1) if failure == "rate_limit"
+                else timedelta(hours=24 if passed or unavailable else 6))
     rows[label] = {"status": "verified" if passed else "unavailable" if unavailable else "waiting",
                    "checkedUtc": iso_minute(now),
-                   "untilUtc": iso_minute(now + timedelta(hours=24 if passed or unavailable else 6)),
+                   "untilUtc": iso_minute(now + cooldown),
                    "failureClass": None if passed else failure,
                    "diagnostic": None if passed else safe_failure_message(diagnostic),
                    "probeVersion": PROBE_VERSION,

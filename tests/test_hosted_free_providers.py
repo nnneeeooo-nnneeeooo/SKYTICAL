@@ -34,7 +34,13 @@ def main():
                 assert request.args[0] == p._endpoint()
                 body = request.kwargs['json']
                 assert body['model'] == p.model and body['max_tokens'] == p.output_tokens
-                assert 'JSON Schema' in body['messages'][1]['content']
+                if p.name == 'groq':
+                    assert body['response_format']['json_schema']['schema'] == {'type': 'object'}
+                    assert body['response_format']['json_schema']['strict'] is True
+                    assert body['messages'][1]['content'] == 'user'
+                    assert p._response_schema is None
+                else:
+                    assert 'JSON Schema' in body['messages'][1]['content']
                 assert not any(k in body for k in ('thinking', 'chat_template_kwargs'))
                 if p.name == 'groq':
                     assert body['reasoning_effort'] == 'low'
