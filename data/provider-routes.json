@@ -30,10 +30,10 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-25T20:36Z",
-      "checkedUtc": "2026-10-25T14:36Z",
+      "checkedUtc": "2026-10-25T20:53Z",
+      "untilUtc": "2026-10-26T02:53Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "diagnostic": "verified factId values must be sequential F1..Fn",
       "probeVersion": 2,
       "schemaMode": null
     },
@@ -75,8 +75,8 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "checkedUtc": "2026-10-25T17:54Z",
       "untilUtc": "2026-10-25T23:54Z",
+      "checkedUtc": "2026-10-25T17:54Z",
       "failureClass": "unexpected",
       "diagnostic": "verified factId values must be sequential F1..Fn",
       "probeVersion": 2,
