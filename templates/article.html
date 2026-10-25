@@ -15,6 +15,8 @@
       <span class="tag tag-neutral">{{ t.briefLabel }}</span>
       {% elif a.article_format == "roundup" %}
       <span class="tag tag-neutral">{{ t.roundupLabel }}</span>
+      {% elif a.article_format == "announcement" %}
+      <span class="tag tag-neutral">{{ t.announcementLabel }}</span>
       {% endif %}
       <h1 class="article-title">{{ a.title }}</h1>
       <div class="article-meta text-muted">
@@ -63,7 +65,7 @@
       </div>
       {% endfor %}
       <div class="text-muted" style="font-size:12px;margin-top:10px;border-top:1px solid var(--color-divider);padding-top:10px;">
-        <span>{{ t.genNote }}{% if a.writer_model %} • {{ a.writer_model }}{% else %}{{ t.genNotePunct }}{% endif %}</span>
+        <span>{% if a.article_format == "announcement" %}{{ t.ruleNote }}{% else %}{{ t.genNote }}{% if a.writer_model %} • {{ a.writer_model }}{% else %}{{ t.genNotePunct }}{% endif %}{% endif %}</span>
       </div>
     </div>
   </div>

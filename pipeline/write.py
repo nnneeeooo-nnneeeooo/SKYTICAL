@@ -69,8 +69,9 @@ from common import (
 )
 import flightnews
 import archive_context
+from announcement_brief import candidate_item, compile_announcement, WRITER as ANNOUNCEMENT_WRITER
 import provider_health
-from fulltext import FULLTEXT_PROMPT_CHARS, enrich_pending
+from fulltext import FULLTEXT_PROMPT_CHARS, MAX_FETCHES_PER_RUN, enrich_pending
 from providers import (
     ProviderAuthError,
     ProviderError,
@@ -1089,7 +1090,7 @@ def editorial_process_error(draft: dict) -> str | None:
     return None
 
 
-def draft_article_format(draft: dict) -> str | None:
+def draft_article_format(draft: dict, *, announcement: bool = False) -> str | None:
     """Return ``full``/``brief`` when both language bodies fit one contract."""
     zh_body = (draft.get("zh") or {}).get("body")
     en_body = (draft.get("en") or {}).get("body")
@@ -1097,6 +1098,9 @@ def draft_article_format(draft: dict) -> str | None:
         return None
     zh_chars = zh_body_character_count(zh_body)
     en_words = en_body_word_count(en_body)
+    if announcement:
+        return ("announcement" if len(zh_body) == len(en_body) == 1
+                and 12 <= zh_chars <= 240 and 8 <= en_words <= 120 else None)
     full = (
         MIN_BODY_PARAGRAPHS <= len(zh_body) <= MAX_BODY_PARAGRAPHS
         and MIN_BODY_PARAGRAPHS <= len(en_body) <= MAX_BODY_PARAGRAPHS
@@ -1133,7 +1137,7 @@ def auto_publish_reliable_draft(draft: dict) -> dict:
     return candidate
 
 
-def validate_draft(draft):
+def validate_draft(draft, *, announcement: bool = False):
     """Return None when the draft matches DRAFT_SCHEMA's essentials, else a
     short description of the first problem.
 
@@ -1175,7 +1179,7 @@ def validate_draft(draft):
     process_error = editorial_process_error(draft)
     if process_error:
         return process_error
-    article_format = draft_article_format(draft)
+    article_format = draft_article_format(draft, announcement=announcement)
     if status == "publish" and article_format != "full":
         zh_len = zh_body_character_count(draft["zh"]["body"])
         en_len = en_body_word_count(draft["en"]["body"])
@@ -1183,7 +1187,8 @@ def validate_draft(draft):
                 f"(zh={zh_len} content characters, en={en_len} words, "
                 f"paragraphs={len(draft['zh']['body'])}/"
                 f"{len(draft['en']['body'])})")
-    if status == "publish_brief" and article_format != "brief":
+    if status == "publish_brief" and article_format not in (
+            ("announcement",) if announcement else ("brief",)):
         zh_len = zh_body_character_count(draft["zh"]["body"])
         en_len = en_body_word_count(draft["en"]["body"])
         return ("publish_brief body does not meet brief contract "
@@ -2110,6 +2115,27 @@ def _evidence_binding_problem(draft: dict, facts: list[dict]) -> str | None:
     return None
 
 
+def _validated_announcement(group, now):
+    """The compiler has no authority to bypass normal evidence/scope gates."""
+    if archive_context.source_has_prompt_injection(group):
+        return None
+    try:
+        candidate = compile_announcement(group, now)
+    except (ValueError, TypeError, KeyError, OverflowError) as exc:
+        print(f"write: announcement parser declined {group.get('id')} ({type(exc).__name__})")
+        return None
+    if not candidate or validate_draft(candidate, announcement=True):
+        return None
+    facts = verify_facts(candidate, group, ANNOUNCEMENT_WRITER)
+    if not facts or _evidence_binding_problem(candidate, facts) or claim_evidence_problem(facts):
+        return None
+    entities, evidence, problem = verify_entity_evidence(candidate, group, ANNOUNCEMENT_WRITER)
+    if problem or glossary_problem(candidate, group) or fabrication_problem(candidate, group):
+        return None
+    candidate['entities'], candidate['entityEvidence'] = entities, evidence
+    return candidate, facts
+
+
 def build_sources(items: list) -> list:
     """Build the article's sources array in code (never from the LLM)."""
     sources, seen_urls = [], set()
@@ -2140,7 +2166,8 @@ def _is_editorially_managed(article: dict | None) -> bool:
 
 
 def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
-                  facts=None, existing_article: dict | None = None):
+                  facts=None, existing_article: dict | None = None,
+                  *, announcement: bool = False):
     """Assemble one article dict, or None when it cannot credit any source."""
     if _is_editorially_managed(existing_article):
         print(f"write: preserving editorial article {existing_article['id']}")
@@ -2225,7 +2252,7 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         "sources": sources,
         "articleFormat": (
             "roundup" if group.get("groupKind") == "safety_roundup"
-            else draft_article_format(draft) or "full"
+            else draft_article_format(draft, announcement=announcement) or "full"
         ),
     }
     if existing_article:
@@ -2246,6 +2273,9 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         article["sourcePublishedUtc"] = existing_article["sourcePublishedUtc"]
     if writer:
         article["writer"] = writer  # provenance: "provider:model"
+    if announcement:
+        article["generationMode"] = "rules"
+        article["ruleVersion"] = "announcement-v1"
     if facts is not None:
         article["facts"] = facts  # machine-verified sourceQuote evidence
     if used_archive_ids:
@@ -2934,10 +2964,6 @@ def main() -> None:
     providers = [p for p in configured_providers
                  if p.name not in persisted_cooldowns]
     accounted_providers = list(providers)
-    if any(getattr(p, "requires_verification", False) and is_free_provider(p)
-           for p in providers):
-        from free_provider_probe import prepare_routes
-        providers = prepare_routes(accounted_providers, now, _probe_draft)
     if persisted_cooldowns:
         rows = provider_health.cooldown_rows(now)
         details = ", ".join(
@@ -2950,11 +2976,8 @@ def main() -> None:
               "OPENCODE_API_KEY / "
               "ANTHROPIC_API_KEY / GEMINI_API_KEY / NVIDIA_API_KEY / "
               "OPENROUTER_API_KEY / WECHAT_API_KEY); "
-              "skipping article generation")
-        for group in groups:
-            _RunTrace("hourly", "article", group).finish(
-                "no_provider", "retry_pending")
-    elif not groups:
+              "only verified rule-based announcements can publish")
+    if not groups:
         print("write: no pending groups")
     else:
         print("write: provider order: "
@@ -2963,13 +2986,25 @@ def main() -> None:
             print("write: Fallback final fallback policy: preferred calls capped "
                   f"at {PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK}s for paid routes; free routes keep their model budget; independent "
                   "draft/repair time reserved")
+        announcements = {}
+        fulltext_budget = [MAX_FETCHES_PER_RUN]
+        try:
+            rule_groups = [g for g in groups if candidate_item(g, now)]
+            if rule_groups:
+                enrich_pending(rule_groups, fetch_budget=fulltext_budget)
+                for group in rule_groups:
+                    prepared = _validated_announcement(group, now)
+                    if prepared:
+                        announcements[id(group)] = prepared
+        except Exception as exc:
+            print(f"write: announcement preflight skipped ({type(exc).__name__})")
         try:
             # Thin-story companion retrieval: excerpt-only items (e.g.
             # Simple Flying) act as a discovery index and the pipeline
             # merges same-topic coverage from reliable outlets.
             from companion import enrich_thin_groups
 
-            enrich_thin_groups(groups)
+            enrich_thin_groups([g for g in groups if id(g) not in announcements])
         except Exception as exc:
             print(f"write: companion retrieval skipped "
                   f"({type(exc).__name__}: {exc})")
@@ -2977,7 +3012,7 @@ def main() -> None:
             # Pipeline-side enrichment: full text of official pages joins
             # the verifiable material. Failures leave ordinary items thin;
             # major title-only candidates are retained for a later retry.
-            enrich_pending(groups)
+            enrich_pending(groups, fetch_budget=fulltext_budget)
         except Exception as exc:
             print(f"write: fulltext enrichment skipped "
                   f"({type(exc).__name__}: {exc})")
@@ -3028,6 +3063,34 @@ def main() -> None:
             run_traces[id(group)] = run_trace
         groups = safe_groups
         existing_articles = _load_existing_articles()
+        # Run before model admission/probes, including when no key exists.
+        # Existing articles stay on the established revision/protection path.
+        model_groups = []
+        for group in groups:
+            if _match_existing_article(group, existing_articles):
+                model_groups.append(group)
+                continue
+            prepared = announcements.get(id(group)) or _validated_announcement(group, now)
+            if not prepared:
+                model_groups.append(group)
+                continue
+            candidate, facts = prepared
+            article = build_article(candidate, group, now, used_ids,
+                                    ANNOUNCEMENT_WRITER, facts, announcement=True)
+            if article is None:
+                model_groups.append(group)
+                continue
+            new_articles.append(article)
+            new_flashes.append(build_flash(candidate, article["id"], now))
+            published_groups.append(group)
+            published_ids.add(group.get("id"))
+            run_traces[id(group)].finish("published", "publish", ANNOUNCEMENT_WRITER, article["id"])
+            print(f"write: published rule-based announcement {article['id']} (zero model calls)")
+        groups = model_groups
+        if groups and any(getattr(p, "requires_verification", False) and is_free_provider(p)
+                          for p in providers):
+            from free_provider_probe import prepare_routes
+            providers = prepare_routes(accounted_providers, now, _probe_draft)
         draft_deadline = time.monotonic() + MAX_DRAFT_SECONDS_PER_RUN
         alive = list(providers)  # priority order; shrinks on auth/quota death
         drafted = 0  # only API-consuming groups count toward the run cap
@@ -3292,9 +3355,10 @@ def main() -> None:
                    and not updated_articles)
     stats = load_json(STATS_PATH, {})
     stats["newsWriter"] = {
-        "status": "stalled" if stalled else "ok" if ai_calls else "idle",
+        "status": "stalled" if stalled else "ok" if (ai_calls or new_articles or updated_articles) else "idle",
         "updatedUtc": iso_minute(now),
         "published": len(new_articles), "revised": len(updated_articles),
+        "rulePublished": sum(a.get("writer") == ANNOUNCEMENT_WRITER for a in new_articles),
         "pending": remaining_count,
         "retryExhausted": sum(row.get("status") == "exhausted"
                               for row in retry_ledger.rows.values()),

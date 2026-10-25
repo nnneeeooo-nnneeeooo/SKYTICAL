@@ -37,7 +37,7 @@ import write  # noqa: E402
 
 # This suite is explicitly offline.  Production enrichment is tested in its
 # own modules; prevent fixture domains from ever reaching requests here.
-write.enrich_pending = lambda groups: None
+write.enrich_pending = lambda groups, **kwargs: None
 companion.enrich_thin_groups = lambda groups: 0
 # Admission makes real catalog/inference calls; this suite supplies canned
 # drafts. Its network and admission behavior is covered in test_free_provider_probe.

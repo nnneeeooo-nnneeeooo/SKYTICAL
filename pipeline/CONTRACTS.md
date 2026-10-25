@@ -507,3 +507,9 @@ All normal evidence, refusal and publication gates still apply. Routine updates
 prefer a concise brief; headline/summary narration cannot pad thin evidence.
 Recent-run telemetry records `editorialTier`, `routeReason` and
 `paidFallbackAllowed` so the spending decision can be audited.
+
+## Rule-based official announcement briefs
+
+`config/announcement_rules.json` enables a bounded, single-source official-notice route before provider admission/probing. Supported affirmative English sentence grammars produce Chinese/English templates for deliveries, route launches/resumptions, weekly frequency changes and airport facility opening/closure. Full text, explicit fresh publication time, headline/entity binding and a reviewed publisher/actor relationship are mandatory. Ambiguous wording, corrections, unsupported languages/grammars and missing evidence return to the existing model path.
+
+Only the internal compiler calls `validate_draft(..., announcement=True)`; the model JSON schema and ordinary full/brief thresholds remain unchanged. The result still passes verbatim fact verification, evidence binding, atomic claim checks, entity binding, glossary and scope gates. A one-paragraph `articleFormat: announcement` carries `writer: rules:announcement-v1`, `generationMode: rules` and a rule version. It is labelled as an official notice and rule-based compilation across article/home/index/search views, without a model credit. No API key or model probe is needed for an eligible notice. Existing editorial articles stay on their protected revision path.

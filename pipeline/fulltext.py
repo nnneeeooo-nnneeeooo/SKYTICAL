@@ -205,7 +205,7 @@ def _cache_fresh(entry: dict, now) -> bool:
     return now - fetched < timedelta(hours=ttl)
 
 
-def enrich_pending(groups: list) -> int:
+def enrich_pending(groups: list, *, fetch_budget: list[int] | None = None) -> int:
     """Attach item['fulltext'] where an official full page is available.
 
     Mutates the in-memory groups only; write.py builds the prompt and
@@ -221,6 +221,7 @@ def enrich_pending(groups: list) -> int:
     pages = {k: v for k, v in pages.items()
              if isinstance(v, dict) and _cache_fresh(v, now)}
     fetches = enriched = 0
+    budget = fetch_budget if fetch_budget is not None else [MAX_FETCHES_PER_RUN]
     for group in groups or []:
         per_group = 0
         for item in group.get("items") or []:
@@ -234,9 +235,10 @@ def enrich_pending(groups: list) -> int:
             key = norm_url(url)
             entry = pages.get(key)
             if entry is None or not _cache_fresh(entry, now):
-                if fetches >= MAX_FETCHES_PER_RUN:
+                if fetches >= MAX_FETCHES_PER_RUN or budget[0] <= 0:
                     continue
                 fetches += 1
+                budget[0] -= 1
                 entry = {"text": fetch_fulltext(url),
                          "fetchedUtc": now.isoformat()}
                 pages[key] = entry

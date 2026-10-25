@@ -245,7 +245,8 @@
     meta.className = "search-result-meta";
     var formatLabel = record.articleFormat === "brief"
       ? root.dataset.briefLabel
-      : (record.articleFormat === "roundup" ? root.dataset.roundupLabel : "");
+      : (record.articleFormat === "roundup" ? root.dataset.roundupLabel
+        : (record.articleFormat === "announcement" ? root.dataset.announcementLabel : ""));
     var categoryLabel = localized(record, "category", lang);
     var tagClass = formatLabel ? "tag-neutral" : "tag-outline";
     if (formatLabel) categoryLabel += " · " + formatLabel;

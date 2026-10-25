@@ -75,7 +75,7 @@ def normalize_article_record(raw) -> dict | None:
     )
     article["articleFormat"] = (
         article.get("articleFormat")
-        if article.get("articleFormat") in ("full", "brief", "roundup")
+        if article.get("articleFormat") in ("full", "brief", "roundup", "announcement")
         else "full"
     )
     return article
