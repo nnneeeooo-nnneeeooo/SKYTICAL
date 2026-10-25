@@ -150,6 +150,7 @@ L = {
         "focusLabel": "臺灣焦點",
         "mainSource": "主要來源",
         "briefLabel": "短訊", "roundupLabel": "事件彙整",
+        "announcementLabel": "公告短訊", "ruleNote": "依官方公告由程式整理，內容附原始來源。",
         "summaryLabel": "重點摘要",
         "readMore": "閱讀全文 →", "back": "← 返回首頁",
         "heroImg": "[ 頭條照片 — 由來源圖庫自動帶入，灰階顯示 ]",
@@ -303,6 +304,7 @@ L = {
         "focusLabel": "Taiwan focus",
         "mainSource": "Primary source",
         "briefLabel": "Brief", "roundupLabel": "Event roundup",
+        "announcementLabel": "Official notice", "ruleNote": "Compiled from an official announcement using rule-based templates, with the original source linked.",
         "summaryLabel": "Quick Summary",
         "readMore": "Read more →", "back": "← Back to front page",
         "heroImg": "[ Lead photo — pulled from source library, grayscale ]",
@@ -669,6 +671,7 @@ ABOUT = {
             "透過自動化資料管線整理事件，再由 Anthropic Claude、OpenAI GPT、Google Gemini "
             "等主流語言模型"
             "協助產生繁體中文報導。",
+            "部分公告短訊依官方公告中的明確資料，由程式整理為中英內容，並標示內容類型與整理方式。",
             "模型不是新聞來源，也不會自行憑空補充資訊。每篇內容都必須建立在系統實際取得的"
             "來源資料上，並於文末保留原始出處，方便讀者直接查證。",
         ],
@@ -816,6 +819,7 @@ ABOUT = {
             "widely recognized language-model families such as Anthropic Claude, "
             "OpenAI GPT and Google Gemini "
             "to help produce the Traditional Chinese and English reports.",
+            "Some official notices are compiled into Chinese and English using rule-based templates, with their content type and compilation method identified on the page.",
             "The models are not a news source and never invent information. Every article "
             "must be built on source material the system actually obtained, with the "
             "original references kept at the end so readers can verify directly.",
@@ -1361,7 +1365,7 @@ def prep_article(raw):
         "available_languages": available_languages,
         "article_format": (
             raw.get("articleFormat")
-            if raw.get("articleFormat") in ("brief", "roundup")
+            if raw.get("articleFormat") in ("brief", "roundup", "announcement")
             else "full"),
     }
 
@@ -1867,6 +1871,8 @@ def hero_rotation_view(view, lang: str) -> dict:
         labels.append(L[lang]["briefLabel"])
     elif view.get("article_format") == "roundup":
         labels.append(L[lang]["roundupLabel"])
+    elif view.get("article_format") == "announcement":
+        labels.append(L[lang]["announcementLabel"])
     focus_prefix = f"{L[lang]['focusLabel']} · " if view.get("focus") else ""
     return {
         "id": view.get("id"),
