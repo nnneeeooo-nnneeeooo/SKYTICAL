@@ -1564,9 +1564,57 @@ def test_scheduled_source_is_not_drafted_again():
     print("test_scheduled_source_is_not_drafted_again: done")
 
 
+def test_reworded_scheduled_source_is_not_republished():
+    reset_data_dir()
+    pending = load(DATA / "pending.json")
+    group = pending["groups"][1]
+    group["updateCandidate"] = False
+    group["primarySource"] = "AeroTime"
+    source = group["items"][0]
+    source.update({
+        "title": "Gulfstream adds first fully outfitted G400 to flight-test program",
+        "url": "https://www.aerotime.aero/articles/gulfstream-g400-cabin-flight-testing-nbaa-2026",
+        "source": "AeroTime", "sourceKey": "aerotime",
+        "publishedUtc": RECENT_STAMP,
+        "summary": "Gulfstream started flight tests of the first G400 with a complete cabin.",
+    })
+    common.save_json(DATA / "pending.json", {**pending, "groups": [group]})
+    article = {
+        "id": "a-gulfstream-g400-cabin-flight-test-20261025",
+        "writer": "scheduled:Meta Muse",
+        "scheduledNews": {"eventKey": "gulfstream-g400-cabin-flight-test-20261025"},
+        "sourcePublishedUtc": RECENT_STAMP,
+        "en": {"title": "Gulfstream flies first fully outfitted G400 as certification program advances"},
+        "zh": {"title": "灣流G400首架完整客艙試飛機升空、邁向取證"},
+        "sources": [{"name": "AeroTime", "url": source["url"]}],
+    }
+    path = DATA / "articles" / "scheduled.json"
+    common.save_json(path, {"articles": [article]})
+    record = write._match_existing_article(group, write._load_existing_articles())
+    check(record is not None and
+          write._already_published_without_new_coverage(group, record),
+          "edited scheduled headline still matches its unchanged source")
+    different_event = json.loads(json.dumps(group))
+    different_event["items"][0]["title"] = "IATA elects a new board chair"
+    check(write._match_existing_article(different_event, [record]) is None,
+          "unrelated headline cannot match a scheduled story by URL alone")
+    provider = FakeProvider("gemini", [providers.ProviderError("must not call")])
+    with patch.object(write, "build_providers", return_value=[provider]):
+        write.main()
+    check(provider.calls == 0 and all_articles() == [article] and
+          not load(DATA / "pending.json")["groups"],
+          "reworded scheduled source is consumed without a duplicate article")
+    article["archived"] = True
+    common.save_json(path, {"articles": [article]})
+    check(not write._load_existing_articles(),
+          "archived duplicate cannot become a revision target")
+    print("test_reworded_scheduled_source_is_not_republished: done")
+
+
 def main():
     tests = [test_free_only_news_never_calls_paid_fallback,
              test_scheduled_source_is_not_drafted_again,
+             test_reworded_scheduled_source_is_not_republished,
              test_hourly_preserves_editorial_copy_without_model_calls,
              test_flexible_publication_keeps_evidence_gates,
              test_persistent_story_retry_budget,

@@ -2489,7 +2489,8 @@ def _load_existing_articles() -> list[dict]:
         if not isinstance(rows, list):
             continue
         for article in rows:
-            if not isinstance(article, dict) or not article.get("id"):
+            if (not isinstance(article, dict) or not article.get("id") or
+                    article.get("archived") is True):
                 continue
             urls = {
                 norm_url(str(source.get("url") or ""))
@@ -2521,8 +2522,18 @@ def _title_match_score(group_titles: list[str], record: dict) -> float:
     )
 
 
+def _same_scheduled_headline(group_titles: list[str], record: dict) -> bool:
+    if not group_titles or not record["article"].get("scheduledNews"):
+        return False
+    return all(
+        max((SequenceMatcher(None, current, previous).ratio()
+             for previous in record["titles"]), default=0.0) >= 0.65
+        for current in group_titles
+    )
+
+
 def _match_existing_article(group: dict, records: list[dict]):
-    """Resolve a dedupe update candidate to one existing event article."""
+    """Resolve updates or an unchanged scheduled source to an existing article."""
     urls = _group_source_urls(group)
     group_titles = [
         _norm_title(str(item.get("title") or ""))
@@ -2534,7 +2545,8 @@ def _match_existing_article(group: dict, records: list[dict]):
                 (group.get("updateCandidate") or
                  (urls <= record["urls"] and
                   bool(group_titles) and
-                  set(group_titles) <= set(record["titles"])))):
+                  (set(group_titles) <= set(record["titles"]) or
+                   _same_scheduled_headline(group_titles, record))))):
             return record
     if not group.get("updateCandidate"):
         return None
