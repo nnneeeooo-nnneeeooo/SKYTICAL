@@ -1543,6 +1543,10 @@ def test_scheduled_source_is_not_drafted_again():
     different_event["items"][0]["title"] = "IATA elects a new board chair"
     check(write._match_existing_article(different_event, [record]) is None,
           "a reused URL alone cannot merge a different event")
+    changed_claim = json.loads(json.dumps(group))
+    changed_claim["items"][0]["title"] = source["title"].replace("up", "may rise")
+    check(write._match_existing_article(changed_claim, [record]) is None,
+          "a changed source headline stays eligible for editorial review")
 
     provider = FakeProvider("gemini", [providers.ProviderError("must not call")])
     with patch.object(write, "build_providers", return_value=[provider]):

@@ -2533,7 +2533,7 @@ def _match_existing_article(group: dict, records: list[dict]):
         if (urls & record["urls"] and
                 (group.get("updateCandidate") or
                  (urls <= record["urls"] and
-                  _title_match_score(group_titles, record) >= 0.75))):
+                  bool(set(group_titles) & set(record["titles"]))))):
             return record
     if not group.get("updateCandidate"):
         return None
