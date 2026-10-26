@@ -8,7 +8,14 @@
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   var timer = 0;
   var entryTimer = 0;
-  var observer = null;
+  var visibilityListener = null;
+
+  function stopWaiting() {
+    if (!visibilityListener) return;
+    window.removeEventListener("scroll", visibilityListener);
+    window.removeEventListener("resize", visibilityListener);
+    visibilityListener = null;
+  }
 
   function play(restart) {
     if (reduced.matches || document.documentElement.dataset.theme === "8bit") return;
@@ -34,23 +41,19 @@
       if (image) image.addEventListener("load", function () { startOnEntry(event); }, { once: true });
       return;
     }
-    if (observer) observer.disconnect();
+    stopWaiting();
     window.clearTimeout(entryTimer);
     entryTimer = window.setTimeout(function () {
-      var box = trigger.getBoundingClientRect();
-      var inView = box.bottom > 0 && box.right > 0 &&
-        box.top < window.innerHeight && box.left < window.innerWidth;
-      if (inView) { play(Boolean(event.persisted)); return; }
-      if ("IntersectionObserver" in window) {
-        observer = new IntersectionObserver(function (entries) {
-          if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
-          observer.disconnect();
-          play(Boolean(event.persisted));
-        }, { threshold: .6 });
-        observer.observe(trigger);
-      } else {
+      visibilityListener = function () {
+        var box = trigger.getBoundingClientRect();
+        if (box.bottom <= 0 || box.right <= 0 ||
+            box.top >= window.innerHeight || box.left >= window.innerWidth) return;
+        stopWaiting();
         play(Boolean(event.persisted));
-      }
+      };
+      window.addEventListener("scroll", visibilityListener, { passive: true });
+      window.addEventListener("resize", visibilityListener);
+      visibilityListener();
     }, 350);
   }
 
