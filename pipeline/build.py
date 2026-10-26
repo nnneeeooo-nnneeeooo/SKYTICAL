@@ -97,6 +97,7 @@ def static_asset_version() -> str:
         "pixel.css",
         "fusion-pixel-tw-v2026-10-16.woff2",
         "app.js",
+        "logo-flight.js",
         "text-spacing.js",
         "search.js",
         "highlight.js",
