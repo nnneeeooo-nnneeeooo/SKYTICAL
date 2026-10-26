@@ -418,15 +418,21 @@ def _aircraft_types_in_text(text: str, models=()) -> list[str]:
     return found
 
 
+def article_aircraft_models(article: dict) -> list[str]:
+    """Read both aircraft entity fields used by published articles."""
+    entities = article.get("entities") or {}
+    return list(entities.get("aircraft_models") or []) + list(entities.get("aircraft") or [])
+
+
 def headline_aircraft_types(article: dict) -> list[str]:
     """Return only aircraft types explicitly present in either headline."""
-    models = (article.get("entities") or {}).get("aircraft_models") or []
+    models = article_aircraft_models(article)
     return _aircraft_types_in_text(article_headline_text(article), models)
 
 
 def find_aircraft_type(article: dict) -> str | None:
     """Title before summary; longest model at the same position wins."""
-    models = (article.get("entities") or {}).get("aircraft_models") or []
+    models = article_aircraft_models(article)
     for text in (article_headline_text(article), article_context_text(article)):
         candidates = _aircraft_types_in_text(text, models)
         if candidates:
