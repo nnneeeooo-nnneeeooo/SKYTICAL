@@ -117,6 +117,8 @@ def main() -> None:
         "Kosmos 2612 satellite approaches ICEYE-X36 in orbit",
         "歐盟撥款生產無人機彈頭與炸藥",
         "EU funds loitering munition warhead production",
+        "「死者47人、遺体48体」の謎を解く『UNKNOWN PASSENGER 47』、Steamに登場へ。“オブラディンライクの入門”掲げる旅客機墜落事故ミステリー",
+        "Air crash video game UNKNOWN PASSENGER 47 comes to Steam",
     ):
         item = {"title": title, "summary": "航空公司為背景合作夥伴。"}
         assert not common.is_transport_headline(item), title
