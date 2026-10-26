@@ -109,6 +109,7 @@ def static_asset_version() -> str:
         "briefing.css",
         "briefing.js",
         "team.css",
+        "team-logo.js",
         "team-neo.jpg",
         "radar.css",
         "radar.js",

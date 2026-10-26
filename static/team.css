@@ -13,7 +13,68 @@
 .team-introduction { grid-area: intro; min-width: 0; align-self: end; padding-top: 20px; }
 .team-introduction h2 { display: flex; align-items: center; gap: 16px; margin: 0 0 24px; font-size: clamp(88px, 9vw, 120px); font-weight: 800; line-height: 1; letter-spacing: -.065em; }
 .team-name-logo { display: block; width: .9em; height: .9em; flex: 0 0 auto; object-fit: contain; }
+.team-logo-trigger {
+  position: relative; display: block; flex: 0 0 .9em; width: .9em; height: .9em;
+  padding: 0; border: 0; background: transparent; color: inherit;
+  font: inherit; line-height: 1; cursor: pointer; isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+.team-logo-trigger .team-name-logo { position: relative; z-index: 2; width: 100%; height: 100%; }
+.team-logo-trigger::before, .team-logo-trigger::after {
+  content: ""; position: absolute; inset: -.09em; border: 2px solid #f2643c;
+  border-radius: 50%; opacity: 0; pointer-events: none;
+}
+.team-logo-trigger::after { border-color: #f2a23a; }
+.team-logo-orbit {
+  position: absolute; inset: -.16em; z-index: 1; border: 2px solid transparent;
+  border-top-color: #ec3013; border-right-color: #f2643c;
+  border-bottom-color: #f2a23a; border-radius: 50%; opacity: 0;
+  pointer-events: none;
+}
+.team-logo-signal {
+  position: absolute; top: 17%; left: 78%; z-index: 1;
+  width: 6px; height: 6px; border-radius: 50%; background: #f2a23a;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #f2a23a 22%, transparent);
+  opacity: 0; pointer-events: none;
+}
+.team-logo-trigger.is-playing .team-name-logo { animation: team-logo-wake 1.8s cubic-bezier(.2,.75,.2,1) both; }
+.team-logo-trigger.is-playing::before { animation: team-logo-echo 1.45s .12s ease-out both; }
+.team-logo-trigger.is-playing::after { animation: team-logo-echo 1.45s .36s ease-out both; }
+.team-logo-trigger.is-playing .team-logo-orbit { animation: team-logo-orbit 2.1s ease-in-out both; }
+.team-logo-trigger.is-playing .team-logo-signal { animation: team-logo-signal 1.8s .13s ease-in-out both; }
+.team-logo-trigger:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 12px; border-radius: 50%; }
+@keyframes team-logo-wake {
+  0% { transform: translateY(8px) rotate(-22deg) scale(.72); }
+  24% { transform: translateY(-8px) rotate(11deg) scale(1.11); }
+  47% { transform: translateY(2px) rotate(-7deg) scale(.94); }
+  68% { transform: translateY(-3px) rotate(4deg) scale(1.04); }
+  100% { transform: none; }
+}
+@keyframes team-logo-echo {
+  0% { transform: scale(.38); opacity: .85; }
+  100% { transform: scale(1.52); opacity: 0; }
+}
+@keyframes team-logo-orbit {
+  0% { transform: rotate(-100deg) scale(.65); opacity: 0; }
+  17% { opacity: .9; }
+  70% { opacity: .85; }
+  100% { transform: rotate(440deg) scale(1.08); opacity: 0; }
+}
+@keyframes team-logo-signal {
+  0%, 100% { transform: rotate(-90deg) translateX(0) scale(.3); opacity: 0; }
+  20% { opacity: 1; }
+  65% { transform: rotate(225deg) translateX(65px) scale(1); opacity: 1; }
+  85% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .team-logo-trigger.is-playing .team-name-logo,
+  .team-logo-trigger.is-playing::before,
+  .team-logo-trigger.is-playing::after,
+  .team-logo-trigger.is-playing .team-logo-orbit,
+  .team-logo-trigger.is-playing .team-logo-signal { animation: none; }
+}
 .team-name-logo--pixel { display: none; }
+[data-theme="8bit"] .team-logo-trigger { display: none; }
 [data-theme="8bit"] .team-name-logo--classic { display: none; }
 [data-theme="8bit"] .team-name-logo--pixel { display: block; image-rendering: pixelated; }
 .team-page .team-role { margin: 0 0 26px; font-size: 14px; font-weight: 700; line-height: 1.8; }
