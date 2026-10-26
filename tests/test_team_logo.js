@@ -11,12 +11,12 @@ function setup(theme = "light", prefersReducedMotion = false, initiallyVisible =
   const timers = new Map();
   const listeners = {};
   let nextTimer = 0;
-  let observer;
+  let visible = initiallyVisible;
   const image = { complete: true, naturalWidth: 250 };
   const trigger = {
     offsetWidth: 88,
     getBoundingClientRect() {
-      return initiallyVisible
+      return visible
         ? { top: 718, bottom: 800, left: 24, right: 107 }
         : { top: 900, bottom: 982, left: 24, right: 107 };
     },
@@ -28,17 +28,14 @@ function setup(theme = "light", prefersReducedMotion = false, initiallyVisible =
     addEventListener(name, handler) { listeners[name] = handler; },
     querySelector() { return image; },
   };
-  class IntersectionObserver {
-    constructor(callback) { this.callback = callback; observer = this; }
-    observe() {}
-    disconnect() {}
-  }
   const window = {
-    IntersectionObserver,
     innerWidth: 390,
     innerHeight: 844,
     matchMedia() { return { matches: prefersReducedMotion }; },
     addEventListener(name, handler) { listeners[name] = handler; },
+    removeEventListener(name, handler) {
+      if (listeners[name] === handler) delete listeners[name];
+    },
     setTimeout(handler) { const id = ++nextTimer; timers.set(id, handler); return id; },
     clearTimeout(id) { timers.delete(id); },
   };
@@ -46,7 +43,7 @@ function setup(theme = "light", prefersReducedMotion = false, initiallyVisible =
     documentElement: { dataset: { theme } },
     querySelector() { return trigger; },
   };
-  vm.runInNewContext(source, { window, document, IntersectionObserver });
+  vm.runInNewContext(source, { window, document });
   return {
     classes, listeners,
     enter(persisted = false) {
@@ -56,7 +53,7 @@ function setup(theme = "light", prefersReducedMotion = false, initiallyVisible =
       timers.delete(first);
       handler();
     },
-    reveal() { observer.callback([{ isIntersecting: true }]); },
+    reveal() { visible = true; listeners.scroll(); },
     finish() {
       for (const handler of timers.values()) handler();
       timers.clear();
