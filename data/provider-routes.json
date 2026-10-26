@@ -3,19 +3,19 @@
   "routes": {
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-25T23:54Z",
-      "checkedUtc": "2026-10-25T17:54Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
+      "untilUtc": "2026-10-26T07:47Z",
+      "checkedUtc": "2026-10-26T01:47Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 2,
       "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-25T23:54Z",
-      "checkedUtc": "2026-10-25T17:54Z",
+      "untilUtc": "2026-10-26T07:47Z",
+      "checkedUtc": "2026-10-26T01:47Z",
       "failureClass": "quota",
-      "diagnostic": "platform cooldown",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 2,
       "schemaMode": null
     },
@@ -30,8 +30,8 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "checkedUtc": "2026-10-25T20:53Z",
       "untilUtc": "2026-10-26T02:53Z",
+      "checkedUtc": "2026-10-25T20:53Z",
       "failureClass": "unexpected",
       "diagnostic": "verified factId values must be sequential F1..Fn",
       "probeVersion": 2,
@@ -66,8 +66,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-25T23:54Z",
-      "checkedUtc": "2026-10-25T17:54Z",
+      "untilUtc": "2026-10-26T07:47Z",
+      "checkedUtc": "2026-10-26T01:47Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 2,
@@ -75,10 +75,10 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "untilUtc": "2026-10-25T23:54Z",
-      "checkedUtc": "2026-10-25T17:54Z",
+      "checkedUtc": "2026-10-26T01:47Z",
+      "untilUtc": "2026-10-26T07:47Z",
       "failureClass": "unexpected",
-      "diagnostic": "verified factId values must be sequential F1..Fn",
+      "diagnostic": "entity value '2026-06-13' is not verbatim in its sourceQuote",
       "probeVersion": 2,
       "schemaMode": null
     }
