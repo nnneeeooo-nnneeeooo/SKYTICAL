@@ -769,8 +769,48 @@ wrong_e175_image = {
 }
 check("E175 headline rejects a comparison A220 photo",
       images.find_aircraft_type(e175_story) == "Embraer E175"
-      and "image" not in e175_story
-      and not images.existing_image_matches(e175_story, wrong_e175_image))
+      and not images.existing_image_matches(e175_story, wrong_e175_image)
+      and (not e175_story.get("image")
+           or images.existing_image_matches(e175_story, e175_story["image"])))
+
+africa_world = json.loads((REPO / "data" / "articles" /
+                           "scheduled-africa-world-e190-west-africa-20261023.json")
+                          .read_text(encoding="utf-8"))["articles"][0]
+air_canada_e190 = {
+    "url": "https://upload.wikimedia.org/air-canada-e190.jpg",
+    "link": "https://commons.wikimedia.org/wiki/File:Air_Canada_E190.jpg",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "Embraer E190 aircraft", "subject": "Embraer E190",
+    "description": "Air Canada Embraer E190 C-FLWE",
+    "photoYear": 2020,
+}
+check("scheduled operator names its primary airline",
+      images.find_airline(africa_world) == "Africa World Airlines")
+check("Africa World article drops the Air Canada E190 photo",
+      "image" not in africa_world
+      and not images.existing_image_matches(africa_world, air_canada_e190))
+check("Africa World E190 photo remains eligible",
+      images.existing_image_matches(
+          africa_world, dict(air_canada_e190,
+                             url="https://upload.wikimedia.org/africa-world-e190.jpg",
+                             link="https://commons.wikimedia.org/wiki/File:Africa_World_E190.jpg",
+                             matched="Africa World Airlines Embraer E190",
+                             subject="Africa World Airlines Embraer E190",
+                             description="Africa World Airlines Embraer E190 in Accra")))
+
+air_astana = json.loads((REPO / "data" / "articles" /
+                         "scheduled-air-astana-787-9-flight-testing-20261025.json")
+                        .read_text(encoding="utf-8"))["articles"][0]
+check("exact Air Astana airframe photo survives operator matching",
+      images.find_airline(air_astana) == "Air Astana"
+      and images.existing_image_matches(air_astana, air_astana["image"]))
+sf260_incident = json.loads((REPO / "data" / "articles" /
+                             "2026-10-26T10.json")
+                            .read_text(encoding="utf-8"))["articles"][0]
+check("military operator is not treated as an airline",
+      images.find_airline(sf260_incident) is None
+      and images.existing_image_matches(sf260_incident,
+                                        sf260_incident["image"]))
 
 all_published_images = []
 for article_path in (REPO / "data" / "articles").glob("*.json"):
