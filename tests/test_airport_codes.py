@@ -126,6 +126,25 @@ def main() -> int:
     assert airport_codes.validate_article(sas_route) == []
     assert airport_codes.enforce_article(sas_route) == (False, [])
 
+    seattle_route = {
+        "entities": {"airports": ["SEA"]},
+        "zh": {"title": "美國航空 JFK－西雅圖機場（SEA）復航", "summary": "", "body": [
+            "新航線將往返紐約甘迺迪機場與西雅圖機場。"]},
+        "en": {"title": "American Airlines JFK–Seattle (SEA) service returns",
+                "summary": "", "body": [
+            "The route will serve Seattle-Tacoma International Airport."]},
+    }
+    assert airport_codes.resolve_airport("Seattle") is None
+    assert airport_codes.resolve_airport(
+        "Seattle-Tacoma International Airport")["code"] == "SEA"
+    assert airport_codes.resolve_airport("西雅圖機場")["code"] == "SEA"
+    assert airport_codes.enforce_article(seattle_route) == (True, [])
+    assert "西雅圖機場（SEA）" in seattle_route["zh"]["title"]
+    assert "西雅圖機場（SEA）" in seattle_route["zh"]["body"][0]
+    assert "Seattle-Tacoma International Airport (SEA)" in seattle_route["en"]["body"][0]
+    assert airport_codes.validate_article(seattle_route) == []
+    assert airport_codes.enforce_article(seattle_route) == (False, [])
+
     resolved = airport_codes.resolve_airport("Catania airport")
     assert resolved is not None, "Catania airport must resolve"
     assert resolved["code"] == "CTA", resolved
