@@ -2,27 +2,27 @@
   "schemaVersion": 1,
   "routes": {
     "gemini:gemini-3.6-flash": {
+      "status": "verified",
+      "untilUtc": "2026-10-27T08:09Z",
+      "checkedUtc": "2026-10-26T08:09Z",
+      "failureClass": null,
+      "diagnostic": null,
+      "probeVersion": 2,
+      "schemaMode": "prompt"
+    },
+    "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-26T07:47Z",
-      "checkedUtc": "2026-10-26T01:47Z",
+      "untilUtc": "2026-10-26T14:09Z",
+      "checkedUtc": "2026-10-26T08:09Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 2,
       "schemaMode": null
     },
-    "gemini:gemini-3.5-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-10-26T07:47Z",
-      "checkedUtc": "2026-10-26T01:47Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
-      "probeVersion": 2,
-      "schemaMode": null
-    },
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "verified",
-      "untilUtc": "2026-10-26T05:23Z",
-      "checkedUtc": "2026-10-25T05:23Z",
+      "untilUtc": "2026-10-27T08:09Z",
+      "checkedUtc": "2026-10-26T08:09Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 2,
@@ -30,8 +30,8 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-26T02:53Z",
-      "checkedUtc": "2026-10-25T20:53Z",
+      "untilUtc": "2026-10-26T14:09Z",
+      "checkedUtc": "2026-10-26T08:09Z",
       "failureClass": "unexpected",
       "diagnostic": "verified factId values must be sequential F1..Fn",
       "probeVersion": 2,
@@ -66,8 +66,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-26T07:47Z",
-      "checkedUtc": "2026-10-26T01:47Z",
+      "untilUtc": "2026-10-26T14:09Z",
+      "checkedUtc": "2026-10-26T08:09Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 2,
@@ -75,8 +75,8 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "checkedUtc": "2026-10-26T01:47Z",
-      "untilUtc": "2026-10-26T07:47Z",
+      "checkedUtc": "2026-10-26T08:09Z",
+      "untilUtc": "2026-10-26T14:09Z",
       "failureClass": "unexpected",
       "diagnostic": "entity value '2026-06-13' is not verbatim in its sourceQuote",
       "probeVersion": 2,
