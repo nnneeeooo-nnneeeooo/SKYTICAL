@@ -95,6 +95,7 @@ def main() -> None:
     assert '.brand-logo { clip-path: inset(0 0 0 25%); }' in css
     team = (ROOT / "site" / "team" / "index.html").read_text(encoding="utf-8")
     assert 'data-team-logo-play' in team
+    assert 'class="team-logo-eyes"' in team
     assert f'/assets/team-logo.js?v={build.ASSET_VERSION}' in team
     assert (ROOT / "site" / "assets" / "team-logo.js").is_file()
     assert 'class="team-inline-logo team-name-logo--classic"' in team

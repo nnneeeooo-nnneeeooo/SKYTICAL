@@ -4,8 +4,10 @@
 
   var trigger = document.querySelector("[data-team-logo-play]");
   if (!trigger || !window.matchMedia) return;
+  var image = trigger.querySelector("img");
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   var timer = 0;
+  var observer = null;
 
   function play(restart) {
     if (reduced.matches || document.documentElement.dataset.theme === "8bit") return;
@@ -26,12 +28,23 @@
   });
   trigger.addEventListener("click", function () { play(true); });
 
-  if ("IntersectionObserver" in window) {
-    var observer = new IntersectionObserver(function (entries) {
-      if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
-      observer.disconnect();
-      window.setTimeout(function () { play(false); }, 350);
-    }, { threshold: .6 });
-    observer.observe(trigger);
+  function startOnEntry(event) {
+    if (!image || !image.complete || !image.naturalWidth) {
+      if (image) image.addEventListener("load", function () { startOnEntry(event); }, { once: true });
+      return;
+    }
+    if (observer) observer.disconnect();
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+        observer.disconnect();
+        window.setTimeout(function () { play(Boolean(event.persisted)); }, 350);
+      }, { threshold: .6 });
+      observer.observe(trigger);
+    } else {
+      window.setTimeout(function () { play(Boolean(event.persisted)); }, 350);
+    }
   }
+
+  window.addEventListener("pageshow", startOnEntry);
 })();
