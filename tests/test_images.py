@@ -730,6 +730,48 @@ regional_image = {
 check("parent airline brand remains valid for its regional operation",
       images.existing_image_matches(regional_story, regional_image))
 
+south_bend = json.loads((REPO / "data" / "articles" /
+                         "scheduled-american-airlines-south-bend-crj700-20261025.json")
+                        .read_text(encoding="utf-8"))["articles"][0]
+wrong_south_bend_image = {
+    "url": "https://upload.wikimedia.org/american-airlines-a321neo.jpg",
+    "link": "https://commons.wikimedia.org/wiki/File:American_A321neo.jpg",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "American Airlines Airbus A321neo",
+    "subject": "American Airlines Airbus A321neo",
+    "description": "American Airlines Airbus A321neo N407AN departing Boston July 2026",
+    "photoYear": 2026,
+}
+check("scheduled aircraft entity identifies the CRJ-700",
+      images.find_aircraft_type(south_bend) == "Bombardier CRJ-700")
+check("South Bend article no longer carries the wrong A321neo photo",
+      "image" not in south_bend)
+check("cached A321neo photo cannot be reused for the CRJ-700 article",
+      not images.existing_image_matches(south_bend, wrong_south_bend_image))
+check("documented CRJ-700 photo remains eligible",
+      images.existing_image_matches(
+          south_bend, dict(wrong_south_bend_image,
+                           url="https://upload.wikimedia.org/american-airlines-crj700.jpg",
+                           matched="American Airlines CRJ-700",
+                           subject="American Airlines CRJ-700",
+                           description="American Airlines CRJ-700 at Chicago")))
+
+e175_story = json.loads((REPO / "data" / "articles" /
+                         "scheduled-embraer-e175-thrust-noise-20261024.json")
+                        .read_text(encoding="utf-8"))["articles"][0]
+wrong_e175_image = {
+    "url": "https://upload.wikimedia.org/airbaltic-a220.jpg",
+    "link": "https://commons.wikimedia.org/wiki/File:AirBaltic_A220.jpg",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "Airbus A220 aircraft", "subject": "Airbus A220",
+    "description": "Frankfurt Airport airBaltic Airbus A220-300 YL-ABL",
+    "photoYear": 2023,
+}
+check("E175 headline rejects a comparison A220 photo",
+      images.find_aircraft_type(e175_story) == "Embraer E175"
+      and "image" not in e175_story
+      and not images.existing_image_matches(e175_story, wrong_e175_image))
+
 all_published_images = []
 for article_path in (REPO / "data" / "articles").glob("*.json"):
     batch = json.loads(article_path.read_text(encoding="utf-8"))

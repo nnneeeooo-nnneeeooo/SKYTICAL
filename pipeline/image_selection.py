@@ -89,7 +89,7 @@ def evidence(image):
 
 def model_matches(model, text):
     """Preserve variants: A350-900 != -1000, Gripen F != NG, MAX 7 != MAX 8."""
-    model = re.sub(r"^(?:Airbus|Boeing|Embraer)\s+", "", model, flags=re.I)
+    model = re.sub(r"^(?:Airbus|Boeing|Embraer|Bombardier)\s+", "", model, flags=re.I)
     # Manufacturer subtype digits are compatible within the named series.
     model = re.sub(r"(A\d{3})-([2389])\d{2}\b", r"\g<1>-\g<2>00", model)
     text = re.sub(r"(A\d{3})[ _-]([2389])\d{2}\b", r"\g<1>-\g<2>00", text, flags=re.I)
@@ -208,11 +208,8 @@ def rejection_reason(article, raw, captions=None):
                 article, airline, im, event_evidence):
             return "source-airline-unverified"
         caption_models = images._aircraft_types_in_text(event_evidence)
-        structured_models = [
-            str(value) for value in
-            ((article.get("entities") or {}).get("aircraft_models") or [])
-            if str(value or "").strip()
-        ]
+        structured_models = [str(value) for value in images.article_aircraft_models(article)
+                             if str(value or "").strip()]
         event_models = structured_models or eligible_models
         if (event_models and caption_models
                 and not any(model_matches(candidate, event_evidence)
