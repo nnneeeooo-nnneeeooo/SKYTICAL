@@ -12,8 +12,8 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-26T14:09Z",
-      "checkedUtc": "2026-10-26T08:09Z",
+      "untilUtc": "2026-10-26T21:06Z",
+      "checkedUtc": "2026-10-26T15:06Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 2,
@@ -30,17 +30,17 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-26T14:09Z",
-      "checkedUtc": "2026-10-26T08:09Z",
+      "untilUtc": "2026-10-26T21:06Z",
+      "checkedUtc": "2026-10-26T15:06Z",
       "failureClass": "unexpected",
-      "diagnostic": "verified factId values must be sequential F1..Fn",
+      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
       "probeVersion": 2,
       "schemaMode": null
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-10-26T14:36Z",
-      "checkedUtc": "2026-10-25T14:36Z",
+      "checkedUtc": "2026-10-26T15:06Z",
+      "untilUtc": "2026-10-27T15:06Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 2,
@@ -66,8 +66,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-26T14:09Z",
-      "checkedUtc": "2026-10-26T08:09Z",
+      "untilUtc": "2026-10-26T21:06Z",
+      "checkedUtc": "2026-10-26T15:06Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 2,
@@ -75,10 +75,10 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "checkedUtc": "2026-10-26T08:09Z",
-      "untilUtc": "2026-10-26T14:09Z",
+      "untilUtc": "2026-10-26T21:06Z",
+      "checkedUtc": "2026-10-26T15:06Z",
       "failureClass": "unexpected",
-      "diagnostic": "entity value '2026-06-13' is not verbatim in its sourceQuote",
+      "diagnostic": "publish_brief body does not meet brief contract (zh=160 content characters, en=60 words, paragraphs=3/3)",
       "probeVersion": 2,
       "schemaMode": null
     }
