@@ -6,7 +6,7 @@ const vm = require("node:vm");
 
 const source = fs.readFileSync(path.join(__dirname, "../static/team-logo.js"), "utf8");
 
-function setup(theme = "light", prefersReducedMotion = false) {
+function setup(theme = "light", prefersReducedMotion = false, initiallyVisible = true) {
   const classes = new Set();
   const timers = new Map();
   const listeners = {};
@@ -15,6 +15,11 @@ function setup(theme = "light", prefersReducedMotion = false) {
   const image = { complete: true, naturalWidth: 250 };
   const trigger = {
     offsetWidth: 88,
+    getBoundingClientRect() {
+      return initiallyVisible
+        ? { top: 718, bottom: 800, left: 24, right: 107 }
+        : { top: 900, bottom: 982, left: 24, right: 107 };
+    },
     classList: {
       add(name) { classes.add(name); },
       remove(name) { classes.delete(name); },
@@ -30,6 +35,8 @@ function setup(theme = "light", prefersReducedMotion = false) {
   }
   const window = {
     IntersectionObserver,
+    innerWidth: 390,
+    innerHeight: 844,
     matchMedia() { return { matches: prefersReducedMotion }; },
     addEventListener(name, handler) { listeners[name] = handler; },
     setTimeout(handler) { const id = ++nextTimer; timers.set(id, handler); return id; },
@@ -44,12 +51,12 @@ function setup(theme = "light", prefersReducedMotion = false) {
     classes, listeners,
     enter(persisted = false) {
       listeners.pageshow({ persisted });
-      observer.callback([{ isIntersecting: true }]);
       const first = [...timers.keys()][0];
       const handler = timers.get(first);
       timers.delete(first);
       handler();
     },
+    reveal() { observer.callback([{ isIntersecting: true }]); },
     finish() {
       for (const handler of timers.values()) handler();
       timers.clear();
@@ -59,7 +66,7 @@ function setup(theme = "light", prefersReducedMotion = false) {
 
 const ui = setup();
 ui.enter();
-assert.equal(ui.classes.has("is-playing"), true, "initial page entry plays");
+assert.equal(ui.classes.has("is-playing"), true, "visible mobile logo plays on entry");
 ui.finish();
 assert.equal(ui.classes.has("is-playing"), false, "animation settles");
 ui.enter(true);
@@ -67,6 +74,12 @@ assert.equal(ui.classes.has("is-playing"), true, "history restore replays");
 ui.finish();
 ui.enter();
 assert.equal(ui.classes.has("is-playing"), true, "reload replays");
+
+const belowFold = setup("light", false, false);
+belowFold.enter();
+assert.equal(belowFold.classes.has("is-playing"), false, "offscreen logo waits");
+belowFold.reveal();
+assert.equal(belowFold.classes.has("is-playing"), true, "scrolling to logo plays");
 
 for (const restricted of [setup("8bit"), setup("light", true)]) {
   restricted.enter();
