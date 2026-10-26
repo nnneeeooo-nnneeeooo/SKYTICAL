@@ -7,6 +7,7 @@
   var image = trigger.querySelector("img");
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   var timer = 0;
+  var entryTimer = 0;
   var observer = null;
 
   function play(restart) {
@@ -34,16 +35,23 @@
       return;
     }
     if (observer) observer.disconnect();
-    if ("IntersectionObserver" in window) {
-      observer = new IntersectionObserver(function (entries) {
-        if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
-        observer.disconnect();
-        window.setTimeout(function () { play(Boolean(event.persisted)); }, 350);
-      }, { threshold: .6 });
-      observer.observe(trigger);
-    } else {
-      window.setTimeout(function () { play(Boolean(event.persisted)); }, 350);
-    }
+    window.clearTimeout(entryTimer);
+    entryTimer = window.setTimeout(function () {
+      var box = trigger.getBoundingClientRect();
+      var inView = box.bottom > 0 && box.right > 0 &&
+        box.top < window.innerHeight && box.left < window.innerWidth;
+      if (inView) { play(Boolean(event.persisted)); return; }
+      if ("IntersectionObserver" in window) {
+        observer = new IntersectionObserver(function (entries) {
+          if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+          observer.disconnect();
+          play(Boolean(event.persisted));
+        }, { threshold: .6 });
+        observer.observe(trigger);
+      } else {
+        play(Boolean(event.persisted));
+      }
+    }, 350);
   }
 
   window.addEventListener("pageshow", startOnEntry);
