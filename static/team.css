@@ -19,7 +19,21 @@
   font: inherit; line-height: 1; cursor: pointer; isolation: isolate;
   -webkit-tap-highlight-color: transparent;
 }
-.team-logo-trigger .team-name-logo { position: relative; z-index: 2; width: 100%; height: 100%; }
+.team-logo-character { position: relative; z-index: 2; display: block; width: 100%; height: 100%; }
+.team-logo-trigger .team-name-logo { width: 100%; height: 100%; }
+.team-logo-eyes {
+  position: absolute; left: 40%; top: 38%; display: flex; align-items: center;
+  gap: 3px; opacity: 0; pointer-events: none;
+}
+.team-logo-eyes i {
+  position: relative; display: block; width: clamp(6px, .065em, 8px);
+  height: clamp(7px, .075em, 9px); border: 1px solid var(--color-text);
+  border-radius: 50%; background: var(--color-bg);
+}
+.team-logo-eyes i::after {
+  content: ""; position: absolute; top: 34%; left: 38%; width: 3px; height: 3px;
+  border-radius: 50%; background: var(--color-text);
+}
 .team-logo-trigger::before, .team-logo-trigger::after {
   content: ""; position: absolute; inset: -.09em; border: 2px solid #f2643c;
   border-radius: 50%; opacity: 0; pointer-events: none;
@@ -37,7 +51,10 @@
   box-shadow: 0 0 0 3px color-mix(in srgb, #f2a23a 22%, transparent);
   opacity: 0; pointer-events: none;
 }
-.team-logo-trigger.is-playing .team-name-logo { animation: team-logo-wake 1.8s cubic-bezier(.2,.75,.2,1) both; }
+.team-logo-trigger.is-playing .team-logo-character { animation: team-logo-wake 1.8s cubic-bezier(.2,.75,.2,1) both; }
+.team-logo-trigger.is-playing .team-logo-eyes { animation: team-logo-eyes 2.1s ease-in-out both; }
+.team-logo-trigger.is-playing .team-logo-eyes i { animation: team-logo-blink 1.1s .5s ease-in-out 1; }
+.team-logo-trigger.is-playing .team-logo-eyes i::after { animation: team-logo-gaze 1.3s .38s ease-in-out both; }
 .team-logo-trigger.is-playing::before { animation: team-logo-echo 1.45s .12s ease-out both; }
 .team-logo-trigger.is-playing::after { animation: team-logo-echo 1.45s .36s ease-out both; }
 .team-logo-trigger.is-playing .team-logo-orbit { animation: team-logo-orbit 2.1s ease-in-out both; }
@@ -49,6 +66,19 @@
   47% { transform: translateY(2px) rotate(-7deg) scale(.94); }
   68% { transform: translateY(-3px) rotate(4deg) scale(1.04); }
   100% { transform: none; }
+}
+@keyframes team-logo-eyes {
+  0%, 12%, 100% { opacity: 0; }
+  24%, 78% { opacity: 1; }
+}
+@keyframes team-logo-blink {
+  0%, 42%, 53%, 100% { transform: scaleY(1); }
+  47% { transform: scaleY(.12); }
+}
+@keyframes team-logo-gaze {
+  0%, 100% { transform: translateX(0); }
+  45% { transform: translateX(2px); }
+  75% { transform: translateX(-1px); }
 }
 @keyframes team-logo-echo {
   0% { transform: scale(.38); opacity: .85; }
@@ -67,7 +97,10 @@
   85% { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .team-logo-trigger.is-playing .team-name-logo,
+  .team-logo-trigger.is-playing .team-logo-character,
+  .team-logo-trigger.is-playing .team-logo-eyes,
+  .team-logo-trigger.is-playing .team-logo-eyes i,
+  .team-logo-trigger.is-playing .team-logo-eyes i::after,
   .team-logo-trigger.is-playing::before,
   .team-logo-trigger.is-playing::after,
   .team-logo-trigger.is-playing .team-logo-orbit,
