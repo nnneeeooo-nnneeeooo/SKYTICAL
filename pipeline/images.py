@@ -293,6 +293,21 @@ def find_registration(article: dict) -> str | None:
     return match.group(1) if match else None
 
 
+def _is_airline_operator(name: object) -> bool:
+    """Exclude military, manufacturer and agency names from operator entities."""
+    value = str(name or "").strip()
+    if not value or re.search(r"\bair\s+force\b|空軍|海軍|陸軍", value, re.I):
+        return False
+    if re.search(r"\bair(?:lines?|ways)?\b|\baviation\b|航空", value, re.I):
+        return True
+    if airline_visual_profile(value):
+        return True
+    return any(value.casefold() in {
+        str(airline.get("airline_name_en") or "").casefold(),
+        str(airline.get("airline_name_zh_tw") or "").casefold(),
+    } for airline in _airlines)
+
+
 def find_airline(article: dict) -> str | None:
     """Return the article's primary airline, never a background mention.
 
@@ -300,11 +315,15 @@ def find_airline(article: dict) -> str | None:
     drafts put a comparison carrier first.  A carrier named first in the
     headline wins; entity order is the tie-breaker.  Unknown but verified
     airline entities are retained instead of falling back to a coincidental
-    dictionary match elsewhere in the article.
+    dictionary match elsewhere in the article. Scheduled drafts may instead
+    use ``entities.operators``; military and non-airline operators are excluded.
     """
     entities = article.get("entities") or {}
     entity_airlines = (
         entities.get("airlines") if isinstance(entities, dict) else []) or []
+    if not entity_airlines and isinstance(entities, dict):
+        entity_airlines = [name for name in entities.get("operators") or []
+                           if _is_airline_operator(name)]
 
     def canonical(entity) -> str:
         raw = str(entity or "").strip()
