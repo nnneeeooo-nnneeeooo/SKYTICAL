@@ -293,6 +293,21 @@ def find_registration(article: dict) -> str | None:
     return match.group(1) if match else None
 
 
+def _is_airline_operator(name: object) -> bool:
+    """Exclude military, manufacturer and agency names from operator entities."""
+    value = str(name or "").strip()
+    if not value or re.search(r"\bair\s+force\b|空軍|海軍|陸軍", value, re.I):
+        return False
+    if re.search(r"\bair(?:lines?|ways)?\b|\baviation\b|航空", value, re.I):
+        return True
+    if airline_visual_profile(value):
+        return True
+    return any(value.casefold() in {
+        str(airline.get("airline_name_en") or "").casefold(),
+        str(airline.get("airline_name_zh_tw") or "").casefold(),
+    } for airline in _airlines)
+
+
 def find_airline(article: dict) -> str | None:
     """Return the article's primary airline, never a background mention.
 
@@ -300,11 +315,15 @@ def find_airline(article: dict) -> str | None:
     drafts put a comparison carrier first.  A carrier named first in the
     headline wins; entity order is the tie-breaker.  Unknown but verified
     airline entities are retained instead of falling back to a coincidental
-    dictionary match elsewhere in the article.
+    dictionary match elsewhere in the article. Scheduled drafts may instead
+    use ``entities.operators``; military and non-airline operators are excluded.
     """
     entities = article.get("entities") or {}
     entity_airlines = (
         entities.get("airlines") if isinstance(entities, dict) else []) or []
+    if not entity_airlines and isinstance(entities, dict):
+        entity_airlines = [name for name in entities.get("operators") or []
+                           if _is_airline_operator(name)]
 
     def canonical(entity) -> str:
         raw = str(entity or "").strip()
@@ -418,15 +437,21 @@ def _aircraft_types_in_text(text: str, models=()) -> list[str]:
     return found
 
 
+def article_aircraft_models(article: dict) -> list[str]:
+    """Read both aircraft entity fields used by published articles."""
+    entities = article.get("entities") or {}
+    return list(entities.get("aircraft_models") or []) + list(entities.get("aircraft") or [])
+
+
 def headline_aircraft_types(article: dict) -> list[str]:
     """Return only aircraft types explicitly present in either headline."""
-    models = (article.get("entities") or {}).get("aircraft_models") or []
+    models = article_aircraft_models(article)
     return _aircraft_types_in_text(article_headline_text(article), models)
 
 
 def find_aircraft_type(article: dict) -> str | None:
     """Title before summary; longest model at the same position wins."""
-    models = (article.get("entities") or {}).get("aircraft_models") or []
+    models = article_aircraft_models(article)
     for text in (article_headline_text(article), article_context_text(article)):
         candidates = _aircraft_types_in_text(text, models)
         if candidates:
@@ -850,7 +875,7 @@ def _recent_batches():
         if not isinstance(batch, dict):
             continue
         articles = [a for a in batch.get("articles") or []
-                    if isinstance(a, dict)]
+                    if isinstance(a, dict) and a.get("archived") is not True]
         fresh = False
         for a in articles:
             try:

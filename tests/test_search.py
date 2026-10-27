@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 import tempfile
 import unicodedata
@@ -164,6 +165,36 @@ def main() -> None:
     assert payload["airlineCodes"]["icao"]["ASV"] == "ASV"
     assert "9S" not in payload["airlineCodes"]["iata"]
     items_by_id = {row["id"]: row for row in payload["items"]}
+    client_search = subprocess.run(
+        [
+            "node",
+            "-e",
+            r"""
+const assert = require("assert").strict;
+const search = require("./static/search.js");
+const index = require("./site/search-index.json");
+const result = search.searchRecords(
+  index.items,
+  "SAS SK916折返紐瓦克",
+  index.airlineCodes,
+  "zh"
+);
+assert.ok(
+  result.matches.some(({record}) => record.id === "a-sas-sk916-jfk-turnback-20261025"),
+  JSON.stringify({
+    queryTerms: search.queryTerms("SAS SK916折返紐瓦克"),
+    matchIds: result.matches.map(({record}) => record.id)
+  })
+);
+""",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert client_search.returncode == 0, (
+        client_search.stdout + client_search.stderr)
     live_condor = items_by_id[
         "a-20260915-0811-simple-flying-reports-condor-a320-missed"]
     beyond_borders = items_by_id[
@@ -207,6 +238,7 @@ def main() -> None:
     prompt_rows = build.daily_search_prompt_rows()
     assert len(prompt_rows) == len(zh_placeholders) == len(en_placeholders)
     for article_id, zh_prompt, en_prompt in prompt_rows:
+        article_id = build.public_article_id(article_id)
         assert article_id in items_by_id
         indexed = items_by_id[article_id]["search"]
         assert normalize_search_text(zh_prompt) in indexed
@@ -222,6 +254,7 @@ def main() -> None:
     assert "維珍澳洲航班乘客事件" in historical["search"]
     assert "virgin australia passenger incident" in historical["search"]
     for article_id, zh_prompt, en_prompt in alias_rows:
+        article_id = build.public_article_id(article_id)
         if article_id not in items_by_id:
             continue
         indexed = items_by_id[article_id]["search"]

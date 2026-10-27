@@ -39,7 +39,8 @@ def _article_rows(articles_dir: Path, now):
         if not isinstance(batch, dict):
             continue
         for article in batch.get("articles") or []:
-            if not isinstance(article, dict) or not article.get("id"):
+            if (not isinstance(article, dict) or not article.get("id") or
+                    article.get("archived") is True):
                 continue
             try:
                 published = parse_iso(str(article.get("publishedUtc")))

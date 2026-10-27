@@ -26,7 +26,7 @@
         </span>
         <div class="news-story-body">
           <div class="news-story-meta">
-            <span class="tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% elif item.article_format == "roundup" %} · {{ t.roundupLabel }}{% endif %}</span>
+            <span class="tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% elif item.article_format == "roundup" %} · {{ t.roundupLabel }}{% elif item.article_format == "announcement" %} · {{ t.announcementLabel }}{% endif %}</span>
             <span class="news-story-time">{{ item.time }}</span>
           </div>
           <h2 class="news-story-title">{{ item.title }}</h2>

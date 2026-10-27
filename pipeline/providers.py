@@ -1067,8 +1067,6 @@ class GroqProvider(NvidiaProvider):
             if payload["messages"][-1]["content"].endswith(suffix):
                 payload["messages"][-1]["content"] = payload["messages"][-1]["content"][:-len(suffix)]
             self.reasoning_effective = "reasoning_effort=low; native JSON schema"
-        elif self.name == "cloudflare" and self.model == "@cf/zai-org/glm-4.7-flash":
-            payload["response_format"] = {"type": "json_object"}
         response = self._send_payload(payload, repair)
         delay = self._minute_retry_delay(response) if self.name == "groq" else None
         if delay is not None:

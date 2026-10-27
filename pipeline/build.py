@@ -59,6 +59,9 @@ from model_config import (
 from image_captions import clean_description
 from article_schema import normalize_article_record
 from text_spacing import compact_html
+from public_article import (
+    public_article_id, public_news_path, public_asset_url, public_site_url,
+)
 
 _caption_cache = load_json(DATA_DIR / "image-captions.json", {})
 IMAGE_CAPTIONS = (_caption_cache.get("images", {})
@@ -94,6 +97,7 @@ def static_asset_version() -> str:
         "pixel.css",
         "fusion-pixel-tw-v2026-10-16.woff2",
         "app.js",
+        "logo-flight.js",
         "text-spacing.js",
         "search.js",
         "highlight.js",
@@ -105,6 +109,7 @@ def static_asset_version() -> str:
         "briefing.css",
         "briefing.js",
         "team.css",
+        "team-logo.js",
         "team-neo.jpg",
         "radar.css",
         "radar.js",
@@ -147,6 +152,7 @@ L = {
         "focusLabel": "臺灣焦點",
         "mainSource": "主要來源",
         "briefLabel": "短訊", "roundupLabel": "事件彙整",
+        "announcementLabel": "公告短訊", "ruleNote": "依官方公告由程式整理，內容附原始來源。",
         "summaryLabel": "重點摘要",
         "readMore": "閱讀全文 →", "back": "← 返回首頁",
         "heroImg": "[ 頭條照片 — 由來源圖庫自動帶入，灰階顯示 ]",
@@ -159,9 +165,9 @@ L = {
         "statSerious": "本週嚴重事件",
         "otp": "準點率排行 · 7月", "fleet": "機隊與訂單追蹤", "fleetDeliv": "2026 上半年交付",
         "fleetBacklog": "積壓訂單", "fleetOrders": "本月新訂單",
-        "delays": "今日延誤熱點機場", "autoCompiled": "自動彙整",
+        "delays": "今日延誤熱點機場", "autoCompiled": "SKYTICAL整理",
         "refreshNote": "本文隨來源每小時更新", "sourcesBox": "資料來源 Sources",
-        "genNote": "本文由自動化系統彙整生成，內容以原始來源為準",
+        "genNote": "本文由SKYTICAL整理，內容以原始來源為準",
         "genNotePunct": "。",
         "photoKind": {"airframe_photo": "同機資料照片",
                       "file_photo": "資料照片（非事件現場照片）",
@@ -300,6 +306,7 @@ L = {
         "focusLabel": "Taiwan focus",
         "mainSource": "Primary source",
         "briefLabel": "Brief", "roundupLabel": "Event roundup",
+        "announcementLabel": "Official notice", "ruleNote": "Compiled from an official announcement using rule-based templates, with the original source linked.",
         "summaryLabel": "Quick Summary",
         "readMore": "Read more →", "back": "← Back to front page",
         "heroImg": "[ Lead photo — pulled from source library, grayscale ]",
@@ -312,9 +319,9 @@ L = {
         "statSerious": "Serious events this week",
         "otp": "On-time ranking · Jul", "fleet": "Fleet & orders", "fleetDeliv": "H1 2026 deliveries",
         "fleetBacklog": "Backlog", "fleetOrders": "New orders this month",
-        "delays": "Delay hotspots today", "autoCompiled": "Auto-compiled",
+        "delays": "Delay hotspots today", "autoCompiled": "Compiled by SKYTICAL",
         "refreshNote": "Refreshes hourly with sources", "sourcesBox": "Sources",
-        "genNote": "This article was compiled automatically; the original sources prevail",
+        "genNote": "This article was compiled by SKYTICAL; the original sources prevail",
         "genNotePunct": ".",
         "photoKind": {"airframe_photo": "File photo of this airframe",
                       "file_photo": "File photo (not from this event)",
@@ -666,6 +673,7 @@ ABOUT = {
             "透過自動化資料管線整理事件，再由 Anthropic Claude、OpenAI GPT、Google Gemini "
             "等主流語言模型"
             "協助產生繁體中文報導。",
+            "部分公告短訊依官方公告中的明確資料，由程式整理為中英內容，並標示內容類型與整理方式。",
             "模型不是新聞來源，也不會自行憑空補充資訊。每篇內容都必須建立在系統實際取得的"
             "來源資料上，並於文末保留原始出處，方便讀者直接查證。",
         ],
@@ -813,6 +821,7 @@ ABOUT = {
             "widely recognized language-model families such as Anthropic Claude, "
             "OpenAI GPT and Google Gemini "
             "to help produce the Traditional Chinese and English reports.",
+            "Some official notices are compiled into Chinese and English using rule-based templates, with their content type and compilation method identified on the page.",
             "The models are not a news source and never invent information. Every article "
             "must be built on source material the system actually obtained, with the "
             "original references kept at the end so readers can verify directly.",
@@ -1123,11 +1132,13 @@ def normalize_image(raw_img, titles=()):
 
 
 def rel_path(lang: str, sub: str) -> str:
+    sub = public_news_path(sub)
     return ("en/" + sub) if lang == "en" else sub
 
 
 def page_url(lang: str, sub: str) -> str:
     """URL for a page; sub is '' or 'incidents/' or 'news/<id>/' …"""
+    sub = public_news_path(sub)
     return f"{BASE_PATH}/{'en/' if lang == 'en' else ''}{sub}"
 
 
@@ -1151,6 +1162,8 @@ def _public_writer_model_name(value):
     clean = re.sub(r"[\x00-\x1f\x7f<>]+", " ", str(value))
     clean = re.sub(r"\s+", " ", clean).strip()
     normalized = re.sub(r"[^a-z0-9]+", "", clean.casefold())
+    if normalized == "codex":
+        return "GPT 6.1 Sol"
     if normalized in {"gpt6", "openaigpt6"}:
         return "GPT 6"
     if "deepseek" in normalized:
@@ -1191,12 +1204,16 @@ def writer_model(writer, writer_models=None):
                 labels.append(clean)
         if labels:
             return "、".join(labels)
+    if isinstance(writer, str) and writer.strip().casefold() == "codex":
+        return "GPT 6.1 Sol"
     if not isinstance(writer, str) or ":" not in writer:
         return None
     provider, model_value = writer.split(":", 1)
     if provider == "manual":
         return _public_writer_model_name(model_value) or None
     model_id = model_value.lower()
+    if model_id.strip() == "codex":
+        return "GPT 6.1 Sol"
     for needle, model in _WRITER_MODELS:
         if needle in model_id:
             return model
@@ -1256,7 +1273,7 @@ def prep_article(raw):
     sources = []
     for s in raw.get("sources") or []:
         if isinstance(s, dict) and s.get("url"):
-            url = str(s["url"])
+            url = public_site_url(str(s["url"]), SITE_ORIGIN, BASE_PATH)
             if (not _safe_web_url(url) or is_google_news_url(url)):
                 # Google News is a discovery aggregator, not an original
                 # source URL that should be exposed or credited publicly.
@@ -1295,6 +1312,12 @@ def prep_article(raw):
         selected_image = None
     image = normalize_image(selected_image, titles=[
         (raw.get(lang) or {}).get("title") for lang in ("zh", "en")])
+    if image:
+        image["url"] = public_asset_url(image["url"], SITE_ORIGIN, BASE_PATH)
+        if image.get("link"):
+            image["link"] = public_site_url(image["link"], SITE_ORIGIN, BASE_PATH)
+        if image.get("provider") == "SKYTICAL manual upload":
+            image["provider"] = "SKYTICAL"
     # Feeds use first site publication; source chronology stays separate.
     display_dt = publication_dt
     source_dt = None
@@ -1350,7 +1373,7 @@ def prep_article(raw):
         "available_languages": available_languages,
         "article_format": (
             raw.get("articleFormat")
-            if raw.get("articleFormat") in ("brief", "roundup")
+            if raw.get("articleFormat") in ("brief", "roundup", "announcement")
             else "full"),
     }
 
@@ -1382,6 +1405,12 @@ def collect_articles():
         prev = by_id.get(a["id"])
         if prev is None or a["dt"] > prev["dt"]:
             by_id[a["id"]] = a
+    public_ids = {}
+    for internal_id in by_id:
+        public_id = public_article_id(internal_id)
+        if public_id in public_ids:
+            raise ValueError(f"public article URL collision: {public_id}")
+        public_ids[public_id] = internal_id
     return sorted(by_id.values(),
                   key=lambda a: (a["news_dt"], a["id"]), reverse=True)
 
@@ -1850,6 +1879,8 @@ def hero_rotation_view(view, lang: str) -> dict:
         labels.append(L[lang]["briefLabel"])
     elif view.get("article_format") == "roundup":
         labels.append(L[lang]["roundupLabel"])
+    elif view.get("article_format") == "announcement":
+        labels.append(L[lang]["announcementLabel"])
     focus_prefix = f"{L[lang]['focusLabel']} · " if view.get("focus") else ""
     return {
         "id": view.get("id"),
@@ -2093,7 +2124,7 @@ def search_index_item(article, alias_groups, prompt_aliases=(),
         for lang in article["available_languages"]
     }
     return {
-        "id": article["id"],
+        "id": public_article_id(article["id"]),
         "title": {lang: article[lang]["title"] for lang in ("zh", "en")},
         "summary": {
             lang: article[lang]["summary"] for lang in ("zh", "en")
@@ -4029,6 +4060,13 @@ def main() -> int:
         for f in STATIC_DIR.iterdir():
             if f.is_file():
                 shutil.copy2(f, SITE_DIR / "assets" / f.name)
+                if f.name.startswith("a-"):
+                    public_name = public_article_id(f.name)
+                    if public_name != f.name:
+                        existing = STATIC_DIR / public_name
+                        if existing.exists() and existing.read_bytes() != f.read_bytes():
+                            raise ValueError(f"public image URL collision: {public_name}")
+                        shutil.copy2(f, SITE_DIR / "assets" / public_name)
     if PUBLIC_DIR.is_dir():
         for f in PUBLIC_DIR.iterdir():
             if f.is_file():
@@ -4348,6 +4386,16 @@ def main() -> int:
                 ctx["a"] = v
                 render(env, "article.html",
                        rel_path(lang, f"news/{a['id']}/index.html"), ctx)
+                if public_article_id(a["id"]) != a["id"]:
+                    target = page_url(lang, f"news/{a['id']}/")
+                    # Bypass rel_path: the legacy path is a redirect only.
+                    legacy_path = (("en/" if lang == "en" else "")
+                                   + f"news/{a['id']}/index.html")
+                    render(env, "article-redirect.html", legacy_path, {
+                        "html_lang": "zh-Hant-TW" if lang == "zh" else "en",
+                        "target": target,
+                        "target_abs": SITE_ORIGIN + target,
+                    })
                 pages += 1
             except Exception as exc:  # degrade: one bad article must not kill the build
                 failed += 1

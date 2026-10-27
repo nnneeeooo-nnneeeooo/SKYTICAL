@@ -87,7 +87,18 @@ def main() -> None:
     assert wing_top == red_top == lockup["wordmarkOrigin"][1]
 
     assert png_dimensions(social_path) == (1200, 630)
-    assert home.count(f'/assets/skytical-logo.svg?v={build.ASSET_VERSION}') >= 2
+    assert home.count(f'/assets/skytical-logo.svg?v={build.ASSET_VERSION}') >= 3
+    assert 'data-brand-flight' in home
+    assert 'data-brand-sprite' in home
+    assert f'/assets/logo-flight.js?v={build.ASSET_VERSION}' in home
+    assert (ROOT / "site" / "assets" / "logo-flight.js").is_file()
+    assert '.brand-logo { clip-path: inset(0 0 0 25%); }' in css
+    team = (ROOT / "site" / "team" / "index.html").read_text(encoding="utf-8")
+    assert 'data-team-logo-play' in team
+    assert 'class="team-logo-eyes"' in team
+    assert f'/assets/team-logo.js?v={build.ASSET_VERSION}' in team
+    assert (ROOT / "site" / "assets" / "team-logo.js").is_file()
+    assert 'class="team-inline-logo team-name-logo--classic"' in team
     assert f'/assets/skytical-mark.svg?v={build.ASSET_VERSION}' in home
     assert f'/assets/skytical-social.png?v={build.ASSET_VERSION}' in home
     assert "/assets/logo-fix.css" not in home

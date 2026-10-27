@@ -1,0 +1,158 @@
+{
+  "articles": [
+    {
+      "id": "a-20261026-2046-three-event-aviation-safety-roundup-jet2",
+      "publishedUtc": "2026-10-26T20:46Z",
+      "cat": "safety",
+      "primarySource": "The Aviation Herald",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "三起航空事件彙整：Jet2跑道偏出、Hong Kong行動電源熱失控、United起落架不安全",
+        "summary": "三起獨立事件：Jet2跑道偏出；Hong Kong行動電源熱失控；United起落架不安全",
+        "body": [
+          "The Aviation Herald彙整三起彼此獨立的航空事件，三則標題所列日期均為2026年10月25日。以下事件涉及不同航空器與狀況，資料未指出彼此有關。",
+          "1. Jet2一架波音737-800（ICAO機型代碼B738）於伯明罕發生短暫跑道偏出事件，日期為2026年10月25日。",
+          "2. Hong Kong一架空中巴士A321neo（ICAO機型代碼A21N）在航程中於2026年10月25日發生行動電源熱失控事件。",
+          "3. United一架波音737 MAX 9（ICAO機型代碼B39M）於休士頓在2026年10月25日發生起落架不安全狀況。"
+        ]
+      },
+      "en": {
+        "title": "Three-event aviation safety roundup: Jet2, Hong Kong and United incidents",
+        "summary": "Three independent events: Jet2 runway excursion; Hong Kong power-bank thermal runaway; United unsafe gear.",
+        "body": [
+          "The Aviation Herald's roundup covers three independent aviation events, each dated October 25, 2026. The items concern different aircraft and occurrences, and no relationship between them is stated.",
+          "1. The Jet2 item describes a temporary runway excursion at Birmingham involving a Boeing 737-800 (ICAO type code B738) on October 25, 2026.",
+          "2. The Hong Kong item concerns an Airbus A321neo (ICAO type code A21N) en route, where a power bank experienced thermal runaway on October 25, 2026.",
+          "3. The United item describes unsafe gear involving a Boeing 737 MAX 9 (ICAO type code B39M) at Houston on October 25, 2026."
+        ]
+      },
+      "sources": [
+        {
+          "name": "The Aviation Herald — Incident: Jet2 B738 at Birmingham on Oct 25th 2026, tempora…",
+          "url": "https://avherald.com/h?article=5453c7d7&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal…",
+          "url": "https://avherald.com/h?article=545462ce&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: United B39M at Houston on Oct 25th 2026, unsafe g…",
+          "url": "https://avherald.com/h?article=54546c3e&opt=0"
+        }
+      ],
+      "articleFormat": "roundup",
+      "sourcePublishedUtc": "2026-10-25T07:00Z",
+      "writer": "openai:gpt-6",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Jet2 B738在伯明罕於2026年10月25日發生temporary runway excursion。",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Hong Kong A21N在航程中於2026年10月25日發生power bank thermal runaway。",
+          "sourceQuote": "Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal runaway of power bank",
+          "sourceUrl": "https://avherald.com/h?article=545462ce&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "United B39M於休士頓在2026年10月25日發生unsafe gear事件。",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceUrl": "https://avherald.com/h?article=54546c3e&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "airlines": [
+          "Jet2",
+          "Hong Kong",
+          "United"
+        ],
+        "aircraft_models": [
+          "B738",
+          "A21N",
+          "B39M"
+        ],
+        "locations": [
+          "Birmingham",
+          "Houston"
+        ],
+        "event_dates": [
+          "Oct 25th 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "Jet2",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Hong Kong",
+          "sourceQuote": "Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal runaway of power bank",
+          "sourceUrl": "https://avherald.com/h?article=545462ce&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "United",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceUrl": "https://avherald.com/h?article=54546c3e&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B738",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A21N",
+          "sourceQuote": "Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal runaway of power bank",
+          "sourceUrl": "https://avherald.com/h?article=545462ce&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B39M",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceUrl": "https://avherald.com/h?article=54546c3e&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Birmingham",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Houston",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceUrl": "https://avherald.com/h?article=54546c3e&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Oct 25th 2026",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0"
+        }
+      ],
+      "evidenceVersion": 2
+    }
+  ]
+}

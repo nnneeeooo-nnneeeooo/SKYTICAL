@@ -667,6 +667,31 @@ _MILITARY_REPLICA_EN_RE = re.compile(
     r"naval base|defen[cs]e budget)\b",
     re.IGNORECASE,
 )
+_SPACE_SUBJECT_RE = re.compile(
+    r"衛星|軌道|太空船|\b(?:satellites?|spacecraft|orbital)\b",
+    re.IGNORECASE,
+)
+_MUNITION_SUBJECT_RE = re.compile(
+    r"(?=.*(?:無人機|遊蕩彈藥))(?=.*(?:彈頭|炸藥))"
+    r"|(?=.*\b(?:drones?|loitering\s+munitions?)\b)"
+    r"(?=.*\b(?:warheads?|explosives?)\b)",
+    re.IGNORECASE,
+)
+_GAME_RELEASE_SUBJECT_RE = re.compile(
+    r"Steamに(?:登場|発売|配信)|Steamで(?:発売|配信)|"
+    r"\b(?:comes?|arriv(?:es|ing)|launch(?:es|ing)?|"
+    r"releas(?:e|es|ed)|available)\s+(?:on|for|to)\s+Steam\b|"
+    r"\b(?:video|computer|PC)\s+games?\b|"
+    r"ゲーム(?:作品|化)?",
+    re.IGNORECASE,
+)
+_AVIATION_OPERATION_RE = re.compile(
+    r"航空|民航|航班|航機|飛機|客機|貨機|機場|飛航|空域|"
+    r"跑道|起飛|降落|飛行|戰機|軍機|共機|直升機|"
+    r"\b(?:aviation|airlines?|airports?|aircraft|airplanes?|"
+    r"flights?|runways?|airspace|helicopters?|fighter\s+jets?)\b",
+    re.IGNORECASE,
+)
 
 
 def _string_values(value):
@@ -703,7 +728,8 @@ def is_transport_story(*records) -> bool:
     # operations.  Without this veto, incidental mentions such as "fighter
     # jet models" or "naval-base model" can defeat the subject gate.
     if (_MILITARY_REPLICA_ZH_RE.search(text)
-            or _MILITARY_REPLICA_EN_RE.search(text)):
+            or _MILITARY_REPLICA_EN_RE.search(text)
+            or _GAME_RELEASE_SUBJECT_RE.search(text)):
         return False
     return (any(term in text for term in _TRANSPORT_ZH_TERMS)
             or _TRANSPORT_EN_RE.search(text) is not None)
@@ -768,7 +794,15 @@ def is_transport_headline(*records) -> bool:
     if not headline.strip():
         return False
     if (_MILITARY_REPLICA_ZH_RE.search(headline)
-            or _MILITARY_REPLICA_EN_RE.search(headline)):
+            or _MILITARY_REPLICA_EN_RE.search(headline)
+            or _GAME_RELEASE_SUBJECT_RE.search(headline)):
+        return False
+    # A satellite designation can resemble an aircraft model (ICEYE-X36),
+    # while a drone mention alone does not make warhead production aviation.
+    # Keep reports about actual flight, airspace or airport effects eligible.
+    if ((_SPACE_SUBJECT_RE.search(headline)
+         or _MUNITION_SUBJECT_RE.search(headline))
+            and not _AVIATION_OPERATION_RE.search(headline)):
         return False
     # A ship's "航線"/"航班" and an aircraft carrier's name are not
     # aviation evidence. Retain genuine aircraft activity on carriers.

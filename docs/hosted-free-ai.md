@@ -2,7 +2,7 @@
 
 兩條路由加入既有自動撰稿備援鏈，位於 OpenAI 最終備援之前。未設定憑證時自動略過。
 Groq 使用 GPT-OSS 120B，Workers AI 使用 Qwen3 30B A3B；所有既有來源證據、品質驗證與免費路由固定來源測試仍適用。
-只有通過 `free_provider_probe` 的路由能進入自動撰稿，HTTP 429 會停用該服務於本次執行。
+只有通過 `free_provider_probe` 的路由能進入自動撰稿。每日額度耗盡會停用該服務於本次執行；Groq 的短暫分鐘限制依下述方式處理。
 
 ## 設定
 
@@ -48,5 +48,9 @@ Groq GPT-OSS 路由以原生 strict JSON Schema 傳送完整資料契約，避�
 明確的 TPM／RPM HTTP 429 且 Retry-After 在 60 秒內時，最多等待後重送一次。
 每日／信用額度耗盡、缺少有效 Retry-After 或過長等待不重送；每次 HTTP 呼叫都獨立計數。
 持續的每分鐘限制只冷卻該路由一分鐘，不當成六小時的額度耗盡。
-Workers AI 的 GLM-4.7-Flash 可透過既有 provider_order 定向評估，使用 JSON object 輸出，
-不會因評估而自動取代目前預設模型。
+Workers AI 在來源與重試回饋之後另附發布檢查提示，區分文章日期與發布時間，
+要求重寫完整內文並自行檢查雙語篇幅；原始來源、資料契約與所有發布閘門仍保留。
+
+實際驗證結果：Groq GPT-OSS 120B 已通過同一公開來源的完整發布檢查（Actions run 40184741052）；
+2026-10-27 Workers AI Qwen3 30B A3B 第一稿即通過（Actions run 40463490818）。
+評估過的 GLM-4.7-Flash 未通過引文核驗，維持 Qwen3 預設設定。

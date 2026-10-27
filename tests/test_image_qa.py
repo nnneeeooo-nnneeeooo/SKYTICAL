@@ -48,6 +48,12 @@ def test_queue_records_current_image_and_preserves_decision(tmp_path):
     assert row["status"] == "approved"
     assert row["image"]["subject"].endswith("777-300ER")
     assert row["createdUtc"] == "2026-08-26T08:30:00+00:00"
+    batch_path = articles / "2026-08-26T08.json"
+    batch = json.loads(batch_path.read_text(encoding="utf-8"))
+    batch["articles"].append({**batch["articles"][0], "id": "a-archived",
+                              "archived": True})
+    batch_path.write_text(json.dumps(batch), encoding="utf-8")
+    assert len(image_qa.build_queue(now, articles_dir=articles)["items"]) == 1
 
 
 def test_malformed_existing_items_are_reset_safely(tmp_path):

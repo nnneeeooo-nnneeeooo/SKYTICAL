@@ -37,7 +37,7 @@ import write  # noqa: E402
 
 # This suite is explicitly offline.  Production enrichment is tested in its
 # own modules; prevent fixture domains from ever reaching requests here.
-write.enrich_pending = lambda groups: None
+write.enrich_pending = lambda groups, **kwargs: None
 companion.enrich_thin_groups = lambda groups: 0
 # Admission makes real catalog/inference calls; this suite supplies canned
 # drafts. Its network and admission behavior is covered in test_free_provider_probe.
@@ -1506,8 +1506,115 @@ def test_hourly_preserves_editorial_copy_without_model_calls():
         write.build_providers = original_build
 
 
+def test_scheduled_source_is_not_drafted_again():
+    reset_data_dir()
+    pending = load(DATA / "pending.json")
+    group = pending["groups"][1]
+    group["updateCandidate"] = False
+    common.save_json(DATA / "pending.json", {**pending, "groups": [group]})
+    source = group["items"][0]
+    article = {
+        "id": "a-scheduled-iata-cargo", "writer": "scheduled:test",
+        "publishedUtc": common.iso_minute(NOW),
+        "sourcePublishedUtc": source["publishedUtc"],
+        "zh": {"title": "IATA公布航空貨運需求"},
+        "en": {"title": source["title"]},
+        "sources": [{"name": "IATA", "url": source["url"]}],
+    }
+    common.save_json(DATA / "articles" / "scheduled.json",
+                     {"articles": [article]})
+    record = write._match_existing_article(
+        group, write._load_existing_articles())
+    check(record is not None and
+          write._already_published_without_new_coverage(group, record),
+          "same source and publication time identify an existing article")
+    newer = json.loads(json.dumps(group))
+    newer["items"][0]["publishedUtc"] = common.iso_minute(NOW)
+    check(not write._already_published_without_new_coverage(newer, record),
+          "a newer source timestamp remains eligible for revision")
+    added_source = json.loads(json.dumps(group))
+    added_source["items"].append({
+        **source, "url": "https://example.org/independent-cargo-report"})
+    check(not write._already_published_without_new_coverage(added_source, record),
+          "new independent coverage remains eligible for revision")
+    check(write._match_existing_article(added_source, [record]) is None,
+          "an unflagged group with new coverage cannot rewrite another event")
+    different_event = json.loads(json.dumps(group))
+    different_event["items"][0]["title"] = "IATA elects a new board chair"
+    check(write._match_existing_article(different_event, [record]) is None,
+          "a reused URL alone cannot merge a different event")
+    changed_claim = json.loads(json.dumps(group))
+    changed_claim["items"][0]["title"] = source["title"].replace("up", "may rise")
+    check(write._match_existing_article(changed_claim, [record]) is None,
+          "a changed source headline stays eligible for editorial review")
+    missing_time = json.loads(json.dumps(group))
+    missing_time["items"][0].pop("publishedUtc")
+    check(not write._already_published_without_new_coverage(missing_time, record),
+          "an undated source cannot be consumed as an unchanged duplicate")
+
+    provider = FakeProvider("gemini", [providers.ProviderError("must not call")])
+    with patch.object(write, "build_providers", return_value=[provider]):
+        write.main()
+    check(provider.calls == 0 and all_articles() == [article],
+          "unchanged scheduled source spends no model call or article rewrite")
+    check(not load(DATA / "pending.json")["groups"],
+          "already published source leaves the pending queue")
+    check(common.norm_url(source["url"]) in load(DATA / "seen.json")["urls"],
+          "scheduled source enters discovery dedupe after reconciliation")
+    print("test_scheduled_source_is_not_drafted_again: done")
+
+
+def test_reworded_scheduled_source_is_not_republished():
+    reset_data_dir()
+    pending = load(DATA / "pending.json")
+    group = pending["groups"][1]
+    group["updateCandidate"] = False
+    group["primarySource"] = "AeroTime"
+    source = group["items"][0]
+    source.update({
+        "title": "Gulfstream adds first fully outfitted G400 to flight-test program",
+        "url": "https://www.aerotime.aero/articles/gulfstream-g400-cabin-flight-testing-nbaa-2026",
+        "source": "AeroTime", "sourceKey": "aerotime",
+        "publishedUtc": RECENT_STAMP,
+        "summary": "Gulfstream started flight tests of the first G400 with a complete cabin.",
+    })
+    common.save_json(DATA / "pending.json", {**pending, "groups": [group]})
+    article = {
+        "id": "a-gulfstream-g400-cabin-flight-test-20261025",
+        "writer": "scheduled:Meta Muse",
+        "scheduledNews": {"eventKey": "gulfstream-g400-cabin-flight-test-20261025"},
+        "sourcePublishedUtc": RECENT_STAMP,
+        "en": {"title": "Gulfstream flies first fully outfitted G400 as certification program advances"},
+        "zh": {"title": "灣流G400首架完整客艙試飛機升空、邁向取證"},
+        "sources": [{"name": "AeroTime", "url": source["url"]}],
+    }
+    path = DATA / "articles" / "scheduled.json"
+    common.save_json(path, {"articles": [article]})
+    record = write._match_existing_article(group, write._load_existing_articles())
+    check(record is not None and
+          write._already_published_without_new_coverage(group, record),
+          "edited scheduled headline still matches its unchanged source")
+    different_event = json.loads(json.dumps(group))
+    different_event["items"][0]["title"] = "IATA elects a new board chair"
+    check(write._match_existing_article(different_event, [record]) is None,
+          "unrelated headline cannot match a scheduled story by URL alone")
+    provider = FakeProvider("gemini", [providers.ProviderError("must not call")])
+    with patch.object(write, "build_providers", return_value=[provider]):
+        write.main()
+    check(provider.calls == 0 and all_articles() == [article] and
+          not load(DATA / "pending.json")["groups"],
+          "reworded scheduled source is consumed without a duplicate article")
+    article["archived"] = True
+    common.save_json(path, {"articles": [article]})
+    check(not write._load_existing_articles(),
+          "archived duplicate cannot become a revision target")
+    print("test_reworded_scheduled_source_is_not_republished: done")
+
+
 def main():
     tests = [test_free_only_news_never_calls_paid_fallback,
+             test_scheduled_source_is_not_drafted_again,
+             test_reworded_scheduled_source_is_not_republished,
              test_hourly_preserves_editorial_copy_without_model_calls,
              test_flexible_publication_keeps_evidence_gates,
              test_persistent_story_retry_budget,

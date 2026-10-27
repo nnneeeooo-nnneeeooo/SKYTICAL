@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block head_extra %}
 <link rel="stylesheet" href="{{ base }}/assets/team.css?v={{ asset_version }}">
+<script src="{{ base }}/assets/team-logo.js?v={{ asset_version }}" defer></script>
 {% endblock %}
 {% block content %}
 <main class="team-page" id="team-main">
@@ -19,7 +20,14 @@
 
       <div class="team-introduction">
         <h2 id="team-name">
-          <img class="team-name-logo team-name-logo--classic" src="{{ base }}/assets/skytical-team-mark.svg?v={{ asset_version }}" width="88" height="88" alt="" aria-hidden="true">
+          <button class="team-logo-trigger" type="button" data-team-logo-play aria-label="{{ '重播翼標動畫' if lang == 'zh' else 'Replay wing animation' }}">
+            <span class="team-logo-orbit" aria-hidden="true"></span>
+            <span class="team-logo-signal" aria-hidden="true"></span>
+            <span class="team-logo-character" aria-hidden="true">
+              <img class="team-name-logo team-name-logo--classic" src="{{ base }}/assets/skytical-team-mark.svg?v={{ asset_version }}" width="88" height="88" alt="" aria-hidden="true">
+              <span class="team-logo-eyes"><i></i><i></i></span>
+            </span>
+          </button>
           <img class="team-name-logo team-name-logo--pixel" src="{{ base }}/assets/skytical-mark-8bit.svg?v={{ asset_version }}" width="88" height="88" alt="" aria-hidden="true">
           <span>{{ team.name }}</span>
         </h2>

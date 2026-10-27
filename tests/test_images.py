@@ -358,6 +358,37 @@ check("cached generic airline photo without a recent capture year is stale",
       and images.existing_image_matches(
           generic_china_story, fresh_generic_airline_image))
 
+modern_g400 = make_article(
+    "a-modern-g400", "Gulfstream begins G400 cabin flight tests with PW812GA engines")
+modern_g400["entities"]["aircraft_models"] = ["G400"]
+old_g400_photo = {
+    "url": "https://upload.wikimedia.org/2004_Gulfstream_G-IV_(G400).jpg",
+    "link": "https://commons.wikimedia.org/wiki/File:2004_Gulfstream_G-IV_(G400).jpg",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "G400", "subject": "Gulfstream G-IV (G400)",
+    "description": "N413QS 2004 Gulfstream Aerospace G-IV (G400)",
+    "photoYear": 2014,
+}
+check("new G400 story rejects the old G-IV-derived G400 photo",
+      not images.existing_image_matches(modern_g400, old_g400_photo))
+check("new G400 story rejects an old capture even without a G-IV label",
+      not images.existing_image_matches(
+          modern_g400, dict(old_g400_photo,
+                           description="Gulfstream G400", photoYear=2014,
+                           url="https://upload.wikimedia.org/g400.jpg",
+                           link="https://commons.wikimedia.org/wiki/File:G400.jpg")))
+check("new G400 story accepts a documented current-generation aircraft",
+      images.existing_image_matches(
+          modern_g400, dict(old_g400_photo,
+                           description="Gulfstream G400 flight-test aircraft",
+                           photoYear=2025,
+                           url="https://upload.wikimedia.org/new-g400.jpg",
+                           link="https://commons.wikimedia.org/wiki/File:New_G400.jpg")))
+legacy_g400 = make_article("a-legacy-g400", "Gulfstream G-IV (G400) fleet history")
+legacy_g400["entities"]["aircraft_models"] = ["G400"]
+check("explicit G-IV history may use its actual old G400 photo",
+      images.existing_image_matches(legacy_g400, old_g400_photo))
+
 cabin_generic_image = dict(
     fresh_generic_airline_image,
     url="https://upload.wikimedia.org/Premium_Economy_Class_-_China_Airlines.jpg")
@@ -699,6 +730,88 @@ regional_image = {
 check("parent airline brand remains valid for its regional operation",
       images.existing_image_matches(regional_story, regional_image))
 
+south_bend = json.loads((REPO / "data" / "articles" /
+                         "scheduled-american-airlines-south-bend-crj700-20261025.json")
+                        .read_text(encoding="utf-8"))["articles"][0]
+wrong_south_bend_image = {
+    "url": "https://upload.wikimedia.org/american-airlines-a321neo.jpg",
+    "link": "https://commons.wikimedia.org/wiki/File:American_A321neo.jpg",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "American Airlines Airbus A321neo",
+    "subject": "American Airlines Airbus A321neo",
+    "description": "American Airlines Airbus A321neo N407AN departing Boston July 2026",
+    "photoYear": 2026,
+}
+check("scheduled aircraft entity identifies the CRJ-700",
+      images.find_aircraft_type(south_bend) == "Bombardier CRJ-700")
+check("South Bend article no longer carries the wrong A321neo photo",
+      "image" not in south_bend)
+check("cached A321neo photo cannot be reused for the CRJ-700 article",
+      not images.existing_image_matches(south_bend, wrong_south_bend_image))
+check("documented CRJ-700 photo remains eligible",
+      images.existing_image_matches(
+          south_bend, dict(wrong_south_bend_image,
+                           url="https://upload.wikimedia.org/american-airlines-crj700.jpg",
+                           matched="American Airlines CRJ-700",
+                           subject="American Airlines CRJ-700",
+                           description="American Airlines CRJ-700 at Chicago")))
+
+e175_story = json.loads((REPO / "data" / "articles" /
+                         "scheduled-embraer-e175-thrust-noise-20261024.json")
+                        .read_text(encoding="utf-8"))["articles"][0]
+wrong_e175_image = {
+    "url": "https://upload.wikimedia.org/airbaltic-a220.jpg",
+    "link": "https://commons.wikimedia.org/wiki/File:AirBaltic_A220.jpg",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "Airbus A220 aircraft", "subject": "Airbus A220",
+    "description": "Frankfurt Airport airBaltic Airbus A220-300 YL-ABL",
+    "photoYear": 2023,
+}
+check("E175 headline rejects a comparison A220 photo",
+      images.find_aircraft_type(e175_story) == "Embraer E175"
+      and not images.existing_image_matches(e175_story, wrong_e175_image)
+      and (not e175_story.get("image")
+           or images.existing_image_matches(e175_story, e175_story["image"])))
+
+africa_world = json.loads((REPO / "data" / "articles" /
+                           "scheduled-africa-world-e190-west-africa-20261023.json")
+                          .read_text(encoding="utf-8"))["articles"][0]
+air_canada_e190 = {
+    "url": "https://upload.wikimedia.org/air-canada-e190.jpg",
+    "link": "https://commons.wikimedia.org/wiki/File:Air_Canada_E190.jpg",
+    "provider": "Wikimedia Commons", "kind": "file_photo",
+    "matched": "Embraer E190 aircraft", "subject": "Embraer E190",
+    "description": "Air Canada Embraer E190 C-FLWE",
+    "photoYear": 2020,
+}
+check("scheduled operator names its primary airline",
+      images.find_airline(africa_world) == "Africa World Airlines")
+check("Africa World article drops the Air Canada E190 photo",
+      "image" not in africa_world
+      and not images.existing_image_matches(africa_world, air_canada_e190))
+check("Africa World E190 photo remains eligible",
+      images.existing_image_matches(
+          africa_world, dict(air_canada_e190,
+                             url="https://upload.wikimedia.org/africa-world-e190.jpg",
+                             link="https://commons.wikimedia.org/wiki/File:Africa_World_E190.jpg",
+                             matched="Africa World Airlines Embraer E190",
+                             subject="Africa World Airlines Embraer E190",
+                             description="Africa World Airlines Embraer E190 in Accra")))
+
+air_astana = json.loads((REPO / "data" / "articles" /
+                         "scheduled-air-astana-787-9-flight-testing-20261025.json")
+                        .read_text(encoding="utf-8"))["articles"][0]
+check("exact Air Astana airframe photo survives operator matching",
+      images.find_airline(air_astana) == "Air Astana"
+      and images.existing_image_matches(air_astana, air_astana["image"]))
+sf260_incident = json.loads((REPO / "data" / "articles" /
+                             "2026-10-26T10.json")
+                            .read_text(encoding="utf-8"))["articles"][0]
+check("military operator is not treated as an airline",
+      images.find_airline(sf260_incident) is None
+      and images.existing_image_matches(sf260_incident,
+                                        sf260_incident["image"]))
+
 all_published_images = []
 for article_path in (REPO / "data" / "articles").glob("*.json"):
     batch = json.loads(article_path.read_text(encoding="utf-8"))
@@ -710,6 +823,14 @@ for article_path in (REPO / "data" / "articles").glob("*.json"):
 check("retired B-180 accident airframe is absent from published images",
       not any("China_Airlines_B-180_Boeing_737-209" in url
               for url in all_published_images))
+
+reset()
+visible = make_article("a-visible-image", "Gulfstream G400 flight tests")
+archived = dict(visible, id="a-archived-image", archived=True)
+write_batch([visible, archived], "archive-check.json")
+recent = list(images._recent_batches())
+check("image refresh ignores archived articles",
+      len(recent) == 1 and [a["id"] for a in recent[0][2]] == [visible["id"]])
 
 print(f"\n{CHECKS} checks passed, {FAILED} failed"
       if not FAILED else f"\n{CHECKS - FAILED}/{CHECKS} passed, "

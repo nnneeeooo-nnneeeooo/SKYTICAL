@@ -69,8 +69,9 @@ from common import (
 )
 import flightnews
 import archive_context
+from announcement_brief import candidate_item, compile_announcement, WRITER as ANNOUNCEMENT_WRITER
 import provider_health
-from fulltext import FULLTEXT_PROMPT_CHARS, enrich_pending
+from fulltext import FULLTEXT_PROMPT_CHARS, MAX_FETCHES_PER_RUN, enrich_pending
 from providers import (
     ProviderAuthError,
     ProviderError,
@@ -536,6 +537,14 @@ OUTPUT RULES:
   company descriptions, repeated limitations and unrelated archive details.
   If the event and useful background fit the brief contract, publish_brief;
   never promote it to publish merely to make the article longer.
+- Each background paragraph must explain its direct link to the current
+    event and identify its own subject. Never transplant "The aircraft",
+    "the company", "it" or "its" from another story without an explicit,
+    source-supported antecedent. Omit the fact if its subject cannot be
+    established. Background facts must not outnumber current-source facts.
+    Never use general manufacturer or military delivery totals to pad a
+    passenger-route story. Keep first flight, first delivery and entry into
+    service distinct: "debut" alone never supports translating it as 首飛.
 - zh.title: 18 to 38 Chinese/alphanumeric characters excluding punctuation
   and spaces as a soft target only; go longer when needed to keep the headline
   clear, and never truncate or sacrifice meaning for length. A Chinese headline
@@ -833,6 +842,11 @@ def glossary_problem(draft: dict, group: dict):
                         " ".join(str(p) for p in zh_block.get("body") or []),
                         str(flash.get("zh") or "")])
     zh_low = zh_text.casefold()
+    incident = draft.get("incident") or {}
+    for field in ("phase", "location", "desc"):
+        value = incident.get(field)
+        if isinstance(value, dict):
+            zh_low += " " + str(value.get("zh") or "").casefold()
     source_text = " ".join(
         f"{item.get('title') or ''} {item.get('summary') or ''} "
         f"{item.get('fulltext') or ''} {item.get('source') or ''}"
@@ -1089,7 +1103,7 @@ def editorial_process_error(draft: dict) -> str | None:
     return None
 
 
-def draft_article_format(draft: dict) -> str | None:
+def draft_article_format(draft: dict, *, announcement: bool = False) -> str | None:
     """Return ``full``/``brief`` when both language bodies fit one contract."""
     zh_body = (draft.get("zh") or {}).get("body")
     en_body = (draft.get("en") or {}).get("body")
@@ -1097,6 +1111,9 @@ def draft_article_format(draft: dict) -> str | None:
         return None
     zh_chars = zh_body_character_count(zh_body)
     en_words = en_body_word_count(en_body)
+    if announcement:
+        return ("announcement" if len(zh_body) == len(en_body) == 1
+                and 12 <= zh_chars <= 240 and 8 <= en_words <= 120 else None)
     full = (
         MIN_BODY_PARAGRAPHS <= len(zh_body) <= MAX_BODY_PARAGRAPHS
         and MIN_BODY_PARAGRAPHS <= len(en_body) <= MAX_BODY_PARAGRAPHS
@@ -1133,7 +1150,7 @@ def auto_publish_reliable_draft(draft: dict) -> dict:
     return candidate
 
 
-def validate_draft(draft):
+def validate_draft(draft, *, announcement: bool = False):
     """Return None when the draft matches DRAFT_SCHEMA's essentials, else a
     short description of the first problem.
 
@@ -1175,7 +1192,7 @@ def validate_draft(draft):
     process_error = editorial_process_error(draft)
     if process_error:
         return process_error
-    article_format = draft_article_format(draft)
+    article_format = draft_article_format(draft, announcement=announcement)
     if status == "publish" and article_format != "full":
         zh_len = zh_body_character_count(draft["zh"]["body"])
         en_len = en_body_word_count(draft["en"]["body"])
@@ -1183,7 +1200,8 @@ def validate_draft(draft):
                 f"(zh={zh_len} content characters, en={en_len} words, "
                 f"paragraphs={len(draft['zh']['body'])}/"
                 f"{len(draft['en']['body'])})")
-    if status == "publish_brief" and article_format != "brief":
+    if status == "publish_brief" and article_format not in (
+            ("announcement",) if announcement else ("brief",)):
         zh_len = zh_body_character_count(draft["zh"]["body"])
         en_len = en_body_word_count(draft["en"]["body"])
         return ("publish_brief body does not meet brief contract "
@@ -2107,7 +2125,45 @@ def _evidence_binding_problem(draft: dict, facts: list[dict]) -> str | None:
         if not any(by_id[ref].get("evidenceScope") == "source"
                    for ref in refs):
             return f"{field} must include current-source support"
+    context_facts = [fact for fact in facts
+                     if fact.get("evidenceScope") in {"archive", "background"}]
+    if len(context_facts) > source_count:
+        return "background/archive facts must not outnumber current-source facts"
+    for fact in context_facts:
+        if archive_context.has_unresolved_subject(
+                fact.get("claim", ""), fact.get("sourceQuote", "")):
+            return f"{fact['factId']} has an unresolved background/archive subject"
+    zh = draft.get("zh") or {}
+    zh_copy = " ".join([str(zh.get("title") or ""),
+                        str(zh.get("summary") or ""),
+                        *(zh.get("body") or [])])
+    quotes = " ".join(str(fact.get("sourceQuote") or "") for fact in facts)
+    if ("首飛" in zh_copy and re.search(r"\bdebut\b", quotes, re.IGNORECASE)
+            and not re.search(r"\b(?:first|maiden)\s+(?:test\s+)?flight\b|"
+                              r"首飛|首次(?:試飛|飛行)", quotes, re.IGNORECASE)):
+        return "debut does not establish a first flight; preserve the source milestone"
     return None
+
+
+def _validated_announcement(group, now):
+    """The compiler has no authority to bypass normal evidence/scope gates."""
+    if archive_context.source_has_prompt_injection(group):
+        return None
+    try:
+        candidate = compile_announcement(group, now)
+    except (ValueError, TypeError, KeyError, OverflowError) as exc:
+        print(f"write: announcement parser declined {group.get('id')} ({type(exc).__name__})")
+        return None
+    if not candidate or validate_draft(candidate, announcement=True):
+        return None
+    facts = verify_facts(candidate, group, ANNOUNCEMENT_WRITER)
+    if not facts or _evidence_binding_problem(candidate, facts) or claim_evidence_problem(facts):
+        return None
+    entities, evidence, problem = verify_entity_evidence(candidate, group, ANNOUNCEMENT_WRITER)
+    if problem or glossary_problem(candidate, group) or fabrication_problem(candidate, group):
+        return None
+    candidate['entities'], candidate['entityEvidence'] = entities, evidence
+    return candidate, facts
 
 
 def build_sources(items: list) -> list:
@@ -2140,7 +2196,8 @@ def _is_editorially_managed(article: dict | None) -> bool:
 
 
 def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
-                  facts=None, existing_article: dict | None = None):
+                  facts=None, existing_article: dict | None = None,
+                  *, announcement: bool = False):
     """Assemble one article dict, or None when it cannot credit any source."""
     if _is_editorially_managed(existing_article):
         print(f"write: preserving editorial article {existing_article['id']}")
@@ -2225,7 +2282,7 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         "sources": sources,
         "articleFormat": (
             "roundup" if group.get("groupKind") == "safety_roundup"
-            else draft_article_format(draft) or "full"
+            else draft_article_format(draft, announcement=announcement) or "full"
         ),
     }
     if existing_article:
@@ -2246,6 +2303,9 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         article["sourcePublishedUtc"] = existing_article["sourcePublishedUtc"]
     if writer:
         article["writer"] = writer  # provenance: "provider:model"
+    if announcement:
+        article["generationMode"] = "rules"
+        article["ruleVersion"] = "announcement-v1"
     if facts is not None:
         article["facts"] = facts  # machine-verified sourceQuote evidence
     if used_archive_ids:
@@ -2429,7 +2489,8 @@ def _load_existing_articles() -> list[dict]:
         if not isinstance(rows, list):
             continue
         for article in rows:
-            if not isinstance(article, dict) or not article.get("id"):
+            if (not isinstance(article, dict) or not article.get("id") or
+                    article.get("archived") is True):
                 continue
             urls = {
                 norm_url(str(source.get("url") or ""))
@@ -2445,38 +2506,79 @@ def _load_existing_articles() -> list[dict]:
     return records
 
 
-def _match_existing_article(group: dict, records: list[dict]):
-    """Resolve a dedupe update candidate to one existing event article."""
-    if not group.get("updateCandidate"):
-        return None
-    urls = {
+def _group_source_urls(group: dict) -> set[str]:
+    return {
         norm_url(str(item.get("url") or ""))
         for item in group.get("items") or []
-        if str(item.get("url") or "").strip()
+        if isinstance(item, dict) and str(item.get("url") or "").strip()
     }
-    for record in records:
-        if urls & record["urls"]:
-            return record
 
+
+def _title_match_score(group_titles: list[str], record: dict) -> float:
+    return max(
+        (SequenceMatcher(None, current, previous).ratio()
+         for current in group_titles for previous in record["titles"]),
+        default=0.0,
+    )
+
+
+def _same_scheduled_headline(group_titles: list[str], record: dict) -> bool:
+    if not group_titles or not record["article"].get("scheduledNews"):
+        return False
+    return all(
+        max((SequenceMatcher(None, current, previous).ratio()
+             for previous in record["titles"]), default=0.0) >= 0.65
+        for current in group_titles
+    )
+
+
+def _match_existing_article(group: dict, records: list[dict]):
+    """Resolve updates or an unchanged scheduled source to an existing article."""
+    urls = _group_source_urls(group)
     group_titles = [
         _norm_title(str(item.get("title") or ""))
         for item in group.get("items") or []
-        if _norm_title(str(item.get("title") or ""))
+        if isinstance(item, dict) and _norm_title(str(item.get("title") or ""))
     ]
+    for record in records:
+        if (urls & record["urls"] and
+                (group.get("updateCandidate") or
+                 (urls <= record["urls"] and
+                  bool(group_titles) and
+                  (set(group_titles) <= set(record["titles"]) or
+                   _same_scheduled_headline(group_titles, record))))):
+            return record
+    if not group.get("updateCandidate"):
+        return None
     best = None
     best_score = 0.0
     for record in records:
-        score = max(
-            (
-                SequenceMatcher(None, current, previous).ratio()
-                for current in group_titles
-                for previous in record["titles"]
-            ),
-            default=0.0,
-        )
+        score = _title_match_score(group_titles, record)
         if score >= 0.75 and score > best_score:
             best, best_score = record, score
     return best
+
+
+def _already_published_without_new_coverage(group: dict, record: dict) -> bool:
+    """Skip a scheduled article's unchanged source without hiding later news."""
+    if group.get("updateCandidate"):
+        return False
+    urls = _group_source_urls(group)
+    if not urls or not urls <= record["urls"]:
+        return False
+    stamp = record["article"].get("sourcePublishedUtc")
+    if not isinstance(stamp, str) or not stamp:
+        return False
+    try:
+        previous = parse_iso(stamp)
+        items = group.get("items") or []
+        if not items or any(not isinstance(item, dict) or
+                            not item.get("publishedUtc") for item in items):
+            return False
+        current = [parse_iso(str(item["publishedUtc"])) for item in items]
+    except (ValueError, TypeError):
+        return False
+    return bool(current) and max(current) <= previous
 
 
 def _write_article_updates(updates: list[tuple[Path, dict]]) -> None:
@@ -2854,6 +2956,7 @@ def main() -> None:
     new_flashes, new_incidents = [], []
     published_groups, published_ids = [], set()
     rejected_groups, rejected_ids = [], set()
+    duplicate_groups, duplicate_ids = [], set()
     dead_auth: set = set()
     dead_platforms: set = set()
     transient_failure_counts: dict = {}
@@ -2934,10 +3037,6 @@ def main() -> None:
     providers = [p for p in configured_providers
                  if p.name not in persisted_cooldowns]
     accounted_providers = list(providers)
-    if any(getattr(p, "requires_verification", False) and is_free_provider(p)
-           for p in providers):
-        from free_provider_probe import prepare_routes
-        providers = prepare_routes(accounted_providers, now, _probe_draft)
     if persisted_cooldowns:
         rows = provider_health.cooldown_rows(now)
         details = ", ".join(
@@ -2950,11 +3049,8 @@ def main() -> None:
               "OPENCODE_API_KEY / "
               "ANTHROPIC_API_KEY / GEMINI_API_KEY / NVIDIA_API_KEY / "
               "OPENROUTER_API_KEY / WECHAT_API_KEY); "
-              "skipping article generation")
-        for group in groups:
-            _RunTrace("hourly", "article", group).finish(
-                "no_provider", "retry_pending")
-    elif not groups:
+              "only verified rule-based announcements can publish")
+    if not groups:
         print("write: no pending groups")
     else:
         print("write: provider order: "
@@ -2963,13 +3059,25 @@ def main() -> None:
             print("write: Fallback final fallback policy: preferred calls capped "
                   f"at {PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK}s for paid routes; free routes keep their model budget; independent "
                   "draft/repair time reserved")
+        announcements = {}
+        fulltext_budget = [MAX_FETCHES_PER_RUN]
+        try:
+            rule_groups = [g for g in groups if candidate_item(g, now)]
+            if rule_groups:
+                enrich_pending(rule_groups, fetch_budget=fulltext_budget)
+                for group in rule_groups:
+                    prepared = _validated_announcement(group, now)
+                    if prepared:
+                        announcements[id(group)] = prepared
+        except Exception as exc:
+            print(f"write: announcement preflight skipped ({type(exc).__name__})")
         try:
             # Thin-story companion retrieval: excerpt-only items (e.g.
             # Simple Flying) act as a discovery index and the pipeline
             # merges same-topic coverage from reliable outlets.
             from companion import enrich_thin_groups
 
-            enrich_thin_groups(groups)
+            enrich_thin_groups([g for g in groups if id(g) not in announcements])
         except Exception as exc:
             print(f"write: companion retrieval skipped "
                   f"({type(exc).__name__}: {exc})")
@@ -2977,7 +3085,7 @@ def main() -> None:
             # Pipeline-side enrichment: full text of official pages joins
             # the verifiable material. Failures leave ordinary items thin;
             # major title-only candidates are retained for a later retry.
-            enrich_pending(groups)
+            enrich_pending(groups, fetch_budget=fulltext_budget)
         except Exception as exc:
             print(f"write: fulltext enrichment skipped "
                   f"({type(exc).__name__}: {exc})")
@@ -3028,6 +3136,45 @@ def main() -> None:
             run_traces[id(group)] = run_trace
         groups = safe_groups
         existing_articles = _load_existing_articles()
+        # Run before model admission/probes, including when no key exists.
+        # Existing articles stay on the established revision/protection path.
+        model_groups = []
+        for group in groups:
+            existing = _match_existing_article(group, existing_articles)
+            if existing and _already_published_without_new_coverage(group, existing):
+                print(f"write: source already published as "
+                      f"{existing['article']['id']}; consuming duplicate group "
+                      f"{group.get('id')}")
+                duplicate_groups.append(group)
+                duplicate_ids.add(group.get("id"))
+                run_traces[id(group)].finish(
+                    "already_published", "duplicate_existing",
+                    article_id=existing["article"]["id"])
+                continue
+            if existing:
+                model_groups.append(group)
+                continue
+            prepared = announcements.get(id(group)) or _validated_announcement(group, now)
+            if not prepared:
+                model_groups.append(group)
+                continue
+            candidate, facts = prepared
+            article = build_article(candidate, group, now, used_ids,
+                                    ANNOUNCEMENT_WRITER, facts, announcement=True)
+            if article is None:
+                model_groups.append(group)
+                continue
+            new_articles.append(article)
+            new_flashes.append(build_flash(candidate, article["id"], now))
+            published_groups.append(group)
+            published_ids.add(group.get("id"))
+            run_traces[id(group)].finish("published", "publish", ANNOUNCEMENT_WRITER, article["id"])
+            print(f"write: published rule-based announcement {article['id']} (zero model calls)")
+        groups = model_groups
+        if groups and any(getattr(p, "requires_verification", False) and is_free_provider(p)
+                          for p in providers):
+            from free_provider_probe import prepare_routes
+            providers = prepare_routes(accounted_providers, now, _probe_draft)
         draft_deadline = time.monotonic() + MAX_DRAFT_SECONDS_PER_RUN
         alive = list(providers)  # priority order; shrinks on auth/quota death
         drafted = 0  # only API-consuming groups count toward the run cap
@@ -3272,12 +3419,12 @@ def main() -> None:
     if new_articles or updated_articles:
         _prepend_capped(FLASHES_PATH, new_flashes, MAX_FLASHES)
         _prepend_capped(INCIDENTS_PATH, new_incidents, MAX_INCIDENTS)
-    if published_groups or rejected_groups:
+    if published_groups or rejected_groups or duplicate_groups:
         # Editorially rejected groups count as consumed too so they do not
         # re-emit from dedupe and burn another API call next hour.
-        update_seen(published_groups + rejected_groups, now)
-    consumed = published_ids | rejected_ids
-    for group in published_groups + rejected_groups:
+        update_seen(published_groups + rejected_groups + duplicate_groups, now)
+    consumed = published_ids | rejected_ids | duplicate_ids
+    for group in published_groups + rejected_groups + duplicate_groups:
         retry_ledger.complete(group)
     # Exhausted stories remain only in the failure register. They are not
     # marked seen: a genuinely new source can reopen them at discovery.
@@ -3292,9 +3439,10 @@ def main() -> None:
                    and not updated_articles)
     stats = load_json(STATS_PATH, {})
     stats["newsWriter"] = {
-        "status": "stalled" if stalled else "ok" if ai_calls else "idle",
+        "status": "stalled" if stalled else "ok" if (ai_calls or new_articles or updated_articles) else "idle",
         "updatedUtc": iso_minute(now),
         "published": len(new_articles), "revised": len(updated_articles),
+        "rulePublished": sum(a.get("writer") == ANNOUNCEMENT_WRITER for a in new_articles),
         "pending": remaining_count,
         "retryExhausted": sum(row.get("status") == "exhausted"
                               for row in retry_ledger.rows.values()),
@@ -3306,7 +3454,8 @@ def main() -> None:
     print(f"write: published {len(new_articles)} new article(s), revised "
           f"{len(updated_articles)} existing article(s) "
           f"({legacy_published} migrated from retired review), rejected "
-          f"{len(rejected_groups)}, skipped {skipped}, "
+          f"{len(rejected_groups)}, duplicates {len(duplicate_groups)}, "
+          f"skipped {skipped}, "
           f"pending {remaining_count}, major retries {major_deferred}")
     try:
         # Flush this run's per-provider token spend into data/usage.json

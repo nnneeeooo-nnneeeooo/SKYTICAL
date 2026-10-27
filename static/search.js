@@ -12,9 +12,23 @@
       .trim();
   }
 
+  function queryTerms(value) {
+    var normalized = normalize(value);
+    return normalized.match(
+      /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+|[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}\s]+/gu
+    ) || [];
+  }
+
   function termMatches(haystack, term) {
     if (/^[a-z0-9]{1,3}$/.test(term)) {
       return haystack.split(/\s+/).indexOf(term) !== -1;
+    }
+    if (/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u.test(term)) {
+      var compactCjk = haystack.replace(
+        /([\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}])\s+(?=[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}])/gu,
+        "$1"
+      );
+      return compactCjk.indexOf(term) !== -1;
     }
     return haystack.indexOf(term) !== -1;
   }
@@ -149,7 +163,7 @@
     var modelQuery = parseModelQuery(records, textQuery.normalize("NFKC"));
     if (modelQuery) textQuery = modelQuery.remainder;
     var normalizedQuery = normalize(textQuery);
-    var terms = normalizedQuery.split(/\s+/).filter(Boolean);
+    var terms = queryTerms(textQuery);
     var criteria = {
       normalizedQuery: normalizedQuery,
       terms: terms,
@@ -184,6 +198,7 @@
   if (typeof module !== "undefined" && module.exports) {
     module.exports = {
       normalize: normalize,
+      queryTerms: queryTerms,
       termMatches: termMatches,
       parseAirlineCodeQuery: parseAirlineCodeQuery,
       searchRecords: searchRecords
@@ -245,7 +260,8 @@
     meta.className = "search-result-meta";
     var formatLabel = record.articleFormat === "brief"
       ? root.dataset.briefLabel
-      : (record.articleFormat === "roundup" ? root.dataset.roundupLabel : "");
+      : (record.articleFormat === "roundup" ? root.dataset.roundupLabel
+        : (record.articleFormat === "announcement" ? root.dataset.announcementLabel : ""));
     var categoryLabel = localized(record, "category", lang);
     var tagClass = formatLabel ? "tag-neutral" : "tag-outline";
     if (formatLabel) categoryLabel += " · " + formatLabel;

@@ -103,6 +103,48 @@ def main() -> int:
     assert airport_codes.validate_article(delta) == []
     assert airport_codes.enforce_article(delta) == (False, [])
 
+    sas_route = {
+        "entities": {"airports": [
+            "New York JFK", "Copenhagen Airport",
+            "Newark Liberty International Airport"]},
+        "zh": {"title": "SAS班機折返", "summary": "", "body": [
+            "班機自紐約甘迺迪機場飛往哥本哈根機場，後轉降紐瓦克自由國際機場。"]},
+        "en": {"title": "SAS flight turns back", "summary": "", "body": [
+            "The flight left New York JFK for Copenhagen Airport before landing at Newark Liberty International Airport."]},
+    }
+    assert airport_codes.resolve_airport("New York JFK")["code"] == "JFK"
+    assert airport_codes.resolve_airport("Copenhagen Airport")["code"] == "CPH"
+    assert airport_codes.resolve_airport("哥本哈根機場")["code"] == "CPH"
+    assert airport_codes.resolve_airport("紐瓦克自由國際機場")["code"] == "EWR"
+    assert airport_codes.enforce_article(sas_route) == (True, [])
+    assert "紐約甘迺迪機場（JFK）" in sas_route["zh"]["body"][0]
+    assert "哥本哈根機場（CPH）" in sas_route["zh"]["body"][0]
+    assert "紐瓦克自由國際機場（EWR）" in sas_route["zh"]["body"][0]
+    assert "New York JFK (JFK)" in sas_route["en"]["body"][0]
+    assert "Copenhagen Airport (CPH)" in sas_route["en"]["body"][0]
+    assert "Newark Liberty International Airport (EWR)" in sas_route["en"]["body"][0]
+    assert airport_codes.validate_article(sas_route) == []
+    assert airport_codes.enforce_article(sas_route) == (False, [])
+
+    seattle_route = {
+        "entities": {"airports": ["SEA"]},
+        "zh": {"title": "美國航空 JFK－西雅圖機場（SEA）復航", "summary": "", "body": [
+            "新航線將往返紐約甘迺迪機場與西雅圖機場。"]},
+        "en": {"title": "American Airlines JFK–Seattle (SEA) service returns",
+                "summary": "", "body": [
+            "The route will serve Seattle-Tacoma International Airport."]},
+    }
+    assert airport_codes.resolve_airport("Seattle") is None
+    assert airport_codes.resolve_airport(
+        "Seattle-Tacoma International Airport")["code"] == "SEA"
+    assert airport_codes.resolve_airport("西雅圖機場")["code"] == "SEA"
+    assert airport_codes.enforce_article(seattle_route) == (True, [])
+    assert "西雅圖機場（SEA）" in seattle_route["zh"]["title"]
+    assert "西雅圖機場（SEA）" in seattle_route["zh"]["body"][0]
+    assert "Seattle-Tacoma International Airport (SEA)" in seattle_route["en"]["body"][0]
+    assert airport_codes.validate_article(seattle_route) == []
+    assert airport_codes.enforce_article(seattle_route) == (False, [])
+
     resolved = airport_codes.resolve_airport("Catania airport")
     assert resolved is not None, "Catania airport must resolve"
     assert resolved["code"] == "CTA", resolved
