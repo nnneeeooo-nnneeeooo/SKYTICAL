@@ -127,22 +127,35 @@
       .trim();
   }
   if (headerSearchInput) {
+    var desktopSearchPlaceholder = headerSearchInput.placeholder;
     try {
       var searchPlaceholders = JSON.parse(
         headerSearchInput.getAttribute("data-search-placeholders") || "[]"
       );
       if (Array.isArray(searchPlaceholders) && searchPlaceholders.length) {
         var randomPlaceholder = Math.floor(Math.random() * searchPlaceholders.length);
-        headerSearchInput.placeholder = searchPlaceholders[randomPlaceholder];
+        desktopSearchPlaceholder = searchPlaceholders[randomPlaceholder];
       }
     } catch (e) { /* keep the server-rendered fallback */ }
+    headerSearchInput.dataset.searchSuggestion = desktopSearchPlaceholder;
+    var mobileSearchMedia = window.matchMedia("(max-width: 720px)");
+    function updateHeaderSearchPlaceholder() {
+      headerSearchInput.placeholder = mobileSearchMedia.matches
+        ? headerSearchInput.dataset.mobilePlaceholder : desktopSearchPlaceholder;
+    }
+    updateHeaderSearchPlaceholder();
+    if (mobileSearchMedia.addEventListener) {
+      mobileSearchMedia.addEventListener("change", updateHeaderSearchPlaceholder);
+    } else if (mobileSearchMedia.addListener) {
+      mobileSearchMedia.addListener(updateHeaderSearchPlaceholder);
+    }
   }
   if (headerSearchForm && headerSearchInput) {
     headerSearchForm.addEventListener("submit", function (event) {
       if (headerSearchInput.value.trim()) return;
       if (headerSearchInput.dataset.searchSuggestionEnabled !== "true") return;
       var suggestedQuery = queryFromSearchPlaceholder(
-        headerSearchInput.placeholder
+        headerSearchInput.dataset.searchSuggestion || headerSearchInput.placeholder
       );
       if (!suggestedQuery) return;
       headerSearchInput.value = suggestedQuery;
