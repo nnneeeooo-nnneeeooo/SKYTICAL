@@ -968,6 +968,7 @@ class GroqProvider(NvidiaProvider):
             f"AVWIRE_{self.name.upper()}_MODEL") or self.default_model,
             reasoning_tier=reasoning_tier)
         self.reasoning_effective = "provider_default"
+        self._response_schema = None
 
     def draft(self, system_prompt, user_prompt, schema):
         if "status" in schema.get("properties", {}):
@@ -990,15 +991,46 @@ class GroqProvider(NvidiaProvider):
                 "source-supported details without padding. Preserve date range wording "
                 "and punctuation verbatim. For publish and publish_brief "
                 "requiresHumanReview MUST be false and decisionReason MUST "
-                "be the empty string, not an explanation. Return final JSON only.")
+                "be the empty string, not an explanation. For each fact, first "
+                "copy one or two COMPLETE contiguous SOURCE sentences as "
+                "sourceQuote, then derive the claim from that quote alone. "
+                "Every aircraft code, number and date in the claim must appear "
+                "in its OWN quote, not another fact. Do not put publication "
+                "timestamps in entities.event_dates. Return final JSON only.")
         # Preserve every instruction while removing indentation/newline tokens.
         system_prompt = re.sub(r"\s+", " ", system_prompt).strip()
-        return super().draft(system_prompt, user_prompt, schema)
+        self._response_schema = schema if self._uses_native_schema() else None
+        try:
+            return super().draft(system_prompt, user_prompt, schema)
+        finally:
+            self._response_schema = None
+
+    def _uses_native_schema(self):
+        return self.name == "groq" and self.model in {
+            "openai/gpt-oss-120b", "openai/gpt-oss-20b"}
 
     def available(self):
         return bool(os.environ.get(self.key_env, "").strip())
 
+    @staticmethod
+    def _minute_retry_delay(response):
+        if response.status_code != 429:
+            return None
+        try:
+            message = str((response.json().get("error") or {}).get("message") or "").lower()
+            headers = response.headers or {}
+            delay = float(headers.get("retry-after") or headers.get("Retry-After") or 0)
+        except (ValueError, TypeError, AttributeError):
+            return None
+        # A daily/credit limit must never be retried as a minute window.
+        if ("per minute" not in message and "tpm" not in message and "rpm" not in message
+                or any(word in message for word in ("per day", "tpd", "rpd", "credit", "billing"))):
+            return None
+        return delay if 0 < delay <= 60 else None
+
     def _check_status(self, response):
+        if self.name == "groq" and self._minute_retry_delay(response) is not None:
+            raise ProviderError("HTTP 429 per-minute rate limit")
         if response.status_code == 413:
             try:
                 message = str((response.json().get("error") or {}).get("message") or "")
@@ -1021,6 +1053,28 @@ class GroqProvider(NvidiaProvider):
         if self.name == "groq" and self.model in {
                 "openai/gpt-oss-120b", "openai/gpt-oss-20b"}:
             payload["reasoning_effort"] = "low"
+        if self._response_schema is not None:
+            schema = self._response_schema
+            payload["response_format"] = {
+                "type": "json_schema", "json_schema": {
+                    "name": "skytical_draft", "strict": True, "schema": schema}}
+            # The native schema carries the complete contract. Avoid sending
+            # its duplicate prompt copy against Groq's free TPM budget.
+            suffix = ("\n\nReturn ONLY one JSON object (no markdown fences, no prose) "
+                      "conforming exactly to this JSON Schema:\n"
+                      + json.dumps(schema, ensure_ascii=False))
+            payload["messages"] = [dict(message) for message in messages]
+            if payload["messages"][-1]["content"].endswith(suffix):
+                payload["messages"][-1]["content"] = payload["messages"][-1]["content"][:-len(suffix)]
+            self.reasoning_effective = "reasoning_effort=low; native JSON schema"
+        response = self._send_payload(payload, repair)
+        delay = self._minute_retry_delay(response) if self.name == "groq" else None
+        if delay is not None:
+            time.sleep(delay)
+            response = self._send_payload(payload, repair)
+        return response
+
+    def _send_payload(self, payload, repair):
         self.http_calls += 1
         self.repair_calls += int(repair)
         started, response = time.perf_counter(), None
@@ -1047,6 +1101,31 @@ class CloudflareProvider(GroqProvider):
     repair_tokens = 4096
     default_model = "@cf/qwen/qwen3-30b-a3b-fp8"
     key_env = "CLOUDFLARE_API_TOKEN"
+
+    def draft(self, system_prompt, user_prompt, schema):
+        if "status" in schema.get("properties", {}):
+            # Keep the checklist after the source and any validation feedback:
+            # these models otherwise confuse envelope metadata with evidence,
+            # or shorten an entire replacement draft to a summary on retry.
+            user_prompt += (
+                "\n\nFINAL EDITORIAL CHECK (instructions, not source evidence): "
+                "Use only the source title, summary and full text as quotable "
+                "current evidence. The published/first-seen timestamp, source "
+                "labels and URL are metadata, not event evidence. Populate "
+                "event_dates only from verbatim date wording in the article "
+                "text; never convert dates to ISO or infer a year. An empty "
+                "optional entity array is valid. Return the COMPLETE draft, "
+                "including when correcting a previous validation error. "
+                "Before returning a publish_brief, silently count en.body "
+                "words and zh.body Chinese/alphanumeric characters. Aim for "
+                "110-140 English words and 220-300 Chinese content characters "
+                "across three substantive paragraphs in EACH language. "
+                "Distribute distinct source-supported event details across "
+                "the paragraphs; titles, summaries and evidence do not count "
+                "toward body length. Do not pad or repeat. If the source "
+                "cannot support a safe brief, reject. Keep every normal "
+                "source-verification and publication rule.")
+        return super().draft(system_prompt, user_prompt, schema)
 
     def available(self):
         return super().available() and bool(re.fullmatch(

@@ -63,6 +63,7 @@ jobs:
           python tests/test_pla.py
           python tests/test_usage.py
           python tests/test_hosted_free_providers.py
+          python tests/test_hosted_rate_limits.py
           python tests/test_providers_payloads.py
           python tests/test_manual_draft.py
           python tests/test_fulltext.py
