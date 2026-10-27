@@ -1,7 +1,7 @@
 """Shared SKYTICAL model priority configuration.
 
 The first entry is the default writer. The same order drives provider
-fallback and model ordering on the private usage dashboard.
+fallback and model display ordering.
 """
 
 DIRECT_MODEL_ORDER = (
@@ -53,8 +53,7 @@ OPENROUTER_MODEL_ORDER = (
     "openrouter:poolside/laguna-xs-2.1:free",
 )
 
-# Complete model catalog used by the manual drafting workbench and historical
-# usage dashboard.
+# Complete model catalog shared by model selectors.
 MODEL_ORDER = (
     OPENCODE_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[1],

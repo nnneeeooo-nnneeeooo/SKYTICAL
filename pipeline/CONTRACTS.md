@@ -28,12 +28,14 @@ commit SHA; the one current changelog-page row may use null until it has a
 stable historical commit. Changelog commit links point to site-local detail
 pages.
 
-config/commit-records.json stores a public snapshot for each linked changelog
-commit: commit metadata, changed-file statistics and the complete text diff.
-build.py validates that every linked SHA has a snapshot, then emits a detail
-page under changelog/commits/<sha>/ and a downloadable JSON copy under
-commit-records/<sha>.json. These snapshots keep the commit records available
-on the public site without linking to the source repository.
+config/commit-records.json stores schemaVersion 2 public summary copies for
+linked changelog commits: SHA, day-only change date, bilingual reader-facing
+summary, and aggregate changed-file/addition/deletion counts. Author and
+committer identities, exact timestamps, file paths, original messages and diffs
+are excluded. build.py rejects legacy snapshots, extra fields and invalid
+summary data before publishing. It emits bilingual detail pages under
+changelog/commits/<sha>/ and downloadable summary JSON under
+commit-records/<sha>.json. Existing SHA URLs remain stable.
 
 ## data/raw/<source_key>.json  (written by fetch.py, read by dedupe.py)
 
@@ -313,7 +315,7 @@ site/
 ├─ about/index.html            + en/about/
 ├─ changelog/index.html        + en/changelog/
 ├─ changelog/commits/<sha>/     + en/changelog/commits/<sha>/
-├─ commit-records/<sha>.json    raw commit-record copies
+├─ commit-records/<sha>.json    public commit summary copies
 ├─ assets/modernist.css        copied from static/
 ├─ assets/site.css
 ├─ assets/app.js
