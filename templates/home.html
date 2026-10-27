@@ -35,14 +35,16 @@
       {% else %}
       <div class="flash-row"><span class="text-muted" style="font-size:12.5px;line-height:1.6;">{{ t.awaiting }}</span></div>
       {% endfor %}
-      <h6 style="margin:28px 0 12px;">{{ t.sourceStatus }}</h6>
-      {% for s in source_status %}
-      <div style="padding:7px 0;border-bottom:1px solid var(--color-divider);display:flex;align-items:center;gap:8px;font-size:12.5px;">
-        <span class="dot{% if not s.ok %} err{% endif %}"></span>
-        <span{% if not s.ok %} class="text-muted"{% endif %}>{{ s.name }}</span>
-        <span class="text-muted" style="margin-left:auto;font-size:11.5px;">{{ s.ago }}</span>
+      <div class="home-source-status">
+        <h6 style="margin:28px 0 12px;">{{ t.sourceStatus }}</h6>
+        {% for s in source_status %}
+        <div style="padding:7px 0;border-bottom:1px solid var(--color-divider);display:flex;align-items:center;gap:8px;font-size:12.5px;">
+          <span class="dot{% if not s.ok %} err{% endif %}"></span>
+          <span{% if not s.ok %} class="text-muted"{% endif %}>{{ s.name }}</span>
+          <span class="text-muted" style="margin-left:auto;font-size:11.5px;">{{ s.ago }}</span>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
     <div class="center-col">
       {% if hero %}
@@ -107,7 +109,14 @@
         {% endif %}
       </div>
       {% for item in feed %}
-      <a class="feed-row" data-cat="{{ item.cat }}" href="{{ item.url }}"{% if item.external %} target="_blank" rel="noopener"{% endif %}>
+      {% set fallback = base ~ '/assets/skytical-social.png?v=' ~ asset_version %}
+      <a class="feed-row home-feed-row" data-cat="{{ item.cat }}" href="{{ item.url }}"{% if item.external %} target="_blank" rel="noopener"{% endif %}>
+        <span class="news-thumbnail home-feed-thumbnail">
+          <img src="{{ item.image.url if item.image else fallback }}"
+               alt="{{ (item.image.subject or item.title) if item.image else 'SKYTICAL' }}"
+               width="160" height="90" loading="lazy" decoding="async"
+               data-fallback="{{ fallback }}">
+        </span>
         <span class="feed-time">{{ item.time }}</span>
         <span class="feed-category tag {{ item.tag_class }}">{{ item.cat_label }}{% if item.article_format == "brief" %} · {{ t.briefLabel }}{% elif item.article_format == "roundup" %} · {{ t.roundupLabel }}{% elif item.article_format == "announcement" %} · {{ t.announcementLabel }}{% endif %}</span>
         <span class="feed-copy">
@@ -115,6 +124,9 @@
         </span>
         {{ notification_summary(item.display_summary, t.summaryLabel, 'feed') }}
         <span class="feed-source text-muted">{{ item.source }}</span>
+        {% if item.image and (item.image.credit or item.image.license) %}
+        <span class="news-image-credit home-feed-image-credit">{% if item.image.credit %}© {{ item.image.credit }}{% endif %}{% if item.image.credit and item.image.license %} · {% endif %}{{ item.image.license or '' }}</span>
+        {% endif %}
       </a>
       {% else %}
       <div class="text-muted" style="padding:13px 0;border-top:1px solid var(--color-divider);font-size:12.5px;">{{ t.awaiting }}</div>
