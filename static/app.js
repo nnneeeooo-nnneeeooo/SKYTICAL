@@ -8,7 +8,8 @@
       if (image.dataset.fallbackTried === "true") return;
       image.dataset.fallbackTried = "true";
       image.alt = "SKYTICAL";
-      var credit = image.closest(".feed-row--illustrated").querySelector(".news-image-credit");
+      var row = image.closest(".feed-row");
+      var credit = row && row.querySelector(".news-image-credit");
       if (credit) credit.hidden = true;
       image.src = image.dataset.fallback;
     }
@@ -286,6 +287,7 @@
     var heroTimer = null;
     var heroPaused = false;
     var heroChanging = false;
+    var heroTouchStart = null;
     var reduceHeroMotion = window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var heroTransitionMs = reduceHeroMotion ? 0 : 220;
@@ -455,6 +457,40 @@
             var nextIndex = Number(dot.dataset.heroIndex);
             showHero(nextIndex, nextIndex < heroIndex ? "previous" : "next");
           });
+        });
+        heroLink.addEventListener("touchstart", function (event) {
+          if (event.touches.length !== 1) {
+            heroTouchStart = null;
+            scheduleHeroRotation();
+            return;
+          }
+          var touch = event.touches[0];
+          heroTouchStart = { id: touch.identifier, x: touch.clientX, y: touch.clientY };
+          stopHeroTimer();
+        }, { passive: true });
+        heroLink.addEventListener("touchend", function (event) {
+          if (!heroTouchStart) return;
+          var start = heroTouchStart;
+          heroTouchStart = null;
+          var touch = Array.prototype.find.call(event.changedTouches, function (item) {
+            return item.identifier === start.id;
+          });
+          if (!touch) {
+            scheduleHeroRotation();
+            return;
+          }
+          var dx = touch.clientX - start.x;
+          var dy = touch.clientY - start.y;
+          if (Math.abs(dx) >= 45 && Math.abs(dx) > Math.abs(dy) * 1.25) {
+            event.preventDefault(); // A swipe must not also open the linked article.
+            showHero(heroIndex + (dx < 0 ? 1 : -1), dx < 0 ? "next" : "previous");
+          } else {
+            scheduleHeroRotation();
+          }
+        }, { passive: false });
+        heroLink.addEventListener("touchcancel", function () {
+          heroTouchStart = null;
+          scheduleHeroRotation();
         });
         if (heroCarousel) {
           heroCarousel.addEventListener("mouseenter", function () {
