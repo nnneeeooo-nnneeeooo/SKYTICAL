@@ -12,17 +12,17 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-27T13:10Z",
-      "checkedUtc": "2026-10-27T07:10Z",
+      "untilUtc": "2026-10-27T19:39Z",
+      "checkedUtc": "2026-10-27T13:39Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-27T13:10Z",
-      "checkedUtc": "2026-10-27T07:10Z",
+      "checkedUtc": "2026-10-27T13:39Z",
+      "untilUtc": "2026-10-27T19:39Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -57,8 +57,8 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-10-27T10:48Z",
       "untilUtc": "2026-10-27T16:48Z",
+      "checkedUtc": "2026-10-27T10:48Z",
       "failureClass": "unexpected",
       "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 3,
