@@ -29,18 +29,18 @@
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
-      "status": "waiting",
-      "untilUtc": "2026-10-26T21:06Z",
-      "checkedUtc": "2026-10-26T15:06Z",
-      "failureClass": "unexpected",
-      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
+      "status": "verified",
+      "untilUtc": "2026-10-28T00:53Z",
+      "checkedUtc": "2026-10-27T00:53Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 2,
       "schemaMode": null
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-10-26T15:06Z",
       "untilUtc": "2026-10-27T15:06Z",
+      "checkedUtc": "2026-10-26T15:06Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 2,
@@ -66,8 +66,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-26T21:06Z",
-      "checkedUtc": "2026-10-26T15:06Z",
+      "untilUtc": "2026-10-27T06:53Z",
+      "checkedUtc": "2026-10-27T00:53Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 2,
@@ -75,10 +75,10 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "untilUtc": "2026-10-26T21:06Z",
-      "checkedUtc": "2026-10-26T15:06Z",
+      "checkedUtc": "2026-10-27T00:53Z",
+      "untilUtc": "2026-10-27T06:53Z",
       "failureClass": "unexpected",
-      "diagnostic": "publish_brief body does not meet brief contract (zh=160 content characters, en=60 words, paragraphs=3/3)",
+      "diagnostic": "entity evidence quote not found in current source: event_dates='2026-10-21'",
       "probeVersion": 2,
       "schemaMode": null
     }
