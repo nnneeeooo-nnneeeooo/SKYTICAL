@@ -21,8 +21,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-10-27T13:39Z",
       "untilUtc": "2026-10-27T19:39Z",
+      "checkedUtc": "2026-10-27T13:39Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -47,20 +47,20 @@
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-10-27T16:48Z",
-      "checkedUtc": "2026-10-27T10:48Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "status": "verified",
+      "untilUtc": "2026-10-28T19:01Z",
+      "checkedUtc": "2026-10-27T19:01Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
-      "schemaMode": null
+      "schemaMode": "prompt"
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-27T16:48Z",
-      "checkedUtc": "2026-10-27T10:48Z",
-      "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "checkedUtc": "2026-10-27T19:01Z",
+      "untilUtc": "2026-10-28T01:01Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     }

@@ -8,25 +8,27 @@
       "image": null,
       "sourceImageCandidates": [],
       "zh": {
-        "title": "四起彼此獨立航空事件彙整：涉及煞車、起落架與跑道偏出",
-        "summary": "四起獨立航空事件彙整，涉及煞車轉向、起落架、行動電源及跑道偏出",
+        "title": "五起獨立航空事件彙整：多地出現機上狀況與跑道偏出",
+        "summary": "五起事件分別涉及煞車與轉向問題、機上煙霧及跑道偏出等。",
         "body": [
-          "以下彙整四起彼此獨立的航空事件；四者之間沒有已知關聯。",
-          "Mesa E175於2026年10月26日在Houston發生事件，相關條目列出煞車與轉向問題。",
-          "United波音737 MAX 9（ICAO機型代碼B39M）於2026年10月25日在Houston發生事件，條目描述起落架狀況不安全。",
-          "Hong Kong空中巴士A321neo（ICAO機型代碼A21N）於2026年10月25日在航程途中發生事件，條目提及行動電源熱失控。",
-          "Jet2波音737-800（ICAO機型代碼B738）於2026年10月25日在Birmingham發生事件，條目描述短暫跑道偏出。"
+          "以下彙整五起彼此獨立的航空事件，各事件分列如下。",
+          "Mesa E175於2026年10月26日在Houston發生煞車與轉向問題。",
+          "Gol的波音737-800（ICAO機型代碼B738）於2026年10月26日在Maringa發生機上煙霧事件。",
+          "United的波音737 MAX 9（ICAO機型代碼B39M）於2026年10月25日在Houston發生起落架安全狀況事件。",
+          "Jet2的波音737-800（ICAO機型代碼B738）於2026年10月25日在Birmingham發生短暫偏出跑道事件。",
+          "Hong Kong的空中巴士A321neo（ICAO機型代碼A21N）於2026年10月25日飛行途中發生行動電源熱失控。"
         ]
       },
       "en": {
-        "title": "Four Independent Aviation Incidents in a Roundup",
-        "summary": "A roundup covers four independent incidents involving aircraft systems, a power bank and a runway excursion.",
+        "title": "Roundup: Five independent aviation incidents reported on October 25–26",
+        "summary": "Five independent reports cover aircraft problems, smoke, a runway excursion and a power-bank event.",
         "body": [
-          "This roundup covers four independent aviation incidents; no relationship between the events is stated.",
-          "A Mesa E175 incident at Houston on October 26, 2026, involved brake and steering problems, according to the listed description.",
-          "A United Boeing 737 MAX 9 (ICAO type code B39M) was involved in an incident at Houston on October 25, 2026; the description identifies unsafe landing gear.",
-          "A Hong Kong Airbus A321neo (ICAO type code A21N) was en route on October 25, 2026, in an incident involving a power bank thermal runaway.",
-          "A Jet2 Boeing 737-800 (ICAO type code B738) had a temporary runway excursion at Birmingham on October 25, 2026."
+          "This roundup covers five independent aviation incidents, presented separately; no relationship among them is stated.",
+          "A Mesa E175 had brake and steering problems in Houston on October 26, 2026.",
+          "A Gol Boeing 737-800 (ICAO type code B738) had smoke on board in Maringa on October 26, 2026.",
+          "A United Boeing 737 MAX 9 (ICAO type code B39M) was reported with unsafe gear in Houston on October 25, 2026.",
+          "A Jet2 Boeing 737-800 (ICAO type code B738) had a temporary runway excursion in Birmingham on October 25, 2026.",
+          "A Hong Kong Airbus A321neo (ICAO type code A21N) had a power-bank thermal runaway en route on October 25, 2026."
         ]
       },
       "sources": [
@@ -35,16 +37,20 @@
           "url": "https://avherald.com/h?article=54547311"
         },
         {
+          "name": "The Aviation Herald — Incident: Gol B738 at Maringa on Oct 26th 2026, smoke on bo…",
+          "url": "https://avherald.com/h?article=54572f28&opt=0"
+        },
+        {
           "name": "The Aviation Herald — Incident: United B39M at Houston on Oct 25th 2026, unsafe g…",
           "url": "https://avherald.com/h?article=54546c3e"
         },
         {
-          "name": "The Aviation Herald — Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal…",
-          "url": "https://avherald.com/h?article=545462ce&opt=0"
-        },
-        {
           "name": "The Aviation Herald — Incident: Jet2 B738 at Birmingham on Oct 25th 2026, tempora…",
           "url": "https://avherald.com/h?article=5453c7d7&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal…",
+          "url": "https://avherald.com/h?article=545462ce&opt=0"
         },
         {
           "name": "The Aviation Herald — Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and…",
@@ -52,14 +58,14 @@
         }
       ],
       "articleFormat": "roundup",
-      "updatedUtc": "2026-10-27T07:10Z",
-      "revision": 3,
+      "updatedUtc": "2026-10-27T19:01Z",
+      "revision": 4,
       "sourcePublishedUtc": "2026-10-26T20:52Z",
       "writer": "openai:gpt-6",
       "facts": [
         {
           "factId": "F1",
-          "claim": "A Mesa E175 incident at Houston on Oct 26th 2026 involved brakes and steering problems.",
+          "claim": "Mesa E175於2026年10月26日在Houston發生煞車與轉向問題。",
           "sourceQuote": "Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
           "sourceUrl": "https://avherald.com/h?article=54547311",
           "evidenceScope": "source",
@@ -68,7 +74,16 @@
         },
         {
           "factId": "F2",
-          "claim": "A United B39M incident at Houston on Oct 25th 2026 involved unsafe gear.",
+          "claim": "Gol B738於2026年10月26日在Maringa發生機上煙霧事件。",
+          "sourceQuote": "Incident: Gol B738 at Maringa on Oct 26th 2026, smoke on board",
+          "sourceUrl": "https://avherald.com/h?article=54572f28&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "United B39M於2026年10月25日在Houston發生unsafe gear事件。",
           "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
           "sourceUrl": "https://avherald.com/h?article=54546c3e",
           "evidenceScope": "source",
@@ -76,19 +91,19 @@
           "archiveContext": false
         },
         {
-          "factId": "F3",
-          "claim": "A Hong Kong A21N enroute incident on Oct 25th 2026 involved thermal runaway of a power bank.",
-          "sourceQuote": "Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal runaway of power bank",
-          "sourceUrl": "https://avherald.com/h?article=545462ce&opt=0",
+          "factId": "F4",
+          "claim": "Jet2 B738於2026年10月25日在Birmingham發生temporary runway excursion。",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
-          "factId": "F4",
-          "claim": "A Jet2 B738 incident at Birmingham on Oct 25th 2026 involved a temporary runway excursion.",
-          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
-          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0",
+          "factId": "F5",
+          "claim": "Hong Kong A21N於2026年10月25日飛行途中發生行動電源熱失控。",
+          "sourceQuote": "Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal runaway of power bank",
+          "sourceUrl": "https://avherald.com/h?article=545462ce&opt=0",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
@@ -101,17 +116,19 @@
       "entities": {
         "airlines": [
           "Mesa",
+          "Gol",
           "United",
           "Jet2"
         ],
         "aircraft_models": [
           "E175",
+          "B738",
           "B39M",
-          "A21N",
-          "B738"
+          "A21N"
         ],
         "locations": [
           "Houston",
+          "Maringa",
           "Birmingham"
         ],
         "event_dates": [
@@ -123,67 +140,79 @@
         {
           "entityType": "airlines",
           "value": "Mesa",
-          "sourceQuote": "Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
+          "sourceQuote": "Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
           "sourceUrl": "https://avherald.com/h?article=54547311"
         },
         {
           "entityType": "airlines",
+          "value": "Gol",
+          "sourceQuote": "Incident: Gol B738 at Maringa on Oct 26th 2026, smoke on board",
+          "sourceUrl": "https://avherald.com/h?article=54572f28&opt=0"
+        },
+        {
+          "entityType": "airlines",
           "value": "United",
-          "sourceQuote": "United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
           "sourceUrl": "https://avherald.com/h?article=54546c3e"
         },
         {
           "entityType": "airlines",
           "value": "Jet2",
-          "sourceQuote": "Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
           "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0"
         },
         {
           "entityType": "aircraft_models",
           "value": "E175",
-          "sourceQuote": "Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
+          "sourceQuote": "Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
           "sourceUrl": "https://avherald.com/h?article=54547311"
         },
         {
           "entityType": "aircraft_models",
+          "value": "B738",
+          "sourceQuote": "Incident: Gol B738 at Maringa on Oct 26th 2026, smoke on board",
+          "sourceUrl": "https://avherald.com/h?article=54572f28&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
           "value": "B39M",
-          "sourceQuote": "United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
           "sourceUrl": "https://avherald.com/h?article=54546c3e"
         },
         {
           "entityType": "aircraft_models",
           "value": "A21N",
-          "sourceQuote": "Hong Kong A21N enroute on Oct 25th 2026, thermal runaway of power bank",
+          "sourceQuote": "Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal runaway of power bank",
           "sourceUrl": "https://avherald.com/h?article=545462ce&opt=0"
-        },
-        {
-          "entityType": "aircraft_models",
-          "value": "B738",
-          "sourceQuote": "Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
-          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0"
         },
         {
           "entityType": "locations",
           "value": "Houston",
-          "sourceQuote": "Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
+          "sourceQuote": "Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
           "sourceUrl": "https://avherald.com/h?article=54547311"
         },
         {
           "entityType": "locations",
+          "value": "Maringa",
+          "sourceQuote": "Incident: Gol B738 at Maringa on Oct 26th 2026, smoke on board",
+          "sourceUrl": "https://avherald.com/h?article=54572f28&opt=0"
+        },
+        {
+          "entityType": "locations",
           "value": "Birmingham",
-          "sourceQuote": "Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
           "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0"
         },
         {
           "entityType": "event_dates",
           "value": "Oct 26th 2026",
-          "sourceQuote": "Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
+          "sourceQuote": "Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
           "sourceUrl": "https://avherald.com/h?article=54547311"
         },
         {
           "entityType": "event_dates",
           "value": "Oct 25th 2026",
-          "sourceQuote": "United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
           "sourceUrl": "https://avherald.com/h?article=54546c3e"
         }
       ],

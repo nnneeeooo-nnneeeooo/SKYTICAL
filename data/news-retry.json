@@ -3667,27 +3667,6 @@
       "nextRetryUtc": "2026-10-27T17:25Z",
       "title": "Etihad Airbus A380 lands in Bangkok marking first ever Thailand arrival"
     },
-    "8f9f0733dc3cf27792ada58a": {
-      "sourceUrls": [
-        "https://www.aerotime.aero/articles/airbus-life-flight-network-order-h135-helicopters",
-        "https://www.airbus.com/en/newsroom/press-releases/2026-10-life-flight-network-orders-five-airbus-h135-helicopters"
-      ],
-      "contentFailures": 2,
-      "serviceFailures": 0,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 1,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-10-27T06:52Z"
-        }
-      ],
-      "updatedUtc": "2026-10-27T13:39Z",
-      "nextRetryUtc": "2026-10-27T19:39Z",
-      "failureClass": "content_validation",
-      "title": "Airbus secures Life Flight Network order for five H135 helicopters"
-    },
     "5f65871c2afbcce7ddd30f04": {
       "sourceUrls": [
         "https://simpleflying.com/united-airlines-final-gates-delta-salt-lake-city-airport"
@@ -3742,29 +3721,43 @@
     },
     "54dcb4a41ac47c9d705a4fd5": {
       "sourceUrls": [
+        "https://www.aerotime.aero/articles/atlantic-airways-orders-new-airbus-all-a320neo-fleet",
         "https://www.airbus.com/en/newsroom/press-releases/2026-10-atlantic-airways-orders-two-additional-airbus-a320neo-aircraft"
       ],
       "contentFailures": 1,
       "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-27T13:39Z",
-      "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-27T15:39Z",
-      "title": "Atlantic Airways orders two additional Airbus A320neo aircraft"
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 1,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-10-27T13:39Z"
+        }
+      ],
+      "updatedUtc": "2026-10-27T19:01Z",
+      "nextRetryUtc": "2026-10-27T21:01Z",
+      "failureClass": "content_validation",
+      "title": "Atlantic Airways orders new Airbus jets in pursuit of all A320neo fleet"
     },
     "4b287ee41b575a0594e06316": {
       "sourceUrls": [
-        "https://boeing.mediaroom.com/2026-10-27-Boeing-Reports-Third-Quarter-Results"
+        "https://boeing.mediaroom.com/2026-10-27-Boeing-Reports-Third-Quarter-Results",
+        "https://www.aerotime.aero/articles/boeing-q3-2026-results-record-backlog-737-7-and-737-10-certified-loss-narrows"
       ],
-      "contentFailures": 1,
+      "contentFailures": 0,
       "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-27T13:39Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-27T15:39Z",
-      "title": "Boeing Reports Third Quarter Results"
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 1,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-10-27T13:39Z"
+        }
+      ],
+      "updatedUtc": "2026-10-27T19:00Z",
+      "nextRetryUtc": null
     }
   }
 }
