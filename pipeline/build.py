@@ -190,18 +190,18 @@ L = {
         "aboutKicker": "About SKYTICAL", "aboutTitle": "關於 SKYTICAL",
         "changeKicker": "Site Changelog", "changeTitle": "網站更新紀錄",
         "changeSub": "依 SKYTICAL 專案提交紀錄整理，涵蓋網站建立至最近一次功能變更。",
-        "changeNotice": "點選提交代碼，可查看本站保存的原始紀錄、變更檔案與完整差異。自動資料更新不列入。",
+        "changeNotice": "點選提交代碼，可查看本站保存的日期、變更摘要與統計副本。自動資料更新不列入。",
         "changeCount": "筆網站變更", "changeStart": "紀錄起點",
         "changeLatest": "更新至",
         "changeCommit": "提交",
-        "commitRecordTitle": "提交原始紀錄",
+        "commitRecordTitle": "提交摘要副本",
         "commitRecordBack": "← 返回網站更新紀錄",
-        "commitRecordDate": "提交時間",
+        "commitRecordDate": "變更日期",
         "commitRecordAuthor": "作者",
         "commitRecordCommitter": "提交者",
         "commitRecordFiles": "變更檔案",
         "commitRecordDiff": "完整差異",
-        "commitRecordDownload": "下載 JSON 原始紀錄",
+        "commitRecordDownload": "下載 JSON 摘要副本",
         "commitRecordNoFiles": "此提交沒有列出的檔案。",
         "commitRecordNoDiff": "此提交沒有可顯示的文字差異。",
         "changeKinds": {
@@ -344,18 +344,18 @@ L = {
         "aboutKicker": "About SKYTICAL", "aboutTitle": "About SKYTICAL",
         "changeKicker": "Site Changelog", "changeTitle": "Site changelog",
         "changeSub": "Compiled from the SKYTICAL project history, covering the site from its creation through the latest feature change.",
-        "changeNotice": "Select a commit ID to view its saved record, changed files and full diff. Automated data updates are omitted.",
+        "changeNotice": "Select a commit ID to view its saved date, change summary and statistics. Automated data updates are omitted.",
         "changeCount": "site changes", "changeStart": "History starts",
         "changeLatest": "Updated through",
         "changeCommit": "commit",
-        "commitRecordTitle": "Original commit record",
+        "commitRecordTitle": "Commit summary copy",
         "commitRecordBack": "← Back to the site changelog",
-        "commitRecordDate": "Commit date",
+        "commitRecordDate": "Change date",
         "commitRecordAuthor": "Author",
         "commitRecordCommitter": "Committer",
         "commitRecordFiles": "Changed files",
         "commitRecordDiff": "Full diff",
-        "commitRecordDownload": "Download original JSON record",
+        "commitRecordDownload": "Download JSON summary copy",
         "commitRecordNoFiles": "No files are listed for this commit.",
         "commitRecordNoDiff": "No text diff is available for this commit.",
         "changeKinds": {
@@ -3466,61 +3466,49 @@ def changelog_view(raw, lang: str, labels: dict) -> dict:
 
 
 def commit_records_view(raw, expected_shas) -> dict:
-    """Validate the checked-in snapshots and restore their unified diffs."""
-    if not isinstance(raw, dict) or raw.get("schemaVersion") != 1:
-        raise ValueError("commit record archive has an unsupported schema")
+    """Accept only public summaries; reject legacy snapshots and extra fields."""
+    if not isinstance(raw, dict) or set(raw) != {"schemaVersion", "commits"} \
+            or raw.get("schemaVersion") != 2:
+        raise ValueError("commit record archive must contain public summaries")
     commits = raw.get("commits")
-    if not isinstance(commits, dict):
-        raise ValueError("commit record archive has no commit map")
+    if not isinstance(commits, dict) or set(commits) != set(expected_shas):
+        raise ValueError("commit record summaries do not match the changelog")
 
     records = {}
     for sha in expected_shas:
-        item = commits.get(sha)
+        item = commits[sha]
         if (not _CHANGELOG_COMMIT_RE.fullmatch(sha)
                 or not isinstance(item, dict)
+                or set(item) != {"sha", "date", "summary", "stats", "redacted"}
                 or item.get("sha") != sha
-                or not isinstance(item.get("message"), str)
-                or not isinstance(item.get("created_at"), str)
-                or not isinstance(item.get("author"), dict)
-                or not isinstance(item.get("committer"), dict)
-                or not isinstance(item.get("files"), list)
-                or not isinstance(item.get("diffLines"), list)
-                or not all(isinstance(line, str)
-                           for line in item.get("diffLines", []))):
-            raise ValueError(f"commit record snapshot is invalid: {sha}")
-        files = []
-        for file in item["files"]:
-            if (not isinstance(file, dict)
-                    or not isinstance(file.get("filename"), str)
-                    or not isinstance(file.get("status"), str)):
-                raise ValueError(f"commit record file entry is invalid: {sha}")
-            files.append({
-                "filename": file["filename"],
-                "previous_filename": str(file.get("previous_filename") or ""),
-                "status": file["status"],
-                "additions": max(0, int(file.get("additions") or 0)),
-                "deletions": max(0, int(file.get("deletions") or 0)),
-                "changes": max(0, int(file.get("changes") or 0)),
-            })
+                or item.get("redacted") is not True
+                or not isinstance(item.get("date"), str)
+                or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", item["date"])):
+            raise ValueError(f"commit record summary is invalid: {sha}")
+        try:
+            datetime.strptime(item["date"], "%Y-%m-%d")
+        except ValueError as exc:
+            raise ValueError(f"commit record date is invalid: {sha}") from exc
+        summary = item.get("summary")
+        stats = item.get("stats")
+        if (not isinstance(summary, dict) or set(summary) != {"zh", "en"}
+                or any(not isinstance(value, str) or not value.strip()
+                       or re.search(
+                           r"(?i)AVWIRE_|usage\.json|(?:manual|copilot)-jobs|"
+                           r"[\w.+-]+@[\w.-]+\.[a-z]{2,}|T\d{2}:\d{2}",
+                           value)
+                       for value in summary.values())
+                or not isinstance(stats, dict)
+                or set(stats) != {"files", "additions", "deletions"}
+                or any(type(value) is not int or value < 0
+                       for value in stats.values())):
+            raise ValueError(f"commit record summary data is invalid: {sha}")
         records[sha] = {
-            "sha": sha,
-            "redacted": item.get("redacted") is True,
-            "message": item["message"],
-            "author": {
-                "login": str(item["author"].get("login") or ""),
-                "name": str(item["author"].get("name") or ""),
-                "email": str(item["author"].get("email") or ""),
-            },
-            "committer": {
-                "login": str(item["committer"].get("login") or ""),
-                "name": str(item["committer"].get("name") or ""),
-                "email": str(item["committer"].get("email") or ""),
-            },
-            "created_at": item["created_at"],
-            "files": files,
-            "diff": "\\n".join(item["diffLines"]),
+            "sha": sha, "date": item["date"],
+            "summary": dict(summary), "stats": dict(stats), "redacted": True,
         }
     return records
+
 
 def copilot_usage_view(ledger: dict) -> dict:
     """Compact 30-day SKYTICAL Copilot view for the existing dashboard."""

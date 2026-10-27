@@ -50,6 +50,7 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Run pipeline regression tests
         run: |
+          python tests/test_changelog.py
           python tests/test_analytics.py
           node --check static/traffic-dashboard.js
           python tests/test_traffic_dashboard.py
@@ -115,6 +116,9 @@ jobs:
           cache: pip
 
       - run: pip install -r requirements.txt
+
+      - name: Test public commit summary privacy
+        run: python tests/test_changelog.py
 
       - name: Test mandatory airport IATA codes
         run: python tests/test_airport_codes.py
