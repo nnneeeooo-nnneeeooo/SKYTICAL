@@ -39,10 +39,28 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-10-27T07:10Z",
       "untilUtc": "2026-10-28T07:10Z",
+      "checkedUtc": "2026-10-27T07:10Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "gemini:gemini-3.6-flash": {
+      "status": "waiting",
+      "untilUtc": "2026-10-27T16:48Z",
+      "checkedUtc": "2026-10-27T10:48Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "gemini:gemini-3.5-flash": {
+      "status": "waiting",
+      "checkedUtc": "2026-10-27T10:48Z",
+      "untilUtc": "2026-10-27T16:48Z",
+      "failureClass": "unexpected",
+      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     }

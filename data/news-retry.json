@@ -3646,26 +3646,13 @@
         "https://simpleflying.com/f-22-raptor-many-miles-per-gallon-supercruise"
       ],
       "contentFailures": 1,
-      "serviceFailures": 0,
+      "serviceFailures": 1,
       "history": [],
-      "updatedUtc": "2026-10-27T06:52Z",
-      "failureClass": "content_validation",
+      "updatedUtc": "2026-10-27T10:48Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-27T08:52Z",
+      "nextRetryUtc": "2026-10-27T12:48Z",
       "title": "How Many Miles Per Gallon Does An F-22 Raptor Actually Get In Supercruise?"
-    },
-    "8f9f0733dc3cf27792ada58a": {
-      "sourceUrls": [
-        "https://www.airbus.com/en/newsroom/press-releases/2026-10-life-flight-network-orders-five-airbus-h135-helicopters"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-27T06:52Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-27T08:52Z",
-      "title": "Life Flight Network orders five Airbus H135 helicopters"
     },
     "f653f5b44b1494051ad864ec": {
       "sourceUrls": [
@@ -3679,6 +3666,53 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-27T09:10Z",
       "title": "Etihad Airbus A380 lands in Bangkok marking first ever Thailand arrival"
+    },
+    "8f9f0733dc3cf27792ada58a": {
+      "sourceUrls": [
+        "https://www.aerotime.aero/articles/airbus-life-flight-network-order-h135-helicopters",
+        "https://www.airbus.com/en/newsroom/press-releases/2026-10-life-flight-network-orders-five-airbus-h135-helicopters"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 1,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-10-27T06:52Z"
+        }
+      ],
+      "updatedUtc": "2026-10-27T10:48Z",
+      "nextRetryUtc": "2026-10-27T12:48Z",
+      "failureClass": "content_validation",
+      "title": "Airbus secures Life Flight Network order for five H135 helicopters"
+    },
+    "5f65871c2afbcce7ddd30f04": {
+      "sourceUrls": [
+        "https://simpleflying.com/united-airlines-final-gates-delta-salt-lake-city-airport"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-27T10:48Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-27T12:48Z",
+      "title": "United Lands Most Of The Final Gates At Delta’s Salt Lake City Fortress As $5.1B Rebuild Ends"
+    },
+    "a659e473bdbe160b2bb992d9": {
+      "sourceUrls": [
+        "https://simpleflying.com/hidden-math-1-us-airline-ordering-world-most-efficient-single-aisle-aircraft"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-27T10:48Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-27T12:48Z",
+      "title": "The Hidden Math Behind Only 1 US Airline Ordering The World's Most Efficient Single-Aisle Aircraft"
     }
   }
 }
