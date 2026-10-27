@@ -2,8 +2,92 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-10-24",
+  "updatedThrough": "2026-10-26",
   "entries": [
+    {
+      "date": "2026-10-26",
+      "kind": "fix",
+      "commit": "85cc0e235b9fffb48a4e252ad66ca8f48402445f",
+      "zh": "修正團隊頁翼標動畫在手機短螢幕捲動進入畫面時未播放的問題，讓動畫在標誌進入可視範圍後正常啟動。",
+      "en": "Fixed the team-page wing mark animation on short mobile screens so it plays when the mark scrolls into view."
+    },
+    {
+      "date": "2026-10-26",
+      "kind": "design",
+      "commit": "5013d8c5285bc14526bf6995832ed69a22a3cd78",
+      "zh": "在團隊頁 neo 姓名旁加入翼標動畫，並修正頁首翼標動畫留下的殘影；保留核准標誌、頁尾 Logo 與 8-bit 主題。",
+      "en": "Added a wing-mark animation beside neo on the team page and removed a trail artifact from the header animation, while preserving the approved mark, footer logo and 8-bit theme."
+    },
+    {
+      "date": "2026-10-26",
+      "kind": "design",
+      "commit": "b39fc6b3b9a0dd03f975f074cf30f2e9a81bb181",
+      "zh": "頁首 SKYTICAL 翼標新增游標移入播放的飛行動畫，並保留原有連結、觸控導覽與減少動態設定。",
+      "en": "Added a hover-triggered flight animation to the SKYTICAL header mark while keeping its link, touch navigation and reduced-motion behavior."
+    },
+    {
+      "date": "2026-10-26",
+      "kind": "system",
+      "commit": "ded5381720c8bfb53ef1c29a190b7a49cf53c877",
+      "zh": "將僅談衛星軌道事件或彈頭製造、未涉及實際航空運作的內容移出公開頁面，並加強範圍檢查以避免同類題材再次刊出。",
+      "en": "Removed satellite-orbit and warhead-production stories without a direct aviation connection from public pages and strengthened scope checks against similar off-topic coverage."
+    },
+    {
+      "date": "2026-10-26",
+      "kind": "fix",
+      "commit": "d6681989d460fe5513bbd9695b4329bce0c4916c",
+      "zh": "搜尋現在能處理中英文及航班號混合查詢，正確辨識中英交界並比對中文詞組。",
+      "en": "Search now handles mixed Chinese, English and flight-number queries by recognizing script boundaries and matching Chinese phrases."
+    },
+    {
+      "date": "2026-10-25",
+      "kind": "fix",
+      "commit": "2e001973cae8712dc68108df68326b60f6c1b90a",
+      "zh": "修正中文新聞句子黏在一起的排版，在句末標點後恢復句間空格，同時保留中文與英文或數字交界的緊湊呈現。",
+      "en": "Restored sentence spacing in Chinese news after terminal punctuation, including closing quotes and inline elements, while preserving compact Chinese-to-Latin spacing."
+    },
+    {
+      "date": "2026-10-25",
+      "kind": "system",
+      "commit": "ac772a5ae99192a99bdac451d31c3af7d1a3cea6",
+      "zh": "統一中英文文章的公開網址與中繼資料，讓站內連結、搜尋、RSS、網站地圖及分享資訊使用一致的標準網址。",
+      "en": "Standardized public article URLs and bilingual metadata so internal links, search, RSS, sitemaps and sharing use the same canonical URL."
+    },
+    {
+      "date": "2026-10-25",
+      "kind": "feature",
+      "commit": "de5d5eed0c0f3e51f07fe0735e04f60b77f1dcaa",
+      "zh": "新增「專欄報導」文章分類與公開分類篩選，讓主題介紹、解說及回顧文章與事件報導更容易區分。",
+      "en": "Added a Feature article category and public category filters to distinguish explainers and retrospectives from reports centered on current events."
+    },
+    {
+      "date": "2026-10-24",
+      "kind": "design",
+      "commit": "32b158f093c82339d3a3646b25c96674703bfbff",
+      "zh": "全站中文排版移除中文字之間及中英文或數字交界處多餘的半形空格，同時保留英文單字間的空格。",
+      "en": "Updated site-wide Chinese typography to remove unnecessary spaces between Chinese characters and at Chinese-Latin or Chinese-number boundaries, while preserving spaces between English words."
+    },
+    {
+      "date": "2026-10-24",
+      "kind": "feature",
+      "commit": "151cff5874870c847d9741255ba422ab2b3e1ae7",
+      "zh": "雷達航機標記改為黃色；選取航機後依完整 ICAO hex 顯示相符的實機照片、攝影者署名與原圖連結，沒有照片時明確標示，不以其他航機照片替代。",
+      "en": "Changed radar aircraft markers to yellow and added photos matched by full ICAO hex, photographer credits and source links; a clear unavailable state appears when no exact aircraft photo exists."
+    },
+    {
+      "date": "2026-10-24",
+      "kind": "fix",
+      "commit": "399f7f209f89ca355b77b4fe872cd46c52ac1ff7",
+      "zh": "首頁與全站快訊列現在為舊快訊顯示臺北日期，並讓輪播複本不再重複出現在鍵盤與螢幕閱讀器導覽中。",
+      "en": "The homepage and site-wide flash feed now show Taipei-local dates for older alerts, while carousel duplicates are hidden from keyboard and screen-reader navigation."
+    },
+    {
+      "date": "2026-10-24",
+      "kind": "design",
+      "commit": "484b8051170e1fc2f6c0b5b203619fde95ad13de",
+      "zh": "將航機雷達重做為地圖優先介面，加入更容易辨識機型的航機剪影，改善桌面與手機瀏覽。",
+      "en": "Redesigned the aircraft radar as a map-first interface with more recognizable aircraft silhouettes for clearer desktop and mobile browsing."
+    },
     {
       "date": "2026-10-24",
       "kind": "feature",
