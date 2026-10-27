@@ -12,19 +12,19 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-27T19:39Z",
-      "checkedUtc": "2026-10-27T13:39Z",
+      "untilUtc": "2026-10-28T05:15Z",
+      "checkedUtc": "2026-10-27T23:15Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-27T19:39Z",
-      "checkedUtc": "2026-10-27T13:39Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (credits exhausted?)",
+      "checkedUtc": "2026-10-27T23:15Z",
+      "untilUtc": "2026-10-28T05:15Z",
+      "failureClass": "invalid_request",
+      "diagnostic": "HTTP 400 code=invalid_request_error",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -57,8 +57,8 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-10-27T19:01Z",
       "untilUtc": "2026-10-28T01:01Z",
+      "checkedUtc": "2026-10-27T19:01Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
