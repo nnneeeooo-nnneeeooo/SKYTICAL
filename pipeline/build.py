@@ -105,6 +105,7 @@ def static_asset_version() -> str:
         "skytical-logo-8bit-dark.svg",
         "skytical-mark-8bit.svg",
         "skytical-mark.svg",
+        "skytical-team-mark.svg",
         "skytical-social.png",
         "briefing.css",
         "briefing.js",
