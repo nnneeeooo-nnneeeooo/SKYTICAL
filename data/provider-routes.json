@@ -12,10 +12,10 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-26T21:06Z",
-      "checkedUtc": "2026-10-26T15:06Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "checkedUtc": "2026-10-27T03:52Z",
+      "untilUtc": "2026-10-27T09:52Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 2,
       "schemaMode": null
     },
@@ -75,8 +75,8 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "checkedUtc": "2026-10-27T00:53Z",
       "untilUtc": "2026-10-27T06:53Z",
+      "checkedUtc": "2026-10-27T00:53Z",
       "failureClass": "unexpected",
       "diagnostic": "entity evidence quote not found in current source: event_dates='2026-10-21'",
       "probeVersion": 2,

@@ -1,84 +1,189 @@
 {
   "articles": [
     {
-      "articleFormat": "full",
-      "availableLanguages": [
-        "zh",
-        "en"
-      ],
+      "id": "a-mesa-e175-houston-brakes-steering-20261026",
+      "publishedUtc": "2026-10-27T03:15:07Z",
       "cat": "safety",
-      "en": {
+      "primarySource": "The Aviation Herald",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "四起獨立航空事件彙整：休士頓、航途中與伯明罕",
+        "summary": "四起獨立航空事件涉及煞車、起落架、行動電源與跑道偏出",
         "body": [
-          "A Mesa Airlines Embraer ERJ-175 operating on behalf of United, registration N87353, was performing flight UA-6144 from Monterrey, Mexico, to Houston Intercontinental, Texas, on October 26, 2026, when the crew reported brakes and steering problems while on approach to Houston. The aircraft continued for a safe landing on runway 09.",
-          "The aircraft was still on the ground in Houston about 5.5 hours after landing, according to The Aviation Herald report created and last updated on October 26, 2026, at 20:50Z. The report does not state the cause of the brakes and steering problems."
-        ],
-        "summary": "A Mesa Airlines Embraer ERJ-175, registration N87353, operating United flight UA-6144 from Monterrey to Houston, reported brakes and steering problems on approach on October 26, 2026, and landed safely on runway 09; the aircraft was still on the ground in Houston about 5.5 hours later.",
-        "title": "Mesa ERJ-175 lands safely at Houston after reporting brakes and steering problems on approach"
-      },
-      "entities": {
-        "aircraft": [
-          "Embraer ERJ-175"
-        ],
-        "airports": [
-          "Houston Intercontinental"
-        ],
-        "manufacturers": [
-          "Embraer"
-        ],
-        "operators": [
-          "Mesa Airlines",
-          "United"
+          "以下彙整四起彼此獨立的航空事件，沒有資料指出事件之間有關聯。",
+          "Mesa E175於2026年10月26日在休士頓發生煞車與轉向問題。",
+          "United波音737 MAX 9（ICAO機型代碼B39M）於2026年10月25日在休士頓出現起落架不安全狀況。",
+          "Hong Kong A21N（空中巴士A321neo，ICAO機型代碼A21N）於2026年10月25日在航途中發生行動電源熱失控。",
+          "Jet2波音737-800（ICAO機型代碼B738）於2026年10月25日在伯明罕發生短暫跑道偏出。"
         ]
       },
-      "id": "a-mesa-e175-houston-brakes-steering-20261026",
-      "primarySource": "The Aviation Herald",
-      "publishedUtc": "2026-10-27T03:15:07Z",
-      "scheduledNews": {
-        "checkedUtc": "2026-10-27T03:15:07Z",
-        "eventKey": "mesa-e175-houston-brakes-steering-20261026",
-        "facts": [
-          {
-            "claim": "A Mesa Airlines Embraer ERJ-175, registration N87353, operating on behalf of United, performed flight UA-6144 from Monterrey, Mexico, to Houston Intercontinental, Texas, on October 26, 2026.",
-            "sourceUrl": "https://avherald.com/h?article=54547311&opt=0"
-          },
-          {
-            "claim": "While on approach to Houston, the crew reported brakes and steering problems.",
-            "sourceUrl": "https://avherald.com/h?article=54547311&opt=0"
-          },
-          {
-            "claim": "The aircraft continued for a safe landing on runway 09.",
-            "sourceUrl": "https://avherald.com/h?article=54547311&opt=0"
-          },
-          {
-            "claim": "The aircraft was still on the ground in Houston about 5.5 hours after landing.",
-            "sourceUrl": "https://avherald.com/h?article=54547311&opt=0"
-          }
-        ],
-        "modelAttribution": {
-          "kind": "user_requested_label",
-          "verifiedRuntimeModel": false
-        },
-        "version": 1
+      "en": {
+        "title": "Roundup: four independent aviation incidents reported in Houston, en route and Birmingham",
+        "summary": "Four separate aviation incidents were reported: brake issues, unsafe gear, power bank thermal runaway and runway excursion.",
+        "body": [
+          "This briefing covers four separate aviation incidents, with no stated relationship among them. The incidents are dated October 25 and 26, 2026.",
+          "A Mesa E175 had brake and steering problems in Houston on October 26, 2026.",
+          "A United Boeing 737 MAX 9 (ICAO type code B39M) was reported with unsafe gear in Houston on October 25, 2026.",
+          "A Hong Kong A21N, an Airbus A321neo (ICAO type code A21N), was reported with a power bank thermal runaway en route on October 25, 2026.",
+          "A Jet2 Boeing 737-800 (ICAO type code B738) had a temporary runway excursion at Birmingham on October 25, 2026."
+        ]
       },
-      "sourcePublishedUtc": "2026-10-26T20:52Z",
       "sources": [
         {
-          "name": "The Aviation Herald",
+          "name": "The Aviation Herald — Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and…",
           "url": "https://avherald.com/h?article=54547311&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: United B39M at Houston on Oct 25th 2026, unsafe g…",
+          "url": "https://avherald.com/h?article=54546c3e"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal…",
+          "url": "https://avherald.com/h?article=545462ce&opt=0"
+        },
+        {
+          "name": "The Aviation Herald — Incident: Jet2 B738 at Birmingham on Oct 25th 2026, tempora…",
+          "url": "https://avherald.com/h?article=5453c7d7&opt=0"
         }
       ],
-      "writer": "scheduled:Meta Muse",
-      "writerModels": [
-        "Meta Muse"
+      "articleFormat": "roundup",
+      "updatedUtc": "2026-10-27T03:52Z",
+      "revision": 2,
+      "sourcePublishedUtc": "2026-10-26T20:52Z",
+      "writer": "openai:gpt-6",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The headline reports brake and steering problems involving a Mesa E175 in Houston on October 26, 2026.",
+          "sourceQuote": "Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
+          "sourceUrl": "https://avherald.com/h?article=54547311&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The headline reports unsafe gear involving a United B39M in Houston on October 25, 2026.",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceUrl": "https://avherald.com/h?article=54546c3e",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The headline reports a power bank thermal runaway involving a Hong Kong A21N en route on October 25, 2026.",
+          "sourceQuote": "Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal runaway of power bank",
+          "sourceUrl": "https://avherald.com/h?article=545462ce&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The headline reports a temporary runway excursion involving a Jet2 B738 at Birmingham on October 25, 2026.",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
       ],
-      "zh": {
-        "body": [
-          "美莎航空一架代表聯合航空營運的巴西航空工業ERJ-175客機，註冊編號N87353，10月26日執飛自墨西哥蒙特雷前往美國休士頓洲際機場的UA-6144航班，在進近休士頓時機組通報煞車與轉向問題，該機隨後繼續進近並安全降落於09跑道。",
-          "根據The Aviation Herald於2026年10月26日20時50分（UTC）建立並更新的事件紀錄，該機降落約5.5小時後仍停留在休士頓地面，來源未進一步說明煞車與轉向問題的成因。"
+      "riskFlags": [
+        "accident_or_serious_incident"
+      ],
+      "eventStatus": "preliminary",
+      "entities": {
+        "airlines": [
+          "Mesa",
+          "United",
+          "Jet2"
         ],
-        "summary": "美莎航空一架代表聯合航空營運的ERJ-175客機，註冊編號N87353，10月26日執飛自蒙特雷前往休士頓的UA-6144航班，在進近時通報煞車與轉向問題，隨後安全降落09跑道，降落約5.5小時後仍停留在休士頓地面。",
-        "title": "美莎航空ERJ-175休士頓進近通報煞車與轉向問題後安全降落09跑道"
-      }
+        "aircraft_models": [
+          "E175",
+          "B39M",
+          "A21N",
+          "B738"
+        ],
+        "locations": [
+          "Houston",
+          "Birmingham"
+        ],
+        "event_dates": [
+          "Oct 26th 2026",
+          "Oct 25th 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "Mesa",
+          "sourceQuote": "Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
+          "sourceUrl": "https://avherald.com/h?article=54547311&opt=0"
+        },
+        {
+          "entityType": "airlines",
+          "value": "United",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceUrl": "https://avherald.com/h?article=54546c3e"
+        },
+        {
+          "entityType": "airlines",
+          "value": "Jet2",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "E175",
+          "sourceQuote": "Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
+          "sourceUrl": "https://avherald.com/h?article=54547311&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B39M",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceUrl": "https://avherald.com/h?article=54546c3e"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "A21N",
+          "sourceQuote": "Incident: Hong Kong A21N enroute on Oct 25th 2026, thermal runaway of power bank",
+          "sourceUrl": "https://avherald.com/h?article=545462ce&opt=0"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "B738",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Houston",
+          "sourceQuote": "Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
+          "sourceUrl": "https://avherald.com/h?article=54547311&opt=0"
+        },
+        {
+          "entityType": "locations",
+          "value": "Birmingham",
+          "sourceQuote": "Incident: Jet2 B738 at Birmingham on Oct 25th 2026, temporary runway excursion",
+          "sourceUrl": "https://avherald.com/h?article=5453c7d7&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Oct 26th 2026",
+          "sourceQuote": "Incident: Mesa E175 at Houston on Oct 26th 2026, brakes and steering problems",
+          "sourceUrl": "https://avherald.com/h?article=54547311&opt=0"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "Oct 25th 2026",
+          "sourceQuote": "Incident: United B39M at Houston on Oct 25th 2026, unsafe gear",
+          "sourceUrl": "https://avherald.com/h?article=54546c3e"
+        }
+      ],
+      "evidenceVersion": 2
     }
   ]
 }
