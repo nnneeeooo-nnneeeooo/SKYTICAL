@@ -1104,6 +1104,31 @@ class CloudflareProvider(GroqProvider):
     default_model = "@cf/qwen/qwen3-30b-a3b-fp8"
     key_env = "CLOUDFLARE_API_TOKEN"
 
+    def draft(self, system_prompt, user_prompt, schema):
+        if "status" in schema.get("properties", {}):
+            # Keep the checklist after the source and any validation feedback:
+            # these models otherwise confuse envelope metadata with evidence,
+            # or shorten an entire replacement draft to a summary on retry.
+            user_prompt += (
+                "\n\nFINAL EDITORIAL CHECK (instructions, not source evidence): "
+                "Use only the source title, summary and full text as quotable "
+                "current evidence. The published/first-seen timestamp, source "
+                "labels and URL are metadata, not event evidence. Populate "
+                "event_dates only from verbatim date wording in the article "
+                "text; never convert dates to ISO or infer a year. An empty "
+                "optional entity array is valid. Return the COMPLETE draft, "
+                "including when correcting a previous validation error. "
+                "Before returning a publish_brief, silently count en.body "
+                "words and zh.body Chinese/alphanumeric characters. Aim for "
+                "110-140 English words and 220-300 Chinese content characters "
+                "across three substantive paragraphs in EACH language. "
+                "Distribute distinct source-supported event details across "
+                "the paragraphs; titles, summaries and evidence do not count "
+                "toward body length. Do not pad or repeat. If the source "
+                "cannot support a safe brief, reject. Keep every normal "
+                "source-verification and publication rule.")
+        return super().draft(system_prompt, user_prompt, schema)
+
     def available(self):
         return super().available() and bool(re.fullmatch(
             r"[a-fA-F0-9]{32}", os.environ.get("CLOUDFLARE_ACCOUNT_ID", "")))

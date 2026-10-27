@@ -53,6 +53,12 @@ def main():
                 system = post.call_args.kwargs['json']['messages'][0]['content']
                 assert '180-320' in system and '90-150' in system
                 assert 'never pad or repeat' in system
+                if p.name == 'cloudflare':
+                    user = post.call_args.kwargs['json']['messages'][1]['content']
+                    assert 'FINAL EDITORIAL CHECK' in user
+                    assert 'metadata, not event evidence' in user
+                    assert '110-140 English words' in user
+                    assert user.index('user') < user.index('FINAL EDITORIAL CHECK')
             broken = response({'choices': [{'message': {'content': '{"ok":1,,'}}]})
             with patch.object(providers.requests, 'post', side_effect=[broken, good]) as post:
                 assert p.draft('sys', 'user', {}) == {'ok': 1}
