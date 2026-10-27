@@ -4,6 +4,7 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
+from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
@@ -15,6 +16,7 @@ def main() -> None:
     assert build.main() == 0
 
     home = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
+    en_home = (ROOT / "site" / "en" / "index.html").read_text(encoding="utf-8")
     home_template = (ROOT / "templates" / "home.html").read_text(
         encoding="utf-8")
     css = (ROOT / "static" / "site.css").read_text(encoding="utf-8")
@@ -35,6 +37,22 @@ def main() -> None:
     assert 'class="nav-toggle"' in home
     assert 'aria-controls="site-nav"' in home
     assert 'class="site-nav" id="site-nav"' in home
+    for html, prefix in ((home, ""), (en_home, "/en")):
+        document = BeautifulSoup(html, "html.parser")
+        header = document.select_one(".header-search-row")
+        assert header is not None
+        assert [child.get("class", [""])[0] for child in header.find_all(recursive=False)] == [
+            "brand-shell", "header-search-form", "header-social-links"
+        ]
+        nav = document.select_one("#site-nav")
+        assert nav is not None
+        visible = [link for link in nav.find_all("a", recursive=False)
+                   if "nav-link-mobile-hidden" not in link.get("class", [])]
+        assert [link["href"] for link in visible] == [
+            f"{prefix}/{section}/" for section in
+            ("news", "briefings", "radar", "incidents", "about", "team")
+        ]
+        assert "BETA" in visible[1].get_text()
     assert 'class="utility-row"' in home
     assert 'class="ticker-window"' in home
     assert 'class="ticker-pass"' in home
@@ -98,6 +116,8 @@ def main() -> None:
     assert "position: relative; contain: paint;" in css
     assert "grid-template-columns: repeat(3, minmax(0, 1fr))" in css
     assert ".js .site-nav.is-open { display: grid; }" in css
+    assert ".site-nav .nav-link-mobile-hidden { display: none; }" in css
+    assert ".header-search-row .nav-toggle { display: none; }" in css
     assert "grid-template-columns: repeat(2, minmax(0, 1fr))" in css
     assert "grid-template-columns: 56px minmax(0, 1fr)" in css
     assert ".flash-copy" in css
