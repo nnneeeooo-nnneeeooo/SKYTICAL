@@ -56,6 +56,35 @@ def test_news_chronology():
     assert build.prep_article(revised)["news_dt"] == collected[1]["news_dt"]
 
 
+
+def test_wsi_opening_article_public_and_searchable():
+    # Regression: a source file existing is not enough; users must be able to
+    # find the opening by the airport's name and IATA code.
+    repository = Path(__file__).resolve().parents[1]
+    canonical_path = repository / "data" / "articles" / "scheduled-western-sydney-airport-opens-20261025.json"
+    duplicate_path = repository / "data" / "articles" / "2026-10-25T10.json"
+    canonical = json.loads(canonical_path.read_text(encoding="utf-8"))["articles"][0]
+    duplicate = json.loads(duplicate_path.read_text(encoding="utf-8"))["articles"][0]
+    assert canonical["id"] == "a-western-sydney-airport-opens-20261025"
+    assert canonical.get("archived") is not True
+    assert duplicate.get("archived") is True
+    assert "西雪梨國際機場" in canonical["zh"]["title"]
+    assert "WSI" in canonical["zh"]["title"]
+    assert "10月25日" in canonical["zh"]["title"]
+    assert "1,000萬" in canonical["zh"]["summary"]
+    assert "8,000萬" in canonical["zh"]["summary"]
+    assert "7月26日" in " ".join(canonical["zh"]["body"])
+    prepared = build.prep_article(canonical)
+    assert prepared is not None
+    assert build.prep_article(duplicate) is None
+    record = build.search_index_item(prepared, [])
+    assert record["id"] == canonical["id"]
+    assert "WSI" in record["title"]["zh"]
+    assert "西雪梨國際機場" in record["title"]["zh"]
+    assert record["url"]["zh"].endswith("/news/a-western-sydney-airport-opens-20261025/")
+    assert build.parse_iso(record["published"]).date().isoformat() == "2026-10-25"
+
+
 def test_flash_dates_and_marquee_accessibility():
     # Taipei has crossed midnight while UTC is still on the previous day.
     now = datetime(2026, 10, 24, 16, 30, tzinfo=timezone.utc)
@@ -96,5 +125,6 @@ def test_flash_dates_and_marquee_accessibility():
 
 if __name__ == "__main__":
     test_news_chronology()
+    test_wsi_opening_article_public_and_searchable()
     test_flash_dates_and_marquee_accessibility()
     print("PASS news chronology, flash dates and marquee accessibility")

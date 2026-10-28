@@ -21,61 +21,98 @@
         "eventKey": "western-sydney-airport-opens-20261025",
         "facts": [
           {
-            "claim": "Sydney's new A$5.6 billion airport opened to passengers on Sunday after more than a decade of planning; Prime Minister Anthony Albanese called it a milestone for the country's most populous city.",
-            "sourceUrl": "https://www.reuters.com/world/asia-pacific/sydneys-new-international-airport-opens-passengers-2026-10-25/"
+            "claim": "WSI opened for passenger flights on 25 October 2026; cargo operations had begun on 26 July 2026.",
+            "sourceUrl": "https://www.infrastructure.gov.au/infrastructure-transport-vehicles/aviation/airports/about-western-sydney-international-nancy-bird-walton-airport"
           },
           {
-            "claim": "Western Sydney International Airport in Badgerys Creek, about 60 km west of central Sydney, will operate 24 hours a day.",
-            "sourceUrl": "https://www.reuters.com/world/asia-pacific/sydneys-new-international-airport-opens-passengers-2026-10-25/"
+            "claim": "Jetstar A320 JQ362 operated the first commercial departure to the Gold Coast; the inaugural flight was sold out.",
+            "sourceUrl": "https://www.jetstar.com/au/en/newsroom/jetstar-makes-history-with-first-ever-passenger-flight-from-western-sydney-international-airport"
           },
           {
-            "claim": "The current airport can host takeoffs and landings only until 11 p.m. and after 6 a.m., limiting airline scheduling options.",
-            "sourceUrl": "https://www.reuters.com/world/asia-pacific/sydneys-new-international-airport-opens-passengers-2026-10-25/"
+            "claim": "The airport opens with capacity for up to 10 million annual passengers and can grow to over 80 million in the long term.",
+            "sourceUrl": "https://www.wsiairport.com.au/corporate/media-releases/new-era-aviation-takes-flight-wsi"
           },
           {
-            "claim": "Jetstar was due to operate the first outbound flight to the Gold Coast on Sunday, and the airport has capacity for more than 80 million passenger movements annually.",
-            "sourceUrl": "https://www.reuters.com/world/asia-pacific/sydneys-new-international-airport-opens-passengers-2026-10-25/"
-          },
-          {
-            "claim": "Cargo flights commenced at the facility in July; the 1,780-hectare site was purchased by the federal government in the 1980s and the airport was completed in July 2025 after a seven-year build and 15 years of planning.",
-            "sourceUrl": "https://www.reuters.com/world/asia-pacific/sydneys-new-international-airport-opens-passengers-2026-10-25/"
+            "claim": "Air New Zealand passenger flights to Auckland began on 26 October; Singapore Airlines flights to Singapore are scheduled from 23 November.",
+            "sourceUrl": "https://www.infrastructure.gov.au/department/media/news/western-sydney-airport-set-open"
           }
         ]
       },
       "id": "a-western-sydney-airport-opens-20261025",
       "cat": "ops",
       "sourcePublishedUtc": "2026-10-25T00:29Z",
-      "primarySource": "Reuters",
+      "primarySource": "Western Sydney International Airport / Jetstar / Reuters",
       "sources": [
         {
-          "name": "Reuters",
+          "name": "Western Sydney International Airport — Opening announcement, 25 October 2026",
+          "url": "https://www.wsiairport.com.au/corporate/media-releases/new-era-aviation-takes-flight-wsi"
+        },
+        {
+          "name": "Jetstar — First-ever passenger flight JQ362, 25 October 2026",
+          "url": "https://www.jetstar.com/au/en/newsroom/jetstar-makes-history-with-first-ever-passenger-flight-from-western-sydney-international-airport"
+        },
+        {
+          "name": "Australian Government — Western Sydney International Airport operations",
+          "url": "https://www.infrastructure.gov.au/infrastructure-transport-vehicles/aviation/airports/about-western-sydney-international-nancy-bird-walton-airport"
+        },
+        {
+          "name": "Prime Minister of Australia — Opening programme and flight schedules",
+          "url": "https://www.pm.gov.au/media/its-official-western-sydney-open-passengers-25-october-and-freight-26-july-2026"
+        },
+        {
+          "name": "Reuters — Opening report, 25 October 2026",
           "url": "https://www.reuters.com/world/asia-pacific/sydneys-new-international-airport-opens-passengers-2026-10-25/"
         }
       ],
       "entities": {
         "airports": [
-          "Western Sydney International Airport"
+          "Western Sydney International Airport",
+          "Western Sydney International (Nancy-Bird Walton) Airport",
+          "WSI",
+          "Sydney Kingsford Smith Airport",
+          "SYD"
         ],
-        "operators": [
+        "airlines": [
           "Jetstar",
-          "Qantas"
+          "Air New Zealand",
+          "Singapore Airlines",
+          "Qantas",
+          "QantasLink"
+        ],
+        "aircraft_models": [
+          "Airbus A320",
+          "Embraer E190"
+        ],
+        "flights": [
+          "JQ362",
+          "JQ363"
+        ],
+        "locations": [
+          "Western Sydney",
+          "Badgerys Creek",
+          "Gold Coast",
+          "Auckland"
         ]
       },
       "zh": {
-        "title": "雪梨第二座國際機場啟用：耗資56億澳元、全天候營運",
-        "summary": "耗資56億澳元的雪梨西部國際機場於10月25日星期日開始接待旅客，總理艾班尼斯稱這是澳洲50多年來首座啟用的大型新機場。機場位於雪梨以西約60公里，全天候營運，年客運量可逾8000萬人次，捷星航空執飛首班出境航班前往黃金海岸。",
+        "title": "西雪梨國際機場（WSI）10月25日正式啟用　捷星A320首航黃金海岸",
+        "summary": "澳洲西雪梨國際機場（WSI）10月25日開放客運，捷星航空A320執飛首班JQ362前往黃金海岸；新機場24小時營運，初期年客運容量1,000萬人次，長期規劃擴至8,000萬以上。",
         "body": [
-          "耗資56億澳元的雪梨新機場於10月25日星期日開始接待旅客，結束逾10年的規劃。機場名為雪梨西部國際機場，位於雪梨以西約60公里的Badgerys Creek，全天候營運，可服務快速成長且族裔多元的人口中心。澳洲總理Anthony Albanese表示，澳洲50多年來首次啟用大型新機場，是醞釀數十年的里程碑，他很自豪能正式啟用機場。",
-          "現有機場僅能在晚間11時前與清晨6時後起降，限制了航空公司的排班彈性；相較之下，新機場24小時營運。捷星航空預定於星期日執飛首班出境航班前往黃金海岸；機場年客運量可逾8000萬人次。客運服務啟動前，貨運航班已於7月開始營運。機場占地1780公頃，土地由聯邦政府於1980年代購入，歷經15年規劃、7年興建，於2025年7月完工。"
+          "澳洲西雪梨國際機場（Western Sydney International／WSI，又稱Nancy-Bird Walton Airport）於2026年10月25日正式開放商業客運，成為雪梨逾半世紀以來首座在全新場址興建並投入營運的大型機場。新機場位於Badgerys Creek，服務雪梨西部持續成長的人口及產業，並與既有雪梨金斯福德史密斯機場（SYD）共同承擔航空運輸需求。",
+          "開幕當天，澳洲航空集團旗下捷星航空（Jetstar）以Airbus A320執飛JQ362，從WSI前往黃金海岸（OOL），成為機場首班商業客運起飛航班。捷星表示，首航機位全數售罄，回程JQ363安排當日下午從黃金海岸抵達WSI，隨後還有飛往墨爾本的航班。捷星的初期國內航線連接黃金海岸、墨爾本及布里斯本。",
+          "西雪梨國際機場最大特色是全天24小時營運、不受一般宵禁限制。相較之下，既有雪梨機場原則上在晚間11時至清晨6時間限制一般航班起降，新機場能提供更彈性的航班時段及夜間貨運服務。WSI的航空貨運作業實際上已於2026年7月26日啟動，因此不能將10月25日描述為客貨運同步首航。",
+          "新機場啟用時的設計年客運容量約為1,000萬人次，未來可隨需求分階段擴建，長期規劃容量超過8,000萬人次。兩項數字分別代表初期設施與長遠擴建目標，並非新機場一開幕就可處理8,000萬名旅客。",
+          "在國際航線方面，紐西蘭航空於10月26日開通WSI與奧克蘭（AKL）間的首條國際客運服務；新加坡航空規劃自11月23日起開航新加坡（SIN）。澳洲航空則規劃自2027年3月28日起透過QantasLink的Embraer E190執飛新機場國內航線。機場啟用代表雪梨航空市場新增一處全天候客貨運門戶，也為航空公司提供更多航網布局選擇。"
         ]
       },
       "en": {
-        "title": "Sydney's new international airport opens to passengers",
-        "summary": "Sydney's new A$5.6 billion airport opened to passengers on Sunday after more than a decade of planning, with 24-hour operations and capacity for more than 80 million passenger movements a year.",
+        "title": "Western Sydney International Airport (WSI) opens on October 25; Jetstar A320 operates inaugural JQ362",
+        "summary": "Western Sydney International Airport (WSI) opened to passengers on October 25, 2026, with Jetstar's A320 service JQ362 to the Gold Coast. The 24-hour airport opens with capacity for 10 million passengers annually, expandable to more than 80 million in the long term.",
         "body": [
-          "Sydney's new A$5.6 billion ($3.94 billion) airport opened to passengers on Sunday after more than a decade of planning, in what Prime Minister Anthony Albanese said was a milestone for the country's most populous city. The new Western Sydney International Airport in Badgerys Creek, about 60 km (37.3 miles) west of central Sydney, will operate 24 hours a day, giving airlines access to a fast-growing and ethnically diverse population centre.",
-          "The current airport, located closer to Sydney's central business district, can host takeoffs and landings only until 11 p.m. and after 6 a.m., limiting airline scheduling options relative to other major Australian cities like Melbourne. Albanese said: “For the first time in more than 50 years, Australia is opening a major new airport. It’s a milestone that has been decades in the making,” and added: “I’m very proud to officially open it.”",
-          "Qantas' budget arm Jetstar was due to operate the first outbound flight to the Gold Coast on Sunday, the airport said in a statement. The airport has capacity for more than 80 million passenger movements annually, it said. The start of passenger services comes after cargo flights commenced at the facility in July. Located on a 1,780-hectare (4,398-acre) site purchased by the federal government in the 1980s, the airport was completed in July 2025 after a seven-year build and 15 years of planning."
+          "Western Sydney International (Nancy-Bird Walton) Airport (WSI) began commercial passenger operations on 25 October 2026, marking Australia's first major greenfield international airport opening in more than half a century. Located at Badgerys Creek, the airport serves Sydney's growing western region alongside Sydney Kingsford Smith Airport (SYD).",
+          "Jetstar operated the inaugural outbound commercial passenger flight, JQ362, with an Airbus A320 to the Gold Coast (OOL). The airline reported that the first flight was sold out. Flight JQ363 from the Gold Coast was scheduled to become the airport's first commercial passenger arrival that afternoon, followed by Jetstar services to Melbourne. Initial domestic destinations also include Brisbane.",
+          "WSI operates without a nightly curfew, unlike the existing Sydney airport, where scheduled movements are generally restricted between 11 p.m. and 6 a.m. Cargo operations at WSI started on 26 July 2026, three months before passenger services; freight did not commence on opening day. The airport opens with capacity for approximately 10 million passengers annually and is designed for expansion to more than 80 million per year over the long term, not at launch.",
+          "Air New Zealand began the airport's first international passenger service to Auckland (AKL) on 26 October. Singapore Airlines plans daily services to Singapore (SIN) from 23 November, while QantasLink's Embraer E190 services are planned from 28 March 2027. The additional 24-hour gateway provides Sydney with more scheduling and route-development options."
         ]
       },
       "image": {
