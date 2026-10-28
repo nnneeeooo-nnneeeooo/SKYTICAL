@@ -34,6 +34,7 @@ import common  # noqa: E402
 import companion  # noqa: E402
 import providers  # noqa: E402
 import write  # noqa: E402
+from editorial_policy import PublicationRoute  # noqa: E402
 
 # This suite is explicitly offline.  Production enrichment is tested in its
 # own modules; prevent fixture domains from ever reaching requests here.
@@ -361,6 +362,38 @@ def test_publish_flow():
     check(incidents[0]["sources"] == ["NTSB", "Reuters"],
           f"incident sources from group items, got {incidents[0]['sources']}")
     print("test_publish_flow: done")
+
+
+def test_verified_routine_draft_is_queued_before_publication():
+    """The writer consumes a verified routine group without a standalone page."""
+    reset_data_dir()
+    os.environ["GEMINI_API_KEY"] = "test-key-not-real"
+    original = write.draft_group
+
+    def fake_draft(client, group):
+        if group["id"] == "g-20260726-0503-2":
+            return DRAFT_BIZ
+        return {"status": "reject", "decisionReason": "fixture skipped"}
+
+    def route(group):
+        if group["id"] == "g-20260726-0503-2":
+            return PublicationRoute("industry_roundup", "routine_transaction")
+        return PublicationRoute("standalone", "other")
+
+    write.draft_group = fake_draft
+    try:
+        with patch.object(write, "publication_route", side_effect=route):
+            write.main()
+    finally:
+        write.draft_group = original
+    queue = load(DATA / "industry-roundup-queue.json")
+    check(len(queue["items"]) == 1, "verified routine story held once")
+    check(queue["items"][0]["article"]["cat"] == "biz",
+          "queued story retains checked article fields")
+    check(not all_articles(), "routine story has no standalone article")
+    check(load(DATA / "stats.json")["newsWriter"]["roundupQueued"] == 1,
+          "queue count recorded")
+    print("test_verified_routine_draft_is_queued_before_publication: done")
 
 
 def test_legacy_review_is_reverified_published_and_archived():
@@ -1622,6 +1655,7 @@ def main():
              test_story_budget_allows_later_groups,
              test_budget_saves_completed_articles_and_retains_unattempted_groups,
              test_publish_flow,
+             test_verified_routine_draft_is_queued_before_publication,
              test_legacy_review_is_reverified_published_and_archived,
              test_group_cap_and_unique_ids,
              test_extract_json_and_validate_draft, test_provider_failover,

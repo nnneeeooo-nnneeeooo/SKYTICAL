@@ -26,6 +26,7 @@ on:
       - "pipeline/draft_recovery.py"
       - "pipeline/news_retry.py"
       - "pipeline/editorial_policy.py"
+      - "pipeline/industry_roundup.py"
       - "pipeline/manual_draft.py"
       - "pipeline/airport_codes.py"
       - "config/airport_iata_aliases.json"
@@ -91,6 +92,7 @@ jobs:
           python tests/test_news_freshness.py
           python tests/test_news_retry.py
           python tests/test_editorial_policy.py
+          python tests/test_industry_roundup.py
           python tests/test_news_chronology.py
 
   update:
@@ -129,6 +131,11 @@ jobs:
           python tests/test_news_retry.py
           python tests/test_news_chronology.py
 
+      - name: Test editorial routing and industry roundup
+        run: |
+          python tests/test_editorial_policy.py
+          python tests/test_industry_roundup.py
+
       - name: Test provider cooldown persistence
         run: python tests/test_provider_health.py
 
@@ -154,10 +161,11 @@ jobs:
 
       - name: Refresh persisted retry and provider cooldown state
         # A queued push run checks out its event SHA, which may predate the
-        # preceding run's data commit. Keep code pinned, refresh budgets only.
+        # preceding run's data commit or a delayed Muse article. Keep code
+        # pinned, refresh the roundup queue and publication evidence too.
         run: |
           git fetch origin "${GITHUB_REF_NAME}"
-          for path in data/news-retry.json data/provider-health.json data/provider-routes.json; do
+          for path in data/news-retry.json data/provider-health.json data/provider-routes.json data/industry-roundup-queue.json data/articles; do
             if git cat-file -e "origin/${GITHUB_REF_NAME}:$path" 2>/dev/null; then
               git checkout "origin/${GITHUB_REF_NAME}" -- "$path"
             fi

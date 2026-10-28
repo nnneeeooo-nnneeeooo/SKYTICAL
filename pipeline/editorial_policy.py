@@ -22,6 +22,68 @@ class NewsPolicy:
     reason: str
 
 
+@dataclass(frozen=True)
+class PublicationRoute:
+    route: str  # standalone or industry_roundup
+    reason: str
+
+
+def publication_route(group: dict) -> PublicationRoute:
+    """Conservatively route routine industry updates before publication.
+
+    An unclear story stays standalone. The rules use current source headlines
+    and excerpts only; historical context and model prose cannot demote news.
+    """
+    policy = news_policy(group)
+    if (policy.priority == "urgent" or policy.reason == "taiwan_relevance"
+            or group.get("groupKind") == "safety_roundup"):
+        return PublicationRoute("standalone", policy.reason)
+    items = [item for item in group.get("items", [])
+             if isinstance(item, dict) and not item.get("backgroundCompanion")]
+    title = " ".join(str(item.get("title") or "") for item in items)
+    excerpt = " ".join(str(item.get("summary") or "") for item in items)
+    text = title + " " + excerpt
+    # A broad safety or regulatory headline stays visible even when it also
+    # contains routine words such as partnership, test or software.
+    if matches(r"\b(?:crash|fatal|injur\w*|emergency|incident|investigation|"
+               r"runway incursion|airworthiness directive|final rule|"
+               r"safety alert)\b|空難|傷亡|緊急|事故|調查|適航指令|最終規則", title):
+        return PublicationRoute("standalone", "safety_or_regulatory_headline")
+    if policy.reason in {"routine_development_or_military_test",
+                         "general_aviation_procurement",
+                         "small_aviation_services_transaction",
+                         "concept_display", "routine_fleet_assets"}:
+        return PublicationRoute("industry_roundup", policy.reason)
+    # Agreements and plans are not completed production, certification or
+    # passenger service. A confirmed system-wide effect is never demoted.
+    if matches(r"\b(?:memorandum of understanding|mou|joins? production|"
+               r"agreement to develop|partners? (?:to develop|on design|"
+               r"on development)|collaborat\w* (?:to develop|on design))\b"
+               r"|合作備忘錄|合作開發|生產合作", title):
+        return PublicationRoute("industry_roundup", "routine_partnership")
+    if (matches(r"\b(?:acquir\w*|buys?|purchase\w*)\b|收購", title)
+            and matches(r"\b(?:software|platform|flightscape)\b|軟體|平台", text)):
+        return PublicationRoute("industry_roundup", "software_transaction")
+    if (matches(r"\b(?:demonstrat\w*|prototype|test flight|trial flight|"
+               r"heliport|fixed-wing landing)\b|示範|原型機|試飛|直升機坪", title)
+            and matches(r"\b(?:aircraft|airplane|flight|heliport|helicopter)\b"
+                        r"|飛機|飛行|直升機", text)):
+        return PublicationRoute("industry_roundup", "isolated_demonstration")
+    if (matches(r"\b(?:orders?|purchases?|buys?)\b|訂購|採購", title)
+            and matches(r"\b(?:helicopters?|h135|h145)\b|直升機", text)):
+        quantities = [int(n) for n in re.findall(
+            r"\b(\d{1,3})\s+(?:new\s+)?(?:h135|h145|helicopters?)\b",
+            text, re.I)]
+        words = {"one": 1, "two": 2, "three": 3, "four": 4,
+                 "five": 5, "six": 6, "seven": 7, "eight": 8,
+                 "nine": 9, "ten": 10}
+        quantities.extend(value for word, value in words.items()
+                          if matches(rf"\b{word}\s+(?:new\s+)?(?:h135|h145|helicopters?)\b", text))
+        if quantities and max(quantities) < 20:
+            return PublicationRoute("industry_roundup", "small_helicopter_order")
+    return PublicationRoute("standalone", "ordinary_news")
+
+
 def news_policy(group: dict) -> NewsPolicy:
     items = [item for item in group.get("items", [])
              if isinstance(item, dict) and not item.get("backgroundCompanion")]
