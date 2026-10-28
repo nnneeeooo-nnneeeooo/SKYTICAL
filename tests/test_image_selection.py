@@ -26,6 +26,14 @@ def photo(filename, **extra):
 
 
 class ImageSelectionTests(unittest.TestCase):
+    def test_roundup_uses_only_explicitly_reviewed_source_photos(self):
+        story = article("Three independent airline incidents", articleFormat="roundup")
+        reviewed = photo("Jet2_B737_800", kind="source_image", curated=True,
+                         description="Jet2 737-800, not the current incident")
+        self.assertIsNone(policy.rejection_reason(story, reviewed))
+        self.assertEqual(policy.rejection_reason(story, dict(reviewed, curated=False)),
+                         "roundup")
+
     def test_editorially_curated_photos_are_preserved_with_source_provider(self):
         story = article("Gulfstream G400 cabin flight test")
         picture = photo("N400G_Gulfstream_G400_prototype", curated=True)
