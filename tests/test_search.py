@@ -215,7 +215,7 @@ assert.ok(
     en = (ROOT / "site" / "en" / "search" / "index.html").read_text(
         encoding="utf-8")
     home = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
-    article = next((ROOT / "site" / "news").glob("*/index.html")).read_text(
+    article = (ROOT / "site" / "news" / live_condor["id"] / "index.html").read_text(
         encoding="utf-8")
     script = (ROOT / "static" / "search.js").read_text(encoding="utf-8")
     highlight_script = (ROOT / "static" / "highlight.js").read_text(

@@ -288,8 +288,6 @@
     var heroSummary = document.querySelector(
       ".summary-preview--hero .summary-preview__text"
     );
-    var heroTime = document.getElementById("hero-story-time");
-    var heroSource = document.getElementById("hero-story-source");
     var heroCarousel = document.getElementById("hero-carousel");
     var heroPrev = document.getElementById("hero-prev");
     var heroNext = document.getElementById("hero-next");
@@ -318,14 +316,12 @@
         ["#hero-image-caption", "image_caption"],
         ["#hero-story-kicker", "kicker"],
         ["#hero-story-title", "title"],
-        [".summary-preview--hero .summary-preview__text", "summary"],
-        ["#hero-story-time", "time"],
-        ["#hero-story-source", "source_meta"]
+        [".summary-preview--hero .summary-preview__text", "summary"]
       ].map(function (field) {
         return [probe.querySelector(field[0]), field[1]];
       });
       var selectors = ["#hero-image-caption", "#hero-story-kicker",
-        "#hero-story-title", ".summary-preview--hero", ".hero-meta"];
+        "#hero-story-title", ".summary-preview--hero"];
       var originalRows = selectors.map(function (selector) {
         return heroLink.querySelector(selector);
       });
@@ -386,8 +382,6 @@
       if (heroKicker) heroKicker.textContent = story.kicker || "";
       if (heroTitle) heroTitle.textContent = story.title || "";
       if (heroSummary) heroSummary.textContent = story.summary || "";
-      if (heroTime) heroTime.textContent = story.time || "";
-      if (heroSource) heroSource.textContent = story.source_meta || "";
     }
 
     function reflectHeroDots() {

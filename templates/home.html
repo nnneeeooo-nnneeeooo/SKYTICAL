@@ -65,14 +65,9 @@
         <div id="hero-image-caption" class="text-muted" style="font-size:10.5px;margin-top:4px;">{% if html_lang.startswith('zh') %}暫無可驗證的事件或資料照片，先顯示 SKYTICAL 預設圖片。{% else %}No verified event or file photo is available yet; showing the SKYTICAL default image.{% endif %}</div>
         {% endif %}
         <div style="margin-top:16px;">
-          <span id="hero-story-kicker" class="card-kicker" style="font-size:11px;">{% if hero.focus|default(false) %}{{ t.focusLabel }} · {% endif %}{{ hero.cat_label }}{% if hero.article_format == "brief" %} · {{ t.briefLabel }}{% elif hero.article_format == "roundup" %} · {{ t.roundupLabel }}{% elif hero.article_format == "announcement" %} · {{ t.announcementLabel }}{% endif %} — {{ t.topStory }}</span>
+          <span id="hero-story-kicker" class="card-kicker" style="font-size:11px;">{% if hero_candidates %}{{ hero_candidates[0].kicker }}{% else %}{{ hero.cat_label }}{% if html_lang.startswith('zh') %}-{{ t.topStory }}．{% else %} — {{ t.topStory }} · {% endif %}{{ hero.time }}{% endif %}</span>
           <h2 id="hero-story-title" class="hero-title" aria-live="polite">{{ hero.title }}</h2>
           {{ notification_summary(hero.display_summary, t.summaryLabel, 'hero') }}
-          <div class="hero-meta">
-            <span id="hero-story-time" style="font-weight:800;color:var(--color-accent);">{{ hero.time }}</span>
-            <span id="hero-story-source" class="text-muted">{{ t.mainSource }}: {{ hero.source }}</span>
-            <span style="margin-left:auto;font-weight:600;">{{ t.readMore }}</span>
-          </div>
         </div>
       </a>
       {% if hero_candidates|length > 1 %}

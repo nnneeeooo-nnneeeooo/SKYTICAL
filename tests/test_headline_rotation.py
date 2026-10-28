@@ -85,6 +85,7 @@ def test_rotation_payload_contains_localized_hero_fields():
         "cat_label": "營運",
         "article_format": "brief",
         "time": "6:00 PM",
+        "hero_date": "10/22",
         "source": "中央社 CNA 國籍航空",
         "focus": True,
         "image": {
@@ -97,14 +98,17 @@ def test_rotation_payload_contains_localized_hero_fields():
         },
     }
     payload = build.hero_rotation_view(view, "zh")
-    assert payload["kicker"] == "臺灣焦點 · 營運 · 短訊 — 頭條"
+    assert payload["kicker"] == "營運-頭條．10/22"
     assert payload["summary"] == "國籍航空調整航班。"
+    assert "source_meta" not in payload and "time" not in payload
     assert "China Airlines Boeing 777-300ER" in payload["image_caption"]
     assert build.HERO_ROTATION_SECONDS == 2.5
 
     view["focus"] = False
     global_payload = build.hero_rotation_view(view, "zh")
-    assert global_payload["kicker"] == "營運 · 短訊 — 頭條"
+    assert global_payload["kicker"] == "營運-頭條．10/22"
+    assert build.hero_rotation_view(view, "en")["kicker"] == (
+        "營運 — Top story · 10/22")
 
 
 def test_taiwan_focus_scores_direct_and_material_cathay_stories():
@@ -193,7 +197,7 @@ def test_editorial_pin_leads_even_when_older_than_automatic_focus():
     now = build.now_utc()
     global_story = _article(
         now, "737 MAX 10取得認證", "FAA核准波音新機型。",
-        source="FAA", age_hours=72)
+        source="FAA", age_hours=36)
     taiwan_story = _article(
         now, "長榮航空新增桃園航線", "航空公司公布新航線。")
     articles = [taiwan_story, global_story]
@@ -207,6 +211,37 @@ def test_editorial_pin_leads_even_when_older_than_automatic_focus():
         articles, now, limit=0, pinned_ids=pins) == []
     assert build.headline_carousel_articles(
         articles, now, limit=1, pinned_ids=["missing-id"]) == [taiwan_story]
+
+
+def test_stale_or_excess_editorial_pins_do_not_crowd_out_recent_news():
+    now = build.now_utc()
+    old_pins = [
+        _article(now, f"舊頭條{index}", "過期的置頂新聞。",
+                 source="FAA", age_hours=72 + index)
+        for index in range(5)
+    ]
+    current_pins = [
+        _article(now, f"當日頭條{index}", "仍在時效內的置頂新聞。",
+                 source="FAA", age_hours=30 + index)
+        for index in range(3)
+    ]
+    focus = _article(now, "長榮航空新增桃園航線", "新航線預計下月開航。",
+                     age_hours=2)
+    recent = [
+        _article(now, f"全球新訊{index}", "新發布的航空消息。",
+                 source="Reuters", age_hours=index + 1)
+        for index in range(6)
+    ]
+    articles = recent + [focus] + current_pins + old_pins
+    pins = [article["id"] for article in old_pins + current_pins]
+
+    selected = build.headline_carousel_articles(
+        articles, now, pinned_ids=pins)
+
+    assert selected == [current_pins[0], focus, *recent]
+    assert len(selected) == 8
+    assert build.headline_carousel_articles(
+        articles, now, limit=1, pinned_ids=[old_pins[0]["id"]]) == [focus]
 
 
 def test_flash_priority_is_distinct_from_legacy_pinned_flag():
@@ -235,6 +270,7 @@ def main() -> int:
         test_focus_selection_prefers_fresh_and_uses_safe_recent_fallback,
         test_carousel_leads_with_taiwan_then_prioritizes_global_news,
         test_editorial_pin_leads_even_when_older_than_automatic_focus,
+        test_stale_or_excess_editorial_pins_do_not_crowd_out_recent_news,
         test_flash_priority_is_distinct_from_legacy_pinned_flag,
     )
     for test in tests:

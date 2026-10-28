@@ -1598,6 +1598,9 @@ _HERO_PIN_MAX_AGE = timedelta(hours=16)
 _HERO_FOCUS_FRESH_AGE = timedelta(hours=24)
 _HERO_FOCUS_FALLBACK_AGE = timedelta(days=7)
 _HERO_FOCUS_LIMIT = 5
+_HERO_CAROUSEL_LIMIT = 8
+_HERO_EDITORIAL_PIN_MAX_AGE = timedelta(hours=48)
+_HERO_EDITORIAL_PIN_LIMIT = 1
 _HERO_WEATHER_RE = re.compile(
     r"(?:颱風|台風|熱帶(?:性)?(?:低氣壓|風暴)|豪大雨|豪雨|暴雨|大雨|"
     r"強降雨|雷雨|強風|暴風|寒流|寒害|大雪|降雪|冰雹|濃霧|大霧|"
@@ -1799,9 +1802,9 @@ def taiwan_focus_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
     return fallback[:1]
 
 
-def headline_carousel_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT,
+def headline_carousel_articles(articles, now=None, limit=_HERO_CAROUSEL_LIMIT,
                               pinned_ids=None):
-    """Lead with editorial pins, then Taiwan focus and global coverage."""
+    """Lead with one current editorial pin, then Taiwan and global news."""
     if limit <= 0:
         return []
     now = now or now_utc()
@@ -1816,10 +1819,23 @@ def headline_carousel_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT,
         if (not isinstance(article_id, str) or article_id not in by_id
                 or article_id in selected_ids):
             continue
-        selected.append(by_id[article_id])
+        article = by_id[article_id]
+        published = article.get("published_dt")
+        if published is None:
+            continue
+        try:
+            age = now - published
+        except TypeError:
+            continue
+        if not timedelta(0) <= age <= _HERO_EDITORIAL_PIN_MAX_AGE:
+            continue
+        selected.append(article)
         selected_ids.add(article_id)
-        if len(selected) >= limit:
-            return selected
+        if (len(selected) >= limit
+                or len(selected) >= _HERO_EDITORIAL_PIN_LIMIT):
+            break
+    if len(selected) >= limit:
+        return selected
     focus = taiwan_focus_articles(articles, now, limit=1)
     for article in focus:
         if article["id"] not in selected_ids:
@@ -1875,26 +1891,19 @@ def _hero_image_caption(image, lang: str) -> str:
 def hero_rotation_view(view, lang: str) -> dict:
     """Return the small JSON-safe payload used by the focus carousel."""
     image = view.get("image") if isinstance(view.get("image"), dict) else None
-    labels = [str(view.get("cat_label") or "")]
-    if view.get("article_format") == "brief":
-        labels.append(L[lang]["briefLabel"])
-    elif view.get("article_format") == "roundup":
-        labels.append(L[lang]["roundupLabel"])
-    elif view.get("article_format") == "announcement":
-        labels.append(L[lang]["announcementLabel"])
-    focus_prefix = f"{L[lang]['focusLabel']} · " if view.get("focus") else ""
+    category = str(view.get("cat_label") or "")
+    date = str(view.get("hero_date") or "")
+    headline_label = (
+        f"{category}-{L[lang]['topStory']}．{date}" if lang == "zh" else
+        f"{category} — {L[lang]['topStory']} · {date}"
+    )
     return {
         "id": view.get("id"),
         "url": view.get("url"),
         "external": bool(view.get("external")),
         "title": view.get("title") or "",
         "summary": view.get("display_summary") or "",
-        "kicker": f"{focus_prefix}"
-                  f"{' · '.join(label for label in labels if label)}"
-                  f" — {L[lang]['topStory']}",
-        "time": view.get("time") or "",
-        "source_meta": f"{L[lang]['mainSource']}: "
-                       f"{view.get('source') or '—'}",
+        "kicker": headline_label,
         "image": image,
         "image_alt": (
             str(image.get("subject") or "SKYTICAL")
@@ -4113,6 +4122,7 @@ def main() -> int:
         for article in headline_articles:
             view = art_view(article, lang)
             view["focus"] = article["id"] in focus_ids
+            view["hero_date"] = article["published_dt"].astimezone(TPE).strftime("%m/%d")
             headline_views.append(view)
         priority_ids = focus_ids
         hero_candidates = [hero_rotation_view(view, lang)
