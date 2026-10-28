@@ -3740,26 +3740,13 @@
         "https://www.aerotime.aero/articles/boeing-air-cargo-forecast-2045-freighter-demand"
       ],
       "contentFailures": 1,
-      "serviceFailures": 0,
+      "serviceFailures": 1,
       "history": [],
-      "updatedUtc": "2026-10-28T17:42Z",
-      "failureClass": "content_validation",
+      "updatedUtc": "2026-10-28T21:22Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-28T19:42Z",
+      "nextRetryUtc": "2026-10-28T23:22Z",
       "title": "Boeing sees demand for nearly 3,000 freighters as cargo traffic doubles by 2045"
-    },
-    "0c1c24c150e146e94d0e85c8": {
-      "sourceUrls": [
-        "https://aerospaceglobalnews.com/news/jet2-retires-worlds-oldest-boeing-737-800"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-28T17:42Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-28T19:42Z",
-      "title": "Jet2 retires world’s oldest Boeing 737-800 after 29 years"
     },
     "4d54cb49c80543aea665643f": {
       "sourceUrls": [
@@ -3773,21 +3760,6 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-28T19:42Z",
       "title": "Frontier Airlines Is Becoming America's Last True ULCC: Is The Model Still Working?"
-    },
-    "8158bec57bef6d46c714d803": {
-      "sourceUrls": [
-        "https://simpleflying.com/alaska-airlines-cancels-all-flights-to-3-destinations",
-        "https://simpleflying.com/jetblue-cancels-all-flights-to-4-international-destinations",
-        "https://simpleflying.com/westjet-cancels-all-flights-15-destinations"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-28T17:57Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-28T19:57Z",
-      "title": "JetBlue Cancels All Flights To 4 International Destinations: See Full List Now"
     },
     "fe4aa996d019a4eae0a5e758": {
       "sourceUrls": [
@@ -3892,6 +3864,55 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-28T20:15Z",
       "title": "Smell It Or Be Delayed: Pilot Holds Pre-Flight Vote After Dog Urinates On Plane"
+    },
+    "8158bec57bef6d46c714d803": {
+      "sourceUrls": [
+        "https://simpleflying.com/alaska-airlines-cancels-all-flights-to-3-destinations",
+        "https://simpleflying.com/jetblue-cancels-all-flights-to-4-international-destinations",
+        "https://simpleflying.com/sun-country-cancels-all-flights-to-25-destinations",
+        "https://simpleflying.com/westjet-cancels-all-flights-15-destinations"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 1,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-10-28T17:57Z"
+        }
+      ],
+      "updatedUtc": "2026-10-28T21:22Z",
+      "nextRetryUtc": "2026-10-28T23:22Z",
+      "failureClass": "content_validation",
+      "title": "JetBlue Cancels All Flights To 4 International Destinations: See Full List Now"
+    },
+    "7f9030b8e91ec5bf29d44e9a": {
+      "sourceUrls": [
+        "https://simpleflying.com/boeing-expects-cargo-traffic-to-double-as-emissions-regulations-cut-freighter-options"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-28T21:22Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-28T23:22Z",
+      "title": "Boeing Expects Cargo Traffic To Double As Emissions Regulations Cut Freighter Options"
+    },
+    "0288146a853169a960a16a17": {
+      "sourceUrls": [
+        "https://www.airbus.com/en/newsroom/stories/2026-10-airbus-a350f-freighter-the-livery-designed-by-the-public-now-in-flight"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-28T21:22Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-28T23:22Z",
+      "title": "Airbus A350F freighter: the livery designed by the public, now in flight"
     }
   }
 }
