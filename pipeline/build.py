@@ -1598,6 +1598,7 @@ _HERO_PIN_MAX_AGE = timedelta(hours=16)
 _HERO_FOCUS_FRESH_AGE = timedelta(hours=24)
 _HERO_FOCUS_FALLBACK_AGE = timedelta(days=7)
 _HERO_FOCUS_LIMIT = 5
+_HERO_CAROUSEL_LIMIT = 8
 _HERO_EDITORIAL_PIN_MAX_AGE = timedelta(hours=48)
 _HERO_EDITORIAL_PIN_LIMIT = 1
 _HERO_WEATHER_RE = re.compile(
@@ -1801,7 +1802,7 @@ def taiwan_focus_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
     return fallback[:1]
 
 
-def headline_carousel_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT,
+def headline_carousel_articles(articles, now=None, limit=_HERO_CAROUSEL_LIMIT,
                               pinned_ids=None):
     """Lead with one current editorial pin, then Taiwan and global news."""
     if limit <= 0:

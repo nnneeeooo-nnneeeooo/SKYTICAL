@@ -226,7 +226,7 @@ def test_stale_or_excess_editorial_pins_do_not_crowd_out_recent_news():
     recent = [
         _article(now, f"全球新訊{index}", "新發布的航空消息。",
                  source="Reuters", age_hours=index + 1)
-        for index in range(3)
+        for index in range(6)
     ]
     articles = recent + [focus] + current_pins + old_pins
     pins = [article["id"] for article in old_pins + current_pins]
@@ -235,6 +235,7 @@ def test_stale_or_excess_editorial_pins_do_not_crowd_out_recent_news():
         articles, now, pinned_ids=pins)
 
     assert selected == [current_pins[0], focus, *recent]
+    assert len(selected) == 8
     assert build.headline_carousel_articles(
         articles, now, limit=1, pinned_ids=[old_pins[0]["id"]]) == [focus]
 
