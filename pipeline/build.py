@@ -1598,6 +1598,8 @@ _HERO_PIN_MAX_AGE = timedelta(hours=16)
 _HERO_FOCUS_FRESH_AGE = timedelta(hours=24)
 _HERO_FOCUS_FALLBACK_AGE = timedelta(days=7)
 _HERO_FOCUS_LIMIT = 5
+_HERO_EDITORIAL_PIN_MAX_AGE = timedelta(hours=48)
+_HERO_EDITORIAL_PIN_LIMIT = 1
 _HERO_WEATHER_RE = re.compile(
     r"(?:颱風|台風|熱帶(?:性)?(?:低氣壓|風暴)|豪大雨|豪雨|暴雨|大雨|"
     r"強降雨|雷雨|強風|暴風|寒流|寒害|大雪|降雪|冰雹|濃霧|大霧|"
@@ -1801,7 +1803,7 @@ def taiwan_focus_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
 
 def headline_carousel_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT,
                               pinned_ids=None):
-    """Lead with editorial pins, then Taiwan focus and global coverage."""
+    """Lead with one current editorial pin, then Taiwan and global news."""
     if limit <= 0:
         return []
     now = now or now_utc()
@@ -1816,10 +1818,23 @@ def headline_carousel_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT,
         if (not isinstance(article_id, str) or article_id not in by_id
                 or article_id in selected_ids):
             continue
-        selected.append(by_id[article_id])
+        article = by_id[article_id]
+        published = article.get("published_dt")
+        if published is None:
+            continue
+        try:
+            age = now - published
+        except TypeError:
+            continue
+        if not timedelta(0) <= age <= _HERO_EDITORIAL_PIN_MAX_AGE:
+            continue
+        selected.append(article)
         selected_ids.add(article_id)
-        if len(selected) >= limit:
-            return selected
+        if (len(selected) >= limit
+                or len(selected) >= _HERO_EDITORIAL_PIN_LIMIT):
+            break
+    if len(selected) >= limit:
+        return selected
     focus = taiwan_focus_articles(articles, now, limit=1)
     for article in focus:
         if article["id"] not in selected_ids:
