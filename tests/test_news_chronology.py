@@ -73,7 +73,7 @@ def test_wsi_opening_article_public_and_searchable():
     assert "10月25日" in canonical["zh"]["title"]
     assert "1,000萬" in canonical["zh"]["summary"]
     assert "8,000萬" in canonical["zh"]["summary"]
-    assert "7月26日" in " ".join(canonical["zh"]["body"])
+    assert "7月下旬" in " ".join(canonical["zh"]["body"])
     prepared = build.prep_article(canonical)
     assert prepared is not None
     assert build.prep_article(duplicate) is None
