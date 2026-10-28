@@ -3,8 +3,8 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "verified",
-      "untilUtc": "2026-10-28T07:10Z",
-      "checkedUtc": "2026-10-27T07:10Z",
+      "untilUtc": "2026-10-29T09:01Z",
+      "checkedUtc": "2026-10-28T09:01Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
@@ -12,26 +12,26 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-28T05:15Z",
-      "checkedUtc": "2026-10-27T23:15Z",
+      "untilUtc": "2026-10-28T15:01Z",
+      "checkedUtc": "2026-10-28T09:01Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-28T05:15Z",
-      "checkedUtc": "2026-10-27T23:15Z",
-      "failureClass": "invalid_request",
-      "diagnostic": "HTTP 400 code=invalid_request_error",
+      "untilUtc": "2026-10-28T15:01Z",
+      "checkedUtc": "2026-10-28T09:01Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "verified",
-      "untilUtc": "2026-10-28T07:10Z",
-      "checkedUtc": "2026-10-27T07:10Z",
+      "untilUtc": "2026-10-29T09:01Z",
+      "checkedUtc": "2026-10-28T09:01Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-10-28T07:10Z",
-      "checkedUtc": "2026-10-27T07:10Z",
+      "checkedUtc": "2026-10-28T09:01Z",
+      "untilUtc": "2026-10-29T09:01Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -57,8 +57,8 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-10-28T02:37Z",
-      "untilUtc": "2026-10-28T08:37Z",
+      "untilUtc": "2026-10-28T15:01Z",
+      "checkedUtc": "2026-10-28T09:01Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
