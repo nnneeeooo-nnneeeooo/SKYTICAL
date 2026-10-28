@@ -94,6 +94,7 @@ jobs:
           python tests/test_news_retry.py
           python tests/test_editorial_policy.py
           python tests/test_news_chronology.py
+          python pipeline/scheduled_news.py
 
   update:
     if: github.event_name != 'pull_request'

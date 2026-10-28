@@ -77,6 +77,8 @@ def test_wsi_opening_article_public_and_searchable():
     prepared = build.prep_article(canonical)
     assert prepared is not None
     assert build.prep_article(duplicate) is None
+    source_urls = {source["url"] for source in canonical["sources"]}
+    assert all(fact["sourceUrl"] in source_urls for fact in canonical["scheduledNews"]["facts"])
     record = build.search_index_item(prepared, [])
     assert record["id"] == canonical["id"]
     assert "WSI" in record["title"]["zh"]
