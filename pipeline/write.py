@@ -8,8 +8,9 @@ provider is the primary writer and the rest are fallbacks. A provider that
 hits an auth/quota error or repeated transport outage is disabled for the rest
 of the run and the next one takes over.
 
-Each draft carries an editorial status: "publish" and "publish_brief" go
-straight to the site and "reject" is dropped.  The former manual-review
+Each draft carries an editorial status: "publish" and "publish_brief" clear
+the evidence gate, then routine industry updates enter a daily roundup queue
+while standalone stories go to the site; "reject" is dropped. The former manual-review
 queue is retired: legacy rows are re-verified once, published only when they
 clear the same deterministic source gates, then preserved in an audit archive.
 Every draft's facts carry verbatim source quotes that are re-checked in code
@@ -18,7 +19,7 @@ discarded.
 
 New outputs are appended/prepended to data/articles/<hour>.json,
 data/flashes.json and data/incidents.json; data/seen.json is updated only for
-groups that were actually published or editorially rejected, so failed groups
+groups that were published, queued for a roundup or editorially rejected, so failed groups
 stay "unseen" and are re-emitted by dedupe.py next run. data/stats.json is
 always rewritten. When a later source joins a previously published event,
 the existing article is revised in place with the same stable article ID.
@@ -39,7 +40,9 @@ from pathlib import Path
 
 from opencc import OpenCC
 import news_retry
-from editorial_policy import eligible_providers, is_free_provider, news_policy
+from editorial_policy import (eligible_providers, is_free_provider,
+                              news_policy, publication_route)
+import industry_roundup
 from draft_recovery import (
     normalize_reader_copy, normalize_fact_ids, repair_prompt, draft_timeout, ProviderCallTimeout,
 )
@@ -984,10 +987,15 @@ def group_prompt(group: dict) -> str:
         f"Story group {group.get('id', '?')} | primary source: "
         f"{group.get('primarySource', '?')}",
     ]
-    if news_policy(group).reason not in {"ordinary_news", "taiwan_relevance",
-                                         "safety_or_major_operational_event"}:
+    route = publication_route(group)
+    if (route.route == "industry_roundup"
+            or news_policy(group).reason not in {
+                "ordinary_news", "taiwan_relevance",
+                "safety_or_major_operational_event"}):
         lines.append(
-            "Prefer a concise publish_brief for this routine update. Include "
+            ("This routine update is intended for a multi-event industry "
+             "roundup. " if route.route == "industry_roundup" else "")
+            + "Prefer a concise publish_brief. Include "
             "only distinct verified facts; never repeat a headline/summary or "
             "describe what the source headline says to reach a length target. "
             "If evidence cannot support the brief publication floor, reject "
@@ -2955,6 +2963,8 @@ def main() -> None:
     new_articles, updated_articles = [], []
     new_flashes, new_incidents = [], []
     published_groups, published_ids = [], set()
+    roundup_groups, roundup_ids = [], set()
+    roundup_state = industry_roundup.load_state()
     rejected_groups, rejected_ids = [], set()
     duplicate_groups, duplicate_ids = [], set()
     dead_auth: set = set()
@@ -3140,6 +3150,14 @@ def main() -> None:
         # Existing articles stay on the established revision/protection path.
         model_groups = []
         for group in groups:
+            if industry_roundup.has_group(roundup_state, group):
+                print(f"write: source already held for industry roundup; "
+                      f"consuming duplicate group {group.get('id')}")
+                duplicate_groups.append(group)
+                duplicate_ids.add(group.get("id"))
+                run_traces[id(group)].finish(
+                    "already_queued", "duplicate_roundup_queue")
+                continue
             existing = _match_existing_article(group, existing_articles)
             if existing and _already_published_without_new_coverage(group, existing):
                 print(f"write: source already published as "
@@ -3383,6 +3401,25 @@ def main() -> None:
                 print(f"write: revised existing article {article['id']} "
                       "with later same-event source coverage")
             else:
+                route = publication_route(group)
+                if route.route == "industry_roundup" and article.get("cat") != "feature":
+                    if industry_roundup.add(
+                            roundup_state, article, now, reason=route.reason,
+                            group_id=str(group.get("id") or ""),
+                            event_key=str(group.get("eventKey") or "")):
+                        roundup_groups.append(group)
+                        roundup_ids.add(group.get("id"))
+                        run_trace.finish(
+                            "queued_for_roundup", route.reason,
+                            writer.label)
+                        print(f"write: verified group {group.get('id')} "
+                              f"held for industry roundup ({route.reason})")
+                    else:
+                        duplicate_groups.append(group)
+                        duplicate_ids.add(group.get("id"))
+                        run_trace.finish(
+                            "already_queued", "duplicate_roundup_queue")
+                    continue
                 new_articles.append(article)
             new_flashes.append(build_flash(draft, article["id"], now))
             incident = build_incident(draft, group, article["id"])
@@ -3411,6 +3448,23 @@ def main() -> None:
                 "flightwatch", "flight_event", group,
                 event.get("eventId")).finish("no_provider", "retry_pending")
 
+    # Compile only verified, distinct routine events once per Taipei day.
+    # Existing published sources (including delayed scheduled imports) win.
+    published_now = [row["article"] for row in _load_existing_articles()]
+    published_now.extend(new_articles)
+    roundup_article = industry_roundup.compile_due(
+        roundup_state, now, published_now)
+    industry_roundup.save_state(roundup_state)
+    if roundup_article:
+        new_articles.append(roundup_article)
+        new_flashes.append({
+            "timeUtc": iso_minute(now), "hot": False, "pinned": False,
+            "zh": roundup_article["zh"]["title"],
+            "en": roundup_article["en"]["title"],
+            "articleId": roundup_article["id"],
+        })
+        print(f"write: compiled industry roundup {roundup_article['id']}")
+
     # --- 3. flush outputs -------------------------------------------------
     if updated_articles:
         _write_article_updates(updated_articles)
@@ -3419,12 +3473,14 @@ def main() -> None:
     if new_articles or updated_articles:
         _prepend_capped(FLASHES_PATH, new_flashes, MAX_FLASHES)
         _prepend_capped(INCIDENTS_PATH, new_incidents, MAX_INCIDENTS)
-    if published_groups or rejected_groups or duplicate_groups:
+    if published_groups or roundup_groups or rejected_groups or duplicate_groups:
         # Editorially rejected groups count as consumed too so they do not
         # re-emit from dedupe and burn another API call next hour.
-        update_seen(published_groups + rejected_groups + duplicate_groups, now)
-    consumed = published_ids | rejected_ids | duplicate_ids
-    for group in published_groups + rejected_groups + duplicate_groups:
+        update_seen(published_groups + roundup_groups + rejected_groups
+                    + duplicate_groups, now)
+    consumed = published_ids | roundup_ids | rejected_ids | duplicate_ids
+    for group in (published_groups + roundup_groups + rejected_groups
+                  + duplicate_groups):
         retry_ledger.complete(group)
     # Exhausted stories remain only in the failure register. They are not
     # marked seen: a genuinely new source can reopen them at discovery.
@@ -3442,6 +3498,7 @@ def main() -> None:
         "status": "stalled" if stalled else "ok" if (ai_calls or new_articles or updated_articles) else "idle",
         "updatedUtc": iso_minute(now),
         "published": len(new_articles), "revised": len(updated_articles),
+        "roundupQueued": len(roundup_groups),
         "rulePublished": sum(a.get("writer") == ANNOUNCEMENT_WRITER for a in new_articles),
         "pending": remaining_count,
         "retryExhausted": sum(row.get("status") == "exhausted"

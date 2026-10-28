@@ -1,6 +1,19 @@
 # SKYTICAL Open-source Scouting
 
-更新日期：2026-10-25
+更新日期：2026-10-28
+
+## 例行新聞分流與每日彙整（2026-10-28）
+
+先比較仍在更新的開源新聞分群專案；最近推送與使用規模取自 GitHub repository metadata，僅借鑑設計，未複製程式碼。
+
+| 專案 | 最近推送／Stars | 語言／授權 | 架構與導入判斷 |
+| --- | --- | --- | --- |
+| [NewsPrism](https://github.com/moguiyu/NewsPrism) | 2026-10-27／18 | Python／MIT | 以模型按事件分群，形成跨來源摘要；需要額外模型呼叫與分群狀態。SKYTICAL 已有來源分組與證據核對，先不導入。 |
+| [ContextNews news-pipeline](https://github.com/ContextNews/news-pipeline) | 2026-09-20／0 | Python／NOASSERTION | 含嵌入向量、實體辨識與 HDBSCAN 分群；依賴與維護成本高，且授權不明，不複製。 |
+| [Jadro](https://github.com/MatejGadjo/jadro) | 2026-10-26／1 | Go／MIT | 用向量資料庫分群、依來源多樣性與時效排序；須引入資料庫與新執行環境，與靜態站不合。 |
+| [WorldPulse](https://github.com/World-Pulse/WorldPulse) | 2026-10-28／4 | TypeScript／MIT | 同事件合併與跨來源計數可作設計參考；完整即時平台超出目前的定時新聞流程。 |
+
+本次沿用既有 Python 分組、逐字引文核驗與 `roundup` 呈現契約，以保守規則分流、持久佇列和每日彙整完成需求。沒有值得在此需求中另建 issue／PR 引入的套件。
 
 
 ## 規則式官方公告短訊（2026-10-25）
