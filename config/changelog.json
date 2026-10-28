@@ -2,8 +2,43 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-10-26",
+  "updatedThrough": "2026-10-28",
   "entries": [
+    {
+      "date": "2026-10-28",
+      "kind": "fix",
+      "commit": "1b055b72d11b691df28fa991d9c5c91fc8cf0171",
+      "zh": "修正首頁過期置頂文章擠滿頭條的問題，將輪播擴增為八則，最多保留一則發布未滿48小時的置頂內容，並精簡卡片資訊。",
+      "en": "Fixed stale pinned stories crowding out recent headlines, expanded the carousel to eight stories, limited pinned items to one published within 48 hours, and simplified card details."
+    },
+    {
+      "date": "2026-10-27",
+      "kind": "system",
+      "commit": "820dd9df4bef609ee6df249c8eb733ba101fe4d2",
+      "zh": "精簡公開提交紀錄，只保留雙語摘要、日期與變更統計，避免顯示非必要的作者與設定欄位。",
+      "en": "Simplified public commit records to retain bilingual summaries, dates and change statistics without displaying nonessential author or configuration fields."
+    },
+    {
+      "date": "2026-10-27",
+      "kind": "design",
+      "commit": "1845d973244de1de2b59a89fad30efcb007f2451",
+      "zh": "手機版頁首整合品牌標誌、搜尋與社群連結，並固定顯示六項主要導覽；平板選單與桌面導覽維持既有操作方式。",
+      "en": "Combined the brand logo, search and social links in a compact mobile header, with six primary links always visible while retaining tablet-menu and desktop navigation behavior."
+    },
+    {
+      "date": "2026-10-27",
+      "kind": "fix",
+      "commit": "664f41408c35309f459d6ff8fa5fb5cd5378a3aa",
+      "zh": "修正 Mac Safari 團隊頁翼標周圍出現黑底的問題，以透明圖像呈現並保留原有色彩與互動動畫。",
+      "en": "Fixed the black background around the team-page wing mark in Mac Safari by baking in transparency while preserving its colors and animation."
+    },
+    {
+      "date": "2026-10-27",
+      "kind": "design",
+      "commit": "9d898aaa48f316ce77944a9a68987e45e0e5167b",
+      "zh": "改善手機首頁瀏覽：新聞列表加入文章縮圖與圖片署名，手機版隱藏來源狀態區塊，並提供雙列分類篩選及可滑動的頭條輪播。",
+      "en": "Improved mobile homepage browsing with article thumbnails and image credits, a hidden mobile source-status block, a two-row category filter and swipeable headlines."
+    },
     {
       "date": "2026-10-26",
       "kind": "fix",
