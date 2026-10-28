@@ -85,6 +85,7 @@ def test_rotation_payload_contains_localized_hero_fields():
         "cat_label": "營運",
         "article_format": "brief",
         "time": "6:00 PM",
+        "hero_date": "10/22",
         "source": "中央社 CNA 國籍航空",
         "focus": True,
         "image": {
@@ -97,14 +98,17 @@ def test_rotation_payload_contains_localized_hero_fields():
         },
     }
     payload = build.hero_rotation_view(view, "zh")
-    assert payload["kicker"] == "臺灣焦點 · 營運 · 短訊 — 頭條"
+    assert payload["kicker"] == "營運-頭條．10/22"
     assert payload["summary"] == "國籍航空調整航班。"
+    assert "source_meta" not in payload and "time" not in payload
     assert "China Airlines Boeing 777-300ER" in payload["image_caption"]
     assert build.HERO_ROTATION_SECONDS == 2.5
 
     view["focus"] = False
     global_payload = build.hero_rotation_view(view, "zh")
-    assert global_payload["kicker"] == "營運 · 短訊 — 頭條"
+    assert global_payload["kicker"] == "營運-頭條．10/22"
+    assert build.hero_rotation_view(view, "en")["kicker"] == (
+        "營運 — Top story · 10/22")
 
 
 def test_taiwan_focus_scores_direct_and_material_cathay_stories():

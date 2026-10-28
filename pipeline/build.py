@@ -1891,26 +1891,19 @@ def _hero_image_caption(image, lang: str) -> str:
 def hero_rotation_view(view, lang: str) -> dict:
     """Return the small JSON-safe payload used by the focus carousel."""
     image = view.get("image") if isinstance(view.get("image"), dict) else None
-    labels = [str(view.get("cat_label") or "")]
-    if view.get("article_format") == "brief":
-        labels.append(L[lang]["briefLabel"])
-    elif view.get("article_format") == "roundup":
-        labels.append(L[lang]["roundupLabel"])
-    elif view.get("article_format") == "announcement":
-        labels.append(L[lang]["announcementLabel"])
-    focus_prefix = f"{L[lang]['focusLabel']} · " if view.get("focus") else ""
+    category = str(view.get("cat_label") or "")
+    date = str(view.get("hero_date") or "")
+    headline_label = (
+        f"{category}-{L[lang]['topStory']}．{date}" if lang == "zh" else
+        f"{category} — {L[lang]['topStory']} · {date}"
+    )
     return {
         "id": view.get("id"),
         "url": view.get("url"),
         "external": bool(view.get("external")),
         "title": view.get("title") or "",
         "summary": view.get("display_summary") or "",
-        "kicker": f"{focus_prefix}"
-                  f"{' · '.join(label for label in labels if label)}"
-                  f" — {L[lang]['topStory']}",
-        "time": view.get("time") or "",
-        "source_meta": f"{L[lang]['mainSource']}: "
-                       f"{view.get('source') or '—'}",
+        "kicker": headline_label,
         "image": image,
         "image_alt": (
             str(image.get("subject") or "SKYTICAL")
@@ -4129,6 +4122,7 @@ def main() -> int:
         for article in headline_articles:
             view = art_view(article, lang)
             view["focus"] = article["id"] in focus_ids
+            view["hero_date"] = article["published_dt"].astimezone(TPE).strftime("%m/%d")
             headline_views.append(view)
         priority_ids = focus_ids
         hero_candidates = [hero_rotation_view(view, lang)

@@ -370,7 +370,7 @@ a.flash-row:hover .flash-text { color: var(--color-accent); }
   pointer-events: none; transform: none; transition: none;
 }
 #hero-story-kicker, .hero-layout-probe .card-kicker { display: block; }
-#hero-image-caption, #hero-story-source,
+#hero-image-caption,
 .hero-layout-probe .text-muted { overflow-wrap: anywhere; }
 .hero-story.hero-exit-left { transform: translateX(-6%); opacity: 0; }
 .hero-story.hero-exit-right { transform: translateX(6%); opacity: 0; }
@@ -434,7 +434,6 @@ html[lang^="zh"] .feed-category {
   font-size: 11px; white-space: nowrap;
 }
 .hero-title { margin: 8px 0 10px; font-size: 34px; line-height: 1.15; }
-.hero-meta { display: flex; gap: 16px; align-items: baseline; margin-top: 10px; font-size: 12px; }
 
 /* Apple-style glanceable summary: borderless and aligned with its headline.
    The private iOS glyph is represented by an original SVG. */
@@ -1019,8 +1018,6 @@ html[lang="en"] .search-help-term:not(:last-child) { margin-right: .3em; }
   .rail-left { order: 2; padding: 18px 12px; border-top: 2px solid var(--color-divider); border-bottom: 0; }
   .rail-right { order: 3; padding: 18px 12px; }
   .hero-title { font-size: 27px; line-height: 1.2; }
-  .hero-meta { flex-wrap: wrap; gap: 7px 12px; }
-  .hero-meta > :last-child { margin-left: 0 !important; }
   .feed-row {
     grid-template-columns: auto minmax(0, 1fr);
     grid-template-areas:

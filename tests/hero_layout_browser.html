@@ -35,7 +35,7 @@
       const idle = () => !/hero-(?:exit|enter)-/.test(link.className);
       await waitFor(idle);
       const selectors = ['#hero-carousel', '#hero-story-image', '#hero-image-caption',
-        '#hero-story-kicker', '#hero-story-title', '.summary-preview--hero', '.hero-meta'];
+        '#hero-story-kicker', '#hero-story-title', '.summary-preview--hero'];
       // Revisit desktop after mobile to catch stale reservations on resize.
       for (const width of [1280, 1440, 1024, 390, 1280]) {
         frame.width = width;
