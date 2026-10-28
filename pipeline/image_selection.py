@@ -51,7 +51,8 @@ def image_key(image):
 
 def manual_image(article, image):
     return (str(article.get("writer") or "").split(":")[0] == "manual"
-            or isinstance(image, dict) and image.get("provider") == "manual")
+            or isinstance(image, dict) and (image.get("provider") == "manual"
+                                            or image.get("curated") is True))
 
 
 def prepare_image(article, image, captions=None):
