@@ -26,6 +26,13 @@ def photo(filename, **extra):
 
 
 class ImageSelectionTests(unittest.TestCase):
+    def test_editorially_curated_photos_are_preserved_with_source_provider(self):
+        story = article("Gulfstream G400 cabin flight test")
+        picture = photo("N400G_Gulfstream_G400_prototype", curated=True)
+        self.assertTrue(policy.manual_image(story, picture))
+        self.assertFalse(policy.manual_image(story, photo("Gulfstream_G400")))
+        self.assertTrue(policy.manual_image(story, {"provider": "manual"}))
+
     def test_visual_profiles_are_auditable_and_not_a_single_airline_exception(self):
         profiles = images._visual_profile_rows
         self.assertGreaterEqual(len(profiles), 15)
