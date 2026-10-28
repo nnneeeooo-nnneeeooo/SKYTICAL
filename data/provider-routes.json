@@ -12,8 +12,8 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-28T15:01Z",
-      "checkedUtc": "2026-10-28T09:01Z",
+      "untilUtc": "2026-10-28T22:19Z",
+      "checkedUtc": "2026-10-28T16:19Z",
       "failureClass": "unexpected",
       "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 3,
@@ -21,8 +21,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-28T15:01Z",
-      "checkedUtc": "2026-10-28T09:01Z",
+      "checkedUtc": "2026-10-28T16:19Z",
+      "untilUtc": "2026-10-28T22:19Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-10-28T09:01Z",
       "untilUtc": "2026-10-29T09:01Z",
+      "checkedUtc": "2026-10-28T09:01Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -57,8 +57,8 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-28T15:01Z",
-      "checkedUtc": "2026-10-28T09:01Z",
+      "untilUtc": "2026-10-28T22:19Z",
+      "checkedUtc": "2026-10-28T16:19Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,

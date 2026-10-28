@@ -3,13 +3,18 @@
   "platforms": {
     "groq": {
       "failureClass": "quota",
-      "cooldownUntilUtc": "2026-10-28T15:01Z",
-      "updatedUtc": "2026-10-28T09:01Z"
+      "cooldownUntilUtc": "2026-10-28T22:19Z",
+      "updatedUtc": "2026-10-28T16:19Z"
+    },
+    "nvidia": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-28T17:33Z",
+      "updatedUtc": "2026-10-28T16:33Z"
     },
     "gemini": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-28T10:31Z",
-      "updatedUtc": "2026-10-28T09:31Z"
+      "cooldownUntilUtc": "2026-10-28T17:33Z",
+      "updatedUtc": "2026-10-28T16:33Z"
     }
   }
 }
