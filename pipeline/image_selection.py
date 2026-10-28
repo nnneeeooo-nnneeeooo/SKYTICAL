@@ -51,7 +51,8 @@ def image_key(image):
 
 def manual_image(article, image):
     return (str(article.get("writer") or "").split(":")[0] == "manual"
-            or isinstance(image, dict) and image.get("provider") == "manual")
+            or isinstance(image, dict) and (image.get("provider") == "manual"
+                                            or image.get("curated") is True))
 
 
 def prepare_image(article, image, captions=None):
@@ -143,7 +144,10 @@ def rejection_reason(article, raw, captions=None):
                               article_is_drone_story, article_is_incident,
                               BAD_AIRLINE_INTERIOR_RE)
     import images
-    if article.get("articleFormat") == "roundup":
+    if article.get("articleFormat") == "roundup" and not (
+            isinstance(raw, dict) and raw.get("curated") is True
+            and raw.get("kind") == "source_image"
+            and raw.get("description")):
         return "roundup"
     if manual_image(article, raw):
         return None

@@ -744,8 +744,11 @@ wrong_south_bend_image = {
 }
 check("scheduled aircraft entity identifies the CRJ-700",
       images.find_aircraft_type(south_bend) == "Bombardier CRJ-700")
-check("South Bend article no longer carries the wrong A321neo photo",
-      "image" not in south_bend)
+check("South Bend article uses a curated CRJ-700 rather than the wrong A321neo",
+      isinstance(south_bend.get("image"), dict)
+      and "CRJ-70" in south_bend["image"].get("subject", "")
+      and "A321neo" not in south_bend["image"].get("url", "")
+      and images.existing_image_matches(south_bend, south_bend["image"]))
 check("cached A321neo photo cannot be reused for the CRJ-700 article",
       not images.existing_image_matches(south_bend, wrong_south_bend_image))
 check("documented CRJ-700 photo remains eligible",
@@ -786,8 +789,10 @@ air_canada_e190 = {
 }
 check("scheduled operator names its primary airline",
       images.find_airline(africa_world) == "Africa World Airlines")
-check("Africa World article drops the Air Canada E190 photo",
-      "image" not in africa_world
+check("Africa World article uses its own operator photo, not Air Canada E190",
+      isinstance(africa_world.get("image"), dict)
+      and "9GAFQ" in africa_world["image"].get("url", "")
+      and "Air_Canada" not in africa_world["image"].get("url", "")
       and not images.existing_image_matches(africa_world, air_canada_e190))
 check("Africa World E190 photo remains eligible",
       images.existing_image_matches(
