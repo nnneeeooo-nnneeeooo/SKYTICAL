@@ -13,13 +13,23 @@ from urllib.parse import urlsplit
 import requests
 from bs4 import BeautifulSoup
 
-from common import DATA_DIR, load_json, save_json, now_utc, parse_iso, iso_minute, norm_url
+from common import DATA_DIR, SOURCES, load_json, save_json, now_utc, parse_iso, iso_minute, norm_url
 import fulltext
 import grounded
 
 STATE_PATH = DATA_DIR / 'news-search.json'
 MAX_PAGES = 8
 INTERVAL = timedelta(hours=6)
+
+
+def _source_identity(url):
+    host = urlsplit(url).hostname
+    for key, spec in SOURCES.items():
+        for field in ('url', 'endpoint'):
+            registered = urlsplit(str(spec.get(field) or '')).hostname
+            if registered and registered.removeprefix('www.') == host.removeprefix('www.'):
+                return key, spec.get('name') or host
+    return 'search_' + host.replace('.', '_'), host
 
 
 def _allowed(url):
@@ -86,9 +96,9 @@ def fetch_candidate(url, now):
     title = title.get_text(' ', strip=True)[:300]
     if not title:
         return None
-    host = urlsplit(url).hostname
+    source_key, source_name = _source_identity(url)
     return {'title': title, 'url': url, 'publishedUtc': iso_minute(date),
-            'source': host, 'sourceKey': 'search_' + host.replace('.', '_'),
+            'source': source_name, 'sourceKey': source_key,
             'summary': '', 'fulltext': text, 'discoveredBy': 'openai:gpt-6+search'}
 
 
@@ -106,7 +116,8 @@ def cached_items(now=None, path=None):
         except (ValueError, TypeError, KeyError):
             valid = False
         if valid:
-            items.append(item)
+            source_key, source_name = _source_identity(item['url'])
+            items.append({**item, 'sourceKey': source_key, 'source': source_name})
     return items[:MAX_PAGES]
 
 

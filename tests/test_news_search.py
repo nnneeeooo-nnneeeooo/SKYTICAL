@@ -25,6 +25,7 @@ def main():
         item = n.fetch_candidate(url, now)
         assert item['summary'] == '' and text.strip() in item['fulltext']
         assert item['title'] == 'Original aircraft testing headline'
+        assert item['sourceKey'] == 'airbus' and item['source'] == 'Airbus'
         assert item['publishedUtc'] == '2026-10-29T10:00Z'
         assert get.call_args.kwargs['allow_redirects'] is False
         for blocked in ['https://evil.example/story','http://www.airbus.com/x','https://www.airbus.com@evil.example/x','https://www.airbus.com:444/x']:
