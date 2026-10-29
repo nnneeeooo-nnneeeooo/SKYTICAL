@@ -3739,13 +3739,13 @@
         "https://boeing.mediaroom.com/2026-10-28-Boeing-Global-Freighter-Fleet-to-Exceed-4,000-Airplanes-as-Air-Cargo-Traffic-Doubles-by-2045",
         "https://www.aerotime.aero/articles/boeing-air-cargo-forecast-2045-freighter-demand"
       ],
-      "contentFailures": 1,
+      "contentFailures": 2,
       "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-10-29T12:45Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-10-29T19:55Z",
+      "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-29T18:45Z",
+      "nextRetryUtc": "2026-10-30T01:55Z",
       "title": "Boeing sees demand for nearly 3,000 freighters as cargo traffic doubles by 2045"
     },
     "4d54cb49c80543aea665643f": {
@@ -3901,19 +3901,6 @@
       "nextRetryUtc": "2026-10-29T14:45Z",
       "title": "WestJet Boeing 737 MAX 8 Damaged After Colliding With Catering Truck In Toronto"
     },
-    "4fe3f1a6cab8f35eed1a3c2d": {
-      "sourceUrls": [
-        "https://www.aerotime.aero/articles/alaska-airlines-announces-boeing-737-max-8-route-linking-anchorage-to-tokyo"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-10-29T01:17Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-29T03:17Z",
-      "title": "Alaska Airlines announces Boeing 737 MAX 8 route linking Anchorage to Tokyo"
-    },
     "917440ffd3cba07797099272": {
       "sourceUrls": [
         "https://www.cna.com.tw/news/aipl/202610290113.aspx"
@@ -3926,19 +3913,6 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-29T09:42Z",
       "title": "巴基斯坦一度對台關閉領空 行政院：遺憾空域政治化"
-    },
-    "3a59eed24691e11efe2e1cb3": {
-      "sourceUrls": [
-        "https://www.cna.com.tw/news/ahel/202610290299.aspx"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-29T12:45Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-29T14:45Z",
-      "title": "曼谷機場跑道受損 華航飛高雄遇宵禁改隔日出發"
     },
     "3d2d1f141b702a5c3ff650f3": {
       "sourceUrls": [
@@ -4004,6 +3978,55 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-29T16:42Z",
       "title": "airBaltic to cut around 100 pilots and 200 cabin staff in latest savings drive"
+    },
+    "4fe3f1a6cab8f35eed1a3c2d": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/alaska-airlines-nonstop-boeing-737-anchorage-tokyo-flight",
+        "https://simpleflying.com/alaska-airlines-4-new-8-hour-737-max-routes",
+        "https://www.aerotime.aero/articles/alaska-airlines-announces-boeing-737-max-8-route-linking-anchorage-to-tokyo"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-10-29T01:17Z"
+        }
+      ],
+      "updatedUtc": "2026-10-29T19:55Z",
+      "nextRetryUtc": "2026-10-29T21:55Z",
+      "failureClass": "content_validation",
+      "title": "Alaska Airlines announces Boeing 737 MAX 8 route linking Anchorage to Tokyo"
+    },
+    "d78028d4dce334ddd7545f52": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/ethiopia-su-35-fighters-delivery-s-400",
+        "https://www.aerotime.aero/articles/ethiopia-receives-first-russian-su-35-fighters-plans-s-400-air-defense-purchase"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-29T19:55Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-29T21:55Z",
+      "title": "Ethiopia receives first Russian Su-35 fighters, plans S-400 air defense purchase"
+    },
+    "781e1755cb366e46127550d8": {
+      "sourceUrls": [
+        "https://simpleflying.com/american-airlines-cancels-8-long-haul-nonstop-boeing-787-routes"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-29T19:55Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-29T21:55Z",
+      "title": "American Airlines Cancels 8 Long-Haul Nonstop Boeing 787 Routes: See Map Now"
     }
   }
 }

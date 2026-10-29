@@ -3,10 +3,10 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-10-29T18:45Z",
-      "checkedUtc": "2026-10-29T12:45Z",
-      "failureClass": "timeout",
-      "diagnostic": "ReadTimeout",
+      "untilUtc": "2026-10-30T01:55Z",
+      "checkedUtc": "2026-10-29T19:55Z",
+      "failureClass": "unexpected",
+      "diagnostic": "F1 claim date is not supported by its sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -21,19 +21,19 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-10-29T14:42Z",
       "untilUtc": "2026-10-29T20:42Z",
+      "checkedUtc": "2026-10-29T14:42Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
-      "status": "waiting",
-      "untilUtc": "2026-10-29T18:45Z",
-      "checkedUtc": "2026-10-29T12:45Z",
-      "failureClass": "unexpected",
-      "diagnostic": "publish_brief body does not meet brief contract (zh=202 content characters, en=63 words, paragraphs=3/3)",
+      "status": "verified",
+      "checkedUtc": "2026-10-29T19:55Z",
+      "untilUtc": "2026-10-30T19:55Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
