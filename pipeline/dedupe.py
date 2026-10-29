@@ -208,6 +208,9 @@ def _load_raw_items() -> list[dict]:
                 item = dict(raw)
                 item["_recoveryUntilUtc"] = iso_minute(until)
                 items.append(item)
+    # Search contributes fetched source text only; model summaries are excluded.
+    import news_search
+    items.extend(news_search.cached_items(path=DATA_DIR / 'news-search.json'))
     return items
 
 
