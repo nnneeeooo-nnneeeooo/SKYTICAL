@@ -1,15 +1,20 @@
 {
   "schemaVersion": 1,
   "platforms": {
-    "gemini": {
-      "failureClass": "quota",
-      "cooldownUntilUtc": "2026-10-29T07:17Z",
-      "updatedUtc": "2026-10-29T01:17Z"
-    },
     "groq": {
       "failureClass": "quota",
-      "cooldownUntilUtc": "2026-10-29T07:17Z",
-      "updatedUtc": "2026-10-29T01:17Z"
+      "cooldownUntilUtc": "2026-10-29T13:42Z",
+      "updatedUtc": "2026-10-29T07:42Z"
+    },
+    "wechat": {
+      "failureClass": "quota",
+      "cooldownUntilUtc": "2026-10-29T13:48Z",
+      "updatedUtc": "2026-10-29T07:48Z"
+    },
+    "gemini": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-29T08:56Z",
+      "updatedUtc": "2026-10-29T07:56Z"
     }
   }
 }
