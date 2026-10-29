@@ -33,6 +33,8 @@ def main():
     for date in ['2026-10-29', '2026-10-29T10:00:00', '2026-10-20T10:00:00Z', '2026-10-30T10:00:00Z', 'invalid']:
         with patch.object(n.fulltext, 'robots_allows', return_value=True), patch.object(n.requests, 'get', return_value=response(date)):
             assert n.fetch_candidate(url, now) is None
+    structured = n.BeautifulSoup('<script type="application/ld+json">{"@graph":[{"@type":"NewsArticle","datePublished":"2026-10-29T11:00:00Z"}]}</script>', 'lxml')
+    assert n._page_date(structured, now).hour == 11
     with patch.object(n.fulltext, 'robots_allows', return_value=False), patch.object(n.requests, 'get') as get:
         assert n.fetch_candidate(url, now) is None and not get.called
     with patch.object(n.fulltext, 'robots_allows', return_value=True), patch.object(n.requests, 'get', return_value=SimpleNamespace(status_code=302)):
