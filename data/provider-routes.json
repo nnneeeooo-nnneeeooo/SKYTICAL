@@ -12,17 +12,17 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-28T22:19Z",
-      "checkedUtc": "2026-10-28T16:19Z",
+      "untilUtc": "2026-10-29T07:17Z",
+      "checkedUtc": "2026-10-29T01:17Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-10-28T16:19Z",
-      "untilUtc": "2026-10-28T22:19Z",
+      "checkedUtc": "2026-10-29T01:17Z",
+      "untilUtc": "2026-10-29T07:17Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -47,20 +47,20 @@
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
-      "status": "verified",
-      "untilUtc": "2026-10-28T19:01Z",
-      "checkedUtc": "2026-10-27T19:01Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-10-29T07:17Z",
+      "checkedUtc": "2026-10-29T01:17Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-28T22:19Z",
-      "checkedUtc": "2026-10-28T16:19Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "untilUtc": "2026-10-29T07:17Z",
+      "checkedUtc": "2026-10-29T01:17Z",
+      "failureClass": "quota",
+      "diagnostic": "platform cooldown",
       "probeVersion": 3,
       "schemaMode": null
     }
