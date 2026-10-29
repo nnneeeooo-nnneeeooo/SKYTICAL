@@ -201,3 +201,7 @@ SKYTICAL 已有靜態 JSON 索引與零套件搜尋。本次保留現況，將�
 - benchmark 依賴均與 production requirements 分離。
 
 下一步只剩「依 benchmark 真實結果決定是否導入」。在沒有實測報告前，不直接替換 `pipeline/fulltext.py` 或 `pipeline/dedupe.py`，避免為了套件而增加 production 風險。
+
+## 模型新聞搜尋入口（2026-10-29）
+
+比較 openai/openai-python（31,995 stars、Apache-2.0、2026-10-29 仍維護）、openai/openai-agents-python（30,371 stars、MIT、2026-10-27 仍維護）及 BerriAI/litellm（62,297 stars、2026-10-29 仍維護；GitHub 未能辨識單一授權，因此不引用程式碼）。前者適合標準 Responses SDK；Agents 適合多工具調度；LiteLLM 適合多平台閘道。現有快報已以 requests 接入 Responses web_search 與用量記錄，重用該入口較輕量，不新增 SDK、agent loop 或外部搜尋服務，沒有複製第三方程式碼。

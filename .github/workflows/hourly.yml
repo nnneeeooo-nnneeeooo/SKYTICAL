@@ -61,6 +61,7 @@ jobs:
           python tests/test_flightwatch.py
           python tests/test_airport_codes.py
           python tests/test_grounded.py
+          python tests/test_news_search.py
           python tests/test_pla.py
           python tests/test_usage.py
           python tests/test_hosted_free_providers.py
@@ -160,7 +161,7 @@ jobs:
         # preceding run's data commit. Keep code pinned, refresh budgets only.
         run: |
           git fetch origin "${GITHUB_REF_NAME}"
-          for path in data/news-retry.json data/provider-health.json data/provider-routes.json; do
+          for path in data/news-retry.json data/provider-health.json data/provider-routes.json data/news-search.json; do
             if git cat-file -e "origin/${GITHUB_REF_NAME}:$path" 2>/dev/null; then
               git checkout "origin/${GITHUB_REF_NAME}" -- "$path"
             fi
@@ -169,6 +170,7 @@ jobs:
       - name: Run pipeline
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
+          NEWS_WEB_SEARCH: "true"
           AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -205,6 +207,7 @@ jobs:
           BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
         run: |
           python pipeline/fetch.py
+          python pipeline/news_search.py
           python pipeline/dedupe.py
           python pipeline/write.py
           python pipeline/summary_guard.py
