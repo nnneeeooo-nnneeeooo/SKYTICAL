@@ -9,7 +9,10 @@
   const frame = {contentDocument:document,contentWindow:window};
   Object.defineProperty(frame,'src',{set:value=>location.assign(value)});
   const slug = document.body.dataset.adminRoute.match(/\/admin\/([a-f0-9]{64})\//)?.[1];
-  const vault = `skytical-admin-pat-v1:${slug}`;
+  if (!slug) return;
+  const vaultDigest = await crypto.subtle.digest('SHA-256',new TextEncoder().encode(slug));
+  const vaultId = [...new Uint8Array(vaultDigest)].map(value=>value.toString(16).padStart(2,'0')).join('');
+  const vault = `skytical-admin-pat-v1:${vaultId}`;
   let token = '', original = null, record = null, uploaded = null, dirty = false, busy = false;
   let manifest = {};
   let draftTimer = null, draftRevision = 0, savedRevision = 0, pending = null, imageBusy = false;
@@ -22,7 +25,7 @@
   };
   const decode = text => new TextDecoder().decode(Uint8Array.from(atob(text.replace(/\s/g, '')), c => c.charCodeAt(0)));
   async function vaultKey() {
-    const material = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(vault));
+    const material = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`skytical-admin-encryption-v1:${slug}`));
     return crypto.subtle.importKey('raw', material, 'AES-GCM', false, ['encrypt', 'decrypt']);
   }
   async function remember() {
