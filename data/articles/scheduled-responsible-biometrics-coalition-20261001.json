@@ -6,7 +6,18 @@
       "sourcePublishedUtc": "2026-10-01T07:00:00Z",
       "cat": "reg",
       "primarySource": "International Air Transport Association",
-      "image": null,
+      "image": {
+        "url": "https://www.iata.org/contentassets/065f20d25c5144f8ac9d24e2f23a2de7/biometrics-coalition.png",
+        "link": "https://www.iata.org/en/pressroom/2026-releases/10-01-new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys/",
+        "credit": "原始新聞來源（攝影者詳見原文）",
+        "license": null,
+        "provider": "www.iata.org",
+        "kind": "source_image",
+        "matched": "editorial:original-article-image",
+        "subject": "ACI EUROPE, IATA and partners form biometric-travel coalition with voluntary-use principles",
+        "description": "引自本文註明來源的新聞頁面主圖片。是否為事件現場、影像日期及攝影者以來源頁面說明為準。",
+        "curated": true
+      },
       "zh": {
         "title": "ACI EUROPE、IATA 等成立生物辨識旅運聯盟　向歐盟提出自願使用原則",
         "summary": "五個航空與科技組織成立 Responsible Biometrics Travel Industry Coalition，主張歐盟法規應允許旅客自願使用生物辨識並保留非生物辨識替代方案。",
@@ -26,23 +37,57 @@
         ]
       },
       "sources": [
-        {"name": "IATA", "url": "https://www.iata.org/en/pressroom/2026-releases/10-01-new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys/"},
-        {"name": "Coalition release via PR Newswire", "url": "https://www.prnewswire.com/news-releases/new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys-302895507.html"}
+        {
+          "name": "IATA",
+          "url": "https://www.iata.org/en/pressroom/2026-releases/10-01-new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys/"
+        },
+        {
+          "name": "Coalition release via PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys-302895507.html"
+        }
       ],
       "writer": "scheduled:GPT 6.1 Sol",
-      "writerModels": ["GPT 6.1 Sol"],
+      "writerModels": [
+        "GPT 6.1 Sol"
+      ],
       "articleFormat": "full",
-      "availableLanguages": ["zh", "en"],
-      "entities": {"manufacturers": [], "operators": ["ACI EUROPE", "Amadeus", "IATA", "IDEMIA", "SITA"], "aircraft": [], "airports": []},
+      "availableLanguages": [
+        "zh",
+        "en"
+      ],
+      "entities": {
+        "manufacturers": [],
+        "operators": [
+          "ACI EUROPE",
+          "Amadeus",
+          "IATA",
+          "IDEMIA",
+          "SITA"
+        ],
+        "aircraft": [],
+        "airports": []
+      },
       "scheduledNews": {
         "version": 1,
         "eventKey": "responsible-biometrics-coalition-20261001",
         "checkedUtc": "2026-10-01T13:13:06Z",
-        "modelAttribution": {"kind": "user_requested_label", "verifiedRuntimeModel": false},
+        "modelAttribution": {
+          "kind": "user_requested_label",
+          "verifiedRuntimeModel": false
+        },
         "facts": [
-          {"claim": "ACI EUROPE, Amadeus, IATA, IDEMIA and SITA announced the Responsible Biometrics Travel Industry Coalition on 2026-10-01.", "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/10-01-new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys/"},
-          {"claim": "The coalition calls for voluntary participation, a non-biometric alternative, data minimization and deletion, and technology-neutral rules.", "sourceUrl": "https://www.prnewswire.com/news-releases/new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys-302895507.html"},
-          {"claim": "The coalition is asking the EU to address biometric travel in the Digital Omnibus; its manifesto is a proposal rather than enacted law.", "sourceUrl": "https://www.prnewswire.com/news-releases/new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys-302895507.html"}
+          {
+            "claim": "ACI EUROPE, Amadeus, IATA, IDEMIA and SITA announced the Responsible Biometrics Travel Industry Coalition on 2026-10-01.",
+            "sourceUrl": "https://www.iata.org/en/pressroom/2026-releases/10-01-new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys/"
+          },
+          {
+            "claim": "The coalition calls for voluntary participation, a non-biometric alternative, data minimization and deletion, and technology-neutral rules.",
+            "sourceUrl": "https://www.prnewswire.com/news-releases/new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys-302895507.html"
+          },
+          {
+            "claim": "The coalition is asking the EU to address biometric travel in the Digital Omnibus; its manifesto is a proposal rather than enacted law.",
+            "sourceUrl": "https://www.prnewswire.com/news-releases/new-travel-industry-coalition-calls-for-eu-digital-omnibus-to-enable-secure-seamless-biometric-journeys-302895507.html"
+          }
         ]
       }
     }
