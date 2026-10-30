@@ -260,7 +260,9 @@ def main() -> int:
         changed = False
         for article in batch.get("articles", []):
             try:
-                if article.get("image") or parse_iso(article["publishedUtc"]) < cutoff:
+                if (article.get("editorialImageLocked") is True
+                        or article.get("image")
+                        or parse_iso(article["publishedUtc"]) < cutoff):
                     continue
             except (KeyError, TypeError, ValueError):
                 continue

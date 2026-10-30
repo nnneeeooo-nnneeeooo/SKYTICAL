@@ -353,6 +353,8 @@ def enforce_recent(articles_dir=None, cache_path=None):
     rows.sort(key=lambda row: (row[0].get("publishedUtc", ""), row[0].get("id", "")), reverse=True)
     usage, changed, decisions = Counter(), set(), []
     for a, p, b in rows:
+        if a.get("editorialImageLocked") is True:
+            continue
         raw = a.get("image")
         if not raw:
             continue

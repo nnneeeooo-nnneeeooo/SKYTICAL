@@ -131,6 +131,7 @@ jobs:
           # private usage-dashboard URL token (page skipped when unset)
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
           # private manual-drafting URL/encryption token
+          ADMIN_KEY: ${{ secrets.ADMIN_KEY }}
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           SKYTICAL_GA4_MEASUREMENT_ID: ${{ vars.SKYTICAL_GA4_MEASUREMENT_ID }}
@@ -156,6 +157,7 @@ jobs:
         env:
           ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional radar snapshot
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
+          ADMIN_KEY: ${{ secrets.ADMIN_KEY }}
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
         run: |

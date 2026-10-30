@@ -58,6 +58,7 @@ from model_config import (
 )
 from image_captions import clean_description
 from article_schema import normalize_article_record
+from admin_page import render_admin_page, editorial_article
 from text_spacing import compact_html
 from public_article import (
     public_article_id, public_news_path, public_asset_url, public_site_url,
@@ -1389,6 +1390,7 @@ def collect_articles():
                 print(f"build: {path.name}: no articles[] — skipped")
                 continue
             for raw in rows:
+                raw = editorial_article(raw, DATA_DIR)
                 normalized = normalize_article_record(raw)
                 art = prep_article(normalized)
                 if art is None:
@@ -3986,7 +3988,7 @@ def write_search_discovery_files(articles, briefings, now,
     sitemap_url = f"{SITE_ORIGIN}{BASE_PATH}/sitemap.xml"
     news_sitemap_url = f"{SITE_ORIGIN}{BASE_PATH}/news-sitemap.xml"
     (SITE_DIR / "robots.txt").write_text(
-        "User-agent: *\nAllow: /\n\n"
+        f"User-agent: *\nAllow: /\nDisallow: {BASE_PATH}/admin/\n\n"
         f"Sitemap: {sitemap_url}\nSitemap: {news_sitemap_url}\n",
         encoding="utf-8", newline="\n")
 
@@ -4507,6 +4509,7 @@ def main() -> int:
 
     pages += render_usage_dashboard(env, build)
     pages += render_manual_workbench(env, build)
+    pages += render_admin_page(env, SITE_DIR, ARTICLES_DIR, BASE_PATH)
 
     # 404 (zh chrome, bilingual body), served by GitHub Pages from the root
     ctx = base_ctx("zh", "none", "404.html", title=f"{L['zh']['siteName']} — 404",

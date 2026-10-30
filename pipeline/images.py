@@ -928,6 +928,8 @@ def main() -> int:
     for path, batch, articles in recent_batches:
         changed = False
         for article in articles:
+            if article.get("editorialImageLocked") is True:
+                continue
             art_id = str(article.get("id") or "")
             if not art_id:
                 continue

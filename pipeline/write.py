@@ -38,6 +38,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 from opencc import OpenCC
+from admin_page import editorial_article
 import news_retry
 from editorial_policy import eligible_providers, is_free_provider, news_policy
 from draft_recovery import (
@@ -2489,6 +2490,7 @@ def _load_existing_articles() -> list[dict]:
         if not isinstance(rows, list):
             continue
         for article in rows:
+            article = editorial_article(article, DATA_DIR)
             if (not isinstance(article, dict) or not article.get("id") or
                     article.get("archived") is True):
                 continue
