@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer">
+<title>SKYTICAL 私人管理入口</title><script src="{{ base }}/assets/admin-activate.js" data-base="{{ base }}" defer></script></head>
+<body data-skytical-admin="true" data-base="{{ base }}">
+<div id="admin-controls"><header class="admin-toolbar"><strong>SKYTICAL <small>管理模式</small></strong><nav>
+<button id="edit" disabled aria-pressed="true">文字</button><button id="image-mode" disabled aria-pressed="false">圖片</button><button id="publish" disabled>儲存並送出…</button><button id="discard" disabled>捨棄草稿</button><button id="connection">發布連線</button><button id="exit-admin">結束管理</button>
+</nav></header><p id="status" role="status" aria-live="polite">正在啟用管理模式…</p><p id="draft-state" role="status" aria-live="polite">Enter 儲存草稿 · Shift+Enter 換行 · Ctrl+S／⌘S 確認送出</p></div>
+<dialog id="connection-dialog" class="skytical-admin-dialog"><form id="connection-form"><h2>設定發布連線</h2>
+<p>使用只授權 SKYTICAL、具 Contents 讀寫權限的 fine-grained GitHub PAT。憑證加密保存在此瀏覽器。</p>
+<label>GitHub PAT<input id="pat" type="password" autocomplete="off" required spellcheck="false"></label>
+<div class="actions"><button type="button" id="forget">清除連線</button><button type="button" data-close>關閉</button><button type="submit">連線並記住</button></div></form></dialog>
+<div id="editor" hidden><form id="editor-form"><fieldset id="fields">
+{% for lang in ['zh','en'] %}<input id="{{ lang }}-title"><textarea id="{{ lang }}-summary"></textarea><textarea id="{{ lang }}-body"></textarea>{% endfor %}
+<input id="published"><input id="sort"><input id="models"><input id="primary-source"><textarea id="sources"></textarea>
+<input id="upload" type="file" accept="image/jpeg,image/png,image/webp"><input id="image-url"><input id="image-subject"><input id="image-link"><input id="image-credit"><input id="image-license">
+<select id="image-kind"><option value="file_photo">資料照片</option><option value="event_photo">事件照片</option><option value="source_image">來源配圖</option><option value="illustration">示意／合成圖</option><option value="airframe_photo">機身照片</option></select><input id="remove-image" type="checkbox">
+</fieldset><p id="editor-state"></p><button id="preview" type="button">預覽</button></form></div>
+<dialog id="confirm-dialog" class="skytical-admin-dialog"><h2>確認儲存並送出</h2><p>確認後會寫入 GitHub 並發布至正式網站。草稿儲存不會觸發發布。</p><div id="changes"></div>
+<p id="confirm-state" role="status" aria-live="polite"></p><div class="actions"><button id="cancel-submit" type="button">返回文章</button><button id="confirm-submit" type="button">確認儲存並送出</button></div></dialog>
+</body></html>
