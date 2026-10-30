@@ -6,7 +6,18 @@
       "sourcePublishedUtc": "2026-09-30T07:12:00Z",
       "cat": "ops",
       "primarySource": "Kazakhstan Ministry of Transport",
-      "image": null,
+      "image": {
+        "url": "https://www.interfax.kz/img/Interfax-Kazakhstan.png",
+        "link": "https://interfax.kz/en/news/82810",
+        "credit": "原始新聞來源（攝影者詳見原文）",
+        "license": null,
+        "provider": "interfax.kz",
+        "kind": "source_image",
+        "matched": "editorial:original-article-image",
+        "subject": "Air Astana to launch twice-weekly Astana–Bangkok A321LR service on December 11",
+        "description": "引自本文註明來源的新聞頁面主圖片。是否為事件現場、影像日期及攝影者以來源頁面說明為準。",
+        "curated": true
+      },
       "zh": {
         "title": "Air Astana 12 月開航阿斯塔納—曼谷　A321LR 每週兩班",
         "summary": "新航線將於 2026 年 12 月 11 日開航，每週二、五飛航，搭配既有阿拉木圖航線後每週共九班往返泰國。",
@@ -26,23 +37,60 @@
         ]
       },
       "sources": [
-        {"name": "Kazakhstan Ministry of Transport via Interfax", "url": "https://interfax.kz/en/news/82810"},
-        {"name": "Aviation Week", "url": "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-sept-28-2026"}
+        {
+          "name": "Kazakhstan Ministry of Transport via Interfax",
+          "url": "https://interfax.kz/en/news/82810"
+        },
+        {
+          "name": "Aviation Week",
+          "url": "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-sept-28-2026"
+        }
       ],
       "writer": "scheduled:GPT 6.1 Sol",
-      "writerModels": ["GPT 6.1 Sol"],
+      "writerModels": [
+        "GPT 6.1 Sol"
+      ],
       "articleFormat": "full",
-      "availableLanguages": ["zh", "en"],
-      "entities": {"manufacturers": ["Airbus"], "operators": ["Air Astana"], "aircraft": ["Airbus A321LR"], "airports": ["Nursultan Nazarbayev International Airport", "Suvarnabhumi Airport"]},
+      "availableLanguages": [
+        "zh",
+        "en"
+      ],
+      "entities": {
+        "manufacturers": [
+          "Airbus"
+        ],
+        "operators": [
+          "Air Astana"
+        ],
+        "aircraft": [
+          "Airbus A321LR"
+        ],
+        "airports": [
+          "Nursultan Nazarbayev International Airport",
+          "Suvarnabhumi Airport"
+        ]
+      },
       "scheduledNews": {
         "version": 1,
         "eventKey": "air-astana-astana-bangkok-launch-20261211",
         "checkedUtc": "2026-10-01T13:13:06Z",
-        "modelAttribution": {"kind": "user_requested_label", "verifiedRuntimeModel": false},
+        "modelAttribution": {
+          "kind": "user_requested_label",
+          "verifiedRuntimeModel": false
+        },
         "facts": [
-          {"claim": "Air Astana will launch nonstop Astana-Bangkok service on 2026-12-11.", "sourceUrl": "https://interfax.kz/en/news/82810"},
-          {"claim": "The route will operate on Tuesdays and Fridays with Airbus A321LR aircraft.", "sourceUrl": "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-sept-28-2026"},
-          {"claim": "Together with daily Almaty-Bangkok service, Air Astana will operate nine weekly Kazakhstan-Thailand flights.", "sourceUrl": "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-sept-28-2026"}
+          {
+            "claim": "Air Astana will launch nonstop Astana-Bangkok service on 2026-12-11.",
+            "sourceUrl": "https://interfax.kz/en/news/82810"
+          },
+          {
+            "claim": "The route will operate on Tuesdays and Fridays with Airbus A321LR aircraft.",
+            "sourceUrl": "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-sept-28-2026"
+          },
+          {
+            "claim": "Together with daily Almaty-Bangkok service, Air Astana will operate nine weekly Kazakhstan-Thailand flights.",
+            "sourceUrl": "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-sept-28-2026"
+          }
         ]
       }
     }
