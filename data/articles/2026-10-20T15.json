@@ -217,75 +217,110 @@
       },
       "sourceImageCandidates": [
         {
-          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/10/shutterstock_2178000917_cropped.jpg",
+          "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/10/copy-of-25-westjet-boeing-737-max-robin-guess-_-shutterstock.jpg",
           "sources": [
             {
-              "url": "https://simpleflying.com/aer-lingus-cancels-all-flights-5-destinations/",
+              "url": "https://simpleflying.com/westjet-cancels-all-flights-to-2-us-destinations/",
               "name": "Simple Flying"
             }
           ]
         }
       ],
       "zh": {
-        "title": "Aer Lingus取消飛往五個目的地的所有航班",
-        "summary": "Aer Lingus取消飛往五個目的地的全部航班服務",
+        "title": "西捷航空取消飛往美國兩個目的地的所有航班",
+        "summary": "其中一個目的地為夏威夷羣島，另一個將在下一次排班更新中確定",
         "body": [
-          "Simple Flying報導，Aer Lingus取消飛往五個目的地的所有航班。標題未列出這五個目的地的名稱，也未說明取消生效日期、涉及航線或旅客影響；目前提供的文字沒有進一步營運細節。",
-          "Simple Flying的摘要另指出，Aer Lingus正面臨改善獲利能力的壓力。摘要並未說明這項壓力導致航班取消，因此兩項訊息分開呈現。來源未提供其他可確認的取消安排或航班資訊。"
+          "西捷航空（WestJet）宣佈取消飛往美國兩個目的地的所有航班。根據報導，其中一個目的地為夏威夷羣島，另一個目的地將在下一次排班更新中確定。",
+          "該消息來自Simple Flying的報導，指出目前尚未公佈具體的第二個目的地。航空公司將在後續的排班更新中提供進一步細節。",
+          "此類航班取消可能對旅客行程產生影響，建議旅客密切關注西捷航空的官方公告以獲取最新資訊。"
         ]
       },
       "en": {
-        "title": "Aer Lingus Cancels All Flights to Five Destinations",
-        "summary": "Aer Lingus cancels flights to five destinations; airline faces profitability pressure.",
+        "title": "WestJet Cancels All Flights To 2 US Destinations",
+        "summary": "One of the destinations is a Hawaiian Island, the other will be finalized in the next schedule update",
         "body": [
-          "Simple Flying reports that Aer Lingus has canceled all flights to five destinations. The headline does not name those destinations or state an effective date, route details or passenger impact. The supplied material provides no further operational details.",
-          "Separately, Simple Flying’s summary says the airline is facing pressure to improve its profitability. It does not say that the pressure caused the cancellations, so the two points are reported separately. No additional cancellation arrangements or flight information are provided in the supplied material."
+          "WestJet has announced the cancellation of all flights to two US destinations. According to reports, one of the destinations is a Hawaiian Island, while the second destination will be finalized in the next schedule update.",
+          "The information was reported by Simple Flying, which noted that the specific second destination has not yet been disclosed. The airline will provide further details in subsequent schedule updates.",
+          "Such flight cancellations may impact passenger itineraries, and travelers are advised to monitor WestJet's official announcements for the latest information."
         ]
       },
       "sources": [
+        {
+          "name": "Simple Flying — WestJet Cancels All Flights To 2 US Destinations: See List…",
+          "url": "https://simpleflying.com/westjet-cancels-all-flights-to-2-us-destinations/"
+        },
         {
           "name": "Simple Flying — Aer Lingus Cancels All Flights To 5 Destinations: See Full…",
           "url": "https://simpleflying.com/aer-lingus-cancels-all-flights-5-destinations/"
         }
       ],
       "articleFormat": "brief",
-      "sourcePublishedUtc": "2026-10-20T14:29Z",
-      "writer": "openai:gpt-6",
+      "updatedUtc": "2026-10-30T08:38Z",
+      "revision": 2,
+      "sourcePublishedUtc": "2026-10-29T21:12Z",
+      "writer": "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
       "facts": [
         {
           "factId": "F1",
-          "claim": "Aer Lingus cancels all flights to five destinations.",
-          "sourceQuote": "Aer Lingus Cancels All Flights To 5 Destinations: See Full List Now",
-          "sourceUrl": "https://simpleflying.com/aer-lingus-cancels-all-flights-5-destinations/",
+          "claim": "WestJet cancels all flights to two US destinations",
+          "sourceQuote": "WestJet Cancels All Flights To 2 US Destinations: See List Now",
+          "sourceUrl": "https://simpleflying.com/westjet-cancels-all-flights-to-2-us-destinations/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         },
         {
           "factId": "F2",
-          "claim": "The airline is facing pressure to improve its profitability.",
-          "sourceQuote": "This comes as the airline is facing pressure to improve its profitability.",
-          "sourceUrl": "https://simpleflying.com/aer-lingus-cancels-all-flights-5-destinations/",
+          "claim": "One destination is a Hawaiian Island",
+          "sourceQuote": "One of the cut is to one of the Hawaiian Islands",
+          "sourceUrl": "https://simpleflying.com/westjet-cancels-all-flights-to-2-us-destinations/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The second destination will be finalized in the next schedule update",
+          "sourceQuote": "the other one will be finalized in the next schedule update",
+          "sourceUrl": "https://simpleflying.com/westjet-cancels-all-flights-to-2-us-destinations/",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         }
       ],
       "riskFlags": [
-        "financial_or_order_claim"
+        "unconfirmed_or_developing"
       ],
-      "eventStatus": "confirmed",
+      "eventStatus": "preliminary",
       "entities": {
+        "organizations": [
+          "WestJet"
+        ],
         "airlines": [
-          "Aer Lingus"
+          "WestJet"
+        ],
+        "locations": [
+          "Hawaiian Islands"
         ]
       },
       "entityEvidence": [
         {
+          "entityType": "organizations",
+          "value": "WestJet",
+          "sourceQuote": "WestJet",
+          "sourceUrl": "https://simpleflying.com/westjet-cancels-all-flights-to-2-us-destinations/"
+        },
+        {
           "entityType": "airlines",
-          "value": "Aer Lingus",
-          "sourceQuote": "Aer Lingus Cancels All Flights To 5 Destinations: See Full List Now",
-          "sourceUrl": "https://simpleflying.com/aer-lingus-cancels-all-flights-5-destinations/"
+          "value": "WestJet",
+          "sourceQuote": "WestJet",
+          "sourceUrl": "https://simpleflying.com/westjet-cancels-all-flights-to-2-us-destinations/"
+        },
+        {
+          "entityType": "locations",
+          "value": "Hawaiian Islands",
+          "sourceQuote": "Hawaiian Islands",
+          "sourceUrl": "https://simpleflying.com/westjet-cancels-all-flights-to-2-us-destinations/"
         }
       ],
       "evidenceVersion": 2
