@@ -21,8 +21,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-30T19:39Z",
-      "checkedUtc": "2026-10-30T13:39Z",
+      "untilUtc": "2026-10-31T05:17Z",
+      "checkedUtc": "2026-10-30T23:17Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -30,8 +30,8 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "verified",
-      "untilUtc": "2026-10-30T19:55Z",
-      "checkedUtc": "2026-10-29T19:55Z",
+      "checkedUtc": "2026-10-30T23:17Z",
+      "untilUtc": "2026-10-31T23:17Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-10-30T13:39Z",
       "untilUtc": "2026-10-31T13:39Z",
+      "checkedUtc": "2026-10-30T13:39Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -48,8 +48,8 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-30T19:39Z",
-      "checkedUtc": "2026-10-30T13:39Z",
+      "untilUtc": "2026-10-31T05:17Z",
+      "checkedUtc": "2026-10-30T23:17Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
@@ -57,8 +57,8 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-30T19:39Z",
-      "checkedUtc": "2026-10-30T13:39Z",
+      "untilUtc": "2026-10-31T05:17Z",
+      "checkedUtc": "2026-10-30T23:17Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
