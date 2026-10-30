@@ -58,6 +58,7 @@ jobs:
           python tests/test_admin_page.py
           node tests/test_admin_core.js
           node tests/test_admin_activation.js
+          node tests/test_admin_entry.js
           node --check static/admin.js
           node --check static/admin-entry.js
           node --check static/admin-activate.js
