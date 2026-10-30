@@ -314,5 +314,119 @@ def main():
         print("MISSING", a["id"], a["title"], a["reason"], flush=True)
     return 0
 
+
+def finish_verified_editorial():
+    from datetime import datetime
+    def commons(file, author, license, subject, notes):
+        from urllib.parse import quote
+        return {
+            "url": "https://commons.wikimedia.org/wiki/Special:FilePath/" + quote(file, safe="") + "?width=1280",
+            "link": "https://commons.wikimedia.org/wiki/File:" + quote(file.replace(" ", "_"), safe="()_,.-"),
+            "credit": author + "／Wikimedia Commons",
+            "license": license,
+            "provider": "Wikimedia Commons",
+            "kind": "source_image",
+            "matched": "editorial:manual-verified-commons",
+            "subject": subject,
+            "description": notes,
+            "curated": True
+        }
+    def official(url, link, author, subject, notes):
+        return {"url":url,"link":link,"credit":author,"license":None,"provider":author,
+                "kind":"source_image","matched":"editorial:manual-official-or-credited",
+                "subject":subject,"description":notes,"curated":True}
+    airport=commons("Taiwan Taoyuan Airport Terminal 2 May 2025.jpg","4300streetcar","CC BY 4.0",
+                    "桃園國際機場第二航廈","桃園機場2025年資料照片；非燃油附加費公布現場，適用國籍航空國際航線新聞。")
+    easa=commons("EASA Headquarters - EASA Direktion.jpg","Wikimedia Commons原作者（詳原圖頁）","CC BY-SA 4.0",
+                 "歐盟航空安全局總部","EASA總部建築資料照片，非新法規發布活動。")
+    riyadh=commons("King Khalid International Airport.JPG","Vanquish0","CC BY-SA 4.0",
+                   "利雅德哈立德國王國際機場","事前拍攝之機場資料照，並非2026年10月襲擊或航班取消現場。")
+    southwest=commons("Boeing 737-700 of Southwest Airlines preparing to Takeoff KCMH 1.jpg","Sixflashphoto","CC BY-SA 4.0",
+                     "西南航空Boeing 737-700","西南航空737-700同公司資料照；非ChatGPT外掛使用介面。")
+    flydubai=commons("FlyDubai 737-800 A6-FDB.jpg","Wikimedia Commons原作者（詳原圖頁）",None,
+                    "flydubai Boeing 737-800","flydubai 737-800同公司資料照，非涉事FZ1073班機。")
+    military=commons("Shenyang J-16D.jpg","中華民國國防部","作者允許標示來源使用",
+                    "中國人民解放軍J-16D戰機","中華民國國防部曾公布的共軍戰機資料照，非本次偵測航跡影像。")
+    drone=commons("Quadcopter Drone in flight.jpg","Project Kei","CC BY-SA 4.0",
+                  "四軸無人機","無人機類型示意資料照，非此次獲補助廠商的實際研發機種。")
+    lufthansa=commons("Lufthansa Airbus A320neo.jpg","Paul Schmid","CC BY-SA 4.0",
+                      "德國漢莎航空Airbus A320neo","漢莎機隊實機資料照，非2027年日本航線首航影像。")
+    alaska=commons("Boeing 737 MAX 9 - Alaska Airlines - N823AK.jpg","Oleg Yunakov","CC BY-SA 4.0",
+                   "阿拉斯加航空Boeing 737 MAX 9","阿拉斯加航空實機資料照，非Breeze聯營訂位介面。")
+    airbaltic=commons("YL-ABD at AMS 20261006.jpg","VynedJ",None,
+                     "airBaltic空中巴士A220-300 YL-ABD","2026年10月6日攝於阿姆斯特丹的airBaltic實機資料照；非裁員現場。")
+    patches={
+      "a-20261001-1529-taiwan-caa-international-fuel-surcharges":airport,
+      "a-taiwan-caa-fuel-surcharge-increase-20261001":airport,
+      "a-20261010-1359-easa-publishes-easy-access-rules-for-cs":easa,
+      "a-epic-e1000ax-autoland-faa-certification-20260930":official(
+         "https://www.aerotime.aero/images/2026/10/Recently-Saved-1-of-1-28.jpeg",
+         "https://www.aerotime.aero/articles/epic-e1000-ax-garmin-autoland-faa-certification",
+         "AeroTime（影像作者詳原文）","Epic Aircraft E1000 AX",
+         "E1000 AX客機同型資料照片，非Garmin Autoland認證發布會。"),
+      "a-manual-recovery-southwest-chatgpt-plugin-20261009":southwest,
+      "a-us-king-air-philippine-coast-guard-20260930":official(
+         "https://www.scramble.nl/images/news/2026/february/Philippines_Textron_Beechcraft_King_Air_credit_Textron.jpg",
+         "https://www.scramble.nl/military-news/new-beechcraft-king-air-aircraft-for-philippine-coast-guard",
+         "Textron Aviation／Scramble","Beechcraft King Air",
+         "Textron提供的King Air系列航空器資料照，非交付現場。"),
+      "a-tap-final-privatization-bids-20260930":commons(
+         "Airbus A330-941N (c-n 1819, CS-TUA) 2026-04-08 Andre Gerwing Collection ID 028231.jpg",
+         "André Gerwing","CC BY-SA 4.0","TAP Air Portugal A330-900neo CS-TUA",
+         "2026年4月拍攝的TAP實機資料照，非民營化談判現場。"),
+      "a-taic-air-new-zealand-q300-timaru-final-report-20261001":commons(
+         "Air NZ Q300 NZ-NEM at PMR (24443249755).jpg",
+         "Wikimedia Commons原作者（詳原圖頁）",None,"Air New Zealand Q300 ZK-NEM",
+         "所涉航機ZK-NEM的歷史照片，非2023年低於安全高度事件現場。"),
+      # Corrections: reject cross-topic social-site default images and
+      # unlicensed stock imagery when a relevant official/Commons image exists.
+      "a-20260930-1937-eurocontrol-and-easa-launch-avenir-envir":easa,
+      "a-20261009-1301-nearly-300-riyadh-flights-cancelled-or-d":riyadh,
+      "a-20261010-1851-houthis-suspected-of-missile-strike-on-r":riyadh,
+      "a-manual-recovery-airbaltic-workforce-plan-20261009":airbaltic,
+      "a-manual-recovery-taiwan-mnd-oct9-aircraft-20261009":military,
+      "a-manual-recovery-taiwan-drone-rd-grants-20261009":drone,
+      "a-manual-recovery-lufthansa-japan-summer2027-20261009":lufthansa,
+      "a-manual-recovery-alaska-breeze-ticket-test-20261009":alaska,
+      "a-manual-recovery-flydubai-investigation-target-20261009":flydubai
+    }
+    encountered=set(); modified=0; non_archived=[]
+    for p in (ROOT/"data/articles").glob("*.json"):
+        data=json.loads(p.read_text(encoding="utf-8"))
+        dirty=False
+        for article in data.get("articles") or []:
+            if not isinstance(article,dict) or not in_window(article) or article.get("archived") is True:
+                continue
+            art_id=article.get("id")
+            if art_id in patches:
+                article["image"]=patches[art_id]
+                encountered.add(art_id)
+                modified += 1
+                dirty=True
+            non_archived.append(article)
+        if dirty:
+            raw=p.read_text(encoding="utf-8")
+            p.write_text(json.dumps(data,ensure_ascii=False,
+                                   indent=None if raw.lstrip().startswith('{"articles"') else 2)+"\n",
+                         encoding="utf-8")
+    missing=[{"id":a.get("id"),"title":(a.get("zh") or {}).get("title")}
+             for a in non_archived if not (a.get("image") or {}).get("url")]
+    report_path=ROOT/"scripts/_oneoff_image_backfill_report.json"
+    report=json.loads(report_path.read_text(encoding="utf-8"))
+    report.update({
+       "finalizedCurated":modified,"expectedCurated":len(patches),
+       "missingExpectedIds":sorted(set(patches)-encountered),
+       "finalArticleCount":len(non_archived),
+       "finalImages":sum(bool((a.get("image") or {}).get("url")) for a in non_archived),
+       "countRemaining":len(missing),"remaining":missing
+    })
+    report_path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    print("FINAL_MANUAL",modified,"OF",len(patches),"PUBLISHED_ARTICLES",len(non_archived),
+          "IMAGES",report["finalImages"],"MISSING",len(missing),"NOT_FOUND",report["missingExpectedIds"],flush=True)
+    return 0 if not missing and len(encountered)==len(patches) else 2
+
 if __name__ == "__main__":
-    sys.exit(main())
+    result=main()
+    if result == 0:
+        result=finish_verified_editorial()
+    sys.exit(result)
