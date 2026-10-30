@@ -2,27 +2,27 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "waiting",
-      "untilUtc": "2026-10-30T10:02Z",
-      "checkedUtc": "2026-10-30T04:02Z",
-      "failureClass": "unexpected",
-      "diagnostic": "F1 claim adds high-risk atom 'H140' not present in its own sourceQuote",
+      "status": "verified",
+      "untilUtc": "2026-10-31T13:39Z",
+      "checkedUtc": "2026-10-30T13:39Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
-      "status": "waiting",
-      "untilUtc": "2026-10-30T12:31Z",
-      "checkedUtc": "2026-10-30T06:31Z",
-      "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "status": "verified",
+      "untilUtc": "2026-10-31T13:39Z",
+      "checkedUtc": "2026-10-30T13:39Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-10-30T06:31Z",
-      "untilUtc": "2026-10-30T12:31Z",
+      "untilUtc": "2026-10-30T19:39Z",
+      "checkedUtc": "2026-10-30T13:39Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -39,28 +39,28 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-10-30T12:45Z",
-      "checkedUtc": "2026-10-29T12:45Z",
+      "checkedUtc": "2026-10-30T13:39Z",
+      "untilUtc": "2026-10-31T13:39Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
-      "status": "verified",
-      "untilUtc": "2026-10-30T07:42Z",
-      "checkedUtc": "2026-10-29T07:42Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-10-30T19:39Z",
+      "checkedUtc": "2026-10-30T13:39Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-30T10:02Z",
-      "checkedUtc": "2026-10-30T04:02Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
+      "untilUtc": "2026-10-30T19:39Z",
+      "checkedUtc": "2026-10-30T13:39Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     }

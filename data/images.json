@@ -11892,7 +11892,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-30T09:08:19.097099+00:00"
+      "checked_utc": "2026-10-30T14:02:45.013510+00:00"
     },
     "a-easa-annual-safety-review-2026-20261027": {
       "status": "matched",
@@ -12067,7 +12067,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-30T09:08:19.097099+00:00"
+      "checked_utc": "2026-10-30T14:02:45.013510+00:00"
     },
     "a-yemenia-a320-amman-hail-strike-20261026": {
       "status": "matched",
@@ -12549,6 +12549,52 @@
         "photoYear": 2026
       },
       "checked_utc": "2026-10-30T09:08:19.097099+00:00"
+    },
+    "a-singapore-airlines-aether-saf-project-beacon-20261028": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:non-documentary-stock",
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-30T14:02:45.013510+00:00",
+      "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
+    },
+    "a-iata-payments-cost-2025-20261030": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-30T14:02:45.013510+00:00",
+      "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
+    },
+    "a-iata-2026-global-passenger-survey-20261030": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-30T14:02:45.013510+00:00",
+      "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
+    },
+    "a-comac-ce-25a-electric-aircraft-photos-20261028": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:aircraft-model-mismatch",
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-10-30T14:02:45.013510+00:00",
+      "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
     }
   },
   "sources": {
@@ -15617,8 +15663,8 @@
     "https://www.aerotime.aero/articles/emirates-deploys-a350-with-new-business-class-on-mauritius-route-from-november-1": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "parser_version": 4,
-      "next_retry_utc": "2026-10-30T12:36:26.963734+00:00"
+      "parser_version": 5,
+      "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
     },
     "https://www.aerotime.aero/articles/eu-funding-lithuania-estonia-drone-warhead-production": {
       "image": null,
@@ -15645,8 +15691,8 @@
     "https://www.aerotime.aero/articles/portuguese-drone-maker-beyond-vision-closes-e28-million-series-a-round": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "parser_version": 4,
-      "next_retry_utc": "2026-10-30T10:08:47.112850+00:00"
+      "parser_version": 5,
+      "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
     },
     "https://www.aerotime.aero/articles/africa-world-airlines-embraer-e190-west-africa-expansion": {
       "image": null,
@@ -15755,8 +15801,8 @@
     "https://www.aerotime.aero/articles/boeing-q3-2026-results-record-backlog-737-7-and-737-10-certified-loss-narrows": {
       "image": null,
       "rejection_reason": "non-documentary-stock",
-      "parser_version": 4,
-      "next_retry_utc": "2026-10-30T12:36:26.963734+00:00"
+      "parser_version": 5,
+      "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
     },
     "https://www.cna.com.tw/news/ahel/202610280031.aspx": {
       "image": null,
@@ -15855,8 +15901,8 @@
     "https://www.aerotime.aero/articles/ethiopia-receives-first-russian-su-35-fighters-plans-s-400-air-defense-purchase": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "parser_version": 4,
-      "next_retry_utc": "2026-10-30T10:08:47.112850+00:00"
+      "parser_version": 5,
+      "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
     },
     "https://www.cna.com.tw/news/aipl/202610300124.aspx": {
       "image": null,
@@ -15869,6 +15915,18 @@
       "rejection_reason": "lookup-error:HTTPError",
       "parser_version": 5,
       "next_retry_utc": "2026-10-30T15:08:19.097099+00:00"
+    },
+    "https://www.aerotime.aero/articles/singapore-airlines-becomes-first-airline-to-buy-saf-from-aethers-project-beacon": {
+      "image": null,
+      "rejection_reason": "non-documentary-stock",
+      "parser_version": 5,
+      "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
+    },
+    "https://www.aerotime.aero/articles/comac-ce-25a-online-photos-new-electric-aircraft": {
+      "image": null,
+      "rejection_reason": "aircraft-model-mismatch",
+      "parser_version": 5,
+      "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
     }
   }
 }
