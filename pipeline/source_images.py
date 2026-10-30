@@ -1,27 +1,106 @@
 """Recover a cited publisher's lead photograph before stock-image fallback.
 
-Publisher adapters must bind the lead metadata image to a captioned body
-figure. An unrelated sidebar image or an uncaptioned Open Graph image is not
-enough. Keep the original caption for provenance; never infer a free license.
+Publisher adapters bind photographs to exact-image captions or alt text.
+Official airline/airport pictures are accepted directly with attribution;
+subject checks still apply. Keep provenance and never infer a free license.
 """
 import re
 from html import unescape
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
+from pathlib import Path
+from functools import lru_cache
 
 import requests
 from bs4 import BeautifulSoup
 
-from common import USER_AGENT
-from image_captions import clean_description
+from common import USER_AGENT, load_json
+from image_captions import clean_description, source_description, image_identity
 
 
-PARSER_VERSION = 4
+PARSER_VERSION = 5
 _AEROTIME_STOCK_CREDIT_RE = re.compile(
     r"Shutterstock|Wikimedia Commons|Getty Images?|Adobe Stock|"
     r"Unsplash|Pexels|Flickr", re.I)
 
 
+@lru_cache(maxsize=1)
+def official_providers():
+    return load_json(Path(__file__).resolve().parent.parent /
+                     "config" / "official_image_sources.json", {}).get("providers", {})
+
+
+def official_provider(url):
+    try:
+        parts = urlsplit(url)
+        if parts.scheme != "https" or parts.username or parts.password:
+            return None
+        host = (parts.hostname or "").lower()
+        for domain, name in official_providers().items():
+            if host == domain or host.endswith("." + domain):
+                return name
+    except ValueError:
+        pass
+    return None
+
+
+def parse_official_photo(html, source_url):
+    """Accept official airline/airport pictures without a license-text gate.
+
+    A caption/alt tied to the exact image still supplies the visual evidence.
+    Default to a file photo: official publication alone never proves that the
+    photograph depicts the event described by our article.
+    """
+    provider = official_provider(source_url)
+    if not provider:
+        return None
+    soup = BeautifulSoup(html, "html.parser")
+    candidates = []
+    for meta in soup.select('meta[property="og:image"], meta[name="twitter:image"]'):
+        candidates.append(meta.get("content", ""))
+    for img in soup.select("article img, main img"):
+        candidates.append(img.get("src") or img.get("data-src") or "")
+    seen = set()
+    for raw in candidates:
+        url = urljoin(source_url, unescape(raw))
+        identity = image_identity(url)
+        if not identity[0] or identity in seen:
+            continue
+        if re.search(r"(?:^|[/_.-])(?:logo|favicon|avatar|sprite|icon|placeholder)(?:[/_.-]|$)",
+                     identity[1], re.I):
+            continue
+        seen.add(identity)
+        # Keep the real source-owned caption, never substitute our headline.
+        description = source_description(html, url, source_url)
+        if not description:
+            continue
+        subject = description["subject"]
+        credit = provider
+        for img in soup.find_all("img"):
+            if not any(image_identity(img.get(key, ""), source_url) == identity
+                       for key in ("src", "data-src", "data-lazy-src")):
+                continue
+            figure = img.find_parent("figure")
+            caption = figure.find("figcaption") if figure else None
+            if caption:
+                # Preserve original photographer attribution as well as the
+                # official publisher even when it names an outside agency.
+                text = " ".join(caption.stripped_strings)
+                if text:
+                    credit = text
+            break
+        yield {"url": url, "link": source_url, "provider": provider,
+               "credit": credit, "license": None, "kind": "file_photo",
+               "subject": subject, "sourceCaption": subject,
+               "captionSource": description["captionSource"],
+               "matched": "source:official"}
+
+
 def supported_source(article):
+    # Official airline/airport sources outrank secondary publishers.
+    for source in article.get("sources") or []:
+        url = source.get("url", "") if isinstance(source, dict) else ""
+        if official_provider(url):
+            return url
     for source in article.get("sources") or []:
         url = source.get("url", "") if isinstance(source, dict) else ""
         parts = urlsplit(url)
@@ -217,6 +296,10 @@ def lookup_source_photo(article):
     # Do not accept a redirect to a different article or publisher.
     if response.url.rstrip("/") != url.rstrip("/"):
         return None
+    if official_provider(url):
+        from image_selection import rejection_reason
+        return next((photo for photo in parse_official_photo(response.text, url)
+                     if not rejection_reason(article, photo)), None)
     host = urlsplit(url).hostname
     if host in {"www.cna.com.tw", "cna.com.tw"}:
         return parse_cna_photo(response.text, url)

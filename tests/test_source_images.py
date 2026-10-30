@@ -245,3 +245,87 @@ def test_parser_upgrade_retries_old_negative_source_cache(tmp_path, monkeypatch)
     assert len(calls) == 1
     assert json.loads(path.read_text(encoding="utf-8"))["articles"][0][
         "image"]["url"] == PHOTO
+
+
+OFFICIAL_URL = "https://news.klm.com/a350-update/"
+OFFICIAL_PHOTO = "https://media.klm.com/aircraft/a350.jpg"
+OFFICIAL_HTML = f'''<meta property="og:image" content="{OFFICIAL_PHOTO}">
+<meta property="og:image:alt" content="KLM Airbus A350-900 on the apron">
+<main><figure><img src="{OFFICIAL_PHOTO}" alt="KLM Airbus A350-900 on the apron">
+<figcaption>KLM Airbus A350-900. Photo credit: Jane Doe / KLM</figcaption>
+</figure></main>'''
+
+
+def official_article(url=OFFICIAL_URL):
+    return {"id": "official-test", "sources": [{"url": url}],
+            "en": {"title": "KLM Airbus A350-900 service update", "body": []},
+            "entities": {"airlines": ["KLM"], "aircraft_models": ["Airbus A350-900"]}}
+
+
+def test_official_domain_identity_and_source_priority():
+    assert source.official_provider(OFFICIAL_URL) == "KLM"
+    assert source.official_provider("https://www.changiairport.com/media/photo.html") == "Changi Airport Group"
+    for url in ("https://klm.com.evil.example/photo", "https://fakeklm.com/photo",
+                "https://klm.com@evil.example/photo", "http://news.klm.com/photo"):
+        assert source.official_provider(url) is None
+    assert source.supported_source({"sources": [
+        {"url": URL}, {"url": OFFICIAL_URL}]}) == OFFICIAL_URL
+
+
+def test_official_photo_needs_no_license_statement_and_keeps_credit():
+    photo = next(source.parse_official_photo(OFFICIAL_HTML, OFFICIAL_URL))
+    assert photo["url"] == OFFICIAL_PHOTO
+    assert photo["link"] == OFFICIAL_URL
+    assert photo["provider"] == "KLM"
+    assert "Jane Doe / KLM" in photo["credit"]
+    assert photo["license"] is None
+    assert photo["kind"] == "file_photo"
+    assert rejection_reason(official_article(), photo) is None
+    # No figure/credit required: official exact-image alt metadata is enough.
+    photo = next(source.parse_official_photo(OFFICIAL_HTML.split('<main>')[0], OFFICIAL_URL))
+    assert photo["credit"] == "KLM"
+    assert photo["kind"] != "event_photo"
+
+
+def test_official_missing_image_evidence_and_wrong_aircraft_still_rejected():
+    assert list(source.parse_official_photo(
+        f'<meta property="og:image" content="{OFFICIAL_PHOTO}">', OFFICIAL_URL)) == []
+    assert list(source.parse_official_photo(OFFICIAL_HTML, "https://example.com/news")) == []
+    wrong = OFFICIAL_HTML.replace("A350-900", "Boeing 737-800")
+    photo = next(source.parse_official_photo(wrong, OFFICIAL_URL))
+    assert rejection_reason(official_article(), photo) == "aircraft-model-mismatch"
+
+
+def test_official_lookup_skips_bad_lead_and_accepts_matching_body(monkeypatch):
+    from types import SimpleNamespace
+    html = OFFICIAL_HTML.replace('property="og:image"', 'property="unused"')
+    html = '<meta property="og:image" content="https://media.klm.com/logo.png">' + html
+    response = SimpleNamespace(url=OFFICIAL_URL, text=html,
+                               raise_for_status=lambda: None)
+    monkeypatch.setattr(source.requests, "get", lambda *args, **kwargs: response)
+    photo = source.lookup_source_photo(official_article())
+    assert photo["url"] == OFFICIAL_PHOTO
+    # Redirects cannot turn an official source into a different publisher.
+    response.url = "https://example.com/redirect"
+    assert source.lookup_source_photo(official_article()) is None
+
+
+def test_official_photo_is_attached_and_cached_before_commons(tmp_path, monkeypatch):
+    path = setup_batch(tmp_path, monkeypatch)
+    article = official_article()
+    article["publishedUtc"] = images.now_utc().isoformat()
+    path.write_text(json.dumps({"articles": [article]}), encoding="utf-8")
+    from types import SimpleNamespace
+    calls = []
+    def get(url, **kwargs):
+        calls.append(url)
+        return SimpleNamespace(url=url, text=OFFICIAL_HTML, raise_for_status=lambda: None)
+    monkeypatch.setattr(source.requests, "get", get)
+    monkeypatch.setattr(images, "resolve_image", lambda *args, **kwargs: (_ for _ in ()).throw(
+        AssertionError("official image should precede stock lookup")))
+    assert images.main() == 0
+    published = json.loads(path.read_text(encoding="utf-8"))["articles"][0]
+    assert published["image"]["matched"] == "source:official"
+    assert published["image"]["license"] is None
+    assert images.main() == 0
+    assert calls == [OFFICIAL_URL]

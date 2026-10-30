@@ -336,6 +336,100 @@ def main() -> int:
     assert unresolved_again == []
     assert bilingual == bilingual_snapshot
 
+    # A lone metadata identity must never be assigned to an unrelated name,
+    # even if the translation happens to contain one airport in that slot.
+    unrelated = {
+        "entities": {"airports": ["KHH"]},
+        "zh": {"title": "未知測試國際機場暫停運作", "body": []},
+        "en": {"title": "Uncharted Example Airport closes", "body": []},
+    }
+    changed, unresolved = airport_codes.enforce_article(unrelated)
+    assert not changed
+    assert any("未知測試國際機場" in name for name in unresolved)
+    assert airport_codes.resolve_airport("Unknown Example Airport (KHH)") is None
+    assert airport_codes.resolve_airport("Unknown KHH Example Airport") is None
+    assert "KHH" not in str(unrelated["zh"]) + str(unrelated["en"])
+    assert airport_codes.validate_article(unrelated)
+
+    mixed_known_unknown = {
+        "en": {"title": "Route update", "body": [
+            "Flights link Toronto Pearson International Airport and Uncharted Example Airport."]},
+    }
+    assert any("Uncharted" in issue for issue in
+               airport_codes.validate_article(mixed_known_unknown))
+
+    # Known copy names missing from metadata are still mandatory. Reordered
+    # translations are resolved by identity, never by paragraph/name order.
+    missing_metadata = {
+        "entities": {},
+        "zh": {"title": "航線調整", "body": [
+            "高雄機場往返曼谷蘇凡納布機場。"]},
+        "en": {"title": "Route update", "body": [
+            "Flights link Bangkok Suvarnabhumi Airport (KHH) and Kaohsiung Airport."]},
+    }
+    assert airport_codes.validate_article(missing_metadata)
+    assert airport_codes.enforce_article(missing_metadata) == (True, [])
+    assert "蘇凡納布機場（BKK）" in missing_metadata["zh"]["body"][0]
+    assert "高雄機場（KHH）" in missing_metadata["zh"]["body"][0]
+    assert "Suvarnabhumi Airport (BKK)" in missing_metadata["en"]["body"][0]
+    assert "Kaohsiung Airport (KHH)" in missing_metadata["en"]["body"][0]
+    assert airport_codes.validate_article(missing_metadata) == []
+    assert airport_codes.enforce_article(missing_metadata) == (False, [])
+
+    # A correct first mention cannot hide a later, wrongly annotated name.
+    wrong_later = copy.deepcopy(missing_metadata)
+    wrong_later["en"]["body"].append("Bangkok Suvarnabhumi Airport (KHH) reopened.")
+    assert airport_codes.validate_article(wrong_later)
+
+    city_only = {
+        "zh": {"title": "多倫多航班", "body": ["航班自巴亞爾塔港抵達多倫多。"]},
+        "en": {"title": "Toronto flights", "body": ["The flight arrived from Puerto Vallarta."]},
+    }
+    assert airport_codes.enforce_article(city_only) == (False, [])
+    assert airport_codes.validate_article(city_only) == []
+    city_only["entities"] = {"airports": ["New York JFK"]}
+    city_only["en"]["body"] = ["The flight departed New York for Toronto."]
+    assert airport_codes.enforce_article(city_only) == (False, [])
+
+    # These source articles triggered the incident: verify every named airport
+    # in the affected paragraphs, both surfaces, and a stable second pass.
+    import json
+    cases = [
+        ("scheduled-klm-a350-toronto-first-flight-20261030.json", "a-klm-", {"YYZ", "YUL"}),
+        ("scheduled-avelo-united-route-cancellations-20261029.json", "a-avelo-", {"ILM", "IAD", "ORD", "JFK"}),
+        ("2026-10-29T19.json", "a-20261029-1955-china-airlines", {"BKK", "KHH"}),
+        ("scheduled-westjet-737-max-catering-truck-toronto-20261028.json", "a-westjet-", {"YYZ"}),
+    ]
+    for filename, prefix, expected in cases:
+        batch = json.loads((ROOT / "data" / "articles" / filename).read_text(encoding="utf-8"))
+        article = next(row for row in batch["articles"] if row["id"].startswith(prefix))
+        airport_codes.enforce_article(article)
+        assert airport_codes.validate_article(article) == [], article["id"]
+        zh_body = " ".join(article["zh"]["body"])
+        for code in expected:
+            assert f"（{code}）" in zh_body, (article["id"], code)
+        assert "Suvarnabhumi Airport (KHH)" not in str(article["en"])
+        assert airport_codes.enforce_article(article) == (False, [])
+
+    # The CLI must print a review warning when a named
+    # airport cannot be verified, even with no extracted airport metadata.
+    import contextlib
+    import io
+    import tempfile
+    from unittest.mock import patch
+    with tempfile.TemporaryDirectory() as directory:
+        unknown = copy.deepcopy(unrelated)
+        unknown["id"] = "unknown-airport-review"
+        unknown["publishedUtc"] = airport_codes.now_utc().isoformat()
+        path = Path(directory) / "unknown.json"
+        path.write_text(json.dumps({"articles": [unknown]}), encoding="utf-8")
+        output = io.StringIO()
+        with patch.object(airport_codes, "ARTICLES_DIR", Path(directory)):
+            with contextlib.redirect_stdout(output):
+                assert airport_codes.main() == 0
+        assert "::warning::airport_codes: pending airport identity review:" in output.getvalue()
+        assert "unknown-airport-review" in output.getvalue()
+
     print("PASS test_airport_codes")
     return 0
 
