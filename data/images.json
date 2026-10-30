@@ -11892,7 +11892,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-30T14:02:45.013510+00:00"
+      "checked_utc": "2026-10-30T19:11:24.222219+00:00"
     },
     "a-easa-annual-safety-review-2026-20261027": {
       "status": "matched",
@@ -12067,7 +12067,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-30T14:02:45.013510+00:00"
+      "checked_utc": "2026-10-30T19:11:24.222219+00:00"
     },
     "a-yemenia-a320-amman-hail-strike-20261026": {
       "status": "matched",
@@ -12537,18 +12537,17 @@
     "a-20261030-0903-china-airlines-and-eva-air-flights-resum": {
       "status": "matched",
       "image": {
-        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/China_Airlines_Airbus_A350-900_B-18915_departing_Taoyuan_February_2026.jpg/1280px-China_Airlines_Airbus_A350-900_B-18915_departing_Taoyuan_February_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "link": "https://commons.wikimedia.org/w/index.php?curid=187506224",
-        "credit": "4300streetcar",
-        "license": "CC BY 4.0",
-        "provider": "Wikimedia Commons",
-        "kind": "file_photo",
-        "matched": "China Airlines Airbus A350-900",
+        "url": "https://www.aerotime.aero/images/2026/07/airline-china-airlines-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/taiwanese-carriers-resume-russian-overflights-after-pakistan-airspace-ban",
         "subject": "China Airlines Airbus A350-900",
-        "description": "China Airlines Airbus A350-900 B-18915 departing Taoyuan February 2026",
-        "photoYear": 2026
+        "sourceCaption": "#image_title",
+        "credit": "#image_title",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
       },
-      "checked_utc": "2026-10-30T09:08:19.097099+00:00"
+      "checked_utc": "2026-10-30T19:11:24.222219+00:00"
     },
     "a-singapore-airlines-aether-saf-project-beacon-20261028": {
       "status": "none",
@@ -12595,6 +12594,22 @@
       ],
       "checked_utc": "2026-10-30T14:02:45.013510+00:00",
       "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
+    },
+    "a-pal-a350-1000-manila-san-francisco-20261030": {
+      "status": "matched",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Philippine_Airlines%27_A350-1000_%28RP-C3510%29.jpg/1280px-Philippine_Airlines%27_A350-1000_%28RP-C3510%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=187264367",
+        "credit": "John Andrei Policarpio",
+        "license": "CC BY-SA 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "Philippine Airlines Airbus A350-1000",
+        "subject": "Philippine Airlines Airbus A350-1000",
+        "description": "Philippine Airlines' A350-1000 (RP-C3510)",
+        "photoYear": 2026
+      },
+      "checked_utc": "2026-10-30T19:11:24.222219+00:00"
     }
   },
   "sources": {
@@ -15721,8 +15736,8 @@
     "https://www.aerotime.aero/articles/amac-aerospace-companies-see-strong-demand-across-key-services": {
       "image": null,
       "rejection_reason": "no-event-photo",
-      "parser_version": 4,
-      "next_retry_utc": "2026-10-30T10:08:47.112850+00:00"
+      "parser_version": 5,
+      "next_retry_utc": "2026-10-31T01:11:24.222219+00:00"
     },
     "https://www.aerotime.aero/articles/hynaero-leonardo-amphibious-firefighting-aircraft": {
       "image": null,
@@ -15756,7 +15771,7 @@
       "image": null,
       "rejection_reason": "no-event-photo",
       "parser_version": 5,
-      "next_retry_utc": "2026-10-30T15:08:19.097099+00:00"
+      "next_retry_utc": "2026-10-31T01:11:24.222219+00:00"
     },
     "https://www.aerotime.aero/articles/etihad-airbus-a380-lands-bangkok-thailand": {
       "image": {
@@ -15784,7 +15799,7 @@
       "image": null,
       "rejection_reason": "no-event-photo",
       "parser_version": 5,
-      "next_retry_utc": "2026-10-30T15:08:19.097099+00:00"
+      "next_retry_utc": "2026-10-31T01:11:24.222219+00:00"
     },
     "https://www.cna.com.tw/news/ahel/202610280011.aspx": {
       "image": null,
@@ -15849,8 +15864,8 @@
     "https://www.aerotime.aero/articles/alaska-airlines-announces-boeing-737-max-8-route-linking-anchorage-to-tokyo": {
       "image": null,
       "rejection_reason": "aircraft-model-mismatch",
-      "parser_version": 4,
-      "next_retry_utc": "2026-10-30T10:08:47.112850+00:00"
+      "parser_version": 5,
+      "next_retry_utc": "2026-10-31T01:11:24.222219+00:00"
     },
     "https://www.cna.com.tw/news/ahel/202610290318.aspx": {
       "image": null,
@@ -15927,6 +15942,28 @@
       "rejection_reason": "aircraft-model-mismatch",
       "parser_version": 5,
       "next_retry_utc": "2026-10-30T20:02:45.013510+00:00"
+    },
+    "https://www.aerotime.aero/articles/pal-deploys-a350-1000-daily-on-manila-san-francisco-route-ahead-of-year-end-peak": {
+      "image": null,
+      "rejection_reason": "aircraft-model-mismatch",
+      "parser_version": 5,
+      "next_retry_utc": "2026-10-31T01:11:24.222219+00:00"
+    },
+    "https://www.aerotime.aero/articles/taiwanese-carriers-resume-russian-overflights-after-pakistan-airspace-ban": {
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/07/airline-china-airlines-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/taiwanese-carriers-resume-russian-overflights-after-pakistan-airspace-ban",
+        "subject": "China Airlines Airbus A350-900",
+        "sourceCaption": "#image_title",
+        "credit": "#image_title",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "rejection_reason": null,
+      "parser_version": 5,
+      "next_retry_utc": "2026-10-31T01:11:24.222219+00:00"
     }
   }
 }

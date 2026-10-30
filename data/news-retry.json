@@ -4120,12 +4120,12 @@
         "https://www.aerotime.aero/articles/faa-embraer-e195-e2-automatic-takeoff-system"
       ],
       "contentFailures": 1,
-      "serviceFailures": 0,
+      "serviceFailures": 1,
       "history": [],
-      "updatedUtc": "2026-10-30T08:44Z",
-      "failureClass": "content_validation",
+      "updatedUtc": "2026-10-30T18:55Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-30T10:44Z",
+      "nextRetryUtc": "2026-10-30T20:55Z",
       "title": "FAA proposes safety rules for Embraer’s automatic takeoff system"
     },
     "ea4118995e79ac2c55ef15ad": {
@@ -4289,18 +4289,33 @@
       "nextRetryUtc": "2026-10-30T11:03Z",
       "title": "Singapore Airlines becomes first airline to buy SAF from Aether’s Project Beacon"
     },
-    "b4326bf360df650b423d7408": {
+    "964d7461a2c745166982f84e": {
       "sourceUrls": [
-        "https://www.aerotime.aero/articles/pal-deploys-a350-1000-daily-on-manila-san-francisco-route-ahead-of-year-end-peak"
+        "https://www.easa.europa.eu/newsroom-and-events/news/easa-and-eurocontrol-joint-air-traffic-controller-competency-based-training-and-assessment-cbta",
+        "https://www.eurocontrol.int/news/easa-and-eurocontrol-joint-air-traffic-controller-competency-based-training-and-assessment"
       ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
+      "contentFailures": 1,
+      "serviceFailures": 0,
       "history": [],
-      "updatedUtc": "2026-10-30T13:39Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-10-30T18:55Z",
+      "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-10-30T15:39Z",
-      "title": "PAL deploys A350-1000 daily on Manila–San Francisco route ahead of year-end peak"
+      "nextRetryUtc": "2026-10-30T20:55Z",
+      "title": "EASA and EUROCONTROL joint Air Traffic Controller Competency based Training and Assessment (CBTA) Workshop for National Competent Authorities"
+    },
+    "e0b748d3511cf7802576c9a0": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/archer-ita-airways-electric-air-taxis-italy",
+        "https://www.aerotime.aero/articles/archer-aviation-ita-airways-air-taxi-network-italy-evtol"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-10-30T18:55Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-10-30T20:55Z",
+      "title": "Archer Aviation and ITA Airways unveil plan to bring air taxi network to Italy"
     }
   }
 }
