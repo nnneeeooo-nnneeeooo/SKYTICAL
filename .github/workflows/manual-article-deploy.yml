@@ -57,6 +57,7 @@ jobs:
       - name: Build site from committed data
         env:
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
+          ADMIN_KEY: ${{ secrets.ADMIN_KEY }}
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           SKYTICAL_GA4_MEASUREMENT_ID: ${{ vars.SKYTICAL_GA4_MEASUREMENT_ID }}
