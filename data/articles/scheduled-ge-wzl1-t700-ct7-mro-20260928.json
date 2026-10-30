@@ -6,7 +6,18 @@
       "sourcePublishedUtc": "2026-09-28T00:00:00Z",
       "cat": "mil",
       "primarySource": "GE Aerospace",
-      "image": null,
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Agusta-Westland_AW149_I-RAII_%2811820382365%29.jpg/1280px-Agusta-Westland_AW149_I-RAII_%2811820382365%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=30708146",
+        "credit": "Alan Wilson",
+        "license": "CC BY-SA 2.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "AW149 aircraft",
+        "subject": "AW149",
+        "description": "Agusta-Westland AW149 I-RAII (11820382365)",
+        "photoYear": 2013
+      },
       "zh": {
         "title": "GE Aerospace 與波蘭 WZL-1 敲定 T700／CT7 引擎在地維修協議",
         "summary": "最終協議授權 WZL-1 在波蘭維修 T700／CT7 系列引擎，涵蓋波蘭軍方操作的 AH-64E、S-70i、AW149 與 AW101。",
@@ -26,22 +37,60 @@
         ]
       },
       "sources": [
-        {"name": "GE Aerospace", "url": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-military-aviation-works-no-1-wzl-1-finalize-t700-localization"}
+        {
+          "name": "GE Aerospace",
+          "url": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-military-aviation-works-no-1-wzl-1-finalize-t700-localization"
+        }
       ],
       "writer": "scheduled:GPT 6.1 Sol",
-      "writerModels": ["GPT 6.1 Sol"],
+      "writerModels": [
+        "GPT 6.1 Sol"
+      ],
       "articleFormat": "full",
-      "availableLanguages": ["zh", "en"],
-      "entities": {"manufacturers": ["GE Aerospace", "Boeing", "Sikorsky", "Leonardo"], "operators": ["Polish Armed Forces", "WZL-1"], "aircraft": ["AH-64E Apache", "S-70i Black Hawk", "AW149", "AW101"], "airports": []},
+      "availableLanguages": [
+        "zh",
+        "en"
+      ],
+      "entities": {
+        "manufacturers": [
+          "GE Aerospace",
+          "Boeing",
+          "Sikorsky",
+          "Leonardo"
+        ],
+        "operators": [
+          "Polish Armed Forces",
+          "WZL-1"
+        ],
+        "aircraft": [
+          "AH-64E Apache",
+          "S-70i Black Hawk",
+          "AW149",
+          "AW101"
+        ],
+        "airports": []
+      },
       "scheduledNews": {
         "version": 1,
         "eventKey": "ge-wzl1-t700-ct7-mro-20260928",
         "checkedUtc": "2026-10-01T13:13:06Z",
-        "modelAttribution": {"kind": "user_requested_label", "verifiedRuntimeModel": false},
+        "modelAttribution": {
+          "kind": "user_requested_label",
+          "verifiedRuntimeModel": false
+        },
         "facts": [
-          {"claim": "GE Aerospace and WZL-1 signed a final agreement for licensed T700/CT7 maintenance, repair and overhaul capability in Poland.", "sourceUrl": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-military-aviation-works-no-1-wzl-1-finalize-t700-localization"},
-          {"claim": "The capability will support Polish AH-64E, S-70i, AW149 and AW101 fleets.", "sourceUrl": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-military-aviation-works-no-1-wzl-1-finalize-t700-localization"},
-          {"claim": "GE reports more than 25,000 T700/CT7 engines delivered and over 130 million flight hours.", "sourceUrl": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-military-aviation-works-no-1-wzl-1-finalize-t700-localization"}
+          {
+            "claim": "GE Aerospace and WZL-1 signed a final agreement for licensed T700/CT7 maintenance, repair and overhaul capability in Poland.",
+            "sourceUrl": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-military-aviation-works-no-1-wzl-1-finalize-t700-localization"
+          },
+          {
+            "claim": "The capability will support Polish AH-64E, S-70i, AW149 and AW101 fleets.",
+            "sourceUrl": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-military-aviation-works-no-1-wzl-1-finalize-t700-localization"
+          },
+          {
+            "claim": "GE reports more than 25,000 T700/CT7 engines delivered and over 130 million flight hours.",
+            "sourceUrl": "https://www.geaerospace.com/news/press-releases/ge-aerospace-and-military-aviation-works-no-1-wzl-1-finalize-t700-localization"
+          }
         ]
       }
     }
