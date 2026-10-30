@@ -1,7 +1,7 @@
 """images.py — attach a real, matching photo to published articles.
 
-Runs after write.py. A captioned CNA publicity photo from the exact cited
-article is checked first, including when a provisional Commons photo exists.
+Runs after write.py. Official airline/airport photos and captioned publisher
+photos from cited sources are checked before provisional Commons fallbacks.
 Source lookups have a separate six-request budget and retry failures after
 six hours within the same seven-day freshness window.
 For each remaining recent article without an image it tries,

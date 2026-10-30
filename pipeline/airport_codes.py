@@ -41,12 +41,13 @@ _ZH_AIRPORT_RE = re.compile(
 )
 _EN_GENERIC_AIRPORT_RE = re.compile(
     r"\b[A-ZÀ-ÖØ-Þ][A-Za-zÀ-ÖØ-öø-ÿ0-9'’.-]*(?:\s+"
-    r"[A-ZÀ-ÖØ-Þa-zà-öø-ÿ0-9'’.-]+){0,7}\s+Airport\b",
+    r"[A-ZÀ-ÖØ-Þa-zà-öø-ÿ0-9'’.-]+){0,7}?\s+Airport\b",
     re.I,
 )
 _GENERIC_ZH = {
     "當地機場", "主要機場", "相關機場", "國際機場", "一座機場", "多座機場",
-    "該座機場", "這座機場",
+    "該座機場", "這座機場", "英國機場", "該繁忙機場", "最繁忙的機場",
+    "目的地機場", "起降機場", "出發機場", "抵達機場", "備降機場",
 }
 _MILITARY_BASE_RE = re.compile(
     r"\b(?:air force|air national guard|air base|air station|"
@@ -174,6 +175,13 @@ def _strip_iata_annotation(value: str) -> str:
     return text.strip()
 
 
+def _identity_name(value: str) -> str:
+    # JFK is part of the reviewed name "New York JFK", not a removable
+    # annotation that would make the city "New York" an airport alias.
+    return (value if _norm(value) in _reviewed_aliases()
+            else _strip_iata_annotation(value))
+
+
 def _row_for_code(code: str, rows: dict[str, dict], tw_rows: dict[str, dict]):
     code = str(code or "").strip().upper()
     if code not in rows and code not in tw_rows:
@@ -212,9 +220,8 @@ def resolve_airport(entity: str) -> dict | None:
         return {"code": reviewed_code, "name": identity,
                 "name_en": identity}
 
-    tokens = re.findall(r"\b[A-Z]{3}\b", raw)
-    if _norm(identity) == _norm(raw) and len(tokens) == 1:
-        return _row_for_code(tokens[0], rows, tw_rows)
+    if re.fullmatch(r"[A-Z]{3}", raw):
+        return _row_for_code(raw, rows, tw_rows)
     # The registry's name-core index intentionally supports full names such
     # as "San Francisco International Airport", but that core must not turn
     # a city-only entity into an airport identity.
@@ -226,13 +233,8 @@ def resolve_airport(entity: str) -> dict | None:
     if len(candidates) == 1:
         return _row_for_code(next(iter(candidates)), rows, tw_rows)
 
-    # An exact code, or an otherwise unresolved entity carrying an explicit
-    # code, remains usable as a last resort.  This branch is deliberately
-    # after name resolution so a bad annotation cannot override a known name.
-    for token in tokens:
-        row = _row_for_code(token, rows, tw_rows)
-        if row:
-            return row
+    # An embedded annotation does not verify an otherwise unknown name.
+    # Code-only entities were already resolved above.
     return None
 
 
@@ -276,11 +278,11 @@ def _set_slot(article: dict, lang: str, key: str, index: int | None,
 
 def _airport_patterns(entity: str, row: dict) -> list[re.Pattern]:
     values = []
-    entity_value = _strip_iata_annotation(str(entity or "").strip())
+    entity_value = _identity_name(str(entity or "").strip())
     for value in (entity_value, row.get("name_en"), row.get("name"),
                   *_reviewed_alias_values(str(row.get("code") or ""))):
         raw_value = str(value or "").strip()
-        stripped_value = _strip_iata_annotation(raw_value)
+        stripped_value = _identity_name(raw_value)
         for candidate in (raw_value, stripped_value):
             # An ICAO/IATA-only entity is metadata, not the visible airport
             # identity. Matching it first would place TPE after "ICAO code
@@ -300,7 +302,8 @@ def _airport_patterns(entity: str, row: dict) -> list[re.Pattern]:
         if spaced:
             variants.add(spaced)
         for variant in variants:
-            patterns.append(re.compile(re.escape(variant), re.I))
+            patterns.append(re.compile(r"(?<![A-Za-z])" + re.escape(variant)
+                                       + r"(?![A-Za-z])", re.I))
     return patterns
 
 
@@ -326,13 +329,13 @@ def _zh_candidates(text: str):
     return matches
 
 
-def _find_zh_identity_match(text: str, entity: str, row: dict):
-    """Find a reviewed airport identity in a translated visible slot."""
+def _zh_identity_patterns(entity: str, row: dict):
+    """Build patterns for known identities without translation guessing."""
     values = []
     for value in (entity, row.get("name_zh"), row.get("name_en"),
                   row.get("name"), *_reviewed_alias_values(
                       str(row.get("code") or ""))):
-        value = _strip_iata_annotation(str(value or "").strip())
+        value = _identity_name(str(value or "").strip())
         if (value and not re.fullmatch(r"[A-Z]{3,4}", value)
                 and value not in values):
             values.append(value)
@@ -343,14 +346,13 @@ def _find_zh_identity_match(text: str, entity: str, row: dict):
         if not value.endswith("機場"):
             patterns.append(re.compile(re.escape(value + "國際機場")))
             patterns.append(re.compile(re.escape(value + "機場")))
-    hits = []
-    for pattern in patterns:
-        match = pattern.search(text)
-        if match:
-            hits.append(match)
-    if not hits:
-        return None
-    return min(hits, key=lambda match: (match.start(), -len(match.group(0))))
+    return patterns
+
+
+def _find_zh_identity_match(text: str, entity: str, row: dict):
+    hits = [match for pattern in _zh_identity_patterns(entity, row)
+            if (match := pattern.search(text))]
+    return min(hits, key=lambda m: (m.start(), -len(m.group(0)))) if hits else None
 
 
 def _insert_code(text: str, start: int, end: int, code: str, lang: str) -> str:
@@ -516,17 +518,61 @@ def _visible_has_code(article: dict, lang: str, code: str) -> bool:
                _slots(article, lang))
 
 
+def _visible_airport_names(article: dict) -> list[str]:
+    """Discover names in visible copy independently of extracted metadata.
+
+    Known short aliases are allowed, but city-only endpoints are never added.
+    Unknown explicit airport names remain review items instead of inheriting
+    another airport's code. Resolve suffixes to exclude surrounding prose.
+    """
+    found = set()
+    cfg = load_json(ROOT / "config" / "airport_iata_aliases.json", {})
+    reviewed = cfg.get("aliases") or {}
+    for lang in ("zh", "en"):
+        for _key, _index, text in _slots(article, lang):
+            known_spans = []
+            for name in reviewed:
+                pattern = (re.escape(name) if re.search(r"[\u3400-\u9fff]", name)
+                           else r"(?<![A-Za-z])" + re.escape(name) + r"(?![A-Za-z])")
+                for match in re.finditer(pattern, text, re.I):
+                    found.add(name)
+                    known_spans.append((match.start(), match.end()))
+            candidates = (_ZH_AIRPORT_RE.finditer(text) if lang == "zh"
+                          else _EN_GENERIC_AIRPORT_RE.finditer(text))
+            for match in candidates:
+                name = match.group(0)
+                if any(start < match.end() and end > match.start()
+                       for start, end in known_spans):
+                    continue
+                suffixes = ([name[i:] for i in range(len(name) - 2)]
+                            if lang == "zh" else
+                            [name[m.start():] for m in re.finditer(r"\b\w", name)])
+                resolved = next((value for value in suffixes
+                                 if resolve_airport(value)), None)
+                if resolved:
+                    found.add(resolved)
+                elif lang == "zh" and not any(
+                        name == generic or (generic != "國際機場"
+                                            and name.endswith(generic))
+                        for generic in _GENERIC_ZH):
+                    found.add(name)
+                elif lang == "en" and re.search(r"[A-Z]\w+.* Airport$", name):
+                    found.add(name)
+    return sorted(found)
+
+
 def enforce_article(article: dict) -> tuple[bool, list[str]]:
     """Add headline/body IATA codes; return (changed, unresolved entities)."""
     entities = article.get("entities") or {}
     airports = entities.get("airports") if isinstance(entities, dict) else []
-    if not isinstance(airports, list) or not airports:
-        return False, []
+    if not isinstance(airports, list):
+        airports = []
 
     resolved = []
     unresolved = []
     seen_codes = set()
-    for entity in airports:
+    visible_names = _visible_airport_names(article)
+    for entity in [*airports, *visible_names]:
         name = str(entity or "").strip()
         row = resolve_airport(name)
         if not row:
@@ -542,128 +588,9 @@ def enforce_article(article: dict) -> tuple[bool, list[str]]:
     if not resolved:
         return False, unresolved
 
+    # Only an identified name may receive a code. Paragraph order, a lone
+    # resolved entity, and an existing code are not proof of airport identity.
     changed = False
-    en_locations = {}
-    by_slot: dict[tuple[str, int | None], list[tuple[int, int, str]]] = defaultdict(list)
-    for item in resolved:
-        loc = _find_en_match(article, item["entity"], item["row"])
-        if loc:
-            key, index, start, end = loc
-            en_locations[item["code"]] = (key, index, start, end)
-            by_slot[(key, index)].append((start, end, item["code"]))
-
-    # English: exact/official airport identity decides the code placement.
-    for (key, index), matches in by_slot.items():
-        text = next(value for k, i, value in _slots(article, "en")
-                    if k == key and i == index)
-        for start, end, code in sorted(matches, reverse=True):
-            new_text = _insert_code(text, start, end, code, "en")
-            changed |= new_text != text
-            text = new_text
-        cleaned = _clean_punctuation_spacing(text)
-        changed |= cleaned != text
-        text = cleaned
-        _set_slot(article, "en", key, index, text)
-
-    # Chinese: pair airport mentions with resolved English mentions in the
-    # equivalent title/summary/paragraph. This avoids asking a transliteration
-    # heuristic to invent an airport identity.
-    zh_done = set()
-
-    # First honor a reviewed Chinese identity wherever it appears. Doing
-    # this before English-slot pairing is important when the Chinese title
-    # mentions an airport before the corresponding English body paragraph.
-    for item in resolved:
-        code = item["code"]
-        for key, index, text in _slots(article, "zh"):
-            match = _find_zh_identity_match(
-                text, item["entity"], item["row"])
-            if not match:
-                continue
-            new_text = _insert_code(text, match.start(), match.end(), code, "zh")
-            cleaned = _clean_punctuation_spacing(new_text)
-            changed |= cleaned != text
-            _set_slot(article, "zh", key, index, cleaned)
-            zh_done.add(code)
-            break
-
-    for slot, matches in by_slot.items():
-        key, index = slot
-        zh_slot = next((value for k, i, value in _slots(article, "zh")
-                        if k == key and i == index), None)
-        if zh_slot is None:
-            continue
-        candidates = _zh_candidates(zh_slot)
-        ordered = sorted(
-            (row for row in matches if row[2] not in zh_done),
-            key=lambda row: row[0],
-        )
-        if not ordered:
-            continue
-        if len(ordered) == 1 and len(candidates) == 1:
-            pairs = [(candidates[0], ordered[0][2])]
-        else:
-            continue
-
-        text = zh_slot
-        for match, code in sorted(
-                pairs, key=lambda pair: pair[0].start(), reverse=True):
-            new_text = _insert_code(text, match.start(), match.end(), code, "zh")
-            changed |= new_text != text
-            text = new_text
-            zh_done.add(code)
-        cleaned = _clean_punctuation_spacing(text)
-        changed |= cleaned != text
-        text = cleaned
-        _set_slot(article, "zh", key, index, text)
-
-    # Single-airport fallback for bilingual wording that is not structurally
-    # aligned. A lone resolved airport cannot be confused with another code.
-    if len(resolved) == 1:
-        item = resolved[0]
-        code = item["code"]
-        if code not in en_locations and not _visible_has_code(article, "en", code):
-            for key, index, text in _slots(article, "en"):
-                match = _EN_GENERIC_AIRPORT_RE.search(text)
-                if match:
-                    new_text = _insert_code(text, match.start(), match.end(), code, "en")
-                    changed |= new_text != text
-                    _set_slot(article, "en", key, index, new_text)
-                    break
-        if code not in zh_done and not _visible_has_code(article, "zh", code):
-            zh_name = str(item["row"].get("name_zh") or "").strip()
-            placed = False
-            if zh_name:
-                for key, index, text in _slots(article, "zh"):
-                    pos = text.find(zh_name)
-                    if pos >= 0:
-                        end = pos + len(zh_name)
-                        new_text = _insert_code(text, pos, end, code, "zh")
-                        changed |= new_text != text
-                        _set_slot(article, "zh", key, index, new_text)
-                        placed = True
-                        break
-            if not placed:
-                for key, index, text in _slots(article, "zh"):
-                    match = _find_zh_identity_match(
-                        text, item["entity"], item["row"])
-                    if match:
-                        new_text = _insert_code(
-                            text, match.start(), match.end(), code, "zh")
-                        changed |= new_text != text
-                        _set_slot(article, "zh", key, index, new_text)
-                        placed = True
-                        break
-            if not placed:
-                for key, index, text in _slots(article, "zh"):
-                    candidates = _zh_candidates(text)
-                    if len(candidates) == 1:
-                        match = candidates[0]
-                        new_text = _insert_code(text, match.start(), match.end(), code, "zh")
-                        changed |= new_text != text
-                        _set_slot(article, "zh", key, index, new_text)
-                        break
-
     # A headline and the article body are separate reader-visible surfaces.
     # Annotate the first airport identity in each even when an earlier stage
     # already placed the same code in the headline.
@@ -741,11 +668,12 @@ def validate_article(article: dict) -> list[str]:
     entities = article.get("entities") or {}
     airports = entities.get("airports") if isinstance(entities, dict) else []
     if not isinstance(airports, list):
-        return []
+        airports = []
 
     resolved = []
     seen_codes = set()
-    for entity in airports:
+    visible_names = _visible_airport_names(article)
+    for entity in [*airports, *visible_names]:
         name = str(entity or "").strip()
         row = resolve_airport(name)
         if not row or row["code"] in seen_codes:
@@ -753,7 +681,8 @@ def validate_article(article: dict) -> list[str]:
         seen_codes.add(row["code"])
         resolved.append({"entity": name, "row": row, "code": row["code"]})
 
-    violations = []
+    violations = [f"unresolved airport: {name}" for name in visible_names
+                  if not resolve_airport(name)]
     reported = set()
 
     def report(item, lang: str, key: str, index: int | None) -> None:
@@ -765,51 +694,6 @@ def validate_article(article: dict) -> list[str]:
             f"{item['entity']} ({item['code']}) in {lang}:{key}"
         )
 
-    en_by_slot: dict[tuple[str, int | None], list[tuple[int, int, dict]]] = defaultdict(list)
-    direct_zh_codes = set()
-    for item in resolved:
-        en_loc = _find_en_match(article, item["entity"], item["row"])
-        if en_loc:
-            key, index, start, end = en_loc
-            en_by_slot[(key, index)].append((start, end, item))
-            text = _slot_text(article, "en", key, index)
-            if (not _has_immediate_code(text, end, item["code"])
-                    and not _code_precedes(
-                        article, "en", key, index, start, item["code"],
-                        item["entity"], item["row"])):
-                report(item, "en", key, index)
-
-        for key, index, text in _slots(article, "zh"):
-            match = _find_zh_identity_match(
-                text, item["entity"], item["row"])
-            if not match:
-                continue
-            direct_zh_codes.add(item["code"])
-            if (not _has_immediate_code(text, match.end(), item["code"])
-                    and not _code_precedes(
-                        article, "zh", key, index, match.start(),
-                        item["code"], item["entity"], item["row"])):
-                report(item, "zh", key, index)
-            break
-
-    # For translated airport names without a reviewed Chinese alias, pair the
-    # Chinese airport mentions with the English mentions in the same visible
-    # slot, using their document order.
-    for (key, index), matches in en_by_slot.items():
-        zh_text = _slot_text(article, "zh", key, index)
-        candidates = _zh_candidates(zh_text)
-        if len(matches) > 1 or len(candidates) != len(matches):
-            continue
-        for candidate, (_start, _end, item) in zip(
-                candidates, sorted(matches, key=lambda row: row[0])):
-            if item["code"] in direct_zh_codes:
-                continue
-            if (not _has_immediate_code(zh_text, candidate.end(), item["code"])
-                    and not _code_precedes(
-                        article, "zh", key, index, candidate.start(),
-                        item["code"], item["entity"], item["row"])):
-                report(item, "zh", key, index)
-
     # Headline and body must each introduce a named airport with its code.
     # Do not let a correctly annotated headline mask a missing body code.
     for item in resolved:
@@ -820,6 +704,18 @@ def validate_article(article: dict) -> list[str]:
                 if not _has_immediate_code(text, end, item["code"]):
                     report(item, lang, key, index)
 
+    for item in resolved:
+        for lang in ("zh", "en"):
+            for key, index, text in _slots(article, lang):
+                patterns = (_airport_patterns(item["entity"], item["row"])
+                            if lang == "en" else
+                            _zh_identity_patterns(item["entity"], item["row"]))
+                for pattern in patterns:
+                    for match in pattern.finditer(text):
+                        annotation = re.match(r"\s*[（(]\s*([A-Z]{3})\s*[)）]",
+                                              text[match.end():])
+                        if annotation and annotation.group(1) != item["code"]:
+                            report(item, lang, key, index)
     return violations
 
 
@@ -850,12 +746,16 @@ def main() -> int:
                 unresolved_total += len(unresolved)
                 print(
                     _console_safe(
-                        "airport_codes: no unique IATA match for "
+                        "::warning::airport_codes: pending airport identity review: "
                         + ", ".join(unresolved)
                         + f" in {article.get('id') or path.name}"
                     )
                 )
-            violations = validate_article(article)
+            # Unknown names are explicit review warnings, not proven code
+            # placement errors. Never stop all news for a generic airport
+            # reference or an untranslated name in an older article.
+            violations = [issue for issue in validate_article(article)
+                          if not issue.startswith("unresolved airport:")]
             if violations:
                 violation_total += len(violations)
                 print(
