@@ -234,6 +234,7 @@
       element.dispatchEvent(new Event('input',{bubbles:true}));
     });
     element.addEventListener('keydown', event => {
+      if(event.isComposing || event.keyCode === 229) return;
       if(event.key === 'Enter' && !event.shiftKey && !event.ctrlKey && !event.metaKey) {
         event.preventDefault();element.blur();clearTimeout(draftTimer);saveDraft();
       }
