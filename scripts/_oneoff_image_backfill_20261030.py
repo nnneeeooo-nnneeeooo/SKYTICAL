@@ -425,8 +425,66 @@ def finish_verified_editorial():
           "IMAGES",report["finalImages"],"MISSING",len(missing),"NOT_FOUND",report["missingExpectedIds"],flush=True)
     return 0 if not missing and len(encountered)==len(patches) else 2
 
+
+def verify_new_image_links():
+    import concurrent.futures
+    from collections import Counter
+    import requests
+    images_by_url = {}
+    suspicious=[]
+    flagged=("pic_fb.jpg","company-share.jpg","adobestock","shutterstock_","hqdefault.jpg","generic-social","default-share")
+    for path in (ROOT/"data/articles").glob("*.json"):
+        doc=json.loads(path.read_text(encoding="utf-8"))
+        for a in doc.get("articles") or []:
+            if not isinstance(a,dict) or not in_window(a) or a.get("archived") is True:
+                continue
+            img=a.get("image") or {}
+            url=str(img.get("url") or "")
+            if any(marker in url.lower() for marker in flagged):
+                suspicious.append({"id":a.get("id"),"url":url})
+            if str(img.get("matched") or "").startswith("editorial:"):
+                if url:
+                    images_by_url.setdefault(url,[]).append(a.get("id"))
+    def probe(job):
+        url, ids=job
+        try:
+            response=requests.get(url,headers={
+                "User-Agent":"Mozilla/5.0 (compatible; SKYTICAL/1.0; news-image-qa)",
+                "Accept":"image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
+            },timeout=(4,11),stream=True,allow_redirects=True)
+            status=response.status_code
+            ct=response.headers.get("Content-Type","").split(";")[0].strip().lower()
+            final=response.url
+            response.close()
+            return {"status":status,"contentType":ct,"url":url,"resolved":final[:220],"ids":ids}
+        except Exception as e:
+            return {"status":0,"contentType":"","url":url,"ids":ids,
+                    "reason":type(e).__name__ + ":" + str(e)[:100]}
+    checks=[]
+    with concurrent.futures.ThreadPoolExecutor(max_workers=12) as pool:
+        for i,out in enumerate(pool.map(probe,images_by_url.items()),1):
+            checks.append(out)
+            if i%30==0: print("IMAGE_CHECK_PROGRESS",i,"/",len(images_by_url),flush=True)
+    bad=[x for x in checks if 400<=x["status"]<500 and x["status"] not in (403,429)
+         or 200<=x["status"]<300 and x["contentType"] not in ("image/jpeg","image/png","image/webp","image/gif","image/avif","image/svg+xml")]
+    forbidden=[x for x in checks if x["status"] in (403,429)]
+    other=[x for x in checks if x["status"]==0 or x["status"]>=500]
+    report_path=ROOT/"scripts/_oneoff_image_backfill_report.json"
+    report=json.loads(report_path.read_text(encoding="utf-8"))
+    report["linkQA"]={"checked":len(checks),"ok":len(checks)-len(bad)-len(forbidden)-len(other),
+        "broken":bad, "blocked":forbidden,"unconfirmed":other,"suspicious":suspicious}
+    report_path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    print("IMAGE_LINK_QA",json.dumps({
+        "tested":len(checks),"broken":len(bad),"blocked":len(forbidden),
+        "unconfirmed":len(other),"suspicious":len(suspicious),
+        "examplesBroken":bad[:12],"examplesBlocked":forbidden[:4],"suspiciousImg":suspicious[:15],
+    },ensure_ascii=False),flush=True)
+    return 0
+
 if __name__ == "__main__":
     result=main()
     if result == 0:
         result=finish_verified_editorial()
+    if result == 0:
+        result=verify_new_image_links()
     sys.exit(result)
