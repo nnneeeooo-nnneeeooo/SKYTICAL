@@ -15,7 +15,7 @@ async function main(){
   let stored=null,destination=null;
   await vm.runInNewContext(source,{
     document:{currentScript:{dataset:{base:'/SKYTICAL'}}},
-    sessionStorage:{setItem:(name,value)=>{stored=value;}},
+    sessionStorage:{setItem:(name,value)=>{stored=value;},removeItem(){}},
     location:{pathname:route,replace:value=>{destination=value;}},
   });
   assert.equal(stored,route);
@@ -25,7 +25,7 @@ async function main(){
     const element=()=>({style:{},setAttribute(){},append(child){this.link=child;}});
     await vm.runInNewContext(source,{
       document:{currentScript:{dataset:{base:'/SKYTICAL'}},getElementById:()=>null,createElement:element,body:{prepend:value=>banners.push(value)}},
-      sessionStorage:{getItem:()=>route},location:{pathname:'/SKYTICAL/'},
+      sessionStorage:{getItem:name=>name==='skytical-admin-route-v1'?route:null,setItem(){}},location:{pathname:'/SKYTICAL/'},
       fetch:async()=>{if(failure==='network')throw new Error('offline');return{ok:failure!=='http',text:async()=>''};},
       DOMParser:class{parseFromString(){return{body:{dataset:{}}};}},
     });
