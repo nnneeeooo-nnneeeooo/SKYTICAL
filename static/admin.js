@@ -327,7 +327,7 @@
     try{localStorage.removeItem(draftKey(record.id));}catch(_){say('無法清除草稿。');return;}
     dirty=false;location.reload();
   };
-  $('exit-admin').onclick=async()=>{await saveDraft();sessionStorage.removeItem('skytical-admin-route-v1');location.reload();};
+  $('exit-admin').onclick=async()=>{await saveDraft();sessionStorage.setItem('skytical-admin-route-v1-disabled','1');sessionStorage.removeItem('skytical-admin-route-v1');location.reload();};
   $('upload').onchange = async () => {
     imageBusy = true;
     $('publish').disabled = true;
