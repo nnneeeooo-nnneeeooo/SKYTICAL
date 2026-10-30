@@ -414,8 +414,6 @@
     event.preventDefault();clearTimeout(draftTimer);await saveDraft();location.assign(link.href);
   });
   window.addEventListener('beforeunload', event => {if((dirty && savedRevision !== draftRevision) || busy) {event.preventDefault(); event.returnValue = '';}});
-  try {manifest = await (await fetch(document.body.dataset.adminRoute+'articles.json', {cache:'no-store'})).json(); refreshLocation();await loadArticle();if(!original)say('管理模式已啟用，開啟任一篇新聞即可直接編輯。');}
-  catch (_) {say('無法載入文章索引，請重新整理。');}
   try {
     const stored = localStorage.getItem(vault);
     if (stored) {
@@ -424,4 +422,6 @@
       await verify(); say('GitHub 已自動連線。');
     }
   } catch (_) {token = ''; say('已保存的發布連線無法使用，請重新設定。');}
+  try {manifest = await (await fetch(document.body.dataset.adminRoute+'articles.json', {cache:'no-store'})).json(); refreshLocation();await loadArticle();if(!original)say('管理模式已啟用，開啟任一篇新聞即可直接編輯。');}
+  catch (_) {say('無法載入文章索引，請重新整理。');}
 })();
