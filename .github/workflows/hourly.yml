@@ -19,6 +19,10 @@ on:
       - "config/free_provider_probe.json"
       - "pipeline/article_schema.py"
       - "pipeline/build.py"
+      - "pipeline/admin_page.py"
+      - "static/admin*.js"
+      - "static/admin.css"
+      - "templates/admin*.html"
       - "pipeline/public_article.py"
       - "pipeline/common.py"
       - "pipeline/dedupe.py"
@@ -51,6 +55,13 @@ jobs:
       - name: Run pipeline regression tests
         run: |
           python tests/test_changelog.py
+          python tests/test_admin_page.py
+          node tests/test_admin_core.js
+          node tests/test_admin_activation.js
+          node --check static/admin.js
+          node --check static/admin-entry.js
+          node --check static/admin-activate.js
+          python tests/test_article_updates.py
           python tests/test_analytics.py
           node --check static/traffic-dashboard.js
           python tests/test_traffic_dashboard.py
@@ -198,6 +209,7 @@ jobs:
           # private usage-dashboard URL token (page skipped when unset)
           AVWIRE_USAGE_TOKEN: ${{ secrets.AVWIRE_USAGE_TOKEN }}
           # private manual-drafting URL/encryption token
+          ADMIN_KEY: ${{ secrets.ADMIN_KEY }}
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           # private Copilot panel; build-time visibility is not authorization
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
