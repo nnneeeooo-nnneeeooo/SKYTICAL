@@ -21,7 +21,7 @@
       const source = new DOMParser().parseFromString(await response.text(), "text/html");
       if (request !== revision) return;
       if (source.body.dataset.skyticalAdmin !== "true") throw new Error("管理入口內容不完整，請稍後重新開啟私人連結。");
-      try {sessionStorage.setItem("skytical-admin-route-v1", route);}
+      try {sessionStorage.removeItem("skytical-admin-route-v1-disabled");sessionStorage.setItem("skytical-admin-route-v1", route);}
       catch (_) {throw new Error("瀏覽器禁止儲存管理模式，請允許網站儲存後重新開啟私人連結。");}
       location.replace(`${base}/`);
     } catch (error) {
