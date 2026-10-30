@@ -390,6 +390,77 @@ def finish_verified_editorial():
       "a-manual-recovery-alaska-breeze-ticket-test-20261009":alaska,
       "a-manual-recovery-flydubai-investigation-target-20261009":flydubai
     }
+
+    # A second explicit editorial review replaces every detected default social
+    # thumbnail, stock agency photo, and a hotlink-blocked publisher image.
+    mandarin=commons("ATR72-600 ‘B-16861’ Mandarin Airlines (55464697205).jpg","Alan Wilson","CC BY-SA 4.0",
+                     "華信航空ATR72-600 B-16861","華信航空於2026年3月的實機資料照；非報導之政策發布現場。")
+    faa=commons("Federal Aviation Administration headquarters and sign.jpg","Runner1928","CC BY-SA 4.0",
+                "美國聯邦航空管理局FAA總部","美國FAA總部資料照片，非國會聽證或軟體系統現場。")
+    airportwork=commons("Taiwan Taoyuan Airport ground crew waving goodbye at flight May 2025.jpg","4300streetcar","CC BY 4.0",
+                         "桃園機場地勤作業","2025年拍攝的機場地勤資料照片，示意航機地面周轉，非報告樣本現場。")
+    jet2=commons("G-JZBT - Boeing 737-883 - Jet2 STN 050926.jpg","kitmasterbloke","CC BY 4.0",
+                  "Jet2 Boeing 737-800","Jet2同公司實機資料照，非退出拉帕爾馬航線當日拍攝。")
+    delta=commons("N404DX at AMS 20260929.jpg","VynedJ","CC BY 4.0",
+                  "達美航空Airbus A330-900neo N404DX","2026年9月29日達美同型機資料照，非特拉維夫事件現場航機。")
+    tsa=commons("20250507 TSA Security Checkpoint.jpg","美國國土安全部","Public domain (U.S. government)",
+                 "美國機場TSA安檢區","2025年美國機場安檢區官方資料照，非本次政策發布現場。")
+    hsr=commons("EMU900 and Taiwan High Speed Rail 700T near Fuzhou April 2026.jpg","4300streetcar",None,
+                "臺灣高鐵700T列車","2026年臺灣高鐵700T資料照片，非政策宣布現場。")
+    jal=commons("(JPN-Chiba) Japan Airlines Boeing 787-9 JA861J @ RJAA 2026-06-12.jpg","S5A-0043","CC BY 4.0",
+                 "日本航空Boeing 787-9","2026年6月日本航空實機資料照，非因故取消航班之現場。")
+    emirates777=commons("(SGP-Singapore) Emirates Boeing 777-31HER A6-EGU @ WSSS 2026-09-03.jpg",
+                       "S5A-0043",None,"阿聯酋航空Boeing 777-300ER",
+                       "2026年9月阿聯酋航空777實機資料照，非機鼻受損事件現場。")
+    airindia=commons("Air India B789.jpg","Sanil Nath","CC BY 4.0",
+                     "印度航空Boeing 787-9","2026年拍攝之印度航空787系列資料照片，非班機轉降事件現場。")
+    starlux=commons("Starlux Airlines Airbus A350-900 B-58502 departing Taoyuan February 2026.jpg",
+                   "Wikimedia Commons原作者（詳原圖頁）",None,"星宇航空A350-900 B-58502",
+                   "2026年星宇航空機隊實機資料照，非財報記者會。")
+    aerlingus=commons("Airbus A320-214 (c-n 4572, EI-DVK) 2026-10-09 Andre Gerwing Collection ID 031823.jpg",
+                      "André Gerwing","CC BY-SA 4.0","愛爾蘭航空Aer Lingus A320 EI-DVK",
+                      "2026年10月實機資料照，非取消航班當日拍攝。")
+    plant=commons("Airbus plane factory in Toulouse, France.JPG","Wikimedia Commons原作者（詳原圖頁）",None,
+                  "法國土魯斯Airbus飛機製造廠","空中巴士飛機生產設施資料照，非產業預測發表現場。")
+    corendon=commons("Boeing 737-82R (c-n 40723, TC-TJR) 2026-10-07 Andre Gerwing Collection ID 031486.jpg",
+                    "André Gerwing","CC BY-SA 4.0","Corendon Airlines波音737-800",
+                    "2026年10月Corendon同公司實機照片，非紐倫堡航班事件現場。")
+    multiairline=commons("Eastar Jet and Japan Airlines Boeing 737-800s at Taiwan Taoyuan Airport.jpg",
+                         "4300streetcar","CC BY 4.0","航空公司客機於國際機場作業",
+                         "多家航空公司在機場營運的資料照片，並非文中冬季新增航線的現場。")
+    kingair=commons("Beechcraft King Air 350i exterior.jpg","JetRequest.com","CC BY-SA 3.0",
+                    "Beechcraft King Air 350i","同系列King Air實機資料照片，非菲律賓海巡署實際移交之航機。")
+    patches.update({
+     "a-20261020-1025-taichung-airport-drone-defense-system-ac":drone,
+     "a-20261019-1357-riyadh-airport-reopens-with-prior-permis":riyadh,
+     "a-20261014-0801-taiwan-defence-ministry-reports-13-chine":military,
+     "a-20261007-0930-airadvisor-nervous-flyer-index-new-york":tsa,
+     "a-20261008-0448-taiwan-mnd-6-pla-ships-1-aircraft-detect":military,
+     "a-20261014-1853-us-lawmakers-seek-pause-to-smart-air-tra":faa,
+     "a-manual-recovery-mandarin-ntso-cabin-music-20261009":mandarin,
+     "a-20261013-1354-assaia-report-estimates-airlines-could-s":airportwork,
+     "a-20261013-1354-jet2-withdraws-from-la-palma-cancelling":jet2,
+     "a-20261004-1040-flydubai-flight-fz1073-diverted-to-saudi":flydubai,
+     "a-20261013-1932-delta-a330neo-isolated-at-tel-aviv-airpo":delta,
+     "a-20261020-0517-proposes-cargo-pricing-changes-and-a-cap":mandarin,
+     "a-20261016-1657-tsa-suddenly-halts-gate-access-expansion":tsa,
+     "a-20261006-1431-lawmaker-seeks-family-carriages-on-new-t":hsr,
+     "a-20261021-1637-japan-airlines-cancels-flights-at-nine-a":jal,
+     "a-20261018-2339-emirates-boeing-777-nose-cone-damaged-in":emirates777,
+     "a-20261014-1536-air-india-boeing-787-diverts-to-jaipur-a":airindia,
+     "a-20261020-2239-riyadhs-king-khalid-international-airpor":riyadh,
+     "a-20261012-1035-starlux-september-revenue-rises-69-as-pa":starlux,
+     "a-20261020-1522-aer-lingus-cancels-all-flights-to-five-d":aerlingus,
+     "a-20261013-0352-king-khalid-international-airport-closur":riyadh,
+     "a-20261013-0352-riyadh-airport-recorded-one-departure-as":riyadh,
+     "a-20261016-0139-lufthansa-directs-selected-flights-to-fr":lufthansa,
+     "a-20261014-0209-cirium-cuts-20-year-aircraft-delivery-fo":plant,
+     "a-20261014-0209-corendon-flight-escorted-to-nuremberg-nu":corendon,
+     "a-20261013-2326-us-lawmakers-urge-faa-to-pause-ai-traffi":faa,
+     "a-20261013-2326-airlines-outline-new-and-returning-route":multiairline,
+     "a-20261014-1402-airbus-forecasts-airlines-will-need-2-4":plant,
+     "a-us-king-air-philippine-coast-guard-20260930":kingair
+    })
     encountered=set(); modified=0; non_archived=[]
     for p in (ROOT/"data/articles").glob("*.json"):
         data=json.loads(p.read_text(encoding="utf-8"))
