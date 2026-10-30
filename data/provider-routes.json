@@ -12,17 +12,17 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-10-29T20:42Z",
-      "checkedUtc": "2026-10-29T14:42Z",
-      "failureClass": "connection",
-      "diagnostic": "ConnectionError",
+      "untilUtc": "2026-10-30T06:28Z",
+      "checkedUtc": "2026-10-30T00:28Z",
+      "failureClass": "unexpected",
+      "diagnostic": "OpenRouter response error 503",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-29T20:42Z",
-      "checkedUtc": "2026-10-29T14:42Z",
+      "checkedUtc": "2026-10-30T00:28Z",
+      "untilUtc": "2026-10-30T06:28Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -30,8 +30,8 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "verified",
-      "checkedUtc": "2026-10-29T19:55Z",
       "untilUtc": "2026-10-30T19:55Z",
+      "checkedUtc": "2026-10-29T19:55Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
