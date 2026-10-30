@@ -6,7 +6,18 @@
       "sourcePublishedUtc": "2026-09-30T14:04:00Z",
       "cat": "mil",
       "primarySource": "USNI News",
-      "image": null,
+      "image": {
+        "url": "https://www.scramble.nl/images/news/2026/february/Philippines_Textron_Beechcraft_King_Air_credit_Textron.jpg",
+        "link": "https://www.scramble.nl/military-news/new-beechcraft-king-air-aircraft-for-philippine-coast-guard",
+        "credit": "Textron Aviation／Scramble",
+        "license": null,
+        "provider": "Textron Aviation／Scramble",
+        "kind": "source_image",
+        "matched": "editorial:manual-official-or-credited",
+        "subject": "Beechcraft King Air",
+        "description": "Textron提供的King Air系列航空器資料照，非交付現場。",
+        "curated": true
+      },
       "zh": {
         "title": "美國將移交三架 King Air 給菲律賓海巡署　兩架搭載海上監偵系統",
         "summary": "美方將提供三架 King Air 渦槳機，其中兩架依 3,900 萬美元合約整合情監偵套件，並包含訓練。",
@@ -26,22 +37,53 @@
         ]
       },
       "sources": [
-        {"name": "USNI News", "url": "https://news.usni.org/2026/09/30/u-s-to-transfer-surveillance-aircraft-to-the-philippine-coast-guard"}
+        {
+          "name": "USNI News",
+          "url": "https://news.usni.org/2026/09/30/u-s-to-transfer-surveillance-aircraft-to-the-philippine-coast-guard"
+        }
       ],
       "writer": "scheduled:GPT 6.1 Sol",
-      "writerModels": ["GPT 6.1 Sol"],
+      "writerModels": [
+        "GPT 6.1 Sol"
+      ],
       "articleFormat": "full",
-      "availableLanguages": ["zh", "en"],
-      "entities": {"manufacturers": ["Textron Aviation"], "operators": ["Philippine Coast Guard"], "aircraft": ["King Air 350ER"], "airports": []},
+      "availableLanguages": [
+        "zh",
+        "en"
+      ],
+      "entities": {
+        "manufacturers": [
+          "Textron Aviation"
+        ],
+        "operators": [
+          "Philippine Coast Guard"
+        ],
+        "aircraft": [
+          "King Air 350ER"
+        ],
+        "airports": []
+      },
       "scheduledNews": {
         "version": 1,
         "eventKey": "us-king-air-philippine-coast-guard-20260930",
         "checkedUtc": "2026-10-01T13:13:06Z",
-        "modelAttribution": {"kind": "user_requested_label", "verifiedRuntimeModel": false},
+        "modelAttribution": {
+          "kind": "user_requested_label",
+          "verifiedRuntimeModel": false
+        },
         "facts": [
-          {"claim": "The United States plans to transfer three King Air turboprops to the Philippine Coast Guard for maritime domain awareness.", "sourceUrl": "https://news.usni.org/2026/09/30/u-s-to-transfer-surveillance-aircraft-to-the-philippine-coast-guard"},
-          {"claim": "A $39 million contract awarded on September 28 covers ISR-kit procurement and integration for King Air 350ER aircraft.", "sourceUrl": "https://news.usni.org/2026/09/30/u-s-to-transfer-surveillance-aircraft-to-the-philippine-coast-guard"},
-          {"claim": "Two of the three aircraft are to receive ISR hardware and software, and the contract includes training.", "sourceUrl": "https://news.usni.org/2026/09/30/u-s-to-transfer-surveillance-aircraft-to-the-philippine-coast-guard"}
+          {
+            "claim": "The United States plans to transfer three King Air turboprops to the Philippine Coast Guard for maritime domain awareness.",
+            "sourceUrl": "https://news.usni.org/2026/09/30/u-s-to-transfer-surveillance-aircraft-to-the-philippine-coast-guard"
+          },
+          {
+            "claim": "A $39 million contract awarded on September 28 covers ISR-kit procurement and integration for King Air 350ER aircraft.",
+            "sourceUrl": "https://news.usni.org/2026/09/30/u-s-to-transfer-surveillance-aircraft-to-the-philippine-coast-guard"
+          },
+          {
+            "claim": "Two of the three aircraft are to receive ISR hardware and software, and the contract includes training.",
+            "sourceUrl": "https://news.usni.org/2026/09/30/u-s-to-transfer-surveillance-aircraft-to-the-philippine-coast-guard"
+          }
         ]
       }
     }
