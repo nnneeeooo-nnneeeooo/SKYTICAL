@@ -4,7 +4,7 @@ const {webcrypto,createHash}=require('node:crypto');
 const source=fs.readFileSync(path.join(__dirname,'../static/admin-entry.js'),'utf8');
 const testKey='test-only-key-not-a-real-secret-123456789';
 function harness(hash='',{ok=true,marker=true,storageError=false}={}){
-  const state={textContent:'等待私人連結。'},events={},stored={},requests=[];
+  const state={textContent:'等待私人連結。'},events={},stored={'skytical-admin-route-v1-disabled':'1'},requests=[];
   let destination=null;
   const location={hash,pathname:'/SKYTICAL/admin/',replace:value=>{destination=value;}};
   const context={
@@ -13,7 +13,7 @@ function harness(hash='',{ok=true,marker=true,storageError=false}={}){
     history:{replaceState:()=>{location.hash='';}},crypto:webcrypto,TextEncoder,TypeError,
     fetch:async(route,options)=>{requests.push({route,options});return{ok,text:async()=>marker?'private':'public fallback'};},
     DOMParser:class{parseFromString(html){return{body:{dataset:{skyticalAdmin:html==='private'?'true':undefined}}};}},
-    sessionStorage:{setItem:(name,value)=>{if(storageError)throw new Error('storage denied');stored[name]=value;}},
+    sessionStorage:{setItem:(name,value)=>{if(storageError)throw new Error('storage denied');stored[name]=value;},removeItem:name=>{delete stored[name];}},
   };
   return{context,state,events,stored,requests,location,get destination(){return destination;}};
 }
@@ -23,6 +23,7 @@ async function main(){
   assert.equal(first.destination,'/SKYTICAL/');
   assert.equal(first.stored['skytical-admin-route-v1'],'/SKYTICAL/admin/'+createHash('sha256').update(testKey).digest('hex')+'/');
   assert.equal(first.location.hash,'','raw key must be removed from the address');
+  assert.equal(first.stored['skytical-admin-route-v1-disabled'],undefined,'using the private entry must enable an opted-out tab again');
   assert.ok(!JSON.stringify(first.requests).includes(testKey),'raw key must never be transmitted');
   const later=harness();await vm.runInNewContext(source,later.context);
   assert.equal(later.requests.length,0);
