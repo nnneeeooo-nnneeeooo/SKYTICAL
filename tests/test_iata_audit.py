@@ -211,4 +211,6 @@ def test_cloud_run_advances_only_after_complete_model_coverage(tmp_path, monkeyp
     assert report["candidateCount"] == 1
     assert report["checkedCount"] == int(complete)
     assert report["incompleteCount"] == int(not complete)
+    if complete:
+        assert report["articles"][0]["url"] == audit.SITE_ORIGIN.rstrip("/") + audit.BASE_PATH + "/news/a-test/"
     assert source == original
