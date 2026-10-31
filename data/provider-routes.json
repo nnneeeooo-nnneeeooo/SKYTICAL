@@ -3,26 +3,26 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "verified",
-      "untilUtc": "2026-10-31T13:39Z",
-      "checkedUtc": "2026-10-30T13:39Z",
+      "untilUtc": "2026-11-01T14:21Z",
+      "checkedUtc": "2026-10-31T14:21Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
-      "status": "verified",
-      "untilUtc": "2026-10-31T13:39Z",
-      "checkedUtc": "2026-10-30T13:39Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-10-31T20:21Z",
+      "checkedUtc": "2026-10-31T14:21Z",
+      "failureClass": "unexpected",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-10-31T08:59Z",
       "untilUtc": "2026-10-31T14:59Z",
+      "checkedUtc": "2026-10-31T08:59Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 413 request too large token_limit=8000 requested_tokens=8634",
       "probeVersion": 3,
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-10-31T13:39Z",
-      "checkedUtc": "2026-10-30T13:39Z",
+      "checkedUtc": "2026-10-31T14:21Z",
+      "untilUtc": "2026-11-01T14:21Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
