@@ -7,5 +7,95 @@
   "days": {
     "2026-11-01": 4989
   },
-  "cache": {}
+  "cache": {
+    "c24b5771e6347813693e762e07565d38a8d0e2398790059a24d6afb73be2670e": {
+      "id": "a-20261031-0245-interior-ministry-reviews-drone-procurem",
+      "mentions": 0,
+      "issues": []
+    },
+    "464871e3939f9460f44c5e6481e1d5b88fb87f97f32fc1f9708701366772452e": {
+      "id": "a-20261031-1421-easa-and-eurocontrol-hold-joint-atco-cbt",
+      "mentions": 0,
+      "issues": []
+    },
+    "722e496b8ad71746b4b6b1876330bd12749fc8021e0e608e032baabc71bf474d": {
+      "id": "a-alaska-737-max-10-seatback-screens-20261030",
+      "mentions": 0,
+      "issues": []
+    },
+    "aea423bd34c30894585c734d2690c53fc88673851fce849d3f1ce66398155b9e": {
+      "id": "a-american-a321neo-deliveries-20261030",
+      "mentions": 2,
+      "issues": [
+        {
+          "kind": "placement_or_identity",
+          "detail": "unresolved airport: Fort Worth International Airport"
+        },
+        {
+          "kind": "placement_or_identity",
+          "detail": "unresolved airport: 交付航程目的地為達拉斯沃斯堡國際機場"
+        },
+        {
+          "kind": "unverified_airport",
+          "language": "zh",
+          "surface": "body",
+          "paragraphIndex": 0,
+          "name": "達拉斯沃斯堡國際機場",
+          "quote": "美國航空在一週內接收4架空中巴士新機，包括3架A321neo與1架A321XLR，其中註冊編號N311NY的A321XLR預定10月30日抵達，交付航程目的地為達拉斯沃斯堡國際機場，該機在漢堡製造。",
+          "proposedIata": "DFW",
+          "detail": "Airport identity needs IATA/airport official verification; model proposal is not proof"
+        },
+        {
+          "kind": "missing_or_wrong_first_code",
+          "language": "en",
+          "surface": "body",
+          "paragraphIndex": 0,
+          "name": "Dallas/Fort Worth International Airport",
+          "quote": "FlightRadar24 data cited in the report shows the Hamburg-built XLR touching down on its delivery flight to Dallas/Fort Worth International Airport, joining three standard A321neos delivered earlier in the week.",
+          "proposedIata": "DFW",
+          "verifiedIata": "DFW",
+          "suggested": "Dallas/Fort Worth International Airport (DFW)"
+        }
+      ]
+    },
+    "1fa2f31c0f0bc7caf1c9af0416ab68c4b5cd0466dc950a7800b1465d3467b0b1": {
+      "id": "a-easa-eurocontrol-atc-cbta-workshop-20261029",
+      "mentions": 0,
+      "issues": []
+    },
+    "7dda004ba44161b43040f4bc9a6ea3d2452c4f8ec6c678fd88378ac2bbbd6c2c": {
+      "id": "a-pal-a350-1000-manila-san-francisco-20261030",
+      "mentions": 4,
+      "issues": [
+        {
+          "kind": "placement_or_identity",
+          "detail": "unresolved airport: 與舊金山國際機場"
+        },
+        {
+          "kind": "placement_or_identity",
+          "detail": "unresolved airport: 開始以旗艦機型空中巴士A350-1000每天往返馬尼拉尼諾伊·阿基諾國際機場"
+        },
+        {
+          "kind": "unverified_airport",
+          "language": "zh",
+          "surface": "body",
+          "paragraphIndex": 0,
+          "name": "馬尼拉尼諾伊·阿基諾國際機場",
+          "quote": "菲律賓航空已在年底旅遊高峰來臨前，開始以旗艦機型空中巴士A350-1000每天往返馬尼拉尼諾伊·阿基諾國際機場與舊金山國際機場。",
+          "proposedIata": "MNL",
+          "detail": "Airport identity needs IATA/airport official verification; model proposal is not proof"
+        },
+        {
+          "kind": "unverified_airport",
+          "language": "zh",
+          "surface": "body",
+          "paragraphIndex": 0,
+          "name": "舊金山國際機場",
+          "quote": "菲律賓航空已在年底旅遊高峰來臨前，開始以旗艦機型空中巴士A350-1000每天往返馬尼拉尼諾伊·阿基諾國際機場與舊金山國際機場。",
+          "proposedIata": "SFO",
+          "detail": "Airport identity needs IATA/airport official verification; model proposal is not proof"
+        }
+      ]
+    }
+  }
 }
