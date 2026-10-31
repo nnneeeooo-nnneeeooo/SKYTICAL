@@ -40,6 +40,7 @@ jobs:
       artifact: ${{ steps.upload.outputs.artifact_id }}
     concurrency:
       group: skytical-paid-api-${{ github.ref }}
+      queue: max
       cancel-in-progress: false
     permissions:
       contents: write # commits data/briefings back to the repo
