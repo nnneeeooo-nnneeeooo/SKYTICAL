@@ -68,7 +68,7 @@ def main() -> None:
 
     hourly = (ROOT / ".github" / "workflows" / "hourly.yml").read_text(encoding="utf-8")
     briefing = (ROOT / ".github" / "workflows" / "briefing.yml").read_text(encoding="utf-8")
-    assert "group: skytical-news-pipeline" in hourly
+    assert "group: skytical-paid-api-${{ github.ref }}" in hourly
     assert "group: skytical-briefing-pipeline" in briefing
     assert hourly.count("group: skytical-pages-publish") == 1
     refresh = hourly.index("- name: Refresh persisted retry and provider cooldown state")
