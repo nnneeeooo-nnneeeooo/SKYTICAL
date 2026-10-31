@@ -279,6 +279,10 @@ class ProviderQuotaError(ProviderError):
     """Rate/credit quota exhausted; stop using this provider this run."""
 
 
+class ProviderBudgetError(ProviderError):
+    """Local spending limit; must not create an account quota cooldown."""
+
+
 class ProviderRouteError(ProviderError):
     """A request/model error that should quarantine this route, not its peers."""
 
@@ -1662,7 +1666,13 @@ class OpenAIProvider(OpenCodeProvider):
             if not wire_model:
                 raise ProviderError("private OpenAI model mapping is not configured")
             payload = {**payload, "model": wire_model}
-        return super()._post_json(url, payload, headers, repair)
+        from paid_budget import BudgetDenied, post
+        try:
+            return post(super()._post_json, url, payload,
+                        purpose=getattr(self, "budget_purpose", "draft"),
+                        model=self.model, headers=headers, repair=repair)
+        except BudgetDenied as exc:
+            raise ProviderBudgetError(str(exc)) from exc
 
     def _responses_endpoint(self) -> str:
         return "https://api.openai.com/v1/responses"
@@ -1703,14 +1713,10 @@ class OpenAIProvider(OpenCodeProvider):
         return 48_000
 
     def _effort(self, repair: bool) -> str:
-        if self.reasoning_tier:
-            profile = manual_reasoning_profile(
-                self.name, self.model, self.reasoning_tier)
-            effort = profile["wire"]["reasoning"]["effort"]
-            self.reasoning_effective = profile["effective"]
-            return effort
-        self.reasoning_effective = "reasoning.effort=medium"
-        return "medium"
+        # Owner policy applies to drafting, auditing and every repair, even
+        # when a manual caller supplies a lower historical reasoning tier.
+        self.reasoning_effective = "reasoning.effort=max"
+        return "max"
 
 
 _REGISTRY = {
