@@ -75,8 +75,8 @@ MODEL_ORDER = (
     OPENAI_MODEL_ORDER[0],
 )
 
-# GPT 6 is the final automatic fallback after the preferred production
-# routes have failed or timed out.
+# Baseline order. Article-specific Luna routing can promote GPT 6 after
+# primary/two-platform failure while retaining this order for other callers.
 AUTOMATIC_MODEL_ORDER = (
     DIRECT_MODEL_ORDER[0],
     DIRECT_MODEL_ORDER[1],
@@ -154,8 +154,7 @@ def manual_reasoning_profile(provider: str, model: str, tier: str) -> dict:
     if tier not in REASONING_TIERS:
         tier = "standard"
     if provider == "openai":
-        effort = {"fast": "low", "standard": "medium",
-                  "deep": "max"}[tier]
+        effort = "max"
         return {
             "wire": {"reasoning": {"effort": effort}},
             "effective": f"reasoning.effort={effort}",
