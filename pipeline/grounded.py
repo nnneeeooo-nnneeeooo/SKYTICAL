@@ -6,7 +6,7 @@ site. This is deliberately scoped to the briefing only - articles are
 still written exclusively from pipeline-fetched material.
 
 Guard rails (code, not prompt-trust):
-- Production uses OpenAI Fallback Responses web_search with medium reasoning;
+- Production uses OpenAI Fallback Responses web_search with MAX reasoning;
   the previous Gemini path remains an explicit compatibility fallback.
 - Cited URLs NEVER come from model text: each item must reference the
   grounding chunks the search tool actually retrieved (sourceChunks indices), and
@@ -181,17 +181,18 @@ def call_openai_grounded(window):
         wire_model = os.environ.get("AVWIRE_OPENAI_API_MODEL", "").strip()
         if not wire_model:
             raise RuntimeError("private OpenAI model mapping is not configured")
-    effort = os.environ.get("BRIEFING_GROUNDED_EFFORT") or "medium"
-    if effort not in ("low", "medium", "high"):
-        effort = "medium"
-    response = requests.post("https://api.openai.com/v1/responses", json={
+    effort = "max"
+    from paid_budget import post
+    response = post(lambda url, payload, **kwargs: requests.post(url, json=payload, **kwargs),
+                    "https://api.openai.com/v1/responses", {
         "model": wire_model, "reasoning": {"effort": effort},
         "input": [{"role": "system", "content": OPENAI_SEARCH_SYSTEM},
                   {"role": "user", "content": f"窗口：{window.window_start.isoformat()} 至 {window.window_end.isoformat()}（不含終點），僅限來源發布/更新於此窗口的航空新聞。"}],
         "tools": [{"type": "web_search", "search_context_size": "medium"}],
         "tool_choice": "required", "max_tool_calls": 4,
-        "include": ["web_search_call.action.sources"], "max_output_tokens": 8_000,
-    }, headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"}, timeout=(10, 120))
+        "include": ["web_search_call.action.sources"], "max_output_tokens": 48_000,
+    }, purpose="draft", model=model,
+       headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"}, timeout=(10, 120))
     if response.status_code != 200:
         raise RuntimeError(f"OpenAI briefing search HTTP {response.status_code}")
     data = response.json()

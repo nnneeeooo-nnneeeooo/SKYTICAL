@@ -94,7 +94,7 @@ def run_with(provider, briefing=None, articles=None, old=None):
     return result, briefing
 
 
-# A valid batch writes every article after one medium-effort provider call.
+# A valid batch writes every article after one MAX-effort provider call.
 provider = FakeProvider([encoded([valid_row()])])
 brief, articles = make_input()
 ok = run_with(provider, brief, articles)[0]
@@ -104,7 +104,7 @@ check("valid output writes headline, summary, bilingual keywords and evidence",
       and written["summary"].startswith("航空公司宣布")
       and written["keyword_zh"] == "波音 787 新航線"
       and written["writer_evidence"] == [0])
-check("valid output is a single initial medium-effort batch",
+check("valid output is a single initial MAX-effort batch",
       len(provider.calls) == 1 and provider.calls[0]["repair"] is False
       and provider.calls[0]["schema"] == writer.SCHEMA)
 
@@ -168,16 +168,16 @@ check("opaque cached headline triggers bounded regeneration and source fallback"
       and opaque_cache_item["headline"] == "原始標題"
       and "換志願者" not in opaque_cache_item["headline"])
 
-# Invalid batch gets one low-effort repair; a still-invalid response falls back.
+# Invalid batch gets one MAX-effort repair; a still-invalid response falls back.
 malformed = encoded([valid_row(evidence=[99])])
 provider3 = FakeProvider([malformed, encoded([valid_row()])])
 brief3, articles3 = make_input()
-check("malformed output receives one low-effort repair then succeeds",
+check("malformed output receives one MAX-effort repair then succeeds",
       run_with(provider3, brief3, articles3)[0]
       and len(provider3.calls) == 2 and provider3.calls[1]["repair"] is True)
 
 # An opaque but otherwise well-formed headline receives the existing single
-# low-effort correction; its summary remains unchanged, including semicolons.
+# MAX-effort correction; its summary remains unchanged, including semicolons.
 opaque_row = valid_row(
     headline_zh="男子持假登機證拒離機清艙",
     summary_zh="航空公司宣布波音 787 將於 2026 年 10 月 6 日開航；新航線每日一班。")
@@ -189,7 +189,7 @@ provider_opaque = FakeProvider([
 brief_opaque, articles_opaque = make_input()
 opaque_ok = run_with(provider_opaque, brief_opaque, articles_opaque)[0]
 opaque_item = brief_opaque["sections"]["international_aviation"][0]
-check("opaque briefing headline receives one bounded low-effort correction",
+check("opaque briefing headline receives one bounded MAX-effort correction",
       opaque_ok and len(provider_opaque.calls) == 2
       and provider_opaque.calls[1]["repair"] is True
       and opaque_item["headline"] == corrected_row["headline_zh"]

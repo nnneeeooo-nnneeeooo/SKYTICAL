@@ -58,6 +58,12 @@ def news_policy(group: dict) -> NewsPolicy:
     if not explainer and (safety or disruption or major_approval):
         return NewsPolicy("urgent", True, "safety_or_major_operational_event")
 
+    if (not explainer and not matches(r"\b(?:propos\w*|plans?|considers?|may|could)\b|擬議|研議|計畫", title)
+            and matches(r"\b(?:FAA|EASA|CAA|aviation authority)\b|民航局|航空安全局", title)
+            and matches(r"\b(?:issues?|mandates?|orders?|bans?|revokes?)\b|發布|要求|下令|禁止|撤銷", title)
+            and matches(r"airworthiness directive|mandatory inspection|operating (?:ban|certificate)|適航指令|強制檢查|營運許可", title)):
+        return NewsPolicy("urgent", True, "major_regulatory_action")
+
     # Taiwan relevance comes from current headlines/excerpts, including a
     # foreign carrier's Taiwan flights. Weather alone never implies disruption.
     taiwan = (
@@ -155,4 +161,7 @@ def is_free_provider(provider):
 def eligible_providers(group, providers):
     if news_policy(group).paid_allowed:
         return list(providers)
-    return [provider for provider in providers if is_free_provider(provider)]
+    from luna_editorial import enabled
+    ordinary_luna = enabled() and news_policy(group).reason == "ordinary_news"
+    return [provider for provider in providers if is_free_provider(provider)
+            or (ordinary_luna and getattr(provider, "name", "") == "openai")]

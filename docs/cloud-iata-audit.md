@@ -2,7 +2,7 @@
 
 以 GitHub Actions 的 `airport-iata-audit` 執行，不依賴本機電腦或 Codex 開啟。
 使用網站既有 `OPENAI_API`、`OPENAI_MODEL_ID` secret，只有本流程的 Luna 呼叫
-固定 `max`。先前未上線的備援順序、70% 審稿及其他 Luna 功能不包含在這次部署。
+固定 `max`，並與撰稿、70% 一般新聞審稿及雙語快報共用預算保護。
 
 - 首個區間：臺北時間 2026-11-01 00:00（含）至 04:00（不含）。
 - 每日臺北時間 00、04、08、12、16、20 時觸發；UTC cron 為 `0 */4 * * *`。
@@ -24,7 +24,7 @@
 - 本檢查的費用上限每日 US$0.80、每月 US$8。每次 HTTP 呼叫先將輸入上界及
   48,000 輸出 token 的預留額保存至 GitHub，保存失敗就不呼叫模型；取得用量才
   結算，逾時或缺少用量保留預留額，避免重啟後忘記費用。這是本檢查的上限，
-  不改其他既有 API 工作的預算，也不代表整個 OpenAI 帳戶的總額限制。
+  另受共用每日 US$1.50、每月 US$30 上限約束。其他正式 API 工作也使用同一預算入口；外部程式不在本站帳本範圍內。
 
 本機離線測試：`python -m pytest -q tests/test_iata_audit.py`、
 `python tests/test_airport_codes.py`。部署後第一個 push 作業會先驗證 secret

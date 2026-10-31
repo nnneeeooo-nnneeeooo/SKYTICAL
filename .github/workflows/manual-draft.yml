@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: private-manual-draft
+  group: skytical-paid-api-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -26,8 +26,15 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Refresh shared paid API budget
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/paid_budget_sync.py refresh
+
       - name: Process encrypted drafting jobs
         env:
+          AVWIRE_PAID_BUDGET_ENABLED: "true"
+          GH_TOKEN: ${{ github.token }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -41,6 +48,21 @@ jobs:
           AVWIRE_OPENAI_MODEL: ${{ vars.AVWIRE_OPENAI_MODEL }}
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
         run: python pipeline/manual_draft.py --process-pending
+
+      - name: Save paid API budget recovery snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paid-budget-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: data/paid-budget.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Persist paid API budget even after failure
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/paid_budget_sync.py persist
 
       - name: Verify that only encrypted envelopes enter the job store
         run: |

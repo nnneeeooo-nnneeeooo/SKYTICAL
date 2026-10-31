@@ -216,3 +216,14 @@ push）。前者適合本機代碼核驗，後兩者分別可參考固定樣本�
 以 GitHub 原生排程執行 Luna MAX；不新增代理框架、外部排程服務或 production
 依賴，不複製第三方程式碼。本次只啟用獨立的四小時檢查，不發布先前未上線的
 Luna 備援與審稿改動。實作與限制見 `docs/cloud-iata-audit.md`。
+## Luna 預算與來源比對審稿（2026-11-01）
+
+| 專案 | 最近 push（UTC）／stars | 語言／授權 | 借鑑方向與導入成本 |
+| --- | --- | --- | --- |
+| [BerriAI/litellm](https://github.com/BerriAI/litellm) | 2026-10-31／62,437 | Python／API 為 NOASSERTION | 多平台路由、預算與失敗分類；整套 proxy 超出本站所需，未確認可搬用授權，不引用程式碼 |
+| [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | 2026-10-31／26,669 | TypeScript／MIT | 固定樣本、回歸評測；加入 Node 評測環境會增加 production 複雜度，僅參考測試方法 |
+| [567-labs/instructor](https://github.com/567-labs/instructor) | 2026-10-26／14,085 | Python／MIT | 結構化輸出與驗證回饋修復；本站已有 JSON Schema 與來源核驗，不另加 Pydantic／SDK 依賴 |
+
+本次保留現有 requests provider 及機器核驗，新增小型 HTTP 前預留帳本、固定雜湊
+抽樣、來源逐字引句驗證與離線回歸測試。未複製第三方程式碼、未新增 production
+依賴；未決定導入上述套件，因此不建立套件導入 issue／PR。

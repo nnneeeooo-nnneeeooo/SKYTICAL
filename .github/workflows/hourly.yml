@@ -30,6 +30,9 @@ on:
       - "pipeline/draft_recovery.py"
       - "pipeline/news_retry.py"
       - "pipeline/editorial_policy.py"
+      - "pipeline/luna_editorial.py"
+      - "pipeline/paid_budget*.py"
+      - "config/luna_policy.json"
       - "pipeline/manual_draft.py"
       - "pipeline/airport_codes.py"
       - "config/airport_iata_aliases.json"
@@ -51,7 +54,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt pytest
       - name: Run pipeline regression tests
         run: |
           python tests/test_changelog.py
@@ -79,6 +82,7 @@ jobs:
           python tests/test_usage.py
           python tests/test_hosted_free_providers.py
           python tests/test_hosted_rate_limits.py
+          python -m pytest -q tests/test_paid_budget.py tests/test_luna_editorial.py tests/test_luna_workflows.py
           python tests/test_providers_payloads.py
           python tests/test_manual_draft.py
           python tests/test_fulltext.py
@@ -114,7 +118,7 @@ jobs:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     concurrency:
-      group: skytical-news-pipeline
+      group: skytical-paid-api-${{ github.ref }}
       cancel-in-progress: false
     permissions:
       contents: write # commits data/ back to the repo
@@ -174,14 +178,22 @@ jobs:
         # preceding run's data commit. Keep code pinned, refresh budgets only.
         run: |
           git fetch origin "${GITHUB_REF_NAME}"
-          for path in data/news-retry.json data/provider-health.json data/provider-routes.json data/news-search.json; do
+          for path in data/news-retry.json data/provider-health.json data/provider-routes.json data/news-search.json data/luna-editorial.json; do
             if git cat-file -e "origin/${GITHUB_REF_NAME}:$path" 2>/dev/null; then
               git checkout "origin/${GITHUB_REF_NAME}" -- "$path"
             fi
           done
 
+      - name: Refresh shared paid API budget
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/paid_budget_sync.py refresh
+
       - name: Run pipeline
         env:
+          AVWIRE_PAID_BUDGET_ENABLED: "true"
+          GH_TOKEN: ${{ github.token }}
+          AVWIRE_LUNA_EDITORIAL: "true"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           NEWS_WEB_SEARCH: "true"
           AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
@@ -241,6 +253,21 @@ jobs:
           git checkout "origin/${GITHUB_REF_NAME}" -- data/briefings || true
           python pipeline/build.py
           python pipeline/radar_snapshot.py --optional
+
+      - name: Save paid API budget recovery snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paid-budget-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: data/paid-budget.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Persist paid API budget even after failure
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/paid_budget_sync.py persist
 
       # Audit the pipeline output after images.py has had a chance to remove
       # stale or misleading cached photos. This still fails closed before any

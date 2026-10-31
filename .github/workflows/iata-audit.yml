@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     concurrency:
-      group: skytical-cloud-iata-audit
+      group: skytical-paid-api-${{ github.ref }}
       cancel-in-progress: false
     permissions:
       contents: write # only data/iata-audit/state.json, never articles or code
@@ -48,14 +48,31 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Refresh shared paid API budget
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/paid_budget_sync.py refresh
       - name: Audit every article in each due four-hour window
         env:
+          AVWIRE_PAID_BUDGET_ENABLED: "true"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
           GH_TOKEN: ${{ github.token }}
           IATA_AUDIT_OUTPUT_DIR: ${{ runner.temp }}/iata-audit
           PYTHONUNBUFFERED: "1"
         run: python pipeline/iata_audit.py
+      - name: Save paid API budget recovery snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paid-budget-iata-${{ github.run_id }}-${{ github.run_attempt }}
+          path: data/paid-budget.json
+          if-no-files-found: ignore
+      - name: Persist paid API budget even after failure
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/paid_budget_sync.py persist
       - name: Save complete or partial audit reports
         if: always()
         uses: actions/upload-artifact@v4

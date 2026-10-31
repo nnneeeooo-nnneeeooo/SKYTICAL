@@ -39,7 +39,7 @@ jobs:
       persisted: ${{ steps.persist.outputs.persisted }}
       artifact: ${{ steps.upload.outputs.artifact_id }}
     concurrency:
-      group: skytical-briefing-pipeline
+      group: skytical-paid-api-${{ github.ref }}
       cancel-in-progress: false
     permissions:
       contents: write # commits data/briefings back to the repo
@@ -72,6 +72,11 @@ jobs:
           python tests/test_briefing_ui.py
           python tests/test_briefing_recovery.py
 
+      - name: Refresh shared paid API budget
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/paid_budget_sync.py refresh
+
       - name: Resolve briefing run mode
         id: ed
         env:
@@ -103,6 +108,8 @@ jobs:
         id: run_briefing
         continue-on-error: true
         env:
+          AVWIRE_PAID_BUDGET_ENABLED: "true"
+          GH_TOKEN: ${{ github.token }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -119,12 +126,12 @@ jobs:
           AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,groq:openai/gpt-oss-120b,cloudflare:@cf/qwen/qwen3-30b-a3b-fp8,openai:gpt-6
           BRIEFING_WRITER: "true"
           BRIEFING_WRITER_MODEL: gpt-6
-          BRIEFING_WRITER_EFFORT: medium
+          BRIEFING_WRITER_EFFORT: max
           BRIEFING_WRITER_CALLS_MAX: '2'
           BRIEFING_GROUNDED: "true"
           BRIEFING_GROUNDED_PROVIDER: openai
           BRIEFING_GROUNDED_MODEL: gpt-6
-          BRIEFING_GROUNDED_EFFORT: medium
+          BRIEFING_GROUNDED_EFFORT: max
           BRIEFING_LLM_INTRO: "false"
           BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}
           BRIEFING_MAX_ITEMS_PER_SECTION: ${{ vars.BRIEFING_MAX_ITEMS_PER_SECTION }}
@@ -151,6 +158,21 @@ jobs:
           else
             python pipeline/briefing_recovery.py --edition "$EDITION"
           fi
+
+      - name: Save paid API budget recovery snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paid-budget-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: data/paid-budget.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Persist paid API budget even after failure
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/paid_budget_sync.py persist
 
       - name: Build site when briefing data changed
         if: steps.run_briefing.outputs.publish == 'true'

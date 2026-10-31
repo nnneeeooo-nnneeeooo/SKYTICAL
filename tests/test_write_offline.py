@@ -1611,6 +1611,88 @@ def test_reworded_scheduled_source_is_not_republished():
     print("test_reworded_scheduled_source_is_not_republished: done")
 
 
+def _luna_safety_fixture():
+    reset_data_dir()
+    pending = load(FIXTURES / "pending.json")
+    group = pending["groups"][0]
+    common.save_json(DATA / "pending.json", {**pending, "groups": [group]})
+    luna = FakeProvider("openai", [DRAFT_SAFETY])
+    luna.model = "gpt-6"
+    luna.max_attempt_seconds = 90
+    return group, luna
+
+
+def test_luna_important_early_audit():
+    group, luna = _luna_safety_fixture()
+    first = FakeProvider("gemini", [providers.ProviderError("HTTP 503")])
+    second = FakeProvider("nvidia", [providers.ProviderError("must not call")])
+    luna._responses_call = lambda *args, **kwargs: json.dumps({"status": "pass", "issues": []})
+    with patch.dict(os.environ, {"AVWIRE_LUNA_EDITORIAL": "true"}), \
+            patch.object(write, "build_providers", return_value=[first, second, luna]):
+        write.main()
+    check(first.calls == 1 and second.calls == 0 and luna.calls == 1,
+          "important source fails over directly from primary to Luna")
+    check(len(all_articles()) == 1 and not load(DATA / "pending.json")["groups"],
+          "important source publishes after source-bound bilingual audit")
+
+
+def test_luna_audit_unavailable_keeps_source_unseen():
+    group, luna = _luna_safety_fixture()
+    first = FakeProvider("gemini", [DRAFT_SAFETY])
+    def failed_audit(*args, **kwargs):
+        raise providers.ProviderBudgetError("local spend cap")
+    luna._responses_call = failed_audit
+    with patch.dict(os.environ, {"AVWIRE_LUNA_EDITORIAL": "true"}), \
+            patch.object(write, "build_providers", return_value=[first, luna]):
+        write.main()
+    check(not all_articles() and len(load(DATA / "pending.json")["groups"]) == 1,
+          "unavailable audit holds the draft for retry")
+    seen = load(DATA / "seen.json")["urls"]
+    check(all(common.norm_url(i["url"]) not in seen for i in group["items"]),
+          "held source remains unseen and can retry after budget recovers")
+
+
+def test_luna_audit_repairs_once_and_revalidates():
+    for corrected in (False, True):
+        group, luna = _luna_safety_fixture()
+        first = FakeProvider("gemini", [DRAFT_SAFETY])
+        issue = {"path": "en.title", "draftQuote": DRAFT_SAFETY["en"]["title"],
+                 "sourceIndex": 0, "sourceQuote": DRAFT_SAFETY["facts"][0]["sourceQuote"],
+                 "explanation": "Check the exact event description against the quoted source."}
+        flagged = {"status": "issues", "issues": [issue]}
+        answers = iter([flagged, {"status": "pass", "issues": []} if corrected else flagged])
+        audit_calls = []
+        def audit_call(*args, **kwargs):
+            audit_calls.append(1)
+            return json.dumps(next(answers))
+        luna._responses_call = audit_call
+        with patch.dict(os.environ, {"AVWIRE_LUNA_EDITORIAL": "true"}), \
+                patch.object(write, "build_providers", return_value=[first, luna]):
+            write.main()
+        check(luna.calls == 1 and len(audit_calls) == 2,
+              "audit permits only one targeted repair and one re-audit")
+        check(len(all_articles()) == int(corrected),
+              "only a repaired draft passing deterministic gates and re-audit publishes")
+
+
+def test_luna_invalid_repair_spends_content_retry_budget():
+    group, luna = _luna_safety_fixture()
+    bad = json.loads(json.dumps(DRAFT_SAFETY))
+    bad["cat"] = "invalid-category"
+    luna.script = [bad]
+    first = FakeProvider("gemini", [DRAFT_SAFETY])
+    issue = {"path": "en.title", "draftQuote": DRAFT_SAFETY["en"]["title"],
+             "sourceIndex": 0, "sourceQuote": DRAFT_SAFETY["facts"][0]["sourceQuote"],
+             "explanation": "Source description differs."}
+    luna._responses_call = lambda *args, **kwargs: json.dumps({"status": "issues", "issues": [issue]})
+    with patch.dict(os.environ, {"AVWIRE_LUNA_EDITORIAL": "true"}), \
+            patch.object(write, "build_providers", return_value=[first, luna]):
+        write.main()
+    rows = list(load(DATA / "news-retry.json")["stories"].values())
+    check(not all_articles() and rows[0]["contentFailures"] == 1,
+          "invalid editorial repair consumes bounded content retries, not endless service retries")
+
+
 def main():
     tests = [test_free_only_news_never_calls_paid_fallback,
              test_scheduled_source_is_not_drafted_again,
@@ -1634,7 +1716,11 @@ def main():
              test_completeness_precheck,
              test_major_title_only_is_retained_for_material_retry,
              test_all_providers_auth_dead,
-             test_no_api_key_end_to_end]
+             test_no_api_key_end_to_end,
+             test_luna_important_early_audit,
+             test_luna_audit_unavailable_keeps_source_unseen,
+             test_luna_audit_repairs_once_and_revalidates,
+             test_luna_invalid_repair_spends_content_retry_budget]
     crashed = False
     for test in tests:
         try:
