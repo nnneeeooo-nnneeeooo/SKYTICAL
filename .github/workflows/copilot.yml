@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: private-copilot-job
+  group: skytical-paid-api-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -26,8 +26,15 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Refresh shared paid API budget
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/paid_budget_sync.py refresh
+
       - name: Process encrypted Copilot jobs
         env:
+          AVWIRE_PAID_BUDGET_ENABLED: "true"
+          GH_TOKEN: ${{ github.token }}
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           AI_RATE_LIMIT_PER_MINUTE: ${{ vars.AI_RATE_LIMIT_PER_MINUTE || '8' }}
           AI_DAILY_REQUEST_LIMIT: ${{ vars.AI_DAILY_REQUEST_LIMIT || '50' }}
@@ -48,6 +55,21 @@ jobs:
           WECHAT_API_KEY: ${{ secrets.DeepSeekV4Flash_API }}
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
         run: python pipeline/copilot.py --process-pending
+
+      - name: Save paid API budget recovery snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paid-budget-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: data/paid-budget.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Persist paid API budget even after failure
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/paid_budget_sync.py persist
 
       - name: Verify encrypted job store
         run: |
