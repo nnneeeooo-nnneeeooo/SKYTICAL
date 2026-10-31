@@ -1,15 +1,10 @@
 {
   "schemaVersion": 1,
   "platforms": {
-    "groq": {
-      "failureClass": "quota",
-      "cooldownUntilUtc": "2026-10-31T05:17Z",
-      "updatedUtc": "2026-10-30T23:17Z"
-    },
-    "wechat": {
-      "failureClass": "quota",
-      "cooldownUntilUtc": "2026-10-31T08:50Z",
-      "updatedUtc": "2026-10-31T02:50Z"
+    "openrouter": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-10-31T10:18Z",
+      "updatedUtc": "2026-10-31T09:18Z"
     }
   }
 }
