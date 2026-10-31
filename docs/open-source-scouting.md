@@ -205,3 +205,14 @@ SKYTICAL 已有靜態 JSON 索引與零套件搜尋。本次保留現況，將�
 ## 模型新聞搜尋入口（2026-10-29）
 
 比較 openai/openai-python（31,995 stars、Apache-2.0、2026-10-29 仍維護）、openai/openai-agents-python（30,371 stars、MIT、2026-10-27 仍維護）及 BerriAI/litellm（62,297 stars、2026-10-29 仍維護；GitHub 未能辨識單一授權，因此不引用程式碼）。前者適合標準 Responses SDK；Agents 適合多工具調度；LiteLLM 適合多平台閘道。現有快報已以 requests 接入 Responses web_search 與用量記錄，重用該入口較輕量，不新增 SDK、agent loop 或外部搜尋服務，沒有複製第三方程式碼。
+
+## 雲端機場 IATA 全量核驗（2026-11-01）
+
+比較 mborsetti/airportsdata（169 stars、Python、2026-10-30 最近 push；API 授權為
+NOASSERTION）、promptfoo/promptfoo（26,669 stars、TypeScript、MIT、2026-10-31
+最近 push）與 567-labs/instructor（14,085 stars、Python、MIT、2026-10-26 最近
+push）。前者適合本機代碼核驗，後兩者分別可參考固定樣本回歸評測與結構化輸出
+驗證。保留 repository 已採用的 airportsdata、requests provider 與機場核驗規則，
+以 GitHub 原生排程執行 Luna MAX；不新增代理框架、外部排程服務或 production
+依賴，不複製第三方程式碼。本次只啟用獨立的四小時檢查，不發布先前未上線的
+Luna 備援與審稿改動。實作與限制見 `docs/cloud-iata-audit.md`。
