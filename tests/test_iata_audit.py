@@ -180,10 +180,12 @@ def test_cloud_run_advances_only_after_complete_model_coverage(tmp_path, monkeyp
     monkeypatch.setenv("OPENAI_API_KEY", "fake-key")
     monkeypatch.setenv("AVWIRE_OPENAI_API_MODEL", "fake-private-mapping")
     monkeypatch.setenv("IATA_AUDIT_OUTPUT_DIR", str(tmp_path))
+    monkeypatch.setenv("IATA_AUDIT_REQUESTS_DIR", str(tmp_path / "requests"))
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
     state = audit.State()
     state.save = Mock()
     p = Mock()
+    p.meter = {}
     p._responses_call.return_value = json.dumps({"articles": [{"id": "a-test", "mentions": [mention()]}] if complete else []})
     source = article()
     original = copy.deepcopy(source)
