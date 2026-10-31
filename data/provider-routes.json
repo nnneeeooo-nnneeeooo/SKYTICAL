@@ -21,10 +21,10 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-10-31T14:59Z",
-      "checkedUtc": "2026-10-31T08:59Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 413 request too large token_limit=8000 requested_tokens=8634",
+      "checkedUtc": "2026-10-31T15:32Z",
+      "untilUtc": "2026-10-31T21:32Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-10-31T14:21Z",
       "untilUtc": "2026-11-01T14:21Z",
+      "checkedUtc": "2026-10-31T14:21Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -48,17 +48,17 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-31T14:59Z",
-      "checkedUtc": "2026-10-31T08:59Z",
-      "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "untilUtc": "2026-10-31T21:32Z",
+      "checkedUtc": "2026-10-31T15:32Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-10-31T14:59Z",
-      "checkedUtc": "2026-10-31T08:59Z",
+      "untilUtc": "2026-10-31T21:32Z",
+      "checkedUtc": "2026-10-31T15:32Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,

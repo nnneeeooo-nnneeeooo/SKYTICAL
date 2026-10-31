@@ -1,10 +1,15 @@
 {
   "schemaVersion": 1,
   "platforms": {
-    "openrouter": {
+    "groq": {
+      "failureClass": "quota",
+      "cooldownUntilUtc": "2026-10-31T21:32Z",
+      "updatedUtc": "2026-10-31T15:32Z"
+    },
+    "nvidia": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-10-31T10:18Z",
-      "updatedUtc": "2026-10-31T09:18Z"
+      "cooldownUntilUtc": "2026-10-31T16:48Z",
+      "updatedUtc": "2026-10-31T15:48Z"
     }
   }
 }
