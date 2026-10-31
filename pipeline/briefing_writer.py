@@ -162,14 +162,7 @@ def make_provider():
     from providers import OpenAIProvider
 
     class BriefingWriterProvider(OpenAIProvider):
-        def _effort(self, repair: bool) -> str:
-            requested = os.environ.get("BRIEFING_WRITER_EFFORT", "medium")
-            effort = "low" if repair else requested if requested in ("low", "medium", "high") else "medium"
-            self.reasoning_effective = f"reasoning.effort={effort}"
-            return effort
-
-        def _responses_output_tokens(self, repair: bool) -> int:
-            return 16_000
+        budget_purpose = "summary"
 
     return BriefingWriterProvider(model=os.environ.get("BRIEFING_WRITER_MODEL") or "gpt-6")
 
@@ -230,7 +223,7 @@ def write_briefing(briefing: dict, articles: list[dict], old: dict | None = None
                         item[target_key] = clean_copy(row[source_key])
                     item["writer_evidence"] = row["evidence"]
                 briefing["generation_mode"] = "model_written"
-                briefing["generation_model"] = {"provider": "openai", "model": provider.model, "reasoning_effort": os.environ.get("BRIEFING_WRITER_EFFORT") or "medium"}
+                briefing["generation_model"] = {"provider": "openai", "model": provider.model, "reasoning_effort": "max"}
                 briefing["writer_input_digest"] = digest
                 return True
             except (ProviderAuthError, ProviderQuotaError):
