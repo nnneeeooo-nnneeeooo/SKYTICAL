@@ -176,14 +176,20 @@ def test_cloud_workflow_is_independent_and_does_not_build_or_deploy():
 
 
 @pytest.mark.parametrize("complete", [True, False])
-def test_cloud_run_advances_only_after_complete_model_coverage(tmp_path, monkeypatch, complete):
+@pytest.mark.parametrize("request_mode", [True, False])
+def test_cloud_run_advances_only_after_complete_model_coverage(tmp_path, monkeypatch, complete, request_mode):
     monkeypatch.setenv("OPENAI_API_KEY", "fake-key")
     monkeypatch.setenv("AVWIRE_OPENAI_API_MODEL", "fake-private-mapping")
     monkeypatch.setenv("IATA_AUDIT_OUTPUT_DIR", str(tmp_path))
+    monkeypatch.setenv("IATA_AUDIT_REQUESTS_DIR", str(tmp_path / "requests"))
+    if request_mode:
+        (tmp_path / "requests").mkdir()
+        (tmp_path / "requests/day.json").write_text(json.dumps({"id": "day", "start": (audit.START-audit.STEP).isoformat(), "end": audit.START.isoformat()}))
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
     state = audit.State()
     state.save = Mock()
     p = Mock()
+    p.meter = {}
     p._responses_call.return_value = json.dumps({"articles": [{"id": "a-test", "mentions": [mention()]}] if complete else []})
     source = article()
     original = copy.deepcopy(source)
@@ -192,7 +198,11 @@ def test_cloud_run_advances_only_after_complete_model_coverage(tmp_path, monkeyp
             patch.object(audit, "git", return_value="test-snapshot"):
         if complete:
             assert audit.run(audit.START) == 0
-            assert state.data["lastSuccessEnd"] == audit.START.isoformat()
+            if request_mode:
+                assert state.data["lastSuccessEnd"] is None
+                assert state.data["completedRequests"]["day"]["checkedCount"] == 1
+            else:
+                assert state.data["lastSuccessEnd"] == audit.START.isoformat()
         else:
             with pytest.raises(RuntimeError, match="incomplete"):
                 audit.run(audit.START)

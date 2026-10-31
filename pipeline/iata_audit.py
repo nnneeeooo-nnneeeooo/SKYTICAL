@@ -274,6 +274,7 @@ class AuditProvider(OpenAIProvider):
     def __init__(self, state):
         super().__init__(model="gpt-6", reasoning_tier="deep")
         self.state = state
+        self.meter = {"calls": 0, "inputTokens": 0, "cachedInputTokens": 0, "outputTokens": 0, "reasoningTokens": 0, "estimatedUsd": 0.0}
 
     def _effort(self, repair):
         self.reasoning_effective = "reasoning.effort=max"
@@ -283,7 +284,15 @@ class AuditProvider(OpenAIProvider):
         hold = self.state.reserve(payload, datetime.now(timezone.utc))
         response = super()._post_json(url, payload, headers, repair)
         try:
-            self.state.settle(hold, response.json())
+            data = response.json()
+            self.state.settle(hold, data)
+            meta = data.get("usage") or {}
+            inputs, outputs = int(meta.get("input_tokens") or 0), int(meta.get("output_tokens") or 0)
+            cached = int((meta.get("input_tokens_details") or {}).get("cached_tokens") or 0)
+            for key, value in {"calls": 1, "inputTokens": inputs, "cachedInputTokens": cached,
+                               "outputTokens": outputs, "reasoningTokens": int((meta.get("output_tokens_details") or {}).get("reasoning_tokens") or 0),
+                               "estimatedUsd": ((inputs-cached)*.1 + cached*.01 + outputs*.5)/1_000_000}.items():
+                self.meter[key] += value
         except ValueError:
             pass
         return response
@@ -298,7 +307,17 @@ def run(now=None):
     state = State(remote=True)
     provider = AuditProvider(state)
     reports = []
-    windows = due_windows(now, state.data["lastSuccessEnd"])
+    requests_dir = Path(os.environ.get("IATA_AUDIT_REQUESTS_DIR", ROOT / "data/iata-audit/requests"))
+    pending = []
+    for request_path in sorted(requests_dir.glob("*.json")):
+        request = json.loads(request_path.read_text(encoding="utf-8"))
+        if request["id"] not in state.data.get("completedRequests", {}):
+            start, end = parse_iso(request["start"]), parse_iso(request["end"])
+            if not start < end <= now or end-start > timedelta(days=2):
+                raise ValueError("invalid one-off audit range")
+            pending.append((request["id"], start, end))
+    request_id = pending[0][0] if pending else None
+    windows = [(pending[0][1], pending[0][2])] if pending else due_windows(now, state.data["lastSuccessEnd"])
     if not windows:
         print("iata_audit: configured; no complete due window (first: 2026-11-01 04:00 Asia/Taipei)")
         return 0
@@ -336,7 +355,13 @@ def run(now=None):
             report["issueCount"] = sum(len(a["issues"]) for a in report["articles"])
             report["status"] = "findings" if report["issueCount"] else "passed"
             save_json(path, report)
-            state.data["lastSuccessEnd"] = end.isoformat()
+            if request_id:
+                state.data.setdefault("completedRequests", {})[request_id] = {
+                    "windowStart": report["windowStart"], "windowEnd": report["windowEnd"],
+                    "checkedCount": report["checkedCount"], "issueCount": report["issueCount"],
+                    "usage": provider.meter}
+            else:
+                state.data["lastSuccessEnd"] = end.isoformat()
             state.data["cache"] = dict(list(state.data["cache"].items())[-1000:])
             state.save()
             reports.append(report)
@@ -347,7 +372,9 @@ def run(now=None):
             report["errorClass"] = type(exc).__name__
             save_json(path, report)
             raise RuntimeError("IATA audit incomplete; see saved report") from None
-    lines = ["# Airport IATA audit", "", "Model: GPT 6; reasoning: max; article changes: none", ""]
+    lines = ["# Airport IATA audit", "", "Model: GPT 6; reasoning: max; article changes: none", "",
+             "API usage (reasoning included in output): " + json.dumps(provider.meter), ""]
+    save_json(output / "usage.json", provider.meter)
     for r in reports:
         lines.append(f"- {r['windowStart']} — {r['windowEnd']}: {r['checkedCount']}/{r['candidateCount']} checked; {r['notApplicableCount']} N/A; {r['issueCount']} findings")
         for a in r["articles"]:
