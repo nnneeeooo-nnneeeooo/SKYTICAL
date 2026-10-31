@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [".github/workflows/iata-audit.yml", "pipeline/iata_audit.py", "tests/test_iata_audit.py"]
+    paths: [".github/workflows/iata-audit.yml", "pipeline/iata_audit.py", "tests/test_iata_audit.py", "data/iata-audit/requests/*.json"]
   pull_request:
     branches: [main]
     paths: [".github/workflows/iata-audit.yml", "pipeline/iata_audit.py", "tests/test_iata_audit.py"]
