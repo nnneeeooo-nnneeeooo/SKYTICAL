@@ -99,6 +99,7 @@ def test_compact_attribution_preserves_article_references():
 
 if __name__ == "__main__":
     test_taiwan_sidebar_selection()
+    test_mobile_feed_date_uses_taipei_publication_day()
     test_rendered_sidebar()
     test_compact_attribution_preserves_article_references()
-    print("test_home_sidebar: 3 passed")
+    print("test_home_sidebar: 4 passed")
