@@ -322,10 +322,11 @@ check("OpenAI result maps only retrieved source URLs into citation chunks",
       and accepted[0]["sources"] == [{"name": "News", "url": "https://news.example/actual"}]
       and all(source["url"] != "https://fake.example/forged"
               for source in accepted[0]["sources"]))
-check("OpenAI call selects Fallback Responses web_search with bounded medium reasoning",
+check("OpenAI call selects Fallback Responses web_search with bounded MAX reasoning",
       captured_openai["url"] == "https://api.openai.com/v1/responses"
       and captured_openai["payload"]["model"] == "test-private-model"
-      and captured_openai["payload"]["reasoning"] == {"effort": "medium"}
+      and captured_openai["payload"]["reasoning"] == {"effort": "max"}
+      and captured_openai["payload"]["max_output_tokens"] == 48_000
       and captured_openai["payload"]["tools"][0]["type"] == "web_search"
       and captured_openai["payload"]["max_tool_calls"] == 4)
 check("OpenAI usage shim records paid call and prevents duplicate upper-layer recording",
