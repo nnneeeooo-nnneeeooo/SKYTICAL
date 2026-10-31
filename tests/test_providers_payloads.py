@@ -561,7 +561,7 @@ def test_opencode_protocols_and_payloads():
 
 
 def test_openai_responses_api():
-    """Direct OpenAI uses medium reasoning and strict Responses JSON output."""
+    """Direct OpenAI uses MAX reasoning and strict Responses JSON output."""
     saved = {
         key: os.environ.get(key)
         for key in ("OPENAI_API_KEY", "AVWIRE_PROVIDER_ORDER",
@@ -597,10 +597,10 @@ def test_openai_responses_api():
         check(url == "https://api.openai.com/v1/responses"
               and payload["model"] == "test-private-model",
               "GPT 6 uses the direct OpenAI Responses endpoint")
-        check(payload["reasoning"] == {"effort": "medium"}
-              and provider.reasoning_effective == "reasoning.effort=medium"
-              and provider._effort(repair=True) == "medium",
-              "automatic GPT 6 calls and repairs request medium reasoning")
+        check(payload["reasoning"] == {"effort": "max"}
+              and provider.reasoning_effective == "reasoning.effort=max"
+              and provider._effort(repair=True) == "max",
+              "automatic GPT 6 calls and repairs request MAX reasoning")
         check(payload["max_output_tokens"] == 48_000,
               "Fallback has an output cap that reserves reasoning room")
         check(payload["text"]["format"] == {
