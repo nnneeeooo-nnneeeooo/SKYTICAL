@@ -9,6 +9,7 @@ on:
 
 concurrency:
   group: skytical-paid-api-${{ github.ref }}
+  queue: max
   cancel-in-progress: false
 
 jobs:
