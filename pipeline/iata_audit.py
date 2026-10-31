@@ -20,7 +20,8 @@ from pathlib import Path
 import requests
 
 import airport_codes
-from common import ARTICLES_DIR, ROOT, SITE_ORIGIN, parse_iso, save_json
+from common import ARTICLES_DIR, ROOT, SITE_ORIGIN, BASE_PATH, parse_iso, save_json
+from public_article import public_news_path
 from providers import OpenAIProvider, extract_json
 
 TPE = timezone(timedelta(hours=8))
@@ -348,7 +349,7 @@ def run(now=None):
                 state.save()
             for a in rows:
                 record = window_results[a["id"]]
-                report["articles"].append({**record, "url": SITE_ORIGIN.rstrip("/") + "/zh/news/" + a["id"] + "/"})
+                report["articles"].append({**record, "url": SITE_ORIGIN.rstrip("/") + BASE_PATH + "/" + public_news_path("news/" + a["id"] + "/")})
             report["checkedCount"] = len(report["articles"])
             report["incompleteCount"] = report["candidateCount"] - report["checkedCount"]
             report["notApplicableCount"] = sum(a["mentions"] == 0 and not a["issues"] for a in report["articles"])

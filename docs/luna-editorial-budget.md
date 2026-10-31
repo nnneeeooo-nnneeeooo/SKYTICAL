@@ -82,3 +82,5 @@
 [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)。
 
 整合上線時，首次共用帳本會保留既有 IATA 檢查已累計的保守費用。超過 272,000 輸入 token 的長 context 請求另保留輸入 2 倍、輸出 1.5 倍費率；搜尋動態 context 也納入此上界。
+
+MAX 呼叫單次上限為 180 秒、模型稿件處理預算 360 秒；整輪撰稿仍受 15 分鐘限制，並預留一次修復時間，避免高推理因原有 90 秒門檻提前中止。

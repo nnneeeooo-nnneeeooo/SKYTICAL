@@ -576,8 +576,8 @@ def test_openai_responses_api():
     try:
         provider = providers.OpenAIProvider()
         captured = []
-        check(provider.max_attempt_seconds == 90
-              and provider.group_budget_seconds == 180,
+        check(provider.max_attempt_seconds == 180
+              and provider.group_budget_seconds == 360,
               "GPT 6 receives bounded request and group budgets")
 
         def fake_post(url, json=None, timeout=None, headers=None):

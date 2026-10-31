@@ -1644,8 +1644,8 @@ class OpenAIProvider(OpenCodeProvider):
     # GPT 6 needs more wall-clock time than the
     # generic 60-second attempt budget. Keep the per-group cap bounded while
     # leaving time for configured fallbacks after a slow OpenAI response.
-    max_attempt_seconds = 90
-    group_budget_seconds = 180
+    max_attempt_seconds = 180
+    group_budget_seconds = 360
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
         selected_model = (
