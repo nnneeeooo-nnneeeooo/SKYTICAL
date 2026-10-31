@@ -40,6 +40,7 @@ from pathlib import Path
 from opencc import OpenCC
 from admin_page import editorial_article
 import news_retry
+import luna_editorial
 from editorial_policy import eligible_providers, is_free_provider, news_policy
 from draft_recovery import (
     normalize_reader_copy, normalize_fact_ids, repair_prompt, draft_timeout, ProviderCallTimeout,
@@ -77,6 +78,7 @@ from providers import (
     ProviderAuthError,
     ProviderError,
     ProviderQuotaError,
+    ProviderBudgetError,
     build_providers,
     classify_failure,
     safe_failure_message,
@@ -1619,7 +1621,8 @@ def _probe_draft(provider, group, **kwargs):
 def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
                      run_trace: _RunTrace | None = None,
                      deadline: float | None = None,
-                     max_attempt_seconds: float | None = None):
+                     max_attempt_seconds: float | None = None,
+                     editorial_feedback: str = ""):
     """Call `provider` up to `tries` times until a draft survives validation
     and quote verification.
 
@@ -1643,6 +1646,8 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
             if draft_group is _DEFAULT_DRAFT_GROUP:
                 prompt_started = time.perf_counter()
                 user_prompt = group_prompt(group)
+                if editorial_feedback:
+                    user_prompt += "\nSOURCE-VERIFIED EDITORIAL REPAIR (one attempt):\n" + editorial_feedback
                 if attempt:
                     # Free hosted request limits apply to the full prompt.
                     # Keep source + precise feedback; omit the bulky old draft
@@ -3160,6 +3165,10 @@ def main() -> None:
             if not prepared:
                 model_groups.append(group)
                 continue
+            if luna_editorial.selected(group):
+                # Selected announcements pass the same bilingual audit path.
+                model_groups.append(group)
+                continue
             candidate, facts = prepared
             article = build_article(candidate, group, now, used_ids,
                                     ANNOUNCEMENT_WRITER, facts, announcement=True)
@@ -3240,7 +3249,8 @@ def main() -> None:
             group_budget = _provider_chain_budget(story_providers)
             group_deadline = min(
                 draft_deadline, time.monotonic() + group_budget)
-            for provider in story_providers:
+            preferred_started = time.monotonic() if luna_editorial.enabled() else None
+            for provider in luna_editorial.routes(group, story_providers, alive):
                 if time.monotonic() >= group_deadline:
                     print(f"write: group {group.get('id')} drafting time budget reached; retained for retry")
                     break
@@ -3264,6 +3274,12 @@ def main() -> None:
                 # for preferred fallbacks. Transport failures still fail over.
                 tries = 2 if (is_fallback or provider is story_providers[0]
                               or not fallback_repair_used) else 1
+                if luna_editorial.enabled() and not is_fallback:
+                    tries = 1  # switch platforms before spending time on repairs
+                    if any(_is_fallback_provider(p) for p in story_providers):
+                        remaining_preferred = max(0.1, luna_editorial.policy()["preferred_seconds"]
+                                                  - (time.monotonic() - preferred_started))
+                        attempt_cap = min(attempt_cap or _provider_attempt_allowance(provider), remaining_preferred)
                 try:
                     candidate, facts = _validated_draft(provider, group,
                                                         tries, ai_calls,
@@ -3289,6 +3305,10 @@ def main() -> None:
                     transient_failure_counts.pop(provider.name, None)
                     provider_health.mark_failure(provider.name, "auth")
                     run_trace.disable_last_provider()
+                    continue
+                except ProviderBudgetError:
+                    # A local spend cap is not an API account failure.
+                    alive[:] = [p for p in alive if p.name != "openai"]
                     continue
                 except ProviderQuotaError as exc:
                     # Quota/credits are account-level too.
@@ -3361,6 +3381,33 @@ def main() -> None:
                     "refusal" if stopped_by_refusal else "retry_pending",
                     final_model)
                 continue
+            if luna_editorial.selected(group):
+                reviewer = next((p for p in accounted_providers if p.name == "openai" and p in alive), None)
+                result = {"status": "unavailable", "issues": []}
+                try:
+                    with draft_timeout(_provider_attempt_allowance(reviewer, draft_deadline)):
+                        result = luna_editorial.audit(reviewer, draft, group)
+                    if result["status"] == "issues" and reviewer is not None:
+                        import json
+                        feedback = json.dumps({"previousDraft": draft, "verifiedIssues": result["issues"]}, ensure_ascii=False)
+                        draft, verified = _validated_draft(
+                            reviewer, group, 1, ai_calls, run_trace,
+                            deadline=draft_deadline, editorial_feedback=feedback)
+                        if draft is None or draft.get("status") == "reject":
+                            result = {"status": "issues", "issues": []}
+                        else:
+                            writer = reviewer
+                            with draft_timeout(_provider_attempt_allowance(reviewer, draft_deadline)):
+                                result = luna_editorial.audit(reviewer, draft, group)
+                except DraftInvalid:
+                    result = {"status": "issues", "issues": []}
+                except Exception:
+                    result = {"status": "unavailable", "issues": []}
+                if result["status"] != "pass":
+                    skipped += 1
+                    retry_ledger.failure(group, content=result["status"] == "issues")
+                    run_trace.finish("retry_pending", "editorial_audit_held", writer.label)
+                    continue
             article_started = time.perf_counter()
             article = build_article(
                 draft, group, now, used_ids, writer.label, verified,
