@@ -37,11 +37,30 @@ def test_taiwan_sidebar_selection():
     assert build.taiwan_sidebar_articles([boundary], now) == [boundary]
 
 
+def test_mobile_feed_date_uses_taipei_publication_day():
+    article = build.prep_article({
+        "id": "a-mobile-date", "publishedUtc": "2026-10-30T17:30:00Z",
+        "cat": "ops", "zh": {"title": "臺灣航空新聞", "body": ["正文"]},
+        "sources": [{"name": "Test", "url": "https://example.com/news"}],
+    })
+    zh = build.art_view(article, "zh")
+    en = build.art_view(article, "en")
+    assert zh["feed_day"] == en["feed_day"] == "2026-10-31"
+    assert zh["feed_day_label"] == "10 月 31 日"
+    assert en["feed_day_label"] == "Oct 31, 2026"
+    assert zh["published_iso"] == article["published_iso"]
+
+
 def test_rendered_sidebar():
     assert build.main() == 0
     for lang, prefix in (("zh", ""), ("en", "en/")):
         path = build.SITE_DIR / prefix / "index.html"
         soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
+        rows = soup.select(".home-feed-row")
+        headings = soup.select(".feed-day-heading")
+        days = list(dict.fromkeys(row["data-feed-day"] for row in rows))
+        assert [heading["data-feed-day"] for heading in headings] == days
+        assert soup.select_one(".nav-link-briefing")
         rail = soup.select_one(".rail-right")
         assert rail.select_one("#taiwan-focus-heading").text == build.L[lang]["taiwanFocusTitle"]
         assert rail.select_one("#explore-topics-heading").text == build.L[lang]["exploreTopics"]
@@ -80,6 +99,7 @@ def test_compact_attribution_preserves_article_references():
 
 if __name__ == "__main__":
     test_taiwan_sidebar_selection()
+    test_mobile_feed_date_uses_taipei_publication_day()
     test_rendered_sidebar()
     test_compact_attribution_preserves_article_references()
-    print("test_home_sidebar: 3 passed")
+    print("test_home_sidebar: 4 passed")

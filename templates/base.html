@@ -59,12 +59,14 @@ gtag('config', '{{ ga4_measurement_id }}', {
 <link rel="stylesheet" href="{{ base }}/assets/modernist.css">
 <link rel="stylesheet" href="{{ base }}/assets/site.css?v={{ asset_version }}">
 <link rel="stylesheet" href="{{ base }}/assets/pixel.css?v={{ asset_version }}">
+<link rel="stylesheet" href="{{ base }}/assets/mobile.css?v={{ asset_version }}">
 <link rel="alternate" type="application/rss+xml"
       title="{{ t.siteName }} — {{ t.latest }}" href="{{ feed_url }}">
 {% block head_extra %}{% endblock %}
 <script src="{{ base }}/assets/app.js?v={{ asset_version }}" defer></script>
 <script src="{{ base }}/assets/logo-flight.js?v={{ asset_version }}" defer></script>
 <script src="{{ base }}/assets/text-spacing.js?v={{ asset_version }}" defer></script>
+<script src="{{ base }}/assets/mobile.js?v={{ asset_version }}" defer></script>
 </head>
 <body>
 <div class="page">
@@ -97,6 +99,16 @@ gtag('config', '{{ ga4_measurement_id }}', {
       </div>
       <svg class="brand-flight-trail" data-brand-flight-trail aria-hidden="true"><path></path></svg>
     </div>
+    <button class="mobile-search-toggle" type="button" aria-controls="news-search-form" aria-expanded="false"
+            aria-label="{% if lang == 'zh' %}展開搜尋{% else %}Open search{% endif %}"
+            data-open-label="{% if lang == 'zh' %}展開搜尋{% else %}Open search{% endif %}"
+            data-close-label="{% if lang == 'zh' %}收合搜尋{% else %}Close search{% endif %}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+    </button>
+    <details class="mobile-more">
+      <summary aria-label="{% if lang == 'zh' %}更多選項{% else %}More options{% endif %}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+      <div class="mobile-more-panel"><strong>{% if lang == 'zh' %}顯示與更多{% else %}Display and more{% endif %}</strong></div>
+    </details>
     <form id="news-search-form" class="header-search-form"
           action="{{ search_url }}" method="get" role="search">
       <svg class="header-search-icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -140,7 +152,7 @@ gtag('config', '{{ ga4_measurement_id }}', {
   <nav class="site-nav" id="site-nav">
     {% for n in nav %}
     {% set is_briefing_nav = n.url.endswith('/briefings/') %}
-    <a class="nav-link{% if n.url == home_url or n.url.endswith('/sources/') %} nav-link-mobile-hidden{% endif %}{% if is_briefing_nav %} nav-link-briefing{% endif %}{% if n.active %} active{% endif %}" href="{{ n.url }}">{% if is_briefing_nav %}<span class="nav-link-label">{{ n.label }}</span><span class="nav-beta">BETA</span>{% else %}{{ n.label }}{% endif %}</a>
+    <a class="nav-link{% if n.url == home_url or n.url.endswith('/sources/') %} nav-link-mobile-hidden{% endif %}{% if is_briefing_nav %} nav-link-briefing{% endif %}{% if n.active %} active{% endif %}" href="{{ n.url }}"{% if n.url == home_url %} data-mobile-label="{% if lang == 'zh' %}最新{% else %}Latest{% endif %}"{% endif %}>{% if is_briefing_nav %}<span class="nav-link-label">{{ n.label }}</span><span class="nav-beta">BETA</span>{% else %}{{ n.label }}{% endif %}</a>
     {% endfor %}
   </nav>
   <div class="utility-bar">

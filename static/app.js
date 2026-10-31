@@ -303,6 +303,9 @@
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var heroTransitionMs = reduceHeroMotion ? 0 : 220;
     var heroRotationMs = Number(heroCarousel && heroCarousel.dataset.rotationMs) || 2500;
+    if (window.matchMedia && window.matchMedia("(max-width: 720px)").matches) {
+      heroRotationMs = Math.max(heroRotationMs, 10000);
+    }
 
     // Reserve each text row for the tallest candidate at the current width.
     // Measuring a hidden copy keeps the visible story and live region untouched.

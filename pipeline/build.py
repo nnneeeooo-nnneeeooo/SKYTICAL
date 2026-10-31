@@ -95,6 +95,8 @@ def static_asset_version() -> str:
     digest = hashlib.sha256()
     for name in (
         "site.css",
+        "mobile.css",
+        "mobile.js",
         "pixel.css",
         "fusion-pixel-tw-v2026-10-16.woff2",
         "app.js",
@@ -1584,6 +1586,10 @@ def art_view(a, lang: str):
         url=page_url(lang, f"news/{a['id']}/"),
         writer_model=a["writer_model"],
         article_format=a["article_format"],
+        feed_day=a["published_dt"].astimezone(TPE).strftime("%Y-%m-%d"),
+        feed_day_label=(f'{a["published_dt"].astimezone(TPE).month} 月 '
+                        f'{a["published_dt"].astimezone(TPE).day} 日' if lang == "zh"
+                        else a["published_dt"].astimezone(TPE).strftime("%b %d, %Y")),
         published_iso=a["published_iso"],
         modified_iso=a["modified_iso"],
         published_meta_ts=a["published_meta_ts"],
