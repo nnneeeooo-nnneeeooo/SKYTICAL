@@ -119,6 +119,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: skytical-paid-api-${{ github.ref }}
+      queue: max
       cancel-in-progress: false
     permissions:
       contents: write # commits data/ back to the repo
