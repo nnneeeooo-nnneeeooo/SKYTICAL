@@ -35,6 +35,7 @@ jobs:
     timeout-minutes: 45
     concurrency:
       group: skytical-paid-api-${{ github.ref }}
+      queue: max
       cancel-in-progress: false
     permissions:
       contents: write # only data/iata-audit/state.json, never articles or code
