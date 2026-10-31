@@ -9,6 +9,7 @@ def test_all_production_openai_jobs_share_lock_and_always_persist():
         text = (ROOT / ".github/workflows" / name).read_text(encoding="utf-8")
         assert "group: skytical-paid-api-${{ github.ref }}" in text
         assert "cancel-in-progress: false" in text
+        assert "queue: max" in text
         assert 'AVWIRE_PAID_BUDGET_ENABLED: "true"' in text
         assert text.count("run: python pipeline/paid_budget_sync.py refresh") == 1
         assert text.count("run: python pipeline/paid_budget_sync.py persist") == 1
