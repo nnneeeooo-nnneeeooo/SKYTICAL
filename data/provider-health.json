@@ -1,11 +1,6 @@
 {
   "schemaVersion": 1,
   "platforms": {
-    "wechat": {
-      "failureClass": "quota",
-      "cooldownUntilUtc": "2026-11-01T00:35Z",
-      "updatedUtc": "2026-10-31T18:35Z"
-    },
     "gemini": {
       "failureClass": "quota",
       "cooldownUntilUtc": "2026-11-01T04:55Z",
@@ -16,10 +11,25 @@
       "cooldownUntilUtc": "2026-11-01T04:55Z",
       "updatedUtc": "2026-10-31T22:55Z"
     },
+    "nvidia": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-11-01T03:45Z",
+      "updatedUtc": "2026-11-01T02:45Z"
+    },
     "openai": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-11-01T00:10Z",
-      "updatedUtc": "2026-10-31T23:10Z"
+      "cooldownUntilUtc": "2026-11-01T03:48Z",
+      "updatedUtc": "2026-11-01T02:48Z"
+    },
+    "wechat": {
+      "failureClass": "quota",
+      "cooldownUntilUtc": "2026-11-01T08:48Z",
+      "updatedUtc": "2026-11-01T02:48Z"
+    },
+    "cloudflare": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-11-01T03:48Z",
+      "updatedUtc": "2026-11-01T02:48Z"
     }
   }
 }
