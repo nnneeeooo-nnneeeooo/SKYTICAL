@@ -2,19 +2,19 @@
   "schemaVersion": 1,
   "days": {
     "2026-11-01": {
-      "total": 1301642,
+      "total": 1500000,
       "review": 6138,
-      "draft": 862838,
-      "summary": 432666,
+      "draft": 1035581,
+      "summary": 458281,
       "warned": 1
     }
   },
   "months": {
     "2026-11": {
-      "total": 1301642,
+      "total": 1500000,
       "review": 6138,
-      "draft": 862838,
-      "summary": 432666
+      "draft": 1035581,
+      "summary": 458281
     }
   },
   "reservations": {
@@ -173,6 +173,19 @@
       "month": "2026-11",
       "purpose": "draft",
       "micros": 27830
+    },
+    "77d2c77ae1b84e66b328d4976a48c894": {
+      "day": "2026-11-01",
+      "month": "2026-11",
+      "purpose": "summary",
+      "micros": 25615
+    },
+    "ci-escrow-41315272230-2026-11-01": {
+      "day": "2026-11-01",
+      "month": "2026-11",
+      "purpose": "draft",
+      "micros": 172743,
+      "kind": "ci_escrow"
     }
   }
 }
