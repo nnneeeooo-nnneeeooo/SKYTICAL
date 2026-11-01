@@ -11,27 +11,27 @@
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
-      "status": "waiting",
-      "untilUtc": "2026-11-01T04:55Z",
-      "checkedUtc": "2026-10-31T22:55Z",
-      "failureClass": "unexpected",
-      "diagnostic": "F1 claim adds high-risk atom 'H140' not present in its own sourceQuote",
+      "status": "verified",
+      "untilUtc": "2026-11-02T09:48Z",
+      "checkedUtc": "2026-11-01T09:48Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-01T04:55Z",
-      "checkedUtc": "2026-10-31T22:55Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (credits exhausted?)",
+      "checkedUtc": "2026-11-01T09:48Z",
+      "untilUtc": "2026-11-01T15:48Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 413 request too large token_limit=8000 requested_tokens=8855",
       "probeVersion": 3,
       "schemaMode": null
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "verified",
-      "checkedUtc": "2026-11-01T02:39Z",
       "untilUtc": "2026-11-02T02:39Z",
+      "checkedUtc": "2026-11-01T02:39Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
@@ -47,22 +47,22 @@
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-11-01T04:55Z",
-      "checkedUtc": "2026-10-31T22:55Z",
-      "failureClass": "truncated",
-      "diagnostic": "finishReason MAX_TOKENS",
+      "status": "verified",
+      "untilUtc": "2026-11-02T09:48Z",
+      "checkedUtc": "2026-11-01T09:48Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
-      "schemaMode": null
+      "schemaMode": "prompt"
     },
     "gemini:gemini-3.5-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-11-01T04:55Z",
-      "checkedUtc": "2026-10-31T22:55Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
+      "status": "verified",
+      "untilUtc": "2026-11-02T09:48Z",
+      "checkedUtc": "2026-11-01T09:48Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
-      "schemaMode": null
+      "schemaMode": "prompt"
     }
   }
 }
