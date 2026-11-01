@@ -2,17 +2,18 @@
   "schemaVersion": 1,
   "days": {
     "2026-11-01": {
-      "total": 568588,
+      "total": 1500000,
       "review": 6138,
-      "draft": 404473,
-      "summary": 157977
+      "draft": 1335885,
+      "summary": 157977,
+      "warned": 1
     }
   },
   "months": {
     "2026-11": {
-      "total": 568588,
+      "total": 1500000,
       "review": 6138,
-      "draft": 404473,
+      "draft": 1335885,
       "summary": 157977
     }
   },
@@ -88,6 +89,19 @@
       "month": "2026-11",
       "purpose": "draft",
       "micros": 28259
+    },
+    "4d1f97c081a943769b80e926e710182a": {
+      "day": "2026-11-01",
+      "month": "2026-11",
+      "purpose": "draft",
+      "micros": 339997
+    },
+    "ci-escrow-41263655218-2026-11-01": {
+      "day": "2026-11-01",
+      "month": "2026-11",
+      "purpose": "draft",
+      "micros": 591415,
+      "kind": "ci_escrow"
     }
   }
 }
