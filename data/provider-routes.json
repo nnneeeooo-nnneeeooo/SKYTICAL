@@ -2,45 +2,45 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "verified",
-      "untilUtc": "2026-11-02T16:57Z",
-      "checkedUtc": "2026-11-01T16:57Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-03T00:53Z",
+      "checkedUtc": "2026-11-02T18:53Z",
+      "failureClass": "unexpected",
+      "diagnostic": "F1 claim adds high-risk atom 'H140' not present in its own sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "verified",
-      "untilUtc": "2026-11-02T09:48Z",
-      "checkedUtc": "2026-11-01T09:48Z",
+      "untilUtc": "2026-11-03T18:53Z",
+      "checkedUtc": "2026-11-02T18:53Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
-      "status": "verified",
-      "untilUtc": "2026-11-02T16:57Z",
-      "checkedUtc": "2026-11-01T16:57Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-03T00:53Z",
+      "checkedUtc": "2026-11-02T18:53Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "checkedUtc": "2026-11-02T08:22Z",
-      "untilUtc": "2026-11-02T14:22Z",
+      "untilUtc": "2026-11-03T00:53Z",
+      "checkedUtc": "2026-11-02T18:53Z",
       "failureClass": "unexpected",
-      "diagnostic": "entity value '空中巴士' is not verbatim in its sourceQuote",
+      "diagnostic": "summarySupportedBy references a fact that did not verify",
       "probeVersion": 3,
       "schemaMode": null
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-02T16:57Z",
-      "checkedUtc": "2026-11-01T16:57Z",
+      "checkedUtc": "2026-11-02T18:53Z",
+      "untilUtc": "2026-11-03T18:53Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -48,21 +48,21 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "verified",
-      "untilUtc": "2026-11-02T09:48Z",
-      "checkedUtc": "2026-11-01T09:48Z",
+      "untilUtc": "2026-11-03T18:53Z",
+      "checkedUtc": "2026-11-02T18:53Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": "prompt"
     },
     "gemini:gemini-3.5-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-02T09:48Z",
-      "checkedUtc": "2026-11-01T09:48Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-03T00:53Z",
+      "checkedUtc": "2026-11-02T18:53Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     }
   }
 }
