@@ -2,14 +2,34 @@
   "schemaVersion": 1,
   "platforms": {
     "gemini": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-11-02T09:26Z",
+      "updatedUtc": "2026-11-02T08:26Z"
+    },
+    "wechat": {
       "failureClass": "quota",
-      "cooldownUntilUtc": "2026-11-02T07:07Z",
-      "updatedUtc": "2026-11-02T01:07Z"
+      "cooldownUntilUtc": "2026-11-02T14:26Z",
+      "updatedUtc": "2026-11-02T08:26Z"
     },
     "nvidia": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-11-02T02:11Z",
-      "updatedUtc": "2026-11-02T01:11Z"
+      "cooldownUntilUtc": "2026-11-02T09:27Z",
+      "updatedUtc": "2026-11-02T08:27Z"
+    },
+    "openai": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-11-02T09:30Z",
+      "updatedUtc": "2026-11-02T08:30Z"
+    },
+    "openrouter": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-11-02T09:30Z",
+      "updatedUtc": "2026-11-02T08:30Z"
+    },
+    "groq": {
+      "failureClass": "quota",
+      "cooldownUntilUtc": "2026-11-02T14:30Z",
+      "updatedUtc": "2026-11-02T08:30Z"
     }
   }
 }

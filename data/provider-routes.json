@@ -29,18 +29,18 @@
       "schemaMode": null
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
-      "status": "verified",
-      "untilUtc": "2026-11-02T02:39Z",
-      "checkedUtc": "2026-11-01T02:39Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "checkedUtc": "2026-11-02T08:22Z",
+      "untilUtc": "2026-11-02T14:22Z",
+      "failureClass": "unexpected",
+      "diagnostic": "entity value '空中巴士' is not verbatim in its sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-11-01T16:57Z",
       "untilUtc": "2026-11-02T16:57Z",
+      "checkedUtc": "2026-11-01T16:57Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
