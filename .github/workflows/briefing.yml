@@ -72,6 +72,7 @@ jobs:
           python tests/test_briefing_writer.py
           python tests/test_briefing_ui.py
           python tests/test_briefing_recovery.py
+          python tests/test_briefing_persist.py
 
       - name: Refresh shared paid API budget
         env:
@@ -160,6 +161,18 @@ jobs:
             python pipeline/briefing_recovery.py --edition "$EDITION"
           fi
 
+      # Back up source JSON before any build/scan/push failure can lose it.
+      - name: Back up generated briefing data
+        if: steps.run_briefing.outputs.publish == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: briefing-data-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            data/briefings/
+            data/usage.json
+          if-no-files-found: error
+          retention-days: 90
+
       - name: Save paid API budget recovery snapshot
         if: always()
         uses: actions/upload-artifact@v4
@@ -235,35 +248,9 @@ jobs:
       - name: Commit briefing data (only when changed)
         id: persist
         if: steps.run_briefing.outputs.publish == 'true'
-        run: |
-          git config user.name "skytical-bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add data/briefings
-          git add data/usage.json 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "no changes to commit; current main already contains the state"
-            echo "persisted=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git commit -m "briefing ${{ steps.ed.outputs.edition }} $(date -u +%FT%H:%M)"
-          pushed=""
-          for i in 1 2 3; do
-            if ! git pull --rebase -X theirs origin main; then
-              git rebase --abort || true
-              sleep 5
-              continue
-            fi
-            if git push origin HEAD:main; then
-              pushed=yes
-              break
-            fi
-            sleep 5
-          done
-          if [ -z "$pushed" ]; then
-            echo "::error::briefing data could not be persisted after 3 attempts"
-            exit 1
-          fi
-          echo "persisted=true" >> "$GITHUB_OUTPUT"
+        env:
+          BRIEFING_EDITION: ${{ steps.ed.outputs.edition }}
+        run: bash pipeline/persist_briefing.sh "$BRIEFING_EDITION"
 
       - name: Fail run if an edition failed validation
         if: steps.run_briefing.outcome == 'failure' || steps.run_briefing.outputs.failed == 'true'
