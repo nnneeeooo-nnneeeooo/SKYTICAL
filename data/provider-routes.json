@@ -3,10 +3,10 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-11-03T00:53Z",
-      "checkedUtc": "2026-11-02T18:53Z",
-      "failureClass": "unexpected",
-      "diagnostic": "F1 claim adds high-risk atom 'H140' not present in its own sourceQuote",
+      "untilUtc": "2026-11-03T07:51Z",
+      "checkedUtc": "2026-11-03T01:51Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -21,26 +21,26 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-03T00:53Z",
-      "checkedUtc": "2026-11-02T18:53Z",
+      "untilUtc": "2026-11-03T07:51Z",
+      "checkedUtc": "2026-11-03T01:51Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
-      "status": "waiting",
-      "untilUtc": "2026-11-03T00:53Z",
-      "checkedUtc": "2026-11-02T18:53Z",
-      "failureClass": "unexpected",
-      "diagnostic": "summarySupportedBy references a fact that did not verify",
+      "status": "verified",
+      "checkedUtc": "2026-11-03T01:51Z",
+      "untilUtc": "2026-11-04T01:51Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-11-02T18:53Z",
       "untilUtc": "2026-11-03T18:53Z",
+      "checkedUtc": "2026-11-02T18:53Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -57,10 +57,10 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-03T00:53Z",
-      "checkedUtc": "2026-11-02T18:53Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "untilUtc": "2026-11-03T07:51Z",
+      "checkedUtc": "2026-11-03T01:51Z",
+      "failureClass": "unexpected",
+      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     }

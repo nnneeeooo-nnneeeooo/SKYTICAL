@@ -3,28 +3,33 @@
   "platforms": {
     "groq": {
       "failureClass": "quota",
-      "cooldownUntilUtc": "2026-11-03T00:53Z",
-      "updatedUtc": "2026-11-02T18:53Z"
+      "cooldownUntilUtc": "2026-11-03T07:51Z",
+      "updatedUtc": "2026-11-03T01:51Z"
+    },
+    "wechat": {
+      "failureClass": "quota",
+      "cooldownUntilUtc": "2026-11-03T08:01Z",
+      "updatedUtc": "2026-11-03T02:01Z"
     },
     "gemini": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-11-02T20:04Z",
-      "updatedUtc": "2026-11-02T19:04Z"
+      "cooldownUntilUtc": "2026-11-03T03:02Z",
+      "updatedUtc": "2026-11-03T02:02Z"
     },
     "openai": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-11-02T20:07Z",
-      "updatedUtc": "2026-11-02T19:07Z"
-    },
-    "wechat": {
-      "failureClass": "transient",
-      "cooldownUntilUtc": "2026-11-02T20:07Z",
-      "updatedUtc": "2026-11-02T19:07Z"
+      "cooldownUntilUtc": "2026-11-03T03:05Z",
+      "updatedUtc": "2026-11-03T02:05Z"
     },
     "openrouter": {
       "failureClass": "transient",
-      "cooldownUntilUtc": "2026-11-02T20:07Z",
-      "updatedUtc": "2026-11-02T19:07Z"
+      "cooldownUntilUtc": "2026-11-03T03:05Z",
+      "updatedUtc": "2026-11-03T02:05Z"
+    },
+    "cloudflare": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-11-03T03:05Z",
+      "updatedUtc": "2026-11-03T02:05Z"
     }
   }
 }
