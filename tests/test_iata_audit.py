@@ -147,6 +147,14 @@ def test_unknown_spend_stays_reserved_and_monthly_limit_blocks_http():
         state.reserve({"max_output_tokens": 48000}, audit.START)
 
 
+def test_daily_audit_spend_can_exceed_old_daily_cap():
+    state = audit.State()
+    state.data["days"]["2026-11-01"] = 1000000
+    state.data["months"]["2026-11"] = 1000000
+    state.reserve({"max_output_tokens": 48000}, audit.START)
+    assert state.data["days"]["2026-11-01"] > 1000000
+
+
 def test_persistence_failure_blocks_before_paid_request():
     state = audit.State()
     state.save = Mock(side_effect=ConnectionError())
