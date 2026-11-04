@@ -36,45 +36,6 @@
       "failureClass": "content_validation",
       "title": "Airbus asks certain A330neo operators to check for stray tools: Bloomberg"
     },
-    "df74468bc565dcee90121bd1": {
-      "sourceUrls": [
-        "https://simpleflying.com/united-airlines-boeing-757-fuel-smell-diversion"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-05T12:28Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-05T14:28Z",
-      "title": "United Airlines Boeing 757 Makes Overweight Landing In Dublin Due To Fuel Odor"
-    },
-    "4ac45b112e6afb253543ccd6": {
-      "sourceUrls": [
-        "https://www.aerotime.aero/articles/flydubai-pilot-allegedly-planned-hijack-previous-flight-tel-aviv"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-05T12:28Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-05T14:28Z",
-      "title": "flydubai pilot allegedly planned to hijack previous flight to Tel Aviv: Reuters"
-    },
-    "0817e984a9e7ffb5ee32f8e0": {
-      "sourceUrls": [
-        "https://simpleflying.com/emirates-launches-new-a380-route-to-europe"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-05T12:28Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-05T14:28Z",
-      "title": "Emirates Launches New 7-Hour Nonstop A380 Route To Europe: See Map Now"
-    },
     "ec546c691f8cc24954bf2fb0": {
       "sourceUrls": [
         "https://aerospaceglobalnews.com/news/riyadh-air-unveils-first-indigo-boeing-787-9-dreamliner",
@@ -3706,34 +3667,13 @@
         "https://www.cna.com.tw/news/ahel/202611030233.aspx"
       ],
       "contentFailures": 1,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-03T18:07Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-03T20:07Z",
-      "title": "中職聯隊10日赴日本戰亞冠賽 星宇藝術機助陣"
-    },
-    "b3676a441d2c37e4f694c5e3": {
-      "sourceUrls": [
-        "https://aerospaceglobalnews.com/news/ntsb-learjet-60-investigation",
-        "https://www.aerotime.aero/articles/florida-learjet-crash-ntsb-in-flight-breakup"
-      ],
-      "contentFailures": 0,
       "serviceFailures": 2,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-03T01:51Z"
-        }
-      ],
-      "updatedUtc": "2026-11-03T23:44Z",
-      "nextRetryUtc": "2026-11-04T05:44Z",
+      "history": [],
+      "updatedUtc": "2026-11-04T15:35Z",
       "failureClass": "provider_failure",
-      "title": "NTSB finds evidence of in-flight breakup before Florida Learjet crash"
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-04T21:35Z",
+      "title": "中職聯隊10日赴日本戰亞冠賽 星宇藝術機助陣"
     },
     "dbdd5667dade81a35924f21b": {
       "sourceUrls": [
@@ -3795,12 +3735,12 @@
         "https://www.cna.com.tw/news/ahel/202611040176.aspx"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-04T11:37Z",
+      "updatedUtc": "2026-11-04T15:35Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-04T13:37Z",
+      "nextRetryUtc": "2026-11-04T21:35Z",
       "title": "華航首推飛曼谷跨年主題航班 5日開賣"
     },
     "68f59b2c50eaca6db7b0dfa2": {
@@ -3818,6 +3758,34 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-04T13:37Z",
       "title": "Boeing confirms triple-digit Avolon order is for MAX 10 jets"
+    },
+    "b3676a441d2c37e4f694c5e3": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/ntsb-learjet-60-broke-apart-florida-crash",
+        "https://aerospaceglobalnews.com/news/ntsb-learjet-60-investigation",
+        "https://www.aerotime.aero/articles/florida-learjet-crash-ntsb-in-flight-breakup"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-03T01:51Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 2,
+          "updatedUtc": "2026-11-03T23:44Z"
+        }
+      ],
+      "updatedUtc": "2026-11-04T15:35Z",
+      "nextRetryUtc": "2026-11-04T17:35Z",
+      "failureClass": "provider_failure",
+      "title": "NTSB finds evidence of in-flight breakup before Florida Learjet crash"
     }
   }
 }
