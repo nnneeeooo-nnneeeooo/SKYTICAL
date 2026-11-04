@@ -15,27 +15,6 @@
       "nextRetryUtc": "2026-10-07T10:47Z",
       "title": "US Coast Guard locates debris field in search for Gulfstream and missing six"
     },
-    "e6a94c2a9027a9fcea292bd9": {
-      "sourceUrls": [
-        "https://aerospaceglobalnews.com/news/airbus-a330neo-operators-checks-stray-tool",
-        "https://www.aerotime.aero/articles/airbus-a330neo-airlines-inspections-stray-tools"
-      ],
-      "contentFailures": 2,
-      "serviceFailures": 0,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 3,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-10-05T07:41Z"
-        }
-      ],
-      "updatedUtc": "2026-10-05T16:23Z",
-      "nextRetryUtc": "2026-10-05T22:23Z",
-      "failureClass": "content_validation",
-      "title": "Airbus asks certain A330neo operators to check for stray tools: Bloomberg"
-    },
     "ec546c691f8cc24954bf2fb0": {
       "sourceUrls": [
         "https://aerospaceglobalnews.com/news/riyadh-air-unveils-first-indigo-boeing-787-9-dreamliner",
@@ -64,19 +43,6 @@
       "failureClass": "content_validation",
       "title": "Riyadh Air shares photos of its first production Boeing 787-9 in indigo livery"
     },
-    "75fb0825f51afc1ed871ddd5": {
-      "sourceUrls": [
-        "https://simpleflying.com/british-airways-boeing-777-diverts-amid-reported-cabin-depressurization"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-05T16:23Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-05T18:23Z",
-      "title": "British Airways Boeing 777 Diverts Amid Reported Cabin Depressurization"
-    },
     "17b42402e1cda8ccbb8872c9": {
       "sourceUrls": [
         "https://www.aerotime.aero/articles/vertical-aerospace-leonardo-helicopters-us-ceo-joins-board"
@@ -89,19 +55,6 @@
       "status": "waiting",
       "nextRetryUtc": "2026-10-06T09:20Z",
       "title": "Vertical Aerospace beefs up board with former Leonardo Helicopters US CEO"
-    },
-    "3da4b721aefb0d419e995f5d": {
-      "sourceUrls": [
-        "https://simpleflying.com/finland-first-f-35-fighter-jets"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-10-05T16:23Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-10-05T18:23Z",
-      "title": "This NATO Country Just Received Its First Permanent F-35 Fighter Jets"
     },
     "5640c38334817e038b762771": {
       "sourceUrls": [
@@ -3766,7 +3719,7 @@
         "https://www.aerotime.aero/articles/florida-learjet-crash-ntsb-in-flight-breakup"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "status": "waiting",
       "history": [
         {
@@ -3782,8 +3735,8 @@
           "updatedUtc": "2026-11-03T23:44Z"
         }
       ],
-      "updatedUtc": "2026-11-04T15:35Z",
-      "nextRetryUtc": "2026-11-04T17:35Z",
+      "updatedUtc": "2026-11-04T18:55Z",
+      "nextRetryUtc": "2026-11-05T00:55Z",
       "failureClass": "provider_failure",
       "title": "NTSB finds evidence of in-flight breakup before Florida Learjet crash"
     },
@@ -3800,32 +3753,79 @@
       "nextRetryUtc": "2026-11-04T17:46Z",
       "title": "Investigator Name: Leah D. Read Title: Sr. ASI Division: ERA Neither the FAA nor the NTSB traveled to the accident site. The pil"
     },
-    "f9580c6e88fe22484d0538a5": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=54678fa8",
-        "https://avherald.com/h?article=546a7e80&opt=0"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-04T15:46Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-04T17:46Z",
-      "title": "Incident: Thai B789 at Shanghai on Nov 4th 2026, cracked windshield"
-    },
     "830995776f2fa106e8767961": {
       "sourceUrls": [
         "https://www.aerotime.aero/articles/us-air-force-divests-a29-super-tucanos-edwards"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-04T15:46Z",
+      "updatedUtc": "2026-11-04T18:55Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-04T17:46Z",
+      "nextRetryUtc": "2026-11-05T00:55Z",
       "title": "US Air Force divests three A-29 Super Tucanos after test pilot school trial"
+    },
+    "f9580c6e88fe22484d0538a5": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=54678fa8",
+        "https://avherald.com/h?article=546a7e80",
+        "https://avherald.com/h?article=546a7e80&opt=0",
+        "https://avherald.com/h?article=546a82ac"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-04T15:46Z"
+        }
+      ],
+      "updatedUtc": "2026-11-04T18:54Z",
+      "nextRetryUtc": null
+    },
+    "e173bc432d91106a054182dc": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/boeing-787-747-faa-fuel-tank-inspections",
+        "https://www.aerotime.aero/articles/faa-boeing-787-fuel-tank-inspections-lightning-risk"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-04T18:55Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-04T20:55Z",
+      "title": "FAA orders Boeing 787 fuel tank inspections over lightning strike explosion risk"
+    },
+    "6f1b4926de6c3b8bab11464d": {
+      "sourceUrls": [
+        "https://simpleflying.com/5-boeing-787-9-fleets-40-business-class-seats"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-04T18:55Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-04T20:55Z",
+      "title": "5 Boeing 787-9 Fleets With At Least 40 Business Class Seats"
+    },
+    "866b701739b5eca2f34ae6d3": {
+      "sourceUrls": [
+        "https://simpleflying.com/why-cargo-airline-broke-3-decades-boeing-widebody-loyalty-give-airbus-1-order"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-04T18:55Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-04T20:55Z",
+      "title": "Why This Cargo Airline Broke 3 Decades Of Boeing Widebody Loyalty To Give Airbus 1 Order"
     }
   }
 }
