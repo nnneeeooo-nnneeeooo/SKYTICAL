@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "verified",
-      "untilUtc": "2026-11-04T10:08Z",
-      "checkedUtc": "2026-11-03T10:08Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-04T17:37Z",
+      "checkedUtc": "2026-11-04T11:37Z",
+      "failureClass": "unexpected",
+      "diagnostic": "entity evidence quote not found in current source: locations='Mount Pennsylvania'",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -21,8 +21,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-04T09:25Z",
-      "checkedUtc": "2026-11-04T03:25Z",
+      "checkedUtc": "2026-11-04T11:37Z",
+      "untilUtc": "2026-11-04T17:37Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -30,8 +30,8 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "verified",
-      "checkedUtc": "2026-11-04T03:25Z",
       "untilUtc": "2026-11-05T03:25Z",
+      "checkedUtc": "2026-11-04T03:25Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
@@ -48,21 +48,21 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-04T05:44Z",
-      "checkedUtc": "2026-11-03T23:44Z",
+      "untilUtc": "2026-11-04T17:37Z",
+      "checkedUtc": "2026-11-04T11:37Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-11-04T09:25Z",
-      "checkedUtc": "2026-11-04T03:25Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "status": "verified",
+      "untilUtc": "2026-11-05T11:37Z",
+      "checkedUtc": "2026-11-04T11:37Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
-      "schemaMode": null
+      "schemaMode": "prompt"
     }
   }
 }
