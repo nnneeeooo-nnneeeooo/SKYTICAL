@@ -48,15 +48,21 @@ def test_reserve_reconciles_reasoning_once_and_uses_taipei_day():
     assert not read()["reservations"]
 
 
-@pytest.mark.parametrize("day,month", [(1499000, 1499000), (0, 29999000)])
-def test_daily_and_monthly_limits_block_before_http(day, month):
-    seed(day, month)
+def test_monthly_limit_blocks_before_http():
+    seed(day=29999000, month=29999000)
     sender = Mock()
     with patch.object(budget, "datetime") as clock:
         clock.now.return_value = NOW
         with pytest.raises(budget.BudgetDenied):
             budget.post(sender, "unused", PAYLOAD)
     sender.assert_not_called()
+
+
+def test_unlimited_daily_budget_allows_spending_above_old_cap():
+    seed(day=5000000, month=5000000)
+    assert budget.policy()["daily_limit_usd"] is None
+    assert budget.reserve(PAYLOAD, now=NOW)
+    assert read()["days"]["2026-11-01"]["total"] > 5000000
 
 
 def test_elective_work_cannot_use_twenty_dollar_drafting_allocation():
@@ -122,7 +128,7 @@ def test_disabled_budget_does_not_create_a_ledger(monkeypatch):
 def test_openai_adapter_blocks_before_network(monkeypatch):
     from providers import OpenAIProvider, ProviderBudgetError
     monkeypatch.setenv("AVWIRE_OPENAI_API_MODEL", "test-private-mapping")
-    seed(day=1500000, month=1500000)
+    seed(day=30000000, month=30000000)
     with patch.object(budget, "datetime") as clock, patch("requests.post") as post:
         clock.now.return_value = NOW
         with pytest.raises(ProviderBudgetError):
@@ -175,10 +181,10 @@ def test_ci_pre_request_escrow_bounds_run_and_final_write_releases_unused_budget
     with patch.object(sync.requests, "get", return_value=get), patch.object(sync.requests, "put", return_value=put) as send:
         sync.sync("reserve", reservation=token)
         outgoing = json.loads(base64.b64decode(send.call_args.kwargs["json"]["content"]))
-        assert outgoing["days"]["2026-11-01"]["total"] == 1500000
+        assert outgoing["days"]["2026-11-01"]["total"] == 30000000
         assert any(r.get("kind") == "ci_escrow" for r in outgoing["reservations"].values())
         # More calls that day require no further remote commit. Local spending
-        # remains subject to the ordinary daily/monthly/category checks.
+        # remains subject to the monthly/category checks.
         monkeypatch.setenv("GITHUB_ACTIONS", "true")
         token2 = budget.reserve(PAYLOAD, now=NOW)
         assert send.call_count == 1

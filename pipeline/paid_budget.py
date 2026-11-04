@@ -33,9 +33,14 @@ def policy():
     with CONFIG_PATH.open(encoding="utf-8") as stream:
         row = json.load(stream)
     for key, value in row.items():
+        if key == "daily_limit_usd" and value is None:
+            continue  # Explicitly unlimited per day; monthly cap still applies.
         if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
             raise BudgetDenied("invalid paid budget configuration")
-    if not 0 < row["daily_warning_usd"] <= row["daily_limit_usd"] <= row["monthly_usd"]:
+    if not 0 < row["daily_warning_usd"] <= row["monthly_usd"]:
+        raise BudgetDenied("invalid paid budget limits")
+    if row["daily_limit_usd"] is not None and not (
+            row["daily_warning_usd"] <= row["daily_limit_usd"] <= row["monthly_usd"]):
         raise BudgetDenied("invalid paid budget limits")
     if sum(row[k] for k in ("draft_target_usd", "review_target_usd", "summary_target_usd")) != row["monthly_usd"]:
         raise BudgetDenied("invalid paid budget allocation")
@@ -125,7 +130,8 @@ def reserve(payload, purpose="draft", model="gpt-6", now=None):
     with _locked() as row:
         daily = row["days"].setdefault(day, {})
         monthly = row["months"].setdefault(month, {})
-        if (daily.get("total", 0) + amount > _micros(cfg["daily_limit_usd"])
+        if ((cfg["daily_limit_usd"] is not None
+             and daily.get("total", 0) + amount > _micros(cfg["daily_limit_usd"]))
                 or monthly.get("total", 0) + amount > _micros(cfg["monthly_usd"])):
             raise BudgetDenied("paid daily/monthly budget exhausted")
         optional = monthly.get("review", 0) + monthly.get("summary", 0)
@@ -172,7 +178,7 @@ def settle(token, data):
         daily = row["days"][hold["day"]]
         if daily["total"] >= _micros(cfg["daily_warning_usd"]) and not daily.get("warned"):
             daily["warned"] = 1
-            print("::warning::Luna daily spending reached US$0.80; hard limits remain active")
+            print("::warning::Luna daily spending reached the warning threshold; monthly limit remains active")
         save_json(_path(), row)
 
 

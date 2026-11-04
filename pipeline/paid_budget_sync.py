@@ -76,8 +76,9 @@ def sync(mode, reservation=None):
         cfg = policy()
         daily = outgoing["days"][hold["day"]]
         monthly = outgoing["months"][hold["month"]]
-        extra = min(_micros(cfg["daily_limit_usd"]) - daily["total"],
-                    _micros(cfg["monthly_usd"]) - monthly["total"])
+        extra = _micros(cfg["monthly_usd"]) - monthly["total"]
+        if cfg["daily_limit_usd"] is not None:
+            extra = min(extra, _micros(cfg["daily_limit_usd"]) - daily["total"])
         for counts in (daily, monthly):
             counts["total"] += extra
             counts["draft"] = counts.get("draft", 0) + extra

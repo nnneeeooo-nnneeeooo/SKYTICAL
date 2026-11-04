@@ -27,10 +27,11 @@
 
 ## 預算與會計
 
-`config/luna_policy.json`：每個臺北曆月 US$30；每日 US$0.80 提醒、US$1.50
-硬上限。分配目標為撰稿／救稿 US$20、審稿 US$8、整理 US$2。審稿及整理可
+`config/luna_policy.json`：每個臺北曆月 US$30；每日 US$0.80 提醒，
+依 2026-11-04 指示取消每日硬上限（`daily_limit_usd: null`），包含 IATA 檢查。
+分配目標為撰稿／救稿 US$20、審稿 US$8、整理 US$2。審稿及整理可
 共用 US$10 彈性額度，保留 US$20 給出稿；撰稿可使用尚未花掉的彈性額度，
-所有用途仍共用每日／每月總上限。提醒以 Actions warning 顯示，不另發送訊息。
+所有用途仍共用每月總上限；IATA 保留自身每月 US$8 上限。提醒以 Actions warning 顯示，不另發送訊息。
 
 - `AVWIRE_PAID_BUDGET_ENABLED=true` 才啟用。正式 hourly、briefing、manual-draft、
   Copilot 與 IATA 的付費執行步驟均啟用；本機及 PR 離線測試預設不啟用。
@@ -56,7 +57,7 @@
 五個正式 API 工作流程（含雲端 IATA）共用 `skytical-paid-api-${{ github.ref }}` concurrency group，
 不取消執行中的作業。每次先用 repository token 讀取最新 ledger，再允許付費步驟；
 第一次付費呼叫前，先以 GitHub contents API 的 SHA compare-and-swap 保存該日
-剩餘預算的保守 escrow（仍受當月剩餘額度約束），同次執行後續呼叫不重複提交。
+可用預算的保守 escrow（每日無上限時預留當月剩餘額度），同次執行後續呼叫不重複提交。
 保存失敗就不送付費請求。結束後以 `if: always()` 保存實際費用與未知呼叫的預留額，
 釋放未用 escrow；即使建站／模型步驟失敗也保存帳本，不提交其他未完成的內容。
 不同執行程序的本機扣款另有 Windows／Linux 檔案鎖。

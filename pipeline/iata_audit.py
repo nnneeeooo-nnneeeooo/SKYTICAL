@@ -251,8 +251,8 @@ class State:
         if inputs > 200000:
             raise ValueError("unbounded audit input")
         amount = math.ceil(inputs * .125 + payload["max_output_tokens"] * .5)
-        if self.data["days"].get(day, 0) + amount > 800000 or self.data["months"].get(month, 0) + amount > 8000000:
-            raise RuntimeError("IATA audit daily/monthly budget reached")
+        if self.data["months"].get(month, 0) + amount > 8000000:
+            raise RuntimeError("IATA audit monthly budget reached")
         self.data["days"][day] = self.data["days"].get(day, 0) + amount
         self.data["months"][month] = self.data["months"].get(month, 0) + amount
         self.save()  # durable BEFORE sending a paid model request
