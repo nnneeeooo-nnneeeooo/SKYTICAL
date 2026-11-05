@@ -223,6 +223,45 @@ def test_published_source_wins_and_expired_item_is_dropped() -> None:
     assert {row["reason"] for row in state["history"]} == {"expired"}
 
 
+def test_roundup_sections_credit_and_sources_render_in_both_languages():
+    from bs4 import BeautifulSoup
+    from jinja2 import Environment, FileSystemLoader
+    now = datetime(2026, 11, 6, 2, tzinfo=timezone.utc)
+    state = {"lastEdition": "", "items": []}
+    one, two = article(1), article(2)
+    one.update(writer="scheduled:Meta Muse", writerModels=["Meta Muse"])
+    two["writer"] = "gemini:gemini-3.5-flash"
+    for row in (one, two):
+        industry_roundup.add(state, row, now)
+    compiled = industry_roundup.compile_due(state, now, [])
+    assert compiled
+    for lang in ("zh", "en"):
+        assert all("（來源：" not in p and "(Source:" not in p for p in compiled[lang]["body"])
+    # Previously published combined paragraphs retain the new display format too.
+    compiled["zh"]["body"][1] += "（來源：Example）"
+    prepared = build.prep_article(compiled)
+    assert prepared["writer_model"] == "Meta Muse、Gemini 3.5 Flash"
+    for lang in ("zh", "en"):
+        view = build.art_view(prepared, lang)
+        ctx = build.base_ctx(lang, "news", f"news/{compiled['id']}/", title=view['title'],
+                             description=view['summary'], ticker=[], build={"date": "2026-11-06 FRI",
+                             "utc_hm": "02:00", "tpe_hm": "10:00", "stamp": "2026-11-06 02:00"})
+        ctx["a"] = view
+        html = Environment(loader=FileSystemLoader(str(Path(__file__).resolve().parents[1] / "templates")),
+                           autoescape=True).get_template("article.html").render(**ctx)
+        soup = BeautifulSoup(html, "html.parser")
+        assert len(soup.select(".roundup-item h2")) == 2
+        assert not soup.select(".article-page figure[data-image-fallback]")
+        assert len(soup.select(".roundup-item p")) == 2
+        assert "（來源：" not in soup.select_one(".article-body").get_text()
+        footer = soup.select_one(".article-sources").get_text()
+        assert "Meta Muse" in footer and "Gemini 3.5 Flash" in footer
+        assert "原稿模型：" in footer if lang == "zh" else "Original-report models:" in footer
+        assert len(soup.select(".article-source-row a")) == 2
+    standalone = dict(compiled, roundupKind=None, articleFormat="full", roundupWriters=[])
+    assert build.art_view(build.prep_article(standalone), "zh")["body_sections"] == []
+
+
 if __name__ == "__main__":
     test_owner_examples_and_urgent_overrides()
     test_queue_deduplication_and_daily_compilation()
@@ -233,4 +272,5 @@ if __name__ == "__main__":
     test_roundup_does_not_displace_pin_or_taiwan_focus()
     test_component_followup_cannot_overwrite_multi_event_edition()
     test_published_muse_copy_is_excerpted_once_with_original_links()
+    test_roundup_sections_credit_and_sources_render_in_both_languages()
     print("PASS industry routing, deduplication and daily compilation")
