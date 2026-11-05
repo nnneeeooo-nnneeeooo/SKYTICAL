@@ -12547,7 +12547,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-05T14:42:09.066646+00:00"
+      "checked_utc": "2026-11-05T15:59:01.037892+00:00"
     },
     "a-singapore-airlines-aether-saf-project-beacon-20261028": {
       "status": "none",
@@ -12698,7 +12698,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-05T14:42:09.066646+00:00"
+      "checked_utc": "2026-11-05T15:59:01.037892+00:00"
     },
     "a-pla-activity-taiwan-20261101": {
       "status": "none",
@@ -12734,7 +12734,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-05T14:42:09.066646+00:00"
+      "checked_utc": "2026-11-05T15:59:01.037892+00:00"
     },
     "a-malaysia-fa-50m-fighter-arrival-20261030": {
       "status": "none",
@@ -12814,7 +12814,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-05T14:42:09.066646+00:00"
+      "checked_utc": "2026-11-05T15:59:01.037892+00:00"
     },
     "a-united-boeing-757-san-francisco-low-fuel-go-around-20261102": {
       "status": "matched",
@@ -13142,6 +13142,28 @@
         "matched": "source:cna"
       },
       "checked_utc": "2026-11-05T11:23:10.244240+00:00"
+    },
+    "a-taiwan-netherlands-drone-partnership-20261105": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:no-event-photo",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-05T15:59:01.037892+00:00",
+      "next_retry_utc": "2026-11-05T21:59:01.037892+00:00"
+    },
+    "a-pla-21-aircraft-8-warships-near-taiwan-20261105": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:no-event-photo",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-05T15:59:01.037892+00:00",
+      "next_retry_utc": "2026-11-05T21:59:01.037892+00:00"
     }
   },
   "sources": {
@@ -16657,6 +16679,18 @@
       "rejection_reason": null,
       "parser_version": 5,
       "next_retry_utc": "2026-11-05T17:23:10.244240+00:00"
+    },
+    "https://www.cna.com.tw/news/aipl/202611050030.aspx": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-05T21:59:01.037892+00:00"
+    },
+    "https://www.cna.com.tw/news/aipl/202611050032.aspx": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-05T21:59:01.037892+00:00"
     }
   }
 }
