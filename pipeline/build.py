@@ -1373,7 +1373,7 @@ def prep_article(raw):
         "sources": sources,
         "airline_entities": airline_entities,
         "writer_model": writer_model(
-            raw.get("writer"), raw.get("writerModels")),
+            raw.get("writer"), raw.get("writerModels")) or roundup_writer_credit(raw),
         "available_languages": available_languages,
         "article_format": (
             raw.get("articleFormat")
@@ -1574,10 +1574,41 @@ def localized_image(image, lang: str):
                        for key in ("subject", "credit", "provider")}}
 
 
+def roundup_writer_credit(raw):
+    """Credit the actual original writers, using the existing public-name mapper."""
+    if raw.get("roundupKind") != "industry":
+        return None
+    labels = []
+    for record in raw.get("roundupWriters") or []:
+        if not isinstance(record, dict):
+            continue
+        credit = writer_model(record.get("writer"), record.get("writerModels"))
+        for label in (credit or "").split("、"):
+            if label and label not in labels:
+                labels.append(label)
+    return "、".join(labels) or None
+
+
+def roundup_body_sections(body):
+    """Turn stored numbered items into semantic headings without parsing HTML."""
+    sections = []
+    for paragraph in body:
+        text = re.sub(r"\s*[（(](?:來源[：:]|Source:)[^()（）\n]{1,240}[）)]\s*$",
+                      "", str(paragraph)).strip()
+        match = re.match(r"^\d+\.\s*([^\n]+)\n(.+)$", text, re.S)
+        sections.append({"heading": match.group(1).strip() if match else None,
+                         "paragraphs": [p.strip() for p in re.split(r"\n\s*\n", match.group(2) if match else text)
+                                        if p.strip()]})
+    return sections
+
+
 def art_view(a, lang: str):
     v = dict(a[lang])
     v["display_summary"] = notification_summary(
         v.get("summary"), lang, v.get("title"))
+    v["body_sections"] = (roundup_body_sections(v.get("body") or [])
+                          if a.get("roundup_kind") == "industry" else [])
+    v["roundup_kind"] = a.get("roundup_kind")
     v.update(
         id=a["id"], cat=a["cat"], tag_class=a["tag_class"],
         image=localized_image(a["image"], lang),

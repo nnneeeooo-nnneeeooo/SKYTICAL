@@ -153,11 +153,11 @@ def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None
 
     selected = retained[:MAX_ITEMS]
     sources, source_urls = [], set()
-    body = {"zh": ["以下消息涉及彼此獨立的航空產業事件，並無已知直接關聯。"],
-            "en": ["These aviation industry updates concern independent events with no stated direct relationship."]}
+    body = {"zh": [f"本期彙整{len(selected)}則航空短訊，各則為獨立事件。"],
+            "en": [f"{len(selected)} independent aviation updates."]}
     if any(row.get("publishedExcerptId") for row in selected):
-        body["zh"][0] += "本期含站內已刊報導摘錄，原文與原始來源保留於來源列表。"
-        body["en"][0] += " This edition includes excerpts of previously published reports; original reports and sources are linked below."
+        body["zh"][0] += "部分內容摘自近期站內報導，原文與來源見文末。"
+        body["en"][0] += " Includes excerpts of recent reports, with original reports and sources linked below."
     facts = []
     for number, row in enumerate(selected, 1):
         article = row["article"]
@@ -169,15 +169,8 @@ def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None
                 (p.strip() for p in paragraphs if isinstance(p, str) and p.strip()), "")
             if not paragraph:
                 return None
-            names = [str(source.get("name") or "").split(" — ", 1)[0]
-                     for source in article.get("sources") or []
-                     if isinstance(source, dict) and source.get("url")
-                     and not str(source.get("name") or "").startswith("Archive:")]
-            credit = "、".join(dict.fromkeys(names))[:100] if language == "zh" \
-                else ", ".join(dict.fromkeys(names))[:100]
-            suffix = f"（來源：{credit}）" if language == "zh" else f" (Source: {credit})"
             heading = str(block.get("title") or "").strip()
-            body[language].append(f"{number}. {heading}\n{paragraph}{suffix}")
+            body[language].append(f"{number}. {heading}\n{paragraph}")
         for source in article.get("sources") or []:
             if not isinstance(source, dict):
                 continue
@@ -210,6 +203,9 @@ def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None
                           "eventKey": row.get("eventKey", ""),
                           "sourceUrls": sorted(_urls(row["article"]))}
                          for row in selected],
+        "roundupWriters": [{"writer": row["article"].get("writer"),
+                            "writerModels": row["article"].get("writerModels", [])}
+                           for row in selected],
         "primarySource": "Multiple aviation sources",
         "image": None, "sourceImageCandidates": [],
         "zh": {"title": "航空短訊彙整：" + "；".join(

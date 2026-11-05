@@ -43,7 +43,7 @@
         {% elif a.image.provider %}<span>{{ a.image.provider }}</span>{% endif %}
       </figcaption>
     </figure>
-    {% else %}
+    {% elif a.roundup_kind != "industry" %}
     <figure data-image-fallback="true" style="margin:0 0 22px;">
       <img src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}" alt="SKYTICAL" fetchpriority="high" decoding="async" style="width:100%;height:auto;max-height:560px;object-fit:contain;background:color-mix(in srgb,var(--color-text) 6%,var(--color-surface));border:1px solid var(--color-divider);">
       <figcaption class="text-muted" style="font-size:11.5px;margin-top:6px;">{% if html_lang.startswith('zh') %}暫無可驗證的事件或資料照片，先顯示 SKYTICAL 預設圖片。{% else %}No verified event or file photo is available yet; showing the SKYTICAL default image.{% endif %}</figcaption>
@@ -51,9 +51,20 @@
     {% endif %}
     <div class="article-body" data-article-body
          data-search-aliases-url="{{ search_aliases_url }}">
+      {% if a.body_sections %}
+      {% for item in a.body_sections %}
+      {% if item.heading %}<section class="roundup-item">
+        <h2>{{ item.heading }}</h2>{% endif %}
+        {% for p in item.paragraphs %}
+        <p style="font-size:16px;line-height:1.95;margin:0 0 18px;">{{ p }}</p>
+        {% endfor %}
+      {% if item.heading %}</section>{% endif %}
+      {% endfor %}
+      {% else %}
       {% for p in a.body %}
       <p style="font-size:16px;line-height:1.95;margin:0 0 18px;">{{ p }}</p>
       {% endfor %}
+      {% endif %}
     </div>
     <div class="article-sources">
       <h6 style="margin:0 0 10px;">{{ t.sourcesBox }}</h6>
@@ -65,7 +76,7 @@
       </div>
       {% endfor %}
       <div class="text-muted" style="font-size:12px;margin-top:10px;border-top:1px solid var(--color-divider);padding-top:10px;">
-        <span>{% if a.article_format == "announcement" %}{{ t.ruleNote }}{% else %}{{ t.genNote }}{% if a.writer_model %} • {{ a.writer_model }}{% else %}{{ t.genNotePunct }}{% endif %}{% endif %}</span>
+        <span>{% if a.article_format == "announcement" %}{{ t.ruleNote }}{% else %}{{ t.genNote }}{% if a.writer_model %} • {% if a.roundup_kind == "industry" %}{% if lang == "zh" %}原稿模型：{% else %}Original-report models: {% endif %}{% endif %}{{ a.writer_model }}{% else %}{{ t.genNotePunct }}{% endif %}{% endif %}</span>
       </div>
     </div>
   </div>
