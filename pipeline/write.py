@@ -2571,6 +2571,9 @@ def _match_existing_article(group: dict, records: list[dict]):
         if isinstance(item, dict) and _norm_title(str(item.get("title") or ""))
     ]
     for record in records:
+        if (record["article"].get("roundupKind") == "industry"
+                and not _already_published_without_new_coverage(group, record)):
+            continue  # One component's follow-up must not replace the whole edition.
         if (urls & record["urls"] and
                 (group.get("updateCandidate") or
                  (urls <= record["urls"] and
@@ -2583,6 +2586,8 @@ def _match_existing_article(group: dict, records: list[dict]):
     best = None
     best_score = 0.0
     for record in records:
+        if record["article"].get("roundupKind") == "industry":
+            continue
         score = _title_match_score(group_titles, record)
         if score >= 0.75 and score > best_score:
             best, best_score = record, score

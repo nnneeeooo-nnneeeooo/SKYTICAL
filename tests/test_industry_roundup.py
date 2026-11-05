@@ -152,6 +152,22 @@ def test_roundup_does_not_displace_pin_or_taiwan_focus():
     assert sum(a.get("roundup_kind") == "industry" for a in chosen) == 1
 
 
+def test_component_followup_cannot_overwrite_multi_event_edition():
+    import write
+    current = article(1)
+    current.update(roundupKind="industry", publishedUtc="2026-10-27T15:00Z")
+    record = {"article": current, "urls": industry_roundup._urls(current),
+              "titles": [write._norm_title("Event 1")]}
+    g = group("Event 1")
+    g["items"][0]["publishedUtc"] = current["sourcePublishedUtc"]
+    assert write._match_existing_article(g, [record]) is record
+    g["updateCandidate"] = True
+    assert write._match_existing_article(g, [record]) is None
+    g.pop("updateCandidate")
+    g["items"][0]["publishedUtc"] = "2026-10-28T00:00Z"
+    assert write._match_existing_article(g, [record]) is None
+
+
 def test_published_source_wins_and_expired_item_is_dropped() -> None:
     now = datetime(2026, 10, 27, 15, 45, tzinfo=timezone.utc)
     state = {"lastEdition": "", "items": []}
@@ -177,4 +193,5 @@ if __name__ == "__main__":
     test_six_hour_editions_and_one_visible_carousel_slot()
     test_event_dedup_and_eight_item_cap()
     test_roundup_does_not_displace_pin_or_taiwan_focus()
+    test_component_followup_cannot_overwrite_multi_event_edition()
     print("PASS industry routing, deduplication and daily compilation")
