@@ -71,6 +71,7 @@ from common import (
 )
 import flightnews
 import archive_context
+import airport_codes
 from announcement_brief import candidate_item, compile_announcement, WRITER as ANNOUNCEMENT_WRITER
 import provider_health
 from fulltext import FULLTEXT_PROMPT_CHARS, MAX_FETCHES_PER_RUN, enrich_pending
@@ -2358,6 +2359,20 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         if verified_rows:
             article["entityEvidence"] = verified_rows
             article["evidenceVersion"] = 2
+    # Capture the actual source pairs before fetched text is discarded. The
+    # model need not reproduce them in its facts or airport metadata.
+    source_codes = list((existing_article or {}).get("airportCodeEvidence") or [])
+    for evidence in airport_codes.collect_source_codes([
+        {**item, "title": _clean_source_text(item.get("title"))[:300],
+         "summary": _clean_source_text(item.get("summary")),
+         "fulltext": _clean_source_text(item.get("fulltext"))[:FULLTEXT_PROMPT_CHARS]}
+        for item in items
+    ]):
+        if evidence not in source_codes:
+            source_codes.append(evidence)
+    if source_codes:
+        article["airportCodeEvidence"] = source_codes
+    airport_codes.enforce_article(article)
     return article
 
 
