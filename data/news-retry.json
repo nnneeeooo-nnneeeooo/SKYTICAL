@@ -3533,13 +3533,13 @@
         "https://aerospaceglobalnews.com/news/boeing-787-747-faa-fuel-tank-inspections",
         "https://www.aerotime.aero/articles/faa-boeing-787-fuel-tank-inspections-lightning-risk"
       ],
-      "contentFailures": 0,
+      "contentFailures": 1,
       "serviceFailures": 1,
       "history": [],
-      "updatedUtc": "2026-11-04T18:55Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-11-05T17:21Z",
+      "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-04T20:55Z",
+      "nextRetryUtc": "2026-11-05T19:21Z",
       "title": "FAA orders Boeing 787 fuel tank inspections over lightning strike explosion risk"
     },
     "6f1b4926de6c3b8bab11464d": {
@@ -3663,13 +3663,13 @@
       "sourceUrls": [
         "https://aerospaceglobalnews.com/news/nasa-x-70-fractal-experimental-aircraft"
       ],
-      "contentFailures": 1,
+      "contentFailures": 2,
       "serviceFailures": 0,
       "history": [],
-      "updatedUtc": "2026-11-05T14:37Z",
+      "updatedUtc": "2026-11-05T17:21Z",
       "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-05T16:37Z",
+      "nextRetryUtc": "2026-11-05T23:21Z",
       "title": "NASA unveils X-70 Fractal experimental aircraft to test advanced flight controls"
     },
     "8c9d0f0205c3b4dea75e461f": {
@@ -3698,12 +3698,25 @@
     },
     "ef5154d9e0f4dbaf716734d9": {
       "sourceUrls": [
-        "https://simpleflying.com/video/why-the-boeing-787-s-wings-are-under-faa-scrutiny"
+        "https://simpleflying.com/fighter-jets-scrambled-bomb-threats-passenger-flights-divert"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-05T17:03Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-05T19:03Z",
+      "title": "Fighter Jets Scrambled As More Bomb Threats Force Multiple Passenger Flights To Divert"
+    },
+    "d921b7754389203145532f71": {
+      "sourceUrls": [
+        "https://www.aerotime.aero/articles/delta-air-lines-wheels-up-order-embraer-phenom-300es"
       ],
       "contentFailures": 0,
       "serviceFailures": 1,
       "history": [],
-      "updatedUtc": "2026-11-05T15:50Z",
+      "updatedUtc": "2026-11-05T17:03Z",
       "failureClass": "provider_failure",
       "status": "waiting",
       "nextRetryUtc": "2026-11-05T17:50Z",
@@ -3730,57 +3743,6 @@
       "failureClass": "content_validation",
       "title": "Qantas sells 44 Boeing 737NGs to AerFin as part of fleet retirement plans"
     },
-    "f9580c6e88fe22484d0538a5": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=54678fa8",
-        "https://avherald.com/h?article=546a7e80",
-        "https://avherald.com/h?article=546a7e80&opt=0",
-        "https://avherald.com/h?article=546a82ac",
-        "https://avherald.com/h?article=546ac900",
-        "https://avherald.com/h?article=546ac900&opt=0",
-        "https://avherald.com/h?article=546acb84&opt=0",
-        "https://avherald.com/h?article=546c37d4&opt=0",
-        "https://avherald.com/h?article=546c4770&opt=0",
-        "https://avherald.com/h?article=546c4d28&opt=0"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
-      "history": [
-        {
-          "status": "ready",
-          "contentFailures": 0,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-04T18:54Z"
-        },
-        {
-          "status": "ready",
-          "contentFailures": 0,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-05T00:34Z"
-        },
-        {
-          "status": "ready",
-          "contentFailures": 0,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-05T07:29Z"
-        },
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-05T15:50Z"
-        },
-        {
-          "status": "ready",
-          "contentFailures": 0,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-05T17:02Z"
-        }
-      ],
-      "updatedUtc": "2026-11-05T17:02Z",
-      "nextRetryUtc": null
-    },
     "3fb0b83355606fd4b7fded46": {
       "sourceUrls": [
         "https://simpleflying.com/fighter-jets-scrambled-bomb-threats-passenger-flights-divert"
@@ -3806,6 +3768,86 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-05T19:03Z",
       "title": "Delta Air Lines partner Wheels Up orders six new Embraer Phenom 300Es"
+    },
+    "f9580c6e88fe22484d0538a5": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=54678fa8",
+        "https://avherald.com/h?article=54678fa8&opt=0",
+        "https://avherald.com/h?article=546a7e80",
+        "https://avherald.com/h?article=546a7e80&opt=0",
+        "https://avherald.com/h?article=546a82ac",
+        "https://avherald.com/h?article=546ac900",
+        "https://avherald.com/h?article=546ac900&opt=0",
+        "https://avherald.com/h?article=546acb84&opt=0",
+        "https://avherald.com/h?article=546c37d4&opt=0",
+        "https://avherald.com/h?article=546c4770&opt=0",
+        "https://avherald.com/h?article=546c4d28&opt=0"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-05T00:34Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-05T07:29Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-05T15:50Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-05T17:02Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-05T17:02Z"
+        }
+      ],
+      "updatedUtc": "2026-11-05T17:21Z",
+      "nextRetryUtc": "2026-11-05T19:21Z",
+      "failureClass": "content_validation",
+      "title": "Incident: Argentinas E190 near Rosario on Nov 5th 2026, eletrical problems, unsafe nose gear"
+    },
+    "f6672ea9e28657b3a1f2d0ed": {
+      "sourceUrls": [
+        "https://www.faa.gov/newsroom/trumps-transportation-secretary-sean-p-duffy-begins-retiring-decades-old-floppy-disks-air"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-05T17:21Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-05T19:21Z",
+      "title": "Trump’s Transportation Secretary Sean P. Duffy Begins Retiring Decades Old Floppy Disks from Air Traffic Control as Part of Ongoing Modernization Effort Deployment of Brand New Air Traffic Control Continues at Record Pace"
+    },
+    "2e8810b74d0f8661c3524b14": {
+      "sourceUrls": [
+        "https://www.easa.europa.eu/newsroom-and-events/news/easa-provides-complete-easy-access-rules-publication-history-xml"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-05T17:21Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-05T19:21Z",
+      "title": "EASA provides complete Easy Access Rules publication history in XML"
     }
   }
 }
