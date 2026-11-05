@@ -10,6 +10,8 @@ The resolver uses the bundled ``airportsdata`` package (no runtime network
 request), SKYTICAL's reviewed Taiwan-airport configuration, and a small
 reviewed alias table for genuinely ambiguous/common source names. Exact or
 uniquely resolvable names are accepted; ambiguous names are never guessed.
+Exact source name/code quotes are retained independently of model output;
+checked short names remain scoped to the article carrying that evidence.
 The stage is idempotent and may safely run before every site build, including
 against already-published recent articles.
 """
@@ -256,6 +258,109 @@ def _looks_like_airport_entity(name: str) -> bool:
                 or re.search(r"[機場]", text))
 
 
+def _source_names(row: dict) -> set[str]:
+    """Names allowed only beside this airport's explicit source code.
+
+    City names are deliberately scoped to quoted source pairs. They never
+    enter the global airport resolver (London alone still has no code).
+    """
+    names = {str(row.get(key) or "").strip()
+             for key in ("name", "name_en", "name_zh", "city")}
+    names.update(_reviewed_alias_values(row["code"]))
+    names.update(re.sub(r"\s+(?:International\s+)?Airport$", "", name,
+                        flags=re.I) for name in list(names))
+    return {name for name in names if len(name) >= 3
+            and not re.fullmatch(r"[A-Z]{3,4}", name)}
+
+
+def collect_source_codes(items: list[dict]) -> list[dict]:
+    """Keep exact, registry-checked name/code quotes independently of the LLM."""
+    rows, _aliases, tw_rows = _registry()
+    evidence = []
+    seen = set()
+    for item in items:
+        if not isinstance(item, dict) or item.get("backgroundCompanion"):
+            continue
+        url = str(item.get("url") or "")
+        if not url.startswith("https://"):
+            continue
+        for key in ("title", "summary", "fulltext"):
+            text = str(item.get(key) or "")
+            for annotation in re.finditer(r"[（(]\s*([A-Z]{3})\s*[)）]", text):
+                code = annotation.group(1)
+                row = _row_for_code(code, rows, tw_rows)
+                if not row:
+                    continue
+                prefix = text[max(0, annotation.start() - 160):annotation.start()]
+                for name in sorted(_source_names(row), key=len, reverse=True):
+                    match = re.search(r"(?<![A-Za-z])" + re.escape(name)
+                                      + r"\s*$", prefix, re.I)
+                    if not match:
+                        continue
+                    value = match.group(0).strip()
+                    # A resolvable airport name outranks an incorrect code
+                    # in the source; never preserve an inconsistent pair.
+                    identity = resolve_airport(value)
+                    if identity and identity["code"] != code:
+                        break
+                    marker = (url, _norm(value), code)
+                    if marker not in seen:
+                        seen.add(marker)
+                        start = annotation.start() - len(prefix) + match.start()
+                        evidence.append({"name": value, "code": code,
+                                         "sourceQuote": text[start:annotation.end()],
+                                         "sourceUrl": url})
+                    break
+    return evidence
+
+
+def _resolved_airports(article: dict):
+    """Share the same identities and checked source aliases with the guard."""
+    entities = article.get("entities") or {}
+    airports = entities.get("airports", []) if isinstance(entities, dict) else []
+    if not isinstance(airports, list):
+        airports = []
+    visible = _visible_airport_names(article)
+    resolved, unresolved = {}, []
+    for value in [*airports, *visible]:
+        name = str(value or "").strip()
+        row = resolve_airport(name)
+        if row:
+            resolved.setdefault(row["code"], {"entity": name, "row": row,
+                                             "code": row["code"]})
+        elif name and _looks_like_airport_entity(name):
+            unresolved.append(name)
+
+    source_urls = {source.get("url") for source in (article.get("sources") or [])
+                   if isinstance(source, dict)}
+    aliases = defaultdict(set)
+    checked = []
+    for evidence in article.get("airportCodeEvidence") or []:
+        if not isinstance(evidence, dict) or evidence.get("sourceUrl") not in source_urls:
+            continue
+        # Re-parse persisted evidence instead of trusting model-written keys.
+        pairs = collect_source_codes([{"url": evidence["sourceUrl"],
+                                       "summary": evidence.get("sourceQuote")}])
+        if evidence not in pairs:
+            continue
+        checked.append(evidence)
+        aliases[_norm(evidence["name"])].add(evidence["code"])
+    rows, _aliases, tw_rows = _registry()
+    for evidence in checked:
+        code = evidence["code"]
+        if len(aliases[_norm(evidence["name"])]) != 1:
+            continue  # conflicting source pairs cannot turn a city into an airport
+        row = _row_for_code(code, rows, tw_rows)
+        item = resolved.setdefault(code, {"entity": row.get("name_en") or row["name"],
+                                          "row": row, "code": code})
+        if _norm(evidence["name"]) == _norm(row.get("city")):
+            city_airport = resolve_airport(f"{row['city']} Airport")
+            if not city_airport or city_airport["code"] != code:
+                continue  # a source city must not swallow another named airport
+        item["row"].setdefault("sourceAliases", []).append(evidence["name"])
+    return list(resolved.values()), unresolved, visible
+
+
 def _slots(article: dict, lang: str):
     block = article.get(lang)
     if not isinstance(block, dict):
@@ -280,6 +385,7 @@ def _airport_patterns(entity: str, row: dict) -> list[re.Pattern]:
     values = []
     entity_value = _identity_name(str(entity or "").strip())
     for value in (entity_value, row.get("name_en"), row.get("name"),
+                  *row.get("sourceAliases", []),
                   *_reviewed_alias_values(str(row.get("code") or ""))):
         raw_value = str(value or "").strip()
         stripped_value = _identity_name(raw_value)
@@ -333,6 +439,7 @@ def _zh_identity_patterns(entity: str, row: dict):
     """Build patterns for known identities without translation guessing."""
     values = []
     for value in (entity, row.get("name_zh"), row.get("name_en"),
+                  *row.get("sourceAliases", []),
                   row.get("name"), *_reviewed_alias_values(
                       str(row.get("code") or ""))):
         value = _identity_name(str(value or "").strip())
@@ -563,27 +670,7 @@ def _visible_airport_names(article: dict) -> list[str]:
 
 def enforce_article(article: dict) -> tuple[bool, list[str]]:
     """Add headline/body IATA codes; return (changed, unresolved entities)."""
-    entities = article.get("entities") or {}
-    airports = entities.get("airports") if isinstance(entities, dict) else []
-    if not isinstance(airports, list):
-        airports = []
-
-    resolved = []
-    unresolved = []
-    seen_codes = set()
-    visible_names = _visible_airport_names(article)
-    for entity in [*airports, *visible_names]:
-        name = str(entity or "").strip()
-        row = resolve_airport(name)
-        if not row:
-            if name and _looks_like_airport_entity(name):
-                unresolved.append(name)
-            continue
-        code = str(row["code"])
-        if code in seen_codes:
-            continue
-        seen_codes.add(code)
-        resolved.append({"entity": name, "row": row, "code": code})
+    resolved, unresolved, _visible = _resolved_airports(article)
 
     if not resolved:
         return False, unresolved
@@ -665,21 +752,7 @@ def validate_article(article: dict) -> list[str]:
     An entity that is not actually present in a visible translation is not a
     violation; the extractor may have retained background metadata.
     """
-    entities = article.get("entities") or {}
-    airports = entities.get("airports") if isinstance(entities, dict) else []
-    if not isinstance(airports, list):
-        airports = []
-
-    resolved = []
-    seen_codes = set()
-    visible_names = _visible_airport_names(article)
-    for entity in [*airports, *visible_names]:
-        name = str(entity or "").strip()
-        row = resolve_airport(name)
-        if not row or row["code"] in seen_codes:
-            continue
-        seen_codes.add(row["code"])
-        resolved.append({"entity": name, "row": row, "code": row["code"]})
+    resolved, _unresolved, visible_names = _resolved_airports(article)
 
     violations = [f"unresolved airport: {name}" for name in visible_names
                   if not resolve_airport(name)]

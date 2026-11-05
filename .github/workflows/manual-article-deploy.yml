@@ -41,6 +41,11 @@ jobs:
       - name: Test summary boundary guard
         run: python tests/test_summary_guard.py
 
+      - name: Test airport source code preservation
+        run: |
+          python tests/test_airport_codes.py
+          python tests/test_airport_source_codes.py
+
       - name: Test headline priority and subject scope
         run: python tests/test_headline_rotation.py
 

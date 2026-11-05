@@ -76,6 +76,7 @@ jobs:
           python tests/test_companion.py
           python tests/test_flightwatch.py
           python tests/test_airport_codes.py
+          python tests/test_airport_source_codes.py
           python tests/test_grounded.py
           python tests/test_news_search.py
           python tests/test_pla.py
@@ -143,7 +144,9 @@ jobs:
         run: python tests/test_changelog.py
 
       - name: Test mandatory airport IATA codes
-        run: python tests/test_airport_codes.py
+        run: |
+          python tests/test_airport_codes.py
+          python tests/test_airport_source_codes.py
 
       - name: Test news freshness invariants
         run: |

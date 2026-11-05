@@ -188,6 +188,17 @@ absent when nothing new that hour)
 }
 ```
 
+`airportCodeEvidence` is optional and additive: each row contains `name`,
+`code`, `sourceQuote` and `sourceUrl`. The writer extracts these exact
+name/code pairs from current source title/summary/full text before discarding
+fetched text, independently of model facts and entities. Background companions
+are excluded. The publishing guard rechecks each quote against the airport
+registry and the article's source URLs. Source-specific short names stay local
+to that article; ambiguous city names never become global airport aliases.
+Reviewed bilingual aliases supply display-name matching, with database-backed
+annotation as the fallback when the source does not supply a code. Both writer
+assembly and the pre-build guard apply the same first-mention rule.
+
 ## data/review.json and data/review-archive.json
 
 Evidence v2 is deliberately additive and backward-compatible. Existing
