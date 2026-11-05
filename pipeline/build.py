@@ -1380,6 +1380,8 @@ def prep_article(raw):
             if raw.get("articleFormat") in ("brief", "roundup", "announcement")
             else "full"),
         "roundup_kind": raw.get("roundupKind"),
+        "roundup_item_ids": [item.get("articleId") for item in raw.get("roundupItems", [])
+                             if isinstance(item, dict) and item.get("articleId")],
     }
 
 
@@ -1878,9 +1880,11 @@ def headline_carousel_articles(articles, now=None, limit=_HERO_CAROUSEL_LIMIT,
 
     # The article list is already newest-first.  Fill the remaining positions
     # with global stories before considering more Taiwan-related stories.
+    covered_ids = {article_id for a in articles if a.get("roundup_kind") == "industry"
+                   for article_id in a.get("roundup_item_ids", [])}
     for prefer_global in (True, False):
         for article in articles:
-            if article["id"] in selected_ids:
+            if article["id"] in selected_ids or article["id"] in covered_ids:
                 continue
             if article.get("roundup_kind") == "industry":
                 continue

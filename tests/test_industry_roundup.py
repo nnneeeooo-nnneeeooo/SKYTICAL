@@ -177,6 +177,7 @@ def test_published_muse_copy_is_excerpted_once_with_original_links():
         a.update(publishedUtc=now.isoformat(), cat="biz", writer="scheduled:Meta Muse", facts=[])
         a["zh"]["title"] = f"歐洲航空公司新增地方航班{n}"
         a["en"]["title"] = f"Airline adds regional flights in Europe {n}"
+        a["zh"]["summary"] = f"航空公司新增航班{n}，連接次要機場。"
         rows.append(a)
     original = copy.deepcopy(rows)
     state = {"lastEdition": "", "items": []}
@@ -185,7 +186,12 @@ def test_published_muse_copy_is_excerpted_once_with_original_links():
     assert compiled and compiled["generationMode"] == "published-news-compilation"
     assert rows == original
     assert rows[0]["zh"]["summary"] in compiled["zh"]["body"][1]
+    import airport_codes
+    assert not airport_codes.validate_article(compiled)
     assert len([s for s in compiled["sources"] if s["name"].startswith("SKYTICAL")]) == 2
+    chosen = build.headline_carousel_articles(
+        [build.prep_article(a) for a in rows + [compiled]], now, pinned_ids=[])
+    assert [a["id"] for a in chosen] == [compiled["id"]]
     assert industry_roundup.collect_published(state, rows + [compiled], now + timedelta(hours=6)) == 0
     # A safety story and Taiwan story never enter merely because they are short.
     excluded = copy.deepcopy(rows)
