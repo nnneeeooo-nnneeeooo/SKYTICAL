@@ -12,8 +12,8 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-05T13:29Z",
-      "checkedUtc": "2026-11-05T07:29Z",
+      "untilUtc": "2026-11-05T19:59Z",
+      "checkedUtc": "2026-11-05T13:59Z",
       "failureClass": "unexpected",
       "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 3,
@@ -21,8 +21,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-05T13:29Z",
-      "checkedUtc": "2026-11-05T07:29Z",
+      "untilUtc": "2026-11-05T19:59Z",
+      "checkedUtc": "2026-11-05T13:59Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -30,10 +30,10 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "checkedUtc": "2026-11-05T07:29Z",
-      "untilUtc": "2026-11-05T13:29Z",
+      "checkedUtc": "2026-11-05T13:59Z",
+      "untilUtc": "2026-11-05T19:59Z",
       "failureClass": "unexpected",
-      "diagnostic": "publish_brief body does not meet brief contract (zh=138 content characters, en=60 words, paragraphs=3/3)",
+      "diagnostic": "verified factId values must be sequential F1..Fn",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -48,21 +48,21 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-05T13:29Z",
-      "checkedUtc": "2026-11-05T07:29Z",
+      "untilUtc": "2026-11-05T19:59Z",
+      "checkedUtc": "2026-11-05T13:59Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-05T11:37Z",
-      "checkedUtc": "2026-11-04T11:37Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-05T19:59Z",
+      "checkedUtc": "2026-11-05T13:59Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     }
   }
 }
