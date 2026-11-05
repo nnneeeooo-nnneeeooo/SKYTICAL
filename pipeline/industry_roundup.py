@@ -1,4 +1,4 @@
-"""Hold verified routine stories and compile one daily industry article.
+"""Hold verified routine stories and compile one article per six-hour edition.
 
 This queue contains drafts that passed write.py's ordinary evidence gates.
 It is never an alternate source-verification path.
@@ -64,8 +64,12 @@ def has_group(state: dict, group: dict) -> bool:
 
 
 def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None:
-    """Compile at/after 23:30 Taipei; keep singletons for the next day."""
+    """Publish when two stories are ready, at most once per Taipei six-hour slot."""
     live_urls = set().union(*(_urls(article) for article in published_articles))
+    live_events = {str(item.get("eventKey"))
+                   for article in published_articles
+                   for item in [article] + (article.get("roundupItems") or [])
+                   if isinstance(item, dict) and item.get("eventKey")}
     retained = []
     history = state.setdefault("history", [])
     for row in state["items"]:
@@ -77,7 +81,8 @@ def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None
         except (TypeError, ValueError):
             continue
         reason = ("expired" if age > MAX_AGE else
-                  "already_published" if _urls(article) & live_urls else
+                  "already_published" if (_urls(article) & live_urls
+                                           or row.get("eventKey") in live_events) else
                   "invalid_time" if age < timedelta(0) else "")
         if reason:
             history.append({"articleId": str(article.get("id") or ""),
@@ -87,12 +92,10 @@ def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None
     state["items"] = retained
     state["history"] = history[-200:]
     local = now.astimezone(TAIPEI)
-    edition = local.date().isoformat()
-    if ((local.hour, local.minute) < (23, 30)
-            or state["lastEdition"] == edition):
+    edition = f"{local.date().isoformat()}-{local.hour // 6 * 6:02d}"
+    if state["lastEdition"] == edition:
         return None
     if len(retained) < 2:
-        state["lastEdition"] = edition
         return None
 
     selected = retained[:MAX_ITEMS]
@@ -118,7 +121,8 @@ def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None
             credit = "、".join(dict.fromkeys(names))[:100] if language == "zh" \
                 else ", ".join(dict.fromkeys(names))[:100]
             suffix = f"（來源：{credit}）" if language == "zh" else f" (Source: {credit})"
-            body[language].append(f"{number}. {paragraph}{suffix}")
+            heading = str(block.get("title") or "").strip()
+            body[language].append(f"{number}. {heading}\n{paragraph}{suffix}")
         for source in article.get("sources") or []:
             if not isinstance(source, dict):
                 continue
@@ -139,16 +143,24 @@ def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None
     source_dates = [str(row["article"].get("sourcePublishedUtc") or "")
                     for row in selected if row["article"].get("sourcePublishedUtc")]
     roundup = {
-        "id": f"a-{local.strftime('%Y%m%d')}-industry-roundup",
+        "id": f"a-{local.strftime('%Y%m%d')}-industry-roundup-{local.hour // 6 * 6:02d}",
         "publishedUtc": iso_minute(now),
-        "cat": "biz", "articleFormat": "roundup",
+        "cat": "biz", "articleFormat": "roundup", "roundupKind": "industry",
+        "roundupItems": [{"articleId": row["article"]["id"],
+                          "eventKey": row.get("eventKey", ""),
+                          "sourceUrls": sorted(_urls(row["article"]))}
+                         for row in selected],
         "primarySource": "Multiple aviation sources",
         "image": None, "sourceImageCandidates": [],
-        "zh": {"title": f"航空產業動態：{count}則獨立消息彙整",
-               "summary": f"彙整{count}則經來源核對的獨立航空產業消息。",
+        "zh": {"title": "航空短訊彙整：" + "；".join(
+                   row["article"]["zh"]["title"] for row in selected[:2]),
+               "summary": f"本期收錄{count}則獨立消息：" + "、".join(
+                   row["article"]["zh"]["title"] for row in selected[:3]) + "。",
                "body": body["zh"]},
-        "en": {"title": f"Aviation industry roundup: {count} independent updates",
-               "summary": f"A roundup of {count} separately sourced aviation industry updates.",
+        "en": {"title": "Aviation briefs: " + "; ".join(
+                   row["article"]["en"]["title"] for row in selected[:2]),
+               "summary": f"{count} independent updates: " + "; ".join(
+                   row["article"]["en"]["title"] for row in selected[:3]) + ".",
                "body": body["en"]},
         "sources": sources, "facts": facts,
         "writer": "rules:verified-industry-roundup",

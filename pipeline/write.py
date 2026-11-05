@@ -3465,7 +3465,7 @@ def main() -> None:
                 print(f"write: revised existing article {article['id']} "
                       "with later same-event source coverage")
             else:
-                route = publication_route(group)
+                route = publication_route(group, article)
                 if route.route == "industry_roundup" and article.get("cat") != "feature":
                     if industry_roundup.add(
                             roundup_state, article, now, reason=route.reason,
@@ -3512,7 +3512,7 @@ def main() -> None:
                 "flightwatch", "flight_event", group,
                 event.get("eventId")).finish("no_provider", "retry_pending")
 
-    # Compile only verified, distinct routine events once per Taipei day.
+    # Compile verified, distinct routine events at most once per six hours.
     # Existing published sources (including delayed scheduled imports) win.
     published_now = [row["article"] for row in _load_existing_articles()]
     published_now.extend(new_articles)
@@ -3555,7 +3555,7 @@ def main() -> None:
 
     refresh_stats(now)
     remaining_count = len(remaining)
-    stalled = bool(ai_calls and remaining_count and not new_articles
+    stalled = bool(ai_calls and remaining_count and not new_articles and not roundup_groups
                    and not updated_articles)
     stats = load_json(STATS_PATH, {})
     stats["newsWriter"] = {
@@ -3563,6 +3563,9 @@ def main() -> None:
         "updatedUtc": iso_minute(now),
         "published": len(new_articles), "revised": len(updated_articles),
         "roundupQueued": len(roundup_groups),
+        "roundupWaiting": len(roundup_state["items"]),
+        "roundupLastEdition": roundup_state["lastEdition"],
+        "roundupPublished": roundup_article["id"] if roundup_article else None,
         "rulePublished": sum(a.get("writer") == ANNOUNCEMENT_WRITER for a in new_articles),
         "pending": remaining_count,
         "retryExhausted": sum(row.get("status") == "exhausted"

@@ -375,7 +375,7 @@ def test_verified_routine_draft_is_queued_before_publication():
             return DRAFT_BIZ
         return {"status": "reject", "decisionReason": "fixture skipped"}
 
-    def route(group):
+    def route(group, article=None):
         if group["id"] == "g-20260726-0503-2":
             return PublicationRoute("industry_roundup", "routine_transaction")
         return PublicationRoute("standalone", "other")

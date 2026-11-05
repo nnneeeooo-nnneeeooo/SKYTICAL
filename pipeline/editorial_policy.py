@@ -28,7 +28,7 @@ class PublicationRoute:
     reason: str
 
 
-def publication_route(group: dict) -> PublicationRoute:
+def publication_route(group: dict, article: dict | None = None) -> PublicationRoute:
     """Conservatively route routine industry updates before publication.
 
     An unclear story stays standalone. The rules use current source headlines
@@ -47,8 +47,20 @@ def publication_route(group: dict) -> PublicationRoute:
     # contains routine words such as partnership, test or software.
     if matches(r"\b(?:crash|fatal|injur\w*|emergency|incident|investigation|"
                r"runway incursion|airworthiness directive|final rule|"
-               r"safety alert)\b|空難|傷亡|緊急|事故|調查|適航指令|最終規則", title):
+               r"safety alert|bomb threats?|fighter escorts?|hijack\w*|evacuat\w*)\b"
+               r"|空難|傷亡|緊急|事故|調查|適航指令|最終規則|炸彈威脅|劫機|疏散", title):
         return PublicationRoute("standalone", "safety_or_regulatory_headline")
+    if article and article.get("articleFormat") == "brief":
+        return PublicationRoute("industry_roundup", "verified_short_update")
+    if policy.priority == "niche":
+        return PublicationRoute("industry_roundup", policy.reason)
+    if (matches(r"\b(?:XML|API|publication history)\b|資料格式|出版歷史", title)
+            and matches(r"\b(?:rules?|publications?|documents?)\b|規則|文件", title)):
+        return PublicationRoute("industry_roundup", "document_format_update")
+    if (matches(r"\b(?:profit|earnings|revenue|quarterly results)\b|獲利|營收|季報", title)
+            and matches(r"\b(?:rises?|climbs?|grows?|growth|reports?|results|falls?|drops?)\b"
+                        r"|成長|增加|公布|下滑", title)):
+        return PublicationRoute("industry_roundup", "routine_business_results")
     if policy.reason in {"routine_development_or_military_test",
                          "general_aviation_procurement",
                          "small_aviation_services_transaction",
@@ -64,7 +76,7 @@ def publication_route(group: dict) -> PublicationRoute:
     if (matches(r"\b(?:acquir\w*|buys?|purchase\w*)\b|收購", title)
             and matches(r"\b(?:software|platform|flightscape)\b|軟體|平台", text)):
         return PublicationRoute("industry_roundup", "software_transaction")
-    if (matches(r"\b(?:demonstrat\w*|prototype|test flight|trial flight|"
+    if (matches(r"\b(?:demonstrat\w*|prototype|concept|test flight|trial flight|"
                r"heliport|fixed-wing landing)\b|示範|原型機|試飛|直升機坪", title)
             and matches(r"\b(?:aircraft|airplane|flight|heliport|helicopter)\b"
                         r"|飛機|飛行|直升機", text)):
