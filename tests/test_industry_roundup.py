@@ -147,6 +147,9 @@ def test_roundup_does_not_displace_pin_or_taiwan_focus():
     chosen = build.headline_carousel_articles([roundup, taiwan, pin], now,
                                              pinned_ids=[pin["id"]], limit=3)
     assert [a["id"] for a in chosen] == [pin["id"], taiwan["id"], roundup["id"]]
+    chosen = build.headline_carousel_articles([roundup, taiwan, pin], now,
+                                             pinned_ids=[roundup["id"]], limit=3)
+    assert sum(a.get("roundup_kind") == "industry" for a in chosen) == 1
 
 
 def test_published_source_wins_and_expired_item_is_dropped() -> None:

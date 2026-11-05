@@ -1861,7 +1861,8 @@ def headline_carousel_articles(articles, now=None, limit=_HERO_CAROUSEL_LIMIT,
                 and article.get("published_dt") is not None
                 and timedelta(0) <= now - article["published_dt"] <= timedelta(hours=48)]
     roundups.sort(key=lambda article: article["published_dt"], reverse=True)
-    if roundups and roundups[0]["id"] not in selected_ids:
+    if (roundups and roundups[0]["id"] not in selected_ids
+            and not any(a.get("roundup_kind") == "industry" for a in selected)):
         selected.append(roundups[0])
         selected_ids.add(roundups[0]["id"])
         if len(selected) >= limit:
