@@ -1,7 +1,7 @@
 """Hold verified routine stories and compile one article per six-hour edition.
 
-This queue contains drafts that passed write.py's ordinary evidence gates.
-It is never an alternate source-verification path.
+New drafts pass write.py's ordinary evidence gates. Published excerpts must
+match an unchanged publication record; they add no newly inferred reporting.
 """
 from __future__ import annotations
 
@@ -100,7 +100,8 @@ def has_group(state: dict, group: dict) -> bool:
         (urls & _urls(row["article"]))
         or (event_key and row.get("eventKey") == event_key)
         for row in state["items"]
-        if isinstance(row, dict) and isinstance(row.get("article"), dict)))
+        if isinstance(row, dict) and isinstance(row.get("article"), dict)
+        and not row.get("publishedExcerptId")))
 
 
 def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None:

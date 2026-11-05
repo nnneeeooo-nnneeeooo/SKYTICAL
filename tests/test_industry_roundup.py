@@ -182,6 +182,7 @@ def test_published_muse_copy_is_excerpted_once_with_original_links():
     original = copy.deepcopy(rows)
     state = {"lastEdition": "", "items": []}
     assert industry_roundup.collect_published(state, rows, now) == 2
+    assert not industry_roundup.has_group(state, group("updated published source"))
     compiled = industry_roundup.compile_due(state, now, rows)
     assert compiled and compiled["generationMode"] == "published-news-compilation"
     assert rows == original
