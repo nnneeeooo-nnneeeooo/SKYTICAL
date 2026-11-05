@@ -12,17 +12,17 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-05T19:59Z",
-      "checkedUtc": "2026-11-05T13:59Z",
+      "untilUtc": "2026-11-06T04:23Z",
+      "checkedUtc": "2026-11-05T22:23Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-05T19:59Z",
-      "checkedUtc": "2026-11-05T13:59Z",
+      "untilUtc": "2026-11-06T04:23Z",
+      "checkedUtc": "2026-11-05T22:23Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -30,10 +30,10 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "checkedUtc": "2026-11-05T13:59Z",
-      "untilUtc": "2026-11-05T19:59Z",
+      "checkedUtc": "2026-11-05T22:23Z",
+      "untilUtc": "2026-11-06T04:23Z",
       "failureClass": "unexpected",
-      "diagnostic": "verified factId values must be sequential F1..Fn",
+      "diagnostic": "entity evidence quote not found in current source: event_dates='2026-10-21'",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -48,8 +48,8 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-05T19:59Z",
-      "checkedUtc": "2026-11-05T13:59Z",
+      "untilUtc": "2026-11-06T04:23Z",
+      "checkedUtc": "2026-11-05T22:23Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
@@ -57,10 +57,10 @@
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-05T19:59Z",
-      "checkedUtc": "2026-11-05T13:59Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "untilUtc": "2026-11-06T04:23Z",
+      "checkedUtc": "2026-11-05T22:23Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     }

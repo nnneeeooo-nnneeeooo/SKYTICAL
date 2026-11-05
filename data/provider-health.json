@@ -1,25 +1,20 @@
 {
   "schemaVersion": 1,
   "platforms": {
+    "gemini": {
+      "failureClass": "quota",
+      "cooldownUntilUtc": "2026-11-06T04:23Z",
+      "updatedUtc": "2026-11-05T22:23Z"
+    },
     "groq": {
       "failureClass": "quota",
-      "cooldownUntilUtc": "2026-11-05T19:59Z",
-      "updatedUtc": "2026-11-05T13:59Z"
+      "cooldownUntilUtc": "2026-11-06T04:23Z",
+      "updatedUtc": "2026-11-05T22:23Z"
     },
     "wechat": {
       "failureClass": "quota",
-      "cooldownUntilUtc": "2026-11-05T20:16Z",
-      "updatedUtc": "2026-11-05T14:16Z"
-    },
-    "nvidia": {
-      "failureClass": "transient",
-      "cooldownUntilUtc": "2026-11-05T18:57Z",
-      "updatedUtc": "2026-11-05T17:57Z"
-    },
-    "openai": {
-      "failureClass": "transient",
-      "cooldownUntilUtc": "2026-11-05T19:55Z",
-      "updatedUtc": "2026-11-05T18:55Z"
+      "cooldownUntilUtc": "2026-11-06T04:29Z",
+      "updatedUtc": "2026-11-05T22:29Z"
     }
   }
 }
