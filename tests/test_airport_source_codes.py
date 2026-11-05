@@ -110,6 +110,16 @@ class AirportSourceCodesTests(unittest.TestCase):
         self.assertIn("Southampton (SOU)", article["en"]["body"][0])
         self.assertIn("南安普敦機場（SOU）", article["zh"]["body"][0])
         self.assertEqual(airport_codes.validate_article(article), [])
+        # A later same-event source need not repeat the original code quote.
+        revised_draft = copy.deepcopy(draft)
+        revised_draft["en"]["body"] = ["Flights from Southampton were affected."]
+        revised_group = copy.deepcopy(group)
+        revised_group["items"][0]["fulltext"] = "Airport flights remained disrupted."
+        revised = write.build_article(revised_draft, revised_group,
+                                      datetime.now(timezone.utc), set(),
+                                      facts=[], existing_article=article)
+        self.assertEqual(revised["airportCodeEvidence"], article["airportCodeEvidence"])
+        self.assertIn("Southampton (SOU)", revised["en"]["body"][0])
 
 
 if __name__ == "__main__":

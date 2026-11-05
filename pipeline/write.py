@@ -2361,12 +2361,15 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
             article["evidenceVersion"] = 2
     # Capture the actual source pairs before fetched text is discarded. The
     # model need not reproduce them in its facts or airport metadata.
-    source_codes = airport_codes.collect_source_codes([
+    source_codes = list((existing_article or {}).get("airportCodeEvidence") or [])
+    for evidence in airport_codes.collect_source_codes([
         {**item, "title": _clean_source_text(item.get("title"))[:300],
          "summary": _clean_source_text(item.get("summary")),
          "fulltext": _clean_source_text(item.get("fulltext"))[:FULLTEXT_PROMPT_CHARS]}
         for item in items
-    ])
+    ]):
+        if evidence not in source_codes:
+            source_codes.append(evidence)
     if source_codes:
         article["airportCodeEvidence"] = source_codes
     airport_codes.enforce_article(article)
