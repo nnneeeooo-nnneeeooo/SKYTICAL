@@ -3536,6 +3536,7 @@ def main() -> None:
     # Existing published sources (including delayed scheduled imports) win.
     published_now = [row["article"] for row in _load_existing_articles()]
     published_now.extend(new_articles)
+    collected_published = industry_roundup.collect_published(roundup_state, published_now, now)
     roundup_article = industry_roundup.compile_due(
         roundup_state, now, published_now)
     industry_roundup.save_state(roundup_state)
@@ -3583,6 +3584,7 @@ def main() -> None:
         "updatedUtc": iso_minute(now),
         "published": len(new_articles), "revised": len(updated_articles),
         "roundupQueued": len(roundup_groups),
+        "roundupCollectedPublished": collected_published,
         "roundupWaiting": len(roundup_state["items"]),
         "roundupLastEdition": roundup_state["lastEdition"],
         "roundupPublished": roundup_article["id"] if roundup_article else None,
