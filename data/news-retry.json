@@ -3329,13 +3329,13 @@
         "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2594&lang=1",
         "https://www.cna.com.tw/news/ahel/202611020062.aspx"
       ],
-      "contentFailures": 1,
+      "contentFailures": 2,
       "serviceFailures": 4,
       "history": [],
-      "updatedUtc": "2026-11-05T13:59Z",
+      "updatedUtc": "2026-11-05T17:03Z",
       "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-05T15:59Z",
+      "nextRetryUtc": "2026-11-05T23:03Z",
       "title": "油價調漲，國籍航空公司國際線燃油附加費11月8日起調漲"
     },
     "c169a665df4ecd39d738ce15": {
@@ -3465,13 +3465,13 @@
         "https://simpleflying.com/avolon-boeing-737-max-10-order",
         "https://www.aerotime.aero/articles/avolon-boeing-737-max-10-order"
       ],
-      "contentFailures": 1,
+      "contentFailures": 2,
       "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-05T14:37Z",
+      "updatedUtc": "2026-11-05T17:03Z",
       "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-05T16:37Z",
+      "nextRetryUtc": "2026-11-05T23:03Z",
       "title": "Boeing confirms triple-digit Avolon order is for MAX 10 jets"
     },
     "b3676a441d2c37e4f694c5e3": {
@@ -3567,19 +3567,6 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-04T20:55Z",
       "title": "Why This Cargo Airline Broke 3 Decades Of Boeing Widebody Loyalty To Give Airbus 1 Order"
-    },
-    "cac6d68e7e4f3c3c8a980533": {
-      "sourceUrls": [
-        "https://www.aerotime.aero/articles/qantas-sells-44-boeing-737ngs-to-aerfin-as-part-of-fleet-retirement-plans"
-      ],
-      "contentFailures": 2,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-11-05T13:59Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-05T19:59Z",
-      "title": "Qantas sells 44 Boeing 737NGs to AerFin as part of fleet retirement plans"
     },
     "481fdd1d138df316953b6743": {
       "sourceUrls": [
@@ -3709,6 +3696,40 @@
       "failureClass": "provider_failure",
       "title": "Bomb threats hit at least 25 European flights, trigger fighter escorts"
     },
+    "ef5154d9e0f4dbaf716734d9": {
+      "sourceUrls": [
+        "https://simpleflying.com/video/why-the-boeing-787-s-wings-are-under-faa-scrutiny"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-05T15:50Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-05T17:50Z",
+      "title": "Why The Boeing 787's Wings Are Under FAA Scrutiny"
+    },
+    "cac6d68e7e4f3c3c8a980533": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/aerfin-acquires-44-boeing-737ng-qantas",
+        "https://www.aerotime.aero/articles/qantas-sells-44-boeing-737ngs-to-aerfin-as-part-of-fleet-retirement-plans"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 2,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-05T13:59Z"
+        }
+      ],
+      "updatedUtc": "2026-11-05T17:03Z",
+      "nextRetryUtc": "2026-11-05T19:03Z",
+      "failureClass": "content_validation",
+      "title": "Qantas sells 44 Boeing 737NGs to AerFin as part of fleet retirement plans"
+    },
     "f9580c6e88fe22484d0538a5": {
       "sourceUrls": [
         "https://avherald.com/h?article=54678fa8",
@@ -3718,18 +3739,14 @@
         "https://avherald.com/h?article=546ac900",
         "https://avherald.com/h?article=546ac900&opt=0",
         "https://avherald.com/h?article=546acb84&opt=0",
-        "https://avherald.com/h?article=546c37d4&opt=0"
+        "https://avherald.com/h?article=546c37d4&opt=0",
+        "https://avherald.com/h?article=546c4770&opt=0",
+        "https://avherald.com/h?article=546c4d28&opt=0"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
-      "status": "waiting",
+      "serviceFailures": 0,
+      "status": "ready",
       "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-04T15:46Z"
-        },
         {
           "status": "ready",
           "contentFailures": 0,
@@ -3747,25 +3764,48 @@
           "contentFailures": 0,
           "serviceFailures": 0,
           "updatedUtc": "2026-11-05T07:29Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-05T15:50Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-05T17:02Z"
         }
       ],
-      "updatedUtc": "2026-11-05T15:50Z",
-      "nextRetryUtc": "2026-11-05T17:50Z",
-      "failureClass": "provider_failure",
-      "title": "Incident: Argentinas E190 near Rosario on Nov 5th 2026, eletrical problems, unsafe nose gear"
+      "updatedUtc": "2026-11-05T17:02Z",
+      "nextRetryUtc": null
     },
-    "ef5154d9e0f4dbaf716734d9": {
+    "3fb0b83355606fd4b7fded46": {
       "sourceUrls": [
-        "https://simpleflying.com/video/why-the-boeing-787-s-wings-are-under-faa-scrutiny"
+        "https://simpleflying.com/fighter-jets-scrambled-bomb-threats-passenger-flights-divert"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-05T17:03Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-05T19:03Z",
+      "title": "Fighter Jets Scrambled As More Bomb Threats Force Multiple Passenger Flights To Divert"
+    },
+    "d921b7754389203145532f71": {
+      "sourceUrls": [
+        "https://www.aerotime.aero/articles/delta-air-lines-wheels-up-order-embraer-phenom-300es"
       ],
       "contentFailures": 0,
       "serviceFailures": 1,
       "history": [],
-      "updatedUtc": "2026-11-05T15:50Z",
+      "updatedUtc": "2026-11-05T17:03Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-05T17:50Z",
-      "title": "Why The Boeing 787's Wings Are Under FAA Scrutiny"
+      "nextRetryUtc": "2026-11-05T19:03Z",
+      "title": "Delta Air Lines partner Wheels Up orders six new Embraer Phenom 300Es"
     }
   }
 }
