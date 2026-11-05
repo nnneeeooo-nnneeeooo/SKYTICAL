@@ -3208,6 +3208,21 @@ def main() -> None:
             if article is None:
                 model_groups.append(group)
                 continue
+            route = publication_route(group, article)
+            if route.route == "industry_roundup":
+                if industry_roundup.add(
+                        roundup_state, article, now, reason=route.reason,
+                        group_id=str(group.get("id") or ""),
+                        event_key=str(group.get("eventKey") or "")):
+                    roundup_groups.append(group)
+                    roundup_ids.add(group.get("id"))
+                    run_traces[id(group)].finish("queued_for_roundup", route.reason,
+                                                ANNOUNCEMENT_WRITER)
+                else:
+                    duplicate_groups.append(group)
+                    duplicate_ids.add(group.get("id"))
+                    run_traces[id(group)].finish("already_queued", "duplicate_roundup_queue")
+                continue
             new_articles.append(article)
             new_flashes.append(build_flash(candidate, article["id"], now))
             published_groups.append(group)
