@@ -168,6 +168,44 @@ def test_component_followup_cannot_overwrite_multi_event_edition():
     assert write._match_existing_article(g, [record]) is None
 
 
+def test_published_muse_copy_is_excerpted_once_with_original_links():
+    import copy
+    now = datetime(2026, 11, 6, 2, tzinfo=timezone.utc)
+    rows = []
+    for n in (1, 2):
+        a = article(n)
+        a.update(publishedUtc=now.isoformat(), cat="biz", writer="scheduled:Meta Muse", facts=[])
+        a["zh"]["title"] = f"歐洲航空公司新增地方航班{n}"
+        a["en"]["title"] = f"Airline adds regional flights in Europe {n}"
+        a["zh"]["summary"] = f"航空公司新增航班{n}，連接次要機場。"
+        rows.append(a)
+    original = copy.deepcopy(rows)
+    state = {"lastEdition": "", "items": []}
+    assert industry_roundup.collect_published(state, rows, now) == 2
+    assert not industry_roundup.has_group(state, group("updated published source"))
+    compiled = industry_roundup.compile_due(state, now, rows)
+    assert compiled and compiled["generationMode"] == "published-news-compilation"
+    assert rows == original
+    assert rows[0]["zh"]["summary"] in compiled["zh"]["body"][1]
+    import airport_codes
+    assert not airport_codes.validate_article(compiled)
+    assert len([s for s in compiled["sources"] if s["name"].startswith("SKYTICAL")]) == 2
+    chosen = build.headline_carousel_articles(
+        [build.prep_article(a) for a in rows + [compiled]], now, pinned_ids=[])
+    assert [a["id"] for a in chosen] == [compiled["id"]]
+    assert industry_roundup.collect_published(state, rows + [compiled], now + timedelta(hours=6)) == 0
+    # A safety story and Taiwan story never enter merely because they are short.
+    excluded = copy.deepcopy(rows)
+    excluded[0]["cat"] = "safety"
+    excluded[1]["zh"]["title"] = "長榮航空新增臺北航班"
+    assert industry_roundup.collect_published(state, excluded, now) == 0
+    # Waiving new-draft facts cannot introduce text absent from a published original.
+    assert industry_roundup.collect_published(state, rows, now) == 2
+    state["items"][0]["article"]["zh"]["summary"] = "unpublished changed copy"
+    assert industry_roundup.compile_due(state, now + timedelta(hours=6), rows) is None
+    assert any(r["reason"] == "invalid_published_excerpt" for r in state["history"])
+
+
 def test_published_source_wins_and_expired_item_is_dropped() -> None:
     now = datetime(2026, 10, 27, 15, 45, tzinfo=timezone.utc)
     state = {"lastEdition": "", "items": []}
@@ -194,4 +232,5 @@ if __name__ == "__main__":
     test_event_dedup_and_eight_item_cap()
     test_roundup_does_not_displace_pin_or_taiwan_focus()
     test_component_followup_cannot_overwrite_multi_event_edition()
+    test_published_muse_copy_is_excerpted_once_with_original_links()
     print("PASS industry routing, deduplication and daily compilation")
