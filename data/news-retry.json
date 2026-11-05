@@ -3619,13 +3619,13 @@
       "sourceUrls": [
         "https://www.cna.com.tw/news/ahel/202611030233.aspx"
       ],
-      "contentFailures": 1,
+      "contentFailures": 2,
       "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-04T15:35Z",
-      "failureClass": "provider_failure",
+      "updatedUtc": "2026-11-05T00:34Z",
+      "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-04T21:35Z",
+      "nextRetryUtc": "2026-11-05T06:34Z",
       "title": "中職聯隊10日赴日本戰亞冠賽 星宇藝術機助陣"
     },
     "dbdd5667dade81a35924f21b": {
@@ -3688,12 +3688,12 @@
         "https://www.cna.com.tw/news/ahel/202611040176.aspx"
       ],
       "contentFailures": 0,
-      "serviceFailures": 2,
+      "serviceFailures": 3,
       "history": [],
-      "updatedUtc": "2026-11-04T15:35Z",
+      "updatedUtc": "2026-11-05T00:34Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-04T21:35Z",
+      "nextRetryUtc": "2026-11-06T00:34Z",
       "title": "華航首推飛曼谷跨年主題航班 5日開賣"
     },
     "68f59b2c50eaca6db7b0dfa2": {
@@ -3766,27 +3766,6 @@
       "nextRetryUtc": "2026-11-05T00:55Z",
       "title": "US Air Force divests three A-29 Super Tucanos after test pilot school trial"
     },
-    "f9580c6e88fe22484d0538a5": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=54678fa8",
-        "https://avherald.com/h?article=546a7e80",
-        "https://avherald.com/h?article=546a7e80&opt=0",
-        "https://avherald.com/h?article=546a82ac"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-04T15:46Z"
-        }
-      ],
-      "updatedUtc": "2026-11-04T18:54Z",
-      "nextRetryUtc": null
-    },
     "e173bc432d91106a054182dc": {
       "sourceUrls": [
         "https://aerospaceglobalnews.com/news/boeing-787-747-faa-fuel-tank-inspections",
@@ -3826,6 +3805,48 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-04T20:55Z",
       "title": "Why This Cargo Airline Broke 3 Decades Of Boeing Widebody Loyalty To Give Airbus 1 Order"
+    },
+    "f9580c6e88fe22484d0538a5": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=54678fa8",
+        "https://avherald.com/h?article=546a7e80",
+        "https://avherald.com/h?article=546a7e80&opt=0",
+        "https://avherald.com/h?article=546a82ac",
+        "https://avherald.com/h?article=546ac900&opt=0",
+        "https://avherald.com/h?article=546acb84&opt=0"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-04T15:46Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-04T18:54Z"
+        }
+      ],
+      "updatedUtc": "2026-11-05T00:34Z",
+      "nextRetryUtc": null
+    },
+    "cac6d68e7e4f3c3c8a980533": {
+      "sourceUrls": [
+        "https://www.aerotime.aero/articles/qantas-sells-44-boeing-737ngs-to-aerfin-as-part-of-fleet-retirement-plans"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-05T00:34Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-05T02:34Z",
+      "title": "Qantas sells 44 Boeing 737NGs to AerFin as part of fleet retirement plans"
     }
   }
 }
