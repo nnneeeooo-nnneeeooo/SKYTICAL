@@ -1379,6 +1379,7 @@ def prep_article(raw):
             raw.get("articleFormat")
             if raw.get("articleFormat") in ("brief", "roundup", "announcement")
             else "full"),
+        "roundup_kind": raw.get("roundupKind"),
     }
 
 
@@ -1852,6 +1853,21 @@ def headline_carousel_articles(articles, now=None, limit=_HERO_CAROUSEL_LIMIT,
         if len(selected) >= limit:
             return selected
 
+    # Give the newest short-news edition one visible slot after Taiwan news.
+    # Older editions must not fill all the remaining global-news positions.
+    roundups = [article for article in articles
+                if article.get("roundup_kind") == "industry"
+                and article.get("article_format") == "roundup"
+                and article.get("published_dt") is not None
+                and timedelta(0) <= now - article["published_dt"] <= timedelta(hours=48)]
+    roundups.sort(key=lambda article: article["published_dt"], reverse=True)
+    if (roundups and roundups[0]["id"] not in selected_ids
+            and not any(a.get("roundup_kind") == "industry" for a in selected)):
+        selected.append(roundups[0])
+        selected_ids.add(roundups[0]["id"])
+        if len(selected) >= limit:
+            return selected
+
     def is_taiwan_related(article):
         text = _hero_focus_text(article)
         return bool(
@@ -1865,6 +1881,8 @@ def headline_carousel_articles(articles, now=None, limit=_HERO_CAROUSEL_LIMIT,
     for prefer_global in (True, False):
         for article in articles:
             if article["id"] in selected_ids:
+                continue
+            if article.get("roundup_kind") == "industry":
                 continue
             if prefer_global == is_taiwan_related(article):
                 continue
