@@ -326,6 +326,7 @@ check("OpenAI call selects Fallback Responses web_search with bounded MAX reason
       captured_openai["url"] == "https://api.openai.com/v1/responses"
       and captured_openai["payload"]["model"] == "test-private-model"
       and captured_openai["payload"]["reasoning"] == {"effort": "max"}
+      and captured_openai["timeout"] == (10, None)
       and captured_openai["payload"]["max_output_tokens"] == 48_000
       and captured_openai["payload"]["tools"][0]["type"] == "web_search"
       and captured_openai["payload"]["max_tool_calls"] == 4)

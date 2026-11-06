@@ -1168,6 +1168,24 @@ def test_preferred_timeout_preserves_final_paid_and_run_budget():
           "completed article is saved; next story waits for a full fallback budget")
 
 
+def test_unlimited_luna_continues_after_the_free_run_deadline():
+    reset_data_dir()
+    pending = load(DATA / "pending.json")
+    pending["groups"] = [pending["groups"][1], pending["groups"][0]]
+    common.save_json(DATA / "pending.json", pending)
+    free = FakeProvider("gemini", [DRAFT_SAFETY])
+    luna = FakeProvider("openai", [DRAFT_SAFETY])
+    luna.model = "gpt-6"
+    luna.unlimited_processing_time = True
+    with patch.dict(os.environ, {"AVWIRE_LUNA_EDITORIAL": "false"}), \
+            patch.object(write, "MAX_DRAFT_SECONDS_PER_RUN", -1), \
+            patch.object(write, "build_providers", return_value=[free, luna]):
+        write.main()
+    check(free.calls == 0 and luna.calls == 1 and len(all_articles()) == 1
+          and len(load(DATA / "pending.json")["groups"]) == 1,
+          "Luna can publish after the free run deadline while finite providers stop")
+
+
 def test_editorial_gate():
     """Model reject skips the group; fabricated quotes are dropped/blocking."""
     reset_data_dir()
@@ -1746,6 +1764,7 @@ def main():
              test_final_paid_is_used_after_preferred_service_failures,
              test_final_paid_repairs_after_shared_fallback_repair_is_spent,
              test_preferred_timeout_preserves_final_paid_and_run_budget,
+             test_unlimited_luna_continues_after_the_free_run_deadline,
              test_editorial_gate,
              test_completeness_precheck,
              test_major_title_only_is_retained_for_material_retry,

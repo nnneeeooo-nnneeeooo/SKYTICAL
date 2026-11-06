@@ -1544,6 +1544,8 @@ def _normalize_reject_reason(candidate: dict) -> None:
 def _provider_attempt_allowance(provider, deadline: float | None = None,
                                 max_attempt_seconds: float | None = None) -> float:
     """Return this provider's bounded call budget, clipped to its story time."""
+    if getattr(provider, "unlimited_processing_time", False) is True:
+        return float("inf")
     allowance = getattr(
         provider, "max_attempt_seconds", MAX_MODEL_ATTEMPT_SECONDS)
     if (isinstance(allowance, bool)
@@ -1576,12 +1578,15 @@ def _fallback_reserve_seconds(providers) -> float:
     """Reserve one initial draft and one independent repair for final Fallback."""
     return sum(2 * _provider_attempt_allowance(provider)
                + 2 * PROVIDER_ROUTING_OVERHEAD_SECONDS
-               for provider in providers if _is_fallback_provider(provider))
+               for provider in providers if _is_fallback_provider(provider)
+               and not getattr(provider, "unlimited_processing_time", False))
 
 
 def _provider_chain_budget(providers) -> float:
     """Leave room for each preferred route to time out before GPT 6."""
     providers = tuple(providers)
+    if any(getattr(p, "unlimited_processing_time", False) is True for p in providers):
+        return float("inf")
     fallback_reserve = _fallback_reserve_seconds(providers)
     if fallback_reserve:
         preferred = [provider for provider in providers
@@ -1642,6 +1647,9 @@ def _validated_draft(provider, group: dict, tries: int, ai_calls=None,
     """
     last_problem = "draft validation failed"
     previous_candidate = None
+    if getattr(provider, "unlimited_processing_time", False) is True:
+        deadline = None
+        max_attempt_seconds = None
     for attempt in range(tries):
         if deadline is not None and time.monotonic() >= deadline:
             raise ProviderCallTimeout("model wall-clock timeout: story budget exhausted")
@@ -3253,11 +3261,16 @@ def main() -> None:
                 run_trace.finish("editorial_protected", "editorial_protected",
                                  article_id=existing["article"]["id"])
                 continue
+            story_providers = eligible_providers(group, alive)
             if time.monotonic() >= draft_deadline:
+                story_providers = [p for p in story_providers
+                                   if getattr(p, "unlimited_processing_time", False) is True]
+            if time.monotonic() >= draft_deadline and not story_providers:
                 print("write: drafting time budget reached; saving completed drafts")
                 run_trace.finish("retry_pending", "retry_pending")
+                if any(getattr(p, "unlimited_processing_time", False) is True for p in alive):
+                    continue  # A later eligible story can still use Luna.
                 break
-            story_providers = eligible_providers(group, alive)
             if not story_providers:
                 retry_ledger.failure(group, content=False)
                 run_trace.finish("no_provider", "retry_pending")
@@ -3284,7 +3297,10 @@ def main() -> None:
                 continue
             if drafted >= MAX_GROUPS_PER_RUN:
                 break  # LLM budget for this run is spent; the rest waits
-            if draft_deadline - time.monotonic() < _fallback_reserve_seconds(story_providers):
+            unlimited_story = any(getattr(p, "unlimited_processing_time", False) is True
+                                  for p in story_providers)
+            if (not unlimited_story and
+                    draft_deadline - time.monotonic() < _fallback_reserve_seconds(story_providers)):
                 print("write: insufficient run time for Fallback draft and repair; "
                       "retaining remaining groups for retry")
                 run_trace.finish("retry_pending", "retry_pending")
@@ -3300,8 +3316,8 @@ def main() -> None:
             print(f"write: editorial route {group.get('id')}: "
                   f"{policy.priority}/{policy.reason}; paid={policy.paid_allowed}")
             group_budget = _provider_chain_budget(story_providers)
-            group_deadline = min(
-                draft_deadline, time.monotonic() + group_budget)
+            group_deadline = (float("inf") if unlimited_story else min(
+                draft_deadline, time.monotonic() + group_budget))
             preferred_started = time.monotonic() if luna_editorial.enabled() else None
             for provider in luna_editorial.routes(group, story_providers, alive):
                 if time.monotonic() >= group_deadline:
@@ -3314,7 +3330,10 @@ def main() -> None:
                 is_fallback = _is_fallback_provider(provider)
                 fallback_reserve = _fallback_reserve_seconds(
                     [p for p in story_providers if p in alive])
-                provider_deadline = group_deadline
+                provider_deadline = (group_deadline if getattr(provider, "unlimited_processing_time", False)
+                                     else min(group_deadline, draft_deadline))
+                if time.monotonic() >= provider_deadline:
+                    continue  # Exhausted local time must not count as a provider failure.
                 attempt_cap = None
                 if fallback_reserve and not is_fallback:
                     provider_deadline -= fallback_reserve
