@@ -510,6 +510,65 @@
       "id": "a-southwest-airlines-boeing-737-max-7-debut-20261101",
       "mentions": 0,
       "issues": []
+    },
+    "d4eaa7dd51de2049e7034d33d2bead431a4ca9bfab5a67018a193d41364bfdb3": {
+      "id": "a-florida-learjet-60-crash-nine-killed-20261102",
+      "mentions": 4,
+      "issues": [
+        {
+          "kind": "placement_or_identity",
+          "detail": "unresolved airport: 原定由德州奧斯汀柏格斯壯國際機場"
+        },
+        {
+          "kind": "placement_or_identity",
+          "detail": "unresolved airport: 飛往巴哈馬北伊柳塞拉機場"
+        },
+        {
+          "kind": "unverified_airport",
+          "language": "zh",
+          "surface": "body",
+          "paragraphIndex": 0,
+          "name": "奧斯汀柏格斯壯國際機場",
+          "quote": "飛機登記編號為N722BD，原定由德州奧斯汀柏格斯壯國際機場飛往巴哈馬北伊柳塞拉機場。",
+          "proposedIata": "AUS",
+          "detail": "Airport identity needs IATA/airport official verification; model proposal is not proof"
+        },
+        {
+          "kind": "unverified_airport",
+          "language": "zh",
+          "surface": "body",
+          "paragraphIndex": 0,
+          "name": "北伊柳塞拉機場",
+          "quote": "飛機登記編號為N722BD，原定由德州奧斯汀柏格斯壯國際機場飛往巴哈馬北伊柳塞拉機場。",
+          "proposedIata": "ELH",
+          "detail": "Airport identity needs IATA/airport official verification; model proposal is not proof"
+        }
+      ]
+    },
+    "bfe8dee751d97ad92aef7b763b9902c6f0c1e1e074b22e24833ea5aae093cd3c": {
+      "id": "a-taiwan-caa-fuel-surcharge-increase-20261102",
+      "mentions": 0,
+      "issues": []
+    },
+    "b024c8ac3d1663cc0db075265971ef4deb6637c0f5a23b0d81546aa946d3a569": {
+      "id": "a-united-boeing-757-san-francisco-low-fuel-go-around-20261102",
+      "mentions": 4,
+      "issues": [
+        {
+          "kind": "placement_or_identity",
+          "detail": "unresolved airport: 飛往舊金山國際機場"
+        },
+        {
+          "kind": "unverified_airport",
+          "language": "zh",
+          "surface": "body",
+          "paragraphIndex": 0,
+          "name": "舊金山國際機場",
+          "quote": "聯合航空1023號班機為波音757-200型飛機，登記編號N19117，10月30日上午由波士頓洛根國際機場（BOS）飛往舊金山國際機場，在28R跑道首次進場時重飛。",
+          "proposedIata": "SFO",
+          "detail": "Airport identity needs IATA/airport official verification; model proposal is not proof"
+        }
+      ]
     }
   },
   "completedRequests": {
