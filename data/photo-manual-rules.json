@@ -5,6 +5,7 @@
     "3": "J16",
     "4": "THSR",
     "5": "GENERAL",
+    "7": "ANA787",
     "8": "CITATION_CJ3",
     "9": "CITATION_CJ3",
     "10": "J16",
@@ -17,7 +18,7 @@
     "20": "BOEING_FACTORY",
     "21": "KAAN_REAL",
     "22": "J16",
-    "23": "JOBY_S4",
+    "23": "EVE_REAL",
     "25": "JOBY_S4",
     "26": "ROCAF",
     "29": "AIRPORT_CHECKIN",
@@ -29,6 +30,7 @@
     "35": "C130",
     "36": "AIRPORT_CHECKIN",
     "37": "APACHE",
+    "39": "AMERICAN_A330",
     "41": "FLYADEAL",
     "42": "AIRPORT_ATC",
     "43": "TAOYUAN_AIRPORT",
@@ -48,7 +50,7 @@
     "69": "ATR72",
     "70": "ROCAF",
     "72": "AIRPORT_ATC",
-    "75": "AIRPORT_CHECKIN",
+    "75": "AMP_EEL",
     "76": "EC130",
     "77": "PILOT_TRAINING",
     "78": "CI_CARGO",
@@ -57,6 +59,7 @@
     "83": "OMANAIR",
     "84": "AVIATION_ENGINE",
     "85": "BOEING_FACTORY",
+    "88": "UNITED",
     "89": "S4000_REAL",
     "90": "CHENGDU_J10",
     "91": "SYRIA_AIR",
@@ -107,7 +110,7 @@
     "166": "CHING_CHUAN",
     "167": "FALCON2000",
     "168": "PILOT_TRAINING",
-    "169": "EASA",
+    "169": "EUROCONTROL_REAL",
     "170": "US_NAVY_CARRIER",
     "172": "QATAR_747",
     "173": "SAAB_GRIPEN",
@@ -129,14 +132,18 @@
     "195": "SCEYE_REAL",
     "197": "SW737",
     "198": "NATS_RADAR",
+    "200": "AMAZON767",
     "201": "SAFAIR",
+    "202": "CHINA_AIRLINES",
+    "203": "CHINA_AIRLINES",
     "204": "NIPPO_CARGO",
-    "205": "EASA",
+    "205": "EUROCONTROL_REAL",
     "206": "SYDNEY",
     "207": "AVIATION_ENGINE",
     "208": "AIRPORT_ATC",
     "210": "AIRARABIA",
     "211": "BERMUDAIR",
+    "212": "LUFTHANSA",
     "213": "BEIJING",
     "214": "FAA",
     "215": "PRIVATE_JET",
@@ -155,7 +162,9 @@
     "235": "PRIVATE_JET",
     "237": "JOBY_S4",
     "238": "LET410",
-    "242": "DRONE_NATO"
+    "239": "AIRCANADA",
+    "242": "DRONE_NATO",
+    "243": "RYANAIR"
   },
   "direct": {
     "FAA": {
@@ -333,10 +342,10 @@
       "subject": "沙烏地 flyadeal 空中巴士 A320"
     },
     "POLISH_F16": {
-      "filename": "Polish Air Force F-16C 4055.jpg",
-      "credit": "攝影者詳 Wikimedia Commons 原始頁",
-      "license": "授權資訊詳見來源",
-      "subject": "波蘭空軍 F-16 戰機"
+      "filename": "Polish Air Force (4041) F-16C Fighting Falcon.jpg",
+      "credit": "Gerard van der Schaaf",
+      "license": "CC BY 2.0",
+      "subject": "波蘭空軍 F-16C 戰機實拍資料照"
     },
     "CHENGDU_J10": {
       "filename": "J-10 at Changchun Air Show 20250920.jpg",
@@ -384,10 +393,10 @@
       "subject": "Embraer E190-E2 客機實拍（非全日空塗裝）"
     },
     "C130": {
-      "filename": "USAF Lockheed C-130J Hercules at RAF Fairford 2015.jpg",
-      "credit": "來源詳 Wikimedia Commons",
-      "license": null,
-      "subject": "洛克希德馬丁 C-130J 運輸機"
+      "kind": "catalog-subject",
+      "subject": "C-130J-30",
+      "credit": "攝影者詳 Wikimedia Commons 原始頁面",
+      "license": "CC BY 4.0"
     },
     "AMPAIRE": {
       "filename": "Ampaire Electric EEL aircraft flight.jpg",
@@ -400,6 +409,57 @@
       "credit": "來源詳 Wikimedia Commons",
       "license": null,
       "subject": "Let L-410 機型資料照"
+    },
+    "EVE_REAL": {
+      "url": "https://s1.cdn.autoevolution.com/images/news/eves-flagship-evtol-marks-a-flight-test-landmark-for-the-president-of-brazil-267645_1.jpg",
+      "link": "https://www.autoevolution.com/news/eves-flagship-evtol-marks-a-flight-test-landmark-for-the-president-of-brazil-267645.html",
+      "credit": "Eve Air Mobility / autoevolution",
+      "license": null,
+      "subject": "Eve Air Mobility eVTOL 真實飛行驗證原型機（非首度部分轉換飛行當日）"
+    },
+    "EUROCONTROL_REAL": {
+      "url": "https://www.eurocontrol.int/sites/default/files/styles/card_xs/public/2019-06/location-ec-muac.jpg?h=8dbdce75&itok=Cr3oreLD",
+      "link": "https://www.eurocontrol.int/locations",
+      "credit": "EUROCONTROL",
+      "license": null,
+      "subject": "EUROCONTROL Maastricht Upper Area Control Centre 實際建築照片"
+    },
+    "UNITED": {
+      "kind": "catalog-subject",
+      "subject": "United Airlines Airbus A320",
+      "credit": "來源詳 Wikimedia Commons",
+      "license": null
+    },
+    "AMERICAN_A330": {
+      "filename": "American Airlines Airbus A330-200 at Charlotte.jpg",
+      "credit": "來源詳 Wikimedia Commons",
+      "license": null,
+      "subject": "美國航空 A330-200 客機實拍資料照"
+    },
+    "AMP_EEL": {
+      "url": "https://www.ampaire.com/wp-content/uploads/2024/05/ampaire-electric-eel.jpg",
+      "link": "https://www.ampaire.com/",
+      "credit": "Ampaire",
+      "license": null,
+      "subject": "Ampaire Electric EEL 電動飛機（若原圖不可存取則需替代）"
+    },
+    "LUFTHANSA": {
+      "kind": "catalog-subject",
+      "subject": "Lufthansa Boeing 747-400",
+      "credit": "來源詳 Wikimedia Commons 原始頁面",
+      "license": null
+    },
+    "RYANAIR": {
+      "kind": "catalog-subject",
+      "subject": "Ryanair",
+      "credit": "來源詳 Wikimedia Commons",
+      "license": null
+    },
+    "CHINA_AIRLINES": {
+      "kind": "catalog-subject",
+      "subject": "China Airlines Airbus A350-900",
+      "credit": "4300streetcar",
+      "license": "CC BY 4.0"
     }
   }
 }
