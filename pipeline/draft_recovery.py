@@ -108,6 +108,9 @@ def draft_timeout(seconds):
     periodic bytes. The alarm also bounds the total response/repair duration.
     Native Windows callers retain their existing requests timeout.
     """
+    if seconds is None or seconds == float("inf"):
+        yield
+        return
     if seconds <= 0:
         raise ProviderCallTimeout("model wall-clock timeout: run budget exhausted")
     if (not hasattr(signal, "setitimer")

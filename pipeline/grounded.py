@@ -192,7 +192,7 @@ def call_openai_grounded(window):
         "tool_choice": "required", "max_tool_calls": 4,
         "include": ["web_search_call.action.sources"], "max_output_tokens": 48_000,
     }, purpose="draft", model=model,
-       headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"}, timeout=(10, 120))
+       headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"}, timeout=(10, None))
     if response.status_code != 200:
         raise RuntimeError(f"OpenAI briefing search HTTP {response.status_code}")
     data = response.json()

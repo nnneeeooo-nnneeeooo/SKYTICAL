@@ -1343,6 +1343,7 @@ class OpenCodeProvider(NvidiaProvider):
     """
 
     name = "opencode"
+    http_timeout = HTTP_TIMEOUT
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
         self.model = (
@@ -1391,7 +1392,7 @@ class OpenCodeProvider(NvidiaProvider):
         response = None
         try:
             response = requests.post(
-                url, json=payload, timeout=HTTP_TIMEOUT, headers=headers)
+                url, json=payload, timeout=self.http_timeout, headers=headers)
             return response
         except requests.RequestException as exc:
             raise ProviderError(type(exc).__name__) from exc
@@ -1641,11 +1642,11 @@ class OpenAIProvider(OpenCodeProvider):
     """Direct OpenAI Responses API writer using the repository's REST stack."""
 
     name = "openai"
-    # GPT 6 needs more wall-clock time than the
-    # generic 60-second attempt budget. Keep the per-group cap bounded while
-    # leaving time for configured fallbacks after a slow OpenAI response.
-    max_attempt_seconds = 180
-    group_budget_seconds = 360
+    # Owner policy: MAX calls finish on their own; only runner/platform limits apply.
+    unlimited_processing_time = True
+    http_timeout = (10, None)  # Bound connection setup, never interrupt model processing.
+    max_attempt_seconds = None
+    group_budget_seconds = None
 
     def __init__(self, model=None, reasoning_tier=None) -> None:
         selected_model = (

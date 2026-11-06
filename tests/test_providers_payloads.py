@@ -576,11 +576,13 @@ def test_openai_responses_api():
     try:
         provider = providers.OpenAIProvider()
         captured = []
-        check(provider.max_attempt_seconds == 180
-              and provider.group_budget_seconds == 360,
-              "GPT 6 receives bounded request and group budgets")
+        check(provider.max_attempt_seconds is None
+              and provider.group_budget_seconds is None
+              and provider.unlimited_processing_time,
+              "GPT 6 has no processing deadline")
 
         def fake_post(url, json=None, timeout=None, headers=None):
+            check(timeout == (10, None), "Luna keeps connection setup bounded without a read deadline")
             captured.append((url, json, headers))
             return FakeResponse({
                 "status": "completed",

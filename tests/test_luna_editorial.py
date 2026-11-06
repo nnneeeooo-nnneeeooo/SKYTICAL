@@ -131,3 +131,20 @@ def test_briefing_and_its_repairs_keep_max_despite_stale_environment(monkeypatch
     p = briefing_writer.make_provider()
     assert p._effort(False) == p._effort(True) == "max"
     assert p._responses_output_tokens(False) == p._responses_output_tokens(True) == 48000
+
+
+def test_luna_ignores_expired_attempt_story_and_run_deadlines(monkeypatch):
+    import write
+    from providers import OpenAIProvider
+    from draft_recovery import draft_timeout, ProviderCallTimeout
+    p = OpenAIProvider()
+    p.draft = Mock(return_value={"status": "reject", "decisionReason": "No usable current source."})
+    assert write._provider_attempt_allowance(p, deadline=0, max_attempt_seconds=1) == float("inf")
+    assert write._provider_chain_budget([p]) == float("inf")
+    assert write._fallback_reserve_seconds([p]) == 0
+    with draft_timeout(float("inf")):
+        candidate, facts = write._validated_draft(p, story(), tries=1, deadline=0, max_attempt_seconds=1)
+    assert candidate["status"] == "reject" and not facts and p.draft.call_count == 1
+    with pytest.raises(ProviderCallTimeout):
+        with draft_timeout(0):
+            pass
