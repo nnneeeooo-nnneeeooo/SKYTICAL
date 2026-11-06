@@ -5,13 +5,14 @@ on:
       - editorial/backfill-all-missing-real-photos-20261107
     paths:
       - scripts/audit_missing_real_photos.py
+      - scripts/collect_real_photo_candidates.py
       - .github/workflows/temporary-photo-gap-audit.yml
 permissions:
   contents: write
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,11 +23,13 @@ jobs:
       - run: python -m pip install -r requirements.txt
       - name: List all published articles without a photo
         run: python scripts/audit_missing_real_photos.py > /tmp/sky-photo-audit.log 2>&1 && tail -n 1 /tmp/sky-photo-audit.log
+      - name: Search existing licensed real photographs
+        run: python scripts/collect_real_photo_candidates.py > /tmp/sky-commons.log 2>&1 && tail -n 1 /tmp/sky-commons.log
       - name: Save audit manifest to feature branch
         run: |
           git config user.name "SKYTICAL Photo Audit"
           git config user.email "skytical-photo-audit@users.noreply.github.com"
-          git add data/photo-gap-audit.json
+          git add data/photo-gap-audit.json data/photo-commons-candidates.json
           if ! git diff --cached --quiet; then
             git commit -m "audit: inventory all current public photo gaps"
             git push
