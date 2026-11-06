@@ -3339,12 +3339,12 @@
         "https://www.aerotime.aero/articles/us-air-force-divests-a29-super-tucanos-edwards"
       ],
       "contentFailures": 1,
-      "serviceFailures": 3,
+      "serviceFailures": 4,
       "history": [],
-      "updatedUtc": "2026-11-05T11:14Z",
+      "updatedUtc": "2026-11-06T11:35Z",
       "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-06T11:14Z",
+      "nextRetryUtc": "2026-11-07T11:35Z",
       "title": "US Air Force divests three A-29 Super Tucanos after test pilot school trial"
     },
     "e173bc432d91106a054182dc": {
@@ -3575,60 +3575,6 @@
       "nextRetryUtc": "2026-11-05T19:03Z",
       "title": "Fighter Jets Scrambled As More Bomb Threats Force Multiple Passenger Flights To Divert"
     },
-    "f9580c6e88fe22484d0538a5": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=54678fa8",
-        "https://avherald.com/h?article=54678fa8&opt=0",
-        "https://avherald.com/h?article=546a7e80",
-        "https://avherald.com/h?article=546a7e80&opt=0",
-        "https://avherald.com/h?article=546a82ac",
-        "https://avherald.com/h?article=546ac900",
-        "https://avherald.com/h?article=546ac900&opt=0",
-        "https://avherald.com/h?article=546acb84&opt=0",
-        "https://avherald.com/h?article=546c37d4&opt=0",
-        "https://avherald.com/h?article=546c4770&opt=0",
-        "https://avherald.com/h?article=546c4d28&opt=0"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "ready",
-          "contentFailures": 0,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-05T00:34Z"
-        },
-        {
-          "status": "ready",
-          "contentFailures": 0,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-05T07:29Z"
-        },
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 1,
-          "updatedUtc": "2026-11-05T15:50Z"
-        },
-        {
-          "status": "ready",
-          "contentFailures": 0,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-05T17:02Z"
-        },
-        {
-          "status": "ready",
-          "contentFailures": 0,
-          "serviceFailures": 0,
-          "updatedUtc": "2026-11-05T17:02Z"
-        }
-      ],
-      "updatedUtc": "2026-11-05T17:21Z",
-      "nextRetryUtc": "2026-11-05T19:21Z",
-      "failureClass": "content_validation",
-      "title": "Incident: Argentinas E190 near Rosario on Nov 5th 2026, eletrical problems, unsafe nose gear"
-    },
     "f6672ea9e28657b3a1f2d0ed": {
       "sourceUrls": [
         "https://www.faa.gov/newsroom/trumps-transportation-secretary-sean-p-duffy-begins-retiring-decades-old-floppy-disks-air"
@@ -3715,7 +3661,7 @@
         "https://www.aerotime.aero/articles/learjet-elevator-pieces-florida-crash"
       ],
       "contentFailures": 1,
-      "serviceFailures": 0,
+      "serviceFailures": 1,
       "status": "waiting",
       "history": [
         {
@@ -3737,9 +3683,9 @@
           "updatedUtc": "2026-11-05T07:29Z"
         }
       ],
-      "updatedUtc": "2026-11-05T22:23Z",
-      "nextRetryUtc": "2026-11-06T00:23Z",
-      "failureClass": "content_validation",
+      "updatedUtc": "2026-11-06T11:35Z",
+      "nextRetryUtc": "2026-11-06T13:35Z",
+      "failureClass": "provider_failure",
       "title": "Investigators find pieces of Learjet’s elevator miles from Florida crash site"
     },
     "1a9305ba38eb7344edd8c8ed": {
@@ -3754,6 +3700,98 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-06T04:51Z",
       "title": "How Boeing Losing To Lockheed's C-5 Galaxy Gave The World The 747"
+    },
+    "f9580c6e88fe22484d0538a5": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=54678fa8",
+        "https://avherald.com/h?article=54678fa8&opt=0",
+        "https://avherald.com/h?article=546a7e80",
+        "https://avherald.com/h?article=546a7e80&opt=0",
+        "https://avherald.com/h?article=546a82ac",
+        "https://avherald.com/h?article=546ac900",
+        "https://avherald.com/h?article=546ac900&opt=0",
+        "https://avherald.com/h?article=546acb84&opt=0",
+        "https://avherald.com/h?article=546c37d4",
+        "https://avherald.com/h?article=546c37d4&opt=0",
+        "https://avherald.com/h?article=546c4770&opt=0",
+        "https://avherald.com/h?article=546c4d28&opt=0"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-05T07:29Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-05T15:50Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-05T17:02Z"
+        },
+        {
+          "status": "ready",
+          "contentFailures": 0,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-05T17:02Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 1,
+          "serviceFailures": 0,
+          "updatedUtc": "2026-11-05T17:21Z"
+        }
+      ],
+      "updatedUtc": "2026-11-06T11:35Z",
+      "nextRetryUtc": null
+    },
+    "18381d294caec9fa6974be74": {
+      "sourceUrls": [
+        "https://www.cna.com.tw/news/afe/202611060306.aspx"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-06T11:35Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-06T13:35Z",
+      "title": "華航前3季營收、淨利創同期新高 每股賺1.8元"
+    },
+    "92ab34a5a5927d3dcb169d00": {
+      "sourceUrls": [
+        "https://simpleflying.com/how-this-airline-packs-39-business-class-seats-17-hour-flight-nobody-talks-about"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-06T11:35Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-06T13:35Z",
+      "title": "How This Airline Packs 39 Business Class Seats Into A 17-Hour Flight Nobody Talks About"
+    },
+    "99749c6e1bad7dcf128f71c5": {
+      "sourceUrls": [
+        "https://www.cna.com.tw/news/afe/202611060114.aspx"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-06T11:35Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-06T13:35Z",
+      "title": "華航第4季要「狠狠往上拚」 長榮航印度直航銷售強勁"
     }
   }
 }
