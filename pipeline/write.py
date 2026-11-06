@@ -3332,6 +3332,8 @@ def main() -> None:
                     [p for p in story_providers if p in alive])
                 provider_deadline = (group_deadline if getattr(provider, "unlimited_processing_time", False)
                                      else min(group_deadline, draft_deadline))
+                if time.monotonic() >= provider_deadline:
+                    continue  # Exhausted local time must not count as a provider failure.
                 attempt_cap = None
                 if fallback_reserve and not is_fallback:
                     provider_deadline -= fallback_reserve
