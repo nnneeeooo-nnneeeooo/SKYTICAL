@@ -122,7 +122,7 @@ def test_luna_always_uses_max_for_manual_drafting_and_repairs(tier, repair):
     if tier:
         assert manual_reasoning_profile("openai", "gpt-6", tier)["wire"]["reasoning"]["effort"] == "max"
     p.budget_purpose = "review"
-    assert p._responses_output_tokens(repair) == 48000
+    assert p._responses_output_tokens(repair) is None
 
 
 def test_briefing_and_its_repairs_keep_max_despite_stale_environment(monkeypatch):
@@ -130,7 +130,30 @@ def test_briefing_and_its_repairs_keep_max_despite_stale_environment(monkeypatch
     monkeypatch.setenv("BRIEFING_WRITER_EFFORT", "low")
     p = briefing_writer.make_provider()
     assert p._effort(False) == p._effort(True) == "max"
-    assert p._responses_output_tokens(False) == p._responses_output_tokens(True) == 48000
+    assert p._responses_output_tokens(False) is p._responses_output_tokens(True) is None
+
+
+@pytest.mark.parametrize("repair", [False, True])
+@pytest.mark.parametrize("caller", ["draft", "briefing", "iata", "opencode"])
+def test_actual_response_payload_omits_only_luna_output_limit(caller, repair):
+    from providers import OpenAIProvider, OpenCodeProvider
+    from briefing_writer import make_provider
+    from iata_audit import AuditProvider, State
+    factories = {"draft": OpenAIProvider, "briefing": make_provider,
+                 "iata": lambda: AuditProvider(State()), "opencode": OpenCodeProvider}
+    provider = factories[caller]()
+    response = Mock(status_code=200)
+    response.json.return_value = {"status": "completed", "output_text": '{"ok":true}',
+                                  "usage": {"input_tokens": 20, "output_tokens": 96000}}
+    provider._responses_api_key = Mock(return_value="fake-key")
+    provider._post_json = Mock(return_value=response)
+    provider._responses_call("system", "source", {"type": "object"}, repair)
+    payload = provider._post_json.call_args.args[1]
+    if caller == "opencode":
+        assert payload["max_output_tokens"] == (8192 if repair else 16384)
+    else:
+        assert "max_output_tokens" not in payload
+        assert payload["reasoning"]["effort"] == "max"
 
 
 def test_luna_ignores_expired_attempt_story_and_run_deadlines(monkeypatch):

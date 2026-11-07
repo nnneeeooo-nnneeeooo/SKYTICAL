@@ -48,6 +48,46 @@ def test_reserve_reconciles_reasoning_once_and_uses_taipei_day():
     assert not read()["reservations"]
 
 
+@pytest.mark.parametrize("outputs", [96000, 160000])
+def test_uncapped_payload_reaches_http_and_settles_full_returned_usage(outputs):
+    payload = {"input": "source"}
+    response = Mock()
+    response.json.return_value = {"usage": {"input_tokens": 20000, "output_tokens": outputs}}
+    sender = Mock(return_value=response)
+    with patch.object(budget, "datetime") as clock:
+        clock.now.return_value = NOW
+        assert budget.post(sender, "unused", payload) is response
+    assert sender.call_args.args[1] == {"input": "source"}
+    assert "max_output_tokens" not in payload
+    assert read()["months"]["2026-11"]["total"] == 2500 + outputs // 2
+    assert not read()["reservations"]
+
+
+def test_uncapped_unknown_usage_retains_native_capacity_reservation():
+    payload = {"input": "source"}
+    token = budget.reserve(payload, now=NOW)
+    before = read()
+    assert before["reservations"][token]["micros"] == budget._cost(
+        len(json.dumps(payload).encode()) + 4096, 128000, 0, budget.policy())
+    budget.settle(token, {})
+    assert read() == before
+
+
+@pytest.mark.parametrize("invalid", [0, -1, True, "128000", 1.5])
+def test_invalid_explicit_output_limit_is_rejected(invalid):
+    with pytest.raises(budget.BudgetDenied):
+        budget.reserve({"input": "source", "max_output_tokens": invalid}, now=NOW)
+
+
+def test_uncapped_output_still_checks_monthly_and_optional_budgets():
+    seed(month=29999000)
+    with pytest.raises(budget.BudgetDenied):
+        budget.reserve({"input": "source"}, now=NOW)
+    seed(month=9999000, optional=9999000)
+    with pytest.raises(budget.BudgetDenied, match="reserved for drafting"):
+        budget.reserve({"input": "source"}, "review", now=NOW)
+
+
 def test_monthly_limit_blocks_before_http():
     seed(day=29999000, month=29999000)
     sender = Mock()

@@ -1462,10 +1462,12 @@ class OpenCodeProvider(NvidiaProvider):
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
-            "max_output_tokens": self._responses_output_tokens(repair),
             "reasoning": {"effort": self._effort(repair)},
             "text": {"format": self._responses_format(schema)},
         }
+        output_limit = self._responses_output_tokens(repair)
+        if output_limit is not None:
+            payload["max_output_tokens"] = output_limit
         response = self._post_json(
             self._responses_endpoint(),
             payload,
@@ -1708,10 +1710,9 @@ class OpenAIProvider(OpenCodeProvider):
             "strict": True,
         }
 
-    def _responses_output_tokens(self, repair: bool) -> int:
-        # GPT 6 counts reasoning tokens against this cap. Leave room for
-        # reasoning and the final bilingual JSON response.
-        return 48_000
+    def _responses_output_tokens(self, repair: bool) -> None:
+        # Owner policy: omit the client cap for every Luna call and repair.
+        return None
 
     def _effort(self, repair: bool) -> str:
         # Owner policy applies to drafting, auditing and every repair, even

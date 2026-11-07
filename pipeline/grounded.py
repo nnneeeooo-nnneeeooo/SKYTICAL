@@ -190,7 +190,7 @@ def call_openai_grounded(window):
                   {"role": "user", "content": f"窗口：{window.window_start.isoformat()} 至 {window.window_end.isoformat()}（不含終點），僅限來源發布/更新於此窗口的航空新聞。"}],
         "tools": [{"type": "web_search", "search_context_size": "medium"}],
         "tool_choice": "required", "max_tool_calls": 4,
-        "include": ["web_search_call.action.sources"], "max_output_tokens": 48_000,
+        "include": ["web_search_call.action.sources"],
     }, purpose="draft", model=model,
        headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"}, timeout=(10, None))
     if response.status_code != 200:
