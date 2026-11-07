@@ -90,6 +90,11 @@ def evidence(image):
 
 def model_matches(model, text):
     """Preserve variants: A350-900 != -1000, Gripen F != NG, MAX 7 != MAX 8."""
+    # Chinese adjacent to an aircraft identifier is a lexical boundary, just
+    # like a space in English. Keep Latin letters, digits and subtype suffixes
+    # together so 787-9 never becomes compatible with 787-10.
+    text = re.sub(r"(?<=[\u3400-\u9fff])(?=[A-Za-z0-9])|"
+                  r"(?<=[A-Za-z0-9])(?=[\u3400-\u9fff])", " ", text)
     model = re.sub(r"^(?:Airbus|Boeing|Embraer|Bombardier)\s+", "", model, flags=re.I)
     # Manufacturer subtype digits are compatible within the named series.
     model = re.sub(r"(A\d{3})-([2389])\d{2}\b", r"\g<1>-\g<2>00", model)
@@ -135,7 +140,13 @@ def airline_matches(article, airline, image, evidence_text):
             and not images._secondary_image_airline_allowed(
                 article, named_airlines)):
         return False
-    return any(phrase(alias, evidence_text) for alias in aliases)
+    if any(phrase(alias, evidence_text) for alias in aliases):
+        return True
+    return any(
+        images._secondary_image_airline_allowed(article, [name])
+        and any(phrase(alias, evidence_text)
+                for alias in images._airline_aliases(str(name)))
+        for name in images.article_airlines(article))
 
 
 def rejection_reason(article, raw, captions=None):

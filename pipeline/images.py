@@ -308,6 +308,16 @@ def _is_airline_operator(name: object) -> bool:
     } for airline in _airlines)
 
 
+def article_airlines(article: dict) -> list:
+    """Use the same verified carriers in primary and secondary image gates."""
+    entities = article.get("entities") or {}
+    if not isinstance(entities, dict):
+        return []
+    return entities.get("airlines") or [
+        name for name in entities.get("operators") or []
+        if _is_airline_operator(name)]
+
+
 def find_airline(article: dict) -> str | None:
     """Return the article's primary airline, never a background mention.
 
@@ -318,12 +328,7 @@ def find_airline(article: dict) -> str | None:
     dictionary match elsewhere in the article. Scheduled drafts may instead
     use ``entities.operators``; military and non-airline operators are excluded.
     """
-    entities = article.get("entities") or {}
-    entity_airlines = (
-        entities.get("airlines") if isinstance(entities, dict) else []) or []
-    if not entity_airlines and isinstance(entities, dict):
-        entity_airlines = [name for name in entities.get("operators") or []
-                           if _is_airline_operator(name)]
+    entity_airlines = article_airlines(article)
 
     def canonical(entity) -> str:
         raw = str(entity or "").strip()
@@ -551,17 +556,19 @@ def _image_named_airlines(image: dict) -> list[str]:
 def _airline_aliases(name: str) -> list[str]:
     normalized = name.casefold()
     values = [name]
+    canonical_name = name
     for airline in _airlines:
         en = str(airline.get("airline_name_en") or "").strip()
         zh = str(airline.get("airline_name_zh_tw") or "").strip()
         if normalized in {en.casefold(), zh.casefold()}:
+            canonical_name = en or zh
             values.extend((
                 en, zh,
                 zh[:-2] if zh in {"星宇航空", "長榮航空", "立榮航空", "華信航空"}
                 else "",
             ))
             break
-    profile = airline_visual_profile(name)
+    profile = airline_visual_profile(canonical_name)
     if profile:
         values.extend([profile.get("airline"), *(profile.get("aliases") or [])])
     if name.endswith(" Express"):
@@ -579,9 +586,7 @@ def _airline_aliases(name: str) -> list[str]:
 def _secondary_image_airline_allowed(article: dict,
                                      named_airlines: list[str]) -> bool:
     """Allow a secondary carrier only for explicit multi-carrier headlines."""
-    entities = article.get("entities") or {}
-    entity_values = (
-        entities.get("airlines") if isinstance(entities, dict) else []) or []
+    entity_values = article_airlines(article)
     if not entity_values:
         return False
     headline = article_headline_text(article).casefold()

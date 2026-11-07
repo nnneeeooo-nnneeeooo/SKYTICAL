@@ -150,24 +150,33 @@ def parse_cna_photo(html, source_url):
     for figure in soup.select("figure.floatImg"):
         img = figure.find("img")
         caption = figure.find("figcaption")
-        if not img or not caption or _cna_image_key(img.get("src", "")) != key:
+        if (not img or not caption
+                or not any(_cna_image_key(img.get(attr, "")) == key
+                           for attr in ("src", "data-src", "data-lazy-src"))):
             continue
         original = " ".join(caption.stripped_strings)
         credit_match = re.search(r"[（(]([^（）()]+提供)[）)]", original)
-        # Only supplied publicity photos are supported by this adapter.
-        if not credit_match:
+        reporter = re.search(r"中央社記者[^，。；（）()\s]{1,20}攝(?:影)?", original)
+        if not credit_match and not reporter:
             continue
-        subject = clean_description(re.split(r"[（(]", original, maxsplit=1)[0])
+        # Keep position notes such as （中） in an event caption. They are
+        # not photographer credits and must not truncate the actual subject.
+        first_sentence = re.split(r"[。；]", original, maxsplit=1)[0]
+        first_sentence = re.sub(r"[（(][^（）()]*提供[）)]", "", first_sentence)
+        subject = clean_description(first_sentence)
         if not subject:
             continue
         # Preserve complete source wording separately; show a short caption.
-        subject = re.split(r"[。；]", subject, maxsplit=1)[0].strip()
         if len(subject) > 100:
             continue
         return {"url": url, "link": source_url,
                 "subject": subject, "sourceCaption": original,
-                "credit": credit_match.group(1), "provider": "中央社 CNA",
-                "kind": "event_photo", "matched": "source:cna"}
+                "credit": (credit_match.group(1) if credit_match
+                           else reporter.group(0)),
+                "license": None, "provider": "中央社 CNA",
+                "kind": ("file_photo" if re.search(r"資料照|檔案照", original)
+                         else "event_photo"),
+                "matched": "source:cna"}
     return None
 
 
