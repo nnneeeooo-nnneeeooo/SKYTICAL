@@ -12698,7 +12698,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-07T00:37:54.178213+00:00"
+      "checked_utc": "2026-11-07T04:39:00.924375+00:00"
     },
     "a-pla-activity-taiwan-20261101": {
       "status": "none",
@@ -12734,7 +12734,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-07T00:37:54.178213+00:00"
+      "checked_utc": "2026-11-07T04:39:00.924375+00:00"
     },
     "a-malaysia-fa-50m-fighter-arrival-20261030": {
       "status": "none",
@@ -12814,7 +12814,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-07T00:37:54.178213+00:00"
+      "checked_utc": "2026-11-07T04:39:00.924375+00:00"
     },
     "a-united-boeing-757-san-francisco-low-fuel-go-around-20261102": {
       "status": "matched",
@@ -13235,6 +13235,64 @@
       ],
       "checked_utc": "2026-11-07T00:37:54.178213+00:00",
       "next_retry_utc": "2026-11-07T06:37:54.178213+00:00"
+    },
+    "a-southwest-airlines-boeing-737-engine-failure-emergency-landing-20261106": {
+      "status": "matched",
+      "image": {
+        "url": "https://t.plnspttrs.net/32227/1745164_8d22b37642_280.jpg",
+        "link": "https://www.planespotters.net/photo/1745164/n281wn-southwest-airlines-boeing-737-7h4-wl?utm_source=api",
+        "credit": "Marc Charon",
+        "license": null,
+        "provider": "Planespotters.net",
+        "kind": "airframe_photo",
+        "matched": "N281WN",
+        "subject": "註冊號 N281WN",
+        "description": ""
+      },
+      "checked_utc": "2026-11-07T04:39:00.924375+00:00"
+    },
+    "a-f-35b-meteor-missile-internal-bay-release-20261106": {
+      "status": "matched",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Royal_Air_Force_Lockheed_Martin_F-35B_Lightning_II_ZM166_032_Royal_International_Air_Tattoo_2025_02.jpg/1280px-Royal_Air_Force_Lockheed_Martin_F-35B_Lightning_II_ZM166_032_Royal_International_Air_Tattoo_2025_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=181165798",
+        "credit": "Julian Herzog ( Website )",
+        "license": "CC BY 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "Lockheed Martin F-35B aircraft",
+        "subject": "Lockheed Martin F-35B",
+        "description": "Royal Air Force Lockheed Martin F-35B Lightning II ZM166 032 Royal International Air Tattoo 2025 02",
+        "photoYear": 2025
+      },
+      "checked_utc": "2026-11-07T04:39:00.924375+00:00"
+    },
+    "a-airbus-a320-atra-eurofighter-radar-20261106": {
+      "status": "matched",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Airbus_A320_-_9A-BTL_from_Trade_Air_during_take_off_at_LFBT_airport.jpg/1280px-Airbus_A320_-_9A-BTL_from_Trade_Air_during_take_off_at_LFBT_airport.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=164186032",
+        "credit": "Shougissime",
+        "license": "CC BY-SA 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "Airbus A320 aircraft",
+        "subject": "Airbus A320",
+        "description": "Airbus A320 - 9A-BTL from Trade Air during take off at LFBT airport",
+        "photoYear": 2025
+      },
+      "checked_utc": "2026-11-07T04:39:00.924375+00:00"
+    },
+    "a-airbus-259-aircraft-deliveries-year-end-20261106": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:no-event-photo",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-07T04:39:00.924375+00:00",
+      "next_retry_utc": "2026-11-07T10:39:00.924375+00:00"
     }
   },
   "sources": {
@@ -16734,7 +16792,7 @@
       "image": null,
       "rejection_reason": "no-event-photo",
       "parser_version": 5,
-      "next_retry_utc": "2026-11-06T09:03:38.244310+00:00"
+      "next_retry_utc": "2026-11-07T10:39:00.924375+00:00"
     },
     "https://www.cna.com.tw/news/ahel/202611050136.aspx": {
       "image": {
@@ -16786,6 +16844,24 @@
       "rejection_reason": "no-event-photo",
       "parser_version": 5,
       "next_retry_utc": "2026-11-07T06:37:54.178213+00:00"
+    },
+    "https://www.aerotime.aero/articles/f-35b-meteor-missile-first-internal-bay-release": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-07T10:39:00.924375+00:00"
+    },
+    "https://www.cna.com.tw/news/afe/202611060306.aspx": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-07T10:39:00.924375+00:00"
+    },
+    "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-orders-october-2026": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-07T10:39:00.924375+00:00"
     }
   }
 }
