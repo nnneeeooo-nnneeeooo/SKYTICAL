@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="zh-Hant-TW">
+<html lang="zh-Hant-TW"{% if traffic_server_mode %} data-traffic-transport="apps-script"{% endif %}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#f4f6f8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://accounts.google.com/gsi/client; style-src 'self'; img-src 'self' data:; connect-src 'self' https://analyticsdata.googleapis.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'none'; base-uri 'none'; frame-ancestors 'none'">
+{% if not traffic_server_mode %}<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://accounts.google.com/gsi/client; style-src 'self'; img-src 'self' data:; connect-src 'self' https://analyticsdata.googleapis.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'none'; base-uri 'none'; frame-ancestors 'none'">{% endif %}
+{% if traffic_app_url %}<meta http-equiv="refresh" content="0;url={{ traffic_app_url }}">{% endif %}
 <title>SKYTICAL｜私人流量儀表板</title>
 <link rel="icon" href="{{ favicon }}">
 <link rel="stylesheet" href="{{ base }}/assets/traffic-dashboard.css?v={{ traffic_asset_version }}">
-<script src="https://accounts.google.com/gsi/client" async defer></script>
+{% if not traffic_server_mode %}<script src="https://accounts.google.com/gsi/client" async defer></script>{% endif %}
 <script src="{{ base }}/assets/traffic-dashboard.js?v={{ traffic_asset_version }}" defer></script>
 <script src="{{ base }}/assets/text-spacing.js" defer></script>
 </head>
@@ -24,6 +25,7 @@
   <div class="account"><span id="auth-state" class="status" role="status">尚未連接</span><button id="auth-action" type="button">連接 Google</button></div>
 </header>
 <main class="shell" id="traffic-app" tabindex="-1">
+  {% if traffic_app_url %}<p class="help">正在開啟 Google 保護的私人儀表板。<a href="{{ traffic_app_url }}" rel="noreferrer">手動開啟</a></p>{% endif %}
   <header class="header">
     <div><h1>網站流量</h1><p id="finding" class="subtitle">了解讀者從哪裡來，以及哪些新聞受到關注。</p></div>
     <button id="refresh" type="button" disabled><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 8a7 7 0 0 1 11.6-2L20 9M4 15l2.8 3A7 7 0 0 0 18.4 16"/></svg><span>更新數據</span></button>
@@ -88,7 +90,7 @@
     </div>
     <p class="footnote">日期以臺灣時間選取，GA4 依資源時區彙整。今天的數據尚未完整，處理也可能有延遲。來源占比以全部工作階段計算；網頁占比以全部瀏覽量計算。Facebook 依工作階段來源歸類，無法回溯追蹤程式安裝前的造訪。</p>
   </section>
-  <footer class="footer"><span>資料由瀏覽器直接讀取 GA4，需 Google 帳號授權。</span><a href="draft/">私人補稿臺（備用）</a></footer>
+  <footer class="footer"><span>{% if traffic_server_mode %}由你的 Google 帳號保護，授權由 Google 自動延續。{% else %}資料由瀏覽器直接讀取 GA4，需 Google 帳號授權。{% endif %}</span>{% if not traffic_server_mode %}<a href="draft/">私人補稿臺（備用）</a>{% endif %}</footer>
 </main>
 </body>
 </html>

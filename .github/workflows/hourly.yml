@@ -71,6 +71,7 @@ jobs:
           python tests/test_analytics.py
           node --check static/traffic-dashboard.js
           python tests/test_traffic_dashboard.py
+          python -m pytest -q tests/test_traffic_session.py
           python tests/test_scope.py
           python tests/test_fetch_health.py
           python tests/test_evaair.py
@@ -240,6 +241,7 @@ jobs:
           # private Copilot panel; build-time visibility is not authorization
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           SKYTICAL_GA4_MEASUREMENT_ID: ${{ vars.SKYTICAL_GA4_MEASUREMENT_ID }}
+          SKYTICAL_TRAFFIC_APP_URL: ${{ vars.SKYTICAL_TRAFFIC_APP_URL }}
           # bulletin-only briefing pages by default; build.py applies the
           # same gate at render time, so hourly rebuilds need the var too
           BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}

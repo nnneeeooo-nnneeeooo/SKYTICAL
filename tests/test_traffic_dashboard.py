@@ -37,6 +37,7 @@ def main() -> None:
     assert "kpi-facebook" in template and "kpi-facebook" in js
     assert "max-width:600px" in css
     subprocess.run(["node", str(ROOT / "tests" / "test_traffic_dashboard.js")], check=True)
+    subprocess.run(["node", str(ROOT / "tests" / "test_traffic_session.js")], check=True)
     print("test_traffic_dashboard: OK")
 
 

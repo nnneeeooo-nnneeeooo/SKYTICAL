@@ -3710,15 +3710,27 @@ def render_manual_workbench(env, build) -> int:
             "SKYTICAL_COPILOT_ENABLED", "false").strip().lower()
             in {"1", "true", "yes", "on"},
     })
-    # Owner GA4 reports are fetched only after Google OAuth in the browser:
-    # nothing sensitive is built into a publicly hosted static asset.
-    render(env, "traffic-dashboard.html", f"m/{token}/index.html", {
+    # Google-managed owner sessions are optional; the legacy browser OAuth path
+    # remains available until a private Apps Script deployment is configured.
+    traffic_app_url = os.environ.get("SKYTICAL_TRAFFIC_APP_URL", "").strip()
+    if not re.fullmatch(r"https://script\.google\.com/macros/s/[A-Za-z0-9_-]+/exec", traffic_app_url):
+        traffic_app_url = ""
+    traffic_ctx = {
         "base": BASE_PATH,
         "favicon": FAVICON,
         "traffic_asset_version": hashlib.sha256(
             (STATIC_DIR / "traffic-dashboard.css").read_bytes()
             + (STATIC_DIR / "traffic-dashboard.js").read_bytes()
         ).hexdigest()[:10],
+        "traffic_app_url": traffic_app_url,
+    }
+    render(env, "traffic-dashboard.html", f"m/{token}/index.html", traffic_ctx)
+    # This asset contains UI only. All report RPCs require the Google web app's
+    # owner-only session; it includes neither the property ID nor any tokens.
+    render(env, "traffic-dashboard.html", "assets/traffic-dashboard-app.html", {
+        **traffic_ctx, "base": SITE_ORIGIN + BASE_PATH,
+        "favicon": SITE_ORIGIN + FAVICON if FAVICON.startswith("/") else FAVICON,
+        "traffic_app_url": "", "traffic_server_mode": True,
     })
     return 2
 

@@ -6,6 +6,7 @@
   const SCOPE = "https://www.googleapis.com/auth/analytics.readonly";
   const API = "https://analyticsdata.googleapis.com/v1beta/properties/";
   const REFRESH_INTERVAL = 10 * 60 * 1000;
+  const serverMode = Boolean(document.documentElement && document.documentElement.dataset.trafficTransport === "apps-script");
   const DAY = 86400000;
   const fmt = new Intl.NumberFormat("zh-TW");
   const percent = new Intl.NumberFormat("zh-TW", {style:"percent", minimumFractionDigits:1, maximumFractionDigits:1});
@@ -69,6 +70,12 @@
   }
   function syncUrl() {
     try {
+      if (serverMode && window.google && window.google.script && window.google.script.history) {
+        const params = custom ? {...custom} : {days:String(days)};
+        params.metric = $("trend-metric").value;
+        window.google.script.history.replace({}, params, "");
+        return;
+      }
       const url = new URL(location.href);
       ["days", "start", "end", "metric"].forEach(k => url.searchParams.delete(k));
       if (custom) { url.searchParams.set("start", custom.start); url.searchParams.set("end", custom.end); }
@@ -222,6 +229,20 @@
     return rows;
   }
   async function runReport(propertyId, body) {
+    if (serverMode) {
+      return new Promise(function (resolve, reject) {
+        if (!window.google || !window.google.script || !window.google.script.run) {
+          reject(Error("請從私人入口開啟 Google 保護的儀表板。")); return;
+        }
+        const timeout = setTimeout(() => reject(Error("Google 報表回應逾時，請稍後按更新重試。")), 45000);
+        window.google.script.run.withSuccessHandler(function (result) {
+          clearTimeout(timeout); resolve(result);
+        }).withFailureHandler(function (error) {
+          clearTimeout(timeout);
+          reject(Error(error.message || "Google 報表讀取失敗，請稍後按更新重試。"));
+        }).runTrafficReport(body);
+      });
+    }
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 30000);
     let response;
@@ -246,12 +267,12 @@
   const dimension = name => ({name:name});
   async function refresh() {
     if (refreshBusy) { refreshAgain = true; return; }
-    if (!accessToken) return;
-    if (Date.now() >= tokenExpires) {
+    if (!accessToken && !serverMode) return;
+    if (!serverMode && Date.now() >= tokenExpires) {
       accessToken = ""; authState("授權逾期", false); alertMessage("授權已過期，請按「連接 Google」重新登入。"); return;
     }
     const property = $("property-id").value.trim();
-    if (!/^[0-9]{5,20}$/.test(property)) { alertMessage("請輸入 GA4 的數字資源 ID，非 G- 開頭的測量 ID。"); $("setup").open = true; $("property-id").focus(); return; }
+    if (!serverMode && !/^[0-9]{5,20}$/.test(property)) { alertMessage("請輸入 GA4 的數字資源 ID，非 G- 開頭的測量 ID。"); $("setup").open = true; $("property-id").focus(); return; }
     const range = selectedRange(), requestedRevision = revision;
     refreshBusy = true; $("refresh").disabled = true; $("report").setAttribute("aria-busy", "true");
     $("last-updated").textContent = "正在讀取 GA4…"; alertMessage("");
@@ -288,7 +309,7 @@
         $("last-updated").textContent = lastGood ? "更新失敗；上次成功 " + lastGood : "讀取失敗，請重新更新";
       }
     } finally {
-      refreshBusy = false; $("refresh").disabled = !accessToken; $("report").setAttribute("aria-busy", "false");
+      refreshBusy = false; $("refresh").disabled = !serverMode && !accessToken; $("report").setAttribute("aria-busy", "false");
       if (refreshAgain) { refreshAgain = false; refresh(); }
     }
   }
@@ -309,18 +330,21 @@
         },
         error_callback:function () { alertMessage("Google 登入視窗遭到關閉或被阻擋，請按「連接 Google」重試。"); }
       });
-      tokenClient.requestAccessToken({prompt:"consent"});
+      tokenClient.requestAccessToken({prompt:""});
     } catch (err) { alertMessage("Google OAuth 初始化失敗：" + (err.message || "請檢查用戶端設定")); }
   }
   $("client-id").value = readSaved(CLIENT_KEY); $("property-id").value = readSaved(PROPERTY_KEY);
   if ($("client-id").value && $("property-id").value) $("setup").open = false;
-  const params = new URLSearchParams(location.search);
-  if ([1,7,28,90].includes(Number(params.get("days")))) days = Number(params.get("days"));
-  if (params.has("start") && params.has("end") && !rangeError(params.get("start"), params.get("end"))) {
-    custom = {start:params.get("start"), end:params.get("end")}; openCustom(true);
+  function restoreFilters(params) {
+    if ([1,7,28,90].includes(Number(params.get("days")))) days = Number(params.get("days"));
+    if (params.has("start") && params.has("end") && !rangeError(params.get("start"), params.get("end"))) {
+      custom = {start:params.get("start"), end:params.get("end")}; openCustom(true);
+    }
+    if (Object.hasOwn(metrics, params.get("metric"))) $("trend-metric").value = params.get("metric");
+    $("start-date").value = selectedRange().start; $("end-date").value = selectedRange().end;
+    updatePeriodButtons();
   }
-  if (Object.hasOwn(metrics, params.get("metric"))) $("trend-metric").value = params.get("metric");
-  $("start-date").value = selectedRange().start; $("end-date").value = selectedRange().end;
+  restoreFilters(new URLSearchParams(location.search));
   $("start-date").max = today(); $("end-date").max = today();
   updatePeriodButtons(); drawTrend();
   $("connect").addEventListener("click", connect);
@@ -359,4 +383,19 @@
   let resizeTimer;
   window.addEventListener("resize", function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawTrend, 100); });
   setInterval(function () { if (!document.hidden) refresh(); }, REFRESH_INTERVAL);
+  if (serverMode) {
+    $("setup").hidden = true; $("auth-action").hidden = true;
+    if (!window.google || !window.google.script || !window.google.script.run) {
+      authState("請使用私人入口", false);
+      alertMessage("請從原本的私人入口開啟 Google 保護的儀表板。");
+      return;
+    }
+    authState("Google 私人連線", true);
+    if (window.google && window.google.script && window.google.script.url) {
+      window.google.script.url.getLocation(function (location) {
+        restoreFilters(new URLSearchParams(location.parameter || {}));
+        refresh();
+      });
+    } else refresh();
+  }
 })();
