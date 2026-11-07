@@ -1,0 +1,306 @@
+{
+  "content_type": "daily_transport_briefing",
+  "briefing_id": "2026-11-07-morning",
+  "date": "2026-11-07",
+  "edition": "morning",
+  "edition_label": "晨間快報",
+  "timezone": "Asia/Taipei",
+  "window_start": "2026-11-06T07:00:00+08:00",
+  "window_end": "2026-11-07T07:00:00+08:00",
+  "cutoff_time": "2026-11-07T07:00:00+08:00",
+  "scheduled_time": "2026-11-07T07:15:00+08:00",
+  "generated_at": "2026-11-07T07:55:35.224930+08:00",
+  "status": "published",
+  "item_count": 2,
+  "sections": {
+    "aviation_incidents": [],
+    "taiwan_aviation": [
+      {
+        "event_id": "ev-ecb9ba9e840ea71a",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "taiwan_aviation",
+        "headline": "華航前3季營收與淨利創同期新高 客運與貨運收入同步創紀錄",
+        "summary": "中華航空公告前3季合併營收1,859.4億元、每股盈餘1.8元，營收與淨利均創歷年同期新高，客運及貨運收入也同步創紀錄。",
+        "headline_en": "China Airlines posts record revenue and net profit for the first nine months, with passenger and cargo revenue also setting records",
+        "summary_en": "China Airlines reported consolidated revenue of NT$185.94 billion and earnings per share of NT$1.8 for the first nine months. Revenue and net profit both set all-time highs for the period, and passenger and cargo revenue also set records.",
+        "event_time": null,
+        "source_published_at": "2026-11-06T11:29:00+00:00",
+        "source_updated_at": null,
+        "location": null,
+        "entities": [
+          "Airbus A350-900",
+          "Airbus A321neo",
+          "Boeing 787",
+          "Airbus",
+          "Boeing",
+          "中華航空"
+        ],
+        "severity": "routine",
+        "taiwan_priority": true,
+        "military": false,
+        "sources": [
+          {
+            "name": "中央社 CNA",
+            "url": "https://www.cna.com.tw/news/afe/202611060306.aspx"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-china-airlines-q3-2026-record-revenue-profit-20261106",
+        "keyword_zh": "華航前三季財報",
+        "keyword_en": "China Airlines results",
+        "writer_evidence": [
+          1,
+          6
+        ]
+      }
+    ],
+    "international_aviation": [
+      {
+        "event_id": "ev-7ce678dd69459902",
+        "item_type": "new",
+        "previous_event_id": null,
+        "category": "aviation_industry",
+        "headline": "北約開設反無人機市集 盟國可免另行招標從16套預選系統中下單",
+        "summary": "北約於2026年11月5日開設市集，盟國可從16套預選系統中直接下單，無須另行招標；法國Alta Ares取得16個標案中的6個。",
+        "headline_en": "NATO opens a counter-drone marketplace, allowing allies to order from 16 preselected systems without a separate tender",
+        "summary_en": "NATO opened the marketplace on November 5, 2026, allowing allies to order from a catalog of 16 preselected systems without a separate tender. French firm Alta Ares secured six of the 16 lots.",
+        "event_time": null,
+        "source_published_at": "2026-11-06T10:55:00+00:00",
+        "source_updated_at": null,
+        "location": null,
+        "entities": [
+          "Alta Ares",
+          "Axon Enterprise",
+          "Northrop Grumman",
+          "Quantum Systems",
+          "Airbus Defence and Space",
+          "NATO"
+        ],
+        "severity": "routine",
+        "taiwan_priority": false,
+        "military": false,
+        "sources": [
+          {
+            "name": "AeroTime",
+            "url": "https://www.aerotime.aero/articles/nato-counter-drone-marketplace-16-systems"
+          }
+        ],
+        "risk_flags": [],
+        "article_id": "a-nato-counter-drone-marketplace-20261106",
+        "keyword_zh": "北約反無人機市集",
+        "keyword_en": "NATO counter-drone market",
+        "writer_evidence": [
+          2,
+          4,
+          7,
+          9
+        ]
+      }
+    ]
+  },
+  "coverage_notes": {
+    "aviation_incidents": {
+      "zh": "本期 24 小時資料窗口內，已查核來源未收錄符合本站門檻的重大飛安事件通報。",
+      "en": "No major safety event meeting the site's inclusion threshold was found in the checked sources during this 24-hour window.",
+      "sources": [
+        {
+          "name": "FAA",
+          "url": "https://www.faa.gov"
+        },
+        {
+          "name": "NTSB",
+          "url": "https://www.ntsb.gov"
+        },
+        {
+          "name": "EASA",
+          "url": "https://www.easa.europa.eu"
+        },
+        {
+          "name": "The Aviation Herald",
+          "url": "https://avherald.com"
+        }
+      ]
+    },
+    "taiwan_military": {
+      "zh": "本期 24 小時資料窗口內，已查核來源未收錄國軍航空器事故、迫降或人員傷亡通報。",
+      "en": "No ROC military-aircraft accident, forced landing or casualty report was found in the checked sources during this 24-hour window.",
+      "sources": [
+        {
+          "name": "中央社 CNA",
+          "url": "https://www.cna.com.tw"
+        },
+        {
+          "name": "國防部・軍聞社",
+          "url": "https://www.mnd.gov.tw"
+        }
+      ]
+    }
+  },
+  "checked_sources": [
+    {
+      "name": "FAA",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:14Z",
+      "url": "https://www.faa.gov"
+    },
+    {
+      "name": "STARLUX Airlines",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:14Z",
+      "url": "https://latestnews.starlux-airlines.com"
+    },
+    {
+      "name": "American Airlines",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:14Z",
+      "url": "https://news.aa.com"
+    },
+    {
+      "name": "BFU Germany",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:14Z",
+      "url": "https://www.bfu-web.de"
+    },
+    {
+      "name": "NTSB",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:14Z",
+      "url": "https://www.ntsb.gov"
+    },
+    {
+      "name": "ICAO",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:14Z",
+      "url": "https://www.icao.int"
+    },
+    {
+      "name": "IATA",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:14Z",
+      "url": "https://www.iata.org"
+    },
+    {
+      "name": "EASA",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:14Z",
+      "url": "https://www.easa.europa.eu"
+    },
+    {
+      "name": "Eurocontrol",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:14Z",
+      "url": "https://www.eurocontrol.int"
+    },
+    {
+      "name": "Reuters",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:14Z",
+      "url": "https://www.reuters.com"
+    },
+    {
+      "name": "The Aviation Herald",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://avherald.com"
+    },
+    {
+      "name": "Aerospace Global News",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://aerospaceglobalnews.com/"
+    },
+    {
+      "name": "CAA Taiwan",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://www.caa.gov.tw"
+    },
+    {
+      "name": "長榮航空 EVA Air",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://www.evaair.com/zh-tw/about-eva-air/news/"
+    },
+    {
+      "name": "海南航空官方資訊",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://www.hnair.com"
+    },
+    {
+      "name": "日本突發飛安新聞索引",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": null
+    },
+    {
+      "name": "亞洲航空機隊新聞索引",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": null
+    },
+    {
+      "name": "Simple Flying",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://simpleflying.com"
+    },
+    {
+      "name": "AeroTime",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://www.aerotime.aero"
+    },
+    {
+      "name": "中央社 CNA",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://www.cna.com.tw"
+    },
+    {
+      "name": "中央社 CNA 產經證券",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://www.cna.com.tw/list/aie.aspx"
+    },
+    {
+      "name": "中央社 CNA 國籍航空",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://www.cna.com.tw"
+    },
+    {
+      "name": "國防部・軍聞社",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://www.mnd.gov.tw"
+    },
+    {
+      "name": "Airbus",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://www.airbus.com/en/newsroom"
+    },
+    {
+      "name": "Boeing",
+      "ok": true,
+      "last_fetch_utc": "2026-11-06T23:15Z",
+      "url": "https://www.boeing.com/"
+    }
+  ],
+  "warnings": [],
+  "generation_mode": "model_written",
+  "generation_model": {
+    "provider": "openai",
+    "model": "gpt-6",
+    "reasoning_effort": "max"
+  },
+  "grounded_beta": {
+    "used": true,
+    "provider": "openai",
+    "model": "gpt-6",
+    "items": 0
+  },
+  "writer_input_digest": "6d32c55e00538457e06faa8da9334bbd09e972dd49cf64949304788a786a60a0"
+}
