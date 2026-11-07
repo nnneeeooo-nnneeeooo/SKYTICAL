@@ -851,6 +851,62 @@
           "detail": "unresolved airport: 重返拉特羅布讓這座賓州機場"
         }
       ]
+    },
+    "b4c40daa85437498edfef8bcc7f692eb804d96afddcb37bbccbfb516eb777b1d": {
+      "id": "a-20261105-0729-china-airlines-wins-privacy-and-personal",
+      "mentions": 0,
+      "issues": []
+    },
+    "155e9243bb89771cd354cb03096488848030e91cc14bd1ad4020b8001a7da665": {
+      "id": "a-joby-us-air-force-autonomous-cargo-37m-20261104",
+      "mentions": 0,
+      "issues": []
+    },
+    "1c6b84c88885b77ab88ce7c25ffadb76ad18034e6b7392d9e0676bc0781d3269": {
+      "id": "a-thai-b789-shanghai-cracked-windshield-20261104",
+      "mentions": 2,
+      "issues": [
+        {
+          "kind": "unverified_airport",
+          "language": "zh",
+          "surface": "body",
+          "paragraphIndex": 0,
+          "name": "上海浦東",
+          "quote": "執飛上海浦東往曼谷的TG-663航班",
+          "proposedIata": "PVG",
+          "detail": "Airport identity needs IATA/airport official verification; model proposal is not proof"
+        },
+        {
+          "kind": "unverified_airport",
+          "language": "en",
+          "surface": "body",
+          "paragraphIndex": 0,
+          "name": "Shanghai Pudong",
+          "quote": "was operating flight TG-663 from Shanghai Pudong to Bangkok",
+          "proposedIata": "PVG",
+          "detail": "Airport identity needs IATA/airport official verification; model proposal is not proof"
+        }
+      ]
+    },
+    "95031480c79cbf4a2d32b3dde70f00f4e9048d3ed3ff63faf32ae9cf513613de": {
+      "id": "a-tigerair-taiwan-apex-cadet-visit-20261103",
+      "mentions": 2,
+      "issues": [
+        {
+          "kind": "placement_or_identity",
+          "detail": "unresolved airport: 董事長黃世惠於11月3日前往安捷航空設於台東機場"
+        },
+        {
+          "kind": "unverified_airport",
+          "language": "zh",
+          "surface": "body",
+          "paragraphIndex": 0,
+          "name": "台東機場",
+          "quote": "董事長黃世惠於11月3日前往安捷航空設於台東機場（TTT）的飛航訓練中心",
+          "proposedIata": "TTT",
+          "detail": "Airport identity needs IATA/airport official verification; model proposal is not proof"
+        }
+      ]
     }
   },
   "completedRequests": {
