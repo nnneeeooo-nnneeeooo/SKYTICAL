@@ -105,7 +105,7 @@ def choose_airline(photo_bank, airline, article):
         # The file itself must unambiguously identify the actual operator,
         # without trusting the sometimes incorrect cached subject metadata.
         # Avoid more than one competing operator shown in a group photograph.
-        if any(other not in (airline, "KLM") and any(
+        if any(other!=airline and any(
             token in fn for token in toks) for other,toks in KNOWN_ALIASES.items()
             if other!=airline and len(other)>5):
             continue
@@ -166,7 +166,7 @@ def main():
                 a.pop("imageSelection",None)
                 changed=True
                 image={}
-            if isinstance(image,dict) and image.get("url"):
+            if (isinstance(image,dict) and image.get("url")) or (isinstance(image,str) and image.startswith("https://")):
                 continue
             title=lead(a)
             if re.search(r"\bIATA\b|國際航空運輸協會",title,re.I):
