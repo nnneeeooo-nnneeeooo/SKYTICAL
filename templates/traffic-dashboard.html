@@ -9,9 +9,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://accounts.google.com/gsi/client; style-src 'self'; img-src 'self' data:; connect-src 'self' https://analyticsdata.googleapis.com https://accounts.google.com; frame-src https://accounts.google.com; form-action 'none'; base-uri 'none'; frame-ancestors 'none'">
 <title>SKYTICAL｜私人流量儀表板</title>
 <link rel="icon" href="{{ favicon }}">
-<link rel="stylesheet" href="{{ base }}/assets/traffic-dashboard.css">
+<link rel="stylesheet" href="{{ base }}/assets/traffic-dashboard.css?v={{ traffic_asset_version }}">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-<script src="{{ base }}/assets/traffic-dashboard.js" defer></script>
+<script src="{{ base }}/assets/traffic-dashboard.js?v={{ traffic_asset_version }}" defer></script>
 <script src="{{ base }}/assets/text-spacing.js" defer></script>
 </head>
 <body>

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import tempfile
 from datetime import datetime, timezone
@@ -665,6 +666,8 @@ def test_private_page_render_contract():
     check(captured[1][0] == "traffic-dashboard.html"
           and captured[1][1] == f"m/{'x' * 43}/index.html",
           "private root now serves GA4 dashboard")
+    check(bool(re.fullmatch(r"[a-f0-9]{10}", captured[1][2]["traffic_asset_version"])),
+          "dashboard assets carry a content version to invalidate stale browser caches")
     check([row["id"] for row in ctx["models"]] == list(MODEL_ORDER)
           and [row["name"] for row in ctx["models"]]
           == [MODEL_DISPLAY_NAMES[item] for item in MODEL_ORDER],

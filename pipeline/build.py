@@ -3715,6 +3715,10 @@ def render_manual_workbench(env, build) -> int:
     render(env, "traffic-dashboard.html", f"m/{token}/index.html", {
         "base": BASE_PATH,
         "favicon": FAVICON,
+        "traffic_asset_version": hashlib.sha256(
+            (STATIC_DIR / "traffic-dashboard.css").read_bytes()
+            + (STATIC_DIR / "traffic-dashboard.js").read_bytes()
+        ).hexdigest()[:10],
     })
     return 2
 
