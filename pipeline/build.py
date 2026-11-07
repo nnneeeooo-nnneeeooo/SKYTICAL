@@ -3723,6 +3723,7 @@ def render_manual_workbench(env, build) -> int:
             + (STATIC_DIR / "traffic-dashboard.js").read_bytes()
         ).hexdigest()[:10],
         "traffic_app_url": traffic_app_url,
+        "traffic_server_mode": False,
     }
     render(env, "traffic-dashboard.html", f"m/{token}/index.html", traffic_ctx)
     # This asset contains UI only. All report RPCs require the Google web app's

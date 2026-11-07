@@ -2,7 +2,7 @@
 import sys
 from pathlib import Path
 
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, StrictUndefined
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,7 +25,8 @@ def test_private_route_and_token_free_app_asset(monkeypatch):
     assert pages[1][0] == f"m/{'x' * 43}/index.html"
     assert pages[1][1]["traffic_app_url"] == url
     assert pages[2][0] == "assets/traffic-dashboard-app.html"
-    env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=True)
+    env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=True,
+                      undefined=StrictUndefined)
     template = env.get_template("traffic-dashboard.html")
     entry = template.render(**pages[1][1])
     app = template.render(**pages[2][1])

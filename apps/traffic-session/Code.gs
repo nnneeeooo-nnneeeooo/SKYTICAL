@@ -39,10 +39,18 @@ function validateTrafficRequest_(body) {
   if (body.limit !== undefined && (!Number.isInteger(body.limit) || body.limit < 1 || body.limit > 366)) throw new Error('資料筆數超出限制。');
   if (body.dimensionFilter) {
     const expected = {filter:{fieldName:'sessionSource',stringFilter:{matchType:'PARTIAL_REGEXP',value:'facebook|(^|[.])fb([./]|$)',caseSensitive:false}}};
-    if (JSON.stringify(body.dimensionFilter) !== JSON.stringify(expected)) throw new Error('不支援的來源篩選。');
+    if (trafficShape_(body.dimensionFilter) !== trafficShape_(expected)) throw new Error('不支援的來源篩選。');
   }
   if (body.orderBys && (!Array.isArray(body.orderBys) || body.orderBys.length > 1 || body.orderBys.some(order => {
     const expected = order.dimension ? {dimension:{dimensionName:'date'}} : {metric:{metricName:body.metrics[0].name},desc:true};
-    return JSON.stringify(order) !== JSON.stringify(expected);
+    return trafficShape_(order) !== trafficShape_(expected);
   }))) throw new Error('不支援的排序。');
+}
+
+// RPC serialization may reorder object keys. Compare the entire shape without
+// dropping unknown fields; arrays keep their order.
+function trafficShape_(value) {
+  if (!value || typeof value !== 'object') return JSON.stringify(value);
+  if (Array.isArray(value)) return '[' + value.map(trafficShape_).join(',') + ']';
+  return '{' + Object.keys(value).sort().map(key => JSON.stringify(key) + ':' + trafficShape_(value[key])).join(',') + '}';
 }
