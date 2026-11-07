@@ -21,8 +21,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-11-07T10:36Z",
       "untilUtc": "2026-11-07T16:36Z",
+      "checkedUtc": "2026-11-07T10:36Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -47,13 +47,13 @@
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-07T11:35Z",
-      "checkedUtc": "2026-11-06T11:35Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "checkedUtc": "2026-11-07T16:15Z",
+      "untilUtc": "2026-11-07T22:15Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
       "status": "verified",
