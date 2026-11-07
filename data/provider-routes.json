@@ -3,17 +3,17 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-11-07T05:16Z",
-      "checkedUtc": "2026-11-06T23:16Z",
+      "untilUtc": "2026-11-07T16:36Z",
+      "checkedUtc": "2026-11-07T10:36Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
+      "diagnostic": "entity evidence quote not found in current source: locations='Mount Pennsylvania'",
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-07T05:16Z",
-      "checkedUtc": "2026-11-06T23:16Z",
+      "untilUtc": "2026-11-07T16:36Z",
+      "checkedUtc": "2026-11-07T10:36Z",
       "failureClass": "unexpected",
       "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 3,
@@ -21,10 +21,10 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-07T05:33Z",
-      "checkedUtc": "2026-11-06T23:33Z",
-      "failureClass": "invalid_request",
-      "diagnostic": "HTTP 400 code=invalid_request_error",
+      "checkedUtc": "2026-11-07T10:36Z",
+      "untilUtc": "2026-11-07T16:36Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-11-07T04:37Z",
       "untilUtc": "2026-11-08T04:37Z",
+      "checkedUtc": "2026-11-07T04:37Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -56,13 +56,13 @@
       "schemaMode": "prompt"
     },
     "gemini:gemini-3.5-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-11-07T05:16Z",
-      "checkedUtc": "2026-11-06T23:16Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "status": "verified",
+      "untilUtc": "2026-11-08T10:36Z",
+      "checkedUtc": "2026-11-07T10:36Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
-      "schemaMode": null
+      "schemaMode": "prompt"
     }
   }
 }
