@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "pipeline"))
 from common import load_json, save_json
 import images
-from image_selection import rejection_reason, prepare_image
+from image_selection import rejection_reason, prepare_image, model_matches
 
 ARTICLES = ROOT / "data/articles"
 REPORT = ROOT / "data/archive-photo-backfill-report.json"
@@ -158,11 +158,11 @@ def bank_rank(article, photo):
         aliases = images._airline_aliases(carrier)
         if not any(a and len(a) >= 4 and re.search(r"(?<![A-Za-z0-9])"+re.escape(a)+r"(?![A-Za-z0-9])",imgtext,re.I) for a in aliases):
             return None
-        if model and not images.model_matches(model, imgtext):
+        if model and not model_matches(model, imgtext):
             return None
         return 100 + (20 if model else 0)
     if model:
-        if not images.model_matches(model, imgtext):
+        if not model_matches(model, imgtext):
             return None
         if re.search(r"air force|空軍|軍|軍方|military",title,re.I) and not re.search(r"air force|空軍|military|army|navy",imgtext,re.I):
             return None
