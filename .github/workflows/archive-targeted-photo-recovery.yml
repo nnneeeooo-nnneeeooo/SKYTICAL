@@ -1,0 +1,35 @@
+name: archive-targeted-photo-recovery
+on:
+  push:
+    branches: [main]
+    paths:
+      - pipeline/archive_targeted_photos.py
+      - .github/workflows/archive-targeted-photo-recovery.yml
+permissions:
+  contents: write
+jobs:
+  recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Recover licensed photographs for remaining named subjects
+        run: python pipeline/archive_targeted_photos.py
+      - name: Commit manual archival photo results
+        run: |
+          git config user.name "SKYTICAL archive photography"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/articles/ data/archive-targeted-photo-report.json
+          if git diff --cached --quiet; then
+            echo "No additional verified photos"
+          else
+            git commit -m "images: targeted archival real-photo recovery"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
