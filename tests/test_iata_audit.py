@@ -223,3 +223,53 @@ def test_cloud_run_advances_only_after_complete_model_coverage(tmp_path, monkeyp
     if complete:
         assert report["articles"][0]["url"] == audit.SITE_ORIGIN.rstrip("/") + audit.BASE_PATH + "/news/a-test/"
     assert source == original
+
+@pytest.mark.parametrize("filename,identity,expected", [
+    ("2026-11-07T04.json", "a-20261107-industry-roundup-12", 4),
+    ("scheduled-southwest-airlines-boeing-737-engine-failure-emergency-landing-20261106.json",
+     "a-southwest-airlines-boeing-737-engine-failure-emergency-landing-20261106", 1),
+])
+def test_nov7_articles_pass_and_missing_or_wrong_codes_remain_detectable(filename, identity, expected):
+    batch = json.loads((audit.ROOT / "data/articles" / filename).read_text(encoding="utf-8"))
+    source = next(row for row in batch["articles"] if row["id"] == identity)
+    original = copy.deepcopy(source)
+    mentions = []
+    for lang, surface, index, text in (
+            (lang, surface, index, text)
+            for lang in ("zh", "en")
+            for surface, index, text in audit.airport_codes._slots(source, lang)):
+        name, code = (("Spokane International Airport", "GEG")
+                      if expected == 4 else ("約翰韋恩機場", "SNA"))
+        if name in text:
+            mentions.append(mention(language=lang, surface=surface,
+                                    paragraphIndex=index or 0, name=name,
+                                    quote=text, proposedIata=code))
+    assert len(mentions) == expected
+    assert audit.findings(source, mentions) == []
+    assert source == original
+    assert audit.airport_codes.enforce_article(copy.deepcopy(source)) == (False, [])
+    missing = copy.deepcopy(source)
+    wrong = copy.deepcopy(source)
+    for lang in ("zh", "en"):
+        for key in ("title", "body"):
+            values = [source[lang][key]] if key == "title" else source[lang][key]
+            removed = [text.replace("（GEG）", "").replace(" (GEG)", "")
+                       if expected == 4 else text.replace("（SNA）", "") for text in values]
+            incorrect = [text.replace("（GEG）", "（SFF）").replace(" (GEG)", " (SFF)")
+                         if expected == 4 else text.replace("（SNA）", "（LAX）") for text in values]
+            missing[lang][key] = removed[0] if key == "title" else removed
+            wrong[lang][key] = incorrect[0] if key == "title" else incorrect
+    missing_mentions = [{**m, "quote": missing[m["language"]][m["surface"]]
+                         if m["surface"] == "title" else missing[m["language"]]["body"][m["paragraphIndex"]]}
+                        for m in mentions]
+    issues = audit.findings(missing, missing_mentions)
+    assert sum(i["kind"] == "missing_or_wrong_first_code" for i in issues) == expected
+    assert audit.airport_codes.validate_article(wrong)
+    assert audit.digest(missing) != audit.digest(source)
+
+
+def test_spokane_ambiguous_short_name_and_city_are_not_globally_guessed():
+    assert audit.airport_codes.resolve_airport("Spokane") is None
+    assert audit.airport_codes.resolve_airport("Spokane Airport") is None
+    assert audit.airport_codes.resolve_airport("Spokane International Airport")["code"] == "GEG"
+    assert audit.airport_codes.resolve_airport("約翰韋恩機場")["code"] == "SNA"
