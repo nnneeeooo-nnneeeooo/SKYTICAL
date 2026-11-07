@@ -1,0 +1,35 @@
+name: archive-photo-quality-review
+on:
+  push:
+    branches: [main]
+    paths:
+      - pipeline/archive_photo_qa.py
+      - .github/workflows/archive-photo-quality-review.yml
+permissions:
+  contents: write
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Correct mismatches and select licensed file photographs
+        run: python pipeline/archive_photo_qa.py
+      - name: Commit verified photo review
+        run: |
+          git config user.name "SKYTICAL photo curation"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/articles/ data/archive-photo-qa-report.json
+          if git diff --cached --quiet; then
+            echo "No changes to save"
+          else
+            git commit -m "images: archive photo QA and airline stock improvements"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
