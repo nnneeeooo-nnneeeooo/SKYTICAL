@@ -9,7 +9,8 @@ permissions:
   contents: write
 jobs:
   backfill:
-    if: github.event.head_commit.message != 'images: archive photo backfill result'
+    if: >-
+      github.event.head_commit.message != 'images: archive photo backfill result'
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
