@@ -252,3 +252,13 @@ Luna 備援與審稿改動。實作與限制見 `docs/cloud-iata-audit.md`。
 以上中繼資料於本次以 GitHub API 查核。保留原有 GA4 Data API、Google 唯讀 OAuth、原生 JavaScript 與 Jinja 版型，不更換蒐集機制、不增加 production 依賴，也未複製第三方程式碼。僅參考閱讀層級與互動模式，無套件導入計畫。
 
 設計採 design-taste-frontend 的 framed-sheet（seed 407334714），保留 SKYTICAL 品牌與系統字體；橘色僅標示主要數據。首要問題是「選定期間有多少閱讀，讀者從哪裡來？」以數值刻度、可逐日查看的趨勢與來源占比作答。現有資料沒有累積目標，不採用 direction sheet 的重複累積圖；保留一張可切換指標的日趨勢圖。測試資料只用於離線驗證，不會發布到正式頁面。
+
+## 私人流量儀表板持續登入（2026-11-07）
+
+| 專案 | 最近 push（UTC）／stars | 語言／授權 | 比較結果 |
+| --- | --- | --- | --- |
+| [googleworkspace/apps-script-samples](https://github.com/googleworkspace/apps-script-samples) | 2026-07-30／5,266 | JavaScript／Apache-2.0 | Google 代管授權及 Analytics Data 進階服務，適合單一擁有者，不需另一組用戶端密鑰 |
+| [google/clasp](https://github.com/google/clasp) | 2026-11-02／5,903 | TypeScript／Apache-2.0 | 可用於 Apps Script 原始碼部署；需要另外授權部署工具，本次先使用既有登入的官方編輯器 |
+| [googleapis/google-api-nodejs-client](https://github.com/googleapis/google-api-nodejs-client) | 2026-10-30／12,287 | TypeScript／Apache-2.0 | 標準 OAuth refresh token 管理，但需額外後端、密鑰與安全工作階段儲存 |
+
+中繼資料已於 GitHub API 查核。採 Google Apps Script 的擁有者專用 Web app，保留 GA4 唯讀範圍，Google 端管理授權，前端不儲存 refresh token 或用戶端密鑰。共用既有儀表板 UI 與統計查詢，保留 GitHub Pages 與瀏覽器 OAuth 備用入口。沒有複製第三方程式碼，也沒有新增 production 套件。部署與驗證條件見 `docs/private-traffic-dashboard.md`；只有確認 Google 端僅限擁有者及報表正常後才設定入口導向。

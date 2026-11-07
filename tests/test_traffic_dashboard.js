@@ -74,5 +74,26 @@ context.fetch=async function(url,opts){
   assert.match(element('error').textContent,/保留上次/);
   const before=calls.length;qa.expire();await qa.refresh();assert.equal(calls.length,before);
   assert.match(element('error').textContent,/授權已過期/);assert.equal(element('refresh').disabled,true);
+  // Google-managed sessions restore without browser OAuth, including after the
+  // legacy token expiry boundary and when no client/property is saved locally.
+  elements.clear(); element('trend-metric').value='sessions';
+  let rpcCalls=0;
+  const scriptRun={withSuccessHandler(resolve){return {withFailureHandler(){return {runTrafficReport(body){
+    rpcCalls++;
+    const name=body.dimensions&&body.dimensions[0].name;
+    resolve(name==='date'?{rows:[]}:name==='sessionSourceMedium'?report([3],['google / organic']):name==='pagePath'?report([8],['/']):body.dimensionFilter?report([1]):report([2,3,8,0.5]));
+  }}}};}};
+  const serverContext=vm.createContext({...context,
+    document:{...context.document,documentElement:{dataset:{trafficTransport:'apps-script'}}},
+    window:{addEventListener(){},google:{script:{run:scriptRun,url:{getLocation(callback){callback({parameter:{days:'28'}});}}}}},
+    fetch(){throw Error('server sessions must not request browser access tokens');}
+  });
+  vm.runInContext(code,serverContext);
+  for(let i=0;i<20&&!serverContext.qa.getSnapshot();i++) await new Promise(resolve=>setTimeout(resolve,0));
+  assert.equal(element('setup').hidden,true);assert.equal(element('auth-action').hidden,true);
+  assert.equal(element('kpi-views').textContent,'8');assert.equal(element('daily-rows').children.length,28);
+  assert.equal(element('error').textContent,'');assert.equal(rpcCalls,5);
+  serverContext.qa.expire();await serverContext.qa.refresh();assert.equal(rpcCalls,10);
+  assert.equal(element('refresh').disabled,false);
   console.log('test_traffic_dashboard.js: dates, gaps, privacy, metrics, request races, errors and expiry OK');
 })().catch(error=>{console.error(error);process.exitCode=1;});

@@ -1,0 +1,15 @@
+{
+  "timeZone": "Asia/Taipei",
+  "runtimeVersion": "V8",
+  "exceptionLogging": "STACKDRIVER",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {"userSymbol": "AnalyticsData", "version": "v1beta", "serviceId": "analyticsdata"}
+    ]
+  },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/analytics.readonly",
+    "https://www.googleapis.com/auth/script.external_request"
+  ],
+  "webapp": {"executeAs": "USER_DEPLOYING", "access": "MYSELF"}
+}

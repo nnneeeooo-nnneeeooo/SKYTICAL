@@ -144,6 +144,7 @@ jobs:
           AVWIRE_MANUAL_TOKEN: ${{ secrets.AVWIRE_MANUAL_TOKEN }}
           SKYTICAL_COPILOT_ENABLED: ${{ vars.SKYTICAL_COPILOT_ENABLED || 'false' }}
           SKYTICAL_GA4_MEASUREMENT_ID: ${{ vars.SKYTICAL_GA4_MEASUREMENT_ID }}
+          SKYTICAL_TRAFFIC_APP_URL: ${{ vars.SKYTICAL_TRAFFIC_APP_URL }}
           BRIEFING_INCLUDE_ARTICLES: ${{ vars.BRIEFING_INCLUDE_ARTICLES }}
           RUN_MODE: ${{ steps.ed.outputs.mode }}
           EDITION: ${{ steps.ed.outputs.edition }}
