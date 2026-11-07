@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "generatedUtc": "2026-11-06T23:45Z",
+  "generatedUtc": "2026-11-07T00:37Z",
   "targetDateTpe": "2026-11-07",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "provider": "gemini:gemini-3.6-flash",
   "sourceArticleIds": [
     "a-china-airlines-q4-eva-india-delhi-20261106",
     "a-air-canada-8-airbus-a350-1000s-20261105",
@@ -15,20 +15,20 @@
   ],
   "prompts": {
     "zh": [
-      "瞭解華航第四季表現",
-      "瞭解加航A350-1000新機",
-      "搜尋瑞安航空炸彈威脅",
-      "查詢波音737 MAX 10產線",
-      "瞭解Learjet 60升降舵碎片",
-      "查詢中國註冊灣流G550沒收"
+      "想了解長榮航空直飛德里的最新航班資訊嗎？",
+      "想查詢加拿大航空空中巴士A350-1000的動態嗎？",
+      "想知道瑞安航空與北歐航空的航班動態嗎？",
+      "想了解波音737 MAX 10機型產線的最新動態嗎？",
+      "想查詢 Learjet 飛機相關的飛航紀錄嗎？",
+      "想了解灣流G550的相關飛航資訊嗎？"
     ],
     "en": [
-      "Check China Airlines Q4 outlook",
-      "Learn about Air Canada's A350-1000 order",
-      "Search Ryanair bomb threat incidents",
-      "Explore Boeing 737 MAX 10 Everett line",
-      "Find Learjet 60 elevator debris details",
-      "Check Chinese‑registered Gulfstream G550 seizure"
+      "Looking for flight details on EVA Air flights to Delhi?",
+      "Want to check Air Canada Airbus A350-1000 details?",
+      "Searching for Ryanair and SAS flight status?",
+      "Searching for updates on Boeing 737 MAX 10 jets?",
+      "Looking for flight records related to Learjet aircraft?",
+      "Want to find flight info on the Gulfstream G550?"
     ]
   }
 }

@@ -1,5 +1,140 @@
 {
   "lastEdition": "2026-11-06-00",
-  "items": [],
+  "items": [
+    {
+      "enqueuedUtc": "2026-11-07T00:14Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261107-0014-4",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261107-0014-spokane-airport-invests-335-million-in-c",
+        "publishedUtc": "2026-11-07T00:14Z",
+        "cat": "ops",
+        "primarySource": "Simple Flying",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/the-airport-spending-335-million-so-connecting-passengers-stop-clearing-security-twice.jpg",
+            "sources": [
+              {
+                "url": "https://simpleflying.com/airport-spending-335-million-connecting-passengers-stop-clearing-security-twice/",
+                "name": "Simple Flying"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "Spokane Airport投資$335 million興建Central Hall，規劃連接三個候機區",
+          "summary": "Spokane Airport投資Central Hall，目標整合安檢",
+          "body": [
+            "Simple Flying報導，Spokane Airport正投資$335 million興建新的Central Hall。",
+            "這座大廳規劃連接三個候機區，並整合安檢作業；這兩項功能都服務於轉機旅客的安檢安排。",
+            "Central Hall計畫的目標是到2030年消除重複安檢；對需要銜接航班的旅客而言，規劃結果是不必再次接受安檢。"
+          ]
+        },
+        "en": {
+          "title": "Spokane Airport Invests $335 Million in Central Hall to Connect Three Concourses",
+          "summary": "Spokane Airport invests in a Central Hall to link concourses and eliminate repeat screening by 2030.",
+          "body": [
+            "Simple Flying reports that Spokane Airport is investing $335 million in a new Central Hall. The facility is intended to connect three concourses and consolidate security screening.",
+            "The stated goal is to eliminate repeat screening for connecting passengers by 2030. In practical terms, the project is meant to let those travelers make their connections without clearing security twice; the passenger benefit is tied to linking the concourses and consolidating screening."
+          ]
+        },
+        "sources": [
+          {
+            "name": "Simple Flying — The Airport Spending $335 Million So Connecting Passengers…",
+            "url": "https://simpleflying.com/airport-spending-335-million-connecting-passengers-stop-clearing-security-twice/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-06T22:01Z",
+        "writer": "openai:gpt-6",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "The airport is reported to be spending $335 million.",
+            "sourceQuote": "The Airport Spending $335 Million",
+            "sourceUrl": "https://simpleflying.com/airport-spending-335-million-connecting-passengers-stop-clearing-security-twice/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "Spokane Airport is investing in a new Central Hall.",
+            "sourceQuote": "Spokane Airport is investing millions in a new Central Hall",
+            "sourceUrl": "https://simpleflying.com/airport-spending-335-million-connecting-passengers-stop-clearing-security-twice/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The new Central Hall is intended to connect three concourses.",
+            "sourceQuote": "new Central Hall to connect three concourses",
+            "sourceUrl": "https://simpleflying.com/airport-spending-335-million-connecting-passengers-stop-clearing-security-twice/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "The Central Hall project is intended to consolidate security.",
+            "sourceQuote": "Central Hall to connect three concourses, consolidate security",
+            "sourceUrl": "https://simpleflying.com/airport-spending-335-million-connecting-passengers-stop-clearing-security-twice/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "The Central Hall plan aims to eliminate repeat screening by 2030.",
+            "sourceQuote": "Central Hall to connect three concourses, consolidate security and eliminate repeat screening by 2030",
+            "sourceUrl": "https://simpleflying.com/airport-spending-335-million-connecting-passengers-stop-clearing-security-twice/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "financial_or_order_claim"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "airports": [
+            "Spokane Airport"
+          ],
+          "locations": [
+            "Spokane"
+          ],
+          "event_dates": [
+            "by 2030"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "airports",
+            "value": "Spokane Airport",
+            "sourceQuote": "Spokane Airport is investing millions in a new Central Hall",
+            "sourceUrl": "https://simpleflying.com/airport-spending-335-million-connecting-passengers-stop-clearing-security-twice/"
+          },
+          {
+            "entityType": "locations",
+            "value": "Spokane",
+            "sourceQuote": "Spokane Airport is investing millions in a new Central Hall",
+            "sourceUrl": "https://simpleflying.com/airport-spending-335-million-connecting-passengers-stop-clearing-security-twice/"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "by 2030",
+            "sourceQuote": "eliminate repeat screening by 2030",
+            "sourceUrl": "https://simpleflying.com/airport-spending-335-million-connecting-passengers-stop-clearing-security-twice/"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
+    }
+  ],
   "history": []
 }
