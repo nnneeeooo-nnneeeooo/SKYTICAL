@@ -29,6 +29,15 @@ def main():
     original_plan = write.news_retry.RetryLedger.plan
     original_flight_queue = write.flightnews.load_queue
     original_provider_route = write.eligible_providers
+    original_active = write.provider_health.active_platforms
+    original_threshold = write.TRANSIENT_PLATFORM_FAILURE_LIMIT
+    def replay_active(now):
+        active = original_active(now)
+        if write.provider_health.cooldown_rows(now).get("openai", {}).get("failureClass") == "transient":
+            active.discard("openai")
+        return active
+    write.provider_health.active_platforms = replay_active
+    write.TRANSIENT_PLATFORM_FAILURE_LIMIT = len(targets) + 1
     write.news_retry.RetryLedger.plan = lambda self, groups, maximum: (groups, [])
     write.flightnews.load_queue = lambda: []
     # The owner explicitly selected Luna for these groups, including ordinary
@@ -41,11 +50,18 @@ def main():
         write.news_retry.RetryLedger.plan = original_plan
         write.flightnews.load_queue = original_flight_queue
         write.eligible_providers = original_provider_route
+        write.provider_health.active_platforms = original_active
+        write.TRANSIENT_PLATFORM_FAILURE_LIMIT = original_threshold
         remaining = load_json(write.PENDING_PATH, {}).get("groups", targets)
         urls = {i["url"] for g in targets for i in g["items"]}
         untouched = [g for g in original.get("groups", [])
                      if not {i.get("url") for i in g.get("items", [])}.issubset(urls)]
         save_json(write.PENDING_PATH, {**original, "groups": untouched + remaining})
+        changed = subprocess.check_output(
+            ["git", "diff", "--name-only", "--", "data/articles"], encoding="utf-8").splitlines()
+        changed += subprocess.check_output(
+            ["git", "ls-files", "--others", "--exclude-standard", "data/articles"], encoding="utf-8").splitlines()
+        save_json(write.PENDING_PATH.parent / "luna-token-retry-changed-articles.json", changed)
 
 
 if __name__ == "__main__":
