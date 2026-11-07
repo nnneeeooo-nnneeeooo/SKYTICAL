@@ -59,6 +59,8 @@ def main():
         save_json(write.PENDING_PATH, {**original, "groups": untouched + remaining})
         changed = subprocess.check_output(
             ["git", "diff", "--name-only", "--", "data/articles"], encoding="utf-8").splitlines()
+        changed += subprocess.check_output(
+            ["git", "ls-files", "--others", "--exclude-standard", "data/articles"], encoding="utf-8").splitlines()
         save_json(write.PENDING_PATH.parent / "luna-token-retry-changed-articles.json", changed)
 
 
