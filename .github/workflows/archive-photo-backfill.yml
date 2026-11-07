@@ -1,0 +1,36 @@
+name: archive-photo-backfill
+on:
+  push:
+    branches: [main]
+    paths:
+      - pipeline/archive_photo_backfill.py
+      - .github/workflows/archive-photo-backfill.yml
+permissions:
+  contents: write
+jobs:
+  backfill:
+    if: github.event.head_commit.message != 'images: archive photo backfill result'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Curate historical news photos and emit audit
+        run: python pipeline/archive_photo_backfill.py
+      - name: Commit photo curation results
+        run: |
+          git config user.name "SKYTICAL photo backfill"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/articles/ data/archive-photo-backfill-report.json
+          if git diff --cached --quiet; then
+            echo "No updates to publish"
+          else
+            git commit -m "images: archive photo backfill result"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
