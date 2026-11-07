@@ -157,7 +157,9 @@
   function drawTrend() {
     const svg = $("trend-plot"); svg.replaceChildren();
     // Match the actual viewport so SVG labels retain a readable 12px size on phones.
-    const width = Math.max(260, Math.round(svg.getBoundingClientRect().width)), height = width < 480 ? 190 : 216;
+    const bounds = svg.getBoundingClientRect();
+    const width = Math.max(260, Math.round(bounds.width));
+    const height = Math.max(160, Math.round(bounds.height || 216));
     svg.setAttribute("viewBox", "0 0 " + width + " " + height);
     const left = Math.min(76, Math.max(38, fmt.format(Math.max(0, ...chartRows.map(r => r[$("trend-metric").value]))).length * 8 + 12));
     const top = 16, w = width - left - 16, h = height - top - 32;
