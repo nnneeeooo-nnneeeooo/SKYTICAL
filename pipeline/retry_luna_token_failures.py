@@ -28,14 +28,19 @@ def main():
     # evidence, factual, duplication or publication gates. Other news is kept.
     original_plan = write.news_retry.RetryLedger.plan
     original_flight_queue = write.flightnews.load_queue
+    original_provider_route = write.eligible_providers
     write.news_retry.RetryLedger.plan = lambda self, groups, maximum: (groups, [])
     write.flightnews.load_queue = lambda: []
+    # The owner explicitly selected Luna for these groups, including ordinary
+    # stories normally restricted to free providers. All content gates remain.
+    write.eligible_providers = lambda group, providers: list(providers)
     save_json(write.PENDING_PATH, {**original, "groups": targets})
     try:
         write.main()
     finally:
         write.news_retry.RetryLedger.plan = original_plan
         write.flightnews.load_queue = original_flight_queue
+        write.eligible_providers = original_provider_route
         remaining = load_json(write.PENDING_PATH, {}).get("groups", targets)
         urls = {i["url"] for g in targets for i in g["items"]}
         untouched = [g for g in original.get("groups", [])
