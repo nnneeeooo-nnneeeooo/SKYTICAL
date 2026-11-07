@@ -2,27 +2,27 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "waiting",
-      "untilUtc": "2026-11-07T16:36Z",
-      "checkedUtc": "2026-11-07T10:36Z",
-      "failureClass": "unexpected",
-      "diagnostic": "entity evidence quote not found in current source: locations='Mount Pennsylvania'",
+      "status": "verified",
+      "untilUtc": "2026-11-08T16:40Z",
+      "checkedUtc": "2026-11-07T16:40Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-07T16:36Z",
-      "checkedUtc": "2026-11-07T10:36Z",
+      "untilUtc": "2026-11-07T22:40Z",
+      "checkedUtc": "2026-11-07T16:40Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-07T16:36Z",
-      "checkedUtc": "2026-11-07T10:36Z",
+      "checkedUtc": "2026-11-07T16:40Z",
+      "untilUtc": "2026-11-07T22:40Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -48,8 +48,8 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-11-07T16:15Z",
       "untilUtc": "2026-11-07T22:15Z",
+      "checkedUtc": "2026-11-07T16:15Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,

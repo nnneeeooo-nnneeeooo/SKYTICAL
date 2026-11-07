@@ -3640,13 +3640,13 @@
       "sourceUrls": [
         "https://www.cna.com.tw/news/afe/202611060306.aspx"
       ],
-      "contentFailures": 2,
+      "contentFailures": 3,
       "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-07T10:36Z",
+      "updatedUtc": "2026-11-07T16:40Z",
       "failureClass": "content_validation",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-07T16:36Z",
+      "nextRetryUtc": "2026-11-08T16:40Z",
       "title": "華航前3季營收、淨利創同期新高 每股賺1.8元"
     },
     "92ab34a5a5927d3dcb169d00": {
@@ -3897,8 +3897,8 @@
         "https://avherald.com/h?article=546e440b&opt=0"
       ],
       "contentFailures": 0,
-      "serviceFailures": 0,
-      "status": "ready",
+      "serviceFailures": 1,
+      "status": "waiting",
       "history": [
         {
           "status": "ready",
@@ -3931,8 +3931,23 @@
           "updatedUtc": "2026-11-06T23:15Z"
         }
       ],
-      "updatedUtc": "2026-11-07T16:15Z",
-      "nextRetryUtc": null
+      "updatedUtc": "2026-11-07T16:40Z",
+      "nextRetryUtc": "2026-11-07T18:40Z",
+      "failureClass": "provider_failure",
+      "title": "Incident: Swiss A321 at Zurich on Nov 6th 2026, strange odour in cabin"
+    },
+    "b75f896ff72b6ab6f5648584": {
+      "sourceUrls": [
+        "https://simpleflying.com/video/boeing-cleared-to-sell-parts-jets-to-belarus-despite-fears-they-ll-end-up-in-russia"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-07T16:40Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-07T18:40Z",
+      "title": "Boeing Cleared To Sell Parts & Jets To Belarus Despite Fears They’ll End Up In Russia"
     }
   }
 }
