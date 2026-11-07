@@ -603,8 +603,8 @@ def test_openai_responses_api():
               and provider.reasoning_effective == "reasoning.effort=max"
               and provider._effort(repair=True) == "max",
               "automatic GPT 6 calls and repairs request MAX reasoning")
-        check(payload["max_output_tokens"] == 48_000,
-              "Fallback has an output cap that reserves reasoning room")
+        check("max_output_tokens" not in payload,
+              "Luna omits the client output cap")
         check(payload["text"]["format"] == {
                   "type": "json_schema", "name": "skytical_draft",
                   "schema": SCHEMA, "strict": True,

@@ -327,7 +327,7 @@ check("OpenAI call selects Fallback Responses web_search with bounded MAX reason
       and captured_openai["payload"]["model"] == "test-private-model"
       and captured_openai["payload"]["reasoning"] == {"effort": "max"}
       and captured_openai["timeout"] == (10, None)
-      and captured_openai["payload"]["max_output_tokens"] == 48_000
+      and "max_output_tokens" not in captured_openai["payload"]
       and captured_openai["payload"]["tools"][0]["type"] == "web_search"
       and captured_openai["payload"]["max_tool_calls"] == 4)
 check("OpenAI usage shim records paid call and prevents duplicate upper-layer recording",

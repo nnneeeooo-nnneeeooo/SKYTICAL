@@ -119,7 +119,8 @@ def test_complete_batches_do_not_silently_truncate_large_articles():
             list(audit.batches([article()]))
 
 
-def test_budget_reservation_precedes_paid_call_and_max_is_pinned():
+@pytest.mark.parametrize("payload", [{"max_output_tokens": 48000, "input": "test"}, {"input": "test"}])
+def test_budget_reservation_precedes_paid_call_and_max_is_pinned(payload):
     state = audit.State()
     events = []
     state.save = lambda: events.append("persist")
@@ -131,7 +132,7 @@ def test_budget_reservation_precedes_paid_call_and_max_is_pinned():
         events.append("paid")
         return response
     with patch.object(audit.OpenAIProvider, "_post_json", side_effect=send):
-        p._post_json("unused", {"max_output_tokens": 48000, "input": "test"}, {}, False)
+        p._post_json("unused", payload, {}, False)
     assert events == ["persist", "paid", "persist"]
     assert p._effort(False) == p._effort(True) == "max"
 

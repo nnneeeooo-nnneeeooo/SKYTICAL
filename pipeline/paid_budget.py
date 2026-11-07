@@ -19,6 +19,9 @@ from common import DATA_DIR, ROOT, save_json
 
 CONFIG_PATH = ROOT / "config" / "luna_policy.json"
 TPE = timezone(timedelta(hours=8))
+# Accounting only; never sent as a request cap. Luna's documented native output
+# capacity: https://developers.openai.com/api/docs/models/gpt-6-luna
+LUNA_OUTPUT_RESERVATION_TOKENS = 128_000
 
 
 class BudgetDenied(RuntimeError):
@@ -106,6 +109,15 @@ def _cost(inputs, outputs, tools, cfg):
                      + outputs * cfg["output_usd_per_million"] * (1.5 if long_context else 1) + tools * 10_000)
 
 
+def output_reservation_tokens(payload):
+    outputs = payload.get("max_output_tokens")
+    if outputs is None:
+        return LUNA_OUTPUT_RESERVATION_TOKENS
+    if type(outputs) is not int or outputs <= 0:
+        raise BudgetDenied("invalid paid output limit")
+    return outputs
+
+
 def reserve(payload, purpose="draft", model="gpt-6", now=None):
     if not enabled():
         return None
@@ -121,9 +133,7 @@ def reserve(payload, purpose="draft", model="gpt-6", now=None):
     inputs = len(json.dumps(payload, ensure_ascii=False).encode("utf-8")) + 4096
     if tools:
         inputs += 1_050_000  # bound dynamic search context by Luna's context window
-    outputs = payload.get("max_output_tokens")
-    if type(outputs) is not int or outputs <= 0:
-        raise BudgetDenied("unbounded paid output")
+    outputs = output_reservation_tokens(payload)
     amount = _cost(inputs, outputs, tools, cfg)
     local = (now or datetime.now(timezone.utc)).astimezone(TPE)
     day, month = local.date().isoformat(), local.strftime("%Y-%m")

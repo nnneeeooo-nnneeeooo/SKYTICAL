@@ -23,6 +23,7 @@ import airport_codes
 from common import ARTICLES_DIR, ROOT, SITE_ORIGIN, BASE_PATH, parse_iso, save_json
 from public_article import public_news_path
 from providers import OpenAIProvider, extract_json
+from paid_budget import output_reservation_tokens
 
 TPE = timezone(timedelta(hours=8))
 START = datetime(2026, 10, 31, 20, tzinfo=timezone.utc)  # Nov 1, 04:00 Taipei
@@ -250,7 +251,7 @@ class State:
         inputs = len(json.dumps(payload, ensure_ascii=False).encode()) + 4096
         if inputs > 200000:
             raise ValueError("unbounded audit input")
-        amount = math.ceil(inputs * .125 + payload["max_output_tokens"] * .5)
+        amount = math.ceil(inputs * .125 + output_reservation_tokens(payload) * .5)
         if self.data["months"].get(month, 0) + amount > 8000000:
             raise RuntimeError("IATA audit monthly budget reached")
         self.data["days"][day] = self.data["days"].get(day, 0) + amount
