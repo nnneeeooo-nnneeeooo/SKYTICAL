@@ -240,3 +240,15 @@ Luna 備援與審稿改動。實作與限制見 `docs/cloud-iata-audit.md`。
 本次保留現有 requests provider 及機器核驗，新增小型 HTTP 前預留帳本、固定雜湊
 抽樣、來源逐字引句驗證與離線回歸測試。未複製第三方程式碼、未新增 production
 依賴；未決定導入上述套件，因此不建立套件導入 issue／PR。
+
+## 私人流量儀表板重新設計（2026-11-07）
+
+| 專案 | 最近 push（UTC）／stars | 語言／授權 | 可參考設計與導入成本 |
+| --- | --- | --- | --- |
+| [umami-software/umami](https://github.com/umami-software/umami) | 2026-11-04／39,958 | TypeScript／MIT | 指標切換、時間範圍、來源排名；完整服務需額外資料庫與應用部署 |
+| [plausible/analytics](https://github.com/plausible/analytics) | 2026-11-06／29,783 | Elixir／AGPL-3.0 | 單頁流量閱讀順序、來源占比；完整服務增加伺服器與資料維護 |
+| [matomo-org/matomo](https://github.com/matomo-org/matomo) | 2026-11-06／22,009 | PHP／GPL-3.0 | 日期選擇與可檢查的數據明細；完整分析平台超出本次介面需求 |
+
+以上中繼資料於本次以 GitHub API 查核。保留原有 GA4 Data API、Google 唯讀 OAuth、原生 JavaScript 與 Jinja 版型，不更換蒐集機制、不增加 production 依賴，也未複製第三方程式碼。僅參考閱讀層級與互動模式，無套件導入計畫。
+
+設計採 design-taste-frontend 的 framed-sheet（seed 407334714），保留 SKYTICAL 品牌與系統字體；橘色僅標示主要數據。首要問題是「選定期間有多少閱讀，讀者從哪裡來？」以數值刻度、可逐日查看的趨勢與來源占比作答。現有資料沒有累積目標，不採用 direction sheet 的重複累積圖；保留一張可切換指標的日趨勢圖。測試資料只用於離線驗證，不會發布到正式頁面。

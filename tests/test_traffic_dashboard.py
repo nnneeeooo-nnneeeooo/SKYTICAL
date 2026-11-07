@@ -1,5 +1,6 @@
 """Offline assertions for the GA4 owner dashboard (no Google credentials needed)."""
 from pathlib import Path
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -35,6 +36,7 @@ def main() -> None:
     assert "innerHTML" not in js
     assert "kpi-facebook" in template and "kpi-facebook" in js
     assert "max-width:600px" in css
+    subprocess.run(["node", str(ROOT / "tests" / "test_traffic_dashboard.js")], check=True)
     print("test_traffic_dashboard: OK")
 
 
