@@ -13,6 +13,11 @@ vm.runInContext(fs.readFileSync(path.join(__dirname,'../apps/traffic-session/Cod
 const body={dateRanges:[{startDate:'2026-01-01',endDate:'2026-01-07'}],metrics:[{name:'sessions'}],dimensions:[{name:'date'}],orderBys:[{dimension:{dimensionName:'date'}}],limit:366};
 assert.equal(ctx.runTrafficReport(body).rows[0].metricValues[0].value,'12');
 assert.equal(lastCall.name,'properties/123456789');
+const reordered={...body,dimensions:undefined,orderBys:[{desc:true,metric:{metricName:'sessions'}}],
+  dimensionFilter:{filter:{stringFilter:{caseSensitive:false,value:'facebook|(^|[.])fb([./]|$)',matchType:'PARTIAL_REGEXP'},fieldName:'sessionSource'}}};
+delete reordered.dimensions;
+assert.equal(ctx.runTrafficReport(reordered).rows[0].metricValues[0].value,'12', 'RPC key reordering must preserve valid reports');
+assert.throws(()=>ctx.runTrafficReport({...reordered,dimensionFilter:{...reordered.dimensionFilter,unexpected:true}}),/來源篩選/);
 for(const bad of [
   {...body,property:'properties/999999999'}, {...body,metrics:[{name:'totalRevenue'}]},
   {...body,dateRanges:[{startDate:'2026-02-29',endDate:'2026-03-01'}]},
