@@ -123,6 +123,19 @@ class ImageSelectionTests(unittest.TestCase):
             with self.subTest(model=model):
                 self.assertEqual(policy.model_matches(model, filename.replace("_", " ")), valid)
 
+    def test_chinese_aircraft_boundaries_preserve_latin_and_subtype_identity(self):
+        for model, caption, valid in [
+            ("Boeing 787", "體驗787機隊客艙", True),
+            ("Boeing 787-9", "波音787-9客機", True),
+            ("Boeing 787-9", "波音787-10客機", False),
+            ("Boeing 787-10", "波音787-9客機", False),
+            ("Airbus A350-1000", "空中巴士A350-900客機", False),
+            ("Airbus A350-900", "空中巴士A350-941客機", True),
+            ("Boeing 787", "X787X客機", False),
+        ]:
+            with self.subTest(model=model, caption=caption):
+                self.assertEqual(policy.model_matches(model, caption), valid)
+
     def test_headline_model_wins_over_background(self):
         a = article("Saab Gripen F first flight", entities={"aircraft_models": ["Airbus A320", "Gripen F"]})
         a["en"]["body"] = ["Airbus A320 is a background comparison."]

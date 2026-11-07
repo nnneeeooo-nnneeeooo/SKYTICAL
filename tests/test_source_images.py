@@ -2,11 +2,90 @@
 import json
 import sys
 from pathlib import Path
+from types import SimpleNamespace
+
+import pytest
+import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pipeline"))
 import images
 import source_images as source
 from image_selection import rejection_reason
+
+ITF_URL = "https://www.cna.com.tw/news/afe/202611060114.aspx"
+ITF_PHOTO = "https://imgcdn.cna.com.tw/www/WebPhotos/1024/20261106/948x768_wmky_0_C20261106000043.jpg"
+ITF_HTML = (Path(__file__).parent / "fixtures/cna_itf_photo.html").read_text(encoding="utf-8")
+
+
+def itf_article():
+    path = Path(__file__).resolve().parents[1] / "data/articles/scheduled-china-airlines-q4-eva-india-delhi-20261106.json"
+    return json.loads(path.read_text(encoding="utf-8"))["articles"][0]
+
+
+def test_cna_itf_reporter_photo_passes_actual_article_gate():
+    photo = source.parse_cna_photo(ITF_HTML, ITF_URL)
+    assert photo["url"] == ITF_PHOTO
+    assert photo["credit"] == "中央社記者江明晏攝"
+    assert "（中）主持儀式" in photo["subject"]
+    assert photo["license"] is None
+    assert photo["kind"] == "event_photo"
+    article = itf_article()
+    assert images.find_airline(article) == "China Airlines"
+    assert rejection_reason(article, photo) is None
+
+
+def test_cna_lazy_lead_is_bound_to_its_own_caption():
+    second = ITF_PHOTO.replace("948x768_wmky_0_C20261106000043", "779x768_wmky_0_C20261106000044")
+    html = ITF_HTML.replace(f'content="{ITF_PHOTO}"', f'content="{second}"')
+    photo = source.parse_cna_photo(html, ITF_URL)
+    assert photo["url"] == second
+    assert photo["subject"].startswith("長榮航空")
+    assert "華航" not in photo["sourceCaption"]
+    assert rejection_reason(itf_article(), photo) is None
+    assert source.parse_cna_photo(html.replace("data-src", "unused-src"), ITF_URL) is None
+
+
+def test_cna_does_not_upgrade_archival_caption_to_event_photo():
+    photo = source.parse_cna_photo(ITF_HTML.replace("中央社記者", "資料照，中央社記者"), ITF_URL)
+    assert photo["kind"] == "file_photo"
+    assert source.parse_cna_photo(ITF_HTML.replace("中央社記者江明晏攝", "記者攝影"), ITF_URL) is None
+
+
+def test_operator_multi_carrier_rule_excludes_background_and_unlisted_airlines():
+    article = itf_article()
+    photo = source.parse_cna_photo(ITF_HTML, ITF_URL)
+    for unrelated in ("台灣虎航", "日本航空"):
+        bad = dict(photo, subject=f"{unrelated}旅展活動", sourceCaption=f"{unrelated}旅展活動。中央社記者江明晏攝")
+        assert rejection_reason(article, bad) == "source-airline-unverified"
+    assert not images._secondary_image_airline_allowed(
+        {"entities": {"operators": ["US Air Force"]}, "en": {"title": "US Air Force update"}},
+        ["US Air Force"])
+
+
+def test_itf_upgrade_needs_one_source_request_and_no_stock_search(tmp_path, monkeypatch):
+    article = itf_article()
+    article["publishedUtc"] = images.now_utc().isoformat()
+    article["image"] = {"provider": "Wikimedia Commons", "kind": "file_photo",
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/example.jpg",
+                        "description": "EVA Air Boeing 777F"}
+    path = tmp_path / "article.json"
+    path.write_text(json.dumps({"articles": [article]}), encoding="utf-8")
+    monkeypatch.setattr(images, "ARTICLES_DIR", tmp_path)
+    monkeypatch.setattr(images, "CACHE_PATH", tmp_path / "cache.json")
+    monkeypatch.setattr(images, "enforce_recent", lambda: [])
+    calls = []
+    def get(url, **kwargs):
+        calls.append((url, kwargs))
+        return SimpleNamespace(url=url, text=ITF_HTML, raise_for_status=lambda: None)
+    monkeypatch.setattr(source.requests, "get", get)
+    monkeypatch.setattr(images, "resolve_image", lambda *a, **k: pytest.fail("unexpected stock lookup"))
+    assert images.main() == 0
+    published = json.loads(path.read_text(encoding="utf-8"))["articles"][0]
+    assert published["image"]["url"] == ITF_PHOTO
+    assert images.main() == 0
+    assert len(calls) == 1
+    assert calls[0][0] == ITF_URL
+    assert calls[0][1]["timeout"] == (5, 15)
 
 URL = "https://www.cna.com.tw/news/ahel/202609070138.aspx"
 PHOTO = "https://imgcdn.cna.com.tw/www/WebPhotos/1024/20260907/photo.jpg"
@@ -35,7 +114,7 @@ def test_captioned_body_photo_and_resize_variants():
     assert photo["url"] == PHOTO
     assert photo["subject"] == "華航名古屋航線限定頭墊紙"
     assert photo["credit"] == "華航提供"
-    assert "license" not in photo
+    assert photo.get("license") is None
     assert "115年" in photo["sourceCaption"]
 
 
@@ -220,6 +299,30 @@ def test_failure_keeps_fallback_and_retries(tmp_path, monkeypatch):
     images.CACHE_PATH.write_text(json.dumps(cache), encoding="utf-8")
     images.main()
     assert len(calls) == 2
+
+
+@pytest.mark.parametrize("failure", [403, 429, "timeout"])
+def test_source_network_failure_preserves_stock_and_existing_backoff(tmp_path, monkeypatch, failure):
+    from datetime import timedelta
+    fallback = {"provider": "Wikimedia Commons", "kind": "file_photo"}
+    path = setup_batch(tmp_path, monkeypatch, fallback)
+    calls = []
+    def get(url, **kwargs):
+        calls.append(url)
+        if failure == "timeout":
+            raise requests.Timeout("source timeout")
+        def reject():
+            raise requests.HTTPError(response=SimpleNamespace(status_code=failure))
+        return SimpleNamespace(url=url, text="", raise_for_status=reject)
+    monkeypatch.setattr(source.requests, "get", get)
+    assert images.main() == 0
+    assert images.main() == 0
+    assert calls == [URL]
+    article = json.loads(path.read_text(encoding="utf-8"))["articles"][0]
+    assert article["image"] == fallback
+    cache = json.loads(images.CACHE_PATH.read_text(encoding="utf-8"))
+    retry = images.parse_iso(cache["sources"][URL]["next_retry_utc"])
+    assert timedelta(hours=5, minutes=59) < retry - images.now_utc() <= timedelta(hours=6)
 
 
 def test_parser_upgrade_retries_old_negative_source_cache(tmp_path, monkeypatch):
