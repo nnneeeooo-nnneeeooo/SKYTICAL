@@ -2,12 +2,15 @@
   "generatedUtc": "2026-11-07T03:37:44.849001+00:00",
   "policy": "Actual credited CC-licensed photography only. Historical image captions; unknown never guessed.",
   "stats": {
-    "new_photo": 30,
-    "unresolved": 130,
+    "new_photo": 19,
+    "unresolved": 141,
     "files_changed": 29,
     "commons_files_verified": 7,
     "commons_files_unavailable": 11,
-    "prior_unresolved": 160
+    "prior_unresolved": 160,
+    "final_qa_revoked": 11,
+    "final_archive_articles_with_photo_field": 1416,
+    "final_archive_total": 1557
   },
   "assigned": [
     {
@@ -19,11 +22,6 @@
       "id": "a-20260729-1622-taiwan-high-speed-rail-holds-rollout-cer",
       "imageSource": "https://commons.wikimedia.org/w/index.php?curid=116441428",
       "subject": "台灣鐵路列車（歷史資料照片，不是 N700ST）"
-    },
-    {
-      "id": "a-20260729-1652-general-dynamics-q2-revenue-14-09b-aeros",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=133011214",
-      "subject": "商務噴射機實際照片"
     },
     {
       "id": "a-20260730-0314-cessna-citation-cj3-gen3-completes-first",
@@ -61,11 +59,6 @@
       "subject": "Joby Aviation S4 電動垂直起降試驗機（其他公司新聞不適用）"
     },
     {
-      "id": "a-20260805-2119-lockheed-martin-signs-mou-for-domestic-f",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=4118798",
-      "subject": "波音飛機生產廠房"
-    },
-    {
       "id": "a-20260806-0945-joby-aviation-targets-september-for-firs",
       "imageSource": "https://commons.wikimedia.org/w/index.php?curid=138111386",
       "subject": "Joby Aviation S4 電動垂直起降試驗機（其他公司新聞不適用）"
@@ -76,42 +69,12 @@
       "subject": "Joby Aviation S4 電動垂直起降試驗機（其他公司新聞不適用）"
     },
     {
-      "id": "a-20260820-0826-taiwan-railway-to-add-158-trains-for-hol",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=116441428",
-      "subject": "台灣鐵路列車（歷史資料照片，不是 N700ST）"
-    },
-    {
-      "id": "a-20260822-0818-assembly-of-switzerland-s-first-f-35a-fi",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=4118798",
-      "subject": "波音飛機生產廠房"
-    },
-    {
-      "id": "a-20260823-2312-tra-suspends-south-link-and-taitung-line",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=116441428",
-      "subject": "台灣鐵路列車（歷史資料照片，不是 N700ST）"
-    },
-    {
-      "id": "a-20260824-0751-tra-suspends-south-link-and-eastern-line",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=116441428",
-      "subject": "台灣鐵路列車（歷史資料照片，不是 N700ST）"
-    },
-    {
       "id": "a-20260824-0931-boeing-speea-union-rejects-new-contract",
       "imageSource": "https://commons.wikimedia.org/w/index.php?curid=4118798",
       "subject": "波音飛機生產廠房"
     },
     {
       "id": "a-20260825-1229-semi-partners-with-taiwan-high-speed-rai",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=116441428",
-      "subject": "台灣鐵路列車（歷史資料照片，不是 N700ST）"
-    },
-    {
-      "id": "a-20260826-0043-taiwan-railways-clears-south-link-line-s",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=116441428",
-      "subject": "台灣鐵路列車（歷史資料照片，不是 N700ST）"
-    },
-    {
-      "id": "a-20260826-0219-heavy-rain-worsens-mudslides-as-tra-susp",
       "imageSource": "https://commons.wikimedia.org/w/index.php?curid=116441428",
       "subject": "台灣鐵路列車（歷史資料照片，不是 N700ST）"
     },
@@ -126,24 +89,9 @@
       "subject": "波音飛機生產廠房"
     },
     {
-      "id": "a-20260910-0818-nats-outage-over-1-300-flights-cancelled",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=116441428",
-      "subject": "台灣鐵路列車（歷史資料照片，不是 N700ST）"
-    },
-    {
       "id": "a-20260911-1443-joby-aviation-commences-first-eipp-evtol",
       "imageSource": "https://commons.wikimedia.org/w/index.php?curid=138111386",
       "subject": "Joby Aviation S4 電動垂直起降試驗機（其他公司新聞不適用）"
-    },
-    {
-      "id": "a-20260912-0516-joby-s-autonomous-cessna-caravan-begins",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=138111386",
-      "subject": "Joby Aviation S4 電動垂直起降試驗機（其他公司新聞不適用）"
-    },
-    {
-      "id": "a-20260913-2157-business-jet-lands-at-us-bomber-base-raf",
-      "imageSource": "https://commons.wikimedia.org/w/index.php?curid=133011214",
-      "subject": "賽斯納獎狀 CJ3 商務機"
     },
     {
       "id": "a-20260915-1545-business-jet-deals-set-to-near-quarter-t",
@@ -811,6 +759,140 @@
       "id": "a-20260726-1606-tracep-congo-aviation-cargo-plane-crashe-0f40c5",
       "title": "Tracep Congo Aviation 貨機墜毀 Walikale",
       "path": "data/articles/manual-0f40c5074053925d8942724e42f2e37e.json"
+    },
+    {
+      "id": "a-20260729-1652-general-dynamics-q2-revenue-14-09b-aeros",
+      "title": "通用動力Q2營收140.9億美元 航太部門成長領先",
+      "path": "data/articles/2026-07-29T16.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    },
+    {
+      "id": "a-20260805-2119-lockheed-martin-signs-mou-for-domestic-f",
+      "title": "洛克希德馬汀簽署MOU 尋求本土戰機鈧金屬供應",
+      "path": "data/articles/2026-08-05T21.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    },
+    {
+      "id": "a-20260822-0818-assembly-of-switzerland-s-first-f-35a-fi",
+      "title": "瑞士首架F-35A戰機組件於義大利開工組裝",
+      "path": "data/articles/2026-08-22T08.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    },
+    {
+      "id": "a-20260910-0818-nats-outage-over-1-300-flights-cancelled",
+      "title": "英國NATS故障後逾1300航班取消 業者加開班次疏運",
+      "path": "data/articles/2026-09-10T08.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    },
+    {
+      "id": "a-20260912-0516-joby-s-autonomous-cessna-caravan-begins",
+      "title": "Joby自駕Cessna Caravan展開美國巡迴展示",
+      "path": "data/articles/2026-09-12T05.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    },
+    {
+      "id": "a-20260820-0826-taiwan-railway-to-add-158-trains-for-hol",
+      "title": "台鐵因應中秋暨教師節連假加開158列次 8月25日開放訂票",
+      "path": "data/articles/2026-08-20T08.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    },
+    {
+      "id": "a-20260823-2312-tra-suspends-south-link-and-taitung-line",
+      "title": "受暴雨影響 台鐵南迴線與台東線週一上午對號列車停駛",
+      "path": "data/articles/2026-08-23T23.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    },
+    {
+      "id": "a-20260824-0751-tra-suspends-south-link-and-eastern-line",
+      "title": "台鐵因應豪大雨南迴及東部幹線對號車24日18時前停駛",
+      "path": "data/articles/2026-08-24T07.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    },
+    {
+      "id": "a-20260826-0043-taiwan-railways-clears-south-link-line-s",
+      "title": "台鐵南迴線枋山至枋野段搶通 8月26日首班車恢復正常營運",
+      "path": "data/articles/2026-08-26T00.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    },
+    {
+      "id": "a-20260826-0219-heavy-rain-worsens-mudslides-as-tra-susp",
+      "title": "豪雨引發枋山枋野土石流加劇 台鐵南迴線8月25日深夜前全線停駛",
+      "path": "data/articles/2026-08-26T02.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    },
+    {
+      "id": "a-20260913-2157-business-jet-lands-at-us-bomber-base-raf",
+      "title": "賽斯納獎狀商務機誤降美軍RAF Fairford（RAF）轟炸機基地",
+      "path": "data/articles/2026-09-13T21.json",
+      "reason": "Manual QA rejected wrong manufacturer/operator/type file photo"
+    }
+  ],
+  "qaRevocations": [
+    {
+      "id": "a-20260729-1652-general-dynamics-q2-revenue-14-09b-aeros",
+      "path": "data/articles/2026-07-29T16.json",
+      "title": "通用動力Q2營收140.9億美元 航太部門成長領先",
+      "reason": "Wrong operator, type, or organization"
+    },
+    {
+      "id": "a-20260805-2119-lockheed-martin-signs-mou-for-domestic-f",
+      "path": "data/articles/2026-08-05T21.json",
+      "title": "洛克希德馬汀簽署MOU 尋求本土戰機鈧金屬供應",
+      "reason": "Wrong operator, type, or organization"
+    },
+    {
+      "id": "a-20260822-0818-assembly-of-switzerland-s-first-f-35a-fi",
+      "path": "data/articles/2026-08-22T08.json",
+      "title": "瑞士首架F-35A戰機組件於義大利開工組裝",
+      "reason": "Wrong operator, type, or organization"
+    },
+    {
+      "id": "a-20260910-0818-nats-outage-over-1-300-flights-cancelled",
+      "path": "data/articles/2026-09-10T08.json",
+      "title": "英國NATS故障後逾1300航班取消 業者加開班次疏運",
+      "reason": "Wrong operator, type, or organization"
+    },
+    {
+      "id": "a-20260912-0516-joby-s-autonomous-cessna-caravan-begins",
+      "path": "data/articles/2026-09-12T05.json",
+      "title": "Joby自駕Cessna Caravan展開美國巡迴展示",
+      "reason": "Wrong operator, type, or organization"
+    },
+    {
+      "id": "a-20260820-0826-taiwan-railway-to-add-158-trains-for-hol",
+      "path": "data/articles/2026-08-20T08.json",
+      "title": "台鐵因應中秋暨教師節連假加開158列次 8月25日開放訂票",
+      "reason": "Wrong operator, type, or organization"
+    },
+    {
+      "id": "a-20260823-2312-tra-suspends-south-link-and-taitung-line",
+      "path": "data/articles/2026-08-23T23.json",
+      "title": "受暴雨影響 台鐵南迴線與台東線週一上午對號列車停駛",
+      "reason": "Wrong operator, type, or organization"
+    },
+    {
+      "id": "a-20260824-0751-tra-suspends-south-link-and-eastern-line",
+      "path": "data/articles/2026-08-24T07.json",
+      "title": "台鐵因應豪大雨南迴及東部幹線對號車24日18時前停駛",
+      "reason": "Wrong operator, type, or organization"
+    },
+    {
+      "id": "a-20260826-0043-taiwan-railways-clears-south-link-line-s",
+      "path": "data/articles/2026-08-26T00.json",
+      "title": "台鐵南迴線枋山至枋野段搶通 8月26日首班車恢復正常營運",
+      "reason": "Wrong operator, type, or organization"
+    },
+    {
+      "id": "a-20260826-0219-heavy-rain-worsens-mudslides-as-tra-susp",
+      "path": "data/articles/2026-08-26T02.json",
+      "title": "豪雨引發枋山枋野土石流加劇 台鐵南迴線8月25日深夜前全線停駛",
+      "reason": "Wrong operator, type, or organization"
+    },
+    {
+      "id": "a-20260913-2157-business-jet-lands-at-us-bomber-base-raf",
+      "path": "data/articles/2026-09-13T21.json",
+      "title": "賽斯納獎狀商務機誤降美軍RAF Fairford（RAF）轟炸機基地",
+      "reason": "Wrong operator, type, or organization"
     }
   ]
 }
