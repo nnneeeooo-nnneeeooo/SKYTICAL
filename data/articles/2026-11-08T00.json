@@ -1,0 +1,129 @@
+{
+  "articles": [
+    {
+      "id": "a-20261108-industry-roundup-06",
+      "publishedUtc": "2026-11-08T00:01Z",
+      "cat": "biz",
+      "articleFormat": "roundup",
+      "roundupKind": "industry",
+      "roundupItems": [
+        {
+          "articleId": "a-20261107-1615-lawsuits-accuse-seven-us-airlines-of-col",
+          "publishedExcerpt": false,
+          "eventKey": "",
+          "sourceUrls": [
+            "https://simpleflying.com/lawsuits-accuse-us-airlines-colluding-raise-fares"
+          ]
+        },
+        {
+          "articleId": "a-20261108-0001-american-airlines-brings-flagship-dining",
+          "publishedExcerpt": false,
+          "eventKey": "",
+          "sourceUrls": [
+            "https://simpleflying.com/american-airlines-officially-welcomes-passengers-back-lax-flagship-dining-6-years"
+          ]
+        }
+      ],
+      "roundupWriters": [
+        {
+          "writer": "gemini:gemini-3.5-flash",
+          "writerModels": []
+        },
+        {
+          "writer": "openai:gpt-6",
+          "writerModels": []
+        }
+      ],
+      "primarySource": "Multiple aviation sources",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "航空短訊彙整：美國七家航空公司遭訴訟指控 涉共用數據聯合抬高票價；美國航空暌違六年在 LAX 恢復 Flagship Dining",
+        "summary": "本期收錄2則獨立消息：美國七家航空公司遭訴訟指控 涉共用數據聯合抬高票價、美國航空暌違六年在 LAX 恢復 Flagship Dining。",
+        "body": [
+          "本期彙整2則航空短訊，各則為獨立事件。",
+          "1. 美國七家航空公司遭訴訟指控 涉共用數據聯合抬高票價\n訴訟指控美國7家航空公司涉嫌共用資料庫監控票價；迅速跟進比價並聯合抬高機票價格。",
+          "2. 美國航空暌違六年在 LAX 恢復 Flagship Dining\n美國航空暌違六年在 LAX 恢復 Flagship Dining，並擴大商務艙使用權限。"
+        ]
+      },
+      "en": {
+        "title": "Aviation briefs: Lawsuits Accuse Seven US Airlines of Colluding to Raise Fares via Shared Pricing Data; American Airlines Brings Flagship Dining Back to LAX After Six Years",
+        "summary": "2 independent updates: Lawsuits Accuse Seven US Airlines of Colluding to Raise Fares via Shared Pricing Data; American Airlines Brings Flagship Dining Back to LAX After Six Years.",
+        "body": [
+          "2 independent aviation updates.",
+          "1. Lawsuits Accuse Seven US Airlines of Colluding to Raise Fares via Shared Pricing Data\nSeven US airlines face lawsuits alleging use of a shared database to collude and raise fares.",
+          "2. American Airlines Brings Flagship Dining Back to LAX After Six Years\nAmerican Airlines returns Flagship Dining to LAX after six years, with expanded business-class access."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Simple Flying — Lawsuits Accuse 7 US Airlines Of Colluding To Raise Fares B…",
+          "url": "https://simpleflying.com/lawsuits-accuse-us-airlines-colluding-raise-fares/"
+        },
+        {
+          "name": "Simple Flying — American Airlines Officially Welcomes Passengers Back To Fl…",
+          "url": "https://simpleflying.com/american-airlines-officially-welcomes-passengers-back-lax-flagship-dining-6-years/"
+        }
+      ],
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Lawsuits accuse seven US airlines of colluding to raise fares by sharing pricing data.",
+          "sourceQuote": "Lawsuits Accuse 7 US Airlines Of Colluding To Raise Fares By Sharing Pricing Data",
+          "sourceUrl": "https://simpleflying.com/lawsuits-accuse-us-airlines-colluding-raise-fares/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The airlines allegedly used a shared database to monitor fares and quickly match cheaper tickets.",
+          "sourceQuote": "The airlines allegedly used a shared database to monitor fares and quickly match cheaper tickets.",
+          "sourceUrl": "https://simpleflying.com/lawsuits-accuse-us-airlines-colluding-raise-fares/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "American Airlines officially welcomed passengers back to Flagship Dining at LAX after six years.",
+          "sourceQuote": "American Airlines Officially Welcomes Passengers Back To Flagship Dining At LAX After 6 Years",
+          "sourceUrl": "https://simpleflying.com/american-airlines-officially-welcomes-passengers-back-lax-flagship-dining-6-years/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The returning Flagship Dining experience is described as refined sit-down dining.",
+          "sourceQuote": "A refined sit-down Flagship Dining experience",
+          "sourceUrl": "https://simpleflying.com/american-airlines-officially-welcomes-passengers-back-lax-flagship-dining-6-years/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The returning Flagship Dining experience includes multi-course menus.",
+          "sourceQuote": "Flagship Dining experience returns to LAX with multi-course menus",
+          "sourceUrl": "https://simpleflying.com/american-airlines-officially-welcomes-passengers-back-lax-flagship-dining-6-years/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The returning Flagship Dining experience includes expanded business class access.",
+          "sourceQuote": "Flagship Dining experience returns to LAX with multi-course menus and expanded business class access",
+          "sourceUrl": "https://simpleflying.com/american-airlines-officially-welcomes-passengers-back-lax-flagship-dining-6-years/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "writer": "rules:verified-industry-roundup",
+      "generationMode": "verified-source-compilation",
+      "sourcePublishedUtc": "2026-11-07T22:00Z"
+    }
+  ]
+}
