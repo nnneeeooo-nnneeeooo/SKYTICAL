@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "verified",
-      "untilUtc": "2026-11-08T16:40Z",
-      "checkedUtc": "2026-11-07T16:40Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "checkedUtc": "2026-11-08T19:11Z",
+      "untilUtc": "2026-11-09T01:11Z",
+      "failureClass": "unexpected",
+      "diagnostic": "entity evidence quote not found in current source: locations='Mount Pennsylvania'",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -21,8 +21,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-11-08T13:56Z",
       "untilUtc": "2026-11-08T19:56Z",
+      "checkedUtc": "2026-11-08T13:56Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,

@@ -12814,7 +12814,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-08T14:46:04.493037+00:00"
+      "checked_utc": "2026-11-08T19:41:46.120837+00:00"
     },
     "a-united-boeing-757-san-francisco-low-fuel-go-around-20261102": {
       "status": "matched",
@@ -13331,6 +13331,37 @@
         "photoYear": 2017
       },
       "checked_utc": "2026-11-08T14:46:04.493037+00:00"
+    },
+    "a-air-france-a350-american-a321-lax-near-miss-20261107": {
+      "status": "matched",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2025/03/Shutterstock_1785297449.jpg",
+        "link": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax",
+        "subject": "Air France A350-900",
+        "sourceCaption": "Air France A350-900. Matheus Obst / Shutterstock.com",
+        "credit": "Matheus Obst / Shutterstock.com",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "file_photo",
+        "matched": "source:aerotime"
+      },
+      "checked_utc": "2026-11-08T19:41:46.120837+00:00"
+    },
+    "a-20261108-1911-china-airlines-reports-record-first-thre": {
+      "status": "matched",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/China_Airlines_Airbus_A350-900_B-18915_departing_Taoyuan_February_2026.jpg/1280px-China_Airlines_Airbus_A350-900_B-18915_departing_Taoyuan_February_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=187506224",
+        "credit": "4300streetcar",
+        "license": "CC BY 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "China Airlines Airbus A350-900",
+        "subject": "China Airlines Airbus A350-900",
+        "description": "China Airlines Airbus A350-900 B-18915 departing Taoyuan February 2026",
+        "photoYear": 2026
+      },
+      "checked_utc": "2026-11-08T19:41:46.120837+00:00"
     }
   },
   "sources": {
@@ -16887,13 +16918,13 @@
       "image": null,
       "rejection_reason": "no-event-photo",
       "parser_version": 5,
-      "next_retry_utc": "2026-11-07T22:18:30.951481+00:00"
+      "next_retry_utc": "2026-11-09T01:41:46.120837+00:00"
     },
     "https://www.cna.com.tw/news/afe/202611060306.aspx": {
       "image": null,
       "rejection_reason": "no-event-photo",
       "parser_version": 5,
-      "next_retry_utc": "2026-11-07T22:18:30.951481+00:00"
+      "next_retry_utc": "2026-11-09T01:41:46.120837+00:00"
     },
     "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-orders-october-2026": {
       "image": null,
@@ -16903,9 +16934,25 @@
     },
     "https://www.aerotime.aero/articles/bomb-threats-europe-flights-fighter-escorts-diversions": {
       "image": null,
-      "rejection_reason": "no-primary-visual-entity",
+      "rejection_reason": "aircraft-model-mismatch",
       "parser_version": 5,
-      "next_retry_utc": "2026-11-07T22:18:30.951481+00:00"
+      "next_retry_utc": "2026-11-09T01:41:46.120837+00:00"
+    },
+    "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax": {
+      "image": {
+        "url": "https://www.aerotime.aero/images/2025/03/Shutterstock_1785297449.jpg",
+        "link": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax",
+        "subject": "Air France A350-900",
+        "sourceCaption": "Air France A350-900. Matheus Obst / Shutterstock.com",
+        "credit": "Matheus Obst / Shutterstock.com",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "file_photo",
+        "matched": "source:aerotime"
+      },
+      "rejection_reason": null,
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-09T01:41:46.120837+00:00"
     }
   }
 }
