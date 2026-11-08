@@ -1,144 +1,6 @@
 {
-  "lastEdition": "2026-11-08-12",
-  "items": [
-    {
-      "enqueuedUtc": "2026-11-08T13:56Z",
-      "routeReason": "verified_short_update",
-      "sourceGroupId": "g-20261108-1356-2",
-      "eventKey": "",
-      "article": {
-        "id": "a-20261108-1356-us-fines-air-france-and-klm-for-delta-ai",
-        "publishedUtc": "2026-11-08T13:56Z",
-        "cat": "reg",
-        "primarySource": "Simple Flying",
-        "image": null,
-        "sourceImageCandidates": [
-          {
-            "url": "https://static0.simpleflyingimages.com/wordpress/wp-content/uploads/2026/11/faa-fine-afklm.jpg",
-            "sources": [
-              {
-                "url": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/",
-                "name": "Simple Flying"
-              }
-            ]
-          }
-        ],
-        "zh": {
-          "title": "美國對法國航空與荷蘭皇家航空開罰，涉達美航空共掛班號航班在伊拉克上空低於3.2萬英尺",
-          "summary": "美國對法國航空、荷蘭皇家航空開罰，涉及達美航空共掛班號航班在伊拉克上空低於3.2萬英尺。",
-          "body": [
-            "Simple Flying 報導，美國運輸部（US Department Of Transportation）已對法國航空與荷蘭皇家航空開罰。該報導稱，兩家歐洲航空公司曾營運達美航空共掛班號航班，航班在伊拉克上空的飛行高度低於32,000英尺。",
-            "報導指出，罰款是因為美國聯邦航空總署（FAA）禁止美國營運者在由外國管理、且衝突或緊張情勢升高可能威脅安全的空域飛行。"
-          ]
-        },
-        "en": {
-          "title": "US fines Air France and KLM for Delta Air Lines codeshare flights below 32,000 feet above Iraq",
-          "summary": "The U.S. fines Air France and KLM over Delta Air Lines codeshare flights below 32,000 feet above Iraq.",
-          "body": [
-            "Simple Flying reports that the U.S. Department of Transportation issued fines to Air France and KLM after it was revealed that both European carriers operated Delta Air Lines codeshare flights at an altitude of less than 32,000 feet in airspace above Iraq.",
-            "The report says the fines were issued because the Federal Aviation Administration (FAA) prohibits flights by U.S. operators in foreign-managed airspace where conflict or heightened tensions threaten safety."
-          ]
-        },
-        "sources": [
-          {
-            "name": "Simple Flying — US Fines Air France & KLM For Flying Delta Codeshares Too L…",
-            "url": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/"
-          }
-        ],
-        "articleFormat": "brief",
-        "sourcePublishedUtc": "2026-11-08T13:25Z",
-        "writer": "openai:gpt-6",
-        "facts": [
-          {
-            "factId": "F1",
-            "claim": "The US Department of Transportation issued fines to Air France and KLM.",
-            "sourceQuote": "Air France and KLM have been issued fines by the US Department Of Transportation",
-            "sourceUrl": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F2",
-            "claim": "Air France and KLM operated Delta Air Lines codeshare flights below 32,000 feet above Iraq.",
-            "sourceQuote": "Air France and KLM have been issued fines by the US Department Of Transportation after it was revealed that both European carriers operated Delta Air Lines codeshare flights below 32,000 feet above Iraq.",
-            "sourceUrl": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          },
-          {
-            "factId": "F3",
-            "claim": "The source says the fines were issued due to an FAA prohibition on flights by US operators in foreign-managed airspace where conflict or heightened tensions threaten safety.",
-            "sourceQuote": "The fines were issued due to the Federal Aviation Administration (FAA) prohibiting flights by US operators in foreign-managed airspace where conflict or heightened tensions threaten safety.",
-            "sourceUrl": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/",
-            "evidenceScope": "source",
-            "archiveEventId": null,
-            "archiveContext": false
-          }
-        ],
-        "riskFlags": [
-          "regulatory_action",
-          "financial_or_order_claim"
-        ],
-        "eventStatus": "confirmed",
-        "entities": {
-          "organizations": [
-            "US Department Of Transportation",
-            "Federal Aviation Administration (FAA)"
-          ],
-          "airlines": [
-            "Air France",
-            "KLM",
-            "Delta Air Lines"
-          ],
-          "locations": [
-            "Iraq"
-          ]
-        },
-        "entityEvidence": [
-          {
-            "entityType": "organizations",
-            "value": "US Department Of Transportation",
-            "sourceQuote": "US Department Of Transportation",
-            "sourceUrl": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/"
-          },
-          {
-            "entityType": "organizations",
-            "value": "Federal Aviation Administration (FAA)",
-            "sourceQuote": "Federal Aviation Administration (FAA)",
-            "sourceUrl": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/"
-          },
-          {
-            "entityType": "airlines",
-            "value": "Air France",
-            "sourceQuote": "Air France and KLM have been issued fines by the US Department Of Transportation",
-            "sourceUrl": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/"
-          },
-          {
-            "entityType": "airlines",
-            "value": "KLM",
-            "sourceQuote": "Air France and KLM have been issued fines by the US Department Of Transportation",
-            "sourceUrl": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/"
-          },
-          {
-            "entityType": "airlines",
-            "value": "Delta Air Lines",
-            "sourceQuote": "Delta Air Lines codeshare flights below 32,000 feet above Iraq.",
-            "sourceUrl": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/"
-          },
-          {
-            "entityType": "locations",
-            "value": "Iraq",
-            "sourceQuote": "below 32,000 feet above Iraq.",
-            "sourceUrl": "https://simpleflying.com/video/us-fines-air-france-klm-for-flying-delta-codeshares-too-low-over-iraqi-conflict-zone/"
-          }
-        ],
-        "evidenceVersion": 2
-      },
-      "publishedExcerptId": null
-    }
-  ],
+  "lastEdition": "2026-11-09-06",
+  "items": [],
   "history": [
     {
       "articleId": "a-20261107-1615-us-air-force-divests-three-a-29c-super-t",
@@ -148,6 +10,11 @@
     {
       "articleId": "a-20261108-1911-air-france-a350-and-american-airlines-a3",
       "atUtc": "2026-11-08T19:11Z",
+      "reason": "already_published"
+    },
+    {
+      "articleId": "a-20261108-2312-singapore-airlines-plans-phased-long-hau",
+      "atUtc": "2026-11-08T23:12Z",
       "reason": "already_published"
     }
   ]
