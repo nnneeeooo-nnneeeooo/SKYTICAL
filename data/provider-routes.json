@@ -12,17 +12,17 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-08T06:01Z",
-      "checkedUtc": "2026-11-08T00:01Z",
-      "failureClass": "connection",
-      "diagnostic": "ConnectionError",
+      "untilUtc": "2026-11-08T12:47Z",
+      "checkedUtc": "2026-11-08T06:47Z",
+      "failureClass": "unexpected",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-08T06:01Z",
-      "checkedUtc": "2026-11-08T00:01Z",
+      "untilUtc": "2026-11-08T12:47Z",
+      "checkedUtc": "2026-11-08T06:47Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -30,8 +30,8 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "verified",
-      "checkedUtc": "2026-11-08T00:01Z",
       "untilUtc": "2026-11-09T00:01Z",
+      "checkedUtc": "2026-11-08T00:01Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-08T04:37Z",
-      "checkedUtc": "2026-11-07T04:37Z",
+      "checkedUtc": "2026-11-08T06:47Z",
+      "untilUtc": "2026-11-09T06:47Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -48,21 +48,21 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-07T22:15Z",
-      "checkedUtc": "2026-11-07T16:15Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "untilUtc": "2026-11-08T12:47Z",
+      "checkedUtc": "2026-11-08T06:47Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-08T10:36Z",
-      "checkedUtc": "2026-11-07T10:36Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-08T12:47Z",
+      "checkedUtc": "2026-11-08T06:47Z",
+      "failureClass": "quota",
+      "diagnostic": "platform cooldown",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     }
   }
 }
