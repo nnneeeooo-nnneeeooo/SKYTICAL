@@ -3,10 +3,10 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-11-09T01:11Z",
-      "checkedUtc": "2026-11-08T19:11Z",
+      "untilUtc": "2026-11-09T09:00Z",
+      "checkedUtc": "2026-11-09T03:00Z",
       "failureClass": "unexpected",
-      "diagnostic": "entity evidence quote not found in current source: locations='Mount Pennsylvania'",
+      "diagnostic": "F1 claim adds high-risk atom 'H140' not present in its own sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -21,8 +21,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-11-08T23:12Z",
       "untilUtc": "2026-11-09T05:12Z",
+      "checkedUtc": "2026-11-08T23:12Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -30,8 +30,8 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "verified",
-      "untilUtc": "2026-11-09T00:01Z",
-      "checkedUtc": "2026-11-08T00:01Z",
+      "checkedUtc": "2026-11-09T03:00Z",
+      "untilUtc": "2026-11-10T03:00Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
