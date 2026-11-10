@@ -1,6 +1,182 @@
 {
   "lastEdition": "2026-11-10-06",
-  "items": [],
+  "items": [
+    {
+      "enqueuedUtc": "2026-11-10T04:23Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261110-0423-12",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261110-0423-vietjet-due-back-in-london-court-novembe",
+        "publishedUtc": "2026-11-10T04:23Z",
+        "cat": "biz",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "VietJet 11月13日將再赴倫敦法院處理約2.5億美元租機債務爭議",
+          "summary": "VietJet 11月13日將赴倫敦法院處理約2.5億美元債務爭議。",
+          "body": [
+            "VietJet預定於2026年11月13日再赴倫敦法院，處理與飛機租賃業者FW Aviation之間約2.5億美元的債務爭議。案件焦點是VietJet是否還須就四架租用的Airbus A321支付額外款項。",
+            "付款安排的報導不一。一名知悉此事的人士告訴路透社，VietJet稱已安排資金，並希望在開庭日期前付款；另有報導質疑該說法，稱航空公司仍在進行訴訟，同時對和解持開放態度。",
+            "英國高等法院於2025年4月命令VietJet支付約1.815億美元；報導指出，利息與費用已使債務升至約2.5億美元。"
+          ]
+        },
+        "en": {
+          "title": "VietJet due back in London court November 13 over roughly $250 million aircraft debt dispute",
+          "summary": "VietJet is due back in London court November 13, 2026, over roughly $250 million owed to FW Aviation.",
+          "body": [
+            "VietJet is due back in a London court on November 13, 2026, over roughly $250 million it owes aircraft lessor FW Aviation. The issue is whether the airline owes additional sums relating to four leased Airbus A321s.",
+            "Accounts of VietJet's payment position differ. One of two people familiar with the matter told Reuters that VietJet said it had lined up the money and aimed to pay by the hearing date. Other reporting challenged that account, saying the airline was still pursuing its case while remaining open to a settlement.",
+            "In April 2025, the UK High Court ordered VietJet to pay about $181.5 million. Interest and costs have since pushed the debt to roughly $250 million."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — VietJet heads back to UK court over $250 million aircraft d…",
+            "url": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-09T20:45Z",
+        "writer": "openai:gpt-6",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "VietJet is due back in a London court on November 13, 2026, over roughly $250 million it owes aircraft lessor FW Aviation.",
+            "sourceQuote": "VietJet is due back in a London court on November 13, 2026, over roughly $250 million it owes aircraft lessor FW Aviation.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The disputed question is whether the Vietnamese airline owes additional sums in relation to four leased Airbus A321s.",
+            "sourceQuote": "At issue is whether the Vietnamese airline owes additional sums in a dispute over four leased Airbus A321s.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "One of two people familiar with the matter told Reuters that VietJet said it had lined up the money and aimed to pay by the hearing date.",
+            "sourceQuote": "VietJet said it had lined up the money and aimed to pay by the hearing date, one of two people familiar with the matter told Reuters",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "Other reporting said the airline was still pursuing its case while remaining open to a settlement.",
+            "sourceQuote": "but other reporting has challenged that account, saying the airline was still pursuing its case while remaining open to a settlement.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "The UK High Court ordered VietJet to pay about $181.5 million in April 2025.",
+            "sourceQuote": "In April 2025, the UK High Court ordered VietJet to pay about $181.5 million.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "Interest and costs have pushed the debt to roughly $250 million.",
+            "sourceQuote": "Interest and costs have since pushed the debt to roughly $250 million.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "financial_or_order_claim",
+          "unconfirmed_or_developing",
+          "conflicting_information"
+        ],
+        "eventStatus": "planned",
+        "entities": {
+          "organizations": [
+            "FW Aviation",
+            "Reuters",
+            "UK High Court"
+          ],
+          "airlines": [
+            "VietJet"
+          ],
+          "aircraft_models": [
+            "Airbus A321s"
+          ],
+          "locations": [
+            "London"
+          ],
+          "event_dates": [
+            "November 13, 2026",
+            "April 2025"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "FW Aviation",
+            "sourceQuote": "VietJet is due back in a London court on November 13, 2026, over roughly $250 million it owes aircraft lessor FW Aviation.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Reuters",
+            "sourceQuote": "VietJet said it had lined up the money and aimed to pay by the hearing date, one of two people familiar with the matter told Reuters",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt"
+          },
+          {
+            "entityType": "organizations",
+            "value": "UK High Court",
+            "sourceQuote": "In April 2025, the UK High Court ordered VietJet to pay about $181.5 million.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt"
+          },
+          {
+            "entityType": "airlines",
+            "value": "VietJet",
+            "sourceQuote": "VietJet is due back in a London court on November 13, 2026, over roughly $250 million it owes aircraft lessor FW Aviation.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Airbus A321s",
+            "sourceQuote": "At issue is whether the Vietnamese airline owes additional sums in a dispute over four leased Airbus A321s.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt"
+          },
+          {
+            "entityType": "locations",
+            "value": "London",
+            "sourceQuote": "VietJet is due back in a London court on November 13, 2026, over roughly $250 million it owes aircraft lessor FW Aviation.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "November 13, 2026",
+            "sourceQuote": "VietJet is due back in a London court on November 13, 2026, over roughly $250 million it owes aircraft lessor FW Aviation.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "April 2025",
+            "sourceQuote": "In April 2025, the UK High Court ordered VietJet to pay about $181.5 million.",
+            "sourceUrl": "https://www.aerotime.aero/articles/vietjet-heads-back-to-uk-court-over-250-million-in-aircraft-debt"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
+    }
+  ],
   "history": [
     {
       "articleId": "a-20261107-1615-us-air-force-divests-three-a-29c-super-t",
