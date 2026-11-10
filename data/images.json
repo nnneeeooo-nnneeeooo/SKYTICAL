@@ -13345,7 +13345,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-09T23:12:17.598700+00:00"
+      "checked_utc": "2026-11-10T04:19:27.162191+00:00"
     },
     "a-20261108-1911-china-airlines-reports-record-first-thre": {
       "status": "matched",
@@ -13376,7 +13376,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-09T23:12:17.598700+00:00"
+      "checked_utc": "2026-11-10T04:19:27.162191+00:00"
     },
     "a-american-airlines-backs-out-650-bumped-passenger-promise-20261108": {
       "status": "none",
@@ -13399,6 +13399,18 @@
       ],
       "checked_utc": "2026-11-09T23:12:17.598700+00:00",
       "next_retry_utc": "2026-11-10T05:12:17.598700+00:00"
+    },
+    "a-20261110-0339-taiwan-baseball-team-flies-to-japan-on-s": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:no-event-photo",
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-10T04:19:27.162191+00:00",
+      "next_retry_utc": "2026-11-10T10:19:27.162191+00:00"
     }
   },
   "sources": {
@@ -16961,7 +16973,7 @@
       "image": null,
       "rejection_reason": "no-event-photo",
       "parser_version": 5,
-      "next_retry_utc": "2026-11-09T09:13:05.612568+00:00"
+      "next_retry_utc": "2026-11-10T10:19:27.162191+00:00"
     },
     "https://www.aerotime.aero/articles/airbus-aircraft-deliveries-orders-october-2026": {
       "image": null,
@@ -16973,7 +16985,7 @@
       "image": null,
       "rejection_reason": "aircraft-model-mismatch",
       "parser_version": 5,
-      "next_retry_utc": "2026-11-09T09:13:05.612568+00:00"
+      "next_retry_utc": "2026-11-10T10:19:27.162191+00:00"
     },
     "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax": {
       "image": {
@@ -17006,6 +17018,12 @@
       "rejection_reason": null,
       "parser_version": 5,
       "next_retry_utc": "2026-11-09T18:40:31.210579+00:00"
+    },
+    "https://www.cna.com.tw/news/aspt/202611100038.aspx": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-10T10:19:27.162191+00:00"
     }
   }
 }
