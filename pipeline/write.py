@@ -546,7 +546,7 @@ OUTPUT RULES:
 - Use every relevant row in <SYSTEM_VERIFIED_SOURCE_AIRPORT_CODES> as a
   source-backed preflight checklist. When a source mentions multiple named
   airports central to a route/event, preserve each airport identity and its
-  supplied code in the visible body in BOTH languages, including brief copy;
+  supplied code in the visible body in BOTH languages, including publish_brief;
   preserve the literal SOURCE airport names in entities.airports with
   matching entityEvidence. Preserve the supplied airport identities in entities.airports.
   When multiple airports appear, include every supplied code.
