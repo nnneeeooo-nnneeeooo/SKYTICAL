@@ -548,8 +548,9 @@ OUTPUT RULES:
   airports central to a route/event, preserve each airport identity and its
   supplied code in the visible body in BOTH languages, including brief copy;
   preserve the literal SOURCE airport names in entities.airports with
-  matching entityEvidence. If SOURCE has no explicit code for an airport,
-  never guess one or copy a code from a different airport.
+  matching entityEvidence. Preserve the supplied airport identities in entities.airports.
+  When multiple airports appear, include every supplied code.
+  Never infer a code missing from evidence or copy one from another airport.
 - Before emitting the final JSON, check zh.title, zh.body, en.title and
   en.body separately: for every named airport with a source-provided IATA
   code, does its first mention on each applicable surface include the
