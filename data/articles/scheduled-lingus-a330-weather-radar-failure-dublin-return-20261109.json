@@ -1,84 +1,95 @@
 {
- "articles": [
-  {
-   "articleFormat": "full",
-   "availableLanguages": [
-    "zh",
-    "en"
-   ],
-   "cat": "safety",
-   "en": {
-    "title": "Aer Lingus Flight EI-107 Returns to Dublin After Weather Radar Fails Twice",
-    "summary": "An Aer Lingus Airbus A330-300 operating flight EI-107 from Dublin to New York JFK returned to Dublin after its weather radar failed twice, landing safely on runway 10L about one hour after departure.",
-    "body": [
-     "An Aer Lingus Airbus A330-300, registration EI-EIL, performing flight EI-107 from Dublin to New York JFK, was en route at FL340 about 80nm northwest of Shannon when the crew decided to return to Dublin. The aircraft landed safely on Dublin's runway 10L about one hour after departure.",
-     "A listener on the frequency reported that the crew said the weather radar had failed twice. They had heard a loud clunking noise during climb out from Dublin and noticed some odour. The weather radar subsequently failed for a brief period of time and came back online. A burning smell occurred and quickly dissipated, and the weather radar failed a second time."
-    ]
-   },
-   "entities": {
-    "aircraft": [
-     "Airbus A330-300"
-    ],
-    "airports": [
-     "Dublin Airport",
-     "John F. Kennedy International Airport"
-    ],
-    "manufacturers": [
-     "Airbus"
-    ],
-    "operators": [
-     "Aer Lingus"
-    ]
-   },
-   "id": "a-lingus-a330-weather-radar-failure-dublin-return-20261109",
-   "primarySource": "The Aviation Herald",
-   "publishedUtc": "2026-11-10T08:26:45Z",
-   "scheduledNews": {
-    "checkedUtc": "2026-11-10T08:26:45Z",
-    "eventKey": "lingus-a330-weather-radar-failure-dublin-return-20261109",
-    "facts": [
-     {
-      "claim": "An Aer Lingus Airbus A330-300, registration EI-EIL, performing flight EI-107 from Dublin to New York JFK, was en route at FL340 about 80nm northwest of Shannon when the crew decided to return to Dublin.",
-      "sourceUrl": "https://avherald.com/h?article=54732925&opt=0"
-     },
-     {
-      "claim": "The aircraft landed safely on Dublin's runway 10L about one hour after departure.",
-      "sourceUrl": "https://avherald.com/h?article=54732925&opt=0"
-     },
-     {
-      "claim": "The crew reported their weather radar had failed twice, after hearing a loud clunking noise during climb out from Dublin and noticing some odour.",
-      "sourceUrl": "https://avherald.com/h?article=54732925&opt=0"
-     },
-     {
-      "claim": "The weather radar failed for a brief period of time, came back online, and then failed a second time after a burning smell occurred and quickly dissipated.",
-      "sourceUrl": "https://avherald.com/h?article=54732925&opt=0"
-     }
-    ],
-    "modelAttribution": {
-     "kind": "user_requested_label",
-     "verifiedRuntimeModel": false
-    },
-    "version": 1
-   },
-   "sourcePublishedUtc": "2026-11-09T19:58Z",
-   "sources": [
+  "articles": [
     {
-     "name": "The Aviation Herald",
-     "url": "https://avherald.com/h?article=54732925&opt=0"
+      "articleFormat": "full",
+      "availableLanguages": [
+        "zh",
+        "en"
+      ],
+      "cat": "safety",
+      "en": {
+        "title": "Aer Lingus Flight EI-107 Returns to Dublin After Weather Radar Fails Twice",
+        "summary": "An Aer Lingus Airbus A330-300 operating flight EI-107 from Dublin to New York JFK returned to Dublin after its weather radar failed twice, landing safely on runway 10L about one hour after departure.",
+        "body": [
+          "An Aer Lingus Airbus A330-300, registration EI-EIL, performing flight EI-107 from Dublin to New York JFK (JFK), was en route at FL340 about 80nm northwest of Shannon when the crew decided to return to Dublin. The aircraft landed safely on Dublin's runway 10L about one hour after departure.",
+          "A listener on the frequency reported that the crew said the weather radar had failed twice. They had heard a loud clunking noise during climb out from Dublin and noticed some odour. The weather radar subsequently failed for a brief period of time and came back online. A burning smell occurred and quickly dissipated, and the weather radar failed a second time."
+        ]
+      },
+      "entities": {
+        "aircraft": [
+          "Airbus A330-300"
+        ],
+        "airports": [
+          "Dublin Airport",
+          "John F. Kennedy International Airport"
+        ],
+        "manufacturers": [
+          "Airbus"
+        ],
+        "operators": [
+          "Aer Lingus"
+        ]
+      },
+      "id": "a-lingus-a330-weather-radar-failure-dublin-return-20261109",
+      "primarySource": "The Aviation Herald",
+      "publishedUtc": "2026-11-10T08:26:45Z",
+      "scheduledNews": {
+        "checkedUtc": "2026-11-10T08:26:45Z",
+        "eventKey": "lingus-a330-weather-radar-failure-dublin-return-20261109",
+        "facts": [
+          {
+            "claim": "An Aer Lingus Airbus A330-300, registration EI-EIL, performing flight EI-107 from Dublin to New York JFK, was en route at FL340 about 80nm northwest of Shannon when the crew decided to return to Dublin.",
+            "sourceUrl": "https://avherald.com/h?article=54732925&opt=0"
+          },
+          {
+            "claim": "The aircraft landed safely on Dublin's runway 10L about one hour after departure.",
+            "sourceUrl": "https://avherald.com/h?article=54732925&opt=0"
+          },
+          {
+            "claim": "The crew reported their weather radar had failed twice, after hearing a loud clunking noise during climb out from Dublin and noticing some odour.",
+            "sourceUrl": "https://avherald.com/h?article=54732925&opt=0"
+          },
+          {
+            "claim": "The weather radar failed for a brief period of time, came back online, and then failed a second time after a burning smell occurred and quickly dissipated.",
+            "sourceUrl": "https://avherald.com/h?article=54732925&opt=0"
+          }
+        ],
+        "modelAttribution": {
+          "kind": "user_requested_label",
+          "verifiedRuntimeModel": false
+        },
+        "version": 1
+      },
+      "sourcePublishedUtc": "2026-11-09T19:58Z",
+      "sources": [
+        {
+          "name": "The Aviation Herald",
+          "url": "https://avherald.com/h?article=54732925&opt=0"
+        }
+      ],
+      "writer": "scheduled:Meta Muse",
+      "writerModels": [
+        "Meta Muse"
+      ],
+      "zh": {
+        "title": "愛爾蘭航空A330客機天氣雷達兩度故障，EI-107航班折返都柏林",
+        "summary": "愛爾蘭航空一架空中巴士A330-300執行EI-107航班由都柏林飛往紐約甘迺迪機場，途中天氣雷達兩度故障，機組決定折返都柏林，起飛約1小時後安全降落10L跑道。",
+        "body": [
+          "愛爾蘭航空一架空中巴士A330-300，註冊編號EI-EIL，執行EI-107航班由都柏林飛往紐約甘迺迪機場（JFK），在香農西北方約80海里、FL340高度巡航時，機組決定折返都柏林。飛機於起飛約1小時後安全降落都柏林10L跑道。",
+          "一名監聽頻率的聽眾回報，機組表示天氣雷達已故障兩次。機組在自都柏林爬升期間聽到一聲巨響，並聞到異味；天氣雷達隨後短暫故障後恢復運作，接著出現燒焦味並迅速消散，天氣雷達又第二次故障。"
+        ]
+      },
+      "image": {
+        "url": "https://t.plnspttrs.net/32545/1924494_3670890768_280.jpg",
+        "link": "https://www.planespotters.net/photo/1924494/ei-eil-aer-lingus-airbus-a330-302?utm_source=api",
+        "credit": "Erwin van Hassel",
+        "license": null,
+        "provider": "Planespotters.net",
+        "kind": "airframe_photo",
+        "matched": "EI-EIL",
+        "subject": "註冊號 EI-EIL",
+        "description": ""
+      }
     }
-   ],
-   "writer": "scheduled:Meta Muse",
-   "writerModels": [
-    "Meta Muse"
-   ],
-   "zh": {
-    "title": "愛爾蘭航空A330客機天氣雷達兩度故障，EI-107航班折返都柏林",
-    "summary": "愛爾蘭航空一架空中巴士A330-300執行EI-107航班由都柏林飛往紐約甘迺迪機場，途中天氣雷達兩度故障，機組決定折返都柏林，起飛約1小時後安全降落10L跑道。",
-    "body": [
-     "愛爾蘭航空一架空中巴士A330-300，註冊編號EI-EIL，執行EI-107航班由都柏林飛往紐約甘迺迪機場，在香農西北方約80海里、FL340高度巡航時，機組決定折返都柏林。飛機於起飛約1小時後安全降落都柏林10L跑道。",
-     "一名監聽頻率的聽眾回報，機組表示天氣雷達已故障兩次。機組在自都柏林爬升期間聽到一聲巨響，並聞到異味；天氣雷達隨後短暫故障後恢復運作，接著出現燒焦味並迅速消散，天氣雷達又第二次故障。"
-    ]
-   }
-  }
- ]
+  ]
 }

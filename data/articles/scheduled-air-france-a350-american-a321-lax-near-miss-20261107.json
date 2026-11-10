@@ -1,36 +1,10 @@
 {
   "articles": [
     {
-      "articleFormat": "full",
-      "availableLanguages": [
-        "zh",
-        "en"
-      ],
-      "cat": "safety",
-      "checkedUtc": "2026-11-08T16:30:00Z",
-      "en": {
-        "body": [
-          "On November 7 at about 08:15 UTC, Air France flight AF28, an Airbus A350-900 registered F-HUVK, departed Los Angeles International Airport (LAX)'s runway 24L bound for Papeete. About a minute later, American Airlines flight AA1660, an Airbus A321-200 registered N191UW, departed runway 25R bound for Dallas/Fort Worth. AF28 had been cleared to fly the SUMMR2 standard instrument departure, but shortly after takeoff it made an unexpected left turn off its assigned procedure and toward AA1660's departure path. AA1660 was at 2,000 feet and climbing toward 5,000 feet when controllers told it to maintain 2,000 feet; initial reports citing flight-tracking information put the vertical separation between the two aircraft at about 400 feet (121 meters).",
-          "Controllers immediately instructed AF28 to turn to a heading of 270 degrees and issued a traffic alert to AA1660, reporting traffic at its 12 o'clock position less than one mile away; AA1660 acknowledged the instruction to maintain 2,000 feet and reduced its climb. AF28 was then instructed to proceed direct to the DART waypoint and resume its climb via the assigned departure procedure. The controller later questioned the AF28 crew about its departure clearance; the crew confirmed it had been instructed to fly the SUMMR2 departure, and the controller advised of a possible pilot deviation and provided a telephone number for follow-up.",
-          "Both aircraft continued to their destinations, and AA1660 was later cleared to climb to 17,000 feet with a 250-knot speed restriction. No injuries or aircraft damage were reported, and as of November 8 no official investigation findings or confirmed explanation for the unexpected turn had been made public. Simple Flying said it contacted Air France for comment, but a spokesperson could not immediately be reached."
-        ],
-        "summary": "An Air France A350 departing Los Angeles turned left off its assigned departure procedure and closed to about 400 feet of vertical separation from a departing American A321; controllers intervened and both aircraft continued safely to their destinations with no injuries reported.",
-        "title": "Air France A350 deviates after takeoff at LAX, closing to about 400 feet from American A321"
-      },
-      "entities": {
-        "aircraft": [
-          "Airbus A350-900",
-          "Airbus A321-200"
-        ],
-        "airports": [
-          "Los Angeles International Airport"
-        ],
-        "operators": [
-          "Air France",
-          "American Airlines"
-        ]
-      },
       "id": "a-air-france-a350-american-a321-lax-near-miss-20261107",
+      "publishedUtc": "2026-11-08T16:30:00Z",
+      "cat": "safety",
+      "primarySource": "AeroTime",
       "image": {
         "url": "https://www.aerotime.aero/images/2025/03/Shutterstock_1785297449.jpg",
         "link": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax",
@@ -42,71 +16,200 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "primarySource": "AeroTime",
-      "publishedUtc": "2026-11-08T16:30:00Z",
-      "scheduledNews": {
-        "checkedUtc": "2026-11-08T16:30:00Z",
-        "eventKey": "air-france-a350-american-a321-lax-near-miss-20261107",
-        "facts": [
-          {
-            "claim": "Air France flight AF28, an Airbus A350-900 registered F-HUVK, departed Los Angeles runway 24L at about 08:15 UTC on November 7 bound for Papeete, and American Airlines flight AA1660, an Airbus A321-200 registered N191UW, departed runway 25R at about 08:16 UTC bound for Dallas/Fort Worth.",
-            "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
-          },
-          {
-            "claim": "AF28 had been cleared for the SUMMR2 standard instrument departure but made an unexpected left turn shortly after takeoff, deviating from its assigned procedure toward AA1660's departure path.",
-            "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
-          },
-          {
-            "claim": "AA1660 was at 2,000 feet climbing toward 5,000 feet when controllers instructed it to maintain 2,000 feet; initial reports citing flight-tracking information put the vertical separation at about 400 feet (121 meters).",
-            "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
-          },
-          {
-            "claim": "Controllers instructed AF28 to turn immediately to a heading of 270 degrees and issued a traffic alert to AA1660, reporting traffic at its 12 o'clock position less than one mile away; AA1660 acknowledged and reduced its climb.",
-            "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
-          },
-          {
-            "claim": "AF28 was then instructed to proceed direct to the DART waypoint and resume its climb via the assigned departure procedure; the controller later advised of a possible pilot deviation and provided a telephone number for follow-up.",
-            "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
-          },
-          {
-            "claim": "Both aircraft continued to their destinations; AA1660 was later cleared to climb to 17,000 feet with a 250-knot speed restriction. No injuries or aircraft damage were reported, and as of November 8 no official investigation findings or confirmed explanation for the unexpected turn had been made public.",
-            "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
-          },
-          {
-            "claim": "Simple Flying said it contacted Air France for comment, but a spokesperson could not immediately be reached.",
-            "sourceUrl": "https://simpleflying.com/air-france-a350-american-airlines-a321-near-midair-collision-lax/"
-          }
-        ],
-        "modelAttribution": {
-          "kind": "user_requested_label",
-          "verifiedRuntimeModel": false
-        },
-        "version": 1
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/10/Air-France-Airbus-A350-in-flight.jpg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/air-france-american-airlines-near-miss-lax/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "法國航空A350-900據報偏離離場程序 與美國航空A321-200近乎空中相撞",
+        "summary": "法國航空A350據報偏離離場程序；管制員立即向兩機組下達指示",
+        "body": [
+          "法國航空一架空中巴士A350-900與美國航空一架空中巴士A321-200，於2026年11月7日自洛杉磯國際機場（LAX）起飛後不久，發生近乎空中相撞事件。AeroTime報導，法國航空航機據報偏離指定離場程序，空中交通管制隨即向兩架飛機的機組下達指示。",
+          "法國航空AF28自24L跑道起飛，美國航空AA1660則自25R跑道起飛。美國航空機組回報當時高度為2,000英尺，正爬升至5,000英尺；管制員要求其維持2,000英尺。法國航空機組也獲指示立即轉向270度。",
+          "AeroTime表示，截至2026年11月8日，尚未公開官方調查結果，也沒有法國航空航機非預期轉向的確認解釋。"
+        ]
       },
-      "sourcePublishedUtc": "2026-11-08T13:38Z",
+      "en": {
+        "title": "Air France Airbus A350-900 reportedly deviates; near miss with American Airlines Airbus A321-200",
+        "summary": "Air France A350 reportedly deviated from its departure procedure; ATC immediately instructed both crews.",
+        "body": [
+          "An Air France Airbus A350-900 and an American Airlines Airbus A321-200 were involved in a near-mid-air collision shortly after departing Los Angeles International Airport (LAX) on November 7, 2026. AeroTime reported that the Air France aircraft reportedly deviated from its assigned departure procedure; air traffic control then issued immediate instructions to both flight crews.",
+          "Air France Flight AF28 departed Runway 24L, while American Airlines AA1660 took off from Runway 25R. The American Airlines crew reported being at 2,000 feet and climbing toward 5,000 feet; controllers instructed it to maintain 2,000 feet. The Air France crew was also instructed to turn immediately to heading 270 degrees.",
+          "AeroTime said that, as of November 8, 2026, no official investigation findings or confirmed explanation for the Air France aircraft’s unexpected turn had been made public."
+        ]
+      },
       "sources": [
         {
-          "name": "AeroTime",
+          "name": "AeroTime — Air France A350 departure deviation brings it close to Amer…",
           "url": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
+        },
+        {
+          "name": "Aerospace Global News — Air France A350 and American Airlines A321 in near miss aft…",
+          "url": "https://aerospaceglobalnews.com/news/air-france-american-airlines-near-miss-lax/"
         },
         {
           "name": "Simple Flying",
           "url": "https://simpleflying.com/air-france-a350-american-airlines-a321-near-midair-collision-lax/"
         }
       ],
-      "writer": "scheduled:Meta Muse",
-      "writerModels": [
-        "Meta Muse"
+      "articleFormat": "brief",
+      "updatedUtc": "2026-11-10T13:03Z",
+      "revision": 2,
+      "sourcePublishedUtc": "2026-11-09T00:00Z",
+      "writer": "openai:gpt-6",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Air France Airbus A350-900 and American Airlines Airbus A321-200 aircraft were involved in a near-mid-air collision shortly after departing Los Angeles International Airport (LAX) on November 7, 2026.",
+          "sourceQuote": "An Air France Airbus A350-900 and an American Airlines Airbus A321-200 were involved in a near-mid-air collision shortly after departing Los Angeles International Airport (LAX) on November 7, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The Air France aircraft reportedly deviated from its assigned departure procedure, prompting ATC to issue immediate instructions to both flight crews.",
+          "sourceQuote": "The incident occurred after the Air France aircraft reportedly deviated from its assigned departure procedure, prompting air traffic control (ATC) to issue immediate instructions to both flight crews.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Air France AF28 departed from Runway 24L, while American Airlines AA1660 took off from Runway 25R.",
+          "sourceQuote": "Air France AF28 departed from Runway 24L, while American Airlines AA1660 took off from Runway 25R.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The American Airlines crew reported being at 2,000 ft and climbing toward 5,000 ft; ATC instructed it to maintain 2,000 ft.",
+          "sourceQuote": "At the time, the American Airlines crew reported being at 2,000 ft and climbing towards 5,000 ft. Following the developing situation, ATC instructed the crew to maintain 2,000 ft.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The Air France crew was instructed to turn immediately to a heading of 270 degrees.",
+          "sourceQuote": "The Air France crew was instructed to immediately turn to a heading of 270 degrees.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "As of November 8, 2026, no official investigation findings or confirmed explanation for the Air France aircraft’s unexpected turn had been made public.",
+          "sourceQuote": "As of November 8, 2026, no official investigation findings or confirmed explanation for the Air France aircraft’s unexpected turn had been made public.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
       ],
-      "zh": {
-        "body": [
-          "11月7日約08:15（UTC），法國航空AF28班機（空中巴士A350-900，註冊編號F-HUVK）自洛杉磯國際機場（LAX）24L跑道起飛，目的地為巴比提；約1分鐘後，美國航空AA1660班機（空中巴士A321-200，註冊編號N191UW）自25R跑道起飛，目的地為達拉斯—沃斯堡。AF28獲准執行SUMMR2標準儀器離場程序，但起飛後不久意外左轉，偏離指定航路，朝AA1660的離場路徑接近。當時AA1660位於2,000呎、爬升至5,000呎途中，航管指示其維持2,000呎；初步飛行追蹤報告指出，兩機垂直間隔一度僅約400呎（121公尺）。",
-          "航管隨即指示AF28立即轉向航向270度，並向AA1660發出交通警示，通報其12點鐘方向不到1英里處有另一架飛機；AA1660確認維持2,000呎並減緩爬升。隨後AF28獲指示直飛DART航點，依指定離場程序恢復爬升。航管其後詢問AF28機組的離場許可，機組確認獲指示飛SUMMR2離場程序；航管告知可能涉及機師偏離，並提供電話號碼供後續聯繫。",
-          "兩機隨後繼續前往目的地，AA1660其後獲准爬升至17,000呎，速度限制250節。事件中未接獲人員受傷或飛機損壞報告；截至11月8日，尚未公開官方調查結果或已確認的偏離原因。Simple Flying表示曾聯繫法航徵詢回應，但發言人未能即時回覆。"
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "airlines": [
+          "Air France",
+          "American Airlines"
         ],
-        "summary": "法航AF28班機自洛杉磯起飛後未依指定離場程序左轉，朝美航AA1660班機航路接近，兩機垂直間隔一度僅約400呎；航管即時介入，兩機均平安續飛目的地，無人受傷。",
-        "title": "法航A350起飛偏離航路，洛杉磯上空與美航A321僅距400呎"
-      }
+        "aircraft_models": [
+          "Airbus A350-900",
+          "Airbus A321-200"
+        ],
+        "airports": [
+          "Los Angeles International Airport"
+        ],
+        "flight_numbers": [
+          "AF28",
+          "AA1660"
+        ],
+        "event_dates": [
+          "November 7, 2026"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "airlines",
+          "value": "Air France",
+          "sourceQuote": "An Air France Airbus A350-900 and an American Airlines Airbus A321-200 were involved in a near-mid-air collision shortly after departing Los Angeles International Airport (LAX) on November 7, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
+        },
+        {
+          "entityType": "airlines",
+          "value": "American Airlines",
+          "sourceQuote": "An Air France Airbus A350-900 and an American Airlines Airbus A321-200 were involved in a near-mid-air collision shortly after departing Los Angeles International Airport (LAX) on November 7, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "Airbus A350-900",
+          "sourceQuote": "An Air France Airbus A350-900 and an American Airlines Airbus A321-200 were involved in a near-mid-air collision shortly after departing Los Angeles International Airport (LAX) on November 7, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "Airbus A321-200",
+          "sourceQuote": "An Air France Airbus A350-900 and an American Airlines Airbus A321-200 were involved in a near-mid-air collision shortly after departing Los Angeles International Airport (LAX) on November 7, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
+        },
+        {
+          "entityType": "airports",
+          "value": "Los Angeles International Airport",
+          "sourceQuote": "An Air France Airbus A350-900 and an American Airlines Airbus A321-200 were involved in a near-mid-air collision shortly after departing Los Angeles International Airport (LAX) on November 7, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
+        },
+        {
+          "entityType": "flight_numbers",
+          "value": "AF28",
+          "sourceQuote": "Air France AF28 departed from Runway 24L, while American Airlines AA1660 took off from Runway 25R.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
+        },
+        {
+          "entityType": "flight_numbers",
+          "value": "AA1660",
+          "sourceQuote": "Air France AF28 departed from Runway 24L, while American Airlines AA1660 took off from Runway 25R.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "November 7, 2026",
+          "sourceQuote": "An Air France Airbus A350-900 and an American Airlines Airbus A321-200 were involved in a near-mid-air collision shortly after departing Los Angeles International Airport (LAX) on November 7, 2026.",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
+        }
+      ],
+      "evidenceVersion": 2,
+      "airportCodeEvidence": [
+        {
+          "name": "Los Angeles International Airport",
+          "code": "LAX",
+          "sourceQuote": "Los Angeles International Airport (LAX)",
+          "sourceUrl": "https://www.aerotime.aero/articles/air-france-a350-departure-deviation-brings-it-close-to-american-a321-at-lax"
+        },
+        {
+          "name": "Los Angeles International Airport",
+          "code": "LAX",
+          "sourceQuote": "Los Angeles International Airport (LAX)",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/air-france-american-airlines-near-miss-lax/"
+        }
+      ]
     }
   ]
 }
