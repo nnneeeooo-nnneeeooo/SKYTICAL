@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-11-09T23:12Z",
-  "targetDateTpe": "2026-11-10",
+  "generatedUtc": "2026-11-10T18:03Z",
+  "targetDateTpe": "2026-11-11",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "gemini:gemini-3.6-flash",
+  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
   "sourceArticleIds": [
-    "a-philippine-airlines-manila-chicago-nonstop-20261108",
-    "a-strong-jet-stream-transatlantic-overspeed-incidents-20261108",
-    "a-air-france-a350-american-a321-lax-near-miss-20261107",
-    "a-20261108-1911-china-airlines-reports-record-first-thre",
-    "a-united-737-jet-blast-flips-cessna-john-wayne-20261107",
-    "a-southwest-b737-engine-shutdown-divert-los-angeles-20261106"
+    "a-airbaltic-lufthansa-wet-lease-a220-20261109",
+    "a-airbus-a350-1000ulr-qantas-world-record-20261109",
+    "a-delta-first-a350-1000-full-livery-20261109",
+    "a-envoy-e175-nose-wheel-detaches-miami-20261107",
+    "a-lingus-a330-weather-radar-failure-dublin-return-20261109",
+    "a-united-787-odour-diverts-athens-20261109"
   ],
   "prompts": {
     "zh": [
-      "想瞭解菲律賓航空馬尼拉直飛芝加哥航線",
-      "查詢英國航空波音777過往飛航紀錄",
-      "搜尋法航A350於洛杉磯起飛的相關紀錄",
-      "幫我搜尋華航營運與財務相關新聞",
-      "查看約翰韋恩機場塞斯納172的事件訊息",
-      "搜尋西南航空轉降洛杉磯班機的詳細動態"
+      "airBaltic A220 濕租漢莎",
+      "A350-1000ULR 创纪录 墨爾本",
+      "達美 A350-1000 塗裝亮相",
+      "美鷹 E175 前輪脫落 邁阿密",
+      "愛爾蘭 A330 天氣雷達 EI107 都柏林",
+      "聯合 787 艙內異味 雅典 轉降"
     ],
     "en": [
-      "Search Philippine Airlines Manila to Chicago route",
-      "Look up British Airways Boeing 777 flights",
-      "Search Air France A350 flight info at LAX",
-      "Search financial performance for China Airlines",
-      "Look for Cessna 172 news at John Wayne Airport",
-      "Search Southwest flights diverting to Los Angeles"
+      "airBaltic A220 wet lease Lufthansa",
+      "A350-1000ULR record flight Melbourne Toulouse",
+      "Delta A350-1000 livery debut June 2027",
+      "Envoy E175 nose wheel off Miami AA3618",
+      "Aer Lingus A330 weather radar EI107 Dublin return",
+      "United 787 cabin odour divert Athens UA168"
     ]
   }
 }
