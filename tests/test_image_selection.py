@@ -31,7 +31,9 @@ class ImageSelectionTests(unittest.TestCase):
         reviewed = photo("Jet2_B737_800", kind="source_image", curated=True,
                          description="Jet2 737-800, not the current incident")
         self.assertIsNone(policy.rejection_reason(story, reviewed))
-        self.assertEqual(policy.rejection_reason(story, dict(reviewed, curated=False)),
+        file_photo = dict(reviewed, kind="file_photo")
+        self.assertIsNone(policy.rejection_reason(story, file_photo))
+        self.assertEqual(policy.rejection_reason(story, dict(file_photo, curated=False)),
                          "roundup")
 
     def test_editorially_curated_photos_are_preserved_with_source_provider(self):

@@ -157,7 +157,7 @@ def rejection_reason(article, raw, captions=None):
     import images
     if article.get("articleFormat") == "roundup" and not (
             isinstance(raw, dict) and raw.get("curated") is True
-            and raw.get("kind") == "source_image"
+            and raw.get("kind") in {"source_image", "file_photo"}
             and raw.get("description")):
         return "roundup"
     if manual_image(article, raw):
