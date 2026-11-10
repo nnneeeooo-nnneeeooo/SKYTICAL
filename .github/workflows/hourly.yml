@@ -97,6 +97,7 @@ jobs:
           python tests/test_images.py
           python tests/test_image_selection.py
           python -m pytest -q tests/test_source_images.py
+          python pipeline/image_selection.py
           python tests/test_recent_image_quality.py
           python tests/test_manufacturer_sources.py
           python tests/test_source_links.py
