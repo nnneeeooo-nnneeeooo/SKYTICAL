@@ -1497,59 +1497,16 @@ def header_search_placeholders(lang: str) -> tuple[str, ...]:
     return tuple(L[lang]["headerSearchPlaceholders"])
 
 
-def _keyword_summary(value: str, lang: str, limit: int) -> str:
-    """Turn verified text into a bounded line of complete factual clauses."""
-    text = re.sub(r"\s+", " ", str(value or "")).strip()
-    if lang == "zh":
-        text = re.sub(r"^(?:根據|據)[^，]{2,30}(?:報導|資料|消息)[，,]", "", text)
-        text = re.sub(r"[，。！？：—–|]+", "；", text)
-        parts = [part.strip("； ") for part in text.split("；")
-                 if part.strip("； ")]
-        selected = []
-        for part in parts[:3]:
-            candidate = "；".join([*selected, part])
-            if len(candidate) <= limit:
-                selected.append(part)
-                continue
-            if not selected:
-                selected.append(part[:limit].rstrip("，；、 "))
-            break
-        return "；".join(selected).rstrip("。； ")
-
-    text = re.sub(r"\s*[:—–|]+\s*", "; ", text)
-    words = text.split()
-    return " ".join(words[:limit]).rstrip(".,;: ")
-
-
-def _compact_mixed_title(value: str) -> str:
-    """Remove cosmetic CJK/Latin spacing without splitting proper names."""
-    text = re.sub(r"\s+", " ", str(value or "")).strip()
-    text = re.sub(r"(?<=[一-鿿）])\s+(?=[A-Za-z0-9「（])", "", text)
-    return re.sub(r"(?<=[A-Za-z0-9」）])\s+(?=[一-鿿（])", "", text)
-
-
 def notification_summary(value: str, lang: str, title: str = "") -> str:
-    """Return a complete two-line summary without visual ellipsis."""
+    """Keep the editorial summary intact; CSS controls the card's line count."""
     text = re.sub(r"\s+", " ", str(value or "")).strip()
-    if not text:
-        return text
-    if lang == "zh":
-        limit = 38
-        if len(text) <= limit:
-            return text.rstrip("。 ")
-        title_text = _compact_mixed_title(title)
-        if title_text and len(title_text) <= limit:
-            return title_text.rstrip("。 ")
-        return _keyword_summary(text, lang, limit)
-
-    words = text.split()
-    limit_words = 14
-    if len(words) <= limit_words:
-        return text.rstrip(". ")
-    title_text = re.sub(r"\s+", " ", str(title or "")).strip()
-    if title_text and len(title_text.split()) <= limit_words:
-        return title_text.rstrip(". ")
-    return _keyword_summary(text, lang, limit_words)
+    # Do not replace a long summary with its headline, or cut names, numbers
+    # and factual clauses to fit a character/word budget.
+    def comparable(value):
+        return re.sub(r"\s+", "", str(value or "")).rstrip("。.!！?？").casefold()
+    if not text or comparable(text) == comparable(title):
+        return ""
+    return text
 
 
 _ENGLISH_LABELS = load_json(

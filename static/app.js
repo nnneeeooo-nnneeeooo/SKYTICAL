@@ -384,7 +384,10 @@
       }
       if (heroKicker) heroKicker.textContent = story.kicker || "";
       if (heroTitle) heroTitle.textContent = story.title || "";
-      if (heroSummary) heroSummary.textContent = story.summary || "";
+      if (heroSummary) {
+        heroSummary.textContent = story.summary || "";
+        heroSummary.closest(".summary-preview").toggleAttribute("data-summary-empty", !story.summary);
+      }
     }
 
     function reflectHeroDots() {

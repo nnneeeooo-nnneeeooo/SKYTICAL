@@ -82,28 +82,13 @@ def main() -> None:
     for article_html in (airadvisor, jetstar, emirates):
         assert 'class="summary-preview' not in article_html
 
-    zh_long = "中華航空8月10日宣布調整桃園至福岡航班，受機場作業限制影響，兩班延後三小時，旅客須留意報到時間。" * 2
-    zh_short = build.notification_summary(
-        zh_long, "zh", "中華航空調整桃園至福岡航班 兩班延後三小時")
-    assert zh_short == "中華航空調整桃園至福岡航班 兩班延後三小時"
-    assert len(zh_short) <= 38 and "…" not in zh_short
-    david_fallback = build.notification_summary(
-        "美國參議院通過確認案後，David Cummins已正式宣誓就任TSA第八任局長。",
-        "zh", "David Cummins宣誓就任TSA第八任局長")
-    assert david_fallback == "David Cummins宣誓就任TSA第八任局長"
-    assert "David；Cummins" not in david_fallback
-    cessna_fallback = build.notification_summary(
-        "Textron Aviation宣布Cessna Citation CJ3 Gen3完成首飛。",
-        "zh", "Cessna Citation CJ3 Gen3 於 Wichita 完成首飛")
-    assert cessna_fallback == "Cessna Citation CJ3 Gen3於Wichita完成首飛"
-    emirates_fallback = build.notification_summary(
-        "根據Simple Flying報導，阿聯酋航空已暫停PRG與GLA的A380航班。",
-        "zh", "阿聯酋航空暫停PRG與GLA A380航班")
-    assert emirates_fallback != "阿聯酋航空" and "A380航班" in emirates_fallback
-    en_short = build.notification_summary(
-        "word " * 60, "en",
-        "China Airlines Adjusts Two Taoyuan-Fukuoka Flights After Airport Restrictions")
-    assert len(en_short.split()) <= 14 and "…" not in en_short
+    # Cards retain the supplied summary; fitting a small card must never
+    # substitute the headline or cut an aircraft name or number in half.
+    zh_summary = "空中巴士A350-1000ULR以24小時24分完成墨爾本至土魯斯12,500公里飛行，並取得認證。"
+    assert build.notification_summary(zh_summary, "zh", "A350-1000ULR創飛行紀錄") == zh_summary
+    en_summary = "The aircraft completed the flight in 24 hours and 24 minutes, retaining the full verified distance of 12,500 kilometres."
+    assert build.notification_summary(en_summary, "en", "Aircraft sets flight record") == en_summary
+    assert build.notification_summary("航空公司增班。", "zh", "航空公司增班") == ""
 
     assert "@media (max-width: 1100px)" in css
     assert "@media (max-width: 900px)" not in css
