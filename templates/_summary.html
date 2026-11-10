@@ -1,6 +1,7 @@
 {% macro notification_summary(text, label, modifier='') -%}
+{% if text or modifier == 'hero' %}
 <div class="summary-preview{% if modifier %} summary-preview--{{ modifier }}{% endif %}"
-     role="note" aria-label="{{ label }}">
+     role="note" aria-label="{{ label }}"{% if not text %} data-summary-empty{% endif %}>
   <span class="summary-preview__label">
     <svg class="summary-preview__icon" viewBox="0 0 24 24"
          aria-hidden="true" focusable="false">
@@ -9,4 +10,5 @@
   </span>
   <span class="summary-preview__text">{{ text }}</span>
 </div>
+{% endif %}
 {%- endmacro %}

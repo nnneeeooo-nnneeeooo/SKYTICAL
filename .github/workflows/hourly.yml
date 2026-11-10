@@ -106,6 +106,7 @@ jobs:
           python tests/test_provider_health.py
           python tests/test_free_provider_probe.py
           python tests/test_build_resilience.py
+          python -m pytest -q tests/test_summary_display.py
           python tests/test_public_articles.py
           python tests/test_text_spacing.py
           node tests/test_text_spacing_client.js
@@ -167,7 +168,9 @@ jobs:
         run: python tests/test_provider_health.py
 
       - name: Test summary boundary guard
-        run: python tests/test_summary_guard.py
+        run: |
+          python tests/test_summary_guard.py
+          python -m pytest -q tests/test_summary_display.py
 
       - name: Test source enrichment and flightwatch resilience
         run: |

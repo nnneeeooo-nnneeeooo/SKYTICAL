@@ -458,6 +458,7 @@ html[lang^="zh"] .feed-category {
   line-clamp: 2; max-height: 3.16em; overflow: hidden;
   overflow-wrap: anywhere; text-overflow: ellipsis;
 }
+.summary-preview--hero[data-summary-empty] { visibility: hidden; }
 .summary-preview--hero { margin: 0; }
 .summary-preview--feed { grid-area: summary; margin-top: 7px; }
 .summary-preview--feed .summary-preview__icon { width: 15px; height: 15px; }
