@@ -122,5 +122,43 @@ class AirportSourceCodesTests(unittest.TestCase):
         self.assertIn("Southampton (SOU)", revised["en"]["body"][0])
 
 
+
+    def test_writer_prompt_surfaces_source_iata_pairs_before_drafting(self):
+        import write
+        group = {
+            "id": "iata-source-pair-test",
+            "primarySource": "AeroTime",
+            "items": [{
+                "source": "AeroTime",
+                "url": SOURCE_URL,
+                "title": "Flights from Taipei-Taoyuan (TPE)",
+                "summary": "Service to San Francisco International Airport (SFO).",
+                "publishedUtc": "2026-11-10T00:00:00Z",
+            }],
+        }
+        prompt = write.group_prompt(group)
+        block = write.airport_code_prompt_block(group["items"])
+        self.assertIn("<SYSTEM_VERIFIED_SOURCE_AIRPORT_CODES>", prompt)
+        self.assertIn(block, prompt)
+        self.assertIn('"name": "Taipei-Taoyuan"', block)
+        self.assertIn('"iata": "TPE"', block)
+        self.assertIn('"iata": "SFO"', block)
+        self.assertIn('"sourceQuote": "Taipei-Taoyuan (TPE)"', block)
+        self.assertIn("MANDATORY AIRPORT IATA RETENTION", write.SYSTEM_PROMPT)
+        self.assertIn("zh.title, zh.body, en.title", write.SYSTEM_PROMPT)
+
+    def test_writer_prompt_keeps_invalid_and_background_pairs_out(self):
+        import write
+        self.assertEqual(write.airport_code_prompt_block([
+            {"url": SOURCE_URL, "summary": "Taoyuan International Airport (JFK)"},
+            {"url": SOURCE_URL, "summary": "London Heathrow (LHR)",
+             "backgroundCompanion": True},
+        ]), "")
+        pairs = write.airport_code_prompt_block([
+            {"url": SOURCE_URL, "fulltext": "Flights at Taipei–Taoyuan（TPE）."}
+        ])
+        self.assertIn('"iata": "TPE"', pairs)
+        self.assertIn("Taipei–Taoyuan（TPE）", pairs)
+
 if __name__ == "__main__":
     unittest.main()
