@@ -191,6 +191,10 @@ def rejection_reason(article, raw, captions=None):
     # Documented event images have their own caption, not a generic stock label.
     if im.get("kind") == "event_photo" and not source_bound:
         return "unbound-event-photo"
+    # A publisher caption and credit identify a photo, but do not grant reuse.
+    # CNA explicitly reserves its images; do not publish an unlicensed embed.
+    if im.get("provider") == "中央社 CNA" and not im.get("license"):
+        return "publisher-image-rights-unverified"
     stock = not source_bound or im.get("kind") != "event_photo"
     if stock and re.search(r"\b(?:map|logo|diagram|schematic|wreckage|debris|statue|"
                            r"museum|kabiin|mock up|mockup|rendering|model kit)\b|muuseum", normalized(ev)):

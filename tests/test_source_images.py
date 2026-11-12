@@ -22,7 +22,7 @@ def itf_article():
     return json.loads(path.read_text(encoding="utf-8"))["articles"][0]
 
 
-def test_cna_itf_reporter_photo_passes_actual_article_gate():
+def test_cna_itf_reporter_photo_has_no_reuse_permission():
     photo = source.parse_cna_photo(ITF_HTML, ITF_URL)
     assert photo["url"] == ITF_PHOTO
     assert photo["credit"] == "中央社記者江明晏攝"
@@ -31,7 +31,8 @@ def test_cna_itf_reporter_photo_passes_actual_article_gate():
     assert photo["kind"] == "event_photo"
     article = itf_article()
     assert images.find_airline(article) == "China Airlines"
-    assert rejection_reason(article, photo) is None
+    assert rejection_reason(article, photo) == "publisher-image-rights-unverified"
+    assert source.supported_source(article) is None
 
 
 def test_cna_lazy_lead_is_bound_to_its_own_caption():
@@ -41,7 +42,7 @@ def test_cna_lazy_lead_is_bound_to_its_own_caption():
     assert photo["url"] == second
     assert photo["subject"].startswith("長榮航空")
     assert "華航" not in photo["sourceCaption"]
-    assert rejection_reason(itf_article(), photo) is None
+    assert rejection_reason(itf_article(), photo) == "publisher-image-rights-unverified"
     assert source.parse_cna_photo(html.replace("data-src", "unused-src"), ITF_URL) is None
 
 
@@ -56,13 +57,13 @@ def test_operator_multi_carrier_rule_excludes_background_and_unlisted_airlines()
     photo = source.parse_cna_photo(ITF_HTML, ITF_URL)
     for unrelated in ("台灣虎航", "日本航空"):
         bad = dict(photo, subject=f"{unrelated}旅展活動", sourceCaption=f"{unrelated}旅展活動。中央社記者江明晏攝")
-        assert rejection_reason(article, bad) == "source-airline-unverified"
+        assert rejection_reason(article, bad) == "publisher-image-rights-unverified"
     assert not images._secondary_image_airline_allowed(
         {"entities": {"operators": ["US Air Force"]}, "en": {"title": "US Air Force update"}},
         ["US Air Force"])
 
 
-def test_itf_upgrade_needs_one_source_request_and_no_stock_search(tmp_path, monkeypatch):
+def test_itf_cna_photo_is_not_automatically_embedded(tmp_path, monkeypatch):
     article = itf_article()
     article["publishedUtc"] = images.now_utc().isoformat()
     article["image"] = {"provider": "Wikimedia Commons", "kind": "file_photo",
@@ -78,14 +79,12 @@ def test_itf_upgrade_needs_one_source_request_and_no_stock_search(tmp_path, monk
         calls.append((url, kwargs))
         return SimpleNamespace(url=url, text=ITF_HTML, raise_for_status=lambda: None)
     monkeypatch.setattr(source.requests, "get", get)
-    monkeypatch.setattr(images, "resolve_image", lambda *a, **k: pytest.fail("unexpected stock lookup"))
+    monkeypatch.setattr(images, "resolve_image", lambda *a, **k: None)
     assert images.main() == 0
     published = json.loads(path.read_text(encoding="utf-8"))["articles"][0]
-    assert published["image"]["url"] == ITF_PHOTO
+    assert "image" not in published
     assert images.main() == 0
-    assert len(calls) == 1
-    assert calls[0][0] == ITF_URL
-    assert calls[0][1]["timeout"] == (5, 15)
+    assert calls == []
 
 URL = "https://www.cna.com.tw/news/ahel/202609070138.aspx"
 PHOTO = "https://imgcdn.cna.com.tw/www/WebPhotos/1024/20260907/photo.jpg"
@@ -239,8 +238,9 @@ def test_aerotime_source_image_is_reparsed_after_parser_upgrade():
 
 
 def setup_batch(tmp_path, monkeypatch, image=None):
-    article = {"id": "test", "publishedUtc": images.now_utc().isoformat(),
-               "sources": [{"url": URL}]}
+    article = official_article()
+    article["id"] = "test"
+    article["publishedUtc"] = images.now_utc().isoformat()
     if image:
         article["image"] = image
     path = tmp_path / "batch.json"
@@ -257,10 +257,10 @@ def test_upgrade_stock_without_rss_image_and_idempotence(tmp_path, monkeypatch):
                        {"provider": "Wikimedia Commons", "kind": "file_photo"})
     calls = []
     monkeypatch.setattr(images, "lookup_source_photo",
-                        lambda article: calls.append(article) or source.parse_cna_photo(HTML, URL))
+                        lambda article: calls.append(article) or next(source.parse_official_photo(OFFICIAL_HTML, OFFICIAL_URL)))
     monkeypatch.setattr(images, "resolve_image", lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("stock lookup")))
     images.main()
-    assert json.loads(path.read_text(encoding="utf-8"))["articles"][0]["image"]["url"] == PHOTO
+    assert json.loads(path.read_text(encoding="utf-8"))["articles"][0]["image"]["url"] == OFFICIAL_PHOTO
     images.main()
     assert len(calls) == 1
 
@@ -274,11 +274,11 @@ def test_missing_image_prefers_source(tmp_path, monkeypatch):
         "reason": "source-aircraft-model-unverified",
     }
     path.write_text(json.dumps(batch), encoding="utf-8")
-    monkeypatch.setattr(images, "lookup_source_photo", lambda _: source.parse_cna_photo(HTML, URL))
+    monkeypatch.setattr(images, "lookup_source_photo", lambda _: next(source.parse_official_photo(OFFICIAL_HTML, OFFICIAL_URL)))
     monkeypatch.setattr(images, "resolve_image", lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("stock lookup")))
     images.main()
     article = json.loads(path.read_text(encoding="utf-8"))["articles"][0]
-    assert article["image"]["url"] == PHOTO
+    assert article["image"]["url"] == OFFICIAL_PHOTO
     assert "imageSelection" not in article
 
 
@@ -295,7 +295,7 @@ def test_failure_keeps_fallback_and_retries(tmp_path, monkeypatch):
     assert len(calls) == 1
     assert json.loads(path.read_text(encoding="utf-8"))["articles"][0]["image"] == fallback
     cache = json.loads(images.CACHE_PATH.read_text(encoding="utf-8"))
-    cache["sources"][URL]["next_retry_utc"] = "2000-01-01T00:00:00+00:00"
+    cache["sources"][OFFICIAL_URL]["next_retry_utc"] = "2000-01-01T00:00:00+00:00"
     images.CACHE_PATH.write_text(json.dumps(cache), encoding="utf-8")
     images.main()
     assert len(calls) == 2
@@ -317,11 +317,11 @@ def test_source_network_failure_preserves_stock_and_existing_backoff(tmp_path, m
     monkeypatch.setattr(source.requests, "get", get)
     assert images.main() == 0
     assert images.main() == 0
-    assert calls == [URL]
+    assert calls == [OFFICIAL_URL]
     article = json.loads(path.read_text(encoding="utf-8"))["articles"][0]
     assert article["image"] == fallback
     cache = json.loads(images.CACHE_PATH.read_text(encoding="utf-8"))
-    retry = images.parse_iso(cache["sources"][URL]["next_retry_utc"])
+    retry = images.parse_iso(cache["sources"][OFFICIAL_URL]["next_retry_utc"])
     assert timedelta(hours=5, minutes=59) < retry - images.now_utc() <= timedelta(hours=6)
 
 
@@ -329,7 +329,7 @@ def test_parser_upgrade_retries_old_negative_source_cache(tmp_path, monkeypatch)
     path = setup_batch(tmp_path, monkeypatch)
     images.CACHE_PATH.write_text(json.dumps({
         "articles": {},
-        "sources": {URL: {
+        "sources": {OFFICIAL_URL: {
             "image": None,
             "rejection_reason": "no-event-photo",
             "next_retry_utc": "2999-01-01T00:00:00+00:00",
@@ -338,8 +338,8 @@ def test_parser_upgrade_retries_old_negative_source_cache(tmp_path, monkeypatch)
     calls = []
     monkeypatch.setattr(
         images, "lookup_source_photo",
-        lambda article: calls.append(article) or source.parse_cna_photo(
-            HTML, URL))
+        lambda article: calls.append(article) or next(source.parse_official_photo(
+            OFFICIAL_HTML, OFFICIAL_URL)))
     monkeypatch.setattr(
         images, "resolve_image",
         lambda *args, **kwargs: (_ for _ in ()).throw(
@@ -347,7 +347,7 @@ def test_parser_upgrade_retries_old_negative_source_cache(tmp_path, monkeypatch)
     images.main()
     assert len(calls) == 1
     assert json.loads(path.read_text(encoding="utf-8"))["articles"][0][
-        "image"]["url"] == PHOTO
+        "image"]["url"] == OFFICIAL_PHOTO
 
 
 OFFICIAL_URL = "https://news.klm.com/a350-update/"
