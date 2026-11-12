@@ -36,6 +36,7 @@
         {% if a.image.kind in ('file_photo', 'airframe_photo') %}<span data-image-kind>{% if html_lang.startswith('zh') %}資料照片，非本次事件現場{% else %}File photo; not the current event{% endif %}</span>{% endif %}
         {% if a.image.kind == 'source_image' %}<span data-image-kind>{% if html_lang.startswith('zh') %}來源配圖，非本次事件現場照片{% else %}Source image; not a photo of the current event{% endif %}</span>{% endif %}
         {% if a.image.kind == 'illustration' %}<span data-image-kind>{% if html_lang.startswith('zh') %}示意／合成圖，非實景照片{% else %}Illustration / composite; not a documentary photo{% endif %}</span>{% endif %}
+        {% if a.image.selectionModel == 'gpt-6.1-terra' %}<span data-image-model>Image Powered By GPT 6.1 <span class="nav-beta">BETA</span></span>{% endif %}
         {% if a.image.credit %}<span>© {{ a.image.credit }}</span>{% endif %}
         {% if a.image.license %}<span>{{ a.image.license }}</span>{% endif %}
         {% if a.image.link %}
