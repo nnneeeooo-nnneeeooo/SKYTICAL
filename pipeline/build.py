@@ -1126,9 +1126,9 @@ def normalize_image(raw_img, titles=()):
             "license": str(raw_img.get("license") or "") or None,
             "provider": str(raw_img.get("provider") or cached.get("provider") or "") or None,
             "subject": subject,
-              "selectionModel": ("gpt-6.1-terra"
-                                 if raw_img.get("selectionModel") == "gpt-6.1-terra"
-                                 else None),
+            "selectionModel": ("gpt-6.1-terra"
+                               if raw_img.get("selectionModel") == "gpt-6.1-terra"
+                               else None),
             "kind": (kind
                      if kind in ("source_image", "illustration", "airframe_photo",
                                                 "file_photo",

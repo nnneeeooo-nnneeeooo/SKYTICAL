@@ -42,7 +42,7 @@ def _text(response):
     return json.loads("".join(parts))
 
 
-def _ask(content, *, max_output_tokens=1200):
+def _ask(content, *, max_output_tokens=2048):
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
         raise RuntimeError("OPENAI_API_KEY unavailable")
@@ -153,7 +153,7 @@ def find_image(article, usage):
     for candidate in candidates:
         content.append({"type": "input_image", "image_url": candidate["url"],
                         "detail": "low"})
-    selection = _ask(content, max_output_tokens=800)
+    selection = _ask(content, max_output_tokens=2048)
     index = selection.get("index")
     if type(index) is not int or not 0 <= index < len(candidates):
         return None
