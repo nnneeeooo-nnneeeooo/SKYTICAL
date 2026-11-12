@@ -1498,7 +1498,8 @@ def header_search_placeholders(lang: str) -> tuple[str, ...]:
 
 
 def notification_summary(value: str, lang: str, title: str = "") -> str:
-    """Keep the editorial summary intact; CSS controls the card's line count."""
+    """Use a sentence-safe, concise excerpt of the editorial summary."""
+    from summary_guard import concise_preview
     text = re.sub(r"\s+", " ", str(value or "")).strip()
     # Do not replace a long summary with its headline, or cut names, numbers
     # and factual clauses to fit a character/word budget.
@@ -1506,7 +1507,8 @@ def notification_summary(value: str, lang: str, title: str = "") -> str:
         return re.sub(r"\s+", "", str(value or "")).rstrip("。.!！?？").casefold()
     if not text or comparable(text) == comparable(title):
         return ""
-    return text
+    preview = concise_preview(text, lang)
+    return preview if comparable(preview) != comparable(title) else ""
 
 
 _ENGLISH_LABELS = load_json(
