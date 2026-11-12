@@ -22,8 +22,11 @@ import build
      "The airline will operate up to six Airbus A220-300 aircraft with crew during summer and four during winter under the new agreement.", "en"),
     ("Airline sets a record", "The flight covered 12,507 kilometres in 24 hours and 24 minutes.", "en"),
 ])
-def test_long_summary_keeps_original_facts_instead_of_short_headline(title, summary, lang):
-    assert build.notification_summary(summary, lang, title) == summary
+def test_single_sentence_keeps_original_facts_instead_of_short_headline(title, summary, lang):
+    expected = summary
+    if title.startswith("airBaltic"):
+        expected = "airBaltic與漢莎集團簽署新的長期濕租協議，夏季最多以6架、冬季4架空中巴士A220-300含機組為漢莎營運。"
+    assert build.notification_summary(summary, lang, title) == expected
 
 
 @pytest.mark.parametrize("title,summary,lang", [
@@ -59,3 +62,18 @@ def test_article_and_carousel_views_keep_the_editorial_summary_without_mutation(
         assert view["display_summary"] == article[lang]["summary"]
         assert build.hero_rotation_view(view, lang)["summary"] == view["display_summary"]
         assert raw[lang]["summary"] == article[lang]["summary"]
+
+
+@pytest.mark.parametrize("lang,summary,expected", [
+    ("zh", "航空公司下月開航，每週三班並以A350-1000執飛。第二段說明後續計畫。第三段是歷史背景。第四段為其他細節。", "航空公司下月開航，每週三班並以A350-1000執飛。"),
+    ("en", "The U.S. airline will launch the route next month using Airbus A350-1000 aircraft. Additional details follow in a separate sentence. Historical context is not part of the preview.", "The U.S. airline will launch the route next month using Airbus A350-1000 aircraft."),
+    ("zh", "航線下月開航。每週三班。使用A350-1000執飛。還有其他消息。", "航線下月開航。每週三班。使用A350-1000執飛。"),
+])
+def test_preview_prefers_one_sentence_and_never_exceeds_three(lang, summary, expected):
+    assert build.notification_summary(summary, lang, "不同標題 / Different headline") == expected
+
+
+def test_long_chinese_sentence_stops_at_clause_boundary_without_cutting_a_number():
+    summary = "空中巴士A350-1000ULR完成12,507公里飛行，飛航時間為24小時24分，" + "原始來源已說明相關飛行細節與完整認證程序" * 8 + "。"
+    preview = build.notification_summary(summary, "zh", "創飛行紀錄")
+    assert preview == "空中巴士A350-1000ULR完成12,507公里飛行，飛航時間為24小時24分。"

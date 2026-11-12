@@ -30,6 +30,51 @@ def _ends_sentence(text: str) -> bool:
                 == len(str(text or '').rstrip()))
 
 
+def concise_preview(text: str, lang: str) -> str:
+    """Extract one factual sentence, adding at most two short context sentences."""
+    clean = re.sub(r"\s+", " ", str(text or "")).strip()
+    sentences, start = [], 0
+    for match in _SENTENCE_END_RE.finditer(clean):
+        if lang == "en" and match.group().startswith("."):
+            token = clean[start:match.end()].split()[-1].rstrip(_CLOSERS)
+            if re.fullmatch(r"(?i)(?:[A-Z]\.){2,}|(?:Mr|Mrs|Ms|Dr|Prof|St|Inc|Co|Ltd|vs|etc)\.", token):
+                continue
+        sentences.append(clean[start:match.end()].strip())
+        start = match.end()
+    if clean[start:].strip():
+        sentences.append(clean[start:].strip())
+    if not sentences:
+        return ""
+    first = sentences[0]
+    if lang == "zh" and len(first) > 60:
+        # Clause boundaries preserve aircraft names and numbers like 12,507.
+        clauses = re.split(r"[，；;]", first)
+        selected = [clauses[0]]
+        for clause in clauses[1:3]:
+            if len("，".join(selected + [clause])) > 60 and len("".join(selected)) >= 12:
+                break
+            selected.append(clause)
+        return "，".join(selected).rstrip("，；;。！？") + "。"
+    if lang == "en" and len(first.split()) > 30:
+        clauses = re.split(r",(?!\d)|;", first)
+        selected = [clauses[0]]
+        for clause in clauses[1:3]:
+            if len(", ".join(selected + [clause.strip()]).split()) > 30 and len(" ".join(selected).split()) >= 8:
+                break
+            selected.append(clause.strip())
+        return ", ".join(selected).rstrip(".,; ") + "."
+    selected = [first]
+    for sentence in sentences[1:3]:
+        size = len("".join(selected)) if lang == "zh" else len(" ".join(selected).split())
+        if size >= (20 if lang == "zh" else 12):
+            break
+        candidate = " ".join(selected + [sentence])
+        if (len(candidate) if lang == "zh" else len(candidate.split())) > (60 if lang == "zh" else 30):
+            break
+        selected.append(sentence)
+    return ("" if lang == "zh" else " ").join(selected)
+
+
 def sentence_safe_fallback(text: str) -> str:
     """Return a compact summary without exposing an accidental hard cut."""
     clean = re.sub(r"\s+", " ", str(text or "")).strip()
