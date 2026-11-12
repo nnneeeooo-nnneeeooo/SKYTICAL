@@ -104,10 +104,6 @@ def supported_source(article):
     for source in article.get("sources") or []:
         url = source.get("url", "") if isinstance(source, dict) else ""
         parts = urlsplit(url)
-        if (parts.scheme == "https" and parts.hostname in
-                {"www.cna.com.tw", "cna.com.tw"}
-                and re.fullmatch(r"/news/[a-z]+/\d+\.aspx", parts.path)):
-            return url
         if (parts.scheme == "https" and parts.hostname == "www.aerotime.aero"
                 and re.fullmatch(r"/articles/[a-z0-9-]+/?", parts.path)):
             return url
