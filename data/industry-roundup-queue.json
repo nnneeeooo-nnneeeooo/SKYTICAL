@@ -489,6 +489,146 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-12T21:09Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261112-2109-12",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261112-2109-magnifica-air-orders-10-airbus-a220-300",
+        "publishedUtc": "2026-11-12T21:09Z",
+        "cat": "biz",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [
+          {
+            "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/11/acj220-300-magnifica-air-Large.jpeg",
+            "sources": [
+              {
+                "url": "https://aerospaceglobalnews.com/news/magnifica-air-10-airbus-a220-corporate-jets/",
+                "name": "Aerospace Global News"
+              }
+            ]
+          }
+        ],
+        "zh": {
+          "title": "Magnifica Air訂購10架空中巴士A220-300 ACJ飛機",
+          "summary": "Magnifica Air訂購10架A220 ACJ，未來機隊將增至17架。",
+          "body": [
+            "AeroTime報導，Magnifica Air訂購10架空中巴士A220-300 ACJ飛機。這筆確定訂單將使Magnifica Air未來機隊增至17架。",
+            "Aerospace Global News報導，Magnifica Air計畫以這些飛機提供高端定期航班服務，搭配低密度客艙及私人航空服務元素，包括專用航廈、地面接送和禮賓服務。",
+            "AeroTime另報導，Magnifica Air選用空中巴士的Skywise數位資料平臺，支援飛行規劃功能。Aerospace Global News指出，空中巴士與Magnifica尚未公佈這10架飛機的交付時程，也未說明它們預計何時投入服務。"
+          ]
+        },
+        "en": {
+          "title": "Magnifica Air orders 10 Airbus A220-300 ACJ aircraft",
+          "summary": "Magnifica Air orders 10 A220 ACJ jets, expanding its future fleet to 17 aircraft.",
+          "body": [
+            "AeroTime reported that Magnifica Air disclosed an order for 10 Airbus A220-300 ACJ aircraft. The firm order takes the airline’s future fleet to 17 aircraft.",
+            "Aerospace Global News reported that Magnifica Air intends to use the jets for scheduled premium services, with low-density cabins and elements of private aviation, including dedicated terminals, ground transfers and concierge assistance.",
+            "AeroTime also reported that Magnifica Air selected Airbus’ Skywise as its digital data platform, with flight planning among the functions it is intended to power. Aerospace Global News reported that Airbus and Magnifica have not announced a delivery timetable for the 10 aircraft or when they are expected to enter service."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — Magnifica Air confirms order for 10 A220 ACJ jets",
+            "url": "https://www.aerotime.aero/articles/magnifica-air-confirms-order-for-10-a220-acj-jets"
+          },
+          {
+            "name": "Aerospace Global News — Magnifica Air confirmed as buyer of 10 Airbus A220 corporat…",
+            "url": "https://aerospaceglobalnews.com/news/magnifica-air-10-airbus-a220-corporate-jets/"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-12T00:00Z",
+        "writer": "openai:gpt-6",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Magnifica Air disclosed an order for 10 Airbus A220-300 ACJ aircraft.",
+            "sourceQuote": "Magnifica Air, a Florida-based startup airline which plans to offer premium-only scheduled flights from 2027, has disclosed an order for 10 Airbus A220-300 ACJ aircraft",
+            "sourceUrl": "https://www.aerotime.aero/articles/magnifica-air-confirms-order-for-10-a220-acj-jets",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The firm order takes Magnifica Air’s future fleet to 17 aircraft.",
+            "sourceQuote": "This firm order takes Magnifica Air’s future fleet to 17 aircraft",
+            "sourceUrl": "https://www.aerotime.aero/articles/magnifica-air-confirms-order-for-10-a220-acj-jets",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "Magnifica intends to use the jets for scheduled premium services combining low-density cabins with elements of private aviation, including dedicated terminals, ground transfers and concierge assistance.",
+            "sourceQuote": "Magnifica intends to use the jets for scheduled premium services combining low-density cabins with elements of private aviation, including dedicated terminals, ground transfers and concierge assistance.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/magnifica-air-10-airbus-a220-corporate-jets/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "Magnifica Air selected Airbus’ Skywise as its digital data platform of choice to power functions such as flight planning.",
+            "sourceQuote": "Magnifica Air also confirmed that it has selected Airbus’ Skywise as its digital data platform of choice to power functions such as flight planning",
+            "sourceUrl": "https://www.aerotime.aero/articles/magnifica-air-confirms-order-for-10-a220-acj-jets",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Airbus and Magnifica have not announced a delivery timetable for the 10 aircraft or when they are expected to enter service.",
+            "sourceQuote": "Airbus and Magnifica have not announced a delivery timetable for the 10 aircraft, or when they are expected to enter service.",
+            "sourceUrl": "https://aerospaceglobalnews.com/news/magnifica-air-10-airbus-a220-corporate-jets/",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "financial_or_order_claim",
+          "conflicting_information"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "Airbus"
+          ],
+          "airlines": [
+            "Magnifica Air"
+          ],
+          "aircraft_models": [
+            "Airbus A220-300 ACJ"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Airbus",
+            "sourceQuote": "Airbus A220-300 ACJ aircraft",
+            "sourceUrl": "https://www.aerotime.aero/articles/magnifica-air-confirms-order-for-10-a220-acj-jets"
+          },
+          {
+            "entityType": "airlines",
+            "value": "Magnifica Air",
+            "sourceQuote": "Magnifica Air, a Florida-based startup airline",
+            "sourceUrl": "https://www.aerotime.aero/articles/magnifica-air-confirms-order-for-10-a220-acj-jets"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Airbus A220-300 ACJ",
+            "sourceQuote": "10 Airbus A220-300 ACJ aircraft",
+            "sourceUrl": "https://www.aerotime.aero/articles/magnifica-air-confirms-order-for-10-a220-acj-jets"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
