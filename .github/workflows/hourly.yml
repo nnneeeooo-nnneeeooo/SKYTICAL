@@ -96,6 +96,7 @@ jobs:
           python tests/test_briefing.py
           python tests/test_images.py
           python tests/test_image_selection.py
+          python -m pytest -q tests/test_terra_images.py
           python -m pytest -q tests/test_source_images.py
           python pipeline/image_selection.py
           python tests/test_recent_image_quality.py
@@ -185,6 +186,7 @@ jobs:
       - name: Test image relevance and fallback guards
         run: |
           python tests/test_image_selection.py
+          python -m pytest -q tests/test_terra_images.py
           python tests/test_images.py
           python tests/test_image_fallbacks.py
           python tests/test_volcano_images.py
@@ -196,7 +198,7 @@ jobs:
         # pinned, refresh the roundup queue and publication evidence too.
         run: |
           git fetch origin "${GITHUB_REF_NAME}"
-          for path in data/news-retry.json data/provider-health.json data/provider-routes.json data/news-search.json data/luna-editorial.json data/industry-roundup-queue.json data/articles; do
+          for path in data/news-retry.json data/provider-health.json data/provider-routes.json data/news-search.json data/luna-editorial.json data/industry-roundup-queue.json data/terra-images.json data/articles; do
             if git cat-file -e "origin/${GITHUB_REF_NAME}:$path" 2>/dev/null; then
               git checkout "origin/${GITHUB_REF_NAME}" -- "$path"
             fi
@@ -259,6 +261,7 @@ jobs:
           python pipeline/airport_codes.py
           python pipeline/image_captions.py
           python pipeline/images.py
+          python pipeline/terra_images.py
           python pipeline/image_fallbacks.py
           python tests/test_image_captions.py
           python pipeline/image_qa.py

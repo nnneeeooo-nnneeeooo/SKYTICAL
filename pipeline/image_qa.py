@@ -27,7 +27,7 @@ def _image_snapshot(image: dict) -> dict:
     return {
         key: image.get(key)
         for key in ("url", "link", "provider", "kind", "matched",
-                    "subject", "credit", "license", "photoYear")
+                    "subject", "credit", "license", "photoYear", "selectionModel")
         if image.get(key) not in (None, "")
     }
 

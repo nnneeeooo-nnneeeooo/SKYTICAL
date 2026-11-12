@@ -201,6 +201,26 @@ def rejection_reason(article, raw, captions=None):
         return "unrelated-interior"
     airline = images.find_airline(article)
     model = images.find_aircraft_type(article)
+    # A carrier's aircraft does not depict a tourism visit or trade meeting.
+    # This was the failure mode for the Pingtung/EVA Air German tourism story.
+    if (stock and airline and not model
+            and re.search(r"踩線|旅遊業者|觀光|tourism|travel agents|travel trade|familiarization", head, re.I)
+            and re.search(r"aircraft|aeroplane|airplane|boeing|airbus|\b[7A]\d{2,3}[- ]\d+\b|客機|飛機", ev, re.I)):
+        return "tourism-event-aircraft-stock"
+    if (stock and airline and not model and im.get("selectionModel") == "gpt-6.1-terra"
+            and im.get("provider") == "Wikimedia Commons"
+            and re.search(r"踩線|旅遊業者|觀光|tourism|travel agents|travel trade|familiarization", head, re.I)):
+        # A visually reviewed Commons destination/activity photo may illustrate
+        # the place, with the normal file-photo disclosure. Its file title must
+        # independently contain a named place or participant from the headline.
+        en_head = str((article.get("en") or {}).get("title") or "")
+        excluded = {"tourism", "travel", "operators", "operator", "german",
+                    "market", "growth", "host", "hosts", "european", "air",
+                    "airlines", "visitors", "visit", "county", "government"}
+        proper = {word for word in re.findall(r"\b[A-Z][a-z]{4,}\b", en_head)
+                  if word.casefold() not in excluded}
+        if any(phrase(word, ev) for word in proper):
+            return None
     headline_models = images.headline_aircraft_types(article)
     eligible_models = headline_models or ([model] if model else [])
     # The G-IV-derived G400 predates the clean-sheet G400 that first flew in
