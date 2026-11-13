@@ -3,26 +3,26 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-11-13T16:04Z",
-      "checkedUtc": "2026-11-13T10:04Z",
+      "untilUtc": "2026-11-14T00:10Z",
+      "checkedUtc": "2026-11-13T18:10Z",
       "failureClass": "unexpected",
-      "diagnostic": "publish_brief must have an empty decisionReason",
+      "diagnostic": "zh.body[2] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
-      "status": "waiting",
-      "untilUtc": "2026-11-13T16:04Z",
-      "checkedUtc": "2026-11-13T10:04Z",
-      "failureClass": "unexpected",
-      "diagnostic": "publish_brief must have an empty decisionReason",
+      "status": "verified",
+      "untilUtc": "2026-11-14T18:10Z",
+      "checkedUtc": "2026-11-13T18:10Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-11-13T10:04Z",
-      "untilUtc": "2026-11-13T16:04Z",
+      "untilUtc": "2026-11-14T00:10Z",
+      "checkedUtc": "2026-11-13T18:10Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -30,8 +30,8 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "verified",
-      "untilUtc": "2026-11-13T14:57Z",
-      "checkedUtc": "2026-11-12T14:57Z",
+      "untilUtc": "2026-11-14T18:10Z",
+      "checkedUtc": "2026-11-13T18:10Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
@@ -39,21 +39,21 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-13T14:57Z",
-      "checkedUtc": "2026-11-12T14:57Z",
+      "checkedUtc": "2026-11-13T18:10Z",
+      "untilUtc": "2026-11-14T18:10Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-11-13T16:04Z",
-      "checkedUtc": "2026-11-13T10:04Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "status": "verified",
+      "untilUtc": "2026-11-14T18:10Z",
+      "checkedUtc": "2026-11-13T18:10Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
-      "schemaMode": null
+      "schemaMode": "prompt"
     },
     "gemini:gemini-3.5-flash": {
       "status": "verified",

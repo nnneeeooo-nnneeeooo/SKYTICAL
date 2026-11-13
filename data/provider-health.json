@@ -3,8 +3,18 @@
   "platforms": {
     "groq": {
       "failureClass": "quota",
-      "cooldownUntilUtc": "2026-11-13T16:04Z",
-      "updatedUtc": "2026-11-13T10:04Z"
+      "cooldownUntilUtc": "2026-11-14T00:10Z",
+      "updatedUtc": "2026-11-13T18:10Z"
+    },
+    "gemini": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-11-13T19:21Z",
+      "updatedUtc": "2026-11-13T18:21Z"
+    },
+    "openrouter": {
+      "failureClass": "transient",
+      "cooldownUntilUtc": "2026-11-13T19:29Z",
+      "updatedUtc": "2026-11-13T18:29Z"
     }
   }
 }
