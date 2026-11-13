@@ -1,6 +1,7 @@
 """Offline checks for SKYTICAL's canonical and generated brand assets."""
 from __future__ import annotations
 
+import base64
 import hashlib
 import json
 import struct
@@ -12,6 +13,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
 
 import build  # noqa: E402
+sys.path.insert(0, str(ROOT / "docs" / "brand"))
+from generate_classic_logo import png_pixels, logo_svg  # noqa: E402
 
 
 def png_dimensions(path: Path) -> tuple[int, int]:
@@ -21,7 +24,30 @@ def png_dimensions(path: Path) -> tuple[int, int]:
     return struct.unpack(">II", data[16:24])
 
 
+def test_classic_logo_alpha_preserves_master_pixels():
+    ns = {"svg": "http://www.w3.org/2000/svg"}
+    href = "{http://www.w3.org/1999/xlink}href"
+    master = ET.parse(ROOT / "docs/brand/SKYTICAL-master.svg").getroot()
+    images = master.findall(".//svg:image", ns)
+    decode = lambda el: png_pixels(base64.b64decode(el.get(href).split(",")[1]))
+    width, height, _, mask = decode(images[0])
+    _, _, _, rgb = decode(images[1])
+    expected = b"".join(rgb[i * 3:i * 3 + 3] + bytes([alpha]) for i, alpha in enumerate(mask))
+    for name in ("skytical-logo.svg", "skytical-mark.svg", "skytical-team-mark.svg"):
+        root = ET.parse(ROOT / "static" / name).getroot()
+        assert not root.findall(".//svg:mask", ns), name
+        assert not root.findall(".//svg:filter", ns), name
+        assert not any("mask" in el.attrib or "clip-path" in el.attrib for el in root.iter()), name
+        raster = root.findall(".//svg:image", ns)
+        assert len(raster) == 1
+        w, h, channels, pixels = decode(raster[0])
+        assert (w, h, channels) == (width, height, 4)
+        assert pixels == expected, name
+    assert (ROOT / "static/skytical-logo.svg").read_text() == logo_svg()
+
+
 def main() -> None:
+    test_classic_logo_alpha_preserves_master_pixels()
     assert build.main() == 0
 
     master = ROOT / "docs" / "brand" / "SKYTICAL-master.svg"
@@ -37,8 +63,8 @@ def main() -> None:
 
     approved_assets = {
         master: "53ccee38ecb372a446ebd89737070852e0d8876b04af7efdb1709e78d8553621",
-        logo_path: "2c273c8ccd32d0e28073f1add47775eee4e096ea08cb5e2616c2d46f00b772f5",
-        mark_path: "d076a98cf758ec7d36475e2df95664b6c6e52b7b758df5122b37cf64799f43cd",
+        logo_path: "f4782e04e43f7e8932fa1a60e908f83989ca8a41587517448fd9c8e9b6feaa6d",
+        mark_path: "7f6ec772f85ab4297865468ca432d970260df434501bd098070d7b97653fe45d",
         social_path: "03524d99264300ead258e0a585e9b87353ade80d4eba2e3faa02e280c3db9b75",
     }
     for path, approved_hash in approved_assets.items():
@@ -59,12 +85,12 @@ def main() -> None:
         assert 'fill="#f3f2f2"' not in normalized
         assert 'fill="#ffffff"' not in normalized
         assert "data:image/png;base64," in normalized
-        assert asset.count(transform) == 2
+        assert asset.count(transform) == 1
         assert "matrix(0.75, 0, 0, 0.75, 257.250011, 655.499924)" not in asset
-        assert clipping in asset
+        assert clipping not in asset
 
     # Reposition only the existing wing layers; preserve every letter path,
-    # including the Lambda, and the original embedded wing pixels/mask.
+    # including the Lambda; alpha baking preserves the original wing pixels.
     ns = {"svg": "http://www.w3.org/2000/svg"}
     canonical = ET.parse(master).getroot()
     aligned = ET.fromstring(logo)
@@ -72,9 +98,6 @@ def main() -> None:
         original_groups = [ET.tostring(el) for el in canonical if el.get("fill") == color]
         aligned_groups = [ET.tostring(el) for el in aligned if el.get("fill") == color]
         assert original_groups and original_groups == aligned_groups
-    href = "{http://www.w3.org/1999/xlink}href"
-    assert [el.get(href) for el in canonical.findall(".//svg:image", ns)] == [
-        el.get(href) for el in aligned.findall(".//svg:image", ns)]
 
     pixels = json.loads((ROOT / "docs/brand/SKYTICAL-8BIT-master.json").read_text(encoding="utf-8"))
     assert pixels["wordmark"] == "SKYTICΛL"

@@ -155,3 +155,32 @@ for (const query of ["!!!", "。？！", "✈️", "  ---  "]) {
 }
 
 console.log("test_search_client: OK");
+
+// The shipped header must show the same suggestion on narrow and wide screens.
+{
+const vm = require('node:vm');
+const appSource = require('node:fs').readFileSync(require('node:path').join(__dirname, '../static/app.js'), 'utf8');
+const headerController = appSource.slice(appSource.indexOf('  /* — global header search:'), appSource.indexOf('  /* — mobile navigation:'));
+for (const mobile of [true, false]) {
+  const hint = '搜尋 A350 最新消息';
+  function control() { return {events:{},addEventListener(type, fn){this.events[type]=fn;}}; }
+  const input = Object.assign(control(), {placeholder:'搜尋新聞', value:'', name:'q',
+    dataset:{mobilePlaceholder:'搜尋',searchSuggestionEnabled:'true'},
+    getAttribute(){return JSON.stringify([hint]);},dispatchEvent(){},focus(){}});
+  const form = Object.assign(control(), {action:'https://skytical.tech/search/'});
+  const clear = control(); let navigation;
+  const context = vm.createContext({URL, Event:class {}, document:{
+    getElementById(id){return {'news-search-form':form,'news-search-input':input,'news-search-clear':clear}[id] || null;}
+  },window:{matchMedia(){return {matches:mobile,addEventListener(){}};},location:{href:'https://skytical.tech/',assign(url){navigation=url;}}}});
+  vm.runInContext(headerController,context);
+  assert.equal(input.placeholder,hint);
+  assert.equal(input.dataset.searchSuggestion,hint);
+  form.events.submit({preventDefault(){}});
+  assert.equal(new URL(navigation).searchParams.get('q'),'A350 最新消息');
+  input.value='787'; navigation=null;
+  form.events.submit({preventDefault(){throw Error('Typed query must not be replaced');}});
+  assert.equal(input.value,'787'); assert.equal(navigation,null);
+  clear.events.click(); assert.equal(input.value,''); assert.equal(input.placeholder,hint);
+}
+console.log('PASS header search: mobile/desktop suggestions, empty submit, typed query and clear');
+}

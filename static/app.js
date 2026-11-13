@@ -138,17 +138,7 @@
       }
     } catch (e) { /* keep the server-rendered fallback */ }
     headerSearchInput.dataset.searchSuggestion = desktopSearchPlaceholder;
-    var mobileSearchMedia = window.matchMedia("(max-width: 720px)");
-    function updateHeaderSearchPlaceholder() {
-      headerSearchInput.placeholder = mobileSearchMedia.matches
-        ? headerSearchInput.dataset.mobilePlaceholder : desktopSearchPlaceholder;
-    }
-    updateHeaderSearchPlaceholder();
-    if (mobileSearchMedia.addEventListener) {
-      mobileSearchMedia.addEventListener("change", updateHeaderSearchPlaceholder);
-    } else if (mobileSearchMedia.addListener) {
-      mobileSearchMedia.addListener(updateHeaderSearchPlaceholder);
-    }
+    headerSearchInput.placeholder = desktopSearchPlaceholder;
   }
   if (headerSearchForm && headerSearchInput) {
     headerSearchForm.addEventListener("submit", function (event) {
