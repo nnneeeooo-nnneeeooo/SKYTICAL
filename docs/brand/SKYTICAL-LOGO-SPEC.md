@@ -41,8 +41,8 @@
 
 目前核准輸出的 SHA-256：
 
-- `static/skytical-logo.svg`：`2c273c8ccd32d0e28073f1add47775eee4e096ea08cb5e2616c2d46f00b772f5`
-- `static/skytical-mark.svg`：`d076a98cf758ec7d36475e2df95664b6c6e52b7b758df5122b37cf64799f43cd`
+- `static/skytical-logo.svg`：`f4782e04e43f7e8932fa1a60e908f83989ca8a41587517448fd9c8e9b6feaa6d`
+- `static/skytical-mark.svg`：`7f6ec772f85ab4297865468ca432d970260df434501bd098070d7b97653fe45d`
 - `static/skytical-social.png`：`03524d99264300ead258e0a585e9b87353ade80d4eba2e3faa02e280c3db9b75`
 
 橫式 Logo 與翼標的產生規則：
@@ -81,3 +81,7 @@ python docs/brand/generate_classic_logo.py --social
 2026-10-19 依使用者要求新增像素風版本，供隱藏主題與預覽使用。這是明確授權的像素化衍生版本，不替換上述正式母版或已核准資產；前述禁止重新取樣與替換字型的規則仍適用於正式 Logo 的一般輸出。
 
 像素版保留紅、橘、金三層掠翼、`SKYTICΛL` 的倒 V／Lambda（無橫槓），以及完整標語。檔案、重建指令與使用限制見 [SKYTICAL-8BIT-LOGO.md](SKYTICAL-8BIT-LOGO.md)。於頁尾「資料來源」點擊 `8-bit` 解鎖並重新整理後，即可切換像素主題。
+
+## Safari 透明合成相容性（2026-11-13）
+
+網站輸出的橫式 Logo 與獨立翼標，將母版的 282 × 252 彩色 PNG 與灰階遮罩逐像素合併為 RGBA PNG。RGB 色值、遮罩透明度、輸出位置與文字路徑均維持原樣，不重新取樣或描圖；移除執行時 SVG mask、色彩矩陣 filter 與重複裁切，避免 Safari 在小尺寸縮放時重複取樣邊緣。團隊頁既有的透明翼標也以同一原始像素契約驗證。上面的座標記錄仍為母版對齊規格；重建工具在對齊完成後輸出單一透明圖層。

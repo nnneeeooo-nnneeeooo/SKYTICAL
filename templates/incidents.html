@@ -48,7 +48,7 @@
           <div><dt>{{ t.thLoc }}</dt><dd>{{ i.loc }}</dd></div>
         </dl>
         <p class="incident-source briefing-image-credit">{{ t.thSrc }}：{{ i.src }}</p>
-        {% if i.url %}<a class="briefing-citation" href="{{ i.url }}"><img src="{{ base }}/assets/skytical-mark.svg" alt="" width="16" height="16" aria-hidden="true"><span>{{ t.incReadEvent }}</span></a>{% endif %}
+        {% if i.url %}<a class="briefing-citation" href="{{ i.url }}"><img src="{{ base }}/assets/skytical-mark.svg?v={{ asset_version }}" alt="" width="16" height="16" aria-hidden="true"><span>{{ t.incReadEvent }}</span></a>{% endif %}
       </div>
     </article>
     {% endfor %}
