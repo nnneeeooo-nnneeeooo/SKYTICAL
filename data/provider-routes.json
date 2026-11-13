@@ -3,26 +3,26 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-11-13T09:25Z",
-      "checkedUtc": "2026-11-13T03:25Z",
+      "untilUtc": "2026-11-13T16:04Z",
+      "checkedUtc": "2026-11-13T10:04Z",
       "failureClass": "unexpected",
-      "diagnostic": "F1 claim adds high-risk atom 'H140' not present in its own sourceQuote",
+      "diagnostic": "publish_brief must have an empty decisionReason",
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-13T09:25Z",
-      "checkedUtc": "2026-11-13T03:25Z",
+      "untilUtc": "2026-11-13T16:04Z",
+      "checkedUtc": "2026-11-13T10:04Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "diagnostic": "publish_brief must have an empty decisionReason",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-11-13T03:25Z",
-      "untilUtc": "2026-11-13T09:25Z",
+      "checkedUtc": "2026-11-13T10:04Z",
+      "untilUtc": "2026-11-13T16:04Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -48,10 +48,10 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-13T09:25Z",
-      "checkedUtc": "2026-11-13T03:25Z",
-      "failureClass": "timeout",
-      "diagnostic": "ReadTimeout",
+      "untilUtc": "2026-11-13T16:04Z",
+      "checkedUtc": "2026-11-13T10:04Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
