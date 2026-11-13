@@ -13345,7 +13345,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-13T04:10:56.849950+00:00"
+      "checked_utc": "2026-11-13T04:30:20.035688+00:00"
     },
     "a-20261108-1911-china-airlines-reports-record-first-thre": {
       "status": "matched",
@@ -13376,7 +13376,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-13T04:10:56.849950+00:00"
+      "checked_utc": "2026-11-13T04:30:20.035688+00:00"
     },
     "a-american-airlines-backs-out-650-bumped-passenger-promise-20261108": {
       "status": "none",
@@ -13501,7 +13501,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-13T04:10:56.849950+00:00"
+      "checked_utc": "2026-11-13T04:30:20.035688+00:00"
     },
     "a-china-airlines-q4-eva-india-delhi-20261106": {
       "status": "matched",
@@ -13530,6 +13530,22 @@
       "checked_utc": "2026-11-13T02:32:33.681581+00:00",
       "next_retry_utc": "2026-11-13T08:32:33.681581+00:00"
     },
+    "a-20261113-0414-four-turkish-service-members-killed-in-m": {
+      "status": "matched",
+      "image": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Sikorsky_S-70_SeaHawk_TurkishNavy_Teknofest2021_%282%29.jpg/1280px-Sikorsky_S-70_SeaHawk_TurkishNavy_Teknofest2021_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "link": "https://commons.wikimedia.org/w/index.php?curid=110463692",
+        "credit": "CeeGee",
+        "license": "CC BY-SA 4.0",
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "matched": "Sikorsky S-70 aircraft",
+        "subject": "Sikorsky S-70",
+        "description": "Sikorsky S-70 SeaHawk TurkishNavy Teknofest2021 (2)",
+        "photoYear": 2021
+      },
+      "checked_utc": "2026-11-13T04:30:20.035688+00:00"
+    },
     "a-20261113-0347-us-military-to-test-autonomous-cessna-20": {
       "status": "matched",
       "image": {
@@ -13543,7 +13559,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-13T04:10:56.849950+00:00"
+      "checked_utc": "2026-11-13T04:30:20.035688+00:00"
     }
   },
   "sources": {
@@ -17198,6 +17214,12 @@
       "parser_version": 5,
       "next_retry_utc": "2026-11-13T00:28:31.828921+00:00"
     },
+    "https://www.aerotime.aero/articles/turkish-military-s70-helicopter-crash-malatya": {
+      "image": null,
+      "rejection_reason": "aircraft-model-mismatch",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-13T10:30:20.035688+00:00"
+    },
     "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco": {
       "image": {
         "url": "https://www.aerotime.aero/images/2026/11/Merlins-experimental-Cessna-208B-Grand-Caravan-equipped-with-the-companys-Merlin-Pilot-autonomous-flight-system-1200x675.jpg",
@@ -17212,7 +17234,7 @@
       },
       "rejection_reason": null,
       "parser_version": 5,
-      "next_retry_utc": "2026-11-13T10:10:56.849950+00:00"
+      "next_retry_utc": "2026-11-13T10:30:20.035688+00:00"
     }
   }
 }
