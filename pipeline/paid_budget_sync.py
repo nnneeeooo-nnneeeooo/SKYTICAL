@@ -5,10 +5,8 @@ workflow's repository token; does not read or transmit any model API keys.
 """
 import argparse
 import base64
-import copy
 import json
 import os
-import uuid
 
 import requests
 
@@ -29,12 +27,10 @@ def sync(mode, reservation=None):
     baseline = json.loads(BASE.read_text(encoding="utf-8")) if BASE.exists() else None
     current = json.loads(PATH.read_text(encoding="utf-8")) if PATH.exists() else None
     if mode == "reserve":
-        if baseline is None:
-            raise RuntimeError("shared paid budget preflight was not completed")
-        hold = current["reservations"][reservation]
-        period = {"day": hold["day"], "month": hold["month"]}
-        if baseline.get("escrow") == period:
-            return  # the existing remote escrow already bounds this entire day
+        if baseline is None or current is None:
+            raise RuntimeError("shared paid usage preflight was not completed")
+        if reservation not in current.get("reservations", {}):
+            raise RuntimeError("unknown paid API reservation")
     response = requests.get(url, params={"ref": branch}, headers=headers, timeout=30)
     if response.status_code == 404:
         remote = {"sha": None, "content": None}
@@ -66,25 +62,13 @@ def sync(mode, reservation=None):
         with _locked():
             pass
         return
-    if mode == "persist" and current == baseline["data"] and not baseline.get("escrow"):
+    if current == baseline["data"]:
         return
     if remote["sha"] != baseline["sha"]:
-        raise RuntimeError("shared budget changed outside the CI spending lock; refusing overwrite")
-    outgoing = copy.deepcopy(current)
-    if mode == "reserve":
-        from paid_budget import policy, _micros
-        cfg = policy()
-        daily = outgoing["days"][hold["day"]]
-        monthly = outgoing["months"][hold["month"]]
-        extra = _micros(cfg["monthly_usd"]) - monthly["total"]
-        if cfg["daily_limit_usd"] is not None:
-            extra = min(extra, _micros(cfg["daily_limit_usd"]) - daily["total"])
-        for counts in (daily, monthly):
-            counts["total"] += extra
-            counts["draft"] = counts.get("draft", 0) + extra
-        escrow_key = "ci-escrow-" + os.environ.get("GITHUB_RUN_ID", uuid.uuid4().hex) + "-" + hold["day"]
-        outgoing["reservations"][escrow_key] = {
-            **period, "purpose": "draft", "micros": extra, "kind": "ci_escrow"}
+        raise RuntimeError("shared paid usage changed outside the CI spending lock; refusing overwrite")
+    # With no monthly allowance, persist each actual request's conservative
+    # upper-bound hold before HTTP instead of escrowing the remaining month.
+    outgoing = current
     payload = {"message": "Persist paid API budget [skip ci]", "branch": branch,
                "content": base64.b64encode((json.dumps(outgoing, indent=2) + "\n").encode()).decode("ascii")}
     if baseline["sha"]:
@@ -92,7 +76,7 @@ def sync(mode, reservation=None):
     written = requests.put(url, json=payload, headers=headers, timeout=30)
     written.raise_for_status()
     save_json(BASE, {"sha": written.json()["content"]["sha"],
-                     "data": current, "escrow": period if mode == "reserve" else None})
+                     "data": current})
     print("paid budget: persisted with compare-and-swap")
 
 
