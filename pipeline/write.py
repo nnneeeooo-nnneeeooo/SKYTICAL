@@ -1639,7 +1639,7 @@ def _provider_group_budget(provider) -> float:
 
 def _is_fallback_provider(provider) -> bool:
     return (getattr(provider, "name", None) == "openai"
-            and getattr(provider, "model", None) == "gpt-6")
+            and getattr(provider, "model", None) == "gpt-6.1-terra")
 
 
 def _fallback_reserve_seconds(providers) -> float:
@@ -1651,7 +1651,7 @@ def _fallback_reserve_seconds(providers) -> float:
 
 
 def _provider_chain_budget(providers) -> float:
-    """Leave room for each preferred route to time out before GPT 6."""
+    """Leave room for each preferred route before GPT 6.1 Terra."""
     providers = tuple(providers)
     if any(getattr(p, "unlimited_processing_time", False) is True for p in providers):
         return float("inf")
@@ -3332,7 +3332,7 @@ def main() -> None:
                 print("write: drafting time budget reached; saving completed drafts")
                 run_trace.finish("retry_pending", "retry_pending")
                 if any(getattr(p, "unlimited_processing_time", False) is True for p in alive):
-                    continue  # A later eligible story can still use Luna.
+                    continue  # A later eligible story can still use Terra.
                 break
             if not story_providers:
                 retry_ledger.failure(group, content=False)

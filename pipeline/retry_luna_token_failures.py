@@ -40,7 +40,7 @@ def main():
     write.TRANSIENT_PLATFORM_FAILURE_LIMIT = len(targets) + 1
     write.news_retry.RetryLedger.plan = lambda self, groups, maximum: (groups, [])
     write.flightnews.load_queue = lambda: []
-    # The owner explicitly selected Luna for these groups, including ordinary
+    # The owner selected the OpenAI route for these groups, including ordinary
     # stories normally restricted to free providers. All content gates remain.
     write.eligible_providers = lambda group, providers: list(providers)
     save_json(write.PENDING_PATH, {**original, "groups": targets})

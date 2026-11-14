@@ -179,7 +179,7 @@ def test_cloud_workflow_is_independent_and_does_not_build_or_deploy():
     text = (audit.ROOT / ".github/workflows/iata-audit.yml").read_text(encoding="utf-8")
     assert 'cron: "0 */4 * * *"' in text
     assert "fetch-depth: 0" in text
-    assert "secrets.OPENAI_API" in text and "secrets.OPENAI_MODEL_ID" in text
+    assert "secrets.OPENAI_API" in text and "secrets.OPENAI_MODEL_ID" not in text
     assert "pipeline/build.py" not in text and "deploy-pages" not in text
     assert "if: always()" in text and "actions/upload-artifact" in text
 

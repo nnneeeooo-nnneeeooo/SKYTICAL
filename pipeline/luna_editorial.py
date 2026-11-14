@@ -1,4 +1,4 @@
-"""Evidence-bound bilingual audit and deterministic early Luna routing."""
+"""Evidence-bound bilingual audit and deterministic early Terra routing."""
 from __future__ import annotations
 
 import hashlib

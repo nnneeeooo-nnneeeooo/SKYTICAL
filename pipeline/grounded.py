@@ -175,12 +175,10 @@ def call_openai_grounded(window):
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
         return None, None
-    model = os.environ.get("BRIEFING_GROUNDED_MODEL") or "gpt-6"
+    model = os.environ.get("BRIEFING_GROUNDED_MODEL") or "gpt-6.1-terra"
+    from model_config import openai_runtime_model
+    model = openai_runtime_model(model)
     wire_model = model
-    if model == "gpt-6":
-        wire_model = os.environ.get("AVWIRE_OPENAI_API_MODEL", "").strip()
-        if not wire_model:
-            raise RuntimeError("private OpenAI model mapping is not configured")
     effort = "max"
     from paid_budget import post
     response = post(lambda url, payload, **kwargs: requests.post(url, json=payload, **kwargs),

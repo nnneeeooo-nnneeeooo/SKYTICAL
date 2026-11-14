@@ -164,7 +164,7 @@ def make_provider():
     class BriefingWriterProvider(OpenAIProvider):
         budget_purpose = "summary"
 
-    return BriefingWriterProvider(model=os.environ.get("BRIEFING_WRITER_MODEL") or "gpt-6")
+    return BriefingWriterProvider(model=os.environ.get("BRIEFING_WRITER_MODEL") or "gpt-6.1-terra")
 
 
 def write_briefing(briefing: dict, articles: list[dict], old: dict | None = None) -> bool:
