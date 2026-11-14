@@ -47,7 +47,10 @@ jobs:
           python tests/test_airport_source_codes.py
 
       - name: Test headline priority and subject scope
-        run: python tests/test_headline_rotation.py
+        run: |
+          python tests/test_headline_rotation.py
+          pip install pytest
+          python -m pytest -q tests/test_major_operational_news.py
 
       - name: Test image relevance and fallback guards
         run: |

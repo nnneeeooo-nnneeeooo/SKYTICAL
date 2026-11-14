@@ -8,7 +8,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from common import is_taiwan_airline_story
+from common import is_major_operational_event, is_taiwan_airline_story
 
 
 def matches(pattern: str, text: str) -> bool:
@@ -97,6 +97,8 @@ def publication_route(group: dict, article: dict | None = None) -> PublicationRo
 
 
 def news_policy(group: dict) -> NewsPolicy:
+    if is_major_operational_event(group):
+        return NewsPolicy("urgent", True, "major_operational_disruption")
     items = [item for item in group.get("items", [])
              if isinstance(item, dict) and not item.get("backgroundCompanion")]
     # Headline-led signals prevent a routine story's historical background

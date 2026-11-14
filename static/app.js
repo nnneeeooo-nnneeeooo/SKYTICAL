@@ -396,6 +396,9 @@
 
     function scheduleHeroRotation() {
       stopHeroTimer();
+      // A major operational alert stays on the lead until the reader chooses
+      // another story. Manual arrows, dots and swipe navigation still work.
+      if (heroCarousel && heroCarousel.dataset.majorPinned === "true") return;
       if (heroPaused || document.hidden || heroCandidates.length < 2) return;
       heroTimer = window.setTimeout(function () {
         showHero((heroIndex + 1) % heroCandidates.length, "next");

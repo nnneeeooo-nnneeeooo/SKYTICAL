@@ -23,6 +23,7 @@ from common import (
     SOURCES,
     group_has_material,
     is_major_event_story,
+    is_major_operational_event,
     is_taiwan_airline_story,
     iso_minute,
     load_json,
@@ -420,7 +421,8 @@ def main() -> None:
             group_kind == "safety_roundup"
             or group_has_material({"items": members})
         )
-        must_report = is_taiwan_airline_story({"items": members})
+        must_report = (is_major_operational_event({"items": members})
+                       or is_taiwan_airline_story({"items": members}))
         major = is_major_event_story({"items": members})
         ranked.append((must_report, major, material, multi, newest, members,
                        update_candidate, group_kind))

@@ -95,7 +95,16 @@ class RetryLedger:
         niche = sorted((g for g in candidates if policy(g).priority == "niche"), key=oldest)
         regular = [g for g in candidates if policy(g).priority != "niche"]
         regular.sort(key=lambda g: policy(g).priority != "urgent")
-        chosen = retries[:min(MAX_RETRIES_PER_RUN, limit)]
+        # Urgent fresh events must not lose every slot to routine retries or
+        # the niche reservation. Preserve cooldowns and the old-retry cap.
+        urgent = [g for g in regular if policy(g).priority == "urgent"]
+        chosen = []
+        for group in urgent + retries:
+            if (len(chosen) >= limit or any(group is g for g in chosen)
+                    or (id(group) in retry_ids and sum(
+                        id(g) in retry_ids for g in chosen) >= MAX_RETRIES_PER_RUN)):
+                continue
+            chosen.append(group)
         if (niche and len(chosen) < limit
                 and not any(policy(g).priority == "niche" for g in chosen)):
             chosen.append(niche[0])
@@ -111,7 +120,9 @@ class RetryLedger:
         selected = {id(g) for g in chosen}
         high = [g for g in regular if id(g) in selected]
         low = [g for g in niche if id(g) in selected]
-        chosen = high[:2] + low[:1] + high[2:] + low[1:]
+        urgent = [g for g in high if policy(g).priority == "urgent"]
+        high = [g for g in high if policy(g).priority != "urgent"]
+        chosen = urgent + high[:2] + low[:1] + high[2:] + low[1:]
         selected_ids = {id(g) for g in chosen}
         deferred += [g for g in candidates if id(g) not in selected_ids]
         return chosen, deferred
