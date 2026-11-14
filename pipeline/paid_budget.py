@@ -74,7 +74,7 @@ def _locked():
                             if not isinstance(counts, dict) or any(
                                     type(v) is not int or v < 0 for v in counts.values()):
                                 raise ValueError()
-                            if (set(counts) - {"total", "draft", "review", "summary", "warned"}
+                            if (set(counts) - {"total", "draft", "review", "summary", "warned", "warned_usd2"}
                                     or counts.get("total", 0) != sum(counts.get(k, 0) for k in ("draft", "review", "summary"))):
                                 raise ValueError()
                     if not isinstance(row["reservations"], dict):
@@ -178,8 +178,8 @@ def settle(token, data):
             if pending["day"] == hold["day"]
         )
         confirmed = daily["total"] - outstanding
-        if confirmed >= _micros(cfg["daily_warning_usd"]) and not daily.get("warned"):
-            daily["warned"] = 1
+        if confirmed >= _micros(cfg["daily_warning_usd"]) and not daily.get("warned_usd2"):
+            daily["warned_usd2"] = 1
             print(f"::warning::SKYTICAL Terra API confirmed daily usage reached "
                   f"US${cfg['daily_warning_usd']:.2f} on {hold['day']} Taipei time; "
                   "this is a notification, not a spending cap")
