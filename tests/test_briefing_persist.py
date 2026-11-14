@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import shutil
 from pathlib import Path
 import subprocess
 import tempfile
@@ -40,10 +41,18 @@ class PersistBriefingTests(unittest.TestCase):
         git(base, "clone", str(self.remote), str(self.work))
 
     def persist(self) -> subprocess.CompletedProcess[str]:
-        env = {**os.environ, "GITHUB_OUTPUT": str(self.output),
+        env = {**os.environ, "GITHUB_OUTPUT": self.output.as_posix(),
                "BRIEFING_PERSIST_RETRY_DELAY": "0"}
-        return subprocess.run(["bash", str(SCRIPT), "morning"], cwd=self.work,
-                              env=env, text=True, capture_output=True)
+        bash = shutil.which("bash")
+        if os.name == "nt":
+            # Windows' bash.exe may be the WSL launcher, not a usable shell.
+            bash = str(Path(shutil.which("git")).resolve().parents[1] / "bin/bash.exe")
+        # read_text normalizes checkout CRLF while preserving the exact shell
+        # program; -c's following argument supplies $0 and then the edition $1.
+        return subprocess.run([bash, "--noprofile", "--norc", "-c",
+                               SCRIPT.read_text(encoding="utf-8"), str(SCRIPT), "morning"],
+                              cwd=self.work, env=env, encoding="utf-8", errors="replace",
+                              capture_output=True)
 
     def test_dirty_budget_and_new_remote_changes_are_preserved(self) -> None:
         # Simulate the paid-budget CAS pushing a newer ledger onto main,
@@ -86,7 +95,7 @@ class PersistBriefingTests(unittest.TestCase):
 
     def test_push_failure_preserves_local_committed_report(self) -> None:
         hook = self.remote / "hooks" / "pre-receive"
-        hook.write_text("#!/bin/sh\nexit 1\n")
+        hook.write_text("#!/bin/sh\nexit 1\n", newline="\n")
         hook.chmod(0o755)
         report = self.work / "data" / "briefings" / "2026-11-01-evening.json"
         report.write_text('{"briefing_id":"2026-11-01-evening"}\n')

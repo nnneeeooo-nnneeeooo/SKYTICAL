@@ -42,8 +42,13 @@ def main() -> None:
         header = document.select_one(".header-search-row")
         assert header is not None
         assert [child.get("class", [""])[0] for child in header.find_all(recursive=False)] == [
-            "brand-shell", "header-search-form", "header-social-links"
+            "brand-shell", "mobile-search-toggle", "mobile-more", "mobile-search-brand",
+            "header-search-form", "header-social-links"
         ]
+        toggle = header.select_one(".mobile-search-toggle")
+        assert toggle["aria-controls"] == header.select_one("form")["id"]
+        assert toggle["aria-expanded"] == "false"
+        assert header.select_one(".mobile-more summary")["aria-label"]
         nav = document.select_one("#site-nav")
         assert nav is not None
         visible = [link for link in nav.find_all("a", recursive=False)

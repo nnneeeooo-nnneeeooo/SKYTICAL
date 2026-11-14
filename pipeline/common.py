@@ -793,6 +793,12 @@ def is_transport_headline(*records) -> bool:
     )
     if not headline.strip():
         return False
+    # Unicode \b treats adjacent Chinese and Latin letters as one word.
+    # Match mixed-script titles such as 「測試Cessna Caravan」 just as the
+    # spaced spelling, without borrowing aviation words from the body.
+    headline = re.sub(
+        r"(?<=[\u3400-\u9fff])(?=[A-Za-z0-9])|"
+        r"(?<=[A-Za-z0-9])(?=[\u3400-\u9fff])", " ", headline)
     if (_MILITARY_REPLICA_ZH_RE.search(headline)
             or _MILITARY_REPLICA_EN_RE.search(headline)
             or _GAME_RELEASE_SUBJECT_RE.search(headline)):

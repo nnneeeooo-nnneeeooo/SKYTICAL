@@ -24,7 +24,9 @@ def test_pr_regression_never_fetches_or_spends_paid_budget():
     regression = text.split("  regression:", 1)[1].split("  update:", 1)[0]
     assert "paid_budget_sync.py" not in regression
     assert "AVWIRE_PAID_BUDGET_ENABLED:" not in regression
-    assert "test_paid_budget.py" in regression
+    # Full discovery includes the paid-budget suite along with all other tests.
+    assert "python -m pytest -q" in regression
+    assert (ROOT / "tests/test_paid_budget.py").is_file()
 
 
 def test_existing_daily_briefings_use_summary_budget_without_a_second_writer():

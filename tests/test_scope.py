@@ -81,6 +81,15 @@ def main() -> None:
         "summary": "中華航空參與聯盟，推動資源循環。",
     }
     assert not common.is_transport_headline(summary_only)
+    assert common.is_transport_headline({
+        "zh": {"title": "美軍於摩洛哥測試Cessna Caravan無人傷患後送"},
+        "en": {"title": "Merlin wins autonomous CASEVAC test contract"},
+    })
+    assert common.is_transport_headline({"title": "華航Boeing 787機隊更新"})
+    assert not common.is_transport_headline({
+        "title": "摩洛哥公布醫療計畫",
+        "summary": "將測試Cessna Caravan無人傷患後送。",
+    })
     branded_airline = {
         "zh": {"title": "airBaltic向美國法院申請第11章破產保護"},
         "en": {"title": "airBaltic Files for Chapter 11 Protection"},

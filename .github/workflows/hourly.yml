@@ -56,71 +56,22 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt pytest
-      - name: Run pipeline regression tests
+      - name: Run complete isolated Python regression suite
+        run: python -m pytest -q
+
+      - name: Run all JavaScript regression suites
         run: |
-          python tests/test_changelog.py
-          python tests/test_admin_page.py
-          node tests/test_admin_core.js
-          node tests/test_admin_activation.js
-          node tests/test_admin_entry.js
-          node tests/test_admin_tabs.js
-          node --check static/admin.js
-          node --check static/admin-entry.js
-          node --check static/admin-activate.js
-          python tests/test_article_updates.py
-          python tests/test_analytics.py
-          node --check static/traffic-dashboard.js
-          python tests/test_traffic_dashboard.py
-          python -m pytest -q tests/test_traffic_session.py
-          python tests/test_scope.py
-          python tests/test_fetch_health.py
-          python tests/test_evaair.py
-          python tests/test_companion.py
-          python tests/test_flightwatch.py
-          python tests/test_airport_codes.py
-          python tests/test_airport_source_codes.py
-          python tests/test_grounded.py
-          python tests/test_news_search.py
-          python tests/test_pla.py
-          python tests/test_usage.py
-          python tests/test_hosted_free_providers.py
-          python tests/test_hosted_rate_limits.py
-          python -m pytest -q tests/test_paid_budget.py tests/test_luna_editorial.py tests/test_luna_workflows.py
-          python tests/test_providers_payloads.py
-          python tests/test_manual_draft.py
-          python tests/test_fulltext.py
-          python tests/test_glossary.py
-          python tests/test_evidence_binding.py
-          python tests/test_archive_context.py
-          python tests/test_announcement_brief.py
-          python tests/test_briefing.py
-          python tests/test_images.py
-          python tests/test_image_selection.py
-          python -m pytest -q tests/test_terra_images.py
-          python -m pytest -q tests/test_source_images.py
+          for test in tests/test_*.js; do
+            node "$test"
+          done
+          for source in static/*.js; do
+            node --check "$source"
+          done
+
+      - name: Validate committed publication data
+        run: |
           python pipeline/image_selection.py
           python tests/test_recent_image_quality.py
-          python tests/test_manufacturer_sources.py
-          python tests/test_source_links.py
-          python tests/test_draft_recovery.py
-          python tests/test_dedupe.py
-          python tests/test_write_offline.py
-          python tests/test_provider_health.py
-          python tests/test_free_provider_probe.py
-          python tests/test_build_resilience.py
-          python -m pytest -q tests/test_summary_display.py
-          python tests/test_public_articles.py
-          python tests/test_text_spacing.py
-          node tests/test_text_spacing_client.js
-          python tests/test_home_sidebar.py
-          python tests/test_search.py
-          python tests/test_english_backfill.py
-          python tests/test_news_freshness.py
-          python tests/test_news_retry.py
-          python tests/test_editorial_policy.py
-          python -m pytest -q tests/test_major_operational_news.py tests/test_headline_rotation.py
-          python tests/test_industry_roundup.py
-          python tests/test_news_chronology.py
           python pipeline/scheduled_news.py
 
   update:

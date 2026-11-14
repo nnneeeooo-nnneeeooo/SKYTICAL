@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -148,16 +149,27 @@ def test_published_roundup_is_reader_facing() -> None:
     zh_text = " ".join([article["zh"]["title"], article["zh"]["summary"],
                         *article["zh"]["body"]])
     assert article["articleFormat"] == "roundup"
-    assert "獨立" in zh_text and "波音737 MAX 9" in zh_text
-    assert "空中巴士A330-300" in zh_text and "空中巴士A321neo" in zh_text
-    assert "俄羅斯克拉斯諾亞爾斯克" in zh_text
+    # This is a revised publication, not the original Alaska event. Verify
+    # its current source-backed independent sections instead of stale copy.
+    assert "獨立" in zh_text and "波音737 MAX 8" in zh_text
+    assert "波音767-400" in zh_text and "空中巴士A321neo" in zh_text
+    assert len(article["zh"]["body"]) == len(article["en"]["body"]) == 4
+    assert len(article["facts"]) == 3
+    for fact, zh_paragraph, en_paragraph in zip(
+            article["facts"], article["zh"]["body"][1:], article["en"]["body"][1:]):
+        assert fact["evidenceScope"] == "source"
+        aircraft_code = re.search(r"\b[A-Z][A-Z0-9]{2,3}\b", fact["sourceQuote"])[0]
+        assert aircraft_code in zh_paragraph and aircraft_code in en_paragraph
+        assert any(aircraft_code in source["name"] for source in article["sources"])
+        assert "ICAO" in zh_paragraph
     assert "犬隻逃脫" not in zh_text
-    assert "image" not in article
+    assert article.get("image") is None
     assert "leads six" not in article["en"]["title"].casefold()
 
     flash = json.loads((REPO / "data" / "flashes.json").read_text(encoding="utf-8"))
-    current = next(row for row in flash if row["articleId"] == article["id"])
-    assert "737 MAX 9" in current["zh"] and "B39M" not in current["zh"]
+    # The rolling ticker need not retain an August article indefinitely.
+    for current in (row for row in flash if row["articleId"] == article["id"]):
+        assert "B39M" not in current["zh"]
 
     article_template = (REPO / "templates" / "article.html").read_text(encoding="utf-8")
     assert 'a.article_format == "roundup"' in article_template
