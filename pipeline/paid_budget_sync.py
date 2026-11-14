@@ -7,6 +7,7 @@ import argparse
 import base64
 import json
 import os
+from datetime import datetime, timedelta, timezone
 
 import requests
 
@@ -14,6 +15,68 @@ from common import DATA_DIR, save_json
 
 BASE = DATA_DIR / ".paid-budget-base.json"
 PATH = DATA_DIR / "paid-budget.json"
+TPE = timezone(timedelta(hours=8))
+
+
+def _notify_daily_usage(repo, headers, ledger, now=None):
+    """Open at most one assigned GitHub issue per Taipei day after USD 2 settled.
+
+    Old monthly escrows and unfinished/unknown reservations are never treated
+    as settled spending. The exact issue title is also the idempotency key.
+    """
+    from paid_budget import policy, _micros
+
+    threshold = _micros(policy()["daily_warning_usd"])
+    today = (now or datetime.now(timezone.utc)).astimezone(TPE).date()
+    for date in (today - timedelta(days=1), today):
+        day = date.isoformat()
+        counts = ledger.get("days", {}).get(day) or {}
+        unsettled = sum(
+            hold["micros"] for hold in ledger.get("reservations", {}).values()
+            if hold["day"] == day
+        )
+        settled_usd_micro = counts.get("total", 0) - unsettled
+        if settled_usd_micro < threshold:
+            continue
+
+        title = f"SKYTICAL Terra API daily USD 2 alert {day}"
+        params = {
+            "q": f'repo:{repo} is:issue in:title "SKYTICAL Terra API daily USD 2 alert" {day}',
+            "per_page": 50,
+        }
+        found = requests.get(
+            "https://api.github.com/search/issues",
+            params=params, headers=headers, timeout=30,
+        )
+        found.raise_for_status()
+        if any(item.get("title") == title for item in found.json().get("items", [])):
+            continue
+
+        body = (
+            f"SKYTICAL 的 Terra API 用量於 **{day}（臺灣時間）** "
+            f"達到每日 **US$2** 提醒門檻。\n\n"
+            f"截至本次結算，站內帳本估算的已結算支出為 "
+            f"**US$ {settled_usd_micro / 1_000_000:.2f}**。\n\n"
+            "這是通知，**不會限制或停止 API 呼叫**；站內沒有每日或每月"
+            "的金額硬上限。記帳採保守單價估算，未結算或用量不明的請求"
+            "仍保留預留額；此數字不代表 OpenAI 帳戶的完整帳單，"
+            "也不包括其他程式或專案的用量。\n\n"
+            "記帳檔：data/paid-budget.json。"
+        )
+        created = requests.post(
+            f"https://api.github.com/repos/{repo}/issues",
+            json={
+                "title": title,
+                "body": body,
+                "assignees": [os.environ.get(
+                    "SKYTICAL_BUDGET_NOTIFY_USER", repo.split("/", 1)[0]
+                )],
+            },
+            headers=headers, timeout=30,
+        )
+        created.raise_for_status()
+        print(f"::notice::Daily Terra US$2 GitHub alert created for {day}")
+
 
 
 def sync(mode, reservation=None):
@@ -63,6 +126,8 @@ def sync(mode, reservation=None):
             pass
         return
     if current == baseline["data"]:
+        if mode == "persist":
+            _notify_daily_usage(repo, headers, current)
         return
     if remote["sha"] != baseline["sha"]:
         raise RuntimeError("shared paid usage changed outside the CI spending lock; refusing overwrite")
@@ -77,7 +142,9 @@ def sync(mode, reservation=None):
     written.raise_for_status()
     save_json(BASE, {"sha": written.json()["content"]["sha"],
                      "data": current})
-    print("paid budget: persisted with compare-and-swap")
+    print("paid API usage: persisted with compare-and-swap")
+    if mode == "persist":
+        _notify_daily_usage(repo, headers, current)
 
 
 if __name__ == "__main__":
