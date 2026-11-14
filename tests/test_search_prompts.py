@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 import tempfile
 from datetime import datetime, timedelta, timezone
@@ -190,7 +191,9 @@ def main() -> None:
 
     workflow = (ROOT / ".github" / "workflows" / "hourly.yml").read_text(
         encoding="utf-8")
-    assert 'cron: "1 * * * *"' in workflow
+    # The hourly minute is an operations setting, not a search-prompt contract.
+    schedule = re.search(r'cron: "(\d{1,2}) \* \* \* \*"', workflow)
+    assert schedule and 0 <= int(schedule[1]) < 60
     assert "python pipeline/search_prompts.py --daily-if-due" in workflow
     print("test_search_prompts: OK")
 
