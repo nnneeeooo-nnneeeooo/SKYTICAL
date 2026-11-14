@@ -52,6 +52,8 @@ import requests
 from model_config import (
     DEFAULT_PROVIDER_ORDER,
     MODEL_ORDER,
+    OPENAI_DEFAULT_MODEL,
+    openai_runtime_model,
     manual_reasoning_profile,
 )
 
@@ -75,7 +77,6 @@ HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
 # profile fall back to conservative generic settings.
 NVIDIA_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b"
 GEMINI_DEFAULT_MODEL = "gemini-3.6-flash"
-OPENAI_DEFAULT_MODEL = "gpt-6"
 OPENROUTER_DEFAULT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 OPENCODE_DEFAULT_MODEL = "claude-sonnet-4-6"
 OPENCODE_BASE_URL = "https://console.opencode.ai/inference"
@@ -1655,20 +1656,16 @@ class OpenAIProvider(OpenCodeProvider):
             model or os.environ.get("AVWIRE_OPENAI_MODEL")
             or OPENAI_DEFAULT_MODEL
         )
-        super().__init__(selected_model, reasoning_tier)
+        super().__init__(openai_runtime_model(selected_model), reasoning_tier)
 
     def available(self) -> bool:
         return bool(os.environ.get("OPENAI_API_KEY"))
 
     def _post_json(self, url: str, payload: dict, headers: dict,
                    repair: bool):
-        # Resolve the public model alias only at the HTTP boundary. Logs,
-        # article provenance and usage records retain the public identifier.
-        wire_model = os.environ.get("AVWIRE_OPENAI_API_MODEL", "").strip()
-        if self.model == OPENAI_DEFAULT_MODEL:
-            if not wire_model:
-                raise ProviderError("private OpenAI model mapping is not configured")
-            payload = {**payload, "model": wire_model}
+        # Send the actual model ID. A stale private Luna mapping must never
+        # redirect Terra calls while provenance claims a different model.
+        payload = {**payload, "model": self.model}
         from paid_budget import BudgetDenied, post
         try:
             return post(super()._post_json, url, payload,
@@ -1711,7 +1708,7 @@ class OpenAIProvider(OpenCodeProvider):
         }
 
     def _responses_output_tokens(self, repair: bool) -> None:
-        # Owner policy: omit the client cap for every Luna call and repair.
+        # Owner policy: omit the client cap for every Terra call and repair.
         return None
 
     def _effort(self, repair: bool) -> str:
@@ -1735,14 +1732,14 @@ _REGISTRY = {
 
 
 def _is_fallback_route(token: str) -> bool:
-    """Recognize an OpenAI route that resolves to GPT 6."""
+    """Recognize an OpenAI route that resolves to GPT 6.1 Terra."""
     name, _, model = token.partition(":")
     if name.strip().lower() != "openai":
         return False
     selected = (model.strip()
                 or os.environ.get("AVWIRE_OPENAI_MODEL")
                 or OPENAI_DEFAULT_MODEL)
-    return selected.strip().lower() == OPENAI_DEFAULT_MODEL
+    return openai_runtime_model(selected.strip().lower()) == OPENAI_DEFAULT_MODEL
 
 
 def build_providers() -> list:
@@ -1763,6 +1760,8 @@ def build_providers() -> list:
         name, _, model = token.strip().partition(":")
         key = name.strip().lower()
         model = model.strip() or None
+        if key == "openai":
+            model = openai_runtime_model(model or os.environ.get("AVWIRE_OPENAI_MODEL"))
         if not key or (key, model) in seen:
             continue
         seen.add((key, model))

@@ -1,4 +1,4 @@
-"""Pre-request, persistent USD reservations for the site's Luna API budget.
+"""Pre-request, persistent USD reservations for the site's Terra API budget.
 
 Only enabled by AVWIRE_PAID_BUDGET_ENABLED=true (production workflows opt in).
 Unknown/aborted requests keep their entire reservation. No prompts, secrets,
@@ -19,9 +19,9 @@ from common import DATA_DIR, ROOT, save_json
 
 CONFIG_PATH = ROOT / "config" / "luna_policy.json"
 TPE = timezone(timedelta(hours=8))
-# Accounting only; never sent as a request cap. Luna's documented native output
-# capacity: https://developers.openai.com/api/docs/models/gpt-6-luna
-LUNA_OUTPUT_RESERVATION_TOKENS = 128_000
+# Accounting only; never sent as a request cap. Terra's documented native output
+# capacity: https://developers.openai.com/api/docs/models/gpt-6.1-terra
+OPENAI_OUTPUT_RESERVATION_TOKENS = 128_000
 
 
 class BudgetDenied(RuntimeError):
@@ -112,16 +112,16 @@ def _cost(inputs, outputs, tools, cfg):
 def output_reservation_tokens(payload):
     outputs = payload.get("max_output_tokens")
     if outputs is None:
-        return LUNA_OUTPUT_RESERVATION_TOKENS
+        return OPENAI_OUTPUT_RESERVATION_TOKENS
     if type(outputs) is not int or outputs <= 0:
         raise BudgetDenied("invalid paid output limit")
     return outputs
 
 
-def reserve(payload, purpose="draft", model="gpt-6", now=None):
+def reserve(payload, purpose="draft", model="gpt-6.1-terra", now=None):
     if not enabled():
         return None
-    if model not in {"gpt-6", "gpt-6-luna"}:
+    if model != "gpt-6.1-terra":
         raise BudgetDenied("no configured budget price for this OpenAI model")
     if purpose not in {"draft", "review", "summary"}:
         raise BudgetDenied("unknown paid budget purpose")
@@ -132,7 +132,7 @@ def reserve(payload, purpose="draft", model="gpt-6", now=None):
     # UTF-8 bytes conservatively bound prompt tokens, with room for framing.
     inputs = len(json.dumps(payload, ensure_ascii=False).encode("utf-8")) + 4096
     if tools:
-        inputs += 1_050_000  # bound dynamic search context by Luna's context window
+        inputs += 1_050_000  # bound dynamic search context by Terra's context window
     outputs = output_reservation_tokens(payload)
     amount = _cost(inputs, outputs, tools, cfg)
     local = (now or datetime.now(timezone.utc)).astimezone(TPE)
@@ -154,7 +154,7 @@ def reserve(payload, purpose="draft", model="gpt-6", now=None):
             counts[purpose] = counts.get(purpose, 0) + amount
         if daily["total"] >= _micros(cfg["daily_warning_usd"]) and not daily.get("warned"):
             daily["warned"] = 1
-            print("::warning::Luna daily accounted/reserved spending reached the warning threshold")
+            print("::warning::Terra daily accounted/reserved spending reached the warning threshold")
         save_json(_path(), row)
         if os.environ.get("GITHUB_ACTIONS") == "true":
             # Publish a conservative run escrow BEFORE the first paid HTTP
@@ -188,11 +188,11 @@ def settle(token, data):
         daily = row["days"][hold["day"]]
         if daily["total"] >= _micros(cfg["daily_warning_usd"]) and not daily.get("warned"):
             daily["warned"] = 1
-            print("::warning::Luna daily spending reached the warning threshold; monthly limit remains active")
+            print("::warning::Terra daily spending reached the warning threshold; monthly limit remains active")
         save_json(_path(), row)
 
 
-def post(sender, url, payload, *, purpose="draft", model="gpt-6", **kwargs):
+def post(sender, url, payload, *, purpose="draft", model="gpt-6.1-terra", **kwargs):
     token = reserve(payload, purpose, model)
     response = sender(url, payload, **kwargs)
     try:

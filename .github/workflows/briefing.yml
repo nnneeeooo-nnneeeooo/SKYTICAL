@@ -113,7 +113,6 @@ jobs:
           AVWIRE_PAID_BUDGET_ENABLED: "true"
           GH_TOKEN: ${{ github.token }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
-          AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -125,14 +124,14 @@ jobs:
           ADSBLOL_API_KEY: ${{ secrets.ADSBLOL_API_KEY }} # optional
           AVWIRE_WECHAT_MODEL: ${{ vars.AVWIRE_WECHAT_MODEL }}
           AVWIRE_OPENAI_MODEL: ${{ vars.AVWIRE_OPENAI_MODEL }}
-          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,groq:openai/gpt-oss-120b,cloudflare:@cf/qwen/qwen3-30b-a3b-fp8,openai:gpt-6
+          AVWIRE_PROVIDER_ORDER: gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,wechat:Deepseek-v4-flash,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,groq:openai/gpt-oss-120b,cloudflare:@cf/qwen/qwen3-30b-a3b-fp8,openai:gpt-6.1-terra
           BRIEFING_WRITER: "true"
-          BRIEFING_WRITER_MODEL: gpt-6
+          BRIEFING_WRITER_MODEL: gpt-6.1-terra
           BRIEFING_WRITER_EFFORT: max
           BRIEFING_WRITER_CALLS_MAX: '2'
           BRIEFING_GROUNDED: "true"
           BRIEFING_GROUNDED_PROVIDER: openai
-          BRIEFING_GROUNDED_MODEL: gpt-6
+          BRIEFING_GROUNDED_MODEL: gpt-6.1-terra
           BRIEFING_GROUNDED_EFFORT: max
           BRIEFING_LLM_INTRO: "false"
           BRIEFING_MAX_ITEMS: ${{ vars.BRIEFING_MAX_ITEMS }}

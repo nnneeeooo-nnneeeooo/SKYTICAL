@@ -20,9 +20,17 @@ FREE_HOSTED_MODEL_ORDER = (
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
 )
 
-OPENAI_MODEL_ORDER = (
-    "openai:gpt-6",
-)
+OPENAI_DEFAULT_MODEL = "gpt-6.1-terra"
+
+
+def openai_runtime_model(model=None):
+    """Migrate stale Luna configuration, without relabeling stored articles."""
+    selected = str(model or OPENAI_DEFAULT_MODEL).strip()
+    return (OPENAI_DEFAULT_MODEL if selected in {"gpt-6", "gpt-6-luna"}
+            else selected)
+
+
+OPENAI_MODEL_ORDER = (f"openai:{OPENAI_DEFAULT_MODEL}",)
 
 WECHAT_MODEL_ORDER = (
     "wechat:Deepseek-v4-flash",
@@ -75,7 +83,7 @@ MODEL_ORDER = (
     OPENAI_MODEL_ORDER[0],
 )
 
-# Baseline order. Article-specific Luna routing can promote GPT 6 after
+# Baseline order. Article-specific Terra routing can promote GPT 6.1 Terra after
 # primary/two-platform failure while retaining this order for other callers.
 AUTOMATIC_MODEL_ORDER = (
     DIRECT_MODEL_ORDER[0],
@@ -92,7 +100,7 @@ DEFAULT_PROVIDER_ORDER = ",".join(AUTOMATIC_MODEL_ORDER)
 MODEL_DISPLAY_NAMES = {
     FREE_HOSTED_MODEL_ORDER[0]: "Groq · OpenAI GPT-OSS 120B",
     FREE_HOSTED_MODEL_ORDER[1]: "Cloudflare Workers AI · Qwen3 30B A3B",
-    "openai:gpt-6": "OpenAI · GPT 6",
+    "openai:gpt-6.1-terra": "GPT 6.1 Terra",
     "wechat:Deepseek-v4-flash":
         "WeChat Coding Plan · DeepSeek V4 Flash",
     "opencode:claude-sonnet-4-6":

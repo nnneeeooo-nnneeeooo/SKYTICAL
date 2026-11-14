@@ -44,7 +44,7 @@ def test_reserve_reconciles_reasoning_once_and_uses_taipei_day():
     assert row["days"]["2026-11-01"]["total"] >= 24000
     budget.settle(token, {"usage": {"input_tokens": 20000, "output_tokens": 10000,
                                   "output_tokens_details": {"reasoning_tokens": 9000}}})
-    assert read()["months"]["2026-11"]["total"] == 7500
+    assert read()["months"]["2026-11"]["total"] == 75000
     assert not read()["reservations"]
 
 
@@ -59,7 +59,7 @@ def test_uncapped_payload_reaches_http_and_settles_full_returned_usage(outputs):
         assert budget.post(sender, "unused", payload) is response
     assert sender.call_args.args[1] == {"input": "source"}
     assert "max_output_tokens" not in payload
-    assert read()["months"]["2026-11"]["total"] == 2500 + outputs // 2
+    assert read()["months"]["2026-11"]["total"] == 25000 + outputs * 5
     assert not read()["reservations"]
 
 
@@ -194,8 +194,8 @@ def test_sync_does_not_overwrite_concurrent_remote_change(monkeypatch):
 def test_shared_file_lock_prevents_parallel_overspend():
     from concurrent.futures import ThreadPoolExecutor
     cfg = budget.policy()
-    cfg["daily_limit_usd"] = 0.06
-    cfg["daily_warning_usd"] = 0.04
+    cfg["daily_limit_usd"] = 0.6
+    cfg["daily_warning_usd"] = 0.4
     def attempt(_):
         try:
             return budget.reserve(PAYLOAD, now=NOW)
@@ -204,7 +204,7 @@ def test_shared_file_lock_prevents_parallel_overspend():
     with patch.object(budget, "policy", return_value=cfg), ThreadPoolExecutor(max_workers=8) as pool:
         tokens = list(pool.map(attempt, range(8)))
     assert sum(bool(t) for t in tokens) == 2
-    assert read()["days"]["2026-11-01"]["total"] <= 60000
+    assert read()["days"]["2026-11-01"]["total"] <= 600000
 
 
 def test_ci_pre_request_escrow_bounds_run_and_final_write_releases_unused_budget(monkeypatch):
@@ -228,14 +228,14 @@ def test_ci_pre_request_escrow_bounds_run_and_final_write_releases_unused_budget
         monkeypatch.setenv("GITHUB_ACTIONS", "true")
         token2 = budget.reserve(PAYLOAD, now=NOW)
         assert send.call_count == 1
-        assert read()["days"]["2026-11-01"]["total"] < 100000
+        assert read()["days"]["2026-11-01"]["total"] < 1000000
         for t in (token, token2):
             budget.settle(t, {"usage": {"input_tokens": 20000, "output_tokens": 10000}})
         get.json.return_value = {"sha": "escrow"}
         put.json.return_value = {"content": {"sha": "settled"}}
         sync.sync("persist")
         outgoing = json.loads(base64.b64decode(send.call_args.kwargs["json"]["content"]))
-        assert outgoing["days"]["2026-11-01"]["total"] == 15000
+        assert outgoing["days"]["2026-11-01"]["total"] == 150000
         assert not outgoing["reservations"]
         assert json.loads(sync.BASE.read_text())["sha"] == "settled"
 
@@ -276,4 +276,4 @@ def test_first_shared_ledger_imports_existing_cloud_audit_cost(monkeypatch):
 
 def test_long_context_price_reservation_includes_premiums():
     cfg = budget.policy()
-    assert budget._cost(300000, 48000, 0, cfg) == 111000
+    assert budget._cost(300000, 48000, 0, cfg) == 1110000

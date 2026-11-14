@@ -56,7 +56,6 @@ jobs:
         env:
           AVWIRE_PAID_BUDGET_ENABLED: "true"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
-          AVWIRE_OPENAI_API_MODEL: ${{ secrets.OPENAI_MODEL_ID }}
           GH_TOKEN: ${{ github.token }}
           IATA_AUDIT_OUTPUT_DIR: ${{ runner.temp }}/iata-audit
           PYTHONUNBUFFERED: "1"

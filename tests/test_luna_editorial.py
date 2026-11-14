@@ -28,7 +28,7 @@ def enabled(monkeypatch):
 
 def test_ordinary_story_switches_after_two_distinct_failed_platforms():
     rows = [provider("gemini", "gemini-3.6-flash"), provider("gemini", "gemini-3.5-flash"),
-            provider("nvidia"), provider("groq"), provider("openai", "gpt-6")]
+            provider("nvidia"), provider("groq"), provider("openai", "gpt-6.1-terra")]
     assert [p.name for p in editorial.routes(story(), rows, rows)] == ["gemini", "nvidia", "openai", "gemini", "groq"]
 
 
@@ -120,7 +120,7 @@ def test_luna_always_uses_max_for_manual_drafting_and_repairs(tier, repair):
     assert p._effort(repair) == "max"
     assert p.reasoning_effective == "reasoning.effort=max"
     if tier:
-        assert manual_reasoning_profile("openai", "gpt-6", tier)["wire"]["reasoning"]["effort"] == "max"
+        assert manual_reasoning_profile("openai", "gpt-6.1-terra", tier)["wire"]["reasoning"]["effort"] == "max"
     p.budget_purpose = "review"
     assert p._responses_output_tokens(repair) is None
 

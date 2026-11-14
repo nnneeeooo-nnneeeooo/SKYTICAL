@@ -1,4 +1,4 @@
-"""Cloud-only, read-only four-hour airport audit with Luna MAX.
+"""Cloud-only, read-only four-hour airport audit with Terra MAX.
 
 Article JSONs are never modified. Only this audit's checkpoint and conservative
 API spending reservations are persisted through GitHub compare-and-swap.
@@ -251,7 +251,7 @@ class State:
         inputs = len(json.dumps(payload, ensure_ascii=False).encode()) + 4096
         if inputs > 200000:
             raise ValueError("unbounded audit input")
-        amount = math.ceil(inputs * .125 + output_reservation_tokens(payload) * .5)
+        amount = math.ceil(inputs * 1.25 + output_reservation_tokens(payload) * 5)
         if self.data["months"].get(month, 0) + amount > 8000000:
             raise RuntimeError("IATA audit monthly budget reached")
         self.data["days"][day] = self.data["days"].get(day, 0) + amount
@@ -264,7 +264,7 @@ class State:
         if not all(type(meta.get(k)) is int and meta[k] >= 0 for k in ("input_tokens", "output_tokens")):
             return  # keep full charge for unknown spend
         day, month, amount = hold
-        delta = math.ceil(meta["input_tokens"] * .125 + meta["output_tokens"] * .5) - amount
+        delta = math.ceil(meta["input_tokens"] * 1.25 + meta["output_tokens"] * 5) - amount
         self.data["days"][day] += delta
         self.data["months"][month] += delta
         self.save()
@@ -274,7 +274,7 @@ class AuditProvider(OpenAIProvider):
     budget_purpose = "review"
 
     def __init__(self, state):
-        super().__init__(model="gpt-6", reasoning_tier="deep")
+        super().__init__(model="gpt-6.1-terra", reasoning_tier="deep")
         self.state = state
         self.meter = {"calls": 0, "inputTokens": 0, "cachedInputTokens": 0, "outputTokens": 0, "reasoningTokens": 0, "estimatedUsd": 0.0}
 
@@ -293,7 +293,7 @@ class AuditProvider(OpenAIProvider):
             cached = int((meta.get("input_tokens_details") or {}).get("cached_tokens") or 0)
             for key, value in {"calls": 1, "inputTokens": inputs, "cachedInputTokens": cached,
                                "outputTokens": outputs, "reasoningTokens": int((meta.get("output_tokens_details") or {}).get("reasoning_tokens") or 0),
-                               "estimatedUsd": ((inputs-cached)*.1 + cached*.01 + outputs*.5)/1_000_000}.items():
+                               "estimatedUsd": ((inputs-cached)*1.0 + cached*.05 + outputs*5.0)/1_000_000}.items():
                 self.meter[key] += value
         except ValueError:
             pass
@@ -304,7 +304,7 @@ def run(now=None):
     now = now or datetime.now(timezone.utc)
     output = Path(os.environ.get("IATA_AUDIT_OUTPUT_DIR", Path(tempfile.gettempdir()) / "skytical-iata-audit"))
     output.mkdir(parents=True, exist_ok=True)
-    if not os.environ.get("OPENAI_API_KEY") or not os.environ.get("AVWIRE_OPENAI_API_MODEL"):
+    if not os.environ.get("OPENAI_API_KEY"):
         raise RuntimeError("IATA audit model credentials are not configured")
     state = State(remote=True)
     provider = AuditProvider(state)
@@ -374,7 +374,7 @@ def run(now=None):
             report["errorClass"] = type(exc).__name__
             save_json(path, report)
             raise RuntimeError("IATA audit incomplete; see saved report") from None
-    lines = ["# Airport IATA audit", "", "Model: GPT 6; reasoning: max; article changes: none", "",
+    lines = ["# Airport IATA audit", "", "Model: GPT 6.1 Terra; reasoning: max; article changes: none", "",
              "API usage (reasoning included in output): " + json.dumps(provider.meter), ""]
     save_json(output / "usage.json", provider.meter)
     for r in reports:

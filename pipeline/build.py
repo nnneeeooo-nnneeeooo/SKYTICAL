@@ -231,11 +231,11 @@ L = {
             "隨意搜尋想看的 SKYTICAL 內容",
             "今天想看什麼航空新聞？",
         ],
-        "searchSub": "搜尋標題、摘要、全文、來源、日期、航班、機型、機場代碼、航空公司 IATA／ICAO 代碼與撰稿模型（例如 GPT 6、GPT 6.1 Sol）；航空公司正式名稱與常用簡稱可互相查找。",
+        "searchSub": "搜尋標題、摘要、全文、來源、日期、航班、機型、機場代碼、航空公司 IATA／ICAO 代碼與撰稿模型（例如 GPT 6.1 Terra、GPT 6.1 Sol）；航空公司正式名稱與常用簡稱可互相查找。",
         "searchHelpGroups": [
             {"label": "新聞內容", "terms": ["標題", "摘要", "全文", "來源", "日期"]},
             {"label": "航空資料", "terms": ["航班", "機型", "機場代碼", "航空公司 IATA／ICAO 代碼"]},
-            {"label": "撰稿模型（例如）", "terms": ["GPT 6", "GPT 6.1 Sol"]},
+            {"label": "撰稿模型（例如）", "terms": ["GPT 6.1 Terra", "GPT 6.1 Sol"]},
         ],
         "searchHelpNote": "航空公司正式名稱與常用簡稱可互相查找。",
         "searchHelpSeparator": "、",
@@ -387,11 +387,11 @@ L = {
             "Explore anything on SKYTICAL",
             "What aviation news are you looking for?",
         ],
-        "searchSub": "Search titles, summaries, full text, sources, dates, flights, aircraft types, airport codes, airline IATA/ICAO codes and writing models (e.g. GPT 6, GPT 6.1 Sol). Official airline names and common short names are interchangeable.",
+        "searchSub": "Search titles, summaries, full text, sources, dates, flights, aircraft types, airport codes, airline IATA/ICAO codes and writing models (e.g. GPT 6.1 Terra, GPT 6.1 Sol). Official airline names and common short names are interchangeable.",
         "searchHelpGroups": [
             {"label": "News content", "terms": ["Titles", "summaries", "full text", "sources", "dates"]},
             {"label": "Aviation data", "terms": ["Flights", "aircraft types", "airport codes", "airline IATA/ICAO codes"]},
-            {"label": "Writing models (examples)", "terms": ["GPT 6", "GPT 6.1 Sol"]},
+            {"label": "Writing models (examples)", "terms": ["GPT 6.1 Terra", "GPT 6.1 Sol"]},
         ],
         "searchHelpNote": "Official airline names and common short names are interchangeable.",
         "searchHelpSeparator": ", ",
@@ -1174,12 +1174,15 @@ def _public_writer_model_name(value):
         return "GPT 6.1 Sol"
     if normalized in {"gpt6", "openaigpt6"}:
         return "GPT 6"
+    if normalized in {"gpt61terra", "openaigpt61terra"}:
+        return "GPT 6.1 Terra"
     if "deepseek" in normalized:
         return PUBLIC_DEEPSEEK_MODEL
     return clean[:80]
 
 
 _WRITER_MODELS = (
+    ("gpt-6.1-terra", "GPT 6.1 Terra"),
     ("gpt-6.1-sol", "GPT 6.1 Sol"),
     ("gpt-6-sol", "GPT 6 Sol"),
     ("gpt-6", "GPT 6"),

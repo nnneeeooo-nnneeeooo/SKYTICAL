@@ -1,7 +1,7 @@
 """Bounded OpenAI news discovery; only independently fetched pages enter dedupe.
 
-Search summaries and model-supplied dates are never article evidence. Public
-model labels stay gpt-6; the existing secret resolves the actual API model.
+Search summaries and model-supplied dates are never article evidence. Calls
+and provenance use the actual gpt-6.1-terra model identifier.
 """
 from __future__ import annotations
 import json
@@ -99,7 +99,7 @@ def fetch_candidate(url, now):
     source_key, source_name = _source_identity(url)
     return {'title': title, 'url': url, 'publishedUtc': iso_minute(date),
             'source': source_name, 'sourceKey': source_key,
-            'summary': '', 'fulltext': text, 'discoveredBy': 'openai:gpt-6+search'}
+            'summary': '', 'fulltext': text, 'discoveredBy': 'openai:gpt-6.1-terra+search'}
 
 
 def cached_items(now=None, path=None):
@@ -124,8 +124,8 @@ def cached_items(now=None, path=None):
 def main():
     if os.environ.get('NEWS_WEB_SEARCH', '').lower() != 'true':
         return
-    if not os.environ.get('OPENAI_API_KEY') or not os.environ.get('AVWIRE_OPENAI_API_MODEL'):
-        print('news-search: skipped (credentials/model mapping unavailable)')
+    if not os.environ.get('OPENAI_API_KEY'):
+        print('news-search: skipped (OpenAI credentials unavailable)')
         return
     now = now_utc()
     state = load_json(STATE_PATH, {})
