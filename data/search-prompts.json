@@ -1,35 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-11-13T18:47Z",
-  "targetDateTpe": "2026-11-14",
+  "generatedUtc": "2026-11-14T18:43Z",
+  "targetDateTpe": "2026-11-15",
   "sourceWindow": "month_to_date",
-  "generationMode": "editorial_adjusted",
-  "editorialUpdatedUtc": "2026-11-14T17:34:08Z",
-  "provider": "gemini:gemini-3.6-flash",
+  "generationMode": "llm",
+  "provider": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
   "sourceArticleIds": [
+    "a-boeing-7779-flighttest-5100-hours-20261105",
+    "a-airbus-veterans-civilian-careers-partnerships-20261111",
+    "a-google-spirit-airlines-data-deal-privacy-safeguards-20261112",
+    "a-severe-hail-storm-american-airlines-philadelphia-20261113",
     "a-20261113-1004-uk-court-orders-compulsory-liquidation-f",
-    "a-faa-fines-sonoma-arapahoe-20261112",
-    "a-20261113-0414-four-turkish-service-members-killed-in-m",
-    "a-avherald-safety-roundup-20261111",
-    "a-faa-skyways-shell-offshore-drone-deliveries-20261111",
-    "a-faa-nationwide-ground-stop-20261113"
+    "a-vertical-aerospace-as9100-certification-20261112"
   ],
   "prompts": {
     "zh": [
-      "想了解 Global Airlines 的最新消息",
-      "幫我搜尋索諾瑪縣機場相關報導",
-      "查詢 Sikorsky S-70 直升機相關資訊",
-      "搜尋邊疆航空 A321 的相關消息",
-      "了解 Skyways 與殼牌的無人機測試",
-      "查詢全美航班暫停起飛及解除停飛令的報導"
+      "想了解波音 777-9 試飛 進度",
+      "探索空中巴士 退伍軍人 轉職 計畫",
+      "了解精神航空 資料 隱私 保護",
+      "查看美國航空 費城 冰雹 影響",
+      "關注 Global Airlines A380 清算",
+      "查詢 Vertical航空 AS9100 認證 狀態"
     ],
     "en": [
-      "Show me updates about Global Airlines and A380",
-      "Search for news about Sonoma County Airport",
-      "Find updates on the Sikorsky S-70 helicopter",
-      "Search news about Frontier A321 flights",
-      "Tell me about Skyways drone tests for Shell",
-      "Find coverage of the FAA nationwide ground stop and its lifting"
+      "Check Boeing 777-9 test flight progress",
+      "Explore Airbus veteran transition program",
+      "Learn about Spirit Airlines data privacy safeguards",
+      "See American Airlines Philadelphia hail impact",
+      "Track Global Airlines A380 liquidation",
+      "Check Vertical Aerospace AS9100 certification status"
     ]
   }
 }

@@ -1,0 +1,154 @@
+{
+  "articles": [
+    {
+      "id": "a-20261114-1801-faa-ordered-a-nationwide-ground-stop-for",
+      "publishedUtc": "2026-11-14T18:01Z",
+      "cat": "ops",
+      "primarySource": "Aerospace Global News",
+      "image": null,
+      "sourceImageCandidates": [
+        {
+          "url": "https://aerospaceglobalnews.com/wp-content/uploads/2026/03/AdobeStock_845396731_Editorial_Use_Only-scaled.jpeg",
+          "sources": [
+            {
+              "url": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/",
+              "name": "Aerospace Global News"
+            }
+          ]
+        }
+      ],
+      "zh": {
+        "title": "FAA因通訊問題下令全美航班全面停飛",
+        "summary": "全美航班於01:15 UTC恢復；先前因通訊問題全面停飛",
+        "body": [
+          "最初的命令於20:10 UTC以「設備中斷」為由，暫停從芝加哥 O’Hare（ORD） 與 Midway 機場出發的所有航班。運輸部長 Sean Duffy 表示，通訊問題影響全美所有航路交通管制中心。FAA表示，決定是「出於格外謹慎」，並與「暫時性電信中斷」有關。",
+          "週五晚間記者會上，Duffy表示，20:36時雷達、通訊、管制中心及 TRACONs 在全美各地出現不穩定。FAA技術人員正在調查這項問題。"
+        ]
+      },
+      "en": {
+        "title": "FAA ordered a nationwide ground stop for US flights over a communications issue",
+        "summary": "US flights resumed at 01:15 UTC after a nationwide ground stop over a communications issue.",
+        "body": [
+          "The initial order suspended all flights from Chicago’s O’Hare (ORD) and Midway Airports at 20:10 UTC over an “equipment outage.” Transport Secretary Sean Duffy said the communications issue affected all Air Route Traffic Control Centers. The FAA said the decision was taken “out of an abundance of caution” over a “temporary telecommunications outage.”",
+          "At a Friday evening press conference, Duffy said radar, communications, centers and TRACONs across the country experienced instability at 20:36. FAA technicians were investigating the issue."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Aerospace Global News — All US flights grounded nationwide over major communication…",
+          "url": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-11-13T00:00Z",
+      "writer": "openai:gpt-6",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Sean Duffy said the FAA issued a nationwide ground stop for all U.S. airports following a communication issue impacting all Air Route Traffic Control Centers.",
+          "sourceQuote": "Sean Duffy said: “The FAA issued a nationwide ground stop for all U.S. airports following a communication issue impacting all Air Route Traffic Control Centers.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "Flights resumed at 01:15 UTC.",
+          "sourceQuote": "Flights resumed at 01:15 UTC.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The initial order suspended all flights from Chicago’s O’Hare and Midway Airports at 20:10 UTC over an equipment outage.",
+          "sourceQuote": "The body initially ordered all flights from Chicago’s O’Hare and Midway Airports to be suspended at 20:10 UTC over an “equipment outage.”",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Duffy said radar, communications, centers and TRACONs across the country experienced instability at 20:36.",
+          "sourceQuote": "In a press conference on Friday evening, Duffy shared that at 20:36, “we experienced instability for our radar and our communications and our centers and our TRACONs across the country.”",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The FAA said the decision was taken out of an abundance of caution over a temporary telecommunications outage.",
+          "sourceQuote": "The FAA added in a statement that the decisions was taken “out of an abundance of caution” over a “temporary telecommunications outage.”",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "FAA technicians are investigating the issue.",
+          "sourceQuote": "FAA technicians are investigating the issue.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "investigation",
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "FAA"
+        ],
+        "airports": [
+          "O’Hare",
+          "Midway"
+        ],
+        "locations": [
+          "US",
+          "Chicago"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "FAA",
+          "sourceQuote": "The FAA issued a nationwide ground stop for all U.S. airports following a communication issue impacting all Air Route Traffic Control Centers.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/"
+        },
+        {
+          "entityType": "airports",
+          "value": "O’Hare",
+          "sourceQuote": "Chicago’s O’Hare and Midway Airports",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/"
+        },
+        {
+          "entityType": "airports",
+          "value": "Midway",
+          "sourceQuote": "Chicago’s O’Hare and Midway Airports",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/"
+        },
+        {
+          "entityType": "locations",
+          "value": "US",
+          "sourceQuote": "Flights bound for the US were no longer allowed to depart.",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/"
+        },
+        {
+          "entityType": "locations",
+          "value": "Chicago",
+          "sourceQuote": "Chicago’s O’Hare and Midway Airports",
+          "sourceUrl": "https://aerospaceglobalnews.com/news/breaking-us-flights-grounded/"
+        }
+      ],
+      "evidenceVersion": 2
+    }
+  ]
+}
