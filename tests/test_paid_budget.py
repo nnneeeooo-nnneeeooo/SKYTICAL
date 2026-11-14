@@ -79,23 +79,24 @@ def test_invalid_explicit_output_limit_is_rejected(invalid):
         budget.reserve({"input": "source", "max_output_tokens": invalid}, now=NOW)
 
 
-def test_uncapped_output_still_checks_monthly_and_optional_budgets():
-    seed(month=29999000)
-    with pytest.raises(budget.BudgetDenied):
-        budget.reserve({"input": "source"}, now=NOW)
-    seed(month=9999000, optional=9999000)
-    with pytest.raises(budget.BudgetDenied, match="reserved for drafting"):
-        budget.reserve({"input": "source"}, "review", now=NOW)
+def test_uncapped_output_allows_monthly_and_optional_spending():
+    seed(day=39000000, month=79000000, optional=50000000)
+    for purpose in ("draft", "review", "summary"):
+        assert budget.reserve({"input": "source"}, purpose, now=NOW)
+    assert read()["months"]["2026-11"]["total"] > 79000000
 
 
-def test_monthly_limit_blocks_before_http():
-    seed(day=29999000, month=29999000)
-    sender = Mock()
+def test_no_monthly_or_daily_cap_blocks_http():
+    seed(day=29999000, month=99999000)
+    response = Mock()
+    response.json.return_value = {
+        "usage": {"input_tokens": 20000, "output_tokens": 10000}}
+    sender = Mock(return_value=response)
     with patch.object(budget, "datetime") as clock:
         clock.now.return_value = NOW
-        with pytest.raises(budget.BudgetDenied):
-            budget.post(sender, "unused", PAYLOAD)
-    sender.assert_not_called()
+        assert budget.post(sender, "unused", PAYLOAD) is response
+    sender.assert_called_once()
+    assert read()["months"]["2026-11"]["total"] > 99999000
 
 
 def test_unlimited_daily_budget_allows_spending_above_old_cap():
@@ -105,10 +106,10 @@ def test_unlimited_daily_budget_allows_spending_above_old_cap():
     assert read()["days"]["2026-11-01"]["total"] > 5000000
 
 
-def test_elective_work_cannot_use_twenty_dollar_drafting_allocation():
-    seed(month=9999000, optional=9999000)
-    with pytest.raises(budget.BudgetDenied, match="reserved for drafting"):
-        budget.reserve(PAYLOAD, "summary", now=NOW)
+def test_review_and_summary_have_no_separate_spending_caps():
+    seed(month=59000000, optional=58000000)
+    assert budget.reserve(PAYLOAD, "summary", now=NOW)
+    assert budget.reserve(PAYLOAD, "review", now=NOW)
     assert budget.reserve(PAYLOAD, "draft", now=NOW)
 
 
@@ -151,12 +152,32 @@ def test_search_and_unknown_model_are_bounded():
         budget.reserve(PAYLOAD, model="unpriced-model", now=NOW)
 
 
-def test_warning_is_emitted_once(capsys):
-    seed(day=795000, month=795000)
-    for _ in range(2):
+def test_two_dollar_settled_warning_is_emitted_once(capsys):
+    seed(day=1900000, month=1900000)
+    for _ in range(3):
         token = budget.reserve(PAYLOAD, now=NOW)
         budget.settle(token, {"usage": {"input_tokens": 20000, "output_tokens": 10000}})
     assert capsys.readouterr().out.count("::warning::") == 1
+    assert read()["days"]["2026-11-01"]["warned_usd2"] == 1
+
+
+def test_preflight_reservation_does_not_trigger_two_dollar_warning(capsys):
+    seed(day=1900000, month=1900000)
+    token = budget.reserve({"input": "source"}, now=NOW)
+    assert token
+    assert "warned_usd2" not in read()["days"]["2026-11-01"]
+    assert "::warning::" not in capsys.readouterr().out
+
+
+def test_legacy_low_warning_does_not_suppress_new_two_dollar_threshold(capsys):
+    seed(day=2000000, month=2000000)
+    row = read()
+    row["days"]["2026-11-01"]["warned"] = 1
+    budget.save_json(budget._path(), row)
+    token = budget.reserve(PAYLOAD, now=NOW)
+    budget.settle(token, {"usage": {"input_tokens": 20000, "output_tokens": 10000}})
+    assert capsys.readouterr().out.count("::warning::") == 1
+    assert read()["days"]["2026-11-01"]["warned_usd2"] == 1
 
 
 def test_disabled_budget_does_not_create_a_ledger(monkeypatch):
@@ -165,12 +186,11 @@ def test_disabled_budget_does_not_create_a_ledger(monkeypatch):
     assert not budget._path().exists()
 
 
-def test_openai_adapter_blocks_before_network(monkeypatch):
+def test_openai_adapter_rejects_corrupt_ledger_before_network(monkeypatch):
     from providers import OpenAIProvider, ProviderBudgetError
     monkeypatch.setenv("AVWIRE_OPENAI_API_MODEL", "test-private-mapping")
-    seed(day=30000000, month=30000000)
-    with patch.object(budget, "datetime") as clock, patch("requests.post") as post:
-        clock.now.return_value = NOW
+    budget._path().write_text("{}", encoding="utf-8")
+    with patch("requests.post") as post:
         with pytest.raises(ProviderBudgetError):
             OpenAIProvider()._post_json("unused", PAYLOAD, {}, False)
     post.assert_not_called()
@@ -191,23 +211,19 @@ def test_sync_does_not_overwrite_concurrent_remote_change(monkeypatch):
     put.assert_not_called()
 
 
-def test_shared_file_lock_prevents_parallel_overspend():
+def test_shared_file_lock_tracks_parallel_uncapped_reservations():
     from concurrent.futures import ThreadPoolExecutor
-    cfg = budget.policy()
-    cfg["daily_limit_usd"] = 0.6
-    cfg["daily_warning_usd"] = 0.4
-    def attempt(_):
-        try:
-            return budget.reserve(PAYLOAD, now=NOW)
-        except budget.BudgetDenied:
-            return None
-    with patch.object(budget, "policy", return_value=cfg), ThreadPoolExecutor(max_workers=8) as pool:
-        tokens = list(pool.map(attempt, range(8)))
-    assert sum(bool(t) for t in tokens) == 2
-    assert read()["days"]["2026-11-01"]["total"] <= 600000
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        tokens = list(pool.map(lambda _: budget.reserve(PAYLOAD, now=NOW), range(8)))
+    row = read()
+    assert len(tokens) == len(set(tokens)) == 8
+    assert row["days"]["2026-11-01"]["total"] == sum(
+        hold["micros"] for hold in row["reservations"].values())
+    assert row["days"]["2026-11-01"]["total"] > 1500000
 
 
-def test_ci_pre_request_escrow_bounds_run_and_final_write_releases_unused_budget(monkeypatch):
+def test_ci_persists_every_request_hold_then_settled_usage(monkeypatch):
     import base64
     monkeypatch.setenv("GITHUB_REPOSITORY", "owner/repo")
     monkeypatch.setenv("GH_TOKEN", "fake-workflow-token")
@@ -217,21 +233,25 @@ def test_ci_pre_request_escrow_bounds_run_and_final_write_releases_unused_budget
     get = Mock(status_code=200)
     get.json.return_value = {"sha": "old"}
     put = Mock()
-    put.json.return_value = {"content": {"sha": "escrow"}}
-    with patch.object(sync.requests, "get", return_value=get), patch.object(sync.requests, "put", return_value=put) as send:
+    put.json.return_value = {"content": {"sha": "hold1"}}
+    with patch.object(sync.requests, "get", return_value=get), patch.object(
+            sync.requests, "put", return_value=put) as send:
         sync.sync("reserve", reservation=token)
         outgoing = json.loads(base64.b64decode(send.call_args.kwargs["json"]["content"]))
-        assert outgoing["days"]["2026-11-01"]["total"] == 30000000
-        assert any(r.get("kind") == "ci_escrow" for r in outgoing["reservations"].values())
-        # More calls that day require no further remote commit. Local spending
-        # remains subject to the monthly/category checks.
+        assert set(outgoing["reservations"]) == {token}
+        assert not any(r.get("kind") == "ci_escrow" for r in outgoing["reservations"].values())
+
+        get.json.return_value = {"sha": "hold1"}
+        put.json.return_value = {"content": {"sha": "hold2"}}
         monkeypatch.setenv("GITHUB_ACTIONS", "true")
         token2 = budget.reserve(PAYLOAD, now=NOW)
-        assert send.call_count == 1
-        assert read()["days"]["2026-11-01"]["total"] < 1000000
+        assert send.call_count == 2
+        outgoing = json.loads(base64.b64decode(send.call_args.kwargs["json"]["content"]))
+        assert set(outgoing["reservations"]) == {token, token2}
+
         for t in (token, token2):
             budget.settle(t, {"usage": {"input_tokens": 20000, "output_tokens": 10000}})
-        get.json.return_value = {"sha": "escrow"}
+        get.json.return_value = {"sha": "hold2"}
         put.json.return_value = {"content": {"sha": "settled"}}
         sync.sync("persist")
         outgoing = json.loads(base64.b64decode(send.call_args.kwargs["json"]["content"]))
@@ -277,3 +297,49 @@ def test_first_shared_ledger_imports_existing_cloud_audit_cost(monkeypatch):
 def test_long_context_price_reservation_includes_premiums():
     cfg = budget.policy()
     assert budget._cost(300000, 48000, 0, cfg) == 1110000
+
+
+
+def test_two_dollar_issue_notification_is_assigned_and_deduplicated(monkeypatch):
+    repo = "owner/repo"
+    headers = {"Authorization": "Bearer test"}
+    seed(day=2500000, month=2500000)
+    found = Mock(status_code=200)
+    found.json.return_value = {"items": []}
+    created = Mock(status_code=201)
+    with patch.object(sync.requests, "get", return_value=found) as get, patch.object(
+            sync.requests, "post", return_value=created) as post:
+        sync._notify_daily_usage(repo, headers, read(), now=NOW)
+        assert post.call_count == 1
+        notice = post.call_args.kwargs["json"]
+        assert notice["title"] == "SKYTICAL Terra API daily USD 2 alert 2026-11-01"
+        assert notice["assignees"] == ["owner"]
+        assert "不會限制或停止 API" in notice["body"]
+
+        found.json.return_value = {"items": [{"title": notice["title"]}]}
+        sync._notify_daily_usage(repo, headers, read(), now=NOW)
+        assert post.call_count == 1
+        assert get.call_count == 2
+
+
+def test_two_dollar_notification_ignores_unknown_held_spend():
+    seed(day=2900000, month=2900000)
+    row = read()
+    row["reservations"]["unknown"] = {
+        "day": "2026-11-01", "month": "2026-11", "purpose": "draft",
+        "micros": 1200000,
+    }
+    with patch.object(sync.requests, "get") as get, patch.object(
+            sync.requests, "post") as post:
+        sync._notify_daily_usage("owner/repo", {}, row, now=NOW)
+    get.assert_not_called()
+    post.assert_not_called()
+
+
+def test_two_dollar_notification_is_not_triggered_under_threshold():
+    seed(day=1999999, month=1999999)
+    with patch.object(sync.requests, "get") as get, patch.object(
+            sync.requests, "post") as post:
+        sync._notify_daily_usage("owner/repo", {}, read(), now=NOW)
+    get.assert_not_called()
+    post.assert_not_called()
