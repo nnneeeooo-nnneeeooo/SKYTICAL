@@ -46,6 +46,11 @@
         await sleep(100);
         const samples = [];
         const capture = () => {
+          const title = doc.getElementById('hero-story-title');
+          const titleStyle = frame.contentWindow.getComputedStyle(title);
+          const lineHeight = parseFloat(titleStyle.lineHeight);
+          if (title.getBoundingClientRect().height > lineHeight * 2 + 1)
+            throw new Error('Headline reservation exceeds two lines');
           const values = selectors.flatMap(selector => {
             const rect = doc.querySelector(selector).getBoundingClientRect();
             return [rect.top + frame.contentWindow.scrollY, rect.height];
