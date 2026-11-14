@@ -187,6 +187,21 @@ def test_rate_limit_stops_before_rag_and_models(monkeypatch, tmp_path, quiet_usa
     assert not result["ragUsed"]
 
 
+
+def test_copilot_usd_cost_has_no_daily_hard_cap(monkeypatch, tmp_path):
+    # USD spending is recorded, but must not turn off the AI at the old
+    # Copilot-specific US$5 daily threshold. Request/rate limits still apply.
+    monkeypatch.setenv("AI_DAILY_BUDGET_LIMIT_USD", "0.01")
+    state = copilot.RateState(tmp_path / "rate-state.json")
+    user_hash = hmac.new(TOKEN.encode(), ACTOR.encode(), hashlib.sha256).hexdigest()[:24]
+    state.reserve(user_hash, "first-query")
+    state.record_llm(user_hash, 25.0)
+    result = state.reserve(user_hash, "second-query")
+    assert "budgetExceeded" not in result
+    assert result["remainingDaily"] == 49
+
+
+
 def test_incremental_index_contains_required_metadata(tmp_path):
     articles = tmp_path / "articles"
     write_articles(articles, [article(), article("archived", archived=True)])
