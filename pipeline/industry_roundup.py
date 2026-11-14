@@ -15,7 +15,7 @@ from public_article import public_news_path
 QUEUE_PATH = DATA_DIR / "industry-roundup-queue.json"
 TAIPEI = timezone(timedelta(hours=8))  # Taiwan has no daylight-saving time.
 MAX_AGE = timedelta(hours=48)
-MAX_ITEMS = 8
+MAX_ITEMS = 3
 
 
 def _urls(article: dict) -> set[str]:
@@ -208,15 +208,15 @@ def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None
                            for row in selected],
         "primarySource": "Multiple aviation sources",
         "image": None, "sourceImageCandidates": [],
-        "zh": {"title": "航空短訊彙整：" + "；".join(
-                   row["article"]["zh"]["title"] for row in selected[:2]),
+        "zh": {"title": "航空短訊彙整：" + "、".join(
+                   row["article"]["zh"]["title"] for row in selected),
                "summary": f"本期收錄{count}則獨立消息：" + "、".join(
-                   row["article"]["zh"]["title"] for row in selected[:3]) + "。",
+                   row["article"]["zh"]["title"] for row in selected) + "。",
                "body": body["zh"]},
         "en": {"title": "Aviation briefs: " + "; ".join(
-                   row["article"]["en"]["title"] for row in selected[:2]),
+                   row["article"]["en"]["title"] for row in selected),
                "summary": f"{count} independent updates: " + "; ".join(
-                   row["article"]["en"]["title"] for row in selected[:3]) + ".",
+                   row["article"]["en"]["title"] for row in selected) + ".",
                "body": body["en"]},
         "sources": sources, "facts": facts,
         "writer": ("rules:published-news-roundup" if any(row.get("publishedExcerptId") for row in selected)

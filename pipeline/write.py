@@ -1046,6 +1046,17 @@ def group_prompt(group: dict) -> str:
         f"{group.get('primarySource', '?')}",
     ]
     route = publication_route(group)
+    if route.route == "industry_roundup":
+        lines.append(
+            "This edition contains at most three independent updates. "
+            "Write zh.title and en.title as compact, self-contained item headlines "
+            "that can be joined with the other two headlines into the edition title. "
+            "Aim for 12–24 Chinese/alphanumeric characters in zh.title and "
+            "5–9 words in en.title, as soft targets. Name the subject and main "
+            "development; put comparisons, background and secondary details in "
+            "the summary/body. Keep attribution (says/reportedly), uncertainty, "
+            "negation and material conditions. Never truncate a sentence or "
+            "sacrifice factual meaning to meet the length target.")
     if (route.route == "industry_roundup"
             or news_policy(group).reason not in {
                 "ordinary_news", "taiwan_relevance",

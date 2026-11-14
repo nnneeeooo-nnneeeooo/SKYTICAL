@@ -433,7 +433,15 @@ html[lang^="zh"] .feed-category {
   padding: 3px 9px; border: 1px solid var(--color-divider);
   font-size: 11px; white-space: nowrap;
 }
-.hero-title { margin: 8px 0 10px; font-size: 34px; line-height: 1.15; }
+.hero-title {
+  margin: 8px 0 10px; font-size: 34px; line-height: 1.15;
+  /* Bound the shared reservation so a four-line title cannot pad every slide.
+     Full headline text remains in the link and on the article page. */
+  display: -webkit-box; -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; line-clamp: 2;
+  height: 2lh; max-height: 2lh; overflow: hidden;
+  overflow-wrap: anywhere; text-overflow: ellipsis;
+}
 
 /* Apple-style glanceable summary: borderless and aligned with its headline.
    The private iOS glyph is represented by an original SVG. */

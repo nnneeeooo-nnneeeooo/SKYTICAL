@@ -105,7 +105,7 @@ def test_six_hour_editions_and_one_visible_carousel_slot():
     for n in range(1, 5):
         industry_roundup.add(state, article(n), now)
     first = industry_roundup.compile_due(state, now, [])
-    assert first and len(first["roundupItems"]) == 4
+    assert first and len(first["roundupItems"]) == 3
     for n in (5, 6):
         industry_roundup.add(state, article(n), now)
     assert industry_roundup.compile_due(state, now + timedelta(hours=1), [first]) is None
@@ -122,17 +122,37 @@ def test_six_hour_editions_and_one_visible_carousel_slot():
     assert not build.headline_carousel_articles(prepared, now - timedelta(hours=1), pinned_ids=[])
 
 
-def test_event_dedup_and_eight_item_cap():
+def test_event_dedup_and_three_item_cap():
     now = datetime(2026, 11, 6, 2, tzinfo=timezone.utc)
     state = {"lastEdition": "", "items": []}
     for n in range(1, 12):
         industry_roundup.add(state, article(n), now, event_key=f"event-{n}")
     compiled = industry_roundup.compile_due(state, now, [
         {"roundupItems": [{"eventKey": "event-1"}], "sources": []}])
-    assert len(compiled["roundupItems"]) == 8
+    assert len(compiled["roundupItems"]) == 3
     assert all(row["eventKey"] != "event-1" for row in compiled["roundupItems"])
-    assert len(state["items"]) == 2
+    assert len(state["items"]) == 7
     assert state["history"][0]["reason"] == "already_published"
+    for lang, prefix, separator in (("zh", "航空短訊彙整：", "、"),
+                                    ("en", "Aviation briefs: ", "; ")):
+        assert compiled[lang]["title"] == prefix + separator.join(
+            article(n)[lang]["title"] for n in (2, 3, 4))
+    # Overflow remains queued and is consumed in later editions, never dropped.
+    second = industry_roundup.compile_due(state, now + timedelta(hours=6), [compiled])
+    assert [r["articleId"] for r in second["roundupItems"]] == [
+        article(n)["id"] for n in (5, 6, 7)]
+    assert len(state["items"]) == 4
+
+
+def test_roundup_writer_uses_concise_complete_headlines():
+    import write
+    prompt = write.group_prompt(group("SITA to acquire CAE airline operations software business"))
+    assert "at most three independent updates" in prompt
+    assert "12–24" in prompt and "5–9" in prompt
+    assert "Keep attribution" in prompt
+    assert "Never truncate a sentence" in prompt
+    assert "compact, self-contained item headlines" not in write.group_prompt(
+        group("Airliner crash at airport"))
 
 
 def test_roundup_does_not_displace_pin_or_taiwan_focus():
@@ -268,7 +288,8 @@ if __name__ == "__main__":
     test_published_source_wins_and_expired_item_is_dropped()
     test_short_news_protects_taiwan_safety_and_regulatory()
     test_six_hour_editions_and_one_visible_carousel_slot()
-    test_event_dedup_and_eight_item_cap()
+    test_event_dedup_and_three_item_cap()
+    test_roundup_writer_uses_concise_complete_headlines()
     test_roundup_does_not_displace_pin_or_taiwan_focus()
     test_component_followup_cannot_overwrite_multi_event_edition()
     test_published_muse_copy_is_excerpted_once_with_original_links()
