@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "waiting",
-      "untilUtc": "2026-11-14T13:06Z",
-      "checkedUtc": "2026-11-14T07:06Z",
-      "failureClass": "unexpected",
-      "diagnostic": "F1 claim adds high-risk atom 'H140' not present in its own sourceQuote",
+      "status": "verified",
+      "untilUtc": "2026-11-15T14:34Z",
+      "checkedUtc": "2026-11-14T14:34Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -21,8 +21,8 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-11-14T07:06Z",
-      "untilUtc": "2026-11-14T13:06Z",
+      "checkedUtc": "2026-11-14T14:34Z",
+      "untilUtc": "2026-11-14T20:34Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
