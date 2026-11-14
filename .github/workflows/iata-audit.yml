@@ -38,6 +38,7 @@ jobs:
       cancel-in-progress: false
     permissions:
       contents: write # only data/iata-audit/state.json, never articles or code
+      issues: write # create one assigned US$2 daily Terra usage alert
     steps:
       - uses: actions/checkout@v5
         with:

@@ -150,13 +150,6 @@ def _int_env(name: str, default: int, low: int, high: int) -> int:
         return default
 
 
-def _float_env(name: str, default: float, low: float, high: float) -> float:
-    try:
-        return max(low, min(float(os.environ.get(name, default)), high))
-    except (TypeError, ValueError):
-        return default
-
-
 def clean_text(value, limit: int) -> str:
     text = unicodedata.normalize("NFKC", html.unescape(str(value or "")))
     text = _CONTROL_RE.sub("", text)
@@ -782,9 +775,6 @@ class RateState:
         daily_limit = _int_env("AI_DAILY_REQUEST_LIMIT", 50, 1, 1000)
         if int(user.get("llmCount") or 0) >= daily_limit:
             raise RateLimitError("daily_limit", 86_400)
-        budget = _float_env("AI_DAILY_BUDGET_LIMIT_USD", 5.0, 0.01, 1000.0)
-        total_cost = sum(float(row.get("costUsd") or 0) for row in users.values()
-                         if isinstance(row, dict) and row.get("day") == today)
         minute_rows.append(moment)
         recent[question_hash] = moment.isoformat().replace("+00:00", "Z")
         recent = {key: value for key, value in list(recent.items())[-20:]}
@@ -797,9 +787,8 @@ class RateState:
         raw.update({"version": 1, "updatedUtc": iso_minute(moment),
                     "users": users})
         save_json(self.path, raw)
-        return {"budgetExceeded": total_cost >= budget,
-                "remainingDaily": max(0, daily_limit - int(
-                    user.get("llmCount") or 0))}
+        return {"remainingDaily": max(0, daily_limit - int(
+            user.get("llmCount") or 0))}
 
     def record_llm(self, user_hash: str, cost_usd: float) -> None:
         raw = load_json(self.path, {})
@@ -899,15 +888,6 @@ def answer_request(payload: dict, *, actor: str,
     _event(request_id, "rag_search", status="success", model="lexical-v1",
            latency_ms=round((time.monotonic() - started) * 1000),
            rag_used=True, source_count=len(onsite_cards), user_hash=user_hash)
-
-    if limits["budgetExceeded"]:
-        answer = ("今日 AI 預算上限已達，僅提供站內搜尋結果。"
-                  if onsite_cards else INSUFFICIENT_REPLY)
-        result = _fixed_result(payload, answer, "allowed")
-        result.update({"status": "budget_limited", "sources": onsite_cards,
-                       "sourceMode": "SKYTICAL 站內資料" if onsite_cards else "資料不足",
-                       "ragUsed": True})
-        return result
 
     external_results = []
     external_note = ""

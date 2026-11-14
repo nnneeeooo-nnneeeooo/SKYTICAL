@@ -25,48 +25,45 @@
 - Luna 所有撰稿、審稿、修復、雙語快報、來源搜尋及手動呼叫統一使用 `max`，
   不因修復、舊環境變數或手動較低檔位而降級。其他平台仍依各自支援的參數執行。
 
-## 預算與會計
+## Terra API 記帳及每日 US$2 GitHub 通知（2026-11-15）
 
-`config/luna_policy.json`：每個臺北曆月 US$30；每日 US$0.80 提醒，
-依 2026-11-04 指示取消每日硬上限（`daily_limit_usd: null`），包含 IATA 檢查。
-分配目標為撰稿／救稿 US$20、審稿 US$8、整理 US$2。審稿及整理可
-共用 US$10 彈性額度，保留 US$20 給出稿；撰稿可使用尚未花掉的彈性額度，
-所有用途仍共用每月總上限；IATA 保留自身每月 US$8 上限。提醒以 Actions warning 顯示，不另發送訊息。
+- 站內每日及每月金額硬上限均已取消。config/luna_policy.json 中
+  daily_limit_usd 保持 null；原有共用每月 US$30、用途分配額度，
+  及 IATA 每月 US$8 上限都已移除。
+- daily_warning_usd = 2.0 僅用於提醒，不會停止模型請求。
+  臺灣時間每日 00:00 重新計算；當站內帳本的已結算保守估算金額
+  達 US$2，Actions 顯示 warning 並建立一則指派給儲存庫擁有者的
+  GitHub Issue。同一天若已經有同名 Issue 就不重複建立。
+  App 或 Email 是否推播仍依 GitHub 個人通知設定。
+- 預先保留的 token 上界不算達標；逾時或缺少 usage 的呼叫
+  繼續保留保守預留額，但不被誤判為已結算用量。舊版的 warned
+  US$0.80 旗標不影響新版 warned_usd2。
+- AVWIRE_PAID_BUDGET_ENABLED=true 啟用記帳；正式 hourly、briefing、
+  manual-draft、Copilot、IATA 及 token-retry 都走共享帳本。
+  每次付費 HTTP 請求前，先保存保守預留額；收到 usage 後結算。
+- Terra 標準參考價每百萬輸入 US$1／輸出 US$5。
+  輸入採 1.25 倍保守估計，超長 context 與工具呼叫另納入預留。
+  推理 token 已包含在 output，不重複計算。
+- Terra 不指定 max_output_tokens；記帳時以官方原生 128,000
+  輸出 token 估算預留費用，但不以此截斷模型生成。
+  未知模型費率、無上界工具、無效輸出參數與帳本損毀仍拒絕呼叫，
+  這些都是資料安全檢查，並非金額硬上限。
+- 此帳本不等於 OpenAI 組織帳單，也不包含其他使用同一 API 組織的
+  專案。移除站內硬上限之後，官方免費額度耗盡可能產生實際費用。
 
-- `AVWIRE_PAID_BUDGET_ENABLED=true` 才啟用。正式 hourly、briefing、manual-draft、
-  Copilot 與 IATA 的付費執行步驟均啟用；本機及 PR 離線測試預設不啟用。
-- 每個實際 HTTP 呼叫（含格式修復）都先在 `data/paid-budget.json` 預留上界。
-  請求內容的 UTF-8 位元組數加框架餘量保守估算輸入；Luna 不傳送 `max_output_tokens`，不以本站參數截斷推理或最終內容。
-  未指定輸出上限時，帳本按官方原生輸出容量 128,000 token 預留費用；這只是會計預留，
-  不會成為請求限制。明確有限額的其他呼叫沿用其參數。搜尋另預留完整 context 與工具次數。
-- 官方標準單價輸入 US$0.10／百萬、輸出 US$0.50／百萬；會計以輸入單價 1.25 倍
-  保守涵蓋 cache-write，不將快取折扣先當成可花額度。因此本站記帳可能略高於帳單。
-  推理 token 已包含在 API 的 `output_tokens`，不重複加計。
-- 收到用量後才結算。逾時、程序中止、無用量或無法解析回應，保留整筆預留額；
-  不自動釋放未知費用。Ledger 損毀、未知模型單價、無上限工具或無效輸出參數均拒絕呼叫。
-- 以臺北日／月切換新額度桶，歷史用量及未結算預留不會被刪除。此上限只計算
-  本功能啟用後、通過本站預算入口的支出，不是 OpenAI 帳戶全域費用上限。
-  其他程式、人工 benchmark 或同 API 組織的外部使用不在此 ledger 範圍內。
-- 模型私有對應沿用既有 secret，只在 HTTP 邊界解析，不寫入記帳或公開資料。
+## 每日快報與跨工作流程持久化
 
-## 每日整理與跨工作流程持久化
+沿用每日三版雙語快報、來源證據驗證及原有摘要快取。
+正式付費工作流程仍共用 skytical-paid-api- 前綴的 concurrency group，
+避免不同 GitHub Actions 同時覆寫帳本。每筆請求先透過
+SHA compare-and-swap 持久化**該請求**的保守預留額；
+工作完成後，即使主要步驟失敗，也在 always 步驟保存用量。
+舊制每月剩餘額度 escrow 已取消，因為月度金額已無上限。
 
-重用既有每日三版雙語快報及其來源證據驗證、digest 快取與最多兩次呼叫；
-快報撰寫計入 summary，既有來源搜尋計入 draft。不另加一個重複摘要排程。
-整理額度不足時，快報維持既有擷取式降級，不阻塞完整快報。
-
-五個正式 API 工作流程（含雲端 IATA）共用 `skytical-paid-api-${{ github.ref }}` concurrency group，
-不取消執行中的作業。每次先用 repository token 讀取最新 ledger，再允許付費步驟；
-第一次付費呼叫前，先以 GitHub contents API 的 SHA compare-and-swap 保存該日
-可用預算的保守 escrow（每日無上限時預留當月剩餘額度），同次執行後續呼叫不重複提交。
-保存失敗就不送付費請求。結束後以 `if: always()` 保存實際費用與未知呼叫的預留額，
-釋放未用 escrow；即使建站／模型步驟失敗也保存帳本，不提交其他未完成的內容。
-不同執行程序的本機扣款另有 Windows／Linux 檔案鎖。
-
-外部修改 ledger 造成 SHA 不符時拒絕覆寫並使工作流程失敗；網路或 GitHub API 故障
-若阻止最後的結算保存，遠端仍保留先前 escrow，後續工作只能少用預算，不能將
-該筆支出當成零。需檢查該次工作流程，依 API 步驟後上傳的獨立帳本 artifact 補回
-結算。不得在未確認未知費用前手動清零預留額。
+GitHub token 必須有 contents: write 及 issues: write 權限。
+無法事先保存預留額時，為避免遺失記帳，該請求不送出付費 HTTP。
+達標 Issue 建立失敗時，persist 步驟會報錯；下一輪執行會重試，
+並以當日 Issue 標題去重。
 
 ## 驗證與檢視
 
@@ -79,7 +76,7 @@
 觀察至少七天的記帳與審稿結果，再比較成功發布成本、失敗類型、審稿攔下的有效問題
 及出稿時間；審稿模型的問題數不等同人工確認的錯誤數。
 
-官方依據：[Luna 模型／價格](https://developers.openai.com/api/docs/models/gpt-6-luna)、
+官方依據：[Terra 模型／價格](https://developers.openai.com/api/docs/models/gpt-6.1-terra)、
 [推理 token 計費](https://developers.openai.com/api/docs/guides/reasoning)、
 [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)。
 
@@ -87,6 +84,6 @@
 
 2026-11-07：依站方指示，Luna 不設程式層處理時限。撰稿、修復、審稿、快報、手動呼叫及 IATA 的 HTTP 讀取等待無上限，來源搜尋也移除原有 120 秒等待；連線建立仍限 10 秒。Luna 不套用單次 180 秒、稿件 360 秒或整輪 15 分鐘的截止時間；其他模型維持既有時間限制。免費模型整輪時間用完後，符合付費分流的剩餘新聞仍可交給 Luna。
 
-MAX、呼叫／修復次數、來源核驗與每月額度規則維持。IATA 不另設 45 分鐘作業上限，所有工作仍受 GitHub 託管 runner 每個 job 最長 6 小時限制（[官方執行限制](https://docs.github.com/en/actions/reference/limits)）。此設定避免本機等待期限中止慢請求，不保證服務端不發生限流、錯誤或斷線；中止與未知用量仍保留預留額。
+當時 MAX、呼叫／修復次數、來源核驗與月度額度規則維持；月度額度限制已於 2026-11-15 移除。IATA 不另設 45 分鐘作業上限，所有工作仍受 GitHub 託管 runner 每個 job 最長 6 小時限制（[官方執行限制](https://docs.github.com/en/actions/reference/limits)）。此設定避免本機等待期限中止慢請求，不保證服務端不發生限流、錯誤或斷線；中止與未知用量仍保留預留額。
 
-2026-11-07：依站方指示，移除所有 Luna 呼叫及格式修復的 `max_output_tokens`，包含撰稿、審稿、快報、手動呼叫、來源搜尋及 IATA。服務端原生容量仍適用；官方 Luna 目前最多輸出 128,000 token，並非無限輸出。共用預算與 IATA 帳本以此原生容量預留，收到用量後按實值結算；即使服務回傳量超出預留估算，也完整記帳，不截斷回應。每日無上限、每月與用途額度、MAX 及處理等待設定不變。
+2026-11-07：依站方指示，移除所有 Luna 呼叫及格式修復的 `max_output_tokens`，包含撰稿、審稿、快報、手動呼叫、來源搜尋及 IATA。服務端原生容量仍適用；官方 Luna 目前最多輸出 128,000 token，並非無限輸出。共用預算與 IATA 帳本以此原生容量預留，收到用量後按實值結算；即使服務回傳量超出預留估算，也完整記帳，不截斷回應。當時每日無上限，月度與用途額度仍有限制；這些金額限制於 2026-11-15 移除，MAX 及處理等待設定仍維持。

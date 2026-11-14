@@ -44,6 +44,7 @@ jobs:
       cancel-in-progress: false
     permissions:
       contents: write # commits data/briefings back to the repo
+      issues: write # create one assigned US$2 daily Terra usage alert
       pages: write # configure-pages enablement
     steps:
       - uses: actions/checkout@v5

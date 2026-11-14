@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write # create one assigned US$2 daily Terra usage alert
     steps:
       - uses: actions/checkout@v5
         with:

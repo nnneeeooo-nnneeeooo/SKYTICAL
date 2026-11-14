@@ -5,10 +5,9 @@ workflow's repository token; does not read or transmit any model API keys.
 """
 import argparse
 import base64
-import copy
 import json
 import os
-import uuid
+from datetime import datetime, timedelta, timezone
 
 import requests
 
@@ -16,6 +15,68 @@ from common import DATA_DIR, save_json
 
 BASE = DATA_DIR / ".paid-budget-base.json"
 PATH = DATA_DIR / "paid-budget.json"
+TPE = timezone(timedelta(hours=8))
+
+
+def _notify_daily_usage(repo, headers, ledger, now=None):
+    """Open at most one assigned GitHub issue per Taipei day after USD 2 settled.
+
+    Old monthly escrows and unfinished/unknown reservations are never treated
+    as settled spending. The exact issue title is also the idempotency key.
+    """
+    from paid_budget import policy, _micros
+
+    threshold = _micros(policy()["daily_warning_usd"])
+    today = (now or datetime.now(timezone.utc)).astimezone(TPE).date()
+    for date in (today - timedelta(days=1), today):
+        day = date.isoformat()
+        counts = ledger.get("days", {}).get(day) or {}
+        unsettled = sum(
+            hold["micros"] for hold in ledger.get("reservations", {}).values()
+            if hold["day"] == day
+        )
+        settled_usd_micro = counts.get("total", 0) - unsettled
+        if settled_usd_micro < threshold:
+            continue
+
+        title = f"SKYTICAL Terra API daily USD 2 alert {day}"
+        params = {
+            "q": f'repo:{repo} is:issue in:title "SKYTICAL Terra API daily USD 2 alert" {day}',
+            "per_page": 50,
+        }
+        found = requests.get(
+            "https://api.github.com/search/issues",
+            params=params, headers=headers, timeout=30,
+        )
+        found.raise_for_status()
+        if any(item.get("title") == title for item in found.json().get("items", [])):
+            continue
+
+        body = (
+            f"SKYTICAL 的 Terra API 用量於 **{day}（臺灣時間）** "
+            f"達到每日 **US$2** 提醒門檻。\n\n"
+            f"截至本次結算，站內帳本估算的已結算支出為 "
+            f"**US$ {settled_usd_micro / 1_000_000:.2f}**。\n\n"
+            "這是通知，**不會限制或停止 API 呼叫**；站內沒有每日或每月"
+            "的金額硬上限。記帳採保守單價估算，未結算或用量不明的請求"
+            "仍保留預留額；此數字不代表 OpenAI 帳戶的完整帳單，"
+            "也不包括其他程式或專案的用量。\n\n"
+            "記帳檔：data/paid-budget.json。"
+        )
+        created = requests.post(
+            f"https://api.github.com/repos/{repo}/issues",
+            json={
+                "title": title,
+                "body": body,
+                "assignees": [os.environ.get(
+                    "SKYTICAL_BUDGET_NOTIFY_USER", repo.split("/", 1)[0]
+                )],
+            },
+            headers=headers, timeout=30,
+        )
+        created.raise_for_status()
+        print(f"::notice::Daily Terra US$2 GitHub alert created for {day}")
+
 
 
 def sync(mode, reservation=None):
@@ -29,12 +90,10 @@ def sync(mode, reservation=None):
     baseline = json.loads(BASE.read_text(encoding="utf-8")) if BASE.exists() else None
     current = json.loads(PATH.read_text(encoding="utf-8")) if PATH.exists() else None
     if mode == "reserve":
-        if baseline is None:
-            raise RuntimeError("shared paid budget preflight was not completed")
-        hold = current["reservations"][reservation]
-        period = {"day": hold["day"], "month": hold["month"]}
-        if baseline.get("escrow") == period:
-            return  # the existing remote escrow already bounds this entire day
+        if baseline is None or current is None:
+            raise RuntimeError("shared paid usage preflight was not completed")
+        if reservation not in current.get("reservations", {}):
+            raise RuntimeError("unknown paid API reservation")
     response = requests.get(url, params={"ref": branch}, headers=headers, timeout=30)
     if response.status_code == 404:
         remote = {"sha": None, "content": None}
@@ -66,25 +125,15 @@ def sync(mode, reservation=None):
         with _locked():
             pass
         return
-    if mode == "persist" and current == baseline["data"] and not baseline.get("escrow"):
+    if current == baseline["data"]:
+        if mode == "persist":
+            _notify_daily_usage(repo, headers, current)
         return
     if remote["sha"] != baseline["sha"]:
-        raise RuntimeError("shared budget changed outside the CI spending lock; refusing overwrite")
-    outgoing = copy.deepcopy(current)
-    if mode == "reserve":
-        from paid_budget import policy, _micros
-        cfg = policy()
-        daily = outgoing["days"][hold["day"]]
-        monthly = outgoing["months"][hold["month"]]
-        extra = _micros(cfg["monthly_usd"]) - monthly["total"]
-        if cfg["daily_limit_usd"] is not None:
-            extra = min(extra, _micros(cfg["daily_limit_usd"]) - daily["total"])
-        for counts in (daily, monthly):
-            counts["total"] += extra
-            counts["draft"] = counts.get("draft", 0) + extra
-        escrow_key = "ci-escrow-" + os.environ.get("GITHUB_RUN_ID", uuid.uuid4().hex) + "-" + hold["day"]
-        outgoing["reservations"][escrow_key] = {
-            **period, "purpose": "draft", "micros": extra, "kind": "ci_escrow"}
+        raise RuntimeError("shared paid usage changed outside the CI spending lock; refusing overwrite")
+    # With no monthly allowance, persist each actual request's conservative
+    # upper-bound hold before HTTP instead of escrowing the remaining month.
+    outgoing = current
     payload = {"message": "Persist paid API budget [skip ci]", "branch": branch,
                "content": base64.b64encode((json.dumps(outgoing, indent=2) + "\n").encode()).decode("ascii")}
     if baseline["sha"]:
@@ -92,8 +141,10 @@ def sync(mode, reservation=None):
     written = requests.put(url, json=payload, headers=headers, timeout=30)
     written.raise_for_status()
     save_json(BASE, {"sha": written.json()["content"]["sha"],
-                     "data": current, "escrow": period if mode == "reserve" else None})
-    print("paid budget: persisted with compare-and-swap")
+                     "data": current})
+    print("paid API usage: persisted with compare-and-swap")
+    if mode == "persist":
+        _notify_daily_usage(repo, headers, current)
 
 
 if __name__ == "__main__":
