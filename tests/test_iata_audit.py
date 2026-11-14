@@ -137,15 +137,16 @@ def test_budget_reservation_precedes_paid_call_and_max_is_pinned(payload):
     assert p._effort(False) == p._effort(True) == "max"
 
 
-def test_unknown_spend_stays_reserved_and_monthly_limit_blocks_http():
+def test_unknown_spend_stays_reserved_and_iata_has_no_monthly_cap():
     state = audit.State()
     hold = state.reserve({"max_output_tokens": 48000}, audit.START)
     before = copy.deepcopy(state.data)
     state.settle(hold, {})
     assert state.data == before
     state.data["months"]["2026-11"] = 8000000
-    with pytest.raises(RuntimeError, match="budget"):
-        state.reserve({"max_output_tokens": 48000}, audit.START)
+    state.data["days"]["2026-11-01"] = 8000000
+    state.reserve({"max_output_tokens": 48000}, audit.START)
+    assert state.data["months"]["2026-11"] > 8000000
 
 
 def test_daily_audit_spend_can_exceed_old_daily_cap():
