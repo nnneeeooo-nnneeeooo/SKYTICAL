@@ -3756,12 +3756,12 @@
         "https://www.aerotime.aero/articles/google-spirit-airlines-data-sale-privacy"
       ],
       "contentFailures": 1,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "history": [],
-      "updatedUtc": "2026-11-13T18:10Z",
-      "failureClass": "content_validation",
+      "updatedUtc": "2026-11-13T23:56Z",
+      "failureClass": "provider_failure",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-13T20:10Z",
+      "nextRetryUtc": "2026-11-14T05:56Z",
       "title": "Google agrees to privacy safeguards in Spirit Airlines data deal"
     },
     "d9526484a8d4623c447a4946": {
@@ -3777,19 +3777,6 @@
       "nextRetryUtc": "2026-11-13T05:47Z",
       "title": "The Boeing 737 NG Still Has Years Of Flying Left, But Its Largest Operator Doesn't Want It Anymore"
     },
-    "13224fa69990f5e9b86c31d3": {
-      "sourceUrls": [
-        "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco"
-      ],
-      "contentFailures": 1,
-      "serviceFailures": 0,
-      "history": [],
-      "updatedUtc": "2026-11-13T04:14Z",
-      "failureClass": "content_validation",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-13T06:14Z",
-      "title": "US military to test autonomous Cessna Caravan for casualty evacuation in Morocco"
-    },
     "bc7581783f76063cb325662c": {
       "sourceUrls": [
         "https://www.aerotime.aero/articles/faa-smart-air-traffic-tool-22-en-route-centers"
@@ -3802,6 +3789,20 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-13T06:14Z",
       "title": "FAA expands AI traffic planning tool to all 22 US en route centers"
+    },
+    "affbf7e21ae3f6d9e6e867ff": {
+      "sourceUrls": [
+        "https://aerospaceglobalnews.com/news/formula-1-archer-flying-taxis-grand-prix",
+        "https://www.aerotime.aero/articles/archer-aviation-formular-1-evtol-air-taxi-motor-sport"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-13T23:56Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-14T01:56Z",
+      "title": "Archer Aviation and Formula 1 partnership could see air taxi flights at races"
     }
   }
 }

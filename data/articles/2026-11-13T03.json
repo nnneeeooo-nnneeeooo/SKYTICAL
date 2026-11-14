@@ -18,21 +18,19 @@
       },
       "sourceImageCandidates": [],
       "zh": {
-        "title": "美國軍方將在摩洛哥測試自主飛行塞斯納208B急救任務",
-        "summary": "美國非洲司令部授予梅林公司50萬美元合約；自主飛行計畫預計2027年進行",
+        "title": "美軍AFRICOM資助Merlin 於摩洛哥測試Cessna Caravan無人傷患後送",
+        "summary": "Merlin獲美軍合約；於摩洛哥測試Cessna 208B無人後送",
         "body": [
-          "美國非洲司令部（AFRICOM）已授予波士頓公司梅林（Merlin）50萬美元合約，開發自主飛行急救任務（CASEVAC）系統，使用塞斯納208B大篷車（Cessna 208B Grand Caravan）在摩洛哥進行測試。",
-          "根據梅林說明，該系統可自主完成飛行規劃、導航、應對緊急情況，無需地面站或飛行員。飛機將配備醫療模組，可載運擔架並提供氧氣與監測設備。",
-          "此計畫是AFRICOM「自主急救技術挑戰」的首階段，預計於2027年美國財政年度初進行演示，具體時間未明確說明。"
+          "總部位於波士頓的Merlin於2026年11月11日宣佈，已獲得美國非洲司令部（AFRICOM）價值50萬美元的合約，將在摩洛哥使用賽斯納208B大篷車（Cessna 208B Grand Caravan）演示無人傷患後送（CASEVAC）任務。該項目為AFRICOM自主傷患後送產業技術挑戰賽的初始階段，示範預計於美國政府2027財政年度初期展開。",
+          "演示任務將涵蓋任務接收、航線規劃、自主起飛、飛往簡陋傷患收集點，並在模擬載入傷患後完成自主返航與降落。Merlin表示，旗下Merlin Pilot軟體旨在無需地面控制站或飛行員的情況下管理導航與緊急應變。"
         ]
       },
       "en": {
-        "title": "US military to test autonomous Cessna 208B in Morocco for casualty evacuation",
-        "summary": "AFRICOM awards Merlin $500,000 contract; autonomous mission planned for 2027",
+        "title": "US AFRICOM Awards Merlin $500K Contract for Autonomous CASEVAC Test in Morocco",
+        "summary": "US AFRICOM contracts Merlin to demonstrate autonomous casualty evacuation with a Cessna Caravan in Morocco.",
         "body": [
-          "US Africa Command (AFRICOM) has awarded Merlin a $500,000 contract to develop an autonomous casualty evacuation (CASEVAC) system using a Cessna 208B Grand Caravan for testing in Morocco.",
-          "Merlin's system handles flight planning, navigation, and contingency response without ground stations or crew. The aircraft will carry a medical module for stretcher transport and patient monitoring.",
-          "The demonstration is part of AFRICOM's Autonomous CASEVAC Industry Technology Challenge, scheduled for early 2027 fiscal year."
+          "Boston-based Merlin announced on November 11, 2026, that it received a $500,000 contract from US Africa Command (AFRICOM) to demonstrate an autonomous casualty evacuation (CASEVAC) mission in Morocco using a Cessna 208B Grand Caravan. The award covers the initial phase of AFRICOM’s Autonomous CASEVAC Industry Technology Challenge, with the flight demonstration planned for early US government fiscal year 2027.",
+          "The demonstration will encompass tasking, flight planning, autonomous departure, flight to an austere casualty collection site, simulated patient loading, and autonomous return flight and landing. Merlin stated that its Merlin Pilot system manages navigation and contingency response without relying on a remote ground station or flight crew."
         ]
       },
       "sources": [
@@ -42,13 +40,15 @@
         }
       ],
       "articleFormat": "brief",
+      "updatedUtc": "2026-11-13T23:56Z",
+      "revision": 2,
       "sourcePublishedUtc": "2026-11-12T11:25Z",
-      "writer": "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
+      "writer": "gemini:gemini-3.6-flash",
       "facts": [
         {
           "factId": "F1",
-          "claim": "AFRICOM awarded Merlin a $500,000 contract for autonomous CASEVAC using Cessna 208B in Morocco",
-          "sourceQuote": "Boston-based Merlin has received a $500,000 contract from US Africa Command (AFRICOM) to demonstrate an autonomous casualty evacuation (CASEVAC) mission using a Cessna 208B Grand Caravan in Morocco",
+          "claim": "Merlin announced on November 11, 2026, receiving a $500,000 contract from US Africa Command to demonstrate an autonomous casualty evacuation mission using a Cessna 208B Grand Caravan in Morocco.",
+          "sourceQuote": "Boston-based Merlin has received a $500,000 contract from US Africa Command (AFRICOM) to demonstrate an autonomous casualty evacuation (CASEVAC) mission using a Cessna 208B Grand Caravan in Morocco, the company announced on November 11, 2026 .",
           "sourceUrl": "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -56,8 +56,8 @@
         },
         {
           "factId": "F2",
-          "claim": "Merlin's autonomous system handles flight planning, navigation, and contingency response without ground stations or crew",
-          "sourceQuote": "Merlin Pilot is designed to manage flight planning, navigation, contingency response and mission completion without relying on a remote ground station or flight crew",
+          "claim": "The award covers the initial phase of AFRICOM's Autonomous CASEVAC Industry Technology Challenge, with the demonstration planned for early US government fiscal year 2027.",
+          "sourceQuote": "The award covers the initial phase of AFRICOM’s Autonomous CASEVAC Industry Technology Challenge, with the demonstration planned for early US government fiscal year 2027, which began on October 1, 2026.",
           "sourceUrl": "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco",
           "evidenceScope": "source",
           "archiveEventId": null,
@@ -65,22 +65,30 @@
         },
         {
           "factId": "F3",
-          "claim": "Cessna 208B will carry a medical module for stretcher transport and patient monitoring",
-          "sourceQuote": "The aircraft will carry an air ambulance medical module providing oxygen, power and mounts for patient monitoring equipment",
+          "claim": "The mission will encompass flight planning, autonomous departure, flight to a casualty collection site, simulated patient loading, and autonomous return flight and landing.",
+          "sourceQuote": "The mission will run from tasking and flight planning through autonomous departure and flight to an austere casualty collection site. After simulated patient loading, the aircraft will autonomously complete the return flight and landing.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Merlin Pilot is designed to manage flight planning, navigation, contingency response and mission completion without relying on a remote ground station or flight crew.",
+          "sourceQuote": "Merlin said Merlin Pilot is designed to manage flight planning, navigation, contingency response and mission completion without relying on a remote ground station or flight crew.",
           "sourceUrl": "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco",
           "evidenceScope": "source",
           "archiveEventId": null,
           "archiveContext": false
         }
       ],
-      "riskFlags": [
-        "unconfirmed_or_developing"
-      ],
+      "riskFlags": [],
       "eventStatus": "planned",
       "entities": {
         "organizations": [
-          "US Africa Command (AFRICOM)",
-          "Merlin"
+          "Merlin",
+          "US Africa Command",
+          "AFRICOM"
         ],
         "aircraft_models": [
           "Cessna 208B Grand Caravan"
@@ -89,38 +97,44 @@
           "Morocco"
         ],
         "event_dates": [
-          "2027"
+          "November 11, 2026"
         ]
       },
       "entityEvidence": [
         {
           "entityType": "organizations",
-          "value": "US Africa Command (AFRICOM)",
+          "value": "Merlin",
+          "sourceQuote": "Boston-based Merlin has received a $500,000 contract",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco"
+        },
+        {
+          "entityType": "organizations",
+          "value": "US Africa Command",
           "sourceQuote": "US Africa Command (AFRICOM)",
           "sourceUrl": "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco"
         },
         {
           "entityType": "organizations",
-          "value": "Merlin",
-          "sourceQuote": "Boston-based Merlin",
+          "value": "AFRICOM",
+          "sourceQuote": "US Africa Command (AFRICOM)",
           "sourceUrl": "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco"
         },
         {
           "entityType": "aircraft_models",
           "value": "Cessna 208B Grand Caravan",
-          "sourceQuote": "Cessna 208B Grand Caravan",
+          "sourceQuote": "using a Cessna 208B Grand Caravan in Morocco",
           "sourceUrl": "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco"
         },
         {
           "entityType": "locations",
           "value": "Morocco",
-          "sourceQuote": "in Morocco",
+          "sourceQuote": "in Morocco, the company announced",
           "sourceUrl": "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco"
         },
         {
           "entityType": "event_dates",
-          "value": "2027",
-          "sourceQuote": "early US government fiscal year 2027",
+          "value": "November 11, 2026",
+          "sourceQuote": "on November 11, 2026 .",
           "sourceUrl": "https://www.aerotime.aero/articles/us-military-autonomous-cessna-caravan-casevac-morocco"
         }
       ],
