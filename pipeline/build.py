@@ -49,6 +49,7 @@ from common import (
     now_utc,
     parse_iso,
     is_transport_headline,
+    is_major_operational_event,
     story_category,
 )
 from model_config import (
@@ -1806,9 +1807,26 @@ def taiwan_focus_articles(articles, now=None, limit=_HERO_FOCUS_LIMIT):
     return fallback[:1]
 
 
+def major_operational_articles(articles, now=None):
+    """Published system-wide events stay pinned for 48h, never by edit time."""
+    now = now or now_utc()
+    selected = []
+    for article in articles:
+        published = article.get("published_dt")
+        if published is None or not is_major_operational_event(article):
+            continue
+        try:
+            current = timedelta(0) <= now - published <= _HERO_EDITORIAL_PIN_MAX_AGE
+        except TypeError:
+            continue
+        if current:
+            selected.append(article)
+    return sorted(selected, key=lambda a: a["published_dt"], reverse=True)
+
+
 def headline_carousel_articles(articles, now=None, limit=_HERO_CAROUSEL_LIMIT,
                               pinned_ids=None):
-    """Lead with one current editorial pin, then Taiwan and global news."""
+    """Lead with major disruptions, then editorial pins and regional news."""
     if limit <= 0:
         return []
     now = now or now_utc()
@@ -1817,8 +1835,10 @@ def headline_carousel_articles(articles, now=None, limit=_HERO_CAROUSEL_LIMIT,
     if not isinstance(pinned_ids, list):
         pinned_ids = []
     by_id = {article["id"]: article for article in articles}
-    selected = []
-    selected_ids = set()
+    selected = major_operational_articles(articles, now)[:limit]
+    selected_ids = {article["id"] for article in selected}
+    if len(selected) >= limit:
+        return selected
     for article_id in pinned_ids:
         if (not isinstance(article_id, str) or article_id not in by_id
                 or article_id in selected_ids):
@@ -2350,6 +2370,24 @@ def flash_view(flashes, lang: str, priority_ids=None):
         "url": page_url(lang, f"news/{f['articleId']}/") if f["articleId"] else None,
         "external": False,
     } for f in flashes if lang in f["available_languages"]]
+
+
+def major_operational_flashes(flashes, articles, now=None):
+    """Synthesize LIVE entries even for recovery/manual publication paths.
+
+    Use only visible published articles and their existing language fields.
+    Replace an event's old flash rather than duplicating it, before the cap.
+    """
+    major = major_operational_articles(articles, now)
+    major_ids = {article["id"] for article in major}
+    generated = [{
+        "time": article["time"], "hot": True, "pinned": True,
+        "articleId": article["id"],
+        "zh": article["zh"]["title"], "en": article["en"]["title"],
+        "available_languages": article["available_languages"],
+    } for article in major]
+    return (generated + [f for f in flashes
+                         if f.get("articleId") not in major_ids])[:MAX_FLASHES]
 
 
 def prep_incidents(raw):
@@ -4039,6 +4077,7 @@ def main() -> int:
     published_ids = {a["id"] for a in articles}
     flashes = prep_flashes(load_json(DATA_DIR / "flashes.json", None),
                            published_ids)
+    flashes = major_operational_flashes(flashes, articles, now)
     incidents = prep_incidents(load_json(DATA_DIR / "incidents.json", None))
     sources = merged_sources(load_json(DATA_DIR / "sources.json", []))
     stats_raw = load_json(DATA_DIR / "stats.json", {})
@@ -4164,7 +4203,9 @@ def main() -> int:
             view["focus"] = article["id"] in focus_ids
             view["hero_date"] = article["published_dt"].astimezone(TPE).strftime("%m/%d")
             headline_views.append(view)
-        priority_ids = focus_ids
+        major_ids = {article["id"] for article in
+                     major_operational_articles(lang_articles, now)}
+        priority_ids = focus_ids | major_ids
         hero_candidates = [hero_rotation_view(view, lang)
                            for view in headline_views]
         if views:
@@ -4210,6 +4251,7 @@ def main() -> int:
         ctx["structured_data"] = website_structured_data(lang)
         ctx.update(hero=hero, hero_candidates=hero_candidates,
                    hero_rotation_seconds=HERO_ROTATION_SECONDS,
+                   hero_major_pinned=bool(hero and hero.get("id") in major_ids),
                    feed=feed, flashes=fl, agg=agg,
                    taiwan_focus=[art_view(article, lang) for article in
                                  taiwan_sidebar_articles(lang_articles, now)],

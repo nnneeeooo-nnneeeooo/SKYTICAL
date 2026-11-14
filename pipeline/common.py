@@ -870,15 +870,73 @@ _MAJOR_QUANTITY_RE = re.compile(
 )
 
 
+def is_major_operational_event(*records) -> bool:
+    """Recognize headline-led, system-wide aviation disruptions.
+
+    This is a priority signal, never evidence or permission to publish. Keep
+    background companions, forecasts and retrospective explainers out, and do
+    not join unrelated headlines to manufacture scope plus impact.
+    """
+    for record in records:
+        if not isinstance(record, dict) or record.get("backgroundCompanion"):
+            continue
+        if isinstance(record.get("items"), list):
+            if is_major_operational_event(*record["items"]):
+                return True
+            continue
+        for title in _headline_values(record):
+            if re.search(
+                r"^(?:why|how|what|when|could|can|will|does|do|is|are|should)\b"
+                r"|[?？]|\b(?:history|anniversary|drill|simulation|narrowly beat)\b"
+                r"|\b(?:no|not|never)\b.{0,30}\b(?:ground stop|grounding|halt|outage)\b"
+                r"|演練|模擬|回顧|週年|周年|為何|如何|是否",
+                title, re.I,
+            ):
+                continue
+            # A forecast cannot establish an actual disruption. An already
+            # announced stop remains urgent when its recovery is uncertain.
+            title = re.split(
+                r"\b(?:could|may|might|would|possible|potential|forecast|"
+                r"threatens?|warns?|risk of|plans? to|prepares? for)\b"
+                r"|可能|恐將|恐致|恐造成|預計|研議|風險|恐停飛|恐停航",
+                title, maxsplit=1, flags=re.I,
+            )[0]
+            scope = re.search(
+                r"\b(?:nationwide|countrywide|system[- ]wide|fleet[- ]wide|"
+                r"all (?:u\.?s\.? |united states |domestic |international )?"
+                r"(?:flights|departures|airports)|entire fleet|"
+                r"(?:grounds?|grounded) (?:all|entire))\b"
+                r"|全美|全國|全境|全歐|全機隊|所有(?:航班|班機|出發航班|機場)",
+                title, re.I,
+            )
+            impact = re.search(
+                r"\b(?:ground stop|grounding|grounded|grounds?|halts?|halted|"
+                r"suspends?|suspended|shutdown|outage|closures?|"
+                r"cancellations?|cancels?|cancelled|canceled)\b"
+                r"|停飛|停航|暫停起飛|停止起飛|中斷|癱瘓|關閉|取消", title, re.I,
+            )
+            aviation = re.search(
+                r"\b(?:FAA|flights?|departures?|airports?|airspace|air traffic|"
+                r"airlines?|aircraft|fleet|ground stop)\b"
+                r"|航班|班機|機場|空域|航管|航空|機隊|停飛|暫停起飛", title, re.I,
+            )
+            if scope and impact and aviation:
+                return True
+    return False
+
+
 def is_major_event_story(*records) -> bool:
     """Whether a trusted title-only event deserves a slot before the cap.
 
-    The signal is intentionally limited to official/industry sources, a
+    System-wide operational disruptions take priority independently. The
+    commercial signal is limited to official/industry sources, a
     transport subject in the headline, a consequential commercial action,
     and either a superlative/scale term or a large quantity.  It is a
     retention hint only: downstream evidence, safety and editorial gates
     remain authoritative.
     """
+    if is_major_operational_event(*records):
+        return True
     items = []
     for record in records:
         if not isinstance(record, dict):

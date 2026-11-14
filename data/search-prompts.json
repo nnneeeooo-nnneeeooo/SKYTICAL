@@ -3,7 +3,8 @@
   "generatedUtc": "2026-11-13T18:47Z",
   "targetDateTpe": "2026-11-14",
   "sourceWindow": "month_to_date",
-  "generationMode": "llm",
+  "generationMode": "editorial_adjusted",
+  "editorialUpdatedUtc": "2026-11-14T17:34:08Z",
   "provider": "gemini:gemini-3.6-flash",
   "sourceArticleIds": [
     "a-20261113-1004-uk-court-orders-compulsory-liquidation-f",
@@ -11,7 +12,7 @@
     "a-20261113-0414-four-turkish-service-members-killed-in-m",
     "a-avherald-safety-roundup-20261111",
     "a-faa-skyways-shell-offshore-drone-deliveries-20261111",
-    "a-20261113-0347-us-military-to-test-autonomous-cessna-20"
+    "a-faa-nationwide-ground-stop-20261113"
   ],
   "prompts": {
     "zh": [
@@ -20,7 +21,7 @@
       "查詢 Sikorsky S-70 直升機相關資訊",
       "搜尋邊疆航空 A321 的相關消息",
       "了解 Skyways 與殼牌的無人機測試",
-      "查詢塞斯納208B在摩洛哥的測試資訊"
+      "查詢全美航班暫停起飛及解除停飛令的報導"
     ],
     "en": [
       "Show me updates about Global Airlines and A380",
@@ -28,7 +29,7 @@
       "Find updates on the Sikorsky S-70 helicopter",
       "Search news about Frontier A321 flights",
       "Tell me about Skyways drone tests for Shell",
-      "Find info on autonomous Cessna 208B tests in Morocco"
+      "Find coverage of the FAA nationwide ground stop and its lifting"
     ]
   }
 }
