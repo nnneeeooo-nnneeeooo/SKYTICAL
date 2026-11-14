@@ -36,9 +36,15 @@ def policy():
     """Rates and a notification threshold only; neither day nor month is capped."""
     with CONFIG_PATH.open(encoding="utf-8") as stream:
         row = json.load(stream)
+    # Preserve the original strict configuration validation, now without
+    # treating the daily notification threshold as a monetary spending cap.
+    for key, value in row.items():
+        if key == "daily_limit_usd" and value is None:
+            continue
+        if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
+            raise BudgetDenied("invalid paid usage accounting configuration")
     for key in ("daily_warning_usd", "input_usd_per_million", "output_usd_per_million"):
-        value = row.get(key)
-        if type(value) not in (int, float) or not math.isfinite(value) or value <= 0:
+        if row.get(key, 0) <= 0:
             raise BudgetDenied("invalid paid usage accounting configuration")
     if row.get("daily_limit_usd") is not None:
         raise BudgetDenied("daily spending must remain uncapped")
