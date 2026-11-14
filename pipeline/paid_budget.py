@@ -33,20 +33,15 @@ def enabled():
 
 
 def policy():
+    """Rates and a notification threshold only; neither day nor month is capped."""
     with CONFIG_PATH.open(encoding="utf-8") as stream:
         row = json.load(stream)
-    for key, value in row.items():
-        if key == "daily_limit_usd" and value is None:
-            continue  # Explicitly unlimited per day; monthly cap still applies.
-        if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
-            raise BudgetDenied("invalid paid budget configuration")
-    if not 0 < row["daily_warning_usd"] <= row["monthly_usd"]:
-        raise BudgetDenied("invalid paid budget limits")
-    if row["daily_limit_usd"] is not None and not (
-            row["daily_warning_usd"] <= row["daily_limit_usd"] <= row["monthly_usd"]):
-        raise BudgetDenied("invalid paid budget limits")
-    if sum(row[k] for k in ("draft_target_usd", "review_target_usd", "summary_target_usd")) != row["monthly_usd"]:
-        raise BudgetDenied("invalid paid budget allocation")
+    for key in ("daily_warning_usd", "input_usd_per_million", "output_usd_per_million"):
+        value = row.get(key)
+        if type(value) not in (int, float) or not math.isfinite(value) or value <= 0:
+            raise BudgetDenied("invalid paid usage accounting configuration")
+    if row.get("daily_limit_usd") is not None:
+        raise BudgetDenied("daily spending must remain uncapped")
     return row
 
 
@@ -140,25 +135,15 @@ def reserve(payload, purpose="draft", model="gpt-6.1-terra", now=None):
     with _locked() as row:
         daily = row["days"].setdefault(day, {})
         monthly = row["months"].setdefault(month, {})
-        if ((cfg["daily_limit_usd"] is not None
-             and daily.get("total", 0) + amount > _micros(cfg["daily_limit_usd"]))
-                or monthly.get("total", 0) + amount > _micros(cfg["monthly_usd"])):
-            raise BudgetDenied("paid daily/monthly budget exhausted")
-        optional = monthly.get("review", 0) + monthly.get("summary", 0)
-        if purpose != "draft" and optional + amount > _micros(cfg["monthly_usd"] - cfg["draft_target_usd"]):
-            raise BudgetDenied("paid budget reserved for drafting")
         token = uuid.uuid4().hex
         row["reservations"][token] = {"day": day, "month": month, "purpose": purpose, "micros": amount}
         for counts in (daily, monthly):
             counts["total"] = counts.get("total", 0) + amount
             counts[purpose] = counts.get(purpose, 0) + amount
-        if daily["total"] >= _micros(cfg["daily_warning_usd"]) and not daily.get("warned"):
-            daily["warned"] = 1
-            print("::warning::Terra daily accounted/reserved spending reached the warning threshold")
         save_json(_path(), row)
         if os.environ.get("GITHUB_ACTIONS") == "true":
-            # Publish a conservative run escrow BEFORE the first paid HTTP
-            # call. A failed final ledger write can then only overcount spend.
+            # Persist this request's conservative hold BEFORE sending paid HTTP.
+            # A failed final ledger write cannot erase unknown charges.
             try:
                 from paid_budget_sync import sync
                 sync("reserve", reservation=token)
@@ -186,9 +171,18 @@ def settle(token, data):
             counts["total"] += delta
             counts[hold["purpose"]] += delta
         daily = row["days"][hold["day"]]
-        if daily["total"] >= _micros(cfg["daily_warning_usd"]) and not daily.get("warned"):
+        # Alert on settled usage, never on the exaggerated preflight hold.
+        # Unknown/aborted calls retain their conservative reservation.
+        outstanding = sum(
+            pending["micros"] for pending in row["reservations"].values()
+            if pending["day"] == hold["day"]
+        )
+        confirmed = daily["total"] - outstanding
+        if confirmed >= _micros(cfg["daily_warning_usd"]) and not daily.get("warned"):
             daily["warned"] = 1
-            print("::warning::Terra daily spending reached the warning threshold; monthly limit remains active")
+            print(f"::warning::SKYTICAL Terra API confirmed daily usage reached "
+                  f"US${cfg['daily_warning_usd']:.2f} on {hold['day']} Taipei time; "
+                  "this is a notification, not a spending cap")
         save_json(_path(), row)
 
 
