@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-11-15T02:08Z",
+  "updatedUtc": "2026-11-15T02:19Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
@@ -69,9 +69,15 @@
       "unknownCalls": 36
     },
     "openai:gpt-6.1-terra": {
-      "calls": 7,
-      "inputTokens": 35664,
-      "outputTokens": 106496,
+      "calls": 9,
+      "inputTokens": 42275,
+      "outputTokens": 146553,
+      "unknownCalls": 0
+    },
+    "openai:gpt-6.1-terra+search": {
+      "calls": 1,
+      "inputTokens": 39538,
+      "outputTokens": 3133,
       "unknownCalls": 0
     }
   },
@@ -397,9 +403,9 @@
       "outputTokens": 875323
     },
     "2026-11-15": {
-      "calls": 10,
-      "inputTokens": 48706,
-      "outputTokens": 100423
+      "calls": 13,
+      "inputTokens": 94855,
+      "outputTokens": 143613
     }
   },
   "recentRuns": [
