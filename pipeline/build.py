@@ -1127,6 +1127,8 @@ def normalize_image(raw_img, titles=()):
             "license": str(raw_img.get("license") or "") or None,
             "provider": str(raw_img.get("provider") or cached.get("provider") or "") or None,
             "subject": subject,
+            "roundupItemNumber": (raw_img.get("roundupItemNumber")
+                                  if type(raw_img.get("roundupItemNumber")) is int else None),
             "selectionModel": ("gpt-6.1-terra"
                                if raw_img.get("selectionModel") == "gpt-6.1-terra"
                                else None),
@@ -1318,11 +1320,15 @@ def prep_article(raw):
                 normalize_search_text(existing) for existing in airline_entities}:
             airline_entities.append(clean)
     from image_selection import prepare_image, rejection_reason
+    roundup_slots = roundup_image_slots(raw)
     selected_image = prepare_image(raw, raw.get("image"), IMAGE_CAPTIONS)
     if selected_image and rejection_reason(raw, selected_image, IMAGE_CAPTIONS):
         selected_image = None
     image = normalize_image(selected_image, titles=[
         (raw.get(lang) or {}).get("title") for lang in ("zh", "en")])
+    if roundup_slots:
+        image = next(({**slot["image"], "roundupItemNumber": index + 1}
+                      for index, slot in enumerate(roundup_slots) if slot["image"]), None)
     if image:
         image["url"] = public_asset_url(image["url"], SITE_ORIGIN, BASE_PATH)
         if image.get("link"):
@@ -1371,6 +1377,7 @@ def prep_article(raw):
         "cat": cat,
         "tag_class": TAGCLS.get(cat, "tag-neutral"),
         "image": image,
+        "roundup_images": roundup_slots,
         "source": str(raw.get("primarySource") or (sources[0]["name"] if sources else "—")),
         "time": time_label,
         "meta_ts": meta_ts,
@@ -1531,6 +1538,27 @@ def localized_label(value, lang: str):
     return f"Registration {match[1]}" if match else value
 
 
+def roundup_image_slots(raw):
+    from roundup_images import is_industry, item_images
+    from image_selection import prepare_image, rejection_reason
+    if not is_industry(raw):
+        return []
+    result = []
+    for slot in item_images(raw):
+        ctx = slot["context"]
+        photo = prepare_image(ctx, slot["image"], IMAGE_CAPTIONS)
+        if photo and rejection_reason(ctx, photo, IMAGE_CAPTIONS):
+            photo = None
+        photo = normalize_image(photo)
+        if photo:
+            photo["url"] = public_asset_url(photo["url"], SITE_ORIGIN, BASE_PATH)
+            if photo.get("link"):
+                photo["link"] = public_site_url(photo["link"], SITE_ORIGIN, BASE_PATH)
+        result.append({"image": photo, "zh": (ctx.get("zh") or {}).get("title", ""),
+                       "en": (ctx.get("en") or {}).get("title", "")})
+    return result
+
+
 def localized_image(image, lang: str):
     if not isinstance(image, dict):
         return None
@@ -1563,6 +1591,7 @@ def roundup_body_sections(body):
                       "", str(paragraph)).strip()
         match = re.match(r"^\d+\.\s*([^\n]+)\n(.+)$", text, re.S)
         sections.append({"heading": match.group(1).strip() if match else None,
+                         "item_number": int(re.match(r"^\d+", text)[0]) if match else None,
                          "paragraphs": [p.strip() for p in re.split(r"\n\s*\n", match.group(2) if match else text)
                                         if p.strip()]})
     return sections
@@ -1575,6 +1604,32 @@ def art_view(a, lang: str):
     v["body_sections"] = (roundup_body_sections(v.get("body") or [])
                           if a.get("roundup_kind") == "industry" else [])
     v["roundup_kind"] = a.get("roundup_kind")
+    v["roundup_slides"] = []
+    for index, slot in enumerate(a.get("roundup_images") or []):
+        photo = localized_image(slot["image"], lang)
+        caption = _hero_image_caption(photo, lang)
+        if photo:
+            kinds = {
+                "file_photo": ("資料照片，非本次事件現場", "File photo; not the current event"),
+                "airframe_photo": ("資料照片，非本次事件現場", "File photo; not the current event"),
+                "source_image": ("來源配圖，非本次事件現場照片", "Source image; not the current event"),
+                "illustration": ("示意／合成圖，非實景照片", "Illustration / composite; not a documentary photo"),
+            }
+            if photo.get("kind") in kinds:
+                caption += " · " + kinds[photo["kind"]][0 if lang == "zh" else 1]
+        if photo and photo.get("selectionModel") == "gpt-6.1-terra":
+            caption += " · Image Powered By GPT 6.1 BETA"
+        if photo:
+            caption += (" · 僅對應本則短訊，非整期事件現場" if lang == "zh"
+                        else " · Illustrates this item only, not all events")
+        v["roundup_slides"].append({
+            "title": slot.get(lang) or slot.get("zh") or slot.get("en") or "",
+            "url": f"#roundup-item-{index + 1}", "image": photo,
+            "image_alt": photo["subject"] if photo else "SKYTICAL",
+            "image_caption": caption,
+            "kicker": (f"第 {index + 1}／{len(a['roundup_images'])} 則短訊" if lang == "zh"
+                       else f"Brief {index + 1} of {len(a['roundup_images'])}"),
+        })
     v.update(
         id=a["id"], cat=a["cat"], tag_class=a["tag_class"],
         image=localized_image(a["image"], lang),
@@ -1923,6 +1978,9 @@ def _hero_image_caption(image, lang: str) -> str:
         )
     image = localized_image(image, lang)
     parts = []
+    if image.get("roundupItemNumber"):
+        number = image["roundupItemNumber"]
+        parts.append(f"本期第 {number} 則配圖" if lang == "zh" else f"Image for brief {number}")
     if image.get("subject"):
         parts.append(str(image["subject"]))
     if image.get("credit"):

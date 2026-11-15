@@ -11,6 +11,7 @@ from datetime import timedelta, timezone
 from common import (BASE_PATH, DATA_DIR, SITE_ORIGIN, iso_minute,
                     is_transport_headline, load_json, norm_url, parse_iso, save_json)
 from public_article import public_news_path
+from roundup_images import CONTEXT_FIELDS
 
 QUEUE_PATH = DATA_DIR / "industry-roundup-queue.json"
 TAIPEI = timezone(timedelta(hours=8))  # Taiwan has no daylight-saving time.
@@ -199,6 +200,10 @@ def compile_due(state: dict, now, published_articles: list[dict]) -> dict | None
         "publishedUtc": iso_minute(now),
         "cat": "biz", "articleFormat": "roundup", "roundupKind": "industry",
         "roundupItems": [{"articleId": row["article"]["id"],
+                          "image": copy.deepcopy(row["article"].get("image")),
+                          "imageContext": {key: copy.deepcopy(row["article"][key])
+                                           for key in CONTEXT_FIELDS
+                                           if key in row["article"]},
                           "publishedExcerpt": bool(row.get("publishedExcerptId")),
                           "eventKey": row.get("eventKey", ""),
                           "sourceUrls": sorted(_urls(row["article"]))}
