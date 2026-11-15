@@ -5,7 +5,7 @@ import json
 import subprocess
 
 import write
-from common import DATA_DIR, load_json, norm_url, save_json
+from common import DATA_DIR, SOURCES, load_json, norm_url, save_json
 
 TARGETS = [
     ("71d8c71723b1", "simpleflying", "breeze-airways-taking-spirit-airlines"),
@@ -25,6 +25,8 @@ def main():
         selected = [item for item in raw["items"] if needle in item.get("url", "")]
         if len(selected) != 1:
             raise RuntimeError(f"Replay source {number} is not unique")
+        selected = [{**item, "sourceKey": key, "source": SOURCES[key]["name"]}
+                    for item in selected]
         groups.append({"id": f"source-replay-20261116-{number}",
                        "primarySource": selected[0].get("source") or key,
                        "items": selected, "sourceReplayRequested": True})
