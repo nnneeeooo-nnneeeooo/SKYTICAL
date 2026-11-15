@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-11-14T18:43Z",
-  "targetDateTpe": "2026-11-15",
+  "generatedUtc": "2026-11-15T17:19Z",
+  "targetDateTpe": "2026-11-16",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
   "sourceArticleIds": [
-    "a-boeing-7779-flighttest-5100-hours-20261105",
-    "a-airbus-veterans-civilian-careers-partnerships-20261111",
-    "a-google-spirit-airlines-data-deal-privacy-safeguards-20261112",
-    "a-severe-hail-storm-american-airlines-philadelphia-20261113",
-    "a-20261113-1004-uk-court-orders-compulsory-liquidation-f",
-    "a-vertical-aerospace-as9100-certification-20261112"
+    "a-iata-accident-investigations-final-reports-20261114",
+    "a-american-a321-fort-lauderdale-bird-strike-20261113",
+    "a-klm-777-amsterdam-rejected-takeoff-20261113",
+    "a-ups-767-albuquerque-first-officer-ill-20261113",
+    "a-ups-767-copa-737-miami-taxiway-collision-20261115",
+    "a-delta-ceo-heathrow-virgin-atlantic-split-20261114"
   ],
   "prompts": {
     "zh": [
-      "想了解波音 777-9 試飛 進度",
-      "探索空中巴士 退伍軍人 轉職 計畫",
-      "了解精神航空 資料 隱私 保護",
-      "查看美國航空 費城 冰雹 影響",
-      "關注 Global Airlines A380 清算",
-      "查詢 Vertical航空 AS9100 認證 狀態"
+      "查詢 Air India 171 調查進度",
+      "美航 A321 鳥擊 返勞德岱堡",
+      "荷航 777 阿姆斯特丹 中斷起飛",
+      "UPS 767 阿布奎基 副機師不適",
+      "UPS 767 與 Copa 737 邁阿密 相撞",
+      "達美 CEO 抗議 希斯洛 分離 維珍"
     ],
     "en": [
-      "Check Boeing 777-9 test flight progress",
-      "Explore Airbus veteran transition program",
-      "Learn about Spirit Airlines data privacy safeguards",
-      "See American Airlines Philadelphia hail impact",
-      "Track Global Airlines A380 liquidation",
-      "Check Vertical Aerospace AS9100 certification status"
+      "Check Air India Flight 171 investigation status",
+      "American A321 bird strike return to Fort Lauderdale",
+      "KLM 777 aborted takeoff at Amsterdam",
+      "UPS 767 diverts Albuquerque after first officer ill",
+      "UPS 767 collides with Copa 737 taxiing Miami",
+      "Delta CEO opposes Heathrow split from Virgin Atlantic"
     ]
   }
 }
