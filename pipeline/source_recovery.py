@@ -18,7 +18,9 @@ CACHE_PATH = DATA_DIR / "source-recovery.json"
 RETRY = timedelta(hours=6)
 
 
-def needs_evidence(group):
+def needs_evidence(group, previous_retry=None):
+    if (previous_retry or {}).get("failureClass") == "source_insufficient":
+        return True
     return not any(len(str(i.get("fulltext") or "").strip()) >= 200
                    for i in group.get("items") or [])
 

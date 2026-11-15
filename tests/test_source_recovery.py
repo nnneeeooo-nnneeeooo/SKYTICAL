@@ -77,6 +77,10 @@ def test_insufficient_never_exhausts(tmp_path):
 def test_reject_classification():
     assert recovery.insufficient_rejection({"decisionReason": "only a headline"}, story())
     assert not recovery.insufficient_rejection({"decisionReason": "outside aviation scope"}, story())
+    group = story()
+    group["items"][0]["fulltext"] = "Incomplete existing article text. " * 30
+    assert not recovery.needs_evidence(group)
+    assert recovery.needs_evidence(group, {"failureClass": "source_insufficient"})
 
 
 def test_recovery_date_window_preserves_original_dates():

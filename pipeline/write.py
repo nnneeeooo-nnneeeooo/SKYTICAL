@@ -3346,7 +3346,7 @@ def main() -> None:
                 retry_ledger.failure(group, content=False)
                 run_trace.finish("no_provider", "retry_pending")
                 continue
-            if source_recovery.needs_evidence(group):
+            if source_recovery.needs_evidence(group, retry_ledger.state(group)[1]):
                 recover_sources(group)
             if not has_material(group):
                 major_deferred += int(is_major_event_story(group))
