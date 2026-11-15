@@ -155,6 +155,11 @@ def rejection_reason(article, raw, captions=None):
                               article_is_drone_story, article_is_incident,
                               BAD_AIRLINE_INTERIOR_RE)
     import images
+    if article.get("roundupKind") == "industry" and isinstance(raw, dict):
+        from roundup_images import context
+        for index, item in enumerate(article.get("roundupItems") or []):
+            if isinstance(item.get("image"), dict) and item["image"].get("url") == raw.get("url"):
+                return rejection_reason(context(article, item, index), raw, captions)
     if article.get("articleFormat") == "roundup" and not (
             isinstance(raw, dict) and raw.get("curated") is True
             and raw.get("kind") in {"source_image", "file_photo"}
@@ -377,8 +382,11 @@ def enforce_recent(articles_dir=None, cache_path=None):
             b = load_json(p, {})
             if isinstance(b, dict):
                 batches.append((p, b, b.get("articles") or []))
+    from roundup_images import expand_batches
+    adapters = expand_batches(batches)
     rows = []
-    for p, b, aa in batches:
+    for p, b, adapter in adapters:
+        aa = adapter.articles
         for a in aa:
             try:
                 if images.parse_iso(a["publishedUtc"]) >= images.now_utc()-images.timedelta(days=7):
@@ -416,8 +424,8 @@ def enforce_recent(articles_dir=None, cache_path=None):
                 changed.add(p)
             if a.pop("imageSelection", None) is not None:
                 changed.add(p)
-    for p, b, aa in batches:
-        if p in changed:
+    for p, b, adapter in adapters:
+        if adapter.sync() or p in changed:
             save_json(p, b)
     if decisions and cache != load_json(cache_path, {}):
         save_json(cache_path, cache)

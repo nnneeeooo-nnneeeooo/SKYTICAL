@@ -187,7 +187,34 @@
           "sourceUrls": [
             "https://www.aerotime.aero/articles/boeing-commercial-airplanes-workforce-cuts-737-production",
             "https://www.reuters.com/business/aerospace-defense/boeing-cut-5-planemaking-divisions-workforce-seattle-times-reports-2026-11-09"
-          ]
+          ],
+          "imageContext": {
+            "zh": {
+              "title": "波音將裁減商用飛機部門約5%職位 產量爬升慢於預期",
+              "summary": "波音將裁減商用飛機部門約5%職位，受影響員工可能最早於12月收到通知。",
+              "body": [
+                "波音將裁減商用飛機部門約5%職位，受影響員工可能最早於12月收到通知。"
+              ]
+            },
+            "en": {
+              "title": "Boeing to Cut About 5% of Commercial Airplane Workforce as Output Slows",
+              "summary": "Boeing will cut about 5% of its commercial-airplane workforce; laid-off employees could receive notices as early as December.",
+              "body": [
+                "Boeing will cut about 5% of its commercial-airplane workforce; laid-off employees could receive notices as early as December."
+              ]
+            },
+            "sources": [
+              {
+                "name": "AeroTime — Boeing to cut 5% of commercial jet workforce as production…",
+                "url": "https://www.aerotime.aero/articles/boeing-commercial-airplanes-workforce-cuts-737-production"
+              },
+              {
+                "name": "Reuters — Boeing to cut 5% of commercial jet workforce amid productio…",
+                "url": "https://www.reuters.com/business/aerospace-defense/boeing-cut-5-planemaking-divisions-workforce-seattle-times-reports-2026-11-09/"
+              }
+            ]
+          },
+          "image": null
         },
         {
           "articleId": "a-philippine-airlines-manila-chicago-nonstop-20261108",
@@ -195,7 +222,65 @@
           "eventKey": "",
           "sourceUrls": [
             "https://simpleflying.com/philippine-airlines-launches-new-17-hour-us-route-1-day"
-          ]
+          ],
+          "imageContext": {
+            "cat": "biz",
+            "zh": {
+              "title": "菲律賓航空首開馬尼拉—芝加哥直飛：西向回程近17小時，每週3班A350執飛",
+              "summary": "菲律賓航空11月9日首開馬尼拉—芝加哥直飛航線，每週3班、由A350-900執飛；西向回程表定16小時40分，是該公司迄今最長的美國航線，美國航點增至8個。",
+              "body": [
+                "菲律賓航空11月9日首開馬尼拉—芝加哥直飛航線，每週3班、由A350-900執飛；西向回程表定16小時40分，是該公司迄今最長的美國航線，美國航點增至8個。"
+              ]
+            },
+            "en": {
+              "title": "Philippine Airlines launches first nonstop Manila–Chicago service: near-17-hour westbound leg, three weekly A350 flights",
+              "summary": "Philippine Airlines launches its first nonstop Manila–Chicago passenger service on November 9, operating three times a week with the Airbus A350-900; the westbound return is scheduled at 16 hours 40 minutes, making it the carrier's longest US route and lifting its US network to eight cities.",
+              "body": [
+                "Philippine Airlines launches its first nonstop Manila–Chicago passenger service on November 9, operating three times a week with the Airbus A350-900; the westbound return is scheduled at 16 hours 40 minutes, making it the carrier's longest US route and lifting its US network to eight cities."
+              ]
+            },
+            "sources": [
+              {
+                "name": "Simple Flying",
+                "url": "https://simpleflying.com/philippine-airlines-launches-new-17-hour-us-route-1-day/"
+              }
+            ],
+            "entities": {
+              "aircraft": [
+                "Airbus A350-900"
+              ],
+              "airports": [
+                "Ninoy Aquino International Airport",
+                "Chicago O'Hare International Airport",
+                "Los Angeles International Airport",
+                "John F. Kennedy International Airport",
+                "San Francisco International Airport",
+                "Seattle-Tacoma International Airport"
+              ],
+              "manufacturers": [
+                "Airbus"
+              ],
+              "operators": [
+                "Philippine Airlines",
+                "PAL Express"
+              ]
+            },
+            "sourcePublishedUtc": "2026-11-08T18:01Z"
+          },
+          "image": {
+            "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Philippine_Airlines_Airbus_A350-900_RP-C3506.jpg",
+            "link": "https://commons.wikimedia.org/wiki/File:Philippine_Airlines_Airbus_A350-900_RP-C3506.jpg",
+            "credit": "BriYYZ",
+            "license": "CC BY-SA 2.0",
+            "provider": "Wikimedia Commons",
+            "kind": "source_image",
+            "matched": "editorial:verified-photo-20261111:roundup-pal-a350",
+            "curated": true,
+            "subject": "菲律賓航空 Airbus A350-900（RP-C3506），2019 年實機資料照",
+            "description": "2019年拍攝的菲律賓航空A350-900 RP-C3506，僅對應本篇航空短訊第二則馬尼拉—芝加哥新航線將採A350的消息；不是首航或機隊承諾的特定機身，也與第一則波音裁員消息無關。",
+            "sourceCaption": "僅代表本期第二則「菲律賓航空馬尼拉—芝加哥航線」消息的 A350-900 資料照片；非首航實景，亦非波音裁員事件。",
+            "photoYear": 2019
+          }
         }
       ],
       "roundupWriters": [
@@ -319,7 +404,8 @@
         "subject": "菲律賓航空 Airbus A350-900（RP-C3506），2019 年實機資料照",
         "description": "2019年拍攝的菲律賓航空A350-900 RP-C3506，僅對應本篇航空短訊第二則馬尼拉—芝加哥新航線將採A350的消息；不是首航或機隊承諾的特定機身，也與第一則波音裁員消息無關。",
         "sourceCaption": "僅代表本期第二則「菲律賓航空馬尼拉—芝加哥航線」消息的 A350-900 資料照片；非首航實景，亦非波音裁員事件。",
-        "photoYear": 2019
+        "photoYear": 2019,
+        "roundupItemNumber": 2
       },
       "editorialImageLocked": true
     }

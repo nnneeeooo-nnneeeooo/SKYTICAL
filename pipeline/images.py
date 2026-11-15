@@ -916,8 +916,10 @@ def main() -> int:
         print("images: no articles yet")
         return 0
     enforce_recent()
-    recent_batches = list(_recent_batches())
-    usage = stock_usage([a for _, _, aa in recent_batches for a in aa])
+    from roundup_images import expand_batches
+    recent_batches = [(p, b, adapter.articles, adapter)
+                      for p, b, adapter in expand_batches(list(_recent_batches()))]
+    usage = stock_usage([a for _, _, aa, _ in recent_batches for a in aa])
     cache = load_json(CACHE_PATH, {})
     entries = cache.get("articles")
     if not isinstance(entries, dict):
@@ -927,10 +929,10 @@ def main() -> int:
     now = now_utc()
     cutoff = now - timedelta(days=MAX_ARTICLE_AGE_DAYS)
     lookup_budget = _lookup_budget(
-        [a for _, _, aa in recent_batches for a in aa], entries, now)
+        [a for _, _, aa, _ in recent_batches for a in aa], entries, now)
     lookups = attached = source_lookups = 0
 
-    for path, batch, articles in recent_batches:
+    for path, batch, articles, adapter in recent_batches:
         changed = False
         for article in articles:
             if article.get("editorialImageLocked") is True:
@@ -1071,7 +1073,7 @@ def main() -> int:
                         (now + timedelta(hours=_retry_after_hours(attempts)))
                         .isoformat(),
                 }
-        if changed:
+        if adapter.sync() or changed:
             save_json(path, batch)
 
     if cache != load_json(CACHE_PATH, {}):

@@ -19,7 +19,7 @@ import requests
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import images
 from common import ARTICLES_DIR, DATA_DIR, USER_AGENT, load_json, now_utc, parse_iso, save_json
-from image_selection import MAX_STOCK_REUSE, image_key, rejection_reason, stock_usage
+from image_selection import MAX_STOCK_REUSE, image_key, rejection_reason, stock_usage, manual_image
 
 MODEL = "gpt-6.1-terra"
 CACHE_PATH = DATA_DIR / "terra-images.json"
@@ -172,14 +172,17 @@ def main():
     cache = load_json(CACHE_PATH, {})
     if not isinstance(cache, dict):
         cache = {}
-    batches = list(images._recent_batches())
-    usage = stock_usage([a for _, _, articles in batches for a in articles])
+    from roundup_images import expand_batches
+    batches = expand_batches(list(images._recent_batches()))
+    usage = stock_usage([a for _, _, adapter in batches for a in adapter.articles])
     attempted = attached = 0
-    for path, batch, articles in batches:
+    for path, batch, adapter in batches:
+        articles = adapter.articles
         changed = False
         for article in articles:
             art_id = str(article.get("id") or "")
             if (not art_id or article.get("editorialImageLocked") is True
+                    or manual_image(article, article.get("image"))
                     or article.get("articleFormat") == "roundup"):
                 continue
             try:
@@ -217,7 +220,7 @@ def main():
                 usage[image_key(candidate)] += 1
                 attached += 1
                 changed = True
-        if changed:
+        if adapter.sync() or changed:
             save_json(path, batch)
     if attempted:
         save_json(CACHE_PATH, cache)

@@ -25,7 +25,8 @@ def main() -> int:
     usage = Counter()
     for path in sorted(images.ARTICLES_DIR.glob("*.json")):
         batch = json.loads(path.read_text(encoding="utf-8"))
-        for article in batch.get("articles") or []:
+        from roundup_images import ImageBatch
+        for article in ImageBatch(batch.get("articles") or []).articles:
             if article.get("archived") is True:
                 continue
             try:

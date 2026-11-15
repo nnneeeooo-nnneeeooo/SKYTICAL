@@ -44,4 +44,14 @@ assert.deepEqual(result.articles[1], sibling);
 assert.equal(result.batchMetadata, 'keep');
 assert.throws(() => core.replaceArticle({articles:[{...original,revision:6}]}, original, edited), /已被其他程序更新/);
 assert.throws(() => core.replaceArticle({articles:[]}, original, edited));
+const roundup = {...original, roundupKind:'industry', roundupItems:[
+  {articleId:'one', image:{...original.image}, imageContext:{zh:{title:'短訊一'}}},
+  {articleId:'two', image:{url:'https://example.com/two.jpg',subject:'短訊二'},editorialImageLocked:true},
+  {articleId:'three', image:{url:'https://example.com/three.jpg',subject:'短訊三'},editorialImageLocked:true},
+]};
+const roundEdited = core.editArticle(roundup,fields,edited.updatedUtc);
+assert.equal(roundEdited.roundupItems.length,3);
+assert.equal(roundEdited.roundupItems[0].image.url,fields['image-url']);
+assert.deepEqual(roundEdited.roundupItems.slice(1),roundup.roundupItems.slice(1));
+assert.deepEqual(roundEdited.roundupItems[0].imageContext,roundup.roundupItems[0].imageContext);
 console.log('PASS admin edit contract: Taipei time, metadata, image, lock and conflict protection');

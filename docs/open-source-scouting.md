@@ -1,6 +1,18 @@
 # SKYTICAL Open-source Scouting
 
-更新日期：2026-10-28
+更新日期：2026-11-16
+
+
+## 航空短訊逐則配圖與輪播（2026-11-16）
+
+| 專案 | 最近推送／Stars | 語言／授權 | 導入判斷 |
+| --- | --- | --- | --- |
+| [Embla](https://github.com/davidjerleke/embla-carousel) | 2026-11-01／8,476 | TypeScript／MIT | 無外觀預設的輪播核心；仍須新增初始化與控制邏輯。 |
+| [Swiper](https://github.com/nolimits4web/swiper) | 2026-10-30／41,912 | TypeScript／MIT | 完整觸控輪播，功能超過此需求；新增依賴不利與既有頭條保持一致。 |
+| [Keen Slider](https://github.com/rcbyr/keen-slider) | 2026-01-22／5,018 | TypeScript／MIT | 較輕量的滑動核心，但仍須重做現有的計時、暫停與版面保留。 |
+| [Splide](https://github.com/Splidejs/splide) | 2024-07-08／5,368 | TypeScript／MIT | 最近推送較久，僅作對照。 |
+
+資料來自 GitHub repository metadata。本次直接重用 SKYTICAL 首頁的同一段輪播程式，保留兩行標題、手機 10 秒輪播、滑動、圓點、焦點與滑鼠暫停及 reduced motion。沒有複製第三方程式碼、增加依賴或需要另案導入的套件。
 
 ## 例行新聞分流與每日彙整（2026-10-28）
 

@@ -526,3 +526,26 @@ Recent-run telemetry records `editorialTier`, `routeReason` and
 `config/announcement_rules.json` enables a bounded, single-source official-notice route before provider admission/probing. Supported affirmative English sentence grammars produce Chinese/English templates for deliveries, route launches/resumptions, weekly frequency changes and airport facility opening/closure. Full text, explicit fresh publication time, headline/entity binding and a reviewed publisher/actor relationship are mandatory. Ambiguous wording, corrections, unsupported languages/grammars and missing evidence return to the existing model path.
 
 Only the internal compiler calls `validate_draft(..., announcement=True)`; the model JSON schema and ordinary full/brief thresholds remain unchanged. The result still passes verbatim fact verification, evidence binding, atomic claim checks, entity binding, glossary and scope gates. A one-paragraph `articleFormat: announcement` carries `writer: rules:announcement-v1`, `generationMode: rules` and a rule version. It is labelled as an official notice and rule-based compilation across article/home/index/search views, without a model credit. No API key or model probe is needed for an eligible notice. Existing editorial articles stay on their protected revision path.
+
+
+## Industry-roundup image slots
+
+For `roundupKind: "industry"`, `roundupItems` is the ordered image-slot list:
+there is exactly one slide per item, including missing images. Each item has
+`image` (the standard image object, or `null` for the branded fallback),
+`imageContext` (frozen bilingual component copy, source URLs, entities and
+source image candidates), and optional `editorialImageLocked`.
+
+Manual GPT image assignments must update **every intended item's `image`**,
+retain credits/licence/source links and `imageContext`, and set that item's
+`editorialImageLocked: true` and the reviewed image's `curated: true` (retain
+its actual provider). Update any editorial override as well as the article
+record. Never replace the list with one top-level image.
+The top-level `image` is a backwards-compatible cover derived from the first
+available slot; `roundupItemNumber` identifies which item it represents.
+
+Both standard image selection and Terra process each item as a separate job,
+with independent cache keys and the component's own evidence. Missing or
+rejected images remain `null` and render a fallback slide. The article uses
+the same carousel implementation as the homepage. Safety roundups remain
+excluded from automatic single-event image selection.

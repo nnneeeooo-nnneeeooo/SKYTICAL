@@ -273,6 +273,7 @@
     }
     var heroImage = document.getElementById("hero-story-image");
     var heroImageCaption = document.getElementById("hero-image-caption");
+    var heroImageSource = document.getElementById("hero-image-source");
     var heroKicker = document.getElementById("hero-story-kicker");
     var heroTitle = document.getElementById("hero-story-title");
     var heroSummary = document.querySelector(
@@ -293,6 +294,16 @@
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var heroTransitionMs = reduceHeroMotion ? 0 : 220;
     var heroRotationMs = Number(heroCarousel && heroCarousel.dataset.rotationMs) || 2500;
+    if (heroImage) heroImage.addEventListener("error", function () {
+      if (heroImage.hasAttribute("data-image-fallback")) return;
+      heroImage.setAttribute("data-image-fallback", "true");
+      heroImage.alt = "SKYTICAL";
+      heroImage.src = heroImage.dataset.fallbackSrc;
+      if (heroImageSource) heroImageSource.style.visibility = "hidden";
+      if (heroImageCaption) heroImageCaption.textContent = isZh ?
+        "圖片暫時無法載入，先顯示 SKYTICAL 預設圖片。" :
+        "Image temporarily unavailable; showing the SKYTICAL default image.";
+    });
     if (window.matchMedia && window.matchMedia("(max-width: 720px)").matches) {
       heroRotationMs = Math.max(heroRotationMs, 10000);
     }
@@ -371,6 +382,11 @@
       }
       if (heroImageCaption) {
         heroImageCaption.textContent = story.image_caption || "";
+      }
+      if (heroImageSource) {
+        if (image && image.link) heroImageSource.href = image.link;
+        else heroImageSource.removeAttribute("href");
+        heroImageSource.style.visibility = image && image.link ? "visible" : "hidden";
       }
       if (heroKicker) heroKicker.textContent = story.kicker || "";
       if (heroTitle) heroTitle.textContent = story.title || "";

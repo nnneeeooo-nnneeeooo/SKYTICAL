@@ -271,7 +271,8 @@ def test_roundup_sections_credit_and_sources_render_in_both_languages():
                            autoescape=True).get_template("article.html").render(**ctx)
         soup = BeautifulSoup(html, "html.parser")
         assert len(soup.select(".roundup-item h2")) == 2
-        assert not soup.select(".article-page figure[data-image-fallback]")
+        assert soup.select_one("#hero-story-image[data-image-fallback]") is not None
+        assert len(soup.select("[data-hero-index]")) == 2
         assert len(soup.select(".roundup-item p")) == 2
         assert "（來源：" not in soup.select_one(".article-body").get_text()
         footer = soup.select_one(".article-sources").get_text()

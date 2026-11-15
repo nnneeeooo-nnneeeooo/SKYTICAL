@@ -57,6 +57,14 @@ globalThis.SkyticalAdmin = (() => {
         provider: 'manual', curated: true,
       } : null;
     }
+    if (article.roundupKind === 'industry' && Array.isArray(article.roundupItems) && article.roundupItems.length) {
+      // A cover edit changes its corresponding item, preserving every other
+      // manually/GPT-assigned image rather than flattening the gallery.
+      let index = article.roundupItems.findIndex(item => item.image?.url && item.image.url === original.image?.url);
+      if (index < 0) index = 0;
+      article.roundupItems[index].image = clone(article.image);
+      article.roundupItems[index].editorialImageLocked = true;
+    }
     article.editorialLocked = true;
     article.editorialImageLocked = true;
     article.updatedUtc = now;
