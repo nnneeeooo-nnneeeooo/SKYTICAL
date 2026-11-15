@@ -1,18 +1,156 @@
 {
-  "_comment": "SKYTICAL Codex task 的 token 用量快照。數值只取自本機 Codex task 的用量中繼資料；不儲存對話內容、本機路徑、task 識別碼、憑證或私人網址。",
-  "schemaVersion": 1,
-  "scope": "SKYTICAL 網站開發 task（網站修改、測試、GitHub 發布與驗證）",
-  "trackingSinceUtc": "2026-07-27T01:12:36.863Z",
-  "updatedUtc": "2026-07-28T15:02:31.944Z",
+  "_comment": "僅儲存去識別化用量與統計；不含帳號識別碼、對話、路徑、task 識別碼或憑證。",
+  "schemaVersion": 2,
+  "scope": "SKYTICAL／前身 AVWIRE 的網站開發、維護、測試、發布與內容維護；合併本機兩組帳號可辨識紀錄並按工作去重",
+  "trackingSinceUtc": "2026-07-27T01:12:29Z",
+  "updatedUtc": "2026-11-15T17:19:48.462766Z",
+  "pricingAsOf": "2026-11-16",
   "actualAdditionalApiSpendUsd": 0,
-  "entries": [
+  "coverage": {
+    "complete": false,
+    "accountsRequested": 2,
+    "accountTaskCounts": {
+      "無法辨識帳號": 20,
+      "帳號 1": 60,
+      "帳號 2": 4
+    },
+    "measuredTaskCount": 10,
+    "estimatedTaskCount": 74,
+    "note": "已合併此 Windows 使用者下兩組帳號可辨識的網站工作；無法辨識帳號的相關工作也納入。MacBook 專屬且未同步至本機的紀錄未涵蓋，亦可能缺少已刪除或無法辨識專案的工作，並非兩帳號完整帳單。",
+    "estimationNote": "有明細者按每次累計差額分模型計算；只剩總 token 的舊工作，按同模型留存明細或歷史快照的輸入／快取／輸出比例估算，無同模型樣本則用全部留存樣本。GPT-5.6 Sol 使用原 7 月快照作為比例樣本。估算列的模型僅依工作層級標記，無法核實中途切換模型的比例；不可視為逐次請求的精確模型用量。舊 7 月單一工作快照已由該工作累計取代，不另行加總。"
+  },
+  "priceReference": [
+    {
+      "model": "GPT-5.6 Luna",
+      "in": 0.2,
+      "cachedIn": 0.02,
+      "out": 1.2,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-luna"
+    },
     {
       "model": "GPT-5.6 Sol",
-      "inputTokens": 69124314,
-      "cachedInputTokens": 67041280,
-      "outputTokens": 244298,
-      "reasoningOutputTokens": 72982,
-      "source": "Codex task usage metadata"
+      "in": 4,
+      "cachedIn": 0.4,
+      "out": 20,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
+    },
+    {
+      "model": "GPT-5.6 Terra",
+      "in": 2,
+      "cachedIn": 0.2,
+      "out": 12,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+    },
+    {
+      "model": "GPT-6 Astra",
+      "in": 10,
+      "cachedIn": 1,
+      "out": 50,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-astra"
+    },
+    {
+      "model": "GPT-6 Luna",
+      "in": 0.1,
+      "cachedIn": 0.01,
+      "out": 0.5,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-luna"
+    },
+    {
+      "model": "GPT-6 Sol",
+      "in": 2,
+      "cachedIn": 0.2,
+      "out": 10,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-sol"
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "in": 2,
+      "cachedIn": 0.1,
+      "out": 10,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+    }
+  ],
+  "entries": [
+    {
+      "model": "GPT-6 Sol",
+      "inputTokens": 112273168,
+      "cachedInputTokens": 110748544,
+      "outputTokens": 158220,
+      "reasoningOutputTokens": 64289,
+      "estimated": false,
+      "source": "Local Codex cumulative token metadata; per-model increments; unique tasks"
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "inputTokens": 410386844,
+      "cachedInputTokens": 405767680,
+      "outputTokens": 954021,
+      "reasoningOutputTokens": 462490,
+      "estimated": false,
+      "source": "Local Codex cumulative token metadata; per-model increments; unique tasks"
+    },
+    {
+      "model": "GPT-5.6 Luna",
+      "inputTokens": 112222096,
+      "cachedInputTokens": 110902943,
+      "outputTokens": 238813,
+      "reasoningOutputTokens": 113106,
+      "estimated": true,
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
+    },
+    {
+      "model": "GPT-5.6 Sol",
+      "inputTokens": 1137529364,
+      "cachedInputTokens": 1103250364,
+      "outputTokens": 4020237,
+      "reasoningOutputTokens": 1201012,
+      "estimated": true,
+      "source": "Local Codex task total; estimated split from the historical same-model July snapshot; task-level model label; per-request model attribution unavailable"
+    },
+    {
+      "model": "GPT-5.6 Terra",
+      "inputTokens": 15077777,
+      "cachedInputTokens": 14900540,
+      "outputTokens": 32086,
+      "reasoningOutputTokens": 15197,
+      "estimated": true,
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
+    },
+    {
+      "model": "GPT-6 Astra",
+      "inputTokens": 6779780,
+      "cachedInputTokens": 6700085,
+      "outputTokens": 14428,
+      "reasoningOutputTokens": 6833,
+      "estimated": true,
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
+    },
+    {
+      "model": "GPT-6 Luna",
+      "inputTokens": 273329638,
+      "cachedInputTokens": 270116690,
+      "outputTokens": 581656,
+      "reasoningOutputTokens": 275484,
+      "estimated": true,
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
+    },
+    {
+      "model": "GPT-6 Sol",
+      "inputTokens": 234166278,
+      "cachedInputTokens": 230986395,
+      "outputTokens": 329997,
+      "reasoningOutputTokens": 134087,
+      "estimated": true,
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "inputTokens": 478816441,
+      "cachedInputTokens": 473427059,
+      "outputTokens": 1113098,
+      "reasoningOutputTokens": 539607,
+      "estimated": true,
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
     }
   ]
 }
