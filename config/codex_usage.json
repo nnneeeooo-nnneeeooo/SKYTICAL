@@ -17,7 +17,7 @@
     "measuredTaskCount": 10,
     "estimatedTaskCount": 74,
     "note": "已合併此 Windows 使用者下兩組帳號可辨識的網站工作；無法辨識帳號的相關工作也納入。MacBook 專屬且未同步至本機的紀錄未涵蓋，亦可能缺少已刪除或無法辨識專案的工作，並非兩帳號完整帳單。",
-    "estimationNote": "有明細者按每次累計差額分模型計算；只剩總 token 的舊工作，按同模型留存明細或歷史快照的輸入／快取／輸出比例估算，無同模型樣本則用全部留存樣本。GPT-5.6 Sol 使用原 7 月快照作為比例樣本。舊工作的模型採最後紀錄，可能曾切換模型。舊 7 月單一工作快照已由該工作累計取代，不另行加總。"
+    "estimationNote": "有明細者按每次累計差額分模型計算；只剩總 token 的舊工作，按同模型留存明細或歷史快照的輸入／快取／輸出比例估算，無同模型樣本則用全部留存樣本。GPT-5.6 Sol 使用原 7 月快照作為比例樣本。估算列的模型僅依工作層級標記，無法核實中途切換模型的比例；不可視為逐次請求的精確模型用量。舊 7 月單一工作快照已由該工作累計取代，不另行加總。"
   },
   "priceReference": [
     {
@@ -96,7 +96,7 @@
       "outputTokens": 238813,
       "reasoningOutputTokens": 113106,
       "estimated": true,
-      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; last recorded task model"
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
     },
     {
       "model": "GPT-5.6 Sol",
@@ -105,7 +105,7 @@
       "outputTokens": 4020237,
       "reasoningOutputTokens": 1201012,
       "estimated": true,
-      "source": "Local Codex task total; estimated split from the historical same-model July snapshot; last recorded task model"
+      "source": "Local Codex task total; estimated split from the historical same-model July snapshot; task-level model label; per-request model attribution unavailable"
     },
     {
       "model": "GPT-5.6 Terra",
@@ -114,7 +114,7 @@
       "outputTokens": 32086,
       "reasoningOutputTokens": 15197,
       "estimated": true,
-      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; last recorded task model"
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
     },
     {
       "model": "GPT-6 Astra",
@@ -123,7 +123,7 @@
       "outputTokens": 14428,
       "reasoningOutputTokens": 6833,
       "estimated": true,
-      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; last recorded task model"
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
     },
     {
       "model": "GPT-6 Luna",
@@ -132,7 +132,7 @@
       "outputTokens": 581656,
       "reasoningOutputTokens": 275484,
       "estimated": true,
-      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; last recorded task model"
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
     },
     {
       "model": "GPT-6 Sol",
@@ -141,7 +141,7 @@
       "outputTokens": 329997,
       "reasoningOutputTokens": 134087,
       "estimated": true,
-      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; last recorded task model"
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
     },
     {
       "model": "GPT-6.1 Sol",
@@ -150,7 +150,7 @@
       "outputTokens": 1113098,
       "reasoningOutputTokens": 539607,
       "estimated": true,
-      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; last recorded task model"
+      "source": "Local Codex task total; estimated split from retained same-model metadata, otherwise pooled metadata; task-level model label; per-request model attribution unavailable"
     }
   ]
 }

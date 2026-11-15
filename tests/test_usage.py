@@ -524,10 +524,12 @@ check("page shows cross-account Codex totals with coverage limitations",
       and "MacBook" in page
       and "涵蓋範圍未完整" in page
       and "總量實錄・比例估算" in page
+      and "模型依工作標記，非逐次核實" in page
+      and "GPT-6 Sol" in page and "GPT-6.1 Sol" in page
       and "不是訂閱額度的現金價值或實付帳單" in page
       and f"{snapshot_totals['usd']:.2f}" in page)
 check("page shows separate GPT-5.6 Sol non-API reference rows",
-      "方案內GPT-5.6 Sol用途與單價" in page
+      "早期方案內GPT-5.6 Sol用途與歷史單價" in page
       and "新聞撰稿（手動補稿）" in page
       and "網站修改（Codex）" in page
       and page.count("<td>$30.00</td>") == 2

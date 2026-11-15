@@ -298,7 +298,7 @@
     <tr><th>模型／資料依據</th><th>一般輸入</th><th>快取輸入</th><th>輸出</th><th>其中推理</th><th>總 tokens</th><th>理論 USD</th></tr>
     {% for r in codex_rows %}
     <tr>
-      <td class="model">{{ r.model }}<br><span class="est">{{ "總量實錄・比例估算" if r.estimated else "token 明細" }}</span></td>
+      <td class="model">{{ r.model }}<br><span class="est">{{ "總量實錄・比例估算" if r.estimated else "token 明細" }}</span>{% if r.estimated %}<br><span class="est">模型依工作標記，非逐次核實</span>{% endif %}</td>
       <td>{{ "{:,}".format(r.uncached_in) }}</td>
       <td>{{ "{:,}".format(r.cached_in) }}</td>
       <td>{{ "{:,}".format(r.out) }}</td>
@@ -318,10 +318,11 @@
   {% endif %}
 
   {% if non_api_rows %}
-  <h2>方案內 GPT-5.6 Sol 用途與單價</h2>
+  <h2>早期方案內 GPT-5.6 Sol 用途與歷史單價</h2>
   <div class="section-note">
     下列工作透過 ChatGPT Work／Codex 方案完成，沒有由 SKYTICAL 呼叫 OpenAI API；
-    上方累計涵蓋可取得的 SKYTICAL／AVWIRE Codex 工作，本表僅分項說明用途與歷史參考單價，不重複計入任何總額。
+    目前網站開發亦使用 GPT-6 Sol 與 GPT-6.1 Sol，用量與本次換算單價以上方各模型紀錄為準。
+    上方累計涵蓋可取得的 SKYTICAL／AVWIRE Codex 工作，本表僅分項說明早期用途與歷史參考單價，不重複計入任何總額。
   </div>
   <div class="scroll">
   <table>
