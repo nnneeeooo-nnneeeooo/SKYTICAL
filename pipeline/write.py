@@ -79,6 +79,8 @@ import airport_codes
 from announcement_brief import candidate_item, compile_announcement, WRITER as ANNOUNCEMENT_WRITER
 import provider_health
 from fulltext import FULLTEXT_PROMPT_CHARS, MAX_FETCHES_PER_RUN, enrich_pending
+import source_recovery
+from source_recovery import recover as recover_sources
 from providers import (
     ProviderAuthError,
     ProviderError,
@@ -949,7 +951,7 @@ def _strip_fulltext(group: dict, keep_archive: bool = False) -> dict:
              if isinstance(item, dict) else item
              for item in group.get("items") or []]
     cleaned = {k: v for k, v in group.items()
-               if k not in ("_archiveDebug", "archiveContext")}
+               if k not in ("_archiveDebug", "archiveContext", "sourceRecoveryAttempted")}
     cleaned["items"] = items
     if keep_archive and isinstance(group.get("archiveContext"), dict):
         context = group["archiveContext"]
@@ -2394,6 +2396,12 @@ def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
         article["sourcePublishedUtc"] = existing_article["sourcePublishedUtc"]
     if writer:
         article["writer"] = writer  # provenance: "provider:model"
+    recovery_models = {item.get("sourceRecoveryModel") for item in items
+                       if item.get("fulltext") and item.get("sourceRecoveryModel")}
+    if source_recovery.MODEL in recovery_models:
+        from model_config import MODEL_DISPLAY_NAMES
+        article["writerModels"] = list(dict.fromkeys(
+            [MODEL_DISPLAY_NAMES.get(writer, writer), "GPT 6.1 Terra"]))
     if announcement:
         article["generationMode"] = "rules"
         article["ruleVersion"] = "announcement-v1"
@@ -3338,25 +3346,13 @@ def main() -> None:
                 retry_ledger.failure(group, content=False)
                 run_trace.finish("no_provider", "retry_pending")
                 continue
+            if source_recovery.needs_evidence(group, retry_ledger.state(group)[1]):
+                recover_sources(group)
             if not has_material(group):
-                if is_major_event_story(group):
-                    # A major official title is valuable discovery, but it is
-                    # not evidence by itself. Keep it unseen so a transient
-                    # fulltext/robots/network failure can be retried next run.
-                    major_deferred += 1
-                    print(f"write: major group {group.get('id')} has no "
-                          "usable source material; retained for retry")
-                    run_trace.finish("retry_pending", "retry_pending")
-                    continue
-                # Title-only material can never satisfy the evidence rules:
-                # consume it here without spending an API call - and without
-                # letting it crowd summary-bearing groups out of the cap.
-                print(f"write: group {group.get('id')} has no usable summary"
-                      " text; consumed by the completeness check")
-                rejected_groups.append(group)
-                rejected_ids.add(group.get("id"))
-                run_trace.finish(
-                    "skipped_no_material", "skipped_no_material")
+                major_deferred += int(is_major_event_story(group))
+                retry_ledger.insufficient(group)
+                print(f"write: group {group.get('id')} needs source evidence; retained for retry")
+                run_trace.finish("retry_pending", "source_insufficient")
                 continue
             if drafted >= MAX_GROUPS_PER_RUN:
                 break  # LLM budget for this run is spent; the rest waits
@@ -3373,6 +3369,7 @@ def main() -> None:
             final_model = None
             stopped_by_refusal = False
             content_failed = False
+            source_insufficient = False
             calls_before = sum(ai_calls.values())
             fallback_repair_used = False
             policy = news_policy(group)
@@ -3421,8 +3418,11 @@ def main() -> None:
                                                         run_trace,
                                                         deadline=provider_deadline,
                                                         max_attempt_seconds=attempt_cap)
-                except DraftInvalid:
+                except DraftInvalid as exc:
                     content_failed = True
+                    if (source_recovery.needs_evidence(group)
+                            and "brief contract" in str(exc)):
+                        source_insufficient = True
                     if provider is not story_providers[0] and not is_fallback:
                         fallback_repair_used = True
                     _record_provider_response(
@@ -3491,6 +3491,12 @@ def main() -> None:
                     break
                 final_model = provider.label
                 if candidate.get("status") == "reject":
+                    if source_recovery.insufficient_rejection(candidate, group):
+                        source_insufficient = True
+                        print(f"write: {group.get('id')} source insufficient; retained for recovery")
+                        # A later run can recover new current evidence. Do not
+                        # shop the same thin input around or mark it as seen.
+                        break
                     # Editorial rejection: a final verdict on THIS material.
                     # Consume the group (mark seen) so it does not burn an
                     # API call again every hour; a developing story arrives
@@ -3509,11 +3515,14 @@ def main() -> None:
                 continue
             if draft is None:
                 skipped += 1
-                if sum(ai_calls.values()) > calls_before:
+                if source_insufficient:
+                    retry_ledger.insufficient(group)
+                elif sum(ai_calls.values()) > calls_before:
                     retry_ledger.failure(group, content=content_failed)
                 run_trace.finish(
                     "refused" if stopped_by_refusal else "retry_pending",
-                    "refusal" if stopped_by_refusal else "retry_pending",
+                    "refusal" if stopped_by_refusal else
+                    "source_insufficient" if source_insufficient else "retry_pending",
                     final_model)
                 continue
             if luna_editorial.selected(group):

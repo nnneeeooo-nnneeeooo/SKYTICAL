@@ -151,6 +151,20 @@ class RetryLedger:
         row["title"] = str((group.get("items") or [{}])[0].get("title") or "")[:300]
         self.rows[key] = row
 
+    def insufficient(self, group):
+        """Missing evidence gets backoff, never terminal content exhaustion."""
+        self.failure(group, content=False)
+        key, row = self.state(group)
+        if row is not None:
+            row["failureClass"] = "source_insufficient"
+            row["status"] = "waiting"
+            row["nextRetryUtc"] = iso_minute(self.now + timedelta(hours=6))
+            # RSS feeds roll over. Keep original discovery metadata so the
+            # next dedupe pass can rediscover an unseen retry without its feed.
+            row["items"] = [{k: item.get(k) for k in (
+                "url", "title", "summary", "publishedUtc", "source", "sourceKey")}
+                for item in group.get("items") or [] if isinstance(item, dict)]
+
     def complete(self, group):
         urls = set(source_urls(group))
         for key, row in list(self.rows.items()):

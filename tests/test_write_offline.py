@@ -40,6 +40,7 @@ from editorial_policy import PublicationRoute  # noqa: E402
 # own modules; prevent fixture domains from ever reaching requests here.
 write.enrich_pending = lambda groups, **kwargs: None
 companion.enrich_thin_groups = lambda groups: 0
+write.recover_sources = lambda group, **kwargs: False
 # Admission makes real catalog/inference calls; this suite supplies canned
 # drafts. Its network and admission behavior is covered in test_free_provider_probe.
 providers.GeminiProvider.requires_verification = False
@@ -1190,7 +1191,7 @@ def test_editorial_gate():
     """Model reject skips the group; fabricated quotes are dropped/blocking."""
     reset_data_dir()
     reject_draft = {"status": "reject",
-                    "decisionReason": "insufficient verifiable evidence"}
+                    "decisionReason": "outside aviation scope; not aviation news"}
     fabricated = json.loads(json.dumps(DRAFT_BIZ))
     fabricated["facts"] = [{"factId": "F1", "claim": "完全捏造的主張",
                             "sourceQuote": "this text appears nowhere"}]
@@ -1249,7 +1250,7 @@ def test_editorial_gate():
 
 
 def test_completeness_precheck():
-    """Title-only groups are consumed in code, without any API call."""
+    """Title-only groups wait for evidence without spending a drafting call."""
     reset_data_dir()
     pending_fixture = load(FIXTURES / "pending.json")
     thin = {
@@ -1283,10 +1284,30 @@ def test_completeness_precheck():
     check(len(articles) == 1, "the group with a real summary still publishes")
     seen = load(DATA / "seen.json")
     check(common.norm_url("https://www.icao.int/newsroom/thin-item")
-          in seen["urls"], "thin group consumed via seen.json")
+          not in seen["urls"], "thin group stays unseen for evidence recovery")
     pending = load(DATA / "pending.json")
-    check(pending["groups"] == [], "nothing left pending")
+    check([g["id"] for g in pending["groups"]] == [thin["id"]], "thin group retained")
     print("test_completeness_precheck: done")
+
+
+def test_source_insufficient_rejection_and_model_credit():
+    reset_data_dir()
+    group = load(FIXTURES / "pending.json")["groups"][1]
+    (DATA / "pending.json").write_text(json.dumps({"groups": [group]}), encoding="utf-8")
+    provider = FakeProvider("gemini", [{"status": "reject", "decisionReason": "insufficient verified source facts"}])
+    with patch.object(write, "build_providers", return_value=[provider]):
+        write.main()
+    check(len(load(DATA / "pending.json")["groups"]) == 1, "source rejection stays pending")
+    check(common.norm_url(group["items"][0]["url"]) not in load(DATA / "seen.json").get("urls", {}),
+          "source rejection never marks seen")
+    row = next(iter(load(DATA / "news-retry.json")["stories"].values()))
+    check(row["failureClass"] == "source_insufficient" and row["status"] == "waiting",
+          "source rejection has persistent nonterminal backoff")
+    group["items"][0]["fulltext"] = group["items"][0]["summary"]
+    group["items"][0]["sourceRecoveryModel"] = "gpt-6.1-terra"
+    article = write.build_article(DRAFT_BIZ, group, NOW, set(), "gemini:gemini-3.6-flash", [])
+    check(article["writerModels"] == ["Google Gemini 3.6 Flash", "GPT 6.1 Terra"],
+          "published article credits both writer and actual Terra source recovery")
 
 
 def test_major_title_only_is_retained_for_material_retry():
@@ -1767,6 +1788,7 @@ def main():
              test_unlimited_luna_continues_after_the_free_run_deadline,
              test_editorial_gate,
              test_completeness_precheck,
+             test_source_insufficient_rejection_and_model_credit,
              test_major_title_only_is_retained_for_material_retry,
              test_all_providers_auth_dead,
              test_no_api_key_end_to_end,

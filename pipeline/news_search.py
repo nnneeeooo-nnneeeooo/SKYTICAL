@@ -41,7 +41,7 @@ def _allowed(url):
         return False
 
 
-def _page_date(soup, now):
+def _page_date(soup, now, max_age=timedelta(hours=24)):
     values = []
     for meta in soup.find_all('meta'):
         if str(meta.get('property') or meta.get('name') or '').lower() in {
@@ -68,14 +68,14 @@ def _page_date(soup, now):
             # A bare date or timezone-less string is not verified timing.
             from datetime import datetime
             dt = datetime.fromisoformat(str(value).replace('Z', '+00:00'))
-            if dt.tzinfo and now - timedelta(hours=24) <= dt <= now:
+            if dt.tzinfo and now - max_age <= dt <= now:
                 return dt
         except (ValueError, TypeError):
             continue
     return None
 
 
-def fetch_candidate(url, now):
+def fetch_candidate(url, now, *, max_age=timedelta(hours=24)):
     if not _allowed(url) or not fulltext.robots_allows(url):
         return None
     # Fail closed on redirects: never send a request to an unchecked target.
@@ -88,7 +88,7 @@ def fetch_candidate(url, now):
         return None
     html = r.content
     soup = BeautifulSoup(html, 'lxml')
-    date = _page_date(soup, now)
+    date = _page_date(soup, now, max_age)
     title = soup.find('h1')
     text = fulltext.extract_text(html)
     if not date or not title or len(text) < 200:
