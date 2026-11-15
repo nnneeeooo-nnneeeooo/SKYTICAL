@@ -57,6 +57,7 @@ def test_exact_slot_count_mixed_images_and_fallback_in_both_languages():
         assert "Image Powered By GPT 6.1" in slides[2]["image_caption"]
         assert "Photographer 3" in slides[2]["image_caption"]
         assert "CC BY 4.0" in slides[2]["image_caption"]
+        assert ("資料照片" if lang == "zh" else "File photo") in slides[0]["image_caption"]
         for slide in slides:
             assert soup.select_one(slide["url"]) is not None
 
