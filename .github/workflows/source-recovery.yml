@@ -26,7 +26,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           git fetch origin main
-          git checkout origin/main -- data
+          # A queued dispatch may predate the hourly data commit. Start from
+          # that commit so its article/queue changes are not replayed as ours.
+          git checkout -B source-recovery-runtime origin/main
           python pipeline/paid_budget_sync.py refresh
       - name: Recover the five missed stories with Terra search
         env:
@@ -46,8 +48,22 @@ jobs:
           git add data
           if ! git diff --cached --quiet; then
             git commit -m 'news: recover thin-source stories with Terra search'
-            git pull --rebase origin main
-            git push origin HEAD:main
+            pushed=""
+            for i in 1 2 3; do
+              # Match hourly.yml: paid-ledger CAS commits can advance main
+              # during drafting; prefer the completed replay's bot-owned data.
+              if ! git pull --rebase -X theirs origin main; then
+                git rebase --abort || true
+                sleep 5
+                continue
+              fi
+              if git push origin HEAD:main; then
+                pushed=yes
+                break
+              fi
+              sleep 5
+            done
+            test -n "$pushed"
           fi
       - uses: actions/upload-artifact@v4
         if: always()
