@@ -3470,13 +3470,22 @@ def codex_usage_rows(snapshot: dict, prices: dict):
     subset of input, and reasoning output is a subset of output, so neither is
     added a second time when calculating total tokens.
     """
+    # A dated snapshot may carry its own current rates, independently of the
+    # historical reference catalogue used elsewhere on the dashboard.
+    reference_prices = (
+        {"gptFamilyReference": snapshot["priceReference"]}
+        if isinstance(snapshot, dict) and "priceReference" in snapshot
+        else prices
+    )
     references = {
-        row["model"]: row for row in gpt_family_reference_rows(prices)
+        row["model"]: row for row in gpt_family_reference_rows(reference_prices)
     }
     rows = []
     totals = {
         "in": 0, "cached_in": 0, "uncached_in": 0, "out": 0,
         "reasoning": 0, "tokens": 0, "usd": 0.0,
+        "measured_tokens": 0, "estimated_tokens": 0,
+        "measured_usd": 0.0, "estimated_usd": 0.0,
     }
     raw_entries = snapshot.get("entries") if isinstance(snapshot, dict) else []
     for raw in raw_entries or []:
@@ -3516,12 +3525,16 @@ def codex_usage_rows(snapshot: dict, prices: dict):
             "tokens": input_tokens + output_tokens,
             "usd": usd,
             "source": reference["source"],
+            "estimated": raw.get("estimated") is True,
         }
         rows.append(row)
         for key in ("in", "cached_in", "uncached_in", "out",
                     "reasoning", "tokens"):
             totals[key] += row[key]
         totals["usd"] += usd
+        kind = "estimated" if row["estimated"] else "measured"
+        totals[f"{kind}_tokens"] += row["tokens"]
+        totals[f"{kind}_usd"] += usd
     actual = (snapshot.get("actualAdditionalApiSpendUsd")
               if isinstance(snapshot, dict) else 0)
     totals["actual_usd"] = (
@@ -3731,6 +3744,8 @@ def render_usage_dashboard(env, build) -> int:
         "codex_rows": codex_rows, "codex_totals": codex_totals,
         "codex_twd": codex_totals["usd"] * rate,
         "codex_scope": str(codex_snapshot.get("scope") or "").strip(),
+        "codex_coverage": codex_snapshot.get("coverage") or {},
+        "codex_pricing_as_of": codex_snapshot.get("pricingAsOf") or "",
         "codex_updated": timestamp_12(
             codex_snapshot.get("updatedUtc"), "尚無紀錄"),
         "codex_tracking_since":

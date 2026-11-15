@@ -273,23 +273,32 @@
   </div>
 
   {% if codex_rows %}
-  <h2>GPT-5 網站製作累計（Codex）</h2>
+  <h2>Codex 網站開發與維護累計（雙帳號）</h2>
   <div class="section-note">
     {{ codex_scope }}。快照截至 {{ codex_updated }} UTC，追蹤自 {{ codex_tracking_since }} UTC。
-    這是 Codex 回報的 task 累計 token，依 OpenAI 官方標準 API 牌價換算；不屬於 SKYTICAL 自動化 API 用量，也不計入上方總額。
+    涵蓋 GPT-5／GPT-6 系列，依 {{ codex_pricing_as_of }} 查核的 OpenAI 官方標準短上下文 API 牌價換算；不屬於 SKYTICAL 自動化 API 用量，也不計入上方總額。
+    {% if codex_coverage %}<br><strong>涵蓋範圍未完整：</strong>{{ codex_coverage.note }}{% endif %}
   </div>
   <div class="tiles">
     <div class="tile"><span>累計 tokens</span><b>{{ "{:,}".format(codex_totals.tokens) }}</b></div>
-    <div class="tile"><span>理論 API 等值</span><b>${{ "%.4f"|format(codex_totals.usd) }}<span style="font-size:11px;"> ≈ NT${{ "{:,.2f}".format(codex_twd) }}</span></b></div>
+    <div class="tile"><span>理論 API 等值（含估算）</span><b>約 US${{ "%.2f"|format(codex_totals.usd) }}<span style="font-size:11px;"> ≈ NT${{ "{:,.0f}".format(codex_twd) }}</span></b></div>
     <div class="tile"><span>輸入 tokens</span><b>{{ "{:,}".format(codex_totals["in"]) }}</b></div>
     <div class="tile"><span>實際新增 API 支出</span><b>${{ "%.2f"|format(codex_totals.actual_usd) }}</b></div>
   </div>
+  {% if codex_coverage %}
+  <div class="section-note">
+    {% for account, count in codex_coverage.accountTaskCounts.items() %}{{ account }}：{{ count }} 項工作{% if not loop.last %}；{% endif %}{% endfor %}。<br>
+    有 token 明細：{{ codex_coverage.measuredTaskCount }} 項，{{ "{:,}".format(codex_totals.measured_tokens) }} tokens，短上下文基準 US${{ "%.2f"|format(codex_totals.measured_usd) }}；
+    僅剩總 token：{{ codex_coverage.estimatedTaskCount }} 項，{{ "{:,}".format(codex_totals.estimated_tokens) }} tokens，估算 US${{ "%.2f"|format(codex_totals.estimated_usd) }}。<br>
+    {{ codex_coverage.estimationNote }}
+  </div>
+  {% endif %}
   <div class="scroll">
   <table>
-    <tr><th>模型</th><th>一般輸入</th><th>快取輸入</th><th>輸出</th><th>其中推理</th><th>總 tokens</th><th>理論 USD</th></tr>
+    <tr><th>模型／資料依據</th><th>一般輸入</th><th>快取輸入</th><th>輸出</th><th>其中推理</th><th>總 tokens</th><th>理論 USD</th></tr>
     {% for r in codex_rows %}
     <tr>
-      <td class="model">{{ r.model }}</td>
+      <td class="model">{{ r.model }}<br><span class="est">{{ "總量實錄・比例估算" if r.estimated else "token 明細" }}</span></td>
       <td>{{ "{:,}".format(r.uncached_in) }}</td>
       <td>{{ "{:,}".format(r.cached_in) }}</td>
       <td>{{ "{:,}".format(r.out) }}</td>
@@ -301,8 +310,10 @@
   </table>
   </div>
   <div class="section-note">
-    快取輸入已包含在輸入 tokens 內，按 GPT-5.6 Sol 快取單價計算；推理 tokens 已包含在輸出 tokens 內，不重複加總。
-    實際新增 API 支出為 $0，因本項工作透過 ChatGPT Work／Codex 方案完成。這是靜態快照，後續 task 活動須重新匯出才會增加。
+    快取輸入已包含在輸入 tokens 內，按各模型快取單價計算；推理 tokens 已包含在輸出 tokens 內，不重複加總。
+    此為 token 的 API 參考等值，不是訂閱額度的現金價值或實付帳單；不含訂閱月費、額外購買點數、工具費、長上下文加價、快取寫入費或速度模式加價。
+    實際新增 API 支出 $0 僅指本站 API 帳本未因此新增扣款，不代表兩個 GPT 帳號沒有訂閱或點數支出。
+    匯率沿用本站參考值 1 USD = {{ rate }} TWD。這是靜態快照，後續活動須重新匯出才會增加。
   </div>
   {% endif %}
 
@@ -310,7 +321,7 @@
   <h2>方案內 GPT-5.6 Sol 用途與單價</h2>
   <div class="section-note">
     下列工作透過 ChatGPT Work／Codex 方案完成，沒有由 SKYTICAL 呼叫 OpenAI API；
-    上方累計涵蓋目前 SKYTICAL Codex task，本表僅分項說明用途與換算單價，不重複計入任何總額。
+    上方累計涵蓋可取得的 SKYTICAL／AVWIRE Codex 工作，本表僅分項說明用途與歷史參考單價，不重複計入任何總額。
   </div>
   <div class="scroll">
   <table>

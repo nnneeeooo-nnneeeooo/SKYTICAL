@@ -376,6 +376,25 @@ bad_codex_rows, _ = build.codex_usage_rows({
 }, prices)
 check("Codex snapshot rejects impossible token subsets",
       bad_codex_rows == [])
+dated_rows, dated_totals = build.codex_usage_rows({
+    "priceReference": [{
+        "model": "GPT-6.1 Sol", "in": 2, "cachedIn": 0.1, "out": 10,
+        "source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+    }],
+    "entries": [
+        {"model": "GPT-6.1 Sol", "inputTokens": 1_000_000,
+         "cachedInputTokens": 800_000, "outputTokens": 100_000,
+         "reasoningOutputTokens": 25_000, "estimated": estimated}
+        for estimated in (False, True)
+    ],
+}, prices)
+check("dated Codex rates cover newer models and separate estimates",
+      len(dated_rows) == 2
+      and abs(dated_totals["usd"] - 2.96) < 1e-9
+      and dated_totals["measured_tokens"] == 1_100_000
+      and dated_totals["estimated_tokens"] == 1_100_000
+      and abs(dated_totals["measured_usd"] - 1.48) < 1e-9
+      and abs(dated_totals["estimated_usd"] - 1.48) < 1e-9)
 unsafe_prices = {
     "gptFamilyReference": [
         {"model": "bad host", "in": 1, "cachedIn": 0.1, "out": 2,
@@ -447,8 +466,9 @@ page = (TMP / "site" / "u" / "testtoken-1234567890abc"
 codex_snapshot = json.loads(
     (REPO / "config" / "codex_usage.json").read_text(encoding="utf-8"))
 snapshot_entry = codex_snapshot["entries"][0]
-snapshot_total = (snapshot_entry["inputTokens"]
-                  + snapshot_entry["outputTokens"])
+snapshot_total = sum(row["inputTokens"] + row["outputTokens"]
+                     for row in codex_snapshot["entries"])
+snapshot_rows, snapshot_totals = build.codex_usage_rows(codex_snapshot, prices)
 fixed_tpe = fixed_now.astimezone(timezone(timedelta(hours=8)))
 fixed_tpe_label = (
     f"{fixed_tpe:%Y-%m-%d} "
@@ -495,12 +515,17 @@ check("recent model statistics follow configured model priority",
           "nvidia:nvidia/nemotron-3-super-120b-a12b"])
 check("page is noindex and shows totals",
       "noindex" in page and "API用量" in page and "$0" in page)
-check("page shows exact Codex GPT-5 task totals and cost semantics",
-      "GPT-5網站製作累計（Codex）" in page
+check("page shows cross-account Codex totals with coverage limitations",
+      "Codex網站開發與維護累計（雙帳號）" in page
       and f"{snapshot_total:,}" in page
       and f"{snapshot_entry['cachedInputTokens']:,}" in page
       and "推理tokens已包含在輸出tokens內，不重複加總" in page
-      and "實際新增API支出" in page)
+      and "實際新增API支出" in page
+      and "MacBook" in page
+      and "涵蓋範圍未完整" in page
+      and "總量實錄・比例估算" in page
+      and "不是訂閱額度的現金價值或實付帳單" in page
+      and f"{snapshot_totals['usd']:.2f}" in page)
 check("page shows separate GPT-5.6 Sol non-API reference rows",
       "方案內GPT-5.6 Sol用途與單價" in page
       and "新聞撰稿（手動補稿）" in page
@@ -515,7 +540,7 @@ check("page shows GPT-5 family official rates without adding them to totals",
       and "$0.500" in page
       and "$0.025" in page
       and "不計入上方實際用量與理論總值" in page
-      and page.count("官方牌價") == 19)
+      and page.count("官方牌價") == 18 + len(snapshot_rows))
 check("page never contains key-shaped strings",
       "test-not-a-real-key" not in page and "nvapi-" not in page)
 del os.environ["AVWIRE_USAGE_TOKEN"]
