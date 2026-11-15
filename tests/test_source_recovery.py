@@ -89,3 +89,24 @@ def test_recovery_date_window_preserves_original_dates():
     now = datetime(2026, 11, 16, tzinfo=timezone.utc)
     assert news_search._page_date(soup, now) is None
     assert news_search._page_date(soup, now, timedelta(days=14)).day == 12
+
+
+def test_retry_survives_rss_rollover(tmp_path):
+    import dedupe
+    group = story()
+    group["items"][0].update(source="IATA", sourceKey="iata", publishedUtc="2026-11-15T12:00Z")
+    with patch.object(news_retry, "DATA_DIR", tmp_path), \
+         patch.object(dedupe, "DATA_DIR", tmp_path), \
+         patch.object(dedupe, "RAW_DIR", tmp_path / "empty-raw"), \
+         patch.object(news_search, "cached_items", return_value=[]):
+        ledger = news_retry.RetryLedger(datetime(2026, 11, 16, tzinfo=timezone.utc))
+        ledger.insufficient(group)
+        ledger.save()
+        restored = dedupe._load_raw_items()
+        assert len(restored) == 1
+        assert restored[0]["url"] == group["items"][0]["url"]
+        assert restored[0]["publishedUtc"] == "2026-11-15T12:00Z"
+        assert "fulltext" not in restored[0]
+        ledger.complete(group)
+        ledger.save()
+        assert dedupe._load_raw_items() == []

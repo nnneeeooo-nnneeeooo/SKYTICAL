@@ -209,6 +209,24 @@ def _load_raw_items() -> list[dict]:
                 item = dict(raw)
                 item["_recoveryUntilUtc"] = iso_minute(until)
                 items.append(item)
+    # Evidence retries survive rolling feeds. They still pass the normal
+    # freshness, scope, seen, grouping and retry-scheduling gates below.
+    ledger = load_json(DATA_DIR / "news-retry.json", {})
+    rows = ledger.get("stories") if isinstance(ledger, dict) else None
+    known_urls = {norm_url(str(item.get("url") or "")) for item in items}
+    for row in (rows.values() if isinstance(rows, dict) else []):
+        if (not isinstance(row, dict) or row.get("failureClass") != "source_insufficient"
+                or row.get("status") != "waiting"):
+            continue
+        for item in row.get("items") or []:
+            if (not isinstance(item, dict) or not item.get("source")
+                    or not item.get("sourceKey")
+                    or not str(item.get("url") or "").startswith("https://")):
+                continue
+            key = norm_url(item["url"])
+            if key not in known_urls:
+                items.append(dict(item))
+                known_urls.add(key)
     # Search contributes fetched source text only; model summaries are excluded.
     import news_search
     items.extend(news_search.cached_items(path=DATA_DIR / 'news-search.json'))

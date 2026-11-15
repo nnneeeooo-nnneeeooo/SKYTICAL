@@ -159,6 +159,11 @@ class RetryLedger:
             row["failureClass"] = "source_insufficient"
             row["status"] = "waiting"
             row["nextRetryUtc"] = iso_minute(self.now + timedelta(hours=6))
+            # RSS feeds roll over. Keep original discovery metadata so the
+            # next dedupe pass can rediscover an unseen retry without its feed.
+            row["items"] = [{k: item.get(k) for k in (
+                "url", "title", "summary", "publishedUtc", "source", "sourceKey")}
+                for item in group.get("items") or [] if isinstance(item, dict)]
 
     def complete(self, group):
         urls = set(source_urls(group))
