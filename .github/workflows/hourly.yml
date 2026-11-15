@@ -27,6 +27,7 @@ on:
       - "pipeline/common.py"
       - "pipeline/dedupe.py"
       - "pipeline/fulltext.py"
+      - "pipeline/source_recovery.py"
       - "pipeline/draft_recovery.py"
       - "pipeline/news_retry.py"
       - "pipeline/editorial_policy.py"
@@ -151,7 +152,7 @@ jobs:
         # pinned, refresh the roundup queue and publication evidence too.
         run: |
           git fetch origin "${GITHUB_REF_NAME}"
-          for path in data/news-retry.json data/provider-health.json data/provider-routes.json data/news-search.json data/luna-editorial.json data/industry-roundup-queue.json data/terra-images.json data/articles; do
+          for path in data/news-retry.json data/provider-health.json data/provider-routes.json data/news-search.json data/source-recovery.json data/luna-editorial.json data/industry-roundup-queue.json data/terra-images.json data/articles; do
             if git cat-file -e "origin/${GITHUB_REF_NAME}:$path" 2>/dev/null; then
               git checkout "origin/${GITHUB_REF_NAME}" -- "$path"
             fi

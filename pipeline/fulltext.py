@@ -94,6 +94,12 @@ ALLOWED_HOSTS = {
     "www.aerotime.aero", "aerotime.aero",
     "www.aerospaceglobalnews.com", "aerospaceglobalnews.com",
     "www.flightglobal.com", "flightglobal.com",
+    # Recovery sources: original operators/regulators and established
+    # editorial publishers. Every page still passes robots and redirect gates.
+    "www.flybreeze.com", "flybreeze.com", "news.delta.com",
+    "www.spacex.com", "spacex.com", "www.space.com", "space.com",
+    "www.reuters.com", "reuters.com", "www.apnews.com", "apnews.com",
+    "www.investing.com", "investing.com", "www.airwaysmag.com", "airwaysmag.com",
     # Japanese safety discovery: selected editorial publishers only;
     # robots and final redirect allowlisting remain mandatory.
     "newsdigest.jp", "www.fnn.jp", "newsdig.tbs.co.jp",

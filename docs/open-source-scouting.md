@@ -262,3 +262,13 @@ Luna 備援與審稿改動。實作與限制見 `docs/cloud-iata-audit.md`。
 | [googleapis/google-api-nodejs-client](https://github.com/googleapis/google-api-nodejs-client) | 2026-10-30／12,287 | TypeScript／Apache-2.0 | 標準 OAuth refresh token 管理，但需額外後端、密鑰與安全工作階段儲存 |
 
 中繼資料已於 GitHub API 查核。採 Google Apps Script 的擁有者專用 Web app，保留 GA4 唯讀範圍，Google 端管理授權，前端不儲存 refresh token 或用戶端密鑰。共用既有儀表板 UI 與統計查詢，保留 GitHub Pages 與瀏覽器 OAuth 備用入口。沒有複製第三方程式碼，也沒有新增 production 套件。部署與驗證條件見 `docs/private-traffic-dashboard.md`；只有確認 Google 端僅限擁有者及報表正常後才設定入口導向。
+
+## 來源補查與可重試新聞（2026-11-16）
+
+| 專案 | 最近 push（UTC）／stars | 語言／授權 | 評估 |
+| --- | --- | --- | --- |
+| [adbar/trafilatura](https://github.com/adbar/trafilatura) | 2026-11-13／7,130 | Python／Apache-2.0 | 可借鑑正文與來源區分；現有擷取器已有機器引句核驗，換套件不能解決來源白名單與拒稿誤消耗 |
+| [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | 2026-11-15／44,992 | Python／MIT | 可借鑑持久化狀態與重試；本站已有 RetryLedger，導入圖形編排增加依賴與遷移範圍 |
+| [openai/openai-agents-python](https://github.com/openai/openai-agents-python) | 2026-11-15／30,693 | Python／MIT | 可借鑑工具檢索與輸出核驗分離；本站沿用 Responses、requests 與既有費用帳本 |
+
+以上以 GitHub API 查核。此次不複製程式碼、不增加套件；保留現有管線，將來源不足與最終題材退稿分開，Terra 僅提供實際檢索到的網址，再由管線獨立擷取正文作證據。
