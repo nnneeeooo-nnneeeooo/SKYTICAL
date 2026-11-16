@@ -21,8 +21,8 @@ def main() -> None:
     assert raw["schemaVersion"] == 1
     assert raw["repository"] == "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL"
     assert raw["historyStart"] == "2026-07-26"
-    assert raw["updatedThrough"] == "2026-11-16"
-    assert len(raw["entries"]) == 106
+    assert raw["updatedThrough"] == "2026-11-17"
+    assert len(raw["entries"]) == 107
 
     historical = [row["commit"] for row in raw["entries"]
                   if row["commit"] is not None]
@@ -72,7 +72,7 @@ def main() -> None:
             pass
         else:
             raise AssertionError(f"unsafe public archive accepted: {changed}")
-    assert len(historical) == 105
+    assert len(historical) == 106
     assert len(set(historical)) == len(historical)
     assert all(re.fullmatch(r"[0-9a-f]{40}", sha) for sha in historical)
     assert sum(row["commit"] is None for row in raw["entries"]) == 1
@@ -81,7 +81,8 @@ def main() -> None:
         "zh": "新增彩蛋。",
         "en": "Added an Easter egg.",
     }
-    assert [row["commit"] for row in raw["entries"][:5]] == [
+    assert [row["commit"] for row in raw["entries"][:6]] == [
+        "6b12b218d12a4161a3c1efd731ed94bc8d76ab0c",
         "721d3bf15f1f8fd4b9a5bdd6bfb29db6ed00f422",
         "62a9b865597c0dfe02a4a4d11d885c353c824ada",
         "23b8eb0e5bf4e53b94c87e75959035af2ba81a59",
@@ -142,13 +143,13 @@ def main() -> None:
         raw, "zh", build.L["zh"]["changeKinds"])
     en = build.changelog_view(
         raw, "en", build.L["en"]["changeKinds"])
-    assert zh["count"] == en["count"] == 106
+    assert zh["count"] == en["count"] == 107
     assert [group["date"] for group in zh["groups"]] \
         == sorted(set(dates), reverse=True)
     assert zh["groups"][0]["entries"][0]["title"].startswith(
-        "來源不足的新聞改由 GPT 6.1 Terra")
+        "全站加入中英文近期更新通知")
     assert en["groups"][0]["entries"][0]["title"].startswith(
-        "GPT 6.1 Terra now searches")
+        "Bilingual site updates now")
     assert en["groups"][-1]["entries"][-1]["title"].startswith(
         "Created SKYTICAL")
     linked = [entry for group in en["groups"] for entry in group["entries"]
@@ -201,8 +202,8 @@ def main() -> None:
         assert f'href="{expected_path}"' in html
         assert t["footerChangelog"] in html
         assert t["changeNotice"] in html
-        assert len(re.findall(r'class="changelog-entry"', html)) == 106
-        assert len(re.findall(r'class="changelog-commit"', html)) == 105
+        assert len(re.findall(r'class="changelog-entry"', html)) == 107
+        assert len(re.findall(r'class="changelog-commit"', html)) == 106
         assert 'href="https://github.com/nnneeeooo-nnneeeooo/SKYTICAL/commit/' not in html
         assert "javascript:alert" not in html
 
