@@ -1,6 +1,6 @@
-/* Mobile enhancements are opt-in; desktop and the pixel theme keep their layout. */
+/* Phone and portrait-tablet enhancements; desktop and pixel keep their layout. */
 .mobile-search-toggle,.mobile-more,.mobile-search-brand,.feed-day-heading{display:none}
-@media(max-width:720px){
+@media(max-width:720px), (max-width:1100px) and (orientation:portrait){
 /* A focused presentation layer over SKYTICAL's existing generated pages. */
 .mobile-refresh{--mobile-muted:color-mix(in srgb,var(--color-text) 55%,transparent);-webkit-text-size-adjust:100%}
 .mobile-refresh body{background:color-mix(in srgb,var(--color-text) 12%,var(--color-bg));font-family:"Archivo","Noto Sans TC",-apple-system,"PingFang TC",sans-serif;line-height:1.6}

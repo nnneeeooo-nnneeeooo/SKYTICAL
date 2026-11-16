@@ -589,7 +589,8 @@ html[lang^="zh"] .feed-category {
   .incidents-page .incidents-list .incident-card { grid-template-columns: 200px minmax(0, 1fr); gap: 24px; }
   .incidents-page .briefing-thumbnail { aspect-ratio: 16 / 9; }
 }
-@media (max-width: 600px) {
+/* Portrait tablets share the phone layout; landscape keeps its existing rules. */
+@media (max-width: 600px), (max-width: 1100px) and (orientation: portrait) {
   .briefing-page.incidents-page { padding: 24px 16px 40px; }
   .incidents-toolbar { margin-top: 18px; gap: 12px; }
   .incidents-filters { width: 100%; gap: 6px; }
@@ -812,8 +813,9 @@ html[lang="en"] .search-help-term:not(:last-child) { margin-right: .3em; }
   .search-help { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .search-help-group:last-child { grid-column: 1 / -1; }
 }
-@media (max-width: 720px) {
+@media (max-width: 720px), (max-width: 1100px) and (orientation: portrait) {
   .search-help { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 16px; }
+  .search-help-group:last-child { grid-column: auto; }
   .search-help dd { font-size: 13px; }
 }
 .news-search { max-width: 960px; }
@@ -948,7 +950,7 @@ html[lang="en"] .search-help-term:not(:last-child) { margin-right: .3em; }
   .radar-list { max-height: 360px; }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 720px), (max-width: 1100px) and (orientation: portrait) {
   .seg-cat {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1020,7 +1022,7 @@ html[lang="en"] .search-help-term:not(:last-child) { margin-right: .3em; }
   .header-search-form .header-search-clear { width: 24px; }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 640px), (max-width: 1100px) and (orientation: portrait) {
   .header-search-row { padding: 9px 12px; gap: 8px; }
   .header-social-links { gap: 4px; }
   .header-search-form {
@@ -1105,7 +1107,7 @@ html[lang="en"] .search-help-term:not(:last-child) { margin-right: .3em; }
   .commit-record-diff pre { padding: 12px; font-size: 10px; }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 720px), (max-width: 1100px) and (orientation: portrait) {
   .header-search-row { flex-wrap: nowrap; padding: 7px 8px; gap: 4px; }
   .header-search-row .brand-shell { flex: 0 0 clamp(92px, 27vw, 132px); }
   .header-search-row .brand-row { padding: 0; gap: 0; }
