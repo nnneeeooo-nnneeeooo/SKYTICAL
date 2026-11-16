@@ -284,3 +284,14 @@ Luna 備援與審稿改動。實作與限制見 `docs/cloud-iata-audit.md`。
 | [openai/openai-agents-python](https://github.com/openai/openai-agents-python) | 2026-11-15／30,693 | Python／MIT | 可借鑑工具檢索與輸出核驗分離；本站沿用 Responses、requests 與既有費用帳本 |
 
 以上以 GitHub API 查核。此次不複製程式碼、不增加套件；保留現有管線，將來源不足與最終題材退稿分開，Terra 僅提供實際檢索到的網址，再由管線獨立擷取正文作證據。
+
+
+## 雙語近期更新通知（2026-11-17）
+
+| 專案 | 最近push（UTC）／stars | 語言／授權 | 比較結果 |
+| --- | --- | --- | --- |
+| [KittyGiraudel/a11y-dialog](https://github.com/KittyGiraudel/a11y-dialog) | 2026-11-16／2,491 | TypeScript／MIT | 輕量無障礙對話框；本站原生dialog已能處理焦點與Escape，無須新增執行期套件 |
+| [radix-ui/primitives](https://github.com/radix-ui/primitives) | 2026-10-14／19,506 | TypeScript／MIT | 完整React互動元件；目前Jinja靜態網站導入框架成本較高 |
+| [tailwindlabs/headlessui](https://github.com/tailwindlabs/headlessui) | 2026-04-13／28,830 | TypeScript／MIT | React／Vue無樣式互動元件；本站維持原生HTML、CSS、JavaScript較輕量 |
+
+中繼資料已以GitHub API查核。採用原生dialog、localStorage及可用時的Web Locks，不複製第三方程式碼、不增加正式站依賴。沿用現有翼標與團隊動畫；雙語內容由既有changelog離線整理，Playwright只用於公開CI的桌機與手機驗證。

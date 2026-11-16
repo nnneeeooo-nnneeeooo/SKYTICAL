@@ -1233,20 +1233,6 @@
       },
       "redacted": true
     },
-    "bd156e2ea26600cfa7ec7610cbc484b1f853c3ef": {
-      "sha": "bd156e2ea26600cfa7ec7610cbc484b1f853c3ef",
-      "date": "2026-11-13",
-      "summary": {
-        "zh": "持續為近期航空新聞與短訊彙整加入經核對的真實照片，修正錯公司、錯機型與不適切配圖；資料照標明年份及與事件的關係，彙整圖說明所代表的消息，保留署名、來源及編輯鎖定。",
-        "en": "Added reviewed real photos to recent news and roundups, corrected mismatched airlines, aircraft and unsuitable selections, and labeled archive years, event context and the represented roundup item while preserving credits, sources and editorial locks."
-      },
-      "stats": {
-        "files": 3,
-        "additions": 34,
-        "deletions": 4
-      },
-      "redacted": true
-    },
     "8d09579c54d2b846025553e847c123dc80761467": {
       "sha": "8d09579c54d2b846025553e847c123dc80761467",
       "date": "2026-11-12",
@@ -1398,6 +1384,90 @@
         "files": 3,
         "additions": 7,
         "deletions": 0
+      },
+      "redacted": true
+    },
+    "721d3bf15f1f8fd4b9a5bdd6bfb29db6ed00f422": {
+      "sha": "721d3bf15f1f8fd4b9a5bdd6bfb29db6ed00f422",
+      "date": "2026-11-16",
+      "summary": {
+        "zh": "來源不足的新聞改由 GPT 6.1 Terra 補查同事件的可靠來源，獨立擷取正文並核對日期與主題；未達刊登條件時保留待查資料並延後重試，僅在實際補入可核驗來源時加入 Terra 署名。",
+        "en": "GPT 6.1 Terra now searches for reliable coverage of source-insufficient stories, with independently fetched text and date/topic checks. Stories that remain unpublishable retain their source data for later retries, and Terra is credited only when verifiable sources are actually added."
+      },
+      "stats": {
+        "files": 12,
+        "additions": 502,
+        "deletions": 31
+      },
+      "redacted": true
+    },
+    "62a9b865597c0dfe02a4a4d11d885c353c824ada": {
+      "sha": "62a9b865597c0dfe02a4a4d11d885c353c824ada",
+      "date": "2026-11-16",
+      "summary": {
+        "zh": "航空產業短訊彙整每期最多三則，每則各有配圖並共用首頁輪播操作，保留圖片來源、作者、授權及資料照說明；無合適圖片時逐則顯示預設圖，標題涵蓋全部短訊並維持兩行內。",
+        "en": "Industry roundups now contain up to three briefs, each with its own image and the homepage carousel controls. Credits, licenses and archive context remain visible; missing images receive individual fallbacks, and two-line headlines cover every included brief."
+      },
+      "stats": {
+        "files": 36,
+        "additions": 2245,
+        "deletions": 87
+      },
+      "redacted": true
+    },
+    "84da0434131a9294418606a4c3926eefec303ba0": {
+      "sha": "84da0434131a9294418606a4c3926eefec303ba0",
+      "date": "2026-11-15",
+      "summary": {
+        "zh": "原使用 Luna 的撰稿、審核、快報、新聞搜尋與機場代碼核對流程改用 GPT 6.1 Terra，公開署名同步顯示實際使用模型；既有文章與歷史用量保留原始歸屬。",
+        "en": "Drafting, review, briefings, news search and airport-code checks previously using Luna now call GPT 6.1 Terra, with public credits matching the model actually used. Existing articles and historical usage retain their original attribution."
+      },
+      "stats": {
+        "files": 31,
+        "additions": 175,
+        "deletions": 126
+      },
+      "redacted": true
+    },
+    "338431ae2f425a419c0f96bb02a4caa78b2258bf": {
+      "sha": "338431ae2f425a419c0f96bb02a4caa78b2258bf",
+      "date": "2026-11-15",
+      "summary": {
+        "zh": "全國停飛、全機隊停飛等重大航空營運事件優先處理，發布後四十八小時內優先呈現於首頁頭條與即時快訊；釘選期間停止自動輪播，仍可手動切換，並維持來源查證及刊登門檻。",
+        "en": "Major aviation disruptions such as nationwide or fleetwide groundings receive priority processing and headline/live coverage for 48 hours after publication. Pinned headlines pause automatic rotation but retain manual controls and existing source-verification and publication requirements."
+      },
+      "stats": {
+        "files": 12,
+        "additions": 335,
+        "deletions": 18
+      },
+      "redacted": true
+    },
+    "9c1c35bd6e56dc9ffd6e5715f06ba46e8da8cb72": {
+      "sha": "9c1c35bd6e56dc9ffd6e5715f06ba46e8da8cb72",
+      "date": "2026-11-15",
+      "summary": {
+        "zh": "修正中英文混合標題在字元交界處被誤判為非航空內容的問題，讓符合收錄條件的報導正常出現在新聞列表、搜尋索引及每日搜尋提示結果中。",
+        "en": "Fixed mixed Chinese/Latin headline boundaries being misread as non-aviation content, allowing eligible reports to appear correctly in news lists, search indexes and daily search-suggestion results."
+      },
+      "stats": {
+        "files": 11,
+        "additions": 141,
+        "deletions": 78
+      },
+      "redacted": true
+    },
+    "23b8eb0e5bf4e53b94c87e75959035af2ba81a59": {
+      "sha": "23b8eb0e5bf4e53b94c87e75959035af2ba81a59",
+      "date": "2026-11-16",
+      "summary": {
+        "zh": "持續為近期航空新聞與短訊彙整加入經核對的真實照片，修正錯公司、錯機型與不適切配圖；資料照標明年份及與事件的關係，彙整圖說明所代表的消息，保留署名、來源及編輯鎖定。",
+        "en": "Added reviewed real photos to recent news and roundups, corrected mismatched airlines, aircraft and unsuitable selections, and labeled archive years, event context and the represented roundup item while preserving credits, sources and editorial locks."
+      },
+      "stats": {
+        "files": 1,
+        "additions": 16,
+        "deletions": 1
       },
       "redacted": true
     }

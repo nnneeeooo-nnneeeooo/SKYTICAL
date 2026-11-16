@@ -1,0 +1,14 @@
+'use strict';
+const assert = require('node:assert/strict');
+const {isDue, INTERVAL, KEY} = require('../static/update-notice.js');
+const start = Date.UTC(2026, 10, 16, 0, 0);
+assert.equal(INTERVAL, 10800000);
+assert.equal(isDue(null, start), true);
+assert.equal(isDue(start, start), false);
+assert.equal(isDue(start, start + INTERVAL - 1), false);
+assert.equal(isDue(start, start + INTERVAL), true);
+assert.equal(isDue(start, start + INTERVAL + 1), true);
+assert.equal(isDue(start + 1, start), true);
+assert.equal(isDue(NaN, start), true);
+assert.equal(KEY.includes('demo'), false);
+console.log('test_update_notice: OK (exact three-hour boundary)');

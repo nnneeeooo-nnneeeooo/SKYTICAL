@@ -4,7 +4,7 @@
   var spaces = new RegExp("(?<=[" + cjk + "]) +| +(?=[" + cjk + "])", "gu");
   var sentenceEnd = /[。！？][」』”’）)】\]〕〉》]*(?=[^\s。！？!?，,、；;：:．.…」』”’）)】\]〕〉》])/gu;
   var blocks = new Set("HTML HEAD BODY ADDRESS ARTICLE ASIDE BLOCKQUOTE BR BUTTON DD DETAILS DIALOG DIV DL DT FIELDSET FIGCAPTION FIGURE FOOTER FORM H1 H2 H3 H4 H5 H6 HEADER HR LI MAIN NAV OL OPTION P SECTION SUMMARY TABLE TBODY TD TH THEAD TR UL".split(" "));
-  var skip = "script,style,pre,code,textarea,[contenteditable]:not([contenteditable=false])";
+  var skip = "script,style,pre,code,textarea,[contenteditable]:not([contenteditable=false]),[data-compact-copy]";
   var attrs = ["alt", "title", "placeholder", "aria-label", "aria-description"];
 
   function changes(text) {
