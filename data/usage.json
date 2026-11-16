@@ -1,5 +1,5 @@
 {
-  "updatedUtc": "2026-11-15T18:46Z",
+  "updatedUtc": "2026-11-16T05:17Z",
   "trackingSinceUtc": "2026-09-12T01:05Z",
   "models": {
     "gemini:gemini-3.6-flash": {
@@ -69,15 +69,15 @@
       "unknownCalls": 36
     },
     "openai:gpt-6.1-terra": {
-      "calls": 31,
-      "inputTokens": 144438,
-      "outputTokens": 501883,
+      "calls": 32,
+      "inputTokens": 147874,
+      "outputTokens": 524871,
       "unknownCalls": 0
     },
     "openai:gpt-6.1-terra+search": {
-      "calls": 4,
-      "inputTokens": 152064,
-      "outputTokens": 12572,
+      "calls": 5,
+      "inputTokens": 192207,
+      "outputTokens": 15550,
       "unknownCalls": 0
     }
   },
@@ -406,6 +406,11 @@
       "calls": 71,
       "inputTokens": 475126,
       "outputTokens": 625189
+    },
+    "2026-11-16": {
+      "calls": 2,
+      "inputTokens": 43579,
+      "outputTokens": 25966
     }
   },
   "recentRuns": [
@@ -763,84 +768,6 @@
       }
     },
     {
-      "startedUtc": "2026-11-15T17:27Z",
-      "finishedUtc": "2026-11-15T17:30Z",
-      "workflow": "hourly",
-      "taskType": "article",
-      "editorialTier": "standard",
-      "routeReason": "ordinary_news",
-      "paidFallbackAllowed": false,
-      "groupId": "g-20261115-1751-1",
-      "eventId": null,
-      "sourceCount": 1,
-      "primarySource": "AeroTime",
-      "result": "queued_for_roundup",
-      "articleId": null,
-      "finalStatus": "verified_short_update",
-      "finalModel": "openai:gpt-6.1-terra",
-      "fallbackUsed": true,
-      "attemptCount": 2,
-      "httpCallCount": 2,
-      "repairCallCount": 0,
-      "durationsMs": {
-        "companionRetrieval": null,
-        "fulltextEnrichment": null,
-        "plaEnrichment": null,
-        "archiveRetrieval": 5861,
-        "promptAssembly": 406,
-        "drafting": 400191,
-        "validation": 2,
-        "factVerification": 0,
-        "evidenceBinding": 1,
-        "glossaryCheck": 0,
-        "fabricationCheck": 0,
-        "articleBuild": 44,
-        "total": 505852
-      },
-      "attempts": [
-        {
-          "sequence": 1,
-          "provider": "cloudflare",
-          "model": "@cf/qwen/qwen3-30b-a3b-fp8",
-          "label": "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
-          "startedUtc": "2026-11-15T17:52Z",
-          "durationMs": 26861,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 26450,
-          "repairDurationMs": 0,
-          "outcome": "failed",
-          "failureClass": "evidence_binding_failed",
-          "failureStage": "evidenceBinding",
-          "failureMessage": "F2 claim adds high-risk atom '21:15' not present in its own sourceQuote",
-          "retryPlanned": false,
-          "disabledForRun": false
-        },
-        {
-          "sequence": 2,
-          "provider": "openai",
-          "model": "gpt-6.1-terra",
-          "label": "openai:gpt-6.1-terra",
-          "startedUtc": "2026-11-15T17:53Z",
-          "durationMs": 373340,
-          "httpCalls": 1,
-          "repairCalls": 0,
-          "httpDurationMs": 371115,
-          "repairDurationMs": 0,
-          "outcome": "success",
-          "failureClass": null,
-          "failureStage": null,
-          "failureMessage": null,
-          "retryPlanned": false,
-          "disabledForRun": false
-        }
-      ],
-      "resourceUsage": {
-        "actualUsd": 0.0,
-        "models": []
-      }
-    },
-    {
       "startedUtc": "2026-11-15T17:52Z",
       "finishedUtc": "2026-11-15T18:01Z",
       "workflow": "hourly",
@@ -1102,6 +1029,84 @@
           "httpCalls": 1,
           "repairCalls": 0,
           "httpDurationMs": 24901,
+          "repairDurationMs": 0,
+          "outcome": "success",
+          "failureClass": null,
+          "failureStage": null,
+          "failureMessage": null,
+          "retryPlanned": false,
+          "disabledForRun": false
+        }
+      ],
+      "resourceUsage": {
+        "actualUsd": 0.0,
+        "models": []
+      }
+    },
+    {
+      "startedUtc": "2026-11-15T17:27Z",
+      "finishedUtc": "2026-11-15T17:30Z",
+      "workflow": "hourly",
+      "taskType": "article",
+      "editorialTier": "standard",
+      "routeReason": "ordinary_news",
+      "paidFallbackAllowed": false,
+      "groupId": "g-20261115-1751-1",
+      "eventId": null,
+      "sourceCount": 1,
+      "primarySource": "AeroTime",
+      "result": "queued_for_roundup",
+      "articleId": null,
+      "finalStatus": "verified_short_update",
+      "finalModel": "openai:gpt-6.1-terra",
+      "fallbackUsed": true,
+      "attemptCount": 2,
+      "httpCallCount": 2,
+      "repairCallCount": 0,
+      "durationsMs": {
+        "companionRetrieval": null,
+        "fulltextEnrichment": null,
+        "plaEnrichment": null,
+        "archiveRetrieval": 5861,
+        "promptAssembly": 406,
+        "drafting": 400191,
+        "validation": 2,
+        "factVerification": 0,
+        "evidenceBinding": 1,
+        "glossaryCheck": 0,
+        "fabricationCheck": 0,
+        "articleBuild": 44,
+        "total": 505852
+      },
+      "attempts": [
+        {
+          "sequence": 1,
+          "provider": "cloudflare",
+          "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+          "label": "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
+          "startedUtc": "2026-11-15T17:52Z",
+          "durationMs": 26861,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 26450,
+          "repairDurationMs": 0,
+          "outcome": "failed",
+          "failureClass": "evidence_binding_failed",
+          "failureStage": "evidenceBinding",
+          "failureMessage": "F2 claim adds high-risk atom '21:15' not present in its own sourceQuote",
+          "retryPlanned": false,
+          "disabledForRun": false
+        },
+        {
+          "sequence": 2,
+          "provider": "openai",
+          "model": "gpt-6.1-terra",
+          "label": "openai:gpt-6.1-terra",
+          "startedUtc": "2026-11-15T17:53Z",
+          "durationMs": 373340,
+          "httpCalls": 1,
+          "repairCalls": 0,
+          "httpDurationMs": 371115,
           "repairDurationMs": 0,
           "outcome": "success",
           "failureClass": null,
