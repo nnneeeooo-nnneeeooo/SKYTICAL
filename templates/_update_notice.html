@@ -1,0 +1,24 @@
+{% if update_notice is defined and (update_notice['items'] or update_notice['station']) %}
+<script id="site-update-data" type="application/json">{{ update_notice | tojson }}</script>
+<dialog id="site-update-notice" class="site-update-dialog" aria-labelledby="site-update-title" aria-describedby="site-update-description" data-compact-copy>
+  <div class="notice-top">
+    <h2 id="site-update-title" class="notice-heading">
+      <button class="team-logo-trigger" type="button" data-notice-wing aria-label="{{ update_notice.ui.replay }}">
+        <span class="team-logo-orbit" aria-hidden="true"></span><span class="team-logo-signal" aria-hidden="true"></span>
+        <span class="team-logo-character" aria-hidden="true"><img class="team-name-logo team-name-logo--classic" src="{{ base }}/assets/skytical-team-mark.svg?v={{ asset_version }}" width="88" height="88" alt=""><span class="team-logo-eyes"><i></i><i></i></span></span>
+      </button>
+      <span>{{ update_notice.ui.title }}</span>
+    </h2>
+    <button type="button" class="notice-close" data-notice-close aria-label="{{ update_notice.ui.close }}" autofocus>×</button>
+  </div>
+  <div class="notice-copy">
+    <p id="site-update-description">{{ update_notice.ui.subtitle }}</p>
+    <section class="station-note" aria-labelledby="site-station-title" hidden>
+      <h3 id="site-station-title">{{ update_notice.ui.stationTitle }}</h3>
+      <div class="station-note-body"><figure class="station-portrait"><img src="{{ base }}/assets/neo-life.jpg?v={{ asset_version }}" width="416" height="416" alt="{{ update_notice.ui.photoAlt }}" loading="lazy" decoding="async"><figcaption>{{ update_notice.ui.photoCaption }}</figcaption></figure><p data-station-message></p></div>
+    </section>
+    <div data-notice-items></div>
+  </div>
+  <footer class="notice-footer"><a href="{{ changelog_url }}">{{ update_notice.ui.history }}<span aria-hidden="true">↗</span></a><button type="button" class="notice-primary" data-notice-close>{{ update_notice.ui.continue }}<span aria-hidden="true">→</span></button></footer>
+</dialog>
+{% endif %}

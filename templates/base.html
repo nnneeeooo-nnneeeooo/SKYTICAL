@@ -56,6 +56,8 @@ gtag('config', '{{ ga4_measurement_id }}', {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ base }}/assets/team.css?v={{ asset_version }}">
+<link rel="stylesheet" href="{{ base }}/assets/update-notice.css?v={{ asset_version }}">
 <link rel="stylesheet" href="{{ base }}/assets/modernist.css">
 <link rel="stylesheet" href="{{ base }}/assets/site.css?v={{ asset_version }}">
 <link rel="stylesheet" href="{{ base }}/assets/pixel.css?v={{ asset_version }}">
@@ -243,6 +245,8 @@ gtag('config', '{{ ga4_measurement_id }}', {
   </div>
 </dialog>
 {% block body_scripts %}{% endblock %}
+{% include "_update_notice.html" %}
+<script src="{{ base }}/assets/update-notice.js?v={{ asset_version }}" defer></script>
 <script src="{{ base }}/assets/admin-activate.js?v={{ asset_version }}-admin3" data-base="{{ base }}" defer></script>
 </body>
 </html>

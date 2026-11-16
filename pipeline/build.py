@@ -61,6 +61,7 @@ from image_captions import clean_description
 from article_schema import normalize_article_record
 from admin_page import render_admin_page, editorial_article
 from text_spacing import compact_html
+from update_notice import notice_data
 from public_article import (
     public_article_id, public_news_path, public_asset_url, public_site_url,
 )
@@ -105,6 +106,9 @@ def static_asset_version() -> str:
         "app.js",
         "logo-flight.js",
         "text-spacing.js",
+        "update-notice.css",
+        "update-notice.js",
+        "neo-life.jpg",
         "search.js",
         "highlight.js",
         "skytical-logo.svg",
@@ -3832,6 +3836,7 @@ def base_ctx(lang, page, sub, *, title, description, ticker, build,
     return {
         "lang": lang, "t": t, "base": BASE_PATH, "favicon": FAVICON,
         "asset_version": ASSET_VERSION,
+        "update_notice": notice_data()[lang],
         "ga4_measurement_id": ga4_measurement_id(),
         "html_lang": "zh-Hant-TW" if lang == "zh" else "en",
         "title": title, "description": description,

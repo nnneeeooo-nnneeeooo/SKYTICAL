@@ -2,8 +2,60 @@
   "schemaVersion": 1,
   "repository": "https://github.com/nnneeeooo-nnneeeooo/SKYTICAL",
   "historyStart": "2026-07-26",
-  "updatedThrough": "2026-11-13",
+  "updatedThrough": "2026-11-17",
   "entries": [
+    {
+      "date": "2026-11-17",
+      "kind": "feature",
+      "commit": "6b12b218d12a4161a3c1efd731ed94bc8d76ab0c",
+      "zh": "全站加入中英文近期更新通知，重大變更獨立呈現、小調整合併；站長留言支援來信連結，手機可捲動，關閉後直接繼續閱讀，同瀏覽器每三小時最多提醒一次。",
+      "en": "Bilingual site updates now highlight major changes and group smaller refinements. A note from the owner includes a contact link; the mobile dialog scrolls, closes directly back to reading, and appears at most once every three hours in the same browser.",
+      "notice": {
+        "importance": "minor"
+      }
+    },
+    {
+      "date": "2026-11-16",
+      "kind": "system",
+      "commit": "721d3bf15f1f8fd4b9a5bdd6bfb29db6ed00f422",
+      "zh": "來源不足的新聞改由 GPT 6.1 Terra 補查同事件的可靠來源，獨立擷取正文並核對日期與主題；未達刊登條件時保留待查資料並延後重試，僅在實際補入可核驗來源時加入 Terra 署名。",
+      "en": "GPT 6.1 Terra now searches for reliable coverage of source-insufficient stories, with independently fetched text and date/topic checks. Stories that remain unpublishable retain their source data for later retries, and Terra is credited only when verifiable sources are actually added."
+    },
+    {
+      "date": "2026-11-16",
+      "kind": "feature",
+      "commit": "62a9b865597c0dfe02a4a4d11d885c353c824ada",
+      "zh": "航空產業短訊彙整每期最多三則，每則各有配圖並共用首頁輪播操作，保留圖片來源、作者、授權及資料照說明；無合適圖片時逐則顯示預設圖，標題涵蓋全部短訊並維持兩行內。",
+      "en": "Industry roundups now contain up to three briefs, each with its own image and the homepage carousel controls. Credits, licenses and archive context remain visible; missing images receive individual fallbacks, and two-line headlines cover every included brief."
+    },
+    {
+      "date": "2026-11-16",
+      "kind": "fix",
+      "commit": "23b8eb0e5bf4e53b94c87e75959035af2ba81a59",
+      "zh": "持續為近期航空新聞與短訊彙整加入經核對的真實照片，修正錯公司、錯機型與不適切配圖；資料照標明年份及與事件的關係，彙整圖說明所代表的消息，保留署名、來源及編輯鎖定。",
+      "en": "Added reviewed real photos to recent news and roundups, corrected mismatched airlines, aircraft and unsuitable selections, and labeled archive years, event context and the represented roundup item while preserving credits, sources and editorial locks."
+    },
+    {
+      "date": "2026-11-15",
+      "kind": "system",
+      "commit": "84da0434131a9294418606a4c3926eefec303ba0",
+      "zh": "原使用 Luna 的撰稿、審核、快報、新聞搜尋與機場代碼核對流程改用 GPT 6.1 Terra，公開署名同步顯示實際使用模型；既有文章與歷史用量保留原始歸屬。",
+      "en": "Drafting, review, briefings, news search and airport-code checks previously using Luna now call GPT 6.1 Terra, with public credits matching the model actually used. Existing articles and historical usage retain their original attribution."
+    },
+    {
+      "date": "2026-11-15",
+      "kind": "feature",
+      "commit": "338431ae2f425a419c0f96bb02a4caa78b2258bf",
+      "zh": "全國停飛、全機隊停飛等重大航空營運事件優先處理，發布後四十八小時內優先呈現於首頁頭條與即時快訊；釘選期間停止自動輪播，仍可手動切換，並維持來源查證及刊登門檻。",
+      "en": "Major aviation disruptions such as nationwide or fleetwide groundings receive priority processing and headline/live coverage for 48 hours after publication. Pinned headlines pause automatic rotation but retain manual controls and existing source-verification and publication requirements."
+    },
+    {
+      "date": "2026-11-15",
+      "kind": "fix",
+      "commit": "9c1c35bd6e56dc9ffd6e5715f06ba46e8da8cb72",
+      "zh": "修正中英文混合標題在字元交界處被誤判為非航空內容的問題，讓符合收錄條件的報導正常出現在新聞列表、搜尋索引及每日搜尋提示結果中。",
+      "en": "Fixed mixed Chinese/Latin headline boundaries being misread as non-aviation content, allowing eligible reports to appear correctly in news lists, search indexes and daily search-suggestion results."
+    },
     {
       "date": "2026-11-13",
       "kind": "fix",
@@ -24,13 +76,6 @@
       "commit": "8e96ee9eac4bfd5fd075629c59942c9668b63e81",
       "zh": "新聞配圖加入 GPT 6.1 輔助搜尋與視覺核對，僅採用授權及主題符合要求的 Commons 候選，保留作者、授權與來源；排除未取得再利用授權的中央社照片，無合適圖片時使用網站預設圖。",
       "en": "Added GPT 6.1-assisted Commons image discovery and visual review, requiring suitable licensing and relevance while preserving authors, licenses and sources. Excluded CNA photos without reuse permission and retained the site fallback when no suitable image is available."
-    },
-    {
-      "date": "2026-11-13",
-      "kind": "fix",
-      "commit": "bd156e2ea26600cfa7ec7610cbc484b1f853c3ef",
-      "zh": "持續為近期航空新聞與短訊彙整加入經核對的真實照片，修正錯公司、錯機型與不適切配圖；資料照標明年份及與事件的關係，彙整圖說明所代表的消息，保留署名、來源及編輯鎖定。",
-      "en": "Added reviewed real photos to recent news and roundups, corrected mismatched airlines, aircraft and unsuitable selections, and labeled archive years, event context and the represented roundup item while preserving credits, sources and editorial locks."
     },
     {
       "date": "2026-11-12",

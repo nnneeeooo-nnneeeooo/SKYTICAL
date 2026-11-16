@@ -1,0 +1,60 @@
+name: update-notice-browser
+on:
+  workflow_dispatch:
+    inputs:
+      live_url:
+        description: 'Optional deployed site URL for production verification'
+        required: false
+        default: ''
+  pull_request:
+    branches: [main]
+    paths:
+      - 'pipeline/update_notice.py'
+      - 'pipeline/build.py'
+      - 'templates/base.html'
+      - 'templates/_update_notice.html'
+      - 'static/update-notice.*'
+      - 'static/text-spacing.js'
+      - 'static/neo-life.jpg'
+      - 'config/changelog.json'
+      - 'config/station-note.json'
+      - 'tests/test_update_notice.*'
+      - 'tests/browser/notice_check.py'
+      - '.github/workflows/update-notice-browser.yml'
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements.txt playwright
+      - run: python -m playwright install --with-deps chromium
+      - name: Install Chinese fallback fonts
+        run: sudo apt-get install -y fonts-noto-cjk
+      - name: Build committed website
+        run: python pipeline/build.py
+      - name: Check desktop, mobile, languages and exact interval
+        env:
+          LIVE_URL: ${{ inputs.live_url }}
+        run: |
+          if [ -n "$LIVE_URL" ]; then
+            case "$LIVE_URL" in
+              https://skytical.tech|https://skytical.tech/) ;;
+              *) echo 'Unsupported production verification URL'; exit 1 ;;
+            esac
+            python tests/browser/notice_check.py --url "$LIVE_URL"
+          else
+            python tests/browser/notice_check.py
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: update-notice-browser
+          path: notice-browser-results/
+          retention-days: 7
