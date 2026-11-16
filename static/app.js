@@ -200,7 +200,7 @@
     if (!marqueeTrack) return;
     var tickerPass = marqueeTrack.querySelector(".ticker-pass");
     if (!tickerPass) return;
-    var pixelsPerSecond = window.matchMedia("(max-width: 720px)").matches ? 32 : 52;
+    var pixelsPerSecond = window.matchMedia("(max-width: 720px), (max-width: 1100px) and (orientation: portrait)").matches ? 32 : 52;
     var seconds = Math.max(20, tickerPass.scrollWidth / pixelsPerSecond);
     marqueeTrack.style.setProperty("--ticker-duration", seconds.toFixed(1) + "s");
   }
@@ -304,7 +304,7 @@
         "圖片暫時無法載入，先顯示 SKYTICAL 預設圖片。" :
         "Image temporarily unavailable; showing the SKYTICAL default image.";
     });
-    if (window.matchMedia && window.matchMedia("(max-width: 720px)").matches) {
+    if (window.matchMedia && window.matchMedia("(max-width: 720px), (max-width: 1100px) and (orientation: portrait)").matches) {
       heroRotationMs = Math.max(heroRotationMs, 10000);
     }
 

@@ -98,6 +98,8 @@ def static_asset_version() -> str:
         "site.css",
         "mobile.css",
         "mobile.js",
+        "tablet.css",
+        "tablet.js",
         "pixel.css",
         "fusion-pixel-tw-v2026-10-16.woff2",
         "app.js",

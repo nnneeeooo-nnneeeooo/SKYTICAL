@@ -52,6 +52,8 @@
     var spriteBox = sprite.getBoundingClientRect();
     if (!linkBox.width || !spriteBox.width) return;
 
+    var tabletPortrait = window.matchMedia("(min-width: 721px) and (max-width: 1100px) and (orientation: portrait)").matches;
+    var launchMs = tabletPortrait ? 700 : 430;
     var scale = linkBox.width / 320;
     var rightEdge = Math.min(shellBox.right, shellBox.left + 760);
     var topRightX = rightEdge - linkBox.left - spriteBox.width * .71 - 18;
@@ -66,20 +68,22 @@
     var started = window.performance.now();
 
     trailSvg.setAttribute("viewBox", "0 0 " + shellBox.width + " " + shellBox.height);
+    if (tabletPortrait) sprite.style.setProperty("--brand-effects-opacity", "0");
     link.classList.add("is-flying");
     playing = true;
 
     function poseAt(ms) {
       var x, y, angle, size, peeking = false, gaze = "", landing = false, effects = 1;
       var u, turn;
-      if (ms < 430) {
-        u = ease(ms / 430);
+      if (ms < launchMs) {
+        u = ease(ms / launchMs);
         x = 9 * scale * u + Math.sin(u * Math.PI * 2) * 3 * scale;
         y = -18 * scale * u - Math.sin(u * Math.PI) * 8 * scale;
         angle = -22 * u;
         size = lerp(1, .42, u);
+        if (tabletPortrait) effects = ease(ms / 500);
       } else if (ms < 1850) {
-        u = ease((ms - 430) / 1420);
+        u = ease((ms - launchMs) / (1850 - launchMs));
         x = cubic(9*scale, topRightX*.15, topRightX*.65, topRightX, u);
         y = cubic(-18*scale, topControlY, topRightY + 38*scale, topRightY, u);
         y += Math.sin(u * Math.PI * 4) * 9 * scale * Math.sin(u * Math.PI);
@@ -131,7 +135,7 @@
         x = 12 * scale * (1 - u);
         y = -9 * scale * (1 - u);
         angle = 720 + Math.sin(q * Math.PI) * (1 - u) * 3;
-        size = .72 + .28 * u + .022 * Math.sin(q * Math.PI) * u;
+        size = .72 + .28 * u + (tabletPortrait ? 0 : .022 * Math.sin(q * Math.PI) * u);
         effects = 1 - ease((q - .30) / .70);
         landing = true;
       }

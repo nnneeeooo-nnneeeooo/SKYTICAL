@@ -6,7 +6,7 @@ const vm = require("node:vm");
 
 const source = fs.readFileSync(path.join(__dirname, "../static/logo-flight.js"), "utf8");
 
-function setup(width, reducedMotion = false, theme = "light") {
+function setup(width, reducedMotion = false, theme = "light", portraitTablet = false) {
   let now = 0;
   let next = null;
   function element(rect = {}) {
@@ -53,7 +53,7 @@ function setup(width, reducedMotion = false, theme = "light") {
   };
   const reduced = { matches: reducedMotion, addEventListener() {} };
   const window = {
-    matchMedia: () => reduced,
+    matchMedia: query => query.includes("min-width: 721px") ? { matches: portraitTablet } : reduced,
     performance: { now: () => now },
     requestAnimationFrame(handler) { next = handler; return 1; },
     cancelAnimationFrame() { next = null; },
@@ -102,6 +102,19 @@ for (const width of [320, 736, 1200]) {
   assert.equal(ui.sprite.style.transform, "");
   assert.equal(ui.trail.attributes.d, "");
 }
+
+const tablet = setup(820, false, "light", true);
+tablet.hover();
+assert.equal(tablet.sprite.style["--brand-effects-opacity"], "0", "tablet effects must not flash before the first frame");
+const launch = tablet.tick(1);
+assert.ok(Math.abs(launch.x) < .01 && Math.abs(launch.y) < .01 && Math.abs(launch.size - 1) < .001);
+tablet.tick(250);
+assert.equal(tablet.sprite.style["--brand-effects-opacity"], "0.500", "tablet effects fade in during takeoff");
+assert.equal(tablet.tick(700).size, .42);
+const landing = tablet.tick(7349);
+assert.ok(Math.abs(landing.x) < .01 && Math.abs(landing.y) < .01 && Math.abs(landing.size - 1) < .001);
+tablet.tick(7350);
+assert.equal(tablet.link.classList.contains("is-flying"), false);
 
 for (const [reducedMotion, theme] of [[true, "light"], [false, "8bit"]]) {
   const ui = setup(736, reducedMotion, theme);

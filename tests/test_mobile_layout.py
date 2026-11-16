@@ -97,7 +97,9 @@ def main() -> None:
 
     assert "@media (max-width: 1100px)" in css
     assert "@media (max-width: 900px)" not in css
-    assert "@media (max-width: 720px)" in css
+    portrait_tablet = "(max-width: 1100px) and (orientation: portrait)"
+    assert f"@media (max-width: 720px), {portrait_tablet}" in css
+    assert f"@media (max-width: 640px), {portrait_tablet}" in css
     assert ".page { width: 100%; overflow-x: clip; }" in css
     assert "aspect-ratio: 50 / 11; position: relative; overflow: visible;" in css
     assert ".brand-flight-crop { position: absolute; inset: 0; overflow: hidden; }" in css
