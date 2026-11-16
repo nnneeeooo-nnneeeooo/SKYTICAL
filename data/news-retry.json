@@ -3769,12 +3769,12 @@
         "https://news.aa.com/news/news-details/2026/Update-on-FAAs-nationwide-ground-stop/default.aspx"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 3,
       "history": [],
-      "updatedUtc": "2026-11-15T17:26Z",
+      "updatedUtc": "2026-11-16T05:21Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-15T23:26Z",
+      "nextRetryUtc": "2026-11-16T11:21Z",
       "title": "Update on FAA's nationwide ground stop",
       "items": [
         {
@@ -3782,14 +3782,6 @@
           "title": "Update on FAA's nationwide ground stop",
           "summary": "",
           "publishedUtc": "2026-11-14T13:59Z",
-          "source": "American Airlines",
-          "sourceKey": "americannews"
-        },
-        {
-          "url": "https://news.aa.com/news/news-details/2026/Update-on-FAAs-nationwide-ground-stop/",
-          "title": "Update on FAA's nationwide ground stop",
-          "summary": "",
-          "publishedUtc": "2026-11-15T02:53Z",
           "source": "American Airlines",
           "sourceKey": "americannews"
         }
@@ -3854,23 +3846,6 @@
       "nextRetryUtc": "2026-11-15T19:26Z",
       "title": "Dozens Of Boeing 787s Face Checks Over Fuel Tanks That Could Ignite When Hit By Lightning"
     },
-    "a23a0867bb24ea333c175d7d": {
-      "sourceUrls": [
-        "https://avherald.com/h?article=54782e83&opt=0",
-        "https://avherald.com/h?article=5478405b",
-        "https://avherald.com/h?article=54796a1c&opt=0",
-        "https://avherald.com/h?article=547a75a5&opt=0",
-        "https://avherald.com/h?article=547a7e63&opt=0"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-15T17:26Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-15T19:26Z",
-      "title": "Incident: BAW B78X near Athens on Nov 15th 2026, engine shut down in flight"
-    },
     "bc32f258e87dac7e82240e81": {
       "sourceUrls": [
         "https://simpleflying.com/2-hour-rest-rule-ultra-long-haul-airbus-a350-pilots-have-before-landing"
@@ -3907,29 +3882,6 @@
       "nextRetryUtc": "2026-11-15T19:52Z",
       "title": "Airbus reports share buyback transactions 9-13 November 2026"
     },
-    "cdf114fbecdaa18734efdb92": {
-      "sourceUrls": [
-        "https://www.airbus.com/en/newsroom/stories/2026-11-performance-and-precision-in-action-shaping-the-future-of-utility-helicopter-mission"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "history": [],
-      "updatedUtc": "2026-11-15T17:52Z",
-      "failureClass": "source_insufficient",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-15T23:52Z",
-      "title": "Performance and precision in action: shaping the future of utility helicopter mission",
-      "items": [
-        {
-          "url": "https://www.airbus.com/en/newsroom/stories/2026-11-performance-and-precision-in-action-shaping-the-future-of-utility-helicopter-mission",
-          "title": "Performance and precision in action: shaping the future of utility helicopter mission",
-          "summary": "Utility helicopter missions demand specialised skill and adaptability, from stringing high-tension power lines to supporting…",
-          "publishedUtc": "2026-11-13T14:29Z",
-          "source": "Airbus",
-          "sourceKey": "airbus"
-        }
-      ]
-    },
     "dbbaa1484dc586f82ca1c1b5": {
       "sourceUrls": [
         "https://simpleflying.com/united-doubles-flights-on-7-routes-from-major-hub",
@@ -3961,6 +3913,107 @@
           "sourceKey": "simpleflying"
         }
       ]
+    },
+    "a23a0867bb24ea333c175d7d": {
+      "sourceUrls": [
+        "https://avherald.com/h?article=54782e83&opt=0",
+        "https://avherald.com/h?article=5478405b",
+        "https://avherald.com/h?article=54796a1c",
+        "https://avherald.com/h?article=54796a1c&opt=0",
+        "https://avherald.com/h?article=547a75a5&opt=0",
+        "https://avherald.com/h?article=547a7e63&opt=0"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-15T17:26Z"
+        }
+      ],
+      "updatedUtc": "2026-11-16T05:21Z",
+      "nextRetryUtc": null
+    },
+    "cdf114fbecdaa18734efdb92": {
+      "sourceUrls": [
+        "https://www.airbus.com/en/newsroom/stories/2026-11-performance-and-precision-in-action-shaping-future-utility-helicopter-missions",
+        "https://www.airbus.com/en/newsroom/stories/2026-11-performance-and-precision-in-action-shaping-the-future-of-utility-helicopter-mission"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 0,
+      "status": "ready",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-15T17:52Z"
+        }
+      ],
+      "updatedUtc": "2026-11-16T05:21Z",
+      "nextRetryUtc": null
+    },
+    "906812cdb6b8594f3eccb9be": {
+      "sourceUrls": [
+        "https://simpleflying.com/how-qantas-used-boeing-747sp-conquer-wellington-short-runway"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-16T05:21Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-16T11:21Z",
+      "title": "How Qantas Used The Boeing 747SP To Conquer Wellington's Notoriously Short Runway",
+      "items": [
+        {
+          "url": "https://simpleflying.com/how-qantas-used-boeing-747sp-conquer-wellington-short-runway/",
+          "title": "How Qantas Used The Boeing 747SP To Conquer Wellington's Notoriously Short Runway",
+          "summary": "Well out of the spotlight, the 747SP earned its 'special performance' name at Qantas. Even Wellington's short runway was no match for it.",
+          "publishedUtc": "2026-11-16T04:30Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
+    },
+    "192bbe709106501fa14cff67": {
+      "sourceUrls": [
+        "https://simpleflying.com/what-a-2nd-captain-adds-to-the-cost-of-american-airlines-16-hour-jfk-delhi-flight"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-16T05:21Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-16T11:21Z",
+      "title": "What A 2nd Captain Adds To The Cost Of American Airlines' 16-Hour JFK-Delhi Flight",
+      "items": [
+        {
+          "url": "https://simpleflying.com/what-a-2nd-captain-adds-to-the-cost-of-american-airlines-16-hour-jfk-delhi-flight/",
+          "title": "What A 2nd Captain Adds To The Cost Of American Airlines' 16-Hour JFK-Delhi Flight",
+          "summary": "The costs of adding a second senior Captain to American's ultra-long-haul JFK-DEL marathon can cost as much as $20,000.",
+          "publishedUtc": "2026-11-16T03:00Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
+    },
+    "f94efb0ded285efab9c1c650": {
+      "sourceUrls": [
+        "https://www.aerotime.aero/articles/spanish-airline-plus-ultra-files-for-creditor-protection-drops-most-routes"
+      ],
+      "contentFailures": 1,
+      "serviceFailures": 0,
+      "history": [],
+      "updatedUtc": "2026-11-16T05:21Z",
+      "failureClass": "content_validation",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-16T07:21Z",
+      "title": "Spanish airline Plus Ultra files for creditor protection, drops routes"
     }
   }
 }
