@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   var root = document.documentElement;
-  var media = window.matchMedia('(max-width: 720px), (max-width: 1100px) and (orientation: portrait)');
+  var media = window.matchMedia('(max-width: 720px)');
   var header = document.querySelector('.header-search-row');
   var toggle = document.querySelector('.mobile-search-toggle');
   var menu = document.querySelector('.mobile-more');
