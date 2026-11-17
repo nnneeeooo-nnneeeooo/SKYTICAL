@@ -113,7 +113,7 @@ def main():
                     check(label + ' theme applied', page.locator('html').get_attribute('data-theme') == theme)
                     metrics = page.evaluate("""()=>{
                         const h=document.querySelector('.header-search-row');
-                        const nodes=innerWidth<=720?[h.querySelector('.mobile-search-brand'),h.querySelector('.header-search-form'),h.querySelector('.mobile-more>summary')]:[h.querySelector('.header-search-form'),...h.querySelectorAll('.header-social-links>a,.header-announcement-button')];
+                        const nodes=innerWidth<=720?[h.querySelector(document.documentElement.dataset.theme==='8bit'?'.pixel-brand':'.brand-link'),...h.querySelectorAll('.header-social-links>a,.header-announcement-button')]:[h.querySelector('.header-search-form'),...h.querySelectorAll('.header-social-links>a,.header-announcement-button')];
                         const rects=nodes.map(n=>{const r=n.getBoundingClientRect();return {left:r.left,right:r.right,cy:(r.top+r.bottom)/2,height:r.height};});
                         return {overflow:h.scrollWidth>h.clientWidth+1,rects,mobile:document.documentElement.classList.contains('mobile-refresh')};
                     }""")
@@ -121,7 +121,7 @@ def main():
                     check(label + ' aligned header without overlap', not metrics['overflow'] and max(r['cy'] for r in rects)-min(r['cy'] for r in rects)<2 and all(r['left']>=0 and r['right']<=width and r['height']>=30 for r in rects) and all(rects[i-1]['right']<=rects[i]['left']+1 for i in range(1,len(rects))))
                     if phone:
                         check(label + ' current phone layout', metrics['mobile'])
-                        page.locator('.mobile-more>summary').click()
+                        check(label + ' no menu and exposed controls', not page.locator('.mobile-more').is_visible() and page.locator('.header-social-links').is_visible() and page.locator('.header-search-row .seg').count()==2 and page.locator('.site-nav>a:visible').count()==8)
                     elif theme == '8bit':
                         check(label + ' single pixel brand', not page.locator('.header-search-row .brand-link').is_visible() and page.locator('.header-search-row .pixel-brand').is_visible())
                     page.screenshot(path=str(output / f'header-{theme}-{lang}-{width}.png'), clip={'x':0,'y':0,'width':width,'height':190})
@@ -129,6 +129,15 @@ def main():
                     page.locator('[data-notice-open]').click()
                     dialog = page.locator('#site-update-notice'); dialog.wait_for(state='visible')
                     check(label + ' wing visible', page.locator('[data-notice-wing]').is_visible())
+                    page.wait_for_function("document.querySelector('.station-note').classList.contains('station-photo-fit')")
+                    portrait = page.evaluate("""()=>{
+                        const n=document.querySelector('.station-note'),p=n.querySelector('[data-station-message]'),f=n.querySelector('.station-portrait');
+                        n.classList.remove('station-photo-fit');const baseline=n.getBoundingClientRect(),old=f.querySelector('img').getBoundingClientRect();
+                        n.classList.add('station-photo-fit');const r=n.getBoundingClientRect(),photo=f.getBoundingClientRect(),t=p.getBoundingClientRect(),frame=n.querySelector('.station-photo-window').getBoundingClientRect();
+                        return {same:Math.abs(r.height-baseline.height)<.6&&Math.abs(r.width-baseline.width)<.6,inside:photo.left>=r.left&&photo.right<=r.right&&photo.top>=r.top&&photo.bottom<=r.bottom+.5&&t.bottom<=r.bottom+.5,larger:frame.width*frame.height>old.width*old.height};
+                    }""")
+                    check(label + ' unchanged note footprint with larger bounded photo', portrait['same'] and portrait['inside'] and portrait['larger'])
+
                     check(label + ' manual replay preserves cooldown', page.evaluate(f"localStorage.getItem('{KEY}')") == old_stamp)
                     pane = page.locator('.notice-copy')
                     check(label + ' scrollbar hidden with native scrolling', pane.evaluate("el=>getComputedStyle(el).scrollbarWidth==='none'&&getComputedStyle(el).overflowY==='auto'"))
@@ -151,8 +160,8 @@ def main():
                     else:
                         page.mouse.click(2,2)
                     check(label + ' outside gesture closes dialog', not dialog.is_visible())
-                    focused = page.locator('.mobile-more>summary' if phone else '[data-notice-open]')
-                    page.wait_for_function("selector=>document.querySelector(selector)===document.activeElement", arg='.mobile-more>summary' if phone else '[data-notice-open]')
+                    focused = page.locator('[data-notice-open]')
+                    page.wait_for_function("selector=>document.querySelector(selector)===document.activeElement", arg='[data-notice-open]')
                     check(label + ' focus restored', focused.evaluate('el=>el===document.activeElement'))
                     ctx.close()
         ctx = context(390, 844, reduced_motion="reduce")

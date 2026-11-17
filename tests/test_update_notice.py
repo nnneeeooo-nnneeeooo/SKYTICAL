@@ -52,7 +52,7 @@ def main():
         assert html.count('id="site-update-notice"') == 1
         assert 'data-compact-copy' in html
         assert actual[lang]["ui"]["continue"] in html
-        assert 'neo-life.jpg' in html
+        assert 'neo-life-expanded.jpg' in html
         assert 'iframe' not in html and '?preview' not in html
     print("test_update_notice: OK (bilingual content, source gates, render)")
 
