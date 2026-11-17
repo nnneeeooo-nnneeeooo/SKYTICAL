@@ -34,7 +34,7 @@
     toggle.setAttribute('aria-label', open ? toggle.dataset.closeLabel : toggle.dataset.openLabel);
   }
   function updateLayout() {
-    var next = media.matches && root.dataset.theme !== '8bit';
+    var next = media.matches;
     if (next === active) return;
     active = next;
     root.classList.toggle('mobile-refresh', active);

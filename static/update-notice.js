@@ -32,13 +32,17 @@
     try {const raw = localStorage.getItem(KEY); if (raw !== null) return Number(raw);} catch (_) {}
     return memory;
   }
-  function showIfDue() {
-    if (dialog.open || document.querySelector('dialog[open]') || !isDue(readLast(), Date.now())) return false;
-    opener = document.activeElement;
+  function openNotice(trigger = document.activeElement) {
+    if (dialog.open || document.querySelector('dialog[open]')) return false;
+    opener = trigger;
     try {dialog.showModal();} catch (_) {return false;}
+    requestAnimationFrame(playWing);
+    return true;
+  }
+  function showIfDue() {
+    if (!isDue(readLast(), Date.now()) || !openNotice()) return false;
     memory = Date.now();
     try {localStorage.setItem(KEY, String(memory));} catch (_) {}
-    requestAnimationFrame(playWing);
     return true;
   }
   function checkEntry() {
@@ -83,6 +87,28 @@
     dialog.querySelector('.station-note').hidden = false;
   }
   if (!dialog.querySelector('.update') && dialog.querySelector('.station-note').hidden) return;
+  document.querySelectorAll('[data-notice-open]').forEach(button => {
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      const menu = button.closest('details');
+      if (menu) menu.open = false;
+      openNotice(menu ? menu.querySelector('summary') : button);
+    });
+  });
+  let backdropPointer = null;
+  function outside(event) {
+    const rect = dialog.getBoundingClientRect();
+    return event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom);
+  }
+  dialog.addEventListener('pointerdown', event => {
+    backdropPointer = event.isPrimary && event.button === 0 && outside(event) ? event.pointerId : null;
+  });
+  dialog.addEventListener('pointerup', event => {
+    const dismiss = backdropPointer === event.pointerId && outside(event);
+    backdropPointer = null;
+    if (dismiss && dialog.open) dialog.close();
+  });
+  dialog.addEventListener('pointercancel', () => {backdropPointer = null;});
   dialog.querySelectorAll('[data-notice-close]').forEach(button => button.addEventListener('click', () => dialog.close()));
   dialog.addEventListener('close', () => {
     clearTimeout(wingTimer);

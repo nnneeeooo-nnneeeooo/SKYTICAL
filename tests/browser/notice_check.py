@@ -100,6 +100,60 @@ def main():
                 page.locator('.notice-close').click()
                 check(f"{lang}/{width} cross closes overlay", not page.locator('#site-update-notice').is_visible())
                 ctx.close()
+        for theme in ('light', 'dark', '8bit'):
+            for lang, path in (('zh', ''), ('en', 'en/')):
+                for width, height in ((1440, 900), (1280, 800), (1024, 768), (768, 1024), (390, 844), (320, 740)):
+                    phone = width <= 720
+                    label = f'{theme}/{lang}/{width}'
+                    ctx = context(width, height, is_mobile=phone, has_touch=phone)
+                    ctx.add_init_script(f"localStorage.setItem('skytical-8bit-unlocked','true');localStorage.setItem('avwire-theme','{theme}');localStorage.setItem('{KEY}',String(Date.now()));")
+                    page = ctx.new_page(); ready(page, path)
+                    page.locator('[data-notice-open]').wait_for(state='attached')
+                    page.wait_for_timeout(100)
+                    check(label + ' theme applied', page.locator('html').get_attribute('data-theme') == theme)
+                    metrics = page.evaluate("""()=>{
+                        const h=document.querySelector('.header-search-row');
+                        const nodes=innerWidth<=720?[h.querySelector('.mobile-search-brand'),h.querySelector('.header-search-form'),h.querySelector('.mobile-more>summary')]:[h.querySelector('.header-search-form'),...h.querySelectorAll('.header-social-links>a,.header-announcement-button')];
+                        const rects=nodes.map(n=>{const r=n.getBoundingClientRect();return {left:r.left,right:r.right,cy:(r.top+r.bottom)/2,height:r.height};});
+                        return {overflow:h.scrollWidth>h.clientWidth+1,rects,mobile:document.documentElement.classList.contains('mobile-refresh')};
+                    }""")
+                    rects = metrics['rects']
+                    check(label + ' aligned header without overlap', not metrics['overflow'] and max(r['cy'] for r in rects)-min(r['cy'] for r in rects)<2 and all(r['left']>=0 and r['right']<=width and r['height']>=30 for r in rects) and all(rects[i-1]['right']<=rects[i]['left']+1 for i in range(1,len(rects))))
+                    if phone:
+                        check(label + ' current phone layout', metrics['mobile'])
+                        page.locator('.mobile-more>summary').click()
+                    elif theme == '8bit':
+                        check(label + ' single pixel brand', not page.locator('.header-search-row .brand-link').is_visible() and page.locator('.header-search-row .pixel-brand').is_visible())
+                    page.screenshot(path=str(output / f'header-{theme}-{lang}-{width}.png'), clip={'x':0,'y':0,'width':width,'height':190})
+                    old_stamp = page.evaluate(f"localStorage.getItem('{KEY}')")
+                    page.locator('[data-notice-open]').click()
+                    dialog = page.locator('#site-update-notice'); dialog.wait_for(state='visible')
+                    check(label + ' wing visible', page.locator('[data-notice-wing]').is_visible())
+                    check(label + ' manual replay preserves cooldown', page.evaluate(f"localStorage.getItem('{KEY}')") == old_stamp)
+                    pane = page.locator('.notice-copy')
+                    check(label + ' scrollbar hidden with native scrolling', pane.evaluate("el=>getComputedStyle(el).scrollbarWidth==='none'&&getComputedStyle(el).overflowY==='auto'"))
+                    pane.locator('p').first.click()
+                    check(label + ' content click stays open', dialog.is_visible())
+                    scrolled = pane.evaluate("el=>{el.scrollTop=100;return el.scrollHeight<=el.clientHeight||el.scrollTop>0;}")
+                    check(label + ' overflowing content still scrolls', scrolled)
+                    pane.evaluate('el=>el.scrollTop=0')
+                    if width in (1440,390):
+                        page.screenshot(path=str(output / f'notice-{theme}-{lang}-{width}.png'))
+                    if theme == '8bit':
+                        check(label + ' pixel colors and type', dialog.evaluate("el=>getComputedStyle(el).backgroundColor==='rgb(18, 32, 57)'&&getComputedStyle(el).fontFamily.includes('Fusion Pixel')"))
+                    if not phone:
+                        point = pane.locator('p').first.bounding_box()
+                        page.mouse.move(point['x']+5,point['y']+5)
+                        page.mouse.down(); page.mouse.move(2,2); page.mouse.up()
+                        check(label + ' dragging out does not dismiss', dialog.is_visible())
+                    if phone:
+                        page.touchscreen.tap(2,2)
+                    else:
+                        page.mouse.click(2,2)
+                    check(label + ' outside gesture closes dialog', not dialog.is_visible())
+                    focused = page.locator('.mobile-more>summary' if phone else '[data-notice-open]')
+                    check(label + ' focus restored', focused.evaluate('el=>el===document.activeElement'))
+                    ctx.close()
         ctx = context(390, 844, reduced_motion="reduce")
         page = ctx.new_page(); ready(page, "team/")
         page.locator('#site-update-notice').wait_for(state="visible")
