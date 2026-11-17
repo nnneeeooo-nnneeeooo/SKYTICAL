@@ -27,3 +27,9 @@ config/station-note.json 分別維護 messages.zh、messages.en，enabled 可隱
 - node tests/test_update_notice.js：三小時前1毫秒、三小時整、無效及未來時間戳記。
 - python tests/browser/notice_check.py：Chromium實際操作，涵蓋中英文320／390／768／1440px、跨語言／分頁間隔、關閉、捲動、照片、來信連結及減少動態。
 - update-notice-browser workflow 會保存畫面與檢查結果；上線後可手動帶入 https://skytical.tech 驗證正式站。
+
+## 手動開啟與主題
+
+頂列公告按鈕可隨時重看，不受三小時間隔限制，也不改寫自動提醒時間。手機版與社群連結一起位於更多選單。點擊或觸碰遮罩會關閉公告；從內文拖曳到外面不會誤關，關閉後焦點返回原按鈕或手機選單。內容區保留原生捲動並隱藏捲動軸。
+
+header.css共用中英文與裝置尺寸，8bit使用相同的新版手機／平板配置，保留像素字體、方形控制項與深藍金色主題。

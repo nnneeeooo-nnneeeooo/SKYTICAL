@@ -42,3 +42,17 @@ html:has(#site-update-notice[open]){overflow:hidden}
 #site-update-notice button:focus-visible,#site-update-notice a:focus-visible{outline:3px solid var(--color-accent);outline-offset:4px}
 @media(max-width:600px){#site-update-notice{width:calc(100% - 24px);max-height:calc(100dvh - 24px)}#site-update-notice .notice-top{padding:12px 16px 6px;gap:8px}#site-update-notice .notice-heading{font-size:22px;gap:8px}#site-update-notice .team-logo-trigger{font-size:44px}#site-update-notice .notice-copy{padding:8px 24px 12px}#site-update-notice #site-update-description{font-size:14px}#site-update-notice .station-note{padding:13.6px;margin-top:13.6px}#site-update-notice .station-note p{font-size:14px}#site-update-notice .station-portrait{width:80px;margin-left:11.9px}#site-update-notice .update{padding:16px 0}#site-update-notice .update-heading{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:8px}#site-update-notice .update h3{font-size:17px;flex:auto}#site-update-notice .update p{font-size:14px}#site-update-notice .notice-footer{padding:16px 24px 24px;flex-direction:column-reverse;align-items:stretch;gap:18px}#site-update-notice .notice-footer a{text-align:center}#site-update-notice .notice-primary{justify-content:space-between;width:100%}}
 @media(prefers-reduced-motion:no-preference){#site-update-notice button,#site-update-notice a{transition:background-color .15s,transform .15s}}
+
+#site-update-notice .notice-copy{scrollbar-width:none;-ms-overflow-style:none}
+#site-update-notice .notice-copy::-webkit-scrollbar{display:none;width:0;height:0}
+[data-theme="8bit"] #site-update-notice{--notice-surface:#122039;--notice-muted:#c3d3e7;--notice-rule:#405a7a;--notice-ink:#f1edd7;--note-bg:#1b3050;--note-heading:#ffd36d;--date-bg:#3d3529;--date-ink:#ffd36d;--feature:#ffd36d;--feature-bg:#3d3529;--footer-bg:#1b3050;--detail:#c3d3e7;border-top-color:#ffd36d;box-shadow:6px 6px 0 #080f1e}
+[data-theme="8bit"] #site-update-notice .notice-primary{background:#ffd36d;color:#122039}
+[data-theme="8bit"] #site-update-notice,[data-theme="8bit"] #site-update-notice button{font-family:"Fusion Pixel TW","Noto Sans TC",monospace}
+[data-theme="8bit"] #site-update-notice .station-note{border-left-color:#75d8fa}
+[data-theme="8bit"] #site-update-notice .neo-signature{font-family:"Fusion Pixel TW",monospace}
+[data-theme="8bit"] #site-update-notice .neo-signature>span{color:inherit}
+[data-theme="8bit"] #site-update-notice :is(.station-portrait img,.update-date){border-radius:0}
+
+[data-theme="8bit"] #site-update-notice .team-name-logo--classic{content:url("skytical-mark-8bit.svg");image-rendering:pixelated}
+[data-theme="8bit"] #site-update-notice .team-logo-trigger{display:inline-flex}
+[data-theme="8bit"] #site-update-notice .team-name-logo--classic{display:block}

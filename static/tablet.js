@@ -14,7 +14,7 @@
   let active = false;
   let previousNav;
   function update() {
-    const next = tablet.matches && root.dataset.theme !== '8bit';
+    const next = tablet.matches;
     if (next === active) return;
     active = next;
     root.classList.toggle('tablet-portrait', active);
@@ -31,7 +31,7 @@
       nav.classList.toggle('is-open', previousNav.open);
       toggle.setAttribute('aria-expanded', previousNav.expanded);
       toggle.querySelector('.nav-toggle-icon').textContent = previousNav.icon;
-      if (!matchMedia('(max-width: 720px)').matches || root.dataset.theme === '8bit') root.classList.remove('mobile-refresh');
+      if (!matchMedia('(max-width: 720px)').matches) root.classList.remove('mobile-refresh');
     }
   }
   tablet.addEventListener('change', update);

@@ -107,6 +107,7 @@ def static_asset_version() -> str:
         "logo-flight.js",
         "text-spacing.js",
         "update-notice.css",
+        "header.css",
         "update-notice.js",
         "neo-life.jpg",
         "search.js",

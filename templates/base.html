@@ -63,6 +63,7 @@ gtag('config', '{{ ga4_measurement_id }}', {
 <link rel="stylesheet" href="{{ base }}/assets/pixel.css?v={{ asset_version }}">
 <link rel="stylesheet" href="{{ base }}/assets/mobile.css?v={{ asset_version }}">
 <link rel="stylesheet" href="{{ base }}/assets/tablet.css?v={{ asset_version }}">
+<link rel="stylesheet" href="{{ base }}/assets/header.css?v={{ asset_version }}">
 <link rel="alternate" type="application/rss+xml"
       title="{{ t.siteName }} — {{ t.latest }}" href="{{ feed_url }}">
 {% block head_extra %}{% endblock %}
@@ -137,7 +138,15 @@ gtag('config', '{{ ga4_measurement_id }}', {
         </svg>
       </button>
     </form>
-    <nav class="header-social-links" aria-label="{% if lang == 'zh' %}SKYTICAL官方社群{% else %}SKYTICAL social media{% endif %}">
+    <nav class="header-social-links" aria-label="{% if lang == 'zh' %}公告與官方社群{% else %}Announcements and social media{% endif %}">
+      {% if update_notice is defined and (update_notice['items'] or update_notice['station']) %}
+      <button type="button" class="header-announcement-button" data-notice-open hidden
+              title="{% if lang == 'zh' %}公告{% else %}Announcements{% endif %}"
+              aria-label="{% if lang == 'zh' %}開啟公告{% else %}Open announcements{% endif %}"
+              aria-haspopup="dialog" aria-controls="site-update-notice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l10-4v14L8 15H4zM8 15l2 6h3l-2-4.8M21 9v6M4 10H2v4h2"/></svg>
+      </button>
+      {% endif %}
       <a href="https://www.facebook.com/profile.php?id=61595860824748"
          target="_blank" rel="noopener noreferrer" title="SKYTICAL Facebook"
          aria-label="SKYTICAL Facebook{% if lang == 'zh' %}（另開分頁）{% else %} (opens in a new tab){% endif %}">
