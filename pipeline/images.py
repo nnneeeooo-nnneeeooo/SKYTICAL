@@ -76,9 +76,9 @@ HEADERS = {"User-Agent": USER_AGENT}
 
 # Politeness caps per run; scale within a bounded range when due no-image
 # articles accumulate, then back off negative matches while they remain fresh.
-BASE_LOOKUPS_PER_RUN = 6
-MAX_LOOKUPS_PER_RUN = 18
-LOOKUP_BACKLOG_DIVISOR = 3
+BASE_LOOKUPS_PER_RUN = 12
+MAX_LOOKUPS_PER_RUN = 36
+LOOKUP_BACKLOG_DIVISOR = 2
 FAST_RETRY_ATTEMPTS = 3
 RETRY_AFTER_HOURS = 6
 LONG_RETRY_AFTER_HOURS = 24
