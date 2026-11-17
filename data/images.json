@@ -13501,7 +13501,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-17T15:18:08.864734+00:00"
+      "checked_utc": "2026-11-17T16:41:28.098696+00:00"
     },
     "a-china-airlines-q4-eva-india-delhi-20261106": {
       "status": "matched",
@@ -13559,7 +13559,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-17T15:18:08.864734+00:00"
+      "checked_utc": "2026-11-17T16:41:28.098696+00:00"
     },
     "a-faa-skyways-shell-offshore-drone-deliveries-20261111": {
       "status": "none",
@@ -13632,7 +13632,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-17T15:18:08.864734+00:00"
+      "checked_utc": "2026-11-17T16:41:28.098696+00:00"
     },
     "a-white-house-30-billion-aviation-infrastructure-20261114": {
       "status": "matched",
@@ -13679,7 +13679,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-17T15:18:08.864734+00:00"
+      "checked_utc": "2026-11-17T16:41:28.098696+00:00"
     },
     "a-faa-nationwide-ground-stop-20261113": {
       "status": "none",
@@ -13915,7 +13915,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-17T15:18:08.864734+00:00"
+      "checked_utc": "2026-11-17T16:41:28.098696+00:00"
     },
     "a-20261117-industry-roundup-06-image-2": {
       "status": "matched",
@@ -13930,7 +13930,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-17T15:18:08.864734+00:00"
+      "checked_utc": "2026-11-17T16:41:28.098696+00:00"
     },
     "a-20261117-industry-roundup-06-image-3": {
       "status": "matched",
@@ -13999,7 +13999,7 @@
         "kind": "file_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-17T15:18:08.864734+00:00"
+      "checked_utc": "2026-11-17T16:41:28.098696+00:00"
     },
     "a-20261117-1241-starlux-airlines-plans-taipeisydneyauckl": {
       "status": "matched",
@@ -14032,6 +14032,18 @@
         "photoYear": 2026
       },
       "checked_utc": "2026-11-17T13:07:18.298946+00:00"
+    },
+    "a-20261118-industry-roundup-00-image-2": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-photo:source-airline-unverified",
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-17T16:41:28.098696+00:00",
+      "next_retry_utc": "2026-11-17T22:41:28.098696+00:00"
     }
   },
   "sources": {
@@ -17841,6 +17853,12 @@
       "rejection_reason": null,
       "parser_version": 5,
       "next_retry_utc": "2026-11-17T19:07:18.298946+00:00"
+    },
+    "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines": {
+      "image": null,
+      "rejection_reason": "source-airline-unverified",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-17T22:41:28.098696+00:00"
     }
   }
 }
