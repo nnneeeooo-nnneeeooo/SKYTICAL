@@ -1,0 +1,98 @@
+{
+  "articles": [
+    {
+      "id": "a-united-airlines-system-outage-20261116",
+      "articleFormat": "full",
+      "availableLanguages": [
+        "zh",
+        "en"
+      ],
+      "cat": "ops",
+      "checkedUtc": "2026-11-17T08:17:18.551Z",
+      "publishedUtc": "2026-11-17T08:17:18.551Z",
+      "sourcePublishedUtc": "2026-11-16T22:52:00Z",
+      "writer": "scheduled:GPT-6",
+      "writerModels": [
+        "GPT-6"
+      ],
+      "primarySource": "United Airlines / CBS News",
+      "sources": [
+        {
+          "name": "CBS News / Associated Press",
+          "url": "https://www.cbsnews.com/news/united-airlines-system-outage-departing-flights/"
+        },
+        {
+          "name": "Reuters / The Guardian",
+          "url": "https://www.theguardian.com/us-news/2026/nov/16/united-airlines-system-outage"
+        },
+        {
+          "name": "NBC Chicago",
+          "url": "https://www.nbcchicago.com/news/local/united-airlines-experiencing-widespread-system-outage/4017556/"
+        }
+      ],
+      "entities": {
+        "operators": [
+          "United Airlines"
+        ],
+        "aircraft": [],
+        "airports": [],
+        "manufacturers": []
+      },
+      "zh": {
+        "title": "聯合航空全美航班起飛作業遇系統故障　已排除異常、空中航班未受影響",
+        "summary": "聯合航空11月16日出現影響出發航班的資訊系統故障，導致部分航班延誤；業者當晚確認問題已排除，空中航班及United Express未受影響。",
+        "body": [
+          "美國聯合航空（United Airlines）11月16日發生大範圍資訊系統故障，影響航班起飛前的作業並造成部分航班延誤。航空公司當晚表示，技術問題已排除，受影響的主要是準備出發的航班；已在空中飛行的航班及United Express區域航班均未受到影響。",
+          "據美國媒體及路透社報導，聯合航空機師工會內部備忘錄指出，異常涉及機組使用的多項應用程式，以及提供航機最終重量資料的程序。航班在起飛前須完成重量與平衡、性能及航道相關計算，若無法取得必要資料，可能必須延後離場；該備忘錄所述技術細節尚非航空公司公布的完整事故調查結論。",
+          "此次異常發生在美國聯邦航空總署（FAA）11月13日全國性地面停飛事件三天後，但聯合航空的系統問題屬另一起事件。聯合航空表示，目前沒有跡象顯示此次故障與網路攻擊有關；航空公司未公布完整肇因，相關航班延誤的具體總數亦尚待釐清。"
+        ]
+      },
+      "en": {
+        "title": "United Airlines resolves widespread technology outage that delayed US departures",
+        "summary": "United Airlines said it resolved a technology outage on November 16 that disrupted departures, while aircraft already airborne and United Express flights were unaffected.",
+        "body": [
+          "United Airlines said it resolved a widespread technology outage on Monday, November 16, 2026, after the disruption interfered with pre-departure operations and delayed some flights. The carrier said the problem did not affect aircraft already in flight or services operated by United Express.",
+          "An internal memo from the union representing United pilots, cited by Reuters, pointed to failures in applications used by crews and an inability to provide final aircraft weight figures. Such information is necessary for takeoff performance and weight-and-balance calculations. The details in the memo remain distinct from a completed, publicly released technical investigation.",
+          "The disruption came three days after the FAA's separate nationwide ground stop on November 13. United said it had found no indication that the November 16 incident was connected to a cybersecurity issue. The airline has not publicly established a definitive root cause or a final count of delays attributable to the fault."
+        ]
+      },
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/United_Boeing_737-9_MAX_N17425_BWI_MD1.jpg/1280px-United_Boeing_737-9_MAX_N17425_BWI_MD1.jpg",
+        "link": "https://commons.wikimedia.org/wiki/File:United_Boeing_737-9_MAX_N17425_BWI_MD1.jpg",
+        "credit": "Acroterion",
+        "license": "CC BY-SA 4.0",
+        "photoYear": 2026,
+        "provider": "Wikimedia Commons",
+        "kind": "file_photo",
+        "subject": "聯合航空 Boeing 737 MAX 9 客機（2026年資料照）",
+        "description": "United Airlines Boeing 737 MAX 9 N17425 at Baltimore-Washington International Airport, August 13, 2026. Illustrative photo; not an aircraft involved in the November 16 outage.",
+        "curated": true,
+        "matched": "editorial:verified-backlog-20261117"
+      },
+      "editorialImageLocked": true,
+      "scheduledNews": {
+        "version": 1,
+        "eventKey": "united-airlines-technology-outage-20261116",
+        "checkedUtc": "2026-11-17T08:17:18.551Z",
+        "facts": [
+          {
+            "claim": "United Airlines confirmed a widespread technology outage affecting departure flights on November 16, 2026, which it said had been resolved by that evening.",
+            "sourceUrl": "https://www.cbsnews.com/news/united-airlines-system-outage-departing-flights/"
+          },
+          {
+            "claim": "The disruption delayed departures, but the airline said flights already airborne and United Express operations were unaffected.",
+            "sourceUrl": "https://www.nbcchicago.com/news/local/united-airlines-experiencing-widespread-system-outage/4017556/"
+          },
+          {
+            "claim": "A pilots union memo cited inability to supply final aircraft weights to flight crews; the carrier said there was no indication of a cyberattack.",
+            "sourceUrl": "https://www.theguardian.com/us-news/2026/nov/16/united-airlines-system-outage"
+          }
+        ],
+        "modelAttribution": {
+          "kind": "identified_runtime_model",
+          "verifiedRuntimeModel": true
+        }
+      }
+    }
+  ]
+}
