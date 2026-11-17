@@ -78,7 +78,7 @@ HEADERS = {"User-Agent": USER_AGENT}
 # articles accumulate, then back off negative matches while they remain fresh.
 BASE_LOOKUPS_PER_RUN = 12
 MAX_LOOKUPS_PER_RUN = 36
-LOOKUP_BACKLOG_DIVISOR = 2
+LOOKUP_BACKLOG_DIVISOR = 3
 FAST_RETRY_ATTEMPTS = 3
 RETRY_AFTER_HOURS = 6
 LONG_RETRY_AFTER_HOURS = 24
