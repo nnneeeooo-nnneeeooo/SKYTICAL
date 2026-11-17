@@ -2,27 +2,27 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "verified",
-      "untilUtc": "2026-11-16T17:10Z",
-      "checkedUtc": "2026-11-15T17:10Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-17T06:09Z",
+      "checkedUtc": "2026-11-17T00:09Z",
+      "failureClass": "unexpected",
+      "diagnostic": "entity evidence quote not found in current source: locations='Mount Pennsylvania'",
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-16T11:21Z",
-      "checkedUtc": "2026-11-16T05:21Z",
+      "untilUtc": "2026-11-17T06:09Z",
+      "checkedUtc": "2026-11-17T00:09Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-16T11:21Z",
-      "checkedUtc": "2026-11-16T05:21Z",
+      "untilUtc": "2026-11-17T06:09Z",
+      "checkedUtc": "2026-11-17T00:09Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -30,17 +30,17 @@
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
       "status": "waiting",
-      "untilUtc": "2026-11-16T11:21Z",
-      "checkedUtc": "2026-11-16T05:21Z",
+      "checkedUtc": "2026-11-17T00:09Z",
+      "untilUtc": "2026-11-17T06:09Z",
       "failureClass": "unexpected",
-      "diagnostic": "summarySupportedBy references a fact that did not verify",
+      "diagnostic": "entity value '2026-06-13' is not verbatim in its sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-11-16T05:21Z",
       "untilUtc": "2026-11-17T05:21Z",
+      "checkedUtc": "2026-11-16T05:21Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -56,13 +56,13 @@
       "schemaMode": "prompt"
     },
     "gemini:gemini-3.5-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-16T08:40Z",
-      "checkedUtc": "2026-11-15T08:40Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-17T06:09Z",
+      "checkedUtc": "2026-11-17T00:09Z",
+      "failureClass": "unexpected",
+      "diagnostic": "F1 claim adds high-risk atom '13' not present in its own sourceQuote",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     }
   }
 }

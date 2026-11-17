@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-11-15T17:19Z",
-  "targetDateTpe": "2026-11-16",
+  "generatedUtc": "2026-11-17T00:27Z",
+  "targetDateTpe": "2026-11-17",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "provider": "gemini:gemini-3.6-flash",
   "sourceArticleIds": [
-    "a-iata-accident-investigations-final-reports-20261114",
     "a-american-a321-fort-lauderdale-bird-strike-20261113",
     "a-klm-777-amsterdam-rejected-takeoff-20261113",
     "a-ups-767-albuquerque-first-officer-ill-20261113",
     "a-ups-767-copa-737-miami-taxiway-collision-20261115",
-    "a-delta-ceo-heathrow-virgin-atlantic-split-20261114"
+    "a-delta-ceo-heathrow-virgin-atlantic-split-20261114",
+    "a-20261117-industry-roundup-06"
   ],
   "prompts": {
     "zh": [
-      "查詢 Air India 171 調查進度",
-      "美航 A321 鳥擊 返勞德岱堡",
-      "荷航 777 阿姆斯特丹 中斷起飛",
-      "UPS 767 阿布奎基 副機師不適",
-      "UPS 767 與 Copa 737 邁阿密 相撞",
-      "達美 CEO 抗議 希斯洛 分離 維珍"
+      "想了解美航 A321 在勞德岱堡的近況嗎？",
+      "看看荷航波音777在阿姆斯特丹的消息",
+      "搜尋UPS波音767在阿布奎基的相關紀錄",
+      "想了解邁阿密機場的UPS與Copa動態嗎？",
+      "搜尋達美航空與維珍航廈在希斯洛的動態",
+      "想看看菲律賓航空訂購波音787-10的新聞嗎？"
     ],
     "en": [
-      "Check Air India Flight 171 investigation status",
-      "American A321 bird strike return to Fort Lauderdale",
-      "KLM 777 aborted takeoff at Amsterdam",
-      "UPS 767 diverts Albuquerque after first officer ill",
-      "UPS 767 collides with Copa 737 taxiing Miami",
-      "Delta CEO opposes Heathrow split from Virgin Atlantic"
+      "Want to check American A321 at Fort Lauderdale?",
+      "Check KLM Boeing 777 updates at Amsterdam",
+      "Search for UPS Boeing 767 updates in Albuquerque",
+      "Explore UPS and Copa Airlines updates at Miami",
+      "Search Delta Air Lines and Virgin Atlantic at Heathrow",
+      "Looking for Philippine Airlines Boeing 787-10 news?"
     ]
   }
 }
