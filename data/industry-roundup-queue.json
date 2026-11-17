@@ -103,6 +103,314 @@
         }
       },
       "publishedExcerptId": "a-kadena-f15ex-first-permanent-20261115"
+    },
+    {
+      "enqueuedUtc": "2026-11-17T14:56Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261117-1456-3",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261117-1456-middle-east-airlines-receives-its-first",
+        "publishedUtc": "2026-11-17T14:56Z",
+        "cat": "biz",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "中東航空接收首架空中巴士A321XLR客機",
+          "summary": "中東航空接收首架空中巴士A321XLR，客機採雙艙等共160席。",
+          "body": [
+            "黎巴嫩的中東航空（Middle East Airlines，MEA）接收訂購的五架空中巴士A321XLR客機中的首架。交機於2026年11月17日在漢堡附近Finkenwerder（XFW）的製造商設施舉行。",
+            "據AeroTime報導，這架客機的註冊編號為OD-XLR。客機將從交機地點出發，執行飛往貝魯特拉菲克・哈里里國際機場（BEY）的交付航班。",
+            "空中巴士表示，中東航空的A321XLR採雙艙等配置，共有160個座位，其中22席為可全平躺的商務艙座椅，另有138席經濟艙。中東航空曾於2019年巴黎航空展率先為此機型下達確定訂單。"
+          ]
+        },
+        "en": {
+          "title": "Middle East Airlines receives its first Airbus A321XLR aircraft",
+          "summary": "Middle East Airlines receives its first Airbus A321XLR, with 160 seats in two classes.",
+          "body": [
+            "Middle East Airlines (MEA), Lebanon’s national carrier, has taken delivery of the first of five Airbus A321XLR aircraft it has on order. The handover took place on November 17, 2026 at the manufacturer’s facility in Finkenwerder (XFW), near Hamburg.",
+            "According to AeroTime, the newly delivered aircraft is registered OD-XLR. It is due to depart from the handover site on a delivery flight to Beirut’s Rafic-Hariri International Airport (BEY).",
+            "Airbus said MEA’s A321XLR has 160 seats in two classes, including 22 fully lie-flat business-class seats and 138 economy seats. MEA was the first airline to place a firm order for the type at the Paris Air Show in 2019."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — Airbus delivers first A321XLR aircraft to Middle East Airli…",
+            "url": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines"
+          },
+          {
+            "name": "Airbus — Middle East Airlines takes delivery of its first Airbus A32…",
+            "url": "https://www.airbus.com/en/newsroom/press-releases/2026-11-middle-east-airlines-takes-delivery-of-its-first-airbus-a321xlr"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-17T13:37Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "Middle East Airlines, Lebanon’s national carrier, has taken delivery of the first of five Airbus A321XLR aircraft it has on order.",
+            "sourceQuote": "Middle East Airlines (MEA), Lebanon’s national carrier, has taken delivery of the first of five Airbus A321XLR aircraft on order.",
+            "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-11-middle-east-airlines-takes-delivery-of-its-first-airbus-a321xlr",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "The handover occurred on November 17, 2026 at the manufacturer’s facility in Finkenwerder (XFW), near Hamburg.",
+            "sourceQuote": "The handover, which occurred on November 17, 2026, took place at the European aircraft manufacturer’s facility in Finkenwerder (XFW), near Hamburg",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "The aircraft will depart from the Finkenwerder facility on a delivery flight to Beirut’s Rafic-Hariri International Airport (BEY).",
+            "sourceQuote": "facility in Finkenwerder (XFW), near Hamburg, from where the aircraft will depart on its delivery flight to Beirut’s Rafic-Hariri International Airport (BEY)",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "The newly delivered aircraft is registered OD-XLR.",
+            "sourceQuote": "The newly delivered aircraft (registration OD-XLR) is the first of five that the Lebanese carrier has on order.",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "MEA’s A321XLR is configured with 160 seats in two classes, including 22 fully lie-flat business-class seats and 138 economy seats.",
+            "sourceQuote": "MEA’s A321XLR is configured in a comfortable two-class layout with 160 seats, including 22 fully lie-flat business class and 138 economy class seats.",
+            "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-11-middle-east-airlines-takes-delivery-of-its-first-airbus-a321xlr",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "MEA was the first airline to place a firm order for the A321XLR, at the Paris Air Show in 2019.",
+            "sourceQuote": "MEA became the launch customer of the A321XLR after it was the first airline to place a firm order for the type at the Paris Air Show 2019",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "financial_or_order_claim"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "Airbus"
+          ],
+          "airlines": [
+            "Middle East Airlines"
+          ],
+          "aircraft_models": [
+            "Airbus A321XLR"
+          ],
+          "airports": [
+            "Finkenwerder (XFW)",
+            "Beirut’s Rafic-Hariri International Airport (BEY)"
+          ],
+          "locations": [
+            "Lebanon",
+            "Hamburg",
+            "Beirut"
+          ],
+          "registration_numbers": [
+            "OD-XLR"
+          ],
+          "event_dates": [
+            "November 17, 2026",
+            "2019"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "Airbus",
+            "sourceQuote": "Airbus has delivered the first A321XLR aircraft to Lebanese flag carrier Middle East Airlines (MEA).",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines"
+          },
+          {
+            "entityType": "airlines",
+            "value": "Middle East Airlines",
+            "sourceQuote": "Middle East Airlines (MEA), Lebanon’s national carrier",
+            "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-11-middle-east-airlines-takes-delivery-of-its-first-airbus-a321xlr"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "Airbus A321XLR",
+            "sourceQuote": "the first of five Airbus A321XLR aircraft on order",
+            "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-11-middle-east-airlines-takes-delivery-of-its-first-airbus-a321xlr"
+          },
+          {
+            "entityType": "airports",
+            "value": "Finkenwerder (XFW)",
+            "sourceQuote": "facility in Finkenwerder (XFW), near Hamburg",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines"
+          },
+          {
+            "entityType": "airports",
+            "value": "Beirut’s Rafic-Hariri International Airport (BEY)",
+            "sourceQuote": "Beirut’s Rafic-Hariri International Airport (BEY)",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines"
+          },
+          {
+            "entityType": "locations",
+            "value": "Lebanon",
+            "sourceQuote": "Middle East Airlines (MEA), Lebanon’s national carrier",
+            "sourceUrl": "https://www.airbus.com/en/newsroom/press-releases/2026-11-middle-east-airlines-takes-delivery-of-its-first-airbus-a321xlr"
+          },
+          {
+            "entityType": "locations",
+            "value": "Hamburg",
+            "sourceQuote": "facility in Finkenwerder (XFW), near Hamburg",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines"
+          },
+          {
+            "entityType": "locations",
+            "value": "Beirut",
+            "sourceQuote": "Beirut’s Rafic-Hariri International Airport (BEY)",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines"
+          },
+          {
+            "entityType": "registration_numbers",
+            "value": "OD-XLR",
+            "sourceQuote": "The newly delivered aircraft (registration OD-XLR) is the first of five that the Lebanese carrier has on order.",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "November 17, 2026",
+            "sourceQuote": "The handover, which occurred on November 17, 2026",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "2019",
+            "sourceQuote": "at the Paris Air Show 2019",
+            "sourceUrl": "https://www.aerotime.aero/articles/airbus-delivers-first-a321xlr-aircraft-to-middle-east-airlines"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-17T14:56Z",
+      "routeReason": "published_short_excerpt",
+      "sourceGroupId": "",
+      "eventKey": "",
+      "article": {
+        "id": "a-azul-skycourier-petrobras-20261116",
+        "articleFormat": "full",
+        "availableLanguages": [
+          "zh",
+          "en"
+        ],
+        "cat": "biz",
+        "checkedUtc": "2026-11-17T08:17:18.551Z",
+        "publishedUtc": "2026-11-17T08:17:18.551Z",
+        "sourcePublishedUtc": "2026-11-16T22:10:00Z",
+        "writer": "scheduled:GPT-6",
+        "writerModels": [
+          "GPT-6"
+        ],
+        "primarySource": "AeroTime / CNN Brasil",
+        "sources": [
+          {
+            "name": "AeroTime",
+            "url": "https://www.aerotime.aero/articles/azul-cessna-skycourier-amazon-oil-crews"
+          },
+          {
+            "name": "CNN Brasil",
+            "url": "https://www.cnnbrasil.com.br/infra/azul-preve-receber-segundo-skycourier-no-primeiro-semestre-de-2027/"
+          },
+          {
+            "name": "Flightradar24",
+            "url": "https://data.flightradar24.com/data/aircraft/ps-ene"
+          }
+        ],
+        "entities": {
+          "operators": [
+            "Azul Conecta",
+            "Petrobras"
+          ],
+          "aircraft": [
+            "Cessna 408 SkyCourier"
+          ],
+          "airports": [],
+          "manufacturers": [
+            "Cessna"
+          ]
+        },
+        "zh": {
+          "title": "Azul Conecta首架SkyCourier投入亞馬遜營運　與巴西石油公司簽四年運輸合約",
+          "summary": "Azul Conecta首架19座Cessna SkyCourier（PS-ENE）已於11月3日投入服務，協助Petrobras接駁亞馬遜地區員工，部分航段同步對一般旅客售票。",
+          "body": [
+            "巴西藍色航空旗下區域業者Azul Conecta首架Cessna 408 SkyCourier已於11月3日投入營運，機身註冊編號為PS-ENE。根據AeroTime與CNN Brasil報導，該機主要執行與巴西國營石油公司Petrobras簽訂的四年員工運輸合約，服務巴西亞馬遜州的石油及天然氣作業區。",
+            "SkyCourier配置19個旅客座位，較Azul Conecta既有Cessna Grand Caravan的9座運能增加逾一倍。航空公司希望利用這款雙發渦輪螺旋槳飛機，銜接小型Caravan與載客量較大的ATR 72之間的區域運輸需求。依公司向巴西媒體說明的規劃，週五班機將由Carauari經Coari飛往Manaus，週一反向飛行，並在運送石油業員工之餘向一般旅客開放部分座位。",
+            "Azul Conecta表示，預期於2027年上半年接收第二架SkyCourier，並持續評估擴增機隊與新航線的可能性。這項部署反映亞馬遜地區城市間陸路交通受地理條件限制，小型區域航空在員工接駁與公共交通兩方面仍扮演重要角色。"
+          ]
+        },
+        "en": {
+          "title": "Azul Conecta deploys first Cessna SkyCourier on Petrobras services in Brazil",
+          "summary": "Azul Conecta's first 19-seat Cessna SkyCourier, PS-ENE, entered service in November under a four-year Petrobras transport contract in the Brazilian Amazon.",
+          "body": [
+            "Azul Conecta has introduced its first Cessna 408 SkyCourier, registered PS-ENE, into service in Brazil. The 19-seat twin-turboprop began operations on November 3, 2026, supporting a four-year contract to transport Petrobras personnel in the Amazonas region, according to AeroTime and CNN Brasil.",
+            "The SkyCourier offers more than twice the nine-seat capacity of Azul Conecta's Cessna Grand Caravans, allowing the regional subsidiary to serve routes that are growing beyond Caravan demand but remain too thin for an ATR 72. Its planned Friday service from Carauari via Coari to Manaus, with a reverse routing on Mondays, will also offer tickets to members of the public.",
+            "The airline expects to receive a second SkyCourier in the first half of 2027 and is considering additional regional applications. The project highlights the role of small aircraft in connecting remote Amazon communities and supporting industrial transport where ground infrastructure is limited."
+          ]
+        },
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/2021-07-27_CessnaSkyCourier.jpg/1280px-2021-07-27_CessnaSkyCourier.jpg",
+          "link": "https://commons.wikimedia.org/wiki/File:2021-07-27_CessnaSkyCourier.jpg",
+          "credit": "H. Michael Miley",
+          "license": "CC BY-SA 2.0",
+          "photoYear": 2021,
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "subject": "Cessna 408 SkyCourier機型示意照（2021年，非Azul Conecta PS-ENE）",
+          "description": "Cessna 408 SkyCourier model photographed at Oshkosh in July 2021. Illustrative type photo; not Azul Conecta aircraft PS-ENE.",
+          "curated": true,
+          "matched": "editorial:verified-backlog-20261117"
+        },
+        "editorialImageLocked": true,
+        "scheduledNews": {
+          "version": 1,
+          "eventKey": "azul-conecta-first-skycourier-petrobras-20261116",
+          "checkedUtc": "2026-11-17T08:17:18.551Z",
+          "facts": [
+            {
+              "claim": "Azul Conecta entered its first Cessna 408 SkyCourier, registration PS-ENE, into service on November 3, 2026, supporting Petrobras workers in Amazonas.",
+              "sourceUrl": "https://www.aerotime.aero/articles/azul-cessna-skycourier-amazon-oil-crews"
+            },
+            {
+              "claim": "The aircraft has 19 seats, compared with nine seats on the airline's Cessna Grand Caravans; Petrobras agreement spans four years.",
+              "sourceUrl": "https://www.cnnbrasil.com.br/infra/azul-preve-receber-segundo-skycourier-no-primeiro-semestre-de-2027/"
+            },
+            {
+              "claim": "The Carauari-Coari-Manaus route will offer public tickets on Fridays with a Monday return service; a second SkyCourier is expected in the first half of 2027.",
+              "sourceUrl": "https://www.aerotime.aero/articles/azul-cessna-skycourier-amazon-oil-crews"
+            }
+          ],
+          "modelAttribution": {
+            "kind": "identified_runtime_model",
+            "verifiedRuntimeModel": true
+          }
+        }
+      },
+      "publishedExcerptId": "a-azul-skycourier-petrobras-20261116"
     }
   ],
   "history": [
