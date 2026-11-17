@@ -152,6 +152,7 @@ def main():
                         page.mouse.click(2,2)
                     check(label + ' outside gesture closes dialog', not dialog.is_visible())
                     focused = page.locator('.mobile-more>summary' if phone else '[data-notice-open]')
+                    page.wait_for_function("selector=>document.querySelector(selector)===document.activeElement", arg='.mobile-more>summary' if phone else '[data-notice-open]')
                     check(label + ' focus restored', focused.evaluate('el=>el===document.activeElement'))
                     ctx.close()
         ctx = context(390, 844, reduced_motion="reduce")

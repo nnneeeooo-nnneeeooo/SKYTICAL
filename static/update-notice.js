@@ -96,19 +96,28 @@
     });
   });
   let backdropPointer = null;
+  let dismissOnClick = false;
   function outside(event) {
     const rect = dialog.getBoundingClientRect();
     return event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom);
   }
   dialog.addEventListener('pointerdown', event => {
+    dismissOnClick = false;
     backdropPointer = event.isPrimary && event.button === 0 && outside(event) ? event.pointerId : null;
   });
   dialog.addEventListener('pointerup', event => {
-    const dismiss = backdropPointer === event.pointerId && outside(event);
+    dismissOnClick = backdropPointer === event.pointerId && outside(event);
     backdropPointer = null;
-    if (dismiss && dialog.open) dialog.close();
   });
-  dialog.addEventListener('pointercancel', () => {backdropPointer = null;});
+  // Keep the modal present through the synthesized touch click, avoiding click-through.
+  dialog.addEventListener('click', event => {
+    if (dismissOnClick && outside(event) && dialog.open) {
+      event.preventDefault();
+      dialog.close();
+    }
+    dismissOnClick = false;
+  });
+  dialog.addEventListener('pointercancel', () => {backdropPointer = null; dismissOnClick = false;});
   dialog.querySelectorAll('[data-notice-close]').forEach(button => button.addEventListener('click', () => dialog.close()));
   dialog.addEventListener('close', () => {
     clearTimeout(wingTimer);
