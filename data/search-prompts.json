@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-11-17T16:41Z",
+  "generatedUtc": "2026-11-17T17:36Z",
   "targetDateTpe": "2026-11-18",
   "sourceWindow": "month_to_date",
-  "generationMode": "llm",
-  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "generationMode": "deterministic",
+  "provider": null,
   "sourceArticleIds": [
+    "a-20261118-industry-roundup-00",
+    "a-20261117-1241-serbian-air-force-mig-29-crashes-killing",
     "a-20261117-1241-starlux-airlines-plans-taipeisydneyauckl",
-    "a-usaf-f15ex-first-overseas-kadena-japan-20261115",
+    "a-20261117-industry-roundup-18",
     "a-azul-skycourier-amazon-oil-crews-20261116",
-    "a-comac-ce25a-first-piloted-flight-20261114",
-    "a-global-airlines-a380-liquidation-20261112",
-    "a-united-airlines-system-outage-20261116"
+    "a-united-airlines-system-outage-grounds-flights-20261116"
   ],
   "prompts": {
     "zh": [
-      "星宇航空台北雪梨航線",
-      "F-15EX嘉手納基地",
-      "Azul SkyCourier亞馬遜",
-      "商飛 CE-25A 電動機",
-      "Global Airlines A380 清算",
-      "聯合航空系統故障"
+      "搜尋：航空短訊彙整：美軍首批常駐海外F-15EX戰…",
+      "搜尋：塞爾維亞空軍MiG-29戰機墜毀 飛行員罹難",
+      "搜尋：星宇航空規劃2027年3月開航臺北－雪梨－奧…",
+      "搜尋：航空短訊彙整：Azul首架SkyCourie…",
+      "搜尋：Azul首架SkyCourier飛機投入亞馬…",
+      "搜尋：聯合航空系統故障 全美主線航班停飛 問題已排除"
     ],
     "en": [
-      "Search STARLUX Taipei Sydney route",
-      "Find F-15EX at Kadena Air Base",
-      "Track Azul SkyCourier in Amazon",
-      "Explore COMAC CE-25A electric aircraft",
-      "Check Global Airlines A380 status",
-      "Monitor United Airlines outage"
+      "Explore: Aviation briefs: First permanently based US Air…",
+      "Explore: Serbian Air Force MiG-29 crashes, killing pilot",
+      "Explore: STARLUX Airlines plans Taipei–Sydney–Auckland se…",
+      "Explore: Aviation briefs: Azul airline puts first Cessna…",
+      "Explore: Azul airline puts first Cessna SkyCourier to wor…",
+      "Explore: United Airlines system outage grounds mainline f…"
     ]
   }
 }
