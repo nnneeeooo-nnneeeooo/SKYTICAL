@@ -1559,6 +1559,8 @@ def article_image_gallery(raw, candidates):
             photo["url"] = public_asset_url(photo["url"], SITE_ORIGIN, BASE_PATH)
             if photo.get("link"):
                 photo["link"] = public_site_url(photo["link"], SITE_ORIGIN, BASE_PATH)
+            if photo.get("provider") == "SKYTICAL manual upload":
+                photo["provider"] = "SKYTICAL"
             result.append(photo)
     return result
 

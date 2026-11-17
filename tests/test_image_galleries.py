@@ -105,6 +105,11 @@ def test_empty_and_single_image_do_not_create_empty_controls():
             assert soup.select_one("[data-image-fallback]")
 
 
+def test_manual_upload_provider_keeps_existing_public_label():
+    a = dict(story(), image=dict(photo(1), provider="SKYTICAL manual upload"))
+    assert build.prep_article(a)["image"]["provider"] == "SKYTICAL"
+
+
 def test_locked_gallery_is_not_overwritten_by_automatic_job(monkeypatch, tmp_path):
     a = dict(story(), images=[photo(1), photo(2)], image=photo(1), editorialImageLocked=True)
     batch = {"articles": [a]}
