@@ -1658,14 +1658,20 @@ def art_view(a, lang: str):
             "url": f"#roundup-item-{slot.get('item_number', index + 1)}", "image": photo,
             "image_alt": photo["subject"] if photo else "SKYTICAL",
             "image_caption": caption,
-            "kicker": (f"第 {slot.get('item_number', index + 1)} 則短訊 · 配圖 {index + 1}／{len(a['roundup_images'])}" if lang == "zh"
-                       else f"Brief {slot.get('item_number', index + 1)} · Image {index + 1} of {len(a['roundup_images'])}"),
+            "kicker": (f"第 {index + 1}／{len(a['roundup_images'])} 則短訊" if lang == "zh"
+                       else f"Brief {index + 1} of {len(a['roundup_images'])}"),
         })
     v["image_slides"] = []
     if not v["roundup_slides"] and len(a.get("images") or []) > 1:
         for index, image in enumerate(a["images"]):
             photo = localized_image(image, lang)
             caption = _hero_image_caption(photo, lang)
+            kind_labels = {
+                "file_photo": ("資料照片，非本次事件現場", "File photo; not the current event"),
+                "airframe_photo": ("資料照片，非本次事件現場", "File photo; not the current event"),
+                "source_image": ("來源配圖，非本次事件現場照片", "Source image; not a photo of the current event"),
+                "illustration": ("示意／合成圖，非實景照片", "Illustration / composite; not a documentary photo"),
+            }
             if photo.get("kind") in {"file_photo", "airframe_photo", "source_image"}:
                 caption += (" · 資料／來源配圖，非本次事件現場" if lang == "zh"
                             else " · File/source image; not the current event")
@@ -1677,8 +1683,8 @@ def art_view(a, lang: str):
             v["image_slides"].append({
                 "title": photo["subject"], "url": "#article-body", "image": photo,
                 "image_alt": photo["subject"], "image_caption": caption,
-                "kicker": (f"第 {index + 1}／{len(a['images'])} 張配圖" if lang == "zh"
-                           else f"Image {index + 1} of {len(a['images'])}"),
+                "kind_label": kind_labels.get(photo.get("kind"), ("", ""))[0 if lang == "zh" else 1],
+                "model_label": "Image Powered By GPT 6.1 BETA" if photo.get("selectionModel") == "gpt-6.1-terra" else "",
             })
     v.update(
         id=a["id"], cat=a["cat"], tag_class=a["tag_class"],

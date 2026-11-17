@@ -367,7 +367,7 @@ before persistence or reader-facing rendering.
 
 ## data/images.json + article "image"  (written by images.py)
 
-`article.images` is an ordered gallery of at most three verified image objects.
+`article.images` is an ordered gallery of at most five verified image objects.
 Bounded provider searches deduplicate CDN/thumbnail variants and rank event/airframe/model
 relevance. `article.image` mirrors its first image for legacy/feed consumers.
 Industry roundups retain one image per item (at most three per edition) at

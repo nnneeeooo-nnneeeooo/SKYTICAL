@@ -142,7 +142,7 @@ def find_images(article, usage):
     if not candidates:
         return []
     content = [{"type": "input_text", "text":
-        "你是新聞照片審核員。請看每張照片與 Wikimedia 檔名，選出最多三張直接相關且合適的圖片，依關聯程度排序。"
+        "你是新聞照片審核員。請看每張照片與 Wikimedia 檔名，選出最多五張直接相關且合適的圖片，依關聯程度排序。"
         "照片若只是同航空公司的客機，但新聞主題是旅遊業者、活動、觀光或合作，必須拒絕。"
         "不可把舊照片稱為本次現場。若不能確認照片確實呈現新聞的主要人物、地點或活動，"
         "回傳 {\"indices\":[]}；否則回傳 {\"indices\":[整數,...]}，最有關聯者在前，不要為了數量放入不相關圖片。"
@@ -151,7 +151,7 @@ def find_images(article, usage):
                      "year": c["photoYear"]} for i, c in enumerate(candidates)],
                    ensure_ascii=False)}]
     found = []
-    # Keep the existing per-request visual budget; the gallery retains at most three.
+    # Keep the existing per-request visual budget; the gallery retains at most five.
     for offset in range(0, len(candidates), MAX_CANDIDATES):
         chunk = candidates[offset:offset + MAX_CANDIDATES]
         prompt = [{"type": "input_text", "text": content[0]["text"].split(" 候選：")[0] + " 候選：" +

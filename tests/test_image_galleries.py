@@ -44,13 +44,13 @@ def test_body_only_unambiguous_equipment_rejects_wrong_model():
     assert images.find_aircraft_type(a) is None
 
 
-def test_three_best_results_survive_and_event_is_first_without_duplicates():
+def test_five_best_results_survive_and_event_is_first_without_duplicates():
     a = story()
     candidates = [stock(n) for n in range(25)]
     event = dict(stock(99), kind="event_photo", curated=True)
     result = galleries.verified(a, [*candidates, event, deepcopy(candidates[0]),
                                     dict(stock(100), url="javascript:alert(1)")])
-    assert len(result) == 3
+    assert len(result) == 5
     assert result[0]["kind"] == "event_photo"
 
 
@@ -59,7 +59,7 @@ def test_collect_keeps_existing_on_provider_failure_and_takes_all_commons(monkey
     monkeypatch.setattr(source_images, "lookup_source_photos", Mock(side_effect=ValueError("offline")))
     lookup = Mock(return_value=[stock(n) for n in range(1, 14)])
     monkeypatch.setattr(images, "lookup_commons", lookup)
-    assert len(galleries.collect(a)) == 3
+    assert len(galleries.collect(a)) == 5
     assert lookup.call_args.kwargs["all_matches"] is True
 
 
@@ -70,8 +70,9 @@ def test_manual_gallery_bilingual_render_credits_and_cover():
     for lang in ("zh", "en"):
         soup = render(a, lang)
         slides = json.loads(soup.select_one("#hero-candidates").string)
-        assert len(slides) == len(soup.select("[data-hero-index]")) == 3
+        assert len(slides) == len(soup.select("[data-hero-index]")) == 5
         assert soup.select_one("#hero-story-title") is None
+        assert soup.select_one("#hero-story-kicker") is None
         assert slides[0]["image"]["url"] == a["image"]["url"]
         for slide in slides:
             assert "CC BY 4.0" in slide["image_caption"]
@@ -144,4 +145,4 @@ def test_terra_retains_all_visually_approved_images_across_batches(monkeypatch):
     monkeypatch.setattr(terra_images, "_candidates", lambda *_: candidates)
     monkeypatch.setattr(terra_images, "_ask", lambda content, **kw: {
         "indices": list(range(len([c for c in content if c['type'] == 'input_image'])))})
-    assert len(terra_images.find_images(story(), {})) == 3
+    assert len(terra_images.find_images(story(), {})) == 5

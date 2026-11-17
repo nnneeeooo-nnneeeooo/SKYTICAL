@@ -303,6 +303,14 @@
       if (heroImageCaption) heroImageCaption.textContent = isZh ?
         "圖片暫時無法載入，先顯示 SKYTICAL 預設圖片。" :
         "Image temporarily unavailable; showing the SKYTICAL default image.";
+      if (heroCarousel && heroCarousel.hasAttribute("data-article-gallery")) {
+        var description = heroCarousel.querySelector("[data-image-description]");
+        if (description) description.textContent = isZh ?
+          "圖片暫時無法載入，先顯示 SKYTICAL 預設圖片。" :
+          "Image temporarily unavailable; showing the SKYTICAL default image.";
+        heroCarousel.querySelectorAll("[data-image-kind],[data-image-credit],[data-image-license],[data-image-model]")
+          .forEach(function (node) { node.hidden = true; });
+      }
     });
     if (window.matchMedia && window.matchMedia("(max-width: 720px), (max-width: 1100px) and (orientation: portrait)").matches) {
       heroRotationMs = Math.max(heroRotationMs, 10000);
@@ -387,6 +395,20 @@
         if (image && image.link) heroImageSource.href = image.link;
         else heroImageSource.removeAttribute("href");
         heroImageSource.style.visibility = image && image.link ? "visible" : "hidden";
+      }
+      if (heroCarousel && heroCarousel.hasAttribute("data-article-gallery")) {
+        [
+          ["description", image && image.subject], ["kind", image && story.kind_label],
+          ["credit", image && image.credit ? "© " + image.credit : ""],
+          ["license", image && image.license], ["model", image && story.model_label]
+        ].forEach(function (field) {
+          var node = heroCarousel.querySelector("[data-image-" + field[0] + "]");
+          if (node) { node.textContent = field[1] || ""; node.hidden = !field[1]; }
+        });
+        if (heroImageSource) {
+          heroImageSource.hidden = !image || !image.link;
+          heroImageSource.textContent = image && image.provider || (isZh ? "圖片來源" : "Photo source");
+        }
       }
       if (heroKicker) heroKicker.textContent = story.kicker || "";
       if (heroTitle) heroTitle.textContent = story.title || "";

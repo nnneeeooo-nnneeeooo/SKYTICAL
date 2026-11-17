@@ -1,6 +1,6 @@
-"""Select up to three verified results, ranked for article carousels.
+"""Select up to five verified results, ranked for article carousels.
 
-The network budget limits jobs; each article displays at most three photos.
+The network budget limits jobs; each article displays at most five photos.
 Manual galleries use the same `images` list; `image` remains the feed cover.
 """
 from datetime import timedelta
@@ -10,8 +10,8 @@ from common import DATA_DIR, load_json, now_utc, parse_iso, save_json
 from image_selection import image_key, manual_image, prepare_image, rejection_reason, stock_usage
 
 CACHE_PATH = DATA_DIR / "image-galleries.json"
-VERSION = 2
-MAX_IMAGES = 3
+VERSION = 3
+MAX_IMAGES = 5
 JOBS_PER_RUN = 8
 
 
