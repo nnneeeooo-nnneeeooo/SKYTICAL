@@ -121,6 +121,23 @@ def test_locked_gallery_is_not_overwritten_by_automatic_job(monkeypatch, tmp_pat
     assert a == before
 
 
+def test_automatic_gallery_counts_every_photo_for_following_jobs(monkeypatch, tmp_path):
+    from image_selection import image_key
+    a = dict(story(), image=stock(0), images=[stock(0)])
+    b = dict(story(), id="a-gallery-second")
+    batch = {"articles": [a, b]}
+    monkeypatch.setattr(images, "_recent_batches", lambda: [(tmp_path / "batch.json", batch, [a, b])])
+    monkeypatch.setattr(galleries, "CACHE_PATH", tmp_path / "cache.json")
+    def collect(article, usage):
+        if article is b:
+            assert usage[image_key(stock(0))] == 0
+            assert all(usage[image_key(stock(n))] == 1 for n in (1, 2, 3))
+        return [stock(n) for n in (1, 2, 3)]
+    monkeypatch.setattr(galleries, "collect", collect)
+    galleries.main()
+    assert len(a["images"]) == len(b["images"]) == 3
+
+
 def test_terra_retains_all_visually_approved_images_across_batches(monkeypatch):
     candidates = [dict(stock(n), selectionModel=terra_images.MODEL) for n in range(14)]
     monkeypatch.setattr(terra_images, "_queries", lambda _: ["STARLUX A330-900"])

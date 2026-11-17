@@ -124,12 +124,11 @@ def main():
             cache[art_id] = {"version": VERSION, "checkedUtc": now.isoformat(),
                              "retryUtc": (now + timedelta(hours=24 if photos else 6)).isoformat()}
             if photos and (article.get("images") != photos or article.get("image") != photos[0]):
-                old = {image_key(p) for p in [article.get("image"), *(article.get("images") or [])] if p}
+                previous_usage = stock_usage([article])
                 article["images"], article["image"] = photos, photos[0]
                 article.pop("imageSelection", None)
-                for photo in photos:
-                    if image_key(photo) not in old:
-                        usage[image_key(photo)] += 1
+                usage.subtract(previous_usage)
+                usage.update(stock_usage([article]))
                 changed = True
         if adapter.sync() or changed:
             save_json(path, batch)

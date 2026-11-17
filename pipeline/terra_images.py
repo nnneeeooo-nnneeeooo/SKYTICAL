@@ -228,14 +228,13 @@ def main():
             if candidate and (image_key(candidate) != image_key(current)
                               or any(image_key(p) not in {image_key(i) for i in article.get("images") or []}
                                      for p in photos)):
-                if isinstance(current, dict) and current.get("kind") == "file_photo":
-                    old_key = image_key(current)
-                    usage[old_key] = max(0, usage.get(old_key, 0) - 1)
+                previous_usage = stock_usage([article])
                 from image_galleries import verified
                 article["images"] = verified(article, [*photos, *(article.get("images") or []), current])
                 article["image"] = article["images"][0]
                 article.pop("imageSelection", None)
-                usage[image_key(candidate)] += 1
+                usage.subtract(previous_usage)
+                usage.update(stock_usage([article]))
                 attached += 1
                 changed = True
         if adapter.sync() or changed:
