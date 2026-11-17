@@ -64,6 +64,7 @@ gtag('config', '{{ ga4_measurement_id }}', {
 <link rel="stylesheet" href="{{ base }}/assets/mobile.css?v={{ asset_version }}">
 <link rel="stylesheet" href="{{ base }}/assets/tablet.css?v={{ asset_version }}">
 <link rel="stylesheet" href="{{ base }}/assets/header.css?v={{ asset_version }}">
+<link rel="stylesheet" href="{{ base }}/assets/reader-layout.css?v={{ asset_version }}">
 <link rel="alternate" type="application/rss+xml"
       title="{{ t.siteName }} — {{ t.latest }}" href="{{ feed_url }}">
 {% block head_extra %}{% endblock %}
@@ -256,6 +257,7 @@ gtag('config', '{{ ga4_measurement_id }}', {
 {% block body_scripts %}{% endblock %}
 {% include "_update_notice.html" %}
 <script src="{{ base }}/assets/update-notice.js?v={{ asset_version }}" defer></script>
+<script src="{{ base }}/assets/reader-layout.js?v={{ asset_version }}" defer></script>
 <script src="{{ base }}/assets/admin-activate.js?v={{ asset_version }}-admin3" data-base="{{ base }}" defer></script>
 </body>
 </html>
