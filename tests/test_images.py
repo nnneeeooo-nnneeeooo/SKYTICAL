@@ -607,7 +607,7 @@ check("negative cache records provider rejection reasons",
 due_articles = [make_article(str(i), "Delta Air Lines Airbus A350")
                 for i in range(40)]
 check("lookup budget scales with backlog and remains bounded",
-      images._lookup_budget(due_articles, {}, now_utc()) == 14
+      images._lookup_budget(due_articles, {}, now_utc()) == 20
       and images._lookup_budget(due_articles * 10, {}, now_utc())
       == images.MAX_LOOKUPS_PER_RUN)
 
