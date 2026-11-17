@@ -134,34 +134,47 @@ def _candidates(article, queries, usage):
     return found
 
 
-def find_image(article, usage):
+def find_images(article, usage):
     queries = _queries(article)
     if not queries:
-        return None
+        return []
     candidates = _candidates(article, queries, usage)
     if not candidates:
-        return None
+        return []
     content = [{"type": "input_text", "text":
-        "你是新聞照片審核員。請看每張照片與 Wikimedia 檔名，並依新聞內容選最直接相關的一張。"
+        "你是新聞照片審核員。請看每張照片與 Wikimedia 檔名，選出最多五張直接相關且合適的圖片，依關聯程度排序。"
         "照片若只是同航空公司的客機，但新聞主題是旅遊業者、活動、觀光或合作，必須拒絕。"
         "不可把舊照片稱為本次現場。若不能確認照片確實呈現新聞的主要人物、地點或活動，"
-        "回傳 {\"index\":null}；否則回傳 {\"index\":整數}。"
+        "回傳 {\"indices\":[]}；否則回傳 {\"indices\":[整數,...]}，最有關聯者在前，不要為了數量放入不相關圖片。"
         "只輸出 JSON。新聞：" + _article_brief(article) + " 候選：" +
         json.dumps([{"index": i, "title": c["description"],
                      "year": c["photoYear"]} for i, c in enumerate(candidates)],
                    ensure_ascii=False)}]
-    for candidate in candidates:
-        content.append({"type": "input_image", "image_url": candidate["url"],
-                        "detail": "low"})
-    selection = _ask(content, max_output_tokens=2048)
-    index = selection.get("index")
-    if type(index) is not int or not 0 <= index < len(candidates):
-        return None
-    photo = candidates[index]
-    if rejection_reason(article, photo):
-        return None
-    photo["selectionModel"] = MODEL
-    return photo
+    found = []
+    # Keep the existing per-request visual budget; the gallery retains at most five.
+    for offset in range(0, len(candidates), MAX_CANDIDATES):
+        chunk = candidates[offset:offset + MAX_CANDIDATES]
+        prompt = [{"type": "input_text", "text": content[0]["text"].split(" 候選：")[0] + " 候選：" +
+                   json.dumps([{"index": i, "title": c["description"], "year": c["photoYear"]}
+                               for i, c in enumerate(chunk)], ensure_ascii=False)}]
+        prompt.extend({"type": "input_image", "image_url": c["url"], "detail": "low"} for c in chunk)
+        selection = _ask(prompt, max_output_tokens=2048)
+        indices = selection.get("indices", [selection.get("index")])
+        if not isinstance(indices, list):
+            continue
+        for index in indices:
+            if type(index) is int and 0 <= index < len(chunk):
+                photo = chunk[index]
+                if photo not in found and not rejection_reason(article, photo):
+                    found.append(photo)
+    from image_galleries import verified
+    return verified(article, found)
+
+
+def find_image(article, usage):
+    """Compatibility for callers that only need a cover."""
+    photos = find_images(article, usage)
+    return photos[0] if photos else None
 
 
 def main():
@@ -204,20 +217,24 @@ def main():
                 pass
             attempted += 1
             try:
-                candidate = find_image(article, usage)
+                photos = find_images(article, usage)
+                candidate = photos[0] if photos else None
             except (requests.RequestException, RuntimeError, ValueError, KeyError, TypeError) as exc:
                 print(f"terra images: {art_id}: {type(exc).__name__}")
                 candidate = None
             cache[art_id] = {"checked_utc": now.isoformat(),
                              "next_retry_utc": (now + RETRY).isoformat(),
                              "status": "matched" if candidate else "none"}
-            if candidate and image_key(candidate) != image_key(current):
-                if isinstance(current, dict) and current.get("kind") == "file_photo":
-                    old_key = image_key(current)
-                    usage[old_key] = max(0, usage.get(old_key, 0) - 1)
-                article["image"] = candidate
+            if candidate and (image_key(candidate) != image_key(current)
+                              or any(image_key(p) not in {image_key(i) for i in article.get("images") or []}
+                                     for p in photos)):
+                previous_usage = stock_usage([article])
+                from image_galleries import verified
+                article["images"] = verified(article, [*photos, *(article.get("images") or []), current])
+                article["image"] = article["images"][0]
                 article.pop("imageSelection", None)
-                usage[image_key(candidate)] += 1
+                usage.subtract(previous_usage)
+                usage.update(stock_usage([article]))
                 attached += 1
                 changed = True
         if adapter.sync() or changed:

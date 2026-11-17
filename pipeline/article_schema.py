@@ -13,6 +13,7 @@ from copy import deepcopy
 ARTICLE_SCHEMA_VERSION = 1
 
 _OPTIONAL_LIST_FIELDS = (
+    "images",
     "availableLanguages",
     "writerModels",
     "sourceImageCandidates",

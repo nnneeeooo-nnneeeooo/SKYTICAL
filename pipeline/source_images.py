@@ -311,3 +311,55 @@ def lookup_source_photo(article):
     if host == "www.aerotime.aero":
         return parse_aerotime_photo(response.text, url, article)
     return None
+
+
+def lookup_source_photos(article):
+    """Read all supported cited pages and all caption-bound editorial figures.
+
+    Existing parsers still enforce credits, exact-image captions and source
+    identity; sidebar cards, ads and uncaptained thumbnails never become photos.
+    """
+    from image_selection import rejection_reason, image_key
+    found, seen = [], set()
+    for source in article.get("sources") or []:
+        url = source.get("url", "") if isinstance(source, dict) else ""
+        if supported_source({"sources": [{"url": url}]}) != url or not url:
+            continue
+        try:
+            response = requests.get(url, timeout=(5, 15), headers={"User-Agent": USER_AGENT})
+            response.raise_for_status()
+            if response.url.rstrip("/") != url.rstrip("/"):
+                continue
+            html = response.text
+            if official_provider(url):
+                candidates = list(parse_official_photo(html, url))
+            else:
+                soup = BeautifulSoup(html, "html.parser")
+                cna = urlsplit(url).hostname in {"www.cna.com.tw", "cna.com.tw"}
+                selector = "figure.floatImg" if cna else "figure.cs-entry__post-media, figure.wp-block-image"
+                candidates = []
+                for figure in soup.select(selector):
+                    img = figure.find("img")
+                    if not img or not figure.find("figcaption"):
+                        continue
+                    image_url = next((img.get(k) for k in ("src", "data-src", "data-lazy-src")
+                                      if str(img.get(k, "")).startswith("https://")), "")
+                    if not image_url:
+                        continue
+                    fragment = BeautifulSoup(str(figure), "html.parser")
+                    if not cna:
+                        fragment.find("figure")["class"] = ["cs-entry__post-media"]
+                    meta = fragment.new_tag("meta", property="og:image", content=image_url)
+                    fragment.insert(0, meta)
+                    candidate = (parse_cna_photo(str(fragment), url) if cna else
+                                 parse_aerotime_photo(str(fragment), url, article))
+                    if candidate:
+                        candidates.append(candidate)
+            for photo in candidates:
+                key = image_key(photo)
+                if key not in seen and not rejection_reason(article, photo):
+                    found.append(photo)
+                    seen.add(key)
+        except (requests.RequestException, ValueError, TypeError, KeyError):
+            continue
+    return found

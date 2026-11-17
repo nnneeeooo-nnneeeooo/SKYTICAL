@@ -113,7 +113,7 @@ def test_automatic_stages_receive_individual_sources_and_update_every_slot(monke
     # Terra sees only the remaining unfilled item; all manual pictures survive.
     monkeypatch.setenv("OPENAI_API_KEY", "fixture")
     monkeypatch.setattr(terra_images, "CACHE_PATH", tmp_path / "terra.json")
-    monkeypatch.setattr(terra_images, "find_image", lambda ctx, usage: dict(photo(2), selectionModel=terra_images.MODEL))
+    monkeypatch.setattr(terra_images, "find_images", lambda ctx, usage: [dict(photo(2), selectionModel=terra_images.MODEL)])
     terra_images.main()
     assert [i["image"]["url"] for i in a["roundupItems"]] == [photo(n)["url"] for n in (1, 2, 3)]
 

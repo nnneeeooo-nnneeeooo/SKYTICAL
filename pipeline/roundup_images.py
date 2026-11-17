@@ -52,6 +52,7 @@ def context(article, item, index):
             result[lang] = {"title": re.sub(r"^\d+\.\s*", "", heading),
                             "summary": summary, "body": [summary] if summary else []}
     result.update(id=f"{article['id']}-image-{index + 1}", articleFormat="brief",
+                  _galleryLimit=1,
                   publishedUtc=article.get("publishedUtc"),
                   editorialImageLocked=bool(article.get("editorialImageLocked")
                                            or item.get("editorialImageLocked")))
@@ -109,6 +110,7 @@ class ImageBatch:
                 item, job = slot["item"], slot["context"]
                 item.setdefault("imageContext", {k: deepcopy(job[k]) for k in CONTEXT_FIELDS if k in job})
                 job["image"] = deepcopy(slot["image"])
+                job["images"] = deepcopy(item.get("images") or [])
                 if "imageSelection" in item:
                     job["imageSelection"] = deepcopy(item["imageSelection"])
                 self.articles.append(job)
@@ -118,6 +120,8 @@ class ImageBatch:
         parents = {}
         for parent, item, job in self.bindings:
             item["image"] = deepcopy(job.get("image"))
+            if job.get("images") or "images" in item:
+                item["images"] = deepcopy(job.get("images") or [])
             if "imageSelection" in job:
                 item["imageSelection"] = deepcopy(job["imageSelection"])
             else:
