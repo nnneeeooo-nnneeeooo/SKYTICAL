@@ -367,6 +367,17 @@ before persistence or reader-facing rendering.
 
 ## data/images.json + article "image"  (written by images.py)
 
+`article.images` is an ordered gallery of at most three verified image objects.
+Bounded provider searches deduplicate CDN/thumbnail variants and rank event/airframe/model
+relevance. `article.image` mirrors its first image for legacy/feed consumers.
+Industry roundups retain one image per item (at most three per edition) at
+`roundupItems[i].images` and `roundupItems[i].image`, scoped to each item's evidence. `editorialImageLocked`
+protects manual galleries. `subjectEn` supplies the English caption. Every
+gallery image is independently checked again at render time. Multiple images
+reuse the accessible carousel; single images and empty fallbacks remain valid.
+The automatic gallery pass runs after `images.py`; `data/image-galleries.json`
+tracks retry times independently of the original cover lookup cache.
+
 images.py (after write.py) may set article.image =
 {url, link, credit, license, provider,
  kind airframe_photo|file_photo, matched} — an external embed from

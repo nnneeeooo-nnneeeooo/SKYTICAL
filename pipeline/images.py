@@ -461,6 +461,17 @@ def find_aircraft_type(article: dict) -> str | None:
         candidates = _aircraft_types_in_text(text, models)
         if candidates:
             return candidates[0]
+    # A route announcement may name its equipment only in the body. Use that
+    # evidence only when it identifies one unambiguous model, never background
+    # comparisons or a roundup's unrelated aircraft.
+    if article.get("articleFormat") != "roundup":
+        body = " ".join(str(p) for lang in ("zh", "en")
+                        for p in (article.get(lang) or {}).get("body", []))
+        candidates = _aircraft_types_in_text(body, models)
+        canonical = {re.sub(r"^(?:Airbus|Boeing)\s+", "", c, flags=re.I).casefold()
+                     for c in candidates}
+        if len(canonical) == 1:
+            return candidates[0]
     return None
 
 
@@ -694,7 +705,8 @@ def lookup_commons(query: str, require_tokens: list[str],
                    min_year: int | None = None,
                    prefer_recent: bool = False, prefer_landscape: bool = False,
                    required_model: str | None = None,
-                   reject_title_re=None, article=None, usage=None) -> dict | None:
+                   reject_title_re=None, article=None, usage=None,
+                   all_matches=False):
     """First freely-licensed Commons bitmap matching the query.
 
     require_tokens: title tokens used to reject unrelated search results.
@@ -765,7 +777,7 @@ def lookup_commons(query: str, require_tokens: list[str],
             count = (usage or {}).get(image_key(candidate), 0)
             if count >= MAX_STOCK_REUSE:
                 continue
-            if not prefer_recent and not prefer_landscape and not usage:
+            if not all_matches and not prefer_recent and not prefer_landscape and not usage:
                 return candidate
             try:
                 width = int(info.get("width") or 0)
@@ -778,6 +790,8 @@ def lookup_commons(query: str, require_tokens: list[str],
             candidates.append((-count, landscape, resolution,
                                photo_year or 0 if prefer_recent else 0,
                                -int(page.get("index", 99)), candidate))
+    if all_matches:
+        return [row[-1] for row in sorted(candidates, key=lambda row: row[:-1], reverse=True)]
     return max(candidates, key=lambda row: row[:-1])[-1] if candidates else None
 
 
@@ -1085,4 +1099,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    result = main()
+    if result == 0:
+        from image_galleries import main as gallery_main
+        result = gallery_main()
+    sys.exit(result)

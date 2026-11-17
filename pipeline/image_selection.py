@@ -360,10 +360,15 @@ def rejection_reason(article, raw, captions=None):
 
 
 def stock_usage(articles):
-    return Counter(image_key(a["image"]) for a in articles
-                   if isinstance(a.get("image"), dict)
-                   and a["image"].get("kind") == "file_photo"
-                   and not manual_image(a, a["image"]))
+    usage = Counter()
+    for article in articles:
+        seen = set()
+        for image in [article.get("image"), *(article.get("images") or [])]:
+            if (isinstance(image, dict) and image.get("kind") == "file_photo"
+                    and not manual_image(article, image)):
+                seen.add(image_key(image))
+        usage.update(seen)
+    return usage
 
 
 def enforce_recent(articles_dir=None, cache_path=None):

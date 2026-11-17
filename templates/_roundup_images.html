@@ -1,18 +1,20 @@
-{% set slides = a.roundup_slides %}
+{% set slides = a.image_slides or a.roundup_slides %}
 {% set slide = slides[0] %}
 {% set fallback = base ~ '/assets/skytical-social.png?v=' ~ asset_version %}
 <script type="application/json" id="hero-candidates">{{ slides | tojson }}</script>
 <div id="hero-carousel" class="hero-carousel roundup-carousel" role="region"
      aria-roledescription="carousel" data-rotation-ms="2500"
-     aria-label="{% if lang == 'zh' %}航空短訊配圖輪播{% else %}Aviation brief images{% endif %}">
+     aria-label="{% if lang == 'zh' %}新聞配圖輪播{% else %}News image carousel{% endif %}">
   <a id="hero-story-link" class="hero-story" href="{{ slide.url }}" aria-label="{{ slide.title }}">
     <img id="hero-story-image" class="hero-img" src="{{ slide.image.url if slide.image else fallback }}"
          alt="{{ slide.image_alt }}" data-fallback-src="{{ fallback }}" fetchpriority="high" decoding="async"
          {% if not slide.image %}data-image-fallback="true"{% endif %}>
     <div id="hero-image-caption" class="text-muted" style="font-size:11.5px;margin-top:6px;">{{ slide.image_caption }}</div>
-    <div style="margin-top:12px;">
+    <div style="margin-top:{% if a.image_slides %}6px{% else %}12px{% endif %};">
       <span id="hero-story-kicker" class="card-kicker" style="font-size:11px;">{{ slide.kicker }}</span>
+      {% if not a.image_slides %}
       <h2 id="hero-story-title" class="hero-title" aria-live="polite">{{ slide.title }}</h2>
+      {% endif %}
     </div>
   </a>
   <div class="roundup-image-source" style="font-size:11.5px;height:20px;margin-top:6px;">
@@ -20,12 +22,12 @@
        target="_blank" rel="noopener noreferrer">{% if lang == 'zh' %}圖片來源與授權{% else %}Image source and licence{% endif %}</a>
   </div>
   {% if slides|length > 1 %}
-  <button id="hero-prev" class="hero-nav hero-nav--prev" type="button" aria-label="{% if lang == 'zh' %}上一則配圖{% else %}Previous image{% endif %}">‹</button>
-  <button id="hero-next" class="hero-nav hero-nav--next" type="button" aria-label="{% if lang == 'zh' %}下一則配圖{% else %}Next image{% endif %}">›</button>
-  <div id="hero-dots" class="hero-dots" aria-label="{% if lang == 'zh' %}選擇短訊配圖{% else %}Choose a brief image{% endif %}">
+  <button id="hero-prev" class="hero-nav hero-nav--prev" type="button" aria-label="{% if lang == 'zh' %}上一張配圖{% else %}Previous image{% endif %}">‹</button>
+  <button id="hero-next" class="hero-nav hero-nav--next" type="button" aria-label="{% if lang == 'zh' %}下一張配圖{% else %}Next image{% endif %}">›</button>
+  <div id="hero-dots" class="hero-dots" aria-label="{% if lang == 'zh' %}選擇新聞配圖{% else %}Choose a news image{% endif %}">
     {% for slide in slides %}
     <button type="button" class="hero-dot{% if loop.first %} active{% endif %}" data-hero-index="{{ loop.index0 }}"
-            aria-label="{% if lang == 'zh' %}第 {{ loop.index }} 則配圖{% else %}Brief image {{ loop.index }}{% endif %}"
+            aria-label="{% if lang == 'zh' %}第 {{ loop.index }} 張配圖{% else %}Image {{ loop.index }}{% endif %}"
             {% if loop.first %}aria-current="true"{% endif %}></button>
     {% endfor %}
   </div>

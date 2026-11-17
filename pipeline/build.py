@@ -1133,6 +1133,7 @@ def normalize_image(raw_img, titles=()):
             "license": str(raw_img.get("license") or "") or None,
             "provider": str(raw_img.get("provider") or cached.get("provider") or "") or None,
             "subject": subject,
+            "subjectEn": clean_description(raw_img.get("subjectEn")),
             "roundupItemNumber": (raw_img.get("roundupItemNumber")
                                   if type(raw_img.get("roundupItemNumber")) is int else None),
             "selectionModel": ("gpt-6.1-terra"
@@ -1333,7 +1334,7 @@ def prep_article(raw):
     image = normalize_image(selected_image, titles=[
         (raw.get(lang) or {}).get("title") for lang in ("zh", "en")])
     if roundup_slots:
-        image = next(({**slot["image"], "roundupItemNumber": index + 1}
+        image = next(({**slot["image"], "roundupItemNumber": slot.get("item_number", index + 1)}
                       for index, slot in enumerate(roundup_slots) if slot["image"]), None)
     if image:
         image["url"] = public_asset_url(image["url"], SITE_ORIGIN, BASE_PATH)
@@ -1341,6 +1342,9 @@ def prep_article(raw):
             image["link"] = public_site_url(image["link"], SITE_ORIGIN, BASE_PATH)
         if image.get("provider") == "SKYTICAL manual upload":
             image["provider"] = "SKYTICAL"
+    gallery = article_image_gallery(raw, [raw.get("image"), *(raw.get("images") or [])])
+    if gallery and not roundup_slots:
+        image = gallery[0]
     # Feeds use first site publication; source chronology stays separate.
     display_dt = publication_dt
     source_dt = None
@@ -1383,6 +1387,7 @@ def prep_article(raw):
         "cat": cat,
         "tag_class": TAGCLS.get(cat, "tag-neutral"),
         "image": image,
+        "images": gallery,
         "roundup_images": roundup_slots,
         "source": str(raw.get("primarySource") or (sources[0]["name"] if sources else "—")),
         "time": time_label,
@@ -1544,13 +1549,27 @@ def localized_label(value, lang: str):
     return f"Registration {match[1]}" if match else value
 
 
+def article_image_gallery(raw, candidates):
+    from image_galleries import verified
+    result = []
+    for candidate in verified(raw, candidates, IMAGE_CAPTIONS):
+        photo = normalize_image(candidate, titles=[
+            (raw.get(lang) or {}).get("title") for lang in ("zh", "en")])
+        if photo:
+            photo["url"] = public_asset_url(photo["url"], SITE_ORIGIN, BASE_PATH)
+            if photo.get("link"):
+                photo["link"] = public_site_url(photo["link"], SITE_ORIGIN, BASE_PATH)
+            result.append(photo)
+    return result
+
+
 def roundup_image_slots(raw):
     from roundup_images import is_industry, item_images
     from image_selection import prepare_image, rejection_reason
     if not is_industry(raw):
         return []
     result = []
-    for slot in item_images(raw):
+    for index, slot in enumerate(item_images(raw)):
         ctx = slot["context"]
         photo = prepare_image(ctx, slot["image"], IMAGE_CAPTIONS)
         if photo and rejection_reason(ctx, photo, IMAGE_CAPTIONS):
@@ -1560,8 +1579,11 @@ def roundup_image_slots(raw):
             photo["url"] = public_asset_url(photo["url"], SITE_ORIGIN, BASE_PATH)
             if photo.get("link"):
                 photo["link"] = public_site_url(photo["link"], SITE_ORIGIN, BASE_PATH)
-        result.append({"image": photo, "zh": (ctx.get("zh") or {}).get("title", ""),
-                       "en": (ctx.get("en") or {}).get("title", "")})
+        gallery = article_image_gallery(ctx, [slot["image"], *(slot["item"].get("images") or [])])
+        for picture in gallery or [photo]:
+            result.append({"image": picture, "item_number": index + 1,
+                           "zh": (ctx.get("zh") or {}).get("title", ""),
+                           "en": (ctx.get("en") or {}).get("title", "")})
     return result
 
 
@@ -1570,7 +1592,8 @@ def localized_image(image, lang: str):
         return None
     if lang != "en":
         return image
-    return {**image, **{key: localized_label(image.get(key), lang)
+    return {**image, **{key: (image.get("subjectEn") if key == "subject" and image.get("subjectEn")
+                             else localized_label(image.get(key), lang))
                        for key in ("subject", "credit", "provider")}}
 
 
@@ -1630,12 +1653,31 @@ def art_view(a, lang: str):
                         else " · Illustrates this item only, not all events")
         v["roundup_slides"].append({
             "title": slot.get(lang) or slot.get("zh") or slot.get("en") or "",
-            "url": f"#roundup-item-{index + 1}", "image": photo,
+            "url": f"#roundup-item-{slot.get('item_number', index + 1)}", "image": photo,
             "image_alt": photo["subject"] if photo else "SKYTICAL",
             "image_caption": caption,
-            "kicker": (f"第 {index + 1}／{len(a['roundup_images'])} 則短訊" if lang == "zh"
-                       else f"Brief {index + 1} of {len(a['roundup_images'])}"),
+            "kicker": (f"第 {slot.get('item_number', index + 1)} 則短訊 · 配圖 {index + 1}／{len(a['roundup_images'])}" if lang == "zh"
+                       else f"Brief {slot.get('item_number', index + 1)} · Image {index + 1} of {len(a['roundup_images'])}"),
         })
+    v["image_slides"] = []
+    if not v["roundup_slides"] and len(a.get("images") or []) > 1:
+        for index, image in enumerate(a["images"]):
+            photo = localized_image(image, lang)
+            caption = _hero_image_caption(photo, lang)
+            if photo.get("kind") in {"file_photo", "airframe_photo", "source_image"}:
+                caption += (" · 資料／來源配圖，非本次事件現場" if lang == "zh"
+                            else " · File/source image; not the current event")
+            elif photo.get("kind") == "illustration":
+                caption += (" · 示意／合成圖，非實景照片" if lang == "zh"
+                            else " · Illustration / composite; not a documentary photo")
+            if photo.get("selectionModel") == "gpt-6.1-terra":
+                caption += " · Image Powered By GPT 6.1 BETA"
+            v["image_slides"].append({
+                "title": photo["subject"], "url": "#article-body", "image": photo,
+                "image_alt": photo["subject"], "image_caption": caption,
+                "kicker": (f"第 {index + 1}／{len(a['images'])} 張配圖" if lang == "zh"
+                           else f"Image {index + 1} of {len(a['images'])}"),
+            })
     v.update(
         id=a["id"], cat=a["cat"], tag_class=a["tag_class"],
         image=localized_image(a["image"], lang),
@@ -4001,7 +4043,8 @@ def article_structured_data(lang: str, article: dict) -> dict:
         },
     }
     if article.get("image"):
-        article_entity["image"] = [article["image"]["url"]]
+        article_entity["image"] = list(dict.fromkeys(
+            p["url"] for p in [article["image"], *(article.get("images") or [])] if p))
     breadcrumbs = breadcrumb_entity(lang, [
         (L[lang]["siteName"], ""),
         (L[lang]["newsTitle"], "news/"),

@@ -28,7 +28,7 @@
         <span style="margin-left:auto;">{{ t.refreshNote }}</span>
       </div>
     </div>
-    {% if a.roundup_slides %}
+    {% if a.roundup_slides or a.image_slides %}
     {% include '_roundup_images.html' %}
     {% elif a.image %}
     <figure style="margin:0 0 22px;">
@@ -52,7 +52,7 @@
       <figcaption class="text-muted" style="font-size:11.5px;margin-top:6px;">{% if html_lang.startswith('zh') %}暫無可驗證的事件或資料照片，先顯示 SKYTICAL 預設圖片。{% else %}No verified event or file photo is available yet; showing the SKYTICAL default image.{% endif %}</figcaption>
     </figure>
     {% endif %}
-    <div class="article-body" data-article-body
+    <div id="article-body" class="article-body" data-article-body
          data-search-aliases-url="{{ search_aliases_url }}">
       {% if a.body_sections %}
       {% for item in a.body_sections %}
