@@ -47,6 +47,10 @@ def important(group):
 
 def routes(group, providers, alive):
     """Resuming after a yield means that provider did not produce a draft."""
+    from editorial_policy import free_first_enabled
+    if free_first_enabled():
+        yield from (provider for provider in providers if provider in alive)
+        return
     remaining = list(providers)
     failed = set()
     started = time.monotonic()

@@ -13,6 +13,7 @@ from datetime import timedelta
 import requests
 
 from common import DATA_DIR, ROOT, iso_minute, load_json, now_utc, parse_iso, save_json
+from draft_recovery import draft_timeout
 from editorial_policy import is_free_provider
 from providers import (NvidiaProvider, ProviderError, classify_failure,
                        safe_api_error, safe_failure_message)
@@ -23,6 +24,7 @@ PROBE_SECONDS = 180
 # API signatures/prompts change independently of the model ID.
 PROBE_VERSION = 3
 FALLBACK_MODEL = "qwen/qwen3.5-397b-a17b"
+MODEL_QUOTA_PROVIDERS = frozenset({"gemini", "groq"})
 
 
 def load_routes():
@@ -118,7 +120,7 @@ def catalog(provider):
     raise ProviderError("model catalog pagination incomplete")
 
 
-def prepare_routes(providers, now, validate, *, force=False):
+def prepare_routes(providers, now, validate, *, force=False, time_budget=None):
     candidates = list(providers)
     # This hosted NIM fallback receives exactly the same catalog and publication
     # gates as configured routes. Never add subscription/pay-per-call services.
@@ -133,14 +135,21 @@ def prepare_routes(providers, now, validate, *, force=False):
     if not isinstance(fixture, dict) or not fixture.get("items"):
         raise ValueError("missing public provider probe fixture")
     admitted, catalogs, blocked = [], {}, {}
-    for provider in candidates:
+    deadline = time.monotonic() + time_budget if time_budget is not None else float("inf")
+    deferred = 0
+    previous = load_routes()
+    # Probe untested/oldest routes first so early timeouts cannot starve new
+    # candidates. Cached admissions still keep the configured drafting order.
+    probe_order = (sorted(candidates, key=lambda p: previous.get(p.label, {}).get("checkedUtc") or "")
+                   if time_budget is not None else candidates)
+    for provider in probe_order:
         if not is_free_provider(provider) or not getattr(provider, "requires_verification", False):
             admitted.append(provider)
             continue
         if provider.name in blocked:
             record(provider.label, failure=blocked[provider.name], diagnostic="platform cooldown", now=now)
             continue
-        row = load_routes().get(provider.label)
+        row = previous.get(provider.label)
         if not force and row and parse_iso(row["untilUtc"]) > now:
             if row["status"] == "verified":
                 if provider.name == "gemini" and row.get("schemaMode") in {"native", "prompt"}:
@@ -149,22 +158,34 @@ def prepare_routes(providers, now, validate, *, force=False):
             else:
                 print(f"free-probe: {provider.label} waiting until {row['untilUtc']}")
             continue
+        # Leave unchecked candidates for the next run without marking them down.
+        if deadline - time.monotonic() < 30:
+            deferred += 1
+            continue
         try:
-            if provider.name not in catalogs:
+            # Cloudflare's query returns only the requested model.
+            catalog_key = provider.label if provider.name == "cloudflare" else provider.name
+            if catalog_key not in catalogs:
                 try:
-                    catalogs[provider.name] = catalog(provider)
+                    with draft_timeout(deadline - time.monotonic()):
+                        catalogs[catalog_key] = catalog(provider)
                 except (ProviderError, ValueError, TypeError) as exc:
                     # Some services deny catalog access while allowing inference.
                     # A publication probe remains authoritative in that case.
-                    catalogs[provider.name] = None
+                    catalogs[catalog_key] = None
                     print(f"free-probe: {provider.name} catalog unavailable: {safe_failure_message(exc)}")
-            ids = catalogs[provider.name]
+            ids = catalogs[catalog_key]
             if ids is not None and provider.model not in ids:
                 record(provider.label, failure="model_unavailable", diagnostic="model absent from account catalog", now=now)
                 print(f"free-probe: {provider.label} unavailable in account catalog")
                 continue
-            draft, facts = validate(provider, fixture, tries=2,
-                                    deadline=time.monotonic() + 2 * PROBE_SECONDS,
+            started = time.monotonic()
+            if deadline - started < 30:
+                deferred += 1
+                continue
+            tries = 1 if time_budget is not None else 2
+            draft, facts = validate(provider, fixture, tries=tries,
+                                    deadline=min(deadline, started + tries * PROBE_SECONDS),
                                     max_attempt_seconds=PROBE_SECONDS)
             passed = (isinstance(draft, dict) and draft.get("status") in {"publish", "publish_brief"} and bool(facts))
             if not passed:
@@ -177,13 +198,17 @@ def prepare_routes(providers, now, validate, *, force=False):
             print(f"free-probe: {provider.label} publication checks passed")
         except Exception as exc:
             kind = classify_failure(exc)
-            if kind in {"auth", "quota"}:
+            if kind == "auth" or (kind == "quota" and provider.name not in MODEL_QUOTA_PROVIDERS):
                 import provider_health
                 provider_health.mark_failure(provider.name, kind, now)
                 blocked[provider.name] = kind
+                admitted = [candidate for candidate in admitted if candidate.name != provider.name]
             record(provider.label, failure=kind, diagnostic=str(exc), now=now)
             print(f"free-probe: {provider.label} failed: {safe_failure_message(exc)}")
-    return admitted
+    if deferred:
+        print(f"free-probe: deferred {deferred} unchecked routes to the next hourly run")
+    admitted_labels = {provider.label for provider in admitted}
+    return [provider for provider in candidates if provider.label in admitted_labels]
 
 
 def main():

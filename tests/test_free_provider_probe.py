@@ -60,6 +60,27 @@ def main():
         assert [x.model for x in result] == [nim.model, probe.FALLBACK_MODEL, paid.model]
         assert attempted == result, 'added free fallback remains in usage accounting'
         assert all(call[1] == 'free-provider-probe-h140-v1' for call in calls)
+        cf_routes = [providers.CloudflareProvider(model) for model in (
+            '@cf/openai/gpt-oss-120b', '@cf/qwen/qwen3.8-27b')]
+        with patch.object(probe, 'catalog', side_effect=lambda route: {route.model}) as lookup:
+            assert probe.prepare_routes(cf_routes, now, validate, force=True) == cf_routes
+            assert lookup.call_count == 2, 'Cloudflare search is specific to each model'
+            new = providers.GeminiProvider('gemini-4-hydrogen')
+            assert probe.prepare_routes([new, *cf_routes, paid], now, validate, time_budget=0) == [*cf_routes, paid]
+            assert new.label not in probe.load_routes(), 'deferred checks do not quarantine the route'
+            assert lookup.call_count == 2
+        next_now = now + timedelta(hours=25)
+        elapsed = 0
+
+        def validate_slowly(*args, **kwargs):
+            nonlocal elapsed
+            elapsed = 75
+            return validate(*args, **kwargs)
+
+        with patch.object(probe, 'catalog', side_effect=lambda route: {route.model}), \
+                patch.object(probe.time, 'monotonic', side_effect=lambda: elapsed):
+            result = probe.prepare_routes([*cf_routes, new, paid], next_now, validate_slowly, time_budget=75)
+        assert result == [new, paid], 'never-checked models get a turn before expired routes'
     pages = [response(200, {'models':[
         {'name':'models/'+p.model, 'supportedGenerationMethods':['generateContent']},
         {'name':'models/embedding-only', 'supportedGenerationMethods':['embedContent']}],

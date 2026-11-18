@@ -5,6 +5,7 @@ output and persisted priority flags cannot grant paid fallback permission.
 """
 from __future__ import annotations
 
+import os
 import re
 from dataclasses import dataclass
 
@@ -230,11 +231,22 @@ def is_free_provider(provider):
     if name in {"nvidia", "groq", "cloudflare"}:
         return True
     if name == "gemini":
-        return getattr(provider, "model", "") in {"gemini-3.6-flash", "gemini-3.5-flash"}
+        from model_config import FREE_DRAFT_GOOGLE_MODELS
+        return getattr(provider, "model", "") in FREE_DRAFT_GOOGLE_MODELS
     return name == "openrouter" and str(getattr(provider, "model", "")).endswith(":free")
 
 
+def free_first_enabled():
+    return os.environ.get("AVWIRE_FREE_FIRST", "").lower() == "true"
+
+
 def eligible_providers(group, providers):
+    if free_first_enabled():
+        from model_config import OPENAI_DEFAULT_MODEL
+        free = [provider for provider in providers if is_free_provider(provider)]
+        terra = next((provider for provider in providers
+                      if provider.name == "openai" and provider.model == OPENAI_DEFAULT_MODEL), None)
+        return free + ([terra] if terra is not None else [])
     if news_policy(group).paid_allowed:
         return list(providers)
     from luna_editorial import enabled

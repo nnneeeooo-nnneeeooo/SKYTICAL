@@ -94,6 +94,12 @@ MODEL_PROFILES: dict = {
     # Gemini thinking is high for fact-sensitive bilingual drafting. Format
     # repair remains minimal because that call may only fix JSON syntax.
     # Temperature is intentionally omitted: Gemini 3.x uses its tuned default.
+    "gemini-4-hydrogen": {
+        "generationConfig": {"maxOutputTokens": 16384,
+                             "thinkingConfig": {"thinkingLevel": "medium"}},
+        "repairGenerationConfig": {"maxOutputTokens": 8192,
+                                   "thinkingConfig": {"thinkingLevel": "low"}},
+    },
     "gemini-3.6-flash": {
         "generationConfig": {"maxOutputTokens": 16384,
                              "thinkingConfig": {"thinkingLevel": "high"}},
@@ -533,7 +539,8 @@ class GeminiProvider:
         self.model = (model or os.environ.get("AVWIRE_GEMINI_MODEL")
                       or GEMINI_DEFAULT_MODEL)
         self.label = f"{self.name}:{self.model}"
-        self.json_schema_mode = "native"
+        self.json_schema_mode = ("prompt" if self.model in {
+            "gemini-4-hydrogen", "gemma-4-31b-it", "gemma-4-26b-a4b-it"} else "native")
         self.http_calls = 0  # real API spend incl. format-repair calls
         self.repair_calls = 0
         self.http_duration_ms = 0
@@ -1742,14 +1749,14 @@ def _is_fallback_route(token: str) -> bool:
     return openai_runtime_model(selected.strip().lower()) == OPENAI_DEFAULT_MODEL
 
 
-def build_providers() -> list:
+def build_providers(*, default_order=DEFAULT_ORDER) -> list:
     """Instantiate available providers in AVWIRE_PROVIDER_ORDER order.
 
     A token is either a platform name ("nvidia") or a pinned model
     ("nvidia:nvidia/nemotron-3-ultra-550b-a55b"); the same platform may
     appear multiple times with different models.
     """
-    order = os.environ.get("AVWIRE_PROVIDER_ORDER") or DEFAULT_ORDER
+    order = os.environ.get("AVWIRE_PROVIDER_ORDER") or default_order
     providers, seen = [], set()
     tokens = order.split(",")
     # Environment overrides (for example the Copilot workflow variable) may
