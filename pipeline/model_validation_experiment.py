@@ -53,6 +53,9 @@ def main():
         print(f"experiment unavailable: {configured} (credential is unavailable)")
         return
     provider = providers[0]
+    gemma_with_token_limit = configured == "gemini:gemma-4-31b-it"
+    if gemma_with_token_limit:
+        provider.json_schema_mode = "prompt"  # The first run rejected native schema.
     try:
         ids = probe.catalog(provider)
     except Exception as exc:
@@ -76,6 +79,8 @@ def main():
         except (requests.RequestException, StopIteration, ValueError) as exc:
             print(f"experiment source unavailable: {story[0]} ({type(exc).__name__})")
         else:
+            if gemma_with_token_limit:
+                time.sleep(65)  # Google lists a 16K input-token/minute limit for this project.
             run_case(provider, fixture)
 
 

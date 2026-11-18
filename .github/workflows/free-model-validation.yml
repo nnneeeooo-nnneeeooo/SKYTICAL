@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
     inputs:
       provider_order:
-        description: '僅驗證指定免費路由（留空使用完整清單）'
+        description: '測試分支專用。輸入 JSON 路由陣列，留空測試 Gemma 4 31B'
         required: false
         type: string
 
@@ -27,20 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        route:
-          - 'gemini:gemini-4-hydrogen'
-          - 'gemini:gemini-3.8-flash'
-          - 'gemini:gemini-3.5-flash-lite'
-          - 'gemini:gemma-4-31b-it'
-          - 'gemini:gemini-3.6-flash'
-          - 'cloudflare:@cf/qwen/qwen3.8-27b'
-          - 'cloudflare:@cf/google/gemma-4-26b-a4b-it'
-          - 'nvidia:deepseek-ai/deepseek-v4.1-flash'
-          - 'nvidia:z-ai/glm-5.3-flash'
-          - 'nvidia:mistralai/mistral-large-4-1t-a52b'
-          - 'nvidia:nvidia/nemotron-3-ultra-550b-a55b'
-          - 'openrouter:inclusionai/ling-3.2-flash:free'
-          - 'openrouter:google/gemma-4-31b-it:free'
+        route: ${{ fromJSON(inputs.provider_order || '["gemini:gemma-4-31b-it"]') }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
