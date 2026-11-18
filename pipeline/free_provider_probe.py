@@ -137,14 +137,19 @@ def prepare_routes(providers, now, validate, *, force=False, time_budget=None):
     admitted, catalogs, blocked = [], {}, {}
     deadline = time.monotonic() + time_budget if time_budget is not None else float("inf")
     deferred = 0
-    for provider in candidates:
+    previous = load_routes()
+    # Probe untested/oldest routes first so early timeouts cannot starve new
+    # candidates. Cached admissions still keep the configured drafting order.
+    probe_order = (sorted(candidates, key=lambda p: previous.get(p.label, {}).get("checkedUtc") or "")
+                   if time_budget is not None else candidates)
+    for provider in probe_order:
         if not is_free_provider(provider) or not getattr(provider, "requires_verification", False):
             admitted.append(provider)
             continue
         if provider.name in blocked:
             record(provider.label, failure=blocked[provider.name], diagnostic="platform cooldown", now=now)
             continue
-        row = load_routes().get(provider.label)
+        row = previous.get(provider.label)
         if not force and row and parse_iso(row["untilUtc"]) > now:
             if row["status"] == "verified":
                 if provider.name == "gemini" and row.get("schemaMode") in {"native", "prompt"}:
@@ -202,7 +207,8 @@ def prepare_routes(providers, now, validate, *, force=False, time_budget=None):
             print(f"free-probe: {provider.label} failed: {safe_failure_message(exc)}")
     if deferred:
         print(f"free-probe: deferred {deferred} unchecked routes to the next hourly run")
-    return admitted
+    admitted_labels = {provider.label for provider in admitted}
+    return [provider for provider in candidates if provider.label in admitted_labels]
 
 
 def main():

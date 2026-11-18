@@ -69,6 +69,11 @@ def main():
             assert probe.prepare_routes([new, *cf_routes, paid], now, validate, time_budget=0) == [*cf_routes, paid]
             assert new.label not in probe.load_routes(), 'deferred checks do not quarantine the route'
             assert lookup.call_count == 2
+        next_now = now + timedelta(hours=25)
+        with patch.object(probe, 'catalog', side_effect=lambda route: {route.model}), \
+                patch.object(probe.time, 'monotonic', side_effect=[0, 0, 0, 0, 100, 100]):
+            result = probe.prepare_routes([*cf_routes, new, paid], next_now, validate, time_budget=75)
+        assert result == [new, paid], 'never-checked models get a turn before expired routes'
     pages = [response(200, {'models':[
         {'name':'models/'+p.model, 'supportedGenerationMethods':['generateContent']},
         {'name':'models/embedding-only', 'supportedGenerationMethods':['embedContent']}],
