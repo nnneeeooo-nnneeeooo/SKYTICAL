@@ -251,6 +251,12 @@ def main() -> None:
         assert 'hreflang="zh-Hant-TW"' in team and 'hreflang="en"' in team
         soup = BeautifulSoup(team, "html.parser")
         assert soup.select_one("#team-name").get_text(strip=True) == "neo"
+        signature = soup.select_one("#team-name .team-name-signature")
+        assert [letter.get_text() for letter in signature.select("span")] == list("neo")
+        wordmarks = soup.select(".team-lead .team-brand-signature")
+        assert len(wordmarks) == (2 if lang == "zh" else 1)
+        assert all([part.get_text() for part in mark.select("span")] ==
+                   ["SKY", "TI", "CAL"] for mark in wordmarks)
         name_logos = soup.select("#team-name img")
         assert len(name_logos) == 2
         assert "/assets/skytical-team-mark.svg?v=" in name_logos[0]["src"]
@@ -293,7 +299,7 @@ def main() -> None:
                    for entity in _schema_entities(team))
     assert "創辦人・營運與維護顧問" in (
         ROOT / "site/team/index.html").read_text(encoding="utf-8")
-    assert "我是<strong>neo，</strong>歡迎來到SKYTICAL。" in (
+    assert '我是<strong>neo，</strong>歡迎來到<span class="team-brand-signature">' in (
         ROOT / "site/team/index.html").read_text(encoding="utf-8")
     assert "與我聯絡．找尋合作" in (
         ROOT / "site/team/index.html").read_text(encoding="utf-8")
