@@ -162,3 +162,54 @@
 .team-inline-logo.team-name-logo--pixel { display: none; }
 [data-theme="8bit"] .team-inline-logo.team-name-logo--classic { display: none; }
 [data-theme="8bit"] .team-inline-logo.team-name-logo--pixel { display: inline-block; }
+
+/* Compact spacing: preserve the live page's typography, colours, borders,
+   image crop, grid proportions, breakpoints, content and reading order. */
+.team-page { padding-top: 24px; padding-bottom: 40px; }
+.team-page .team-header { margin-bottom: 24px; }
+.team-page .team-hero { row-gap: 20px; }
+.team-page .team-introduction { padding-top: 12px; }
+.team-page .team-introduction h2 { margin-bottom: 16px; }
+.team-page .team-role { margin-bottom: 16px; }
+.team-page .team-lead { line-height: 1.8; }
+.team-page .team-portrait figcaption { margin-top: 8px; }
+.team-page .team-contact { padding-top: 16px; }
+.team-page .team-contact h3 { margin-bottom: 8px; }
+.team-page .team-contact a { padding-block: 10px; min-height: 44px; }
+.team-page .team-story { margin-top: 40px; }
+.team-page .team-chapter { padding-block: 24px; row-gap: 14px; }
+.team-page .team-chapter p { margin-bottom: 14px; line-height: 1.85; }
+.team-page .team-chapter p:last-child { margin-bottom: 0; }
+.team-page .team-closing { margin-top: 16px; padding-block: 20px; gap: 12px 32px; }
+@media (max-width: 760px) {
+  .team-page { padding-top: 20px; padding-bottom: 32px; }
+  .team-page .team-header { margin-bottom: 20px; }
+  .team-page .team-hero { row-gap: 20px; }
+  .team-page .team-introduction { padding-top: 4px; }
+  .team-page .team-introduction h2 { margin-bottom: 12px; }
+  .team-page .team-role { margin-bottom: 14px; }
+  .team-page .team-contact { padding-top: 14px; }
+  .team-page .team-story { margin-top: 28px; }
+  .team-page .team-chapter { padding-block: 20px; row-gap: 12px; }
+  .team-page .team-chapter p { margin-bottom: 12px; line-height: 1.85; }
+  .team-page .team-closing { margin-top: 12px; padding-block: 18px; gap: 10px; }
+}
+
+/* Reuse the announcement signature colours for the founder and inline site names. */
+.team-page .team-lead .team-brand-signature {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: Archivo, system-ui, sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 1.08em;
+  letter-spacing: -.025em;
+}
+.team-brand-signature > span:nth-child(1), .team-name-signature > span:nth-child(1) { color: #c31122; }
+.team-brand-signature > span:nth-child(2), .team-name-signature > span:nth-child(2) { color: #eb6328; }
+.team-brand-signature > span:nth-child(3), .team-name-signature > span:nth-child(3) { color: #f8c139; }
+[data-theme="8bit"] .team-page .team-brand-signature { font-family: "Fusion Pixel TW", monospace; }
+[data-theme="8bit"] .team-brand-signature > span { color: inherit; }
+
+.team-name-signature { white-space: nowrap; font-style: italic; }
+[data-theme="8bit"] .team-name-signature > span { color: inherit; }

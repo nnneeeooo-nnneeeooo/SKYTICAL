@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% macro team_wordmark(text) -%}
+  {%- for part in text.split('SKYTICAL') -%}
+    {%- if not loop.first -%}<span class="team-brand-signature"><span>SKY</span><span>TI</span><span>CAL</span></span>{%- endif -%}{{- part -}}
+  {%- endfor -%}
+{%- endmacro %}
 {% block head_extra %}
 <link rel="stylesheet" href="{{ base }}/assets/team.css?v={{ asset_version }}">
 <script src="{{ base }}/assets/team-logo.js?v={{ asset_version }}" defer></script>
@@ -29,14 +34,14 @@
             </span>
           </button>
           <img class="team-name-logo team-name-logo--pixel" src="{{ base }}/assets/skytical-mark-8bit.svg?v={{ asset_version }}" width="88" height="88" alt="" aria-hidden="true">
-          <span>{{ team.name }}</span>
+          <span class="team-name-signature">{% for letter in team.name %}<span>{{ letter }}</span>{% endfor %}</span>
         </h2>
         <p class="team-role">{{ team.role }}</p>
         <p class="team-lead">
           {%- if lang == 'zh' -%}
           {%- set intro = team.intro.partition(team.name ~ '，') -%}
-          {{- intro[0] -}}<strong>{{ intro[1] }}</strong>{{ intro[2] }}
-          {%- else -%}{{ team.intro }}{%- endif -%}
+          {{- team_wordmark(intro[0]) -}}<strong>{{ intro[1] }}</strong>{{ team_wordmark(intro[2]) }}
+          {%- else -%}{{ team_wordmark(team.intro) }}{%- endif -%}
         </p>
 
       </div>
