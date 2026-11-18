@@ -56,6 +56,9 @@ def main():
     gemma_with_token_limit = configured == "gemini:gemma-4-31b-it"
     if gemma_with_token_limit:
         provider.json_schema_mode = "prompt"  # The first run rejected native schema.
+    if configured == "gemini:gemini-4-hydrogen":
+        provider.reasoning_tier = "standard"  # Gemini uses medium instead of Hydrogen's default high.
+        provider.json_schema_mode = "prompt"
     try:
         ids = probe.catalog(provider)
     except Exception as exc:
