@@ -12,8 +12,8 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-17T18:41Z",
-      "checkedUtc": "2026-11-17T12:41Z",
+      "untilUtc": "2026-11-18T12:07Z",
+      "checkedUtc": "2026-11-18T06:07Z",
       "failureClass": "unexpected",
       "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
@@ -21,10 +21,10 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-17T18:41Z",
-      "checkedUtc": "2026-11-17T12:41Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 413 request too large token_limit=8000 requested_tokens=9705",
+      "checkedUtc": "2026-11-18T06:07Z",
+      "untilUtc": "2026-11-18T12:07Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-11-17T12:41Z",
       "untilUtc": "2026-11-18T12:41Z",
+      "checkedUtc": "2026-11-17T12:41Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
