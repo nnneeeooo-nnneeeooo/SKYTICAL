@@ -215,7 +215,8 @@ jobs:
           python pipeline/airport_codes.py
           python pipeline/image_captions.py
           python pipeline/images.py
-          python pipeline/terra_images.py
+          # Terra-assisted image selection is temporarily paused at Kass's request.
+          # Existing images and the other automatic image stages remain enabled.
           python pipeline/image_fallbacks.py
           python tests/test_image_captions.py
           python pipeline/image_qa.py
