@@ -560,6 +560,520 @@
       "writer": "rules:published-news-roundup",
       "generationMode": "published-news-compilation",
       "sourcePublishedUtc": "2026-11-17T15:33Z"
+    },
+    {
+      "id": "a-20261118-0629-us-lawmakers-reach-civil-aircraft-traffi",
+      "publishedUtc": "2026-11-18T06:29Z",
+      "cat": "mil",
+      "primarySource": "AeroTime",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "美國議員就部分民用航空器攜帶交通資訊接收設備達原則協議 軍機設備要求未定",
+        "summary": "美國議員就部分民用航空器攜帶交通資訊接收設備達原則協議，仍待國會批准。",
+        "body": [
+          "美國議員於2026年11月17日就航空安全立法達成原則協議，擬要求已受ADS-B Out規範的民用航空器攜帶設備，協助飛行員辨識附近航空交通。這項立法由華盛頓特區附近的一起致命相撞事故促成。",
+          "提案以ADS-B In接收設備為核心，可讓航空器接收周邊交通資訊。軍用航空器的要求仍未定案，協議還須經美國國會批准。",
+          "2025年1月29日，美國航空5342號班機與美國陸軍Black Hawk直升機相撞；該班機由PSA Airlines以CRJ700執飛，機上64人全數罹難，直升機另有3名機組員死亡。兩機碰撞地點位於華盛頓雷根國家機場（DCA）附近的波多馬克河上空。"
+        ]
+      },
+      "en": {
+        "title": "US lawmakers reach civil aircraft traffic receiver deal in principle; military rules unresolved",
+        "summary": "US lawmakers reach a civil aircraft traffic receiver deal in principle, pending congressional approval.",
+        "body": [
+          "On November 17, 2026, US lawmakers reached an agreement in principle on a requirement for civilian aircraft already subject to ADS-B Out rules to carry equipment helping pilots identify nearby traffic. The aviation safety legislation was prompted by a fatal collision between an American Airlines regional jet and a US Army helicopter near Washington, DC.",
+          "The proposal centers on Automatic Dependent Surveillance-Broadcast In, or ADS-B In, which lets aircraft receive information about surrounding traffic. Requirements for military aircraft remain unresolved, and the agreement still needs congressional approval.",
+          "The January 29, 2025, collision killed all 64 people aboard American Airlines Flight 5342, a CRJ700 operated by PSA Airlines, and three crew members aboard the Army Black Hawk. The two aircraft collided over the Potomac River near Ronald Reagan Washington National Airport (DCA)."
+        ]
+      },
+      "sources": [
+        {
+          "name": "AeroTime — US lawmakers reach aircraft safety deal after fatal Washing…",
+          "url": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-11-17T22:04Z",
+      "writer": "openai:gpt-6.1-terra",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "On November 17, 2026, US lawmakers reached an agreement in principle to require civilian aircraft already subject to ADS-B Out rules to carry equipment helping pilots identify nearby traffic, advancing legislation prompted by a fatal collision between an American Airlines regional jet and a US Army helicopter near Washington, DC.",
+          "sourceQuote": "US lawmakers reached an agreement in principle on November 17, 2026, to require civilian aircraft already subject to ADS-B Out rules to carry equipment that helps pilots identify nearby traffic, advancing aviation safety legislation prompted by the fatal collision between an American Airlines regional jet and a US Army helicopter near Washington, DC.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The proposal centers on ADS-B In, which allows aircraft to receive information about surrounding traffic.",
+          "sourceQuote": "The proposal centers on Automatic Dependent Surveillance-Broadcast In, or ADS-B In, which allows aircraft to receive information about surrounding traffic.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Requirements for military aircraft remain unresolved.",
+          "sourceQuote": "Requirements for military aircraft remain unresolved.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The agreement still requires congressional approval.",
+          "sourceQuote": "The agreement still requires congressional approval.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The January 29, 2025, collision killed all 64 people aboard American Airlines Flight 5342, a PSA Airlines-operated CRJ700, and three crew members aboard the Army Black Hawk.",
+          "sourceQuote": "The January 29, 2025, collision killed all 64 people aboard American Airlines Flight 5342, a PSA Airlines-operated CRJ700, and three crew members aboard the Army Black Hawk.",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The aircraft collided over the Potomac River near Ronald Reagan Washington National Airport (DCA).",
+          "sourceQuote": "The aircraft collided over the Potomac River near Ronald Reagan Washington National Airport (DCA).",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [
+        "accident_or_serious_incident",
+        "casualties_or_injuries",
+        "regulatory_action",
+        "unconfirmed_or_developing"
+      ],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "US Army",
+          "Congress"
+        ],
+        "airlines": [
+          "American Airlines",
+          "PSA Airlines"
+        ],
+        "aircraft_models": [
+          "CRJ700",
+          "Black Hawk"
+        ],
+        "airports": [
+          "Ronald Reagan Washington National Airport"
+        ],
+        "locations": [
+          "Washington, DC",
+          "Potomac River"
+        ],
+        "flight_numbers": [
+          "Flight 5342"
+        ],
+        "event_dates": [
+          "November 17, 2026",
+          "January 29, 2025"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "US Army",
+          "sourceQuote": "a US Army helicopter near Washington, DC",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "organizations",
+          "value": "Congress",
+          "sourceQuote": "Congress would pass the legislation",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "airlines",
+          "value": "American Airlines",
+          "sourceQuote": "American Airlines Flight 5342",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "airlines",
+          "value": "PSA Airlines",
+          "sourceQuote": "a PSA Airlines-operated CRJ700",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "CRJ700",
+          "sourceQuote": "a PSA Airlines-operated CRJ700",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "aircraft_models",
+          "value": "Black Hawk",
+          "sourceQuote": "the Army Black Hawk",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "airports",
+          "value": "Ronald Reagan Washington National Airport",
+          "sourceQuote": "Ronald Reagan Washington National Airport (DCA)",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "locations",
+          "value": "Washington, DC",
+          "sourceQuote": "near Washington, DC",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "locations",
+          "value": "Potomac River",
+          "sourceQuote": "over the Potomac River near Ronald Reagan Washington National Airport (DCA)",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "flight_numbers",
+          "value": "Flight 5342",
+          "sourceQuote": "American Airlines Flight 5342",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "November 17, 2026",
+          "sourceQuote": "an agreement in principle on November 17, 2026",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "January 29, 2025",
+          "sourceQuote": "The January 29, 2025, collision",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        }
+      ],
+      "evidenceVersion": 2,
+      "airportCodeEvidence": [
+        {
+          "name": "Ronald Reagan Washington National Airport",
+          "code": "DCA",
+          "sourceQuote": "Ronald Reagan Washington National Airport (DCA)",
+          "sourceUrl": "https://www.aerotime.aero/articles/us-lawmakers-aviation-safety-deal-ads-b-in"
+        }
+      ]
+    },
+    {
+      "id": "a-20261118-0629-tigerair-taiwan-s-museum-themed-aircraft",
+      "publishedUtc": "2026-11-18T06:29Z",
+      "cat": "ops",
+      "primarySource": "中央社 CNA 國籍航空",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "臺灣虎航故宮彩繪機預計11月19日首航 飛往日本福岡",
+        "summary": "臺灣虎航與故宮合作彩繪機，預計11月19日首航飛往日本福岡。",
+        "body": [
+          "臺灣虎航表示，與國立故宮博物院合作的「國寶出遊去」聯名彩繪機，預計11月19日首航飛往日本福岡。雙方9月底攜手，將10件國寶級文物與畫作融入機身設計。",
+          "機身視覺以「富春山居圖」的山稜線為底蘊，並呈現「翠玉白菜」、「肉形石」、「毛公鼎」、雕橄欖核舟與「鬥彩雞缸杯」等典藏。古代神獸玉辟邪形狀如飛虎，圖案繪在機身兩側前方。",
+          "臺灣虎航董事長黃世惠、總經理邱彰信與故宮副院長黃永泰已到機棚視察完工的彩繪機。首航旅客可獲得限定聯名購物袋。"
+        ]
+      },
+      "en": {
+        "title": "Tigerair Taiwan's museum-themed aircraft set for first flight to Fukuoka on Nov. 19",
+        "summary": "Tigerair Taiwan's museum-themed aircraft is scheduled for its first flight to Fukuoka, Japan, on Nov. 19.",
+        "body": [
+          "Tigerair Taiwan says its National Palace Museum-themed aircraft is scheduled to make its first flight in the new livery to Fukuoka, Japan, on Nov. 19. The partners teamed up in late September and based the livery on 10 cultural objects and paintings.",
+          "The design draws on the mountain ridges in Dwelling in the Fuchun Mountains and depicts museum pieces including the Jadeite Cabbage, Meat-shaped Stone, Mao Gong Ding, an olive-stone boat carving and the Doucai Chicken Cup. A jade bixie, an ancient mythical creature described as resembling a flying tiger, appears on both sides of the forward fuselage.",
+          "The airline's chair and general manager joined the museum's deputy director to inspect the newly painted aircraft in a hangar. Passengers on the first flight can receive a limited-edition co-branded shopping bag."
+        ]
+      },
+      "sources": [
+        {
+          "name": "中央社 CNA 國籍航空 — 翠玉白菜、肉形石上機身 台灣虎航故宮彩繪機19日首航",
+          "url": "https://www.cna.com.tw/news/ahel/202611180161.aspx"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-11-18T06:14Z",
+      "writer": "openai:gpt-6.1-terra",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "台灣虎航表示，與國立故宮博物院合作的「國寶出遊去」彩繪機預定11月19日首航日本福岡。",
+          "sourceQuote": "台灣虎航今天表示，虎航9月底攜手國立故宮博物院，將10件國寶級文物與畫作化為機身設計，打造集結歷史與現代創意的「國寶出遊去」聯名彩繪機，11月19日首航日本福岡。",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "台灣虎航9月底攜手國立故宮博物院，將10件國寶級文物與畫作化為機身設計。",
+          "sourceQuote": "台灣虎航今天表示，虎航9月底攜手國立故宮博物院，將10件國寶級文物與畫作化為機身設計",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "機身視覺以「富春山居圖」山稜線為底蘊，並呈現翠玉白菜、肉形石、毛公鼎、雕橄欖核舟、鬥彩雞缸杯及古代神獸玉辟邪等典藏。",
+          "sourceQuote": "機身視覺以「富春山居圖」的山稜線為底蘊，集結故宮人氣三寶「翠玉白菜」、「肉形石」、「毛公鼎」，還有雕橄欖核舟、玉龍、玉貓、青花穿蓮龍紋天球瓶、鬥彩雞缸杯與古代神獸玉辟邪等10大典藏",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "玉辟邪形狀像飛虎，繪製在機身兩側前方。",
+          "sourceQuote": "其中「玉辟邪」形狀就像飛虎，繪製在機身兩側前方",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "台灣虎航董事長黃世惠、總經理邱彰信及國立故宮博物院副院長黃永泰前往機棚視察完工的彩繪機。",
+          "sourceQuote": "台灣虎航董事長黃世惠、總經理邱彰信及國立故宮博物院副院長黃永泰今天到機棚視察完工的彩繪機",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "首航旅客可獲得限定首航聯名購物袋。",
+          "sourceQuote": "首航旅客還可獲得限定首航聯名購物袋",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "國立故宮博物院"
+        ],
+        "airlines": [
+          "台灣虎航"
+        ],
+        "locations": [
+          "日本福岡"
+        ],
+        "event_dates": [
+          "11月19日",
+          "9月底"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "國立故宮博物院",
+          "sourceQuote": "虎航9月底攜手國立故宮博物院",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx"
+        },
+        {
+          "entityType": "airlines",
+          "value": "台灣虎航",
+          "sourceQuote": "台灣虎航今天表示",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx"
+        },
+        {
+          "entityType": "locations",
+          "value": "日本福岡",
+          "sourceQuote": "11月19日首航日本福岡",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "11月19日",
+          "sourceQuote": "11月19日首航日本福岡",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "9月底",
+          "sourceQuote": "虎航9月底攜手國立故宮博物院",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180161.aspx"
+        }
+      ],
+      "evidenceVersion": 2
+    },
+    {
+      "id": "a-20261118-0629-tigerair-taiwan-plans-a-daily-lunar-new",
+      "publishedUtc": "2026-11-18T06:29Z",
+      "cat": "ops",
+      "primarySource": "中央社 CNA 國籍航空",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "臺灣虎航宣佈春節營運高雄至東京羽田包機 每日1班",
+        "summary": "臺灣虎航將於明年2月1日至15日營運高雄至東京羽田春節包機，每日1班。",
+        "body": [
+          "臺灣虎航宣佈，因應明年農曆春節旅運需求，將於明年2月1日至15日營運高雄至東京羽田包機航線，每日1班。",
+          "這條期間限定的包機航線僅在虎加酒tigertel平臺銷售。臺灣虎航也攜手易飛網推出4種組合套票，結合熱門景點、溫泉及住宿體驗。",
+          "目前臺灣虎航自高雄出發的日本航點包括東京成田。航空公司表示，加入羽田包機航線後，高雄及臺南出發航線總數預計將達17條。"
+        ]
+      },
+      "en": {
+        "title": "Tigerair Taiwan plans a daily Lunar New Year charter between Kaohsiung and Tokyo Haneda",
+        "summary": "Tigerair Taiwan plans daily charters between Kaohsiung and Tokyo Haneda from February 1 to 15 next year.",
+        "body": [
+          "Tigerair Taiwan said it plans to operate a Lunar New Year charter route between Kaohsiung and Tokyo Haneda from February 1 to 15 next year. The service will run one flight a day.",
+          "The limited-period charter will be sold exclusively through the tigertel platform. Tigerair Taiwan is also working with 易飛網 to offer four packages combining popular attractions, hot springs and accommodation.",
+          "Tigerair Taiwan’s existing Japanese destinations from Kaohsiung include Tokyo Narita. The airline said the planned Haneda charter would bring the combined number of routes departing Kaohsiung and Tainan to 17."
+        ]
+      },
+      "sources": [
+        {
+          "name": "中央社 CNA 國籍航空 — 因應春節旅運 台灣虎航期間限定飛高雄羽田包機",
+          "url": "https://www.cna.com.tw/news/ahel/202611180053.aspx"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-11-18T02:35Z",
+      "writer": "openai:gpt-6.1-terra",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "Tigerair Taiwan announced a planned Kaohsiung–Tokyo Haneda charter route for next year's Lunar New Year travel demand.",
+          "sourceQuote": "台灣虎航今天宣布，因應明年農曆春節旅運需求，明年2月1日至15日營運高雄-東京羽田春節包機航線",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The planned Kaohsiung–Tokyo Haneda Lunar New Year charter is scheduled for one flight a day from February 1 to 15 next year.",
+          "sourceQuote": "明年2月1日至15日營運高雄-東京羽田春節包機航線，每日營運1班",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "The Kaohsiung–Tokyo Haneda charter route will be sold only through the tigertel platform.",
+          "sourceQuote": "高雄-東京羽田春節包機航線，每日營運1班，僅限定在虎加酒tigertel平台銷售",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "Tigerair Taiwan and 易飛網 are offering four packages combining popular attractions, hot springs and accommodation.",
+          "sourceQuote": "台灣虎航攜手易飛網同步推出4大組合套票，結合熱門景點、溫泉與住宿體驗",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "Tigerair Taiwan's existing Japanese destinations from Kaohsiung include Tokyo Narita.",
+          "sourceQuote": "目前台灣虎航自高雄出發的日本航點已涵蓋札幌（新千歲）、仙台、東京成田",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "Tigerair Taiwan said the planned charter would bring its combined number of routes departing Kaohsiung and Tainan to 17.",
+          "sourceQuote": "台灣虎航今天發布新聞稿表示，因應農曆春節的旅運需求，將於明年2月1日至15日營運高雄-東京羽田春節包機航線，每日營運1班，預計將可大幅縮短南台灣旅客的交通時間，也讓高雄及台南出發航線達到17條",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "planned",
+      "entities": {
+        "organizations": [
+          "易飛網"
+        ],
+        "airlines": [
+          "台灣虎航"
+        ],
+        "airports": [
+          "東京羽田",
+          "東京成田"
+        ],
+        "locations": [
+          "高雄",
+          "台南",
+          "日本"
+        ],
+        "event_dates": [
+          "明年2月1日至15日"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "易飛網",
+          "sourceQuote": "台灣虎航攜手易飛網同步推出4大組合套票",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx"
+        },
+        {
+          "entityType": "airlines",
+          "value": "台灣虎航",
+          "sourceQuote": "台灣虎航今天宣布",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx"
+        },
+        {
+          "entityType": "airports",
+          "value": "東京羽田",
+          "sourceQuote": "明年2月1日至15日營運高雄-東京羽田春節包機航線",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx"
+        },
+        {
+          "entityType": "airports",
+          "value": "東京成田",
+          "sourceQuote": "目前台灣虎航自高雄出發的日本航點已涵蓋札幌（新千歲）、仙台、東京成田",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx"
+        },
+        {
+          "entityType": "locations",
+          "value": "高雄",
+          "sourceQuote": "高雄-東京羽田春節包機航線",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx"
+        },
+        {
+          "entityType": "locations",
+          "value": "台南",
+          "sourceQuote": "高雄及台南出發航線達到17條",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx"
+        },
+        {
+          "entityType": "locations",
+          "value": "日本",
+          "sourceQuote": "台灣虎航自高雄出發的日本航點",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx"
+        },
+        {
+          "entityType": "event_dates",
+          "value": "明年2月1日至15日",
+          "sourceQuote": "明年2月1日至15日營運高雄-東京羽田春節包機航線",
+          "sourceUrl": "https://www.cna.com.tw/news/ahel/202611180053.aspx"
+        }
+      ],
+      "evidenceVersion": 2
     }
   ]
 }
