@@ -32,11 +32,14 @@ def official_story(slug, publisher, title, date, url, anchor):
 def run_case(provider, fixture):
     started = time.monotonic()
     calls = provider.http_calls
+    production_budget = provider.label == "cloudflare:@cf/openai/gpt-oss-120b"
+    seconds = 60 if production_budget else probe.PROBE_SECONDS
+    tries = 1 if production_budget else 2
     record = {"route": provider.label, "case": fixture["id"]}
     try:
         draft, facts = write._probe_draft(
-            provider, fixture, tries=2, deadline=started + 2 * probe.PROBE_SECONDS,
-            max_attempt_seconds=probe.PROBE_SECONDS,
+            provider, fixture, tries=tries, deadline=started + tries * seconds,
+            max_attempt_seconds=seconds,
         )
         record.update(outcome="passed" if draft and facts else "rejected",
                       verifiedFacts=len(facts or []))
@@ -48,6 +51,7 @@ def run_case(provider, fixture):
 
 def main():
     configured = os.environ["AVWIRE_PROVIDER_ORDER"]
+    only_case = os.environ.get("AVWIRE_EXPERIMENT_CASE")
     providers = build_providers()
     if len(providers) != 1 or providers[0].label != configured:
         print(f"experiment unavailable: {configured} (credential is unavailable)")
@@ -59,7 +63,7 @@ def main():
     if configured == "gemini:gemini-4-hydrogen":
         provider.reasoning_tier = "standard"  # Gemini uses medium instead of Hydrogen's default high.
         provider.json_schema_mode = "prompt"
-    if configured == "cloudflare:@cf/qwen/qwen3.8-27b":
+    if configured in {"cloudflare:@cf/qwen/qwen3.8-27b", "cloudflare:@cf/openai/gpt-oss-120b"}:
         send = provider._send_payload
 
         def send_with_low_reasoning(payload, repair):
@@ -74,7 +78,8 @@ def main():
         if provider.model not in ids:
             print(f"experiment unavailable: {configured} (model absent from account catalog)")
             return
-    run_case(provider, json.loads(probe.FIXTURE_PATH.read_text(encoding="utf-8")))
+    if not only_case or only_case == "h140":
+        run_case(provider, json.loads(probe.FIXTURE_PATH.read_text(encoding="utf-8")))
     stories = (
         ("qantas-a321xlr", "Airbus", "Qantas takes delivery of its first Airbus A321XLR",
          "2025-06-30T00:00Z", "https://www.airbus.com/en/newsroom/press-releases/2025-06-qantas-takes-delivery-of-its-first-airbus-a321xlr",
@@ -84,6 +89,8 @@ def main():
          "STARLUX Airlines of Taiwan has taken delivery"),
     )
     for story in stories:
+        if only_case and only_case != story[0]:
+            continue
         try:
             fixture = official_story(*story)
         except (requests.RequestException, StopIteration, ValueError) as exc:
