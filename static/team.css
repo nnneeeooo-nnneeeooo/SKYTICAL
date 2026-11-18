@@ -213,3 +213,6 @@
 
 .team-name-signature { white-space: nowrap; font-style: italic; }
 [data-theme="8bit"] .team-name-signature > span { color: inherit; }
+
+/* Respect the author's explicit line breaks without adding paragraph gaps. */
+.team-lead, .team-chapter-body p { white-space: pre-line; }
