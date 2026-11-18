@@ -861,8 +861,9 @@ def test_static_security_contract():
           "Actions uses Secrets, checks ciphertext and tolerates empty queues")
     configured_order = (
         f"AVWIRE_PROVIDER_ORDER: {','.join(AUTOMATIC_MODEL_ORDER)}")
-    check(configured_order in hourly and configured_order in briefing,
-          "automatic workflows put GPT 6 after preferred fallbacks")
+    check('AVWIRE_FREE_FIRST: "true"' in hourly and "AVWIRE_PROVIDER_ORDER:" not in hourly
+          and configured_order in briefing,
+          "hourly publishing uses the shared free-first list; briefings retain their explicit order")
     check("AVWIRE_PROVIDER_ORDER: ${{ vars.AVWIRE_PROVIDER_ORDER }},openai:gpt-6.1-terra"
           in copilot,
           "Copilot appends GPT 6 after its configured provider order")

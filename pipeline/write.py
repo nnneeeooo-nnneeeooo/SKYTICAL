@@ -43,7 +43,7 @@ from opencc import OpenCC
 from admin_page import editorial_article
 import news_retry
 import luna_editorial
-from editorial_policy import (eligible_providers, is_free_provider,
+from editorial_policy import (eligible_providers, free_first_enabled, is_free_provider,
                               news_policy, publication_route)
 import industry_roundup
 from draft_recovery import (
@@ -93,6 +93,8 @@ from providers import (
 
 MAX_GROUPS_PER_RUN = 5
 MAX_DRAFT_SECONDS_PER_RUN = 15 * 60
+FREE_ROUTE_PROBE_SECONDS_PER_RUN = 8 * 60
+FREE_DRAFT_TIME_TARGET_PER_STORY = 6 * 60
 MAX_MODEL_ATTEMPT_SECONDS = 60
 PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK = 30
 MAX_DRAFT_SECONDS_PER_GROUP = 120
@@ -1422,7 +1424,7 @@ class _RunTrace:
         self.data = {
             "editorialTier": policy.priority,
             "routeReason": policy.reason,
-            "paidFallbackAllowed": policy.paid_allowed,
+            "paidFallbackAllowed": policy.paid_allowed or free_first_enabled(),
             "startedUtc": iso_minute(now_utc()),
             "finishedUtc": None,
             "workflow": workflow,
@@ -1574,6 +1576,11 @@ def _record_transient_platform_failure(provider, exc, alive: list,
     if not _is_transient_platform_failure(exc):
         failure_counts.pop(name, None)
         return False
+    if free_first_enabled() and is_free_provider(provider):
+        # A slow or overloaded model must not take other models on its host down.
+        if provider in alive:
+            alive.remove(provider)
+        return True
     count = failure_counts.get(name, 0) + 1
     failure_counts[name] = count
     if count < TRANSIENT_PLATFORM_FAILURE_LIMIT:
@@ -1686,6 +1693,10 @@ def _provider_chain_budget(providers) -> float:
 def _preferred_attempt_cap(provider):
     return (_provider_attempt_allowance(provider) if is_free_provider(provider)
             else PREFERRED_ATTEMPT_SECONDS_WITH_FINAL_FALLBACK)
+
+
+def _free_attempt_cap(route_count):
+    return max(MAX_MODEL_ATTEMPT_SECONDS, FREE_DRAFT_TIME_TARGET_PER_STORY / route_count)
 
 
 def _probe_draft(provider, group, **kwargs):
@@ -2868,6 +2879,7 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
     providers fail (retried next hour).
     """
     remaining = []
+    dead_routes = set()
     prompt = flightnews.flight_prompt()
     processed = 0
     for event in queue:
@@ -2897,8 +2909,10 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                          "following the rules strictly.")
         run_trace.add_duration("promptAssembly", prompt_started)
         outcome = None
-        for provider in eligible_providers(group, providers):
-            if provider.name in dead_platforms:
+        story_providers = eligible_providers(group, providers)
+        free_count = sum(is_free_provider(p) for p in story_providers) if free_first_enabled() else 0
+        for provider in story_providers:
+            if provider.name in dead_platforms or provider.label in dead_routes:
                 continue
             ai_calls[provider.label] = ai_calls.get(provider.label, 0) + 1
             attempt_started = time.perf_counter()
@@ -2906,7 +2920,10 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
             before = _snapshot_provider(provider)
             try:
                 drafting_started = time.perf_counter()
-                candidate = provider.draft(prompt, user_prompt, DRAFT_SCHEMA)
+                allowance = (_provider_attempt_allowance(provider, max_attempt_seconds=_free_attempt_cap(free_count))
+                             if free_count and is_free_provider(provider) else None)
+                with draft_timeout(allowance):
+                    candidate = provider.draft(prompt, user_prompt, DRAFT_SCHEMA)
                 run_trace.add_duration("drafting", drafting_started)
             except ProviderAuthError as exc:
                 run_trace.add_duration("drafting", drafting_started)
@@ -2926,12 +2943,18 @@ def _process_flight_events(queue, providers, dead_platforms, dead_auth,
                     provider, attempt_started, attempt_utc, before, "failed",
                     "quota", "draft", exc)
                 run_trace.disable_last_provider()
+                if free_count:
+                    from free_provider_probe import MODEL_QUOTA_PROVIDERS, record
+                    if provider.name in MODEL_QUOTA_PROVIDERS:
+                        record(provider.label, failure="quota", diagnostic=str(exc))
+                        dead_routes.add(provider.label)
+                        continue
                 print(f"write: {provider.label} quota exhausted ({exc}); "
                       f"disabling all '{provider.name}' providers")
                 dead_platforms.add(provider.name)
                 provider_health.mark_failure(provider.name, "quota")
                 continue
-            except ProviderError as exc:
+            except (ProviderError, ProviderCallTimeout) as exc:
                 run_trace.add_duration("drafting", drafting_started)
                 run_trace.add_attempt(
                     provider, attempt_started, attempt_utc, before, "failed",
@@ -3148,11 +3171,18 @@ def main() -> None:
         save_json(REVIEW_PATH, [])
 
     # --- 2. draft the pending groups through the provider chain ----------
-    configured_providers = build_providers()
+    free_first = free_first_enabled()
+    if free_first:
+        from model_config import FREE_DRAFT_MODEL_ORDER, OPENAI_MODEL_ORDER
+        configured_providers = build_providers(default_order=",".join(
+            FREE_DRAFT_MODEL_ORDER + OPENAI_MODEL_ORDER))
+    else:
+        configured_providers = build_providers()
     persisted_cooldowns = provider_health.active_platforms(now)
     providers = [p for p in configured_providers
                  if p.name not in persisted_cooldowns]
     accounted_providers = list(providers)
+    prepared_routes = False
     if persisted_cooldowns:
         rows = provider_health.cooldown_rows(now)
         details = ", ".join(
@@ -3317,7 +3347,10 @@ def main() -> None:
         if groups and any(getattr(p, "requires_verification", False) and is_free_provider(p)
                           for p in providers):
             from free_provider_probe import prepare_routes
-            providers = prepare_routes(accounted_providers, now, _probe_draft)
+            providers = prepare_routes(
+                accounted_providers, now, _probe_draft,
+                time_budget=FREE_ROUTE_PROBE_SECONDS_PER_RUN if free_first else None)
+            prepared_routes = True
         draft_deadline = time.monotonic() + MAX_DRAFT_SECONDS_PER_RUN
         alive = list(providers)  # priority order; shrinks on auth/quota death
         drafted = 0  # only API-consuming groups count toward the run cap
@@ -3333,6 +3366,11 @@ def main() -> None:
                                  article_id=existing["article"]["id"])
                 continue
             story_providers = eligible_providers(group, alive)
+            free_count = sum(is_free_provider(p) for p in story_providers) if free_first else 0
+            if free_count and time.monotonic() >= draft_deadline:
+                print("write: deferring remaining groups so their free routes can run first")
+                run_trace.finish("retry_pending", "retry_pending")
+                break
             if time.monotonic() >= draft_deadline:
                 story_providers = [p for p in story_providers
                                    if getattr(p, "unlimited_processing_time", False) is True]
@@ -3373,10 +3411,13 @@ def main() -> None:
             calls_before = sum(ai_calls.values())
             fallback_repair_used = False
             policy = news_policy(group)
+            paid_allowed = policy.paid_allowed or free_first
             print(f"write: editorial route {group.get('id')}: "
-                  f"{policy.priority}/{policy.reason}; paid={policy.paid_allowed}")
+                  f"{policy.priority}/{policy.reason}; paid={paid_allowed}")
             group_budget = _provider_chain_budget(story_providers)
-            group_deadline = (float("inf") if unlimited_story else min(
+            # The run budget gates new groups. Finish an already-started free
+            # chain so that a run deadline cannot move Terra ahead of a route.
+            group_deadline = (float("inf") if unlimited_story or free_count else min(
                 draft_deadline, time.monotonic() + group_budget))
             preferred_started = time.monotonic() if luna_editorial.enabled() else None
             for provider in luna_editorial.routes(group, story_providers, alive):
@@ -3390,7 +3431,7 @@ def main() -> None:
                 is_fallback = _is_fallback_provider(provider)
                 fallback_reserve = _fallback_reserve_seconds(
                     [p for p in story_providers if p in alive])
-                provider_deadline = (group_deadline if getattr(provider, "unlimited_processing_time", False)
+                provider_deadline = (group_deadline if free_count or getattr(provider, "unlimited_processing_time", False)
                                      else min(group_deadline, draft_deadline))
                 if time.monotonic() >= provider_deadline:
                     continue  # Exhausted local time must not count as a provider failure.
@@ -3406,7 +3447,10 @@ def main() -> None:
                 # for preferred fallbacks. Transport failures still fail over.
                 tries = 2 if (is_fallback or provider is story_providers[0]
                               or not fallback_repair_used) else 1
-                if luna_editorial.enabled() and not is_fallback:
+                if free_first and not is_fallback:
+                    tries = 1
+                    attempt_cap = _free_attempt_cap(free_count)
+                elif luna_editorial.enabled() and not is_fallback:
                     tries = 1  # switch platforms before spending time on repairs
                     if any(_is_fallback_provider(p) for p in story_providers):
                         remaining_preferred = max(0.1, luna_editorial.policy()["preferred_seconds"]
@@ -3446,6 +3490,14 @@ def main() -> None:
                     alive[:] = [p for p in alive if p.name != "openai"]
                     continue
                 except ProviderQuotaError as exc:
+                    if free_first:
+                        from free_provider_probe import MODEL_QUOTA_PROVIDERS, record
+                        if provider.name in MODEL_QUOTA_PROVIDERS:
+                            print(f"write: {provider.label} quota exhausted; trying next model")
+                            record(provider.label, failure="quota", diagnostic=str(exc))
+                            alive.remove(provider)
+                            run_trace.disable_last_provider()
+                            continue
                     # Quota/credits are account-level too.
                     print(f"write: {provider.label} quota exhausted ({exc}); "
                           f"disabling all '{provider.name}' providers "
@@ -3610,6 +3662,14 @@ def main() -> None:
     # empty. Routine observations that clear the machine gate publish
     # automatically after deterministic source verification.)
     flight_queue = flightnews.load_queue()
+    if free_first and flight_queue:
+        if prepared_routes:
+            providers = alive
+        elif any(getattr(p, "requires_verification", False) and is_free_provider(p)
+                 for p in providers):
+            from free_provider_probe import prepare_routes
+            providers = prepare_routes(accounted_providers, now, _probe_draft,
+                                       time_budget=FREE_ROUTE_PROBE_SECONDS_PER_RUN)
     if flight_queue and providers:
         remaining_flight = _process_flight_events(
             flight_queue, providers, dead_platforms, dead_auth, ai_calls,
