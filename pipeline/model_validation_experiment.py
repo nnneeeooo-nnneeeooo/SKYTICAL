@@ -53,12 +53,19 @@ def main():
         print(f"experiment unavailable: {configured} (credential is unavailable)")
         return
     provider = providers[0]
-    gemma_with_token_limit = configured == "gemini:gemma-4-31b-it"
-    if gemma_with_token_limit:
+    pace_requests = configured in {"gemini:gemma-4-31b-it", "groq:qwen/qwen3.8-27b"}
+    if configured == "gemini:gemma-4-31b-it":
         provider.json_schema_mode = "prompt"  # The first run rejected native schema.
     if configured == "gemini:gemini-4-hydrogen":
         provider.reasoning_tier = "standard"  # Gemini uses medium instead of Hydrogen's default high.
         provider.json_schema_mode = "prompt"
+    if configured == "cloudflare:@cf/qwen/qwen3.8-27b":
+        send = provider._send_payload
+
+        def send_with_low_reasoning(payload, repair):
+            return send({**payload, "reasoning_effort": "low"}, repair)
+
+        provider._send_payload = send_with_low_reasoning
     try:
         ids = probe.catalog(provider)
     except Exception as exc:
@@ -82,8 +89,8 @@ def main():
         except (requests.RequestException, StopIteration, ValueError) as exc:
             print(f"experiment source unavailable: {story[0]} ({type(exc).__name__})")
         else:
-            if gemma_with_token_limit:
-                time.sleep(65)  # Google lists a 16K input-token/minute limit for this project.
+            if pace_requests:
+                time.sleep(65)  # These providers advertise low per-minute token ceilings.
             run_case(provider, fixture)
 
 
