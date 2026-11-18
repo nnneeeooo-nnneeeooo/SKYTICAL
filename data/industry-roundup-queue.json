@@ -1,90 +1,199 @@
 {
-  "lastEdition": "2026-11-18-12",
+  "lastEdition": "2026-11-19-00",
   "items": [
     {
-      "enqueuedUtc": "2026-11-18T06:07Z",
+      "enqueuedUtc": "2026-11-18T16:04Z",
       "routeReason": "published_short_excerpt",
       "sourceGroupId": "",
       "eventKey": "",
       "article": {
+        "id": "a-aerodata-aeroforce-x-first-flight-20261118",
+        "articleFormat": "brief",
+        "availableLanguages": [
+          "zh",
+          "en"
+        ],
+        "cat": "mil",
+        "primarySource": "AeroTime",
+        "publishedUtc": "2026-11-18T13:21:09Z",
+        "sourcePublishedUtc": "2026-11-17T21:15Z",
+        "checkedUtc": "2026-11-18T13:21:09Z",
+        "writer": "scheduled:Codex",
+        "writerModels": [
+          "Codex"
+        ],
+        "sources": [
+          {
+            "name": "AeroTime",
+            "url": "https://www.aerotime.aero/articles/aerodata-aeroforce-x-maiden-flight"
+          }
+        ],
+        "zh": {
+          "title": "德國 AeroForce X 偵察機完成首飛 無人飛行測試時程未定",
+          "summary": "Aerodata 的 AeroForce X 原型機完成有人駕駛首飛，目標續航40小時，後續將逐步測試無人操作。",
+          "body": [
+            "德國 Aerodata 的 AeroForce X 偵察機原型機11月14日在布蘭登堡邦施特勞斯貝格機場完成首飛，開始飛行測試。此次由飛行員在機上操作；公司表示，操控、穩定性及關鍵系統測試均達成目標。",
+            "AeroForce X 定位為中高度長滯空無人航空系統，翼展26公尺，目標酬載能力為1.3公噸、續航最長40小時。這些數字是研發目標，並非此次首飛已驗證的性能。",
+            "公司規劃先進行更多有人駕駛飛行及自動駕駛測試，再展開首次無人飛行，目前尚未公佈日期。預定用途包括海上關鍵基礎設施監控等軍事及安全任務，模組化設計可搭載不同偵察設備。"
+          ]
+        },
+        "en": {
+          "title": "Aerodata AeroForce X completes piloted maiden flight; unmanned test date unannounced",
+          "summary": "The AeroForce X prototype has begun flight testing with a pilot on board, targeting up to 40 hours of endurance.",
+          "body": [
+            "Germany’s Aerodata completed the maiden flight of its AeroForce X prototype at Strausberg Airport in Brandenburg on November 14. A pilot was on board. The company said tests of handling, stability and key systems met their objectives.",
+            "The aircraft is being developed as a medium-altitude, long-endurance unmanned system with a 26-metre wingspan. Its targets include a payload of up to 1.3 tonnes and endurance of up to 40 hours; these are development goals rather than performance demonstrated by this flight.",
+            "Further piloted flights and autopilot testing will precede unmanned operations. Aerodata has not announced a date for the first unpiloted flight. Intended military and security missions include surveillance of critical maritime infrastructure, using a modular design for different reconnaissance equipment."
+          ]
+        },
+        "entities": {
+          "aircraft_models": [
+            "AeroForce X"
+          ],
+          "organizations": [
+            "Aerodata"
+          ],
+          "airports": [
+            "Strausberg Airport"
+          ]
+        },
+        "image": {
+          "url": "https://skytical.tech/assets/news-20261118-2b08605dedca.jpg",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/134787139",
+          "credit": "Carsten Steger",
+          "license": "CC BY-SA 4.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "editorial:24h-backfill-20261118",
+          "subject": "施特勞斯貝格機場資料照；AeroForce X 首飛地點，非此次首飛現場。",
+          "description": "Aerial image of the Strausberg airfield",
+          "photoYear": 2023,
+          "subjectEn": "Strausberg Airport, the location of the AeroForce X maiden flight; file photo, not the flight itself.",
+          "curated": true,
+          "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Aerial_image_of_the_Strausberg_airfield.jpg/960px-Aerial_image_of_the_Strausberg_airfield.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        "editorialImageLocked": true,
+        "scheduledNews": {
+          "version": 1,
+          "eventKey": "aerodata-aeroforce-x-first-flight-20261118",
+          "checkedUtc": "2026-11-18T13:21:09Z",
+          "facts": [
+            {
+              "claim": "AeroForce X completed its first flight with a pilot on board at Strausberg Airport on November 14, 2026.",
+              "sourceUrl": "https://www.aerotime.aero/articles/aerodata-aeroforce-x-maiden-flight"
+            },
+            {
+              "claim": "Aerodata targets a 26-metre wingspan, payload of up to 1.3 tonnes and endurance of up to 40 hours.",
+              "sourceUrl": "https://www.aerotime.aero/articles/aerodata-aeroforce-x-maiden-flight"
+            },
+            {
+              "claim": "Further piloted flights and autopilot testing will precede the first unmanned flight, whose date has not been announced.",
+              "sourceUrl": "https://www.aerotime.aero/articles/aerodata-aeroforce-x-maiden-flight"
+            }
+          ]
+        }
+      },
+      "publishedExcerptId": "a-aerodata-aeroforce-x-first-flight-20261118"
+    },
+    {
+      "enqueuedUtc": "2026-11-18T16:04Z",
+      "routeReason": "published_short_excerpt",
+      "sourceGroupId": "",
+      "eventKey": "",
+      "article": {
+        "id": "a-lufthansa-pilot-contract-union-deadline-20261117",
+        "cat": "biz",
         "articleFormat": "full",
         "availableLanguages": [
           "zh",
           "en"
         ],
-        "cat": "biz",
-        "checkedUtc": "2026-11-17T22:27:00Z",
-        "en": {
-          "title": "AAPA urges Asia Pacific governments to back airlines as fuel crisis bites",
-          "summary": "The Association of Asia Pacific Airlines closed its 70th Assembly of Presidents in Kuala Lumpur by calling on governments to give carriers timely, practical support as jet fuel trades near $186 a barrel, about a third of operating costs, with passenger traffic up 1.9% in the first nine months of 2026 but margins under severe strain.",
-          "body": [
-            "The Association of Asia Pacific Airlines (AAPA) has called on governments across the region to provide timely, practical support to carriers facing sharply higher fuel prices and mounting operational hurdles. The appeal came at the close of its 70th Assembly of Presidents in Kuala Lumpur on November 13, 2026, a two-day event hosted by Malaysia Airlines that brought together more than 170 delegates under the theme \"Redefining Aviation: Growth, Resilience and Innovation\" and marked the association's 60th anniversary. \"Governments must recognize these pressures and work constructively with the industry to provide support that safeguards the long-term viability of air transport across the region,\" said AAPA's Director General.",
-            "On the surface, demand has held up. Passenger traffic for Asia Pacific airlines grew 1.9% in the first nine months of 2026, and average load factors reached a record 83%. \"Let's be candid. A full aircraft does not necessarily translate into a healthy bottom line!\" AAPA's Director General told delegates during his opening address on November 13. Jet fuel was trading at around $186 per barrel in October, compared with $80 to $110 in recent years, and fuel now makes up about 33% of airline operating costs, with the jet fuel crack spread the widest the industry has seen in many years. \"We have to consume fuel. We have to burn fuel. We have no alternatives, at least not now,\" he said, adding that airlines \"end up being price takers.\" AAPA's aggregate passenger numbers were negative from April to August, before edging back \"just above water\" in September.",
-            "He stopped short of a specific wish list, urging governments instead to begin by benchmarking the taxes and fees they levy on airlines, such as departure taxes, landing fees and parking fees, against those of neighboring countries, and asking whether they are reasonable and actually support aviation. On fuel above $185 per barrel, he said: \"That better not be the norm. If that's the norm, we have trouble. Not sustainable.\" He warned that if fuel prices stay where they are, \"this could really be a problem,\" and said AAPA's biggest worry is a \"snowball effect\" in which one airline's distress spreads to others. The Assembly also adopted four resolutions covering aviation sustainability, passenger rights, cabin safety and aviation security, and reaffirmed a target of 5% sustainable aviation fuel use by 2030, though SAF still costs three to four times as much as conventional jet fuel."
-          ]
-        },
-        "entities": {
-          "operators": [
-            "Association of Asia Pacific Airlines",
-            "Malaysia Airlines"
-          ]
-        },
-        "id": "a-aapa-fuel-crisis-government-support-20261117",
+        "publishedUtc": "2026-11-18T10:13:57Z",
+        "checkedUtc": "2026-11-18T10:13:57Z",
+        "sourcePublishedUtc": "2026-11-17T13:37:00Z",
         "primarySource": "AeroTime",
-        "publishedUtc": "2026-11-17T22:27:00Z",
-        "scheduledNews": {
-          "version": 1,
-          "eventKey": "aapa-fuel-crisis-government-support-20261117",
-          "checkedUtc": "2026-11-17T22:27:00Z",
-          "modelAttribution": {
-            "kind": "user_requested_label",
-            "verifiedRuntimeModel": false
-          },
-          "facts": [
-            {
-              "claim": "At the close of its 70th Assembly of Presidents in Kuala Lumpur on November 13, 2026, AAPA called on governments to provide timely, practical support to carriers facing sharply higher fuel prices.",
-              "sourceUrl": "https://www.aerotime.aero/articles/aapa-urges-governments-to-rethink-airline-taxes-fees-amid-soaring-fuel-costs"
-            },
-            {
-              "claim": "Passenger traffic for Asia Pacific airlines grew 1.9% in the first nine months of 2026 and average load factors reached a record 83%.",
-              "sourceUrl": "https://www.aerotime.aero/articles/aapa-urges-governments-to-rethink-airline-taxes-fees-amid-soaring-fuel-costs"
-            },
-            {
-              "claim": "Jet fuel was trading at around $186 per barrel in October, compared with $80 to $110 in recent years, and fuel now makes up about 33% of airline operating costs.",
-              "sourceUrl": "https://www.aerotime.aero/articles/aapa-urges-governments-to-rethink-airline-taxes-fees-amid-soaring-fuel-costs"
-            },
-            {
-              "claim": "AAPA urged governments to benchmark the taxes and fees they levy on airlines, such as departure taxes, landing fees and parking fees, against neighboring countries.",
-              "sourceUrl": "https://www.aerotime.aero/articles/aapa-urges-governments-to-rethink-airline-taxes-fees-amid-soaring-fuel-costs"
-            },
-            {
-              "claim": "The Assembly adopted four resolutions covering aviation sustainability, passenger rights, cabin safety and aviation security, and reaffirmed a target of 5% sustainable aviation fuel use by 2030.",
-              "sourceUrl": "https://www.aerotime.aero/articles/aapa-urges-governments-to-rethink-airline-taxes-fees-amid-soaring-fuel-costs"
-            }
-          ]
-        },
-        "sourcePublishedUtc": "2026-11-17T15:11Z",
         "sources": [
           {
             "name": "AeroTime",
-            "url": "https://www.aerotime.aero/articles/aapa-urges-governments-to-rethink-airline-taxes-fees-amid-soaring-fuel-costs"
+            "url": "https://www.aerotime.aero/articles/lufthansa-pilot-contract-proposal-met-with-union-deadline-threat"
           }
         ],
         "writer": "scheduled:Meta Muse",
         "writerModels": [
           "Meta Muse"
         ],
-        "zh": {
-          "title": "亞太航空協會籲請各國政府出手相助、協助航空業度過燃油危機",
-          "summary": "亞太航空協會在吉隆坡舉行的第70屆會長大會閉幕時呼籲各區政府及時以實際行動支援航空公司；10月噴射燃油每桶約186美元、占營運成本約33%，2026年前9個月亞太航空客運量雖成長1.9%、平均載客率創83%新高，業者獲利仍備受擠壓。",
-          "body": [
-            "亞太航空協會在2026年11月13日於吉隆坡舉行的第70屆會長大會閉幕時，呼籲各地區政府為面臨燃油價格急升與營運障礙加劇的航空公司提供及時、實際的支援。這場為期兩天的會議由馬來西亞航空主辦，170多名代表與會，同時慶祝協會成立60周年。協會總幹事表示，各國政府必須正視這些壓力，與業界建設性合作，提供支援以維護本地區航空運輸的長期存續。",
-            "需求表面上仍穩健：2026年前9個月亞太航空客運量成長1.9%，平均載客率達83%的歷史新高。協會總幹事在11月13日的開幕致詞中坦言，客機滿載未必代表獲利健康。噴射燃油10月每桶約186美元，遠高於近年每桶80至110美元的水準，燃油現占航空公司營運成本約33%，煉油價差也是多年來最寬。他指出，航空公司別無選擇，只能接受油價；2026年4至8月亞太航空整體客運量為負數，9月才勉強回到水面之上。",
-            "總幹事並未開出具體願望清單，而是敦促各國政府先從比較稅費著手，把本國對航空公司課徵的離境稅、降落費與停機費與鄰國比較，檢視是否合理、是否真正支持航空業。他警告，若燃油價格維持在每桶185美元以上的水準，將難以持續；若油價居高不下，真的可能成為問題，協會最擔心的是雪球效應，即一家航空公司出問題會蔓延到其他業者。大會同時通過4項決議，涵蓋航空永續、旅客權益、客艙安全與航空保安，並重申2030年永續航空燃油使用占比5%的目標，不過永續燃油成本仍為傳統燃油的3至4倍。"
+        "entities": {
+          "aircraft": [],
+          "airports": [],
+          "manufacturers": [],
+          "operators": [
+            "Lufthansa",
+            "Lufthansa CityLine"
           ]
-        }
+        },
+        "zh": {
+          "title": "漢莎航空機師合約僵局：工會設11月23日最後通牒",
+          "summary": "漢莎航空向機師工會提出新聘僱方案，承諾2033年底前增聘最多1000名機師；工會批評資方拒絕調解人方案，要求11月23日前重新考慮。",
+          "body": [
+            "漢莎航空向德國機師工會「駕駛艙協會」提交一份關於機師工作條件與未來保障的聘僱方案，工會以失望回應。漢莎希望以2033年底前新增最多1000名機師、每年最多增加150名機長升遷名額的承諾，打破今年已多次引發罷工的僵局。",
+            "方案依據前邦總理博多·拉梅洛與羅蘭·科赫提出的建議，兩人分別由勞資雙方任命為仲裁人。建議內容包括暫時穩定薪資水準、調整薪級表與提高生產力的措施；變動薪酬部分也將調整，2027年與2028年發放一次性給付，2029年起調薪。已於2026年4月停運的漢莎城市航線機師，則獲得轉調漢莎航空等具體就業前景。",
+            "工會指出，調解人方案已包含凍薪、減少加班費與大幅削減變動薪酬等重大經濟讓步，並以長期規劃保障、部分改善、工作保障與城市航線員工前景作為交換；工會發言人阿恩·卡斯滕斯表示，經過18輪密集調解談判，具體方案已擺在桌上，資方如今拒絕令人完全無法理解。工會要求漢莎在11月23日前重新考慮立場、依調解人方案推動具體落實，並表示接下來取決於資方是否願意讓步。"
+          ]
+        },
+        "en": {
+          "title": "Lufthansa pilot contract deadlock as union sets November 23 deadline",
+          "summary": "Lufthansa has offered its pilots' union a new employment deal promising up to 1,000 hires by 2033, but Vereinigung Cockpit says the airline is rejecting the mediator's proposal and has set a November 23 deadline.",
+          "body": [
+            "Lufthansa has submitted an employment proposal to Germany's Vereinigung Cockpit union covering pilots' working conditions and future job security, and the union has reacted with frustration. The airline said the offer, presented on November 17, 2026, promises up to 1,000 new pilot hires by the end of 2033 and up to 150 additional captain promotions a year, in an attempt to break a deadlock that has already led to strikes on multiple occasions this year.",
+            "The proposal is based on recommendations from former state premiers Bodo Ramelow and Roland Koch, each appointed as an arbitrator by one side. The recommendations include temporarily stabilising pay levels, adjusting salary scales and raising productivity, alongside changes to variable pay, a one-off payment for 2027 and 2028, and salary increases from 2029. Pilots of Lufthansa CityLine, which ceased operations in April 2026, were offered \"concrete employment prospects\", including the option of transferring to Lufthansa.",
+            "Vereinigung Cockpit says the airline is rejecting a mediator's proposal that attempted to reconcile both sides, even though it already contained significant economic concessions from pilots, including pay freezes, reduced overtime compensation and substantial cuts to variable pay, in exchange for planning security, partial improvements, job protection and prospects for CityLine staff. The union said Lufthansa has until November 23, 2026 to reconsider and work towards implementing the mediator's proposal. \"The ball is now in the employer's court,\" said union spokesperson Arne Karstens."
+          ]
+        },
+        "scheduledNews": {
+          "version": 1,
+          "eventKey": "lufthansa-pilot-contract-union-deadline-20261117",
+          "checkedUtc": "2026-11-18T10:13:57Z",
+          "modelAttribution": {
+            "kind": "user_requested_label",
+            "verifiedRuntimeModel": false
+          },
+          "facts": [
+            {
+              "claim": "Lufthansa submitted an employment proposal to the Vereinigung Cockpit union on November 17, 2026, promising up to 1,000 new pilot hires by the end of 2033 and up to 150 additional captain promotions per year.",
+              "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-pilot-contract-proposal-met-with-union-deadline-threat"
+            },
+            {
+              "claim": "The proposal follows recommendations by arbitrators Bodo Ramelow and Roland Koch, including temporary pay stabilization, salary-scale adjustments, productivity measures, a one-off payment for 2027 and 2028, and salary increases from 2029.",
+              "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-pilot-contract-proposal-met-with-union-deadline-threat"
+            },
+            {
+              "claim": "Lufthansa CityLine ceased operations in April 2026, and the offer includes concrete employment prospects for its pilots, including transfer to Lufthansa.",
+              "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-pilot-contract-proposal-met-with-union-deadline-threat"
+            },
+            {
+              "claim": "Vereinigung Cockpit says the mediator's proposal already included significant economic concessions such as pay freezes, reduced overtime compensation and substantial cuts to variable pay, and gave Lufthansa until November 23, 2026 to reconsider.",
+              "sourceUrl": "https://www.aerotime.aero/articles/lufthansa-pilot-contract-proposal-met-with-union-deadline-threat"
+            }
+          ]
+        },
+        "image": {
+          "url": "https://skytical.tech/assets/news-20261118-bcf2da342921.jpg",
+          "link": "https://commons.wikimedia.org/wiki/Special:Redirect/page/25075020",
+          "credit": "Julian Herzog ( Website )",
+          "license": "CC BY 4.0",
+          "provider": "Wikimedia Commons",
+          "kind": "file_photo",
+          "matched": "editorial:24h-backfill-20261118",
+          "subject": "漢莎航空 A320 D-AIQT 起飛資料照；非勞資協商現場。",
+          "description": "Lufthansa Airbus A320-211 (reg. D-AIQT, cn 1337) taking off at Stuttgart Airport (EDDS/STR). The A320 series has two variants, the A320-100 and A320-200. Only 21 A320-100s were produced; these aircraft, the first to be manufactured, were only delivered to Air Inter (later acquired by Air France) and British Airways (as a result of an order from British Caledonian Airways made prior to its acquisition by British Airways). Compared to the A320-100, the primary changes on A320-200 are wingtip fences and increased fuel capacity for increased range. Indian Airlines used its first 31 A320-200s with double-bogie main landing gear for airfields with poor runway condition which a single-bogie main gear could not manage. Typical range with 150 passengers for the A320-200 is about 3,300 nmi (6,150 km). It is powered by two CFMI CFM56-5s or IAE V2500s with thrust ratings between 113 to 120 kN (25,400 to 27,000 lbf). The lowest speed an A320 can fly is approximately 207 km/h",
+          "photoYear": 2011,
+          "subjectEn": "Lufthansa A320 D-AIQT taking off; file photo, not the pilot contract negotiations.",
+          "curated": true,
+          "originalUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Lufthansa_Airbus_A320-211_D-AIQT_01.jpg/960px-Lufthansa_Airbus_A320-211_D-AIQT_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        "editorialImageLocked": true
       },
-      "publishedExcerptId": "a-aapa-fuel-crisis-government-support-20261117"
+      "publishedExcerptId": "a-lufthansa-pilot-contract-union-deadline-20261117"
     }
   ],
   "history": [

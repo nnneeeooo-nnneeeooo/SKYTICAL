@@ -2,67 +2,67 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "verified",
-      "untilUtc": "2026-11-18T12:41Z",
-      "checkedUtc": "2026-11-17T12:41Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-18T22:04Z",
+      "checkedUtc": "2026-11-18T16:04Z",
+      "failureClass": "unexpected",
+      "diagnostic": "entity evidence quote not found in current source: locations='Mount Pennsylvania'",
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-18T12:07Z",
-      "checkedUtc": "2026-11-18T06:07Z",
+      "untilUtc": "2026-11-18T22:04Z",
+      "checkedUtc": "2026-11-18T16:04Z",
       "failureClass": "unexpected",
-      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
+      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "checkedUtc": "2026-11-18T06:07Z",
-      "untilUtc": "2026-11-18T12:07Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (credits exhausted?)",
+      "untilUtc": "2026-11-18T22:04Z",
+      "checkedUtc": "2026-11-18T16:04Z",
+      "failureClass": "invalid_request",
+      "diagnostic": "HTTP 400 code=invalid_request_error",
       "probeVersion": 3,
       "schemaMode": null
     },
     "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": {
-      "status": "verified",
-      "untilUtc": "2026-11-18T12:41Z",
-      "checkedUtc": "2026-11-17T12:41Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-18T22:04Z",
+      "checkedUtc": "2026-11-18T16:04Z",
+      "failureClass": "unexpected",
+      "diagnostic": "summarySupportedBy references a fact that did not verify",
       "probeVersion": 3,
       "schemaMode": null
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-18T12:41Z",
-      "checkedUtc": "2026-11-17T12:41Z",
+      "checkedUtc": "2026-11-18T16:04Z",
+      "untilUtc": "2026-11-19T16:04Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-18T12:41Z",
-      "checkedUtc": "2026-11-17T12:41Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-18T22:04Z",
+      "checkedUtc": "2026-11-18T16:04Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-18T12:41Z",
-      "checkedUtc": "2026-11-17T12:41Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-18T22:04Z",
+      "checkedUtc": "2026-11-18T16:04Z",
+      "failureClass": "unexpected",
+      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     }
   }
 }
