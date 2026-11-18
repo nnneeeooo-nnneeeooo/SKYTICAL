@@ -39,8 +39,8 @@
     },
     "nvidia:qwen/qwen3.5-397b-a17b": {
       "status": "unavailable",
-      "checkedUtc": "2026-11-18T16:04Z",
       "untilUtc": "2026-11-19T16:04Z",
+      "checkedUtc": "2026-11-18T16:04Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -61,6 +61,78 @@
       "checkedUtc": "2026-11-18T16:04Z",
       "failureClass": "unexpected",
       "diagnostic": "zh.body[0] contains Simplified Chinese characters",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "cloudflare:@cf/openai/gpt-oss-120b": {
+      "status": "waiting",
+      "untilUtc": "2026-11-18T22:27Z",
+      "checkedUtc": "2026-11-18T16:27Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "groq:qwen/qwen3.8-27b": {
+      "status": "verified",
+      "untilUtc": "2026-11-19T16:27Z",
+      "checkedUtc": "2026-11-18T16:27Z",
+      "failureClass": null,
+      "diagnostic": null,
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:inclusionai/ling-3.2-flash:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-18T22:27Z",
+      "checkedUtc": "2026-11-18T16:27Z",
+      "failureClass": "connection",
+      "diagnostic": "ConnectionError",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "gemini:gemini-4-hydrogen": {
+      "status": "waiting",
+      "untilUtc": "2026-11-18T22:27Z",
+      "checkedUtc": "2026-11-18T16:27Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "gemini:gemini-3.8-flash": {
+      "status": "waiting",
+      "untilUtc": "2026-11-18T22:27Z",
+      "checkedUtc": "2026-11-18T16:27Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "gemini:gemini-3.5-flash-lite": {
+      "status": "waiting",
+      "untilUtc": "2026-11-18T22:27Z",
+      "checkedUtc": "2026-11-18T16:27Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "gemini:gemini-3.1-flash-lite": {
+      "status": "waiting",
+      "untilUtc": "2026-11-18T22:27Z",
+      "checkedUtc": "2026-11-18T16:27Z",
+      "failureClass": "unexpected",
+      "diagnostic": "F2 claim adds high-risk atom '10' not present in its own sourceQuote",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "gemini:gemma-4-31b-it": {
+      "status": "waiting",
+      "checkedUtc": "2026-11-18T16:27Z",
+      "untilUtc": "2026-11-18T22:27Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
       "probeVersion": 3,
       "schemaMode": null
     }

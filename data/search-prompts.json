@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-11-18T16:20Z",
+  "generatedUtc": "2026-11-18T16:52Z",
   "targetDateTpe": "2026-11-19",
   "sourceWindow": "month_to_date",
   "generationMode": "llm",
-  "provider": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "provider": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
   "sourceArticleIds": [
-    "a-jetblue-a320-severe-turbulence-fort-lauderdale-20261117",
-    "a-lufthansa-pilot-contract-union-deadline-20261117",
-    "a-russian-an12-crash-kemerovo-20261117",
-    "a-20261118-0629-tigerair-taiwan-s-museum-themed-aircraft",
     "a-farnborough-airshow-2028-space-93-percent-20261118",
-    "a-icao-aviation-safety-exhibition-montreal-20261118"
+    "a-aerodata-aeroforce-x-first-flight-20261118",
+    "a-icao-aviation-safety-exhibition-montreal-20261118",
+    "a-romania-iar99-sm-first-two-delivery-20261118",
+    "a-jetblue-a320-severe-turbulence-fort-lauderdale-20261117",
+    "a-20261118-0629-tigerair-taiwan-s-museum-themed-aircraft"
   ],
   "prompts": {
     "zh": [
-      "JetBlue A320 亂流",
-      "漢莎航空機師談判",
-      "俄安-12 墜機",
-      "虎航故宮彩繪機首航",
-      "2028 法恩堡航展展位",
-      "ICAO 蒙特婁航安展"
+      "法恩堡航展 2028 展位",
+      "AeroForce X 首飛",
+      "ICAO 蒙特婁 航安展",
+      "IAR-99 SM 交付",
+      "捷藍 B6-1717 亂流",
+      "虎航 彩繪機 福岡"
     ],
     "en": [
-      "JetBlue A320 turbulence",
-      "Lufthansa pilot contract talks",
-      "Russian An-12 crash",
-      "Tigerair Taiwan museum livery first flight",
-      "Farnborough 2028 airshow booth space",
-      "ICAO Montreal safety exhibition"
+      "Farnborough Airshow 2028 booth info",
+      "AeroForce X maiden flight details",
+      "ICAO Montreal safety exhibition info",
+      "IAR-99 SM trainer delivery status",
+      "JetBlue B6-1717 turbulence update",
+      "Tigerair Taiwan museum livery Fukuoka flight"
     ]
   }
 }
