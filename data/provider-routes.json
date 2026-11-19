@@ -74,11 +74,11 @@
       "schemaMode": null
     },
     "groq:qwen/qwen3.8-27b": {
-      "status": "verified",
-      "untilUtc": "2026-11-19T16:27Z",
-      "checkedUtc": "2026-11-18T16:27Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "checkedUtc": "2026-11-19T03:12Z",
+      "untilUtc": "2026-11-19T09:12Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -192,10 +192,82 @@
     },
     "nvidia:google/gemma-4-31b-it": {
       "status": "verified",
-      "checkedUtc": "2026-11-19T01:33Z",
       "untilUtc": "2026-11-20T01:33Z",
+      "checkedUtc": "2026-11-19T01:33Z",
       "failureClass": null,
       "diagnostic": null,
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "nvidia:nvidia/nemotron-3-super-120b-a12b": {
+      "status": "unavailable",
+      "untilUtc": "2026-11-20T02:51Z",
+      "checkedUtc": "2026-11-19T02:51Z",
+      "failureClass": "model_unavailable",
+      "diagnostic": "model absent from account catalog",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "nvidia:mistralai/mistral-medium-3.5-128b": {
+      "status": "unavailable",
+      "untilUtc": "2026-11-20T02:51Z",
+      "checkedUtc": "2026-11-19T02:51Z",
+      "failureClass": "model_unavailable",
+      "diagnostic": "model absent from account catalog",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "groq:openai/gpt-oss-20b": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T08:51Z",
+      "checkedUtc": "2026-11-19T02:51Z",
+      "failureClass": "unexpected",
+      "diagnostic": "entity evidence quote not found in current source: event_dates='2026-10-21'",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "cloudflare:@cf/qwen/qwen3.8-27b": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T08:51Z",
+      "checkedUtc": "2026-11-19T02:51Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 408",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "cloudflare:@cf/google/gemma-4-26b-a4b-it": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T08:51Z",
+      "checkedUtc": "2026-11-19T02:51Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "cloudflare:@cf/openai/gpt-oss-20b": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T08:51Z",
+      "checkedUtc": "2026-11-19T02:51Z",
+      "failureClass": "unexpected",
+      "diagnostic": "F1 claim adds high-risk atom 'H140' not present in its own sourceQuote",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "cloudflare:@cf/aisingapore/gemma-sea-lion-v4-27b-it": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T08:51Z",
+      "checkedUtc": "2026-11-19T02:51Z",
+      "failureClass": "unexpected",
+      "diagnostic": "entity lacks verified evidence: airports='Lake Havasu City, Arizona'",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:baidu/ernie-5.5-flash-preview:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T08:51Z",
+      "checkedUtc": "2026-11-19T02:51Z",
+      "failureClass": "truncated",
+      "diagnostic": "response truncated (length)",
       "probeVersion": 3,
       "schemaMode": null
     }

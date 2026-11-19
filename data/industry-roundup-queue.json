@@ -122,6 +122,187 @@
         "evidenceVersion": 2
       },
       "publishedExcerptId": null
+    },
+    {
+      "enqueuedUtc": "2026-11-19T02:51Z",
+      "routeReason": "verified_short_update",
+      "sourceGroupId": "g-20261119-0251-2",
+      "eventKey": "",
+      "article": {
+        "id": "a-20261119-0251-ntsb-finds-retardant-corroded-firefighti",
+        "publishedUtc": "2026-11-19T02:51Z",
+        "cat": "safety",
+        "primarySource": "AeroTime",
+        "image": null,
+        "sourceImageCandidates": [],
+        "zh": {
+          "title": "NTSB發現阻燃劑腐蝕滅火飛機 籲美國林務局強化測試",
+          "summary": "NTSB調查發現滅火飛機遭阻燃劑腐蝕，籲美國林務局強化測試。",
+          "body": [
+            "國家運輸安全委員會（NTSB）調查發現，滅火飛機使用的阻燃劑造成機體腐蝕。NTSB於2026年11月17日呼籲美國林務局強化測試要求。",
+            "Aero Air營運的MD-87曾參與林務局2023年的試驗。該機機翼主樑補強件受腐蝕，侵蝕深度超過補強件厚度的一半。",
+            "調查人員指出，林務局的核可程序未充分評估該化學品在實際操作條件下對飛機的影響。",
+            "相關阻燃劑Fortress FR-200由Fortress North America製造，已於2024年12月自林務局核可名單移除。"
+          ]
+        },
+        "en": {
+          "title": "NTSB finds retardant corroded firefighting aircraft, urges stronger testing",
+          "summary": "NTSB finds fire retardant corroded firefighting aircraft and urges stronger US Forest Service testing.",
+          "body": [
+            "The National Transportation Safety Board (NTSB) found that fire retardant caused corrosion in firefighting aircraft. On November 17, 2026, it called for stronger US Forest Service testing requirements.",
+            "An MD-87 operated by Aero Air took part in a Forest Service trial in 2023. Corrosion penetrated more than half the thickness of a wing-spar doubler on that aircraft.",
+            "Investigators found that the Forest Service’s approval process had not adequately assessed how the chemical would affect aircraft under actual operating conditions.",
+            "Fortress FR-200, a retardant product made by Fortress North America, was removed from the Forest Service’s approved list in December 2024."
+          ]
+        },
+        "sources": [
+          {
+            "name": "AeroTime — Fire retardant caused corrosion in firefighting aircraft, N…",
+            "url": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb"
+          }
+        ],
+        "articleFormat": "brief",
+        "sourcePublishedUtc": "2026-11-19T01:22Z",
+        "writer": "openai:gpt-6.1-terra",
+        "facts": [
+          {
+            "factId": "F1",
+            "claim": "The NTSB found that fire retardant caused corrosion in firefighting aircraft.",
+            "sourceQuote": "Fire retardant caused corrosion in firefighting aircraft, NTSB finds",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F2",
+            "claim": "On November 17, 2026, the NTSB called for stronger US Forest Service testing requirements following the findings.",
+            "sourceQuote": "The findings prompted the NTSB on November 17, 2026, to call for stronger US Forest Service testing requirements.",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F3",
+            "claim": "An MD-87 operated by Aero Air took part in a Forest Service trial in 2023.",
+            "sourceQuote": "an MD-87 operated by Oregon-based Aero Air, which flies firefighting missions as Erickson Aero Tanker.\nBoth participated in a 2023 Forest Service trial",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F4",
+            "claim": "Corrosion penetrated more than half the thickness of a wing-spar doubler on the MD-87.",
+            "sourceQuote": "On the MD-87, corrosion penetrated more than half the thickness of a wing-spar doubler",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F5",
+            "claim": "Investigators found that the US Forest Service’s approval process did not adequately assess the chemical’s effect on aircraft under actual operating conditions.",
+            "sourceQuote": "US Forest Service testing requirements. Investigators found that the agency’s approval process had failed to adequately assess how the chemical would affect aircraft under actual operating conditions.",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          },
+          {
+            "factId": "F6",
+            "claim": "Fortress FR-200, manufactured by Fortress North America, was removed from the Forest Service’s approved list in December 2024.",
+            "sourceQuote": "The retardant product, Fortress FR-200, manufactured by Fortress North America, was removed from the Forest Service’s approved list in December 2024.",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb",
+            "evidenceScope": "source",
+            "archiveEventId": null,
+            "archiveContext": false
+          }
+        ],
+        "riskFlags": [
+          "investigation",
+          "regulatory_action"
+        ],
+        "eventStatus": "confirmed",
+        "entities": {
+          "organizations": [
+            "National Transportation Safety Board",
+            "US Forest Service",
+            "Aero Air",
+            "Fortress North America"
+          ],
+          "aircraft_models": [
+            "MD-87"
+          ],
+          "locations": [
+            "US"
+          ],
+          "event_dates": [
+            "November 17, 2026",
+            "2023",
+            "December 2024"
+          ]
+        },
+        "entityEvidence": [
+          {
+            "entityType": "organizations",
+            "value": "National Transportation Safety Board",
+            "sourceQuote": "according to a National Transportation Safety Board (NTSB) investigation",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb"
+          },
+          {
+            "entityType": "organizations",
+            "value": "US Forest Service",
+            "sourceQuote": "call for stronger US Forest Service testing requirements",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Aero Air",
+            "sourceQuote": "an MD-87 operated by Oregon-based Aero Air",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb"
+          },
+          {
+            "entityType": "organizations",
+            "value": "Fortress North America",
+            "sourceQuote": "manufactured by Fortress North America",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb"
+          },
+          {
+            "entityType": "aircraft_models",
+            "value": "MD-87",
+            "sourceQuote": "an MD-87 operated by Oregon-based Aero Air",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb"
+          },
+          {
+            "entityType": "locations",
+            "value": "US",
+            "sourceQuote": "approved for use in US firefighting aircraft",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "November 17, 2026",
+            "sourceQuote": "The findings prompted the NTSB on November 17, 2026, to call for stronger US Forest Service testing requirements.",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "2023",
+            "sourceQuote": "Both participated in a 2023 Forest Service trial",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb"
+          },
+          {
+            "entityType": "event_dates",
+            "value": "December 2024",
+            "sourceQuote": "removed from the Forest Service’s approved list in December 2024",
+            "sourceUrl": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb"
+          }
+        ],
+        "evidenceVersion": 2
+      },
+      "publishedExcerptId": null
     }
   ],
   "history": [
