@@ -1,34 +1,34 @@
 {
   "version": 2,
-  "generatedUtc": "2026-11-18T16:52Z",
-  "targetDateTpe": "2026-11-19",
-  "sourceWindow": "month_to_date",
+  "generatedUtc": "2026-11-19T21:24Z",
+  "targetDateTpe": "2026-11-20",
+  "sourceWindow": "today",
   "generationMode": "llm",
-  "provider": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+  "provider": "gemini:gemini-3.6-flash",
   "sourceArticleIds": [
-    "a-farnborough-airshow-2028-space-93-percent-20261118",
-    "a-aerodata-aeroforce-x-first-flight-20261118",
-    "a-icao-aviation-safety-exhibition-montreal-20261118",
-    "a-romania-iar99-sm-first-two-delivery-20261118",
-    "a-jetblue-a320-severe-turbulence-fort-lauderdale-20261117",
-    "a-20261118-0629-tigerair-taiwan-s-museum-themed-aircraft"
+    "a-aer-lingus-a330-premium-economy-retrofit-20261118",
+    "a-emirates-dubai-interim-first-class-lounge-20261119",
+    "a-air-canada-longest-737-max-vancouver-liberia-20261118",
+    "a-shannon-airport-c130h-federal-indictment-20261117",
+    "a-spirit-google-data-sale-court-approval-20261117",
+    "a-reagan-national-midair-safety-review-20261118"
   ],
   "prompts": {
     "zh": [
-      "法恩堡航展 2028 展位",
-      "AeroForce X 首飛",
-      "ICAO 蒙特婁 航安展",
-      "IAR-99 SM 交付",
-      "捷藍 B6-1717 亂流",
-      "虎航 彩繪機 福岡"
+      "想了解愛爾蘭航空A330機隊的最新動態",
+      "請介紹阿聯酋航空在杜拜機場B候機區的貴賓室",
+      "想了解加拿大航空737 MAX從溫哥華出發的航線",
+      "查詢美軍C-130H在香農機場相關訊息",
+      "想了解Google收購精神航空資料的相關消息",
+      "查詢華盛頓地區飛安審查與相關建議"
     ],
     "en": [
-      "Farnborough Airshow 2028 booth info",
-      "AeroForce X maiden flight details",
-      "ICAO Montreal safety exhibition info",
-      "IAR-99 SM trainer delivery status",
-      "JetBlue B6-1717 turbulence update",
-      "Tigerair Taiwan museum livery Fukuoka flight"
+      "Tell me about Aer Lingus Airbus A330 updates",
+      "Show me the Emirates lounge at Dubai Concourse B",
+      "Tell me about Air Canada Boeing 737 MAX routes",
+      "Show details on the C-130H at Shannon Airport",
+      "Search details on Google buying Spirit Airlines data",
+      "Show the safety review for Washington DCA flights"
     ]
   }
 }
