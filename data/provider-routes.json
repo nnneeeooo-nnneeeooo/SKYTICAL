@@ -129,10 +129,73 @@
     },
     "gemini:gemma-4-31b-it": {
       "status": "waiting",
-      "checkedUtc": "2026-11-18T16:27Z",
       "untilUtc": "2026-11-18T22:27Z",
+      "checkedUtc": "2026-11-18T16:27Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "gemini:gemma-4-26b-a4b-it": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T07:33Z",
+      "checkedUtc": "2026-11-19T01:33Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "nvidia:z-ai/glm-5.3-flash": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T07:33Z",
+      "checkedUtc": "2026-11-19T01:33Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "nvidia:z-ai/glm-5.2": {
+      "status": "unavailable",
+      "untilUtc": "2026-11-20T01:33Z",
+      "checkedUtc": "2026-11-19T01:33Z",
+      "failureClass": "model_unavailable",
+      "diagnostic": "model absent from account catalog",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "nvidia:mistralai/mistral-large-4-1t-a52b": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T07:33Z",
+      "checkedUtc": "2026-11-19T01:33Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "nvidia:deepseek-ai/deepseek-v4.1-flash": {
+      "status": "unavailable",
+      "untilUtc": "2026-11-20T01:33Z",
+      "checkedUtc": "2026-11-19T01:33Z",
+      "failureClass": "model_unavailable",
+      "diagnostic": "model absent from account catalog",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "nvidia:deepseek-ai/deepseek-v4-pro": {
+      "status": "unavailable",
+      "untilUtc": "2026-11-20T01:33Z",
+      "checkedUtc": "2026-11-19T01:33Z",
+      "failureClass": "model_unavailable",
+      "diagnostic": "model absent from account catalog",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "nvidia:google/gemma-4-31b-it": {
+      "status": "verified",
+      "checkedUtc": "2026-11-19T01:33Z",
+      "untilUtc": "2026-11-20T01:33Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     }
