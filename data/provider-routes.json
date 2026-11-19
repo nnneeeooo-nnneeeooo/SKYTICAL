@@ -3,28 +3,28 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-11-18T22:04Z",
-      "checkedUtc": "2026-11-18T16:04Z",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
       "failureClass": "unexpected",
-      "diagnostic": "entity evidence quote not found in current source: locations='Mount Pennsylvania'",
+      "diagnostic": "publish_brief must have an empty decisionReason",
       "probeVersion": 3,
       "schemaMode": null
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-18T22:04Z",
-      "checkedUtc": "2026-11-18T16:04Z",
-      "failureClass": "unexpected",
-      "diagnostic": "zh.body[1] contains Simplified Chinese characters",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-18T22:04Z",
-      "checkedUtc": "2026-11-18T16:04Z",
-      "failureClass": "invalid_request",
-      "diagnostic": "HTTP 400 code=invalid_request_error",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "unexpected",
+      "diagnostic": "F1 claim date is not supported by its sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -47,36 +47,36 @@
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
+      "status": "verified",
+      "untilUtc": "2026-11-20T12:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": null,
+      "diagnostic": null,
+      "probeVersion": 3,
+      "schemaMode": "prompt"
+    },
+    "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-18T22:04Z",
-      "checkedUtc": "2026-11-18T16:04Z",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
-    "gemini:gemini-3.5-flash": {
-      "status": "waiting",
-      "untilUtc": "2026-11-18T22:04Z",
-      "checkedUtc": "2026-11-18T16:04Z",
-      "failureClass": "unexpected",
-      "diagnostic": "zh.body[0] contains Simplified Chinese characters",
-      "probeVersion": 3,
-      "schemaMode": null
-    },
     "cloudflare:@cf/openai/gpt-oss-120b": {
-      "status": "waiting",
-      "untilUtc": "2026-11-18T22:27Z",
-      "checkedUtc": "2026-11-18T16:27Z",
-      "failureClass": "timeout",
-      "diagnostic": "ReadTimeout",
+      "status": "verified",
+      "untilUtc": "2026-11-20T12:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
     "groq:qwen/qwen3.8-27b": {
       "status": "waiting",
-      "checkedUtc": "2026-11-19T03:12Z",
       "untilUtc": "2026-11-19T09:12Z",
+      "checkedUtc": "2026-11-19T03:12Z",
       "failureClass": "quota",
       "diagnostic": "HTTP 429 (credits exhausted?)",
       "probeVersion": 3,
@@ -84,19 +84,19 @@
     },
     "openrouter:inclusionai/ling-3.2-flash:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-18T22:27Z",
-      "checkedUtc": "2026-11-18T16:27Z",
-      "failureClass": "connection",
-      "diagnostic": "ConnectionError",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-4-hydrogen": {
       "status": "waiting",
-      "untilUtc": "2026-11-18T22:27Z",
-      "checkedUtc": "2026-11-18T16:27Z",
-      "failureClass": "http_error",
-      "diagnostic": "HTTP 503 code=UNAVAILABLE",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "timeout",
+      "diagnostic": "ReadTimeout",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -264,10 +264,109 @@
     },
     "openrouter:baidu/ernie-5.5-flash-preview:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-19T08:51Z",
-      "checkedUtc": "2026-11-19T02:51Z",
-      "failureClass": "truncated",
-      "diagnostic": "response truncated (length)",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "untilUtc": "2026-11-19T18:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:thinkingmachines/inkling-2-small:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "HTTP 403",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:nvidia/nemotron-3.5-super-vl:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:nvidia/nemotron-3.5-lightning:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:google/gemma-4-31b-it:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:google/gemma-4-26b-a4b-it:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:particle-ai/particle-1:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:dots-studio/dots-3-note-preview:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:recursive/flint-v1.0:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:cohere/north-mini-code:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
+      "probeVersion": 3,
+      "schemaMode": null
+    },
+    "openrouter:liquid/lfm-3-1.7b:free": {
+      "status": "waiting",
+      "untilUtc": "2026-11-19T18:14Z",
+      "checkedUtc": "2026-11-19T12:14Z",
+      "failureClass": "auth",
+      "diagnostic": "platform cooldown",
       "probeVersion": 3,
       "schemaMode": null
     }

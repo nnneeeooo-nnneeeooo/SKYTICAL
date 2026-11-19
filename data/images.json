@@ -14103,7 +14103,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-19T03:24:15.975712+00:00"
+      "checked_utc": "2026-11-19T12:45:54.357499+00:00"
     },
     "a-20261118-0629-us-lawmakers-reach-civil-aircraft-traffi": {
       "status": "none",
@@ -14152,6 +14152,32 @@
         "photoYear": 2025
       },
       "checked_utc": "2026-11-19T01:56:22.567815+00:00"
+    },
+    "a-20261119-industry-roundup-18-image-1": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "source-candidate:missing-source-evidence",
+        "lookup_official_source_photo:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-19T12:45:54.357499+00:00",
+      "next_retry_utc": "2026-11-19T18:45:54.357499+00:00"
+    },
+    "a-20261119-industry-roundup-18-image-2": {
+      "status": "matched",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/11/Recently-Saved-1-of-1-17-1200x675.jpeg",
+        "link": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb",
+        "subject": "MD-87",
+        "sourceCaption": "Aero Air",
+        "credit": "Aero Air",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "checked_utc": "2026-11-19T12:45:54.357499+00:00"
     }
   },
   "sources": {
@@ -17966,7 +17992,7 @@
       "image": null,
       "rejection_reason": "source-airline-unverified",
       "parser_version": 5,
-      "next_retry_utc": "2026-11-19T07:56:22.567815+00:00"
+      "next_retry_utc": "2026-11-19T18:45:54.357499+00:00"
     },
     "https://www.aerotime.aero/articles/spanish-airline-plus-ultra-files-for-creditor-protection-drops-most-routes": {
       "image": null,
@@ -17978,7 +18004,7 @@
       "image": null,
       "rejection_reason": "aircraft-model-mismatch",
       "parser_version": 5,
-      "next_retry_utc": "2026-11-19T07:56:22.567815+00:00"
+      "next_retry_utc": "2026-11-19T18:45:54.357499+00:00"
     },
     "https://www.aerotime.aero/articles/aapa-urges-governments-to-rethink-airline-taxes-fees-amid-soaring-fuel-costs": {
       "image": null,
@@ -18007,6 +18033,22 @@
       "rejection_reason": null,
       "parser_version": 5,
       "next_retry_utc": "2026-11-18T13:05:59.868637+00:00"
+    },
+    "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb": {
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/11/Recently-Saved-1-of-1-17-1200x675.jpeg",
+        "link": "https://www.aerotime.aero/articles/fire-retardant-aircraft-corrosion-ntsb",
+        "subject": "MD-87",
+        "sourceCaption": "Aero Air",
+        "credit": "Aero Air",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "rejection_reason": null,
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-19T18:45:54.357499+00:00"
     }
   }
 }
