@@ -1,5 +1,5 @@
 @media(max-width:720px){
-  .expanded-mobile-header .header-search-row{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand social" "search search" "settings settings";gap:8px 12px;padding:10px 12px 6px}
+  .expanded-mobile-header .header-search-row{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand social" "search search" "settings settings";gap:8px 12px;padding:10px 12px}
   .expanded-mobile-header .header-search-row .brand-shell{grid-area:brand;display:block;width:100%;max-width:174px;margin:0}
   .expanded-mobile-header .header-search-row .brand-link{display:flex;width:100%;height:auto;max-width:none;aspect-ratio:50/11}
   .expanded-mobile-header .header-search-row .brand-logo{width:100%;max-width:none;height:100%}
@@ -10,9 +10,9 @@
   .expanded-mobile-header .header-search-row .mobile-more-panel{grid-area:settings;position:static;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;min-width:0;padding:0;border:0;box-shadow:none;border-radius:0;background:transparent}
   .expanded-mobile-header .mobile-more-panel>strong{display:none}
   .expanded-mobile-header .mobile-more-panel>.seg{width:auto;max-width:100%;margin:0}
-  .expanded-mobile-header .mobile-more-panel .seg-btn{min-height:21.6px;padding:0 10px;font-size:12px}
+  .expanded-mobile-header .mobile-more-panel .seg-btn{min-height:36px;padding:6px 10px;font-size:12px}
   .expanded-mobile-header .site-nav,.expanded-mobile-header.js .site-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;overflow:visible;white-space:normal}
-  .expanded-mobile-header .site-nav .nav-link{display:flex;min-width:0;min-height:28px;padding:3px 3px;font-size:11px;gap:3px}
+  .expanded-mobile-header .site-nav .nav-link{display:flex;min-width:0;min-height:34px;padding:5px 3px;font-size:11px;gap:3px}
   .expanded-mobile-header .utility-row{flex-wrap:wrap;gap:6px 10px}
   .expanded-mobile-header .utility-row .mobile-timezones{display:flex;align-items:center;gap:10px;border:0;padding:0;order:1}
   .expanded-mobile-header .mobile-timezones .utility-clock{display:inline;font-size:10px;letter-spacing:0}
