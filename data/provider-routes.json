@@ -48,8 +48,8 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "verified",
-      "untilUtc": "2026-11-20T12:14Z",
-      "checkedUtc": "2026-11-19T12:14Z",
+      "untilUtc": "2026-11-21T19:18Z",
+      "checkedUtc": "2026-11-20T19:18Z",
       "failureClass": null,
       "diagnostic": null,
       "probeVersion": 3,
@@ -65,11 +65,11 @@
       "schemaMode": "prompt"
     },
     "cloudflare:@cf/openai/gpt-oss-120b": {
-      "status": "verified",
-      "untilUtc": "2026-11-20T12:14Z",
-      "checkedUtc": "2026-11-19T12:14Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "untilUtc": "2026-11-21T01:18Z",
+      "checkedUtc": "2026-11-20T19:18Z",
+      "failureClass": "truncated",
+      "diagnostic": "response truncated (length)",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -129,8 +129,8 @@
     },
     "gemini:gemma-4-31b-it": {
       "status": "waiting",
-      "checkedUtc": "2026-11-20T10:37Z",
       "untilUtc": "2026-11-20T16:37Z",
+      "checkedUtc": "2026-11-20T10:37Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
@@ -138,8 +138,8 @@
     },
     "gemini:gemma-4-26b-a4b-it": {
       "status": "waiting",
-      "untilUtc": "2026-11-20T03:01Z",
-      "checkedUtc": "2026-11-19T21:01Z",
+      "untilUtc": "2026-11-21T01:18Z",
+      "checkedUtc": "2026-11-20T19:18Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
@@ -147,8 +147,8 @@
     },
     "nvidia:z-ai/glm-5.3-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-20T03:01Z",
-      "checkedUtc": "2026-11-19T21:01Z",
+      "untilUtc": "2026-11-21T01:18Z",
+      "checkedUtc": "2026-11-20T19:18Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -165,8 +165,8 @@
     },
     "nvidia:mistralai/mistral-large-4-1t-a52b": {
       "status": "waiting",
-      "untilUtc": "2026-11-20T03:01Z",
-      "checkedUtc": "2026-11-19T21:01Z",
+      "checkedUtc": "2026-11-20T19:18Z",
+      "untilUtc": "2026-11-21T01:18Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,

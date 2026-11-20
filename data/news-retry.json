@@ -3730,12 +3730,12 @@
         "https://news.aa.com/news/news-details/2026/Update-on-FAAs-nationwide-ground-stop/default.aspx"
       ],
       "contentFailures": 0,
-      "serviceFailures": 12,
+      "serviceFailures": 13,
       "history": [],
-      "updatedUtc": "2026-11-20T10:37Z",
+      "updatedUtc": "2026-11-20T19:18Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-20T16:37Z",
+      "nextRetryUtc": "2026-11-21T01:18Z",
       "title": "Updates on American's operation following FAA's nationwide ground stop",
       "items": [
         {
@@ -4053,12 +4053,12 @@
         "https://www.reuters.com/business/us-bankruptcy-judge-approves-spirit-airlines-data-sale-google-2026-11-17"
       ],
       "contentFailures": 0,
-      "serviceFailures": 3,
+      "serviceFailures": 4,
       "history": [],
-      "updatedUtc": "2026-11-20T10:37Z",
+      "updatedUtc": "2026-11-20T19:18Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-20T16:37Z",
+      "nextRetryUtc": "2026-11-21T01:18Z",
       "title": "US bankruptcy judge approves Spirit Airlines data sale to Google",
       "items": [
         {
@@ -4070,20 +4070,6 @@
           "sourceKey": "reuters"
         }
       ]
-    },
-    "457795cee60189d4697d4b40": {
-      "sourceUrls": [
-        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59402",
-        "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2597&lang=1"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 2,
-      "history": [],
-      "updatedUtc": "2026-11-20T02:54Z",
-      "failureClass": "provider_failure",
-      "status": "waiting",
-      "nextRetryUtc": "2026-11-20T08:54Z",
-      "title": "115年地方公職人員選舉離島航線加班機將於11月20日開賣"
     },
     "86cacc99b3173c438f031094": {
       "sourceUrls": [
@@ -4231,6 +4217,51 @@
       "status": "waiting",
       "nextRetryUtc": "2026-11-20T05:18Z",
       "title": "US lawmakers target Airbus contracts over China ties"
+    },
+    "457795cee60189d4697d4b40": {
+      "sourceUrls": [
+        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59402",
+        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59405",
+        "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2597&lang=1"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 2,
+          "updatedUtc": "2026-11-20T02:54Z"
+        }
+      ],
+      "updatedUtc": "2026-11-20T19:18Z",
+      "nextRetryUtc": "2026-11-20T21:18Z",
+      "failureClass": "provider_failure",
+      "title": "115年地方公職人員選舉離島航線加班機將於11月20日開賣"
+    },
+    "7bf2e63fc8892a8f94c0be89": {
+      "sourceUrls": [
+        "https://www.evaair.com/zh-tw/about-eva-air/news/news-releases/2026-11-20-apex-news.html"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-20T19:18Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-21T01:18Z",
+      "title": "本公司榮獲APEX全球五星級航空級肯定同時拿下「大中華區最佳機上網路」等兩項大獎- 長榮航空| 台灣 Taiwan (繁體中文)",
+      "items": [
+        {
+          "url": "https://www.evaair.com/zh-tw/about-eva-air/news/news-releases/2026-11-20-apex-news.html",
+          "title": "本公司榮獲APEX全球五星級航空級肯定同時拿下「大中華區最佳機上網路」等兩項大獎- 長榮航空| 台灣 Taiwan (繁體中文)",
+          "summary": "",
+          "publishedUtc": "2026-11-20T11:56Z",
+          "source": "長榮航空 EVA Air",
+          "sourceKey": "evaair"
+        }
+      ]
     }
   }
 }
