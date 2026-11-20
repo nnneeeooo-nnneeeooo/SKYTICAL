@@ -14102,7 +14102,7 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-20T03:35:16.975260+00:00"
+      "checked_utc": "2026-11-20T11:08:06.428164+00:00"
     },
     "a-20261118-0629-us-lawmakers-reach-civil-aircraft-traffi": {
       "status": "none",
@@ -14176,7 +14176,33 @@
         "kind": "event_photo",
         "matched": "source:aerotime"
       },
-      "checked_utc": "2026-11-20T03:35:16.975260+00:00"
+      "checked_utc": "2026-11-20T11:08:06.428164+00:00"
+    },
+    "a-20261120-1037-china-airlines-earns-11th-straight-apex": {
+      "status": "none",
+      "attempts": 1,
+      "rejection_reasons": [
+        "lookup_official_source_photo:no-result",
+        "lookup_commons:no-result",
+        "topic_image:no-result"
+      ],
+      "checked_utc": "2026-11-20T11:08:06.428164+00:00",
+      "next_retry_utc": "2026-11-20T17:08:06.428164+00:00"
+    },
+    "a-20261120-industry-roundup-18-image-1": {
+      "status": "matched",
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/11/A-Sukhoi-Su-57-fifth-generation-fighter-undergoes-ground-preparations-ahead-of-delivery-to-the-Russian-Aerospace-Forces-in-November-2026-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/russia-third-su-57-fighter-batch-2026",
+        "subject": "Sukhoi Su-57",
+        "sourceCaption": "A Sukhoi Su-57 fifth-generation fighter undergoes ground preparations ahead of delivery to the Russian Aerospace Forces in November 2026. (Credit: Rostec)",
+        "credit": "Rostec",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "checked_utc": "2026-11-20T11:08:06.428164+00:00"
     }
   },
   "sources": {
@@ -17991,7 +18017,7 @@
       "image": null,
       "rejection_reason": "source-airline-unverified",
       "parser_version": 5,
-      "next_retry_utc": "2026-11-20T09:35:16.975260+00:00"
+      "next_retry_utc": "2026-11-20T17:08:06.428164+00:00"
     },
     "https://www.aerotime.aero/articles/spanish-airline-plus-ultra-files-for-creditor-protection-drops-most-routes": {
       "image": null,
@@ -18003,7 +18029,7 @@
       "image": null,
       "rejection_reason": "aircraft-model-mismatch",
       "parser_version": 5,
-      "next_retry_utc": "2026-11-20T09:35:16.975260+00:00"
+      "next_retry_utc": "2026-11-20T17:08:06.428164+00:00"
     },
     "https://www.aerotime.aero/articles/aapa-urges-governments-to-rethink-airline-taxes-fees-amid-soaring-fuel-costs": {
       "image": null,
@@ -18048,6 +18074,34 @@
       "rejection_reason": null,
       "parser_version": 5,
       "next_retry_utc": "2026-11-19T18:45:54.357499+00:00"
+    },
+    "https://www.aerotime.aero/articles/faa-boeing-737ng-autothrottle-loss-of-control-checks": {
+      "image": null,
+      "rejection_reason": "no-event-photo",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-20T17:08:06.428164+00:00"
+    },
+    "https://www.evaair.com/zh-tw/about-eva-air/about-us/market-and-sales-overview/eva-air-fleet/": {
+      "image": null,
+      "rejection_reason": "lookup-error:HTTPError",
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-20T17:08:06.428164+00:00"
+    },
+    "https://www.aerotime.aero/articles/russia-third-su-57-fighter-batch-2026": {
+      "image": {
+        "url": "https://www.aerotime.aero/images/2026/11/A-Sukhoi-Su-57-fifth-generation-fighter-undergoes-ground-preparations-ahead-of-delivery-to-the-Russian-Aerospace-Forces-in-November-2026-1200x675.jpg",
+        "link": "https://www.aerotime.aero/articles/russia-third-su-57-fighter-batch-2026",
+        "subject": "Sukhoi Su-57",
+        "sourceCaption": "A Sukhoi Su-57 fifth-generation fighter undergoes ground preparations ahead of delivery to the Russian Aerospace Forces in November 2026. (Credit: Rostec)",
+        "credit": "Rostec",
+        "license": null,
+        "provider": "AeroTime",
+        "kind": "event_photo",
+        "matched": "source:aerotime"
+      },
+      "rejection_reason": null,
+      "parser_version": 5,
+      "next_retry_utc": "2026-11-20T17:08:06.428164+00:00"
     }
   }
 }
