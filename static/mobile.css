@@ -230,12 +230,18 @@
 .mobile-refresh .header-search-row .header-search-clear{height:26px}
 .mobile-refresh .marquee-track{animation-duration:calc(var(--ticker-duration,80s) / 1.1)}
 
-/* Each mobile headline uses its own content height, without reserved rows. */
+/* Keep article gallery captions visible on mobile. */
 .mobile-refresh #hero-image-caption{display:none!important}
 .mobile-refresh .roundup-carousel #hero-image-caption{display:block!important}
-.mobile-refresh #hero-story-kicker,.mobile-refresh .hero-title,.mobile-refresh .summary-preview--hero{min-height:0!important}
-.mobile-refresh .hero-story>div:last-child{margin-top:8px!important}
+.mobile-refresh .hero-carousel:not(.home-hero-carousel) :is(#hero-story-kicker,.hero-title,.summary-preview--hero){min-height:0!important}
+.mobile-refresh .hero-carousel:not(.home-hero-carousel) .hero-story>div:last-child{margin-top:8px!important}
 .mobile-refresh .hero-title{line-height:1.3;margin:5px 0 7px}
 .mobile-refresh .summary-preview--hero .summary-preview__text{line-height:1.5;max-height:3em}
 .mobile-refresh .hero-dots{margin-top:6px}
+
+.mobile-refresh .home-hero-carousel .hero-copy{margin-top:4px}
+.mobile-refresh .home-hero-carousel .hero-title{line-height:1.22;margin:2px 0 4px}
+.mobile-refresh .home-hero-carousel .summary-preview--hero{gap:6px}
+.mobile-refresh .home-hero-carousel .summary-preview--hero .summary-preview__text{line-height:1.4;max-height:2.8em}
+.mobile-refresh .home-hero-carousel .hero-dots{margin-top:4px}
 }
