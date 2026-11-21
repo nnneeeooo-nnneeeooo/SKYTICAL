@@ -30,6 +30,17 @@
     </div>
     {% if a.roundup_slides %}
     {% include '_roundup_images.html' %}
+    {% elif a.photo_embed %}
+    <figure class="article-photo-embed" style="margin:0 0 22px;text-align:center;">
+      <iframe src="{{ a.photo_embed.url }}"
+              title="{% if html_lang.startswith('zh') %}APEX 區域獎頒獎典禮官方相簿{% else %}Official APEX regional awards photo album{% endif %}"
+              width="350" height="470" loading="lazy" referrerpolicy="no-referrer"
+              style="display:block;margin:auto;max-width:100%;border:0;"></iframe>
+      <figcaption class="text-muted" style="font-size:11.5px;margin-top:6px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <a href="{{ a.photo_embed.photo_url }}" target="_blank" rel="noopener noreferrer">{% if html_lang.startswith('zh') %}查看本文得主領獎照（PAX International）{% else %}View the airline’s award photo (PAX International){% endif %}</a>
+        <a href="{{ a.photo_embed.album_url }}" target="_blank" rel="noopener noreferrer">{% if html_lang.startswith('zh') %}APEX 官方頒獎相簿{% else %}Official APEX awards photo album{% endif %}</a>
+      </figcaption>
+    </figure>
     {% elif a.image_slides %}
     {% include '_article_images.html' %}
     {% elif a.image %}

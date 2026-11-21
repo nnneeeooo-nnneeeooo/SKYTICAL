@@ -25,7 +25,7 @@ from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
 from functools import lru_cache
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urlencode, urlsplit
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
@@ -1247,6 +1247,25 @@ def writer_model(writer, writer_models=None):
     return None
 
 
+def article_photo_embed(raw):
+    """Build a publisher-controlled Facebook album embed from a numeric ID."""
+    embed = raw.get("editorialPhotoEmbed")
+    if not isinstance(embed, dict):
+        return None
+    album_id = embed.get("facebookAlbumId")
+    photo_url = embed.get("photoUrl")
+    if (not isinstance(album_id, str) or not re.fullmatch(r"[0-9]{10,20}", album_id)
+            or not isinstance(photo_url, str) or not _safe_web_url(photo_url)):
+        return None
+    album_url = f"https://www.facebook.com/media/set/?set=a.{album_id}&type=3"
+    query = urlencode({"href": album_url, "show_text": "false", "width": 350})
+    return {
+        "url": f"https://www.facebook.com/plugins/post.php?{query}",
+        "album_url": album_url,
+        "photo_url": photo_url,
+    }
+
+
 def prep_article(raw):
     raw = normalize_article_record(raw)
     if raw is None:
@@ -1392,6 +1411,7 @@ def prep_article(raw):
         "tag_class": TAGCLS.get(cat, "tag-neutral"),
         "image": image,
         "images": gallery,
+        "photo_embed": article_photo_embed(raw),
         "roundup_images": roundup_slots,
         "source": str(raw.get("primarySource") or (sources[0]["name"] if sources else "—")),
         "time": time_label,
@@ -1634,6 +1654,7 @@ def roundup_body_sections(body):
 
 def art_view(a, lang: str):
     v = dict(a[lang])
+    v["photo_embed"] = a.get("photo_embed")
     v["display_summary"] = notification_summary(
         v.get("summary"), lang, v.get("title"))
     v["body_sections"] = (roundup_body_sections(v.get("body") or [])
