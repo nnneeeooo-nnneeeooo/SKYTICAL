@@ -536,7 +536,7 @@ def test_no_api_key_end_to_end():
     )
     check(result.returncode == 0, f"exit code 0 without key, got {result.returncode}: "
                                   f"{result.stderr.strip()}")
-    check("ANTHROPIC_API_KEY" in result.stdout, "notice printed to stdout")
+    check("no eligible model route" in result.stdout, "notice printed to stdout")
     check((tmp2 / "pending.json").read_bytes() == pending_before,
           "pending.json untouched without key")
     stats = load(tmp2 / "stats.json")
@@ -907,9 +907,7 @@ def test_model_chain_and_routing_policy():
                 os.environ[key] = value
     check(labels == ["nvidia:nvidia/nemotron-3-ultra-550b-a55b",
                      "nvidia:nvidia/nemotron-3-super-120b-a12b",
-                     "gemini:gemini-3-flash-preview",
-                     "openrouter:google/gemma-4-31b-it:free",
-                     f"nvidia:{providers.NVIDIA_DEFAULT_MODEL}"],
+                     "openrouter:google/gemma-4-31b-it:free"],
           f"order tokens honored in order, got {labels}")
 
     # --- platform auth death skips same-platform fallback models ----------

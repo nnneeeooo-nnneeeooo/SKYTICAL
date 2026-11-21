@@ -3191,10 +3191,7 @@ def main() -> None:
         print(f"write: persisted provider cooldowns active: {details}")
     major_deferred = 0
     if not providers:
-        print("write: no LLM API key set (OPENAI_API_KEY / "
-              "OPENCODE_API_KEY / "
-              "ANTHROPIC_API_KEY / GEMINI_API_KEY / NVIDIA_API_KEY / "
-              "OPENROUTER_API_KEY / WECHAT_API_KEY); "
+        print("write: no eligible model route (check the allowlist, credentials and cooldowns); "
               "only verified rule-based announcements can publish")
     if not groups:
         print("write: no pending groups")

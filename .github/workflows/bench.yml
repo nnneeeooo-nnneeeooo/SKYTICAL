@@ -52,7 +52,7 @@ jobs:
             echo "== OpenAI models (GPT 6.1 Terra) =="
             echo "OpenAI model selection is configured privately."
           fi
-          if [ -n "$OPENCODE_API_KEY" ]; then
+          if [ -n "$OPENCODE_API_KEY" ] && PYTHONPATH=pipeline python -c 'import sys; from model_config import ALLOWED_MODEL_ROUTES; sys.exit(not any(route.startswith("opencode:") for route in ALLOWED_MODEL_ROUTES))'; then
             echo "== OpenCode Console models =="
             curl -sf https://console.opencode.ai/inference/openai/v1/models \
               -H "Authorization: Bearer $OPENCODE_API_KEY" \
@@ -73,7 +73,7 @@ jobs:
               | python -c 'import json,sys; [print(m["name"]) for m in json.load(sys.stdin).get("models",[]) if "generateContent" in m.get("supportedGenerationMethods",[])]' \
               || echo "(model list unavailable)"
           fi
-          if [ -n "$WECHAT_API_KEY" ]; then
+          if [ -n "$WECHAT_API_KEY" ] && PYTHONPATH=pipeline python -c 'import sys; from model_config import model_route_allowed; sys.exit(not model_route_allowed("wechat", "Deepseek-v4-flash"))'; then
             echo "== WeChat Coding Plan model =="
             echo "Deepseek-v4-flash"
           fi
@@ -106,6 +106,10 @@ jobs:
             esac
             if [ -z "$key" ]; then
               echo "bench: $p skipped (no key)"
+              continue
+            fi
+            if ! PYTHONPATH=pipeline AVWIRE_PROVIDER_ORDER="$p" python -c 'import sys; from providers import build_providers; sys.exit(not build_providers())'; then
+              echo "bench: $p skipped (model route unavailable or disabled)"
               continue
             fi
             echo "== bench: $p =="
