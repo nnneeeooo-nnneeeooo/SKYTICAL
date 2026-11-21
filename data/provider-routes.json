@@ -48,19 +48,19 @@
     },
     "gemini:gemini-3.6-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T11:24Z",
-      "checkedUtc": "2026-11-21T05:24Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
+      "untilUtc": "2026-11-22T01:25Z",
+      "checkedUtc": "2026-11-21T19:25Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T11:38Z",
-      "checkedUtc": "2026-11-21T05:38Z",
-      "failureClass": "quota",
-      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
+      "untilUtc": "2026-11-22T01:25Z",
+      "checkedUtc": "2026-11-21T19:25Z",
+      "failureClass": "http_error",
+      "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -84,8 +84,8 @@
     },
     "openrouter:inclusionai/ling-3.2-flash:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T17:39Z",
-      "checkedUtc": "2026-11-21T17:38Z",
+      "untilUtc": "2026-11-21T19:26Z",
+      "checkedUtc": "2026-11-21T19:25Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -264,10 +264,10 @@
     },
     "openrouter:baidu/ernie-5.5-flash-preview:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-21T18:21Z",
-      "untilUtc": "2026-11-21T18:22Z",
-      "failureClass": "rate_limit",
-      "diagnostic": "HTTP 429 rate limit",
+      "checkedUtc": "2026-11-21T19:25Z",
+      "untilUtc": "2026-11-22T01:25Z",
+      "failureClass": "truncated",
+      "diagnostic": "response truncated (length)",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T18:10Z",
-      "checkedUtc": "2026-11-21T18:09Z",
+      "untilUtc": "2026-11-21T19:26Z",
+      "checkedUtc": "2026-11-21T19:25Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T18:10Z",
-      "checkedUtc": "2026-11-21T18:09Z",
+      "untilUtc": "2026-11-21T19:26Z",
+      "checkedUtc": "2026-11-21T19:25Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -326,11 +326,11 @@
       "schemaMode": null
     },
     "openrouter:particle-ai/particle-1:free": {
-      "status": "waiting",
-      "untilUtc": "2026-11-21T17:01Z",
-      "checkedUtc": "2026-11-21T17:00Z",
-      "failureClass": "rate_limit",
-      "diagnostic": "HTTP 429 rate limit",
+      "status": "verified",
+      "untilUtc": "2026-11-22T19:25Z",
+      "checkedUtc": "2026-11-21T19:25Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -363,8 +363,8 @@
     },
     "openrouter:liquid/lfm-3-1.7b:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T17:01Z",
-      "checkedUtc": "2026-11-21T17:00Z",
+      "untilUtc": "2026-11-21T19:26Z",
+      "checkedUtc": "2026-11-21T19:25Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
