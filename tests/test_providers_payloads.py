@@ -16,6 +16,9 @@ import json
 import os
 import sys
 from pathlib import Path
+from unittest.mock import patch
+
+import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
@@ -26,7 +29,10 @@ os.environ.setdefault("OPENCODE_API_KEY", "oc_sk_test-not-real")
 
 import providers  # noqa: E402
 from model_config import (  # noqa: E402
+    ALLOWED_MODEL_ROUTES,
     AUTOMATIC_MODEL_ORDER,
+    FREE_DRAFT_MODEL_ORDER,
+    OPENAI_MODEL_ORDER,
     OPENROUTER_MODEL_ORDER,
 )
 
@@ -68,12 +74,10 @@ def gemini_ok(parts):
 
 
 def with_post(fake_post, fn):
-    original = providers.requests.post
-    providers.requests.post = fake_post
-    try:
+    # Wire-format tests also exercise historical adapters using a fake transport.
+    with patch.object(providers.requests, "post", fake_post), patch.object(
+            providers, "model_route_allowed", return_value=True):
         return fn()
-    finally:
-        providers.requests.post = original
 
 
 SCHEMA = {"type": "object"}
@@ -138,49 +142,19 @@ def test_nvidia_model_profiles():
 
 
 def test_model_priority_defaults():
-    expected = (
-        "opencode:claude-sonnet-4-6",
-        "opencode:gpt-5.5",
-        "gemini:gemini-3.6-flash",
-        "opencode:gemini-3.1-pro",
-        "opencode:qwen3.6-plus",
-        "nvidia:z-ai/glm-5.2",
-        "opencode:glm-5.1",
-        "opencode:kimi-k2.6",
-        "gemini:gemini-3.5-flash",
-        "nvidia:deepseek-ai/deepseek-v4-pro",
-        "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-        "wechat:Deepseek-v4-flash",
-        "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-        "nvidia:qwen/qwen3.5-397b-a17b",
-        "nvidia:nvidia/nemotron-3-super-120b-a12b",
-        "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-        "nvidia:mistralai/mistral-medium-3.5-128b",
-        "openrouter:google/gemma-4-31b-it:free",
-        "openrouter:inclusionai/ling-3.0-flash:free",
-        "openrouter:google/gemma-4-26b-a4b-it:free",
-        "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-        "openrouter:openai/gpt-oss-20b:free",
-        "openrouter:nvidia/nemotron-3-nano-30b-a3b:free",
-        "openrouter:nvidia/nemotron-nano-12b-v2-vl:free",
-        "openrouter:nvidia/nemotron-nano-9b-v2:free",
-        "openrouter:poolside/laguna-s-2.1:free",
-        "openrouter:cohere/north-mini-code:free",
-        "openrouter:poolside/laguna-xs-2.1:free",
-        "groq:openai/gpt-oss-120b",
-        "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
-        "openai:gpt-6.1-terra",
-    )
-    check(providers.MODEL_ORDER == expected,
-          "model priority order matches the configured product order")
+    scheduled = FREE_DRAFT_MODEL_ORDER + OPENAI_MODEL_ORDER
+    check(len(scheduled) == 31 and set(scheduled) == ALLOWED_MODEL_ROUTES,
+          "all and only the 31 owner-approved routes are in the hourly list")
+    check(set(providers.MODEL_ORDER) == ALLOWED_MODEL_ROUTES
+          and providers.MODEL_ORDER[-1] == OPENAI_MODEL_ORDER[0],
+          "manual selectors contain only approved routes, with Terra last")
     active = (
         "gemini:gemini-3.6-flash",
         "gemini:gemini-3.5-flash",
         "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-        "wechat:Deepseek-v4-flash",
         "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
         "groq:openai/gpt-oss-120b",
-        "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
+        "cloudflare:@cf/openai/gpt-oss-120b",
         "openai:gpt-6.1-terra",
     )
     check(AUTOMATIC_MODEL_ORDER == active
@@ -200,14 +174,6 @@ def test_model_priority_defaults():
           "Claude Sonnet 4.6 is the highest-priority OpenCode default")
     check(providers.WECHAT_DEFAULT_MODEL == "Deepseek-v4-flash",
           "DeepSeek V4 Flash is the WeChat Coding Plan default")
-    check(expected[10:13] == (
-        "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
-        "wechat:Deepseek-v4-flash",
-        "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
-    ) and expected[14:16] == (
-        "nvidia:nvidia/nemotron-3-super-120b-a12b",
-        "openrouter:nvidia/nemotron-3-super-120b-a12b:free",
-    ), "complete catalog preserves owner model order")
     print("test_model_priority_defaults: done")
 
 
@@ -230,6 +196,27 @@ def test_fallback_last_with_environment_override():
     check(labels == ["gemini:gemini-3.6-flash", "openai:gpt-6.1-terra"],
           "environment overrides keep Fallback last and deduplicate it")
     print("test_fallback_last_with_environment_override: done")
+
+
+def test_allowlist_rejects_generation_before_transport(monkeypatch):
+    monkeypatch.setenv("OPENAI_API_KEY", "offline-test-key")
+    unapproved = [
+        providers.GeminiProvider("gemini-2.5-flash"),
+        providers.NvidiaProvider("mistralai/mistral-large-4-1t-a52b"),
+        providers.GroqProvider("qwen/unapproved"),
+        providers.CloudflareProvider("@cf/qwen/qwen3-30b-a3b-fp8"),
+        providers.OpenRouterProvider("nvidia/nemotron-3-super-120b-a12b:free"),
+        providers.WechatProvider("Deepseek-v4-flash"),
+        providers.OpenCodeProvider("gpt-5.5"),
+        providers.OpenAIProvider("gpt-5.5"),
+        providers.AnthropicProvider("claude-opus-5"),
+    ]
+    with patch.object(providers.requests, "post") as post:
+        for provider in unapproved:
+            with pytest.raises(providers.ProviderError, match="Model route is not allowed"):
+                provider.draft("sys", "user", SCHEMA)
+            assert provider.http_calls == 0
+        post.assert_not_called()
 
 
 def test_wechat_protocol_and_payloads():
@@ -302,8 +289,7 @@ def test_wechat_protocol_and_payloads():
             row.label for row in providers.build_providers()
             if row.name == "wechat"
         ]
-        check(automatic == ["wechat:Deepseek-v4-flash"],
-              "automatic writer exposes the WeChat provider in priority order")
+        check(not automatic, "automatic writer excludes the disabled WeChat route")
         try:
             provider._final_text(FakeResponse({"error": {"code": 401}}))
             check(False, "embedded WeChat 401 must disable the bad token")

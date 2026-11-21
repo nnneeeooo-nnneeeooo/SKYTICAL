@@ -20,8 +20,6 @@ from model_config import (  # noqa: E402
     AUTOMATIC_MODEL_ORDER,
     MODEL_DISPLAY_NAMES,
     MODEL_ORDER,
-    OPENCODE_MODEL_ORDER,
-    OPENROUTER_MODEL_ORDER,
     manual_reasoning_profile,
 )
 from providers import ProviderError  # noqa: E402
@@ -112,10 +110,16 @@ def test_payload_limits_and_ssrf():
         "up to five owner-supplied writer model labels are preserved")
     custom = sample_payload()
     custom["model"] = "custom"
-    custom["customModel"] = "openrouter:example/model:free"
+    custom["customModel"] = "openrouter:google/gemma-4-31b-it:free"
     custom_payload = manual_draft.validate_payload(custom)
-    check(custom_payload["model"] == "openrouter:example/model:free",
+    check(custom_payload["model"] == "openrouter:google/gemma-4-31b-it:free",
           "confirmation stage accepts a provider-prefixed custom model")
+    custom["customModel"] = "openrouter:particle-ai/particle-1:free"
+    try:
+        manual_draft.validate_payload(custom)
+        check(False, "unapproved custom model must be rejected")
+    except ValueError as exc:
+        check("route is not allowed" in str(exc), "valid model ID cannot bypass the allowlist")
     try:
         manual_draft._public_url("http://127.0.0.1/private")
         check(False, "loopback URL must be blocked")
@@ -382,8 +386,9 @@ def test_openrouter_manual_provider_order():
                 os.environ.pop(key, None)
             else:
                 os.environ[key] = value
-    check([row.label for row in rows] == list(OPENROUTER_MODEL_ORDER),
-          "manual fallback exposes all OpenRouter models in owner order")
+    check([row.label for row in rows] ==
+          [route for route in MODEL_ORDER if route.startswith("openrouter:")],
+          "manual fallback exposes only approved OpenRouter routes")
     check(all(row.reasoning_tier == "deep" for row in rows),
           "manual reasoning tier reaches every OpenRouter model")
 
@@ -407,10 +412,7 @@ def test_opencode_manual_provider_order():
                 os.environ.pop(key, None)
             else:
                 os.environ[key] = value
-    check([row.label for row in rows] == list(OPENCODE_MODEL_ORDER),
-          "manual fallback exposes all OpenCode models in owner order")
-    check(all(row.reasoning_tier == "deep" for row in rows),
-          "manual reasoning tier reaches every OpenCode model")
+    check(not rows, "manual fallback excludes all disabled OpenCode routes")
 
 
 def test_openai_manual_provider_order():

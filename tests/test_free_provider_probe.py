@@ -59,6 +59,16 @@ def main():
             result = probe.prepare_routes(attempted, now, validate, force=True)
         assert [x.model for x in result] == [nim.model, probe.FALLBACK_MODEL, paid.model]
         assert attempted == result, 'added free fallback remains in usage accounting'
+        blocked = providers.OpenRouterProvider('particle-ai/particle-1:free')
+        attempted = [blocked, paid]
+        with patch.object(probe.requests, 'get') as get:
+            assert probe.prepare_routes(attempted, now, validate, force=True) == [paid]
+            assert attempted == [paid]
+            get.assert_not_called()
+        with patch.object(probe, 'FALLBACK_MODEL', 'unapproved-model'), patch.object(
+                probe, 'catalog', return_value={nim.model}) as lookup:
+            assert probe.prepare_routes([nim, paid], now, validate, force=True) == [nim, paid]
+            lookup.assert_called_once_with(nim)
         assert all(call[1] == 'free-provider-probe-h140-v1' for call in calls)
         cf_routes = [providers.CloudflareProvider(model) for model in (
             '@cf/openai/gpt-oss-120b', '@cf/qwen/qwen3.8-27b')]

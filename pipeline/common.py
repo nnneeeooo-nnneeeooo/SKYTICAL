@@ -631,7 +631,8 @@ _TRANSPORT_EN_RE = re.compile(
     r"\b(?:"
     r"aviation|aerospace|airlines?|airports?|aircraft|airplanes?|aeroplanes?|"
     r"faa|ntsb|icao|iata|easa|eurocontrol|"
-    r"air\s+cargo|airspace|air\s+traffic|flights?|runways?|pilots?|"
+    r"air\s+(?:cargo|passenger\s+(?:demand|traffic))|airspace|"
+    r"air\s+traffic|flights?|runways?|pilots?|"
     r"cabin\s+crew|flight\s+attendants?|boeing|airbus|e-?vtol|ads-?b|"
     r"drones?|helicopters?|fighter\s+(?:jets?|aircraft)|bombers?|"
     r"air\s+force|air\s+base|airbase"
@@ -646,7 +647,7 @@ _TRANSPORT_HEADLINE_ZH_TERMS = (
 _TRANSPORT_HEADLINE_EN_RE = re.compile(
     r"\b(?:air\s+force|airshow|air\s+show|aircrew|red\s+arrows?|"
     r"seaglider|schiphol|farnborough|gulfstream|cessna|lockheed|"
-    r"recaro|collins|delta|rafale|fighter|"
+    r"recaro|collins|delta|rafale|fighter|embraer|e[-‑]jets?|"
     r"atr|wizz\s+air|westjet|airadvisor|rolls[-\s]+royce|trent\s+7000|"
     r"emals|steam\s+catapults?|"
     r"air\s+base|airbase)\b",

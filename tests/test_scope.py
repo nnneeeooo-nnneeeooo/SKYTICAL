@@ -68,6 +68,12 @@ def draft() -> dict:
     }
 
 
+def test_air_passenger_demand_and_aircraft_maintenance_are_in_scope():
+    assert common.is_transport_story(story("Air Passenger Demand Falls 0.5% in September"))
+    assert common.is_transport_story(story(
+        "Embraer and Envoy Air extend heavy maintenance agreement for E-Jets in the U.S."))
+
+
 def main() -> None:
     political = story(
         "府：總統視導漢光是責任與義務 作秀之說污名化國軍",

@@ -37,6 +37,7 @@ from common import (  # noqa: E402
 from model_config import (  # noqa: E402
     MODEL_DISPLAY_NAMES,
     MODEL_ORDER,
+    model_route_allowed,
     REASONING_TIERS,
 )
 from providers import (  # noqa: E402
@@ -367,6 +368,9 @@ def ocr_images(images: list[dict]) -> tuple[str, dict | None]:
     """Use the highest-priority Gemini key for factual OCR only."""
     if not images:
         return "", None
+    model = "gemini-3.6-flash"
+    if not model_route_allowed("gemini", model):
+        return "", {"status": 0, "message": "Gemini OCR model route is disabled"}
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
         return "", {"status": 0, "message": "Gemini key unavailable for OCR"}
@@ -383,7 +387,7 @@ def ocr_images(images: list[dict]) -> tuple[str, dict | None]:
     started = time.perf_counter()
     response = requests.post(
         "https://generativelanguage.googleapis.com/v1beta/models/"
-        "gemini-3.6-flash:generateContent",
+        f"{model}:generateContent",
         timeout=(10, 120),
         headers={"x-goog-api-key": key},
         json={
@@ -448,6 +452,8 @@ def validate_payload(payload: dict) -> dict:
         if not CUSTOM_MODEL_RE.fullmatch(custom_model):
             raise ValueError("invalid custom model")
         requested = custom_model
+        if not model_route_allowed(*requested.split(":", 1)):
+            raise ValueError("custom model route is not allowed")
     elif requested != "auto" and requested not in MODEL_ORDER:
         raise ValueError("invalid model")
     if publication_mode not in PUBLICATION_MODES:
@@ -576,7 +582,7 @@ def _providers_for(payload: dict) -> list:
             "openai": OpenAIProvider,
             "openrouter": OpenRouterProvider,
         }.get(platform)
-        if cls is None:
+        if cls is None or not model_route_allowed(platform, model):
             continue
         provider = cls(model, reasoning_tier=payload["reasoningTier"])
         if provider.available():

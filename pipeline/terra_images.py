@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import images
 from common import ARTICLES_DIR, DATA_DIR, USER_AGENT, load_json, now_utc, parse_iso, save_json
 from image_selection import MAX_STOCK_REUSE, image_key, rejection_reason, stock_usage, manual_image
+from model_config import model_route_allowed
 
 MODEL = "gpt-6.1-terra"
 CACHE_PATH = DATA_DIR / "terra-images.json"
@@ -43,6 +44,8 @@ def _text(response):
 
 
 def _ask(content, *, max_output_tokens=2048):
+    if not model_route_allowed("openai", MODEL):
+        raise RuntimeError("Terra model route is disabled")
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
         raise RuntimeError("OPENAI_API_KEY unavailable")

@@ -1,8 +1,44 @@
-"""Shared SKYTICAL model priority configuration.
+"""Authorized SKYTICAL model routes and caller-specific fallback orders."""
 
-The first entry is the default writer. The same order drives provider
-fallback and model display ordering.
-"""
+# Exact provider/model pairs authorized for outbound model requests.
+ALLOWED_MODEL_ROUTES = frozenset({
+    "cloudflare:@cf/openai/gpt-oss-120b",
+    "gemini:gemini-3.6-flash",
+    "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "groq:qwen/qwen3.8-27b",
+    "gemini:gemini-4-hydrogen",
+    "gemini:gemini-3.8-flash",
+    "gemini:gemini-3.5-flash",
+    "gemini:gemini-3.5-flash-lite",
+    "gemini:gemini-3.1-flash-lite",
+    "gemini:gemma-4-31b-it",
+    "gemini:gemma-4-26b-a4b-it",
+    "nvidia:z-ai/glm-5.3-flash",
+    "nvidia:z-ai/glm-5.2",
+    "nvidia:deepseek-ai/deepseek-v4.1-flash",
+    "nvidia:deepseek-ai/deepseek-v4-pro",
+    "nvidia:google/gemma-4-31b-it",
+    "nvidia:nvidia/nemotron-3-super-120b-a12b",
+    "nvidia:mistralai/mistral-medium-3.5-128b",
+    "nvidia:qwen/qwen3.5-397b-a17b",
+    "groq:openai/gpt-oss-120b",
+    "groq:openai/gpt-oss-20b",
+    "cloudflare:@cf/qwen/qwen3.8-27b",
+    "cloudflare:@cf/google/gemma-4-26b-a4b-it",
+    "cloudflare:@cf/openai/gpt-oss-20b",
+    "openrouter:nvidia/nemotron-3.5-super-vl:free",
+    "openrouter:nvidia/nemotron-3.5-lightning:free",
+    "openrouter:google/gemma-4-31b-it:free",
+    "openrouter:google/gemma-4-26b-a4b-it:free",
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+    "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+    "openai:gpt-6.1-terra",
+})
+
+
+def model_route_allowed(provider: str, model: str) -> bool:
+    return f"{provider}:{model}" in ALLOWED_MODEL_ROUTES
+
 
 DIRECT_MODEL_ORDER = (
     "gemini:gemini-3.6-flash",
@@ -17,7 +53,7 @@ DIRECT_MODEL_ORDER = (
 
 FREE_HOSTED_MODEL_ORDER = (
     "groq:openai/gpt-oss-120b",
-    "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8",
+    "cloudflare:@cf/openai/gpt-oss-120b",
 )
 
 OPENAI_DEFAULT_MODEL = "gpt-6.1-terra"
@@ -61,8 +97,8 @@ OPENROUTER_MODEL_ORDER = (
     "openrouter:poolside/laguna-xs-2.1:free",
 )
 
-# Complete model catalog shared by model selectors.
-MODEL_ORDER = (
+# Model catalog in manual selector order, including historically configured routes.
+_MANUAL_MODEL_ORDER = (
     OPENCODE_MODEL_ORDER[0],
     OPENCODE_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[0],
@@ -80,12 +116,11 @@ MODEL_ORDER = (
     DIRECT_MODEL_ORDER[7],
     *OPENROUTER_MODEL_ORDER[2:],
     *FREE_HOSTED_MODEL_ORDER,
-    OPENAI_MODEL_ORDER[0],
 )
 
 # Baseline order. Article-specific Terra routing can promote GPT 6.1 Terra after
 # primary/two-platform failure while retaining this order for other callers.
-AUTOMATIC_MODEL_ORDER = (
+_AUTOMATIC_MODEL_ORDER = (
     DIRECT_MODEL_ORDER[0],
     DIRECT_MODEL_ORDER[1],
     DIRECT_MODEL_ORDER[4],
@@ -95,18 +130,16 @@ AUTOMATIC_MODEL_ORDER = (
     OPENAI_MODEL_ORDER[0],
 )
 
-DEFAULT_PROVIDER_ORDER = ",".join(AUTOMATIC_MODEL_ORDER)
-
 # Candidate routes for the scheduled news writer. The live account catalog and
 # publication probe decide which entries can participate in each run.
-FREE_DRAFT_MODEL_ORDER = (
-    "cloudflare:@cf/openai/gpt-oss-120b",
+_FREE_DRAFT_MODEL_ORDER = (
     "gemini:gemini-3.6-flash",
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "cloudflare:@cf/openai/gpt-oss-120b",
+    "gemini:gemini-3.8-flash",
     "groq:qwen/qwen3.8-27b",
     "openrouter:inclusionai/ling-3.2-flash:free",
     "gemini:gemini-4-hydrogen",
-    "gemini:gemini-3.8-flash",
     "gemini:gemini-3.5-flash",
     "gemini:gemini-3.5-flash-lite",
     "gemini:gemini-3.1-flash-lite",
@@ -141,6 +174,16 @@ FREE_DRAFT_MODEL_ORDER = (
     "openrouter:cohere/north-mini-code:free",
     "openrouter:liquid/lfm-3-1.7b:free",
 )
+FREE_DRAFT_MODEL_ORDER = tuple(route for route in _FREE_DRAFT_MODEL_ORDER
+                               if route in ALLOWED_MODEL_ROUTES)
+AUTOMATIC_MODEL_ORDER = tuple(route for route in _AUTOMATIC_MODEL_ORDER
+                              if route in ALLOWED_MODEL_ROUTES)
+DEFAULT_PROVIDER_ORDER = ",".join(AUTOMATIC_MODEL_ORDER)
+MODEL_ORDER = tuple(dict.fromkeys(
+    route for route in (*_MANUAL_MODEL_ORDER, *FREE_DRAFT_MODEL_ORDER, *OPENAI_MODEL_ORDER)
+    if route in ALLOWED_MODEL_ROUTES
+))
+
 FREE_DRAFT_GOOGLE_MODELS = frozenset(
     route.split(":", 1)[1] for route in FREE_DRAFT_MODEL_ORDER if route.startswith("gemini:")
 )
@@ -173,7 +216,7 @@ MODEL_DISPLAY_NAMES = {
     "openrouter:recursive/flint-v1.0:free": "OpenRouter · Recursive Flint V1.0",
     "openrouter:liquid/lfm-3-1.7b:free": "OpenRouter · Liquid LFM 3 1.7B",
     FREE_HOSTED_MODEL_ORDER[0]: "Groq · OpenAI GPT-OSS 120B",
-    FREE_HOSTED_MODEL_ORDER[1]: "Cloudflare Workers AI · Qwen3 30B A3B",
+    "cloudflare:@cf/qwen/qwen3-30b-a3b-fp8": "Cloudflare Workers AI · Qwen3 30B A3B",
     "openai:gpt-6.1-terra": "GPT 6.1 Terra",
     "wechat:Deepseek-v4-flash":
         "WeChat Coding Plan · DeepSeek V4 Flash",

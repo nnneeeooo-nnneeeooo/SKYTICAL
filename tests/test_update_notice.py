@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "pipeline"))
-from update_notice import build_notices, notice_data, compact
+from update_notice import build_notices, notice_data
 
 
 def row(sha, zh, en, day="2026-11-16", kind="feature", **extra):
@@ -14,32 +14,35 @@ def row(sha, zh, en, day="2026-11-16", kind="feature", **extra):
 
 
 def main():
+    major = {"importance": "major"}
     rows = [
-        row("a", "原使用 Luna 的撰稿、審核與快報改用 GPT 6.1 Terra。", "Luna drafting, review and briefings now use GPT 6.1 Terra.", kind="system"),
-        row("b", "來源不足的新聞由 GPT 6.1 Terra 補查。", "GPT 6.1 Terra searches for additional sources.", kind="system"),
-        row("c", "航空短訊彙整每期最多三則，每則各有配圖並共用輪播。", "Roundups now have three image slides."),
-        row("d", "航空短訊彙整每期最多八則。", "Roundups contain eight stories.", day="2026-11-06"),
-        row("e", "手機排版調整。", "Mobile layout refined.", kind="design"),
-        row("f", "未來功能。", "A future feature.", day="2026-12-01"),
-        row("1", "舊功能。", "An old feature.", day="2026-10-01"),
-        row("2", "通知調整。", "Notice refined.", notice={"importance": "minor"}),
+        row("a", "撰稿流程更新。查證門檻維持。",
+            "Drafting has been updated. Source checks still apply.",
+            kind="system", notice=major),
+        row("b", "重大停飛消息優先處理。", "Major disruptions get priority.",
+            day="2026-11-15", notice=major),
+        row("c", "團隊介紹更新。", "Team introduction updated.",
+            notice={"importance": "minor"}),
+        row("d", "新聞配圖持續補齊。", "More news photos."),
+        row("e", "未來功能。", "A future feature.",
+            day="2026-12-01", notice=major),
+        row("f", "舊功能。", "An old feature.",
+            day="2026-10-01", notice=major),
+        row("1", "缺少英文。", "", notice=major),
     ]
-    data = build_notices({"entries": rows}, {"enabled": True, "contactEmail": "editor@example.com", "messages": {"zh": "站長neo，歡迎先行來信。", "en": "neo says: email me."}}, today=date(2026, 11, 16), model="gpt-6.1-terra")
-    assert len(data["zh"]["items"]) == len(data["en"]["items"]) == 3
-    assert [item["date"] for item in data["zh"]["items"]] == [item["date"] for item in data["en"]["items"]]
-    assert data["zh"]["items"][0]["copy"] == "加入新AI模型ChatGPT 6.1 Terra，撰稿、查證、快報一併換新。新聞資料不夠，還會繼續找來源。"
-    assert "joins the crew" in data["en"]["items"][0]["copy"]
-    assert "evidence" in data["en"]["items"][0]["copy"]
-    assert "三則" in data["zh"]["items"][1]["copy"]
-    assert "eight" not in json.dumps(data["en"])
+    station = {"enabled": True, "contactEmail": "editor@example.com",
+               "messages": {"zh": "先行來信", "en": "email me."}}
+    data = build_notices({"entries": rows}, station, today=date(2026, 11, 16))
+    assert [item["date"] for item in data["zh"]["items"]] == ["2026-11-16", "2026-11-15"]
+    assert [item["date"] for item in data["en"]["items"]] == ["2026-11-16", "2026-11-15"]
+    assert data["en"]["items"][0]["title"] == "Drafting has been updated"
+    assert "Source checks still apply." in data["en"]["items"][0]["copy"]
     assert data["en"]["station"]["email"] == "editor@example.com"
-    assert not any("kind" in item for item in data["zh"]["items"])
-    unchanged = build_notices({"entries": rows}, {}, today=date(2026, 11, 16), model="different-model")
-    assert not any("AI大升級" in item["title"] for item in unchanged["zh"]["items"])
-    broken = build_notices({"entries": [row("bad", "錯誤", "Bad"), row("3", "沒有英文", "")]}, {}, today=date(2026, 11, 16))
-    assert broken["zh"]["items"] == broken["en"]["items"] == []
-    assert compact("AI 大升級，GPT 6.1 Terra 接棒！", "zh") == "AI大升級，GPT 6.1 Terra接棒！"
+    assert "Team introduction" not in json.dumps(data)
+    assert "More news photos" not in json.dumps(data)
     actual = notice_data()
+    for phrase in ("\u5718\u968a\u4ecb\u7d39\u66f4\u65b0", "\u8fd1\u671f\u65b0\u805e\u7167\u7247\u6301\u7e8c\u88dc\u9f4a", "team introduction", "more photos for recent news"):
+        assert phrase.casefold() not in json.dumps(actual, ensure_ascii=False).casefold()
     for lang in ("zh", "en"):
         assert actual[lang]["items"] and actual[lang]["station"]
         assert actual[lang]["ui"]["emailLabel"] in actual[lang]["station"]["message"]

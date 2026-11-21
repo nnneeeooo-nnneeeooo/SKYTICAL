@@ -536,7 +536,7 @@ def test_no_api_key_end_to_end():
     )
     check(result.returncode == 0, f"exit code 0 without key, got {result.returncode}: "
                                   f"{result.stderr.strip()}")
-    check("ANTHROPIC_API_KEY" in result.stdout, "notice printed to stdout")
+    check("no eligible model route" in result.stdout, "notice printed to stdout")
     check((tmp2 / "pending.json").read_bytes() == pending_before,
           "pending.json untouched without key")
     stats = load(tmp2 / "stats.json")
@@ -907,9 +907,7 @@ def test_model_chain_and_routing_policy():
                 os.environ[key] = value
     check(labels == ["nvidia:nvidia/nemotron-3-ultra-550b-a55b",
                      "nvidia:nvidia/nemotron-3-super-120b-a12b",
-                     "gemini:gemini-3-flash-preview",
-                     "openrouter:google/gemma-4-31b-it:free",
-                     f"nvidia:{providers.NVIDIA_DEFAULT_MODEL}"],
+                     "openrouter:google/gemma-4-31b-it:free"],
           f"order tokens honored in order, got {labels}")
 
     # --- platform auth death skips same-platform fallback models ----------
@@ -1708,7 +1706,7 @@ def test_luna_important_early_audit():
           "important source publishes after source-bound bilingual audit")
 
 
-def test_free_first_tries_remaining_models_before_terra():
+def test_important_free_first_story_tries_terra_first():
     _, terra = _luna_safety_fixture()
     quota = FakeProvider("gemini", [providers.ProviderQuotaError("HTTP 429")])
     quota.label = "gemini:gemini-3.6-flash"
@@ -1721,8 +1719,8 @@ def test_free_first_tries_remaining_models_before_terra():
     with patch.dict(os.environ, {"AVWIRE_FREE_FIRST": "true", "AVWIRE_LUNA_EDITORIAL": "true"}), \
             patch.object(write, "build_providers", return_value=chain):
         write.main()
-    check([p.calls for p in chain] == [1, 1, 1, 1, 0],
-          "every available free route can fail before Terra, including a model sharing the same key")
+    check([p.calls for p in chain] == [1, 0, 0, 0, 0],
+          "important stories use Terra before the approved free routes")
     check(len(all_articles()) == 1 and not load(DATA / "pending.json")["groups"],
           "Terra's fallback draft still passes the normal publication gates")
 
@@ -1812,7 +1810,7 @@ def main():
              test_all_providers_auth_dead,
              test_no_api_key_end_to_end,
              test_luna_important_early_audit,
-             test_free_first_tries_remaining_models_before_terra,
+             test_important_free_first_story_tries_terra_first,
              test_luna_audit_unavailable_keeps_source_unseen,
              test_luna_audit_repairs_once_and_revalidates,
              test_luna_invalid_repair_spends_content_retry_budget]

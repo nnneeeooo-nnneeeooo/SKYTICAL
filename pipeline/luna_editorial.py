@@ -49,7 +49,28 @@ def routes(group, providers, alive):
     """Resuming after a yield means that provider did not produce a draft."""
     from editorial_policy import free_first_enabled
     if free_first_enabled():
-        yield from (provider for provider in providers if provider in alive)
+        from model_config import OPENAI_DEFAULT_MODEL
+        terra = next((p for p in providers
+                      if p.name == "openai" and p.model == OPENAI_DEFAULT_MODEL), None)
+        if not enabled() or terra is None:
+            yield from (provider for provider in providers if provider in alive)
+            return
+        failed = set()
+        tried_terra = important(group)
+        if tried_terra and terra in alive:
+            yield terra
+        fallback_after = policy()["ordinary_failed_platforms"]
+        for provider in providers:
+            if provider is terra or provider not in alive:
+                continue
+            if not tried_terra and len(failed) >= fallback_after and terra in alive:
+                tried_terra = True
+                yield terra
+            if provider in alive:
+                yield provider
+                failed.add(provider.name)
+        if not tried_terra and terra in alive:
+            yield terra
         return
     remaining = list(providers)
     failed = set()

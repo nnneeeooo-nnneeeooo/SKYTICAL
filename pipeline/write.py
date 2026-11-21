@@ -1909,6 +1909,15 @@ _TECH_ATOM_RE = re.compile(
     r"|(?<![A-Za-z0-9])[A-Za-z]{1,5}\d{2,5}[A-Za-z]{0,5}(?![A-Za-z0-9])"
 )
 _TIME_ATOM_RE = re.compile(r"(?<!\d)(?:[01]?\d|2[0-3]):[0-5]\d(?!\d)")
+_SOURCE_CLOCK_RE = re.compile(
+    r"(?<![\d.])(?P<hour>[01]?\d|2[0-3])[.:](?P<minute>[0-5]\d)"
+    r"(?![\d.])(?=\s*(?:am\b|pm\b|a\.m\.|p\.m\.|local time\b|UTC\b))",
+    re.IGNORECASE,
+)
+_INCH_ATOM_RE = re.compile(
+    r"(?<![\d.])(?P<number>\d+(?:\.\d+)?)\s*[-‑–]?\s*(?:inches|inch|吋|英寸)"
+    r"(?![A-Za-z])", re.IGNORECASE,
+)
 _NUMBER_ATOM_RE = re.compile(
     r"(?<![A-Za-z0-9.])(?:\d+\.\d+|\d{1,3}(?:,\d{3})+|\d{2,})"
     r"(?:\s*[-–]\s*(?:\d+\.\d+|\d{1,3}(?:,\d{3})+|\d{2,}))?"
@@ -2018,9 +2027,24 @@ def claim_evidence_problem(facts: list[dict]) -> str | None:
                 return f"{fact_id} claim date is not supported by its sourceQuote"
             for index in range(start, end):
                 masked[index] = " "
+        # Match the full measurement before the technical-ID pattern can split
+        # a decimal like 13.3-inch into a spurious 3-inch identifier.
+        inches = {m["number"] for m in _INCH_ATOM_RE.finditer(quote)}
+        for match in _INCH_ATOM_RE.finditer("".join(masked)):
+            if match["number"] not in inches:
+                return f"{fact_id} claim measurement is not supported by its sourceQuote"
+            masked[match.start():match.end()] = " " * len(match.group())
+        residual = "".join(masked)
+        clock_quote = _SOURCE_CLOCK_RE.sub(
+            lambda m: f"{int(m['hour']):02d}:{m['minute']}", quote)
+        clocks = {m.group().zfill(5) for m in _TIME_ATOM_RE.finditer(clock_quote)}
+        for match in _TIME_ATOM_RE.finditer(residual):
+            clock = match.group().zfill(5)
+            if clock not in clocks:
+                return f"{fact_id} claim time {clock!r} is not supported by its sourceQuote"
+            masked[match.start():match.end()] = " " * len(match.group())
         residual = "".join(masked)
         atoms = []
-        atoms.extend(m.group() for m in _TIME_ATOM_RE.finditer(residual))
         atoms.extend(m.group() for m in _TECH_ATOM_RE.finditer(residual))
         atoms.extend(m.group() for m in _NUMBER_ATOM_RE.finditer(residual))
         atoms.extend(m.group("n") for m in _SINGLE_COUNT_RE.finditer(residual))
@@ -3191,10 +3215,7 @@ def main() -> None:
         print(f"write: persisted provider cooldowns active: {details}")
     major_deferred = 0
     if not providers:
-        print("write: no LLM API key set (OPENAI_API_KEY / "
-              "OPENCODE_API_KEY / "
-              "ANTHROPIC_API_KEY / GEMINI_API_KEY / NVIDIA_API_KEY / "
-              "OPENROUTER_API_KEY / WECHAT_API_KEY); "
+        print("write: no eligible model route (check the allowlist, credentials and cooldowns); "
               "only verified rule-based announcements can publish")
     if not groups:
         print("write: no pending groups")

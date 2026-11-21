@@ -15,6 +15,7 @@ import requests
 from common import DATA_DIR, ROOT, iso_minute, load_json, now_utc, parse_iso, save_json
 from draft_recovery import draft_timeout
 from editorial_policy import is_free_provider
+from model_config import model_route_allowed
 from providers import (NvidiaProvider, ProviderError, classify_failure,
                        safe_api_error, safe_failure_message)
 
@@ -72,6 +73,8 @@ def quarantine(provider, exc):
 def catalog(provider):
     """Confirm configured IDs against the account catalog, without logging bodies."""
     import os
+    if not model_route_allowed(provider.name, provider.model):
+        raise ProviderError(f"Model route is not allowed: {provider.label}")
     if provider.name == "gemini":
         url = "https://generativelanguage.googleapis.com/v1beta/models"
         headers = {"x-goog-api-key": os.environ["GEMINI_API_KEY"]}
@@ -121,12 +124,15 @@ def catalog(provider):
 
 
 def prepare_routes(providers, now, validate, *, force=False, time_budget=None):
-    candidates = list(providers)
+    candidates = [provider for provider in providers
+                  if model_route_allowed(provider.name, provider.model)]
     # This hosted NIM fallback receives exactly the same catalog and publication
     # gates as configured routes. Never add subscription/pay-per-call services.
-    if any(p.name == "nvidia" and getattr(p, "requires_verification", False)
-           for p in candidates) and not any(
-            p.name == "nvidia" and p.model == FALLBACK_MODEL for p in candidates):
+    if (model_route_allowed("nvidia", FALLBACK_MODEL)
+            and any(p.name == "nvidia" and getattr(p, "requires_verification", False)
+                    for p in candidates)
+            and not any(p.name == "nvidia" and p.model == FALLBACK_MODEL
+                        for p in candidates)):
         extra = NvidiaProvider(FALLBACK_MODEL)
         index = next((i for i, p in enumerate(candidates) if p.name == "openai"), len(candidates))
         candidates.insert(index, extra)
