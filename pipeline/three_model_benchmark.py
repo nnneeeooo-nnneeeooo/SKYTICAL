@@ -44,7 +44,7 @@ def candidate(ref):
     if not body or len(body) < 460:
         print(f"source {name}/{index}: insufficient extracted body")
         return None
-    return {**item, "fulltext": body}
+    return {**item, "source": entries.get("source") or name, "sourceKey": name, "fulltext": body}
 
 
 def run_route(name):
@@ -104,7 +104,8 @@ def prepare():
     groups = [{"id": f"bench-{i:02d}", "primarySource": item["source"], "items": [item]}
               for i, item in enumerate(items, 1)]
     save(OUT / "cohort.json", groups)
-    print("Same cohort for all routes: " + ", ".join(g["id"] for g in groups), flush=True)
+    for group in groups:
+        print(f"{group['id']}: {group['items'][0]['title']}", flush=True)
     def invoke(route):
         subprocess.run([sys.executable, __file__, route], check=True)
     with ThreadPoolExecutor(max_workers=3) as pool:
