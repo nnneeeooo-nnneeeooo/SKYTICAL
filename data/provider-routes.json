@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
-      "status": "waiting",
-      "untilUtc": "2026-11-21T06:58Z",
-      "checkedUtc": "2026-11-21T00:58Z",
-      "failureClass": "unexpected",
-      "diagnostic": "publish_brief must have an empty decisionReason",
+      "status": "verified",
+      "untilUtc": "2026-11-22T17:38Z",
+      "checkedUtc": "2026-11-21T17:38Z",
+      "failureClass": null,
+      "diagnostic": null,
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -21,10 +21,10 @@
     },
     "groq:openai/gpt-oss-120b": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T06:58Z",
-      "checkedUtc": "2026-11-21T00:58Z",
+      "untilUtc": "2026-11-21T23:38Z",
+      "checkedUtc": "2026-11-21T17:38Z",
       "failureClass": "unexpected",
-      "diagnostic": "publish_brief body does not meet brief contract (zh=150 content characters, en=62 words, paragraphs=2/2)",
+      "diagnostic": "F1 claim date is not supported by its sourceQuote",
       "probeVersion": 3,
       "schemaMode": null
     },
@@ -84,8 +84,8 @@
     },
     "openrouter:inclusionai/ling-3.2-flash:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T00:59Z",
-      "checkedUtc": "2026-11-21T00:58Z",
+      "untilUtc": "2026-11-21T17:39Z",
+      "checkedUtc": "2026-11-21T17:38Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -93,8 +93,8 @@
     },
     "gemini:gemini-4-hydrogen": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T06:58Z",
-      "checkedUtc": "2026-11-21T00:58Z",
+      "untilUtc": "2026-11-21T23:38Z",
+      "checkedUtc": "2026-11-21T17:38Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 503 code=UNAVAILABLE",
       "probeVersion": 3,
@@ -147,8 +147,8 @@
     },
     "nvidia:z-ai/glm-5.3-flash": {
       "status": "waiting",
-      "checkedUtc": "2026-11-21T17:00Z",
       "untilUtc": "2026-11-21T23:00Z",
+      "checkedUtc": "2026-11-21T17:00Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -165,8 +165,8 @@
     },
     "nvidia:mistralai/mistral-large-4-1t-a52b": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T01:18Z",
-      "checkedUtc": "2026-11-20T19:18Z",
+      "untilUtc": "2026-11-21T23:38Z",
+      "checkedUtc": "2026-11-21T17:38Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -219,8 +219,8 @@
     },
     "groq:openai/gpt-oss-20b": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T06:58Z",
-      "checkedUtc": "2026-11-21T00:58Z",
+      "untilUtc": "2026-11-21T23:38Z",
+      "checkedUtc": "2026-11-21T17:38Z",
       "failureClass": "unexpected",
       "diagnostic": "F2 claim date is not supported by its sourceQuote",
       "probeVersion": 3,
@@ -282,8 +282,8 @@
     },
     "openrouter:nvidia/nemotron-3.5-super-vl:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T06:58Z",
-      "checkedUtc": "2026-11-21T00:58Z",
+      "untilUtc": "2026-11-21T23:38Z",
+      "checkedUtc": "2026-11-21T17:38Z",
       "failureClass": "unexpected",
       "diagnostic": "publish_brief must have an empty decisionReason",
       "probeVersion": 3,
@@ -291,10 +291,10 @@
     },
     "openrouter:nvidia/nemotron-3.5-lightning:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-21T06:58Z",
-      "checkedUtc": "2026-11-21T00:58Z",
-      "failureClass": "truncated",
-      "diagnostic": "response truncated (length)",
+      "checkedUtc": "2026-11-21T17:38Z",
+      "untilUtc": "2026-11-21T23:38Z",
+      "failureClass": "connection",
+      "diagnostic": "ConnectionError",
       "probeVersion": 3,
       "schemaMode": null
     },
