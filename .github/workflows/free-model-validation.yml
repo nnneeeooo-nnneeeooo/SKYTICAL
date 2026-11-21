@@ -1,54 +1,45 @@
 name: free-model-validation
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - '.github/workflows/free-model-validation.yml'
-      - 'pipeline/providers.py'
-      - 'pipeline/write.py'
-      - 'pipeline/free_provider_probe.py'
-      - 'config/free_provider_probe.json'
   workflow_dispatch:
-    inputs:
-      provider_order:
-        description: '僅驗證指定免費路由（留空使用完整清單）'
-        required: false
-        type: string
 
 permissions:
   contents: read
 
 jobs:
-  validate:
-    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+  compare:
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    concurrency:
-      group: free-model-validation-${{ github.event.pull_request.number || github.ref }}
-      cancel-in-progress: true
+    env:
+      BENCH_OUTPUT: ${{ runner.temp }}/model-compare
+      AVWIRE_DATA_DIR: ${{ runner.temp }}/model-compare-state
+      PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-          cache: pip
       - run: pip install -r requirements.txt
-      - name: Validate free routes against the same public source
+      - name: Run isolated shared-source comparison
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY || secrets.API_1_NVIDIA_NEMOTRON_3_ULTRA_550B_A55B }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          AVWIRE_PROVIDER_ORDER: ${{ inputs.provider_order || 'gemini:gemini-3.6-flash,gemini:gemini-3.5-flash,nvidia:nvidia/nemotron-3-ultra-550b-a55b,nvidia:nvidia/nemotron-3-super-120b-a12b,openrouter:nvidia/nemotron-3-ultra-550b-a55b:free,groq:openai/gpt-oss-120b,cloudflare:@cf/openai/gpt-oss-120b' }}
-          AVWIRE_DATA_DIR: ${{ runner.temp }}/free-model-validation
-          PYTHONUNBUFFERED: '1'
-        run: python pipeline/free_provider_probe.py --force
+        run: python pipeline/three_model_benchmark.py
+      - name: Encrypt results for local review
+        if: always()
+        shell: bash
+        run: |
+          set -eu
+          key_file="$(mktemp)"
+          trap 'rm -f "$key_file"' EXIT
+          openssl rand -hex 32 > "$key_file"
+          mkdir -p "$RUNNER_TEMP/model-compare-export"
+          openssl pkeyutl -encrypt -pubin -inkey config/model-compare-public.pem -in "$key_file" -out "$RUNNER_TEMP/model-compare-export/key.bin" -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256
+          tar -C "$BENCH_OUTPUT" -czf - . | openssl enc -aes-256-ctr -pbkdf2 -salt -pass "file:$key_file" -out "$RUNNER_TEMP/model-compare-export/results.bin"
       - uses: actions/upload-artifact@v6
         if: always()
         with:
-          name: free-model-validation
-          path: ${{ runner.temp }}/free-model-validation/provider-routes.json
-          retention-days: 7
+          name: shared-source-model-comparison
+          path: ${{ runner.temp }}/model-compare-export
+          retention-days: 1
