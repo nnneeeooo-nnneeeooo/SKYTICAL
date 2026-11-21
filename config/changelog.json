@@ -5,6 +5,16 @@
   "updatedThrough": "2026-11-22",
   "entries": [
     {
+      "date": "2026-11-22",
+      "kind": "system",
+      "commit": "01a1b9bf8f6b24a5025af141482b6765edb28d61",
+      "zh": "新聞撰稿與查證流程更新。一般新聞優先由通過試寫的模型撰寫，重大消息優先交由 GPT 6.1 Terra。刊登前仍核對原始來源，現在也能辨識等義的時間與尺寸寫法。",
+      "en": "News drafting and source checks have been updated. Routine stories start with models that have passed drafting checks, and GPT 6.1 Terra takes the lead on major stories. Drafts still undergo source checks before publication, which now recognize equivalent ways to write times and dimensions.",
+      "notice": {
+        "importance": "major"
+      }
+    },
+    {
       "date": "2026-11-21",
       "kind": "fix",
       "commit": "991ba50c7693c6febe2e301afd9d3ac21b7cfbf0",
