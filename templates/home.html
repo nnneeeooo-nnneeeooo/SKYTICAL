@@ -48,24 +48,28 @@
     </div>
     <div class="center-col">
       {% if hero %}
-      <div id="hero-carousel" class="hero-carousel" role="region"
+      <div id="hero-carousel" class="hero-carousel home-hero-carousel{% if hero_candidates|length > 1 %} home-hero-carousel--has-navigation{% endif %}" role="region"
            data-rotation-ms="{{ (hero_rotation_seconds * 1000)|int }}"
            data-major-pinned="{{ 'true' if hero_major_pinned|default(false) else 'false' }}"
            aria-roledescription="carousel"
            aria-label="{% if html_lang.startswith('zh') %}頭條新聞輪播{% else %}Headline story carousel{% endif %}">
       <a id="hero-story-link" class="hero-story" href="{{ hero.url }}"{% if hero.external %} target="_blank" rel="noopener"{% endif %}>
         {% if hero.image %}
-        <img id="hero-story-image" class="hero-img"
-             data-fallback-src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}"
-             src="{{ hero.image.url }}" alt="{{ hero.image.subject or '' }}">
+        <div class="hero-media">
+          <img id="hero-story-image" class="hero-img"
+               data-fallback-src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}"
+               src="{{ hero.image.url }}" alt="{{ hero.image.subject or '' }}">
+        </div>
         <div id="hero-image-caption" class="text-muted" style="font-size:10.5px;margin-top:4px;"><b data-image-description style="color:var(--color-text);">{{ hero.image.subject }}</b>{% if hero.image.credit %} · © {{ hero.image.credit }}{% endif %}{% if hero.image.license %} · {{ hero.image.license }}{% endif %}{% if hero.image.provider %} · {{ hero.image.provider }}{% endif %}</div>
         {% else %}
-        <img id="hero-story-image" class="hero-img" data-image-fallback="true"
-             data-fallback-src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}"
-             src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}" alt="SKYTICAL">
+        <div class="hero-media">
+          <img id="hero-story-image" class="hero-img" data-image-fallback="true"
+               data-fallback-src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}"
+               src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}" alt="SKYTICAL">
+        </div>
         <div id="hero-image-caption" class="text-muted" style="font-size:10.5px;margin-top:4px;">{% if html_lang.startswith('zh') %}暫無可驗證的事件或資料照片，先顯示 SKYTICAL 預設圖片。{% else %}No verified event or file photo is available yet; showing the SKYTICAL default image.{% endif %}</div>
         {% endif %}
-        <div style="margin-top:16px;">
+        <div class="hero-copy">
           <span id="hero-story-kicker" class="card-kicker" style="font-size:11px;">{% if hero_candidates %}{{ hero_candidates[0].kicker }}{% else %}{{ hero.cat_label }}{% if html_lang.startswith('zh') %}-{{ t.topStory }}．{% else %} — {{ t.topStory }} · {% endif %}{{ hero.time }}{% endif %}</span>
           <h2 id="hero-story-title" class="hero-title" aria-live="polite">{{ hero.title }}</h2>
           {{ notification_summary(hero.display_summary, t.summaryLabel, 'hero') }}
