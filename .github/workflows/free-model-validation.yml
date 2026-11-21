@@ -26,7 +26,8 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API }}
           AVWIRE_PAID_BUDGET_ENABLED: "true"
-        run: python pipeline/three_model_benchmark.py
+        # Keep the benchmark's usage reservations in its isolated runner ledger.
+        run: env -u GITHUB_ACTIONS python pipeline/three_model_benchmark.py
       - name: Encrypt results for local review
         if: always()
         shell: bash
