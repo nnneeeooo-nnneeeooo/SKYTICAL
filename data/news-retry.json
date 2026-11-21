@@ -4039,12 +4039,12 @@
         "https://www.reuters.com/business/us-bankruptcy-judge-approves-spirit-airlines-data-sale-google-2026-11-17"
       ],
       "contentFailures": 0,
-      "serviceFailures": 4,
+      "serviceFailures": 5,
       "history": [],
-      "updatedUtc": "2026-11-20T19:18Z",
+      "updatedUtc": "2026-11-21T05:16Z",
       "failureClass": "source_insufficient",
       "status": "waiting",
-      "nextRetryUtc": "2026-11-21T01:18Z",
+      "nextRetryUtc": "2026-11-21T11:16Z",
       "title": "US bankruptcy judge approves Spirit Airlines data sale to Google",
       "items": [
         {
@@ -4204,28 +4204,6 @@
       "nextRetryUtc": "2026-11-20T05:18Z",
       "title": "US lawmakers target Airbus contracts over China ties"
     },
-    "457795cee60189d4697d4b40": {
-      "sourceUrls": [
-        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59402",
-        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59405",
-        "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2597&lang=1"
-      ],
-      "contentFailures": 0,
-      "serviceFailures": 1,
-      "status": "waiting",
-      "history": [
-        {
-          "status": "waiting",
-          "contentFailures": 0,
-          "serviceFailures": 2,
-          "updatedUtc": "2026-11-20T02:54Z"
-        }
-      ],
-      "updatedUtc": "2026-11-20T19:18Z",
-      "nextRetryUtc": "2026-11-20T21:18Z",
-      "failureClass": "provider_failure",
-      "title": "115年地方公職人員選舉離島航線加班機將於11月20日開賣"
-    },
     "7bf2e63fc8892a8f94c0be89": {
       "sourceUrls": [
         "https://www.evaair.com/zh-tw/about-eva-air/news/news-releases/2026-11-20-apex-news.html"
@@ -4317,6 +4295,48 @@
           "sourceKey": "simpleflying"
         }
       ]
+    },
+    "457795cee60189d4697d4b40": {
+      "sourceUrls": [
+        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59402",
+        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59405",
+        "https://air.mnd.gov.tw/TW/News/News_Detail.aspx?CID=213&ID=59409",
+        "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2597&lang=1"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "status": "waiting",
+      "history": [
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 2,
+          "updatedUtc": "2026-11-20T02:54Z"
+        },
+        {
+          "status": "waiting",
+          "contentFailures": 0,
+          "serviceFailures": 1,
+          "updatedUtc": "2026-11-20T19:18Z"
+        }
+      ],
+      "updatedUtc": "2026-11-21T05:16Z",
+      "nextRetryUtc": "2026-11-21T07:16Z",
+      "failureClass": "provider_failure",
+      "title": "115年地方公職人員選舉離島航線加班機將於11月20日開賣"
+    },
+    "2b05ffea007e0862594d542f": {
+      "sourceUrls": [
+        "https://simpleflying.com/why-virgin-atlantic-targeting-the-40-raf-pilots-britain-f-35-fleet-flyable"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-21T05:16Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-21T07:16Z",
+      "title": "Why Virgin Atlantic Is Targeting The 40 RAF Pilots Keeping Britain's F-35 Fleet Flyable"
     }
   }
 }
