@@ -11,11 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      BENCH_OUTPUT: ${{ runner.temp }}/model-compare
-      AVWIRE_DATA_DIR: ${{ runner.temp }}/model-compare-state
       PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v5
+      - name: Prepare temporary output locations
+        run: |
+          printf 'BENCH_OUTPUT=%s/model-compare\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
+          printf 'AVWIRE_DATA_DIR=%s/model-compare-state\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
