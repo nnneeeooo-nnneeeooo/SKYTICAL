@@ -48,7 +48,7 @@ def main():
                 pass
         assert post.call_count == 1 and not sleep.called
         # Unsupported Groq models do not receive GPT-OSS-only schema options.
-        q = providers.GroqProvider('other-model')
+        q = providers.GroqProvider('qwen/qwen3.8-27b')
         with patch.object(providers.requests, 'post', return_value=good) as post:
             q.draft('sys', 'source', {'type': 'object'})
             assert 'response_format' not in post.call_args.kwargs['json']

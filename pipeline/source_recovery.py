@@ -12,6 +12,7 @@ import requests
 from common import DATA_DIR, iso_minute, load_json, norm_url, now_utc, parse_iso, save_json
 import fulltext
 from companion import significant_tokens
+from model_config import model_route_allowed
 
 MODEL = "gpt-6.1-terra"
 CACHE_PATH = DATA_DIR / "source-recovery.json"
@@ -44,6 +45,8 @@ def _key(group):
 
 
 def _search(group):
+    if not model_route_allowed("openai", MODEL):
+        raise RuntimeError("Terra model route is disabled")
     from paid_budget import post
     from providers import extract_json
     key = os.environ.get("OPENAI_API_KEY")

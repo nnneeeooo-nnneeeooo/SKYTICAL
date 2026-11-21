@@ -101,9 +101,11 @@ def main():
     import manual_draft
     with patch.dict(os.environ, creds, clear=True):
         selected = manual_draft._providers_for({
-            'model': 'cloudflare:@cf/qwen/qwen3-30b-a3b-fp8',
+            'model': 'cloudflare:@cf/qwen/qwen3.8-27b',
             'reasoningTier': 'deep'})
-        assert [p.name for p in selected] == ['cloudflare', 'groq']
+        assert selected[0].label == 'cloudflare:@cf/qwen/qwen3.8-27b'
+        assert {p.name for p in selected} == {'cloudflare', 'groq'}
+        assert len(selected) == 7
         assert manual_draft.CUSTOM_MODEL_RE.fullmatch(selected[0].label)
     import write
     p = providers.GroqProvider()

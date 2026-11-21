@@ -27,11 +27,19 @@ jobs:
     timeout-minutes: 5
     env:
       WECHAT_CODINGPLAN_TOKEN: ${{ secrets.DeepSeekV4Flash_API }}
+      WECHAT_SMOKE_MODEL: Deepseek-v4-flash
     steps:
+      - uses: actions/checkout@v5
+
       - name: Verify WeChat Coding Plan DeepSeek V4 Flash API
         shell: bash
         run: |
           set -euo pipefail
+
+          if ! PYTHONPATH=pipeline python3 -c 'import os, sys; from model_config import model_route_allowed; sys.exit(not model_route_allowed("wechat", os.environ["WECHAT_SMOKE_MODEL"]))'; then
+            echo "WeChat model route is disabled by the SKYTICAL allowlist."
+            exit 0
+          fi
 
           if [ -z "${WECHAT_CODINGPLAN_TOKEN:-}" ]; then
             echo "::error::Repository secret DeepSeekV4Flash_API is missing or empty."
@@ -40,7 +48,7 @@ jobs:
 
           request_file="${RUNNER_TEMP}/wechat-codingplan-request.json"
           response_file="${RUNNER_TEMP}/wechat-codingplan-response.json"
-          printf '%s' '{"model":"Deepseek-v4-flash","messages":[{"role":"user","content":"Reply with one short confirmation token."}],"thinking":{"type":"disabled"},"max_tokens":16,"stream":false}' > "${request_file}"
+          printf '{"model":"%s","messages":[{"role":"user","content":"Reply with one short confirmation token."}],"thinking":{"type":"disabled"},"max_tokens":16,"stream":false}' "$WECHAT_SMOKE_MODEL" > "${request_file}"
 
           http_status="$(
             curl --silent --show-error \

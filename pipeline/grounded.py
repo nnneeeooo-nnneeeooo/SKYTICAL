@@ -38,6 +38,7 @@ import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import is_google_news_url, squash_text  # noqa: E402
+from model_config import model_route_allowed, openai_runtime_model  # noqa: E402
 from providers import extract_json  # noqa: E402
 
 # The primary model can be configured without giving up automatic recovery.
@@ -176,8 +177,9 @@ def call_openai_grounded(window):
     if not key:
         return None, None
     model = os.environ.get("BRIEFING_GROUNDED_MODEL") or "gpt-6.1-terra"
-    from model_config import openai_runtime_model
     model = openai_runtime_model(model)
+    if not model_route_allowed("openai", model):
+        return None, None
     wire_model = model
     effort = "max"
     from paid_budget import post
@@ -287,6 +289,8 @@ def call_grounded(window) -> tuple[dict | None, SimpleNamespace | None]:
     }
     failures = []
     for model in GROUNDED_MODELS:
+        if not model_route_allowed("gemini", model):
+            continue
         resp = requests.post(
             "https://generativelanguage.googleapis.com/v1beta/models/"
             f"{model}:generateContent",
@@ -315,7 +319,9 @@ def call_grounded(window) -> tuple[dict | None, SimpleNamespace | None]:
               f"(HTTP {resp.status_code}); trying fallback")
         if resp.status_code not in (404, 408, 429, 500, 502, 503, 504):
             break
-    raise RuntimeError("grounded models unavailable: " + " | ".join(failures))
+    if failures:
+        raise RuntimeError("grounded models unavailable: " + " | ".join(failures))
+    return None, None
 
 
 def _seen_key(headline_zh: str) -> str:

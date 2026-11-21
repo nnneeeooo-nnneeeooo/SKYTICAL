@@ -53,8 +53,9 @@ from model_config import (
     DEFAULT_PROVIDER_ORDER,
     MODEL_ORDER,
     OPENAI_DEFAULT_MODEL,
-    openai_runtime_model,
     manual_reasoning_profile,
+    model_route_allowed,
+    openai_runtime_model,
 )
 
 try:
@@ -278,6 +279,11 @@ class ProviderError(Exception):
     """Transient failure of a single call; try the next provider."""
 
 
+def _require_model_route(provider: str, model: str) -> None:
+    if not model_route_allowed(provider, model):
+        raise ProviderError(f"Model route is not allowed: {provider}:{model}")
+
+
 class ProviderAuthError(ProviderError):
     """Key invalid/forbidden; every later call is doomed this run."""
 
@@ -448,6 +454,7 @@ class AnthropicProvider:
         return bool(os.environ.get("ANTHROPIC_API_KEY")) and anthropic is not None
 
     def draft(self, system_prompt: str, user_prompt: str, schema: dict):
+        _require_model_route(self.name, self.model)
         if self._client is None:
             self._client = anthropic.Anthropic()
         self.http_calls += 1
@@ -594,6 +601,7 @@ class GeminiProvider:
         return config
 
     def _post(self, payload: dict, repair: bool = False):
+        _require_model_route(self.name, self.model)
         url = ("https://generativelanguage.googleapis.com/v1beta/models/"
                f"{self.model}:generateContent")
         self.http_calls += 1
@@ -847,6 +855,7 @@ class NvidiaProvider:
         return extras
 
     def _post(self, messages: list, repair: bool):
+        _require_model_route(self.name, self.model)
         payload = {
             "model": self.model,
             "messages": messages,
@@ -1087,6 +1096,7 @@ class GroqProvider(NvidiaProvider):
         return response
 
     def _send_payload(self, payload, repair):
+        _require_model_route(self.name, payload["model"])
         self.http_calls += 1
         self.repair_calls += int(repair)
         started, response = time.perf_counter(), None
@@ -1111,7 +1121,7 @@ class CloudflareProvider(GroqProvider):
     name = "cloudflare"
     output_tokens = 8192
     repair_tokens = 4096
-    default_model = "@cf/qwen/qwen3-30b-a3b-fp8"
+    default_model = "@cf/openai/gpt-oss-120b"
     key_env = "CLOUDFLARE_API_TOKEN"
 
     def draft(self, system_prompt, user_prompt, schema):
@@ -1169,6 +1179,7 @@ class WechatProvider(NvidiaProvider):
         return bool(os.environ.get("WECHAT_API_KEY"))
 
     def _post(self, messages: list, repair: bool):
+        _require_model_route(self.name, self.model)
         payload = {
             "model": self.model,
             "messages": messages,
@@ -1261,6 +1272,7 @@ class OpenRouterProvider(NvidiaProvider):
         return extras
 
     def _post(self, messages: list, repair: bool):
+        _require_model_route(self.name, self.model)
         payload = {
             "model": self.model,
             "messages": messages,
@@ -1393,6 +1405,7 @@ class OpenCodeProvider(NvidiaProvider):
 
     def _post_json(self, url: str, payload: dict, headers: dict,
                    repair: bool):
+        _require_model_route(self.name, payload.get("model", self.model))
         self.http_calls += 1
         if repair:
             self.repair_calls += 1
@@ -1670,6 +1683,7 @@ class OpenAIProvider(OpenCodeProvider):
 
     def _post_json(self, url: str, payload: dict, headers: dict,
                    repair: bool):
+        _require_model_route(self.name, self.model)
         # Send the actual model ID. A stale private Luna mapping must never
         # redirect Terra calls while provenance claims a different model.
         payload = {**payload, "model": self.model}
@@ -1769,15 +1783,17 @@ def build_providers(*, default_order=DEFAULT_ORDER) -> list:
         model = model.strip() or None
         if key == "openai":
             model = openai_runtime_model(model or os.environ.get("AVWIRE_OPENAI_MODEL"))
-        if not key or (key, model) in seen:
+        if not key:
             continue
-        seen.add((key, model))
         cls = _REGISTRY.get(key)
         if cls is None:
             print(f"write: unknown provider '{key}' in AVWIRE_PROVIDER_ORDER; "
                   "ignoring")
             continue
         provider = cls(model)
-        if provider.available():
+        route = (provider.name, provider.model)
+        if (route not in seen and model_route_allowed(*route)
+                and provider.available()):
+            seen.add(route)
             providers.append(provider)
     return providers
