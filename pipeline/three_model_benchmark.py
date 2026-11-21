@@ -1,6 +1,7 @@
 """Run the same public-source cohort through three SKYTICAL drafting routes."""
 import contextlib
 import copy
+import hashlib
 import io
 import json
 import os
@@ -13,13 +14,8 @@ from pathlib import Path
 import fulltext
 import write
 from common import now_utc
-from providers import CloudflareProvider, GeminiProvider, classify_failure, safe_failure_message
-
-ROUTES = {
-    "cloudflare-120b": (CloudflareProvider, "@cf/openai/gpt-oss-120b"),
-    "gemini-36": (GeminiProvider, "gemini-3.6-flash"),
-    "gemini-38": (GeminiProvider, "gemini-3.8-flash"),
-}
+from draft_recovery import draft_timeout
+from providers import OpenAIProvider, classify_failure, safe_failure_message
 SOURCES = (
     ("airbus", 0), ("boeing", 0), ("ntsb", 0), ("caataiwan", 0), ("faa", 1),
     ("iata", 2), ("rollsroyce", 0), ("evaair", 0), ("embraer", 0), ("easa", 3),
@@ -47,17 +43,18 @@ def candidate(ref):
     return {**item, "source": entries.get("source") or name, "sourceKey": name, "fulltext": body}
 
 
-def run_route(name):
-    cls, model = ROUTES[name]
-    groups = json.loads((OUT / "cohort.json").read_text(encoding="utf-8"))
+def run_route(shard):
+    groups = json.loads((OUT / "cohort.json").read_text(encoding="utf-8"))[shard::2]
+    path = OUT / f"terra-{shard}.json"
     results = []
-    provider = cls(model)
+    provider = OpenAIProvider("gpt-6.1-terra")
     if not provider.available():
-        save(OUT / f"{name}.json", [{"id": g["id"], "gate": "credentialsUnavailable"} for g in groups])
+        save(path, [{"id": g["id"], "gate": "credentialsUnavailable"} for g in groups])
         return
     for group in groups:
         row = {"id": group["id"]}
         before = provider.http_calls
+        usage_before = dict(provider.usage)
         start = time.monotonic()
         draft = provider.draft
 
@@ -69,8 +66,8 @@ def run_route(name):
         provider.draft = capture
         check_log = io.StringIO()
         try:
-            with contextlib.redirect_stdout(check_log):
-                result, facts = write._validated_draft(provider, group, tries=1, max_attempt_seconds=120)
+            with contextlib.redirect_stdout(check_log), draft_timeout(300):
+                result, facts = write._validated_draft(provider, group, tries=1)
                 if result and result.get("status") in {"publish", "publish_brief"}:
                     article = write.build_article(result, group, now_utc(), set(), provider.label, facts)
                     row["gate"] = "pass" if article else "buildRejected"
@@ -87,34 +84,47 @@ def run_route(name):
             provider.draft = draft
         row["checkLog"] = check_log.getvalue()[:1600]
         row["calls"] = provider.http_calls - before
+        row["usage"] = {key: value - usage_before[key] for key, value in provider.usage.items()}
         row["seconds"] = round(time.monotonic() - start, 2)
         results.append(row)
-        save(OUT / f"{name}.json", results)
-        print(f"{name} {group['id']}: {row['gate']} {row.get('failure', '')}", flush=True)
-        time.sleep(max(0, 15 - row["seconds"]))
+        save(path, results)
+        print(f"terra {group['id']}: {row['gate']} {row.get('failure', '')}", flush=True)
 
 
 def prepare():
+    def digest(text):
+        return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
     fixture = json.loads((ROOT / "config/free_provider_probe.json").read_text(encoding="utf-8"))
+    manifest = json.loads((ROOT / "config/terra-compare-manifest.json").read_text(encoding="utf-8"))
+    if (digest(write.SYSTEM_PROMPT) != manifest["system"]
+            or digest(json.dumps(write.DRAFT_SCHEMA, sort_keys=True)) != manifest["schema"]):
+        raise RuntimeError("System prompt or draft schema differs from the preceding benchmark")
     with ThreadPoolExecutor(max_workers=8) as pool:
-        eligible = [item for item in pool.map(candidate, SOURCES) if item]
-    items = [fixture["items"][0], *eligible][:10]
-    if len(items) != 10:
-        raise RuntimeError(f"Only {len(items)} sources had sufficient extracted text")
-    groups = [{"id": f"bench-{i:02d}", "primarySource": item["source"], "items": [item]}
-              for i, item in enumerate(items, 1)]
+        items = {item["url"]: item for item in pool.map(candidate, SOURCES) if item}
+    probe = fixture["items"][0]
+    items[probe["url"]] = probe
+    groups = []
+    for index, source in enumerate(manifest["sources"], 1):
+        item = items.get(source["url"])
+        if not item:
+            raise RuntimeError(f"Original source unavailable for bench-{index:02d}")
+        group = {"id": f"bench-{index:02d}", "primarySource": item["source"], "items": [item]}
+        if digest(write.group_prompt(group)) != source["prompt"]:
+            raise RuntimeError(f"Prompt differs from original for {group['id']}")
+        groups.append(group)
     save(OUT / "cohort.json", groups)
     for group in groups:
         print(f"{group['id']}: {group['items'][0]['title']}", flush=True)
-    def invoke(route):
-        subprocess.run([sys.executable, __file__, route], check=True)
-    with ThreadPoolExecutor(max_workers=3) as pool:
-        list(pool.map(invoke, ROUTES))
+    def invoke(shard):
+        subprocess.run([sys.executable, __file__, str(shard)], check=True)
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        list(pool.map(invoke, (0, 1)))
 
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     if len(sys.argv) == 2:
-        run_route(sys.argv[1])
+        run_route(int(sys.argv[1]))
     else:
         prepare()
