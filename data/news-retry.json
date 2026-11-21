@@ -4370,7 +4370,7 @@
         "https://avherald.com/h?article=548245e8&opt=0"
       ],
       "contentFailures": 0,
-      "serviceFailures": 1,
+      "serviceFailures": 2,
       "status": "waiting",
       "history": [
         {
@@ -4386,8 +4386,8 @@
           "updatedUtc": "2026-11-21T18:09Z"
         }
       ],
-      "updatedUtc": "2026-11-21T19:38Z",
-      "nextRetryUtc": "2026-11-21T21:38Z",
+      "updatedUtc": "2026-11-21T22:27Z",
+      "nextRetryUtc": "2026-11-22T04:27Z",
       "failureClass": "provider_failure",
       "title": "Incident: Niugini B763 near Davao on Nov 21st 2026, engine fire indication"
     },
@@ -4436,6 +4436,42 @@
           "sourceKey": "simpleflying"
         }
       ]
+    },
+    "de5b0e8de1507c8154c9fd66": {
+      "sourceUrls": [
+        "https://simpleflying.com/delta-air-lines-flight-halts-taxi-boston-cat-escapes-kennel-runs-loose-cabin"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-21T22:27Z",
+      "failureClass": "source_insufficient",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-22T04:27Z",
+      "title": "Delta Air Lines Flight Halts Taxi In Boston After Cat Escapes Kennel, Runs Loose In Cabin",
+      "items": [
+        {
+          "url": "https://simpleflying.com/delta-air-lines-flight-halts-taxi-boston-cat-escapes-kennel-runs-loose-cabin/",
+          "title": "Delta Air Lines Flight Halts Taxi In Boston After Cat Escapes Kennel, Runs Loose In Cabin",
+          "summary": "\"Have a good day, meow\": an unusual situation gives controllers a laugh.",
+          "publishedUtc": "2026-11-21T21:40Z",
+          "source": "Simple Flying",
+          "sourceKey": "simpleflying"
+        }
+      ]
+    },
+    "882d9028cdead643ca48e434": {
+      "sourceUrls": [
+        "https://simpleflying.com/boeing-wieighs-more-layoffs-737-max-output-slows"
+      ],
+      "contentFailures": 0,
+      "serviceFailures": 1,
+      "history": [],
+      "updatedUtc": "2026-11-21T22:27Z",
+      "failureClass": "provider_failure",
+      "status": "waiting",
+      "nextRetryUtc": "2026-11-22T00:27Z",
+      "title": "Boeing Weighs More Layoffs As 737 MAX Output Boost Slows"
     }
   }
 }
