@@ -133,13 +133,13 @@ _AUTOMATIC_MODEL_ORDER = (
 # Candidate routes for the scheduled news writer. The live account catalog and
 # publication probe decide which entries can participate in each run.
 _FREE_DRAFT_MODEL_ORDER = (
-    "cloudflare:@cf/openai/gpt-oss-120b",
     "gemini:gemini-3.6-flash",
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "cloudflare:@cf/openai/gpt-oss-120b",
+    "gemini:gemini-3.8-flash",
     "groq:qwen/qwen3.8-27b",
     "openrouter:inclusionai/ling-3.2-flash:free",
     "gemini:gemini-4-hydrogen",
-    "gemini:gemini-3.8-flash",
     "gemini:gemini-3.5-flash",
     "gemini:gemini-3.5-flash-lite",
     "gemini:gemini-3.1-flash-lite",

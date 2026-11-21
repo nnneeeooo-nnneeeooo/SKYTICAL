@@ -50,6 +50,19 @@ def test_dead_routes_do_not_receive_calls():
     assert [p.name for p in editorial.routes(story(), rows, rows[1:])] == ["nvidia", "openai"]
 
 
+def test_scheduled_routes_prioritize_terra_by_story_importance(monkeypatch):
+    monkeypatch.setenv("AVWIRE_FREE_FIRST", "true")
+    first = provider("gemini", "gemini-3.6-flash")
+    second = provider("nvidia")
+    third = provider("cloudflare")
+    terra = provider("openai", "gpt-6.1-terra")
+    rows = [first, second, third, terra]
+    assert list(editorial.routes(story(), rows, rows)) == [first, second, terra, third]
+    urgent = story("Airliner crash at airport")
+    assert list(editorial.routes(urgent, rows, rows)) == [terra, first, second, third]
+    assert list(editorial.routes(urgent, rows, rows[:-1])) == rows[:-1]
+
+
 def test_ordinary_only_grants_luna_not_other_paid_providers():
     rows = [provider("openai"), provider("anthropic"), provider("wechat"), provider("nvidia")]
     assert eligible_providers(story(), rows) == [rows[0], rows[3]]

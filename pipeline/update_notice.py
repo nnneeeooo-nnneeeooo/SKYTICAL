@@ -93,6 +93,7 @@ def build_notices(raw, station, *, today=None, model=OPENAI_DEFAULT_MODEL):
         zh_copy = "、".join(zh for zh, _ in selected) + "也一起調整，細節都在完整更新紀錄。" if selected else "其他使用細節也一併調整，詳見完整更新紀錄。"
         en_copy = "We’ve also refined " + ", ".join(en for _, en in selected) + ". See the full changelog for details." if selected else "We’ve refined other everyday details, too. See the full changelog for more."
         grouped.append({"date": minor[0]["date"], "zh": {"title": "日常閱讀，也更順手", "copy": zh_copy}, "en": {"title": "The everyday details, refined", "copy": en_copy}})
+    grouped.sort(key=lambda item: item["date"], reverse=True)
     result = {}
     for lang, labels in UI.items():
         note = None

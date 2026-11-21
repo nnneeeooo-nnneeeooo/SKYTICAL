@@ -74,6 +74,18 @@ check(
     write.claim_evidence_problem(bad_model) is not None,
 )
 
+for claim, quote, accepted in (
+    ("The flight departed at 17:27 local time.", "The flight departed at 17.27 local time.", True),
+    ("The flight departed at 17:28 local time.", "The flight departed at 17.27 local time.", False),
+    ("The flight departed at 17:27 local time.", "The value was 17.27 percent.", False),
+    ("Seats have 13.3-inch displays.", "座椅配備13.3吋螢幕。", True),
+    ("Seats have 3-inch displays.", "座椅配備13.3吋螢幕。", False),
+    ("Seats have 13.3-inch displays.", "Displays measure 13.3 cm.", False),
+):
+    check(claim + " / " + quote,
+          (write.claim_evidence_problem([{"factId": "F1", "claim": claim,
+                                         "sourceQuote": quote}]) is None) == accepted)
+
 good_entities = {
     "entities": {
         **{key: [] for key in write.ENTITY_KEYS},
