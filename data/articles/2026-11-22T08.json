@@ -1,0 +1,127 @@
+{
+  "articles": [
+    {
+      "id": "a-20261122-0817-taiwan-reports-24-chinese-military-aircr",
+      "publishedUtc": "2026-11-22T08:17Z",
+      "cat": "mil",
+      "primarySource": "中央社 CNA",
+      "image": null,
+      "sourceImageCandidates": [],
+      "zh": {
+        "title": "國防部偵獲24架次中國軍機 其中17架次越臺海中線",
+        "summary": "國防部通報偵獲24架次中國軍機，其中17架次越過臺灣海峽中線。",
+        "body": [
+          "國防部22日公佈的統計顯示，從前一天上午6時至22日上午6時的24小時內，共偵獲24架次中國軍機。其中17架次越過臺灣海峽中線，進入中部及西南空域。",
+          "同一統計期間也偵獲11艘中國軍艦及1艘公務船。國防部表示，國軍運用執行任務的軍機、軍艦及岸置飛彈系統，對相關動態進行嚴密監控並應處。",
+          "國防部另公佈2顆中國空飄氣球的動態，兩者均於前一天越過臺海中線。"
+        ]
+      },
+      "en": {
+        "title": "Taiwan reports 24 Chinese military aircraft sorties; 17 cross the Taiwan Strait median line",
+        "summary": "Taiwan's defense ministry detected 24 Chinese military aircraft sorties; 17 crossed the Taiwan Strait median line.",
+        "body": [
+          "Taiwan's Ministry of National Defense said in a report on the 22nd that it detected 24 Chinese military aircraft sorties during the 24 hours ending at 6 a.m. that day. Of those, 17 crossed the Taiwan Strait median line into central and southwestern airspace.",
+          "The ministry also reported 11 Chinese naval vessels and one official vessel in the same period. It said the armed forces used mission aircraft and vessels, as well as shore-based missile systems, to closely monitor and respond to the activity.",
+          "Separately, the ministry reported that two Chinese airborne balloons crossed the Taiwan Strait median line the previous day."
+        ]
+      },
+      "sources": [
+        {
+          "name": "中央社 CNA — 11艘共艦17架次共機擾台 國軍嚴密監控",
+          "url": "https://www.cna.com.tw/news/aipl/202611220020.aspx"
+        }
+      ],
+      "articleFormat": "brief",
+      "sourcePublishedUtc": "2026-11-22T01:23Z",
+      "writer": "openai:gpt-6.1-terra",
+      "facts": [
+        {
+          "factId": "F1",
+          "claim": "The ministry's report on the 22nd covered the period from 6 a.m. the previous day to 6 a.m. that day.",
+          "sourceQuote": "（中央社記者 游凱翔 台北22日電）國防部發布共機艦動態，統計自昨天上午6時起至今天上午6時止",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202611220020.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F2",
+          "claim": "The ministry reported detecting 24 Chinese military aircraft sorties during the reporting period.",
+          "sourceQuote": "國防部上午公布共機艦動態，統計自昨天上午6時起至今天上午6時止，偵獲11艘共艦、1艘公務船及24架次共機",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202611220020.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F3",
+          "claim": "Of the 24 sorties, 17 crossed the Taiwan Strait median line into central and southwestern airspace.",
+          "sourceQuote": "24架次共機，其中17架次共機逾越台灣海峽中線侵擾中部、西南空域",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202611220020.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F4",
+          "claim": "The report recorded 11 Chinese naval vessels and one official vessel during the reporting period.",
+          "sourceQuote": "統計自昨天上午6時起至今天上午6時止，偵獲11艘共艦、1艘公務船",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202611220020.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F5",
+          "claim": "The ministry said the armed forces used mission aircraft and vessels and shore-based missile systems to monitor and respond.",
+          "sourceQuote": "國防部強調，國軍運用任務機艦及岸置飛彈系統嚴密監控與應處",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202611220020.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        },
+        {
+          "factId": "F6",
+          "claim": "The ministry reported two Chinese airborne balloons that crossed the Taiwan Strait median line the previous day.",
+          "sourceQuote": "國防部也公布2顆中共空飄氣球動態。第1顆於昨天上午9時55分逾越台海中線，地點為基隆以西47浬、高度1萬2000呎，並於昨天上午11時25分消失；第2顆於昨天上午11時40分逾越台海中線",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202611220020.aspx",
+          "evidenceScope": "source",
+          "archiveEventId": null,
+          "archiveContext": false
+        }
+      ],
+      "riskFlags": [],
+      "eventStatus": "confirmed",
+      "entities": {
+        "organizations": [
+          "國防部",
+          "國軍"
+        ],
+        "locations": [
+          "台灣海峽"
+        ]
+      },
+      "entityEvidence": [
+        {
+          "entityType": "organizations",
+          "value": "國防部",
+          "sourceQuote": "國防部發布共機艦動態",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202611220020.aspx"
+        },
+        {
+          "entityType": "organizations",
+          "value": "國軍",
+          "sourceQuote": "國軍運用任務機艦及岸置飛彈系統嚴密監控與應處",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202611220020.aspx"
+        },
+        {
+          "entityType": "locations",
+          "value": "台灣海峽",
+          "sourceQuote": "17架次共機逾越台灣海峽中線侵擾中部、西南空域",
+          "sourceUrl": "https://www.cna.com.tw/news/aipl/202611220020.aspx"
+        }
+      ],
+      "evidenceVersion": 2
+    }
+  ]
+}
