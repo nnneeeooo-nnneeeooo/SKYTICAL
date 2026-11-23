@@ -136,7 +136,8 @@
 
   function parseModelQuery(records, query) {
     // Only public credits enter this index. Match versions as a whole and
-    // accept spaces, hyphens or compact spelling without exposing internal IDs.
+    // accept spaces, hyphens, credit bullets or compact spelling without
+    // exposing internal IDs.
     var labels = Array.from(new Set(records.flatMap(function (record) {
       return Array.isArray(record.models) ? record.models : [];
     }))).sort(function (a, b) { return b.length - a.length; });
@@ -144,7 +145,7 @@
       var parts = label.normalize("NFKC").match(/[\p{L}\p{N}]+/gu) || [];
       var pattern = parts.map(function (part) {
         return part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      }).join("[\\s.-]*");
+      }).join("[\\s.•·-]*");
       var match = new RegExp("^" + pattern + "(?![\\p{L}\\p{N}]|\\.\\d)", "iu").exec(query);
       if (match) return { model: label, remainder: query.slice(match[0].length).trim() };
     }

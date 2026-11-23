@@ -78,7 +78,8 @@ const modelArticles = [
   { id: "sol", models: ["GPT 6.1 Sol"], search: "華航" },
   { id: "mixed", models: ["GPT 6.1 Sol", "DeepSeek V4.1 Flash"] },
   { id: "other", models: ["DeepSeek V4.1 Flash"], search: "GPT 6.1 Sol 華航" },
-  { id: "uncredited", search: "GPT 6.1 Sol 華航" }
+  { id: "uncredited", search: "GPT 6.1 Sol 華航" },
+  { id: "devin", models: ["Devin • Fable 5.2"], search: "鹿兒島" }
 ];
 for (const lang of ["zh", "en"]) {
   for (const query of ["GPT 6", "GPT6", "gpt-6", "ＧＰＴ６"]) {
@@ -92,6 +93,10 @@ for (const lang of ["zh", "en"]) {
   assert.deepStrictEqual(ids(find("GPT 6.1 Sol missing", lang, modelArticles)), []);
   assert.deepStrictEqual(ids(find("GPT 6.2 Sol", lang, modelArticles)), []);
   assert.deepStrictEqual(ids(find("GPT6 Unknown", lang, modelArticles)), []);
+  for (const query of ["Devin • Fable 5.2", "Devin Fable 5.2", "Devin • Fable 5.2 鹿兒島"]) {
+    assert.deepStrictEqual(ids(find(query, lang, modelArticles)), ["devin"]);
+  }
+  assert.deepStrictEqual(ids(find("Devin • Fable 5.2 華航", lang, modelArticles)), []);
   for (const query of ["DeepSeek", "DeepSeek V4.1 Flash", "DeepSeekV4.1 Flash", "deepseek-v4.1-flash"]) {
     assert.deepStrictEqual(ids(find(query, lang, modelArticles)), ["mixed", "other"]);
   }
