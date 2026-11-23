@@ -3,8 +3,8 @@
   "routes": {
     "nvidia:nvidia/nemotron-3-ultra-550b-a55b": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T08:38Z",
-      "checkedUtc": "2026-11-23T02:38Z",
+      "untilUtc": "2026-11-23T14:49Z",
+      "checkedUtc": "2026-11-23T08:49Z",
       "failureClass": "unexpected",
       "diagnostic": "publish_brief must have an empty decisionReason",
       "probeVersion": 3,
@@ -192,8 +192,8 @@
     },
     "nvidia:google/gemma-4-31b-it": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T08:38Z",
-      "checkedUtc": "2026-11-23T02:38Z",
+      "untilUtc": "2026-11-23T14:49Z",
+      "checkedUtc": "2026-11-23T08:49Z",
       "failureClass": "timeout",
       "diagnostic": "ReadTimeout",
       "probeVersion": 3,
@@ -228,8 +228,8 @@
     },
     "cloudflare:@cf/qwen/qwen3.8-27b": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T08:38Z",
-      "checkedUtc": "2026-11-23T02:38Z",
+      "untilUtc": "2026-11-23T14:49Z",
+      "checkedUtc": "2026-11-23T08:49Z",
       "failureClass": "http_error",
       "diagnostic": "HTTP 408",
       "probeVersion": 3,
@@ -246,8 +246,8 @@
     },
     "cloudflare:@cf/openai/gpt-oss-20b": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T08:38Z",
-      "checkedUtc": "2026-11-23T02:38Z",
+      "untilUtc": "2026-11-23T14:49Z",
+      "checkedUtc": "2026-11-23T08:49Z",
       "failureClass": "truncated",
       "diagnostic": "response truncated (length)",
       "probeVersion": 3,
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T08:31Z",
-      "checkedUtc": "2026-11-23T08:30Z",
+      "untilUtc": "2026-11-23T08:50Z",
+      "checkedUtc": "2026-11-23T08:49Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-23T08:30Z",
-      "untilUtc": "2026-11-23T08:31Z",
+      "checkedUtc": "2026-11-23T08:49Z",
+      "untilUtc": "2026-11-23T08:50Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
