@@ -2316,11 +2316,17 @@ def build_sources(items: list) -> list:
 
 
 def _is_editorially_managed(article: dict | None) -> bool:
-    """Manual copy stays authoritative until an editor explicitly changes it."""
+    """Manual copy stays authoritative until an editor explicitly changes it.
+
+    Scheduled articles are included: a model revision cannot satisfy the
+    scheduled_news contract, so rewriting one fails the next deployment.
+    """
     if not isinstance(article, dict):
         return False
     return (article.get("editorialLocked") is True
-            or str(article.get("writer") or "").startswith("manual:"))
+            or isinstance(article.get("scheduledNews"), dict)
+            or str(article.get("writer") or "").startswith(
+                ("manual:", "scheduled:")))
 
 
 def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,
@@ -2676,6 +2682,26 @@ def _same_scheduled_headline(group_titles: list[str], record: dict) -> bool:
     )
 
 
+_AVHERALD_VARIANT_RE = re.compile(
+    r"^(https?://(?:www\.)?avherald\.com/h\?article=[0-9a-f]+)&opt=\d+$")
+
+
+def _incident_urls(urls: set[str]) -> set[str]:
+    """Aviation Herald serves one incident with and without ``opt=0``."""
+    return {_AVHERALD_VARIANT_RE.sub(r"\1", url) for url in urls}
+
+
+def _published_incident_urls(record: dict) -> set[str]:
+    """A published article's own sources, without historical citations."""
+    cited = {
+        norm_url(str(source.get("url") or ""))
+        for source in record["article"].get("sources") or []
+        if isinstance(source, dict)
+        and str(source.get("name") or "").startswith("Archive:")
+    }
+    return _incident_urls(record["urls"] - cited)
+
+
 def _match_existing_article(group: dict, records: list[dict]):
     """Resolve updates or an unchanged scheduled source to an existing article."""
     urls = _group_source_urls(group)
@@ -2684,18 +2710,28 @@ def _match_existing_article(group: dict, records: list[dict]):
         for item in group.get("items") or []
         if isinstance(item, dict) and _norm_title(str(item.get("title") or ""))
     ]
+    # Independent events revise an article only when it covers exactly the
+    # same ones; any other overlap would drop its other events or theirs.
+    independent = group.get("groupKind") == "safety_roundup"
+    if independent:
+        urls = _incident_urls(urls)
     for record in records:
         if (record["article"].get("roundupKind") == "industry"
                 and not _already_published_without_new_coverage(group, record)):
             continue  # One component's follow-up must not replace the whole edition.
-        if (urls & record["urls"] and
+        known = record["urls"]
+        if independent:
+            known = _published_incident_urls(record)
+            if urls != known:
+                continue
+        if (urls & known and
                 (group.get("updateCandidate") or
-                 (urls <= record["urls"] and
+                 (urls <= known and
                   bool(group_titles) and
                   (set(group_titles) <= set(record["titles"]) or
                    _same_scheduled_headline(group_titles, record))))):
             return record
-    if not group.get("updateCandidate"):
+    if independent or not group.get("updateCandidate"):
         return None
     best = None
     best_score = 0.0
