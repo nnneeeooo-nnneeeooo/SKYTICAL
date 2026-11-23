@@ -2699,8 +2699,8 @@ def _match_existing_article(group: dict, records: list[dict]):
         for item in group.get("items") or []
         if isinstance(item, dict) and _norm_title(str(item.get("title") or ""))
     ]
-    # Independent events revise an article only when it already covers every
-    # one of them; a partial overlap would drop its other events or theirs.
+    # Independent events revise an article only when it covers exactly the
+    # same ones; any other overlap would drop its other events or theirs.
     independent = group.get("groupKind") == "safety_roundup"
     if independent:
         urls = _incident_urls(urls)
@@ -2711,7 +2711,7 @@ def _match_existing_article(group: dict, records: list[dict]):
         known = record["urls"]
         if independent:
             known = _incident_urls(known)
-            if not urls <= known:
+            if urls != known:
                 continue
         if (urls & known and
                 (group.get("updateCandidate") or

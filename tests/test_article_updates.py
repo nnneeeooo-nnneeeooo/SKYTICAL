@@ -128,7 +128,7 @@ def test_editorial_updates_match_without_becoming_duplicate_articles() -> None:
     assert not write._is_editorially_managed(None)
 
 
-def test_roundup_revises_only_an_article_covering_all_its_events() -> None:
+def test_roundup_revises_only_an_article_covering_the_same_events() -> None:
     seen = "https://avherald.com/h?article=54546c3e"
     fresh = "https://avherald.com/h?article=5476d511"
     group = {"id": "g-roundup", "updateCandidate": True,
@@ -143,16 +143,21 @@ def test_roundup_revises_only_an_article_covering_all_its_events() -> None:
     partial = {"article": {"id": "a-partial", "articleFormat": "roundup"},
                "urls": {seen, "https://avherald.com/h?article=5453c7d7"},
                "titles": ["incident: lufthansa a320 at frankfurt"]}
-    assert write._match_existing_article(group, [scheduled, partial]) is None
+    wider = {"article": {"id": "a-wider", "articleFormat": "roundup"},
+             "urls": {seen + "&opt=0", fresh,
+                      "https://avherald.com/h?article=5453c7d7"},
+             "titles": []}
+    assert write._match_existing_article(
+        group, [scheduled, partial, wider]) is None
     same = {"article": {"id": "a-same", "articleFormat": "roundup"},
             "urls": {seen, fresh}, "titles": []}
     assert write._match_existing_article(
-        group, [scheduled, partial, same]) == same
+        group, [scheduled, partial, wider, same]) == same
     # The feed serves one incident with and without ``opt=0``.
     variant = {"article": {"id": "a-variant", "articleFormat": "roundup"},
                "urls": {seen + "&opt=0", fresh}, "titles": []}
     assert write._match_existing_article(
-        group, [scheduled, partial, variant]) == variant
+        group, [scheduled, partial, wider, variant]) == variant
     assert write._match_existing_article(
         {**group, "groupKind": "event"}, [scheduled, partial]) == scheduled
 
