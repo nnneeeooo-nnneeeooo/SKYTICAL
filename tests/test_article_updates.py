@@ -110,7 +110,10 @@ def test_editorial_updates_match_without_becoming_duplicate_articles() -> None:
     group = {"id": "g-max10", "updateCandidate": True, "items": [
         {"url": source, "title": "FAA certifies Boeing 737 MAX 10"}]}
     for metadata in ({"writer": "manual:GPT 6.1 Sol"},
-                     {"writer": "openai:auto", "editorialLocked": True}):
+                     {"writer": "openai:auto", "editorialLocked": True},
+                     {"writer": "scheduled:Meta Muse"},
+                     {"writer": "openai:auto",
+                      "scheduledNews": {"version": 1}}):
         article = {"id": "a-editorial-max10", **metadata}
         record = {"article": article, "urls": {source}, "titles": []}
         assert write._match_existing_article(group, [record]) == record
@@ -123,6 +126,48 @@ def test_editorial_updates_match_without_becoming_duplicate_articles() -> None:
         assert not used_ids
     assert not write._is_editorially_managed({"writer": "openai:auto"})
     assert not write._is_editorially_managed(None)
+
+
+def test_roundup_revises_only_an_article_covering_the_same_events() -> None:
+    seen = "https://avherald.com/h?article=54546c3e"
+    fresh = "https://avherald.com/h?article=5476d511"
+    group = {"id": "g-roundup", "updateCandidate": True,
+             "groupKind": "safety_roundup", "items": [
+                 {"url": seen, "title": "Incident: JAC AT72 at Kagoshima"},
+                 {"url": fresh,
+                  "title": "Incident: Lufthansa A320 at Frankfurt"}]}
+    scheduled = {"article": {"id": "a-scheduled", "writer": "scheduled:test",
+                             "scheduledNews": {"version": 1}},
+                 "urls": {seen}, "titles": []}
+    # An earlier roundup with another event must keep that event readable.
+    partial = {"article": {"id": "a-partial", "articleFormat": "roundup"},
+               "urls": {seen, "https://avherald.com/h?article=5453c7d7"},
+               "titles": ["incident: lufthansa a320 at frankfurt"]}
+    wider = {"article": {"id": "a-wider", "articleFormat": "roundup"},
+             "urls": {seen + "&opt=0", fresh,
+                      "https://avherald.com/h?article=5453c7d7"},
+             "titles": []}
+    assert write._match_existing_article(
+        group, [scheduled, partial, wider]) is None
+    same = {"article": {"id": "a-same", "articleFormat": "roundup"},
+            "urls": {seen, fresh}, "titles": []}
+    assert write._match_existing_article(
+        group, [scheduled, partial, wider, same]) == same
+    # The feed serves one incident with and without ``opt=0``.
+    variant = {"article": {"id": "a-variant", "articleFormat": "roundup"},
+               "urls": {seen + "&opt=0", fresh}, "titles": []}
+    assert write._match_existing_article(
+        group, [scheduled, partial, wider, variant]) == variant
+    # A historical citation is not one of the roundup's incidents.
+    archive = "https://avherald.com/h?article=5453c7d7&opt=0"
+    cited = {"article": {"id": "a-cited", "articleFormat": "roundup",
+                         "sources": [{"name": "Archive: The Aviation Herald"
+                                              " — evt-1", "url": archive}]},
+             "urls": {seen, fresh, archive}, "titles": []}
+    assert write._match_existing_article(
+        group, [scheduled, partial, wider, cited]) == cited
+    assert write._match_existing_article(
+        {**group, "groupKind": "event"}, [scheduled, partial]) == scheduled
 
 
 def test_persistence_preserves_manual_edit_made_after_update_was_drafted() -> None:

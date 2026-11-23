@@ -1631,6 +1631,14 @@ def test_scheduled_source_is_not_drafted_again():
           "already published source leaves the pending queue")
     check(common.norm_url(source["url"]) in load(DATA / "seen.json")["urls"],
           "scheduled source enters discovery dedupe after reconciliation")
+    newer["id"] = "g-scheduled-later-timestamp"
+    common.save_json(DATA / "pending.json", {**pending, "groups": [newer]})
+    with patch.object(write, "build_providers", return_value=[provider]):
+        write.main()
+    check(provider.calls == 0 and all_articles() == [article],
+          "a later source timestamp cannot replace scheduled copy")
+    check(not load(DATA / "pending.json")["groups"],
+          "protected scheduled update leaves the pending queue")
     print("test_scheduled_source_is_not_drafted_again: done")
 
 
