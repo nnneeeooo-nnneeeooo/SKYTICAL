@@ -128,6 +128,24 @@ def test_editorial_updates_match_without_becoming_duplicate_articles() -> None:
     assert not write._is_editorially_managed(None)
 
 
+def test_roundup_with_new_event_does_not_match_single_event_article() -> None:
+    seen = "https://avherald.com/h?article=published"
+    group = {"id": "g-roundup", "updateCandidate": True,
+             "groupKind": "safety_roundup", "items": [
+                 {"url": seen, "title": "Incident: JAC AT72 at Kagoshima"},
+                 {"url": "https://avherald.com/h?article=new",
+                  "title": "Incident: Lufthansa A320 at Frankfurt"}]}
+    scheduled = {"article": {"id": "a-scheduled", "writer": "scheduled:test",
+                             "scheduledNews": {"version": 1}},
+                 "urls": {seen}, "titles": []}
+    assert write._match_existing_article(group, [scheduled]) is None
+    roundup = {"article": {"id": "a-roundup", "articleFormat": "roundup"},
+               "urls": {seen}, "titles": []}
+    assert write._match_existing_article(group, [scheduled, roundup]) == roundup
+    assert write._match_existing_article(
+        {**group, "groupKind": "event"}, [scheduled, roundup]) == scheduled
+
+
 def test_persistence_preserves_manual_edit_made_after_update_was_drafted() -> None:
     path = DATA / "articles" / "editorial-protection.json"
     protected = {

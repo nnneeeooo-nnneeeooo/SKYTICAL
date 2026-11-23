@@ -2690,6 +2690,12 @@ def _match_existing_article(group: dict, records: list[dict]):
         for item in group.get("items") or []
         if isinstance(item, dict) and _norm_title(str(item.get("title") or ""))
     ]
+    # Independent events sharing one source URL with a single-event article
+    # are not a revision of it; only an earlier roundup can be their target.
+    independent = group.get("groupKind") == "safety_roundup"
+    if independent:
+        records = [record for record in records
+                   if record["article"].get("articleFormat") == "roundup"]
     for record in records:
         if (record["article"].get("roundupKind") == "industry"
                 and not _already_published_without_new_coverage(group, record)):
