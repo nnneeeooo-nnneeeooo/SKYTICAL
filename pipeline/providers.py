@@ -66,6 +66,9 @@ except ImportError:  # pragma: no cover - anthropic is in requirements.txt
 DEFAULT_ORDER = DEFAULT_PROVIDER_ORDER
 # 550B-class NIM models regularly need >120s on the free tier.
 HTTP_TIMEOUT = (10, 180)  # (connect, read) seconds
+# Terra has no processing deadline, but a response that never arrives must not
+# hold the paid-API queue until the runner's six-hour limit.
+OPENAI_HTTP_TIMEOUT = (10, 1800)
 
 # --------------------------------------------------------------------------
 # Centralized per-model configuration - the single source of truth for
@@ -1667,7 +1670,7 @@ class OpenAIProvider(OpenCodeProvider):
     name = "openai"
     # Owner policy: MAX calls finish on their own; only runner/platform limits apply.
     unlimited_processing_time = True
-    http_timeout = (10, None)  # Bound connection setup, never interrupt model processing.
+    http_timeout = OPENAI_HTTP_TIMEOUT
     max_attempt_seconds = None
     group_budget_seconds = None
 

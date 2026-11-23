@@ -568,7 +568,7 @@ def test_openai_responses_api():
               "GPT 6 has no processing deadline")
 
         def fake_post(url, json=None, timeout=None, headers=None):
-            check(timeout == (10, None), "Luna keeps connection setup bounded without a read deadline")
+            check(timeout == (10, 1800), "Terra waits at most 30 minutes for a response")
             captured.append((url, json, headers))
             return FakeResponse({
                 "status": "completed",
@@ -631,6 +631,16 @@ def test_openai_responses_api():
         with_post(fake_post, lambda: provider.draft("sys", "user", SCHEMA))
         check(len(captured) == before + 1 and captured[-1][1]["model"] == "gpt-6.1-terra",
               "Terra calls the actual model directly without a private mapping")
+
+        def hung_post(url, json=None, timeout=None, headers=None):
+            raise providers.requests.exceptions.ReadTimeout("no response")
+
+        try:
+            with_post(hung_post, lambda: provider.draft("sys", "user", SCHEMA))
+            check(False, "a Terra call with no response must not return a draft")
+        except providers.ProviderError as exc:
+            check(str(exc) == "ReadTimeout",
+                  "a Terra call with no response ends as a provider error")
     finally:
         for key, value in saved.items():
             if value is None:
