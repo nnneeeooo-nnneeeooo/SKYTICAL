@@ -121,6 +121,14 @@ def test_failed_dispatch_is_retried_and_handoff_failure_is_reported():
     relay.run(api, {"hourly.yml": ["45 * * * *"]}, 100, now=clock, sleep=clock.sleep)
     assert api.dispatched[0][1] == "hourly.yml"
 
+    # An outage longer than the inline retries delivers the slot late, once.
+    clock = Clock(utc(3, 44, 30))
+    api = FakeApi(clock, fail_dispatches=7)
+    relay.run(api, {"hourly.yml": ["45 * * * *"]}, 100, now=clock, sleep=clock.sleep)
+    first, second = api.dispatched[:2]
+    assert first[1] == "hourly.yml" and utc(3, 46) < first[0] < utc(3, 55)
+    assert (second[0].hour, second[0].minute) == (4, 45)
+
     clock = Clock(utc(3, 44, 30))
     api = FakeApi(clock, fail_dispatches=10 ** 6)
     assert relay.run(api, {"hourly.yml": ["45 * * * *"]}, 100,

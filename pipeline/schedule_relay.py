@@ -150,15 +150,23 @@ def run(api, schedules: dict[str, list[str]], run_id: int, *,
         return "standby"
     last = since if since and started - CATCH_UP <= since <= started else started
     suspects: set[int] = set()
+    # Due dispatches stay here until delivered or CATCH_UP old.
+    pending: dict[tuple[str, str], tuple[dict[str, str], datetime]] = {}
     tick = 0
     while now() - started < LIFETIME:
         current = now()
         sleep(60 - current.second - current.microsecond / 1e6 + 1)
         current = now()
         for workflow, inputs in due(schedules, last, current):
+            pending[(workflow, inputs.get("schedule", ""))] = (
+                inputs, current + CATCH_UP)
+        for (workflow, cron), (inputs, expires) in list(pending.items()):
             if _try(lambda: api.dispatch(workflow, inputs) or True,
                     f"dispatch {workflow}", pause=sleep):
                 print(f"{current:%FT%H:%MZ} dispatched {workflow} {inputs or ''}")
+            elif current < expires:
+                continue
+            del pending[(workflow, cron)]
         last = current.replace(second=0, microsecond=0)
         tick += 1
         if tick % PEER_CHECK_EVERY == 0:
