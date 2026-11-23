@@ -128,22 +128,28 @@ def test_editorial_updates_match_without_becoming_duplicate_articles() -> None:
     assert not write._is_editorially_managed(None)
 
 
-def test_roundup_with_new_event_does_not_match_single_event_article() -> None:
+def test_roundup_revises_only_an_article_covering_all_its_events() -> None:
     seen = "https://avherald.com/h?article=published"
+    fresh = "https://avherald.com/h?article=new"
     group = {"id": "g-roundup", "updateCandidate": True,
              "groupKind": "safety_roundup", "items": [
                  {"url": seen, "title": "Incident: JAC AT72 at Kagoshima"},
-                 {"url": "https://avherald.com/h?article=new",
+                 {"url": fresh,
                   "title": "Incident: Lufthansa A320 at Frankfurt"}]}
     scheduled = {"article": {"id": "a-scheduled", "writer": "scheduled:test",
                              "scheduledNews": {"version": 1}},
                  "urls": {seen}, "titles": []}
-    assert write._match_existing_article(group, [scheduled]) is None
-    roundup = {"article": {"id": "a-roundup", "articleFormat": "roundup"},
-               "urls": {seen}, "titles": []}
-    assert write._match_existing_article(group, [scheduled, roundup]) == roundup
+    # An earlier roundup with another event must keep that event readable.
+    partial = {"article": {"id": "a-partial", "articleFormat": "roundup"},
+               "urls": {seen, "https://avherald.com/h?article=other"},
+               "titles": ["incident: lufthansa a320 at frankfurt"]}
+    assert write._match_existing_article(group, [scheduled, partial]) is None
+    same = {"article": {"id": "a-same", "articleFormat": "roundup"},
+            "urls": {seen, fresh}, "titles": []}
     assert write._match_existing_article(
-        {**group, "groupKind": "event"}, [scheduled, roundup]) == scheduled
+        group, [scheduled, partial, same]) == same
+    assert write._match_existing_article(
+        {**group, "groupKind": "event"}, [scheduled, partial]) == scheduled
 
 
 def test_persistence_preserves_manual_edit_made_after_update_was_drafted() -> None:

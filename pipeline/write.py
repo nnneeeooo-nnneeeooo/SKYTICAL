@@ -2690,16 +2690,15 @@ def _match_existing_article(group: dict, records: list[dict]):
         for item in group.get("items") or []
         if isinstance(item, dict) and _norm_title(str(item.get("title") or ""))
     ]
-    # Independent events sharing one source URL with a single-event article
-    # are not a revision of it; only an earlier roundup can be their target.
+    # Independent events revise an article only when it already covers every
+    # one of them; a partial overlap would drop its other events or theirs.
     independent = group.get("groupKind") == "safety_roundup"
-    if independent:
-        records = [record for record in records
-                   if record["article"].get("articleFormat") == "roundup"]
     for record in records:
         if (record["article"].get("roundupKind") == "industry"
                 and not _already_published_without_new_coverage(group, record)):
             continue  # One component's follow-up must not replace the whole edition.
+        if independent and not urls <= record["urls"]:
+            continue
         if (urls & record["urls"] and
                 (group.get("updateCandidate") or
                  (urls <= record["urls"] and
@@ -2707,7 +2706,7 @@ def _match_existing_article(group: dict, records: list[dict]):
                   (set(group_titles) <= set(record["titles"]) or
                    _same_scheduled_headline(group_titles, record))))):
             return record
-    if not group.get("updateCandidate"):
+    if independent or not group.get("updateCandidate"):
         return None
     best = None
     best_score = 0.0
