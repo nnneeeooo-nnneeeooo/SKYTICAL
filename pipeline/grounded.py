@@ -39,7 +39,7 @@ import requests
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import is_google_news_url, squash_text  # noqa: E402
 from model_config import model_route_allowed, openai_runtime_model  # noqa: E402
-from providers import extract_json  # noqa: E402
+from providers import LUNA_HTTP_TIMEOUT, extract_json  # noqa: E402
 
 # The primary model can be configured without giving up automatic recovery.
 # Search quotas are model-specific on some Gemini plans; production recently
@@ -192,7 +192,7 @@ def call_openai_grounded(window):
         "tool_choice": "required", "max_tool_calls": 4,
         "include": ["web_search_call.action.sources"],
     }, purpose="draft", model=model,
-       headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"}, timeout=(10, None))
+       headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"}, timeout=LUNA_HTTP_TIMEOUT)
     if response.status_code != 200:
         raise RuntimeError(f"OpenAI briefing search HTTP {response.status_code}")
     data = response.json()
