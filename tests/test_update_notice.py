@@ -23,6 +23,8 @@ def main():
             day="2026-11-15", notice=major),
         row("c", "團隊介紹更新。", "Team introduction updated.",
             notice={"importance": "minor"}),
+        row("2", "修正頁首標誌跑位。", "Fixed the header logo layout.",
+            notice={"importance": "minor", "standalone": True}),
         row("d", "新聞配圖持續補齊。", "More news photos."),
         row("e", "未來功能。", "A future feature.",
             day="2026-12-01", notice=major),
@@ -33,10 +35,12 @@ def main():
     station = {"enabled": True, "contactEmail": "editor@example.com",
                "messages": {"zh": "先行來信", "en": "email me."}}
     data = build_notices({"entries": rows}, station, today=date(2026, 11, 16))
-    assert [item["date"] for item in data["zh"]["items"]] == ["2026-11-16", "2026-11-15"]
-    assert [item["date"] for item in data["en"]["items"]] == ["2026-11-16", "2026-11-15"]
+    assert [item["date"] for item in data["zh"]["items"]] == ["2026-11-16", "2026-11-16", "2026-11-15"]
+    assert [item["date"] for item in data["en"]["items"]] == ["2026-11-16", "2026-11-16", "2026-11-15"]
     assert data["en"]["items"][0]["title"] == "Drafting has been updated"
     assert "Source checks still apply." in data["en"]["items"][0]["copy"]
+    assert data["zh"]["items"][1]["title"] == "修正頁首標誌跑位"
+    assert data["en"]["items"][1]["title"] == "Fixed the header logo layout"
     assert data["en"]["station"]["email"] == "editor@example.com"
     assert "Team introduction" not in json.dumps(data)
     assert "More news photos" not in json.dumps(data)

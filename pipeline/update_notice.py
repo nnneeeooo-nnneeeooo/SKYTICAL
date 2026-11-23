@@ -1,7 +1,7 @@
 """Bilingual reader-facing updates, derived offline from the checked-in changelog.
 
 No network, Git history or model API is required by a production build. Both
-languages use the same source records explicitly marked as major.
+languages use the same major and explicitly standalone minor entries.
 """
 from __future__ import annotations
 
@@ -34,7 +34,12 @@ def build_notices(raw, station, *, today=None):
         if not isinstance(row, dict):
             continue
         notice = row.get("notice")
-        if not isinstance(notice, dict) or notice.get("importance") != "major":
+        if not isinstance(notice, dict):
+            continue
+        importance = notice.get("importance")
+        if importance != "major" and not (
+            importance == "minor" and notice.get("standalone") is True
+        ):
             continue
         sha, day = str(row.get("commit") or ""), str(row.get("date") or "")
         if not SHA.fullmatch(sha) or sha in seen or not cutoff <= day <= end:
