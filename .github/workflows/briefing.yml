@@ -19,7 +19,8 @@ on:
     inputs:
       edition:
         description: "Briefing edition"
-        required: true
+        required: false
+        default: morning
         type: choice
         options:
           - morning
@@ -27,6 +28,10 @@ on:
           - evening
       date:
         description: "Taipei date YYYY-MM-DD (default: today in Taipei)"
+        required: false
+        type: string
+      schedule:
+        description: "Internal: cron relayed by schedule-relay (leave empty)"
         required: false
         type: string
 
@@ -84,11 +89,11 @@ jobs:
         id: ed
         env:
           EVENT_NAME: ${{ github.event_name }}
-          SCHEDULE: ${{ github.event.schedule }}
+          SCHEDULE: ${{ github.event.schedule || inputs.schedule }}
           INPUT_EDITION: ${{ inputs.edition }}
           INPUT_DATE: ${{ inputs.date }}
         run: |
-          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] && [ -z "$SCHEDULE" ]; then
             echo "mode=normal" >> "$GITHUB_OUTPUT"
             echo "edition=$INPUT_EDITION" >> "$GITHUB_OUTPUT"
             echo "date=$INPUT_DATE" >> "$GITHUB_OUTPUT"
