@@ -2316,11 +2316,17 @@ def build_sources(items: list) -> list:
 
 
 def _is_editorially_managed(article: dict | None) -> bool:
-    """Manual copy stays authoritative until an editor explicitly changes it."""
+    """Manual copy stays authoritative until an editor explicitly changes it.
+
+    Scheduled articles are included: a model revision cannot satisfy the
+    scheduled_news contract, so rewriting one fails the next deployment.
+    """
     if not isinstance(article, dict):
         return False
     return (article.get("editorialLocked") is True
-            or str(article.get("writer") or "").startswith("manual:"))
+            or isinstance(article.get("scheduledNews"), dict)
+            or str(article.get("writer") or "").startswith(
+                ("manual:", "scheduled:")))
 
 
 def build_article(draft: dict, group: dict, now, used_ids: set, writer=None,

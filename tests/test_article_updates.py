@@ -110,7 +110,10 @@ def test_editorial_updates_match_without_becoming_duplicate_articles() -> None:
     group = {"id": "g-max10", "updateCandidate": True, "items": [
         {"url": source, "title": "FAA certifies Boeing 737 MAX 10"}]}
     for metadata in ({"writer": "manual:GPT 6.1 Sol"},
-                     {"writer": "openai:auto", "editorialLocked": True}):
+                     {"writer": "openai:auto", "editorialLocked": True},
+                     {"writer": "scheduled:Meta Muse"},
+                     {"writer": "openai:auto",
+                      "scheduledNews": {"version": 1}}):
         article = {"id": "a-editorial-max10", **metadata}
         record = {"article": article, "urls": {source}, "titles": []}
         assert write._match_existing_article(group, [record]) == record
