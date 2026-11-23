@@ -158,6 +158,14 @@ def test_roundup_revises_only_an_article_covering_the_same_events() -> None:
                "urls": {seen + "&opt=0", fresh}, "titles": []}
     assert write._match_existing_article(
         group, [scheduled, partial, wider, variant]) == variant
+    # A historical citation is not one of the roundup's incidents.
+    archive = "https://avherald.com/h?article=5453c7d7&opt=0"
+    cited = {"article": {"id": "a-cited", "articleFormat": "roundup",
+                         "sources": [{"name": "Archive: The Aviation Herald"
+                                              " — evt-1", "url": archive}]},
+             "urls": {seen, fresh, archive}, "titles": []}
+    assert write._match_existing_article(
+        group, [scheduled, partial, wider, cited]) == cited
     assert write._match_existing_article(
         {**group, "groupKind": "event"}, [scheduled, partial]) == scheduled
 

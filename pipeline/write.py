@@ -2691,6 +2691,17 @@ def _incident_urls(urls: set[str]) -> set[str]:
     return {_AVHERALD_VARIANT_RE.sub(r"\1", url) for url in urls}
 
 
+def _published_incident_urls(record: dict) -> set[str]:
+    """A published article's own sources, without historical citations."""
+    cited = {
+        norm_url(str(source.get("url") or ""))
+        for source in record["article"].get("sources") or []
+        if isinstance(source, dict)
+        and str(source.get("name") or "").startswith("Archive:")
+    }
+    return _incident_urls(record["urls"] - cited)
+
+
 def _match_existing_article(group: dict, records: list[dict]):
     """Resolve updates or an unchanged scheduled source to an existing article."""
     urls = _group_source_urls(group)
@@ -2710,7 +2721,7 @@ def _match_existing_article(group: dict, records: list[dict]):
             continue  # One component's follow-up must not replace the whole edition.
         known = record["urls"]
         if independent:
-            known = _incident_urls(known)
+            known = _published_incident_urls(record)
             if urls != known:
                 continue
         if (urls & known and
