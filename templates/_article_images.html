@@ -1,16 +1,15 @@
 {% set slides = a.image_slides %}
 {% set image = slides[0].image %}
 <script type="application/json" id="hero-candidates">{{ slides | tojson }}</script>
-<div id="hero-carousel" class="hero-carousel" data-article-gallery role="region"
+<div id="hero-carousel" class="hero-carousel article-figure" data-article-gallery role="region"
      aria-roledescription="carousel" data-rotation-ms="2500"
-     aria-label="{% if lang == 'zh' %}新聞配圖輪播{% else %}News image carousel{% endif %}" style="margin:0 0 22px;">
-  <figure id="hero-story-link" class="hero-story" style="margin:0;">
+     aria-label="{% if lang == 'zh' %}新聞配圖輪播{% else %}News image carousel{% endif %}">
+  <figure id="hero-story-link" class="hero-story article-gallery-figure">
     <img id="hero-story-image" src="{{ image.url }}" alt="{{ image.subject }}"
          data-fallback-src="{{ base }}/assets/skytical-social.png?v={{ asset_version }}"
-         fetchpriority="high" decoding="async"
-         style="width:100%;height:auto;max-height:560px;object-fit:contain;background:color-mix(in srgb,var(--color-text) 6%,var(--color-surface));border:1px solid var(--color-divider);">
-    <figcaption class="text-muted" style="font-size:11.5px;margin-top:6px;display:flex;gap:10px;flex-wrap:wrap;">
-      <span data-image-description style="font-weight:800;color:var(--color-text);">{{ image.subject }}</span>
+         fetchpriority="high" decoding="async" class="article-image">
+    <figcaption class="text-muted article-caption article-caption--row">
+      <span data-image-description class="article-caption-subject">{{ image.subject }}</span>
       <span data-image-kind{% if not slides[0].kind_label %} hidden{% endif %}>{{ slides[0].kind_label }}</span>
       <span data-image-model{% if not slides[0].model_label %} hidden{% endif %}>{{ slides[0].model_label }}</span>
       <span data-image-credit{% if not image.credit %} hidden{% endif %}>© {{ image.credit or '' }}</span>

@@ -60,7 +60,6 @@ from image_policy import (  # noqa: E402
     article_headline_text,
     article_is_incident,
     article_lead_text,
-    image_is_safe_for_article,
     image_provenance,
 )
 from requests.exceptions import RequestException

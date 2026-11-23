@@ -18,7 +18,7 @@ import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import images
-from common import ARTICLES_DIR, DATA_DIR, USER_AGENT, load_json, now_utc, parse_iso, save_json
+from common import DATA_DIR, USER_AGENT, load_json, now_utc, parse_iso, save_json
 from image_selection import MAX_STOCK_REUSE, image_key, rejection_reason, stock_usage, manual_image
 from model_config import model_route_allowed
 

@@ -9,7 +9,7 @@ import copy
 import json
 import re
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import unquote, urlsplit

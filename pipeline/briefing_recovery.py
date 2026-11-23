@@ -7,10 +7,9 @@ invocation and keeps each edition's configured date window unchanged.
 from __future__ import annotations
 
 import argparse
-import json
 import os
 import sys
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))

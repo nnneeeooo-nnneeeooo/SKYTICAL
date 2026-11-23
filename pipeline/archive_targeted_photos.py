@@ -19,7 +19,6 @@ import requests
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"pipeline"))
 from common import load_json,save_json
-from image_selection import model_matches
 
 ARTICLES=ROOT/"data/articles"
 OUTPUT=ROOT/"data/archive-targeted-photo-report.json"

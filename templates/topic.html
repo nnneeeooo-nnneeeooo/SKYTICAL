@@ -6,7 +6,7 @@
       <span class="card-kicker">{{ t.topicKicker }}</span>
       <h1>{{ topic.title }}</h1>
       <p class="text-muted">{{ topic.intro }}</p>
-      <p class="text-muted" style="font-size:12.5px;">{{ count }} {{ t.topicCount }}</p>
+      <p class="text-muted topic-count">{{ count }} {{ t.topicCount }}</p>
     </header>
     <section aria-label="{{ topic.title }}">
       {% for item in articles %}
@@ -14,7 +14,7 @@
         <span class="feed-time">{{ item.time }}</span>
         <span class="feed-category tag {{ item.tag_class }}">{{ item.cat_label }}</span>
         <span class="feed-copy">
-          <span style="display:block;font-size:15.5px;font-weight:700;line-height:1.4;letter-spacing:-.01em;">{{ item.title }}</span>
+          <span class="feed-title">{{ item.title }}</span>
         </span>
         {{ notification_summary(item.display_summary, t.summaryLabel, 'feed') }}
         <span class="feed-source text-muted">{{ item.source }}</span>

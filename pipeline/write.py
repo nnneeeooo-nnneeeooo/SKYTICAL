@@ -32,7 +32,6 @@ runs where every configured provider failed authentication.
 from __future__ import annotations
 
 import json
-import os
 import re
 import time
 from datetime import timedelta
