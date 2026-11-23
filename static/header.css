@@ -4,6 +4,8 @@
 .header-social-links .header-announcement-button:active{background:var(--color-surface)}
 .mobile-refresh .mobile-more-panel .header-announcement-button{width:38px;height:38px;border-radius:6px}
 .tablet-portrait .header-search-row .header-announcement-button{width:44px;height:44px;border-radius:50%}
+.header-search-row .brand-link{height:auto;aspect-ratio:50/11}
+.header-search-row .brand-link .brand-logo{width:100%;height:auto;flex:0 1 auto;min-width:0}
 /* One centered control line, with the brand given its own stable proportion. */
 @media(min-width:1101px){
   .header-search-row{display:grid;grid-template-columns:clamp(230px,21vw,268px) minmax(0,1fr) auto;align-items:center;gap:32px;padding:16px 24px}
