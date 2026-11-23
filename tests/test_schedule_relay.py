@@ -129,6 +129,21 @@ def test_failed_dispatch_is_retried_and_handoff_failure_is_reported():
     assert first[1] == "hourly.yml" and utc(3, 46) < first[0] < utc(3, 55)
     assert (second[0].hour, second[0].minute) == (4, 45)
 
+    # A slot that is still undelivered CATCH_UP after its time is dropped.
+    clock = Clock(utc(3, 44, 30))
+    api = FakeApi(clock, fail_dispatches=3)
+    stalled = []
+
+    def stalling_sleep(seconds):
+        if not stalled and clock.now > utc(3, 45, 5):
+            stalled.append(True)
+            seconds += 900
+        clock.sleep(seconds)
+
+    relay.run(api, {"hourly.yml": ["45 * * * *"]}, 100, now=clock, sleep=stalling_sleep)
+    assert stalled
+    assert (api.dispatched[0][0].hour, api.dispatched[0][0].minute) == (4, 45)
+
     clock = Clock(utc(3, 44, 30))
     api = FakeApi(clock, fail_dispatches=10 ** 6)
     assert relay.run(api, {"hourly.yml": ["45 * * * *"]}, 100,

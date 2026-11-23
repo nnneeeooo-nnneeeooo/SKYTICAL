@@ -80,21 +80,28 @@ def load_schedules(directory: Path = WORKFLOWS_DIR) -> dict[str, list[str]]:
     return schedules
 
 
-def due(schedules: dict[str, list[str]], after: datetime,
-        until: datetime) -> list[tuple[str, dict[str, str]]]:
-    """Return one dispatch per workflow (or per cron) due in (after, until]."""
+def _slots(schedules: dict[str, list[str]], after: datetime,
+           until: datetime) -> dict[tuple[str, str], tuple[dict[str, str], datetime]]:
+    """Map each workflow (or cron) due in (after, until] to its inputs and slot."""
     minute = max(after, until - CATCH_UP).replace(second=0, microsecond=0)
-    found: dict[tuple[str, str], dict[str, str]] = {}
+    found: dict[tuple[str, str], tuple[dict[str, str], datetime]] = {}
     while (minute := minute + timedelta(minutes=1)) <= until:
         for name, crons in schedules.items():
             for cron in crons:
                 if not cron_matches(cron, minute):
                     continue
                 if name in PASS_SCHEDULE:
-                    found[(name, cron)] = {"schedule": cron}
+                    found[(name, cron)] = ({"schedule": cron}, minute)
                 else:
-                    found[(name, "")] = {}
-    return [(name, inputs) for (name, _), inputs in found.items()]
+                    found[(name, "")] = ({}, minute)
+    return found
+
+
+def due(schedules: dict[str, list[str]], after: datetime,
+        until: datetime) -> list[tuple[str, dict[str, str]]]:
+    """Return one dispatch per workflow (or per cron) due in (after, until]."""
+    return [(name, inputs) for (name, _), (inputs, _)
+            in _slots(schedules, after, until).items()]
 
 
 class GitHub:
@@ -150,21 +157,21 @@ def run(api, schedules: dict[str, list[str]], run_id: int, *,
         return "standby"
     last = since if since and started - CATCH_UP <= since <= started else started
     suspects: set[int] = set()
-    # Due dispatches stay here until delivered or CATCH_UP old.
+    # Due dispatches stay here until delivered or their slot is CATCH_UP old.
     pending: dict[tuple[str, str], tuple[dict[str, str], datetime]] = {}
     tick = 0
     while now() - started < LIFETIME:
         current = now()
         sleep(60 - current.second - current.microsecond / 1e6 + 1)
         current = now()
-        for workflow, inputs in due(schedules, last, current):
-            pending[(workflow, inputs.get("schedule", ""))] = (
-                inputs, current + CATCH_UP)
-        for (workflow, cron), (inputs, expires) in list(pending.items()):
-            if _try(lambda: api.dispatch(workflow, inputs) or True,
-                    f"dispatch {workflow}", pause=sleep):
+        pending.update(_slots(schedules, last, current))
+        for (workflow, cron), (inputs, slot) in list(pending.items()):
+            if now() - slot >= CATCH_UP:
+                print(f"::warning::gave up on {workflow} slot {slot:%FT%H:%MZ}")
+            elif _try(lambda: api.dispatch(workflow, inputs) or True,
+                      f"dispatch {workflow}", pause=sleep):
                 print(f"{current:%FT%H:%MZ} dispatched {workflow} {inputs or ''}")
-            elif current < expires:
+            else:
                 continue
             del pending[(workflow, cron)]
         last = current.replace(second=0, microsecond=0)
