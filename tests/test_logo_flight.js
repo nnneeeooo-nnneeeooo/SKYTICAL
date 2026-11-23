@@ -6,7 +6,7 @@ const vm = require("node:vm");
 
 const source = fs.readFileSync(path.join(__dirname, "../static/logo-flight.js"), "utf8");
 
-function setup(width, reducedMotion = false, theme = "light", portraitTablet = false) {
+function setup(width, reducedMotion = false, theme = "light", portraitTablet = false, fineHover = true) {
   let now = 0;
   let next = null;
   function element(rect = {}) {
@@ -53,7 +53,8 @@ function setup(width, reducedMotion = false, theme = "light", portraitTablet = f
   };
   const reduced = { matches: reducedMotion, addEventListener() {} };
   const window = {
-    matchMedia: query => query.includes("min-width: 721px") ? { matches: portraitTablet } : reduced,
+    matchMedia: query => query.includes("min-width: 721px") ? { matches: portraitTablet }
+      : query.includes("hover: hover") ? { matches: fineHover } : reduced,
     performance: { now: () => now },
     requestAnimationFrame(handler) { next = handler; return 1; },
     cancelAnimationFrame() { next = null; },
@@ -121,5 +122,9 @@ for (const [reducedMotion, theme] of [[true, "light"], [false, "8bit"]]) {
   ui.hover();
   assert.equal(ui.link.classList.contains("is-flying"), false);
 }
+
+const touchOnly = setup(1200, false, "light", false, false);
+touchOnly.hover();
+assert.equal(touchOnly.link.classList.contains("is-flying"), false);
 
 console.log("test_logo_flight: OK");
