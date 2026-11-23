@@ -12,8 +12,8 @@
     },
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
       "status": "waiting",
-      "checkedUtc": "2026-11-23T07:06Z",
       "untilUtc": "2026-11-23T13:06Z",
+      "checkedUtc": "2026-11-23T07:06Z",
       "failureClass": "unexpected",
       "diagnostic": "zh.body[0] contains Simplified Chinese characters",
       "probeVersion": 3,
@@ -47,13 +47,13 @@
       "schemaMode": null
     },
     "gemini:gemini-3.6-flash": {
-      "status": "verified",
-      "untilUtc": "2026-11-23T07:16Z",
-      "checkedUtc": "2026-11-22T07:16Z",
-      "failureClass": null,
-      "diagnostic": null,
+      "status": "waiting",
+      "checkedUtc": "2026-11-23T07:46Z",
+      "untilUtc": "2026-11-23T13:46Z",
+      "failureClass": "quota",
+      "diagnostic": "HTTP 429 (free-tier quota exhausted?)",
       "probeVersion": 3,
-      "schemaMode": "prompt"
+      "schemaMode": null
     },
     "gemini:gemini-3.5-flash": {
       "status": "verified",
@@ -156,8 +156,8 @@
     },
     "nvidia:z-ai/glm-5.2": {
       "status": "unavailable",
-      "untilUtc": "2026-11-23T07:16Z",
-      "checkedUtc": "2026-11-22T07:16Z",
+      "untilUtc": "2026-11-24T07:37Z",
+      "checkedUtc": "2026-11-23T07:37Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -174,8 +174,8 @@
     },
     "nvidia:deepseek-ai/deepseek-v4.1-flash": {
       "status": "unavailable",
-      "untilUtc": "2026-11-23T07:16Z",
-      "checkedUtc": "2026-11-22T07:16Z",
+      "untilUtc": "2026-11-24T07:37Z",
+      "checkedUtc": "2026-11-23T07:37Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -183,8 +183,8 @@
     },
     "nvidia:deepseek-ai/deepseek-v4-pro": {
       "status": "unavailable",
-      "untilUtc": "2026-11-23T07:16Z",
-      "checkedUtc": "2026-11-22T07:16Z",
+      "untilUtc": "2026-11-24T07:37Z",
+      "checkedUtc": "2026-11-23T07:37Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -201,8 +201,8 @@
     },
     "nvidia:nvidia/nemotron-3-super-120b-a12b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-23T07:16Z",
-      "checkedUtc": "2026-11-22T07:16Z",
+      "untilUtc": "2026-11-24T07:37Z",
+      "checkedUtc": "2026-11-23T07:37Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -210,8 +210,8 @@
     },
     "nvidia:mistralai/mistral-medium-3.5-128b": {
       "status": "unavailable",
-      "untilUtc": "2026-11-23T07:16Z",
-      "checkedUtc": "2026-11-22T07:16Z",
+      "untilUtc": "2026-11-24T07:37Z",
+      "checkedUtc": "2026-11-23T07:37Z",
       "failureClass": "model_unavailable",
       "diagnostic": "model absent from account catalog",
       "probeVersion": 3,
@@ -300,8 +300,8 @@
     },
     "openrouter:google/gemma-4-31b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T03:10Z",
-      "checkedUtc": "2026-11-23T03:09Z",
+      "untilUtc": "2026-11-23T07:38Z",
+      "checkedUtc": "2026-11-23T07:37Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -309,8 +309,8 @@
     },
     "openrouter:google/gemma-4-26b-a4b-it:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T03:10Z",
-      "checkedUtc": "2026-11-23T03:09Z",
+      "untilUtc": "2026-11-23T07:38Z",
+      "checkedUtc": "2026-11-23T07:37Z",
       "failureClass": "rate_limit",
       "diagnostic": "HTTP 429 rate limit",
       "probeVersion": 3,
@@ -318,8 +318,8 @@
     },
     "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
       "status": "waiting",
-      "untilUtc": "2026-11-23T05:53Z",
-      "checkedUtc": "2026-11-22T23:53Z",
+      "untilUtc": "2026-11-23T13:37Z",
+      "checkedUtc": "2026-11-23T07:37Z",
       "failureClass": "truncated",
       "diagnostic": "response truncated (length)",
       "probeVersion": 3,
