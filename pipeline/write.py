@@ -2682,6 +2682,15 @@ def _same_scheduled_headline(group_titles: list[str], record: dict) -> bool:
     )
 
 
+_AVHERALD_VARIANT_RE = re.compile(
+    r"^(https?://(?:www\.)?avherald\.com/h\?article=[0-9a-f]+)&opt=\d+$")
+
+
+def _incident_urls(urls: set[str]) -> set[str]:
+    """Aviation Herald serves one incident with and without ``opt=0``."""
+    return {_AVHERALD_VARIANT_RE.sub(r"\1", url) for url in urls}
+
+
 def _match_existing_article(group: dict, records: list[dict]):
     """Resolve updates or an unchanged scheduled source to an existing article."""
     urls = _group_source_urls(group)
@@ -2693,15 +2702,20 @@ def _match_existing_article(group: dict, records: list[dict]):
     # Independent events revise an article only when it already covers every
     # one of them; a partial overlap would drop its other events or theirs.
     independent = group.get("groupKind") == "safety_roundup"
+    if independent:
+        urls = _incident_urls(urls)
     for record in records:
         if (record["article"].get("roundupKind") == "industry"
                 and not _already_published_without_new_coverage(group, record)):
             continue  # One component's follow-up must not replace the whole edition.
-        if independent and not urls <= record["urls"]:
-            continue
-        if (urls & record["urls"] and
+        known = record["urls"]
+        if independent:
+            known = _incident_urls(known)
+            if not urls <= known:
+                continue
+        if (urls & known and
                 (group.get("updateCandidate") or
-                 (urls <= record["urls"] and
+                 (urls <= known and
                   bool(group_titles) and
                   (set(group_titles) <= set(record["titles"]) or
                    _same_scheduled_headline(group_titles, record))))):
